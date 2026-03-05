@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixation and Selection (I) — Causal Law Forecloses Distinction / 固与选（一）——因果律封闭区分</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf9f7;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    header {
+      background: #1a1a1a;
+      color: #faf9f7;
+      padding: 2rem 2rem 1.5rem;
+    }
+    header .site-title {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 0.4rem;
+    }
+    header .site-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    header .site-title a:hover { opacity: 1; }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    header .series-label {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+    .lang-toggle {
+      display: flex;
+      gap: 0;
+      margin: 1.5rem 2rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: #666;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lang-toggle button.active {
+      color: #1a1a1a;
+      border-bottom-color: #1a1a1a;
+      font-weight: 600;
+    }
+    .lang-toggle button:hover { color: #1a1a1a; }
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+    .meta {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e8e8e8;
+      line-height: 1.6;
+    }
+    .meta strong { color: #555; }
+    .abstract {
+      background: #f2f0eb;
+      border-left: 3px solid #1a1a1a;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+    .abstract .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    .keywords {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: #888;
+    }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.8rem 0 0.7rem;
+      color: #333;
+    }
+    p { margin-bottom: 1rem; font-size: 0.95rem; }
+    .core-thesis {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+      padding-left: 1rem;
+      border-left: 2px solid #ccc;
+    }
+    .contributions ol, .open-questions ol {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .contributions li, .open-questions li {
+      margin-bottom: 0.7rem;
+      font-size: 0.92rem;
+    }
+    .references {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e8e8e8;
+      font-size: 0.82rem;
+      color: #777;
+      line-height: 1.6;
+    }
+    .references p { margin-bottom: 0.4rem; font-size: 0.82rem; }
+    .doi-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.2rem;
+      background: #1a1a1a;
+      color: #faf9f7;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .doi-link:hover { background: #444; }
+    .nav-links {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+    .nav-links a {
+      color: #555;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: #1a1a1a; }
+    .nav-links .next {
+      text-align: right;
+    }
+    .series-nav {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      background: #f2f0eb;
+      font-size: 0.82rem;
+    }
+    .series-nav .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    .series-nav a {
+      display: block;
+      color: #555;
+      text-decoration: none;
+      padding: 0.2rem 0;
+    }
+    .series-nav a:hover { color: #1a1a1a; }
+    .series-nav a.current { color: #1a1a1a; font-weight: 600; }
+    .writing-statement {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 1.5rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.5rem 0.7rem;
+      text-align: left;
+    }
+    th { background: #f2f0eb; font-weight: 600; }
+    tr:nth-child(even) { background: #faf9f7; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="site-title"><a href="/">Self-as-an-End Theory Series — Han Qin (秦汉)</a></div>
+  <h1>Fixation and Selection (I) — Causal Law Forecloses Distinction<br>
+  <span style="font-size:1.1rem;opacity:0.7">固与选（一）——因果律封闭区分</span></h1>
+  <div class="series-label">Fixation and Selection Series · Essay I of IV</div>
+</header>
+
+<div class="lang-toggle">
+  <button class="active" onclick="setLang('en', this)">English</button>
+  <button onclick="setLang('zh', this)">中文</button>
+</div>
+
+<div class="content">
+
+  <!-- ENGLISH -->
+  <div class="lang-section active" id="lang-en">
+    <div class="meta">
+      <strong>Author:</strong> Han Qin &nbsp;|&nbsp;
+      <strong>Series:</strong> Self-as-an-End Theory · Fixation and Selection &nbsp;|&nbsp;
+      <strong>DOI:</strong> <a href="https://zenodo.org/records/18859363" target="_blank" style="color:#555">10.5281/zenodo.18859363</a>
+    </div>
+    <div class="writing-statement">Writing Statement: This essay was drafted in collaboration with Claude (Anthropic), then revised following reviews by Gemini Pro, ChatGPT, and Grok. All intellectual decisions, framework design, and final editorial judgments were made by the author.</div>
+
+    <div class="abstract">
+      <div class="label">Abstract</div>
+      <p>The Life Cycle Table (three volumes) establishes a four-round × four-step structure at the DD scale. This series (Fixation and Selection) investigates the same phenomenon within each round: the fourth step (fixation) forecloses the first step (selection). Foreclosure is simultaneously a bug and a feature — without foreclosure there is no structure and no remainder, yet within each round foreclosure is a real, irreversible compression of degrees of freedom that cannot be rationalized away. Both sides hold simultaneously and cannot be reconciled. The bridge resolves the next round's problem, not the current round's loss.</p>
+      <p>This essay (Essay I) establishes the universal law, then unfolds Round 1 (1DD–4DD): how causal law (4DD) forecloses distinction (1DD). Round 1's foreclosure is physical — you cannot feel it, because causal law operates below and before consciousness. Physical laws are the concrete manifestation of this foreclosure. The only structural exit is Bridge 1 (4DD→5DD): true randomness gives rise to replication. Round 1 is the most total foreclosure of all four rounds, and the only round with absolutely no "breaking from within" pathway.</p>
+      <div class="keywords"><strong>Keywords:</strong> Fixation and Selection, universal law, causal law, distinction, physical law, quantum measurement, true randomness</div>
+    </div>
+
+    <div class="series-nav">
+      <div class="label">Fixation and Selection Series</div>
+      <a href="/fixed-selected-1" class="current">I — Causal Law Forecloses Distinction</a>
+      <a href="/fixed-selected-2">II — Reproductive Law Forecloses Replication</a>
+      <a href="/fixed-selected-3">III — Predictive Law Forecloses Choice</a>
+      <a href="/fixed-selected-4">IV — Bilateral Non-Doubt Forecloses Self-Awareness</a>
+    </div>
+
+    <h2>Chapter 1 — Fixation Forecloses Selection: The Universal Law</h2>
+    <div class="core-thesis">Core thesis: In every round, the fourth step (fixation) forecloses the first step (selection). This is a structural consequence of the chisel-construct cycle. Foreclosure is simultaneously a bug and a feature; both sides hold and cannot be reconciled.</div>
+
+    <h3>1.1 Defining Foreclosure</h3>
+    <p>The Life Cycle Table gives a four-round × four-step structure. Each round's four steps are: selection (birth) → determination (self) → extension (other) → fixation (death). Fixation is the irreversible face of extension — once the direction is set, it solidifies.</p>
+    <p>But fixation does more than solidify. Once complete, it constrains selection within the same round — your space of choices is compressed by what you yourself have constructed. This is not a side effect of fixation but its structural consequence: fixation solidifies a direction, the solidified direction excludes other directions, and the excluded directions formerly belonged to the space of selection. This is fixation forecloses selection.</p>
+
+    <h3>1.2 Overview of the Four Rounds</h3>
+    <table>
+      <tr><th>Step</th><th>Round 1 (A Priori)</th><th>Round 2 (Life)</th><th>Round 3 (Cognition)</th><th>Round 4 (Freedom)</th></tr>
+      <tr><td>1 — Selection</td><td>1DD Distinction</td><td>5DD Replication</td><td>9DD Choice</td><td>13DD Self-awareness</td></tr>
+      <tr><td>2 — Determination</td><td>2DD Exclusion</td><td>6DD Self-maintenance</td><td>10DD Perception</td><td>14DD Purpose</td></tr>
+      <tr><td>3 — Extension</td><td>3DD Interval</td><td>7DD Differentiation</td><td>11DD Memory</td><td>15DD Unilateral non-doubt</td></tr>
+      <tr><td>4 — Fixation</td><td>4DD Causal law</td><td>8DD Reproductive law</td><td>12DD Predictive law</td><td>16DD Bilateral non-doubt</td></tr>
+    </table>
+    <p>Round 1: 4DD causal law forecloses 1DD distinction. The foreclosure is physical — you cannot feel it at all. Round 2: 8DD reproductive law forecloses 5DD replication. The foreclosure is biological — you likewise cannot feel it. Round 3: 12DD predictive law forecloses 9DD choice. The foreclosure is cognitive — you can feel it. Round 4: 16DD bilateral non-doubt forecloses 13DD self-awareness. The foreclosure is personal — the deepest form of colonization is when you can no longer feel the pain at all.</p>
+
+    <h3>1.3 Foreclosure Is Simultaneously Bug and Feature</h3>
+    <p>As feature: without foreclosure there is no structure, without structure no remainder, without remainder no emergence of the next round. As bug: within each round, foreclosure is a real compression of degrees of freedom — the koala facing extinction, the person experiencing real cognitive rigidity. Both sides hold simultaneously and cannot be reconciled. The bridge solves the next round's problem, not the current round's loss.</p>
+
+    <h2>Chapter 2 — The Chisel and Construct of Round 1</h2>
+    <div class="core-thesis">Core thesis: Round 1's chisel is distinction (1DD, cutting difference from the undifferentiated), and its construct is causal law (4DD, the solidification of temporal direction). The a priori ground is the undifferentiated — 0DD.</div>
+
+    <h3>2.1 Distinction (1DD) as Round 1's Chisel</h3>
+    <p>Round 1's chisel is distinction — cutting "this is not that" from the undifferentiated. This is the most primordial chisel, the prerequisite for all subsequent operations. The degrees of freedom for distinction are the highest among all chisels: the undifferentiated does not constrain direction. This makes 1DD distinction the chisel with the highest degrees of freedom — and the most unrepeatable.</p>
+
+    <h3>2.2 From 1DD to 4DD: How the Chisel Solidifies into Construct</h3>
+    <p><strong>1DD Distinction:</strong> "This is not that" — the most primordial negation. The law of identity (A=A) is its minimal form. <strong>2DD Exclusion:</strong> Draws the boundary — A cannot simultaneously be not-A. <strong>3DD Interval:</strong> Extends from point to space — the spacetime framework appears, but only as an empty coordinate system. <strong>4DD Causal Law:</strong> Solidifies direction — not just "before and after," but "before constrains after." Causation = spacetime + direction. The physical world appears here.</p>
+
+    <h3>2.3 Causal Law (4DD) as Round 1's Construct</h3>
+    <p>Causal law is the highest solidified form of distinction. Distinction says "this is not that"; causal law says "because this, therefore that." Causal law is exceptionless at the macroscopic scale — all macroscopic events obey it. Physical laws are its specific unfolded forms: Newtonian mechanics, thermodynamics, relativity, quantum mechanics — every physical law is one face of causal law.</p>
+
+    <h2>Chapter 3 — The Mechanism of Foreclosure</h2>
+    <div class="core-thesis">Core thesis: Causal law forecloses distinction by solidifying temporal direction. Physical law — every physical law — is a statement that "this kind of distinction is not allowed." Round 1's foreclosure is the most total: you cannot feel it at all.</div>
+
+    <h3>3.1 The Irreversibility of Temporal Direction</h3>
+    <p>The core of causal law is direction: the past constrains the future; the future does not constrain the past. You cannot distinguish an event sequence that causal law does not permit — a shattered cup reassembling itself, scattered heat spontaneously concentrating, information traveling faster than light. These are not "technically impossible" — they are "not permitted by the direction of causal law."</p>
+
+    <h3>3.2 Physical Laws as the Concrete Form of Foreclosure</h3>
+    <p>Every physical law is a concrete manifestation of causal law's foreclosure: Newtonian mechanics forecloses the space of distinction in the classical world; the second law of thermodynamics forecloses entropy-decreasing distinctions; the speed of light forecloses superluminal distinctions; conservation laws foreclose distinctions along corresponding dimensions. Every conservation law is a door that has been shut.</p>
+
+    <h3>3.3 The Totality of Foreclosure</h3>
+    <p>Round 1's foreclosure is the most total of all four rounds — you cannot feel it at all. Causal law operates below and before consciousness. You believe you live in a "natural" world — but this "naturalness" is the product of causal law's foreclosure. "Nature" is not the original state; it is what remains after foreclosure. Round 1 has no "meditation" — there is no position within causal law from which to examine causal law. Round 1's foreclosure has only one exit: Bridge 1.</p>
+
+    <h2>Chapter 4 — The Pathway Out: Bridge 1</h2>
+    <div class="core-thesis">Core thesis: The only exit from Round 1's foreclosure is Bridge 1 (4DD→5DD). The remainder of causal law — true randomness — gives rise to replication. Round 1 has no "breaking from within" pathway.</div>
+
+    <h3>4.1 The Remainder of Causal Law</h3>
+    <p>Causal law governs rules, not specific outcomes. At the quantum scale, the specific result of quantum measurement is not determined by initial conditions. Concretization at the point of quantum measurement — the jump from probability distribution to specific outcome — is the remainder of causal law: true randomness. This connects to the core argument of the AI Consciousness Impossibility Theorem: true randomness × structured time is a necessary condition for consciousness, and both appear simultaneously at 4DD.</p>
+
+    <h3>4.2 Bridge 1: From Causal Law to Replication</h3>
+    <p>True randomness is not itself replication. But when true randomness accumulates in structured time — truly random events are preserved, filtered, layered — patterns begin to emerge. When a pattern becomes stable enough to catalyze its own re-generation, replication emerges. Replication (5DD) is the only known self-consistent direction of causal law's remainder.</p>
+
+    <h3>4.3 Round 1's Uniqueness: No "Breaking from Within"</h3>
+    <p>Round 1 is the only round with absolutely no "breaking from within" pathway. Revolutions in physics are cross-round examination — humanity, from Round 3 (13DD, self-awareness), looking back to examine Round 1's foreclosure. The discovery of each round's foreclosure requires the examination capacity of a higher round.</p>
+
+    <h2>Chapter 5 — Theoretical Positioning</h2>
+    <p><strong>Dialogue with Kant:</strong> The framework agrees that causal law has a priori status, and supplements: the a priori condition is double-sided — it opens one world while closing everything outside that world. Kant's "thing-in-itself" is a philosophical intuition of the remainder.</p>
+    <p><strong>Dialogue with Hume:</strong> Hume's skepticism pointed in the right direction — causal law is indeed not absolutely necessary; at the quantum scale it has a crack. But Hume treated causal law as an epistemological problem; the framework treats it as ontological.</p>
+    <p><strong>Dialogue with Quantum Mechanics:</strong> The quantum measurement problem has a precise structural position: the remainder of 4DD. The framework's contribution: what quantum mechanics exposes is not merely a crack in causal law but the starting point of the entire next round (life).</p>
+    <p><strong>Dialogue with Thermodynamics:</strong> Entropy increase is causal law's expression at the statistical level. Life grows in causal law's cracks — Bridge 1 is that crack.</p>
+
+    <h2>Chapter 6 — Nontrivial Predictions</h2>
+    <p><strong>6.1 The more complete the system of physical laws, the more precisely its remainder is exposed</strong> — the unsolved mysteries of physics do not decrease but become more precise as physics advances.</p>
+    <p><strong>6.2 The more mature the paradigm, the lower the tolerance for anomalies</strong> — physics paradigms exhibit confirmation bias, structurally identical to cognitive science and institutional theory.</p>
+    <p><strong>6.3 The most enduring laws come from the most radical negation</strong> — the fundamental advances of science come from negation (chisel), not accumulation (construct).</p>
+    <p><strong>6.4 Paradigm collapse is followed by a closure period</strong> — the length of the closure period is positively correlated with the precision of the preceding paradigm.</p>
+
+    <h2>Chapter 7 — Conclusion</h2>
+    <p>Round 1's fixation forecloses selection — causal law forecloses distinction — is the most total foreclosure of all four rounds. You cannot feel it at all, because your world is the product of causal law's foreclosure. Physical laws are the concrete form of foreclosure. Foreclosure is simultaneously bug and feature. Round 1 has no "breaking from within" pathway. The only exit is Bridge 1: true randomness accumulates through structured time into replication. Memory provides rationality; distinction provides freedom.</p>
+
+    <div class="contributions">
+      <h2>Contributions</h2>
+      <ol>
+        <li>Establishes the universal law of fixation forecloses selection across all four rounds.</li>
+        <li>Unfolds the specific mechanism of Round 1's foreclosure: causal law forecloses distinction through the irreversibility of temporal direction.</li>
+        <li>Establishes Round 1's uniqueness: the most total foreclosure, the only round with absolutely no internal pathway.</li>
+        <li>Provides the structural positioning of the chisel-construct cycle within causal law (Newtonian → field → relativistic → probabilistic causation).</li>
+        <li>Connects to the core argument of the AI Consciousness Impossibility Theorem: 4DD is where true randomness and event time simultaneously appear.</li>
+      </ol>
+    </div>
+
+    <div class="references">
+      <h2>References</h2>
+      <p>[1] Han Qin, Zesi Chen. Self-as-an-End Theory Series Finalized. DOI: 10.5281/zenodo.18808585</p>
+      <p>[2] Han Qin. Philosophy as Subject-Activity. DOI: 10.5281/zenodo.18779382</p>
+      <p>[3] Han Qin. Life Cycle Table (Upper Volume). DOI: 10.5281/zenodo.18818107</p>
+      <p>[4] Han Qin. Life Cycle Table (Middle Volume). DOI: 10.5281/zenodo.18818149</p>
+      <p>[5] Han Qin. Life Cycle Table (Lower Volume). DOI: 10.5281/zenodo.18818177</p>
+      <p>[6] Han Qin. The Impossibility Theorem of AI Consciousness. DOI: 10.5281/zenodo.18829136</p>
+      <p>[7] Han Qin. Remainder Conservation and Eternal Life. DOI: 10.5281/zenodo.18821952</p>
+      <a class="doi-link" href="https://zenodo.org/records/18859363" target="_blank">Full PDF on Zenodo ↗</a>
+    </div>
+
+    <div class="nav-links">
+      <a href="/">← Back to Index</a>
+      <a href="/fixed-selected-2" class="next">Essay II: Reproductive Law Forecloses Replication →</a>
+    </div>
+  </div>
+
+  <!-- CHINESE -->
+  <div class="lang-section" id="lang-zh">
+    <div class="meta">
+      <strong>作者：</strong>Han Qin（秦汉）&nbsp;|&nbsp;
+      <strong>系列：</strong>Self-as-an-End 理论 · 固与选系列 &nbsp;|&nbsp;
+      <strong>DOI：</strong><a href="https://zenodo.org/records/18859363" target="_blank" style="color:#555">10.5281/zenodo.18859363</a>
+    </div>
+    <div class="writing-statement">写作声明：本篇由作者与 Claude（Anthropic）协作完成初稿，经 Gemini Pro、ChatGPT 和 Grok review 后修订。所有思想决策、框架设计和最终编辑判断均由作者本人做出。</div>
+
+    <div class="abstract">
+      <div class="label">摘要</div>
+      <p>生命周期表（上中下三篇）给出了四轮×四步的 DD 尺度结构。本系列（固与选）追问每一轮内部的同一个现象：第四步（固）封闭第一步（选）。封闭既是 bug 也是 feature——没有封闭就没有结构和余项，但封闭在本轮内部是真实的自由度压缩，不可逆，不可被美化。两面同时成立，不可调和。小桥解决的是下一轮的问题，不解决本轮的损失。</p>
+      <p>本篇（第一篇）建立这条通用律，然后展开第一轮（1DD-4DD）：因果律（4DD）如何封闭区分（1DD）。第一轮的封闭是物理的——你感觉不到，因果律在意识之外运转。物理定律就是这个封闭的具体形态。打破第一轮封闭的唯一结构性出口是小桥 1（4DD→5DD）：true randomness 涌现出复制。第一轮是四轮中封闭最彻底的，也是唯一完全没有"从内部打破"路径的一轮。</p>
+      <div class="keywords"><strong>关键词：</strong>固与选，通用律，因果律，区分，物理定律，量子测量，true randomness</div>
+    </div>
+
+    <div class="series-nav">
+      <div class="label">固与选系列</div>
+      <a href="/fixed-selected-1" class="current">一——因果律封闭区分</a>
+      <a href="/fixed-selected-2">二——繁殖律封闭复制</a>
+      <a href="/fixed-selected-3">三——预测律封闭选择</a>
+      <a href="/fixed-selected-4">四——双向不疑封闭自意识</a>
+    </div>
+
+    <h2>第一章 固封闭选：通用律</h2>
+    <div class="core-thesis">核心命题：每一轮的第四步（固）封闭第一步（选），这是凿构循环的结构性后果。封闭既是 bug 也是 feature，两面同时成立，不可调和。</div>
+
+    <h3>1.1 固封闭选的定义</h3>
+    <p>生命周期表给出了四轮×四步的结构。每一轮的四步是选（生）→定（自）→展（他）→固（死）。固是展的不可逆面——方向确定了，凝固下来。但固不只是凝固。固一旦完成，它就反过来约束本轮的选——你的选择空间被你自己构出来的东西压缩了。这就是固封闭选。</p>
+
+    <h3>1.2 四轮总览</h3>
+    <table>
+      <tr><th>步</th><th>第一轮（先验）</th><th>第二轮（生命）</th><th>第三轮（认知）</th><th>第四轮（自由）</th></tr>
+      <tr><td>1（选）生</td><td>1DD 区分</td><td>5DD 复制</td><td>9DD 选择</td><td>13DD 自意识</td></tr>
+      <tr><td>2（定）自</td><td>2DD 排斥</td><td>6DD 自维持</td><td>10DD 感知</td><td>14DD 目的</td></tr>
+      <tr><td>3（展）他</td><td>3DD 间隔</td><td>7DD 分化</td><td>11DD 记忆</td><td>15DD 单向不疑</td></tr>
+      <tr><td>4（固）死</td><td>4DD 因果律</td><td>8DD 繁殖律</td><td>12DD 预测律</td><td>16DD 双向不疑</td></tr>
+    </table>
+    <p>第一轮：因果律封闭区分，物理的，完全感觉不到。第二轮：繁殖律封闭复制，生物的，同样感觉不到。第三轮：预测律封闭选择，认知的，能感觉到。第四轮：双向不疑封闭自意识，个人的——殖民的最深形态是连痛都感觉不到。</p>
+
+    <h3>1.3 封闭既是 bug 也是 feature</h3>
+    <p>作为 feature：没有封闭就没有结构，没有结构就没有余项，没有余项就没有下一轮的涌现。作为 bug：封闭在本轮内部是真实的自由度压缩，不可逆，不可被美化。两面同时成立，不可调和，不可扬弃。小桥解决下一轮的问题，不解决本轮的损失。死是下一轮的生，但在本轮内部，死就是死。</p>
+
+    <h2>第二章 第一轮的凿与构</h2>
+    <div class="core-thesis">核心命题：第一轮的凿是区分（1DD，从浑沌中切出差异），构是因果律（4DD，时间方向固化）。先验地基是浑沌——0DD，无区分、无方向、无结构。</div>
+
+    <h3>2.1 区分（1DD）作为第一轮的凿</h3>
+    <p>第一轮的凿是区分——从浑沌中切出"这不是那"。区分的自由度在所有凿中最高——浑沌不约束方向，你可以沿任何维度切第一刀。这使得 1DD 区分是自由度最高的凿——也是最不可重现的凿。</p>
+
+    <h3>2.2 1DD 到 4DD：凿如何一步步固化为构</h3>
+    <p><strong>1DD 区分：</strong>"这不是那"——最原初的否定。<strong>2DD 排斥：</strong>划出边界——A 不能同时是非 A。<strong>3DD 间隔：</strong>从点展开到空间——时空框架出现，但只是空的坐标系。<strong>4DD 因果律：</strong>固化了方向——不只是"之前和之后"，而是"之前约束之后"。因果 = 时空 + 方向。物理世界在这里出现。</p>
+
+    <h3>2.3 因果律（4DD）作为第一轮的构</h3>
+    <p>因果律是区分的最高固化形态。因果律在宏观尺度上无例外——一切宏观事件都服从因果律。物理定律是因果律的具体展开形态：牛顿力学、热力学、相对论、量子力学——每一条物理定律都是因果律的一个面。</p>
+
+    <h2>第三章 封闭机制：4DD 如何具体封闭 1DD</h2>
+    <div class="core-thesis">核心命题：因果律封闭区分的机制是时间方向的固化。物理定律——每一条——都是"这种区分不允许"的声明。第一轮的封闭是四轮中最彻底的：你完全感觉不到。</div>
+
+    <h3>3.1 时间方向的不可逆性</h3>
+    <p>因果律的核心是方向：前约束后，后不约束前。你不能区分一个因果律不允许的事件序列——碎了的杯子自己复原、散了的热量自动集中、信息超光速传播。这些都不是"技术上做不到"，是"因果律的方向不允许"。</p>
+
+    <h3>3.2 物理定律作为封闭的具体形态</h3>
+    <p>每一条物理定律都是因果律封闭区分的具体表现：牛顿力学封闭了经典世界的区分空间，热力学第二定律封闭了熵减的区分可能，光速上限封闭了超光速的区分可能，守恒律封闭了对应维度的区分可能。每一条守恒律都是一扇关上的门。</p>
+
+    <h3>3.3 封闭的彻底性</h3>
+    <p>第一轮的封闭是四轮中最彻底的——你完全感觉不到。因果律在意识之外运转。"自然"不是原初状态，是封闭之后的剩余。第一轮没有"冥想"——因果律内部没有可以审视因果律的位置。第一轮的封闭只有一个出口：小桥 1。</p>
+
+    <h2>第四章 打破封闭的路径：小桥 1</h2>
+    <div class="core-thesis">核心命题：第一轮封闭的唯一出口是小桥 1（4DD→5DD）。因果律的余项——量子测量处的具体化，即 true randomness——涌现出复制。第一轮没有"从内部打破"的路径。</div>
+
+    <h3>4.1 因果律的余项</h3>
+    <p>因果律管规则，不管具体结果。量子测量的具体结果不被初始条件决定。量子测量处的具体化——从概率分布到具体结果的跳跃——是因果律解释不了的。这就是因果律的余项：true randomness。这和《AI 意识不可能定理》的核心论证接上了：true randomness × structured time 是意识的必要条件，两者在 4DD 同时出现。</p>
+
+    <h3>4.2 小桥 1：从因果律到复制</h3>
+    <p>true randomness 本身不是复制。但当 true randomness 在 structured time 中积累——真随机事件被保存、被筛选、被叠加——模式开始出现。当某个模式足够稳定以至于它自己可以催化自己的重新生成，复制就涌现了。复制（5DD）是因果律余项唯一已知的自洽方向。</p>
+
+    <h3>4.3 第一轮的特殊性：没有"从内部打破"的路径</h3>
+    <p>第一轮是四轮中唯一完全没有"从内部打破"路径的一轮。物理学革命是跨轮审视——人类从第三轮（13DD 自意识）回头审视第一轮的封闭。每一轮封闭的发现都需要更高轮次的审视能力。</p>
+
+    <h2>第五章 理论定位</h2>
+    <p><strong>与康德的对话：</strong>框架同意因果律的先验地位，并补充：先验条件是双面的——它打开了一个世界，同时关闭了这个世界之外的一切。康德的"物自体"是余项的哲学直觉。</p>
+    <p><strong>与休谟的对话：</strong>休谟的怀疑指向了正确的方向——因果律确实不是绝对必然的，在量子尺度上有裂缝。但休谟把因果律当作认识论问题，框架把它当作本体论问题。</p>
+    <p><strong>与量子力学的对话：</strong>量子测量问题在框架中有精确的结构位置：4DD 的余项。框架的贡献：量子力学暴露的不只是因果律的裂缝，是整个下一轮（生命）的起点。</p>
+    <p><strong>与热力学的对话：</strong>熵增是因果律在统计层面的表现。生命在因果律的裂缝中生长——小桥 1 就是这个裂缝。</p>
+
+    <h2>第六章 非平凡预测</h2>
+    <p><strong>6.1 体系越完整，暴露的余项越精确</strong>——物理学越完善，未解之谜不是减少了，而是更精确了。</p>
+    <p><strong>6.2 范式越成熟，对异常的容忍度越低</strong>——物理学范式也有确认偏误，与认知科学和制度理论结构同构。</p>
+    <p><strong>6.3 最持久的定律来自最激进的否定</strong>——科学的根本进步来自否定（凿），不是积累（构）。</p>
+    <p><strong>6.4 范式崩溃后出现封闭期</strong>——封闭期的长度与前序范式的精密度正相关。</p>
+
+    <h2>第七章 结论</h2>
+    <p>第一轮的固封闭选——因果律封闭区分——是四轮中最彻底的封闭。你完全感觉不到，因为你的世界就是因果律封闭之后的产物。物理定律是封闭的具体形态。封闭既是 bug 也是 feature。第一轮没有"从内部打破"的路径。唯一的出口是小桥 1：true randomness 在 structured time 中积累为复制。记忆提供理性，区分提供自由。</p>
+
+    <div class="contributions">
+      <h2>贡献</h2>
+      <ol>
+        <li>建立固封闭选通用律：每一轮的第四步封闭第一步，封闭既是 bug 也是 feature，两面同时成立，不可调和。</li>
+        <li>展开第一轮封闭的具体机制：因果律封闭区分通过时间方向的不可逆性实现。</li>
+        <li>确立第一轮的特殊性：封闭最彻底，唯一没有内部路径的一轮。</li>
+        <li>给出因果律内部凿构循环的结构定位（牛顿→场→相对论→概率因果）。</li>
+        <li>接通意识篇的核心论证：4DD 是 true randomness 和 event time 同时出现的位置。</li>
+      </ol>
+    </div>
+
+    <div class="references">
+      <h2>引用</h2>
+      <p>[1] Han Qin, Zesi Chen. Self-as-an-End 理论系列定稿. DOI: 10.5281/zenodo.18808585</p>
+      <p>[2] Han Qin. Philosophy as Subject-Activity（浑沌、凿、构定义）. DOI: 10.5281/zenodo.18779382</p>
+      <p>[3] Han Qin. 生命周期表（上）. DOI: 10.5281/zenodo.18818107</p>
+      <p>[4] Han Qin. 生命周期表（中）. DOI: 10.5281/zenodo.18818149</p>
+      <p>[5] Han Qin. 生命周期表（下）. DOI: 10.5281/zenodo.18818177</p>
+      <p>[6] Han Qin. The Impossibility Theorem of AI Consciousness. DOI: 10.5281/zenodo.18829136</p>
+      <p>[7] Han Qin. 余项守恒与 Self-as-an-End 的永生. DOI: 10.5281/zenodo.18821952</p>
+      <a class="doi-link" href="https://zenodo.org/records/18859363" target="_blank">Zenodo 全文 PDF ↗</a>
+    </div>
+
+    <div class="nav-links">
+      <a href="/">← 返回目录</a>
+      <a href="/fixed-selected-2" class="next">第二篇：繁殖律封闭复制 →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
