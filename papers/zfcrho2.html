@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula — ZFCρ Paper II — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper II: Where does the quantitative identity of the remainder come from? π is the first complete instance; Euler's formula is re-read as one act (exponential map) binding two remainders (i and π) to produce closure.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, remainder, rho, Euler formula, pi, imaginary unit, exponential map, Gödel, Tarski, Chaitin, Turing degree, layer theory, 余项, 欧拉公式">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho2.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho2.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18927658"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "remainder", "rho", "Euler formula", "pi", "imaginary unit",
+      "exponential map", "Gödel incompleteness", "Tarski undefinability",
+      "Chaitin constant", "Turing degree", "layer theory", "余项"
+    ],
+    "abstract": "ZFCρ Paper I established the remainder proposition: for any formalization operation C acting on any domain U, ρ(C,U)≠∅. This paper asks: where does the quantitative identity of ρ come from? The existence of ρ can be read within its own layer, but its quantitative determination requires the structure of the next layer up. π is the first complete instance of this principle. In Euler's formula e^{iπ}+1=0, i and π are remainders from two facets of the same L₁→L₂ transition; the exponential map (act) binds them to produce closure. The L₂→L₃ transition exhibits the same structure: Gödel and Tarski remainders, diagonalization act, collapse to 0' in Turing-degree space.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho2.html">
+  <meta name="citation_title" content="The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18927658">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho2.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    /* Lang tab switcher */
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper II · Zenodo 18927658</div>
+    <h1 id="paper-title">The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula</h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18927658" target="_blank" rel="noopener">10.5281/zenodo.18927658</a> &nbsp;·&nbsp; CC BY 4.0 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18927658" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>ZFCρ Paper I (DOI: 10.5281/zenodo.18914682) established the remainder proposition: for any formalization operation C acting on any domain U, ρ(C,U) ≠ ∅. The remainder is ineliminable, a structural trace of formalization. But the ρ-proposition is qualitative — it guarantees that a remainder exists without specifying what it is. This paper asks: where does the quantitative identity of ρ come from?</p>
+    <p>First, the existence of ρ can be read within its own layer, but its quantitative determination requires the structure of the next layer up. π is the first complete instance of this principle. Second, this paper advances an interpretive claim: in Euler's formula <em>e<sup>iπ</sup>+1=0</em>, the constants <em>i</em> and <em>π</em> are remainders from two facets of the same L₁→L₂ transition — the algebraic facet (linear/planar) and the harmonic-analytic facet (lattice/dual-lattice). The exponential map x↦e<sup>x</sup> is the act: in the unique solution of f′=f with f(0)=1, act and result coincide as the same function. Euler's formula can therefore be re-read as: <strong>one act (the exponential map) binding two remainders (i, π) to produce closure (return to zero).</strong> Third, this paper proposes that the L₂→L₃ transition possesses the same "two remainders + one act" structure, with two remainders (Gödel incompleteness / Tarski undefinability) and one act (diagonalization, with Chaitin's Ω as condensation), all collapsing to the first Turing jump 0′.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <div class="note-box">
+    <strong>Layer Notation.</strong> L₀: binary distinction (presence/absence). L₁: discrete/countable structure (integer lattice, ordered structure of the real line). L₂: continuous/formalized structure (complex plane, L² spaces, interior of formal systems). L₃: semantic/meta-layer observation (model theory, viewing a formal system from outside). L₄: causal/physical spacetime. Each layer possesses an irreducible closure capacity absent from the layer below. In the SAE framework, these layers are termed DD (developmental dimensions).
+  </div>
+
+  <h2>1. The ρ-Proposition: Recap and Boundaries</h2>
+  <p>Paper I established the following:</p>
+  <div class="thesis-box">
+    <p><strong>The ρ-proposition.</strong> For any domain formalized extensionally within ZFC, the formalization structurally reduces operational performance to extensional output. Merely enriching the formal language extensionally cannot absorb that performance; it can only relocate the remainder.</p>
+  </div>
+  <p>The ρ-proposition distinguishes two things: the <strong>remainder</strong> (the extensional product of closure, a structural trace that has been set aside) and the <strong>act</strong> (the operational performance that makes closure happen, not exhausted by its graph). The regress argument of Paper I shows that the act cannot be reduced to a graph: every attempt to formalize the act produces a new remainder.</p>
+  <p>The ρ-proposition has a clear boundary: <strong>it is qualitative.</strong> ρ(C,U) ≠ ∅ says that a remainder exists. It does not say what the remainder equals, what the act looks like, or what precise relation holds between them.</p>
+  <p><em>Clarification on standard closure operators.</em> In the standard closure-operator framework, if one defines the remainder as cl(A) \ A, then already-closed objects have empty remainder. The ρ of ZFCρ is not a set-difference. It is a meta-theoretic marker — marking the structural asymmetry between extensional representation and operational performance. The regress argument applies to any extensional formalization, including the formalization of the state "already closed."</p>
+
+  <h2>2. π: First Complete Instance of Quantitative Remainder</h2>
+  <h3>2.1 Where π comes from</h3>
+  <p>Consider the simplest discrete domain: the integer lattice ℤ<sup>d</sup>. Applying the closure operation of Poisson summation exchanges the lattice with its dual:</p>
+  <div class="math-formula">θ₃(e^{−πt}) = t^{−1/2} · θ₃(e^{−π/t})</div>
+  <p>The Fourier self-duality of the Gaussian e<sup>−πx²</sup> forces π into the exchange. π is not imported from outside; it is squeezed out by the closure operation itself. In the Ramanujan–Sato family, π enters through the same mechanism: the Legendre relation (Wronskian) of hypergeometric functions forces π as the measure of self-duality failure.</p>
+
+  <h3>2.2 Why ρ can only qualify π</h3>
+  <p>The ρ-proposition tells us that closure necessarily leaves a remainder (ρ ≠ ∅) and that this remainder cannot be absorbed by finite operations. But it cannot tell us why the remainder equals 3.14159… rather than some other transcendental number. Quantitative determination requires the next layer up.</p>
+
+  <h3>2.3 The Fourier self-dual fixed-point condition</h3>
+  <p>The Fourier transform of e<sup>−αx²</sup>, under the self-dual Haar measure convention, yields a unique self-dual parameter: α = π. Even without convention choice, the Gaussian integral itself requires π:</p>
+  <div class="math-formula">(∫ e^{−x²} dx)² = ∫₀^{2π} ∫₀^∞ e^{−r²} r dr dθ = π</div>
+  <p>Computing the total integral of a one-dimensional linear decay function requires promotion to two dimensions and polar coordinates — the geometry of the circle — to achieve closure. <strong>Linear space is forced to close into circular geometry; π is the measure of that forced closure.</strong></p>
+
+  <h3>2.4 The dual identity of π</h3>
+  <p>π thus has a dual identity: as a remainder, it marks the failure of closure (the discrete lattice cannot cleanly exchange with its dual); as a geometric constant, it measures the success of closure (circumference = 2πr). Both identities share a common root: the structural tension between infinite linear space and closed circular geometry.</p>
+
+  <h3>2.5 General principle</h3>
+  <p>The existence of ρ(Lₙ) can be read within Lₙ, but its quantitative determination requires Lₙ₊₁. Computing ρ(Lₙ) with Lₙ₊ₖ tools is more efficient — Ramanujan used L₃ tools (modular equations, singular values) to compute π at roughly 8 digits per term, far surpassing L₂ tools (the Leibniz series).</p>
+
+  <h2>3. The L₁→L₂ Transition: Two Remainders and One Act</h2>
+  <h3>3.1 i and π: two remainders</h3>
+  <p><em>i</em> and <em>π</em> are remainders from two facets of the same L₁→L₂ transition:</p>
+  <p><strong>π = lattice/dual-lattice facet (harmonic analysis).</strong> The discrete lattice (L₁) attempts Fourier exchange with its dual. The exchange is not clean; π is squeezed out. π is the extensional product of the closure operation — a determinate constant, computable to arbitrary precision.</p>
+  <p><strong>i = linear/planar facet (algebra).</strong> The real line (L₁, ordered, one-dimensional) attempts algebraic closure. x²+1=0 has no solution in ℝ; closure requires the two-dimensional complex plane. <em>i</em> is literally the remainder of the quotient ring ℝ[x]/⟨x²+1⟩ — among all mathematical constants, <em>i</em> has the most literal ρ-identity.</p>
+  <p>Both enter the same exponential event e<sup>iπ</sup>, but their roles differ: <em>i</em> specifies the complex direction, <em>π</em> specifies the half-period parameter.</p>
+
+  <h3>3.2 The exponential map: the act</h3>
+  <p>Strictly, the act is not the constant <em>e</em> but the exponential map x↦e<sup>x</sup>. This paper uses <em>e</em> as the normalized signature of this act.</p>
+  <p><strong>e<sup>x</sup> is the unique function satisfying f′=f with f(0)=1.</strong> Differentiation (the operation) applied to e<sup>x</sup> returns e<sup>x</sup> itself. <strong>Act equals result.</strong> The operation and its output are indistinguishable — this is exactly the formal signature of "act cannot be reduced to graph."</p>
+  <p>Without the exponential map, <em>i</em> and <em>π</em> are two static constants with no relation to each other. The exponential map t↦e<sup>it</sup> is the <strong>action</strong> that binds them — wrapping the real line (linear, infinite) onto the unit circle (compact, closed).</p>
+
+  <h3>3.3 Structural summary</h3>
+  <table class="struct-table">
+    <thead><tr><th>Role</th><th>Notation</th><th>Mathematical identity</th><th>ZFCρ correspondence</th></tr></thead>
+    <tbody>
+      <tr><td>Remainder (algebraic facet)</td><td><em>i</em></td><td>Quotient-ring remainder of ℝ[x]/⟨x²+1⟩</td><td>ρ (extensional product)</td></tr>
+      <tr><td>Remainder (harmonic-analytic facet)</td><td><em>π</em></td><td>Unique self-dual Fourier parameter</td><td>ρ (extensional product)</td></tr>
+      <tr><td>Act</td><td>x↦e<sup>x</sup></td><td>Unique solution of f′=f, f(0)=1</td><td>act (operational performance)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.4 Independence of i and π</h3>
+  <p>The definition of <em>i</em> is purely algebraic (root of x²+1=0); it requires no analysis. The definition of <em>π</em> is purely geometric (ratio of circumference to diameter); it requires no algebra. Within elementary algebra and geometry, there is no direct bridge between the two definitions. Without the exponential map, <em>i</em> and <em>π</em> are unrelated objects. The exponential map is the sole source of the relation between the two remainders.</p>
+
+  <h2>4. Euler's Formula: Structural Identity of Act Binding Remainders</h2>
+  <h3>4.1 Precise mechanism</h3>
+  <p>The exponential map t↦e<sup>it</sup> is a covering map from ℝ to S¹ with kernel 2πℤ. The short exact sequence:</p>
+  <div class="math-formula">0 → ℤ —×2π→ ℝ —e^{i(·)}→ S¹ → 1</div>
+  <p>e<sup>iπ</sup>: the exponential map runs in the orthogonal dimension opened by the algebraic remainder (<em>i</em>), traverses the half-turn distance measured by the harmonic-analytic remainder (<em>π</em>), and arrives at the antipodal point −1.</p>
+  <div class="math-formula">e^{iπ} + 1 = 0</div>
+
+  <h3>4.2 ρ re-reading</h3>
+  <div class="key-line">Euler's formula re-read: one act (the exponential map) binding two remainders to produce closure. The exponential map binds two static closure failures — line cannot become plane (i), lattice cannot cleanly dualize (π) — into one dynamic successful closure (half-rotation to the antipodal point).</div>
+  <p>This re-reading connects directly to Paper I. Paper I says: formalization reduces act to graph (extensional product). Euler's formula displays the complete structure before reduction — the act (exponential map) and its two remainders (<em>i</em>, <em>π</em>) together with the precise relation among them.</p>
+
+  <h3>4.3 Remainders are not defects</h3>
+  <p>The emergence of <em>i</em> and <em>π</em> is not a breakdown of mathematics but the generative product of a domain extending toward its natural completion. <strong>Remainders are not cracks; they are seeds of the next dimension. The act is not repair; it is growth.</strong></p>
+
+  <h3>4.4 Isomorphic patterns in mathematics</h3>
+  <p>The following three theorems are juxtaposed as instances of the pattern "local remainders composed by a global operation into a precise invariant" — not arranged as a deductive chain:</p>
+  <div class="math-formula">Residue theorem:    ∮_γ f(z) dz = 2πi Σₖ Res(f, aₖ)
+Gauss–Bonnet:       ∫_M K dA = 2π χ(M)
+Atiyah–Singer:      ind(D) = dim(ker D) − dim(coker D) = ∫_M Td(TM) ⌣ ch(E)</div>
+
+  <h2>5. Cross-Layer Remainders and Layer-Internal Remainders</h2>
+  <p><strong>Cross-layer remainders</strong>: produced by Lₙ→Lₙ₊₁ transitions. Examples: <em>i</em>, <em>π</em> (L₁→L₂). The irreducibility of cross-layer remainders is easier to prove (transcendence of π, Lindemann 1882).</p>
+  <p><strong>Layer-internal remainders</strong>: residues left when a closure operation within the same layer fails to fully close. Example: Catalan's constant G = β(2): the Dirichlet beta function at odd arguments yields clean multiples of π (self-duality fully closes), but at even arguments self-duality is insufficient, leaving new periods. G is an L₂-internal remainder. The irreducibility of layer-internal remainders is harder to prove (irrationality of G remains unproven).</p>
+  <p><em>Working conjecture:</em> The irreducibility of layer-internal remainders may be harder to establish than that of cross-layer remainders. G is the first test case.</p>
+
+  <h2>6. Structural Re-reading of Known Results: L₂→L₃</h2>
+  <h3>6.1 Two remainders and one act</h3>
+  <p><strong>Remainder 1: formal/completeness facet (the boundary of proof).</strong> Gödel's incompleteness theorem (1931): any sufficiently strong consistent formal system contains undecidable propositions. Remainder = the class of undecidable sentences.</p>
+  <p><strong>Remainder 2: linguistic/semantic facet (the boundary of expression).</strong> Tarski's undefinability theorem (1936): a consistent formal language cannot contain its own truth predicate. Remainder = the class of Σ₁ truth predicates.</p>
+  <p><strong>Act: algorithmic/computational facet.</strong> The diagonalization/universal evaluation operation (a program running its own encoding as input). Chaitin's constant Ω<sub>U</sub> (halting probability relative to a prefix-free universal machine U) is the holographic measure of this act over the entire program domain — just as <em>e</em> is the normalized signature of the exponential map, Ω<sub>U</sub> is the normalized condensation of the diagonalization operation.</p>
+
+  <h3>6.2 Collapse in Turing-degree space</h3>
+  <p>In the Turing-degree space 𝒟, both remainders and the act collapse to a single point — the first Turing jump <strong>0′</strong>:</p>
+  <div class="math-formula">[Ω_U]_T = [K]_T = [Th_{Σ₁}]_T = 0′</div>
+  <p>Here K is the halting set, Th<sub>Σ₁</sub> is the set of Gödel numbers of true Σ₁ sentences, and Ω<sub>U</sub> is Chaitin's constant. These equivalences are known results in recursion theory (Chaitin 1975, Post 1944). The contribution here is to re-read them: two remainders and one act, departing from different directions, collapse to the same boundary point in the Turing-degree quotient space.</p>
+
+  <h3>6.3 The return-to-zero mechanism: relativization</h3>
+  <p>The Turing-degree space is an upper semilattice; <strong>0′</strong> cannot be "subtracted" within L₂. The only way to return to zero is <strong>relativization</strong>: absorbing <strong>0′</strong> itself as an oracle. In the Turing-degree structure relativized to oracle <strong>0′</strong>:</p>
+  <div class="math-formula">deg^{0′}(0′) = 0</div>
+  <table class="struct-table">
+    <thead><tr><th></th><th>L₁→L₂</th><th>L₂→L₃</th></tr></thead>
+    <tbody>
+      <tr><td>Quotient space</td><td>S¹ (ℝ mod 2πℤ)</td><td>𝒟 (sets mod Turing reducibility)</td></tr>
+      <tr><td>Collapse point</td><td>−1 ∈ S¹</td><td>0′ ∈ 𝒟</td></tr>
+      <tr><td>Return-to-zero</td><td>Algebraic inverse: +1</td><td>Oracle relativization: (mod 0′)</td></tr>
+      <tr><td>Closure equation</td><td>e<sup>iπ</sup>+1=0</td><td>deg<sup>0′</sup>(0′)=0</td></tr>
+      <tr><td>Nature of return</td><td>Symmetric (algebraic cancellation)</td><td>Asymmetric (transition to higher layer)</td></tr>
+    </tbody>
+  </table>
+  <p>The return-to-zero at L₁→L₂ is symmetric. At L₂→L₃ it is asymmetric: <strong>0′</strong> cannot be subtracted within L₂ but can only be absorbed by L₃ from outside. The system is forced to transition upward, hard-coding the insurmountable wall as the floor.</p>
+
+  <h3>6.4 Remainders become axioms of the next layer</h3>
+  <div class="key-line">What a lower layer cannot close becomes the base zero of the higher layer. Development is not the elimination of remainders but the transformation of remainders into the ground of the next layer.</div>
+
+  <h2>7. Research Program: Self-Referential Generation</h2>
+  <p><em>The following does not present known mathematical results but proposes an interpretive program. The arguments are structural conjectures, not completed proofs.</em></p>
+
+  <h3>7.1 L₀→L₁: why closure requires two remainders</h3>
+  <p>L₀ is pure binary distinction: presence/absence, 0 and 1. L₀ has only one distinction; closure can fail in only one direction, producing a single remainder: <strong>2</strong> — the first object squeezed out of the distinction between 0 and 1.</p>
+  <p>L₀→L₁ has an act: the <strong>successor operation</strong> S(n)=n∪{n}. But L₀→L₁ <strong>has no closure equation</strong>. The successor can only push forward: 0→1→2→3→⋯, never returning. <strong>Closure requires two independent failure directions so that the act can bind them into a loop returning to zero. With only one direction, there is nothing to cancel against. A single remainder can only unfold, not close. The non-closability of a single remainder is the source of infinity.</strong></p>
+
+  <h3>7.2 Self-referential generation: candidate definition for the unified act</h3>
+  <p>The core research program proposed by this paper: the act driving all layer transitions may be the same class of operation — <strong>self-referential generation</strong>: an operation that incorporates itself into its own output.</p>
+  <table class="struct-table">
+    <thead><tr><th>Layer</th><th>Guise</th><th>Signature</th></tr></thead>
+    <tbody>
+      <tr><td>L₀→L₁</td><td>Successor S(n)=n∪{n}</td><td>Incorporates self as element</td></tr>
+      <tr><td>L₁→L₂</td><td>Exponential map (f′=f)</td><td>Operation outputs itself</td></tr>
+      <tr><td>L₂→L₃</td><td>Diagonalization (Ω as condensation)</td><td>Program judges itself</td></tr>
+      <tr><td>L₃→L₄</td><td>Time (causal succession)</td><td>Each moment contains the previous (irreversible)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.3 The full picture</h3>
+  <table class="struct-table">
+    <thead><tr><th></th><th>L₀→L₁</th><th>L₁→L₂</th><th>L₂→L₃</th><th>L₃→L₄</th></tr></thead>
+    <tbody>
+      <tr><td>Act</td><td>Successor S</td><td>Exponential map</td><td>Diagonalization (Ω)</td><td>Time</td></tr>
+      <tr><td>Remainders</td><td>1</td><td>2</td><td>2</td><td>2 (predicted)</td></tr>
+      <tr><td>Remainder 1</td><td>2 (distinction)</td><td>i (algebra)</td><td>Gödel sentence</td><td>? (observation)</td></tr>
+      <tr><td>Remainder 2</td><td>—</td><td>π (harmonic analysis)</td><td>Tarski Tr (semantics)</td><td>? (spacetime geometry)</td></tr>
+      <tr><td>Result</td><td>Unfolding (∞)</td><td>e<sup>iπ</sup>+1=0</td><td>deg<sup>0′</sup>(0′)=0</td><td>Closure (predicted)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>8. Division of Labor</h2>
+  <h3>Completed in this paper</h3>
+  <ol>
+    <li>Established that the ρ-proposition is qualitative; quantitative determination of the remainder requires a higher layer.</li>
+    <li>Presented π as the first complete instance of remainder quantification.</li>
+    <li>Repositioned the exponential map (e) as "act," distinguished from i and π (remainders). f′=f is the formal expression of act-irreducible-to-graph.</li>
+    <li>Confirmed that i and π, within the elementary framework, are unrelated without the exponential map — the act is the sole source of the relation.</li>
+    <li>Re-read Euler's formula as the structural identity "one act binding two remainders to produce closure."</li>
+    <li>Juxtaposed the residue theorem, Gauss–Bonnet, and Atiyah–Singer as isomorphic patterns.</li>
+    <li>Distinguished cross-layer from layer-internal remainders; proposed the working conjecture that layer-internal remainders may be harder to prove irreducible.</li>
+    <li>Identified the L₂→L₃ transition's "two remainders + one act" structure; re-read the Turing-degree collapse and relativization return-to-zero.</li>
+    <li>Through analysis of L₀→L₁ (single remainder, only unfolding), proposed the structural argument that closure requires exactly two remainders.</li>
+  </ol>
+  <h3>Research program proposed</h3>
+  <ol start="10">
+    <li><strong>Core research program:</strong> The successor, the exponential map, the diagonalization operation, and time may be interpretable as unfoldings of the same class of self-referential generation across layers. For this to become a rigorous mathematical proposition, additional formalization is required.</li>
+    <li>Prediction: the L₃→L₄ transition involves an act (time) binding two remainders to produce closure; the closure equation requires the perspective of L₄ (life).</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho.html">ZFCρ Paper I: On the Remainder of Choice: A Meta-Theoretic Thesis on ZFC</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>ZFCρ第一篇（DOI: 10.5281/zenodo.18914682）确立了余项命题：对任意形式化操作C作用于任意域U，ρ(C,U)≠∅。余项不可消除，是形式化的结构性痕迹。但ρ命题是定性的——它保证余项存在，却不告诉我们余项是什么。本文追问余项的定量身份从哪里来。</p>
+    <p>第一，ρ的存在性可以在它所属的层内读出，但其定量刻画需要高一层的结构。π是这个原则的第一个完整样例。第二，本文提出一种解释性主张：在欧拉公式 e<sup>iπ</sup>+1=0 中，i 和 π 是同一个L₁→L₂跃迁的两个面向的余项——代数（线性/平面）和调和分析（格/对偶格）。指数映射 x↦e<sup>x</sup> 是行为：在 f′=f（f(0)=1）的唯一解中，行为与其结果重合为同一个函数。欧拉公式因而可被重读为：<strong>一个行为（指数映射）作用于两个余项（i, π），产生闭合（归零）。</strong>第三，本文提出L₂→L₃跃迁同样具有"两个余项 + 一个行为"的结构：两个余项（哥德尔不完备/Tarski不可定义）和一个行为（对角化，Ω为其凝结），均坍缩为第一图灵跳跃0′。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <div class="note-box">
+    <strong>层级标记。</strong>L₀：二元区分（有/无）。L₁：离散/可数结构（整数格、实数轴的有序结构）。L₂：连续/形式化结构（复平面、L²空间、形式系统的内部）。L₃：语义/元层观察（模型论、从外部看形式系统的能力）。L₄：因果/物理时空。每一层比上一层多一种不可还原的闭合能力。在SAE框架中，这些层被称为DD（developmental dimension，发展维度）。
+  </div>
+
+  <h2>1. ρ命题回顾与边界</h2>
+  <p>第一篇论文确立了以下结论：</p>
+  <div class="thesis-box">
+    <p><strong>ρ命题。</strong>对于任何在ZFC内部外延式形式化的域，操作的形式化在结构上将操作性行为还原为其外延输出。仅仅外延式地丰富形式语言不能完全吸收那个行为，只能重新安置余项。</p>
+  </div>
+  <p>ρ命题区分了两样东西：<strong>余项</strong>（外延闭合的产物，被搁置的结构性痕迹）和<strong>行为</strong>（使得闭合得以发生的操作性施行，不被图所穷尽）。第一篇论文的回退论证表明行为不可被还原为图：每一次试图形式化行为的努力都产生一个新的余项。</p>
+  <p>但ρ命题有一个明确的边界：<strong>它是定性的。</strong>ρ(C,U)≠∅说余项存在。它不说余项等于什么，不说行为长什么样，更不说余项和行为之间有什么精确关系。</p>
+
+  <h2>2. π：余项定量化的第一个完整样例</h2>
+  <h3>2.1 π从哪来</h3>
+  <p>考虑最简单的离散域：整数格 ℤ<sup>d</sup>。对这个L₁对象执行闭合操作——Poisson求和——把格与对偶格交换。Gaussian e<sup>−πx²</sup> 的Fourier自对偶性在交换过程中把π带进来。π不是从外部加入的，是闭合操作本身挤出来的不可还原量。</p>
+  <div class="math-formula">θ₃(e^{−πt}) = t^{−1/2} · θ₃(e^{−π/t})</div>
+
+  <h3>2.2 ρ为什么只能给π定性</h3>
+  <p>ρ命题告诉我们：闭合必然留下余项（ρ≠∅），余项不可被有限操作吸收。但它不能告诉我们余项等于3.14159...而非其他超越数。定量刻画需要高一层的结构。</p>
+
+  <h3>2.3 L₂的输入：Fourier自对偶不动点条件</h3>
+  <p>计算一维线性衰减函数的全实轴积分，必须升维到二维并引入极坐标——即引入圆的几何——才能闭合：</p>
+  <div class="math-formula">(∫ e^{−x²} dx)² = ∫₀^{2π} ∫₀^∞ e^{−r²} r dr dθ = π</div>
+  <p><strong>线性空间被迫闭合到圆形几何，π就是这个强制闭合的度量。</strong></p>
+
+  <h3>2.4 π的双重身份</h3>
+  <p>π因此具有双重身份：作为余项，它标记闭合的失败；作为几何常数，它度量闭合的成功。Gaussian积分的极坐标证明揭示了两个身份的共同根源：无穷线性空间与闭合圆形几何之间的结构性张力。</p>
+
+  <h3>2.5 一般原则</h3>
+  <p>ρ(Lₙ)的存在性可以在Lₙ内部读出，但其定量刻画需要Lₙ₊₁的结构。用Lₙ₊ₖ的工具去计算ρ(Lₙ)，效率更高——Ramanujan用L₃工具（模方程、奇异值）算π，每项8位数字，远超L₂工具（莱布尼茨级数）。</p>
+
+  <h2>3. L₁→L₂跃迁：两个余项与一个行为</h2>
+  <h3>3.1 i 和 π：两个余项</h3>
+  <p><strong>π = 格/对偶格面向（调和分析）。</strong>离散格（L₁）试图通过Fourier变换与对偶格交换。交换不干净，挤出π。π是闭合操作的外延产物——一个确定的常数，可以被计算到任意精度。</p>
+  <p><strong>i = 线性/平面面向（代数）。</strong>实数轴（L₁，有序、线性）试图代数闭合。x²+1=0 在一维实轴上无解，需要跳到二维复平面。i 是商环 ℝ[x]/⟨x²+1⟩ 的字面余项——在所有数学常数中，i 的ρ身份是最字面、最不需要解释的。</p>
+
+  <h3>3.2 指数映射：行为</h3>
+  <p>严格说，行为不是常数 e 本身，而是指数映射 x↦e<sup>x</sup>。本文用 e 标记这一行为的规范化签名。</p>
+  <p><strong>e<sup>x</sup> 是唯一满足 f′=f（f(0)=1）的函数。</strong>这意味着：微分（操作）作用于 e<sup>x</sup>，得到的是 e<sup>x</sup> 本身。<strong>行为等于结果。</strong>操作和它的输出不可区分——这正是"行为不可被还原为图"的形式化签名。</p>
+  <p>没有指数映射，i 和 π 只是两个静态常数，之间没有关系。指数映射 t↦e<sup>it</sup> 是让它们发生关系的<strong>动作</strong>——把实数轴（线性、无穷）卷到单位圆（紧致、闭合）。</p>
+
+  <h3>3.3 结构总结</h3>
+  <table class="struct-table">
+    <thead><tr><th>角色</th><th>记号</th><th>数学身份</th><th>ZFCρ对应</th></tr></thead>
+    <tbody>
+      <tr><td>余项（代数面向）</td><td>i</td><td>ℝ[x]/⟨x²+1⟩ 的商环余项</td><td>ρ（外延产物）</td></tr>
+      <tr><td>余项（调和分析面向）</td><td>π</td><td>Fourier自对偶不动点唯一常数</td><td>ρ（外延产物）</td></tr>
+      <tr><td>行为</td><td>x↦e<sup>x</sup></td><td>f′=f 唯一解（行为=结果）</td><td>act（操作性施行）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.4 i 和 π 的独立性</h3>
+  <p>i 的定义是纯代数的（x²+1=0 的解），不需要分析。π 的定义是纯几何的（圆周与直径之比），不需要代数。在基本代数与初等几何的范畴内，两个定义之间没有直接桥梁。不经过指数映射，i 和 π 是两个互不相干的数学对象。<strong>指数映射是使另外两个余项发生关系的唯一原因。</strong></p>
+
+  <h2>4. 欧拉公式：行为绑定余项的结构恒等式</h2>
+  <h3>4.1 精确机制</h3>
+  <p>指数映射 t↦e<sup>it</sup> 是从 ℝ 到 S¹ 的覆盖映射，核是 2πℤ。正合列：</p>
+  <div class="math-formula">0 → ℤ —×2π→ ℝ —e^{i(·)}→ S¹ → 1</div>
+  <p>e<sup>iπ</sup> 做的事情是：指数映射在代数余项（i）打开的正交维度中运行，走过调和分析余项（π）度量的半圈距离，到达起点的对径点 −1。</p>
+  <div class="math-formula">e^{iπ} + 1 = 0</div>
+
+  <h3>4.2 ρ重读</h3>
+  <div class="key-line">欧拉公式可被重读为：一个行为（指数映射）作用于两个余项，产生闭合。指数映射把两个静态的闭合失败——线不能变面（i）、格不能干净对偶（π）——绑定为一次动态的成功闭合（半圈旋转到对径点），与单位元抵消为零。</div>
+
+  <h3>4.3 余项不是缺陷</h3>
+  <p>i 和 π 的产生不是数学的崩溃，而是域向其自然完成形式扩展时的生成性产物。<strong>余项不是裂缝，是生成下一个维度的种子。行为不是修补，是生长。</strong></p>
+
+  <h2>5. 跨层余项与层内余项</h2>
+  <p><strong>跨层余项</strong>：Lₙ→Lₙ₊₁跃迁产生的余项。如 i, π（L₁→L₂）。跨层余项的不可还原性更容易证明（π的超越性，Lindemann 1882）。</p>
+  <p><strong>层内余项</strong>：同一层闭合操作未能完全闭合时留下的残余。如Catalan常数 G = β(2)。G是L₂内部的余项，没有跨出形式连续统的边界。层内余项的不可还原性更难证明（G的无理性至今未证）。</p>
+  <p><em>工作性猜想：</em>层内余项的不可还原性证明可能比跨层余项更棘手。Catalan常数G只是这一猜想的首个测试点。</p>
+
+  <h2>6. 已知数学结果的结构重读：L₂→L₃</h2>
+  <h3>6.1 两个余项与一个行为</h3>
+  <p><strong>余项一：形式/完备面向（证明的边界）。</strong>哥德尔不完备定理（1931）：任何足够强的一致形式系统包含在其内部不可判定的命题。余项 = 不可判定命题类。</p>
+  <p><strong>余项二：语言/语义面向（表达的边界）。</strong>Tarski不可定义性定理（1936）：一致的形式语言不能包含自身的真值谓词。余项 = Σ₁真值谓词类。</p>
+  <p><strong>行为：算法/计算面向。</strong>对角化/通用求值操作（程序将自身编码作为输入并运行）。Chaitin常数 Ω<sub>U</sub>（相对于某个prefix-free通用机 U 的停机概率）是这一行为在整个程序域上的全息测度——正如 e 是指数映射的规范化签名，Ω<sub>U</sub> 是对角化操作的规范化凝结。</p>
+
+  <h3>6.2 图灵度空间中的坍缩</h3>
+  <p>在图灵度空间 𝒟 中，两个余项和行为都坍缩到同一个点——第一图灵跳跃 <strong>0′</strong>：</p>
+  <div class="math-formula">[Ω_U]_T = [K]_T = [Th_{Σ₁}]_T = 0′</div>
+  <p>这三个图灵度等价是递归论的已知结果（Chaitin 1975, Post 1944）。本文的贡献是重读：两个余项和一个行为从不同方向出发，在图灵度商空间中坍缩为同一个边界点。</p>
+
+  <h3>6.3 归零机制：相对化</h3>
+  <p>图灵度空间是上半格，0′ 不能在L₂内部被"减去"。归零的唯一方式是<strong>相对化</strong>：把 0′ 本身作为预言机吞入系统：</p>
+  <div class="math-formula">deg^{0′}(0′) = 0</div>
+  <p>L₁→L₂的归零是对称的——−1 和 +1 是对等的代数对象。L₂→L₃的归零是不对称的——0′ 不能在L₂内部被减去，只能被L₃从外部吞噬。系统被迫跃迁到更高层，把不可逾越的墙硬编码为地板。</p>
+
+  <h3>6.4 余项是下一层的公理</h3>
+  <div class="key-line">低维系统闭合不了的东西，成为高维系统的基底零点。发展不是消除余项，而是把余项变成下一层的地面。</div>
+
+  <h2>7. 研究纲领性猜想：从自指生成到层间行为的统一</h2>
+  <p><em>下文不再陈述已知数学结果，而提出一条解释性纲领。以下论述是结构猜想，而非已完成证明。</em></p>
+
+  <h3>7.1 L₀→L₁：为什么闭合需要两个余项</h3>
+  <p>L₀是纯粹的二元区分：有/无，0和1。L₀只有一个区分，因此闭合操作只能沿一个方向失败，只能产生<strong>一个余项：2</strong>——第一个从"有/无"的区分中被挤出来的东西。</p>
+  <p>L₀→L₁有行为：<strong>后继操作</strong> S(n)=n∪{n}。但L₀→L₁<strong>没有闭合方程</strong>。后继只能向前推：0→1→2→3→⋯，永远不回头。<strong>闭合需要两个独立的失败方向，行为才能把它们绑成一个环回到零。只有一个方向，没有东西可以跟它对消。一个余项只能展开，不能闭合。单一余项的不可闭合性就是无穷的来源。</strong></p>
+
+  <h3>7.2 自指生成：统一行为的候选定义</h3>
+  <p>本文提出的核心研究纲领：驱动所有层间跃迁的可能是同一类行为——<strong>自指生成（self-referential generation）</strong>：操作将自身纳入自身的输出。</p>
+  <table class="struct-table">
+    <thead><tr><th>层</th><th>自指生成的面目</th><th>签名</th></tr></thead>
+    <tbody>
+      <tr><td>L₀→L₁</td><td>后继 S(n)=n∪{n}</td><td>把自身包含为元素</td></tr>
+      <tr><td>L₁→L₂</td><td>指数映射（f′=f）</td><td>操作输出自身</td></tr>
+      <tr><td>L₂→L₃</td><td>对角化（Ω为其凝结）</td><td>程序判定自身</td></tr>
+      <tr><td>L₃→L₄</td><td>时间（因果后继）</td><td>时刻包含前一时刻（不可逆）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.3 纲领的完整图景</h3>
+  <table class="struct-table">
+    <thead><tr><th></th><th>L₀→L₁</th><th>L₁→L₂</th><th>L₂→L₃</th><th>L₃→L₄</th></tr></thead>
+    <tbody>
+      <tr><td>行为</td><td>后继 S</td><td>指数映射</td><td>对角化（Ω）</td><td>时间</td></tr>
+      <tr><td>余项数</td><td>1</td><td>2</td><td>2</td><td>2（预测）</td></tr>
+      <tr><td>余项一</td><td>2（区分）</td><td>i（代数）</td><td>哥德尔句（证明）</td><td>？（观测）</td></tr>
+      <tr><td>余项二</td><td>—</td><td>π（调和分析）</td><td>Tarski Tr（语义）</td><td>？（时空几何）</td></tr>
+      <tr><td>结果</td><td>展开（∞）</td><td>e<sup>iπ</sup>+1=0</td><td>deg<sup>0′</sup>(0′)=0</td><td>闭合（预测）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>8. 分工</h2>
+  <h3>本文完成</h3>
+  <ol>
+    <li>确立ρ命题是定性的，余项的定量刻画需要高一层结构。</li>
+    <li>给出π作为余项定量化的第一个完整样例。</li>
+    <li>将指数映射（以 e 标记）定位为"行为"，与 i、π（余项）区分。f′=f 是行为不可还原为图的形式化表达。</li>
+    <li>确认 i 和 π 在初等框架内不经过指数映射互不相干——行为是余项之间关系的唯一来源。</li>
+    <li>重读欧拉公式为"一个行为绑定两个余项产生闭合"的结构恒等式。</li>
+    <li>并置留数定理、Gauss-Bonnet、Atiyah-Singer为同构模式（并置，非递推）。</li>
+    <li>区分跨层余项与层内余项，提出层内余项可能更难证明不可还原性的工作性猜想。</li>
+    <li>识别L₂→L₃跃迁的"两个余项 + 一个行为"结构，重读其在图灵度空间中的坍缩与相对化归零。</li>
+    <li>通过分析L₀→L₁（只有一个余项，只能展开不能闭合），提出闭合需要两个余项的结构性论证。</li>
+  </ol>
+  <h3>本文提出的研究纲领</h3>
+  <ol start="10">
+    <li><strong>核心研究纲领：</strong>后继、指数映射、对角化操作、时间，可以被解释为同一类自指生成行为在不同层的展开。这一解释若要成为严格数学命题，仍需额外的形式化工作。</li>
+    <li>预测L₃→L₄跃迁中，行为（时间）绑定两个余项产生闭合，闭合方程需要L₄（生命）视角。</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho.html">ZFCρ第一篇：论选择的余项：关于ZFC的一个元理论命题</a></p>
+    <p>ZFCρ系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18927658" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'The Quantitative Identity of the Remainder: From ρ≠∅ to Euler\'s Formula', zh: '余项的定量身份：从ρ≠∅到欧拉公式' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
