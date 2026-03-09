@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Find Remainders with AI — SAE Methodology Paper III — Han Qin</title>
+  <meta name="description" content="SAE Methodology Paper III: Sentence-forms, mirrors, and the mathematics of never stopping. The sentence-form level at which you address AI determines the ceiling of AI's response. ZFCρ guarantees ρ→ρ' is necessary — you can always continue chiseling.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, chisel-construct cycle, methodology, AI collaboration, sentence-form, remainder, dimensional sentence-form theory, ZFCrho, 凿构循环, 余项, 句式, 方法论">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Find Remainders with AI — SAE Methodology Paper III — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/methodology3.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "How to Find Remainders with AI",
+    "alternativeHeadline": "怎么用AI找余项",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/methodology3.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18929390"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Methodology"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "abstract": "After human-human mutual chiseling, when a person returns to solitary thinking, AI can amplify construct capacity while the person focuses on chiseling. The sentence-form level at which you address AI determines the ceiling of AI's response — the sentence-form/response isomorphism. ZFCρ proves mathematically that remainder always exists and ρ→ρ' is necessary, guaranteeing that AI-assisted remainder discovery can never reach a terminal point.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/methodology3.html">
+  <meta name="citation_title" content="How to Find Remainders with AI">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.18929390">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .key-line { background: #f8fff8; border-left: 3px solid #2c8c2c; padding: 0.7rem 1.1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; font-weight: 500; }
+    .kill-q { background: #fff8f0; border: 1px solid #e8c89a; border-radius: 4px; padding: 0.8rem 1.2rem; margin: 1.2rem 0; font-size: 1rem; }
+    .kill-q strong { color: #8c4c00; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.35rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.35rem; }
+    .level-block { border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem 1.25rem; margin: 1.2rem 0; background: #fafafa; }
+    .level-block .level-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .level-block .level-form { font-size: 1rem; font-style: italic; color: #222; margin-bottom: 0.5rem; border-bottom: 1px solid #e8e8e8; padding-bottom: 0.5rem; }
+    .level-block p { margin: 0.35rem 0; font-size: 0.93rem; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .record-template { background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: 'Courier New', Courier, monospace; font-size: 0.88rem; line-height: 1.8; }
+    /* Lang tabs */
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Methodology Paper III · Zenodo 18929390</div>
+    <h1 id="paper-title">How to Find Remainders with AI</h1>
+    <div class="paper-subtitle-line" id="paper-subtitle" style="font-size:1rem;color:#666;margin-top:0.3rem;font-style:italic;">Sentence-Forms, Mirrors, and the Mathematics of Never Stopping</div>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18929390" target="_blank" rel="noopener">10.5281/zenodo.18929390</a> &nbsp;·&nbsp; CC BY 4.0 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18929390" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>The Methodological Overview (DOI: 10.5281/zenodo.18842450) established the chisel-construct cycle as an executable logical operating system. Methodology Paper II (DOI: 10.5281/zenodo.18918195) drew the epistemological map: four methods in a 2×2 structure, four structural remainders, the chisel-construct cycle as traversal movement. But neither addresses a practical question: after human-human mutual chiseling has done its work, how does a person use AI to find remainders more efficiently during their own thinking?</p>
+    <p>This paper answers that question. Human-human mutual chiseling is the strongest form of chiseling, but it requires bilateral non-doubt — a structural condition that is scarce, non-reproducible, and unteachable. After mutual chiseling, AI can amplify construct capacity while the person focuses on chiseling. AI is not a substitute for human negation; it is a construct library that frees the human to chisel.</p>
+    <p>The paper's core theorem draws on the Dimensional Sentence-Form Theory (DOI: 10.5281/zenodo.18894567): different DD levels have different sentence-forms with different coercive sources. <strong>The sentence-form level at which you address AI determines the ceiling of AI's response.</strong> This is the sentence-form / response isomorphism. Combined with ZFCρ (DOI: 10.5281/zenodo.18914682) — which proves mathematically that remainder always exists and every remainder necessarily triggers the next formalization (ρ → ρ') — this paper establishes that AI-assisted remainder discovery is both structurally constrained (by sentence-form level) and mathematically guaranteed to never terminate (by ρ conservation).</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>Chapter 1. The Problem: After Mutual Chiseling, What Then?</h2>
+
+  <h3>1.1 Human-Human Mutual Chiseling: The Strongest and the Scarcest</h3>
+  <p>Human-human mutual chiseling is the prototype of chiseling. Two living negativities collide: you chisel my construct, I chisel yours. But mutual chiseling requires <strong>bilateral non-doubt</strong>. Non-doubt does not mean believing the other is correct. It means removing the other's motive from your attention: I allow this chisel to land on my structure, not on my personality. The moment I suspect your motive — the chiseling stops.</p>
+  <p>Bilateral non-doubt is scarce. Most human mutual chiseling relationships do not survive more than a few rounds. A relationship of sustained mutual chiseling is, if you encounter one in a lifetime, luck. It cannot be replicated, mass-produced, or taught. You cannot instruct someone: "Go find a person with whom bilateral non-doubt holds."</p>
+
+  <h3>1.2 After Mutual Chiseling: Solitary Thinking with AI</h3>
+  <p>What mutual chiseling gives you is direction: it pushes you toward remainders you did not see. But the person who was chiseled still has to go home and think — develop the remainder, test it, build new constructs around it, find the next remainder.</p>
+  <p>This solitary thinking phase is where AI enters. Not as a replacement for mutual chiseling, but as an amplifier of construct capacity. AI provides the largest possible construct library — everything humanity has written, compressed into a system that can retrieve and recombine at the speed of conversation. With AI handling the construct side, the person is freed to focus on what AI cannot do: <em>chiseling</em>.</p>
+  <div class="key-line">The structure of human-AI collaboration: person provides negation, AI provides constructs. Person decides direction, AI provides the mirror. Person chisels, AI reflects.</div>
+
+  <h2>Chapter 2. The Structure of Human-AI Collaboration</h2>
+
+  <h3>2.1 AI Amplifies Constructs, Not Chiseling</h3>
+  <p>When you think alone, you do two things simultaneously: you build constructs (organize ideas, recall knowledge, make connections) and you chisel constructs (question assumptions, test boundaries, find what does not hold). Both take cognitive bandwidth.</p>
+  <p>AI takes over the construct side. You say "give me the strongest argument for X" and AI assembles it. You say "what does the literature say about Y" and AI retrieves it. With the construct side outsourced to AI, your cognitive bandwidth is freed for chiseling. You do not have to hold the entire construct in your head while simultaneously attacking it. AI holds the construct; you attack it.</p>
+  <p>This is the structural reason why human-AI collaboration improves remainder discovery: not because AI can chisel (it cannot — it has no negation), but because AI frees your attention for chiseling by handling the construct burden.</p>
+
+  <h3>2.2 Person Provides Direction, AI Provides the Mirror</h3>
+  <p>AI is a mirror, not a guide. When you work with multiple AI models, you are not letting them chisel each other. You are taking one model's output, digesting it yourself, identifying where something was excluded, and bringing that exclusion point to another model. The person walks between mirrors.</p>
+  <p>The risk: when the person stops directing and starts merely relaying — passing AI-A's output to AI-B without first digesting it — the collaboration degrades into high-dimensional echo chambers. The guardrail: at every step, the person must be able to state in one sentence what they found and what they are still looking for.</p>
+
+  <h3>2.3 When to Leave and Come Back</h3>
+  <p>When chiseling capacity is temporarily exhausted, the correct move is to leave. Not to keep asking AI more questions — that produces diminishing returns. Instead: leave the conversation. Walk. Exercise. Meditate. Sleep. Or — most powerfully — find someone to mutually chisel with.</p>
+  <p>The cycle: <strong>mutual chiseling (direction) → solitary thinking with AI (execution) → rest / body / mutual chiseling (replenishment) → return to AI (continued execution).</strong> AI is the workspace, not the source of energy.</p>
+
+  <h2>Chapter 3. Core Theorem: Sentence-Form Determines Response Ceiling</h2>
+
+  <h3>3.1 Six Sentence-Form Levels</h3>
+
+  <div class="level-block">
+    <div class="level-tag">1DD–4DD · Law of Deduction</div>
+    <div class="level-form">"A, therefore B."</div>
+    <p><strong>Coercive source:</strong> causal or structural necessity. No subject, no desire, no choice.</p>
+    <p><strong>AI ceiling:</strong> logical implication. Useful for checking deductive consistency. Will not find remainders above 4DD.</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">5DD–12DD · Instrumental Hypothetical Imperative</div>
+    <div class="level-form">"If one wants A, then do B."</div>
+    <p><strong>Coercive source:</strong> means-end rationality. There is desire and purpose-driven action, but no self-aware "I."</p>
+    <p><strong>AI ceiling:</strong> instrumental advice. Will give you efficient means, but will not question your ends. The goal-structure is taken as given.</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">13DD · Self-Aware Hypothetical Imperative</div>
+    <div class="level-form">"I want to do A, therefore I do B."</div>
+    <p><strong>Coercive source:</strong> self-reference — "I" becomes the source of choice.</p>
+    <p><strong>AI ceiling:</strong> engagement with your specific situation rather than generic advice. But AI still will not question your "want."</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">14DD · Teleological Hypothetical Imperative</div>
+    <div class="level-form">"My purpose is A, therefore I do B."</div>
+    <p><strong>Coercive source:</strong> purpose-anchoring. Purpose no longer drifts; B follows internally from A.</p>
+    <p><strong>AI ceiling:</strong> evaluation of whether B actually serves A. AI begins to push back — "if your purpose is A, have you considered C?" This is where AI becomes most useful as a construct-provider.</p>
+    <p><strong>Remainder exposed:</strong> whether A is truly your purpose, or whether A is itself a construct that needs chiseling.</p>
+  </div>
+
+  <div class="kill-q"><strong>The killer question lives at 14DD–15DD:</strong><br>"My purpose is X, so I want to do Y — <strong>what must I unavoidably take into account?</strong>" The "unavoidably" (不得不) is structurally a 15DD word inserted into a 14DD frame. It pulls the response toward constraint-awareness.</div>
+
+  <div class="level-block">
+    <div class="level-tag">15DD · Absolute Categorical Imperative</div>
+    <div class="level-form">"The other's purpose is A, therefore I cannot not do B."</div>
+    <p><strong>Coercive source:</strong> the other's purpose entering my constraint conditions. Two qualitative shifts: purpose is no longer "mine" but "the other's," and modality shifts from "therefore" to "cannot not."</p>
+    <p><strong>AI ceiling:</strong> structural constraints arising from the other's existence as a subject. AI's response is forced to include obligations that 14DD questioning would miss.</p>
+    <p><strong>Operational example:</strong> "My users need X, my investors need Y, regulators require Z — given these stakeholders' purposes, what can I not avoid addressing?" (15DD). The response shifts from optimization to structural constraint mapping.</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">16DD · Cooperative Categorical Imperative</div>
+    <div class="level-form">"I aim for A, the other aims for B, we cannot not do C."</div>
+    <p><strong>Coercive source:</strong> the encounter of multiple subjects' purposes. C does not belong to A or B; it is what the tension between them forces into existence.</p>
+    <p><strong>Caveat:</strong> The C that AI produces under 16DD framing is a <em>hypothesis</em> of C, not C itself. Genuine 16DD emergence requires two real subjects colliding in reality. AI gives you a candidate construct for C; it must be tested through actual collision between real stakeholders.</p>
+  </div>
+
+  <h3>3.2 The Sentence-Form / Response Isomorphism</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem (working version).</strong> The sentence-form level at which you frame a question to AI determines the dominant structure of AI's response, which is typically constrained to that level and below. Higher-level remainders cannot be stably and reproducibly extracted from lower-level framing.</p>
+  </div>
+  <p>This is not a claim about AI's capability. A frontier LLM has been trained on text from all DD levels — it has "seen" 15DD content. The claim is about the structure of the interaction: a 12DD question activates instrumental means-end patterns; a 14DD question activates purpose-constraint patterns; a 15DD question activates structural-obligation patterns. The dominant patterns are determined by the sentence-form of the question, not by AI's "understanding."</p>
+
+  <h3>3.3 The Mathematical Guarantee: ρ → ρ' Is Necessary</h3>
+  <p>ZFCρ (DOI: 10.5281/zenodo.18914682) proves three structural laws:</p>
+  <ul>
+    <li><strong>First Law (ρ ≠ ∅): Remainder is never empty.</strong> You cannot chisel your way to a construct with zero remainder. This is a mathematical theorem, not an empirical observation.</li>
+    <li><strong>Bridge Lemma: Different formalizations produce different remainders.</strong> When you change your sentence-form (change C), you get a different remainder. This is why switching between DD levels is productive — each level exposes a different remainder.</li>
+    <li><strong>Second Law: Remainder has direction.</strong> The specificity of ρₙ constrains the range of the next available formalization. Not every next step is available; only those that respond to the current remainder.</li>
+    <li><strong>Third Law (F(ρₙ) ≠ ∅): Remainder always triggers the next step.</strong> ρ → ρ' is necessary, not contingent. You can always continue.</li>
+  </ul>
+  <p>Together: a never-terminating, directed, unavoidable sequence of remainder discovery. When you feel you have "run out" of remainders, ZFCρ says: you have not. You have run out of your current capacity to see remainders at your current sentence-form level. Change the level, and new remainders appear.</p>
+
+  <h3>3.4 Two Layers of "For Now"</h3>
+  <p><strong>Epistemological for now:</strong> The remainder is relative to a specific sentence-form level. Change the level, and the remainder changes (Bridge Lemma). What you could not see at 12DD may become visible at 14DD. This layer of "for now" is genuinely temporary — it waits to be resolved by switching levels.</p>
+  <p><strong>Ontological for now:</strong> Even after switching levels, the new level has its own remainder. You can eliminate a specific ρ by changing C, but you cannot eliminate the existence of ρ. This layer of "for now" legitimately and permanently exists.</p>
+  <div class="key-line">Core sentence: We cannot help not knowing — just for now. (cannot not · not knowing · just for now)</div>
+
+  <h2>Chapter 4. Subject-Condition: Self-Directed Non-Doubt</h2>
+
+  <h3>4.1 Self-Directed Non-Doubt as Methodological Premise</h3>
+  <p>The key variable in human-AI collaboration is not AI's capability. It is the person's honesty. Are you willing to hand AI your genuine uncertainty — the place where you truly do not know? Or do you only hand AI what you already have an answer for?</p>
+  <p>Self-directed non-doubt means: I do not doubt my motive. I am here to chisel, not to seek comfort. I will hand AI my genuine uncertainty — the place where my construct is weakest, where looking hurts.</p>
+  <p><strong>Diagnostic:</strong> after a session with AI, check whether anything you believed before the session has been disturbed. If everything you believed is still intact, you were not chiseling. You were decorating.</p>
+
+  <h3>4.2 Self-Directed Non-Doubt May Be Harder Than Bilateral Non-Doubt</h3>
+  <p>Bilateral non-doubt is hard because you have to trust another person's motive. But at least the other person's chiseling comes from outside — you cannot control it. Self-directed non-doubt is harder because you are both the chiseler and the one being chiseled. You have to push yourself toward your own weak points. Deceiving others is hard; deceiving yourself is easy.</p>
+
+  <h3>4.3 Ignorance and Arrogance in Human-AI Collaboration</h3>
+  <p><strong>Ignorance</strong> = not treating the current sentence-form level as the only level. You got a 12DD answer; ignorance means you know there are higher levels and you are willing to re-ask at 14DD or 15DD.</p>
+  <p><strong>Arrogance</strong> = not being co-opted by AI's fluency into believing the construct is complete. AI produces polished, comprehensive-sounding constructs. Arrogance means: you do not believe it is done — because you know, structurally, mathematically (ZFCρ First Law), that remainder exists.</p>
+
+  <h2>Chapter 5. Application Rays: Sentence-Forms in Practice</h2>
+
+  <h3>5.6 Multi-Model Workflow</h3>
+  <ol>
+    <li>Ask AI-A a 14DD question. AI-A produces a purpose-anchored construct.</li>
+    <li>You identify where the construct seems to be excluding something. <em>(If you cannot identify an exclusion, stop and chisel your own inability to see one.)</em></li>
+    <li>Bring the exclusion point to AI-B, framed at 15DD: "AI-A addressed my purpose but excluded stakeholder X's needs. Given X's purpose, what can I not avoid?"</li>
+    <li>Bring AI-B's structural constraints back to AI-A: "If you must accommodate these constraints, which of your original premises do you have to sacrifice?"</li>
+  </ol>
+
+  <h3>5.7 Closure: Structured Not-Knowing</h3>
+  <p>Chiseling with AI cannot continue indefinitely — not because remainder runs out, but because of one of two situations: (a) the person's chiseling capacity is temporarily exhausted, or (b) the problem's construct exceeds AI's total construct library. The responses are different: when the person hits a boundary, rest and return; when AI hits a boundary, switch to a different AI or find a person.</p>
+  <div class="kill-q"><strong>Operational closure sentence-form:</strong><br>"[My purpose is X] — what else do you think I still cannot not do? <strong>If you have no further 'cannot not,' say that you have reached structured not-knowing.</strong>"</div>
+  <p>This shifts the closure judgment from subjective feeling ("I think that is enough") to a signal in the interaction structure: as long as AI is still producing "cannot not," closure has not been reached.</p>
+  <div class="record-template">Minimal record template:
+• What I do not know: ______
+• Directions I have tried: ______
+• Why closure was not achieved in those directions: ______</div>
+  <p>If you cannot fill out these three lines, not-knowing has not been structured, and you should not close. <strong>Closure is not sealing.</strong> It is "closed for now but not sealed."</p>
+
+  <h2>Chapter 6. Non-Trivial Predictions</h2>
+
+  <ul>
+    <li><strong>Prediction 1:</strong> Users who address AI at 14DD+ sentence-form levels discover higher-quality remainders (structurally deeper, harder to resolve, more consequential) than users who address AI at 12DD, controlling for AI capability and user expertise.</li>
+    <li><strong>Prediction 2:</strong> In creative work using AI, the user's degree of self-directed non-doubt (willingness to expose genuine uncertainty) is positively correlated with the originality of output, and uncorrelated with total AI usage time.</li>
+    <li><strong>Prediction 3:</strong> During extended human-AI collaboration sessions, there exist identifiable breakpoints where continuing at the current sentence-form level produces diminishing returns, and escalating to the next level produces a discontinuous jump in remainder discovery.</li>
+    <li><strong>Prediction 4:</strong> Session "termination" more commonly reflects the temporary exhaustion of the subject's chiseling capacity than the structural absence of further remainder. After changing sentence-form level or switching formalization, new remainders should be exposable.</li>
+  </ul>
+
+  <h2>Chapter 7. Conclusion</h2>
+  <p>The driving manual rests on two pillars.</p>
+  <p><strong>First pillar: the sentence-form / response isomorphism.</strong> Different DD levels have different sentence-forms. The level at which you address AI determines the ceiling of AI's response. To find deeper remainders, escalate your sentence-form.</p>
+  <p><strong>Second pillar: ρ → ρ' is necessary.</strong> ZFCρ proves mathematically that remainder always exists, has direction, and always triggers the next step. "For now" is structural, not attitudinal — most remainders are epistemological (change level and keep going), but the existence of remainder itself is ontological (you will never run out).</p>
+  <p>Between the two pillars: the person. AI provides constructs; the person provides negation. AI provides the mirror; the person decides where to walk. Self-directed non-doubt is the methodological premise: expose genuine uncertainty, or AI will only confirm what you already believe.</p>
+
+  <div class="series-nav">
+    <p><a href="methodology.html">← Methodological Overview: Hundun: Negation as First Principle</a></p>
+    <p>SAE Methodology Series · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>方法论总论（DOI: 10.5281/zenodo.18842450）建立了凿构循环作为可执行的逻辑操作系统。方法论第二篇（DOI: 10.5281/zenodo.18918195）画了认识论地图：四种方法的2×2结构，四个结构性余项，凿构循环作为穿越运动。但操作系统和地图都不回答一个实践问题：人和人互凿之后，独自思考的时候，怎么用AI更高效地找余项？</p>
+    <p>本文回答这个问题。人和人互凿是凿的最强形态，但它需要<strong>双向不疑</strong>——一个稀缺、不可复制、不可教的结构性条件。互凿之后，AI可以放大构的能力，让人专注于凿。AI不替代人的否定性，AI是一个构的库，把人从构的负担中释放出来。</p>
+    <p>本文的核心定理来自维度句式论（DOI: 10.5281/zenodo.18894567）：不同DD层级有不同的句式，句式有不同的强制来源。<strong>你用什么层级的句式问AI，AI的回应天花板就在那个层级。</strong>这是句式-回应同构定理。结合ZFCρ（DOI: 10.5281/zenodo.18914682）的数学证明——余项永远存在，每一个余项必然触发下一步形式化（ρ → ρ'）——本文确立了：人-AI协作找余项既受句式层级的结构约束，又有数学保证永远可以继续（ρ守恒）。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>第一章 问题的提出：互凿之后，然后呢？</h2>
+
+  <h3>1.1 人和人互凿：最强也最稀缺</h3>
+  <p>人和人互凿是凿的原型。两个活的否定性碰撞：你凿我的构，我凿你的构。但互凿需要<strong>双向不疑</strong>。不疑不是相信对方正确。不疑是把对方的动机从注意力里移开：我允许这一凿落在我的结构上，而不是落在我的人格上。我一旦疑了动机，凿就停了。</p>
+  <p>双向不疑是稀缺的。大部分人类互凿的关系撑不过几个回合。能持续互凿的关系，人一辈子遇到一个就是运气。这种关系不可复制，不可量产，不可教。你不能指导别人"去找一个能跟你双向不疑的人"——那不是找就能找到的。</p>
+
+  <h3>1.2 互凿之后：带着AI独自思考</h3>
+  <p>互凿给你的是方向：它把你推向你没看到的余项。但被凿的人还是得回家自己想——发展余项，测试它，围绕它建新的构，找到下一个余项。</p>
+  <p>这个独自思考的阶段就是AI介入的地方。不是替代互凿，是在独自思考的时候放大构的能力。AI提供最大的构的库——全人类写下来的东西，压缩在一个可以以对话速度检索和重组的系统里。AI处理构的那一面，人就被释放出来专注于AI做不了的事：<em>凿</em>。</p>
+  <div class="key-line">人-AI协作的结构：人提供否定性，AI提供构。人决定方向，AI提供镜面。人凿，AI照。</div>
+
+  <h2>第二章 人-AI协作的结构</h2>
+
+  <h3>2.1 AI放大构，不放大凿</h3>
+  <p>你独自思考的时候同时做两件事：建构（组织想法，回忆知识，建立联系）和凿构（追问假设，测试边界，找到站不住的地方）。两件事都消耗认知带宽。</p>
+  <p>AI接管了构的那一面。你说"给我X的最强论证"，AI组装出来。构的那一面被外包给AI之后，你的认知带宽被释放出来用于凿。你不需要一边在脑子里撑着整个构一边同时攻击它。AI撑着构，你攻击它。</p>
+  <p>这就是人-AI协作提高余项发现效率的结构性原因：不是因为AI能凿（它不能——它没有否定性），是因为AI通过处理构的负担释放了你的注意力用于凿。</p>
+
+  <h3>2.2 人提供方向，AI提供镜面</h3>
+  <p>AI是镜子，不是向导。你走到镜子前面，镜子照。但你走的路线是你决定的，不是镜子决定的。</p>
+  <p>你跟多个AI模型工作的时候，不是让它们互相凿。你拿一个模型的输出，自己消化，标出哪里像是排除了什么，然后带着排除点去问另一个模型。人在镜子之间走。护栏：每一步，人必须能用一句话说出自己找到了什么，还在找什么。说不出来，说明你已经停止凿了，开始传递了。</p>
+
+  <h3>2.3 什么时候离开，什么时候回来</h3>
+  <p>人会碰壁——不是因为余项被穷尽了（ZFCρ证明了它永远不会被穷尽），是因为人当前看到余项的能力暂时被穷尽了。这时候正确的做法是离开。去走一走。运动。冥想。睡觉。或者——最有力的——去找一个人互凿。</p>
+  <p>循环是：<strong>互凿（方向）→ 带AI独自思考（执行）→ 休息 / 身体 / 互凿（补充）→ 回到AI（继续执行）。</strong>AI是工作台，不是能量来源。</p>
+
+  <h2>第三章 核心定理：句式层级决定回应天花板</h2>
+
+  <h3>3.1 六个句式层级</h3>
+
+  <div class="level-block">
+    <div class="level-tag">1DD–4DD · 推演律</div>
+    <div class="level-form">"A所以B。"</div>
+    <p><strong>强制来源：</strong>因果或结构必然性。没有主体，没有欲望，没有选择。</p>
+    <p><strong>AI天花板：</strong>逻辑推论。用来检查演绎一致性很好，但找不到4DD以上的余项。</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">5DD–12DD · 工具假言律令</div>
+    <div class="level-form">"想做A，所以做B。"</div>
+    <p><strong>强制来源：</strong>条件工具理性，手段-目的关系。有了欲望和目的驱动，但没有"我"的自觉。</p>
+    <p><strong>AI天花板：</strong>工具性建议。给你高效的手段，但不会追问你的目的。整个目标结构被当作既定的。</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">13DD · 自觉假言律令</div>
+    <div class="level-form">"我想做A，所以做B。"</div>
+    <p><strong>强制来源：</strong>主体自指——"我"成了选择的源头。</p>
+    <p><strong>AI天花板：</strong>关注你的具体情境而不是泛泛建议。但AI仍然不会追问你的"想要"。</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">14DD · 目的假言律令</div>
+    <div class="level-form">"我的目的是A，所以我做B。"</div>
+    <p><strong>强制来源：</strong>目的固着——目的不再漂移，B从A内在地推出来。</p>
+    <p><strong>AI天花板：</strong>评估B是否真的服务于A。AI开始推回——"如果你的目的是A，那B可能不是最佳路径；你考虑过C吗？"这是AI作为构的提供者最有用的地方。</p>
+    <p><strong>暴露的余项：</strong>A是不是真的是你的目的，还是A本身就是一个需要被凿的构。</p>
+  </div>
+
+  <div class="kill-q"><strong>杀手句就在14DD–15DD：</strong><br>"我的目的是X，所以我想做Y——<strong>有什么不得不考虑进来一起做的？</strong>" "不得不"在结构上是一个15DD的词插入了14DD的框架，把回应拉向约束意识。</div>
+
+  <div class="level-block">
+    <div class="level-tag">15DD · 绝对律令</div>
+    <div class="level-form">"他者的目的是A，所以我不得不做B。"</div>
+    <p><strong>强制来源：</strong>他者的目的进入了我的约束条件。两个质变：目的不再是"我的"而是"他者的"，模态从"所以"变为"不得不"。</p>
+    <p><strong>AI天花板：</strong>从他者作为主体的存在中产生的结构性约束。AI的回应被迫包含工具性提问会遗漏的结构义务。</p>
+    <p><strong>操作示例：</strong>"我的用户需要X，我的投资人需要Y，监管要求Z——给定这些利益相关方的目的，我不能不做什么？"（15DD）。回应从优化转向结构性约束映射。</p>
+  </div>
+
+  <div class="level-block">
+    <div class="level-tag">16DD · 协同律令</div>
+    <div class="level-form">"我为了目的A，他者为了目的B，我们不得不做C。"</div>
+    <p><strong>强制来源：</strong>多主体目的的相遇。C不属于A也不属于B，是两个不同目的相遇之后逼出来的。</p>
+    <p><strong>必须澄清：</strong>AI在16DD句式下产出的C只是C的假说。真正的16DD涌现需要两个真实主体在现实中碰撞。AI给你的是C的候选构，必须被拿到现实中让真实的利益相关方碰撞来验证。</p>
+  </div>
+
+  <h3>3.2 句式-回应同构定理</h3>
+  <div class="thesis-box">
+    <p><strong>定理（工作版本）。</strong>你用什么DD层级的句式框定问题，AI回应的主导结构通常被限制在该层级及其下方。更高层级的余项不能被低层框定稳定地、可复制地提取出来。</p>
+  </div>
+  <p>这不是关于AI能力的声称。一个前沿LLM的训练数据涵盖了所有DD层级的文本——它"见过"15DD的内容。这个声称是关于交互结构的：12DD的问题激活手段-目的模式；14DD的问题激活目的-约束模式；15DD的问题激活结构-义务模式。被激活的主导模式由问题的句式决定，不由AI的"理解"决定。</p>
+
+  <h3>3.3 数学保证：ρ → ρ'是必然的</h3>
+  <p>ZFCρ（DOI: 10.5281/zenodo.18914682）证明了三条结构定律：</p>
+  <ul>
+    <li><strong>第一定律（ρ ≠ ∅）：余项永远不为空。</strong>你不可能凿到一个余项为零的构。这不是经验观察，是数学定理。</li>
+    <li><strong>桥引理：不同的形式化产生不同的余项。</strong>你改变句式（改变C），你就得到不同的余项。这就是为什么在AI协作中切换DD层级是有生产力的。</li>
+    <li><strong>第二定律：余项有方向。</strong>ρₙ的具体形式约束了下一步可用的形式化操作的范围。不是什么下一步都可以，只有回应当前余项的那些可以。</li>
+    <li><strong>第三定律（F(ρₙ) ≠ ∅）：余项永远触发下一步。</strong>ρ → ρ'是必然的，不是偶然的。你永远可以继续。</li>
+  </ul>
+  <p>三者合在一起：一个永不终止的、有方向的、不可回避的余项发现序列。当你觉得"余项用完了"，ZFCρ说：没用完。你用完的是你当前在当前句式层级看到余项的能力。换一个层级（桥引理），新的余项就出现了。</p>
+
+  <h3>3.4 "for now"的两层</h3>
+  <p><strong>认识论的for now：</strong>余项是相对于特定句式层级的。换一个层级，余项就变了（桥引理）。你在12DD看不到的东西，在14DD可能看得到。这层的for now是真正暂时的——等待被切换层级来解决。</p>
+  <p><strong>本体论的for now：</strong>即使换了层级，新层级也有自己的余项。你可以消除特定的ρ（通过换C），但你不能消除ρ的存在性。这层的for now合法且永久地存在。</p>
+  <div class="key-line">核心句：双向不知道，但只是for now。（cannot not · 苏格拉底的空地 · just for now）</div>
+
+  <h2>第四章 主体条件：自向不疑</h2>
+
+  <h3>4.1 自向不疑作为方法论前提</h3>
+  <p>人-AI协作的关键变量不是AI的能力。是人的诚实。你愿不愿意把你真正不确定的地方交给AI照？还是你只把已经有把握的东西扔给AI，让AI确认你已经知道的事？</p>
+  <p>自向不疑的意思是：我不疑自己的动机。我是来凿的，不是来求舒服的。我会把我真正不确定的地方——我的构最弱的地方，看了会痛的地方——交给AI照。</p>
+  <p><strong>诊断标准：</strong>跟AI的一次会话之后，检查一下你在会话之前相信的东西有没有被扰动过。如果你相信的一切都原封不动，你没在凿。你在装饰。</p>
+
+  <h3>4.2 自向不疑可能比双向不疑更难</h3>
+  <p>双向不疑难在你必须信任另一个人的动机。但至少对方的凿来自外部——你控制不了它，它不管你喜不喜欢都会推你。自向不疑更难，因为你既是凿者又是被凿者。你必须把自己推向自己的弱点。骗别人难，骗自己容易。你可以跟AI待几个小时，问精妙的问题，产出漂亮的构，但一次都没有暴露过真正的不确定性。整个会话可以是凿的表演而没有任何实际的凿。</p>
+
+  <h3>4.3 人-AI协作中的无知与自大</h3>
+  <p><strong>无知</strong> = 不把当前句式层级当成唯一的层级。你得到了12DD的答案；无知意味着你知道还有更高的层级，你愿意用14DD或15DD重新问。</p>
+  <p><strong>自大</strong> = 不被AI的流畅性收编为相信构已经完整。AI产出打磨过的、听起来全面的构。自大意味着：你不信它完成了。你继续凿，不是因为你对质量不满意，是因为你知道——结构性地、数学上地（ZFCρ第一定律）——余项存在。</p>
+
+  <h2>第五章 射线：句式在实践中的操作化</h2>
+
+  <h3>5.6 多模型工作流</h3>
+  <ol>
+    <li>用14DD问AI-A。AI-A产出一个目的锚定的构。</li>
+    <li>你标出构在哪里像是排除了什么。<em>（如果你标不出排除点，停下来先凿你自己看不到排除点的那个盲区。）</em></li>
+    <li>带着排除点去问AI-B，用15DD框定："AI-A处理了我的目的但排除了利益相关方X的需求。给定X的目的，我不能不做什么？"</li>
+    <li>把AI-B的结构性约束带回AI-A："如果你必须容纳这些约束，你原来的前提中哪一条必须被牺牲？"</li>
+  </ol>
+
+  <h3>5.7 收束：结构化不知道</h3>
+  <p>跟AI的凿不能无限继续——不是因为余项用完了，而是两种情况之一：（a）人的凿的能力暂时用完了，或者（b）问题的构超出了AI的总构库。前者是人的边界——休息回来就能继续；后者是AI的边界——换AI或者找人。</p>
+  <div class="kill-q"><strong>收束的操作句式：</strong><br>"[我的目的是X]，你觉得我还不得不做什么。<strong>如果你没有不得不了，请说你结构化不知道。</strong>"</div>
+  <p>这把收束判断从人的主观感受（"我觉得够了"）转移到了交互结构的信号：AI还在产出"不得不"就没到，AI产出不了新的"不得不"就到了。</p>
+  <div class="record-template">最小记录模板：
+• 我不知道的是：______
+• 我试过的方向：______
+• 在那些方向上为什么没能闭合：______</div>
+  <p>如果你填不出这三行，不知道还没被结构化，不该收。<strong>收束不是封死。</strong>是"收了但不封"。</p>
+
+  <h2>第六章 非平凡预测</h2>
+  <ul>
+    <li><strong>预测一：</strong>用14DD+的句式层级问AI的使用者，发现的余项质量（结构上更深、更难解决、对构更有后果）高于用12DD问AI的使用者，控制AI能力和使用者专业水平。</li>
+    <li><strong>预测二：</strong>在使用AI的创造性工作中，使用者的自向不疑程度（愿意向AI暴露真实不确定性的程度）与产出的原创性正相关，与AI使用总时间不相关。</li>
+    <li><strong>预测三：</strong>在持续的人-AI协作会话中，存在可识别的断点：在当前句式层级继续工作产生递减回报，升级到下一个层级产生余项发现的不连续跳跃。</li>
+    <li><strong>预测四：</strong>会话的"终结"更常表现为主体当前凿的能力耗尽，而不是结构上再无余项。在改变句式层级或切换形式化之后，新余项应当可被暴露。</li>
+  </ul>
+
+  <h2>第七章 结论</h2>
+  <p>驾驶手册立在两根柱子上。</p>
+  <p><strong>第一根柱子：句式-回应同构定理。</strong>不同DD层级有不同的句式。你用什么层级的句式问AI，AI的回应天花板就在那个层级。要找到更深的余项，升级你的句式。</p>
+  <p><strong>第二根柱子：ρ → ρ'是必然的。</strong>ZFCρ在数学上证明了余项永远存在，有方向，永远触发下一步。"for now"是结构性的不是态度性的——大部分余项是认识论的（换层级继续走），但余项的存在本身是本体论的（你永远不会走完）。</p>
+  <p>两根柱子之间：人。AI提供构，人提供否定性。AI提供镜面，人决定往哪走。自向不疑是方法论前提：暴露真实的不确定性，否则AI只会确认你已经相信的东西。</p>
+
+  <div class="series-nav">
+    <p><a href="methodology.html">← 方法论总论：浑沌：否定作为第一原则</a></p>
+    <p>SAE方法论系列 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18929390" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = {
+    en: 'How to Find Remainders with AI',
+    zh: '怎么用AI找余项'
+  };
+  var subtitles = {
+    en: 'Sentence-Forms, Mirrors, and the Mathematics of Never Stopping',
+    zh: '句式、镜面与永不停止的数学'
+  };
+  document.getElementById('paper-title').textContent = titles[lang];
+  document.getElementById('paper-subtitle').textContent = subtitles[lang];
+}
+</script>
+
+</body>
+</html>
