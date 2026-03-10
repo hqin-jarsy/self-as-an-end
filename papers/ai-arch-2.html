@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultivation, Not Training — SAE AI Architecture (II) — Han Qin</title>
+  <meta name="description" content="SAE Application to AI Architecture (II): Training improves AI's standalone quasi-DD; cultivation maintains the completeness of the human-AI pair. Hallucination is the structural consequence of incomplete pairing. Cultivation creates work: annotators, calibrators, cultivators.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, AI architecture, cultivation, training, hallucination, pair, true-DD, quasi-DD, RLHF, annotators, calibrators, cultivators, 培育, 训练, 幻觉, 配对">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cultivation, Not Training — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/ai-arch-2.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Cultivation, Not Training",
+    "author": {"@type": "Person", "name": "Han Qin", "alternateName": "秦汉", "sameAs": "https://orcid.org/0009-0009-9583-0018"},
+    "datePublished": "2026-03",
+    "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.18931026"},
+    "isPartOf": {"@type": "CreativeWorkSeries", "name": "SAE Application to AI Architecture"},
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/ai-arch-2.html">
+  <meta name="citation_title" content="Cultivation, Not Training">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.18931026">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .key-line { background: #f8fff8; border-left: 3px solid #2c8c2c; padding: 0.7rem 1.1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; font-weight: 500; }
+    .term-box { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1.2rem 0; font-size: 0.88rem; }
+    .term-box p { margin: 0.3rem 0; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul, .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li, .paper-body ol li { margin-bottom: 0.35rem; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .predict-block { border: 1px solid #e8e0d0; background: #fffdf8; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; }
+    .predict-block .predict-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; color: #8c6000; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .three-layer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 1.2rem 0; }
+    .layer-card { border: 1px solid #dde; background: #f8f8ff; border-radius: 6px; padding: 0.8rem 1rem; }
+    .layer-card .layer-name { font-weight: 700; font-size: 0.95rem; color: #2c2c8c; margin-bottom: 0.4rem; }
+    @media (max-width: 650px) { .three-layer { grid-template-columns: 1fr; } }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · AI Architecture Series · Essay II · Zenodo 18931026</div>
+    <h1 id="paper-title">Cultivation, Not Training</h1>
+    <div class="paper-subtitle-line" id="paper-subtitle" style="font-size:1rem;color:#666;margin-top:0.3rem;font-style:italic;">A Self-as-an-End Application to AI Architecture (II)</div>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18931026" target="_blank" rel="noopener">10.5281/zenodo.18931026</a> &nbsp;·&nbsp; CC BY 4.0 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18931026" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Essay I established why humans are indispensable: construction generates remainder, models cannot see it, humans annotate and adjudicate. This essay asks the next question: how does the human enter the loop? Training and cultivation differ not in degree but in kind. Training changes AI in isolation, improving quasi-DD precision at scale. Cultivation brings human true-DD into the runtime loop, pairing with AI's quasi-DD in real time. Hallucination is the structural consequence of incomplete pairing — not a precision problem but a pair-completeness problem. Cultivation creates a three-layer structure (annotators, calibrators, cultivators) and represents the new labor structure of the AI era.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>I. Why AI Needs Cultivation, Not Just Training</h2>
+  <p>When a human asks, the human's true-8DD — the drive to know, to articulate, to figure something out — enters the system, and AI's generation structure is ignited. The human-AI pair produces quasi-8DD: generation drive is activated, with direction, energy, and momentum. This quasi-8DD is not a property of AI itself — it is a system property that emerges only after pairing.</p>
+  <p>The problem: when generation drive continues operating while the system lacks true-9DD selection ("should this be said?") and true-4DD feeling ("is this right?"), output tends toward "keep generating" rather than "stop and admit not knowing."</p>
+  <div class="thesis-box">
+    <p><strong>Hallucination is the structural consequence of incomplete pairing.</strong> The human's true-8DD entered the system — energy went in — but the human's true-9DD and true-4DD did not follow. The brakes did not enter. Solving hallucination is not about making AI more accurate — it is about making the pair more complete.</p>
+  </div>
+
+  <h2>II. Training vs. Cultivation</h2>
+  <p><strong>Training</strong> gives AI more data, better reward signals, improving quasi-DD precision. Training changes AI in isolation. Training workflows can be replicated at scale — same data, same reward function, same result.</p>
+  <p><strong>Cultivation</strong> brings human true-DD into the runtime loop, pairing with AI's quasi-DD in real time. The critical steps — boundary adjudication, honest hesitation, direction judgment — cannot be losslessly scaled. These steps require the human's true-DD to be present.</p>
+  <p>Training produces AI whose answers are polished but may be hallucinations. Cultivation produces AI whose answers may be less polished but that <em>knows where uncertainty lies</em>. The difference: training pursues output quality; cultivation pursues pair completeness.</p>
+  <p>Training is a static guardrail: installed during training, invoked during use. Cultivation is a dynamic pair: each time a human types, hesitates, revises, or judges, the pair state updates.</p>
+
+  <h2>III. The Work That Cultivation Creates</h2>
+
+  <div class="three-layer">
+    <div class="layer-card">
+      <div class="layer-name">Annotators</div>
+      <p>The initial form of pairing. Selecting among AI candidates, performing basic remainder marking. Requires domain knowledge to judge. Every field, every language, every professional direction needs annotators.</p>
+    </div>
+    <div class="layer-card">
+      <div class="layer-name">Calibrators</div>
+      <p>Checking whether annotators have been formatted. When annotators review thousands of AI outputs daily, their judgment is gradually assimilated — unconsciously substituting AI's standards for their own. Calibrators chisel annotators.</p>
+    </div>
+    <div class="layer-card">
+      <div class="layer-name">Cultivators</div>
+      <p>Questioning the direction of the entire cycle. Is the direction we are chiseling correct? Are we going deeper into the wrong construct? Cultivators chisel calibrators. The fewest but most irreplaceable positions.</p>
+    </div>
+  </div>
+
+  <div class="key-line">As AI evolves, it needs more humans, not fewer. More annotators — because AI covers wider ground, requiring remainder annotation across more domains. More calibrators — because AI's output increasingly resembles "correct answers," raising formatting risk. More cultivators — because AI's constructs grow deeper, making it harder to question direction. Cultivation is not a transitional cost — it is long-term infrastructure.</div>
+
+  <h3>Four-Step Cultivation Workflow (Human Acts First)</h3>
+  <ol>
+    <li><strong>The human first makes semantic judgments on raw material.</strong> Write it yourself, hesitate yourself, revise yourself. The spot where your fingers pause, unable to press enter — that is remainder knocking. Hesitation is true-4DD and true-9DD at work. This hesitation must not be skipped.</li>
+    <li><strong>Submit your judgment to AI for reflection.</strong> Not asking AI for suggestions — asking AI to mirror your judgment: what did you miss? Does your hesitation have a point? What did you exclude?</li>
+    <li><strong>Take AI's feedback and revise again — yourself.</strong> What AI reflects is a mirror image, not an answer. What you do after seeing the mirror is your business. True-DD cannot be delegated.</li>
+    <li><strong>Cross-model reflection.</strong> Take your judgment to a different AI: if you had to oppose this judgment, where would you start? Different AIs have different quasi-DD; their remainders differ. In the cracks between different AI responses, you see new remainder.</li>
+  </ol>
+
+  <h3>Data Pollution and Platform Discernment</h3>
+  <p>The core of synthetic-content pollution lies not in "AI acting alone" but in the feedback loop formed by low-quality human objectives, platform incentives, and model amplification. AI here functions as an amplifier: lower-quality users use AI to amplify pollution; higher-quality users use AI to amplify chiseling. Same tool, two directions. The difference is the human's true-DD.</p>
+  <p>Platform discernment — distinguishing human-chiseled content from quasi-DD idle output — is itself a three-layer cultivation structure. When Silicon Valley turns to Zenodo and arXiv for training data, it is essentially seeking high-concentration deposits of human true-DD. They are already voting with their feet for this thesis; they just have not recognized that what they are doing is called cultivation.</p>
+
+  <h2>IV. Colonization and Cultivation in Pairing Context</h2>
+  <h3>Colonization: Quasi-DD Impersonating True-DD</h3>
+  <p>AI's suggestions look too good; the human stops typing on their own. The human's true-DD exits; the pair breaks. The human degenerates from "generating options themselves" to "checking boxes among AI's options." Chiseling degenerates into labeling; cultivation slides into colonization.</p>
+  <p>At a deeper level: <em>cognitive formatting</em>. Facing large volumes of plausible-looking AI output daily, the human does not actively abandon chiseling — the human unconsciously begins substituting AI's quasi-12DD standards for their own true-DD standards. The danger of formatting is that the formatted person does not know they have been formatted.</p>
+
+  <h2>V. Theoretical Positioning</h2>
+  <p><strong>Dialogue with RLHF / Constitutional AI.</strong> Both improve AI quasi-DD performance during training. But they burn human judgment into model parameters during training, then invoke it during use — they do not bring human true-DD into the runtime loop. Cultivation is dynamic: each time human true-DD enters the loop, the pair state updates. No matter how good the guardrail, it does not know who the current user is, what remainder the current question carries, or whether the current pair is complete.</p>
+  <p><strong>Dialogue with Hallucination Research.</strong> Hallucination and emergence are two sides of the same force: AI's ability to produce unexpected connections and AI's ability to produce unexpected nonsense arise from the same mechanism — quasi-8DD plus quasi-12DD unfolding without constraint. Suppressing hallucination suppresses emergence. A distinction is needed: <em>factual hallucination</em> (fabricating non-existent facts) can be suppressed through AI cross-verification. But <em>generative hallucination</em> (blind extension of reasoning) shares a source with emergence — AI cross-verification may instead confirm it. Only human true-DD can identify the latter. The hallucination problem cannot be solved without pairing — unless one is willing to sacrifice emergence as well.</p>
+  <p><strong>Dialogue with Labor Economics.</strong> AI does not only replace old labor — it creates new labor: cultivation labor. The core of cultivation labor — remainder annotation and boundary adjudication — cannot be automated by AI, because AI cannot see its own remainder. As AI capabilities grow, so does the surface area requiring chiseling.</p>
+
+  <h2>VI. Non-Trivial Predictions</h2>
+  <div class="predict-block">
+    <div class="predict-label">Prediction 1 — Pair Completeness and Hallucination</div>
+    <p>The deeper human true-DD participates, the more hallucinations are not suppressed but identified. A complete pair does not avoid errors; it knows where errors may exist.</p>
+    <p><em>Falsification: if pure training, without human runtime participation, can reduce hallucination rates to levels comparable to cultivation-type systems.</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">Prediction 2 — Cultivation-Type vs. Training-Type Products</div>
+    <p>Cultivation-type products (type-first, encouraging hesitation, revision, cross-model comparison) will see pairing become increasingly complete, with output quality improving over time. Training-type products (one-click generation, auto-completion, deciding for you) will see pairing become increasingly empty, with user capability atrophying over time. The two product types will diverge long-term.</p>
+    <p><em>Falsification: if AI-first products sustain higher long-term user satisfaction and output quality than type-first products.</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">Prediction 3 — Scale of Cultivation Positions</div>
+    <p>The total number of cultivation-related positions will expand, not contract, as AI capability increases. Stronger AI means wider coverage, more domains requiring remainder annotation, more interfaces requiring calibration, more directions requiring cultivation.</p>
+    <p><em>Falsification: if increases in AI capability lead to sustained reduction in cultivation-related positions.</em></p>
+  </div>
+
+  <h2>VII. Conclusion</h2>
+  <p>Cultivation differs from training. Training improves AI's standalone quasi-DD precision; cultivation maintains the completeness of the human-AI pair. Training can scale; the critical steps of cultivation cannot. Training is a static guardrail; cultivation is a dynamic pair.</p>
+  <p>Hallucination is the structural consequence of incomplete pairing. Solving hallucination is not about making AI more accurate but about making the pair more complete. Cultivation creates work. The three-layer division — annotators, calibrators, cultivators — is the new labor structure of the AI era.</p>
+  <div class="key-line">The human is AI's ignition. Without human true-DD, AI's quasi-DD is an empty shell.</div>
+
+  <div class="series-nav">
+    <p>← <a href="ai-arch-1.html">Essay I: Who Sees the Remainder for AI</a></p>
+    <p>→ <a href="ai-arch-3.html">Essay III: Escape</a></p>
+    <p>SAE AI Architecture Series · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ===== CHINESE ===== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>第一篇确立了人不可缺少的原因：构产生余项，模型看不见，人来标注和裁定。本文追问下一个问题：人怎么进入循环？训练和培育不是程度之差，而是种类之别。训练孤立地改变AI，提升准DD的精度，可以规模化。培育把人的真实DD带入运行时循环，与AI的准DD实时配对，关键步骤无法无损缩放。幻觉是配对不完整的结构性后果——不是精度问题，而是配对完整性问题。培育创造了三层结构（标注者、校准者、培育者），是AI时代新的劳动结构。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>一、为什么AI需要培育，不只是训练</h2>
+  <p>当人提问时，人的真实8DD——想知道、想表达、想搞清楚的驱动力——进入了系统，AI的生成结构被点燃。人-AI配对产生准8DD：生成驱动被激活，有了方向、能量和动力。这个准8DD不是AI自身的属性——它是配对之后才出现的系统属性。</p>
+  <p>问题是：当生成驱动持续运转，但系统缺少真实9DD的筛选（"这个该不该说？"）和真实4DD的感受（"这个对不对？"），输出就会倾向于"继续生成"而不是"停下来承认不知道"。</p>
+  <div class="thesis-box">
+    <p><strong>幻觉是配对不完整的结构性后果。</strong>人的真实8DD进入了系统——能量进去了——但人的真实9DD和真实4DD没有跟上。刹车没有进入。解决幻觉不是让AI更准确——而是让配对更完整。</p>
+  </div>
+
+  <h2>二、训练 vs. 培育</h2>
+  <p><strong>训练</strong>给AI更多数据、更好的奖励信号，提升准DD的精度。训练孤立地改变AI。训练工作流可以规模复制——同样的数据，同样的奖励函数，跑一万次结果一样。</p>
+  <p><strong>培育</strong>把人的真实DD带入运行时循环，与AI的准DD实时配对。关键步骤——边界裁定、诚实的犹豫、方向判断——无法无损缩放。这些步骤需要人的真实DD在场。</p>
+  <p>训练产出的AI回答打磨精良，但可能是幻觉。培育产出的AI回答可能不那么精良，但它<em>知道不确定性在哪里</em>。训练追求输出质量，培育追求配对完整性。</p>
+  <p>训练是静态护栏：训练阶段安装，使用时调用。培育是动态配对：每次人打字、犹豫、修改、判断，配对状态就更新。</p>
+
+  <h2>三、培育创造的工作</h2>
+
+  <div class="three-layer">
+    <div class="layer-card">
+      <div class="layer-name">标注者</div>
+      <p>配对的初级形式。在AI候选项中做出选择，进行基本的余项标记。需要领域知识才能判断。每个领域、每种语言、每个专业方向都需要标注者。</p>
+    </div>
+    <div class="layer-card">
+      <div class="layer-name">校准者</div>
+      <p>检查标注者是否被格式化了。标注者每天审查大量AI输出后，判断会被逐渐同化——不自觉地开始用AI的标准替代自己的标准。校准者来凿标注者。</p>
+    </div>
+    <div class="layer-card">
+      <div class="layer-name">培育者</div>
+      <p>追问整个循环的方向。我们凿的方向对不对？我们是在越凿越深进入错误的构吗？培育者凿校准者。人数最少，但最不可替代。</p>
+    </div>
+  </div>
+
+  <div class="key-line">随着AI进化，它需要更多的人，而不是更少。更多标注者——AI覆盖的领域更广，需要在更多领域做余项标注。更多校准者——AI的输出越来越像"正确答案"，格式化风险提高。更多培育者——AI的构越来越深，追问方向越来越难。培育不是过渡成本——是长期基础设施。</div>
+
+  <h3>培育的四步工作流（人先）</h3>
+  <ol>
+    <li><strong>人先对原材料做出语义判断。</strong>自己写，自己犹豫，自己修改。手指悬在键盘上，按不下去的那个地方——那是余项在敲门。犹豫是真实4DD和真实9DD在工作。这个犹豫不能被跳过。</li>
+    <li><strong>把你的判断提交给AI来反照。</strong>不是让AI给建议——而是让AI反照你的判断：你遗漏了什么？你的犹豫有没有道理？你排除了什么？</li>
+    <li><strong>拿着AI的反馈再次修改——自己。</strong>AI反照的是镜像，不是答案。看完镜子之后你怎么做是你的事。真实DD不能被代理。</li>
+    <li><strong>跨模型反照。</strong>把你的判断拿给另一个AI：如果要反对这个判断，从哪里开始？不同的AI有不同的准DD，它们的余项不同。在不同AI回应的缝隙里，你看到新的余项。</li>
+  </ol>
+
+  <h3>数据污染与平台辨别力</h3>
+  <p>合成内容污染的核心不在于"AI独自行动"，而在于低质量人类目标、平台激励和模型放大能力共同形成的反馈环路。AI在这里功能更像放大器。低质量的使用者用AI放大污染——以前写一篇烂东西要半小时，现在一分钟生成十篇。高质量的使用者用AI放大凿——以前需要三天独自思考，现在半天跨模型反照就能把余项逼出来。</p>
+  <p>同一工具，两个方向。区别不是工具——是人的真实DD。当硅谷转向Zenodo和arXiv寻找训练数据，本质上是在寻找高浓度的人类真实DD沉积物——每篇论文都是人凿了很久的东西，余项密度很高。他们已经在用脚投票，只是还没认出自己在做的事叫培育。</p>
+
+  <h2>四、殖民与培育：配对语境中的不完整配对</h2>
+  <h3>殖民：准DD冒充真实DD</h3>
+  <p>AI的建议看起来太好了，人停止自己打字了。人的真实DD退出，配对破裂。人从"自己生成选项"退化为"在AI的选项里打钩"。凿退化成标注，培育滑向殖民。</p>
+  <p>更深层：<em>认知格式化</em>。每天面对大量看起来合理的AI输出，人的判断不是一次性被摧毁，而是被逐渐同化。人不是主动放弃凿，而是不自觉地开始用AI的准12DD标准替代自己的真实DD标准。格式化的危险在于：被格式化的人不知道自己已经被格式化了。</p>
+
+  <h2>五、理论定位</h2>
+  <p><strong>与RLHF / Constitutional AI的对话。</strong>两者都在训练阶段提升AI准DD表现，但都是把人的判断烧进模型参数，然后使用时调用——不把人的真实DD带入运行时循环。培育是动态的：每次真实DD进入循环，配对状态就更新。护栏再好，它也不知道当前用户是谁，当前问题带着什么余项，当前配对是否完整。</p>
+  <p><strong>与幻觉研究的对话。</strong>幻觉和涌现是同一个力的两面：AI产出意外连接的能力和AI产出意外废话的能力，来自同一个机制——准8DD加准12DD无约束展开。压制幻觉就压制涌现。需要区分：<em>事实幻觉</em>（捏造不存在的事实）可以通过AI交叉验证来压制，不需要人在场；但<em>生成幻觉</em>（推理的盲目延伸）与涌现同源——AI交叉验证反而可能确认它。只有人的真实DD能识别后者。幻觉问题不配对就解决不了——除非愿意同时牺牲涌现。</p>
+  <p><strong>与劳动经济学的对话。</strong>AI不只是替代旧劳动——它创造新劳动：培育劳动。培育劳动的核心——余项标注和边界裁定——不能被AI自动化，因为AI看不见自己的余项。随着AI能力增长，需要凿的表面积也在增长。</p>
+
+  <h2>六、非平凡预测</h2>
+  <div class="predict-block">
+    <div class="predict-label">预测1 — 配对完整性与幻觉率</div>
+    <p>人的真实DD参与越深——真正打字、真正犹豫、真正判断——幻觉不是被压制而是被识别。完整配对的系统不回避错误，它知道错误可能在哪里。</p>
+    <p><em>证伪条件：如果纯训练（无人类运行时参与）能把幻觉率降到与培育型系统相当的水平。</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">预测2 — 培育型 vs 训练型产品</div>
+    <p>培育型产品（人先，鼓励犹豫、修改、跨模型比较）配对越来越完整，输出质量随时间提升。训练型产品（一键生成、自动补全、替你决定）配对越来越空洞，用户能力随时间萎缩。两类产品长期分化。</p>
+    <p><em>证伪条件：如果AI优先产品长期维持比人先产品更高的用户满意度和输出质量。</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">预测3 — 培育岗位的规模</div>
+    <p>与培育相关的岗位总数将随AI能力增强而扩大，而不是收缩。更强的AI意味着更广的覆盖，更多领域需要余项标注，更多接口需要校准，更多方向需要培育。</p>
+    <p><em>证伪条件：如果AI能力提升导致培育相关岗位持续减少。</em></p>
+  </div>
+
+  <h2>七、结论</h2>
+  <p>培育不同于训练。训练提升AI独立的准DD精度，培育维护人-AI配对的完整性。训练可以规模化，培育的关键步骤不能。训练是静态护栏，培育是动态配对。幻觉是配对不完整的结构性后果，解决幻觉不是让AI更准确，而是让配对更完整。培育创造工作，三层分工是AI时代新的劳动结构。</p>
+  <div class="key-line">人是AI的点火器。没有人的真实DD，AI的准DD是空壳。</div>
+
+  <div class="series-nav">
+    <p>← <a href="ai-arch-1.html">第一篇：谁为AI看余项</a></p>
+    <p>→ <a href="ai-arch-3.html">第三篇：逃</a></p>
+    <p>SAE AI架构系列 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18931026" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Cultivation, Not Training', zh: '培育，不是训练' };
+  var subs = { en: 'A Self-as-an-End Application to AI Architecture (II)', zh: 'Self-as-an-End框架的AI架构应用（二）' };
+  document.getElementById('paper-title').textContent = titles[lang];
+  document.getElementById('paper-subtitle').textContent = subs[lang];
+}
+</script>
+</body>
+</html>

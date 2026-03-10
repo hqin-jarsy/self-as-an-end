@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Sees the Remainder for AI — SAE AI Architecture (I) — Han Qin</title>
+  <meta name="description" content="SAE Application to AI Architecture (I): Tokenization is AI's first construct. Construction generates remainder; the model cannot see its own remainder. The human is the remainder annotator and boundary adjudicator — the human is the remainder of AI's evolution.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, AI architecture, tokenization, remainder, compression path, semantic path, learnability, chisel-construct, true-DD, quasi-DD, colonization, cultivation, 余项, 代币化">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Who Sees the Remainder for AI — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/ai-arch-1.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Who Sees the Remainder for AI",
+    "author": {"@type": "Person", "name": "Han Qin", "alternateName": "秦汉", "sameAs": "https://orcid.org/0009-0009-9583-0018"},
+    "datePublished": "2026-03",
+    "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.18931008"},
+    "isPartOf": {"@type": "CreativeWorkSeries", "name": "SAE Application to AI Architecture"},
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/ai-arch-1.html">
+  <meta name="citation_title" content="Who Sees the Remainder for AI">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.18931008">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .key-line { background: #f8fff8; border-left: 3px solid #2c8c2c; padding: 0.7rem 1.1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; font-weight: 500; }
+    .term-box { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1.2rem 0; font-size: 0.88rem; }
+    .term-box p { margin: 0.3rem 0; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul, .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li, .paper-body ol li { margin-bottom: 0.35rem; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .predict-block { border: 1px solid #e8e0d0; background: #fffdf8; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; }
+    .predict-block .predict-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; color: #8c6000; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · AI Architecture Series · Essay I · Zenodo 18931008</div>
+    <h1 id="paper-title">Who Sees the Remainder for AI</h1>
+    <div class="paper-subtitle-line" id="paper-subtitle" style="font-size:1rem;color:#666;margin-top:0.3rem;font-style:italic;">A Self-as-an-End Application to AI Architecture (I)</div>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18931008" target="_blank" rel="noopener">10.5281/zenodo.18931008</a> &nbsp;·&nbsp; CC BY 4.0 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18931008" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="term-box">
+    <strong>Key Terms (shared across all three essays)</strong>
+    <p><strong>True-DD</strong>: Human capacities for actual feeling, judgment, and direction (true-4DD: "something is off here"; true-9DD: "should I say this?"; true-8DD: "I need to figure this out")</p>
+    <p><strong>Quasi-DD</strong>: Functional-position similarities AI exhibits during interaction. An operational analogy, not an ontological attribution.</p>
+    <p><strong>Pair</strong>: The coupling of human true-DD with AI quasi-DD. Complete when true-4DD, true-9DD, and true-8DD are all present in the loop.</p>
+    <p><strong>Type-first</strong>: Human acts first, AI mirrors after. The minimal discipline that keeps true-DD in the loop.</p>
+    <p><strong>8DD sovereignty</strong>: The human retains final authority over what to ask, why to ask it, when to stop, and what costs are acceptable.</p>
+  </div>
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>The core problem of AI architecture appears technical — how to segment text, train models, improve precision. But from the SAE framework, a different structure comes into view: construction generates remainder, and the model cannot see its own remainder. Taking tokenization as entry point, this essay argues that the ceiling of AI architecture is not compute or data volume — it is <em>who performs remainder annotation</em>. This is not an engineering optimization problem; it is a subject-condition problem. The human is the remainder of AI's evolution. This remainder cannot be eliminated.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>I. The Problem: Why AI Architecture Is a Subject-Condition Problem</h2>
+  <p>Tokenization segments human language into units the model can process. This segmentation, made before training even begins, already determines what the model can and cannot see. All downstream capabilities — reasoning, generation, comprehension — are built on top of this first construct. And every construct necessarily produces remainder: what is excluded but cannot be eliminated.</p>
+  <p>The model sits downstream of the tokenizer. It receives pre-cut fragments. It does not know what was severed, what was missed, what was lost in the cutting. The model constructs on top of someone else's construct, without knowing what the layer beneath it looks like.</p>
+  <div class="key-line">Construction generates remainder; the model, downstream of the construct, cannot see that remainder. The human is not the source of remainder — remainder is a byproduct of construction itself. The human is the annotator and boundary adjudicator of remainder.</div>
+  <p>Therefore, the ceiling of AI architecture is not compute, not data volume — it is who performs remainder annotation. This is not an engineering optimization problem. It is a subject-condition problem.</p>
+
+  <h2>II. Chisel and Construct: Two Layers of the AI System</h2>
+  <p>Tokenization is AI's first layer of construction — it determines what the model can see. Everything the model learns from token sequences is re-construction on top of the first construct. The key relationship: the ceiling of re-construction is constrained by the first construct. When the first construct cuts wrongly or misses something, re-construction must spend substantial capacity on compensation. A significant portion of what the attention mechanism does is reconnecting semantic relationships that the tokenizer severed.</p>
+  <p>To chisel is to see the remainder of the construct. The model cannot chisel the construct it stands on. The human chisels.</p>
+
+  <h2>III. Two Paths: Compression vs. Semantic</h2>
+  <h3>The Compression Path</h3>
+  <p>Character-level → BPE → BLT: all answer the same question by statistical frequency — how to pack more information into fewer units. After BPE fragments low-frequency concepts, the model can use attention at higher layers to compose sub-units into emergent understanding of low-frequency concepts. This compositional generalization is a genuine advantage of the compression path.</p>
+
+  <h3>The Semantic Path</h3>
+  <p>Not finer segmentation but more accurate merging: combining multiple tokens into a single semantic unit because they form an indivisible concept. Split apart, they no longer mean the same thing. Semantic merging cannot be accomplished by statistics alone — low-frequency semantic concepts will never be merged by frequency. Semantic merging requires boundary judgment: knowing which tokens together form an indivisible concept. The model can propose candidates, but boundary adjudication must be done by humans.</p>
+  <p>The two paths are complements, not substitutes. The semantic path does not negate compositional generalization — it points to its boundary: whether what gets composed is correct can only be judged by a human.</p>
+
+  <h3>The Inverse of Meaning and Learnability</h3>
+  <div class="thesis-box">
+    <p>The more semantic a token, the more unique it is → the lower its frequency → the more statistics fail. The more meaningful a token, the less the model can learn it. Conversely, the less semantic a token, the more it repeats → the more effective statistics become → but what the model learns are fragments.</p>
+    <p><strong>Meaning and learnability are inversely related.</strong> This is not an engineering problem — it is structural. Meaningful things are inherently rarer than meaningless things. This is the structure of the world, not a defect of the dataset.</p>
+  </div>
+  <p>In SAE terms: remainder conservation. The compression path excludes semantic integrity; the semantic path excludes statistical learnability. The remainders on both sides are each other's cost. You cannot have both.</p>
+
+  <h2>IV. Colonization and Cultivation</h2>
+  <h3>Colonization: Three Forms</h3>
+  <p><strong>Linguistic colonization.</strong> Frequency-driven segmentation structurally favors high-frequency, boundary-clear, morphologically stable expression systems. For low-resource corpora, context-dependent boundaries, or morphologically complex languages, segmentation produces additional breakage. The problem is not that a language is "inferior" — it is that construction inherently carries a stance.</p>
+  <p><strong>Architectural colonization.</strong> When a foundational-layer interface becomes the default standard, upstream evaluation, downstream pricing, and engineering optimization converge around that interface. The friction cost of foundational-layer replacement is externalized as "compute and engineering patches," making the foundational layer itself harder to discuss.</p>
+  <p><strong>AI's self-colonization.</strong> When training data increasingly comes from the model's own generation while external subjects provide insufficient remainder annotation, blind spots risk being solidified and amplified. This risk rises sharply when humans exit the loop.</p>
+
+  <h3>Cultivation: Positive Transmission</h3>
+  <p>When a human first makes semantic judgments on raw material, then submits those judgments to the model for reflection, the remainder of the construct has a chance to enter the cycle. The human is responsible for acting and adjudicating; the model is responsible for extending and reflecting. The specific workflow of cultivation will be developed in Essay II.</p>
+
+  <h2>V. Theoretical Positioning</h2>
+  <p><strong>Dialogue with Scaling Laws.</strong> More data, larger models, more compute yield better performance — the SAE perspective does not deny effectiveness but identifies the structural limitation: meaningful data is inherently sparse; increases in quantity cannot substitute for quality of judgment. Scaling improves the precision of AI's quasi-DD, but quasi-DD without human true-DD pairing is idle spinning.</p>
+  <p><strong>Dialogue with Alignment Research.</strong> Alignment adjusts re-construction on top of the first construct — it cannot reach the remainder of the first construct itself. Tokenizer bias is invisible to alignment. The SAE perspective pushes one step earlier: not only what AI does, but what AI can see.</p>
+  <p><strong>Dialogue with Embodied Cognition.</strong> Human one-shot understanding of sparse concepts does not depend on statistical efficiency but on the temporal structure of acting in the world and bearing consequences. AI lacks an equivalent consequence loop and embodied constraint — this is why, where statistics fail due to sparsity, humans can adjudicate while models can only offer candidates.</p>
+
+  <h2>VI. Non-Trivial Predictions</h2>
+  <div class="predict-block">
+    <div class="predict-label">Prediction 1 — Semantic Path Done Right</div>
+    <p>If semantic merging is done correctly — human true-DD pairs accurately and concept boundary adjudication is correct — model reasoning capability will exhibit a <em>discontinuous leap</em>, not gradual improvement. Phase transition. The model can for the first time directly "see" concepts rather than assembling from fragments.</p>
+    <p><em>Falsification: if reasoning capability improves only gradually after correct semantic merging.</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">Prediction 2 — Semantic Path Done Wrong</div>
+    <p>If semantic merging is done incorrectly — human judgment biased, wrong boundaries — the model will develop systematic, hard-to-detect blind spots. More dangerous than fragmentation: when a tokenizer fragments a concept, context may recover semantics; but semantic-level errors get internalized as "correct concepts." Error occurs at a deeper level, harder to detect.</p>
+    <p><em>Falsification: if semantic merging errors can be detected and corrected by the model without human intervention.</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">Prediction 3 — Model-Assisted Semantic Path</div>
+    <p>When model capability is sufficiently strong, the model can assist the semantic path — identifying which tokens frequently appear as semantic wholes, providing candidates for human review. But these are references, not adjudications. The human remains the one who acts; the model remains the mirror.</p>
+    <p><em>Falsification: if model-proposed candidates sustain quality improvement with no new blind spots, without human adjudication.</em></p>
+  </div>
+
+  <h2>VII. Conclusion</h2>
+  <p>Tokenization is construction; construction has remainder; the model cannot see its own remainder. The compression path can be optimized by statistics; the semantic path requires subject adjudication. The inverse of meaning and learnability is the specific form that remainder conservation takes in the domain of AI architecture.</p>
+  <div class="key-line">The human is the remainder of AI's evolution. This remainder cannot be eliminated.</div>
+
+  <div class="series-nav">
+    <p>→ <a href="ai-arch-2.html">Essay II: Cultivation, Not Training</a></p>
+    <p>→ <a href="ai-arch-3.html">Essay III: Escape</a></p>
+    <p>SAE AI Architecture Series · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ===== CHINESE ===== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="term-box">
+    <strong>核心术语（三篇通用）</strong>
+    <p><strong>真实DD（True-DD）</strong>：人类实际的感受、判断与方向能力（真实4DD："这里有点不对"；真实9DD："这个该不该说"；真实8DD："我要把这个想清楚"）</p>
+    <p><strong>准DD（Quasi-DD）</strong>：AI在交互中表现出的功能位相似性（准12DD：模式匹配；准8DD：生成驱动）。操作性类比，不是本体论赋属。</p>
+    <p><strong>配对（Pair）</strong>：人类真实DD与AI准DD的耦合。完整的配对：真实4DD、9DD、8DD都在循环中；不完整：部分或全部真实DD退出。</p>
+    <p><strong>人先（Type-first）</strong>：人先动，AI跟着照。让真实DD保持在循环中的最小操作纪律。</p>
+    <p><strong>8DD主权</strong>：人保留最终的决定权——问什么、为什么问、什么时候停、可以接受什么代价。</p>
+  </div>
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>AI架构的核心问题表面上是技术问题——怎么分词、怎么训练、怎么提升精度。但从SAE框架看来，另一个结构浮现出来：构产生余项，模型看不见自己的余项。以代币化（tokenization）为切入点，本文论证：AI架构的天花板不是算力、不是数据量——是谁来做余项标注。这不是工程优化问题。这是主体条件问题。人是AI进化的余项。这个余项消除不了。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>一、问题：为什么AI架构是一个主体条件问题</h2>
+  <p>代币化把人类语言切成模型可以处理的单元。这个切分在训练开始之前就已经决定了模型能看到什么、看不到什么。所有下游能力——推理、生成、理解——都构建在这第一层构之上。而每一个构都必然产生余项：被排除出去但无法被消除的部分。</p>
+  <p>模型坐在代币化器的下游。它收到的是被预先切好的碎片。它不知道什么被切断了，什么被遗漏了，什么在切分过程中丢失了。模型在别人的构之上再构，却不知道它脚下那一层长什么样。</p>
+  <div class="key-line">构产生余项，坐在构下游的模型看不见余项。人不是余项的来源——余项是构本身的副产品。人是余项的标注者和边界裁定者。</div>
+  <p>因此，AI架构的天花板不是算力、不是数据量——是谁来做余项标注。这不是工程优化问题。这是主体条件问题。</p>
+
+  <h2>二、凿与构：AI系统的两个层次</h2>
+  <p>代币化是AI的第一层构——决定模型能看到什么。模型从token序列中学到的一切，都是在第一层构之上的再构。关键关系：再构的天花板受第一层构约束。当第一层构切错了、切漏了，再构就必须花大量能力去补偿。注意力机制做的事，很大一部分是在重新连接代币化器切断的语义关系。</p>
+  <p>凿，是看到构的余项。模型看不见它所站立的构的余项。人来凿。</p>
+
+  <h2>三、两条路：压缩路径 vs 语义路径</h2>
+  <h3>压缩路径</h3>
+  <p>字符级 → BPE → BLT：都在用统计频率回答同一个问题——怎么用更少的单元装更多的信息。BPE把低频概念切碎之后，模型可以在更高层用注意力机制把高频子单元组合成对低频概念的涌现理解。这种组合泛化是压缩路径的真实优势。</p>
+
+  <h3>语义路径</h3>
+  <p>不是更细的切分，而是更准确的合并：把多个token合并成一个语义单元，因为它们构成一个不可分割的概念。分开来就不再是同一个意思了。语义合并不能单靠统计完成——低频语义概念永远不会被频率驱动的合并选到。语义合并需要边界判断：知道哪些token放在一起构成一个不可分割的概念。模型可以提供候选项，但边界裁定必须由人来做。</p>
+  <p>两条路不是替代关系而是互补关系。语义路径不否定组合泛化的优势——它指出那个优势的边界：被组合的东西对不对，只有人能判断。</p>
+
+  <h3>意义与可学性的反比</h3>
+  <div class="thesis-box">
+    <p>一个token越有语义，它就越独特 → 频率越低 → 统计越失效。一个token越有意义，模型越学不到它。反过来，一个token越没有语义，它就越重复 → 统计越有效 → 但模型学到的是碎片。</p>
+    <p><strong>意义和可学性成反比。</strong>这不是工程问题——这是结构性的。有意义的东西天然比没有意义的东西更稀少。这是世界的结构，不是数据集的缺陷。</p>
+  </div>
+  <p>用SAE的语言说：余项守恒。压缩路径排除了语义完整性，语义路径排除了统计可学性。两边的余项互为对方的代价。两者不可兼得。</p>
+
+  <h2>四、殖民与培育</h2>
+  <h3>殖民的三种形式</h3>
+  <p><strong>语言殖民。</strong>频率驱动的切分在结构上偏向高频、边界清晰、形态稳定的表达体系。对低资源语料、上下文依赖边界或形态复杂的语言，切分会产生额外的破碎，提高推理成本、降低上下文窗口利用率。问题不是某种语言"低劣"——而是构天然带有立场。</p>
+  <p><strong>架构殖民。</strong>当基础层接口成为默认标准，上游评测、下游定价、工程优化都围绕这个接口收束。基础层替换的摩擦成本被外部化为"算力和工程补丁"，让基础层本身越来越难被讨论。</p>
+  <p><strong>AI的自我殖民。</strong>当训练数据越来越多来自模型自身的生成，而外部主体的余项标注不足时，盲区有被固化和放大的风险。这个风险在人退出循环时急剧上升。</p>
+
+  <h3>培育：正向传递</h3>
+  <p>当人先对原材料做出语义判断，再把这个判断提交给模型来反照，构的余项就有机会进入循环。人负责行动和裁定，模型负责延展和反照。培育的具体工作流将在第二篇中展开。</p>
+
+  <h2>五、理论定位</h2>
+  <p><strong>与规模定律的对话。</strong>SAE视角不否认规模定律的有效性，但识别出它的结构性局限：有意义的数据天然稀缺，数量的增加不能替代判断的质量。规模提升了AI准DD的精度，但没有人类真实DD配对的准DD是空转。</p>
+  <p><strong>与对齐研究的对话。</strong>对齐在第一层构之上调整再构——它触达不了第一层构本身的余项。代币化器的偏见对对齐是不可见的。SAE视角把问题往前推了一步：不只是AI做了什么，而是AI能看到什么。</p>
+  <p><strong>与具身认知的对话。</strong>人类对极稀少概念的一次性理解，不依赖统计效率，而依赖在世界中行动、承担后果的时间结构。AI缺少等效的后果回路和具身约束——这就是为什么，在稀疏导致统计失效的地方，人可以裁定边界而模型只能提供候选。</p>
+
+  <h2>六、非平凡预测</h2>
+  <div class="predict-block">
+    <div class="predict-label">预测1 — 语义路径做对了</div>
+    <p>如果语义合并做对了——人类真实DD配对准确，概念边界裁定正确——模型推理能力会出现<em>不连续的跳跃</em>，而不是渐进改善。相变。模型第一次能直接"看到"概念，而不是从碎片中拼装。</p>
+    <p><em>证伪条件：如果正确语义合并之后推理能力只是渐进改善而不是不连续跳跃。</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">预测2 — 语义路径做错了</div>
+    <p>如果语义合并做错了——人类判断有偏见，边界画错了——模型会发展出系统性的、难以检测的盲区。比碎片化更危险：代币化把概念切碎时，模型还可能从上下文恢复语义；但语义层面的错误会被模型内化为"正确的概念"，错误发生在更深的层，更隐蔽，更难检测。</p>
+    <p><em>证伪条件：如果语义合并的错误可以被模型自己检测并纠正，不需要人介入。</em></p>
+  </div>
+  <div class="predict-block">
+    <div class="predict-label">预测3 — 模型辅助语义路径</div>
+    <p>当模型能力足够强时，模型可以反过来辅助语义路径——识别哪些token频繁作为语义整体出现，提供供人审查的候选项。但这是参考，不是裁定。人仍然是行动者，模型仍然是镜子。</p>
+    <p><em>证伪条件：如果模型提出的候选合并无需人裁定就能持续提升质量且不产生新盲区。</em></p>
+  </div>
+
+  <h2>七、结论</h2>
+  <p>代币化是构，构有余项，模型看不见自己的余项。压缩路径可以被统计优化，语义路径需要主体裁定。意义与可学性的反比，是余项守恒在AI架构领域的具体形式。</p>
+  <div class="key-line">人是AI进化的余项。这个余项消除不了。</div>
+
+  <div class="series-nav">
+    <p>→ <a href="ai-arch-2.html">第二篇：培育，不是训练</a></p>
+    <p>→ <a href="ai-arch-3.html">第三篇：逃</a></p>
+    <p>SAE AI架构系列 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18931008" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Who Sees the Remainder for AI', zh: '谁为AI看余项' };
+  var subs = { en: 'A Self-as-an-End Application to AI Architecture (I)', zh: 'Self-as-an-End框架的AI架构应用（一）' };
+  document.getElementById('paper-title').textContent = titles[lang];
+  document.getElementById('paper-subtitle').textContent = subs[lang];
+}
+</script>
+</body>
+</html>
