@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursive Definition of ρ and Expression Compression Complexity — ZFCρ Paper VI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper 6: Transforming ρ-conservation into a recursive definition on history terms. Core result: recurrence for ρ_E(n) and proof of δ(n) monotonicity. δ measures expression compression complexity, not primality. Primes are fixed points of δ.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, rho arithmetic, ρ-arithmetic, recursive definition, compression complexity, term model, history terms, primes, expression cost">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Recursive Definition of ρ and Expression Compression Complexity — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho6.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Recursive Definition of ρ and Expression Compression Complexity",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho6.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18934531"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "rho-arithmetic", "recursive definition", "compression complexity",
+      "history terms", "term model", "integer complexity", "expression cost"
+    ],
+    "abstract": "Paper 5 provided structural induction — ρ-arithmetic's proof tools. This paper supplies the measurement tools. Paper 3's conservation principle is transformed into a recursive definition of ρ on history terms. Core result: the recurrence for ρ_E(n) is derived with simultaneous consideration of successor, addition, and multiplication paths. δ(n) = n − ρ_E(n) measures expression compression complexity, not primality. Primes are fixed points of δ — they do not increase compression efficiency.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho6.html">
+  <meta name="citation_title" content="Recursive Definition of ρ and Expression Compression Complexity">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18934531">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho6.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    /* Lang tab switcher */
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper VI · Zenodo 18934531</div>
+    <h1 id="paper-title">Recursive Definition of ρ and Expression Compression Complexity</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18934531" target="_blank" rel="noopener">10.5281/zenodo.18934531</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18934531" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Paper 5 provided structural induction — ρ-arithmetic's proof tools. This paper supplies the measurement tools.</p>
+    <p>Paper 3's conservation principle is transformed into a recursive definition of ρ on history terms (C1–C4). The compact history-term space Hist*(n) is introduced, and the first concrete measure ρ_w (α=1, β=2) is provided.</p>
+    <p>Core result: the recurrence for ρ_E(n) = min_{h ∈ Hist*(n)} ρ_w(h) is derived, simultaneously considering successor, addition, and multiplication paths. Defining δ(n) = n - ρ_E(n), it is proved that δ is monotonically non-decreasing and positive for all n ≥ 9.</p>
+    <p>δ(n) measures not primality but expression compression complexity — how much structural compression n can inherit from cheaper sub-expressions (especially multiplicative substructure). ρ_E has direct structural correspondence to the Integer Complexity Problem in theoretical computer science.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction</h2>
+  <h3>1.1 From Proof Tools to Measurement Tools</h3>
+  <p>Paper 5 provided structural induction. This paper brings Paper 3's conservation principle inside ρ-arithmetic, making ρ a bottom-up computable function on history terms.</p>
+
+  <h3>1.2 Correction of Initial Intuition</h3>
+  <p>During computation of ρ_E(n), an initial intuition was "primes have no multiplication shortcut, so ρ_E(p) = p." This intuition is wrong. Although primes' Hist*(p) contains no mul-root terms (Paper 4 §7.2), multiplication can appear at lower levels — e.g., succ(mul(h_2^std, h_5^std)) is a compact term of value 11 with cost 2+5+2+1=10&lt;11. Primes can inherit compression from nearby composites' multiplicative structure.</p>
+  <p>The correct understanding: ρ_E(n) measures n's minimum expression cost in ρ-arithmetic's term grammar, without distinguishing primes from composites. δ(n) = n - ρ_E(n) is an expression compression complexity measure, not a primality criterion.</p>
+
+  <h2>2. Compact History-Term Space Hist*(n) [Construction]</h2>
+  <h3>2.1 Trivial Operations</h3>
+  <p><strong>Add-zero:</strong> add(0, h) or add(h, 0), for any h.</p>
+  <p><strong>Multiply-by-one:</strong> mul(succ(0), h) or mul(h, succ(0)), for any h.</p>
+  <p><strong>Zero-containing multiplication:</strong> mul(0, h) or mul(h, 0), for any h (including h = 0).</p>
+
+  <h3>2.2 Compact Terms</h3>
+  <p>A history term h is compact iff no subterm of h is a trivial operation.</p>
+
+  <h3>2.3 Hist*(n)</h3>
+  <div class="math-formula">Hist*(n) = { h ∈ Hist(n) | h is compact }</div>
+  <p><strong>Lemma: Hist*(n) is non-empty and finite.</strong></p>
+  <p>Non-emptiness: h_n^std ∈ Hist*(n).</p>
+  <p>Finiteness: Compactness requires every add child to have val &gt; 0 and every mul child to have val &gt; 1. Each child's val is strictly less than its parent's, so tree depth is bounded by n. Finite depth and finite branching guarantee finiteness.</p>
+
+  <h2>3. Recursive Definition of ρ [Recursive Definition]</h2>
+  <h3>3.1 C1: ρ(0) = 0</h3>
+  <h3>3.2 C2: ρ(succ(h)) = ρ(h) + 1</h3>
+  <h3>3.3 C3: ρ(add(h₁, h₂)) = ρ(h₁) + ρ(h₂) + α</h3>
+  <h3>3.4 C4: ρ(mul(h₁, h₂)) = ρ(h₁) + ρ(h₂) + β</h3>
+  <p>Default: α = 1, β = 2, β ≥ α &gt; 0.</p>
+
+  <h3>3.5 Conservation</h3>
+  <p>Conservation is automatic: output ρ = sum of input ρ-values + operation cost.</p>
+
+  <h2>4. Definition and Recurrence of ρ_E [Theorem]</h2>
+  <h3>4.1 Definition</h3>
+  <div class="math-formula">ρ_E(n) = min_{h ∈ Hist*(n)} ρ_w(h)</div>
+  <p>By §2.3 lemma, the minimum exists.</p>
+
+  <h3>4.2 Core Theorem: Recurrence for ρ_E</h3>
+  <p><strong>Proposition.</strong> For n &gt; 0 (α = 1, β = 2),</p>
+  <div class="math-formula">ρ_E(n) = min{ ρ_E(n-1) + 1 (successor path),
+              min_{a·b=n, a,b>1} (ρ_E(a) + ρ_E(b) + 2) (multiplication path) }</div>
+  <p>Initial condition: ρ_E(0) = 0.</p>
+
+  <p><strong>Note:</strong> The addition path (min_{a+b=n, a,b&gt;0}(ρ_E(a)+ρ_E(b)+1)) is dominated by the successor path when α = 1, so it can be omitted. This is proved by the following lemma.</p>
+
+  <p><strong>Lemma (Addition Domination).</strong> For all n ≥ 2, for all a, b &gt; 0 with a + b = n: ρ_E(a) + ρ_E(b) ≥ ρ_E(n-1).</p>
+
+  <p><strong>Proof.</strong> Two cases.</p>
+  <p>Case 1: b = 1 (i.e., a = n-1). ρ_E(n-1) + ρ_E(1) = ρ_E(n-1) + 1 &gt; ρ_E(n-1). Immediate.</p>
+  <p>Case 2: b &gt; 1. By subadditivity (add is a valid compact path, a &gt; 0 and b-1 &gt; 0, a + (b-1) = n-1):</p>
+  <div class="math-formula">ρ_E(n-1) ≤ ρ_E(a) + ρ_E(b-1) + 1</div>
+  <p>By the successor branch: ρ_E(b) ≤ ρ_E(b-1) + 1, i.e., ρ_E(b-1) ≥ ρ_E(b) - 1. Substituting:</p>
+  <div class="math-formula">ρ_E(n-1) ≤ ρ_E(a) + (ρ_E(b) - 1) + 1 = ρ_E(a) + ρ_E(b)</div>
+  <p>∎</p>
+
+  <p><strong>Corollary.</strong> Addition path cost ρ_E(a) + ρ_E(b) + 1 ≥ ρ_E(n-1) + 1 = successor path cost. Addition never beats successor. The recurrence simplifies to:</p>
+  <div class="math-formula">ρ_E(n) = min(ρ_E(n-1) + 1, min_{a·b=n, a,b>1} (ρ_E(a) + ρ_E(b) + 2))</div>
+
+  <p><strong>Addition is dominated by successor</strong> — a strict consequence of α = 1.</p>
+
+  <h3>4.3 Table of ρ_E for Small n</h3>
+  <table class="struct-table">
+    <thead><tr><th>n</th><th>ρ_E(n)</th><th>Optimal path</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>succ</td></tr>
+      <tr><td>2</td><td>2</td><td>succ</td></tr>
+      <tr><td>3</td><td>3</td><td>succ</td></tr>
+      <tr><td>4</td><td>4</td><td>succ (mul(2,2): 6&gt;4)</td></tr>
+      <tr><td>5</td><td>5</td><td>succ</td></tr>
+      <tr><td>6</td><td>6</td><td>succ (mul(2,3): 7&gt;6)</td></tr>
+      <tr><td>7</td><td>7</td><td>succ</td></tr>
+      <tr><td>8</td><td>8</td><td>succ (mul(2,4): 8=8, tie)</td></tr>
+      <tr><td>9</td><td>8</td><td>mul(3,3): 3+3+2=8</td></tr>
+      <tr><td>10</td><td>9</td><td>succ from 9; or mul(2,5): 2+5+2=9</td></tr>
+      <tr><td>11</td><td>10</td><td>succ from 10</td></tr>
+      <tr><td>12</td><td>9</td><td>mul(3,4): 3+4+2=9</td></tr>
+      <tr><td>13</td><td>10</td><td>succ from 12</td></tr>
+      <tr><td>14</td><td>11</td><td>succ from 13</td></tr>
+      <tr><td>15</td><td>10</td><td>mul(3,5): 3+5+2=10</td></tr>
+      <tr><td>16</td><td>10</td><td>mul(4,4): 4+4+2=10</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. Properties of δ(n) [Theorem]</h2>
+  <h3>5.1 Definition</h3>
+  <div class="math-formula">δ(n) = n - ρ_E(n)</div>
+
+  <h3>5.2 Monotonicity</h3>
+  <p><strong>Proposition.</strong> δ is monotonically non-decreasing: δ(n+1) ≥ δ(n) for all n ≥ 0.</p>
+  <p><strong>Proof.</strong> From the successor branch: ρ_E(n+1) ≤ ρ_E(n) + 1. Therefore δ(n+1) = (n+1) - ρ_E(n+1) ≥ (n+1) - (ρ_E(n)+1) = δ(n). ∎</p>
+
+  <h3>5.3 Table of δ for Small n</h3>
+  <table class="struct-table">
+    <thead><tr><th>n</th><th>Prime/Comp</th><th>ρ_E(n)</th><th>δ(n)</th></tr></thead>
+    <tbody>
+      <tr><td>0–8</td><td>—</td><td>n</td><td>0</td></tr>
+      <tr><td>9</td><td>comp</td><td>8</td><td>1</td></tr>
+      <tr><td>10</td><td>comp</td><td>9</td><td>1</td></tr>
+      <tr><td>11</td><td>prime</td><td>10</td><td>1</td></tr>
+      <tr><td>12</td><td>comp</td><td>9</td><td>3</td></tr>
+      <tr><td>13</td><td>prime</td><td>10</td><td>3</td></tr>
+      <tr><td>14</td><td>comp</td><td>11</td><td>3</td></tr>
+      <tr><td>15</td><td>comp</td><td>10</td><td>5</td></tr>
+      <tr><td>16</td><td>comp</td><td>10</td><td>6</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.4 δ Is Not a Primality Criterion</h3>
+  <p>δ does not distinguish primes from composites. δ(11)=1 (prime), δ(10)=1 (composite). δ(13)=3 (prime), δ(12)=3 (composite).</p>
+  <p>This is because multiplicative subterms can appear at any depth in a compact term. A prime p cannot be directly written as non-trivial multiplication, but it can be written as succ^k(mul(...)) — inheriting multiplicative compression from nearby composites.</p>
+
+  <h3>5.5 What δ Measures</h3>
+  <p>δ(n) measures: <strong>how much expression cost n saves relative to the pure successor chain, under the given term grammar and weights.</strong> This is an expression compression complexity — it reflects how much structural compression n can inherit from multiplicative substructure.</p>
+  <p>δ may jump at composites (when new factorizations become available), then propagate compression gains to subsequent numbers via the successor path. This is why δ is non-decreasing — once some n gains compression, n+1 inherits at least that gain via succ.</p>
+
+  <h2>6. ρ_E and the Integer Complexity Problem [Discussion]</h2>
+  <h3>6.1 Structural Correspondence</h3>
+  <p>ρ_E(n)'s recurrence has direct structural correspondence to the <strong>Integer Complexity Problem</strong>. Integer complexity ‖n‖ is defined as the minimum number of 1's needed to represent n using 1, addition, and multiplication. Known: 3log₃ n ≤ ‖n‖ ≤ 3log₂ n (Selfridge). ρ_E(n) is a weighted variant with different primitives (0 + succ instead of 1 + addition).</p>
+
+  <h3>6.2 Import of Known Results</h3>
+  <p>If ρ_E(n) can be precisely translated into a known integer-complexity variant, existing bounds and structural results can be directly imported into ρ-arithmetic.</p>
+
+  <h3>6.3 Computational Complexity</h3>
+  <p>Computing ρ_E(n) requires factoring n to evaluate the multiplication branch. PA treats all natural numbers as flat; ρ-arithmetic reveals that the minimum operative cost of obtaining n is a function of n's factor structure.</p>
+
+  <h2>7. Projection Properties [Definition]</h2>
+  <h3>7.1 P1–P3 (from Paper 5)</h3>
+  <p>P1: val surjective. P2: val is Σ-homomorphism. P3: ≡_E = ker(val).</p>
+
+  <h3>7.2 Projection Identity</h3>
+  <div class="math-formula">ρ(h) = ρ_E(val(h)) + ρ_val(h)</div>
+  <p>where ρ_val(h) = ρ(h) - ρ_E(val(h)) ≥ 0.</p>
+  <p><strong>Status:</strong> Projection identity (algebraic consequence of ρ_E definition), not an independent axiom. ρ_val(h) measures h's excess expression cost relative to the cheapest compact term of the same value.</p>
+
+  <h2>8. Discussion</h2>
+  <h3>8.1 Why the Initial Intuition Was Wrong</h3>
+  <p>"Primes have no multiplication shortcut" is wrong because it considers only root nodes. Paper 4 §7.2's prime characterization (Hist*_mul(p) = ∅) constrains only root nodes, not internal subterms. ρ_E's recurrence allows inheriting compression from internal multiplicative substructure via successor and addition.</p>
+
+  <h3>8.2 Jump Points of δ</h3>
+  <p>δ jumps at composites where new factorizations make multiplication paths cheaper. Highly composite numbers may be where δ grows fastest. The precise relation of δ's growth to d(n), Ω(n), etc. is a core M3 question.</p>
+
+  <h3>8.3 Preliminary Discovery: Primes Are Fixed Points of δ</h3>
+  <p><strong>Theorem.</strong> If n is prime, then δ(n) = δ(n-1).</p>
+  <p><strong>Proof.</strong> n is prime means n has no non-trivial factor pair a, b &gt; 1 with ab = n. Therefore the multiplication branch of the ρ_E recurrence is empty. The addition branch is dominated by the successor branch (§4.2 note). The only competing path is the successor branch: ρ_E(n) = ρ_E(n-1) + 1. Therefore δ(n) = n - ρ_E(n) = n - ρ_E(n-1) - 1 = (n-1) - ρ_E(n-1) = δ(n-1). ∎</p>
+
+  <p><strong>Equivalent formulation.</strong> δ(n) &gt; δ(n-1) implies n is composite. That is: δ-jumps occur only at composites. Primes are "plateaus" in the δ sequence — they do not increase compression efficiency, only inheriting from the previous number.</p>
+
+  <p><strong>Significance.</strong> This is a positive dynamical characterization of primes: primes are fixed points of the δ function. This property is not directly expressible in PA's base language {0, S, +, ×} — it requires the concepts of ρ_E and δ, which are native objects of ρ-arithmetic.</p>
+
+  <h3>8.4 The Converse Does Not Hold: Some Composites Are Also Fixed Points</h3>
+  <p>δ(n) = δ(n-1) does not imply n is prime. Composites can also be δ-fixed-points — when none of their multiplication paths is cheaper than the successor path.</p>
+
+  <p><strong>Example:</strong> n = 4 = 2 × 2. ρ_E(2) + ρ_E(2) + 2 = 6 &gt; 4 = ρ_E(3) + 1. Multiplication is more expensive. δ(4) = δ(3) = 0.</p>
+
+  <p>A more notable example: n = 21 = 3 × 7 (product of two primes). ρ_E(3) + ρ_E(7) + 2 = 3 + 7 + 2 = 12. ρ_E(20) + 1 = 11 + 1 = 12. Tie. δ(21) = δ(20).</p>
+
+  <p><strong>Observation:</strong> Products of two primes (semiprimes) are more likely to be δ-fixed-points. Reason: primes' ρ_E has never gained compression from a multiplication root (primes have no non-trivial mul-root terms); their compression comes entirely from successor-inheritance from nearby composites. Therefore, when two primes p, q serve as factors, pq's multiplication path cost ρ_E(p) + ρ_E(q) + 2 is relatively large, making it more likely to not beat the successor path.</p>
+
+  <p>Note: one cannot say "ρ_E(p) = p" — large primes can have ρ_E &lt; p (via successor-inheritance from nearby composites, e.g., ρ_E(11) = 10 &lt; 11). Semiprimes become fixed points not because their factors "have no compression," but because their factors' compression comes from successor-inheritance rather than multiplication roots — the efficiency gain from combining inherited compression is insufficient.</p>
+
+  <p>By contrast, numbers whose factors are themselves composite (e.g., 12 = 3 × 4) more readily gain compression on the multiplication path.</p>
+
+  <h3>8.5 Paper 7 Preview: Complete Characterization of δ-Fixed-Points</h3>
+  <p>The δ-fixed-point set {n : δ(n) = δ(n-1)} contains all primes and also certain composites (especially those with "insufficiently rich" factor structure, such as semiprimes).</p>
+
+  <p>Paper 7 will investigate:</p>
+  <ul>
+    <li>Precise characterization of δ-fixed-points: which composites are fixed points? Are they exactly those whose "multiplication path cost ≥ successor path cost"?</li>
+    <li>Density of the fixed-point set: what proportion of fixed points are prime? Asymptotically, are "almost all" fixed points prime?</li>
+    <li>Distribution of δ-jump-points (δ(n) &gt; δ(n-1)) and their precise relation to factor structure</li>
+    <li>Possible connection between the δ-fixed-point characterization and the twin prime problem</li>
+  </ul>
+  <p>These questions connect δ's dynamical analysis directly to classical number theory, forming the first test case of the M3 stage.</p>
+
+  <h3>8.6 No New Primality Criterion — But a New Dynamical Property of Primes</h3>
+  <p>ρ_w does not distinguish primes from composites — δ can be positive for both. But "primes are always δ-fixed-points" is a new theorem, characterizing a positive dynamical property of primes in δ's language. It is not a replacement for primality criteria, but ρ-arithmetic's first non-trivial answer to "why are primes special?": <strong>primes are those numbers that do not increase compression efficiency.</strong></p>
+
+  <h2>9. Open Problems</h2>
+  <ol>
+    <li><strong>Closed form for ρ_E(n).</strong> Does one exist? Precise relation to ‖n‖?</li>
+    <li><strong>Growth rate of δ(n).</strong> Since ‖n‖ ≤ 3log₂ n, we expect δ(n) ≥ n - O(log n) — nearly all successor cost can be compressed away for large n.</li>
+    <li><strong>Jump-point distribution of δ.</strong> At which n does δ strictly increase? Relation to highly composite numbers?</li>
+    <li><strong>Nested multiplication efficiency.</strong> Does nested mul(mul(...), ...) ever beat single-layer mul?</li>
+    <li><strong>Exact counting of |Hist*(n)|.</strong></li>
+    <li><strong>Stronger normal forms.</strong> Compression-preorder irreducibility?</li>
+    <li><strong>Scale-dependent measures.</strong> If β depends on input size, how does δ behave?</li>
+  </ol>
+
+  <h2>References</h2>
+  <ol>
+    <li>Han Qin, "On the Remainder of Choice," 2026. DOI: 10.5281/zenodo.18914682</li>
+    <li>Han Qin, "The Quantitative Identity of the Remainder," 2026. DOI: 10.5281/zenodo.18927658</li>
+    <li>Han Qin, "ρ-Conservation," 2026. DOI: 10.5281/zenodo.18929819</li>
+    <li>Han Qin, "A Draft Term Model for ρ-Arithmetic," 2026. DOI: 10.5281/zenodo.18930810</li>
+    <li>Han Qin, "Generation Axioms and Structural Induction," ZFCρ Series Paper 5, 2026.</li>
+    <li>Peano, G. <em>Arithmetices principia, nova methodo exposita.</em> Turin: Bocca, 1889.</li>
+    <li>Guy, R. K. "Some suspiciously simple sequences." <em>Amer. Math. Monthly</em> 93 (1986): 186–190.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho5.html">ZFCρ Paper V: Generation Axioms and Structural Induction</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>Paper 5给出了结构归纳——ρ-算术的证明工具。本文补上度量工具。</p>
+    <p>将Paper 3的守恒原理转化为ρ在历史项上的递归定义（C1–C4）。引入紧凑历史项空间 Hist*(n)，给出第一个具体度量 ρ_w（α=1, β=2）。</p>
+    <p>核心结果：推导 ρ_E(n) = min_{h ∈ Hist*(n)} ρ_w(h) 满足的递推公式，该公式同时考虑后继、加法和乘法三条路径的代价竞争。定义 δ(n) = n - ρ_E(n)，证明 δ 是单调不减的，且从 n = 9 起恒正。</p>
+    <p>δ(n) 度量的不是素性，而是表达式压缩复杂度——n 能从更便宜的子表达式（特别是乘法子结构）中继承多少结构压缩。ρ_E 与理论计算机科学中的整数复杂度问题（Integer Complexity Problem）有直接的结构对应。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 引言</h2>
+  <h3>1.1 从证明工具到度量工具</h3>
+  <p>Paper 5给出了结构归纳。本文把Paper 3的守恒原理搬进ρ-算术，使ρ成为历史项上自底向上可计算的函数，然后用这个函数做具体计算。</p>
+
+  <h3>1.2 核心发现的修正</h3>
+  <p>在计算 ρ_E(n) 的过程中，一个初始的直觉是"素数没有乘法捷径，因此 ρ_E(p) = p"。这个直觉是错误的。虽然素数的 Hist*(p) 不包含以 mul 为根节点的项（Paper 4 §7.2），但乘法可以出现在更低层——例如 succ(mul(h_2^std, h_5^std)) 是值为11的紧凑项，代价 2+5+2+1=10&lt;11。因此素数也可以从邻近合数的乘法结构中继承压缩。</p>
+  <p>正确的理解：ρ_E(n) 度量的是 n 在ρ-算术项文法中的最小表达式代价，不区分素数和合数。δ(n) = n - ρ_E(n) 是一个关于整数的表达式压缩复杂度的量，不是素性判据。</p>
+
+  <h2>2. 紧凑历史项空间 Hist*(n) 【构造】</h2>
+  <h3>2.1 平凡操作的定义</h3>
+  <p><strong>加零：</strong> add(0, h) 或 add(h, 0)，对任意 h。</p>
+  <p><strong>乘一：</strong> mul(succ(0), h) 或 mul(h, succ(0))，对任意 h。</p>
+  <p><strong>含零乘法：</strong> mul(0, h) 或 mul(h, 0)，对任意 h（包括 h = 0）。</p>
+
+  <h3>2.2 紧凑项</h3>
+  <p>历史项 h 是紧凑的，当且仅当 h 的任何子项都不是平凡操作。</p>
+
+  <h3>2.3 Hist*(n)</h3>
+  <div class="math-formula">Hist*(n) = { h ∈ Hist(n) | h 是紧凑的 }</div>
+  <p><strong>引理：Hist*(n) 非空且有限。</strong></p>
+  <p>非空性：标准历史 h_n^std ∈ Hist*(n)（纯后继链不含平凡操作）。</p>
+  <p>有限性：紧凑项的每个 add 子项的两个输入val都 &gt; 0，每个 mul 子项的两个输入val都 &gt; 1。因此任何子项的val严格小于父项的val（对 succ 减1，对 add 和 mul 减至少1），树深度被 n 有界约束。有限深度、有限分支（每层至多两个子节点）保证了 Hist*(n) 有限。</p>
+
+  <h2>3. ρ的递归定义 【递归定义】</h2>
+  <h3>3.1 C1：ρ(0) = 0</h3>
+  <h3>3.2 C2：ρ(succ(h)) = ρ(h) + 1</h3>
+  <h3>3.3 C3：ρ(add(h₁, h₂)) = ρ(h₁) + ρ(h₂) + α</h3>
+  <h3>3.4 C4：ρ(mul(h₁, h₂)) = ρ(h₁) + ρ(h₂) + β</h3>
+  <p>默认参数：α = 1，β = 2，β ≥ α &gt; 0。</p>
+
+  <h3>3.5 守恒性</h3>
+  <p>C1–C4把ρ定义为历史项上自底向上递归计算的函数。守恒是自动的：输出ρ = 输入ρ之和 + 运算代价。</p>
+
+  <h2>4. ρ_E 的定义与递推公式 【定理】</h2>
+  <h3>4.1 定义</h3>
+  <div class="math-formula">ρ_E(n) = min_{h ∈ Hist*(n)} ρ_w(h)</div>
+  <p>ρ_E(n) 是外延值 n 在所有紧凑生成路径中最便宜的代价。由 Hist*(n) 的非空性和有限性（§2.3引理），最小值存在。</p>
+
+  <h3>4.2 核心定理：ρ_E 的递推公式</h3>
+  <p><strong>命题。</strong> 对 n &gt; 0（α = 1, β = 2），</p>
+  <div class="math-formula">ρ_E(n) = min{ ρ_E(n-1) + 1 (后继路径),
+              min_{a·b=n, a,b>1} (ρ_E(a) + ρ_E(b) + 2) (乘法路径) }</div>
+  <p>初始条件：ρ_E(0) = 0。</p>
+
+  <p><strong>证明思路。</strong> Hist*(n) 中任何紧凑项 h 的根节点是 succ、add 或 mul 之一（n &gt; 0 排除了 0）。</p>
+
+  <p>若根节点是 succ(h')：ρ_w(h) = ρ_w(h') + 1，且 h' 是 Hist*({n-1}) 的紧凑项。最优时 ρ_w(h') = ρ_E(n-1)。</p>
+
+  <p>若根节点是 add(h₁, h₂)：紧凑性要求 val(h₁), val(h₂) &gt; 0。设 a = val(h₁), b = val(h₂)，a+b=n。最优时 ρ_w(h) = ρ_E(a) + ρ_E(b) + 1。</p>
+
+  <p>若根节点是 mul(h₁, h₂)：紧凑性要求 val(h₁), val(h₂) &gt; 1。设 a = val(h₁), b = val(h₂)，ab=n。最优时 ρ_w(h) = ρ_E(a) + ρ_E(b) + 2。这一分支仅当 n 有大于1的因子对时非空。</p>
+
+  <p>ρ_E(n) 取三条路径的全局最小值。∎</p>
+
+  <p><strong>引理（加法支配）。</strong> 对所有 n ≥ 2，对所有 a, b &gt; 0 且 a + b = n：ρ_E(a) + ρ_E(b) ≥ ρ_E(n-1)。</p>
+
+  <p><strong>证明。</strong> 分两种情况。</p>
+
+  <p>情况一：b = 1（即 a = n-1）。ρ_E(n-1) + ρ_E(1) = ρ_E(n-1) + 1 &gt; ρ_E(n-1)。直接成立。</p>
+
+  <p>情况二：b &gt; 1。由子可加性（add 是合法紧凑路径，a &gt; 0 且 b-1 &gt; 0，a + (b-1) = n-1）：</p>
+  <div class="math-formula">ρ_E(n-1) ≤ ρ_E(a) + ρ_E(b-1) + 1</div>
+
+  <p>由后继分支：ρ_E(b) ≤ ρ_E(b-1) + 1，即 ρ_E(b-1) ≥ ρ_E(b) - 1。代入：</p>
+  <div class="math-formula">ρ_E(n-1) ≤ ρ_E(a) + (ρ_E(b) - 1) + 1 = ρ_E(a) + ρ_E(b)</div>
+
+  <p>∎</p>
+
+  <p><strong>推论。</strong> 加法路径代价 ρ_E(a) + ρ_E(b) + 1 ≥ ρ_E(n-1) + 1 = 后继路径代价。加法路径永远不比后继路径便宜。因此递推简化为：</p>
+  <div class="math-formula">ρ_E(n) = min(ρ_E(n-1) + 1, min_{a·b=n, a,b>1} (ρ_E(a) + ρ_E(b) + 2))</div>
+
+  <p><strong>加法路径被后继路径支配</strong>——这是 α = 1 时的严格推论。</p>
+
+  <h3>4.3 ρ_E 的小 n 值</h3>
+  <table class="struct-table">
+    <thead><tr><th>n</th><th>ρ_E(n)</th><th>最优路径</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>succ(0)</td></tr>
+      <tr><td>2</td><td>2</td><td>后继</td></tr>
+      <tr><td>3</td><td>3</td><td>后继</td></tr>
+      <tr><td>4</td><td>4</td><td>后继（mul(2,2): 2+2+2=6 &gt; 4）</td></tr>
+      <tr><td>5</td><td>5</td><td>后继</td></tr>
+      <tr><td>6</td><td>6</td><td>后继（mul(2,3): 2+3+2=7 &gt; 6）</td></tr>
+      <tr><td>7</td><td>7</td><td>后继</td></tr>
+      <tr><td>8</td><td>8</td><td>后继（mul(2,4): 2+4+2=8 = 8，平局）</td></tr>
+      <tr><td>9</td><td>8</td><td>mul(3,3): 3+3+2=8 &lt; 9</td></tr>
+      <tr><td>10</td><td>9</td><td>succ(mul(3,3)): 8+1=9 &lt; 10；或 mul(2,5): 2+5+2=9</td></tr>
+      <tr><td>11</td><td>10</td><td>succ(mul(2,5)): 9+1=10；或 succ²(mul(3,3)): 8+2=10</td></tr>
+      <tr><td>12</td><td>9</td><td>mul(3,4): 3+4+2=9</td></tr>
+      <tr><td>13</td><td>10</td><td>succ(mul(3,4)): 9+1=10</td></tr>
+      <tr><td>16</td><td>10</td><td>mul(4,4): 4+4+2=10；或 mul(2,8): 2+8+2=12 &gt; 10</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>关键观察：从 n=9 开始，ρ_E(n) &lt; n。</strong> 而且 ρ_E(11) = 10 &lt; 11，ρ_E(13) = 10 &lt; 13——<strong>素数也有 δ &gt; 0。</strong></p>
+
+  <h2>5. δ(n) 的性质 【定理】</h2>
+  <h3>5.1 定义</h3>
+  <div class="math-formula">δ(n) = n - ρ_E(n)</div>
+
+  <h3>5.2 δ 的单调性</h3>
+  <p><strong>命题。</strong> δ 是单调不减的：δ(n+1) ≥ δ(n) 对所有 n ≥ 0。</p>
+  <p><strong>证明。</strong> 由递推公式的后继分支：ρ_E(n+1) ≤ ρ_E(n) + 1。因此 δ(n+1) = (n+1) - ρ_E(n+1) ≥ (n+1) - (ρ_E(n)+1) = n - ρ_E(n) = δ(n)。∎</p>
+
+  <h3>5.3 δ 的小 n 值</h3>
+  <table class="struct-table">
+    <thead><tr><th>n</th><th>素/合</th><th>ρ_E(n)</th><th>δ(n)</th></tr></thead>
+    <tbody>
+      <tr><td>0–8</td><td>—</td><td>n</td><td>0</td></tr>
+      <tr><td>9</td><td>合</td><td>8</td><td>1</td></tr>
+      <tr><td>10</td><td>合</td><td>9</td><td>1</td></tr>
+      <tr><td>11</td><td>素</td><td>10</td><td>1</td></tr>
+      <tr><td>12</td><td>合</td><td>9</td><td>3</td></tr>
+      <tr><td>13</td><td>素</td><td>10</td><td>3</td></tr>
+      <tr><td>14</td><td>合</td><td>11</td><td>3</td></tr>
+      <tr><td>15</td><td>合</td><td>10</td><td>5</td></tr>
+      <tr><td>16</td><td>合</td><td>10</td><td>6</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.4 δ 不是素性判据</h3>
+
+  <p>从表格可以看出：<strong>δ 不区分素数和合数。</strong> δ(11) = 1（素数），δ(10) = 1（合数）。δ(13) = 3（素数），δ(12) = 3（合数）。</p>
+  <p>这是因为乘法子项可以出现在紧凑项的任何深度（不只是根节点）。素数 p 虽然不能被直接写成非平凡乘法，但可以被写成 succ^k(mul(...))——从邻近的合数通过后继步继承乘法压缩。</p>
+
+  <h3>5.5 δ 度量的是什么</h3>
+
+  <p>δ(n) 度量的是：<strong>在ρ-算术的项文法和给定权重下，n 相对于纯后继链能节省多少表达式代价。</strong> 这是一个表达式压缩复杂度——它反映了 n 能从乘法子结构中继承多少结构压缩。</p>
+  <p>δ 在合数处可能跳跃（当新的乘法分解变得可用时），然后通过后继路径向后续的数传播压缩收益。这就是为什么 δ 是单调不减的——一旦某个 n 获得了压缩收益，n+1 至少可以通过 succ 继承这个收益。</p>
+
+  <h2>6. ρ_E 与整数复杂度问题 【讨论】</h2>
+  <h3>6.1 结构对应</h3>
+  <p>ρ_E(n) 的递推公式与理论计算机科学中的<strong>整数复杂度问题（Integer Complexity Problem）</strong>有直接的结构对应。整数复杂度 ‖n‖ 定义为：用1和加法、乘法表达 n 所需的最少1的个数。已知 ‖n‖ 满足类似的递推：</p>
+  <div class="math-formula">‖n‖ = min( min_{a+b=n} (‖a‖ + ‖b‖), min_{ab=n, a,b>1}(‖a‖ + ‖b‖) )</div>
+  <p>ρ_E(n) 是同一类问题在ρ-算术项文法中的加权变体——区别在于基本构造器是 0 和 succ（而非1和加法），且运算代价有权重。</p>
+
+  <h3>6.2 已知结果的可能导入</h3>
+  <p>整数复杂度问题自Selfridge和Guy以来已有大量研究。已知 3log₃ n ≤ ‖n‖ ≤ 3log₂ n（Selfridge）。如果 ρ_E(n) 可以被精确地翻译为 ‖n‖ 的某个仿射变换，那么关于 ‖n‖ 的已知上下界可以直接导入ρ-算术。</p>
+
+  <h3>6.3 计算复杂性</h3>
+  <p>计算 ρ_E(n)（寻找最便宜生成路径）的算法复杂度本身值得研究。递推公式中的乘法分支需要遍历 n 的所有因子对，这依赖于 n 的因式分解。PA认为所有自然数是平坦的；ρ-算术揭示了：获取 n 的最小操作代价是 n 的因子结构的函数。</p>
+
+  <h2>7. 投影性质 【定义】</h2>
+  <h3>7.1 P1–P3（从Paper 5继承）</h3>
+  <p>P1：val满射。P2：val是Σ-同态。P3：≡_E = ker(val)。</p>
+
+  <h3>7.2 投影恒等式</h3>
+  <div class="math-formula">ρ(h) = ρ_E(val(h)) + ρ_val(h)</div>
+  <p>其中 ρ_val(h) = ρ(h) - ρ_E(val(h)) ≥ 0。</p>
+  <p><strong>地位声明。</strong> 这是 ρ_E 定义的代数推论（投影恒等式），不是施加独立约束的公理。ρ_val(h) 度量的是：当前历史项 h 相对于同值最便宜紧凑项的超额表达代价。它不是"val映射本身造成的损失"，而是"h 的表达效率与最优表达的差距"。</p>
+
+  <h2>8. 讨论</h2>
+  <h3>8.1 为什么初始直觉是错的</h3>
+  <p>"素数没有乘法捷径"这个直觉的错误在于：它只考虑了根节点是否为mul，忽略了mul可以出现在任何深度。Paper 4 §7.2的素数刻画（Hist*_mul(p) = ∅）只约束了根节点，不约束内部子项。而 ρ_E 的递推允许通过后继和加法从内部的乘法子结构继承压缩。</p>
+
+  <h3>8.2 δ 的跳跃点</h3>
+  <p>δ 在合数处可能跳跃——当新的因子对使得乘法路径变得更便宜时。δ 的跳跃点与 n 的因子结构直接相关。高度合成数（highly composite numbers）可能是 δ 增长最快的位置。δ 的增长率与已知数论函数（d(n), Ω(n)等）的精确关系是M3的核心问题。</p>
+
+  <h3>8.3 先导发现：素数是 δ 的不动点</h3>
+  <p><strong>定理。</strong> 若 n 是素数，则 δ(n) = δ(n-1)。</p>
+  <p><strong>证明。</strong> n 是素数意味着 n 没有非平凡因子对 a, b &gt; 1 使得 ab = n。因此 ρ_E 递推中乘法分支为空。加法分支被后继分支支配（§4.2注）。唯一的竞争路径是后继分支：ρ_E(n) = ρ_E(n-1) + 1。因此 δ(n) = n - ρ_E(n) = n - ρ_E(n-1) - 1 = (n-1) - ρ_E(n-1) = δ(n-1)。∎</p>
+
+  <p><strong>等价表述。</strong> δ(n) &gt; δ(n-1) 蕴含 n 是合数。即：δ 的跳跃只发生在合数处。素数是 δ 序列中的"平台"——它们不增加压缩效率，只从前一个数继承。</p>
+
+  <p><strong>意义。</strong> 这是一个关于素数的正面动力学刻画：素数是 δ 函数的不动点。这个性质在PA的基础语言 {0, S, +, ×} 中不直接表达——它需要 ρ_E 和 δ 的概念，而这些是ρ-算术的固有对象。</p>
+
+  <h3>8.4 反向不成立：某些合数也是不动点</h3>
+  <p>δ(n) = δ(n-1) 不蕴含 n 是素数。合数 n 也可以是 δ 的不动点——当其所有乘法路径都不比后继路径便宜时。</p>
+
+  <p><strong>例：</strong> n = 4 = 2 × 2。ρ_E(2) + ρ_E(2) + 2 = 6 &gt; 4 = ρ_E(3) + 1。乘法路径更贵。δ(4) = δ(3) = 0。</p>
+
+  <p>更值得注意的例子：n = 21 = 3 × 7（两个素数的乘积）。ρ_E(3) + ρ_E(7) + 2 = 3 + 7 + 2 = 12。ρ_E(20) + 1 = 11 + 1 = 12。平局。δ(21) = δ(20)。</p>
+
+  <p><strong>观察：</strong> 两个素数的乘积（半素数，semiprime）更容易成为 δ 的不动点。原因：素数的 ρ_E 没有从乘法根获得过压缩（素数没有非平凡乘法根项），它们的压缩全部来自对邻近合数的后继继承。因此，当两个素数 p, q 作为因子时，pq 的乘法路径代价 ρ_E(p) + ρ_E(q) + 2 相对较大，更可能不比后继路径便宜。</p>
+
+  <p>注意：这里不能说"ρ_E(p) = p"——大素数的 ρ_E 可以小于 p（通过从邻近合数继承压缩，如 ρ_E(11) = 10 &lt; 11）。半素数成为不动点的原因不是因子"没有压缩"，而是因子的压缩来源于后继继承而非乘法根——继承来的压缩在拼合时的效率增益不够大。</p>
+
+  <p>相比之下，因子本身是合数的数（如 12 = 3 × 4，其中 ρ_E(4) = 4 但将来随着嵌套乘法的参与可能更低）更容易在乘法路径上获得压缩。</p>
+
+  <h3>8.5 Paper 7 预告：δ 不动点的完整刻画</h3>
+  <p>δ 的不动点集 {n : δ(n) = δ(n-1)} 包含所有素数，也包含某些合数（特别是因子结构"不够丰富"的合数，如半素数）。</p>
+
+  <p>Paper 7将研究以下问题：</p>
+  <ul>
+    <li>δ 不动点集的精确刻画：哪些合数是不动点？是否恰好是那些"乘法路径代价 ≥ 后继路径代价"的合数？</li>
+    <li>不动点集的密度：素数在不动点集中占多大比例？是否渐近地，"几乎所有"不动点都是素数？</li>
+    <li>δ 跳跃点（δ(n) &gt; δ(n-1)）的分布与因子结构的精确关系</li>
+    <li>δ 不动点刻画与孪生素数问题的可能关联</li>
+  </ul>
+  <p>这些问题将 δ 的动力学分析与经典数论直接对接，构成M3阶段的第一个测试案例。</p>
+
+  <h3>8.6 ρ_w 没有给出新的素性判据——但给出了新的素数动力学性质</h3>
+  <p>ρ_w 度量本身不区分素数和合数——δ 对两者都可以是正的。但"素数一定是 δ 不动点"是一条新的定理，它用 δ 的动力学语言刻画了素数的一个正面性质。这不是素性判据的替代品，但它是ρ-算术对"素数为什么特殊"的第一个非平凡回答：<strong>素数是那些不增加压缩效率的数。</strong></p>
+
+  <h2>9. 开放问题</h2>
+  <ol>
+    <li><strong>ρ_E(n) 的精确公式。</strong> 递推公式给出了动态规划，但是否存在闭合形式？与整数复杂度 ‖n‖ 的精确关系是什么？</li>
+    <li><strong>δ(n) 的增长率。</strong> δ 单调不减，但增长多快？已知整数复杂度满足 ‖n‖ ≤ 3log₂ n，这意味着 δ(n) ≥ n - O(log n)——对大 n，几乎所有的后继代价都可以被压缩掉。</li>
+    <li><strong>δ 的跳跃点分布。</strong> δ 在哪些 n 处严格增长？跳跃点与高度合素数或其他特殊数类的关系。</li>
+    <li><strong>嵌套乘法的效率。</strong> 递推公式中，是否存在 n 使得嵌套乘法（mul(mul(...), ...)）比单层乘法更便宜？</li>
+    <li><strong>|Hist*(n)| 的精确计数。</strong></li>
+    <li><strong>更强正规形。</strong> 压缩预序的不可约条件能否将Hist*(n)压缩到更可控的大小？</li>
+    <li><strong>规模依赖度量。</strong> 如果 β 依赖于输入规模（如 β(a,b) = log(ab)），δ 的行为如何变化？</li>
+  </ol>
+
+  <h2>参考文献</h2>
+  <ol>
+    <li>Han Qin, "On the Remainder of Choice," 2026. DOI: 10.5281/zenodo.18914682</li>
+    <li>Han Qin, "The Quantitative Identity of the Remainder," 2026. DOI: 10.5281/zenodo.18927658</li>
+    <li>Han Qin, "ρ-Conservation," 2026. DOI: 10.5281/zenodo.18929819</li>
+    <li>Han Qin, "A Draft Term Model for ρ-Arithmetic," 2026. DOI: 10.5281/zenodo.18930810</li>
+    <li>Han Qin, "Generation Axioms and Structural Induction," ZFCρ Series Paper 5, 2026.</li>
+    <li>Peano, G. <em>Arithmetices principia, nova methodo exposita.</em> Turin: Bocca, 1889.</li>
+    <li>Guy, R. K. "Some suspiciously simple sequences." <em>Amer. Math. Monthly</em> 93 (1986): 186–190.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho5.html">ZFCρ 论文五：生成公理与结构归纳</a></p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18934531" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Recursive Definition of ρ and Expression Compression Complexity', zh: 'ρ的递归定义与表达式压缩复杂度' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
