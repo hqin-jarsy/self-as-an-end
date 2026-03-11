@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof-Theoretic Equivalence and Conservative Extension of ρ-Arithmetic — ZFCρ Paper VIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper VIII (Final): Con(PA) ⟺ Con(T_ρ) via primitive recursive translation τ. T_ρ is conservative over PA on Σ_N-sentences and over Presburger on Σ_W-sentences. ZFCρ series complete: M1→M2→M3→M4. Series Complete.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, equiconsistency, conservative extension, translation operator, PA, Presburger, PRA, proof theory, 等一致性, 保守扩张, 证明论">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Proof-Theoretic Equivalence and Conservative Extension of ρ-Arithmetic — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho8.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Proof-Theoretic Equivalence and Conservative Extension of ρ-Arithmetic",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho8.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18952912"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": ["equiconsistency", "conservative extension", "proof theory", "PA", "Presburger arithmetic", "translation operator"],
+    "abstract": "Paper 7 constructed the term model of T_ρ in ZFC. This paper lifts that semantic witness to proof-theoretic results. Core results: Con(PA) ⟺ Con(T_ρ) via primitive recursive translation τ. T_ρ is conservative over PA on Σ_N-sentences and over Presburger arithmetic on Σ_W-sentences. ρ-arithmetic is a non-destructive upgrade of classical arithmetic: extensional layer fully conserved, operative layer adds higher-dimensional structure, consistency cost zero. ZFCρ series complete: M1 (syntax) → M2 (axioms) → M3 (model) → M4 (proof theory).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho8.html">
+  <meta name="citation_title" content="Proof-Theoretic Equivalence and Conservative Extension of ρ-Arithmetic">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18952912">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho8.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper VIII · Zenodo 18952912 · (Series Complete)</div>
+    <h1 id="paper-title">Proof-Theoretic Equivalence and Conservative Extension of ρ-Arithmetic</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18952912" target="_blank" rel="noopener">10.5281/zenodo.18952912</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18952912" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Paper 7 (DOI: 10.5281/zenodo.18943944) constructed the term model of T_ρ in ZFC. This paper lifts that semantic witness to proof-theoretic results.</p>
+    <p><strong>Core Theorem 1 (Equiconsistency):</strong> Con(PA) ⟺ Con(T_ρ). A primitive recursive translation operator τ maps T_ρ-formulas to PA-formulas; every T_ρ-axiom instance translates to a PA-theorem; inference rules are preserved. Formalizable in PRA.</p>
+    <p><strong>Core Theorem 2 (Conservative Extension):</strong> T_ρ is conservative over PA on pure Σ_N-sentences. <strong>Corollary (Presburger Conservativity):</strong> T_ρ is conservative over Presburger arithmetic on pure Σ_W-sentences.</p>
+    <p><strong>Conclusion:</strong> ρ-arithmetic is a non-destructive upgrade of classical arithmetic: extensional layer fully conserved, operative layer adds higher-dimensional structure, consistency cost zero. ZFCρ series complete: M1 (syntax) → M2 (axioms) → M3 (model) → M4 (proof theory).</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Design Principles</h2>
+
+  <h3>1.1 Proof-Theoretic Purity</h3>
+
+  <p>No reliance on ZFC for semantic arguments in core proofs. Core results use pure syntactic translation (Gödel coding), formalizable in PRA. This contrasts with Paper 7, which is inherently set-theoretic.</p>
+
+  <h3>1.2 Precise Calibration</h3>
+
+  <p>Not the coarse Con(ZFC) ⟹ Con(T_ρ), but the exact equiconsistency Con(PA) ⟺ Con(T_ρ). This pins down T_ρ's proof-theoretic strength exactly.</p>
+
+  <h3>1.3 Standard Tools</h3>
+
+  <p>Gödel numbering (primitive recursive encoding of syntax), primitive recursive translation operator τ, proof translation (showing any T_ρ-proof translates to a PA-proof).</p>
+
+  <h2>2. Recursive Axiomatization</h2>
+
+  <h3>2.1 T_ρ Is Recursively Axiomatized</h3>
+
+  <p>T_ρ has finite axioms (injectivity, disjointness, non-zero friction) and three countably-infinite axiom schemata (structural induction, PA induction, W-sort induction), each c.e. (computably enumerable). The set of all axiom instances is c.e.</p>
+
+  <h3>2.2 Consequence of Recursive Axiomatization</h3>
+
+  <p>T_ρ's set of theorems is c.e.: if T_ρ ⊢ φ, then there exists a finite proof, which is a finite sequence of strings, effectively verifiable.</p>
+
+  <h2>3. Translation Operator τ</h2>
+
+  <h3>3.1 Gödel Encoding</h3>
+
+  <p>History terms are encoded as natural numbers via standard Gödel pairing:</p>
+
+  <div class="math-formula">⌜0_H⌝ = ⟨0⟩
+⌜succ(h)⌝ = ⟨1,⌜h⌝⟩
+⌜add(h₁,h₂)⌝ = ⟨2,⌜h₁⌝,⌜h₂⌝⟩
+⌜mul(h₁,h₂)⌝ = ⟨3,⌜h₁⌝,⌜h₂⌝⟩</div>
+
+  <p>Primitive recursive predicates: Term(e), Val(e), Rho(e), Succ_H(e), Add_H(e₁,e₂), Mul_H(e₁,e₂) are all primitive recursive.</p>
+
+  <h3>3.2 Definition of τ</h3>
+
+  <p><strong>Variables:</strong> N-sort, W-sort unchanged. H-sort variables become PA variables (over ℕ).</p>
+
+  <p><strong>Quantifiers:</strong> ∀h∈H φ → ∀h(Term(h) → φ^τ). N/W-sort quantifiers unchanged.</p>
+
+  <p><strong>Function symbols:</strong> 0_H ↦ ⌜0_H⌝. Constructors → arithmetic counterparts. val(h) → Val(⌜h⌝). ρ(h) → Rho(⌜h⌝). Σ_N/Σ_W symbols unchanged.</p>
+
+  <p><strong>Constants:</strong> c_S ↦ 1, c_⊕ ↦ 1, c_⊗ ↦ 2.</p>
+
+  <p><strong>Proposition:</strong> τ is primitive recursive (computable in polynomial time).</p>
+
+  <h3>3.3 Pure Σ_N-Sentences Are Fixed</h3>
+
+  <p><strong>Lemma:</strong> For pure Σ_N-sentence σ (no H or W variables): σ^τ = σ.</p>
+
+  <p><strong>Proof:</strong> Translation affects only H-sort constructs. Pure N-sort sentences are unchanged. ∎</p>
+
+  <h2>4. Axiom Translation Theorem</h2>
+
+  <h3>4.1 Statement</h3>
+
+  <p><strong>Theorem:</strong> For every T_ρ-axiom instance A: PA ⊢ A^τ.</p>
+
+  <h3>4.2 Proof (Case by Case)</h3>
+
+  <p><strong>G5 Structural Induction:</strong> Translates to strong induction (course-of-values induction) on Gödel numbers. Subterm codes are strictly less than parent codes (e₁ < e, e₂ < e by pairing properties). PA derives strong induction from standard induction schema.</p>
+
+  <p><strong>G6–G7:</strong> Gödel pairing injectivity and disjointness. PA's standard axioms about ordered pairs prove these properties.</p>
+
+  <p><strong>N-sort PA:</strong> Unchanged. PA self-proves.</p>
+
+  <p><strong>W-sort Presburger:</strong> PA contains Presburger arithmetic (∀x∃y(x+y=z) for addition, no multiplication). PA self-proves all Presburger axioms.</p>
+
+  <p><strong>Non-zero friction:</strong> c_S ↦ 1, c_⊕ ↦ 1, c_⊗ ↦ 2 are non-zero. PA proves "1 ≠ 0", "2 ≠ 0".</p>
+
+  <p><strong>val/ρ equations:</strong> Defining equations of Val and Rho are primitive recursive. Val(0) = 0, Val(Succ_H(e)) = S(Val(e)), etc. PA proves these by primitive recursion.</p>
+
+  <h2>5. Equiconsistency</h2>
+
+  <h3>5.1 Closed-Sentence Translation Theorem</h3>
+
+  <p><strong>Theorem:</strong> If T_ρ ⊢ σ (σ a sentence), then PA ⊢ σ^τ.</p>
+
+  <h3>5.2 Proof Technique (Guarded Claims)</h3>
+
+  <p>Key idea: for every formula φ in a T_ρ-proof, PA ⊢ (∧_{h∈h̄_all} Term(h)) → φ^τ, where h̄_all is the union of all free H-variables across the entire proof. This uniform guard ensures soundness under Modus Ponens.</p>
+
+  <p><strong>Guard Elimination:</strong> To extract a PA-proof of σ^τ (a closed sentence) from a guarded T_ρ-proof, universally generalize each h_i, instantiate with ⌜0_H⌝, use Term(⌜0_H⌝) (PA-provable), apply modus ponens. Repeat for all k free H-variables to eliminate all guards.</p>
+
+  <p><strong>Two Key Lemmas:</strong></p>
+
+  <p><strong>Lemma 1 (Term Closed Under Constructors):</strong> PA proves Term(⌜0_H⌝), Term(e) → Term(Succ_H(e)), etc.</p>
+
+  <p><strong>Lemma 2 (Term Closed Under Arbitrary Terms):</strong> For any Σ_H-term t(h̄): PA ⊢ (∧Term(h_i)) → Term(t^τ(h̄)). Proved by structural induction on t (in PA's language, using PA induction on Gödel codes).</p>
+
+  <h3>5.3 Equiconsistency Proof</h3>
+
+  <p><strong>Theorem: Con(PA) ⟺ Con(T_ρ).</strong></p>
+
+  <p><strong>Forward (Con(T_ρ) ⟹ Con(PA)):</strong> If T_ρ ⊢ ⊥, then by §5.1, PA ⊢ ⊥^τ = ⊥. Contrapositive: Con(PA) ⟹ Con(T_ρ).</p>
+
+  <p><strong>Reverse (Con(PA) ⟹ Con(T_ρ)):</strong> T_ρ contains PA (N-sort instances are PA axioms exactly). If PA is consistent, T_ρ is consistent. ∎</p>
+
+  <p><strong>Formalizability in PRA:</strong> The forward direction (Con(PA) → Con(T_ρ)) is formalizable in PRA: the translation operator is primitive recursive, axiom-checking is primitive recursive, so PRA ⊢ (Con(PA) → Con(T_ρ)).</p>
+
+  <h2>6. Conservative Extension</h2>
+
+  <h3>6.1 Σ_N-Conservativity</h3>
+
+  <p><strong>Theorem:</strong> T_ρ ⊢ σ ⟹ PA ⊢ σ (for pure Σ_N-sentence σ).</p>
+
+  <p><strong>Proof:</strong> By §5.1 and §3.3: If T_ρ ⊢ σ, then PA ⊢ σ^τ. Since σ is pure Σ_N, σ^τ = σ. So PA ⊢ σ. ∎</p>
+
+  <h3>6.2 Σ_W-Conservativity</h3>
+
+  <p><strong>Theorem:</strong> T_ρ ⊢ σ ⟹ PrA ⊢ σ (for pure Σ_W-sentence σ).</p>
+
+  <p><strong>Proof:</strong> Via §5.1: PA ⊢ σ^τ. Since σ is pure Σ_W, σ^τ is a pure-additive PA sentence (no multiplication). By PA's conservativity over Presburger arithmetic on multiplication-free sentences, PrA ⊢ σ. ∎</p>
+
+  <h3>6.3 Significance of Conservative Extension</h3>
+
+  <p><strong>Interpretation:</strong> ρ-arithmetic is conservative over PA (N-sort) and Presburger (W-sort). H-sort injects no new proof power into either side. What is added is expressive power, not proof power.</p>
+
+  <p><strong>Conclusion:</strong> <strong>ρ-arithmetic is a non-destructive upgrade of classical arithmetic:</strong> extensional layer (N-sort, via val) fully conserved, operative layer (W-sort, via ρ) adds higher-dimensional structure, consistency cost zero.</p>
+
+  <h2>7. Non-Standard Models</h2>
+
+  <h3>7.1 Existence of Non-Standard Models</h3>
+
+  <p>T_ρ is recursively axiomatized with countably infinite models (Paper 7: the term model M_c̄). By Löwenheim-Skolem, T_ρ has non-standard models of all infinite cardinalities.</p>
+
+  <h3>7.2 Structure of Non-Standard Models</h3>
+
+  <p>Non-standard models of T_ρ have non-standard N-sort (non-standard ℕ), non-standard W-sort, and unconstrained H-sort fiber structure. In particular, in a non-standard model, Hist(n) need not be finite — the compactification lemma (Paper 7 §6.3) fails outside the standard term model.</p>
+
+  <h2>8. Metatheoretic Summary Table</h2>
+
+  <table class="struct-table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>T_ρ</th>
+        <th>PA</th>
+        <th>Presburger</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Language</td><td>Multi-sorted FOL</td><td>Single-sorted FOL</td><td>Single-sorted FOL</td></tr>
+      <tr><td>Recursively axiomatized</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Consistency strength</td><td>Con(PA)</td><td>—</td><td>⊂ Con(PA)</td></tr>
+      <tr><td>Σ_N-conservative over PA</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Σ_W-conservative over Presburger</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>Complete</td><td>✗</td><td>✗</td><td>✓</td></tr>
+      <tr><td>Term model</td><td>✓ (Paper 7)</td><td>✓ (𝔑)</td><td>✓</td></tr>
+      <tr><td>Non-standard models</td><td>Exist</td><td>Exist</td><td>None</td></tr>
+    </tbody>
+  </table>
+
+  <h2>9. Series Completion Summary</h2>
+
+  <p><strong>ZFCρ Series Structure:</strong></p>
+
+  <p><strong>M1 (Syntax):</strong> Papers 1–4. Defines the syntax of ρ-arithmetic: term grammar, two-level equality (extensional ≡_E and operational ≡_ρ), and a draft term model.</p>
+
+  <p><strong>M2 (Axioms):</strong> Papers 5–6. Lifts syntax to formal axiomatic system: generation axioms (G1–G7), structural induction, formal definition of ρ via recursive equations, introduces ρ_E and δ.</p>
+
+  <p><strong>M3 (Model):</strong> Paper 7. Constructs the term model M_c̄ inside ZFC. Verifies all axioms. Establishes fiber structure (Hist(n) infinite, Hist*(n) finite, compactification lemma).</p>
+
+  <p><strong>M4 (Proof Theory):</strong> Paper 8 (this paper). Lifts semantic model to proof-theoretic results: Con(PA) ⟺ Con(T_ρ), conservativity over PA and Presburger.</p>
+
+  <p><strong>Foundational Status of T_ρ:</strong> T_ρ is precisely equivalent in consistency strength to PA. ρ-arithmetic is an extension of PA (all PA axioms embed as N-sort instances), but is conservative — adding H-sort and W-sort does not increase proof power.</p>
+
+  <h2>10. Open Problems</h2>
+
+  <ol>
+    <li>Proof-theoretic ordinal of T_ρ (focusing on H-sort formulas). What is Ord(T_ρ)?</li>
+    <li>Independent sentences of T_ρ. Gödel's incompleteness applies to T_ρ (as it does to PA). What sentences of T_ρ are independent of ZFC?</li>
+    <li>Structure of H-sort in non-standard models. How do non-standard models' H-fibers compare to the standard term model's countably-infinite fibers?</li>
+    <li>Comparison with other ordered structures on ℕ. How does ρ-arithmetic compare to other recursive function orderings (e.g., Ackermann hierarchy, fast-growing hierarchies)?</li>
+    <li>Category-theoretic foundations. Can the entire ZFCρ development be re-framed in categorical language (toposes, sites)?</li>
+  </ol>
+
+  <h2>11. Acknowledgments</h2>
+
+  <p>I acknowledge the assistance of Claude (Anthropic), ChatGPT (OpenAI), Gemini (Google), and Grok (xAI) in the development, refinement, and verification of the mathematical content presented throughout the ZFCρ series. Their contributions to brainstorming, proof-checking, and exposition have been invaluable.</p>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho7.html">ZFCρ Paper VII: The Term Model of ρ-Arithmetic</a></p>
+    <p>ZFCρ Series Complete · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>Paper 7（DOI: 10.5281/zenodo.18943944）在ZFC内构造了T_ρ的项模型并验证了公理满足性。本文将这一语义见证提升为证明论结果。</p>
+    <p><strong>核心定理1（等一致性）：</strong>Con(PA) ⟺ Con(T_ρ)。定义从T_ρ公式到PA公式的原始递归翻译算子τ，证明每条公理实例翻译后PA可证，推理规则在翻译下保持。整个过程可在PRA中形式化。</p>
+    <p><strong>核心定理2（保守扩张）：</strong>T_ρ在纯Σ_N-语言上是PA的保守扩张。<strong>推论（Presburger保守性）：</strong>T_ρ在纯Σ_W-语言上是Presburger算术的保守扩张。</p>
+    <p><strong>结论：</strong>ρ-算术是经典算术的非破坏性升级：外延层完全守恒，操作层增加高维结构，一致性代价为零。ZFCρ系列完成：M1（语法）→ M2（公理）→ M3（模型）→ M4（证明论）。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 设计原则</h2>
+
+  <h3>1.1 证明论的纯净性</h3>
+
+  <p>核心证明中不依赖ZFC的语义论证。核心结果使用纯句法翻译（Gödel编码），可在PRA中形式化。这与第7篇相对比——第7篇本质上是集合论的。</p>
+
+  <h3>1.2 精确校准</h3>
+
+  <p>不是粗糙的Con(ZFC) ⟹ Con(T_ρ)，而是精确的等一致性Con(PA) ⟺ Con(T_ρ)。这精确定位了T_ρ的证明论强度。</p>
+
+  <h3>1.3 标准工具</h3>
+
+  <p>Gödel编号（句法的原始递归编码）、原始递归翻译算子τ、证明翻译（展示任何T_ρ-证明都翻译成PA-证明）。</p>
+
+  <h2>2. 递归公理化</h2>
+
+  <h3>2.1 T_ρ是递归公理化的</h3>
+
+  <p>T_ρ有有限公理（单射性、不相交性、非零摩擦）和三个可数无穷的公理模式（结构归纳、PA归纳、W-sort归纳），每个都是c.e.（递归可枚举）。所有公理实例的集合是c.e.。</p>
+
+  <h3>2.2 递归公理化的推论</h3>
+
+  <p>T_ρ的定理集是c.e.：若T_ρ ⊢ φ，存在有限证明（有限字符串序列），可被有效验证。</p>
+
+  <h2>3. 翻译算子τ</h2>
+
+  <h3>3.1 Gödel编码</h3>
+
+  <p>历史项通过标准Gödel配对编码成自然数：</p>
+
+  <div class="math-formula">⌜0_H⌝ = ⟨0⟩
+⌜succ(h)⌝ = ⟨1,⌜h⌝⟩
+⌜add(h₁,h₂)⌝ = ⟨2,⌜h₁⌝,⌜h₂⌝⟩
+⌜mul(h₁,h₂)⌝ = ⟨3,⌜h₁⌝,⌜h₂⌝⟩</div>
+
+  <p>原始递归谓词：Term(e)、Val(e)、Rho(e)、Succ_H(e)、Add_H(e₁,e₂)、Mul_H(e₁,e₂)都是原始递归的。</p>
+
+  <h3>3.2 τ的定义</h3>
+
+  <p><strong>变量：</strong>N-sort、W-sort不变。H-sort变量变成PA变量（关于ℕ）。</p>
+
+  <p><strong>量词：</strong>∀h∈H φ → ∀h(Term(h) → φ^τ)。N/W-sort量词不变。</p>
+
+  <p><strong>函数符号：</strong>0_H ↦ ⌜0_H⌝。构造器 → 算术对应。val(h) → Val(⌜h⌝)。ρ(h) → Rho(⌜h⌝)。Σ_N/Σ_W符号不变。</p>
+
+  <p><strong>常数：</strong>c_S ↦ 1，c_⊕ ↦ 1，c_⊗ ↦ 2。</p>
+
+  <p><strong>命题：</strong>τ是原始递归的（多项式时间可计算）。</p>
+
+  <h3>3.3 纯Σ_N-句子是固定的</h3>
+
+  <p><strong>引理：</strong>对纯Σ_N-句子σ（无H或W变量）：σ^τ = σ。</p>
+
+  <p><strong>证明：</strong>翻译仅影响H-sort构造。纯N-sort句子不变。∎</p>
+
+  <h2>4. 公理翻译定理</h2>
+
+  <h3>4.1 陈述</h3>
+
+  <p><strong>定理：</strong>对每条T_ρ-公理实例A：PA ⊢ A^τ。</p>
+
+  <h3>4.2 证明（逐案例）</h3>
+
+  <p><strong>G5结构归纳：</strong>翻译为Gödel数上的强归纳（course-of-values归纳）。子项码严格小于父项码（通过配对性质e₁ < e，e₂ < e）。PA从标准归纳模式推导强归纳。</p>
+
+  <p><strong>G6–G7：</strong>Gödel配对的单射性和不相交性。PA关于有序对的标准公理证明这些性质。</p>
+
+  <p><strong>N-sort PA：</strong>不变。PA自证。</p>
+
+  <p><strong>W-sort Presburger：</strong>PA包含Presburger算术（加法：∀x∃y(x+y=z)，无乘法）。PA证明所有Presburger公理。</p>
+
+  <p><strong>非零摩擦：</strong>c_S ↦ 1，c_⊕ ↦ 1，c_⊗ ↦ 2非零。PA证明"1 ≠ 0"、"2 ≠ 0"。</p>
+
+  <p><strong>val/ρ方程：</strong>Val和Rho的定义方程是原始递归的。Val(0) = 0，Val(Succ_H(e)) = S(Val(e))等。PA通过原始递归证明。</p>
+
+  <h2>5. 等一致性</h2>
+
+  <h3>5.1 闭句翻译定理</h3>
+
+  <p><strong>定理：</strong>若T_ρ ⊢ σ（σ是句子），则PA ⊢ σ^τ。</p>
+
+  <h3>5.2 证明技巧（保护声明）</h3>
+
+  <p>关键思想：对T_ρ-证明中的每个公式φ，PA ⊢ (∧_{h∈h̄_all} Term(h)) → φ^τ，其中h̄_all是整个证明中所有自由H-变量的并集。这个统一保护确保了Modus Ponens下的正确性。</p>
+
+  <p><strong>保护消除：</strong>为从保护的T_ρ-证明提取PA对σ^τ（闭句）的证明，普遍量化每个h_i，用⌜0_H⌝代入，使用Term(⌜0_H⌝)（PA可证），应用modus ponens。对所有k个自由H-变量重复以消除所有保护。</p>
+
+  <p><strong>两个关键引理：</strong></p>
+
+  <p><strong>引理1（Term在构造器下闭合）：</strong>PA证明Term(⌜0_H⌝)、Term(e) → Term(Succ_H(e))等。</p>
+
+  <p><strong>引理2（Term在任意项下闭合）：</strong>对任意Σ_H-项t(h̄)：PA ⊢ (∧Term(h_i)) → Term(t^τ(h̄))。通过对t的结构归纳证明（在PA的语言中，用Gödel码上的PA归纳）。</p>
+
+  <h3>5.3 等一致性证明</h3>
+
+  <p><strong>定理：Con(PA) ⟺ Con(T_ρ)。</strong></p>
+
+  <p><strong>正向（Con(T_ρ) ⟹ Con(PA)）：</strong>若T_ρ ⊢ ⊥，则由§5.1，PA ⊢ ⊥^τ = ⊥。对偶：Con(PA) ⟹ Con(T_ρ)。</p>
+
+  <p><strong>反向（Con(PA) ⟹ Con(T_ρ)）：</strong>T_ρ包含PA（N-sort实例恰好是PA公理）。若PA一致，T_ρ一致。∎</p>
+
+  <p><strong>在PRA中的形式化：</strong>正向方向（Con(PA) → Con(T_ρ)）可在PRA中形式化：翻译算子是原始递归的，公理检查是原始递归的，因此PRA ⊢ (Con(PA) → Con(T_ρ))。</p>
+
+  <h2>6. 保守扩张</h2>
+
+  <h3>6.1 Σ_N-保守性</h3>
+
+  <p><strong>定理：</strong>T_ρ ⊢ σ ⟹ PA ⊢ σ（对纯Σ_N-句子σ）。</p>
+
+  <p><strong>证明：</strong>由§5.1和§3.3：若T_ρ ⊢ σ，则PA ⊢ σ^τ。由于σ是纯Σ_N，σ^τ = σ。所以PA ⊢ σ。∎</p>
+
+  <h3>6.2 Σ_W-保守性</h3>
+
+  <p><strong>定理：</strong>T_ρ ⊢ σ ⟹ PrA ⊢ σ（对纯Σ_W-句子σ）。</p>
+
+  <p><strong>证明：</strong>由§5.1：PA ⊢ σ^τ。由于σ是纯Σ_W，σ^τ是纯加法PA句子（无乘法）。由PA在无乘法句子上对Presburger的保守性，PrA ⊢ σ。∎</p>
+
+  <h3>6.3 保守扩张的意义</h3>
+
+  <p><strong>解释：</strong>ρ-算术在PA（N-sort）和Presburger（W-sort）上保守。H-sort不向任何一侧注入新的证明力。增加的是表达力，不是证明力。</p>
+
+  <p><strong>结论：</strong><strong>ρ-算术是经典算术的非破坏性升级：</strong>外延层（N-sort，经由val）完全守恒，操作层（W-sort，经由ρ）增加高维结构，一致性代价为零。</p>
+
+  <h2>7. 非标准模型</h2>
+
+  <h3>7.1 非标准模型的存在性</h3>
+
+  <p>T_ρ递归公理化，有可数无穷模型（Paper 7：项模型M_c̄）。由Löwenheim-Skolem，T_ρ在所有无穷基数上有非标准模型。</p>
+
+  <h3>7.2 非标准模型的结构</h3>
+
+  <p>T_ρ的非标准模型有非标准N-sort（非标准ℕ）、非标准W-sort和无约束的H-sort纤维结构。特别地，在非标准模型中，Hist(n)不必有限——紧凑化引理（Paper 7 §6.3）在标准项模型外失效。</p>
+
+  <h2>8. 元理论总结表</h2>
+
+  <table class="struct-table">
+    <thead>
+      <tr>
+        <th>性质</th>
+        <th>T_ρ</th>
+        <th>PA</th>
+        <th>Presburger</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>语言</td><td>多排序FOL</td><td>单排序FOL</td><td>单排序FOL</td></tr>
+      <tr><td>递归公理化</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>一致性强度</td><td>Con(PA)</td><td>—</td><td>⊂ Con(PA)</td></tr>
+      <tr><td>在PA上Σ_N-保守</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>在Presburger上Σ_W-保守</td><td>✓</td><td>—</td><td>—</td></tr>
+      <tr><td>完备</td><td>✗</td><td>✗</td><td>✓</td></tr>
+      <tr><td>项模型</td><td>✓ (Paper 7)</td><td>✓ (𝔑)</td><td>✓</td></tr>
+      <tr><td>非标准模型</td><td>存在</td><td>存在</td><td>无</td></tr>
+    </tbody>
+  </table>
+
+  <h2>9. 系列完成总结</h2>
+
+  <p><strong>ZFCρ系列结构：</strong></p>
+
+  <p><strong>M1（语法）：</strong>Papers 1–4。定义ρ-算术的语法：项文法、两层等式（外延≡_E和操作≡_ρ）、项模型草案。</p>
+
+  <p><strong>M2（公理）：</strong>Papers 5–6。将语法提升到形式公理系统：生成公理（G1–G7）、结构归纳、ρ的递归定义、引入ρ_E和δ。</p>
+
+  <p><strong>M3（模型）：</strong>Paper 7。在ZFC内构造项模型M_c̄。验证所有公理。确定纤维结构（Hist(n)无穷、Hist*(n)有限、紧凑化引理）。</p>
+
+  <p><strong>M4（证明论）：</strong>Paper 8（本文）。将语义模型提升为证明论结果：Con(PA) ⟺ Con(T_ρ)，PA和Presburger上的保守性。</p>
+
+  <p><strong>T_ρ的基础地位：</strong>T_ρ的一致性强度与PA完全相同。ρ-算术是PA的扩张（所有PA公理嵌入为N-sort实例），但保守——添加H-sort和W-sort不增加证明力。</p>
+
+  <h2>10. 开放问题</h2>
+
+  <ol>
+    <li>T_ρ的证明论序数（关注H-sort公式）。Ord(T_ρ) = ?</li>
+    <li>T_ρ的独立句子。Gödel不完备性适用于T_ρ。T_ρ的哪些句子独立于ZFC？</li>
+    <li>非标准模型中的H-sort结构。非标准模型的H-纤维与标准项模型的可数无穷纤维如何比较？</li>
+    <li>与其他ℕ上的有序结构的比较。ρ-算术与其他递归函数排序（如Ackermann层级、快速增长层级）的比较。</li>
+    <li>范畴论基础。整个ZFCρ发展能否用范畴论语言重新表述（拓跑斯、位点）？</li>
+  </ol>
+
+  <h2>11. 致谢</h2>
+
+  <p>我感谢Claude（Anthropic）、ChatGPT（OpenAI）、Gemini（Google）和Grok（xAI）在整个ZFCρ系列数学内容的开发、精炼和验证中的帮助。它们在集思广益、证明检查和表述中的贡献弥足珍贵。</p>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho7.html">ZFCρ第七篇：ρ-算术的项模型</a></p>
+    <p>ZFCρ系列完成 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18952912" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Proof-Theoretic Equivalence and Conservative Extension of ρ-Arithmetic', zh: 'ρ-算术的证明论等价与保守扩张' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>

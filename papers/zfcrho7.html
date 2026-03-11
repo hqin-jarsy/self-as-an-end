@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Term Model of ρ-Arithmetic — ZFCρ Paper VII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper VII: Completes M3 — defines the multi-sorted first-order formal theory T_ρ with three sorts (H, N, W) and constructs its term model inside ZFC. val and ρ as two canonical projections from the initial algebra T_Σ. Fiber structure: Hist(n) countably infinite, Hist*(n) finite, compactification lemma.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, term model, multi-sorted theory, T_rho, initial algebra, Hist(n), compactification, Presburger arithmetic, fiber structure, 项模型, 初始代数">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Term Model of ρ-Arithmetic — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho7.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Term Model of ρ-Arithmetic",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho7.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18943944"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": ["ρ-arithmetic", "term model", "multi-sorted theory", "initial algebra", "Presburger arithmetic", "fiber structure"],
+    "abstract": "Completes M3: defining the multi-sorted first-order formal theory T_ρ of ρ-arithmetic, and constructing its term model inside ZFC. T_ρ has three sorts: H (history terms), N (natural numbers), W (cost values). N-sort satisfies PA. W-sort has Presburger arithmetic signature (addition + order + induction, no multiplication). val and ρ are introduced via recursive equations, uniquely determined in the term model by the universal property of initial algebras. Within the term model, fibers Hist(n) are countably infinite, compact subsets Hist*(n) are finite, and the compactification lemma holds.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho7.html">
+  <meta name="citation_title" content="The Term Model of ρ-Arithmetic">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18943944">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho7.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper VII · Zenodo 18943944</div>
+    <h1 id="paper-title">The Term Model of ρ-Arithmetic</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18943944" target="_blank" rel="noopener">10.5281/zenodo.18943944</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18943944" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>This paper completes M3: defining the multi-sorted first-order formal theory T_ρ of ρ-arithmetic, and constructing its term model inside ZFC.</p>
+    <p>T_ρ has three sorts: H (history terms), N (natural numbers), W (cost values). N-sort satisfies PA. W-sort has Presburger arithmetic signature (addition + order + induction, no multiplication) — cost computation is purely additive. The pure Σ_W-language reduct is Presburger arithmetic (complete, decidable), but T_ρ as a whole is incomplete (due to PA in N-sort). val and ρ are introduced via recursive equations, uniquely determined in the term model by the universal property of initial algebras. T_ρ is a recursively enumerable first-order theory.</p>
+    <p>Term model: H = T_Σ (free term algebra), N = ℕ, W = ℕ. Within the term model (not in general models), the fibers Hist(n) are countably infinite, the compact subsets Hist*(n) are finite, and the compactification lemma holds.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Design Principles</h2>
+
+  <h3>1.1 Strict Alignment with ZFC</h3>
+
+  <p>All axiom schemata and induction principles use standard ZFC tools. No new meta-theoretical frameworks are introduced. The term model M_c̄ is a concrete set-theoretic object inside ZFC.</p>
+
+  <h3>1.2 Theory/Model Separation</h3>
+
+  <p>Sections 2–3 give only the formal theory T_ρ (axioms and signatures). Sections 4–5 construct the term model and verify axiom satisfaction. Section 6 establishes fiber structure within the term model. This separation ensures clarity: formal theory is presented first, then its models.</p>
+
+  <h3>1.3 Three Sorts, Three Standard Axiom Sources</h3>
+
+  <p><strong>H-sort:</strong> Structural induction schema (paralleling PA induction). <strong>N-sort:</strong> PA axiom schema. <strong>W-sort:</strong> Presburger arithmetic signature (no multiplication). The pure Σ_W-language reduct is Presburger arithmetic (complete, decidable), but the full theory T_ρ is not.</p>
+
+  <h2>2. Formal Language</h2>
+
+  <h3>2.1 Sorts</h3>
+
+  <p>Three sorts: H (history), N (number), W (weight/cost).</p>
+
+  <h3>2.2 Signature</h3>
+
+  <div class="math-formula">H-sort Σ_H: 0_H, succ, add, mul
+Cross-sort: val: H → N, ρ: H → W
+N-sort Σ_N: 0_N, S_N, +_N, ×_N, ≤_N
+W-sort Σ_W: 0_W, S_W, +_W, ≤_W
+W-sort constants: c_S, c_⊕, c_⊗</div>
+
+  <h3>2.3 Language-Definable Derived Symbols</h3>
+
+  <p>≡_E (extensional equality) and Hist(n) are definable within T_ρ's language (model-independent). Hist*(n), ρ_E, ρ_val are term-model objects introduced in Section 6.</p>
+
+  <h2>3. Formal Theory T_ρ (Axioms)</h2>
+
+  <h3>3.1 H-sort Axioms (Generation and Structural Induction)</h3>
+
+  <p><strong>G5 Structural Induction Schema:</strong> For each first-order formula φ(x, ȳ) with parameters of any sort:</p>
+
+  <div class="math-formula">∀ȳ[(φ(0_H,ȳ) ∧ ∀h(φ(h,ȳ)→φ(succ(h),ȳ))
+  ∧ ∀h₁h₂(φ(h₁,ȳ)∧φ(h₂,ȳ)→φ(add(h₁,h₂),ȳ))
+  ∧ ∀h₁h₂(φ(h₁,ȳ)∧φ(h₂,ȳ)→φ(mul(h₁,h₂),ȳ)))
+  → ∀x φ(x,ȳ)]</div>
+
+  <p><strong>G6:</strong> Constructor injectivity: succ(h₁) = succ(h₂) ⟹ h₁ = h₂, and similarly for add and mul.</p>
+
+  <p><strong>G7:</strong> Constructor disjointness: distinct constructors never produce equal terms.</p>
+
+  <h3>3.2 N-sort Axioms</h3>
+
+  <p>Standard Peano axioms: zero exists, successor is injective and never returns to zero, addition and multiplication are associative and commutative with standard properties, N-sort induction schema holds.</p>
+
+  <h3>3.3 W-sort Axioms (Presburger Arithmetic)</h3>
+
+  <p>Presburger signature: S_W(w) ≠ 0_W, S_W injective, recursive axioms for +_W defining it via ∃u(w+u=v), order ≤_W via ∃u(w+u=v), W-sort induction schema. <strong>Non-zero friction axioms:</strong> c_S ≠ 0_W ∧ c_⊕ ≠ 0_W ∧ c_⊗ ≠ 0_W. Note: N has multiplication (needed for val of mul), W does not (ρ uses only addition and constants).</p>
+
+  <h3>3.4 Cross-Sort Recursive Equations</h3>
+
+  <div class="math-formula">val(0_H) = 0_N
+val(succ(h)) = S_N(val(h))
+val(add(h₁,h₂)) = val(h₁) +_N val(h₂)
+val(mul(h₁,h₂)) = val(h₁) ×_N val(h₂)
+
+ρ(0_H) = 0_W
+ρ(succ(h)) = ρ(h) +_W c_S
+ρ(add(h₁,h₂)) = ρ(h₁) +_W ρ(h₂) +_W c_⊕
+ρ(mul(h₁,h₂)) = ρ(h₁) +_W ρ(h₂) +_W c_⊗</div>
+
+  <h2>4. Construction of the Term Model</h2>
+
+  <h3>4.1 Carrier Sets</h3>
+
+  <p><strong>H-sort:</strong> T_Σ, the free Σ_H-term algebra. In ZFC, this is the set of all finite labeled rooted trees over signature Σ_H, countable.</p>
+
+  <p><strong>N-sort:</strong> ℕ (ω), the standard natural numbers in ZFC.</p>
+
+  <p><strong>W-sort:</strong> ℕ (same ω, but with different semantic role: Presburger structure with no multiplication).</p>
+
+  <h3>4.2 Parameterization</h3>
+
+  <p>For any (c_S, c_⊕, c_⊗) ∈ ℕ³ with all components > 0, the term model M_c̄ exists. Default: c_S = 1, c_⊕ = 1, c_⊗ = 2.</p>
+
+  <h2>5. Axiom Satisfaction</h2>
+
+  <h3>5.1 H-sort</h3>
+
+  <p><strong>G5:</strong> Satisfied via minimality of T_Σ in ZFC. Structural induction on T_Σ follows from the fact that T_Σ is the least set containing 0_H and closed under succ, add, mul.</p>
+
+  <p><strong>G6–G7:</strong> Free algebra properties: distinct constructors produce syntactically different terms.</p>
+
+  <h3>5.2 N-sort and W-sort</h3>
+
+  <p>ℕ satisfies PA and Presburger axioms by standard results in ZFC. Full-language induction schema verified via ω's inductive property.</p>
+
+  <h3>5.3 val and ρ — Two Canonical Projections</h3>
+
+  <p><strong>Theorem (Initial Algebra Universality).</strong> T_Σ is the initial Σ_H-algebra. val: T_Σ → 𝔑 is the unique Σ_H-homomorphism to the N-sort algebra (viewing ℕ with its Σ_H-structure: 0_N, S_N, +_N, ×_N). ρ: T_Σ → A_c̄ is the unique Σ_H-homomorphism to the cost algebra A_c̄ = (ℕ; 0, x↦x+c_S, (x,y)↦x+y+c_⊕, (x,y)↦x+y+c_⊗).</p>
+
+  <p><strong>Proof idea:</strong> By recursion on T_Σ's tree structure, we define val and ρ bottom-up. Uniqueness follows from initiality.</p>
+
+  <p><strong>Significance:</strong> val projects to extensional values; ρ projects to operative costs. Both are canonical because they are the unique homomorphisms from the initial algebra.</p>
+
+  <h3>5.4 Term-Model Existence Theorem</h3>
+
+  <p><strong>Theorem.</strong> In ZFC, for any positive integer parameters (c_S, c_⊕, c_⊗), M_c̄ satisfies all axioms and equations of T_ρ.</p>
+
+  <h2>6. Fiber Structure of the Term Model</h2>
+
+  <h3>6.1 Hist(n) Is Countably Infinite</h3>
+
+  <p><strong>Theorem.</strong> |Hist(n)| = ℵ₀ (countably infinite).</p>
+
+  <p><strong>Proof of Countability:</strong> Hist(n) ⊆ T_Σ. Since T_Σ is countable (finite-tree encoding in ℕ), Hist(n) is countable.</p>
+
+  <p><strong>Proof of Infinitude:</strong> Define injection f: ω → Hist(n) by f(k) = succ^k(h_n^std), where h_n^std is the standard history (n nested successors). By G6 (injectivity of succ), f is injective. By G2 (closure under successor), all f(k) ∈ Hist(n). ∎</p>
+
+  <h3>6.2 Hist*(n) Is Finite</h3>
+
+  <p><strong>Definition (Compact):</strong> A history term h is compact iff no subterm of h is a trivial operation (adding zero, multiplying by one, multiplying by zero).</p>
+
+  <p><strong>Definition:</strong> Hist*(n) = {h ∈ Hist(n) : h is compact}.</p>
+
+  <p><strong>Theorem.</strong> Hist*(n) is non-empty and finite.</p>
+
+  <p><strong>Proof (sketch):</strong> Non-emptiness: h_n^std is compact. Finiteness: compactness requires every add child to have val > 0 and every mul child to have val > 1 (Paper 6 §2). Each child's val is strictly less than parent's val, so tree depth is bounded by n. Finite depth + finite branching ⟹ finite set. ∎</p>
+
+  <h3>6.3 Compactification Lemma</h3>
+
+  <p><strong>Theorem.</strong> For every h ∈ Hist(n), there exists h* ∈ Hist*(n) with ρ(h*) ≤_W ρ(h).</p>
+
+  <p><strong>Proof:</strong> Apply six cross-sort semantic reduction rules R₁–R₆ bottom-up until no more apply (termination by well-foundedness of ℕ):</p>
+
+  <div class="math-formula">R₁: add(t₁,t₂) → t₂ if val(t₁) = 0
+R₂: add(t₁,t₂) → t₁ if val(t₂) = 0
+R₃: mul(t₁,t₂) → t₂ if val(t₁) = 1
+R₄: mul(t₁,t₂) → t₁ if val(t₂) = 1
+R₅: mul(t₁,t₂) → 0_H if val(t₁) = 0
+R₆: mul(t₁,t₂) → 0_H if val(t₂) = 0</div>
+
+  <p>Each rule strictly decreases ρ (by non-zero friction + Presburger monotonicity). The result h* is compact. ∎</p>
+
+  <p><strong>Note:</strong> Compactification asserts existence, not uniqueness of normal forms. succ(succ(0_H)) and add(succ(0_H), succ(0_H)) are both in Hist*(2) but distinct.</p>
+
+  <h3>6.4 ρ_E and ρ_val (Term-Model Objects)</h3>
+
+  <p><strong>Definition:</strong></p>
+
+  <div class="math-formula">ρ_E(n) = min_{Hist*(n)} ρ</div>
+
+  <p>Well-defined because Hist*(n) is finite and non-empty (§6.2).</p>
+
+  <p><strong>Theorem (Compactification Characterization):</strong> By §6.3, ρ_E(n) = inf_{Hist(n)} ρ. The minimum over the countably infinite Hist(n) equals the minimum over its finite subset Hist*(n).</p>
+
+  <p><strong>Definition:</strong></p>
+
+  <div class="math-formula">ρ_val(h) = ρ(h) − ρ_E(val(h)) ≥ 0</div>
+
+  <p><strong>Note:</strong> ρ_E and ρ_val are term-model objects; not guaranteed to exist in general T_ρ-models where Hist(n) may not be finite.</p>
+
+  <h2>7. Categorical Properties</h2>
+
+  <p>T_Σ is the initial Σ_H-algebra. val and ρ are its two canonical projections (universal morphisms in the category of Σ_H-algebras). This categorical perspective unifies their definitions.</p>
+
+  <h2>8. Derived Theorems from Papers 5–6</h2>
+
+  <h3>8.1 Structural Theorems (All Parameters)</h3>
+
+  <p>From Paper 5: val surjective, ≡_E congruence, T_Σ/≡_E ≅ 𝔑. From Paper 6: ρ_E recurrence and δ monotonicity.</p>
+
+  <h3>8.2 Default Parameters (c_S=1, c_⊕=1, c_⊗=2)</h3>
+
+  <p><strong>Addition Domination Lemma:</strong> For all n ≥ 2, addition paths are dominated by successor paths.</p>
+
+  <p><strong>Prime Fixed-Point Theorem:</strong> If n is prime, then δ(n) = δ(n-1).</p>
+
+  <p><strong>ρ_E Recurrence:</strong> ρ_E(n) = min(ρ_E(n-1) + 1, min_{ab=n, a,b>1} (ρ_E(a) + ρ_E(b) + 2)).</p>
+
+  <h2>9. Open Problems</h2>
+
+  <ol>
+    <li>Growth rate of |Hist*(n)|. What is the density of compact terms in Hist(n)?</li>
+    <li>Full relative consistency formalization: Con(ZFC) ⇒ Con(T_ρ) — covered in Paper 8.</li>
+    <li>Non-standard models of T_ρ. Do non-standard models exist? What are their H-sort fibers?</li>
+    <li>Uniqueness of val/ρ in non-initial-algebra models. In non-standard models, are val and ρ still uniquely determined?</li>
+    <li>Homomorphisms from T_Σ to other Σ_H-algebras. What is the general structure of morphism-pairs?</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho6.html">ZFCρ Paper VI: Recursive Definition of ρ and Expression Compression Complexity</a></p>
+    <p><a href="zfcrho8.html">ZFCρ Paper VIII: Proof-Theoretic Equivalence and Conservative Extension →</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>本文完成M3：定义ρ-算术的多排序一阶形式理论T_ρ，并在ZFC内部构造其项模型。</p>
+    <p>T_ρ有三个排序：H（历史项）、N（自然数）、W（代价值）。N-sort满足PA。W-sort的签名是Presburger算术签名（加法+序+归纳，无乘法）——代价的计算是纯加法的线性累积。W-sort的纯Σ_W-语言reduct是Presburger算术（完备，可判定），但整个T_ρ因包含N-sort的PA而不完备。val和ρ通过递归方程引入，在项模型中由初始代数泛性质唯一确定。T_ρ是可递归枚举的一阶理论。</p>
+    <p>项模型：H = T_Σ（自由项代数），N = ℕ，W = ℕ。在项模型中（而非一般模型中），val的纤维Hist(n)可数无穷，紧凑子集Hist*(n)有限，紧凑化引理成立，ρ_E良定义。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 设计原则</h2>
+
+  <h3>1.1 严格对齐ZFC</h3>
+
+  <p>所有公理模式和归纳原则都使用标准ZFC工具。不引入新的元理论框架。项模型M_c̄是ZFC内的具体集合论对象。</p>
+
+  <h3>1.2 理论与模型的分离</h3>
+
+  <p>第2–3节只给出形式理论T_ρ（公理和签名）。第4–5节构造项模型并验证公理满足性。第6节确定项模型内的纤维结构。这个分离确保了清晰性：形式理论先呈现，然后讨论其模型。</p>
+
+  <h3>1.3 三个排序，三个标准公理来源</h3>
+
+  <p><strong>H-sort：</strong>结构归纳模式（平行PA归纳）。<strong>N-sort：</strong>PA公理模式。<strong>W-sort：</strong>Presburger算术签名（无乘法）。W-sort的纯Σ_W-语言reduct是Presburger算术（完备，可判定），但整个T_ρ不完备。</p>
+
+  <h2>2. 形式语言</h2>
+
+  <h3>2.1 排序</h3>
+
+  <p>三个排序：H（历史）、N（数）、W（权/代价）。</p>
+
+  <h3>2.2 签名</h3>
+
+  <div class="math-formula">H-sort Σ_H: 0_H, succ, add, mul
+跨排序: val: H → N, ρ: H → W
+N-sort Σ_N: 0_N, S_N, +_N, ×_N, ≤_N
+W-sort Σ_W: 0_W, S_W, +_W, ≤_W
+W-sort常数: c_S, c_⊕, c_⊗</div>
+
+  <h3>2.3 语言可定义的导出符号</h3>
+
+  <p>≡_E（外延等式）和Hist(n)可在T_ρ的语言内定义（与模型无关）。Hist*(n)、ρ_E、ρ_val是第6节介绍的项模型对象。</p>
+
+  <h2>3. 形式理论T_ρ（公理）</h2>
+
+  <h3>3.1 H-sort公理（生成和结构归纳）</h3>
+
+  <p><strong>G5结构归纳模式：</strong>对于任何一阶公式φ(x, ȳ)及任意排序的参数：</p>
+
+  <div class="math-formula">∀ȳ[(φ(0_H,ȳ) ∧ ∀h(φ(h,ȳ)→φ(succ(h),ȳ))
+  ∧ ∀h₁h₂(φ(h₁,ȳ)∧φ(h₂,ȳ)→φ(add(h₁,h₂),ȳ))
+  ∧ ∀h₁h₂(φ(h₁,ȳ)∧φ(h₂,ȳ)→φ(mul(h₁,h₂),ȳ)))
+  → ∀x φ(x,ȳ)]</div>
+
+  <p><strong>G6：</strong>构造器单射性：succ(h₁) = succ(h₂) ⟹ h₁ = h₂，add和mul类似。</p>
+
+  <p><strong>G7：</strong>构造器不相交性：不同的构造器产生的项永不相等。</p>
+
+  <h3>3.2 N-sort公理</h3>
+
+  <p>标准Peano公理：零的存在、后继的单射性和非零返性、加法乘法的标准性质、N-sort归纳模式。</p>
+
+  <h3>3.3 W-sort公理（Presburger算术）</h3>
+
+  <p>Presburger签名：S_W(w) ≠ 0_W，S_W单射，+_W通过∃u(w+u=v)递归定义，≤_W通过同样方式定义，W-sort归纳模式。<strong>非零摩擦公理：</strong>c_S ≠ 0_W ∧ c_⊕ ≠ 0_W ∧ c_⊗ ≠ 0_W。注意：N有乘法（val(mul需要），W没有（ρ只用加法和常数）。</p>
+
+  <h3>3.4 跨排序递归方程</h3>
+
+  <div class="math-formula">val(0_H) = 0_N
+val(succ(h)) = S_N(val(h))
+val(add(h₁,h₂)) = val(h₁) +_N val(h₂)
+val(mul(h₁,h₂)) = val(h₁) ×_N val(h₂)
+
+ρ(0_H) = 0_W
+ρ(succ(h)) = ρ(h) +_W c_S
+ρ(add(h₁,h₂)) = ρ(h₁) +_W ρ(h₂) +_W c_⊕
+ρ(mul(h₁,h₂)) = ρ(h₁) +_W ρ(h₂) +_W c_⊗</div>
+
+  <h2>4. 项模型的构造</h2>
+
+  <h3>4.1 承载集</h3>
+
+  <p><strong>H-sort：</strong>T_Σ，自由Σ_H-项代数。在ZFC中，这是签名Σ_H上所有有限标记根树的集合，可数。</p>
+
+  <p><strong>N-sort：</strong>ℕ（ω），ZFC中的标准自然数。</p>
+
+  <p><strong>W-sort：</strong>ℕ（同一个ω，但语义角色不同：Presburger结构，无乘法）。</p>
+
+  <h3>4.2 参数化</h3>
+
+  <p>对任何(c_S, c_⊕, c_⊗) ∈ ℕ³且所有分量 > 0，项模型M_c̄存在。默认：c_S = 1, c_⊕ = 1, c_⊗ = 2。</p>
+
+  <h2>5. 公理满足性</h2>
+
+  <h3>5.1 H-sort</h3>
+
+  <p><strong>G5：</strong>通过T_Σ在ZFC中的最小性满足。T_Σ上的结构归纳源于T_Σ是包含0_H并在succ、add、mul下闭包的最小集合这一事实。</p>
+
+  <p><strong>G6–G7：</strong>自由代数的性质：不同的构造器产生语法上不同的项。</p>
+
+  <h3>5.2 N-sort和W-sort</h3>
+
+  <p>ℕ满足PA和Presburger公理（ZFC中的标准结果）。完整语言归纳模式通过ω的归纳性质验证。</p>
+
+  <h3>5.3 val和ρ——两个规范投影</h3>
+
+  <p><strong>定理（初始代数泛性）。</strong>T_Σ是初始Σ_H-代数。val: T_Σ → 𝔑是到N-sort代数的唯一Σ_H-同态（看作带Σ_H-结构的ℕ：0_N, S_N, +_N, ×_N）。ρ: T_Σ → A_c̄是到代价代数的唯一Σ_H-同态，其中A_c̄ = (ℕ; 0, x↦x+c_S, (x,y)↦x+y+c_⊕, (x,y)↦x+y+c_⊗)。</p>
+
+  <p><strong>证明思路：</strong>在T_Σ的树结构上递归定义val和ρ，自底向上。唯一性源于初始性。</p>
+
+  <p><strong>意义：</strong>val投影到外延值；ρ投影到操作代价。两者都是规范的，因为它们是从初始代数出发的唯一同态。</p>
+
+  <h3>5.4 项模型存在定理</h3>
+
+  <p><strong>定理。</strong>在ZFC中，对任何正整数参数(c_S, c_⊕, c_⊗)，M_c̄满足T_ρ的所有公理和方程。</p>
+
+  <h2>6. 项模型的纤维结构</h2>
+
+  <h3>6.1 Hist(n)可数无穷</h3>
+
+  <p><strong>定理。</strong>|Hist(n)| = ℵ₀（可数无穷）。</p>
+
+  <p><strong>可数性证明：</strong>Hist(n) ⊆ T_Σ。由于T_Σ可数（有限树编码到ℕ），Hist(n)可数。</p>
+
+  <p><strong>无穷性证明：</strong>定义单射f: ω → Hist(n)，f(k) = succ^k(h_n^std)，其中h_n^std是标准历史（n重后继嵌套）。由G6（后继单射性），f单射。由G2（后继闭包），所有f(k) ∈ Hist(n)。∎</p>
+
+  <h3>6.2 Hist*(n)有限</h3>
+
+  <p><strong>定义（紧凑）：</strong>历史项h是紧凑的，当且仅当h的任何子项都不是平凡操作（加零、乘一、乘零）。</p>
+
+  <p><strong>定义：</strong>Hist*(n) = {h ∈ Hist(n) : h是紧凑的}。</p>
+
+  <p><strong>定理。</strong>Hist*(n)非空且有限。</p>
+
+  <p><strong>证明（草图）：</strong>非空性：h_n^std是紧凑的。有限性：紧凑性要求每个add子项的val > 0，每个mul子项的val > 1（Paper 6 §2）。每个子项的val严格小于父项的val，所以树深度被n有界。有限深度 + 有限分支 ⟹ 有限集。∎</p>
+
+  <h3>6.3 紧凑化引理</h3>
+
+  <p><strong>定理。</strong>对每个h ∈ Hist(n)，存在h* ∈ Hist*(n)使得ρ(h*) ≤_W ρ(h)。</p>
+
+  <p><strong>证明：</strong>自底向上应用六条跨排序语义化简规则R₁–R₆直到不可再化（通过ℕ的良基性保证终止）：</p>
+
+  <div class="math-formula">R₁: add(t₁,t₂) → t₂ 当 val(t₁) = 0
+R₂: add(t₁,t₂) → t₁ 当 val(t₂) = 0
+R₃: mul(t₁,t₂) → t₂ 当 val(t₁) = 1
+R₄: mul(t₁,t₂) → t₁ 当 val(t₂) = 1
+R₅: mul(t₁,t₂) → 0_H 当 val(t₁) = 0
+R₆: mul(t₁,t₂) → 0_H 当 val(t₂) = 0</div>
+
+  <p>每条规则严格减小ρ（非零摩擦 + Presburger单调性）。结果h*是紧凑的。∎</p>
+
+  <p><strong>注：</strong>紧凑化证明存在性，不证明唯一性。succ(succ(0_H))和add(succ(0_H), succ(0_H))都在Hist*(2)中但互不相同。</p>
+
+  <h3>6.4 ρ_E和ρ_val（项模型对象）</h3>
+
+  <p><strong>定义：</strong></p>
+
+  <div class="math-formula">ρ_E(n) = min_{Hist*(n)} ρ</div>
+
+  <p>由Hist*(n)的有限性和非空性良定义（§6.2）。</p>
+
+  <p><strong>定理（紧凑化刻画）：</strong>由§6.3，ρ_E(n) = inf_{Hist(n)} ρ。可数无穷集Hist(n)的下确界等于其有限子集Hist*(n)的最小值。</p>
+
+  <p><strong>定义：</strong></p>
+
+  <div class="math-formula">ρ_val(h) = ρ(h) − ρ_E(val(h)) ≥ 0</div>
+
+  <p><strong>注：</strong>ρ_E和ρ_val是项模型对象；在一般T_ρ-模型中不保证存在（因为Hist(n)可能不有限）。</p>
+
+  <h2>7. 范畴性质</h2>
+
+  <p>T_Σ是初始Σ_H-代数。val和ρ是其两个规范投影（Σ_H-代数范畴中的泛态射）。这个范畴视角统一了它们的定义。</p>
+
+  <h2>8. Paper 5–6的导出定理</h2>
+
+  <h3>8.1 结构定理（所有参数）</h3>
+
+  <p>Paper 5：val满射、≡_E同余、T_Σ/≡_E ≅ 𝔑。Paper 6：ρ_E递推和δ单调性。</p>
+
+  <h3>8.2 默认参数（c_S=1, c_⊕=1, c_⊗=2）</h3>
+
+  <p><strong>加法支配引理：</strong>对所有n ≥ 2，加法路径被后继路径支配。</p>
+
+  <p><strong>素数不动点定理：</strong>若n是素数，则δ(n) = δ(n-1)。</p>
+
+  <p><strong>ρ_E递推：</strong>ρ_E(n) = min(ρ_E(n-1) + 1, min_{ab=n, a,b>1} (ρ_E(a) + ρ_E(b) + 2))。</p>
+
+  <h2>9. 开放问题</h2>
+
+  <ol>
+    <li>|Hist*(n)|的增长率。紧凑项在Hist(n)中的密度是多少？</li>
+    <li>完整的相对一致性形式化：Con(ZFC) ⇒ Con(T_ρ)——Paper 8涵盖。</li>
+    <li>T_ρ的非标准模型。非标准模型是否存在？它们的H-sort纤维是什么？</li>
+    <li>非初始代数模型中val/ρ的唯一性。在非标准模型中，val和ρ仍是唯一确定的吗？</li>
+    <li>从T_Σ到其他Σ_H-代数的同态。态射对的一般结构是什么？</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho6.html">ZFCρ第六篇：ρ的递归定义与表达式压缩复杂度</a></p>
+    <p><a href="zfcrho8.html">ZFCρ第八篇：证明论等价与保守扩张 →</a></p>
+    <p>ZFCρ系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18943944" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'The Term Model of ρ-Arithmetic', zh: 'ρ-算术的项模型' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
