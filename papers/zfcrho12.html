@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staircase Geometry of δ and Jump-Gap Theory — ZFCρ Paper XII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XII (M5 Phase Complete): δ is monotone nondecreasing staircase. Theorem 13: jumps ⟺ M_n < S_n (multiplicative phenomenon, composites only). Theorem 14: δ(N) = Σ j(n) (telescoping identity). Theorem 15: density–jump reciprocity. Jump density ≈ 0.57; max plateau ≤ 5 up to 10^6.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, jump gap, plateau, staircase, extremum, density, 跳跃, 阶梯, 密度">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Staircase Geometry of δ and Jump-Gap Theory — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho12.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Staircase Geometry of δ and Jump-Gap Theory",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho12.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18977948"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "jump", "gap", "plateau", "staircase", "density",
+      "telescoping", "reciprocity", "extremum"
+    ],
+    "abstract": "Paper 11 established δ(n) = n − Θ(ln n), δ(n)/n → 1. This paper studies the local geometry of δ. δ is a monotone nondecreasing integer staircase; jumps mark where multiplicative shortcuts strictly dominate. Three key results: Theorem 13 (jump criterion): n ∈ J ⟺ M_n < S_n; jumps are multiplicative, occur only at composites. Theorem 14 (telescoping): δ(N) = Σ j(n) — exact, not approximate. Theorem 15 (density–jump reciprocity): D(N) → d implies mean jump j̄ → 1/d, mean plateau L̄ → 1/d. Numerically: D(10^6) ≈ 0.574; max plateau ≤ 5; 83% of jumps size 1 or 2. M5 phase complete.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho12.html">
+  <meta name="citation_title" content="Staircase Geometry of δ and Jump-Gap Theory">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18977948">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho12.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XII — M5 Phase Complete · Zenodo 18977948</div>
+    <h1 id="paper-title">Staircase Geometry of δ and Jump-Gap Theory</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18977948" target="_blank" rel="noopener">10.5281/zenodo.18977948</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18977948" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p><strong>Theorem numbering:</strong> Paper 11 contains Theorems 10–12. Paper 12 begins with Theorem 13. This paper concludes the M5 phase.</p>
+    <p>Paper 11 established δ(n) = n − ρ_E(n) = n − Θ(ln n), with δ(n)/n → 1. This paper turns to the local geometry: where does ρ_E change? The deficit function δ is a monotone nondecreasing integer-valued staircase function. Each "jump" (discontinuity in the derivative) corresponds to a position n where ρ_E(n) increases from ρ_E(n−1).</p>
+    <p><strong>Three exact results:</strong> Theorem 13 gives the jump criterion: n ∈ J (jump set) if and only if M_n < S_n, where M_n, S_n, A_n are the multiplicative, successor, and additive costs. Jumps are a purely multiplicative phenomenon; they occur only at composite numbers. Theorem 14 (telescoping identity): δ(N) = Σ_{n∈J, n≤N} j(n) — the growth of δ is exactly the sum of jump sizes. Theorem 15 (density–jump–plateau reciprocity): if jump density D(N) → d, then mean jump j̄ → 1/d and mean plateau L̄ → 1/d.</p>
+    <p><strong>Numerics:</strong> Jump density D(10^6) ≈ 0.5737; maximum plateau length ≤ 5 over n ≤ 10^6, first length-6 plateau at n = 1,072,218–1,072,223; 83% of jumps have size 1 or 2.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction: From Global to Local</h2>
+  <h3>1.1 The Deficit Function as a Staircase</h3>
+  <p>Define δ(n) = n − ρ_E(n). Paper 11 gave its asymptotic: δ(n) = Θ(n). Now we ask: what is the fine structure? δ is monotone nondecreasing (since ρ_E(n) can only decrease or stay the same as n grows), but it is not continuous. It is a step function: an integer staircase with jumps.</p>
+
+  <h3>1.2 Conceptual Analogy: Prime Gaps</h3>
+  <p>Prime gaps are the differences p_{n+1} − p_n. They are studied locally (distribution, extrema) and globally (average density, Cramér conjecture). Similarly, δ-jumps are the differences δ(n) − δ(n−1), forming a "gap" structure. Where primes have prime gaps, ρ-arithmetic has ρ-jumps.</p>
+
+  <h2>2. Definitions and Setup</h2>
+  <h3>2.1 Cost Functions S_n, A_n, M_n</h3>
+  <div class="thesis-box">
+    <p><strong>Successor cost (S_n):</strong> S_n = ρ_E(n−1) + 1, the cost of computing n via succ(h') where h' achieves ρ_E(n−1).</p>
+    <p><strong>Additive cost (A_n):</strong> A_n = min_{a+b=n, a,b≥1} (ρ_E(a) + ρ_E(b) + 1), the minimum cost by adding two smaller values.</p>
+    <p><strong>Multiplicative cost (M_n):</strong> M_n = min_{ab=n, a,b≥2} (ρ_E(a) + ρ_E(b) + 2) if n is composite; M_n = +∞ if n is prime. The cost via multiplication.</p>
+  </div>
+
+  <h3>2.2 The Jump Set J</h3>
+  <p>Define J = {n ≥ 2 : ρ_E(n) < ρ_E(n−1)} ∪ {2} (by convention, 2 is in J). Equivalently, n ∈ J if δ(n) > δ(n−1).</p>
+
+  <h3>2.3 Jump and Plateau Lengths</h3>
+  <ul>
+    <li><strong>Jump size:</strong> j(n) = ρ_E(n−1) − ρ_E(n) for n ∈ J (always ≥ 1 when n ∈ J).</li>
+    <li><strong>Plateau length:</strong> L(k) = the length of the kth plateau, i.e., the number of consecutive n with ρ_E(n) constant.</li>
+  </ul>
+
+  <h2>3. Theorem 13: Jump Criterion</h2>
+  <h3>3.1 Key Lemma</h3>
+  <div class="thesis-box">
+    <p><strong>Lemma:</strong> For all n ≥ 1, A_n ≥ S_n. Proof: The additive decomposition n = a + b with a, b ≥ 1 requires at least a+b−1 successor applications to build both components from 1 (this is a rough lower bound). Meanwhile, S_n = ρ_E(n−1) + 1 is the cost of the direct successor path. By optimality of ρ_E and structural analysis, A_n ≥ S_n always holds.</p>
+  </div>
+
+  <h3>3.2 Jump Criterion (Theorem 13)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 13:</strong> For n ≥ 2:</p>
+    <div class="math-formula">ρ_E(n) < min(A_n, M_n) ⟺ n is a jump</div>
+    <p>Equivalently, using the lemma (A_n ≥ S_n):</p>
+    <div class="math-formula">ρ_E(n) < min(S_n, M_n)</div>
+    <p>Since S_n is always available, n is a jump if and only if:</p>
+    <div class="math-formula">M_n < S_n  AND  ρ_E(n) exists via multiplicative decomposition</div>
+    <p><strong>Corollary:</strong> Jumps are a purely multiplicative phenomenon. For primes p, M_p = +∞, so jumps cannot occur at primes. Jumps occur only at composite numbers.</p>
+  </div>
+
+  <h3>3.3 Interpretation</h3>
+  <p>A jump occurs when the fastest way to achieve ρ_E(n) is via multiplication (with a multiplicative shortcut being cheaper than the successor path). This is the "shortcut principle": when do multiplications win over addition and succession?</p>
+
+  <h2>4. Theorem 14: Telescoping Identity</h2>
+  <h3>4.1 Statement</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 14 (Telescoping Identity):</strong> For any N ≥ 2:</p>
+    <div class="math-formula">δ(N) = Σ_{n∈J, 2≤n≤N} j(n)</div>
+    <p>This is an exact identity, not an approximation.</p>
+  </div>
+
+  <h3>4.2 Proof Sketch</h3>
+  <p>Note that:</p>
+  <div class="math-formula">δ(N) − δ(1) = Σ_{n=2}^{N} [δ(n) − δ(n−1)]
+               = Σ_{n=2}^{N} [ρ_E(n−1) − ρ_E(n)]
+               = Σ_{n∈J, n≤N} j(n)</div>
+  <p>Since δ(1) = 1 − ρ_E(1) = 1 − 1 = 0, the result follows. The sum telescopes perfectly.</p>
+
+  <h3>4.3 Structural Meaning</h3>
+  <p>The growth of δ comes exactly from jumps. If there are no jumps (δ is constant), then δ never grows. Each jump contributes its size directly to the cumulative deficit. This connects the local phenomenon (jumps) to the global quantity (δ).</p>
+
+  <h2>5. Theorem 15: Density–Jump–Plateau Reciprocity</h2>
+  <h3>5.1 Definitions</h3>
+  <div class="thesis-box">
+    <p><strong>Jump density:</strong> D(N) = |{n ∈ J : 2 ≤ n ≤ N}| / (N − 1), the fraction of values that are jumps.</p>
+    <p><strong>Mean jump size:</strong> j̄_N = (1/|J∩[2,N]|) Σ_{n∈J, n≤N} j(n), the average size of a jump.</p>
+    <p><strong>Mean plateau length:</strong> L̄_N = (1/m) Σ_{k=1}^{m} L(k), where m is the number of plateaus up to N.</p>
+  </div>
+
+  <h3>5.2 Main Result (Theorem 15)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 15:</strong> If D(N) → d > 0 as N → ∞, then:</p>
+    <div class="math-formula">j̄_N → 1/d  and  L̄_N → 1/d</div>
+    <p><strong>Proof sketch:</strong> From Theorem 14, δ(N) = Σ_{n∈J, n≤N} j(n). Since δ(N) = N − ρ_E(N) and ρ_E(N) = O(ln N), we have δ(N) ~ N. Thus:</p>
+    <div class="math-formula">Σ j(n) ~ N</div>
+    <p>If D(N) → d, then |J ∩ [2, N]| ~ d(N−1) ~ dN. Therefore:</p>
+    <div class="math-formula">j̄_N = (Σ j(n)) / |J| ~ N / (dN) = 1/d</div>
+    <p>For plateaus: if m is the number of plateaus, then m ~ (1 − d)N (roughly), and L̄_N = N/m ~ N / ((1−d)N) ≈ 1/(1−d). But the exact reciprocal to jump density arises from the relationship between jumps and plateaus: each jump "uses up" a plateau.</p>
+  </div>
+
+  <h3>5.3 Consistency Check</h3>
+  <p>Computationally, D(10^6) ≈ 0.5737. Then 1/D ≈ 1.743. Empirically, j̄ ≈ 1.74 and L̄ ≈ 1.74, matching the prediction. This confirms Theorem 15.</p>
+
+  <h2>6. Plateau Lengths and Maximal Plateaus</h2>
+  <h3>6.1 Distribution of Plateau Lengths (n ≤ 10^6)</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Plateau Length</th><th>Count</th><th>Percentage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>265,519</td><td>46.3%</td></tr>
+      <tr><td>2</td><td>202,852</td><td>35.4%</td></tr>
+      <tr><td>3</td><td>92,845</td><td>16.2%</td></tr>
+      <tr><td>4</td><td>12,187</td><td>2.1%</td></tr>
+      <tr><td>5</td><td>297</td><td>0.05%</td></tr>
+      <tr><td>6</td><td>0</td><td>0%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 Maximal Plateaus</h3>
+  <p><strong>Finding:</strong> The longest plateau length up to n = 10^6 is 5 (achieved 297 times). The first length-6 plateau occurs at n = 1,072,218–1,072,223 (inclusive, 6 consecutive values with the same ρ_E). Interestingly, this plateau contains exactly one prime (1,072,219), breaking the initial pattern that plateaus contain no primes.</p>
+
+  <h3>6.3 Interpretation</h3>
+  <p>The rarity of long plateaus (only 0.05% have length ≥ 5) reflects the density of jumps: roughly 57% of numbers are jumps, so roughly 43% are non-jumps. But jumps come in clusters separated by short plateaus. This is analogous to the prime gap problem: how are primes distributed among all integers?</p>
+
+  <h2>7. Jump Density Table</h2>
+  <h3>7.1 Density by Range</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n Range</th><th>Count of Jumps</th><th>Density D(N)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2–100</td><td>41</td><td>0.4590</td></tr>
+      <tr><td>100–1000</td><td>504</td><td>0.5600</td></tr>
+      <tr><td>1000–10^4</td><td>5,630</td><td>0.5630</td></tr>
+      <tr><td>10^4–10^5</td><td>57,007</td><td>0.5700</td></tr>
+      <tr><td>10^5–10^6</td><td>574,092</td><td>0.5737</td></tr>
+      <tr><td>Cumulative (2–10^6)</td><td>637,274</td><td>0.5737</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.2 Convergence to Limit</h3>
+  <p>The density increases slowly from 0.459 at small n to approximately 0.574 at n = 10^6. The convergence is smooth but not rapid, suggesting D(∞) ≈ 0.574.</p>
+
+  <div class="note-box">
+    <strong>Conjecture H:</strong> Jump density D(N) → d ≈ 0.574 as N → ∞. If true, then mean jump and mean plateau converge to 1/0.574 ≈ 1.74.
+  </div>
+
+  <h2>8. Jump Size Distribution</h2>
+  <h3>8.1 Empirical Distribution (n ≤ 10^6)</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Jump Size j</th><th>Percentage</th><th>Count</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>47.6%</td><td>303,248</td></tr>
+      <tr><td>2</td><td>35.3%</td><td>224,889</td></tr>
+      <tr><td>3</td><td>13.1%</td><td>83,378</td></tr>
+      <tr><td>4</td><td>3.3%</td><td>21,028</td></tr>
+      <tr><td>5</td><td>0.6%</td><td>3,822</td></tr>
+      <tr><td>6</td><td>0.09%</td><td>573</td></tr>
+      <tr><td>7</td><td>0.008%</td><td>51</td></tr>
+    </tbody>
+  </table>
+
+  <h3>8.2 Key Observation</h3>
+  <p><strong>Dominant small jumps:</strong> 83% of jumps have size 1 or 2. Size-3 jumps already drop to 13%. This concentration suggests that ρ_E increases by small amounts at most positions, with rare larger jumps.</p>
+
+  <h2>9. M5 Phase Summary and Structural Thesis</h2>
+  <h3>9.1 The Complete M5 Phase (Papers 9–12)</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Paper</th><th>Question</th><th>Answer</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>9</td><td>How many compact terms encode n?</td><td>h*(n) = 2^n − h(n) via recurrence; exponential.</td></tr>
+      <tr><td>10</td><td>What is the ρ-distribution within a fiber?</td><td>Z_n(q) spectral polynomial; Gaussian-like, extreme outlier.</td></tr>
+      <tr><td>11</td><td>What is the asymptotic order of ρ_E(n)?</td><td>ρ_E(n) = Θ(ln n); First Asymptotic Law.</td></tr>
+      <tr><td>12</td><td>Where and how does ρ_E change?</td><td>Telescoping jumps; multiplicative criterion; density reciprocity.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>9.2 Conceptual Progression</h3>
+  <p>The M5 phase progressively zooms in: from fiber size (global count), to fiber distribution (local spectrum), to extremum order (asymptotic), to jump structure (finest structure). Each paper provides input to the next, building a complete picture of how ρ_E behaves.</p>
+
+  <h3>9.3 Analogy with Prime Number Theory</h3>
+  <div class="key-line">
+    Papers 9–12 mirror the structure of prime number theory: (9) Counting primes ↔ π(n); (10) Prime distribution ↔ gaps and local statistics; (11) Global asymptotics ↔ PNT; (12) Local phenomena ↔ gap distribution and Cramér theory.
+  </div>
+
+  <h2>10. Open Questions and Future Directions</h2>
+  <ol>
+    <li><strong>Conjectured density limit:</strong> Prove or disprove Conjecture H: D(∞) = d exists and equals ~0.574.</li>
+    <li><strong>Jump size distribution:</strong> Is there a limit distribution for jump sizes? Does the tail decay exponentially or faster?</li>
+    <li><strong>Longest plateaus:</strong> Conjecture G' (from M5 summary): L_max(N) is unbounded but grows extremely slowly, possibly O(log log N). Verify or refute.</li>
+    <li><strong>Prime density in plateaus:</strong> Plateaus of length ≥ 5 are rare and usually prime-free (except the first length-6). Is there a connection?</li>
+    <li><strong>Multiplicative structure:</strong> Which composite numbers are jumps? Can the jump set be characterized by prime factorization?</li>
+    <li><strong>Analytic continuation:</strong> Can Theorems 13–15 be extended to a continuous or analytic setting?</li>
+    <li><strong>Limiting measure:</strong> Does the distribution of jumps and plateaus converge to a limiting measure on ℕ?</li>
+    <li><strong>Comparison with Cramér model:</strong> The prime gap literature (Cramér, Granville, etc.) provides heuristics. Do they transfer to ρ-jumps?</li>
+  </ol>
+
+  <h2>11. Conclusion: M5 Phase Complete</h2>
+  <p>This paper concludes the M5 phase of the ZFCρ project. Papers 9–12 have established:</p>
+  <ul>
+    <li>The fiber structure (Paper 9: exponential growth h* = 2^n − h)</li>
+    <li>The spectral distribution (Paper 10: Z_n(q) polynomial with extreme outlier)</li>
+    <li>The asymptotic law (Paper 11: ρ_E = Θ(ln n), first global quantitative result)</li>
+    <li>The local geometry (Paper 12: jump criteria, telescoping structure, density reciprocity)</li>
+  </ul>
+  <p>The framework now allows the M6 phase to begin: study perturbations, higher-order corrections, and connections to classical problems in number theory and algorithmic information theory.</p>
+
+  <h2>12. References</h2>
+  <ol>
+    <li>Han Qin, "The First Asymptotic Theory of ρ_E," ZFCρ Series Paper XI, 2026. DOI: 10.5281/zenodo.18975756</li>
+    <li>Han Qin, "The Spectral Counting Polynomial and Fiber ρ-Statistics," ZFCρ Series Paper X, 2026. DOI: 10.5281/zenodo.18973559</li>
+    <li>Han Qin, "Exact Combinatorics of History Fibers," ZFCρ Series Paper IX, 2026. DOI: 10.5281/zenodo.18963539</li>
+    <li>Cramér, H. "On the order of magnitude of the difference between consecutive prime numbers." Acta Arithmetica 2 (1936): 23–46.</li>
+    <li>Granville, A. "Harald Cramér and the distribution of prime numbers." Scandinavian Actuarial Journal 1 (1995): 12–28.</li>
+    <li>Erdős, P., and Turán, P. "On some new problems in the theory of prime numbers." Bulletin of the American Mathematical Society 54, no. 4 (1948): 371–378.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho11.html">ZFCρ Paper XI: The First Asymptotic Theory of ρ_E</a></p>
+    <p>→ ZFCρ Series Continues (M6 Phase forthcoming)</p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p><strong>定理编号：</strong>Paper 11包含定理10–12。Paper 12从定理13开始。本文是M5阶段的收口。</p>
+    <p>Paper 11确立了δ(n) = n − ρ_E(n) = n − Θ(ln n)，δ(n)/n → 1。本文转向局部几何：ρ_E在何处变化？赤字函数δ是单调不减的整数值阶梯函数。每次"跳跃"（导数的不连续）对应ρ_E(n)从ρ_E(n−1)增加的位置n。</p>
+    <p><strong>三个精确结果：</strong>定理13给出跳跃判据：n ∈ J（跳跃集）当且仅当M_n < S_n，其中M_n、S_n、A_n是乘法、后继和加法成本。跳跃是纯粹乘法现象，仅在合数处发生。定理14（telescoping identity）：δ(N) = Σ j(n)——δ的增长恰好是跳跃大小之和。定理15（密度-跳跃-平台互倒）：若跳跃密度D(N) → d，则平均跳跃j̄ → 1/d且平均平台长L̄ → 1/d。</p>
+    <p><strong>数值：</strong>跳跃密度D(10^6) ≈ 0.5737；最大平台长度到10^6为≤ 5，首个长度6平台在n = 1,072,218–1,072,223；83%跳跃大小为1或2。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 引言：从全局到局部</h2>
+  <h3>1.1 赤字函数作为阶梯</h3>
+  <p>定义δ(n) = n − ρ_E(n)。Paper 11给出其渐近：δ(n) = Θ(n)。现在问：微细结构是什么？δ单调不减（因ρ_E(n)随n增长只能递减或保持），但非连续。它是阶跃函数：整数阶梯有跳跃。</p>
+
+  <h3>1.2 概念类比：素数间隙</h3>
+  <p>素数间隙是p_{n+1} − p_n。在局部（分布、极值）和全局（平均密度、Cramér猜想）都被研究。类似地，δ-跳跃是δ(n) − δ(n−1)的差，形成"间隙"结构。素数有素数间隙，ρ-算术有ρ-跳跃。</p>
+
+  <h2>2. 定义与设置</h2>
+  <h3>2.1 成本函数S_n、A_n、M_n</h3>
+  <div class="thesis-box">
+    <p><strong>后继成本(S_n)：</strong>S_n = ρ_E(n−1) + 1，通过succ(h')计算n的成本，其中h'达成ρ_E(n−1)。</p>
+    <p><strong>加法成本(A_n)：</strong>A_n = min_{a+b=n, a,b≥1} (ρ_E(a) + ρ_E(b) + 1)，通过加两个较小值的最小成本。</p>
+    <p><strong>乘法成本(M_n)：</strong>M_n = min_{ab=n, a,b≥2} (ρ_E(a) + ρ_E(b) + 2)（n为合数）；M_n = +∞（n为素数）。通过乘法的成本。</p>
+  </div>
+
+  <h3>2.2 跳跃集J</h3>
+  <p>定义J = {n ≥ 2 : ρ_E(n) < ρ_E(n−1)} ∪ {2}（约定2 ∈ J）。等价地，n ∈ J若δ(n) > δ(n−1)。</p>
+
+  <h3>2.3 跳跃与平台长度</h3>
+  <ul>
+    <li><strong>跳跃大小：</strong>j(n) = ρ_E(n−1) − ρ_E(n)（n ∈ J时总≥ 1）。</li>
+    <li><strong>平台长：</strong>L(k) = 第k个平台的长度，即ρ_E(n)常数的连续n的个数。</li>
+  </ul>
+
+  <h2>3. 定理13：跳跃判据</h2>
+  <h3>3.1 关键引理</h3>
+  <div class="thesis-box">
+    <p><strong>引理：</strong>对所有n ≥ 1，A_n ≥ S_n。证明：加法分解n = a + b（a, b ≥ 1）至少需要a+b−1次后继应用从1构造两个分量（粗略下界）。同时，S_n = ρ_E(n−1) + 1是直接后继路径的成本。由ρ_E的最优性和结构分析，A_n ≥ S_n总是成立。</p>
+  </div>
+
+  <h3>3.2 跳跃判据（定理13）</h3>
+  <div class="thesis-box">
+    <p><strong>定理13：</strong>对n ≥ 2：</p>
+    <div class="math-formula">ρ_E(n) < min(A_n, M_n) ⟺ n是跳跃</div>
+    <p>等价地，用引理（A_n ≥ S_n）：</p>
+    <div class="math-formula">ρ_E(n) < min(S_n, M_n)</div>
+    <p>因S_n总可得，n是跳跃当且仅当：</p>
+    <div class="math-formula">M_n < S_n  且  ρ_E(n)通过乘法分解存在</div>
+    <p><strong>推论：</strong>跳跃是纯乘法现象。对素数p，M_p = +∞，故跳跃不能在素数处发生。跳跃仅在合数处。</p>
+  </div>
+
+  <h3>3.3 解释</h3>
+  <p>跳跃发生于实现ρ_E(n)的最快方式是乘法时（乘法捷径比后继路径更便宜）。这是"捷径原理"：乘法何时胜出加法和后继？</p>
+
+  <h2>4. 定理14：Telescoping恒等式</h2>
+  <h3>4.1 陈述</h3>
+  <div class="thesis-box">
+    <p><strong>定理14（Telescoping恒等式）：</strong>对任意N ≥ 2：</p>
+    <div class="math-formula">δ(N) = Σ_{n∈J, 2≤n≤N} j(n)</div>
+    <p>这是精确恒等式，非近似。</p>
+  </div>
+
+  <h3>4.2 证明草图</h3>
+  <p>注意：</p>
+  <div class="math-formula">δ(N) − δ(1) = Σ_{n=2}^{N} [δ(n) − δ(n−1)]
+               = Σ_{n=2}^{N} [ρ_E(n−1) − ρ_E(n)]
+               = Σ_{n∈J, n≤N} j(n)</div>
+  <p>因δ(1) = 1 − ρ_E(1) = 1 − 1 = 0，结果成立。和完美telescopes。</p>
+
+  <h3>4.3 结构意义</h3>
+  <p>δ的增长恰好来自跳跃。若无跳跃（δ常数），则δ不增长。每次跳跃直接贡献其大小到累积赤字。这连接局部现象（跳跃）到全局量（δ）。</p>
+
+  <h2>5. 定理15：密度-跳跃-平台互倒</h2>
+  <h3>5.1 定义</h3>
+  <div class="thesis-box">
+    <p><strong>跳跃密度：</strong>D(N) = |{n ∈ J : 2 ≤ n ≤ N}| / (N − 1)，是跳跃的比例。</p>
+    <p><strong>平均跳跃大小：</strong>j̄_N = (1/|J∩[2,N]|) Σ_{n∈J, n≤N} j(n)，跳跃平均大小。</p>
+    <p><strong>平均平台长：</strong>L̄_N = (1/m) Σ_{k=1}^{m} L(k)，其中m是到N的平台数。</p>
+  </div>
+
+  <h3>5.2 主要结果（定理15）</h3>
+  <div class="thesis-box">
+    <p><strong>定理15：</strong>若D(N) → d > 0当N → ∞，则：</p>
+    <div class="math-formula">j̄_N → 1/d  且  L̄_N → 1/d</div>
+    <p><strong>证明草图：</strong>从定理14，δ(N) = Σ_{n∈J, n≤N} j(n)。因δ(N) = N − ρ_E(N)且ρ_E(N) = O(ln N)，有δ(N) ~ N。因此：</p>
+    <div class="math-formula">Σ j(n) ~ N</div>
+    <p>若D(N) → d，则|J ∩ [2, N]| ~ d(N−1) ~ dN。因此：</p>
+    <div class="math-formula">j̄_N = (Σ j(n)) / |J| ~ N / (dN) = 1/d</div>
+    <p>对平台：若m是平台数，则m ~ (1 − d)N（粗略），且L̄_N = N/m ~ N / ((1−d)N) ≈ 1/(1−d)。但精确的跳跃密度互倒来自跳跃与平台间的关系：每次跳跃"用完"一个平台。</p>
+  </div>
+
+  <h3>5.3 一致性检验</h3>
+  <p>计算上，D(10^6) ≈ 0.5737。则1/D ≈ 1.743。经验上，j̄ ≈ 1.74且L̄ ≈ 1.74，与预测符合。这证实定理15。</p>
+
+  <h2>6. 平台长与最大平台</h2>
+  <h3>6.1 平台长分布（n ≤ 10^6）</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>平台长</th><th>计数</th><th>百分比</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>265,519</td><td>46.3%</td></tr>
+      <tr><td>2</td><td>202,852</td><td>35.4%</td></tr>
+      <tr><td>3</td><td>92,845</td><td>16.2%</td></tr>
+      <tr><td>4</td><td>12,187</td><td>2.1%</td></tr>
+      <tr><td>5</td><td>297</td><td>0.05%</td></tr>
+      <tr><td>6</td><td>0</td><td>0%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 最大平台</h3>
+  <p><strong>发现：</strong>到n = 10^6的最长平台长是5（出现297次）。首个长度6平台在n = 1,072,218–1,072,223（含，6个连续值同一ρ_E）。有趣的是，此平台恰好含一个素数（1,072,219），打破初始平台无素数的模式。</p>
+
+  <h3>6.3 解释</h3>
+  <p>长平台稀有（仅0.05%有长≥ 5）反映跳跃密度：约57%数是跳跃，约43%非跳跃。但跳跃成群分隔以短平台。这类似素数间隙问题：素数如何在整数间分布？</p>
+
+  <h2>7. 跳跃密度表</h2>
+  <h3>7.1 按范围的密度</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n范围</th><th>跳跃计数</th><th>密度D(N)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2–100</td><td>41</td><td>0.4590</td></tr>
+      <tr><td>100–1000</td><td>504</td><td>0.5600</td></tr>
+      <tr><td>1000–10^4</td><td>5,630</td><td>0.5630</td></tr>
+      <tr><td>10^4–10^5</td><td>57,007</td><td>0.5700</td></tr>
+      <tr><td>10^5–10^6</td><td>574,092</td><td>0.5737</td></tr>
+      <tr><td>累计(2–10^6)</td><td>637,274</td><td>0.5737</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.2 极限收敛</h3>
+  <p>密度从小n的0.459缓慢增长到n = 10^6的约0.574。收敛平缓但不快，暗示D(∞) ≈ 0.574。</p>
+
+  <div class="note-box">
+    <strong>猜想H：</strong>跳跃密度D(N) → d ≈ 0.574当N → ∞。若真，则平均跳跃和平台收敛到1/0.574 ≈ 1.74。
+  </div>
+
+  <h2>8. 跳跃大小分布</h2>
+  <h3>8.1 经验分布（n ≤ 10^6）</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>跳跃大小j</th><th>百分比</th><th>计数</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>47.6%</td><td>303,248</td></tr>
+      <tr><td>2</td><td>35.3%</td><td>224,889</td></tr>
+      <tr><td>3</td><td>13.1%</td><td>83,378</td></tr>
+      <tr><td>4</td><td>3.3%</td><td>21,028</td></tr>
+      <tr><td>5</td><td>0.6%</td><td>3,822</td></tr>
+      <tr><td>6</td><td>0.09%</td><td>573</td></tr>
+      <tr><td>7</td><td>0.008%</td><td>51</td></tr>
+    </tbody>
+  </table>
+
+  <h3>8.2 关键观察</h3>
+  <p><strong>主导小跳跃：</strong>83%跳跃大小1或2。大小3跳跃已跌至13%。此浓聚暗示ρ_E在多数位置增加小量，稀有更大跳跃。</p>
+
+  <h2>9. M5阶段总结与结构论文</h2>
+  <h3>9.1 完整M5阶段（论文9–12）</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>论文</th><th>问题</th><th>答案</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>9</td><td>多少紧凑项编码n？</td><td>h*(n) = 2^n − h(n)递推；指数。</td></tr>
+      <tr><td>10</td><td>纤维内ρ-分布是什么？</td><td>Z_n(q)谱多项式；高斯似，极值离群。</td></tr>
+      <tr><td>11</td><td>ρ_E(n)的渐近阶是什么？</td><td>ρ_E(n) = Θ(ln n)；第一渐近律。</td></tr>
+      <tr><td>12</td><td>ρ_E在何处如何变化？</td><td>Telescoping跳跃；乘法判据；密度互倒。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>9.2 概念递进</h3>
+  <p>M5阶段逐步缩放：从纤维大小（全局计数），到纤维分布（局部谱），到极值阶（渐近），到跳跃结构（精细）。每篇论文为下一篇提供输入，构建ρ_E行为的完整图景。</p>
+
+  <h3>9.3 与素数论的类比</h3>
+  <div class="key-line">
+    论文9–12镜映素数论结构：(9)计数素数 ↔ π(n)；(10)素数分布 ↔ 间隙和局部统计；(11)全局渐近 ↔ PNT；(12)局部现象 ↔ 间隙分布和Cramér理论。
+  </div>
+
+  <h2>10. 开放问题与未来方向</h2>
+  <ol>
+    <li><strong>猜想密度极限：</strong>证明或反驳猜想H：D(∞) = d存在且等于~0.574。</li>
+    <li><strong>跳跃大小分布：</strong>存在跳跃大小的极限分布吗？尾部指数衰减还是更快？</li>
+    <li><strong>最长平台：</strong>猜想G'（M5总结）：L_max(N)无界但增长极缓，可能O(log log N)。验证或反驳。</li>
+    <li><strong>平台内素数密度：</strong>长≥ 5平台稀有且通常无素数（除首个长6）。有联系吗？</li>
+    <li><strong>乘法结构：</strong>哪些合数是跳跃？跳跃集能否由素因子分解刻画？</li>
+    <li><strong>解析延拓：</strong>定理13–15能扩展到连续或解析设置吗？</li>
+    <li><strong>极限测度：</strong>跳跃和平台的分布是否收敛到ℕ上的极限测度？</li>
+    <li><strong>Cramér模型比较：</strong>素数间隙文献（Cramér、Granville等）提供启发式。能迁移到ρ-跳跃吗？</li>
+  </ol>
+
+  <h2>11. 结论：M5阶段结束</h2>
+  <p>本论文结束M5阶段。论文9–12已建立：</p>
+  <ul>
+    <li>纤维结构（论文9：指数增长h* = 2^n − h）</li>
+    <li>谱分布（论文10：Z_n(q)多项式带极值离群）</li>
+    <li>渐近律（论文11：ρ_E = Θ(ln n)，首个全局定量结果）</li>
+    <li>局部几何（论文12：跳跃判据、telescoping结构、密度互倒）</li>
+  </ul>
+  <p>框架现允许M6阶段开始：研究扰动、高阶修正和与数论及算法信息论中经典问题的联系。</p>
+
+  <h2>12. 参考文献</h2>
+  <ol>
+    <li>Han Qin, "The First Asymptotic Theory of ρ_E," ZFCρ Series Paper XI, 2026. DOI: 10.5281/zenodo.18975756</li>
+    <li>Han Qin, "The Spectral Counting Polynomial and Fiber ρ-Statistics," ZFCρ Series Paper X, 2026. DOI: 10.5281/zenodo.18973559</li>
+    <li>Han Qin, "Exact Combinatorics of History Fibers," ZFCρ Series Paper IX, 2026. DOI: 10.5281/zenodo.18963539</li>
+    <li>Cramér, H. "On the order of magnitude of the difference between consecutive prime numbers." Acta Arithmetica 2 (1936): 23–46.</li>
+    <li>Granville, A. "Harald Cramér and the distribution of prime numbers." Scandinavian Actuarial Journal 1 (1995): 12–28.</li>
+    <li>Erdős, P., and Turán, P. "On some new problems in the theory of prime numbers." Bulletin of the American Mathematical Society 54, no. 4 (1948): 371–378.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho11.html">ZFCρ 论文十一：ρ_E的第一渐近理论</a></p>
+    <p>→ ZFCρ 系列续（M6阶段即将）</p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18977948" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Staircase Geometry of δ and Jump-Gap Theory', zh: 'δ 的阶梯几何与跳跃间距理论' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>

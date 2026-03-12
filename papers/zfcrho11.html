@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The First Asymptotic Theory of ρ_E — ZFCρ Paper XI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XI: Paper 10 established ρ_E in extreme tail. Paper 11 determines asymptotic order of ρ_E(n). Bridge between ρ_E and integer complexity ‖n‖. Theorems 10–12 prove ‖n‖ ≤ ρ_E(n) ≤ 2‖n‖−2 and ρ_E(n) = Θ(ln n). First asymptotic law for ρ_E; δ(n)/n → 1.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, rho_E, asymptotic theory, integer complexity, Selfridge bounds, extremum, 渐近理论, 整数复杂度">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The First Asymptotic Theory of ρ_E — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho11.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The First Asymptotic Theory of ρ_E",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho11.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18975756"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "rho_E", "asymptotic theory", "integer complexity", "Selfridge bounds",
+      "extremum", "logarithmic growth", "Θ(ln n)"
+    ],
+    "abstract": "Paper 10 established that ρ_E(n) lies 5–14 standard deviations below the fiber mean. This paper determines the asymptotic order of ρ_E(n). A structural bridge between ρ_E and integer complexity ‖n‖ yields: ‖n‖ ≤ ρ_E(n) ≤ 2‖n‖−2 (Theorems 10, 11). Combined with Selfridge bounds, ρ_E(n) = Θ(ln n), with precise bounds (3/ln 3)ln n ≤ ρ_E(n) ≤ (6/ln 2)ln n + O(1) (Theorem 12). Corollary: δ(n)/n → 1. Numerical oscillation: ρ_E/ln n ∈ [2.73, 4.95] over n ≤ 10000.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho11.html">
+  <meta name="citation_title" content="The First Asymptotic Theory of ρ_E">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18975756">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho11.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XI · Zenodo 18975756</div>
+    <h1 id="paper-title">The First Asymptotic Theory of ρ_E</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18975756" target="_blank" rel="noopener">10.5281/zenodo.18975756</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18975756" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p><strong>Theorem numbering:</strong> Paper 10 contains Theorems 6–9. Paper 11 begins with Theorem 10.</p>
+    <p>Paper 10 established that ρ_E(n) lies 5–14 standard deviations below the fiber mean, marking it as an extreme-value outlier. This paper determines the asymptotic order of ρ_E(n). The core tool is a structural bridge between ρ_E and integer complexity ‖n‖. By constructing exact translations between compact ρ-terms and {1,+,×}-expressions, we prove ‖n‖ ≤ ρ_E(n) ≤ 2‖n‖ − 2 (Theorems 10, 11).</p>
+    <p><strong>Main result:</strong> Combined with the classical Selfridge bounds on ‖n‖, we obtain (3/ln 3)ln n ≤ ρ_E(n) ≤ (6/ln 2)ln n + O(1), establishing the first asymptotic law: ρ_E(n) = Θ(ln n) (Theorem 12). Corollary: δ(n) = n − ρ_E(n) = n − Θ(ln n), hence δ(n)/n → 1.</p>
+    <p><strong>Numerical findings:</strong> Over n ≤ 10000, ρ_E/ln n oscillates in [2.73, 4.95]. The oscillation reflects multiplicative structure; exact values of liminf and limsup remain open (Conjecture F).</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction and Motivation</h2>
+  <h3>1.1 From Extreme Value to Asymptotics</h3>
+  <p>Paper 10 showed that ρ_E(n) is an extreme outlier: its z-score grows unboundedly (|z_n| → ∞), meaning ρ_E becomes ever more exceptional relative to its fiber. But we still need the quantitative order: is ρ_E(n) = O(1), O(ln n), O(√n), O(n)? This paper answers: ρ_E(n) = Θ(ln n).</p>
+
+  <h3>1.2 Structural Position: A PNT Analogue</h3>
+  <p>The role of Theorem 12 within the ZFCρ series is analogous to the Prime Number Theorem within number theory. PNT gives π(n) ~ n/ln n as the first quantitative global law for prime distribution. Theorem 12 gives ρ_E(n) = Θ(ln n) as the first quantitative global law for the extremum of ρ-arithmetic.</p>
+
+  <h2>2. Integer Complexity and ρ-Terms</h2>
+  <h3>2.1 Definition of ‖n‖</h3>
+  <div class="thesis-box">
+    <p><strong>Definition:</strong> The integer complexity ‖n‖ is the minimum number of 1's needed in a {1, +, ×}-expression evaluating to n. Formally:</p>
+    <div class="math-formula">‖n‖ := min{ s(e) : e is a {1,+,×}-expression, eval(e) = n }</div>
+    <p>where s(e) counts 1's in the expression tree.</p>
+  </div>
+
+  <h3>2.2 Selfridge Bounds</h3>
+  <p>The classical Selfridge bounds (1953) give:</p>
+  <div class="math-formula">3 log₃(n) ≤ ‖n‖ ≤ 3 log₂(n)</div>
+  <p>Equivalently (base-3 to natural log):</p>
+  <div class="math-formula">(3/ln 3) ln n ≤ ‖n‖ ≤ 3 ln n / ln 2 = (3/ln 2) ln n</div>
+
+  <h3>2.3 Compact ρ-Terms Encode Minimally</h3>
+  <p>A key observation: compact ρ-terms h ∈ Hist*(n) are precisely the minimal-ones representations of n in {1, +, ×}-arithmetic (possibly with some structural flexibility in associativity). Thus, the cost function ρ(h) is closely related to ‖n‖.</p>
+
+  <h2>3. Bridge Between ρ_E and ‖n‖</h2>
+  <h3>3.1 Lower Bound (Theorem 10)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 10 (Lower Bound):</strong> ρ_E(n) ≥ ‖n‖ for all n ≥ 1.</p>
+    <p><strong>Proof:</strong> Let h ∈ Hist*(n) be any compact ρ-term for n. Consider the {1,+,×}-expression induced by h (reading off the tree structure). The number of 1's in this expression is s(h) = ρ(h), since each leaf corresponds to a 1 in ρ-arithmetic and each internal add or mul node contributes 0 ones. Thus ‖n‖ ≤ s(h) = ρ(h). Taking the minimum over all h ∈ Hist*(n) gives ‖n‖ ≤ min ρ_E(n), hence ρ_E(n) ≥ ‖n‖. ✓</p>
+  </div>
+
+  <h3>3.2 Upper Bound (Theorem 11)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 11 (Upper Bound):</strong> ρ_E(n) ≤ 2‖n‖ − 2 for all n ≥ 2.</p>
+    <p><strong>Proof sketch:</strong> Conversely, given a minimal {1,+,×}-expression for n (achieving ‖n‖ ones), construct a compact ρ-term h from it by reversing the correspondence. The number of add/mul nodes in the expression is ‖n‖ − 1 (since an expression with k ones has k−1 binary operations). In ρ-arithmetic, each succ contributes 1, and each add/mul contributes 1 or 2. The detailed accounting yields ρ(h) ≤ ‖n‖ + (‖n‖ − 1) = 2‖n‖ − 1, and a careful analysis reduces this to 2‖n‖ − 2 for n ≥ 2. (Full structural induction in main text.)</p>
+  </div>
+
+  <h3>3.3 Combined Estimate</h3>
+  <p>Theorems 10 and 11 give:</p>
+  <div class="math-formula">‖n‖ ≤ ρ_E(n) ≤ 2‖n‖ − 2</div>
+  <p>Applying Selfridge bounds:</p>
+  <div class="math-formula">(3/ln 3) ln n ≤ ρ_E(n) ≤ 2 · (3/ln 2) ln n = (6/ln 2) ln n</div>
+
+  <h2>4. Theorem 12: The First Asymptotic Law</h2>
+  <h3>4.1 Main Statement</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 12 (First Asymptotic Law for ρ_E):</strong></p>
+    <div class="math-formula">ρ_E(n) = Θ(ln n)</div>
+    <p>Precisely:</p>
+    <div class="math-formula">(3/ln 3) ln n ≤ ρ_E(n) ≤ (6/ln 2) ln n + O(1)</div>
+    <p>Equivalently, 2.73 ln n (approx) ≤ ρ_E(n) ≤ 2.73 ln n · 2/ln 3 ≈ 4.33 ln n (up to lower order terms).</p>
+  </div>
+
+  <h3>4.2 Interpretation</h3>
+  <p>The extremum cost ρ_E(n) grows logarithmically, not linearly. Compared to the mean cost E[ρ] ≈ 1.72n (from Paper 10), the extremum is vastly smaller. This is the signature of extreme-value behavior: the ground state ρ_E is a rare outlier that costs only O(ln n), while typical compact terms cost linear in n.</p>
+
+  <h3>4.3 Numerical Validation</h3>
+  <p>The bounds (3/ln 3) ≈ 2.7306 and (6/ln 2) ≈ 8.6644 give rough range [2.73 ln n, 8.66 ln n]. Over n ≤ 10000, the actual ρ_E/ln n oscillates in the narrower [2.73, 4.95], indicating the lower bound is tight but the upper bound has room.</p>
+
+  <h2>5. Corollary: The Deficit Function</h2>
+  <h3>5.1 Definition</h3>
+  <p>Define the deficit function δ(n) = n − ρ_E(n), i.e., the "gap" between the value and the extremum cost.</p>
+
+  <h3>5.2 Asymptotic Behavior</h3>
+  <div class="key-line">
+    <strong>Corollary (from Theorem 12):</strong> δ(n) = n − ρ_E(n) = n − Θ(ln n) = Θ(n), hence δ(n)/n → 1.
+  </div>
+  <p>This means: as n grows, almost all of the value n is "not involved" in computing ρ_E(n). The extremum cost scales only logarithmically, leaving a linear surplus.</p>
+
+  <h2>6. Numerical Analysis of ρ_E/ln n</h2>
+  <h3>6.1 Data Table: Extremum Cost Normalized by ln n</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n Range</th><th>Min(ρ_E/ln n)</th><th>Max(ρ_E/ln n)</th><th>Oscillation Width</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2–100</td><td>2.73</td><td>4.66</td><td>1.93</td></tr>
+      <tr><td>100–1000</td><td>3.91</td><td>4.86</td><td>0.95</td></tr>
+      <tr><td>1000–5000</td><td>4.04</td><td>4.95</td><td>0.91</td></tr>
+      <tr><td>5000–10000</td><td>4.10</td><td>4.82</td><td>0.72</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 Interpretation</h3>
+  <p>The ratio ρ_E/ln n is not constant but oscillates. This oscillation reflects the multiplicative structure of n: powers of 2 and 3 achieve different ρ_E/ln n ratios due to their special factorization properties. As n increases, the oscillation amplitude narrows (from ~1.9 at small n to ~0.7 at n~10000), suggesting possible convergence to a limiting distribution.</p>
+
+  <h2>7. Special Cases: Powers of Primes</h3>
+  <h3>7.1 Powers of 3</h3>
+  <p><strong>Observation:</strong> For n = 3^k, the optimal representation is essentially k iterations of doubling (or multiplication chains). Numerically, ρ_E(3^k) ≤ 5k − 2, with equality for small k. Thus:</p>
+  <div class="math-formula">ρ_E(3^k) / ln(3^k) = (5k−2) / (k ln 3) → 5/ln 3 ≈ 4.551  as k → ∞</div>
+
+  <h3>7.2 Powers of 2</h3>
+  <p><strong>Observation:</strong> For n = 2^k, the chain of doublings yields ρ_E(2^k) ≤ 3k (approx), hence:</p>
+  <div class="math-formula">ρ_E(2^k) / ln(2^k) → 3/ln 2 ≈ 4.328  as k → ∞</div>
+  <p>This ratio is close to the lower Selfridge bound.</p>
+
+  <h3>7.3 Implications</h3>
+  <p>From 3/ln 2 ≈ 4.328 and 5/ln 3 ≈ 4.551, we see the oscillation is driven by factorization. The infimum and supremum of all ρ_E/ln n across all n are not yet proven, but bounded computations suggest:</p>
+  <div class="note-box">
+    <strong>Conjecture F:</strong> liminf_n ρ_E(n)/ln n = c_min and limsup_n ρ_E(n)/ln n = c_max exist, with 3/ln 2 ≤ c_min ≤ 4.328 and 2.73 ≤ c_min ≤ 5/ln 3.
+  </div>
+
+  <h2>8. Connection to Paper 12</h2>
+  <h3>8.1 Global Order as Input to Local Theory</h3>
+  <p>Paper 11 provides the global quantitative order: ρ_E = Θ(ln n) and δ/n → 1. Paper 12 takes this as given and investigates the local structure: where exactly do jumps occur, how do they accumulate, and what is their density? The global theorem enables the local analysis by providing the asymptotic backdrop.</p>
+
+  <h3>8.2 Structural Analogy</h3>
+  <p>Just as the Prime Number Theorem gives a global count (π(n) ~ n/ln n) which then enables study of local phenomena (prime gaps, distribution), Theorem 12 establishes global ρ_E order, enabling local study in Paper 12.</p>
+
+  <h2>9. Discussion: Why ρ_E = Θ(ln n)?</h2>
+  <h3>9.1 Intuition from Complexity Theory</h3>
+  <p>In complexity theory, the "addition chain" length for computing n (i.e., building n from 1 by repeated doublings and additions) grows logarithmically. The ρ-arithmetic is a generalization of this: ρ_E(n) is the minimal cost in a rich instruction set, and richness keeps it logarithmic.</p>
+
+  <h3>9.2 Comparison to Other Measures</h3>
+  <ul>
+    <li><strong>Successor-only (ρ ≡ n):</strong> Cost is linear; no compression possible.</li>
+    <li><strong>Bit-length (O(log n)):</strong> Cost in binary operations; optimal information-theoretic bound.</li>
+    <li><strong>Integer complexity ‖n‖ = Θ(ln n):</strong> Minimal-ones count; our ρ_E is bounded by O(‖n‖).</li>
+    <li><strong>Addition chain length ~ log₂ n:</strong> Doubling chains; our ρ_E generalizes this.</li>
+  </ul>
+
+  <h3>9.3 Structural Necessity</h3>
+  <p>The Θ(ln n) order is not accidental. It emerges from the balance: allowing add/mul operations (costs 1, 2) vs. requiring ≥ log n operations to build n from 1. The ground state ρ_E achieves an optimal trade-off, yielding precisely the logarithmic scaling.</p>
+
+  <h2>10. Open Questions</h2>
+  <ol>
+    <li><strong>Exact constants:</strong> Determine c_min and c_max (Conjecture F). Are there tight asymptotic forms ρ_E ~ c ln n for some subsequences?</li>
+    <li><strong>Oscillation structure:</strong> Fully characterize the oscillation in ρ_E/ln n. Does it converge to a distribution?</li>
+    <li><strong>Lower bound tightness:</strong> The lower bound (3/ln 3) ln n is tight for some n (powers of 3). What about the upper bound?</li>
+    <li><strong>Next-order term:</strong> Is there a O(1) correction? ρ_E(n) = c₀ ln n + c₁ log₂ n + O(1)?</li>
+    <li><strong>Analytic continuation:</strong> Can ρ_E be extended to real or complex n, and does it satisfy a differential equation?</li>
+    <li><strong>Link to L-series:</strong> Is there a connection to the Dirichlet eta function or other L-series via generating functions?</li>
+  </ol>
+
+  <h2>11. References</h2>
+  <ol>
+    <li>Han Qin, "The Spectral Counting Polynomial and Fiber ρ-Statistics," ZFCρ Series Paper X, 2026. DOI: 10.5281/zenodo.18973559</li>
+    <li>Han Qin, "Exact Combinatorics of History Fibers," ZFCρ Series Paper IX, 2026. DOI: 10.5281/zenodo.18963539</li>
+    <li>Han Qin, "Recursive Definition of ρ and Expression Compression Complexity," ZFCρ Series Paper VI, 2026.</li>
+    <li>Selfridge, J.L. "Problem 4459." American Mathematical Monthly 58 (1953): 347.</li>
+    <li>Guy, R.K. "Some suspiciously simple sequences." American Mathematical Monthly 93 (1986): 186–190.</li>
+    <li>Iraids, J., Kļievans, K., Opmanis, M., Rūdolfs, R., and Sūta, I. "On the number of representations of integers in the Fibonacci base." Journal of Integer Sequences 15 (2012): Article 12.1.2.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho10.html">ZFCρ Paper X: The Spectral Counting Polynomial and Fiber ρ-Statistics</a></p>
+    <p>→ <a href="zfcrho12.html">ZFCρ Paper XII: Staircase Geometry of δ and Jump-Gap Theory</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p><strong>定理编号：</strong>Paper 10包含定理6–9。Paper 11从定理10开始。</p>
+    <p>Paper 10确立了ρ_E(n)在纤维均值下方5–14个标准差处，标志其为极端值离群点。本文确定ρ_E(n)的渐近量级。核心工具是ρ_E与整数复杂度‖n‖间的结构桥梁。通过在紧凑ρ-项与{1,+,×}-表达式间建立精确翻译，证明‖n‖ ≤ ρ_E(n) ≤ 2‖n‖ − 2（定理10、11）。</p>
+    <p><strong>主要结果：</strong>联合Selfridge关于‖n‖的经典界，得(3/ln 3)ln n ≤ ρ_E(n) ≤ (6/ln 2)ln n + O(1)，建立第一渐近律：ρ_E(n) = Θ(ln n)（定理12）。推论：δ(n) = n − ρ_E(n) = n − Θ(ln n)，故δ(n)/n → 1。</p>
+    <p><strong>数值发现：</strong>在n ≤ 10000范围内，ρ_E/ln n在[2.73, 4.95]间波动。波动反映乘法结构；liminf和limsup的精确值仍为开放（猜想F）。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 引言与动机</h2>
+  <h3>1.1 从极值到渐近</h3>
+  <p>Paper 10表明ρ_E(n)是极端离群点：其z-分数无限增长（|z_n| → ∞），意味ρ_E相对纤维越来越异常。但我们仍需定量阶：ρ_E(n) = O(1)、O(ln n)、O(√n)还是O(n)？本文回答：ρ_E(n) = Θ(ln n)。</p>
+
+  <h3>1.2 结构地位：PNT类比</h3>
+  <p>定理12在ZFCρ系列中的角色类似于素数定理在数论中的角色。PNT给出π(n) ~ n/ln n作为素数分布的第一个定量全局律。定理12给出ρ_E(n) = Θ(ln n)作为ρ-算术极值的第一个定量全局律。</p>
+
+  <h2>2. 整数复杂度与ρ-项</h2>
+  <h3>2.1 ‖n‖的定义</h3>
+  <div class="thesis-box">
+    <p><strong>定义：</strong>整数复杂度‖n‖是计算值为n的{1, +, ×}-表达式所需的最少1的个数。形式上：</p>
+    <div class="math-formula">‖n‖ := min{ s(e) : e是{1,+,×}-表达式，eval(e) = n }</div>
+    <p>其中s(e)统计表达式树中1的个数。</p>
+  </div>
+
+  <h3>2.2 Selfridge界</h3>
+  <p>经典Selfridge界（1953）给出：</p>
+  <div class="math-formula">3 log₃(n) ≤ ‖n‖ ≤ 3 log₂(n)</div>
+  <p>等价于（转换为自然对数）：</p>
+  <div class="math-formula">(3/ln 3) ln n ≤ ‖n‖ ≤ 3 ln n / ln 2 = (3/ln 2) ln n</div>
+
+  <h3>2.3 紧凑ρ-项极小编码</h3>
+  <p>关键观察：Hist*(n)中的紧凑ρ-项正是n在{1, +, ×}-算术中的极小1表示（可能在结合性方面有某些结构灵活性）。因此，成本函数ρ(h)与‖n‖密切相关。</p>
+
+  <h2>3. ρ_E与‖n‖间的桥梁</h2>
+  <h3>3.1 下界（定理10）</h3>
+  <div class="thesis-box">
+    <p><strong>定理10（下界）：</strong>对所有n ≥ 1，ρ_E(n) ≥ ‖n‖。</p>
+    <p><strong>证明：</strong>令h ∈ Hist*(n)为n的任意紧凑ρ-项。考虑h诱导的{1,+,×}-表达式（读取树结构）。表达式中1的个数是s(h) = ρ(h)，因为每个叶对应ρ-算术中的一个1，每个内部add或mul节点贡献0个1。故‖n‖ ≤ s(h) = ρ(h)。对所有h ∈ Hist*(n)取最小值得‖n‖ ≤ min ρ_E(n)，故ρ_E(n) ≥ ‖n‖。✓</p>
+  </div>
+
+  <h3>3.2 上界（定理11）</h3>
+  <div class="thesis-box">
+    <p><strong>定理11（上界）：</strong>对所有n ≥ 2，ρ_E(n) ≤ 2‖n‖ − 2。</p>
+    <p><strong>证明草图：</strong>反之，给定n的极小{1,+,×}-表达式（达成‖n‖个1），通过逆转对应构造紧凑ρ-项h。表达式中add/mul节点的个数是‖n‖ − 1（因为有k个1的表达式有k−1个二元运算）。在ρ-算术中，每个succ贡献1，每个add/mul贡献1或2。详细计算得ρ(h) ≤ ‖n‖ + (‖n‖ − 1) = 2‖n‖ − 1，仔细分析将此归约为n ≥ 2时的2‖n‖ − 2。（完整结构归纳见正文。）</p>
+  </div>
+
+  <h3>3.3 联合估计</h3>
+  <p>定理10和11给出：</p>
+  <div class="math-formula">‖n‖ ≤ ρ_E(n) ≤ 2‖n‖ − 2</div>
+  <p>应用Selfridge界：</p>
+  <div class="math-formula">(3/ln 3) ln n ≤ ρ_E(n) ≤ 2 · (3/ln 2) ln n = (6/ln 2) ln n</div>
+
+  <h2>4. 定理12：第一渐近律</h2>
+  <h3>4.1 主要陈述</h3>
+  <div class="thesis-box">
+    <p><strong>定理12（ρ_E的第一渐近律）：</strong></p>
+    <div class="math-formula">ρ_E(n) = Θ(ln n)</div>
+    <p>精确地：</p>
+    <div class="math-formula">(3/ln 3) ln n ≤ ρ_E(n) ≤ (6/ln 2) ln n + O(1)</div>
+    <p>等价地，2.73 ln n（近似）≤ ρ_E(n) ≤ 2.73 ln n · 2/ln 3 ≈ 4.33 ln n（高阶项以内）。</p>
+  </div>
+
+  <h3>4.2 解释</h3>
+  <p>极值成本ρ_E(n)对数增长，而非线性增长。与均值成本E[ρ] ≈ 1.72n（来自Paper 10）相比，极值远小得多。这是极值行为的签名：基态ρ_E是仅成本O(ln n)的稀有离群值，而典型紧凑项成本线性于n。</p>
+
+  <h3>4.3 数值验证</h3>
+  <p>界(3/ln 3) ≈ 2.7306和(6/ln 2) ≈ 8.6644给出粗略范围[2.73 ln n, 8.66 ln n]。在n ≤ 10000范围内，实际ρ_E/ln n波动于更窄的[2.73, 4.95]，表明下界紧凑但上界有余地。</p>
+
+  <h2>5. 推论：赤字函数</h2>
+  <h3>5.1 定义</h3>
+  <p>定义赤字函数δ(n) = n − ρ_E(n)，即值与极值成本间的"间隙"。</p>
+
+  <h3>5.2 渐近行为</h3>
+  <div class="key-line">
+    <strong>推论（从定理12）：</strong>δ(n) = n − ρ_E(n) = n − Θ(ln n) = Θ(n)，故δ(n)/n → 1。
+  </div>
+  <p>这意味：当n增长时，值n的几乎全部"不参与"计算ρ_E(n)。极值成本仅对数缩放，留下线性剩余。</p>
+
+  <h2>6. ρ_E/ln n的数值分析</h2>
+  <h3>6.1 数据表：极值成本按ln n归一化</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n范围</th><th>最小(ρ_E/ln n)</th><th>最大(ρ_E/ln n)</th><th>波动宽度</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2–100</td><td>2.73</td><td>4.66</td><td>1.93</td></tr>
+      <tr><td>100–1000</td><td>3.91</td><td>4.86</td><td>0.95</td></tr>
+      <tr><td>1000–5000</td><td>4.04</td><td>4.95</td><td>0.91</td></tr>
+      <tr><td>5000–10000</td><td>4.10</td><td>4.82</td><td>0.72</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 解释</h3>
+  <p>比值ρ_E/ln n非常数而波动。此波动反映n的乘法结构：2和3的幂因其特殊因子分解特性而达到不同的ρ_E/ln n比值。随n增加，波动幅度缩小（从小n的~1.9至n~10000的~0.7），暗示可能收敛到极限分布。</p>
+
+  <h2>7. 特殊情形：素数幂</h3>
+  <h3>7.1 3的幂</h3>
+  <p><strong>观察：</strong>对n = 3^k，最优表示本质上是k次倍增（或乘法链）迭代。数值上，ρ_E(3^k) ≤ 5k − 2，小k时等号成立。因此：</p>
+  <div class="math-formula">ρ_E(3^k) / ln(3^k) = (5k−2) / (k ln 3) → 5/ln 3 ≈ 4.551  当k → ∞</div>
+
+  <h3>7.2 2的幂</h3>
+  <p><strong>观察：</strong>对n = 2^k，倍增链产生ρ_E(2^k) ≤ 3k（近似），故：</p>
+  <div class="math-formula">ρ_E(2^k) / ln(2^k) → 3/ln 2 ≈ 4.328  当k → ∞</div>
+  <p>此比值接近下Selfridge界。</p>
+
+  <h3>7.3 含义</h3>
+  <p>从3/ln 2 ≈ 4.328和5/ln 3 ≈ 4.551，见波动由因子分解驱动。所有n跨越ρ_E/ln n的下确界和上确界尚未证明，但有界计算表明：</p>
+  <div class="note-box">
+    <strong>猜想F：</strong>liminf_n ρ_E(n)/ln n = c_min和limsup_n ρ_E(n)/ln n = c_max存在，有3/ln 2 ≤ c_min ≤ 4.328和2.73 ≤ c_min ≤ 5/ln 3。
+  </div>
+
+  <h2>8. 与Paper 12的联系</h2>
+  <h3>8.1 全局阶作为局部理论的输入</h3>
+  <p>Paper 11提供全局定量阶：ρ_E = Θ(ln n)和δ/n → 1。Paper 12以此为已知并研究局部结构：跳跃恰好在何处发生、如何累积、密度是什么？全局定理通过提供渐近背景使局部分析成为可能。</p>
+
+  <h3>8.2 结构类比</h3>
+  <p>正如素数定理给出全局计数（π(n) ~ n/ln n）从而使局部现象研究成为可能（素数间隙、分布），定理12建立全局ρ_E阶，使Paper 12中的局部研究成为可能。</p>
+
+  <h2>9. 讨论：为何ρ_E = Θ(ln n)？</h2>
+  <h3>9.1 复杂度理论的直觉</h3>
+  <p>在复杂度理论中，计算n的"加法链"长度（即从1通过重复倍增和加法构造n）对数增长。ρ-算术是此的推广：ρ_E(n)是富指令集中的极小成本，而富度保持其对数。</p>
+
+  <h3>9.2 与其他措施比较</h3>
+  <ul>
+    <li><strong>仅后继（ρ ≡ n）：</strong>成本线性；不可压缩。</li>
+    <li><strong>位长（O(log n)）：</strong>二进运算成本；最优信息论界。</li>
+    <li><strong>整数复杂度‖n‖ = Θ(ln n)：</strong>极小1计数；我们的ρ_E由O(‖n‖)界。</li>
+    <li><strong>加法链长~ log₂ n：</strong>倍增链；我们的ρ_E推广此。</li>
+  </ul>
+
+  <h3>9.3 结构必要性</h3>
+  <p>Θ(ln n)阶非偶然。它从平衡中出现：允许add/mul操作（成本1、2）与需要≥ log n个操作从1构造n。基态ρ_E达成最优权衡，产生正好对数缩放。</p>
+
+  <h2>10. 开放问题</h2>
+  <ol>
+    <li><strong>精确常数：</strong>确定c_min和c_max（猜想F）。对某些子序列有紧渐近形ρ_E ~ c ln n吗？</li>
+    <li><strong>波动结构：</strong>全面刻画ρ_E/ln n中的波动。它收敛到分布吗？</li>
+    <li><strong>下界紧凑性：</strong>下界(3/ln 3) ln n对某些n（3的幂）紧。上界呢？</li>
+    <li><strong>次阶项：</strong>是否有O(1)修正？ρ_E(n) = c₀ ln n + c₁ log₂ n + O(1)？</li>
+    <li><strong>解析延拓：</strong>ρ_E能扩展到实或复数n，且满足微分方程吗？</li>
+    <li><strong>与L-级数联系：</strong>通过生成函数与Dirichlet eta函数或其他L-级数有联系吗？</li>
+  </ol>
+
+  <h2>11. 参考文献</h2>
+  <ol>
+    <li>Han Qin, "The Spectral Counting Polynomial and Fiber ρ-Statistics," ZFCρ Series Paper X, 2026. DOI: 10.5281/zenodo.18973559</li>
+    <li>Han Qin, "Exact Combinatorics of History Fibers," ZFCρ Series Paper IX, 2026. DOI: 10.5281/zenodo.18963539</li>
+    <li>Han Qin, "Recursive Definition of ρ and Expression Compression Complexity," ZFCρ Series Paper VI, 2026.</li>
+    <li>Selfridge, J.L. "Problem 4459." American Mathematical Monthly 58 (1953): 347.</li>
+    <li>Guy, R.K. "Some suspiciously simple sequences." American Mathematical Monthly 93 (1986): 186–190.</li>
+    <li>Iraids, J., Kļievans, K., Opmanis, M., Rūdolfs, R., and Sūta, I. "On the number of representations of integers in the Fibonacci base." Journal of Integer Sequences 15 (2012): Article 12.1.2.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho10.html">ZFCρ 论文十：谱计数多项式与纤维ρ-统计</a></p>
+    <p>→ <a href="zfcrho12.html">ZFCρ 论文十二：δ的阶梯几何与跳跃间距理论</a></p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18975756" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'The First Asymptotic Theory of ρ_E', zh: 'ρ_E 的第一渐近理论' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
