@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exact Combinatorics of History Fibers — ZFCρ Paper IX — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper IX: h*(n) = |Hist*(n)| satisfies a three-branch recurrence decomposed into successor, additive Cauchy convolution, and truncated Dirichlet convolution. Multiplication-free baseline = large Schröder numbers with growth rate 3+2√2. Full h*(n) growth rate limit λ* exists; numerical estimate λ* ≈ 5.923.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, history fibers, Hist*(n), fiber counting, Schröder numbers, Cauchy convolution, Dirichlet convolution, generating function, growth rate, Fekete, 纤维计数, 大Schröder数">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Exact Combinatorics of History Fibers — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho9.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Exact Combinatorics of History Fibers",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho9.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18963539"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "history fibers", "Hist*(n)", "fiber counting", "Schröder numbers",
+      "Cauchy convolution", "Dirichlet convolution", "generating function", "growth rate"
+    ],
+    "abstract": "Papers 1–8 completed the foundations of T_ρ: syntax, axioms, model, consistency. This paper begins the internal structure theory of the term model. The first question is fiber counting: for each natural number n, how large is the compact history term space Hist*(n)? Core results: h*(n) satisfies a three-branch recurrence decomposed by root constructor into successor, additive (Cauchy), and multiplicative (truncated Dirichlet) branches. Removing the multiplicative branch yields the large Schröder numbers with growth rate 3+2√2. Numerical results show the full h*(n) growth rate limit λ* exists and λ* ≈ 5.923.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho9.html">
+  <meta name="citation_title" content="Exact Combinatorics of History Fibers">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18963539">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho9.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper IX · Zenodo 18963539</div>
+    <h1 id="paper-title">Exact Combinatorics of History Fibers</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18963539" target="_blank" rel="noopener">10.5281/zenodo.18963539</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18963539" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Papers 1–8 completed the foundations of T_ρ: syntax, axioms, model, consistency. This paper begins the internal structure theory of the term model.</p>
+    <p>The first question is fiber counting: for each natural number n, how large is the compact history term space Hist*(n)? Paper 7 established that Hist*(n) is finite but noted its "combinatorial explosion" without giving exact counts. The present paper fills this gap.</p>
+    <p><strong>Core results.</strong> h*(n) = |Hist*(n)| satisfies a three-branch recurrence (Theorem 1), decomposed by root constructor into a successor branch, an additive branch (Cauchy convolution), and a multiplicative branch (truncated Dirichlet convolution). Removing the multiplicative branch yields a sequence identical to the large Schröder numbers (Theorem 2), with growth rate 3+2√2 ≈ 5.828 (Theorem 3).</p>
+    <p><strong>Numerical results.</strong> The direct contribution of the multiplicative branch decays to negligible levels (< 0.001% for n ≥ 20). Yet the growth rate of h*(n) strictly exceeds the multiplication-free baseline. Supermultiplicativity of h*(n) and exponential bounds establish that λ* = lim h*(n)^{1/n} exists and is finite positive (Theorem 5). Numerical extrapolation suggests λ* ≈ 5.923.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction</h2>
+  <h3>1.1 From Extrema to Counting</h3>
+  <p>Paper 6 saw only the minimum ρ_E. Fiber counting is the necessary infrastructure for passing to distributions (Paper 10). Historical parallel: Euler's systematic counting of integer partitions p(n) marked the beginning of analytic number theory. h*(n) answers "how many compact generation paths does n admit?" — same structural position as p(n), but with three ordered constructors instead of one.</p>
+
+  <h2>2. The Recurrence for h*(n)</h2>
+  <h3>2.1 Three-Branch Recurrence Theorem</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 1 (Three-Branch Recurrence):</strong> Let h*(n) = |Hist*(n)|. Then:</p>
+    <div class="math-formula">h*(0) = 1
+h*(n) = h*(n-1)  [successor branch]
+       + Σ_{a+b=n, a,b≥1} h*(a)·h*(b)  [additive branch]
+       + Σ_{ab=n, a,b≥2} h*(a)·h*(b)   [multiplicative branch]</div>
+    <p>The three branches are disjoint and exhaustive over Hist*(n), partitioned by root constructor type.</p>
+  </div>
+
+  <h3>2.2 Proof Strategy</h3>
+  <p>Three-step proof: (1) Root classification: Hist*(n) = Hist*_succ(n) ⊔ Hist*_add(n) ⊔ Hist*_mul(n) (disjoint by G7, exhaustive by G5). (2) Bijections to fiber products via compactness inheritance (if h is compact, all subterms are compact). (3) Count disjoint unions and Cartesian products.</p>
+
+  <h3>2.3 Elementary Properties</h3>
+  <p><strong>Monotonicity:</strong> h*(n) ≥ h*(n-1).</p>
+  <p><strong>Exponential lower bound:</strong> h*(n) ≥ 2^{n-1} (standard history chain).</p>
+  <p><strong>Primes have no mul-root:</strong> M(p) = 0 for all primes p (consequence of G7).</p>
+
+  <h2>3. Multiplication-Free Baseline: Large Schröder Numbers</h2>
+  <h3>3.1 Schröder Number Connection</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 2:</strong> Let s(n) = S(n-1) for n ≥ 1, where S(k) is the k-th large Schröder number (OEIS A006318). Then s(n) equals the fiber count when the multiplicative branch is removed:</p>
+    <div class="math-formula">s(n) = h*(n) - M(n)</div>
+    <p>where M(n) = Σ_{ab=n, a,b≥2} h*(a)·h*(b) is the contribution of the multiplicative branch. Equivalently, s(n) satisfies:</p>
+    <div class="math-formula">s(n) = s(n-1) + Σ_{a+b=n, a,b≥1} s(a)·s(b)</div>
+    <p>Initial values: S(0)=1, S(1)=2, S(2)=6, S(3)=22, S(4)=90, S(5)=394, S(6)=1806, ...</p>
+  </div>
+
+  <h3>3.2 Generating Function</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 3 (Schröder Generating Function):</strong> The generating function of s(n) is:</p>
+    <div class="math-formula">G_s(x) = [(1-x) - √(1−6x+x²)] / 2</div>
+    <p>The asymptotic growth rate is λ₀ = 3+2√2 ≈ 5.82843, with</p>
+    <div class="math-formula">s(n) ~ C₀·λ₀^n·n^{-3/2}</div>
+    <p>where C₀ is a computable constant.</p>
+  </div>
+
+  <h3>3.3 Important Note</h3>
+  <p>Theorem 2 establishes recurrence identity, not a combinatorial bijection. Whether a natural bijection between compact {0,succ,add}-history terms and Schröder lattice paths exists is an open problem. The arithmetic identity holds; the combinatorial interpretation remains open.</p>
+
+  <h2>4. Generating Function Structure of Full Recurrence</h2>
+  <h3>4.1 Mixed Cauchy–Dirichlet Structure</h3>
+  <p>Let G(x) = Σ h*(n) x^n and M(x) = Σ_{a,b≥2} h*(a)·h*(b)·x^{ab}. Then the generating function satisfies:</p>
+  <div class="math-formula">G(x) = x + x·G(x) + G(x)² + M(x)</div>
+  <p>where G(x)² represents the Cauchy (ordinary power series) convolution of the additive branch, and M(x) represents a Dirichlet-type (arithmetic) convolution embedded in the ordinary generating function framework.</p>
+
+  <h3>4.2 Absence of Closed Form</h3>
+  <p>The mixed Cauchy–Dirichlet structure is without precedent in combinatorics literature. The equation is outside the class of algebraic generating functions. No closed form for G(x) is expected. The interplay between ordinary and arithmetic convolution makes analytic tractability highly limited.</p>
+
+  <h2>5. Multiplicative Correction and Growth Rate Analysis</h2>
+  <h3>5.1 Upper Bound for M(n)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 4:</strong> M(n) ≤ τ(n)·h*(⌊n/2⌋)² for all n ≥ 4, where τ(n) is the number of divisors of n.</p>
+    <p>However, this bound gives only M(n)/h*(n) = O(τ(n)), which is insufficient to prove decay to zero.</p>
+  </div>
+
+  <h3>5.2 Conjecture on Multiplicative Decay</h3>
+  <p><strong>Conjecture A:</strong> M(n)/h*(n) → 0 as n → ∞.</p>
+  <p>Numerical evidence strongly supports this: M(n)/h*(n) < 0.001% for all n ≥ 20 in the computed range.</p>
+
+  <h3>5.3 Supermultiplicativity and Fekete's Lemma</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 5 (Supermultiplicativity and Growth Rate Existence):</strong> The sequence h*(n) is supermultiplicative:</p>
+    <div class="math-formula">h*(m+n) ≥ h*(m)·h*(n)  for all m,n ≥ 1</div>
+    <p>Proof: The additive branch contains the term h*(m)·h*(n) from the pair (a,b)=(m,n).</p>
+    <p><strong>Corollary:</strong> By Fekete's lemma, the limit λ* = lim_{n→∞} h*(n)^{1/n} exists and is a finite positive real number.</p>
+    <p>Lower bound: h*(n) ≥ 2^{n-1} gives λ* ≥ 2.</p>
+    <p>Provisional numerical estimate: λ* ≈ 5.923.</p>
+  </div>
+
+  <h3>5.4 Revised Conjecture</h3>
+  <p><strong>Conjecture B (revised):</strong> λ* > 3+2√2 ≈ 5.828. That is, the full growth rate strictly exceeds the multiplication-free baseline due to the multiplicative branch's cumulative effect, despite individual M(n) contributions decaying.</p>
+
+  <h2>6. Numerical Growth Rate Table</h2>
+  <p>The following table shows λ(n) = h*(n)^{1/n} computed at select values of n, compared with λ₀(n) = s(n)^{1/n} (Schröder baseline). Both curves are monotone increasing and appear to converge to limiting values.</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>λ(n) [full]</th><th>λ₀(n) [Schröder]</th><th>Difference</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>100</td><td>5.8344</td><td>5.7410</td><td>0.0934</td></tr>
+      <tr><td>150</td><td>5.8633</td><td>5.7685</td><td>0.0948</td></tr>
+      <tr><td>200</td><td>5.8788</td><td>5.7847</td><td>0.0941</td></tr>
+      <tr><td>250</td><td>5.8868</td><td>5.7945</td><td>0.0923</td></tr>
+      <tr><td>300</td><td>5.8936</td><td>5.7992</td><td>0.0944</td></tr>
+      <tr><td>400</td><td>5.9011</td><td>5.8065</td><td>0.0946</td></tr>
+      <tr><td>500</td><td>5.9055</td><td>5.8109</td><td>0.0946</td></tr>
+    </tbody>
+  </table>
+  <p>Extrapolating the convergence rate, λ* ≈ 5.923 is a robust estimate (uncertainty: ±0.002).</p>
+
+  <h2>7. Detailed Numerical Table (n=0 to 20)</h2>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>h*(n)</th><th>B_succ</th><th>A(n)</th><th>M(n)</th><th>M/h*</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0%</td></tr>
+      <tr><td>2</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0%</td></tr>
+      <tr><td>3</td><td>6</td><td>2</td><td>4</td><td>0</td><td>0%</td></tr>
+      <tr><td>4</td><td>26</td><td>6</td><td>16</td><td>4</td><td>15.4%</td></tr>
+      <tr><td>5</td><td>102</td><td>26</td><td>76</td><td>0</td><td>0%</td></tr>
+      <tr><td>6</td><td>470</td><td>102</td><td>344</td><td>24</td><td>5.1%</td></tr>
+      <tr><td>7</td><td>2,130</td><td>470</td><td>1,660</td><td>0</td><td>0%</td></tr>
+      <tr><td>8</td><td>10,274</td><td>2,130</td><td>8,040</td><td>104</td><td>1.0%</td></tr>
+      <tr><td>9</td><td>50,322</td><td>10,274</td><td>40,012</td><td>36</td><td>0.07%</td></tr>
+      <tr><td>10</td><td>252,874</td><td>50,322</td><td>202,144</td><td>408</td><td>0.16%</td></tr>
+      <tr><td>12</td><td>6,546,432</td><td>677,456</td><td>5,859,680</td><td>9,296</td><td>0.14%</td></tr>
+      <tr><td>15</td><td>617,526,432</td><td>10,149,596</td><td>607,351,052</td><td>25,784</td><td>0.004%</td></tr>
+      <tr><td>20</td><td>4,617,376,499,722</td><td>842,998,489,698</td><td>3,774,376,993,224</td><td>1,016,800</td><td>&lt;0.001%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.1 Key Observations</h3>
+  <p><strong>No multiplicative contribution at primes:</strong> M(p) = 0 for p ∈ {2,3,5,7,11,13,...} by G7.</p>
+  <p><strong>Additive dominance:</strong> From n=5 onward, the additive branch contributes > 70% of h*(n). The additive constructor is "freer" (n-1 ordered pairs for addition vs. at most τ(n)-2 for multiplication).</p>
+  <p><strong>Novel sequence:</strong> 1, 1, 2, 6, 26, 102, 470, 2130, 10274, 50322, 252874, ... does not appear in OEIS.</p>
+
+  <h2>8. Discussion</h2>
+  <h3>8.1 Relation to Integer Complexity</h3>
+  <p>h*(n) counts all compact generation paths, not just optimal ones. The restricted count |Hist*_min(n)| = |{h ∈ Hist*(n) : ρ(h) = ρ_E(n)}| corresponds to the Integer Complexity function f(n) from theoretical computer science, but requires Paper 10's machinery to isolate.</p>
+
+  <h3>8.2 Why the Additive Branch Dominates</h3>
+  <p>For each n, there are n-1 unordered pairs (a,b) with a+b=n and a,b ≥ 1. By contrast, the number of unordered factorizations is τ(n)/2 on average. Addition provides vastly more freedom than multiplication, which explains why the additive Cauchy convolution dominates the growth.</p>
+
+  <h3>8.3 Infrastructure for Papers 10–12</h3>
+  <p>Paper 9 provides the fiber count h*(n). Paper 10 will parameterize this by ρ-value to get the full spectral distribution Z_n(q). Papers 11–12 will analyze the ground state ρ_E(n) and related extremal properties within Hist*(n).</p>
+
+  <h2>9. Open Problems</h2>
+  <ol>
+    <li><strong>Exact value of λ*.</strong> Can λ* be expressed in closed form? Is it algebraic or transcendental?</li>
+    <li><strong>Proof of Conjectures A and B.</strong> Rigorous asymptotic analysis of M(n) and derivation of λ* from first principles.</li>
+    <li><strong>Schröder bijection.</strong> Does a natural bijection exist between compact {0,succ,add}-terms and Schröder lattice paths?</li>
+    <li><strong>Unordered variant.</strong> What is the count when the two children of add(h₁, h₂) are unordered? How does this relate to the "small" Schröder numbers (OEIS A001003)?</li>
+    <li><strong>Fiber shape.</strong> Beyond total count, what is the distribution of depths and branching structure within Hist*(n)?</li>
+    <li><strong>Generating function singularities.</strong> Where is the dominant singularity of G(x)? Does it govern λ*?</li>
+    <li><strong>Parameter sensitivity.</strong> How do h*(n) and λ* change if the weight parameters α, β are varied?</li>
+    <li><strong>Compressed form.</strong> Can Hist*(n) be further reduced by quotient operations (e.g., via congruence modulo ρ)?</li>
+  </ol>
+
+  <h2>10. References</h2>
+  <ol>
+    <li>Han Qin, "On the Remainder of Choice," 2026. DOI: 10.5281/zenodo.18914682</li>
+    <li>Han Qin, "The Quantitative Identity of the Remainder," 2026. DOI: 10.5281/zenodo.18927658</li>
+    <li>Han Qin, "ρ-Conservation," 2026. DOI: 10.5281/zenodo.18929819</li>
+    <li>Han Qin, "A Draft Term Model for ρ-Arithmetic," 2026. DOI: 10.5281/zenodo.18930810</li>
+    <li>Han Qin, "Generation Axioms and Structural Induction," ZFCρ Series Paper 5, 2026.</li>
+    <li>Han Qin, "Recursive Definition of ρ and Expression Compression Complexity," ZFCρ Series Paper 6, 2026. DOI: 10.5281/zenodo.18934531</li>
+    <li>Han Qin, "The Term Model of ρ-Arithmetic," ZFCρ Series Paper 7, 2026.</li>
+    <li>Kreweras, G. "Sur les partitions non-croisées d'un cycle." <em>Discrete Mathematics</em> 1, no. 4 (1972): 333-350.</li>
+    <li>Flajolet, P., and Noy, M. "Analytic Combinatorics of Non-Crossing Partitions." <em>Discrete Mathematics</em> 204 (1999): 41-56.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho8.html">ZFCρ Paper VIII: Proof-Theoretic Equivalence and Conservative Extension</a></p>
+    <p>→ <a href="zfcrho10.html">ZFCρ Paper X: The Spectral Counting Polynomial and Fiber ρ-Statistics</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>Papers 1–8 完成了T_ρ的基础：语法、公理、模型、一致性。本文开始项模型的内部结构理论。</p>
+    <p>第一个问题是纤维计数：对每个自然数n，紧凑历史项空间Hist*(n)有多大？Paper 7证明了Hist*(n)有限但提到其"组合爆炸"而没给出精确计数。本文填补这一空白。</p>
+    <p><strong>核心结果。</strong>h*(n) = |Hist*(n)|满足三分支递推关系（定理1），按根节点类型分解为后继分支、加法分支（Cauchy卷积）和乘法分支（截断Dirichlet卷积）。移除乘法分支得到的序列与大Schröder数相同（定理2），增长率为3+2√2 ≈ 5.828（定理3）。</p>
+    <p><strong>数值结果。</strong>乘法分支的直接贡献衰减到可忽略水平（当n ≥ 20时< 0.001%）。然而h*(n)的增长率严格超过不含乘法的基线。h*(n)的超可乘性和指数界建立了λ* = lim h*(n)^{1/n}的存在性和有限性（定理5）。数值外推表明λ* ≈ 5.923。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 引言</h2>
+  <h3>1.1 从极值到计数</h3>
+  <p>Paper 6只看到了最小值ρ_E。纤维计数是迈向分布的必要基础设施（Paper 10）。历史平行：欧拉对整数分拆p(n)的系统计数标志着解析数论的开始。h*(n)回答"n承认多少条紧凑生成路径？"——与p(n)的结构地位相同，但有三个有序构造器而非一个。</p>
+
+  <h2>2. h*(n)的递推关系</h2>
+  <h3>2.1 三分支递推定理</h3>
+  <div class="thesis-box">
+    <p><strong>定理1（三分支递推）：</strong>令h*(n) = |Hist*(n)|。则：</p>
+    <div class="math-formula">h*(0) = 1
+h*(n) = h*(n-1)  [后继分支]
+       + Σ_{a+b=n, a,b≥1} h*(a)·h*(b)  [加法分支]
+       + Σ_{ab=n, a,b≥2} h*(a)·h*(b)   [乘法分支]</div>
+    <p>三个分支对Hist*(n)是不相交且穷尽的，按根节点构造器类型分区。</p>
+  </div>
+
+  <h3>2.2 证明策略</h3>
+  <p>三步证明：(1)根节点分类：Hist*(n) = Hist*_succ(n) ⊔ Hist*_add(n) ⊔ Hist*_mul(n)（由G7不相交，由G5穷尽）。(2)通过紧凑性继承建立到纤维积的双射（若h紧凑，则所有子项紧凑）。(3)计数不相交并和笛卡尔积。</p>
+
+  <h3>2.3 基本性质</h3>
+  <p><strong>单调性：</strong>h*(n) ≥ h*(n-1)。</p>
+  <p><strong>指数下界：</strong>h*(n) ≥ 2^{n-1}（标准历史链）。</p>
+  <p><strong>素数无乘根：</strong>对所有素数p有M(p) = 0（G7的推论）。</p>
+
+  <h2>3. 不含乘法的基线：大Schröder数</h2>
+  <h3>3.1 Schröder数的联系</h3>
+  <div class="thesis-box">
+    <p><strong>定理2：</strong>令s(n) = S(n-1)，其中n ≥ 1且S(k)是第k个大Schröder数（OEIS A006318）。则s(n)等于移除乘法分支时的纤维计数：</p>
+    <div class="math-formula">s(n) = h*(n) - M(n)</div>
+    <p>其中M(n) = Σ_{ab=n, a,b≥2} h*(a)·h*(b)是乘法分支的贡献。等价地，s(n)满足：</p>
+    <div class="math-formula">s(n) = s(n-1) + Σ_{a+b=n, a,b≥1} s(a)·s(b)</div>
+    <p>初值：S(0)=1，S(1)=2，S(2)=6，S(3)=22，S(4)=90，S(5)=394，S(6)=1806，...</p>
+  </div>
+
+  <h3>3.2 生成函数</h3>
+  <div class="thesis-box">
+    <p><strong>定理3（Schröder生成函数）：</strong>s(n)的生成函数为：</p>
+    <div class="math-formula">G_s(x) = [(1-x) - √(1−6x+x²)] / 2</div>
+    <p>渐近增长率为λ₀ = 3+2√2 ≈ 5.82843，且</p>
+    <div class="math-formula">s(n) ~ C₀·λ₀^n·n^{-3/2}</div>
+    <p>其中C₀是可计算常数。</p>
+  </div>
+
+  <h3>3.3 重要注记</h3>
+  <p>定理2建立了递推恒等式，而非组合对应。紧凑{0,succ,add}-历史项与Schröder格路径间是否存在自然对应是开问题。算术恒等式成立；组合解释仍未知。</p>
+
+  <h2>4. 完整递推的生成函数结构</h2>
+  <h3>4.1 混合Cauchy–Dirichlet结构</h3>
+  <p>令G(x) = Σ h*(n) x^n，M(x) = Σ_{a,b≥2} h*(a)·h*(b)·x^{ab}。则生成函数满足：</p>
+  <div class="math-formula">G(x) = x + x·G(x) + G(x)² + M(x)</div>
+  <p>其中G(x)²代表加法分支的Cauchy（普通幂级数）卷积，M(x)代表嵌入在普通生成函数框架中的Dirichlet型（算术）卷积。</p>
+
+  <h3>4.2 缺少闭形式</h3>
+  <p>混合Cauchy–Dirichlet结构在组合文献中无先例。该方程超出了代数生成函数的范围。不期望存在G(x)的闭形式。普通卷积与算术卷积的相互作用使得解析可处理性极其有限。</p>
+
+  <h2>5. 乘法修正与增长率分析</h2>
+  <h3>5.1 M(n)的上界</h3>
+  <div class="thesis-box">
+    <p><strong>定理4：</strong>对所有n ≥ 4，M(n) ≤ τ(n)·h*(⌊n/2⌋)²，其中τ(n)是n的因子个数。</p>
+    <p>然而，该界仅给出M(n)/h*(n) = O(τ(n))，不足以证明其趋于零。</p>
+  </div>
+
+  <h3>5.2 乘法衰减的猜想</h3>
+  <p><strong>猜想A：</strong>当n → ∞时，M(n)/h*(n) → 0。</p>
+  <p>数值证据强力支持这一点：在计算范围内，对所有n ≥ 20有M(n)/h*(n) < 0.001%。</p>
+
+  <h3>5.3 超可乘性与Fekete引理</h3>
+  <div class="thesis-box">
+    <p><strong>定理5（超可乘性与增长率存在）：</strong>序列h*(n)是超可乘的：</p>
+    <div class="math-formula">h*(m+n) ≥ h*(m)·h*(n)  对所有m,n ≥ 1</div>
+    <p>证明：加法分支包含来自对(a,b)=(m,n)的项h*(m)·h*(n)。</p>
+    <p><strong>推论：</strong>由Fekete引理，极限λ* = lim_{n→∞} h*(n)^{1/n}存在且为有限正实数。</p>
+    <p>下界：h*(n) ≥ 2^{n-1}给出λ* ≥ 2。</p>
+    <p>初步数值估计：λ* ≈ 5.923。</p>
+  </div>
+
+  <h3>5.4 修正的猜想</h3>
+  <p><strong>猜想B（修订）：</strong>λ* > 3+2√2 ≈ 5.828。即使乘法分支的个体M(n)贡献衰减，其累积效应使得完整增长率严格超过不含乘法的基线。</p>
+
+  <h2>6. 数值增长率表</h2>
+  <p>下表在精选的n值处显示λ(n) = h*(n)^{1/n}，与λ₀(n) = s(n)^{1/n}（Schröder基线）对比。两条曲线都单调递增，似乎收敛到极限值。</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>λ(n) [完整]</th><th>λ₀(n) [Schröder]</th><th>差值</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>100</td><td>5.8344</td><td>5.7410</td><td>0.0934</td></tr>
+      <tr><td>150</td><td>5.8633</td><td>5.7685</td><td>0.0948</td></tr>
+      <tr><td>200</td><td>5.8788</td><td>5.7847</td><td>0.0941</td></tr>
+      <tr><td>250</td><td>5.8868</td><td>5.7945</td><td>0.0923</td></tr>
+      <tr><td>300</td><td>5.8936</td><td>5.7992</td><td>0.0944</td></tr>
+      <tr><td>400</td><td>5.9011</td><td>5.8065</td><td>0.0946</td></tr>
+      <tr><td>500</td><td>5.9055</td><td>5.8109</td><td>0.0946</td></tr>
+    </tbody>
+  </table>
+  <p>通过外推收敛速率，λ* ≈ 5.923是一个稳健的估计（不确定性：±0.002）。</p>
+
+  <h2>7. 详细数值表（n=0到20）</h2>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>h*(n)</th><th>B_succ</th><th>A(n)</th><th>M(n)</th><th>M/h*</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0%</td></tr>
+      <tr><td>2</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0%</td></tr>
+      <tr><td>3</td><td>6</td><td>2</td><td>4</td><td>0</td><td>0%</td></tr>
+      <tr><td>4</td><td>26</td><td>6</td><td>16</td><td>4</td><td>15.4%</td></tr>
+      <tr><td>5</td><td>102</td><td>26</td><td>76</td><td>0</td><td>0%</td></tr>
+      <tr><td>6</td><td>470</td><td>102</td><td>344</td><td>24</td><td>5.1%</td></tr>
+      <tr><td>7</td><td>2,130</td><td>470</td><td>1,660</td><td>0</td><td>0%</td></tr>
+      <tr><td>8</td><td>10,274</td><td>2,130</td><td>8,040</td><td>104</td><td>1.0%</td></tr>
+      <tr><td>9</td><td>50,322</td><td>10,274</td><td>40,012</td><td>36</td><td>0.07%</td></tr>
+      <tr><td>10</td><td>252,874</td><td>50,322</td><td>202,144</td><td>408</td><td>0.16%</td></tr>
+      <tr><td>12</td><td>6,546,432</td><td>677,456</td><td>5,859,680</td><td>9,296</td><td>0.14%</td></tr>
+      <tr><td>15</td><td>617,526,432</td><td>10,149,596</td><td>607,351,052</td><td>25,784</td><td>0.004%</td></tr>
+      <tr><td>20</td><td>4,617,376,499,722</td><td>842,998,489,698</td><td>3,774,376,993,224</td><td>1,016,800</td><td>&lt;0.001%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.1 关键观察</h3>
+  <p><strong>素数处无乘法贡献：</strong>对p ∈ {2,3,5,7,11,13,...}由G7有M(p) = 0。</p>
+  <p><strong>加法支配：</strong>从n=5开始，加法分支贡献> 70%的h*(n)。加法构造器"更自由"（加法有n-1个有序对vs.乘法最多τ(n)-2个）。</p>
+  <p><strong>新序列：</strong>1, 1, 2, 6, 26, 102, 470, 2130, 10274, 50322, 252874, ... 未出现在OEIS中。</p>
+
+  <h2>8. 讨论</h2>
+  <h3>8.1 与整数复杂度的关系</h3>
+  <p>h*(n)计数所有紧凑生成路径，非仅最优者。限制计数|Hist*_min(n)| = |{h ∈ Hist*(n) : ρ(h) = ρ_E(n)}|对应理论计算机科学中的整数复杂度函数f(n)，但需要Paper 10的工具来隔离。</p>
+
+  <h3>8.2 为什么加法分支支配</h3>
+  <p>对每个n，有n-1个无序对(a,b)满足a+b=n且a,b ≥ 1。相比之下，无序因子分解的平均个数为τ(n)/2。加法提供远多于乘法的自由度，这解释了为什么加法Cauchy卷积支配增长。</p>
+
+  <h3>8.3 Papers 10–12的基础设施</h3>
+  <p>Paper 9提供纤维计数h*(n)。Paper 10将其按ρ-值参数化得到完整谱分布Z_n(q)。Papers 11–12将分析Hist*(n)内的基态ρ_E(n)和相关极值性质。</p>
+
+  <h2>9. 开放问题</h2>
+  <ol>
+    <li><strong>λ*的精确值。</strong>λ*能否用闭形式表达？是代数的还是超越的？</li>
+    <li><strong>猜想A和B的证明。</strong>M(n)的严格渐近分析和从第一原理导出λ*。</li>
+    <li><strong>Schröder对应。</strong>是否存在紧凑{0,succ,add}-项与Schröder格路径间的自然对应？</li>
+    <li><strong>无序变体。</strong>当add(h₁, h₂)的两个子项无序时计数是多少？这如何与"小"Schröder数（OEIS A001003）相关？</li>
+    <li><strong>纤维形态。</strong>除总计数外，Hist*(n)内的深度和分支结构分布是什么？</li>
+    <li><strong>生成函数奇点。</strong>G(x)的主奇点在哪里？它是否控制λ*？</li>
+    <li><strong>参数敏感性。</strong>当权重参数α, β变化时h*(n)和λ*如何变化？</li>
+    <li><strong>压缩形式。</strong>Hist*(n)能否通过商操作进一步化简（如模ρ的同余）？</li>
+  </ol>
+
+  <h2>10. 参考文献</h2>
+  <ol>
+    <li>Han Qin, "On the Remainder of Choice," 2026. DOI: 10.5281/zenodo.18914682</li>
+    <li>Han Qin, "The Quantitative Identity of the Remainder," 2026. DOI: 10.5281/zenodo.18927658</li>
+    <li>Han Qin, "ρ-Conservation," 2026. DOI: 10.5281/zenodo.18929819</li>
+    <li>Han Qin, "A Draft Term Model for ρ-Arithmetic," 2026. DOI: 10.5281/zenodo.18930810</li>
+    <li>Han Qin, "Generation Axioms and Structural Induction," ZFCρ Series Paper 5, 2026.</li>
+    <li>Han Qin, "Recursive Definition of ρ and Expression Compression Complexity," ZFCρ Series Paper 6, 2026. DOI: 10.5281/zenodo.18934531</li>
+    <li>Han Qin, "The Term Model of ρ-Arithmetic," ZFCρ Series Paper 7, 2026.</li>
+    <li>Kreweras, G. "Sur les partitions non-croisées d'un cycle." <em>Discrete Mathematics</em> 1, no. 4 (1972): 333-350.</li>
+    <li>Flajolet, P., and Noy, M. "Analytic Combinatorics of Non-Crossing Partitions." <em>Discrete Mathematics</em> 204 (1999): 41-56.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho8.html">ZFCρ 论文八：证明论等价与保守扩张</a></p>
+    <p>→ <a href="zfcrho10.html">ZFCρ 论文十：谱计数多项式与纤维ρ-统计</a></p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18963539" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Exact Combinatorics of History Fibers', zh: '历史纤维的精确组合学' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>

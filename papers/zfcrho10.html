@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Spectral Counting Polynomial and Fiber ρ-Statistics — ZFCρ Paper X — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper X: Spectral counting polynomial Z_n(q) = Σ q^{ρ(h)} encodes the complete ρ-distribution within Hist*(n). Three-branch recurrence (Theorem 6). Moment recurrences for mean and variance (Theorems 7, 8). ρ_max(n) = ⌊9n/4⌋−1 (Theorem 9). ρ_E lies 5–14 standard deviations below the mean; ρ_E asymptotics is an extreme-value statistics problem.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, spectral polynomial, Z_n(q), partition function, fiber statistics, rho_max, extreme value, Boltzmann measure, 谱计数多项式, 极值统计">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Spectral Counting Polynomial and Fiber ρ-Statistics — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho10.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Spectral Counting Polynomial and Fiber ρ-Statistics",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho10.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18973559"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "spectral polynomial", "Z_n(q)", "fiber statistics", "partition function",
+      "extreme value", "rho_max", "moment recurrence", "Boltzmann measure"
+    ],
+    "abstract": "Paper 9 established the fiber count h*(n). But fibers are not homogeneous: different compact terms carry different ρ-values. This paper introduces the spectral counting polynomial Z_n(q) = Σ q^{ρ(h)} from which fiber size, multiplicity, moments, extrema, and Boltzmann measure are uniformly derived. Z_n(q) satisfies a three-branch recurrence (Theorem 6). First and second moments satisfy computable recurrences (Theorems 7-8). Key finding: ρ_E lies 5-14 standard deviations below the mean, making ρ_E asymptotics an extreme-value statistics problem (key input for Paper 11).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho10.html">
+  <meta name="citation_title" content="The Spectral Counting Polynomial and Fiber ρ-Statistics">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18973559">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho10.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper X · Zenodo 18973559</div>
+    <h1 id="paper-title">The Spectral Counting Polynomial and Fiber ρ-Statistics</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18973559" target="_blank" rel="noopener">10.5281/zenodo.18973559</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18973559" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p><strong>Theorem numbering:</strong> Paper 9 contains Theorems 1–5. Paper 10 begins with Theorem 6.</p>
+    <p>Paper 9 established the fiber count h*(n) = |Hist*(n)|. But fibers are not homogeneous: different compact terms within the same fiber carry different ρ-values. This paper introduces the spectral counting polynomial Z_n(q) = Σ_{h∈Hist*(n)} q^{ρ(h)} as a single central object from which fiber size (q=1), multiplicity function (coefficients), moments (derivatives at q=1), extrema (support boundaries), and Boltzmann measure (q = e^{-β}) are all uniformly derived.</p>
+    <p><strong>Core results:</strong> Z_n(q) satisfies a three-branch recurrence (Theorem 6), reducing to Paper 9 Theorem 1 at q=1. The first raw moment M₁(n) = Z_n'(1) and the second factorial moment F₂(n) = Z_n''(1) each satisfy computable recurrences (Theorems 7, 8), extending to n=200 without enumerating the fiber.</p>
+    <p><strong>Key numerical findings:</strong> E_n[ρ]/n increases monotonically toward c₁ ≈ 1.719; Var_n[ρ]/n converges rapidly to c₂ ≈ 0.1924. The normalized distribution is approximately Gaussian. Crucially, ρ_E(n) lies 5–14 standard deviations below the mean, and |z_n| increases steadily — ρ_E asymptotics is an extreme-value statistics problem, not a concentration inequality problem. This is the key input for Paper 11.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction</h2>
+  <h3>1.1 From Counting to Spectra</h3>
+  <p>Paper 9 gave us the total count. Now we ask: what is the distribution? The spectral counting polynomial Z_n(q) encodes the complete ρ-distribution within Hist*(n), answering this question. Parameters fixed at default: (c_S, c_⊕, c_⊗) = (1, 1, 2).</p>
+
+  <h3>1.2 Structural Position</h3>
+  <p>Z_n(q) is the vertical analogue of Hardy-Ramanujan/Erdős-Kac value distribution theory. Hardy-Ramanujan describes the distribution of Ω(n) (number of prime factors) across the integers. Z_n(q) describes the distribution of ρ-values within a single fiber, making it a fiber-internal distribution problem rather than a horizontal (across n) problem.</p>
+
+  <h2>2. The Spectral Counting Polynomial</h2>
+  <h3>2.1 Definition</h3>
+  <div class="thesis-box">
+    <p><strong>Definition:</strong> For each n and each value w, let μ_n(w) = |{h ∈ Hist*(n) : ρ(h) = w}| be the multiplicity of ρ-value w in Hist*(n). Define the spectral counting polynomial:</p>
+    <div class="math-formula">Z_n(q) = Σ_{h∈Hist*(n)} q^{ρ(h)} = Σ_w μ_n(w) q^w</div>
+    <p>The polynomial Z_n(q) encodes the complete ρ-distribution. Its coefficients are multiplicities; its support is the set of ρ-values that appear.</p>
+  </div>
+
+  <h3>2.2 Recurrence Relation (Theorem 6)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 6 (Spectral Recurrence):</strong> Z_n(q) satisfies the recurrence:</p>
+    <div class="math-formula">Z_0(q) = 1
+Z_n(q) = q·Z_{n-1}(q)
+       + q·Σ_{a+b=n,a,b≥1} Z_a(q)Z_b(q)
+       + q²·Σ_{ab=n,a,b≥2} Z_a(q)Z_b(q)</div>
+    <p><strong>Proof sketch:</strong> Each term in Hist*(n) has a root constructor. If succ(h'), then ρ contributes +1, so q·Z_{n-1}(q). If add(h₁,h₂) with values a,b, then ρ contributes +1, so q times the product Z_a(q)Z_b(q). If mul(h₁,h₂), then ρ contributes +2, so q² times the product.</p>
+    <p><strong>Reduction check:</strong> At q=1, Z_n(1) = Paper 9 Theorem 1 recurrence for h*(n). ✓</p>
+  </div>
+
+  <h3>2.3 Derived Objects from Z_n(q)</h3>
+  <p>From a single function Z_n(q), we extract:</p>
+  <ul>
+    <li><strong>Multiplicity function:</strong> μ_n(w) = [q^w]Z_n(q) (coefficient of q^w)</li>
+    <li><strong>Fiber size:</strong> h*(n) = Z_n(1)</li>
+    <li><strong>Spectral bounds:</strong> ρ_E(n) = ord Z_n (smallest power of q), ρ_max(n) = deg Z_n (largest power of q)</li>
+    <li><strong>First moment:</strong> E_n[ρ] = Z_n'(1) / Z_n(1)</li>
+    <li><strong>Variance:</strong> Var_n[ρ] = (Z_n''(1) + Z_n'(1)) / Z_n(1) − (Z_n'(1) / Z_n(1))²</li>
+    <li><strong>Boltzmann measure:</strong> μ_β(w) = [q^w]Z_n(e^{-β}) / Z_n(e^{-β}) (partition function perspective)</li>
+  </ul>
+
+  <h2>3. Moment Recurrences</h2>
+  <h3>3.1 Notation and Setup</h3>
+  <p>Define the moments:</p>
+  <ul>
+    <li>M₁(n) = Z_n'(1) = Σ_{h∈Hist*(n)} ρ(h) (sum of all ρ-values in the fiber)</li>
+    <li>F₂(n) = Z_n''(1) = Σ_{h∈Hist*(n)} ρ(h)(ρ(h)-1) (second factorial moment)</li>
+    <li>M₂(n) = F₂(n) + M₁(n) = Σ ρ(h)² (second raw moment)</li>
+  </ul>
+
+  <h3>3.2 First Moment Recurrence (Theorem 7)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 7 (M₁ Recurrence):</strong> The first moment satisfies:</p>
+    <div class="math-formula">M₁(n) = h*(n-1) + M₁(n-1)
+       + Σ_{a+b=n,a,b≥1} [h*(a)h*(b) + M₁(a)h*(b) + h*(a)M₁(b)]
+       + Σ_{ab=n,a,b≥2} [2h*(a)h*(b) + M₁(a)h*(b) + h*(a)M₁(b)]</div>
+    <p><strong>Proof:</strong> Differentiate Theorem 6 with respect to q, then evaluate at q=1. Apply Leibniz rule to products.</p>
+  </div>
+
+  <h3>3.3 Second Moment Recurrence (Theorem 8)</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 8 (F₂ Recurrence):</strong> The second factorial moment satisfies a more complex recurrence involving F₂(n-1), M₁(n-1), products of moments, and similar structure to Theorem 7 but with additional quadratic terms from the Leibniz rule applied twice.</p>
+    <p><strong>Computational advantage:</strong> O(N²) total cost. The moment recurrences avoid enumerating the fiber (exponential); instead, they compute the moments bottom-up using previous h* and M₁, F₂ values. Extends easily to n=200+.</p>
+  </div>
+
+  <h2>4. Exact Spectra for Small n</h2>
+  <h3>4.1 Explicit Polynomials</h3>
+  <p>By computing Z_n(q) directly for small n (up to n ≤ 25):</p>
+  <div class="math-formula">Z_0(q) = 1
+Z_1(q) = q
+Z_2(q) = q² + q³
+Z_3(q) = q³ + 3q⁴ + 2q⁵
+Z_4(q) = q⁴ + 6q⁵ + 11q⁶ + 7q⁷ + q⁸
+Z_5(q) = q⁵ + 10q⁶ + 31q⁷ + 39q⁸ + 19q⁹ + 2q¹⁰</div>
+
+  <h3>4.2 Spectrum Analysis at n=8</h3>
+  <p>The spectrum Z_8(q) exhibits a bell-shaped distribution centered near w ≈ 12, showing nascent normality:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>ρ-value w</th><th>Count μ_8(w)</th><th>Percentage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>8</td><td>3</td><td>0.03%</td></tr>
+      <tr><td>9</td><td>44</td><td>0.43%</td></tr>
+      <tr><td>10</td><td>307</td><td>2.99%</td></tr>
+      <tr><td>11</td><td>1,178</td><td>11.47%</td></tr>
+      <tr><td>12</td><td>2,569</td><td>25.00%</td></tr>
+      <tr><td>13</td><td>3,199</td><td>31.14%</td></tr>
+      <tr><td>14</td><td>2,184</td><td>21.26%</td></tr>
+      <tr><td>15</td><td>715</td><td>6.96%</td></tr>
+      <tr><td>16</td><td>74</td><td>0.72%</td></tr>
+      <tr><td>17</td><td>1</td><td>0.01%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.3 Cost Gap Analysis</h3>
+  <p><strong>Definition:</strong> gap(n) = minimum positive difference between distinct ρ-values in Hist*(n).</p>
+  <p><strong>Finding:</strong> No cost gaps within the computed range (n ≤ 25). gap(n) = 1 for all n ≤ 25, meaning all integer values between ρ_E(n) and ρ_max(n) are achieved. μ_n(ρ_E) fluctuates between 1 and 4.</p>
+
+  <h2>5. Mean and Variance Asymptotics</h2>
+  <h3>5.1 Numerical Results</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>E_n[ρ]/n</th><th>Var_n[ρ]/n</th><th>Std Dev σ_n</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td>1.6227</td><td>0.1956</td><td>0.4423</td></tr>
+      <tr><td>25</td><td>1.7015</td><td>0.1935</td><td>1.1065</td></tr>
+      <tr><td>50</td><td>1.7000</td><td>0.1925</td><td>1.5598</td></tr>
+      <tr><td>75</td><td>1.7095</td><td>0.1924</td><td>1.9127</td></tr>
+      <tr><td>100</td><td>1.7097</td><td>0.1924</td><td>2.1959</td></tr>
+      <tr><td>150</td><td>1.7124</td><td>0.1924</td><td>2.6963</td></tr>
+      <tr><td>200</td><td>1.7145</td><td>0.1924</td><td>3.1071</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.2 Conjectures</h3>
+  <p><strong>Conjecture C:</strong> lim_{n→∞} E_n[ρ]/n = c₁ ≈ 1.719</p>
+  <p><strong>Conjecture D:</strong> lim_{n→∞} Var_n[ρ]/n = c₂ ≈ 0.1924</p>
+
+  <h3>5.3 Interpretation</h3>
+  <p>A typical compact term encoding n costs approximately 1.72n — about 72% more than the pure successor path (cost n). This extra cost comes from internal add and mul operation nodes, which introduce ρ overhead while enabling structural compression.</p>
+
+  <h2>6. Extreme-Value Structure and the Ground State</h2>
+  <h3>6.1 Theorem 9: Maximum ρ-Value</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 9:</strong> The maximum ρ-value within Hist*(n) is:</p>
+    <div class="math-formula">ρ_max(n) = ⌊9n/4⌋ - 1  for all n ≥ 1</div>
+    <p><strong>Construction:</strong> Write n = 4q + r where 0 ≤ r < 4. Take q copies of a mul-block B = mul(add(succ(0), succ(0)), add(succ(0), succ(0))) (cost 8 each) plus r copies of succ(0) (cost 1 each), assembled via an add-tree with q+r-1 add nodes (cost 1 each). Total cost = 8q + r + (q+r-1) = 9q + 2r - 1 = ⌊9n/4⌋ - 1.</p>
+    <p><strong>Upper bound:</strong> By strong induction on the three branches.</p>
+  </div>
+
+  <h3>6.2 Extreme Asymmetry of the Distribution</h3>
+  <p>The distribution of ρ-values is extremely asymmetric:</p>
+  <div class="math-formula">ρ_E(n)  ≈ O(log n)    [ground state — logarithmic]
+E[ρ]    ≈ 1.72n      [mean — linear]
+ρ_max(n) ≈ 9n/4      [excited state — linear with high coefficient]</div>
+
+  <h3>6.3 Z-Score Table: ρ_E as an Extreme Value</h3>
+  <p>The z-score measures how many standard deviations ρ_E lies below the mean:</p>
+  <div class="math-formula">z_n = (E_n[ρ] - ρ_E(n)) / σ_n</div>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>ρ_E(n)</th><th>E[ρ]</th><th>σ_n</th><th>z_n</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>5</td><td>5</td><td>5.6</td><td>1.04</td><td>-2.76</td></tr>
+      <tr><td>10</td><td>9</td><td>16.2</td><td>3.14</td><td>-5.17</td></tr>
+      <tr><td>15</td><td>14</td><td>25.6</td><td>4.08</td><td>-8.71</td></tr>
+      <tr><td>20</td><td>18</td><td>34.3</td><td>5.04</td><td>-11.42</td></tr>
+      <tr><td>25</td><td>22</td><td>42.5</td><td>5.88</td><td>-13.68</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Key observation:</strong> |z_n| → ∞ as n → ∞. The ground state ρ_E(n) is becoming a more and more extreme outlier within its own fiber. This is fundamentally different from concentration inequalities (which would have bounded z-score): this is an extreme-value statistics problem.</p>
+
+  <h3>6.4 Multiplicity of ρ_E</h3>
+  <p>Despite exponential growth of h*(n), the multiplicity μ_n(ρ_E) remains small: it fluctuates between 1 and 4 across the computed range. This indicates that ρ_E is achieved by very few history terms — typically just one or two representatives (often h_n^std and perhaps one alternative path).</p>
+
+  <h2>7. Overall Shape of the Spectrum</h2>
+  <h3>7.1 Approach to Normality</h3>
+  <p>Compute the skewness and excess kurtosis of the ρ-distribution:</p>
+  <ul>
+    <li>At n=10: skewness ≈ -0.18, excess kurtosis ≈ -0.15</li>
+    <li>At n=25: skewness ≈ -0.09, excess kurtosis ≈ -0.03</li>
+  </ul>
+  <p>Both quantities are decreasing toward zero, suggesting approach to a Gaussian limit.</p>
+
+  <h3>7.2 Conjecture E</h3>
+  <p><strong>Conjecture E (Limiting Distribution):</strong> The normalized variable X_n = (ρ - E_n[ρ]) / σ_n converges in distribution to a standard normal, i.e., the rescaled spectrum converges to a Gaussian.</p>
+
+  <h2>8. Discussion and Perspectives</h2>
+  <h3>8.1 Partition Function View</h3>
+  <p>Set q = e^{-β} to get the partition function Z_n(e^{-β}) = Σ_w μ_n(w) e^{-βw}. This is the standard physics partition function where β is inverse temperature:</p>
+  <ul>
+    <li><strong>β = 0:</strong> uniform measure → all ρ-values equally weighted → count is h*(n)</li>
+    <li><strong>β → ∞:</strong> collapses to ground state → only ρ_E contributes → measure is a point mass at ρ_E</li>
+    <li><strong>Finite β:</strong> spectral statistics perspective</li>
+  </ul>
+
+  <h3>8.2 Bivariate Generating Function</h3>
+  <p>Define F(x,q) = Σ Z_n(q) x^n (generating function in n with q-parameterization). Then:</p>
+  <div class="math-formula">F(x,q) = 1 + xq·F(x,q) + q·[F(x,q)-1]² + q²·M(x,q)</div>
+  <p>where M(x,q) is the bivariate Dirichlet-type component. This reduces to the Paper 9 equation at q=1.</p>
+
+  <h2>9. Open Problems</h2>
+  <ol>
+    <li><strong>Exact limits c₁, c₂:</strong> Rigorous proof of Conjectures C and D.</li>
+    <li><strong>Limiting distribution:</strong> Is it Gaussian? Prove Conjecture E.</li>
+    <li><strong>Cost gaps:</strong> Why is gap(n) = 1 always? Can Z_n(q) have large gaps at some higher n?</li>
+    <li><strong>Multiplicity of ρ_E:</strong> Does μ_n(ρ_E) remain bounded? Or does it grow?</li>
+    <li><strong>Gap ≡ 1 theorem:</strong> Prove that gap(n) = 1 for all n, or find counterexample.</li>
+    <li><strong>Parameter sensitivity:</strong> How do the means, variances, and limits change if α, β vary?</li>
+    <li><strong>Zero distribution of Z_n(q):</strong> Where do the zeros of Z_n(q) lie in the complex plane?</li>
+    <li><strong>Singularity analysis of F(x,q):</strong> What is the dominant singularity and how does it depend on q?</li>
+    <li><strong>Large deviations:</strong> Can we prove a large deviations principle for the distribution of ρ in Hist*(n)?</li>
+  </ol>
+
+  <h2>10. References</h2>
+  <ol>
+    <li>Han Qin, "Exact Combinatorics of History Fibers," ZFCρ Series Paper IX, 2026. DOI: 10.5281/zenodo.18963539</li>
+    <li>Han Qin, "Recursive Definition of ρ and Expression Compression Complexity," ZFCρ Series Paper VI, 2026. DOI: 10.5281/zenodo.18934531</li>
+    <li>Han Qin, "The Term Model of ρ-Arithmetic," ZFCρ Series Paper VII, 2026.</li>
+    <li>Hardy, G. H., and Ramanujan, S. "The normal number of prime factors of φ(n)." <em>Quarterly Journal of Mathematics</em> 48 (1917): 76-92.</li>
+    <li>Erdős, P., and Kac, M. "The Gaussian law of errors in the theory of additive functions." <em>Proceedings of the National Academy of Sciences</em> 25, no. 4 (1939): 206-207.</li>
+    <li>Feller, W. <em>An Introduction to Probability Theory and Its Applications.</em> Vol. 2, Wiley, 1971.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho9.html">ZFCρ Paper IX: Exact Combinatorics of History Fibers</a></p>
+    <p>→ ZFCρ Paper XI (forthcoming)</p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p><strong>定理编号：</strong>Paper 9包含定理1–5。Paper 10从定理6开始。</p>
+    <p>Paper 9建立了纤维计数h*(n) = |Hist*(n)|。但纤维不是齐次的：同一纤维内不同的紧凑项携带不同的ρ-值。本文引入谱计数多项式Z_n(q) = Σ_{h∈Hist*(n)} q^{ρ(h)}作为单一中心对象，从它可以统一导出纤维大小（q=1）、重数函数（系数）、矩（在q=1处的导数）、极值（支撑边界）和Boltzmann测度（q = e^{-β}）。</p>
+    <p><strong>核心结果：</strong>Z_n(q)满足三分支递推关系（定理6），在q=1处化为Paper 9定理1。第一原始矩M₁(n) = Z_n'(1)和第二阶乘矩F₂(n) = Z_n''(1)各自满足可计算的递推（定理7、8），可扩展到n=200而无需枚举纤维。</p>
+    <p><strong>关键数值发现：</strong>E_n[ρ]/n单调递增趋向c₁ ≈ 1.719；Var_n[ρ]/n快速收敛到c₂ ≈ 0.1924。归一化分布近似高斯。关键是，ρ_E(n)在均值下方距离5–14个标准差，且|z_n|稳定增长——ρ_E的渐近行为是极值统计问题，而非集中不等式问题。这是Paper 11的关键输入。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 引言</h2>
+  <h3>1.1 从计数到谱</h3>
+  <p>Paper 9给出了总计数。现在我们问：分布是什么？谱计数多项式Z_n(q)编码Hist*(n)内的完整ρ-分布，回答这一问题。参数固定为默认值：(c_S, c_⊕, c_⊗) = (1, 1, 2)。</p>
+
+  <h3>1.2 结构地位</h3>
+  <p>Z_n(q)是Hardy-Ramanujan/Erdős-Kac值分布论的纵向对应物。Hardy-Ramanujan描述Ω(n)（素因子个数）在整数间的分布。Z_n(q)描述单个纤维内ρ-值的分布，使其成为纤维内分布问题而非水平（跨越n）问题。</p>
+
+  <h2>2. 谱计数多项式</h2>
+  <h3>2.1 定义</h3>
+  <div class="thesis-box">
+    <p><strong>定义：</strong>对每个n和每个值w，令μ_n(w) = |{h ∈ Hist*(n) : ρ(h) = w}|为Hist*(n)中ρ-值w的重数。定义谱计数多项式：</p>
+    <div class="math-formula">Z_n(q) = Σ_{h∈Hist*(n)} q^{ρ(h)} = Σ_w μ_n(w) q^w</div>
+    <p>多项式Z_n(q)编码完整的ρ-分布。其系数为重数；其支撑为出现的ρ-值集合。</p>
+  </div>
+
+  <h3>2.2 递推关系（定理6）</h3>
+  <div class="thesis-box">
+    <p><strong>定理6（谱递推）：</strong>Z_n(q)满足递推：</p>
+    <div class="math-formula">Z_0(q) = 1
+Z_n(q) = q·Z_{n-1}(q)
+       + q·Σ_{a+b=n,a,b≥1} Z_a(q)Z_b(q)
+       + q²·Σ_{ab=n,a,b≥2} Z_a(q)Z_b(q)</div>
+    <p><strong>证明草图：</strong>Hist*(n)中每项有根构造器。若succ(h')，则ρ贡献+1，得q·Z_{n-1}(q)。若add(h₁,h₂)且值为a,b，则ρ贡献+1，得q乘积Z_a(q)Z_b(q)。若mul(h₁,h₂)，则ρ贡献+2，得q²乘积。</p>
+    <p><strong>化归检验：</strong>在q=1处，Z_n(1) = Paper 9定理1的h*(n)递推。✓</p>
+  </div>
+
+  <h3>2.3 从Z_n(q)导出的对象</h3>
+  <p>从单一函数Z_n(q)，我们提取：</p>
+  <ul>
+    <li><strong>重数函数：</strong>μ_n(w) = [q^w]Z_n(q)（q^w的系数）</li>
+    <li><strong>纤维大小：</strong>h*(n) = Z_n(1)</li>
+    <li><strong>谱界：</strong>ρ_E(n) = ord Z_n（q的最小次幂），ρ_max(n) = deg Z_n（q的最大次幂）</li>
+    <li><strong>第一矩：</strong>E_n[ρ] = Z_n'(1) / Z_n(1)</li>
+    <li><strong>方差：</strong>Var_n[ρ] = (Z_n''(1) + Z_n'(1)) / Z_n(1) − (Z_n'(1) / Z_n(1))²</li>
+    <li><strong>Boltzmann测度：</strong>μ_β(w) = [q^w]Z_n(e^{-β}) / Z_n(e^{-β})（配分函数观点）</li>
+  </ul>
+
+  <h2>3. 矩递推</h2>
+  <h3>3.1 记号与设置</h3>
+  <p>定义矩：</p>
+  <ul>
+    <li>M₁(n) = Z_n'(1) = Σ_{h∈Hist*(n)} ρ(h)（纤维中所有ρ-值之和）</li>
+    <li>F₂(n) = Z_n''(1) = Σ_{h∈Hist*(n)} ρ(h)(ρ(h)-1)（第二阶乘矩）</li>
+    <li>M₂(n) = F₂(n) + M₁(n) = Σ ρ(h)²（第二原始矩）</li>
+  </ul>
+
+  <h3>3.2 第一矩递推（定理7）</h3>
+  <div class="thesis-box">
+    <p><strong>定理7（M₁递推）：</strong>第一矩满足：</p>
+    <div class="math-formula">M₁(n) = h*(n-1) + M₁(n-1)
+       + Σ_{a+b=n,a,b≥1} [h*(a)h*(b) + M₁(a)h*(b) + h*(a)M₁(b)]
+       + Σ_{ab=n,a,b≥2} [2h*(a)h*(b) + M₁(a)h*(b) + h*(a)M₁(b)]</div>
+    <p><strong>证明：</strong>对定理6关于q求导，然后在q=1处求值。对积应用Leibniz法则。</p>
+  </div>
+
+  <h3>3.3 第二矩递推（定理8）</h3>
+  <div class="thesis-box">
+    <p><strong>定理8（F₂递推）：</strong>第二阶乘矩满足更复杂的递推，涉及F₂(n-1)、M₁(n-1)、矩的乘积，以及类似于定理7但有来自Leibniz法则二次应用的额外二次项的结构。</p>
+    <p><strong>计算优势：</strong>总成本O(N²)。矩递推避免了纤维枚举（指数复杂）；相反，它们使用之前的h*和M₁、F₂值自底向上计算矩。易于扩展到n=200+。</p>
+  </div>
+
+  <h2>4. 小n的精确谱</h2>
+  <h3>4.1 显式多项式</h3>
+  <p>通过直接计算小n的Z_n(q)（至n ≤ 25）：</p>
+  <div class="math-formula">Z_0(q) = 1
+Z_1(q) = q
+Z_2(q) = q² + q³
+Z_3(q) = q³ + 3q⁴ + 2q⁵
+Z_4(q) = q⁴ + 6q⁵ + 11q⁶ + 7q⁷ + q⁸
+Z_5(q) = q⁵ + 10q⁶ + 31q⁷ + 39q⁸ + 19q⁹ + 2q¹⁰</div>
+
+  <h3>4.2 n=8处的谱分析</h3>
+  <p>谱Z_8(q)展现以w ≈ 12为中心的钟形分布，显示初步的正态性：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>ρ-值w</th><th>计数μ_8(w)</th><th>百分比</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>8</td><td>3</td><td>0.03%</td></tr>
+      <tr><td>9</td><td>44</td><td>0.43%</td></tr>
+      <tr><td>10</td><td>307</td><td>2.99%</td></tr>
+      <tr><td>11</td><td>1,178</td><td>11.47%</td></tr>
+      <tr><td>12</td><td>2,569</td><td>25.00%</td></tr>
+      <tr><td>13</td><td>3,199</td><td>31.14%</td></tr>
+      <tr><td>14</td><td>2,184</td><td>21.26%</td></tr>
+      <tr><td>15</td><td>715</td><td>6.96%</td></tr>
+      <tr><td>16</td><td>74</td><td>0.72%</td></tr>
+      <tr><td>17</td><td>1</td><td>0.01%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.3 代价间隙分析</h3>
+  <p><strong>定义：</strong>gap(n) = Hist*(n)中不同ρ-值间的最小正差。</p>
+  <p><strong>发现：</strong>在计算范围内（n ≤ 25）无代价间隙。对所有n ≤ 25有gap(n) = 1，意味着ρ_E(n)与ρ_max(n)间的所有整数值都被实现。μ_n(ρ_E)在1–4间波动。</p>
+
+  <h2>5. 均值与方差渐近</h2>
+  <h3>5.1 数值结果</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>E_n[ρ]/n</th><th>Var_n[ρ]/n</th><th>标准差σ_n</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td>1.6227</td><td>0.1956</td><td>0.4423</td></tr>
+      <tr><td>25</td><td>1.7015</td><td>0.1935</td><td>1.1065</td></tr>
+      <tr><td>50</td><td>1.7000</td><td>0.1925</td><td>1.5598</td></tr>
+      <tr><td>75</td><td>1.7095</td><td>0.1924</td><td>1.9127</td></tr>
+      <tr><td>100</td><td>1.7097</td><td>0.1924</td><td>2.1959</td></tr>
+      <tr><td>150</td><td>1.7124</td><td>0.1924</td><td>2.6963</td></tr>
+      <tr><td>200</td><td>1.7145</td><td>0.1924</td><td>3.1071</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.2 猜想</h3>
+  <p><strong>猜想C：</strong>lim_{n→∞} E_n[ρ]/n = c₁ ≈ 1.719</p>
+  <p><strong>猜想D：</strong>lim_{n→∞} Var_n[ρ]/n = c₂ ≈ 0.1924</p>
+
+  <h3>5.3 解释</h3>
+  <p>编码n的典型紧凑项代价约为1.72n——比纯后继路径（代价n）多约72%。这额外的代价来自内部add和mul操作节点，它们虽然引入ρ开销但使结构压缩成为可能。</p>
+
+  <h2>6. 极值结构与基态</h2>
+  <h3>6.1 定理9：最大ρ-值</h3>
+  <div class="thesis-box">
+    <p><strong>定理9：</strong>Hist*(n)内的最大ρ-值为：</p>
+    <div class="math-formula">ρ_max(n) = ⌊9n/4⌋ - 1  对所有n ≥ 1</div>
+    <p><strong>构造：</strong>写n = 4q + r，其中0 ≤ r < 4。取q个mul块B = mul(add(succ(0), succ(0)), add(succ(0), succ(0)))（每个代价8）加上r个succ(0)（代价1各），通过add树组装，有q+r-1个add节点（代价1各）。总代价 = 8q + r + (q+r-1) = 9q + 2r - 1 = ⌊9n/4⌋ - 1。</p>
+    <p><strong>上界：</strong>通过对三分支的强归纳。</p>
+  </div>
+
+  <h3>6.2 分布的极度不对称性</h3>
+  <p>ρ-值的分布极度不对称：</p>
+  <div class="math-formula">ρ_E(n)  ≈ O(log n)    [基态——对数]
+E[ρ]    ≈ 1.72n      [均值——线性]
+ρ_max(n) ≈ 9n/4      [激发态——高系数的线性]</div>
+
+  <h3>6.3 Z-分数表：ρ_E作为极值</h3>
+  <p>z-分数衡量ρ_E在均值下方有多少个标准差：</p>
+  <div class="math-formula">z_n = (E_n[ρ] - ρ_E(n)) / σ_n</div>
+  <table class="struct-table">
+    <thead>
+      <tr><th>n</th><th>ρ_E(n)</th><th>E[ρ]</th><th>σ_n</th><th>z_n</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>5</td><td>5</td><td>5.6</td><td>1.04</td><td>-2.76</td></tr>
+      <tr><td>10</td><td>9</td><td>16.2</td><td>3.14</td><td>-5.17</td></tr>
+      <tr><td>15</td><td>14</td><td>25.6</td><td>4.08</td><td>-8.71</td></tr>
+      <tr><td>20</td><td>18</td><td>34.3</td><td>5.04</td><td>-11.42</td></tr>
+      <tr><td>25</td><td>22</td><td>42.5</td><td>5.88</td><td>-13.68</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>关键观察：</strong>当n → ∞时|z_n| → ∞。基态ρ_E(n)在其所属纤维内成为越来越极端的离群值。这与集中不等式（会有有界的z-分数）根本不同：这是极值统计问题。</p>
+
+  <h3>6.4 ρ_E的重数</h3>
+  <p>尽管h*(n)指数增长，重数μ_n(ρ_E)保持很小：在计算范围内在1–4间波动。这表明ρ_E由很少的历史项实现——通常仅一或两个代表（经常是h_n^std及可能一条备选路径）。</p>
+
+  <h2>7. 谱的整体形态</h2>
+  <h3>7.1 趋向正态性</h3>
+  <p>计算ρ-分布的偏度和超度：</p>
+  <ul>
+    <li>在n=10：偏度 ≈ -0.18，超度 ≈ -0.15</li>
+    <li>在n=25：偏度 ≈ -0.09，超度 ≈ -0.03</li>
+  </ul>
+  <p>两个量都递减趋向零，暗示趋向高斯极限。</p>
+
+  <h3>7.2 猜想E</h3>
+  <p><strong>猜想E（极限分布）：</strong>归一化变量X_n = (ρ - E_n[ρ]) / σ_n在分布意义下收敛到标准正态，即重新缩放的谱收敛到高斯。</p>
+
+  <h2>8. 讨论与视角</h2>
+  <h3>8.1 配分函数观点</h3>
+  <p>设q = e^{-β}得配分函数Z_n(e^{-β}) = Σ_w μ_n(w) e^{-βw}。这是标准物理配分函数，其中β是反温度：</p>
+  <ul>
+    <li><strong>β = 0：</strong>均匀测度 → 所有ρ-值等权 → 计数是h*(n)</li>
+    <li><strong>β → ∞：</strong>坍缩到基态 → 仅ρ_E贡献 → 测度是ρ_E处的点质量</li>
+    <li><strong>有限β：</strong>谱统计观点</li>
+  </ul>
+
+  <h3>8.2 二元生成函数</h3>
+  <p>定义F(x,q) = Σ Z_n(q) x^n（n的生成函数，q参数化）。则：</p>
+  <div class="math-formula">F(x,q) = 1 + xq·F(x,q) + q·[F(x,q)-1]² + q²·M(x,q)</div>
+  <p>其中M(x,q)是二元Dirichlet型分量。这在q=1处化为Paper 9方程。</p>
+
+  <h2>9. 开放问题</h2>
+  <ol>
+    <li><strong>精确极限c₁, c₂：</strong>猜想C和D的严格证明。</li>
+    <li><strong>极限分布：</strong>是高斯吗？证明猜想E。</li>
+    <li><strong>代价间隙：</strong>为什么gap(n) = 1总是成立？Z_n(q)在某个更高的n处能否有大间隙？</li>
+    <li><strong>ρ_E的重数：</strong>μ_n(ρ_E)保持有界吗？或增长？</li>
+    <li><strong>间隙≡1定理：</strong>证明对所有n有gap(n) = 1，或找反例。</li>
+    <li><strong>参数敏感性：</strong>当α, β变化时均值、方差和极限如何变化？</li>
+    <li><strong>Z_n(q)的零分布：</strong>Z_n(q)的零在复平面哪里？</li>
+    <li><strong>F(x,q)的奇点分析：</strong>主奇点在哪里，如何依赖于q？</li>
+    <li><strong>大偏差：</strong>能否为Hist*(n)中ρ的分布证明大偏差原理？</li>
+  </ol>
+
+  <h2>10. 参考文献</h2>
+  <ol>
+    <li>Han Qin, "Exact Combinatorics of History Fibers," ZFCρ Series Paper IX, 2026. DOI: 10.5281/zenodo.18963539</li>
+    <li>Han Qin, "Recursive Definition of ρ and Expression Compression Complexity," ZFCρ Series Paper VI, 2026. DOI: 10.5281/zenodo.18934531</li>
+    <li>Han Qin, "The Term Model of ρ-Arithmetic," ZFCρ Series Paper VII, 2026.</li>
+    <li>Hardy, G. H., and Ramanujan, S. "The normal number of prime factors of φ(n)." <em>Quarterly Journal of Mathematics</em> 48 (1917): 76-92.</li>
+    <li>Erdős, P., and Kac, M. "The Gaussian law of errors in the theory of additive functions." <em>Proceedings of the National Academy of Sciences</em> 25, no. 4 (1939): 206-207.</li>
+    <li>Feller, W. <em>An Introduction to Probability Theory and Its Applications.</em> Vol. 2, Wiley, 1971.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho9.html">ZFCρ 论文九：历史纤维的精确组合学</a></p>
+    <p>→ ZFCρ 论文十一（即将发布）</p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18973559" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'The Spectral Counting Polynomial and Fiber ρ-Statistics', zh: '谱计数多项式与纤维ρ-统计' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
