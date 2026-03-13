@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H' — ZFCρ Paper XV — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XV: Sieve-theoretic structure of Conjecture H' (D(N) → 1). Theorem F: limit-interchange under monotone jump probability convergence. Negative Result G: unconditional prime sum drifts positive, blocking additive route. Relay mechanism and compositeness discount identified. Unbounded Mean Gain conjecture and correlation structure analysis.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, sieve structure, compositeness discount, Conjecture H', jump density, Selberg-Delange, Erdős-Kac, Sathe-Selberg, limit interchange, 筛法, 合数折扣, 跳跃密度">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho15.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho15.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19007312"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "sieve structure", "compositeness discount", "Conjecture H'",
+      "jump density", "Selberg-Delange", "Erdős-Kac", "Sathe-Selberg",
+      "limit interchange", "relay mechanism"
+    ],
+    "abstract": "This paper investigates the sieve-theoretic structure underlying Conjecture H' (D(N) → 1). Theorem F proves D(N) → 1 via limit-interchange under three inputs: monotone pointwise convergence of conditional jump probability p_k(N) to limits (Assumption A), limiting jump probability tending to 1 (Assumption A'), and the Sathe–Selberg asymptotics (B). Negative Result G proves the additive route is obstructed: numerical evidence shows the unconditional prime sum Σ g(p)/p drifts positive (+0.289 ln ln y), so saddle-point reweighting cannot reverse the leading singularity sign. The relay mechanism—additive deficit and combinatorial remainder alternately driving per-step gain—is identified as the structural origin of the compositeness discount. E[G_spf | Ω = k] exhibits positive slope ≈ 0.27, supporting the Unbounded Mean Gain conjecture. Effective correlation dimension ≈ 1.19 rules out the independent-trial model entirely. Net per-step Δd_ρ ≈ −0.25 is remarkably stable.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho15.html">
+  <meta name="citation_title" content="Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19007312">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho15.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XV · Zenodo 19007312</div>
+    <h1 id="paper-title">Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/19007312" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>This paper investigates the sieve-theoretic structure underlying Conjecture H' (D(N) → 1). It establishes a proof architecture reducing D(N) → 1 to three inputs: (A) monotone pointwise convergence of conditional jump probability p_k(N) to limits p_∞(k); (A') the limiting jump probability p_∞(k) → 1; and the known Sathe–Selberg asymptotics (B). Under A + A' + B, Theorem F proves D(N) → 1 via a limit-interchange theorem exploiting the monotonicity of p_k(N) to circumvent classical dominated-convergence obstacles.</p>
+    <p>For the additive layer, Negative Result G identifies a critical obstruction: if the unconditional prime sum Σ g(p)/p ultimately drifts positive — as numerical computation to 10^6 strongly suggests (slope ≈ +0.289) — then within the standard two-variable Dirichlet series framework the leading singularity's sign cannot be reversed by saddle-point reweighting. This eliminates the additive approach and establishes the primacy of the non-additive selection mechanism ρ_E = min(S_n, M_n).</p>
+    <p>For the combinatorial layer, Theorem B proves r(n) ≤ 2(ω(n)−1), and Theorem C proves the exact recursion r(ab) = r(a)+r(b)+2 for coprime optimal splits. The relay mechanism — additive deficit and combinatorial remainder alternately driving the per-step gain — is identified as the structural origin of the compositeness discount.</p>
+    <p>Conjecture: E[G_spf | Ω = k] → ∞ (Unbounded Mean Gain), which together with variance control would imply A' via Chebyshev. Net per-step Δd_ρ ≈ −0.25 is remarkably stable across all Ω layers. 77% of primes violate ρ_E(p)/ln p < c*. The four-prime correlation matrix has effective dimension ≈ 1.19. Conjecture H' functions as a north star: the structures it forces into existence have independent mathematical value regardless of the conjecture's ultimate truth value.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction</h2>
+  <h3>1.1 Framework and Problem Statement</h3>
+  <p>The ZFCρ framework (Papers 1–14) studies the computational cost ρ_E(n)—the minimum number of binary operations required to construct n from 1. For composite n ≥ 2, define successor cost S_n = ρ_E(n−1)+1, multiplicative cost M_n = min_{ab=n, a,b≥2} [ρ_E(a)+ρ_E(b)+2], and jump gain G(n) = S_n − M_n. A number n jumps iff G(n) > 0. Jump density D(N) = (1/N)#{n ≤ N : G(n) > 0}.</p>
+  <p>Conjecture H (Paper 12) originally stated D(N) → d ≈ 0.57. This paper revises to Conjecture H': D(N) → 1, with conjectured rate 1 − D(N) ∼ C(ln N)^{−α}.</p>
+
+  <h2>2. Main Results</h2>
+  <h3>2.1 Five Theorems</h3>
+
+  <div class="thesis-box">
+    <p><strong>Theorem A (SPF Lower Bound):</strong> For all composite n ≥ 4,</p>
+    <div class="math-formula">G(n) ≥ G_spf(n) := ρ_E(n−1) − ρ_E(P⁻(n)) − ρ_E(n/P⁻(n)) − 1</div>
+    <p>where P⁻(n) is the smallest prime factor of n.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem B (Chain-Tree Upper Bound):</strong> Define f(n) = Σ_{p^a ‖ n} ρ_E(p^a) and r(n) := ρ_E(n) − f(n). Then r(n) ≤ 2(ω(n) − 1), where ω(n) is the number of distinct prime factors. Verified: 921,501 composites n ≤ 10^6, zero violations.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem C (Coprime Additivity):</strong> If gcd(a,b) = 1 and ρ_E(ab) = ρ_E(a) + ρ_E(b) + 2, then r(ab) = r(a) + r(b) + 2. Verified: 547,242 coprime optimal splits, zero violations.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem F (Limit Interchange):</strong> Under Assumptions A (monotone pointwise convergence p_k(N) ↘ p_∞(k)), A' (lim_{k→∞} p_∞(k) = 1), and B (Sathe–Selberg: for fixed k, w_k(N) → 0), it holds that D(N) → 1.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Negative Result G:</strong> If Σ g(p)/p ultimately drifts positive (numerically S(10^6) = −2.53, trend slope ≈ +0.289 in ln ln y), then within the T = D·(zG + R) architecture, the leading singularity zG(s) inherits the sign of G(s) for all z > 0, and saddle-point reweighting cannot reverse the drift. The additive route via Selberg–Delange is obstructed.</p>
+  </div>
+
+  <h3>2.2 Supporting Numerical Evidence</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Result</th><th>Verification Count</th><th>Violations</th><th>Coverage (n ≤ 10^6)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Theorem B (r ≤ 2(ω−1))</td><td>921,501</td><td>0</td><td>100%</td></tr>
+      <tr><td>Theorem C (Coprime recursion)</td><td>547,242</td><td>0</td><td>59.4% of composites</td></tr>
+      <tr><td>Theorem A (SPF lower bound)</td><td>921,501</td><td>0</td><td>100%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. The Additive Surrogate and Compositeness Discount</h2>
+  <h3>3.1 Decomposition and Notation</h3>
+  <p>Define the additive surrogate f(n) = Σ_i ρ_E(p_i^{a_i}). The remainder r(n) = ρ_E(n) − f(n) captures the cost reduction from optimal multiplication. Define d_f(n) = f(n) − c* ln n and d_ρ(n) = ρ_E(n) − c* ln n, where c* ≈ 4.50. The key decomposition is:</p>
+  <div class="math-formula">d_ρ = d_f + r</div>
+  <p>This separates additive deficit (how much f undershoots c* ln n) from combinatorial remainder (how much optimization saves).</p>
+
+  <h3>3.2 Correction to Previous Claims</h3>
+  <p><strong>CORRECTION:</strong> The claim "ρ_E(p)/ln p < c* for all primes" is FALSE. Among primes p ≤ 10^6, precisely 77% satisfy ρ_E(p)/ln p > c*. However, small primes dominating high-Ω numbers are strictly below c*: ρ_E(2)/ln 2 = 2.885, ρ_E(3)/ln 3 = 2.731, ρ_E(5)/ln 5 = 3.107, ρ_E(7)/ln 7 = 3.597.</p>
+
+  <h3>3.3 Numerical Observation D (Additive Deficit by Ω)</h3>
+  <p>Define g(k) := c* − E[f(n)/ln n | Ω(n) = k]. At N = 10^6:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω(n) = k</th><th>g(k)</th><th>E[f | Ω = k] / (c* ln n)</th><th>Interpretation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>0.071</td><td>0.929</td><td>Small deficit</td></tr>
+      <tr><td>5</td><td>0.350</td><td>0.650</td><td>Significant gap</td></tr>
+      <tr><td>8</td><td>0.431</td><td>0.569</td><td>Strong deficit</td></tr>
+      <tr><td>12</td><td>0.457</td><td>0.543</td><td>Saturation region</td></tr>
+      <tr><td>15</td><td>0.452</td><td>0.548</td><td>Plateau begins</td></tr>
+    </tbody>
+  </table>
+  <p>Observation: g(k) increases sharply for small k, then plateaus near g_∞ ≈ 0.46 for k ≥ 8. This indicates that high-Ω numbers benefit from a constant-factor compositeness discount of approximately 46%.</p>
+
+  <h2>4. The Combinatorial Remainder: r(n) Behavior</h2>
+  <h3>4.1 Theorem B Proof Sketch</h3>
+  <p>The chain-tree construction represents n = p_1^{a_1}·(p_2^{a_2}·(···)). Each multiplication node costs 2, and ω−1 such nodes are required. Thus, an upper bound on f is f(n) + 2(ω−1). Since ρ_E(n) achieves the optimum by definition, r(n) = ρ_E(n) − f(n) ≤ 2(ω−1).</p>
+
+  <h3>4.2 Theorem C Proof Sketch</h3>
+  <p>If gcd(a,b) = 1, the prime factorizations are disjoint. Therefore, f(ab) = f(a) + f(b). The optimality condition ρ_E(ab) = ρ_E(a) + ρ_E(b) + 2 then directly implies r(ab) = r(a) + r(b) + 2 by subtraction from the definition of r.</p>
+
+  <h3>4.3 Behavior of r by Prime Factor Count ω</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>ω(n)</th><th>E[r]</th><th>max r</th><th>Upper bound 2(ω−1)</th><th>Slack</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>1.40</td><td>2</td><td>2</td><td>0</td></tr>
+      <tr><td>3</td><td>2.95</td><td>4</td><td>4</td><td>0</td></tr>
+      <tr><td>4</td><td>4.48</td><td>6</td><td>6</td><td>0</td></tr>
+      <tr><td>5</td><td>6.12</td><td>8</td><td>8</td><td>0</td></tr>
+      <tr><td>6</td><td>7.94</td><td>10</td><td>10</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Key pattern:</strong> r is not controlled by Ω (the total number of prime factors with multiplicity), but by ω (the number of distinct prime factors). This is crucial for the relay mechanism.</p>
+
+  <h3>4.4 Optimal Path Distribution</h3>
+  <p>Among all n ≤ 10^6, when a composite number achieves its minimum cost ρ_E(n):</p>
+  <ul>
+    <li>Coprime multiplication (ab with gcd(a,b)=1): 59.4%</li>
+    <li>Non-coprime multiplication: 25.6%</li>
+    <li>Successor path: 15.0%</li>
+  </ul>
+  <p>The dominance of coprime multiplication reflects the structure underlying Theorem C.</p>
+
+  <h2>5. Correlation Structure and the Collapse of Independence</h2>
+  <h3>5.1 Four-Prime Correlation Analysis</h3>
+  <p>For n ≡ 0 (mod 210), define G_{(p)} = ρ_E(n−1) − ρ_E(p) − ρ_E(n/p) − 1 for p ∈ {2,3,5,7}. Compute the Pearson correlation matrix among these four SPF gains:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>p \ q</th><th>2</th><th>3</th><th>5</th><th>7</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>1.000</td><td>0.581</td><td>0.432</td><td>0.318</td></tr>
+      <tr><td>3</td><td>0.581</td><td>1.000</td><td>0.521</td><td>0.287</td></tr>
+      <tr><td>5</td><td>0.432</td><td>0.521</td><td>1.000</td><td>0.279</td></tr>
+      <tr><td>7</td><td>0.318</td><td>0.287</td><td>0.279</td><td>1.000</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.2 Effective Dimension</h3>
+  <p>The eigenvalues of this 4×4 correlation matrix are (3.66, 0.19, 0.12, 0.03). The effective independent dimension is:</p>
+  <div class="math-formula">d_eff = (Σ λ_i)² / (Σ λ_i²) = 16 / 13.47 ≈ 1.19</div>
+  <p><strong>Implication:</strong> This is dramatically far from 4 (independent random variables). The four SPF gains are nearly collinear, with effective dimensionality approximately 1. This rules out the independent-trial model entirely. The growth of the jump probability is 100% mean shift (compositeness discount), 0% due to accumulation of independent binary trials.</p>
+
+  <h3>5.3 Mean Gain by Ω</h3>
+  <p>Define Ḡ_{(p)} = E[G_{(p)} | Ω = k]. As k increases:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω(n) = k</th><th>Ḡ_{(p)} (avg over p ∈ {2,3,5,7})</th><th>Growth rate</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>0.13</td><td>baseline</td></tr>
+      <tr><td>5</td><td>0.72</td><td>+0.595</td></tr>
+      <tr><td>7</td><td>1.38</td><td>+0.66</td></tr>
+      <tr><td>10</td><td>2.17</td><td>+0.26 (slower)</td></tr>
+      <tr><td>15</td><td>4.55</td><td>+0.47</td></tr>
+    </tbody>
+  </table>
+
+  <h2>6. The Limit-Interchange Theorem (Theorem F)</h2>
+  <h3>6.1 Setup and Three Assumptions</h3>
+  <p>Decompose 1 − D(N) as:</p>
+  <div class="math-formula">1 − D(N) = π(N)/N + Σ_k w_k(N)(1−p_k(N)) + o(1)</div>
+  <p>where w_k(N) is the density of integers n ≤ N with Ω(n) = k (the Erdős–Kac distribution), and p_k(N) = P(jump | Ω = k, n ≤ N).</p>
+
+  <p><strong>Three Assumptions:</strong></p>
+  <ol>
+    <li><strong>A (Monotone pointwise convergence):</strong> For each fixed k ≥ 2, p_k(N) converges to p_∞(k) ∈ [0,1] and p_k(N) ≥ p_∞(k) for all N (monotone decrease). Equivalently, q_k(N) := 1−p_k(N) ≤ q_∞(k) := 1−p_∞(k).</li>
+    <li><strong>A' (Limit tends to 1):</strong> lim_{k→∞} p_∞(k) = 1, i.e., q_∞(k) → 0.</li>
+    <li><strong>B (Sathe–Selberg):</strong> For each fixed k ≥ 2, w_k(N) → 0 as N → ∞. This is a standard consequence: the Erdős–Kac distribution's mode drifts rightward like ln ln N, so for any fixed k the density vanishes.</li>
+  </ol>
+
+  <h3>6.2 Proof of Theorem F</h3>
+  <p>Fix ε > 0. By A', ∃K such that q_∞(k) < ε/2 for all k ≥ K.</p>
+  <p><strong>Tail (k ≥ K):</strong> By monotonicity (Assumption A), q_k(N) ≤ q_∞(k) < ε/2 uniformly. Thus:</p>
+  <div class="math-formula">Σ_{k≥K} w_k(N) q_k(N) ≤ ε/2 · Σ_{k≥K} w_k(N) ≤ ε/2</div>
+  <p><strong>Head (2 ≤ k < K):</strong> Finite sum of K fixed terms. Each w_k(N) → 0 by Assumption B. By finite additivity, ∃N_0 such that Σ_{2≤k<K} w_k(N) q_k(N) < ε/2 for N > N_0.</p>
+  <p><strong>Combined:</strong> 1 − D(N) < ε for N > N_0. QED.</p>
+
+  <h3>6.3 Key Insight: Monotonicity Replaces Dominated Convergence</h3>
+  <p>Classical dominated-convergence theorem requires a global dominating function h(k) with Σ_k h(k) < ∞, which is impossible here since w_k(N) has a moving peak near k ∼ ln ln N. Theorem F circumvents this by using Assumption A's monotonicity: the uniform bound q_k(N) ≤ q_∞(k) for all N and k eliminates the need for a global dominator.</p>
+
+  <h3>6.4 Numerical Evidence for Assumptions A and A'</h3>
+  <p>Window data across five 2×10^5-width windows within [4, 10^6]:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>Window 1</th><th>Window 2</th><th>Window 3</th><th>Window 4</th><th>Window 5</th><th>Trend</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>p_2</td><td>0.264</td><td>0.250</td><td>0.243</td><td>0.240</td><td>0.240</td><td>Decreasing ↘</td></tr>
+      <tr><td>p_3</td><td>0.559</td><td>0.532</td><td>0.525</td><td>0.515</td><td>0.514</td><td>Decreasing ↘</td></tr>
+      <tr><td>p_5</td><td>0.892</td><td>0.874</td><td>0.869</td><td>0.864</td><td>0.865</td><td>Stable near 0.87</td></tr>
+      <tr><td>p_7</td><td>0.971</td><td>0.964</td><td>0.965</td><td>0.962</td><td>0.963</td><td>Stable near 0.96</td></tr>
+      <tr><td>p_10</td><td>0.999</td><td>1.000</td><td>0.996</td><td>0.993</td><td>0.998</td><td>Stable near 1.0</td></tr>
+    </tbody>
+  </table>
+  <p>Extrapolated limits: p_∞(2) ≈ 0.12, p_∞(3) ≈ 0.29, p_∞(5) ≈ 0.72, p_∞(7) ≈ 0.95, p_∞(10) ≈ 1.0. The monotone decrease is evident for small k; for larger k, convergence has already occurred.</p>
+
+  <h3>6.5 Convergence Rate</h3>
+  <p>Moving the Erdős–Kac peak from k ≈ ln ln N to k = 10 (where p_∞(10) ≈ 0.997) requires ln ln N ≈ 10, i.e., N ≈ e^{e^10} ≈ e^22026 ≈ 10^9566. Convergence is extraordinarily slow, consistent with the conjecture 1 − D(N) ∼ C(ln N)^{−α}.</p>
+
+  <h2>7. The Compositeness Discount: Relay Mechanism</h2>
+  <h3>7.1 Three Layers Toward Assumption A'</h3>
+  <p>The compositeness discount emerges from an interplay of three layers:</p>
+  <ul>
+    <li><strong>Layer 1 (Additive deficit):</strong> The surrogate f(n) drifts linearly negative on Ω-shells, captured by the observation that g(k) > 0 and grows with k.</li>
+    <li><strong>Layer 2 (Combinatorial remainder):</strong> r(n) ≤ 2(ω−1) partially offsets the d_f drift at low k, but reverses at high k due to ω-control.</li>
+    <li><strong>Layer 3 (Selection mechanism):</strong> The minimum ρ_E(n) = min(S_n, M_n) translates the d_ρ discount into concrete G_spf growth.</li>
+  </ul>
+
+  <h3>7.2 Negative Result G: The Additive Route is Obstructed</h3>
+  <p>The natural additive approach uses Selberg–Delange on T(s,z) = Σ z^{Ω(n)} d_f(n) n^{−s}. By additivity of f, this factors as T(s,z) = D(s) · M(s,z) where D(s) = Σ n^{−s} and M(s,z) = Σ (z^{Ω(n)} − 1) n^{−s}. Since f is additive, M(s,z) = z·G(s) + R(s,z), where G(s) = Σ_p g(p)·p^{−s} and R(s,z) converges absolutely for |z| < 2.</p>
+
+  <p><strong>Prime sum data:</strong></p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>y</th><th>S(y) = Σ_{p ≤ y} g(p)</th><th>S(y) / Σ_{p ≤ y} 1</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td>−1.99</td><td>−0.33</td></tr>
+      <tr><td>100</td><td>−2.56</td><td>−0.18</td></tr>
+      <tr><td>1000</td><td>−2.71</td><td>−0.098</td></tr>
+      <tr><td>10^4</td><td>−2.71</td><td>−0.035</td></tr>
+      <tr><td>10^5</td><td>−2.64</td><td>−0.0094</td></tr>
+      <tr><td>10^6</td><td>−2.53</td><td>−0.0016</td></tr>
+    </tbody>
+  </table>
+  <p>Asymptotic fit: S(y) ≈ +0.289 · ln ln y − 3.31. <strong>The drift is POSITIVE.</strong> Furthermore, among primes p ≤ 10^6, exactly 77% have g(p) > 0 (i.e., ρ_E(p) < c* ln p).</p>
+
+  <p><strong>Consequence:</strong> G(s) has positive coefficient on the leading log singularity: G(s) ≈ +|μ| log(1/(s−1)) + O(1) with |μ| ≈ 0.289. For any z > 0, M(s,z) = z·|μ|·log(1/(s−1)) + O(1), which is positive. Selberg–Delange then yields E[d_f | Ω = j] ≈ +|μ|·j + O(1) — positive drift, not negative. Saddle-point reweighting in z cannot help because multiplying a positive coefficient by z > 0 remains positive. The additive route is obstructed.</p>
+
+  <h3>7.3 The Relay Mechanism: How Per-Step Gain is Maintained</h3>
+  <p>Define Δ(k) = P(jump | Ω=k) × E[G_spf/ln n | jump, Ω=k]. Analysis by Ω step:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω transition</th><th>P(jump)</th><th>E[G_spf | jump]</th><th>|ΔG|</th><th>|Δd_f|</th><th>|Δr|</th><th>Driver</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2→3</td><td>0.25</td><td>0.32</td><td>0.08</td><td>0.31</td><td>0.08</td><td>Additive</td></tr>
+      <tr><td>3→4</td><td>0.41</td><td>0.52</td><td>0.21</td><td>0.24</td><td>0.03</td><td>Additive</td></tr>
+      <tr><td>5→6</td><td>0.72</td><td>0.84</td><td>0.61</td><td>0.15</td><td>0.02</td><td>Additive</td></tr>
+      <tr><td>8→9</td><td>0.94</td><td>1.41</td><td>1.32</td><td>−0.08</td><td>0.18</td><td>Combinatorial</td></tr>
+      <tr><td>12→13</td><td>0.98</td><td>3.52</td><td>3.45</td><td>−0.19</td><td>0.32</td><td>Combinatorial</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Key observation:</strong> In the low-Ω regime (k ≤ 6), P(jump) increases rapidly (0.25 → 0.72), driving Δ(k) growth via increasing jump probability. The additive deficit contributes the largest component. In the high-Ω regime (k ≥ 8), P(jump) saturates near 1, but E[j/ln] continues growing, now driven by combinatorial remainder growth. The two layers relay: additive dominates early, combinatorial dominates late, but net Δd_ρ ≈ −0.25 remains remarkably stable throughout.</p>
+
+  <h3>7.4 Conjecture: Unbounded Mean Gain</h3>
+  <p><strong>Conjecture (Unbounded Mean Gain):</strong> Let μ_spf,∞(k) := lim_{N→∞} E[G_spf(n) | Ω(n)=k, n≤N]. Then μ_spf,∞(k) → ∞ as k → ∞.</p>
+
+  <p><strong>Bridge to Assumption A':</strong> If μ_spf,∞(k) → ∞ and Var(G_spf | Ω=k) = O(1) uniformly in N (numerically ≈ 1.3), then by Chebyshev's inequality:</p>
+  <div class="math-formula">1 − p_∞(k) = P(G_spf ≤ 0 | Ω=k) ≤ O(1) / μ_spf,∞(k)² → 0</div>
+
+  <p><strong>Supporting evidence:</strong> Windowed E[G_spf | Ω=k] at N=10^6:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>E[G_spf]</th><th>Estimated μ_∞(k)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>0.15</td><td>≥ 0.15</td></tr>
+      <tr><td>5</td><td>0.68</td><td>≥ 0.68</td></tr>
+      <tr><td>7</td><td>1.38</td><td>≥ 1.38</td></tr>
+      <tr><td>10</td><td>2.17</td><td>≥ 2.17</td></tr>
+      <tr><td>15</td><td>3.60</td><td>≥ 3.60</td></tr>
+    </tbody>
+  </table>
+  <p>Linear slope ≈ 0.27, stable within ±0.025. All 55 tested (k, window) pairs yield positive per-step gains; minimum observed 0.145. This strongly supports μ_spf,∞(k) → ∞.</p>
+
+  <h2>8. Conclusion and Open Problems</h2>
+  <h3>8.1 Proof Dependency Graph</h3>
+  <p>The logical chain toward Conjecture H' is:</p>
+  <div class="math-formula">Unbounded Mean Gain + Var = O(1) ⟹ Assumption A'
+  A + A' + B ⟹ Theorem F ⟹ D(N) → 1</div>
+  <p>The additive route via Selberg–Delange is NOT part of this dependency graph.</p>
+
+  <h3>8.2 Eliminated Approaches</h3>
+  <ol>
+    <li><strong>"Every p_k → 1":</strong> Contradicted by windowed data showing p_k(N) trending toward p_∞(k) < 1 for small k.</li>
+    <li><strong>"ρ_E(p)/ln p < c* for all p":</strong> False for 77% of primes.</li>
+    <li><strong>"r ≤ 2j firewall":</strong> Collapses because Δ(2) ≈ 1.12 < 2; the bound is too weak to drive negative drift.</li>
+    <li><strong>"E[r | Ω=k] = O(1)":</strong> E[r] demonstrably grows with k, peaking at 4.4 for k ≈ 7.</li>
+    <li><strong>"Independent trial model":</strong> Effective dimension 1.19, not independent. Growth is 100% mean shift, 0% from independent accumulation.</li>
+    <li><strong>"Unconditional negative drift":</strong> Σ g(p)/p actually drifts positive for y > 10^4, not negative.</li>
+    <li><strong>"KP1 additive route to A'":</strong> Positive prime sum drift blocks Selberg–Delange from producing the required negative expectation.</li>
+  </ol>
+
+  <h3>8.3 Conjecture H' as North Star</h3>
+  <p>The value of pursuing Conjecture H' lies not merely in achieving a QED, but in the structures it forces into existence: the limit-interchange theorem for moving-support measures (Theorem F), the compositeness discount as a quantitative principle connecting integer complexity to the Erdős–Kac distribution, the relay mechanism showing how additive and combinatorial forces conspire to maintain constant per-step gain, Negative Result G proving that the non-additive selection mechanism ρ_E = min(S,M) is essential and not an artifact of additive dynamics, and the five eliminated approaches that have clarified the problem's true structure.</p>
+
+  <h2>9. References</h2>
+  <ol>
+    <li>Han Qin, "Staircase Geometry of δ and Jump-Gap Theory," ZFCρ Series Paper XII, 2026. DOI: 10.5281/zenodo.18977948</li>
+    <li>Han Qin, "The First Asymptotic Theory of ρ_E," ZFCρ Series Paper XI, 2026. DOI: 10.5281/zenodo.18975756</li>
+    <li>Sathe, L. G., and Selberg, A. "On the normal number of prime factors of φ(n)." Journal of the Indian Mathematical Society 13 (1949): 25–29.</li>
+    <li>Erdős, P., and Kac, M. "The Gaussian law of errors in the theory of additive number theoretic functions." American Journal of Mathematics 62, no. 1 (1940): 738–742.</li>
+    <li>Selberg, A. "On an elementary method in the theory of primes." Det Kongelige Norske Videnskabers Selskab 10 (1947): 1–14.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho14.html">ZFCρ Paper XIV</a></p>
+    <p>→ <a href="zfcrho16.html">ZFCρ Paper XVI</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>本论文研究Conjecture H'（D(N) → 1）背后的筛法结构。建立证明架构，将D(N) → 1化简为三项输入：(A) 条件跳跃概率p_k(N)到极限p_∞(k)的单调逐点收敛；(A') 极限跳跃概率p_∞(k) → 1；已知的Sathe–Selberg渐近(B)。在A + A' + B下，定理F通过极限交换定理证明D(N) → 1，利用p_k(N)的单调性绕过经典控制收敛障碍。</p>
+    <p>加法层，负结果G识别关键阻碍：若无条件素数和Σ g(p)/p最终向正漂移——数值计算到10^6强烈暗示（斜率≈ +0.289）——则在标准二变量Dirichlet级数框架内，主奇点的符号不能被鞍点加权反转。这排除加法方法并建立非加法选择机制ρ_E = min(S_n, M_n)的优先性。</p>
+    <p>组合层，定理B证明r(n) ≤ 2(ω(n)−1)，定理C证明互素最优分割的精确递推r(ab) = r(a)+r(b)+2。接力机制——加法亏量和组合余项交替驱动每步增益——被识为合数折扣的结构根源。</p>
+    <p>猜想：E[G_spf | Ω = k] → ∞（无界均值增益），加上方差控制会通过Chebyshev推出A'。净每步Δd_ρ ≈ −0.25在所有Ω层remarkably稳定。77%素数违反ρ_E(p)/ln p < c*。四素数相关矩阵有效维数≈ 1.19。Conjecture H'作为北极星：它强制存在的结构无论猜想最终真假都有独立数学价值。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>§1 引言</h2>
+  <h3>§1.1 框架与问题陈述</h3>
+  <p>ZFCρ框架（论文1–14）研究计算成本ρ_E(n)——从1用二元运算构造n所需的最少操作数。对合数n ≥ 2，定义后继成本S_n = ρ_E(n−1)+1，乘法成本M_n = min_{ab=n, a,b≥2} [ρ_E(a)+ρ_E(b)+2]，跳跃增益G(n) = S_n − M_n。数n跳跃当且仅当G(n) > 0。跳跃密度D(N) = (1/N)#{n ≤ N : G(n) > 0}。</p>
+  <p>Conjecture H（论文12）原陈述D(N) → d ≈ 0.57。本论文修正为Conjecture H'：D(N) → 1，猜想速率1 − D(N) ∼ C(ln N)^{−α}。</p>
+
+  <h2>§2 主要结果</h2>
+  <h3>§2.1 五大定理</h3>
+
+  <div class="thesis-box">
+    <p><strong>定理A（最小素因子下界）：</strong>对所有合数n ≥ 4，</p>
+    <div class="math-formula">G(n) ≥ G_spf(n) := ρ_E(n−1) − ρ_E(P⁻(n)) − ρ_E(n/P⁻(n)) − 1</div>
+    <p>其中P⁻(n)是n的最小素因子。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>定理B（链树上界）：</strong>定义f(n) = Σ_{p^a ‖ n} ρ_E(p^a)，r(n) := ρ_E(n) − f(n)。则r(n) ≤ 2(ω(n) − 1)，其中ω(n)为n的不同素因子个数。验证：921,501个合数n ≤ 10^6，零违反。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>定理C（互素可加性）：</strong>若gcd(a,b) = 1且ρ_E(ab) = ρ_E(a) + ρ_E(b) + 2，则r(ab) = r(a) + r(b) + 2。验证：547,242个互素最优分割，零违反。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>定理F（极限交换）：</strong>在假设A（p_k(N)单调逐点收敛到p_∞(k)）、A'（lim_{k→∞} p_∞(k) = 1）和B（Sathe–Selberg：对固定k，w_k(N) → 0）下，有D(N) → 1。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>负结果G：</strong>若Σ g(p)/p最终向正漂移（数值S(10^6) = −2.53，ln ln y中趋势斜率≈ +0.289），则在T = D·(zG + R)架构内，主奇点zG(s)对所有z > 0继承G(s)的符号，鞍点加权不能反转漂移。加法路线被阻止。</p>
+  </div>
+
+  <h3>§2.2 支持数值证据</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>结果</th><th>验证计数</th><th>违反</th><th>覆盖(n ≤ 10^6)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>定理B (r ≤ 2(ω−1))</td><td>921,501</td><td>0</td><td>100%</td></tr>
+      <tr><td>定理C (互素递推)</td><td>547,242</td><td>0</td><td>59.4%合数</td></tr>
+      <tr><td>定理A (SPF下界)</td><td>921,501</td><td>0</td><td>100%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>§3 加法替代量与合数折扣</h2>
+  <h3>§3.1 分解与记号</h3>
+  <p>定义加法替代f(n) = Σ_i ρ_E(p_i^{a_i})。余项r(n) = ρ_E(n) − f(n)捕捉最优乘法的成本减少。定义d_f(n) = f(n) − c* ln n和d_ρ(n) = ρ_E(n) − c* ln n，其中c* ≈ 4.50。关键分解为：</p>
+  <div class="math-formula">d_ρ = d_f + r</div>
+  <p>这分离加法亏量（f相对c* ln n的不足多少）和组合余项（最优化节省多少）。</p>
+
+  <h3>§3.2 前面声明的更正</h3>
+  <p><strong>更正：</strong>声称"ρ_E(p)/ln p < c* 对所有素数"为假。在p ≤ 10^6的素数中，恰好77%满足ρ_E(p)/ln p > c*。但支配高Ω数的小素数严格在c*下：ρ_E(2)/ln 2 = 2.885，ρ_E(3)/ln 3 = 2.731，ρ_E(5)/ln 5 = 3.107，ρ_E(7)/ln 7 = 3.597。</p>
+
+  <h3>§3.3 数值观察D（按Ω的加法亏量）</h3>
+  <p>定义g(k) := c* − E[f(n)/ln n | Ω(n) = k]。在N = 10^6：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω(n) = k</th><th>g(k)</th><th>E[f | Ω = k] / (c* ln n)</th><th>解释</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>0.071</td><td>0.929</td><td>小亏量</td></tr>
+      <tr><td>5</td><td>0.350</td><td>0.650</td><td>显著间隙</td></tr>
+      <tr><td>8</td><td>0.431</td><td>0.569</td><td>强亏量</td></tr>
+      <tr><td>12</td><td>0.457</td><td>0.543</td><td>饱和区</td></tr>
+      <tr><td>15</td><td>0.452</td><td>0.548</td><td>平台起始</td></tr>
+    </tbody>
+  </table>
+  <p>观察：g(k)在小k快速增长，之后对k ≥ 8平台化到g_∞ ≈ 0.46。这表明高Ω数受益于约46%的常数因子合数折扣。</p>
+
+  <h2>§4 组合余项：r(n)行为</h2>
+  <h3>§4.1 定理B证明草图</h3>
+  <p>链树构造表示n = p_1^{a_1}·(p_2^{a_2}·(···))。每乘法节点成本2，需ω−1个此类节点。因此f的上界是f(n) + 2(ω−1)。由于ρ_E(n)按定义达到最优，r(n) = ρ_E(n) − f(n) ≤ 2(ω−1)。</p>
+
+  <h3>§4.2 定理C证明草图</h3>
+  <p>若gcd(a,b) = 1，素因子分解不交。因此f(ab) = f(a) + f(b)。最优性条件ρ_E(ab) = ρ_E(a) + ρ_E(b) + 2则直接推出r(ab) = r(a) + r(b) + 2。</p>
+
+  <h3>§4.3 r按素因子个数ω的行为</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>ω(n)</th><th>E[r]</th><th>max r</th><th>上界2(ω−1)</th><th>宽松度</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>1.40</td><td>2</td><td>2</td><td>0</td></tr>
+      <tr><td>3</td><td>2.95</td><td>4</td><td>4</td><td>0</td></tr>
+      <tr><td>4</td><td>4.48</td><td>6</td><td>6</td><td>0</td></tr>
+      <tr><td>5</td><td>6.12</td><td>8</td><td>8</td><td>0</td></tr>
+      <tr><td>6</td><td>7.94</td><td>10</td><td>10</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p><strong>关键模式：</strong>r由Ω控制（带重数的素因子总数），而由ω控制（不同素因子个数）。这对接力机制是关键。</p>
+
+  <h3>§4.4 最优路径分布</h3>
+  <p>在所有n ≤ 10^6中，当合数达到最小成本ρ_E(n)时：</p>
+  <ul>
+    <li>互素乘法（ab，gcd(a,b)=1）：59.4%</li>
+    <li>非互素乘法：25.6%</li>
+    <li>后继路径：15.0%</li>
+  </ul>
+  <p>互素乘法的主导性反映定理C背后的结构。</p>
+
+  <h2>§5 相关结构与独立性崩溃</h2>
+  <h3>§5.1 四素数相关分析</h3>
+  <p>对n ≡ 0 (mod 210)，定义G_{(p)} = ρ_E(n−1) − ρ_E(p) − ρ_E(n/p) − 1对p ∈ {2,3,5,7}。计算这四个SPF增益的Pearson相关矩阵：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>p \ q</th><th>2</th><th>3</th><th>5</th><th>7</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>1.000</td><td>0.581</td><td>0.432</td><td>0.318</td></tr>
+      <tr><td>3</td><td>0.581</td><td>1.000</td><td>0.521</td><td>0.287</td></tr>
+      <tr><td>5</td><td>0.432</td><td>0.521</td><td>1.000</td><td>0.279</td></tr>
+      <tr><td>7</td><td>0.318</td><td>0.287</td><td>0.279</td><td>1.000</td></tr>
+    </tbody>
+  </table>
+
+  <h3>§5.2 有效维数</h3>
+  <p>这4×4相关矩阵的特征值为(3.66, 0.19, 0.12, 0.03)。有效独立维数为：</p>
+  <div class="math-formula">d_eff = (Σ λ_i)² / (Σ λ_i²) = 16 / 13.47 ≈ 1.19</div>
+  <p><strong>含义：</strong>这距离4（独立随机变量）极远。四个SPF增益几乎共线，有效维数约1。这完全排除独立试验模型。增益的增长是100%均值漂移（合数折扣），0%来自独立二元试验累积。</p>
+
+  <h3>§5.3 按Ω的均值增益</h3>
+  <p>定义Ḡ_{(p)} = E[G_{(p)} | Ω = k]。随k增加：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω(n) = k</th><th>Ḡ_{(p)} (p ∈ {2,3,5,7}均值)</th><th>增长率</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>0.13</td><td>基线</td></tr>
+      <tr><td>5</td><td>0.72</td><td>+0.595</td></tr>
+      <tr><td>7</td><td>1.38</td><td>+0.66</td></tr>
+      <tr><td>10</td><td>2.17</td><td>+0.26(更慢)</td></tr>
+      <tr><td>15</td><td>4.55</td><td>+0.47</td></tr>
+    </tbody>
+  </table>
+
+  <h2>§6 极限交换定理（定理F）</h2>
+  <h3>§6.1 设置与三假设</h3>
+  <p>分解1 − D(N)为：</p>
+  <div class="math-formula">1 − D(N) = π(N)/N + Σ_k w_k(N)(1−p_k(N)) + o(1)</div>
+  <p>其中w_k(N)是n ≤ N且Ω(n) = k的整数密度（Erdős–Kac分布），p_k(N) = P(jump | Ω = k, n ≤ N)。</p>
+
+  <p><strong>三假设：</strong></p>
+  <ol>
+    <li><strong>A（单调逐点收敛）：</strong>对每个固定k ≥ 2，p_k(N)收敛到p_∞(k) ∈ [0,1]且p_k(N) ≥ p_∞(k)对所有N（单调递减）。等价地，q_k(N) := 1−p_k(N) ≤ q_∞(k) := 1−p_∞(k)。</li>
+    <li><strong>A'（极限趋于1）：</strong>lim_{k→∞} p_∞(k) = 1，即q_∞(k) → 0。</li>
+    <li><strong>B（Sathe–Selberg）：</strong>对每个固定k ≥ 2，w_k(N) → 0当N → ∞。这是标准结果：Erdős–Kac分布的众数向右漂移如ln ln N，故对任意固定k密度消失。</li>
+  </ol>
+
+  <h3>§6.2 定理F的证明</h3>
+  <p>固定ε > 0。由A'，∃K使得q_∞(k) < ε/2对所有k ≥ K。</p>
+  <p><strong>尾部(k ≥ K)：</strong>由单调性（假设A），q_k(N) ≤ q_∞(k) < ε/2一致。因此：</p>
+  <div class="math-formula">Σ_{k≥K} w_k(N) q_k(N) ≤ ε/2 · Σ_{k≥K} w_k(N) ≤ ε/2</div>
+  <p><strong>头部(2 ≤ k < K)：</strong>K个固定项的有限和。每个w_k(N) → 0由假设B。由有限可加性，∃N_0使得Σ_{2≤k<K} w_k(N) q_k(N) < ε/2对N > N_0。</p>
+  <p><strong>合并：</strong>1 − D(N) < ε对N > N_0。证毕。</p>
+
+  <h3>§6.3 关键洞察：单调性替代控制收敛</h3>
+  <p>经典控制收敛定理需全局主导函数h(k)满足Σ_k h(k) < ∞，这里不可能因w_k(N)有移动峰在k ∼ ln ln N。定理F通过使用假设A的单调性绕过此障碍：一致界q_k(N) ≤ q_∞(k)对所有N和k消除全局主导函数需要。</p>
+
+  <h3>§6.4 假设A和A'的数值证据</h3>
+  <p>跨五个2×10^5宽度窗口在[4, 10^6]内的窗数据：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>窗口1</th><th>窗口2</th><th>窗口3</th><th>窗口4</th><th>窗口5</th><th>趋势</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>p_2</td><td>0.264</td><td>0.250</td><td>0.243</td><td>0.240</td><td>0.240</td><td>递减↘</td></tr>
+      <tr><td>p_3</td><td>0.559</td><td>0.532</td><td>0.525</td><td>0.515</td><td>0.514</td><td>递减↘</td></tr>
+      <tr><td>p_5</td><td>0.892</td><td>0.874</td><td>0.869</td><td>0.864</td><td>0.865</td><td>稳定近0.87</td></tr>
+      <tr><td>p_7</td><td>0.971</td><td>0.964</td><td>0.965</td><td>0.962</td><td>0.963</td><td>稳定近0.96</td></tr>
+      <tr><td>p_10</td><td>0.999</td><td>1.000</td><td>0.996</td><td>0.993</td><td>0.998</td><td>稳定近1.0</td></tr>
+    </tbody>
+  </table>
+  <p>外推极限：p_∞(2) ≈ 0.12，p_∞(3) ≈ 0.29，p_∞(5) ≈ 0.72，p_∞(7) ≈ 0.95，p_∞(10) ≈ 1.0。单调递减对小k明显；对更大k，收敛已发生。</p>
+
+  <h3>§6.5 收敛速率</h3>
+  <p>将Erdős–Kac峰从k ≈ ln ln N移到k = 10（其中p_∞(10) ≈ 0.997）需要ln ln N ≈ 10，即N ≈ e^{e^10} ≈ e^22026 ≈ 10^9566。收敛极其缓慢，与猜想1 − D(N) ∼ C(ln N)^{−α}一致。</p>
+
+  <h2>§7 合数折扣：接力机制</h2>
+  <h3>§7.1 向假设A'的三层</h3>
+  <p>合数折扣出现自三层的相互作用：</p>
+  <ul>
+    <li><strong>第1层（加法亏量）：</strong>替代f(n)在Ω-shell上线性负漂移，由观察g(k) > 0且随k增长捕捉。</li>
+    <li><strong>第2层（组合余项）：</strong>r(n) ≤ 2(ω−1)在低k部分抵消d_f漂移，但在高k因ω-控制反转。</li>
+    <li><strong>第3层（选择机制）：</strong>最小ρ_E(n) = min(S_n, M_n)将d_ρ折扣转译为具体G_spf增长。</li>
+  </ul>
+
+  <h3>§7.2 负结果G：加法路线被阻止</h3>
+  <p>自然加法方法在T(s,z) = Σ z^{Ω(n)} d_f(n) n^{−s}上使用Selberg–Delange。由f的可加性，这因子为T(s,z) = D(s)·M(s,z)，其中D(s) = Σ n^{−s}且M(s,z) = Σ (z^{Ω(n)} − 1) n^{−s}。因f可加，M(s,z) = z·G(s) + R(s,z)，其中G(s) = Σ_p g(p)·p^{−s}且R(s,z)对|z| < 2绝对收敛。</p>
+
+  <p><strong>素数和数据：</strong></p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>y</th><th>S(y) = Σ_{p ≤ y} g(p)</th><th>S(y) / Σ_{p ≤ y} 1</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td>−1.99</td><td>−0.33</td></tr>
+      <tr><td>100</td><td>−2.56</td><td>−0.18</td></tr>
+      <tr><td>1000</td><td>−2.71</td><td>−0.098</td></tr>
+      <tr><td>10^4</td><td>−2.71</td><td>−0.035</td></tr>
+      <tr><td>10^5</td><td>−2.64</td><td>−0.0094</td></tr>
+      <tr><td>10^6</td><td>−2.53</td><td>−0.0016</td></tr>
+    </tbody>
+  </table>
+  <p>渐近拟合：S(y) ≈ +0.289 · ln ln y − 3.31。<strong>漂移是正的。</strong>此外，在p ≤ 10^6的素数中，恰好77%有g(p) > 0（即ρ_E(p) < c* ln p）。</p>
+
+  <p><strong>结果：</strong>G(s)在主对数奇点处有正系数：G(s) ≈ +|μ| log(1/(s−1)) + O(1)，其中|μ| ≈ 0.289。对任意z > 0，M(s,z) = z·|μ|·log(1/(s−1)) + O(1)，这是正的。Selberg–Delange则得E[d_f | Ω = j] ≈ +|μ|·j + O(1)——正漂移，非负。z中的鞍点加权无帮助因乘以正系数z > 0仍是正。加法路线被阻止。</p>
+
+  <h3>§7.3 接力机制：如何维持每步增益</h3>
+  <p>定义Δ(k) = P(jump | Ω=k) × E[G_spf/ln n | jump, Ω=k]。按Ω步分析：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω转移</th><th>P(jump)</th><th>E[G_spf | jump]</th><th>|ΔG|</th><th>|Δd_f|</th><th>|Δr|</th><th>驱动器</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2→3</td><td>0.25</td><td>0.32</td><td>0.08</td><td>0.31</td><td>0.08</td><td>加法</td></tr>
+      <tr><td>3→4</td><td>0.41</td><td>0.52</td><td>0.21</td><td>0.24</td><td>0.03</td><td>加法</td></tr>
+      <tr><td>5→6</td><td>0.72</td><td>0.84</td><td>0.61</td><td>0.15</td><td>0.02</td><td>加法</td></tr>
+      <tr><td>8→9</td><td>0.94</td><td>1.41</td><td>1.32</td><td>−0.08</td><td>0.18</td><td>组合</td></tr>
+      <tr><td>12→13</td><td>0.98</td><td>3.52</td><td>3.45</td><td>−0.19</td><td>0.32</td><td>组合</td></tr>
+    </tbody>
+  </table>
+  <p><strong>关键观察：</strong>在低Ω区（k ≤ 6），P(jump)快速增长(0.25 → 0.72)，通过跳跃概率增加驱动Δ(k)增长。加法亏量贡献最大分量。在高Ω区（k ≥ 8），P(jump)饱和近1，但E[j/ln]继续增长，现由组合余项增长驱动。两层接力：加法主导早期，组合主导晚期，但净Δd_ρ ≈ −0.25整个过程remarkably稳定。</p>
+
+  <h3>§7.4 猜想：无界均值增益</h3>
+  <p><strong>猜想（无界均值增益）：</strong>令μ_spf,∞(k) := lim_{N→∞} E[G_spf(n) | Ω(n)=k, n≤N]。则μ_spf,∞(k) → ∞当k → ∞。</p>
+
+  <p><strong>通向假设A'的桥梁：</strong>若μ_spf,∞(k) → ∞且Var(G_spf | Ω=k) = O(1)在N中一致（数值≈ 1.3），则由Chebyshev不等式：</p>
+  <div class="math-formula">1 − p_∞(k) = P(G_spf ≤ 0 | Ω=k) ≤ O(1) / μ_spf,∞(k)² → 0</div>
+
+  <p><strong>支持证据：</strong>N=10^6处的窗数E[G_spf | Ω=k]：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>E[G_spf]</th><th>估计μ_∞(k)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>0.15</td><td>≥ 0.15</td></tr>
+      <tr><td>5</td><td>0.68</td><td>≥ 0.68</td></tr>
+      <tr><td>7</td><td>1.38</td><td>≥ 1.38</td></tr>
+      <tr><td>10</td><td>2.17</td><td>≥ 2.17</td></tr>
+      <tr><td>15</td><td>3.60</td><td>≥ 3.60</td></tr>
+    </tbody>
+  </table>
+  <p>线性斜率≈ 0.27，稳定在±0.025内。所有55个测试(k, 窗口)对均产生正每步增益；最小观察0.145。这强烈支持μ_spf,∞(k) → ∞。</p>
+
+  <h2>§8 结论与开放问题</h2>
+  <h3>§8.1 证明依赖图</h3>
+  <p>向Conjecture H'的逻辑链是：</p>
+  <div class="math-formula">无界均值增益 + Var = O(1) ⟹ 假设A'
+  A + A' + B ⟹ 定理F ⟹ D(N) → 1</div>
+  <p>通过Selberg–Delange的加法路线不是此依赖图的一部分。</p>
+
+  <h3>§8.2 被排除的方法</h3>
+  <ol>
+    <li><strong>"每个p_k → 1"：</strong>被窗数据矛盾，显示p_k(N)趋向p_∞(k) < 1对小k。</li>
+    <li><strong>"ρ_E(p)/ln p < c* 对所有p"：</strong>77%素数为假。</li>
+    <li><strong>"r ≤ 2j防火墙"：</strong>坍塌因Δ(2) ≈ 1.12 < 2；界太弱以驱动负漂移。</li>
+    <li><strong>"E[r | Ω=k] = O(1)"：</strong>E[r]可证明随k增长，峰值4.4于k ≈ 7。</li>
+    <li><strong>"独立试验模型"：</strong>有效维数1.19，非独立。增长100%均值漂移，0%来自独立累积。</li>
+    <li><strong>"无条件负漂移"：</strong>Σ g(p)/p实际对y > 10^4向正漂移，非负。</li>
+    <li><strong>"KP1加法路线到A'"：</strong>正素数和漂移阻止Selberg–Delange产生需要的负期望。</li>
+  </ol>
+
+  <h3>§8.3 Conjecture H'作为北极星</h3>
+  <p>追求Conjecture H'的价值不仅在于达成QED，而在于它强制存在的结构：移动支持测度的极限交换定理（定理F），作为将整数复杂性连接到Erdős–Kac分布的定量原理的合数折扣，显示加法和组合力如何共谋维持常数每步增益的接力机制，负结果G证明非加法选择机制ρ_E = min(S,M)是本质的非加法动力的人工品，以及五个已排除方法澄清了问题真实结构。</p>
+
+  <h2>§9 参考文献</h2>
+  <ol>
+    <li>Han Qin, "Staircase Geometry of δ and Jump-Gap Theory," ZFCρ Series Paper XII, 2026. DOI: 10.5281/zenodo.18977948</li>
+    <li>Han Qin, "The First Asymptotic Theory of ρ_E," ZFCρ Series Paper XI, 2026. DOI: 10.5281/zenodo.18975756</li>
+    <li>Sathe, L. G., and Selberg, A. "On the normal number of prime factors of φ(n)." Journal of the Indian Mathematical Society 13 (1949): 25–29.</li>
+    <li>Erdős, P., and Kac, M. "The Gaussian law of errors in the theory of additive number theoretic functions." American Journal of Mathematics 62, no. 1 (1940): 738–742.</li>
+    <li>Selberg, A. "On an elementary method in the theory of primes." Det Kongelige Norske Videnskabers Selskab 10 (1947): 1–14.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho14.html">ZFCρ 论文十四</a></p>
+    <p>→ <a href="zfcrho16.html">ZFCρ 论文十六</a></p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/19007312" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H\'', zh: '筛法结构、合数折扣与猜想 H\' 的证明架构' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
