@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebraic Structure and Conditional Distribution of Jump Gain — ZFCρ Paper XIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XIII (M6 Phase): Jump gain decomposed into integer complexity and deficiency terms. Theorem 16–19: gain decomposition, operation count, deficiency splitting, tie criterion. 86.9% of jumps driven by deficiency. Zero-inflated lattice normal distribution. Conjecture H → H': D(N) → 1.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, ZFCrho, jump gain, deficiency, integer complexity, zero-inflated, lattice normal, Erdős-Kac, 跳跃增益, 缺陷, 格点正态">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Algebraic Structure and Conditional Distribution of Jump Gain — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho13.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Algebraic Structure and Conditional Distribution of Jump Gain",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho13.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18991986"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "ZFCrho", "jump gain", "deficiency", "integer complexity",
+      "zero-inflated lattice normal", "Erdős-Kac", "conditional distribution"
+    ],
+    "abstract": "Paper 12 established jump criterion: M_n < S_n. This paper studies jump gain G(n) — the signed advantage of multiplicative over successor path. Four exact results: Theorem 16 (decomposition): G_n = G_IC + G_d; Theorem 17 (operation count): ρ_E = s + 2m; Theorem 18 (deficiency splitting): d(n) = d(a) + d(b) + 2 + Δ_IC; Theorem 19 (tie criterion): G = 0 ⟺ Δs + 2Δm = 0. Numerically: 86.9% of jumps occur with G_IC ≤ 0 (deficiency drives jumps). Distribution: G | Ω follows zero-inflated lattice normal with atom at G=0 (22.6% of composites), shifted discrete normal background with mean μ(Ω) ≈ −1.93 + 2.21 ln Ω, σ ≈ 1.0 constant. Conjecture H revised to H': D(N) → 1.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho13.html">
+  <meta name="citation_title" content="Algebraic Structure and Conditional Distribution of Jump Gain">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.18991986">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho13.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XIII — M6 Phase · Zenodo 18991986</div>
+    <h1 id="paper-title">Algebraic Structure and Conditional Distribution of Jump Gain</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/18991986" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Paper 12 established the local geometry of the δ-staircase: jumps are purely multiplicative (Theorem 13), all growth of δ comes from jump accumulation (Theorem 14), density/jump/plateau locked by algebraic identities (Theorem 15). Conjecture H asserted D(N) → d ≈ 0.57. This paper studies the jump gain G(n) — the signed advantage of the best multiplicative path over the successor path. Four exact results:</p>
+    <p><strong>Theorem 16 (Gain decomposition):</strong> G_n(a,b) = G_IC(n;a,b) + G_d(n;a,b) where G_IC lives in integer complexity and G_d is the deficiency contribution. Numerically (n ≤ 50,000), 86.9% of jumps occur with G_IC ≤ 0: the classical term opposes the jump, deficiency drives it.</p>
+    <p><strong>Theorem 17 (Operation count):</strong> ρ_E(n) = s(n) + 2m(n), where s counts successor nodes and m counts multiplication nodes.</p>
+    <p><strong>Theorem 18 (Deficiency splitting):</strong> if the canonical optimal expression roots at mul(a,b), then d(n) = d(a) + d(b) + 2 + Δ_IC where Δ_IC = ‖a‖+‖b‖−‖n‖ ≥ 0.</p>
+    <p><strong>Theorem 19 (Tie criterion):</strong> G(n) = 0 iff Δs + 2Δm = 0 — a lattice equation producing the 22.6% zero-point atom. Conditional on Ω(n), gain G follows a zero-inflated lattice normal: a discrete atom at G=0 from algebraic locking, plus a shifted discrete-normal background with mean ≈ −1.93 + 2.21 ln Ω, σ ≈ 1. Conjecture H revised to H': D(N) → 1.</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction: Jump Gain as Lattice Phenomenon</h2>
+  <h3>1.1 Definition of Jump Gain</h3>
+  <p>For n ≥ 2 composite, Theorem 13 states n jumps iff M_n < S_n where M_n = min_{ab=n, a,b≥2}(ρ_E(a)+ρ_E(b)+2) and S_n = ρ_E(n−1)+1. Define jump gain:</p>
+  <div class="math-formula">G_n(a,b) = ρ_E(n−1)+1−ρ_E(a)−ρ_E(b)−2 = S_n − (ρ_E(a)+ρ_E(b)+2)</div>
+  <p>for each factorization ab=n with a,b≥2, and G(n) = max_{ab=n} G_n(a,b). Then:</p>
+  <ul>
+    <li>n jumps ⟺ G(n) > 0</li>
+    <li>n ties (zero-point) ⟺ G(n) = 0</li>
+    <li>n does not jump ⟺ G(n) < 0</li>
+  </ul>
+
+  <h3>1.2 Motivation: Why Study Gain?</h3>
+  <p>G(n) is the signed advantage of the multiplicative path over the successor path. Understanding its sign is understanding when shortcuts (multiplication) beat incrementalism (succession). The numerical discovery that 86.9% of jumps have G_IC ≤ 0 inverts classical intuition: the classical complexity measure opposes the jump, yet jumps happen. Why? Deficiency dominates.</p>
+
+  <h2>2. Canonical Choices and Notation</h2>
+  <h3>2.1 Canonical Optimal Expression</h3>
+  <p>Among all compact terms h ∈ Hist*(n) achieving ρ(h) = ρ_E(n), select the one with: (1) fewest multiplication nodes m(h); (2) if tied, lexicographically smallest pre-order serialization. This makes s(n), m(n), path(n) well-defined.</p>
+  <p>The canonical factor pair (a*, b*) maximizes G_n(a,b); when several pairs tie, take lexicographically smallest with a* ≤ b*.</p>
+
+  <h3>2.2 Key Notation</h3>
+  <div class="thesis-box">
+    <p><strong>G_n(a,b):</strong> gain for specific factorization ab=n<br>
+    <strong>G(n):</strong> optimal gain = max G_n over all ab=n<br>
+    <strong>(a*,b*):</strong> canonical factor pair achieving G(n)<br>
+    <strong>s(n):</strong> successor node count in canonical optimal expression<br>
+    <strong>m(n):</strong> multiplication node count in canonical optimal expression<br>
+    <strong>d(n):</strong> deficiency = ρ_E(n) − ‖n‖<br>
+    <strong>Ω(n):</strong> number of prime factors with multiplicity</p>
+  </div>
+
+  <h2>3. Theorem 16: Gain Decomposition</h2>
+  <h3>3.1 Statement</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 16:</strong> For every ab = n with a, b ≥ 2:</p>
+    <div class="math-formula">G_n(a,b) = G_IC(n;a,b) + G_d(n;a,b)</div>
+    <p>where</p>
+    <div class="math-formula">G_IC = ‖n−1‖ − ‖a‖ − ‖b‖ − 1</div>
+    <p>(integer complexity term, lives in classical world), and</p>
+    <div class="math-formula">G_d = d(n−1) − d(a) − d(b)</div>
+    <p>(deficiency contribution).</p>
+  </div>
+
+  <h3>3.2 Proof Sketch</h3>
+  <p>Substitute ρ_E(m) = ‖m‖ + d(m) into the definition of G_n(a,b):</p>
+  <div class="math-formula">G_n = (‖n−1‖ + d(n−1)) − (‖a‖ + d(a)) − (‖b‖ + d(b)) − 2 + 1
+     = (‖n−1‖ − ‖a‖ − ‖b‖ − 1) + (d(n−1) − d(a) − d(b))
+     = G_IC + G_d</div>
+
+  <h3>3.3 Numerical Result 1: Deficiency Dominates</h3>
+  <p>Among composites n ≤ 50,000 that jump (G(n) > 0):</p>
+  <ul>
+    <li>Average G_IC = −0.585 (opposes jump)</li>
+    <li>Average G_d = +2.345 (drives jump)</li>
+    <li>In 86.9% of all jumps, G_IC ≤ 0: the classical measure opposes the jump</li>
+  </ul>
+  <p><strong>Interpretation:</strong> A jump is triggered by escaping a predecessor whose deficiency is too high — not by finding a cheap factorization. The successor path inherits d(n−1); the multiplicative path distributes cost across d(a)+d(b). When the former exceeds the latter, the splitting gain triggers a jump. The classical integer complexity measure fights against jumps; deficiency overturns the verdict.</p>
+
+  <h2>4. Structure of Deficiency</h2>
+  <h3>4.1 Theorem 17: Operation Count</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 17:</strong> Under default parameters (c_S, c_⊕, c_⊗) = (1, 1, 2), the canonical optimal expression satisfies:</p>
+    <div class="math-formula">ρ_E(n) = s(n) + 2m(n)</div>
+    <p><strong>Proof:</strong> By the add-dominance theorem (Paper 6 §4.2), no add node appears in the optimal expression. Each succ node contributes c_S = 1 and each mul node contributes c_⊗ = 2.</p>
+  </div>
+
+  <h3>4.2 Corollary and Numerical Result 2</h3>
+  <div class="thesis-box">
+    <p><strong>Corollary:</strong> d(n) = 2m(n) + (s(n) − ‖n‖) with s(n) − ‖n‖ ≥ 0.</p>
+  </div>
+  <p>Numerically (n ≤ 10,000), the term 2m(n) accounts for 88% of d(n), confirming that deficiency is overwhelmingly driven by multiplication node overhead.</p>
+
+  <h3>4.3 Theorem 18: Deficiency Splitting</h3>
+  <div class="thesis-box">
+    <p><strong>Theorem 18:</strong> If the canonical optimal expression for n roots at mul(a,b), then:</p>
+    <div class="math-formula">d(n) = d(a) + d(b) + 2 + Δ_IC(a,b;n)</div>
+    <p>where Δ_IC = ‖a‖+‖b‖−‖n‖ ≥ 0 measures the sub-additivity surplus of integer complexity.</p>
+    <p><strong>Proof:</strong> ρ_E(n) = ρ_E(a)+ρ_E(b)+2, then</p>
+    <div class="math-formula">d(n) = d(a)+‖a‖+d(b)+‖b‖+2−‖n‖ = d(a)+d(b)+2+(‖a‖+‖b‖−‖n‖)</div>
+    <p>Non-negativity of Δ_IC: a×b is a valid {1,+,×}-expression for n, so ‖n‖ ≤ ‖a‖+‖b‖.</p>
+  </div>
+
+  <h3>4.4 Numerical Result 3: Δ_IC Distribution</h3>
+  <p>For n ≤ 10,000:</p>
+  <ul>
+    <li>Δ_IC = 0 in 61% of cases</li>
+    <li>Δ_IC = 1 in 25%</li>
+    <li>Δ_IC = 2 in 9%</li>
+  </ul>
+
+  <h3>4.5 Recursion for m(n)</h3>
+  <p>m(n) = m(n−1) when canonical path is succ; m(n) = m(a)+m(b)+1 when path is mul(a,b).</p>
+
+  <h2>5. Theorem 19: Tie Criterion and Zero-Point Atom</h2>
+  <h3>5.1 Definition and Main Result</h3>
+  <p>Define Δs = s(n−1)−s(a*)−s(b*)−1 and Δm = m(n−1)−m(a*)−m(b*). Then:</p>
+  <div class="thesis-box">
+    <p><strong>Theorem 19:</strong> G(n) = Δs + 2Δm. In particular, G(n) = 0 iff Δs = −2Δm — a lattice equation.</p>
+    <p><strong>Proof:</strong> By Theorem 17:</p>
+    <div class="math-formula">G(n) = (s(n−1)+2m(n−1)+1)−(s(a*)+2m(a*))−(s(b*)+2m(b*))−2 = Δs+2Δm</div>
+  </div>
+
+  <h3>5.2 Tie Patterns (n ≤ 10^6)</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>(Δs, Δm)</th><th>Fraction</th><th>Interpretation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>(−2, 1)</td><td>54.1%</td><td>Factor pair saves one mul, costs two succ</td></tr>
+      <tr><td>(0, 0)</td><td>29.7%</td><td>Identical (s, m) decomposition</td></tr>
+      <tr><td>(−4, 2)</td><td>13.1%</td><td>Factor pair saves two mul, costs four succ</td></tr>
+      <tr><td>(2, −1)</td><td>2.0%</td><td>Reverse compensation</td></tr>
+      <tr><td>(−6, 3)</td><td>1.1%</td><td>Saves three mul, costs six succ</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.3 Distribution of Jump Gain (n ≤ 10^6)</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>G Value</th><th>Percentage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>−1</td><td>9.8%</td></tr>
+      <tr><td>0</td><td>22.6%</td></tr>
+      <tr><td>1</td><td>29.8%</td></tr>
+      <tr><td>2</td><td>22.2%</td></tr>
+      <tr><td>3</td><td>8.4%</td></tr>
+    </tbody>
+  </table>
+  <p>Two highest peaks at G = 0 and G = 1. Nearly a quarter of all composites at the exact jump/no-jump boundary — structural concentration on the integer lattice, not a measure-zero artifact.</p>
+
+  <h2>6. Conditional Distribution of G Given Ω</h2>
+  <h3>6.1 Jump Rates by Prime Factor Count (n ≤ 10^6)</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>p(Ω) jump</th><th>q(Ω) tie</th><th>P(G<0)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>24.8%</td><td>31.9%</td><td>43.3%</td></tr>
+      <tr><td>3</td><td>52.9%</td><td>32.7%</td><td>14.4%</td></tr>
+      <tr><td>4</td><td>75.0%</td><td>20.5%</td><td>4.5%</td></tr>
+      <tr><td>5</td><td>87.3%</td><td>11.2%</td><td>1.5%</td></tr>
+      <tr><td>6</td><td>93.5%</td><td>6.0%</td><td>0.6%</td></tr>
+      <tr><td>7</td><td>96.5%</td><td>3.3%</td><td>0.3%</td></tr>
+      <tr><td>≥10</td><td>≥99.7%</td><td>≤0.3%</td><td>≤0.0%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 Conditional Moments of G | Ω = k</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>⟨G⟩</th><th>σ(G)</th><th>Mode</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>−0.37</td><td>1.32</td><td>0</td></tr>
+      <tr><td>3</td><td>0.56</td><td>1.05</td><td>1</td></tr>
+      <tr><td>4</td><td>1.13</td><td>1.00</td><td>1</td></tr>
+      <tr><td>5</td><td>1.58</td><td>1.01</td><td>2</td></tr>
+      <tr><td>6</td><td>1.98</td><td>1.04</td><td>2</td></tr>
+      <tr><td>7</td><td>2.32</td><td>1.09</td><td>2</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.3 Key Observations</h3>
+  <p>Three features: (a) σ ≈ 1.0 approximately constant across Ω. (b) Mean grows logarithmically: μ(Ω) ≈ −1.93 + 2.21 ln Ω (R² = 0.998). (c) Distribution shifts rightward with Ω while maintaining shape.</p>
+
+  <h2>7. Zero-Inflated Lattice Normal Model</h2>
+  <h3>7.1 Normal Approximation</h3>
+  <p>Discrete normal approximation: p(Ω) ≈ Φ((μ(Ω)−0.5)/σ). Comparison with late window [800k, 10^6):</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>Φ prediction</th><th>Actual p</th><th>Error</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>0.246</td><td>0.240</td><td>+0.006</td></tr>
+      <tr><td>3</td><td>0.508</td><td>0.514</td><td>−0.006</td></tr>
+      <tr><td>4</td><td>0.723</td><td>0.736</td><td>−0.013</td></tr>
+      <tr><td>5</td><td>0.851</td><td>0.865</td><td>−0.014</td></tr>
+      <tr><td>7</td><td>0.949</td><td>0.963</td><td>−0.014</td></tr>
+    </tbody>
+  </table>
+  <p>Fits to within 1–2%, systematic underestimation ≈ 1.4%.</p>
+
+  <h3>7.2 Zero-Inflated Lattice Normal</h3>
+  <p>G | Ω = k is a superposition of: (1) a discrete atom at G=0 from algebraic locking condition Δs+2Δm=0; (2) a background fluctuation field approximately following shifted discrete normal N(μ(k), σ²).</p>
+
+  <h3>7.3 N-Drift Analysis</h3>
+  <p>Jump probability p(Ω, N) decreases with N:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>[2, 200k)</th><th>[800k, 10^6)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>0.264</td><td>0.240</td></tr>
+      <tr><td>3</td><td>0.559</td><td>0.514</td></tr>
+      <tr><td>5</td><td>0.892</td><td>0.865</td></tr>
+    </tbody>
+  </table>
+  <p>Decline decelerates; fit p(Ω,N) ≈ p_∞(Ω) + b(Ω)/ln N gives R² > 0.95, p_∞(Ω) > 0 for all Ω.</p>
+
+  <h2>8. Revision of Conjecture H to H'</h2>
+  <h3>8.1 Observed Trend</h3>
+  <p>D(N) monotonically increasing. Values:</p>
+  <ul>
+    <li>D(10^3) = 0.551</li>
+    <li>D(10^4) = 0.561</li>
+    <li>D(10^5) = 0.570</li>
+    <li>D(10^6) = 0.574</li>
+  </ul>
+
+  <h3>8.2 Conjecture H'</h3>
+  <div class="thesis-box">
+    <p><strong>Conjecture H':</strong> D(N) → 1 as N → ∞.</p>
+  </div>
+
+  <h3>8.3 Supporting Evidence</h3>
+  <p>(a) Erdős-Kac implies P(Ω(n) ≤ K | n ≤ N) → 0 for every fixed K; as N grows, the typical value of Ω(n) grows like ln ln N, driving p(Ω) → 1.</p>
+  <p>(b) Numerical fits yield p_∞(Ω) > 0 with p_∞(Ω) → 1 as Ω → ∞.</p>
+
+  <h3>8.4 Obstacles to Proof</h3>
+  <p>(a) Existence of limits p_∞(Ω) not established. (b) Proof requires uniform control of p(k,N) within Erdős-Kac drift window |k − ln ln N| ≤ A√(ln ln N). Estimated rate: 1 − D(N) ∼ C(ln N)^{−α} with α ≈ 0.5–0.7.</p>
+
+  <h2>9. Discussion: Connections and Predictions</h2>
+  <h3>9.1 Non-Trivial Predictions</h3>
+  <p>(1) p_∞(3) ≈ 0.50 (50% crossing at Ω = 3). (2) D(10^100) ≈ 0.81 if H' holds. (3) σ(G | Ω) ≈ 1.0 constant across Ω and N — no theoretical explanation known; may reflect discrete fluctuation-dissipation relation.</p>
+
+  <h3>9.2 Classical Connections</h3>
+  <p>Ω(n) → Erdős-Kac theorem (1940); deficiency d(n) bridges ρ_E and ‖n‖; Selfridge (1953) asymptotics of ‖n‖/ln n remain open.</p>
+
+  <h3>9.3 Two Surrogates</h3>
+  <p><strong>f(n) = Σ_{p^a ‖ n} ρ_E(p^a):</strong> Genuinely additive, Pearson correlation 0.947 with ρ_E, suitable for large-scale density theory but fails to preserve zero-point atom (only 15.6% of ties have G_f=0).</p>
+  <p><strong>m(n):</strong> Accounts for 88% of d(n), has quasi-additive recursion, preserves discrete structure.</p>
+
+  <h2>10. Conclusion</h2>
+  <p>Theorems 16–19 reduce the jump mechanism from statistical phenomenon to discrete lattice structure. Jumps are driven not by classical efficiency but by deficiency splitting: 86.9% of jumps occur against the verdict of integer complexity. The 22.6% zero-point atom arises from exact algebraic constraint Δs+2Δm=0. Conditional on Ω, G follows zero-inflated lattice normal with logarithmically growing mean and constant σ. Conjecture H revised to H': D(N) → 1, rate controlled by interplay between Erdős-Kac drift and decline of conditional jump rates — an asymptotic racing problem.</p>
+
+  <h2>11. References</h2>
+  <ol>
+    <li>Han Qin, "Staircase Geometry of δ and Jump-Gap Theory," ZFCρ Series Paper XII, 2026. DOI: 10.5281/zenodo.18977948</li>
+    <li>Han Qin, "The First Asymptotic Theory of ρ_E," ZFCρ Series Paper XI, 2026. DOI: 10.5281/zenodo.18975756</li>
+    <li>Erdős, P., and Kac, M. "The Gaussian law of errors in the theory of additive functions." Proceedings of the National Academy of Sciences 25, no. 4 (1939): 206–207.</li>
+    <li>Selfridge, J. L. "Generalized Mersenne numbers." Mathematics of Computation 8, no. 48 (1953): 147–152.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho12.html">ZFCρ Paper XII: Staircase Geometry of δ and Jump-Gap Theory</a></p>
+    <p>→ <a href="zfcrho14.html">ZFCρ Paper XIV →</a></p>
+    <p>ZFCρ Series · Mathematical Foundations · <a href="../index.html">Back to Papers</a></p>
+  </div>
+
+  </div><!-- end lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>Paper 12确立了δ-阶梯的局部几何：跳跃是纯乘法（定理13），δ的所有增长来自跳跃累积（定理14），密度/跳跃/平台由代数恒等式锁定（定理15）。猜想H声称D(N) → d ≈ 0.57。本文研究跳跃增益G(n)——最佳乘法路径相对于后继路径的带符号优势。四个精确结果：</p>
+    <p><strong>定理16（增益分解）：</strong>G_n(a,b) = G_IC(n;a,b) + G_d(n;a,b)，其中G_IC生活在整数复杂度中，G_d是缺陷贡献。数值上（n ≤ 50,000），86.9%跳跃发生在G_IC ≤ 0：经典项反对跳跃，缺陷驱动之。</p>
+    <p><strong>定理17（操作计数）：</strong>ρ_E(n) = s(n) + 2m(n)，其中s计数后继节点，m计数乘法节点。</p>
+    <p><strong>定理18（缺陷分裂）：</strong>若规范最优表达式根于mul(a,b)，则d(n) = d(a) + d(b) + 2 + Δ_IC其中Δ_IC = ‖a‖+‖b‖−‖n‖ ≥ 0。</p>
+    <p><strong>定理19（并列判据）：</strong>G(n) = 0当且仅当Δs + 2Δm = 0——产生22.6%零点原子的格点方程。条件于Ω(n)，增益G遵循零膨胀格点正态：代数锁定产生G=0的离散原子，加上均值≈ −1.93 + 2.21 ln Ω、σ ≈ 1的移位离散正态背景。猜想H修正为H'：D(N) → 1。</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. 引言：跳跃增益作为格点现象</h2>
+  <h3>1.1 跳跃增益定义</h3>
+  <p>对n ≥ 2合数，定理13陈述n跳跃当且仅当M_n < S_n其中M_n = min_{ab=n, a,b≥2}(ρ_E(a)+ρ_E(b)+2)且S_n = ρ_E(n−1)+1。定义跳跃增益：</p>
+  <div class="math-formula">G_n(a,b) = ρ_E(n−1)+1−ρ_E(a)−ρ_E(b)−2 = S_n − (ρ_E(a)+ρ_E(b)+2)</div>
+  <p>对每个因子分解ab=n（a,b≥2），以及G(n) = max_{ab=n} G_n(a,b)。则：</p>
+  <ul>
+    <li>n跳跃 ⟺ G(n) > 0</li>
+    <li>n并列（零点）⟺ G(n) = 0</li>
+    <li>n不跳跃 ⟺ G(n) < 0</li>
+  </ul>
+
+  <h3>1.2 动机：为何研究增益？</h3>
+  <p>G(n)是乘法路径相对于后继路径的带符号优势。理解其符号即理解何时捷径（乘法）胜出渐进（后继）。数值发现86.9%跳跃有G_IC ≤ 0反转了经典直觉：经典复杂度测度反对跳跃，然而跳跃发生。为何？缺陷主导。</p>
+
+  <h2>2. 规范选择与记号</h2>
+  <h3>2.1 规范最优表达式</h3>
+  <p>在所有达成ρ(h) = ρ_E(n)的紧凑项h ∈ Hist*(n)中，选择有：(1)最少乘法节点m(h)；(2)若并列，字典序最小的前序序列化。这使s(n)、m(n)、path(n)良定。</p>
+  <p>规范因子对(a*, b*)最大化G_n(a,b)；若多对并列，取字典序最小且a* ≤ b*的。</p>
+
+  <h3>2.2 关键记号</h3>
+  <div class="thesis-box">
+    <p><strong>G_n(a,b)：</strong>特定因子分解ab=n的增益<br>
+    <strong>G(n)：</strong>最优增益 = max G_n在所有ab=n上<br>
+    <strong>(a*,b*)：</strong>达成G(n)的规范因子对<br>
+    <strong>s(n)：</strong>规范最优表达式中后继节点计数<br>
+    <strong>m(n)：</strong>规范最优表达式中乘法节点计数<br>
+    <strong>d(n)：</strong>缺陷 = ρ_E(n) − ‖n‖<br>
+    <strong>Ω(n)：</strong>计重素因子数</p>
+  </div>
+
+  <h2>3. 定理16：增益分解</h2>
+  <h3>3.1 陈述</h3>
+  <div class="thesis-box">
+    <p><strong>定理16：</strong>对每个ab = n（a, b ≥ 2）：</p>
+    <div class="math-formula">G_n(a,b) = G_IC(n;a,b) + G_d(n;a,b)</div>
+    <p>其中</p>
+    <div class="math-formula">G_IC = ‖n−1‖ − ‖a‖ − ‖b‖ − 1</div>
+    <p>（整数复杂度项，生活在经典世界），且</p>
+    <div class="math-formula">G_d = d(n−1) − d(a) − d(b)</div>
+    <p>（缺陷贡献）。</p>
+  </div>
+
+  <h3>3.2 证明草图</h3>
+  <p>将ρ_E(m) = ‖m‖ + d(m)代入G_n(a,b)定义：</p>
+  <div class="math-formula">G_n = (‖n−1‖ + d(n−1)) − (‖a‖ + d(a)) − (‖b‖ + d(b)) − 2 + 1
+     = (‖n−1‖ − ‖a‖ − ‖b‖ − 1) + (d(n−1) − d(a) − d(b))
+     = G_IC + G_d</div>
+
+  <h3>3.3 数值结果1：缺陷主导</h3>
+  <p>在跳跃的合数n ≤ 50,000中（G(n) > 0）：</p>
+  <ul>
+    <li>平均G_IC = −0.585（反对跳跃）</li>
+    <li>平均G_d = +2.345（驱动跳跃）</li>
+    <li>在86.9%所有跳跃中，G_IC ≤ 0：经典测度反对跳跃</li>
+  </ul>
+  <p><strong>解释：</strong>跳跃由逃离缺陷过高的前驱触发——不是由找到便宜因子分解。后继路径继承d(n−1)；乘法路径分散成本于d(a)+d(b)。当前者超过后者，分裂增益触发跳跃。经典整数复杂度测度对抗跳跃；缺陷推翻判决。</p>
+
+  <h2>4. 缺陷的结构</h2>
+  <h3>4.1 定理17：操作计数</h3>
+  <div class="thesis-box">
+    <p><strong>定理17：</strong>在默认参数(c_S, c_⊕, c_⊗) = (1, 1, 2)下，规范最优表达式满足：</p>
+    <div class="math-formula">ρ_E(n) = s(n) + 2m(n)</div>
+    <p><strong>证明：</strong>由加法主导定理（Paper 6 §4.2），最优表达式中不出现加法节点。每个后继节点贡献c_S = 1，每个乘法节点贡献c_⊗ = 2。</p>
+  </div>
+
+  <h3>4.2 推论与数值结果2</h3>
+  <div class="thesis-box">
+    <p><strong>推论：</strong>d(n) = 2m(n) + (s(n) − ‖n‖)且s(n) − ‖n‖ ≥ 0。</p>
+  </div>
+  <p>数值上（n ≤ 10,000），项2m(n)占d(n)的88%，确认缺陷绝大由乘法节点开销驱动。</p>
+
+  <h3>4.3 定理18：缺陷分裂</h3>
+  <div class="thesis-box">
+    <p><strong>定理18：</strong>若n的规范最优表达式根于mul(a,b)，则：</p>
+    <div class="math-formula">d(n) = d(a) + d(b) + 2 + Δ_IC(a,b;n)</div>
+    <p>其中Δ_IC = ‖a‖+‖b‖−‖n‖ ≥ 0测量整数复杂度的次加性盈余。</p>
+    <p><strong>证明：</strong>ρ_E(n) = ρ_E(a)+ρ_E(b)+2，则</p>
+    <div class="math-formula">d(n) = d(a)+‖a‖+d(b)+‖b‖+2−‖n‖ = d(a)+d(b)+2+(‖a‖+‖b‖−‖n‖)</div>
+    <p>Δ_IC的非负性：a×b是n的有效{1,+,×}-表达式，故‖n‖ ≤ ‖a‖+‖b‖。</p>
+  </div>
+
+  <h3>4.4 数值结果3：Δ_IC分布</h3>
+  <p>对n ≤ 10,000：</p>
+  <ul>
+    <li>Δ_IC = 0占61%</li>
+    <li>Δ_IC = 1占25%</li>
+    <li>Δ_IC = 2占9%</li>
+  </ul>
+
+  <h3>4.5 m(n)递推</h3>
+  <p>当规范路径是后继时m(n) = m(n−1)；当路径是mul(a,b)时m(n) = m(a)+m(b)+1。</p>
+
+  <h2>5. 定理19：并列判据与零点原子</h2>
+  <h3>5.1 定义与主要结果</h3>
+  <p>定义Δs = s(n−1)−s(a*)−s(b*)−1和Δm = m(n−1)−m(a*)−m(b*)。则：</p>
+  <div class="thesis-box">
+    <p><strong>定理19：</strong>G(n) = Δs + 2Δm。特别地，G(n) = 0当且仅当Δs = −2Δm——一个格点方程。</p>
+    <p><strong>证明：</strong>由定理17：</p>
+    <div class="math-formula">G(n) = (s(n−1)+2m(n−1)+1)−(s(a*)+2m(a*))−(s(b*)+2m(b*))−2 = Δs+2Δm</div>
+  </div>
+
+  <h3>5.2 并列模式（n ≤ 10^6）</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>(Δs, Δm)</th><th>比例</th><th>解释</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>(−2, 1)</td><td>54.1%</td><td>因子对节省一个乘法，成本两个后继</td></tr>
+      <tr><td>(0, 0)</td><td>29.7%</td><td>相同(s, m)分解</td></tr>
+      <tr><td>(−4, 2)</td><td>13.1%</td><td>因子对节省两个乘法，成本四个后继</td></tr>
+      <tr><td>(2, −1)</td><td>2.0%</td><td>反向补偿</td></tr>
+      <tr><td>(−6, 3)</td><td>1.1%</td><td>节省三乘法，成本六后继</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.3 跳跃增益分布（n ≤ 10^6）</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>G值</th><th>百分比</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>−1</td><td>9.8%</td></tr>
+      <tr><td>0</td><td>22.6%</td></tr>
+      <tr><td>1</td><td>29.8%</td></tr>
+      <tr><td>2</td><td>22.2%</td></tr>
+      <tr><td>3</td><td>8.4%</td></tr>
+    </tbody>
+  </table>
+  <p>G = 0和G = 1处最高两峰。近四分之一所有合数在精确跳跃/不跳跃边界——整数格上的结构浓聚，非测度零人工品。</p>
+
+  <h2>6. G给定Ω的条件分布</h2>
+  <h3>6.1 按素因子数的跳跃率（n ≤ 10^6）</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>p(Ω)跳跃</th><th>q(Ω)并列</th><th>P(G<0)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>24.8%</td><td>31.9%</td><td>43.3%</td></tr>
+      <tr><td>3</td><td>52.9%</td><td>32.7%</td><td>14.4%</td></tr>
+      <tr><td>4</td><td>75.0%</td><td>20.5%</td><td>4.5%</td></tr>
+      <tr><td>5</td><td>87.3%</td><td>11.2%</td><td>1.5%</td></tr>
+      <tr><td>6</td><td>93.5%</td><td>6.0%</td><td>0.6%</td></tr>
+      <tr><td>7</td><td>96.5%</td><td>3.3%</td><td>0.3%</td></tr>
+      <tr><td>≥10</td><td>≥99.7%</td><td>≤0.3%</td><td>≤0.0%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 G | Ω = k的条件矩</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>⟨G⟩</th><th>σ(G)</th><th>众数</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>−0.37</td><td>1.32</td><td>0</td></tr>
+      <tr><td>3</td><td>0.56</td><td>1.05</td><td>1</td></tr>
+      <tr><td>4</td><td>1.13</td><td>1.00</td><td>1</td></tr>
+      <tr><td>5</td><td>1.58</td><td>1.01</td><td>2</td></tr>
+      <tr><td>6</td><td>1.98</td><td>1.04</td><td>2</td></tr>
+      <tr><td>7</td><td>2.32</td><td>1.09</td><td>2</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.3 关键观察</h3>
+  <p>三个特征：(a) σ ≈ 1.0在Ω上近似常数。(b) 均值对数增长：μ(Ω) ≈ −1.93 + 2.21 ln Ω（R² = 0.998）。(c) 分布随Ω向右移动同时保持形状。</p>
+
+  <h2>7. 零膨胀格点正态模型</h2>
+  <h3>7.1 正态近似</h3>
+  <p>离散正态近似：p(Ω) ≈ Φ((μ(Ω)−0.5)/σ)。与晚期窗口[800k, 10^6)比较：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>Φ预测</th><th>实际p</th><th>误差</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>0.246</td><td>0.240</td><td>+0.006</td></tr>
+      <tr><td>3</td><td>0.508</td><td>0.514</td><td>−0.006</td></tr>
+      <tr><td>4</td><td>0.723</td><td>0.736</td><td>−0.013</td></tr>
+      <tr><td>5</td><td>0.851</td><td>0.865</td><td>−0.014</td></tr>
+      <tr><td>7</td><td>0.949</td><td>0.963</td><td>−0.014</td></tr>
+    </tbody>
+  </table>
+  <p>拟合在1–2%内，系统低估≈ 1.4%。</p>
+
+  <h3>7.2 零膨胀格点正态</h3>
+  <p>G | Ω = k是如下的叠加：(1)代数锁定条件Δs+2Δm=0产生的G=0处离散原子；(2)背景波动场近似遵循移位离散正态N(μ(k), σ²)。</p>
+
+  <h3>7.3 N-漂移分析</h3>
+  <p>跳跃概率p(Ω, N)随N递减：</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Ω</th><th>[2, 200k)</th><th>[800k, 10^6)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>0.264</td><td>0.240</td></tr>
+      <tr><td>3</td><td>0.559</td><td>0.514</td></tr>
+      <tr><td>5</td><td>0.892</td><td>0.865</td></tr>
+    </tbody>
+  </table>
+  <p>下降减缓；拟合p(Ω,N) ≈ p_∞(Ω) + b(Ω)/ln N给出R² > 0.95，对所有Ω有p_∞(Ω) > 0。</p>
+
+  <h2>8. 猜想H修正为H'</h2>
+  <h3>8.1 观察趋势</h3>
+  <p>D(N)单调递增。值为：</p>
+  <ul>
+    <li>D(10^3) = 0.551</li>
+    <li>D(10^4) = 0.561</li>
+    <li>D(10^5) = 0.570</li>
+    <li>D(10^6) = 0.574</li>
+  </ul>
+
+  <h3>8.2 猜想H'</h3>
+  <div class="thesis-box">
+    <p><strong>猜想H'：</strong>当N → ∞时，D(N) → 1。</p>
+  </div>
+
+  <h3>8.3 支持证据</h3>
+  <p>(a) Erdős-Kac蕴含对每个固定K，P(Ω(n) ≤ K | n ≤ N) → 0；当N增长，Ω(n)的典型值像ln ln N增长，驱动p(Ω) → 1。</p>
+  <p>(b) 数值拟合给出p_∞(Ω) > 0且当Ω → ∞时p_∞(Ω) → 1。</p>
+
+  <h3>8.4 证明的障碍</h3>
+  <p>(a) 极限p_∞(Ω)的存在未建立。(b) 证明需要在Erdős-Kac漂移窗口|k − ln ln N| ≤ A√(ln ln N)内对p(k,N)的一致控制。估算率：1 − D(N) ∼ C(ln N)^{−α}其中α ≈ 0.5–0.7。</p>
+
+  <h2>9. 讨论：联系与预测</h2>
+  <h3>9.1 非平凡预测</h3>
+  <p>(1) p_∞(3) ≈ 0.50（Ω = 3处50%穿越）。(2) 若H'成立，D(10^100) ≈ 0.81。(3) σ(G | Ω) ≈ 1.0在Ω和N上常数——无已知理论解释；可能反映离散波动-耗散关系。</p>
+
+  <h3>9.2 经典联系</h3>
+  <p>Ω(n) → Erdős-Kac定理（1940）；缺陷d(n)桥接ρ_E和‖n‖；Selfridge（1953）关于‖n‖/ln n的渐近仍开放。</p>
+
+  <h3>9.3 两个代理</h3>
+  <p><strong>f(n) = Σ_{p^a ‖ n} ρ_E(p^a)：</strong>纯加性，与ρ_E的Pearson相关0.947，适用于大规模密度理论但失败于保留零点原子（仅15.6%并列有G_f=0）。</p>
+  <p><strong>m(n)：</strong>占d(n)的88%，有准加性递推，保留离散结构。</p>
+
+  <h2>10. 结论</h2>
+  <p>定理16–19将跳跃机制从统计现象简化为离散格点结构。跳跃不由经典效率驱动而由缺陷分裂：86.9%跳跃反对整数复杂度的判决发生。22.6%零点原子源自精确代数约束Δs+2Δm=0。条件于Ω，G遵循零膨胀格点正态且均值对数增长、σ常数。猜想H修正为H'：D(N) → 1，率由Erdős-Kac漂移与条件跳跃率衰退之间的相互作用控制——一个渐近竞赛问题。</p>
+
+  <h2>11. 参考文献</h2>
+  <ol>
+    <li>Han Qin, "Staircase Geometry of δ and Jump-Gap Theory," ZFCρ Series Paper XII, 2026. DOI: 10.5281/zenodo.18977948</li>
+    <li>Han Qin, "The First Asymptotic Theory of ρ_E," ZFCρ Series Paper XI, 2026. DOI: 10.5281/zenodo.18975756</li>
+    <li>Erdős, P., and Kac, M. "The Gaussian law of errors in the theory of additive functions." Proceedings of the National Academy of Sciences 25, no. 4 (1939): 206–207.</li>
+    <li>Selfridge, J. L. "Generalized Mersenne numbers." Mathematics of Computation 8, no. 48 (1953): 147–152.</li>
+  </ol>
+
+  <div class="series-nav">
+    <p>← <a href="zfcrho12.html">ZFCρ 论文十二：δ 的阶梯几何与跳跃间距理论</a></p>
+    <p>→ <a href="zfcrho14.html">ZFCρ 论文十四 →</a></p>
+    <p>ZFCρ 系列 · 数学基础 · <a href="../index.html">返回论文列表</a></p>
+  </div>
+
+  </div><!-- end lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/records/18991986" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  var titles = { en: 'Algebraic Structure and Conditional Distribution of Jump Gain', zh: '跳跃增益的代数结构与条件分布' };
+  document.getElementById('paper-title').textContent = titles[lang];
+}
+</script>
+
+</body>
+</html>
