@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture — ZFCρ Paper XVII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XVII: Predecessor-jump identity A(n)=j(n)−1, roughness stability (Prop C), regime decomposition (Props A & B), conditional Sub-lemma I-b, bridge term sign reversal overturning Paper 16 Obs. 8.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, insertion monotonicity, roughness stability, relay mechanism, bridge term, scale term, predecessor-jump identity, 单调性, 粗糙度稳定性, 接力架构">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho17.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho17.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19016958"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "insertion monotonicity", "roughness stability",
+      "relay mechanism", "bridge term", "predecessor-jump identity", "Conjecture H'"
+    ],
+    "abstract": "We substantially narrow the open inputs of Paper 16's relay engine, proving four propositions, deriving one conditional closure, and reporting three numerical observations. The predecessor-jump identity A(n)=j(n)−1 reduces A-tail to Var(G|Ω=k)=O(1). Roughness stability (Prop C) gives O_k((ln ln X)^{-1/2}) control. Regime decomposition: exact support cutoff at high k (Prop B); fixed small-prime dominance fails (Prop A). Sub-lemma I-b closes conditionally under scale term monotonicity. Bridge term sign reversal at k≥6 overturns Paper 16 Observation 8.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho17.html">
+  <meta name="citation_title" content="Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19016958">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho17.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'none'
+    },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+  };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-T8MnqE5XqFmGHOJuG8HEp8XLKJLWF7hRjHYbfJrQHOPtOtpvSvdMXFi+g2WA5Gl0SxmIGxAlzKQkLvV2gohw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XVII · Zenodo 19016958</div>
+    <h1 id="paper-title">Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/19016958" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>We substantially narrow the open inputs of Paper 16's relay engine, proving four propositions, deriving one conditional closure, and reporting three numerical observations. <strong>Rigorous propositions.</strong> (1) The <em>predecessor-jump identity</em> $A(n) = j(n) - 1$ (Proposition J), reducing A-tail to $\mathrm{Var}(G \mid \Omega = k) = O(1)$ (A-concentration). (2) <em>Roughness stability</em> (Proposition C): under the shell variance bound $\mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) = O_k(1)$, the conditioned shell mean satisfies $|\mu_k(X, p) - \mu_k(X)| \leq \sqrt{V_k} \cdot \sqrt{\beta_{&lt;p}/(1 - \beta_{&lt;p})}$, giving $O_k((\ln\ln X)^{-1/2})$ control for $p = 3, 5$. (3) <em>Regime decomposition</em>: for high $k$ with $q^{k+1} &gt; X$, all insertion mass lies on primes $p \leq P_0$ (Proposition B); for fixed $k$, small-prime dominance fails (Proposition A). <strong>Conditional closure.</strong> (4) <em>Sub-lemma I-b</em>: under scale term monotonicity and shell variance, $\mu_k(X/p, p) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$. <strong>Numerical observations.</strong> (S) Scale term $X \mapsto \mu_k(X, p)$ strictly decreasing across 18 points ($10^4$ to $10^7$), zero exceptions. (K) Bridge term $E_{\mathcal{I}_k}[K_p]$ turns positive at $k \geq 6$ (growing to $+1.7$ at $k = 12$), overturning Paper 16 Observation 8. (E) Prime-power correction $\varepsilon_p(2) \in [-6, 2]$; B-bound cannot be upgraded. <strong>Remaining open inputs:</strong> four principal relay inputs — (i) scale term monotonicity, (ii) $\sigma(G \mid \Omega = k) = O(1)$, (iii) B-bound, (iv) I-a for fixed $k$ — plus theorem-level strengthening of Lemma II; downstream, SPF-positivity convergence (Paper 15) remains an additional open input.</p>
+    <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, insertion monotonicity, roughness stability, relay mechanism, bridge term, scale term, predecessor-jump identity</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>§1. Introduction</h2>
+
+  <h3>§1.1. Context</h3>
+  <p>Paper 16 (DOI: 10.5281/zenodo.19013602) established the algebraic engine for Conjecture H': the insertion identity, variance splitting, bridge term identity, two-parameter shell mean reduction, and conditional growth criterion. Four inputs were left open: A-tail, B-bound, Lemma I (insertion non-compression), and Lemma II (bridge lower bound). The present paper proves four propositions that substantially narrow these gaps and reports three numerical observations that reshape the proof landscape. The paper does not claim to close the proof of $D(N) \to 1$; it reduces the remaining distance to four principal relay inputs plus Lemma II, with SPF-positivity convergence remaining downstream.</p>
+
+  <h3>§1.2. Notation</h3>
+  <p>$N_k(X) = \#\{n \leq X : \Omega(n) = k\}$. $\mu_k(X) = E[G_{\mathrm{spf}}(m) \mid \Omega(m) = k, m \leq X]$. $\mu_k(X, p) = E[G_{\mathrm{spf}}(m) \mid \Omega(m) = k, m \leq X, P^-(m) \geq p]$. $\omega_{k,X}(p) = \Phi_k(X/p, p)/N_{k+1}(X)$ where $\Phi_k(X, p) = \#\{m \leq X : \Omega(m) = k, P^-(m) \geq p\}$. $\beta_{&lt;p}(k, X) = P(P^-(m) &lt; p \mid \Omega(m) = k, m \leq X) = 1 - \Phi_k(X, p)/N_k(X)$. $\mu_G(k) = E[G(n) \mid \Omega(n) = k]$ (the Paper 13 model mean, $\approx -1.93 + 2.21\ln k$).</p>
+
+  <h3>§1.3. Main Results</h3>
+
+  <div class="thesis-box">
+    <p><strong>Proposition J</strong> (Predecessor-Jump Identity). For all $n \geq 2$, $A(n) = j(n) - 1$.</p>
+    <p><strong>Corollary</strong> (A-concentration). The hypothesis "$\mathrm{Var}(A \mid \Omega = k) = O(1)$ uniformly in $k$ and $N$" follows from $\mathrm{Var}(G \mid \Omega = k) = O(1)$, rendering the uncentered A-tail formulation of Paper 16 unnecessary.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Proposition A</strong> (Failure of Fixed Small-Prime Dominance). For fixed $k$ and fixed $P_0$, $\sum_{p \leq P_0} \omega_{k,X}(p) \to 0$ as $X \to \infty$.</p>
+    <p><strong>Proposition B</strong> (Exact Support Cutoff). If $q^{k+1} &gt; X$ where $q$ is the smallest prime $&gt; P_0$, then $\sum_{p \leq P_0} \omega_{k,X}(p) = 1$.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Proposition C</strong> (Roughness Stability). Under $\mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) \leq V_k$,</p>
+    <p>$$|\mu_k(X, p) - \mu_k(X)| \leq \sqrt{V_k} \cdot \sqrt{\frac{\beta_{&lt;p}}{1 - \beta_{&lt;p}}}$$</p>
+    <p>where $\beta_{&lt;p} = P(P^-(m) &lt; p \mid \Omega = k, m \leq X)$.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Observation S</strong> (Scale Term Monotonicity). $X \mapsto \mu_k(X, p)$ is strictly decreasing across 18 sample points ($10^4$ to $10^7$) for all tested $(k, p) \in \{(3,2), (3,3), (5,2), (5,3), (8,2)\}$, fitting $a - b/\ln X$.</p>
+    <p><strong>Numerical Observation K</strong> (Bridge Term Sign Reversal). $E_{\mathcal{I}_k}[K_p]$ transitions from negative ($\approx -0.3$ at $k = 4$) to positive at $k \geq 6$ ($+0.29$ at $k = 6$, $+1.72$ at $k = 12$), stable across five windows. This overturns Paper 16 Numerical Observation 8.</p>
+    <p><strong>Numerical Observation E</strong> (Prime-Power Correction). $\varepsilon_p(2) \in [-6, 2]$ with negative values at large primes (e.g., $p = 1439$: $\varepsilon = -6$). $\varepsilon_p(3) \in [0, 2]$, no negatives. B-bound cannot be upgraded from numerical hypothesis.</p>
+  </div>
+
+  <h2>§2. The Predecessor-Jump Identity</h2>
+
+  <h3>§2.1. Statement and Proof</h3>
+
+  <div class="thesis-box">
+    <p><strong>Proposition J.</strong> <em>For all $n \geq 2$, $A(n) = j(n) - 1$, where $j(n) = \max(G(n), 0)$.</em></p>
+    <p><em>Proof.</em> The DP recurrence gives $\rho_E(n) = \rho_E(n-1) + 1 - j(n)$. Therefore $A(n) = \rho_E(n-1) - \rho_E(n) = j(n) - 1$. $\square$</p>
+  </div>
+
+  <h3>§2.2. Consequences for A-concentration</h3>
+  <p>Since $A = j - 1 = \max(G, 0) - 1$ and $h(x) = \max(x, 0)$ is 1-Lipschitz ($|h(x) - h(y)| \leq |x - y|$ for all $x, y$), we have:</p>
+  <p>$$\mathrm{Var}(A \mid \Omega = k) = \mathrm{Var}(\max(G, 0) \mid \Omega = k) \leq \mathrm{Var}(G \mid \Omega = k).$$</p>
+  <p>(Proof: $\mathrm{Var}(h(X)) = \frac{1}{2}E[(h(X) - h(X'))^2] \leq \frac{1}{2}E[(X - X')^2] = \mathrm{Var}(X)$ for i.i.d. copies $X, X'$.)</p>
+  <p>Paper 13's Gaussian model gives $\mathrm{Var}(G \mid \Omega = k) \approx \sigma^2 \approx 1$ across all $k$. Therefore A-concentration ($\mathrm{Var}(A) = O(1)$) is a direct consequence of $\sigma(G) = O(1)$.</p>
+
+  <h3>§2.3. Why the Uncentered A-tail Fails</h3>
+  <p>$E[A \mid \Omega = k] = E[j \mid \Omega = k] - 1 \approx \mu_G(k) - 1$, where $\mu_G(k) := E[G \mid \Omega = k] \approx -1.93 + 2.21\ln k$ (Paper 13). This grows without bound.</p>
+
+  <div class="thesis-box">
+    <p><strong>Conditional Lemma.</strong> <em>If $E[A \mid \Omega = k] \to \infty$ and $\mathrm{Var}(A \mid \Omega = k) = O(1)$ as $k \to \infty$, then no fixed $C, \alpha &gt; 0$ satisfy $P(A &gt; t \mid \Omega = k) \leq Ce^{-\alpha t}$ uniformly in $k$.</em></p>
+    <p><em>Proof.</em> Set $t_k = \frac{1}{2}E[A \mid \Omega = k]$. By Chebyshev, $P(A \leq t_k \mid \Omega = k) \leq 4\mathrm{Var}(A)/E[A]^2 \to 0$, so $P(A &gt; t_k) \to 1$. But $Ce^{-\alpha t_k} \to 0$ since $t_k \to \infty$. Contradiction. $\square$</p>
+  </div>
+
+  <p>Paper 13's Gaussian model suggests both hypotheses hold: $E[A \mid \Omega = k] \approx \mu_G(k) - 1 \to \infty$ and $\mathrm{Var}(A) \approx \sigma^2 \approx 1$. The correct formulation is the centered variance bound (A-concentration), not uncentered exponential tails.</p>
+
+  <h3>§2.4. Numerical Confirmation</h3>
+  <p>At $N = 10^7$, $P(A &gt; 3 \mid \Omega = k) &lt; 0.001$ for $k = 3$ through $12$ (where $E[A] &lt; 2$). The centered distribution shows exponential decay with $\alpha \approx 1.4$ around the $k$-dependent mean. $\mathrm{Var}(A \mid \Omega = k) \in [0.7, 1.1]$ across $k = 2$ to $18$, confirming $O(1)$ uniformity.</p>
+
+  <h2>§3. Regime Decomposition of the Insertion Measure</h2>
+
+  <h3>§3.1. Failure of Fixed Small-Prime Dominance (Proposition A)</h3>
+
+  <div class="thesis-box">
+    <p><strong>Proposition A.</strong> <em>For any fixed $k$ and $P_0$, $\sum_{p \leq P_0} \omega_{k,X}(p) \to 0$ as $X \to \infty$.</em></p>
+    <p><em>Proof.</em> By Sathe-Selberg, $\omega_{k,X}(p) \leq N_k(X/p)/N_{k+1}(X) \sim k/(p \cdot \ln\ln X)$. Sum over $p \leq P_0$: $\leq (k \cdot \sum_{p \leq P_0} 1/p) / \ln\ln X \to 0$. $\square$</p>
+  </div>
+  <p><strong>Consequence.</strong> Paper 16's Theorem 4 reduction (low-prime dominance + controlled shell means) cannot serve as a fixed-$k$, $X \to \infty$ proof route for Lemma I.</p>
+
+  <h3>§3.2. Exact Support Cutoff (Proposition B)</h3>
+
+  <div class="thesis-box">
+    <p><strong>Proposition B.</strong> <em>If $q^{k+1} &gt; X$ (where $q$ is the smallest prime $&gt; P_0$), then all $\Omega = k+1$ composites $n \leq X$ satisfy $P^-(n) \leq P_0$, hence $\sum_{p \leq P_0} \omega_{k,X}(p) = 1$.</em></p>
+    <p><em>Proof.</em> If $P^-(n) \geq q$, then $n \geq q^{k+1} &gt; X$, contradiction. $\square$</p>
+  </div>
+  <p><strong>Application at $X = 10^7$:</strong> $k \geq 8$: only $p = 2, 3, 5$. $k \geq 10$: only $p = 2, 3$. $k \geq 14$: only $p = 2$.</p>
+
+  <h3>§3.3. The Two Regimes</h3>
+  <table class="struct-table">
+    <thead><tr><th>Regime</th><th>I-a status</th><th>Proof route</th></tr></thead>
+    <tbody>
+      <tr><td>High $k$: $q^{k+1} &gt; X$</td><td><strong>Proved</strong> (Proposition B)</td><td>Exact support</td></tr>
+      <tr><td>Fixed $k$, $X \to \infty$</td><td><strong>Open</strong></td><td>Growing cutoff or direct covariance bound</td></tr>
+    </tbody>
+  </table>
+  <p>In the high-$k$ regime, Lemma I reduces to I-b for finitely many small primes. In the fixed-$k$ regime, the averaging step (I-a) requires a different approach — either a growing prime cutoff $P_0(X, k) \to \infty$ with uniform Sathe-Selberg estimates, or a direct proof that $\mathrm{Cov}^{\mathrm{amb}}(G_{\mathrm{spf}}, w_X) \geq -C_1 E^{\mathrm{amb}}[w_X]$ without decomposing by prime.</p>
+
+  <h2>§4. Roughness Stability</h2>
+
+  <h3>§4.1. Statement and Proof</h3>
+
+  <div class="thesis-box">
+    <p><strong>Proposition C.</strong> <em>Let $Y = G_{\mathrm{spf}}(m)$ on the shell $\{m \leq X : \Omega(m) = k\}$ with uniform distribution. Let $A_p = \{P^-(m) \geq p\}$, $\alpha_p = P(A_p)$, $\beta_{&lt;p} = 1 - \alpha_p$. If $\mathrm{Var}(Y) \leq V_k$, then</em></p>
+    <p>$$|\mu_k(X, p) - \mu_k(X)| \leq \sqrt{V_k} \cdot \sqrt{\frac{\beta_{&lt;p}}{1 - \beta_{&lt;p}}}.$$</p>
+    <p><em>Proof.</em> $\alpha_p(\mu_k(X,p) - \mu) = E[(Y - \mu)\mathbf{1}_{A_p}] = E[(Y-\mu)(\mathbf{1}_{A_p} - \alpha_p)]$. By Cauchy-Schwarz: $|\alpha_p(\mu_k(X,p) - \mu)| \leq \sqrt{\mathrm{Var}(Y)} \cdot \sqrt{\alpha_p \beta_{&lt;p}}$. Divide by $\alpha_p$. $\square$</p>
+  </div>
+
+  <h3>§4.2. Application to $p = 3$</h3>
+  <p>$\beta_{&lt;3}(k, X) = P(P^-(m) = 2 \mid \Omega = k, m \leq X) = N_{k-1}(X/2)/N_k(X)$.</p>
+  <p>By Sathe-Selberg: $\beta_{&lt;3} \sim (k-1)/(2\ln\ln X)$.</p>
+  <p>Therefore: $\mu_k(X, 3) \geq \mu_k(X) - \sqrt{V_k} \cdot \sqrt{(k-1)/(2\ln\ln X)} = \mu_k(X) - O_k((\ln\ln X)^{-1/2})$.</p>
+
+  <h3>§4.3. Application to $p = 5$</h3>
+  <p>$\beta_{&lt;5} \leq (N_{k-1}(X/2) + N_{k-1}(X/3))/N_k(X) = O_k((\ln\ln X)^{-1})$.</p>
+  <p>Therefore: $\mu_k(X, 5) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$.</p>
+
+  <h2>§5. Scale Term Monotonicity</h2>
+
+  <h3>§5.1. The Conditional Closure</h3>
+
+  <div class="thesis-box">
+    <p><strong>Sub-lemma I-b.</strong> <em>If $X \mapsto \mu_k(X, p)$ is non-increasing for fixed $k, p$, then $\mu_k(X/p, p) \geq \mu_k(X, p)$. Together with Proposition C:</em></p>
+    <p>$$\mu_k(X/p, p) \geq \mu_k(X) - R_{k,p}(X)$$</p>
+    <p><em>where $R_{k,p}(X) = O_k((\ln\ln X)^{-1/2})$ for $p = 3, 5$.</em></p>
+    <p><em>Proof.</em> $X/p &lt; X$ and monotonicity give $\mu_k(X/p, p) \geq \mu_k(X, p)$. Add Proposition C. $\square$</p>
+  </div>
+
+  <h3>§5.2. Numerical Evidence</h3>
+  <p>At $N = 10^7$, 18-point scans across $(k, p) \in \{(3,2), (3,3), (5,2), (5,3), (8,2)\}$ show strict monotone decrease of $\mu_k(X, p)$ in $X$ with zero exceptions. Fit: $\mu_k(X, p) \approx a - b/\ln X$, $b \in [0.039, 0.083]$. (The 18-point data table is available from the author upon request.)</p>
+
+  <h3>§5.3. Why Monotonicity Should Hold</h3>
+  <p>As $X$ grows with $k$ fixed, the $\Omega = k$ shell admits composites with larger prime factors (Sathe-Selberg). Larger primes yield worse SPF splits ($\rho_E(p)/\ln p$ closer to or exceeding $c^*$ for 77% of primes, Paper 15 §2.2), reducing $G_{\mathrm{spf}}$ on average. This pulls $\mu_k(X, p)$ down.</p>
+  <div class="note-box"><strong>Open problem.</strong> Prove $X \mapsto \mu_k(X, p)$ is non-increasing for fixed $k, p$.</div>
+  <p><strong>Remark.</strong> The 18-point scan covers $p = 2, 3$ but not $p = 5$. The roughness stability result (Proposition C) applies to $p = 5$, but scale term monotonicity for $p = 5$ is not directly tested. Since $\beta_{&lt;5} = O_k((\ln\ln X)^{-1})$, the roughness bound for $p = 5$ is stronger than for $p = 3$, partially compensating.</p>
+
+  <h2>§6. Bridge Term Sign Reversal</h2>
+
+  <h3>§6.1. Data</h3>
+  <table class="struct-table">
+    <thead><tr><th>$k$</th><th>$E_{\mathcal{I}_k}[K_p]$ (full $[4, 10^7]$)</th><th>Window stability</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td>$-0.19$</td><td>stable negative</td></tr>
+      <tr><td>4</td><td>$-0.29$</td><td>stable negative</td></tr>
+      <tr><td>5</td><td>$\approx 0$</td><td>near zero</td></tr>
+      <tr><td>6</td><td>$+0.29$</td><td>stable positive</td></tr>
+      <tr><td>8</td><td>$+0.76$</td><td>stable positive</td></tr>
+      <tr><td>10</td><td>$+1.17$</td><td>stable positive</td></tr>
+      <tr><td>12</td><td>$+1.72$</td><td>stable positive</td></tr>
+    </tbody>
+  </table>
+  <p>Five-window analysis ($[4, 10^7]$ divided into equal segments): all windows confirm sign and approximate magnitude. The transition is not a boundary effect.</p>
+
+  <h3>§6.2. Mechanism</h3>
+  <p>The sign reversal is numerically robust across all five windows. By Theorem 3 of Paper 16, $K_p = A(pm) + B(pm) - A(m)$, so the sign of $E_{\mathcal{I}_k}[K_p]$ depends on the balance between $E_{\mathcal{I}_k}[A(pm)]$ (which appears numerically to grow with $k$ since $\Omega(pm) = k+1$) and $E_{\mathcal{I}_k}[A(m)] + |E_{\mathcal{I}_k}[B(pm)]|$. A satisfactory quantitative explanation at the insertion-measure level remains open.</p>
+
+  <h3>§6.3. Correction to Paper 16 and Status of Lemma II</h3>
+  <div class="note-box">
+    <p>Paper 16 Numerical Observation 8 ("$E_{\mathcal{I}_k}[K_p] \approx -0.7$ for large $k$") is <strong>incorrect</strong>. The correct description: $E_{\mathcal{I}_k}[K_p]$ is negative for $k \leq 5$ ($\approx -0.3$ at $k = 4$) and positive for $k \geq 6$ (growing to $+1.7$ at $k = 12$).</p>
+  </div>
+  <p><strong>Status of Lemma II.</strong> Numerically, $E_{\mathcal{I}_k}[K_p]$ stays above $\approx -0.3$ across all tested $k$ and is positive for $k \geq 6$. A theorem-level uniform lower bound remains to be formalized.</p>
+
+  <h2>§7. Prime-Power Correction $\varepsilon_p$</h2>
+
+  <h3>§7.1. Data</h3>
+  <p>$\varepsilon_p(2) = \rho_E(p^2) - 2\rho_E(p)$: range $[-6, 2]$ across all primes $p \leq 3162$. Negative values exist (e.g., $p = 1439$: $\varepsilon = -6$).</p>
+  <p>$\varepsilon_p(3) = \rho_E(p^3) - \rho_E(p) - \rho_E(p^2)$: range $[0, 2]$, no negatives.</p>
+
+  <h3>§7.2. Implications</h3>
+  <p>$\varepsilon_p(2) &lt; 0$ occurs when $\rho_E(p^2) &lt; 2\rho_E(p)$, i.e., when $p^2$ has an expression cheaper than twice the cost of $p$. This happens through the successor route: $p^2 - 1$ may have a very favorable factorization allowing $\rho_E(p^2) = \rho_E(p^2 - 1) + 1 \ll 2\rho_E(p)$.</p>
+  <p>Since $\varepsilon_p(2)$ can be as negative as $-6$, the B-bound ($\mathrm{Var}(B) = O_k(1)$) cannot be upgraded to an unconditional theorem via the $f + r + \varepsilon_p$ decomposition alone. It remains a numerical hypothesis.</p>
+  <p>Numerically, $E[B \mid v \geq 2, \Omega = k] \approx -0.9$ stably across $k$ at $N = 10^7$, and $\mathrm{Var}(B \mid \Omega = k) \in [0.4, 0.6]$ stably.</p>
+
+  <h2>§8. The Revised Proof Landscape</h2>
+
+  <h3>§8.1. Status Table</h3>
+  <p><strong>Rigorous propositions (proved in this paper):</strong></p>
+  <ul>
+    <li>(a) <strong>Proposition J</strong>: $A = j - 1$.</li>
+    <li>(b) <strong>Proposition A</strong>: fixed small-prime dominance fails for fixed $k$, $X \to \infty$.</li>
+    <li>(c) <strong>Proposition B</strong>: exact support cutoff at high $k$.</li>
+    <li>(d) <strong>Proposition C</strong>: roughness stability with explicit bound.</li>
+  </ul>
+  <p><strong>Conditional closure (under stated hypotheses):</strong></p>
+  <ul>
+    <li>(e) <strong>Sub-lemma I-b</strong>: $\mu_k(X/p, p) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$, conditional on scale term monotonicity and shell variance bound. Note: the $O_k$ constant depends on $k$; this is a fixed-$k$ result, not uniform in $k$.</li>
+  </ul>
+  <p><strong>Numerical observations (strong evidence, no proof):</strong></p>
+  <ul>
+    <li>(f) <strong>Observation S</strong>: scale term monotonicity (18 points, zero exceptions).</li>
+    <li>(g) <strong>Observation K</strong>: $E_{\mathcal{I}_k}[K_p]$ sign reversal at $k \geq 6$ (five windows stable).</li>
+    <li>(h) <strong>Observation E</strong>: $\varepsilon_p(2) \in [-6, 2]$.</li>
+  </ul>
+  <p><strong>Still open:</strong></p>
+  <ul>
+    <li>(i) Scale term monotonicity: theorem-level proof.</li>
+    <li>(j) $\sigma(G \mid \Omega = k) = O(1)$: formalization of Paper 13.</li>
+    <li>(k) B-bound: numerical hypothesis, not upgradeable.</li>
+    <li>(l) I-a for fixed $k$: averaging over primes with growing cutoff or direct covariance bound.</li>
+    <li>(m) Lemma II: theorem-level uniform lower bound (numerically benign).</li>
+  </ul>
+
+  <h3>§8.2. The Four Principal Open Inputs (Plus Lemma II)</h3>
+  <p>The relay architecture now leaves four principal open inputs, plus a theorem-level strengthening of the numerically benign Lemma II. Downstream, SPF-positivity convergence (Paper 15) remains an additional open input for $D(N) \to 1$.</p>
+  <ul>
+    <li><strong>(Scale term monotonicity)</strong> $X \mapsto \mu_k(X, p)$ non-increasing for fixed $k, p$. 18-point numerical evidence with zero exceptions (Observation S). Theoretical proof requires Sathe-Selberg control of $G_{\mathrm{spf}}$ marginal means on $(P^-, \Omega)$-conditioned shells.</li>
+    <li><strong>($\sigma(G) = O(1)$)</strong> Formalization of Paper 13's Gaussian model. This closes A-concentration via Proposition J and, together with B-bound, yields the shell-variance input for Proposition C. Currently numerical.</li>
+    <li><strong>(B-bound)</strong> $\mathrm{Var}(B \mid \Omega = k) = O_k(1)$. Numerical hypothesis; $\varepsilon_p$ negatives prevent algebraic proof.</li>
+    <li><strong>(I-a for fixed $k$)</strong> Averaging over primes in the fixed-$k$, $X \to \infty$ regime. Proposition B handles high $k$ (exact support); for fixed $k$, a growing prime cutoff or direct covariance bound is needed.</li>
+    <li><strong>(Lemma II)</strong> Bridge lower bound. Numerically benign: $E[K_p] \geq -0.3$ across all $k$, positive for $k \geq 6$. A theorem-level uniform lower bound remains to be formalized.</li>
+  </ul>
+
+  <h3>§8.3. Proof Dependency Graph</h3>
+  <p>Items marked (T) are proved in this paper or Paper 16; (N) are numerical/open.</p>
+  <p>$$\sigma(G \mid \Omega = k) = O(1) \text{ (N)} \xrightarrow{\text{Prop J (T)}} \text{A-concentration}$$</p>
+  <p>$$\text{A-concentration} + \text{B-bound (N)} \longrightarrow \mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) = O_k(1)$$</p>
+  <p>$$\mathrm{Var}(G_{\mathrm{spf}}) = O_k(1) + \text{Prop C (T)} + \text{Scale monotonicity (N)} \longrightarrow \text{I-b (conditional)}$$</p>
+  <p>$$\text{I-b} + \text{I-a: high-}k \text{ (T, Prop B) / fixed-}k \text{ (N)} \longrightarrow \text{Lemma I}$$</p>
+  <p>$$\text{Lemma I} + \text{Lemma II (N, benign)} + \text{B-bound (N)} \longrightarrow \text{Thm 5 (Paper 16, T)}$$</p>
+  <p>$$\text{Thm 5} + \text{SPF-positivity convergence (N)} + \text{Sathe-Selberg (T)} \longrightarrow D(N) \to 1$$</p>
+
+  <h2>§9. Corrections to Paper 16</h2>
+
+  <h3>§9.1. Numerical Observation 8</h3>
+  <div class="note-box">
+    <p><strong>Replace:</strong> "$E_{\mathcal{I}_k}[K_p] \approx -0.7$ for large $k$"</p>
+    <p><strong>With:</strong> "$E_{\mathcal{I}_k}[K_p]$ is negative for $k \leq 5$ ($\approx -0.3$ at $k = 4$) and positive for $k \geq 6$ (growing to $+1.7$ at $k = 12$). The bridge term is a drag only at low $k$ and becomes a positive contributor at high $k$."</p>
+  </div>
+
+  <h3>§9.2. Numerical Hypothesis A-tail</h3>
+  <div class="note-box">
+    <p><strong>Replace:</strong> "$P(A &gt; t \mid \Omega = k) \leq Ce^{-\alpha t}$ with universal $C, \alpha$"</p>
+    <p><strong>With:</strong> "A-concentration: $\mathrm{Var}(A \mid \Omega = k) = O(1)$ uniformly in $k$ and $N$. This follows from $A = j - 1$ (Proposition J) and $\mathrm{Var}(G \mid \Omega = k) = O(1)$."</p>
+  </div>
+
+  <h3>§9.3. Squarefree-Dominance Narrative</h3>
+  <p>The claim "$&gt;95\%$ of $\Omega = k$ composites have $v_{P^-} = 1$" holds for $k \leq 5$ but fails for $k \geq 8$ ($v = 1$ fraction drops to 10% at $k = 8$, 0.09% at $k = 15$). Despite this, $E[B \mid v \geq 2, \Omega = k] \approx -0.9$ stably and $\mathrm{Var}(B \mid \Omega = k)$ remains $O_k(1)$.</p>
+
+  <h3>§9.4. §11 Placement</h3>
+  <p>The four-AI collaboration methodology (Paper 16 §11) should be moved to an appendix or supplementary document to maintain focus on mathematical content in the main body.</p>
+
+  <h2>References</h2>
+  <ol class="references">
+    <li>H. Qin, "The insertion identity, variance splitting, and the relay engine of Conjecture H'" (Paper 16), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+    <li>H. Qin, "Sieve structure, compositeness discount, and the architecture of Conjecture H'" (Paper 15), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a>.</li>
+    <li>H. Qin, "Zero-inflated lattice normal model" (Paper 13), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a>.</li>
+    <li>H. Qin, "The formal framework of ZFCρ" (Paper 1), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>.</li>
+    <li>A. Selberg, "Note on a paper by L. G. Sathe," J. Indian Math. Soc. 18 (1954), 83–87.</li>
+    <li>G. Tenenbaum, <em>Introduction to Analytic and Probabilistic Number Theory</em>, 3rd ed., AMS, 2015.</li>
+    <li>P. Erdős and M. Kac, "The Gaussian law of errors in the theory of additive number theoretic functions," Amer. J. Math. 62 (1940), 738–742.</li>
+  </ol>
+
+  <div class="series-nav">
+    ← <a href="zfcrho16.html">Paper XVI: The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H'</a>
+    &nbsp;|&nbsp;
+    <a href="zfcrho18.html">Paper XVIII: The Anti-Correlation Engine →</a>
+  </div>
+
+  </div><!-- .paper-body -->
+  </div><!-- #lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>本文大幅收窄了论文 16 接力引擎的开放输入，证明了四个命题，推导了一个条件闭合，并报告了三个数值观测。<strong>严格命题。</strong> (1) 前驱-跳跃恒等式 $A(n) = j(n) - 1$（命题 J），将 A-tail 归约为 $\mathrm{Var}(G \mid \Omega = k) = O(1)$（A-集中性）。(2) 粗糙度稳定性（命题 C）：在壳方差界 $\mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) = O_k(1)$ 下，条件壳均值满足 $|\mu_k(X, p) - \mu_k(X)| \leq \sqrt{V_k} \cdot \sqrt{\beta_{&lt;p}/(1 - \beta_{&lt;p})}$，对 $p = 3, 5$ 给出 $O_k((\ln\ln X)^{-1/2})$ 控制。(3) 分 regime 分解：高 $k$（$q^{k+1} &gt; X$）时全部插入质量落在素数 $p \leq P_0$ 上（命题 B）；固定 $k$ 时小素数主导性失败（命题 A）。<strong>条件闭合。</strong> (4) 子引理 I-b：在 scale term 单调性和壳方差下，$\mu_k(X/p, p) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$。<strong>数值观测。</strong> (S) Scale term $X \mapsto \mu_k(X, p)$ 在 18 个采样点严格递减，零例外。(K) 桥接项 $E_{\mathcal{I}_k}[K_p]$ 在 $k \geq 6$ 时转正，推翻论文 16 数值观测 8。(E) 素数幂修正 $\varepsilon_p(2) \in [-6, 2]$；B-bound 不可升级。<strong>剩余开放输入：</strong>四个主要接力输入——(i) scale term 单调性，(ii) $\sigma(G \mid \Omega = k) = O(1)$，(iii) B-bound，(iv) 固定 $k$ 的 I-a——加上 Lemma II 的定理级强化；下游，SPF-正性收敛（论文 15）仍为额外开放输入。</p>
+    <p><strong>关键词：</strong>整数复杂度，ρ-算术，插入单调性，粗糙度稳定性，接力机制，桥接项，scale term，前驱-跳跃恒等式</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>§1. 引言</h2>
+
+  <h3>§1.1. 背景</h3>
+  <p>论文 16（DOI: 10.5281/zenodo.19013602）建立了猜想 H' 的代数引擎：插入恒等式、方差分裂、桥接项恒等式、双参数壳均值归约和条件增长准则。四个输入留为开放：A-tail、B-bound、Lemma I（插入非压缩）和 Lemma II（桥接下界）。本文证明了四个命题，大幅收窄这些缺口，并报告了三个重塑证明格局的数值观测。本文不声称关闭 $D(N) \to 1$ 的证明；它将剩余距离缩减至四个主要接力输入加 Lemma II，SPF-正性收敛留在下游。</p>
+
+  <h3>§1.2. 记号</h3>
+  <p>$N_k(X) = \#\{n \leq X : \Omega(n) = k\}$。$\mu_k(X) = E[G_{\mathrm{spf}}(m) \mid \Omega(m) = k, m \leq X]$。$\mu_k(X, p) = E[G_{\mathrm{spf}}(m) \mid \Omega(m) = k, m \leq X, P^-(m) \geq p]$。$\omega_{k,X}(p) = \Phi_k(X/p, p)/N_{k+1}(X)$，其中 $\Phi_k(X, p) = \#\{m \leq X : \Omega(m) = k, P^-(m) \geq p\}$。$\beta_{&lt;p}(k, X) = P(P^-(m) &lt; p \mid \Omega(m) = k, m \leq X) = 1 - \Phi_k(X, p)/N_k(X)$。$\mu_G(k) = E[G(n) \mid \Omega(n) = k]$（论文 13 模型均值，$\approx -1.93 + 2.21\ln k$）。</p>
+
+  <h3>§1.3. 主要结果</h3>
+
+  <div class="thesis-box">
+    <p><strong>命题 J</strong>（前驱-跳跃恒等式）。对所有 $n \geq 2$，$A(n) = j(n) - 1$。</p>
+    <p><strong>推论</strong>（A-集中性）。假设"$\mathrm{Var}(A \mid \Omega = k) = O(1)$ 关于 $k$ 和 $N$ 一致"由 $\mathrm{Var}(G \mid \Omega = k) = O(1)$ 推出，使论文 16 的无中心 A-tail 表述不再必要。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>命题 A</strong>（固定小素数主导性失败）。对固定 $k$ 和 $P_0$，$\sum_{p \leq P_0} \omega_{k,X}(p) \to 0$（$X \to \infty$）。</p>
+    <p><strong>命题 B</strong>（精确支撑截断）。若 $q^{k+1} &gt; X$（$q$ 为大于 $P_0$ 的最小素数），则 $\sum_{p \leq P_0} \omega_{k,X}(p) = 1$。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>命题 C</strong>（粗糙度稳定性）。在 $\mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) \leq V_k$ 下，</p>
+    <p>$$|\mu_k(X, p) - \mu_k(X)| \leq \sqrt{V_k} \cdot \sqrt{\frac{\beta_{&lt;p}}{1 - \beta_{&lt;p}}}$$</p>
+    <p>其中 $\beta_{&lt;p} = P(P^-(m) &lt; p \mid \Omega = k, m \leq X)$。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>数值观测 S</strong>（Scale Term 单调性）。$X \mapsto \mu_k(X, p)$ 在 18 个采样点（$10^4$ 至 $10^7$）上对所有测试 $(k, p)$ 严格递减，拟合 $a - b/\ln X$。</p>
+    <p><strong>数值观测 K</strong>（桥接项符号反转）。$E_{\mathcal{I}_k}[K_p]$ 从负（$k = 4$ 时 $\approx -0.3$）过渡到 $k \geq 6$ 时为正（$k = 6$: $+0.29$，$k = 12$: $+1.72$），跨五个窗口稳定。推翻论文 16 数值观测 8。</p>
+    <p><strong>数值观测 E</strong>（素数幂修正）。$\varepsilon_p(2) \in [-6, 2]$，大素数处有负值（如 $p = 1439$: $\varepsilon = -6$）。$\varepsilon_p(3) \in [0, 2]$，无负值。B-bound 不可升级。</p>
+  </div>
+
+  <h2>§2. 前驱-跳跃恒等式</h2>
+
+  <h3>§2.1. 陈述与证明</h3>
+
+  <div class="thesis-box">
+    <p><strong>命题 J.</strong> 对所有 $n \geq 2$，$A(n) = j(n) - 1$，其中 $j(n) = \max(G(n), 0)$。</p>
+    <p>证明。DP 递推给出 $\rho_E(n) = \rho_E(n-1) + 1 - j(n)$。因此 $A(n) = \rho_E(n-1) - \rho_E(n) = j(n) - 1$。$\square$</p>
+  </div>
+
+  <h3>§2.2. 对 A-集中性的推论</h3>
+  <p>由 $A = j - 1 = \max(G, 0) - 1$ 且 $h(x) = \max(x, 0)$ 是 1-Lipschitz 的，有：</p>
+  <p>$$\mathrm{Var}(A \mid \Omega = k) = \mathrm{Var}(\max(G, 0) \mid \Omega = k) \leq \mathrm{Var}(G \mid \Omega = k).$$</p>
+  <p>（证明：$\mathrm{Var}(h(X)) = \frac{1}{2}E[(h(X) - h(X'))^2] \leq \frac{1}{2}E[(X - X')^2] = \mathrm{Var}(X)$，$X, X'$ 为独立同分布副本。）</p>
+  <p>论文 13 的 Gaussian 模型给出 $\mathrm{Var}(G \mid \Omega = k) \approx \sigma^2 \approx 1$ 跨所有 $k$。因此 A-集中性（$\mathrm{Var}(A) = O(1)$）是 $\sigma(G) = O(1)$ 的直接推论。</p>
+
+  <h3>§2.3. 无中心 A-tail 为何失败</h3>
+  <p>$E[A \mid \Omega = k] = E[j \mid \Omega = k] - 1 \approx \mu_G(k) - 1 \to \infty$（论文 13）。</p>
+
+  <div class="thesis-box">
+    <p><strong>条件引理。</strong> 若 $E[A \mid \Omega = k] \to \infty$ 且 $\mathrm{Var}(A \mid \Omega = k) = O(1)$（$k \to \infty$），则不存在固定 $C, \alpha &gt; 0$ 使 $P(A &gt; t \mid \Omega = k) \leq Ce^{-\alpha t}$ 关于 $k$ 一致成立。</p>
+    <p>证明。设 $t_k = \frac{1}{2}E[A \mid \Omega = k]$。由 Chebyshev，$P(A \leq t_k \mid \Omega = k) \to 0$，故 $P(A &gt; t_k) \to 1$。但 $Ce^{-\alpha t_k} \to 0$（$t_k \to \infty$）。矛盾。$\square$</p>
+  </div>
+
+  <h3>§2.4. 数值确认</h3>
+  <p>$N = 10^7$ 下，$P(A &gt; 3 \mid \Omega = k) &lt; 0.001$ 对 $k = 3$ 至 $12$。$\mathrm{Var}(A \mid \Omega = k) \in [0.7, 1.1]$ 跨 $k = 2$ 至 $18$，确认 $O(1)$ 一致性。</p>
+
+  <h2>§3. 插入测度的 Regime 分解</h2>
+
+  <h3>§3.1. 固定小素数主导性失败（命题 A）</h3>
+
+  <div class="thesis-box">
+    <p><strong>命题 A.</strong> 对任意固定 $k$ 和 $P_0$，$\sum_{p \leq P_0} \omega_{k,X}(p) \to 0$（$X \to \infty$）。</p>
+    <p>证明。由 Sathe-Selberg，$\omega_{k,X}(p) \leq N_k(X/p)/N_{k+1}(X) \sim k/(p \cdot \ln\ln X)$。对 $p \leq P_0$ 求和：$\leq (k \cdot \sum_{p \leq P_0} 1/p) / \ln\ln X \to 0$。$\square$</p>
+  </div>
+  <p><strong>推论。</strong>论文 16 Theorem 4 的归约不能作为固定 $k$，$X \to \infty$ 的 Lemma I 证明路线。</p>
+
+  <h3>§3.2. 精确支撑截断（命题 B）</h3>
+
+  <div class="thesis-box">
+    <p><strong>命题 B.</strong> 若 $q^{k+1} &gt; X$（$q$ 为大于 $P_0$ 的最小素数），则所有 $\Omega = k+1$ 的合数 $n \leq X$ 满足 $P^-(n) \leq P_0$，因此 $\sum_{p \leq P_0} \omega_{k,X}(p) = 1$。</p>
+    <p>证明。若 $P^-(n) \geq q$，则 $n \geq q^{k+1} &gt; X$，矛盾。$\square$</p>
+  </div>
+  <p><strong>$X = 10^7$ 下的应用：</strong>$k \geq 8$：仅 $p = 2, 3, 5$。$k \geq 10$：仅 $p = 2, 3$。$k \geq 14$：仅 $p = 2$。</p>
+
+  <h3>§3.3. 两个 Regime</h3>
+  <table class="struct-table">
+    <thead><tr><th>Regime</th><th>I-a 状态</th><th>证明路线</th></tr></thead>
+    <tbody>
+      <tr><td>高 $k$：$q^{k+1} &gt; X$</td><td><strong>已证</strong>（命题 B）</td><td>精确支撑</td></tr>
+      <tr><td>固定 $k$，$X \to \infty$</td><td><strong>开放</strong></td><td>增长截断或直接协方差界</td></tr>
+    </tbody>
+  </table>
+
+  <h2>§4. 粗糙度稳定性</h2>
+
+  <h3>§4.1. 陈述与证明</h3>
+
+  <div class="thesis-box">
+    <p><strong>命题 C.</strong> 设 $Y = G_{\mathrm{spf}}(m)$ 在壳 $\{m \leq X : \Omega(m) = k\}$ 上取均匀分布，$A_p = \{P^-(m) \geq p\}$，$\alpha_p = P(A_p)$，$\beta_{&lt;p} = 1 - \alpha_p$。若 $\mathrm{Var}(Y) \leq V_k$，则</p>
+    <p>$$|\mu_k(X, p) - \mu_k(X)| \leq \sqrt{V_k} \cdot \sqrt{\frac{\beta_{&lt;p}}{1 - \beta_{&lt;p}}}.$$</p>
+    <p>证明。$\alpha_p(\mu_k(X,p) - \mu) = E[(Y-\mu)(\mathbf{1}_{A_p} - \alpha_p)]$。由 Cauchy-Schwarz：$|\alpha_p(\mu_k(X,p) - \mu)| \leq \sqrt{\mathrm{Var}(Y)} \cdot \sqrt{\alpha_p \beta_{&lt;p}}$。除以 $\alpha_p$。$\square$</p>
+  </div>
+
+  <h3>§4.2. 对 $p = 3$ 的应用</h3>
+  <p>$\beta_{&lt;3}(k, X) = N_{k-1}(X/2)/N_k(X)$。由 Sathe-Selberg：$\beta_{&lt;3} \sim (k-1)/(2\ln\ln X)$。</p>
+  <p>因此：$\mu_k(X, 3) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$。</p>
+
+  <h3>§4.3. 对 $p = 5$ 的应用</h3>
+  <p>$\beta_{&lt;5} \leq (N_{k-1}(X/2) + N_{k-1}(X/3))/N_k(X) = O_k((\ln\ln X)^{-1})$。</p>
+  <p>因此：$\mu_k(X, 5) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$。</p>
+
+  <h2>§5. Scale Term 单调性</h2>
+
+  <h3>§5.1. 条件闭合</h3>
+
+  <div class="thesis-box">
+    <p><strong>子引理 I-b.</strong> 若 $X \mapsto \mu_k(X, p)$ 对固定 $k, p$ 非增，则 $\mu_k(X/p, p) \geq \mu_k(X, p)$。结合命题 C：</p>
+    <p>$$\mu_k(X/p, p) \geq \mu_k(X) - R_{k,p}(X)$$</p>
+    <p>其中 $R_{k,p}(X) = O_k((\ln\ln X)^{-1/2})$（$p = 3, 5$）。</p>
+    <p>证明。$X/p &lt; X$ 加单调性给出 $\mu_k(X/p, p) \geq \mu_k(X, p)$。加命题 C。$\square$</p>
+  </div>
+
+  <h3>§5.2. 数值证据</h3>
+  <p>$N = 10^7$ 下，18 点扫描跨 $(k, p) \in \{(3,2), (3,3), (5,2), (5,3), (8,2)\}$ 显示 $\mu_k(X, p)$ 关于 $X$ 严格单调递减，零例外。拟合：$\mu_k(X, p) \approx a - b/\ln X$，$b \in [0.039, 0.083]$。</p>
+
+  <h3>§5.3. 单调性为何应成立</h3>
+  <p>$X$ 在 $k$ 固定下增大时，$\Omega = k$ 壳上的合数容许更大素因子（Sathe-Selberg）。更大的素数产生更差的 SPF 分裂，平均地拉低 $G_{\mathrm{spf}}$，从而拉低 $\mu_k(X, p)$。</p>
+  <div class="note-box"><strong>开放问题。</strong>证明 $X \mapsto \mu_k(X, p)$ 对固定 $k, p$ 非增。</div>
+
+  <h2>§6. 桥接项符号反转</h2>
+
+  <h3>§6.1. 数据</h3>
+  <table class="struct-table">
+    <thead><tr><th>$k$</th><th>$E_{\mathcal{I}_k}[K_p]$（完整 $[4, 10^7]$）</th><th>窗口稳定性</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td>$-0.19$</td><td>稳定负</td></tr>
+      <tr><td>4</td><td>$-0.29$</td><td>稳定负</td></tr>
+      <tr><td>5</td><td>$\approx 0$</td><td>近零</td></tr>
+      <tr><td>6</td><td>$+0.29$</td><td>稳定正</td></tr>
+      <tr><td>8</td><td>$+0.76$</td><td>稳定正</td></tr>
+      <tr><td>10</td><td>$+1.17$</td><td>稳定正</td></tr>
+      <tr><td>12</td><td>$+1.72$</td><td>稳定正</td></tr>
+    </tbody>
+  </table>
+  <p>五窗口分析（$[4, 10^7]$ 分为等宽段）：所有窗口确认符号和近似大小。过渡非边界效应。</p>
+
+  <h3>§6.2. 机制</h3>
+  <p>由论文 16 Theorem 3：$K_p = A(pm) + B(pm) - A(m)$，故 $E_{\mathcal{I}_k}[K_p]$ 的符号取决于 $E_{\mathcal{I}_k}[A(pm)]$ 与 $E_{\mathcal{I}_k}[A(m)] + |E_{\mathcal{I}_k}[B(pm)]|$ 之间的平衡。在插入测度层面的定量解释目前仍开放。</p>
+
+  <h3>§6.3. 对论文 16 的修正及 Lemma II 的状态</h3>
+  <div class="note-box">
+    <p>论文 16 数值观测 8（"$E_{\mathcal{I}_k}[K_p] \approx -0.7$（大 $k$）"）<strong>不正确</strong>。正确描述：$E_{\mathcal{I}_k}[K_p]$ 在 $k \leq 5$ 时为负（$k = 4$ 时 $\approx -0.3$），$k \geq 6$ 时为正（$k = 12$ 时增长至 $+1.7$）。</p>
+  </div>
+  <p><strong>Lemma II 的状态。</strong>数值上，$E_{\mathcal{I}_k}[K_p]$ 在所有测试 $k$ 上保持在 $\approx -0.3$ 以上，$k \geq 6$ 时为正。定理级一致下界仍待形式化。</p>
+
+  <h2>§7. 素数幂修正 $\varepsilon_p$</h2>
+
+  <h3>§7.1. 数据</h3>
+  <p>$\varepsilon_p(2) = \rho_E(p^2) - 2\rho_E(p)$：所有 $p \leq 3162$ 上值域 $[-6, 2]$。负值存在（如 $p = 1439$: $\varepsilon = -6$）。</p>
+  <p>$\varepsilon_p(3) = \rho_E(p^3) - \rho_E(p) - \rho_E(p^2)$：值域 $[0, 2]$，无负值。</p>
+
+  <h3>§7.2. 含义</h3>
+  <p>$\varepsilon_p(2) &lt; 0$ 发生在 $\rho_E(p^2) &lt; 2\rho_E(p)$ 时，通过后继路线：$p^2 - 1$ 可能有非常有利的因子结构，允许 $\rho_E(p^2) = \rho_E(p^2 - 1) + 1 \ll 2\rho_E(p)$。</p>
+  <p>由于 $\varepsilon_p(2)$ 可负至 $-6$，B-bound 不能仅通过 $f + r + \varepsilon_p$ 分解升级为无条件定理。数值上，$E[B \mid v \geq 2, \Omega = k] \approx -0.9$ 稳定，$\mathrm{Var}(B \mid \Omega = k) \in [0.4, 0.6]$ 稳定。</p>
+
+  <h2>§8. 修正后的证明全景图</h2>
+
+  <h3>§8.1. 状态表</h3>
+  <p><strong>严格命题（本文证明）：</strong></p>
+  <ul>
+    <li>(a) <strong>命题 J</strong>：$A = j - 1$。</li>
+    <li>(b) <strong>命题 A</strong>：固定 $k$，$X \to \infty$ 时固定小素数主导性失败。</li>
+    <li>(c) <strong>命题 B</strong>：高 $k$ 时精确支撑截断。</li>
+    <li>(d) <strong>命题 C</strong>：粗糙度稳定性，显式界。</li>
+  </ul>
+  <p><strong>条件闭合（在所述假设下）：</strong></p>
+  <ul>
+    <li>(e) <strong>子引理 I-b</strong>：$\mu_k(X/p, p) \geq \mu_k(X) - O_k((\ln\ln X)^{-1/2})$，条件于 scale term 单调性和壳方差界。$O_k$ 常数依赖于 $k$；这是固定 $k$ 的结果，非关于 $k$ 一致。</li>
+  </ul>
+  <p><strong>数值观测（强证据，无证明）：</strong></p>
+  <ul>
+    <li>(f) <strong>观测 S</strong>：scale term 单调性（18 点，零例外）。</li>
+    <li>(g) <strong>观测 K</strong>：$E_{\mathcal{I}_k}[K_p]$ 在 $k \geq 6$ 时符号反转（五窗口稳定）。</li>
+    <li>(h) <strong>观测 E</strong>：$\varepsilon_p(2) \in [-6, 2]$。</li>
+  </ul>
+  <p><strong>仍开放：</strong></p>
+  <ul>
+    <li>(i) Scale term 单调性：定理级证明。</li>
+    <li>(j) $\sigma(G \mid \Omega = k) = O(1)$：论文 13 的形式化。</li>
+    <li>(k) B-bound：数值假设，不可升级。</li>
+    <li>(l) 固定 $k$ 的 I-a：增长截断或直接协方差界。</li>
+    <li>(m) Lemma II：定理级一致下界（数值良性）。</li>
+  </ul>
+
+  <h3>§8.2. 四个主要开放输入（加 Lemma II）</h3>
+  <p>接力架构现在留下四个主要开放输入，加上 Lemma II 的定理级强化。SPF-正性收敛（论文 15）仍为额外开放输入。</p>
+  <ul>
+    <li><strong>（Scale term 单调性）</strong>$X \mapsto \mu_k(X, p)$ 对固定 $k, p$ 非增。18 点数值证据，零例外。理论证明需要 Sathe-Selberg 对 $(P^-, \Omega)$-条件壳上 $G_{\mathrm{spf}}$ 边际均值的精细控制。</li>
+    <li><strong>（$\sigma(G) = O(1)$）</strong>论文 13 Gaussian 模型的形式化。经命题 J 关闭 A-集中性，并产出命题 C 的壳方差输入。</li>
+    <li><strong>（B-bound）</strong>$\mathrm{Var}(B \mid \Omega = k) = O_k(1)$。数值假设；$\varepsilon_p$ 的负值阻止代数证明。</li>
+    <li><strong>（固定 $k$ 的 I-a）</strong>固定 $k$，$X \to \infty$ regime 中对素数的平均。命题 B 处理高 $k$；固定 $k$ 需要增长截断或直接协方差界。</li>
+    <li><strong>（Lemma II）</strong>桥接下界。数值良性：$E[K_p] \geq -0.3$ 跨所有 $k$，$k \geq 6$ 时为正。</li>
+  </ul>
+
+  <h3>§8.3. 证明依赖图</h3>
+  <p>标 (T) 者已在本文或论文 16 中证明；(N) 者为数值/开放。</p>
+  <p>$$\sigma(G \mid \Omega = k) = O(1) \text{ (N)} \xrightarrow{\text{命题 J (T)}} \text{A-集中性}$$</p>
+  <p>$$\text{A-集中性} + \text{B-bound (N)} \longrightarrow \mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) = O_k(1)$$</p>
+  <p>$$\mathrm{Var}(G_{\mathrm{spf}}) + \text{命题 C (T)} + \text{Scale 单调性 (N)} \longrightarrow \text{I-b（条件）}$$</p>
+  <p>$$\text{I-b} + \text{I-a: 高-}k\text{ (T) / 固定-}k\text{ (N)} \longrightarrow \text{Lemma I}$$</p>
+  <p>$$\text{Lemma I} + \text{Lemma II (N)} + \text{B-bound (N)} \longrightarrow \text{Thm 5（论文 16）}$$</p>
+  <p>$$\text{Thm 5} + \text{SPF-正性收敛 (N)} + \text{Sathe-Selberg (T)} \longrightarrow D(N) \to 1$$</p>
+
+  <h2>§9. 对论文 16 的修正</h2>
+
+  <h3>§9.1. 数值观测 8</h3>
+  <div class="note-box">
+    <p><strong>替换：</strong>"$E_{\mathcal{I}_k}[K_p] \approx -0.7$（大 $k$）"</p>
+    <p><strong>改为：</strong>"$E_{\mathcal{I}_k}[K_p]$ 在 $k \leq 5$ 时为负（$k = 4$ 时 $\approx -0.3$），$k \geq 6$ 时为正（$k = 12$ 时增长至 $+1.7$）。桥接项仅在低 $k$ 时为拖累，高 $k$ 时成为正贡献。"</p>
+  </div>
+
+  <h3>§9.2. 数值假设 A-tail</h3>
+  <div class="note-box">
+    <p><strong>替换：</strong>"$P(A &gt; t \mid \Omega = k) \leq Ce^{-\alpha t}$，universal $C, \alpha$"</p>
+    <p><strong>改为：</strong>"A-集中性：$\mathrm{Var}(A \mid \Omega = k) = O(1)$ 关于 $k$ 和 $N$ 一致。由 $A = j - 1$（命题 J）和 $\mathrm{Var}(G \mid \Omega = k) = O(1)$ 推出。"</p>
+  </div>
+
+  <h3>§9.3. Squarefree-主导叙事</h3>
+  <p>"$&gt;95\%$ 的 $\Omega = k$ 合数有 $v_{P^-} = 1$"的断言对 $k \leq 5$ 成立但 $k \geq 8$ 时失效（$v = 1$ 比例在 $k = 8$ 降至 10%，$k = 15$ 降至 0.09%）。尽管如此，$E[B \mid v \geq 2, \Omega = k] \approx -0.9$ 稳定，$\mathrm{Var}(B \mid \Omega = k)$ 保持 $O_k(1)$。</p>
+
+  <h3>§9.4. §11 位置</h3>
+  <p>论文 16 的四 AI 协作方法论（§11）应移至附录或补充文件，以在正文中保持对数学内容的聚焦。</p>
+
+  <h2>参考文献</h2>
+  <ol class="references">
+    <li>H. Qin，"The insertion identity, variance splitting, and the relay engine of Conjecture H'"（论文 16），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+    <li>H. Qin，"Sieve structure, compositeness discount, and the architecture of Conjecture H'"（论文 15），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a>。</li>
+    <li>H. Qin，"Zero-inflated lattice normal model"（论文 13），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a>。</li>
+    <li>H. Qin，"The formal framework of ZFCρ"（论文 1），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>。</li>
+    <li>A. Selberg，"Note on a paper by L. G. Sathe," J. Indian Math. Soc. 18 (1954), 83–87。</li>
+    <li>G. Tenenbaum，<em>Introduction to Analytic and Probabilistic Number Theory</em>，3rd ed., AMS, 2015。</li>
+    <li>P. Erdős and M. Kac，"The Gaussian law of errors in the theory of additive number theoretic functions," Amer. J. Math. 62 (1940), 738–742。</li>
+  </ol>
+
+  <div class="series-nav">
+    ← <a href="zfcrho16.html">论文 XVI：插入恒等式、方差分裂与猜想 H' 的接力引擎</a>
+    &nbsp;|&nbsp;
+    <a href="zfcrho18.html">论文 XVIII：反相关引擎 →</a>
+  </div>
+
+  </div><!-- .paper-body -->
+  </div><!-- #lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2025–2026 Han Qin · Self-as-an-End Theory</span>
+    <span>All mathematical content CC BY 4.0</span>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  document.getElementById('paper-title').textContent = lang === 'zh'
+    ? '单调性、粗糙度稳定性与接力架构的收窄'
+    : 'Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture';
+}
+</script>
+</body>
+</html>

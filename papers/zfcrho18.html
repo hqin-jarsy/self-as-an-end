@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity — ZFCρ Paper XVIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XVIII: Anti-correlation engine Cov(Δf,Δr)≈−7.5 compresses Var(A) to O(1). Shell deficiency drift. Three eliminated proof routes (E1/E2/E3). Local Lipschitz property as most leveraged target for σ(G)=O(1).">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, anti-correlation, variance decomposition, local smoothness, deficiency, DP recursion, Brownian analogy, 反相关引擎, 局部光滑性, 方差分解">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho18.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho18.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19024385"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "anti-correlation", "variance decomposition",
+      "local smoothness", "deficiency", "DP recursion", "local Lipschitz"
+    ],
+    "abstract": "M8 exploration results on the variance structure of ρ_E. Shell deficiency Var(d_ρ) grows as a(k)+b(k)·ln ln N with b(k)>0. Despite this, Var(A)∈[0.3,1.35] with zero growth in N, supporting σ(G)=O(1). Anti-correlation engine: Var(Δf)≈10, Var(Δr)≈7, Cov(Δf,Δr)≈−7.5 compresses Var(A)≈1. Three routes eliminated (TK on Δf, separate f/r, shell concentration). Most leveraged target: local Lipschitz property.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho18.html">
+  <meta name="citation_title" content="The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19024385">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho18.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'none'
+    },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+  };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-T8MnqE5XqFmGHOJuG8HEp8XLKJLWF7hRjHYbfJrQHOPtOtpvSvdMXFi+g2WA5Gl0SxmIGxAlzKQkLvV2gohw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XVIII · Zenodo 19024385</div>
+    <h1 id="paper-title">The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/19024385" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>We report the decisive M8 exploration results on the variance structure of the integer complexity function $\rho_E$. The deficiency $d_\rho(n) = \rho_E(n) - c^* \ln n$ (where $c^*$ is a working normalization constant) has shell variance $\mathrm{Var}(d_\rho \mid \Omega = k, n \leq N)$ consistent with $a(k) + b(k) \cdot \ln\ln N$, with $b(k) &gt; 0$ and increasing significantly in $k$ on the tested range — not $O(1)$ as initially conjectured. Despite this, the first-difference variance $\mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega = k)$ lies in $[0.3, 1.35]$ across all tested $k$ ($2$ to $18$) and $N$ ($10^4$ to $10^7$), with zero growth trend in $N$, supporting $\sigma(G) = O(1)$. The mechanism is a forced anti-correlation between the additive part $f$ and the combinatorial remainder $r$ in the decomposition $\rho_E = f + r$: $\mathrm{Var}(\Delta f) \approx 10$ and $\mathrm{Var}(\Delta r) \approx 7$ individually, but $\mathrm{Cov}(\Delta f, \Delta r) \approx -7.5$ compresses $\mathrm{Var}(A) = \mathrm{Var}(\Delta f + \Delta r)$ to $\approx 1$. Three proof routes are eliminated: Turán-Kubilius on $\Delta f$ (variance $\approx 10$, not $O(1)$), separate treatment of $f$ and $r$ (each divergent), and shell-level concentration of $d_\rho$ (grows with $N$). The most leveraged remaining target for $\sigma(G) = O(1)$ is the <em>local Lipschitz property</em> of $d_\rho$: consecutive deficiencies differ by $O(1)$ despite shell-level drift of $O(\sqrt{k \cdot \ln\ln N})$, analogous to a process with stationary increments. Formalizing the local Lipschitz property is the most leveraged remaining step toward $\sigma(G) = O(1)$; combined with the remaining relay inputs — B-bound (numerical), scale term monotonicity (numerical), I-a for fixed $k$ (open), and Lemma II (numerically benign) — it would complete the engine for $D(N) \to 1$.</p>
+    <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, anti-correlation, variance decomposition, local smoothness, deficiency, DP recursion, Brownian analogy</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>§1. Introduction</h2>
+
+  <h3>§1.1. Context</h3>
+  <p>Paper 17 (DOI: 10.5281/zenodo.19016958) reduced the proof of $D(N) \to 1$ to four principal relay inputs plus Lemma II. The most leveraged input is $\sigma(G \mid \Omega = k) = O(1)$ — the formalization of Paper 13's Gaussian model. The present paper reports the M8 exploration results that resolve the variance structure of $\rho_E$ on $\Omega$-shells, identify three dead proof routes, and identify the most leveraged remaining target.</p>
+
+  <h3>§1.2. Notation</h3>
+  <p>As in Paper 17 §1.2. Additionally: $c^* = 1/\ln 2 \approx 1.4427$ (working normalization constant; not a proved asymptotic constant), $d_\rho(n) = \rho_E(n) - c^* \ln n$ (deficiency relative to $c^*$), $f(n) = \sum_{q^a \| n} \rho_E(q^a)$ (additive part), $r(n) = \rho_E(n) - f(n)$ (combinatorial remainder), $\Delta f(n) = f(n-1) - f(n)$, $\Delta r(n) = r(n-1) - r(n)$.</p>
+
+  <h3>§1.3. Main Results</h3>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Discovery 1</strong> (Shell Deficiency Drift). $\mathrm{Var}(d_\rho \mid \Omega = k, n \leq N)$ fits $a(k) + b(k) \cdot \ln\ln N$ with $b(k) &gt; 0$ for all tested $k$:</p>
+    <table class="struct-table" style="margin-top:0.5rem">
+      <thead><tr><th>$k$</th><th>$b$</th></tr></thead>
+      <tbody>
+        <tr><td>4</td><td>1.26</td></tr>
+        <tr><td>6</td><td>2.58</td></tr>
+        <tr><td>8</td><td>4.41</td></tr>
+        <tr><td>10</td><td>7.53</td></tr>
+      </tbody>
+    </table>
+    <p>$b(k)$ increases significantly with $k$ on the tested range (from $1.26$ at $k=4$ to $7.53$ at $k=10$), faster than linear. The precise asymptotic form of $b(k)$ is an open question.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Discovery 2</strong> (Local Smoothness). $\mathrm{Var}(A \mid \Omega = k, n \leq N) = \mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega = k)$ lies in $[0.3, 1.35]$ across $k = 2$ to $18$ and $N = 10^4$ to $10^7$, with zero growth trend in $N$. For $k \geq 5$, the values lie in $[0.8, 1.35]$.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Discovery 3</strong> (Anti-Correlation Engine). The decomposition $A = \Delta f + \Delta r$ reveals:</p>
+    <table class="struct-table" style="margin-top:0.5rem">
+      <thead><tr><th>$k$</th><th>$\mathrm{Var}(\Delta f)$</th><th>$\mathrm{Var}(\Delta r)$</th><th>$\mathrm{Cov}(\Delta f, \Delta r)$</th><th>$\mathrm{Var}(A)$</th></tr></thead>
+      <tbody>
+        <tr><td>4</td><td>6.96</td><td>5.68</td><td>−5.96</td><td>0.72</td></tr>
+        <tr><td>8</td><td>9.90</td><td>6.96</td><td>−7.89</td><td>1.09</td></tr>
+        <tr><td>12</td><td>9.96</td><td>6.30</td><td>−7.48</td><td>1.30</td></tr>
+      </tbody>
+    </table>
+    <p>Neither $\Delta f$ nor $\Delta r$ is $O(1)$; their forced anti-correlation compresses $\mathrm{Var}(A)$ to $O(1)$.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Discovery 4</strong> (Variance Anatomy of $G_{\mathrm{spf}}$). Complete decomposition $\mathrm{Var}(G_{\mathrm{spf}}) = \mathrm{Var}(A) + \mathrm{Var}(B) + 2\mathrm{Cov}(A,B)$:</p>
+    <ul>
+      <li>$\mathrm{Var}(A)$: rises from $0.31$ ($k=2$) to $1.33$ ($k=18$), bounded.</li>
+      <li>$\mathrm{Var}(B)$: falls from $1.02$ ($k=2$) to $0.25$ ($k \geq 8$), converges to $1/4$.</li>
+      <li>$\mathrm{Cov}(A,B)$: small negative, $\approx -0.10$ for $k \geq 6$.</li>
+    </ul>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Discovery 5</strong> (Gaussian Character). $\mathrm{Var}(G \mid \Omega = k) \leq 1.45$ across all $k$. Kurtosis $\in [2.62, 2.92]$ (Gaussian value: 3). Skewness $\to 0$ at high $k$. Stable across five windows.</p>
+  </div>
+
+  <div class="note-box">
+    <p><strong>Eliminated Routes:</strong></p>
+    <ul>
+      <li>(E1) Turán-Kubilius on $\Delta f$: $\mathrm{Var}(\Delta f) \approx 10$, not $O(1)$. No existing shifted-shell TK theorem.</li>
+      <li>(E2) Separate treatment of $f$ and $r$: each component diverges; must treat $\rho_E = f + r$ as indivisible unit.</li>
+      <li>(E3) Shell concentration of $d_\rho$: $\mathrm{Var}(d_\rho)$ grows with $N$, not $O(1)$.</li>
+    </ul>
+    <p><strong>Correct Proof Target:</strong> The <em>local Lipschitz property</em> $\mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega = k) = O(1)$.</p>
+  </div>
+
+  <h2>§2. Shell Deficiency Drift</h2>
+
+  <h3>§2.1. The Deficiency and Its Natural Scale</h3>
+  <p>Define $d_\rho(n) = \rho_E(n) - c^* \ln n$ where $c^* = 1/\ln 2 \approx 1.4427$ is the numerical best-fit constant for $\rho_E(n)/\ln n$ (a working normalization constant; Paper 11 establishes $\rho_E(n) = \Theta(\ln n)$ but does not prove the existence of a precise asymptotic constant). On the $\Omega = k$ shell, the question is whether $\mathrm{Var}(d_\rho)$ is $O(1)$, $O(k)$, or $O(\ln\ln N)$.</p>
+
+  <h3>§2.2. Data: $\mathrm{Var}(d_\rho)$ vs $k$ and $N$</h3>
+  <p><strong>$k$-direction</strong> ($N = 10^7$ fixed): $\mathrm{Var}(d_\rho)$ monotonically decreases from $11.6$ ($k=2$) to $6.6$ ($k=18$) across 17 values of $k$, zero exceptions.</p>
+  <p><strong>$N$-direction</strong> ($k$ fixed): seven-point scan from $N = 10^4$ to $10^7$ shows positive growth for all tested $k$. Fit: $\mathrm{Var}(d_\rho) \approx a(k) + b(k) \cdot \ln\ln N$ with $b(k) &gt; 0$ increasing significantly with $k$ (from $1.26$ at $k=4$ to $7.53$ at $k=10$).</p>
+
+  <h3>§2.3. Resolution of the Apparent Contradiction</h3>
+  <p>In the $k$-direction at fixed $N$, $\mathrm{Var}(d_\rho)$ <em>decreases</em> because higher-$k$ shells are more constrained (more prime factors → tighter factorization control → less room for $d_\rho$ to deviate). In the $N$-direction at fixed $k$, $\mathrm{Var}(d_\rho)$ <em>increases</em> because larger $N$ introduces numbers with larger primes, whose deficiency behavior has wider spread.</p>
+  <p>The two effects coexist: the $k$-dependent coefficient $b(k)$ grows faster than linearly in $k$ on the tested range, so on the Erdős-Kac central shell $k \sim \ln\ln N$, $\mathrm{Var}(d_\rho)$ is expected to grow at least as fast as $\Theta((\ln\ln N)^2)$, though the precise scaling remains open.</p>
+
+  <h3>§2.4. Why Shell Concentration Fails</h3>
+  <p>The additive part $f(n) = \sum_{q^a \| n} \rho_E(q^a)$ has $\mathrm{Var}(f(n) \mid \Omega = k) \approx 16$ — already large. The remainder $r = \rho_E - f$ anti-correlates with $f$ (forced by the DP min), keeping $\mathrm{Var}(\rho_E)$ below $\mathrm{Var}(f)$. But this compression is not strong enough to reach $O(1)$; it only reduces $\sim 16$ to $\sim 10$.</p>
+
+  <h2>§3. The Anti-Correlation Engine</h2>
+
+  <h3>§3.1. Structural Origin</h3>
+  <p>$r(n) = \rho_E(n) - f(n)$ by definition. Therefore $\mathrm{Cov}(f, r) = \mathrm{Cov}(f, \rho_E - f) = \mathrm{Cov}(f, \rho_E) - \mathrm{Var}(f)$.</p>
+  <p>If $\rho_E$ were unconstrained (i.e., $r$ independent of $f$), then $\mathrm{Cov}(f, r) = 0$. The negative covariance arises precisely because the DP min operation caps $\rho_E$: when $f(n)$ is large (unfavorable additive structure), $\rho_E(n)$ cannot fully follow $f$ upward (the min with $M_n$ or $S_n$ pulls it back), so $r = \rho_E - f$ becomes more negative. Conversely, when $f(n)$ is small, $\rho_E$ may exceed $f$ (via the successor route), making $r$ more positive.</p>
+
+  <h3>§3.2. The Same Mechanism for Differences</h3>
+  <p>$A(n) = \rho_E(n-1) - \rho_E(n) = \Delta f(n) + \Delta r(n)$.</p>
+  <p>Both $\Delta f$ and $\Delta r$ individually have variance $\sim 7$–$10$ (growing with $k$), but their forced anti-correlation ($\mathrm{Cov} \approx -7.5$) compresses $\mathrm{Var}(A)$ to $\approx 1$.</p>
+  <p>The mechanism is the same: $\Delta r = \Delta \rho_E - \Delta f = A - \Delta f$. So $\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f)$.</p>
+  <p>If $\mathrm{Var}(A) = O(1)$ and $\mathrm{Var}(\Delta f) = \Theta(\ln\ln N)$, then $\mathrm{Cov}(\Delta f, A) = O(\sqrt{\ln\ln N})$ (by Cauchy-Schwarz), and:</p>
+  <p>$$\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f) \approx -\mathrm{Var}(\Delta f)$$</p>
+  <p>which explains the near-perfect cancellation.</p>
+
+  <div class="note-box"><strong>Remark.</strong> The above is an ex-post algebraic reconciliation of the numerical data, not a deductive proof of $\mathrm{Var}(A) = O(1)$. The identity $\Delta r = A - \Delta f$ makes the anti-correlation a tautological consequence of $\mathrm{Var}(A)$ being small relative to $\mathrm{Var}(\Delta f)$; it does not independently establish $\mathrm{Var}(A) = O(1)$.</div>
+
+  <h3>§3.3. Remark: A Random-Walk Analogy</h3>
+  <p>The numerical picture is suggestive of a random-walk structure: on the $\Omega = k$ shell, $d_\rho$ appears to have total variance growing as $\sim b(k) \cdot \ln\ln N$ while the increment variance $\mathrm{Var}(d_\rho(n-1) - d_\rho(n))$ remains $O(1)$ and the increments are approximately Gaussian (kurtosis $\approx 3$). This resembles a process with stationary increments. The analogy is heuristic; the proof of $\sigma(G) = O(1)$ requires formalizing the stationary-increment property, not the full random-walk structure.</p>
+
+  <h2>§4. Eliminated Proof Routes</h2>
+
+  <h3>§4.1. Route E1: Turán-Kubilius on $\Delta f$</h3>
+  <p><strong>Target:</strong> $\mathrm{Var}(f(n-1) - f(n) \mid \Omega = k) = O(1)$.</p>
+  <p><strong>Why it fails:</strong> $\mathrm{Var}(\Delta f) \approx 10$ at $N = 10^7$ and grows with $N$. Kátai-Subbarao's conditional TK gives $\mathrm{Var}(f(n) \mid \Omega = k) = O_k(1)$ (constrained side), but $f(n-1)$ is unconstrained ($\Omega(n-1)$ free), giving $\mathrm{Var}(f(n-1)) = O(\ln\ln N)$ by standard TK. With approximate independence of $n$ and $n-1$ (a heuristic supported by Elliott-type results on correlations of multiplicative functions), $\mathrm{Var}(\Delta f) \approx \mathrm{Var}(f(n-1)) + \mathrm{Var}(f(n)) - 2\mathrm{Cov} \approx O(\ln\ln N)$. The decisive evidence for E1 is the direct computation: $\mathrm{Var}(\Delta f) \approx 10$ at $N = 10^7$.</p>
+  <p>To the author's knowledge, no existing shifted-shell TK theorem resolves this; see Mangerel [6] for the current state of additive functions in short intervals and gaps.</p>
+
+  <h3>§4.2. Route E2: Separate $f$ and $r$</h3>
+  <p><strong>Target:</strong> Prove $\mathrm{Var}(\Delta f) = O(1)$ and $\mathrm{Var}(\Delta r) = O(1)$ separately.</p>
+  <p><strong>Why it fails:</strong> Both are $\gg 1$. The $O(1)$ variance of $A$ comes entirely from their cross-cancellation, not from individual boundedness.</p>
+
+  <h3>§4.3. Route E3: Shell Concentration of $d_\rho$</h3>
+  <p><strong>Target:</strong> $\mathrm{Var}(d_\rho \mid \Omega = k) = O(1)$.</p>
+  <p><strong>Why it fails:</strong> Seven-point $N$-scan confirms growth $\sim b(k) \cdot \ln\ln N$ with $b(k)$ increasing significantly in $k$.</p>
+
+  <h2>§5. The Most Leveraged Proof Target: Local Lipschitz Property</h2>
+
+  <h3>§5.1. Statement</h3>
+
+  <div class="thesis-box">
+    <p><strong>Numerical Target (Local Lipschitz).</strong> For each fixed $k$, there exists $C_k &gt; 0$ such that</p>
+    <p>$$\mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega(n) = k, n \leq N) \leq C_k$$</p>
+    <p>uniformly in $N$.</p>
+    <p><strong>Numerical evidence:</strong> $\mathrm{Var}(A) \in [0.3, 1.35]$ across $k = 2$ to $18$ and $N = 10^4$ to $10^7$, with zero growth trend (seven-point $N$-scan). Theoretical proof remains open.</p>
+  </div>
+
+  <h3>§5.2. Why This Is the Most Leveraged Route toward $\sigma(G) = O(1)$</h3>
+  <p>By Proposition J (Paper 17): $A = j - 1 = \max(G, 0) - 1$, so $\mathrm{Var}(A) = \mathrm{Var}(\max(G, 0)) \leq \mathrm{Var}(G)$.</p>
+  <p>The cleaner statement: $\mathrm{Var}(G_{\mathrm{spf}}) = \mathrm{Var}(A) + \mathrm{Var}(B) + 2\mathrm{Cov}(A,B)$. With $\mathrm{Var}(A) = O(1)$ (Local Lipschitz), $\mathrm{Var}(B) = O_k(1)$ (B-bound, numerical), and $|\mathrm{Cov}(A,B)| \leq \sqrt{\mathrm{Var}(A) \cdot \mathrm{Var}(B)} = O_k(1)$: $\mathrm{Var}(G_{\mathrm{spf}}) = O_k(1)$.</p>
+  <p>Numerically, $\mathrm{Var}(G)$ and $\mathrm{Var}(G_{\mathrm{spf}})$ remain close on the tested range (within $\pm 0.1$ for $k \geq 5$), with no evidence of variance blow-up in the passage from $G_{\mathrm{spf}}$ to $G$. So $\mathrm{Var}(G) = O_k(1)$.</p>
+
+  <h3>§5.3. Connection to the DP Recursion</h3>
+  <p>$\rho_E(n) = \min(\rho_E(n-1) + 1, M_n)$, so $A(n) = \rho_E(n-1) - \rho_E(n) = \max(\rho_E(n-1) + 1 - M_n, 0) - 1 = j(n) - 1$ (Proposition J).</p>
+  <p>The DP guarantees $A \geq -1$ (successor bound). The upper tail of $A$ is controlled by how much $M_n$ can undershoot $S_n$. On the $\Omega = k$ shell, $M_n$ is determined by $n$'s factorization, and $S_n = \rho_E(n-1) + 1$ is determined by the predecessor. Their near-cancellation to $O(1)$ is the local Lipschitz property.</p>
+
+  <h3>§5.4. Possible Proof Directions for Local Lipschitz</h3>
+  <ul>
+    <li><strong>Direction 1: DP-induced smoothing.</strong> The recursion $\rho_E(n) = \min(S_n, M_n)$ creates a feedback loop: $S_{n+1} = \rho_E(n) + 1 = \min(S_n, M_n) + 1$. When $M_n \ll S_n$ (large jump), the next successor $S_{n+1}$ resets to $M_n + 1$, reducing the "memory" of previous values. This smoothing effect may bound the variance of consecutive differences.</li>
+    <li><strong>Direction 2: Quantitative smoothness of $\rho_E$.</strong> Numerically, $|\rho_E(n) - c^* \ln n|$ appears sublinear in $\ln n$ on the tested range. Since $c^*(\ln n - \ln(n-1)) = c^*/n + O(1/n^2) \to 0$, we have $|d_\rho(n) - d_\rho(n-1)| \leq |A(n)| + c^*/n$. This reduces to bounding $|A(n)|$, which is circular.</li>
+    <li><strong>Direction 3: Conditional second-moment method.</strong> Prove directly that $E[A^2 \mid \Omega = k] = O(1)$ using the insertion identity (Paper 16 Theorem 1) and the A/B decomposition.</li>
+  </ul>
+
+  <h2>§6. Complete Variance Anatomy</h2>
+
+  <h3>§6.1. $\mathrm{Var}(A)$ and $\mathrm{Var}(B)$ Across All $k$</h3>
+  <table class="struct-table">
+    <thead><tr><th>$k$</th><th>$\mathrm{Var}(A)$</th><th>$\mathrm{Var}(B)$</th><th>$\mathrm{Cov}(A,B)$</th><th>$\mathrm{Var}(G_{\mathrm{spf}})$</th></tr></thead>
+    <tbody>
+      <tr><td>2</td><td>0.31</td><td>1.02</td><td>+0.22</td><td>1.77</td></tr>
+      <tr><td>3</td><td>0.56</td><td>0.51</td><td>+0.08</td><td>1.24</td></tr>
+      <tr><td>4</td><td>0.72</td><td>0.33</td><td>−0.02</td><td>1.02</td></tr>
+      <tr><td>5</td><td>0.83</td><td>0.29</td><td>−0.07</td><td>0.99</td></tr>
+      <tr><td>6</td><td>0.92</td><td>0.27</td><td>−0.09</td><td>1.02</td></tr>
+      <tr><td>8</td><td>1.09</td><td>0.26</td><td>−0.10</td><td>1.15</td></tr>
+      <tr><td>10</td><td>1.21</td><td>0.25</td><td>−0.10</td><td>1.26</td></tr>
+      <tr><td>12</td><td>1.30</td><td>0.25</td><td>−0.11</td><td>1.33</td></tr>
+      <tr><td>15</td><td>1.31</td><td>0.25</td><td>−0.14</td><td>1.27</td></tr>
+      <tr><td>18</td><td>1.33</td><td>0.25</td><td>−0.06</td><td>1.47</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Observations:</strong> $\mathrm{Var}(B)$ converges to $1/4$ at high $k$, consistent with a Bernoulli-like distribution of $B$ values concentrated near $\{0, -1\}$. $\mathrm{Var}(A)$ saturates at $\approx 1.3$. $\mathrm{Cov}(A, B)$ is small and negative ($\approx -0.10$), indicating weak coupling.</p>
+
+  <h3>§6.2. $G$ vs $G_{\mathrm{spf}}$</h3>
+  <p>$G(n) \geq G_{\mathrm{spf}}(n)$ always (Paper 15, Theorem A). Non-SPF splits can be strictly better, making $G &gt; G_{\mathrm{spf}}$:</p>
+  <table class="struct-table">
+    <thead><tr><th>$k$</th><th>$\mathrm{Var}(G)$</th><th>$P(G = G_{\mathrm{spf}})$</th></tr></thead>
+    <tbody>
+      <tr><td>2</td><td>0.35</td><td>54%</td></tr>
+      <tr><td>5</td><td>0.92</td><td>36%</td></tr>
+      <tr><td>8</td><td>1.23</td><td>17%</td></tr>
+      <tr><td>12</td><td>1.40</td><td>12%</td></tr>
+      <tr><td>18</td><td>1.30</td><td>13%</td></tr>
+    </tbody>
+  </table>
+  <p>At low $k$, non-SPF optimal splits are common and $\mathrm{Var}(G) &lt; \mathrm{Var}(G_{\mathrm{spf}})$. At high $k$, $\mathrm{Var}(G) \approx \mathrm{Var}(G_{\mathrm{spf}})$, with $\mathrm{Var}(G)$ slightly exceeding $\mathrm{Var}(G_{\mathrm{spf}})$ by up to $0.1$.</p>
+
+  <h2>§7. The Revised Proof Landscape</h2>
+
+  <h3>§7.1. What M8 Establishes</h3>
+  <p><strong>Discoveries (numerical, strong evidence on tested range $N \leq 10^7$, $k \leq 18$):</strong></p>
+  <ul>
+    <li>Shell deficiency drift: $\mathrm{Var}(d_\rho)$ consistent with $a(k) + b(k) \cdot \ln\ln N$, $b(k) &gt; 0$ increasing in $k$</li>
+    <li>Local smoothness: $\mathrm{Var}(A)$ in $[0.3, 1.35]$ ($[0.8, 1.35]$ for $k \geq 5$; seven-point $N$-scan, zero growth trend)</li>
+    <li>Anti-correlation engine: $\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)$, appears forced by DP min</li>
+    <li>Gaussian character: kurtosis $\in [2.62, 2.92]$, skewness $\to 0$</li>
+    <li>Variance anatomy: $\mathrm{Var}(B)$ converges toward $1/4$, $\mathrm{Var}(A)$ saturates near $1.3$</li>
+  </ul>
+  <p><strong>Eliminated routes:</strong> E1 (TK on $\Delta f$), E2 ($f/r$ separate), E3 (shell concentration)</p>
+
+  <h3>§7.2. Updated Open Inputs for $D(N) \to 1$</h3>
+  <table class="struct-table">
+    <thead><tr><th>Input</th><th>Status</th><th>M8 impact</th></tr></thead>
+    <tbody>
+      <tr><td>$\sigma(G) = O(1)$</td><td><strong>Most leveraged target identified:</strong> Local Lipschitz (theoretical proof open)</td><td>Shell concentration eliminated; proof target sharpened</td></tr>
+      <tr><td>Scale term monotonicity</td><td>Numerical (18pt + 7pt $N$-scan)</td><td>Unchanged</td></tr>
+      <tr><td>B-bound</td><td>Numerical hypothesis</td><td>$\mathrm{Var}(B) \to 1/4$ may be provable</td></tr>
+      <tr><td>I-a for fixed $k$</td><td>Open</td><td>Unchanged</td></tr>
+      <tr><td>Lemma II</td><td>Numerically benign</td><td>$K_p &gt; 0$ for $k \geq 6$</td></tr>
+    </tbody>
+  </table>
+
+  <h3>§7.3. Proof Dependency Graph (Updated)</h3>
+  <p>$$\text{Local Lipschitz (N)} \longrightarrow \mathrm{Var}(A) = O(1) \xrightarrow{\text{+ B-bound (N)}} \mathrm{Var}(G_{\mathrm{spf}}) = O_k(1)$$</p>
+  <p>$$\mathrm{Var}(G_{\mathrm{spf}}) = O_k(1) + \text{Prop C (T)} + \text{Scale mono (N)} \longrightarrow \text{I-b}$$</p>
+  <p>$$\text{I-b} + \text{I-a (T high-}k\text{ / N fixed-}k\text{)} \longrightarrow \text{Lemma I}$$</p>
+  <p>$$\text{Lemma I} + \text{Lemma II (N)} + \text{B-bound (N)} \longrightarrow \text{Thm 5 (Paper 16, T)}$$</p>
+  <p>$$\text{Thm 5} + \text{SPF-positivity (N)} + \text{Sathe-Selberg (T)} \longrightarrow D(N) \to 1$$</p>
+
+  <div class="appendix-label">Appendix A</div>
+  <h2>Methodological Note: Four-AI Parallel Exploration and the Thermodynamic Interface</h2>
+  <p><em>All mathematical claims, citations, and computations in this paper were independently checked and are the author's responsibility. AI systems were used for literature search, exploratory computation, and drafting support.</em></p>
+
+  <h3>A.1. Four-AI Contributions to M8</h3>
+  <p>The M8 results were developed through structured parallel exploration with four AI systems, following the protocol documented in Paper 16 Appendix.</p>
+  <p><strong>ChatGPT</strong> conducted the literature search that proved decisive: identifying Kátai-Subbarao's conditional Turán-Kubilius [4], Goudout's shifted Erdős-Kac [5], and Mangerel's gap theory [6] as the relevant boundary of existing results. ChatGPT's prediction that $\mathrm{Var}(\Delta f) = O(\ln\ln N)$ (not $O(1)$) was confirmed by Gemini's data, and ChatGPT designed the $k$-vs-$N$ scaling test (§2.2) that resolved the $O(1)$ vs $O(\ln\ln N)$ question for $\mathrm{Var}(d_\rho)$.</p>
+  <p><strong>Gemini</strong> computed the $f + r$ variance decomposition (§3) that revealed the anti-correlation engine: $\mathrm{Var}(\Delta f) \approx 10$, $\mathrm{Var}(\Delta r) \approx 7$, $\mathrm{Cov}(\Delta f, \Delta r) \approx -7.5$. This was the single most important computation of M8.</p>
+  <p><strong>Grok</strong> computed $\mathrm{Var}(G)$ vs $\mathrm{Var}(G_{\mathrm{spf}})$ across all $k$ (§6), the kurtosis data confirming Gaussian character, the 17-point $k$-scan and 7-point $N$-scan of $\mathrm{Var}(d_\rho)$ (§2.2), and the $\mathrm{Var}(A)$ $N$-stability scan that confirmed local smoothness is independent of shell drift.</p>
+  <p><strong>Claude</strong> proposed the initial $\mathrm{Var}(d_\rho) = O(1)$ conjecture (refuted), identified the tautological nature of the $S - M$ and $j - \Delta$ decompositions (§4, eliminating pure-DP routes), and formulated the Local Lipschitz target (§5.1).</p>
+
+  <h3>A.2. Role of the Thermodynamic Interface</h3>
+  <p>A parallel thread on the thermodynamic interpretation of ZFCρ contributed to M8 in three specific ways:</p>
+  <ul>
+    <li><strong>(i) Priority setting.</strong> The thermodynamic analysis identified $\sigma(G) = O(1)$ as the single most leveraged target ("one stone, three birds": A-concentration + Prop C input + fluctuation-dissipation bridge), directly determining M8's attack choice over alternatives (scale monotonicity, I-a).</li>
+    <li><strong>(ii) Fluctuation-dissipation framing.</strong> The thermodynamic interpretation of the anti-correlation engine as a discrete fluctuation-dissipation relation — where the DP min operation plays the role of a dynamical constraint linking fluctuations ($\Delta f$) to dissipation ($\Delta r$) — provided the conceptual framework that guided the search for the mechanism behind $\mathrm{Var}(A) = O(1)$.</li>
+    <li><strong>(iii) Direction correction.</strong> The thermodynamic perspective's emphasis on local dynamics ("the system's constraint limits each step, not the global position") directly suggested the shift from shell concentration to local Lipschitz as the proof target — a suggestion subsequently confirmed by the $N$-scaling data.</li>
+  </ul>
+  <p>These cross-domain contributions illustrate how physical intuition can guide the formulation (though not the proof) of mathematical conjectures.</p>
+
+  <h2>References</h2>
+  <ol class="references">
+    <li>H. Qin, "Monotonicity, roughness stability, and the narrowing of the relay architecture" (Paper 17), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</li>
+    <li>H. Qin, "The insertion identity, variance splitting, and the relay engine of Conjecture H'" (Paper 16), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+    <li>H. Qin, "Zero-inflated lattice normal model" (Paper 13), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a>.</li>
+    <li>I. Kátai and M. V. Subbarao, "Some remarks on a paper of Ramachandra," Lithuanian Math. J. 48 (2008), 170–183.</li>
+    <li>É. Goudout, "Lois de répartition des diviseurs," doctoral thesis, 2018–2021.</li>
+    <li>O. Mangerel, "Additive functions in short intervals, gaps and a conjecture of Erdős," <em>Int. Math. Res. Not.</em> (2022).</li>
+    <li>O. Mangerel, "On the bivariate Erdős-Kac theorem," <em>Proc. London Math. Soc.</em>, 2021.</li>
+    <li>G. Tenenbaum, <em>Introduction to Analytic and Probabilistic Number Theory</em>, 3rd ed., AMS, 2015.</li>
+  </ol>
+
+  <div class="series-nav">
+    ← <a href="zfcrho17.html">Paper XVII: Monotonicity, Roughness Stability, and the Narrowing of the Relay Architecture</a>
+    &nbsp;|&nbsp;
+    Paper XIX →
+  </div>
+
+  </div><!-- .paper-body -->
+  </div><!-- #lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>本文报告 M8 探索阶段关于整数复杂度函数 $\rho_E$ 方差结构的决定性结果。缺陷量 $d_\rho(n) = \rho_E(n) - c^* \ln n$（$c^*$ 为工作归一化常数）在壳上的方差 $\mathrm{Var}(d_\rho \mid \Omega = k, n \leq N)$ 与 $a(k) + b(k) \cdot \ln\ln N$ 增长一致，其中 $b(k) &gt; 0$ 且在测试范围内随 $k$ 显著增大——并非此前猜测的 $O(1)$。尽管如此，一阶差分方差 $\mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega = k)$ 在所有测试 $k$（$2$ 至 $18$）和 $N$（$10^4$ 至 $10^7$）上均处于 $[0.3, 1.35]$，关于 $N$ 无增长趋势，支持 $\sigma(G) = O(1)$。机制是分解 $\rho_E = f + r$ 中加法部分 $f$ 与组合余项 $r$ 之间的强制反相关：$\mathrm{Var}(\Delta f) \approx 10$，$\mathrm{Var}(\Delta r) \approx 7$，但 $\mathrm{Cov}(\Delta f, \Delta r) \approx -7.5$ 将 $\mathrm{Var}(A)$ 压缩至 $\approx 1$。三条证明路线被排除：对 $\Delta f$ 的 Turán-Kubilius（方差 $\approx 10$，非 $O(1)$），$f$ 和 $r$ 的分开处理（各自发散），以及 $d_\rho$ 的壳集中（随 $N$ 增长）。$\sigma(G) = O(1)$ 的最有杠杆剩余目标是局部 Lipschitz 性质：连续缺陷量之差为 $O(1)$，尽管壳级漂移为 $O(\sqrt{k \cdot \ln\ln N})$，类比于平稳增量过程。结合其余接力输入——B-bound（数值），scale term 单调性（数值），固定 $k$ 的 I-a（开放），Lemma II（数值良性）——将完成 $D(N) \to 1$ 的引擎。</p>
+    <p><strong>关键词：</strong>整数复杂度，ρ-算术，反相关，方差分解，局部光滑性，缺陷量，DP 递推，布朗类比</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>§1. 引言</h2>
+
+  <h3>§1.1. 背景</h3>
+  <p>论文 17（DOI: 10.5281/zenodo.19016958）将 $D(N) \to 1$ 的证明归约为四个主要接力输入加 Lemma II。最有杠杆的输入是 $\sigma(G \mid \Omega = k) = O(1)$。本文报告 M8 探索结果，解析 $\rho_E$ 在 $\Omega$-壳上的方差结构，识别三条死路，并确定最有杠杆的剩余目标。</p>
+
+  <h3>§1.2. 记号</h3>
+  <p>同论文 17 §1.2。额外：$c^* = 1/\ln 2 \approx 1.4427$（工作归一化常数；非已证渐近常数），$d_\rho(n) = \rho_E(n) - c^* \ln n$，$f(n) = \sum_{q^a \| n} \rho_E(q^a)$（加法部分），$r(n) = \rho_E(n) - f(n)$（组合余项），$\Delta f(n) = f(n-1) - f(n)$，$\Delta r(n) = r(n-1) - r(n)$。</p>
+
+  <h3>§1.3. 主要结果</h3>
+
+  <div class="thesis-box">
+    <p><strong>数值发现 1</strong>（壳缺陷量漂移）。$\mathrm{Var}(d_\rho \mid \Omega = k, n \leq N)$ 拟合 $a(k) + b(k) \cdot \ln\ln N$，$b(k) &gt; 0$：</p>
+    <table class="struct-table" style="margin-top:0.5rem">
+      <thead><tr><th>$k$</th><th>$b$</th></tr></thead>
+      <tbody>
+        <tr><td>4</td><td>1.26</td></tr>
+        <tr><td>6</td><td>2.58</td></tr>
+        <tr><td>8</td><td>4.41</td></tr>
+        <tr><td>10</td><td>7.53</td></tr>
+      </tbody>
+    </table>
+    <p>$b(k)$ 在测试范围内随 $k$ 显著增大，快于线性。精确渐近形式为开放问题。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>数值发现 2</strong>（局部光滑性）。$\mathrm{Var}(A \mid \Omega = k)$ 在 $[0.3, 1.35]$（$k \geq 5$ 时 $[0.8, 1.35]$），跨 $k = 2$ 至 $18$ 和 $N = 10^4$ 至 $10^7$，关于 $N$ 无增长。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>数值发现 3</strong>（反相关引擎）。$A = \Delta f + \Delta r$ 的分解：</p>
+    <table class="struct-table" style="margin-top:0.5rem">
+      <thead><tr><th>$k$</th><th>$\mathrm{Var}(\Delta f)$</th><th>$\mathrm{Var}(\Delta r)$</th><th>$\mathrm{Cov}(\Delta f, \Delta r)$</th><th>$\mathrm{Var}(A)$</th></tr></thead>
+      <tbody>
+        <tr><td>4</td><td>6.96</td><td>5.68</td><td>−5.96</td><td>0.72</td></tr>
+        <tr><td>8</td><td>9.90</td><td>6.96</td><td>−7.89</td><td>1.09</td></tr>
+        <tr><td>12</td><td>9.96</td><td>6.30</td><td>−7.48</td><td>1.30</td></tr>
+      </tbody>
+    </table>
+    <p>$\Delta f$ 和 $\Delta r$ 均非 $O(1)$；强制反相关将 $\mathrm{Var}(A)$ 压缩至 $O(1)$。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>数值发现 4</strong>（$G_{\mathrm{spf}}$ 的方差解剖）。$\mathrm{Var}(A)$：0.31 → 1.33，有界。$\mathrm{Var}(B)$：1.02 → 0.25，收敛于 $1/4$。$\mathrm{Cov}(A,B)$：小负值，$k \geq 6$ 时 $\approx -0.10$。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>数值发现 5</strong>（Gaussian 特征）。$\mathrm{Var}(G) \leq 1.45$。峰度 $\in [2.62, 2.92]$（Gaussian 值：3）。偏度趋零。跨五窗口稳定。</p>
+  </div>
+
+  <div class="note-box">
+    <p><strong>排除路线：</strong>(E1) 对 $\Delta f$ 的 TK：$\mathrm{Var}(\Delta f) \approx 10$，非 $O(1)$，无现成平移壳 TK 定理。(E2) $f/r$ 分开：各自发散，$O(1)$ 方差完全来自交叉对消。(E3) 壳集中：$\mathrm{Var}(d_\rho)$ 随 $N$ 增长。</p>
+    <p><strong>正确证明目标：</strong>局部 Lipschitz 性质 $\mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega = k) = O(1)$。</p>
+  </div>
+
+  <h2>§2. 壳缺陷量漂移</h2>
+
+  <h3>§2.1. 缺陷量及其自然标度</h3>
+  <p>$d_\rho(n) = \rho_E(n) - c^* \ln n$，$c^* = 1/\ln 2$ 为工作归一化常数（论文 11 确立 $\rho_E(n) = \Theta(\ln n)$ 但未证精确渐近常数）。在 $\Omega = k$ 壳上，问题是 $\mathrm{Var}(d_\rho)$ 是 $O(1)$、$O(k)$ 还是 $O(\ln\ln N)$。</p>
+
+  <h3>§2.2. 数据</h3>
+  <p><strong>$k$-方向</strong>（$N = 10^7$）：$\mathrm{Var}(d_\rho)$ 从 11.6（$k=2$）单调递减至 6.6（$k=18$），17 个 $k$ 值零例外。</p>
+  <p><strong>$N$-方向</strong>（$k$ 固定）：7 点扫描 $N = 10^4$ 到 $10^7$，所有 $k$ 均正增长。拟合 $a(k) + b(k) \cdot \ln\ln N$，$b(k)$ 从 $k=4$ 的 1.26 增至 $k=10$ 的 7.53。</p>
+
+  <h3>§2.3. 表观矛盾的解析</h3>
+  <p>$k$-方向递减因高 $k$ 壳更受约束（更多素因子 → 更紧的因子分解控制 → $d_\rho$ 偏离空间更小）。$N$-方向递增因更大 $N$ 引入更大素因子，其缺陷量行为范围更宽。$b(k)$ 快于线性增长，中心壳层 $k \sim \ln\ln N$ 上 $\mathrm{Var}(d_\rho)$ 预期至少 $\Theta((\ln\ln N)^2)$，精确标度开放。</p>
+
+  <h3>§2.4. 壳集中为何失败</h3>
+  <p>$\mathrm{Var}(f(n) \mid \Omega = k) \approx 16$——已经很大。$r = \rho_E - f$ 与 $f$ 反相关（DP min 强制），将 $\mathrm{Var}(\rho_E)$ 压低，但压缩不足至 $O(1)$；仅从 $\sim 16$ 降至 $\sim 10$。</p>
+
+  <h2>§3. 反相关引擎</h2>
+
+  <h3>§3.1. 结构起源</h3>
+  <p>$r = \rho_E - f$ 为定义，故 $\mathrm{Cov}(f, r) = \mathrm{Cov}(f, \rho_E) - \mathrm{Var}(f)$。若 $\rho_E$ 不受约束则 $\mathrm{Cov}(f, r) = 0$。负协方差源于 DP min 截断：$f(n)$ 大时 $\rho_E(n)$ 无法跟随上升，$r$ 变负；$f(n)$ 小时 $r$ 变正。</p>
+
+  <h3>§3.2. 差分的同一机制</h3>
+  <p>$A = \Delta f + \Delta r$，$\Delta r = A - \Delta f$。$\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f) \approx -\mathrm{Var}(\Delta f)$，解释了近乎完美的对消。</p>
+  <div class="note-box"><strong>注。</strong>以上是对数值数据的事后代数调和，非 $\mathrm{Var}(A) = O(1)$ 的演绎证明。恒等式 $\Delta r = A - \Delta f$ 使反相关成为 $\mathrm{Var}(A)$ 小的恒等推论。</div>
+
+  <h3>§3.3. 随机游走类比</h3>
+  <p>$d_\rho$ 在壳上似乎总方差以 $b(k) \cdot \ln\ln N$ 增长，增量方差保持 $O(1)$，增量近似 Gaussian（峰度 $\approx 3$）。类似于平稳增量过程。类比为启发式；证明 $\sigma(G) = O(1)$ 需形式化平稳增量性质。</p>
+
+  <h2>§4. 排除的证明路线</h2>
+
+  <h3>§4.1. 路线 E1：对 $\Delta f$ 的 Turán-Kubilius</h3>
+  <p>$\mathrm{Var}(\Delta f) \approx 10$ 且随 $N$ 增长。Kátai-Subbarao 条件 TK 给出 $\mathrm{Var}(f(n) \mid \Omega = k) = O_k(1)$，但 $f(n-1)$ 不受约束，$\mathrm{Var}(f(n-1)) = O(\ln\ln N)$（标准 TK）。$n$ 和 $n-1$ 近似独立（Elliott 型结果支持）使 $\mathrm{Var}(\Delta f) \approx O(\ln\ln N)$。据作者所知无现成平移壳 TK 定理适用；参见 Mangerel [6]。</p>
+
+  <h3>§4.2. 路线 E2：$f$ 和 $r$ 分开</h3>
+  <p>两者均 $\gg 1$。$A$ 的 $O(1)$ 方差完全来自交叉对消，非各自有界。</p>
+
+  <h3>§4.3. 路线 E3：壳集中</h3>
+  <p>7 点 $N$-扫描确认 $\mathrm{Var}(d_\rho)$ 增长，$b(k)$ 随 $k$ 增大。</p>
+
+  <h2>§5. 最有杠杆的证明目标：局部 Lipschitz 性质</h2>
+
+  <h3>§5.1. 陈述</h3>
+
+  <div class="thesis-box">
+    <p><strong>数值目标（局部 Lipschitz）。</strong>对每个固定 $k$，存在 $C_k &gt; 0$ 使得</p>
+    <p>$$\mathrm{Var}(\rho_E(n-1) - \rho_E(n) \mid \Omega(n) = k, n \leq N) \leq C_k$$</p>
+    <p>关于 $N$ 一致。</p>
+    <p>数值证据：$\mathrm{Var}(A) \in [0.3, 1.35]$，7 点 $N$-扫描无增长。理论证明开放。</p>
+  </div>
+
+  <h3>§5.2. 为何此为最有杠杆路线</h3>
+  <p>$\mathrm{Var}(A) \leq \mathrm{Var}(G)$（命题 J + Lipschitz）。$\mathrm{Var}(G_{\mathrm{spf}}) = \mathrm{Var}(A) + \mathrm{Var}(B) + 2\mathrm{Cov}(A,B) = O_k(1)$（在局部 Lipschitz + B-bound 下）。$\mathrm{Var}(G)$ 和 $\mathrm{Var}(G_{\mathrm{spf}})$ 在测试范围内接近（$k \geq 5$ 差异 $\pm 0.1$），无方差爆炸证据。故 $\mathrm{Var}(G) = O_k(1)$。</p>
+
+  <h3>§5.3. 与 DP 递推的联系</h3>
+  <p>$\rho_E(n) = \min(\rho_E(n-1) + 1, M_n)$，$A(n) = j(n) - 1$（命题 J）。DP 保证 $A \geq -1$。$A$ 的上尾由 $M_n$ 对 $S_n$ 的下冲控制。两者近乎对消至 $O(1)$ 即局部 Lipschitz。</p>
+
+  <h3>§5.4. 可能的证明方向</h3>
+  <ul>
+    <li><strong>方向 1：DP 诱导平滑。</strong>min 递推产生反馈环：$S_{n+1} = \min(S_n, M_n) + 1$。大跳跃后后继重置为 $M_n + 1$，减少记忆。</li>
+    <li><strong>方向 2：定量光滑性。</strong>$|\rho_E(n) - c^* \ln n|$ 在测试范围内亚线性。归约为约束 $|A(n)|$，具有循环性。</li>
+    <li><strong>方向 3：条件二阶矩法。</strong>利用插入恒等式直接证 $E[A^2 \mid \Omega = k] = O(1)$。</li>
+  </ul>
+
+  <h2>§6. 完整方差解剖</h2>
+
+  <h3>§6.1. 跨所有 $k$ 的 $\mathrm{Var}(A)$ 和 $\mathrm{Var}(B)$</h3>
+  <table class="struct-table">
+    <thead><tr><th>$k$</th><th>$\mathrm{Var}(A)$</th><th>$\mathrm{Var}(B)$</th><th>$\mathrm{Cov}(A,B)$</th><th>$\mathrm{Var}(G_{\mathrm{spf}})$</th></tr></thead>
+    <tbody>
+      <tr><td>2</td><td>0.31</td><td>1.02</td><td>+0.22</td><td>1.77</td></tr>
+      <tr><td>3</td><td>0.56</td><td>0.51</td><td>+0.08</td><td>1.24</td></tr>
+      <tr><td>4</td><td>0.72</td><td>0.33</td><td>−0.02</td><td>1.02</td></tr>
+      <tr><td>5</td><td>0.83</td><td>0.29</td><td>−0.07</td><td>0.99</td></tr>
+      <tr><td>6</td><td>0.92</td><td>0.27</td><td>−0.09</td><td>1.02</td></tr>
+      <tr><td>8</td><td>1.09</td><td>0.26</td><td>−0.10</td><td>1.15</td></tr>
+      <tr><td>10</td><td>1.21</td><td>0.25</td><td>−0.10</td><td>1.26</td></tr>
+      <tr><td>12</td><td>1.30</td><td>0.25</td><td>−0.11</td><td>1.33</td></tr>
+      <tr><td>15</td><td>1.31</td><td>0.25</td><td>−0.14</td><td>1.27</td></tr>
+      <tr><td>18</td><td>1.33</td><td>0.25</td><td>−0.06</td><td>1.47</td></tr>
+    </tbody>
+  </table>
+  <p>$\mathrm{Var}(B) \to 1/4$：与高 $k$ 时 $B$ 值集中于 $\{0, -1\}$ 的 Bernoulli 型分布一致；结构常数可能可证。$\mathrm{Var}(A)$ 饱和于 $\approx 1.3$。$\mathrm{Cov}(A, B)$ 小负值，弱耦合。</p>
+
+  <h3>§6.2. $G$ vs $G_{\mathrm{spf}}$</h3>
+  <table class="struct-table">
+    <thead><tr><th>$k$</th><th>$\mathrm{Var}(G)$</th><th>$P(G = G_{\mathrm{spf}})$</th></tr></thead>
+    <tbody>
+      <tr><td>2</td><td>0.35</td><td>54%</td></tr>
+      <tr><td>5</td><td>0.92</td><td>36%</td></tr>
+      <tr><td>8</td><td>1.23</td><td>17%</td></tr>
+      <tr><td>12</td><td>1.40</td><td>12%</td></tr>
+      <tr><td>18</td><td>1.30</td><td>13%</td></tr>
+    </tbody>
+  </table>
+  <p>低 $k$ 时 $\mathrm{Var}(G) &lt; \mathrm{Var}(G_{\mathrm{spf}})$（额外分裂降低方差）。高 $k$ 时两者接近，$\mathrm{Var}(G)$ 略超至多 $0.1$。</p>
+
+  <h2>§7. 修正后的证明全景图</h2>
+
+  <h3>§7.1. M8 确立的发现</h3>
+  <p>（数值，测试范围 $N \leq 10^7$，$k \leq 18$）：壳缺陷量漂移，局部光滑性（$\mathrm{Var}(A) \in [0.3, 1.35]$ 稳定），反相关引擎（$\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)$），Gaussian 特征，方差解剖（$\mathrm{Var}(B) \to 1/4$，$\mathrm{Var}(A)$ 饱和于 1.3）。排除路线 E1/E2/E3。</p>
+
+  <h3>§7.2. 更新的开放输入</h3>
+  <table class="struct-table">
+    <thead><tr><th>输入</th><th>状态</th><th>M8 影响</th></tr></thead>
+    <tbody>
+      <tr><td>$\sigma(G) = O(1)$</td><td><strong>最有杠杆目标：局部 Lipschitz</strong>（理论证明开放）</td><td>壳集中排除，目标锐化</td></tr>
+      <tr><td>Scale term 单调性</td><td>数值（18 点 + 7 点 $N$-扫描）</td><td>不变</td></tr>
+      <tr><td>B-bound</td><td>数值假设</td><td>$\mathrm{Var}(B) \to 1/4$ 可能可证</td></tr>
+      <tr><td>固定 $k$ 的 I-a</td><td>开放</td><td>不变</td></tr>
+      <tr><td>Lemma II</td><td>数值良性</td><td>$K_p &gt; 0$（$k \geq 6$）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>§7.3. 证明依赖图</h3>
+  <p>$$\text{局部 Lipschitz (N)} \longrightarrow \mathrm{Var}(A) = O(1) \xrightarrow{\text{+ B-bound (N)}} \mathrm{Var}(G_{\mathrm{spf}}) = O_k(1)$$</p>
+  <p>$$\mathrm{Var}(G_{\mathrm{spf}}) + \text{命题 C (T)} + \text{Scale 单调性 (N)} \longrightarrow \text{I-b}$$</p>
+  <p>$$\text{I-b} + \text{I-a} \longrightarrow \text{Lemma I}$$</p>
+  <p>$$\text{Lemma I} + \text{Lemma II (N)} + \text{B-bound (N)} \longrightarrow \text{Thm 5}$$</p>
+  <p>$$\text{Thm 5} + \text{SPF-正性收敛 (N)} + \text{Sathe-Selberg (T)} \longrightarrow D(N) \to 1$$</p>
+
+  <div class="appendix-label">附录 A</div>
+  <h2>方法论注：四 AI 并行探索与热力学接口</h2>
+  <p><em>本文所有数学声明、引用和计算均经独立检查，由作者负责。AI 系统用于文献检索、探索性计算和起草支持。</em></p>
+
+  <h3>A.1. 四 AI 对 M8 的贡献</h3>
+  <p><strong>ChatGPT</strong> 进行了决定性文献搜索（Kátai-Subbarao 条件 TK [4]，Goudout 平移 Erdős-Kac [5]，Mangerel 间隙理论 [6]），预测 $\mathrm{Var}(\Delta f) = O(\ln\ln N)$ 被确认，设计了 $k$-vs-$N$ 标度测试（§2.2），解决了 $\mathrm{Var}(d_\rho)$ 的 $O(1)$ vs $O(\ln\ln N)$ 问题。</p>
+  <p><strong>Gemini</strong> 计算了 $f + r$ 方差分解（§3），揭示反相关引擎——M8 最重要的单一计算。</p>
+  <p><strong>Grok</strong> 计算了 $\mathrm{Var}(G)$ vs $\mathrm{Var}(G_{\mathrm{spf}})$（§6），峰度数据，17 点 $k$-扫描和 7 点 $N$-扫描，以及 $\mathrm{Var}(A)$ $N$-稳定性扫描。</p>
+  <p><strong>Claude</strong> 提出初始 $\mathrm{Var}(d_\rho) = O(1)$ 猜想（被推翻），识别恒等式分解的恒等性质（排除纯 DP 路线），提出局部 Lipschitz 目标（§5.1）。</p>
+
+  <h3>A.2. 热力学接口的角色</h3>
+  <ul>
+    <li><strong>(i) 优先级设定。</strong>热力学分析将 $\sigma(G) = O(1)$ 识别为最有杠杆目标（"一石三鸟"），决定了 M8 的攻击选择。</li>
+    <li><strong>(ii) 涨落-耗散框架。</strong>将反相关引擎解读为离散涨落-耗散关系，DP min 操作起动力学约束的作用，提供了概念框架。</li>
+    <li><strong>(iii) 方向修正。</strong>"系统约束限制每步而非全局位置"的热力学直觉建议了从壳集中到局部 Lipschitz 的转向，随后被 $N$-标度数据确认。</li>
+  </ul>
+  <p>这些跨领域贡献说明物理直觉如何引导数学猜想的提出（但非其证明）。</p>
+
+  <h2>参考文献</h2>
+  <ol class="references">
+    <li>H. Qin，"Monotonicity, roughness stability, and the narrowing of the relay architecture"（论文 17），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>。</li>
+    <li>H. Qin，"The insertion identity, variance splitting, and the relay engine of Conjecture H'"（论文 16），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+    <li>H. Qin，"Zero-inflated lattice normal model"（论文 13），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a>。</li>
+    <li>I. Kátai and M. V. Subbarao，"Some remarks on a paper of Ramachandra," Lithuanian Math. J. 48 (2008), 170–183。</li>
+    <li>É. Goudout，"Lois de répartition des diviseurs," doctoral thesis, 2018–2021。</li>
+    <li>O. Mangerel，"Additive functions in short intervals, gaps and a conjecture of Erdős," <em>Int. Math. Res. Not.</em> (2022)。</li>
+    <li>O. Mangerel，"On the bivariate Erdős-Kac theorem," <em>Proc. London Math. Soc.</em>, 2021。</li>
+    <li>G. Tenenbaum，<em>Introduction to Analytic and Probabilistic Number Theory</em>，3rd ed., AMS, 2015。</li>
+  </ol>
+
+  <div class="series-nav">
+    ← <a href="zfcrho17.html">论文 XVII：单调性、粗糙度稳定性与接力架构的收窄</a>
+    &nbsp;|&nbsp;
+    论文 XIX →
+  </div>
+
+  </div><!-- .paper-body -->
+  </div><!-- #lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2025–2026 Han Qin · Self-as-an-End Theory</span>
+    <span>All mathematical content CC BY 4.0</span>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  document.getElementById('paper-title').textContent = lang === 'zh'
+    ? '反相关引擎：ρ_E 的方差结构与整数复杂度的局部光滑性'
+    : 'The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity';
+}
+</script>
+</body>
+</html>
