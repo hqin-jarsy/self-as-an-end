@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H' — ZFCρ Paper XVI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XVI: Exact insertion identity G_spf(pm) = j(m) + K_p(m), variance splitting G_spf = A+B+1, bridge term K_p = A(pm)+B(pm)−A(m). Finite-window recursion and Bridge Corollary toward Assumption A'. Four-AI parallel exploration methodology.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, insertion identity, variance splitting, relay mechanism, bridge term, compositeness discount, Conjecture H', Chebyshev bound, 插入恒等式, 方差分裂, 接力机制">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H'">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho16.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H'",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho16.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19013602"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "insertion identity", "variance splitting", "relay mechanism",
+      "bridge term", "compositeness discount", "Conjecture H'", "Chebyshev bound"
+    ],
+    "abstract": "This paper establishes the algebraic and analytic engine underlying the compositeness discount identified in Paper 15. Three structural results are proved unconditionally: the exact insertion identity G_spf(pm) = j(m) + K_p(m); the variance splitting decomposition G_spf = A + B + 1; and the bridge term identity K_p = A(pm) + B(pm) − A(m). Under Numerical Hypotheses A-tail and B-bound, Var(G_spf | Ω=k) = O_k(1). Numerically at N=10^7, E[G_spf | Ω=k] grows linearly with slope ≈ 0.26 (R²=0.995), Var ∈ [1.21, 1.83], insertion bias ≈ +0.31. A four-AI parallel exploration methodology is documented.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho16.html">
+  <meta name="citation_title" content="The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H'">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19013602">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho16.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; padding-bottom: 0; }
+    .lang-tab { padding: 0.45rem 1.1rem; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; color: #666; transition: background 0.15s; margin-bottom: -2px; }
+    .lang-tab.active { background: #fff; border-bottom: 2px solid #fff; color: #222; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Mathematical Foundations · ZFCρ Series Paper XVI · Zenodo 19013602</div>
+    <h1 id="paper-title">The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H'</h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · March 2026</div>
+    <div class="paper-doi">
+      DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a> · CC BY 4.0 · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+    </div>
+    <div style="margin-top:0.5rem">
+      <a class="zenodo-link" href="https://zenodo.org/records/19013602" target="_blank" rel="noopener">📄 View on Zenodo (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Language Tabs -->
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
+    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+  </div>
+
+  <!-- ========== ENGLISH ========== -->
+  <div class="lang-content active" id="lang-en">
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>We establish the algebraic and analytic engine underlying the compositeness discount identified in Paper 15. Three structural results are proved unconditionally. First, the <em>exact insertion identity</em>: for any composite n = pm with p = P⁻(n), the SPF gain decomposes as G_spf(n) = j(m) + K_p(m), where j(m) = max(G(m), 0) is the previous-layer jump and K_p(m) = ρ_E(pm−1) − ρ_E(m−1) − ρ_E(p) − 2 is the bridge term. This gives the exact recursion μ_{k+1}(x) = E_{I_k}[j(m)] + E_{I_k}[K_p(m)], reducing the Unbounded Mean Gain conjecture to two sub-problems. Second, the <em>variance splitting decomposition</em>: writing G_spf = A + B + 1 where A(n) = ρ_E(n−1) − ρ_E(n) ≥ −1 and B(n) = ρ_E(n) − ρ_E(P⁻(n)) − ρ_E(n/P⁻(n)) − 2 ≤ 0, with B ∈ [−2(k−1), 0] when v_{P⁻(n)}(n) = 1 (squarefree-in-P⁻, unconditional). Third, the <em>bridge term identity</em>: K_p(m) = A(pm) + B(pm) − A(m) (unconditional). Under Numerical Hypotheses A-tail and B-bound, Var(G_spf | Ω = k) = O_k(1). Numerically at N = 10⁷: E[G_spf | Ω = k] grows linearly with slope ≈ 0.26 (R² = 0.995), Var ∈ [1.21, 1.83], insertion bias ≈ +0.31. The relay mechanism — j(m) transmission compensating K_p drag — is quantitatively confirmed. A Bridge Corollary passes to x → ∞ limits: if Lemmas I and II hold uniformly, then μ_spf,∞(k) → ∞ completing the bridge to Assumption A'.</p>
+    <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, insertion identity, variance splitting, relay mechanism, compositeness discount, bridge term, Chebyshev bound</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>1. Introduction</h2>
+  <h3>1.1 Context</h3>
+  <p>Paper 15 (DOI: 10.5281/zenodo.19007312) established a proof architecture for D(N) → 1 under three assumptions: (A) monotone pointwise convergence of p_k(N), (A') p_∞(k) → 1, and (B) Sathe–Selberg. The present paper constructs the algebraic and analytic machinery needed to close Assumptions A and A'.</p>
+  <p>The key advance is the discovery that the relay mechanism — identified qualitatively in Paper 15 §6.4 — admits an exact algebraic formalization as the <em>insertion identity</em>, and that the variance control needed for Chebyshev application follows from a <em>splitting lemma</em> that exploits the one-sided bounds inherent in the DP definition of ρ_E.</p>
+
+  <h3>1.2 Main Results</h3>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 1 (Exact Insertion Identity).</strong> For any composite n ≥ 4 with P⁻(n) = p and m = n/p,</p>
+    <div class="math-formula">G_spf(n) = j(m) + K_p(m)</div>
+    <p>where j(m) = max(G(m), 0) and K_p(m) = ρ_E(pm−1) − ρ_E(m−1) − ρ_E(p) − 2.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 2 (Variance Splitting).</strong> Write G_spf(n) = A(n) + B(n) + 1 where A(n) = ρ_E(n−1) − ρ_E(n), B(n) = ρ_E(n) − ρ_E(P⁻(n)) − ρ_E(n/P⁻(n)) − 2. Then: (a) A(n) ≥ −1; (b) B(n) ≤ 0; (c) when v_{P⁻(n)}(n) = 1: B ∈ [−2(k−1), 0] (unconditional); when v ≥ 2: isolated into Numerical Hypothesis B-bound; (d) under Hypotheses A-tail and B-bound: Var(G_spf | Ω = k, n ≤ N) = O_k(1) uniformly in N.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 3 (Bridge Term Identity).</strong> K_p(m) = A(pm) + B(pm) − A(m) (algebraic identity, unconditional). The expectation bound E_{I_k}[K_p(m)] ≥ −C_2(k) is a numerical observation (C_2 ≈ 1 at N = 10⁷), not proved; it remains an open input (Lemma II).</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 4 (Two-Parameter Shell Mean Identity).</strong> Define μ_k(X, p) = E[G_spf(m) | Ω(m) = k, m ≤ X, P⁻(m) ≥ p] and Φ_k(X, p) = #{m ≤ X : Ω(m) = k, P⁻(m) ≥ p}. Then</p>
+    <div class="math-formula">E_{I_k(x)}[G_spf(m)] = Σ_p Φ_k(x/p, p) · μ_k(x/p, p)  /  Σ_p Φ_k(x/p, p)</div>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 5 (Finite-Window Recursion).</strong> Under Lemma I (E_{I_k}[G_spf(m)] ≥ μ_k(x) − C_1) and Lemma II (E_{I_k}[K_p(m)] ≥ −C_2(k)),</p>
+    <div class="math-formula">μ_{k+1}(x) ≥ μ_k(x) + δ_k(x) − C_1 − C_2(k)</div>
+    <p>where δ_k(x) = E_{I_k}[max(−G_spf(m), 0)] ≥ 0 is the truncation gain. A Bridge Corollary passes to x → ∞ limits: if Lemmas I and II hold uniformly in x and Σ_{j=k_0}^{K} (δ_{j,∞} − C_1 − C_2(j)) → +∞, then μ_spf,∞(k) → ∞.</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 6 (Toy Model).</strong> For a finite prime alphabet P = {q_1 &lt; ··· &lt; q_r}, if the shell mean E[G_spf | P⁻(m) = q_i] is non-decreasing in i, then E^ins[G_spf] ≥ E^amb[G_spf].</p>
+  </div>
+
+  <div class="note-box">
+    <p><strong>Numerical Result 7 (N = 10⁷).</strong> E[G_spf | Ω = k] grows linearly with slope ≈ 0.26 (R² = 0.995), Var(G_spf | Ω = k) ∈ [1.21, 1.83] (no trend), insertion bias ≈ +0.31, relay j(m)-transmission compensates K_p-drag across all k.</p>
+  </div>
+
+  <div class="note-box">
+    <p><strong>Numerical Observation 8.</strong> E_{I_k}[K_p] ≈ −0.7 for large k, driven by p = 2 at 88% weight. The conjecture E_{I_k}[K_p] &gt; 0 is <strong>false</strong>.</p>
+  </div>
+
+  <h2>2. The Exact Insertion Identity</h2>
+  <h3>2.1 Statement and Proof</h3>
+  <p><strong>Theorem 1.</strong> For any composite n ≥ 4 with P⁻(n) = p and m = n/p, G_spf(n) = j(m) + K_p(m), where j(m) = max(G(m), 0) and K_p(m) = ρ_E(pm−1) − ρ_E(m−1) − ρ_E(p) − 2.</p>
+  <p><em>Proof.</em> By definition, G_spf(n) = ρ_E(n−1) − ρ_E(p) − ρ_E(m) − 1. The DP recurrence gives ρ_E(m) = ρ_E(m−1) + 1 − j(m). Substituting:</p>
+  <div class="math-formula">G_spf(n) = ρ_E(pm−1) − ρ_E(p) − [ρ_E(m−1) + 1 − j(m)] − 1
+           = [ρ_E(pm−1) − ρ_E(m−1) − ρ_E(p) − 2] + j(m)
+           = K_p(m) + j(m). □</div>
+  <p><strong>Remark.</strong> When m is prime, G(m) ≤ 0, so j(m) = 0 and ρ_E(m) = ρ_E(m−1) + 1, consistent. Verified: N = 10⁷, k = 3 through 18, identity holds exactly for all composites.</p>
+
+  <h3>2.2 The Insertion Recursion</h3>
+  <p>The map (m, p) ↦ n = pm with Ω(m) = k, p prime, p ≤ P⁻(m), pm ≤ x gives a bijection onto {n ≤ x : Ω(n) = k+1, n composite}. Define the insertion measure I_k(x) by this bijection. Then:</p>
+  <div class="math-formula">μ_{k+1}(x) = E_{I_k(x)}[j(m)] + E_{I_k(x)}[K_p(m)]</div>
+  <p>This is exact. The first term transmits the previous-layer jump; the second is the local bridge cost.</p>
+
+  <h3>2.3 Interpretation: the Relay Formalized</h3>
+  <p>Paper 15 §6.4 identified the relay mechanism qualitatively: P(jump) drives at low k, E[j/ln | jump] drives at high k. The insertion identity reveals the precise algebraic mechanism: the (k+1)-th layer's mean gain inherits the k-th layer's jump sizes (via j(m)), augmented or diminished by the bridge cost K_p(m).</p>
+
+  <h2>3. The Variance Splitting Lemma</h2>
+  <h3>3.1 The A/B Decomposition</h3>
+  <p><strong>Theorem 2.</strong> Write G_spf(n) = A(n) + B(n) + 1 where A(n) = ρ_E(n−1) − ρ_E(n) and B(n) = ρ_E(n) − ρ_E(P⁻(n)) − ρ_E(n/P⁻(n)) − 2.</p>
+  <p><em>Proof sketches.</em> (a) ρ_E(n) ≤ ρ_E(n−1) + 1 (successor always available), so A(n) ≥ −1. (b) ρ_E(n) ≤ ρ_E(P⁻(n)) + ρ_E(n/P⁻(n)) + 2 (SPF split valid), so B(n) ≤ 0.</p>
+  <p>(c) Let p = P⁻(n), v = v_p(n). Write ρ_E(n) = f(n) + r(n). For v = 1 (squarefree-in-P⁻): ε_p = 0, so B(n) = r(n) − r(n/p) − 2. Lower bound: r(n) ≥ 0 and r(n/p) ≤ 2(k−2), giving B ≥ −2(k−1). Hence B ∈ [−2(k−1), 0] unconditionally. For v ≥ 2: ε_p = ρ_E(p^v) − ρ_E(p) − ρ_E(p^{v−1}); the available lower bound deteriorates with p, not yielding an N-independent constant — isolated into Numerical Hypothesis B-bound.</p>
+  <p>(d) Under Numerical Hypotheses A-tail and B-bound, Var(G_spf | Ω = k, n ≤ N) = O_k(1) uniformly in N. □</p>
+  <p><strong>Remark (Why direct analysis fails).</strong> The "obvious" computation via G = X − Y − Z − 1 gives Var(X) ≈ 20.6, Var(Z) ≈ 23.1, Cov(X,Z) ≈ 19.85 — enormous covariance nearly cancelling the individual variances, a consequence of the shared factor ρ_E(n). The A/B decomposition algebraically removes this common factor, revealing the true variance is O(1) residuals.</p>
+
+  <h3>3.2 Numerical Verification</h3>
+  <p>At N = 10⁷, Var(G_spf | Ω = k) ∈ [1.21, 1.83] across k = 2 to 20, no increasing trend. Component analysis at k = 4, N = 10⁶: Var(A) ≈ 0.81, Var(B) ≈ 0.54, Cov(A,B) ≈ −0.05.</p>
+
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>Var(G_spf | Ω=k)</th><th>Var(A)</th><th>Var(B)</th><th>Cov(A,B)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>1.21</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>4</td><td>1.43</td><td>0.81</td><td>0.54</td><td>−0.05</td></tr>
+      <tr><td>10</td><td>1.67</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>20</td><td>1.83</td><td>—</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. The Bridge Term</h2>
+  <h3>4.1 Algebraic Identity</h3>
+  <p><strong>Theorem 3.</strong> K_p(m) = A(pm) + B(pm) − A(m).</p>
+  <p><em>Proof.</em> A(pm) = ρ_E(pm−1) − ρ_E(pm). B(pm) = ρ_E(pm) − ρ_E(p) − ρ_E(m) − 2. A(m) = ρ_E(m−1) − ρ_E(m). Therefore:</p>
+  <div class="math-formula">A(pm) + B(pm) − A(m)
+= [ρ_E(pm−1) − ρ_E(pm)] + [ρ_E(pm) − ρ_E(p) − ρ_E(m) − 2] − [ρ_E(m−1) − ρ_E(m)]
+= ρ_E(pm−1) − ρ_E(p) − ρ_E(m−1) − 2 = K_p(m). □</div>
+
+  <h3>4.2 The Bridge Lower Bound: Status</h3>
+  <p>The algebraic identity K_p = A(pm) + B(pm) − A(m) is unconditional. The one-sided bounds (A ≥ −1, B ≤ 0) constrain the <em>range</em> of K_p but do not directly yield a lower bound on its <em>mean</em>. A bounded-variance, non-positive random variable can still have arbitrarily negative mean. Therefore, the bridge lower bound is not a consequence of the hypotheses in this paper.</p>
+  <div class="note-box">
+    <p><strong>Numerical Observation (Bridge Lower Bound).</strong> At N = 10⁷, E_{I_k}[K_p] is bounded below across all tested k: values range from −0.19 (k=3) to −0.97 (k=18), with no sign of divergence. This supports E_{I_k}[K_p] ≥ −C_2 for C_2 ≈ 1, but remains a numerical observation, not proved. This is an open input (Lemma II) for Theorem 5.</p>
+  </div>
+
+  <h3>4.3 Numerical Structure</h3>
+  <p>The insertion-weighted bridge term E_{I_k}[K_p] is negative for all k examined. The negative drift is driven by p = 2: its weight in I_k rises from 43% at k=3 to 88% at k=6.</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>E_{I_k}[K_p]</th><th>Weight of p=2</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>−0.19</td><td>43%</td></tr>
+      <tr><td>4</td><td>−0.31</td><td>62%</td></tr>
+      <tr><td>5</td><td>−0.46</td><td>74%</td></tr>
+      <tr><td>6</td><td>−0.57</td><td>88%</td></tr>
+      <tr><td>∞</td><td>≈ −0.7</td><td>88%</td></tr>
+    </tbody>
+  </table>
+  <p>Per-prime structure: E[K_2] ≈ −0.65 (always negative), E[K_3] ≈ +0.30, E[K_5] ≈ +0.50, E[K_7] ≈ +0.02. The positive contributions from p = 3, 5 are overwhelmed by p = 2's dominance. <strong>The conjecture E_{I_k}[K_p] &gt; 0 is false.</strong> The growth of μ_k cannot come from the bridge term; it must come entirely from jump transmission E_{I_k}[j(m)].</p>
+
+  <h2>5. The Insertion Measure and Its Bias</h2>
+  <h3>5.1 Radon-Nikodym Formula</h3>
+  <p>For m on the Ω = k shell with m ≤ x, define w_x(m) = π(min(P⁻(m), x/m)). The insertion measure has density</p>
+  <div class="math-formula">dν^ins / dν^amb (m) = w_x(m) / w̄_{k,x},   w̄_{k,x} = N_{k+1}(x) / N_k(x)</div>
+  <p>For any shell observable H: E^ins[H] − E^amb[H] = Cov^amb(H, w_x) / E^amb[w_x]. Lemma I is equivalent to Cov^amb(G_spf, w_x) ≥ −C_1 · E^amb[w_x]. The Radon-Nikodym derivative is <em>not</em> uniformly bounded.</p>
+
+  <h3>5.2 Two-Parameter Shell Mean Identity</h3>
+  <p>Theorem 4 reduces the insertion bias to a weighted average of two-parameter shell means μ_k(x/p, p) over primes p, with weights ω_{k,x}(p) = Φ_k(x/p, p) / N_{k+1}(x).</p>
+
+  <h3>5.3 Covariance Decomposition</h3>
+  <p>Decompose w_x(m) = π(P⁻(m)) + r_x(m) where r_x(m) = π(min(P⁻(m), x/m)) − π(P⁻(m)) ≤ 0. Then:</p>
+  <div class="math-formula">Cov(G_spf, w_x) = Cov(G_spf, π(P⁻))   [least-prime-factor bias]
+               + Cov(G_spf, r_x)      [size cutoff correction]</div>
+  <p>Numerically at N = 10⁶: for k ≥ 4, the first term is positive (larger P⁻ correlates with larger G_spf). For k = 3, the first term is <em>negative</em>, but the size cutoff overcompensates, making the total positive.</p>
+
+  <h3>5.4 An Eliminated Approach: P⁻-Monotonicity</h3>
+  <p>The route "prove E[G_spf | P⁻ = p, Ω = k] is non-decreasing in p, then apply Chebyshev rearrangement" is <strong>false</strong> in general. At k = 3, N = 10⁶: the shell mean is not monotone — it rises for p = 3, 5 then drops for p = 7, 11, …. Pure P⁻-monotonicity cannot establish Lemma I; the size cutoff is essential.</p>
+
+  <h3>5.5 Numerical Evidence</h3>
+  <p>At N = 10⁷, the insertion bias on j(m) — that is, E^ins[j(m)] − E^amb[j(m)] — is positive for all tested k:</p>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>j-bias (E^ins − E^amb)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>+0.302</td></tr>
+      <tr><td>4</td><td>+0.415</td></tr>
+      <tr><td>5</td><td>+0.432</td></tr>
+      <tr><td>8</td><td>+0.300</td></tr>
+      <tr><td>10</td><td>+0.271</td></tr>
+      <tr><td>15</td><td>+0.226</td></tr>
+      <tr><td>18</td><td>+0.421</td></tr>
+    </tbody>
+  </table>
+  <p>Mean j-bias ≈ +0.31, stable across k. Direct computation of the G_spf-bias at N = 10⁶ gives values in +0.03 to +0.10 (all positive), providing stronger but still numerical support for Lemma I.</p>
+
+  <h2>6. The Toy Model</h2>
+  <h3>6.1 Finite Prime Alphabet</h3>
+  <p><strong>Theorem 6.</strong> Let P = {q_1 &lt; ··· &lt; q_r} be a finite set of primes. On the restricted shell, partition by P⁻(n) = q_i with class weights α_i and class means h_i = E[H | P⁻ = q_i]. The toy insertion weight is w_i = i (number of primes ≤ q_i in P). If h_1 ≤ h_2 ≤ ··· ≤ h_r, then E^ins[H] ≥ E^amb[H].</p>
+  <p><em>Proof.</em> E^ins − E^amb = Cov_α(w_i, h_i) / Σ_i w_i α_i. Since w_i = i is increasing and h_i is assumed increasing, Chebyshev's sum inequality gives Cov_α(w, h) ≥ 0. □</p>
+
+  <h3>6.2 Significance and Limitations</h3>
+  <p>The toy model proves that insertion bias is automatically non-negative when the shell observable is P⁻-monotone. In the unrestricted setting, G_spf is <em>not</em> globally P⁻-monotone (§5.4), so the toy proof does not directly apply. However, it identifies the structural mechanism: insertion reweighting favors larger-P⁻ classes, which tend to have higher gains. The gap between the toy model and the full result is precisely the role of the size cutoff.</p>
+
+  <h2>7. The Conditional Growth Criterion</h2>
+  <h3>7.1 Statement and Bridge Corollary</h3>
+  <p><strong>Theorem 5 (Finite-Window Recursion).</strong> Under Lemma I and Lemma II, define the truncation gain δ_k(x) = E_{I_k}[max(−G_spf(m), 0)]. Then:</p>
+  <div class="math-formula">μ_{k+1}(x) ≥ μ_k(x) + δ_k(x) − C_1 − C_2(k)</div>
+  <p><em>Proof.</em> By Theorem 1, μ_{k+1} = E_{I_k}[j(m)] + E_{I_k}[K_p]. Since G(m) ≥ G_spf(m), j(m) = max(G(m),0) ≥ max(G_spf(m),0) = G_spf(m) + max(−G_spf(m),0). Taking expectations: E_{I_k}[j] ≥ E_{I_k}[G_spf] + δ_k ≥ (μ_k − C_1) + δ_k. With E_{I_k}[K_p] ≥ −C_2(k):</p>
+  <div class="math-formula">μ_{k+1} ≥ (μ_k − C_1 + δ_k) + (−C_2(k)) = μ_k + δ_k − C_1 − C_2(k). □</div>
+  <p><strong>Bridge Corollary.</strong> Define μ_spf,∞(k) := liminf_{x→∞} μ_k(x) and δ_{k,∞} := liminf_{x→∞} δ_k(x). If Lemmas I and II hold uniformly in x, then μ_spf,∞(k+1) ≥ μ_spf,∞(k) + δ_{k,∞} − C_1 − C_2(k). In particular, μ_spf,∞(k) → ∞ whenever Σ_{j=k_0}^{K} (δ_{j,∞} − C_1 − C_2(j)) → +∞ as K → ∞.</p>
+
+  <h3>7.2 The Truncation Gain</h3>
+  <p>The truncation gain δ_k is the expected value of |G_spf(m)| on the negative part of the G_spf distribution, under insertion measure. At N = 10⁷, δ_k &gt; 0 for all tested k: δ_3 ≈ 0.45, δ_5 ≈ 0.35, δ_{10} ≈ 0.20. At k ≥ 17, p_k(N) = 1.000, so δ_k becomes very small in the current window.</p>
+
+  <h3>7.3 The Growth Mechanism</h3>
+  <p>Combining the three ingredients:</p>
+  <ul>
+    <li><strong>Truncation gain δ_k &gt; 0</strong> (relay engine)</li>
+    <li><strong>Insertion bias ≈ +0.31</strong> (measure favorability)</li>
+    <li><strong>Bridge drag ≈ −0.7</strong> (bounded cost)</li>
+  </ul>
+  <p>The net per-step increment s_k := μ_{k+1} − μ_k ≈ 0.26, stable across k = 2 to 20 at N = 10⁷. The mechanism: even as μ_k grows, the insertion bias provides a persistent uplift that compensates the shrinking truncation gain and the bridge drag.</p>
+
+  <h2>8. Numerical Evidence at N = 10⁷</h2>
+  <h3>8.1 Summary Tables</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>E[G_spf | Ω=k]</th><th>Var(G_spf | Ω=k)</th><th>p_k(N)</th><th>E_{I_k}[j(m)]</th><th>E_{I_k}[K_p]</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>−0.47</td><td>1.21</td><td>0.229</td><td>0.30</td><td>−0.23</td></tr>
+      <tr><td>5</td><td>1.24</td><td>1.49</td><td>0.752</td><td>1.71</td><td>−0.46</td></tr>
+      <tr><td>10</td><td>2.87</td><td>1.67</td><td>0.970</td><td>3.57</td><td>−0.81</td></tr>
+      <tr><td>15</td><td>4.08</td><td>1.75</td><td>0.998</td><td>4.72</td><td>−0.89</td></tr>
+      <tr><td>20</td><td>4.52</td><td>1.83</td><td>1.000</td><td>4.93</td><td>−0.97</td></tr>
+    </tbody>
+  </table>
+  <p>E[G_spf | Ω = k]: linear growth from −0.47 (k=2) to 4.52 (k=20), slope ≈ 0.26, R² = 0.995. p_k(N): strictly increasing from 0.229 to 1.000.</p>
+
+  <h3>8.2 Eliminated Conjectures</h3>
+  <p><strong>E_{I_k}[K_p] &gt; 0: false.</strong> The bridge term is persistently negative, driven by p=2 dominance.</p>
+  <p><strong>P⁻-monotonicity of shell means: false</strong> at k = 3. Size cutoff is essential for positive insertion bias.</p>
+
+  <h2>9. Toward Convergence of SPF-Positivity Rates</h2>
+  <h3>9.1 The (A, B) Reformulation</h3>
+  <p>The SPF-positivity condition G_spf(n) &gt; 0 becomes A(n) + B(n) &gt; −1. Define p_k^spf(N) := P(G_spf(n) &gt; 0 | Ω(n) = k, n ≤ N). Since G(n) ≥ G_spf(n), p_k^spf provides a lower bound for the actual jump rate p_k(N). Convergence of p_k^spf(N) would support (but not directly establish) Assumption A.</p>
+
+  <h3>9.2 Why Convergence is Expected</h3>
+  <p>Convergence reduces to the convergence of the joint distribution of (A, B) on Ω-shells. B(n) takes O_k(1) distinct values in [−2(k−1), 0] in the squarefree-dominant case (Sathe-Selberg), and their frequencies are controlled by Sathe-Selberg asymptotics. A(n) = ρ_E(n−1) − ρ_E(n) involves the predecessor n−1, connecting to the bivariate Erdős-Kac framework: Goudout proved that ω(n−1) retains Erdős-Kac behavior conditional on ω(n) = k; Mangerel gave quantitative bivariate results for (ω(n), ω(n+a)). Extending such results to ρ_E (which is near-additive by the f+r decomposition) is a well-defined problem at the current frontier.</p>
+
+  <h3>9.3 The Remaining Gap</h3>
+  <p>Full proof requires: (i) convergence of r-value frequencies on Ω-shells (from Sathe-Selberg + DP smoothness), and (ii) predecessor stability — the distribution of ρ_E(n−1) − ρ_E(n) conditional on n's factorization type converges, connecting to the bivariate Erdős-Kac literature.</p>
+
+  <h2>10. Conclusion</h2>
+  <h3>10.1 Established Results</h3>
+  <p>This paper proves unconditionally: (a) Theorem 1 (Insertion Identity): G_spf(pm) = j(m) + K_p(m); (b) Theorem 2(a)(b)(c-squarefree) (Variance Splitting): G_spf = A + B + 1 with A ≥ −1, B ≤ 0, B ∈ [−2(k−1), 0] when v_{P⁻}(n) = 1; (c) Theorem 3 (Bridge Identity): K_p = A(pm) + B(pm) − A(m); (d) Theorem 4 (Two-Parameter Reduction): insertion mean is a weighted average of μ_k(x/p, p); (e) Theorem 6 (Toy Model): Chebyshev rearrangement proves bias ≥ 0 under P⁻-monotonicity.</p>
+  <p>Conditionally (under Hypotheses A-tail and B-bound): (f) Theorem 2(d): Var(G_spf | Ω = k) = O_k(1).</p>
+  <p>Numerically observed but not proved: (g) Bridge Lower Bound (Lemma II), open input for Theorem 5; (h) Theorem 5 (Finite-Window Recursion) and Bridge Corollary under Lemma I + II.</p>
+
+  <h3>10.2 The Remaining Frontier</h3>
+  <p>The proof of μ_spf(k) → ∞ reduces to four inputs:</p>
+  <ul>
+    <li><strong>Numerical Hypothesis A-tail:</strong> P(A(n) &gt; t | Ω = k) ≤ Ce^{−αt}. Verified to N = 10⁷. Proving requires quantitative control of "smoothness jumps" between adjacent integers (Barban-Davenport-Halberstam).</li>
+    <li><strong>Numerical Hypothesis B-bound:</strong> Var(B | Ω = k, n ≤ N) = O_k(1) uniformly. Verified to N = 10⁷. Proving requires Sathe-Selberg concentration on squarefree factorizations dominating the v ≥ 2 tail.</li>
+    <li><strong>Lemma I (Insertion non-compression):</strong> E_{I_k}[G_spf(m)] ≥ μ_k(x) − C_1. Positive j-bias (+0.31) and G_spf-bias (+0.03 to +0.10) provide numerical support.</li>
+    <li><strong>SPF-positivity convergence:</strong> Reformulated via (A, B) decomposition as a shifted-integer joint distribution problem at the frontier of analytic number theory.</li>
+  </ul>
+
+  <h3>10.3 Proof Dependency Graph</h3>
+  <div class="math-formula">Lemma I + II (uniform in x) + Σ(δ_{j,∞} − C_1 − C_2(j)) → +∞
+  → μ_spf,∞(k) → ∞
+  + Thm 2 (variance) → A' via Chebyshev
+  + SPF-positivity conv. (§9) + A' + B (Sathe-Selberg)
+  → Thm F (Paper 15) → D(N) → 1</div>
+
+  <h3>10.4 Eliminated Approaches</h3>
+  <p>"E_{I_k}[K_p] &gt; 0": false (p = 2 dominates at 88%). "P⁻-monotonicity of shell means": false at k = 3. "Bounded Radon-Nikodym derivative": false. "p_∞(k) = 1/2 via Gaussian noise": false (Cov(ρ_E(n−1), ρ_E(n/P⁻)) ≈ 20 invalidates independence assumption). Each eliminated approach sharpened the correct formulation.</p>
+
+  <h2>11. Methodological Note: Four-AI Parallel Exploration</h2>
+  <h3>11.1 Protocol</h3>
+  <p>The results in this paper were developed through a structured parallel exploration involving four AI systems — Claude (Anthropic), ChatGPT (OpenAI), Gemini (Google), and Grok (xAI) — coordinated by the author. The protocol is documented here as a reproducible methodology for AI-assisted mathematical research on open problems.</p>
+  <p>The exploration proceeded in two rounds. In Round 1, the three open sub-problems from Paper 15 were assigned based on capability profiles:</p>
+  <ul>
+    <li><strong>ChatGPT:</strong> creative multi-route exploration → Unbounded Mean Gain formalization</li>
+    <li><strong>Gemini:</strong> numerical computation and distribution analysis → variance control</li>
+    <li><strong>Grok:</strong> stateful REPL with high-precision computation → ρ_E to N = 10⁷ and cross-line numerical verification</li>
+    <li><strong>Claude:</strong> long-chain deductive reasoning → Assumption A (deepest theoretical gap)</li>
+  </ul>
+  <p>Each system received a tailored prompt containing the shared mathematical context, the specific sub-problem, suggested attack vectors, and explicit instructions to report obstructions and failures.</p>
+
+  <h3>11.2 Contributions by System</h3>
+  <p><strong>ChatGPT</strong> discovered the exact insertion identity (Theorem 1): G_spf(pm) = j(m) + K_p(m), which became the paper's central algebraic result. It also developed the two-parameter shell mean identity (Theorem 4), the covariance decomposition (§5.3), the finite prime alphabet toy model (Theorem 6), and the conditional growth criterion (Theorem 5). In the review phase, ChatGPT identified: the f-additivity bug in Theorem 2(c) (the non-coprime case p² | n), the fixed-x quantifier error in the Bridge Corollary, the positive-part sum fallacy, the variance-does-not-control-mean gap, and the lower-bound-deterioration distinction in ε_p. Each correction sharpened the paper's logical hygiene after eight revision rounds.</p>
+  <p><strong>Gemini</strong> discovered the A/B variance splitting decomposition (Theorem 2) and the bridge term identity K_p = A(pm) + B(pm) − A(m) (Theorem 3). This was the key structural insight that resolved the variance control problem, bypassing the enormous covariance (~20) between ρ_E(n−1) and ρ_E(n/P⁻). Gemini also computed the per-prime K_p tables revealing p = 2 dominance at 88% weight and refuted the conjecture E_{I_k}[K_p] &gt; 0.</p>
+  <p><strong>Grok</strong> computed ρ_E(n) to N = 10⁷ (529 seconds, 40 MB), providing the numerical backbone for all quantitative claims. It verified the insertion identity exactly for k = 3 through 18, confirmed E[G_spf] linear growth (slope 0.26, R² = 0.995), established Var(G_spf) ∈ [1.21, 1.83] across k = 2 to 20, and measured the insertion bias at +0.31. Grok's data refuted Claude's p_∞(k) = 1/2 conjecture by confirming p_2(10⁷) = 0.2288, inconsistent with convergence to 1/2.</p>
+  <p><strong>Claude</strong> proposed the C1/C2/C3 sub-conjecture framework for Assumption A and the natural density reformulation (§9). Claude also proposed — and then retracted — the p_∞(k) = 1/2 conjecture (based on a Gaussian noise argument that incorrectly assumed ρ_E(n−1) and ρ_E(n/P⁻) fluctuate independently). The retraction, forced by Gemini's Cov ≈ 20 data and Grok's numerics, clarified the essential role of the DP-induced covariance structure.</p>
+
+  <h3>11.3 Cross-Validation and Error Correction</h3>
+  <p>The protocol's central feature is <strong>cross-validation</strong>: each system's conjectures and claims were tested against the others' data and analysis. Four conjectures were refuted during the process:</p>
+  <ol>
+    <li>E_{I_k}[K_p] &gt; 0 (ChatGPT heuristic → refuted by Gemini's per-prime tables)</li>
+    <li>p_∞(k) = 1/2 (Claude's theoretical prediction → refuted by Gemini's covariance data and Grok's 10⁷ numerics)</li>
+    <li>P⁻-monotonicity of shell means (implicit in early toy model → refuted by ChatGPT's k=3 computation)</li>
+    <li>Bounded Radon-Nikodym derivative (Claude's Approach 3 → refuted by ChatGPT's analysis of w_x(m))</li>
+  </ol>
+  <p>Each refutation produced positive information: (1) identified truncation gain as the sole growth engine; (2) revealed the DP-covariance structure; (3) established the essential role of the size cutoff; (4) motivated the two-parameter shell mean reduction. The f-additivity bug (Theorem 2(c)) — caught by ChatGPT's systematic verification against n = 8 — would have been a serious error in the published paper.</p>
+
+  <h3>11.4 The Human Role</h3>
+  <p>The author's contributions were: (i) problem selection and direction — choosing which gaps to attack, when to parallelize, and when to converge; (ii) cross-line integration — synthesizing results from four independent explorations into a unified narrative; (iii) arbitration of contradictions — when Gemini's data contradicted Claude's prediction, deciding which to trust and why; (iv) termination judgment — determining when the paper had reached a stable, publishable state. No AI system proposed the four-way parallel structure, decided the round boundaries, or judged when to stop exploring and start writing.</p>
+
+  <h3>11.5 Reproducibility</h3>
+  <p>The protocol is fully reproducible: prompts, round summaries, and cross-validation steps are documented. Any researcher with access to comparable AI systems can replicate the workflow for other open problems. Essential ingredients: (a) a well-defined problem with identifiable sub-components; (b) AI systems with complementary capability profiles; (c) a human coordinator who provides direction, arbitrates, and terminates.</p>
+
+  <h2>References</h2>
+  <ol>
+    <li>H. Qin, "Sieve structure, compositeness discount, and the architecture of Conjecture H'" (Paper 15), Zenodo, DOI: 10.5281/zenodo.19007312.</li>
+    <li>H. Qin, "The formal framework of ZFCρ" (Paper 1), Zenodo, DOI: 10.5281/zenodo.18914682.</li>
+    <li>H. Qin, "Concentration and growth of ρ_E" (Paper 11), Zenodo, 2025.</li>
+    <li>H. Qin, "Telescoping identity and jump statistics" (Paper 12), Zenodo, 2025.</li>
+    <li>H. Qin, "Zero-inflated lattice normal model" (Paper 13), Zenodo, DOI: 10.5281/zenodo.18991986.</li>
+    <li>H. Qin, "Three-component decomposition and variance bounds" (Paper 14), Zenodo, 2026.</li>
+    <li>A. Selberg, "Note on a paper by L. G. Sathe," J. Indian Math. Soc. 18 (1954), 83–87.</li>
+    <li>G. Tenenbaum, <em>Introduction to Analytic and Probabilistic Number Theory</em>, 3rd ed., AMS, 2015.</li>
+    <li>P. Erdős and M. Kac, "The Gaussian law of errors in the theory of additive number theoretic functions," Amer. J. Math. 62 (1940), 738–742.</li>
+    <li>É. Goudout, "Lois de répartition des diviseurs," doctoral thesis and related publications, 2018–2021.</li>
+    <li>O. Mangerel, "On the bivariate Erdős–Kac theorem," Proc. London Math. Soc., 2021.</li>
+  </ol>
+
+  <div class="series-nav">
+    ← <a href="zfcrho15.html">Paper XV: Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'</a>
+    &nbsp;|&nbsp;
+    Paper XVII →
+  </div>
+
+  </div><!-- .paper-body -->
+  </div><!-- #lang-en -->
+
+  <!-- ========== CHINESE ========== -->
+  <div class="lang-content" id="lang-zh">
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>本文建立论文 15 所识别的合数折扣背后的代数与解析引擎。三个结构性结果被无条件证明。第一，精确插入恒等式：对任何合数 n = pm（p = P⁻(n)），SPF 增益分解为 G_spf(n) = j(m) + K_p(m)，其中 j(m) = max(G(m), 0) 为上层跳跃，K_p(m) = ρ_E(pm−1) − ρ_E(m−1) − ρ_E(p) − 2 为桥接项。这给出精确递推 μ_{k+1}(x) = E_{I_k}[j(m)] + E_{I_k}[K_p(m)]，将无界均值增益猜想归约为两个子问题。第二，方差分裂分解：令 G_spf = A + B + 1，A(n) = ρ_E(n−1) − ρ_E(n) ≥ −1，B(n) = ρ_E(n) − ρ_E(P⁻(n)) − ρ_E(n/P⁻(n)) − 2 ≤ 0；当 v_{P⁻(n)}(n) = 1 时 B ∈ [−2(k−1), 0]（无条件）。第三，桥接项恒等式：K_p(m) = A(pm) + B(pm) − A(m)（无条件）。在数值假设 A-tail 和 B-bound 下，Var(G_spf | Ω = k) = O_k(1)。数值上（N = 10⁷）：E[G_spf | Ω = k] 以斜率 ≈ 0.26（R² = 0.995）线性增长，Var ∈ [1.21, 1.83]，插入偏差 ≈ +0.31。有限窗口递推在 Lemma I+II 下成立。Bridge Corollary：若 Σ(δ_{j,∞} − C_1 − C_2(j)) → +∞，则 μ_spf,∞(k) → ∞，完成通向 A' 的桥梁。</p>
+    <p><strong>关键词：</strong>整数复杂度，ρ-算术，插入恒等式，方差分裂，接力机制，合数折扣，桥接项，Chebyshev 界</p>
+  </div>
+
+  <div class="paper-body">
+
+  <h2>§1. 引言</h2>
+  <h3>§1.1 背景</h3>
+  <p>论文 15（DOI: 10.5281/zenodo.19007312）建立了在三个假设下证明 D(N) → 1 的架构：(A) p_k(N) 的单调逐点收敛，(A') p_∞(k) → 1，(B) Sathe-Selberg。本文构建封闭假设 A 和 A' 所需的代数与解析机制。</p>
+  <p>关键进展：论文 15 §6.4 定性识别的接力机制可精确代数化为插入恒等式；Chebyshev 应用所需的方差控制来自利用 ρ_E DP 定义内禀单侧界的分裂引理。</p>
+
+  <h3>§1.2 主要结果</h3>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 1（精确插入恒等式）。</strong>对任何合数 n ≥ 4，设 P⁻(n) = p，m = n/p，</p>
+    <div class="math-formula">G_spf(n) = j(m) + K_p(m)</div>
+    <p>其中 j(m) = max(G(m), 0)，K_p(m) = ρ_E(pm−1) − ρ_E(m−1) − ρ_E(p) − 2。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 2（方差分裂）。</strong>G_spf(n) = A(n) + B(n) + 1。(a) A ≥ −1；(b) B ≤ 0；(c) v = 1 时 B ∈ [−2(k−1), 0]（无条件），v ≥ 2 时分离为 B-bound；(d) 条件于 A-tail + B-bound，Var(G_spf | Ω = k) = O_k(1)。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 3（桥接项恒等式）。</strong>K_p(m) = A(pm) + B(pm) − A(m)（无条件代数恒等式）。E_{I_k}[K_p] ≥ −C_2(k) 为数值观测/开放输入（Lemma II）。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 4（双参数壳均值恒等式）。</strong></p>
+    <div class="math-formula">E_{I_k(x)}[G_spf(m)] = Σ_p Φ_k(x/p, p)·μ_k(x/p, p) / Σ_p Φ_k(x/p, p)</div>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 5（有限窗口递推）。</strong>在 Lemma I + II 下，</p>
+    <div class="math-formula">μ_{k+1}(x) ≥ μ_k(x) + δ_k(x) − C_1 − C_2(k)</div>
+    <p>Bridge Corollary：在均匀 Lemma I+II 下，若 Σ(δ_{j,∞} − C_1 − C_2(j)) → +∞，则 μ_spf,∞(k) → ∞。</p>
+  </div>
+
+  <div class="thesis-box">
+    <p><strong>Theorem 6（玩具模型）。</strong>有限素数字母表下，P⁻ 单调性蕴含 E^ins[G_spf] ≥ E^amb[G_spf]（Chebyshev 重排）。</p>
+  </div>
+
+  <div class="note-box">
+    <p><strong>数值结果 7（N = 10⁷）。</strong>E[G_spf | Ω = k]：斜率 0.26，R² = 0.995。Var ∈ [1.21, 1.83]，无趋势。插入偏差 +0.31。接力机制定量确认。</p>
+  </div>
+
+  <div class="note-box">
+    <p><strong>数值观测 8。</strong>E_{I_k}[K_p] ≈ −0.7（p = 2 主导 88%）。E[K_p] > 0 <strong>不成立</strong>。</p>
+  </div>
+
+  <h2>§2. 精确插入恒等式</h2>
+  <h3>§2.1 证明</h3>
+  <p>G_spf(n) = ρ_E(pm−1) − ρ_E(p) − ρ_E(m) − 1。由 ρ_E(m) = ρ_E(m−1) + 1 − j(m) 代入即得 G_spf(n) = K_p(m) + j(m)。□</p>
+  <p><strong>注记。</strong>m 为素数时 j(m) = 0，一致。验证：N = 10⁷，k = 3 至 18 精确成立。</p>
+
+  <h3>§2.2 插入递推</h3>
+  <p>(m, p) ↦ pm 给出到 {n ≤ x : Ω(n) = k+1, n 合数} 的双射。精确递推：μ_{k+1}(x) = E_{I_k}[j(m)] + E_{I_k}[K_p(m)]。</p>
+
+  <h3>§2.3 接力机制的形式化</h3>
+  <p>第 (k+1) 层均值增益继承第 k 层跳跃尺寸（经 j(m)），被桥接代价 K_p(m) 增减。</p>
+
+  <h2>§3. 方差分裂引理</h2>
+  <h3>§3.1 A/B 分解与证明</h3>
+  <p>(a) ρ_E(n) ≤ ρ_E(n−1) + 1 → A ≥ −1。(b) ρ_E(n) ≤ ρ_E(P⁻) + ρ_E(n/P⁻) + 2 → B ≤ 0。(c) B(n) = r(n) − r(n/p) + ε_p − 2。v = 1 时 ε_p = 0：B ∈ [−2(k−1), 0]（无条件）；v ≥ 2 时可用下界随 p 恶化，分离为 B-bound。(d) 条件于 A-tail + B-bound，Var = O_k(1)。□</p>
+  <p><strong>直接分析失败的原因。</strong>Var(X) ≈ 20.6，Var(Z) ≈ 23.1，Cov(X,Z) ≈ 19.85——巨额对消源于共享因子 ρ_E(n)。A/B 分解代数移除此共同因子，揭示真实方差由 O(1) 余项控制。</p>
+
+  <h3>§3.2 数值验证</h3>
+  <p>N = 10⁷：Var ∈ [1.21, 1.83]，无增长趋势。k=4，N=10⁶：Var(A) ≈ 0.81，Var(B) ≈ 0.54，Cov(A,B) ≈ −0.05。</p>
+
+  <h2>§4. 桥接项</h2>
+  <h3>§4.1 代数恒等式</h3>
+  <p>K_p(m) = A(pm) + B(pm) − A(m)。证明由直接展开得到。□</p>
+
+  <h3>§4.2 桥接下界状态</h3>
+  <p>代数恒等式无条件成立。单侧界约束 K_p 的值域但不给均值下界——有界方差、非正随机变量仍可有任意负均值。桥接下界 E_{I_k}[K_p] ≥ −C_2(k)（C_2 ≈ 1，N = 10⁷）为数值观测，是 Theorem 5 的开放输入（Lemma II）。</p>
+
+  <h3>§4.3 数值</h3>
+  <p>E_{I_k}[K_p]：−0.19（k=3）至 −0.97（k=18），趋 −0.7。p = 2 权重从 43% 升至 88%。E[K_2] ≈ −0.65，E[K_3] ≈ +0.30，E[K_5] ≈ +0.50。<strong>E[K_p] &gt; 0 不成立。</strong></p>
+
+  <h2>§5. 插入测度及其偏差</h2>
+  <h3>§5.1 Radon-Nikodym 公式</h3>
+  <p>dν^ins/dν^amb = w_x(m)/w̄_{k,x}。E^ins[H] − E^amb[H] = Cov(H, w_x)/E[w_x]。Lemma I 等价于 Cov(G_spf, w_x) ≥ −C_1 · E[w_x]。RN 导数不一致有界（可为 0 或远大于 1）。</p>
+
+  <h3>§5.2 双参数壳均值恒等式</h3>
+  <p>Theorem 4 将插入偏差归约为 μ_k(x/p, p) 在各素数 p 上的加权平均，权重 ω_{k,x}(p) = Φ_k(x/p,p)/N_{k+1}(x)。</p>
+
+  <h3>§5.3 协方差分解</h3>
+  <p>Cov(G, w_x) = Cov(G, π(P⁻)) + Cov(G, r_x)。k ≥ 4 时第一项正；k = 3 时第一项负但尺寸截断项过补偿，总体为正。</p>
+
+  <h3>§5.4 被排除路线：P⁻ 单调性</h3>
+  <p>P⁻ 单调性在 k = 3 不成立。壳均值在 p = 3, 5 后下降。尺寸截断是本质性的。</p>
+
+  <h3>§5.5 数值</h3>
+  <p>j-偏差（E^ins[j] − E^amb[j]）：+0.302 至 +0.421，均值 ≈ +0.31（稳定）。G_spf-偏差 +0.03 至 +0.10（N = 10⁶，全正）。</p>
+
+  <h2>§6. 玩具模型</h2>
+  <p>有限素数字母表下，w_i = i（递增），h_i（P⁻ 单调）→ Chebyshev 重排 → E^ins ≥ E^amb。□ 无限制情形需处理尺寸截断（§5.4 示不可省略）。</p>
+
+  <h2>§7. 条件增长准则</h2>
+  <h3>§7.1 Theorem 5 与 Bridge Corollary</h3>
+  <p>在 Lemma I（E_{I_k}[G_spf] ≥ μ_k − C_1）和 Lemma II（E_{I_k}[K_p] ≥ −C_2(k)）下：</p>
+  <div class="math-formula">μ_{k+1}(x) ≥ μ_k(x) + δ_k(x) − C_1 − C_2(k)</div>
+  <p>证明：j(m) ≥ G_spf(m) + max(−G_spf,0) → E[j] ≥ E[G_spf] + δ_k ≥ (μ_k − C_1) + δ_k。代入 Lemma II 即得。□</p>
+  <p>Bridge Corollary：在均匀 Lemma I+II 下，μ_spf,∞(k+1) ≥ μ_spf,∞(k) + δ_{k,∞} − C_1 − C_2(k)。若 Σ(δ_{j,∞} − C_1 − C_2(j)) → +∞，则 μ_spf,∞(k) → ∞。</p>
+
+  <h3>§7.2–§7.3 增长机制</h3>
+  <p>截断增益 δ_k（δ_3 ≈ 0.45，δ_5 ≈ 0.35，δ_{10} ≈ 0.20），插入偏差（+0.31），桥接拖拽（≈ −0.7）。净 s_k = μ_{k+1} − μ_k ≈ 0.26，在 k = 2 至 20 稳定。</p>
+
+  <h2>§8. N = 10⁷ 数值证据</h2>
+  <table class="struct-table">
+    <thead>
+      <tr><th>k</th><th>E[G_spf | Ω=k]</th><th>Var</th><th>p_k(N)</th><th>E[j(m)]</th><th>E[K_p]</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>−0.47</td><td>1.21</td><td>0.229</td><td>0.30</td><td>−0.23</td></tr>
+      <tr><td>5</td><td>1.24</td><td>1.49</td><td>0.752</td><td>1.71</td><td>−0.46</td></tr>
+      <tr><td>10</td><td>2.87</td><td>1.67</td><td>0.970</td><td>3.57</td><td>−0.81</td></tr>
+      <tr><td>20</td><td>4.52</td><td>1.83</td><td>1.000</td><td>4.93</td><td>−0.97</td></tr>
+    </tbody>
+  </table>
+  <p>E[G_spf]：−0.47 至 4.52，斜率 0.26。被排除：E[K_p] &gt; 0（否），P⁻ 单调性（否）。</p>
+
+  <h2>§9. 通向 SPF 正性率收敛</h2>
+  <p>p_k^spf(N) = P(G_spf &gt; 0 | Ω = k) 为实际跳跃率下界。收敛性归约为 (A,B) 联合分布收敛：B 分布由 Sathe-Selberg 控制（v=1 主导）；A 分布连接到移位整数联合分布（Goudout、Mangerel 的双变量 Erdős-Kac 框架）——当前解析数论前沿。</p>
+
+  <h2>§10. 结论</h2>
+  <h3>§10.1 已确立结果</h3>
+  <p>无条件：Thm 1（插入恒等式），Thm 2(a-c 无平方分）, Thm 3（桥接恒等式），Thm 4（双参数归约），Thm 6（玩具模型）。条件性（A-tail + B-bound）：Thm 2(d)（Var = O_k(1)）。数值观测/开放输入：桥接下界（Lemma II），Thm 5（递推 + Bridge Corollary）。</p>
+
+  <h3>§10.2 剩余前沿</h3>
+  <p>四个输入：A-tail（相邻整数光滑性跳跃，需 Barban-Davenport-Halberstam），B-bound（Sathe-Selberg 集中于无平方因子），Lemma I（插入非压缩，数值支持），SPF 正性收敛（移位整数联合分布）。</p>
+
+  <h3>§10.3 证明依赖图</h3>
+  <div class="math-formula">Lemma I+II + Σ(δ_{j,∞} − C_1 − C_2(j)) → +∞
+→ μ_spf,∞ → ∞
++ Thm 2（方差）→ A'
++ SPF 正性收敛 + B
+→ Thm F（论文 15）→ D(N) → 1</div>
+
+  <h3>§10.4 被排除路线</h3>
+  <p>E[K_p] &gt; 0（否），P⁻ 单调性（否），有界 RN 导数（否），p_∞(k) = 1/2（否，Cov ≈ 20 使独立假设失效）。每条锐化了正确表述。</p>
+
+  <h2>§11. 方法论注记：四 AI 并行探索</h2>
+  <h3>§11.1 协议</h3>
+  <p>本文结果通过四个 AI 系统——Claude（Anthropic）、ChatGPT（OpenAI）、Gemini（Google）、Grok（xAI）——的结构化并行探索开发，由作者协调。第一轮按能力分工：ChatGPT（创造性探索 → 无界均值增益），Gemini（数值分析 → 方差控制），Grok（高精度计算 → ρ_E 到 10⁷ + 全线验证），Claude（长链推理 → 假设 A 的最深理论缺口）。每个系统收到包含共享数学背景、具体子问题、攻击向量和报告障碍指令的定制提示。</p>
+
+  <h3>§11.2 各系统贡献</h3>
+  <p><strong>ChatGPT</strong> 发现插入恒等式（Theorem 1）——本文核心代数结果——以及双参数壳均值恒等式（Theorem 4）、协方差分解（§5.3）、玩具模型（Theorem 6）、条件增长准则（Theorem 5）。审稿阶段识别了 f-可加性错误（n=8 反例）、固定 x 量词错误、正部和发散谬误、方差不控制均值缺口、下界恶化与对象发散区别。经八轮修订签字。</p>
+  <p><strong>Gemini</strong> 发现 A/B 方差分裂（Theorem 2）——绕过巨额协方差（≈20）的关键洞见——和桥接项恒等式（Theorem 3）。计算各素数 K_p 表，揭示 p=2 主导 88%，否定 E[K_p] &gt; 0。</p>
+  <p><strong>Grok</strong> 计算 ρ_E 到 N = 10⁷（529 秒，40 MB），精确验证插入恒等式（k=3 至 18），确认线性增长（斜率 0.26，R²=0.995），方差稳定（1.21–1.83），插入偏差（+0.31），否定 p_∞(k) = 1/2（p_2(10⁷) = 0.2288）。</p>
+  <p><strong>Claude</strong> 提出假设 A 的 C1/C2/C3 子猜想框架和自然密度重表述（§9）。提出并撤回 p_∞(k) = 1/2 猜想（被 Gemini 的 Cov ≈ 20 数据和 Grok 数值否定），澄清了 DP 协方差结构的本质角色。</p>
+
+  <h3>§11.3 交叉验证与错误纠正</h3>
+  <p>四个猜想在过程中被否定：(1) E[K_p] &gt; 0（Gemini 否定），(2) p_∞(k) = 1/2（Gemini + Grok 否定），(3) P⁻ 单调性（ChatGPT 否定），(4) 有界 RN 导数（ChatGPT 否定）。每次否定产生正信息。f-可加性错误若未被捕获将是严重的发表错误。ChatGPT 担任主要定理卫生审核者。</p>
+
+  <h3>§11.4 人的角色</h3>
+  <p>作者贡献：(i) 问题选择与方向，(ii) 跨线整合，(iii) 矛盾仲裁，(iv) 终止判断。没有 AI 系统提出四路并行结构、决定轮次边界或判断何时停止探索。</p>
+
+  <h3>§11.5 可复现性</h3>
+  <p>协议完全可复现：提示、轮次摘要和交叉验证步骤均有记录。本质要素：(a) 具有可识别子成分的界定明确问题；(b) 互补能力的 AI 系统；(c) 提供方向、仲裁和终止的人类协调者。</p>
+
+  <h2>参考文献</h2>
+  <ol>
+    <li>H. Qin, "Sieve structure, compositeness discount, and the architecture of Conjecture H'" (Paper 15), Zenodo, DOI: 10.5281/zenodo.19007312.</li>
+    <li>H. Qin, "The formal framework of ZFCρ" (Paper 1), Zenodo, DOI: 10.5281/zenodo.18914682.</li>
+    <li>H. Qin, "Concentration and growth of ρ_E" (Paper 11), Zenodo, 2025.</li>
+    <li>H. Qin, "Telescoping identity and jump statistics" (Paper 12), Zenodo, 2025.</li>
+    <li>H. Qin, "Zero-inflated lattice normal model" (Paper 13), Zenodo, DOI: 10.5281/zenodo.18991986.</li>
+    <li>H. Qin, "Three-component decomposition and variance bounds" (Paper 14), Zenodo, 2026.</li>
+    <li>A. Selberg, "Note on a paper by L. G. Sathe," J. Indian Math. Soc. 18 (1954), 83–87.</li>
+    <li>G. Tenenbaum, <em>Introduction to Analytic and Probabilistic Number Theory</em>, 3rd ed., AMS, 2015.</li>
+    <li>P. Erdős and M. Kac, "The Gaussian law of errors in the theory of additive number theoretic functions," Amer. J. Math. 62 (1940), 738–742.</li>
+    <li>É. Goudout, "Lois de répartition des diviseurs," doctoral thesis, 2018–2021.</li>
+    <li>O. Mangerel, "On the bivariate Erdős–Kac theorem," Proc. London Math. Soc., 2021.</li>
+  </ol>
+
+  <div class="series-nav">
+    ← <a href="zfcrho15.html">论文 XV：筛法结构、合数折扣与猜想 H' 的证明架构</a>
+    &nbsp;|&nbsp;
+    论文 XVII →
+  </div>
+
+  </div><!-- .paper-body -->
+  </div><!-- #lang-zh -->
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2025–2026 Han Qin · Self-as-an-End Theory</span>
+    <span>All mathematical content CC BY 4.0</span>
+  </div>
+</footer>
+
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+  document.getElementById('paper-title').textContent = lang === 'zh'
+    ? '插入恒等式、方差分裂与猜想 H\' 的接力引擎'
+    : 'The Insertion Identity, Variance Splitting, and the Relay Engine of Conjecture H\'';
+}
+</script>
+</body>
+</html>
