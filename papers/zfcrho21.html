@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queue Isomorphism and the Local Lipschitz Reduction for Selection Cost — ZFCρ Paper XXI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXI: Exact algebraic isomorphism between ZFCρ DP recursion and the Lindley equation. Memory-wipe mechanism at jump points. Conditional Theorem 3 reduces Var(A|Ω=k)=O_k(1) to three input conditions with overwhelming numerical support.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, Lindley equation, queue isomorphism, Local Lipschitz, selection cost, defect, memory wipe, 排队同构, 局部 Lipschitz, 选择代价">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Queue Isomorphism and the Local Lipschitz Reduction for Selection Cost">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho21.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Queue Isomorphism and the Local Lipschitz Reduction for Selection Cost",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho21.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19037934"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "Lindley equation", "queue isomorphism",
+      "Local Lipschitz", "selection cost", "defect", "memory wipe"
+    ],
+    "abstract": "Establishes exact algebraic isomorphism between the ZFCρ DP recursion and the Lindley equation of queueing theory. Core discovery: defect D_n satisfies D_{n+1}=max(D_n+ΔM^glob-1,0). Memory-wipe mechanism: at every jump point the queue empties. Conditional Theorem 3 reduces Var(A|Ω=k)=O_k(1) to three input conditions with overwhelming numerical support (N=10^7, 11 shells cross-validated).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho21.html">
+  <meta name="citation_title" content="Queue Isomorphism and the Local Lipschitz Reduction for Selection Cost">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19037934">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho21.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; border-color: #e0e0e0; background: #fff; margin-bottom: -2px; border-bottom: 2px solid #fff; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .proof-box { background: #f5f5ff; border: 1px solid #d0d0ee; border-radius: 4px; padding: 0.85rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .milestone-box { background: #f0fff4; border-left: 3px solid #2e7d32; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <header>
+    <div class="site-title"><a href="/">Self-as-an-End</a></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </nav>
+  </header>
+
+  <main class="paper-container">
+
+    <!-- Language tabs -->
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="switchLang('en', this)">English</button>
+      <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+    </div>
+
+    <!-- ========== ENGLISH ========== -->
+    <div class="lang-content active" id="lang-en">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ Paper XXI</div>
+        <h1 class="paper-title">Queue Isomorphism and the Local Lipschitz Reduction for Selection Cost</h1>
+        <div class="paper-authors">Han Qin</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; March 2026
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19037934
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">Abstract</div>
+          <p>We establish an exact algebraic isomorphism between the DP recursion in ZFCρ and the Lindley equation of queueing theory, and reduce the Local Lipschitz property ($\mathrm{Var}(A \mid \Omega = k) = O_k(1)$) to three explicit input conditions.</p>
+          <p>The core discovery (Theorem 1): the defect $D_n = M_n - \rho_E(n)$ satisfies exactly $D_{n+1} = \max(D_n + \Delta M_n^{\mathrm{glob}} - 1, 0)$, where $\Delta M_n^{\mathrm{glob}} = M_{n+1} - M_n$ is the one-step global gradient of the multiplicative target.</p>
+          <p>Building on this, we prove a conditional theorem (Theorem 3): <strong>if</strong> (0) the global Lindley process has bounded variance, <strong>(I)</strong> the sampled one-step global gradient has bounded variance on $\Omega$-shells, <strong>and</strong> (II) the predecessor defect has bounded variance under $\Omega(n) = k$, <strong>then</strong> $\mathrm{Var}(A \mid \Omega = k) = O_k(1)$. All three conditions are supported by overwhelming numerical evidence ($N = 10^7$, cross-validated across 11 shells).</p>
+          <p>The definitive contribution of this paper is the queue isomorphism itself (§2) and its corollaries (the memory-wipe mechanism), together with the resulting precise reduction framework.</p>
+          <p style="margin-top:0.7rem;"><strong>Keywords:</strong> integer complexity, ρ-arithmetic, Lindley equation, queue isomorphism, Local Lipschitz, selection cost, defect, memory wipe</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. Introduction</h2>
+
+        <h3>§1.1. Background</h3>
+        <p>Paper 20 unconditionally closed the B-bound: $\mathrm{Var}(B_\rho \mid \Omega = k, n \leq N) = O_k(1)$, where $B_\rho(n) = \rho_E(n) - \rho_E(n/P^-(n)) - \rho_E(P^-(n)) - 2$ is the SPF defect defined in Paper 16. The next critical input for the $D(N) \to 1$ proof chain is the A-bound (Local Lipschitz property).</p>
+
+        <h3>§1.2. Target</h3>
+        <div class="thesis-box">
+          <p><strong>Conditional Theorem (Local Lipschitz Property).</strong> If input conditions (0), (I), (II) (see §5.1) hold, then for each fixed $k \geq 2$:</p>
+          <p>$$\mathrm{Var}(A \mid \Omega(n) = k,\; n \leq N) = O_k(1) \quad (N \to \infty)$$</p>
+        </div>
+
+        <h3>§1.3. Paper Structure</h3>
+        <ol>
+          <li><strong>Proved:</strong> Exact algebraic isomorphism between the DP recursion and the Lindley equation (§2).</li>
+          <li><strong>Reduction framework:</strong> Conditional theorem deriving $\mathrm{Var}(A) = O_k(1)$ from three input conditions (§3–§5).</li>
+          <li><strong>Numerical support:</strong> Overwhelming numerical evidence for all three conditions (§3, §5, Appendices).</li>
+        </ol>
+
+        <h3>§1.4. Notation</h3>
+        <p><strong>Global gradient</strong> $\Delta M_n^{\mathrm{glob}} = M_{n+1} - M_n$: target change between consecutive integers. Used in the Lindley identity (§2).</p>
+        <p><strong>Shell gradient</strong> $\Delta M_{k,i}^{\mathrm{shell}} = M_{n_{i+1}} - M_{n_i}$: target change between consecutive $\Omega = k$ shell elements. Reported in numerical analysis (§3).</p>
+        <p><strong>Shell-sampled global gradient</strong> $\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n) = k$: conditional distribution of the one-step global gradient at shell sampling points. Used in Condition (I) and the proof of Theorem 3.</p>
+        <div class="note-box">$\Delta M^{\mathrm{shell}}$ is a block sum of several $\Delta M^{\mathrm{glob}}$ steps; the two are not directly comparable.</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. The Queue Isomorphism</h2>
+
+        <h3>§2.1. Definitions</h3>
+        <ul>
+          <li>DP recursion: $\rho_E(n) = \min(\rho_E(n-1) + 1,\ M_n)$</li>
+          <li>Multiplicative target: $M_n = \min_{ab=n,\,a,b\geq 2}(\rho_E(a) + \rho_E(b) + 2)$ (composites), $M_p = \rho_E(p)$ (prime extension)</li>
+          <li>Jump gain: $G(n) = \rho_E(n-1) + 1 - M_n$</li>
+          <li>Selection cost: $A(n) = j(n) - 1$, where $j(n) = \max(G(n), 0)$</li>
+          <li>Defect: $D_n = M_n - \rho_E(n) \geq 0$</li>
+          <li>SPF defect (Paper 16): $B_\rho(n) = \rho_E(n) - \rho_E(n/P^-(n)) - \rho_E(P^-(n)) - 2$</li>
+        </ul>
+        <p>By definition, $M_n = \rho_E(n) + D_n = \rho_E(n/P^-) + \rho_E(P^-) + 2 + B_\rho(n) + D_n$.</p>
+
+        <h3>§2.2. Theorem 1 (Lindley Identity)</h3>
+        <div class="milestone-box">
+          <p><strong>Theorem 1.</strong> For all $n \geq 2$:</p>
+          <p>$$D_{n+1} = \max\!\left(D_n + \Delta M_n^{\mathrm{glob}} - 1,\; 0\right)$$</p>
+          <p><em>Proof.</em> $D_n = \max(M_n - \rho_E(n-1) - 1, 0)$, so $\rho_E(n) = M_n - D_n$. Then:</p>
+          <p>$$D_{n+1} = \max(M_{n+1} - \rho_E(n) - 1,\; 0) = \max(D_n + \Delta M_n^{\mathrm{glob}} - 1,\; 0) \qquad \square$$</p>
+        </div>
+        <div class="note-box"><strong>Remark.</strong> This is the classical Lindley equation (Lindley, 1952). $D_n$ corresponds to waiting time, $\xi_n = \Delta M_n^{\mathrm{glob}} - 1$ is the Lindley net input, and the constant 1 is the interarrival time.</div>
+
+        <h3>§2.3. Corollary 1 (Jump Gain via Queue)</h3>
+        <div class="proof-box">
+          <p>$$G(n+1) = 1 - \Delta M_n^{\mathrm{glob}} - D_n$$</p>
+          <p><em>Proof.</em> $G(n+1) = \rho_E(n) + 1 - M_{n+1} = (M_n - D_n) + 1 - M_{n+1} = 1 - \Delta M_n^{\mathrm{glob}} - D_n$. $\square$</p>
+        </div>
+
+        <h3>§2.4. Corollary 2 (Memory Wipe at Jumps)</h3>
+        <div class="proof-box">
+          <p>If $G(n) > 0$, then $D_n = 0$ and $G(n+1) = 1 - \Delta M_n^{\mathrm{glob}}$.</p>
+          <p><em>Proof.</em> $G(n) > 0$ means $\rho_E(n-1) + 1 > M_n$, so $\rho_E(n) = M_n$ and $D_n = 0$. $\square$</p>
+        </div>
+        <div class="note-box"><strong>Interpretation.</strong> At every jump point, the queue empties to zero. The next jump gain depends only on $\Delta M_n^{\mathrm{glob}}$, independent of the prior queue state (though still determined by the arithmetic input sequence). This is the exact algebraic mechanism behind the empirical "coprimality forgetting" discovered in Paper 19.</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. Numerical Support for Input Conditions</h2>
+
+        <h3>§3.1. Input Condition (I): Bounded Variance of Shell-Sampled Global Gradient</h3>
+        <p>Theorem 3 requires: under $\Omega(n) = k$, the variance of $\Delta M_{n-1}^{\mathrm{glob}}$ is bounded.</p>
+        <div class="thesis-box">
+          <p><strong>Condition (I).</strong> For each fixed $k \geq 2$: $\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n) = k,\; n \leq N) = O_k(1)$</p>
+        </div>
+        <p><strong>Numerical evidence ($N = 10^7$):</strong></p>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n)=k)$</th><th>$|\Delta M|_{\max}$</th><th>Shell size</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>2.113</td><td>9</td><td>1,904,324</td></tr>
+            <tr><td>3</td><td>1.425</td><td>7</td><td>2,444,359</td></tr>
+            <tr><td>4</td><td>1.335</td><td>8</td><td>2,050,696</td></tr>
+            <tr><td>5</td><td>1.372</td><td>7</td><td>1,349,779</td></tr>
+            <tr><td>6</td><td>1.394</td><td>7</td><td>774,078</td></tr>
+            <tr><td>7</td><td>1.418</td><td>7</td><td>409,849</td></tr>
+            <tr><td>8</td><td>1.454</td><td>7</td><td>207,207</td></tr>
+            <tr><td>9</td><td>1.485</td><td>8</td><td>101,787</td></tr>
+            <tr><td>10</td><td>1.490</td><td>7</td><td>49,163</td></tr>
+            <tr><td>11</td><td>1.529</td><td>8</td><td>23,448</td></tr>
+            <tr><td>12</td><td>1.556</td><td>7</td><td>11,068</td></tr>
+          </tbody>
+        </table>
+        <p>All values &lt; 2.2, stably bounded.</p>
+        <div class="note-box"><strong>Remark.</strong> This quantity differs from the shell gradient $\mathrm{Var}(\Delta M^{\mathrm{shell}})$. The latter (§3.2) provides a stronger empirical constraint but does not directly enter the proof of Theorem 3.</div>
+
+        <h3>§3.2. Supplementary Shell Gradient Data</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mathrm{Var}(\Delta M^{\mathrm{shell}})$</th><th>$|\Delta M^{\mathrm{shell}}|_{\max}$</th><th>$E[\mathrm{gap}]$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.808</td><td>5</td><td>4.9</td></tr>
+            <tr><td>8</td><td>0.746</td><td>4</td><td>48.3</td></tr>
+            <tr><td>12</td><td>0.717</td><td>3</td><td>903</td></tr>
+          </tbody>
+        </table>
+        <p>Shell gradient variance is smaller than the shell-conditioned global gradient variance — counterintuitively, since block sums typically have larger variance. This suggests systematic variance cancellation within shells.</p>
+
+        <h3>§3.3. Component Decomposition</h3>
+        <p>By §2.1, $M_n = \rho_E(n/P^-) + \rho_E(P^-) + 2 + B_\rho(n) + D_n$. For consecutive shell elements:</p>
+        <p>$$\Delta M^{\mathrm{shell}} = \Delta\alpha + \Delta\beta + \Delta B_\rho + \Delta D$$</p>
+        <p>where $\Delta\alpha = \Delta[\rho_E(n/P^-)]$, $\Delta\beta = \Delta[\rho_E(P^-)]$.</p>
+        <p><strong>Key observations ($k = 8$ shell, $N = 10^7$):</strong></p>
+        <ul>
+          <li>(a) $P(D = 0) = 99.88\%$, so $\Delta D \approx 0$.</li>
+          <li>(b) $\mathrm{Var}(\Delta B_\rho^{\mathrm{shell}}) \leq 2\mathrm{Var}(B_\rho) = O_k(1)$ (directly from Paper 20 B-bound).</li>
+          <li>(c) The difficult component is $\Delta\alpha$. $\mathrm{Var}(\Delta\alpha) \approx 1.18$, but $\mathrm{Cov}(\Delta\alpha, \Delta B_\rho) \approx -0.45$ compresses total variance from ~1.9 to $\mathrm{Var}(\Delta M^{\mathrm{shell}}) \approx 0.75$.</li>
+        </ul>
+
+        <h3>§3.4. Formalization Prospects</h3>
+        <p>Complete analytic formalization of Condition (I) requires combining Paper 20's prime-power correction $\varepsilon$-control, the Turán–Kubilius framework on $\Omega = k$ shells, and $\rho_E$ growth-rate concentration (std of $\rho_E(n)/\ln n \approx 0.044$). The truth of Condition (I) is established beyond reasonable doubt at current numerical precision, but this paper does not claim it has been formally proved.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. Stability Framework</h2>
+
+        <h3>§4.1. Logarithmic Growth of $M_n$ (Proved)</h3>
+        <div class="proof-box">
+          <p><strong>Proposition B.</strong> There exists $C > 0$ such that $M_n \leq C \cdot \ln n + O(1)$ for all $n \geq 2$.</p>
+          <p><em>Proof.</em> For composite $n$ with smallest prime factor $p = P^-(n)$: $M_n \leq \rho_E(p) + \rho_E(n/p) + 2 \leq C \cdot \ln n + 2$. For primes, $M_p = \rho_E(p) \leq C \cdot \ln p$. $\square$</p>
+        </div>
+        <p><strong>Corollary (Negative drift).</strong> $(1/N) \sum_n \Delta M_n^{\mathrm{glob}} = O(\ln N / N) \to 0$.</p>
+
+        <h3>§4.2. Classical Stability Theorem (Reference)</h3>
+        <div class="note-box">
+          <strong>Loynes' Theorem (1962).</strong> Let $\{\xi_n\}$ be a strictly stationary ergodic sequence with $E[\xi_0] &lt; 0$. Then the Lindley process $D_{n+1} = \max(D_n + \xi_n, 0)$ has a unique stationary distribution. If further $E[\xi_0^2] &lt; \infty$, then $E[D^2_\infty] &lt; \infty$.
+          <br><br>
+          <strong>Remark.</strong> In ZFCρ, $\{\Delta M_n^{\mathrm{glob}}\}$ is a deterministic sequence. Applying Loynes' theorem requires constructing an appropriate probability space (e.g., via shift-dynamical embedding). This paper subsumes the legitimacy of such embedding within Condition (0).
+        </div>
+
+        <h3>§4.3. Defect Statistics (Numerical)</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$E[D]$</th><th>$\mathrm{Var}(D)$</th><th>$P(D=0)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>0.732</td><td>1.018</td><td>—</td></tr>
+            <tr><td>3</td><td>0.186</td><td>0.228</td><td>—</td></tr>
+            <tr><td>4</td><td>0.054</td><td>0.062</td><td>—</td></tr>
+            <tr><td>5</td><td>0.018</td><td>0.020</td><td>—</td></tr>
+            <tr><td>6</td><td>0.007</td><td>0.007</td><td>—</td></tr>
+            <tr><td>7</td><td>0.003</td><td>0.003</td><td>—</td></tr>
+            <tr><td>8</td><td>0.001</td><td>0.001</td><td>99.88%</td></tr>
+            <tr><td>9–12</td><td>&lt; 0.001</td><td>&lt; 0.001</td><td>&gt; 99.9%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§4.4. Input Conditions (0) and (II)</h3>
+        <div class="thesis-box">
+          <p><strong>Condition (0) (Global stability).</strong> Under an appropriate probabilistic framework, the global Lindley process $\{D_n\}$ has bounded variance: $\mathrm{Var}(D_n \mid n \leq N) = O(1)$</p>
+        </div>
+        <p><strong>Numerical support.</strong> Global Cesàro mean $(1/N) \sum D_n \approx 0.199$ (stable), max $D = 8$, $P(D = 0) \approx 87\%$.</p>
+        <div class="thesis-box">
+          <p><strong>Condition (II) (Bounded predecessor defect variance on shells).</strong> Under $\Omega(n) = k$, the predecessor defect $D_{n-1}$ has bounded variance: $\mathrm{Var}(D_{n-1} \mid \Omega(n) = k,\; n \leq N) = O_k(1)$</p>
+        </div>
+        <p><strong>Numerical support:</strong></p>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$E[D_{n-1} \mid \Omega(n)=k]$</th><th>$\mathrm{Var}(D_{n-1} \mid \Omega(n)=k)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>0.139</td><td>0.228</td></tr>
+            <tr><td>4</td><td>0.232</td><td>0.405</td></tr>
+            <tr><td>6</td><td>0.250</td><td>0.407</td></tr>
+            <tr><td>8</td><td>0.224</td><td>0.344</td></tr>
+            <tr><td>10</td><td>0.200</td><td>0.297</td></tr>
+            <tr><td>12</td><td>0.196</td><td>0.299</td></tr>
+          </tbody>
+        </table>
+        <p>All $\mathrm{Var}(D_{n-1} \mid \Omega(n) = k) &lt; 0.43$, stably bounded. $\mathrm{Corr}(D_{n_i}, D_{n_{i+1}}) = -0.001$ on the $k = 8$ shell sequence. Mean inter-shell gap $\approx 48$ steps with drift $\approx -1$: $D$ resets to zero well before reaching the next shell point.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. Conditional Main Theorem</h2>
+
+        <h3>§5.1. Theorem 3</h3>
+        <div class="milestone-box">
+          <p><strong>Theorem 3.</strong> Assume:</p>
+          <p><strong>(0)</strong> Global stability: $\mathrm{Var}(D_n \mid n \leq N) = O(1)$;<br>
+          <strong>(I)</strong> Bounded shell-sampled global gradient variance: $\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n) = k, n \leq N) = O_k(1)$;<br>
+          <strong>(II)</strong> Bounded predecessor defect variance on shells: $\mathrm{Var}(D_{n-1} \mid \Omega(n) = k, n \leq N) = O_k(1)$.</p>
+          <p>Then for each fixed $k \geq 2$: $\mathrm{Var}(A \mid \Omega(n) = k,\; n \leq N) = O_k(1)$</p>
+          <p style="margin-top:0.8rem;"><em>Proof.</em></p>
+          <p><strong>Step 1.</strong> At $\Omega(n) = k$, by Corollary 1 (§2.3): $G(n) = 1 - \Delta M_{n-1}^{\mathrm{glob}} - D_{n-1}$. Taking conditional variance:</p>
+          <p>$$\mathrm{Var}(G \mid \Omega(n)=k) \leq 2\,\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n)=k) + 2\,\mathrm{Var}(D_{n-1} \mid \Omega(n)=k)$$</p>
+          <p>Condition (I) controls the first term; Condition (II) controls the second. Hence $\mathrm{Var}(G \mid \Omega = k) = O_k(1)$.</p>
+          <p><strong>Step 2.</strong> $A(n) = j(n) - 1$, where $j(n) = \max(G(n), 0) = (G(n))^+$. The map $x \mapsto x^+$ is 1-Lipschitz, so $\mathrm{Var}(j \mid \Omega = k) \leq \mathrm{Var}(G \mid \Omega = k) = O_k(1)$. Thus $\mathrm{Var}(A \mid \Omega = k) = \mathrm{Var}(j \mid \Omega = k) = O_k(1)$. $\square$</p>
+        </div>
+        <div class="note-box"><strong>Remark.</strong> Condition (0) does not directly enter the above algebraic derivation. Its role within the overall proof program is to provide a natural global source for Condition (II) — namely, deducing shell-conditional bounded variance of $D$ from global Lindley stability.</div>
+
+        <h3>§5.2. Numerical Validation</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mathrm{Var}(G|k)$</th><th>$\mathrm{Var}(\Delta M|k)$</th><th>$\mathrm{Var}(D_{n-1}|k)$</th><th>$\mathrm{Cov}(\Delta M,D)$</th><th>$\mathrm{Var}(\Delta M+D)$</th><th>Check</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>1.769</td><td>2.113</td><td>0.228</td><td>−0.286</td><td>1.769</td><td>✓</td></tr>
+            <tr><td>4</td><td>0.900</td><td>1.335</td><td>0.405</td><td>−0.420</td><td>0.900</td><td>✓</td></tr>
+            <tr><td>6</td><td>0.956</td><td>1.394</td><td>0.407</td><td>−0.423</td><td>0.956</td><td>✓</td></tr>
+            <tr><td>8</td><td>1.101</td><td>1.454</td><td>0.344</td><td>−0.349</td><td>1.101</td><td>✓</td></tr>
+            <tr><td>10</td><td>1.209</td><td>1.490</td><td>0.297</td><td>−0.289</td><td>1.209</td><td>✓</td></tr>
+            <tr><td>12</td><td>1.298</td><td>1.556</td><td>0.299</td><td>−0.278</td><td>1.298</td><td>✓</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Consistency check.</strong> By Corollary 1, $G = 1 - \Delta M - D$, so $\mathrm{Var}(G) = \mathrm{Var}(\Delta M + D)$. The table confirms $\mathrm{Var}(G|k) = \mathrm{Var}(\Delta M+D)$ to four decimal places.</p>
+        <div class="note-box"><strong>Remark.</strong> $\mathrm{Cov}(\Delta M, D)$ is negative across all shells (−0.28 to −0.45). The bound $\mathrm{Var}(G) \leq 2\mathrm{Var}(\Delta M) + 2\mathrm{Var}(D)$ used in the proof is loose by a factor of ~3. The negative covariance reflects the system's self-regulation: when the target gradient fluctuates widely, the defect tends to be small, and vice versa.</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. Empirical Observations</h2>
+
+        <h3>§6.1. Approximate Independence of Jump Gains</h3>
+        <p>By Corollary 2 (§2.4), at $D = 0$, $G(n+1) = 1 - \Delta M_n^{\mathrm{glob}}$, independent of prior queue state. Since $P(D = 0) = 99.88\%$ on the $k = 8$ shell, the distribution of the next $j$ value is nearly independent of the current $j$.</p>
+        <p><strong>$j$ transition matrix ($k = 8$ shell, $N = 10^7$):</strong></p>
+        <table class="struct-table">
+          <thead><tr><th>$g \backslash g'$</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>0.014</td><td>0.107</td><td>0.328</td><td>0.358</td><td>0.156</td><td>0.034</td><td>0.004</td></tr>
+            <tr><td>1</td><td>0.014</td><td>0.115</td><td>0.327</td><td>0.358</td><td>0.157</td><td>0.028</td><td>0.002</td></tr>
+            <tr><td>2</td><td>0.015</td><td>0.121</td><td>0.330</td><td>0.349</td><td>0.154</td><td>0.029</td><td>0.002</td></tr>
+            <tr><td>3</td><td>0.019</td><td>0.134</td><td>0.333</td><td>0.341</td><td>0.145</td><td>0.027</td><td>0.002</td></tr>
+            <tr><td>4</td><td>0.020</td><td>0.141</td><td>0.336</td><td>0.337</td><td>0.138</td><td>0.026</td><td>0.002</td></tr>
+            <tr><td>5</td><td>0.026</td><td>0.145</td><td>0.319</td><td>0.341</td><td>0.141</td><td>0.025</td><td>0.002</td></tr>
+            <tr><td>6</td><td>0.034</td><td>0.164</td><td>0.294</td><td>0.335</td><td>0.133</td><td>0.038</td><td>0.002</td></tr>
+          </tbody>
+        </table>
+        <p>Row-to-row variation is minimal, consistent with the algebraic memory-wipe mechanism of Corollary 2.</p>
+
+        <h3>§6.2. $j$-tail Decay</h3>
+        <p>$P(j \geq g)$ on the $k = 8$ shell decays faster than geometric (numerical observation); this paper does not claim superexponential decay as proved.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. Thermodynamic Interface</h2>
+        <table class="struct-table">
+          <thead><tr><th>ZFCρ (Queue framework)</th><th>Thermodynamic correspondence</th></tr></thead>
+          <tbody>
+            <tr><td>$D_n$ (defect)</td><td>Local free energy excess</td></tr>
+            <tr><td>Drift $\approx -1$</td><td>Dissipation</td></tr>
+            <tr><td>$\Delta M^{\mathrm{glob}}$ (target gradient)</td><td>External driving strength</td></tr>
+            <tr><td>$D = 0$ (queue empty)</td><td>Thermal equilibrium</td></tr>
+            <tr><td>$\mathrm{Var}(D) \to 0$ as $k$ increases</td><td>Fluctuation suppression in high dimensions</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§8. Updated Proof Landscape</h2>
+        <table class="struct-table">
+          <thead><tr><th>Input</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>$\mathrm{Var}(A) = O_k(1)$</td><td><strong>Conditional</strong> — depends on (0)(I)(II), strong numerical support (this paper)</td></tr>
+            <tr><td>$\mathrm{Var}(B_\rho) = O_k(1)$</td><td><strong>Unconditionally closed</strong> — Paper 20</td></tr>
+          </tbody>
+        </table>
+        <p>Unconditional closure of the A-bound requires:</p>
+        <ul>
+          <li>(0): Probabilistic embedding of the deterministic Lindley process</li>
+          <li>(I): Analytic proof of bounded shell-sampled global gradient variance</li>
+          <li>(II): Formalization of predecessor defect variance bound (derivable from (0) via Palm theory or sparse-sampling arguments)</li>
+        </ul>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>References</h2>
+        <ol>
+          <li>Asmussen, S. (2003). <em>Applied Probability and Queues</em>. Springer.</li>
+          <li>Franken, P., König, D., Arndt, U. &amp; Schmidt, V. (1982). <em>Queues and Point Processes</em>. Akademie-Verlag.</li>
+          <li>Kingman, J.F.C. (1962). Some inequalities for the queue GI/G/1. <em>Biometrika</em> 49, 315–324.</li>
+          <li>Lindley, D.V. (1952). The theory of queues with a single server. <em>Proc. Cambridge Phil. Soc.</em> 48, 277–289.</li>
+          <li>Loynes, R.M. (1962). The stability of a queue with non-independent inter-arrival and service times. <em>Proc. Cambridge Phil. Soc.</em> 58, 497–520.</li>
+          <li>H. Qin, ZFCρ Paper I. DOI: <a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>.</li>
+          <li>H. Qin, ZFCρ Paper II. DOI: <a href="https://doi.org/10.5281/zenodo.18927658" target="_blank" rel="noopener">10.5281/zenodo.18927658</a>.</li>
+          <li>H. Qin, ZFCρ Paper XVI. DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+          <li>H. Qin, ZFCρ Paper XIX. DOI: <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">10.5281/zenodo.19026991</a>.</li>
+          <li>H. Qin, ZFCρ Paper XX. DOI: <a href="https://doi.org/10.5281/zenodo.19027893" target="_blank" rel="noopener">10.5281/zenodo.19027893</a>.</li>
+        </ol>
+
+        <div class="appendix-label">Appendix A: Discovery Process</div>
+        <p>The queue isomorphism (Theorem 1) emerged from four-AI parallel exploration. Gemini first identified the Lindley equation structure; Claude completed the gap analysis and discovered the Global→Shell transfer problem and the B-notation conflict; ChatGPT provided exact numerical verification, component decomposition, and rigorous review; Grok provided $k$-scaling data.</p>
+
+        <div class="appendix-label">Appendix B: Numerical Methods</div>
+        <p>All computations use $N = 10^7$ with exact integer arithmetic (Python/NumPy). Three independent implementations cross-validated. $M_n$ is extended to primes via $M_p = \rho_E(p)$ (equivalently, $D_p = 0$). Shells: $\{n \leq N : \Omega(n) = k\}$, sorted by natural ordering.</p>
+
+        <div class="appendix-label">Appendix C: Data Tables</div>
+        <h3>C.1. Global $\Delta M^{\mathrm{glob}}$ Histogram</h3>
+        <table class="struct-table">
+          <thead><tr><th>$\Delta M$</th><th>Count</th><th>Fraction</th></tr></thead>
+          <tbody>
+            <tr><td>−8</td><td>20</td><td>0.0002%</td></tr>
+            <tr><td>−7</td><td>295</td><td>0.0030%</td></tr>
+            <tr><td>−6</td><td>3,199</td><td>0.0320%</td></tr>
+            <tr><td>−5</td><td>24,263</td><td>0.2426%</td></tr>
+            <tr><td>−4</td><td>114,622</td><td>1.1462%</td></tr>
+            <tr><td>−3</td><td>379,970</td><td>3.7997%</td></tr>
+            <tr><td>−2</td><td>1,000,473</td><td>10.0047%</td></tr>
+            <tr><td>−1</td><td>2,063,520</td><td>20.6352%</td></tr>
+            <tr><td>0</td><td>2,641,566</td><td>26.4157%</td></tr>
+            <tr><td>1</td><td>2,411,159</td><td>24.1116%</td></tr>
+            <tr><td>2</td><td>877,084</td><td>8.7708%</td></tr>
+            <tr><td>3</td><td>339,566</td><td>3.3957%</td></tr>
+            <tr><td>4</td><td>108,348</td><td>1.0835%</td></tr>
+            <tr><td>5</td><td>28,597</td><td>0.2860%</td></tr>
+            <tr><td>6</td><td>6,120</td><td>0.0612%</td></tr>
+            <tr><td>7</td><td>1,046</td><td>0.0105%</td></tr>
+            <tr><td>8</td><td>135</td><td>0.0014%</td></tr>
+            <tr><td>9</td><td>15</td><td>0.0002%</td></tr>
+            <tr><td>10</td><td>1</td><td>0.0000%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>C.2. $k = 8$ Shell Statistics</h3>
+        <p><strong>$j$ distribution:</strong> $j=0$ (1.71%), $j=1$ (12.82%), $j=2$ (33.10%), $j=3$ (34.56%), $j=4$ (14.82%), $j=5$ (2.77%), $j\geq 6$ (0.22%).</p>
+        <p><strong>$D$ distribution:</strong> $D=0$ (99.88%), $D=1$ (0.11%), $D=2$ (0.003%).</p>
+        <p><strong>Gap statistics:</strong> $E[\mathrm{gap}] = 48.26$, Median = 32, Range = [1, 560]. Most frequent gaps: 16 (20,805), 32 (15,511), 24 (12,767).</p>
+
+        <div class="series-nav">
+          <span><a href="zfcrho20.html">← Paper XX: Closing the B-bound</a></span>
+          <span style="float:right;"><a href="zfcrho22.html">Paper XXII: Unbounded Mean Gain →</a></span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-en -->
+
+    <!-- ========== CHINESE ========== -->
+    <div class="lang-content" id="lang-zh">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ 论文 XXI</div>
+        <h1 class="paper-title">选择代价的排队同构与局部 Lipschitz 归约</h1>
+        <div class="paper-authors">秦汉</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; 2026 年 3 月
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19037934
+          </a>
+        </div>
+      </div>
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">摘要</div>
+          <p>本文建立 ZFCρ 框架中 DP 递推与排队论之间的精确代数同构，并将局部 Lipschitz 性（$\mathrm{Var}(A \mid \Omega = k) = O_k(1)$）归约为三个明确的输入条件。</p>
+          <p>核心发现（定理 1）：缺陷量 $D_n = M_n - \rho_E(n)$ 精确满足 Lindley 方程 $D_{n+1} = \max(D_n + \Delta M_n^{\mathrm{glob}} - 1, 0)$，其中 $\Delta M_n^{\mathrm{glob}} = M_{n+1} - M_n$ 是连续整数间的乘性目标梯度。</p>
+          <p>在此基础上，本文证明条件定理（定理 3）：<strong>若</strong> (0) 全局 Lindley 过程具有有界方差，<strong>(I)</strong> 壳层采样点上的单步全局梯度方差有界，<strong>且</strong> (II) $D_{n-1}$ 在 $\Omega(n) = k$ 条件下方差有界，<strong>则</strong> $\mathrm{Var}(A \mid \Omega = k) = O_k(1)$。三个条件均有压倒性的数值支持（$N = 10^7$，11 个壳层交叉验证）。</p>
+          <p>本文的确定性贡献是排队同构本身（§2）及其推论（记忆擦除机制），以及由此产生的精确归约框架。</p>
+          <p style="margin-top:0.7rem;"><strong>关键词：</strong>整数复杂度，ρ-算术，Lindley 方程，排队同构，局部 Lipschitz，选择代价，缺陷，记忆擦除</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. 引言</h2>
+
+        <h3>§1.1. 背景</h3>
+        <p>论文 20 无条件闭合了 B-bound：$\mathrm{Var}(B_\rho \mid \Omega = k, n \leq N) = O_k(1)$，其中 $B_\rho(n) = \rho_E(n) - \rho_E(n/P^-(n)) - \rho_E(P^-(n)) - 2$ 是论文 16 定义的 SPF 缺陷。$D(N) \to 1$ 证明链的下一个关键输入是 A-bound（局部 Lipschitz 性）。</p>
+
+        <h3>§1.2. 目标</h3>
+        <div class="thesis-box">
+          <p><strong>条件定理（局部 Lipschitz 性）.</strong> 若输入条件 (0), (I), (II)（见 §5.1）成立，则对每个固定 $k \geq 2$：</p>
+          <p>$$\mathrm{Var}(A \mid \Omega(n) = k,\; n \leq N) = O_k(1) \quad (N \to \infty)$$</p>
+        </div>
+
+        <h3>§1.3. 论文结构</h3>
+        <ol>
+          <li><strong>已证：</strong> DP 递推与 Lindley 方程的精确代数同构（§2）。</li>
+          <li><strong>归约框架：</strong> 从三个输入条件推出 $\mathrm{Var}(A) = O_k(1)$ 的条件定理（§3–§5）。</li>
+          <li><strong>数值支持：</strong> 三个条件的压倒性数值证据（§3, §5, 附录）。</li>
+        </ol>
+
+        <h3>§1.4. 记号约定</h3>
+        <p><strong>全局梯度</strong> $\Delta M_n^{\mathrm{glob}} = M_{n+1} - M_n$：连续整数 $n, n+1$ 之间的目标变化。§2 的 Lindley 恒等式使用此量。</p>
+        <p><strong>壳层梯度</strong> $\Delta M_{k,i}^{\mathrm{shell}} = M_{n_{i+1}} - M_{n_i}$：$\Omega = k$ 壳层中连续元素之间的目标变化。§3 的数值分析报告此量。</p>
+        <p><strong>壳层采样全局梯度</strong> $\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n) = k$：全局单步梯度在壳层采样点上的条件分布。条件 (I) 和定理 3 的证明使用此量。</p>
+        <div class="note-box">$\Delta M^{\mathrm{shell}}$ 是若干 $\Delta M^{\mathrm{glob}}$ 步的块和，两者大小不可直接比较。</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. 排队同构</h2>
+
+        <h3>§2.1. 基本量</h3>
+        <ul>
+          <li>DP 递推：$\rho_E(n) = \min(\rho_E(n-1) + 1,\ M_n)$</li>
+          <li>乘性目标：$M_n = \min_{ab=n,\,a,b\geq 2}(\rho_E(a) + \rho_E(b) + 2)$（合数），$M_p = \rho_E(p)$（素数延拓）</li>
+          <li>跳跃增益：$G(n) = \rho_E(n-1) + 1 - M_n$</li>
+          <li>选择代价：$A(n) = j(n) - 1$，其中 $j(n) = \max(G(n), 0)$</li>
+          <li>缺陷：$D_n = M_n - \rho_E(n) \geq 0$</li>
+          <li>SPF 缺陷（论文 16）：$B_\rho(n) = \rho_E(n) - \rho_E(n/P^-(n)) - \rho_E(P^-(n)) - 2$</li>
+        </ul>
+        <p>由定义，$M_n = \rho_E(n) + D_n = \rho_E(n/P^-) + \rho_E(P^-) + 2 + B_\rho(n) + D_n$。</p>
+
+        <h3>§2.2. 定理 1（Lindley 恒等式）</h3>
+        <div class="milestone-box">
+          <p><strong>定理 1.</strong> 对所有 $n \geq 2$：</p>
+          <p>$$D_{n+1} = \max\!\left(D_n + \Delta M_n^{\mathrm{glob}} - 1,\; 0\right)$$</p>
+          <p><em>证明.</em> $D_n = \max(M_n - \rho_E(n-1) - 1, 0)$，故 $\rho_E(n) = M_n - D_n$。于是：</p>
+          <p>$$D_{n+1} = \max(M_{n+1} - \rho_E(n) - 1,\; 0) = \max(D_n + \Delta M_n^{\mathrm{glob}} - 1,\; 0) \qquad \square$$</p>
+        </div>
+        <div class="note-box"><strong>注.</strong> 这是排队论中的经典 Lindley 方程（Lindley, 1952）。$D_n$ 对应等待时间，$\xi_n = \Delta M_n^{\mathrm{glob}} - 1$ 对应 Lindley 净增量，常数 1 对应到达间隔。</div>
+
+        <h3>§2.3. 推论 1（跳跃增益的排队表示）</h3>
+        <div class="proof-box">
+          <p>$$G(n+1) = 1 - \Delta M_n^{\mathrm{glob}} - D_n$$</p>
+          <p><em>证明.</em> $G(n+1) = \rho_E(n) + 1 - M_{n+1} = (M_n - D_n) + 1 - M_{n+1} = 1 - \Delta M_n^{\mathrm{glob}} - D_n$。$\square$</p>
+        </div>
+
+        <h3>§2.4. 推论 2（跳跃处的记忆擦除）</h3>
+        <div class="proof-box">
+          <p>若 $G(n) > 0$，则 $D_n = 0$，且 $G(n+1) = 1 - \Delta M_n^{\mathrm{glob}}$。</p>
+          <p><em>证明.</em> $G(n) > 0$ 即 $\rho_E(n-1) + 1 > M_n$，故 $\rho_E(n) = M_n$，$D_n = 0$。$\square$</p>
+        </div>
+        <div class="note-box"><strong>解释.</strong> 在每个跳跃点，队列清空至零。下一步的跳跃增益仅取决于 $\Delta M_n^{\mathrm{glob}}$，与此前的队列状态无关。这是论文 19 发现的"coprimality 遗忘"的精确代数机制。</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. 输入条件的数值支持</h2>
+
+        <h3>§3.1. 输入条件 (I)：壳层采样点上的全局梯度方差有界</h3>
+        <div class="thesis-box">
+          <p><strong>条件 (I).</strong> 对每个固定 $k \geq 2$：$\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n) = k,\; n \leq N) = O_k(1)$</p>
+        </div>
+        <p><strong>数值证据（$N = 10^7$）：</strong></p>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n)=k)$</th><th>$|\Delta M|_{\max}$</th><th>壳层大小</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>2.113</td><td>9</td><td>1,904,324</td></tr>
+            <tr><td>3</td><td>1.425</td><td>7</td><td>2,444,359</td></tr>
+            <tr><td>4</td><td>1.335</td><td>8</td><td>2,050,696</td></tr>
+            <tr><td>5</td><td>1.372</td><td>7</td><td>1,349,779</td></tr>
+            <tr><td>6</td><td>1.394</td><td>7</td><td>774,078</td></tr>
+            <tr><td>7</td><td>1.418</td><td>7</td><td>409,849</td></tr>
+            <tr><td>8</td><td>1.454</td><td>7</td><td>207,207</td></tr>
+            <tr><td>9</td><td>1.485</td><td>8</td><td>101,787</td></tr>
+            <tr><td>10</td><td>1.490</td><td>7</td><td>49,163</td></tr>
+            <tr><td>11</td><td>1.529</td><td>8</td><td>23,448</td></tr>
+            <tr><td>12</td><td>1.556</td><td>7</td><td>11,068</td></tr>
+          </tbody>
+        </table>
+        <p>所有值 &lt; 2.2，稳定有界。</p>
+
+        <h3>§3.2. 壳层梯度的补充数据</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mathrm{Var}(\Delta M^{\mathrm{shell}})$</th><th>$|\Delta M^{\mathrm{shell}}|_{\max}$</th><th>$E[\mathrm{gap}]$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.808</td><td>5</td><td>4.9</td></tr>
+            <tr><td>8</td><td>0.746</td><td>4</td><td>48.3</td></tr>
+            <tr><td>12</td><td>0.717</td><td>3</td><td>903</td></tr>
+          </tbody>
+        </table>
+        <p>壳层梯度方差小于全局梯度的壳层条件方差——这是反直觉的（块和的方差通常大于单步方差），暗示壳层内部存在系统性的方差抵消。</p>
+
+        <h3>§3.3. 分量分解</h3>
+        <p>由 §2.1，$\Delta M^{\mathrm{shell}} = \Delta\alpha + \Delta\beta + \Delta B_\rho + \Delta D$，其中 $\Delta\alpha = \Delta[\rho_E(n/P^-)]$，$\Delta\beta = \Delta[\rho_E(P^-)]$。</p>
+        <p><strong>关键观察（$k = 8$ 壳层，$N = 10^7$）：</strong></p>
+        <ul>
+          <li>(a) $P(D = 0) = 99.88\%$，故 $\Delta D \approx 0$。</li>
+          <li>(b) $\mathrm{Var}(\Delta B_\rho^{\mathrm{shell}}) \leq 2\mathrm{Var}(B_\rho) = O_k(1)$（论文 20 B-bound 直接给出）。</li>
+          <li>(c) 真正困难的分量是 $\Delta\alpha$。$\mathrm{Var}(\Delta\alpha) \approx 1.18$，但 $\mathrm{Cov}(\Delta\alpha, \Delta B_\rho) \approx -0.45$ 将总方差压缩至 $\mathrm{Var}(\Delta M^{\mathrm{shell}}) \approx 0.75$。</li>
+        </ul>
+
+        <h3>§3.4. 形式化前景</h3>
+        <p>条件 (I) 的完整解析形式化需要论文 20 的素幂修正 $\varepsilon$ 控制、$\Omega = k$ 壳层上的 Turán–Kubilius 框架，以及 $\rho_E$ 增长率的集中性。条件 (I) 的真实性在当前数值精度下已超越合理怀疑，但本文不声称其已被形式证明。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. 稳定性框架</h2>
+
+        <h3>§4.1. $M_n$ 的对数增长（已证）</h3>
+        <div class="proof-box">
+          <p><strong>命题 B.</strong> 存在 $C > 0$，使得对所有 $n \geq 2$，$M_n \leq C \cdot \ln n + O(1)$。</p>
+          <p><em>证明.</em> 对最小素因子为 $p = P^-(n)$ 的合数 $n$：$M_n \leq \rho_E(p) + \rho_E(n/p) + 2 \leq C \cdot \ln n + 2$。素数情况类似。$\square$</p>
+        </div>
+        <p><strong>推论（负漂移）.</strong> $(1/N) \sum_n \Delta M_n^{\mathrm{glob}} = O(\ln N / N) \to 0$。</p>
+
+        <h3>§4.2. 经典稳定性定理（参考）</h3>
+        <div class="note-box">
+          <strong>Loynes 定理（1962）.</strong> 设 $\{\xi_n\}$ 是严格平稳遍历序列，$E[\xi_0] &lt; 0$。则 Lindley 过程 $D_{n+1} = \max(D_n + \xi_n, 0)$ 存在唯一平稳分布。若进一步 $E[\xi_0^2] &lt; \infty$，则 $E[D^2_\infty] &lt; \infty$。
+          <br><br>
+          <strong>注.</strong> 在 ZFCρ 中，$\{\Delta M_n^{\mathrm{glob}}\}$ 是确定性序列。应用 Loynes 定理需要构造适当的概率空间（例如通过移位动力嵌入）。本文将此合法性包含在条件 (0) 中。
+        </div>
+
+        <h3>§4.3. 缺陷统计（数值）</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$E[D]$</th><th>$\mathrm{Var}(D)$</th><th>$P(D=0)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>0.732</td><td>1.018</td><td>—</td></tr>
+            <tr><td>3</td><td>0.186</td><td>0.228</td><td>—</td></tr>
+            <tr><td>4</td><td>0.054</td><td>0.062</td><td>—</td></tr>
+            <tr><td>5</td><td>0.018</td><td>0.020</td><td>—</td></tr>
+            <tr><td>6</td><td>0.007</td><td>0.007</td><td>—</td></tr>
+            <tr><td>7</td><td>0.003</td><td>0.003</td><td>—</td></tr>
+            <tr><td>8</td><td>0.001</td><td>0.001</td><td>99.88%</td></tr>
+            <tr><td>9–12</td><td>&lt; 0.001</td><td>&lt; 0.001</td><td>&gt; 99.9%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§4.4. 输入条件 (0) 与 (II)</h3>
+        <div class="thesis-box">
+          <p><strong>条件 (0)（全局稳定性）.</strong> 在适当的概率框架下，全局 Lindley 过程 $\{D_n\}$ 具有有界方差：$\mathrm{Var}(D_n \mid n \leq N) = O(1)$</p>
+        </div>
+        <p><strong>数值支持.</strong> 全局 Cesàro 均值 $(1/N) \sum D_n \approx 0.199$（稳定），$\max D = 8$，$P(D = 0) \approx 87\%$。</p>
+        <div class="thesis-box">
+          <p><strong>条件 (II)（壳层上前驱缺陷方差有界）.</strong> 在 $\Omega(n) = k$ 条件下，前驱缺陷 $D_{n-1}$ 具有有界方差：$\mathrm{Var}(D_{n-1} \mid \Omega(n) = k,\; n \leq N) = O_k(1)$</p>
+        </div>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$E[D_{n-1} \mid \Omega(n)=k]$</th><th>$\mathrm{Var}(D_{n-1} \mid \Omega(n)=k)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>0.139</td><td>0.228</td></tr>
+            <tr><td>4</td><td>0.232</td><td>0.405</td></tr>
+            <tr><td>6</td><td>0.250</td><td>0.407</td></tr>
+            <tr><td>8</td><td>0.224</td><td>0.344</td></tr>
+            <tr><td>10</td><td>0.200</td><td>0.297</td></tr>
+            <tr><td>12</td><td>0.196</td><td>0.299</td></tr>
+          </tbody>
+        </table>
+        <p>所有 $\mathrm{Var}(D_{n-1} \mid \Omega(n) = k) &lt; 0.43$，稳定有界。$k = 8$ 壳层序列上 $\mathrm{Corr}(D_{n_i}, D_{n_{i+1}}) = -0.001$。平均壳层间距约 48 步，漂移 $\approx -1$：$D$ 在到达下一个壳层点之前已充分重置为零。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. 条件主定理</h2>
+
+        <h3>§5.1. 定理 3</h3>
+        <div class="milestone-box">
+          <p><strong>定理 3.</strong> 假设：</p>
+          <p><strong>(0)</strong> 全局稳定性：$\mathrm{Var}(D_n \mid n \leq N) = O(1)$；<br>
+          <strong>(I)</strong> 壳层采样点上全局梯度方差有界：$\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n) = k, n \leq N) = O_k(1)$；<br>
+          <strong>(II)</strong> 壳层上前驱缺陷方差有界：$\mathrm{Var}(D_{n-1} \mid \Omega(n) = k, n \leq N) = O_k(1)$。</p>
+          <p>则对每个固定 $k \geq 2$：$\mathrm{Var}(A \mid \Omega(n) = k,\; n \leq N) = O_k(1)$</p>
+          <p style="margin-top:0.8rem;"><em>证明.</em></p>
+          <p><strong>步骤 1.</strong> 在 $\Omega(n) = k$ 处，由推论 1（§2.3）：$G(n) = 1 - \Delta M_{n-1}^{\mathrm{glob}} - D_{n-1}$。取条件方差：</p>
+          <p>$$\mathrm{Var}(G \mid \Omega(n)=k) \leq 2\,\mathrm{Var}(\Delta M_{n-1}^{\mathrm{glob}} \mid \Omega(n)=k) + 2\,\mathrm{Var}(D_{n-1} \mid \Omega(n)=k)$$</p>
+          <p>条件 (I) 控制第一项，条件 (II) 控制第二项。故 $\mathrm{Var}(G \mid \Omega = k) = O_k(1)$。</p>
+          <p><strong>步骤 2.</strong> $A(n) = j(n) - 1$，$j(n) = \max(G(n), 0)$。映射 $x \mapsto x^+$ 是 1-Lipschitz 的，故 $\mathrm{Var}(j \mid \Omega = k) \leq \mathrm{Var}(G \mid \Omega = k) = O_k(1)$。从而 $\mathrm{Var}(A \mid \Omega = k) = O_k(1)$。$\square$</p>
+        </div>
+
+        <h3>§5.2. 数值验证</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mathrm{Var}(G|k)$</th><th>$\mathrm{Var}(\Delta M|k)$</th><th>$\mathrm{Var}(D_{n-1}|k)$</th><th>$\mathrm{Cov}(\Delta M,D)$</th><th>$\mathrm{Var}(\Delta M+D)$</th><th>验证</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>1.769</td><td>2.113</td><td>0.228</td><td>−0.286</td><td>1.769</td><td>✓</td></tr>
+            <tr><td>4</td><td>0.900</td><td>1.335</td><td>0.405</td><td>−0.420</td><td>0.900</td><td>✓</td></tr>
+            <tr><td>6</td><td>0.956</td><td>1.394</td><td>0.407</td><td>−0.423</td><td>0.956</td><td>✓</td></tr>
+            <tr><td>8</td><td>1.101</td><td>1.454</td><td>0.344</td><td>−0.349</td><td>1.101</td><td>✓</td></tr>
+            <tr><td>10</td><td>1.209</td><td>1.490</td><td>0.297</td><td>−0.289</td><td>1.209</td><td>✓</td></tr>
+            <tr><td>12</td><td>1.298</td><td>1.556</td><td>0.299</td><td>−0.278</td><td>1.298</td><td>✓</td></tr>
+          </tbody>
+        </table>
+        <p><strong>一致性验证.</strong> 由推论 1，$G = 1 - \Delta M - D$，故 $\mathrm{Var}(G) = \mathrm{Var}(\Delta M + D)$。表格精确验证了该代数恒等式（精度达四位小数）。</p>
+        <div class="note-box"><strong>注.</strong> 所有壳层的 $\mathrm{Cov}(\Delta M, D)$ 均为负（-0.28 到 -0.45）。证明中使用的界 $\mathrm{Var}(G) \leq 2\mathrm{Var}(\Delta M) + 2\mathrm{Var}(D)$ 松弛约 3 倍。负协方差反映系统的自我调节：目标梯度波动较大时，缺陷往往较小，反之亦然。</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. 经验观察</h2>
+
+        <h3>§6.1. 跳跃增益的近似独立性</h3>
+        <p>由推论 2（§2.4），在 $D = 0$ 时，$G(n+1) = 1 - \Delta M_n^{\mathrm{glob}}$，与此前队列状态无关。由于 $k = 8$ 壳层上 $P(D = 0) = 99.88\%$，下一个 $j$ 值的分布几乎独立于当前 $j$。</p>
+        <p><strong>$j$ 转移矩阵（$k = 8$ 壳层，$N = 10^7$）：</strong></p>
+        <table class="struct-table">
+          <thead><tr><th>$g \backslash g'$</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>0.014</td><td>0.107</td><td>0.328</td><td>0.358</td><td>0.156</td><td>0.034</td><td>0.004</td></tr>
+            <tr><td>1</td><td>0.014</td><td>0.115</td><td>0.327</td><td>0.358</td><td>0.157</td><td>0.028</td><td>0.002</td></tr>
+            <tr><td>2</td><td>0.015</td><td>0.121</td><td>0.330</td><td>0.349</td><td>0.154</td><td>0.029</td><td>0.002</td></tr>
+            <tr><td>3</td><td>0.019</td><td>0.134</td><td>0.333</td><td>0.341</td><td>0.145</td><td>0.027</td><td>0.002</td></tr>
+            <tr><td>4</td><td>0.020</td><td>0.141</td><td>0.336</td><td>0.337</td><td>0.138</td><td>0.026</td><td>0.002</td></tr>
+            <tr><td>5</td><td>0.026</td><td>0.145</td><td>0.319</td><td>0.341</td><td>0.141</td><td>0.025</td><td>0.002</td></tr>
+            <tr><td>6</td><td>0.034</td><td>0.164</td><td>0.294</td><td>0.335</td><td>0.133</td><td>0.038</td><td>0.002</td></tr>
+          </tbody>
+        </table>
+        <p>行间变化极小，与推论 2 的代数记忆擦除机制一致。</p>
+
+        <h3>§6.2. $j$ 尾部衰减</h3>
+        <p>$k = 8$ 壳层上 $P(j \geq g)$ 的衰减速度快于几何分布（数值观察）；本文不声称这已被证明为超指数衰减。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. 热力学对应</h2>
+        <table class="struct-table">
+          <thead><tr><th>ZFCρ（排队框架）</th><th>热力学对应</th></tr></thead>
+          <tbody>
+            <tr><td>$D_n$（缺陷）</td><td>局部自由能超额</td></tr>
+            <tr><td>漂移 $\approx -1$</td><td>耗散</td></tr>
+            <tr><td>$\Delta M^{\mathrm{glob}}$（目标梯度）</td><td>外部驱动强度</td></tr>
+            <tr><td>$D = 0$（队列为空）</td><td>热平衡</td></tr>
+            <tr><td>$\mathrm{Var}(D) \to 0$（随 $k$ 增大）</td><td>高维中涨落抑制</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§8. 更新后的证明格局</h2>
+        <table class="struct-table">
+          <thead><tr><th>输入</th><th>状态</th></tr></thead>
+          <tbody>
+            <tr><td>$\mathrm{Var}(A) = O_k(1)$</td><td><strong>条件性成立</strong> — 依赖 (0)(I)(II)，数值支持强（本文）</td></tr>
+            <tr><td>$\mathrm{Var}(B_\rho) = O_k(1)$</td><td><strong>无条件闭合</strong> — 论文 20</td></tr>
+          </tbody>
+        </table>
+        <p>A-bound 的无条件闭合需要：</p>
+        <ul>
+          <li>(0)：确定性 Lindley 过程的概率嵌入</li>
+          <li>(I)：壳层采样全局梯度方差有界的解析证明</li>
+          <li>(II)：前驱缺陷方差界的形式化（可由 (0) 通过 Palm 概率理论或稀疏采样论证推出）</li>
+        </ul>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>参考文献</h2>
+        <ol>
+          <li>Asmussen, S. (2003). <em>Applied Probability and Queues</em>. Springer。</li>
+          <li>Franken, P., König, D., Arndt, U. &amp; Schmidt, V. (1982). <em>Queues and Point Processes</em>. Akademie-Verlag。</li>
+          <li>Kingman, J.F.C. (1962). Some inequalities for the queue GI/G/1. <em>Biometrika</em> 49, 315–324。</li>
+          <li>Lindley, D.V. (1952). The theory of queues with a single server. <em>Proc. Cambridge Phil. Soc.</em> 48, 277–289。</li>
+          <li>Loynes, R.M. (1962). The stability of a queue with non-independent inter-arrival and service times. <em>Proc. Cambridge Phil. Soc.</em> 58, 497–520。</li>
+          <li>H. Qin，ZFCρ 论文 I，DOI: <a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>。</li>
+          <li>H. Qin，ZFCρ 论文 II，DOI: <a href="https://doi.org/10.5281/zenodo.18927658" target="_blank" rel="noopener">10.5281/zenodo.18927658</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XVI，DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XIX，DOI: <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">10.5281/zenodo.19026991</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XX，DOI: <a href="https://doi.org/10.5281/zenodo.19027893" target="_blank" rel="noopener">10.5281/zenodo.19027893</a>。</li>
+        </ol>
+
+        <div class="appendix-label">附录 A：发现过程</div>
+        <p>排队同构（定理 1）从四 AI 并行探索中涌现。Gemini 率先识别出 Lindley 方程结构；Claude 完成了缺口分析，发现了 Global→Shell 转移问题和 B-记号冲突；ChatGPT 提供了精确的数值验证、分量分解和严格的审阅；Grok 提供了 $k$-缩放数据。</p>
+
+        <div class="appendix-label">附录 B：数值方法</div>
+        <p>所有计算使用 $N = 10^7$ 的精确整数算术（Python/NumPy）。三个独立实现交叉验证。$M_n$ 通过 $M_p = \rho_E(p)$（等价地，$D_p = 0$）延拓至素数。壳层：$\{n \leq N : \Omega(n) = k\}$，按自然序排列。</p>
+
+        <div class="appendix-label">附录 C：数据表</div>
+        <h3>C.1. 全局 $\Delta M^{\mathrm{glob}}$ 直方图</h3>
+        <table class="struct-table">
+          <thead><tr><th>$\Delta M$</th><th>计数</th><th>比例</th></tr></thead>
+          <tbody>
+            <tr><td>−8</td><td>20</td><td>0.0002%</td></tr>
+            <tr><td>−7</td><td>295</td><td>0.0030%</td></tr>
+            <tr><td>−6</td><td>3,199</td><td>0.0320%</td></tr>
+            <tr><td>−5</td><td>24,263</td><td>0.2426%</td></tr>
+            <tr><td>−4</td><td>114,622</td><td>1.1462%</td></tr>
+            <tr><td>−3</td><td>379,970</td><td>3.7997%</td></tr>
+            <tr><td>−2</td><td>1,000,473</td><td>10.0047%</td></tr>
+            <tr><td>−1</td><td>2,063,520</td><td>20.6352%</td></tr>
+            <tr><td>0</td><td>2,641,566</td><td>26.4157%</td></tr>
+            <tr><td>1</td><td>2,411,159</td><td>24.1116%</td></tr>
+            <tr><td>2</td><td>877,084</td><td>8.7708%</td></tr>
+            <tr><td>3</td><td>339,566</td><td>3.3957%</td></tr>
+            <tr><td>4</td><td>108,348</td><td>1.0835%</td></tr>
+            <tr><td>5</td><td>28,597</td><td>0.2860%</td></tr>
+            <tr><td>6</td><td>6,120</td><td>0.0612%</td></tr>
+            <tr><td>7</td><td>1,046</td><td>0.0105%</td></tr>
+            <tr><td>8</td><td>135</td><td>0.0014%</td></tr>
+            <tr><td>9</td><td>15</td><td>0.0002%</td></tr>
+            <tr><td>10</td><td>1</td><td>0.0000%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>C.2. $k = 8$ 壳层统计</h3>
+        <p><strong>$j$ 分布：</strong>$j=0$ (1.71%)，$j=1$ (12.82%)，$j=2$ (33.10%)，$j=3$ (34.56%)，$j=4$ (14.82%)，$j=5$ (2.77%)，$j\geq 6$ (0.22%)。</p>
+        <p><strong>$D$ 分布：</strong>$D=0$ (99.88%)，$D=1$ (0.11%)，$D=2$ (0.003%)。</p>
+        <p><strong>间距统计：</strong>$E[\mathrm{gap}] = 48.26$，中位数 = 32，范围 = [1, 560]。最频繁间距：16 (20,805)，32 (15,511)，24 (12,767)。</p>
+
+        <div class="series-nav">
+          <span><a href="zfcrho20.html">← 论文 XX：关闭 B-bound</a></span>
+          <span style="float:right;"><a href="zfcrho22.html">论文 XXII：无界均值增益 →</a></span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-zh -->
+
+  </main>
+
+  <footer>
+    <p>© 2025–2026 Han Qin (秦汉). Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  </footer>
+
+  <script>
+    function switchLang(lang, btn) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      btn.classList.add('active');
+      if (lang === 'zh') {
+        document.title = '选择代价的排队同构与局部 Lipschitz 归约 — ZFCρ 论文 XXI — Han Qin';
+      } else {
+        document.title = 'Queue Isomorphism and the Local Lipschitz Reduction for Selection Cost — ZFCρ Paper XXI — Han Qin';
+      }
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+  </script>
+</body>
+</html>

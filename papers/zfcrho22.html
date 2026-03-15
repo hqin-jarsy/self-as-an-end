@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unbounded Mean Gain and the Closure of Assumption A' — ZFCρ Paper XXII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXII: Chebyshev Bridge Theorem reduces Assumption A' to unbounded mean gain. Insertion recursion decomposes μ_{k+1} into cofactor representativeness and bridge gain. σ²/μ² decreases from 0.81 to 0.05 monotonically.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, Chebyshev bridge, Assumption A', unbounded mean gain, insertion recursion, bridge gain, 无界均值增益, 假设A', Chebyshev桥">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Unbounded Mean Gain and the Closure of Assumption A'">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho22.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Unbounded Mean Gain and the Closure of Assumption A'",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho22.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19039953"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "Chebyshev bridge", "Assumption A'",
+      "unbounded mean gain", "insertion recursion", "bridge gain"
+    ],
+    "abstract": "Establishes Chebyshev reduction of Assumption A' in ZFCρ. Theorem 4 (Chebyshev Bridge): unbounded mean gain + subquadratic variance implies A'. Proposition 5 (Insertion Recursion): exact decomposition μ_{k+1}=E[G_spf(m)]+E[K_p] verified to four decimal places. σ²/μ² decreases monotonically from 0.81 to 0.05. Conditional Theorem 6 closes A' from inputs (L1)(L3)(D)(V).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho22.html">
+  <meta name="citation_title" content="Unbounded Mean Gain and the Closure of Assumption A'">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19039953">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho22.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; border-color: #e0e0e0; background: #fff; margin-bottom: -2px; border-bottom: 2px solid #fff; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .proof-box { background: #f5f5ff; border: 1px solid #d0d0ee; border-radius: 4px; padding: 0.85rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .milestone-box { background: #f0fff4; border-left: 3px solid #2e7d32; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .chain-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.2rem; margin: 1rem 0; font-size: 0.9rem; line-height: 2; }
+  </style>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <header>
+    <div class="site-title"><a href="/">Self-as-an-End</a></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </nav>
+  </header>
+
+  <main class="paper-container">
+
+    <!-- Language tabs -->
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="switchLang('en', this)">English</button>
+      <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+    </div>
+
+    <!-- ========== ENGLISH ========== -->
+    <div class="lang-content active" id="lang-en">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ Paper XXII</div>
+        <h1 class="paper-title">Unbounded Mean Gain and the Closure of Assumption A'</h1>
+        <div class="paper-authors">Han Qin</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; March 2026
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19039953
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">Abstract</div>
+          <p>We establish a Chebyshev reduction of Assumption A' ($p_\infty(k) \to 1$) within the ZFCρ framework, and decompose the unbounded mean gain conjecture ($E[G_{\mathrm{spf}} \mid \Omega = k] \to \infty$) into precise arithmetic inputs via the insertion recursion.</p>
+          <p>The results are organized in three layers. <strong>First (proved):</strong> the Chebyshev Bridge Theorem (Theorem 4) — if $\underline{\mu}_k \to \infty$ and $\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$, then $\limsup P(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \to 0$ ($k \to \infty$); combined with the limit-existence part of Assumption A, this gives A'. <strong>Second (exact identity + numerical confirmation):</strong> the insertion recursion $\mu_{k+1} = E_{I_k}[G_{\mathrm{spf}}(m)] + E_{I_k}[K_p]$, verified to four decimal places. The step increment decomposes into cofactor representativeness gap (&lt; 0.09) and bridge gain ($E[K_p] > 0$, always positive). <strong>Third (numerical):</strong> $\sigma^2/\mu^2$ decreases monotonically from 0.81 at $k = 5$ to 0.05 at $k = 19$.</p>
+          <p>This paper reduces Assumption A' to unbounded mean gain, and further reduces the latter to independently attackable arithmetic lemmas.</p>
+          <p style="margin-top:0.7rem;"><strong>Keywords:</strong> integer complexity, ρ-arithmetic, Chebyshev bridge, Assumption A', unbounded mean gain, insertion recursion, bridge gain</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. Introduction</h2>
+
+        <h3>§1.1. Background and Target</h3>
+        <p>Paper 15's Theorem F proves: under Assumptions A (monotone convergence of $p_k(N)$), A' ($p_\infty(k) \to 1$), and B (Sathe–Selberg, known), $D(N) \to 1$. Assumption B is classical. Assumption A is the deepest open problem (Paper 15 §7.2). This paper attacks Assumption A'.</p>
+        <p>Paper 15 §6.5 identified the route: if unbounded mean gain $E[G_{\mathrm{spf}} \mid \Omega = k] \to \infty$ and $\mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) = O(1)$, then A' follows by Chebyshev. This paper formalizes this route and further reduces unbounded mean gain via Paper 16's insertion identity.</p>
+
+        <h3>§1.2. Paper Structure</h3>
+        <ol>
+          <li><strong>Proved:</strong> Chebyshev Bridge Theorem (§2).</li>
+          <li><strong>Exact identity:</strong> Insertion recursion decomposition (§3).</li>
+          <li><strong>Numerical confirmation:</strong> Overwhelming evidence for three arithmetic inputs (§4).</li>
+          <li><strong>Conditional closure:</strong> From three inputs to A' (§5).</li>
+        </ol>
+
+        <h3>§1.3. Notation</h3>
+        <ul>
+          <li>$\mu_k = E[G_{\mathrm{spf}} \mid \Omega(n) = k,\; n \leq N]$ (shell conditional mean, $N$ implicit)</li>
+          <li>$\sigma^2_k = \mathrm{Var}(G_{\mathrm{spf}} \mid \Omega(n) = k,\; n \leq N)$</li>
+          <li>$G_{\mathrm{spf}}(n) = A(n) + B_\rho(n) + 1 = j(n) + B_\rho(n)$ (Paper 16)</li>
+          <li>$I_k(N)$ = insertion measure: on $\{n \leq N : \Omega(n) = k+1\}$, acting on cofactor $m = n/P^-(n)$</li>
+          <li>$K_p(n) = G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$ (bridge term, $m = n/P^-(n)$)</li>
+        </ul>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. Chebyshev Bridge Theorem (Proved)</h2>
+
+        <h3>§2.1. Theorem 4</h3>
+        <div class="milestone-box">
+          <p><strong>Theorem 4 (Chebyshev Bridge).</strong> For each fixed $k \geq 2$, define (allowing $+\infty$):</p>
+          <p>$$\underline{\mu}_k := \liminf_{N \to \infty} \mu_k(N), \qquad \overline{\sigma}^2_k := \limsup_{N \to \infty} \sigma^2_k(N)$$</p>
+          <p>If the following two conditions hold:</p>
+          <p><strong>(M)</strong> Unbounded mean gain: $\underline{\mu}_k \to \infty$ ($k \to \infty$);<br>
+          <strong>(V)</strong> Subquadratic variance: $\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$ ($k \to \infty$);</p>
+          <p>then</p>
+          <p>$$\limsup_{N \to \infty} P(G_{\mathrm{spf}} \leq 0 \mid \Omega = k,\; n \leq N) \leq \frac{\overline{\sigma}^2_k}{\overline{\sigma}^2_k + \underline{\mu}_k^2} \to 0 \quad (k \to \infty)$$</p>
+          <p>Hence: if $p_\infty(k) := \lim_{N \to \infty} p_k(N)$ exists (part of Assumption A), then $p_\infty(k) \to 1$ ($k \to \infty$), i.e., Assumption A' holds.</p>
+          <p style="margin-top:0.8rem;"><em>Proof.</em> For each fixed $k$ and each $N$, by the Cantelli inequality:</p>
+          <p>$$P_N(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \leq \frac{\sigma_k^2(N)}{\sigma_k^2(N) + \mu_k(N)^2}$$</p>
+          <p>Taking limsup as $N \to \infty$: using subadditivity of limsup and monotonicity of $x \mapsto x/(x+a)$:</p>
+          <p>$$\limsup_{N \to \infty} P_N(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \leq \frac{\overline{\sigma}^2_k}{\overline{\sigma}^2_k + \underline{\mu}_k^2}$$</p>
+          <p>Under condition (M), for sufficiently large $k$, $\underline{\mu}_k > 0$, so Cantelli applies. Under condition (V), the right side $\to 0$ ($k \to \infty$). $\square$</p>
+        </div>
+        <div class="note-box">
+          <strong>Remark 1.</strong> Theorem 4 itself does not require Assumption A (existence of $p_\infty(k)$). It controls the limsup — regardless of whether $p_k(N)$ converges, the "worst-case jump probability" at large $k$ tends to 1. If A holds (limit exists), limsup reduces to lim, yielding A'.<br><br>
+          <strong>Remark 2.</strong> Condition (V) is far weaker than $\overline{\sigma}^2_k = O(1)$ uniform. The latter also holds numerically, but given that $\mathrm{Var}(\Delta M \mid \Omega=k)$ exhibits $O(\ln\ln N)$ growth in scaling tests, we use the safer $o(\underline{\mu}_k^2)$ condition at the theorem level.
+        </div>
+
+        <h3>§2.2. Numerical Verification</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mu_k$</th><th>$\sigma^2_k$</th><th>$\sigma^2/\mu^2$</th><th>Cantelli bound</th></tr></thead>
+          <tbody>
+            <tr><td>3</td><td>0.223</td><td>1.235</td><td>24.85</td><td>0.961</td></tr>
+            <tr><td>4</td><td>0.704</td><td>1.017</td><td>2.054</td><td>0.672</td></tr>
+            <tr><td>5</td><td>1.102</td><td>0.988</td><td>0.813</td><td>0.448</td></tr>
+            <tr><td>6</td><td>1.462</td><td>1.024</td><td>0.479</td><td>0.324</td></tr>
+            <tr><td>7</td><td>1.794</td><td>1.078</td><td>0.335</td><td>0.251</td></tr>
+            <tr><td>8</td><td>2.094</td><td>1.151</td><td>0.263</td><td>0.208</td></tr>
+            <tr><td>10</td><td>2.631</td><td>1.262</td><td>0.182</td><td>0.154</td></tr>
+            <tr><td>12</td><td>3.107</td><td>1.333</td><td>0.138</td><td>0.121</td></tr>
+            <tr><td>15</td><td>3.848</td><td>1.275</td><td>0.086</td><td>0.079</td></tr>
+            <tr><td>19</td><td>4.978</td><td>1.133</td><td>0.046</td><td>0.044</td></tr>
+          </tbody>
+        </table>
+        <p>$\sigma^2/\mu^2$ decreases monotonically; the Cantelli bound drops from 0.45 at $k = 5$ to 0.04 at $k = 19$.</p>
+
+        <h3>§2.3. Numerical Confirmation of Condition (V)</h3>
+        <p><strong>Cross-section in $k$ at fixed $N$.</strong> Regression of $\sigma^2_k$ on $k$ ($N = 10^7$, $k = 2..15$): constant fit gives mean = 1.243, std = 0.195; linear fit gives $\sigma^2 = 1.188 + 0.007k$, $R^2 = 0.018$. At fixed $N = 10^7$, $\sigma^2_k$ has no $k$-dependence ($R^2 \approx 0$).</p>
+        <p><strong>Cross-section in $N$ at fixed $k$.</strong> For $k = 8$:</p>
+        <table class="struct-table">
+          <thead><tr><th>$N$</th><th>$\mathrm{Var}(G_{\mathrm{spf}} \mid k=8)$</th><th>$\sigma^2/\mu^2$</th></tr></thead>
+          <tbody>
+            <tr><td>$10^4$</td><td>1.510</td><td>0.219</td></tr>
+            <tr><td>$10^5$</td><td>1.223</td><td>0.217</td></tr>
+            <tr><td>$10^6$</td><td>1.171</td><td>0.240</td></tr>
+            <tr><td>$10^7$</td><td>1.151</td><td>0.263</td></tr>
+          </tbody>
+        </table>
+        <p>$\mathrm{Var}(G_{\mathrm{spf}})$ stabilizes for fixed $k$, supporting existence of $\lim_{N\to\infty} \sigma^2_k &lt; \infty$.</p>
+        <div class="note-box"><strong>Note on uniform bounds.</strong> Scaling tests ($N = 10^4$ to $3 \times 10^7$) show $O(\ln\ln N)$ global growth in $\mathrm{Var}(\Delta M \mid \Omega=k)$. This growth originates from the within-group component and reflects a cross-shell statistical effect. However, for each fixed $k$, $\mathrm{Var}(G_{\mathrm{spf}} \mid k, N)$ converges as $N \to \infty$. Thus condition (V) in its $o(\mu^2_k)$ form is safely satisfied.</div>
+        <p><strong>Component decomposition.</strong> $\sigma^2_k = \mathrm{Var}(A \mid k) + \mathrm{Var}(B \mid k) + 2\,\mathrm{Cov}(A,B \mid k)$. $\mathrm{Var}(A \mid k)$ grows slowly (0.31 at $k=2$ to 1.30 at $k=12$, consistent with Paper 21's Lindley stability). $\mathrm{Var}(B \mid k)$ decreases (1.02 at $k=2$ to 0.25 at $k=12$, from Paper 20 B-bound). $\mathrm{Cov}(A,B \mid k) \approx -0.10$, stably negative. The growth and decay cancel each other — Paper 18's anti-correlation engine at the $G_{\mathrm{spf}}$ level.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. Insertion Recursion Identity</h2>
+
+        <h3>§3.1. Setup</h3>
+        <p>For $n$ with $\Omega(n) = k+1$, let $p = P^-(n)$ (smallest prime factor), $m = n/p$ (cofactor). Define:</p>
+        <ul>
+          <li>Insertion measure $I_k$: uniform distribution on $\{n \leq N : \Omega(n) = k+1\}$, acting on cofactor $m$ statistics</li>
+          <li>Bridge term: $K_p(n) = G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$</li>
+        </ul>
+
+        <h3>§3.2. Proposition 5 (Insertion Recursion)</h3>
+        <div class="proof-box">
+          <p><strong>Proposition 5.</strong> For each $k+1 \geq 4$:</p>
+          <p>$$\mu_{k+1} = E_{I_k}[G_{\mathrm{spf}}(m)] + E_{I_k}[K_p]$$</p>
+          <p><em>Proof.</em> By linearity of expectation over $\{n : \Omega(n) = k+1\}$:</p>
+          <p>$$\mu_{k+1} = E[G_{\mathrm{spf}}(n) \mid \Omega(n) = k+1] = E[G_{\mathrm{spf}}(m) + K_p(n) \mid \Omega(n) = k+1] \qquad \square$$</p>
+        </div>
+        <div class="note-box"><strong>Remark.</strong> Proposition 5 is a direct consequence of linearity of expectation — an algebraic identity with no analytic content. Its value lies in providing a precise decomposition framework. The genuinely nontrivial content is in §4's numerical findings.</div>
+        <p><strong>Corollary.</strong> The step increment decomposes:</p>
+        <p>$$\mu_{k+1} - \mu_k = \underbrace{(E_{I_k}[G_{\mathrm{spf}}(m)] - \mu_k)}_{\text{representativeness gap}} + \underbrace{E_{I_k}[K_p]}_{\text{insertion gain}}$$</p>
+
+        <h3>§3.3. Numerical Verification ($N = 10^7$)</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k \to k+1$</th><th>$\mu_{k+1}$</th><th>$\mu_k$</th><th>$\Delta\mu$</th><th>Rep. gap</th><th>$E[K_p]$</th><th>Sum check</th></tr></thead>
+          <tbody>
+            <tr><td>3→4</td><td>0.704</td><td>0.223</td><td>0.481</td><td>−0.013</td><td>0.494</td><td>0.481 ✓</td></tr>
+            <tr><td>4→5</td><td>1.102</td><td>0.704</td><td>0.399</td><td>0.066</td><td>0.333</td><td>0.399 ✓</td></tr>
+            <tr><td>5→6</td><td>1.462</td><td>1.102</td><td>0.360</td><td>0.081</td><td>0.279</td><td>0.360 ✓</td></tr>
+            <tr><td>6→7</td><td>1.794</td><td>1.462</td><td>0.331</td><td>0.070</td><td>0.261</td><td>0.331 ✓</td></tr>
+            <tr><td>7→8</td><td>2.094</td><td>1.794</td><td>0.300</td><td>0.059</td><td>0.242</td><td>0.300 ✓</td></tr>
+            <tr><td>8→9</td><td>2.376</td><td>2.094</td><td>0.283</td><td>0.051</td><td>0.232</td><td>0.283 ✓</td></tr>
+            <tr><td>9→10</td><td>2.631</td><td>2.376</td><td>0.255</td><td>0.046</td><td>0.209</td><td>0.255 ✓</td></tr>
+            <tr><td>10→11</td><td>2.878</td><td>2.631</td><td>0.247</td><td>0.041</td><td>0.206</td><td>0.247 ✓</td></tr>
+            <tr><td>11→12</td><td>3.107</td><td>2.878</td><td>0.229</td><td>0.052</td><td>0.177</td><td>0.229 ✓</td></tr>
+            <tr><td>12→13</td><td>3.332</td><td>3.107</td><td>0.226</td><td>0.043</td><td>0.183</td><td>0.226 ✓</td></tr>
+            <tr><td>13→14</td><td>3.583</td><td>3.332</td><td>0.251</td><td>0.069</td><td>0.182</td><td>0.251 ✓</td></tr>
+            <tr><td>14→15</td><td>3.848</td><td>3.583</td><td>0.265</td><td>0.053</td><td>0.212</td><td>0.265 ✓</td></tr>
+          </tbody>
+        </table>
+        <p>Sum check holds to four decimal places across all $k$ — the identity closes perfectly at the numerical level.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. Arithmetic Inputs and Mechanism Analysis</h2>
+
+        <p>Unbounded mean gain (condition (M)) is equivalent to $\sum_{j\leq k} \Delta\mu_j \to \infty$. By Proposition 5, $\Delta\mu_k =$ representativeness gap $+ E[K_p]$. Thus condition (M) reduces to inputs (L1), (L3) and a divergence condition (D):</p>
+
+        <h3>§4.1. Input (L1): Cofactor Representativeness</h3>
+        <div class="thesis-box">
+          <p><strong>Input (L1).</strong> $E_{I_k}[G_{\mathrm{spf}}(m)] \geq \mu_k - C_1$ for all large $k$ (cofactors do not systematically compress the mean).</p>
+        </div>
+        <p><strong>Numerical.</strong> The representativeness gap $E_{I_k}[G_{\mathrm{spf}}(m)] - \mu_k$ lies between −0.01 and +0.08. The cofactor's $G_{\mathrm{spf}}$ mean is nearly equal to the overall shell mean.</p>
+
+        <h3>§4.2. Background: Negative B-bias (Mechanism Discussion)</h3>
+        <p>$E[B_\rho \mid \Omega = k] \approx -0.50$, nearly constant across all $k$. This negative bias lowers $\mu_k$ by ~0.5 relative to $E[j \mid k]$ through $G_{\mathrm{spf}} = j + B$. This property is not an input condition of Theorem 6; it provides mechanistic background for understanding $\mu_k$ growth.</p>
+
+        <h3>§4.3. Input (L3): Bridge Positivity</h3>
+        <div class="thesis-box">
+          <p><strong>Input (L3).</strong> $E_{I_k}[K_p] \geq 0$ for all large $k$ (inserting a prime factor increases $G_{\mathrm{spf}}$ on average).</p>
+        </div>
+        <table class="struct-table">
+          <thead><tr><th>$k+1$</th><th>$E[K_p]$</th><th>$\mathrm{Var}[K_p]$</th><th>$P(K_p > 0)$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.494</td><td>1.903</td><td>46.0%</td></tr>
+            <tr><td>6</td><td>0.279</td><td>1.274</td><td>42.7%</td></tr>
+            <tr><td>8</td><td>0.242</td><td>1.332</td><td>43.1%</td></tr>
+            <tr><td>10</td><td>0.209</td><td>1.380</td><td>42.6%</td></tr>
+            <tr><td>12</td><td>0.177</td><td>1.419</td><td>41.6%</td></tr>
+            <tr><td>14</td><td>0.182</td><td>1.435</td><td>41.8%</td></tr>
+          </tbody>
+        </table>
+        <p>$E[K_p]$ is always positive, decreasing from 0.49 to stabilize around 0.18. $P(K_p > 0) \approx 42\%$ is constant.</p>
+        <p><strong>Stratification by prime ($k+1 = 9$ shell):</strong></p>
+        <table class="struct-table">
+          <thead><tr><th>$P^-(n)$</th><th>Fraction</th><th>$E[K_p]$</th><th>$\Omega(m)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>97.2%</td><td>0.231</td><td>8.00</td></tr>
+            <tr><td>3</td><td>2.8%</td><td>0.263</td><td>8.00</td></tr>
+          </tbody>
+        </table>
+        <p>$P^-(n) = 2$ accounts for 97%+ of insertion events. Bridge gain does not strongly depend on which prime is inserted.</p>
+
+        <h3>§4.4. Formalization Prospects</h3>
+        <p><strong>(L1) Cofactor representativeness:</strong> Proving that under insertion measure $I_k$, the cofactor's $G_{\mathrm{spf}}$ statistics are not systematically compressed. Since $P^-(n) = 2$ dominates 97%+ of insertion events, the deviation between the insertion measure and the uniform measure on the $\Omega = k$ shell is small.</p>
+        <p><strong>(L3) Bridge positivity:</strong> The most central input. $K_p = G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$ measures the $G_{\mathrm{spf}}$ gain from adding one prime factor. Introducing prime $p$ allows new splits $(ap) \cdot b$ and $a \cdot (bp)$ on top of $m$'s optimal split, enlarging the candidate set and lowering $M_n$.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. Conditional Closure of A'</h2>
+
+        <h3>§5.1. Conditional Theorem 6</h3>
+        <div class="milestone-box">
+          <p><strong>Theorem 6.</strong> For each $k \geq 2$, define $N$-dependent quantities:</p>
+          <p>$$\beta_k(N) := E_{I_k(N)}[G_{\mathrm{spf}}(m)] - \mu_k(N), \qquad \gamma_k(N) := E_{I_k(N)}[K_p]$$</p>
+          <p>Assume:</p>
+          <p><strong>(L1)</strong> $\liminf_{N \to \infty} \beta_k(N) \geq -\varepsilon_k$, where $\varepsilon_k \geq 0$;<br>
+          <strong>(L3)</strong> $\liminf_{N \to \infty} \gamma_k(N) \geq \kappa_k \geq 0$;<br>
+          <strong>(D)</strong> Net increment divergence: $\sum_{k} (\kappa_k - \varepsilon_k) = +\infty$;<br>
+          <strong>(V)</strong> Subquadratic variance: $\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$.</p>
+          <p>Then $\underline{\mu}_k \to \infty$, and by Theorem 4, Assumption A' holds (modulo the limit-existence part of Assumption A).</p>
+          <p style="margin-top:0.8rem;"><em>Proof.</em> By Proposition 5, for each fixed $K$ and each $N$:</p>
+          <p>$$\mu_{K+1}(N) = \mu_2(N) + \sum_{k=2}^{K} [\beta_k(N) + \gamma_k(N)]$$</p>
+          <p>Taking liminf as $N \to \infty$: since the sum has only finitely many ($K-1$) terms, liminf passes term by term:</p>
+          <p>$$\underline{\mu}_{K+1} \geq \underline{\mu}_2 + \sum_{k=2}^{K} (\kappa_k - \varepsilon_k)$$</p>
+          <p>By condition (D), the right side $\to +\infty$ ($K \to \infty$), so $\underline{\mu}_k \to \infty$, i.e., condition (M) holds. By Theorem 4, $\limsup_N P(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \to 0$ ($k \to \infty$). $\square$</p>
+        </div>
+
+        <h3>§5.2. Position in the Proof Chain</h3>
+        <div class="chain-box">
+          $\text{(L1)(L3)(D)} \;\longrightarrow\; \mu_k \to \infty \;\;[\text{Condition (M)}]$<br>
+          $\text{(M)} + \text{(V)} \;\longrightarrow\; \limsup P(G_{\mathrm{spf}} \leq 0 \mid k) \to 0 \;\;[\text{Theorem 4}]$<br>
+          $\text{Theorem 4} + \text{A (limit existence)} \;\longrightarrow\; p_\infty(k) \to 1 \;\;[\text{Assumption A'}]$<br>
+          $\text{A} + \text{A'} + \text{B} \;\longrightarrow\; D(N) \to 1 \;\;[\text{Theorem F, Paper 15}]$
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. Updated Proof Landscape</h2>
+        <table class="struct-table">
+          <thead><tr><th>Input</th><th>Status</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>B (Sathe–Selberg)</td><td>Known</td><td>Classical</td></tr>
+            <tr><td>A' ($p_\infty(k) \to 1$)</td><td><strong>Conditionally closed</strong></td><td>Paper 22 (on (L1)(L3)(D)(V) + A)</td></tr>
+            <tr><td>A ($p_k(N)$ convergence)</td><td><strong>Open — deepest gap</strong></td><td>Paper 15</td></tr>
+            <tr><td>$\mathrm{Var}(B_\rho \mid k) = O_k(1)$</td><td>Proved</td><td>Paper 20</td></tr>
+            <tr><td>Lindley isomorphism</td><td>Proved</td><td>Paper 21</td></tr>
+            <tr><td>(V) $\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$</td><td>Numerically supported ($\sigma^2/\mu^2$ monotone $\to 0$)</td><td>Paper 22</td></tr>
+            <tr><td>(L1) Cofactor representativeness</td><td>Numerically supported (gap &lt; 0.09)</td><td>Paper 22</td></tr>
+            <tr><td>(L3) Bridge positivity</td><td>Numerically supported ($E[K_p] \in [0.18, 0.49]$)</td><td>Paper 22</td></tr>
+            <tr><td>(D) Net increment divergence</td><td>Numerically supported ($\sum(\kappa_k - \varepsilon_k)$ diverges)</td><td>Paper 22</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box"><strong>Deepest remaining gap: Assumption A.</strong> Paper 21's queue isomorphism rewrites A as a convergence problem for the joint $(\Delta M, D) \mid \Omega = k$ distribution, providing a new coordinate system for future attack.</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. Thermodynamic Interface</h2>
+        <table class="struct-table">
+          <thead><tr><th>ZFCρ</th><th>Thermodynamics</th></tr></thead>
+          <tbody>
+            <tr><td>$\mu_k \to \infty$</td><td>Free energy release per layer increasing</td></tr>
+            <tr><td>$E[K_p] > 0$</td><td>Each "dimension upgrade" releases positive energy</td></tr>
+            <tr><td>$\mathrm{Var}(G_{\mathrm{spf}}) \approx O(1)$</td><td>Fluctuations damped to constant bandwidth</td></tr>
+            <tr><td>$\sigma^2/\mu^2 \to 0$</td><td>Signal-to-noise ratio $\to \infty$: pure-signal regime at high $\Omega$</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>References</h2>
+        <ol>
+          <li>H. Qin, ZFCρ Paper XV. DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a>.</li>
+          <li>H. Qin, ZFCρ Paper XVI. DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+          <li>H. Qin, ZFCρ Paper XVIII. DOI: <a href="https://doi.org/10.5281/zenodo.19023418" target="_blank" rel="noopener">10.5281/zenodo.19023418</a>.</li>
+          <li>H. Qin, ZFCρ Paper XX. DOI: <a href="https://doi.org/10.5281/zenodo.19027893" target="_blank" rel="noopener">10.5281/zenodo.19027893</a>.</li>
+          <li>H. Qin, ZFCρ Paper XXI. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</li>
+          <li>Sathe, L.G. (1953). <em>J. Indian Math. Soc.</em> 17, 63–141.</li>
+          <li>Selberg, A. (1954). <em>J. Indian Math. Soc.</em> 18, 83–87.</li>
+        </ol>
+
+        <div class="appendix-label">Appendix A: AI Collaboration Methodology — Lessons from Papers 20–22</div>
+
+        <h3>A.1. Workflow Evolution</h3>
+        <p><strong>Paper 20 (M6–M10):</strong> Pure parallel exploration. Four AIs given identical prompts, results cross-validated.</p>
+        <p><strong>Paper 21 (M11):</strong> Structured rounds with differentiated roles. Self-organized into: ChatGPT = computation + strict review, Gemini = literature + structural insight, Claude = gap analysis + code generation, Grok = broad exploration (requiring cross-validation). Author = direction + local computation.</p>
+        <p><strong>Paper 22 (current):</strong> Data-first methodology. Running landscape exploration + scaling tests BEFORE defining proof targets eliminated an entire class of dead routes.</p>
+
+        <h3>A.2. The "Data Before Direction" Principle and the Research Trinity</h3>
+        <p>This round of work revealed a research engine composed of three irreplaceable components:</p>
+        <p><strong>Computational power (Scaling Tests):</strong> At $N = 10^4$, $\ln\ln N \approx 2.2$ — the slow $O(\ln\ln N)$ growth is indistinguishable from $O(1)$ noise. By running to $N = 3 \times 10^7$ across eight data points with linear regression ($R^2 = 0.998$), the slow upward trend was unmasked.</p>
+        <p><strong>AI array:</strong> Computation reveals the true long-term trend but lacks semantic understanding. The four-AI array scanned Paper 15's architecture, decoupled the system, and discovered that the Chebyshev bridge only requires fixed-$k$ local convergence; the global divergence is merely a side-effect of Erdős–Kac prime drift. Three AIs independently reached the same conclusion.</p>
+        <p><strong>Human mind:</strong> AIs do not spontaneously conceive "the cost of selection"; computation does not know what $M_n$ is. The human built the framework, defined the DP recursion, and navigated with computational and AI assistance. The closed loop: intuition proposes hypotheses → computation stress-tests → AIs clear mines and formalize.</p>
+
+        <h3>A.3. Review as Force Multiplier</h3>
+        <p>Paper 21 underwent four ChatGPT review rounds: major → minor-to-moderate → minor → accept. Each round: 25–40 minutes. Total cycle: ~3 hours. Comparable human review: 1–3 months. The key distinction is not speed but iterativity: issues introduced by each round of fixes are caught by the next.</p>
+
+        <h3>A.4. Trust Calibration</h3>
+        <p>Trust must be earned per task, not granted per model. Empirical reliability this round: ChatGPT computation HIGH (zero errors); Claude gap analysis HIGH (all structural issues confirmed by ChatGPT); Gemini structural insight MEDIUM-HIGH (Lindley discovery correct; some overclaimed corollaries); Grok Round 1 computation HIGH, Round 2+ LOW (synthetic data substituted for real arithmetic).</p>
+
+        <h3>A.5. The Role of the Human Researcher</h3>
+        <p>AIs provide breadth (four perspectives), speed (minutes not months), and endurance (four review rounds in one day). The human provides depth (18 years of framework development), taste (which directions matter), and accountability (the paper has one author). The human researcher's irreplaceable contributions: direction, judgment, calibration, coordination, and local computation providing ground-truth data.</p>
+
+        <div class="appendix-label">Appendix B: Numerical Methods</div>
+        <p>All computations use $N = 10^7$ with exact integer arithmetic. Four independent implementations cross-validated. $N$-scaling tests cover $N = 10^4$ to $3 \times 10^7$ (8 points).</p>
+
+        <div class="appendix-label">Appendix C: Data Tables</div>
+        <h3>C.1. Shell Statistics ($k = 2..12$)</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mu_k$</th><th>$\sigma^2_k$</th><th>$E[j]$</th><th>$E[B]$</th><th>$\mathrm{Cov}(A,B)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>−0.433</td><td>1.769</td><td>0.299</td><td>−0.732</td><td>0.219</td></tr>
+            <tr><td>3</td><td>0.223</td><td>1.235</td><td>0.674</td><td>−0.451</td><td>0.081</td></tr>
+            <tr><td>4</td><td>0.704</td><td>1.017</td><td>1.087</td><td>−0.383</td><td>−0.015</td></tr>
+            <tr><td>5</td><td>1.102</td><td>0.988</td><td>1.503</td><td>−0.401</td><td>−0.065</td></tr>
+            <tr><td>6</td><td>1.462</td><td>1.024</td><td>1.896</td><td>−0.434</td><td>−0.086</td></tr>
+            <tr><td>7</td><td>1.794</td><td>1.078</td><td>2.253</td><td>−0.460</td><td>−0.096</td></tr>
+            <tr><td>8</td><td>2.094</td><td>1.151</td><td>2.572</td><td>−0.478</td><td>−0.101</td></tr>
+            <tr><td>9</td><td>2.376</td><td>1.204</td><td>2.863</td><td>−0.487</td><td>−0.106</td></tr>
+            <tr><td>10</td><td>2.631</td><td>1.262</td><td>3.124</td><td>−0.493</td><td>−0.099</td></tr>
+            <tr><td>11</td><td>2.878</td><td>1.299</td><td>3.375</td><td>−0.498</td><td>−0.101</td></tr>
+            <tr><td>12</td><td>3.107</td><td>1.333</td><td>3.604</td><td>−0.498</td><td>−0.108</td></tr>
+          </tbody>
+        </table>
+
+        <h3>C.2. Bridge Term $K_p$ Statistics</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k+1$</th><th>$E[K_p]$</th><th>$\mathrm{Var}[K_p]$</th><th>$P(K_p>0)$</th><th>$E[G_{\mathrm{spf}}(m)] - \mu_k$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.494</td><td>1.903</td><td>46.0%</td><td>−0.013</td></tr>
+            <tr><td>6</td><td>0.279</td><td>1.274</td><td>42.7%</td><td>0.081</td></tr>
+            <tr><td>8</td><td>0.242</td><td>1.332</td><td>43.1%</td><td>0.059</td></tr>
+            <tr><td>10</td><td>0.209</td><td>1.380</td><td>42.6%</td><td>0.046</td></tr>
+            <tr><td>12</td><td>0.177</td><td>1.419</td><td>41.6%</td><td>0.052</td></tr>
+            <tr><td>14</td><td>0.182</td><td>1.435</td><td>41.8%</td><td>0.069</td></tr>
+          </tbody>
+        </table>
+
+        <div class="series-nav">
+          <span><a href="zfcrho21.html">← Paper XXI: Queue Isomorphism</a></span>
+          <span style="float:right;">Paper XXIII →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-en -->
+
+    <!-- ========== CHINESE ========== -->
+    <div class="lang-content" id="lang-zh">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ 论文 XXII</div>
+        <h1 class="paper-title">无界均值增益与假设 A' 的闭合</h1>
+        <div class="paper-authors">秦汉</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; 2026 年 3 月
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19039953
+          </a>
+        </div>
+      </div>
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">摘要</div>
+          <p>本文在 ZFCρ 框架中建立假设 A'（$p_\infty(k) \to 1$）的 Chebyshev 归约，并通过插入递推将无界均值增益猜想（$E[G_{\mathrm{spf}} \mid \Omega = k] \to \infty$）分解为精确的算术输入。</p>
+          <p>核心结果分三层。<strong>第一层（已证）：</strong>Chebyshev 桥定理（定理 4）——若 $\underline{\mu}_k \to \infty$ 且 $\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$，则 $\limsup P(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \to 0$（$k \to \infty$），结合假设 A 的极限存在性即得 A'。<strong>第二层（精确恒等式 + 数值确认）：</strong>插入递推 $\mu_{k+1} = E_{I_k}[G_{\mathrm{spf}}(m)] + E_{I_k}[K_p]$，数值验证精确到四位小数。步增量分解为 cofactor 代表性偏差（&lt; 0.09）和 bridge 增益（$E[K_p] > 0$，始终为正）。<strong>第三层（数值）：</strong>$\sigma^2/\mu^2$ 从 $k = 5$ 的 0.81 单调下降至 $k = 19$ 的 0.05。</p>
+          <p>本文是 ZFCρ 系列论文 XXII，将假设 A' 归约为无界均值增益，再将后者归约为可独立攻击的算术引理。</p>
+          <p style="margin-top:0.7rem;"><strong>关键词：</strong>整数复杂度，ρ-算术，Chebyshev 桥，假设 A'，无界均值增益，插入递推，bridge 增益</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. 引言</h2>
+
+        <h3>§1.1. 背景与目标</h3>
+        <p>论文 15 的 Theorem F 证明了：在假设 A（$p_k(N)$ 单调收敛）、A'（$p_\infty(k) \to 1$）和 B（Sathe-Selberg，已知）下，$D(N) \to 1$。假设 B 是经典结果。假设 A 是最深的开放问题（论文 15 §7.2）。本文攻击假设 A'。</p>
+        <p>论文 15 §6.5 已经指出了路线：若无界均值增益 $E[G_{\mathrm{spf}} \mid \Omega = k] \to \infty$ 且 $\mathrm{Var}(G_{\mathrm{spf}} \mid \Omega = k) = O(1)$，则由 Chebyshev 不等式得 A'。本文将这条路线形式化，并利用论文 16 的插入恒等式将无界均值增益进一步归约。</p>
+
+        <h3>§1.2. 论文结构</h3>
+        <ol>
+          <li><strong>已证：</strong>Chebyshev 桥定理（§2）。</li>
+          <li><strong>精确恒等式：</strong>插入递推分解（§3）。</li>
+          <li><strong>数值确认：</strong>三个算术输入的压倒性证据（§4）。</li>
+          <li><strong>条件闭合：</strong>从三个输入推出 A'（§5）。</li>
+        </ol>
+
+        <h3>§1.3. 记号</h3>
+        <ul>
+          <li>$\mu_k = E[G_{\mathrm{spf}} \mid \Omega(n) = k,\; n \leq N]$（壳层条件均值，$N$ 隐含）</li>
+          <li>$\sigma^2_k = \mathrm{Var}(G_{\mathrm{spf}} \mid \Omega(n) = k,\; n \leq N)$</li>
+          <li>$G_{\mathrm{spf}}(n) = A(n) + B_\rho(n) + 1 = j(n) + B_\rho(n)$（论文 16）</li>
+          <li>$I_k(N)$ = 插入测度：在 $\{n \leq N : \Omega(n) = k+1\}$ 上，取 cofactor $m = n/P^-(n)$</li>
+          <li>$K_p(n) = G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$（bridge term，$m = n/P^-(n)$）</li>
+        </ul>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. Chebyshev 桥定理（已证）</h2>
+
+        <h3>§2.1. 定理 4</h3>
+        <div class="milestone-box">
+          <p><strong>定理 4（Chebyshev 桥）.</strong> 设对每个固定 $k \geq 2$，以下量存在（允许为 $+\infty$）：</p>
+          <p>$$\underline{\mu}_k := \liminf_{N \to \infty} \mu_k(N), \qquad \overline{\sigma}^2_k := \limsup_{N \to \infty} \sigma^2_k(N)$$</p>
+          <p>若以下两个条件成立：<br>
+          <strong>(M)</strong> 无界均值增益：$\underline{\mu}_k \to \infty$（$k \to \infty$）；<br>
+          <strong>(V)</strong> 亚二次方差：$\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$（$k \to \infty$）；</p>
+          <p>则</p>
+          <p>$$\limsup_{N \to \infty} P(G_{\mathrm{spf}} \leq 0 \mid \Omega = k,\; n \leq N) \leq \frac{\overline{\sigma}^2_k}{\overline{\sigma}^2_k + \underline{\mu}_k^2} \to 0 \quad (k \to \infty)$$</p>
+          <p>从而：若 $p_\infty(k) := \lim_{N \to \infty} p_k(N)$ 存在（假设 A 的一部分），则 $p_\infty(k) \to 1$（$k \to \infty$），即假设 A' 成立。</p>
+          <p style="margin-top:0.8rem;"><em>证明.</em> 对每个固定 $k$ 和每个 $N$，由 Cantelli 不等式：</p>
+          <p>$$P_N(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \leq \frac{\sigma_k^2(N)}{\sigma_k^2(N) + \mu_k(N)^2}$$</p>
+          <p>取 $N \to \infty$ 的 limsup，利用 limsup 的次可加性和 $x \mapsto x/(x+a)$ 的单调性：</p>
+          <p>$$\limsup_{N \to \infty} P_N(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \leq \frac{\overline{\sigma}^2_k}{\overline{\sigma}^2_k + \underline{\mu}_k^2}$$</p>
+          <p>在条件 (M) 下，对充分大的 $k$ 有 $\underline{\mu}_k > 0$，Cantelli 的使用合法。在条件 (V) 下，右端 $\to 0$（$k \to \infty$）。$\square$</p>
+        </div>
+        <div class="note-box">
+          <strong>注 1.</strong> 定理 4 本身不需要假设 A（极限 $p_\infty(k)$ 的存在）。它给出的是对 limsup 的控制——无论 $p_k(N)$ 是否收敛，大 $k$ 处的"最差情况跳跃概率"都趋于 1。若 A 成立（极限存在），则 limsup 退化为 lim，给出 A'。<br><br>
+          <strong>注 2.</strong> 条件 (V) 远弱于 $\overline{\sigma}^2_k = O(1)$ uniform。后者在数值上也成立，但鉴于 scaling test 显示 $\mathrm{Var}(\Delta M \mid \Omega=k)$ 有 $O(\ln\ln N)$ 增长，我们在定理层面只使用更安全的 $o(\underline{\mu}_k^2)$ 条件。
+        </div>
+
+        <h3>§2.2. 数值验证</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mu_k$</th><th>$\sigma^2_k$</th><th>$\sigma^2/\mu^2$</th><th>Cantelli 上界</th></tr></thead>
+          <tbody>
+            <tr><td>3</td><td>0.223</td><td>1.235</td><td>24.85</td><td>0.961</td></tr>
+            <tr><td>4</td><td>0.704</td><td>1.017</td><td>2.054</td><td>0.672</td></tr>
+            <tr><td>5</td><td>1.102</td><td>0.988</td><td>0.813</td><td>0.448</td></tr>
+            <tr><td>6</td><td>1.462</td><td>1.024</td><td>0.479</td><td>0.324</td></tr>
+            <tr><td>7</td><td>1.794</td><td>1.078</td><td>0.335</td><td>0.251</td></tr>
+            <tr><td>8</td><td>2.094</td><td>1.151</td><td>0.263</td><td>0.208</td></tr>
+            <tr><td>10</td><td>2.631</td><td>1.262</td><td>0.182</td><td>0.154</td></tr>
+            <tr><td>12</td><td>3.107</td><td>1.333</td><td>0.138</td><td>0.121</td></tr>
+            <tr><td>15</td><td>3.848</td><td>1.275</td><td>0.086</td><td>0.079</td></tr>
+            <tr><td>19</td><td>4.978</td><td>1.133</td><td>0.046</td><td>0.044</td></tr>
+          </tbody>
+        </table>
+        <p>$\sigma^2/\mu^2$ 单调递减；Cantelli 上界从 $k = 5$ 的 0.45 下降至 $k = 19$ 的 0.04。</p>
+
+        <h3>§2.3. 条件 (V) 的数值确认</h3>
+        <p>在固定 $N = 10^7$ 下，$\sigma^2_k$ 对 $k$ 的回归给出 $R^2 = 0.018$（几乎无 $k$ 依赖）。对固定 $k = 8$，$\mathrm{Var}(G_{\mathrm{spf}})$ 随 $N$ 稳定收敛：</p>
+        <table class="struct-table">
+          <thead><tr><th>$N$</th><th>$\mathrm{Var}(G_{\mathrm{spf}} \mid k=8)$</th><th>$\sigma^2/\mu^2$</th></tr></thead>
+          <tbody>
+            <tr><td>$10^4$</td><td>1.510</td><td>0.219</td></tr>
+            <tr><td>$10^5$</td><td>1.223</td><td>0.217</td></tr>
+            <tr><td>$10^6$</td><td>1.171</td><td>0.240</td></tr>
+            <tr><td>$10^7$</td><td>1.151</td><td>0.263</td></tr>
+          </tbody>
+        </table>
+        <p><strong>分量分解.</strong> $\sigma^2_k = \mathrm{Var}(A \mid k) + \mathrm{Var}(B \mid k) + 2\,\mathrm{Cov}(A,B \mid k)$。$\mathrm{Var}(A \mid k)$ 缓增（0.31 到 1.30），$\mathrm{Var}(B \mid k)$ 递减（1.02 到 0.25），$\mathrm{Cov}(A,B \mid k) \approx -0.10$，稳定为负。Var(A) 增长与 Var(B) 递减互相抵消——论文 18 反相关引擎在 $G_{\mathrm{spf}}$ 层面的体现。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. 插入递推恒等式</h2>
+
+        <h3>§3.1. 设置</h3>
+        <p>对 $n$ 满足 $\Omega(n) = k+1$，设 $p = P^-(n)$（最小素因子），$m = n/p$（cofactor）。定义：</p>
+        <ul>
+          <li>插入测度 $I_k$：在 $\{n \leq N : \Omega(n) = k+1\}$ 上的均匀分布，作用于 cofactor $m$ 的统计量</li>
+          <li>Bridge term：$K_p(n) = G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$</li>
+        </ul>
+
+        <h3>§3.2. 命题 5（插入递推）</h3>
+        <div class="proof-box">
+          <p><strong>命题 5.</strong> 对每个 $k+1 \geq 4$：</p>
+          <p>$$\mu_{k+1} = E_{I_k}[G_{\mathrm{spf}}(m)] + E_{I_k}[K_p]$$</p>
+          <p><em>证明.</em> 这是期望的线性性：$\mu_{k+1} = E[G_{\mathrm{spf}}(m) + K_p(n) \mid \Omega(n) = k+1]$，其中 $m = n/P^-(n)$。$\square$</p>
+        </div>
+        <div class="note-box"><strong>注.</strong> 命题 5 本身是期望线性性的直接推论——一个代数恒等式，不含实质性分析内容。它的价值在于提供精确的分解框架。真正非平凡的是 §4 的数值发现。</div>
+        <p><strong>推论.</strong> 步增量分解为两项：</p>
+        <p>$$\mu_{k+1} - \mu_k = \underbrace{(E_{I_k}[G_{\mathrm{spf}}(m)] - \mu_k)}_{\text{代表性偏差}} + \underbrace{E_{I_k}[K_p]}_{\text{插入增益}}$$</p>
+
+        <h3>§3.3. 数值验证（$N = 10^7$）</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k \to k+1$</th><th>$\mu_{k+1}$</th><th>$\mu_k$</th><th>$\Delta\mu$</th><th>代表性偏差</th><th>$E[K_p]$</th><th>验证</th></tr></thead>
+          <tbody>
+            <tr><td>3→4</td><td>0.704</td><td>0.223</td><td>0.481</td><td>−0.013</td><td>0.494</td><td>0.481 ✓</td></tr>
+            <tr><td>4→5</td><td>1.102</td><td>0.704</td><td>0.399</td><td>0.066</td><td>0.333</td><td>0.399 ✓</td></tr>
+            <tr><td>5→6</td><td>1.462</td><td>1.102</td><td>0.360</td><td>0.081</td><td>0.279</td><td>0.360 ✓</td></tr>
+            <tr><td>6→7</td><td>1.794</td><td>1.462</td><td>0.331</td><td>0.070</td><td>0.261</td><td>0.331 ✓</td></tr>
+            <tr><td>7→8</td><td>2.094</td><td>1.794</td><td>0.300</td><td>0.059</td><td>0.242</td><td>0.300 ✓</td></tr>
+            <tr><td>8→9</td><td>2.376</td><td>2.094</td><td>0.283</td><td>0.051</td><td>0.232</td><td>0.283 ✓</td></tr>
+            <tr><td>9→10</td><td>2.631</td><td>2.376</td><td>0.255</td><td>0.046</td><td>0.209</td><td>0.255 ✓</td></tr>
+            <tr><td>10→11</td><td>2.878</td><td>2.631</td><td>0.247</td><td>0.041</td><td>0.206</td><td>0.247 ✓</td></tr>
+            <tr><td>11→12</td><td>3.107</td><td>2.878</td><td>0.229</td><td>0.052</td><td>0.177</td><td>0.229 ✓</td></tr>
+            <tr><td>12→13</td><td>3.332</td><td>3.107</td><td>0.226</td><td>0.043</td><td>0.183</td><td>0.226 ✓</td></tr>
+            <tr><td>13→14</td><td>3.583</td><td>3.332</td><td>0.251</td><td>0.069</td><td>0.182</td><td>0.251 ✓</td></tr>
+            <tr><td>14→15</td><td>3.848</td><td>3.583</td><td>0.265</td><td>0.053</td><td>0.212</td><td>0.265 ✓</td></tr>
+          </tbody>
+        </table>
+        <p>Sum check 在所有 $k$ 上精确到四位小数——恒等式的数值闭合完美。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. 算术输入与机制分析</h2>
+
+        <h3>§4.1. 输入 (L1)：Cofactor 代表性</h3>
+        <div class="thesis-box">
+          <p><strong>输入 (L1).</strong> $E_{I_k}[G_{\mathrm{spf}}(m)] \geq \mu_k - C_1$ 对所有大 $k$ 成立（cofactor 不系统性压缩均值）。</p>
+        </div>
+        <p><strong>数值：</strong>代表性偏差 $E_{I_k}[G_{\mathrm{spf}}(m)] - \mu_k$ 在 −0.01 到 +0.08 之间。cofactor 的 $G_{\mathrm{spf}}$ 均值几乎等于其所在壳层的整体均值。</p>
+
+        <h3>§4.2. 背景：B 的负偏置（机制讨论）</h3>
+        <p>$E[B_\rho \mid \Omega = k] \approx -0.50$，对所有 $k$ 几乎恒定。这一负偏置通过 $G_{\mathrm{spf}} = j + B$ 使得 $\mu_k$ 比 $E[j \mid k]$ 低约 0.5。此性质不作为定理 6 的输入条件，它是理解 $\mu_k$ 增长机制的背景信息。</p>
+
+        <h3>§4.3. 输入 (L3)：Bridge 正性</h3>
+        <div class="thesis-box">
+          <p><strong>输入 (L3).</strong> $E_{I_k}[K_p] \geq 0$ 对所有大 $k$ 成立（插入一个素因子平均增加 $G_{\mathrm{spf}}$）。</p>
+        </div>
+        <table class="struct-table">
+          <thead><tr><th>$k+1$</th><th>$E[K_p]$</th><th>$\mathrm{Var}[K_p]$</th><th>$P(K_p > 0)$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.494</td><td>1.903</td><td>46.0%</td></tr>
+            <tr><td>6</td><td>0.279</td><td>1.274</td><td>42.7%</td></tr>
+            <tr><td>8</td><td>0.242</td><td>1.332</td><td>43.1%</td></tr>
+            <tr><td>10</td><td>0.209</td><td>1.380</td><td>42.6%</td></tr>
+            <tr><td>12</td><td>0.177</td><td>1.419</td><td>41.6%</td></tr>
+            <tr><td>14</td><td>0.182</td><td>1.435</td><td>41.8%</td></tr>
+          </tbody>
+        </table>
+        <p>$E[K_p]$ 始终为正，从 0.49 递减至 0.18 后趋于稳定。$P(K_p > 0) \approx 42\%$ 恒定。</p>
+
+        <h3>§4.4. 形式化前景</h3>
+        <p><strong>(L1) Cofactor 代表性：</strong>由于 $P^-(n) = 2$ 主导 97% 以上的插入事件，插入测度与 $\Omega = k$ 壳层均匀测度之间的偏差很小，这是 Sathe-Selberg SPF 分层控制可以利用的结构。</p>
+        <p><strong>(L3) Bridge 正性：</strong>这是最核心的输入。直觉：多一个素因子提供更多分裂选择，$M_n$ 被优化得更低，$G_{\mathrm{spf}}$ 增大。形式化需要将 $M_n$ 与 $M_m$ 的定量比较——引入素因子 $p$ 在 $m$ 的最优分裂 $m = a \cdot b$ 上允许新分裂 $(ap) \cdot b$ 和 $a \cdot (bp)$，扩大了候选集。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. 条件 A' 的闭合</h2>
+
+        <h3>§5.1. 条件定理 6</h3>
+        <div class="milestone-box">
+          <p><strong>定理 6.</strong> 对每个 $k \geq 2$，定义 $N$-dependent 量：</p>
+          <p>$$\beta_k(N) := E_{I_k(N)}[G_{\mathrm{spf}}(m)] - \mu_k(N), \qquad \gamma_k(N) := E_{I_k(N)}[K_p]$$</p>
+          <p>假设：<br>
+          <strong>(L1)</strong> Cofactor 代表性：$\liminf_{N \to \infty} \beta_k(N) \geq -\varepsilon_k$，其中 $\varepsilon_k \geq 0$；<br>
+          <strong>(L3)</strong> Bridge 正性：$\liminf_{N \to \infty} \gamma_k(N) \geq \kappa_k \geq 0$；<br>
+          <strong>(D)</strong> 净增量发散：$\sum_k (\kappa_k - \varepsilon_k) = +\infty$；<br>
+          <strong>(V)</strong> 亚二次方差：$\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$。</p>
+          <p>则 $\underline{\mu}_k \to \infty$，从而由定理 4 得假设 A'（模假设 A 的极限存在性）。</p>
+          <p style="margin-top:0.8rem;"><em>证明.</em> 由命题 5，对每个固定 $K$ 和每个 $N$，有精确恒等式：</p>
+          <p>$$\mu_{K+1}(N) = \mu_2(N) + \sum_{k=2}^{K} [\beta_k(N) + \gamma_k(N)]$$</p>
+          <p>取 $N \to \infty$ 的 liminf，由于和中只有有限 $K-1$ 项，liminf 可以逐项传递：</p>
+          <p>$$\underline{\mu}_{K+1} \geq \underline{\mu}_2 + \sum_{k=2}^{K} (\kappa_k - \varepsilon_k)$$</p>
+          <p>由条件 (D)，右端 $\to +\infty$（$K \to \infty$），故 $\underline{\mu}_k \to \infty$，即条件 (M) 成立。由定理 4，$\limsup_N P(G_{\mathrm{spf}} \leq 0 \mid \Omega = k) \to 0$（$k \to \infty$）。$\square$</p>
+        </div>
+
+        <h3>§5.2. 证明链位置</h3>
+        <div class="chain-box">
+          $\text{(L1)(L3)(D)} \;\longrightarrow\; \mu_k \to \infty \;\;[\text{条件 (M)}]$<br>
+          $\text{(M)} + \text{(V)} \;\longrightarrow\; \limsup P(G_{\mathrm{spf}} \leq 0 \mid k) \to 0 \;\;[\text{定理 4}]$<br>
+          $\text{定理 4} + \text{A（极限存在）} \;\longrightarrow\; p_\infty(k) \to 1 \;\;[\text{假设 A'}]$<br>
+          $\text{A} + \text{A'} + \text{B} \;\longrightarrow\; D(N) \to 1 \;\;[\text{Theorem F, 论文 15}]$
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. 更新后的证明格局</h2>
+        <table class="struct-table">
+          <thead><tr><th>输入</th><th>状态</th><th>来源</th></tr></thead>
+          <tbody>
+            <tr><td>B (Sathe-Selberg)</td><td>已知</td><td>经典</td></tr>
+            <tr><td>A'（$p_\infty(k) \to 1$）</td><td><strong>条件闭合</strong></td><td>论文 22（在 (L1)(L3)(D)(V) + A 下）</td></tr>
+            <tr><td>A（$p_k(N)$ 收敛）</td><td><strong>开放 — 最深缺口</strong></td><td>论文 15</td></tr>
+            <tr><td>$\mathrm{Var}(B_\rho \mid k) = O_k(1)$</td><td>已证</td><td>论文 20</td></tr>
+            <tr><td>Lindley 同构</td><td>已证</td><td>论文 21</td></tr>
+            <tr><td>(V) $\overline{\sigma}^2_k = o(\underline{\mu}_k^2)$</td><td>数值支持（$\sigma^2/\mu^2$ 单调 $\to 0$）</td><td>论文 22</td></tr>
+            <tr><td>(L1) Cofactor 代表性</td><td>数值支持（偏差 &lt; 0.09）</td><td>论文 22</td></tr>
+            <tr><td>(L3) Bridge 正性</td><td>数值支持（$E[K_p] \in [0.18, 0.49]$）</td><td>论文 22</td></tr>
+            <tr><td>(D) 净增量发散</td><td>数值支持（$\sum(\kappa_k - \varepsilon_k)$ 发散）</td><td>论文 22</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box"><strong>最深剩余缺口：假设 A.</strong> 论文 21 的排队同构将假设 A 重写为 $(\Delta M, D) \mid \Omega = k$ 联合分布的收敛问题，提供了新的坐标系。</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. 热力学对应</h2>
+        <table class="struct-table">
+          <thead><tr><th>ZFCρ</th><th>热力学</th></tr></thead>
+          <tbody>
+            <tr><td>$\mu_k \to \infty$</td><td>每层自由能释放递增</td></tr>
+            <tr><td>$E[K_p] > 0$</td><td>每次"维度升级"释放正能量</td></tr>
+            <tr><td>$\mathrm{Var}(G_{\mathrm{spf}}) \approx O(1)$</td><td>涨落被阻尼到恒定带宽</td></tr>
+            <tr><td>$\sigma^2/\mu^2 \to 0$</td><td>信噪比 $\to \infty$：高 $\Omega$ 下的纯信号态</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>参考文献</h2>
+        <ol>
+          <li>H. Qin，ZFCρ 论文 XV，DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XVI，DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XVIII，DOI: <a href="https://doi.org/10.5281/zenodo.19023418" target="_blank" rel="noopener">10.5281/zenodo.19023418</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XX，DOI: <a href="https://doi.org/10.5281/zenodo.19027893" target="_blank" rel="noopener">10.5281/zenodo.19027893</a>。</li>
+          <li>H. Qin，ZFCρ 论文 XXI，DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>。</li>
+          <li>Sathe, L.G. (1953). <em>J. Indian Math. Soc.</em> 17, 63–141。</li>
+          <li>Selberg, A. (1954). <em>J. Indian Math. Soc.</em> 18, 83–87。</li>
+        </ol>
+
+        <div class="appendix-label">附录 A：AI 协作方法论——论文 20–22 的经验</div>
+
+        <h3>A.1. 工作流演进</h3>
+        <p><strong>论文 20（M6–M10）：</strong>纯并行探索。四 AI 给定相同提示，结果交叉验证。</p>
+        <p><strong>论文 21（M11）：</strong>差异化角色的结构化轮次。自组织为：ChatGPT = 计算 + 严格审阅，Gemini = 文献 + 结构洞察，Claude = 缺口分析 + 代码生成，Grok = 广泛探索（需交叉验证）。作者 = 方向 + 本地计算。</p>
+        <p><strong>论文 22（当前）：</strong>数据优先方法论。在定义证明目标之前先运行格局探索 + scaling test，消除了整类死胡同。</p>
+
+        <h3>A.2. "数据先于方向"原则与研究三角</h3>
+        <p>本轮工作揭示了三个不可替代组件构成的研究引擎：</p>
+        <p><strong>计算力（Scaling Test）：</strong>在 $N = 10^4$ 时，$\ln\ln N \approx 2.2$——缓慢的 $O(\ln\ln N)$ 增长与 $O(1)$ 噪声难以区分。通过运行到 $N = 3 \times 10^7$（8 个数据点，线性回归 $R^2 = 0.998$），慢速上升趋势被揭露。五分钟的计算杀死了一个伪收敛幻觉。</p>
+        <p><strong>AI 阵列：</strong>计算揭示了真实的长期趋势，但缺乏语义理解。四 AI 阵列扫描了论文 15 的架构，解耦系统，发现 Chebyshev 桥只需要固定-$k$ 局部收敛；全局发散只是 Erdős-Kac 素数漂移的副作用。三个 AI 独立得到相同结论，互相交叉验证。</p>
+        <p><strong>人类思维：</strong>AI 不会自发地构想"选择代价"；计算不知道 $M_n$ 是什么。人类建立了框架，定义了 DP 递推，并在计算和 AI 辅助下导航。闭环：直觉提出假设 → 计算压力测试 → AI 清除地雷并形式化。</p>
+
+        <h3>A.3. 审阅作为力量倍增器</h3>
+        <p>论文 21 经过四轮 ChatGPT 审阅：重大 → 中小 → 轻微 → 接受。每轮 25–40 分钟，总周期约 3 小时。可比的人工审阅：1–3 个月。关键区别不是速度而是迭代性：每轮修复引入的问题被下一轮捕获。</p>
+
+        <h3>A.4. 信任校准</h3>
+        <p>信任必须按任务获得，而非按模型授予。本轮实证可靠性：ChatGPT 计算 HIGH（零错误）；Claude 缺口分析 HIGH（所有结构问题均被 ChatGPT 确认）；Gemini 结构洞察 MEDIUM-HIGH（Lindley 发现正确且关键；部分推论过度声明）；Grok 第 1 轮计算 HIGH，第 2 轮及以后 LOW（用合成数据替代了真实算术）。</p>
+
+        <h3>A.5. 人类研究者的角色</h3>
+        <p>AI 提供广度（四个视角）、速度（分钟而非月份）和耐力（一天内四轮审阅）。人类提供深度（18 年的框架发展）、品味（哪些方向重要）和责任（论文只有一位作者）。人类研究者不可替代的贡献：方向、判断、校准、协调，以及提供基准真相数据的本地计算。</p>
+
+        <div class="appendix-label">附录 B：数值方法</div>
+        <p>所有计算使用 $N = 10^7$ 的精确整数算术。四个独立实现交叉验证。$N$-scaling test 覆盖 $N = 10^4$ 到 $3 \times 10^7$（8 个点）。</p>
+
+        <div class="appendix-label">附录 C：数据表</div>
+        <h3>C.1. 壳层统计（$k = 2..12$）</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$\mu_k$</th><th>$\sigma^2_k$</th><th>$E[j]$</th><th>$E[B]$</th><th>$\mathrm{Cov}(A,B)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>−0.433</td><td>1.769</td><td>0.299</td><td>−0.732</td><td>0.219</td></tr>
+            <tr><td>3</td><td>0.223</td><td>1.235</td><td>0.674</td><td>−0.451</td><td>0.081</td></tr>
+            <tr><td>4</td><td>0.704</td><td>1.017</td><td>1.087</td><td>−0.383</td><td>−0.015</td></tr>
+            <tr><td>5</td><td>1.102</td><td>0.988</td><td>1.503</td><td>−0.401</td><td>−0.065</td></tr>
+            <tr><td>6</td><td>1.462</td><td>1.024</td><td>1.896</td><td>−0.434</td><td>−0.086</td></tr>
+            <tr><td>7</td><td>1.794</td><td>1.078</td><td>2.253</td><td>−0.460</td><td>−0.096</td></tr>
+            <tr><td>8</td><td>2.094</td><td>1.151</td><td>2.572</td><td>−0.478</td><td>−0.101</td></tr>
+            <tr><td>9</td><td>2.376</td><td>1.204</td><td>2.863</td><td>−0.487</td><td>−0.106</td></tr>
+            <tr><td>10</td><td>2.631</td><td>1.262</td><td>3.124</td><td>−0.493</td><td>−0.099</td></tr>
+            <tr><td>11</td><td>2.878</td><td>1.299</td><td>3.375</td><td>−0.498</td><td>−0.101</td></tr>
+            <tr><td>12</td><td>3.107</td><td>1.333</td><td>3.604</td><td>−0.498</td><td>−0.108</td></tr>
+          </tbody>
+        </table>
+
+        <h3>C.2. Bridge Term $K_p$ 统计</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k+1$</th><th>$E[K_p]$</th><th>$\mathrm{Var}[K_p]$</th><th>$P(K_p>0)$</th><th>$E[G_{\mathrm{spf}}(m)] - \mu_k$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.494</td><td>1.903</td><td>46.0%</td><td>−0.013</td></tr>
+            <tr><td>6</td><td>0.279</td><td>1.274</td><td>42.7%</td><td>0.081</td></tr>
+            <tr><td>8</td><td>0.242</td><td>1.332</td><td>43.1%</td><td>0.059</td></tr>
+            <tr><td>10</td><td>0.209</td><td>1.380</td><td>42.6%</td><td>0.046</td></tr>
+            <tr><td>12</td><td>0.177</td><td>1.419</td><td>41.6%</td><td>0.052</td></tr>
+            <tr><td>14</td><td>0.182</td><td>1.435</td><td>41.8%</td><td>0.069</td></tr>
+          </tbody>
+        </table>
+
+        <div class="series-nav">
+          <span><a href="zfcrho21.html">← 论文 XXI：排队同构</a></span>
+          <span style="float:right;">论文 XXIII →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-zh -->
+
+  </main>
+
+  <footer>
+    <p>© 2025–2026 Han Qin (秦汉). Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  </footer>
+
+  <script>
+    function switchLang(lang, btn) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      btn.classList.add('active');
+      if (lang === 'zh') {
+        document.title = '无界均值增益与假设 A\' 的闭合 — ZFCρ 论文 XXII — Han Qin';
+      } else {
+        document.title = 'Unbounded Mean Gain and the Closure of Assumption A\' — ZFCρ Paper XXII — Han Qin';
+      }
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+  </script>
+</body>
+</html>
