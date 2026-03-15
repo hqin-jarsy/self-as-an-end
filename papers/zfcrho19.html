@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap — ZFCρ Paper XIX — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XIX: Three-point law B∈{-2,-1,0}, DP self-correction 95% regression, 97% predecessor-target cancellation, A-tail exponential decay. B-bound reduced to εp second-moment control.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, three-point law, B-bound, self-correction, DP recursion, exponential tail, autocorrelation, variance cancellation, 三点律, 自纠正, 方差对消">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho19.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho19.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19026991"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "three-point law", "B-bound",
+      "self-correction", "DP recursion", "exponential tail", "autocorrelation", "variance cancellation"
+    ],
+    "abstract": "M9 exploration results reducing B-bound to a precise algebraic condition. B(n) concentrates on {-2,-1,0} at high k with P(B=-1)≈0.76, suggesting three-point law (1/8,3/4,1/8) and Var(B)→1/4. Conditional theorem: εp second-moment control implies Var(B)=O_k(1). DP self-correction: 95% regression after large jumps. G shell-order autocorrelation ≈0 at lag≥2. 97% predecessor-target cancellation. A-tail consistent with exponential-type decay.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho19.html">
+  <meta name="citation_title" content="The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19026991">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho19.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; border-color: #e0e0e0; background: #fff; margin-bottom: -2px; border-bottom: 2px solid #fff; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .proof-box { background: #f5f5ff; border: 1px solid #d0d0ee; border-radius: 4px; padding: 0.85rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .correction-box { background: #fff8f5; border-left: 3px solid #c84b00; padding: 0.85rem 1.1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; font-size: 0.9rem; }
+  </style>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <header>
+    <div class="site-title"><a href="/">Self-as-an-End</a></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </nav>
+  </header>
+
+  <main class="paper-container">
+
+    <!-- Language tabs -->
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="switchLang('en', this)">English</button>
+      <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+    </div>
+
+    <!-- ========== ENGLISH ========== -->
+    <div class="lang-content active" id="lang-en">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ Paper XIX</div>
+        <h1 class="paper-title">The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap</h1>
+        <div class="paper-authors">Han Qin</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; March 2026
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19026991
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">Abstract</div>
+          <p>We report the M9 exploration results that reduce the B-bound to a precise algebraic condition and characterize the microstructure of the DP recursion. <strong>B-bound reduction.</strong> The factorization deficiency $B(n)$ concentrates on three values $\{-2, -1, 0\}$ at high $k$, with $P(B = -1) \approx 0.76$, $P(B = 0) \approx P(B = -2) \approx 0.12$ at $k = 12$. The data suggest a three-point law near weights $(1/8, 3/4, 1/8)$, which would imply $\mathrm{Var}(B) \to 1/4$. A conditional reduction is proved: if $\sup_N E[\varepsilon_{P^-}(n)^2 \mid \Omega(n) = k, n \leq N] &lt; \infty$, then $\mathrm{Var}(B \mid \Omega = k) = O_k(1)$ uniformly in $N$. The dominant contribution to $\mathrm{Var}(B)$ comes from the $v_{P^-} \geq 4$ regime (63% of the $\Omega = 8$ shell, contributing 81% of total variance), not the squarefree regime as previously emphasized. <strong>DP self-correction.</strong> After a large jump $j(n) \geq 3$, the next jump size drops to $E[j(n+1)] = 0.113$ (vs. the unconditional mean $2.515$), a 95% regression to baseline. The jump gain $G$ has shell-order autocorrelation $-0.037$ at lag 1 on the $\Omega = 8$ shell and $\approx 0$ at lag $\geq 2$ — the process is nearly decorrelated in shell order. This self-correction is structurally forced by the DP recursion: a large jump resets $S_{n+1} = M_n + 1$, and $M_{n+1}$ depends on $(n+1)$'s factorization, which shares no prime factors with $n$. <strong>Predecessor-target cancellation.</strong> $\mathrm{Corr}(\rho_E(n), \rho_E(n-1)) = 0.9676$ on the $\Omega = 8$ shell, with $\mathrm{Var}(\rho_E) \approx 18.9$ but $\mathrm{Var}(A) = 1.23$ — a 97% cancellation of two $O(\ln N)$-scale variances. <strong>$A$-tail structure.</strong> The tail of $A$ is consistent with exponential-type decay on the tested range: successive tail ratios $P(A \geq t+1)/P(A \geq t)$ decrease from $0.60$ to $0.09$ at $k = 8$, incompatible with power-law behavior. The proof landscape for $D(N) \to 1$ is updated: B-bound is reduced to $\varepsilon_p$ second-moment control (conditional theorem); the Local Lipschitz property remains the most leveraged open target, now supported by the self-correction mechanism and tail structure.</p>
+          <p style="margin-top:0.7rem;"><strong>Keywords:</strong> integer complexity, ρ-arithmetic, three-point law, B-bound, self-correction, DP recursion, exponential tail, autocorrelation, variance cancellation</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. Introduction</h2>
+
+        <h3>§1.1. Context</h3>
+        <p>Paper 18 (DOI: 10.5281/zenodo.19024385) identified the local Lipschitz property as the most leveraged target for $\sigma(G) = O(1)$, discovered the anti-correlation engine, and eliminated three proof routes. Two questions remained: (i) can B-bound be reduced to a precise algebraic condition? (ii) what is the microstructural mechanism that keeps $\mathrm{Var}(A) = O(1)$?</p>
+        <p>The present paper addresses both.</p>
+
+        <h3>§1.2. Notation</h3>
+        <p>As in Papers 17–18. Additionally: $v_{P^-}(n)$ denotes the exponent of $P^-(n)$ in the factorization of $n$. $\varepsilon_p(a) = \rho_E(p^a) - \rho_E(p^{a-1}) - \rho_E(p)$ for $a \geq 2$ (prime-power correction).</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. The Three-Point Law for $B$</h2>
+
+        <h3>§2.1. Empirical Distribution</h3>
+        <p>At $N = 10^7$, the distribution of $B(n) = \rho_E(n) - \rho_E(n/P^-) - \rho_E(P^-) - 2$ on the $\Omega = k$ shell:</p>
+
+        <table class="struct-table">
+          <thead><tr><th>$B$</th><th>$k = 8$</th><th>$k = 10$</th><th>$k = 12$</th></tr></thead>
+          <tbody>
+            <tr><td>−3</td><td>0.04%</td><td>0.00%</td><td>0.00%</td></tr>
+            <tr><td>−2</td><td>13.28%</td><td>12.21%</td><td>11.95%</td></tr>
+            <tr><td>−1</td><td>69.58%</td><td>74.23%</td><td>75.72%</td></tr>
+            <tr><td>0</td><td>17.10%</td><td>13.55%</td><td>12.32%</td></tr>
+          </tbody>
+        </table>
+
+        <p>$P(B \in \{-2, -1, 0\}) &gt; 99.9\%$ for $k \geq 10$. (Cross-validated by independent implementations at $N = 10^7$; see Appendix A for details.)</p>
+
+        <p>Corresponding moments:</p>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$E[B]$</th><th>$\mathrm{Var}(B)$</th></tr></thead>
+          <tbody>
+            <tr><td>8</td><td>−0.963</td><td>0.304</td></tr>
+            <tr><td>10</td><td>−0.987</td><td>0.258</td></tr>
+            <tr><td>12</td><td>−0.996</td><td>0.243</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§2.2. The Three-Point Structure</h3>
+        <div class="thesis-box">
+          <p><strong>Empirical Conjecture (Three-Point Law).</strong> In the high-$k$ tight-support regime tested here:</p>
+          <p>$$P(B = -1 \mid \Omega = k) \to \lambda, \quad P(B = 0 \mid \Omega = k) \to \beta, \quad P(B = -2 \mid \Omega = k) \to \alpha$$</p>
+          <p>with $\alpha + \lambda + \beta = 1$ and $\alpha, \beta &gt; 0$.</p>
+        </div>
+        <p>From the data: $\lambda \approx 0.76$, $\alpha \approx 0.12$, $\beta \approx 0.12$, trending toward $\alpha \approx \beta$ (symmetric wings).</p>
+        <p><strong>Algebraic consequence.</strong> If $B$ concentrates on $\{-2, -1, 0\}$ with weights $(\alpha, \lambda, \beta)$:</p>
+        <p>$$E[B] = -2\alpha - \lambda = -1 - \alpha + \beta$$</p>
+        <p>$$\mathrm{Var}(B) = \alpha + \beta - (\beta - \alpha)^2$$</p>
+        <p>If $\alpha = \beta$ (symmetric): $E[B] = -1$, $\mathrm{Var}(B) = 2\alpha$. For $\mathrm{Var}(B) = 1/4$: $\alpha = 1/8$.</p>
+        <p>Current data ($k = 12$): $\alpha = 0.12$, $\beta = 0.12$, $\mathrm{Var} = 0.24 \approx 1/4$. The data suggest convergence toward $(\alpha, \lambda, \beta) \approx (1/8, 3/4, 1/8)$, which would imply $\mathrm{Var}(B) \to 1/4$.</p>
+
+        <h3>§2.3. Correction to Paper 18</h3>
+        <div class="correction-box">
+          <p>Paper 18 §6.1 described $\mathrm{Var}(B) \to 1/4$ as "consistent with a Bernoulli-like distribution of $B$ values concentrated near $\{0, -1\}$." This is incorrect. The correct description: $B$ concentrates on three values $\{-2, -1, 0\}$ with $-1$ as the dominant mode ($\approx 76\%$) and approximately symmetric wings at $-2$ and $0$.</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. The B-Bound Reduction Theorem</h2>
+
+        <h3>§3.1. Decomposition of $B$</h3>
+        <p>$$B(n) = R_k(n) + E_k(n) - 2$$</p>
+        <p>where $R_k(n) = r(n) - r(n/P^-(n))$ and $E_k(n) = \varepsilon_{P^-(n)}(n)$ (the prime-power correction at $P^-$; zero when $v_{P^-} = 1$).</p>
+        <p>Bounds: $R_k \in [-(2k-4), 2(k-1)]$ (from $0 \leq r(m) \leq 2(\Omega(m) - 1)$). So for fixed $k$, $\mathrm{Var}(R_k) = O(k^2)$.</p>
+
+        <h3>§3.2. Conditional Theorem</h3>
+        <div class="proof-box">
+          <p><strong>Proposition (B-bound Reduction).</strong> <em>For each fixed $k \geq 2$, if</em></p>
+          <p>$$\sup_N E[\varepsilon_{P^-(n)}(n)^2 \mid \Omega(n) = k, n \leq N] &lt; \infty,$$</p>
+          <p><em>then $\mathrm{Var}(B \mid \Omega = k, n \leq N) = O_k(1)$ uniformly in $N$.</em></p>
+          <p><em>Proof.</em> $B = R_k + E_k - 2$. $\mathrm{Var}(B) \leq 2\mathrm{Var}(R_k) + 2\mathrm{Var}(E_k)$. $\mathrm{Var}(R_k) \leq (2k-2)^2$ for fixed $k$. $\mathrm{Var}(E_k) \leq E[\varepsilon_{P^-}^2] &lt; \infty$ by hypothesis. Both are $O_k(1)$. $\square$</p>
+        </div>
+        <p><strong>Remark.</strong> The hypothesis $E[\varepsilon_{P^-}^2] &lt; \infty$ is the precise algebraic bottleneck. Paper 17 showed $\varepsilon_p(2) \in [-6, 2]$ pointwise, but the Sathe-Selberg weighted average on $\Omega$-shells remains to be controlled.</p>
+
+        <h3>§3.3. Status of the $\varepsilon_p$ Second Moment</h3>
+        <p>Numerically, $\mathrm{Var}(B) \in [0.24, 0.30]$ for $k \geq 8$, consistent with bounded shell-averaged second moment of $\varepsilon_{P^-}$, though not by itself proving it. The theoretical challenge is to prove uniform boundedness as $N \to \infty$ for fixed $k$, which requires controlling the Sathe-Selberg measure of primes $p$ with extreme $\varepsilon_p$ values.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. Stratification by $v_{P^-}$</h2>
+
+        <h3>§4.1. Data</h3>
+        <table class="struct-table">
+          <thead><tr><th>$v$</th><th>Share ($k=8$)</th><th>$E[B \mid v]$</th><th>$\mathrm{Var}(B \mid v)$</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>7.87%</td><td>−0.975</td><td>0.120</td></tr>
+            <tr><td>2</td><td>12.00%</td><td>−1.058</td><td>0.135</td></tr>
+            <tr><td>3</td><td>17.25%</td><td>−0.872</td><td>0.170</td></tr>
+            <tr><td>≥4</td><td>62.87%</td><td>−0.968</td><td>0.392</td></tr>
+          </tbody>
+        </table>
+        <p>(Cross-validated by independent implementations at $N = 10^7$.)</p>
+
+        <h3>§4.2. The Dominance of High Multiplicity</h3>
+        <p>At $k = 8$, $v_{P^-} \geq 4$ accounts for 63% of the shell and contributes approximately 81% of $\mathrm{Var}(B)$ (by the law of total variance decomposition).</p>
+        <p>This overturns the early-series emphasis on squarefree ($v = 1$) behavior. Paper 16's narrative that "$&gt; 95\%$ of composites have $v_{P^-} = 1$" is correct only for $k \leq 5$; at $k = 8$, $v = 1$ is already a 7.9% minority.</p>
+        <p><strong>Structural interpretation.</strong> At high $k$, most integers on the $\Omega = k$ shell are "smooth" (dominated by small primes with high multiplicity). The $B$ value then depends on how the DP handles repeated prime factors — specifically, whether the prime-power correction $\varepsilon_p$ adds or subtracts from the additive baseline.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. DP Self-Correction</h2>
+
+        <h3>§5.1. Large-Jump Reset</h3>
+        <p>On the $\Omega = 8$ shell at $N = 10^7$:</p>
+        <table class="struct-table">
+          <thead><tr><th>Condition</th><th>$E[j(n+1)]$</th></tr></thead>
+          <tbody>
+            <tr><td>Unconditional</td><td>2.515</td></tr>
+            <tr><td>After $j(n) \geq 3$</td><td><strong>0.113</strong></td></tr>
+          </tbody>
+        </table>
+        <p>A 95% regression. After a large jump, the system nearly always enters a non-jump state ($j \approx 0$) at the next step.</p>
+        <p><strong>Mechanism.</strong> When $j(n)$ is large: $\rho_E(n) = M_n \ll S_n$, so $S_{n+1} = M_n + 1$ is "low." For $n+1$ to also jump, $M_{n+1}$ must be even lower than $S_{n+1} = M_n + 1$. Since $M_{n+1}$ depends on $(n+1)$'s factorization, which shares no prime factors with $n$ ($\gcd(n, n+1) = 1$), there is no structural reason for $M_{n+1}$ to be systematically low. The large jump has been "forgotten."</p>
+
+        <h3>§5.2. Shell-Order Decorrelation</h3>
+        <p>On the $\Omega = 8$ shell, ordering elements $n_1 &lt; n_2 &lt; \ldots$ by magnitude (note: consecutive shell elements $n_i, n_{i+1}$ are typically NOT consecutive integers):</p>
+        <table class="struct-table">
+          <thead><tr><th>Lag $\ell$</th><th>$\mathrm{Corr}(G(n_i), G(n_{i+\ell}))$</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>−0.037</td></tr>
+            <tr><td>2</td><td>≈ 0</td></tr>
+            <tr><td>3+</td><td>≈ 0</td></tr>
+          </tbody>
+        </table>
+        <p>The $G$ values on the shell are nearly decorrelated in shell order. The slight negative autocorrelation at lag 1 may reflect residual local structure among nearby shell elements.</p>
+        <div class="note-box">
+          <strong>Remark.</strong> This shell-order decorrelation is a weaker statement than consecutive-integer self-correction (§5.1). The §5.1 statistic conditions on $j(n) \geq 3$ and examines $j(n+1)$ at the <em>next integer</em>; §5.2 examines $G$ at the <em>next shell element</em>, which is typically many integers away. Both support the picture of weak dependence, but they measure different things.
+        </div>
+
+        <h3>§5.3. Implications for Local Lipschitz</h3>
+        <p>The self-correction mechanism provides the structural explanation for why $\mathrm{Var}(A) = O(1)$:</p>
+        <ul>
+          <li>Large deviations in $A$ (large jumps) are immediately corrected at the next integer</li>
+          <li>The data are consistent with weak dependence together with one-step self-correction</li>
+          <li>This suppresses variance accumulation rather than proving its impossibility</li>
+        </ul>
+        <p>This does not constitute a proof of Local Lipschitz, but it identifies the precise DP mechanism that would need to be formalized.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. Predecessor-Target Cancellation</h2>
+
+        <h3>§6.1. Data</h3>
+        <p>On the $\Omega = 8$ shell at $N = 10^7$:</p>
+        <p>$$\mathrm{Var}(\rho_E(n)) = 18.93, \quad \mathrm{Var}(\rho_E(n-1)) \approx 18.93$$</p>
+        <p>$$\mathrm{Corr}(\rho_E(n), \rho_E(n-1)) = 0.9676$$</p>
+        <p>$$\mathrm{Var}(A) = \mathrm{Var}(\rho_E(n-1) - \rho_E(n)) = 1.226$$</p>
+        <p>Check: $\mathrm{Var}(A) = 2 \times 18.93 \times (1 - 0.9676) = 2 \times 18.93 \times 0.0324 = 1.227$. ✓</p>
+
+        <h3>§6.2. The 97% Cancellation</h3>
+        <p>Two quantities with variance $\approx 19$ produce a difference with variance $\approx 1.2$. The correlation coefficient $0.9676$ means that 96.76% of the fluctuation in $\rho_E(n)$ is shared with $\rho_E(n-1)$. Only the residual 3.24% contributes to $\mathrm{Var}(A)$.</p>
+        <p>This cancellation is the "macro" manifestation of the anti-correlation engine discovered in Paper 18: the $O(\ln N)$ variances of $S_n$ and $M_n$ cancel to $O(1)$ because the DP couples them through the shared history.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. $A$-Tail Structure</h2>
+
+        <h3>§7.1. Tail Probabilities</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$P(A \geq 0)$</th><th>$P(A \geq 1)$</th><th>$P(A \geq 2)$</th><th>$P(A \geq 3)$</th><th>$P(A \geq 4)$</th><th>$P(A \geq 5)$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.716</td><td>0.321</td><td>0.062</td><td>0.004</td><td>0.000</td><td>0.000</td></tr>
+            <tr><td>8</td><td>0.975</td><td>0.824</td><td>0.496</td><td>0.181</td><td>0.035</td><td>0.003</td></tr>
+            <tr><td>12</td><td>0.997</td><td>0.962</td><td>0.805</td><td>0.485</td><td>0.194</td><td>0.041</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§7.2. Short-Tail Character</h3>
+        <p>Successive tail ratios at $k = 8$:</p>
+        <p>$$\frac{P(A \geq 2)}{P(A \geq 1)} = 0.60, \quad \frac{P(A \geq 3)}{P(A \geq 2)} = 0.36, \quad \frac{P(A \geq 4)}{P(A \geq 3)} = 0.20, \quad \frac{P(A \geq 5)}{P(A \geq 4)} = 0.09$$</p>
+        <p>The ratios decrease — faster than geometric decay. This is consistent with short-tail / exponential-type behavior on the tested range, not a power law.</p>
+        <div class="note-box">
+          <strong>Remark.</strong> The raw tail $P(A \geq t)$ shifts right with $k$ (because $E[A] = E[j] - 1$ grows logarithmically). The centered tail $P(A - E[A] \geq t)$ is the more intrinsic quantity for Local Lipschitz; its characterization is left to future work.
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§8. The Revised Proof Landscape</h2>
+
+        <h3>§8.1. What M9 Establishes</h3>
+        <p><strong>Proved (conditional):</strong></p>
+        <ul>
+          <li>B-bound Reduction: $E[\varepsilon_{P^-}^2 \mid \Omega = k] &lt; \infty \implies \mathrm{Var}(B) = O_k(1)$</li>
+        </ul>
+        <p><strong>Discoveries (numerical, strong evidence):</strong></p>
+        <ul>
+          <li>Three-point law: $B \in \{-2, -1, 0\}$ with $P(B = -1) \approx 0.76$</li>
+          <li>Data suggest $\mathrm{Var}(B) \to 1/4$ via three-point convergence toward $(1/8, 3/4, 1/8)$</li>
+          <li>DP self-correction: 95% regression after large jumps</li>
+          <li>$G$ shell-order autocorrelation $-0.037$ at lag 1, $\approx 0$ at lag $\geq 2$</li>
+          <li>97% predecessor-target cancellation</li>
+          <li>$A$-tail consistent with exponential-type decay on tested range, incompatible with power law</li>
+          <li>$v_{P^-} \geq 4$ dominates $\mathrm{Var}(B)$ at high $k$</li>
+        </ul>
+        <p><strong>Corrections:</strong></p>
+        <ul>
+          <li>Paper 18 "Bernoulli near $\{0, -1\}$" → three-point $\{-2, -1, 0\}$</li>
+          <li>Paper 16 "squarefree dominance" → $v \geq 4$ dominance at $k \geq 8$</li>
+        </ul>
+
+        <h3>§8.2. Updated Open Inputs for $D(N) \to 1$</h3>
+        <table class="struct-table">
+          <thead><tr><th>Input</th><th>Status</th><th>M9 impact</th></tr></thead>
+          <tbody>
+            <tr><td>$\sigma(G) = O(1)$</td><td>Local Lipschitz (open)</td><td>Self-correction + tail structure identified as mechanism</td></tr>
+            <tr><td>B-bound</td><td><strong>Reduced to $E[\varepsilon_p^2]$ control (conditional theorem)</strong></td><td>Reduced to $E[\varepsilon_p^2]$ control</td></tr>
+            <tr><td>$E[\varepsilon_p^2]$ control</td><td>Open</td><td>New input identified by M9</td></tr>
+            <tr><td>Scale term monotonicity</td><td>Numerical</td><td>Unchanged</td></tr>
+            <tr><td>I-a for fixed $k$</td><td>Open</td><td>Unchanged</td></tr>
+            <tr><td>Lemma II</td><td>Numerically benign</td><td>Unchanged</td></tr>
+            <tr><td>SPF-positivity convergence</td><td>Numerical (downstream)</td><td>Unchanged</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§8.3. Proof Dependency Graph (Updated)</h3>
+        <div class="math-formula">Local Lipschitz (N) ⟶ Var(A) = O(1)
+E[εₚ²] &lt; ∞ (open) --[B-bound Reduction (T)]-→ Var(B) = O_k(1)
+Var(A) = O(1) + Var(B) = O_k(1) ⟶ Var(G_spf) = O_k(1)
+Var(G_spf) = O_k(1) + Prop C (T) + Scale mono (N) ⟶ I-b
+I-b + I-a (T high-k / N fixed-k) ⟶ Lemma I
+Lemma I + Lemma II (N) + B-bound ⟶ Thm 5 (Paper 16, T)
+Thm 5 + SPF-positivity (N) + Sathe-Selberg (T) ⟶ D(N) → 1</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <div class="appendix-label">Appendix A</div>
+        <h2>Appendix A. Methodological Note</h2>
+        <p><em>All mathematical claims, citations, and computations in this paper were independently checked and are the author's responsibility. AI systems were used for literature search, exploratory computation, and drafting support.</em></p>
+
+        <h3>A.1. Four-AI Contributions to M9</h3>
+        <p><strong>ChatGPT</strong> predicted the three-point law $\{-2, -1, 0\}$ from the algebraic constraint $E[B] = -0.9$, $\mathrm{Var}(B) = 0.25$ (ruling out two-point Bernoulli), proved the B-bound Reduction theorem, identified the $\varepsilon_p$ second-moment bottleneck, and independently computed the $B$ distribution and $A$ tail/moment tables that were used as the primary data source.</p>
+        <p><strong>Gemini</strong> proposed the initial PMF computation and the "two-state collapse" hypothesis (subsequently corrected: a code-level offset error produced $\{0, -1\}$ instead of $\{-2, -1, 0\}$; the error was caught by cross-validation with ChatGPT and Grok). Gemini's M8 discovery of the anti-correlation engine remains the foundational mechanism result.</p>
+        <p><strong>Grok</strong> provided the decisive self-correction data (Task 1: $j(n+1) = 0.113$ after large jumps), $G$ autocorrelation (Task 2: lag-1 $= -0.037$), predecessor-target correlation (Task 3: 0.9676), and served as the independent tiebreaker confirming the three-point law.</p>
+        <p><strong>Claude</strong> analyzed the DP recursion structure (Route B: self-correction via coprimality of $n$ and $n+1$; Route A: Gaussian model circularity; Route C: $I_{\mathrm{spf}}$ blocked), and identified the self-correction mechanism as the most promising formalization path.</p>
+
+        <h3>A.2. Role of the Thermodynamic Interface</h3>
+        <p>The thermodynamic interface (documented in Paper 18 Appendix A.2) continued to inform M9 through its emphasis on fluctuation-dissipation structure: the DP self-correction mechanism corresponds to a "dissipative restoring force" that returns the system to equilibrium after large fluctuations, a standard feature of systems obeying fluctuation-dissipation relations.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>References</h2>
+        <ol class="paper-references">
+          <li>H. Qin, "The anti-correlation engine" (Paper 18), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</li>
+          <li>H. Qin, "Monotonicity, roughness stability, and the narrowing of the relay architecture" (Paper 17), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</li>
+          <li>H. Qin, "The insertion identity, variance splitting, and the relay engine of Conjecture H'" (Paper 16), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+          <li>H. Qin, "Zero-inflated lattice normal model" (Paper 13), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a>.</li>
+          <li>I. Kátai and M. V. Subbarao, "Some remarks on a paper of Ramachandra," <em>Lithuanian Math. J.</em> 48 (2008), 170–183.</li>
+          <li>O. Mangerel, "Additive functions in short intervals, gaps and a conjecture of Erdős," <em>Int. Math. Res. Not.</em> (2022).</li>
+        </ol>
+
+        <div class="series-nav">
+          <span><a href="zfcrho18.html">← Paper XVIII: The Anti-Correlation Engine</a></span>
+          <span style="float:right;">Paper XX →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-en -->
+
+    <!-- ========== CHINESE ========== -->
+    <div class="lang-content" id="lang-zh">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ 论文 XIX</div>
+        <h1 class="paper-title">三点律、自纠正与方差缺口的收窄</h1>
+        <div class="paper-authors">Han Qin（秦汉）</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; 2026 年 3 月
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19026991
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">摘要</div>
+          <p>本文报告 M9 探索结果，将 B-bound 归约为精确的代数条件，并刻画 DP 递推的微观结构。<strong>B-bound 归约。</strong>因子分解缺陷 $B(n)$ 在高 $k$ 时集中于三个值 $\{-2, -1, 0\}$，$k = 12$ 时 $P(B = -1) \approx 0.76$，$P(B = 0) \approx P(B = -2) \approx 0.12$。数据暗示三点律趋向权重 $(1/8, 3/4, 1/8)$，这将意味着 $\mathrm{Var}(B) \to 1/4$。证明了条件归约：若 $\sup_N E[\varepsilon_{P^-}(n)^2 \mid \Omega(n) = k, n \leq N] &lt; \infty$，则 $\mathrm{Var}(B \mid \Omega = k) = O_k(1)$ 关于 $N$ 一致。$\mathrm{Var}(B)$ 的主要贡献来自 $v_{P^-} \geq 4$ regime（$\Omega = 8$ 壳的 63%，贡献 81% 的总方差），而非先前强调的 squarefree regime。<strong>DP 自纠正。</strong>大跳跃 $j(n) \geq 3$ 后，下一步跳跃大小降至 $E[j(n+1)] = 0.113$（无条件均值 2.515），95% 回归基准。$G$ 在 $\Omega = 8$ 壳上的壳序自相关：lag 1 = $-0.037$，lag $\geq 2$ 时 $\approx 0$——过程在壳序上近乎去相关。此自纠正由 DP 递推结构性强制：大跳跃重置 $S_{n+1} = M_n + 1$，而 $M_{n+1}$ 依赖 $(n+1)$ 的因子分解，与 $n$ 不共享素因子。<strong>前驱-目标对消。</strong>$\mathrm{Corr}(\rho_E(n), \rho_E(n-1)) = 0.9676$（$\Omega = 8$ 壳），$\mathrm{Var}(\rho_E) \approx 18.9$ 但 $\mathrm{Var}(A) = 1.23$——两个 $O(\ln N)$ 级方差的 97% 对消。<strong>$A$-尾部结构。</strong>$A$ 的尾部在测试范围内与指数型衰减一致：$k = 8$ 时连续尾比从 0.60 递减至 0.09，与幂律行为不相容。$D(N) \to 1$ 的证明格局更新：B-bound 归约为 $\varepsilon_p$ 二阶矩控制（条件定理）；局部 Lipschitz 性质仍为最有杠杆的开放目标，现由自纠正机制和尾部结构支撑。</p>
+          <p style="margin-top:0.7rem;"><strong>关键词：</strong>整数复杂度，ρ-算术，三点律，B-bound，自纠正，DP 递推，指数尾部，自相关，方差对消</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. 引言</h2>
+
+        <h3>§1.1. 背景</h3>
+        <p>论文 18（DOI: 10.5281/zenodo.19024385）将局部 Lipschitz 性质定位为 $\sigma(G) = O(1)$ 的最有杠杆目标，发现了反相关引擎，并排除了三条证明路线。两个问题仍然存在：(i) B-bound 能否归约为精确的代数条件？(ii) 保持 $\mathrm{Var}(A) = O(1)$ 的微观结构机制是什么？</p>
+        <p>本文回应了这两个问题。</p>
+
+        <h3>§1.2. 记号</h3>
+        <p>同论文 17–18。另外：$v_{P^-}(n)$ 为 $P^-(n)$ 在 $n$ 因子分解中的指数。$\varepsilon_p(a) = \rho_E(p^a) - \rho_E(p^{a-1}) - \rho_E(p)$（$a \geq 2$，素数幂修正）。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. $B$ 的三点律</h2>
+
+        <h3>§2.1. 经验分布</h3>
+        <p>$N = 10^7$ 下，$B(n) = \rho_E(n) - \rho_E(n/P^-) - \rho_E(P^-) - 2$ 在 $\Omega = k$ 壳上的分布：</p>
+        <table class="struct-table">
+          <thead><tr><th>$B$</th><th>$k = 8$</th><th>$k = 10$</th><th>$k = 12$</th></tr></thead>
+          <tbody>
+            <tr><td>−3</td><td>0.04%</td><td>0.00%</td><td>0.00%</td></tr>
+            <tr><td>−2</td><td>13.28%</td><td>12.21%</td><td>11.95%</td></tr>
+            <tr><td>−1</td><td>69.58%</td><td>74.23%</td><td>75.72%</td></tr>
+            <tr><td>0</td><td>17.10%</td><td>13.55%</td><td>12.32%</td></tr>
+          </tbody>
+        </table>
+        <p>$k \geq 10$ 时 $P(B \in \{-2, -1, 0\}) &gt; 99.9\%$。（由独立实现在 $N = 10^7$ 下交叉验证；详见附录 A。）</p>
+
+        <p>对应矩：</p>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$E[B]$</th><th>$\mathrm{Var}(B)$</th></tr></thead>
+          <tbody>
+            <tr><td>8</td><td>−0.963</td><td>0.304</td></tr>
+            <tr><td>10</td><td>−0.987</td><td>0.258</td></tr>
+            <tr><td>12</td><td>−0.996</td><td>0.243</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§2.2. 三点结构</h3>
+        <div class="thesis-box">
+          <p><strong>经验猜想（三点律）。</strong>在本文测试的高 $k$ 紧支撑 regime 中：</p>
+          <p>$$P(B = -1 \mid \Omega = k) \to \lambda, \quad P(B = 0 \mid \Omega = k) \to \beta, \quad P(B = -2 \mid \Omega = k) \to \alpha$$</p>
+          <p>其中 $\alpha + \lambda + \beta = 1$，$\alpha, \beta &gt; 0$。</p>
+        </div>
+        <p>数据：$\lambda \approx 0.76$，$\alpha \approx 0.12$，$\beta \approx 0.12$，趋向 $\alpha \approx \beta$（对称翼）。</p>
+        <p><strong>代数推论。</strong>若 $B$ 集中于 $\{-2, -1, 0\}$，权重 $(\alpha, \lambda, \beta)$：</p>
+        <p>$$E[B] = -2\alpha - \lambda = -1 - \alpha + \beta$$</p>
+        <p>$$\mathrm{Var}(B) = \alpha + \beta - (\beta - \alpha)^2$$</p>
+        <p>若 $\alpha = \beta$（对称）：$E[B] = -1$，$\mathrm{Var}(B) = 2\alpha$。$\mathrm{Var}(B) = 1/4$ 时 $\alpha = 1/8$。</p>
+        <p>当前数据（$k = 12$）：$\alpha = 0.12$，$\beta = 0.12$，$\mathrm{Var} = 0.24 \approx 1/4$。数据暗示收敛向 $(\alpha, \lambda, \beta) \approx (1/8, 3/4, 1/8)$，这将意味着 $\mathrm{Var}(B) \to 1/4$。</p>
+
+        <h3>§2.3. 对论文 18 的修正</h3>
+        <div class="correction-box">
+          <p>论文 18 §6.1 将 $\mathrm{Var}(B) \to 1/4$ 描述为"与集中于 $\{0, -1\}$ 附近的 Bernoulli 型分布一致"。此描述不正确。正确描述：$B$ 集中于三个值 $\{-2, -1, 0\}$，以 $-1$ 为主模式（$\approx 76\%$），$-2$ 和 $0$ 为近似对称翼。</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. B-Bound 归约定理</h2>
+
+        <h3>§3.1. $B$ 的分解</h3>
+        <p>$$B(n) = R_k(n) + E_k(n) - 2$$</p>
+        <p>其中 $R_k(n) = r(n) - r(n/P^-(n))$，$E_k(n) = \varepsilon_{P^-(n)}(n)$（$P^-$ 处的素数幂修正；$v_{P^-} = 1$ 时为零）。</p>
+        <p>界：$R_k \in [-(2k-4), 2(k-1)]$（由 $0 \leq r(m) \leq 2(\Omega(m) - 1)$）。固定 $k$ 时 $\mathrm{Var}(R_k) = O(k^2)$。</p>
+
+        <h3>§3.2. 条件定理</h3>
+        <div class="proof-box">
+          <p><strong>命题（B-bound 归约）。</strong><em>对每个固定 $k \geq 2$，若</em></p>
+          <p>$$\sup_N E[\varepsilon_{P^-(n)}(n)^2 \mid \Omega(n) = k, n \leq N] &lt; \infty,$$</p>
+          <p><em>则 $\mathrm{Var}(B \mid \Omega = k, n \leq N) = O_k(1)$ 关于 $N$ 一致。</em></p>
+          <p><em>证明。</em>$B = R_k + E_k - 2$。$\mathrm{Var}(B) \leq 2\mathrm{Var}(R_k) + 2\mathrm{Var}(E_k)$。固定 $k$ 时 $\mathrm{Var}(R_k) \leq (2k-2)^2$。$\mathrm{Var}(E_k) \leq E[\varepsilon_{P^-}^2] &lt; \infty$（假设）。两者均为 $O_k(1)$。$\square$</p>
+        </div>
+        <p><strong>注。</strong>假设 $E[\varepsilon_{P^-}^2] &lt; \infty$ 是精确的代数瓶颈。论文 17 显示 $\varepsilon_p(2) \in [-6, 2]$（逐点），但 $\Omega$-壳上的 Sathe-Selberg 加权平均仍待控制。</p>
+
+        <h3>§3.3. $\varepsilon_p$ 二阶矩的状态</h3>
+        <p>数值上 $\mathrm{Var}(B) \in [0.24, 0.30]$（$k \geq 8$），与 $\varepsilon_{P^-}$ 的有界壳平均二阶矩一致，但本身不构成证明。理论挑战在于证明固定 $k$ 下 $N \to \infty$ 时的一致有界性，需要控制具有极端 $\varepsilon_p$ 值的素数的 Sathe-Selberg 测度。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. 按 $v_{P^-}$ 的分层</h2>
+
+        <h3>§4.1. 数据</h3>
+        <table class="struct-table">
+          <thead><tr><th>$v$</th><th>占比（$k=8$）</th><th>$E[B \mid v]$</th><th>$\mathrm{Var}(B \mid v)$</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>7.87%</td><td>−0.975</td><td>0.120</td></tr>
+            <tr><td>2</td><td>12.00%</td><td>−1.058</td><td>0.135</td></tr>
+            <tr><td>3</td><td>17.25%</td><td>−0.872</td><td>0.170</td></tr>
+            <tr><td>≥4</td><td>62.87%</td><td>−0.968</td><td>0.392</td></tr>
+          </tbody>
+        </table>
+        <p>（由独立实现在 $N = 10^7$ 下交叉验证。）</p>
+
+        <h3>§4.2. 高重数的主导性</h3>
+        <p>$k = 8$ 时，$v_{P^-} \geq 4$ 占壳的 63%，贡献约 81% 的 $\mathrm{Var}(B)$（由全方差公式分解）。</p>
+        <p>这推翻了系列早期对 squarefree（$v = 1$）行为的强调。论文 16 中"$&gt; 95\%$ 的合数有 $v_{P^-} = 1$"的断言仅对 $k \leq 5$ 成立；$k = 8$ 时 $v = 1$ 仅占 7.9%。</p>
+        <p><strong>结构解释。</strong>高 $k$ 时，$\Omega = k$ 壳上大多数整数是"光滑"的（以高重数的小素数为主）。$B$ 的值取决于 DP 如何处理重复素因子——具体地说，素数幂修正 $\varepsilon_p$ 是增加还是减少加法基线。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. DP 自纠正</h2>
+
+        <h3>§5.1. 大跳跃重置</h3>
+        <p>$\Omega = 8$ 壳，$N = 10^7$：</p>
+        <table class="struct-table">
+          <thead><tr><th>条件</th><th>$E[j(n+1)]$</th></tr></thead>
+          <tbody>
+            <tr><td>无条件</td><td>2.515</td></tr>
+            <tr><td>$j(n) \geq 3$ 之后</td><td><strong>0.113</strong></td></tr>
+          </tbody>
+        </table>
+        <p>95% 回归。大跳跃后，系统几乎总是在下一步进入非跳跃状态（$j \approx 0$）。</p>
+        <p><strong>机制。</strong>$j(n)$ 大时：$\rho_E(n) = M_n \ll S_n$，故 $S_{n+1} = M_n + 1$ 为"低"值。$n+1$ 也跳跃需要 $M_{n+1}$ 比 $S_{n+1} = M_n + 1$ 更低。由于 $M_{n+1}$ 依赖 $(n+1)$ 的因子分解，而 $(n+1)$ 与 $n$ 不共享素因子（$\gcd(n, n+1) = 1$），不存在 $M_{n+1}$ 系统性偏低的结构原因。大跳跃被"遗忘"。</p>
+
+        <h3>§5.2. 壳序去相关</h3>
+        <p>在 $\Omega = 8$ 壳上按大小排序 $n_1 &lt; n_2 &lt; \ldots$（注：连续壳元素 $n_i, n_{i+1}$ 通常不是连续整数）：</p>
+        <table class="struct-table">
+          <thead><tr><th>Lag $\ell$</th><th>$\mathrm{Corr}(G(n_i), G(n_{i+\ell}))$</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>−0.037</td></tr>
+            <tr><td>2</td><td>≈ 0</td></tr>
+            <tr><td>3+</td><td>≈ 0</td></tr>
+          </tbody>
+        </table>
+        <p>$G$ 在壳序上近乎去相关。Lag 1 的轻微负自相关可能反映相近壳元素间的残余局部结构。</p>
+        <div class="note-box">
+          <strong>注。</strong>此壳序去相关弱于连续整数自纠正（§5.1）。§5.1 的统计以 $j(n) \geq 3$ 为条件，检查下一个整数的 $j(n+1)$；§5.2 检查下一个壳元素的 $G$，通常间隔许多整数。两者都支持弱依赖的图景，但度量不同。
+        </div>
+
+        <h3>§5.3. 对局部 Lipschitz 的含义</h3>
+        <p>自纠正机制为 $\mathrm{Var}(A) = O(1)$ 提供了结构性解释：</p>
+        <ul>
+          <li>$A$ 的大偏差（大跳跃）在下一个整数被立即纠正</li>
+          <li>数据与弱依赖加单步自纠正一致</li>
+          <li>这抑制了方差累积，但不构成不可能性的证明</li>
+        </ul>
+        <p>这不构成局部 Lipschitz 的证明，但识别了需要形式化的精确 DP 机制。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. 前驱-目标对消</h2>
+
+        <h3>§6.1. 数据</h3>
+        <p>$\Omega = 8$ 壳，$N = 10^7$：</p>
+        <p>$$\mathrm{Var}(\rho_E(n)) = 18.93, \quad \mathrm{Var}(\rho_E(n-1)) \approx 18.93$$</p>
+        <p>$$\mathrm{Corr}(\rho_E(n), \rho_E(n-1)) = 0.9676$$</p>
+        <p>$$\mathrm{Var}(A) = \mathrm{Var}(\rho_E(n-1) - \rho_E(n)) = 1.226$$</p>
+        <p>验证：$\mathrm{Var}(A) = 2 \times 18.93 \times (1 - 0.9676) = 2 \times 18.93 \times 0.0324 = 1.227$。✓</p>
+
+        <h3>§6.2. 97% 对消</h3>
+        <p>两个方差 $\approx 19$ 的量产生方差 $\approx 1.2$ 的差。相关系数 0.9676 意味着 $\rho_E(n)$ 的 96.76% 涨落与 $\rho_E(n-1)$ 共享。仅 3.24% 的残差贡献到 $\mathrm{Var}(A)$。</p>
+        <p>此对消是论文 18 发现的反相关引擎的"宏观"表现：$S_n$ 和 $M_n$ 的 $O(\ln N)$ 方差对消为 $O(1)$，因为 DP 通过共享历史耦合了它们。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. $A$-尾部结构</h2>
+
+        <h3>§7.1. 尾部概率</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>$P(A \geq 0)$</th><th>$P(A \geq 1)$</th><th>$P(A \geq 2)$</th><th>$P(A \geq 3)$</th><th>$P(A \geq 4)$</th><th>$P(A \geq 5)$</th></tr></thead>
+          <tbody>
+            <tr><td>4</td><td>0.716</td><td>0.321</td><td>0.062</td><td>0.004</td><td>0.000</td><td>0.000</td></tr>
+            <tr><td>8</td><td>0.975</td><td>0.824</td><td>0.496</td><td>0.181</td><td>0.035</td><td>0.003</td></tr>
+            <tr><td>12</td><td>0.997</td><td>0.962</td><td>0.805</td><td>0.485</td><td>0.194</td><td>0.041</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§7.2. 短尾特征</h3>
+        <p>$k = 8$ 时的连续尾比：</p>
+        <p>$$\frac{P(A \geq 2)}{P(A \geq 1)} = 0.60, \quad \frac{P(A \geq 3)}{P(A \geq 2)} = 0.36, \quad \frac{P(A \geq 4)}{P(A \geq 3)} = 0.20, \quad \frac{P(A \geq 5)}{P(A \geq 4)} = 0.09$$</p>
+        <p>比值递减——快于几何衰减。这与短尾/指数型行为在测试范围内一致，非幂律。</p>
+        <div class="note-box">
+          <strong>注。</strong>原始尾部 $P(A \geq t)$ 随 $k$ 右移（因为 $E[A] = E[j] - 1$ 对数增长）。中心化尾部 $P(A - E[A] \geq t)$ 是局部 Lipschitz 的更本质量；其刻画留待未来工作。
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§8. 修正后的证明全景图</h2>
+
+        <h3>§8.1. M9 确立的内容</h3>
+        <p><strong>已证（条件）：</strong></p>
+        <ul>
+          <li>B-bound 归约：$E[\varepsilon_{P^-}^2 \mid \Omega = k] &lt; \infty \implies \mathrm{Var}(B) = O_k(1)$</li>
+        </ul>
+        <p><strong>发现（数值，强证据）：</strong></p>
+        <ul>
+          <li>三点律：$B \in \{-2, -1, 0\}$，$P(B = -1) \approx 0.76$</li>
+          <li>数据暗示 $\mathrm{Var}(B) \to 1/4$，通过三点收敛向 $(1/8, 3/4, 1/8)$</li>
+          <li>DP 自纠正：大跳跃后 95% 回归</li>
+          <li>$G$ 壳序自相关：lag 1 = $-0.037$，lag $\geq 2$ 时 $\approx 0$</li>
+          <li>97% 前驱-目标对消</li>
+          <li>$A$-尾部在测试范围内与指数型衰减一致，与幂律不相容</li>
+          <li>$v_{P^-} \geq 4$ 在高 $k$ 主导 $\mathrm{Var}(B)$</li>
+        </ul>
+        <p><strong>修正：</strong></p>
+        <ul>
+          <li>论文 18 "Bernoulli 近 $\{0, -1\}$" → 三点 $\{-2, -1, 0\}$</li>
+          <li>论文 16 "squarefree 主导" → $v \geq 4$ 主导（$k \geq 8$）</li>
+        </ul>
+
+        <h3>§8.2. $D(N) \to 1$ 的更新开放输入</h3>
+        <table class="struct-table">
+          <thead><tr><th>输入</th><th>状态</th><th>M9 影响</th></tr></thead>
+          <tbody>
+            <tr><td>$\sigma(G) = O(1)$</td><td>局部 Lipschitz（开放）</td><td>自纠正 + 尾部结构作为机制</td></tr>
+            <tr><td>B-bound</td><td><strong>归约为 $E[\varepsilon_p^2]$ 控制（条件定理）</strong></td><td>归约为 $E[\varepsilon_p^2]$ 控制</td></tr>
+            <tr><td>$E[\varepsilon_p^2]$ 控制</td><td>开放</td><td>M9 识别的新输入</td></tr>
+            <tr><td>Scale term 单调性</td><td>数值</td><td>不变</td></tr>
+            <tr><td>固定 $k$ 的 I-a</td><td>开放</td><td>不变</td></tr>
+            <tr><td>Lemma II</td><td>数值良性</td><td>不变</td></tr>
+            <tr><td>SPF-正性收敛</td><td>数值（下游）</td><td>不变</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§8.3. 证明依赖图（更新版）</h3>
+        <div class="math-formula">局部 Lipschitz (N) ⟶ Var(A) = O(1)
+E[εₚ²] &lt; ∞ (开放) --[B-bound 归约 (T)]-→ Var(B) = O_k(1)
+Var(A) = O(1) + Var(B) = O_k(1) ⟶ Var(G_spf) = O_k(1)
+Var(G_spf) = O_k(1) + 命题 C (T) + Scale 单调性 (N) ⟶ I-b
+I-b + I-a (T 高-k / N 固定-k) ⟶ Lemma I
+Lemma I + Lemma II (N) + B-bound ⟶ Thm 5（论文 16, T）
+Thm 5 + SPF-正性收敛 (N) + Sathe-Selberg (T) ⟶ D(N) → 1</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <div class="appendix-label">附录 A</div>
+        <h2>附录 A. 方法论说明</h2>
+        <p><em>本文中所有数学断言、引用和计算均经独立核查，由作者负责。AI 系统用于文献检索、探索性计算和起草支持。</em></p>
+
+        <h3>A.1. 四 AI 对 M9 的贡献</h3>
+        <p><strong>ChatGPT</strong> 从代数约束 $E[B] = -0.9$，$\mathrm{Var}(B) = 0.25$ 预测了三点律 $\{-2, -1, 0\}$（排除二点 Bernoulli），证明了 B-bound 归约定理，识别了 $\varepsilon_p$ 二阶矩瓶颈，并独立计算了 $B$ 分布和 $A$ 尾部/矩表，作为本文的主要数据来源。</p>
+        <p><strong>Gemini</strong> 提出了初始 PMF 计算和"双态坍缩"假设（后被修正：代码层偏移错误产生了 $\{0, -1\}$ 而非 $\{-2, -1, 0\}$；错误通过与 ChatGPT 和 Grok 交叉验证发现）。Gemini 在 M8 中发现的反相关引擎仍为基础性机制结果。</p>
+        <p><strong>Grok</strong> 提供了决定性的自纠正数据（任务 1：大跳跃后 $j(n+1) = 0.113$），$G$ 自相关（任务 2：lag-1 $= -0.037$），前驱-目标相关（任务 3：0.9676），并作为独立裁判确认了三点律。</p>
+        <p><strong>Claude</strong> 分析了 DP 递推结构（路线 B：通过 $n$ 和 $n+1$ 互素的自纠正；路线 A：Gaussian 模型循环性；路线 C：$I_{\mathrm{spf}}$ 受阻），并将自纠正机制识别为最有前景的形式化路径。</p>
+
+        <h3>A.2. 热力学接口的角色</h3>
+        <p>热力学接口（记录于论文 18 附录 A.2）继续通过其对涨落-耗散结构的强调指导 M9：DP 自纠正机制对应于将系统在大涨落后带回平衡的"耗散回复力"，这是服从涨落-耗散关系的系统的标准特征。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>参考文献</h2>
+        <ol class="paper-references">
+          <li>H. Qin, "The anti-correlation engine"（论文 18），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>。</li>
+          <li>H. Qin, "Monotonicity, roughness stability, and the narrowing of the relay architecture"（论文 17），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>。</li>
+          <li>H. Qin, "The insertion identity, variance splitting, and the relay engine of Conjecture H'"（论文 16），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+          <li>H. Qin, "Zero-inflated lattice normal model"（论文 13），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.18991986" target="_blank" rel="noopener">10.5281/zenodo.18991986</a>。</li>
+          <li>I. Kátai and M. V. Subbarao, "Some remarks on a paper of Ramachandra," <em>Lithuanian Math. J.</em> 48 (2008), 170–183。</li>
+          <li>O. Mangerel, "Additive functions in short intervals, gaps and a conjecture of Erdős," <em>Int. Math. Res. Not.</em> (2022)。</li>
+        </ol>
+
+        <div class="series-nav">
+          <span><a href="zfcrho18.html">← 论文 XVIII：反相关引擎</a></span>
+          <span style="float:right;">论文 XX →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-zh -->
+
+  </main>
+
+  <footer>
+    <p>© 2025–2026 Han Qin (秦汉). Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  </footer>
+
+  <script>
+    function switchLang(lang, btn) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      btn.classList.add('active');
+      if (lang === 'zh') {
+        document.title = '三点律、自纠正与方差缺口的收窄 — ZFCρ 论文 XIX — Han Qin';
+      } else {
+        document.title = 'The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap — ZFCρ Paper XIX — Han Qin';
+      }
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+  </script>
+</body>
+</html>
