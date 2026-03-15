@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closing the B-bound: The Prime-Power Second Moment Theorem and the First Unconditional Node — ZFCρ Paper XX — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XX: Prime-Power Second Moment Theorem proves E[εp²|Ω=k]→0, closing B-bound unconditionally — first open input in D(N)→1 proof resolved. Variance compression 90% after large jumps. Corr(Mn,Mn+1)=0.9663.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, B-bound, prime-power correction, second moment, Landau formula, self-correction, variance compression, 素数幂二阶矩, B-bound闭合, 方差压缩">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Closing the B-bound: The Prime-Power Second Moment Theorem and the First Unconditional Node">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho20.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Closing the B-bound: The Prime-Power Second Moment Theorem and the First Unconditional Node",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho20.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19027892"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "B-bound", "prime-power correction",
+      "second moment", "Landau formula", "self-correction", "variance compression"
+    ],
+    "abstract": "Closes the B-bound, the first open input in the proof landscape of D(N)→1 to be resolved unconditionally. Prime-Power Second Moment Theorem: E[εP-(n)²|Ω(n)=k,n≤N]→0 as N→∞, rate O((ln ln N)^{-2}). Unconditional B-bound: Var(B|Ω=k)=O_k(1). εp(2) atlas for p≤10^4. Variance compression 90% after large jumps. Corr(Mn,Mn+1)=0.9663 supports shared DP history interpretation.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho20.html">
+  <meta name="citation_title" content="Closing the B-bound: The Prime-Power Second Moment Theorem and the First Unconditional Node">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19027892">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho20.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .math-formula { font-family: 'Courier New', Courier, monospace; font-size: 0.92rem; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; overflow-x: auto; white-space: pre; line-height: 1.7; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .key-line { background: #f8f8ff; border-left: 3px solid #888; padding: 0.7rem 1rem; margin: 1.2rem 0; font-style: italic; border-radius: 0 4px 4px 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; border-color: #e0e0e0; background: #fff; margin-bottom: -2px; border-bottom: 2px solid #fff; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .proof-box { background: #f5f5ff; border: 1px solid #d0d0ee; border-radius: 4px; padding: 0.85rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .milestone-box { background: #f0fff4; border-left: 3px solid #2e7d32; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <header>
+    <div class="site-title"><a href="/">Self-as-an-End</a></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </nav>
+  </header>
+
+  <main class="paper-container">
+
+    <!-- Language tabs -->
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="switchLang('en', this)">English</button>
+      <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+    </div>
+
+    <!-- ========== ENGLISH ========== -->
+    <div class="lang-content active" id="lang-en">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ Paper XX</div>
+        <h1 class="paper-title">Closing the B-bound: The Prime-Power Second Moment Theorem and the First Unconditional Node</h1>
+        <div class="paper-authors">Han Qin</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; March 2026
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19027892
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">Abstract</div>
+          <p>We close the B-bound, the first open input in the proof landscape of $D(N) \to 1$ to be resolved unconditionally. Two theorems are proved. <strong>Theorem (Prime-Power Second Moment).</strong> For each fixed $k \geq 2$, $E[\varepsilon_{P^-(n)}(n)^2 \mid \Omega(n) = k, n \leq N] \to 0$ as $N \to \infty$. The proof uses only three inputs: the pointwise bounds $\varepsilon_p(a) \leq 2$ (multiplicative) and $|\varepsilon_p(a)| \ll_k \ln p$ (from $\rho_E = O(\ln n)$), the Landau formula for $N_k(x)$, and the constraint $p^k \leq N$ on the support. <strong>Theorem (Unconditional B-bound).</strong> For each fixed $k \geq 2$, $\mathrm{Var}(B \mid \Omega = k, n \leq N) = O_k(1)$ uniformly in $N$. This follows immediately from the Prime-Power Second Moment Theorem and the B-bound Reduction of Paper 19. Numerical data confirm: $E[\varepsilon_{P^-}^2 \mid \Omega = 8] = 1.84$ and $E[\varepsilon_{P^-}^2 \mid \Omega = 12] = 1.98$ at $N = 10^7$, far below any divergence threshold. A complete atlas of $\varepsilon_p(2)$ for $p \leq 10^4$ shows the distribution concentrated in $[-2, 2]$ with sparse negative outliers ($|\varepsilon_p(2)| \geq 4$ for only 2.8% of primes). For fixed small primes ($p = 2, 3, 5, 7$), $\varepsilon_p(a) \in \{0, 1, 2\}$ for all $a \leq 20$ with rigid periodic patterns and no growth. The DP self-correction mechanism is further quantified: large jumps compress not only the conditional mean (95% regression, Paper 19) but also the conditional variance ($\mathrm{Var}(G(n+1) \mid j(n) \geq 3) = 0.126$ vs. unconditional $1.23$, a 90% compression). $\mathrm{Corr}(M_n, M_{n+1}) = 0.9663$ on the $\Omega = 8$ shell, supporting the view that the $O(1)$ variance of $G$ arises from cancellation of shared DP history rather than coprimality-based independence. The proof landscape is updated: B-bound is the first node to move from (N) to (T); the Local Lipschitz property remains the most leveraged open target.</p>
+          <p style="margin-top:0.7rem;"><strong>Keywords:</strong> integer complexity, ρ-arithmetic, B-bound, prime-power correction, second moment, Landau formula, self-correction, variance compression</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. Introduction</h2>
+
+        <h3>§1.1. Context</h3>
+        <p>Paper 19 (DOI: 10.5281/zenodo.19026991) proved the B-bound Reduction: $\mathrm{Var}(B) = O_k(1)$ follows from $E[\varepsilon_{P^-}^2 \mid \Omega = k] &lt; \infty$. The present paper closes this last step, proving the prime-power second moment is not merely bounded but tends to zero.</p>
+
+        <h3>§1.2. Notation</h3>
+        <p>As in Papers 17–19. $\varepsilon_p(a) = \rho_E(p^a) - \rho_E(p^{a-1}) - \rho_E(p)$ for $a \geq 2$. $N_k(x) = \#\{n \leq x : \Omega(n) = k\}$. $M_{k,N}(p, a) = \#\{n \leq N : \Omega(n) = k, P^-(n) = p, v_{P^-}(n) = a\}$.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. Pointwise Bounds on $\varepsilon_p(a)$</h2>
+
+        <h3>§2.1. Upper Bound</h3>
+        <div class="proof-box">
+          <p><strong>Proposition (Multiplicative Upper Bound).</strong> <em>For all primes $p$ and $a \geq 2$, $\varepsilon_p(a) \leq 2$.</em></p>
+          <p><em>Proof.</em> $p^a = p \cdot p^{a-1}$ is a valid split, so $\rho_E(p^a) \leq \rho_E(p) + \rho_E(p^{a-1}) + 2$. $\square$</p>
+        </div>
+
+        <h3>§2.2. Lower Bound</h3>
+        <div class="proof-box">
+          <p><strong>Proposition (Logarithmic Lower Bound).</strong> <em>For each fixed $a$, $|\varepsilon_p(a)| \ll_a \ln p$.</em></p>
+          <p><em>Proof.</em> $\rho_E(m) = O(\ln m)$ (Paper 11 [5]). So $|\varepsilon_p(a)| \leq \rho_E(p^a) + \rho_E(p^{a-1}) + \rho_E(p) \leq C_a \ln p$. $\square$</p>
+        </div>
+
+        <h3>§2.3. Structural Recursion</h3>
+        <p>The DP for prime powers gives:</p>
+        <p>$$\rho_E(p^a) = \min\left(\rho_E(p^a - 1) + 1,\ \min_{1 \leq i \leq a-1}(\rho_E(p^i) + \rho_E(p^{a-i}) + 2)\right)$$</p>
+        <p>Setting $S_p(a) = \rho_E(p^a - 1) + 1 - \rho_E(p^{a-1}) - \rho_E(p)$:</p>
+        <p>$$\varepsilon_p(a) \geq \min(S_p(a),\ \varepsilon_p(2),\ \ldots,\ \varepsilon_p(a-1),\ 2)$$</p>
+        <div class="note-box">
+          <strong>Consequence.</strong> New deep-negative values of $\varepsilon_p(a)$ can only arise from the successor route (when $p^a - 1$ has anomalously low complexity), not from multiplicative splits. This is consistent with Paper 17's observation that $\varepsilon_p(2) &lt; 0$ occurs when $p^2 - 1 = (p-1)(p+1)$ has an unusually favorable factorization.
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. The Prime-Power Second Moment Theorem</h2>
+
+        <h3>§3.1. Statement</h3>
+        <div class="thesis-box">
+          <p><strong>Theorem (Prime-Power Second Moment).</strong> <em>For each fixed $k \geq 2$:</em></p>
+          <p>$$E[\varepsilon_{P^-(n)}(n)^2 \mid \Omega(n) = k, n \leq N] \to 0 \quad (N \to \infty).$$</p>
+          <p><em>In particular, for $k \geq 3$:</em></p>
+          <p>$$E[\varepsilon_{P^-}^2 \mid \Omega = k, n \leq N] \ll_k (\ln\ln N)^{-2}.$$</p>
+          <p><em>For $k = 2$, the bound is $O(N^{-1/2} \ln^3 N)$ (Case B dominates).</em></p>
+        </div>
+
+        <h3>§3.2. Proof</h3>
+        <p>Write</p>
+        <p>$$E[\varepsilon_{P^-}^2 \mid \Omega = k] = \frac{1}{N_k(N)} \sum_{a=2}^{k} \sum_p M_{k,N}(p,a) \cdot \varepsilon_p(a)^2.$$</p>
+
+        <p><strong>Case A: $2 \leq a \leq k-1$.</strong></p>
+        <p>If $M_{k,N}(p, a) \neq 0$, then $n = p^a m$ with $\Omega(m) = k - a$ and $P^-(m) &gt; p$, so $n \geq p^a \cdot p^{k-a} = p^k$, giving $p \leq N^{1/k}$.</p>
+        <p>By the Landau upper bound (Tenenbaum [7], Ch. II.6): for each fixed $r \geq 1$,</p>
+        <p>$$N_r(x) \ll_r \frac{x (\ln\ln x)^{r-1}}{\ln x} \quad (x \geq x_0(r)).$$</p>
+        <p>Since $p \leq N^{1/k}$, we have $N/p^a \geq N^{1-a/k} \geq N^{1/k}$, so the Landau upper bound applies to $N_{k-a}(N/p^a)$:</p>
+        <p>$$\frac{M_{k,N}(p,a)}{N_k(N)} \leq \frac{N_{k-a}(N/p^a)}{N_k(N)} \ll_k \frac{1}{p^a (\ln\ln N)^a}.$$</p>
+        <p>Combined with $\varepsilon_p(a)^2 \ll_k (\ln p)^2$:</p>
+        <p>$$\sum_p \frac{M_{k,N}(p,a)}{N_k(N)} \cdot \varepsilon_p(a)^2 \ll_k \frac{1}{(\ln\ln N)^a} \sum_p \frac{(\ln p)^2}{p^a}.$$</p>
+        <p>Since $a \geq 2$, the series $\sum_p (\ln p)^2 / p^a$ converges. So this contribution is $O_k((\ln\ln N)^{-a})$.</p>
+
+        <p><strong>Case B: $a = k$.</strong></p>
+        <p>Then $n = p^k$, so $M_{k,N}(p, k) \leq 1$ for each $p$, and $p \leq N^{1/k}$.</p>
+        <p>$$\frac{1}{N_k(N)} \sum_{p \leq N^{1/k}} \varepsilon_p(k)^2 \ll_k \frac{N^{1/k} \ln^2 N}{N (\ln\ln N)^{k-1} / \ln N} = N^{1/k - 1} \cdot \frac{\ln^3 N}{(\ln\ln N)^{k-1}} \to 0.$$</p>
+
+        <p><strong>Combining Cases A and B:</strong> The dominant term is $a = 2$, giving</p>
+        <p>$$E[\varepsilon_{P^-}^2 \mid \Omega = k] \ll_k (\ln\ln N)^{-2} \to 0. \quad \square$$</p>
+
+        <h3>§3.3. Remark on the Regime Distinction</h3>
+        <div class="note-box">
+          The theorem holds for fixed $k$, $N \to \infty$. In the "tight-support" regime of Paper 19 ($k$ large relative to $\ln\ln N$, where $v_{P^-} \geq 2$ dominates), $E[\varepsilon_{P^-}^2]$ is numerically $\approx 1.9$ at $N = 10^7$. These are different asymptotic regimes: the theorem describes the fixed-$k$ limit where $v \geq 2$ events become rare; the numerical data describe the high-$k$ regime where they are common but individually benign. Both are consistent with $\mathrm{Var}(B) = O_k(1)$.
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. The Unconditional B-bound</h2>
+
+        <h3>§4.1. Statement and Proof</h3>
+        <div class="milestone-box">
+          <p><strong>Theorem (Unconditional B-bound).</strong> <em>For each fixed $k \geq 2$:</em></p>
+          <p>$$\mathrm{Var}(B \mid \Omega = k, n \leq N) = O_k(1)$$</p>
+          <p><em>uniformly in $N$.</em></p>
+          <p style="margin-top:0.8rem;"><em>Proof.</em> By Paper 19 Proposition (B-bound Reduction): $\mathrm{Var}(B) \leq 2\mathrm{Var}(R_k) + 2\mathrm{Var}(E_k)$, where $\mathrm{Var}(R_k) \leq (2k-2)^2$ (fixed $k$) and $\mathrm{Var}(E_k) \leq E[\varepsilon_{P^-}^2]$. By the Prime-Power Second Moment Theorem, $E[\varepsilon_{P^-}^2] \ll_k 1$. $\square$</p>
+        </div>
+
+        <h3>§4.2. Significance</h3>
+        <p>This is the first open input in the proof landscape of $D(N) \to 1$ to be closed unconditionally. In the dependency graph of Paper 19 §8.3, B-bound moves from (N) to <strong>(T)</strong>.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. The $\varepsilon_p$ Atlas</h2>
+
+        <h3>§5.1. Distribution of $\varepsilon_p(2)$ ($p \leq 10^4$)</h3>
+        <table class="struct-table">
+          <thead><tr><th>$\varepsilon_p(2)$</th><th>Count</th><th>Fraction</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td>−6</td><td>3</td><td>0.24%</td><td>1439, 3119, 6299</td></tr>
+            <tr><td>−5</td><td>5</td><td>0.41%</td><td>1499, 5749, 6719, 7559, 8699</td></tr>
+            <tr><td>−4</td><td>26</td><td>2.12%</td><td>179, 719, 1319, ...</td></tr>
+            <tr><td>−3</td><td>48</td><td>3.91%</td><td>263, 479, 863, ...</td></tr>
+            <tr><td>−2</td><td>133</td><td>10.82%</td><td>59, 167, 191, ...</td></tr>
+            <tr><td>−1</td><td>236</td><td>19.20%</td><td>71, 199, 233, ...</td></tr>
+            <tr><td>0</td><td>316</td><td>25.71%</td><td>2, 11, 23, ...</td></tr>
+            <tr><td>1</td><td>270</td><td>21.97%</td><td>19, 29, 31, ...</td></tr>
+            <tr><td>2</td><td>192</td><td>15.62%</td><td>3, 5, 7, ...</td></tr>
+          </tbody>
+        </table>
+        <p>1229 primes total. The distribution is centered near 0 with a slight positive skew. The negative tail is sparse: $|\varepsilon_p(2)| \geq 4$ accounts for only 34 primes (2.8%).</p>
+
+        <h3>§5.2. $\varepsilon_p(a)$ for Small Primes, High $a$</h3>
+        <table class="struct-table">
+          <thead><tr><th>$a$</th><th>$\varepsilon_2(a)$</th><th>$\varepsilon_3(a)$</th><th>$\varepsilon_5(a)$</th><th>$\varepsilon_7(a)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>0</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>4</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>5</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>6</td><td>0</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>8</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>10</td><td>0</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>12</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>16</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>20</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+          </tbody>
+        </table>
+        <p>All values in $\{0, 1, 2\}$. No growth with $a$. Rigid periodic patterns: $\varepsilon_2(a)$ alternates $0, 2$; $\varepsilon_3(a) = \varepsilon_5(a) = 2$ always; $\varepsilon_7(a) = 1$ when $4 \mid a$, else $2$. (Selected rows shown; full table for $a = 2, \ldots, 20$ available in supplementary data.)</p>
+
+        <h3>§5.3. Shell-Averaged Second Moment</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>Shell size</th><th>$E[\varepsilon_{P^-}^2 \mid \Omega = k]$</th></tr></thead>
+          <tbody>
+            <tr><td>8</td><td>207,207</td><td>1.840</td></tr>
+            <tr><td>12</td><td>11,068</td><td>1.978</td></tr>
+          </tbody>
+        </table>
+        <p>Conditioned on $v_{P^-} \geq 2$: $E[\varepsilon_{P^-}^2 \mid v \geq 2] \approx 1.99$ for both $k$. The shell-averaged value is pulled below 2 by the $v = 1$ contribution (which is zero).</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. Variance Compression After Large Jumps</h2>
+
+        <h3>§6.1. Conditional Distribution of $G(n+1)$</h3>
+        <p>On the $\Omega = 8$ shell at $N = 10^7$ (all $n \leq 10^7$ with $\Omega(n) = 8$, conditioning on $j(n) \geq 3$ and examining the next integer $n+1$):</p>
+        <table class="struct-table">
+          <thead><tr><th>$G(n+1)$</th><th>Frequency</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>89.92%</td></tr>
+            <tr><td>1</td><td>8.92%</td></tr>
+            <tr><td>2</td><td>1.10%</td></tr>
+            <tr><td>3</td><td>0.06%</td></tr>
+          </tbody>
+        </table>
+        <p>$\mathrm{Var}(G(n+1) \mid j(n) \geq 3) = 0.126$ vs. unconditional $\mathrm{Var}(G) = 1.23$. A 90% variance compression.</p>
+        <div class="note-box">
+          <strong>Interpretation.</strong> The self-correction mechanism (Paper 19 §5) is stronger than previously described: large jumps not only regress the conditional mean (95%) but also compress the conditional variance (90%). After a large jump, $G(n+1)$ is nearly deterministically zero.
+        </div>
+
+        <h3>§6.2. $\mathrm{Corr}(M_n, M_{n+1})$</h3>
+        <p>On the $\Omega = 8$ shell (425 consecutive pairs where both $n$ and $n+1$ have $\Omega = 8$):</p>
+        <p>$$\mathrm{Corr}(M_n, M_{n+1}) = 0.9663$$</p>
+        <p>This is essentially equal to $\mathrm{Corr}(\rho_E(n), \rho_E(n-1)) = 0.9676$ (Paper 19 §6).</p>
+        <div class="note-box">
+          <strong>Interpretation.</strong> $M_n$ and $M_{n+1}$ are NOT approximately independent despite $\gcd(n, n+1) = 1$. Both track the global DP level ($\approx c^* \ln n$), and their 97% correlation is what produces the $O(1)$ variance of $G = S - M$ through cancellation — not coprimality-based independence.
+        </div>
+
+        <h3>§6.3. Conditional Variance by $G(n)$</h3>
+        <p>Among the 425 consecutive pairs where both $n$ and $n+1$ have $\Omega = 8$ (same sample as §6.2):</p>
+        <table class="struct-table">
+          <thead><tr><th>$G(n)$</th><th>Sample size</th><th>$\mathrm{Var}(G(n+1) \mid G(n))$</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>11</td><td>1.17</td></tr>
+            <tr><td>1</td><td>50</td><td>0.78</td></tr>
+            <tr><td>2</td><td>150</td><td>0.73</td></tr>
+            <tr><td>3</td><td>145</td><td>0.60</td></tr>
+            <tr><td>4</td><td>58</td><td>0.65</td></tr>
+          </tbody>
+        </table>
+        <p>The conditional variance decreases moderately with $G(n)$ (from 1.17 at $g = 0$ to 0.60 at $g = 3$), then stabilizes. At no point does it exceed the unconditional variance ($\approx 1.23$). The small sample size at $g = 0$ ($n = 11$) limits the reliability of that data point.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. The Updated Proof Landscape</h2>
+
+        <h3>§7.1. What M10 Establishes</h3>
+        <p><strong>Theorems (proved):</strong></p>
+        <ul>
+          <li>Prime-Power Second Moment: $E[\varepsilon_{P^-}^2 \mid \Omega = k] \to 0$ ($N \to \infty$)</li>
+          <li>Unconditional B-bound: $\mathrm{Var}(B \mid \Omega = k) = O_k(1)$</li>
+        </ul>
+        <p><strong>Numerical discoveries:</strong></p>
+        <ul>
+          <li>$\varepsilon_p(2)$ atlas: concentrated in $[-2, 2]$, sparse outliers</li>
+          <li>$\varepsilon_p(a)$ for small $p$: rigid $\{0, 1, 2\}$ patterns, no growth</li>
+          <li>Shell-averaged $E[\varepsilon_{P^-}^2] \approx 1.9$</li>
+          <li>Variance compression: 90% after large jumps</li>
+          <li>$\mathrm{Corr}(M_n, M_{n+1}) = 0.9663$: shared DP history, not independence</li>
+        </ul>
+        <p><strong>Correction to Paper 19 §5:</strong></p>
+        <ul>
+          <li>Self-correction is both mean regression AND variance compression</li>
+          <li>$M_n$-$M_{n+1}$ correlation is $\approx 0.97$ (high), not $\approx 0$ (independent)</li>
+        </ul>
+
+        <h3>§7.2. Updated Open Inputs for $D(N) \to 1$</h3>
+        <table class="struct-table">
+          <thead><tr><th>Input</th><th>Status</th><th>Change</th></tr></thead>
+          <tbody>
+            <tr><td><strong>B-bound</strong></td><td><strong>(T) CLOSED</strong></td><td><strong>M10: first unconditional closure</strong></td></tr>
+            <tr><td>$\sigma(G) = O(1)$</td><td>Local Lipschitz (N, open)</td><td>Self-correction + variance compression as mechanism</td></tr>
+            <tr><td>Scale term monotonicity</td><td>Numerical</td><td>Unchanged</td></tr>
+            <tr><td>I-a for fixed $k$</td><td>Open</td><td>Unchanged</td></tr>
+            <tr><td>Lemma II</td><td>Numerically benign</td><td>Unchanged</td></tr>
+            <tr><td>SPF-positivity convergence</td><td>Numerical (downstream)</td><td>Unchanged</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§7.3. Proof Dependency Graph (Updated)</h3>
+        <div class="math-formula">Local Lipschitz (N) ⟶ Var(A) = O(1)
+Var(B) = O_k(1)   [T, CLOSED — Paper 20]
+Var(A) = O(1) (pending Local Lipschitz) + Var(B) = O_k(1) (T) ⟶ Var(G_spf) = O_k(1)
+Var(G_spf) = O_k(1) + Prop C (T) + Scale mono (N) ⟶ I-b
+I-b + I-a (T high-k / N fixed-k) ⟶ Lemma I
+Lemma I + Lemma II (N) + B-bound (T) ⟶ Thm 5 (Paper 16, T)
+Thm 5 + SPF-positivity (N) + Sathe-Selberg (T) ⟶ D(N) → 1</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <div class="appendix-label">Appendix A</div>
+        <h2>Appendix A. Methodological Note</h2>
+        <p><em>All mathematical claims, citations, and computations in this paper were independently checked and are the author's responsibility. AI systems were used for literature search, exploratory computation, and drafting support.</em></p>
+
+        <h3>A.1. Four-AI Contributions to M10</h3>
+        <p><strong>ChatGPT</strong> proved the Prime-Power Second Moment Theorem (§3), using Landau formula asymptotics and the pointwise $\varepsilon_p$ bounds. ChatGPT also computed the complete $\varepsilon_p(2)$ atlas ($p \leq 10^4$ via DP to $10^8$), the high-$a$ table for small primes, and the shell-averaged second moments — serving as the primary theoretical and computational engine for M10.</p>
+        <p><strong>Grok</strong> computed the self-correction variance compression (§6.1: $\mathrm{Var}(G(n+1) \mid j \geq 3) = 0.126$), the $M_n$-$M_{n+1}$ correlation (§6.2: 0.9663), and the conditional variance by $G(n)$ (§6.3).</p>
+        <p><strong>Claude</strong> analyzed the three formalization frameworks for Local Lipschitz, identified that Framework 2 ($M_n$-$M_{n+1}$ independence) is incorrect (the high correlation 0.9663 confirms shared DP history rather than independence), and derived the heuristic bound $|\varepsilon_p(a)| = O(\sqrt{\ln p})$ which motivated the exact proof.</p>
+        <p><strong>Gemini</strong> was unable to complete assigned computations in M10 due to session stability issues. Gemini's M8 discovery of the anti-correlation engine remains foundational.</p>
+
+        <h3>A.2. Role of the Thermodynamic Interface</h3>
+        <p>The thermodynamic perspective contributed the observation that B-bound closure corresponds to establishing that "splitting costs are locally bounded" — a natural property in thermodynamic systems where the activation energy for phase transitions does not grow with system size. The variance compression (§6.1) further strengthens the fluctuation-dissipation analogy: not only does the system restore equilibrium after large perturbations, it does so with reduced fluctuations, analogous to critical damping.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>References</h2>
+        <ol class="paper-references">
+          <li>H. Qin, "The three-point law, self-correction, and the narrowing of the variance gap" (Paper 19), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">10.5281/zenodo.19026991</a>.</li>
+          <li>H. Qin, "The anti-correlation engine" (Paper 18), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</li>
+          <li>H. Qin, "Monotonicity, roughness stability, and the narrowing of the relay architecture" (Paper 17), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</li>
+          <li>H. Qin, "The insertion identity, variance splitting, and the relay engine of Conjecture H'" (Paper 16), Zenodo, DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+          <li>H. Qin, "Exact combinatorics of history fibers" (Paper 11; establishes $\rho_E(n) = \Theta(\ln n)$).</li>
+          <li>E. Landau, <em>Handbuch der Lehre von der Verteilung der Primzahlen</em>, Teubner, 1909.</li>
+          <li>G. Tenenbaum, <em>Introduction to Analytic and Probabilistic Number Theory</em>, 3rd ed., AMS, 2015.</li>
+        </ol>
+
+        <div class="series-nav">
+          <span><a href="zfcrho19.html">← Paper XIX: The Three-Point Law, Self-Correction, and the Narrowing of the Variance Gap</a></span>
+          <span style="float:right;">Paper XXI →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-en -->
+
+    <!-- ========== CHINESE ========== -->
+    <div class="lang-content" id="lang-zh">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ 论文 XX</div>
+        <h1 class="paper-title">关闭 B-bound：素数幂二阶矩定理与第一个无条件闭合节点</h1>
+        <div class="paper-authors">Han Qin（秦汉）</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; 2026 年 3 月
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19027892
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">摘要</div>
+          <p>本文关闭 B-bound，这是 $D(N) \to 1$ 证明格局中第一个被无条件解决的开放输入。证明了两个定理。<strong>定理（素数幂二阶矩）。</strong>对每个固定 $k \geq 2$，$E[\varepsilon_{P^-(n)}(n)^2 \mid \Omega(n) = k, n \leq N] \to 0$（$N \to \infty$）。证明仅使用三个输入：逐点界 $\varepsilon_p(a) \leq 2$（乘法界）和 $|\varepsilon_p(a)| \ll_k \ln p$（来自 $\rho_E = O(\ln n)$），$N_k(x)$ 的 Landau 公式，以及支撑约束 $p^k \leq N$。<strong>定理（无条件 B-bound）。</strong>对每个固定 $k \geq 2$，$\mathrm{Var}(B \mid \Omega = k, n \leq N) = O_k(1)$ 关于 $N$ 一致。此结果直接由素数幂二阶矩定理和论文 19 的 B-bound 归约推出。数值确认：$N = 10^7$ 下 $E[\varepsilon_{P^-}^2 \mid \Omega = 8] = 1.84$，$E[\varepsilon_{P^-}^2 \mid \Omega = 12] = 1.98$，远低于任何发散阈值。$p \leq 10^4$ 的 $\varepsilon_p(2)$ 完整图谱显示分布集中于 $[-2, 2]$，稀疏负异常值（$|\varepsilon_p(2)| \geq 4$ 仅占 2.8% 的素数）。对固定小素数（$p = 2, 3, 5, 7$），$\varepsilon_p(a) \in \{0, 1, 2\}$ 对所有 $a \leq 20$ 成立，呈刚性周期模式，无增长。DP 自纠正机制进一步量化：大跳跃不仅压缩条件均值（95% 回归，论文 19），还压缩条件方差（$\mathrm{Var}(G(n+1) \mid j(n) \geq 3) = 0.126$，无条件 1.23，90% 压缩）。$\mathrm{Corr}(M_n, M_{n+1}) = 0.9663$（$\Omega = 8$ 壳），支持以下观点：$G$ 的 $O(1)$ 方差来自共享 DP 历史的对消，而非互素性导致的独立性。证明格局更新：B-bound 是第一个从 (N) 移至 (T) 的节点；局部 Lipschitz 性质仍为最有杠杆的开放目标。</p>
+          <p style="margin-top:0.7rem;"><strong>关键词：</strong>整数复杂度，ρ-算术，B-bound，素数幂修正，二阶矩，Landau 公式，自纠正，方差压缩</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. 引言</h2>
+
+        <h3>§1.1. 背景</h3>
+        <p>论文 19（DOI: 10.5281/zenodo.19026991）证明了 B-bound 归约：$\mathrm{Var}(B) = O_k(1)$ 由 $E[\varepsilon_{P^-}^2 \mid \Omega = k] &lt; \infty$ 推出。本文关闭最后一步，证明素数幂二阶矩不仅有界，而且趋于零。</p>
+
+        <h3>§1.2. 记号</h3>
+        <p>同论文 17–19。$\varepsilon_p(a) = \rho_E(p^a) - \rho_E(p^{a-1}) - \rho_E(p)$（$a \geq 2$）。$N_k(x) = \#\{n \leq x : \Omega(n) = k\}$。$M_{k,N}(p, a) = \#\{n \leq N : \Omega(n) = k, P^-(n) = p, v_{P^-}(n) = a\}$。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. $\varepsilon_p(a)$ 的逐点界</h2>
+
+        <h3>§2.1. 上界</h3>
+        <div class="proof-box">
+          <p><strong>命题（乘法上界）。</strong><em>对所有素数 $p$ 和 $a \geq 2$，$\varepsilon_p(a) \leq 2$。</em></p>
+          <p><em>证明。</em>$p^a = p \cdot p^{a-1}$ 是合法分裂，故 $\rho_E(p^a) \leq \rho_E(p) + \rho_E(p^{a-1}) + 2$。$\square$</p>
+        </div>
+
+        <h3>§2.2. 下界</h3>
+        <div class="proof-box">
+          <p><strong>命题（对数下界）。</strong><em>对每个固定 $a$，$|\varepsilon_p(a)| \ll_a \ln p$。</em></p>
+          <p><em>证明。</em>$\rho_E(m) = O(\ln m)$（论文 11 [5]）。故 $|\varepsilon_p(a)| \leq \rho_E(p^a) + \rho_E(p^{a-1}) + \rho_E(p) \leq C_a \ln p$。$\square$</p>
+        </div>
+
+        <h3>§2.3. 结构递推</h3>
+        <p>素数幂的 DP 给出：</p>
+        <p>$$\rho_E(p^a) = \min\left(\rho_E(p^a - 1) + 1,\ \min_{1 \leq i \leq a-1}(\rho_E(p^i) + \rho_E(p^{a-i}) + 2)\right)$$</p>
+        <p>设 $S_p(a) = \rho_E(p^a - 1) + 1 - \rho_E(p^{a-1}) - \rho_E(p)$：</p>
+        <p>$$\varepsilon_p(a) \geq \min(S_p(a),\ \varepsilon_p(2),\ \ldots,\ \varepsilon_p(a-1),\ 2)$$</p>
+        <div class="note-box">
+          <strong>推论。</strong>$\varepsilon_p(a)$ 的新深负值只能来自后继路线（$p^a - 1$ 复杂度异常低时），不能来自乘法分裂。这与论文 17 的观察一致：$\varepsilon_p(2) &lt; 0$ 发生在 $p^2 - 1 = (p-1)(p+1)$ 有异常有利因子分解时。
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. 素数幂二阶矩定理</h2>
+
+        <h3>§3.1. 陈述</h3>
+        <div class="thesis-box">
+          <p><strong>定理（素数幂二阶矩）。</strong><em>对每个固定 $k \geq 2$：</em></p>
+          <p>$$E[\varepsilon_{P^-(n)}(n)^2 \mid \Omega(n) = k, n \leq N] \to 0 \quad (N \to \infty).$$</p>
+          <p><em>特别地，对 $k \geq 3$：</em></p>
+          <p>$$E[\varepsilon_{P^-}^2 \mid \Omega = k, n \leq N] \ll_k (\ln\ln N)^{-2}.$$</p>
+          <p><em>对 $k = 2$，界为 $O(N^{-1/2} \ln^3 N)$（情形 B 主导）。</em></p>
+        </div>
+
+        <h3>§3.2. 证明</h3>
+        <p>记</p>
+        <p>$$E[\varepsilon_{P^-}^2 \mid \Omega = k] = \frac{1}{N_k(N)} \sum_{a=2}^{k} \sum_p M_{k,N}(p,a) \cdot \varepsilon_p(a)^2.$$</p>
+
+        <p><strong>情形 A：$2 \leq a \leq k-1$。</strong></p>
+        <p>若 $M_{k,N}(p, a) \neq 0$，则 $n = p^a m$，$\Omega(m) = k - a$，$P^-(m) &gt; p$，故 $n \geq p^a \cdot p^{k-a} = p^k$，给出 $p \leq N^{1/k}$。</p>
+        <p>由 Landau 上界（Tenenbaum [7]，第 II.6 章）：对每个固定 $r \geq 1$，</p>
+        <p>$$N_r(x) \ll_r \frac{x (\ln\ln x)^{r-1}}{\ln x} \quad (x \geq x_0(r)).$$</p>
+        <p>由 $p \leq N^{1/k}$ 得 $N/p^a \geq N^{1-a/k} \geq N^{1/k}$，故 Landau 上界适用于 $N_{k-a}(N/p^a)$：</p>
+        <p>$$\frac{M_{k,N}(p,a)}{N_k(N)} \leq \frac{N_{k-a}(N/p^a)}{N_k(N)} \ll_k \frac{1}{p^a (\ln\ln N)^a}.$$</p>
+        <p>结合 $\varepsilon_p(a)^2 \ll_k (\ln p)^2$：</p>
+        <p>$$\sum_p \frac{M_{k,N}(p,a)}{N_k(N)} \cdot \varepsilon_p(a)^2 \ll_k \frac{1}{(\ln\ln N)^a} \sum_p \frac{(\ln p)^2}{p^a}.$$</p>
+        <p>由 $a \geq 2$，级数 $\sum_p (\ln p)^2 / p^a$ 收敛。故此层贡献为 $O_k((\ln\ln N)^{-a})$。</p>
+
+        <p><strong>情形 B：$a = k$。</strong></p>
+        <p>此时 $n = p^k$，故每个 $p$ 的 $M_{k,N}(p, k) \leq 1$，且 $p \leq N^{1/k}$。</p>
+        <p>$$\frac{1}{N_k(N)} \sum_{p \leq N^{1/k}} \varepsilon_p(k)^2 \ll_k \frac{N^{1/k} \ln^2 N}{N (\ln\ln N)^{k-1} / \ln N} = N^{1/k - 1} \cdot \frac{\ln^3 N}{(\ln\ln N)^{k-1}} \to 0.$$</p>
+
+        <p><strong>合并情形 A 和 B：</strong>主项来自 $a = 2$，给出</p>
+        <p>$$E[\varepsilon_{P^-}^2 \mid \Omega = k] \ll_k (\ln\ln N)^{-2} \to 0. \quad \square$$</p>
+
+        <h3>§3.3. 关于 Regime 区分的注释</h3>
+        <div class="note-box">
+          定理在固定 $k$，$N \to \infty$ 下成立。在论文 19 的"紧支撑"regime（$k$ 相对于 $\ln\ln N$ 较大，$v_{P^-} \geq 2$ 占主导）中，$N = 10^7$ 下 $E[\varepsilon_{P^-}^2]$ 数值为 $\approx 1.9$。这是不同的渐近 regime：定理描述的是固定 $k$ 极限，其中 $v \geq 2$ 事件变得稀少；数值数据描述的是高 $k$ regime，其中这些事件常见但个别良性。两者与 $\mathrm{Var}(B) = O_k(1)$ 一致。
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. 无条件 B-Bound</h2>
+
+        <h3>§4.1. 陈述与证明</h3>
+        <div class="milestone-box">
+          <p><strong>定理（无条件 B-bound）。</strong><em>对每个固定 $k \geq 2$：</em></p>
+          <p>$$\mathrm{Var}(B \mid \Omega = k, n \leq N) = O_k(1)$$</p>
+          <p><em>关于 $N$ 一致。</em></p>
+          <p style="margin-top:0.8rem;"><em>证明。</em>由论文 19 命题（B-bound 归约）：$\mathrm{Var}(B) \leq 2\mathrm{Var}(R_k) + 2\mathrm{Var}(E_k)$，其中固定 $k$ 时 $\mathrm{Var}(R_k) \leq (2k-2)^2$，$\mathrm{Var}(E_k) \leq E[\varepsilon_{P^-}^2]$。由素数幂二阶矩定理，$E[\varepsilon_{P^-}^2] \ll_k 1$。$\square$</p>
+        </div>
+
+        <h3>§4.2. 意义</h3>
+        <p>这是 $D(N) \to 1$ 证明格局中第一个被无条件关闭的开放输入。在论文 19 §8.3 的依赖图中，B-bound 从 (N) 移至 <strong>(T)</strong>。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. $\varepsilon_p$ 图谱</h2>
+
+        <h3>§5.1. $\varepsilon_p(2)$ 的分布（$p \leq 10^4$）</h3>
+        <table class="struct-table">
+          <thead><tr><th>$\varepsilon_p(2)$</th><th>计数</th><th>比例</th><th>例子</th></tr></thead>
+          <tbody>
+            <tr><td>−6</td><td>3</td><td>0.24%</td><td>1439, 3119, 6299</td></tr>
+            <tr><td>−5</td><td>5</td><td>0.41%</td><td>1499, 5749, 6719, 7559, 8699</td></tr>
+            <tr><td>−4</td><td>26</td><td>2.12%</td><td>179, 719, 1319, ...</td></tr>
+            <tr><td>−3</td><td>48</td><td>3.91%</td><td>263, 479, 863, ...</td></tr>
+            <tr><td>−2</td><td>133</td><td>10.82%</td><td>59, 167, 191, ...</td></tr>
+            <tr><td>−1</td><td>236</td><td>19.20%</td><td>71, 199, 233, ...</td></tr>
+            <tr><td>0</td><td>316</td><td>25.71%</td><td>2, 11, 23, ...</td></tr>
+            <tr><td>1</td><td>270</td><td>21.97%</td><td>19, 29, 31, ...</td></tr>
+            <tr><td>2</td><td>192</td><td>15.62%</td><td>3, 5, 7, ...</td></tr>
+          </tbody>
+        </table>
+        <p>共 1229 个素数。分布以 0 为中心，轻微正偏。负尾稀疏：$|\varepsilon_p(2)| \geq 4$ 仅 34 个素数（2.8%）。</p>
+
+        <h3>§5.2. 小素数的 $\varepsilon_p(a)$（高 $a$）</h3>
+        <table class="struct-table">
+          <thead><tr><th>$a$</th><th>$\varepsilon_2(a)$</th><th>$\varepsilon_3(a)$</th><th>$\varepsilon_5(a)$</th><th>$\varepsilon_7(a)$</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>0</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>4</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>5</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>6</td><td>0</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>8</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>10</td><td>0</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>12</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>16</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td>20</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+          </tbody>
+        </table>
+        <p>所有值在 $\{0, 1, 2\}$ 中。随 $a$ 无增长。刚性周期模式：$\varepsilon_2(a)$ 在 0 和 2 间交替；$\varepsilon_3(a) = \varepsilon_5(a) = 2$ 恒定；$\varepsilon_7(a) = 1$ 当 $4 \mid a$，否则为 2。（展示部分行；$a = 2, \ldots, 20$ 的完整表见补充数据。）</p>
+
+        <h3>§5.3. 壳平均二阶矩</h3>
+        <table class="struct-table">
+          <thead><tr><th>$k$</th><th>壳大小</th><th>$E[\varepsilon_{P^-}^2 \mid \Omega = k]$</th></tr></thead>
+          <tbody>
+            <tr><td>8</td><td>207,207</td><td>1.840</td></tr>
+            <tr><td>12</td><td>11,068</td><td>1.978</td></tr>
+          </tbody>
+        </table>
+        <p>在 $v_{P^-} \geq 2$ 条件下：$E[\varepsilon_{P^-}^2 \mid v \geq 2] \approx 1.99$（两个 $k$）。壳平均值被 $v = 1$ 贡献（为零）拉至 2 以下。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. 大跳跃后的方差压缩</h2>
+
+        <h3>§6.1. $G(n+1)$ 的条件分布</h3>
+        <p>$\Omega = 8$ 壳，$N = 10^7$（所有 $n \leq 10^7$ 且 $\Omega(n) = 8$，条件于 $j(n) \geq 3$，检查下一个整数 $n+1$）：</p>
+        <table class="struct-table">
+          <thead><tr><th>$G(n+1)$</th><th>频率</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>89.92%</td></tr>
+            <tr><td>1</td><td>8.92%</td></tr>
+            <tr><td>2</td><td>1.10%</td></tr>
+            <tr><td>3</td><td>0.06%</td></tr>
+          </tbody>
+        </table>
+        <p>$\mathrm{Var}(G(n+1) \mid j(n) \geq 3) = 0.126$，无条件 $\mathrm{Var}(G) = 1.23$。90% 方差压缩。</p>
+        <div class="note-box">
+          <strong>解释。</strong>自纠正机制（论文 19 §5）比先前描述的更强：大跳跃不仅回归条件均值（95%），还压缩条件方差（90%）。大跳跃后，$G(n+1)$ 近乎确定性地等于零。
+        </div>
+
+        <h3>§6.2. $\mathrm{Corr}(M_n, M_{n+1})$</h3>
+        <p>$\Omega = 8$ 壳上（425 对连续整数，两者均有 $\Omega = 8$）：</p>
+        <p>$$\mathrm{Corr}(M_n, M_{n+1}) = 0.9663$$</p>
+        <p>这与 $\mathrm{Corr}(\rho_E(n), \rho_E(n-1)) = 0.9676$（论文 19 §6）基本相同。</p>
+        <div class="note-box">
+          <strong>解释。</strong>尽管 $\gcd(n, n+1) = 1$，$M_n$ 和 $M_{n+1}$ 并非近似独立。两者都跟踪全局 DP 水平（$\approx c^* \ln n$），其 97% 相关性通过对消产生 $G = S - M$ 的 $O(1)$ 方差——而非互素性导致的独立性。
+        </div>
+
+        <h3>§6.3. 按 $G(n)$ 的条件方差</h3>
+        <p>在 425 对连续整数中（两者均有 $\Omega = 8$，与 §6.2 相同样本）：</p>
+        <table class="struct-table">
+          <thead><tr><th>$G(n)$</th><th>样本量</th><th>$\mathrm{Var}(G(n+1) \mid G(n))$</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>11</td><td>1.17</td></tr>
+            <tr><td>1</td><td>50</td><td>0.78</td></tr>
+            <tr><td>2</td><td>150</td><td>0.73</td></tr>
+            <tr><td>3</td><td>145</td><td>0.60</td></tr>
+            <tr><td>4</td><td>58</td><td>0.65</td></tr>
+          </tbody>
+        </table>
+        <p>条件方差随 $G(n)$ 适度递减（从 $g = 0$ 的 1.17 到 $g = 3$ 的 0.60），然后稳定。始终未超过无条件方差（$\approx 1.23$）。$g = 0$ 处样本量（$n = 11$）较小，限制了该数据点的可靠性。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. 更新后的证明格局</h2>
+
+        <h3>§7.1. M10 确立的内容</h3>
+        <p><strong>定理（已证）：</strong></p>
+        <ul>
+          <li>素数幂二阶矩：$E[\varepsilon_{P^-}^2 \mid \Omega = k] \to 0$（$N \to \infty$）</li>
+          <li>无条件 B-bound：$\mathrm{Var}(B \mid \Omega = k) = O_k(1)$</li>
+        </ul>
+        <p><strong>数值发现：</strong></p>
+        <ul>
+          <li>$\varepsilon_p(2)$ 图谱：集中于 $[-2, 2]$，稀疏异常值</li>
+          <li>小 $p$ 的 $\varepsilon_p(a)$：刚性 $\{0, 1, 2\}$ 模式，无增长</li>
+          <li>壳平均 $E[\varepsilon_{P^-}^2] \approx 1.9$</li>
+          <li>方差压缩：大跳跃后 90%</li>
+          <li>$\mathrm{Corr}(M_n, M_{n+1}) = 0.9663$：共享 DP 历史，非独立性</li>
+        </ul>
+        <p><strong>对论文 19 §5 的修正：</strong></p>
+        <ul>
+          <li>自纠正既是均值回归也是方差压缩</li>
+          <li>$M_n$-$M_{n+1}$ 相关 $\approx 0.97$（高），非 $\approx 0$（独立）</li>
+        </ul>
+
+        <h3>§7.2. $D(N) \to 1$ 的更新开放输入</h3>
+        <table class="struct-table">
+          <thead><tr><th>输入</th><th>状态</th><th>变化</th></tr></thead>
+          <tbody>
+            <tr><td><strong>B-bound</strong></td><td><strong>(T) 已关闭</strong></td><td><strong>M10：第一个无条件闭合</strong></td></tr>
+            <tr><td>$\sigma(G) = O(1)$</td><td>局部 Lipschitz（N，开放）</td><td>自纠正 + 方差压缩作为机制</td></tr>
+            <tr><td>Scale term 单调性</td><td>数值</td><td>不变</td></tr>
+            <tr><td>固定 $k$ 的 I-a</td><td>开放</td><td>不变</td></tr>
+            <tr><td>Lemma II</td><td>数值良性</td><td>不变</td></tr>
+            <tr><td>SPF-正性收敛</td><td>数值（下游）</td><td>不变</td></tr>
+          </tbody>
+        </table>
+
+        <h3>§7.3. 证明依赖图（更新版）</h3>
+        <div class="math-formula">局部 Lipschitz (N) ⟶ Var(A) = O(1)
+Var(B) = O_k(1)   [T, 已关闭 — 论文 20]
+Var(A) = O(1) (待局部 Lipschitz) + Var(B) = O_k(1) (T) ⟶ Var(G_spf) = O_k(1)
+Var(G_spf) = O_k(1) + 命题 C (T) + Scale 单调性 (N) ⟶ I-b
+I-b + I-a (T 高-k / N 固定-k) ⟶ Lemma I
+Lemma I + Lemma II (N) + B-bound (T) ⟶ Thm 5（论文 16, T）
+Thm 5 + SPF-正性收敛 (N) + Sathe-Selberg (T) ⟶ D(N) → 1</div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <div class="appendix-label">附录 A</div>
+        <h2>附录 A. 方法论说明</h2>
+        <p><em>本文中所有数学断言、引用和计算均经独立核查，由作者负责。AI 系统用于文献检索、探索性计算和起草支持。</em></p>
+
+        <h3>A.1. 四 AI 对 M10 的贡献</h3>
+        <p><strong>ChatGPT</strong> 证明了素数幂二阶矩定理（§3），使用 Landau 公式渐近和逐点 $\varepsilon_p$ 界。ChatGPT 还计算了完整的 $\varepsilon_p(2)$ 图谱（$p \leq 10^4$，DP 到 $10^8$），小素数的高 $a$ 表，以及壳平均二阶矩——是 M10 的主要理论和计算引擎。</p>
+        <p><strong>Grok</strong> 计算了自纠正方差压缩（§6.1：$\mathrm{Var}(G(n+1) \mid j \geq 3) = 0.126$），$M_n$-$M_{n+1}$ 相关（§6.2：0.9663），以及按 $G(n)$ 的条件方差（§6.3）。</p>
+        <p><strong>Claude</strong> 分析了局部 Lipschitz 的三个形式化框架，识别出框架 2（$M_n$-$M_{n+1}$ 独立性）不正确（高相关 0.9663 确认了共享 DP 历史而非独立性），并推导了启发式界 $|\varepsilon_p(a)| = O(\sqrt{\ln p})$，为精确证明提供了动机。</p>
+        <p><strong>Gemini</strong> 因会话稳定性问题未能完成 M10 的指定计算。Gemini 在 M8 中发现的反相关引擎仍为基础性结果。</p>
+
+        <h3>A.2. 热力学接口的角色</h3>
+        <p>热力学视角贡献了以下观察：B-bound 的关闭对应于确立"分裂成本局部有界"——在热力学系统中，相变的激活能不随系统大小增长是自然性质。方差压缩（§6.1）进一步加强了涨落-耗散类比：系统不仅在大扰动后恢复平衡，还以减少的涨落这样做，类似于临界阻尼。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>参考文献</h2>
+        <ol class="paper-references">
+          <li>H. Qin, "The three-point law, self-correction, and the narrowing of the variance gap"（论文 19），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">10.5281/zenodo.19026991</a>。</li>
+          <li>H. Qin, "The anti-correlation engine"（论文 18），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>。</li>
+          <li>H. Qin, "Monotonicity, roughness stability, and the narrowing of the relay architecture"（论文 17），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>。</li>
+          <li>H. Qin, "The insertion identity, variance splitting, and the relay engine of Conjecture H'"（论文 16），Zenodo，DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+          <li>H. Qin, "Exact combinatorics of history fibers"（论文 11；确立 $\rho_E(n) = \Theta(\ln n)$）。</li>
+          <li>E. Landau, <em>Handbuch der Lehre von der Verteilung der Primzahlen</em>, Teubner, 1909。</li>
+          <li>G. Tenenbaum, <em>Introduction to Analytic and Probabilistic Number Theory</em>, 3rd ed., AMS, 2015。</li>
+        </ol>
+
+        <div class="series-nav">
+          <span><a href="zfcrho19.html">← 论文 XIX：三点律、自纠正与方差缺口的收窄</a></span>
+          <span style="float:right;">论文 XXI →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-zh -->
+
+  </main>
+
+  <footer>
+    <p>© 2025–2026 Han Qin (秦汉). Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  </footer>
+
+  <script>
+    function switchLang(lang, btn) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      btn.classList.add('active');
+      if (lang === 'zh') {
+        document.title = '关闭 B-bound：素数幂二阶矩定理与第一个无条件闭合节点 — ZFCρ 论文 XX — Han Qin';
+      } else {
+        document.title = 'Closing the B-bound: The Prime-Power Second Moment Theorem and the First Unconditional Node — ZFCρ Paper XX — Han Qin';
+      }
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+  </script>
+</body>
+</html>
