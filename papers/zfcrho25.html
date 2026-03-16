@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dyadic Shell Constant and Positivity of the Predecessor Gap — ZFCρ Paper XXV — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXV: Dyadic Shell Constant c_dyad, Dyadic Telescoping (Proposition 12): pred gap = m − Σj(n). Shifts (L3) bottleneck from global c* lower bound (open 70 years) to shell-conditioned dyadic Cesàro average. Numerical data N=10^9: c_dyad margin 0.29–0.52 above threshold.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, dyadic shell constant, predecessor gap, dyadic telescoping, jump function, R2 positivity, bridge positivity, smooth numbers, Cesàro average, Dyadic Shell Constant, 跳跃函数, 前驱间隙, Dyadic Telescoping">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dyadic Shell Constant and Positivity of the Predecessor Gap">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho25.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Dyadic Shell Constant and Positivity of the Predecessor Gap",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho25.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19054726"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "dyadic shell constant", "predecessor gap",
+      "dyadic telescoping", "jump function", "R2 positivity", "smooth numbers"
+    ],
+    "abstract": "Introduces dyadic shell constant c_dyad(k;N), shifting the (L3) bottleneck from global c* lower bound (open since Selfridge 1953) to a shell-conditioned dyadic interval Cesàro average — a strictly weaker proposition. Core tool: Dyadic Telescoping (Proposition 12): pred gap = m − Σj(n) over [m,2m−1]. R_2 mean positivity reduces to E[Σj] < E[m] − τ_k(N). Numerical data (N=10^9): c_dyad margin 0.29–0.52 above threshold 3.604; jump rate statistically uniform (variation <0.002); pred gap mode 3 (42%). Smooth numbers drive worst-case ρ_E/ln n (best smooth = 3.567) but shell-averaged c_dyad remains far above threshold.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho25.html">
+  <meta name="citation_title" content="Dyadic Shell Constant and Positivity of the Predecessor Gap">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19054726">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho25.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .proof-box p + p { margin-top: 0.5rem; }
+    .chain-box { background: #f7f7f7; border: 1px solid #ddd; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; font-family: monospace; font-size: 0.88rem; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; background: #fff; border-color: #e0e0e0; border-bottom-color: #fff; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        displayMath: [['$$','$$'],['\\[','\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-L4M3nDNBvlGCzGj88T3eI9h9XMzH4RKwMa2SbDBFGbNz6R+r9yMPk3sSRFGJLYWmgCCFGm5NmJLm1lc5Fqag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+      document.getElementById('lang-' + lang).classList.add('active');
+      if (lang === 'en') {
+        document.title = 'Dyadic Shell Constant and Positivity of the Predecessor Gap — ZFCρ Paper XXV — Han Qin';
+      } else {
+        document.title = 'Dyadic Shell Constant 与 Predecessor Gap 的正性 — ZFCρ 论文 XXV — 秦汉';
+      }
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="nav-home">Han Qin</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </div>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXV</div>
+      <h1 class="paper-title">Dyadic Shell Constant and Positivity of the Predecessor Gap</h1>
+      <div class="paper-authors">
+        Han Qin &nbsp;·&nbsp;
+        <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener" style="color:inherit;">ORCID: 0009-0009-9583-0018</a>
+      </div>
+      <a href="https://doi.org/10.5281/zenodo.19054726" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19054726
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>This paper attacks a remaining technical bottleneck on the (L3) route of the D(N) → 1 proof chain — mean positivity of $R_2$ (Paper 24 reduction). We introduce the dyadic shell constant $c_{\mathrm{dyad}}(k; N)$, shifting the problem from the global $c^*$ lower bound (open since Selfridge 1953) to a shell-conditioned dyadic interval average — a strictly weaker proposition. The core tool is Dyadic Telescoping (Proposition 12, corollary of Paper XII):</p>
+        $$\rho_E(2m-1) - \rho_E(m-1) = m - \sum_{n=m}^{2m-1} j(n)$$
+        <p>where $j(n) = \max(G(n), 0)$ is the jump function from Paper XII. The predecessor gap equals $m$ minus the jump function sum over the dyadic interval $[m, 2m-1]$. $R_2$ positivity reduces to: the conditional expectation of the jump function sum must be strictly less than the conditional expectation of $m$ minus the target gap threshold $\tau_k(N) \approx 2.498$.</p>
+        <p>Numerical findings ($N = 10^9$): E[pred gap] exceeds $\tau_k \approx 2.498$ on all representative shells (k = 5, 8, 10, 12) with pred gap margin 0.20–0.36. Jump rate is statistically uniform across dyadic intervals (variation &lt; 0.002). Predecessor gap takes integer values with mode 3 (42%). In the finite sample up to $N = 10^9$, worst-case $\rho_E(n)/\ln n$ is driven entirely by smooth numbers; though the best smooth ratio is only 3.567 (&lt; 3.61), the shell-conditioned dyadic Cesàro average already exceeds the threshold stably ($c_{\mathrm{dyad}}$ margin above $\tau_k/\ln 2 \approx 3.604$ is 0.29–0.52). This separation between "low pointwise extreme" and "high interval average" is the core argument for Route B over Route A.</p>
+      </div>
+
+      <h2>§1. Introduction</h2>
+
+      <h3>§1.1 Remaining Bottleneck on the (L3) Route</h3>
+
+      <p>Paper 24 isolated the remaining target-gap problem on the (L3) route as mean positivity of $R_2$. For fixed cutoff $N$:</p>
+      $$E[R_2 \mid \Omega(m) = k, D_m = 0, m \leq N] > 0$$
+      <p>if and only if</p>
+      $$E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k, D_m = 0, m \leq N] > \tau_k(N)$$
+      <p>where $\tau_k(N) := E[M_{2m} - M_m \mid \Omega(m) = k, D_m = 0, m \leq N]$, numerically $\tau_k(N) \approx 2.498$.</p>
+      <p>A natural heuristic translates this as: $\rho_E(2m-1) - \rho_E(m-1) \approx c^* \ln 2$, requiring $c^* > 2.498/\ln 2 \approx 3.61$. But Paper XI's proved lower bound is only $c^* \geq 3/\ln 3 \approx 2.73$, and integer complexity lower bounds have progressed very slowly since Selfridge (1953).</p>
+
+      <div class="milestone-box">
+        <p><strong>Key observation:</strong> The $c^*$ lower bound is a strictly stronger condition than what is actually needed. We require not the global pointwise $\liminf \rho_E(n)/\ln n > 3.61$, but only shell-conditioned local average positivity over dyadic intervals — a strictly weaker proposition.</p>
+      </div>
+
+      <h3>§1.2 Contributions</h3>
+      <ol>
+        <li><strong>Dyadic Shell Constant $c_{\mathrm{dyad}}$ (§2).</strong> Shifts the problem from global $c^*$ to a shell-conditioned dyadic average.</li>
+        <li><strong>Dyadic Telescoping (§3, corollary of Paper XII).</strong> pred gap = $m - \sum j(n)$, connecting directly to Paper XII's jump function telescoping.</li>
+        <li><strong>Formal reduction (§3.3).</strong> $R_2$ positivity reduces to $E[\sum j] &lt; E[m] - \tau_k(N)$, all conditioned on $\Omega = k, D_m = 0$.</li>
+        <li><strong>Numerical structure (§4).</strong> On representative shells (k = 5, 8, 10, 12), pred gap exceeds $\tau_k$ ($N = 10^9$ data); jump rate is statistically uniform within dyadic intervals (variation &lt; 0.002); worst-case $\rho_E/\ln n$ integers are all smooth numbers.</li>
+      </ol>
+
+      <h3>§1.3 Comparison of Three Routes</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>Route</th><th>Target</th><th>Difficulty</th><th>Leverage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A ($c^*$ lower bound)</td><td>Prove $c^* > 3.61$ (global pointwise)</td><td>Very high (open 70 years)</td><td>High but overshoots</td></tr>
+          <tr><td><strong>B (pred gap, this paper)</strong></td><td>Shell-conditioned dyadic average > $\tau_k$</td><td>Medium-high</td><td><strong>Directly closes (L3)</strong></td></tr>
+          <tr><td>C (smooth only)</td><td>Prove pred gap only for smooth numbers</td><td>Medium</td><td>Medium (still need non-smooth ≥ smooth)</td></tr>
+        </tbody>
+      </table>
+      <p>This paper executes Route B. Routes A and C are compared in Appendix A.</p>
+
+      <h2>§2. Dyadic Shell Constant</h2>
+
+      <h3>§2.1 Definition</h3>
+
+      <div class="thesis-box">
+        <p><strong>Definition.</strong> For fixed $k \geq 2$, the dyadic shell constant is:</p>
+        $$c_{\mathrm{dyad}}(k; N) := \frac{E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k, D_m = 0, m \leq N]}{\ln 2}$$
+        <p><strong>$R_2$ mean positivity (Paper 24) is equivalent to:</strong></p>
+        $$c_{\mathrm{dyad}}(k; N) > \frac{\tau_k(N)}{\ln 2}$$
+        <p>where $\tau_k(N) := E[M_{2m} - M_m \mid \Omega(m) = k, D_m = 0, m \leq N]$. Numerically $\tau_k(N) \approx 2.498$ for all tested $k$, giving threshold $\tau_k/\ln 2 \approx 3.604$.</p>
+      </div>
+
+      <h3>§2.2 Numerical Values ($N = 10^9$)</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>k</th><th>E[pred gap]</th><th>$c_{\mathrm{dyad}}$</th><th>margin above $\tau_k/\ln 2$</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>5</td><td>2.855</td><td>4.119</td><td>+0.515</td></tr>
+          <tr><td>8</td><td>2.753</td><td>3.971</td><td>+0.367</td></tr>
+          <tr><td>10</td><td>2.711</td><td>3.911</td><td>+0.307</td></tr>
+          <tr><td>12</td><td>2.698</td><td>3.893</td><td>+0.289</td></tr>
+        </tbody>
+      </table>
+      <p>$c_{\mathrm{dyad}}$ decreases from 4.12 (k=5) to 3.89 (k=12), remaining consistently above 3.604.</p>
+
+      <h3>§2.3 Relation to Global $c^*$</h3>
+      <p>The global $c^*$ is $\liminf_{n \to \infty} \rho_E(n)/\ln n$ (pointwise). $c_{\mathrm{dyad}}$ is a shell-conditioned Cesàro average over dyadic intervals. The two differ:</p>
+      <ul>
+        <li>The finite-sample minimum of $\rho_E/\ln n$ depends on the starting threshold: min = 3.32 ($n \geq 10^3$), 3.44 ($n \geq 10^5$), 3.50 ($n \geq 10^8$), all achieved by smooth numbers ($2^a \cdot 3^b$ type)</li>
+        <li>$c_{\mathrm{dyad}}$ is an interval average; individual low values from smooth numbers are "averaged away"</li>
+      </ul>
+      <div class="note-box">
+        <strong>This resolves the paradox:</strong> In finite samples, the minimum of $\rho_E(n)/\ln n$ is still 3.32 (at the $n \geq 10^3$ threshold, achieved at $n = 1{,}024 = 2^{10}$), yet E[pred gap] $> \tau_k$ always holds — because the former is a pointwise extreme while the latter is a Cesàro average.
+      </div>
+
+      <h2>§3. Dyadic Telescoping (Corollary of Paper XII)</h2>
+
+      <h3>§3.1 Identity</h3>
+
+      <div class="milestone-box">
+        <p><strong>Proposition 12 (Dyadic Telescoping).</strong> For any $m \geq 2$:</p>
+        $$\rho_E(2m-1) - \rho_E(m-1) = m - \sum_{n=m}^{2m-1} j(n)$$
+        <p>where $j(n) = \max(G(n), 0) = \max(\rho_E(n-1) + 1 - M_n, 0)$ is the jump function from Paper XII.</p>
+      </div>
+
+      <p><em>Note.</em> This is a direct corollary of Paper XII's $\delta(N) = \sum j(n)$ telescoping applied to the dyadic interval. Its value lies not in the proof itself (a one-line corollary), but in exposing the correct local object for Route B: the predecessor gap equals $m$ minus the jump function sum over the dyadic interval.</p>
+
+      <div class="proof-box">
+        <p><strong>Proof.</strong> By the DP recursion $\rho_E(n) = \min(\rho_E(n-1) + 1, M_n)$, for each $n$:</p>
+        $$\rho_E(n) = \rho_E(n-1) + 1 - j(n)$$
+        <p>(When $G(n) > 0$: $\rho_E(n) = M_n = \rho_E(n-1) + 1 - j(n)$; when $G(n) \leq 0$: $\rho_E(n) = \rho_E(n-1) + 1$ and $j(n) = 0$.)</p>
+        <p>Summing over $n = m, m+1, \ldots, 2m-1$ ($m$ terms of telescoping):</p>
+        $$\rho_E(2m-1) - \rho_E(m-1) = m - \sum_{n=m}^{2m-1} j(n) \qquad \square$$
+      </div>
+
+      <h3>§3.2 Equivalent Rewriting</h3>
+      <p>Define $A(n) = j(n) - 1$ (Paper XVII). Then:</p>
+      $$\rho_E(2m-1) - \rho_E(m-1) = -\sum_{n=m}^{2m-1} A(n)$$
+      <p>The predecessor gap equals the negative sum of $A(n)$ over the dyadic interval. Since $A(n) \leq 0$ when $G(n) \leq 0$ (then $j = 0, A = -1$) and $A(n) \geq 0$ when $G(n) > 0$ (then $A = j - 1 \geq 0$), the imbalance between positive and negative contributions determines the sign and magnitude of the predecessor gap.</p>
+
+      <h3>§3.3 Reduction to Jump Density</h3>
+      <p>Define the target gap threshold:</p>
+      $$\tau_k(N) := E[M_{2m} - M_m \mid \Omega(m) = k, D_m = 0, m \leq N]$$
+      <p>Numerically $\tau_k(N) \approx 2.498$ for all tested $k$ and $N$ (see Paper 24).</p>
+
+      <div class="thesis-box">
+        <p>$R_2$ mean positivity is equivalent to:</p>
+        $$E\left[\sum_{n=m}^{2m-1} j(n) \;\middle|\; \Omega(m) = k, D_m = 0, m \leq N\right] < E[m \mid \Omega(m) = k, D_m = 0, m \leq N] - \tau_k(N)$$
+        <p>That is, the conditional expectation of the jump function sum over the dyadic interval $[m, 2m-1]$ must be strictly less than the conditional expectation of $m$ minus the target gap threshold.</p>
+      </div>
+
+      <div class="note-box">
+        <strong>Note.</strong> Here $m$ is a random variable (conditioned on the $\Omega = k$ shell), not a fixed parameter. The summation bound $2m-1$ and the interval length $m$ both depend on $m$. One cannot simply divide both sides by $m$ to obtain "average $j &lt; 1 - 2.498/m$" — such an operation requires additional Jensen-type arguments.
+      </div>
+
+      <h2>§4. Numerical Structure</h2>
+
+      <h3>§4.1 Step/Jump Decomposition</h3>
+      <p>By Proposition 12, for a representative $m$ from the k=8 shell ($m \approx 164{,}000$), within the interval $[m, 2m-1]$:</p>
+      $$\text{pred gap} = m - \sum_{n=m}^{2m-1} j(n)$$
+      <p>Positions where $j(n) = 0$ (non-jump) contribute $+1$ to the pred gap; positions where $j(n) > 0$ contribute $1 - j(n) \leq 0$.</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>Quantity</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>span $m$</td><td>164,068</td></tr>
+          <tr><td>non-jump positions ($j=0$)</td><td>67,123</td></tr>
+          <tr><td>jump positions ($j > 0$)</td><td>96,945</td></tr>
+          <tr><td>$\sum j(n)$</td><td>164,068 − 2.53 = 164,065.47</td></tr>
+          <tr><td><strong>pred gap</strong></td><td><strong>2.53</strong></td></tr>
+        </tbody>
+      </table>
+      <p>(Data: average over 5,000 samples from the k=8 shell.) Two O(m)-scale quantities ($m$ and $\sum j$) nearly cancel, leaving an O(1) positive residual.</p>
+
+      <h3>§4.2 Statistical Uniformity of Jump Rate</h3>
+      <p>The jump rate ($P(j(n) > 0)$) across 10 equal-fraction positions within the $[m, 2m-1]$ interval for the representative k=8 shell:</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>Position</th><th>jump rate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.0–0.1</td><td>0.5891</td></tr>
+          <tr><td>0.1–0.2</td><td>0.5889</td></tr>
+          <tr><td>0.2–0.3</td><td>0.5893</td></tr>
+          <tr><td>0.3–0.4</td><td>0.5890</td></tr>
+          <tr><td>0.4–0.5</td><td>0.5892</td></tr>
+          <tr><td>0.5–0.6</td><td>0.5895</td></tr>
+          <tr><td>0.6–0.7</td><td>0.5891</td></tr>
+          <tr><td>0.7–0.8</td><td>0.5897</td></tr>
+          <tr><td>0.8–0.9</td><td>0.5899</td></tr>
+          <tr><td>0.9–1.0</td><td>0.5901</td></tr>
+        </tbody>
+      </table>
+      <p>Variation &lt; 0.002 — statistically uniform. No edge effects within the interval.</p>
+
+      <h3>§4.3 Worst-Case Integers: All Smooth Numbers</h3>
+      <p>At $N = 10^9$, all integers with the lowest $\rho_E(n)/\ln n$ are smooth numbers of the form $2^a \cdot 3^b$. Representative examples:</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>n</th><th>$\rho/\ln$</th><th>factorization</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1,024</td><td>3.318</td><td>$2^{10}$</td></tr>
+          <tr><td>4,096</td><td>3.366</td><td>$2^{12}$</td></tr>
+          <tr><td>12,288</td><td>3.398</td><td>$2^{12} \cdot 3$</td></tr>
+          <tr><td>65,536</td><td>3.426</td><td>$2^{16}$</td></tr>
+          <tr><td>1,048,576</td><td>3.463</td><td>$2^{20}$</td></tr>
+          <tr><td>16,777,216</td><td>3.487</td><td>$2^{24}$</td></tr>
+          <tr><td>268,435,456</td><td>3.504</td><td>$2^{28}$</td></tr>
+        </tbody>
+      </table>
+      <p>Smooth numbers have the most splitting options, giving the smallest $M_n$, so $\rho_E$ grows most slowly. The finite-sample low-ratio tail is driven by smooth numbers, but the shell-averaged predecessor gap is unaffected.</p>
+      <p><strong>Finite-sample checkpoint ($N = 10^9$):</strong> $\rho_E(10^9)/\ln(10^9) = 75/20.72 = 3.6191$ — the first checkpoint above 3.61. However, smooth numbers have not crossed 3.61: the best smooth $\rho/\ln = 3.567$. The pure $2^k$ sequence at $k = 29$ gives $\rho/(k \cdot \ln 2) = 3.532$, rising slowly. Smooth number fit ($N = 10^9$ data): $\rho/\ln \approx 3.344 + 0.0102 \cdot \ln(n)$ ($R^2 = 0.72$), predicting crossing of 3.61 at $n \approx 10^{11.4}$.</p>
+
+      <h3>§4.4 Predecessor Gap Distribution</h3>
+      <p>The predecessor gap takes integer values. Unconditional distribution (all $m \in [2, 5 \times 10^6]$):</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>pred gap</th><th>fraction</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>≤ 0</td><td>1.1%</td></tr>
+          <tr><td>1</td><td>6.9%</td></tr>
+          <tr><td>2</td><td>24.2%</td></tr>
+          <tr><td><strong>3</strong></td><td><strong>42.0%</strong></td></tr>
+          <tr><td>4</td><td>25.9%</td></tr>
+        </tbody>
+      </table>
+      <p>Mode is 3. E[pred gap] $\approx 2.85$ unconditionally. Only 8.0% of $m$ have pred gap $\leq 1$.</p>
+
+      <h2>§5. Formalization Prospects</h2>
+
+      <h3>§5.1 Telescoping + Renewal Route</h3>
+      <p>Proposition 12 gives pred gap = $m - \sum j(n)$. Paper XXI's Lindley isomorphism guarantees memory erasure of $j(n)$ at jump points ($D = 0$ implies queue clearance). This suggests a possible renewal-block argument:</p>
+      <p>Partition $[m, 2m-1]$ by positions where $D = 0$ into regeneration blocks. If the ratio of block length to within-block $\sum j$ can be controlled, positivity of the pred gap may follow. This direction requires developing Paper XXI's algebraic isomorphism further into a block decomposition theorem for regenerative processes, and is left to subsequent work.</p>
+
+      <h3>§5.2 Why This Is Easier Than $c^*$</h3>
+      <p>$c^* > 3.61$ requires that <em>every</em> sufficiently large $n$ satisfies $\rho_E(n)/\ln n > 3.61$ — a pointwise lower bound. But the finite-sample minimum of $\rho/\ln$ depends on the starting threshold: 3.32 ($n \geq 10^3$), 3.44 ($n \geq 10^5$), 3.50 ($n \geq 10^8$). Even at $N = 10^9$, smooth numbers' $\rho/\ln$ has not crossed 3.61 (best smooth = 3.567).</p>
+      <p>pred gap $> \tau_k$ only requires a <em>dyadic interval Cesàro average</em> to exceed $\tau_k$ — an average lower bound.</p>
+      <p>The latter permits individual values of $\rho_E(n)/\ln n$ to fall below 3.61 (as smooth numbers do), as long as these bad points are averaged away by good points. The $N = 10^9$ data confirms this: the best smooth $\rho/\ln$ is only 3.567, yet E[pred gap] exceeds $\tau_k$ on all representative shells (pred gap margin 0.20–0.36; equivalently $c_{\mathrm{dyad}}$ margin 0.29–0.52).</p>
+
+      <h3>§5.3 Smooth Number Stress Test (Route C as Auxiliary)</h3>
+      <p>If one can prove:</p>
+      <ul>
+        <li>(a) E[pred gap] > $\tau_k$ for smooth numbers</li>
+        <li>(b) E[pred gap] for non-smooth numbers $\geq$ E[pred gap] for smooth numbers</li>
+      </ul>
+      <p>then (L3) closes. Part (a) can be studied via exact DP on the two-dimensional $2^a \cdot 3^b$ lattice. Part (b) requires an argument that "large prime factors increase $M_n$." Both steps remain open but are more tractable than Route A.</p>
+
+      <h2>§6. Updated Proof Landscape</h2>
+      <table class="struct-table">
+        <thead>
+          <tr><th>Input</th><th>Status</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>B (Sathe-Selberg)</td><td>Known</td><td>Classical</td></tr>
+          <tr><td>A' ($p_\infty(k) \to 1$)</td><td>Conditionally closed</td><td>Paper 22</td></tr>
+          <tr><td>$A_q^\sharp$</td><td>Strong numerical support, awaiting formalization</td><td>Paper 23</td></tr>
+          <tr><td>Trivial bound + Defect criterion</td><td>Proved</td><td>Paper 24</td></tr>
+          <tr><td>(L1) $p=2$ layer</td><td>Exact reduction</td><td>Paper 24</td></tr>
+          <tr><td>(L1) $p \geq 3$ layer</td><td>Open</td><td>Paper 24</td></tr>
+          <tr><td><strong>$c_{\mathrm{dyad}} > \tau_k/\ln 2$</strong></td><td><strong>Strong numerical support ($N=10^9$, margin 0.29–0.52)</strong></td><td><strong>Paper 25</strong></td></tr>
+          <tr><td><strong>Dyadic Telescoping</strong></td><td><strong>Corollary of Paper XII (Proposition 12)</strong></td><td><strong>Paper 25</strong></td></tr>
+          <tr><td>$R_2$ mean positivity</td><td><strong>Reduced to $E[\sum j] &lt; E[m] - \tau_k(N)$</strong></td><td><strong>Paper 25</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="thesis-box">
+        <p><strong>Precise characterization of remaining work:</strong> Under the shell condition $\Omega(m) = k, D_m = 0$, prove that the conditional expectation of the jump function sum over the dyadic interval $[m, 2m-1]$ is strictly less than $E[m] - \tau_k(N)$. This is a problem about the local Cesàro average of $j(n)$, independent of the global $c^*$.</p>
+      </div>
+
+      <h2>§7. Thermodynamic Interface</h2>
+      <table class="struct-table">
+        <thead>
+          <tr><th>ZFCρ</th><th>Thermodynamics</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>pred gap = m − Σj</td><td>Free energy = capacity − total dissipation</td></tr>
+          <tr><td>Jump rate statistically uniform</td><td>Macroscopic projection of microscopic reversibility</td></tr>
+          <tr><td>smooth = worst case</td><td>Most "ordered" systems are hardest to self-organize (analogy to Third Law)</td></tr>
+          <tr><td>$c_{\mathrm{dyad}} > 3.604$</td><td>Energy balance positive per dimensional upgrade — system far from equilibrium</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <ul>
+        <li>Altman, H. (2016). Integer complexity, addition chains, and well-ordering. Ph.D. thesis.</li>
+        <li>Selfridge, J. L. (1953). Cited in Guy, R. K. <em>Unsolved Problems in Number Theory</em>, Problem F26.</li>
+        <li>Qin, H. (2025a). ZFCρ Paper XI. <a href="https://doi.org/10.5281/zenodo.18975756" target="_blank" rel="noopener">DOI: 10.5281/zenodo.18975756</a>.</li>
+        <li>Qin, H. (2025b). ZFCρ Paper XII. <a href="https://doi.org/10.5281/zenodo.18977948" target="_blank" rel="noopener">DOI: 10.5281/zenodo.18977948</a>.</li>
+        <li>Qin, H. (2025c). ZFCρ Paper XV. <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19007312</a>.</li>
+        <li>Qin, H. (2025d). ZFCρ Paper XVII. <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19016958</a>.</li>
+        <li>Qin, H. (2025e). ZFCρ Paper XXI. <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19037934</a>.</li>
+        <li>Qin, H. (2025f). ZFCρ Paper XXII. <a href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19039953</a>.</li>
+        <li>Qin, H. (2025g). ZFCρ Paper XXIII. <a href="https://doi.org/10.5281/zenodo.19041689" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19041689</a>.</li>
+        <li>Qin, H. (2025h). ZFCρ Paper XXIV. <a href="https://doi.org/10.5281/zenodo.19044696" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19044696</a>.</li>
+      </ul>
+
+      <p class="appendix-label">Appendix A</p>
+      <h3>Route Selection Basis</h3>
+      <p>Route B (dyadic shell average) is favored over Route A (global $c^*$) based on the following evidence: at $N = 10^9$, the best smooth-number $\rho/\ln$ is only 3.567 (still far below 3.61), while E[pred gap] exceeds $\tau_k$ on all representative shells (pred gap margin 0.20–0.36; $c_{\mathrm{dyad}}$ margin 0.29–0.52). This paradox — smooth pointwise extreme below threshold but shell Cesàro average above threshold — becomes more pronounced at larger scales, directly supporting Route B's feasibility. Route C (smooth numbers only) is retained as an extremal stress-test line.</p>
+
+      <p class="appendix-label">Appendix B</p>
+      <h3>Complete Numerical Tables</h3>
+
+      <h3>B.1 $c_{\mathrm{dyad}}$ Representative Shells ($N = 10^9$)</h3>
+      <p>(See §2.2 table. The text displays k = 5, 8, 10, 12 as representative shells. Complete shell data is reproducible from the accompanying scripts.)</p>
+
+      <h3>B.2 Predecessor Gap Distribution</h3>
+      <p>(See §4.4 table.)</p>
+
+      <h3>B.3 $\rho_E(2^k)/(k \cdot \ln 2)$ ($N = 10^9$)</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>k</th><th>$2^k$</th><th>ρ_E</th><th>ρ/(k·ln2)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>10</td><td>1,024</td><td>23</td><td>3.318</td></tr>
+          <tr><td>16</td><td>65,536</td><td>38</td><td>3.426</td></tr>
+          <tr><td>20</td><td>1,048,576</td><td>48</td><td>3.463</td></tr>
+          <tr><td>24</td><td>16,777,216</td><td>58</td><td>3.487</td></tr>
+          <tr><td>28</td><td>268,435,456</td><td>68</td><td>3.504</td></tr>
+          <tr><td>29</td><td>536,870,912</td><td>71</td><td>3.532</td></tr>
+        </tbody>
+      </table>
+      <p>Rising slowly. At $2^{28}$, still only 3.504, well below 3.61.</p>
+
+      <h3>B.4 Global min(ρ/ln) by Threshold ($N = 10^9$)</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>$n \geq$</th><th>min(ρ/ln)</th><th>achieved at</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$10^3$</td><td>3.318</td><td>$2^{10}$</td></tr>
+          <tr><td>$10^5$</td><td>3.444</td><td>$2^{12} \cdot 3^3$</td></tr>
+          <tr><td>$10^6$</td><td>3.463</td><td>$2^{20}$</td></tr>
+          <tr><td>$10^8$</td><td>3.504</td><td>$2^{28}$</td></tr>
+          <tr><td>$10^9$</td><td>3.619</td><td>$10^9$</td></tr>
+        </tbody>
+      </table>
+
+      <div class="series-nav">
+        <span><a href="zfcrho24.html">← Paper XXIV: Insertion Measure</a></span>
+        <span style="float:right;">Paper XXVI →</span>
+      </div>
+
+    </div><!-- .paper-body -->
+  </div><!-- #lang-en -->
+
+  <!-- ===== CHINESE ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXV</div>
+      <h1 class="paper-title">Dyadic Shell Constant 与 Predecessor Gap 的正性</h1>
+      <div class="paper-authors">
+        秦汉 &nbsp;·&nbsp;
+        <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener" style="color:inherit;">ORCID: 0009-0009-9583-0018</a>
+      </div>
+      <a href="https://doi.org/10.5281/zenodo.19054726" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19054726
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>本文攻击 D(N) → 1 证明链中 (L3) 路线上的一个剩余技术瓶颈——$R_2$ 的均值正性（Paper 24 归约）。我们引入 dyadic shell constant $c_{\mathrm{dyad}}(k; N)$，将 predecessor gap 问题从全局 $c^*$ 下界（70 年未解）转移到壳层条件的 dyadic 区间平均。核心工具是 Dyadic Telescoping（命题 12，Paper XII 的推论）：</p>
+        $$\rho_E(2m-1) - \rho_E(m-1) = m - \sum_{n=m}^{2m-1} j(n)$$
+        <p>其中 $j(n) = \max(G(n), 0)$ 是 Paper XII 的跳跃函数。predecessor gap 精确等于 $m$ 减去 dyadic 区间 $[m, 2m-1]$ 上的跳跃函数总和。$R_2$ 正性归约为：dyadic 区间上跳跃函数的条件期望总和严格小于条件期望下的 $m$ 减去 target gap 阈值 $\tau_k(N) \approx 2.498$。</p>
+        <p>数值发现（$N = 10^9$）：E[pred gap] 在所展示的代表壳层（k = 5, 8, 10, 12）上 > $\tau_k \approx 2.498$（pred gap margin 0.20–0.36），jump rate 在代表壳层的 dyadic 区间内统计均匀（波动 &lt; 0.002），predecessor gap 取整数值，众数为 3（占 42%）。</p>
+        <p>在截至 $N = 10^9$ 的有限样本中，worst-case $\rho_E(n)/\ln n$ 仍由 smooth numbers 主导；尽管 smooth family 中的最佳比值仅 3.567（&lt; 3.61），壳层条件的 dyadic Cesàro 平均已经稳定高于阈值（$c_{\mathrm{dyad}}$ 超过 $\tau_k/\ln 2 \approx 3.604$ 的 margin 为 0.29–0.52）。正是这种"点态极值低、区间平均高"的分离，使 Route B 比 Route A 更贴题。</p>
+      </div>
+
+      <h2>§1. 引言</h2>
+
+      <h3>§1.1 (L3) 的剩余瓶颈</h3>
+      <p>Paper 24 在 (L3) 路线上把剩余 target-gap 问题隔离为 $R_2$ 的均值正性。对固定 cutoff $N$：</p>
+      $$E[R_2 \mid \Omega(m) = k, D_m = 0, m \leq N] > 0$$
+      <p>等价于</p>
+      $$E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k, D_m = 0, m \leq N] > \tau_k(N)$$
+      <p>其中 $\tau_k(N) := E[M_{2m} - M_m \mid \Omega(m) = k, D_m = 0, m \leq N]$，数值上 $\tau_k(N) \approx 2.498$。</p>
+      <p>一个自然的 heuristic 是：$\rho_E(2m-1) - \rho_E(m-1) \approx c^* \ln 2$，所以需要 $c^* > 2.498/\ln 2 \approx 3.61$。但 Paper XI 的已证下界只有 $c^* \geq 3/\ln 3 \approx 2.73$，且整数复杂度下界自 Selfridge (1953) 以来进展极慢。</p>
+
+      <div class="milestone-box">
+        <p><strong>本文的关键观察：</strong> $c^*$ 下界是一个比实际需要更强的条件。我们需要的不是全局点态 $\liminf \rho_E(n)/\ln n > 3.61$，而是壳层条件下 dyadic 区间的局部平均正性——一个严格更弱的命题。</p>
+      </div>
+
+      <h3>§1.2 本文贡献</h3>
+      <ol>
+        <li><strong>Dyadic Shell Constant $c_{\mathrm{dyad}}$（§2，定义 + 数值）。</strong> 将问题从全局 $c^*$ 转移到壳层条件的 dyadic 平均。</li>
+        <li><strong>Dyadic Telescoping（§3，Paper XII 的推论）。</strong> pred gap = $m - \sum j(n)$——直接连回 Paper XII 的跳跃函数 telescoping。</li>
+        <li><strong>Formal reduction（§3.3）。</strong> $R_2$ 正性归约为 $E[\sum j] &lt; E[m] - \tau_k(N)$，条件均在 $\Omega = k, D_m = 0$ 下。</li>
+        <li><strong>数值结构（§4）。</strong> 在代表壳层（k = 5, 8, 10, 12）上 pred gap > 2.50（$N = 10^9$ 数据）；jump rate 在代表壳层 k=8 的 dyadic 区间内统计均匀（波动 &lt; 0.002）；worst-case $\rho_E/\ln n$ 全部出现在 smooth numbers 上。</li>
+      </ol>
+
+      <h3>§1.3 三条路线的比较</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>路线</th><th>目标</th><th>难度</th><th>杠杆</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A（$c^*$ 下界）</td><td>证 $c^* > 3.61$（全局点态）</td><td>极高（70 年未解）</td><td>高但过强</td></tr>
+          <tr><td><strong>B（pred gap，本文主攻）</strong></td><td>证壳层条件 dyadic 平均 > 2.50</td><td>中高</td><td><strong>直接闭合 (L3)</strong></td></tr>
+          <tr><td>C（smooth only）</td><td>只证 smooth 数的 pred gap</td><td>中</td><td>中（仍需非 smooth ≥ smooth）</td></tr>
+        </tbody>
+      </table>
+      <p>本文执行 Route B。Route A 和 C 的比较见附录 A。</p>
+
+      <h2>§2. Dyadic Shell Constant</h2>
+
+      <h3>§2.1 定义</h3>
+      <div class="thesis-box">
+        <p><strong>定义.</strong> 对固定 $k \geq 2$，定义 dyadic shell constant：</p>
+        $$c_{\mathrm{dyad}}(k; N) := \frac{E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k, D_m = 0, m \leq N]}{\ln 2}$$
+        <p><strong>$R_2$ 均值正性（Paper 24）等价于：</strong></p>
+        $$c_{\mathrm{dyad}}(k; N) > \frac{\tau_k(N)}{\ln 2}$$
+        <p>其中 $\tau_k(N) := E[M_{2m} - M_m \mid \Omega(m) = k, D_m = 0, m \leq N]$。数值上 $\tau_k(N) \approx 2.498$（对所有测试 k），因此阈值 $\tau_k/\ln 2 \approx 3.604$。</p>
+      </div>
+
+      <h3>§2.2 数值（$N = 10^9$）</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>k</th><th>E[pred gap]</th><th>$c_{\mathrm{dyad}}$</th><th>margin above $\tau_k/\ln 2$</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>5</td><td>2.855</td><td>4.119</td><td>+0.515</td></tr>
+          <tr><td>8</td><td>2.753</td><td>3.971</td><td>+0.367</td></tr>
+          <tr><td>10</td><td>2.711</td><td>3.911</td><td>+0.307</td></tr>
+          <tr><td>12</td><td>2.698</td><td>3.893</td><td>+0.289</td></tr>
+        </tbody>
+      </table>
+      <p>$c_{\mathrm{dyad}}$ 从 4.12（k=5）缓降到 3.89（k=12），始终 > 3.604。</p>
+
+      <h3>§2.3 与全局 $c^*$ 的关系</h3>
+      <p>全局 $c^*$ 是 $\liminf_{n \to \infty} \rho_E(n)/\ln n$（点态）。$c_{\mathrm{dyad}}$ 是壳层条件下 dyadic 区间上的 Cesàro 平均。两者不同：</p>
+      <ul>
+        <li>全局 min(ρ/ln) 依赖于起始阈值：min = 3.32（n ≥ 1,000），3.44（n ≥ 100,000），3.49（n ≥ 5×10⁶），均由 smooth numbers（2^a · 3^b 型）达到</li>
+        <li>$c_{\mathrm{dyad}}$ 是区间平均，smooth number 的个别低值被壳层内其他整数"平均掉"</li>
+      </ul>
+      <div class="note-box">
+        <strong>这就是悖论的解释：</strong>有限样本中 $\rho_E(n)/\ln n$ 的极小值仍为 3.32（$n \geq 10^3$ 阈值下，达到于 $n = 1{,}024 = 2^{10}$），但 E[pred gap] > $\tau_k$ 始终成立，因为前者是点态极值，后者是 Cesàro 平均。
+      </div>
+
+      <h2>§3. Dyadic Telescoping（Paper XII 的推论）</h2>
+
+      <h3>§3.1 恒等式</h3>
+      <div class="milestone-box">
+        <p><strong>命题 12（Dyadic Telescoping）.</strong> 对任何 $m \geq 2$：</p>
+        $$\rho_E(2m-1) - \rho_E(m-1) = m - \sum_{n=m}^{2m-1} j(n)$$
+        <p>其中 $j(n) = \max(G(n), 0) = \max(\rho_E(n-1) + 1 - M_n, 0)$ 是 Paper XII 的跳跃函数。</p>
+      </div>
+      <p><em>注.</em> 这是 Paper XII 的 $\delta(N) = \sum j(n)$ telescoping 在 dyadic 区间上的直接推论。它的价值不在于证明本身（一行 corollary），而在于暴露了 Route B 的正确局部对象：predecessor gap 精确等于 $m$ 减去 dyadic 区间上的跳跃函数总和。</p>
+
+      <div class="proof-box">
+        <p><strong>证明.</strong> 由 DP 递推 $\rho_E(n) = \min(\rho_E(n-1) + 1, M_n)$，对每个 $n$：</p>
+        $$\rho_E(n) = \rho_E(n-1) + 1 - j(n)$$
+        <p>（当 $G(n) > 0$ 时 $\rho_E(n) = M_n = \rho_E(n-1) + 1 - j(n)$；当 $G(n) \leq 0$ 时 $\rho_E(n) = \rho_E(n-1) + 1$ 且 $j(n) = 0$。）</p>
+        <p>对 $n = m, m+1, \ldots, 2m-1$ 求和（共 $m$ 项 telescoping）：</p>
+        $$\rho_E(2m-1) - \rho_E(m-1) = m - \sum_{n=m}^{2m-1} j(n) \qquad \square$$
+      </div>
+
+      <h3>§3.2 等价重写</h3>
+      <p>定义 $A(n) = j(n) - 1$（Paper XVII），则：</p>
+      $$\rho_E(2m-1) - \rho_E(m-1) = -\sum_{n=m}^{2m-1} A(n)$$
+      <p>predecessor gap 精确等于 dyadic 区间上 $A(n)$ 的负总和。由于 $A(n) \leq 0$ 当 $G(n) \leq 0$（此时 $j = 0, A = -1$），$A(n) \geq 0$ 当 $G(n) > 0$（此时 $A = j - 1 \geq 0$），正负贡献的不平衡决定了 predecessor gap 的符号和大小。</p>
+
+      <h3>§3.3 归约为跳跃密度</h3>
+      <p>定义 target gap 阈值：</p>
+      $$\tau_k(N) := E[M_{2m} - M_m \mid \Omega(m) = k, D_m = 0, m \leq N]$$
+      <p>数值上 τ_k(N) ≈ 2.498（对所有测试的 k 和 N，见 Paper 24）。</p>
+
+      <div class="thesis-box">
+        <p>$R_2$ 均值正性等价于：</p>
+        $$E\left[\sum_{n=m}^{2m-1} j(n) \;\middle|\; \Omega(m) = k, D_m = 0, m \leq N\right] < E[m \mid \Omega(m) = k, D_m = 0, m \leq N] - \tau_k(N)$$
+        <p>即 dyadic 区间 $[m, 2m-1]$ 上的跳跃函数条件总和的期望必须严格小于条件期望下的 $m$ 减去 target gap 阈值。</p>
+      </div>
+
+      <div class="note-box">
+        <strong>注.</strong> 这里 $m$ 是随机变量（在壳层 $\Omega = k$ 上取条件期望），不是固定参数。求和上限 $2m-1$ 和区间长度 $m$ 都依赖于 $m$。因此不能简单地将两边除以 $m$ 得到"平均 $j &lt; 1 - 2.498/m$"——这种操作需要额外的 Jensen 型论证。
+      </div>
+
+      <h2>§4. 数值结构</h2>
+
+      <h3>§4.1 Step/Jump 分解</h3>
+      <p>由命题 12，对 k=8 壳层的代表 $m$（$m \approx 164{,}000$），区间 $[m, 2m-1]$ 内：</p>
+      $$\text{pred gap} = m - \sum_{n=m}^{2m-1} j(n)$$
+      <p>其中 $j(n) = 0$ 的位置（non-jump）贡献 $+1$ 到 pred gap，$j(n) > 0$ 的位置贡献 $1 - j(n) \leq 0$。</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>量</th><th>值</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>span $m$</td><td>164,068</td></tr>
+          <tr><td>non-jump 位置 ($j=0$)</td><td>67,123</td></tr>
+          <tr><td>jump 位置 ($j > 0$)</td><td>96,945</td></tr>
+          <tr><td>$\sum j(n)$</td><td>164,068 − 2.53 = 164,065.47</td></tr>
+          <tr><td><strong>pred gap</strong></td><td><strong>2.53</strong></td></tr>
+        </tbody>
+      </table>
+      <p>（数据为 k=8 壳层 5,000 个样本的平均值。）两个 O(m) 级的量（$m$ 和 $\sum j$）几乎精确抵消，留下 O(1) 的正残差。</p>
+
+      <h3>§4.2 Jump Rate 统计均匀性</h3>
+      <p>Jump rate（即 $P(j(n) > 0)$）在代表壳层 k=8 的 $[m, 2m-1]$ 区间内 10 个等分位置上：</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>位置</th><th>jump rate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.0–0.1</td><td>0.5891</td></tr>
+          <tr><td>0.1–0.2</td><td>0.5889</td></tr>
+          <tr><td>0.2–0.3</td><td>0.5893</td></tr>
+          <tr><td>0.3–0.4</td><td>0.5890</td></tr>
+          <tr><td>0.4–0.5</td><td>0.5892</td></tr>
+          <tr><td>0.5–0.6</td><td>0.5895</td></tr>
+          <tr><td>0.6–0.7</td><td>0.5891</td></tr>
+          <tr><td>0.7–0.8</td><td>0.5897</td></tr>
+          <tr><td>0.8–0.9</td><td>0.5899</td></tr>
+          <tr><td>0.9–1.0</td><td>0.5901</td></tr>
+        </tbody>
+      </table>
+      <p>波动 &lt; 0.002——统计均匀。区间内无边缘效应。</p>
+
+      <h3>§4.3 Worst-Case 整数：全是 Smooth Numbers</h3>
+      <p>在 $N = 10^9$ 下，$\rho_E(n)/\ln n$ 最小的整数全部是 $2^a \cdot 3^b$ 型 smooth numbers。代表例：</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>n</th><th>$\rho/\ln$</th><th>分解</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1,024</td><td>3.318</td><td>$2^{10}$</td></tr>
+          <tr><td>4,096</td><td>3.366</td><td>$2^{12}$</td></tr>
+          <tr><td>12,288</td><td>3.398</td><td>$2^{12} \cdot 3$</td></tr>
+          <tr><td>65,536</td><td>3.426</td><td>$2^{16}$</td></tr>
+          <tr><td>1,048,576</td><td>3.463</td><td>$2^{20}$</td></tr>
+          <tr><td>16,777,216</td><td>3.487</td><td>$2^{24}$</td></tr>
+          <tr><td>268,435,456</td><td>3.504</td><td>$2^{28}$</td></tr>
+        </tbody>
+      </table>
+      <p>Smooth numbers 拥有最多分裂选择 → $M_n$ 最小 → $\rho_E$ 增长最慢。有限样本中 $\rho_E/\ln n$ 的低值尾部由 smooth numbers 驱动，但 predecessor gap 的壳层平均不受此限制。</p>
+      <p><strong>Finite-sample checkpoint（$N = 10^9$）：</strong> $\rho_E(10^9)/\ln(10^9) = 75/20.72 = 3.6191$——首次 checkpoint 过 3.61。但 smooth numbers 仍未过 3.61：最佳 smooth ρ/ln = 3.567。纯 $2^k$ 序列在 $k = 29$ 时 ρ/(k·ln2) = 3.532，上升缓慢。Smooth number 拟合（$N = 10^9$ 数据）：$\rho/\ln \approx 3.344 + 0.0102 \cdot \ln(n)$（$R^2 = 0.72$），预测在 $n \approx 10^{11.4}$ 处过 3.61。</p>
+
+      <h3>§4.4 Predecessor Gap 分布</h3>
+      <p>predecessor gap 取整数值。无条件分布（所有 $m \in [2, 5 \times 10^6]$）：</p>
+      <table class="struct-table">
+        <thead>
+          <tr><th>pred gap</th><th>比例</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>≤ 0</td><td>1.1%</td></tr>
+          <tr><td>1</td><td>6.9%</td></tr>
+          <tr><td>2</td><td>24.2%</td></tr>
+          <tr><td><strong>3</strong></td><td><strong>42.0%</strong></td></tr>
+          <tr><td>4</td><td>25.9%</td></tr>
+        </tbody>
+      </table>
+      <p>众数为 3。E[pred gap] ≈ 2.85 无条件。仅 8.0% 的 $m$ 有 pred gap ≤ 1。</p>
+
+      <h2>§5. 形式化前景</h2>
+
+      <h3>§5.1 Telescoping + Renewal 路线</h3>
+      <p>命题 12 给出 pred gap = $m - \sum j(n)$。Paper XXI 的 Lindley 同构保证了 $j(n)$ 在跳跃处的记忆擦除（$D = 0$ 时队列清空）。这暗示了一种可能的 renewal-block 论证方向：</p>
+      <p>将 $[m, 2m-1]$ 按 $D = 0$ 的位置分成再生块。如果块长和块内 $\sum j$ 的比率可以控制，pred gap 的正性有望跟出。这一方向需要将 Paper XXI 的代数同构进一步发展为再生过程的分块定理，留待后续工作。</p>
+
+      <h3>§5.2 为什么这比 $c^*$ 更容易</h3>
+      <p>$c^* > 3.61$ 要求<em>每一个</em>大 $n$ 的 $\rho_E(n)/\ln n > 3.61$——点态下界。但全局 min(ρ/ln) 依赖于起始阈值：3.32（$n \geq 10^3$），3.44（$n \geq 10^5$），3.50（$n \geq 10^8$）。即使在 $N = 10^9$ 下，smooth numbers 的 ρ/ln 仍未突破 3.61（最佳 smooth = 3.567）。</p>
+      <p>pred gap > $\tau_k$ 只要求 <em>dyadic 区间上的 Cesàro 平均</em> > $\tau_k$——平均下界。</p>
+      <p>后者允许个别 $n$ 的 $\rho_E(n)/\ln n$ 低于 3.61（如 smooth numbers），只要这些坏点被好点平均掉。$N = 10^9$ 的数据确认了这一点：smooth numbers 的 ρ/ln 最佳仅 3.567，但 E[pred gap] 在代表壳层上 > $\tau_k$（pred gap margin 0.20–0.36；等价地 $c_{\mathrm{dyad}}$ margin 0.29–0.52）。</p>
+
+      <h3>§5.3 Smooth Number 压力测试（Route C 作为副线）</h3>
+      <p>如果能证明：</p>
+      <ul>
+        <li>(a) smooth numbers 上的 E[pred gap] > 2.50</li>
+        <li>(b) 非 smooth 数的 E[pred gap] ≥ smooth 数的 E[pred gap]</li>
+      </ul>
+      <p>则 (L3) 闭合。(a) 可以在 $2^a \cdot 3^b$ 的二维网格上用精确 DP 研究。(b) 需要"大素因子使 $M_n$ 增大"的论证。两步都是 open 的，但比 Route A 更可控。</p>
+
+      <h2>§6. 证明格局更新</h2>
+      <table class="struct-table">
+        <thead>
+          <tr><th>输入</th><th>状态</th><th>来源</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>B（Sathe-Selberg）</td><td>已知</td><td>经典</td></tr>
+          <tr><td>A'（$p_\infty(k) \to 1$）</td><td>条件性闭合</td><td>Paper 22</td></tr>
+          <tr><td>$A_q^\sharp$</td><td>数值强支持，待形式化</td><td>Paper 23</td></tr>
+          <tr><td>Trivial bound + Defect criterion</td><td>已证</td><td>Paper 24</td></tr>
+          <tr><td>(L1) $p=2$ 层</td><td>精确归约</td><td>Paper 24</td></tr>
+          <tr><td>(L1) $p \geq 3$ 层</td><td>开放</td><td>Paper 24</td></tr>
+          <tr><td><strong>$c_{\mathrm{dyad}} > \tau_k/\ln 2$</strong></td><td><strong>数值强支持（$N=10^9$，margin 0.29–0.52）</strong></td><td><strong>Paper 25</strong></td></tr>
+          <tr><td><strong>Dyadic Telescoping</strong></td><td><strong>Paper XII 的推论（命题 12）</strong></td><td><strong>Paper 25</strong></td></tr>
+          <tr><td>$R_2$ 均值正性</td><td><strong>归约为 $E[\sum j] &lt; E[m] - \tau_k(N)$</strong></td><td><strong>Paper 25</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="thesis-box">
+        <p><strong>剩余工作的精确刻画：</strong>在壳层条件 $\Omega(m) = k, D_m = 0$ 下，证明 dyadic 区间 $[m, 2m-1]$ 上跳跃函数条件总和的期望严格小于 $E[m] - \tau_k(N)$。这是一个关于 $j(n)$ 局部 Cesàro 平均的问题，不依赖全局 $c^*$。</p>
+      </div>
+
+      <h2>§7. 热力学接口</h2>
+      <table class="struct-table">
+        <thead>
+          <tr><th>ZFCρ</th><th>热力学</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>pred gap = m − Σj</td><td>自由能 = 容量 − 耗散总量</td></tr>
+          <tr><td>jump rate 统计均匀</td><td>微观可逆性的宏观投影</td></tr>
+          <tr><td>smooth = worst case</td><td>最"有序"的系统最难自组织（热力学第三定律的类比）</td></tr>
+          <tr><td>$c_{\mathrm{dyad}}$ > 3.604</td><td>每次维度提升的能量收支为正——系统远离平衡</td></tr>
+        </tbody>
+      </table>
+
+      <h2>参考文献</h2>
+      <ul>
+        <li>Altman, H. (2016). Integer complexity, addition chains, and well-ordering. Ph.D. thesis.</li>
+        <li>Selfridge, J. L. (1953). Cited in Guy, R. K. <em>Unsolved Problems in Number Theory</em>, Problem F26.</li>
+        <li>Qin, H. (2025a). ZFCρ Paper XI. <a href="https://doi.org/10.5281/zenodo.18975756" target="_blank" rel="noopener">DOI: 10.5281/zenodo.18975756</a>.</li>
+        <li>Qin, H. (2025b). ZFCρ Paper XII. <a href="https://doi.org/10.5281/zenodo.18977948" target="_blank" rel="noopener">DOI: 10.5281/zenodo.18977948</a>.</li>
+        <li>Qin, H. (2025c). ZFCρ Paper XV. <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19007312</a>.</li>
+        <li>Qin, H. (2025d). ZFCρ Paper XVII. <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19016958</a>.</li>
+        <li>Qin, H. (2025e). ZFCρ Paper XXI. <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19037934</a>.</li>
+        <li>Qin, H. (2025f). ZFCρ Paper XXII. <a href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19039953</a>.</li>
+        <li>Qin, H. (2025g). ZFCρ Paper XXIII. <a href="https://doi.org/10.5281/zenodo.19041689" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19041689</a>.</li>
+        <li>Qin, H. (2025h). ZFCρ Paper XXIV. <a href="https://doi.org/10.5281/zenodo.19044696" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19044696</a>.</li>
+      </ul>
+
+      <p class="appendix-label">附录 A</p>
+      <h3>路线选择的依据</h3>
+      <p>Route B（dyadic shell 平均）优于 Route A（全局 $c^*$）的数据依据：$N = 10^9$ 下，smooth numbers 的 ρ/ln 最佳仅 3.567（仍远低于 3.61），而 E[pred gap] 在代表壳层上 > $\tau_k$（pred gap margin 0.20–0.36；$c_{\mathrm{dyad}}$ margin 0.29–0.52）。这一悖论（smooth 点态极值 &lt; 阈值但壳层 Cesàro 平均 > 阈值）在更大尺度下更加确定，直接支持 Route B 的可行性。Route C（smooth numbers only）作为极值压力测试线保留。</p>
+
+      <p class="appendix-label">附录 B</p>
+      <h3>完整数值表</h3>
+
+      <h3>B.1 $c_{\mathrm{dyad}}$ 代表壳层（$N = 10^9$）</h3>
+      <p>（见 §2.2 表格。正文展示 k = 5, 8, 10, 12 四个代表壳层。完整壳层数据可由附带脚本复现。）</p>
+
+      <h3>B.2 Predecessor gap 分布</h3>
+      <p>（见 §4.4 表格）</p>
+
+      <h3>B.3 $\rho_E(2^k)/(k \cdot \ln 2)$（$N = 10^9$）</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>k</th><th>$2^k$</th><th>ρ_E</th><th>ρ/(k·ln2)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>10</td><td>1,024</td><td>23</td><td>3.318</td></tr>
+          <tr><td>16</td><td>65,536</td><td>38</td><td>3.426</td></tr>
+          <tr><td>20</td><td>1,048,576</td><td>48</td><td>3.463</td></tr>
+          <tr><td>24</td><td>16,777,216</td><td>58</td><td>3.487</td></tr>
+          <tr><td>28</td><td>268,435,456</td><td>68</td><td>3.504</td></tr>
+          <tr><td>29</td><td>536,870,912</td><td>71</td><td>3.532</td></tr>
+        </tbody>
+      </table>
+      <p>上升缓慢。$2^{28}$ 时仍为 3.504，远低于 3.61。</p>
+
+      <h3>B.4 Global min(ρ/ln) by threshold（$N = 10^9$）</h3>
+      <table class="struct-table">
+        <thead>
+          <tr><th>$n \geq$</th><th>min(ρ/ln)</th><th>达到于</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$10^3$</td><td>3.318</td><td>$2^{10}$</td></tr>
+          <tr><td>$10^5$</td><td>3.444</td><td>$2^{12} \cdot 3^3$</td></tr>
+          <tr><td>$10^6$</td><td>3.463</td><td>$2^{20}$</td></tr>
+          <tr><td>$10^8$</td><td>3.504</td><td>$2^{28}$</td></tr>
+          <tr><td>$10^9$</td><td>3.619</td><td>$10^9$</td></tr>
+        </tbody>
+      </table>
+
+      <div class="series-nav">
+        <span><a href="zfcrho24.html">← 论文 XXIV：插入测度</a></span>
+        <span style="float:right;">论文 XXVI →</span>
+      </div>
+
+    </div><!-- .paper-body -->
+  </div><!-- #lang-zh -->
+
+</main>
+
+<footer>
+  <p>© Han Qin · <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID</a> · <a href="/">self-as-an-end.net</a></p>
+</footer>
+
+</body>
+</html>
