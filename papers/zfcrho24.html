@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime-Stratified Decomposition of the Insertion Measure and a Defect-Gap Inequality — ZFCρ Paper XXIV — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXIV: Prime-Stratified Cofactor Identity (Theorem 9) — exact algebraic decomposition of insertion measure by prime. P^−=2 gives counting isomorphism. Lemmas 10–11: trivial splitting bound and Defect-Gap inequality M_{2m}−M_m ≤ 3−D_m. Reduces (L1) and bridge positivity to concrete open problems.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, insertion measure, prime stratification, cofactor identity, defect-gap inequality, bridge positivity, Lindley defect, 素数分层, 插入测度, Defect-Gap不等式">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prime-Stratified Decomposition of the Insertion Measure and a Defect-Gap Inequality">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho24.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Prime-Stratified Decomposition of the Insertion Measure and a Defect-Gap Inequality",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho24.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19044696"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "insertion measure", "prime stratification",
+      "cofactor identity", "defect-gap inequality", "bridge positivity", "Lindley defect"
+    ],
+    "abstract": "Establishes exact algebraic foundations for the arithmetic inputs in the D(N)→1 proof chain. Prime-Stratified Cofactor Identity (Theorem 9): insertion measure decomposes exactly as a prime-weighted sum of shell-roughness conditional expectations; P^−=2 case yields a counting isomorphism. Lemma 10 (Trivial Splitting Bound) and Lemma 11 (Defect-Gap Inequality): M_{2m}−M_m ≤ 3−D_m, with 100% numerical verification. Reduces (L1) cofactor representativeness (p=2 layer) to truncation drift μ_k(N/2)−μ_k(N). Defines target-gap margin R_2 and reduces bridge positivity to predecessor gap inequality.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho24.html">
+  <meta name="citation_title" content="Prime-Stratified Decomposition of the Insertion Measure and a Defect-Gap Inequality">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19044696">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho24.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .appendix-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #2c2c8c; text-transform: uppercase; margin-top: 2.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; border-color: #e0e0e0; background: #fff; margin-bottom: -2px; border-bottom: 2px solid #fff; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .proof-box { background: #f5f5ff; border: 1px solid #d0d0ee; border-radius: 4px; padding: 0.85rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .milestone-box { background: #f0fff4; border-left: 3px solid #2e7d32; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .chain-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.2rem; margin: 1rem 0; font-size: 0.9rem; line-height: 2; }
+  </style>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <header>
+    <div class="site-title"><a href="/">Self-as-an-End</a></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </nav>
+  </header>
+
+  <main class="paper-container">
+
+    <!-- Language tabs -->
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="switchLang('en', this)">English</button>
+      <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+    </div>
+
+    <!-- ========== ENGLISH ========== -->
+    <div class="lang-content active" id="lang-en">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ Paper XXIV</div>
+        <h1 class="paper-title">Prime-Stratified Decomposition of the Insertion Measure and a Defect-Gap Inequality</h1>
+        <div class="paper-authors">Han Qin</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; March 2026
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19044696" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19044696
+          </a>
+        </div>
+      </div><!-- .paper-header -->
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">Abstract</div>
+          <p>This paper establishes the exact algebraic foundations for the arithmetic inputs in the $D(N) \to 1$ proof chain. The core result is the <strong>Prime-Stratified Cofactor Identity (Theorem 9, exact decomposition):</strong> the insertion measure $I_k(N)$ decomposes, for any observable $F$, as an exact prime-weighted sum of shell–roughness conditional expectations. In particular, for $p = 2$: the $G_{\mathrm{spf}}$ distribution of the cofactor is exactly equal to the $\Omega = k$ shell at truncation $N/2$ — not an approximation, but a counting isomorphism. This implies that the cofactor representativeness bias for the $P^-(n) = 2$ layer equals the truncation drift $\mu_k(N/2) - \mu_k(N)$ exactly; if $\mu_k(N)$ converges, this bias $\to 0$. The global (L1) bias further requires controlling the roughness truncation effect of the $p \geq 3$ layers.</p>
+          <p>The paper also proves the algebraic structure of the target gap (Lemmas 10–11, proved): $M_{2m} - M_m \leq 3 - D_m$, where $D_m = M_m - \rho_E(m) \geq 0$ is the Lindley defect from Paper 21. Numerical verification: $D_m \geq 1 \Rightarrow M_{2m} - M_m \leq 2$ holds 100%. Defining target-gap margin $R_2(m) := [\rho_E(2m-1) - \rho_E(m-1)] - [M_{2m} - M_m]$, Lemma 10 gives $R_2 \geq K_2^{\mathrm{ins}}$, so bridge positivity implies $R_2 > 0$ (but not conversely). The mean positivity of $R_2$ on the main population ($D_m = 0$) reduces to a predecessor gap inequality, left for future work.</p>
+          <p style="margin-top:0.7rem;"><strong>Keywords:</strong> integer complexity, ρ-arithmetic, insertion measure, prime stratification, cofactor identity, Defect-Gap inequality, bridge positivity, Lindley defect, target-gap margin</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. Introduction</h2>
+
+        <h3>§1.1 Remaining Landscape</h3>
+        <p>Paper 23 conditionally closed $D(N) \to 1$ (Theorem 8: $A_q^\sharp + A' + B \Rightarrow D(N) \to 1$). Remaining work falls into two categories:</p>
+        <p><strong>Arithmetic inputs (this paper's focus):</strong> (L1) cofactor representativeness, (L3) bridge positivity.</p>
+        <p><strong>Analytic inputs (future):</strong> Formalization of $A_q^\sharp$ (requires shifted-shell correction theorem).</p>
+
+        <h3>§1.2 Contributions</h3>
+        <ol>
+          <li><strong>Prime-Stratified Cofactor Identity (§2, exact decomposition).</strong> An exact algebraic decomposition expressing the insertion measure as a prime-weighted sum of shell–roughness conditional distributions. The $p = 2$ special case yields an exact counting isomorphism.</li>
+          <li><strong>Trivial bound + Defect criterion (§3, proved).</strong> $M_{pm} \leq M_m + \rho_E(p) + 2$ holds universally; when $D_m \geq 1$, the target gap is automatically compressed to $\leq 2$.</li>
+          <li><strong>(L1) reduction for the $p = 2$ layer (§4).</strong> The cofactor bias under $P^-(n) = 2$ is exactly equal to the truncation drift $\mu_k(N/2) - \mu_k(N)$; if $\mu_k(N)$ converges, this bias $\to 0$. Global (L1) still requires controlling the $p \geq 3$ layers.</li>
+          <li><strong>Definition and reduction of the target-gap margin $R_2$ (§5).</strong> Defining new quantity $R_2(m)$, Lemma 10 gives $R_2 \geq K_2^{\mathrm{ins}}$ (bridge positivity implies $R_2$ positivity). Mean positivity of $R_2$ reduces to a predecessor gap inequality — a proxy for the bridge problem.</li>
+        </ol>
+
+        <h3>§1.3 Important Caveat</h3>
+        <p>$P(P^- = 2 \mid \Omega = k)$ is close to 1 for high shells at $N = 10^7$ (99.6% at $k=12$), but for fixed $k$ as $N \to \infty$, Sathe-Selberg gives:</p>
+        <p>$$\frac{\sigma_k(N/2)}{\sigma_{k+1}(N)} \asymp \frac{k}{2 \ln \ln N} \to 0$$</p>
+        <p>Therefore the dominance of $P^- = 2$ is a finite-$N$ high-shell phenomenon, not a theorem input in the fixed-$k$ limit. This paper's proof architecture does not rely on $P^- = 2$ dominance — it uses the exact stratified identity valid for all primes $p$.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. Prime-Stratified Cofactor Identity (Exact Decomposition)</h2>
+
+        <h3>§2.1 Exact Decomposition</h3>
+        <div class="milestone-box">
+          <p><strong>Theorem 9 (Prime-Stratified Cofactor Identity).</strong> For any observable $F$, any $N \geq 2$, and any $k \geq 1$:</p>
+          <p>$$E_{I_k(N)}[F(m)] = \sum_p \alpha_{k,p}(N) \cdot E[F(m) \mid m \leq N/p,\; \Omega(m) = k,\; P^-(m) \geq p]$$</p>
+          <p>where $\alpha_{k,p}(N)$ is the proportion of $\{n \leq N : \Omega(n) = k+1, P^-(n) = p\}$ among all $\Omega(n) = k+1$, and $m = n/p$.</p>
+          <p><em>Proof.</em> The map $n \mapsto m = n/p$ establishes a bijection between $\{n \leq N : \Omega(n) = k+1, P^-(n) = p\}$ and $\{m \leq N/p : \Omega(m) = k, P^-(m) \geq p\}$. Stratifying by $P^-(n) = p$, the expectation naturally decomposes as a weighted sum. □</p>
+        </div>
+
+        <h3>§2.2 Special Case: P⁻ = 2</h3>
+        <div class="thesis-box">
+          <p><strong>Corollary.</strong> For $p = 2$, the roughness condition $P^-(m) \geq 2$ holds trivially, so:</p>
+          <p>$$E_{I_k(N)}[F(m) \mid P^-(n) = 2] = E[F(m) \mid m \leq N/2,\; \Omega(m) = k]$$</p>
+          <p><strong>This is an exact counting isomorphism, not an approximation.</strong> The cofactor distribution under $P^-(n) = 2$ is exactly equal to the $\Omega = k$ shell distribution at truncation $N/2$.</p>
+        </div>
+
+        <h3>§2.3 Numerical Sanity Check</h3>
+        <p>Theorem 9 is an exact identity, so the following numerical consistency is a logical consequence. The $P^-(n) = 2$ cofactor distribution is in exact agreement with the $N/2$-truncated shell distribution (exact isomorphism); all reported quantile differences are 0.000. The mean discrepancy 0.030 (k+1=8) and std ratio 1.002 reflect the minor difference between the $N/2$-truncated and $N$-truncated shell — i.e., the truncation drift $\mu_k(N/2) - \mu_k(N)$.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. Algebraic Structure of the Target Gap (Proved)</h2>
+
+        <h3>§3.1 Trivial Bound</h3>
+        <div class="milestone-box">
+          <p><strong>Lemma 10 (Trivial Splitting Bound).</strong> For all $n = pm$ ($p$ prime, $m \geq 2$):</p>
+          <p>$$M_n \leq M_m + \rho_E(p) + 2$$</p>
+          <p><em>Proof.</em> $M_n = \min_{ab=n}(\rho_E(a) + \rho_E(b) + 2)$. Taking $a = m$, $b = p$ gives $M_n \leq \rho_E(m) + \rho_E(p) + 2$. The DP recurrence $\rho_E(m) = \min(\rho_E(m-1)+1, M_m) \leq M_m$ completes the bound. □</p>
+        </div>
+        <div class="note-box">
+          <strong>Numerical verification:</strong> $M_n \leq M_m + \rho_E(p) + 2$ holds for 100.000% of $N = 10^7$ cases (207,207 events for k+1=8), min(slack) = 0.
+        </div>
+
+        <h3>§3.2 Defect Criterion</h3>
+        <div class="milestone-box">
+          <p><strong>Lemma 11 (Defect-Gap Inequality).</strong> For $n = 2m$, $\rho_E(2) = 1$:</p>
+          <p>$$M_{2m} - M_m \leq 3 - D_m$$</p>
+          <p>where $D_m := M_m - \rho_E(m) \geq 0$.</p>
+          <p><em>Proof.</em> From Lemma 10 with $p = 2$: $M_{2m} \leq \rho_E(m) + 3 = M_m - D_m + 3$. □</p>
+          <p><strong>Corollary.</strong> $D_m \geq 1 \Rightarrow M_{2m} - M_m \leq 2$.</p>
+        </div>
+
+        <h3>§3.3 Numerical Verification</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>count</th><th>E[M_{2m}−M_m]</th><th>P(diff≤2)</th><th>P(diff=3)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>196,567</td><td>2.498</td><td>49.8%</td><td>50.2%</td></tr>
+            <tr><td>1</td><td>448</td><td>1.982</td><td>100.0%</td><td>0%</td></tr>
+            <tr><td>2</td><td>24</td><td>1.000</td><td>100.0%</td><td>0%</td></tr>
+          </tbody>
+        </table>
+        <p><strong>$D_m \geq 1 \Rightarrow \text{diff} \leq 2$: 100.00% confirmed.</strong> This is a direct corollary of Lemma 11.</p>
+        <div class="note-box">
+          <strong>Remark on D_m = 0.</strong> When $D_m = 0$, diff concentrates on {2, 3} with near 50/50 split. Lemma 11 only gives diff ≤ 3. Data shows ~49.3% take diff=2, ~50.2% take diff=3, and ~0.5% take diff=1 (when $M_{2m}$ finds a split far better than the trivial one). The 50/50 split arises from whether $M_{2m}$ finds a better factorization than the trivial split $m \cdot 2$.
+        </div>
+
+        <h3>§3.4 Numerical Observation: P(D_m = 0) Rises Rapidly with k</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>k+1</th><th>P(D_m=0)</th><th>P(D_m=1)</th><th>P(D_m≥2)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>4</td><td>0.855</td><td>0.117</td><td>0.028</td></tr>
+            <tr><td>8</td><td>0.998</td><td>0.002</td><td>0.000</td></tr>
+            <tr><td>12</td><td>1.000</td><td>0.000</td><td>0.000</td></tr>
+          </tbody>
+        </table>
+        <p>Under the insertion measure, $P(D_m = 0)$ rapidly approaches 1 with $k$. High-shell cofactors are almost entirely in the Lindley queue-idle state.</p>
+
+        <h3>§3.5 Full Chain: D_m → diff → R_2</h3>
+        <p>Here $R_2 = [\rho_E(2m-1) - \rho_E(m-1)] - [M_{2m} - M_m]$ (target-gap margin, defined in §5.1). $E[\text{pred gap}] = E[\rho_E(2m-1) - \rho_E(m-1)]$.</p>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>count</th><th>E[diff]</th><th>E[pred gap]</th><th>E[R_2]</th><th>P(R_2 &gt; 0)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>196,567</td><td>2.498</td><td>2.777</td><td>0.279</td><td>~50%</td></tr>
+            <tr><td>1</td><td>448</td><td>1.982</td><td>3.897</td><td>1.915</td><td>~99%</td></tr>
+            <tr><td>2</td><td>24</td><td>1.000</td><td>3.917</td><td>2.917</td><td>100%</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>Remark.</strong> The $K_p^\Delta$ column in the original verification script uses $G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$ (Paper XXII definition), whose values (0.235, 2.136, 3.000) differ from $R_2 = \text{pred gap} - \text{diff}$ (0.279, 1.915, 2.917). The source of the difference is explained in §5.1's three-notation convention. This paper uses $R_2$.
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. Exact Reduction of (L1) Cofactor Representativeness</h2>
+
+        <h3>§4.1 P⁻ = 2 Layer: Bias = Truncation Drift</h3>
+        <p>From the exact identity in §2.2, for $P^-(n) = 2$:</p>
+        <p>$$\beta_{k,2}(N) := E_{I_k(N)}[G_{\mathrm{spf}}(m) \mid P^- = 2] - \mu_k(N) = \mu_k(N/2) - \mu_k(N)$$</p>
+        <div class="thesis-box">
+          <p><strong>Corollary.</strong> If $\mu_k(N)$ converges (i.e., $\lim_{N \to \infty} \mu_k(N)$ exists), then $\beta_{k,2}(N) \to 0$.</p>
+          <p>If additionally $A_q^\sharp$'s convergence rate $\mu_k(N) = \mu_k^\infty + O(1/\ln N)$ holds, then $\beta_{k,2}(N) = O(1/\ln N)$.</p>
+        </div>
+        <div class="note-box">
+          <strong>Note.</strong> The above controls only the $P^-(n) = 2$ layer's bias, not the global cofactor bias. This layer does not require new arithmetic inputs, but depends on the convergence of $\mu_k(N)$ — which is part of $A_q^\sharp$, currently awaiting formalization.
+        </div>
+
+        <h3>§4.2 Contribution from P⁻ ≥ 3</h3>
+        <p>For $P^-(n) = p \geq 3$, the cofactor distribution equals $\{m \leq N/p : \Omega(m) = k, P^-(m) \geq p\}$ — a roughness-truncated shell. The roughness condition $P^-(m) \geq p$ introduces bias (Paper 23 data: $P^- = 3$ bias 0.5–1.3).</p>
+        <p>The key point: in the fixed-$k$, $N \to \infty$ limit, the total bias is $\beta_k(N) = \sum_p \alpha_{k,p}(N) \cdot \beta_{k,p}(N)$. Even if some $\beta_{k,p}$ are large, as long as $\alpha_{k,p}$ is sufficiently small and $\beta_{k,p}$ is bounded, the total bias remains controlled. This is a standard weighted-average argument — not every term needs to be small, only large terms need small weights.</p>
+
+        <h3>§4.3 Formalization Prospects for (L1)</h3>
+        <p><strong>(L1a) $p = 2$ layer (reduced):</strong> $\beta_{k,2}(N) = \mu_k(N/2) - \mu_k(N)$ (exact identity). If $\mu_k(N)$ converges, then $\beta_{k,2} \to 0$. This layer needs no new arithmetic input, but depends on convergence of $\mu_k(N)$.</p>
+        <p><strong>(L1b) $p \geq 3$ layer (open):</strong> Cofactor distribution equals $\{m \leq N/p : \Omega(m) = k, P^-(m) \geq p\}$. Need to prove $\sum_{p \geq 3} \alpha_{k,p}(N) \cdot |\beta_{k,p}(N)|$ is bounded or $\to 0$. Tools: Sathe-Selberg uniformity + Paper 17's roughness stability framework.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. Reduction of Bridge Positivity</h2>
+
+        <h3>§5.1 Target-Gap Margin (New Quantity; Relation to Historical Notation)</h3>
+        <p><strong>Notation convention.</strong> Three related but distinct quantities appear in the series:</p>
+        <p>$$K_p^{\mathrm{ins}}(m) := \rho_E(pm - 1) - \rho_E(m - 1) - \rho_E(p) - 2 \qquad \text{(Paper XVI insertion term)}$$</p>
+        <p>$$K_p^{\Delta}(n) := G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m) \qquad \text{(Paper XXII bridge term)}$$</p>
+        <p>$$R_p(m) := [\rho_E(pm - 1) - \rho_E(m - 1)] - [M_{pm} - M_m] \qquad \text{(this paper's target-gap margin)}$$</p>
+        <p>Relation: $R_p = K_p^{\mathrm{ins}} + (\rho_E(p) + 2) - (M_{pm} - M_m)$. By Lemma 10, $M_{pm} - M_m \leq \rho_E(p) + 2$, hence $R_p \geq K_p^{\mathrm{ins}}$. This means $K_p^{\mathrm{ins}} > 0 \Rightarrow R_p > 0$ (bridge positivity implies $R_p$ positivity), but not conversely. <strong>This paper studies $R_p$ — a proxy for the bridge problem, not equivalent to bridge positivity.</strong></p>
+        <p>For the main population $P^- = 2$ with $D_m = 0$: $E[M_{2m} - M_m \mid D_m = 0] \approx 2.498$, so:</p>
+        <p>$$E[R_2 \mid \Omega(m) = k,\, D_m = 0] \approx E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k,\, D_m = 0] - 2.498$$</p>
+
+        <h3>§5.2 Reduction to Predecessor Gap Inequality</h3>
+        <p><strong>Mean positivity of $R_2$ on the main population is equivalent to:</strong></p>
+        <p>$$E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k,\, D_m = 0] > E[M_{2m} - M_m \mid \Omega(m) = k,\, D_m = 0]$$</p>
+        <p>Numerically the right side is ~2.498, so the main-population mean threshold is approximately 2.50.</p>
+        <div class="note-box">
+          <strong>Note.</strong> This is mean positivity ($E[R_2] > 0$), not pointwise positivity. The condition includes $D_m = 0$ — as $P(D_m = 0) \to 1$ (§3.4), the main-population condition and the global condition become equivalent at high $k$.
+        </div>
+        <p><strong>Known tools:</strong> $\rho_E(n) \sim c^* \ln n$, numerically $c^* \approx 3.79$. The global growth gives $\rho_E(2m-1) - \rho_E(m-1) \approx c^* \ln 2 \approx 2.63$. But the proved lower bound on $c^*$ is only $3/\ln 3 \approx 2.73$ (Paper XI), insufficient to prove $c^* \ln 2 > 2.50$ (which requires $c^* > 3.61$).</p>
+
+        <h3>§5.3 Formalization Prospects</h3>
+        <p>Mean positivity of $R_2$ on the main population (§5.2) requires one of:</p>
+        <p><strong>(a)</strong> Prove $c^* > 3.61$ (improving Paper XI's bound $c^* \geq 3/\ln 3 \approx 2.73$ — itself a new asymptotic theory problem). This gives global predecessor gap $\approx c^* \ln 2 > 2.50$, but still needs to transfer from global to shell-conditional.</p>
+        <p><strong>(b)</strong> Directly prove the shell-conditional predecessor gap $> E[M_{2m} - M_m \mid D_m = 0]$ (bypassing global $c^*$).</p>
+        <p><strong>(c)</strong> Use the large $R_2$ from $D_m \geq 1$ events ($E[R_2 \mid D_m=1] \approx 1.9$) to compensate — but $P(D_m \geq 1)$ is extremely small at high $k$, so the effectiveness of this strategy depends on precise weight balance.</p>
+        <div class="note-box">
+          <strong>Assessment: Mean positivity of $R_2$ is the hardest open technical problem in the current proof chain.</strong>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. Updated Proof Landscape</h2>
+        <table class="struct-table">
+          <thead>
+            <tr><th>Input</th><th>Status</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>B (Sathe-Selberg)</td><td>Known</td><td>Classical</td></tr>
+            <tr><td>A' ($p_\infty(k) \to 1$)</td><td>Conditionally closed</td><td>Paper 22</td></tr>
+            <tr><td>$A_q^\sharp$</td><td>Strong numerical support, awaiting formalization</td><td>Paper 23</td></tr>
+            <tr><td>(L1) $p=2$ layer</td><td><strong>Exactly reduced to truncation drift</strong> (→ 0 if μ_k converges)</td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>(L1) $p \geq 3$ layer</td><td><strong>Open</strong> (requires roughness stability)</td><td><strong>Paper 24 (identified)</strong></td></tr>
+            <tr><td>Trivial bound (Lemma 10)</td><td><strong>Proved</strong></td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>Defect criterion (Lemma 11)</td><td><strong>Proved</strong></td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>$R_2$ mean positivity (necessary for bridge positivity)</td><td><strong>Reduced to pred gap &gt; E[target gap | D_m=0]</strong></td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>$c^*$ lower bound</td><td><strong>Open</strong> (proved ≥ 2.73, need &gt; 3.61)</td><td>Paper XI</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>Remaining hardest gaps:</strong> The $R_2$ predecessor gap inequality (can be advanced via a stronger $c^*$ lower bound or direct shell-conditional growth control) and the roughness bias control for the $p \geq 3$ layers.
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. Thermodynamic Interface</h2>
+        <table class="struct-table">
+          <thead>
+            <tr><th>ZFCρ</th><th>Thermodynamics</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Prime-stratified identity</td><td>Energy budget decomposed exactly by "channel"</td></tr>
+            <tr><td>$D_m = 0 \to \text{diff} \in \{2,3\}$</td><td>Two-level structure of the thermal equilibrium state</td></tr>
+            <tr><td>$D_m \geq 1 \to \text{diff} \leq 2$, $R_2$ large</td><td>Far-from-equilibrium cascaded release</td></tr>
+            <tr><td>$R_2 > 0$ (numerical)</td><td>Each dimension upgrade releases positive energy (to be proved)</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>References</h2>
+        <ol>
+          <li>Qin, H. (2025a). ZFCρ Paper XI. DOI: <a href="https://doi.org/10.5281/zenodo.18975756" target="_blank" rel="noopener">10.5281/zenodo.18975756</a>.</li>
+          <li>Qin, H. (2025b). ZFCρ Paper XV. DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a>.</li>
+          <li>Qin, H. (2025c). ZFCρ Paper XVI. DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</li>
+          <li>Qin, H. (2025d). ZFCρ Paper XVII. DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</li>
+          <li>Qin, H. (2025e). ZFCρ Paper XXI. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</li>
+          <li>Qin, H. (2025f). ZFCρ Paper XXII. DOI: <a href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">10.5281/zenodo.19039953</a>.</li>
+          <li>Qin, H. (2025g). ZFCρ Paper XXIII. DOI: <a href="https://doi.org/10.5281/zenodo.19041689" target="_blank" rel="noopener">10.5281/zenodo.19041689</a>.</li>
+        </ol>
+
+        <div class="appendix-label">Appendix A: AI Collaboration Methodology</div>
+
+        <h3>A.1 Verification of Gemini's Conjecture</h3>
+        <p>Gemini conjectured $D_m = 0 \Rightarrow M_{2m} - M_m = 3$ (100%). Verification showed: only ~50% holds. But Gemini's key derivation — $M_{2m} \leq M_m + 3 - D_m$ — is a fully correct algebraic consequence. The error lay in equating "upper bound" with "exact value." This illustrates the typical AI-collaboration pattern: algebraic derivations trustworthy, numerical predictions require verification.</p>
+
+        <h3>A.2 ChatGPT's Strategic Correction</h3>
+        <p>ChatGPT pointed out that $P^- = 2$ dominance fails in the fixed-$k$, $N \to \infty$ limit ($\sigma_k(N/2)/\sigma_{k+1}(N) \asymp k/(2\ln\ln N) \to 0$). This directly changed Paper 24's proof architecture — from "$P^- = 2$ approximation" to "exact prime-stratified decomposition." ChatGPT also gave the exact expression: cofactor bias $= \mu_k(N/2) - \mu_k(N)$.</p>
+
+        <h3>A.3 Current Status of the c* Lower Bound</h3>
+        <p>Grok claimed $c^* \geq 3.62$ is known. ChatGPT pointed out this is incorrect — Paper XI's proved bound is only $c^* \geq 3/\ln 3 \approx 2.73$. This is another instance of Grok Round 2+ fabricating data. <strong>Trust calibration: Grok's specific numerical assertions must be cross-verified.</strong></p>
+
+        <div class="appendix-label">Appendix B: Complete Verification Data</div>
+
+        <h3>B.1 D_m vs (M_{2m} − M_m) Contingency Table (k+1=8)</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>diff=1</th><th>diff=2</th><th>diff=3</th><th>diff≥4</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0.5%</td><td>49.3%</td><td>50.2%</td><td>0%</td></tr>
+            <tr><td>1</td><td>1.8%</td><td>98.2%</td><td>0%</td><td>0%</td></tr>
+            <tr><td>2</td><td>100%</td><td>0%</td><td>0%</td><td>0%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>B.2 Full Chain D_m → R_2 (k+1=8)</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>count</th><th>E[diff]</th><th>E[pred gap]</th><th>E[R_2]=pred−diff</th><th>E[$K_p^\Delta$] (Paper XXII)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>196,567</td><td>2.498</td><td>2.777</td><td>0.279</td><td>0.235</td></tr>
+            <tr><td>1</td><td>448</td><td>1.982</td><td>3.897</td><td>1.915</td><td>2.136</td></tr>
+            <tr><td>2</td><td>24</td><td>1.000</td><td>3.917</td><td>2.917</td><td>3.000</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>Note.</strong> The numerical difference between $R_2$ and $K_p^\Delta$ (Paper XXII's $G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$) arises from the $B_\rho$ term and the gap between the target gap and the trivial bound. The two are positively correlated but not equal. See §5.1's three-notation convention for details.
+        </div>
+
+        <div class="series-nav">
+          <span><a href="zfcrho23.html">← Paper XXIII: Compositeness Discount</a></span>
+          <span style="float:right;">Paper XXV →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-en -->
+
+    <!-- ========== CHINESE ========== -->
+    <div class="lang-content" id="lang-zh">
+      <div class="paper-header">
+        <div class="paper-series">ZFCρ 论文 XXIV</div>
+        <h1 class="paper-title">插入测度的素数分层分解与 Defect-Gap 不等式</h1>
+        <div class="paper-authors">秦汉</div>
+        <div class="paper-meta-line">
+          ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a>
+          &ensp;·&ensp; 2026 年 3 月
+        </div>
+        <div style="margin-top:0.7rem;">
+          <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19044696" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            DOI: 10.5281/zenodo.19044696
+          </a>
+        </div>
+      </div>
+
+      <div class="paper-body">
+
+        <div class="abstract-box">
+          <div class="abstract-label">摘要</div>
+          <p>本文建立 D(N) → 1 证明链中算术输入的精确代数基础。核心结果是素数分层 Cofactor 恒等式（定理 9，精确分解）：插入测度 $I_k(N)$ 对任何观测量 $F$ 分解为按素数 $p$ 加权的壳层-粗糙度条件期望的精确和。特别地，对 $p = 2$：cofactor 的 $G_{\mathrm{spf}}$ 分布精确等于 $\Omega = k$ 壳层在截断 $N/2$ 处的分布——不是近似，而是计数同构。由此推出 $P^-(n) = 2$ 层的 cofactor 代表性偏差精确等于壳层均值的截断漂移 $\mu_k(N/2) - \mu_k(N)$，若 $\mu_k(N)$ 收敛则该偏差 → 0。整体 (L1) 偏差还需控制 $p \geq 3$ 层的粗糙度截断效应。</p>
+          <p>本文同时证明了 target gap 的代数结构（引理 10-11，已证）：$M_{2m} - M_m \leq 3 - D_m$，其中 $D_m = M_m - \rho_E(m) \geq 0$ 是 Paper 21 的 Lindley 缺陷。验证显示：$D_m \geq 1 \Rightarrow M_{2m} - M_m \leq 2$（100% 成立）。定义 target-gap margin $R_2(m) := [\rho_E(2m-1) - \rho_E(m-1)] - [M_{2m} - M_m]$。由引理 10 有 $R_2 \geq K_2^{\mathrm{ins}}$，因此 bridge 正性蕴含 $R_2 > 0$（但反向不成立）。$R_2$ 的均值正性（在主群体 $D_m = 0$ 上）归约为 predecessor gap 不等式，留待后续工作。</p>
+          <p style="margin-top:0.7rem;"><strong>关键词：</strong>整数复杂度，ρ-算术，插入测度，素数分层，cofactor 恒等式，Defect-Gap 不等式，bridge 正性，Lindley 缺陷，target-gap margin</p>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§1. 引言</h2>
+
+        <h3>§1.1 剩余格局</h3>
+        <p>Paper 23 将 D(N) → 1 条件性闭合（定理 8：$A_q^\sharp + A' + B \Rightarrow D(N) \to 1$）。剩余工作分两类：</p>
+        <p><strong>算术输入（本文主攻）：</strong>(L1) cofactor 代表性，(L3) bridge 正性。</p>
+        <p><strong>解析输入（后续）：</strong>$A_q^\sharp$ 的形式化（需要 shifted-shell correction theorem）。</p>
+
+        <h3>§1.2 本文贡献</h3>
+        <ol>
+          <li><strong>素数分层 Cofactor 恒等式（§2，精确分解）。</strong>精确的代数分解，将 insertion measure 表示为按素数加权的壳层-粗糙度条件分布的和。$p = 2$ 特殊情形给出精确的计数同构。</li>
+          <li><strong>Trivial bound + Defect criterion（§3，已证）。</strong>$M_{pm} \leq M_m + \rho_E(p) + 2$ 恒成立；$D_m \geq 1$ 时 target gap 自动压缩至 ≤ 2。</li>
+          <li><strong>(L1) 的 $p = 2$ 层归约（§4）。</strong>$P^-(n) = 2$ 条件下的 cofactor bias 精确等于截断漂移 $\mu_k(N/2) - \mu_k(N)$；若 $\mu_k(N)$ 收敛则该偏差 → 0。整体 (L1) 还需控制 $p \geq 3$ 层。</li>
+          <li><strong>Target-gap margin $R_2$ 的定义与归约（§5）。</strong>定义新量 $R_2(m)$，由引理 10 有 $R_2 \geq K_2^{\mathrm{ins}}$（bridge 正性蕴含 $R_2$ 正性）。$R_2$ 的均值正性归约为 predecessor gap 不等式——这是 bridge 问题的一个 proxy。</li>
+        </ol>
+
+        <h3>§1.3 重要注意</h3>
+        <p>$P(P^- = 2 \mid \Omega = k)$ 在 $N = 10^7$ 的高壳层上接近 1（k=12 时 99.6%），但对固定 $k$ 取 $N \to \infty$ 时，Sathe-Selberg 给出：</p>
+        <p>$$\frac{\sigma_k(N/2)}{\sigma_{k+1}(N)} \asymp \frac{k}{2 \ln \ln N} \to 0$$</p>
+        <p>因此 $P^- = 2$ 的主导性是 finite-$N$ 高壳层现象，不是 fixed-$k$ 极限下的定理输入。本文的证明架构不依赖 $P^- = 2$ 主导——它使用对所有素数 $p$ 成立的精确分层恒等式。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§2. 素数分层 Cofactor 恒等式（精确分解）</h2>
+
+        <h3>§2.1 精确分解</h3>
+        <div class="milestone-box">
+          <p><strong>定理 9（素数分层 Cofactor 恒等式）.</strong> 对任何观测量 $F$，任何 $N \geq 2$，和任何 $k \geq 1$：</p>
+          <p>$$E_{I_k(N)}[F(m)] = \sum_p \alpha_{k,p}(N) \cdot E[F(m) \mid m \leq N/p,\; \Omega(m) = k,\; P^-(m) \geq p]$$</p>
+          <p>其中 $\alpha_{k,p}(N)$ 是 $\{n \leq N : \Omega(n) = k+1, P^-(n) = p\}$ 在所有 $\Omega(n) = k+1$ 中的占比，$m = n/p$。</p>
+          <p><em>证明.</em> 映射 $n \mapsto m = n/p$ 在 $\{n \leq N : \Omega(n) = k+1, P^-(n) = p\}$ 与 $\{m \leq N/p : \Omega(m) = k, P^-(m) \geq p\}$ 之间建立一一对应。按 $P^-(n) = p$ 分层，期望自然分解为加权和。□</p>
+        </div>
+
+        <h3>§2.2 P⁻=2 的特殊情形</h3>
+        <div class="thesis-box">
+          <p><strong>推论.</strong> 对 $p = 2$，粗糙度条件 $P^-(m) \geq 2$ 平凡成立，因此：</p>
+          <p>$$E_{I_k(N)}[F(m) \mid P^-(n) = 2] = E[F(m) \mid m \leq N/2,\; \Omega(m) = k]$$</p>
+          <p><strong>这是精确的计数同构，不是近似。</strong>Cofactor 在 $P^-(n) = 2$ 条件下的分布精确等于 $\Omega = k$ 壳层在截断 $N/2$ 处的分布。</p>
+        </div>
+
+        <h3>§2.3 数值 Sanity Check</h3>
+        <p>定理 9 是精确恒等式，因此以下数值一致性是逻辑后果。$P^-(n) = 2$ 的 cofactor 分布与 $N/2$ 截断壳层分布完全一致（精确同构）；报告的分位点差值全为 0.000。均值偏差 0.030（k+1=8）和 std ratio 1.002 反映的是 $N/2$ 截断壳层与 $N$ 截断壳层之间的微小差异——即截断漂移 $\mu_k(N/2) - \mu_k(N)$。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§3. Target Gap 的代数结构（已证）</h2>
+
+        <h3>§3.1 Trivial Bound</h3>
+        <div class="milestone-box">
+          <p><strong>引理 10（Trivial Splitting Bound）.</strong> 对所有 $n = pm$（$p$ 素数，$m \geq 2$）：</p>
+          <p>$$M_n \leq M_m + \rho_E(p) + 2$$</p>
+          <p><em>证明.</em> $M_n = \min_{ab=n}(\rho_E(a) + \rho_E(b) + 2)$。取 $a = m, b = p$，得 $M_n \leq \rho_E(m) + \rho_E(p) + 2$。由 DP 递推 $\rho_E(m) = \min(\rho_E(m-1)+1, M_m) \leq M_m$。□</p>
+        </div>
+        <div class="note-box">
+          <strong>数值验证：</strong>$M_n \leq M_m + \rho_E(p) + 2$ 在 $N = 10^7$ 内 100.000% 成立（207,207 events for k+1=8），min(slack) = 0。
+        </div>
+
+        <h3>§3.2 Defect Criterion</h3>
+        <div class="milestone-box">
+          <p><strong>引理 11（Defect-Gap Inequality）.</strong> 对 $n = 2m$，$\rho_E(2) = 1$：</p>
+          <p>$$M_{2m} - M_m \leq 3 - D_m$$</p>
+          <p>其中 $D_m := M_m - \rho_E(m) \geq 0$。</p>
+          <p><em>证明.</em> 由引理 10 取 $p = 2$：$M_{2m} \leq \rho_E(m) + 3 = M_m - D_m + 3$。□</p>
+          <p><strong>推论.</strong> $D_m \geq 1 \Rightarrow M_{2m} - M_m \leq 2$。</p>
+        </div>
+
+        <h3>§3.3 数值验证</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>count</th><th>E[M_{2m}−M_m]</th><th>P(diff≤2)</th><th>P(diff=3)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>196,567</td><td>2.498</td><td>49.8%</td><td>50.2%</td></tr>
+            <tr><td>1</td><td>448</td><td>1.982</td><td>100.0%</td><td>0%</td></tr>
+            <tr><td>2</td><td>24</td><td>1.000</td><td>100.0%</td><td>0%</td></tr>
+          </tbody>
+        </table>
+        <p><strong>$D_m \geq 1 \Rightarrow \text{diff} \leq 2$：100.00% 成立。</strong>这是引理 11 的直接推论。</p>
+        <div class="note-box">
+          <strong>注.</strong> $D_m = 0$ 时 diff 集中在 {2, 3}，近 50/50 分裂。引理 11 只给 diff ≤ 3。数据显示约 49.3% 取 diff=2，50.2% 取 diff=3，另有约 0.5% 取 diff=1（来自 $M_{2m}$ 找到了远优于 trivial 的分裂）。50/50 分裂的来源：$M_{2m}$ 是否找到了比 trivial split ($m \cdot 2$) 更好的分裂。
+        </div>
+
+        <h3>§3.4 数值观察：P(D_m = 0) 随 k 迅速趋于 1</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>k+1</th><th>P(D_m=0)</th><th>P(D_m=1)</th><th>P(D_m≥2)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>4</td><td>0.855</td><td>0.117</td><td>0.028</td></tr>
+            <tr><td>8</td><td>0.998</td><td>0.002</td><td>0.000</td></tr>
+            <tr><td>12</td><td>1.000</td><td>0.000</td><td>0.000</td></tr>
+          </tbody>
+        </table>
+        <p>在插入测度下，$P(D_m = 0)$ 随 $k$ 迅速趋于 1。高壳层的 cofactor 几乎全部处于 Lindley 队列空闲态。</p>
+
+        <h3>§3.5 Full Chain: D_m → diff → R_2</h3>
+        <p>下表中 $R_2 = [\rho_E(2m-1) - \rho_E(m-1)] - [M_{2m} - M_m]$（target-gap margin，§5.1 定义）。E[pred gap] = E[ρ_E(2m-1) − ρ_E(m-1)]。</p>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>count</th><th>E[diff]</th><th>E[pred gap]</th><th>E[R_2]</th><th>P(R_2 &gt; 0)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>196,567</td><td>2.498</td><td>2.777</td><td>0.279</td><td>~50%</td></tr>
+            <tr><td>1</td><td>448</td><td>1.982</td><td>3.897</td><td>1.915</td><td>~99%</td></tr>
+            <tr><td>2</td><td>24</td><td>1.000</td><td>3.917</td><td>2.917</td><td>100%</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>注.</strong> 原始 verification 脚本中的 $K_p^\Delta$ 列使用了 $G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$（Paper XXII 定义），其数值（0.235, 2.136, 3.000）与 $R_2 = \text{pred gap} - \text{diff}$（0.279, 1.915, 2.917）不同。差异来源见 §5.1 的三套记号约定。本文使用 $R_2$。
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§4. (L1) Cofactor 代表性的精确归约</h2>
+
+        <h3>§4.1 P⁻=2 层的 Bias = 截断漂移</h3>
+        <p>由 §2.2 的精确恒等式，对 $P^-(n) = 2$：</p>
+        <p>$$\beta_{k,2}(N) := E_{I_k(N)}[G_{\mathrm{spf}}(m) \mid P^- = 2] - \mu_k(N) = \mu_k(N/2) - \mu_k(N)$$</p>
+        <div class="thesis-box">
+          <p><strong>推论.</strong> 若 $\mu_k(N)$ 收敛（即 $\lim_{N \to \infty} \mu_k(N)$ 存在），则 $\beta_{k,2}(N) \to 0$。</p>
+          <p>若进一步假设 $A_q^\sharp$ 的收敛率 $\mu_k(N) = \mu_k^\infty + O(1/\ln N)$，则 $\beta_{k,2}(N) = O(1/\ln N)$。</p>
+        </div>
+        <div class="note-box">
+          <strong>注.</strong> 以上只控制了 $P^-(n) = 2$ 层的偏差，不是整体 cofactor bias。这一层不需要新的算术输入，但依赖 $\mu_k(N)$ 收敛性——后者是 $A_q^\sharp$ 的一部分，目前待形式化。
+        </div>
+
+        <h3>§4.2 P⁻≥3 的贡献</h3>
+        <p>对 $P^-(n) = p \geq 3$，cofactor 分布等于 $\{m \leq N/p : \Omega(m) = k, P^-(m) \geq p\}$——一个粗糙度截断的壳层。粗糙度条件 $P^-(m) \geq p$ 会引入偏差（Paper 23 数据：$P^- = 3$ 的 bias 为 0.5–1.3）。</p>
+        <p>但关键是：在 fixed-$k$, $N \to \infty$ 极限下，总偏差是 $\beta_k(N) = \sum_p \alpha_{k,p}(N) \cdot \beta_{k,p}(N)$。即使某些 $\beta_{k,p}$ 较大，只要 $\alpha_{k,p}$ 足够小且 $\beta_{k,p}$ 有界，总偏差仍可控。这是一个标准的加权平均问题——不需要每一项都小，只需要大项的权重小。</p>
+
+        <h3>§4.3 (L1) 的形式化前景</h3>
+        <p><strong>(L1a) $p = 2$ 层（已归约）：</strong>$\beta_{k,2}(N) = \mu_k(N/2) - \mu_k(N)$（精确恒等式）。若 $\mu_k(N)$ 收敛，则 $\beta_{k,2} \to 0$。</p>
+        <p><strong>(L1b) $p \geq 3$ 层（开放）：</strong>需要证明 $\sum_{p \geq 3} \alpha_{k,p}(N) \cdot |\beta_{k,p}(N)|$ 有界或 → 0。工具：Sathe-Selberg 均匀性 + Paper 17 的粗糙度稳定性框架。</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§5. Bridge 正性的归约</h2>
+
+        <h3>§5.1 Target-Gap Margin（新量，与系列历史记号的关系）</h3>
+        <p><strong>记号约定.</strong> 系列中出现过三个相关但不同的量：</p>
+        <p>$$K_p^{\mathrm{ins}}(m) := \rho_E(pm - 1) - \rho_E(m - 1) - \rho_E(p) - 2 \qquad \text{(Paper XVI insertion term)}$$</p>
+        <p>$$K_p^{\Delta}(n) := G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m) \qquad \text{(Paper XXII bridge term)}$$</p>
+        <p>$$R_p(m) := [\rho_E(pm - 1) - \rho_E(m - 1)] - [M_{pm} - M_m] \qquad \text{（本文 target-gap margin）}$$</p>
+        <p>三者的关系：$R_p = K_p^{\mathrm{ins}} + (\rho_E(p) + 2) - (M_{pm} - M_m)$。由引理 10，$M_{pm} - M_m \leq \rho_E(p) + 2$，因此 $R_p \geq K_p^{\mathrm{ins}}$。<strong>本文研究 $R_p$——它是 bridge 问题的一个 proxy，不与 bridge 正性等价。</strong></p>
+        <p>对 $P^- = 2$ 的主群体（$D_m = 0$）：$E[M_{2m} - M_m \mid D_m = 0] \approx 2.498$，因此：</p>
+        <p>$$E[R_2 \mid \Omega(m) = k,\, D_m = 0] \approx E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k,\, D_m = 0] - 2.498$$</p>
+
+        <h3>§5.2 归约为 predecessor gap 不等式</h3>
+        <p><strong>$R_2$ 在主群体上的均值正性等价于：</strong></p>
+        <p>$$E[\rho_E(2m-1) - \rho_E(m-1) \mid \Omega(m) = k,\, D_m = 0] > E[M_{2m} - M_m \mid \Omega(m) = k,\, D_m = 0]$$</p>
+        <p>数值上右侧约为 2.498，因此主群体均值阈值近似为 2.50。</p>
+        <div class="note-box">
+          <strong>注.</strong> 这是均值正性（$E[R_2] > 0$），不是点态正性。且条件包含 $D_m = 0$——随着 $P(D_m = 0) \to 1$（§3.4），主群体条件与整体条件在高 $k$ 下趋于等价。
+        </div>
+        <p><strong>已知工具：</strong>$\rho_E(n) \sim c^* \ln n$，数值上 $c^* \approx 3.79$。全局增长给出 $\rho_E(2m-1) - \rho_E(m-1) \approx c^* \ln 2 \approx 2.63$。但 $c^*$ 的已证下界只有 $3/\ln 3 \approx 2.73$（Paper XI），不足以证明 $c^* \ln 2 > 2.50$（需要 $c^* > 3.61$）。</p>
+
+        <h3>§5.3 形式化前景</h3>
+        <p><strong>(a)</strong> 证明 $c^* > 3.61$（改进 Paper XI 的下界 $c^* \geq 3/\ln 3 \approx 2.73$）。</p>
+        <p><strong>(b)</strong> 直接证明壳层条件 predecessor gap $> E[M_{2m} - M_m \mid D_m = 0]$（不经过全局 $c^*$）。</p>
+        <p><strong>(c)</strong> 利用 $D_m \geq 1$ 事件的巨大 $R_2$（$E[R_2 \mid D_m=1] \approx 1.9$）来补偿——但 $P(D_m \geq 1)$ 在高 $k$ 下极小。</p>
+        <div class="note-box">
+          <strong>判断：$R_2$ 的均值正性是当前证明链中最硬的开放技术问题。</strong>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§6. 证明格局更新</h2>
+        <p>Paper 24 后 $D(N) \to 1$ 证明链：</p>
+        <table class="struct-table">
+          <thead>
+            <tr><th>输入</th><th>状态</th><th>来源</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>B（Sathe-Selberg）</td><td>已知</td><td>经典</td></tr>
+            <tr><td>A'（$p_\infty(k) \to 1$）</td><td>条件性闭合</td><td>Paper 22</td></tr>
+            <tr><td>$A_q^\sharp$</td><td>数值强支持，待形式化</td><td>Paper 23</td></tr>
+            <tr><td>(L1) $p=2$ 层</td><td><strong>精确归约为截断漂移</strong>（若 μ_k 收敛则 → 0）</td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>(L1) $p \geq 3$ 层</td><td><strong>开放</strong>（需粗糙度稳定性）</td><td><strong>Paper 24 识别</strong></td></tr>
+            <tr><td>Trivial bound（引理 10）</td><td><strong>已证</strong></td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>Defect criterion（引理 11）</td><td><strong>已证</strong></td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>$R_2$ 均值正性（bridge 正性的必要条件）</td><td><strong>归约为 pred gap &gt; E[target gap | D_m=0]</strong></td><td><strong>Paper 24</strong></td></tr>
+            <tr><td>$c^*$ 下界</td><td><strong>开放</strong>（已证 ≥ 2.73，需 &gt; 3.61）</td><td>Paper XI</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>剩余最硬缺口：</strong>$R_2$ 的 predecessor gap 不等式（可由更强的 $c^*$ 下界或直接的壳层条件增长控制推进）以及 $p \geq 3$ 层的粗糙度偏差控制。
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>§7. 热力学接口</h2>
+        <table class="struct-table">
+          <thead>
+            <tr><th>ZFCρ</th><th>热力学</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>素数分层恒等式</td><td>能量收支按"通道"精确分解</td></tr>
+            <tr><td>$D_m = 0 \to \text{diff} \in \{2,3\}$</td><td>热平衡态的两能级结构</td></tr>
+            <tr><td>$D_m \geq 1 \to \text{diff} \leq 2$，$R_2$ 大</td><td>远离平衡的级联释放</td></tr>
+            <tr><td>$R_2 > 0$（数值）</td><td>每次维度提升释放正能量（待证）</td></tr>
+          </tbody>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;">
+
+        <h2>参考文献</h2>
+        <ol>
+          <li>Qin, H. (2025a). ZFCρ 论文 XI. DOI: <a href="https://doi.org/10.5281/zenodo.18975756" target="_blank" rel="noopener">10.5281/zenodo.18975756</a>。</li>
+          <li>Qin, H. (2025b). ZFCρ 论文 XV. DOI: <a href="https://doi.org/10.5281/zenodo.19007312" target="_blank" rel="noopener">10.5281/zenodo.19007312</a>。</li>
+          <li>Qin, H. (2025c). ZFCρ 论文 XVI. DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>。</li>
+          <li>Qin, H. (2025d). ZFCρ 论文 XVII. DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>。</li>
+          <li>Qin, H. (2025e). ZFCρ 论文 XXI. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>。</li>
+          <li>Qin, H. (2025f). ZFCρ 论文 XXII. DOI: <a href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">10.5281/zenodo.19039953</a>。</li>
+          <li>Qin, H. (2025g). ZFCρ 论文 XXIII. DOI: <a href="https://doi.org/10.5281/zenodo.19041689" target="_blank" rel="noopener">10.5281/zenodo.19041689</a>。</li>
+        </ol>
+
+        <div class="appendix-label">附录 A：AI 协作方法论</div>
+
+        <h3>A.1 Gemini 断言的验证</h3>
+        <p>Gemini 猜测 $D_m = 0 \Rightarrow M_{2m} - M_m = 3$（100%）。验证显示：只有 50% 成立。但 Gemini 的关键推导——$M_{2m} \leq M_m + 3 - D_m$——是完全正确的代数推论。错误在于将"上界"等同于"精确值"。这展示了 AI 协作中"代数推导可信 + 数值预测需验证"的典型模式。</p>
+
+        <h3>A.2 ChatGPT 的战略级纠正</h3>
+        <p>ChatGPT 指出 $P^- = 2$ 主导性在 fixed-$k$, $N \to \infty$ 极限下不成立（$\sigma_k(N/2)/\sigma_{k+1}(N) \asymp k/(2\ln\ln N) \to 0$）。这直接改变了 Paper 24 的证明架构——从"$P^- = 2$ 近似"转向"精确的 prime-stratified 分解"。同时给出了 cofactor bias $= \mu_k(N/2) - \mu_k(N)$ 的精确表达。</p>
+
+        <h3>A.3 c* 下界的现状</h3>
+        <p>Grok 声称 $c^* \geq 3.62$ 已知。ChatGPT 指出这不正确——Paper XI 的已证界只有 $c^* \geq 3/\ln 3 \approx 2.73$。这是 Grok Round 2+ 虚构数据的又一实例。<strong>信任校准：对 Grok 的具体数值断言必须交叉验证。</strong></p>
+
+        <div class="appendix-label">附录 B：完整验证数据</div>
+
+        <h3>B.1 D_m vs (M_{2m} − M_m) 列联表（k+1=8）</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>diff=1</th><th>diff=2</th><th>diff=3</th><th>diff≥4</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0.5%</td><td>49.3%</td><td>50.2%</td><td>0%</td></tr>
+            <tr><td>1</td><td>1.8%</td><td>98.2%</td><td>0%</td><td>0%</td></tr>
+            <tr><td>2</td><td>100%</td><td>0%</td><td>0%</td><td>0%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>B.2 Full chain D_m → R_2（k+1=8）</h3>
+        <table class="struct-table">
+          <thead>
+            <tr><th>D_m</th><th>count</th><th>E[diff]</th><th>E[pred gap]</th><th>E[R_2]=pred−diff</th><th>E[$K_p^\Delta$]（Paper XXII）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>196,567</td><td>2.498</td><td>2.777</td><td>0.279</td><td>0.235</td></tr>
+            <tr><td>1</td><td>448</td><td>1.982</td><td>3.897</td><td>1.915</td><td>2.136</td></tr>
+            <tr><td>2</td><td>24</td><td>1.000</td><td>3.917</td><td>2.917</td><td>3.000</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>注.</strong> $R_2$ 和 $K_p^\Delta$（Paper XXII 定义的 $G_{\mathrm{spf}}(n) - G_{\mathrm{spf}}(m)$）的数值差异来自 $B_\rho$ 项和 target gap 与 trivial bound 的差距。两者正相关但不相等。详见 §5.1 的三套记号约定。
+        </div>
+
+        <div class="series-nav">
+          <span><a href="zfcrho23.html">← 论文 XXIII：合数折扣</a></span>
+          <span style="float:right;">论文 XXV →</span>
+        </div>
+
+      </div><!-- .paper-body -->
+    </div><!-- #lang-zh -->
+
+  </main>
+
+  <footer>
+    <p>© 2025–2026 Han Qin (秦汉). Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  </footer>
+
+  <script>
+    function switchLang(lang, btn) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      btn.classList.add('active');
+      if (lang === 'zh') {
+        document.title = '插入测度的素数分层分解与 Defect-Gap 不等式 — ZFCρ 论文 XXIV — Han Qin';
+      } else {
+        document.title = 'Prime-Stratified Decomposition of the Insertion Measure and a Defect-Gap Inequality — ZFCρ Paper XXIV — Han Qin';
+      }
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+  </script>
+</body>
+</html>
