@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap — ZFCρ Paper XXVI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXVI: Zero-jump lemma (D_n>0 implies j(n)=0), additive decomposition pred gap = R+N₀−E, exact prime/composite decomposition ρ_E(N)=π(N)+S_comp(N). Primes are the sole unconditional source of positive growth; composite correction is negative in every sampled dyadic interval. Composite-drift correction theorem formulated as the precise target for closing (L3).">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, prime source term, composite correction, additive decomposition, predecessor gap, zero-jump lemma, Lindley recurrence, shell uniformity, interior drift, 素数源项, 前驱间隙, 加法分解, 合数修正">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho26.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho26.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19059834"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "prime source term", "composite correction",
+      "additive decomposition", "predecessor gap", "zero-jump lemma", "Lindley recurrence"
+    ],
+    "abstract": "Establishes three algebraic results: Lemma 1 (D_n>0 implies j(n)=0), Proposition 2 (pred gap = R+N₀−E), Proposition 4 (ρ_E(N) = π(N)+S_comp(N)). Primes are the sole unconditional source of positive growth. Composite correction is negative in every sampled dyadic interval. Composite-drift correction theorem formulated as the precise target for closing (L3). O(1/m) precision barrier identified as intrinsic.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho26.html">
+  <meta name="citation_title" content="Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19059834">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho26.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .proof-box p + p { margin-top: 0.5rem; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; background: #fff; border-color: #e0e0e0; border-bottom-color: #fff; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        displayMath: [['$$','$$'],['\\[','\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-L4M3nDNBvlGCzGj88T3eI9h9XMzH4RKwMa2SbDBFGbNz6R+r9yMPk3sSRFGJLYWmgCCFGm5NmJLm1lc5Fqag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+      document.getElementById('lang-' + lang).classList.add('active');
+      if (lang === 'en') {
+        document.title = 'Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap — ZFCρ Paper XXVI — Han Qin';
+      } else {
+        document.title = '素数源项、加法分解与前驱间隙的正性 — ZFCρ 论文 XXVI — 秦汉';
+      }
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <nav class="site-nav">
+    <a href="/" class="nav-home">Han Qin</a>
+    <span class="nav-sep">·</span>
+    <a href="/#zfc-rho">ZFCρ Series</a>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="paper-series">Self-as-an-End Theory Series &nbsp;·&nbsp; Mathematical Foundations</div>
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">English</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div class="lang-content active" id="lang-en">
+    <div class="paper-body">
+
+      <h1>Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap</h1>
+      <p class="paper-author">Han Qin &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></p>
+      <p class="paper-doi">
+        <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">
+          DOI: 10.5281/zenodo.19059834
+        </a>
+      </p>
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We study the structure of the predecessor gap in the Erdős additive complexity recurrence $\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$.</p>
+        <p>Three algebraic results are established. <strong>(Lemma 1)</strong> Positive defect implies zero jump: $D_n > 0$ implies $j(n) = 0$. <strong>(Proposition 2)</strong> Additive decomposition of the predecessor gap: $\text{pred gap} = R + N_0 - E$, where $R$ counts repair steps, $N_0$ counts free-zero steps, and $E$ measures excess from large jumps. <strong>(Proposition 4)</strong> Exact prime/composite decomposition: $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$, where the prime source term $\pi(N)$ is explicitly positive and the composite correction $S_{\text{comp}}$ is numerically negative at $N = 10^7$.</p>
+        <p>Systematic numerical findings are reported ($N = 10^7$, full DP). The composite correction is negative in every sampled dyadic interval; primes are the sole unconditional source of positive growth in $\rho_E$. Four step rates and the excess rate exhibit asymptotic uniformity across shells (variation &lt; 0.05 percentage points). In extra-clean windows free of boundary spillover, pred gap positivity is fully preserved ($E[\text{pred gap}] \approx 2.7$).</p>
+        <p>The remaining gap is precisely characterized: an analytic proof of $E[\text{pred gap}] > \tau_k$ reduces to a composite-drift correction theorem — the local asymptotics of the composite correction under shell conditioning. The $O(1/m)$ precision barrier is identified as an intrinsic difficulty of the problem.</p>
+        <p><strong>Keywords:</strong> additive complexity, predecessor gap, prime source term, composite correction, Lindley recurrence</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+
+      <h3>1.1 Background and scope</h3>
+      <p>The ZFCρ series establishes a general theorem: any formalization $C(U)$ necessarily produces a nonempty remainder $\rho$. Within this framework, $D(N) \to 1$ — the convergence of the Lindley defect density for the Erdős additive complexity function — is a central quantitative target.</p>
+      <p>The proof chain for $D(N) \to 1$ involves three conditional layers (L1), (L2), (L3). Layer (L3) — the requirement that $E[\text{pred gap}] > \tau_k$ under shell conditioning $\Omega(m) = k$, $D_m = 0$ — is the remaining open link in the dyadic/predecessor-gap branch. Paper XXV reduced (L3) to Cesàro control of the dyadic shell constant $c_\text{dyad}$ and the predecessor gap. The present paper does not claim to close (L3); rather, it builds the structural tools needed for that closure and gives a precise characterization of the remaining gap.</p>
+
+      <h3>1.2 Contributions</h3>
+      <p>Six results:</p>
+      <ul>
+        <li><strong>(A) Zero-jump lemma (§2).</strong> $D_n > 0$ implies $j(n) = 0$. This short algebraic fact significantly simplifies subsequent analysis.</li>
+        <li><strong>(B) Additive decomposition of the predecessor gap (§3).</strong> $\text{pred gap}(m) = R_I + N_{0,I} - E_I$, providing an exact accounting framework.</li>
+        <li><strong>(C) Prime source term and composite correction (§4).</strong> The exact algebraic identity $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$. The prime contribution is deterministic +1 at each prime; the composite correction is numerically negative globally and in every sampled dyadic interval.</li>
+        <li><strong>(D) Asymptotic uniformity under shell conditioning (§5).</strong> Four step rates and the excess rate vary by less than 0.05 percentage points across shells $\Omega = 5\text{–}12$, suggesting that a shell-uniform proof route may be feasible.</li>
+        <li><strong>(E) Interior drift adjudication (§6).</strong> In extra-clean windows ($D_{m-1} = 0$ and $D_{2m-1} = 0$), $E[\text{pred gap}]$ remains above 2.5. Boundary spillover modulates the signal by approximately $\pm 0.6$ but is not the dominant source of the positive mean.</li>
+        <li><strong>(F) Precise characterization of the remaining gap (§8).</strong> The $O(1/m)$ precision barrier is identified as intrinsic. A composite-drift correction theorem is formulated as the exact target for closing (L3).</li>
+      </ul>
+
+      <h3>1.3 Relation to existing literature</h3>
+      <p>The prime/composite increment separation has no precedent in the integer complexity literature. The closest external prototype is Arias de Reyna's prime-recursive surrogate $L(n)$: $L(1) = 1$, $L(p) = 1 + L(p-1)$ for primes, $L(ab) = L(a) + L(b)$. Arias proved $\|n\| \le L(n) \le (3/\log 2)\log n$, and explicitly noted the fundamental difference between the complete additivity of $L$ and the non-additivity of true complexity.</p>
+      <p>The contribution of the present paper may be viewed as the first systematic characterization of a similar separation for true complexity (which is non-additive). The transition from $L(n)$ to true complexity requires controlling the "good factorization" effect of non-additivity — precisely the composite-drift correction problem characterized in §8.</p>
+      <p>Known external obstacles include: non-additivity of true complexity ($\|mn\| < \|m\| + \|n\| + 2$ is possible); the $(3+\varepsilon)$-type lower bound for the global constant remains unproven (Cordwell et al. 2018); extrema are controlled by sparse smooth families (Altman 2012); probabilistic methods have known pitfalls (Shriver / Steinerberger).</p>
+
+      <h3>1.4 Notation</h3>
+      <p>We follow series conventions. $\rho_E(n)$: Erdős additive complexity, $\rho_E(1) = 0$. $M_n = \min_{ab=n,\, a,b\ge 2}(\rho_E(a)+\rho_E(b)+2)$; for primes $p$, $M_p = +\infty$ (no nontrivial factorization). Recurrence: $\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$. For composites: $G(n) = \rho_E(n-1)+1-M_n$, $j(n) = \max(G(n),0)$, $D_n = M_n - \rho_E(n)$. For primes, the recurrence degenerates to $\rho_E(p) = \rho_E(p-1)+1$; for uniformity of counting, we set $G(p) = j(p) = D_p = 0$ (see Convention 2.0). $\pi(x)$: prime counting function. $\Omega(n)$: number of prime factors of $n$ counted with multiplicity.</p>
+
+      <hr>
+
+      <h2>2. The Zero-Jump Lemma</h2>
+
+      <div class="note-box">
+        <strong>Convention 2.0.</strong> Set $\rho_E(1) = 0$. For primes $p$, define $M_p = +\infty$ (no nontrivial factorization $p = ab$ with $a, b \ge 2$). The recurrence is
+        $$\rho_E(n) = \min\!\bigl(\rho_E(n-1)+1,\; M_n\bigr), \quad M_n = \min_{\substack{ab=n\\a,b\ge 2}}\!\bigl(\rho_E(a)+\rho_E(b)+2\bigr).$$
+        At primes the multiplicative branch evaluates to $+\infty$ and the recurrence automatically reduces to the additive step: $\rho_E(p) = \rho_E(p-1) + 1$. For uniformity of the four-class partition in §3, we adopt $G(p) = j(p) = D_p = 0$; $M_p$ itself remains $+\infty$ throughout.
+      </div>
+
+      <div class="thesis-box">
+        <p><strong>Lemma 1 (Zero-jump lemma).</strong> If $D_n > 0$, then $j(n) = 0$.</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>Proof.</strong> $D_n > 0$ means $M_n > \rho_E(n)$. Since $\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$, having $M_n > \rho_E(n)$ forces $\rho_E(n) = \rho_E(n-1)+1$. Then $G(n) = \rho_E(n) - M_n = -D_n < 0$, so $j(n) = 0$. ∎</p>
+      </div>
+
+      <p><strong>Corollary 1.1.</strong> $j(n) > 0$ implies $D_n = 0$. Jumps occur only where the defect vanishes.</p>
+
+      <p><strong>Numerical verification.</strong> At $N = 10^7$ there are 1,279,213 maximal runs (excursions) of $D > 0$. In every excursion, $\Sigma j = 0$ exactly. The contrapositive holds without exception in the computed range.</p>
+
+      <h3>2.1 Structure of D &gt; 0 excursions</h3>
+      <p>Excursions are extremely short: 95.63% have length 1, 4.36% length 2, 0.01% length 3. By Lemma 1, each step within an excursion contributes $\rho$-increment +1 (pure additive repair).</p>
+
+      <hr>
+
+      <h2>3. Additive Decomposition of the Predecessor Gap</h2>
+
+      <h3>3.1 Step classification</h3>
+      <p>Every step $n \ge 2$ belongs to exactly one of four classes:</p>
+      <ul>
+        <li><strong>(R) Repair:</strong> $D_n > 0$. By Lemma 1, $j(n) = 0$, $\rho$-increment $= +1$.</li>
+        <li><strong>(N₀) Free zero:</strong> $D_n = 0$, $j(n) = 0$. For composite $n$: $M_n = \rho_E(n)$ and $M_n \ge \rho_E(n-1)+1$, so $\rho$-increment $= +1$. Primes placed in this class by convention; likewise contribute $\rho$-increment $= +1$.</li>
+        <li><strong>(J₁) Unit jump:</strong> $D_n = 0$, $j(n) = 1$. Here $M_n = \rho_E(n-1)$, $\rho$-increment $= 0$.</li>
+        <li><strong>(J≥2) Large jump:</strong> $D_n = 0$, $j(n) \ge 2$. Here $M_n \le \rho_E(n-1)-1$, $\rho$-increment $= 1 - j(n) \le -1$.</li>
+      </ul>
+      <p>The four classes form a complete partition: $R + N_0 + J_1 + J_{\ge 2} = N - 1$.</p>
+
+      <h3>3.2 Decomposition theorem</h3>
+      <p>For the interval $I = [m, 2m-1]$, define $R_I, N_{0,I}, J_{1,I}, J_{\ge 2,I}$ as counts of each class in $I$, and $E_I = \sum_{n \in I,\, D_n=0,\, j(n)\ge 2}(j(n)-1)$.</p>
+
+      <div class="thesis-box">
+        <p><strong>Proposition 2 (Additive decomposition).</strong> $\text{pred gap}(m) = \rho_E(2m-1) - \rho_E(m-1) = R_I + N_{0,I} - E_I$.</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>Proof.</strong> By Paper XXV, Proposition 12: $\text{pred gap}(m) = m - \sum_{n \in I} j(n)$. By Lemma 1, $j(n) = 0$ when $D_n > 0$, so $\Sigma j = J_1 + J_{\ge 2} + E$. Substituting: $\text{pred gap} = m - J_1 - J_{\ge 2} - E = R + N_0 - E$. ∎</p>
+      </div>
+
+      <h3>3.3 Global identity</h3>
+      <p>For the full range $[2, N]$:
+      $$\rho_E(N) = R_{[2,N]} + N_{0,[2,N]} - E_{[2,N]}.$$</p>
+      <div class="note-box">
+        <strong>Remark.</strong> Globally, $R + N_0 > E$ is equivalent to $\rho_E(N) > 0$ — a tautology. The nontrivial statement is the local version: $E[\text{pred gap}] > \tau_k \approx 2.50$ under shell conditioning, requiring $O(1/m)$ precision that the global identity cannot provide.
+      </div>
+
+      <h3>3.4 Numerical verification</h3>
+      <p>40,000 samples ($\Omega = 5\text{–}12$, 5,000 each): zero mismatches. Global check: $\Sigma j = 9{,}999{,}941 = (N-1) - \rho_E(N)$. ✓</p>
+
+      <hr>
+
+      <h2>4. Prime Source Term and Composite Correction</h2>
+
+      <h3>4.1 Deterministic increment at primes</h3>
+
+      <div class="thesis-box">
+        <p><strong>Proposition 3.</strong> For any prime $p$, $\rho_E(p) - \rho_E(p-1) = 1$.</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof.</strong> A prime $p$ admits no nontrivial factorization, so $M_p = +\infty$. The recurrence gives $\rho_E(p) = \min(\rho_E(p-1)+1, +\infty) = \rho_E(p-1)+1$. ∎</p>
+      </div>
+
+      <p>The contribution of primes to $\rho_E$ is a deterministic, irreversible ascent: +1, without exception, independent of the current value of $\rho_E$.</p>
+
+      <h3>4.2 Global prime/composite decomposition</h3>
+      <p>Decompose the telescoping sum by primality:</p>
+      $$\rho_E(N) = \sum_{n=2}^{N} \delta(n) = \underbrace{\sum_{\substack{p\le N\\p\text{ prime}}} 1}_{=\pi(N)} + \underbrace{\sum_{\substack{n=2\\n\text{ composite}}}^{N} \delta(n)}_{=:S_{\text{comp}}(N)}.$$
+
+      <div class="thesis-box">
+        <p><strong>Proposition 4 (Algebraic identity).</strong> $S_{\text{comp}}(N) = \rho_E(N) - \pi(N)$.</p>
+        <p>The composite mean increment is $\bar\delta_{\text{comp}}(N) = (\rho_E(N)-\pi(N))/(N-1-\pi(N))$.</p>
+      </div>
+
+      <div class="note-box">
+        <strong>Remark.</strong> This is an exact algebraic consequence of telescoping. It holds for every $N$ with no estimation involved.
+      </div>
+
+      <h3>4.2a Structural remark</h3>
+      <p>At each $n$, the recurrence stages a competition between two paths: the additive path (+1, universal, structure-independent) and the multiplicative path ($M_n$, depending on the factorization of $n$). Composites admit at least one nontrivial factorization, so $M_n$ is finite and the multiplicative path may win. Primes have no nontrivial factorization; $M_p = +\infty$ and the additive path wins unconditionally.</p>
+      <p>Consequently, the +1 increment at primes is unconditional and forced — independent of the current $\rho_E$ value and the local structure around $n$. In this sense, primes are the sole unconditional source of positive increment in the recurrence; the true asymptotic difficulty lies in understanding the precise behavior of the composite correction.</p>
+      <div class="note-box">
+        <strong>Remark (expanded in §9).</strong> Positive growth in the recurrence arises not from the presence of additional structure, but from the absence of multiplicative shortcuts — primes being the purest carrier of that absence. This connects directly to the remainder concept in the ZFCρ series; see §9.
+      </div>
+
+      <h3>4.3 Numerical observations</h3>
+      <p><strong>Observation 1.</strong> At $N = 10^7$: $\pi(N) = 664{,}579$; $\rho_E(N) = 58$; $S_{\text{comp}} = -664{,}521$. Near-perfect cancellation:</p>
+      $$58 = 664{,}579 + (-664{,}521).$$
+
+      <p><strong>Observation 2</strong> ($N$-dependence of composite rate). $\bar\delta_{\text{comp}}(N)$ tends to $0^-$:</p>
+      <table class="struct-table">
+        <thead><tr><th>$N$</th><th>$\bar\delta_{\text{comp}}$</th><th>$-1/\ln N$</th></tr></thead>
+        <tbody>
+          <tr><td>$10^4$</td><td>−0.137</td><td>−0.109</td></tr>
+          <tr><td>$10^5$</td><td>−0.106</td><td>−0.087</td></tr>
+          <tr><td>$10^6$</td><td>−0.085</td><td>−0.072</td></tr>
+          <tr><td>$10^7$</td><td>−0.071</td><td>−0.062</td></tr>
+        </tbody>
+      </table>
+      <p>Asymptotically, $\bar\delta_{\text{comp}} \approx -\pi(N)/(N-1) \approx -1/\ln N \to 0^-$, since $\rho_E(N) = O(\log N)$ is negligible relative to $\pi(N) \sim N/\ln N$.</p>
+
+      <h3>4.4 Dyadic prime/composite decomposition</h3>
+      <p>For $I = [m, 2m-1]$:
+      $$\text{pred gap}(m) = [\pi(2m-1)-\pi(m-1)] + S_{\text{comp}}(I).$$</p>
+      <p><strong>Observation 3.</strong> Across all tested shells ($\Omega = 5\text{–}12$) and window types: $P(S_{\text{comp}}(I) < 0) = 1.0000$.</p>
+
+      <h3>4.5 Relation to Arias de Reyna's L(n)</h3>
+      <p>Arias de Reyna's surrogate $L(n)$ is completely additive: $L(ab) = L(a) + L(b)$. In $L$ there is no "composite consumption" — multiplicative structure creates no complexity loss. True complexity differs by non-additivity: $\|mn\| < \|m\| + \|n\|$ is possible. These "good factorizations" are the microscopic source of composite consumption. The present paper provides the first quantitative separation of this non-additive effect via the exact identity of Proposition 4.</p>
+
+      <h3>4.6 Limitations</h3>
+      <p>Proposition 4 is a global identity. It confirms $S_{\text{comp}}(N) = \rho_E(N) - \pi(N)$ but does not give an independent estimate of $S_{\text{comp}}$ on local intervals or under shell conditioning. The shell-conditioned asymptotics of the composite drift is the central open problem of this series, deferred to subsequent work.</p>
+
+      <hr>
+
+      <h2>5. Asymptotic Uniformity Under Shell Conditioning</h2>
+
+      <h3>5.1 Step rates and excess rate</h3>
+      <p><strong>Observation 4 (Asymptotic uniformity).</strong> Under $\Omega(m) = k$, $D_m = 0$ ($N = 10^7$, 5,000 samples per shell):</p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$R/m$</th><th>$N_0/m$</th><th>$J_1/m$</th><th>$J_{\ge 2}/m$</th><th>$E/m$</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>0.13275</td><td>0.27459</td><td>0.30070</td><td>0.29196</td><td>0.40733</td></tr>
+          <tr><td>6</td><td>0.13279</td><td>0.27453</td><td>0.30072</td><td>0.29195</td><td>0.40732</td></tr>
+          <tr><td>7</td><td>0.13283</td><td>0.27449</td><td>0.30073</td><td>0.29195</td><td>0.40731</td></tr>
+          <tr><td>8</td><td>0.13277</td><td>0.27455</td><td>0.30073</td><td>0.29195</td><td>0.40731</td></tr>
+          <tr><td>9</td><td>0.13272</td><td>0.27461</td><td>0.30072</td><td>0.29195</td><td>0.40732</td></tr>
+          <tr><td>10</td><td>0.13255</td><td>0.27480</td><td>0.30070</td><td>0.29195</td><td>0.40734</td></tr>
+          <tr><td>11</td><td>0.13270</td><td>0.27461</td><td>0.30073</td><td>0.29195</td><td>0.40731</td></tr>
+          <tr><td>12</td><td>0.13289</td><td>0.27439</td><td>0.30076</td><td>0.29195</td><td>0.40728</td></tr>
+        </tbody>
+      </table>
+      <p>Maximum cross-shell span: $R/m \sim 0.00034$, $N_0/m \sim 0.00041$. $J_{\ge 2}/m$ is identical to displayed precision (0.29195).</p>
+
+      <h3>5.2 Prime density uniformity</h3>
+      <p>Prime density in $[m, 2m-1]$ also shows no shell dependence (deviations &lt; 0.7%, no systematic trend).</p>
+
+      <h3>5.3 Interpretation</h3>
+      <p>Under $D_m = 0$, the interval's internal statistics are insensitive to the factor structure of $m$. This is consistent with Paper XXI's Lindley isomorphism: $D_m = 0$ numerically behaves as a quasi-regeneration point, after which the system carries no significant memory of $m$'s factorization in its bulk statistics.</p>
+      <p>The bulk rate uniformity does not extend to pred gap itself, which still depends on $k$ (ranging from $\approx 2.84$ at $\Omega=5$ to $\approx 2.69$ at $\Omega=12$). This $O(0.15)$ variation suggests that shell dependence enters only through higher-order corrections.</p>
+      <div class="milestone-box">
+        <p><strong>Heuristic corollary.</strong> A proof of $E[\text{pred gap}] > \tau_k$ may not require separate shell-by-shell estimates. A single-argument proof may suffice.</p>
+      </div>
+
+      <hr>
+
+      <h2>6. Interior Drift and Boundary Effects</h2>
+
+      <h3>6.1 Window classification</h3>
+      <p>Under $D_m = 0$, $\Omega(m) = k$:</p>
+      <ul>
+        <li><strong>Clean:</strong> $D_{2m-1} = 0$ (no right spillover)</li>
+        <li><strong>Extra-clean:</strong> $D_{m-1} = 0$ and $D_{2m-1} = 0$ (no spillover on either side)</li>
+        <li><strong>Dirty:</strong> $D_{2m-1} > 0$ (right boundary in excursion)</li>
+      </ul>
+
+      <h3>6.2 Adjudication</h3>
+      <p><strong>Observation 5.</strong> Extra-clean windows retain full signal:</p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$E[\text{pred gap}]$</th><th>$P(\text{pg} > 2.50)$</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>2.79</td><td>62.6%</td></tr>
+          <tr><td>8</td><td>2.71</td><td>58.8%</td></tr>
+          <tr><td>10</td><td>2.66</td><td>57.4%</td></tr>
+          <tr><td>12</td><td>2.65</td><td>56.4%</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>Conclusion.</strong> Interior drift is the primary source of pred gap positivity.</p>
+      </div>
+
+      <h3>6.3 Boundary modulation</h3>
+      <p><strong>Observation 6</strong> ($\Omega = 8$):</p>
+      <table class="struct-table">
+        <thead><tr><th>Type</th><th>Condition</th><th>Fraction</th><th>$E[\text{pg}]$</th></tr></thead>
+        <tbody>
+          <tr><td>A (fully clean)</td><td>$D_{m-1}=0,\; D_{2m-1}=0$</td><td>70.9%</td><td>2.70</td></tr>
+          <tr><td>B (left spillover)</td><td>$D_{m-1}>0,\; D_{2m-1}=0$</td><td>13.8%</td><td>2.44</td></tr>
+          <tr><td>C (right spillover)</td><td>$D_{m-1}=0,\; D_{2m-1}>0$</td><td>14.1%</td><td>3.30</td></tr>
+          <tr><td>D (both)</td><td>$D_{m-1}>0,\; D_{2m-1}>0$</td><td>1.2%</td><td>3.28</td></tr>
+        </tbody>
+      </table>
+      <p>Right spillover raises pred gap by $\approx +0.6$; left spillover lowers it by $\approx -0.25$. The baseline (Type A) already exceeds $\tau_k \approx 2.50$.</p>
+
+      <hr>
+
+      <h2>7. Auxiliary Structures</h2>
+
+      <h3>7.1 Alpha decay law</h3>
+      <p><strong>Observation 7.</strong> $E[j \mid D=0, \Omega=k]$ increases roughly linearly with $k$ (from 0.794 at $k=3$ to 3.605 at $k=12$).</p>
+      <p><strong>Observation 8.</strong> The slope $\alpha(N)$ decays as $1/\ln\ln N$: $\alpha \cdot \ln\ln N \approx 0.87$ across five orders of magnitude ($N = 10^5$ to $10^7$, variation &lt; 2%).</p>
+      <table class="struct-table">
+        <thead><tr><th>$N$</th><th>$\alpha$</th><th>$\alpha \cdot \ln\ln N$</th></tr></thead>
+        <tbody>
+          <tr><td>$10^5$</td><td>0.357</td><td>0.871</td></tr>
+          <tr><td>$3\times 10^5$</td><td>0.341</td><td>0.864</td></tr>
+          <tr><td>$10^6$</td><td>0.330</td><td>0.865</td></tr>
+          <tr><td>$3\times 10^6$</td><td>0.322</td><td>0.870</td></tr>
+          <tr><td>$10^7$</td><td>0.316</td><td>0.878</td></tr>
+        </tbody>
+      </table>
+
+      <h3>7.2 Negative correlation compression</h3>
+      <p><strong>Observation 9.</strong> $\text{corr}(q_I, \bar j_{0,I})$ ranges from $-0.998$ ($\Omega=5$) to $-0.99999$ ($\Omega=12$). The product $q \cdot \bar j_0$ has its fluctuation compressed by factors of 15 to 150 relative to the marginals.</p>
+
+      <h3>7.3 Direct measurement of c_local</h3>
+      $$c_{\text{local}}(k;N) = E[\text{pred gap} \mid \Omega(m)=k, D_m=0] \;/\; \ln 2.$$
+      <p><strong>Observation 10.</strong> $c_{\text{local}} > 3.6$ for all shells ($\Omega = 3\text{–}12$), with margin over $\tau_k/\ln 2 \approx 3.607$ ranging from $+0.26$ to $+0.49$.</p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$E[\text{pred gap}]$</th><th>$c_{\text{local}}$</th><th>Margin over 3.607</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>2.76</td><td>3.98</td><td>+0.38</td></tr>
+          <tr><td>5</td><td>2.84</td><td>4.09</td><td>+0.49</td></tr>
+          <tr><td>7</td><td>2.78</td><td>4.01</td><td>+0.40</td></tr>
+          <tr><td>8</td><td>2.76</td><td>3.98</td><td>+0.37</td></tr>
+          <tr><td>9</td><td>2.73</td><td>3.93</td><td>+0.33</td></tr>
+          <tr><td>10</td><td>2.73</td><td>3.93</td><td>+0.33</td></tr>
+          <tr><td>11</td><td>2.68</td><td>3.87</td><td>+0.26</td></tr>
+          <tr><td>12</td><td>2.69</td><td>3.89</td><td>+0.28</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box">
+        <strong>Remark.</strong> $c_{\text{local}}$ is a Cesàro average under shell conditioning, strictly weaker than the pointwise $\liminf$ $c^* = \liminf \rho_E(n)/\ln n$. The latter is depressed by sparse smooth-number extrema.
+      </div>
+
+      <hr>
+
+      <h2>8. Precise Characterization of the Remaining Gap</h2>
+
+      <h3>8.1 Six-digit near-perfect cancellation</h3>
+      <p>From full-precision statistics:
+      $$(R+N_0)/m \approx 0.40732, \quad E/m \approx 0.40731.$$
+      The difference, $\text{pred gap}/m \approx 2.8/m$, is $O(10^{-6})$ for $m \sim 10^6$. This precision requirement is an intrinsic feature of the problem, not a deficiency of method.</p>
+
+      <h3>8.2 The O(1/m) barrier</h3>
+      <p>Every proof strategy explored converges to the same requirement: local precise asymptotics of the composite correction term.</p>
+      <table class="struct-table">
+        <thead><tr><th>Strategy</th><th>Proof object</th><th>Barrier</th></tr></thead>
+        <tbody>
+          <tr><td>Shell budget</td><td>$\sum_k w_k \bar j_{0,k} < 1/q$</td><td>Global version is tautological</td></tr>
+          <tr><td>Product concentration</td><td>$q \cdot \bar j_0 < 1-\tau/m$</td><td>Marginal fluctuation $\gg$ gap</td></tr>
+          <tr><td>Additive decomposition</td><td>$R+N_0-E > \tau_k$</td><td>Three $O(m)$ quantities, $O(1)$ difference</td></tr>
+          <tr><td>$\rho_E$ growth rate</td><td>$\text{pred gap}(m) > \tau_k$</td><td>$c_{\text{local}} \approx 3.9$; gap from shell conditioning</td></tr>
+          <tr><td>Prime decomposition</td><td>$\pi(I)+S_{\text{comp}}(I) > \tau_k$</td><td>$S_{\text{comp}} \approx -\pi(I)+2.8$, tautological</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 Composite-drift correction theorem</h3>
+      <div class="thesis-box">
+        <p><strong>Open Problem.</strong> For all sufficiently large $N$ and $k$ in the range specified by Paper XXV:
+        $$E\!\left[\sum_{\substack{n\in[m,2m-1]\\n\text{ composite}}}\!\!\delta(n)\;\middle|\;\Omega(m)=k,\;D_m=0\right] > \tau_k - E[\pi(2m-1)-\pi(m-1)\mid\text{same}].$$</p>
+      </div>
+
+      <h3>8.4 Known external obstacles</h3>
+      <p>(i) Non-additivity of true complexity. (ii) The $(3+\varepsilon)$ lower bound is unproven (Cordwell et al. 2018). (iii) Extrema controlled by sparse smooth families (Altman 2012). (iv) Known flaws in probabilistic approaches (Shriver / Steinerberger).</p>
+
+      <h3>8.5 Tools provided by this paper</h3>
+      <p>(a) Lemma 1 restricts jumps to $D=0$ positions. (b) The additive decomposition $R+N_0-E$ gives an exact accounting framework. (c) The prime/composite decomposition reduces the problem to the composite correction. (d) Shell uniformity suggests a single-argument proof may suffice. (e) Interior drift adjudication focuses attention on the interval interior. (f) $c_{\text{local}} > 3.6$ provides numerical safety margin of $O(0.1)$.</p>
+
+      <hr>
+
+      <h2>9. Discussion</h2>
+
+      <h3>9.1 The remainder and incompressibility</h3>
+      <p>The prime/composite decomposition reveals a fundamental picture of complexity growth. The multiplicative path, via factorization, borrows known complexities of smaller numbers — a compression mechanism that bypasses the step-by-step +1 accumulation. Composites, having at least one nontrivial factorization, can access multiplicative compression. The data shows this compression is extraordinarily efficient: the aggregate composite contribution is negative (§4.3), meaning composites absorb more complexity than they accumulate through additive steps. Multiplicative structure, as a whole, is a net absorber of complexity.</p>
+      <p>Primes have no nontrivial factorization. Multiplicative compression is unavailable to them. They are the only positions in the system that must be reached entirely through the additive path — blind spots of the compression mechanism. The +1 increment at primes is unconditional, forced, deterministic.</p>
+      <div class="milestone-box">
+        <p><strong>In this sense, positive growth in the recurrence arises not from the presence of additional structure, but from the absence of multiplicative shortcuts.</strong> Primes are the purest carriers of that absence. The logarithmic growth of $\rho_E(N)$ measures the cumulative effect of these incompressible positions across $[2, N]$.</p>
+      </div>
+      <p>This resonates directly with the central thesis of the ZFCρ series: formalization (here, multiplicative decomposition) is a compression tool; the remainder is what survives compression. Primes, as positions unreachable by multiplicative compression, are the microscopic carriers of that remainder.</p>
+
+      <h3>9.2 The heat sink analogy</h3>
+      <p>The six-digit cancellation of §8.1 admits a thermodynamic reading. Multiplicative structure acts as a highly efficient heat sink, absorbing nearly all complexity growth. Primes are the heat sink's blind spots: at each prime, the system is forced to accept an irreversible +1 increment. The growth of $\rho_E$ is the residual heat that the sink fails to cover.</p>
+      <p>The sink is highly efficient ($|S_{\text{comp}}| \sim \pi(N) \sim N/\ln N$) but imperfect (residual $= \rho_E(N) = O(\log N)$). The predecessor gap $\approx 2.8$ is this residual projected onto the dyadic scale.</p>
+
+      <h3>9.3 Open problems</h3>
+      <ol>
+        <li>The composite-drift correction theorem (§8.3).</li>
+        <li>Local asymptotics of $S_{\text{comp}}(I)$ under shell and $D_m = 0$ conditioning.</li>
+        <li>Analytic proof of shell uniformity (§5). Can it be derived from the Lindley regeneration structure of Paper XXI?</li>
+        <li>Analytic form of the alpha decay law (§7.1). Can $\alpha \cdot \ln\ln N \approx 0.87$ be derived from Paper XXIII's 80/3 law or Sathe-Selberg weights?</li>
+        <li>If $\lim \rho_E(N)/\ln N$ exists (denote it $c_{\text{main}}$), what is its precise value and relation to PNT? Note $c_{\text{main}}$ (if it exists) differs from $c^* = \liminf \rho_E(n)/\ln n$.</li>
+      </ol>
+
+      <h3>9.4 Acknowledgments</h3>
+      <p>The data analysis and structural exploration in this paper benefited from multi-model AI collaboration (Claude, ChatGPT, Gemini, Grok). ChatGPT proposed the additive decomposition $R + N_0 - E$ as the proof object (§3) and the composite-drift correction as the precise target (§8.3). Gemini identified the importance of the alpha decay law and the non-constancy of the composite consumption rate ($\approx -1/\ln N$). Grok's sustained review ensured consistency with the preceding 25 papers. Claude wrote all numerical computation scripts and drafted working notes v1–v4. The final text was completed independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <hr>
+
+      <h2>10. Data Sources and Reproducibility</h2>
+      <p>All numerical results are based on full DP computations ($N = 10^7$, SPF sieve + multiplicative sieve, $O(N \log N)$). Scripts will be released with the paper.</p>
+      <table class="struct-table">
+        <thead><tr><th>Script</th><th>Measurement</th><th>Key finding</th><th>§</th></tr></thead>
+        <tbody>
+          <tr><td>regen_blocks_v3.py</td><td>D=0 block structure</td><td>D=0 density 86.7%, 85% blocks length 1</td><td>§2.1</td></tr>
+          <tr><td>excursion_analysis.py</td><td>D&gt;0 excursions</td><td>95.6% length 1, Σj=0 in all</td><td>§2.1</td></tr>
+          <tr><td>paper26_data.py</td><td>j|D=0 distribution</td><td>E[j|D=0] differs from 1/q by 6.7×10⁻⁶</td><td>§7.1</td></tr>
+          <tr><td>review_response_data.py</td><td>α decay, q·j̄₀ joint</td><td>α·lnlnN ≈ 0.87; corr = −0.999</td><td>§7</td></tr>
+          <tr><td>additive_decomposition.py</td><td>R+N₀−E decomposition</td><td>40K samples, zero mismatch; shell-uniform rates</td><td>§3, §5</td></tr>
+          <tr><td>rate_scaling.py</td><td>Rate N-trends</td><td>margin = ρ_E(N)/(N−1); E/J≥2 declining</td><td>§4.3, §8.1</td></tr>
+          <tr><td>prime_density.py</td><td>Prime density, E[ρ inc|comp]</td><td>E[ρ inc|comp] = −0.071; P(S_comp&lt;0)=1</td><td>§4, §5.2</td></tr>
+          <tr><td>interior_vs_boundary.py</td><td>Clean vs dirty windows</td><td>Clean pg ≈ 2.7; boundary ±0.6 modulation</td><td>§6</td></tr>
+        </tbody>
+      </table>
+      <p>All sanity checks pass: $\rho_E(100)=15$, $\rho_E(10^3)=24$, $\rho_E(10^4)=32$, $\rho_E(10^5)=41$, $\rho_E(10^6)=49$, $\rho_E(10^7)=58$. $\Sigma j = (N-1) - \rho_E(N)$ holds exactly.</p>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXV. H. Qin. DOIs: Paper I (<a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>), Paper XXI (<a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>), Paper XXII (<a href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">10.5281/zenodo.19039953</a>), Paper XXIII (<a href="https://doi.org/10.5281/zenodo.19041689" target="_blank" rel="noopener">10.5281/zenodo.19041689</a>), Paper XXIV (<a href="https://doi.org/10.5281/zenodo.19044696" target="_blank" rel="noopener">10.5281/zenodo.19044696</a>), Paper XXV (<a href="https://doi.org/10.5281/zenodo.19054726" target="_blank" rel="noopener">10.5281/zenodo.19054726</a>).</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Unpublished manuscript / preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner. On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34, 2018.</li>
+        <li>H. Altman. Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University, 2014.</li>
+        <li>C. E. Shriver. On integer complexity and the Markov chain approach. Preprint.</li>
+        <li>P. Erdős. Some remarks on number theory. <em>Riveon Lematematika</em>, 9:45–48, 1953.</li>
+        <li>R. K. Guy. Every number is expressible as the sum of how many polygonal numbers? <em>Amer. Math. Monthly</em>, 101:169–172, 1994.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ Series &nbsp;·&nbsp;</span>
+        <a href="zfcrho25.html">← Paper XXV: Dyadic Shell Constant</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Paper XXVII →
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div class="lang-content" id="lang-zh">
+    <div class="paper-body">
+
+      <h1>ZFCρ 论文 XXVI：素数源项、加法分解与前驱间隙的正性</h1>
+      <p class="paper-author">Han Qin（秦汉） &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></p>
+      <p class="paper-doi">
+        <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">
+          DOI: 10.5281/zenodo.19059834
+        </a>
+      </p>
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们研究 Erdős 加法复杂度递推 $\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$ 中前驱间隙（predecessor gap）的结构。</p>
+        <p>建立三项代数结果：<strong>（引理 1）</strong>正 defect 蕴含零跳跃（$D_n > 0 \Rightarrow j(n) = 0$）；<strong>（命题 2）</strong>前驱间隙的加法分解（$\text{pred gap} = R + N_0 - E$，其中 $R$ 为 repair 步数，$N_0$ 为免费零步数，$E$ 为大跳跃的超额量）；<strong>（命题 4）</strong>$\rho_E(N)$ 的精确 prime/composite 分解（$\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$），其中素数源项 $\pi(N)$ 为显式正贡献，合数修正项 $S_{\text{comp}}$ 在 $N = 10^7$ 下为负。</p>
+        <p>报告系统性数值发现（$N = 10^7$ 完整 DP）：合数修正项在每个被采样的 dyadic 区间内均为负；素数是 $\rho_E$ 正增长的唯一无条件来源；四类步率及 excess rate 在壳层间呈渐近均匀性（变化 &lt; 0.05 个百分点）；在无 spillover 的 extra-clean 窗口中 pred gap 正性完整保留（$E[\text{pred gap}] \approx 2.7$）。</p>
+        <p>精确刻画剩余缺口：$E[\text{pred gap}] > \tau_k$ 的解析证明归约为 composite-drift correction theorem——合数修正项在壳层条件下的局部精确渐近。识别 $O(1/m)$ 精度障碍为问题的内在难度。</p>
+        <p><strong>关键词：</strong>加法复杂度，前驱间隙，素数源项，合数修正，Lindley 递推</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 系列背景与本文定位</h3>
+      <p>ZFCρ 系列建立了一个一般性定理：任何形式化 $C(U)$ 必然产生非空余项 $\rho$。在该框架下，$D(N) \to 1$（Erdős 加法复杂度的 Lindley defect 密度趋于 1）是系列的核心定量目标之一。</p>
+      <p>$D(N) \to 1$ 的证明链包含三个条件层（L1）（L2）（L3），其中（L3）——壳层条件 $\Omega(m)=k$，$D_m=0$ 下的 pred gap 期望超过阈值 $\tau_k$——是 dyadic / predecessor-gap 分支上的剩余开放环节。Paper XXV 将（L3）归约为 $c_\text{dyad}$ 与 pred gap 的 Cesàro 控制。本文不声称闭合（L3），而是建立所需的结构性工具，并精确刻画剩余缺口。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <ul>
+        <li><strong>(A) 零跳跃引理（§2）.</strong> $D_n > 0$ 蕴含 $j(n) = 0$。跳跃只发生在 defect 为零处。</li>
+        <li><strong>(B) 前驱间隙的加法分解（§3）.</strong> $\text{pred gap}(m) = R_I + N_{0,I} - E_I$，给出精确会计框架。</li>
+        <li><strong>(C) 素数源项与合数修正（§4）.</strong> 精确代数恒等式 $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$。素数增量是确定性 +1；合数修正在 $N=10^7$ 下全局为负，且在每一个被采样 dyadic 区间内均为负。</li>
+        <li><strong>(D) 壳层条件下的渐近均匀性（§5）.</strong> 四类步率及 excess rate 在壳层 $\Omega=5\text{~}12$ 间最大跨度 &lt; 0.05 个百分点。</li>
+        <li><strong>(E) Interior drift 裁判（§6）.</strong> 在 extra-clean 窗口（$D_{m-1}=0$ 且 $D_{2m-1}=0$）中，$E[\text{pred gap}]$ 仍 &gt; 2.5。边界 spillover 调制幅度约 $\pm 0.6$，但不是正均值的主导来源。</li>
+        <li><strong>(F) 剩余缺口的精确刻画（§8）.</strong> 识别 $O(1/m)$ 精度障碍为内在难度。提出 composite-drift correction theorem 作为闭合（L3）的精确目标。</li>
+      </ul>
+
+      <h3>1.3 与已有文献的关系</h3>
+      <p>prime/composite 增量分离在整数复杂度文献中尚无先例。最接近的外部原型是 Arias de Reyna 的 prime-recursive surrogate $L(n)$：$L(1)=1$，对素数 $L(p)=1+L(p-1)$，对乘法完全加性 $L(ab)=L(a)+L(b)$。Arias 证明 $\|n\| \le L(n) \le (3/\log 2)\log n$，并明确指出 $L$ 的完全加性与真复杂度非加性之间的根本差异。本文可视为对真复杂度（非加性）类似分离的首次系统刻画。</p>
+      <p>已知主要外部障碍包括：真复杂度的非加性（$\|mn\| &lt; \|m\|+\|n\|+2$ 可能成立）；全局下界常数的 $(3+\varepsilon)$ 型估计未达成（Cordwell et al. 2018）；极值受稀疏 smooth 家族控制（Altman 2012）；概率化方法的已知缺陷（Shriver / Steinerberger）。</p>
+
+      <h3>1.4 记号</h3>
+      <p>沿用系列标准记号。$\rho_E(n)$：Erdős 加法复杂度，$\rho_E(1) = 0$。$M_n = \min_{ab=n,\, a,b\ge 2}(\rho_E(a)+\rho_E(b)+2)$；对素数 $p$，$M_p = +\infty$。递推：$\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$。对合数：$G(n) = \rho_E(n-1)+1-M_n$，$j(n) = \max(G(n),0)$，$D_n = M_n - \rho_E(n)$。对素数约定 $G(p) = j(p) = D_p = 0$（见约定 2.0）。$\pi(x)$：不超过 $x$ 的素数个数。$\Omega(n)$：$n$ 的素因子个数（计重数）。</p>
+
+      <h3>1.5 全文结构</h3>
+      <p>§2 零跳跃引理。§3 加法分解。§4 素数源项与合数修正。§5 壳层均匀性。§6 Interior drift 裁判。§7 辅助结构（$\alpha$ 衰减、负相关、$c_{\text{local}}$）。§8 剩余缺口。§9 讨论。§10 数据来源与可复现性。</p>
+
+      <hr>
+
+      <h2>§2 零跳跃引理</h2>
+
+      <div class="note-box">
+        <strong>约定 2.0.</strong> 取 $\rho_E(1) = 0$。对素数 $p$，因 $p$ 没有非平凡因子分解 $p = ab$ ($a,b \ge 2$)，定义 $M_p = +\infty$。递推为
+        $$\rho_E(n) = \min\bigl(\rho_E(n-1)+1,\; M_n\bigr), \quad M_n = \min_{\substack{ab=n \\ a,b \geq 2}} \bigl(\rho_E(a)+\rho_E(b)+2\bigr).$$
+        对素数，min 的第二支取 $+\infty$，递推自动退化为 additive step：$\rho_E(p) = \rho_E(p-1)+1$。为统一后续计数，对素数单独约定 $G(p) = 0$，$j(p) = 0$，$D_p = 0$。$M_p$ 本身始终保持 $+\infty$ 不变。
+      </div>
+
+      <div class="thesis-box">
+        <p><strong>引理 1（零跳跃引理）.</strong> 若 $D_n > 0$，则 $j(n) = 0$。</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>证明.</strong> $D_n > 0$ 即 $M_n > \rho_E(n)$。由递推，若 $M_n > \rho_E(n)$，则必有 $\rho_E(n) = \rho_E(n-1)+1$。于是
+        $$G(n) = \rho_E(n-1)+1 - M_n = \rho_E(n) - M_n = -D_n < 0,$$
+        从而 $j(n) = \max(G(n), 0) = 0$。∎</p>
+      </div>
+
+      <p><strong>推论 1.1（逆否）.</strong> $j(n) > 0$ 蕴含 $D_n = 0$。跳跃只发生在 defect 为零的位置。</p>
+
+      <p><strong>数值验证.</strong> 在 $N = 10^7$ 下，共有 1,279,213 个 $D > 0$ 的 maximal run（excursion）。每个 excursion 内的 $j$ 值之和均精确为零。</p>
+
+      <h3>2.1 D &gt; 0 excursion 的结构</h3>
+      <table class="struct-table">
+        <thead><tr><th>长度</th><th>占比</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>95.63%</td></tr>
+          <tr><td>2</td><td>4.36%</td></tr>
+          <tr><td>3</td><td>0.01%</td></tr>
+          <tr><td>≥4</td><td>&lt;0.01%</td></tr>
+        </tbody>
+      </table>
+      <p>由引理 1，excursion 内每步 $j = 0$，$\rho_E$ 增量 $= +1$。一个长度为 $L$ 的 excursion 贡献 $L$ 单位的纯 additive 修复——绝大多数情况下一步修复完成。</p>
+
+      <hr>
+
+      <h2>§3 前驱间隙的加法分解</h2>
+
+      <h3>3.1 步类型分类</h3>
+      <p>对 $n \ge 2$，每步 $n$ 恰好属于四类之一：</p>
+      <ul>
+        <li><strong>(R) Repair 步.</strong> $D_n > 0$。由引理 1，$j(n)=0$，$\rho_E(n)=\rho_E(n-1)+1$。</li>
+        <li><strong>(N₀) 免费零步.</strong> $D_n=0$ 且 $j(n)=0$。合数：$M_n = \rho_E(n) \ge \rho_E(n-1)+1$，增量 $+1$。素数通过约定并入此类，同样贡献 $+1$。</li>
+        <li><strong>(J₁) 单位跳跃步.</strong> $D_n=0$ 且 $j(n)=1$。$M_n = \rho_E(n-1)$，增量 $0$。</li>
+        <li><strong>(J≥2) 大跳跃步.</strong> $D_n=0$ 且 $j(n) \ge 2$。$M_n \le \rho_E(n-1)-1$，增量 $1-j(n) \le -1$。</li>
+      </ul>
+      <p>四类步形成完全划分：$R + N_0 + J_1 + J_{\ge 2} = N-1$。</p>
+
+      <h3>3.2 分解定理</h3>
+      <p>对区间 $I = [m, 2m-1]$，定义各类计数及超额量 $E_I = \sum_{n \in I,\, D_n=0,\, j(n)\ge 2}(j(n)-1)$。</p>
+
+      <div class="thesis-box">
+        <p><strong>命题 2（加法分解）.</strong> $\text{pred gap}(m) = \rho_E(2m-1) - \rho_E(m-1) = R_I + N_{0,I} - E_I$。</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>证明.</strong> 由 Paper XXV 命题 12（dyadic telescoping）：$\text{pred gap}(m) = m - \sum_{n \in I} j(n)$。由引理 1，$D_n > 0$ 时 $j(n) = 0$，所以
+        $$\sum_{n \in I} j(n) = J_{1,I} + J_{\ge 2,I} + E_I.$$
+        代入：$\text{pred gap} = m - J_1 - J_{\ge 2} - E = R + N_0 - E$。∎</p>
+      </div>
+
+      <h3>3.3 全局恒等式</h3>
+      <p>对全区间 $[2, N]$：$\rho_E(N) = R_{[2,N]} + N_{0,[2,N]} - E_{[2,N]}$。</p>
+      <div class="note-box">
+        <strong>注记.</strong> 全局版说的是 $\rho_E(N) > 0$ 等价于 $R + N_0 > E$，是同义反复。非平凡命题是局部版：在壳层条件 $\Omega(m)=k$，$D_m=0$ 下，$E[\text{pred gap}] > \tau_k \approx 2.50$——这要求 $O(1/m)$ 精度。
+      </div>
+
+      <h3>3.4 数值验证</h3>
+      <table class="struct-table">
+        <thead><tr><th>项目</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>样本数</td><td>40,000（$\Omega = 5\text{~}12$ 各 5,000）</td></tr>
+          <tr><td>Mismatch 数</td><td>0</td></tr>
+          <tr><td>$\Sigma j$ 全局验证</td><td>$\Sigma j = 9{,}999{,}941 = (N-1) - \rho_E(N)$ ✓</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>§4 素数源项与合数修正</h2>
+
+      <h3>4.1 素数位置的确定性增量</h3>
+
+      <div class="thesis-box">
+        <p><strong>命题 3.</strong> 若 $p$ 为素数，则 $\rho_E(p) - \rho_E(p-1) = 1$。</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明.</strong> 素数 $p$ 没有非平凡因子分解，故 $M_p = +\infty$。递推 $\rho_E(p) = \min(\rho_E(p-1)+1, +\infty) = \rho_E(p-1)+1$。∎</p>
+      </div>
+      <p>素数位置对 $\rho_E$ 的贡献是<strong>确定性的不可逆上升</strong>：+1，无例外，不依赖 $\rho_E$ 的当前值。</p>
+
+      <h3>4.2 全局 prime/composite 分解</h3>
+      $$\rho_E(N) = \sum_{n=2}^{N} \delta(n) = \underbrace{\sum_{\substack{n=2 \\ n \text{ prime}}}^{N} 1}_{= \pi(N)} \;+\; \underbrace{\sum_{\substack{n=2 \\ n \text{ composite}}}^{N} \delta(n)}_{=: S_{\text{comp}}(N)}.$$
+
+      <div class="thesis-box">
+        <p><strong>命题 4（全局 prime/composite 分解——代数恒等式）.</strong></p>
+        <p>$$S_{\text{comp}}(N) = \rho_E(N) - \pi(N), \quad \bar{\delta}_{\text{comp}}(N) = \frac{\rho_E(N) - \pi(N)}{N - 1 - \pi(N)}.$$</p>
+      </div>
+
+      <div class="note-box">
+        <strong>注记.</strong> 命题 4 是全局 telescoping 的代数推论，不涉及任何估计或近似，对任何 $N$ 精确成立。
+      </div>
+
+      <h3>4.2a 结构性备注</h3>
+      <p>在每个 $n$ 面临两条路径：additive 路径（+1，普适的）和 multiplicative 路径（$M_n$，依赖 $n$ 的因子分解）。合数拥有至少一种非平凡分解，$M_n$ 有限，multiplicative 路径有机会胜出。素数没有非平凡分解，$M_p = +\infty$，additive 路径必然胜出。因此，素数位置上的 +1 增量是<strong>无条件的、强制的</strong>，是递推中唯一的无条件正增量来源。</p>
+      <div class="note-box">
+        <strong>注记（留待 §9 展开）.</strong> 递推中的正增长不是由"额外结构"产生的，而是由乘法捷径的缺席暴露出来的——素数是这种缺席的最纯粹载体。这与 ZFCρ 系列的余项（remainder）概念有直接联系。
+      </div>
+
+      <h3>4.3 合数净消耗的数值现象</h3>
+      <p><strong>数值观察 1.</strong> 在 $N = 10^7$ 下：</p>
+      <table class="struct-table">
+        <thead><tr><th>量</th><th>值</th></tr></thead>
+        <tbody>
+          <tr><td>$\pi(N)$</td><td>664,579</td></tr>
+          <tr><td>$\rho_E(N)$</td><td>58</td></tr>
+          <tr><td>$S_{\text{comp}}(N) = \rho_E(N) - \pi(N)$</td><td>−664,521</td></tr>
+          <tr><td>合数个数 $N-1-\pi(N)$</td><td>9,335,420</td></tr>
+          <tr><td>$\bar{\delta}_{\text{comp}}(N)$</td><td>−0.07118</td></tr>
+        </tbody>
+      </table>
+      $$58 = \underbrace{664{,}579}_{\text{素数贡献}} + \underbrace{(-664{,}521)}_{\text{合数净消耗}}.$$
+
+      <p><strong>数值观察 2（消耗率的 $N$ 依赖）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$N$</th><th>$\bar\delta_{\text{comp}}$</th><th>$-1/\ln N$</th></tr></thead>
+        <tbody>
+          <tr><td>$10^4$</td><td>−0.137</td><td>−0.109</td></tr>
+          <tr><td>$10^5$</td><td>−0.106</td><td>−0.087</td></tr>
+          <tr><td>$10^6$</td><td>−0.085</td><td>−0.072</td></tr>
+          <tr><td>$10^7$</td><td>−0.071</td><td>−0.062</td></tr>
+        </tbody>
+      </table>
+      <p>渐近地，$\bar\delta_{\text{comp}} \approx -\pi(N)/(N-1) \approx -1/\ln N \to 0^{-}$。</p>
+
+      <h3>4.4 Pred gap 的 prime/composite 版本</h3>
+      $$\text{pred gap}(m) = \bigl[\pi(2m-1) - \pi(m-1)\bigr] + S_{\text{comp}}(I).$$
+      <p><strong>数值观察 3.</strong> 在所有测试壳层和窗口类型下：$P(S_{\text{comp}}(I) < 0) = 1.0000$。</p>
+
+      <h3>4.5 与 Arias de Reyna 的 L(n) 的关系</h3>
+      <p>Arias de Reyna 的 $L(n)$ 是完全加性的。在 $L$ 的框架中，不存在"合数净消耗"——乘法不产生任何复杂度损失。真复杂度的非加性（$\|mn\| &lt; \|m\|+\|n\|$ 可能成立）正是合数净消耗的微观来源。本文通过命题 4 的精确恒等式和系统数值验证，首次在文献中对这种非加性效应进行定量分离。</p>
+
+      <h3>4.6 本节的局限</h3>
+      <p>命题 4 是全局代数恒等式。其壳层条件版本——composite-drift 在 $\Omega(m)=k$，$D_m=0$ 条件下的精确渐近——是本系列的核心开放问题，留待后续工作。</p>
+
+      <hr>
+
+      <h2>§5 壳层条件下的渐近均匀性</h2>
+
+      <h3>5.1 四类步率及 excess rate</h3>
+      <p><strong>数值观察 4（渐近均匀性）.</strong> $N = 10^7$，每壳层 5,000 样本：</p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$R/m$</th><th>$N_0/m$</th><th>$J_1/m$</th><th>$J_{\ge 2}/m$</th><th>$E/m$</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>0.13275</td><td>0.27459</td><td>0.30070</td><td>0.29196</td><td>0.40733</td></tr>
+          <tr><td>6</td><td>0.13279</td><td>0.27453</td><td>0.30072</td><td>0.29195</td><td>0.40732</td></tr>
+          <tr><td>7</td><td>0.13283</td><td>0.27449</td><td>0.30073</td><td>0.29195</td><td>0.40731</td></tr>
+          <tr><td>8</td><td>0.13277</td><td>0.27455</td><td>0.30073</td><td>0.29195</td><td>0.40731</td></tr>
+          <tr><td>9</td><td>0.13272</td><td>0.27461</td><td>0.30072</td><td>0.29195</td><td>0.40732</td></tr>
+          <tr><td>10</td><td>0.13255</td><td>0.27480</td><td>0.30070</td><td>0.29195</td><td>0.40734</td></tr>
+          <tr><td>11</td><td>0.13270</td><td>0.27461</td><td>0.30073</td><td>0.29195</td><td>0.40731</td></tr>
+          <tr><td>12</td><td>0.13289</td><td>0.27439</td><td>0.30076</td><td>0.29195</td><td>0.40728</td></tr>
+        </tbody>
+      </table>
+      <p>跨壳层变化：$R/m$ 最大跨度约 0.00034，$N_0/m$ 最大跨度约 0.00041，$J_{\ge 2}/m$ 在显示精度内完全一致（0.29195）。</p>
+
+      <h3>5.2 素数密度的均匀性</h3>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$E[\text{prime rate}]$</th><th>与全局的偏差</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>0.068028</td><td>+0.18%</td></tr>
+          <tr><td>5</td><td>0.067721</td><td>−0.28%</td></tr>
+          <tr><td>8</td><td>0.067671</td><td>−0.35%</td></tr>
+          <tr><td>10</td><td>0.068038</td><td>+0.19%</td></tr>
+          <tr><td>12</td><td>0.067459</td><td>−0.66%</td></tr>
+        </tbody>
+      </table>
+      <p>全局 $E[\text{prime rate}] = 0.067908$。壳层间偏差 &lt; 0.7%，无系统性趋势。</p>
+
+      <h3>5.3 解释</h3>
+      <p>在 $D_m = 0$ 条件下，$[m, 2m-1]$ 内部的统计行为对 $m$ 的因子结构不敏感。这与 Paper XXI 的 Lindley 同构一致：$D_m = 0$ 数值上表现为近似的再生点（quasi-regeneration point）。</p>
+      <p>Pred gap 本身仍依赖 $k$（从 $\approx 2.84$ at $\Omega=5$ 降到 $\approx 2.69$ at $\Omega=12$），但这 $O(0.15)$ 的差异远小于 bulk rate 量级，说明壳层依赖性只通过高阶修正进入。</p>
+      <div class="milestone-box">
+        <p><strong>推论（启发式）.</strong> 证明 $E[\text{pred gap}] > \tau_k$ 不需要对每个壳层分别建立不同的估计。区间内部的动力学是"通用"的，壳层只影响 $O(1/m)$ 级的修正项。</p>
+      </div>
+
+      <hr>
+
+      <h2>§6 Interior Drift 与边界效应</h2>
+
+      <h3>6.1 窗口分类</h3>
+      <ul>
+        <li><strong>Clean 窗口：</strong>$D_{2m-1}=0$（右端无 spillover）</li>
+        <li><strong>Extra-clean 窗口：</strong>$D_{m-1}=0$ 且 $D_{2m-1}=0$（双端无 spillover）</li>
+        <li><strong>Dirty 窗口：</strong>$D_{2m-1}>0$（右端在 $D>0$ excursion 中）</li>
+      </ul>
+
+      <h3>6.2 裁判数据</h3>
+      <p><strong>数值观察 5（Interior drift 裁判）.</strong> Extra-clean 窗口中 pred gap 仍显著为正：</p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>窗口类型</th><th>样本数</th><th>$E[\text{pred gap}]$</th><th>$P(\text{pg} > 2.50)$</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>Extra-clean</td><td>5,000</td><td>2.79</td><td>62.6%</td></tr>
+          <tr><td>8</td><td>Extra-clean</td><td>5,000</td><td>2.71</td><td>58.8%</td></tr>
+          <tr><td>10</td><td>Extra-clean</td><td>5,000</td><td>2.66</td><td>57.4%</td></tr>
+          <tr><td>12</td><td>Extra-clean</td><td>3,796</td><td>2.65</td><td>56.4%</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>结论.</strong> Interior drift 是 pred gap 正性的主要来源，而非边界效应。</p>
+      </div>
+
+      <h3>6.3 边界效应的真实角色</h3>
+      <p><strong>数值观察 6（边界调制，$\Omega = 8$）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>类型</th><th>条件</th><th>占比</th><th>$E[\text{pred gap}]$</th><th>$P(\text{pg} > 2.50)$</th></tr></thead>
+        <tbody>
+          <tr><td>A（全 clean）</td><td>$D_{m-1}=0,\; D_{2m-1}=0$</td><td>70.9%</td><td>2.70</td><td>58.6%</td></tr>
+          <tr><td>B（左 spillover）</td><td>$D_{m-1}>0,\; D_{2m-1}=0$</td><td>13.8%</td><td>2.44</td><td>43.2%</td></tr>
+          <tr><td>C（右 spillover）</td><td>$D_{m-1}=0,\; D_{2m-1}>0$</td><td>14.1%</td><td>3.30</td><td>85.2%</td></tr>
+          <tr><td>D（双 spillover）</td><td>$D_{m-1}>0,\; D_{2m-1}>0$</td><td>1.2%</td><td>3.28</td><td>82.1%</td></tr>
+        </tbody>
+      </table>
+      <p>关键观察：<strong>baseline（Type A）已经 2.70 &gt; $\tau_k \approx 2.50$。</strong>边界效应在此之上做 $\pm 0.6$ 的调制，不改变 pred gap 的符号。</p>
+
+      <h3>6.4 对证明策略的影响</h3>
+      <p>Interior drift 的存在意味着 pred gap 正性反映了递推本身的结构——§4 揭示的素数源项对合数修正项的系统性优势。边界效应只需作为有界 correction term 处理。</p>
+
+      <hr>
+
+      <h2>§7 辅助结构</h2>
+
+      <h3>7.1 α 衰减定律</h3>
+      <p><strong>数值观察 7（壳层平均跳跃）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$E[j \mid D=0, \Omega]$</th><th>$P(j\ge 2 \mid D=0, \Omega)$</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>0.794</td><td>17.1%</td></tr>
+          <tr><td>5</td><td>1.529</td><td>50.0%</td></tr>
+          <tr><td>8</td><td>2.575</td><td>85.6%</td></tr>
+          <tr><td>10</td><td>3.125</td><td>93.9%</td></tr>
+          <tr><td>12</td><td>3.605</td><td>97.3%</td></tr>
+        </tbody>
+      </table>
+      <p><strong>数值观察 8（α 衰减定律）.</strong> 斜率 $\alpha(N)$ 随 $N$ 按 $1/\ln\ln N$ 速率衰减：</p>
+      <table class="struct-table">
+        <thead><tr><th>$N$</th><th>$\alpha$</th><th>$\alpha \cdot \ln\ln N$</th></tr></thead>
+        <tbody>
+          <tr><td>$10^5$</td><td>0.357</td><td>0.871</td></tr>
+          <tr><td>$3\times 10^5$</td><td>0.341</td><td>0.864</td></tr>
+          <tr><td>$10^6$</td><td>0.330</td><td>0.865</td></tr>
+          <tr><td>$3\times 10^6$</td><td>0.322</td><td>0.870</td></tr>
+          <tr><td>$10^7$</td><td>0.316</td><td>0.878</td></tr>
+        </tbody>
+      </table>
+      <p>乘积 $\alpha \cdot \ln\ln N \approx 0.87$ 在五个量级上稳定（变化 &lt; 2%）。这与 §5 的壳层均匀性互补：壳层间的微观行为差异虽大，但宏观 rate 由壳层混合效应抹平。</p>
+
+      <h3>7.2 $q_I \cdot \bar j_{0,I}$ 的负相关压缩</h3>
+      <p><strong>数值观察 9（负相关压缩）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$\text{corr}(q_I, \bar j_{0,I})$</th><th>$\sigma[q \cdot \bar j_0] / \sigma[q]$</th><th>$\sigma[q \cdot \bar j_0] / \sigma[\bar j_0]$</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>−0.9983</td><td>8.8%</td><td>6.5%</td></tr>
+          <tr><td>7</td><td>−0.9999</td><td>3.8%</td><td>2.9%</td></tr>
+          <tr><td>10</td><td>−0.9999</td><td>2.2%</td><td>1.6%</td></tr>
+          <tr><td>12</td><td>−0.99999</td><td>0.7%</td><td>0.5%</td></tr>
+        </tbody>
+      </table>
+      <p>乘积 $q \cdot \bar j_0$ 的波动被压缩了 15 倍（$\Omega=5$）到 150 倍（$\Omega=12$）。这是 $\rho_E$ 递推结构内生的负反馈。</p>
+
+      <h3>7.3 $c_{\text{local}}$ 直接测量</h3>
+      $$c_{\text{local}}(k; N) = \frac{E[\text{pred gap}(m) \mid \Omega(m)=k, D_m=0, m \leq N]}{\ln 2}.$$
+      <p><strong>数值观察 10.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>$E[\text{pred gap}]$</th><th>$c_{\text{local}}$</th><th>超出 $\tau_k/\ln 2 \approx 3.607$ 的 margin</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>2.76</td><td>3.98</td><td>+0.38</td></tr>
+          <tr><td>5</td><td>2.84</td><td>4.09</td><td>+0.49</td></tr>
+          <tr><td>7</td><td>2.78</td><td>4.01</td><td>+0.40</td></tr>
+          <tr><td>8</td><td>2.76</td><td>3.98</td><td>+0.37</td></tr>
+          <tr><td>9</td><td>2.73</td><td>3.93</td><td>+0.33</td></tr>
+          <tr><td>10</td><td>2.73</td><td>3.93</td><td>+0.33</td></tr>
+          <tr><td>11</td><td>2.68</td><td>3.87</td><td>+0.26</td></tr>
+          <tr><td>12</td><td>2.69</td><td>3.89</td><td>+0.28</td></tr>
+        </tbody>
+      </table>
+      <p>所有代表壳层 $c_{\text{local}} > 3.6$，margin 在 0.26 到 0.49 之间。</p>
+      <div class="note-box">
+        <strong>注记（$c_{\text{local}}$ 与全局 $c^*$ 的关系）.</strong> $c_{\text{local}}$ 是壳层条件下 dyadic 区间的 Cesàro 平均，严格弱于全局点态下界 $c^* = \liminf \rho_E(n)/\ln n$。全局 $c^*$ 被 smooth numbers 的极端情形拖累，但 $c_{\text{local}}$ 反映的是条件均值，受极端情形影响远小于点态极值。
+      </div>
+
+      <hr>
+
+      <h2>§8 剩余缺口的精确刻画</h2>
+
+      <h3>8.1 六位数近完美抵消</h3>
+      <p>从 §5 的 rate 数据：
+      $$\frac{R + N_0}{m} \approx 0.40732, \quad \frac{E}{m} \approx 0.40731.$$</p>
+      <p>二者差值 $= \text{pred gap}/m \approx 2.8/m$，对 $m \approx 10^6$ 这是 $O(10^{-6})$ 的差——六位数的近完美抵消。这种精度要求是问题的<strong>内在特征</strong>，不是方法的缺陷。</p>
+
+      <h3>8.2 $O(1/m)$ 精度障碍</h3>
+      <table class="struct-table">
+        <thead><tr><th>策略</th><th>proof object</th><th>精度要求</th><th>障碍</th></tr></thead>
+        <tbody>
+          <tr><td>壳层预算</td><td>$\sum_k w_k \cdot \bar j_{0,k} &lt; 1/q$</td><td>全局预算自动成立</td><td>局部版需 dyadic equidistribution</td></tr>
+          <tr><td>乘积集中</td><td>$q_I \cdot \bar j_{0,I} &lt; 1 - \tau_k/m$</td><td>$O(1/m)$ 精度</td><td>边际波动 $\gg$ gap</td></tr>
+          <tr><td>加法分解</td><td>$R + N_0 - E > \tau_k$</td><td>三个 $O(m)$ 量差为 $O(1)$</td><td>分别估计不可行</td></tr>
+          <tr><td>$\rho_E$ 增长率</td><td>$\text{pred gap}(m) > \tau_k$</td><td>直接即为目标</td><td>$c_{\text{local}} \approx 3.9$；gap 来自壳层条件</td></tr>
+          <tr><td>素数分解</td><td>$\pi(I) + S_{\text{comp}}(I) > \tau_k$</td><td>$S_{\text{comp}}$ 需独立估计到 $O(1)$</td><td>$S_{\text{comp}} \approx -\pi(I)+2.8$，同义反复</td></tr>
+        </tbody>
+      </table>
+      <p>所有路线最终都收敛到同一个需求：<strong>合数修正项的局部精确渐近。</strong></p>
+
+      <h3>8.3 Composite-Drift Correction Theorem</h3>
+      <div class="thesis-box">
+        <p><strong>问题（Composite-Drift Correction）.</strong> 对所有足够大的 $N$ 和 $k = k(N)$ 在 Paper XXV 指定的壳层范围内，证明或否证：
+        $$E\!\left[\sum_{\substack{n \in [m, 2m-1] \\ n \text{ composite}}} \!\!\delta(n) \;\middle|\; \Omega(m)=k,\; D_m=0,\; m \leq N\right] > \tau_k(N) - E\!\left[\pi(2m-1) - \pi(m-1) \;\middle|\; \text{same}\right].$$</p>
+      </div>
+
+      <h3>8.4 已知外部障碍</h3>
+      <p><strong>(i) 非加性.</strong> 真复杂度满足 $\|mn\| &lt; \|m\|+\|n\|+2$ 可能成立，无法用加性函数的标准工具直接处理。<strong>(ii) 全局下界常数.</strong> $\|n\| \ge (3+\varepsilon)\log_3 n$ 对所有 $n$ 成立这个命题未被证明（Cordwell et al. 2018）。<strong>(iii) 稀疏 smooth 家族.</strong> 全局 $c^*$ 的行为受极稀疏 smooth numbers 支配（Altman 2012）。<strong>(iv) 概率化方法的已知缺陷.</strong> Steinerberger 早期的 generic argument 存在已记录的 flaw（Shriver）。</p>
+
+      <h3>8.5 本文为闭合提供的工具</h3>
+      <p>(a) 引理 1 将跳跃限制在 $D=0$ 位置。(b) 加法分解 $R + N_0 - E$ 给出精确会计框架。(c) prime/composite 分解将问题归约为合数修正项。(d) 壳层均匀性（§5）暗示证明可以对"通用 $m$"做一次。(e) Interior drift 裁判（§6）排除了边界效应作为主信号来源。(f) $c_{\text{local}} > 3.6$（§7.3）提供 $O(0.1)$ 级的数值安全 margin。</p>
+
+      <hr>
+
+      <h2>§9 讨论</h2>
+
+      <h3>9.1 余项与不可压缩性</h3>
+      <p>§4 的 prime/composite 分解揭示了关于复杂度增长的基本图景。Multiplicative 路径通过因子分解借用较小数的已知复杂度——是一种<strong>压缩机制</strong>。合数拥有至少一种非平凡分解，乘法压缩对它们可用。数据表明，这种压缩<strong>极其高效</strong>：全体合数的净贡献为负，乘法结构作为一个整体是复杂度的净吸收者。</p>
+      <p>素数没有非平凡分解，乘法压缩对它们不可用。素数位置上的 +1 增量是无条件的、强制的。</p>
+      <div class="milestone-box">
+        <p><strong>在这个意义上，递推中的正增长不是由"额外结构"产生的，而是由乘法捷径的缺席暴露出来的。</strong>素数是这种缺席的最纯粹载体。$\rho_E(N)$ 的对数级增长度量的正是 $[2, N]$ 中这些不可压缩位置的累积效应。</p>
+      </div>
+      <p>这与 ZFCρ 系列的核心命题有直接的结构呼应：形式化（这里具体为乘法分解）是一种压缩工具；余项是压缩之后不可消除的残留。素数作为乘法压缩无法触及的位置，正是这种残留的微观载体。</p>
+
+      <h3>9.2 六位数抵消与散热器</h3>
+      <p>§8.1 的六位数近完美抵消有一个直观的热力学类比。合数的乘法结构相当于一个极高效的"散热器"——它吸收了系统中几乎全部的复杂度增长。素数是散热器的盲区：每遇到一个素数，系统被迫接受 +1 的不可逆增量。$\rho_E$ 的增长是散热器未能覆盖的残余热量。</p>
+      <p>散热器效率极高（$|S_{\text{comp}}| \approx \pi(N) \approx N/\ln N$）但不完美（残差 $= \rho_E(N) = O(\ln N)$）。Pred gap $\approx 2.8$ 就是这个残差在 dyadic 尺度上的投影。</p>
+
+      <h3>9.3 开放问题</h3>
+      <ol>
+        <li>Composite-drift correction theorem（§8.3）。</li>
+        <li>合数修正项的局部渐近：$S_{\text{comp}}(I)$ 在壳层和 $D_m=0$ 条件下的独立渐近估计。</li>
+        <li>壳层均匀性的解析证明（§5）。</li>
+        <li>$\alpha$ 衰减的解析形式（§7.1）：$\alpha \cdot \ln\ln N \approx 0.87$ 是否可从 Paper XXIII 的 80/3 定律或 Sathe-Selberg 权重推出？</li>
+        <li>若 $\lim \rho_E(N)/\ln N$ 存在（记为 $c_{\text{main}}$），其精确值与 PNT 的关系如何？注意 $c_{\text{main}}$ 与 $c^* = \liminf \rho_E(n)/\ln n$ 是不同的对象。</li>
+      </ol>
+
+      <h3>9.4 致谢</h3>
+      <p>本文的数据分析和结构性探索得益于多模型 AI 协作（Claude, ChatGPT, Gemini, Grok）。ChatGPT 提出了加法分解 $R + N_0 - E$ 的 proof object（§3）和 composite-drift correction 的精确目标（§8.3）。Gemini 识别了 $\alpha$ 衰减定律的重要性和合数消耗率 $\approx -1/\ln N$ 的非常数性。Grok 的持续 review 保证了与前 25 篇的一致性。Claude 编写了全部数值计算脚本并起草了 working note v1-v4。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <hr>
+
+      <h2>§10 数据来源与可复现性</h2>
+      <p>所有数值结果基于完整 DP 计算（$N = 10^7$，SPF sieve + multiplicative sieve，$O(N \log N)$）。脚本将随论文发布。</p>
+      <table class="struct-table">
+        <thead><tr><th>脚本</th><th>测量内容</th><th>关键发现</th><th>§引用</th></tr></thead>
+        <tbody>
+          <tr><td>regen_blocks_v3.py</td><td>D=0 块结构</td><td>D=0 密度 86.7%，块长 85% 为 1</td><td>§2.1</td></tr>
+          <tr><td>excursion_analysis.py</td><td>D&gt;0 excursion</td><td>95.6% 长度 1，$\Sigma j = 0$ in all</td><td>§2.1</td></tr>
+          <tr><td>paper26_data.py</td><td>$j|D=0$ 分布</td><td>$E[j|D=0]$ 与 $1/q$ 差 $6.7\times 10^{-6}$</td><td>§7.1</td></tr>
+          <tr><td>review_response_data.py</td><td>$\alpha$ 衰减，$q\cdot\bar j_0$ 联合分布</td><td>$\alpha\cdot\ln\ln N \approx 0.87$；corr $= -0.999$</td><td>§7.1, §7.2</td></tr>
+          <tr><td>additive_decomposition.py</td><td>$R+N_0-E$ 分解</td><td>40K 样本零 mismatch；rate 壳层无关</td><td>§3, §5</td></tr>
+          <tr><td>rate_scaling.py</td><td>五类 rate 的 $N$ 趋势</td><td>margin $= \rho_E(N)/(N-1)$；$E/J_{\ge 2}$ 缓降</td><td>§4.3, §8.1</td></tr>
+          <tr><td>prime_density.py</td><td>素数密度，$E[\rho\text{ inc}|\text{comp}]$</td><td>$E[\rho\text{ inc}|\text{comp}] = -0.071$；$P(S_{\text{comp}}&lt;0)=1$</td><td>§4, §5.2</td></tr>
+          <tr><td>interior_vs_boundary.py</td><td>Clean vs dirty 窗口</td><td>Clean pg $\approx 2.7$；boundary $\pm 0.6$ 调制</td><td>§6</td></tr>
+        </tbody>
+      </table>
+      <p>所有 sanity check 均通过：$\rho_E(100)=15$，$\rho_E(10^3)=24$，$\rho_E(10^4)=32$，$\rho_E(10^5)=41$，$\rho_E(10^6)=49$，$\rho_E(10^7)=58$。$\Sigma j = (N-1) - \rho_E(N)$ 精确成立。</p>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXV. H. Qin. DOIs: Paper I (<a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>), Paper XXI (<a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>), Paper XXII (<a href="https://doi.org/10.5281/zenodo.19039953" target="_blank" rel="noopener">10.5281/zenodo.19039953</a>), Paper XXIII (<a href="https://doi.org/10.5281/zenodo.19041689" target="_blank" rel="noopener">10.5281/zenodo.19041689</a>), Paper XXIV (<a href="https://doi.org/10.5281/zenodo.19044696" target="_blank" rel="noopener">10.5281/zenodo.19044696</a>), Paper XXV (<a href="https://doi.org/10.5281/zenodo.19054726" target="_blank" rel="noopener">10.5281/zenodo.19054726</a>)。完整 DOI 列表见系列仓库。</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. 未发表手稿/预印本。</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner. On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34, 2018.</li>
+        <li>H. Altman. Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University, 2014.</li>
+        <li>C. E. Shriver. On integer complexity and the Markov chain approach. 预印本。</li>
+        <li>P. Erdős. Some remarks on number theory. <em>Riveon Lematematika</em>, 9:45–48, 1953.</li>
+        <li>R. K. Guy. Some suspiciously simple sequences. 1986.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ 系列 &nbsp;·&nbsp;</span>
+        <a href="zfcrho25.html">← 论文 XXV：Dyadic Shell Constant</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        论文 XXVII →
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Han Qin &nbsp;·&nbsp; <a href="/">self-as-an-end.net</a> &nbsp;·&nbsp; CC BY 4.0</p>
+</footer>
+
+</body>
+</html>
