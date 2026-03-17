@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upper Reflection Criterion for Composite Drift and Numerical Verification — ZFCρ Paper XXVII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXVII: spf comparator algebraic framework (Proposition 1: saving lower bound; Proposition 2: negative drift sufficient condition). 75-point triple stratification (spf, Ω, gap-position) with zero exceptions. E[(Δ_spf)⁺]=1.82>1 at H≥3.84. Scale attenuation: E[H(n/2)] anchors near h₀≈3.79, attenuation ratio negative.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, composite drift, upper reflection criterion, spf comparator, scale attenuation, height ratio, Foster-Lyapunov, 合数漂移, 上反射判据, scale attenuation">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Upper Reflection Criterion for Composite Drift and Numerical Verification">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho27.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Upper Reflection Criterion for Composite Drift and Numerical Verification",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho27.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19062684"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "composite drift", "upper reflection criterion",
+      "spf comparator", "scale attenuation", "height ratio", "Foster-Lyapunov"
+    ],
+    "abstract": "Proposition 1 (saving lower bound): S(n) ≥ (Δ_spf)⁺. Proposition 2 (negative drift sufficient condition): E[(Δ_spf)⁺ | composite, H ≥ h⁺] > 1 implies E[δ | C] < 0. 75-point triple stratification (spf, Ω, gap-position), zero exceptions. E[(Δ_spf)⁺] = 1.82 at H ≥ 3.84 numerically confirms sufficient condition. Scale attenuation: E[H(n/2)] anchors near h₀ ≈ 3.79 with negative attenuation ratio. Analytic closure requires even-subfamily comparator margin and density lower bound.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho27.html">
+  <meta name="citation_title" content="Upper Reflection Criterion for Composite Drift and Numerical Verification">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19062684">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho27.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .proof-box p + p { margin-top: 0.5rem; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; background: #fff; border-color: #e0e0e0; border-bottom-color: #fff; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        displayMath: [['$$','$$'],['\\[','\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-L4M3nDNBvlGCzGj88T3eI9h9XMzH4RKwMa2SbDBFGbNz6R+r9yMPk3sSRFGJLYWmgCCFGm5NmJLm1lc5Fqag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+      document.getElementById('lang-' + lang).classList.add('active');
+      if (lang === 'en') {
+        document.title = 'Upper Reflection Criterion for Composite Drift and Numerical Verification — ZFCρ Paper XXVII — Han Qin';
+      } else {
+        document.title = '合数漂移的上反射判据与数值验证 — ZFCρ 论文 XXVII — 秦汉';
+      }
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="nav-home">Han Qin</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </div>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXVII</div>
+      <h1 class="paper-title">Upper Reflection Criterion for Composite Drift and Numerical Verification</h1>
+      <div class="paper-authors">
+        Han Qin &nbsp;·&nbsp;
+        <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener" style="color:inherit;">ORCID: 0009-0009-9583-0018</a>
+      </div>
+      <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19062684
+      </a>
+    </div>
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We study the state-dependent behavior of composite increments $\delta(n) = \rho_E(n) - \rho_E(n-1)$ in the Erdős additive complexity recurrence, as a function of the height ratio $H(n) = \rho_E(n)/\ln n$.</p>
+        <p>Two algebraic results are established. Define the spf comparator gap $\Delta_{\text{spf}}(n) = [\rho_E(n-1)+1] - [\rho_E(\text{spf}(n)) + \rho_E(n/\text{spf}(n)) + 2]$. <strong>(Proposition 1)</strong> Saving lower bound: $S(n) = \rho_E(n-1)+1-\rho_E(n) \geq (\Delta_{\text{spf}}(n))^{+}$. <strong>(Proposition 2)</strong> Negative drift sufficient condition: if $E[(\Delta_{\text{spf}})^{+} \mid \text{composite}, H \geq h^{+}] > 1$, then $E[\delta \mid \text{composite}, H \geq h^{+}] &lt; 0$.</p>
+        <p>Systematic numerical findings are reported ($N = 10^7$, full DP). $E[\delta \mid \text{composite}]$ decreases strictly monotonically with $H$ across 75 (spf, $\Omega$, gap-position) strata with zero exceptions. $E[(\Delta_{\text{spf}})^{+}] = 1.82$ at $H \geq 3.84$, confirming the sufficient condition numerically. Whole-population aggregation $\sum d_p \cdot a_p = 1.82 > 1$, with the even subfamily alone contributing $1.27 > 1$. Scale attenuation is directly measured: $E[H(n/2)]$ anchors near $h_0 \approx 3.79$ and does not track upward excursions of $H(n-1)$; the attenuation ratio is negative.</p>
+        <p>The remaining gap is precisely characterized: under the current spf-comparator route, upgrading the numerical closure of §4 to an analytic one requires at least two inputs — a quantitative comparator margin on the even subfamily and a conditional density lower bound.</p>
+        <p><strong>Keywords:</strong> additive complexity, composite drift, upper reflection criterion, spf comparator, scale attenuation</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+
+      <h3>1.1 Background and scope</h3>
+      <p>Paper XXVI established the exact decomposition $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$, confirmed that primes are the sole unconditional source of positive growth, and reduced (L3) to a composite-drift correction theorem. The present paper attacks the first step of that correction: <strong>negative drift at high $H$</strong>.</p>
+      <p>When $\rho_E$ is elevated relative to $\ln n$ ($H(n-1)$ above a threshold $h^{+}$), composite increments are, on average, negative — the system is pulled back. This is a one-sided result: it controls the upper reflection ($\rho_E$ cannot remain indefinitely above its equilibrium) but does not directly control the lower reflection (positive drift at low $H$ arises from a different mechanism).</p>
+      <p>This paper does not claim to close (L3). Lower reflection, the passage from two-sided reflection to pred gap $> \tau_k$, and the connection to Foster–Lyapunov stationarity theory are deferred.</p>
+
+      <h3>1.2 Contributions</h3>
+      <ul>
+        <li><strong>(A) Algebraic framework for the spf comparator (§2):</strong> saving lower bound and negative drift sufficient condition.</li>
+        <li><strong>(B) Complete deconfounding of height-drift monotonicity (§3):</strong> 75 data points across (spf, $\Omega$, gap-position) triple stratification, zero exceptions.</li>
+        <li><strong>(C) Numerical confirmation of the sufficient condition (§4):</strong> $E[(\Delta_{\text{spf}})^{+} \mid H \geq 3.84] = 1.82 > 1$; whole-population aggregation with even subfamily alone exceeding 1.</li>
+        <li><strong>(D) Direct measurement of scale attenuation (§5):</strong> $H(n/2)$ anchors at $h_0 \approx 3.79$, attenuation ratio negative.</li>
+        <li><strong>(E) Precise characterization of the remaining analytic gap (§5–6):</strong> under the spf-comparator route, analytic closure requires a quantitative comparator margin on the even subfamily and a conditional density lower bound. Scale attenuation serves as the mechanistic lemma for the margin estimate.</li>
+      </ul>
+
+      <h3>1.3 Notation</h3>
+      <p>Series conventions and Paper XXVI notation apply. $\rho_E(n)$: Erdős additive complexity, $\rho_E(1) = 0$. $M_n = \min_{ab=n,\, a,b\ge 2}(\rho_E(a)+\rho_E(b)+2)$; $M_p = +\infty$ for primes. $\delta(n) = \rho_E(n) - \rho_E(n-1)$. $S(n) = \rho_E(n-1)+1-\rho_E(n)$ (saving; $S(n) \geq 0$ holds identically). $H(n) = \rho_E(n)/\ln n$ (height ratio). $\text{spf}(n)$: smallest prime factor of $n$.</p>
+      <p>Throughout, $E[F(n) \mid n \in C]$ denotes the finite-set empirical average: $E_N[F(n) \mid n \in C] = \tfrac{1}{|C \cap [1,N]|}\sum_{n \in C,\, n \le N} F(n)$.</p>
+
+      <hr>
+
+      <h2>2. Algebraic Framework: the spf Comparator</h2>
+
+      <h3>2.1 Saving lower bound</h3>
+      <p>For any composite $n$ (so that $M_n$ is finite), let $p = \text{spf}(n)$, $q = n/p$. By definition of $M_n$:
+      $$M_n \leq \rho_E(p) + \rho_E(q) + 2.$$
+      Define the spf comparator gap:
+      $$\Delta_{\text{spf}}(n) = [\rho_E(n-1)+1] - [\rho_E(p) + \rho_E(q) + 2].$$</p>
+
+      <div class="thesis-box">
+        <p><strong>Proposition 1 (Saving lower bound).</strong> For any composite $n$:
+        $$S(n) \geq (\Delta_{\text{spf}}(n))^{+} := \max(\Delta_{\text{spf}}(n),\; 0).$$</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>Proof.</strong> $\rho_E(n) \leq M_n \leq \rho_E(p)+\rho_E(q)+2$, so $S(n) = \rho_E(n-1)+1-\rho_E(n) \geq \Delta_{\text{spf}}(n)$. Since $S(n) \geq 0$, the positive part follows. ∎</p>
+      </div>
+
+      <div class="note-box">
+        <strong>Remark.</strong> The inequality is one-sided: the true saving $S(n)$ may exceed $(\Delta_{\text{spf}})^{+}$ because $M_n$ may be achieved by a non-spf factorization.
+      </div>
+
+      <h3>2.2 Negative drift sufficient condition</h3>
+      <p>Since $\delta(n) = 1 - S(n)$:</p>
+
+      <div class="thesis-box">
+        <p><strong>Proposition 2 (Negative drift sufficient condition).</strong> For any conditioning set $C$:
+        $$E[\delta(n) \mid n \in C] \leq 1 - E[(\Delta_{\text{spf}}(n))^{+} \mid n \in C].$$
+        In particular, if $C = \{n \text{ composite}, H(n-1) \geq h^{+}\}$ and $E[(\Delta_{\text{spf}})^{+} \mid C] > 1$, then $E[\delta \mid C] &lt; 0$.</p>
+      </div>
+
+      <hr>
+
+      <h2>3. Complete Deconfounding of Height-Drift Monotonicity</h2>
+
+      <h3>3.1 Raw phenomenon</h3>
+      <p>$E[\delta \mid \text{composite}]$ decreases monotonically from $+0.70$ (Q1, low $H$) to $-1.16$ (Q5, high $H$) across height quintiles.</p>
+
+      <h3>3.2 Layer 1: (spf, $\Omega$) stratification</h3>
+      <p>Across 28 tested (spf, $\Omega$) combinations (spf $\in \{2,3,5,7\}$, $\Omega \in \{2,\ldots,8\}$), $E[\delta \mid H \text{ quintile}]$ is strictly monotonically decreasing. Zero exceptions.</p>
+
+      <h3>3.3 Layer 2: gap-position stratification</h3>
+      <p>Composites are classified by position within inter-prime gaps: first, middle, last, solo.</p>
+      <p><strong>Observation 1.</strong> In middle-of-gap composites (excluding first/last position effects), $E[\delta]$ remains strictly monotonically decreasing with $H$:</p>
+      <table class="struct-table">
+        <thead><tr><th>$H$ quintile</th><th>$E[\delta]$ (middle-of-gap)</th></tr></thead>
+        <tbody>
+          <tr><td>Q1</td><td>+0.72</td></tr>
+          <tr><td>Q2</td><td>+0.41</td></tr>
+          <tr><td>Q3</td><td>+0.09</td></tr>
+          <tr><td>Q4</td><td>−0.30</td></tr>
+          <tr><td>Q5</td><td>−1.02</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.4 Layer 3: triple stratification</h3>
+      <p>In middle-of-gap composites with spf $= 2$, further stratified by $\Omega$ ($\Omega = 2$ to $16$):</p>
+      <p><strong>Observation 2.</strong> $15 \times 5 = 75$ data points, all strictly monotonically decreasing, zero exceptions.</p>
+      <p>Representative data (middle-of-gap, spf $= 2$):</p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>Q1 (low)</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5 (high)</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>+0.81</td><td>+0.67</td><td>+0.48</td><td>+0.21</td><td>−0.27</td></tr>
+          <tr><td>5</td><td>+0.49</td><td>+0.11</td><td>−0.25</td><td>−0.64</td><td>−1.27</td></tr>
+          <tr><td>8</td><td>−0.07</td><td>−0.63</td><td>−1.03</td><td>−1.47</td><td>−2.26</td></tr>
+          <tr><td>12</td><td>−0.86</td><td>−1.47</td><td>−1.87</td><td>−2.39</td><td>−3.30</td></tr>
+        </tbody>
+      </table>
+      <p>spf $= 3$ triple stratification is likewise fully monotonic (complete data released with scripts).</p>
+
+      <h3>3.5 Conclusion</h3>
+      <p>Within all tested (spf, $\Omega$, gap-position) strata, height-drift monotonicity is preserved without exception. The effect of $H(n-1)$ on composite drift cannot be explained by confounding from these arithmetic covariates.</p>
+
+      <hr>
+
+      <h2>4. Numerical Confirmation of the Sufficient Condition</h2>
+
+      <h3>4.1 $E[(\Delta_{\text{spf}})^{+}]$ by height quintile</h3>
+      <p><strong>Observation 3.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$H$ quintile</th><th>$E[(\Delta_{\text{spf}})^{+}]$</th><th>$> 1$?</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 (low)</td><td>0.19</td><td>NO</td></tr>
+          <tr><td>Q2</td><td>0.44</td><td>NO</td></tr>
+          <tr><td>Q3</td><td>0.72</td><td>NO</td></tr>
+          <tr><td><strong>Q4</strong></td><td><strong>1.08</strong></td><td><strong>YES</strong></td></tr>
+          <tr><td><strong>Q5</strong></td><td><strong>1.82</strong></td><td><strong>YES</strong></td></tr>
+        </tbody>
+      </table>
+      <p>Crossover at $H \approx 3.807$. Every fine-bin above this point exceeds 1, with no oscillation.</p>
+
+      <h3>4.2 Whole-population aggregation</h3>
+      <p>Decompose $E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] = \sum_p d_p \cdot a_p$ where $d_p = P(\text{spf}=p \mid C_N(h^{+}))$, $a_p = E[(\Delta_{\text{spf}})^{+} \mid \text{spf}=p, C_N(h^{+})]$.</p>
+      <p><strong>Observation 4 (Q5).</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>spf</th><th>$d_p$</th><th>$a_p$</th><th>$d_p \cdot a_p$</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.663</td><td>1.913</td><td>1.269</td></tr>
+          <tr><td>3</td><td>0.170</td><td>2.088</td><td>0.354</td></tr>
+          <tr><td>5</td><td>0.051</td><td>1.764</td><td>0.090</td></tr>
+          <tr><td>other</td><td>0.116</td><td>—</td><td>0.111</td></tr>
+          <tr><td><strong>Total</strong></td><td></td><td></td><td><strong>1.823</strong></td></tr>
+        </tbody>
+      </table>
+      <p>The even subfamily alone contributes $d_2 \cdot a_2 = 1.269 > 1$. The conditional density $d_2 \approx 0.663$ exceeds the unconditional density ($\approx 0.5$) under high-$H$ truncation, providing additional margin.</p>
+
+      <h3>4.3 Numerical closure</h3>
+      <p>Taking $h^{+} = 3.84$:
+      $$E[\delta \mid \text{composite},\; H \geq 3.84] \leq 1 - 1.823 = -0.823.$$
+      Measured: $E[\delta] = -1.16$ (gap due to non-spf splits achieving better savings; one-sided bound is not tight). Analytic closure requires the margin and density inputs specified in §5.5.</p>
+
+      <hr>
+
+      <h2>5. Scale Attenuation</h2>
+
+      <h3>5.1 Motivation</h3>
+      <p>For even $n$ (spf $= 2$): $\Delta_2 = \rho_E(n-1) - \rho_E(n/2) - 2$. The sufficient condition holds at high $H$ because $\rho_E(n/2)$ does not track $\rho_E(n-1)$ — scale attenuation.</p>
+
+      <h3>5.2 Direct measurement</h3>
+      <p><strong>Observation 5 (spf $= 2$).</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$H(n-1)$ bin</th><th>$E[H(n-1)]$</th><th>$E[H(n/2)]$</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 (low)</td><td>3.712</td><td>3.771</td><td>−0.059</td></tr>
+          <tr><td>Q3</td><td>3.794</td><td>3.791</td><td>+0.003</td></tr>
+          <tr><td>Q4</td><td>3.823</td><td>3.792</td><td>+0.031</td></tr>
+          <tr><td>Q5 (high)</td><td>3.872</td><td>3.787</td><td>+0.085</td></tr>
+        </tbody>
+      </table>
+      <p>$E[H(n/2)]$ anchors at $\approx 3.79$, independent of $H(n-1)$. Fine-bin data (high $H$, spf $= 2$):</p>
+      <table class="struct-table">
+        <thead><tr><th>$E[H(n-1)]$</th><th>$E[H(n/2)]$</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>3.826</td><td>3.792</td><td>+0.034</td></tr>
+          <tr><td>3.866</td><td>3.790</td><td>+0.076</td></tr>
+          <tr><td>3.906</td><td>3.780</td><td>+0.126</td></tr>
+          <tr><td>3.945</td><td>3.763</td><td>+0.182</td></tr>
+          <tr><td>3.986</td><td>3.734</td><td>+0.252</td></tr>
+          <tr><td>4.028</td><td>3.694</td><td>+0.333</td></tr>
+        </tbody>
+      </table>
+      <p>As $H(n-1)$ increases from 3.83 to 4.03, $E[H(n/2)]$ <em>decreases</em> from 3.79 to 3.69.</p>
+
+      <h3>5.3 Attenuation ratio</h3>
+      <p>With $h_0 = 3.80$: $\text{excess\_parent} = H(n-1) - h_0$, $\text{excess\_child} = H(n/2) - h_0$.</p>
+      <p><strong>Observation 6.</strong> In Q4/Q5 (spf $= 2$):</p>
+      <table class="struct-table">
+        <thead><tr><th>$H$ bin</th><th>$E[\text{ratio}]$</th><th>$P(\text{ratio} &lt; 1)$</th></tr></thead>
+        <tbody>
+          <tr><td>Q4</td><td>−0.36</td><td>77.2%</td></tr>
+          <tr><td>Q5</td><td>−0.17</td><td>93.7%</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p>The attenuation ratio is <strong>negative</strong>: when the parent is above $h_0$, the child is on average below $h_0$. Large-scale height excursions do not transfer to smaller scales — $H(n/2)$ exhibits strong rigidity, anchoring near its unconditional mean. This decoupling is the core microscopic mechanism supporting the upper reflection criterion.</p>
+      </div>
+
+      <h3>5.4 Mechanism</h3>
+      <p>$\rho_E(n/2)$ is computed by the DP at position $n/2$, before $\rho_E(n-1)$. The height excursion accumulates during the $\approx n/2$ steps from $n/2$ to $n-1$; the value at $n/2$ reflects the pre-excursion state.</p>
+      <div class="note-box">
+        <strong>Remark.</strong> The time ordering of the DP makes scale attenuation a natural expectation: smaller-scale $\rho_E$ values are determined before the large-scale excursion builds up. However, time ordering alone does not constitute a proof of attenuation — the quantitative decay rate requires independent estimation.
+      </div>
+
+      <h3>5.5 Analytic target</h3>
+      <p>Under the current spf-comparator route, upgrading the numerical closure of §4 to analytic closure requires the following inputs.</p>
+      <div class="thesis-box">
+        <p><strong>Main analytic target.</strong> Define $C_N(h^{+}) = \{n \leq N : n \text{ composite}, H(n-1) \geq h^{+}\}$. Prove that there exist $h^{+} > 0$, $c > 0$ such that for all sufficiently large $N$:
+        $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] > 1 + c.$$</p>
+      </div>
+      <p><strong>A concrete sufficient route (even-dominance version).</strong> Define $C_{2,N}(h^{+}) = C_N(h^{+}) \cap \{\text{spf}(n) = 2\}$, and let $d_2(h^{+}, N) = P(\text{spf}(n)=2 \mid C_N(h^{+}))$, $a_2(h^{+}, N) = E[(\Delta_2)^{+} \mid C_{2,N}(h^{+})]$. If one can prove:</p>
+      <ul>
+        <li><strong>(i)</strong> Quantitative comparator margin: $a_2(h^{+}, N) \geq A_0$ for all large $N$.</li>
+        <li><strong>(ii)</strong> Even density lower bound: $d_2(h^{+}, N) \geq d_0$.</li>
+        <li><strong>(iii)</strong> $d_0 \cdot A_0 > 1 + c$.</li>
+      </ul>
+      <p>Then $E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] \geq d_2 \cdot a_2 \geq d_0 \cdot A_0 > 1 + c$, yielding the main target.</p>
+      <p><strong>Scale attenuation as a mechanistic lemma for (i).</strong> If one can quantify the attenuation as
+      $$E[\rho_E(n/2) \mid C_{2,N}(h^{+})] \leq h^{+} \cdot E[\ln(n-1) \mid C_{2,N}(h^{+})] - (3 + \eta)$$
+      for some $\eta > 0$, then $a_2 \geq 1 + \eta$ follows.</p>
+      <p><strong>Numerical status.</strong> At $N = 10^7$: $d_2 \approx 0.663$, $a_2 \approx 1.91$, $d_2 \cdot a_2 \approx 1.27 > 1$. Analytic proof is the central open problem of the current route in this series.</p>
+
+      <hr>
+
+      <h2>6. Asymmetry Between High and Low Ends</h2>
+
+      <h3>6.1 One-sided nature of the spf comparator</h3>
+      <p>Propositions 1–2 provide a sufficient condition for <strong>upper reflection</strong>. The low end (positive drift at low $H$) cannot be derived from the same mechanism.</p>
+      <p>When $H$ is low, $(\Delta_{\text{spf}})^{+} = 0$ means only that the spf split loses to the additive path — not that all splits lose. Since $M_n$ minimizes over all factorizations, a more balanced split may still win. Thus $(\Delta_{\text{spf}})^{+} = 0$ does not imply $S = 0$ or $\delta = +1$.</p>
+      <p>Low-$H$ positive drift ($E[\delta] = +0.70$ at Q1) arises from a different mechanism: at low $H$, jump probability is low ($P(j \geq 1) = 26\%$), and the additive path ($\delta = +1$) dominates. Formalizing this requires different tools (e.g., an upper bound on jump probability at low $H$), deferred to Paper XXVIII.</p>
+
+      <h3>6.2 Division of labor</h3>
+      <table class="struct-table">
+        <thead><tr><th>Result</th><th>Mechanism</th><th>Paper</th></tr></thead>
+        <tbody>
+          <tr><td>Upper reflection: $E[\delta \mid H \geq h^{+}] &lt; 0$</td><td>spf comparator: $E[(\Delta_{\text{spf}})^{+}] > 1$</td><td><strong>XXVII</strong></td></tr>
+          <tr><td>Lower reflection: $E[\delta \mid H \leq h^{-}] > 0$</td><td>Jump probability upper bound at low $H$</td><td>XXVIII</td></tr>
+          <tr><td>Pred gap $> \tau_k$</td><td>Two-sided reflection + prime injection + dyadic control</td><td>XXVIII–XXIX</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>7. Auxiliary Structures</h2>
+
+      <h3>7.1 Stability of $h_0$</h3>
+      <p>The height-drift crossover $h_0(N)$:</p>
+      <table class="struct-table">
+        <thead><tr><th>$N$</th><th>$h_0$</th></tr></thead>
+        <tbody>
+          <tr><td>$10^4$</td><td>3.727</td></tr>
+          <tr><td>$10^5$</td><td>3.763</td></tr>
+          <tr><td>$10^6$</td><td>3.786</td></tr>
+          <tr><td>$10^7$</td><td>3.800</td></tr>
+        </tbody>
+      </table>
+      <p>$h_0$ increases monotonically with decreasing increments, suggesting convergence to $h_0^\infty \approx 3.82$–$3.85$.</p>
+
+      <h3>7.2 Imbalance of winning factorizations</h3>
+      <p>Median balance ratio of winning factorizations: $0.0007$. At high $\Omega$ it rises to $0.68$. The spf comparator is most effective at low-to-moderate $\Omega$; high-$\Omega$ composites (where more balanced splits dominate) are exponentially sparse by Sathe–Selberg weights.</p>
+
+      <h3>7.3 Drift structure within inter-prime gaps</h3>
+      <table class="struct-table">
+        <thead><tr><th>Position</th><th>$E[\delta]$</th></tr></thead>
+        <tbody>
+          <tr><td>First (immediately after prime)</td><td>−0.937</td></tr>
+          <tr><td>Middle</td><td>+0.023</td></tr>
+          <tr><td>Last</td><td>−0.328</td></tr>
+        </tbody>
+      </table>
+      <p>The strong negative drift at the first position reflects the "prime pushes $\rho_E$ up → next composite pulls back" step-by-step mechanism.</p>
+
+      <h3>7.4 Technical note: $H(n)$ and Markov property</h3>
+      <p>$H(n)$ is a deterministic arithmetic sequence, not a Markov chain. The full application of Foster–Lyapunov stability theory requires defining a suitable randomized or augmented-state process; Paper XXI's Lindley isomorphism provides the interface. Within this paper, the upper reflection criterion is a conditional-expectation sign control statement and does not require Markov structure.</p>
+
+      <hr>
+
+      <h2>8. Discussion</h2>
+
+      <h3>8.1 Physical picture</h3>
+      <p>At high $H$, the spf split references $\rho_E(n/\text{spf}(n))$, which was computed before the current height excursion built up. The excursion makes the additive path expensive relative to the spf split, so jump probability increases and drift turns negative. This time-asymmetry effect — the DP evaluates factors at smaller scales before the excursion accumulates — is the microscopic mechanism behind upper reflection.</p>
+
+      <h3>8.2 Relation to Paper XXVI</h3>
+      <p>Paper XXVI established that composites are net consumers of $\rho_E$. The present paper explains why: numerically, $\rho_E$ spends substantial mass above $h_0$, where composite drift is negative. The system does not collapse because primes inject deterministic $+1$ increments, pushing $\rho_E$ back toward $h_0$.</p>
+
+      <h3>8.3 Open problems</h3>
+      <ol>
+        <li>Even subfamily comparator margin and density lower bound (§5.5): central remaining problem for analytic closure under the spf-comparator route.</li>
+        <li>Lower reflection theorem: positive drift at low $H$ via jump probability bounds (Paper XXVIII).</li>
+        <li>From two-sided reflection to pred gap $> \tau_k$: dyadic-scale prime-composite balance.</li>
+        <li>Precise asymptotics of $h_0(N)$: convergence rate and relation to PNT.</li>
+        <li>Chebyshev bound as a corollary: if upper reflection generalizes to $S_{\text{comp}}(N) = -\Theta(N/\ln N)$, the Chebyshev bound $\pi(N) = \Theta(N/\ln N)$ follows directly.</li>
+      </ol>
+
+      <h3>8.4 Acknowledgments</h3>
+      <p>ChatGPT 5.4 Pro identified the correct sufficient condition $E[(\Delta_{\text{spf}})^{+}] > 1$ (§2.2), the one-sided nature of the spf comparator (§6), scale attenuation as the core bottleneck (§5), and the necessity of subgroup aggregation (§4.2). Gemini suggested Foster–Lyapunov over strict monotonicity. Grok ensured consistency with the preceding 26 papers. Claude wrote all numerical computation scripts (Blocks 1–5) and drafted working notes v1–v3. The final text was completed independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <hr>
+
+      <h2>9. Data Sources and Reproducibility</h2>
+      <p>All numerical results are based on full DP computations ($N = 10^7$, SPF sieve + multiplicative sieve). Sanity check: $\rho_E(10^7) = 58$.</p>
+      <table class="struct-table">
+        <thead><tr><th>Script</th><th>Measurement</th><th>§</th></tr></thead>
+        <tbody>
+          <tr><td>p27_block12.py</td><td>Reflection wall + factorization anatomy + inter-prime drift</td><td>§3.1, §7</td></tr>
+          <tr><td>p27_block3.py</td><td>(spf,$\Omega$) deconfounding + $\Delta_{\text{spf}}$ height dependence + $h_0$ stability</td><td>§3.2, §4.1, §7.1</td></tr>
+          <tr><td>p27_block4.py</td><td>Gap-position deconfounding + $E[(\Delta_{\text{spf}})^{+}] > 1$</td><td>§3.3–3.4, §4.1</td></tr>
+          <tr><td>p27_block5.py</td><td>Subgroup aggregation + scale attenuation + attenuation ratio</td><td>§4.2, §5</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXVI. H. Qin. Paper I: <a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>. Paper XXI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>. Paper XXV: <a href="https://doi.org/10.5281/zenodo.19054726" target="_blank" rel="noopener">10.5281/zenodo.19054726</a>. Paper XXVI: <a href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">10.5281/zenodo.19059834</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>H. Altman (2014). Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ Series &nbsp;·&nbsp;</span>
+        <a href="zfcrho26.html">← Paper XXVI: Prime Source Term</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Paper XXVIII →
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXVII</div>
+      <h1 class="paper-title">合数漂移的上反射判据与数值验证</h1>
+      <div class="paper-authors">
+        Han Qin（秦汉） &nbsp;·&nbsp;
+        <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener" style="color:inherit;">ORCID: 0009-0009-9583-0018</a>
+      </div>
+      <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19062684
+      </a>
+    </div>
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们研究 Erdős 加法复杂度递推中合数增量 $\delta(n) = \rho_E(n) - \rho_E(n-1)$ 对 height ratio $H(n) = \rho_E(n)/\ln n$ 的状态依赖。</p>
+        <p>建立两项代数结果。定义 spf comparator gap $\Delta_{\text{spf}}(n) = [\rho_E(n-1)+1] - [\rho_E(\text{spf}(n)) + \rho_E(n/\text{spf}(n)) + 2]$。<strong>（命题 1）</strong>saving 下界：$S(n) = \rho_E(n-1)+1-\rho_E(n) \geq (\Delta_{\text{spf}}(n))^{+}$。<strong>（命题 2）</strong>负 drift 充分条件：若 $E[(\Delta_{\text{spf}})^{+} \mid \text{composite}, H \geq h^{+}] > 1$，则 $E[\delta \mid \text{composite}, H \geq h^{+}] &lt; 0$。</p>
+        <p>报告系统性数值发现（$N = 10^7$ 完整 DP）。$E[\delta \mid \text{composite}]$ 随 $H$ 严格单调递降（75 组 (spf, $\Omega$, gap-position) 三重分层零例外）。$E[(\Delta_{\text{spf}})^{+}]$ 在 $H \geq 3.84$ 时为 1.82（$> 1$），确认上反射的充分条件数值上成立。Scale attenuation 直接测量：当 $H(n-1)$ 偏高时，$E[H(n/2)]$ 锚定在 $h_0 \approx 3.79$ 不随之上升，衰减比为负（$-0.17$ 至 $-0.36$）。</p>
+        <p>精确刻画剩余缺口：在当前 spf-comparator 路线下，将 §4 的数值闭合提升为解析闭合，至少需要两类额外输入——偶数子族上的定量 comparator margin 和条件密度下界。</p>
+        <p><strong>关键词：</strong>加法复杂度，合数漂移，上反射判据，spf comparator，scale attenuation</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 系列背景与本文定位</h3>
+      <p>Paper XXVI 建立了 $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$ 的精确 prime/composite 分解，确认素数是 $\rho_E$ 正增长的唯一无条件来源，合数修正项在全局和每个采样 dyadic 区间内为负，并将 (L3) 的闭合归约为 composite-drift correction theorem。</p>
+      <p>本文攻击 composite-drift correction 的第一步：<strong>高 $H$ 端的负 drift</strong>。当 $\rho_E$ 相对于 $\ln n$ 偏高时（$H(n-1)$ 超过某个阈值 $h^{+}$），合数的平均 $\rho$-increment 为负——系统被拉回。这是一个 one-sided 定理：它控制了上反射，但不直接控制下反射（低 $H$ 时的正 drift 来自不同机制）。</p>
+      <p>本文不声称闭合 (L3)。低 $H$ 正 drift、从双边反射到 pred gap $> \tau_k$ 的推导、以及与 Foster–Lyapunov 稳态理论的精确连接，留待后续工作。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <ul>
+        <li><strong>(A) spf comparator 的代数框架（§2）.</strong> 建立 saving 下界 $S(n) \geq (\Delta_{\text{spf}})^{+}$ 和负 drift 充分条件 $E[(\Delta_{\text{spf}})^{+}] > 1 \Rightarrow E[\delta] &lt; 0$。</li>
+        <li><strong>(B) Height-drift 单调性的完整去混杂（§3）.</strong> 在 (spf, $\Omega$, gap-position) 三重分层下，75 组数据全部确认 $E[\delta \mid \text{composite}]$ 随 $H$ 严格递降，零例外。</li>
+        <li><strong>(C) 上反射的充分条件数值确认（§4）.</strong> $E[(\Delta_{\text{spf}})^{+} \mid H \geq 3.84] = 1.82 > 1$。whole-population 聚合 $\sum d_p \cdot a_p = 1.82 > 1$（仅偶数子族已贡献 $1.27 > 1$）。</li>
+        <li><strong>(D) Scale attenuation 的直接测量（§5）.</strong> $E[H(n/2)]$ 在高 $H$ 条件下锚定在 $h_0 \approx 3.79$，不随 $H(n-1)$ 上升。衰减比为负。</li>
+        <li><strong>(E) 剩余缺口的精确化（§5–6）.</strong> 在当前 spf-comparator 路线下，将数值闭合提升为解析闭合需要偶数子族的定量 comparator margin 和条件密度下界。Scale attenuation 是 margin 估计的机制性引理。</li>
+      </ul>
+
+      <h3>1.3 记号</h3>
+      <p>沿用系列标准记号及 Paper XXVI 约定。$\rho_E(n)$：Erdős 加法复杂度，$\rho_E(1) = 0$。$M_n = \min_{ab=n,\, a,b\ge 2}(\rho_E(a)+\rho_E(b)+2)$；$M_p = +\infty$ 对素数。$\delta(n) = \rho_E(n) - \rho_E(n-1)$。$S(n) = \rho_E(n-1)+1-\rho_E(n)$（saving；$S(n) \geq 0$ 恒成立）。$H(n) = \rho_E(n)/\ln n$（height ratio）。$\text{spf}(n)$：$n$ 的最小素因子。条件期望 $E[F(n) \mid n \in C]$ 均指有限集经验均值：$E_N[F(n) \mid n \in C] = \tfrac{1}{|C \cap [1,N]|}\sum_{n \in C,\, n \le N} F(n)$。</p>
+
+      <hr>
+
+      <h2>§2 spf Comparator 的代数框架</h2>
+
+      <h3>2.1 Saving 下界</h3>
+      <p>对任意合数 $n$（$M_n$ 有限），设 $p = \text{spf}(n)$，$q = n/p$。由 $M_n$ 的定义：
+      $$M_n \leq \rho_E(p) + \rho_E(q) + 2.$$
+      定义 spf comparator gap：
+      $$\Delta_{\text{spf}}(n) = [\rho_E(n-1)+1] - [\rho_E(p) + \rho_E(q) + 2].$$</p>
+
+      <div class="thesis-box">
+        <p><strong>命题 1（saving 下界）.</strong> 对任意合数 $n$：
+        $$S(n) = \rho_E(n-1)+1-\rho_E(n) \geq (\Delta_{\text{spf}}(n))^{+} := \max(\Delta_{\text{spf}}(n),\; 0).$$</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>证明.</strong> $\rho_E(n) \leq M_n \leq \rho_E(p)+\rho_E(q)+2$，故 $S(n) \geq \Delta_{\text{spf}}(n)$。由 $S(n) \geq 0$，取正部得证。∎</p>
+      </div>
+
+      <div class="note-box">
+        <strong>注记.</strong> 不等式方向的关键：真实 saving $S(n)$ 可能大于 $(\Delta_{\text{spf}})^{+}$，因为 $M_n$ 可能由非 spf 分裂达到更低值。spf comparator 是 one-sided bound——只用了 $M_n$ 的一个上界候选。
+      </div>
+
+      <h3>2.2 负 drift 充分条件</h3>
+      <p>由 $\delta(n) = 1 - S(n)$ 和命题 1，取条件期望：</p>
+
+      <div class="thesis-box">
+        <p><strong>命题 2（负 drift 充分条件）.</strong> 对任意条件集 $C$：
+        $$E[\delta(n) \mid n \in C] \leq 1 - E[(\Delta_{\text{spf}}(n))^{+} \mid n \in C].$$
+        特别地，若 $C = \{n \text{ composite}, H(n-1) \geq h^{+}\}$，且 $E[(\Delta_{\text{spf}})^{+} \mid C] > 1$，则 $E[\delta \mid C] &lt; 0$。</p>
+      </div>
+
+      <hr>
+
+      <h2>§3 Height-Drift 单调性的完整去混杂</h2>
+
+      <h3>3.1 原始现象</h3>
+      <p>对 $N = 10^7$ 的全体合数，按 $H(n-1)$ 分 quintile，$E[\delta \mid \text{composite}]$ 从 Q1(low) 的 $+0.70$ 单调降到 Q5(high) 的 $-1.16$。</p>
+
+      <h3>3.2 去混杂层 1：(spf, $\Omega$) 分层</h3>
+      <p>在 28 个 (spf, $\Omega$) 组合内（spf $\in \{2,3,5,7\}$，$\Omega \in \{2,\ldots,8\}$），$E[\delta \mid H \text{ quintile}]$ 全部随 $H$ 严格递降。零例外。</p>
+
+      <h3>3.3 去混杂层 2：gap-position 分层</h3>
+      <p>将合数按 inter-prime gap 中的位置分为 first、middle、last、solo。</p>
+      <p><strong>数值观察 1.</strong> 在 middle-of-gap 子集内（排除首末位置效应），$E[\delta]$ 仍随 $H$ 严格单调递降：</p>
+      <table class="struct-table">
+        <thead><tr><th>$H$ quintile</th><th>$E[\delta]$ (middle-of-gap)</th></tr></thead>
+        <tbody>
+          <tr><td>Q1</td><td>+0.72</td></tr>
+          <tr><td>Q2</td><td>+0.41</td></tr>
+          <tr><td>Q3</td><td>+0.09</td></tr>
+          <tr><td>Q4</td><td>−0.30</td></tr>
+          <tr><td>Q5</td><td>−1.02</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.4 去混杂层 3：三重分层</h3>
+      <p>在 middle-of-gap + spf $= 2$ 条件下，进一步按 $\Omega$ 分层（$\Omega = 2$ 到 16，共 $15 \times 5 = 75$ 个数据点）：</p>
+      <p><strong>数值观察 2（三重去混杂）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$\Omega$</th><th>Q1(low)</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5(high)</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>+0.81</td><td>+0.67</td><td>+0.48</td><td>+0.21</td><td>−0.27</td></tr>
+          <tr><td>5</td><td>+0.49</td><td>+0.11</td><td>−0.25</td><td>−0.64</td><td>−1.27</td></tr>
+          <tr><td>8</td><td>−0.07</td><td>−0.63</td><td>−1.03</td><td>−1.47</td><td>−2.26</td></tr>
+          <tr><td>12</td><td>−0.86</td><td>−1.47</td><td>−1.87</td><td>−2.39</td><td>−3.30</td></tr>
+        </tbody>
+      </table>
+      <p><strong>75 个数据点，全部严格单调递降，零例外。</strong></p>
+
+      <h3>3.5 结论</h3>
+      <p>在已测试的 (spf, $\Omega$, gap-position) 三重分层内，height-drift 单调性无例外存在。$H(n-1)$ 对 composite drift 的效应不能由这些 arithmetic covariates 的混杂解释。</p>
+
+      <hr>
+
+      <h2>§4 上反射充分条件的数值确认</h2>
+
+      <h3>4.1 $E[(\Delta_{\text{spf}})^{+}]$ 的 $H$ 依赖</h3>
+      <p><strong>数值观察 3.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$H$ quintile</th><th>$E[(\Delta_{\text{spf}})^{+}]$</th><th>$> 1$?</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 (low)</td><td>0.19</td><td>NO</td></tr>
+          <tr><td>Q2</td><td>0.44</td><td>NO</td></tr>
+          <tr><td>Q3</td><td>0.72</td><td>NO</td></tr>
+          <tr><td><strong>Q4</strong></td><td><strong>1.08</strong></td><td><strong>YES</strong></td></tr>
+          <tr><td><strong>Q5</strong></td><td><strong>1.82</strong></td><td><strong>YES</strong></td></tr>
+        </tbody>
+      </table>
+      <p>Crossover 在 $H \approx 3.807$。从该点起每个 fine-bin 都 $> 1$，无振荡。</p>
+
+      <h3>4.2 Whole-population 聚合</h3>
+      <p>将充分条件分解为 spf 子族聚合：$E[(\Delta_{\text{spf}})^{+} \mid H \geq h^{+}] = \sum_{p} d_p \cdot a_p$。</p>
+      <p><strong>数值观察 4（子族聚合，Q5）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>spf</th><th>$d_p$</th><th>$a_p$</th><th>$d_p \cdot a_p$</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.663</td><td>1.913</td><td>1.269</td></tr>
+          <tr><td>3</td><td>0.170</td><td>2.088</td><td>0.354</td></tr>
+          <tr><td>5</td><td>0.051</td><td>1.764</td><td>0.090</td></tr>
+          <tr><td>7</td><td>0.024</td><td>1.223</td><td>0.030</td></tr>
+          <tr><td>其余</td><td>0.092</td><td>—</td><td>0.081</td></tr>
+          <tr><td><strong>总计</strong></td><td></td><td></td><td><strong>1.823</strong></td></tr>
+        </tbody>
+      </table>
+      <p><strong>仅 spf $= 2$ 子族（偶数）的贡献 $d_2 \cdot a_2 = 1.269$ 已 $> 1$。</strong>在高 $H$ 截断下偶数的条件密度 $d_2 \approx 0.663$ 高于其全局无条件密度（$\approx 0.5$），为聚合不等式提供了额外的正向余量。</p>
+
+      <h3>4.3 推论</h3>
+      <p>取 $h^{+} = 3.84$（Q5 下界）：
+      $$E[\delta \mid \text{composite},\; H \geq 3.84] \leq 1 - 1.823 = -0.823.$$
+      实测：$E[\delta \mid \text{composite}, H \geq 3.84] = -1.16$。差距来自 $M_n$ 的真实最优分裂优于 spf 分裂（one-sided bound 不 tight）。</p>
+
+      <h3>4.4 上反射判据的数值闭合</h3>
+      <div class="milestone-box">
+        <p><strong>数值结论.</strong> 在 $N = 10^7$ 的完整 DP 计算中，取 $h^{+} = 3.84$：
+        $$E[\delta(n) \mid n \text{ composite},\; H(n-1) \geq 3.84,\; n \leq N] \leq -0.82.$$
+        该不等式由命题 2 的代数链加上 $E[(\Delta_{\text{spf}})^{+} \mid H \geq 3.84] = 1.82 > 1$ 的数值验证推出。实测 $E[\delta] = -1.16$。解析证明需要 §5.5 所列的 even-dominance 路线中的 margin 与 density 下界。</p>
+      </div>
+
+      <hr>
+
+      <h2>§5 Scale Attenuation</h2>
+
+      <h3>5.1 动机</h3>
+      <p>上反射的充分条件 $E[(\Delta_{\text{spf}})^{+}] > 1$ 为何在高 $H$ 时成立？对偶数（spf $= 2$）：
+      $$\Delta_2(n) = \rho_E(n-1) - \rho_E(n/2) - 2.$$
+      当 $H(n-1)$ 偏高时，$\rho_E(n-1)$ 偏高。如果 $\rho_E(n/2)$ 也同步偏高到相同幅度，$\Delta_2$ 就不会增大。充分条件之所以成立，必须是 $\rho_E(n/2)$ 不跟 $\rho_E(n-1)$ 同步偏高——这就是 scale attenuation。</p>
+
+      <h3>5.2 直接测量</h3>
+      <p><strong>数值观察 5（scale attenuation，spf $= 2$）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>$H(n-1)$ bin</th><th>$E[H(n-1)]$</th><th>$E[H(n/2)]$</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 (low)</td><td>3.712</td><td>3.771</td><td>−0.059</td></tr>
+          <tr><td>Q3</td><td>3.794</td><td>3.791</td><td>+0.003</td></tr>
+          <tr><td>Q4</td><td>3.823</td><td>3.792</td><td>+0.031</td></tr>
+          <tr><td>Q5 (high)</td><td>3.872</td><td>3.787</td><td>+0.085</td></tr>
+        </tbody>
+      </table>
+      <p><strong>$E[H(n/2)]$ 锚定在 $\approx 3.79$，不随 $H(n-1)$ 上升。</strong></p>
+      <p>Fine-bin（高 $H$ 区域，spf $= 2$）：</p>
+      <table class="struct-table">
+        <thead><tr><th>$E[H(n-1)]$</th><th>$E[H(n/2)]$</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>3.826</td><td>3.792</td><td>+0.034</td></tr>
+          <tr><td>3.866</td><td>3.790</td><td>+0.076</td></tr>
+          <tr><td>3.906</td><td>3.780</td><td>+0.126</td></tr>
+          <tr><td>3.945</td><td>3.763</td><td>+0.182</td></tr>
+          <tr><td>3.986</td><td>3.734</td><td>+0.252</td></tr>
+          <tr><td>4.028</td><td>3.694</td><td>+0.333</td></tr>
+        </tbody>
+      </table>
+      <p>当 $H(n-1)$ 从 3.83 涨到 4.03，$E[H(n/2)]$ 从 3.79 降到 3.69。$H(n-1)$ 越高，$H(n/2)$ 反而越低。</p>
+
+      <h3>5.3 衰减比</h3>
+      <p>定义 $\text{excess\_parent} = H(n-1) - h_0$，$\text{excess\_child} = H(n/2) - h_0$，$h_0 = 3.80$。</p>
+      <p><strong>数值观察 6（衰减比）.</strong> 在 $H(n-1) > h_0$ 条件下（spf $= 2$）：</p>
+      <table class="struct-table">
+        <thead><tr><th>$H$ bin</th><th>$E[\text{ratio}]$</th><th>$P(\text{ratio} &lt; 1)$</th></tr></thead>
+        <tbody>
+          <tr><td>Q4</td><td>−0.36</td><td>77.2%</td></tr>
+          <tr><td>Q5</td><td>−0.17</td><td>93.7%</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p>衰减比为<strong>负</strong>：当 parent 在 $h_0$ 上方，child 平均在 $h_0$ 下方。大尺度的 height excursion 未能传递到小尺度——小尺度的 $H(n/2)$ 呈现出极强的刚性，锚定在其无条件均值附近。这种去耦合效应是上反射判据成立的核心微观机制。</p>
+      </div>
+
+      <h3>5.4 机制解读</h3>
+      <p>$\rho_E(n/2)$ 是 DP 在 $n/2$ 处的值——它在 $\rho_E(n-1)$ 之前被计算。从 $n/2$ 到 $n-1$ 经历了约 $n/2$ 步的演化。如果 $H(n-1)$ 偏高，意味着这 $n/2$ 步中发生了 additive 路径的异常累积。$n/2$ 处的 $\rho_E$ 反映的是 excursion 之前的状态——它不携带 excursion 的信息。</p>
+      <div class="note-box">
+        <strong>注记.</strong> DP 的时间顺序使得 scale attenuation 成为自然的预期：小尺度的 $\rho_E$ 在大尺度 excursion 建立之前就已经被确定。但时间顺序本身不构成 attenuation 的证明——定量的衰减幅度仍需独立估计。
+      </div>
+
+      <h3>5.5 解析目标</h3>
+      <div class="thesis-box">
+        <p><strong>主解析目标.</strong> 定义 $C_N(h^{+}) = \{n \leq N : n \text{ composite}, H(n-1) \geq h^{+}\}$。证明存在 $h^{+} > 0$, $c > 0$ 使得对充分大的 $N$：
+        $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] > 1 + c.$$</p>
+      </div>
+      <p><strong>一条具体的 sufficient route（even-dominance 版本）.</strong> 定义 $C_{2,N}(h^{+}) = C_N(h^{+}) \cap \{\text{spf}(n) = 2\}$，并记 $d_2(h^{+}, N) = P(\text{spf}(n)=2 \mid C_N(h^{+}))$，$a_2(h^{+}, N) = E[(\Delta_2)^{+} \mid C_{2,N}(h^{+})]$。若能证明：</p>
+      <ul>
+        <li><strong>(i) 定量 comparator margin.</strong> $a_2(h^{+}, N) \geq A_0$ 对充分大的 $N$ 成立。</li>
+        <li><strong>(ii) 偶数条件密度下界.</strong> $d_2(h^{+}, N) \geq d_0$。</li>
+        <li><strong>(iii)</strong> $d_0 \cdot A_0 > 1 + c$。</li>
+      </ul>
+      <p>则 $E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] \geq d_2 \cdot a_2 \geq d_0 \cdot A_0 > 1 + c$ 即得主目标。</p>
+      <p><strong>Scale attenuation 作为 (i) 的机制性引理.</strong> 如果能将 §5.2–5.3 的数据量化为
+      $$E[\rho_E(n/2) \mid C_{2,N}(h^{+})] \leq h^{+} \cdot E[\ln(n-1) \mid C_{2,N}(h^{+})] - (3 + \eta)$$
+      对某个 $\eta > 0$，则 $a_2 \geq 1 + \eta$ 随之成立。</p>
+      <p><strong>数值状态.</strong> 在 $N = 10^7$ 下，$d_2 \approx 0.663$，$a_2 \approx 1.91$，$d_2 \cdot a_2 \approx 1.27 > 1$。解析证明是本系列当前路线的核心开放问题。</p>
+
+      <hr>
+
+      <h2>§6 高端与低端的不对称</h2>
+
+      <h3>6.1 spf comparator 的 one-sided 性质</h3>
+      <p>命题 1–2 给出的是<strong>上反射</strong>的充分条件。低端（$H &lt; h^{-}$ 时 $E[\delta] > 0$）不能用同一机制推出。</p>
+      <p>原因：$(\Delta_{\text{spf}})^{+} = 0$ 只说明 spf 这一个 comparator 输给了 additive 路径，但 $M_n$ 是对所有因子分解取 min，可能有别的更平衡的分裂仍然赢。低端正 drift（$E[\delta] = +0.70$ at Q1）来自不同机制：在低 $H$ 时，跳跃概率低（$P(j \geq 1) = 26\%$），additive 路径主导。形式化这一机制需要不同工具，留待 Paper XXVIII。</p>
+
+      <h3>6.2 Paper XXVII 与后续的分工</h3>
+      <table class="struct-table">
+        <thead><tr><th>定理/猜想</th><th>机制</th><th>所在 paper</th></tr></thead>
+        <tbody>
+          <tr><td>上反射：$E[\delta \mid H \geq h^{+}] &lt; 0$</td><td>spf comparator: $E[(\Delta_{\text{spf}})^{+}] > 1$</td><td><strong>Paper XXVII</strong></td></tr>
+          <tr><td>下反射：$E[\delta \mid H \leq h^{-}] > 0$</td><td>跳跃概率在低 $H$ 有上界</td><td>Paper XXVIII</td></tr>
+          <tr><td>Pred gap $> \tau_k$</td><td>双边反射 + 素数注入 + dyadic 控制</td><td>Paper XXVIII–XXIX</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>§7 辅助结构</h2>
+
+      <h3>7.1 $h_0$ 的 $N$ 稳定性</h3>
+      <p>height-drift 过零点 $h_0(N)$：</p>
+      <table class="struct-table">
+        <thead><tr><th>$N$</th><th>$h_0$</th></tr></thead>
+        <tbody>
+          <tr><td>$10^4$</td><td>3.727</td></tr>
+          <tr><td>$10^5$</td><td>3.763</td></tr>
+          <tr><td>$10^6$</td><td>3.786</td></tr>
+          <tr><td>$10^7$</td><td>3.800</td></tr>
+        </tbody>
+      </table>
+      <p>$h_0$ 单调递增，增速递减，外推收敛到 $h_0^\infty \approx 3.82$–$3.85$。</p>
+
+      <h3>7.2 好因子分解的不平衡性</h3>
+      <p>winning factorization 的 balance ratio $\min(a,b)/\max(a,b)$：中位数 $0.0007$。典型的好因子分解由最小素因子主导（低 $\Omega$ 时）。高 $\Omega$ 时 balance 升至 $0.68$——但 Sathe–Selberg 权重使高 $\Omega$ 数极稀疏。</p>
+
+      <h3>7.3 Inter-prime gap 内的 drift 结构</h3>
+      <table class="struct-table">
+        <thead><tr><th>位置</th><th>$E[\delta]$</th></tr></thead>
+        <tbody>
+          <tr><td>第一个（紧接前一个素数）</td><td>−0.937</td></tr>
+          <tr><td>中间</td><td>+0.023</td></tr>
+          <tr><td>最后一个</td><td>−0.328</td></tr>
+        </tbody>
+      </table>
+      <p>第一步的强负 drift 是"素数推高 $\rho_E$ → 下一个合数拉回"的逐步实现。</p>
+
+      <h3>7.4 技术注记：$H(n)$ 与 Markov 性</h3>
+      <p>$H(n)$ 是确定性算术序列，不是 Markov chain。Foster–Lyapunov 等稳态理论的完整应用需要先定义合适的随机化/采样过程。Paper XXI 的 Lindley 同构提供接口。在本文范围内，上反射判据只涉及条件期望的符号控制——不需要 Markov 结构。完整的稳态理论留待后续工作。</p>
+
+      <hr>
+
+      <h2>§8 讨论</h2>
+
+      <h3>8.1 上反射的物理图景</h3>
+      <p>高 $H$ 时合数 drift 为负的微观机制：$\rho_E(n-1)$ 偏高意味着从 $n/2$ 到 $n-1$ 经历了 additive 路径的异常累积。但 $M_n \leq \rho_E(\text{spf}(n)) + \rho_E(n/\text{spf}(n)) + 2$ 中，$\rho_E(n/\text{spf}(n))$ 反映的是 excursion 之前的 DP 状态。因此 excursion 越高，spf 分裂的 saving 越大，跳跃概率越高，负 drift 越强。</p>
+      <p>这是一个<strong>时间不对称</strong>效应：$\rho_E$ 的 height excursion 在 $[n/2, n-1]$ 的正向演化中积累，而 $M_n$ 的 spf 分裂引用的 $\rho_E(n/2)$ 在 excursion 之前就已经被计算——它"看不到" excursion。</p>
+
+      <h3>8.2 与 Paper XXVI 的关系</h3>
+      <p>Paper XXVI 建立了"素数驱动增长，合数是净消耗者"的全局图景。本文精确回答了<strong>为什么</strong>合数是净消耗者：$\rho_E$ 在相当大的比例上运行在 $h_0$ 上方，此时合数的负 drift 主导。系统之所以不崩溃，是因为素数的确定性 $+1$ 不断注入正增量，将 $\rho_E$ 推回 $h_0$ 附近。</p>
+
+      <h3>8.3 开放问题</h3>
+      <ol>
+        <li><strong>偶数子族的 comparator margin 与密度下界（§5.5）.</strong> 在当前 spf-comparator 路线下，这是将数值闭合提升为解析闭合的核心开放问题。Scale attenuation 是建立 margin 下界的最自然路线。</li>
+        <li><strong>下反射定理.</strong> 证明低 $H$ 时 $E[\delta \mid \text{composite}] > 0$。需要证明跳跃概率在低 $H$ 有上界。</li>
+        <li><strong>从双边反射到 pred gap 正性.</strong> 即使 $\rho_E$ 被锁定在带内，仍需在 dyadic 区间尺度上做精确的素数-合数平衡计算。</li>
+        <li><strong>$h_0$ 的精确渐近.</strong> $h_0(N)$ 是否收敛？极限值与 PNT 或 Mertens 定理的关系？</li>
+        <li><strong>Chebyshev 界的推论.</strong> 如果上反射可以推广为 $S_{\text{comp}}(N) = -\Theta(N/\ln N)$ 的量级控制，Chebyshev 界 $\pi(N) = \Theta(N/\ln N)$ 将是直接推论。</li>
+      </ol>
+
+      <h3>8.4 致谢</h3>
+      <p>ChatGPT 5.4 Pro 提出了负 drift 的正确充分条件 $E[(\Delta_{\text{spf}})^{+}] > 1$（§2.2），识别了高端/低端不对称的 one-sided 性质（§6），指出了 scale attenuation 是核心瓶颈（§5），以及子族聚合的必要性（§4.2）。Gemini 建议用 Foster–Lyapunov 替代严格单调性。Grok 保证了与前 26 篇的一致性。Claude 编写了全部数值计算脚本（Blocks 1–5）并起草了 working notes v1–v3。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <hr>
+
+      <h2>§9 数据来源与可复现性</h2>
+      <p>所有数值结果基于完整 DP（$N = 10^7$，SPF sieve + multiplicative sieve）。所有 sanity check 通过：$\rho_E(10^7) = 58$。</p>
+      <table class="struct-table">
+        <thead><tr><th>脚本</th><th>测量</th><th>§引用</th></tr></thead>
+        <tbody>
+          <tr><td>p27_block12.py</td><td>反射壁 + 好因子分解 + inter-prime drift</td><td>§3.1, §7</td></tr>
+          <tr><td>p27_block3.py</td><td>(spf,$\Omega$) 去混杂 + $\Delta_{\text{spf}}$ height 依赖 + $h_0$ 稳定性</td><td>§3.2, §4.1, §7.1</td></tr>
+          <tr><td>p27_block4.py</td><td>gap-position 去混杂 + $E[(\Delta_{\text{spf}})^{+}] > 1$</td><td>§3.3–3.4, §4.1</td></tr>
+          <tr><td>p27_block5.py</td><td>子族聚合 + scale attenuation + 衰减比</td><td>§4.2, §5</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXVI. H. Qin. Paper I: <a href="https://doi.org/10.5281/zenodo.18914682" target="_blank" rel="noopener">10.5281/zenodo.18914682</a>. Paper XXI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>. Paper XXV: <a href="https://doi.org/10.5281/zenodo.19054726" target="_blank" rel="noopener">10.5281/zenodo.19054726</a>. Paper XXVI: <a href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">10.5281/zenodo.19059834</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>H. Altman (2014). Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ 系列 &nbsp;·&nbsp;</span>
+        <a href="zfcrho26.html">← 论文 XXVI：素数源项</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        论文 XXVIII →
+      </div>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
