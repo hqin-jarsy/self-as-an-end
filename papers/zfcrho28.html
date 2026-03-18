@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Scale Attenuation, Weighted Attenuation Decomposition, and a Three-Step Framework for Lower Reflection — ZFCρ Paper XXVIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXVIII: Universal scale attenuation across six divisors (zero exceptions). Weighted attenuation decomposition Δ₂ = W₂ + B₂ (exact). Even-slice surplus E[(Δ₂)⁺] stable 1.80–2.43. Three-step lower reflection program: density lower bound + unconditional tail + bulk lemma.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, scale attenuation, weighted attenuation, lower reflection, criterion surplus, three-step framework, Sathe-Selberg, 下反射, scale attenuation, 加法复杂度">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Universal Scale Attenuation, Weighted Attenuation Decomposition, and a Three-Step Framework for Lower Reflection">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho28.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Universal Scale Attenuation, Weighted Attenuation Decomposition, and a Three-Step Framework for Lower Reflection",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho28.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19078654"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "scale attenuation", "weighted attenuation",
+      "lower reflection", "criterion surplus", "three-step framework", "Sathe-Selberg"
+    ],
+    "abstract": "Universal scale attenuation confirmed across six divisors (d=2–7) with zero exceptions. Weighted attenuation decomposition Δ₂ = W₂ + B₂ (exact identity). Even-slice surplus E[(Δ₂)⁺] decays slowly from 2.43 (N=10⁴) to 1.80 (N=10⁹), well above 1 throughout. Three-step lower reflection program: density lower bound P(H≤h⁻)≥α>0; unconditional tail E[j·1_{Ω>K}]/α; bulk lemma E[j|H≤h⁻,Ω≤K]<1−c₀. Asymmetric quantifier structure: upper reflection is an ∃-lemma, lower reflection requires ∀-type family control.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho28.html">
+  <meta name="citation_title" content="Universal Scale Attenuation, Weighted Attenuation Decomposition, and a Three-Step Framework for Lower Reflection">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19078654">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho28.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .proof-box p + p { margin-top: 0.5rem; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; background: #fff; border-color: #e0e0e0; border-bottom-color: #fff; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        displayMath: [['$$','$$'],['\\[','\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-L4M3nDNBvlGCzGj88T3eI9h9XMzH4RKwMa2SbDBFGbNz6R+r9yMPk3sSRFGJLYWmgCCFGm5NmJLm1lc5Fqag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+      document.getElementById('lang-' + lang).classList.add('active');
+      if (lang === 'en') {
+        document.title = 'Universal Scale Attenuation, Weighted Attenuation Decomposition, and a Three-Step Framework for Lower Reflection — ZFCρ Paper XXVIII — Han Qin';
+      } else {
+        document.title = '普适 Scale Attenuation、Weighted Attenuation 分解与下反射的三段式 Program — ZFCρ 论文 XXVIII — 秦汉';
+      }
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="nav-home">Han Qin</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </div>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXVIII</div>
+      <h1 class="paper-title">Universal Scale Attenuation, Weighted Attenuation Decomposition, and a Three-Step Framework for Lower Reflection</h1>
+      <div class="paper-authors">Han Qin · <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID: 0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener" class="zenodo-link">DOI: 10.5281/zenodo.19078654</a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We study the correlation decay of the height ratio $H(n) = \rho_E(n)/\ln n$ across different scales (scale attenuation) in the Erdős additive complexity recurrence, and apply it to the stability analysis of the upper reflection criterion surplus and to the analytic framework for lower reflection.</p>
+        <p>Two algebraic results are established. (<strong>Proposition 1</strong>) The exact identity $\delta(n) = 1 - j(n)$, directly linking the $\rho$-increment to the jump function. (<strong>Proposition 2</strong>) Weighted attenuation decomposition: $\Delta_2(n) = W_2(n) + B_2(n)$ (pointwise exact), where $W_2 = (H(n-1)-H(n/2))\cdot\ln(n/2)$ is the logarithmically weighted attenuation contribution and $B_2$ asymptotically approaches $H(n-1)\cdot\ln 2 - 2$. The exact lower bound $E[(\Delta_2)^+] \geq E[\Delta_2] = E[W_2] + E[B_2]$ yields a rigorous lower bound for the even-slice surplus; aggregation via the conditional density $d_2(C) \approx 0.66$ then provides a lower-bound route for the overall criterion surplus.</p>
+        <p>Systematic numerical findings are reported ($N = 10^9$, full DP). Scale attenuation is confirmed across six distinct divisors ($d = 2, 3, 4, 5, 6, 7$) with zero exceptions; attenuation strength generally increases with $d$. Fixed absolute threshold tests confirm that attenuation is not a quantile artifact. The even-slice surplus $E[(\Delta_2)^+]$ decreases slowly from 2.43 ($N = 10^4$) to 1.80 ($N = 10^9$), remaining well above 1 throughout. $W_2$ is the principal attenuation component; $B_2$ provides an attenuation-independent baseline. The overall criterion surplus $E[(\Delta_{\text{spf}})^+]$ remains above 1.8 at all tested scales ($N \leq 10^7$), sustained via the even-slice aggregation lower-bound route.</p>
+        <p>For lower reflection (positive drift at low $H$), a three-step analytic program is proposed: (1) density lower bound $P(H \leq h^-) \geq \alpha > 0$; (2) unconditional tail control $E[j\cdot\mathbf{1}_{\Omega>K}]/\alpha$; (3) bulk lemma $E[j \mid H \leq h^-, \Omega \leq K] < 1 - c_0$. This framework avoids direct estimation of conditional Sathe-Selberg densities, though the asymptotic version requires $K = K(N) \to \infty$, introducing additional analytic inputs. Numerical evidence confirms no systematic "rescue squad" phenomenon: $P(j=0) = 73.9\%$ at low $H$, and high-$\Omega$ rescue squads are suppressed by Sathe-Selberg weights.</p>
+        <p>The asymmetry between upper and lower reflection is precisely characterized: upper reflection is an $\exists$-lemma (one good split suffices), while lower reflection manifests proof-wise as a $\forall$-type family-control problem (controlling the expected behavior of the best split). The same attenuation phenomenon drives both directions, but the proofs require different structures.</p>
+        <p><strong>Keywords:</strong> additive complexity, scale attenuation, weighted attenuation, lower reflection, three-step framework, criterion surplus</p>
+      </div>
+
+      <hr>
+
+      <h2>1. Introduction</h2>
+
+      <h3>1.1 Background and scope</h3>
+      <p>Paper XXVII established the upper reflection criterion: $E[(\Delta_{\text{spf}})^+ \mid H \geq h^+] > 1$ is a sufficient condition for negative composite drift at high $H$, verified numerically at $N = 10^7$ ($E[(\Delta_{\text{spf}})^+] = 1.82 > 1$). Paper XXVII also identified the two analytic inputs required for upgrading this to a theorem: a quantitative comparator margin on the even subfamily and a conditional density lower bound.</p>
+      <p>The present paper does three things: (1) extends the $n/2$ scale attenuation of Paper XXVII to a six-divisor universal family; (2) explains, via the weighted attenuation $W_2$ decomposition, why the criterion surplus remains stable as $N$ grows; (3) establishes a three-step analytic program for lower reflection (positive drift at low $H$), avoiding conditional Sathe-Selberg density estimation.</p>
+      <p>This paper does not claim to complete the analytic proof of either upper or lower reflection.</p>
+
+      <h3>1.2 Contributions</h3>
+      <p><strong>(A)</strong> Exact identity $\delta = 1 - j$ (§2), the core algebraic tool throughout.</p>
+      <p><strong>(B)</strong> Universal scale attenuation family (§3). Six divisors, zero exceptions, plus fixed-threshold confirmation.</p>
+      <p><strong>(C)</strong> Weighted attenuation decomposition and even-slice surplus (§4). Pointwise exact identity $\Delta_2 = W_2 + B_2$. The even-slice $E[(\Delta_2)^+]$ decreases from 2.43 ($N = 10^4$) to 1.80 ($N = 10^9$), remaining well above 1 throughout. Via $E[(\Delta_{\text{spf}})^+] \geq d_2 \cdot E[(\Delta_2)^+]$ ($d_2 = P(\text{spf}=2 \mid C) \approx 0.66$), the even slice alone suffices to maintain the overall criterion surplus above 1 at tested scales.</p>
+      <p><strong>(D)</strong> Three-step lower reflection program (§5). Density lower bound + unconditional tail + bulk lemma. No systematic rescue-squad phenomenon.</p>
+      <p><strong>(E)</strong> Asymmetric quantifier structure of upper vs lower reflection (§6). $\exists$-lemma vs $\forall$-type family control.</p>
+
+      <h3>1.3 Notation</h3>
+      <p>Series conventions and Paper XXVI–XXVII notation apply. $\rho_E(n)$, $M_n$, $\delta(n)$, $S(n)$, $H(n)$, $\text{spf}(n)$ as in Paper XXVII §1.3. $\Delta_{\text{spf}}(n) = [\rho_E(n-1)+1] - [\rho_E(\text{spf}(n)) + \rho_E(n/\text{spf}(n)) + 2]$. Throughout, $E[F(n) \mid n \in C]$ denotes the finite-set empirical average over $\{n \leq N\} \cap C$.</p>
+
+      <hr>
+
+      <h2>2. Exact Identity δ = 1 − j</h2>
+
+      <div class="thesis-box">
+        <p><strong>Proposition 1.</strong> For all $n \geq 2$ (with the series convention $M_p = +\infty$ for primes):</p>
+        <p>$$S(n) = \rho_E(n-1)+1-\rho_E(n) = j(n) = \max(\rho_E(n-1)+1-M_n,\; 0)$$</p>
+        <p>and hence $\delta(n) = 1 - j(n)$.</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>Proof.</strong> From $\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$:</p>
+        <p><em>Case 1</em> ($M_n \geq \rho_E(n-1)+1$): $\rho_E(n) = \rho_E(n-1)+1$, so $S(n) = 0$. Since $\rho_E(n-1)+1 - M_n \leq 0$, we have $j(n) = \max(\rho_E(n-1)+1 - M_n, 0) = 0$. ✓</p>
+        <p><em>Case 2</em> ($M_n &lt; \rho_E(n-1)+1$): $\rho_E(n) = M_n$, so $S(n) = \rho_E(n-1)+1 - M_n > 0$. Then $j(n) = \max(\rho_E(n-1)+1 - M_n, 0) = \rho_E(n-1)+1 - M_n = S(n)$. ✓ ∎</p>
+      </div>
+
+      <p><strong>Corollary.</strong> $E[\delta \mid C] = 1 - E[j \mid C]$ for any conditioning set $C$. Upper reflection ($E[\delta] &lt; 0$) $\Longleftrightarrow$ $E[j] > 1$. Lower reflection ($E[\delta] > 0$) $\Longleftrightarrow$ $E[j] &lt; 1$.</p>
+
+      <hr>
+
+      <h2>3. Universal Scale Attenuation Family</h2>
+
+      <h3>3.1 Six-divisor data</h3>
+      <p>For $d = 2, 3, 4, 5, 6, 7$, measured at high $H$ (Q5):</p>
+
+      <div class="milestone-box">
+        <p><strong>Numerical Observation 1 (Universal attenuation).</strong></p>
+      </div>
+      <table class="struct-table">
+        <thead><tr><th>Divisor d</th><th>E[H(n−1)]</th><th>E[H(n/d)]</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>3.872</td><td>3.787</td><td>+0.085</td></tr>
+          <tr><td>3</td><td>3.874</td><td>3.782</td><td>+0.092</td></tr>
+          <tr><td>4</td><td>3.875</td><td>3.781</td><td>+0.095</td></tr>
+          <tr><td>5</td><td>3.873</td><td>3.774</td><td>+0.099</td></tr>
+          <tr><td>6</td><td>3.877</td><td>3.778</td><td>+0.099</td></tr>
+          <tr><td>7</td><td>3.872</td><td>3.763</td><td>+0.109</td></tr>
+        </tbody>
+      </table>
+      <p><strong>All six scales confirm attenuation with zero exceptions.</strong> The gap generally increases with $d$ (from 0.085 at $d = 2$ to 0.109 at $d = 7$), reflecting the greater DP distance between $n/d$ and $n$: excursion information decays more over longer evolutionary spans.</p>
+
+      <h3>3.2 Fixed-threshold confirmation</h3>
+      <p><strong>Numerical Observation 2.</strong> Using the fixed absolute threshold $H \geq 3.84$ (not quantile-based), the gap for $d = 2$ decreases from $+0.223$ ($N = 10^4$) to $+0.070$ ($N = 10^8$), remaining positive throughout. The trend is consistent with quantile-based results. Scale attenuation is not a quantile-sliding artifact.</p>
+
+      <h3>3.3 Divisor-dependent inequality family</h3>
+      <p>The data supports a family of band inequalities: for each divisor $d$,</p>
+      $$E[H(n/d) \mid H(n-1) \geq h^{+},\; d \mid n,\; n \leq N] \leq h^{+} - \eta_d^{+}(N)$$
+      $$E[H(n/d) \mid H(n-1) \leq h^{-},\; d \mid n,\; n \leq N] \geq h^{-} + \eta_d^{-}(N)$$
+      <p>where $\eta_d$ depends on $d$ and $N$, and all divisors share an approximate fixed point $h_0 \approx 3.80$ ($N = 10^7$).</p>
+
+      <h3>3.4 Physical interpretation</h3>
+      <p>$\rho_E(n/d)$ is computed by the DP at position $n/d$, before $\rho_E(n-1)$. The evolution from $n/d$ to $n-1$ spans $n(1-1/d)$ steps. Height excursions ($\rho_E(n-1)$ deviating above its mean) accumulate during these steps; the value at $n/d$ reflects the pre-excursion state. Larger $d$ means $n/d$ is further from $n-1$, so excursion information decays more.</p>
+      <div class="note-box"><strong>Remark.</strong> The DP time ordering makes scale attenuation a natural expectation, but time ordering alone does not constitute a quantitative proof.</div>
+
+      <hr>
+
+      <h2>4. Weighted Attenuation W₂ and Stability of the Criterion Surplus</h2>
+
+      <h3>4.1 Identification of the key object</h3>
+      <p>Paper XXVII focused on the raw attenuation gap $H(n-1) - H(n/2)$, which decays with $N$. However, the object truly relevant to the criterion surplus is the logarithmically weighted attenuation.</p>
+      <p>For even composites $n$ (i.e., $\text{spf}(n) = 2$), with $\rho_E(2) = 1$, the exact identity is:</p>
+      $$\Delta_2(n) = \rho_E(n-1) - \rho_E(n/2) - 2$$
+      <p>Rewriting in terms of $H$ (exact version):</p>
+      $$\Delta_2(n) = \underbrace{(H(n-1)-H(n/2)) \cdot \ln(n/2)}_{W_2(n) \text{ (weighted attenuation)}} + \underbrace{H(n-1) \cdot \ln\!\left(\frac{2(n-1)}{n}\right) - 2}_{B_2(n) \text{ (baseline term)}}$$
+      <p>For large $n$, $\ln(2(n-1)/n) = \ln(2-2/n) \to \ln 2$, so $B_2(n) \to H(n-1)\cdot\ln 2 - 2$. For finite $n$, $\ln(2-2/n) &lt; \ln 2$, hence $B_2(n) &lt; H(n-1)\cdot\ln 2 - 2$ pointwise. Define the asymptotic baseline target $b(h^+) = h^+\cdot\ln 2 - 2$; for finite $N$, the precise conditional expectation $E[\ln(2-2/n) \mid C]$ should be used (see §4.5), rather than $b(h^+)$ itself as a ready-made lower bound. At tested scales $N \geq 10^4$, $E[\ln(2-2/n) \mid C]$ is extremely close to $\ln 2$ (numerically &lt; 0.001 difference), though this is an empirical observation.</p>
+
+      <div class="thesis-box">
+        <p><strong>Proposition 2 (Weighted attenuation decomposition — exact identity).</strong> For even composites $n$:</p>
+        <p>$$\Delta_2(n) = W_2(n) + B_2(n)$$</p>
+        <p>This is a pointwise exact identity. Taking conditional expectations (with the conditioning set $C$ restricted to even composites, i.e., $C \subseteq \{n : \text{spf}(n) = 2\}$) and using $E[(\Delta_2)^+] \geq E[\Delta_2]$ (since $(x)^+ \geq x$), we obtain the exact lower bound:</p>
+        <p>$$E[(\Delta_2)^{+} \mid C] \geq E[W_2 \mid C] + E[B_2 \mid C]$$</p>
+        <p>No empirical assumption about "$\Delta_2$ being mostly positive" is required.</p>
+      </div>
+
+      <h3>4.2 N-stability of W₂</h3>
+      <p>The $W_2$ column below is the empirical mean of pointwise $W_2(n) = (H(n-1)-H(n/2))\cdot\ln(n/2)$ over the conditioning set $C_{2,N}(h^+)$ (not the product of $E[\text{raw gap}] \times E[\ln(n/2)]$). The $B_2$ column is likewise the empirical mean of pointwise $B_2(n)$.</p>
+
+      <p><strong>Numerical Observation 3.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>raw gap</th><th>E[ln(n/2)]</th><th>W₂</th><th>B₂</th><th>E[(Δ₂)⁺]</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>0.223</td><td>7.8</td><td>1.73</td><td>0.70</td><td>2.43</td></tr>
+          <tr><td>10⁵</td><td>0.150</td><td>10.0</td><td>1.47</td><td>0.69</td><td>2.16</td></tr>
+          <tr><td>10⁶</td><td>0.108</td><td>12.2</td><td>1.31</td><td>0.69</td><td>2.00</td></tr>
+          <tr><td>10⁷</td><td>0.085</td><td>14.5</td><td>1.22</td><td>0.68</td><td>1.90</td></tr>
+          <tr><td>10⁸</td><td>0.070</td><td>16.8</td><td>1.16</td><td>0.68</td><td>1.84</td></tr>
+          <tr><td>10⁹</td><td>0.059</td><td>19.1</td><td>1.11</td><td>0.68</td><td>1.80</td></tr>
+        </tbody>
+      </table>
+      <p>$W_2$ decreases slowly (1.73 → 1.11), with diminishing rate of decrease (Δ = −0.26, −0.16, −0.09, −0.06, −0.05). Observed $E[B_2] \approx 0.68$, stable (slightly above the asymptotic lower-bound target $b(h^+) \approx 0.66$).</p>
+      <p><strong>Decomposition verification:</strong> $E[W_2] + E[B_2] = E[\Delta_2] = 1.9027$, $E[(\Delta_2)^+] = 1.9049$ ($N = 10^7$). The inequality $E[(\Delta_2)^+] \geq E[\Delta_2]$ holds (the gap 0.0022 arises from a small fraction of $\Delta_2 &lt; 0$ contributions), confirming that $\Delta_2$ is overwhelmingly positive under high-$H$ conditioning.</p>
+
+      <h3>4.3 Why the even-slice surplus does not vanish</h3>
+      <p>The raw gap decays at approximately $C/\ln N$. However, multiplied by $\ln(n/2) \approx \ln N$, $W_2 \approx C\cdot\ln N / \ln N = C$ — compatible with a constant. The diminishing rate of $W_2$ decline is consistent with this.</p>
+      <p>The asymptotic baseline lower bound $b(h^+) = h^+\cdot\ln 2 - 2 > 0$ holds whenever $h^+ > 2/\ln 2 \approx 2.885$ (known: $h^+ = 3.84 \gg 2.885$). This positive floor derives purely from arithmetic: $\ln(n-1) - \ln(n/2) \to \ln 2$.</p>
+      <p>Using the exact lower bound $E[(\Delta_2)^+] \geq E[W_2] + E[B_2]$: even if $E[W_2] \to 0$ (requiring raw gap decay faster than $1/\ln N$, contradicted by data), $E[B_2]$ provides a positive contribution at tested scales (approximately 0.68, with asymptotic lower-bound target $b(h^+) \approx 0.66$; the observed value is slightly higher because $E[H(n-1) \mid C] > h^+$ on the conditioning set) — but this alone is insufficient to exceed 1. The data supports $E[W_2]$ not tending to zero, and possibly approaching a positive constant (of order 1), keeping the even-slice $E[(\Delta_2)^+]$ stable at approximately 1.8 at tested scales.</p>
+      <p><strong>From even-slice to overall criterion surplus.</strong> By the aggregation framework of Paper XXVII:</p>
+      $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] \geq d_2(C) \cdot E[(\Delta_2)^{+} \mid C_{2,N}(h^{+})]$$
+      <p>where $d_2(C) = P(\text{spf}(n) = 2 \mid C_N(h^+))$, $C_{2,N}(h^+) = C_N(h^+) \cap \{\text{spf}(n) = 2\}$. Numerically $d_2 \approx 0.66$. Hence the overall surplus $\geq 0.66 \times 1.80 \approx 1.19 > 1$ ($N = 10^9$).</p>
+
+      <h3>4.4 H sub-bin decomposition</h3>
+      <p><strong>Numerical Observation 4.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>H range</th><th>W₂</th><th>B₂</th><th>E[(Δ₂)⁺]</th></tr></thead>
+        <tbody>
+          <tr><td>[3.84, 3.89]</td><td>1.00</td><td>0.68</td><td>1.68</td></tr>
+          <tr><td>[3.89, 3.94]</td><td>1.95</td><td>0.71</td><td>2.66</td></tr>
+          <tr><td>[3.94, 4.00]</td><td>3.10</td><td>0.74</td><td>3.84</td></tr>
+          <tr><td>[4.00, 4.05]</td><td>4.35</td><td>0.78</td><td>5.12</td></tr>
+        </tbody>
+      </table>
+      <p>$W_2$ is monotonically increasing across the four tested $H$ sub-bins. The higher $H$ is, the stronger the weighted attenuation and the larger the criterion surplus.</p>
+
+      <h3>4.5 Analytic target for upper reflection</h3>
+      <p><strong>Main target.</strong> Prove that there exist $h^+ > 0$, $c > 0$ such that for all sufficiently large $N$:</p>
+      $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] > 1 + c.$$
+      <p><strong>Even-dominance sufficient route.</strong> Define $d_2(C) = P(\text{spf}(n) = 2 \mid C_N(h^+))$. By</p>
+      $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] \geq d_2(C) \cdot E[(\Delta_2)^{+} \mid C_{2,N}(h^{+})]$$
+      <p>and Proposition 2's exact lower bound $E[(\Delta_2)^+] \geq E[W_2] + E[B_2]$:</p>
+      <ul>
+        <li>$E[B_2 \mid C] \geq h^+ \cdot E[\ln(2-2/n) \mid C] - 2$ (exact, from $H(n-1) \geq h^+$ pointwise). For large $N$, $E[\ln(2-2/n) \mid C] \to \ln 2$, so $E[B_2]$ asymptotically approaches $b(h^+) = h^+\cdot\ln 2 - 2 \approx 0.66$ (asymptotic positive lower-bound target). At tested scales, $E[B_2] \approx 0.68$, slightly above $b(h^+)$ because $E[H(n-1) \mid C] \approx 3.87 > h^+ = 3.84$.</li>
+        <li>Required: $E[W_2(N; h^+)] \geq W_0 > 0$ for all large $N$.</li>
+        <li>Required: $d_2(C) \geq d_0 > 0$ (even conditional density has a positive lower bound).</li>
+        <li>Combined: $d_0 \cdot (W_0 + b(h^+)) > 1$ (numerically $d_2 \approx 0.66$, $W_2 + B_2 \approx 1.80$, product $\approx 1.19 > 1$, $N = 10^9$).</li>
+      </ul>
+
+      <hr>
+
+      <h2>5. Lower Reflection: Numerical Evidence and Three-Step Analytic Program</h2>
+
+      <h3>5.1 Jump statistics</h3>
+      <p><strong>Numerical Observation 5.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>H bin</th><th>P(j=0)</th><th>E[j]</th><th>E[δ]</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 (low)</td><td>73.9%</td><td>0.30</td><td>+0.70</td></tr>
+          <tr><td>Q3</td><td>33.2%</td><td>0.94</td><td>+0.06</td></tr>
+          <tr><td>Q5 (high)</td><td>5.7%</td><td>2.16</td><td>−1.16</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><strong>Note.</strong> §5.1 uses $H$ quintile bins (overview); §5.2–§5.3 use the fixed absolute threshold $H \leq 3.74$. The $E[j]$ values are not directly comparable (Q1: 0.30 vs fixed threshold: 0.17 at $N = 10^9$) as they cover different sets of $n$.</div>
+
+      <h3>5.2 No systematic rescue-squad phenomenon</h3>
+      <p><strong>Numerical Observation 6.</strong> Among jumping composites ($j \geq 1$) at low $H$ ($H \leq 3.74$):</p>
+      <ul>
+        <li>The optimal split (the factorization $n = a\cdot b$ achieving $M_n$) is not the spf split in 73.8% of cases, but winners are highly dispersed (the most frequent small factor 4 accounts for only 13.9%).</li>
+        <li>$j = 1$ accounts for 87.3%; large jumps are virtually absent.</li>
+        <li>The imbalance ratio $\min(a,b)/\max(a,b)$ of the winning split has median 0.0001.</li>
+      </ul>
+
+      <p><strong>Numerical Observation 7 (Sathe-Selberg suppression of high-Ω rescue squads).</strong> $P(j \geq 1 \mid H \leq 3.74, \Omega = k)$:</p>
+      <table class="struct-table">
+        <thead><tr><th>Ω</th><th>P(j≥1)</th><th>density among low-H composites</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>6.7%</td><td>28.8%</td></tr>
+          <tr><td>4</td><td>31.8%</td><td>20.9%</td></tr>
+          <tr><td>8</td><td>80.9%</td><td>0.9%</td></tr>
+          <tr><td>12</td><td>98.1%</td><td>0.04%</td></tr>
+        </tbody>
+      </table>
+      <p>High-$\Omega$ numbers jump with near certainty even at low $H$, but Sathe-Selberg weights render their density negligible.</p>
+
+      <h3>5.3 Three-step framework</h3>
+      <p><strong>Target.</strong> $E[j \mid \text{composite}, H(n-1) \leq h^-] &lt; 1 - c^-$, i.e., $E[\delta \mid H \leq h^-] > c^- > 0$.</p>
+
+      <p><strong>Step 1: Density lower bound.</strong> $\alpha(N) = P(H(n-1) \leq h^- \mid \text{composite}, n \leq N) \geq \alpha_0 > 0$.</p>
+
+      <p><strong>Numerical Observation 8.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>P(H ≤ 3.74)</th></tr></thead>
+        <tbody>
+          <tr><td>10⁵</td><td>0.425</td></tr>
+          <tr><td>10⁶</td><td>0.288</td></tr>
+          <tr><td>10⁷</td><td>0.181</td></tr>
+          <tr><td>10⁸</td><td>0.106</td></tr>
+          <tr><td>10⁹</td><td>0.064</td></tr>
+        </tbody>
+      </table>
+      <p>$\alpha$ is declining (as $h_0(N)$ rises), but $h^- = 3.74$ lies approximately 0.09 below $h_0^\infty \approx 3.83$. The bound $\alpha > 0$ is not a lightweight input: even if the height distribution centers near $h_0^\infty$, variance collapse could cause the mass at the fixed threshold 3.74 to vanish. Step 1 is therefore one of the core unresolved theorems of the lower reflection route, requiring stationary theory for the height process (Paper XXI's Lindley isomorphism may provide an interface).</p>
+
+      <p><strong>Step 2: Unconditional tail control.</strong> This step avoids direct estimation of conditional Sathe-Selberg densities. By the definition of conditional expectation and $\mathbf{1}_{H\leq h^-} \leq 1$:</p>
+      $$E[j \cdot \mathbf{1}_{\Omega > K} \mid H \leq h^{-}] = \frac{E[j \cdot \mathbf{1}_{\Omega > K} \cdot \mathbf{1}_{H \leq h^{-}}]}{P(H \leq h^{-})} \leq \frac{E[j \cdot \mathbf{1}_{\Omega > K}]}{\alpha}$$
+
+      <div class="note-box"><strong>Asymptotic warning.</strong> Since the normal order of $\Omega(n)$ is $\log\log n$, for any fixed $K$, $P(\Omega > K) \to 1$ as $N \to \infty$. Therefore the asymptotic version requires $K = K(N) \to \infty$, growing fast enough to keep the tail controllable relative to $\alpha(N)$, so that $E[j\cdot\mathbf{1}_{\Omega>K(N)}] / \alpha(N) \to 0$. This requires the decay rate of the unconditional tail $E[j\cdot\mathbf{1}_{\Omega>K}]$ (in $K$) to exceed the decay rate of $\alpha(N)$ — a nontrivial analytic input. The finite-$N$ data below serves only as a finite-window diagnostic.</div>
+
+      <p><strong>Numerical Observation 9 ($N = 10^9$, fixed $K$).</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>K</th><th>E[j·1_{Ω>K}] (unconditional)</th><th>bound / α</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td>0.081</td><td>1.267</td></tr>
+          <tr><td>9</td><td>0.043</td><td>0.671</td></tr>
+          <tr><td>10</td><td>0.022</td><td>0.348</td></tr>
+        </tbody>
+      </table>
+      <p>At $K = 10$, the tail bound $\approx 0.35$ ($N = 10^9$).</p>
+
+      <p><strong>Step 3: Bulk lemma.</strong> Required (with $K = K(N) \to \infty$ in the asymptotic version):</p>
+      $$E[j \mid H \leq h^{-},\; \Omega \leq K(N)] < 1 - c_0$$
+      <p>Since $K(N) \to \infty$, the split family size within the bulk grows with $N$, making control harder than in the fixed-$K$ version.</p>
+      <p>From $E[j \mid H \leq h^-] = E[j\cdot\mathbf{1}_{\Omega\leq K} \mid H \leq h^-] + E[j\cdot\mathbf{1}_{\Omega>K} \mid H \leq h^-]$, the second term is controlled by Step 2.</p>
+      <p>Note: $E[j\cdot\mathbf{1}_{\Omega\leq K} \mid H \leq h^-] = P(\Omega \leq K \mid H \leq h^-) \cdot E[j \mid H \leq h^-, \Omega \leq K]$.</p>
+      <p><strong>Empirical verification (not part of the proof):</strong> $E[j \mid H \leq 3.74] = 0.17$ ($N = 10^9$). With $P(\Omega \leq 9 \mid H \leq h^-) \approx 0.99$, $E[j \mid H \leq h^-, \Omega \leq 9] \leq 0.17/0.99 \leq 0.18$. Well below 1.</p>
+      <p><strong>Analytic route:</strong> The proof of the bulk lemma must be independent of empirical means, established via the symmetric face of scale attenuation: at low $H$ with low $\Omega$, $M_n$ is generically above the additive path (§5.5(iii)).</p>
+
+      <h3>5.4 Advantages and costs of the three-step approach</h3>
+      <p>The three-step approach avoids direct estimation of $P(\Omega > K \mid H \leq h^-)$ (conditional Sathe-Selberg), but at the cost of introducing two new independent bottlenecks: the positive lower bound on $\alpha(N)$ (Step 1) and the controllability of the $j$-weighted unconditional $\Omega$-tail under $K = K(N) \to \infty$ (Step 2). This remains a valuable repositioning — converting a conditional density problem into two separately attackable inputs — but should not be described as having "bypassed" the problem entirely.</p>
+
+      <h3>5.5 Analytic targets for lower reflection</h3>
+      <p>The three steps each require:</p>
+      <p><strong>(i) Density lower bound $\alpha > 0$:</strong> Requires stationary theory for the height process, ruling out variance collapse. This is the core unresolved input of the lower reflection route. Paper XXI's Lindley isomorphism may provide an interface.</p>
+      <p><strong>(ii) Unconditional tail ($K = K(N) \to \infty$):</strong> Must prove $E[j\cdot\mathbf{1}_{\Omega>K(N)}] / \alpha(N) \to 0$ with $K(N) \to \infty$ growing sufficiently fast. Standard Sathe-Selberg weights control $P(\Omega > K)$, but $j$-weighting adds difficulty.</p>
+      <p><strong>(iii) Bulk lemma ($K = K(N) \to \infty$):</strong> $E[j \mid H \leq h^-, \Omega \leq K(N)] &lt; 1 - c_0$. Since $K(N) \to \infty$, the split family size grows with $N$, increasing the control difficulty. A strong sufficient route is: at low $H$ with low $\Omega$, $M_n$ is generically above the additive path (all competitive splits are too expensive). This can be reduced to the symmetric face of scale attenuation: when the parent is below the mean, children do not follow (they stay near the mean), so $M_n > \text{additive}$.</p>
+
+      <hr>
+
+      <h2>6. Asymmetric Quantifier Structure of Upper and Lower Reflection</h2>
+
+      <h3>6.1 Same mechanism, different proof structures</h3>
+      <p>Scale attenuation drives both directions:</p>
+      <ul>
+        <li>High $H$ → children do not follow parent's elevation → a good split exists (spf) → jump → negative drift.</li>
+        <li>Low $H$ → children do not follow parent's depression → all splits are expensive → no jump → positive drift.</li>
+      </ul>
+      <p>The proof-level asymmetry:</p>
+      <p><strong>Upper reflection ($\exists$-lemma).</strong> Only one effective comparator (spf) needs to yield $E[(\Delta_{\text{spf}})^+] > 1$. A single-witness lower bound. Paper XXVII established this route via the spf comparator.</p>
+      <p><strong>Lower reflection ($\forall$-type family control).</strong> The target quantity is $E[j \mid H \leq h^-] &lt; 1$. Since $j$ is determined by the best split, the proof manifests as a best-split family control problem: a strong and convenient sufficient route is that all competitive splits in the bulk are too expensive, with the sparse tail controlled separately. The three-step framework decomposes this family control into "finite bulk (few split options, all expensive) + sparse tail (high $\Omega$, many options but negligible density)."</p>
+
+      <h3>6.2 Division of labor: Papers XXVII–XXVIII</h3>
+      <table class="struct-table">
+        <thead><tr><th>Result</th><th>Tool</th><th>Paper</th></tr></thead>
+        <tbody>
+          <tr><td>Upper reflection criterion E[(Δ_spf)⁺] > 1</td><td>spf comparator (∃-lemma)</td><td>XXVII</td></tr>
+          <tr><td>Universal attenuation family</td><td>six divisors + fixed threshold</td><td><strong>XXVIII</strong></td></tr>
+          <tr><td>W₂ decomposition + surplus stability</td><td>weighted attenuation</td><td><strong>XXVIII</strong></td></tr>
+          <tr><td>Three-step lower reflection program</td><td>density + tail + bulk</td><td><strong>XXVIII</strong></td></tr>
+          <tr><td>Analytic closure of upper reflection</td><td>W₂ asymptotics + baseline</td><td>open</td></tr>
+          <tr><td>Analytic closure of lower reflection</td><td>α > 0 + bulk lemma</td><td>open</td></tr>
+          <tr><td>Two-sided reflection → pred gap > τ_k</td><td>occupancy + dyadic control</td><td>subsequent</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>7. Discussion</h2>
+
+      <h3>7.1 Physical meaning of weighted attenuation</h3>
+      <p>$W_2 = (H(n-1)-H(n/2))\cdot\ln(n/2)$ measures the cumulative effect of the height excursion across the DP evolution from $n/2$ to $n-1$. The raw gap decays with $N$ (as $H(n/2)$ approaches $h_0$), while the DP step count grows simultaneously ($\ln(n/2)$ increases); their product $W_2$ is compatible with a constant magnitude. This parallels "decay rate × time scale" balancing in dissipative systems, though the asymptotic behavior remains to be analytically confirmed.</p>
+
+      <h3>7.2 Long-range connection to Chebyshev bounds</h3>
+      <p>Paper XXVI established $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$. If universal scale attenuation could ultimately be extended to magnitude control on $S_{\text{comp}}$ ($S_{\text{comp}} = -\Theta(N/\ln N)$), the Chebyshev bound $\pi(N) = \Theta(N/\ln N)$ would follow as a corollary. The $W_2$ decomposition of the present paper provides preliminary support for this long-range target, though the gap remains very large.</p>
+
+      <h3>7.3 Open problems</h3>
+      <p><strong>(1)</strong> Asymptotic behavior of $W_2$. The data is compatible with a positive plateau but does not yet discriminate against slower decay. An analytic proof requires the precise decay rate of the raw gap.</p>
+      <p><strong>(2)</strong> Density lower bound $\alpha > 0$. Stationary theory for the height process, ruling out variance collapse.</p>
+      <p><strong>(3)</strong> Bulk lemma. Uniform upper bound on all competitive splits at low $H$ with low $\Omega$, under $K(N) \to \infty$.</p>
+      <p><strong>(4)</strong> From two-sided reflection to pred gap $> \tau_k$. Occupancy control + dyadic-scale balance.</p>
+
+      <h3>7.4 Acknowledgments</h3>
+      <p>ChatGPT 5.4 Pro identified weighted attenuation $W_2$ as the correct surplus object (§4), proposed the three-step lower reflection framework avoiding conditional Sathe-Selberg (§5), the $\exists$ vs $\forall$ quantifier precision (§6), and the fixed-$K$ asymptotic issue requiring $K(N) \to \infty$ (§5.3). Gemini proved that gap $\propto 1/\ln N$ multiplied by $\ln(n/p)$ yields a constant-order contribution (§4.3) and identified the conditional Sathe-Selberg measure trap (§5.4). Grok ensured consistency with the preceding 27 papers. Claude wrote all numerical computation scripts and drafted working notes v1–v3. The final text was completed independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <hr>
+
+      <h2>8. Data Sources and Reproducibility</h2>
+      <table class="struct-table">
+        <thead><tr><th>Script</th><th>Measurement</th><th>Section</th></tr></thead>
+        <tbody>
+          <tr><td>p28_block123.py</td><td>Six-divisor attenuation + lower reflection mechanism + N-stability</td><td>§3, §5.1</td></tr>
+          <tr><td>p28_block456.py</td><td>Criterion surplus N-stability + fixed threshold + low-H winning splits</td><td>§3.2, §4.2, §5.2</td></tr>
+          <tr><td>p28_block78.py</td><td>W₂ + density lower bound + tail bound</td><td>§4, §5.3</td></tr>
+        </tbody>
+      </table>
+      <p>All scripts pass sanity checks: $\rho_E(10^7) = 58$, $\rho_E(10^8) = 66$, $\rho_E(10^9) = 74$.</p>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXVII. H. Qin. Paper XXVI DOI: <a href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">10.5281/zenodo.19059834</a>. Paper XXVII DOI: <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener">10.5281/zenodo.19062684</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>H. Altman (2014). Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ Series &nbsp;·&nbsp;</span>
+        <a href="zfcrho27.html">← Paper XXVII: Upper Reflection Criterion</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Paper XXIX →
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXVIII</div>
+      <h1 class="paper-title">普适 Scale Attenuation、Weighted Attenuation 分解与下反射的三段式 Program</h1>
+      <div class="paper-authors">秦汉 · <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID: 0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener" class="zenodo-link">DOI: 10.5281/zenodo.19078654</a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们研究 Erdős 加法复杂度递推中 height ratio $H(n) = \rho_E(n)/\ln n$ 在不同尺度之间的相关衰减（scale attenuation），并将其应用于上反射 criterion surplus 的稳定性分析和下反射的解析框架。</p>
+        <p>建立两项代数结果。（<strong>命题 1</strong>）精确恒等式 $\delta(n) = 1 - j(n)$，将 $\rho$-increment 与跳跃函数直接联系。（<strong>命题 2</strong>）Weighted attenuation 分解：$\Delta_2(n) = W_2(n) + B_2(n)$（逐点精确），其中 $W_2 = (H(n-1)-H(n/2))\cdot\ln(n/2)$ 是带对数权重的 attenuation 贡献，$B_2$ 渐近趋向 $H(n-1)\cdot\ln 2 - 2$。由 $E[(\Delta_2)^+] \geq E[\Delta_2] = E[W_2] + E[B_2]$ 得到偶子族 surplus 的精确下界；再通过条件密度 $d_2(C) \approx 0.66$ 聚合为整体 criterion surplus 的下界。</p>
+        <p>报告系统性数值发现（$N = 10^9$ 完整 DP）。Scale attenuation 在六个不同除子（$d=2,3,4,5,6,7$）上全部确认，零例外；衰减强度总体上随 $d$ 增大而增强。固定绝对阈值下 attenuation 不是 quantile 假象。偶子族 surplus $E[(\Delta_2)^+]$ 从 $N=10^4$ 的 2.43 缓慢降至 $N=10^9$ 的 1.80，始终远 $> 1$。$W_2$ 是其中的 attenuation 分量，$B_2$ 提供不依赖 attenuation 的 baseline。整体 criterion surplus $E[(\Delta_{\text{spf}})^+]$ 在测试尺度上（$N \leq 10^7$）始终 $> 1.8$，通过偶子族条件密度 $d_2 \approx 0.66$ 的聚合下界路线维持。</p>
+        <p>对下反射（低 $H$ 正 drift），提出三段式解析 program：(1) 密度下界 $P(H \leq h^-) \geq \alpha > 0$；(2) 无条件 tail 控制 $E[j\cdot\mathbf{1}_{\Omega>K(N)}]/\alpha$；(3) bulk lemma $E[j \mid H \leq h^-, \Omega \leq K(N)] &lt; 1 - c_0$。该 program 避免直接估计条件 Sathe-Selberg 密度，但引入密度下界和 $\Omega$-tail 可控性两个新瓶颈。数值确认无系统性"救火队"现象：低 $H$ 时 $P(j=0) = 73.9\%$，高 $\Omega$ 救火队被 Sathe-Selberg 权重压制。</p>
+        <p>精确刻画上反射与下反射的非对称性：上反射是 $\exists$-引理（存在一个好 split），下反射在证明上表现为 $\forall$-型 family-control 问题（需控制最优 split 的期望行为）。同一 attenuation 现象驱动两个方向，但证明需要不同结构。</p>
+        <p><strong>关键词：</strong>加法复杂度，scale attenuation，weighted attenuation，下反射，三段式 program，criterion surplus</p>
+      </div>
+
+      <hr>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 系列背景与本文定位</h3>
+      <p>Paper XXVII 建立了上反射判据：$E[(\Delta_{\text{spf}})^+ \mid H \geq h^+] > 1$ 是高 $H$ 负 drift 的充分条件，并在 $N=10^7$ 下数值验证（$E[(\Delta_{\text{spf}})^+] = 1.82 > 1$）。Paper XXVII 同时识别了两个解析化所需的输入：偶数子族的定量 comparator margin 和条件密度下界。</p>
+      <p>本文做三件事：(1) 将 Paper XXVII 的 $n/2$ scale attenuation 推广为六除子普适族；(2) 通过 weighted attenuation $W_2$ 分解，解释 criterion surplus 为何在 $N$ 增长下稳定；(3) 为下反射（低 $H$ 正 drift）建立三段式解析框架，绕过条件 Sathe-Selberg 密度问题。</p>
+      <p>本文不声称完成上反射或下反射的解析证明。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <p><strong>(A)</strong> 精确恒等式 $\delta = 1 - j$（§2），全文核心代数工具。</p>
+      <p><strong>(B)</strong> 普适 scale attenuation 家族（§3）。六除子零例外 + 固定阈值确认。</p>
+      <p><strong>(C)</strong> Weighted attenuation 分解与偶子族 surplus（§4）。逐点精确恒等式 $\Delta_2 = W_2 + B_2$。偶子族的 $E[(\Delta_2)^+]$ 从 2.43（$N=10^4$）缓慢降至 1.80（$N=10^9$），始终远 $> 1$。由 $E[(\Delta_{\text{spf}})^+] \geq d_2 \cdot E[(\Delta_2)^+]$（$d_2 = P(\text{spf}=2 \mid C) \approx 0.66$），在测试尺度上偶子族单独足以维持整体 criterion surplus $> 1$。</p>
+      <p><strong>(D)</strong> 下反射的三段式 program（§5）。密度下界 + 无条件 tail + bulk lemma。无系统性救火队现象。</p>
+      <p><strong>(E)</strong> 上下反射的非对称量词结构（§6）。$\exists$-引理 vs $\forall$-型 family control。</p>
+
+      <h3>1.3 记号</h3>
+      <p>沿用系列标准记号及 Paper XXVI–XXVII 约定。$\rho_E(n)$，$M_n$，$\delta(n)$，$S(n)$，$H(n)$，$\text{spf}(n)$ 的定义同 Paper XXVII §1.3。$\Delta_{\text{spf}}(n) = [\rho_E(n-1)+1] - [\rho_E(\text{spf}(n)) + \rho_E(n/\text{spf}(n)) + 2]$。本文中条件期望 $E[F(n) \mid n \in C]$ 均指有限集 $\{n \leq N\}$ 上的经验均值。</p>
+
+      <hr>
+
+      <h2>§2 精确恒等式 δ = 1 − j</h2>
+
+      <div class="thesis-box">
+        <p><strong>命题 1.</strong> 对任意 $n \geq 2$（对素数沿用 $M_p = +\infty$ 的系列约定）：</p>
+        <p>$$S(n) = \rho_E(n-1)+1-\rho_E(n) = j(n) = \max(\rho_E(n-1)+1-M_n,\; 0)$$</p>
+        <p>从而 $\delta(n) = 1 - j(n)$。</p>
+      </div>
+
+      <div class="proof-box">
+        <p><strong>证明.</strong> 由 $\rho_E(n) = \min(\rho_E(n-1)+1, M_n)$：</p>
+        <p><em>情形 1</em>（$M_n \geq \rho_E(n-1)+1$）：$\rho_E(n) = \rho_E(n-1)+1$。$S(n) = 0$。又 $\rho_E(n-1)+1-M_n \leq 0$，故 $j(n) = \max(\rho_E(n-1)+1-M_n, 0) = 0$。✓</p>
+        <p><em>情形 2</em>（$M_n &lt; \rho_E(n-1)+1$）：$\rho_E(n) = M_n$。$S(n) = \rho_E(n-1)+1-M_n > 0$。又 $j(n) = \max(\rho_E(n-1)+1-M_n, 0) = \rho_E(n-1)+1-M_n = S(n)$。✓ ∎</p>
+      </div>
+
+      <p><strong>推论.</strong> $E[\delta \mid C] = 1 - E[j \mid C]$ 对任意条件集 $C$。上反射（$E[\delta] &lt; 0$）$\Longleftrightarrow$ $E[j] > 1$。下反射（$E[\delta] > 0$）$\Longleftrightarrow$ $E[j] &lt; 1$。</p>
+
+      <hr>
+
+      <h2>§3 普适 Scale Attenuation 家族</h2>
+
+      <h3>3.1 六除子数据</h3>
+      <p>对 $d = 2, 3, 4, 5, 6, 7$，在高 $H$（Q5）下测量 $E[H(n/d) \mid H(n-1) \in \text{Q5}, d \mid n]$：</p>
+
+      <div class="milestone-box">
+        <p><strong>数值观察 1（普适 attenuation）.</strong></p>
+      </div>
+      <table class="struct-table">
+        <thead><tr><th>除子 d</th><th>E[H(n−1)]</th><th>E[H(n/d)]</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>3.872</td><td>3.787</td><td>+0.085</td></tr>
+          <tr><td>3</td><td>3.874</td><td>3.782</td><td>+0.092</td></tr>
+          <tr><td>4</td><td>3.875</td><td>3.781</td><td>+0.095</td></tr>
+          <tr><td>5</td><td>3.873</td><td>3.774</td><td>+0.099</td></tr>
+          <tr><td>6</td><td>3.877</td><td>3.778</td><td>+0.099</td></tr>
+          <tr><td>7</td><td>3.872</td><td>3.763</td><td>+0.109</td></tr>
+        </tbody>
+      </table>
+      <p><strong>六尺度全部确认 attenuation，零例外。</strong> Gap 总体上随除子 $d$ 增大而变大（从 $d=2$ 的 0.085 到 $d=7$ 的 0.109），反映 $n/d$ 与 $n$ 的 DP 距离越远，excursion 信息衰减越多。</p>
+
+      <h3>3.2 固定阈值确认</h3>
+      <p><strong>数值观察 2.</strong> 使用固定绝对阈值 $H \geq 3.84$（非 quantile），$d=2$ 的 gap 从 $N=10^4$ 的 $+0.223$ 降到 $N=10^8$ 的 $+0.070$。始终为正，与 quantile-based 结果趋势一致。Scale attenuation 不是 quantile 滑动假象。</p>
+
+      <h3>3.3 除子依赖的不等式族</h3>
+      <p>数据支持一族 band inequalities：对每个除子 $d$，</p>
+      $$E[H(n/d) \mid H(n-1) \geq h^{+},\; d \mid n,\; n \leq N] \leq h^{+} - \eta_d^{+}(N)$$
+      $$E[H(n/d) \mid H(n-1) \leq h^{-},\; d \mid n,\; n \leq N] \geq h^{-} + \eta_d^{-}(N)$$
+      <p>其中 $\eta_d$ 依赖于 $d$ 和 $N$，所有 $d$ 共享近似不动点 $h_0 \approx 3.80$（$N=10^7$）。</p>
+
+      <h3>3.4 物理解读</h3>
+      <p>$\rho_E(n/d)$ 是 DP 在 $n/d$ 处的值，在 $\rho_E(n-1)$ 之前被计算。从 $n/d$ 到 $n-1$ 经历 $n(1-1/d)$ 步演化。height excursion（$\rho_E(n-1)$ 偏高）是在这些步中积累的；$n/d$ 处的 $\rho_E$ 反映 excursion 之前的状态。$d$ 越大，$n/d$ 越远离 $n-1$，excursion 信息衰减越多。</p>
+      <div class="note-box"><strong>注记.</strong> DP 的时间顺序使 scale attenuation 成为自然预期，但时间顺序本身不构成定量证明。</div>
+
+      <hr>
+
+      <h2>§4 Weighted Attenuation W₂ 与 Criterion Surplus 的稳定性</h2>
+
+      <h3>4.1 关键对象的识别</h3>
+      <p>Paper XXVII 关注的裸 attenuation gap $H(n-1) - H(n/2)$ 随 $N$ 衰减。但对 criterion surplus 真正有贡献的是带对数权重的 attenuation。</p>
+      <p>对偶数 $n$（$\text{spf}=2$），$\rho_E(2) = 1$，精确恒等式为：</p>
+      $$\Delta_2(n) = \rho_E(n-1) - \rho_E(n/2) - 2$$
+      <p>改写为 $H$ 的语言（精确版）：</p>
+      $$\Delta_2(n) = \underbrace{(H(n-1)-H(n/2)) \cdot \ln(n/2)}_{W_2(n) \text{（weighted attenuation）}} + \underbrace{H(n-1) \cdot \ln\!\left(\frac{2(n-1)}{n}\right) - 2}_{B_2(n) \text{（baseline 项）}}$$
+      <p>对大 $n$，$\ln(2(n-1)/n) = \ln(2-2/n) \to \ln 2$，故 $B_2(n) \to H(n-1)\cdot\ln 2 - 2$。对有限 $n$，$\ln(2-2/n) &lt; \ln 2$，故逐点 $B_2(n) &lt; H(n-1)\cdot\ln 2 - 2$。定义渐近 baseline 目标 $b(h^+) = h^+\cdot\ln 2 - 2$；有限 $N$ 下应使用 $E[\ln(2-2/n) \mid C]$ 的精确条件期望（见 §4.5），而不是 $b(h^+)$ 本身作为现成下界。在测试尺度 $N \geq 10^4$ 上，$E[\ln(2-2/n) \mid C]$ 与 $\ln 2$ 的差极小（数值 $&lt; 0.001$），但这是经验观察。</p>
+
+      <div class="thesis-box">
+        <p><strong>命题 2（Weighted attenuation 分解——精确恒等式）.</strong> 对偶数合数 $n$：</p>
+        <p>$$\Delta_2(n) = W_2(n) + B_2(n)$$</p>
+        <p>这是逐点精确恒等式。取条件期望（条件集 $C$ 须限制在偶数合数上，即 $C \subseteq \{n : \text{spf}(n)=2\}$），利用 $E[(\Delta_2)^+] \geq E[\Delta_2]$（因为 $(x)^+ \geq x$），得到精确下界：</p>
+        <p>$$E[(\Delta_2)^{+} \mid C] \geq E[W_2 \mid C] + E[B_2 \mid C]$$</p>
+        <p>不需要"$\Delta_2$ 绝大多数为正"的经验假设。</p>
+      </div>
+
+      <h3>4.2 W₂ 的 N 稳定性</h3>
+      <p>以下 $W_2$ 列为逐点 $W_2(n) = (H(n-1)-H(n/2))\cdot\ln(n/2)$ 在条件集 $C_{2,N}(h^+)$ 上的经验均值（非 $E[\text{raw gap}] \times E[\ln(n/2)]$ 的乘积）。$B_2$ 列同理为逐点 $B_2(n)$ 的经验均值。</p>
+
+      <p><strong>数值观察 3.</strong> 条件集 $C = \{n \leq N : n \text{ 为偶数合数}, H(n-1) \geq 3.84\}$。</p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>raw gap</th><th>E[ln(n/2)]</th><th>W₂</th><th>B₂</th><th>E[(Δ₂)⁺]</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>0.223</td><td>7.8</td><td>1.73</td><td>0.70</td><td>2.43</td></tr>
+          <tr><td>10⁵</td><td>0.150</td><td>10.0</td><td>1.47</td><td>0.69</td><td>2.16</td></tr>
+          <tr><td>10⁶</td><td>0.108</td><td>12.2</td><td>1.31</td><td>0.69</td><td>2.00</td></tr>
+          <tr><td>10⁷</td><td>0.085</td><td>14.5</td><td>1.22</td><td>0.68</td><td>1.90</td></tr>
+          <tr><td>10⁸</td><td>0.070</td><td>16.8</td><td>1.16</td><td>0.68</td><td>1.84</td></tr>
+          <tr><td>10⁹</td><td>0.059</td><td>19.1</td><td>1.11</td><td>0.68</td><td>1.80</td></tr>
+        </tbody>
+      </table>
+      <p>$W_2$ 缓慢衰减（1.73 → 1.11），衰减速率递减（Δ = −0.26, −0.16, −0.09, −0.06, −0.05）。观测 $E[B_2] \approx 0.68$ 稳定（略高于渐近下界目标 $b(h^+) \approx 0.66$）。</p>
+      <p><strong>分解验证：</strong> $E[W_2] + E[B_2] = E[\Delta_2] = 1.9027$，$E[(\Delta_2)^+] = 1.9049$（$N=10^7$）。$E[(\Delta_2)^+] \geq E[\Delta_2]$ 成立（差值 0.0022 来自少量 $\Delta_2 &lt; 0$ 的贡献），确认在高 $H$ 条件下 $\Delta_2$ 绝大多数为正。</p>
+
+      <h3>4.3 为什么偶子族 surplus 不会归零</h3>
+      <p>Raw gap 按大致 $C/\ln N$ 衰减。但 gap 乘以 $\ln(n/2) \approx \ln N$ 后，$W_2 \approx C\cdot\ln N / \ln N = C$——与常数量级相容。数据中 $W_2$ 的衰减递减与此一致。</p>
+      <p>Baseline 下界 $b(h^+) = h^+\cdot\ln 2 - 2 > 0$ 当 $h^+ > 2/\ln 2 \approx 2.885$ 时成立（已知 $h^+ = 3.84 \gg 2.885$）。这是一个不依赖 attenuation 的正底板，来源纯粹是算术：$\ln(n-1) - \ln(n/2) \to \ln 2$。</p>
+      <p>利用精确下界 $E[(\Delta_2)^+] \geq E[W_2] + E[B_2]$：即使 $E[W_2] \to 0$（需要 raw gap 衰减快于 $1/\ln N$，与数据矛盾），$E[B_2]$ 在测试尺度上约为 0.68（渐近下界目标 $b(h^+) = h^+\cdot\ln 2 - 2 \approx 0.66$；观测值略高于此，因条件集上 $E[H(n-1)] > h^+$），仍提供正贡献——只是不够单独超过 1。数据支持 $E[W_2]$ 不趋于 0，且可能趋向正常数（约 1 的量级），使得偶子族 $E[(\Delta_2)^+]$ 在测试尺度上稳定在 $\approx 1.8$ 附近。</p>
+      <p><strong>从偶子族到整体 criterion surplus.</strong> 由 Paper XXVII 的 aggregation 框架：</p>
+      $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] \geq d_2(C) \cdot E[(\Delta_2)^{+} \mid C_{2,N}(h^{+})]$$
+      <p>其中 $d_2(C) = P(\text{spf}(n)=2 \mid C_N(h^+))$。数据中 $d_2 \approx 0.66$。故整体 surplus $\geq 0.66 \times 1.80 \approx 1.19 > 1$（$N=10^9$）。</p>
+
+      <h3>4.4 H sub-bin 分解</h3>
+      <p><strong>数值观察 4.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>H 区间</th><th>W₂</th><th>B₂</th><th>E[(Δ₂)⁺]</th></tr></thead>
+        <tbody>
+          <tr><td>[3.84, 3.89]</td><td>1.00</td><td>0.68</td><td>1.68</td></tr>
+          <tr><td>[3.89, 3.94]</td><td>1.95</td><td>0.71</td><td>2.66</td></tr>
+          <tr><td>[3.94, 4.00]</td><td>3.10</td><td>0.74</td><td>3.84</td></tr>
+          <tr><td>[4.00, 4.05]</td><td>4.35</td><td>0.78</td><td>5.12</td></tr>
+        </tbody>
+      </table>
+      <p>$W_2$ 在测试的四个 $H$ sub-bin 上单调递增。$H$ 越高，weighted attenuation 越强，criterion surplus 越大。</p>
+
+      <h3>4.5 上反射的解析目标</h3>
+      <p><strong>主目标.</strong> 证明存在 $h^+ > 0$, $c > 0$ 使得对充分大的 $N$：</p>
+      $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] > 1 + c.$$
+      <p><strong>Even-dominance sufficient route.</strong> 定义 $d_2(C) = P(\text{spf}(n)=2 \mid C_N(h^+))$。由</p>
+      $$E[(\Delta_{\text{spf}})^{+} \mid C_N(h^{+})] \geq d_2(C) \cdot E[(\Delta_2)^{+} \mid C_{2,N}(h^{+})]$$
+      <p>和命题 2 的精确下界 $E[(\Delta_2)^+] \geq E[W_2] + E[B_2]$：</p>
+      <ul>
+        <li>$E[B_2 \mid C] \geq h^+ \cdot E[\ln(2-2/n) \mid C] - 2$（精确，由 $H(n-1) \geq h^+$ 逐点得到）。对大 $N$，$E[\ln(2-2/n) \mid C] \to \ln 2$，故 $E[B_2]$ 渐近趋向 $b(h^+) = h^+\cdot\ln 2 - 2 \approx 0.66$。测试尺度上观测到 $E[B_2] \approx 0.68$，略高于 $b(h^+)$，因为条件集上 $E[H(n-1)] \approx 3.87 > h^+ = 3.84$。</li>
+        <li>需证：$E[W_2(N; h^+)] \geq W_0 > 0$ 对充分大的 $N$。</li>
+        <li>需证：$d_2(C) \geq d_0 > 0$（偶数条件密度有正下界）。</li>
+        <li>合并：$d_0 \cdot (W_0 + b(h^+)) > 1$（数值中 $d_2 \approx 0.66$，$W_2 + B_2 \approx 1.80$，乘积 $\approx 1.19 > 1$，$N=10^9$）。</li>
+      </ul>
+
+      <hr>
+
+      <h2>§5 下反射：数值证据与三段式解析 Program</h2>
+
+      <h3>5.1 跳跃统计</h3>
+      <p><strong>数值观察 5.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>H bin</th><th>P(j=0)</th><th>E[j]</th><th>E[δ]</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 (low)</td><td>73.9%</td><td>0.30</td><td>+0.70</td></tr>
+          <tr><td>Q3</td><td>33.2%</td><td>0.94</td><td>+0.06</td></tr>
+          <tr><td>Q5 (high)</td><td>5.7%</td><td>2.16</td><td>−1.16</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><strong>注记.</strong> §5.1 使用 $H$ quintile 分桶（参考性总览）；§5.2–§5.3 使用固定绝对阈值 $H \leq 3.74$。两者的 $E[j]$ 数值不可直接比较（Q1 的 0.30 vs 固定阈值的 0.17 at $N=10^9$），因为覆盖的 $n$ 集合不同。</div>
+
+      <h3>5.2 无系统性救火队现象</h3>
+      <p><strong>数值观察 6.</strong> 在低 $H$（$H \leq 3.74$）的跳跃合数（$j\geq 1$）中：</p>
+      <ul>
+        <li>最优分裂（达到 $M_n$ 的因子分解 $n=a\cdot b$）不是 spf 分裂的占 73.8%，但赢家极度分散（最频繁的小因子 4 只占 13.9%）。</li>
+        <li>$j=1$ 占 87.3%，几乎无大跳跃。</li>
+        <li>最优分裂的不平衡度 $\min(a,b)/\max(a,b)$ 中位数为 0.0001。</li>
+      </ul>
+
+      <p><strong>数值观察 7（高 Ω 救火队的 Sathe-Selberg 压制）.</strong> $P(j\geq 1 \mid H \leq 3.74, \Omega=k)$：</p>
+      <table class="struct-table">
+        <thead><tr><th>Ω</th><th>P(j≥1)</th><th>占低 H 合数密度</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>6.7%</td><td>28.8%</td></tr>
+          <tr><td>4</td><td>31.8%</td><td>20.9%</td></tr>
+          <tr><td>8</td><td>80.9%</td><td>0.9%</td></tr>
+          <tr><td>12</td><td>98.1%</td><td>0.04%</td></tr>
+        </tbody>
+      </table>
+      <p>高 $\Omega$ 数即使在低 $H$ 也几乎必跳，但 Sathe-Selberg 权重使其密度极小。</p>
+
+      <h3>5.3 三段式 program</h3>
+      <p><strong>目标.</strong> $E[j \mid \text{composite}, H \leq h^-] &lt; 1 - c^-$，即 $E[\delta \mid H \leq h^-] > c^- > 0$。</p>
+
+      <p><strong>Step 1：密度下界.</strong> $\alpha(N) = P(H(n-1) \leq h^- \mid \text{composite}, n \leq N) \geq \alpha_0 > 0$。</p>
+
+      <p><strong>数值观察 8.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>P(H ≤ 3.74)</th></tr></thead>
+        <tbody>
+          <tr><td>10⁵</td><td>0.425</td></tr>
+          <tr><td>10⁶</td><td>0.288</td></tr>
+          <tr><td>10⁷</td><td>0.181</td></tr>
+          <tr><td>10⁸</td><td>0.106</td></tr>
+          <tr><td>10⁹</td><td>0.064</td></tr>
+        </tbody>
+      </table>
+      <p>$\alpha$ 在下降（因为 $h_0(N)$ 在上升），但 $h^- = 3.74$ 在 $h_0^\infty \approx 3.83$ 以下约 0.09。$\alpha > 0$ 不是一个轻量输入：即使 height 分布中心稳定在 $h_0^\infty$ 附近，如果分布的方差随 $N$ 塌缩，固定阈值 3.74 的质量仍可能消失。因此 Step 1 是下反射整条路线的核心未解决定理之一，需要 height process 的稳态理论（Paper XXI 的 Lindley 同构可能提供接口）。</p>
+
+      <p><strong>Step 2：无条件 tail 控制.</strong> 不直接估计条件 Sathe-Selberg 密度。由条件期望定义和 $\mathbf{1}_{H\leq h^-} \leq 1$：</p>
+      $$E[j \cdot \mathbf{1}_{\Omega > K} \mid H \leq h^{-}] = \frac{E[j \cdot \mathbf{1}_{\Omega > K} \cdot \mathbf{1}_{H \leq h^{-}}]}{P(H \leq h^{-})} \leq \frac{E[j \cdot \mathbf{1}_{\Omega > K}]}{\alpha}$$
+
+      <div class="note-box"><strong>渐近注记：</strong> 由于 $\Omega(n)$ 的 normal order 为 $\log\log n$，对任意固定 $K$，$P(\Omega > K) \to 1$ as $N \to \infty$。因此渐近版本需要 $K = K(N) \to \infty$ 且增长速率足够快，使得 $E[j\cdot\mathbf{1}_{\Omega>K(N)}] / \alpha(N) \to 0$。这要求无条件 tail $E[j\cdot\mathbf{1}_{\Omega>K}]$ 的衰减速率（关于 $K$）快于 $\alpha(N)$ 的衰减速率——一个非平凡的解析输入。以下有限 $N$ 数据仅作为 finite-window 诊断。</div>
+
+      <p><strong>数值观察 9（$N=10^9$，固定 $K$）.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>K</th><th>E[j·1_{Ω>K}] (unconditional)</th><th>bound / α</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td>0.081</td><td>1.267</td></tr>
+          <tr><td>9</td><td>0.043</td><td>0.671</td></tr>
+          <tr><td>10</td><td>0.022</td><td>0.348</td></tr>
+        </tbody>
+      </table>
+      <p>$K = 10$ 时 tail bound $\approx 0.35$（$N=10^9$）。</p>
+
+      <p><strong>Step 3：Bulk lemma.</strong> 需证（渐近版本需要 $K = K(N) \to \infty$）：</p>
+      $$E[j \mid H \leq h^{-},\; \Omega \leq K(N)] < 1 - c_0$$
+      <p>由于 $K(N) \to \infty$，bulk 中的 split family size 随 $N$ 增长，控制难度高于固定 $K$ 的版本。</p>
+      <p>由 $E[j \mid H \leq h^-] = E[j\cdot\mathbf{1}_{\Omega\leq K} \mid H \leq h^-] + E[j\cdot\mathbf{1}_{\Omega>K} \mid H \leq h^-]$，第二项已由 Step 2 控制。</p>
+      <p>注意：$E[j\cdot\mathbf{1}_{\Omega\leq K} \mid H \leq h^-] = P(\Omega\leq K \mid H \leq h^-) \cdot E[j \mid H \leq h^-, \Omega\leq K]$。</p>
+      <p><strong>经验验证（非证明的一部分）：</strong> 数据中 $E[j \mid H \leq 3.74] = 0.17$（$N=10^9$）。由 $P(\Omega\leq 9 \mid H \leq h^-) \approx 0.99$，$E[j \mid H \leq h^-, \Omega\leq 9] \leq 0.17/0.99 \leq 0.18$。远 $&lt; 1$。</p>
+      <p><strong>解析路线：</strong> bulk lemma 的证明需要独立于经验均值，通过 scale attenuation 的对称面建立：低 $H$ + 低 $\Omega$ 时 $M_n$ 普遍高于 additive（§5.5(iii)）。</p>
+
+      <h3>5.4 三段式的优势与代价</h3>
+      <p>三段式避免了直接估计 $P(\Omega > K \mid H \leq h^-)$（条件 Sathe-Selberg），但代价是引入两个新的独立瓶颈：$\alpha(N)$ 的正下界（Step 1），以及 $j$-weighted 无条件 $\Omega$-tail 在 $K = K(N) \to \infty$ 下的可控性（Step 2）。这仍然是一个有价值的重定位——把条件密度问题转化为两个更容易分别攻击的输入——但不能写成"问题已经绕过"。</p>
+
+      <h3>5.5 下反射的解析目标</h3>
+      <p><strong>(i) 密度下界 $\alpha > 0$：</strong> 需要 height process 的稳态理论，并排除方差塌缩。这是下反射路线的核心未解决输入。Paper XXI 的 Lindley 同构可能提供接口。</p>
+      <p><strong>(ii) 无条件 tail（$K = K(N) \to \infty$）：</strong> 需要证明 $E[j\cdot\mathbf{1}_{\Omega>K(N)}] / \alpha(N) \to 0$，其中 $K(N) \to \infty$ 足够慢。标准 Sathe-Selberg 权重控制 $P(\Omega > K)$，但 $j$-weighting 增加了难度。</p>
+      <p><strong>(iii) Bulk lemma（$K = K(N) \to \infty$）：</strong> $E[j \mid H \leq h^-, \Omega \leq K(N)] &lt; 1 - c_0$。由于 $K(N) \to \infty$，bulk 中的 split family size 随 $N$ 增长，控制难度高于固定 $K$。一个强的 sufficient route 是：低 $H$ + 低 $\Omega$ 时 $M_n$ 普遍高于 additive（所有可竞争 split 的成本超过 +1 路径）。这可由 scale attenuation 的对称面归约：当 parent 偏低时，children 不跟（接近均值），$M_n > \text{additive}$。</p>
+
+      <hr>
+
+      <h2>§6 上反射与下反射的非对称量词结构</h2>
+
+      <h3>6.1 同一机制，不同引理</h3>
+      <p>Scale attenuation 同时驱动两个方向：</p>
+      <ul>
+        <li>高 $H$ → children 不跟 parent 偏高 → 存在好 split（spf）→ jump → 负 drift。</li>
+        <li>低 $H$ → children 不跟 parent 偏低 → 所有 split 偏贵 → no jump → 正 drift。</li>
+      </ul>
+      <p><strong>上反射（$\exists$-引理）.</strong> 只需存在一个有效 comparator（spf）使得 $E[(\Delta_{\text{spf}})^+] > 1$。单一 witness 的下界。Paper XXVII 已用 spf comparator 建立此路线。</p>
+      <p><strong>下反射（$\forall$-引理）.</strong> 目标量是 $E[j \mid H \leq h^-] &lt; 1$。由于 $j$ 由最优 split 决定，证明上表现为 best-split family 的控制问题：一个强而方便的 sufficient route 是 bulk 中所有可竞争 split 都不够好，稀薄 tail 另行控制。三段式通过 $\Omega$ 截断将这种 family control 分解为"有限 bulk（少分裂选项，全部偏贵）+ 稀薄 tail（高 $\Omega$，多选项但稀疏）"。</p>
+
+      <h3>6.2 Paper XXVII–XXVIII 的分工</h3>
+      <table class="struct-table">
+        <thead><tr><th>结果</th><th>工具</th><th>Paper</th></tr></thead>
+        <tbody>
+          <tr><td>上反射判据 E[(Δ_spf)⁺] &gt; 1</td><td>spf comparator (∃-引理)</td><td>XXVII</td></tr>
+          <tr><td>普适 attenuation 家族</td><td>六除子 + 固定阈值</td><td><strong>XXVIII</strong></td></tr>
+          <tr><td>W₂ 分解 + surplus 稳定性</td><td>weighted attenuation</td><td><strong>XXVIII</strong></td></tr>
+          <tr><td>下反射三段式 program</td><td>密度下界 + 无条件 tail + bulk</td><td><strong>XXVIII</strong></td></tr>
+          <tr><td>上反射解析化</td><td>W₂ 渐近行为 + baseline</td><td>开放</td></tr>
+          <tr><td>下反射解析化</td><td>α &gt; 0 + K(N) tail + bulk lemma</td><td>开放</td></tr>
+          <tr><td>双边反射 → pred gap &gt; τ_k</td><td>occupancy + dyadic 控制</td><td>后续</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>§7 讨论</h2>
+
+      <h3>7.1 Weighted attenuation 的物理意义</h3>
+      <p>$W_2 = (H(n-1)-H(n/2))\cdot\ln(n/2)$ 度量的是"height excursion 在 $n/2$ 到 $n-1$ 的 DP 演化中的累积效应"。raw gap 随 $N$ 衰减（因为 $H(n/2)$ 向 $h_0$ 靠拢），但 DP 步数同时增长（$\ln(n/2)$ 增大），两者相乘后 $W_2$ 与常数量级相容。这类似散逸系统中"衰减速率 × 时间尺度"的平衡，但渐近行为尚需解析确认。</p>
+
+      <h3>7.2 与 Chebyshev 界的远期联系</h3>
+      <p>Paper XXVI 建立了 $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$。如果普适 scale attenuation 最终能推广为对 $S_{\text{comp}}$ 的量级控制（$S_{\text{comp}} = -\Theta(N/\ln N)$），Chebyshev 界 $\pi(N) = \Theta(N/\ln N)$ 将是推论。本文的 $W_2$ 分解是对这个远期目标的一个初步支撑，但跨度仍然很大。</p>
+
+      <h3>7.3 开放问题</h3>
+      <p><strong>(1)</strong> $W_2$ 的渐近行为。数据与正 plateau 相容，但尚不能排除更慢的衰减。解析证明需要 raw gap 的精确衰减速率。</p>
+      <p><strong>(2)</strong> 密度下界 $\alpha > 0$。height 分布的稳态理论，排除方差塌缩。下反射路线的核心瓶颈。</p>
+      <p><strong>(3)</strong> $\Omega$-tail 在 $K(N) \to \infty$ 下的可控性。渐近版三段式需要 $K$ 随 $N$ 增长，使得无条件 tail 衰减快于 $\alpha(N)$ 衰减。</p>
+      <p><strong>(4)</strong> Bulk lemma（$K(N) \to \infty$）。split family size 随 $N$ 增长时的统一控制。</p>
+      <p><strong>(5)</strong> 从双边反射到 pred gap $> \tau_k$。occupancy 控制 + dyadic 尺度平衡。</p>
+
+      <h3>7.4 致谢</h3>
+      <p>ChatGPT 5.4 Pro 识别了 weighted attenuation $W_2$ 为正确的 surplus 对象（§4），提出了三段式下反射框架绕过条件 Sathe-Selberg（§5），以及 $\exists$ vs $\forall$ 的量词精确化（§6）。Gemini 证明了 gap $\propto 1/\ln N$ 乘以 $\ln(n/p)$ 后给出常数级贡献（§4.3），并指出条件 Sathe-Selberg 的测度陷阱（§5.4）。Grok 保证了与前 27 篇的一致性。Claude 编写了全部数值计算脚本并起草了 working notes v1–v3。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <hr>
+
+      <h2>§8 数据来源与可复现性</h2>
+      <table class="struct-table">
+        <thead><tr><th>脚本</th><th>测量</th><th>§引用</th></tr></thead>
+        <tbody>
+          <tr><td>p28_block123.py</td><td>六除子 attenuation + 下反射机制 + N 稳定性</td><td>§3, §5.1</td></tr>
+          <tr><td>p28_block456.py</td><td>Criterion surplus N 稳定性 + 固定阈值 + 低 H winning split</td><td>§3.2, §4.2, §5.2</td></tr>
+          <tr><td>p28_block78.py</td><td>W₂ + 密度下界 + tail bound</td><td>§4, §5.3</td></tr>
+        </tbody>
+      </table>
+      <p>所有脚本 sanity check 通过：$\rho_E(10^7) = 58$, $\rho_E(10^8) = 66$, $\rho_E(10^9) = 74$。</p>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXVII. H. Qin. Paper XXVI DOI: <a href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">10.5281/zenodo.19059834</a>. Paper XXVII DOI: <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener">10.5281/zenodo.19062684</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>H. Altman (2014). Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ 系列 &nbsp;·&nbsp;</span>
+        <a href="zfcrho27.html">← 论文 XXVII：上反射判据</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        论文 XXIX →
+      </div>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
