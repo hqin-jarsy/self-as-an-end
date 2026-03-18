@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conceptual Audit of D(N) vs Dyadic Gap, Scale Correction of the Height Distribution, and Discrete Concentration of Pred Gap — ZFCρ Paper XXIX — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXIX: Conceptual audit distinguishing D(N)≈0.574 from P(pred gap>0)≈0.997. σ(H)·ln N≈0.93 as coordinate artifact. Pred gap concentrated on {+2,+3} (96%+). Dyadic differencing annihilates ln ln n sub-leading terms. E[gap] decline quantitatively explained.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, D(N), dyadic gap, height distribution, scale correction, discrete concentration, pred gap, 加法复杂度, dyadic gap, 离散集中">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Conceptual Audit of D(N) vs Dyadic Gap, Scale Correction of the Height Distribution, and Discrete Concentration of Pred Gap">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho29.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Conceptual Audit of D(N) vs Dyadic Gap, Scale Correction of the Height Distribution, and Discrete Concentration of Pred Gap",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho29.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19083884"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "D(N)", "dyadic gap", "height distribution",
+      "scale correction", "discrete concentration", "pred gap"
+    ],
+    "abstract": "Conceptual audit: D(N)≈0.574 (pointwise density) vs P(pred gap>0)≈0.997 (dyadic positivity rate) are distinct; H' targets the former. σ(H)·ln N≈0.93 is a coordinate artifact, not dynamical collapse. Pred gap concentrated on {+2,+3} (96%+, N=10⁹). Dyadic differencing naturally annihilates ln ln n sub-leading terms. E[gap] decline (~0.04) quantitatively explained by c₁·ln ln n correction (predicted 2.516 vs measured 2.521).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho29.html">
+  <meta name="citation_title" content="Conceptual Audit of D(N) vs Dyadic Gap, Scale Correction of the Height Distribution, and Discrete Concentration of Pred Gap">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19083884">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho29.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .proof-box p + p { margin-top: 0.5rem; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    .struct-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .struct-table th, .struct-table td { border: 1px solid #ddd; padding: 0.4rem 0.75rem; text-align: left; }
+    .struct-table th { background: #f0f0f0; font-weight: 600; }
+    .lang-tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e0e0e0; }
+    .lang-tab { padding: 0.45rem 1.2rem; font-size: 0.82rem; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #888; background: transparent; }
+    .lang-tab.active { color: #222; background: #fff; border-color: #e0e0e0; border-bottom-color: #fff; font-weight: 600; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        displayMath: [['$$','$$'],['\\[','\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-L4M3nDNBvlGCzGj88T3eI9h9XMzH4RKwMa2SbDBFGbNz6R+r9yMPk3sSRFGJLYWmgCCFGm5NmJLm1lc5Fqag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+      document.getElementById('lang-' + lang).classList.add('active');
+      if (lang === 'en') {
+        document.title = 'Conceptual Audit of D(N) vs Dyadic Gap, Scale Correction of the Height Distribution, and Discrete Concentration of Pred Gap — ZFCρ Paper XXIX — Han Qin';
+      } else {
+        document.title = 'D(N) 与 Dyadic Gap 的概念审计、Height 分布的尺度重构与 Pred Gap 的离散集中 — ZFCρ 论文 XXIX — 秦汉';
+      }
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="nav-home">Han Qin</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/papers/">Papers</a>
+    </div>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXIX</div>
+      <h1 class="paper-title">Conceptual Audit of D(N) vs Dyadic Gap, Scale Correction of the Height Distribution, and Discrete Concentration of Pred Gap</h1>
+      <div class="paper-authors">Han Qin · <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID: 0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19083884" target="_blank" rel="noopener" class="zenodo-link">DOI: 10.5281/zenodo.19083884</a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We perform a conceptual audit of the target quantity for Conjecture H' ($D(N) \to 1$) in the ZFCρ series, distinguishing two previously conflated objects: the pointwise positive-jump density $D(N) \approx 0.574$ ($N = 10^7$) and the dyadic gap positivity rate $P(\text{pred gap} > 0) \approx 0.997$ ($N = 10^9$). The target of H' is the former, not the latter. The stability of $P(\text{gap} \leq 0) \approx 0.3\%$ does not threaten H'.</p>
+        <p>An algebraic observation is established. The standard deviation of the height ratio $H(n) = \rho_E(n)/\ln n$ satisfies $\sigma(H) \cdot \ln N \approx 0.93$ across six orders of magnitude, which is not a dynamical collapse of the height distribution but the natural expression of $O(1)$ fluctuations of $\rho_E$ in the $H$ coordinate. The natural fluctuation variable is the centered remainder $R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$. The threshold choice in Paper XXVIII's lower reflection framework is accordingly corrected: the natural scale is $\varepsilon \propto 1/\ln N$ in $H$ coordinates, equivalently $O(1)$ in $\rho_E$ coordinates.</p>
+        <p>Systematic numerical findings are reported ($N = 10^9$, full DP). The dyadic pred gap $\rho_E(2m) - \rho_E(m)$ is highly concentrated on two principal values gap $= +2$ and gap $= +3$, jointly accounting for 96%+ of all $m$. $E[\text{gap}] \approx 2.52$ is stably positive, with its mild decrease (2.56 → 2.52) having diminishing rate. Using the early-scale $E[\text{gap}] \approx 2.56$ as empirical baseline, the $c_1 \cdot \ln\ln n$ sub-leading term in $R(n)$ predicts a dyadic correction of approximately $-0.044$ at $m \sim 10^8$; the resulting empirical prediction 2.516 matches measured 2.521 — this explains the decline, not the absolute level. Dyadic differencing naturally annihilates sub-leading terms of $\ln\ln n$ order — this is the core algebraic mechanism behind pred gap stability.</p>
+        <p><strong>Keywords:</strong> additive complexity, D(N), dyadic gap, height distribution, scale correction, discrete concentration, pred gap</p>
+      </div>
+
+      <hr>
+
+      <h2>1. Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXV reduced H' ($D(N) \to 1$) to pred gap control via dyadic telescoping. Papers XXVII–XXVIII established the upper reflection criterion, universal scale attenuation, and a three-step lower reflection framework.</p>
+      <p>The present paper performs three tasks: (1) a conceptual audit distinguishing $D(N)$ from $P(\text{pred gap} > 0)$; (2) a scale correction of Paper XXVIII's threshold choice via the discovery $\sigma(H) \propto 1/\ln N$; (3) reporting the discrete concentration of pred gap and its algebraic explanation.</p>
+      <p>This paper does not claim to prove H'.</p>
+
+      <h3>1.2 Contributions</h3>
+      <p><strong>(A)</strong> Conceptual distinction between $D(N)$ and $P(\text{pred gap} > 0)$ (§2).</p>
+      <p><strong>(B)</strong> Scale correction $\sigma(H) \propto 1/\ln N$ as a coordinate artifact (§3).</p>
+      <p><strong>(C)</strong> Discrete concentration of pred gap on $\{+2, +3\}$ (§4).</p>
+      <p><strong>(D)</strong> Dyadic differencing annihilates sub-leading terms (§5), with quantitative verification.</p>
+      <p><strong>(E)</strong> Prime-composite decomposition of pred gap (§6).</p>
+
+      <h3>1.3 Notation</h3>
+      <p>Series conventions and Paper XXVI–XXVIII notation apply. New notation: $h_{\text{ref}} = h_0(10^7) = 3.7918$ (finite-scale empirical anchor); $h_\infty = \lim h_0(N)$ (if the limit exists; true asymptotic constant, currently unknown). $R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$. $\text{pred gap}(m) = \rho_E(2m) - \rho_E(m)$. $D(N) = |\{n \leq N : \rho_E(n) > \rho_E(n-1)\}| / N$.</p>
+
+      <hr>
+
+      <h2>2. Conceptual Audit: D(N) vs P(pred gap > 0)</h2>
+
+      <h3>2.1 Two distinct quantities</h3>
+      <p><strong>D(N) (the target of H'):</strong> pointwise positive-jump density.</p>
+      $$D(N) = \frac{|\{n \leq N : \rho_E(n) > \rho_E(n-1)\}|}{N}$$
+      <p>Every prime $n$ contributes $\delta(n) = +1$. Every composite $n$ contributes $\delta(n) = 1 - j(n)$; when $j = 0$, $\delta = +1$. Numerically $D(N) \approx 0.574$ ($N = 10^7$). H' requires $D(N) \to 1$. The significant gap between 0.574 and 1 at finite scales reflects the ongoing competition between additive paths ($j = 0$, $\delta = +1$) and jump paths ($j \geq 1$, $\delta \leq 0$). Paper XXV's dyadic telescoping shows that if the macroscopic condition $E[\text{gap}] > \tau_k$ holds, the Cesàro averaging mechanism ultimately forces the zero-jump density to vanish in the limit. The current value 0.574 is a finite-scale transient, not an asymptotic obstruction.</p>
+      <p><strong>P(pred gap > 0):</strong> dyadic gap positivity rate.</p>
+      $$P(\text{gap} > 0) = \frac{|\{m \leq N/2 : \rho_E(2m) > \rho_E(m)\}|}{N/2}$$
+      <p>Numerically $P(\text{gap} > 0) \approx 0.997$ ($N = 10^9$).</p>
+      <p><strong>These are different quantities.</strong> $D(N)$ is a microscopic (single-step) density; $P(\text{gap} > 0)$ is a macroscopic (dyadic-interval) density. The latter being near 1 does not imply the former is near 1.</p>
+
+      <h3>2.2 P(gap ≤ 0) ≈ 0.3% does not threaten H'</h3>
+      <p>$P(\text{gap} \leq 0) \approx 0.29\%$ ($N = 10^9$), mildly increasing but saturating. This does not threaten H': $D(N) \to 1$ requires pointwise $\delta(n) = +1$ density approaching 1, not every dyadic interval having positive growth. Isolated $m$ with $\rho_E(2m) \leq \rho_E(m)$ are microscopic fluctuations — a compatible explanation is unusually smooth configurations causing composites in $[m, 2m]$ to cancel all prime $+1$ contributions. These are expected rare events.</p>
+
+      <h3>2.3 The correct Route B target</h3>
+      <p>Paper XXV's reduction targets $E[\text{gap}] > \tau_k$ for a positive threshold $\tau_k$, not $P(\text{gap} > 0) \to 1$. Numerically $E[\text{gap}] \approx 2.52$ ($N = 10^9$), stably positive and far from 0. The gap distribution is highly concentrated (96%+ on $\{+2, +3\}$) with strictly bounded variance — placing Route B in a very favorable statistical regime where mean-threshold criteria are plausibly effective.</p>
+
+      <hr>
+
+      <h2>3. σ(H) ∝ 1/ln N: Coordinate Correction</h2>
+
+      <h3>3.1 Data</h3>
+      <p><strong>Numerical Observation 1.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>h₀</th><th>σ(H)</th><th>σ · ln N</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>3.714</td><td>0.1006</td><td>0.927</td></tr>
+          <tr><td>10⁵</td><td>3.752</td><td>0.0824</td><td>0.948</td></tr>
+          <tr><td>10⁶</td><td>3.776</td><td>0.0681</td><td>0.941</td></tr>
+          <tr><td>10⁷</td><td>3.792</td><td>0.0576</td><td>0.929</td></tr>
+          <tr><td>10⁸</td><td>3.802</td><td>0.0498</td><td>0.917</td></tr>
+          <tr><td>10⁹</td><td>3.809</td><td>0.0440</td><td>0.912</td></tr>
+        </tbody>
+      </table>
+      <p>$\sigma \cdot \ln N$ ranges from 0.93 to 0.91, extremely stable across six orders of magnitude.</p>
+
+      <h3>3.2 Coordinate interpretation</h3>
+      <p>$H(n) = \rho_E(n) / \ln n$. The relation $\sigma(H) \cdot \ln N \approx 0.93$ directly supports: centered at the local mean $h_0(N)$, $\rho_E$ fluctuates at $O(1)$ scale. This is a purely arithmetic consequence of dividing by $\ln n$, not a dynamical collapse.</p>
+      <p>The natural fluctuation variable is the locally centered $\rho_E$ (i.e., $\rho_E(n) - h_0(N) \cdot \ln n$), not $H(n)$. The fixed-anchor residual $R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$ introduced in §5 is a related but distinct object: the former has std $\approx 0.93$, the latter std $\approx 0.75$ (the difference arising from the gap between $h_{\text{ref}}$ and $h_0(N)$).</p>
+
+      <h3>3.3 Correction to Paper XXVIII</h3>
+      <p>Paper XXVIII's three-step lower reflection used fixed $\varepsilon$ in $H$ coordinates, causing $\alpha$ to decline. The coordinate correction identifies:</p>
+      <ul>
+        <li>In $H$ coordinates: the natural scale is $\varepsilon(N) \propto \sigma(N) \propto 1/\ln N$.</li>
+        <li>Equivalently in $\rho_E$ coordinates: the natural scale is $O(1)$ constant truncation.</li>
+      </ul>
+      <div class="note-box"><strong>Empirical sanity check (not a formal argument):</strong> At $N = 10^8$, $\varepsilon = 0.02$, $\varepsilon/\sigma = 0.40$. If the standardized distribution were approximately Gaussian, $\alpha \approx \Phi(-0.40) \approx 0.34$. Measured $\alpha = 0.335$. However, due to the strong discreteness of $\rho_E$, the true $\alpha(N)$ will not converge smoothly but oscillate above a strictly positive lower bound with grid-alignment effects.</div>
+      <p><strong>This is a restatement of the Paper XXVIII Step 1 bottleneck, not its elimination.</strong> The rescaled formulation is more natural, but formal proof still requires nondegeneracy theory for the height distribution.</p>
+
+      <h3>3.4 Occupancy concentration</h3>
+      <p><strong>Numerical Observation 2.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>fraction in h₀ ± 0.02</th><th>fraction with |H−h₀| > 0.10</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>17.6%</td><td>32.1%</td></tr>
+          <tr><td>10⁶</td><td>24.5%</td><td>13.6%</td></tr>
+          <tr><td>10⁸</td><td>31.9%</td><td>4.6%</td></tr>
+          <tr><td>10⁹</td><td>35.5%</td><td>2.4%</td></tr>
+        </tbody>
+      </table>
+      <p>The distribution is concentrating — two-sided reflection controls an increasing fraction of the mass.</p>
+
+      <hr>
+
+      <h2>4. Discrete Concentration of Pred Gap</h2>
+
+      <h3>4.1 Gap distribution (N = 10⁹)</h3>
+      <p><strong>Numerical Observation 3.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>Decade</th><th>P(g≤0)</th><th>P(g=1)</th><th>P(g=2)</th><th>P(g=3)</th><th>E[g]</th></tr></thead>
+        <tbody>
+          <tr><td>[10², 10³)</td><td>0.0022</td><td>0.018</td><td>0.397</td><td>0.583</td><td>2.561</td></tr>
+          <tr><td>[10⁴, 10⁵)</td><td>0.0021</td><td>0.029</td><td>0.401</td><td>0.568</td><td>2.535</td></tr>
+          <tr><td>[10⁶, 10⁷)</td><td>0.0027</td><td>0.032</td><td>0.405</td><td>0.561</td><td>2.524</td></tr>
+          <tr><td>[10⁷, 10⁸)</td><td>0.0028</td><td>0.033</td><td>0.407</td><td>0.558</td><td>2.519</td></tr>
+          <tr><td>[10⁸, 10⁹)</td><td>0.0029</td><td>0.033</td><td>0.408</td><td>0.556</td><td>2.517</td></tr>
+        </tbody>
+      </table>
+      <p><strong>The gap distribution is extremely stable:</strong> 96%+ concentrated on $\{+2, +3\}$. No gap $> 3$ is observed. The ratio gap=2 to gap=3 slowly shifts (0.68 → 0.72 at tested scales).</p>
+
+      <h3>4.2 Mild decrease of E[gap]</h3>
+      <p>$E[\text{gap}]$ decreases from 2.561 ($[10^2, 10^3)$) to 2.517 ($[10^8, 10^9)$), but the rate of decrease is diminishing ($\Delta = -0.026, -0.011, -0.005, -0.002$ per decade). $E[\text{gap}]$ remains well above 0 at all tested scales.</p>
+      <p>Simultaneously $h_0 \cdot \ln 2$ increases from 2.57 to 2.64 — opposite direction. The negative correction term $E[R(2m)-R(m)]$ has not yet decayed to negligible at current scales. §5 provides a quantitative explanation.</p>
+
+      <h3>4.3 Pred gap can be negative</h3>
+      <p>Full scan ($N = 10^7$): min pred gap $= -2$ at $m = 1{,}396{,}679$. Negative and zero gaps occur at all scales; $P(\text{gap} \leq 0) \approx 0.29\%$ mildly increasing but saturating. As established in §2.2, this does not threaten H'.</p>
+
+      <hr>
+
+      <h2>5. Dyadic Differencing Annihilates Sub-Leading Terms</h2>
+
+      <h3>5.1 Behavior of R(n)</h3>
+      <p>$R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$ ($h_{\text{ref}} = h_0(10^7) = 3.7918$, a finite-scale empirical anchor).</p>
+      <p><strong>Numerical Observation 4.</strong> $R$ is systematically negative ($E[R] \approx -3$), with $\text{std}(R) \approx 0.75$ stable at tested scales. The negative offset admits multiple compatible explanations: a constant correction $c \approx -3$, a slowly varying sub-leading term $c_1 \cdot \ln\ln n$, or finite-scale bias in the choice of $h_{\text{ref}}$. Current data cannot distinguish these.</p>
+
+      <h3>5.2 The ln ln n hypothesis</h3>
+      <p>Linear regression $R(n) = a + b \cdot \ln(\ln n)$ yields $b \approx -1.18$, explaining approximately 57% of the sample variance. This suggests $R(n)$ may contain a $c_1 \cdot \ln\ln n$ sub-leading term.</p>
+
+      <h3>5.3 The algebraic annihilation mechanism</h3>
+      <div class="thesis-box">
+        <p><strong>Key observation (algebraic fact).</strong> For any sub-leading term $f(n) = c_1 \cdot \ln\ln n$:</p>
+        <p>$$f(2m) - f(m) = c_1 \cdot \ln\!\left(1 + \frac{\ln 2}{\ln m}\right) = c_1 \cdot \frac{\ln 2}{\ln m} + O\!\left(\frac{1}{(\ln m)^2}\right)$$</p>
+        <p>The quadratic error term is approximately $0.0007$ at $m = 10^8$ — negligible. This explains why the linear correction in §5.4 achieves thousandths-level accuracy.</p>
+      </div>
+      <p><strong>Dyadic differencing naturally annihilates $\ln\ln n$-scale slow divergence.</strong> Even if $R(n)$ contains slowly diverging sub-leading terms, pred gap $= h_{\text{ref}} \ln 2 + (R(2m) - R(m))$ remains stable, because differencing smooths out the divergence.</p>
+
+      <h3>5.4 Quantitative closure</h3>
+      <p>Substituting $c_1 = -1.18$ into the difference formula. At $m \approx 10^8$, $\ln m \approx 18.4$:</p>
+      $$\Delta R \approx -1.18 \times \frac{0.693}{18.4} \approx -0.044$$
+      <p>Using the early-scale mean $E[\text{gap}] \approx 2.56$ ($[10^2, 10^3)$) plus this correction: $2.56 - 0.044 = 2.516$.</p>
+      <div class="milestone-box">
+        <p><strong>Measured $E[\text{gap}] = 2.521$ at $[10^7, 10^8)$.</strong> The observed decline from early-scale $E[\text{gap}] \approx 2.56$ is approximately 0.04, matching the predicted correction of 0.044 in magnitude.</p>
+      </div>
+      <div class="note-box"><strong>Note:</strong> This explains the <em>decline</em> of $E[\text{gap}]$ (~0.04), not its absolute value. The absolute value depends on $h_\infty \cdot \ln 2$ and the constant term — both currently undetermined.</div>
+
+      <h3>5.5 Asymptotic behavior of E[gap]</h3>
+      <p>The data are compatible with "$E[\text{gap}]$ remains positive and approaches a positive constant." If the dominant sub-leading term of $R$ is indeed of $\ln\ln n$ type, the dyadic correction decays as $1/\ln m$, and $E[\text{gap}]$ would slowly rise. With $h_0(10^9) = 3.809$ still rising, the asymptotic value $h_\infty$ may lie in $3.83$–$3.85$, corresponding to $E[\text{gap}] \to 2.65$–$2.67$. However, this is heuristic extrapolation, not a theorem established in this paper.</p>
+
+      <hr>
+
+      <h2>6. Prime-Composite Decomposition</h2>
+
+      <h3>6.1 Decomposition</h3>
+      $$\text{pred gap}(m) = \sum_{n=m+1}^{2m} \delta(n) = \underbrace{\pi(2m)-\pi(m)}_{\text{prime contribution}} + \underbrace{\sum_{\text{composite}} \delta(n)}_{\text{composite contribution}}$$
+
+      <p><strong>Numerical Observation 5.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>m</th><th>gap</th><th>prime contrib.</th><th>composite contrib.</th><th>E[δ|comp]</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>+3</td><td>+1,033</td><td>−1,030</td><td>−0.115</td></tr>
+          <tr><td>10⁵</td><td>+2</td><td>+8,392</td><td>−8,390</td><td>−0.092</td></tr>
+          <tr><td>10⁶</td><td>+3</td><td>+70,435</td><td>−70,432</td><td>−0.076</td></tr>
+        </tbody>
+      </table>
+      <p>Pred gap is a fine balance between two $O(m/\ln m)$ quantities, with $O(1)$ net surplus. The absolute value of composite negative drift decreases at the tested points (0.115 → 0.076); if this trend continues (more data needed), the composite drag weakens and primes increasingly dominate the net balance.</p>
+
+      <h3>6.2 Connection to Paper XXVI</h3>
+      <p>Paper XXVI established $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$. The decomposition of §6.1 verifies this structure at the dyadic level: pred gap $= [\pi(2m)-\pi(m)] + [S_{\text{comp}}(2m)-S_{\text{comp}}(m)]$. The first term $\approx m/\ln m$ (PNT); the second numerically behaves like $-(m/\ln m) + O(1)$ at tested points. The $O(1)$ net surplus is the pred gap.</p>
+
+      <hr>
+
+      <h2>7. Discussion</h2>
+
+      <h3>7.1 Core contributions</h3>
+      <p>This paper does not advance analytic proofs; it establishes the correct coordinate system and target quantities for the series:</p>
+      <p><strong>(1) Conceptual audit:</strong> $D(N)$ and $P(\text{gap} > 0)$ are distinct. H' targets $D(N)$. The behavior of $P(\text{gap} \leq 0)$ does not directly constrain $D(N)$.</p>
+      <p><strong>(2) Coordinate correction:</strong> $\sigma(H) \propto 1/\ln N$ is a coordinate artifact. The natural fluctuation variable is $R(n)$, with $O(1)$ fluctuations. Paper XXVIII's threshold should use $O(1)$ truncation in $\rho_E$ coordinates.</p>
+      <p><strong>(3) Dyadic annihilation of sub-leading terms:</strong> $R(n)$ may have $\ln\ln n$-scale slow divergence, but dyadic differencing naturally smooths it. This is the algebraic core of pred gap stability.</p>
+      <p><strong>(4) Discrete concentration:</strong> Pred gap is almost exclusively $+2$ or $+3$, with bounded variance.</p>
+
+      <h3>7.2 The critical-gap picture</h3>
+      <p>$E[\text{gap}] \approx 2.52$ lies between gap $= 2$ and gap $= 3$ (closer to 2.5). The system operates near criticality — $c_{\text{main}} \cdot \ln 2$ slightly exceeds 2.5, while the negative correction ~0.11 pulls the mean to 2.52. As the correction decays ($\propto 1/\ln m$), $E[\text{gap}]$ will slowly rise toward 2.6+.</p>
+
+      <h3>7.3 Open problems</h3>
+      <p><strong>(1)</strong> Analytic proof of $\sigma \propto 1/\ln N$.</p>
+      <p><strong>(2)</strong> Asymptotic limit of $E[\text{gap}]$ — does it equal $c_{\text{main}} \cdot \ln 2$?</p>
+      <p><strong>(3)</strong> Precise sub-leading structure of $R(n)$ — constant $+ \ln\ln n$, or more complex?</p>
+      <p><strong>(4)</strong> Route B proof of $D(N) \to 1$ — requires analytic confirmation of $E[\text{gap}] > \tau_k$.</p>
+      <p><strong>(5)</strong> Asymptotic behavior of $P(\text{gap} = 0)$ — tends to 0, to a small positive constant, or other? Does not affect H' but has independent number-theoretic interest.</p>
+
+      <h3>7.4 Acknowledgments</h3>
+      <p>The thermodynamics thread (Claude) identified the critical conceptual error $D(N) \neq P(\text{pred gap} > 0)$, averting an incorrect pursuit of $P(\text{gap} \leq 0) \to 0$. Gemini contributed the coordinate correction ($\sigma$ collapse as artifact), the $\ln\ln n$ hypothesis, and the quantitative closure of $E[\text{gap}]$ decline (theoretical 2.516 vs measured 2.521). ChatGPT contributed systematic tightening of claim boundaries and unification of target hierarchy. Grok ensured consistency with the preceding 28 papers. Claude (mathematics thread) wrote all numerical computation scripts and drafted working notes v1–v3. The final text was completed independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <hr>
+
+      <h2>8. Data Sources and Reproducibility</h2>
+      <table class="struct-table">
+        <thead><tr><th>Script</th><th>Measurement</th><th>Section</th></tr></thead>
+        <tbody>
+          <tr><td>p29_block123.py</td><td>Occupancy + moving threshold α + pred gap statistics</td><td>§3, §4</td></tr>
+          <tr><td>p29_block45.py</td><td>R(n) sequence + R(2m)−R(m) distribution + global extremes</td><td>§5, §4.3</td></tr>
+          <tr><td>p29_block67.py</td><td>gap≤0 full scan + gap distribution by decade + ln ln n regression</td><td>§4, §5.2</td></tr>
+          <tr><td>p29_block7_only.py</td><td>gap distribution by decade (lightweight, N=10⁸/10⁹)</td><td>§4.1</td></tr>
+        </tbody>
+      </table>
+      <p>All scripts pass sanity checks: $\rho_E(10^7) = 58$, $\rho_E(10^8) = 66$, $\rho_E(10^9) = 74$.</p>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXVIII. H. Qin. Paper XXVI DOI: <a href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">10.5281/zenodo.19059834</a>. Paper XXVII DOI: <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener">10.5281/zenodo.19062684</a>. Paper XXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener">10.5281/zenodo.19078654</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>H. Altman (2014). Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ Series &nbsp;·&nbsp;</span>
+        <a href="zfcrho28.html">← Paper XXVIII: Universal Scale Attenuation</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Paper XXX →
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXIX</div>
+      <h1 class="paper-title">D(N) 与 Dyadic Gap 的概念审计、Height 分布的尺度重构与 Pred Gap 的离散集中</h1>
+      <div class="paper-authors">秦汉 · <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID: 0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19083884" target="_blank" rel="noopener" class="zenodo-link">DOI: 10.5281/zenodo.19083884</a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们对 ZFCρ 系列中 Conjecture H'（$D(N) \to 1$）的目标量进行概念审计，区分两个此前混用的对象：逐整数正跳跃密度 $D(N) \approx 0.574$（$N = 10^7$）和 dyadic gap 正率 $P(\text{pred gap} > 0) \approx 0.997$（$N = 10^9$）。H' 的目标是前者，不是后者。$P(\text{gap} \leq 0) \approx 0.3\%$ 不趋于 0 不威胁 H'。</p>
+        <p>建立一项代数观察。Height ratio $H(n) = \rho_E(n)/\ln n$ 的标准差满足 $\sigma(H) \cdot \ln N \approx 0.93$（六个数量级稳定），这不是 height 分布在"塌缩"，而是 $\rho_E$ 的 $O(1)$ 波动在 $H$ 坐标下的自然表现。真正的波动变量是 $\rho_E$ 的中心化余项 $R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$。据此修正 Paper XXVIII 的下反射阈值选择：自然尺度在 $H$ 坐标下为 $\varepsilon \propto 1/\ln N$，等价于 $\rho_E$ 坐标下的 $O(1)$ 常数截断。</p>
+        <p>报告系统性数值发现（$N = 10^9$ 完整 DP）。Dyadic pred gap $\rho_E(2m) - \rho_E(m)$ 的分布高度集中于两个主值 gap $= +2$ 和 gap $= +3$，合计占 96%+（$N = 10^9$）。$E[\text{gap}] \approx 2.52$ 稳定为正，微弱下降（2.56 → 2.52）的速率递减。若以早期尺度 $E[\text{gap}] \approx 2.56$ 为经验基线，则 $R(n)$ 的 $c_1 \cdot \ln\ln n$ 次主项在 $m \sim 10^8$ 上预测约 $-0.044$ 的 dyadic correction，经验预测值 2.516 与实测 2.521 相符——这里解释的是下降量，而非 $E[\text{gap}]$ 的绝对值。Dyadic 差分天然抹平 $R(n)$ 的次主项——这是 pred gap 稳定性的核心代数机制。</p>
+        <p><strong>关键词：</strong>加法复杂度，$D(N)$，dyadic gap，height 分布，尺度重构，离散集中，pred gap</p>
+      </div>
+
+      <hr>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 系列背景</h3>
+      <p>Paper XXV 通过 dyadic telescoping 将 H'（$D(N) \to 1$）归约为 pred gap 控制。Papers XXVII–XXVIII 建立了上反射判据、普适 scale attenuation 和三段式下反射框架。</p>
+      <p>本文做三件事：(1) 对 H' 的目标量进行概念审计，区分 $D(N)$ 和 $P(\text{pred gap} > 0)$；(2) 通过 $\sigma(H) \propto 1/\ln N$ 的发现重构 Paper XXVIII 的阈值选择；(3) 报告 pred gap 的离散集中现象及其代数解释。</p>
+      <p>本文不声称证明 H'。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <p><strong>(A)</strong> $D(N)$ 与 $P(\text{pred gap} > 0)$ 的概念区分（§2）。</p>
+      <p><strong>(B)</strong> $\sigma(H) \propto 1/\ln N$ 的坐标系修正（§3）。</p>
+      <p><strong>(C)</strong> Pred gap 的离散集中（§4）。Gap 几乎只取 $+2$ 或 $+3$，$E[\text{gap}] \approx 2.52$。</p>
+      <p><strong>(D)</strong> Dyadic 差分杀次主项（§5），E[gap] 的微弱下降被定量解释。</p>
+      <p><strong>(E)</strong> Pred gap 的素数-合数分解（§6）。</p>
+
+      <h3>1.3 记号</h3>
+      <p>沿用系列标准记号及 Paper XXVI–XXVIII 约定。新增记号：$h_{\text{ref}} = h_0(10^7) = 3.7918$（有限尺度经验锚点）；$h_\infty = \lim h_0(N)$（若极限存在；真正的渐近常数，目前未知）。$R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$。$\text{pred gap}(m) = \rho_E(2m) - \rho_E(m)$。$D(N) = |\{n \leq N : \rho_E(n) > \rho_E(n-1)\}| / N$。</p>
+
+      <hr>
+
+      <h2>§2 概念审计：D(N) 与 P(pred gap > 0)</h2>
+
+      <h3>2.1 两个不同的量</h3>
+      <p><strong>D(N)（H' 的目标量）：</strong>逐个整数的正跳跃密度。</p>
+      $$D(N) = \frac{|\{n \leq N : \rho_E(n) > \rho_E(n-1)\}|}{N}$$
+      <p>每个素数 $n$ 贡献 $\delta(n) = +1$。每个合数 $n$ 贡献 $\delta(n) = 1 - j(n)$，当 $j = 0$ 时 $\delta = +1$。数据中 $D(N) \approx 0.574$（$N = 10^7$）。H' 要求 $D(N) \to 1$。Paper XXV 的 dyadic telescoping 表明，只要宏观的 $E[\text{gap}] > \tau_k$ 成立，Cesàro 均值机制最终会迫使零跳跃密度的比例在极限下归零。因此 0.574 是有限尺度的瞬态，不违背渐近趋于 1 的理论要求。</p>
+      <p><strong>P(pred gap > 0)：</strong>dyadic gap 的正率。</p>
+      $$P(\text{gap} > 0) = \frac{|\{m \leq N/2 : \rho_E(2m) > \rho_E(m)\}|}{N/2}$$
+      <p>数据中 $P(\text{gap} > 0) \approx 0.997$（$N = 10^9$）。</p>
+      <p><strong>这两个量不同。</strong> $D(N)$ 是微观（单步）密度，$P(\text{gap} > 0)$ 是宏观（dyadic 区间）密度。后者接近 1 不蕴含前者接近 1。</p>
+
+      <h3>2.2 P(gap ≤ 0) 不趋于 0 不威胁 H'</h3>
+      <p>数据中 $P(\text{gap} \leq 0) \approx 0.29\%$（$N = 10^9$），微弱上升但趋于饱和。这不构成对 H' 的威胁：$D(N) \to 1$ 要求的是逐整数的 $\delta(n) = +1$ 的密度趋于 1，不是每个 dyadic 区间都有正增长。个别 $m$ 的 $\rho_E(2m) \leq \rho_E(m)$ 是微观涨落——一种兼容解释是 unusually smooth configurations 导致 $[m, 2m]$ 内合数跳跃完全抵消素数的 $+1$。</p>
+
+      <h3>2.3 Route B 的正确目标</h3>
+      <p>Paper XXV 通过 dyadic telescoping 将 $D(N) \to 1$ 归约为 pred gap 控制。归约的形式不是"$P(\text{gap} > 0) \to 1$"，而是 $E[\text{gap}]$ 的阈值控制——需要 $E[\text{gap}] > \tau_k$ 对某个正阈值 $\tau_k$。数据中 $E[\text{gap}] \approx 2.52$（$N = 10^9$ 尺度），始终为正且远离 0。Gap 分布高度集中（96%+ 在 $\{+2, +3\}$），方差严格有界——这使 Route B 落在一个非常有利的统计区间。</p>
+
+      <hr>
+
+      <h2>§3 σ(H) ∝ 1/ln N：坐标系修正</h2>
+
+      <h3>3.1 数据</h3>
+      <p><strong>数值观察 1.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>h₀</th><th>σ(H)</th><th>σ · ln N</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>3.714</td><td>0.1006</td><td>0.927</td></tr>
+          <tr><td>10⁵</td><td>3.752</td><td>0.0824</td><td>0.948</td></tr>
+          <tr><td>10⁶</td><td>3.776</td><td>0.0681</td><td>0.941</td></tr>
+          <tr><td>10⁷</td><td>3.792</td><td>0.0576</td><td>0.929</td></tr>
+          <tr><td>10⁸</td><td>3.802</td><td>0.0498</td><td>0.917</td></tr>
+          <tr><td>10⁹</td><td>3.809</td><td>0.0440</td><td>0.912</td></tr>
+        </tbody>
+      </table>
+      <p>$\sigma \cdot \ln N$ 从 0.93 缓慢降到 0.91，六个数量级上极稳定。</p>
+
+      <h3>3.2 坐标系解释</h3>
+      <p>$H(n) = \rho_E(n) / \ln n$。$\sigma(H) \cdot \ln N \approx 0.93$ 直接支持的是：以局部均值 $h_0(N)$ 为中心时，$\rho_E$ 的波动尺度是 $O(1)$。这是除以 $\ln n$ 的算术结果，不是动力学塌缩。</p>
+      <p>波动的自然变量是局部中心化的 $\rho_E$（即 $\rho_E(n) - h_0(N) \cdot \ln n$），不是 $H(n)$。§5 引入的 $R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$ 与局部 fluctuation 相关但不相同：前者 std $\approx 0.93$，后者 std $\approx 0.75$（差异来自 $h_{\text{ref}}$ 与 $h_0(N)$ 之间的差距）。</p>
+
+      <h3>3.3 对 Paper XXVIII 的修正</h3>
+      <p>Paper XXVIII 的三段式下反射在 $H$ 坐标下用固定 $\varepsilon$ 的移动阈值，导致 $\alpha$ 持续下降。坐标系修正指出：</p>
+      <ul>
+        <li>在 $H$ 坐标下，自然尺度是 $\varepsilon(N) \propto \sigma(N) \propto 1/\ln N$。</li>
+        <li>等价地在 $\rho_E$ 坐标下，自然尺度是 $O(1)$ 的常数截断。</li>
+      </ul>
+      <div class="note-box"><strong>经验 sanity check（非形式化论证）：</strong> $N = 10^8$ 时 $\varepsilon = 0.02$，$\varepsilon/\sigma = 0.40$。若标准化分布近似高斯，则 $\alpha \approx \Phi(-0.40) \approx 0.34$。实测 $\alpha = 0.335$——匹配极好。但由于 $\rho_E$ 的强离散性，真实的 $\alpha(N)$ 不会平滑收敛，而是在一个正下界上方进行有界震荡。</div>
+      <p><strong>这是对 Paper XXVIII Step 1 瓶颈的重述，不是消除。</strong>重标度后密度下界的表述变得更自然，但形式化仍需要 height 分布的非退化性理论。</p>
+
+      <h3>3.4 Occupancy 集中</h3>
+      <p><strong>数值观察 2.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>N</th><th>h₀ ± 0.02 内的占比</th><th>|H−h₀| > 0.10 的占比</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>17.6%</td><td>32.1%</td></tr>
+          <tr><td>10⁶</td><td>24.5%</td><td>13.6%</td></tr>
+          <tr><td>10⁸</td><td>31.9%</td><td>4.6%</td></tr>
+          <tr><td>10⁹</td><td>35.5%</td><td>2.4%</td></tr>
+        </tbody>
+      </table>
+      <p>分布在持续集中——双边反射控制了越来越多的质量。</p>
+
+      <hr>
+
+      <h2>§4 Pred Gap 的离散集中</h2>
+
+      <h3>4.1 Gap 分布（N = 10⁹）</h3>
+      <p><strong>数值观察 3.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>Decade</th><th>P(g≤0)</th><th>P(g=1)</th><th>P(g=2)</th><th>P(g=3)</th><th>E[g]</th></tr></thead>
+        <tbody>
+          <tr><td>[10², 10³)</td><td>0.0022</td><td>0.018</td><td>0.397</td><td>0.583</td><td>2.561</td></tr>
+          <tr><td>[10⁴, 10⁵)</td><td>0.0021</td><td>0.029</td><td>0.401</td><td>0.568</td><td>2.535</td></tr>
+          <tr><td>[10⁶, 10⁷)</td><td>0.0027</td><td>0.032</td><td>0.405</td><td>0.561</td><td>2.524</td></tr>
+          <tr><td>[10⁷, 10⁸)</td><td>0.0028</td><td>0.033</td><td>0.407</td><td>0.558</td><td>2.519</td></tr>
+          <tr><td>[10⁸, 10⁹)</td><td>0.0029</td><td>0.033</td><td>0.408</td><td>0.556</td><td>2.517</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Gap 分布极其稳定：</strong>96%+ 集中在 $\{+2, +3\}$。没有 gap $> 3$。gap = 2 的比例缓慢上升（0.397 → 0.408），gap = 3 缓慢下降（0.583 → 0.556）。</p>
+
+      <h3>4.2 E[gap] 的微弱下降</h3>
+      <p>$E[\text{gap}]$ 从 2.561（$[10^2, 10^3)$）缓慢降至 2.517（$[10^8, 10^9)$），但速率在递减（$\Delta = -0.026, -0.011, -0.005, -0.002$ per decade）。$E[\text{gap}]$ 始终远大于 0。同时 $h_0 \cdot \ln 2$ 从 2.57 升到 2.64——两者方向相反。§5 给出定量解释。</p>
+
+      <h3>4.3 Pred gap 可负</h3>
+      <p>全局扫描（$N = 10^7$）发现 min pred gap $= -2$ at $m = 1{,}396{,}679$。$P(\text{gap} \leq 0) \approx 0.29\%$ 微弱上升但趋于饱和。如 §2.2 所述，这不威胁 H'。</p>
+
+      <hr>
+
+      <h2>§5 Dyadic 差分杀次主项</h2>
+
+      <h3>5.1 R(n) 的行为</h3>
+      <p>$R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$（$h_{\text{ref}} = h_0(10^7) = 3.7918$，有限尺度经验锚点）。</p>
+      <p><strong>数值观察 4.</strong> $R_{\text{ref}}$ 系统性为负（$E[R_{\text{ref}}] \approx -3$），在当前窗口上 $\text{std}(R_{\text{ref}}) \approx 0.75$ 表现稳定。负偏移存在多种兼容解释：常数修正项 $c \approx -3$，慢变次主项 $c_1 \cdot \ln\ln n$，或 $h_{\text{ref}}$ 与真实 $h_\infty$ 之间的差距。当前数据不能区分。</p>
+
+      <h3>5.2 ln ln n 假设检验</h3>
+      <p>线性回归 $R(n) = a + b \cdot \ln(\ln n)$ 给出 $b \approx -1.18$，解释了约 57% 的样本方差。这提示 $R(n)$ 可能有 $c_1 \cdot \ln\ln n$ 的次主项。</p>
+
+      <h3>5.3 Dyadic 差分的代数杀伤机制</h3>
+      <div class="thesis-box">
+        <p><strong>关键观察（代数事实）：</strong>对任何形如 $f(n) = c_1 \cdot \ln\ln n$ 的次主项：</p>
+        <p>$$f(2m) - f(m) = c_1 \cdot \ln\!\left(1 + \frac{\ln 2}{\ln m}\right) = c_1 \cdot \frac{\ln 2}{\ln m} + O\!\left(\frac{1}{(\ln m)^2}\right)$$</p>
+        <p>Taylor 展开的二次误差项在 $m = 10^8$ 时量级为 $(\ln 2)^2/(2 \cdot 18.4^2) \approx 0.0007$，可忽略。这也解释了 §5.4 的线性修正能吻合到千分位。</p>
+      </div>
+      <p><strong>Dyadic 差分天然杀掉 $\ln\ln n$ 级别的慢发散。</strong>即使 $R(n)$ 有缓慢发散的低阶项，pred gap $= h_{\text{ref}} \cdot \ln 2 + (R(2m)-R(m))$ 仍然稳定——因为差分抹平了发散。</p>
+
+      <h3>5.4 定量闭环</h3>
+      <p>将 $c_1 = -1.18$ 代入差分公式。在 $m \approx 10^8$ 尺度，$\ln m \approx 18.4$：</p>
+      $$\Delta R \approx -1.18 \times \frac{0.693}{18.4} \approx -0.044$$
+      <p>从早期尺度（$[10^2, 10^3)$，$E[\text{gap}] \approx 2.56$）到 $[10^7, 10^8)$ 尺度，$E[\text{gap}]$ 应下降约 0.044。</p>
+      <div class="milestone-box">
+        <p><strong>实测下降量 $2.56 - 2.52 = 0.04$，量级吻合。</strong>经验预测值 2.516 与实测 2.521 相符。</p>
+      </div>
+      <div class="note-box"><strong>注意：</strong>这解释的是 $E[\text{gap}]$ 的下降量（~0.04），不是 $E[\text{gap}]$ 的绝对值。绝对值还依赖于 $h_\infty \cdot \ln 2$ 和常数项的确切值——两者当前均未确定。</div>
+
+      <h3>5.5 Pred gap 的渐近行为</h3>
+      <p>数据与"$E[\text{gap}]$ 保持正并趋向某个正常数"相容。若 $R$ 的主导次主项确为 $\ln\ln n$ 型，则 dyadic correction 以 $1/\ln m$ 衰减，$E[\text{gap}]$ 将缓慢上升。当前 $h_0(10^9) = 3.809$ 还在上升；如果 $h_\infty$ 在 3.83–3.85 附近，则 $E[\text{gap}]$ 可能趋向 2.65–2.67。但这是启发式外推，不是本文已建立的定理。</p>
+
+      <hr>
+
+      <h2>§6 素数-合数分解</h2>
+
+      <h3>6.1 Pred gap 的分解</h3>
+      $$\text{pred gap}(m) = \sum_{n=m+1}^{2m} \delta(n) = \underbrace{\pi(2m)-\pi(m)}_{\text{素数贡献}} + \underbrace{\sum_{\text{composite}} \delta(n)}_{\text{合数贡献}}$$
+
+      <p><strong>数值观察 5.</strong></p>
+      <table class="struct-table">
+        <thead><tr><th>m</th><th>gap</th><th>素数贡献</th><th>合数贡献</th><th>E[δ|comp]</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>+3</td><td>+1,033</td><td>−1,030</td><td>−0.115</td></tr>
+          <tr><td>10⁵</td><td>+2</td><td>+8,392</td><td>−8,390</td><td>−0.092</td></tr>
+          <tr><td>10⁶</td><td>+3</td><td>+70,435</td><td>−70,432</td><td>−0.076</td></tr>
+        </tbody>
+      </table>
+      <p>Pred gap 是两个 $O(m/\ln m)$ 量的差，净余 $O(1)$。合数负 drift 的绝对值在测试点上从 0.115 降到 0.076。如果这一趋势延续（需更多数据确认），合数的负贡献会越来越弱，素数在净余中的优势越来越明显。</p>
+
+      <h3>6.2 与 Paper XXVI 的联系</h3>
+      <p>Paper XXVI 建立了 $\rho_E(N) = \pi(N) + S_{\text{comp}}(N)$。§6.1 的素数-合数分解在 dyadic 层面验证了这个结构：pred gap $= [\pi(2m)-\pi(m)] + [S_{\text{comp}}(2m)-S_{\text{comp}}(m)]$。前项 $\approx m/\ln m$（PNT）；后项在测试点上表现为 $\approx -(m/\ln m) + O(1)$。净余就是 pred gap $\approx O(1)$。</p>
+
+      <hr>
+
+      <h2>§7 讨论</h2>
+
+      <h3>7.1 本文核心贡献</h3>
+      <p>本文不推进解析证明，而是为系列建立正确的坐标系和目标量：</p>
+      <p><strong>(1) 概念审计：</strong>$D(N)$ 和 $P(\text{gap} > 0)$ 是不同的量。H' 追的是 $D(N)$。$P(\text{gap} \leq 0)$ 的行为不直接约束 $D(N)$。</p>
+      <p><strong>(2) 坐标系修正：</strong>$\sigma(H) \propto 1/\ln N$ 是坐标系假象。自然波动变量是 $R_{\text{ref}}(n) = \rho_E(n) - h_{\text{ref}} \cdot \ln n$，波动 $O(1)$。Paper XXVIII 的阈值应在 $\rho_E$ 坐标下取 $O(1)$ 截断。</p>
+      <p><strong>(3) Dyadic 差分杀次主项：</strong>$R(n)$ 可能有 $\ln\ln n$ 级别的慢发散，但 dyadic 差分天然抹平它。这是 pred gap 稳定性的代数核心。</p>
+      <p><strong>(4) 离散集中：</strong>Pred gap 几乎只取 $+2$ 或 $+3$，方差严格有界。</p>
+
+      <h3>7.2 E[gap] 的临界间隙图景</h3>
+      <p>$E[\text{gap}] \approx 2.52$ 位于 gap $= 2$ 和 gap $= 3$ 之间（更接近 gap $= 2.5$）。系统运行在临界点附近。数据与"$E[\text{gap}]$ 保持正并趋向某个正常数"相容——若 $\ln\ln n$ 型修正持续衰减，$E[\text{gap}]$ 将缓慢上升。</p>
+
+      <h3>7.3 开放问题</h3>
+      <p><strong>(1)</strong> $\sigma \propto 1/\ln N$ 的解析证明。</p>
+      <p><strong>(2)</strong> $E[\text{gap}]$ 的渐近极限——是否等于 $h_\infty \cdot \ln 2$？</p>
+      <p><strong>(3)</strong> $R(n)$ 的精确次主项结构——常数 $+ \ln\ln n$，还是更复杂？</p>
+      <p><strong>(4)</strong> $D(N) \to 1$ 的 Route B 证明——需要 $E[\text{gap}] > \tau_k$ 的解析确认。</p>
+      <p><strong>(5)</strong> $P(\text{gap} = 0)$ 的渐近行为——趋于 0、趋于小正常数、还是其他？不影响 H'，但有独立的数论意义。</p>
+
+      <h3>7.4 致谢</h3>
+      <p>热力学线（Claude）识别了 $D(N) \neq P(\text{pred gap} > 0)$ 的关键概念错误，避免了对 $P(\text{gap} \leq 0)$ 的错误追踪。Gemini 贡献了坐标系修正（$\sigma$ 塌缩是假象）、$\ln\ln n$ 假设、以及 $E[\text{gap}]$ 下降的定量闭环（理论 2.516 vs 实测 2.521）。ChatGPT 贡献了 claim 边界的系统性收紧和 $D(N)/P(\text{gap}>0)$ 目标层级的统一。Grok 保证了与前 28 篇的一致性。Claude（数学线）编写了全部数值计算脚本并起草了 working notes v1–v3。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <hr>
+
+      <h2>§8 数据来源与可复现性</h2>
+      <table class="struct-table">
+        <thead><tr><th>脚本</th><th>测量</th><th>§引用</th></tr></thead>
+        <tbody>
+          <tr><td>p29_block123.py</td><td>Occupancy + 移动阈值 α + pred gap 统计</td><td>§3, §4</td></tr>
+          <tr><td>p29_block45.py</td><td>R(n) 序列 + R(2m)−R(m) 分布 + 全局极值</td><td>§5, §4.3</td></tr>
+          <tr><td>p29_block67.py</td><td>gap≤0 全局扫描 + gap 分布 by decade + ln ln n 回归</td><td>§4, §5.2</td></tr>
+          <tr><td>p29_block7_only.py</td><td>gap 分布 by decade（轻量版，N=10⁸/10⁹）</td><td>§4.1</td></tr>
+        </tbody>
+      </table>
+      <p>所有脚本 sanity check 通过：$\rho_E(10^7) = 58$, $\rho_E(10^8) = 66$, $\rho_E(10^9) = 74$。</p>
+
+      <hr>
+
+      <h2>References</h2>
+      <ol>
+        <li>ZFCρ Papers I–XXVIII. H. Qin. Paper XXVI DOI: <a href="https://doi.org/10.5281/zenodo.19059834" target="_blank" rel="noopener">10.5281/zenodo.19059834</a>. Paper XXVII DOI: <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener">10.5281/zenodo.19062684</a>. Paper XXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener">10.5281/zenodo.19078654</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>H. Altman (2014). Integer complexity, addition chains, and well-ordering. PhD thesis, Rutgers University.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ 系列 &nbsp;·&nbsp;</span>
+        <a href="zfcrho28.html">← 论文 XXVIII：普适 Scale Attenuation</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        论文 XXX →
+      </div>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
