@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Direct Measurement of D(N), Multiplicative Decomposition, and Structural Constraints on H' — ZFCρ Paper XXX — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXX: First direct computation D(N)≈0.406 (N=10⁸), correcting prior estimate. Multiplicative decomposition 1-D=(1-π/N)(1-p_N); H'⟺q_N→0. Structural constraint: E[j|comp]→1 forces r_N→∞ if H' holds. Omega dichotomy at Ω=3→4. Per-layer attenuation confirmed zero exceptions.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, D(N), zero-jump density, multiplicative decomposition, Omega stratification, scale attenuation, structural constraint, 加法复杂度">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="First Direct Measurement of D(N), Multiplicative Decomposition, and Structural Constraints on H'">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho30.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "First Direct Measurement of D(N), Multiplicative Decomposition, and Structural Constraints on H'",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho30.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19101810"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "D(N)", "zero-jump density", "multiplicative decomposition",
+      "Omega stratification", "scale attenuation", "structural constraint"
+    ],
+    "abstract": "First direct computation of D(N)≈0.406 (N=10⁸), correcting prior unverified estimate of 0.574. Multiplicative decomposition 1-D=(1-π/N)(1-p_N) established; H' equivalent to q_N→0. Structural constraint: E[j|comp]→1 (locked by dyadic gap telescoping) combined with q_N→0 forces r_N→∞; currently r_N≈1.68 stable. Omega dichotomy: j=0 composites concentrate at Ω≤3, j>0 at Ω≥4. Per-Omega-layer P(j=0|Ω=k) increases monotonically at all tested layers and scales, zero exceptions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho30.html">
+  <meta name="citation_title" content="First Direct Measurement of D(N), Multiplicative Decomposition, and Structural Constraints on H'">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19101810">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho30.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .proof-box p + p { margin-top: 0.5rem; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; padding: 0.45rem 0.75rem; border: 1px solid #ddd; text-align: left; }
+    td { padding: 0.4rem 0.75rem; border: 1px solid #ddd; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .lang-tab { padding: 0.35rem 1rem; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; }
+    .lang-tab.active { background: #333; color: #fff; border-color: #333; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.querySelectorAll('.lang-tab[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
+    }
+    window.addEventListener('DOMContentLoaded', () => switchLang('en'));
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"
+    id="MathJax-script"
+    integrity="sha512-T8BFRA7AOMBO9Xjvbx4/vPDCbCfUPAkEEdtXGKiT3Z5xG6nBwrfJAjmJDQByGWVH0pgJfhRFOVrFYIYDHEVA=="
+    crossorigin="anonymous"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      }
+    };
+  </script>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/">Han Qin</a>
+    <a href="/#papers">Papers</a>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXX</div>
+      <h1 class="paper-title">First Direct Measurement of D(N), Multiplicative Decomposition, and Structural Constraints on H'</h1>
+      <div class="paper-authors">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19101810" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        DOI: 10.5281/zenodo.19101810
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We perform the first direct computation of the pointwise positive-jump density $D(N) = |\{n \le N : \rho_E(n) > \rho_E(n-1)\}| / N$ in the ZFCρ series. Result: $D(N) \approx 0.406$ ($N = 10^8$), correcting a previous unverified estimate. $D(N)$ is currently decreasing, opposite to the direction required by H' ($D(N) \to 1$).</p>
+        <p>A multiplicative decomposition is established: $1 - D(N) = (1 - \pi(N)/N)(1 - p_N)$, where $p_N = P(j=0 \mid \text{composite}, n \le N)$. H' is equivalent to $p_N \to 1$ (the <strong>density</strong> of zero-jump composites tends to 1). The failure rate $q_N = 1 - p_N \approx 0.630$ ($N = 10^8$) is slowly decreasing. The decline of $D(N)$ is primarily driven by the vanishing of $\pi(N)/N$ — $p_N$ is actually increasing (0.332 → 0.370), but its growth rate has not yet overtaken the decline rate of $\pi/N$.</p>
+        <p>A structural constraint on H' is identified. The $O(1)$ magnitude of dyadic pred gap forces the composite block mean $E[j \mid \text{comp in } (m,2m]] \to 1$ via the telescoping identity. By weighted Cesàro averaging, the cumulative $E[j \mid \text{comp}] \to 1$ as well. If H' holds ($q_N \to 0$), then $r_N = E[j \mid j \ge 1, \text{comp}] = E[j|\text{comp}]/q_N$ must tend to infinity — jumps must become increasingly sparse but individually deeper. Currently $r_N \approx 1.68$, stable across five orders of magnitude. The system has not yet entered the intermittency regime required by H'.</p>
+        <p>The jump distribution's Omega dichotomy is reported ($N = 10^9$). Zero-jump composites concentrate at $\Omega \le 3$ ($E[\Omega|j=0] = 3.0$); jumping composites concentrate at $\Omega \ge 4$ ($E[\Omega|j>0] = 4.8$). Per-Omega-layer $P(j=0|\Omega=k)$ increases monotonically at all tested layers ($k=2,\ldots,7$) and all tested scales, with zero exceptions — scale attenuation operates at every layer. The ultimate battleground for H' is: intra-layer attenuation rate vs inter-layer $\Omega$ drift rate (Hardy–Ramanujan normal order $\ln\ln N$).</p>
+        <p><strong>Keywords:</strong> additive complexity, D(N), zero-jump density, multiplicative decomposition, Omega stratification, scale attenuation, structural constraint</p>
+      </div>
+
+      <h3>§1 Introduction</h3>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXIX distinguished $D(N)$ (pointwise density) from $P(\text{pred gap} > 0)$ (dyadic gap positivity rate) and established H' targets the former. However, $D(N)$ had never been directly computed in the series. This paper performs the first direct measurement and establishes a precise decomposition.</p>
+
+      <h3>1.2 Contributions</h3>
+      <ul>
+        <li><strong>(A)</strong> First direct computation of $D(N)$, correcting previous estimates (§2).</li>
+        <li><strong>(B)</strong> Multiplicative decomposition $1-D(N) = (1-\pi/N)(1-p_N)$, and H' $\Leftrightarrow$ $p_N \to 1$ (§3).</li>
+        <li><strong>(C)</strong> Structural constraint on H': $E[j|\text{comp}] \to 1$ with $q_N \to 0$ forces $r_N \to \infty$ (§4).</li>
+        <li><strong>(D)</strong> Complete jump distribution measurement and Omega dichotomy (§5).</li>
+        <li><strong>(E)</strong> Per-Omega-layer $P(j=0|\Omega=k)$ cross-scale trends (§6).</li>
+      </ul>
+
+      <h3>1.3 Notation</h3>
+      <p>Series conventions apply. New notation: $p_N = P(j=0 \mid \text{composite}, n \le N)$; $q_N = 1 - p_N$; $r_N = E[j \mid j \ge 1, \text{comp}, n \le N] = E[j|\text{comp}]/q_N$; $\Omega(n)$ = number of prime factors with multiplicity.</p>
+
+      <h3>§2 First Direct Computation of D(N)</h3>
+
+      <h3>2.1 Data</h3>
+      <p><strong>Numerical Observation 1.</strong> First full-range computation of $D(N)$ ($N \le 10^8$).</p>
+
+      <table>
+        <tr><th>N</th><th>D(N)</th><th>π(N)/N</th><th>J₀(N)/N</th><th>1−D(N)</th></tr>
+        <tr><td>10³</td><td>0.444</td><td>0.168</td><td>0.276</td><td>0.556</td></tr>
+        <tr><td>10⁴</td><td>0.420</td><td>0.123</td><td>0.297</td><td>0.580</td></tr>
+        <tr><td>10⁵</td><td>0.412</td><td>0.096</td><td>0.316</td><td>0.588</td></tr>
+        <tr><td>10⁶</td><td>0.409</td><td>0.078</td><td>0.330</td><td>0.591</td></tr>
+        <tr><td>10⁷</td><td>0.407</td><td>0.066</td><td>0.341</td><td>0.593</td></tr>
+        <tr><td>10⁸</td><td>0.406</td><td>0.058</td><td>0.348</td><td>0.594</td></tr>
+      </table>
+
+      <p>Paper XXIX's $D(N) \approx 0.574$ was an unverified estimate from the period of conceptual confusion. The actual value is $\approx 0.406$, decreasing at current scales.</p>
+
+      <h3>2.2 Two Opposing Forces</h3>
+      <ul>
+        <li>$\pi(N)/N$ decreasing (PNT: $\sim 1/\ln N$) — drags $D(N)$ down.</li>
+        <li>$J_0(N)/N$ increasing (0.276 → 0.348) — zero-jump composites growing, pushes $D(N)$ up.</li>
+        <li>Currently: $\pi/N$ decline dominates $J_0/N$ growth; net effect is $D$ decreasing.</li>
+      </ul>
+
+      <h3>§3 Multiplicative Decomposition and Equivalent Restatement of H'</h3>
+
+      <h3>3.1 Decomposition</h3>
+      <p>Define $p_N = P(j=0 \mid \text{composite}, n \le N)$. Exact identity:
+      $$D(N) = \frac{\pi(N)}{N} + \left(1 - \frac{\pi(N)}{N}\right) p_N$$
+      Equivalently:
+      $$1 - D(N) = \left(1 - \frac{\pi(N)}{N}\right)(1 - p_N)$$
+      By PNT, $1 - \pi(N)/N \to 1$. Therefore <strong>H' ($D(N) \to 1$) is equivalent to $p_N \to 1$, i.e., $q_N := 1 - p_N \to 0$.</strong></p>
+      <p>Data verification: at $N = 10^8$, $(1-\pi/N) = 0.9424$, $p_N = 0.370$, product $= 0.594 = 1-D(N)$. ✓</p>
+
+      <h3>3.2 Precise Statement</h3>
+      <div class="thesis-box">
+        <p><strong>H' is equivalent to: among composites, the density of $j=0$ tends to 1.</strong></p>
+        <p>This is a density (probability measure) statement, not a pointwise eventual statement. Even if $p_N \to 1$, infinitely many composites $n$ with $j(n) > 0$ may persist — their density simply tends to 0.</p>
+      </div>
+
+      <h3>3.3 Current Status</h3>
+      <table>
+        <tr><th>N</th><th>p_N</th><th>q_N</th><th>E[j|comp]</th><th>r_N = E[j]/q_N</th></tr>
+        <tr><td>10³</td><td>0.332</td><td>0.668</td><td>1.133</td><td>1.696</td></tr>
+        <tr><td>10⁴</td><td>0.339</td><td>0.661</td><td>1.103</td><td>1.668</td></tr>
+        <tr><td>10⁵</td><td>0.350</td><td>0.650</td><td>1.082</td><td>1.665</td></tr>
+        <tr><td>10⁶</td><td>0.359</td><td>0.641</td><td>1.070</td><td>1.669</td></tr>
+        <tr><td>10⁷</td><td>0.365</td><td>0.635</td><td>1.070</td><td>1.685</td></tr>
+        <tr><td>10⁸</td><td>0.370</td><td>0.630</td><td>1.060</td><td>1.683</td></tr>
+      </table>
+      <p>$q_N$ slowly decreasing (0.668 → 0.630), very far from 0. $r_N \approx 1.68$ extremely stable.</p>
+
+      <h3>3.4 Conditional Assessment</h3>
+      <p>If $p_N \to 1$ (H' holds), the current decline of $D(N)$ is transient — $D(N)$ will bottom out and recover when $p_N$'s growth rate overtakes $\pi/N$'s decline rate. However, with current data, $p_N \to p^* < 1$ (H' fails) is equally compatible. The two scenarios cannot be distinguished at $N = 10^8$.</p>
+
+      <h3>§4 Structural Constraint on H'</h3>
+
+      <h3>4.1 Dyadic Identity Forces Block Mean → 1</h3>
+      <p>By Paper XXIX's pred gap stability, $\text{gap}(m) = O(1)$. By the telescoping identity:
+      $$\sum_{n=m+1}^{2m} j(n) = m - \text{gap}(m)$$
+      Primes contribute $j=0$; all jumps come from composites. With $C(m) = \#\{\text{composites in } (m,2m]\} \approx m(1-1/\ln m)$:
+      $$\mu(m) := E[j \mid \text{comp in } (m,2m]] \approx \frac{1 - \text{gap}/m}{1-1/\ln m} \to 1 + \frac{1}{\ln m} + O\!\left(\frac{1}{\ln^2 m}\right)$$</p>
+      <div class="milestone-box">
+        <p><strong>The dyadic block composite mean approaches 1 from above, with asymptotic floor $1 + 1/\ln m$.</strong> Dropping below 1 would force $\text{gap} = O(m)$, contradicting pred gap discrete concentration ($\text{gap} \in \{2,3\}$).</p>
+      </div>
+
+      <h3>4.2 Structural Tension (Block Version)</h3>
+      <p>Define block quantities:
+      $$q_{[m,2m]} = P(j \ge 1 \mid \text{comp in } (m,2m]), \quad r_{[m,2m]} = E[j \mid j \ge 1,\; \text{comp in } (m,2m]]$$
+      Then block mean $= q_{[m,2m]} \cdot r_{[m,2m]}$, and §4.1 constrains it to approach 1. If H' is realized at block level ($q_{[m,2m]} \to 0$), then $r_{[m,2m]} \to \infty$.</p>
+      <div class="thesis-box">
+        <p><strong>If H' holds, jumps in each dyadic block must become increasingly sparse but individually deeper.</strong></p>
+      </div>
+      <p><strong>Weighted Cesàro bridge to cumulative quantities.</strong> Define $\mu_k = E[j \mid \text{comp in } (2^k, 2^{k+1}]]$, $w_k = \#\{\text{comp in } (2^k, 2^{k+1}]\}$. For dyadic cutoff $N = 2^K$:
+      $$E[j \mid \text{comp},\; n \le 2^K] = \frac{\sum_{k<K} w_k \mu_k}{\sum_{k<K} w_k}$$
+      By §4.1, $\mu_k \to 1$ with $w_k > 0$. Standard weighted Cesàro averaging yields $E[j \mid \text{comp}, n \le 2^K] \to 1$. Therefore cumulative $E[j|\text{comp}] \to 1$, and $q_N \to 0$ implies $r_N = E[j|\text{comp}]/q_N \to \infty$. Data: cumulative $r_N \approx 1.68$, stable across five orders of magnitude — the system has not yet entered the intermittency regime required by H'.</p>
+
+      <h3>4.3 Alternative Reading</h3>
+      <p>If block $r$ does not rise ($r \to r^* \approx 1.68$), then block $q \to 1/r^* \approx 0.60$, giving $p \to 0.40$, $D(N) \to 0.40$. <strong>H' fails.</strong></p>
+      <p>Current data are equally compatible with both scenarios — $q \to 0$ (H' holds, $r$ eventually rises) and $q \to 0.60$ (H' fails, $r$ stable). Indistinguishable at $N = 10^8$.</p>
+
+      <h3>4.4 Fitting Diagnostics</h3>
+      <p>Four models for $q_N$ decay (cutoffs $\le 10^7$):</p>
+      <table>
+        <tr><th>Model</th><th>R²</th><th>q_∞</th><th>H' status</th></tr>
+        <tr><td>$q \sim C\cdot(\ln N)^{-0.068}$</td><td>0.975</td><td>0</td><td>compatible</td></tr>
+        <tr><td>$q \sim C\cdot N^{-0.006}$</td><td>0.950</td><td>0</td><td>compatible</td></tr>
+        <tr><td>$q = 0.610 + 0.44/\ln N$</td><td>0.971</td><td>0.610</td><td>fails</td></tr>
+        <tr><td>$q = 0.553 + 0.23/\ln\ln N$</td><td>0.974</td><td>0.553</td><td>fails</td></tr>
+      </table>
+      <div class="note-box">
+        At scales $N \le 10^8$, the controlling logarithmic and double-logarithmic terms exhibit strong local isomorphism in their numerical trajectories. This finite-scale algebraic degeneracy precisely quantifies the uncertainty boundary of H': any attempt to confirm or refute H' by numerical extrapolation falls into a multi-model compatibility illusion. <strong>The ultimate determination of H' must and can only rely on analytic tools.</strong>
+      </div>
+
+      <h3>§5 Complete Jump Distribution and Omega Dichotomy</h3>
+
+      <h3>5.1 P(j=k|comp) by Decade (N = 10⁸)</h3>
+      <p><strong>Numerical Observation 2.</strong></p>
+      <table>
+        <tr><th>j</th><th>[10³,10⁴)</th><th>[10⁴,10⁵)</th><th>[10⁵,10⁶)</th><th>[10⁶,10⁷)</th><th>[10⁷,10⁸)</th></tr>
+        <tr><td>0</td><td>0.340</td><td>0.351</td><td>0.360</td><td>0.366</td><td>0.370</td></tr>
+        <tr><td>1</td><td>0.330</td><td>0.328</td><td>0.324</td><td>0.322</td><td>0.321</td></tr>
+        <tr><td>2</td><td>0.222</td><td>0.220</td><td>0.218</td><td>0.215</td><td>0.213</td></tr>
+        <tr><td>3</td><td>0.081</td><td>0.078</td><td>0.076</td><td>0.076</td><td>0.075</td></tr>
+        <tr><td>≥4</td><td>0.027</td><td>0.024</td><td>0.022</td><td>0.021</td><td>0.021</td></tr>
+      </table>
+      <p><strong>$j=0$ increasing, all $j \ge 1$ decreasing.</strong> The distribution is shifting toward $j=0$. $P(j \ge 2)$ decreases from 0.330 to 0.309 — large jumps diminishing but far from vanishing.</p>
+
+      <h3>5.2 Omega Dichotomy</h3>
+      <p><strong>Numerical Observation 3.</strong> (decade $[10^8, 10^9)$)</p>
+      <table>
+        <tr><th>Ω</th><th>P(Ω|j=0)</th><th>P(Ω|j>0)</th><th>P(j=0|Ω)</th></tr>
+        <tr><td>2</td><td>0.351</td><td>0.058</td><td>0.783</td></tr>
+        <tr><td>3</td><td>0.348</td><td>0.177</td><td>0.539</td></tr>
+        <tr><td>4</td><td>0.194</td><td>0.241</td><td>0.324</td></tr>
+        <tr><td>5</td><td>0.075</td><td>0.210</td><td>0.175</td></tr>
+        <tr><td>6</td><td>0.023</td><td>0.141</td><td>0.090</td></tr>
+        <tr><td>7</td><td>0.007</td><td>0.082</td><td>0.047</td></tr>
+      </table>
+      <p>$E[\Omega|j=0] \approx 3.0$, $E[\Omega|j>0] \approx 4.8$.</p>
+      <div class="milestone-box">
+        <p><strong>The boundary lies between $\Omega = 3$ and $\Omega = 4$.</strong> $P(j=0|\Omega=3) = 0.539 > 1/2$, while $P(j=0|\Omega=4) = 0.324 < 1/2$. Composites with few prime factors ($\Omega \le 3$) predominantly take the additive path; those with many ($\Omega \ge 4$) are predominantly surpassed by multiplicative decompositions. This can be understood as a combinatorial complexity threshold: at $\Omega = 3 \to 4$, the number of available factorizations exceeds the "resistance threshold" of the additive path.</p>
+      </div>
+
+      <h3>§6 Per-Omega-Layer P(j=0|Ω=k) Cross-Scale Trends</h3>
+
+      <h3>6.1 Data</h3>
+      <p><strong>Numerical Observation 4.</strong> $P(j=0 \mid \text{comp}, \Omega=k)$ by decade ($N = 10^9$).</p>
+      <table>
+        <tr><th>Decade</th><th>Ω=2</th><th>Ω=3</th><th>Ω=4</th><th>Ω=5</th><th>Ω=6</th><th>Ω=7</th></tr>
+        <tr><td>[10³, 10⁴)</td><td>0.684</td><td>0.351</td><td>0.147</td><td>0.050</td><td>0.029</td><td>0.014</td></tr>
+        <tr><td>[10⁴, 10⁵)</td><td>0.709</td><td>0.409</td><td>0.198</td><td>0.083</td><td>0.040</td><td>0.021</td></tr>
+        <tr><td>[10⁵, 10⁶)</td><td>0.736</td><td>0.453</td><td>0.238</td><td>0.111</td><td>0.050</td><td>0.025</td></tr>
+        <tr><td>[10⁶, 10⁷)</td><td>0.755</td><td>0.488</td><td>0.270</td><td>0.136</td><td>0.066</td><td>0.033</td></tr>
+        <tr><td>[10⁷, 10⁸)</td><td>0.770</td><td>0.516</td><td>0.299</td><td>0.156</td><td>0.078</td><td>0.040</td></tr>
+        <tr><td>[10⁸, 10⁹)</td><td>0.783</td><td>0.539</td><td>0.324</td><td>0.175</td><td>0.090</td><td>0.047</td></tr>
+      </table>
+      <div class="milestone-box">
+        <p><strong>Every layer, every decade, $P(j=0|\Omega=k)$ increases monotonically. Zero exceptions.</strong> Scale attenuation operates at every layer — from $\Omega=2$ (already at 78%) to $\Omega=7$ (only 5% but rising).</p>
+      </div>
+
+      <h3>6.2 Increment Analysis</h3>
+      <table>
+        <tr><th>Ω</th><th>Δ per decade ([10⁷,10⁸)→[10⁸,10⁹))</th></tr>
+        <tr><td>2</td><td>+0.013</td></tr>
+        <tr><td>3</td><td>+0.023</td></tr>
+        <tr><td>4</td><td>+0.025</td></tr>
+        <tr><td>5</td><td>+0.019</td></tr>
+        <tr><td>6</td><td>+0.012</td></tr>
+        <tr><td>7</td><td>+0.007</td></tr>
+      </table>
+      <p>$\Omega=4$ has the fastest growth (+0.025/decade). In the latest decade, increments remain significantly positive with no clear collapse in magnitude.</p>
+
+      <h3>6.3 The Ultimate Battleground for H'</h3>
+      <p>H' requires $P(j=0|\text{comp}) = \sum_k P(\Omega=k|\text{comp}) \cdot P(j=0|\Omega=k) \to 1$. This involves two competing forces:</p>
+      <ul>
+        <li><strong>Intra-layer attenuation:</strong> for each fixed $\Omega=k$, $P(j=0|\Omega=k)$ increases (§6.1 confirmed).</li>
+        <li><strong>Inter-layer $\Omega$ drift:</strong> $\Omega(n)$ has normal order $\ln\ln N$ (Hardy–Ramanujan); the distribution centroid slowly migrates toward larger $\Omega$.</li>
+      </ul>
+      <div class="thesis-box">
+        <p><strong>H' essentially corresponds to: the cumulative effect of intra-layer attenuation rates across all layers overwhelms the inter-layer drift rate.</strong> Current data confirm intra-layer attenuation at $\Omega \le 7$ and $N \le 10^9$. The $\Omega$ normal order grows extremely slowly ($\ln\ln N$), while per-layer $P(j=0)$ growth is +0.01 to +0.025 per decade at tested scales. The asymptotic competition between these rates requires analytic tools to resolve.</p>
+      </div>
+
+      <h3>§7 Discussion</h3>
+
+      <h3>7.1 Core Contributions</h3>
+      <ol>
+        <li><strong>D(N) first measurement:</strong> $D(N) \approx 0.406$ ($N = 10^8$), correcting previous estimate. $D(N)$ currently declining, primarily driven by $\pi/N$ decrease.</li>
+        <li><strong>Multiplicative decomposition:</strong> $1-D = (1-\pi/N)(1-p_N)$. H' $\Leftrightarrow$ $q_N \to 0$.</li>
+        <li><strong>Structural tension:</strong> $E[j|\text{comp}] \to 1$ (locked by dyadic gap) + $q_N \to 0$ (H' requires) $\Rightarrow$ $r_N \to \infty$. Currently $r_N \approx 1.68$ stable.</li>
+        <li><strong>Omega dichotomy:</strong> $j=0$ at $\Omega \le 3$, $j>0$ at $\Omega \ge 4$. Combinatorial complexity threshold at $\Omega = 3 \to 4$.</li>
+        <li><strong>Per-layer attenuation confirmed:</strong> six layers, six decades, all increasing, zero exceptions.</li>
+        <li><strong>Numerical boundary quantified:</strong> four $q_N$ fitting models with R² gap &lt; 0.03. H' and ¬H' indistinguishable at $N = 10^8$.</li>
+      </ol>
+
+      <h3>7.2 Series Connections</h3>
+      <p>Papers XXVII–XXVIII's scale attenuation provides the mechanistic background for §6's per-layer increase. Paper XXIX's pred gap stability constrains $E[j|\text{comp}] \to 1$ via §4.1's telescoping identity. However, these prior results do not yet directly yield $q_N \to 0$ — the gap lies in whether $r_N$ (the conditional mean jump depth among jumpers) will eventually rise.</p>
+
+      <h3>7.3 Open Problems</h3>
+      <ol>
+        <li>Asymptotic behavior of $q_N$ — tends to 0 or to a positive constant? Current data cannot distinguish.</li>
+        <li>Will $r_N = E[j|j \ge 1]$ eventually rise? At what scale?</li>
+        <li>Per-Omega-layer $P(j=0|\Omega=k) \to 1$ rate — can an analytic proof be given for fixed $k$?</li>
+        <li>Intra-layer attenuation rate vs inter-layer $\Omega$ drift rate competition — the ultimate determination of H'.</li>
+        <li>$D(N)$ inflection point — if H' holds, at what $N$ does $D(N)$ begin to recover?</li>
+      </ol>
+
+      <h3>7.4 Acknowledgments</h3>
+      <p>ChatGPT contributed the multiplicative decomposition $1-D = (1-\pi/N)(1-p_N)$, the discovery of the §4.2 structural tension (correcting an algebraic direction error in v2), and the proposal of $r_N$ as the key diagnostic quantity. Gemini contributed the asymptotic floor $1+1/\ln N$ for $E[j|\text{comp}]$ (ruling out linear extrapolation crossing 1) and the positioning of Omega-layer competition as the "ultimate battleground." Grok ensured consistency with the preceding 29 papers. Claude wrote all numerical computation scripts and drafted working notes v1–v2. The final text was completed independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <h3>§8 Data Sources and Reproducibility</h3>
+      <table>
+        <tr><th>Script</th><th>Measurement</th><th>Section</th></tr>
+        <tr><td>p30_block123.py</td><td>D(N) + decomposition + E[gap] connection</td><td>§2, §3</td></tr>
+        <tr><td>p30_block45.py</td><td>P(j=k|comp) + p_N fitting + Omega dichotomy</td><td>§5</td></tr>
+        <tr><td>p30_block67.py</td><td>q_N decay fitting + per-Omega P(j=0)</td><td>§4.4, §6</td></tr>
+      </table>
+      <p>All scripts pass sanity checks: $\rho_E(10^7) = 58$, $\rho_E(10^8) = 66$, $\rho_E(10^9) = 74$.</p>
+
+      <h3>References</h3>
+      <ol>
+        <li>ZFCρ Papers I–XXIX. H. Qin. Paper XXVII DOI: <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener">10.5281/zenodo.19062684</a>. Paper XXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener">10.5281/zenodo.19078654</a>. Paper XXIX DOI: <a href="https://doi.org/10.5281/zenodo.19083884" target="_blank" rel="noopener">10.5281/zenodo.19083884</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>G. H. Hardy, S. Ramanujan (1917). The normal number of prime factors of a number n. <em>Quart. J. Math.</em>, 48:76–92.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ Series &nbsp;·&nbsp;</span>
+        <a href="zfcrho29.html">← Paper XXIX: Conceptual Audit of D(N)</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Paper XXXI →
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXX</div>
+      <h1 class="paper-title">D(N) 的首次直测、乘法分解与 H' 的结构性约束</h1>
+      <div class="paper-authors">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19101810" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        DOI: 10.5281/zenodo.19101810
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>首次直接计算 ZFCρ 的逐整数正跳跃密度 $D(N) = |\{n \le N : \rho_E(n) > \rho_E(n-1)\}| / N$。结果：$D(N) \approx 0.406$（$N = 10^8$），修正此前系列中未经验证的估计（0.574）。$D(N)$ 在当前尺度上下降，与 H'（$D(N) \to 1$）方向相反。</p>
+        <p>建立乘法分解：$1 - D(N) = (1 - \pi(N)/N)(1 - p_N)$，其中 $p_N = P(j=0 \mid \text{composite}, n \le N)$。H' 等价于 $p_N \to 1$（合数中零跳跃的<strong>密度</strong>趋于 1）。当前失败率 $q_N \approx 0.630$（$N = 10^8$），缓慢下降。$D(N)$ 的下降主要由 $\pi(N)/N$ 消失驱动——$p_N$ 实际在上升（0.332 → 0.370），但增速尚未反超 $\pi/N$ 的降速。</p>
+        <p>识别 H' 的结构性约束。Dyadic pred gap 的 $O(1)$ 量级通过 telescoping 恒等式强制合数 block mean $E[j \mid \text{comp in } (m,2m]] \to 1$。由加权 Cesàro 平均，cumulative $E[j \mid \text{comp}] \to 1$。若 H' 成立（$q_N \to 0$），则 $r_N = E[j \mid j \ge 1, \text{comp}] = E[j|\text{comp}]/q_N$ 必须趋于无穷——跳跃必须越来越稀薄，但单次深度越来越大。当前 $r_N \approx 1.68$，五个数量级极稳定。</p>
+        <p>报告跳跃分布的 Omega 二分法（$N = 10^9$）。零跳跃合数集中在 $\Omega \le 3$（$E[\Omega|j=0] = 3.0$）；跳跃合数集中在 $\Omega \ge 4$（$E[\Omega|j>0] = 4.8$）。逐 Omega 层 $P(j=0|\Omega=k)$ 在所有测试层（$k=2,\ldots,7$）和所有测试尺度上均单调上升，零例外。H' 的终极战场是层内 attenuation 速率与层间 $\Omega$ 漂移速率（Hardy–Ramanujan normal order $\ln\ln N$）的竞争。</p>
+        <p><strong>关键词：</strong>加法复杂度，D(N)，零跳跃密度，乘法分解，Omega 分层，scale attenuation，结构性约束</p>
+      </div>
+
+      <h3>§1 引言</h3>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXIX 区分了 $D(N)$（逐整数密度）和 $P(\text{pred gap} > 0)$（dyadic gap 正率），确立 H' 的目标是前者。但 $D(N)$ 本身在系列中从未被直接计算。本文进行首次直测并建立精确分解。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <ul>
+        <li><strong>(A)</strong> $D(N)$ 的首次直接计算，修正此前估计（§2）。</li>
+        <li><strong>(B)</strong> 乘法分解 $1-D(N) = (1-\pi/N)(1-p_N)$，及 H' $\Leftrightarrow$ $p_N \to 1$ 的等价重述（§3）。</li>
+        <li><strong>(C)</strong> H' 的结构性约束：$E[j|\text{comp}] \to 1$ 与 $q_N \to 0$ 的 tension，强制 $r_N \to \infty$（§4）。</li>
+        <li><strong>(D)</strong> 跳跃分布的完整测量与 Omega 二分法（§5）。</li>
+        <li><strong>(E)</strong> 逐 Omega 层 $P(j=0|\Omega=k)$ 的跨尺度趋势（§6）。</li>
+      </ul>
+
+      <h3>1.3 记号</h3>
+      <p>沿用系列约定。新增：$p_N = P(j=0 \mid \text{composite}, n \le N)$；$q_N = 1 - p_N$；$r_N = E[j \mid j \ge 1, \text{comp}, n \le N] = E[j|\text{comp}]/q_N$；$\Omega(n)$ = 素因子数（含重复）。</p>
+
+      <h3>§2 D(N) 的首次直接计算</h3>
+
+      <h3>2.1 数据</h3>
+      <p><strong>数值观察 1.</strong> $D(N)$ 的首次全量计算（$N \le 10^8$）。</p>
+      <table>
+        <tr><th>N</th><th>D(N)</th><th>π(N)/N</th><th>J₀(N)/N</th><th>1−D(N)</th></tr>
+        <tr><td>10³</td><td>0.444</td><td>0.168</td><td>0.276</td><td>0.556</td></tr>
+        <tr><td>10⁴</td><td>0.420</td><td>0.123</td><td>0.297</td><td>0.580</td></tr>
+        <tr><td>10⁵</td><td>0.412</td><td>0.096</td><td>0.316</td><td>0.588</td></tr>
+        <tr><td>10⁶</td><td>0.409</td><td>0.078</td><td>0.330</td><td>0.591</td></tr>
+        <tr><td>10⁷</td><td>0.407</td><td>0.066</td><td>0.341</td><td>0.593</td></tr>
+        <tr><td>10⁸</td><td>0.406</td><td>0.058</td><td>0.348</td><td>0.594</td></tr>
+      </table>
+      <p>Paper XXIX 中引用的 $D(N) \approx 0.574$ 是概念混淆期间的未经验证估计。实际 $D(N) \approx 0.406$，在当前尺度上下降。</p>
+
+      <h3>2.2 D(N) 下降的原因</h3>
+      <ul>
+        <li>$\pi(N)/N$ 在降（PNT：$\sim 1/\ln N$）——拖 $D(N)$ 下降。</li>
+        <li>$J_0(N)/N$ 在升（0.276 → 0.348）——零跳跃合数越来越多，推 $D(N)$ 上升。</li>
+        <li>当前尺度：$\pi/N$ 消失的速度 &gt; $J_0/N$ 增长的速度，净效应 $D$ 在降。</li>
+      </ul>
+
+      <h3>§3 乘法分解与 H' 的等价重述</h3>
+
+      <h3>3.1 乘法分解</h3>
+      <p>定义 $p_N = P(j=0 \mid \text{composite}, n \le N)$。精确恒等式：
+      $$D(N) = \frac{\pi(N)}{N} + \left(1 - \frac{\pi(N)}{N}\right) p_N$$
+      等价地：
+      $$1 - D(N) = \left(1 - \frac{\pi(N)}{N}\right)(1 - p_N)$$
+      由 PNT，$1 - \pi(N)/N \to 1$。因此 <strong>H'（$D(N) \to 1$）等价于 $p_N \to 1$，即 $q_N := 1 - p_N \to 0$。</strong></p>
+      <p>数据验证：$N = 10^8$ 时，$(1-\pi/N) = 0.9424$，$p_N = 0.370$，$(1-\pi/N)(1-p_N) = 0.9424 \times 0.630 = 0.594 = 1-D(N)$。✓</p>
+
+      <h3>3.2 精确表述</h3>
+      <div class="thesis-box">
+        <p><strong>H' 等价于：在合数中，$j=0$ 的密度趋于 1。</strong></p>
+        <p>这是密度（概率测度）的陈述，不是逐点 eventual 的陈述。即使 $p_N \to 1$，仍可能有无穷多合数 $n$ 使得 $j(n) > 0$——只是其密度趋于 0。</p>
+      </div>
+
+      <h3>3.3 当前状态</h3>
+      <table>
+        <tr><th>N</th><th>p_N</th><th>q_N</th><th>E[j|comp]</th><th>r_N = E[j]/q_N</th></tr>
+        <tr><td>10³</td><td>0.332</td><td>0.668</td><td>1.133</td><td>1.696</td></tr>
+        <tr><td>10⁴</td><td>0.339</td><td>0.661</td><td>1.103</td><td>1.668</td></tr>
+        <tr><td>10⁵</td><td>0.350</td><td>0.650</td><td>1.082</td><td>1.665</td></tr>
+        <tr><td>10⁶</td><td>0.359</td><td>0.641</td><td>1.070</td><td>1.669</td></tr>
+        <tr><td>10⁷</td><td>0.365</td><td>0.635</td><td>1.070</td><td>1.685</td></tr>
+        <tr><td>10⁸</td><td>0.370</td><td>0.630</td><td>1.060</td><td>1.683</td></tr>
+      </table>
+      <p>$q_N$ 缓慢下降（0.668 → 0.630），距离 0 极远。$r_N \approx 1.68$ 极其稳定。</p>
+
+      <h3>3.4 条件性判断</h3>
+      <p>如果 $p_N \to 1$（H' 成立），当前下降只是瞬态——当 $p_N$ 的增速反超 $\pi/N$ 的降速时 $D(N)$ 触底反弹。但以现有数据，$p_N \to p^* < 1$（H' 不成立）的图景也兼容。当前无法区分。</p>
+
+      <h3>§4 H' 的结构性约束</h3>
+
+      <h3>4.1 Dyadic Identity 强制 Block Mean → 1</h3>
+      <p>由 Paper XXIX 的 pred gap 稳定性，$\text{gap}(m) = O(1)$。由 telescoping 恒等式：
+      $$\sum_{n=m+1}^{2m} j(n) = m - \text{gap}(m)$$
+      素数 $j=0$，全部跳跃由合数承担。设 $C(m) \approx m(1-1/\ln m)$：
+      $$E[j \mid \text{comp in } (m,2m]] \approx \frac{1 - \text{gap}/m}{1-1/\ln m} \to 1 + \frac{1}{\ln m} + O\!\left(\frac{1}{\ln^2 m}\right)$$</p>
+      <div class="milestone-box">
+        <p><strong>Dyadic block 上的 composite mean 从上方趋向 1，渐近底板为 $1 + 1/\ln m$。</strong>跌破 1 会导致 $\text{gap} = O(m)$，与 pred gap 离散集中（$\text{gap} \in \{2,3\}$）直接矛盾。</p>
+      </div>
+
+      <h3>4.2 结构性 Tension（Block 版）</h3>
+      <p>$$q_{[m,2m]} = P(j \ge 1 \mid \text{comp in } (m,2m]), \quad r_{[m,2m]} = E[j \mid j \ge 1,\; \text{comp in } (m,2m]]$$
+      Block mean $= q_{[m,2m]} \cdot r_{[m,2m]}$，§4.1 约束其趋向 1。若 H' 在 block 层面实现（$q_{[m,2m]} \to 0$），则必须 $r_{[m,2m]} \to \infty$。</p>
+      <div class="thesis-box">
+        <p><strong>若 H' 为真，每个 dyadic block 中的跳跃必须越来越稀薄，但单次跳跃的平均深度必须越来越大。</strong></p>
+      </div>
+      <p>Cumulative 量 $q_N, r_N$ 与 block 量的关系通过加权 Cesàro 平均建立。定义 $\mu_k = E[j \mid \text{comp in } (2^k, 2^{k+1}]]$，$w_k = \#\{\text{comp in } (2^k, 2^{k+1}]\}$。则 $E[j|\text{comp}, n \le 2^K] = \sum_{k<K} w_k \mu_k / \sum_{k<K} w_k$。由 $\mu_k \to 1$ 且 $w_k > 0$，加权 Cesàro 平均给出 cumulative $E[j|\text{comp}] \to 1$，从而 $q_N \to 0$ 蕴含 $r_N \to \infty$。数据中 $r_N \approx 1.68$ 极稳定——系统还没进入 H' 要求的间歇性 regime。</p>
+
+      <h3>4.3 另一种读法</h3>
+      <p>如果 $r \to r^* \approx 1.68$（不上升），则 $q \to 1/r^* \approx 0.60$，$p \to 0.40$，$D(N) \to 0.40$。<strong>H' 不成立。</strong>当前数据与两种图景同样兼容。</p>
+
+      <h3>4.4 q_N 的拟合诊断</h3>
+      <table>
+        <tr><th>模型</th><th>R²</th><th>q_∞</th><th>H' 状态</th></tr>
+        <tr><td>$q \sim C\cdot(\ln N)^{-0.068}$</td><td>0.975</td><td>0</td><td>兼容</td></tr>
+        <tr><td>$q \sim C\cdot N^{-0.006}$</td><td>0.950</td><td>0</td><td>兼容</td></tr>
+        <tr><td>$q = 0.610 + 0.44/\ln N$</td><td>0.971</td><td>0.610</td><td>失败</td></tr>
+        <tr><td>$q = 0.553 + 0.23/\ln\ln N$</td><td>0.974</td><td>0.553</td><td>失败</td></tr>
+      </table>
+      <div class="note-box">
+        在 $N \le 10^8$ 的有限尺度下，控制衰减的对数项 $\ln N$ 与双重对数项 $\ln\ln N$ 在数值轨迹上具有极强的局部同构性。这种有限尺度的代数简并，精确量化了 H' 的不确定性边界：<strong>证明或否定 H' 必须且只能依赖解析工具。</strong>
+      </div>
+
+      <h3>§5 跳跃分布的完整测量</h3>
+
+      <h3>5.1 P(j=k|comp) 按 Decade（N = 10⁸）</h3>
+      <p><strong>数值观察 2.</strong></p>
+      <table>
+        <tr><th>j</th><th>[10³,10⁴)</th><th>[10⁴,10⁵)</th><th>[10⁵,10⁶)</th><th>[10⁶,10⁷)</th><th>[10⁷,10⁸)</th></tr>
+        <tr><td>0</td><td>0.340</td><td>0.351</td><td>0.360</td><td>0.366</td><td>0.370</td></tr>
+        <tr><td>1</td><td>0.330</td><td>0.328</td><td>0.324</td><td>0.322</td><td>0.321</td></tr>
+        <tr><td>2</td><td>0.222</td><td>0.220</td><td>0.218</td><td>0.215</td><td>0.213</td></tr>
+        <tr><td>3</td><td>0.081</td><td>0.078</td><td>0.076</td><td>0.076</td><td>0.075</td></tr>
+        <tr><td>≥4</td><td>0.027</td><td>0.024</td><td>0.022</td><td>0.021</td><td>0.021</td></tr>
+      </table>
+      <p><strong>$j=0$ 在涨，所有 $j \ge 1$ 在降。</strong>分布在整体向 $j=0$ 移动。$P(j \ge 2)$ 从 0.330 降到 0.309——大跳跃在减少，但远未消失。</p>
+
+      <h3>5.2 Omega 二分法</h3>
+      <p><strong>数值观察 3.</strong>（decade $[10^8, 10^9)$）</p>
+      <table>
+        <tr><th>Ω</th><th>P(Ω|j=0)</th><th>P(Ω|j>0)</th><th>ratio</th></tr>
+        <tr><td>2</td><td>0.351</td><td>0.058</td><td>6.05</td></tr>
+        <tr><td>3</td><td>0.348</td><td>0.177</td><td>1.97</td></tr>
+        <tr><td>4</td><td>0.194</td><td>0.241</td><td>0.81</td></tr>
+        <tr><td>5</td><td>0.075</td><td>0.210</td><td>0.36</td></tr>
+        <tr><td>6</td><td>0.023</td><td>0.141</td><td>0.17</td></tr>
+        <tr><td>7</td><td>0.007</td><td>0.082</td><td>0.08</td></tr>
+      </table>
+      <p>$E[\Omega|j=0] \approx 3.0$，$E[\Omega|j>0] \approx 4.8$。</p>
+      <div class="milestone-box">
+        <p><strong>分界线在 $\Omega = 3$ 和 $\Omega = 4$ 之间。</strong>$P(j=0|\Omega=3) = 0.539 > 1/2$，而 $P(j=0|\Omega=4) = 0.324 < 1/2$。素因子少的合数（$\Omega \le 3$）多数走 additive path；素因子多的合数（$\Omega \ge 4$）多数被乘法分解超越。这可理解为组合复杂度阈值：$\Omega=3 \to 4$ 时可选分解数量超过了 additive path 的"抵抗阈值"。</p>
+      </div>
+
+      <h3>§6 逐 Omega 层 P(j=0|Ω=k) 的跨尺度趋势</h3>
+
+      <h3>6.1 数据</h3>
+      <p><strong>数值观察 4.</strong> $P(j=0 \mid \text{comp}, \Omega=k)$ 按 decade（$N = 10^9$）。</p>
+      <table>
+        <tr><th>Decade</th><th>Ω=2</th><th>Ω=3</th><th>Ω=4</th><th>Ω=5</th><th>Ω=6</th><th>Ω=7</th></tr>
+        <tr><td>[10³, 10⁴)</td><td>0.684</td><td>0.351</td><td>0.147</td><td>0.050</td><td>0.029</td><td>0.014</td></tr>
+        <tr><td>[10⁴, 10⁵)</td><td>0.709</td><td>0.409</td><td>0.198</td><td>0.083</td><td>0.040</td><td>0.021</td></tr>
+        <tr><td>[10⁵, 10⁶)</td><td>0.736</td><td>0.453</td><td>0.238</td><td>0.111</td><td>0.050</td><td>0.025</td></tr>
+        <tr><td>[10⁶, 10⁷)</td><td>0.755</td><td>0.488</td><td>0.270</td><td>0.136</td><td>0.066</td><td>0.033</td></tr>
+        <tr><td>[10⁷, 10⁸)</td><td>0.770</td><td>0.516</td><td>0.299</td><td>0.156</td><td>0.078</td><td>0.040</td></tr>
+        <tr><td>[10⁸, 10⁹)</td><td>0.783</td><td>0.539</td><td>0.324</td><td>0.175</td><td>0.090</td><td>0.047</td></tr>
+      </table>
+      <div class="milestone-box">
+        <p><strong>每一层、每一个 decade，$P(j=0|\Omega=k)$ 都在单调上升。零例外。</strong>Scale attenuation 在每层都生效——从 $\Omega=2$（已达 78%）到 $\Omega=7$（只有 5% 但仍在上升）。</p>
+      </div>
+
+      <h3>6.2 增量分析</h3>
+      <table>
+        <tr><th>Ω</th><th>Δ per decade（[10⁷,10⁸)→[10⁸,10⁹)）</th></tr>
+        <tr><td>2</td><td>+0.013</td></tr>
+        <tr><td>3</td><td>+0.023</td></tr>
+        <tr><td>4</td><td>+0.025</td></tr>
+        <tr><td>5</td><td>+0.019</td></tr>
+        <tr><td>6</td><td>+0.012</td></tr>
+        <tr><td>7</td><td>+0.007</td></tr>
+      </table>
+      <p>$\Omega=4$ 增长最快（+0.025/decade）。在最新一个 decade 中增量仍显著为正，量级尚未明显塌缩。</p>
+
+      <h3>6.3 H' 的终极战场</h3>
+      <p>H' 要求 $P(j=0|\text{comp}) = \sum_k P(\Omega=k|\text{comp}) \cdot P(j=0|\Omega=k) \to 1$。两个竞争力：</p>
+      <ul>
+        <li><strong>层内 attenuation：</strong>每个固定 $\Omega=k$ 层的 $P(j=0|\Omega=k)$ 在上升（§6.1 确认）。</li>
+        <li><strong>层间 $\Omega$ 漂移：</strong>$\Omega(n)$ 的 normal order 是 $\ln\ln N$（Hardy–Ramanujan），分布质心向大 $\Omega$ 缓慢移动。</li>
+      </ul>
+      <div class="thesis-box">
+        <p><strong>H' 的成立本质上对应于：层内 attenuation 速率在所有层上的累积效应，压倒层间漂移速率。</strong>当前数据确认层内 attenuation 在 $\Omega \le 7$ 和 $N \le 10^9$ 上生效。$\Omega$ 的 normal order 增长极慢（$\ln\ln N$），而每层的 $P(j=0)$ 增速在当前尺度上每 decade +0.01 到 +0.025。两个速率的渐近竞争需要解析工具来解决。</p>
+      </div>
+
+      <h3>§7 讨论</h3>
+
+      <h3>7.1 核心贡献</h3>
+      <ol>
+        <li><strong>D(N) 首测：</strong>$D(N) \approx 0.406$（$N = 10^8$），修正此前错误估计。$D(N)$ 在当前尺度上下降，主要由 $\pi/N$ 的下降驱动。</li>
+        <li><strong>乘法分解：</strong>$1-D = (1-\pi/N)(1-p_N)$。H' $\Leftrightarrow$ $q_N \to 0$。</li>
+        <li><strong>结构性 tension：</strong>$E[j|\text{comp}] \to 1$（被 dyadic gap 锁住）+ $q_N \to 0$（H' 要求）$\Rightarrow$ $r_N \to \infty$。当前 $r_N \approx 1.68$ 稳定。</li>
+        <li><strong>Omega 二分法：</strong>$j=0$ 在 $\Omega \le 3$，$j>0$ 在 $\Omega \ge 4$。组合复杂度阈值在 $\Omega=3 \to 4$。</li>
+        <li><strong>逐层 attenuation 确认：</strong>六层、六个 decade，全部上升，零例外。</li>
+        <li><strong>数值边界精确化：</strong>四种 $q_N$ 拟合模型的 R² 差距 &lt; 0.03。在 $10^8$ 尺度上 H' 和 ¬H' 无法用数值区分。</li>
+      </ol>
+
+      <h3>7.2 与系列的联系</h3>
+      <p>Papers XXVII–XXVIII 的 scale attenuation 为 §6 的逐层上升提供了机制背景。Paper XXIX 的 pred gap 稳定性通过 §4.1 的 telescoping 恒等式约束了 $E[j|\text{comp}] \to 1$。但这些前文结果尚未直接给出 $q_N \to 0$ 的证明——缺口在于"跳跃时的平均深度 $r_N$ 是否终将上升"。</p>
+
+      <h3>7.3 开放问题</h3>
+      <ol>
+        <li>$q_N$ 的渐近行为——趋向 0 还是趋向正常数？当前数据无法区分。</li>
+        <li>$r_N = E[j|j \ge 1]$ 是否终将上升？如果是，在什么尺度上？</li>
+        <li>逐 Omega 层的 $P(j=0|\Omega=k) \to 1$ 的速率——能否对单层给出解析证明？</li>
+        <li>层内 attenuation 与层间 $\Omega$ 漂移的速率竞争——H' 的终极判定。</li>
+        <li>$D(N)$ 拐点——如果 H' 成立，$D(N)$ 触底反弹的 $N$ 在哪里？</li>
+      </ol>
+
+      <h3>7.4 致谢</h3>
+      <p>ChatGPT 贡献了乘法分解 $1-D = (1-\pi/N)(1-p_N)$、§4.2 结构性 tension 的发现（纠正了 v2 的代数方向错误）、以及 $r_N$ 作为关键诊断量的提出。Gemini 贡献了 $E[j|\text{comp}]$ 的渐近底板 $1+1/\ln N$（排除了线性外推穿过 1 的可能性）以及 Omega 层竞争作为"终极战场"的定位。Grok 保证了与前 29 篇的一致性。Claude 编写了全部数值计算脚本并起草了 working notes v1-v2。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <h3>§8 数据来源与可复现性</h3>
+      <table>
+        <tr><th>脚本</th><th>测量</th><th>§引用</th></tr>
+        <tr><td>p30_block123.py</td><td>D(N) + 分解 + E[gap] 联系</td><td>§2, §3</td></tr>
+        <tr><td>p30_block45.py</td><td>P(j=k|comp) + p_N 拟合 + Omega 二分法</td><td>§5</td></tr>
+        <tr><td>p30_block67.py</td><td>q_N 衰减拟合 + 逐 Omega P(j=0)</td><td>§4.4, §6</td></tr>
+      </table>
+      <p>所有脚本 sanity check 通过：$\rho_E(10^7) = 58$，$\rho_E(10^8) = 66$，$\rho_E(10^9) = 74$。</p>
+
+      <h3>参考文献</h3>
+      <ol>
+        <li>ZFCρ Papers I–XXIX. H. Qin. Paper XXVII DOI: <a href="https://doi.org/10.5281/zenodo.19062684" target="_blank" rel="noopener">10.5281/zenodo.19062684</a>. Paper XXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener">10.5281/zenodo.19078654</a>. Paper XXIX DOI: <a href="https://doi.org/10.5281/zenodo.19083884" target="_blank" rel="noopener">10.5281/zenodo.19083884</a>.</li>
+        <li>J. Arias de Reyna. Complexity of natural numbers and arithmetic compact coding. Preprint.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+        <li>G. H. Hardy, S. Ramanujan (1917). The normal number of prime factors of a number n. <em>Quart. J. Math.</em>, 48:76–92.</li>
+        <li>S. P. Meyn, R. L. Tweedie (1993). <em>Markov chains and stochastic stability</em>. Springer-Verlag, London.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ 系列 &nbsp;·&nbsp;</span>
+        <a href="zfcrho29.html">← 论文 XXIX：D(N) 概念审计</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        论文 XXXI →
+      </div>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
