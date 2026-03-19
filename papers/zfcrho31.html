@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Layer-by-Layer Bottleneck Map for H' — ZFCρ Paper XXXI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXI: Stratified framework q_N=ΣP(Ω=k)·q_k(N). Ω-universal Δ≈+0.10/decade. Engine layer Ω=3. Bottleneck Ω=4 (moving). Decay exponents γ_k~14/k³, β≈3>>1. Composite diagnostic: 2 favorable, 4 unfavorable.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, Omega stratification, scale attenuation, bottleneck map, moving bottleneck, Sathe-Selberg, decay exponent, 加法复杂度">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Layer-by-Layer Bottleneck Map for H' — Stratified Framework, Moving Bottleneck, and Ω-Universal Scale Attenuation">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho31.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Layer-by-Layer Bottleneck Map for H' — Stratified Framework, Moving Bottleneck, and Ω-Universal Scale Attenuation",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho31.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19104860"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "Omega stratification", "scale attenuation",
+      "bottleneck map", "moving bottleneck", "Sathe-Selberg", "decay exponent"
+    ],
+    "abstract": "Stratified framework q_N=ΣP(Ω=k)·q_k(N) established. Ω-universal additive advantage growth Δ≈+0.10/decade (slowdown in latest decade). Engine layer Ω=3 (peak b_k=0.023). Current bottleneck Ω=4 (moving, transitions from Ω=3 at N≈2×10⁵). Decay exponents γ_k extracted: γ_k~14/k³ (β≈3>>1), effective index Γ=λ·γ_k decreasing. Composite diagnostic: 2 favorable (q_k→0, Δ universal), 4 unfavorable (β>>1, bottleneck rightward push, r↓, E[j|j≥1]↓).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho31.html">
+  <meta name="citation_title" content="The Layer-by-Layer Bottleneck Map for H' — Stratified Framework, Moving Bottleneck, and Ω-Universal Scale Attenuation">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19104860">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho31.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; padding: 0.45rem 0.75rem; border: 1px solid #ddd; text-align: left; }
+    td { padding: 0.4rem 0.75rem; border: 1px solid #ddd; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .lang-tab { padding: 0.35rem 1rem; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.85rem; background: #f5f5f5; }
+    .lang-tab.active { background: #333; color: #fff; border-color: #333; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.querySelectorAll('.lang-tab[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
+    }
+    window.addEventListener('DOMContentLoaded', () => switchLang('en'));
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"
+    id="MathJax-script"
+    integrity="sha512-T8BFRA7AOMBO9Xjvbx4/vPDCbCfUPAkEEdtXGKiT3Z5xG6nBwrfJAjmJDQByGWVH0pgJfhRFOVrFYIYDHEVA=="
+    crossorigin="anonymous"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      }
+    };
+  </script>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/">Han Qin</a>
+    <a href="/#papers">Papers</a>
+  </nav>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXXI</div>
+      <h1 class="paper-title">The Layer-by-Layer Bottleneck Map for H' — Stratified Framework, Moving Bottleneck, and Ω-Universal Scale Attenuation</h1>
+      <div class="paper-authors">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19104860" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        DOI: 10.5281/zenodo.19104860
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We conduct quantitative analysis on the "ultimate battleground" established in Paper XXX (intra-layer scale attenuation vs inter-layer $\Omega$ drift), constructing a layer-by-layer bottleneck map for H'.</p>
+        <p>A stratified framework is established: $q_N = \sum_k P(\Omega=k|\text{comp}) \cdot q_k(N)$, where $q_k(N) = 1 - P(j=0|\Omega=k,N)$. This decomposes H' ($q_N \to 0$) into the weighted competition between intra-layer failure rates and inter-layer mass.</p>
+        <p>The additive advantage growth rate $\Delta \approx +0.10/\text{decade}$ is highly consistent across all tested $\Omega$ layers ($k=2,\ldots,5$) over the first five decades — exhibiting significant $\Omega$ universality. However, in the latest decade $[10^8, 10^9)$, $\Delta$ slows to $\approx +0.065$. The per-layer growth rate $b_k$ peaks at $\Omega=3$ ($b_3 = 0.023$) — $\Omega=3$ is the phenomenological engine layer at current scales.</p>
+        <p>The current bottleneck layer is $\Omega=4$. The Sathe–Selberg density peak lies at $k \approx \ln\ln N \approx 3$ ($N=10^8$), pushed rightward to $k=4$ by the monotone increase of $q_k$. The bottleneck transitions from $\Omega=3$ to $\Omega=4$ at $N \approx 2\times10^5$ (moving bottleneck).</p>
+        <p>Per-layer decay exponents $\gamma_k$ are extracted: $q_k(N) \sim C_k \cdot (\ln N)^{-\gamma_k}$. Model A wins every layer over Model B (constant limit), supporting $q_k \to 0$ for each fixed $\Omega$. However, $\gamma_k$ decays rapidly ($\gamma_2=0.45,\ \gamma_7=0.03$), with fit $\gamma_k \sim 14/k^3$ ($\beta \approx 3$). The effective index $\Gamma = \lambda \cdot \gamma_k$ at the bottleneck is decreasing — an unfavorable signal, but based on five-point fitting and possibly reflecting transient curvature.</p>
+        <p>Composite diagnostic: two favorable ($q_k \to 0$, $\Delta$ universal), one undetermined ($\Delta$ slowdown), four unfavorable ($\beta \gg 1$, bottleneck rightward push, $r_N \downarrow$, $E[j|j \ge 1] \downarrow$). Data more compatible with H' failing at $N \le 10^9$, but $\ln\ln N$-scale phenomena exceed any finite-scale numerics.</p>
+        <p><strong>Keywords:</strong> additive complexity, $\Omega$ stratification, scale attenuation, bottleneck map, moving bottleneck, Sathe–Selberg, decay exponent</p>
+      </div>
+
+      <h3>§1 Introduction</h3>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXX established H' $\Leftrightarrow$ $q_N \to 0$ and positioned the ultimate battleground as "intra-layer attenuation vs inter-layer $\Omega$ drift." This paper conducts quantitative analysis on that battleground, building the layer-by-layer bottleneck map.</p>
+
+      <h3>1.2 Contributions</h3>
+      <ul>
+        <li><strong>(A)</strong> $\Omega$-universal additive advantage growth with slowdown detection (§2).</li>
+        <li><strong>(B)</strong> Per-layer growth rates $b_k$: $\Omega=3$ as phenomenological engine (§3).</li>
+        <li><strong>(C)</strong> Stratified framework $q_N = \sum P(\Omega=k) \cdot q_k(N)$ (§4).</li>
+        <li><strong>(D)</strong> Bottleneck identification and moving bottleneck picture (§4–§5).</li>
+        <li><strong>(E)</strong> $\Omega$ drift quantification (§5).</li>
+        <li><strong>(F)</strong> Decay exponents $\gamma_k$ and effective index $\Gamma$ criterion (§6).</li>
+        <li><strong>(G)</strong> Bottleneck dynamics and intermittency tests (§7).</li>
+      </ul>
+
+      <h3>1.3 Notation</h3>
+      <p>Series conventions apply. New: $q_k(N) = 1 - P(j=0|\Omega=k, n \le N)$; $b_k = dP(j=0|\Omega=k)/d(\ln N)$ (local slope); $\gamma_k$: decay exponent in $q_k \sim C_k(\ln N)^{-\gamma_k}$; $\Gamma_N(k) = (\ln\ln N) \cdot \gamma_k$.</p>
+
+      <h3>§2 Ω-Universal Additive Advantage Growth</h3>
+
+      <h3>2.1 Data</h3>
+      <p><strong>Numerical Observation 1.</strong> Mean of $M_n - (\rho_E(n-1)+1)$ by $\Omega$ and decade (positive = additive wins, $N = 10^9$):</p>
+
+      <table>
+        <tr><th>Ω</th><th>[10³,10⁴)</th><th>[10⁵,10⁶)</th><th>[10⁷,10⁸)</th><th>[10⁸,10⁹)</th><th>Δ/dec (first 5)</th><th>Δ (latest)</th></tr>
+        <tr><td>2</td><td>+0.092</td><td>+0.347</td><td>+0.531</td><td>+0.605</td><td>~+0.11</td><td>+0.07</td></tr>
+        <tr><td>3</td><td>−0.800</td><td>−0.563</td><td>−0.405</td><td>−0.342</td><td>~+0.10</td><td>+0.06</td></tr>
+        <tr><td>4</td><td>−1.351</td><td>−1.109</td><td>−0.952</td><td>−0.890</td><td>~+0.10</td><td>+0.06</td></tr>
+        <tr><td>5</td><td>−1.869</td><td>−1.569</td><td>−1.398</td><td>−1.333</td><td>~+0.12</td><td>+0.07</td></tr>
+      </table>
+
+      <div class="milestone-box">
+        <p><strong>First five decades: per-layer increment $\approx +0.10$, exhibiting $\Omega$ universality.</strong> Latest decade: increment $\approx +0.065$ — growth rate slowing. This may be a $1/\ln N$ effect or genuine deceleration. $\Omega$ universality persists throughout.</p>
+      </div>
+
+      <h3>2.2 Current Layer Status ($N = 10^9$)</h3>
+      <ul>
+        <li>$\Omega=2$: gap $+0.61$, $P(j=0) = 0.78$. Additive dominant.</li>
+        <li>$\Omega=3$: gap $-0.34$, $P(j=0) = 0.54$. Transitioning.</li>
+        <li>$\Omega=4$: gap $-0.89$, $P(j=0) = 0.32$. Multiplicative still dominant.</li>
+        <li>$\Omega=5$: gap $-1.33$, $P(j=0) = 0.18$. Multiplicative strongly dominant.</li>
+      </ul>
+
+      <h3>§3 Per-Layer Growth Rates and Engine Layer</h3>
+
+      <h3>3.1 Linear Fit</h3>
+      <p><strong>Numerical Observation 2.</strong> $P(j=0|\Omega=k) = a_k + b_k \cdot \ln N$ (local, $N \le 10^8$):</p>
+
+      <table>
+        <tr><th>Ω</th><th>b_k (per ln N)</th><th>per decade</th><th>current P(j=0)</th><th>R²</th></tr>
+        <tr><td>2</td><td>0.0120</td><td>0.028</td><td>0.752</td><td>0.979</td></tr>
+        <tr><td><strong>3</strong></td><td><strong>0.0225</strong></td><td><strong>0.052</strong></td><td>0.483</td><td>0.985</td></tr>
+        <tr><td>4</td><td>0.0179</td><td>0.041</td><td>0.267</td><td>0.992</td></tr>
+        <tr><td>5</td><td>0.0137</td><td>0.032</td><td>0.133</td><td>0.979</td></tr>
+        <tr><td>6</td><td>0.0060</td><td>0.014</td><td>0.064</td><td>0.975</td></tr>
+        <tr><td>7</td><td>0.0020</td><td>0.005</td><td>0.032</td><td>0.802</td></tr>
+      </table>
+
+      <h3>3.2 Ω=3 as Phenomenological Engine</h3>
+      <div class="thesis-box">
+        <p><strong>$b_k$ peaks at $\Omega=3$</strong>: sweet spot between saturation ($\Omega=2$: already near 0.75, marginal returns diminishing) and combinatorial resistance ($\Omega \ge 4$: factorization options suppress $b_k$). $\Omega=3$ is the phenomenological engine layer at current scales. True asymptotic engine may shift once $\gamma_k$ are analytically determined.</p>
+      </div>
+
+      <h3>§4 The Layer-by-Layer Bottleneck Map</h3>
+
+      <h3>4.1 Stratified Framework</h3>
+      <p>
+      $$q_N = \sum_{k \ge 2} P(\Omega=k \mid \text{comp}) \cdot q_k(N)$$
+      H' requires $q_N \to 0$. This decomposes the problem precisely into the weighted competition between intra-layer failure rates $q_k(N)$ and inter-layer mass $P(\Omega=k)$.
+      </p>
+
+      <h3>4.2 Current Bottleneck</h3>
+      <p><strong>Numerical Observation 3.</strong> Stratified contributions at $N = 10^8$ (qualitative bottleneck identification):</p>
+
+      <table>
+        <tr><th>Ω</th><th>P(Ω=k|comp)</th><th>q_k</th><th>contribution P·q_k</th></tr>
+        <tr><td>2</td><td>0.185</td><td>0.248</td><td>0.046</td></tr>
+        <tr><td>3</td><td>0.252</td><td>0.517</td><td>0.130</td></tr>
+        <tr><td><strong>4</strong></td><td><strong>0.222</strong></td><td><strong>0.733</strong></td><td><strong>0.163</strong></td></tr>
+        <tr><td>5</td><td>0.153</td><td>0.867</td><td>0.132</td></tr>
+        <tr><td>6</td><td>0.090</td><td>0.936</td><td>0.084</td></tr>
+        <tr><td>7+</td><td>0.098</td><td>~0.97</td><td>~0.095</td></tr>
+      </table>
+
+      <p><strong>Largest contribution: $\Omega=4$.</strong></p>
+
+      <h3>4.3 Rightward Shift Mechanism</h3>
+      <p>The Sathe–Selberg density $P(\Omega=k)$ peaks at $k \approx \ln\ln N \approx 3$ ($N=10^8$). Since $q_k$ increases monotonically with $k$, the weighted bottleneck distribution shifts rightward of the density peak — pushing the bottleneck from $\Omega=3$ to $\Omega=4$.</p>
+
+      <h3>4.4 Ω=4 Double Disadvantage</h3>
+      <p>At $\ln\ln N \approx 2.9$: $\Omega=4$ has $k-1=3 > 2.9$, so $P(\Omega=4)$ is still growing. Simultaneously, $q_4 = 0.73$ remains high. <strong>Both forces point unfavorably for H'.</strong></p>
+
+      <h3>4.5 Moving Bottleneck</h3>
+      <div class="thesis-box">
+        <p><strong>H' requires control only within the moving bottleneck window near $k \approx \ln\ln N$.</strong> For fixed $k$, $P(\Omega=k)$ eventually decreases on its own — so q_k convergence is only critical in the moving window.</p>
+      </div>
+
+      <h3>§5 Moving Bottleneck Evolution and Ω Drift</h3>
+
+      <h3>5.1 Bottleneck Trajectory</h3>
+      <p><strong>Numerical Observation 4.</strong> Bottleneck $\Omega$ (peak of $P(\Omega=k|\text{comp}) \cdot q_k$) as $N$ grows:</p>
+
+      <table>
+        <tr><th>N</th><th>ln ln N</th><th>Bottleneck Ω</th><th>Density peak Ω</th><th>Bottleneck contribution</th></tr>
+        <tr><td>10³</td><td>1.93</td><td>3</td><td>2</td><td>0.215</td></tr>
+        <tr><td>10⁴</td><td>2.22</td><td>3</td><td>2</td><td>0.192</td></tr>
+        <tr><td>10⁵</td><td>2.44</td><td>3</td><td>3</td><td>0.169</td></tr>
+        <tr><td>2×10⁵</td><td>2.50</td><td><strong>3→4</strong></td><td>3</td><td>0.167</td></tr>
+        <tr><td>10⁶</td><td>2.63</td><td>4</td><td>3</td><td>0.165</td></tr>
+        <tr><td>10⁷</td><td>2.78</td><td>4</td><td>3</td><td>0.161</td></tr>
+        <tr><td>10⁸</td><td>2.91</td><td>4</td><td>3</td><td>0.157</td></tr>
+      </table>
+
+      <p><strong>Bottleneck transitions $\Omega=3 \to 4$ at $N \approx 2\times10^5$ ($\ln\ln N \approx 2.5$), stable at $\Omega=4$ thereafter.</strong> Bottleneck contribution slowly declining (0.215 → 0.157).</p>
+
+      <h3>5.2 E[Ω|comp] ≈ ln ln N + 1.2</h3>
+
+      <table>
+        <tr><th>N</th><th>E[Ω|comp]</th><th>ln ln N</th><th>E[Ω] − ln ln N</th></tr>
+        <tr><td>10³</td><td>3.260</td><td>1.933</td><td>1.33</td></tr>
+        <tr><td>10⁵</td><td>3.695</td><td>2.444</td><td>1.25</td></tr>
+        <tr><td>10⁷</td><td>3.917</td><td>2.780</td><td>1.14</td></tr>
+        <tr><td>10⁸</td><td>4.102</td><td>2.914</td><td>1.19</td></tr>
+      </table>
+
+      <p>$E[\Omega|\text{comp}] \approx \ln\ln N + 1.2$, compatible with Sathe–Selberg. Drift extremely slow.</p>
+
+      <h3>§6 Decay Exponents γ_k and the Effective Index Criterion</h3>
+
+      <h3>6.1 γ_k Extraction ($N = 10^9$)</h3>
+      <p><strong>Numerical Observation 5.</strong> Model A: $q_k(N) \sim C_k \cdot (\ln N)^{-\gamma_k}$. Model B: $q_k(N) = a_k + b_k/\ln N$ (constant limit if $a_k > 0$).</p>
+
+      <table>
+        <tr><th>Ω</th><th>γ_k</th><th>R²(A)</th><th>R²(B)</th><th>q_∞(B)</th><th>winner</th></tr>
+        <tr><td>2</td><td><strong>0.449</strong></td><td>0.993</td><td>0.974</td><td>0.023</td><td>A</td></tr>
+        <tr><td>3</td><td><strong>0.413</strong></td><td>0.999</td><td>0.988</td><td>0.362</td><td>A</td></tr>
+        <tr><td>4</td><td><strong>0.253</strong></td><td>0.988</td><td>0.963</td><td>0.612</td><td>A</td></tr>
+        <tr><td>5</td><td><strong>0.165</strong></td><td>0.997</td><td>0.981</td><td>0.762</td><td>A</td></tr>
+        <tr><td>6</td><td><strong>0.076</strong></td><td>0.973</td><td>0.936</td><td>0.887</td><td>A</td></tr>
+        <tr><td>7</td><td><strong>0.030</strong></td><td>0.825</td><td>0.748</td><td>0.949</td><td>A</td></tr>
+      </table>
+
+      <div class="milestone-box">
+        <p><strong>Model A wins every layer.</strong> Strongly supports $q_k \to 0$ for each fixed $\Omega$, but does not constitute asymptotic confirmation.</p>
+      </div>
+
+      <h3>6.2 Effective Index Γ = λ · γ_k</h3>
+      <p>At the bottleneck window $k \approx \lambda = \ln\ln N$: $q_k(N) \sim (\ln N)^{-\gamma_k} = e^{-\lambda \cdot \gamma_k} = e^{-\Gamma}$. <strong>The true criterion for H' is whether $\Gamma_N(k) = \lambda \cdot \gamma_k \to \infty$ at the bottleneck.</strong></p>
+      <ul>
+        <li>$\Gamma \to \infty$: $q_k \to 0$, H' compatible.</li>
+        <li>$\Gamma \to \text{const}$: $q_k \to \text{const} > 0$, H' fails.</li>
+        <li>$\Gamma \to 0$: $q_k \to 1$, H' completely fails.</li>
+      </ul>
+
+      <h3>6.3 β ≈ 3 and the Unfavorable Signal</h3>
+      <p>Fit $\gamma_k \approx 13.9/k^{3.0}$ ($R^2 = 0.92$, $k=3,\ldots,7$). At bottleneck $k \approx \lambda$:</p>
+      <p>If $\gamma_k \sim C/k^\beta$: $\beta < 1 \Rightarrow \Gamma \to \infty$ (H' favorable); $\beta > 1 \Rightarrow \Gamma \to 0$ (H' unfavorable). With $\beta \approx 3$, $\Gamma$ is decreasing:</p>
+
+      <table>
+        <tr><th>ln N</th><th>λ</th><th>k_bott</th><th>γ_bott</th><th>Γ = λ·γ</th></tr>
+        <tr><td>20</td><td>3.0</td><td>3</td><td>0.53</td><td>1.58</td></tr>
+        <tr><td>50</td><td>3.9</td><td>4</td><td>0.22</td><td>0.88</td></tr>
+        <tr><td>100</td><td>4.6</td><td>5</td><td>0.12</td><td>0.53</td></tr>
+        <tr><td>200</td><td>5.3</td><td>6</td><td>0.07</td><td>0.36</td></tr>
+        <tr><td>500</td><td>6.2</td><td>7</td><td>0.04</td><td>0.26</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <p><strong>Γ is decreasing — an unfavorable signal for H'.</strong> However: (1) five-point fit only; (2) $k \in [3,7]$ is the onset of combinatorial explosion — $\beta \approx 3$ may be transient curvature; (3) high-$\Omega$ layers ($k \gg 7$) may have thick-tailed $\gamma_k$ (effective $\beta < 1$ asymptotically). <strong>Far from refutation.</strong></p>
+      </div>
+
+      <h3>§7 Bottleneck Dynamics and Intermittency Tests</h3>
+
+      <h3>7.1 Bottleneck Centroid</h3>
+      <p><strong>Numerical Observation 6.</strong> Weighted centroid $\bar{k}_B = \sum k \cdot B_k / \sum B_k$, rightward push $\Delta_N = \bar{k}_B - \ln\ln N$:</p>
+
+      <table>
+        <tr><th>N</th><th>ln ln N</th><th>k̄_B</th><th>σ_B</th><th>k_peak</th><th>Δ_N</th><th>q_N</th></tr>
+        <tr><td>10³</td><td>1.93</td><td>3.62</td><td>1.27</td><td>3</td><td>+1.69</td><td>0.657</td></tr>
+        <tr><td>10⁴</td><td>2.22</td><td>3.99</td><td>1.53</td><td>3</td><td>+1.77</td><td>0.660</td></tr>
+        <tr><td>10⁵</td><td>2.44</td><td>4.23</td><td>1.65</td><td>3</td><td>+1.79</td><td>0.650</td></tr>
+        <tr><td>10⁶</td><td>2.63</td><td>4.43</td><td>1.71</td><td>4</td><td>+1.80</td><td>0.641</td></tr>
+        <tr><td>10⁷</td><td>2.78</td><td>4.59</td><td>1.75</td><td>4</td><td>+1.81</td><td>0.634</td></tr>
+        <tr><td>10⁸</td><td>2.91</td><td>4.73</td><td>1.79</td><td>4</td><td>+1.81</td><td>0.629</td></tr>
+      </table>
+
+      <p>$\Delta_N$ slowly increasing (1.69 → 1.81): bottleneck centroid slightly outruns $\Omega$ drift. $\sigma_B$ widening (1.27 → 1.79): bottleneck spreading across more layers.</p>
+
+      <h3>7.2 r_N — Intermittency Test</h3>
+      <p><strong>Numerical Observation 7.</strong> H' requires $r_N = E[j|\text{comp}]/q_N \to \infty$.</p>
+
+      <table>
+        <tr><th>Decade</th><th>E[j|comp]</th><th>q</th><th>r = E[j]/q</th><th>P(j≥2)</th></tr>
+        <tr><td>[10³, 10⁴)</td><td>1.133</td><td>0.660</td><td>1.715</td><td>0.330</td></tr>
+        <tr><td>[10⁴, 10⁵)</td><td>1.102</td><td>0.649</td><td>1.698</td><td>0.322</td></tr>
+        <tr><td>[10⁵, 10⁶)</td><td>1.083</td><td>0.641</td><td>1.691</td><td>0.316</td></tr>
+        <tr><td>[10⁶, 10⁷)</td><td>1.070</td><td>0.634</td><td>1.687</td><td>0.312</td></tr>
+        <tr><td>[10⁷, 10⁸)</td><td>1.060</td><td>0.630</td><td>1.683</td><td>0.309</td></tr>
+        <tr><td>[10⁸, 10⁹)</td><td>1.053</td><td>0.626</td><td><strong>1.682</strong></td><td>0.307</td></tr>
+      </table>
+
+      <p>$r_N$ declining from 1.715 to 1.682. Decline slowing but no reversal. H' requires $r \to \infty$.</p>
+      <p>However: as failure mass migrates to higher-$\Omega$ layers (where $E[j|j \ge 1]$ is intrinsically larger), global $r_N$ may eventually rise through compositional change — even if each per-layer $r_k$ falls. This "compositional intermittency" scenario is not ruled out.</p>
+
+      <h3>7.3 Per-Layer Jump Depth</h3>
+      <p><strong>Numerical Observation 8.</strong> $E[j|j \ge 1, \Omega=k]$ by decade:</p>
+
+      <table>
+        <tr><th>Decade</th><th>Ω=2</th><th>Ω=3</th><th>Ω=4</th><th>Ω=5</th><th>Ω=6</th></tr>
+        <tr><td>[10³,10⁴)</td><td>1.228</td><td>1.369</td><td>1.602</td><td>1.972</td><td>2.378</td></tr>
+        <tr><td>[10⁵,10⁶)</td><td>1.209</td><td>1.313</td><td>1.511</td><td>1.781</td><td>2.093</td></tr>
+        <tr><td>[10⁷,10⁸)</td><td>1.203</td><td>1.294</td><td>1.454</td><td>1.685</td><td>1.959</td></tr>
+        <tr><td>[10⁸,10⁹)</td><td>1.201</td><td>1.287</td><td>1.435</td><td>1.651</td><td>1.912</td></tr>
+      </table>
+
+      <p><strong>Every layer, every decade: $E[j|j \ge 1, \Omega=k]$ decreasing. Zero exceptions.</strong> Jumps becoming shallower, not deeper — opposite of what H' (intermittency) requires at fixed layers. But decline rate slowing (especially $\Omega=2$: 1.203 → 1.201).</p>
+
+      <h3>7.4 Composite Diagnostic</h3>
+
+      <table>
+        <tr><th>Signal</th><th>Direction</th><th>H' implication</th></tr>
+        <tr><td>Per-layer $q_k \to 0$ (Model A wins all)</td><td>✓ favorable</td><td>Necessary condition supported</td></tr>
+        <tr><td>$\Delta > 0$ and $\Omega$-universal</td><td>✓ favorable</td><td>Attenuation at work</td></tr>
+        <tr><td>$\Delta$ slowing (0.10 → 0.065)</td><td>— undetermined</td><td>May be $1/\ln N$ or genuine decay</td></tr>
+        <tr><td>$\gamma_k$ decay $\beta \approx 3$</td><td>✗ unfavorable</td><td>Effective index $\Gamma$ decreasing</td></tr>
+        <tr><td>$\Delta_N$ slowly increasing (1.69→1.81)</td><td>✗ unfavorable</td><td>Bottleneck outruns $\Omega$ drift</td></tr>
+        <tr><td>$r_N$ declining (1.715 → 1.682)</td><td>✗ unfavorable</td><td>Intermittency direction reversed</td></tr>
+        <tr><td>$E[j|j \ge 1, \Omega=k]$ falling all layers</td><td>✗ unfavorable</td><td>Jumps shallower, not deeper</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <p><strong>Two favorable, one undetermined, four unfavorable.</strong> At $N \le 10^9$, data more compatible with H' failing. But $\ln\ln N$-scale phenomena exceed any finite-scale numerics. $\beta \approx 3$ may be transient curvature of the combinatorial explosion onset, not the asymptotic regime.</p>
+      </div>
+
+      <h3>§8 Discussion</h3>
+
+      <h3>8.1 Core Contributions</h3>
+      <ol>
+        <li>$\Delta \approx +0.10/\text{decade}$: $\Omega$ universality — strongly supports macroscopic log-scale driving.</li>
+        <li>Engine layer $\Omega=3$ ($b_k$ peak) vs bottleneck layer $\Omega=4$ ($P \cdot q$ peak) — separated.</li>
+        <li>Stratified framework $q_N = \sum P(\Omega=k) \cdot q_k(N)$.</li>
+        <li>Moving bottleneck: $\Omega=3 \to 4$ at $N \approx 2\times10^5$, stable through $N=10^9$.</li>
+        <li>Decay exponents $\gamma_k$: Model A (power-law to 0) universally beats Model B (constant limit). $\gamma_k$ decays from 0.45 to 0.03.</li>
+        <li>Quantitative H' boundary: $\gamma_k \sim 14/k^3$ ($\beta \approx 3 \gg 1$), effective index $\Gamma$ decreasing — unfavorable signal.</li>
+        <li>Intermittency tests: $r_N$ declining, per-layer jump depth declining — both opposite to H'.</li>
+        <li>Bottleneck centroid rightward push $\Delta_N$: slowly increasing (1.69 → 1.81), $\sigma_B$ widening.</li>
+        <li>Composite: 2 favorable, 4 unfavorable — data currently more compatible with $\neg$H'.</li>
+      </ol>
+
+      <h3>8.2 Open Problems</h3>
+      <ol>
+        <li>Analytic $\gamma_k$ form — from DP recursion structure.</li>
+        <li>Uniform window control: $\sup_{k \in W_N} q_k \to 0$.</li>
+        <li>Analytic proof $P(j=0|\Omega=2) \to 1$ — easiest starting point.</li>
+        <li>Explanation for $\Omega$ universality of $\Delta \approx +0.10$.</li>
+        <li>Bottleneck $\Omega=4 \to 5$ transition timing.</li>
+        <li>$r_N$ reversal timing if H' holds.</li>
+        <li>$\Delta_N$ convergence — $O(1)$ or persistent growth?</li>
+      </ol>
+
+      <h3>8.3 Acknowledgments</h3>
+      <p>ChatGPT contributed: stratified framework, $P(\Omega=k)$ direction correction, density peak location ($k \approx \ln\ln N$, not $1+\ln\ln N$), moving bottleneck definition, model misspecification detection, and the effective index $\Gamma = \lambda \cdot \gamma_k$ criterion with $\beta$ threshold. Gemini contributed: $\Omega$ universality upgrade, $\Omega=3$ as engine layer, transient curvature caveat for $\beta \approx 3$, Erdős–Kac kernel suggestion. Grok ensured series consistency. Claude wrote all computation scripts and drafted working notes v1–v2. Final text completed independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <h3>§9 Data Sources</h3>
+      <table>
+        <tr><th>Script</th><th>Measurement</th><th>Section</th></tr>
+        <tr><td>p31_block123.py</td><td>M_n gap + P(j=0|Ω) fit + Ω drift</td><td>§2–§5</td></tr>
+        <tr><td>p31_block45.py</td><td>q_k decay (γ_k) + bottleneck evolution</td><td>§5–§6</td></tr>
+        <tr><td>p31_block67.py</td><td>Bottleneck profile + r_N + E[j|j≥1,Ω]</td><td>§7</td></tr>
+      </table>
+      <p>Sanity checks: $\rho_E(10^7) = 58$, $\rho_E(10^8) = 66$, $\rho_E(10^9) = 74$.</p>
+
+      <h3>References</h3>
+      <ol>
+        <li>ZFCρ Papers I–XXX. H. Qin. Paper XXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener">10.5281/zenodo.19078654</a>. Paper XXIX DOI: <a href="https://doi.org/10.5281/zenodo.19083884" target="_blank" rel="noopener">10.5281/zenodo.19083884</a>. Paper XXX DOI: <a href="https://doi.org/10.5281/zenodo.19101810" target="_blank" rel="noopener">10.5281/zenodo.19101810</a>.</li>
+        <li>G. H. Hardy, S. Ramanujan (1917). The normal number of prime factors of a number n. <em>Quart. J. Math.</em>, 48:76–92.</li>
+        <li>A. Selberg (1954). Note on a paper by L. G. Sathe. <em>J. Indian Math. Soc.</em>, 18:83–87.</li>
+        <li>P. Erdős, M. Kac (1940). The Gaussian law of errors in the theory of additive number theoretic functions. <em>Amer. J. Math.</em>, 62:738–742.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ Series &nbsp;·&nbsp;</span>
+        <a href="zfcrho30.html">← Paper XXX: First Direct Measurement of D(N)</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Paper XXXII →
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXXI</div>
+      <h1 class="paper-title">H' 的逐层瓶颈地图——分层加权框架、Moving Bottleneck 与 Scale Attenuation 的 Ω 普适性</h1>
+      <div class="paper-authors">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19104860" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        DOI: 10.5281/zenodo.19104860
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们在 Paper XXX 确立的"终极战场"（层内 scale attenuation vs 层间 $\Omega$ 漂移）上展开定量分析，构建 H' 的逐层瓶颈地图。</p>
+        <p>建立分层加权框架：$q_N = \sum_k P(\Omega=k|\text{comp}) \cdot q_k(N)$，其中 $q_k(N) = 1 - P(j=0|\Omega=k,N)$。这把 H'（$q_N \to 0$）精确分解为层内失败率与层间质量的加权竞争。</p>
+        <p>Additive 优势的增长速率 $\Delta \approx +0.10/\text{decade}$ 在所有测试 $\Omega$ 层（$k=2,\ldots,5$）上高度一致——显示出显著的 $\Omega$ 普适性。但在最新 decade $[10^8, 10^9)$，$\Delta$ 放缓至 $\approx +0.065$。逐层增速 $b_k$ 在 $\Omega=3$ 达到峰值（$b_3 = 0.023$）——$\Omega=3$ 是当前尺度下的唯象引擎层。</p>
+        <p>识别当前瓶颈层。$q_N$ 的最大分层贡献来自 $\Omega=4$——Sathe-Selberg 密度峰在 $k \approx \ln\ln N \approx 3$（$N=10^8$），被 $q_k$ 的单调递增右推到 $k=4$。瓶颈在 $N \approx 2\times10^5$ 从 $\Omega=3$ 跳到 $\Omega=4$（moving bottleneck）。</p>
+        <p>提取逐层衰减指数 $\gamma_k$：$q_k(N) \sim C_k \cdot (\ln N)^{-\gamma_k}$。Model A 在所有层上胜出，支持每个固定 $\Omega$ 层的 $q_k \to 0$。但 $\gamma_k$ 急剧衰减（$\gamma_2=0.45, \gamma_7=0.03$），拟合 $\gamma_k \sim 14/k^3$（$\beta \approx 3$），bottleneck 上的有效指数 $\Gamma = \lambda \cdot \gamma_k$ 递减——不利方向信号。</p>
+        <p>综合诊断：两个有利信号（$q_k \to 0$、$\Delta$ 普适）、一个待定（$\Delta$ 放缓）、四个不利信号（$\beta \gg 1$、瓶颈右推、$r_N \downarrow$、$E[j|j\ge1] \downarrow$）。在 $N \le 10^9$ 上数据与 H' 不成立更相容，但 $\ln\ln N$ 级现象超越任何有限尺度数值。</p>
+        <p><strong>关键词：</strong>加法复杂度，$\Omega$ 分层，scale attenuation，瓶颈地图，moving bottleneck，Sathe-Selberg，衰减指数</p>
+      </div>
+
+      <h3>§1 引言</h3>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXX 将 H' 精确等价为 $q_N \to 0$，并将终极战场定位为"层内 attenuation vs 层间 $\Omega$ 漂移"。本文在这个战场上展开定量分析，构建逐层瓶颈地图。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <ul>
+        <li><strong>(A)</strong> Additive 优势增长的 $\Omega$ 普适性：$\Delta \approx +0.10/\text{decade}$，附带放缓检测（§2）。</li>
+        <li><strong>(B)</strong> 逐层增速 $b_k$：$\Omega=3$ 是唯象引擎层（§3）。</li>
+        <li><strong>(C)</strong> 分层加权框架 $q_N = \sum P(\Omega=k) \cdot q_k(N)$（§4）。</li>
+        <li><strong>(D)</strong> 瓶颈识别与 moving bottleneck 演化（§4–§5）。</li>
+        <li><strong>(E)</strong> $\Omega$ 漂移量化（§5）。</li>
+        <li><strong>(F)</strong> 逐层衰减指数 $\gamma_k$ 提取与有效指数 $\Gamma$ 判据（§6）。</li>
+        <li><strong>(G)</strong> Bottleneck 动态与间歇性检验（§7）。</li>
+      </ul>
+
+      <h3>1.3 记号</h3>
+      <p>沿用系列约定。新增：$q_k(N) = 1 - P(j=0|\Omega=k, n \le N)$；$b_k = dP(j=0|\Omega=k)/d(\ln N)$（当前尺度局部斜率）；$\gamma_k$：对数幂律衰减指数；$\Gamma_N(k) = (\ln\ln N) \cdot \gamma_k$。</p>
+
+      <h3>§2 Additive 优势增长的 Ω 普适性</h3>
+
+      <h3>2.1 数据</h3>
+      <p><strong>数值观察 1.</strong> $M_n - (\rho_E(n-1)+1)$ 的均值（正 = additive 赢），按 $\Omega$ 和 decade：</p>
+
+      <table>
+        <tr><th>Ω</th><th>[10³,10⁴)</th><th>[10⁵,10⁶)</th><th>[10⁷,10⁸)</th><th>[10⁸,10⁹)</th><th>Δ/decade(前5)</th><th>Δ(最新)</th></tr>
+        <tr><td>2</td><td>+0.092</td><td>+0.347</td><td>+0.531</td><td>+0.605</td><td>~+0.11</td><td>+0.07</td></tr>
+        <tr><td>3</td><td>−0.800</td><td>−0.563</td><td>−0.405</td><td>−0.342</td><td>~+0.10</td><td>+0.06</td></tr>
+        <tr><td>4</td><td>−1.351</td><td>−1.109</td><td>−0.952</td><td>−0.890</td><td>~+0.10</td><td>+0.06</td></tr>
+        <tr><td>5</td><td>−1.869</td><td>−1.569</td><td>−1.398</td><td>−1.333</td><td>~+0.12</td><td>+0.07</td></tr>
+      </table>
+
+      <div class="milestone-box">
+        <p><strong>前五个 decade：每层每 decade 增量约 $+0.10$，显示出显著的 $\Omega$ 普适性。</strong>最新 decade：增量降至约 $+0.065$——additive 优势的增速在放缓。可能是 $1/\ln N$ 效应，也可能是真实衰减，当前尺度无法区分。$\Omega$ 普适性仍然成立。</p>
+      </div>
+
+      <h3>2.2 各层当前状态（$N = 10^9$）</h3>
+      <ul>
+        <li>$\Omega=2$：gap 均值 $+0.61$，$P(j=0) = 0.78$。Additive 明确占优。</li>
+        <li>$\Omega=3$：gap 均值 $-0.34$，$P(j=0) = 0.54$。正在翻转。</li>
+        <li>$\Omega=4$：gap 均值 $-0.89$，$P(j=0) = 0.32$。乘法仍占优但在缩小。</li>
+        <li>$\Omega=5$：gap 均值 $-1.33$，$P(j=0) = 0.18$。乘法强势占优。</li>
+      </ul>
+
+      <h3>§3 逐层增速与引擎层</h3>
+
+      <h3>3.1 线性拟合</h3>
+      <p><strong>数值观察 2.</strong> $P(j=0|\Omega=k) = a_k + b_k \cdot \ln N$（当前尺度局部近似）：</p>
+
+      <table>
+        <tr><th>Ω</th><th>b_k (per ln N)</th><th>per decade</th><th>当前 P(j=0)</th><th>R²</th></tr>
+        <tr><td>2</td><td>0.0120</td><td>0.028</td><td>0.752</td><td>0.979</td></tr>
+        <tr><td><strong>3</strong></td><td><strong>0.0225</strong></td><td><strong>0.052</strong></td><td>0.483</td><td>0.985</td></tr>
+        <tr><td>4</td><td>0.0179</td><td>0.041</td><td>0.267</td><td>0.992</td></tr>
+        <tr><td>5</td><td>0.0137</td><td>0.032</td><td>0.133</td><td>0.979</td></tr>
+        <tr><td>6</td><td>0.0060</td><td>0.014</td><td>0.064</td><td>0.975</td></tr>
+        <tr><td>7</td><td>0.0020</td><td>0.005</td><td>0.032</td><td>0.802</td></tr>
+      </table>
+
+      <h3>3.2 Ω=3 是当前的唯象引擎层</h3>
+      <div class="thesis-box">
+        <p><strong>$b_k$ 在 $\Omega=3$ 达到峰值（0.0225），不是单调递减。</strong>$\Omega=2$：接近饱和（0.75），边际效用递减。$\Omega=3$：饱和与组合抵抗之间的甜蜜点——因子分解选项少，但基数足够大，处于最陡爬升期。$\Omega \ge 4$：组合爆炸使乘法抵抗力增强，$b_k$ 被压制。<strong>$\Omega=3$ 是当前尺度下驱动 $p_N$ 上升的唯象引擎层。</strong></p>
+      </div>
+
+      <h3>§4 H' 的逐层瓶颈地图</h3>
+
+      <h3>4.1 分层加权框架</h3>
+      <p>$$q_N = \sum_{k \ge 2} P(\Omega=k \mid \text{comp}) \cdot q_k(N)$$</p>
+      <p>H' 要求 $q_N \to 0$。这把问题精确分解为层内失败率 $q_k(N)$ 与层间质量 $P(\Omega=k)$ 的加权竞争。</p>
+
+      <h3>4.2 当前瓶颈层</h3>
+      <p><strong>数值观察 3.</strong> $N = 10^8$ 的分层示意图（定性瓶颈识别）：</p>
+
+      <table>
+        <tr><th>Ω</th><th>P(Ω=k|comp)</th><th>q_k</th><th>贡献 P·q_k</th></tr>
+        <tr><td>2</td><td>0.185</td><td>0.248</td><td>0.046</td></tr>
+        <tr><td>3</td><td>0.252</td><td>0.517</td><td>0.130</td></tr>
+        <tr><td><strong>4</strong></td><td><strong>0.222</strong></td><td><strong>0.733</strong></td><td><strong>0.163</strong></td></tr>
+        <tr><td>5</td><td>0.153</td><td>0.867</td><td>0.132</td></tr>
+        <tr><td>6</td><td>0.090</td><td>0.936</td><td>0.084</td></tr>
+        <tr><td>7+</td><td>0.098</td><td>~0.97</td><td>~0.095</td></tr>
+      </table>
+
+      <p><strong>最大贡献来自 $\Omega=4$。</strong>Sathe-Selberg 密度峰在 $k \approx \ln\ln N \approx 3$，被 $q_k$ 的单调递增右推到 $k=4$。$\Omega=4$ 的双重不利：$q_4 = 0.73$ 仍然很高，且 $P(\Omega=4)$ 还在增长（因为 $k-1=3 > \ln\ln N \approx 2.9$）。</p>
+
+      <h3>4.3 Moving Bottleneck</h3>
+      <div class="thesis-box">
+        <p><strong>H' 不要求每个固定 $k$ 的 $q_k$ 都趋于 0</strong>（固定 $k$ 的 $P(\Omega=k)$ 最终会自行下降）。真正需要控制的是 moving bottleneck window——$k$ 在 $\ln\ln N$ 附近的那一带层的 $q_k$ 是否下降得足够快。</p>
+      </div>
+
+      <h3>§5 Moving Bottleneck 演化与 Ω 漂移</h3>
+
+      <h3>5.1 瓶颈迁移精确追踪</h3>
+      <p><strong>数值观察 4.</strong> $P(\Omega=k|\text{comp}) \cdot q_k$ 的峰值位置随 $N$ 的迁移：</p>
+
+      <table>
+        <tr><th>N</th><th>ln ln N</th><th>瓶颈 Ω</th><th>密度峰 Ω</th><th>瓶颈贡献</th></tr>
+        <tr><td>10³</td><td>1.93</td><td>3</td><td>2</td><td>0.215</td></tr>
+        <tr><td>10⁴</td><td>2.22</td><td>3</td><td>2</td><td>0.192</td></tr>
+        <tr><td>10⁵</td><td>2.44</td><td>3</td><td>3</td><td>0.169</td></tr>
+        <tr><td>2×10⁵</td><td>2.50</td><td><strong>3→4</strong></td><td>3</td><td>0.167</td></tr>
+        <tr><td>10⁶</td><td>2.63</td><td>4</td><td>3</td><td>0.165</td></tr>
+        <tr><td>10⁷</td><td>2.78</td><td>4</td><td>3</td><td>0.161</td></tr>
+        <tr><td>10⁸</td><td>2.91</td><td>4</td><td>3</td><td>0.157</td></tr>
+      </table>
+
+      <p><strong>瓶颈在 $N \approx 2\times10^5$ 从 $\Omega=3$ 跳到 $\Omega=4$，此后稳定。</strong>瓶颈贡献在缓慢下降（0.215 → 0.157）。</p>
+
+      <h3>5.2 E[Ω|comp] ≈ ln ln N + 1.2</h3>
+
+      <table>
+        <tr><th>N</th><th>E[Ω|comp]</th><th>ln ln N</th><th>E[Ω] − ln ln N</th></tr>
+        <tr><td>10³</td><td>3.260</td><td>1.933</td><td>1.33</td></tr>
+        <tr><td>10⁵</td><td>3.695</td><td>2.444</td><td>1.25</td></tr>
+        <tr><td>10⁷</td><td>3.917</td><td>2.780</td><td>1.14</td></tr>
+        <tr><td>10⁸</td><td>4.102</td><td>2.914</td><td>1.19</td></tr>
+      </table>
+
+      <p>$E[\Omega|\text{comp}] \approx \ln\ln N + 1.2$，与 Sathe-Selberg 的 $\ln\ln N + O(1)$ 图景相容。漂移极其缓慢。</p>
+
+      <h3>§6 逐层衰减指数 γ_k</h3>
+
+      <h3>6.1 模型与拟合</h3>
+      <p><strong>数值观察 5.</strong> Model A（对数幂律）vs Model B（常数极限）：</p>
+
+      <table>
+        <tr><th>Ω</th><th>γ_k</th><th>R²(A)</th><th>a_k(B)</th><th>R²(B)</th><th>胜者</th></tr>
+        <tr><td>2</td><td><strong>0.449</strong></td><td>0.997</td><td>0.167</td><td>0.985</td><td>A 胜</td></tr>
+        <tr><td>3</td><td><strong>0.413</strong></td><td>0.999</td><td>0.362</td><td>0.988</td><td>A 胜</td></tr>
+        <tr><td>4</td><td><strong>0.253</strong></td><td>0.988</td><td>0.612</td><td>0.963</td><td>A 胜</td></tr>
+        <tr><td>5</td><td><strong>0.165</strong></td><td>0.997</td><td>0.762</td><td>0.981</td><td>A 胜</td></tr>
+        <tr><td>6</td><td><strong>0.076</strong></td><td>0.973</td><td>0.887</td><td>0.936</td><td>A 胜</td></tr>
+        <tr><td>7</td><td><strong>0.030</strong></td><td>0.825</td><td>0.949</td><td>0.748</td><td>A 胜</td></tr>
+      </table>
+
+      <div class="milestone-box">
+        <p><strong>Model A 在每层都赢。</strong>当前数据强烈支持：对每个固定 $\Omega=k$，$q_k \to 0$（不趋向正常数）。但这是有限尺度的模型比较，不构成渐近确认。</p>
+      </div>
+
+      <h3>6.2 有效指数 Γ_N = λ · γ_k</h3>
+      <p>在 bottleneck window $k \approx \lambda = \ln\ln N$ 处：$q_k(N) \sim e^{-\lambda \cdot \gamma_k} = e^{-\Gamma}$。<strong>H' 的真正判据是 bottleneck window 上的 $\Gamma_N(k) = \lambda \cdot \gamma_k$ 是否趋于无穷。</strong></p>
+      <p>拟合 $\gamma_k \approx 13.9/k^{3.0}$（$R^2 = 0.92$，$\beta \approx 3 \gg 1$）。外推显示 $\Gamma$ 在递减（见主要数据表），对 H' 不利。</p>
+
+      <table>
+        <tr><th>ln N</th><th>λ</th><th>k_bott</th><th>γ_bott</th><th>Γ = λ·γ</th></tr>
+        <tr><td>20</td><td>3.0</td><td>3</td><td>0.53</td><td>1.58</td></tr>
+        <tr><td>50</td><td>3.9</td><td>4</td><td>0.22</td><td>0.88</td></tr>
+        <tr><td>100</td><td>4.6</td><td>5</td><td>0.12</td><td>0.53</td></tr>
+        <tr><td>200</td><td>5.3</td><td>6</td><td>0.07</td><td>0.36</td></tr>
+        <tr><td>500</td><td>6.2</td><td>7</td><td>0.04</td><td>0.26</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <p><strong>$\Gamma$ 在递减——不利方向信号。</strong>但：（1）五个点的拟合，不代表渐近律；（2）$k \in [3,7]$ 是组合爆炸初期，$\beta \approx 3$ 可能是瞬态曲率；（3）高 $\Omega$ 层（$k \gg 7$）可能有渐近厚尾（有效 $\beta < 1$）。<strong>远未构成否定。</strong></p>
+      </div>
+
+      <h3>§7 Bottleneck 动态与间歇性检验</h3>
+
+      <h3>7.1 瓶颈质心演化</h3>
+      <p><strong>数值观察 6.</strong> 加权质心 $\bar{k}_B$，右推量 $\Delta_N = \bar{k}_B - \ln\ln N$：</p>
+
+      <table>
+        <tr><th>N</th><th>ln ln N</th><th>k̄_B</th><th>σ_B</th><th>k_peak</th><th>Δ_N</th><th>q_N</th></tr>
+        <tr><td>10³</td><td>1.93</td><td>3.62</td><td>1.27</td><td>3</td><td>+1.69</td><td>0.657</td></tr>
+        <tr><td>10⁴</td><td>2.22</td><td>3.99</td><td>1.53</td><td>3</td><td>+1.77</td><td>0.660</td></tr>
+        <tr><td>10⁵</td><td>2.44</td><td>4.23</td><td>1.65</td><td>3</td><td>+1.79</td><td>0.650</td></tr>
+        <tr><td>10⁶</td><td>2.63</td><td>4.43</td><td>1.71</td><td>4</td><td>+1.80</td><td>0.641</td></tr>
+        <tr><td>10⁷</td><td>2.78</td><td>4.59</td><td>1.75</td><td>4</td><td>+1.81</td><td>0.634</td></tr>
+        <tr><td>10⁸</td><td>2.91</td><td>4.73</td><td>1.79</td><td>4</td><td>+1.81</td><td>0.629</td></tr>
+      </table>
+
+      <p>$\Delta_N$ 缓慢增大（1.69 → 1.81），$\sigma_B$ 增大（1.27 → 1.79）——瓶颈窗口在变宽，贡献越来越分散。</p>
+
+      <h3>7.2 r_N 间歇性检验</h3>
+      <p><strong>数值观察 7.</strong> H' 要求 $r_N = E[j|\text{comp}]/q_N \to \infty$：</p>
+
+      <table>
+        <tr><th>Decade</th><th>E[j|comp]</th><th>q</th><th>r = E[j]/q</th><th>P(j≥2)</th></tr>
+        <tr><td>[10³, 10⁴)</td><td>1.133</td><td>0.660</td><td>1.715</td><td>0.330</td></tr>
+        <tr><td>[10⁴, 10⁵)</td><td>1.102</td><td>0.649</td><td>1.698</td><td>0.322</td></tr>
+        <tr><td>[10⁵, 10⁶)</td><td>1.083</td><td>0.641</td><td>1.691</td><td>0.316</td></tr>
+        <tr><td>[10⁶, 10⁷)</td><td>1.070</td><td>0.634</td><td>1.687</td><td>0.312</td></tr>
+        <tr><td>[10⁷, 10⁸)</td><td>1.060</td><td>0.630</td><td>1.683</td><td>0.309</td></tr>
+        <tr><td>[10⁸, 10⁹)</td><td>1.053</td><td>0.626</td><td><strong>1.682</strong></td><td>0.307</td></tr>
+      </table>
+
+      <p>$r_N$ 从 1.715 缓慢下降到 1.682，下降速率放缓，但没有反转信号。但"由瓶颈右移驱动的全局间歇性"尚未被排除——失败质量向高 $\Omega$ 层迁移，而高 $\Omega$ 层的 $E[j|j \ge 1]$ 本身更大，可能最终通过层间组成变化使全局 $r_N$ 上升。</p>
+
+      <h3>7.3 逐层跳跃深度</h3>
+      <p><strong>数值观察 8.</strong> $E[j|j \ge 1, \Omega=k]$ 按 decade：</p>
+
+      <table>
+        <tr><th>Decade</th><th>Ω=2</th><th>Ω=3</th><th>Ω=4</th><th>Ω=5</th><th>Ω=6</th></tr>
+        <tr><td>[10³,10⁴)</td><td>1.228</td><td>1.369</td><td>1.602</td><td>1.972</td><td>2.378</td></tr>
+        <tr><td>[10⁵,10⁶)</td><td>1.209</td><td>1.313</td><td>1.511</td><td>1.781</td><td>2.093</td></tr>
+        <tr><td>[10⁷,10⁸)</td><td>1.203</td><td>1.294</td><td>1.454</td><td>1.685</td><td>1.959</td></tr>
+        <tr><td>[10⁸,10⁹)</td><td>1.201</td><td>1.287</td><td>1.435</td><td>1.651</td><td>1.912</td></tr>
+      </table>
+
+      <p><strong>每一层、每一个 decade，$E[j|j \ge 1, \Omega=k]$ 都在下降。零例外。</strong>跳跃在变浅，与 H'（间歇性要求深度增加）方向相反。但下降速率在放缓。</p>
+
+      <h3>7.4 综合诊断</h3>
+
+      <table>
+        <tr><th>信号</th><th>方向</th><th>H' 意义</th></tr>
+        <tr><td>每层 $q_k \to 0$（Model A 全胜）</td><td>✓ 有利</td><td>必要条件受数据支持</td></tr>
+        <tr><td>$\Delta > 0$ 且 $\Omega$ 普适</td><td>✓ 有利</td><td>attenuation 在工作</td></tr>
+        <tr><td>$\Delta$ 从 0.10 放缓到 0.065</td><td>— 待定</td><td>可能是 $1/\ln N$ 效应或真实衰减</td></tr>
+        <tr><td>$\gamma_k$ 衰减 $\beta \approx 3$</td><td>✗ 不利</td><td>有效指数 $\Gamma$ 递减</td></tr>
+        <tr><td>$\Delta_N$ 缓慢增大（1.69→1.81）</td><td>✗ 不利</td><td>瓶颈比 $\Omega$ 漂移跑得快</td></tr>
+        <tr><td>$r_N$ 在降（1.715 → 1.682）</td><td>✗ 不利</td><td>间歇性方向相反</td></tr>
+        <tr><td>$E[j|j \ge 1, \Omega=k]$ 每层都降</td><td>✗ 不利</td><td>跳跃变浅不变深</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <p><strong>两个有利、一个待定、四个不利。</strong>在有限尺度上数据与 H' 不成立更相容。但 $N = 10^9$ 对于 $\ln\ln N$ 级现象来说几乎是零——所有趋势随时可能在远超当前的尺度上反转。$\beta \approx 3$ 可能只是组合爆炸初期的瞬态曲率。</p>
+      </div>
+
+      <h3>§8 讨论</h3>
+
+      <h3>8.1 核心贡献</h3>
+      <ol>
+        <li>$\Delta \approx +0.10/\text{decade}$ 的 $\Omega$ 普适性——强烈支持 attenuation 由宏观标度驱动。</li>
+        <li>引擎层 $\Omega=3$（$b_k$ 峰值）vs 瓶颈层 $\Omega=4$（$P \cdot q$ 峰值）的分离。</li>
+        <li>分层加权框架 $q_N = \sum P(\Omega=k) \cdot q_k(N)$。</li>
+        <li>Moving bottleneck：$\Omega=3 \to 4$ at $N \approx 2\times10^5$，此后稳定。</li>
+        <li>$\gamma_k$：Model A 全面胜出；$\gamma_k$ 从 0.45 急剧衰减到 0.03。</li>
+        <li>H' 定量边界：$\gamma_k \sim 14/k^3$（$\beta \approx 3 \gg 1$），有效指数 $\Gamma$ 递减——不利信号。</li>
+        <li>间歇性检验：$r_N$ 降、$E[j|j \ge 1, \Omega=k]$ 每层都降——方向与 H' 相反。</li>
+        <li>瓶颈质心右推量 $\Delta_N$ 缓慢增大（1.69 → 1.81）。</li>
+        <li>综合诊断：两个有利、四个不利；有限尺度数据更相容于 $\neg$H'。</li>
+      </ol>
+
+      <h3>8.2 开放问题</h3>
+      <ol>
+        <li>$\gamma_k$ 的解析形式——从 DP 递推结构推导。</li>
+        <li>Uniform window control：$\sup_{k \in W_N} q_k \to 0$ 的精确条件。</li>
+        <li>对 $\Omega=2$ 的解析证明 $q_2 \sim C \cdot (\ln N)^{-0.45} \to 0$——最容易的起点。</li>
+        <li>$\Delta \approx +0.10$ 的 $\Omega$ 无关性的解析解释。</li>
+        <li>瓶颈从 $\Omega=4$ 何时让位于 $\Omega=5$？</li>
+        <li>$r_N$ 何时反转上升？</li>
+        <li>$\Delta_N$ 是否收敛到 $O(1)$？</li>
+      </ol>
+
+      <h3>8.3 致谢</h3>
+      <p>ChatGPT 贡献了分层加权框架、$P(\Omega=k)$ 单调方向修正、密度峰位置精确化（$k \approx \ln\ln N$ 而非 $1+\ln\ln N$）、moving bottleneck 精确定义、$N^{-b_k}$ 模型误设识别、以及有效指数 $\Gamma = \lambda \cdot \gamma_k$ 判据和 $\beta$ 判据。Gemini 贡献了 $\Delta \approx +0.10$ 的 $\Omega$ 普适性升格、$\Omega=3$ 作为引擎层的定位、$\beta \approx 3$ 的瞬态曲率警告、以及 Erdős-Kac 高斯核建议。Grok 保证了与前 30 篇的一致性。Claude 编写了全部数值计算脚本并起草了 working notes v1-v2。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <h3>§9 数据来源与可复现性</h3>
+      <table>
+        <tr><th>脚本</th><th>测量</th><th>§引用</th></tr>
+        <tr><td>p31_block123.py</td><td>M_n gap + P(j=0|Ω) 线性拟合 + Ω 漂移</td><td>§2–§5</td></tr>
+        <tr><td>p31_block45.py</td><td>q_k 衰减拟合（γ_k 提取）+ bottleneck 演化</td><td>§5–§6</td></tr>
+        <tr><td>p31_block67.py</td><td>Bottleneck profile + r_N 演化 + E[j|j≥1,Ω]</td><td>§7</td></tr>
+      </table>
+      <p>Sanity check：$\rho_E(10^7) = 58$，$\rho_E(10^8) = 66$，$\rho_E(10^9) = 74$。</p>
+
+      <h3>参考文献</h3>
+      <ol>
+        <li>ZFCρ Papers I–XXX. H. Qin. Paper XXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19078654" target="_blank" rel="noopener">10.5281/zenodo.19078654</a>. Paper XXIX DOI: <a href="https://doi.org/10.5281/zenodo.19083884" target="_blank" rel="noopener">10.5281/zenodo.19083884</a>. Paper XXX DOI: <a href="https://doi.org/10.5281/zenodo.19101810" target="_blank" rel="noopener">10.5281/zenodo.19101810</a>.</li>
+        <li>G. H. Hardy, S. Ramanujan (1917). The normal number of prime factors of a number n. <em>Quart. J. Math.</em>, 48:76–92.</li>
+        <li>A. Selberg (1954). Note on a paper by L. G. Sathe. <em>J. Indian Math. Soc.</em>, 18:83–87.</li>
+        <li>P. Erdős, M. Kac (1940). The Gaussian law of errors in the theory of additive number theoretic functions. <em>Amer. J. Math.</em>, 62:738–742.</li>
+        <li>K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</li>
+      </ol>
+
+      <div class="series-nav">
+        <span>ZFCρ 系列 &nbsp;·&nbsp;</span>
+        <a href="zfcrho30.html">← 论文 XXX：D(N) 首次直测</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        论文 XXXII →
+      </div>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
