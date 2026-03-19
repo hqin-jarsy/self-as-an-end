@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixed-Core Locking and Prime-Core Profile — ZFCρ Paper XXXII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXII: Microscopic anatomy of Ω=2 layer. h₀-free gap formula G=ρ(p)+ρ(q)-ρ(n-1)+1. Prime penalty E[R(p)]≈4.57. n=2q discrete locking P(j>0)≈0.211 frozen. 95-prime profile, c_p driven by margin (Corr=0.917). Harmonic Cesàro criterion c̄_h(N)→0?">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, prime penalty, discrete locking, prime-core profile, harmonic Cesàro average, fixed-core family, additive complexity">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fixed-Core Locking and Prime-Core Profile — The Residual Floor Structure of H'">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho32.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Fixed-Core Locking and Prime-Core Profile — The Residual Floor Structure of H'",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho32.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19116625"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "prime penalty", "discrete locking",
+      "prime-core profile", "harmonic Cesàro average", "fixed-core family"
+    ],
+    "abstract": "Microscopic anatomy of Ω=2 layer (semi-primes n=pq). h₀-free gap formula G=ρ(p)+ρ(q)-ρ(n-1)+1; j>0 iff G<0. γ₂=0.453 (R²=0.996). Prime penalty: E[R(p)]≈4.57 vs E[R(n)]≈2.76. n=2q discrete locking: diff∈{1,2,3} (92%), P(j>0)≈0.211 frozen across 5 decades. 95-prime profile: Corr(margin,c_p)=0.917; Corr(ln P⁺(p-1),c_p)=-0.714. c_p(N) declining 2-15%/decade for p≥3. H' criterion: harmonic Cesàro average c̄_h(N)→0? Status: open.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho32.html">
+  <meta name="citation_title" content="Fixed-Core Locking and Prime-Core Profile — The Residual Floor Structure of H'">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19116625">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho32.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/#papers">Papers</a>
+  </nav>
+</header>
+
+<main class="paper-container">
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div class="lang-content active" id="content-en">
+    <div class="paper-header">
+      <div class="paper-series">ZFC-ρ Series · Paper XXXII</div>
+      <h1 class="paper-title">Fixed-Core Locking and Prime-Core Profile — The Residual Floor Structure of H'</h1>
+      <div class="paper-authors">Han Qin &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19116625" target="_blank" rel="noopener">
+        📄 DOI: 10.5281/zenodo.19116625
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We perform microscopic anatomy of the Ω=2 layer (semi-primes <em>n</em>=<em>pq</em>), discovering that the H' criterion reduces precisely to a prime-core harmonic average problem.</p>
+        <p>An h₀-free gap formula is established: <em>G</em>(<em>n</em>) = ρ(<em>p</em>) + ρ(<em>q</em>) − ρ(<em>n</em>−1) + 1; <em>j</em>(<em>n</em>)&gt;0 iff <em>G</em>(<em>n</em>)&lt;0. Independent confirmation: γ₂ = 0.453 (<em>R</em>² = 0.996). <em>G</em> is integer-valued, concentrated on {−1, 0, +1, +2} (87%).</p>
+        <p>A <strong>prime penalty</strong> is discovered: primes <em>q</em> have systematically higher ρ(<em>q</em>) than the local mean (E[R(<em>p</em>)] ≈ 4.57 vs E[R(<em>n</em>)] ≈ 2.76), because primes are pure additive injection points in the DP recursion. This explains E[diff] = 1.83 for <em>n</em>=2<em>q</em> (far below h₀·ln 2 = 2.48).</p>
+        <p><strong>Discrete locking</strong> of <em>n</em>=2<em>q</em>: diff = ρ(2<em>q</em>−1) − ρ(<em>q</em>) concentrates on {1, 2, 3} (92%). P(<em>j</em>&gt;0) = P(diff≥3) ≈ 0.211, frozen across five decades. In the currently visible range, <em>p</em>=2 is the only prime-core family showing no clear downward trend.</p>
+        <p>A <strong>prime-core profile</strong> is established for 95 primes (<em>p</em>=2 to 499): c<sub>p</sub> = P(<em>j</em>&gt;0|<em>n</em>=<em>pq</em>). c<sub>p</sub> is primarily determined by margin = E[diff] − threshold (Corr = 0.917). Margin oscillation is driven by the discrete deviation of ρ(<em>p</em>) from h₀·ln <em>p</em> — and ρ(<em>p</em>) deviation is strongly correlated with the smoothness of <em>p</em>−1 (Corr(ln P⁺(<em>p</em>−1), c<sub>p</sub>) = −0.714). Smooth <em>p</em>−1 → low ρ(<em>p</em>) → high margin → high c<sub>p</sub>. Rough <em>p</em>−1 → high ρ(<em>p</em>) → low margin → low c<sub>p</sub>.</p>
+        <p>Key new finding: except for <em>p</em>=2, nearly all c<sub>p</sub>(<em>N</em>) for <em>p</em> ≥ 3 decline across decades (2–15%/decade) — c<sub>p</sub> is not a constant but an <em>N</em>-dependent slowly decaying quantity. At fixed <em>N</em>=10⁸, the partial harmonic average H(<em>P</em>;<em>N</em>) = Σ c<sub>p</sub>/<em>p</em> ÷ Σ 1/<em>p</em> decreases from 0.35 to 0.27 (<em>P</em>=499) — declining in the <em>P</em> direction but far from zero.</p>
+        <p>H' criterion for Ω=2 is: does the harmonic Cesàro average c̄<sub>h</sub>(<em>N</em>) → 0? Current data cannot determine this — whether c<sub>p</sub> decay is genuine asymptotic behavior or finite-scale effect remains open.</p>
+        <p>30 fixed-core families in Ω=3 (<em>m</em>=6, 10, 14, …, 95) exhibit the same margin-driven structure. Fixed-core locking is universal across all Ω layers.</p>
+        <p>Paper XXXI's γ<sub>k</sub> is a mixture effect of fixed-core families. Model A's finite-scale "victory" reflects the decay phase of the mixture.</p>
+        <p><strong>Keywords:</strong> additive complexity, prime penalty, discrete locking, prime-core profile, harmonic Cesàro average, fixed-core family, integer complexity</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXI established the layer-by-layer bottleneck map for H', extracted γ<sub>k</sub>, and proposed the effective index Γ = λ·γ<sub>k</sub> criterion. But γ<sub>k</sub> was found to be a mixture effect. This paper performs microscopic anatomy of the simplest Ω=2 layer, revealing the internal structure of that mixture.</p>
+
+      <h3>1.2 Contributions</h3>
+      <p><strong>(A)</strong> h₀-free gap formula and γ₂ confirmation (§2). <strong>(B)</strong> Prime penalty (§3). <strong>(C)</strong> <em>n</em>=2<em>q</em> discrete locking (§4). <strong>(D)</strong> 95-prime core profile (§5). <strong>(E)</strong> ρ(<em>p</em>) deviation ↔ <em>p</em>−1 smoothness correlation (§5). <strong>(F)</strong> c<sub>p</sub>(<em>N</em>) per-decade decay (§6). <strong>(G)</strong> Harmonic Cesàro average as H' criterion (§7). <strong>(H)</strong> Ω=3 fixed-core structure (§8).</p>
+
+      <h2>2. h₀-Free Gap Formula and γ₂ Confirmation</h2>
+
+      <h3>2.1 Formula</h3>
+      <p>For <em>n</em> = <em>pq</em> (<em>p</em> = P⁻(<em>n</em>), canonical core), define:</p>
+      $$G(n) = \rho(p) + \rho(q) - \rho(n-1) + 1$$
+      <p>Then <em>j</em>(<em>n</em>) &gt; 0 if and only if <em>G</em>(<em>n</em>) &lt; 0. No h₀ appears.</p>
+
+      <h3>2.2 Discreteness of G</h3>
+      <p><em>G</em> is integer-valued. Distribution at [10⁷, 10⁸):</p>
+      <table>
+        <thead><tr><th>G</th><th>−1</th><th>0</th><th>+1</th><th>+2</th><th>Other</th></tr></thead>
+        <tbody>
+          <tr><td>Share</td><td>18.5%</td><td>30.1%</td><td>24.2%</td><td>14.4%</td><td>12.8%</td></tr>
+        </tbody>
+      </table>
+      <p>Four values account for 87%. Median = 0, mean = +0.53.</p>
+
+      <h3>2.3 γ₂ Independent Confirmation</h3>
+      <div class="milestone-box">
+        <p>$$q_2(N) \sim 0.877\cdot(\ln N)^{-0.453}, \quad R^2 = 0.996$$</p>
+        <p>14 points (N = 10³ to 10⁸). Confirms Paper XXXI's γ₂ = 0.449.</p>
+      </div>
+
+      <h3>2.4 Rapid Decay of Balanced Semi-Primes</h3>
+      <p>The Ω=2 layer is not homogeneous. Restricting to "balanced" semi-primes (<em>q</em>/<em>p</em> &lt; 10) reveals strikingly different behavior.</p>
+      <p><em>Theory:</em> for <em>p</em> ≈ <em>q</em> ≈ √<em>n</em>, ρ(<em>p</em>) + ρ(<em>q</em>) ≈ h₀·ln <em>n</em> ≈ ρ(<em>n</em>−1), giving <em>G</em> ≈ +1 (structural positive bias).</p>
+      <p>Data ([10⁷, 10⁸)): E[<em>G</em>] = +1.23, P(<em>j</em>&gt;0) = 0.107. Fitting:</p>
+      $$q_2^{\text{bal}}(N) \sim 3.03\cdot(\ln N)^{-1.14}, \quad R^2 = 0.992$$
+      <div class="milestone-box">
+        <p>γ<sub>bal</sub> = 1.14 — 2.5× faster than the overall γ₂ = 0.45. <strong>This directly proves γ₂ is a mixture of fast-decaying balanced subfamilies and slowly-decaying/frozen unbalanced subfamilies.</strong></p>
+      </div>
+
+      <h2>3. Prime Penalty</h2>
+
+      <p>Block 3b data (<em>N</em> = 10⁸):</p>
+      <table>
+        <thead><tr><th>Category</th><th>E[R(·)]</th></tr></thead>
+        <tbody>
+          <tr><td>General integers <em>n</em> ∈ [10⁷, 10⁸)</td><td>2.76</td></tr>
+          <tr><td>Primes <em>p</em> ∈ [10⁷, 10⁸)</td><td>4.57</td></tr>
+        </tbody>
+      </table>
+      <div class="thesis-box">
+        <p><strong>Prime penalty:</strong> gap ≈ 1.8. Primes are pure additive injection points: ρ(<em>p</em>) = ρ(<em>p</em>−1) + 1, never compressed by multiplication. Hence ρ(<em>p</em>) is systematically elevated relative to its logarithmic scale.</p>
+      </div>
+      <p>For <em>n</em>=2<em>q</em>: E[diff₂] ≈ h₀·ln 2 − Δ₂ ≈ 2.48 − 0.65 ≈ 1.83, where Δ₂ ≈ 0.65 is the family-specific prime-conditioned correction for <em>p</em>=2 (distinct from the unconditional gap of ~1.8).</p>
+
+      <h2>4. Discrete Locking of n=2q</h2>
+
+      <h3>4.1 Threshold</h3>
+      <p>Since ρ(2) = 1: <em>G</em> = 2 + ρ(<em>q</em>) − ρ(2<em>q</em>−1). Thus <em>j</em>&gt;0 iff diff ≥ 3.</p>
+
+      <h3>4.2 diff Distribution</h3>
+      <p>[10⁷, 10⁸), 2.65 million primes <em>q</em>:</p>
+      <table>
+        <thead><tr><th>diff</th><th>+1</th><th><strong>+2</strong></th><th>+3</th><th>Other</th></tr></thead>
+        <tbody>
+          <tr><td>Share</td><td>21.6%</td><td><strong>49.5%</strong></td><td>21.1%</td><td>7.8%</td></tr>
+        </tbody>
+      </table>
+      <p>Three values account for 92%. P(<em>j</em>&gt;0) = P(diff≥3) ≈ 21.1%.</p>
+
+      <h3>4.3 Five Decades of Confirmed Freezing</h3>
+      <table>
+        <thead><tr><th>Decade</th><th>E[diff]</th><th>P(j&gt;0)</th></tr></thead>
+        <tbody>
+          <tr><td>[10³, 10⁴)</td><td>1.843</td><td>0.195</td></tr>
+          <tr><td>[10⁵, 10⁶)</td><td>1.840</td><td>0.209</td></tr>
+          <tr><td>[10⁷, 10⁸)</td><td>1.829</td><td><strong>0.211</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p>P(<em>j</em>&gt;0) ≈ 0.211 is frozen across five decades. In the currently visible range, <em>p</em>=2 is the only prime-core family in Ω=2 without a clear downward trend.</p>
+      </div>
+
+      <h2>5. Prime-Core Profile</h2>
+
+      <h3>5.1 Definition</h3>
+      <p>For each prime <em>p</em>, canonical decomposition <em>n</em> = <em>pq</em> (<em>q</em> ≥ <em>p</em> prime, <em>p</em> = P⁻(<em>n</em>)):</p>
+      $$c_p(N) = P(j>0 \mid n=pq,\; pq \leq N)$$
+      $$\text{threshold}_p = \rho(p)+1, \quad \text{margin}_p = E[\text{diff}_p] - \text{threshold}_p$$
+      <p>When <em>q</em>=<em>p</em> (prime squares), these are asymptotically negligible (&lt;0.01%) and excluded.</p>
+
+      <h3>5.2 95-Prime Profile (Selected)</h3>
+      <p>At <em>N</em> = 10⁸:</p>
+      <table>
+        <thead><tr><th>p</th><th>ρ(p)</th><th>thr</th><th>E[diff]</th><th>margin</th><th>c<sub>p</sub></th><th>P⁺(p−1)</th><th>p−1</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>1</td><td>2</td><td>1.83</td><td>−0.17</td><td>0.211</td><td>1</td><td>1</td></tr>
+          <tr><td>3</td><td>2</td><td>3</td><td>3.52</td><td>+0.52</td><td>0.543</td><td>2</td><td>2</td></tr>
+          <tr><td>5</td><td>4</td><td>5</td><td>5.33</td><td>+0.33</td><td>0.471</td><td>2</td><td>4=2²</td></tr>
+          <tr><td>7</td><td>6</td><td>7</td><td>6.58</td><td>−0.42</td><td>0.224</td><td>3</td><td>6=2·3</td></tr>
+          <tr><td>23</td><td>12</td><td>13</td><td>11.16</td><td>−1.84</td><td>0.035</td><td>11</td><td>22=2·11</td></tr>
+          <tr><td>59</td><td>16</td><td>17</td><td>14.80</td><td>−2.20</td><td>0.019</td><td>29</td><td>58=2·29</td></tr>
+          <tr><td>109</td><td>16</td><td>17</td><td>17.19</td><td>+0.19</td><td>0.381</td><td>3</td><td>108=2²·3³</td></tr>
+          <tr><td>179</td><td>21</td><td>22</td><td>19.11</td><td>−2.89</td><td>0.005</td><td>89</td><td>178=2·89</td></tr>
+          <tr><td>193</td><td>18</td><td>19</td><td>19.41</td><td>+0.41</td><td>0.471</td><td>3</td><td>192=2⁶·3</td></tr>
+        </tbody>
+      </table>
+      <p>c<sub>p</sub> range: [0.005, 0.543]. Full 95-point profile computed.</p>
+
+      <h3>5.3 Margin Dominance</h3>
+      <div class="milestone-box">
+        <p><strong>Corr(margin, c<sub>p</sub>) = +0.917.</strong> Margin is the primary driver; local discrete distribution contributes second-order variation.</p>
+      </div>
+
+      <h3>5.4 ρ(p) Deviation Driven by p−1 Smoothness</h3>
+      <div class="thesis-box">
+        <p><strong>Corr(ln P⁺(<em>p</em>−1), ρ(<em>p</em>)/h₀ ln <em>p</em>) = +0.683.</strong></p>
+        <p><strong>Corr(ln P⁺(<em>p</em>−1), c<sub>p</sub>) = −0.714.</strong></p>
+        <p>Correlation-supported explanation chain: smooth <em>p</em>−1 → low ρ(<em>p</em>−1) → low ρ(<em>p</em>) → low threshold → high margin → high c<sub>p</sub>. Rough <em>p</em>−1 → reverse.</p>
+        <p>Extreme cases: <em>p</em>=193 (<em>p</em>−1=192=2⁶·3, P⁺=3) → c<sub>p</sub>=0.471. <em>p</em>=179 (<em>p</em>−1=178=2·89, P⁺=89) → c<sub>p</sub>=0.005.</p>
+      </div>
+
+      <h3>5.5 No Monotone Drift in Current Range</h3>
+      <p>ρ(<em>p</em>)/(h₀·ln <em>p</em>) oscillates between 0.95–1.13 for <em>p</em> ≤ 499. No systematic drift supporting a monotone scissors picture. Since P⁺(<em>p</em>−1) is known to oscillate indefinitely, c<sub>p</sub> is unlikely to trend to zero via a simple "h₀·ln <em>p</em> outgrows ρ(<em>p</em>)" mechanism — but the harmonic average may still decline through subtler distributional effects.</p>
+
+      <h2>6. Per-Decade Decay of c<sub>p</sub>(N)</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>c<sub>p</sub>(10³)</th><th>c<sub>p</sub>(10⁵)</th><th>c<sub>p</sub>(10⁷)</th><th>Trend</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.195</td><td>0.209</td><td>0.211</td><td>frozen</td></tr>
+          <tr><td>3</td><td>0.558</td><td>0.551</td><td>0.542</td><td>slow decline</td></tr>
+          <tr><td>5</td><td>0.545</td><td>0.486</td><td>0.470</td><td>clear decline</td></tr>
+          <tr><td>7</td><td>0.267</td><td>0.239</td><td>0.223</td><td>clear decline</td></tr>
+          <tr><td>109</td><td>0.465</td><td>0.430</td><td>0.377</td><td>fast decline</td></tr>
+          <tr><td>193</td><td>0.642</td><td>0.521</td><td>0.467</td><td>fast decline</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p><strong>Except <em>p</em>=2, nearly all c<sub>p</sub>(<em>N</em>) for <em>p</em> ≥ 3 are declining.</strong> Rates range from 2%/decade (<em>p</em>=3) to 15%/decade (<em>p</em>=193). c<sub>p</sub>(<em>N</em>) is not a fixed arithmetic constant — it is an <em>N</em>-dependent slowly decaying quantity. Current data cannot distinguish "c<sub>p</sub> → constant &gt; 0" from "c<sub>p</sub> → 0 very slowly."</p>
+      </div>
+
+      <h2>7. Harmonic Cesàro Average as H' Criterion</h2>
+
+      <h3>7.1 Canonical Decomposition</h3>
+      <p>Each Ω=2 composite <em>n</em>=<em>pq</em> (<em>p</em>=P⁻(<em>n</em>), <em>q</em>=P⁺(<em>n</em>), <em>q</em>≥<em>p</em>) maps uniquely to prime-core <em>p</em>. Prime squares (<em>q</em>=<em>p</em>) contribute &lt;0.01% and are negligible. On squarefree semiprimes:</p>
+      $$q_2^{(\text{sqf})}(N) = \sum_{p} w_p(N)\cdot c_p(N)$$
+      <p>where w<sub>p</sub>(<em>N</em>) ≈ (1/<em>p</em>) / Σ(1/ℓ) asymptotically. Since prime squares contribute O(π(√<em>N</em>)/#Ω=2) → 0, q₂ and \(q_2^{(\text{sqf})}\) have the same asymptotics.</p>
+
+      <h3>7.2 Correct Criterion</h3>
+      <div class="thesis-box">
+        <p>q₂ → 0 if and only if the harmonic Cesàro average tends to zero:</p>
+        <p>$$\bar{c}_h(N) := \frac{\displaystyle\sum_{p \leq \sqrt{N}} c_p(N)/p}{\displaystyle\sum_{p \leq \sqrt{N}} 1/p} \to 0$$</p>
+        <p>This is not equivalent to "Σ c<sub>p</sub>/<em>p</em> converges" (which is only sufficient). If c<sub>p</sub>(<em>N</em>) ~ C/ln ln <em>p</em>, the series diverges yet c̄<sub>h</sub> → 0.</p>
+      </div>
+
+      <h3>7.3 Partial Profile at Fixed N</h3>
+      <p>H(<em>P</em>;<em>N</em>) at fixed <em>N</em>=10⁸ as function of truncation <em>P</em>:</p>
+      <table>
+        <thead><tr><th>P</th><th>H(P; N)</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td>0.351</td></tr>
+          <tr><td>50</td><td>0.305</td></tr>
+          <tr><td>100</td><td>0.291</td></tr>
+          <tr><td>200</td><td>0.281</td></tr>
+          <tr><td>500</td><td><strong>0.270</strong></td></tr>
+        </tbody>
+      </table>
+      <p>H declines from 0.35 to 0.27. This is the profile shape at fixed <em>N</em> — not the asymptotic c̄<sub>h</sub>(<em>N</em>) vs <em>N</em>. The true H' criterion requires understanding the joint profile (<em>p</em>, <em>N</em>) ↦ c<sub>p</sub>(<em>N</em>).</p>
+
+      <h3>7.4 H' Implications</h3>
+      <p><strong>(i)</strong> If c<sub>p</sub>(<em>N</em>) are true constants → c̄<sub>h</sub> stable at ~0.27 → H' fails at Ω=2.</p>
+      <p><strong>(ii)</strong> If c<sub>p</sub>(<em>N</em>) for <em>p</em>≥3 have genuine asymptotic decay → c̄<sub>h</sub>(<em>N</em>) → 0 → H' holds at Ω=2.</p>
+      <div class="warning-box">
+        <p>§6 data favor scenario (ii) but decay rates are too small to confirm. <strong>H' status at Ω=2 remains open.</strong></p>
+      </div>
+
+      <h3>7.5 Partial Validation</h3>
+      <p>Block 7b: Σ w<sub>p</sub>·c<sub>p</sub> (<em>p</em> ≤ 23) = 0.174. Actual q₂ = 0.232. Coverage 54%, ratio = 0.75. Weighted sum direction is correct — contributions from <em>p</em> &gt; 23 should close the gap.</p>
+
+      <h2>8. Ω=3 Fixed-Core Structure</h2>
+
+      <h3>8.1 Framework</h3>
+      <p>For Ω=3 layer, canonical core <em>m</em> (Ω(<em>m</em>)=2, squarefree), <em>n</em> = <em>mq</em> (<em>q</em> = P⁺(<em>n</em>)):</p>
+      $$G_m(q) = \rho(m) + \rho(q) - \rho(mq-1) + 1, \quad j>0 \;\text{iff}\; \text{diff}_m \geq \rho(m)+2$$
+      <p>Note: current scope covers only squarefree cores <em>m</em> = <em>p</em>₁<em>p</em>₂. Squareful families (<em>n</em>=<em>p</em>²<em>q</em>) not yet included.</p>
+
+      <h3>8.2 30-Core Profile (Selected)</h3>
+      <p>At <em>N</em> = 10⁸:</p>
+      <table>
+        <thead><tr><th>m</th><th>Factors</th><th>ρ(m)</th><th>thr</th><th>E[diff]</th><th>margin</th><th>c<sub>m</sub></th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td>2·3</td><td>5</td><td>6</td><td>6.37</td><td>+0.37</td><td>0.457</td></tr>
+          <tr><td>10</td><td>2·5</td><td>7</td><td>8</td><td>8.25</td><td>+0.25</td><td>0.395</td></tr>
+          <tr><td>14</td><td>2·7</td><td>9</td><td>10</td><td>9.41</td><td>−0.59</td><td>0.166</td></tr>
+          <tr><td>15</td><td>3·5</td><td>8</td><td>9</td><td>9.92</td><td>+0.92</td><td>0.645</td></tr>
+          <tr><td>22</td><td>2·11</td><td>11</td><td>12</td><td>11.14</td><td>−0.86</td><td>0.110</td></tr>
+          <tr><td>39</td><td>3·13</td><td>12</td><td>13</td><td>13.51</td><td>+0.51</td><td>0.508</td></tr>
+          <tr><td>77</td><td>7·11</td><td>16</td><td>17</td><td>15.90</td><td>−1.10</td><td>0.082</td></tr>
+          <tr><td>82</td><td>2·41</td><td>15</td><td>16</td><td>16.23</td><td>+0.23</td><td>0.401</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p>Same margin-driven structure. c<sub>m</sub> range [0.063, 0.645]. <strong>Fixed-core locking is universal across Ω layers.</strong> Paper XXXI's γ<sub>k</sub> is a mixture of fast-decaying balanced subfamilies + slowly-decaying prime-core subfamilies + weight drift.</p>
+      </div>
+
+      <h2>9. Corrections to Paper XXXI</h2>
+      <p>γ<sub>k</sub> is a mixture effect. Model A's finite-scale "victory" reflects the decay phase of the mixture — fast-decaying subfamilies dominate at current scales. Asymptotically, once these clear, the residual floor emerges — but that floor may itself be slowly decaying (§6), so Model B (q<sub>k</sub> → constant) is also not guaranteed. True behavior may lie between the two: extremely slow decay.</p>
+
+      <h2>10. Discussion</h2>
+
+      <h3>10.1 Core Contributions</h3>
+      <p>Nine findings: (1) h₀-free formula + γ₂ confirmation. (2) Prime penalty Δ₂. (3) <em>n</em>=2<em>q</em> discrete locking. (4) 95-prime profile. (5) ρ(<em>p</em>) ↔ P⁺(<em>p</em>−1) smoothness correlation. (6) c<sub>p</sub>(<em>N</em>) per-decade decay. (7) Harmonic Cesàro criterion. (8) Ω=3 fixed-core universality. (9) γ<sub>k</sub> mixture reinterpretation.</p>
+
+      <h3>10.2 Open Problems</h3>
+      <p>(1) Is c<sub>p</sub>(<em>N</em>) decay genuine asymptotic behavior or finite-scale effect? (2) c̄<sub>h</sub>(<em>N</em>) → 0 or → c̄ &gt; 0? — the ultimate Ω=2 criterion. (3) Higher-Ω fixed-core profiles. (4) Analytic proof of <em>n</em>=2<em>q</em> locking via local limit law. (5) ρ(<em>p</em>) per-prime fluctuations and deep arithmetic structure.</p>
+
+      <h3>10.3 Acknowledgments</h3>
+      <p>ChatGPT: partition bug fix, family-specific Δ<sub>p</sub>, harmonic Cesàro criterion, canonical decomposition, local limit law target, H(<em>P</em>;<em>N</em>) vs c̄<sub>h</sub>(<em>N</em>) distinction. Gemini: prime penalty discovery, <em>p</em>−1 smoothness hypothesis, fixed-core generalization. Grok: series consistency. Claude: all scripts (Block 1–10), working notes v1–v3. Final text by author.</p>
+
+      <h2>11. Data Sources</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th><th>Section</th></tr></thead>
+        <tbody>
+          <tr><td>p32_block123.py</td><td>R_sum + balance + R stats</td><td>§2–§3</td></tr>
+          <tr><td>p32_block45.py</td><td>G distribution + γ₂ + n=2q</td><td>§2–§4</td></tr>
+          <tr><td>p32_block5b_fix.py</td><td>n=2q threshold fix + per-decade</td><td>§4</td></tr>
+          <tr><td>p32_block67.py</td><td>Profile (p≤23) + Ω=3 + weighted sum</td><td>§5, §7, §8</td></tr>
+          <tr><td>p32_block8.py</td><td>Extended profile (p≤200, 46 primes)</td><td>§5</td></tr>
+          <tr><td>p32_block9.py</td><td>p−1 smoothness (p≤200)</td><td>§5.4</td></tr>
+          <tr><td>p32_block10.py</td><td>Harmonic avg (p≤499, 95 primes) + Ω=3 ext</td><td>§6–§8</td></tr>
+        </tbody>
+      </table>
+      <p>Sanity: ρ<sub>E</sub>(10⁷) = 58, ρ<sub>E</sub>(10⁸) = 66.</p>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXI. H. Qin. Paper XXXI DOI: 10.5281/zenodo.19104860.</p>
+      <p>[2] G. H. Hardy, S. Ramanujan (1917). <em>Quart. J. Math.</em>, 48:76–92.</p>
+      <p>[3] K. Cordwell et al. (2018). <em>J. Number Theory</em>, 189:17–34.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho31.html">← Paper XXXI: Layer-by-Layer Bottleneck Map</a>
+        &nbsp;|&nbsp;
+        Paper XXXIII →
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div class="lang-content" id="content-zh">
+    <div class="paper-header">
+      <div class="paper-series">ZFC-ρ 系列 · 论文 XXXII</div>
+      <h1 class="paper-title">Fixed-Core 锁定与 Prime-Core Profile——H' 的残余底板结构</h1>
+      <div class="paper-authors">秦汉 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19116625" target="_blank" rel="noopener">
+        📄 DOI: 10.5281/zenodo.19116625
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们对 Ω=2 层（半素数 <em>n</em>=<em>pq</em>）进行微观解剖，发现 H' 的判据可以精确归结为一个 prime-core harmonic 平均问题。</p>
+        <p>建立 h₀-free gap 公式：<em>G</em>(<em>n</em>) = ρ(<em>p</em>) + ρ(<em>q</em>) − ρ(<em>n</em>−1) + 1。<em>j</em>(<em>n</em>)&gt;0 当且仅当 <em>G</em>(<em>n</em>)&lt;0。独立确认 γ₂ = 0.453（R² = 0.996）。<em>G</em> 是整数值，集中在 {−1, 0, +1, +2}（占 87%）。</p>
+        <p>发现<strong>素数惩罚</strong>：素数 <em>q</em> 的 ρ(<em>q</em>) 系统性高于局部均值（E[R(<em>p</em>)] ≈ 4.57 vs E[R(<em>n</em>)] ≈ 2.76），因为素数是 DP 中的纯 additive 注入点。这解释了 <em>n</em>=2<em>q</em> 的 E[diff] = 1.83（远低于 h₀·ln 2 = 2.48）。</p>
+        <p>发现 <em>n</em>=2<em>q</em> 的<strong>离散锁定</strong>：diff = ρ(2<em>q</em>−1) − ρ(<em>q</em>) 集中在 {1, 2, 3}（占 92%）。P(<em>j</em>&gt;0) = P(diff≥3) ≈ 0.211，五个 decade 完全冻结。在当前可见尺度上，<em>p</em>=2 是 Ω=2 层中唯一没有显示明确下行趋势的 prime-core family。</p>
+        <p>建立 <strong>prime-core profile</strong>：对 95 个素数（<em>p</em>=2 到 499），测量 c<sub>p</sub> = P(<em>j</em>&gt;0|<em>n</em>=<em>pq</em>)。c<sub>p</sub> 主要由 margin = E[diff] − threshold 决定（Corr = 0.917）。margin 的振荡由 ρ(<em>p</em>) 相对于 h₀·ln <em>p</em> 的离散偏差驱动——而 ρ(<em>p</em>) 的偏差由 <em>p</em>−1 的平滑度决定（Corr(ln P⁺(<em>p</em>−1), c<sub>p</sub>) = −0.714）。<em>p</em>−1 平滑 → ρ(<em>p</em>) 低 → margin 高 → c<sub>p</sub> 高。<em>p</em>−1 粗糙 → ρ(<em>p</em>) 高 → margin 低 → c<sub>p</sub> 低。</p>
+        <p>关键的新发现：除 <em>p</em>=2 外，几乎所有 <em>p</em> ≥ 3 的 c<sub>p</sub>(<em>N</em>) 都在逐 decade 下降（2–15%/decade）——c<sub>p</sub> 不是常数，是 <em>N</em>-dependent 的缓慢衰减量。固定 <em>N</em>=10⁸ 下的 partial harmonic 平均 H(<em>P</em>;<em>N</em>) = Σ c<sub>p</sub>/<em>p</em> ÷ Σ 1/<em>p</em> 从 0.35 缓慢下降到 0.27（<em>P</em>=499）——在 <em>P</em> 方向下降但远未趋零。</p>
+        <p>H' 在 Ω=2 层的判据精确化为：harmonic Cesàro 平均 c̄<sub>h</sub>(<em>N</em>) → 0？当前数据无法判定——c<sub>p</sub> 的衰减是真实的渐近行为还是有限尺度效应。</p>
+        <p>Ω=3 层的 30 个 squarefree fixed-core（<em>m</em>=6, 10, 14, …, 95）展示相同的 margin 驱动结构，强烈支持 fixed-core 锁定是更普遍的现象。</p>
+        <p>Paper XXXI 的 γ<sub>k</sub> 是 fixed-core families 的混合效应。Model A 在有限尺度上的"胜出"反映的是混合的衰减阶段。</p>
+        <p><strong>关键词：</strong>加法复杂度，素数惩罚，离散锁定，prime-core profile，harmonic Cesàro 平均，fixed-core family，integer complexity</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXI 建立了 H' 的逐层瓶颈地图，提取了 γ<sub>k</sub> 并提出了有效指数 Γ = λ·γ<sub>k</sub> 判据。但 γ<sub>k</sub> 被发现是混合效应。本文对最简单的 Ω=2 层进行微观解剖，揭示混合的内部结构。</p>
+
+      <h3>1.2 本文贡献</h3>
+      <p><strong>(A)</strong> h₀-free gap 公式与 γ₂ 独立确认（§2）。<strong>(B)</strong> 素数惩罚的发现与量化（§3）。<strong>(C)</strong> <em>n</em>=2<em>q</em> 离散锁定机制（§4）。<strong>(D)</strong> 95 个素数的 prime-core profile（§5）。<strong>(E)</strong> ρ(<em>p</em>) 偏差与 <em>p</em>−1 平滑度的强相关（§5）。<strong>(F)</strong> c<sub>p</sub>(<em>N</em>) 的逐 decade 衰减——非冻结常数（§6）。<strong>(G)</strong> Harmonic Cesàro 平均作为 H' 判据（§7）。<strong>(H)</strong> Ω=3 层的 fixed-core 结构（§8）。</p>
+
+      <h2>§2 h₀-Free Gap 公式与 γ₂ 确认</h2>
+
+      <h3>2.1 公式</h3>
+      <p>对半素数 <em>n</em> = <em>pq</em>（<em>p</em> ≤ <em>q</em>），约定 <em>p</em> = P⁻(<em>n</em>)（最小素因子）作为规范 core：</p>
+      $$G(n) = \rho(p) + \rho(q) - \rho(n-1) + 1$$
+      <p><em>j</em>(<em>n</em>) &gt; 0 当且仅当 <em>G</em>(<em>n</em>) &lt; 0。不涉及 h₀。</p>
+
+      <h3>2.2 G 的离散性</h3>
+      <p><strong>数值观察 1。</strong> G 是整数值。在 [10⁷, 10⁸)：</p>
+      <table>
+        <thead><tr><th>G</th><th>−1</th><th>0</th><th>+1</th><th>+2</th><th>其余</th></tr></thead>
+        <tbody>
+          <tr><td>占比</td><td>18.5%</td><td>30.1%</td><td>24.2%</td><td>14.4%</td><td>12.8%</td></tr>
+        </tbody>
+      </table>
+      <p>四个值占 87%。中位数 = 0，均值 = +0.53。</p>
+
+      <h3>2.3 γ₂ 独立确认</h3>
+      <div class="milestone-box">
+        <p>$$q_2(N) \sim 0.877\cdot(\ln N)^{-0.453}, \quad R^2 = 0.996$$</p>
+        <p>14 个点（N = 10³ 到 10⁸）。与 Paper XXXI 的 γ₂ = 0.449 吻合。</p>
+      </div>
+
+      <h3>2.4 平衡半素数的快速衰减</h3>
+      <p>Ω=2 层并非单一群体。限定 <em>q</em>/<em>p</em> &lt; 10 的"平衡半素数"（<em>p</em> 与 <em>q</em> 量级相近）呈现完全不同的行为。</p>
+      <p>理论：对 <em>p</em> ≈ <em>q</em> ≈ √<em>n</em>，ρ(<em>p</em>) + ρ(<em>q</em>) ≈ 2h₀·ln(√<em>n</em>) = h₀·ln <em>n</em> ≈ ρ(<em>n</em>−1)，因此 <em>G</em>(<em>n</em>) ≈ +1——结构性正值。</p>
+      <p>[10⁷, 10⁸) 的平衡半素数：E[<em>G</em>] = +1.23, P(<em>j</em>&gt;0) = 0.107。</p>
+      $$q_2^{\text{bal}}(N) \sim 3.03\cdot(\ln N)^{-1.14}, \quad R^2 = 0.992$$
+      <div class="milestone-box">
+        <p>γ<sub>bal</sub> = 1.14——比整层的 γ₂ = 0.45 快 2.5 倍。<strong>这直接证明 γ₂ 是快速衰减的平衡子群与缓慢衰减/冻结的不平衡子群的混合物。</strong></p>
+      </div>
+
+      <h2>§3 素数惩罚</h2>
+
+      <p>Block 3b 数据（N = 10⁸）：</p>
+      <table>
+        <thead><tr><th>类别</th><th>E[R(·)]</th></tr></thead>
+        <tbody>
+          <tr><td>一般整数 <em>n</em> ∈ [10⁷, 10⁸)</td><td>2.76</td></tr>
+          <tr><td>素数 <em>p</em> ∈ [10⁷, 10⁸)</td><td>4.57</td></tr>
+        </tbody>
+      </table>
+      <div class="thesis-box">
+        <p><strong>素数惩罚：</strong>差距 ≈ 1.8。素数是 DP 中的纯 additive 注入点：ρ(<em>p</em>) = ρ(<em>p</em>−1) + 1。素数不经过乘法压缩——而合数有多条乘法路径可以压缩 ρ。因此素数的 ρ 相对于其对数尺度偏高。</p>
+      </div>
+      <p>对 <em>n</em>=2<em>q</em>：E[diff₂] ≈ h₀·ln 2 − Δ₂ ≈ 2.48 − 0.65 ≈ 1.83，其中 Δ₂ ≈ 0.65 是 <em>p</em>=2 family 的 prime-conditioned 修正（进入 diff 公式时的净效应），不同于 §3 的无条件差距 1.8。</p>
+
+      <h2>§4 n=2q 的离散锁定</h2>
+
+      <h3>4.1 阈值</h3>
+      <p>因为 ρ(2) = 1：<em>G</em> = 2 + ρ(<em>q</em>) − ρ(2<em>q</em>−1)。故 <em>j</em>&gt;0 当且仅当 diff ≥ 3。</p>
+
+      <h3>4.2 diff 分布</h3>
+      <p><strong>数值观察 2。</strong> [10⁷, 10⁸)，265 万个素数 <em>q</em>：</p>
+      <table>
+        <thead><tr><th>diff</th><th>+1</th><th><strong>+2</strong></th><th>+3</th><th>其余</th></tr></thead>
+        <tbody>
+          <tr><td>占比</td><td>21.6%</td><td><strong>49.5%</strong></td><td>21.1%</td><td>7.8%</td></tr>
+        </tbody>
+      </table>
+      <p>三个值占 92%。P(<em>j</em>&gt;0) = P(diff≥3) ≈ 21.1%（其中 diff=3 贡献绝大部分，更高 tail 极小）。</p>
+
+      <h3>4.3 五个 Decade 确认冻结</h3>
+      <table>
+        <thead><tr><th>Decade</th><th>E[diff]</th><th>P(j&gt;0)</th></tr></thead>
+        <tbody>
+          <tr><td>[10³, 10⁴)</td><td>1.843</td><td>0.195</td></tr>
+          <tr><td>[10⁵, 10⁶)</td><td>1.840</td><td>0.209</td></tr>
+          <tr><td>[10⁷, 10⁸)</td><td>1.829</td><td><strong>0.211</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p>P(<em>j</em>&gt;0) ≈ 0.211 五个 decade 完全冻结。在当前可见尺度上，<em>p</em>=2 是 Ω=2 层中唯一没有显示明确下行趋势的 prime-core family。</p>
+      </div>
+
+      <h2>§5 Prime-Core Profile</h2>
+
+      <h3>5.1 定义</h3>
+      <p>对每个素数 <em>p</em>，规范分解 <em>n</em> = <em>pq</em>（<em>q</em> ≥ <em>p</em> 素数，<em>p</em> = P⁻(<em>n</em>)），定义：</p>
+      $$c_p(N) = P(j>0 \mid n=pq,\; pq \leq N)$$
+      $$\text{threshold}_p = \rho(p)+1, \quad \text{margin}_p = E[\text{diff}_p] - \text{threshold}_p$$
+      <p>当 <em>q</em>=<em>p</em> 时 <em>n</em>=<em>p</em>²——这些 prime square 渐近 negligible（&lt;0.01%），排除。</p>
+
+      <h3>5.2 95 个素数的 Profile（选录）</h3>
+      <p><strong>数值观察 3。</strong> N = 10⁸：</p>
+      <table>
+        <thead><tr><th>p</th><th>ρ(p)</th><th>thr</th><th>E[diff]</th><th>margin</th><th>c<sub>p</sub></th><th>P⁺(p−1)</th><th>p−1</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>1</td><td>2</td><td>1.83</td><td>−0.17</td><td>0.211</td><td>1</td><td>1</td></tr>
+          <tr><td>3</td><td>2</td><td>3</td><td>3.52</td><td>+0.52</td><td>0.543</td><td>2</td><td>2</td></tr>
+          <tr><td>5</td><td>4</td><td>5</td><td>5.33</td><td>+0.33</td><td>0.471</td><td>2</td><td>4=2²</td></tr>
+          <tr><td>7</td><td>6</td><td>7</td><td>6.58</td><td>−0.42</td><td>0.224</td><td>3</td><td>6=2·3</td></tr>
+          <tr><td>23</td><td>12</td><td>13</td><td>11.16</td><td>−1.84</td><td>0.035</td><td>11</td><td>22=2·11</td></tr>
+          <tr><td>59</td><td>16</td><td>17</td><td>14.80</td><td>−2.20</td><td>0.019</td><td>29</td><td>58=2·29</td></tr>
+          <tr><td>109</td><td>16</td><td>17</td><td>17.19</td><td>+0.19</td><td>0.381</td><td>3</td><td>108=2²·3³</td></tr>
+          <tr><td>179</td><td>21</td><td>22</td><td>19.11</td><td>−2.89</td><td>0.005</td><td>89</td><td>178=2·89</td></tr>
+          <tr><td>193</td><td>18</td><td>19</td><td>19.41</td><td>+0.41</td><td>0.471</td><td>3</td><td>192=2⁶·3</td></tr>
+        </tbody>
+      </table>
+      <p>c<sub>p</sub> 范围：[0.005, 0.543]。完整 95 点 profile。</p>
+
+      <h3>5.3 c<sub>p</sub> 由 Margin 主导</h3>
+      <div class="milestone-box">
+        <p><strong>Corr(margin, c<sub>p</sub>) = +0.917。</strong> margin 是第一主导变量。局部离散分布的宽度和偏斜贡献二阶修正。</p>
+      </div>
+
+      <h3>5.4 ρ(p) 的偏差由 p−1 的平滑度驱动</h3>
+      <div class="thesis-box">
+        <p><strong>数值观察 4。</strong></p>
+        <p><strong>Corr(ln P⁺(<em>p</em>−1), ρ(<em>p</em>)/h₀ ln <em>p</em>) = +0.683</strong></p>
+        <p><strong>Corr(ln P⁺(<em>p</em>−1), c<sub>p</sub>) = −0.714</strong></p>
+        <p>高相关支持的解释链（非严格因果证明）：<em>p</em>−1 平滑 → ρ(<em>p</em>−1) 低 → ρ(<em>p</em>) = ρ(<em>p</em>−1)+1 低 → threshold 低 → margin 高 → c<sub>p</sub> 高。<em>p</em>−1 粗糙 → 反向。</p>
+        <p>极端案例：<em>p</em>=193（<em>p</em>−1=192=2⁶·3，P⁺=3）→ c<sub>p</sub>=0.471。<em>p</em>=179（<em>p</em>−1=178=2·89，P⁺=89）→ c<sub>p</sub>=0.005。</p>
+      </div>
+
+      <h3>5.5 当前范围内无 Monotone Drift</h3>
+      <p>在当前可见范围内（<em>p</em> ≤ 499），ρ(<em>p</em>)/(h₀·ln <em>p</em>) 在 0.95–1.13 之间振荡。没有观察到支持 monotone scissors picture 的系统性 drift。由于 <em>p</em>−1 的最大素因子在解析数论中已知不收敛，c<sub>p</sub> 不太可能因简单的"h₀·ln <em>p</em> 远超 ρ(<em>p</em>)"机制而系统性趋零——但不能排除 c<sub>p</sub> 的 harmonic 平均因更精细的分布效应而缓慢下降。</p>
+
+      <h2>§6 c<sub>p</sub>(N) 的逐 Decade 衰减</h2>
+
+      <p><strong>数值观察 5。</strong> 逐 decade 的 c<sub>p</sub>：</p>
+      <table>
+        <thead><tr><th>p</th><th>c<sub>p</sub>(10³)</th><th>c<sub>p</sub>(10⁵)</th><th>c<sub>p</sub>(10⁷)</th><th>趋势</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.195</td><td>0.209</td><td>0.211</td><td>冻结</td></tr>
+          <tr><td>3</td><td>0.558</td><td>0.551</td><td>0.542</td><td>缓降</td></tr>
+          <tr><td>5</td><td>0.545</td><td>0.486</td><td>0.470</td><td>明确下降</td></tr>
+          <tr><td>7</td><td>0.267</td><td>0.239</td><td>0.223</td><td>明确下降</td></tr>
+          <tr><td>13</td><td>0.339</td><td>0.333</td><td>0.308</td><td>缓降</td></tr>
+          <tr><td>109</td><td>0.465</td><td>0.430</td><td>0.377</td><td>快速下降</td></tr>
+          <tr><td>193</td><td>0.642</td><td>0.521</td><td>0.467</td><td>快速下降</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p><strong>除 <em>p</em>=2 冻结外，几乎所有 <em>p</em> ≥ 3 的 c<sub>p</sub>(<em>N</em>) 都在下降。</strong>下降率从 2%/decade（<em>p</em>=3）到 15%/decade（<em>p</em>=193）不等。c<sub>p</sub>(<em>N</em>) 不是精确的算术常数——是 <em>N</em>-dependent 的缓慢衰减量。<strong>当前数据无法区分"c<sub>p</sub> → 常数 &gt; 0"和"c<sub>p</sub> → 0 极慢"。</strong>这是 H' 的核心悬念。</p>
+      </div>
+
+      <h2>§7 H' 的 Harmonic Cesàro 平均判据</h2>
+
+      <h3>7.1 Ω=2 层的规范分解</h3>
+      <p>每个 Ω=2 合数 <em>n</em>=<em>pq</em>（<em>p</em>=P⁻(<em>n</em>), <em>q</em>=P⁺(<em>n</em>), <em>q</em>≥<em>p</em>）唯一对应一个 prime-core <em>p</em>。Prime squares（<em>n</em>=<em>p</em>²）贡献 &lt;0.01%，渐近 negligible。排除后，在 squarefree semiprimes 上：</p>
+      $$q_2^{(\text{sqf})}(N) = \sum_{p} w_p(N)\cdot c_p(N)$$
+      <p>其中 w<sub>p</sub>(<em>N</em>) ≈ (1/<em>p</em>)/Σ(1/ℓ) 渐近。由于 prime squares 的贡献 → 0，q₂(N) 与 \(q_2^{(\text{sqf})}(N)\) 渐近行为相同。</p>
+
+      <h3>7.2 Harmonic Cesàro 平均</h3>
+      <div class="thesis-box">
+        <p>q₂ → 0 的正确判据是 harmonic Cesàro 平均趋零：</p>
+        <p>$$\bar{c}_h(N) := \frac{\displaystyle\sum_{p \leq \sqrt{N}} c_p(N)/p}{\displaystyle\sum_{p \leq \sqrt{N}} 1/p} \to 0$$</p>
+        <p>这不等价于"Σ c<sub>p</sub>/<em>p</em> 收敛"——后者只是充分条件。如果 c<sub>p</sub>(<em>N</em>) ~ C/ln ln <em>p</em>，Σ c<sub>p</sub>/<em>p</em> 仍然发散但 c̄<sub>h</sub> → 0。</p>
+      </div>
+
+      <h3>7.3 固定 N 下的 Partial Profile</h3>
+      <p><strong>数值观察 6。</strong> H(<em>P</em>;<em>N</em>) 随截断上限 <em>P</em> 的变化（固定 <em>N</em>=10⁸）：</p>
+      <table>
+        <thead><tr><th>P</th><th>H(P; N)</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td>0.351</td></tr>
+          <tr><td>50</td><td>0.305</td></tr>
+          <tr><td>100</td><td>0.291</td></tr>
+          <tr><td>200</td><td>0.281</td></tr>
+          <tr><td>500</td><td><strong>0.270</strong></td></tr>
+        </tbody>
+      </table>
+      <p>H 从 0.35 缓慢下降到 0.27。这是在固定 <em>N</em> 下将更多 prime-core 纳入时 profile 的形状——不是 c̄<sub>h</sub>(<em>N</em>) 随 <em>N</em> 的渐近行为。真正的 H' 判据需要理解联合 profile (<em>p</em>, <em>N</em>) ↦ c<sub>p</sub>(<em>N</em>) 的全局行为。</p>
+
+      <h3>7.4 对 H' 的意义——两变量问题</h3>
+      <p>c̄<sub>h</sub>(<em>N</em>) 同时依赖于（a）每个固定 <em>p</em> 的 c<sub>p</sub>(<em>N</em>) 是否随 <em>N</em> 衰减，和（b）截断上限 √<em>N</em> 扩大时新纳入的大 <em>p</em> 的 c<sub>p</sub> 值。</p>
+      <p>§6 数据：几乎所有 <em>p</em> ≥ 3 的 c<sub>p</sub>(<em>N</em>) 在逐 decade 下降（<em>N</em> 方向有利）。§7.3 数据：H(<em>P</em>; 10⁸) 随 <em>P</em> 也在下降（<em>P</em> 方向有利）。但衰减率都太小，无法确认是渐近真实还是有限尺度效应。</p>
+      <div class="warning-box">
+        <p><strong>当前数据无法判定 H' 在 Ω=2 的真伪。</strong>这是一个关于 DP 递推深层结构的开放问题。</p>
+      </div>
+
+      <h3>7.5 加权和部分验证</h3>
+      <p>Block 7b：Σ w<sub>p</sub>·c<sub>p</sub> (<em>p</em> ≤ 23) = 0.174。实际 q₂ = 0.232。覆盖 54%，比值 = 0.75。加权和方向正确——<em>p</em> &gt; 23 的贡献补上后应接近闭合。</p>
+
+      <h2>§8 Ω=3 层的 Fixed-Core 结构</h2>
+
+      <h3>8.1 框架</h3>
+      <p>对 Ω=3 层，规范 core <em>m</em>（Ω(<em>m</em>)=2，squarefree），<em>n</em> = <em>mq</em>（<em>q</em> = P⁺(<em>n</em>)）：</p>
+      $$G_m(q) = \rho(m) + \rho(q) - \rho(mq-1) + 1, \quad j>0 \;\text{当且仅当}\; \text{diff}_m \geq \rho(m)+2$$
+      <p>注意：当前只覆盖 squarefree core <em>m</em> = <em>p</em>₁<em>p</em>₂。squareful families（如 <em>n</em>=<em>p</em>²<em>q</em>）未纳入——渐近上 squarefree 占主导，但完整分解需要进一步工作。</p>
+
+      <h3>8.2 30 个 Core 的 Profile（选录）</h3>
+      <p><strong>数值观察 7。</strong> N = 10⁸：</p>
+      <table>
+        <thead><tr><th>m</th><th>因子</th><th>ρ(m)</th><th>thr</th><th>E[diff]</th><th>margin</th><th>c<sub>m</sub></th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td>2·3</td><td>5</td><td>6</td><td>6.37</td><td>+0.37</td><td>0.457</td></tr>
+          <tr><td>10</td><td>2·5</td><td>7</td><td>8</td><td>8.25</td><td>+0.25</td><td>0.395</td></tr>
+          <tr><td>14</td><td>2·7</td><td>9</td><td>10</td><td>9.41</td><td>−0.59</td><td>0.166</td></tr>
+          <tr><td>15</td><td>3·5</td><td>8</td><td>9</td><td>9.92</td><td>+0.92</td><td>0.645</td></tr>
+          <tr><td>22</td><td>2·11</td><td>11</td><td>12</td><td>11.14</td><td>−0.86</td><td>0.110</td></tr>
+          <tr><td>39</td><td>3·13</td><td>12</td><td>13</td><td>13.51</td><td>+0.51</td><td>0.508</td></tr>
+          <tr><td>77</td><td>7·11</td><td>16</td><td>17</td><td>15.90</td><td>−1.10</td><td>0.082</td></tr>
+          <tr><td>82</td><td>2·41</td><td>15</td><td>16</td><td>16.23</td><td>+0.23</td><td>0.401</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p>同样的 margin 驱动结构。c<sub>m</sub> 范围 [0.063, 0.645]。<strong>Fixed-core 锁定是更普遍的现象。</strong>Paper XXXI 的 γ<sub>k</sub> 是快速衰减子群 + 缓慢衰减 prime-core + 权重漂移三种叠加效应的观察。</p>
+      </div>
+
+      <h2>§9 对 Paper XXXI 的修正</h2>
+
+      <h3>9.1 γ<sub>k</sub> 是混合效应</h3>
+      <p>Paper XXXI 的 γ<sub>k</sub> 是 fixed-core families 的有效叠加指数。真正的本征量是每个 family 的 c<sub>m</sub>(<em>N</em>) 和权重 w<sub>m</sub>(<em>N</em>)。</p>
+
+      <h3>9.2 Model A vs Model B</h3>
+      <p>Paper XXXI 的 Model A（q<sub>k</sub> ~ (ln <em>N</em>)<sup>−γ<sub>k</sub></sup>）在有限尺度上的"胜出"反映了混合的衰减阶段——快衰减子群主导。渐近地，一旦快衰减清零，底板暴露——但底板本身可能也在缓慢衰减（§6），所以 Model B（q<sub>k</sub> → 常数 &gt; 0）也不一定最终胜出。真实行为可能是介于两者之间的极慢衰减。</p>
+
+      <h2>§10 讨论</h2>
+
+      <h3>10.1 核心贡献</h3>
+      <p>(1) h₀-free gap 公式 + γ₂ = 0.453 独立确认。(2) 素数惩罚与 family-specific Δ₂ 的发现——解释 E[diff₂] = 1.83。(3) <em>n</em>=2<em>q</em> 离散锁定（c₂ ≈ 0.211 冻结）。(4) 95 个素数的 prime-core profile：c<sub>p</sub> 由 margin 主导（Corr = 0.917）。(5) ρ(<em>p</em>) 偏差 ↔ P⁺(<em>p</em>−1) 平滑度的强相关（Corr = −0.714）。(6) c<sub>p</sub>(<em>N</em>) 对 <em>p</em>≥3 的逐 decade 衰减——非冻结常数。(7) H' 判据：harmonic Cesàro 平均 c̄<sub>h</sub>(<em>N</em>) → 0？(8) Ω=3 的 30 个 core 展示同样的 margin 驱动结构。(9) Paper XXXI 的 γ<sub>k</sub> 是混合效应。</p>
+
+      <h3>10.2 开放问题</h3>
+      <p>(1) c<sub>p</sub>(<em>N</em>) 的衰减是否是真实的渐近行为？还是有限尺度效应？(2) c̄<sub>h</sub>(<em>N</em>) → 0 还是 c̄<sub>h</sub>(<em>N</em>) → c̄ &gt; 0？——H' 在 Ω=2 的最终判据。(3) 更高 Ω 层的 fixed-core profile 是否有类似结构和衰减？(4) <em>n</em>=2<em>q</em> 的冻结是否可以从 diff 的整数值局部极限定理解析证明？(5) ρ(<em>p</em>) 的逐素数波动——是否与 Artin 猜想或其他深层算术结构有联系？</p>
+
+      <h3>10.3 致谢</h3>
+      <p>ChatGPT 贡献了 partition bug 修正、Δ<sub>p</sub> 的 family-specific 定义、harmonic Cesàro 平均作为正确判据、规范 core 分解的明确化、以及 local limit law 作为解析目标。Gemini 贡献了素数惩罚的发现、<em>p</em>−1 平滑度 → ρ(<em>p</em>) 偏差的因果链假说、以及 fixed-core family 的通用化框架。Grok 保证了与前 31 篇的一致性。Claude 编写了全部数值计算脚本（Block 1–10）并起草了 working notes v1–v3。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <h2>§11 数据来源与可复现性</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th><th>§引用</th></tr></thead>
+        <tbody>
+          <tr><td>p32_block123.py</td><td>R_sum 分布 + 平衡度 + R 统计</td><td>§2–§3</td></tr>
+          <tr><td>p32_block45.py</td><td>G 分布 + γ₂ + n=2q</td><td>§2–§4</td></tr>
+          <tr><td>p32_block5b_fix.py</td><td>n=2q 阈值修正 + per-decade 冻结</td><td>§4</td></tr>
+          <tr><td>p32_block67.py</td><td>Prime-core profile (p≤23) + Ω=3 + 加权和</td><td>§5, §7, §8</td></tr>
+          <tr><td>p32_block8.py</td><td>扩展 profile (p≤200, 46 primes)</td><td>§5</td></tr>
+          <tr><td>p32_block9.py</td><td>p−1 平滑度 vs ρ(p) 偏差 (p≤200)</td><td>§5.4</td></tr>
+          <tr><td>p32_block10.py</td><td>Harmonic 平均 (p≤499, 95 primes) + per-decade + Ω=3 扩展</td><td>§6–§8</td></tr>
+        </tbody>
+      </table>
+      <p>所有脚本 sanity check 通过：ρ<sub>E</sub>(10⁷) = 58, ρ<sub>E</sub>(10⁸) = 66。</p>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXI. H. Qin. Paper XXXI DOI: 10.5281/zenodo.19104860.</p>
+      <p>[2] G. H. Hardy, S. Ramanujan (1917). <em>Quart. J. Math.</em>, 48:76–92.</p>
+      <p>[3] K. Cordwell et al. (2018). <em>J. Number Theory</em>, 189:17–34.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho31.html">← 论文 XXXI：逐层瓶颈地图</a>
+        &nbsp;|&nbsp;
+        论文 XXXIII →
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
