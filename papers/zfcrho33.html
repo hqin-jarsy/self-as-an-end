@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixed-Core Margin Drift and Harmonic Closure of H' — ZFCρ Paper XXXIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXIII: c₂≈0.211 freeze confirmed at N=10⁹ (P(d≥4)=0 exactly). c̄_h(N) monotone 0.373→0.223 (10³→10¹⁰, Kendall τ=−1). Margin Threshold Lemma. M_p≈1.22+0.53·ln ln p. m=240 crosses watershed at N=10¹⁰. Route B (Lindley): c_p~(ln p)^{−θα}, S(N) converges.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, discrete locking, prime-core margin, harmonic Cesàro average, Margin Threshold Lemma, harmonic closure">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fixed-Core Margin Drift and Harmonic Closure of H' at the Ω=2 Layer">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho33.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Fixed-Core Margin Drift and Harmonic Closure of H' at the Ω=2 Layer",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho33.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19124485"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "discrete locking", "prime-core margin",
+      "harmonic Cesàro average", "Margin Threshold Lemma"
+    ],
+    "abstract": "c₂≈0.211 freeze confirmed at N=10⁹; P(d≥4)=0 exactly across 26M semiprimes. c̄_h(N) monotone 0.373→0.223 (10³→10¹⁰, Kendall τ=−1). Margin Threshold Lemma: c_p≥(1−M_{p,N})⁺/(B_{p,N}+1). M_p≈1.22+0.53·ln ln p (intrinsic drift). m=240 band-average M_p crosses 1 at N=10¹⁰. Route B (Lindley+Local Lipschitz): c_p~(ln p)^{−θα}, S(N) converges, c̄_h→0. Data leans toward H' holding at Ω=2.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho33.html">
+  <meta name="citation_title" content="Fixed-Core Margin Drift and Harmonic Closure of H' at the Ω=2 Layer">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19124485">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho33.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/#papers">Papers</a>
+  </nav>
+</header>
+
+<main class="paper-container">
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div class="lang-content active" id="content-en">
+    <div class="paper-header">
+      <div class="paper-series">ZFC-ρ Series · Paper XXXIII</div>
+      <h1 class="paper-title">Fixed-Core Margin Drift and Harmonic Closure of H' at the Ω=2 Layer</h1>
+      <div class="paper-authors">Han Qin &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19124485" target="_blank" rel="noopener">
+        📄 DOI: 10.5281/zenodo.19124485
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Using ρ<sub>E</sub> tables at N=10⁹ and N=10¹⁰ (operator-count convention), we perform a complete dissection of the Ω=2 layer's prime-core structure.</p>
+        <p><strong>(1)</strong> The freeze c₂(N) ≈ 0.211 is confirmed at N=10⁹ (26 million semiprimes, 11 half-decade bins, P(<em>j</em>&gt;0) fluctuating in 0.2103–0.2117). Across all 26,355,866 instances of <em>n</em>=2<em>q</em>, the maximum value of diff is 3, so P(<em>j</em>&gt;0) = P(diff=3) holds exactly.</p>
+        <p><strong>(2)</strong> E[diff] is consistent with a positive floor (c* ∈ [1.74, 1.81]), but statistically indistinguishable from extremely slow floorless decay (pure power law, γ=0.016; AIC gap 0.09). The freeze of P(diff=3) is protected by a threshold boundary effect: mass transfers unidirectionally between d=1 and d=2 without penetrating the d=3 boundary.</p>
+        <p><strong>(3)</strong> c<sub>p</sub>(N) decreases for all 24 tested primes p ≥ 3 over 10⁸→10⁹ (24/24). c̄<sub>h</sub>(N) decreases monotonically from 0.373 (N=10³) to 0.223 (N=10¹⁰).</p>
+        <p><strong>(4) Margin Threshold Lemma:</strong> c<sub>p</sub>(N) ≥ (1 − M<sub>p,N</sub>)⁺ / (B<sub>p,N</sub> + 1). M<sub>p</sub> &lt; 1 is the precise watershed for the lower-bound route (proving c₀ &gt; 0).</p>
+        <p><strong>(5)</strong> Data at N=10¹⁰ (9,588 primes, p ≤ 100,000): band-average M<sub>p</sub> of m=240 crosses 1 at p ∈ [50000, 100000) (0.85→1.09). All tested templates show rising M<sub>p</sub>, with diagnostic fit M<sub>p</sub> ≈ 1.22 + 0.53·ln ln p consistent across 10⁹ and 10¹⁰. The average witness for the lower-bound route is failing.</p>
+        <p><strong>(6)</strong> A phase-space squeeze test rules out the squeeze hypothesis and confirms M<sub>p</sub> drift is intrinsic. E[R(n)] rises with each decade (~0.6–0.7/decade), not supporting the bounded-R premise underlying the c₀ &gt; 0 argument.</p>
+        <p><strong>(7)</strong> If the Lindley exponential tail holds and M<sub>p</sub> ~ α·ln ln p (α &gt; 0), then c<sub>p</sub> ~ (ln p)<sup>−θα</sup> and S(N) converges. The data overall leans toward H' holding at the Ω=2 layer.</p>
+        <p><strong>Keywords:</strong> integer complexity, discrete locking, prime-core margin, harmonic Cesàro average, Margin Threshold Lemma</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXII reduced the H' criterion at the Ω=2 layer to the harmonic Cesàro average c̄<sub>h</sub>(N) → 0, and reported the freeze c₂ ≈ 0.211 and the per-decade decline of c<sub>p</sub>(N) for p ≥ 3. The present paper has four goals: (a) extend verification with N=10⁹ and 10¹⁰ data; (b) establish a complete drift/stability picture for the p=2 family; (c) directly measure c̄<sub>h</sub>(N) over eight decades; (d) establish the Margin Threshold Lemma and test the viability of the lower-bound route.</p>
+
+      <h3>1.2 Methods</h3>
+      <p>The ρ<sub>E</sub> table is computed via a C implementation of the multiplicative forward-propagation DP. N=10⁹ runs locally (~5 min); N=10¹⁰ runs on a GCP e2-highmem-8 instance (64 GB RAM, ~38 min). All analysis scripts read the precomputed binary ρ table.</p>
+
+      <h3>1.3 Conventions</h3>
+      <p>ρ<sub>E</sub>(n) counts operators (number of + and × operations): ρ(1)=0, ρ(2)=1. The recurrence is ρ(n) = min(ρ(n−1)+1, min<sub>a·b=n, a,b≥2</sub> ρ(a)+ρ(b)+2). For n=pq (p=P⁻(n)), we define diff<sub>p</sub>(q) = ρ(pq−1) − ρ(q), τ<sub>p</sub> = ρ(p)+2, and j&gt;0 iff diff<sub>p</sub> ≥ τ<sub>p</sub>. For p=2: since ρ(2)=1, the threshold is τ₂ = 3, so j&gt;0 iff diff₂ ≥ 3.</p>
+      <p class="note-box">Sanity checks: ρ(10⁷)=58, ρ(10⁸)=66, ρ(10⁹)=75.</p>
+
+      <h2>2. Freeze Confirmation for c₂</h2>
+
+      <h3>2.1 Decade Statistics</h3>
+      <table>
+        <thead><tr><th>Decade</th><th>#primes</th><th>E[diff]</th><th>P(d=1)</th><th>P(d=2)</th><th>P(d=3)</th><th>P(d≥4)</th><th>P(j&gt;0)</th></tr></thead>
+        <tbody>
+          <tr><td>[10², 10³)</td><td>143</td><td>1.881</td><td>0.203</td><td>0.532</td><td>0.210</td><td>0</td><td>0.210</td></tr>
+          <tr><td>[10³, 10⁴)</td><td>1,061</td><td>1.848</td><td>0.183</td><td>0.534</td><td>0.203</td><td>0</td><td>0.203</td></tr>
+          <tr><td>[10⁴, 10⁵)</td><td>8,363</td><td>1.844</td><td>0.215</td><td>0.504</td><td>0.210</td><td>0</td><td>0.210</td></tr>
+          <tr><td>[10⁵, 10⁶)</td><td>68,906</td><td>1.836</td><td>0.211</td><td>0.504</td><td>0.209</td><td>0</td><td>0.209</td></tr>
+          <tr><td>[10⁶, 10⁷)</td><td>586,081</td><td>1.833</td><td>0.214</td><td>0.498</td><td>0.212</td><td>0</td><td>0.212</td></tr>
+          <tr><td>[10⁷, 10⁸)</td><td>5,096,876</td><td>1.827</td><td>0.217</td><td>0.495</td><td>0.211</td><td>0</td><td>0.211</td></tr>
+          <tr><td>[10⁸, 5×10⁸)</td><td>20,594,412</td><td>1.824</td><td>0.217</td><td>0.494</td><td>0.211</td><td>0</td><td>0.211</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p>P(d≥4) is exactly zero in every decade. Hence <strong>P(j&gt;0) = P(diff=3) is an exact equality.</strong></p>
+      </div>
+
+      <h3>2.2 Half-Decade Evolution</h3>
+      <p>Across 11 half-decade bins (log₁₀ q ∈ [2.5, 8.75]), P(j&gt;0) fluctuates within 0.2103–0.2117. In the last three bins (21.6 million samples total), the statistical error is ~0.0001, and the inter-decade variation is of comparable magnitude.</p>
+
+      <h3>2.3 Dual Selection Mechanism</h3>
+      <p>The event j&gt;0 is driven jointly by R(q) being unusually low (~62% contribution) and R(2q−1) being unusually high (~38%). P(2q−1 prime | j&gt;0) = 0.131 vs P(2q−1 prime | j=0) = 0.051. The microscopic basis of the freeze is that the joint distribution of (smoothness of q−1) and (factor structure of 2q−1) is asymptotically stable on the logarithmic scale.</p>
+
+      <h2>3. Asymptotic Behavior of E[diff]</h2>
+
+      <h3>3.1 Five-Model Fit</h3>
+      <p>Twenty-one measurement points at 0.25-decade resolution (log₁₀ q ∈ [3.5, 8.75]):</p>
+      <table>
+        <thead><tr><th>Model</th><th>c*</th><th>AIC</th></tr></thead>
+        <tbody>
+          <tr><td>c* + A/ln(ln q)</td><td>1.743 ± 0.008</td><td>14.24</td></tr>
+          <tr><td>A·(ln q)<sup>−γ</sup></td><td>(no floor)</td><td>14.33</td></tr>
+          <tr><td>c* + A/ln(q)</td><td>1.798 ± 0.003</td><td>14.42</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p>The best model and the floorless pure power law differ by only <strong>0.09 in AIC — statistically indistinguishable.</strong> Whether E[diff] converges to a positive constant or decays extremely slowly to zero remains open at the current scale.</p>
+      </div>
+
+      <h3>3.2 Threshold Boundary of diff=3</h3>
+      <p>The mass-transfer rate from P(d=2) to P(d=1) is −0.004/decade, while the slope of P(d=3) is only +0.0002/decade (1/17th of the P(d=2) slope). The potential energy of the mean's descent is entirely absorbed by the redistribution between d=2 and d=1, and cannot penetrate the diff=3 boundary.</p>
+
+      <h2>4. Confirmation of c<sub>p</sub>(N) Decline and Monotone Decrease of c̄<sub>h</sub>(N)</h2>
+
+      <h3>4.1 Universal Decline of c<sub>p</sub>(N)</h3>
+      <p>All 24 tested primes p ∈ {3, 5, 7, 11, 13, 23, 29, 31, 37, 41, 43, 59, 67, 89, 97, 109, 127, 131, 179, 181, 191, 193, 197, 199} show declining c<sub>p</sub>(N) over the 10⁸→10⁹ interval (24/24), with decelerating rates (|Δ(8→9)| &lt; |Δ(7→8)| for all 24).</p>
+
+      <h3>4.2 Eight Decades of c̄<sub>h</sub>(N)</h3>
+      <p>Define S(N) = Σ<sub>p≤√N</sub> c<sub>p</sub>(N)/p, D(N) = Σ<sub>p≤√N</sub> 1/p, and c̄<sub>h</sub>(N) = S(N)/D(N).</p>
+      <table>
+        <thead><tr><th>N</th><th>#primes</th><th>S(N)</th><th>D(N)</th><th>c̄<sub>h</sub>(N)</th></tr></thead>
+        <tbody>
+          <tr><td>10³</td><td>6</td><td>0.502</td><td>1.344</td><td>0.373</td></tr>
+          <tr><td>10⁴</td><td>21</td><td>0.570</td><td>1.757</td><td>0.324</td></tr>
+          <tr><td>10⁵</td><td>61</td><td>0.602</td><td>2.009</td><td>0.300</td></tr>
+          <tr><td>10⁶</td><td>163</td><td>0.606</td><td>2.193</td><td>0.276</td></tr>
+          <tr><td>10⁷</td><td>443</td><td>0.609</td><td>2.348</td><td>0.259</td></tr>
+          <tr><td>10⁸</td><td>1,225</td><td>0.608</td><td>2.483</td><td>0.245</td></tr>
+          <tr><td>10⁹</td><td>3,397</td><td>0.606</td><td>2.600</td><td>0.233</td></tr>
+          <tr><td>10¹⁰</td><td>9,588</td><td>0.603</td><td>2.705</td><td><strong>0.223</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>Kendall τ = −1.0 (perfect monotonicity).</strong> S(N) appears to stabilize near 0.603–0.609 after 10⁶. c̄<sub>h</sub>(N) is driven downward by the growing denominator D(N) ~ ln ln N.</p>
+      </div>
+
+      <h2>5. Margin Threshold Lemma</h2>
+
+      <h3>5.1 Definitions</h3>
+      <p>For a prime-core p and cutoff N, let X<sub>p,N</sub> = diff<sub>p</sub>(q) (integer-valued), τ<sub>p</sub> = ρ(p)+2, M<sub>p,N</sub> = τ<sub>p</sub> − E[X<sub>p,N</sub>] (margin), and B<sub>p,N</sub> = sup(X<sub>p,N</sub> − τ<sub>p</sub>)⁺ (overshoot).</p>
+
+      <h3>5.2 Lemma</h3>
+      <div class="thesis-box">
+        <p>$$c_p(N) \geq \frac{(1 - M_{p,N})^+}{B_{p,N} + 1}$$</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof.</strong> On the event {X &lt; τ<sub>p</sub>}, we have X ≤ τ<sub>p</sub> − 1 (integer values). On {X ≥ τ<sub>p</sub>}, we have X ≤ τ<sub>p</sub> + B<sub>p,N</sub>. Therefore:</p>
+        <p>E[X] ≤ (τ<sub>p</sub> − 1)(1 − c<sub>p</sub>) + (τ<sub>p</sub> + B<sub>p,N</sub>)c<sub>p</sub> = τ<sub>p</sub> − 1 + (B<sub>p,N</sub> + 1)c<sub>p</sub>.</p>
+        <p>Substituting E[X] = τ<sub>p</sub> − M<sub>p,N</sub> and rearranging gives c<sub>p</sub> ≥ (1 − M<sub>p,N</sub>)/(B<sub>p,N</sub> + 1). Taking the positive part completes the proof. ∎</p>
+      </div>
+
+      <h3>5.3 Corollary</h3>
+      <p>If on a template set of positive harmonic density there exist ε &gt; 0 and B₀ &lt; ∞ such that M<sub>p,N</sub> ≤ 1 − ε and B<sub>p,N</sub> ≤ B₀ uniformly, then lim inf c̄<sub>h</sub>(N) &gt; 0.</p>
+
+      <h3>5.4 Critical Remarks</h3>
+      <p><strong>(a)</strong> B<sub>2,10⁹</sub> = 0 is an empirical fact for p=2, not a general property. For general p, diff may exceed τ<sub>p</sub> (i.e., B<sub>p,N</sub> &gt; 0).</p>
+      <div class="warning-box">
+        <p><strong>(b)</strong> When M<sub>p,N</sub> ≥ 1, the lemma's lower bound is zero. Bounded margin alone does not guarantee c<sub>p</sub> &gt; 0. <strong>M<sub>p</sub> &lt; 1 is the precise watershed for the lower-bound route, but closing the argument also requires either overshoot control (B<sub>p,N</sub> ≤ B₀) or a near-threshold local law (P(X<sub>p,N</sub> = τ<sub>p</sub>) ≥ δ &gt; 0).</strong></p>
+      </div>
+
+      <h2>6. M<sub>p</sub> Drift and Phase-Space Squeeze Test</h2>
+
+      <h3>6.1 Overall M<sub>p</sub> Drift</h3>
+      <p>Band-averaged M<sub>p</sub> from 3,397 primes (10⁹) and 9,588 primes (10¹⁰):</p>
+      <table>
+        <thead><tr><th>p band</th><th>E[M<sub>p</sub>] (10⁹)</th><th>E[M<sub>p</sub>] (10¹⁰)</th></tr></thead>
+        <tbody>
+          <tr><td>[50, 100)</td><td>2.06</td><td>2.09</td></tr>
+          <tr><td>[500, 1000)</td><td>2.23</td><td>2.28</td></tr>
+          <tr><td>[5000, 10000)</td><td>2.31</td><td>2.39</td></tr>
+          <tr><td>[20000, 50000)</td><td>—</td><td>2.43</td></tr>
+          <tr><td>[50000, 100000)</td><td>—</td><td>2.47</td></tr>
+        </tbody>
+      </table>
+      <p>Diagnostic fit: M<sub>p</sub> ≈ 1.22 + 0.53·ln ln p (consistent across 10⁹ and 10¹⁰). The drift rate 0.53 is a current-scale diagnostic, not an identified asymptotic coefficient.</p>
+
+      <h3>6.2 Phase-Space Squeeze Test</h3>
+      <p><em>Hypothesis (Gemini):</em> M<sub>p</sub> drift is an artifact of q being forced smaller as p grows under the constraint pq ≤ N.</p>
+      <div class="milestone-box">
+        <p><em>Test:</em> Fixing q<sub>min</sub> ∈ {1000, 10000, 100000, 500000}, the dependence of E[ΔR] on p remains unchanged (~0.58). With q<sub>min</sub>=10000, the M<sub>p</sub> slope increases from 0.506 to 0.633. <strong>The squeeze is not the cause; the drift is intrinsic.</strong></p>
+      </div>
+
+      <h3>6.3 Growth of E[R(n)]</h3>
+      <p>Under the current normalization (h₀ = ρ(N)/ln N, which varies with N), E[R(n)] = E[ρ(n) − h₀·ln n] rises with each decade (~0.6–0.7/decade). The data does not support the hypothesis that R(n) is an O(1) stationary variable — this undermines the c₀ &gt; 0 argument based on bounded R(n). The gap E[R<sub>prime</sub>] − E[R<sub>general</sub>] also grows (0.01 → 0.27 across four decades), suggesting that the prime penalty expands with scale.</p>
+
+      <h2>7. Decisive Finding at 10¹⁰: M<sub>p</sub> Crosses 1</h2>
+
+      <h3>7.1 m=240 Crosses the Watershed</h3>
+      <table>
+        <thead><tr><th>p range</th><th>n</th><th>E[M<sub>p</sub>]</th><th>E[c<sub>p</sub>]</th></tr></thead>
+        <tbody>
+          <tr><td>[1000, 5000)</td><td>6</td><td>0.85</td><td>0.383</td></tr>
+          <tr><td>[5000, 20000)</td><td>24</td><td>0.87</td><td>0.382</td></tr>
+          <tr><td>[20000, 50000)</td><td>42</td><td>0.89</td><td>0.379</td></tr>
+          <tr><td>[50000, 100000)</td><td>64</td><td><strong>1.09</strong></td><td>0.306</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p>The band-average M<sub>p</sub> of m=240 crosses 1 in the largest p-band. The lemma no longer gives a positive lower bound on average in this band. (A band average crossing 1 does not imply every individual p has crossed 1, but the trend is clear.)</p>
+      </div>
+
+      <h3>7.2 m=720 Still Below 1 but Rising</h3>
+      <table>
+        <thead><tr><th>p range</th><th>n</th><th>E[M<sub>p</sub>]</th><th>E[c<sub>p</sub>]</th></tr></thead>
+        <tbody>
+          <tr><td>[5000, 20000)</td><td>8</td><td>0.47</td><td>0.527</td></tr>
+          <tr><td>[20000, 50000)</td><td>19</td><td>0.67</td><td>0.445</td></tr>
+          <tr><td>[50000, 100000)</td><td>20</td><td>0.74</td><td>0.412</td></tr>
+        </tbody>
+      </table>
+      <p>If the current rate continues, the crossing is estimated around p ~ 10⁶.</p>
+
+      <h3>7.3 Universal Rise Across Templates</h3>
+      <table>
+        <thead><tr><th>m</th><th>E[M<sub>p</sub>] (10⁹)</th><th>E[M<sub>p</sub>] (10¹⁰)</th></tr></thead>
+        <tbody>
+          <tr><td>24</td><td>1.61</td><td>1.74</td></tr>
+          <tr><td>120</td><td>1.24</td><td>1.36</td></tr>
+          <tr><td>240</td><td>0.78</td><td>0.98</td></tr>
+          <tr><td>720</td><td>0.53</td><td>0.66</td></tr>
+        </tbody>
+      </table>
+      <p>Without exception. The effective c̄(p≥500) declines from 0.099 (10⁹) to 0.090 (10¹⁰).</p>
+
+      <h2>8. Three Analytic Routes</h2>
+
+      <h3>8.1 Route A: Margin Dichotomy (ChatGPT)</h3>
+      <p>Original goal: prove M<sub>p</sub> ≤ 1−ε and B<sub>p,N</sub> ≤ B₀ on a positive-harmonic-density template set, yielding c₀ &gt; 0.</p>
+      <div class="warning-box">
+        <p><strong>Current status: The average witness is failing.</strong> m=240's band average has crossed 1; all templates show rising M<sub>p</sub>. The static local advantage from the recursion ρ(p) ≤ ρ(m) + ρ((p−1)/m) + 3 cannot offset the system-level growth of Δ<sub>penalty</sub> (see §8.3).</p>
+      </div>
+
+      <h3>8.2 Route B: Lindley Exponential Tail (Grok)</h3>
+      <div class="milestone-box">
+        <p>If diff<sub>p</sub> has Cramér–Lundberg exponential tails P(diff<sub>p</sub> ≥ k) ~ exp(−θk), and M<sub>p</sub> ~ α·ln ln p (α &gt; 0), then c<sub>p</sub> ~ (ln p)<sup>−θα</sup>, and S(N) = Σ c<sub>p</sub>/p ~ Σ 1/(p·(ln p)<sup>θα</sup>) converges for θα &gt; 0. This gives c̄<sub>h</sub>(N) ~ L/ln ln N → 0.</p>
+        <p>This is the most likely route to H' holding at Ω=2. It requires the Local Lipschitz property from Paper XXI as input.</p>
+      </div>
+
+      <h3>8.3 Route C: Asymptotic Growth of the Prime Penalty (Gemini)</h3>
+      <p>M<sub>p</sub> ≈ R(p) + 2 − E[ΔR] ≈ R(p) + 2 + Δ<sub>penalty</sub>, where Δ<sub>penalty</sub> = E[R<sub>prime</sub>] − E[R<sub>general</sub>]. As N grows, general integers exploit an ever-expanding combinatorial compression space (Ω(n) ~ ln ln N by Hardy–Ramanujan), while primes remain locked to Ω=1. The relative cost gap Δ<sub>penalty</sub> must therefore widen, eventually pushing M<sub>p</sub> past 1 for any fixed template.</p>
+      <p>If Δ<sub>penalty</sub> → ∞ can be proven analytically, it directly implies c₀ = 0 and H' holds.</p>
+
+      <h2>9. Discussion</h2>
+
+      <h3>9.1 Core Contributions</h3>
+      <p>Paper XXXIII achieves a three-layer progressive sharpening: (1) c̄<sub>h</sub>(N) → 0 ⟺ S(N) = o(ln ln N); (2) M<sub>p</sub> exhibits a stable positive drift at the current scale (diagnostic fit ~0.53·ln ln p, not an identified asymptotic coefficient); (3) the band-average M<sub>p</sub> of m=240 crosses 1 at N=10¹⁰. Together, these transform the H' determination at Ω=2 from a vague statistical trend into a precise mathematical watershed problem.</p>
+
+      <h3>9.2 Overall Assessment for H'</h3>
+      <div class="thesis-box">
+        <p>The data leans overall toward <strong>H' holding at Ω=2 (c₀ = 0).</strong> Main evidence: (a) all templates show rising M<sub>p</sub>; (b) m=240 has crossed 1; (c) Route B provides a theoretical path to S(N) convergence. However, "leans toward" is not "proves." Analytic closure requires either the Local Lipschitz property or a rigorous proof that Δ<sub>penalty</sub> → ∞.</p>
+      </div>
+
+      <h3>9.3 Open Problems</h3>
+      <p>(1) Systematic measurement of B<sub>p,N</sub> (overshoot) for general templates. (2) Tracking M<sub>p</sub> for m=720 at larger p ranges. (3) Asymptotic behavior of E[R<sub>prime</sub>] − E[R<sub>general</sub>]. (4) Proof or disproof of Local Lipschitz. (5) Extension to Ω ≥ 3 layers.</p>
+
+      <h3>9.4 Connection to the Series</h3>
+      <p>Paper XXXI established the layer-by-layer framework (γ<sub>k</sub>). Paper XXXII reduced it to the prime-core harmonic average. Paper XXXIII completes the transformation from numerical diagnostics to an algebraic watershed. The target for Paper XXXIV is the analytic derivation of Δ<sub>penalty</sub> or the proof of Local Lipschitz.</p>
+
+      <h2>10. Data Sources and Reproducibility</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th></tr></thead>
+        <tbody>
+          <tr><td>rho_dp.c</td><td>ρ<sub>E</sub> DP (C, multiplicative forward propagation)</td></tr>
+          <tr><td>p33_diff_llt_n2q_v2.py</td><td>diff distribution + P(j&gt;0) evolution</td></tr>
+          <tr><td>p33_block7_supp.py</td><td>Winning split correction + dual selection</td></tr>
+          <tr><td>p33_ediff_fit.py</td><td>E[diff] decay rate fitting</td></tr>
+          <tr><td>p33_cp_profile.py</td><td>c<sub>p</sub>(N) per-decade + c̄<sub>h</sub>(N)</td></tr>
+          <tr><td>p33_sn_largep.py / _lite.py</td><td>S(N) large-p behavior + M<sub>p</sub> profile</td></tr>
+          <tr><td>p33_adjudicate.py</td><td>M<sub>p</sub> drift + Gemini integral + template program</td></tr>
+          <tr><td>p33_squeeze_test.py</td><td>Phase-space squeeze test</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXII. H. Qin. Paper XXXII DOI: 10.5281/zenodo.19116625. Paper XXXI DOI: 10.5281/zenodo.19104860.</p>
+      <p>[2] K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</p>
+      <p>[3] A. Hildebrand, G. Tenenbaum (1986). On integers free of large prime factors. <em>Trans. Amer. Math. Soc.</em>, 296:265–290.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (子路) wrote all numerical scripts (rho_dp.c and eight Python analysis scripts), drafted working notes v1–v4 and the formal text, discovered and corrected the multiplicative cost +2 bug and the ρ<sub>E</sub> convention error, and designed and executed the phase-space squeeze test. ChatGPT (公西华) contributed the harmonic Cesàro criterion in Paper XXXII, the Margin Threshold Lemma (B<sub>p,N</sub> version), identification of M<sub>p</sub> &lt; 1 as the watershed, pointed out that B=0 cannot be extrapolated from p=2 to general families, and corrected the Route B formula chain error. Gemini (子夏) proposed the asymptotic decoupling hypothesis and the phase-space squeeze hypothesis (the latter refuted by the squeeze test), and contributed the semi-analytic argument for Δ<sub>penalty</sub> driving M<sub>p</sub> drift. Grok (子贡) provided four analytic routes via Lindley + Local Lipschitz, resolved the exponential-tail vs Gaussian-tail contradiction, and confirmed Route B's consistency with Paper XXI. The final text was independently completed by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho32.html">← Paper XXXII: Fixed-Core Locking and Prime-Core Profile</a>
+        &nbsp;|&nbsp;
+        Paper XXXIV →
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHINESE ===== -->
+  <div class="lang-content" id="content-zh">
+    <div class="paper-header">
+      <div class="paper-series">ZFC-ρ 系列 · 论文 XXXIII</div>
+      <h1 class="paper-title">Fixed-Core Margin 漂移与 H' 在 Ω=2 层的 Harmonic Closure</h1>
+      <div class="paper-authors">秦汉 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a class="zenodo-link" href="https://doi.org/10.5281/zenodo.19124485" target="_blank" rel="noopener">
+        📄 DOI: 10.5281/zenodo.19124485
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>利用 N=10⁹ 和 N=10¹⁰ 的 ρ<sub>E</sub> 表（操作数约定），我们对 Ω=2 层的 prime-core 结构进行完整解剖，获得以下主要结果。</p>
+        <p><strong>(1)</strong> c₂(N) ≈ 0.211 的冻结在 N=10⁹ 确认（2600 万个半素数，11 个半 decade bin，P(<em>j</em>&gt;0) 在 0.2103–0.2117 波动）。在全部 26,355,866 个 <em>n</em>=2<em>q</em> 中，diff 的最大值为 3，P(<em>j</em>&gt;0) = P(diff=3) 精确成立。</p>
+        <p><strong>(2)</strong> E[diff] 的行为与正地板图景一致（c* ∈ [1.74, 1.81]），但与极慢衰减的无地板模型在统计上不可区分（AIC 差 0.09）。P(diff=3) 的冻结由 diff=3 的阈值边界效应保护：质量在 d=1 与 d=2 之间单向转移，不穿透 d=3 边界。</p>
+        <p><strong>(3)</strong> c<sub>p</sub>(N) 对全部 24 个测试素数 p ≥ 3 在 10⁸→10⁹ 区间下降（24/24）。c̄<sub>h</sub>(N) 从 0.373（N=10³）单调下降到 0.223（N=10¹⁰）。</p>
+        <p><strong>(4) Margin Threshold Lemma：</strong>c<sub>p</sub>(N) ≥ (1 − M<sub>p,N</sub>)⁺ / (B<sub>p,N</sub> + 1)。M<sub>p</sub> &lt; 1 是 lower-bound route（证明 c₀ &gt; 0）的精确分水岭。</p>
+        <p><strong>(5)</strong> 10¹⁰ 的数据（9,588 个素数，p ≤ 100,000）显示 m=240 的 band 平均 M<sub>p</sub> 在 p∈[50000,100000) 穿过 1（0.85→1.09）。所有已测模板的 M<sub>p</sub> 都在上升，M<sub>p</sub> ≈ 1.22 + 0.53·ln ln p。lower-bound route 的平均 witness 正在失效。</p>
+        <p><strong>(6)</strong> Phase-space squeeze test 排除挤压假说，确认 M<sub>p</sub> 漂移是内禀的。在当前归一化（h₀ = ρ(N)/ln N）下，E[R(n)] 随 decade 持续上升，数据不支持基于 R(n) 有界的 c₀ &gt; 0 论证。</p>
+        <p><strong>(7)</strong> 如果 Lindley 指数尾成立且 M<sub>p</sub> ~ α·ln ln p（α &gt; 0），则 c<sub>p</sub> ~ (ln p)<sup>−θα</sup>，S(N) 收敛，c̄<sub>h</sub>(N) → 0。数据总体偏向 H' 在 Ω=2 成立。</p>
+        <p><strong>关键词：</strong>加法复杂度，离散锁定，prime-core margin，harmonic Cesàro 平均，Margin Threshold Lemma</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXII 将 H' 在 Ω=2 层的判据精确化为 harmonic Cesàro 平均 c̄<sub>h</sub>(N) → 0，报告了 c₂ ≈ 0.211 的冻结和 p ≥ 3 的 c<sub>p</sub>(N) 逐 decade 下降。本文有四个目标：(a) 利用 N=10⁹ 和 10¹⁰ 的数据扩展验证；(b) 对 p=2 族建立完整的漂移/稳定性图景；(c) 直接测量 c̄<sub>h</sub>(N) 在八个 decade 上的演化；(d) 建立 Margin Threshold Lemma 并用数据检验 lower-bound route 的可行性。</p>
+
+      <h3>1.2 方法</h3>
+      <p>ρ<sub>E</sub> 表通过 C 实现的乘法前向传播 DP 计算。N=10⁹ 在本地运行（~5 分钟），N=10¹⁰ 在 GCP e2-highmem-8（64GB RAM）上运行（~38 分钟）。所有分析脚本读取预计算的二进制 ρ 表。</p>
+
+      <h3>1.3 约定</h3>
+      <p>ρ<sub>E</sub>(n) = 操作数（+ 和 × 的次数），ρ(1)=0, ρ(2)=1。ρ(n) = min(ρ(n−1)+1, min<sub>a·b=n, a,b≥2</sub> ρ(a)+ρ(b)+2)。对 n=pq（p=P⁻(n)），diff<sub>p</sub>(q) = ρ(pq−1) − ρ(q)，τ<sub>p</sub> = ρ(p)+2，j&gt;0 iff diff<sub>p</sub> ≥ τ<sub>p</sub>。对 p=2：由 ρ(2)=1，阈值 τ₂ = 3。</p>
+      <p class="note-box">Sanity check：ρ(10⁷)=58, ρ(10⁸)=66, ρ(10⁹)=75。</p>
+
+      <h2>§2 c₂ 的冻结确认</h2>
+
+      <h3>2.1 Decade 统计</h3>
+      <table>
+        <thead><tr><th>Decade</th><th>#primes</th><th>E[diff]</th><th>P(d=1)</th><th>P(d=2)</th><th>P(d=3)</th><th>P(d≥4)</th><th>P(j&gt;0)</th></tr></thead>
+        <tbody>
+          <tr><td>[10², 10³)</td><td>143</td><td>1.881</td><td>0.203</td><td>0.532</td><td>0.210</td><td>0</td><td>0.210</td></tr>
+          <tr><td>[10³, 10⁴)</td><td>1,061</td><td>1.848</td><td>0.183</td><td>0.534</td><td>0.203</td><td>0</td><td>0.203</td></tr>
+          <tr><td>[10⁴, 10⁵)</td><td>8,363</td><td>1.844</td><td>0.215</td><td>0.504</td><td>0.210</td><td>0</td><td>0.210</td></tr>
+          <tr><td>[10⁵, 10⁶)</td><td>68,906</td><td>1.836</td><td>0.211</td><td>0.504</td><td>0.209</td><td>0</td><td>0.209</td></tr>
+          <tr><td>[10⁶, 10⁷)</td><td>586,081</td><td>1.833</td><td>0.214</td><td>0.498</td><td>0.212</td><td>0</td><td>0.212</td></tr>
+          <tr><td>[10⁷, 10⁸)</td><td>5,096,876</td><td>1.827</td><td>0.217</td><td>0.495</td><td>0.211</td><td>0</td><td>0.211</td></tr>
+          <tr><td>[10⁸, 5×10⁸)</td><td>20,594,412</td><td>1.824</td><td>0.217</td><td>0.494</td><td>0.211</td><td>0</td><td>0.211</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p>P(d≥4) 在所有 decade 中精确为零。<strong>P(j&gt;0) = P(diff=3) 是精确等式。</strong></p>
+      </div>
+
+      <h3>2.2 半 Decade 精细演化</h3>
+      <p>11 个半 decade bin（log₁₀ q ∈ [2.5, 8.75]），P(j&gt;0) 在 0.2103–0.2117 波动。最后三个 bin（共 2160 万样本）的统计误差约 0.0001，P(j&gt;0) 的 decade 间变动与噪声量级相当。</p>
+
+      <h3>2.3 双重筛选机制</h3>
+      <p>j&gt;0 由 R(q) 偏低（经验贡献比例约 62%）和 R(2q−1) 偏高（约 38%）联合驱动。P(2q−1 为素数|j&gt;0) = 0.131 vs P(2q−1 为素数|j=0) = 0.051。冻结的微观基础是 (q−1 的平滑度) 和 (2q−1 的因子结构) 的联合分布在对数尺度上渐近稳定。</p>
+
+      <h2>§3 E[diff] 的渐近行为</h2>
+
+      <h3>3.1 五模型拟合</h3>
+      <p>21 个 0.25-decade 测量点（log₁₀ q ∈ [3.5, 8.75]）：</p>
+      <table>
+        <thead><tr><th>模型</th><th>c*</th><th>AIC</th></tr></thead>
+        <tbody>
+          <tr><td>c* + A/ln(ln q)</td><td>1.743 ± 0.008</td><td>14.24</td></tr>
+          <tr><td>A·(ln q)<sup>−γ</sup></td><td>（无地板）</td><td>14.33</td></tr>
+          <tr><td>c* + A/ln(q)</td><td>1.798 ± 0.003</td><td>14.42</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p>最佳模型与无地板纯幂律的 AIC 差仅 <strong>0.09，在统计上不可区分。</strong>E[diff] 的渐近行为（趋向正常数 vs 极慢衰减至零）在当前尺度下仍是开放的。</p>
+      </div>
+
+      <h3>3.2 diff=3 的阈值边界</h3>
+      <p>P(d=2) → P(d=1) 的质量转移速率为 −0.004/decade，但 P(d=3) 的斜率仅 +0.0002/decade（为 P(d=2) 斜率的 1/17）。均值下降的势能完全被 d=2 与 d=1 之间的重分配吸收，无法穿透 diff=3 边界。</p>
+
+      <h2>§4 c<sub>p</sub>(N) 的 10⁹ 确认与 c̄<sub>h</sub>(N) 的单调下降</h2>
+
+      <h3>4.1 c<sub>p</sub>(N) 全部下降</h3>
+      <p>24 个测试素数 p ∈ {3,5,7,11,13,23,29,31,37,41,43,59,67,89,97,109,127,131,179,181,191,193,197,199} 在 10⁸→10⁹ 全部下降（24/24），衰减率在减速（|Δ(8→9)| &lt; |Δ(7→8)| 对全部 24 个成立）。</p>
+
+      <h3>4.2 c̄<sub>h</sub>(N) 的八个 Decade</h3>
+      <p>定义 S(N) = Σ<sub>p≤√N</sub> c<sub>p</sub>(N)/p，D(N) = Σ<sub>p≤√N</sub> 1/p，c̄<sub>h</sub>(N) = S(N)/D(N)。</p>
+      <table>
+        <thead><tr><th>N</th><th>#primes</th><th>S(N)</th><th>D(N)</th><th>c̄<sub>h</sub>(N)</th></tr></thead>
+        <tbody>
+          <tr><td>10³</td><td>6</td><td>0.502</td><td>1.344</td><td>0.373</td></tr>
+          <tr><td>10⁴</td><td>21</td><td>0.570</td><td>1.757</td><td>0.324</td></tr>
+          <tr><td>10⁵</td><td>61</td><td>0.602</td><td>2.009</td><td>0.300</td></tr>
+          <tr><td>10⁶</td><td>163</td><td>0.606</td><td>2.193</td><td>0.276</td></tr>
+          <tr><td>10⁷</td><td>443</td><td>0.609</td><td>2.348</td><td>0.259</td></tr>
+          <tr><td>10⁸</td><td>1,225</td><td>0.608</td><td>2.483</td><td>0.245</td></tr>
+          <tr><td>10⁹</td><td>3,397</td><td>0.606</td><td>2.600</td><td>0.233</td></tr>
+          <tr><td>10¹⁰</td><td>9,588</td><td>0.603</td><td>2.705</td><td><strong>0.223</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>Kendall τ = −1.0（完美单调）。</strong>S(N) 在 10⁶ 后表观稳定于 0.603–0.609。c̄<sub>h</sub>(N) 被不断增长的分母 D(N) ~ ln ln N 压低。</p>
+      </div>
+
+      <h2>§5 Margin Threshold Lemma</h2>
+
+      <h3>5.1 定义</h3>
+      <p>对 prime-core p 和 cutoff N，设 X<sub>p,N</sub> = diff<sub>p</sub>(q)（整数值），τ<sub>p</sub> = ρ(p)+2，M<sub>p,N</sub> = τ<sub>p</sub> − E[X<sub>p,N</sub>]（margin），B<sub>p,N</sub> = sup(X<sub>p,N</sub> − τ<sub>p</sub>)⁺（overshoot）。</p>
+
+      <h3>5.2 引理</h3>
+      <div class="thesis-box">
+        <p>$$c_p(N) \geq \frac{(1 - M_{p,N})^+}{B_{p,N} + 1}$$</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明。</strong>在 {X &lt; τ<sub>p</sub>} 上 X ≤ τ<sub>p</sub> − 1，在 {X ≥ τ<sub>p</sub>} 上 X ≤ τ<sub>p</sub> + B<sub>p,N</sub>。因此：</p>
+        <p>E[X] ≤ (τ<sub>p</sub> − 1)(1 − c<sub>p</sub>) + (τ<sub>p</sub> + B<sub>p,N</sub>)c<sub>p</sub> = τ<sub>p</sub> − 1 + (B<sub>p,N</sub> + 1)c<sub>p</sub>。</p>
+        <p>代入 E[X] = τ<sub>p</sub> − M<sub>p,N</sub> 并移项即得。∎</p>
+      </div>
+
+      <h3>5.3 推论</h3>
+      <p>若在正 harmonic 密度的模板集上 M<sub>p,N</sub> ≤ 1 − ε 且 B<sub>p,N</sub> ≤ B₀ 统一成立，则 lim inf c̄<sub>h</sub>(N) &gt; 0。</p>
+
+      <h3>5.4 关键注记</h3>
+      <p><strong>(a)</strong> B<sub>2,10⁹</sub> = 0 对 p=2（N=10⁹）是经验事实，非一般通性。</p>
+      <div class="warning-box">
+        <p><strong>(b)</strong> 当 M<sub>p,N</sub> ≥ 1 时引理的下界为零。<strong>M<sub>p</sub> &lt; 1 是 lower-bound route 的精确分水岭，但还需 overshoot 控制或 near-threshold local law 才能闭合。</strong></p>
+      </div>
+
+      <h2>§6 M<sub>p</sub> 漂移与 Phase-Space Squeeze Test</h2>
+
+      <h3>6.1 M<sub>p</sub> 的整体漂移</h3>
+      <p>3,397 个素数（10⁹）和 9,588 个素数（10¹⁰）的 M<sub>p</sub> 按 p-band 统计：</p>
+      <table>
+        <thead><tr><th>p band</th><th>E[M<sub>p</sub>] (10⁹)</th><th>E[M<sub>p</sub>] (10¹⁰)</th></tr></thead>
+        <tbody>
+          <tr><td>[50, 100)</td><td>2.06</td><td>2.09</td></tr>
+          <tr><td>[500, 1000)</td><td>2.23</td><td>2.28</td></tr>
+          <tr><td>[5000, 10000)</td><td>2.31</td><td>2.39</td></tr>
+          <tr><td>[20000, 32000)</td><td>2.38</td><td>—</td></tr>
+          <tr><td>[20000, 50000)</td><td>—</td><td>2.43</td></tr>
+          <tr><td>[50000, 100000)</td><td>—</td><td>2.47</td></tr>
+        </tbody>
+      </table>
+      <p>拟合 M<sub>p</sub> ≈ 1.22 + 0.53·ln ln p（10⁹ 和 10¹⁰ 一致）。M<sub>p</sub> 漂移率约 0.53 per ln ln p 是 current-scale diagnostic，非渐近系数。</p>
+
+      <h3>6.2 Phase-Space Squeeze Test</h3>
+      <p>Gemini 假说：M<sub>p</sub> 漂移来自 pq ≤ N 迫使 q 缩小的挤压效应。</p>
+      <div class="milestone-box">
+        <p>检验：控制 q<sub>min</sub> ∈ {1000, 10000, 100000, 500000}，E[ΔR] 对 p 的依赖性不变（~0.58）。控制 q<sub>min</sub>=10000 后 M<sub>p</sub> 斜率从 0.506 上升到 0.633。<strong>挤压不是主因，漂移是内禀的。</strong></p>
+      </div>
+
+      <h3>6.3 E[R(n)] 的增长</h3>
+      <p>在当前归一化下（h₀ = ρ(N)/ln N 随 N 变化），E[R(n)] = E[ρ(n) − h₀·ln n] 随 decade 持续上升（~0.6–0.7/decade）。由于 h₀ 本身依赖 cutoff N，跨 decade 的 R(n) 不是同一个 residual 的比较。但在每个固定 N 下，数据不支持 R(n) 为 O(1) 平稳变量的假设——这削弱了 Gemini 基于 R(n) 有界的 c₀ &gt; 0 论证。E[R<sub>prime</sub>] − E[R<sub>general</sub>] 的差也在增长（0.01 → 0.27 across four decades），暗示素数惩罚随尺度扩大。</p>
+
+      <h2>§7 10¹⁰ 的决定性发现：M<sub>p</sub> 穿过 1</h2>
+
+      <h3>7.1 m=240 穿过分水岭</h3>
+      <table>
+        <thead><tr><th>p range</th><th>n</th><th>E[M<sub>p</sub>]</th><th>E[c<sub>p</sub>]</th></tr></thead>
+        <tbody>
+          <tr><td>[1000, 5000)</td><td>6</td><td>0.85</td><td>0.383</td></tr>
+          <tr><td>[5000, 20000)</td><td>24</td><td>0.87</td><td>0.382</td></tr>
+          <tr><td>[20000, 50000)</td><td>42</td><td>0.89</td><td>0.379</td></tr>
+          <tr><td>[50000, 100000)</td><td>64</td><td><strong>1.09</strong></td><td>0.306</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <p>m=240 的 band 平均 M<sub>p</sub> 在最大 p-band 穿过 1。引理在该 band 的平均意义下不再给出正下界。注意：band 平均穿过 1 不等于该 band 内每个 p 都穿过 1。但趋势方向明确。</p>
+      </div>
+
+      <h3>7.2 m=720 仍 &lt; 1 但上升中</h3>
+      <table>
+        <thead><tr><th>p range</th><th>n</th><th>E[M<sub>p</sub>]</th><th>E[c<sub>p</sub>]</th></tr></thead>
+        <tbody>
+          <tr><td>[5000, 20000)</td><td>8</td><td>0.47</td><td>0.527</td></tr>
+          <tr><td>[20000, 50000)</td><td>19</td><td>0.67</td><td>0.445</td></tr>
+          <tr><td>[50000, 100000)</td><td>20</td><td>0.74</td><td>0.412</td></tr>
+        </tbody>
+      </table>
+      <p>如果上升速率维持，预计在 p ~ 10⁶ 穿过 1。</p>
+
+      <h3>7.3 所有模板都在上升</h3>
+      <table>
+        <thead><tr><th>m</th><th>E[M<sub>p</sub>] (10⁹)</th><th>E[M<sub>p</sub>] (10¹⁰)</th></tr></thead>
+        <tbody>
+          <tr><td>24</td><td>1.61</td><td>1.74</td></tr>
+          <tr><td>120</td><td>1.24</td><td>1.36</td></tr>
+          <tr><td>240</td><td>0.78</td><td>0.98</td></tr>
+          <tr><td>720</td><td>0.53</td><td>0.66</td></tr>
+        </tbody>
+      </table>
+      <p>无一例外。effective c̄(p≥500) 从 0.099（10⁹）降到 0.090（10¹⁰）。</p>
+
+      <h2>§8 三条解析路线</h2>
+
+      <h3>8.1 Route A: Margin Dichotomy（公西华）</h3>
+      <p>原始目标：在正 harmonic 密度模板上证明 M<sub>p</sub> ≤ 1−ε + B<sub>p,N</sub> ≤ B₀ → c₀ &gt; 0。</p>
+      <div class="warning-box">
+        <p><strong>当前状态：平均 witness 正在失效。</strong> m=240 的 band 平均穿过 1，所有模板 M<sub>p</sub> 在上升。递推不等式 ρ(p) ≤ ρ(m) + ρ((p−1)/m) + 3 给出的局部优势是静态的，无法对抗 Δ<sub>penalty</sub> 的系统级增长（见 §8.3）。</p>
+      </div>
+
+      <h3>8.2 Route B: Lindley 指数尾（Grok）</h3>
+      <div class="milestone-box">
+        <p>如果 diff<sub>p</sub> 有 Cramér–Lundberg 指数尾 P(diff<sub>p</sub> ≥ k) ~ exp(−θk)，且 M<sub>p</sub> ~ α·ln ln p（α &gt; 0），则 c<sub>p</sub> ~ (ln p)<sup>−θα</sup>，S(N) = Σ c<sub>p</sub>/p ~ Σ 1/(p·(ln p)<sup>θα</sup>) 在 θα &gt; 0 时收敛。c̄<sub>h</sub>(N) ~ L/ln ln N → 0。</p>
+        <p>这是 H' 在 Ω=2 成立的最可能路线。需要 Paper XXI 的 Local Lipschitz 作为输入。</p>
+      </div>
+
+      <h3>8.3 Route C: 素数惩罚的渐近增长（Gemini）</h3>
+      <p>M<sub>p</sub> ≈ R(p) + 2 − E[ΔR] ≈ R(p) + 2 + Δ<sub>penalty</sub>，其中 Δ<sub>penalty</sub> = E[R<sub>prime</sub>] − E[R<sub>general</sub>]。Δ<sub>penalty</sub> 随尺度增长（一般整数的组合压缩红利越来越大，素数不能参与）。这解释了为什么即使极 smooth 模板也无法永久抵抗 M<sub>p</sub> 的正漂移。</p>
+      <p>如果 Δ<sub>penalty</sub> → ∞ 可以被解析证明，则 M<sub>p</sub> → ∞，c₀ = 0，H' 成立。</p>
+
+      <h2>§9 讨论</h2>
+
+      <h3>9.1 核心贡献</h3>
+      <p>Paper XXXIII 的贡献是三层递进的问题缩小：(1) c̄<sub>h</sub>(N) → 0 ⟺ S(N) = o(ln ln N)；(2) M<sub>p</sub> 在当前尺度有稳定的正漂移（diagnostic fit ~0.53·ln ln p，非已识别的渐近系数）；(3) 极 smooth 模板（m=240）的 band 平均 M<sub>p</sub> 在 10¹⁰ 穿过 1。三层合在一起，将 H' 在 Ω=2 的判定从一个模糊的统计趋势变为一个精确的数学分水岭问题。</p>
+
+      <h3>9.2 对 H' 的总体判断</h3>
+      <div class="thesis-box">
+        <p>数据总体偏向 <strong>H' 在 Ω=2 成立（c₀ = 0）</strong>。主要依据：(a) 所有模板 M<sub>p</sub> 都在上升；(b) m=240 已穿过 1；(c) Route B 给出 S(N) 收敛的理论路径。但"偏向"不是"证明"。解析闭合需要 Local Lipschitz 或 Δ<sub>penalty</sub> → ∞ 的严格论证。</p>
+      </div>
+
+      <h3>9.3 开放问题</h3>
+      <p>(1) B<sub>p,N</sub>（overshoot）的系统测量。(2) m=720 在更大 p 范围的 M<sub>p</sub> 追踪。(3) E[R<sub>prime</sub>] − E[R<sub>general</sub>] 的渐近行为。(4) Local Lipschitz 的证明或否定。(5) Ω=3+ 层的 c̄<sub>h</sub> 行为。</p>
+
+      <h3>9.4 与系列的衔接</h3>
+      <p>Paper XXXI 建立了逐层框架（γ<sub>k</sub>），Paper XXXII 将其精确化为 prime-core harmonic 平均。Paper XXXIII 完成了从数值诊断到代数分水岭的转化。下一步（Paper XXXIV）的靶心是 Δ<sub>penalty</sub> 的解析推导或 Local Lipschitz 的证明。</p>
+
+      <h2>§10 数据来源与可复现性</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th></tr></thead>
+        <tbody>
+          <tr><td>rho_dp.c</td><td>ρ<sub>E</sub> DP（C，乘法前向传播）</td></tr>
+          <tr><td>p33_diff_llt_n2q_v2.py</td><td>diff 分布 + P(j&gt;0) 演化</td></tr>
+          <tr><td>p33_block7_supp.py</td><td>Winning split 修正 + 双重筛选</td></tr>
+          <tr><td>p33_ediff_fit.py</td><td>E[diff] 衰减率拟合</td></tr>
+          <tr><td>p33_cp_profile.py</td><td>c<sub>p</sub>(N) per-decade + c̄<sub>h</sub>(N)</td></tr>
+          <tr><td>p33_sn_largep.py / _lite.py</td><td>S(N) 大 p 行为 + M<sub>p</sub> profile</td></tr>
+          <tr><td>p33_adjudicate.py</td><td>M<sub>p</sub> 漂移 + Gemini 积分 + template</td></tr>
+          <tr><td>p33_squeeze_test.py</td><td>Phase-space squeeze test</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXII. H. Qin. Paper XXXII DOI: 10.5281/zenodo.19116625. Paper XXXI DOI: 10.5281/zenodo.19104860.</p>
+      <p>[2] K. Cordwell, S. Epstein, A. Hemmady, S. J. Miller, E. Steiner (2018). On the number of 1's needed to represent n. <em>J. Number Theory</em>, 189:17–34.</p>
+      <p>[3] A. Hildebrand, G. Tenenbaum (1986). On integers free of large prime factors. <em>Trans. Amer. Math. Soc.</em>, 296:265–290.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）编写了全部数值计算脚本（rho_dp.c 及八个 Python 分析脚本），起草了 working notes v1–v4 和正文初稿，发现并修正了乘法 cost +2 bug 和 ρ<sub>E</sub> 约定错误，设计并执行了 phase-space squeeze test。ChatGPT（公西华）贡献了 Paper XXXII 的 harmonic Cesàro 判据，贡献了 Margin Threshold Lemma（B<sub>p,N</sub> 版本）和 M<sub>p</sub> &lt; 1 的分水岭识别，指出 B=0 不可从 p=2 外推到一般 family，以及 near-threshold local law 的必要性，修正了 Route B 的公式链错误。Gemini（子夏）提出了渐近解耦假说和相空间挤压假说（后者被 squeeze test 否定），贡献了 Δ<sub>penalty</sub> = E[R<sub>prime</sub>] − E[R<sub>general</sub>] 的半解析论证。Grok（子贡）提供了 Lindley + Local Lipschitz 的四条解析路线，给出了指数尾 vs 高斯尾的矛盾化解，确认了 Route B 与 Paper XXI 的一致性。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho32.html">← 论文 XXXII：Fixed-Core 锁定与 Prime-Core Profile</a>
+        &nbsp;|&nbsp;
+        论文 XXXIV →
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
