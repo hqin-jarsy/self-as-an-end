@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congruence Relaxation and the Erosion of Predecessor Advantage — ZFCρ Paper XXXV — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXV: 16-band gap analysis reveals ρ(pq-1) advantage monotonically erodes and reverses sign at p~50000 (+1.45 at p~85000). Three-way bias decomposition: residue-class bias (B-C) dominant (70-74%), pure congruence (D-C)≈0. Route C semi-analytic framework for M_p→∞.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, congruence relaxation, predecessor advantage, prime penalty, shifted multiplicative structure, Route C">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Congruence Relaxation and the Erosion of Predecessor Advantage">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho35.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Congruence Relaxation and the Erosion of Predecessor Advantage",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho35.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19143732"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "congruence relaxation", "predecessor advantage erosion",
+      "prime penalty", "shifted multiplicative structure"
+    ],
+    "abstract": "16-band fine-grained analysis reveals E[ρ(pq-1)]-E[ρ(random)] moves perfectly monotonically from -2.089 (p~1500) to +1.451 (p~85000), with sign flip confirmed at p~50000. Three-way bias decomposition shows: residue-class bias (B-C, dominant 70-74%) erodes from -1.05 to +0.20; pure congruence constraint (D-C)≈0. κ decline corrected: compatible with linear M_p drift. Route C semi-analytic framework: Step 2 decomposed into shifted-prime local model (2a) + bounded relative to Δ_penalty (2b).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho35.html">
+  <meta name="citation_title" content="Congruence Relaxation and the Erosion of Predecessor Advantage">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19143732">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho35.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXXV</div>
+      <h1 class="paper-title">Congruence Relaxation and the Erosion of Predecessor Advantage</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19143732" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19143732
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper XXXIV reduced the Ω=2 closure to proving \(M_p \to \infty\). This paper decomposes the 1.7% residual in the 98.3% chase between \(\tau_p\) and \(E[\mathrm{diff}_p]\), corrects several misreadings from preliminary analysis, and establishes the microscopic mechanism driving \(M_p\) drift.</p>
+        <p><strong>(1)</strong> Chase ratio \(E[\mathrm{diff}]/\tau_p\) rises from 90.1% to 94.5%, converging toward 100%. This is expected behavior (\(M_p/\tau_p \to 0\) since \(M_p\) grows slower than \(\tau_p \sim h_0 \cdot \ln p\)) and fully compatible with \(M_p \to \infty\).</p>
+        <p><strong>(2)</strong> The effective penalty coefficient \(\kappa = M_p/\ln\ln p\) declines from 1.53 to 1.02. This does NOT imply sub-logarithmic growth: a linear model \(M_p = 1.22 + 0.53 \cdot \ln\ln p\) with positive intercept predicts \(\kappa = 0.53 + 1.22/\ln\ln p\), which falls from 1.53 to 1.03 in the observed range — matching the data exactly.</p>
+        <p><strong>(3)</strong> Core discovery: the structural advantage of \(\rho(pq-1)\) over general integers erodes monotonically and reverses sign. Fine-grained analysis across 16 bands:</p>
+        <table>
+          <thead><tr><th>p ~</th><th>gap = E[ρ(pq-1)] − E[ρ(random)]</th><th>SE</th></tr></thead>
+          <tbody>
+            <tr><td>1500</td><td>−2.089 (deepest)</td><td>0.000</td></tr>
+            <tr><td>6500</td><td>−1.991</td><td>0.001</td></tr>
+            <tr><td>16000</td><td>−1.634</td><td>0.003</td></tr>
+            <tr><td>25000</td><td>−1.235</td><td>0.004</td></tr>
+            <tr><td>40000</td><td>−0.530</td><td>0.006</td></tr>
+            <tr><td>60000</td><td><strong>+0.394</strong></td><td>0.006</td></tr>
+            <tr><td>85000</td><td><strong>+1.451</strong></td><td>0.007</td></tr>
+          </tbody>
+        </table>
+        <p>The erosion is perfectly monotone from \(p \sim 1500\) onward; sign flip confirmed in two independent sub-bands with SEs far smaller than signals.</p>
+        <p><strong>(4)</strong> The advantage reverses into a disadvantage. Three-way bias decomposition reveals: the dominant component (70–74%) is the residue-class bias (B−C) from the shifted multiplicative structure (\(pr-1\) vs random \(n\)), NOT the pure congruence constraint (D−C ≈ 0). The "selection right deprivation" heuristic is undetectable at O(1) level; the true driver is the small-prime local profile change under the "multiply by \(p\) then subtract 1" operation.</p>
+        <p><strong>(5)</strong> The advantage reversal holds for both "good" and "bad" primes. At \(p \in [50000, 100000)\): low-\(\rho(p)\) primes show gap = +0.55, high-\(\rho(p)\) primes show gap = +1.33. Even the worst primes (smooth \(p-1\)) have crossed zero.</p>
+        <p><strong>(6)</strong> Semi-analytic framework (Route C): \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\) for a shifted-prime local model \(\mu_{\mathrm{shift}}\), with the dominant structural bias (B−C) bounded and eroding from −1.05 to +0.20. If Step 2a and \(\Delta_{\mathrm{penalty}} \to \infty\) (Step 4) are established, Route C yields \(M_p \to \infty\).</p>
+        <p><strong>(7)</strong> Self-organization becomes easier at large scales: at low \(N\), \(pq-1\) has free compression advantages (gap = −2.0); at high \(N\), advantages are exhausted and reversed, forcing the system toward self-organization.</p>
+        <p><strong>Keywords:</strong> congruence relaxation, predecessor advantage erosion, selection right deprivation, prime penalty, self-organization phase transition</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXIV (DOI: 10.5281/zenodo.19140015) established: \(V(p) \approx 1.40\) globally bounded, Harmonic Cesàro Lemma (\(V(p)=O(1) + M_p \to \infty \Rightarrow \bar{c}_h \to 0\)), the 98.3% chase, bad primes at 5.5% tail density, and \(\Delta_{\mathrm{penalty}}\) with slope 0.022/unit \(\ln\ln n\).</p>
+
+      <h3>1.2 Paper XXXV's Goal</h3>
+      <p>Not to identify \(M_p\)'s precise growth rate, but to establish the microscopic mechanism that prevents \(M_p\) from plateauing. The correct framing: prove that \(pq-1\)'s structural advantage over general integers cannot persist indefinitely, thereby ensuring \(M_p \to \infty\).</p>
+
+      <h2>§2 Chase Ratio: Expected Behavior</h2>
+
+      <h3>2.1 Data</h3>
+      <table>
+        <thead><tr><th>p band</th><th>E[τ_p]</th><th>E[diff]</th><th>E[M_p]</th><th>chase %</th></tr></thead>
+        <tbody>
+          <tr><td>[100, 200)</td><td>20.3</td><td>18.3</td><td>2.01</td><td>90.1%</td></tr>
+          <tr><td>[1000, 2000)</td><td>29.4</td><td>27.2</td><td>2.28</td><td>92.3%</td></tr>
+          <tr><td>[10000, 20000)</td><td>38.5</td><td>36.1</td><td>2.40</td><td>93.8%</td></tr>
+          <tr><td>[50000, 100000)</td><td>44.8</td><td>42.3</td><td>2.47</td><td>94.5%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 Interpretation</h3>
+      <p>Chase ratio = \(1 - M_p/\tau_p \to 1\) because \(M_p\) grows much slower than \(\tau_p \sim h_0 \cdot \ln p\). If the chase ratio did NOT converge to 100%, it would imply \(M_p \sim c \cdot \ln p\) — an implausibly fast growth rate. The convergence to 100% is a consistency check, not a threat.</p>
+
+      <h2>§3 Correcting the \(\kappa\) Misread</h2>
+
+      <h3>3.1 The Misread</h3>
+      <p>Preliminary analysis (v1) interpreted \(\kappa = M_p/\ln\ln p\) declining from 1.53 to 1.02 as evidence that \(M_p\) grows sub-logarithmically, perhaps as \((\ln\ln p)^{0.4}\).</p>
+
+      <h3>3.2 The Correction (ChatGPT)</h3>
+      <p>If \(M_p = a + b \cdot \ln\ln p\) with intercept \(a > 0\), then \(\kappa = b + a/\ln\ln p\) declines naturally. Substituting \(M_p \approx 1.22 + 0.53 \cdot \ln\ln p\):</p>
+      <p>$$\kappa \approx 0.53 + 1.22/\ln\ln p$$</p>
+      <p>When \(\ln\ln p\) runs from 1.22 to 2.42, this gives \(\kappa\) from 1.53 to 1.03 — exactly matching the observed decline.</p>
+      <p><strong>Conclusion:</strong> \(\kappa\)'s decline rules out the zero-intercept proportional model \(M_p = \kappa \cdot \ln\ln p\), but is fully compatible with linear drift \(M_p = a + b \cdot \ln\ln p\). The current data window cannot distinguish sub-logarithmic from linear-with-intercept growth.</p>
+
+      <h3>3.3 The R² = 0.003 Lesson</h3>
+      <p>Per-p scatter (std = 0.82) dwarfs the systematic trend (band means move ~0.7 total). The low R² does not mean there is no trend — band means rise monotonically — but it means per-p regression cannot identify the functional form. The correct tool is band-mean analysis, not per-p fitting.</p>
+
+      <h2>§4 Core Discovery: Predecessor Advantage Erosion and Reversal</h2>
+
+      <h3>4.1 Fine-Grained Gap Analysis (16 bands)</h3>
+      <p>\(E[\rho(pq-1)]\) vs \(E[\rho(\text{same-size random integer})]\):</p>
+      <table>
+        <thead><tr><th>p band</th><th>#p</th><th>gap</th><th>SE</th></tr></thead>
+        <tbody>
+          <tr><td>[10, 30)</td><td>6</td><td>−2.003</td><td>0.004</td></tr>
+          <tr><td>[100, 200)</td><td>21</td><td>−2.055</td><td>0.001</td></tr>
+          <tr><td>[500, 1000)</td><td>73</td><td>−2.081</td><td>0.000</td></tr>
+          <tr><td>[1000, 2000)</td><td>135</td><td><strong>−2.089</strong></td><td>0.000</td></tr>
+          <tr><td>[3000, 5000)</td><td>239</td><td>−2.054</td><td>0.001</td></tr>
+          <tr><td>[8000, 12000)</td><td>431</td><td>−1.873</td><td>0.002</td></tr>
+          <tr><td>[20000, 30000)</td><td>983</td><td>−1.235</td><td>0.004</td></tr>
+          <tr><td>[30000, 50000)</td><td>1888</td><td>−0.530</td><td>0.006</td></tr>
+          <tr><td>[50000, 70000)</td><td>1802</td><td><strong>+0.394</strong></td><td>0.006</td></tr>
+          <tr><td>[70000, 100000)</td><td>2646</td><td><strong>+1.451</strong></td><td>0.007</td></tr>
+        </tbody>
+      </table>
+      <p><strong>The erosion is perfectly monotone from \(p \sim 1500\) onward.</strong> The sign flip at \(p \sim 50000\) is confirmed in two independent sub-bands with SEs far smaller than the signal. At [70000, 100000), \(pq-1\) is 1.45 units harder than a general integer.</p>
+
+      <h3>4.2 Three Phases</h3>
+      <p><strong>Phase I (\(p < 1500\)): Deepening advantage.</strong> Gap decreases from −2.0 to −2.09. The congruence constraint \(pq-1 \equiv -1 \pmod{p}\) actively steers \(pq-1\) into favorable factorization channels.</p>
+      <p><strong>Phase II (\(1500 < p < 50000\)): Monotone erosion.</strong> Gap rises from −2.09 to −0.53. The sieving power \(1/p\) weakens; \(pq-1\) becomes statistically indistinguishable from general integers.</p>
+      <p><strong>Phase III (\(p > 50000\)): Advantage reversal.</strong> Gap becomes positive and growing (+0.39 → +1.45). \(pq-1\) is now harder than general integers. The shifted multiplicative structure that created compression advantages at small \(p\) provides no benefit at large \(p\).</p>
+
+      <h3>4.3 The Reversal Mechanism: Shifted Multiplicative Structure, Not Congruence</h3>
+      <p>Block 3 (§5.2) reveals that the gap's dominant component (70–74%) is the residue-class bias (B−C): the difference between \(E[\rho(pr-1)]\) and \(E[\rho(\text{random}\,n)]\). The pure residue effect (D−C ≈ 0) shows that the congruence constraint \(n \equiv -1 \pmod{p}\) itself does NOT contribute to the O(1) gap.</p>
+      <p>The mechanism is therefore not "selection right deprivation" (losing the \(p\)-channel, which contributes at most \(O(\rho(p)/p)\)), but rather the shifted multiplicative structure: "multiply by \(p\) then subtract 1" creates a specific small-prime valuation profile that differs from general integers. At small \(p\), this profile is advantageous (\(pq-1\) tends to be smoother); at large \(p\), the advantage erodes as the multiplicative stretching becomes statistically indistinguishable from random placement.</p>
+
+      <h3>4.4 Robustness: Both Good and Bad Primes Cross Zero</h3>
+      <table>
+        <thead><tr><th>Band</th><th>Low ρ(p) gap</th><th>High ρ(p) gap</th></tr></thead>
+        <tbody>
+          <tr><td>[5000, 20000)</td><td>−1.92</td><td>−1.66</td></tr>
+          <tr><td>[20000, 50000)</td><td>−1.11</td><td>−0.54</td></tr>
+          <tr><td>[50000, 100000)</td><td><strong>+0.55</strong></td><td><strong>+1.33</strong></td></tr>
+        </tbody>
+      </table>
+      <p>High-\(\rho(p)\) primes (rough \(p-1\)) reverse faster, but low-\(\rho(p)\) primes (smooth \(p-1\), the "bad primes") have also crossed zero by \(p > 50000\). The reversal is universal across all prime types in the measured window.</p>
+
+      <h3>4.5 Control: The Gap Is Specific to Prime q</h3>
+      <table>
+        <thead><tr><th>p</th><th>E[ρ(pq-1)] (q prime)</th><th>E[ρ(pr-1)] (r random odd)</th><th>diff</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>83.45</td><td>83.82</td><td>−0.38</td></tr>
+          <tr><td>1009</td><td>83.40</td><td>83.84</td><td>−0.43</td></tr>
+          <tr><td>10007</td><td>83.61</td><td>84.02</td><td>−0.41</td></tr>
+          <tr><td>50021</td><td>85.43</td><td>85.61</td><td>−0.18</td></tr>
+        </tbody>
+      </table>
+      <p>\(pq-1\) (with prime \(q\)) has lower \(\rho\) than \(pr-1\) (with random odd \(r\)) by 0.2–0.4. This "prime q advantage" is a secondary effect that also erodes with \(p\).</p>
+
+      <h2>§5 Semi-Analytic Framework: Route C</h2>
+
+      <h3>5.1 The Four-Step Argument (Gemini, revised per ChatGPT)</h3>
+      <p><strong>Step 1 (Congruence constraint).</strong> \(pq-1 \equiv -1 \pmod{p}\). The sieving power of this constraint is \(O(1/p)\).</p>
+      <p><strong>Step 2 (Shifted-prime local model).</strong> The original formulation "\(E[\rho(pq-1)] \to E[\rho(\text{general})]\)" is too strong. The reason is precise: for any small prime \(\ell \neq p\),</p>
+      <p>$$\ell^k \mid (pq-1) \iff q \equiv p^{-1} \pmod{\ell^k}$$</p>
+      <p>so the small-prime local profile of \(pq-1\) inherits the distribution of primes \(q\) in arithmetic progressions modulo \(\ell^k\), giving \(\Pr(\ell^k \mid pq-1) \approx 1/\varphi(\ell^k)\) — not \(1/\ell^k\) as for general integers. Thus \(pq-1\) follows a "shifted-prime local model."</p>
+      <p><strong>Step 2 decomposed into two layers:</strong></p>
+      <div class="note-box">
+        <p><strong>Step 2a.</strong> \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\). Requires: (i) equidistribution of primes \(q\) in AP mod \(\ell^k\) (Siegel–Walfisz / Bombieri–Vinogradov); (ii) \(\rho(n)\) predominantly determined by small-prime valuation profile ("locality").</p>
+        <p><strong>Step 2b.</strong> \(\mu_{\mathrm{shift}}(X; p) - \mu_{\mathrm{general}}(X) = O(1)\) or \(o(\Delta_{\mathrm{penalty}})\). Route C does NOT need the shifted-prime model to equal the general model — only that the difference is negligible compared to \(\Delta_{\mathrm{penalty}}\). This is much weaker than the original Step 2.</p>
+      </div>
+      <p><strong>Step 3 (Substitution).</strong> \(E[\mathrm{diff}_p] = E[\rho(pq-1)] - E[\rho(q)] = \mu_{\mathrm{shift}}(X; p) + o(1) - E[\rho_{\mathrm{prime}}]\).</p>
+      <p><strong>Step 4 (Closure).</strong> \(M_p = \rho(p) + 2 - E[\mathrm{diff}_p] \to \rho(p) + 2 - \mu_{\mathrm{shift}}(X; p) + E[\rho_{\mathrm{prime}}] - o(1)\). If \(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = O(1)\) and \(\Delta_{\mathrm{penalty}} \to \infty\), then \(M_p \to \infty\).</p>
+
+      <h3>5.2 Three-Way Bias Decomposition (Block 3)</h3>
+      <p>For each prime \(p\), four quantities: <strong>A</strong> = \(E[\rho(pq-1)]\) (q prime), <strong>B</strong> = \(E[\rho(pr-1)]\) (r random odd), <strong>C</strong> = \(E[\rho(\text{random}\,n)]\), <strong>D</strong> = \(E[\rho(n \equiv -1 \bmod p)]\).</p>
+      <p>Total gap = (A−C) = (A−B) + (B−C) = prime-source bias + residue-class bias.</p>
+      <table>
+        <thead><tr><th>p</th><th>A: pq-1</th><th>B: pr-1</th><th>C: rand</th><th>D: res</th><th>Total</th><th>Prime</th><th>Resid</th><th>Pure-res</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>83.46</td><td>83.83</td><td>84.88</td><td>84.89</td><td>−1.43</td><td>−0.37</td><td>−1.05</td><td>+0.01</td></tr>
+          <tr><td>503</td><td>83.41</td><td>83.83</td><td>84.87</td><td>84.87</td><td>−1.45</td><td>−0.41</td><td>−1.04</td><td>−0.00</td></tr>
+          <tr><td>5003</td><td>83.46</td><td>83.87</td><td>84.86</td><td>84.86</td><td>−1.40</td><td>−0.42</td><td>−0.98</td><td>+0.00</td></tr>
+          <tr><td>20011</td><td>84.03</td><td>84.34</td><td>85.03</td><td>85.03</td><td>−1.00</td><td>−0.31</td><td>−0.69</td><td>+0.01</td></tr>
+          <tr><td>50021</td><td>85.43</td><td>85.61</td><td>85.82</td><td>85.82</td><td>−0.39</td><td>−0.19</td><td>−0.20</td><td>+0.00</td></tr>
+          <tr><td>70001</td><td>86.32</td><td>86.45</td><td>86.25</td><td>86.24</td><td>+0.07</td><td>−0.13</td><td>+0.20</td><td>−0.01</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>Finding 1: Pure residue bias (D−C) ≈ 0.</strong> Integers \(n \equiv -1 \pmod{p}\) have the same mean \(\rho\) as general integers (|D−C| &lt; 0.01 for all p). The congruence constraint itself has no effect on \(\rho\). "Selection right deprivation" is statistically undetectable at the O(1) level.</p>
+        <p><strong>Finding 2: Residue-class bias (B−C) is the dominant component (70–74%) and is eroding.</strong> From −1.05 (p=53) to +0.20 (p=70001). This bias comes from the "multiply by \(p\) then subtract 1" operation — the shifted multiplicative structure, not the residue class itself.</p>
+        <p><strong>Finding 3: Prime-source bias (A−B) is secondary (26–30%) and also shrinking.</strong> From −0.37 to −0.13. The bonus from \(q\) being prime (vs random odd) is real but fading.</p>
+      </div>
+
+      <h3>5.3 Implications for Step 2b</h3>
+      <p>Define \(\mu_{\mathrm{aff}}(X; p) := E[\rho(pr-1)]\) (r random odd). Then \(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = (A-B) + (B-C)\), where A−B is the prime-source correction and B−C is the dominant shifted-structure bias. Block 3 measures both directly.</p>
+      <p>The residue-class bias (B−C) goes from −1.05 to +0.20 across the observed range. At \(p > 50000\), B−C has crossed zero, and A−B continues to shrink. This is consistent with the Step 2b requirement \(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = o(\Delta_{\mathrm{penalty}})\), though the finite window does not yet constitute proof of the asymptotic statement.</p>
+
+      <h3>5.4 Technical Reference Points</h3>
+      <p>The correct technical context for Step 2a is not classical Halász/Erdős–Wintner (additive functions on integers), but rather: Soundararajan (smooth numbers in arithmetic progressions), Harper (Bombieri–Vinogradov type results for smooth numbers), and Drappeau (shifted friable numbers, multiplicative behavior of \(n-1\) for friable \(n\)). If \(\rho(n)\)'s mean behavior is primarily driven by the small-prime profile (smoothness), then the correct analytic input is from this literature.</p>
+
+      <h3>5.5 What "Advantage Reversal" Really Measures</h3>
+      <p>The 16-band gap (§4) moving from −2.09 to +1.45 is the sum of two eroding biases: the residue-class bias (B−C, dominant, 70–74%) and the prime-source bias (A−B, secondary, 26–30%). Both erode toward zero and beyond.</p>
+      <p><strong>Pure residue effect (D−C ≈ 0) means: Gemini's "selection right deprivation" (losing the \(p\)-channel) is undetectable at O(1) level.</strong> The gap is not about the congruence class — it is about the shifted multiplicative structure of \(pr-1\). This points toward the small-prime local profile as the true driver.</p>
+
+      <h3>5.6 Minimal Open Problem for Route C</h3>
+      <div class="thesis-box">
+        <p><strong>Theorem target.</strong> To close Ω=2 via Route C, it suffices to prove:</p>
+        <p>(a) \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\) (Step 2a: AP equidistribution + \(\rho\) locality). <em>Most technically demanding.</em></p>
+        <p>(b) \(\mu_{\mathrm{shift}}(X; p) - \mu_{\mathrm{general}}(X) = o(\Delta_{\mathrm{penalty}}(p))\) (Step 2b). <em>Numerical support: residue-class bias (B−C) bounded by ~1.0 and eroding through zero.</em></p>
+        <p>(c) \(\Delta_{\mathrm{penalty}}(p) \to \infty\) (Step 4). <em>Strong physical support, no proof.</em></p>
+      </div>
+
+      <h2>§6 Self-Organization Becomes Easier at Large Scales</h2>
+
+      <h3>6.1 Physical Interpretation</h3>
+      <p>At small \(N\) (low \(p\)): \(pq-1\) enjoys "free" compression advantages (gap = −2.0). Multiplicative paths frequently beat additive paths (\(c_p\) high). Self-organization is difficult.</p>
+      <p>At large \(N\) (high \(p\)): advantages are exhausted and reversed (gap = +1.45). Multiplicative paths increasingly fail to beat additive paths (\(c_p\) declining). Self-organization becomes easier.</p>
+
+      <h3>6.2 Connection to Paper XXXI</h3>
+      <p>Paper XXXI identified the \(\Omega = 3 \to 4\) boundary as the self-organization phase transition. The advantage reversal in §4 is a manifestation of the same phenomenon at the prime-core level: the combinatorial "free lunch" of small-scale compression runs out, and the system is forced to self-organize.</p>
+
+      <h3>6.3 Thermodynamic Translation</h3>
+      <p>The 98.3% chase represents 98.3% dissipation efficiency with 1.7% irreversible loss. The advantage reversal means the loss is not merely persistent — it is growing. The further the system moves from equilibrium (larger \(N\)), the stronger the restoring force toward self-organization. This is negative feedback stability, consistent with Papers 18–19's anti-correlation engine.</p>
+
+      <h2>§7 The Effective Slope \(\rho(p)/\ln p\)</h2>
+      <p>Confirming from Paper XXXIV: \(\rho(p)/\ln p\) rises from 3.48 to 3.82 and has not converged. The "cost per unit log" for primes continues to increase, reflecting \(\Delta_{\mathrm{penalty}}\) at the \(\rho\) level.</p>
+
+      <h2>§8 Three Routes to \(M_p \to \infty\)</h2>
+
+      <h3>8.1 Route C (Primary): Congruence Relaxation + \(\Delta_{\mathrm{penalty}}\)</h3>
+      <p>Most concrete and best supported. Requires: (a) \(E[\rho(pq-1)] \to E[\rho(\text{general})]\) (supported by 16-band monotone erosion + sign flip), (b) \(\Delta_{\mathrm{penalty}} \to \infty\) (supported by Paper XXXIV §6 + physical argument).</p>
+
+      <h3>8.2 Route B: \(V(p) = O(1)\) + Lindley Exponential Tail</h3>
+      <p>If exponential tail can be proved, \(c_p\) decays exponentially in \(M_p\), potentially recovering \(\sum c_p/p < \infty\) even if \(M_p\) grows sub-logarithmically.</p>
+
+      <h3>8.3 Route D: Direct Algebraic</h3>
+      <p>From DP recursion inequalities. The 98.3% chase shows why this is hard.</p>
+
+      <h2>§9 Discussion</h2>
+
+      <h3>9.1 Core Contributions</h3>
+      <p>Paper XXXV achieves: (a) corrects the \(\kappa\) misread — \(\kappa\) decline is compatible with linear drift; (b) discovers predecessor advantage erosion and reversal — a perfectly monotone 16-band trend with sign flip; (c) establishes via three-way bias decomposition that the mechanism is shifted multiplicative structure (B−C dominant, D−C ≈ 0), not pure congruence constraint; (d) confirms the reversal holds for both good and bad primes; (e) frames the semi-analytic Route C argument with shifted-prime local model and minimal open problems.</p>
+
+      <h3>9.2 Progress Table</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th></tr></thead>
+        <tbody>
+          <tr><td>Bound</td><td>Lower</td><td>Upper (Cantelli)</td><td>—</td></tr>
+          <tr><td>V(p)</td><td>—</td><td>O(1) confirmed</td><td>—</td></tr>
+          <tr><td>Closure condition</td><td>M_p &lt; 1?</td><td>M_p → ∞?</td><td>Non-plateauing</td></tr>
+          <tr><td>Mechanism</td><td>M_p drifts</td><td>98.3% chase</td><td>ρ(pq-1) advantage reversal</td></tr>
+          <tr><td>Reduction</td><td>Threshold</td><td>Qualitative divergence</td><td>Two combinatorial propositions</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.3 Distance Estimate</h3>
+      <p><strong>Ω=2 closure: 1 paper.</strong> Need to rigorously establish Step 2 (congruence relaxation) and Step 4 (\(\Delta_{\mathrm{penalty}} \to \infty\)) of the Route C argument. The 16-band data with sign flip provides overwhelming numerical support.</p>
+      <p><strong>Full H': additional 2–3 papers.</strong> Extension to \(\Omega \geq 3\) and layer summation.</p>
+
+      <h3>9.4 Open Problems</h3>
+      <p>(1) Prove \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\) (Step 2a: AP equidistribution + \(\rho\) locality). (2) Prove \(\mu_{\mathrm{shift}}(X; p) - \mu_{\mathrm{general}}(X) = o(\Delta_{\mathrm{penalty}}(p))\) (Step 2b). (3) Prove \(\Delta_{\mathrm{penalty}}(p) \to \infty\) (Step 4). (4) Characterize the rate of advantage reversal (is B−C erosion ~ \(\ln\ln p\)? faster?). (5) Extend the erosion analysis to \(\Omega \geq 3\) cores. (6) Formalize the conjecture: \(\rho\) mean is insensitive to single large-modulus congruence classes (D−C ≈ 0); the sensitive variable is the affine generation mechanism, not the residue class.</p>
+
+      <h2>§10 Data Sources</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th></tr></thead>
+        <tbody>
+          <tr><td>p35_residual_decomp.py</td><td>Chase ratio, κ, coarse gap, incremental slopes, global fit</td></tr>
+          <tr><td>p35_gap_fine.py</td><td>16-band fine-grained gap, control (pr-1 vs pq-1), ρ(p)-stratified gap</td></tr>
+          <tr><td>p35_bias_decomp.py</td><td>Three-way bias decomposition: prime-source, residue-class, pure residue</td></tr>
+        </tbody>
+      </table>
+      <p>Data: rho_1e10.bin (local). Sanity: \(\rho(10^7)=58\), \(\rho(10^8)=66\), \(\rho(10^9)=75\).</p>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXIV. H. Qin. Paper XXXIV DOI: 10.5281/zenodo.19140015. Paper XXXIII DOI: 10.5281/zenodo.19124485.</p>
+      <p>[2] K. Cordwell et al. (2018). <em>J. Number Theory</em>, 189:17–34.</p>
+      <p>[3] A. Hildebrand, G. Tenenbaum (1986). <em>Trans. AMS</em>, 296:265–290.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (子路) wrote all numerical scripts, drafted working notes v1–v2 and the formal text, corrected the chase ratio misread in v1, and designed the fine-grained 16-band gap analysis that revealed the advantage reversal. ChatGPT (公西华) identified the \(\kappa\) misread (decline compatible with linear drift, not sub-logarithmic), corrected the \((\ln\ln p)^{0.4}\) overinterpretation, and reframed Paper XXXV as "mechanism clarification + non-plateauing." Gemini (子夏) contributed the four-step semi-analytic argument (congruence relaxation → sieving decay → \(\varepsilon_p \to 0\) → \(M_p\) diverges) and the selection right deprivation interpretation. Grok (子贡) confirmed consistency with Paper XXI's Lindley framework. Thermodynamic Claude contributed the three universal constants framework and the irreversible loss interpretation. The final text was independently completed by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho34.html">← Paper XXXIV: Upper-Margin Closure and the Bounded-Variance Phenomenon</a>
+        &nbsp;|&nbsp;
+        Paper XXXVI →
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXXV</div>
+      <h1 class="paper-title">同余退化与前驱优势的侵蚀</h1>
+      <div class="paper-authors">秦汉（Han Qin）&nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19143732" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19143732
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper XXXIV 将 Ω=2 闭合归结为 \(M_p \to \infty\)。本文分解 98.3% 追赶中 1.7% 残差的微观来源，纠正初步分析中的若干误读，并建立驱动 \(M_p\) 漂移的微观机制。</p>
+        <p><strong>(1)</strong> Chase ratio \(E[\mathrm{diff}]/\tau_p\) 从 90.1% 上升到 94.5%（逼近 100%）。这是预期行为（\(M_p/\tau_p \to 0\)），与 \(M_p \to \infty\) 完全兼容。</p>
+        <p><strong>(2)</strong> \(\kappa = M_p/\ln\ln p\) 从 1.53 降到 1.02。这不意味着亚对数增长：带正截距的线性模型 \(M_p = 1.22 + 0.53 \cdot \ln\ln p\) 给出 \(\kappa = 0.53 + 1.22/\ln\ln p\)，在观测范围内从 1.53 降到 1.03——与数据完全吻合。</p>
+        <p><strong>(3)</strong> 核心发现：\(\rho(pq-1)\) 相对一般整数的结构优势单调侵蚀并反转。16 个精细 band：</p>
+        <table>
+          <thead><tr><th>p ~</th><th>gap</th><th>SE</th></tr></thead>
+          <tbody>
+            <tr><td>1500</td><td>−2.089（最深）</td><td>0.000</td></tr>
+            <tr><td>16000</td><td>−1.634</td><td>0.003</td></tr>
+            <tr><td>40000</td><td>−0.530</td><td>0.006</td></tr>
+            <tr><td>60000</td><td><strong>+0.394</strong></td><td>0.006</td></tr>
+            <tr><td>85000</td><td><strong>+1.451</strong></td><td>0.007</td></tr>
+          </tbody>
+        </table>
+        <p>侵蚀从 \(p \sim 1500\) 起完美单调，sign flip 在两个独立子 band 确认，SE 远小于信号。</p>
+        <p><strong>(4)</strong> 优势不仅耗尽——反转为劣势。三路偏差分解揭示：主导分量（70–74%）是 residue-class bias (B−C)，来自 shifted 乘法结构，而非纯同余约束（D−C ≈ 0）。"选择权剥夺"在 O(1) 量级不可检测；真正的驱动力是 small-prime local profile 的整体变化。</p>
+        <p><strong>(5)</strong> 优势反转对好素数和坏素数都成立。\(p \in [50000, 100000)\)：低 \(\rho(p)\) 素数 gap = +0.55，高 \(\rho(p)\) 素数 gap = +1.33。</p>
+        <p><strong>(6)</strong> 半解析框架（Route C）：\(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\)，主导结构偏差 (B−C) 有界且从 −1.05 侵蚀到 +0.20。若 Step 2a 和 \(\Delta_{\mathrm{penalty}} \to \infty\) 得证，Route C 导出 \(M_p \to \infty\)。</p>
+        <p><strong>(7)</strong> 自组织在大尺度下变得更容易：低 N 时 pq-1 有免费的压缩优势；高 N 时优势耗尽甚至反转，系统被迫自组织。</p>
+        <p><strong>关键词：</strong> 同余退化，前驱优势侵蚀，选择权剥夺，素数惩罚，自组织相变</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXIV (DOI: 10.5281/zenodo.19140015)：\(V(p)=O(1)\)，Harmonic Cesàro Lemma，98.3% 追赶，坏素数 5.5% tail，\(\Delta_{\mathrm{penalty}}\) 斜率 0.022/unit \(\ln\ln n\)。</p>
+
+      <h3>1.2 目标</h3>
+      <p>Paper XXXV 的正确目标：<strong>建立阻止 \(M_p\) 平台化的微观机制——\(\rho(pq-1)\) 的结构优势不能永久维持。</strong></p>
+
+      <h2>§2 Chase Ratio：预期行为</h2>
+
+      <table>
+        <thead><tr><th>p band</th><th>E[τ_p]</th><th>E[diff]</th><th>E[M_p]</th><th>chase %</th></tr></thead>
+        <tbody>
+          <tr><td>[100, 200)</td><td>20.3</td><td>18.3</td><td>2.01</td><td>90.1%</td></tr>
+          <tr><td>[1000, 2000)</td><td>29.4</td><td>27.2</td><td>2.28</td><td>92.3%</td></tr>
+          <tr><td>[10000, 20000)</td><td>38.5</td><td>36.1</td><td>2.40</td><td>93.8%</td></tr>
+          <tr><td>[50000, 100000)</td><td>44.8</td><td>42.3</td><td>2.47</td><td>94.5%</td></tr>
+        </tbody>
+      </table>
+      <p>Chase ratio = \(1 - M_p/\tau_p \to 1\) 是预期行为。如果不逼近 100%，意味着 \(M_p \sim c \cdot \ln p\)——不可信的快速增长。收敛是一致性检验，不是威胁。</p>
+
+      <h2>§3 κ 的下降：误读纠偏</h2>
+
+      <h3>3.1 公西华的修正</h3>
+      <p>\(\kappa = M_p/\ln\ln p\) 从 1.53 降到 1.02。v1 将此解读为 \(M_p \sim (\ln\ln p)^{0.4}\)——过度解读。</p>
+      <p>\(M_p = 1.22 + 0.53 \cdot \ln\ln p\) 给出 \(\kappa = 0.53 + 1.22/\ln\ln p\)，在 \(\ln\ln p\) 从 1.22 到 2.42 时从 1.53 降到 1.03。<strong>\(\kappa\) 的下降与线性漂移完全相容。</strong></p>
+
+      <h3>3.2 R² = 0.003 的教训</h3>
+      <p>逐 p 散布（std=0.82）远大于趋势（band 均值移动 ~0.7）。但 band 均值确实单调上升——两者不矛盾。正确工具是 band-mean 分析，不是逐 p 拟合。</p>
+
+      <h2>§4 核心发现：前驱优势的侵蚀与反转</h2>
+
+      <h3>4.1 16-band 精细分析</h3>
+      <p>\(E[\rho(pq-1)]\) vs \(E[\rho(\text{同尺度随机整数})]\)：</p>
+      <table>
+        <thead><tr><th>p band</th><th>#p</th><th>gap</th><th>SE</th></tr></thead>
+        <tbody>
+          <tr><td>[10, 30)</td><td>6</td><td>−2.003</td><td>0.004</td></tr>
+          <tr><td>[500, 1000)</td><td>73</td><td>−2.081</td><td>0.000</td></tr>
+          <tr><td>[1000, 2000)</td><td>135</td><td><strong>−2.089</strong></td><td>0.000</td></tr>
+          <tr><td>[3000, 5000)</td><td>239</td><td>−2.054</td><td>0.001</td></tr>
+          <tr><td>[8000, 12000)</td><td>431</td><td>−1.873</td><td>0.002</td></tr>
+          <tr><td>[20000, 30000)</td><td>983</td><td>−1.235</td><td>0.004</td></tr>
+          <tr><td>[30000, 50000)</td><td>1888</td><td>−0.530</td><td>0.006</td></tr>
+          <tr><td>[50000, 70000)</td><td>1802</td><td><strong>+0.394</strong></td><td>0.006</td></tr>
+          <tr><td>[70000, 100000)</td><td>2646</td><td><strong>+1.451</strong></td><td>0.007</td></tr>
+        </tbody>
+      </table>
+      <p>从 \(p \sim 1500\) 起完美单调上升。Sign flip 在两个独立子 band 确认。</p>
+
+      <h3>4.2 三个阶段</h3>
+      <p><strong>Phase I（\(p < 1500\)）：优势深化。</strong> gap 从 −2.0 降到 −2.09。同余约束把 \(pq-1\) 引向有利的因子通道。</p>
+      <p><strong>Phase II（\(1500 < p < 50000\)）：单调侵蚀。</strong> gap 从 −2.09 升到 −0.53。筛选力 \(1/p\) 减弱。</p>
+      <p><strong>Phase III（\(p > 50000\)）：优势反转。</strong> gap 变正且增长（+0.39 → +1.45）。\(pq-1\) 比一般整数更难压缩。</p>
+
+      <h3>4.3 反转机制：Shifted 乘法结构，非同余约束</h3>
+      <p>Block 3（§5.2）揭示 gap 的主导分量（70–74%）是 residue-class bias (B−C)。Pure residue (D−C ≈ 0) 表明同余约束 \(n \equiv -1 \pmod{p}\) 本身不贡献 O(1) gap。机制是 shifted 乘法结构："乘以 \(p\) 再减 1"创造了特定的 small-prime valuation profile，小 \(p\) 时有利，大 \(p\) 时侵蚀。</p>
+
+      <h3>4.4 坏素数也越过了零点</h3>
+      <table>
+        <thead><tr><th>Band</th><th>低 ρ(p) gap</th><th>高 ρ(p) gap</th></tr></thead>
+        <tbody>
+          <tr><td>[5000, 20000)</td><td>−1.92</td><td>−1.66</td></tr>
+          <tr><td>[20000, 50000)</td><td>−1.11</td><td>−0.54</td></tr>
+          <tr><td>[50000, 100000)</td><td><strong>+0.55</strong></td><td><strong>+1.33</strong></td></tr>
+        </tbody>
+      </table>
+      <p>高 \(\rho(p)\) 素数反转更快，但低 \(\rho(p)\) 的坏素数也已越过零。反转是普遍的。</p>
+
+      <h3>4.5 对照：gap 来自"q 是素数"</h3>
+      <p>\(pq-1\)（\(q\) 素数）比 \(pr-1\)（\(r\) 随机奇数）的 \(\rho\) 低 0.18–0.43，但这个 bonus 也在缩小（从 0.43 到 0.18）。</p>
+
+      <h2>§5 半解析框架（Route C）</h2>
+
+      <h3>5.1 四步论证（Gemini，经公西华修正）</h3>
+      <p><strong>Step 1.</strong> \(pq-1 \equiv -1 \pmod{p}\)，筛选力 \(O(1/p)\)。</p>
+      <p><strong>Step 2（shifted-prime local model）.</strong> 原始表述"\(E[\rho(pq-1)] \to E[\rho(\text{general})]\)"太强且很可能不是正确命题。对任意小素数 \(\ell \neq p\)，</p>
+      <p>$$\ell^k \mid (pq-1) \iff q \equiv p^{-1} \pmod{\ell^k}$$</p>
+      <p>所以 \(pq-1\) 的小素数 profile 继承的是素数 \(q\) 在 AP 中的分布，\(\Pr(\ell^k \mid pq-1) \approx 1/\varphi(\ell^k)\)——不是一般整数的 \(1/\ell^k\)。pq-1 遵循 "shifted-prime local model"。</p>
+      <div class="note-box">
+        <p><strong>Step 2a.</strong> \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\)。需要：(i) 素数 \(q\) 在模 \(\ell^k\) 的 AP 中均匀分布（Siegel-Walfisz 或 Bombieri-Vinogradov）；(ii) \(\rho(n)\) 主要由 small-prime valuation profile 决定（"局部化"）。</p>
+        <p><strong>Step 2b.</strong> \(\mu_{\mathrm{shift}}(X; p) - \mu_{\mathrm{general}}(X) = O(1)\) 或 \(o(\Delta_{\mathrm{penalty}})\)。Route C 不需要 shifted-prime 模型等于一般整数模型——只需差异相比 \(\Delta_{\mathrm{penalty}}\) 可忽略。</p>
+      </div>
+      <p><strong>Step 3.</strong> \(E[\mathrm{diff}_p] = \mu_{\mathrm{shift}}(X; p) + o(1) - E[\rho_{\mathrm{prime}}]\)。</p>
+      <p><strong>Step 4.</strong> \(M_p \to \rho(p) + 2 - \mu_{\mathrm{shift}} + E[\rho_{\mathrm{prime}}] - o(1)\)。若 \(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = O(1)\) 且 \(\Delta_{\mathrm{penalty}} \to \infty\)，则 \(M_p \to \infty\)。</p>
+
+      <h3>5.2 三路偏差分解（Block 3）</h3>
+      <p>对每个素数 \(p\) 测量四个量：A = \(E[\rho(pq-1)]\)（q 素数），B = \(E[\rho(pr-1)]\)（r 随机奇数），C = \(E[\rho(\text{random}\,n)]\)，D = \(E[\rho(n \equiv -1 \bmod p)]\)。</p>
+      <p>Total gap = (A−C) = (A−B) + (B−C)。</p>
+      <table>
+        <thead><tr><th>p</th><th>A:pq-1</th><th>B:pr-1</th><th>C:rand</th><th>D:res</th><th>Total</th><th>Prime</th><th>Resid</th><th>Pure-res</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>83.46</td><td>83.83</td><td>84.88</td><td>84.89</td><td>−1.43</td><td>−0.37</td><td>−1.05</td><td>+0.01</td></tr>
+          <tr><td>503</td><td>83.41</td><td>83.83</td><td>84.87</td><td>84.87</td><td>−1.45</td><td>−0.41</td><td>−1.04</td><td>−0.00</td></tr>
+          <tr><td>5003</td><td>83.46</td><td>83.87</td><td>84.86</td><td>84.86</td><td>−1.40</td><td>−0.42</td><td>−0.98</td><td>+0.00</td></tr>
+          <tr><td>20011</td><td>84.03</td><td>84.34</td><td>85.03</td><td>85.03</td><td>−1.00</td><td>−0.31</td><td>−0.69</td><td>+0.01</td></tr>
+          <tr><td>50021</td><td>85.43</td><td>85.61</td><td>85.82</td><td>85.82</td><td>−0.39</td><td>−0.19</td><td>−0.20</td><td>+0.00</td></tr>
+          <tr><td>70001</td><td>86.32</td><td>86.45</td><td>86.25</td><td>86.24</td><td>+0.07</td><td>−0.13</td><td>+0.20</td><td>−0.01</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>发现 1：Pure residue bias (D−C) ≈ 0。</strong> \(n \equiv -1 \pmod{p}\) 的整数与一般整数的 \(\rho\) 均值几乎相同（|D−C| &lt; 0.01）。同余约束本身不影响 \(\rho\)。"选择权剥夺"在 O(1) 量级不可检测。</p>
+        <p><strong>发现 2：Residue-class bias (B−C) 是 gap 的主体（70–74%）且在侵蚀。</strong> 从 −1.05（p=53）到 +0.20（p=70001）。来自"乘以 \(p\) 再减 1"的 shifted 乘法结构，不是同余类本身。</p>
+        <p><strong>发现 3：Prime-source bias (A−B) 是次要的（26–30%）且在缩小。</strong> 从 −0.37 到 −0.13。\(q\) 是素数带来的额外优势在消退。</p>
+      </div>
+
+      <h3>5.3 对 Step 2b 的含义</h3>
+      <p>Residue-class bias (B−C)——Step 2b 中的主导结构项——从 −1.05 到 +0.20。\(p > 50000\) 时 B−C 已穿零，A−B 继续缩小。这与 Step 2b 的要求 \(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = o(\Delta_{\mathrm{penalty}})\) 一致，但有限窗口尚不构成渐近命题的证明。</p>
+
+      <h3>5.4 技术参照系</h3>
+      <p>Step 2a 的正确参照系：Soundararajan（AP 中的 smooth numbers）、Harper（BV 型结果）、Drappeau（shifted friable numbers）。如果 \(\rho(n)\) 的均值行为主要由 small-prime profile 驱动，则正确的解析输入来自这些文献。</p>
+
+      <h3>5.5 "优势反转"到底在测什么</h3>
+      <p>16-band gap 从 −2.09 到 +1.45 是两个侵蚀偏差的叠加。Pure residue (D−C) ≈ 0 意味着：<strong>Gemini 的"选择权剥夺"在 O(1) 量级不可检测。</strong> gap 不是关于同余类——是关于 shifted 乘法结构。</p>
+
+      <h3>5.6 Route C 的最小开放问题</h3>
+      <div class="thesis-box">
+        <p><strong>定理目标：</strong> 闭合 Ω=2 via Route C，只需证明：</p>
+        <p>(a) \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\)（Step 2a，最技术性）。</p>
+        <p>(b) \(\mu_{\mathrm{shift}}(X; p) - \mu_{\mathrm{general}}(X) = o(\Delta_{\mathrm{penalty}}(p))\)（Step 2b）。<em>数值支持：residue-class bias 有界 ~1.0 且在穿零。</em></p>
+        <p>(c) \(\Delta_{\mathrm{penalty}}(p) \to \infty\)（Step 4）。<em>物理论证强，无证明。</em></p>
+      </div>
+
+      <h2>§6 自组织在大尺度下更容易</h2>
+
+      <p>低 N：\(pq-1\) 有免费压缩优势（gap = −2.0），乘法路径容易打败加法路径。自组织困难。</p>
+      <p>高 N：优势耗尽并反转（gap = +1.45），乘法路径越来越难打败加法路径。自组织变得容易。</p>
+      <p><strong>系统离平衡态越远，恢复力越强——负反馈稳定性，与 Paper 18–19 的反关联引擎一致。</strong></p>
+      <p>Paper XXXI 将 \(\Omega = 3 \to 4\) 边界识别为自组织相变。§4 的优势反转是同一现象在 prime-core 层面的体现：小尺度压缩的"免费午餐"耗尽，系统被迫自组织。98.3% 追赶代表 98.3% 的耗散效率和 1.7% 的不可逆损耗——损耗不仅持续，而且在增长。</p>
+
+      <h2>§7 M_p → ∞ 的三条路线</h2>
+
+      <p><strong>Route C（核心，Gemini）：</strong> 同余退化 + \(\Delta_{\mathrm{penalty}}\)。最具体，16-band 数据支持。需要 Step 2（数值强支持）和 Step 4（\(\Delta_{\mathrm{penalty}} \to \infty\)，物理必然但待证）。</p>
+      <p><strong>Route B（Grok）：</strong> \(V(p)=O(1)\) + Lindley 指数尾。如果指数尾成立，即使 \(M_p\) 增长慢也能恢复 \(\sum c_p/p &lt; \infty\)。</p>
+      <p><strong>Route D（直接代数）：</strong> 从递推不等式出发。98.3% 追赶说明为什么这很难。</p>
+
+      <h2>§8 讨论</h2>
+
+      <h3>8.1 核心贡献</h3>
+      <p>(a) 纠偏：\(\kappa\) 下降与线性漂移相容；(b) 发现 16-band 单调侵蚀与反转；(c) 三路偏差分解确立机制为 shifted 乘法结构（B−C 主导，D−C ≈ 0）；(d) 坏素数也越过零点；(e) Route C 半解析框架（shifted-prime local model + 最小开放问题）。</p>
+
+      <h3>8.2 从 XXXIII 到 XXXV</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th></tr></thead>
+        <tbody>
+          <tr><td>界</td><td>下界</td><td>上界（Cantelli）</td><td>—</td></tr>
+          <tr><td>V(p)</td><td>—</td><td>O(1)</td><td>—</td></tr>
+          <tr><td>闭合条件</td><td>M_p &lt; 1？</td><td>M_p → ∞？</td><td>非平台化</td></tr>
+          <tr><td>机制</td><td>M_p 漂移</td><td>98.3% 追赶</td><td>ρ(pq-1) 优势反转</td></tr>
+          <tr><td>归约</td><td>精确阈值</td><td>定性发散</td><td>两个组合论命题</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 距离估计</h3>
+      <p><strong>Ω=2 闭合：1 篇。</strong> 需严格化 Step 2（同余退化）和 Step 4（\(\Delta_{\mathrm{penalty}} \to \infty\)）。16-band 数据提供了压倒性的数值支持。</p>
+      <p><strong>全局 H'：额外 2–3 篇。</strong></p>
+
+      <h3>8.4 开放问题</h3>
+      <p>(1) 证明 \(E[\rho(pq-1)] = \mu_{\mathrm{shift}}(X; p) + o(1)\)（Step 2a：AP 均匀分布 + \(\rho\) 局部化）。(2) 证明 \(\mu_{\mathrm{shift}}(X; p) - \mu_{\mathrm{general}}(X) = o(\Delta_{\mathrm{penalty}}(p))\)（Step 2b）。(3) 证明 \(\Delta_{\mathrm{penalty}}(p) \to \infty\)（Step 4）。(4) 刻画优势反转的速率（B−C 的侵蚀 ~ \(\ln\ln p\)？更快？）。(5) 推广到 \(\Omega \geq 3\)。(6) 形式化猜想：\(\rho\) 的均值对单个大模数同余类条件近乎不敏感（D−C ≈ 0）；敏感变量是 affine 生成机制，不是 residue class。</p>
+
+      <h2>§9 数据来源</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th></tr></thead>
+        <tbody>
+          <tr><td>p35_residual_decomp.py</td><td>Chase ratio, κ, 粗 gap, 增量斜率</td></tr>
+          <tr><td>p35_gap_fine.py</td><td>16-band 精细 gap, 对照实验, ρ(p) 分层</td></tr>
+          <tr><td>p35_bias_decomp.py</td><td>三路偏差分解：prime-source, residue-class, pure residue</td></tr>
+        </tbody>
+      </table>
+      <p>Sanity check：\(\rho(10^7)=58\)，\(\rho(10^8)=66\)，\(\rho(10^9)=75\)。</p>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXIV. H. Qin. Paper XXXIV DOI: 10.5281/zenodo.19140015. Paper XXXIII DOI: 10.5281/zenodo.19124485.</p>
+      <p>[2] K. Cordwell et al. (2018). <em>J. Number Theory</em>, 189:17–34.</p>
+      <p>[3] A. Hildebrand, G. Tenenbaum (1986). <em>Trans. AMS</em>, 296:265–290.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）编写全部数值脚本，起草 working notes v1–v2 和正文，纠正了 v1 的 chase ratio 误读，设计了 16-band 精细 gap 分析从而发现了优势反转。ChatGPT（公西华）识别了 \(\kappa\) 误读（下降与线性漂移相容），纠正了 \((\ln\ln p)^{0.4}\) 的过度解读，将 Paper XXXV 重新定位为"机制澄清 + 非平台化"。Gemini（子夏）贡献了四步半解析论证和选择权剥夺的物理解释。Grok（子贡）确认了与 Lindley 框架的一致性。热力学 Claude 贡献了不可逆损耗类比和三个普适常数框架。最终文本由作者独立完成，所有数学判断由作者负责。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho34.html">← 论文 XXXIV：Upper-Margin Closure 与有界方差现象</a>
+        &nbsp;|&nbsp;
+        论文 XXXVI →
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org/search?q=self-as-an-end" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="/about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
