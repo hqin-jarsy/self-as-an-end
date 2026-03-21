@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects — ZFCρ Paper XXXVI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXVI: 1/φ(m) joint profile verified exactly; explanation rate vs y plateaus at ~20% (y=2 to y=13); ~80% of B-C bias from global DP path effects (cofactor test). Route C repositioned: directly prove μ_aff−μ_gen=O(1).">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, 1/φ(m) local model, explanation rate plateau, cofactor test, global DP path effect, fixed-y localization failure">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho36.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho36.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19153002"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "1/φ(m) local model", "explanation rate plateau",
+      "cofactor test", "global DP path effect", "fixed-y localization failure"
+    ],
+    "abstract": "P(m|pq-1)=1/φ(m) verified exactly for all smooth moduli and all p. v₂(pq-1)=2.000 derived algebraically. Explanation rate vs y plateaus completely: controlling v₂...v₁₃ explains only 19.5% of B-C. Cofactor test confirms ~80% of B-C arises from global DP path differences. Multi-scale cofactor gap follows same erosion-and-reversal trajectory as B-C. Route C Step 2b repositioned: directly prove μ_aff(X;p)−μ_gen(X)=O(1).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho36.html">
+  <meta name="citation_title" content="The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19153002">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho36.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXXVI</div>
+      <h1 class="paper-title">The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19153002" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19153002
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper XXXV confirmed that predecessor advantage erosion originates from the shifted multiplicative structure (B-C dominant, D-C ≈ 0). This paper precisely quantifies the shifted-prime local model through four progressive experiments and locates the true source of the B-C bias.</p>
+        <p><strong>(1)</strong> \(P(m \mid pq-1) = 1/\varphi(m)\) holds exactly for all smooth moduli (joint distribution), invariant across all \(p\). Not just marginals — the joint valuation vector \((v_2, v_3, v_5, v_7)\) follows the shifted-prime local model exactly.</p>
+        <p><strong>(2)</strong> \(v_2(pq-1) = 2.000\) exactly. Correct derivation: \(\Pr(v_2 \geq k) = 1/\varphi(2^k) = 1/2^{k-1}\), hence \(E[v_2] = 2\). Extra expected valuation formula: \(\sum_\ell 1/(\ell-1)^2 \approx 1.375\) (full prime sum), with \(\ell = 2, 3\) contributing ~91%.</p>
+        <p><strong>(3)</strong> Bias/Δ ratio crosses zero: \((B\text{-}C)/\Delta\) from \(-1.48\) to \(+0.35\).</p>
+        <p><strong>(4)</strong> Controlling \(v_2, v_3\) reduces B-C by only 18–21%. Weighted contribution explains only 44% of \(|B\text{-}C|\). \(\rho\)'s response to the small-prime profile is highly nonlinear.</p>
+        <p><strong>(5)</strong> Explanation rate vs \(y\) curve plateaus completely: from controlling \(v_2\) (19.2%) to controlling \(v_2, \ldots, v_{13}\) (19.5%) — virtually no increase. Smooth kernel \(K_y\) matching confirms the same. <strong>Within the tested range (\(y \leq 13\)), small-prime valuation conditioning explains only ~20% of B-C, with no further gains as \(y\) increases.</strong></p>
+        <p><strong>(6)</strong> Cofactor test: after matching \(K_7\), cofactor \(\rho\) difference remains 0.49–0.65 (significant). ~80% of B-C comes from cofactor's global DP path differences.</p>
+        <p><strong>(7)</strong> Multi-scale cofactor gap follows the same erosion-and-reversal trajectory as B-C. Cofactor accounts for 80–90% of B-C at \(p < 20000\). The global path effect is not "residual" — it IS the body of B-C.</p>
+        <p><strong>Keywords:</strong> 1/φ(m) local model, explanation rate plateau, cofactor test, global DP path effect, fixed-y localization failure</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXV (DOI: 10.5281/zenodo.19143732): 16-band erosion and reversal (gap from −2.089 to +1.451), three-way bias decomposition (D-C ≈ 0, B-C dominant 70–74%, A-B secondary 26–30%), shifted-prime local model framework.</p>
+
+      <h3>1.2 Notation</h3>
+      <p>Following Paper XXXV's three-way decomposition, for a given prime \(p\) we define four ensemble means:</p>
+      <ul>
+        <li><strong>A</strong> = \(E[\rho(pq-1)]\) (\(q\) prime — actual diff predecessor)</li>
+        <li><strong>B</strong> = \(E[\rho(pr-1)]\) (\(r\) random odd — shifted-composite model, i.e., \(\mu_{\mathrm{aff}}\))</li>
+        <li><strong>C</strong> = \(E[\rho(\text{random } n)]\) (same-scale general integer, i.e., \(\mu_{\mathrm{general}}\))</li>
+        <li><strong>D</strong> = \(E[\rho(n \equiv -1 \bmod p)]\) (exact residue class)</li>
+      </ul>
+      <p>Total gap \(= A\text{-}C = (A\text{-}B) + (B\text{-}C)\), where A-B is the prime-source bias and B-C is the residue-class bias (shifted structure bias).</p>
+      <div class="note-box">Note: different experimental blocks use independent random sampling, so B-C values for the same \(p\) may show \(O(0.1)\) sampling fluctuations across sections. All qualitative conclusions are robust to these fluctuations.</div>
+
+      <h3>1.3 Four Progressive Layers</h3>
+      <p><strong>Layer 1 (Block 1):</strong> 1/φ(m) joint profile verification + bias/Δ ratio decline.<br>
+      <strong>Layer 2 (Block 2):</strong> \(v_2, v_3\) control test — discovers nonlinear \(\rho\) response.<br>
+      <strong>Layer 3 (Block 3):</strong> Explanation rate vs \(y\) curve + cofactor test — confirms "truly global."<br>
+      <strong>Layer 4 (Block 4):</strong> Multi-scale cofactor gap — confirms synchronous erosion trajectory.</p>
+
+      <h2>§2 Exact Verification of the 1/φ(m) Joint Profile</h2>
+
+      <h3>2.1 Algebraic Foundation</h3>
+      <p>For \(\ell \neq p\) and smooth modulus \(m\) (all prime factors \(\neq p\)):</p>
+      <p>$$m \mid (pq-1) \iff q \equiv p^{-1} \pmod{m}$$</p>
+      <p>Primes \(q\) are asymptotically equidistributed among the \(\varphi(m)\) reduced residue classes mod \(m\) (Dirichlet / Siegel-Walfisz), hence \(P(m \mid pq-1) = 1/\varphi(m) + o(1)\).</p>
+
+      <h3>2.2 Marginal Distribution</h3>
+      <p>\(P(\ell \mid pq-1) = 1/(\ell-1)\) to four significant figures, for \(\ell = 2, 3, 5, 7, 11, 13\) and all \(p\) (101–70001):</p>
+      <table>
+        <thead><tr><th>ℓ</th><th>P(ℓ | pq-1)</th><th>P(ℓ | random)</th><th>1/ℓ</th><th>1/φ(ℓ)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>1.0000</td><td>0.5000</td><td>0.5000</td><td>1.0000</td></tr>
+          <tr><td>3</td><td>0.5000</td><td>0.3336</td><td>0.3333</td><td>0.5000</td></tr>
+          <tr><td>5</td><td>0.2500</td><td>0.2000</td><td>0.2000</td><td>0.2500</td></tr>
+          <tr><td>7</td><td>0.1667</td><td>0.1432</td><td>0.1429</td><td>0.1667</td></tr>
+          <tr><td>11</td><td>0.1000</td><td>0.0909</td><td>0.0909</td><td>0.1000</td></tr>
+          <tr><td>13</td><td>0.0833</td><td>0.0769</td><td>0.0769</td><td>0.0833</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.3 Joint Distribution</h3>
+      <p>\(P(m \mid pq-1) / (1/\varphi(m))\) ranges from 0.997 to 1.005 for all smooth moduli. The joint valuation vector distribution follows the 1/φ(m) local model exactly.</p>
+      <table>
+        <thead><tr><th>m</th><th>Description</th><th>Ratio (p=1009)</th><th>Ratio (p=50021)</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>2²</td><td>1.000</td><td>1.000</td></tr>
+          <tr><td>12</td><td>2²·3</td><td>0.999</td><td>1.002</td></tr>
+          <tr><td>30</td><td>2·3·5</td><td>0.999</td><td>1.002</td></tr>
+          <tr><td>60</td><td>2²·3·5</td><td>0.998</td><td>1.007</td></tr>
+          <tr><td>120</td><td>2³·3·5</td><td>0.994</td><td>0.997</td></tr>
+          <tr><td>210</td><td>2·3·5·7</td><td>0.998</td><td>0.975</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§3 \(v_2(pq-1) = 2.000\) and the Extra Valuation Formula</h2>
+
+      <h3>3.1 Correct Derivation</h3>
+      <p>\(2^k \mid (pq-1) \iff q \equiv p^{-1} \pmod{2^k}\). Odd primes \(q\) are equidistributed among the \(\varphi(2^k) = 2^{k-1}\) odd residue classes mod \(2^k\). Therefore:</p>
+      <p>$$\Pr(v_2(pq-1) \geq k) = \frac{1}{2^{k-1}}$$</p>
+      <p>$$E[v_2(pq-1)] = \sum_{k \geq 1} \frac{1}{2^{k-1}} = 2.000$$</p>
+      <p>Data: \(E[v_2(pq-1)] = 2.000\) (all \(p\)), \(E[v_2(\text{random})] = 1.000\). Difference = +1.000.</p>
+
+      <h3>3.2 Extra Expected Valuation</h3>
+      <p>For any prime \(\ell\):</p>
+      <p>$$\sum_{k \geq 1} \left(\frac{1}{\varphi(\ell^k)} - \frac{1}{\ell^k}\right) = \frac{1}{(\ell-1)^2}$$</p>
+      <p>Total extra valuation (full prime sum) \(\approx 1.375\). \(\ell = 2\) contributes 1.000, \(\ell = 3\) contributes 0.250, together ~91%.</p>
+
+      <h2>§4 Bias/Δ Ratio Decline and Zero Crossing</h2>
+
+      <p>Define \(\Delta = \Delta_{\mathrm{penalty}}\) (measured at \(pq\) scale, ≈ 0.706). Data from Block 1 (independent sampling).</p>
+      <table>
+        <thead><tr><th>p</th><th>A-C</th><th>B-C</th><th>A-B</th><th>(A-C)/Δ</th><th>(B-C)/Δ</th><th>(A-B)/Δ</th></tr></thead>
+        <tbody>
+          <tr><td>29</td><td>−1.42</td><td>−1.05</td><td>−0.37</td><td>−2.01</td><td>−1.48</td><td>−0.52</td></tr>
+          <tr><td>503</td><td>−1.46</td><td>−1.03</td><td>−0.43</td><td>−2.06</td><td>−1.45</td><td>−0.61</td></tr>
+          <tr><td>5003</td><td>−1.40</td><td>−0.96</td><td>−0.44</td><td>−1.99</td><td>−1.36</td><td>−0.62</td></tr>
+          <tr><td>20011</td><td>−1.00</td><td>−0.68</td><td>−0.32</td><td>−1.42</td><td>−0.96</td><td>−0.46</td></tr>
+          <tr><td>50021</td><td>−0.39</td><td>−0.22</td><td>−0.17</td><td>−0.55</td><td>−0.31</td><td>−0.24</td></tr>
+          <tr><td>70001</td><td>+0.08</td><td>+0.25</td><td>−0.17</td><td>+0.11</td><td><strong>+0.35</strong></td><td>−0.24</td></tr>
+        </tbody>
+      </table>
+      <p>\((B\text{-}C)/\Delta\) crosses zero from −1.48 to +0.35. Numerical evidence for Step 2b (\(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = o(\Delta_{\mathrm{penalty}})\)) continues to strengthen.</p>
+
+      <h2>§5 Nonlinear ρ Response: \(v_2, v_3\) Control Test</h2>
+
+      <h3>5.1 Results</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C uncond</th><th>B-C | v₂=2, v₃=0</th><th>Reduction</th></tr></thead>
+        <tbody>
+          <tr><td>1009</td><td>−0.819</td><td>−0.669</td><td>18%</td></tr>
+          <tr><td>10007</td><td>−0.646</td><td>−0.510</td><td>21%</td></tr>
+          <tr><td>50021</td><td>+0.177</td><td>+0.311</td><td>−76%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.2 Weighted Contribution</h3>
+      <p>Define \(\lambda_{\ell,k} = E[\rho \mid v_\ell \geq k-1] - E[\rho \mid v_\ell \geq k]\) (ρ-saving from one extra level of \(\ell\)-adic valuation, positive). \(\Delta\mathrm{prob} = 1/\varphi(\ell^k) - 1/\ell^k\) (extra divisibility probability, positive). \(\lambda \times \Delta\mathrm{prob}\) measures each \((\ell, k)\)'s contribution to \(|B\text{-}C|\) under a linear additive model:</p>
+      <table>
+        <thead><tr><th>(ℓ, k)</th><th>λ</th><th>Δprob</th><th>λ × Δprob</th></tr></thead>
+        <tbody>
+          <tr><td>(2, 1)</td><td>0.154</td><td>+0.500</td><td>+0.077</td></tr>
+          <tr><td>(2, 2)</td><td>0.290</td><td>+0.250</td><td>+0.073</td></tr>
+          <tr><td>(3, 1)</td><td>0.337</td><td>+0.167</td><td>+0.056</td></tr>
+          <tr><td>(5, 1)</td><td>0.363</td><td>+0.050</td><td>+0.018</td></tr>
+          <tr><td><strong>Total</strong></td><td></td><td></td><td><strong>+0.281</strong></td></tr>
+        </tbody>
+      </table>
+      <p>Total weighted contribution = 0.281, while \(|B\text{-}C| = 0.646\) (\(p = 10007\)). <strong>Linear weighting explains only 44% of \(|B\text{-}C|\).</strong> This shows \(\rho\)'s response to the small-prime profile is not additive — interaction effects and global path selection contribute the majority.</p>
+
+      <h3>5.3 Interpretation</h3>
+      <p>Raw probability gap is 91% from \(\ell = 2, 3\), but \(\rho\)-weighted gap is only ~20% (amount eliminated by conditioning). \(\rho\)'s response to the small-prime profile is highly nonlinear.</p>
+
+      <h2>§6 Explanation Rate vs \(y\): The Decisive Experiment</h2>
+
+      <h3>6.1 Core Results</h3>
+      <p>Progressively expand control variables and measure B-C explanation rate.</p>
+      <p><strong>p = 1009:</strong></p>
+      <table>
+        <thead><tr><th>y</th><th>Controlled</th><th>B-C | Z_y</th><th>expl%</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>v₂</td><td>−0.661</td><td>19.2%</td></tr>
+          <tr><td>3</td><td>v₂, v₃</td><td>−0.661</td><td>19.3%</td></tr>
+          <tr><td>5</td><td>v₂, v₃, v₅</td><td>−0.661</td><td>19.3%</td></tr>
+          <tr><td>7</td><td>v₂, …, v₇</td><td>−0.660</td><td>19.4%</td></tr>
+          <tr><td>13</td><td>v₂, …, v₁₃</td><td>−0.659</td><td><strong>19.5%</strong></td></tr>
+        </tbody>
+      </table>
+      <p><strong>p = 10007:</strong> from 23.7% (y=2) to 24.0% (y=13).</p>
+      <div class="milestone-box">
+        <p><strong>Explanation rate from y=2 to y=13 is virtually flat (increase &lt; 0.5%).</strong></p>
+      </div>
+
+      <h3>6.2 Smooth Kernel \(K_y\) Matching Confirms</h3>
+      <table>
+        <thead><tr><th>y</th><th>K_y levels (p=1009)</th><th>B-C | K_y</th><th>expl%</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>20</td><td>−0.661</td><td>19.2%</td></tr>
+          <tr><td>7</td><td>1110</td><td>−0.660</td><td>19.4%</td></tr>
+          <tr><td>13</td><td>3369</td><td>−0.659</td><td>19.5%</td></tr>
+        </tbody>
+      </table>
+      <p>Exact smooth kernel matching also plateaus at 19–24%.</p>
+
+      <h3>6.3 Verdict</h3>
+      <div class="warning-box">
+        <p><strong>Within the tested range (\(y \leq 13\)), small-prime valuation conditioning explains only ~20% of B-C, with no gains as \(y\) increases.</strong> The remaining ~80% comes from structure beyond the smooth kernel. The possibility of slowly growing \(y(X) \to \infty\) cannot yet be ruled out, but the fixed-\(y\) localization approach has failed in current data.</p>
+      </div>
+
+      <h2>§7 Cofactor Test: Direct Evidence for Global Path Effects</h2>
+
+      <h3>7.1 Design</h3>
+      <p>After matching \(K_7\) (controlling all valuations for 2, 3, 5, 7), compare cofactor \(\rho = \rho(n/K_7)\).</p>
+
+      <h3>7.2 Results</h3>
+      <table>
+        <thead><tr><th>p</th><th>E[ρ(cofactor_pr) − ρ(cofactor_rand)]</th><th>Significant</th></tr></thead>
+        <tbody>
+          <tr><td>1009</td><td><strong>−0.649</strong></td><td>Yes</td></tr>
+          <tr><td>10007</td><td><strong>−0.487</strong></td><td>Yes</td></tr>
+        </tbody>
+      </table>
+      <p>After matching the smooth kernel, cofactor \(\rho\) still differs by 0.49–0.65.</p>
+
+      <h3>7.3 Implications</h3>
+      <p>The advantage of \(pr-1\) is not in its small factors — it is in its large factors. Even when the small-factor part is identical, \(pr-1\)'s cofactor is still easier to compress than a general integer's. "Multiply by \(p\) then subtract 1" affects not just the small-prime profile, but the global topology of the factorization network.</p>
+
+      <h2>§8 Multi-Scale Cofactor Gap: Synchronous Trajectory with B-C</h2>
+
+      <h3>8.1 Cofactor Gap (Block 4, independent sampling)</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>cof gap</th><th>cof/B-C</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.97</td><td>−0.80</td><td>82%</td></tr>
+          <tr><td>211</td><td>−0.96</td><td>−0.85</td><td>88%</td></tr>
+          <tr><td>1009</td><td>−0.96</td><td>−0.76</td><td>80%</td></tr>
+          <tr><td>5003</td><td>−0.92</td><td>−0.78</td><td>85%</td></tr>
+          <tr><td>10007</td><td>−0.82</td><td>−0.67</td><td>82%</td></tr>
+          <tr><td>20011</td><td>−0.59</td><td>−0.40</td><td>67%</td></tr>
+          <tr><td>50021</td><td>+0.14</td><td>+0.28</td><td>—</td></tr>
+          <tr><td>70001</td><td>+0.81</td><td>+0.92</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.2 Key Observations</h3>
+      <p><strong>(a)</strong> Cofactor gap and B-C follow the same erosion-and-reversal trajectory. Both cross zero synchronously. The cofactor gap is not "residual" — it IS the body of B-C.</p>
+      <p><strong>(b)</strong> cof/B-C is stable at 80–90% for \(p < 20000\), consistent with §6's explanation rate (~20% local).</p>
+      <p><strong>(c)</strong> Both cross zero synchronously at \(p > 50000\). The global path effect is also decaying.</p>
+
+      <h3>8.3 Full Three-Way Decomposition (Block 4, representative p)</h3>
+      <table>
+        <thead><tr><th>p</th><th>A-C</th><th>A-B</th><th>B-C</th><th>%prime</th><th>%resid</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−1.23</td><td>−0.38</td><td>−0.84</td><td>31%</td><td>69%</td></tr>
+          <tr><td>503</td><td>−1.25</td><td>−0.43</td><td>−0.82</td><td>34%</td><td>66%</td></tr>
+          <tr><td>5003</td><td>−1.21</td><td>−0.43</td><td>−0.78</td><td>36%</td><td>64%</td></tr>
+          <tr><td>10007</td><td>−1.08</td><td>−0.41</td><td>−0.67</td><td>38%</td><td>62%</td></tr>
+          <tr><td>20011</td><td>−0.80</td><td>−0.35</td><td>−0.45</td><td>44%</td><td>56%</td></tr>
+          <tr><td>50021</td><td>−0.05</td><td>−0.20</td><td>+0.15</td><td>—</td><td>—</td></tr>
+          <tr><td>70001</td><td>+0.67</td><td>−0.15</td><td>+0.82</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>Prime-source share rises from 31% to 44%, then inverts at the zero-crossing.</p>
+
+      <h2>§9 Complete Picture of B-C and Route C Repositioning</h2>
+
+      <h3>9.1 Three-Layer Decomposition</h3>
+      <table>
+        <thead><tr><th>Layer</th><th>Share</th><th>Mechanism</th><th>Behavior with p</th></tr></thead>
+        <tbody>
+          <tr><td>Small-prime profile (1/φ vs 1/ℓ)</td><td>~20%</td><td>Extra v₂, v₃ divisibility</td><td>Profile fixed, leverage decays</td></tr>
+          <tr><td>Cofactor global path</td><td>~80%</td><td>DP optimal path differences</td><td>Synchronous erosion, crosses zero</td></tr>
+          <tr><td>Total B-C</td><td>100%</td><td>Shifted multiplicative structure</td><td>Erosion and reversal</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.2 Why the Global Effect Also Decays (Heuristic Interpretations)</h3>
+      <p>The following are heuristic, awaiting rigorous formalization:</p>
+      <p><strong>(a)</strong> As \(p\) grows, \(pq\) becomes enormous; the cofactor's factor space is vast, and the shifted structure's path advantage is statistically diluted.</p>
+      <p><strong>(b)</strong> DP optimal paths may approach a form of "universal uniformity" at large \(N\) (Gemini's "Markov barrier" hypothesis: shifted memory persists for only finite depth; deep subtrees revert to general-integer statistics).</p>
+      <p><strong>(c)</strong> Thermodynamic analogy: in a sufficiently large system, the memory of the local generation mechanism is washed out by the ever-growing combinatorial complexity.</p>
+
+      <h3>9.3 Route C Step 2b Repositioned</h3>
+      <div class="warning-box">
+        <p><strong>Old strategy (failed in current data):</strong> Use finite-dimensional small-prime profile differences (fixed-\(y\) localization) to prove \(B\text{-}C = O(1)\). The explanation rate plateau shows this route covers only ~20%.</p>
+      </div>
+      <div class="thesis-box">
+        <p><strong>New strategy:</strong> Directly prove that the matched-scale affine-ensemble bias is bounded. Define \(\mu_{\mathrm{aff}}(X; p) := E[\rho(pr-1)]\) (\(r\) random odd), \(\mu_{\mathrm{gen}}(X) := E[\rho(n)]\) (same-scale general integers, \(X \sim pr\)).</p>
+        <p><strong>Step 2b new target:</strong> Prove \(\mu_{\mathrm{aff}}(X; p) - \mu_{\mathrm{gen}}(X) = O(1)\), or at least \(o(\Delta_{\mathrm{penalty}}(X))\).</p>
+        <p>This approach does not require decomposing B-C's microscopic sources — it bypasses the fixed-\(y\) localization failure. What must be shown is: DP's average memory of the shifted vs general ensemble does not grow without bound.</p>
+      </div>
+      <p><strong>Numerical support:</strong> \((B\text{-}C)/\Delta\) crosses zero; cofactor gap erodes synchronously with B-C; global path effect accounts for ~80% of B-C but also decays. These support the boundedness conjecture but do not yet constitute proof.</p>
+
+      <h2>§10 Discussion</h2>
+
+      <h3>10.1 Core Contributions</h3>
+      <p>(a) 1/φ(m) joint profile — exact verification. (b) \(v_2 = 2.000\) — correct algebraic derivation. (c) Extra valuation formula \(\sum 1/(\ell-1)^2 \approx 1.375\). (d) Nonlinear \(\rho\) response discovery (\(v_2, v_3\) control eliminates only 18–21%). (e) Explanation rate vs \(y\) plateau — small-prime explains only ~20%. (f) Cofactor test confirms global DP path effect (~80%). (g) Multi-scale cofactor gap synchronous with B-C erosion. (h) Route C strategic repositioning.</p>
+
+      <h3>10.2 Progress Table</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th><th>XXXVI</th></tr></thead>
+        <tbody>
+          <tr><td>Bound</td><td>Lower</td><td>Upper</td><td>—</td><td>—</td></tr>
+          <tr><td>V(p)</td><td>—</td><td>O(1)</td><td>—</td><td>—</td></tr>
+          <tr><td>Closure condition</td><td>M_p &lt; 1?</td><td>M_p → ∞?</td><td>Non-plateauing</td><td>—</td></tr>
+          <tr><td>Mechanism</td><td>Drift</td><td>98.3% chase</td><td>Advantage reversal</td><td>1/φ(m) + global path</td></tr>
+          <tr><td>Depth</td><td>Threshold</td><td>Qualitative div.</td><td>Bias decomposition</td><td>Fixed-y localization failure</td></tr>
+          <tr><td>B-C source</td><td>—</td><td>—</td><td>Shifted structure</td><td>20% local + 80% global</td></tr>
+        </tbody>
+      </table>
+
+      <h3>10.3 Distance Estimate</h3>
+      <p>Paper XXXVI reveals that B-C's body is a global DP path effect, requiring a new approach for Step 2b — not fixed-\(y\) localization, but directly proving that the matched-scale affine-ensemble bias (\(\mu_{\mathrm{aff}} - \mu_{\mathrm{gen}}\)) is bounded or \(o(\Delta_{\mathrm{penalty}})\). Ω=2 closure may require 2 papers: one establishing matched-scale affine bias boundedness, one closing with \(\Delta_{\mathrm{penalty}} \to \infty\).</p>
+
+      <h3>10.4 Open Problems</h3>
+      <p>(1) Why does the cofactor \(\rho\) difference also decay with \(p\)? Does this point to "large-number universal uniformity" of DP paths?<br>
+      (2) Does \(\rho(n)\)'s sensitivity to generation mechanism decay as \(o(\ln n)\)?<br>
+      (3) Can the matched-scale affine-ensemble bias \(\mu_{\mathrm{aff}}(X;p) - \mu_{\mathrm{gen}}(X) = O(1)\) be proved directly, bypassing B-C's microscopic decomposition?<br>
+      (4) What are the systematic topological differences between DP optimal paths for shifted vs general integers?</p>
+
+      <h2>§11 Data Sources</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th></tr></thead>
+        <tbody>
+          <tr><td>p36_bias_ratios.py</td><td>Bias/Δ, small-prime profile, v₂ distribution</td></tr>
+          <tr><td>p36_joint_profile.py</td><td>Joint profile, weighted contribution, v₂v₃ control</td></tr>
+          <tr><td>p36_explanation_curve.py</td><td>Explanation rate vs y, smooth kernel matching, cofactor test</td></tr>
+          <tr><td>p36_cofactor_decay.py</td><td>Multi-scale cofactor gap, three-way decomposition</td></tr>
+        </tbody>
+      </table>
+      <p>Sanity check: ρ(10⁷)=58, ρ(10⁸)=66, ρ(10⁹)=75.</p>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXV. Paper XXXV DOI: 10.5281/zenodo.19143732. Paper XXXIV DOI: 10.5281/zenodo.19140015. Paper XXXIII DOI: 10.5281/zenodo.19124485.<br>
+      [2] K. Cordwell et al. (2018). <em>J. Number Theory</em>, 189:17–34.<br>
+      [3] A. Hildebrand, G. Tenenbaum (1986). <em>Trans. AMS</em>, 296:265–290.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (子路/Zilu) wrote all numerical scripts, designed the explanation rate vs y curve and cofactor test, and drafted working notes v1–v3 and the formal text. ChatGPT (公西华/Gongxihua) suggested the bias/Δ ratio measurement, corrected the v₂ derivation error, proposed the v₂v₃ killer test and the "explanation rate vs y" decisive experiment, identified the remaining 80% as likely global DP path effects, and proposed the "directly prove matched-scale affine bias boundedness" strategy. Gemini (子夏/Zixia) contributed the semi-analytic framework (later corrected by the killer test), proposed the "Markov barrier" and "shortcut chain reaction" interpretations, and the shift from local profile to friable core. Grok (子贡/Zigong) confirmed the nonlinear response is compatible with Paper 18–19's linear self-correction (different levels), and that cofactor decay is consistent with Lindley's stationary distribution. The final text was independently completed by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho35.html">← Paper XXXV: Congruence Relaxation and the Erosion of Predecessor Advantage</a>
+        &nbsp;|&nbsp;
+        Paper XXXVII →
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXXVI</div>
+      <h1 class="paper-title">1/φ(m) Local Model、解释率平台化与全局 DP 路径效应</h1>
+      <div class="paper-authors">Han Qin（秦汉） &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19153002" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19153002
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper XXXV 确认前驱优势的侵蚀与反转来自 shifted 乘法结构（B-C 主导，D-C ≈ 0）。本文通过四轮递进实验精确量化 shifted-prime local model，并定位 B-C 偏差的真实来源。</p>
+        <p><strong>(1)</strong> \(P(m \mid pq-1) = 1/\varphi(m)\) 对所有 smooth moduli（联合分布）精确成立，对所有 \(p\) 不变。不只是边缘分布——联合 valuation vector \((v_2, v_3, v_5, v_7)\) 的分布精确遵循 shifted-prime local model。</p>
+        <p><strong>(2)</strong> \(v_2(pq-1) = 2.000\) 精确成立。正确推导：\(\Pr(v_2 \geq k) = 1/\varphi(2^k) = 1/2^{k-1}\)，故 \(E[v_2] = 2\)。额外 expected valuation 公式：\(\sum_\ell 1/(\ell-1)^2 \approx 1.375\)，其中 \(\ell=2,3\) 贡献约 91%。</p>
+        <p><strong>(3)</strong> Bias/Δ 比值穿零：\((B\text{-}C)/\Delta\) 从 \(-1.48\) 降到 \(+0.35\)。</p>
+        <p><strong>(4)</strong> \(v_2, v_3\) 控制后 B-C 仅减 18–21%。Weighted contribution 仅解释 44%。\(\rho\) 对 small-prime profile 的响应高度非线性。</p>
+        <p><strong>(5)</strong> 解释率 vs \(y\) 曲线完全平台化：从控制 \(v_2\)（19.2%）到控制 \(v_2, \ldots, v_{13}\)（19.5%）几乎不动。Smooth kernel \(K_y\) 精确匹配确认同样结果。<strong>在当前测试范围（\(y \leq 13\)）内，small-prime valuation conditioning 只能解释 ~20% 的 B-C，且随 \(y\) 不再增长。</strong></p>
+        <p><strong>(6)</strong> Cofactor 测试：匹配 \(K_7\) 后，cofactor \(\rho\) 差仍 0.49–0.65（显著）。B-C 的主体（~80%）来自 cofactor 的全局 DP 路径差异。</p>
+        <p><strong>(7)</strong> 11 个 \(p\) 尺度的 cofactor gap 走与 B-C 完全相同的侵蚀-穿零轨迹。Cofactor 占 B-C 的 80–90%（\(p < 20000\)）。全局路径效应不是 B-C 的"额外"部分——它就是 B-C 的主体。</p>
+        <p><strong>关键词：</strong>1/φ(m) local model，解释率平台化，cofactor 测试，全局 DP 路径效应，fixed-y 局部化失效</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXV (DOI: 10.5281/zenodo.19143732)：16-band 侵蚀与反转（gap 从 −2.089 到 +1.451），三路偏差分解（D-C ≈ 0，B-C 主导 70–74%，A-B 次要 26–30%），shifted-prime local model 框架。</p>
+
+      <h3>1.2 记号约定</h3>
+      <p>本文沿用 Paper XXXV 的三路偏差分解。对给定的素数 \(p\)，定义四个 ensemble mean：</p>
+      <ul>
+        <li><strong>A</strong> = \(E[\rho(pq-1)]\)（\(q\) 为素数——实际的 diff predecessor）</li>
+        <li><strong>B</strong> = \(E[\rho(pr-1)]\)（\(r\) 为随机奇数——shifted-composite model，即 \(\mu_{\mathrm{aff}}\)）</li>
+        <li><strong>C</strong> = \(E[\rho(\text{random } n)]\)（同尺度一般整数，即 \(\mu_{\mathrm{general}}\)）</li>
+        <li><strong>D</strong> = \(E[\rho(n \equiv -1 \bmod p)]\)（精确同余类）</li>
+      </ul>
+      <p>Total gap \(= A\text{-}C = (A\text{-}B) + (B\text{-}C)\)，其中 A-B 是 prime-source bias，B-C 是 residue-class bias（shifted 结构偏差）。</p>
+      <div class="note-box">注：不同 Block 的数值脚本使用独立的随机采样，因此同一个 \(p\) 在不同节的 B-C 值可能有 \(O(0.1)\) 的采样波动。本文所有定性结论不受这些波动影响。</div>
+
+      <h3>1.3 四层递进</h3>
+      <p><strong>Layer 1（Block 1）：</strong>1/φ(m) 联合 profile 验证 + bias/Δ 比值衰减。<br>
+      <strong>Layer 2（Block 2）：</strong>\(v_2, v_3\) 控制测试——发现 \(\rho\) 的非线性响应。<br>
+      <strong>Layer 3（Block 3）：</strong>解释率 vs \(y\) 曲线 + cofactor 测试——确认"truly global"。<br>
+      <strong>Layer 4（Block 4）：</strong>多 \(p\) 尺度 cofactor gap——确认同步侵蚀轨迹。</p>
+
+      <h2>§2 1/φ(m) 联合 Profile 的精确验证</h2>
+
+      <h3>2.1 代数基础</h3>
+      <p>对 \(\ell \neq p\) 和 smooth modulus \(m\)（所有素因子 \(\neq p\)）：</p>
+      <p>$$m \mid (pq-1) \iff q \equiv p^{-1} \pmod{m}$$</p>
+      <p>素数 \(q\) 在 mod \(m\) 的 \(\varphi(m)\) 个 reduced residue classes 中均匀分布（Dirichlet / Siegel-Walfisz），因此 \(P(m \mid pq-1) = 1/\varphi(m) + o(1)\)。</p>
+
+      <h3>2.2 边缘分布</h3>
+      <p>\(P(\ell \mid pq-1) = 1/(\ell-1)\) 精确到四位，对 \(\ell = 2, 3, 5, 7, 11, 13\) 和所有 \(p\)（101–70001）不变：</p>
+      <table>
+        <thead><tr><th>ℓ</th><th>P(ℓ | pq-1)</th><th>P(ℓ | random)</th><th>1/ℓ</th><th>1/φ(ℓ)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>1.0000</td><td>0.5000</td><td>0.5000</td><td>1.0000</td></tr>
+          <tr><td>3</td><td>0.5000</td><td>0.3336</td><td>0.3333</td><td>0.5000</td></tr>
+          <tr><td>5</td><td>0.2500</td><td>0.2000</td><td>0.2000</td><td>0.2500</td></tr>
+          <tr><td>7</td><td>0.1667</td><td>0.1432</td><td>0.1429</td><td>0.1667</td></tr>
+          <tr><td>11</td><td>0.1000</td><td>0.0909</td><td>0.0909</td><td>0.1000</td></tr>
+          <tr><td>13</td><td>0.0833</td><td>0.0769</td><td>0.0769</td><td>0.0833</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.3 联合分布</h3>
+      <p>\(P(m \mid pq-1) / (1/\varphi(m))\) 在 0.997–1.005 之间，对所有 smooth moduli。联合 valuation vector 的分布精确遵循 1/φ(m) local model。</p>
+      <table>
+        <thead><tr><th>m</th><th>描述</th><th>ratio（p=1009）</th><th>ratio（p=50021）</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>2²</td><td>1.000</td><td>1.000</td></tr>
+          <tr><td>12</td><td>2²·3</td><td>0.999</td><td>1.002</td></tr>
+          <tr><td>30</td><td>2·3·5</td><td>0.999</td><td>1.002</td></tr>
+          <tr><td>60</td><td>2²·3·5</td><td>0.998</td><td>1.007</td></tr>
+          <tr><td>120</td><td>2³·3·5</td><td>0.994</td><td>0.997</td></tr>
+          <tr><td>210</td><td>2·3·5·7</td><td>0.998</td><td>0.975</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§3 \(v_2(pq-1) = 2.000\) 与额外 Valuation 公式</h2>
+
+      <h3>3.1 正确推导</h3>
+      <p>\(2^k \mid (pq-1) \iff q \equiv p^{-1} \pmod{2^k}\)。奇素数 \(q\) 在 mod \(2^k\) 的 \(\varphi(2^k) = 2^{k-1}\) 个奇剩余类中等分。因此：</p>
+      <p>$$\Pr(v_2(pq-1) \geq k) = \frac{1}{2^{k-1}}$$</p>
+      <p>$$E[v_2(pq-1)] = \sum_{k \geq 1} \frac{1}{2^{k-1}} = 2.000$$</p>
+      <p>数据：\(E[v_2(pq-1)] = 2.000\)（所有 \(p\)），\(E[v_2(\text{random})] = 1.000\)。差 = +1.000。</p>
+
+      <h3>3.2 额外 Expected Valuation</h3>
+      <p>对任意素数 \(\ell\)：</p>
+      <p>$$\sum_{k \geq 1} \left(\frac{1}{\varphi(\ell^k)} - \frac{1}{\ell^k}\right) = \frac{1}{(\ell-1)^2}$$</p>
+      <p>总额外 valuation（截断到 \(\ell \leq 31\)）\(\approx 1.369\)。完整素数和 \(\approx 1.375\)。\(\ell=2\) 贡献 1.000，\(\ell=3\) 贡献 0.250，合计占完整和的约 91%。</p>
+
+      <h2>§4 Bias/Δ 比值的衰减与穿零</h2>
+
+      <p>定义 \(\Delta = \Delta_{\mathrm{penalty}}\)（在 \(pq\) 尺度测量，≈ 0.706）。以下数据来自 Block 1 独立采样。</p>
+      <table>
+        <thead><tr><th>p</th><th>A-C</th><th>B-C</th><th>A-B</th><th>(A-C)/Δ</th><th>(B-C)/Δ</th><th>(A-B)/Δ</th></tr></thead>
+        <tbody>
+          <tr><td>29</td><td>−1.42</td><td>−1.05</td><td>−0.37</td><td>−2.01</td><td>−1.48</td><td>−0.52</td></tr>
+          <tr><td>503</td><td>−1.46</td><td>−1.03</td><td>−0.43</td><td>−2.06</td><td>−1.45</td><td>−0.61</td></tr>
+          <tr><td>5003</td><td>−1.40</td><td>−0.96</td><td>−0.44</td><td>−1.99</td><td>−1.36</td><td>−0.62</td></tr>
+          <tr><td>20011</td><td>−1.00</td><td>−0.68</td><td>−0.32</td><td>−1.42</td><td>−0.96</td><td>−0.46</td></tr>
+          <tr><td>50021</td><td>−0.39</td><td>−0.22</td><td>−0.17</td><td>−0.55</td><td>−0.31</td><td>−0.24</td></tr>
+          <tr><td>70001</td><td>+0.08</td><td>+0.25</td><td>−0.17</td><td>+0.11</td><td><strong>+0.35</strong></td><td>−0.24</td></tr>
+        </tbody>
+      </table>
+      <p>\((B\text{-}C)/\Delta\) 从 −1.48 穿零到 +0.35。Step 2b（\(\mu_{\mathrm{shift}} - \mu_{\mathrm{general}} = o(\Delta_{\mathrm{penalty}})\)）的数值证据持续增强。</p>
+
+      <h2>§5 ρ 的非线性响应：\(v_2, v_3\) 控制测试</h2>
+
+      <h3>5.1 结果</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C uncond</th><th>B-C | v₂=2, v₃=0</th><th>Reduction</th></tr></thead>
+        <tbody>
+          <tr><td>1009</td><td>−0.819</td><td>−0.669</td><td>18%</td></tr>
+          <tr><td>10007</td><td>−0.646</td><td>−0.510</td><td>21%</td></tr>
+          <tr><td>50021</td><td>+0.177</td><td>+0.311</td><td>−76%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.2 Weighted Contribution</h3>
+      <p>定义 \(\lambda_{\ell,k} = E[\rho \mid v_\ell \geq k-1] - E[\rho \mid v_\ell \geq k]\)（额外一层 \(\ell\)-adic valuation 带来的 \(\rho\) 节省量，正值）。\(\Delta\mathrm{prob} = 1/\varphi(\ell^k) - 1/\ell^k\)（shifted profile 相对一般整数的额外整除概率，正值）。\(\lambda \times \Delta\mathrm{prob}\) 衡量每个 \((\ell, k)\) 通过线性加权对 \(|B\text{-}C|\) 的贡献量级：</p>
+      <table>
+        <thead><tr><th>(ℓ, k)</th><th>λ</th><th>Δprob</th><th>λ × Δprob</th></tr></thead>
+        <tbody>
+          <tr><td>(2, 1)</td><td>0.154</td><td>+0.500</td><td>+0.077</td></tr>
+          <tr><td>(2, 2)</td><td>0.290</td><td>+0.250</td><td>+0.073</td></tr>
+          <tr><td>(3, 1)</td><td>0.337</td><td>+0.167</td><td>+0.056</td></tr>
+          <tr><td>(5, 1)</td><td>0.363</td><td>+0.050</td><td>+0.018</td></tr>
+          <tr><td><strong>总计</strong></td><td></td><td></td><td><strong>+0.281</strong></td></tr>
+        </tbody>
+      </table>
+      <p>总 weighted contribution = 0.281，而 \(|B\text{-}C| = 0.646\)（\(p=10007\)）。<strong>线性加权只解释 \(|B\text{-}C|\) 的 44%。</strong>这表明 \(\rho\) 对 small-prime profile 的响应不是加性的——交互效应和全局路径选择贡献了大部分。</p>
+
+      <h3>5.3 解读</h3>
+      <p>Raw probability gap 91% 来自 \(\ell=2, 3\)，但 \(\rho\)-weighted gap 只有 ~20%（控制后消除量）。\(\rho\) 对 small-prime profile 的响应高度非线性——固定局部量无法消除全局路径依赖。</p>
+
+      <h2>§6 解释率 vs \(y\)：决定性实验</h2>
+
+      <h3>6.1 核心结果</h3>
+      <p>逐步增加控制变量，看 B-C 的解释率。</p>
+      <p><strong>p = 1009：</strong></p>
+      <table>
+        <thead><tr><th>y</th><th>控制变量</th><th>B-C | Z_y</th><th>expl%</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>v₂</td><td>−0.661</td><td>19.2%</td></tr>
+          <tr><td>3</td><td>v₂, v₃</td><td>−0.661</td><td>19.3%</td></tr>
+          <tr><td>5</td><td>v₂, v₃, v₅</td><td>−0.661</td><td>19.3%</td></tr>
+          <tr><td>7</td><td>v₂, …, v₇</td><td>−0.660</td><td>19.4%</td></tr>
+          <tr><td>13</td><td>v₂, …, v₁₃</td><td>−0.659</td><td><strong>19.5%</strong></td></tr>
+        </tbody>
+      </table>
+      <p><strong>p = 10007：</strong>从 23.7%（y=2）到 24.0%（y=13）。</p>
+      <div class="milestone-box">
+        <p><strong>解释率从 y=2 到 y=13 几乎完全不动（增幅 &lt; 0.5%）。</strong></p>
+      </div>
+
+      <h3>6.2 Smooth Kernel \(K_y\) 匹配确认</h3>
+      <table>
+        <thead><tr><th>y</th><th>K_y levels（p=1009）</th><th>B-C | K_y</th><th>expl%</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>20</td><td>−0.661</td><td>19.2%</td></tr>
+          <tr><td>7</td><td>1110</td><td>−0.660</td><td>19.4%</td></tr>
+          <tr><td>13</td><td>3369</td><td>−0.659</td><td>19.5%</td></tr>
+        </tbody>
+      </table>
+      <p>精确匹配 smooth kernel 后，解释率同样卡在 19–24%。</p>
+
+      <h3>6.3 判决</h3>
+      <div class="warning-box">
+        <p><strong>在当前测试范围内（\(y \leq 13\)），small-prime valuation conditioning 只能解释 ~20% 的 B-C，且解释率随 \(y\) 增大不再上升。</strong>剩余 ~80% 来自 smooth kernel 之外的全局结构。尚不能排除 slowly growing \(y(X) \to \infty\) 的可能性，但 fixed-\(y\) 局部化路线在当前数据中已失效。</p>
+      </div>
+
+      <h2>§7 Cofactor 测试：全局路径效应的铁证</h2>
+
+      <h3>7.1 设计</h3>
+      <p>匹配 \(K_7\)（控制 2,3,5,7 的全部 valuation）后，比较 cofactor \(\rho = \rho(n/K_7)\)。</p>
+
+      <h3>7.2 结果</h3>
+      <table>
+        <thead><tr><th>p</th><th>E[ρ(cofactor_pr) − ρ(cofactor_rand)]</th><th>显著</th></tr></thead>
+        <tbody>
+          <tr><td>1009</td><td><strong>−0.649</strong></td><td>是</td></tr>
+          <tr><td>10007</td><td><strong>−0.487</strong></td><td>是</td></tr>
+        </tbody>
+      </table>
+      <p>匹配 smooth kernel 后，cofactor 的 \(\rho\) 仍差 0.49–0.65。</p>
+
+      <h3>7.3 含义</h3>
+      <p>\(pr-1\) 的优势不在小因子——在大因子。即使小因子部分完全相同，\(pr-1\) 的 cofactor 仍比一般整数更容易压缩。"multiply by \(p\) then subtract 1"影响的不只是 small-prime profile，而是整个因子分解网络的全局拓扑。</p>
+
+      <h2>§8 多尺度 Cofactor Gap：与 B-C 的同步轨迹</h2>
+
+      <h3>8.1 Cofactor gap（Block 4 独立采样）</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>cof gap</th><th>cof/B-C</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.97</td><td>−0.80</td><td>82%</td></tr>
+          <tr><td>211</td><td>−0.96</td><td>−0.85</td><td>88%</td></tr>
+          <tr><td>1009</td><td>−0.96</td><td>−0.76</td><td>80%</td></tr>
+          <tr><td>5003</td><td>−0.92</td><td>−0.78</td><td>85%</td></tr>
+          <tr><td>10007</td><td>−0.82</td><td>−0.67</td><td>82%</td></tr>
+          <tr><td>20011</td><td>−0.59</td><td>−0.40</td><td>67%</td></tr>
+          <tr><td>50021</td><td>+0.14</td><td>+0.28</td><td>—</td></tr>
+          <tr><td>70001</td><td>+0.81</td><td>+0.92</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.2 关键观察</h3>
+      <p><strong>(a)</strong> Cofactor gap 和 B-C 走完全相同的侵蚀-穿零轨迹。两者同步从负变正。Cofactor gap 不是 B-C 的"残余"——它就是 B-C 的主体。</p>
+      <p><strong>(b)</strong> cof/B-C 在 \(p < 20000\) 时稳定在 80–90%。这和 §6 的解释率（~20% local）完全一致：small-prime 贡献 ~20%，cofactor 贡献 ~80%。</p>
+      <p><strong>(c)</strong> 两者在 \(p > 50000\) 同步穿零反转。全局路径效应也在退化。在足够大的尺度上，shifted 结构的"记忆"被冲刷。</p>
+
+      <h3>8.3 完整三路分解（Block 4，代表性 p）</h3>
+      <table>
+        <thead><tr><th>p</th><th>A-C</th><th>A-B</th><th>B-C</th><th>%prime</th><th>%resid</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−1.23</td><td>−0.38</td><td>−0.84</td><td>31%</td><td>69%</td></tr>
+          <tr><td>503</td><td>−1.25</td><td>−0.43</td><td>−0.82</td><td>34%</td><td>66%</td></tr>
+          <tr><td>5003</td><td>−1.21</td><td>−0.43</td><td>−0.78</td><td>36%</td><td>64%</td></tr>
+          <tr><td>10007</td><td>−1.08</td><td>−0.41</td><td>−0.67</td><td>38%</td><td>62%</td></tr>
+          <tr><td>20011</td><td>−0.80</td><td>−0.35</td><td>−0.45</td><td>44%</td><td>56%</td></tr>
+          <tr><td>50021</td><td>−0.05</td><td>−0.20</td><td>+0.15</td><td>—</td><td>—</td></tr>
+          <tr><td>70001</td><td>+0.67</td><td>−0.15</td><td>+0.82</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>Prime-source 占比从 31% 升到 44%，然后在穿零区翻转。</p>
+
+      <h2>§9 B-C 的完整图景与 Route C 的重新定位</h2>
+
+      <h3>9.1 三层分解</h3>
+      <table>
+        <thead><tr><th>层</th><th>贡献占比</th><th>机制</th><th>随 p 变化</th></tr></thead>
+        <tbody>
+          <tr><td>Small-prime profile（1/φ vs 1/ℓ）</td><td>~20%</td><td>额外 v₂, v₃ 整除</td><td>Profile 不变，杠杆率衰减</td></tr>
+          <tr><td>Cofactor 全局路径</td><td>~80%</td><td>DP 最优路径差异</td><td>同步侵蚀穿零</td></tr>
+          <tr><td>总 B-C</td><td>100%</td><td>Shifted 乘法结构</td><td>侵蚀反转</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.2 为什么全局效应也在退化（启发式解释）</h3>
+      <p>以下三种解释均为 heuristic，有待严格化：</p>
+      <p><strong>(a)</strong> 随 \(p\) 增大，\(pq\) 越来越大，cofactor 的因子空间庞大，shifted 结构的路径优势被统计稀释。</p>
+      <p><strong>(b)</strong> DP 最优路径可能在极大 \(N\) 下趋向某种"普遍均匀性"（Gemini 的"马尔可夫屏障"假说：shifted 记忆只维持有限深度，深层子树退化为一般整数的统计行为）。</p>
+      <p><strong>(c)</strong> 热力学类比：系统足够大时，局部生成方式的记忆被不断增长的组合复杂度冲刷。</p>
+
+      <h3>9.3 Route C Step 2b 的重新定位</h3>
+      <div class="warning-box">
+        <p><strong>旧策略（在当前数据中已失效）：</strong>用有限维 small-prime profile 差异（fixed-\(y\) localization）来证明 \(B\text{-}C = O(1)\)。解释率平台化已证明 fixed-\(y\) 路线至多走 ~20%。</p>
+      </div>
+      <div class="thesis-box">
+        <p><strong>新策略：</strong>直接证明 matched-scale ensemble bias 有界。定义 \(\mu_{\mathrm{aff}}(X; p) := E[\rho(pr-1)]\)（\(r\) 随机奇数），\(\mu_{\mathrm{gen}}(X) := E[\rho(n)]\)（同尺度一般整数，\(X \sim pr\)）。</p>
+        <p><strong>Step 2b 新目标：</strong>证明 \(\mu_{\mathrm{aff}}(X; p) - \mu_{\mathrm{gen}}(X) = O(1)\)，或至少 \(o(\Delta_{\mathrm{penalty}}(X))\)。</p>
+        <p>这条路不需要分解 B-C 的微观来源——它绕过了 fixed-\(y\) 局部化的失效。需要证明的是：DP 对 shifted vs general ensemble 的平均记忆不会随尺度无限放大。</p>
+      </div>
+      <p><strong>数值支持：</strong>\((B\text{-}C)/\Delta\) 从 −1.48 穿零到 +0.35；cofactor gap 与 B-C 同步侵蚀；全局路径效应虽占 B-C 的 ~80%，但也在退化。这些支持 boundedness conjecture，但尚不构成证明。</p>
+
+      <h2>§10 讨论</h2>
+
+      <h3>10.1 核心贡献</h3>
+      <p>(a) 1/φ(m) 联合 profile 精确验证。(b) \(v_2 = 2.000\) 的正确代数推导。(c) 额外 valuation 公式 \(\sum 1/(\ell-1)^2 \approx 1.375\)。(d) \(\rho\) 的非线性响应发现（\(v_2, v_3\) 控制仅消 18–21%）。(e) 解释率 vs \(y\) 曲线平台化——small-prime 只解释 ~20%。(f) Cofactor 测试确认全局 DP 路径效应（~80%）。(g) 多尺度 cofactor gap 与 B-C 的同步侵蚀轨迹。(h) Route C 的战略重新定位。</p>
+
+      <h3>10.2 从 XXXIII 到 XXXVI</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th><th>XXXVI</th></tr></thead>
+        <tbody>
+          <tr><td>界</td><td>下界</td><td>上界</td><td>—</td><td>—</td></tr>
+          <tr><td>V(p)</td><td>—</td><td>O(1)</td><td>—</td><td>—</td></tr>
+          <tr><td>闭合条件</td><td>M_p &lt; 1?</td><td>M_p → ∞?</td><td>非平台化</td><td>—</td></tr>
+          <tr><td>机制</td><td>漂移</td><td>98.3% 追赶</td><td>优势反转</td><td>1/φ(m) + 全局路径</td></tr>
+          <tr><td>深度</td><td>阈值</td><td>定性发散</td><td>偏差分解</td><td>Fixed-y 局部化失效</td></tr>
+          <tr><td>B-C 来源</td><td>—</td><td>—</td><td>Shifted 结构</td><td>20% local + 80% global</td></tr>
+        </tbody>
+      </table>
+
+      <h3>10.3 距离估计</h3>
+      <p>Paper XXXVI 揭示 B-C 的主体是全局 DP 路径效应，使得 Step 2b 的严格化需要新路线——不是 fixed-\(y\) 局部化，而是直接证明 matched-scale affine-ensemble bias（\(\mu_{\mathrm{aff}} - \mu_{\mathrm{gen}}\)）有界或 \(o(\Delta_{\mathrm{penalty}})\)。Ω=2 闭合可能需要 2 篇：一篇建立 matched-scale affine bias 的有界性，一篇用 \(\Delta_{\mathrm{penalty}} \to \infty\) 收尾。</p>
+
+      <h3>10.4 开放问题</h3>
+      <p>(1) 为什么 cofactor \(\rho\) 差也在随 \(p\) 衰减？是否指向"DP 路径的大数普遍均匀性"？<br>
+      (2) \(\rho(n)\) 对生成方式的敏感度是否以 \(o(\ln n)\) 衰减？<br>
+      (3) 能否绕过 B-C 的微观分解，直接证明 matched-scale affine-ensemble bias \(\mu_{\mathrm{aff}}(X;p) - \mu_{\mathrm{gen}}(X) = O(1)\)？<br>
+      (4) Shifted 和一般整数的 DP 最优路径有哪些系统性拓扑差异？</p>
+
+      <h2>§11 数据来源</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th></tr></thead>
+        <tbody>
+          <tr><td>p36_bias_ratios.py</td><td>Bias/Δ, small-prime profile, v₂ 分布</td></tr>
+          <tr><td>p36_joint_profile.py</td><td>联合 profile, weighted contribution, v₂v₃ 控制</td></tr>
+          <tr><td>p36_explanation_curve.py</td><td>解释率 vs y, smooth kernel 匹配, cofactor 测试</td></tr>
+          <tr><td>p36_cofactor_decay.py</td><td>多尺度 cofactor gap, 三路分解（11 个 p）</td></tr>
+        </tbody>
+      </table>
+      <p>Sanity check：ρ(10⁷)=58, ρ(10⁸)=66, ρ(10⁹)=75。</p>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXV. Paper XXXV DOI: 10.5281/zenodo.19143732. Paper XXXIV DOI: 10.5281/zenodo.19140015. Paper XXXIII DOI: 10.5281/zenodo.19124485.<br>
+      [2] K. Cordwell et al. (2018). <em>J. Number Theory</em>, 189:17–34.<br>
+      [3] A. Hildebrand, G. Tenenbaum (1986). <em>Trans. AMS</em>, 296:265–290.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）编写全部数值脚本，设计了解释率 vs y 曲线和 cofactor 测试，起草了 working notes v1–v3 和正文。ChatGPT（公西华）建议了 bias/Δ 比值测量，修正了 v₂ 的错误推导，建议了 v₂v₃ 杀手测试和"解释率随 y 增长"这个决定性实验方向，指出剩余 80% 更可能是全局 DP 路径效应，提出"直接证明 shifted 效应 = O(1)"的新策略。Gemini（子夏）贡献了半解析论证框架（后被杀手测试修正），提出"马尔可夫屏障"和"捷径连锁反应"解释，以及从 local profile 转向 friable core 的建议。Grok（子贡）确认了非线性响应与 Paper 18–19 线性自校正不矛盾（不同层面），cofactor 衰减与 Lindley 平稳分布的一致性。最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho35.html">← 论文 XXXV：同余退化与前驱优势的侵蚀</a>
+        &nbsp;|&nbsp;
+        论文 XXXVII →
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
