@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratio-Parametrization of G and the Composition-Shift Reinterpretation of B-C Erosion — ZFCρ Paper XXXVIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXVIII: G_loc(t) is p-independent (G = -0.042 ± 0.002 at fixed q/p ~ 1000 across five primes). B-C erosion through zero is a composition shift in the N=10^10 window. Fixed-t three-term decomposition is also p-independent. Child diff is intrinsically positive (+1.1 to +1.7). Delta_penalty flat across four decades (0.691–0.703).">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, ratio-parametrization, G_loc, composition shift, window effect, causal chain reconstruction">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ratio-Parametrization of G and the Composition-Shift Reinterpretation of B-C Erosion">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho38.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Ratio-Parametrization of G and the Composition-Shift Reinterpretation of B-C Erosion",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho38.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19157939"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "ratio-parametrization", "G_loc",
+      "composition shift", "window effect", "causal chain reconstruction"
+    ],
+    "abstract": "G_loc(t) is p-independent: at fixed t=q/p, G = -0.042 ± 0.002 across five primes (q/p ~ 1000). B-C erosion through zero is a composition shift in the N=10^10 window. Fixed-t three-term decomposition E(t)+C_mult(t)+C_add(t) is also p-independent. Child diff is intrinsically positive (+1.1 to +1.7) at all t and all p. Delta_penalty flat across four decades (0.691–0.703). Route C Step 2b rewritten: prove G_loc scaling collapse and uniform bound.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho38.html">
+  <meta name="citation_title" content="Ratio-Parametrization of G and the Composition-Shift Reinterpretation of B-C Erosion">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19157939">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho38.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXXVIII</div>
+      <h1 class="paper-title">Ratio-Parametrization of G and the Composition-Shift Reinterpretation of B-C Erosion</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19157939" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19157939
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Papers XXXV–XXXVII reported B-C erosion from −2.09 to +1.45 with zero-crossing, attributing it to intrinsic \(p\)-dependent asymptotic effects. This paper achieves a fundamental causal reinterpretation through multi-scale analysis, \(q/p\) ratio decomposition, and fixed-\(t\) three-term decomposition.</p>
+        <p><strong>(1)</strong> \(G\) does not depend on \(p\) — it depends only on \(t = q/p\). At fixed \(t\), \(G_{\mathrm{loc}}(t)\) is \(p\)-independent (\(q/p \sim 1000\): \(G = -0.042 \pm 0.002\) across five primes).</p>
+        <p><strong>(2)</strong> "B-C erosion through zero" is a composition shift in the \(N = 10^{10}\) window. Large \(p\) forces small \(t\) (max \(t = N/p^2\)), shifting the mix toward the small-\(t\) regime where \(G \approx 0\).</p>
+        <p><strong>(3)</strong> At fixed \(t\), the three-term decomposition \(E(t) + C_{\mathrm{mult}}(t) + C_{\mathrm{add}}(t)\) is also \(p\)-independent. Paper XXXVII's continuation reversal is a \(t\)-regime characteristic, not \(p\)-driven degradation.</p>
+        <p><strong>(4)</strong> Child diff is positive at ALL \(t\) and ALL \(p\) (+1.1 to +1.7). This is an intrinsic feature, not a "reversal." Paper XXXVII's negative-to-positive child diff trajectory was a mix effect.</p>
+        <p><strong>(5)</strong> At fixed \(t \geq 50\): entry term gives a stable negative contribution (~−0.11), continuation terms give stable positive counterbalance (~+0.07), nearly canceling to a small net bias \(G_{\mathrm{loc}} \approx -0.04\).</p>
+        <p><strong>(6)</strong> \(\Delta_{\mathrm{penalty}}\) is flat across four decades (\(10^7\)–\(10^{10}\)): 0.691–0.703.</p>
+        <p><strong>Keywords:</strong> ratio-parametrization, \(G_{\mathrm{loc}}(t)\), composition shift, window effect, causal chain reconstruction</p>
+      </div>
+
+      <h2>§1 Three Layers of G</h2>
+
+      <h3>1.1 Object Separation</h3>
+      <p>This paper explicitly distinguishes three different quantities:</p>
+      <ul>
+        <li><strong>\(G_{\mathrm{loc}}(p,t)\):</strong> Local ρ bias at fixed \(t = q/p\). This paper's core measurement.</li>
+        <li><strong>\(\bar{G}_N(p)\):</strong> Mixed average over \(q \in [p+1, N/p]\), at fixed \(N\) and \(p\). What Papers XXXV–XXXVII measured. Equals \(M_{N,p}[G_{\mathrm{loc}}(t)]\) over \(t \in [1, N/p^2]\).</li>
+        <li><strong>\(G_X(p)\):</strong> Fixed-\(p\) expanding-window average (Block 1: converges to ~−1.9).</li>
+      </ul>
+
+      <h3>1.2 Notation</h3>
+      <ul>
+        <li>\(A = E[\rho(pq-1)]\) (\(q\) prime), \(B = E[\rho(pr-1)]\) (\(r\) random odd), \(C = E[\rho(\text{random } n)]\)</li>
+        <li>\(B\text{-}C = \bar{G}_N(p)\), \(A\text{-}B = S_N(p)\) (prime-source correction)</li>
+        <li>\(\pi_{\mathrm{aff}} = P(\text{first-move=mult} \mid pr-1)\), \(\pi_{\mathrm{gen}} = P(\text{first-move=mult} \mid \text{random})\)</li>
+      </ul>
+      <div class="note-box">Section 3's decomposition (PATH_MAX=10⁷ scale) and Section 6's matched-scale data (pq ~ 10⁹–10¹⁰) measure G at different scales, not sampling fluctuations.</div>
+
+      <h2>§2 G<sub>loc</sub>(t) Is p-Independent</h2>
+
+      <h3>2.1 Decisive Data</h3>
+
+      <p><strong>q/p ~ 100:</strong></p>
+      <table>
+        <thead><tr><th>p</th><th>G_loc</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.035</td></tr>
+          <tr><td>101</td><td>−0.003</td></tr>
+          <tr><td>503</td><td>−0.038</td></tr>
+          <tr><td>1009</td><td>−0.045</td></tr>
+          <tr><td>2003</td><td>−0.046</td></tr>
+          <tr><td>5003</td><td>−0.046</td></tr>
+        </tbody>
+      </table>
+      <p>\(G \approx -0.04 \pm 0.02\), six primes consistent.</p>
+
+      <p><strong>q/p ~ 1000:</strong></p>
+      <table>
+        <thead><tr><th>p</th><th>G_loc</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.043</td></tr>
+          <tr><td>101</td><td>−0.041</td></tr>
+          <tr><td>503</td><td>−0.041</td></tr>
+          <tr><td>1009</td><td>−0.045</td></tr>
+          <tr><td>2003</td><td>−0.042</td></tr>
+        </tbody>
+      </table>
+      <p>\(G \approx -0.042 \pm 0.002\), five primes in perfect agreement.</p>
+
+      <h3>2.2 Profile f(t)</h3>
+      <table>
+        <thead><tr><th>t regime</th><th>G_loc</th></tr></thead>
+        <tbody>
+          <tr><td>\(t < 5\)</td><td>−0.05 to −0.15 (noisy)</td></tr>
+          <tr><td>\(5 < t < 50\)</td><td>−0.03 to −0.06</td></tr>
+          <tr><td>\(t > 50\)</td><td>−0.04 (stable)</td></tr>
+        </tbody>
+      </table>
+      <p>\(|G_{\mathrm{loc}}| < 0.15\) for all \(t > 10\).</p>
+
+      <h2>§3 Fixed-t Three-Term Decomposition</h2>
+
+      <h3>3.1 Formula</h3>
+      <p>$$B\text{-}C = E(t) + C_{\mathrm{mult}}(t) + C_{\mathrm{add}}(t)$$</p>
+      <p>where \(E(t) = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}})(\mu_{\mathrm{gen}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\), \(C_{\mathrm{mult}}(t) = \pi_{\mathrm{aff}}(\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\), \(C_{\mathrm{add}}(t) = (1-\pi_{\mathrm{aff}})(\mu_{\mathrm{aff}}^{\mathrm{add}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\).</p>
+      <p>Papers XXXV–XXXVII measured the mixed averages \(M_{N,p}[E(t)]\), \(M_{N,p}[C_{\mathrm{mult}}(t)]\), \(M_{N,p}[C_{\mathrm{add}}(t)]\).</p>
+
+      <h3>3.2 Data at t ~ 100</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>E</th><th>C_mult</th><th>C_add</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.039</td><td>−0.124</td><td>+0.041</td><td>+0.045</td></tr>
+          <tr><td>211</td><td>−0.085</td><td>−0.131</td><td>+0.029</td><td>+0.017</td></tr>
+          <tr><td>503</td><td>−0.034</td><td>−0.116</td><td>+0.037</td><td>+0.046</td></tr>
+          <tr><td>1009</td><td>−0.037</td><td>−0.102</td><td>+0.038</td><td>+0.027</td></tr>
+          <tr><td>5003</td><td>−0.034</td><td>−0.105</td><td>+0.035</td><td>+0.036</td></tr>
+        </tbody>
+      </table>
+      <p>\(E \approx -0.11\), \(C_{\mathrm{mult}} \approx +0.04\), \(C_{\mathrm{add}} \approx +0.03\) — all \(p\)-independent.</p>
+
+      <h3>3.3 Data at t ~ 1000</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>E</th><th>C_mult</th><th>C_add</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.022</td><td>−0.124</td><td>+0.085</td><td>+0.016</td></tr>
+          <tr><td>503</td><td>−0.037</td><td>−0.114</td><td>+0.047</td><td>+0.029</td></tr>
+          <tr><td>1009</td><td>−0.052</td><td>−0.105</td><td>+0.027</td><td>+0.025</td></tr>
+          <tr><td>2003</td><td>−0.049</td><td>−0.109</td><td>+0.025</td><td>+0.035</td></tr>
+        </tbody>
+      </table>
+      <p>Also \(p\)-independent.</p>
+
+      <h3>3.4 Key Observation</h3>
+      <div class="thesis-box">
+        <p><strong>At fixed t, C_mult is positive.</strong> This differs completely from Paper XXXVII's negative \(C_{\mathrm{mult}}\) (−1.39 to −0.53), which was a mixed-window average pulled negative by large-\(t\) contributions.</p>
+        <p>At fixed \(t \geq 50\): entry gives a stable negative main term (~−0.11), continuation gives a stable positive counterbalance (~+0.07), nearly canceling to \(G_{\mathrm{loc}} \approx -0.04\).</p>
+      </div>
+
+      <h3>3.5 Reinterpretation of Paper XXXVII</h3>
+      <p>XXXVII's data are correct. But they measured mixed quantities. "E_p 5%, C_mult 72%" were mix-weighted proportions; the intrinsic decomposition at fixed \(t\) shows \(E\) dominant in absolute value with continuation partially canceling.</p>
+
+      <h2>§4 Child Diff Is Intrinsically Positive</h2>
+
+      <table>
+        <thead><tr><th>t</th><th>p = 53</th><th>p = 503</th><th>p = 1009</th><th>p = 2003</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.76</td><td>+0.83</td><td>+1.17</td><td>+1.38</td></tr>
+          <tr><td>10</td><td>+1.13</td><td>+1.25</td><td>+1.35</td><td>+1.38</td></tr>
+          <tr><td>100</td><td>+1.15</td><td>+1.18</td><td>+1.23</td><td>+1.49</td></tr>
+          <tr><td>1000</td><td>+1.34</td><td>+1.44</td><td>+1.69</td><td>+1.73</td></tr>
+        </tbody>
+      </table>
+
+      <p>Positive at all \(t\) and all \(p\). Mult-split children of shifted integers are intrinsically more expensive to compress. Paper XXXVII's "reversal from −0.59 to +0.96" was a mix effect: small-\(p\) mixed averages were pulled negative by large-\(t\) contributions; at large \(p\) only small-\(t\) samples remain (intrinsically positive values exposed).</p>
+
+      <h2>§5 Composition Shift</h2>
+
+      <h3>5.1 Causal Chain</h3>
+      <div class="thesis-box">
+        <p>(a) \(G_{\mathrm{loc}}(p,t) \approx f(t)\), \(p\)-independent.</p>
+        <p>(b) \(\bar{G}_N(p) = M_{N,p}[f(t)]\), mixed average over \(t \in [1, N/p^2]\).</p>
+        <p>(c) As \(p\) grows, max \(t = N/p^2\) shrinks, mix shifts toward small \(t\).</p>
+        <p>(d) \(f(\text{small } t) \approx 0\), \(f(\text{large } t) \approx -0.04\) to \(-0.5\).</p>
+        <p>(e) \(\bar{G}_N(p)\) erodes from strongly negative toward zero: composition shift.</p>
+      </div>
+
+      <h3>5.2 Correction to Papers XXXV–XXXVII</h3>
+      <p><strong>Data preserved. Causal chain rewritten.</strong></p>
+      <p>Old: \(G\) is a \(p\)-function that decays with continuation degradation. New: \(G\) is a \(t\)-function, \(p\)-independent. "Erosion" is composition shift in the fixed-\(N\) window. "Continuation reversal" is the intrinsic positive child diff being masked by mix effects at small \(p\), then revealed at large \(p\).</p>
+
+      <h2>§6 Multi-Scale Data</h2>
+
+      <h3>6.1 G(X;p) Convergence</h3>
+      <table>
+        <thead><tr><th>p</th><th>X = 10⁷</th><th>X = 10⁸</th><th>X = 10⁹</th><th>X = 10¹⁰</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−1.92</td><td>−1.94</td><td>−1.93</td><td>−1.95</td></tr>
+          <tr><td>1009</td><td>−0.94</td><td>−1.76</td><td>−1.91</td><td>−1.92</td></tr>
+        </tbody>
+      </table>
+      <p>For fixed \(p\), \(G_X(p)\) converges to ~−1.9 as \(X\) grows — because large \(q\) (large \(t\)) dominates the average.</p>
+
+      <h3>6.2 Matched-Scale G(pq;p)</h3>
+      <table>
+        <thead><tr><th>p</th><th>avg pq</th><th>G(pq;p)</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>5.0 × 10⁹</td><td>−1.158</td></tr>
+          <tr><td>5003</td><td>5.0 × 10⁹</td><td>−1.116</td></tr>
+          <tr><td>20011</td><td>5.2 × 10⁹</td><td>−0.799</td></tr>
+          <tr><td>70001</td><td>7.4 × 10⁹</td><td>+0.224</td></tr>
+        </tbody>
+      </table>
+      <p>"Erosion" from the changing \(t\)-mix, not from \(f(t)\) itself changing.</p>
+
+      <h3>6.3 Δ<sub>penalty</sub>: Flat Across Four Decades</h3>
+      <table>
+        <thead><tr><th>Scale</th><th>Δ_penalty</th></tr></thead>
+        <tbody>
+          <tr><td>10⁷</td><td>0.691</td></tr>
+          <tr><td>10⁸</td><td>0.703</td></tr>
+          <tr><td>10⁹</td><td>0.703</td></tr>
+          <tr><td>10¹⁰</td><td>0.700</td></tr>
+        </tbody>
+      </table>
+      <p>No detectable growth in the current window.</p>
+
+      <h2>§7 Implications for Route C</h2>
+
+      <h3>7.1 G = O(1) Evidence</h3>
+      <p>\(G_{\mathrm{loc}}(t)\) is bounded: \(|G_{\mathrm{loc}}| < 0.15\) for \(t > 10\), \(|G_{\mathrm{loc}}| < 2\) for all \(t\). This is the strongest numerical evidence for \(B\text{-}C = O(1)\).</p>
+      <p>Analytic needs: (a) prove scaling collapse \(G_{\mathrm{loc}}(p,t) = f(t) + \varepsilon\) with \(\sup|\varepsilon|\) controlled; (b) prove \(\sup|f(t)| < \infty\); (c) prove mixed average \(M_{N,p}[f]\) bounded.</p>
+
+      <h3>7.2 Correct M<sub>p</sub> Identity</h3>
+      <p>$$E[\rho(pq-1)] = E[\rho(\text{general})] + \bar{G}_N(p) + S_N(p)$$</p>
+      <p>Therefore:</p>
+      <p>$$M_p = \Delta_{\mathrm{penalty}}(p) - \bar{G}_N(p) - S_N(p)$$</p>
+      <p>With \(\Delta_{\mathrm{penalty}} \approx 0.70\) (flat positive), \(\bar{G}_N = O(1)\), \(S_N = O(1)\): <strong>\(M_p = O(1)\).</strong></p>
+      <div class="warning-box">
+        <p>Paper XXXVIII does not directly yield \(M_p \to \infty\). It yields Step 2b's major simplification: the intrinsic object is a bounded ratio-profile \(f(t)\), and "erosion" is composition shift.</p>
+      </div>
+
+      <h3>7.3 Route C Status</h3>
+      <p>Step 2b rewritten: prove \(G_{\mathrm{loc}}\)'s scaling collapse and uniform bound, then prove the weighted mix \(\bar{G}_N(p) = M_{N,p}[f]\) is bounded. <strong>Much weaker and cleaner than "prove \(G\) tends to 0."</strong></p>
+      <p>\(\Omega = 2\) closure still needs additional input: \(\Delta_{\mathrm{penalty}}\)'s long-range growth, or another route to \(M_p\) divergence.</p>
+
+      <h2>§8 Discussion</h2>
+
+      <h3>8.1 Core Contributions</h3>
+      <ul>
+        <li>Ratio-parametrization: \(G_{\mathrm{loc}}(p,t) \approx f(t)\), \(p\)-independent.</li>
+        <li>Three-layer G distinction (\(G_{\mathrm{loc}}\), \(\bar{G}_N\), \(G_X\)).</li>
+        <li>Composition-shift reinterpretation of B-C erosion through zero.</li>
+        <li>Causal chain correction for Papers XXXV–XXXVII (data preserved).</li>
+        <li>Fixed-\(t\) three-term decomposition: \(E\), \(C_{\mathrm{mult}}\), \(C_{\mathrm{add}}\) are all \(t\)-functions.</li>
+        <li>Child diff intrinsically positive at all \(t\).</li>
+        <li>Correct \(M_p\) identity (no \(\tau_p\) double-counting).</li>
+      </ul>
+
+      <h3>8.2 Progress Table (XXXIII → XXXVIII)</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th><th>XXXVI</th><th>XXXVII</th><th>XXXVIII</th></tr></thead>
+        <tbody>
+          <tr><td>Mechanism</td><td>Drift</td><td>Chase</td><td>Reversal</td><td>Global path</td><td>3-term</td><td>t-profile</td></tr>
+          <tr><td>B-C</td><td>—</td><td>—</td><td>Shifted</td><td>20%L+80%G</td><td>E5%+Cm72%</td><td>f(t)+mix</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 Open Problems</h3>
+      <ul>
+        <li>Analytic form of \(f(t)\).</li>
+        <li>Harmonic \(q\)-weight formula in defect.</li>
+        <li>Analytic proof of \(p\)-independence.</li>
+        <li>\(\Delta_{\mathrm{penalty}}\) behavior at larger \(N\).</li>
+        <li>Route to \(M_p \to \infty\).</li>
+      </ul>
+
+      <h2>§9 Data Sources</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th></tr></thead>
+        <tbody>
+          <tr><td>p38_multiscale.py</td><td>G and Δ at 4 N-scales</td></tr>
+          <tr><td>p38_unified_g.py</td><td>Matched-scale G, G vs q-window</td></tr>
+          <tr><td>p38_qp_ratio.py</td><td>G vs q/p ratio, G vs p at fixed q/p</td></tr>
+          <tr><td>p38_three_term_fixed_t.py</td><td>Fixed-t three-term decomposition + child diff</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXVII. Paper XXXVII DOI: <a href="https://doi.org/10.5281/zenodo.19155792" target="_blank" rel="noopener">10.5281/zenodo.19155792</a>. Paper XXXVI DOI: <a href="https://doi.org/10.5281/zenodo.19153002" target="_blank" rel="noopener">10.5281/zenodo.19153002</a>.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (Zilu) wrote all scripts, designed multi-scale experiments and fixed-\(t\) decomposition, drafted v1–v2 and formal text. The author (Han Qin) identified the "large \(p\) forced to use \(q \approx p\)" window effect — a critical remainder missed by all four AIs. ChatGPT (Gongxihua) proposed three-layer G distinction, caught the \(\tau_p\) double-counting error in §7.2, and corrected Paper XXXVIII's positioning from "closure" to "Step 2b rewrite." Gemini (Zixia) contributed the "static confrontation" perspective (entry &lt; 0 vs continuation &gt; 0) and the \(M_p\) framework (later corrected). Grok (Zigong) confirmed \(p\)-independence compatibility with Lindley. Final text independently by the author; all mathematical judgments are the author's responsibility.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho37.html">← Paper XXXVII: The Entry-Continuation Decomposition and Quantitative Closure of B-C Erosion</a><br>
+        Paper XXXIX →
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXXVIII</div>
+      <h1 class="paper-title">G 的 Ratio-Parametrization 与 B-C 侵蚀的 Composition-Shift 重新解读</h1>
+      <div class="paper-authors">Han Qin（秦汉） &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19157939" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19157939
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Papers XXXV–XXXVII 报告了 B-C 从 −2.09 侵蚀到 +1.45 并穿零反转，并将其归因于 \(p\) 的内禀渐近效应。本文通过多尺度分析、\(q/p\) ratio 分解和固定 \(t = q/p\) 的三项分解，完成了一次根本性的因果链重构。</p>
+        <p><strong>（1）</strong> \(G\) 不依赖于 \(p\)——它只依赖于 \(t = q/p\)。固定 \(t\) 时，\(G_{\mathrm{loc}}(t)\) 对 \(p\) 完全不变（\(q/p \sim 1000\) 时 \(G \approx -0.042 \pm 0.002\)，五个 \(p\) 一致）。</p>
+        <p><strong>（2）</strong> "B-C 侵蚀穿零"是 \(N = 10^{10}\) 窗口中 \(q/p\) composition shift。大 \(p\) 被迫只能用小 \(t\)（max \(t = N/p^2\)），mix 向小 \(t\) 区移动，小 \(t\) 区 \(G \approx 0\)。</p>
+        <p><strong>（3）</strong> 固定 \(t\) 时，三项分解 \(E(t) + C_{\mathrm{mult}}(t) + C_{\mathrm{add}}(t)\) 也对 \(p\) 不变。Paper XXXVII 的 continuation reversal 不是 \(p\) 驱动的退化，而是小 \(t\) regime 的固有特征。</p>
+        <p><strong>（4）</strong> Child diff 在所有 \(t\) 和所有 \(p\) 上都是正的（+1.1 到 +1.7）。这不是"反转"——乘法分裂后 child 比一般整数更贵是固有特征。</p>
+        <p><strong>（5）</strong> 固定 \(t \geq 50\) 时，entry term 给出稳定的负主项（≈ −0.11），continuation 两项给出稳定的正抵消项（≈ +0.07），三者几乎相消，净 bias \(G_{\mathrm{loc}} \approx -0.04\) 极小。</p>
+        <p><strong>（6）</strong> \(\Delta_{\mathrm{penalty}}\) 在 \(10^7\)–\(10^{10}\) 四个数量级上完全平坦（0.691–0.703）。</p>
+        <p><strong>关键词：</strong> ratio-parametrization，\(G_{\mathrm{loc}}(t)\)，composition shift，窗口效应，因果链重构</p>
+      </div>
+
+      <h2>§1 三层 G 的区分</h2>
+
+      <h3>1.1 对象分层</h3>
+      <p>本文明确区分三个不同的量：</p>
+      <ul>
+        <li><strong>\(G_{\mathrm{loc}}(p,t)\)：</strong>固定 \(t = q/p\) ratio 时，\(pr-1\) vs random 的局部 ρ 偏差。本文核心测量。</li>
+        <li><strong>\(\bar{G}_N(p)\)：</strong>固定 \(N\) 和 \(p\)，对 \(q \in [p+1, N/p]\) 的混合平均。Papers XXXV–XXXVII 测的量。\(\bar{G}_N(p) = M_{N,p}[G_{\mathrm{loc}}(t)]\)，即 \(G_{\mathrm{loc}}\) 在 \(t \in [1, N/p^2]\) 上的加权混合。</li>
+        <li><strong>\(G_X(p)\)：</strong>固定 \(p\)，随 \(X\) 扩窗的整体平均（Block 1 测的，收敛到 ≈ −1.9）。</li>
+      </ul>
+
+      <h3>1.2 记号</h3>
+      <ul>
+        <li>\(A = E[\rho(pq-1)]\)（\(q\) 素数），\(B = E[\rho(pr-1)]\)（\(r\) 随机奇数），\(C = E[\rho(\text{random } n)]\)</li>
+        <li>\(B\text{-}C = \bar{G}_N(p)\)，\(A\text{-}B = S_N(p)\)（prime-source correction）</li>
+        <li>\(\pi_{\mathrm{aff}} = P(\text{first-move=mult} \mid pr-1)\)，\(\pi_{\mathrm{gen}} = P(\text{first-move=mult} \mid \text{random})\)</li>
+      </ul>
+      <div class="note-box">§3 的三项分解（PATH_MAX=10⁷ 尺度）和 §6 的 matched-scale 数据（pq ~ 10⁹–10¹⁰ 尺度）测量的是不同尺度的 G，不是采样波动。</div>
+
+      <h2>§2 G<sub>loc</sub>(t) 的 p-Independence</h2>
+
+      <h3>2.1 判决性数据</h3>
+
+      <p><strong>q/p ~ 100：</strong></p>
+      <table>
+        <thead><tr><th>p</th><th>G_loc</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.035</td></tr>
+          <tr><td>101</td><td>−0.003</td></tr>
+          <tr><td>503</td><td>−0.038</td></tr>
+          <tr><td>1009</td><td>−0.045</td></tr>
+          <tr><td>2003</td><td>−0.046</td></tr>
+          <tr><td>5003</td><td>−0.046</td></tr>
+        </tbody>
+      </table>
+      <p>\(G \approx -0.04 \pm 0.02\)，六个 \(p\) 一致。</p>
+
+      <p><strong>q/p ~ 1000：</strong></p>
+      <table>
+        <thead><tr><th>p</th><th>G_loc</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.043</td></tr>
+          <tr><td>101</td><td>−0.041</td></tr>
+          <tr><td>503</td><td>−0.041</td></tr>
+          <tr><td>1009</td><td>−0.045</td></tr>
+          <tr><td>2003</td><td>−0.042</td></tr>
+        </tbody>
+      </table>
+      <p>\(G \approx -0.042 \pm 0.002\)，五个 \(p\) 完美一致。</p>
+
+      <h3>2.2 f(t) 的 profile</h3>
+      <table>
+        <thead><tr><th>t regime</th><th>G_loc</th></tr></thead>
+        <tbody>
+          <tr><td>\(t < 5\)</td><td>−0.05 到 −0.15（嘈杂）</td></tr>
+          <tr><td>\(5 < t < 50\)</td><td>−0.03 到 −0.06</td></tr>
+          <tr><td>\(t > 50\)</td><td>−0.04（稳定）</td></tr>
+        </tbody>
+      </table>
+      <p>\(G_{\mathrm{loc}}(t)\) 在 \(t > 10\) 后收敛到 ≈ −0.04，在所有 regime 下 \(|G_{\mathrm{loc}}| < 0.15\)。</p>
+
+      <h2>§3 固定 t 的三项分解</h2>
+
+      <h3>3.1 公式</h3>
+      <p>$$B\text{-}C = E(t) + C_{\mathrm{mult}}(t) + C_{\mathrm{add}}(t)$$</p>
+      <p>其中 \(E(t) = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}})(\mu_{\mathrm{gen}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\)，\(C_{\mathrm{mult}}(t) = \pi_{\mathrm{aff}}(\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\)，\(C_{\mathrm{add}}(t) = (1-\pi_{\mathrm{aff}})(\mu_{\mathrm{aff}}^{\mathrm{add}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\)。</p>
+      <p>Papers XXXV–XXXVII 测的是混合量 \(M_{N,p}[E(t)]\)，\(M_{N,p}[C_{\mathrm{mult}}(t)]\)，\(M_{N,p}[C_{\mathrm{add}}(t)]\)。</p>
+
+      <h3>3.2 t ~ 100 的数据</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>E</th><th>C_mult</th><th>C_add</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.039</td><td>−0.124</td><td>+0.041</td><td>+0.045</td></tr>
+          <tr><td>211</td><td>−0.085</td><td>−0.131</td><td>+0.029</td><td>+0.017</td></tr>
+          <tr><td>503</td><td>−0.034</td><td>−0.116</td><td>+0.037</td><td>+0.046</td></tr>
+          <tr><td>1009</td><td>−0.037</td><td>−0.102</td><td>+0.038</td><td>+0.027</td></tr>
+          <tr><td>5003</td><td>−0.034</td><td>−0.105</td><td>+0.035</td><td>+0.036</td></tr>
+        </tbody>
+      </table>
+      <p>\(E \approx -0.11\)，\(C_{\mathrm{mult}} \approx +0.04\)，\(C_{\mathrm{add}} \approx +0.03\)——全部对 \(p\) 不变。</p>
+
+      <h3>3.3 t ~ 1000 的数据</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>E</th><th>C_mult</th><th>C_add</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−0.022</td><td>−0.124</td><td>+0.085</td><td>+0.016</td></tr>
+          <tr><td>503</td><td>−0.037</td><td>−0.114</td><td>+0.047</td><td>+0.029</td></tr>
+          <tr><td>1009</td><td>−0.052</td><td>−0.105</td><td>+0.027</td><td>+0.025</td></tr>
+          <tr><td>2003</td><td>−0.049</td><td>−0.109</td><td>+0.025</td><td>+0.035</td></tr>
+        </tbody>
+      </table>
+      <p>同样对 \(p\) 不变。</p>
+
+      <h3>3.4 固定 t 下的内禀分解</h3>
+      <div class="thesis-box">
+        <p><strong>注意：在固定 t 时 C_mult 是正的。</strong>这和 Paper XXXVII 报告的负 \(C_{\mathrm{mult}}\)（−1.39 到 −0.53）完全不同。XXXVII 的负值是混合平均 \(M_{N,p}[C_{\mathrm{mult}}(t)]\) 被大 \(t\) 区域的其他效应拉低的结果。</p>
+        <p>在固定 \(t \geq 50\) 时，entry term 给出稳定的负主项（≈ −0.11），而 \(C_{\mathrm{mult}}\) 和 \(C_{\mathrm{add}}\) 给出稳定的正抵消项（合计 ≈ +0.07）。三者几乎相消，净 bias B-C ≈ −0.04 极小。</p>
+      </div>
+
+      <h3>3.5 对 Paper XXXVII 的重新解读</h3>
+      <p>XXXVII 的三项分解数据仍然正确。但它们测的是混合量，不是内禀 \(t\)-profile。"E_p 占 5%，C_mult 占 72%"是混合比例；内禀分解中 \(E\) 主导（绝对值约 −0.11）而 continuation 抵消大部分。</p>
+
+      <h2>§4 Child Diff 的固有正值</h2>
+
+      <table>
+        <thead><tr><th>t</th><th>p = 53</th><th>p = 503</th><th>p = 1009</th><th>p = 2003</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.76</td><td>+0.83</td><td>+1.17</td><td>+1.38</td></tr>
+          <tr><td>10</td><td>+1.13</td><td>+1.25</td><td>+1.35</td><td>+1.38</td></tr>
+          <tr><td>100</td><td>+1.15</td><td>+1.18</td><td>+1.23</td><td>+1.49</td></tr>
+          <tr><td>1000</td><td>+1.34</td><td>+1.44</td><td>+1.69</td><td>+1.73</td></tr>
+        </tbody>
+      </table>
+
+      <p>Child diff 在所有 \(t\) 和所有 \(p\) 上都是正的。乘法分裂后 child 比一般整数更贵是固有特征——不是 Paper XXXVII 中描述的"反转"。XXXVII 的"child diff 从 −0.59 到 +0.96"是 mix effect：小 \(p\) 的混合平均被大 \(t\) 的其他因素拉负，大 \(p\) 只有小 \(t\) 的样本（固有正值显露）。</p>
+
+      <h2>§5 Composition Shift</h2>
+
+      <h3>5.1 因果链</h3>
+      <div class="thesis-box">
+        <p>（a）\(G_{\mathrm{loc}}(p,t) \approx f(t)\)，不依赖于 \(p\)。</p>
+        <p>（b）\(\bar{G}_N(p) = M_{N,p}[f(t)]\)，是 \(f\) 在 \(t \in [1, N/p^2]\) 上的混合平均。</p>
+        <p>（c）当 \(p\) 增大，max \(t = N/p^2\) 缩小，mix 向小 \(t\) 移动。</p>
+        <p>（d）\(f(\text{small } t) \approx 0\)，\(f(\text{large } t) \approx -0.04\) 到 \(-0.5\)。</p>
+        <p>（e）混合平均 \(\bar{G}_N(p)\) 从强负值向零侵蚀。</p>
+      </div>
+
+      <h3>5.2 对 Papers XXXV–XXXVII 的修正</h3>
+      <p><strong>数据保留，因果链重写。</strong></p>
+      <p>旧因果链：\(G\) 是 \(p\) 的函数，随 \(p\) 退化，continuation 反转。新因果链：\(G\) 是 \(t\) 的函数，\(p\)-independent。"侵蚀"是固定 \(N\) 窗口中 \(t\)-mix 的 composition shift。"Continuation reversal"是固定 \(t\) 下 child diff 的固有正值被 mix effect 遮蔽后在大 \(p\) 端显露。</p>
+
+      <h2>§6 多尺度数据</h2>
+
+      <h3>6.1 G(X;p) 随 X 收敛</h3>
+      <table>
+        <thead><tr><th>p</th><th>X = 10⁷</th><th>X = 10⁸</th><th>X = 10⁹</th><th>X = 10¹⁰</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>−1.92</td><td>−1.94</td><td>−1.93</td><td>−1.95</td></tr>
+          <tr><td>1009</td><td>−0.94</td><td>−1.76</td><td>−1.91</td><td>−1.92</td></tr>
+        </tbody>
+      </table>
+      <p>\(G_X(p)\) 随 \(X\) 增大收敛——因为大 \(q\)（大 \(t\)）主导平均，\(f(\text{large } t) \approx -0.5\) 到 \(-1.9\)。</p>
+
+      <h3>6.2 Matched-scale G(pq;p)</h3>
+      <table>
+        <thead><tr><th>p</th><th>avg pq</th><th>G(pq;p)</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>5.0 × 10⁹</td><td>−1.158</td></tr>
+          <tr><td>5003</td><td>5.0 × 10⁹</td><td>−1.116</td></tr>
+          <tr><td>20011</td><td>5.2 × 10⁹</td><td>−0.799</td></tr>
+          <tr><td>70001</td><td>7.4 × 10⁹</td><td>+0.224</td></tr>
+        </tbody>
+      </table>
+      <p>"侵蚀"来自 \(t\)-mix 的变化，不是 \(f(t)\) 本身在变。</p>
+
+      <h3>6.3 Δ<sub>penalty</sub> 四尺度平坦</h3>
+      <table>
+        <thead><tr><th>尺度</th><th>Δ_penalty</th></tr></thead>
+        <tbody>
+          <tr><td>10⁷</td><td>0.691</td></tr>
+          <tr><td>10⁸</td><td>0.703</td></tr>
+          <tr><td>10⁹</td><td>0.703</td></tr>
+          <tr><td>10¹⁰</td><td>0.700</td></tr>
+        </tbody>
+      </table>
+      <p>当前窗口未见可检测增长。</p>
+
+      <h2>§7 对 Route C 的含义</h2>
+
+      <h3>7.1 G = O(1) 的证据</h3>
+      <p>\(G_{\mathrm{loc}}(t)\) 在所有测试的 \(t\) 范围内有界（\(|G_{\mathrm{loc}}| < 0.15\) for \(t > 10\)；\(|G_{\mathrm{loc}}| < 2\) for all \(t\)）。这是 \(B\text{-}C = O(1)\) 的最强数值证据。</p>
+      <p>解析层面，需证明：（a）\(G_{\mathrm{loc}}(p,t) = f(t) + \varepsilon(p,t)\)，\(\sup|\varepsilon|\) 可控；（b）\(\sup|f(t)| &lt; \infty\)；（c）\(\bar{G}_N(p) = M_{N,p}[f]\) 的混合有界性。</p>
+
+      <h3>7.2 M<sub>p</sub> 的正确恒等式</h3>
+      <p>$$E[\rho(pq-1)] = E[\rho(\text{general})] + \bar{G}_N(p) + S_N(p)$$</p>
+      <p>因此：</p>
+      <p>$$M_p = \Delta_{\mathrm{penalty}}(p) - \bar{G}_N(p) - S_N(p)$$</p>
+      <p>其中 \(\Delta_{\mathrm{penalty}} \approx 0.70\)（正常数，平坦），\(\bar{G}_N = O(1)\)，\(S_N = O(1)\)。因此 <strong>\(M_p = O(1)\)。</strong></p>
+      <div class="warning-box">
+        <p>Paper XXXVIII 不直接给出 \(M_p \to \infty\)。它给出的是 Step 2b 的大幅简化：affine bias 的内禀对象是有界的 ratio-profile \(f(t)\)，"侵蚀"是 composition shift。</p>
+      </div>
+
+      <h3>7.3 Route C 的当前状态</h3>
+      <p>Step 2b 被重写为：证明 \(G_{\mathrm{loc}}(p,t)\) 的 scaling collapse（\(p\)-independence）与 uniform bound，再证明 defect 中的加权混合 \(\bar{G}_N(p) = M_{N,p}[f]\) 有界。<strong>这比"证明 \(G \to 0\) 当 \(p \to \infty\)"弱得多，也干净得多。</strong></p>
+      <p>\(\Omega = 2\) 闭合仍需额外输入：\(\Delta_{\mathrm{penalty}}\) 的长程增长，或另一条推出 \(M_p \to \infty\) 的论证。</p>
+
+      <h2>§8 讨论</h2>
+
+      <h3>8.1 核心贡献</h3>
+      <ul>
+        <li>G 的 ratio-parametrization：\(G_{\mathrm{loc}}(p,t) \approx f(t)\)，\(p\)-independent。</li>
+        <li>三层 G 的明确区分（\(G_{\mathrm{loc}}\)，\(\bar{G}_N\)，\(G_X\)）。</li>
+        <li>"B-C 侵蚀穿零"重新解读为 composition shift。</li>
+        <li>Papers XXXV–XXXVII 的因果链修正（数据保留）。</li>
+        <li>固定 \(t\) 的三项分解：\(E\)，\(C_{\mathrm{mult}}\)，\(C_{\mathrm{add}}\) 也是 \(t\)-function。</li>
+        <li>Child diff 在所有 \(t\) 上固有为正。</li>
+        <li>\(M_p\) 的正确恒等式（无 \(\tau_p\) 双算）。</li>
+      </ul>
+
+      <h3>8.2 从 XXXIII 到 XXXVIII</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th><th>XXXVI</th><th>XXXVII</th><th>XXXVIII</th></tr></thead>
+        <tbody>
+          <tr><td>机制</td><td>漂移</td><td>追赶</td><td>反转</td><td>全局路径</td><td>三项分解</td><td>t-profile</td></tr>
+          <tr><td>B-C</td><td>—</td><td>—</td><td>shifted</td><td>20%L+80%G</td><td>E5%+Cm72%</td><td>f(t)+mix</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 开放问题</h3>
+      <ul>
+        <li>\(f(t)\) 的解析形式。</li>
+        <li>Defect 中的 harmonic \(q\)-权重显式公式。</li>
+        <li>\(G_{\mathrm{loc}}\) 的 \(p\)-independence 的解析证明。</li>
+        <li>\(\Delta_{\mathrm{penalty}}\) 在更大 \(N\) 上的行为。</li>
+        <li>\(M_p \to \infty\) 的论证路径。</li>
+      </ul>
+
+      <h2>§9 数据来源</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th></tr></thead>
+        <tbody>
+          <tr><td>p38_multiscale.py</td><td>G 和 Δ 在 4 个 N 尺度</td></tr>
+          <tr><td>p38_unified_g.py</td><td>Matched-scale G, G vs q-window</td></tr>
+          <tr><td>p38_qp_ratio.py</td><td>G vs q/p ratio, G vs p at fixed q/p</td></tr>
+          <tr><td>p38_three_term_fixed_t.py</td><td>固定 t 的三项分解 + child diff</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXVII. Paper XXXVII DOI: <a href="https://doi.org/10.5281/zenodo.19155792" target="_blank" rel="noopener">10.5281/zenodo.19155792</a>. Paper XXXVI DOI: <a href="https://doi.org/10.5281/zenodo.19153002" target="_blank" rel="noopener">10.5281/zenodo.19153002</a>.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）编写全部数值脚本，设计了多尺度实验、\(q/p\) 分解和固定 \(t\) 三项分解，起草了 working notes v1–v2 和正文。作者（秦汉）识别了"大 \(p\) 被迫只用 \(q \approx p\)"的窗口效应——四个 AI 均未发现的关键余项。ChatGPT（公西华）建议了三层 G 的区分，指出 §7.2 的 \(\tau_p\) 双算错误并给出正确恒等式 \(M_p = \Delta_{\mathrm{penalty}} - \bar{G}_N - S_N\)，将 Paper XXXVIII 的定位从"closure"修正为"Step 2b 重写"。Gemini（子夏）贡献了"固有静态对抗"（entry &lt; 0 vs continuation &gt; 0）的视角和 \(M_p\) 推导框架（后被修正）。Grok（子贡）确认了 G 的 \(p\)-independence 与 Lindley 框架的兼容性。最终文本由作者独立完成；所有数学判断是作者的责任。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho37.html">← 论文 XXXVII：Entry-Continuation 分解与 B-C 侵蚀的定量闭合</a><br>
+        论文 XXXIX →
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
