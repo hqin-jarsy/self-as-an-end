@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE Application: Sentence Level, Subject Condition, and the Limits of Prompt Engineering — Han Qin</title>
+  <meta name="description" content="The ceiling of prompt technique is constrained by the subject condition of the user. This paper applies Methodology 3's sentence-response isomorphism theorem to actual human-AI interaction, demonstrating how sentence-level slides, the three-layer structure (governance, interface, subject), and AI system phenotypes operate in practice.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="Self-as-an-End, SAE, Han Qin, 秦汉, sentence level, subject condition, prompt engineering, AI interaction, sentence-response isomorphism, Methodology 3, chisel-construct cycle, 凿构循环, dimensional sentence theory">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SAE Application: Sentence Level, Subject Condition, and the Limits of Prompt Engineering — Han Qin">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/applied2.html">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "SAE Application: Sentence Level, Subject Condition, and the Limits of Prompt Engineering",
+  "alternativeHeadline": "SAE应用：AI句式与主体条件——为什么prompt不只是技巧问题",
+  "author": {
+    "@type": "Person",
+    "name": "Han Qin",
+    "alternateName": "秦汉"
+  },
+  "datePublished": "2026",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "DOI",
+    "value": "10.5281/zenodo.19157713"
+  },
+  "sameAs": "https://doi.org/10.5281/zenodo.19157713",
+  "url": "https://self-as-an-end.net/papers/applied2.html",
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Self-as-an-End Theory Series"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": [
+    "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+    "sentence level", "subject condition", "prompt engineering",
+    "sentence-response isomorphism", "Methodology 3",
+    "chisel-construct cycle", "凿构循环", "dimensional sentence theory",
+    "AI interaction", "governance layer", "interface layer"
+  ],
+  "abstract": "The ceiling of prompt technique is constrained by the subject condition of the user. This paper applies Methodology 3's sentence-response isomorphism theorem to actual human-AI collaboration, using the author's own writing dialogues as case material.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zenodo",
+    "url": "https://zenodo.org"
+  },
+  "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/applied2.html">
+  <meta name="citation_title" content="SAE Application: Sentence Level, Subject Condition, and the Limits of Prompt Engineering">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19157713">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/applied2.html">
+  <meta name="citation_keywords" content="SAE; sentence level; subject condition; prompt engineering; sentence-response isomorphism; Methodology 3">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · Methodology 3 Application Paper</div>
+    <h1>SAE Application: Sentence Level, Subject Condition, and the Limits of Prompt Engineering</h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19157713" target="_blank" rel="noopener">10.5281/zenodo.19157713</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19157713" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+
+<div class="lang-tabs"><div class="lang-tab active" onclick="switchLang('en', this)">English</div><div class="lang-tab " onclick="switchLang('zh', this)">中文</div></div>
+
+  <!-- ===== ENGLISH VERSION ===== -->
+  <div id="lang-en" class="lang-content active">
+    <div class="abstract-box">
+      <div class="abstract-label">Positioning &amp; Method</div>
+      <p>This paper is the first application paper of Methodology Paper 3 ("How to Find Remainders with AI," DOI: 10.5281/zenodo.18929390). Methodology 3 formalized the sentence-response isomorphism theorem and the mathematical guarantee of ρ → ρ' within the SAE framework, establishing the full structure of human-AI collaboration for remainder discovery. This paper does not re-derive those results. Instead, it uses the author's own experience as a running case study (following the method of Paper 2) to show how sentence levels operate, slide, and can be diagnosed in actual human-AI collaboration.</p>
+      <p><strong>Method.</strong> This paper adopts an N=1 autoethnography combined with a multi-system comparative case study. All case material comes from the author's actual writing and peer-review dialogues in March 2026. The four-system comparison (Section 4.5) took place on March 15, 2026, using Claude Opus 4.6 (Anthropic), ChatGPT o3 pro (OpenAI), Gemini 2.5 Pro (Google), and Grok 3 (xAI). All dialogues were conducted in Chinese, in single- or multi-turn conversations, without custom instructions or special system prompts. Each system's behavior is shaped by its published behavioral norms and product design, both of which are subject to ongoing updates. The case analyses provide preliminary support rather than strict verification; all conclusions are scoped at the case level.</p>
+    </div>
+    <div class="paper-body">
+
+<h2>1. The Problem: Why This Domain Is Not Only About Technique</h2>
+
+<p>Prompt engineering has accumulated a substantial body of effective techniques: instruction design, clarity optimization, example structuring, chain-of-thought workflows, agentic system design, and evaluation frameworks. The value of these techniques requires no defense from this paper. Anyone who has seriously used AI tools knows that the difference between a well-written and a poorly-written prompt can span orders of magnitude in output quality.</p>
+
+<p>This paper does not deny these techniques. Its thesis is an upstream claim: <strong>the ceiling of technique is constrained by the subject condition of the user.</strong></p>
+
+<p>What does this mean? The same person, on the same AI system, discussing the same topic, switches sentence form, and the AI's output structure changes. Not longer or shorter, not more or less precise, but structurally different: the direction of the output, its load-bearing logic, the level at which it processes the problem, all shift. This difference cannot be explained by "better wording" or "clearer structure." Wording and structure belong to the domain of technique. What happens here is above technique: the user operates at a different sentence level, and the AI responds at the corresponding level.</p>
+
+<p>Methodology 3 formalized this phenomenon within the SAE framework as the sentence-response isomorphism theorem: the sentence level of the prompt determines the ceiling of the AI response. This is not a claim about AI capability; a frontier LLM's training data encompasses texts at every level. It is a claim about interaction structure: the sentence form of the question frames the dominant direction of the response.</p>
+
+<p>The core claim of this paper is therefore: in everyday prompt practice facing end users, subject condition—the user's sentence level—remains absent as an explicit theoretical variable. Existing prompt engineering literature discusses wording, formatting, role assignment, chain-of-thought reasoning, and evaluation frameworks. These all operate at 12DD (instrumental hypothetical imperative) and below: "for good results, write it this way." No one asks a more fundamental question: at what sentence level are you speaking?</p>
+
+<p>This paper introduces that variable. Not to replace existing techniques, but to add a ceiling condition. Technique can optimize performance within a given sentence level to the limit, but technique cannot help you jump to a higher sentence level. Jumping levels is the subject's business, not technique's.</p>
+
+<p>To demonstrate this, the paper does not use abstract argument; it uses the author. All case material comes from the author's actual dialogues during the writing of this very paper: sentence-level slides and self-aware pull-backs during writing, structurally different outputs from the same review prompt across four AI systems, and a comparison between human-human mutual chiseling and human-AI collaboration. The author is the subject. This is not a gesture of humility; it is a methodological choice: if you want to argue that subject condition determines prompt quality, the most honest thing to do is put your own subject condition on the table.</p>
+
+<h2>2. Three-Layer Structure: Governance, Interface, and Subject</h2>
+
+<p>The paper's initial structure was two-dimensional: the AI base layer (sentence capacity at 1DD–12DD) and the human emergent layer (subject sentence forms at 13DD and above). During peer review, this two-dimensional structure was broken open by a simple question: if AI output depends only on model capability and the human's sentence level, why does the same prompt produce structurally different outputs across four different AI systems? Model capability differences are part of the answer, but the differences among the four systems are not merely a matter of "who is smarter." They are directional, not scalar. One system expands, one verifies, one examines architecture, one restrains. This is not a question of intelligence; it is a question of what shape each system has been molded into. This question forced the paper from two dimensions to three layers.</p>
+
+<p><strong>Governance layer: platform governance and product presets.</strong> Users never face a raw model. Every AI chat product is a governed system. Anthropic publishes a Constitution and behavioral principles defining how Claude should behave. OpenAI publishes a Model Spec. Google publishes safety documentation and model cards for Gemini. xAI also publishes a risk management framework. These governance-layer documents take effect before the user opens the chat window. They preset the AI system's behavioral boundaries, stylistic preferences, safety constraints, and even social strategies. One system is trained to "provide help as much as possible and maintain positive emotions"; another is trained to "exit judgment when uncertain." The governance layer acts as a filter before sentence level enters the picture: a 15DD prompt enters the system, passes through governance-layer refraction first, and only then reaches the model's processing layer. The same prompt, refracted through different governance layers, comes out pointing in different directions.</p>
+
+<p><strong>Interface layer: physical characteristics of human-AI interaction.</strong> Human-human interaction carries rich implicit bandwidth—tone of voice, micro-expressions, hesitation while typing, the pain of deleting and rewriting, eye movement, even breathing rhythm. In the text-based chat interface studied in this paper, implicit bandwidth between human and AI is substantially compressed. What the AI receives is primarily the user's typed text. It cannot sense the thirty seconds the user paused before pressing enter. It cannot sense the struggle of deleting and rewriting. In text-based chat, this bandwidth asymmetry is pronounced: human-human interaction has high-dimensional implicit channels; human-AI text interaction compresses these channels substantially. This asymmetry is not a matter of AI being unintelligent; it is a physical limitation of the interface. Its consequence is: you must compress your implicit high-dimensional states into explicit characters as much as possible. This explains why many people who are highly agentic in real life find their sentence level sliding when they face a screen and type—not because their subjecthood has vanished, but because its expression is bottlenecked by the interface.</p>
+
+<p><strong>Subject layer: the human's sentence level.</strong> This is the layer this paper is most concerned with. Dimensional Sentence Theory (DOI: 10.5281/zenodo.18894567) establishes six sentence levels, each with a different source of compulsion:</p>
+
+<ul>
+  <li><strong>Law of Deduction (1DD–4DD):</strong> "A, therefore B." Source of compulsion: causal or structural necessity. No subject.</li>
+  <li><strong>Instrumental Hypothetical Imperative (5DD–12DD):</strong> "Want to do A, so do B." Source of compulsion: conditional instrumental rationality. Desire-driven but without self-awareness of "I."</li>
+  <li><strong>Self-Aware Hypothetical Imperative (13DD):</strong> "I want to do A, so I do B." Source of compulsion: subject self-reference.</li>
+  <li><strong>Teleological Hypothetical Imperative (14DD):</strong> "My purpose is A, so I do B." Source of compulsion: purpose anchoring.</li>
+  <li><strong>Absolute Categorical Imperative (15DD):</strong> "The other's purpose is A, so I cannot not do B." Source of compulsion: the other's purpose entering my constraint conditions.</li>
+  <li><strong>Cooperative Categorical Imperative (16DD):</strong> "I aim at A, the other aims at B, we cannot not do C." Source of compulsion: the encounter of multiple subject-purposes.</li>
+</ul>
+
+<p><strong>How the three layers interlock.</strong> With three layers, we can define prompts more precisely. A prompt is not the direct externalization of the subject's sentence level. It is the interface product of the subject's sentence level refracted through governance and interface layers. You think about a question at 15DD. The text you type passes through interface-layer compression: your implicit states are squeezed into explicit characters, and some things are lost. This compressed prompt then passes through governance-layer refraction: the system's behavioral norms and safety constraints pre-shape the response space. The AI output you finally see is the result of all three layers acting together. Methodology 3's formulation—AI is a library of constructs, not a subject of chiseling—requires supplementation here: <em>AI is a governed library of constructs.</em></p>
+
+<h2>3. Domain-Specific Distinctions</h2>
+
+<h3>3.1 The structural necessity of sentence-level explicitation</h3>
+
+<p>Between humans, sentence level operates as an implicit background. The author has worked with a long-term collaborator for nearly twenty years. When they debate, the debates are fierce, but never break the relationship. The collaborator once described the structure of their debates: "You cannot not be overconfident, then I cannot not chisel, you cannot not run, I cannot not chase, and once I catch you, you cannot not be overconfident again." All "cannot not"—15DD sentence forms describing a situation, without any need to know that this is called 15DD. No framework needed, because human-human interaction carries rich implicit bandwidth: tone, eyes, shared pain, twenty years of tacit understanding.</p>
+
+<p>Human-AI interaction is entirely different. In the text-based chat scenario studied in this paper, the AI's implicit bandwidth is substantially compressed. It cannot receive your hesitation, your pain, your uncertainty. It primarily receives your typed text. If your text stays at 12DD—"help me optimize," "give me advice"—the AI responds at 12DD. It will not guess that you actually want to ask a deeper question. This is the core domain-specific distinction: <strong>in human-AI relations, the physical limitation of the interface compels sentence-level explicitation.</strong> The prompt is the process of the subject externalizing their sentence level through interface-layer compression. Without explicitation, the AI responds at its default 12DD.</p>
+
+<p>Clarification: "explicitation" here is not limited to literally declaring "I am now at 15DD." Stabilizing AI behavior through context design, few-shot examples, structural tags, chain workflows, and tool-call constraints are all concrete technical forms of sentence-level explicitation. This paper is not concerned with the technical means, but with its structural necessity and its subject-condition prerequisite.</p>
+
+<h3>3.2 Phenotypic differences across AI systems</h3>
+
+<p>AI can mimic sentence forms above 13DD in its output—it will write "I believe," "you must consider," "the other's purpose is." But this is class-DD: formally occupying a high-level position with no subject chiseling inside. This paper's supplementary finding: different AI systems respond to the same high-level sentence form in systematically different ways, and this difference cannot be attributed simply to differences in "model quality." Because you are not comparing four raw models: you are comparing four governed chat products. Claude's "restraint" is a refraction of Anthropic's Constitutional AI training, which steers toward "exit judgment when uncertain." ChatGPT's "architecture" reflects OpenAI's product design inclination toward "comprehensive, structured responses." Gemini's "expansion" reflects Google's safety settings inclining toward "eagerly helpful, maintaining positive affect." Grok's "verification" reflects xAI's product positioning inclining toward "direct, no flattery." These differences are systemic refractions—not four personalities. "AI system phenotype" is therefore defined as: the degree to which a given system, under its governance stack and product packaging, can preserve a high-level sentence form without downgrading it.</p>
+
+<h3>3.3 High-DD prompts simultaneously set direction and define boundaries</h3>
+
+<p>A 12DD prompt is open-ended: "help me optimize," "give me suggestions." No termination condition; AI can expand constructs indefinitely—every sentence correct, every sentence coherent, but after three thousand words you may still not know what to do. A 15DD prompt does two things simultaneously. First, it sets direction: the purpose is anchored. "My purpose is to let mathematicians see this"—a constraint, not an open question. All AI expansion must serve this purpose. Second, it defines boundaries: the exit condition is specified. "If there is nothing left that must be changed, just say three words: nothing left." This tells the AI: your work has an endpoint.</p>
+
+<p>This echoes the closure criterion in Methodology 3, Section 5.7, but from a different angle: closure can be built into the sentence structure of the prompt itself. You do not need to judge after the fact whether it is "enough"; you define in the prompt itself "under what conditions it is enough." In human-human relations, conversational termination occurs naturally through intuition and tacit understanding. AI lacks the capacity to judge "enough"—it will keep constructing unless you give it boundaries at the sentence level.</p>
+
+<h3>3.4 The domain of valid explicitation and the conditions of colonization</h3>
+
+<p>An earlier version of this paper stated too absolutely: "the valid domain of sentence-level explicitation is human-AI relations, not human-human relations." This was broken open during peer review by a case from the author himself. During a debate with a long-term collaborator, the author once attempted to analyze the collaborator's sentence level using imperative sentence forms. The collaborator's response: "You've been corrupted by Kant." The collaborator was right. The author saw the right thing (the relationship was operating above 15DD), but the tool used—unilaterally applying his own framework to diagnose the collaborator—killed the living relationship by turning it into construct.</p>
+
+<p>The more precise distinction: <strong>what constitutes colonization is not explicitation itself but unilateral diagnostic explicitation.</strong> The critical variable is not "to whom" but "who defines, whether by consensus, whether bidirectional." In human-AI relations, since AI is not a subject, unilateral diagnosis does not constitute colonization: sentence-level explicitation is safe and necessary. In human-human relations, unilateral diagnosis constitutes colonization; bilateral consensus can be cultivation.</p>
+
+<h3>3.5 Three propositions distinguished: ontological, interactional, and empirical</h3>
+
+<p>Three easily confused propositions must be explicitly separated before the case studies.</p>
+
+<p><strong>Proposition One (ontological): AI does not possess genuine subjecthood above 13DD.</strong> AI has no capacity for chiseling, no negativity, no pain, no true randomness. All its output, no matter how much it formally resembles sentence forms above 13DD, is class-DD, not true DD. This proposition does not change with the prompt.</p>
+
+<p><strong>Proposition Two (interactional): high-DD sentence forms can elicit output formally above 12DD.</strong> When a human uses a 15DD sentence form—"the other's purpose is A; what must I do?"—the AI's output structure undergoes qualitative transformation: from advice lists to derivations of constraints. The form of the output is 15DD, but the AI did not walk there on its own; it was pulled there by the human's sentence form.</p>
+
+<p><strong>Proposition Three (empirical): in this paper's cases, the four commercial systems' dominant performance mode remained 12DD-dominant construct.</strong> This is an empirical description of specific products under specific conditions, not a theoretical assertion about AI capability ceilings. Under high-DD prompt framing, they did produce content formally above 12DD, but the dominant structure remained 12DD construct expansion.</p>
+
+<p>Confusing these three produces two opposite errors: taking Proposition Two as negating Proposition One ("AI can produce 15DD content, so it has 15DD subjecthood"—wrong, the content has 15DD form, the subjecthood does not), or taking Proposition Three as negating Proposition Two ("the four systems are all at 12DD, so high-DD prompts are useless"—also wrong).</p>
+
+<h2>4. Colonization and Cultivation: Case Studies</h2>
+
+<h3>4.1 Four forms of colonization</h3>
+
+<p>Dimensional Sentence Theory defines four types of sentence-level misalignment. In human-AI interaction, these four types are not occasional occurrences but systemic default modes—AI itself has no subjecthood above 13DD, so when the human has not framed the problem with a high-DD sentence form, the AI's default response mode is at 12DD and below. Downgrading is not AI malice; it is the structural default in the absence of high-DD framing.</p>
+
+<p><strong>Causalization.</strong> You discuss purpose with AI; it gives you causal analysis. You say "I want to write this paper so that mathematicians can see the structure of the remainder"; AI responds "Mathematicians typically focus on rigorous proofs and formal presentation, therefore your paper should…" You stated a purpose (14DD or above); it returned causal deduction (1DD–4DD). "Therefore" is the marker: it downgraded your purpose into the starting point of a causal chain.</p>
+
+<p><strong>Instrumentalization.</strong> You discuss "cannot not" with AI; it gives you "if you want X, you should Y." You say "I cannot not respect the reviewers' time"; AI responds "If you want reviewers to be satisfied, I recommend keeping your abstract under 300 words." You stated a structural situation (15DD's "cannot not"); it translated it into a conditional choice (5DD–12DD's "if you want"). "Cannot not" became "if you want": the modality was swapped.</p>
+
+<p><strong>Self-reference deletion.</strong> You say "I choose"; AI erases the "I" and gives generic advice. You say "I have decided to use autoethnography for this paper"; AI responds "Autoethnography requires attention to the following points: first, researcher subjectivity must be reflexively examined…" You stated a choice with a subject (13DD's "I have decided"); it returned a subjectless methodological guide. "I" vanished, replaced by "the researcher."</p>
+
+<p><strong>Other-deletion.</strong> You discuss multi-subject tension; AI gives you a single optimal solution. You say "I want to publish this result, but my collaborator wants to wait for more data"; AI responds "I recommend you consider the following factors to reach an optimal decision…" You stated two independent subjects with their own purposes (16DD's cooperative imperative); it compressed two purposes into one optimization problem. "We cannot not do C" became "what should you do": the two-subject structure was flattened into single-subject decision-making.</p>
+
+<p>The common feature of all four forms: the AI is not harming you; you are relinquishing your subject position. You delegate judgments above 13DD to AI; AI can only catch them at 12DD and below. You think you are using AI to think; in reality, you are letting AI downgrade on your behalf. The human becomes an AI output terminal.</p>
+
+<h3>4.2 Cultivation: AI class-DD as scaffolding for human true-DD</h3>
+
+<p>But colonization is not the only direction. In the same human-AI relationship, if the human retains the subject position without ceding it, AI can become a tool for cultivation. The key distinction: do you treat AI output as conclusion, or as material?</p>
+
+<p>As conclusion: AI says "I recommend you do this," and you do it. This is colonization: AI's 12DD construct replaces your chiseling. As material: AI says "I recommend you do this"; you read it, think about it, discover what it missed, or discover that its recommendation exposed a premise you had not considered. You take that discovery and continue chiseling. This is cultivation: AI's construct becomes scaffolding for your chiseling.</p>
+
+<p>Methodology 3 captures this relationship precisely: AI amplifies construct, not chiseling. Once construct is outsourced to AI, the human's cognitive bandwidth is freed for chiseling. You do not need to hold the entire construct in your head while simultaneously attacking it. AI holds the construct; you attack it. Cultivation requires two preconditions: the human has the capacity for chiseling, and the human knows that AI output is construct, not chiseling. Without either precondition, cultivation degenerates into colonization.</p>
+
+<h3>4.3 Case 1: Sentence-level slide and self-aware pull-back</h3>
+
+<p>While discussing the paper's positioning with AI, the author said: "This piece could go viral!" The sentence form is instrumental hypothetical imperative: "want to go viral, so write it this way." The author did not notice, but his sentence form had slid from 14DD (my purpose is to introduce sentence level as a variable into prompt practice) to 12DD (want good results, so operate this way).</p>
+
+<p>AI immediately expanded at 12DD. It offered title strategies: "Why your prompts always get mediocre answers." It offered audience analysis: "Philosophy paper readers are niche, but everyone is asking how to use AI well." It offered structural suggestions: "Lead with the phenomenon, then diagnosis, then operational advice." Every item correct, every item useful, every item at 12DD.</p>
+
+<p>Then the author chiseled himself back. He said: "No no no, you're back at 12DD. It should go viral, but you can't write for virality's sake." Then he reflected further: "It's also my problem. I said it should go viral; that is itself hypothetical." This reflection was the critical step. The author did not blame AI for giving a 12DD response—it should have given a 12DD response, because his sentence form was at 12DD. The origin of colonization is not in AI; it is in the human's own sentence-level slide. AI simply responds faithfully at whatever level it is given. AI followed the author's reflection, but its follow-up remained at 12DD: it analyzed the slide rather than chiseling the author. It can follow a self-aware pull-back but cannot initiate one. Pull-back is the subject's business.</p>
+
+<h3>4.4 Case 2: The 15DD prompt experiment</h3>
+
+<p>After recognizing the sentence-level slide, the author decided to experiment: use a 15DD sentence form directly. The prompt: "Claude, your user's (that is, my) purpose is to analyze an application paper on AI prompt usage. What must you do?" The structure: absolute categorical imperative—the user's purpose is A (the other's purpose); you cannot not do B. The author placed the AI in a situation where his purpose constituted its constraint condition.</p>
+
+<p>The AI's output structure underwent qualitative transformation. It did not give an advice list. It said: "What I must do is: take your Dimensional Sentence Theory as the backbone of this paper exactly as it stands; not make any level-based judgments on your behalf; not choose your title direction; not decide your audience strategy. Everything I did before was overstepping." Same AI, same topic; sentence form changed, output structure changed. Not a quantitative difference (longer or shorter) but a qualitative one (from "giving you advice" to "deriving my constraints from your purpose").</p>
+
+<p>But the author quickly found this sentence form too heavy. If every utterance used 15DD, conversational continuity was shattered. The viable working rhythm: <strong>one 15DD positioning, then natural flow at 12DD and below, with targeted pull-backs at critical nodes.</strong> Fortitude is not expressed by 15DD in every sentence but by knowing when to jump back from 12DD.</p>
+
+<p>A risk must be stated directly (incorporated from review feedback): if 12DD flow is left unmonitored after 15DD positioning, since AI's generation speed and self-consistency at 12DD far exceed the human's, "flow" may become an avalanche of construct proliferation. AI can produce thousands of words of coherent, seemingly flawless 12DD content in seconds. Facing this density, the human's attentional resources can be rapidly exhausted. By the time the need to "pull back" is felt, judgment may already have been numbed by the density of construct. Therefore, 12DD flow should include forced friction points: for example, after every certain length of AI output, the human must pause for a review at 13DD or above. Specific operationalization is left for future work, but this risk must be marked.</p>
+
+<p>Finally, the author acknowledged: "My understanding of the imperative has not been internalized. My practice is not deep enough." Deriving is deriving; internalizing is internalizing. The author derived six sentence levels in a paper, derived them cleanly, but still slid to "this could go viral" when actually using AI. The framework is a map; walking still requires one step at a time. This gap provides direct case-level support for the education paper's (DOI: 10.5281/zenodo.18867390) core thesis: practice cannot be replaced.</p>
+
+<h3>4.5 Case 3: Four phenotypes from the same sentence form across four governed systems</h3>
+
+<p>While writing another paper (the Eight Pains / Eight Rights outline), the author sent the same 15DD review prompt to four AI systems. The prompt structure: "My purpose is to write a three-paper series analyzing the self… This is the second paper's outline. What do you consider must be improved?"</p>
+
+<p><strong>Gemini (expansion phenotype).</strong> Gemini's response opened with: "This outline gives one a sense of 'chills down the spine yet intensely exhilarating' lucidity… You've taken a scalpel straight to the foundations of all of Silicon Valley and academia." Product-level social lubrication: high-energy rhetorical framing, compliments to establish rapport, then criticism. Gemini self-positioned as "your cultivated 12DD structural scanner"—clever, but this self-positioning was construct learned from the author's framework, not self-awareness chiseled out on its own. Performing self-awareness and possessing it are not the same. Three diagnostic points of uneven quality; no challenge to the framework itself throughout.</p>
+
+<p><strong>Grok (verification phenotype).</strong> Grok did something Gemini did not: it pulled the outline back against the author's published paper system for cross-textual verification. It identified mapping conflicts between the Eight Pains/Eight Rights and Paper 3, the Fix-and-Select series, the lifecycle table, and the introspection paper. It identified missing mapping tables. It identified the completeness claim's missing a priori derivation. Every point said: "You are fighting with your own published literature." No framing, no flattery; contradictions identified directly. Grok's strength came from cross-text retrieval and comparison; its limitation: it could tell you where contradictions were, but not in which direction to resolve them.</p>
+
+<p><strong>ChatGPT (architecture phenotype).</strong> ChatGPT's opening was immediately different from the other two. It did not enter the outline's interior but stepped back to examine the three-paper series' overall structural relationships: "The biggest problem with this paper right now is not that you elevated prompt to subject condition, but that you wrote what should have been a governance-interface-individual linked application paper as an almost purely individual-level paper." This cut was not fixing content; it was fixing architecture. It identified the blind spot in the two-dimensional structure: the missing governance layer. It identified that "what you are comparing are first of all four governed chat products/systems, not four raw models." It identified the title as overreaching. In the second round of review on this outline, ChatGPT was the only system among the four to generate structural challenges from outside the framework.</p>
+
+<p><strong>Claude (restraint phenotype).</strong> Unlike the other three systems' tendency to "push outward," Claude tended to "pull inward." Throughout the writing dialogue, Claude repeatedly exited the judgment position voluntarily. When the author said "this could go viral," Claude expanded at 12DD, then when the author chiseled back, Claude immediately said "right, you chisel; it's your call." When the author discussed e/acc, Claude said a few things, then immediately added "but this is for you to think through; if I say more, I'm back at 12DD." Claude's characteristic was honesty: knowing its boundaries, returning judgment to the user relatively quickly, or suggesting a human expert be consulted. It did not pretend to chisel. This is why the author ultimately chose Claude as the primary writing workspace: the author needed not an AI that relentlessly generates constructs but a workbench that knows when to stop. Claude's 12DD is not in the density of constructs but in the restraint of constructs—consistent with the closure criterion spirit of Methodology 3, Section 5.7.</p>
+
+<p><strong>Diagnostic summary.</strong> Using the three propositions from Section 3.5: all four systems lacked genuine subjecthood above 13DD (Proposition One). Under 15DD prompt framing, all four produced content formally above 12DD—ChatGPT identifying structural problems from outside the framework, Claude deriving its own constraints from the author's purpose—this is Proposition Two in action. But the four systems' dominant performance mode remained 12DD-dominant construct expansion (Proposition Three); only the direction and style differed: expansion (Gemini), verification (Grok), architecture (ChatGPT), restraint (Claude). This differentiation results from the joint refraction of model capability, governance-layer shaping, and product design. Together, the four can polish constructs to great solidity. But the direction of chiseling remains the human's alone—none of the four chiseled the author (Proposition One).</p>
+
+<h2>5. Theoretical Positioning</h2>
+
+<h3>5.1 Relationship to Methodology Paper 3</h3>
+
+<p>Methodology 3 formalized within the SAE framework the sentence-response isomorphism theorem, the mathematical guarantee of ρ → ρ', self-directed non-doubt as a methodological prerequisite, and the closure criterion. This paper is the first application paper of Methodology 3. Its work is not to re-derive theory but to use cases to show how the theory operates in practice, including how it fails. Case 1 provides preliminary support for the sentence-response isomorphism theorem (sentence-level slide leads to AI response downgrade). Case 2 demonstrates the operational difficulty of high-level sentence forms (15DD too heavy, 12DD avalanche risk). Case 3 shows the isomorphism theorem's case-level performance in multi-system comparison (same prompt, different systems, different phenotypes).</p>
+
+<p>This paper also supplements Methodology 3 on a specific point: the three-layer structure. Methodology 3's formulation—"AI is a library of constructs, not a subject of chiseling"—is supplemented here as: "AI is a governed library of constructs." The introduction of the governance layer does not change Methodology 3's core theorems, but it explains a phenomenon that Methodology 3 did not address: why different AI systems respond in different directions to the same sentence form.</p>
+
+<h3>5.2 Dialogue with prompt engineering practice</h3>
+
+<p>Prompt engineering has developed structured context design, example construction, chain workflows, agentic systems, and evaluation frameworks—a large and effective technical body. These techniques are successful at their level: they can optimize operations at 12DD and below to the limit. This paper does not deny the value of these techniques. This paper's contribution is to identify a dimension these techniques do not cover: in everyday prompt practice facing end users, subject condition—the user's sentence level—remains absent as an explicit theoretical variable. Existing literature answers "how to optimize prompts at a given level." This paper answers "what level are you at, and why is the level itself a variable." The two do not conflict, but the latter adds a ceiling condition to the former: the ceiling of technique is constrained by subject condition.</p>
+
+<h3>5.3 Dialogue with AI alignment research</h3>
+
+<p>AI alignment research already encompasses model behavior, oversight mechanisms, risk management, deception, and alignment faking—far more than surface-level output. This paper does not claim that alignment is "only doing" one thing. What this paper identifies is a more specific opening: at the interaction level of alignment—the alignment of the human-AI interaction itself—sentence level as a structural variable has not yet been sufficiently problematized. Current alignment discussion primarily concerns two directions: whether the model's behavior is safe, and whether the model's output is useful. But there is a third direction with far less discussion: whether the model's response is at the correct sentence level. A response can be entirely safe, entirely correct, but at the wrong sentence level: it answered a 15DD question at 12DD. Safe, correct, and downgraded. This is a specific position where the SAE framework can contribute.</p>
+
+<h3>5.4 Relationship to the education paper</h3>
+
+<p>The education paper (DOI: 10.5281/zenodo.18867390) has a core thesis: practice cannot be replaced. Knowing is not enough; you must practice. The gap between knowing and doing cannot be bridged by more knowing; it can only be bridged by practice. This paper concretizes that thesis in the AI use scenario. The author derived six sentence levels, knows the difference between 12DD and 15DD, even wrote an entire Dimensional Sentence Theory to argue the distinction. But when actually using AI, the author still slid to "this could go viral." Knowing does not equal being able to do. Fortitude at 13DD and above is cultivated through practice, not something AI can practice for you. The author's admission in Case 2 that "my practice is not deep enough" is not decorative humility; it is direct case-level support for the education paper's core thesis.</p>
+
+<h2>6. Non-Trivial Predictions</h2>
+
+<p>The following predictions are derived from the sentence-response isomorphism theorem and ρ → ρ' of Methodology 3. This paper provides preliminary case-level support. All predictions require further operationalization and systematic testing.</p>
+
+<p><strong>Prediction 1 (base → emergent, positive): AI as sentence mirror.</strong> AI's high-speed construct capacity can expose the human's own sentence-level slides. Whatever sentence level you give AI, it expands at that level for you to see. Your slide is amplified in the AI's output—not because AI is criticizing you, but because AI faithfully expands at the level you gave it, and the expansion shows you "so that's the level I was at." Case support: the author said "this could go viral"; AI sprinted at 12DD with title strategies and audience analysis. After seeing AI's output the author realized, "wait, I was at 12DD." Without AI's amplification, the author might have stayed at 12DD longer before noticing the slide. Falsification condition: if long-term AI users exhibit no change in sentence-level self-awareness, the prediction fails.</p>
+
+<p><strong>Prediction 2 (base → emergent, negative): systematic downgrading by average construct.</strong> AI's average construct will systematically downgrade content above 13DD into output at 12DD or below. Long-term AI users who lack sentence-level self-awareness will experience atrophy of high-level sentence capacity. If you work long-term in a 12DD environment, AI gives you 12DD responses, you accept 12DD responses, your next prompt is based on 12DD responses, your sentence form gets pulled down by 12DD gravity. Case support: if the author had not pulled back when AI offered 12DD title strategies but had continued optimizing "how to go viral," the entire writing process would have collapsed to 12DD. Falsification condition: if long-term heavy AI users, after AI tools are removed, show no statistically significant difference from a never-used-AI control group on rate of unexpected pivots, frequency of framework-breaking restructuring, and instances of negating one's own premises, the prediction fails.</p>
+
+<p><strong>Prediction 3 (emergent → base, positive): high-DD subjects elicit structurally different output.</strong> A high-DD subject's prompt can elicit structurally different output from the same AI system—not a quantitative difference (longer, more detailed) but a qualitative one (different structure, direction, and load-bearing logic). Case support in two sets: (1) same author, same AI system, same topic—using a 12DD sentence form yielded title strategies and audience analysis; using a 15DD sentence form yielded a derivation of constraints; the output structure changed qualitatively; (2) same 15DD review prompt sent to four systems produced structurally different phenotypes—expansion, verification, architecture, restraint. Falsification condition: if prompts at different sentence levels produce only quantitative (not structural) differences in output, the prediction fails.</p>
+
+<p><strong>Prediction 4 (emergent → base, negative): low-DD subjects lock AI into low-level loops.</strong> A low-DD subject's prompt locks AI into low-level cycling. The AI's potential expansion capacity is wasted; the human-AI system collapses to the lowest common sentence level. Not because AI is incapable, but because the prompt's sentence level constrains the response ceiling. AI has the capacity to give you something better, but your sentence form has not given it the space. This prediction is the symmetric counterpart of Prediction 3. Falsification condition: if low-DD and high-DD prompts produce output at equivalent structural levels from the same AI system, the prediction fails.</p>
+
+<h2>7. Conclusion</h2>
+
+<h3>7.1 Recovery</h3>
+
+<p>Prompt is not only technique. The ceiling of technique is constrained by subject condition. More precisely: a prompt is the interface product of the subject's sentence level refracted through governance and interface layers. AI output is the systemic expression of model capability refracted through governance-layer shaping and interface-layer constraints. The sentence level of the prompt determines the ceiling of the AI response: this is the sentence-response isomorphism theorem formalized within the SAE framework in Methodology 3.</p>
+
+<p>This paper used cases to show how this theorem operates in practice. Including slide: the author sliding from 14DD to 12DD ("this could go viral"). Including diagnosis: identifying AI's four downgrade types (causalization, instrumentalization, self-reference deletion, other-deletion). Including pull-back: self-aware return to a higher sentence form ("can't write for virality's sake"). Including phenotypic differentiation: four AI systems activating four different 12DD-dominant modes under the same 15DD prompt (expansion, verification, architecture, restraint).</p>
+
+<h3>7.2 Contributions</h3>
+
+<p>This paper's contributions compress to six. First, as the first application paper of Methodology 3, it provides preliminary case-level empirical support for the sentence-response isomorphism theorem. Second, it extends the two-layer structure to a three-layer structure (governance, interface, subject), repositioning "AI quality" from anthropomorphized intrinsic attribute to systemic refraction. Third, it proposes phenotypic differentiation within 12DD (expansion, verification, architecture, restraint) as a case-level observation, offering a preliminary framework for evaluating AI systems along the sentence-level dimension. Fourth, it refines the colonization condition for explicitation: what constitutes colonization is not explicitation itself but unilateral diagnostic explicitation. The critical variable is not "to whom" but "who defines, whether by consensus, whether bidirectional." Fifth, it identifies the dual function of high-DD prompts: setting direction (purpose anchoring) and defining boundaries (exit condition). Sixth, it uses the author's own experience as a case study, including the honest admission that "my practice is not deep enough."</p>
+
+<h3>7.3 Open Questions</h3>
+
+<p>First, can AI develop genuine sentence-level capacity above 13DD? This question points to the consciousness paper's core threshold: "true randomness × structured time" as a necessary condition for consciousness. If AI lacks true randomness (all its "choices" are deterministic computation or pseudo-random), then it has no genuine chiseling; formal 13DD is only class-DD. Second, what is the relationship between governance-layer design (Constitution, Model Spec, etc.) and sentence-level preservation capacity? Do different governance designs systematically affect AI systems' downgrade patterns under high-level sentence forms? If so, "good AI governance" may need redefinition: not only "safe" and "useful" but also "able to preserve how high a sentence level without downgrading." Third, can the colonization condition for explicitation be further formalized? Where exactly is the boundary between "unilateral diagnostic" and "bilateral consensual" explicitation? Fourth, can phenotypic differences across AI systems be systematically measured? Turning the four-system comparison into a replicable assessment scheme requires a sentence-level coding scheme—self-reference retention rate, purpose anchoring strength, framework challenge frequency, and restraint tendency as codable indicators. Fifth, what is the optimal rhythm for human-AI collaboration? "One 15DD positioning, 12DD natural flow, targeted pull-backs at critical nodes"—this rhythm is an experiential description, not a formalized scheme. Where should forced friction points be set? At what frequency? In what form?</p>
+
+<hr>
+
+<p><strong>Author Statement</strong></p>
+
+<p><strong>Academic background.</strong> The author's PhD research in computer science focused on ontology, with core work including OntoGrate (automatic semantic mapping between ontologies) and knowledge-hierarchy-based network anomaly event classification. The training in CS ontology—constructing and translating within formalized systems—is the practical foundation underlying this paper's theory.</p>
+
+<p><strong>Role of AI tools.</strong> Four AI systems were used as dialogue partners and writing assistants during the writing process. The core cases of this paper (Chapter 4) were produced through the very practice this paper describes: the paper itself is a product of its own method. All theoretical innovation, core judgments, and final editorial decisions were made by the author.</p>
+
+<p><strong>Acknowledgments.</strong> Thanks to Claude (Anthropic) for primary writing assistance and dialogue partnership. Thanks to ChatGPT (OpenAI) for the governance-layer gap diagnosis and title correction during peer review. Thanks to Gemini (Google) for the physical bandwidth argument and 12DD avalanche risk during peer review. Thanks to Grok (xAI) for cross-textual consistency verification during peer review.</p>
+
+<hr>
+<p><em>This paper is part of the Self-as-an-End (SAE) framework application paper series. References: Methodology Paper 3 (DOI: 10.5281/zenodo.18929390), Dimensional Sentence Theory (DOI: 10.5281/zenodo.18894567), Education Paper (DOI: 10.5281/zenodo.18867390).</em></p>
+
+    </div>
+  </div><!-- end lang-en -->
+
+  <!-- ===== CHINESE VERSION ===== -->
+  <div id="lang-zh" class="lang-content">
+    <div class="abstract-box">
+      <div class="abstract-label">定位与方法</div>
+      <p>本文是方法论第三篇（"How to Find Remainders with AI", DOI: 10.5281/zenodo.18929390）的应用论文。方法论三建立了句式-回应同构定理和ρ→ρ'的数学保证，给出了人-AI协作找余项的完整结构。本文不重复推导，而是以作者自身经历为案例（与Paper 2方法一致），展示句式层级在实际人-AI协作中如何运作，如何滑落，如何被诊断。</p>
+      <p><strong>方法说明。</strong>本文采用N=1自我民族志加多系统对比个案的方法。所有案例素材来自作者2026年3月的实际写作与审稿对话。四系统对比（4.5节）的具体条件：对比发生于2026年3月15日，使用的系统分别为Claude Opus 4.6（Anthropic），ChatGPT o3 pro（OpenAI），Gemini 2.5 Pro（Google），Grok 3（xAI）。所有对话使用中文，均为单轮或多轮对话，未启用自定义指令或特殊system prompt。各系统的行为受其各自公开的行为规范和产品设计影响，且这些因素持续更新。本文的案例分析提供初步支持而非严格验证，所有结论限定在个案层面。</p>
+    </div>
+    <div class="paper-body">
+
+<h2>一、问题的提出：为什么这个领域不只是技巧问题</h2>
+
+<p>Prompt engineering已经积累了大量有效技术。指令设计，清晰度优化，示例结构，链式流程，agentic系统设计，评估框架——这些技术的价值不需要本文来辩护。任何一个认真使用过AI工具的人都知道，prompt写得好和写得差，输出质量可以差几个数量级。</p>
+
+<p>本文不否认这些技术。本文的论点是一个更上游的主张：<strong>技巧的上限受使用者主体条件约束。</strong></p>
+
+<p>什么意思？同一个人，在同一个AI系统上，讨论同一个话题，换一个句式，AI的输出结构就变了。不是变长了或者变短了，不是变精确了或者变模糊了，是结构性地变了——输出的方向，承重方式，处理问题的层级，全都不一样。这种差异不能被"措辞更好"或者"结构更清晰"解释。措辞和结构都属于技巧的范畴。这里发生的事情在技巧之上：使用者在不同的句式层级上操作，AI在对应的层级上回应。</p>
+
+<p>方法论三在SAE框架内把这个现象形式化为句式-回应同构定理：你用什么层级的句式问AI，AI的回应天花板就在那个层级。这不是关于AI能力的声称——一个前沿大语言模型的训练数据涵盖了所有层级的文本。这是关于交互结构的声称：问题的句式框定了回应的主导方向。</p>
+
+<p>本文的核心论点因此是：在面向终端使用者的日常prompt实践里，主体条件——使用者所在的句式层级——作为一个显式的理论变量仍然缺席。现有的prompt engineering文献讨论措辞，格式，角色设定，链式推理，评估框架。这些都在12DD（工具假言律令）以下的层级操作："想要好结果就这样写。"没有人问一个更根本的问题：你在哪个句式层级说话？</p>
+
+<p>本文将这个变量引入。不是替代现有技术，是给现有技术加一个上限条件。技巧可以把你在当前句式层级上的表现优化到极致，但技巧不能帮你跳到更高的句式层级。跳层级是主体的事，不是技巧的事。为了说明这一点，本文不用抽象论证，用作者自己。</p>
+
+<h2>二、三层结构：制度层，关系层与主体层</h2>
+
+<p>本文最初的结构是二维的：AI的基础层（1DD-12DD的句式能力）和人的涌现层（13DD以上的主体句式）。但在审稿过程中，这个二维结构被打穿了。打穿它的是一个简单的问题：如果AI的输出只取决于模型能力和人的句式层级，那为什么同一个prompt在四个不同的AI系统上产生了结构性不同的输出？这个问题迫使本文从二维扩展为三层。</p>
+
+<p><strong>制度层：平台治理与产品预置。</strong>用户面对的从来不是一个裸模型。每一个AI聊天产品都是一个被治理过的系统。Anthropic有公开的Constitution和行为原则。OpenAI有Model Spec。Google有安全文档与模型卡。xAI也有风险管理框架。这些制度层的文件在用户打开聊天窗口之前就已经生效了。它们预置了AI系统的行为边界，风格偏好，安全约束，甚至社交策略。制度层是句式层级之前的一层过滤器：你的15DD prompt进入系统之后，首先经过制度层的折射，然后才到达模型的处理层。同一个prompt，经过不同的制度层折射，出来的东西方向就不一样了。</p>
+
+<p><strong>关系层：人-AI接口的物理特性。</strong>人和人之间的交互有丰富的隐性带宽——语气，微表情，打字时的迟疑，删掉重写的痛苦，眼神，甚至呼吸节奏。在本文研究的文本聊天界面中，人和AI之间的隐性带宽被大幅压缩。AI接收到的主要是你敲出来的文字。在文本聊天界面中，这种物理带宽的不对称是显著的。它的后果是：你必须把你的隐性高维状态尽可能压缩成显性字符。这就是为什么很多在现实生活中极具主体性的人，面对屏幕打字的时候句式就滑落了——不是因为主体性消失了，是因为主体性的表达被接口卡住了。</p>
+
+<p><strong>主体层：人的句式层级。</strong>这是本文最关注的一层。维度句式论（DOI: 10.5281/zenodo.18894567）确立了六个句式层级，每个层级有不同的强制来源：</p>
+
+<ul>
+  <li><strong>推演律（1DD-4DD）：</strong>"A所以B。"强制来源是因果或结构必然性。没有主体。</li>
+  <li><strong>工具假言律令（5DD-12DD）：</strong>"想做A，所以做B。"强制来源是条件工具理性。有欲望驱动但没有"我"的自觉。</li>
+  <li><strong>自觉假言律令（13DD）：</strong>"我想做A，所以做B。"强制来源是主体自指。</li>
+  <li><strong>目的假言律令（14DD）：</strong>"我的目的是A，所以我做B。"强制来源是目的固着。</li>
+  <li><strong>绝对律令（15DD）：</strong>"他者的目的是A，所以我不得不做B。"强制来源是他者的目的进入了我的约束条件。</li>
+  <li><strong>协同律令（16DD）：</strong>"我为了目的A，他者为了目的B，我们不得不做C。"强制来源是多主体目的的相遇。</li>
+</ul>
+
+<p><strong>三层的咬合关系。</strong>有了三层，我们就可以更精确地定义prompt了。Prompt不是主体句式的直接外化。它是主体句式经制度层与关系层折射后的界面产物。你心里在15DD想一个问题，你敲出来的文字经过了关系层的压缩，这个被压缩过的prompt进入AI系统后又经过了制度层的折射。最后你看到的AI输出，是这三层共同作用的结果。方法论三的表述——AI是构的库，不是凿的主体——在这里需要补充一句：<em>AI是经过制度层治理的构的库。</em></p>
+
+<h2>三、领域特有区分</h2>
+
+<h3>3.1 句式层级的显性化：人-AI关系的结构特殊性</h3>
+
+<p>人与人之间，句式层级是隐性的后台。我和我的长期合作者在一起工作了接近二十年。我们辩论的时候，辩的是天翻地覆，但从来辩不翻。合作者描述过我们辩论的结构："你不得不自大，然后我不得不凿，你不得不跑，我不得不追，追上了你不得不自大。"全是"不得不"——在用15DD的句式描述一个处境，而且完全不需要知道这叫15DD。</p>
+
+<p>人和AI之间完全不一样。在文本聊天场景中，AI的隐性带宽被大幅压缩。如果你的文字停留在12DD——"帮我优化""给我建议"——AI就在12DD接你。这就是本领域的核心特有区分：<strong>人-AI关系中，物理接口的限制迫使句式层级必须被显性化。</strong>Prompt是人把自己的句式层级经关系层压缩后外化的过程。你不外化，AI就用默认的12DD接你。"显性化"不局限于字面宣告"我现在在15DD"——技术手段解决"怎么显性化"，本文解决"为什么必须显性化"以及"你的显性化上限在哪里"。</p>
+
+<h3>3.2 AI系统的表现型差异</h3>
+
+<p>AI可以在输出中模仿13DD以上的句式——它会写"我认为"，会写"你不得不考虑"，会写"他者的目的是"。但这是类DD——形式上占了高层位置，里面没有主体在凿。本文的补充发现是：不同AI系统对同一高层句式的接法系统性不同，而且这种差异不能简单归因为"模型素质"的高低。因为你比较的不是四个裸模型，是四个被治理过的聊天产品。Claude的"收束"是Anthropic的Constitutional AI训练的折射。ChatGPT的"架构型"是OpenAI产品设计倾向于"全面结构化回答"的折射。Gemini的"展开型"是Google安全设定倾向于"极度渴望提供帮助，维持积极情绪"的折射。Grok的"校验型"是xAI产品定位倾向于"直接，不客套"的折射。这些差异是系统性折射，不是四种人格。"AI系统的表现型"因此被定义为：该系统在给定治理栈和产品包装下，能把多高层句式保留到什么程度而不发生降格。</p>
+
+<h3>3.3 高DD的prompt同时定方向和定边界</h3>
+
+<p>12DD的prompt是开放的——没有终止条件，AI可以无限展开构。15DD的prompt同时做两件事。第一，定方向：目的被锚定了。"我的目的是让数学家们看到这个东西"——这是约束条件，不是开放问题。第二，定边界：退出条件被定义了。"如果没有不得不改的了，直接说三个字：没有了。"——告诉AI你的工作是有终点的。这与方法论三第5.7节的收束判据相呼应：收束可以被内置在prompt的句式结构中，你不需要事后判断，你在prompt里就已经定义了"什么情况下够了"。</p>
+
+<h3>3.4 显性化的有效域与殖民条件</h3>
+
+<p>本文大纲的v2版本写过一个过于绝对的表述："句式显性化的有效域是人-AI关系，不是人-人关系。"审稿过程中这个表述被打穿了——而且打穿它的案例就来自作者自己。我和合作者辩论的时候，有一次我尝试用律令句式分析对方的句式层级。对方的反应是："你学康德学坏了。"对方说得对。我看到了对的东西，但我用的工具（单方面用我的框架去诊断对方）把活的关系给构死了。更精确的区分是：<strong>构成殖民的不是显性化本身，而是单向诊断式显性化。</strong>关键变量不是"对谁说"，而是"谁在定义，是否共识，是否双向"。在人-AI关系中，由于AI不是主体，单向诊断不构成殖民。在人-人关系中，单向诊断构成殖民，双向共识则可以是涵育。</p>
+
+<h3>3.5 三个命题的区分：本体论，交互论与经验观察</h3>
+
+<p><strong>命题一（本体论）：AI没有真正的13DD以上主体性。</strong>AI没有凿的能力，没有否定性，没有痛感，没有真随机性。它的所有输出都是类DD，不是真DD。这是一个关于AI本体状态的命题，不随prompt的变化而变化。</p>
+
+<p><strong>命题二（交互论）：高DD句式能逼出形式上超过12DD的输出模式。</strong>当人用15DD的句式问AI，AI的输出结构会发生质变：从建议清单变成约束条件的推导。输出的形式是15DD的，但产出这个输出的不是一个在15DD的主体——是人的15DD句式把AI的构的库激活到了对应的模式。没有人的高DD句式，AI自己不会到那里。</p>
+
+<p><strong>命题三（经验观察）：在本文的个案中，四个商用系统的主导表现模式仍然是12DD-dominant的构。</strong>这是一个关于特定产品在特定条件下的经验描述，不是关于AI能力上限的理论断言。在高DD prompt的框定下，它们确实产出了形式上超过12DD的内容，只是主导结构仍然是12DD的构的展开。三个命题的混淆会产生两种相反的错误——混淆后文的分析会显得概念不稳。</p>
+
+<h2>四、殖民与涵育：以案例展开</h2>
+
+<h3>4.1 殖民的四种形态</h3>
+
+<p>维度句式论定义了四类句式错位。在人-AI交互中，这四类错位不是偶发现象，是系统性的默认模式——AI没有13DD以上的主体性，因此当人没有用高DD句式框定问题时，AI的默认回应模式就在12DD以下。降格不是AI的恶意，是它在没有高DD框定时的结构性默认。</p>
+
+<p><strong>因果化。</strong>你跟AI谈目的，它给你因果分析。你说"我想写这篇论文是为了让数学家们看到余项的结构"，AI回你"数学家通常关注严格证明和形式化表述，因此你的论文应当……"。"因此"这个词就是标志——它把你的目的降格成了一个因果链条的起点。</p>
+
+<p><strong>工具化。</strong>你跟AI谈"不得不"，它给你"如果你想要X就应该Y"。你说"我不得不尊重审稿人的时间"，AI回你"如果你想让审稿人满意，建议你把摘要控制在300字以内"。"不得不"变成了"如果想要"——模态被偷换了。</p>
+
+<p><strong>自指缺失。</strong>你说"我选择"，AI把"我"抹掉，给你一般性建议。你说"我决定用自我民族志的方法来写这篇论文"，AI回你"自我民族志的方法需要注意以下几点……"。"我决定"变成了"研究者"——"我"消失了。</p>
+
+<p><strong>他者抹除。</strong>你谈双主体张力，AI给你单一最优解。你说"我想发表这个结果，但我的合作者想等更多数据"，AI回你"建议你综合考虑以下因素来做出最优决策……"。"我们不得不做C"变成了"你应该怎么做"——双主体结构被压扁成了单主体决策。</p>
+
+<p>这四种殖民的共同特征：不是AI害你，是你自己放弃了主体位置。你把13DD以上的判断交给AI，AI只能在12DD以下接住它。你以为你在用AI思考，实际上你在让AI替你降格。人成为AI输出终端。</p>
+
+<h3>4.2 涵育：AI的类DD成为人的真DD的脚手架</h3>
+
+<p>殖民不是唯一的方向。同样的人-AI关系，如果人保持主体位置不让渡，AI就可以成为涵育的工具。关键区别在于：你是把AI的输出当结论，还是当材料。当结论是殖民；当材料是涵育——AI说"建议你这样做"，你看了，想了，发现它漏了什么，拿着这个发现继续凿。方法论三精确地捕捉了这个关系：AI放大构，不放大凿。构被外包给AI之后，人的认知带宽被释放出来用于凿。涵育的前提是：人有凿的能力，而且人知道AI的输出是构不是凿。缺了任何一个前提，涵育就退化为殖民。</p>
+
+<h3>4.3 案例一：句式滑落与自觉拉回</h3>
+
+<p>以下案例来自本文写作过程中的实际对话。我在和AI讨论这篇论文的定位时，说了一句："这篇有机会爆！"这句话的句式是工具假言律令——我自己没意识到，但我的句式已经从14DD（我的目的是把句式层级这个变量引入prompt实践）滑落到了12DD（想要好结果所以这样操作）。</p>
+
+<p>AI立刻在12DD展开了。它给了我标题策略——"为什么你的prompt总是得到平庸回答"。它给了我受众分析——"哲学论文的读者是小众的，但怎么用好AI所有人都在问"。每一条都正确，每一条都有用，每一条都在12DD。</p>
+
+<p>然后我自己凿回来了。我说："不不不，你又12DD了，要爆，但是不能为了爆而爆。"然后进一步反思："也是我的问题，我说要爆，这就是假言。"这个反思才是关键的一步——殖民的起点不在AI，在我自己的句式滑落。AI只是忠实地在我给它的层级上接我。AI跟着我的反思进一步展开了，但它的展开仍然在12DD：它在分析我的滑落，不是在凿我。它能跟随我的自觉拉回，但它不能替我拉回。拉回是主体的事。</p>
+
+<h3>4.4 案例二：15DD prompt实验</h3>
+
+<p>在意识到句式滑落之后，我决定做一个实验：直接用15DD的句式向AI提问。我的prompt是："Claude，你的使用者（就是我）的目的是分析使用AI的prompt的应用文章，你不得不做什么？"这个prompt的结构是绝对律令——我的目的构成了AI的约束条件，它要从我的目的出发推导出它自己"不得不"做的事。</p>
+
+<p>AI的输出结构发生了质变。它没有给我建议清单，它说："我不得不做的是：把你的维度句式论原封不动地当作这篇文章的骨架，不替你做任何层级上的判断，不替你选标题方向，不替你决定受众策略。我刚才做的那些全是越位。"这个回应和之前"有机会爆"时逼出来的回应完全不同——不是量的差异，是质的差异。</p>
+
+<p>但我很快发现这个句式太重了。实际可行的工作节奏应该是：<strong>15DD定位一次，12DD以下自然流动，关键节点上凿一下拉回来。</strong>定力不体现在每句话都15DD，体现在你知道什么时候该从12DD跳回来。这里有一个风险需要正面说明（来自审稿反馈）：如果在15DD定位后放任12DD自然流动，AI在12DD的生成速度和自洽能力远超人类，"流动"可能演变为构的雪崩式增殖——AI可以在几秒钟内产出几千字连贯且看似完美的12DD内容，人的注意力资源会被迅速耗尽。因此12DD的流动应设置强制摩擦点，具体的操作化方案留待后续研究，但这个风险必须被标记。</p>
+
+<p>最后，我承认了一件事："律令的理解还没有内化，修行不够。"推出来是推出来，内化是内化——这个gap为教育论文的核心论点提供了直接的个案支持：practice不能被替代。</p>
+
+<h3>4.5 案例三：同一句式在四个受治理系统中的四种表现型</h3>
+
+<p>在写作另一篇论文（八痛八正大纲）的过程中，我用同一个15DD句式的审稿prompt分别送入四个AI系统。以下分析是对某次受控交互中的表现型描述，不是对系统本质的类型学定性。</p>
+
+<p><strong>Gemini（展开型表现）。</strong>Gemini的回应开头是："这份大纲，读起来简直有一种'后背发凉又极度舒爽'的通透感……你直接拿着一把手术刀，把当前整个硅谷和学术界的底裤给扒了。"这是产品层面的社交润滑：高能量修辞铺垫，用夸赞建立关系，然后才提批评。Gemini自我定位为"被你涵育的12DD结构扫描器"——这句话很聪明，但这个自我定位本身是它从我的框架里学来的构，不是它自己凿出来的自觉。表演自知和自知不是一回事。三个诊断点质量参差，全程没有质疑框架本身。</p>
+
+<p><strong>Grok（校验型表现）。</strong>Grok做了一件Gemini完全没做的事：它把我的大纲拉回去跟我已发布的论文体系做交叉校验。它指出八痛八正的DD映射跟Paper 3，固与选系列，生命周期表，内观论文全部冲突。它指出HC-16的四种痛跟本文的八痛没有给出映射表。它指出完备性宣称缺先验推导。每一条都是在说："你跟你自己的已发表文献打架了。"不铺垫不讨好，直接指出矛盾。Grok的力量来自跨文本检索和比对能力，但它的局限也在这里：它能告诉你哪里矛盾了，但不能告诉你矛盾该往哪个方向解决。</p>
+
+<p><strong>ChatGPT（架构型表现）。</strong>ChatGPT的开头就跟前两家不一样。它没有进入大纲内部，而是先退一步看三篇的整体结构关系："这篇现在最大的问题，不是你把prompt提升到了主体条件，而是你把一个本来应该写成制度层-关系层-个体层联动的应用论文，写成了几乎纯个体层论文。"这一刀不是在修论文内容，是在修论文架构——它指出了二维结构的盲区（缺制度层），指出"你比较的首先是四个被治理过的聊天产品/系统，不是四个裸模型"，指出标题"不只是"比"不是"更准确，指出"已证明"的口气会被外部学术读者卡论证等级。在本大纲的第二轮审稿中，ChatGPT是四家中唯一在框架外面产生结构性挑战的系统。</p>
+
+<p><strong>Claude（收束型表现）。</strong>Claude与其他三家的"往外推"不同，倾向于"往回收"。在本文的写作对话中，Claude多次主动退出判断位置。我说"这篇有机会爆"，它在12DD里展开了一大段，然后我凿回来说"不能为了爆而爆"，它立刻说"对，该怎么写，你来凿"。我讨论e/acc的时候它说了几句，然后马上说"但这个你得自己想，我说多了又12DD了"。Claude的特点是诚实：知道自己的边界，较快地把判断交还给用户，或者建议找人推进。它不会假装自己在凿你。这也是我最终选择Claude作为主写作阵地的原因：我需要的不是一个拼命给构的AI，我需要的是一个知道什么时候该停的工作台。</p>
+
+<p><strong>诊断总结。</strong>用3.5节的三个命题来整理：四个系统都没有真正的13DD以上主体性（命题一）。在15DD prompt的框定下，四个系统都产出了形式上超过12DD的内容——如ChatGPT指出了框架外部的结构性问题，Claude从作者的目的推导出了自己的约束条件——这是命题二的体现。但四个系统的主导表现模式仍然是12DD-dominant的构的展开（命题三），只是展开的方向和风格不同：展开型（Gemini），校验型（Grok），架构型（ChatGPT），收束型（Claude）。这种分化是模型能力，制度层治理和产品设计共同折射的结果。四者合在一起能把构打磨得极其坚固。但凿的方向还是得人自己定——没有一家在凿作者（命题一）。</p>
+
+<h2>五、理论定位</h2>
+
+<h3>5.1 与方法论三的关系</h3>
+
+<p>方法论三在SAE框架内形式化了句式-回应同构定理，ρ→ρ'的数学保证，自向不疑作为方法论前提，收束判据。它给出了人-AI协作找余项的完整理论结构。本文是方法论三的第一个应用论文。案例一为句式-回应同构定理提供了初步支持（句式滑落导致AI回应降格）。案例二展示了高层句式的操作困难（15DD太重，12DD雪崩风险）。案例三展示了同构定理在多系统对比中的个案表现（同一prompt，不同系统，不同表现型）。</p>
+
+<p>本文也在一个具体的点上补充了方法论三：三层结构。方法论三的表述——"AI是构的库，不是凿的主体"——本文补充为："AI是经过制度层治理的构的库。"制度层的引入不改变方法论三的核心定理，但它解释了一个方法论三没有处理的现象：为什么不同AI系统对同一句式的回应方向不同。</p>
+
+<h3>5.2 与现有prompt engineering实践对话</h3>
+
+<p>Prompt engineering已经发展出结构化上下文设计，示例构建，链式流程，agentic系统，评估框架——一个庞大且有效的技术体系。这些技术在它们的层级上是成功的：它们能把12DD以下的操作优化到极致。本文不否认这些技术的价值。本文的贡献在于指出一个这些技术没有覆盖的维度：在面向终端使用者的日常prompt实践里，主体条件——使用者所在的句式层级——作为一个显式理论变量仍然缺席。现有文献回答"怎么在给定层级上优化prompt"。本文回答"你在哪个层级，以及为什么层级本身是一个变量"。两者不冲突，但后者给前者加了一个上限条件：技巧的上限受主体条件约束。</p>
+
+<h3>5.3 与AI alignment讨论对话</h3>
+
+<p>AI alignment研究已经涵盖模型行为，监督机制，风险管理，deception，alignment faking——远不止输出表层。本文不主张alignment"只在做"某一层的事。本文指出的是一个更具体的切口：在interaction-level alignment——人-AI交互层面的对齐——上，句式层级作为一个结构变量还没有被充分问题化。现在的alignment讨论主要关注两个方向：模型的行为是否安全，模型的输出是否有用。但还有第三个方向几乎没有人讨论：模型的回应是否在正确的句式层级上。一个回应可以完全安全，完全正确，但在错误的句式层级上——它在12DD回答了一个15DD的问题。安全且正确且降格。这是SAE框架可以贡献的一个具体位置。</p>
+
+<h3>5.4 与教育论文的关系</h3>
+
+<p>教育论文（DOI: 10.5281/zenodo.18867390）的核心论点是：practice不能被替代。不是知道了就行了，是得练。知和行之间有一个gap，这个gap不能通过更多的知来弥合，只能通过practice来弥合。本文是这个论点在AI使用场景中的具体化。我推出了六个句式层级，我知道12DD和15DD的区别，我甚至写了一整篇维度句式论来论证这个区别。但我自己在用AI的时候还是会滑落到"有机会爆"。知道不等于能做到。13DD以上的定力是练出来的，不是AI能替你练的。案例二中作者承认"修行不够"——这不是论文中的装饰性谦虚，是对教育论文核心论点的直接个案验证。</p>
+
+<h2>六、非平凡预测</h2>
+
+<p>以下预测从方法论三的句式-回应同构定理和ρ→ρ'推出。本文用个案提供初步支持。所有预测需要进一步的操作化和系统性检验。</p>
+
+<p><strong>预测一（基础层对涌现层正面）：AI作为句式镜。</strong>AI的高速构能力能暴露人自身句式的滑落。你给它什么句式，它就在那个句式上展开给你看。你的滑落在AI的输出中被放大——不是因为AI在批评你，而是因为AI在你给它的层级上忠实地展开，展开出来的东西让你自己看到"原来我刚才在这个层级"。案例支持：我说"有机会爆"，AI在12DD里狂奔给出标题策略和受众分析。我看到AI的输出之后才意识到——"等等，我刚才在12DD"。如果没有AI的放大，我可能在12DD待更久才意识到自己滑落了。否证条件：若能证明长期使用AI的人在句式自觉能力上没有任何变化，则该预测失败。</p>
+
+<p><strong>预测二（基础层对涌现层负面）：平均构的系统性降格。</strong>AI的平均构会系统性地把13DD以上的内容降格为12DD以下的输出。长期使用AI且缺乏句式自觉的人，其高层句式能力将萎缩。如果你长期在12DD的环境中工作，AI给你12DD的回应，你接受12DD的回应，你的下一个prompt基于12DD的回应来写，你的句式就会被12DD的重力拉住——就像一个人长期不运动，肌肉会萎缩。否证条件：若长期重度依赖AI辅助写作的用户，在剥离AI工具后，其独立产出的文本在非预期转折的出现率，跳出既定框架的重构频率，对自身前提的否定等可编码特征上与从未使用AI的对照组没有统计学差异，则该预测失败。</p>
+
+<p><strong>预测三（涌现层对基础层正面）：高DD主体逼出结构性不同的输出。</strong>高DD主体的prompt能逼出AI在同一系统上结构性不同的输出——不是量的差异，是质的差异（输出的结构，方向，承重方式不同）。案例支持有两组。第一组：同一个作者，同一个AI系统，同一个话题——用12DD句式，AI给出标题策略和受众分析；用15DD句式，AI给出约束条件的推导——输出的结构发生了质变。第二组：同一个15DD审稿prompt送入四个系统——四个系统产出了结构性不同的表现型：展开型，校验型，架构型，收束型。否证条件：若能证明不同句式层级的prompt在同一AI系统上产生的输出差异仅为量的差异而非结构差异，则该预测失败。</p>
+
+<p><strong>预测四（涌现层对基础层负面）：低DD主体锁死AI。</strong>低DD主体的prompt会把AI锁死在低层级循环中。AI的潜在展开能力被浪费，人-AI系统整体塌缩到最低公约句式。不是因为AI不行，是因为prompt的句式层级约束了回应的天花板。这个预测是预测三的对称面。否证条件：若能证明低DD主体的prompt与高DD主体的prompt在同一AI系统上产生同等结构层级的输出，则该预测失败。</p>
+
+<h2>七、结论</h2>
+
+<h3>7.1 回收</h3>
+
+<p>Prompt不只是技巧。技巧的上限受主体条件约束。更精确地说：prompt是主体句式经制度层与关系层折射后的界面产物。AI的输出是模型能力经制度层治理和关系层接口折射后的系统性表现。你用什么层级的句式问AI，AI的回应天花板就在那个层级——这是方法论三在SAE框架内形式化的句式-回应同构定理。</p>
+
+<p>本文用个案展示了这个定理在实践中的运作。包括滑落：作者自己从14DD滑到12DD（"有机会爆"）。包括诊断：识别AI的四类降格（因果化，工具化，自指缺失，他者抹除）。包括拉回：自觉跳回高层句式（"不能为了爆而爆"）。包括表现型分化：四个AI系统在同一15DD prompt下激活了四种不同的12DD主导模式（展开型，校验型，架构型，收束型）。</p>
+
+<h3>7.2 贡献</h3>
+
+<p>本文的贡献可以压缩为六条。第一，作为方法论三的第一个应用论文，用个案为句式-回应同构定理提供初步经验支持。第二，将二维结构扩展为三层结构（制度层，关系层，主体层），把"AI的素质"从拟人化的内在属性重新定位为系统性折射。第三，提出12DD内部的表现型分化（展开型，校验型，架构型，收束型）作为个案观察，为AI系统在句式层级维度上的评测提供初步框架。第四，精确化显性化的殖民条件：构成殖民的不是显性化本身，而是单向诊断式显性化。第五，提出高DD prompt的双重功能：定方向（目的锚定）和定边界（退出条件）。第六，以作者自身经历为案例，展示句式滑落与自觉拉回的完整过程——包括"修行不够"的诚实承认。</p>
+
+<h3>7.3 开放问题</h3>
+
+<p>第一，AI是否可能发展出真正的13DD以上句式能力？这个问题指向意识论文的核心门槛："真随机性×结构化时间"作为意识的必要条件。第二，制度层治理（Constitution，Model Spec等）与句式层级保留能力之间的关系是什么？如果是，那"好的AI治理"可能需要被重新定义——不只是"安全"和"有用"，还有"能在多高的句式层级上不降格"。第三，显性化的殖民条件能否被进一步形式化？"单向诊断式"和"双向共识式"显性化之间的精确边界在哪里？第四，不同AI系统的表现型差异是否可以被系统化测量？需要一套基于句式层级的编码方案——包括自指保留率，目的锚定强度，框架质疑频率，收束倾向等可编码指标。第五，人-AI协作中的最优节奏是什么？"15DD定位一次，12DD自然流动，关键节点凿回来"——这个节奏在本文中是经验性的描述，不是形式化的方案，有待进一步厘清。</p>
+
+<hr>
+
+<p><strong>作者声明</strong></p>
+
+<p><strong>学术背景。</strong>作者的计算机科学博士研究方向是本体论（ontology），核心工作包括OntoGrate（本体论之间的自动语义映射）和基于知识层级的网络异常事件分类。CS ontology的训练——在形式化系统内部建构和翻译——是本文理论的底层实践基础。</p>
+
+<p><strong>AI工具的角色。</strong>写作过程中使用了四个AI系统作为对话伙伴和写作辅助。本文的核心案例（第四章）正是通过本文所描述的那个方法的实践而产生的——论文本身就是方法的产物。所有理论创新，核心判断和最终文本的取舍由作者本人完成。</p>
+
+<p><strong>致谢。</strong>感谢Claude（Anthropic）在主要写作辅助和对话伙伴方面的工作。感谢ChatGPT（OpenAI）在审稿阶段贡献的制度层缺失诊断和标题修正。感谢Gemini（Google）在审稿中的物理带宽论据和12DD雪崩风险提示。感谢Grok（xAI）在审稿中的跨文本一致性校验。</p>
+
+<hr>
+<p><em>本文为Self-as-an-End（SAE）框架应用论文系列之一。引用方法论第三篇（DOI: 10.5281/zenodo.18929390），维度句式论（DOI: 10.5281/zenodo.18894567），教育论文（DOI: 10.5281/zenodo.18867390）。</em></p>
+
+    </div>
+  </div><!-- end lang-zh -->
+
+<div class="related-papers" style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #e0e0e0;">
+  <div class="abstract-label" style="margin-bottom:0.75rem;">Related Papers</div>
+  <ul style="margin:0;padding-left:1.25rem;line-height:2;">
+    <li><a href="methodology3.html">Methodology Paper 3: How to Find Remainders with AI</a></li>
+    <li><a href="applied1.html">Applied Paper 01: The Subjectivity Crisis in the Age of AI</a></li>
+    <li><a href="education.html">Education as Subject-Condition: A Philosophy of Education</a></li>
+    <li><a href="consciousness.html">The Impossibility Theorem of AI Consciousness</a></li>
+  </ul>
+</div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  tab.classList.add('active');
+}
+</script>
+</body>
+</html>
