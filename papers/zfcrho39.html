@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shifted-Product Deficit and the Logarithmic Growth of M_loc at the Ω=2 Layer — ZFCρ Paper XXXIX — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXIX: M_loc at fixed t=q/p shows clear logarithmic growth (slope 0.096, R²=0.89). M̄≈1.5 is a composition shift artifact. The driver is the shifted-product deficit h_tau+h_q>2h_pq. Ω=2 closure reduces to the ratio-mixing lemma.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, shifted-product deficit, M_loc, composition shift, ratio-mixing lemma, Ω=2 closure">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Shifted-Product Deficit and the Logarithmic Growth of M_loc at the Ω=2 Layer">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho39.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Shifted-Product Deficit and the Logarithmic Growth of M_loc at the Ω=2 Layer",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho39.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19164588"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "shifted-product deficit", "M_loc",
+      "composition shift", "ratio-mixing lemma", "Ω=2 closure"
+    ],
+    "abstract": "Through seven progressive numerical experiments, this paper reveals that the local margin M_loc(p,t) at the Ω=2 layer exhibits clear logarithmic growth when t=q/p is held fixed (slope 0.096, R²=0.89). The driver is the shifted-product deficit: h_tau+h_q>2h_pq. The previously reported M̄≈1.5 is a composition shift artifact. Multi-scale extrapolation gives slope(∞)≈0.117. Parity control experiment confirms the multiplicative shadow effect at >3σ. Ω=2 closure reduces to the ratio-mixing lemma.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho39.html">
+  <meta name="citation_title" content="Shifted-Product Deficit and the Logarithmic Growth of M_loc at the Ω=2 Layer">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19164588">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho39.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXXIX</div>
+      <h1 class="paper-title">Shifted-Product Deficit and the Logarithmic Growth of M<sub>loc</sub> at the Ω=2 Layer</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19164588" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19164588
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Through seven progressive numerical experiments, this paper reveals that the local margin \(M_{\mathrm{loc}}(p, t)\) at the Ω=2 layer exhibits a clear logarithmic growth signal when the ratio \(t = q/p\) is held fixed, and identifies the driving mechanism as the shifted-product deficit.</p>
+        <p><strong>(1)</strong> At fixed \(t = q/p \in [3,10]\) with full window (\(p \leq 31{,}623\)), \(M_{\mathrm{loc}}\) has a positive slope of +0.096 against \(\ln(p)\), with \(R^2 = 0.89\). The previously reported \(\bar{M}_N \approx 1.5\) (mixed \(t\), \(R^2 = 0.0001\)) is identified as a composition shift artifact — the same mechanism discovered in Paper XXXVIII for \(G\).</p>
+        <p><strong>(2)</strong> The growth of \(M_{\mathrm{loc}}\) admits a precise decomposition: \(\text{slope} = h_{\tau} + h_q - 2h_{pq}\), where \(h_{\tau}, h_q\) are the ρ/ln growth rates for primes and \(h_{pq}\) is the ρ/ln growth rate for the shifted prime product \(pq-1\). The sum of the three component slopes exactly equals the \(M_{\mathrm{loc}}\) slope (algebraic identity verification).</p>
+        <p><strong>(3)</strong> Multi-scale \(1/\ln(s)\) extrapolation is consistent with \(h_{\tau}(\infty) \approx 3.923\) and \(h_{pq}(\infty) \approx 3.848\), giving \(\Delta(\infty) \approx 0.076 > 0\) (\(R^2 = 0.92\)). The resulting unconstrained estimate for the asymptotic slope is \(\text{slope}(\infty) \approx 0.117\), consistent with the Block 3 measurement of 0.096 at moderate scales.</p>
+        <p><strong>(4)</strong> A parity control experiment decomposes the total deficit \(h_{\mathrm{gen}} - h_{pq}\) (≈ 0.0165) into a parity effect (approximately 54%) and a beyond-parity effect (approximately 46%). The difference \(h_{pq} - h_{\mathrm{even}} = -0.0075 \pm 0.0025\) (&gt;3σ) confirms that the multiplicative shadow effect is real, not merely a parity artifact.</p>
+        <p><strong>(5)</strong> Ω=2 closure is reduced to a precise open lemma — the <em>ratio-mixing lemma</em>: proving that the positive slope of \(M_{\mathrm{loc}}\) is not averaged away under the actual \(q/p\)-mixing.</p>
+        <p><strong>Keywords:</strong> shifted-product deficit, \(M_{\mathrm{loc}}\), composition shift, ratio-mixing lemma, Ω=2 closure</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXVIII established the ratio-parametrization \(G = f(q/p)\), identified the "B–C erosion crossing zero" as a composition shift artifact, and introduced the three-layer G distinction (\(G_{\mathrm{loc}}, \bar{G}_N, G_X\)). Paper XXXIV established the Harmonic Cesàro Lemma: if \(V(p) = O(1)\) and \(M_p \to \infty\), then \(\bar{c}_h \to 0\) and the Ω=2 layer closes. Since \(V(p) \approx 1.4\) was globally confirmed in Paper XXXIV, Ω=2 closure reduces to the question: does \(M_p \to \infty\)?</p>
+
+      <h3>1.2 Scope of the Present Paper</h3>
+      <p>This paper answers through precise numerical experiments: What is the true asymptotic behavior of \(M_p\)? What drives its growth? What remains to be established for Ω=2 closure?</p>
+
+      <h2>§2 Three-Layer M Distinction</h2>
+      <p>Paralleling the three-layer G framework from Paper XXXVIII:</p>
+      <ul>
+        <li><strong>\(M_{\mathrm{loc}}(p, t)\):</strong> The local margin at fixed ratio \(t = q/p\). For each prime \(p\), only primes \(q\) with \(q/p \in [t_{\mathrm{lo}}, t_{\mathrm{hi}}]\) are used to compute \(\mathrm{diff}_{\mathrm{loc}} = E[\rho(pq-1)] - E[\rho(q)]\) (harmonic-weighted), then \(M_{\mathrm{loc}} = \tau_p - \mathrm{diff}_{\mathrm{loc}}\), where \(\tau_p = \rho(p) + 2\).</li>
+        <li><strong>\(\bar{M}_N(p)\):</strong> The mixed-average margin at fixed cutoff \(N\) and prime \(p\), averaging over all available \(q\). Equals \(\int M_{\mathrm{loc}}(p, t)\, d\mu_{N,p}(t)\) over \(t \in [1, N/p^2]\).</li>
+        <li><strong>\(M_X(p)\):</strong> The expanding-window limit with \(p\) fixed and \(N \to \infty\). A theoretical object not directly measurable.</li>
+      </ul>
+      <div class="note-box"><strong>Key distinction:</strong> Blocks 3–6 measure \(M_{\mathrm{loc}}\); Blocks 1–2 measure \(\bar{M}_N\). Lifting growth of \(M_{\mathrm{loc}}\) to growth of \(\bar{M}\) requires the ratio-mixing lemma: proving \(\int a(t)\, d\mu_{N,p}(t) > 0\), where \(a(t)\) is the \(\ln(p)\)-slope of \(M_{\mathrm{loc}}(p, t)\).</div>
+
+      <h2>§3 Experimental Design and Data</h2>
+
+      <h3>3.1 Data Source</h3>
+      <p><code>rho_1e10.bin</code>: ρ<sub>E</sub> values up to \(N = 10^{10}\), in int16 format, generated by <code>rho_dp.c</code> (Paper XXXII convention). Sanity checks: ρ(1)=0, ρ(2)=1, ρ(3)=2, ρ(100)=15, ρ(10⁷)=58, ρ(10⁸)=66. All passed.</p>
+      <div class="note-box">The initial script (v1) read the int16 file as uint8, causing all prime ρ values to read as 0. After correction in v2, all subsequent experiments use the correct int16 format.</div>
+
+      <h3>3.2 Overview of Seven Experiments</h3>
+      <table>
+        <thead><tr><th>Block</th><th>Object Measured</th><th>p Range</th><th>Core Result</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>M̄ (q > p)</td><td>p ≤ 10⁵</td><td>M̄ ~ 2.4, R²=0.013</td></tr>
+          <tr><td>2</td><td>M̄ (mixed t)</td><td>p to 10⁷</td><td>M̄ ≈ 1.5, R²=0.0001</td></tr>
+          <tr><td>3</td><td>M_loc (fixed t∈[3,10])</td><td>p ≤ 31,623</td><td>0.096·ln(p), R²=0.89</td></tr>
+          <tr><td>4</td><td>h_prime − h₀</td><td>10³–10⁹</td><td>~0.71/ln(n) → 0</td></tr>
+          <tr><td>4b</td><td>Gemini formula check</td><td>p ≤ 10⁶</td><td>Systematic bias ~0.85</td></tr>
+          <tr><td>5b</td><td>Direct component slopes</td><td>p ≤ 31,623</td><td>h_tau+h_q−2h_pq=0.100</td></tr>
+          <tr><td>6</td><td>Multi-scale h convergence</td><td>p 500–40,000</td><td>Δ(∞)≈0.076</td></tr>
+          <tr><td>7</td><td>Parity control</td><td>p 500–40,000</td><td>parity 54%, shadow 46%</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§4 Blocks 1–2: Surface Behavior of the Mixed Average M̄</h2>
+
+      <h3>4.1 Block 1: p ≤ √N = 10⁵, q > p</h3>
+      <p>For 9,587 primes \(p \in [3, 10^5]\), we compute \(\bar{M} = \tau_p - (E[\rho(pq-1)] - E[\rho(q)])\), with \(q\) ranging over primes in \((p, N/p)\).</p>
+      <table>
+        <thead><tr><th>Band</th><th>n_p</th><th>⟨ρ(p)⟩</th><th>⟨τ_p⟩</th><th>⟨diff⟩</th><th>⟨M̄⟩</th><th>std</th></tr></thead>
+        <tbody>
+          <tr><td>[3, 10)</td><td>3</td><td>4.00</td><td>6.00</td><td>5.999</td><td>0.001</td><td>0.815</td></tr>
+          <tr><td>[100, 300)</td><td>37</td><td>19.27</td><td>21.27</td><td>19.582</td><td>1.688</td><td>1.217</td></tr>
+          <tr><td>[1000, 3000)</td><td>262</td><td>28.50</td><td>30.50</td><td>28.270</td><td>2.230</td><td>0.798</td></tr>
+          <tr><td>[10000, 30000)</td><td>2016</td><td>37.51</td><td>39.51</td><td>37.133</td><td>2.381</td><td>0.828</td></tr>
+          <tr><td>[30000, 100000)</td><td>6343</td><td>42.08</td><td>44.08</td><td>41.629</td><td>2.450</td><td>0.824</td></tr>
+        </tbody>
+      </table>
+      <p>M̄ rises from ~1.0 to ~2.45. The slope of \(\tau_p\) against \(\ln(p)\) is 3.918; that of diff is 3.834; the difference is only 0.084. A direct fit of M̄ against \(\ln(p)\) yields \(R^2 = 0.013\). \(V(p) \approx 1.40\), globally bounded, consistent with Paper XXXIV.</p>
+
+      <h3>4.2 Block 2: Extending p to 10⁷</h3>
+      <p>Key insight: we do not require \(p \leq \sqrt{N}\); we only need \(pq-1 < N\). For \(p = 10^6\), \(q < 10^4\) suffices; for \(p = 10^7\), \(q < 10^3\).</p>
+      <table>
+        <thead><tr><th>p Range</th><th>⟨M̄⟩</th><th>std</th><th>gap = τ/ln(p) − diff/ln(p)</th></tr></thead>
+        <tbody>
+          <tr><td>[5×10⁴, 10⁵)</td><td>1.431</td><td>0.848</td><td>0.128</td></tr>
+          <tr><td>[10⁵, 3.16×10⁵)</td><td>1.528</td><td>0.786</td><td>0.125</td></tr>
+          <tr><td>[3.16×10⁵, 10⁶)</td><td>1.557</td><td>0.802</td><td>0.117</td></tr>
+          <tr><td>[10⁶, 3.16×10⁶)</td><td>1.506</td><td>0.798</td><td>0.104</td></tr>
+          <tr><td>[3.16×10⁶, 10⁷)</td><td>1.468</td><td>0.798</td><td>0.094</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box"><p><strong>Surface conclusion:</strong> \(\bar{M} = \Theta(1)\). Block 3 shows that this flat appearance is a consequence of composition shift and cannot serve as a diagnostic for the asymptotic behavior of \(M_{\mathrm{loc}}\) or \(M_X\) (see §5).</p></div>
+
+      <h2>§5 Block 3: Identifying Composition Shift</h2>
+
+      <h3>5.1 Motivation</h3>
+      <p>Paper XXXVIII proved \(G\) depends only on \(t = q/p\), and "B-C erosion through zero" is a composition shift. A separate analysis thread noted: "Paper XXXVIII's composition shift may also affect the \(M_p\) diagnostic — large \(p\) can only access small \(q\), and the decline in gap may partly arise from windowing effects." If \(\bar{M}\) is similarly affected, Block 2's "\(\bar{M} = \mathrm{constant}\)" is an artifact.</p>
+
+      <h3>5.2 Fixed t ∈ [3,10]: The Decisive Experiment</h3>
+      <p>For each \(p\), only primes \(q\) with \(q/p \in [3,10]\) are used. The full window requires \(10p^2 \leq N\), i.e., \(p \leq \sqrt{N/10} \approx 31{,}623\).</p>
+      <p><strong>Main fit (first 9 bins, full [3,10] window, p ≤ 31,623):</strong></p>
+      <table>
+        <thead><tr><th>p Band</th><th>n</th><th>⟨ln(p)⟩</th><th>⟨M_loc⟩</th><th>τ/lnp</th><th>diff/lnp</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>[500, 1000)</td><td>73</td><td>6.60</td><td>2.068</td><td>4.056</td><td>3.743</td><td>0.313</td></tr>
+          <tr><td>[1000, 2000)</td><td>135</td><td>7.29</td><td>2.099</td><td>4.039</td><td>3.751</td><td>0.288</td></tr>
+          <tr><td>[2000, 3000)</td><td>127</td><td>7.82</td><td>2.268</td><td>4.048</td><td>3.758</td><td>0.290</td></tr>
+          <tr><td>[3000, 5000)</td><td>239</td><td>8.28</td><td>2.226</td><td>4.030</td><td>3.761</td><td>0.269</td></tr>
+          <tr><td>[5000, 7000)</td><td>231</td><td>8.70</td><td>2.288</td><td>4.028</td><td>3.765</td><td>0.263</td></tr>
+          <tr><td>[7000, 10000)</td><td>329</td><td>9.04</td><td>2.288</td><td>4.019</td><td>3.766</td><td>0.253</td></tr>
+          <tr><td>[10000, 15000)</td><td>525</td><td>9.43</td><td>2.380</td><td>4.021</td><td>3.768</td><td>0.253</td></tr>
+          <tr><td>[15000, 20000)</td><td>508</td><td>9.77</td><td>2.330</td><td>4.008</td><td>3.769</td><td>0.239</td></tr>
+          <tr><td>[20000, 30000)</td><td>983</td><td>10.12</td><td>2.429</td><td>4.010</td><td>3.770</td><td>0.240</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box"><p>\(M_{\mathrm{loc}} = +0.096 \cdot \ln(p) + 1.43\), \(R^2 = 0.89\).</p></div>
+      <p><strong>Truncated-window robustness check (p &gt; 31,623; upper end of t=10 inaccessible; not included in main fit):</strong></p>
+      <table>
+        <thead><tr><th>p Band</th><th>n</th><th>⟨ln(p)⟩</th><th>⟨M_loc⟩</th><th>τ/lnp</th><th>diff/lnp</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>[30000, 50000)</td><td>1000</td><td>10.58</td><td>2.443</td><td>4.004</td><td>3.774</td><td>0.231</td></tr>
+          <tr><td>[50000, 70000)</td><td>396</td><td>10.89</td><td>2.417</td><td>3.998</td><td>3.776</td><td>0.222</td></tr>
+        </tbody>
+      </table>
+      <p>Broadly compatible with the main-fit extrapolation.</p>
+
+      <h3>5.3 Multi-t-Window Verification</h3>
+      <p>All four tested t-windows ([1,3], [3,10], [10,30], [30,100]) show \(M_{\mathrm{loc}}\) increasing with \(p\):</p>
+      <table>
+        <thead><tr><th>t Window</th><th>p = 1k–3k</th><th>p = 3k–10k</th><th>p = 10k–30k</th><th>p = 30k–100k</th></tr></thead>
+        <tbody>
+          <tr><td>t∈[1,3]</td><td>2.136</td><td>2.223</td><td>2.317</td><td>2.403</td></tr>
+          <tr><td>t∈[3,10]</td><td>2.181</td><td>2.270</td><td>2.374</td><td>2.431</td></tr>
+          <tr><td>t∈[10,30]</td><td>2.223</td><td>2.326</td><td>2.408</td><td>—</td></tr>
+          <tr><td>t∈[30,100]</td><td>2.270</td><td>2.365</td><td>2.401</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box">The data are consistent with \(a(t) > 0\) across all tested t-ranges. However, the standard deviation of \(M_{\mathrm{loc}}\) within each window is ~0.8, and the inter-band increments (~0.1–0.2) are only slightly larger than the statistical fluctuations. Precise estimates of \(a(t)\) with standard errors will require larger p-ranges or larger N. The current data support the qualitative direction of \(a(t) > 0\) rather than its precise numerical value.</div>
+
+      <h3>5.4 Block 2 vs Block 3</h3>
+      <table>
+        <thead><tr><th></th><th>Block 2 (mixed t)</th><th>Block 3 (fixed t, full window)</th></tr></thead>
+        <tbody>
+          <tr><td>Slope</td><td>+0.005</td><td>+0.096</td></tr>
+          <tr><td>R²</td><td>0.0001</td><td>0.89</td></tr>
+          <tr><td>Diagnosis</td><td>Composition shift artifact</td><td>Growth signal</td></tr>
+        </tbody>
+      </table>
+      <p>\(R^2\) jumps from 0.0001 to 0.89. In the presence of composition shift, the constant appearance of the mixed average is compatible with logarithmic growth of the local margin: Block 2's \(\bar{M} \approx 1.5\) reflects the shifting \(q/p\) composition as \(p\) increases, not the asymptotic behavior of \(M_{\mathrm{loc}}\).</p>
+
+      <h2>§6 Blocks 4–4b: Failure of the Gemini Formula</h2>
+
+      <h3>6.1 Gemini's Derivation and Block 4 Measurement</h3>
+      <p>Gemini derived: at fixed \(t\), \(M_{\mathrm{loc}} \sim (2h_{\mathrm{prime}} - 2h_0) \cdot \ln(p) + (h_{\mathrm{prime}} - h_0) \cdot \ln(t)\), where \(h_{\mathrm{prime}}\) and \(h_0\) are the ρ/ln growth rates for primes and general integers respectively.</p>
+      <p>Block 4 measures \(h_{\mathrm{prime}} - h_0\) at 30 log-spaced scales (10³ to 10⁹):</p>
+      <table>
+        <thead><tr><th>Scale</th><th>h_prime</th><th>h₀</th><th>Δ</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>3.798</td><td>3.720</td><td>0.078</td></tr>
+          <tr><td>10⁶</td><td>3.833</td><td>3.781</td><td>0.052</td></tr>
+          <tr><td>10⁸</td><td>3.843</td><td>3.803</td><td>0.039</td></tr>
+          <tr><td>10⁹</td><td>3.845</td><td>3.810</td><td>0.035</td></tr>
+        </tbody>
+      </table>
+      <p>Fit: \(\Delta = 0.710/\ln(n) + 0.00019\), \(R^2 = 0.996\). The intercept is numerically indistinguishable from zero, implying \(h_{\mathrm{prime}} \to h_0\) asymptotically. If the Gemini formula were correct, this would imply \(M_{\mathrm{loc}} \to \mathrm{constant} \approx 1.42\).</p>
+
+      <h3>6.2 Block 4b: Cross-Validation</h3>
+      <p>\(\rho(p) = \rho(p-1) + 1\), with 100% confirmation (78,496 primes, no exceptions). The predecessor \(p-1\) is systematically cheaper than a general integer by ~0.3 (\(p-1\) is always even).</p>
+      <p>Plugging Block 4's h-values into the Gemini formula and comparing with Block 3's measured \(M_{\mathrm{loc}}\):</p>
+      <table>
+        <thead><tr><th>p</th><th>M_loc (measured)</th><th>M_loc (Gemini)</th><th>Bias</th></tr></thead>
+        <tbody>
+          <tr><td>750</td><td>2.068</td><td>1.165</td><td>−0.903</td></tr>
+          <tr><td>8500</td><td>2.288</td><td>1.544</td><td>−0.744</td></tr>
+          <tr><td>60000</td><td>2.417</td><td>1.454</td><td>−0.963</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box"><p><strong>The formula is systematically low by ~0.85.</strong> The reason: it assumes \(E[\rho(pq-1)] \sim h_0 \cdot \ln(pq)\), but \(pq-1\) is not a general integer — it is a shifted product with its own effective growth rate \(h_{pq} \neq h_0\).</p></div>
+
+      <h2>§7 Block 5b: The Shifted-Product Deficit</h2>
+
+      <h3>7.1 Direct Component Slopes</h3>
+      <p>At fixed \(t \in [3,10]\), we directly measure the slopes of all five raw quantities against \(\ln(p)\):</p>
+      <table>
+        <thead><tr><th>Component</th><th>Slope vs ln(p)</th><th>R²</th></tr></thead>
+        <tbody>
+          <tr><td>τ_p</td><td>+3.91746</td><td>0.9488</td></tr>
+          <tr><td>E[ρ(q)]</td><td>+3.90829</td><td>0.9999+</td></tr>
+          <tr><td>E[ρ(pq−1)]</td><td>+7.72529</td><td>0.9999+</td></tr>
+          <tr><td>diff = E[ρ(pq−1)] − E[ρ(q)]</td><td>+3.81700</td><td>0.9999</td></tr>
+          <tr><td>M_loc = τ_p − diff</td><td>+0.10045</td><td>0.012</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box"><p>Verification: τ slope − diff slope = 3.91746 − 3.81700 = 0.10045 = M_loc slope. <strong>Exact closure.</strong></p></div>
+      <div class="note-box">The low \(R^2 = 0.012\) for \(M_{\mathrm{loc}}\) reflects residual noise from subtracting two nearly parallel large-slope curves (τ and diff), not a refutation of the positive slope. The slope is identified through the exact closure of component slopes, not through direct regression of \(M_{\mathrm{loc}}\) itself.</div>
+
+      <h3>7.2 Effective h-Coefficients</h3>
+      <p>Since \(E[\rho(pq-1)]\) has slope ≈ \(2h_{pq}\) (because \(\ln(pq) \sim \ln(t) + 2\ln(p)\) at fixed \(t\)) and \(E[\rho(q)]\) has slope ≈ \(h_q\):</p>
+      <table>
+        <thead><tr><th>Quantity</th><th>Effective h</th><th>Identity</th></tr></thead>
+        <tbody>
+          <tr><td>h_tau</td><td>3.917</td><td>ρ-slope for prime p</td></tr>
+          <tr><td>h_q</td><td>3.908</td><td>ρ-slope for prime q</td></tr>
+          <tr><td>h_pq</td><td>3.863</td><td>ρ-slope for shifted prime product pq−1</td></tr>
+        </tbody>
+      </table>
+      <div class="thesis-box"><p>\(M_{\mathrm{loc}}\) slope \(= h_{\tau} + h_q - 2h_{pq} = 3.917 + 3.908 - 2 \times 3.863 = 0.100\).</p></div>
+
+      <h3>7.3 Core Mechanism: Shifted-Product Deficit</h3>
+      <p>The driver of \(M_{\mathrm{loc}}\) growth is \(h_{\tau} + h_q > 2h_{pq}\): the ρ/ln growth rate of the shifted prime product \(pq-1\) is systematically lower than that of primes. The original Gemini formula equates \(pq-1\) with a general integer (\(h_{pq} = h_0\)), but in fact \(h_{pq} < h_0 < h_{\mathrm{prime}}\). The corrected formula:</p>
+      $$M_{\mathrm{loc}} \sim (h_{\tau} + h_q - 2h_{pq}) \cdot \ln(p) + \text{lower-order terms}$$
+
+      <h2>§8 Block 6: Multi-Scale Convergence</h2>
+
+      <h3>8.1 Extrapolation of Four h-Values</h3>
+      <p>At 20 log-spaced scales (\(p = 500\) to 40,824), we simultaneously measure \(h_{\tau}, h_q, h_{pq}\), and \(h_{\mathrm{gen}}\):</p>
+      <table>
+        <thead><tr><th>h</th><th>Extrapolated Limit</th><th>Fit</th><th>R²</th></tr></thead>
+        <tbody>
+          <tr><td>h_tau(∞)</td><td>3.923</td><td>−1.109/ln(s) + 3.923</td><td>0.986</td></tr>
+          <tr><td>h_q(∞)</td><td>3.890</td><td>−0.651/ln(s) + 3.890</td><td>0.972</td></tr>
+          <tr><td>h_pq(∞)</td><td>3.848</td><td>−0.487/ln(s) + 3.848</td><td>0.928</td></tr>
+          <tr><td>h_gen(∞)</td><td>3.856</td><td>−0.435/ln(s) + 3.856</td><td>0.995</td></tr>
+        </tbody>
+      </table>
+      <p>The data are consistent with the ordering \(h_{\tau} > h_q > h_{\mathrm{gen}} > h_{pq}\).</p>
+
+      <h3>8.2 Convergence of h_tau − h_pq</h3>
+      <p>Observed values rise from −0.03 (\(p \sim 500\), small-sample noise) to +0.013 (\(p \sim 40{,}000\)). The \(1/\ln(s)\) fit: \(\Delta = -0.622/\ln(s) + 0.0756\), \(R^2 = 0.92\). The data are consistent with \(\Delta(\infty) \approx 0.076 > 0\).</p>
+      <div class="note-box">This is an extrapolation from a single fitting model (\(1/\ln(s)\)). Alternative models (e.g., \(\Delta \sim c/(\ln s)^\alpha\) with \(\alpha < 1\), extrapolating to \(\Delta(\infty) = 0\)) fit less well in the current window but cannot be formally excluded. Larger-scale data (requiring larger N) would further discriminate.</div>
+
+      <h3>8.3 Unconstrained Estimate of the Asymptotic Slope</h3>
+      <div class="thesis-box"><p>\(\text{slope}(\infty) = h_{\tau}(\infty) + h_q(\infty) - 2h_{pq}(\infty) = 3.923 + 3.890 - 2 \times 3.848 = \mathbf{0.117}\).</p></div>
+      <p>This is an unconstrained estimate from three independent \(1/\ln(s)\) fits. Block 3's measured slope of 0.096 at \(p \leq 31{,}623\) is below the extrapolated 0.117, consistent with the current window not yet having reached the asymptotic regime.</p>
+
+      <h2>§9 Block 7: Parity Control Experiment</h2>
+
+      <h3>9.1 Motivation</h3>
+      <p>It was pointed out in review that \(pq-1\) is always even for odd primes \(p, q\). How much of \(h_{pq} < h_{\mathrm{gen}}\) comes from parity, and how much from a "multiplicative shadow"?</p>
+
+      <h3>9.2 Five Control Groups</h3>
+      <p>At 15 log-spaced scales (\(p = 500\) to 40,000), we simultaneously measure:</p>
+      <table>
+        <thead><tr><th>Control Group</th><th>Definition</th><th>Mean h</th></tr></thead>
+        <tbody>
+          <tr><td>h_pq</td><td>E[ρ(pq−1)/ln(pq−1)], p,q prime</td><td>3.787</td></tr>
+          <tr><td>h_2prod</td><td>E[ρ(ab−1)/ln(ab−1)], a,b random integers</td><td>3.820</td></tr>
+          <tr><td>h_even</td><td>Random even integers of same size</td><td>3.795</td></tr>
+          <tr><td>h_gen</td><td>Random integers (mixed parity)</td><td>3.804</td></tr>
+          <tr><td>h_odd</td><td>Random odd integers of same size</td><td>3.812</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.3 Decomposition of the Deficit</h3>
+      <p>Total deficit \(h_{\mathrm{gen}} - h_{pq} \approx 0.0165\):</p>
+      <table>
+        <thead><tr><th>Effect</th><th>Magnitude</th><th>Share</th></tr></thead>
+        <tbody>
+          <tr><td>Parity (h_gen − h_even)</td><td>0.0090</td><td>~54%</td></tr>
+          <tr><td>Beyond-parity (h_even − h_pq)</td><td>0.0075</td><td>~46%</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box"><p>\(h_{pq} - h_{\mathrm{even}} = -0.0075 \pm 0.0025\) (&gt;3σ). <strong>The multiplicative shadow effect is real, not entirely a parity artifact.</strong></p></div>
+
+      <h3>9.4 h_pq vs h_2prod: The Role of Primality</h3>
+      <p>\(h_{pq} - h_{2\mathrm{prod}} = -0.033 \pm 0.008\). Shifted prime products are significantly cheaper than shifted random products. However, the \(h_{2\mathrm{prod}}\) control group is not parity-matched, so this comparison still conflates parity composition differences and cannot cleanly isolate a "prime purity effect." A parity-matched control (e.g., \(a, b\) restricted to odd integers) would be required for further confirmation.</p>
+
+      <h3>9.5 Impact on Core Conclusions</h3>
+      <p>Regardless of how the deficit mechanism decomposes, the positive sign of \(h_{\tau} - h_{pq}\) is unaffected. The shifted-product deficit driving \(M_{\mathrm{loc}}\) growth is robust.</p>
+
+      <h2>§10 Composition Shift: A Core Methodological Lesson</h2>
+
+      <h3>10.1 Three Occurrences</h3>
+      <table>
+        <thead><tr><th>Paper</th><th>Distorted Quantity</th><th>Mechanism</th></tr></thead>
+        <tbody>
+          <tr><td>XXXV–XXXVIII</td><td>G (B–C gap)</td><td>Large p forced to use q ~ p; mixed average obscures G's t-dependence</td></tr>
+          <tr><td>XXXVIII</td><td>G_X(p) vs G_loc(t)</td><td>Expanding-window G converges to ≈ −1.9 due to large-t dominance</td></tr>
+          <tr><td>XXXIX</td><td>M̄ vs M_loc</td><td>Large p forced to use small t; mixed average flattens M_loc's ln(p) growth</td></tr>
+        </tbody>
+      </table>
+
+      <h3>10.2 Methodological Conclusion</h3>
+      <p>Any statistic involving \(q\) must be measured at fixed \(t = q/p\); otherwise, composition shift may produce artifacts. This constraint extends to subsequent Ω ≥ 3 generalizations.</p>
+
+      <h2>§11 From M<sub>loc</sub> to Ω=2 Closure</h2>
+
+      <h3>11.1 What Has Been Established</h3>
+      <ul>
+        <li>At fixed \(t\), the data are consistent with \(M_{\mathrm{loc}} \sim (h_{\tau} + h_q - 2h_{pq}) \cdot \ln(p)\), with an unconstrained extrapolated slope ≈ 0.117.</li>
+        <li>\(V(p) \approx 1.4\) is globally bounded (Paper XXXIV).</li>
+        <li>The shifted-product deficit is robust (Block 7 parity control, &gt;3σ).</li>
+      </ul>
+
+      <h3>11.2 Ratio-Mixing Lemma (Open Lemma)</h3>
+      <div class="proof-box">
+        <p><strong>Statement.</strong> Let \(a(t)\) denote the slope of \(M_{\mathrm{loc}}(p, t)\) with respect to \(\ln(p)\), and let \(\mu_{N,p}(t)\) be the actual \(q/p\) distribution in the Ω=2 defect computation, supported on \(t \in [1, N/p^2]\).</p>
+        <p><em>Ratio-Mixing Lemma (to be proved):</em> There exists an admissible growth sequence \(N = N(p)\) (satisfying \(N/p^2 \to \infty\)) and a constant \(c > 0\) such that</p>
+        $$\liminf_{p \to \infty} \int_1^{N(p)/p^2} a(t)\, d\mu_{N(p),p}(t) \geq c > 0$$
+      </div>
+      <p>The core difficulty is that as \(p \to \infty\), the upper limit of integration \(N/p^2\) contracts (unless \(N\) grows fast enough). Required inputs: (i) the precise structure of \(\mu_{N,p}(t)\); (ii) whether \(a(t)\) has a uniform positive lower bound over relevant \(t\); (iii) the growth rate of \(N(p)\).</p>
+
+      <h3>11.3 Heuristic Reasons for Optimism</h3>
+      <p>The physical sources of the shifted-product deficit (parity + multiplicative shadow) do not depend on the specific value of \(t\). For any \(t > 0\), \(pq-1 \sim tp^2\) lies near \(p \times (tp)\), benefiting from a similar structural discount. Thus \(a(t) > 0\) may hold for all relevant \(t\). However, this remains a heuristic argument, not a proof.</p>
+
+      <h3>11.4 Conditional Conclusion</h3>
+      <div class="milestone-box">
+        <p>If the ratio-mixing lemma holds: \(\bar{M}_N(p) \to \infty\) → \(\Gamma_p = \bar{M}^2/V \to \infty\) → Cantelli: \(c_p \to 0\) → Harmonic Cesàro Lemma: \(\bar{c}_h \to 0\) → <strong>Ω=2 layer closure.</strong></p>
+      </div>
+
+      <h2>§12 Discussion</h2>
+
+      <h3>12.1 Core Contributions of Paper XXXIX</h3>
+      <ul>
+        <li>(a) Identifying \(\bar{M}_N \approx 1.5\) as a composition shift artifact; \(M_{\mathrm{loc}}\) at fixed \(t\) shows clear \(\ln(p)\) growth.</li>
+        <li>(b) Identifying the driver: shifted-product deficit, \(h_{\tau} + h_q > 2h_{pq}\).</li>
+        <li>(c) Refuting the Gemini formula — incorrect parameter identification (equating \(pq-1\) with a general integer).</li>
+        <li>(d) Multi-scale extrapolation consistent with \(h_{\tau} > h_q > h_{\mathrm{gen}} > h_{pq}\).</li>
+        <li>(e) Parity control experiment: approximately 54% parity effect, approximately 46% beyond-parity; multiplicative shadow exceeds 3σ.</li>
+        <li>(f) Reducing Ω=2 closure to the ratio-mixing lemma.</li>
+      </ul>
+
+      <h3>12.2 Distance Estimate</h3>
+      <p>Ω=2 closure now reduces to a small number of precise analytical inputs, the core being the ratio-mixing lemma. This is a more precise and more attackable formulation than any prior statement of the problem.</p>
+
+      <h2>§13 Data Sources and Reproducibility</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td>p39_mp_precise_v2.py</td><td>M̄ full components, 9,587 primes, p ≤ 10⁵</td><td>1</td></tr>
+          <tr><td>p39_large_p.py</td><td>M̄ extended to p ~ 10⁷, 10,000 primes</td><td>2</td></tr>
+          <tr><td>p39_fixed_ratio.py</td><td>M_loc at fixed t, Experiments 1+2</td><td>3</td></tr>
+          <tr><td>p39_hprime.py</td><td>h_prime vs h₀ multi-scale, 30 scales</td><td>4</td></tr>
+          <tr><td>p39_crossval.py</td><td>Gemini formula check + ρ(p)=ρ(p−1)+1 + smooth bias</td><td>4b</td></tr>
+          <tr><td>p39_direct_slopes.py</td><td>Direct component slopes, h_tau/h_q/h_pq</td><td>5b</td></tr>
+          <tr><td>p39_hpq_multiscale.py</td><td>h_tau, h_q, h_pq, h_gen multi-scale convergence</td><td>6</td></tr>
+          <tr><td>p39_parity_control.py</td><td>Parity control: h_pq vs h_even vs h_gen vs h_odd vs h_2prod</td><td>7</td></tr>
+        </tbody>
+      </table>
+      <p>Data: <code>rho_1e10.bin</code> (int16, N = 10¹⁰, <code>rho_dp.c</code>, Paper XXXII convention).</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Papers I–XXXVIII. Paper XXXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19157939" target="_blank" rel="noopener">10.5281/zenodo.19157939</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XXXIV: Upper-Margin Closure and Bounded-Variance. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXI: Queue Isomorphism and Local Lipschitz Reduction. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (子路) discovered the int16 format bug, designed the Block 2–3–4b–5b–6–7 experiment chain (eight scripts total), and drafted working notes v1–v5. After Block 4 yielded h_prime → h₀, Claude designed Block 4b for cross-validation; after the Gemini formula was found to underpredict by ~0.85, Claude designed Block 5b and discovered the exact decomposition M_loc slope = h_tau + h_q − 2h_pq; Claude then designed Block 6 for multi-scale convergence.</p>
+      <p>A separate Claude thread (thermodynamic analysis) noted that Block 2 might be affected by composition shift, directly motivating Block 3.</p>
+      <p>Han Qin (author) asked "Is our data correct?" after Block 4, which led to Block 4b, the exposure of the Gemini formula's flaw, and the entire Block 5b → 6 chain. The author set the methodological direction of "depth first, follow the data."</p>
+      <p>ChatGPT (公西华) warned at the Paper XXXVIII stage that "the M_p → ∞ derivation has a gap"; in the v2 review proposed the three-layer M distinction, truncated-window correction, and the ratio-mixing lemma; in the v4 review identified the arithmetic inconsistency (0.151 → 0.117), overclaiming language, parity as a competing explanation, and the need for theorem-sized formulation of the mixing lemma — directly motivating Block 7 and comprehensive revisions.</p>
+      <p>Gemini (子夏) derived the formula M ~ 2(h_prime − h₀)·ln(p); the algebraic framework was correct though the parameter identification was wrong, directly leading to Block 4's measurement and, through its failure, revealing the role of h_pq.</p>
+      <p>Grok (子贡) provided Lindley parameter estimates and series consistency checks.</p>
+      <p>The final text was independently completed by the author.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho38.html">← Paper XXXVIII</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>Paper XL →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 系列论文第三十九篇</div>
+      <h1 class="paper-title">Shifted-Product Deficit 与 Ω=2 层 M<sub>loc</sub> 的对数增长</h1>
+      <div class="paper-authors">秦汉 (Han Qin) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19164588" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19164588
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>本文通过七组递进式数值实验，揭示了 Ω=2 层局部 margin \(M_{\mathrm{loc}}(p, t)\) 在固定比例 \(t = q/p\) 下具有清晰的对数增长信号，并识别出驱动这一增长的机制——shifted-product deficit。</p>
+        <p><strong>(1)</strong> 在固定 \(t = q/p \in [3,10]\) 且完整窗口（\(p \leq 31623\)）下，\(M_{\mathrm{loc}}\) 对 \(\ln(p)\) 的线性拟合斜率为 +0.096，\(R^2 = 0.89\)。此前报告的 \(\bar{M}_N \approx 1.5\)（混合 t，\(R^2 = 0.0001\)）被识别为 composition shift 伪影——与 Paper XXXVIII 发现的 G 的 composition shift 是同一机制。</p>
+        <p><strong>(2)</strong> \(M_{\mathrm{loc}}\) 的增长可精确分解为 \(\text{slope} = h_\tau + h_q - 2h_{pq}\)，其中 \(h_\tau, h_q\) 是素数的 ρ/ln 增长斜率，\(h_{pq}\) 是 shifted prime product \(pq-1\) 的 ρ/ln 增长斜率。三项分量斜率之和精确等于 \(M_{\mathrm{loc}}\) 斜率（代数恒等式验证）。</p>
+        <p><strong>(3)</strong> 多尺度 \(1/\ln(s)\) 外推与 \(h_\tau(\infty) \approx 3.923\)，\(h_{pq}(\infty) \approx 3.848\) 一致，差值 \(\Delta(\infty) \approx 0.076 > 0\)（\(R^2 = 0.92\)）。据此得到渐近斜率的 unconstrained estimate：\(\text{slope}(\infty) \approx 0.117\)，与 Block 3 在中等尺度的实测（0.096）自洽。</p>
+        <p><strong>(4)</strong> Parity 控制实验将 \(h_{\mathrm{gen}} - h_{pq}\) 的总 deficit（≈ 0.0165）分解为 parity 效应（约 54%）和 beyond-parity 效应（约 46%）。\(h_{pq} - h_{\mathrm{even}} = -0.0075 \pm 0.0025\)（&gt;3σ），确认乘法阴影效应是真实的，不完全是 parity 伪影。</p>
+        <p><strong>(5)</strong> Ω=2 闭合归约为一个精确的开放引理——<em>ratio-mixing lemma</em>：证明 \(M_{\mathrm{loc}}\) 的正斜率在 actual q/p-mixing 下不被平均掉。</p>
+        <p><strong>关键词：</strong>shifted-product deficit，\(M_{\mathrm{loc}}\)，composition shift，ratio-mixing lemma，Ω=2 闭合</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXVIII 建立了 \(G = f(q/p)\) 的 ratio-parametrization，发现"B-C 侵蚀穿零"是 composition shift 伪影，并建议三层 G 区分（\(G_{\mathrm{loc}}, \bar{G}_N, G_X\)）。Gemini 和 Grok 据此推测 \(M_p \to \infty\)（"自动闭合"）；公西华（ChatGPT）警告这一推导跳了一步——\(M_p\) 是两个都趋于无穷的量的差，差本身不一定发散。Paper XXXIV 建立了 Harmonic Cesàro Lemma：若 \(V(p) = O(1)\) 且 \(M_p \to \infty\)，则 \(\bar{c}_h \to 0\)，Ω=2 层闭合。因此 Ω=2 闭合归约为：\(M_p\) 是否 → ∞？</p>
+
+      <h3>1.2 本文的任务</h3>
+      <p>通过精确数值实验回答：\(M_p\) 的真实渐近行为是什么？增长的驱动力是什么？从 \(M_p\) 的增长到 Ω=2 闭合还缺什么？</p>
+
+      <h2>§2 三层 M 的区分</h2>
+      <p>沿用 Paper XXXVIII 的三层 G 框架，对 M 做平行定义：</p>
+      <ul>
+        <li><strong>\(M_{\mathrm{loc}}(p, t)\)：</strong>固定 ratio \(t = q/p\) 的局部 margin。对每个 \(p\)，只用 \(q/p \in [t_{\mathrm{lo}}, t_{\mathrm{hi}}]\) 的素数 \(q\) 计算 \(\mathrm{diff}_{\mathrm{loc}} = E[\rho(pq-1)] - E[\rho(q)]\)（harmonic 加权），然后 \(M_{\mathrm{loc}} = \tau_p - \mathrm{diff}_{\mathrm{loc}}\)，其中 \(\tau_p = \rho(p) + 2\)。</li>
+        <li><strong>\(\bar{M}_N(p)\)：</strong>固定截断 \(N\) 和素数 \(p\)，对所有可用 \(q\) 取 harmonic 加权平均。等于 \(\int M_{\mathrm{loc}}(p, t)\, d\mu_{N,p}(t)\)，其中 \(\mu_{N,p}\) 是由 \(N\) 和 \(p\) 决定的 \(q/p\) 分布。</li>
+        <li><strong>\(M_X(p)\)：</strong>固定 \(p\)，令 \(N \to \infty\) 的极限。理论对象，无法直接测量。</li>
+      </ul>
+      <div class="note-box"><strong>核心区别：</strong>本文 Block 3–6 测量 \(M_{\mathrm{loc}}\)，Block 1–2 测量 \(\bar{M}_N\)。从 \(M_{\mathrm{loc}}\) 增长推到 \(\bar{M}\) 增长需要 ratio-mixing lemma：证明 \(\int a(t)\, d\mu_{N,p}(t) > 0\)，其中 \(a(t)\) 是 \(M_{\mathrm{loc}}(p, t)\) 对 \(\ln(p)\) 的斜率。</div>
+
+      <h2>§3 实验设计与数据</h2>
+
+      <h3>3.1 数据来源</h3>
+      <p><code>rho_1e10.bin</code>：ρ_E 值到 \(N = 10^{10}\)，int16 格式，由 <code>rho_dp.c</code> 生成（Paper XXXII convention）。Sanity checks：ρ(1)=0，ρ(2)=1，ρ(3)=2，ρ(100)=15，ρ(10⁷)=58，ρ(10⁸)=66，全部通过。</p>
+      <div class="note-box">注：初版脚本（v1）使用 uint8 读取 int16 文件，导致所有素数的 ρ 值读为 0。v2 修正后所有后续实验均基于正确的 int16 读取。</div>
+
+      <h3>3.2 七组实验概览</h3>
+      <table>
+        <thead><tr><th>Block</th><th>测量对象</th><th>p 范围</th><th>核心结果</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>M̄（q &gt; p）</td><td>p ≤ 10⁵</td><td>M̄ ~ 2.4, R²=0.013</td></tr>
+          <tr><td>2</td><td>M̄（混合 t）</td><td>p 到 10⁷</td><td>M̄ ≈ 1.5, R²=0.0001</td></tr>
+          <tr><td>3</td><td>M_loc（固定 t∈[3,10]）</td><td>p ≤ 31623</td><td>0.096·ln(p), R²=0.89</td></tr>
+          <tr><td>4</td><td>h_prime − h₀</td><td>10³–10⁹</td><td>~0.71/ln(n) → 0</td></tr>
+          <tr><td>4b</td><td>Gemini 公式验证</td><td>p ≤ 10⁶</td><td>系统偏低 ~0.85</td></tr>
+          <tr><td>5b</td><td>直接分量斜率</td><td>p ≤ 31623</td><td>h_tau+h_q−2h_pq=0.100</td></tr>
+          <tr><td>6</td><td>h 多尺度收敛</td><td>p 500–40000</td><td>Δ(∞)≈0.076</td></tr>
+          <tr><td>7</td><td>Parity 控制</td><td>p 500–40000</td><td>parity 54%, shadow 46%</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§4 Block 1–2: 混合 M̄ 的表面行为</h2>
+
+      <h3>4.1 Block 1: p ≤ √N = 10⁵，q > p</h3>
+      <p>对 9587 个素数 \(p \in [3, 10^5]\)，计算 \(\bar{M} = \tau_p - (E[\rho(pq-1)] - E[\rho(q)])\)，\(q\) 遍历 \((p, N/p)\) 中的素数。</p>
+      <table>
+        <thead><tr><th>Band</th><th>n_p</th><th>⟨ρ(p)⟩</th><th>⟨τ_p⟩</th><th>⟨diff⟩</th><th>⟨M̄⟩</th><th>std</th></tr></thead>
+        <tbody>
+          <tr><td>[3, 10)</td><td>3</td><td>4.00</td><td>6.00</td><td>5.999</td><td>0.001</td><td>0.815</td></tr>
+          <tr><td>[100, 300)</td><td>37</td><td>19.27</td><td>21.27</td><td>19.582</td><td>1.688</td><td>1.217</td></tr>
+          <tr><td>[1000, 3000)</td><td>262</td><td>28.50</td><td>30.50</td><td>28.270</td><td>2.230</td><td>0.798</td></tr>
+          <tr><td>[10000, 30000)</td><td>2016</td><td>37.51</td><td>39.51</td><td>37.133</td><td>2.381</td><td>0.828</td></tr>
+          <tr><td>[30000, 100000)</td><td>6343</td><td>42.08</td><td>44.08</td><td>41.629</td><td>2.450</td><td>0.824</td></tr>
+        </tbody>
+      </table>
+      <p>M̄ 从 ~1.0 爬升到 ~2.45。τ_p 对 \(\ln(p)\) 的斜率为 3.918，diff 的斜率为 3.834，差值仅 0.084。M̄ 对 \(\ln(p)\) 的拟合 \(R^2 = 0.013\)，增长信号极弱。\(V(p) \approx 1.40\)，全局有界，与 Paper XXXIV 一致。</p>
+
+      <h3>4.2 Block 2: p 扩展到 10⁷</h3>
+      <table>
+        <thead><tr><th>p 范围</th><th>⟨M̄⟩</th><th>std</th><th>gap = τ/ln(p) − diff/ln(p)</th></tr></thead>
+        <tbody>
+          <tr><td>[5×10⁴, 10⁵)</td><td>1.431</td><td>0.848</td><td>0.128</td></tr>
+          <tr><td>[10⁵, 3.16×10⁵)</td><td>1.528</td><td>0.786</td><td>0.125</td></tr>
+          <tr><td>[3.16×10⁵, 10⁶)</td><td>1.557</td><td>0.802</td><td>0.117</td></tr>
+          <tr><td>[10⁶, 3.16×10⁶)</td><td>1.506</td><td>0.798</td><td>0.104</td></tr>
+          <tr><td>[3.16×10⁶, 10⁷)</td><td>1.468</td><td>0.798</td><td>0.094</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box"><p><strong>表面结论：</strong>\(\bar{M} = \Theta(1)\)。Block 3 表明此平坦外观是 composition shift 的结果，不能作为 \(M_{\mathrm{loc}}\) 或 \(M_X\) 渐近行为的诊断（见 §5）。</p></div>
+
+      <h2>§5 Block 3：Composition Shift 的识别</h2>
+
+      <h3>5.1 动机</h3>
+      <p>Paper XXXVIII 证明 G 只依赖于 \(t = q/p\)，"B-C 侵蚀穿零"是 composition shift。另一 Claude thread 指出："Paper XXXVIII 的 composition shift 可能影响 \(M_p\) 诊断——大 p 只能访问小 q，gap 的下降可能部分来自窗口效应。"如果 \(\bar{M}\) 也受 composition shift 影响，Block 2 的"\(\bar{M} =\) 常数"就是伪影。</p>
+
+      <h3>5.2 固定 t∈[3,10] 的判决性实验</h3>
+      <p>对每个 \(p\)，只使用 \(q/p \in [3,10]\) 范围内的素数 \(q\) 计算 diff 和 \(M_{\mathrm{loc}}\)。完整窗口要求 \(10p^2 \leq N\)，即 \(p \leq \sqrt{N/10} \approx 31623\)。</p>
+      <p><strong>主拟合（前 9 bin，完整 [3,10] 窗口，p ≤ 31623）：</strong></p>
+      <table>
+        <thead><tr><th>p band</th><th>n</th><th>⟨ln(p)⟩</th><th>⟨M_loc⟩</th><th>τ/lnp</th><th>diff/lnp</th><th>gap</th></tr></thead>
+        <tbody>
+          <tr><td>[500, 1000)</td><td>73</td><td>6.60</td><td>2.068</td><td>4.056</td><td>3.743</td><td>0.313</td></tr>
+          <tr><td>[1000, 2000)</td><td>135</td><td>7.29</td><td>2.099</td><td>4.039</td><td>3.751</td><td>0.288</td></tr>
+          <tr><td>[2000, 3000)</td><td>127</td><td>7.82</td><td>2.268</td><td>4.048</td><td>3.758</td><td>0.290</td></tr>
+          <tr><td>[3000, 5000)</td><td>239</td><td>8.28</td><td>2.226</td><td>4.030</td><td>3.761</td><td>0.269</td></tr>
+          <tr><td>[5000, 7000)</td><td>231</td><td>8.70</td><td>2.288</td><td>4.028</td><td>3.765</td><td>0.263</td></tr>
+          <tr><td>[7000, 10000)</td><td>329</td><td>9.04</td><td>2.288</td><td>4.019</td><td>3.766</td><td>0.253</td></tr>
+          <tr><td>[10000, 15000)</td><td>525</td><td>9.43</td><td>2.380</td><td>4.021</td><td>3.768</td><td>0.253</td></tr>
+          <tr><td>[15000, 20000)</td><td>508</td><td>9.77</td><td>2.330</td><td>4.008</td><td>3.769</td><td>0.239</td></tr>
+          <tr><td>[20000, 30000)</td><td>983</td><td>10.12</td><td>2.429</td><td>4.010</td><td>3.770</td><td>0.240</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box"><p>\(M_{\mathrm{loc}} = +0.096 \cdot \ln(p) + 1.43\)，\(R^2 = 0.89\)。</p></div>
+
+      <h3>5.3 多 t 窗口验证</h3>
+      <table>
+        <thead><tr><th>t 窗口</th><th>p = 1k–3k</th><th>p = 3k–10k</th><th>p = 10k–30k</th><th>p = 30k–100k</th></tr></thead>
+        <tbody>
+          <tr><td>t∈[1,3]</td><td>2.136</td><td>2.223</td><td>2.317</td><td>2.403</td></tr>
+          <tr><td>t∈[3,10]</td><td>2.181</td><td>2.270</td><td>2.374</td><td>2.431</td></tr>
+          <tr><td>t∈[10,30]</td><td>2.223</td><td>2.326</td><td>2.408</td><td>—</td></tr>
+          <tr><td>t∈[30,100]</td><td>2.270</td><td>2.365</td><td>2.401</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box">数据与 \(a(t) > 0\) 对所有测试的 t 范围一致。但各窗口的 \(M_{\mathrm{loc}}\) 标准差约 0.8，增量（~0.1–0.2 per p-band）仅略大于统计涨落。当前数据支持的是 \(a(t) > 0\) 的定性方向，而非其精确数值。</div>
+
+      <h3>5.4 Block 2 vs Block 3</h3>
+      <table>
+        <thead><tr><th></th><th>Block 2（混合 t）</th><th>Block 3（固定 t，完整窗口）</th></tr></thead>
+        <tbody>
+          <tr><td>斜率</td><td>+0.005</td><td>+0.096</td></tr>
+          <tr><td>R²</td><td>0.0001</td><td>0.89</td></tr>
+          <tr><td>诊断</td><td>Composition shift 伪影</td><td>真实增长信号</td></tr>
+        </tbody>
+      </table>
+      <p>\(R^2\) 从 0.0001 跳到 0.89。Block 2 的 \(\bar{M} \approx 1.5\) 反映的不是 \(M_{\mathrm{loc}}\) 的渐近行为，而是 \(q/p\) 混合比例随 p 变化的伪影。</p>
+
+      <h2>§6 Block 4–4b：Gemini 公式的失败</h2>
+
+      <h3>6.1 Gemini 的推导与 Block 4 的测量</h3>
+      <p>Gemini 推导：在固定 \(t\) 下，\(M_{\mathrm{loc}} \sim (2h_{\mathrm{prime}} - 2h_0) \cdot \ln(p) + (h_{\mathrm{prime}} - h_0) \cdot \ln(t)\)，其中 \(h_{\mathrm{prime}}\) 是素数的 ρ/ln 斜率，\(h_0\) 是一般整数的 ρ/ln 斜率。</p>
+      <table>
+        <thead><tr><th>Scale</th><th>h_prime</th><th>h₀</th><th>Δ</th></tr></thead>
+        <tbody>
+          <tr><td>10⁴</td><td>3.798</td><td>3.720</td><td>0.078</td></tr>
+          <tr><td>10⁶</td><td>3.833</td><td>3.781</td><td>0.052</td></tr>
+          <tr><td>10⁸</td><td>3.843</td><td>3.803</td><td>0.039</td></tr>
+          <tr><td>10⁹</td><td>3.845</td><td>3.810</td><td>0.035</td></tr>
+        </tbody>
+      </table>
+      <p>拟合：\(\Delta = 0.710/\ln(n) + 0.00019\)，\(R^2 = 0.996\)。截距在数值上与零不可区分。</p>
+
+      <h3>6.2 Block 4b：交叉验证</h3>
+      <table>
+        <thead><tr><th>p</th><th>M_loc（实测）</th><th>M_loc（Gemini）</th><th>偏差</th></tr></thead>
+        <tbody>
+          <tr><td>750</td><td>2.068</td><td>1.165</td><td>−0.903</td></tr>
+          <tr><td>8500</td><td>2.288</td><td>1.544</td><td>−0.744</td></tr>
+          <tr><td>60000</td><td>2.417</td><td>1.454</td><td>−0.963</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box"><p><strong>公式系统偏低约 0.85。</strong>原因：公式假设 \(E[\rho(pq-1)] \sim h_0 \cdot \ln(pq)\)，但 \(pq-1\) 不是一般整数——它是 shifted product，有自己的有效增长斜率 \(h_{pq} \neq h_0\)。</p></div>
+
+      <h2>§7 Block 5b：Shifted-Product Deficit</h2>
+
+      <h3>7.1 直接分量斜率</h3>
+      <table>
+        <thead><tr><th>分量</th><th>斜率 vs ln(p)</th><th>R²</th></tr></thead>
+        <tbody>
+          <tr><td>τ_p</td><td>+3.91746</td><td>0.9488</td></tr>
+          <tr><td>E[ρ(q)]</td><td>+3.90829</td><td>0.9999+</td></tr>
+          <tr><td>E[ρ(pq−1)]</td><td>+7.72529</td><td>0.9999+</td></tr>
+          <tr><td>diff = E[ρ(pq−1)] − E[ρ(q)]</td><td>+3.81700</td><td>0.9999</td></tr>
+          <tr><td>M_loc = τ_p − diff</td><td>+0.10045</td><td>0.012</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box"><p>验证：τ slope − diff slope = 3.91746 − 3.81700 = 0.10045 = M_loc slope。<strong>精确闭合。</strong></p></div>
+
+      <h3>7.2 有效 h 系数</h3>
+      <table>
+        <thead><tr><th>量</th><th>有效 h</th><th>身份</th></tr></thead>
+        <tbody>
+          <tr><td>h_tau</td><td>3.917</td><td>素数 p 的 ρ 斜率</td></tr>
+          <tr><td>h_q</td><td>3.908</td><td>素数 q 的 ρ 斜率</td></tr>
+          <tr><td>h_pq</td><td>3.863</td><td>shifted prime product pq−1 的 ρ 斜率</td></tr>
+        </tbody>
+      </table>
+      <div class="thesis-box"><p>\(M_{\mathrm{loc}}\) slope \(= h_\tau + h_q - 2h_{pq} = 3.917 + 3.908 - 2 \times 3.863 = 0.100\)。</p></div>
+
+      <h3>7.3 核心机制：Shifted-Product Deficit</h3>
+      <p>\(M_{\mathrm{loc}}\) 增长的驱动力是 \(h_\tau + h_q > 2h_{pq}\)：shifted prime product \(pq-1\) 的 ρ 增长斜率低于素数的 ρ 增长斜率。修正后的公式：</p>
+      $$M_{\mathrm{loc}} \sim (h_\tau + h_q - 2h_{pq}) \cdot \ln(p) + \text{lower order terms}$$
+
+      <h2>§8 Block 6：多尺度收敛</h2>
+
+      <h3>8.1 四个 h 的外推</h3>
+      <table>
+        <thead><tr><th>h</th><th>外推极限</th><th>拟合</th><th>R²</th></tr></thead>
+        <tbody>
+          <tr><td>h_tau(∞)</td><td>3.923</td><td>−1.109/ln(s) + 3.923</td><td>0.986</td></tr>
+          <tr><td>h_q(∞)</td><td>3.890</td><td>−0.651/ln(s) + 3.890</td><td>0.972</td></tr>
+          <tr><td>h_pq(∞)</td><td>3.848</td><td>−0.487/ln(s) + 3.848</td><td>0.928</td></tr>
+          <tr><td>h_gen(∞)</td><td>3.856</td><td>−0.435/ln(s) + 3.856</td><td>0.995</td></tr>
+        </tbody>
+      </table>
+      <p>数据与排序 \(h_\tau > h_q > h_{\mathrm{gen}} > h_{pq}\) 一致。</p>
+
+      <h3>8.2 h_tau − h_pq 的收敛</h3>
+      <p>观测值从 −0.03（\(p \sim 500\)，小样本噪声）上升到 +0.013（\(p \sim 40000\)）。\(1/\ln(s)\) 拟合：\(\Delta = -0.622/\ln(s) + 0.0756\)，\(R^2 = 0.92\)。数据与 \(\Delta(\infty) \approx 0.076 > 0\) 一致。</p>
+
+      <h3>8.3 渐近斜率的 unconstrained estimate</h3>
+      <div class="thesis-box"><p>\(\text{slope}(\infty) = h_\tau(\infty) + h_q(\infty) - 2h_{pq}(\infty) = 3.923 + 3.890 - 2 \times 3.848 = \mathbf{0.117}\)。</p></div>
+      <p>Block 3 在 \(p \leq 31623\) 的实测斜率 0.096 低于外推值 0.117，与"当前窗口尚未到达渐近区"一致。</p>
+
+      <h2>§9 Block 7：Parity 控制实验</h2>
+
+      <h3>9.1 动机</h3>
+      <p>公西华（ChatGPT）指出：\(pq-1\) 对奇素数 \(p, q\) 永远是偶数。\(h_{pq} < h_{\mathrm{gen}}\) 中有多少来自 parity，有多少是"乘法阴影"？</p>
+
+      <h3>9.2 五个控制组</h3>
+      <table>
+        <thead><tr><th>控制组</th><th>定义</th><th>Mean h</th></tr></thead>
+        <tbody>
+          <tr><td>h_pq</td><td>E[ρ(pq−1)/ln(pq−1)]，p,q 素数</td><td>3.787</td></tr>
+          <tr><td>h_2prod</td><td>E[ρ(ab−1)/ln(ab−1)]，a,b 随机整数</td><td>3.820</td></tr>
+          <tr><td>h_even</td><td>同尺度随机偶数</td><td>3.795</td></tr>
+          <tr><td>h_gen</td><td>同尺度随机整数</td><td>3.804</td></tr>
+          <tr><td>h_odd</td><td>同尺度随机奇数</td><td>3.812</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.3 Deficit 的分解</h3>
+      <table>
+        <thead><tr><th>效应</th><th>大小</th><th>占比</th></tr></thead>
+        <tbody>
+          <tr><td>Parity（h_gen − h_even）</td><td>0.0090</td><td>约 54%</td></tr>
+          <tr><td>Beyond-parity（h_even − h_pq）</td><td>0.0075</td><td>约 46%</td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box"><p>\(h_{pq} - h_{\mathrm{even}} = -0.0075 \pm 0.0025\)（&gt;3σ）。<strong>乘法阴影效应是真实的，不完全是 parity 伪影。</strong></p></div>
+
+      <h2>§10 Composition Shift：ZFCρ 的核心方法论教训</h2>
+      <table>
+        <thead><tr><th>Paper</th><th>被扭曲的量</th><th>机制</th></tr></thead>
+        <tbody>
+          <tr><td>XXXV–XXXVIII</td><td>G（B-C gap）</td><td>大 p 只能用 q ~ p，混合平均掩盖 G 的 t-dependence</td></tr>
+          <tr><td>XXXVIII</td><td>G_X(p) vs G_loc(t)</td><td>扩窗 G 收敛到 ≈ −1.9 是 large-t 主导</td></tr>
+          <tr><td>XXXIX</td><td>M̄ vs M_loc</td><td>大 p 只能用小 t，混合平均抹平 M_loc 的 ln(p) 增长</td></tr>
+        </tbody>
+      </table>
+      <p>任何涉及 \(q\) 的统计量，都必须在固定 \(t = q/p\) 下测量，否则 composition shift 可能制造伪影。这对后续的 Ω≥3 推广也是核心约束。</p>
+
+      <h2>§11 从 M<sub>loc</sub> 到 Ω=2 闭合</h2>
+
+      <h3>11.1 已建立的链条</h3>
+      <ul>
+        <li>在固定 \(t\) 下，数据与 \(M_{\mathrm{loc}} \sim (h_\tau + h_q - 2h_{pq}) \cdot \ln(p)\) 一致，unconstrained 外推斜率 ≈ 0.117。</li>
+        <li>\(V(p) \approx 1.4\) 全局有界（Paper XXXIV）。</li>
+        <li>Shifted-product deficit 是稳健的（Block 7 parity 控制确认，&gt;3σ）。</li>
+      </ul>
+
+      <h3>11.2 Ratio-Mixing Lemma（开放引理）</h3>
+      <div class="proof-box">
+        <p><strong>表述：</strong>设 \(a(t)\) 为 \(M_{\mathrm{loc}}(p, t)\) 对 \(\ln(p)\) 的斜率，\(\mu_{N,p}(t)\) 为 Ω=2 defect 计算中 \(q/p\) 的实际分布，其支撑集为 \(t \in [1, N/p^2]\)。</p>
+        <p><em>Ratio-Mixing Lemma（待证）：</em>存在 admissible 增长序列 \(N = N(p)\)（满足 \(N/p^2 \to \infty\)）和常数 \(c > 0\)，使得</p>
+        $$\liminf_{p \to \infty} \int_1^{N(p)/p^2} a(t)\, d\mu_{N(p),p}(t) \geq c > 0$$
+      </div>
+
+      <h3>11.3 条件性结论</h3>
+      <div class="milestone-box">
+        <p>若 ratio-mixing lemma 成立：\(\bar{M}_N(p) \to \infty\) → \(\Gamma_p = \bar{M}^2/V \to \infty\) → Cantelli：\(c_p \to 0\) → Harmonic Cesàro Lemma：\(\bar{c}_h \to 0\) → <strong>Ω=2 层闭合。</strong></p>
+      </div>
+
+      <h2>§12 讨论</h2>
+
+      <h3>12.1 Paper XXXIX 的核心贡献</h3>
+      <ul>
+        <li>(a) 发现 \(\bar{M}_N \approx 1.5\) 是 composition shift 伪影；\(M_{\mathrm{loc}}\) 在固定 \(t\) 下有清晰的 \(\ln(p)\) 增长。</li>
+        <li>(b) 识别真正的驱动力：shifted-product deficit，\(h_\tau + h_q > 2h_{pq}\)。</li>
+        <li>(c) 否决 Gemini 的公式——参数识别错误（把 \(pq-1\) 等同于一般整数）。</li>
+        <li>(d) 多尺度外推与 \(h_\tau > h_q > h_{\mathrm{gen}} > h_{pq}\) 一致。</li>
+        <li>(e) Parity 控制实验：deficit 中 parity 占约 54%，beyond-parity 占约 46%，乘法阴影效应超过 3σ。</li>
+        <li>(f) 将 Ω=2 闭合归约为 ratio-mixing lemma。</li>
+      </ul>
+
+      <h3>12.2 距离估计</h3>
+      <p>Ω=2 闭合现在归约为少数精确的解析输入，核心是 ratio-mixing lemma。这是一个比此前任何表述都更精确、更可攻击的问题。</p>
+
+      <h2>§13 数据来源与可重复性</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td>p39_mp_precise_v2.py</td><td>M̄ 全分量，9587 primes，p ≤ 10⁵</td><td>1</td></tr>
+          <tr><td>p39_large_p.py</td><td>M̄ 扩展到 p ~ 10⁷，10000 primes</td><td>2</td></tr>
+          <tr><td>p39_fixed_ratio.py</td><td>M_loc at 固定 t，Exp 1+2</td><td>3</td></tr>
+          <tr><td>p39_hprime.py</td><td>h_prime vs h₀ 多尺度，30 scales</td><td>4</td></tr>
+          <tr><td>p39_crossval.py</td><td>Gemini 公式验证 + ρ(p)=ρ(p-1)+1 + smooth bias</td><td>4b</td></tr>
+          <tr><td>p39_direct_slopes.py</td><td>直接分量斜率，h_tau/h_q/h_pq</td><td>5b</td></tr>
+          <tr><td>p39_hpq_multiscale.py</td><td>h_tau，h_q，h_pq，h_gen 多尺度收敛</td><td>6</td></tr>
+          <tr><td>p39_parity_control.py</td><td>parity 控制：h_pq vs h_even vs h_gen vs h_odd vs h_2prod</td><td>7</td></tr>
+        </tbody>
+      </table>
+      <p>数据：<code>rho_1e10.bin</code>（int16，N = 10¹⁰，<code>rho_dp.c</code>，Paper XXXII convention）。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Papers I–XXXVIII. Paper XXXVIII DOI: <a href="https://doi.org/10.5281/zenodo.19157939" target="_blank" rel="noopener">10.5281/zenodo.19157939</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XXXIV: Upper-Margin Closure and Bounded-Variance. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXI: Queue Isomorphism and Local Lipschitz Reduction. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）发现 int16 格式 bug，设计了 Block 2–3–4b–5b–6–7 实验链（共八个脚本），起草 working notes v1–v5。在 Block 4 给出 h_prime → h₀ 后设计 Block 4b 交叉验证；在 Gemini 公式偏低 ~0.85 后设计 Block 5b 直接分量分析，发现 M_loc slope = h_tau + h_q − 2h_pq 的精确分解；设计 Block 6 多尺度收敛实验。</p>
+      <p>热力学 Claude（另一 thread）指出 Block 2 可能受 composition shift 影响，直接催生了 Block 3。</p>
+      <p>Han Qin（作者）在 Block 4 之后问"我们的数据是对的吗"，催生了 Block 4b，进而揭露 Gemini 公式缺陷，打开了 Block 5b → 6 的整条路径。作者指出"深度优先，先走数据"的方法论方向。</p>
+      <p>公西华（ChatGPT）在 Paper XXXVIII 阶段警告"M_p → ∞ 的推导跳了一步"；在 v2 审阅中提出三层 M 区分、截断窗口修正和 ratio-mixing lemma；在 v4 审阅中发现算术不一致（0.151 → 0.117）、过度声明语言、parity 作为竞争解释，以及 mixing lemma 需要定理级表述——直接催生了 Block 7 和全面修订。</p>
+      <p>子夏（Gemini）推导了公式 M ~ 2(h_prime − h₀)·ln(p)；代数框架正确但参数识别有误，直接导向 Block 4 的测量，并通过其失败揭示了 h_pq 的作用。</p>
+      <p>子贡（Grok）提供了 Lindley 参数估计和系列一致性检验。</p>
+      <p>最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho38.html">← 论文 XXXVIII</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>论文 XL →</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
