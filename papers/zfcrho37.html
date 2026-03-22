@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Entry-Continuation Decomposition and Quantitative Closure of B-C Erosion — ZFCρ Paper XXXVII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XXXVII: Exact three-term decomposition B-C = E_p + C_mult + C_add (machine precision). C_mult drives 72% of B-C erosion. Continuation bias reversal: child ρ diff from -0.59 to +0.96. Rich features explain 45-51%, breaking 20% ceiling.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, entry-continuation decomposition, three-term exact decomposition, continuation bias reversal, matched-scale affine bias">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Entry-Continuation Decomposition and Quantitative Closure of B-C Erosion">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho37.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The Entry-Continuation Decomposition and Quantitative Closure of B-C Erosion",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho37.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19155792"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "entry-continuation decomposition",
+      "three-term exact decomposition", "continuation bias reversal", "matched-scale affine bias"
+    ],
+    "abstract": "Exact three-term decomposition B-C = E_p + C_mult + C_add at machine precision. E_p (entry) is a p-independent constant (5-14% of B-C, contributing 5% of erosion). C_mult (mult continuation) drives 72% of erosion (59-70% of B-C, shrinking -1.39→-0.53). Continuation bias reversal: child ρ difference conditioned on first-move=mult goes from -0.59 (p=101) to +0.96 (p=3001). Rich first-step features explain 45-51%, breaking the 20% ceiling. Matched-scale Δ_penalty is nearly constant (0.698-0.705); B-C erosion is entirely one-sided.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho37.html">
+  <meta name="citation_title" content="The Entry-Continuation Decomposition and Quantitative Closure of B-C Erosion">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19155792">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho37.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XXXVII</div>
+      <h1 class="paper-title">The Entry-Continuation Decomposition and Quantitative Closure of B-C Erosion</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19155792" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19155792
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper XXXVI confirmed that ~80% of B-C comes from global DP path effects. This paper achieves quantitative closure of the B-C erosion mechanism through an exact three-term decomposition \(B\text{-}C = E_p + C_p^{\mathrm{mult}} + C_p^{\mathrm{add}}\).</p>
+        <p><strong>(1)</strong> Entry effect \(E_p\) accounts for only 5–14% of B-C and barely changes with \(p\) (contributing only 5% of the erosion). \(E_p = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}}) \times (\mu_{\mathrm{gen}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\), where \(\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}} \approx 0.14\) is \(p\)-independent.</p>
+        <p><strong>(2)</strong> Mult continuation \(C_{\mathrm{mult}}\) is the body of B-C (59–70%) and drives <strong>72% of the erosion</strong>. \(C_{\mathrm{mult}} = \pi_{\mathrm{aff}} \times (\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\): shifted integers that start with mult are still easier to compress than general ones (\(C_{\mathrm{mult}} < 0\)), but the advantage is shrinking (−1.39 to −0.53).</p>
+        <p><strong>(3)</strong> Add continuation \(C_{\mathrm{add}}\) accounts for 21–29%, driving 23% of erosion.</p>
+        <p><strong>(4)</strong> The decomposition is exact to machine precision (residual = 0.0000).</p>
+        <p><strong>(5)</strong> Rich first-step features explain 27–51% of B-C, breaking the previous 20% low-complexity ceiling. Gain decays with \(p\) (+45% to +6%).</p>
+        <p><strong>(6)</strong> Continuation bias reversal: conditioned on first-move=mult, child \(\rho\) difference goes from −0.59 (\(p=101\)) to +0.96 (\(p=3001\)). Shifted children become <em>harder</em> to compress at large \(p\).</p>
+        <p><strong>(7)</strong> Matched-scale \(\Delta_{\mathrm{penalty}}\) is nearly constant (0.698–0.705) at the \(10^9\)–\(10^{10}\) scale. B-C erosion is entirely one-sided.</p>
+        <p><strong>Keywords:</strong> entry-continuation decomposition, three-term exact decomposition, continuation bias reversal, matched-scale affine bias</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXVI (DOI: 10.5281/zenodo.19153002): 1/φ(m) joint profile, explanation rate plateau (19–24%), cofactor test (~80% global path effect), Route C repositioned to directly prove \(\mu_{\mathrm{aff}} - \mu_{\mathrm{gen}} = O(1)\).</p>
+
+      <h3>1.2 Notation</h3>
+      <ul>
+        <li><strong>A</strong> = \(E[\rho(pq-1)]\) (\(q\) prime), <strong>B</strong> = \(E[\rho(pr-1)]\) (\(r\) random odd, \(\mu_{\mathrm{aff}}\)), <strong>C</strong> = \(E[\rho(\text{random } n)]\) (\(\mu_{\mathrm{gen}}\))</li>
+        <li>\(\pi_{\mathrm{aff}} = P(\text{first-move=mult} \mid pr-1)\), \(\pi_{\mathrm{gen}} = P(\text{first-move=mult} \mid \text{random})\)</li>
+        <li>\(\mu_{\mathrm{aff}}^{\mathrm{mult}}\), \(\mu_{\mathrm{gen}}^{\mathrm{mult}}\) = conditional means given first-move=mult</li>
+        <li>Similarly \(\mu_{\mathrm{aff}}^{\mathrm{add}}\), \(\mu_{\mathrm{gen}}^{\mathrm{add}}\)</li>
+      </ul>
+      <div class="note-box">Different blocks use independent sampling; B-C values for the same \(p\) may show \(O(0.1)\) fluctuations across sections.</div>
+
+      <h3>1.3 Goal</h3>
+      <p>Achieve quantitative causal decomposition of B-C erosion: which term drives it?</p>
+
+      <h2>§2 First-Step Asymmetry: A p-Independent Constant</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>mult% pr-1</th><th>mult% rand</th><th>diff</th></tr></thead>
+        <tbody>
+          <tr><td>29</td><td>0.747</td><td>0.591</td><td>+0.156</td></tr>
+          <tr><td>101</td><td>0.713</td><td>0.594</td><td>+0.119</td></tr>
+          <tr><td>503</td><td>0.730</td><td>0.613</td><td>+0.117</td></tr>
+          <tr><td>1009</td><td>0.734</td><td>0.583</td><td>+0.151</td></tr>
+          <tr><td>2003</td><td>0.740</td><td>0.605</td><td>+0.135</td></tr>
+          <tr><td>3001</td><td>0.714</td><td>0.611</td><td>+0.103</td></tr>
+        </tbody>
+      </table>
+      <p>\(\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}}\) fluctuates between +0.10 and +0.17 with no systematic trend. <strong>First-step asymmetry does not drive B-C erosion.</strong></p>
+
+      <h2>§3 Exact Three-Term Decomposition</h2>
+
+      <h3>3.1 Formula</h3>
+      <p>$$B\text{-}C = E_p + C_p^{\mathrm{mult}} + C_p^{\mathrm{add}}$$</p>
+      <p>where:</p>
+      <ul>
+        <li>\(E_p = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}}) \times (\mu_{\mathrm{gen}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\) — entry effect</li>
+        <li>\(C_{\mathrm{mult}} = \pi_{\mathrm{aff}} \times (\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\) — mult branch continuation</li>
+        <li>\(C_{\mathrm{add}} = (1 - \pi_{\mathrm{aff}}) \times (\mu_{\mathrm{aff}}^{\mathrm{add}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\) — add branch continuation</li>
+      </ul>
+
+      <h3>3.2 Data</h3>
+      <div class="note-box">Three-term decomposition: Block 4 script (integers in PATH_MAX=10⁷ range). Section 7's matched-scale data (pq ~ 10⁹–10¹⁰) uses a different script — B-C values for the same p differ across sections because they measure G(X;p) at different scales, not sampling fluctuations.</div>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>E_p</th><th>C_mult</th><th>C_add</th><th>%E</th><th>%Cm</th><th>%Ca</th></tr></thead>
+        <tbody>
+          <tr><td>29</td><td>−1.79</td><td>−0.14</td><td>−1.19</td><td>−0.46</td><td>8%</td><td>67%</td><td>26%</td></tr>
+          <tr><td>53</td><td>−1.93</td><td>−0.15</td><td>−1.34</td><td>−0.45</td><td>8%</td><td>69%</td><td>23%</td></tr>
+          <tr><td>101</td><td>−2.08</td><td>−0.10</td><td>−1.39</td><td>−0.59</td><td>5%</td><td>67%</td><td>29%</td></tr>
+          <tr><td>211</td><td>−1.88</td><td>−0.13</td><td>−1.32</td><td>−0.44</td><td>7%</td><td>70%</td><td>23%</td></tr>
+          <tr><td>503</td><td>−1.71</td><td>−0.10</td><td>−1.18</td><td>−0.43</td><td>6%</td><td>69%</td><td>25%</td></tr>
+          <tr><td>1009</td><td>−1.30</td><td>−0.12</td><td>−0.90</td><td>−0.27</td><td>10%</td><td>69%</td><td>21%</td></tr>
+          <tr><td>2003</td><td>−0.90</td><td>−0.13</td><td>−0.52</td><td>−0.25</td><td>14%</td><td>59%</td><td>28%</td></tr>
+          <tr><td>3001</td><td>−0.87</td><td>−0.10</td><td>−0.53</td><td>−0.24</td><td>11%</td><td>61%</td><td>28%</td></tr>
+        </tbody>
+      </table>
+      <p>Exact to machine precision (residual = 0.0000 at all \(p\)).</p>
+
+      <h3>3.3 Which Term Drives Erosion?</h3>
+      <table>
+        <thead><tr><th>Term</th><th>Total change</th><th>% of B-C erosion</th></tr></thead>
+        <tbody>
+          <tr><td>E_p (entry)</td><td>+0.048</td><td><strong>5%</strong></td></tr>
+          <tr><td>C_mult (mult cont)</td><td>+0.654</td><td><strong>72%</strong></td></tr>
+          <tr><td>C_add (add cont)</td><td>+0.212</td><td><strong>23%</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>C_mult drives 72% of B-C erosion.</strong> Entry barely changes. B-C erosion is essentially the one-sided decay of mult continuation.</p>
+      </div>
+
+      <h2>§4 Continuation Bias Reversal</h2>
+
+      <h3>4.1 Child ρ Difference Conditioned on first-move=mult</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C | mult</th><th>child diff | mult</th><th>retention</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>−1.90</td><td>−0.59</td><td>31%</td></tr>
+          <tr><td>503</td><td>−1.62</td><td>−0.05</td><td>3%</td></tr>
+          <tr><td>1009</td><td>−1.30</td><td>+0.05</td><td>−4%</td></tr>
+          <tr><td>2003</td><td>−0.76</td><td>+0.42</td><td>−55%</td></tr>
+          <tr><td>3001</td><td>−0.66</td><td>+0.96</td><td>−146%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 Interpretation</h3>
+      <p>After multiplicative splitting, shifted children go from advantage (−0.59) to disadvantage (+0.96). <strong>Continuation bias is not just decaying — it is reversing.</strong> This is the deepest microscopic driver of B-C erosion: within the mult branch, shifted integers' continuation advantage reverses into a penalty.</p>
+
+      <h3>4.3 Consistency with §3</h3>
+      <p>§3 shows \(C_{\mathrm{mult}}\) shrinks from −1.39 to −0.53 (still negative). §4 shows child diff|mult has already turned positive. No contradiction: \(C_{\mathrm{mult}} = \pi_{\mathrm{aff}} \times (\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\) is the weighted overall mult-branch bias (including first-step saving), while child diff|mult is the continuation-only component after removing the first step. The overall mult branch is still favorable (first-step saving persists), but the continuation part has reversed.</p>
+
+      <h2>§5 Rich First-Step Features Break the 20% Ceiling</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>v₂-only expl%</th><th>Rich features expl%</th><th>Gain</th></tr></thead>
+        <tbody>
+          <tr><td>503</td><td>6%</td><td><strong>51%</strong></td><td>+45%</td></tr>
+          <tr><td>1009</td><td>13%</td><td><strong>45%</strong></td><td>+32%</td></tr>
+          <tr><td>2003</td><td>21%</td><td><strong>27%</strong></td><td>+6%</td></tr>
+        </tbody>
+      </table>
+      <p>The previous ~20% ceiling was a low-dimensional artifact. Rich features (7 dimensions: \(v_2\), \(v_3\), is_mult, sf_bin, saving_bin, child_size_bin, n_options; 355 levels) explain 45–51%. Gain decays with \(p\) (+45% to +6%): at large \(p\), rich and simple features converge.</p>
+      <div class="thesis-box">
+        <p>~50% remains unexplained by current binned single-step features. This may come from finer one-step child-state information (exact matching) and/or multi-step continuation accumulation. Distinguishing these two sources is a task for Paper XXXVIII.</p>
+      </div>
+
+      <h2>§6 Memory Retention Rates</h2>
+
+      <h3>6.1 Unconditional Child Retention</h3>
+      <table>
+        <thead><tr><th>p</th><th>orig diff</th><th>child diff</th><th>retention</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>−1.90</td><td>−1.58</td><td>83%</td></tr>
+          <tr><td>503</td><td>−1.61</td><td>−1.52</td><td>94%</td></tr>
+          <tr><td>1009</td><td>−1.49</td><td>−1.24</td><td>83%</td></tr>
+          <tr><td>2003</td><td>−0.81</td><td>−0.75</td><td>93%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 Reconciling Unconditional (83–94%) and Mult-Conditioned (31% to −146%) Retention</h3>
+      <p>Define child-level conditional means: \(\nu_{\mathrm{aff}}^{\mathrm{mult}} = E[\rho(\text{child}) \mid pr-1, \text{first-move=mult}]\), \(\nu_{\mathrm{gen}}^{\mathrm{mult}} = E[\rho(\text{child}) \mid \text{random}, \text{first-move=mult}]\). Let \(\delta_{\mathrm{mult}} = \nu_{\mathrm{aff}}^{\mathrm{mult}} - \nu_{\mathrm{gen}}^{\mathrm{mult}}\), \(\delta_{\mathrm{add}} = \nu_{\mathrm{aff}}^{\mathrm{add}} - \nu_{\mathrm{gen}}^{\mathrm{add}}\). The total child bias decomposes as:</p>
+      <p>$$D_{\mathrm{child}} = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}})(\nu_{\mathrm{gen}}^{\mathrm{mult}} - \nu_{\mathrm{gen}}^{\mathrm{add}}) + \pi_{\mathrm{aff}} \cdot \delta_{\mathrm{mult}} + (1-\pi_{\mathrm{aff}}) \cdot \delta_{\mathrm{add}}$$</p>
+      <p>Unconditional child retention (83–94%) includes the composition advantage (shifted walks mult more often). Mult-conditioned child retention (31% to −146%) isolates the within-branch continuation effect (\(\delta_{\mathrm{mult}}\)). <strong>Total child bias is sustained by entry composition, while within-mult continuation has already reversed. The two forces are in competition.</strong></p>
+
+      <h2>§7 Matched-Scale \(\Delta_{\mathrm{penalty}}\)</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>pq scale</th><th>Δ(pq)</th><th>B-C</th><th>(B-C)/Δ</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>5.0×10⁹</td><td>+0.698</td><td>−1.166</td><td>−1.67</td></tr>
+          <tr><td>5003</td><td>5.0×10⁹</td><td>+0.705</td><td>−1.119</td><td>−1.59</td></tr>
+          <tr><td>20011</td><td>5.2×10⁹</td><td>+0.705</td><td>−0.793</td><td>−1.12</td></tr>
+          <tr><td>50021</td><td>6.2×10⁹</td><td>+0.701</td><td>−0.249</td><td>−0.36</td></tr>
+          <tr><td>70001</td><td>7.4×10⁹</td><td>+0.698</td><td>+0.220</td><td>+0.31</td></tr>
+        </tbody>
+      </table>
+      <p>\(\Delta_{\mathrm{penalty}}\) is nearly constant (0.698–0.705). \((B\text{-}C)/\Delta\) zero-crossing comes entirely from B-C's one-sided erosion.</p>
+
+      <h2>§8 Per-Step Saving and Path-Memory (Auxiliary)</h2>
+
+      <h3>8.1 Per-Step ρ-Saving Difference</h3>
+      <table>
+        <thead><tr><th>p</th><th>E[saving | mult, pr-1]</th><th>E[saving | mult, rand]</th><th>diff</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>1.855</td><td>1.715</td><td>+0.14</td></tr>
+          <tr><td>503</td><td>1.802</td><td>1.747</td><td>+0.06</td></tr>
+          <tr><td>1009</td><td>1.762</td><td>1.695</td><td>+0.07</td></tr>
+          <tr><td>2003</td><td>1.773</td><td>1.691</td><td>+0.08</td></tr>
+        </tbody>
+      </table>
+      <p>Per-step \(\rho\)-saving difference ~0.07 (pr-1 vs random, conditional on mult). As a dimensional heuristic, B-C of −1 to −2 corresponds to roughly 15–25 steps of accumulation, but this is not a precise dynamical conclusion.</p>
+
+      <h3>8.2 Path-Memory Decay (Auxiliary)</h3>
+      <table>
+        <thead><tr><th>p</th><th>t=0 diff</th><th>t=1 (frac)</th><th>t=2 (frac)</th></tr></thead>
+        <tbody>
+          <tr><td>503</td><td>−1.29</td><td>−0.87 (68%)</td><td>−0.50 (39%)</td></tr>
+        </tbody>
+      </table>
+      <p>Preliminary decay signal but noisy (500 samples, PATH_MAX=10⁷). Auxiliary evidence only.</p>
+
+      <h2>§9 Complete Picture</h2>
+
+      <h3>9.1 Quantitative Causal Chain (First-Order Decomposition Closed)</h3>
+      <p><strong>(a) Entry \(E_p\) (5–14% of B-C, nearly constant):</strong> \(\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}} \approx 0.14\). Does not drive erosion. Contributes 5%.</p>
+      <p><strong>(b) Mult continuation \(C_{\mathrm{mult}}\) (59–70%, drives 72% of erosion):</strong> Shifted integers starting with mult are still easier to compress (\(C_{\mathrm{mult}} < 0\)), but the advantage shrinks −1.39 to −0.53. At child level, continuation-only part has already reversed (−0.59 to +0.96).</p>
+      <p><strong>(c) Add continuation \(C_{\mathrm{add}}\) (21–29%, drives 23% of erosion):</strong> Similar to \(C_{\mathrm{mult}}\) but smaller.</p>
+      <div class="milestone-box">
+        <p><strong>B-C = E_p + C_mult + C_add. Erosion = 95% continuation (72% mult + 23% add) + 5% entry.</strong></p>
+      </div>
+
+      <h3>9.2 Route C Status</h3>
+      <table>
+        <thead><tr><th>Component</th><th>Status</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><td>1/φ(m) source law</td><td>Exactly verified</td><td>XXXVI</td></tr>
+          <tr><td>Entry E_p</td><td>Constant, does not drive erosion</td><td>XXXVII</td></tr>
+          <tr><td>C_mult</td><td>Body (67–70%), drives 72% of erosion</td><td>XXXVII</td></tr>
+          <tr><td>C_add</td><td>Secondary (21–29%), drives 23% of erosion</td><td>XXXVII</td></tr>
+          <tr><td>Continuation bias</td><td>Reversed (child diff +0.96 at p=3001)</td><td>XXXVII</td></tr>
+          <tr><td>G(X;p)</td><td>One-sidedly eroding through zero</td><td>XXXVI–XXXVII</td></tr>
+          <tr><td>Δ(pq)</td><td>Constant in current window (~0.70)</td><td>XXXVII</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.3 Route C Step 2b Precise Target</h3>
+      <p>Define \(G(X;p) := \mu_{\mathrm{aff}}(X;p) - \mu_{\mathrm{gen}}(X)\).</p>
+      <div class="thesis-box">
+        <p><strong>Target:</strong> Prove \(G = O(1)\), or \(G \to 0\), or at least \(G = o(\Delta_{\mathrm{penalty}})\).</p>
+        <p>Route C now splits into two independent tasks: (a) prove \(G = O(1)\) — boundedness of continuation bias; (b) prove \(\Delta_{\mathrm{penalty}} \to \infty\) — independent of (a).</p>
+      </div>
+      <p>Current data: \(G\) erodes through zero one-sidedly while \(\Delta\) is constant. First-order causal structure fully identified. Quantitative decomposition complete.</p>
+
+      <h2>§10 Discussion</h2>
+
+      <h3>10.1 Core Contributions</h3>
+      <p>(a) Exact three-term decomposition (machine precision). (b) \(C_{\mathrm{mult}}\) drives 72% of erosion. (c) Continuation bias reversal. (d) Rich features break 20% ceiling (45–51%). (e) Unified interpretation of retention rates. (f) Entry is constant background; continuation is the erosion engine.</p>
+
+      <h3>10.2 Progress Table</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th><th>XXXVI</th><th>XXXVII</th></tr></thead>
+        <tbody>
+          <tr><td>Bound</td><td>Lower</td><td>Upper</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>V(p)</td><td>—</td><td>O(1)</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Mechanism</td><td>Drift</td><td>Chase</td><td>Reversal</td><td>1/φ+global</td><td>3-term decomp</td></tr>
+          <tr><td>B-C</td><td>—</td><td>—</td><td>Shifted</td><td>20%L+80%G</td><td>E5%+Cm72%+Ca23%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>10.3 Open Problems</h3>
+      <p>(1) Can \(C_{\mathrm{mult}}\)'s decay rate be rigorized? (2) What is the algebraic mechanism of continuation reversal? (3) Does \(\Delta_{\mathrm{penalty}}\) grow at \(10^{11}\)–\(10^{12}\)? (4) Prove \(G = O(1)\) via contraction of the continuation bias operator.</p>
+
+      <h2>§11 Data Sources</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th></tr></thead>
+        <tbody>
+          <tr><td>p37_path_memory.py</td><td>Path-memory, first-move (4p), matched-scale Δ</td></tr>
+          <tr><td>p37_first_move.py</td><td>First-move extended (8p), conditioning, sf, saving</td></tr>
+          <tr><td>p37_rich_features.py</td><td>Rich features, continuation-state, child retention</td></tr>
+          <tr><td>p37_three_term.py</td><td>Exact three-term decomposition</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXVI. Paper XXXVI DOI: 10.5281/zenodo.19153002. Paper XXXV DOI: 10.5281/zenodo.19143732. Paper XXXIV DOI: 10.5281/zenodo.19140015.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (Zilu) wrote all numerical scripts, drafted working notes v1–v2 and the formal text, discovered first-move p-invariance and the rich-feature ceiling breakthrough. ChatGPT (Gongxihua) proposed the exact three-term decomposition formula \(B\text{-}C = E_p + C_{\mathrm{mult}} + C_{\mathrm{add}}\), corrected v1's "bounded memory" overclaim, suggested the rich feature experiment and entry/continuation causal decomposition. Gemini (Zixia) contributed the geometric decay model (\(\gamma \approx 0.20\)) and the interpretation "memory did not reverse; the penalty became visible." Grok (Zigong) confirmed Lindley consistency and identified the matched-scale Δ flatness as consistent with Paper XXXIV. The final text was independently completed by the author.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho36.html">← Paper XXXVI: The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects</a>
+        &nbsp;|&nbsp;
+        Paper XXXVIII →
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XXXVII</div>
+      <h1 class="paper-title">Entry-Continuation 分解与 B-C 侵蚀的定量闭合</h1>
+      <div class="paper-authors">Han Qin（秦汉） &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19155792" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19155792
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper XXXVI 确认 B-C 的 80% 来自全局 DP 路径效应。本文通过精确的三项分解 \(B\text{-}C = E_p + C_p^{\mathrm{mult}} + C_p^{\mathrm{add}}\)，完成了 B-C 侵蚀机制的定量闭合。</p>
+        <p><strong>(1)</strong> Entry effect \(E_p\) 仅占 B-C 的 5–14%，且几乎不随 \(p\) 变化（仅贡献侵蚀的 5%）。\(E_p = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}}) \times (\mu_{\mathrm{gen}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\)，其中 \(\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}} \approx 0.14\) 是 \(p\)-independent 常数。</p>
+        <p><strong>(2)</strong> Mult continuation \(C_{\mathrm{mult}}\) 是 B-C 的主体（59–70%），且驱动了<strong>侵蚀的 72%</strong>。\(C_{\mathrm{mult}} = \pi_{\mathrm{aff}} \times (\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\)：以乘法开局的 shifted 整数仍比一般整数更易压缩（\(C_{\mathrm{mult}} < 0\)），但优势在缩小（−1.39 → −0.53）。</p>
+        <p><strong>(3)</strong> Add continuation \(C_{\mathrm{add}}\) 占 21–29%，驱动了侵蚀的 23%。</p>
+        <p><strong>(4)</strong> 分解精确到机器精度（残差 = 0）。</p>
+        <p><strong>(5)</strong> Rich first-step features（\(v_2\), \(v_3\), is_mult, sf_bin, saving_bin, child_size_bin, n_options）能解释 27–51% 的 B-C，打破了之前的 20% low-complexity ceiling。</p>
+        <p><strong>(6)</strong> Continuation bias 穿零反转：条件化 first-move=mult 后，child 的 \(\rho\) 差从 −0.59（\(p=101\)）变为 +0.96（\(p=3001\)）。shifted 的 child 在大 \(p\) 端比一般整数更难压缩。</p>
+        <p><strong>(7)</strong> Matched-scale \(\Delta_{\mathrm{penalty}}\) 在 \(10^9\)–\(10^{10}\) 尺度上几乎不变（0.698–0.705）。B-C 的侵蚀是单方面的。</p>
+        <p><strong>关键词：</strong>entry-continuation 分解，三项精确分解，continuation bias 反转，matched-scale affine bias，first-step 不变性</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXVI (DOI: 10.5281/zenodo.19153002)：1/φ(m) 联合 profile，解释率平台化（19–24%），cofactor 测试（~80% 全局路径效应），Route C 重新定位为直接证明 \(\mu_{\mathrm{aff}} - \mu_{\mathrm{gen}} = O(1)\)。</p>
+
+      <h3>1.2 记号约定</h3>
+      <ul>
+        <li><strong>A</strong> = \(E[\rho(pq-1)]\)（\(q\) 素数），<strong>B</strong> = \(E[\rho(pr-1)]\)（\(r\) 随机奇数，\(\mu_{\mathrm{aff}}\)），<strong>C</strong> = \(E[\rho(\text{random } n)]\)（\(\mu_{\mathrm{gen}}\)）</li>
+        <li>\(\pi_{\mathrm{aff}} = P(\text{first-move=mult} \mid pr-1)\)，\(\pi_{\mathrm{gen}} = P(\text{first-move=mult} \mid \text{random})\)</li>
+        <li>\(\mu_{\mathrm{aff}}^{\mathrm{mult}} = E[\rho(pr-1) \mid \text{first-move=mult}]\)，\(\mu_{\mathrm{gen}}^{\mathrm{mult}} = E[\rho(\text{random}) \mid \text{first-move=mult}]\)</li>
+        <li>同理 \(\mu_{\mathrm{aff}}^{\mathrm{add}}\)，\(\mu_{\mathrm{gen}}^{\mathrm{add}}\)</li>
+      </ul>
+      <div class="note-box">不同 Block 使用独立随机采样，同一 \(p\) 在不同节的 B-C 可能有 \(O(0.1)\) 采样波动。</div>
+
+      <h3>1.3 目标</h3>
+      <p>完成 B-C 侵蚀的定量因果分解：哪个 term 驱动了侵蚀？</p>
+
+      <h2>§2 First-Step Asymmetry：p-Independent 常数</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>mult% pr-1</th><th>mult% rand</th><th>diff</th></tr></thead>
+        <tbody>
+          <tr><td>29</td><td>0.747</td><td>0.591</td><td>+0.156</td></tr>
+          <tr><td>101</td><td>0.713</td><td>0.594</td><td>+0.119</td></tr>
+          <tr><td>503</td><td>0.730</td><td>0.613</td><td>+0.117</td></tr>
+          <tr><td>1009</td><td>0.734</td><td>0.583</td><td>+0.151</td></tr>
+          <tr><td>2003</td><td>0.740</td><td>0.605</td><td>+0.135</td></tr>
+          <tr><td>3001</td><td>0.714</td><td>0.611</td><td>+0.103</td></tr>
+        </tbody>
+      </table>
+      <p>\(\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}}\) 在 +0.10 到 +0.17 之间波动，无系统性趋势。<strong>First-step asymmetry 是 p-independent 的，不驱动 B-C 侵蚀。</strong></p>
+
+      <h2>§3 精确三项分解</h2>
+
+      <h3>3.1 公式</h3>
+      <p>$$B\text{-}C = E_p + C_p^{\mathrm{mult}} + C_p^{\mathrm{add}}$$</p>
+      <p>其中：</p>
+      <ul>
+        <li>\(E_p = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}}) \times (\mu_{\mathrm{gen}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\) ——入口效应</li>
+        <li>\(C_{\mathrm{mult}} = \pi_{\mathrm{aff}} \times (\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\) ——mult 分支的 continuation 效应</li>
+        <li>\(C_{\mathrm{add}} = (1 - \pi_{\mathrm{aff}}) \times (\mu_{\mathrm{aff}}^{\mathrm{add}} - \mu_{\mathrm{gen}}^{\mathrm{add}})\) ——add 分支的 continuation 效应</li>
+      </ul>
+
+      <h3>3.2 数据</h3>
+      <div class="note-box">以下三项分解使用 p37_three_term.py（Block 4，PATH_MAX=10⁷ 范围内的整数，独立采样）。注意：§7 的 matched-scale 数据来自不同脚本（p37_path_memory.py，pq ~ 10⁹–10¹⁰ 尺度），因此同一 p 的 B-C 值不同——两者测的是不同尺度的 G(X;p)，不是采样波动。</div>
+      <table>
+        <thead><tr><th>p</th><th>B-C</th><th>E_p</th><th>C_mult</th><th>C_add</th><th>%E</th><th>%Cm</th><th>%Ca</th></tr></thead>
+        <tbody>
+          <tr><td>29</td><td>−1.79</td><td>−0.14</td><td>−1.19</td><td>−0.46</td><td>8%</td><td>67%</td><td>26%</td></tr>
+          <tr><td>53</td><td>−1.93</td><td>−0.15</td><td>−1.34</td><td>−0.45</td><td>8%</td><td>69%</td><td>23%</td></tr>
+          <tr><td>101</td><td>−2.08</td><td>−0.10</td><td>−1.39</td><td>−0.59</td><td>5%</td><td>67%</td><td>29%</td></tr>
+          <tr><td>211</td><td>−1.88</td><td>−0.13</td><td>−1.32</td><td>−0.44</td><td>7%</td><td>70%</td><td>23%</td></tr>
+          <tr><td>503</td><td>−1.71</td><td>−0.10</td><td>−1.18</td><td>−0.43</td><td>6%</td><td>69%</td><td>25%</td></tr>
+          <tr><td>1009</td><td>−1.30</td><td>−0.12</td><td>−0.90</td><td>−0.27</td><td>10%</td><td>69%</td><td>21%</td></tr>
+          <tr><td>2003</td><td>−0.90</td><td>−0.13</td><td>−0.52</td><td>−0.25</td><td>14%</td><td>59%</td><td>28%</td></tr>
+          <tr><td>3001</td><td>−0.87</td><td>−0.10</td><td>−0.53</td><td>−0.24</td><td>11%</td><td>61%</td><td>28%</td></tr>
+        </tbody>
+      </table>
+      <p>分解精确到机器精度（残差 = 0.0000）。</p>
+
+      <h3>3.3 谁驱动了 B-C 侵蚀？</h3>
+      <table>
+        <thead><tr><th>Term</th><th>总变化</th><th>占 B-C 侵蚀的比例</th></tr></thead>
+        <tbody>
+          <tr><td>E_p (entry)</td><td>+0.048</td><td><strong>5%</strong></td></tr>
+          <tr><td>C_mult (mult cont)</td><td>+0.654</td><td><strong>72%</strong></td></tr>
+          <tr><td>C_add (add cont)</td><td>+0.212</td><td><strong>23%</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="milestone-box">
+        <p><strong>C_mult 驱动了 B-C 侵蚀的 72%。</strong>Entry 几乎不变。B-C 的侵蚀本质上是 mult continuation 的单方面退化。</p>
+      </div>
+
+      <h2>§4 Continuation Bias 的穿零反转</h2>
+
+      <h3>4.1 条件化 first-move=mult 后的 child ρ 差</h3>
+      <table>
+        <thead><tr><th>p</th><th>B-C | mult</th><th>child diff | mult</th><th>retention</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>−1.90</td><td>−0.59</td><td>31%</td></tr>
+          <tr><td>503</td><td>−1.62</td><td>−0.05</td><td>3%</td></tr>
+          <tr><td>1009</td><td>−1.30</td><td>+0.05</td><td>−4%</td></tr>
+          <tr><td>2003</td><td>−0.76</td><td>+0.42</td><td>−55%</td></tr>
+          <tr><td>3001</td><td>−0.66</td><td>+0.96</td><td>−146%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 解读</h3>
+      <p>乘法分裂后，shifted 的 child 从优势（−0.59）变为劣势（+0.96）。<strong>Continuation bias 不只是在衰减——它在反转。</strong>这是 B-C 侵蚀最深层的微观驱动力：在 mult 分支内部，shifted 整数的 continuation 优势反转为惩罚。</p>
+
+      <h3>4.3 与 §3 的一致性</h3>
+      <p>§3 显示 \(C_{\mathrm{mult}}\) 从 −1.39 缩到 −0.53（仍为负）。§4 显示 child diff|mult 已经变正。两者不矛盾：\(C_{\mathrm{mult}} = \pi_{\mathrm{aff}} \times (\mu_{\mathrm{aff}}^{\mathrm{mult}} - \mu_{\mathrm{gen}}^{\mathrm{mult}})\) 是加权后的整体 mult-branch 偏差（含第一步 saving），而 child diff|mult 是去掉第一步 saving 后的 continuation-only 部分。整体 mult-branch 仍为负（第一步的 saving 仍然存在），但 continuation 部分已经反转。</p>
+
+      <h2>§5 Rich First-Step Features 打破 20% Ceiling</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>v₂-only expl%</th><th>Rich features expl%</th><th>Gain</th></tr></thead>
+        <tbody>
+          <tr><td>503</td><td>6%</td><td><strong>51%</strong></td><td>+45%</td></tr>
+          <tr><td>1009</td><td>13%</td><td><strong>45%</strong></td><td>+32%</td></tr>
+          <tr><td>2003</td><td>21%</td><td><strong>27%</strong></td><td>+6%</td></tr>
+        </tbody>
+      </table>
+      <p>之前的 ~20% ceiling 只是低维特征的天花板。Rich features（7 维，355 个 levels）能解释 45–51%。但 gain 随 \(p\) 衰减（+45% → +6%）：在大 \(p\) 端 rich 和 simple 趋于等效。</p>
+      <div class="thesis-box">
+        <p>仍有 ~50% 无法被当前 binned 单步特征解释——这部分可能来自更精细的单步后状态信息（exact child-state matching）和/或多步 continuation 的累积效应。区分这两种来源是 Paper XXXVIII 的任务。</p>
+      </div>
+
+      <h2>§6 记忆保持率</h2>
+
+      <h3>6.1 无条件 Child Retention</h3>
+      <table>
+        <thead><tr><th>p</th><th>orig diff</th><th>child diff</th><th>retention</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>−1.90</td><td>−1.58</td><td>83%</td></tr>
+          <tr><td>503</td><td>−1.61</td><td>−1.52</td><td>94%</td></tr>
+          <tr><td>1009</td><td>−1.49</td><td>−1.24</td><td>83%</td></tr>
+          <tr><td>2003</td><td>−0.81</td><td>−0.75</td><td>93%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 Block B vs Block C 的统一解读</h3>
+      <p>定义 child-level 条件均值：\(\nu_{\mathrm{aff}}^{\mathrm{mult}} = E[\rho(\text{child}) \mid pr-1, \text{first-move=mult}]\)，\(\nu_{\mathrm{gen}}^{\mathrm{mult}} = E[\rho(\text{child}) \mid \text{random}, \text{first-move=mult}]\)，令 \(\delta_{\mathrm{mult}} = \nu_{\mathrm{aff}}^{\mathrm{mult}} - \nu_{\mathrm{gen}}^{\mathrm{mult}}\)，\(\delta_{\mathrm{add}} = \nu_{\mathrm{aff}}^{\mathrm{add}} - \nu_{\mathrm{gen}}^{\mathrm{add}}\)。总 child bias 分解为：</p>
+      <p>$$D_{\mathrm{child}} = (\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}})(\nu_{\mathrm{gen}}^{\mathrm{mult}} - \nu_{\mathrm{gen}}^{\mathrm{add}}) + \pi_{\mathrm{aff}} \cdot \delta_{\mathrm{mult}} + (1-\pi_{\mathrm{aff}}) \cdot \delta_{\mathrm{add}}$$</p>
+      <p>无条件 child retention（83–94%）包含了 composition advantage（shifted 更常走 mult）。Mult-conditioned child retention（31% → −146%）是 within-mult continuation only（\(\delta_{\mathrm{mult}}\) 部分）。<strong>总 child bias 被 entry composition 撑住（高 retention），但 within-mult continuation 已经反向。两股力在对抗。</strong></p>
+
+      <h2>§7 Matched-Scale \(\Delta_{\mathrm{penalty}}\)</h2>
+
+      <table>
+        <thead><tr><th>p</th><th>pq scale</th><th>Δ(pq)</th><th>B-C</th><th>(B-C)/Δ</th></tr></thead>
+        <tbody>
+          <tr><td>53</td><td>5.0×10⁹</td><td>+0.698</td><td>−1.166</td><td>−1.67</td></tr>
+          <tr><td>5003</td><td>5.0×10⁹</td><td>+0.705</td><td>−1.119</td><td>−1.59</td></tr>
+          <tr><td>20011</td><td>5.2×10⁹</td><td>+0.705</td><td>−0.793</td><td>−1.12</td></tr>
+          <tr><td>50021</td><td>6.2×10⁹</td><td>+0.701</td><td>−0.249</td><td>−0.36</td></tr>
+          <tr><td>70001</td><td>7.4×10⁹</td><td>+0.698</td><td>+0.220</td><td>+0.31</td></tr>
+        </tbody>
+      </table>
+      <p>\(\Delta_{\mathrm{penalty}}\) 几乎不变（0.698–0.705）。\((B\text{-}C)/\Delta\) 的穿零完全来自 B-C 的单方面侵蚀。</p>
+
+      <h2>§8 每步 Saving 与 Path-Memory（辅助材料）</h2>
+
+      <h3>8.1 每步 ρ-Saving 差异</h3>
+      <table>
+        <thead><tr><th>p</th><th>E[saving | mult, pr-1]</th><th>E[saving | mult, rand]</th><th>diff</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>1.855</td><td>1.715</td><td>+0.14</td></tr>
+          <tr><td>503</td><td>1.802</td><td>1.747</td><td>+0.06</td></tr>
+          <tr><td>1009</td><td>1.762</td><td>1.695</td><td>+0.07</td></tr>
+          <tr><td>2003</td><td>1.773</td><td>1.691</td><td>+0.08</td></tr>
+        </tbody>
+      </table>
+      <p>每步 \(\rho\)-saving 差异 ~0.07，而 B-C ~ −1 到 −2。作为量纲估计（heuristic），这暗示 B-C 对应约 15–25 步递推的累积，但这不是精确的动力学结论。</p>
+
+      <h3>8.2 Path-Memory Decay（辅助材料）</h3>
+      <table>
+        <thead><tr><th>p</th><th>t=0 diff</th><th>t=1 (frac)</th><th>t=2 (frac)</th></tr></thead>
+        <tbody>
+          <tr><td>503</td><td>−1.29</td><td>−0.87 (68%)</td><td>−0.50 (39%)</td></tr>
+        </tbody>
+      </table>
+      <p>有衰减信号但噪声大（每组 500 样本，PATH_MAX=10⁷）。作为辅助证据，不作核心论证。</p>
+
+      <h2>§9 综合图景</h2>
+
+      <h3>9.1 定量因果链（一阶分解已闭合）</h3>
+      <p><strong>(a) Entry \(E_p\)（5–14% of B-C，几乎不变）：</strong>\(\pi_{\mathrm{aff}} - \pi_{\mathrm{gen}} \approx 0.14\) 常数。不驱动侵蚀。贡献 5%。</p>
+      <p><strong>(b) Mult continuation \(C_{\mathrm{mult}}\)（59–70% of B-C，驱动 72% 侵蚀）：</strong>以乘法开局的 shifted 整数仍比一般整数更易压缩（\(C_{\mathrm{mult}} < 0\)），但优势在缩小（−1.39 → −0.53）。在 child 层，continuation-only 部分已反转（−0.59 → +0.96）。</p>
+      <p><strong>(c) Add continuation \(C_{\mathrm{add}}\)（21–29% of B-C，驱动 23% 侵蚀）：</strong>类似 \(C_{\mathrm{mult}}\) 但较小。</p>
+      <div class="milestone-box">
+        <p><strong>B-C = E_p + C_mult + C_add。侵蚀 = 95% continuation（72% mult + 23% add）+ 5% entry。</strong></p>
+      </div>
+
+      <h3>9.2 Route C 的当前状态</h3>
+      <table>
+        <thead><tr><th>组件</th><th>状态</th><th>证据</th></tr></thead>
+        <tbody>
+          <tr><td>1/φ(m) source law</td><td>精确验证</td><td>XXXVI</td></tr>
+          <tr><td>Entry E_p</td><td>常数，不驱动侵蚀</td><td>XXXVII</td></tr>
+          <tr><td>C_mult</td><td>主体（67–70%），驱动 72% 侵蚀</td><td>XXXVII</td></tr>
+          <tr><td>C_add</td><td>次要（21–29%），驱动 23% 侵蚀</td><td>XXXVII</td></tr>
+          <tr><td>Continuation bias</td><td>反转（child diff +0.96 at p=3001）</td><td>XXXVII</td></tr>
+          <tr><td>G(X;p)</td><td>在单方面侵蚀穿零</td><td>XXXVI–XXXVII</td></tr>
+          <tr><td>Δ(pq)</td><td>当前窗口不变（~0.70）</td><td>XXXVII</td></tr>
+        </tbody>
+      </table>
+
+      <h3>9.3 Route C Step 2b 的精确目标</h3>
+      <p>定义 \(G(X;p) := \mu_{\mathrm{aff}}(X;p) - \mu_{\mathrm{gen}}(X)\)。</p>
+      <div class="thesis-box">
+        <p><strong>目标：</strong>证明 \(G = O(1)\)，或 \(G \to 0\)，或至少 \(G = o(\Delta_{\mathrm{penalty}})\)。</p>
+        <p><strong>Route C 现在拆成两件独立的事：</strong>(a) 证明 \(G = O(1)\)——continuation bias 的有界性；(b) 证明 \(\Delta_{\mathrm{penalty}} \to \infty\)——独立于 (a)。</p>
+      </div>
+      <p>当前数据：\(G\) 在单方面侵蚀穿零，\(\Delta\) 不变。一阶因果结构完全清晰（entry 常数，continuation 退化）。定量分解完成（三项精确，72% 由 \(C_{\mathrm{mult}}\) 驱动）。</p>
+
+      <h2>§10 讨论</h2>
+
+      <h3>10.1 核心贡献</h3>
+      <p>(a) 精确三项分解 \(B\text{-}C = E_p + C_{\mathrm{mult}} + C_{\mathrm{add}}\)（机器精度）。(b) \(C_{\mathrm{mult}}\) 驱动 72% 的侵蚀——定量闭合。(c) Continuation bias 穿零反转。(d) Rich features 打破 20% ceiling（达 51%）。(e) 记忆保持率 83–94%（无条件）vs 反转（mult-conditioned）的统一解读。(f) Entry 是常数背景，continuation 是侵蚀的发动机。</p>
+
+      <h3>10.2 从 XXXIII 到 XXXVII</h3>
+      <table>
+        <thead><tr><th></th><th>XXXIII</th><th>XXXIV</th><th>XXXV</th><th>XXXVI</th><th>XXXVII</th></tr></thead>
+        <tbody>
+          <tr><td>界</td><td>下界</td><td>上界</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>V(p)</td><td>—</td><td>O(1)</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>机制</td><td>漂移</td><td>追赶</td><td>优势反转</td><td>1/φ(m)+全局路径</td><td>三项分解</td></tr>
+          <tr><td>B-C</td><td>—</td><td>—</td><td>shifted 结构</td><td>20%local+80%global</td><td>E5%+Cm72%+Ca23%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>10.3 距离估计</h3>
+      <p>B-C 侵蚀的一阶因果结构已清晰，定量分解完成。Route C 的 Step 2b 现在是一个精确的对象：证明 matched-scale affine-ensemble bias \(G(X;p)\) 有界。完整的定量闭合（区分 finer one-step state vs multi-step continuation 的贡献）留待下一篇。</p>
+
+      <h3>10.4 开放问题</h3>
+      <p>(1) \(C_{\mathrm{mult}}\) 的退化速率能否严格化？（连接到 DP 最优路径的渐近理论）<br>
+      (2) Continuation bias 反转（child diff 穿零）的代数机制是什么？<br>
+      (3) \(\Delta_{\mathrm{penalty}}\) 在 \(10^{11}\)–\(10^{12}\) 尺度上是否开始增长？<br>
+      (4) \(G = O(1)\) 的证明——continuation bias operator 的收缩性。</p>
+
+      <h2>§11 数据来源</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th></tr></thead>
+        <tbody>
+          <tr><td>p37_path_memory.py</td><td>Path-memory decay, first-move (4 primes), matched-scale Δ</td></tr>
+          <tr><td>p37_first_move.py</td><td>First-move 扩展 (8 primes), conditioning, smallest factor, saving</td></tr>
+          <tr><td>p37_rich_features.py</td><td>Rich features, continuation-state, child retention</td></tr>
+          <tr><td>p37_three_term.py</td><td>精确三项分解 \(E_p + C_{\mathrm{mult}} + C_{\mathrm{add}}\)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] ZFCρ Papers I–XXXVI. Paper XXXVI DOI: 10.5281/zenodo.19153002. Paper XXXV DOI: 10.5281/zenodo.19143732.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）编写全部数值脚本，起草 working notes v1–v2 和正文，发现了 first-move 差距的 p-不变性和 rich features 打破 20% ceiling。ChatGPT（公西华）提出了精确三项分解公式 \(B\text{-}C = E_p + C_{\mathrm{mult}} + C_{\mathrm{add}}\)，修正了 v1 的"有界深度记忆"overclaim，建议了 rich feature 实验和 entry/continuation 因果分解。Gemini（子夏）贡献了几何衰减模型（\(\gamma \approx 0.20\)）和"记忆没有反转，是惩罚在显化"的解释。Grok（子贡）确认了与 Lindley 框架的一致性，指出 matched-scale Δ 的平坦性与 Paper XXXIV 斜率的关系。最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho36.html">← 论文 XXXVI：1/φ(m) Local Model、解释率平台化与全局 DP 路径效应</a>
+        &nbsp;|&nbsp;
+        论文 XXXVIII →
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
