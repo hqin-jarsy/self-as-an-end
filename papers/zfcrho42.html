@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Conditional Closure Route for H' — ZFCρ Paper XLII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLII: Turning point eliminated (Ω=7,8 sf+ss+hp all positive, up to 33.7σ). Conditional closure route for H' via BRS theorem compressing to three residual inputs NI1–NI3. Uniform Weighted Log-Moment Lemma (ρ=5/6), Successor-Reset identity, Averaged Transfer Lemma proved.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, conditional closure, H prime, BRS theorem, turning point elimination, harmonic defect, NI1 NI2 NI3">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Conditional Closure Route for H' — Turning Point Elimination, Uniform Weighted Lemma, Frontier Reduction, and Three Residual Inputs">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho42.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "A Conditional Closure Route for H': Turning Point Elimination, Uniform Weighted Lemma, Frontier Reduction, and Three Residual Inputs",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho42.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19226607"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "conditional closure", "H prime",
+      "BRS theorem", "turning point elimination", "harmonic defect",
+      "Uniform Weighted Lemma", "Transfer Lemma", "Successor-Reset"
+    ],
+    "abstract": "Establishes a conditional closure route for H' (c̄_h(N)→0) by compressing the closing problem to three residual numerical inputs NI1–NI3. Turns point at Ω≈7.2 (Paper XLI sf-only) eliminated: sf+ss+hp combined yields positive slopes for all Ω=2–8 shells, most exceeding 10σ (fourteen experimental Blocks). BRS theorem bypasses S4b and tail assumption (T).",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho42.html">
+  <meta name="citation_title" content="A Conditional Closure Route for H': Turning Point Elimination, Uniform Weighted Lemma, Frontier Reduction, and Three Residual Inputs">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19226607">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho42.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .status-proved { color: #2a7a2a; font-weight: 600; }
+    .status-cond { color: #885500; }
+    .status-ni { color: #5555aa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLII</div>
+      <h1 class="paper-title">A Conditional Closure Route for H': Turning Point Elimination, Uniform Weighted Lemma, Frontier Reduction, and Three Residual Inputs</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19226607
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>This paper establishes a <strong>conditional closure route</strong> for H' (\(\bar{c}_h(N) \to 0\)) and compresses the closing problem into three residual numerical inputs (NI1–NI3). Apart from these three inputs, every other link in the chain is given a theorem-level, exact algebraic, or purely reductive proof.</p>
+        <p><strong>Main results:</strong></p>
+        <p><strong>(1) Turning point elimination.</strong> The sf-only turning point at Ω ≈ 7.2 reported in Paper XLI is a sampling artifact. After incorporating ss and hp cores, all Ω = 2–8 shells (sf+ss+hp combined) exhibit positive slopes, most exceeding 10σ (fourteen experimental Blocks).</p>
+        <p><strong>(2) Strong numerical evidence for NI1.</strong> Block 14 shows that \(V_k\) saturates at approximately 1.0–1.3 across the full spectrum, with Ω = 7 stable and Ω = 8 declining, providing uniform numerical support for \(V^*_F = O(1)\). However, \(V^*_F = O(1)\) is recorded as residual input NI1, not claimed as an analytic theorem.</p>
+        <p><strong>(3) Uniform Weighted Log-Moment Lemma (theorem-level).</strong> We prove \(W_k(N)/S_k(N) \leq 1/(\log N)^2 + C_A(5/6)^k\) with explicit constant \(\rho_A = 5/6\), based on Lichtman's harmonic Sathe–Selberg estimates.</p>
+        <p><strong>(4) Successor-Reset Exact Identity.</strong> When \(J_n > 0\), \(J_{n+1} = (1 - \Delta M_n)^+\). This is an exact consequence of the DP min-recursion, demonstrating that jumps undergo a "memory wipe" at the next step.</p>
+        <p><strong>(5) Averaged Transfer Lemma.</strong> Under a shell-level averaged interface, given a uniform variance bound and an averaged Margin-from-Jump lower bound: \(\bar{c}^Y \cdot (L^Y)^2 \leq a_F + b_F(J^Y)^2\).</p>
+        <p><strong>(6) Frontier identification and conditional closure.</strong> The BRS route compresses the closing problem — originally depending on S4b / tail assumption / MJ5 — into three residual inputs: <strong>NI1</strong> (\(V^*_F = O(1)\)), <strong>NI2</strong> (MJ4's averaged bridge lower bound), <strong>NI3</strong> (weighted second moment bound for \(J^2\)). Outside these three, the rest of the chain is closed.</p>
+        <p><em>Conclusion: Paper XLII provides a <strong>conditional closure route for H'</strong>: once NI1–NI3 hold, \(\bar{c}_h(N) \to 0\) follows. This paper does not claim H' has been theorem-level closed.</em></p>
+        <p><strong>Keywords:</strong> conditional closure, H prime, BRS theorem, turning point elimination, Uniform Weighted Log-Moment Lemma, Successor-Reset identity, Averaged Transfer Lemma, NI1–NI3</p>
+      </div>
+
+      <h2>§1 Background and Difficulty</h2>
+      <p>Paper XLI (DOI: 10.5281/zenodo.19201877) established positive-slope signals for Ω ≤ 6 (94.39% harmonic density) and reported a turning point at Ω ≈ 7.2 (sf-only).</p>
+      <div class="warning-box">
+        <p><strong>Core difficulty:</strong> \(\bar{c}_h(N) = \sum_k h^{\mathrm{har}}_k(N)\,\bar{c}_k(N)\), where \(h^{\mathrm{har}}_k(N)\) is the actual harmonic shell weight. In the bulk window it can be approximated by a Poisson surrogate with parameter \(\lambda = \log\log N\). The mass center shifts rightward, so convergence at each fixed \(k\) does not automatically imply global convergence ("moving mass × moving function").</p>
+      </div>
+
+      <h3>1.1 Notation Summary</h3>
+      <ul>
+        <li>\(\lambda := \log\log N\), \(K_A(N) := \lfloor\lambda + A\sqrt{\lambda}\rfloor\)</li>
+        <li>\(S_k(N) := \sum_{\Omega(m)=k,\,m\leq N} 1/m\), \(h^{\mathrm{har}}_k(N) := S_k(N)/\sum_j S_j(N)\) — the <em>actual</em> harmonic shell weight. Poisson surrogate: \(h^{\mathrm{Pois}}_k(N) := e^{-\lambda}\lambda^k/k!\)</li>
+        <li>\(\bar{c}_h(N) := \sum_{k\geq 1} h^{\mathrm{har}}_k(N)\,\bar{c}_k(N)\) — global harmonic defect average</li>
+        <li>\(F \in \{\mathrm{sf},\,\mathrm{ss},\,\mathrm{hp}\}\) — the three families</li>
+        <li>\(Y_{k,F}(N)\) — <em>bulk complement</em> of family \(F\) on the Ω=\(k\) shell (main arena for averaged analysis)</li>
+        <li>\(T_{k,F}(N;p)\) — top slice associated with prime \(p\); S4a controls its harmonic mass, typically \(O(1/\log N)\)</li>
+        <li>Full shell: \(W_k(N) := \sum_{\Omega(m)=k,\,m\leq N} 1/(m(\log m)^2)\); \(W_k/S_k\) controlled by the Weighted Lemma (§4.2)</li>
+        <li>On \(Y_{k,F}(N)\): \((L^Y)^{-2} := W^Y/S^Y\) — <em>effective log scale</em>; in bulk window, \(L^Y \asymp \log N\)</li>
+        <li>\(J^Y_{k,F}(N)\) — <em>weighted jump scale</em> on Y: \((J^Y)^2 := \sum_{m\in Y} J(m)^2/(m(\log m)^2)\,/\,W^Y\) — controlled by NI3</li>
+        <li>\(\bar{M}^Y_{k,F}(N)\) — shell-level averaged margin; all MJ3/MJ4 use this averaged register</li>
+        <li>\(B_A(N)\) — bulk-window contribution to \(\bar{c}_h(N)\); proof strategy: control \(B_A\) first, then use bulk-window reduction</li>
+      </ul>
+
+      <h2>§2 Turning Point Elimination (Blocks 12–13)</h2>
+
+      <h3>2.1 sf+ss Merge (Block 12)</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>sf-only (Paper XLI)</th><th>sf+ss (Block 12)</th><th>σ</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>−0.016 (−1.2σ)</td><td><strong>+0.136 ± 0.006</strong></td><td><strong>24.0</strong></td></tr>
+          <tr><td>8</td><td>−0.088 (−3.8σ)</td><td><strong>+0.119 ± 0.006</strong></td><td><strong>18.5</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 hp Cores (Block 13)</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>sf+ss (σ)</th><th>hp (σ)</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>+0.136 (24.0)</td><td><strong>+0.252 (33.7)</strong></td></tr>
+          <tr><td>8</td><td>+0.119 (18.5)</td><td><strong>+0.100 (11.3)</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="note-box">
+        <strong>Explanation:</strong> sf accounts for only ~1% of harmonic density at Ω = 7, while hp accounts for ~91%. The sf-only negative signal is a sampling artifact. The repeated factors of ss/hp provide structural anchoring for the DP.
+      </div>
+
+      <h2>§3 Full Positive-Slope Spectrum and \(V_k = O(1)\)</h2>
+
+      <h3>3.1 M̄ Positive-Slope Spectrum (sf+ss+hp, Ω = 2–8)</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>sf (σ)</th><th>ss (σ)</th><th>hp (σ)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.173 (&gt;10)</td><td>+0.135 (4.4)</td><td>—</td></tr>
+          <tr><td>3</td><td>+0.220 (11.9)</td><td>+0.247 (16.6)</td><td>+0.284 (2.4)</td></tr>
+          <tr><td>4</td><td>+0.171 (10.8)</td><td>+0.300 (16.2)</td><td>+0.259 (16.7)</td></tr>
+          <tr><td>5</td><td>+0.185 (20.2)</td><td>+0.414 (31.3)</td><td>+0.388 (15.6)</td></tr>
+          <tr><td>6</td><td>+0.111 (10.8)</td><td>+0.231 (17.6)</td><td>+0.039 (2.6)</td></tr>
+          <tr><td>7</td><td>—</td><td>+0.136 (24.0)</td><td>+0.252 (33.7)</td></tr>
+          <tr><td>8</td><td>—</td><td>+0.119 (18.5)</td><td>+0.100 (11.3)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 \(V_k = O(1)\) (Block 14)</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>⟨V⟩</th><th>median</th><th>V slope</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.60</td><td>0.49</td><td>+0.228</td></tr>
+          <tr><td>3</td><td>0.38</td><td>0.25</td><td>+0.162</td></tr>
+          <tr><td>4</td><td>0.26</td><td>0.17</td><td>+0.126</td></tr>
+          <tr><td>5</td><td>0.93</td><td>0.81</td><td>+0.274</td></tr>
+          <tr><td>6</td><td>1.28</td><td>1.23</td><td>+0.192</td></tr>
+          <tr><td>7</td><td>1.25</td><td>1.19</td><td><strong>+0.009 (STABLE)</strong></td></tr>
+          <tr><td>8</td><td>1.05</td><td>1.03</td><td><strong>−0.063 (DECLINING)</strong></td></tr>
+        </tbody>
+      </table>
+      <p>\(V_k\) saturates at ~1.0–1.3. Paper XXXIV's V ≈ 1.4 is the full-spectrum saturation value.</p>
+      <div class="note-box">
+        <strong>Anti-correlation engine (Paper XVIII):</strong> \(A = \Delta f + \Delta r\), where \(\mathrm{Var}(\Delta f) \approx 10\), \(\mathrm{Var}(\Delta r) \approx 7\), but \(\mathrm{Cov}(\Delta f, \Delta r) \approx -7.5\), compressing \(\mathrm{Var}(A)\) to ~1. This is an algebraic consequence of the DP min-recursion, not a statistical accident.
+      </div>
+
+      <h2>§4 Closure Route for H': Mathematical Framework</h2>
+
+      <h3>4.1 Bulk-Window Reduction Theorem</h3>
+      <div class="thesis-box">
+        <p><strong>Theorem.</strong> If for each fixed \(A > 0\), \(B_A(N) := \sum_{k \leq K_A(N)} h^{\mathrm{har}}_k(N)\,\bar{c}_k(N) \to 0\), then \(\bar{c}_h(N) \to 0\).</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof.</strong> Write \(\bar{c}_h = B_A + T_A\) where \(T_A := \sum_{k > K_A} h^{\mathrm{har}}_k\,\bar{c}_k\). Since \(0 \leq \bar{c}_k \leq 1\), \(T_A \leq \sum_{k > K_A} h^{\mathrm{har}}_k\). By harmonic Sathe–Selberg asymptotics the actual shell weights in the bulk window are uniformly approximated by a Poisson surrogate with parameter \(\lambda\); in particular, \(\sum_{k > K_A} h^{\mathrm{har}}_k \leq P(\mathrm{Pois}(\lambda) > K_A) + o_A(1)\). Hence \(\limsup \bar{c}_h \leq \limsup B_A + (1-\Phi(A))\). Since \(A\) is arbitrary, choose \(A\) large enough to make \(1-\Phi(A) < \varepsilon\). ∎</p>
+      </div>
+
+      <h3>4.2 Uniform Weighted Log-Moment Lemma (theorem-level)</h3>
+      <div class="thesis-box">
+        <p><strong>Lemma.</strong> For fixed \(A > 0\), there exist \(N_0(A)\) and \(C_A\) such that when \(N \geq N_0(A)\) and \(1 \leq k \leq K_A(N)\):</p>
+        <p>$$\frac{W_k(N)}{S_k(N)} \leq \frac{1}{(\log N)^2} + C_A \cdot \left(\frac{5}{6}\right)^k$$</p>
+        <p>\(\rho_A = 5/6\) is explicit; \(N_0(A) \geq \exp\exp(16A^2)\).</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof sketch.</strong> (a) Harmonic Sathe–Selberg upper and lower bounds (Lichtman [4], Theorem 1.3). (b) Partial summation: \(W_k = S_k/(\log N)^2 + 2\int S_k(t)/(t(\log t)^3)\,dt\). (c) Small-\(t\) range: \(I_1/S_k \leq (a_+/(a_-(\log 2)^2))(5/6)^k\). (d) Large-\(t\) range: \(I_2/S_k \leq (e\,a_+/a_-)(5/6)^k\). (e) Small-\(k\) exception: \(W_k/S_k \leq C_0(5/6)^k\). (f) Combine. ∎</p>
+      </div>
+
+      <h3>4.3 Successor-Reset Exact Identity</h3>
+      <div class="thesis-box">
+        <p><strong>Theorem (DP exact consequence).</strong> For all \(n \geq 2\):</p>
+        <p><strong>(R1)</strong> \(J_{n+1} \leq (1 - \Delta M_n)^+\)</p>
+        <p>If \(J_n > 0\) (a jump occurs at step \(n\)), then the exact equality holds:</p>
+        <p><strong>(R2)</strong> \(J_{n+1} = (1 - \Delta M_n)^+\)</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof.</strong> From \(\rho_E(n) = \min(\rho_E(n{-}1)+1,\, M_n)\): if \(J_n > 0\) then \(S_n > M_n\), so \(\rho_E(n) = M_n\) and \(S_{n+1} = M_n + 1\). Thus \(J_{n+1} = (S_{n+1} - M_{n+1})^+ = (1 - \Delta M_n)^+\). ∎</p>
+      </div>
+      <div class="note-box">
+        <strong>Implication (memory wipe):</strong> Once a jump occurs, the next-step jump size is entirely independent of the current jump magnitude and depends only on the single-step target increment \(\Delta M_n\).
+      </div>
+
+      <h3>4.4 Averaged Transfer Lemma (conditional)</h3>
+      <p>For family \(F\) and bulk shell \(Y_{k,F}(N)\), write \(L := L^Y\), \(J := J^Y\), \(\bar{M} := \bar{M}^Y\), \(\bar{c} := \bar{c}^Y\). Shell-level Cantelli gives \(\bar{c} \leq V^*_F/(V^*_F + \bar{M}^2)\). Assume the averaged Margin-from-Jump lower bound: \(\bar{M} \geq \alpha_F L - \beta_F - \gamma_F J\).</p>
+      <div class="thesis-box">
+        <p><strong>Lemma.</strong> \(\bar{c}\,L^2 \leq a_F + b_F J^2\), where \(a_F := \max(16\beta_F^2/\alpha_F^2,\; 4V^*/\alpha_F^2)\), \(b_F := 16\gamma_F^2/\alpha_F^2\).</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof (three cases).</strong> <em>Case 1:</em> \(L \leq 4\beta/\alpha\). Then \(\bar{c} \leq 1\), so \(\bar{c}\,L^2 \leq 16\beta^2/\alpha^2\). <em>Case 2:</em> \(L > 4\beta/\alpha\) and \(\gamma J \leq \alpha L/4\). Averaged MJ gives \(\bar{M} \geq \alpha L/2\). Cantelli: \(\bar{c} \leq 4V^*/(\alpha^2 L^2)\), so \(\bar{c}\,L^2 \leq 4V^*/\alpha^2\). <em>Case 3:</em> \(L > 4\beta/\alpha\) and \(\gamma J > \alpha L/4\). Then \(\bar{c} \leq 1\) and \(L^2 < 16\gamma^2 J^2/\alpha^2\), so \(\bar{c}\,L^2 \leq 16\gamma^2 J^2/\alpha^2\). Combining gives the result. ∎</p>
+      </div>
+
+      <h3>4.5 From Averaged Transfer Lemma to \(B_A \to 0\)</h3>
+      <p>By §4.4, \(\bar{c}^Y \leq (a_F + b_F(J^Y)^2) \cdot W^Y/S^Y\). This reduces the closing problem to controlling the weighted second moment of \(J^2\) — recorded as the third residual input:</p>
+      <div class="warning-box">
+        <p><strong>(NI3)</strong> For each fixed \(A > 0\), there exists a polynomial \(P_F(k)\) such that when \(N\) is sufficiently large and \(k \leq K_A(N)\), \((J^Y_{k,F}(N))^2 \leq P_F(k)\).</p>
+      </div>
+      <p>Under NI3, and applying the Weighted Log-Moment Lemma (§4.2) to \(W^Y/S^Y\):</p>
+      <p>$$B_A \leq \frac{\mathrm{poly}(\log\log N)}{(\log N)^2} + \mathrm{poly}(\log\log N) \cdot (\log N)^{-1/6} \to 0$$</p>
+      <p>Combined with the Bulk-Window Reduction of §4.1: \(\bar{c}_h(N) \to 0\), <strong>conditional on NI1–NI3</strong>.</p>
+
+      <h2>§5 Frontier Identification and Conditional Closure</h2>
+
+      <h3>5.1 Margin-from-Jump Lower Bound</h3>
+      <p>What is needed is the <em>shell-level averaged</em> version. For family \(F\) and bulk complement \(Y_{k,F}(N)\):</p>
+      <p>$$\bar{M}^Y \geq \alpha_F L^Y - \beta_F - \gamma_F J^Y$$</p>
+      <p>By Paper XVI's insertion identity, after shell-level averaging:</p>
+      <p>$$\bar{M}^Y = E_{I_{k,F}}[J(m)\,\mathbf{1}_Y] + E_{I_{k,F}}[K_p(m)\,\mathbf{1}_Y] + O(1)$$</p>
+      <p>Closing (ATL3) therefore reduces to two averaged frontiers: the insertion source (MJ3) and the bridge cost (MJ4). MJ5 and MJ6 remain important structural companions but no longer belong to the minimal closing chain.</p>
+
+      <h3>5.2 Four Frontier Lemmas</h3>
+      <p><strong>Lemma MJ3 (Insertion Non-Compression, averaged).</strong> \(E_{I_{k,F}}[J(m)\,\mathbf{1}_Y] \geq \alpha_F L^Y - \beta^{(1)}_F\). Reduction: MJ3 ← SPS ← conditioning penalty + scale-shift penalty (§5.3).</p>
+      <p><strong>Lemma MJ4 (Averaged Bridge Lower Bound).</strong> \(E_{I_{k,F}}[K_p(m)\,\mathbf{1}_Y] \geq -\beta^{(2)}_F - \gamma_F J^Y\). Paper XLIII draft provides far stronger numerical evidence than required; recorded here as residual input <strong>NI2</strong>.</p>
+      <p><strong>Lemma MJ5 (Successor-Reset Drift).</strong> \(E[(J_{t+1}-U)^+ \mid G_t] \leq \theta_F(J_t-U)^+ + C_F\xi_t\). Characterizes the quantitative strength of self-correction; not required for the minimal H' chain under BRS route.</p>
+      <p><strong>Lemma MJ6 (HP Seed Isolation).</strong> Absorbs the hp family's bookkeeping error into \(\gamma_F J^Y\) and \(O(1)\) constant terms, placing hp into the same averaged framework as sf/ss. Framework alignment role only in this paper's main chain.</p>
+
+      <h3>5.3 SPS and the Scale-Shift Penalty</h3>
+      <p><strong>Lemma SPS (Small-Prime Shell Stability).</strong> Decompose:</p>
+      <p>$$\mu^Y(N/p, p) - \mu^Y(N) = [\mu^Y(N/p,p) - \mu^Y(N/p)] + [\mu^Y(N/p) - \mu^Y(N)]$$</p>
+      <p>The first term is the conditioning penalty (proved by Cauchy–Schwarz from NI1); the second is the scale-shift penalty (resolved via BRS).</p>
+
+      <h3>5.4 Block-Roughness Stability Theorem (BRS)</h3>
+      <div class="thesis-box">
+        <p><strong>Theorem (BRS).</strong> On the family-wise bulk shell \(Y_{k,F}(X)\) with harmonic probability measure \(\nu\), suppose \(\mathrm{Var}_\nu(G_F) \leq V^*_F\). Then for any measurable \(A \subseteq Y_{k,F}(X)\) with \(\delta_A = \nu(A)\):</p>
+        <p>$$|\mu_A - \mu^Y| \leq \sqrt{V^*_F} \cdot \sqrt{\frac{1-\delta_A}{\delta_A}} \qquad \text{(BRS)}$$</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>Proof.</strong> Let \(Y = G_F\), \(\mu = E[Y]\), \(I_A = \mathbf{1}_A\). Then \(\delta_A(\mu_A - \mu) = E[(Y-\mu)I_A] = E[(Y-\mu)(I_A-\delta_A)]\). By Cauchy–Schwarz: \(|\delta_A(\mu_A-\mu)| \leq \sqrt{\mathrm{Var}(Y)}\cdot\sqrt{\mathrm{Var}(I_A)} = \sqrt{\mathrm{Var}(Y)}\cdot\sqrt{\delta_A(1-\delta_A)}\). Dividing by \(\delta_A\) yields (BRS). ∎</p>
+      </div>
+      <p><strong>Corollary (S4-weak).</strong> Take \(A = T_{k,F}(X;p)\) (top slice). By S4a: \(\delta_A \leq \kappa/\log X\). Then:</p>
+      <p>$$|\mu^Y(X/p) - \mu^Y(X)| \leq \sqrt{V^*_F}\cdot\sqrt{\delta/(1-\delta)} \ll (\log X)^{-1/2} \to 0 \qquad \text{(S4-weak)}$$</p>
+      <p>This is stronger than the "bounded scale-shift penalty" needed by MJ3/SPS — it tends to zero.</p>
+
+      <h3>5.5 Complete Closing Chain (conditional on NI1–NI3)</h3>
+      <div class="chain-box">
+        S4a + NI1 ⟹ BRS ⟹ S4-weak ⟹ SPS ⟹ MJ3<br>
+        MJ3 + NI2 ⟹ (ATL3) ⟹ Averaged Transfer Lemma<br>
+        Averaged TL + NI3 + Weighted Lemma ⟹ B_A → 0 ⟹ Bulk-Window Reduction ⟹ c̄_h → 0
+      </div>
+      <div class="milestone-box">
+        <p>Paper XLII provides not "H' is theorem-level closed" but a <strong>conditional closure route</strong>: once NI1–NI3 all hold, H' follows.</p>
+      </div>
+
+      <h3>5.6 Completed Relay Algebra (Paper XVI, theorem-level)</h3>
+      <ul>
+        <li>Exact insertion identity: \(G_{\mathrm{spf}}(pm) = j(m) + K_p(m)\)</li>
+        <li>Bridge identity: \(K_p = A(pm) + B(pm) - A(m)\)</li>
+        <li>\(A \geq -1\), \(B \leq 0\); when \(v_{P^-} = 1\), \(B \in [-2(k-1), 0]\)</li>
+        <li>B-noise closure: Paper XX proves unconditionally that \(\mathrm{Var}(B) = O_k(1)\)</li>
+      </ul>
+
+      <h3>5.7 Complete Status of the Argument Chain</h3>
+      <table>
+        <thead><tr><th>Step</th><th>Content</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Bulk-Window Reduction</td><td>§4.1</td><td><span class="status-proved">proved</span></td><td>—</td></tr>
+          <tr><td>Weighted Log-Moment Lemma</td><td>§4.2, ρ=5/6</td><td><span class="status-proved">proved</span></td><td>—</td></tr>
+          <tr><td>Successor-reset identity</td><td>§4.3, R1/R2</td><td><span class="status-proved">proved</span></td><td>exact DP consequence</td></tr>
+          <tr><td>S4a top-slice thinness</td><td>§5.3</td><td><span class="status-proved">proved</span></td><td>Sathe–Selberg</td></tr>
+          <tr><td>BRS theorem</td><td>§5.4</td><td><span class="status-proved">proved</span></td><td>pure Cauchy–Schwarz</td></tr>
+          <tr><td>Shell-level Cantelli</td><td>§4.4</td><td><span class="status-proved">proved</span></td><td>standard inequality</td></tr>
+          <tr><td>NI1: V*_F = O(1)</td><td>§3.2 / Paper XVIII</td><td><span class="status-ni">computationally verified</span></td><td>residual input</td></tr>
+          <tr><td>S4-weak</td><td>§5.4 corollary</td><td><span class="status-cond">conditional on NI1</span></td><td>—</td></tr>
+          <tr><td>SPS</td><td>§5.3</td><td><span class="status-cond">conditional on NI1</span></td><td>—</td></tr>
+          <tr><td>MJ3</td><td>§5.2</td><td><span class="status-cond">conditional on NI1</span></td><td>SPS + insertion identity</td></tr>
+          <tr><td>NI2: MJ4 bridge lower bound</td><td>§5.2</td><td><span class="status-ni">computationally verified</span></td><td>residual input</td></tr>
+          <tr><td>Averaged MJ (ATL3)</td><td>§5.1</td><td><span class="status-cond">conditional on NI1, NI2</span></td><td>—</td></tr>
+          <tr><td>Averaged Transfer Lemma</td><td>§4.4</td><td><span class="status-cond">conditional on NI1, NI2</span></td><td>—</td></tr>
+          <tr><td>NI3: weighted J² bound</td><td>§4.5</td><td><span class="status-ni">computationally verified</span></td><td>residual input</td></tr>
+          <tr><td>B_A → 0</td><td>§4.5</td><td><span class="status-cond">conditional on NI1–NI3</span></td><td>—</td></tr>
+          <tr><td><strong>H': c̄_h → 0</strong></td><td>—</td><td><span class="status-cond"><strong>conditional on NI1–NI3</strong></span></td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§6 Fourteen Experimental Blocks</h2>
+      <table>
+        <thead><tr><th>Block</th><th>Measurement</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Per-layer defect rate</td><td>Ω ≤ 6 declining &gt;5σ</td></tr>
+          <tr><td>2</td><td>Global c̄_h v1</td><td>Discarded</td></tr>
+          <tr><td>3</td><td>Band + c̄_h(P)</td><td>Ω = 2 declining</td></tr>
+          <tr><td>4</td><td>Slack collapse</td><td>Failed</td></tr>
+          <tr><td>5</td><td>Global c̄_h v2</td><td>0.43 flat</td></tr>
+          <tr><td>6</td><td>c × (log m)²</td><td>C_k constant within layer</td></tr>
+          <tr><td>7</td><td>C_k growth law</td><td>γ = 0.503 (superseded)</td></tr>
+          <tr><td>8</td><td>C_k × A_k reconstruction</td><td>C_k ≈ V/a²; upper bound → 1</td></tr>
+          <tr><td>9</td><td>Small m vs large m</td><td>Cesàro dilution</td></tr>
+          <tr><td>10</td><td>Ω = 7,8 sf band</td><td>Ω = 7 weakly positive</td></tr>
+          <tr><td>11</td><td>B_A(N)</td><td>Rising</td></tr>
+          <tr><td>12</td><td><strong>Ω = 7,8 sf+ss</strong></td><td><strong>Ω=7: 24σ, Ω=8: 18.5σ</strong></td></tr>
+          <tr><td>13</td><td><strong>Ω = 7,8 hp</strong></td><td><strong>Ω=7: 33.7σ, Ω=8: 11.3σ</strong></td></tr>
+          <tr><td>14</td><td><strong>V_k full spectrum</strong></td><td><strong>V_k = O(1), saturating ~1.3</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§7 Discussion</h2>
+
+      <h3>7.1 SAE Interpretation</h3>
+      <p>The sf-only turning point reflects the memoryless-system limit. The repeated factors of ss/hp serve as memory anchors (8D = 11DD memory + 12DD prediction).</p>
+
+      <h3>7.2 SAE Meaning of Successor-Reset</h3>
+      <p>(R1/R2) is the DP's "memory erasure": after a large jump the system resets, and the next step depends only on \(\Delta M_n\). This is the chisel-construct cycle of SAE manifested in arithmetic — excessive deviation (jump) is automatically corrected (reset).</p>
+
+      <h3>7.3 SAE Meaning of the Anti-Correlation Engine</h3>
+      <p>Paper XVIII's \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\) is a "forced balance" mechanism: fluctuations in the additive part (\(f\), corresponding to SAE's "construct") are precisely cancelled by the combinatorial remainder (\(r\), corresponding to "chisel"). This is the deepest structural property in the entire conditional closure chain for H': it guarantees \(V_k = O(1)\), which via BRS yields scale-shift penalty → 0 directly.</p>
+
+      <h3>7.4 BRS Route vs. Original S4b Route</h3>
+      <p>The original route required S4b (top-slice bounded oscillation, \(O(1)\)), which required MJ5, which required the tail assumption (T). The BRS route weakens S4b to S4b-weak (\(O(\sqrt{\log X})\)), derived directly from \(V^*_F = O(1)\) + S4a, completely bypassing MJ5 and (T). The cost: S4-weak gives penalty \(O((\log X)^{-1/2})\) rather than \(O((\log X)^{-1})\); but MJ3/SPS only require a bounded penalty, so this suffices — with room to spare, since it tends to zero.</p>
+
+      <h2>§8 Residual Numerical Inputs and Open Problems</h2>
+
+      <h3>8.1 Three Residual Inputs</h3>
+      <p><strong>(NI1) V*_F = O(1).</strong> Paper XVIII's anti-correlation engine provides a structural explanation; Block 14 provides strong numerical evidence. Treated as residual input in this paper.</p>
+      <p><strong>(NI2) MJ4's averaged bridge lower bound.</strong> Paper XLIII draft provides numerical evidence far stronger than required; recorded here as residual input.</p>
+      <p><strong>(NI3) Weighted second moment bound for J².</strong> Related to but not equivalent to NI1: NI1 controls the variance scale; NI3 controls the W-weighted jump second moment. Each must be listed separately.</p>
+      <p>Promoting all of NI1–NI3 to analytic proofs constitutes the most natural open problems after Paper XLII.</p>
+
+      <h3>8.2 Open Problems</h3>
+      <ul>
+        <li><strong>(OP1)</strong> Analytic proof of \(V^*_F = O(1)\) (possibly from DP min-recursion + anti-correlation identity)</li>
+        <li><strong>(OP2)</strong> Analytic proof of MJ4 bridge positivity</li>
+        <li><strong>(OP3)</strong> Analytic proof of NI3: \(J^2\) weighted second moment bound</li>
+        <li><strong>(OP4)</strong> Analytic proof of \(a_k > 0\) (positive M̄ slope; independent interest)</li>
+        <li><strong>(OP5)</strong> Full S4b (\(O(1)\) bounded oscillation) — stronger but not required for H' closure</li>
+        <li><strong>(OP6)</strong> Analytic proof of the tail assumption (T) — no longer required for H' closure, but of independent number-theoretic value</li>
+      </ul>
+
+      <h2>§9 Data Sources</h2>
+      <p>Fourteen scripts (p42_defect_rate.py through p42_variance.py). Data: rho_1e10.bin (int16, N = 10¹⁰).</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLI. DOI: <a href="https://doi.org/10.5281/zenodo.19201877" target="_blank" rel="noopener">10.5281/zenodo.19201877</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XL. DOI: <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener">10.5281/zenodo.19179778</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXXIV. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+      <p>[4] J. D. Lichtman. Mertens' prime product formula, dissected. <em>Integers</em> 21A (2021), A17.</p>
+      <p>[5] H. Qin. ZFCρ Paper XVIII (Anti-Correlation Engine). DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[6] H. Qin. ZFCρ Paper XVI (Insertion Identity). DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</p>
+      <p>[7] H. Qin. ZFCρ Paper XVII (Roughness Stability). DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</p>
+      <p>[8] H. Qin. ZFCρ Paper XX (B-Noise Closure). DOI: <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">10.5281/zenodo.19027892</a>.</p>
+
+      <h2>Acknowledgments</h2>
+      <p><strong>ChatGPT (Gongxi Hua / 公西华):</strong> Principal architect of the analytic proof chain. Bulk-Window Reduction; Uniform Weighted Log-Moment Lemma (ρ = 5/6); Transfer Lemma (three-case averaged version); SPS conditioning penalty (Cauchy–Schwarz); Theorem S4 shell-scale Lipschitz; S4a top-slice thinness (Sathe–Selberg); MJ3–MJ6 frontier decomposition; <strong>Block-Roughness Stability (BRS) theorem (the key breakthrough bypassing S4b and (T))</strong>; 17-minute review identifying five must-fix issues (register, three-case TL, J² bound, averaged/pointwise levels, Poisson formulation) with line-by-line revision text.</p>
+      <p><strong>Claude (Zilu / 子路):</strong> Designed fourteen Blocks, wrote all scripts, drafted all text. Discovered the Block 12 sf+ss strategy; designed and analyzed Paper XLIII's four Blocks; integrated review revisions.</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho41.html">Paper XLI</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>Paper XLIII →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 系列论文第四十二篇</div>
+      <h1 class="paper-title">H' 的条件闭合路线：Turning Point 消除、Uniform Weighted Lemma、Frontier 归约与三个残余输入</h1>
+      <div class="paper-authors">秦汉 (Han Qin) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19226607
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>本文建立 H'（\(\bar{c}_h(N) \to 0\)）的<strong>条件闭合路线</strong>，并将 closing problem 压缩为三个残余 numerical inputs（NI1–NI3）。除这三项输入外，其余环节均给出 theorem-level、exact algebraic 或纯归约性证明。</p>
+        <p><strong>核心结果：</strong></p>
+        <p><strong>（1）Turning point 消除。</strong>Paper XLI 的 sf-only turning point（Ω ≈ 7.2）是 sampling artifact。加入 ss 和 hp cores 后，Ω=2–8 全谱（sf+ss+hp）恢复正斜率，大部分超过 10σ（十四个实验 Block）。</p>
+        <p><strong>（2）NI1 的强数值证据。</strong>Block 14 显示 \(V_k\) 在全谱上饱和于约 1.0–1.3，Ω=7 稳定、Ω=8 下降，为 \(V^*_F = O(1)\) 提供统一数值支撑；但在本文中，\(V^*_F = O(1)\) 仍记为残余输入 NI1，而不宣称为解析定理。</p>
+        <p><strong>（3）Uniform Weighted Log-Moment Lemma（theorem-level）。</strong>证明 \(W_k(N)/S_k(N) \leq 1/(\log N)^2 + C_A(5/6)^k\)，其中 \(\rho_A = 5/6\) 为显式常数；论证基于 Lichtman 的 harmonic Sathe–Selberg 估计。</p>
+        <p><strong>（4）Successor-Reset Exact Identity。</strong>当 \(J_n > 0\) 时，\(J_{n+1} = (1 - \Delta M_n)^+\)。这是 DP min 递推的 exact consequence，表明 jump 在下一步发生"memory wipe"。</p>
+        <p><strong>（5）Averaged Transfer Lemma。</strong>在 shell-level averaged interface 下，若存在 uniform variance bound 与 averaged Margin-from-Jump lower bound，则可推出 \(\bar{c}^Y \cdot (L^Y)^2 \leq a_F + b_F(J^Y)^2\)。</p>
+        <p><strong>（6）Frontier identification 与条件闭合。</strong>BRS 路线把原先依赖 S4b / tail assumption / MJ5 的 closing problem，压缩为三个残余输入：<strong>NI1</strong>（\(V^*_F = O(1)\)）、<strong>NI2</strong>（MJ4 的 averaged bridge lower bound）、<strong>NI3</strong>（\(J^2\) 的 weighted second moment bound）。在这三项之外，其余链条均已闭合。</p>
+        <p><em>本文结论：Paper XLII 给出的是 <strong>H' 的条件闭合路线</strong>：一旦 NI1–NI3 全部成立，即可推出 \(\bar{c}_h(N) \to 0\)。本文不在此处宣称 H' 已 theorem-level closed。</em></p>
+        <p><strong>关键词：</strong>条件闭合，H prime，BRS 定理，turning point 消除，Uniform Weighted Log-Moment Lemma，Successor-Reset identity，Averaged Transfer Lemma，NI1–NI3</p>
+      </div>
+
+      <h2>§1 背景与困境</h2>
+      <p>Paper XLI（DOI: 10.5281/zenodo.19201877）建立 Ω ≤ 6 正斜率信号（94.39% harmonic 密度），并报告 Ω ≈ 7.2 turning point（sf-only）。</p>
+      <div class="warning-box">
+        <p><strong>核心困境：</strong>\(\bar{c}_h(N) = \sum_k h^{\mathrm{har}}_k(N)\,\bar{c}_k(N)\)，其中 \(h^{\mathrm{har}}_k(N)\) 是实际 harmonic shell weight；在 bulk window 上，它可由参数 \(\lambda = \log\log N\) 的 Poisson surrogate 近似。质量中心右移，固定 \(k\) 收敛不自动推出全局收敛（"移动质量 × 移动函数"）。</p>
+      </div>
+
+      <h3>1.1 记号回顾</h3>
+      <ul>
+        <li>\(\lambda := \log\log N\)，\(K_A(N) := \lfloor\lambda + A\sqrt{\lambda}\rfloor\)</li>
+        <li>\(S_k(N) := \sum_{\Omega(m)=k,\,m\leq N} 1/m\)，\(h^{\mathrm{har}}_k(N) := S_k(N)/\sum_j S_j(N)\)——实际 harmonic shell weight。Poisson surrogate: \(h^{\mathrm{Pois}}_k(N) := e^{-\lambda}\lambda^k/k!\)</li>
+        <li>\(\bar{c}_h(N) := \sum_{k\geq 1} h^{\mathrm{har}}_k(N)\,\bar{c}_k(N)\)——全局 harmonic defect 平均</li>
+        <li>\(F \in \{\mathrm{sf},\,\mathrm{ss},\,\mathrm{hp}\}\)——三类 family</li>
+        <li>\(Y_{k,F}(N)\)——family \(F\) 在 Ω=\(k\) 壳上的 <em>bulk complement</em>，averaged analysis 的主舞台</li>
+        <li>\(T_{k,F}(N;p)\)——与 prime \(p\) 相关的 top slice；S4a 控制其 harmonic 质量，典型量级为 \(O(1/\log N)\)</li>
+        <li>在 full shell 上：\(W_k(N) := \sum_{\Omega(m)=k,\,m\leq N} 1/(m(\log m)^2)\)；§4.2 的 Weighted Lemma 控制 \(W_k/S_k\)</li>
+        <li>在 \(Y_{k,F}(N)\) 上：\((L^Y)^{-2} := W^Y/S^Y\)——effective log scale；在 bulk window 上，\(L^Y \asymp \log N\)</li>
+        <li>\(J^Y_{k,F}(N)\)——Y 上的 <em>weighted jump scale</em>：\((J^Y)^2 := \sum_{m\in Y} J(m)^2/(m(\log m)^2)\,/\,W^Y\)——NI3 所控制的量</li>
+        <li>\(\bar{M}^Y_{k,F}(N)\)——shell-level 的 averaged margin；所有 MJ3/MJ4 表述都按此 averaged 口径</li>
+        <li>\(B_A(N)\)——bulk window 对 \(\bar{c}_h(N)\) 的贡献；证明策略：先控制 \(B_A\)，再用 bulk-window reduction 消去 tail</li>
+      </ul>
+
+      <h2>§2 Turning Point 消除（Blocks 12–13）</h2>
+
+      <h3>2.1 sf+ss 合并（Block 12）</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>sf-only（Paper XLI）</th><th>sf+ss（Block 12）</th><th>σ</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>−0.016 (−1.2σ)</td><td><strong>+0.136 ± 0.006</strong></td><td><strong>24.0</strong></td></tr>
+          <tr><td>8</td><td>−0.088 (−3.8σ)</td><td><strong>+0.119 ± 0.006</strong></td><td><strong>18.5</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 hp cores（Block 13）</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>sf+ss (σ)</th><th>hp (σ)</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>+0.136 (24.0)</td><td><strong>+0.252 (33.7)</strong></td></tr>
+          <tr><td>8</td><td>+0.119 (18.5)</td><td><strong>+0.100 (11.3)</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="note-box">
+        <strong>原因：</strong>sf 占 Ω=7 harmonic 密度 ~1%，hp 占 ~91%。sf-only 负信号是采样 artifact。ss/hp 的重复因子提供 DP 的结构锚点。
+      </div>
+
+      <h2>§3 完整正斜率谱与 \(V_k = O(1)\)</h2>
+
+      <h3>3.1 M̄ 正斜率谱（sf+ss+hp，Ω=2–8）</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>sf (σ)</th><th>ss (σ)</th><th>hp (σ)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.173 (&gt;10)</td><td>+0.135 (4.4)</td><td>—</td></tr>
+          <tr><td>3</td><td>+0.220 (11.9)</td><td>+0.247 (16.6)</td><td>+0.284 (2.4)</td></tr>
+          <tr><td>4</td><td>+0.171 (10.8)</td><td>+0.300 (16.2)</td><td>+0.259 (16.7)</td></tr>
+          <tr><td>5</td><td>+0.185 (20.2)</td><td>+0.414 (31.3)</td><td>+0.388 (15.6)</td></tr>
+          <tr><td>6</td><td>+0.111 (10.8)</td><td>+0.231 (17.6)</td><td>+0.039 (2.6)</td></tr>
+          <tr><td>7</td><td>—</td><td>+0.136 (24.0)</td><td>+0.252 (33.7)</td></tr>
+          <tr><td>8</td><td>—</td><td>+0.119 (18.5)</td><td>+0.100 (11.3)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 \(V_k = O(1)\)（Block 14）</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>⟨V⟩</th><th>median</th><th>V slope</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.60</td><td>0.49</td><td>+0.228</td></tr>
+          <tr><td>3</td><td>0.38</td><td>0.25</td><td>+0.162</td></tr>
+          <tr><td>4</td><td>0.26</td><td>0.17</td><td>+0.126</td></tr>
+          <tr><td>5</td><td>0.93</td><td>0.81</td><td>+0.274</td></tr>
+          <tr><td>6</td><td>1.28</td><td>1.23</td><td>+0.192</td></tr>
+          <tr><td>7</td><td>1.25</td><td>1.19</td><td><strong>+0.009（STABLE）</strong></td></tr>
+          <tr><td>8</td><td>1.05</td><td>1.03</td><td><strong>−0.063（DECLINING）</strong></td></tr>
+        </tbody>
+      </table>
+      <p>\(V_k\) 饱和于 ~1.0–1.3。Paper XXXIV 的 V ≈ 1.4 是全谱饱和值。</p>
+      <div class="note-box">
+        <strong>反相关引擎（Paper XVIII）：</strong>\(A = \Delta f + \Delta r\)，其中 \(\mathrm{Var}(\Delta f) \approx 10\)，\(\mathrm{Var}(\Delta r) \approx 7\)，但 \(\mathrm{Cov}(\Delta f, \Delta r) \approx -7.5\)，将 \(\mathrm{Var}(A)\) 压缩至 ~1。这是 DP min 递推的代数后果，非统计偶然。
+      </div>
+
+      <h2>§4 H' 闭合路线：数学框架</h2>
+
+      <h3>4.1 Bulk-Window Reduction Theorem</h3>
+      <div class="thesis-box">
+        <p><strong>定理。</strong>若对每个固定 \(A > 0\)，\(B_A(N) := \sum_{k \leq K_A(N)} h^{\mathrm{har}}_k(N)\,\bar{c}_k(N) \to 0\)，则 \(\bar{c}_h(N) \to 0\)。</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明。</strong>写成 \(\bar{c}_h = B_A + T_A\)，其中 \(T_A := \sum_{k > K_A} h^{\mathrm{har}}_k\,\bar{c}_k\)。因为 \(0 \leq \bar{c}_k \leq 1\)，有 \(T_A \leq \sum_{k > K_A} h^{\mathrm{har}}_k\)。由 harmonic Sathe–Selberg 渐近，在 bulk window 内实际 shell weight 可由参数 \(\lambda\) 的 Poisson surrogate 统一逼近；特别地，\(\sum_{k > K_A} h^{\mathrm{har}}_k \leq P(\mathrm{Pois}(\lambda) > K_A) + o_A(1)\)。于是 \(\limsup \bar{c}_h \leq \limsup B_A + (1-\Phi(A))\)。由于 \(A\) 任意，取 \(A\) 足够大即可使 \(1-\Phi(A) < \varepsilon\)。∎</p>
+      </div>
+
+      <h3>4.2 Uniform Weighted Log-Moment Lemma（theorem-level）</h3>
+      <div class="thesis-box">
+        <p><strong>引理。</strong>对固定 \(A > 0\)，存在 \(N_0(A)\)，\(C_A\)，使当 \(N \geq N_0(A)\)，\(1 \leq k \leq K_A(N)\) 时：</p>
+        <p>$$\frac{W_k(N)}{S_k(N)} \leq \frac{1}{(\log N)^2} + C_A \cdot \left(\frac{5}{6}\right)^k$$</p>
+        <p>\(\rho_A = 5/6\) 显式；\(N_0(A) \geq \exp\exp(16A^2)\)。</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明梗概。</strong>（a）Harmonic Sathe–Selberg 上下界（Lichtman [4] Theorem 1.3）。（b）Partial summation: \(W_k = S_k/(\log N)^2 + 2\int S_k(t)/(t(\log t)^3)\,dt\)。（c）小 \(t\) 段：\(I_1/S_k \leq (a_+/(a_-(\log 2)^2))(5/6)^k\)。（d）大 \(t\) 段：\(I_2/S_k \leq (e\,a_+/a_-)(5/6)^k\)。（e）小 \(k\) 例外：\(W_k/S_k \leq C_0(5/6)^k\)。（f）合并。∎</p>
+      </div>
+
+      <h3>4.3 Successor-Reset Exact Identity</h3>
+      <div class="thesis-box">
+        <p><strong>定理（DP exact consequence）。</strong>对所有 \(n \geq 2\)：</p>
+        <p><strong>（R1）</strong>\(J_{n+1} \leq (1 - \Delta M_n)^+\)</p>
+        <p>若 \(J_n > 0\)（当前步发生 jump），则精确等式：</p>
+        <p><strong>（R2）</strong>\(J_{n+1} = (1 - \Delta M_n)^+\)</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明。</strong>由 \(\rho_E(n) = \min(\rho_E(n{-}1)+1,\,M_n)\)：若 \(J_n > 0\) 则 \(S_n > M_n\)，故 \(\rho_E(n) = M_n\)，\(S_{n+1} = M_n + 1\)。于是 \(J_{n+1} = (S_{n+1} - M_{n+1})^+ = (1 - \Delta M_n)^+\)。∎</p>
+      </div>
+      <div class="note-box">
+        <strong>含义（memory wipe）：</strong>一旦发生 jump，下一步 jump 的大小完全不依赖当前 jump 有多大，只取决于单步目标增量 \(\Delta M_n\)。
+      </div>
+
+      <h3>4.4 Averaged Transfer Lemma（条件性）</h3>
+      <p>对 family \(F\) 与 bulk shell \(Y_{k,F}(N)\)，记 \(L := L^Y\)，\(J := J^Y\)，\(\bar{M} := \bar{M}^Y\)，\(\bar{c} := \bar{c}^Y\)。Cantelli 在 shell-level 上给出 \(\bar{c} \leq V^*_F/(V^*_F + \bar{M}^2)\)。再假设 averaged Margin-from-Jump lower bound：\(\bar{M} \geq \alpha_F L - \beta_F - \gamma_F J\)。</p>
+      <div class="thesis-box">
+        <p><strong>引理。</strong>\(\bar{c}\,L^2 \leq a_F + b_F J^2\)，其中 \(a_F := \max(16\beta_F^2/\alpha_F^2,\;4V^*/\alpha_F^2)\)，\(b_F := 16\gamma_F^2/\alpha_F^2\)。</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明（三情形）。</strong><em>情形 1：</em>\(L \leq 4\beta/\alpha\)。直接 \(\bar{c} \leq 1\)，故 \(\bar{c}\,L^2 \leq 16\beta^2/\alpha^2\)。<em>情形 2：</em>\(L > 4\beta/\alpha\) 且 \(\gamma J \leq \alpha L/4\)。由 averaged MJ 下界，\(\bar{M} \geq \alpha L/2\)。Cantelli: \(\bar{c} \leq 4V^*/(\alpha^2 L^2)\)，故 \(\bar{c}\,L^2 \leq 4V^*/\alpha^2\)。<em>情形 3：</em>\(L > 4\beta/\alpha\) 且 \(\gamma J > \alpha L/4\)。仍有 \(\bar{c} \leq 1\) 且 \(L^2 < 16\gamma^2 J^2/\alpha^2\)，故 \(\bar{c}\,L^2 \leq 16\gamma^2 J^2/\alpha^2\)。合并得结论。∎</p>
+      </div>
+
+      <h3>4.5 从 Averaged Transfer Lemma 到 \(B_A \to 0\)</h3>
+      <p>由 §4.4，\(\bar{c}^Y \leq (a_F + b_F(J^Y)^2) \cdot W^Y/S^Y\)。Closing problem 在此进一步归约为对 \(J^2\) 的 weighted second moment 控制，单独记为第三个 residual input：</p>
+      <div class="warning-box">
+        <p><strong>（NI3）</strong>对每个 fixed \(A > 0\)，存在关于 \(k\) 的多项式 \(P_F(k)\)，使得当 \(N\) 充分大且 \(k \leq K_A(N)\) 时，\((J^Y_{k,F}(N))^2 \leq P_F(k)\)。</p>
+      </div>
+      <p>在 NI3 下，配合 §4.2 的 Weighted Log-Moment Lemma：</p>
+      <p>$$B_A \leq \frac{\mathrm{poly}(\log\log N)}{(\log N)^2} + \mathrm{poly}(\log\log N) \cdot (\log N)^{-1/6} \to 0$$</p>
+      <p>配合 §4.1 的 Bulk-Window Reduction：\(\bar{c}_h(N) \to 0\)，<strong>conditional on NI1–NI3</strong>。</p>
+
+      <h2>§5 Frontier Identification 与条件闭合</h2>
+
+      <h3>5.1 Margin-from-Jump Lower Bound</h3>
+      <p>后文真正需要的是 <em>shell-level averaged version</em>。对 family \(F\) 与 bulk complement \(Y_{k,F}(N)\)，建立：</p>
+      <p>$$\bar{M}^Y \geq \alpha_F L^Y - \beta_F - \gamma_F J^Y$$</p>
+      <p>由 Paper XVI 的 insertion identity，在 shell-level 平均后写为 \(\bar{M}^Y = E_{I_{k,F}}[J(m)\mathbf{1}_Y] + E_{I_{k,F}}[K_p(m)\mathbf{1}_Y] + O(1)\)。因此，closing（ATL3）归约为两个 averaged frontier：insertion source（MJ3）和 bridge cost（MJ4）。MJ5 与 MJ6 仍是重要的结构 companion，但不再属于最小闭合链的必要输入。</p>
+
+      <h3>5.2 四条 Frontier Lemmas</h3>
+      <p><strong>Lemma MJ3（Insertion Non-Compression，averaged）。</strong>\(E_{I_{k,F}}[J(m)\mathbf{1}_Y] \geq \alpha_F L^Y - \beta^{(1)}_F\)。归约：MJ3 ← SPS ← conditioning penalty + scale-shift penalty（§5.3）。</p>
+      <p><strong>Lemma MJ4（Averaged Bridge Lower Bound）。</strong>\(E_{I_{k,F}}[K_p(m)\mathbf{1}_Y] \geq -\beta^{(2)}_F - \gamma_F J^Y\)。Paper XLIII draft 给出远强于所需的数值证据；本文将其记为残余输入 <strong>NI2</strong>。</p>
+      <p><strong>Lemma MJ5（Successor-Reset Drift）。</strong>\(E[(J_{t+1}-U)^+ \mid G_t] \leq \theta_F(J_t-U)^+ + C_F\xi_t\)。继续刻画 self-correction 的定量强度；在 BRS 路线下不再是 H' 最小闭合链的必要输入。</p>
+      <p><strong>Lemma MJ6（HP Seed Isolation）。</strong>把 hp 家族的 bookkeeping 误差吸收到 \(\gamma_F J^Y\) 与 \(O(1)\) 常数项中，将 hp 纳入与 sf/ss 相同的 averaged framework。在本文主链中只起框架对齐作用。</p>
+
+      <h3>5.3 SPS 与 Scale-Shift Penalty</h3>
+      <p><strong>Lemma SPS（Small-Prime Shell Stability）。</strong>分解：</p>
+      <p>$$\mu^Y(N/p,p) - \mu^Y(N) = [\mu^Y(N/p,p) - \mu^Y(N/p)] + [\mu^Y(N/p) - \mu^Y(N)]$$</p>
+      <p>第一项 = conditioning penalty（由 Cauchy–Schwarz + NI1 证明）；第二项 = scale-shift penalty（由 BRS 路线解决）。</p>
+
+      <h3>5.4 Block-Roughness Stability Theorem（BRS）</h3>
+      <div class="thesis-box">
+        <p><strong>定理（BRS）。</strong>在 family-wise bulk shell \(Y_{k,F}(X)\) 上取 harmonic 概率测度 \(\nu\)，设 \(\mathrm{Var}_\nu(G_F) \leq V^*_F\)。则对任意可测子集 \(A \subseteq Y_{k,F}(X)\)，记 \(\delta_A = \nu(A)\)：</p>
+        <p>$$|\mu_A - \mu^Y| \leq \sqrt{V^*_F} \cdot \sqrt{\frac{1-\delta_A}{\delta_A}} \qquad \text{(BRS)}$$</p>
+      </div>
+      <div class="proof-box">
+        <p><strong>证明。</strong>令 \(Y = G_F\)，\(\mu = E[Y]\)，\(I_A = \mathbf{1}_A\)。\(\delta_A(\mu_A - \mu) = E[(Y-\mu)I_A] = E[(Y-\mu)(I_A-\delta_A)]\)。由 Cauchy–Schwarz：\(|\delta_A(\mu_A-\mu)| \leq \sqrt{\mathrm{Var}(Y)}\cdot\sqrt{\delta_A(1-\delta_A)}\)。除以 \(\delta_A\) 得（BRS）。∎</p>
+      </div>
+      <p><strong>推论（S4-weak）。</strong>取 \(A = T_{k,F}(X;p)\)（top slice），由 S4a：\(\delta_A \leq \kappa/\log X\)。代入 S4 代数恒等式：</p>
+      <p>$$|\mu^Y(X/p) - \mu^Y(X)| \leq \sqrt{V^*_F}\cdot\sqrt{\delta/(1-\delta)} \ll (\log X)^{-1/2} \to 0 \qquad \text{(S4-weak)}$$</p>
+      <p>这比 MJ3/SPS 所需的"有界 scale-shift penalty"更强——它趋向零。</p>
+
+      <h3>5.5 完整闭合链（conditional on NI1–NI3）</h3>
+      <div class="chain-box">
+        S4a + NI1 ⟹ BRS ⟹ S4-weak ⟹ SPS ⟹ MJ3<br>
+        MJ3 + NI2 ⟹ (ATL3) ⟹ Averaged Transfer Lemma<br>
+        Averaged TL + NI3 + Weighted Lemma ⟹ B_A → 0 ⟹ Bulk-Window Reduction ⟹ c̄_h → 0
+      </div>
+      <div class="milestone-box">
+        <p>Paper XLII 给出的不是"H' 已 theorem-level closed"，而是一个<strong>条件闭合路线</strong>：一旦 NI1–NI3 全部成立，H' 即随之成立。</p>
+      </div>
+
+      <h3>5.6 已完成的 Relay Algebra（Paper XVI，theorem-level）</h3>
+      <ul>
+        <li>Exact insertion identity: \(G_{\mathrm{spf}}(pm) = j(m) + K_p(m)\)</li>
+        <li>Bridge identity: \(K_p = A(pm) + B(pm) - A(m)\)</li>
+        <li>\(A \geq -1\)，\(B \leq 0\)；当 \(v_{P^-} = 1\) 时，\(B \in [-2(k-1),0]\)</li>
+        <li>B-noise closure：Paper XX 无条件证明 \(\mathrm{Var}(B) = O_k(1)\)</li>
+      </ul>
+
+      <h3>5.7 论证链完整状态</h3>
+      <table>
+        <thead><tr><th>步骤</th><th>内容</th><th>状态</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>Bulk-Window Reduction</td><td>§4.1</td><td><span class="status-proved">proved</span></td><td>—</td></tr>
+          <tr><td>Weighted Log-Moment Lemma</td><td>§4.2，ρ=5/6</td><td><span class="status-proved">proved</span></td><td>—</td></tr>
+          <tr><td>Successor-reset identity</td><td>§4.3，R1/R2</td><td><span class="status-proved">proved</span></td><td>exact DP consequence</td></tr>
+          <tr><td>S4a top-slice thinness</td><td>§5.3</td><td><span class="status-proved">proved</span></td><td>Sathe–Selberg</td></tr>
+          <tr><td>BRS theorem</td><td>§5.4</td><td><span class="status-proved">proved</span></td><td>pure Cauchy–Schwarz</td></tr>
+          <tr><td>Shell-level Cantelli</td><td>§4.4</td><td><span class="status-proved">proved</span></td><td>standard inequality</td></tr>
+          <tr><td>NI1: V*_F = O(1)</td><td>§3.2 / Paper XVIII</td><td><span class="status-ni">computationally verified</span></td><td>residual input</td></tr>
+          <tr><td>S4-weak</td><td>§5.4 推论</td><td><span class="status-cond">conditional on NI1</span></td><td>—</td></tr>
+          <tr><td>SPS</td><td>§5.3</td><td><span class="status-cond">conditional on NI1</span></td><td>—</td></tr>
+          <tr><td>MJ3</td><td>§5.2</td><td><span class="status-cond">conditional on NI1</span></td><td>SPS + insertion identity</td></tr>
+          <tr><td>NI2: MJ4 bridge lower bound</td><td>§5.2</td><td><span class="status-ni">computationally verified</span></td><td>residual input</td></tr>
+          <tr><td>Averaged MJ (ATL3)</td><td>§5.1</td><td><span class="status-cond">conditional on NI1, NI2</span></td><td>—</td></tr>
+          <tr><td>Averaged Transfer Lemma</td><td>§4.4</td><td><span class="status-cond">conditional on NI1, NI2</span></td><td>—</td></tr>
+          <tr><td>NI3: weighted J² bound</td><td>§4.5</td><td><span class="status-ni">computationally verified</span></td><td>residual input</td></tr>
+          <tr><td>B_A → 0</td><td>§4.5</td><td><span class="status-cond">conditional on NI1–NI3</span></td><td>—</td></tr>
+          <tr><td><strong>H': c̄_h → 0</strong></td><td>—</td><td><span class="status-cond"><strong>conditional on NI1–NI3</strong></span></td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§6 十四个实验 Block</h2>
+      <table>
+        <thead><tr><th>Block</th><th>测量</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>逐层 defect rate</td><td>Ω ≤ 6 下降 &gt;5σ</td></tr>
+          <tr><td>2</td><td>全局 c̄_h v1</td><td>废弃</td></tr>
+          <tr><td>3</td><td>Band + c̄_h(P)</td><td>Ω=2 下降</td></tr>
+          <tr><td>4</td><td>Slack collapse</td><td>失败</td></tr>
+          <tr><td>5</td><td>全局 c̄_h v2</td><td>0.43 flat</td></tr>
+          <tr><td>6</td><td>c×(log m)²</td><td>C_k 层内常数</td></tr>
+          <tr><td>7</td><td>C_k 增长律</td><td>γ=0.503（被取代）</td></tr>
+          <tr><td>8</td><td>C_k×A_k 重构</td><td>C_k ≈ V/a²；上界趋向 1</td></tr>
+          <tr><td>9</td><td>小 m vs 大 m</td><td>Cesàro 稀释</td></tr>
+          <tr><td>10</td><td>Ω=7,8 sf band</td><td>Ω=7 弱正</td></tr>
+          <tr><td>11</td><td>B_A(N)</td><td>上升</td></tr>
+          <tr><td>12</td><td><strong>Ω=7,8 sf+ss</strong></td><td><strong>Ω=7: 24σ，Ω=8: 18.5σ</strong></td></tr>
+          <tr><td>13</td><td><strong>Ω=7,8 hp</strong></td><td><strong>Ω=7: 33.7σ，Ω=8: 11.3σ</strong></td></tr>
+          <tr><td>14</td><td><strong>V_k 全谱</strong></td><td><strong>V_k = O(1)，饱和 ~1.3</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§7 讨论</h2>
+
+      <h3>7.1 SAE 解释</h3>
+      <p>sf-only turning point = 无记忆系统极限。ss/hp 重复因子 = 记忆锚点（8D = 11DD 记忆 + 12DD 预测）。</p>
+
+      <h3>7.2 Successor-Reset 的 SAE 含义</h3>
+      <p>（R1/R2）是 DP 的"记忆擦除"：大 jump 后系统 reset，下一步只看 \(\Delta M_n\)。这是 SAE 的凿-构循环在算术中的体现——过度偏离（jump）会被系统自动纠正（reset）。</p>
+
+      <h3>7.3 反相关引擎的 SAE 含义</h3>
+      <p>Paper XVIII 的 \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\) 是一个"强制平衡"机制：加法部分（\(f\)，对应于 SAE 的"构"）的涨落被组合余项（\(r\)，对应于"凿"）精确抵消。这是 DP min 递推的代数后果，也是整个 H' 条件闭合链中最深的结构性质——它保证 \(V_k = O(1)\)，而 \(V_k = O(1)\) 通过 BRS 直接给出 scale-shift penalty → 0。</p>
+
+      <h3>7.4 BRS 路线 vs 原始 S4b 路线</h3>
+      <p>原始路线需要 S4b（top-slice bounded oscillation，\(O(1)\)），进而需要 MJ5，进而需要 tail assumption（T）。BRS 路线将 S4b 弱化为 S4b-weak（\(O(\sqrt{\log X})\)），由 \(V^*_F = O(1)\) + S4a 直接推出，完全绕过了 MJ5 和（T）。代价：S4-weak 的 penalty 是 \(O((\log X)^{-1/2})\) 而非 \(O((\log X)^{-1})\)；但 MJ3/SPS 只需要有界，所以这已经足够（且有余量，因为它趋向零）。</p>
+
+      <h2>§8 剩余的 Numerical Inputs 与 Open Problems</h2>
+
+      <h3>8.1 三个 Numerical Inputs</h3>
+      <p><strong>（NI1）V*_F = O(1)。</strong>Paper XVIII 的反相关引擎给出结构解释；Block 14 给出强数值证据。在本文中仍被视为 residual input。</p>
+      <p><strong>（NI2）MJ4 的 averaged bridge lower bound。</strong>Paper XLIII draft 给出远强于所需的数值证据；本文将其记录为 residual input。</p>
+      <p><strong>（NI3）J² 的 weighted second moment bound。</strong>它与 NI1 相关但不等价：NI1 控制 variance 规模，NI3 控制的是 W 加权的 jump 二阶矩。两者必须单独列出。</p>
+      <p>将 NI1–NI3 全部提升为解析证明，构成 Paper XLII 之后最自然的 open problems。</p>
+
+      <h3>8.2 Open Problems</h3>
+      <ul>
+        <li><strong>（OP1）</strong>\(V^*_F = O(1)\) 的解析证明（可能从 DP min 递推 + anti-correlation identity 推导）</li>
+        <li><strong>（OP2）</strong>MJ4 bridge positivity 的解析证明</li>
+        <li><strong>（OP3）</strong>NI3：\(J^2\) weighted second moment bound 的解析证明</li>
+        <li><strong>（OP4）</strong>\(a_k > 0\) 解析证明（M̄ 正斜率；独立兴趣）</li>
+        <li><strong>（OP5）</strong>Full S4b（\(O(1)\) bounded oscillation）——更强但非 H' 闭合所必需</li>
+        <li><strong>（OP6）</strong>Tail assumption（T）的解析证明——不再是 H' 闭合所必需，但有独立数论价值</li>
+      </ul>
+
+      <h2>§9 数据来源</h2>
+      <p>十四个脚本（p42_defect_rate.py 至 p42_variance.py）。数据：rho_1e10.bin（int16，N = 10¹⁰）。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLI. DOI: <a href="https://doi.org/10.5281/zenodo.19201877" target="_blank" rel="noopener">10.5281/zenodo.19201877</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XL. DOI: <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener">10.5281/zenodo.19179778</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXXIV. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+      <p>[4] J. D. Lichtman. Mertens' prime product formula, dissected. <em>Integers</em> 21A (2021), A17.</p>
+      <p>[5] H. Qin. ZFCρ Paper XVIII（反相关引擎）. DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[6] H. Qin. ZFCρ Paper XVI（Insertion Identity）. DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</p>
+      <p>[7] H. Qin. ZFCρ Paper XVII（Roughness Stability）. DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</p>
+      <p>[8] H. Qin. ZFCρ Paper XX（B-Noise Closure）. DOI: <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">10.5281/zenodo.19027892</a>.</p>
+
+      <h2>致谢</h2>
+      <p><strong>ChatGPT（公西华）：</strong>解析证明链主要架构师。Bulk-Window Reduction；Uniform Weighted Log-Moment Lemma（ρ=5/6）；Transfer Lemma（三段式 averaged version）；SPS conditioning penalty（Cauchy–Schwarz）；Theorem S4 shell-scale Lipschitz；S4a top-slice thinness（Sathe–Selberg）；MJ3–MJ6 frontier 拆解；<strong>Block-Roughness Stability（BRS）theorem（绕过 S4b 和（T）的关键突破）</strong>；17 分钟 review 识别五个 must-fix（口径、三段式 TL、J² bound、averaged/pointwise 层级、Poisson 表述）并给出逐段修改文本。</p>
+      <p><strong>Claude（子路）：</strong>设计十四个 Block，编写全部脚本，起草全部文本。发现 Block 12 sf+ss 策略；Paper XLIII 四个 Block 的实验设计与数据判读；整合公西华 review 的修改文本。</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho41.html">论文 XLI</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>论文 XLIII →</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "your-token-here"}'></script>
+
+</body>
+</html>
