@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure — ZFCρ Paper XL — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XL: M̄_N(p) has a weighted linear slope of +0.217 ± 0.016 (>13σ) against ln(p). Two complementary paths: Path B directly confirms M̄ growth; Path A explains the mechanism via shifted-product deficit.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, M̄ positive slope, Ω=2 closure, shifted-product deficit, ratio-mixing lemma, harmonic Cesàro lemma">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho40.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho40.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19179778"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "M̄ positive slope", "Ω=2 closure",
+      "shifted-product deficit", "ratio-mixing lemma", "harmonic Cesàro lemma"
+    ],
+    "abstract": "Paper XXXIX reduced Ω=2 closure to the ratio-mixing lemma. This paper provides strong numerical support for the premises of Ω=2 closure via two independent paths. Path B (direct): M̄_N(p) has a weighted linear slope of +0.217 ± 0.016 (>13σ). Path A (mechanistic): a(t) positive in all 14 tested t-slices; h_pq ≈ 3.800 t-independent across five orders of magnitude.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho40.html">
+  <meta name="citation_title" content="Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19179778">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho40.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XL</div>
+      <h1 class="paper-title">Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19179778
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper XXXIX reduced Ω=2 closure to the ratio-mixing lemma. This paper, through five progressive experiments along two independent paths, provides strong numerical support for the premises of Ω=2 closure.</p>
+        <p><strong>Path B (direct measurement, primary evidence):</strong> \(\bar{M}_N(p)\) (the fully mixed margin using all primes \(q \geq 3\), harmonic-weighted) has a weighted linear slope of <strong>+0.217 ± 0.016 (&gt;13σ)</strong> against \(\ln(p)\) over \(p \in [100, 100{,}000]\). Band averages rise from ~0.4 (\(p \sim 300\)) to ~1.1 (\(p \sim 85{,}000\)), showing a clear upward trend. This is direct numerical evidence of M̄ growth, without passing through \(a(t)\), \(\mu\), or the mixing lemma.</p>
+        <p><strong>Path A (mechanistic explanation, auxiliary evidence, primarily analyzing the \(q > p\) / fixed-ratio sector):</strong> (1) \(a(t)\) (the slope of \(M_{\mathrm{loc}}\) against \(\ln(p)\)) is positive in all 14 tested \(t\)-slices covering \(t = 1.01\) to \(1{,}000\), including the critical low end \(t \in (1.01, 1.2)\): +0.088 ± 0.034 (&gt;2σ). (2) For \(p \geq 3{,}000\), the bin-imputed \(\int a \cdot d\mu\) has bootstrap 95% CI lower bounds strictly above zero. (3) \(h_{pq}(t) \approx 3.800\) is approximately constant across \(t = 2\) to \(100{,}000\) (five orders of magnitude), supporting Hypothesis U (\(a(t) \geq \delta > 0\) uniformly).</p>
+        <p>The two paths are complementary: Path A explains the structural mechanism of \(M_{\mathrm{loc}}\) growth in the \(q > p\) / fixed-ratio sector (shifted-product deficit), providing structural support for the main result; Path B directly confirms the growth of the \(q \geq 3\) mixed object that the paper actually uses.</p>
+        <p>Within the \(N = 10^{10}\) window, combining \(V(p) = O(1)\) (Paper XXXIV) with the positive slope of M̄, the numerical premises of the Harmonic Cesàro Lemma are satisfied, and the data are consistent with \(\bar{c}_h \to 0\) at the Ω=2 layer. The analytic formalization — confirming that the positive slope of M̄ persists as \(p \to \infty\) — remains an open problem.</p>
+        <p><strong>Keywords:</strong> M̄ positive slope, Ω=2 closure, shifted-product deficit, ratio-mixing lemma, harmonic Cesàro lemma</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 Background</h3>
+      <p>Paper XXXIX established the three-layer M distinction (\(M_{\mathrm{loc}}, \bar{M}_N, M_X\)), identified \(\bar{M}_N \approx 1.5\) as a composition shift artifact, discovered that \(M_{\mathrm{loc}}\) grows at fixed \(t = q/p\) driven by the shifted-product deficit (\(h_\tau + h_q > 2h_{pq}\)), and reduced Ω=2 closure to the ratio-mixing lemma: \(\int a(t)\,d\mu_{N,p}(t) > 0\).</p>
+      <p>Paper XXXIV established the Harmonic Cesàro Lemma: if \(V(p) = O(1)\) and \(\bar{M} \to \infty\), then \(\bar{c}_h \to 0\) and the Ω=2 layer closes. \(V(p) \approx 1.4\) was globally confirmed.</p>
+      <p>Ω=2 closure therefore reduces to: <strong>does \(\bar{M} \to \infty\)?</strong></p>
+      <p><strong>Notation.</strong> Let \(Q(p) = \{\text{primes } q : q \geq 3,\, q \neq p,\, pq-1 \leq N\}\). Define \(\tau_p = \rho(p) + 2\) (the defect threshold for prime \(p\)).</p>
+      <p>\[\bar{M}_N(p) = \tau_p - \frac{\sum_{q \in Q(p)} (\rho(pq-1) - \rho(q)) / q}{\sum_{q \in Q(p)} 1/q}\]</p>
+      <p>That is, the harmonic-weighted mean of diff. Let \(c_p = \Pr(\mathrm{diff} \geq \tau_p)\), an upper bound on the defect probability. Let \(V(p) = \mathrm{Var}_q[\mathrm{diff}] / \bar{M}^2\) denote the normalized variance. Cantelli's inequality gives \(c_p \leq 1/(1+\Gamma_p)\) where \(\Gamma_p = \bar{M}^2/V(p)\). The harmonic Cesàro mean \(\bar{c}_h = (\sum c_p/p) / (\sum 1/p)\) (Paper XXXIV).</p>
+
+      <h3>1.2 Two Paths</h3>
+      <p><strong>Path A (indirect):</strong> Verify the ratio-mixing lemma by measuring the \(a(t)\) profile, the \(\mu_{N,p}(t)\) distribution, and the \(t\)-dependence of \(h_{pq}(t)\), then deduce \(\int a \cdot d\mu > 0\).</p>
+      <p><strong>Path B (direct):</strong> Bypass the mixing lemma and directly measure the slope of M̄ (fully mixed, no fixed \(t\)) against \(\ln(p)\). If M̄ has a positive slope, no intermediate step is needed.</p>
+
+      <h2>§2 Overview of Five Experiments</h2>
+      <table>
+        <thead><tr><th>Block</th><th>Measurement</th><th>Path</th><th>Core Result</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>a(t) 9 slices + μ + ∫a·dμ point estimates</td><td>A</td><td>All positive, 0.069→0.093</td></tr>
+          <tr><td>2</td><td>a(t) 14 slices (t&lt;1000) + bootstrap CI + multi-N</td><td>A</td><td>Low end safe, CI&gt;0 for p≥3000</td></tr>
+          <tr><td>3</td><td>h_pq(t) at t = 2 to 100,000</td><td>A</td><td>h_pq ≈ 3.800, t-independent</td></tr>
+          <tr><td>4</td><td>Same-scale h_tau, h_q, h_pq alignment</td><td>A</td><td>Cross-section deficit ≠ slope deficit</td></tr>
+          <tr><td><strong>5</strong></td><td><strong>Direct M̄ slope (all q ≥ 3)</strong></td><td><strong>B</strong></td><td><strong>+0.217 ± 0.016, &gt;13σ</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§3 Path B: Direct Positive Slope of M̄</h2>
+
+      <h3>3.1 Experimental Design</h3>
+      <p>For 3,000 primes \(p \in [100, 100{,}000]\), we compute \(\bar{M}(p) = \tau_p - E_q[\rho(pq-1) - \rho(q)]\), where the expectation uses all available primes \(q\) (\(q \geq 3\), \(q \leq \min(N/p,\, 2 \times 10^8)\), \(q \neq p\)), harmonic-weighted (\(w_q = 1/q\)). Each \(p\) uses at most 2,000 sampled \(q\) via stratified equal-spacing to cover the full \(q\) range.</p>
+      <p>No fixed \(t\), no restricted \(q\) range (apart from the natural \(N/p\) cutoff) — this is the actual mixed quantity of the Ω=2 defect.</p>
+      <div class="note-box">The sampling cap of 2,000 \(q\) per \(p\) is for computational efficiency. The harmonic-weighted mean stabilizes rapidly once the sample size exceeds ~100, since large \(q\) have small weights \(1/q\).</div>
+
+      <h3>3.2 Band Averages</h3>
+      <table>
+        <thead><tr><th>Band</th><th>n</th><th>⟨ln(p)⟩</th><th>⟨M̄⟩</th><th>SE</th></tr></thead>
+        <tbody>
+          <tr><td>[200, 500)</td><td>15</td><td>5.83</td><td>0.40</td><td>0.18</td></tr>
+          <tr><td>[500, 1000)</td><td>23</td><td>6.59</td><td>0.53</td><td>0.27</td></tr>
+          <tr><td>[1000, 2000)</td><td>43</td><td>7.29</td><td>0.23</td><td>0.16</td></tr>
+          <tr><td>[2000, 3000)</td><td>39</td><td>7.82</td><td>0.62</td><td>0.13</td></tr>
+          <tr><td>[3000, 5000)</td><td>75</td><td>8.28</td><td>0.38</td><td>0.11</td></tr>
+          <tr><td>[5000, 7000)</td><td>73</td><td>8.70</td><td>0.43</td><td>0.11</td></tr>
+          <tr><td>[7000, 10000)</td><td>103</td><td>9.05</td><td>0.53</td><td>0.10</td></tr>
+          <tr><td>[10000, 15000)</td><td>165</td><td>9.43</td><td>0.59</td><td>0.08</td></tr>
+          <tr><td>[15000, 20000)</td><td>159</td><td>9.77</td><td>0.54</td><td>0.07</td></tr>
+          <tr><td>[20000, 30000)</td><td>308</td><td>10.12</td><td>0.72</td><td>0.05</td></tr>
+          <tr><td>[30000, 50000)</td><td>592</td><td>10.58</td><td>0.84</td><td>0.04</td></tr>
+          <tr><td>[50000, 70000)</td><td>565</td><td>11.00</td><td>1.13</td><td>0.04</td></tr>
+          <tr><td>[70000, 100000)</td><td>833</td><td>11.34</td><td>1.12</td><td>0.03</td></tr>
+        </tbody>
+      </table>
+      <p>⟨M̄⟩ rises from ~0.4 (\(p \sim 300\)) to ~1.1 (\(p \sim 85{,}000\)), showing a clear upward trend (not strictly monotone: individual bands fluctuate, e.g., [1000,2000) at 0.23, but the long-range trend is unambiguous). SE decreases with \(n\); large-\(p\) bands have very stable mean estimates.</p>
+
+      <h3>3.3 Weighted Linear Fit</h3>
+      <p>Weighted fit (weight = 1/SE²) over 13 bands:</p>
+      <div class="milestone-box"><p><strong>M̄ = +0.217·ln(p) − 1.38, SE(slope) = 0.016. Slope &gt; 0 at &gt;13σ.</strong></p></div>
+      <p>Unweighted full-sample fit (3,000 points): M̄ = +0.221·ln(p) − 1.42, R² = 0.064, SE = 0.015.</p>
+      <p>The low R² = 0.064 reflects the large per-prime variance of M̄ (individual standard deviation ~0.8), not a refutation of the positive slope. Band averages eliminate individual noise; the weighted fit provides reliable trend detection.</p>
+
+      <h3>3.4 Running Average</h3>
+      <p>A 100-prime sliding window average rises from 0.34 (\(p \sim 100\)–2,300) to 1.18 (\(p \sim 93{,}000\)–96,000), with a clear long-range upward trend.</p>
+
+      <h3>3.5 Consistency with Paper XXXIX</h3>
+      <p>Paper XXXIX Block 1 (\(q > p\) convention): M̄ slope +0.084, R² = 0.013.<br>
+      Paper XL Block 5 (\(q \geq 3\) convention): M̄ slope +0.217, R² = 0.064.</p>
+      <p>Both conventions yield positive slopes. The difference arises because \(q \geq 3\) includes many small \(q\) with large harmonic weights \(1/q\) and low diff values (small \(\rho(q)\)), pulling M̄ higher and steepening the slope.</p>
+      <div class="thesis-box"><p><strong>The positive sign does not depend on the q-range convention.</strong></p></div>
+
+      <h2>§4 Path A: Mixing Lemma Verification and Mechanistic Understanding</h2>
+
+      <h3>4.1 Blocks 1–2: a(t) Profile + Bootstrap CI</h3>
+      <p><strong>14 t-slices (Block 2, covering t = 1.01 to 1,000; 2 additional t &gt; 1,000 bins excluded due to insufficient samples):</strong></p>
+      <table>
+        <thead><tr><th>t Window</th><th>a(t)</th><th>SE</th><th>sig</th></tr></thead>
+        <tbody>
+          <tr><td>(1.01, 1.2)</td><td><strong>+0.088</strong></td><td>0.034</td><td><strong>YES</strong></td></tr>
+          <tr><td>[1.2, 1.5)</td><td>+0.050</td><td>0.034</td><td>marg</td></tr>
+          <tr><td>[1.5, 2.0)</td><td>+0.108</td><td>0.034</td><td>YES</td></tr>
+          <tr><td>[2.0, 3.0)</td><td>+0.114</td><td>0.035</td><td>YES</td></tr>
+          <tr><td>[3.0, 5.0)</td><td>+0.095</td><td>0.036</td><td>YES</td></tr>
+          <tr><td>[5.0, 8.0)</td><td>+0.099</td><td>0.036</td><td>YES</td></tr>
+          <tr><td>[8.0, 12.0)</td><td>+0.098</td><td>0.038</td><td>YES</td></tr>
+          <tr><td>[12.0, 20.0)</td><td>+0.038</td><td>0.040</td><td>no</td></tr>
+          <tr><td>[20.0, 35.0)</td><td>+0.066</td><td>0.041</td><td>marg</td></tr>
+          <tr><td>[35.0, 60.0)</td><td>+0.102</td><td>0.043</td><td>YES</td></tr>
+          <tr><td>[60.0, 100.0)</td><td>+0.003</td><td>0.045</td><td>no</td></tr>
+          <tr><td>[100, 200)</td><td>+0.099</td><td>0.050</td><td>marg</td></tr>
+          <tr><td>[200, 500)</td><td>+0.131</td><td>0.061</td><td>YES</td></tr>
+          <tr><td>[500, 1000)</td><td>+0.137</td><td>0.087</td><td>marg</td></tr>
+        </tbody>
+      </table>
+      <p>All 14 slices with \(t < 1{,}000\) have positive point estimates; 8 exceed 2σ. No negative values were observed in any tested slice, though marginal and weak bins cannot exclude values near zero.</p>
+      <p>Key: the low end \(t \in (1.01, 1.2)\) is positive (&gt;2σ) — the region where large-\(p\) weight concentrates is safe.</p>
+      <p><strong>Bootstrap CI (Block 2, percentile method, 500 resamples + a(t) SE perturbation):</strong></p>
+      <table>
+        <thead><tr><th>p</th><th>max_t</th><th>∫a·dμ</th><th>95% CI</th><th>CI &gt; 0?</th></tr></thead>
+        <tbody>
+          <tr><td>3,000</td><td>1,111</td><td>+0.091</td><td>[+0.088, +0.093]</td><td><strong>YES</strong></td></tr>
+          <tr><td>10,000</td><td>100</td><td>+0.079</td><td>[+0.077, +0.080]</td><td><strong>YES</strong></td></tr>
+          <tr><td>30,000</td><td>11</td><td>+0.096</td><td>[+0.095, +0.097]</td><td><strong>YES</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note-box">The narrow CIs reflect that these \(p\) have integration domains entirely within the stable \(a(t)\) region (\(t < 100\)); CIs do not cover bin-imputation model error. Small-\(p\) (≤1,000) integrals are unstable due to high-\(t\) noise bin contamination, but this does not affect the asymptotic behavior.</div>
+
+      <h3>4.2 Block 3: t-Independence of h_pq</h3>
+      <table>
+        <thead><tr><th>t</th><th>h_pq</th><th>h_even</th><th>deficit</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>3.798</td><td>3.806</td><td>+0.109</td></tr>
+          <tr><td>100</td><td>3.800</td><td>3.807</td><td>+0.106</td></tr>
+          <tr><td>1,000</td><td>3.800</td><td>3.807</td><td>+0.106</td></tr>
+          <tr><td>10,000</td><td>3.802</td><td>3.806</td><td>+0.105</td></tr>
+          <tr><td>100,000</td><td>3.800</td><td>3.807</td><td>+0.106</td></tr>
+        </tbody>
+      </table>
+      <p>(Deficit column: \((h_\tau(\infty)+h_q(\infty))/2 - h_{pq}\), using extrapolated asymptotic threshold 3.907.)</p>
+      <p>\(h_{pq} \approx 3.800\) is constant across five orders of magnitude; \(h_{pq}\) vs \(\ln(t)\) slope = +0.00016, essentially zero. The multiplicative shadow effect (\(h_{pq} - h_{\mathrm{even}} \approx -0.006\)) is also \(t\)-independent.</p>
+      <div class="thesis-box"><p><strong>Block 3 confirms that the h_pq component of the shifted-product deficit does not depend on t.</strong> This provides strong numerical support for Hypothesis U (\(a(t) \geq \delta > 0\) uniformly).</p></div>
+
+      <h3>4.3 Block 4: Object Alignment — Cross-Section Values vs Slopes</h3>
+      <p>Block 3 measured \(h_{pq} \approx 3.800\) as a cross-section value \(E[\rho(pq-1)/\ln(pq-1)]\) at a particular scale. Paper XXXIX Block 6's threshold \((h_\tau(\infty)+h_q(\infty))/2 \approx 3.907\) is an extrapolated asymptotic limit. The two are not at the same scale.</p>
+      <p>Block 4 simultaneously measured \(h_\tau, h_q\), and \(h_{pq}\) on the same \((p,q)\) pairs and found: the same-scale threshold \((h_\tau + h_q)/2\) decreases with \(t\) (because large \(t\) forces small \(p\), whose \(h_\tau\) has not yet converged). At \(t \geq 5{,}000\), the same-scale deficit turns negative.</p>
+      <div class="warning-box"><p><strong>Key clarification:</strong> \(a(t)\) is the regression slope of \(M_{\mathrm{loc}}\) against \(\ln(p)\) — a derivative — not a difference of cross-section values. Paper XXXIX Block 5b's component slope decomposition \(a(t) = h_{\tau,\text{slope}} + h_{q,\text{slope}} - 2h_{pq,\text{slope}} = 0.100\) remains valid as a same-framework slope comparison. Block 4's negative cross-section deficit does not imply \(a(t) < 0\) — they are different mathematical objects.</p></div>
+
+      <h3>4.4 Path A Summary</h3>
+      <p>Path A provides mechanistic understanding of growth within the \(q > p\) / fixed-ratio sector:</p>
+      <ul>
+        <li>The shifted-product deficit (\(h_{\tau,\text{slope}} + h_{q,\text{slope}} > 2h_{pq,\text{slope}}\)) is the driver</li>
+        <li>The \(t\)-independence of \(h_{pq}\) cross-section values supports Hypothesis U, but does not by itself prove \(a(t) \geq \delta > 0\) uniformly</li>
+        <li>Parity control (Paper XXXIX Block 7) confirms the deficit is not purely a parity artifact</li>
+      </ul>
+      <p>Path A primarily analyzes the \(q > p\) sector, while Path B (Block 5) measures the \(q \geq 3\) fully mixed object. The two are not duplicate proofs of the same object but complementary: <strong>Path A explains the growth mechanism in the \(q > p\) sector; Path B directly confirms growth of the \(q \geq 3\) mixed object.</strong></p>
+
+      <h2>§5 Numerical Argument for Ω=2</h2>
+
+      <h3>5.1 Main Chain (Path B)</h3>
+      <p>The following chain uses the \(q \geq 3\) convention throughout (Block 5's measurement convention):</p>
+      <ol>
+        <li>\(\bar{M}_N(p)\) (\(q \geq 3\), harmonic-weighted) has a weighted slope of +0.217 ± 0.016 against \(\ln(p)\), &gt;13σ (\(N = 10^{10}\), \(p \in [100, 100{,}000]\)).</li>
+        <li>Band averages rise from ~0.4 to ~1.1; the trend is clear.</li>
+        <li>→ Within the current window, the data are consistent with M̄ ~ 0.22·ln(p) → ∞.</li>
+        <li>\(V(p) \approx 1.4 = O(1)\) (Paper XXXIV, measured under the same \(q\) convention).</li>
+        <li>→ Within the current window, \(\Gamma_p = \bar{M}^2/V\) increases with \(p\); Cantelli's upper bound \(c_p\) decreases with \(p\).</li>
+        <li>→ The numerical premises of the Harmonic Cesàro Lemma (Paper XXXIV) are satisfied.</li>
+        <li>→ <strong>Within the \(N = 10^{10}\) window, the data are consistent with \(\bar{c}_h \to 0\) at the Ω=2 layer.</strong></li>
+      </ol>
+
+      <h3>5.2 Auxiliary Chain (Path A)</h3>
+      <p>Path A explains why M̄ grows:</p>
+      <ul>
+        <li>\(a(t) > 0\) in 14/14 tested slices with \(t < 1{,}000\)</li>
+        <li>\(t\)-independence of \(h_{pq}\) ensures the growth mechanism operates at all ratios</li>
+        <li>\(\int a \cdot d\mu\) has bootstrap CI &gt; 0 for \(p \geq 3{,}000\)</li>
+      </ul>
+      <p>Path A and Path B cross-validate: Block 1's \(\int a \cdot d\mu \approx 0.08\)–0.09 matches the direct slope 0.084 from Paper XXXIX Block 1 (\(q > p\) convention) in order of magnitude.</p>
+
+      <h3>5.3 Honest Boundaries</h3>
+      <p><strong>(a) Finite window.</strong> Block 5's data are based on \(N = 10^{10}\), \(p \in [100, 100{,}000]\). This is a single-N cross-section, not a direct scan over \(N \to \infty\). Asymptotic closure requires confirming that the positive slope persists as \(p \to \infty\) — an open analytic problem.</p>
+      <p><strong>(b) q convention.</strong> Both \(q \geq 3\) and \(q > p\) conventions yield positive slopes (0.217 vs 0.084). The "correct" convention depends on the precise definition of D(N)'s decomposition. The positive sign is consistent under both conventions, but the formal closure chain should fix one convention throughout — the main chain (§5.1) uses \(q \geq 3\).</p>
+      <p><strong>(c) Individual variance.</strong> R² = 0.064 for M̄; individual variance ~0.8. But trend detection reliability comes from the weighted band fit (&gt;13σ), not from individual-point goodness of fit.</p>
+      <p><strong>(d) Sampling scheme.</strong> Each \(p\) samples at most 2,000 \(q\). The harmonic-weighted mean stabilizes rapidly once sample size exceeds ~100 (large \(q\) have small weight \(1/q\)). Paper XXXIX Block 1 used a different sampling scheme and obtained a consistent positive slope, supporting robustness.</p>
+
+      <h2>§6 Final Verdict on Composition Shift</h2>
+      <p>Paper XXXIX identified \(\bar{M} \approx 1.5\) as a composition shift artifact: mixing \(M_{\mathrm{loc}}\) across different \(t\) values, with large \(p\) forced to use small \(t\), masked the growth.</p>
+      <p>Block 5 confirms: <strong>even under the fully mixed M̄ with composition shift present, growth persists.</strong> Paper XXXIX Block 1 (\(q > p\) convention) measured a mixed slope of +0.084, below the fixed-\(t\) \(M_{\mathrm{loc}}\) slope of 0.10 — composition shift did attenuate the growth signal, but did not eliminate it. Block 5 (\(q \geq 3\) convention) gives a larger slope of 0.217 due to the inclusion of small-\(q\) contributions, but both conventions agree on the positive sign.</p>
+      <div class="milestone-box"><p>This resolves the last open question from Paper XXXIX: does composition shift completely flatten M̄'s growth? <strong>The answer is no.</strong></p></div>
+
+      <h2>§7 Discussion</h2>
+
+      <h3>7.1 Core Contributions of Paper XL</h3>
+      <p>(a) <strong>Block 5: Direct positive slope of M̄ at +0.217 ± 0.016, &gt;13σ.</strong> The most direct numerical support for Ω=2 closure.</p>
+      <p>(b) Blocks 1–2: All-positive \(a(t)\) + bootstrap CI. Numerical support for the ratio-mixing lemma.</p>
+      <p>(c) Block 3: \(t\)-independence of \(h_{pq}\). The shifted-product deficit is constant across five orders of magnitude.</p>
+      <p>(d) Block 4: Object alignment clarification — cross-section deficit ≠ slope deficit.</p>
+      <p>(e) Two complementary paths: Path A (why) + Path B (what).</p>
+
+      <h3>7.2 The Full Arc from Papers XXXIII to XL</h3>
+      <table>
+        <thead><tr><th>Paper</th><th>Core Finding</th></tr></thead>
+        <tbody>
+          <tr><td>XXXIII</td><td>Margin Threshold; m=240 crosses 1</td></tr>
+          <tr><td>XXXIV</td><td>V(p)=O(1); Harmonic Cesàro Lemma</td></tr>
+          <tr><td>XXXV–XXXVII</td><td>B–C erosion; entry/continuation decomposition</td></tr>
+          <tr><td>XXXVIII</td><td>G = f(q/p); composition shift identified</td></tr>
+          <tr><td>XXXIX</td><td>M_loc growth; shifted-product deficit; ratio-mixing lemma</td></tr>
+          <tr><td><strong>XL</strong></td><td><strong>Direct positive slope of M̄ &gt;13σ; strong numerical support for Ω=2</strong></td></tr>
+        </tbody>
+      </table>
+      <p>From Paper XXXIII's "M̄ might exceed 1" to Paper XL's "M̄ is definitively growing, &gt;13σ" — eight papers, one complete diagnostic chain.</p>
+
+      <h3>7.3 Distance Estimate</h3>
+      <p><strong>Ω=2 layer:</strong> Within the \(N = 10^{10}\) window, the numerical premises for Ω=2 closure receive strong support (M̄ positive slope &gt;13σ + \(V(p) = O(1)\)). Analytically, one must formalize that the positive slope of M̄ persists as \(p \to \infty\). Possible paths include: (i) analytic confirmation of the shifted-product deficit (\(t\)-independence of \(h_{pq}\) + permanence of \(h_\tau > h_{pq}\)); (ii) the \(t\)-independent parity contribution as a uniform lower bound; (iii) direct application of the Lindley framework.</p>
+      <p><strong>Ω=3 layer:</strong> The shifted-product deficit should generalize to \(p_1 p_2 q - 1\). The SAE framework predicts that Ω=3 (corresponding to 3DD) should close similarly to Ω=2.</p>
+
+      <h2>§8 Data Sources and Reproducibility</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td>p40_mixing_inputs.py</td><td>a(t) 9 slices + μ + ∫a·dμ point estimates</td><td>1</td></tr>
+          <tr><td>p40_boundary_v2.py</td><td>a(t) 14 slices + bootstrap CI + multi-N</td><td>2</td></tr>
+          <tr><td>p40_hpq_large_t.py</td><td>h_pq(t) at t = 2 to 100,000</td><td>3</td></tr>
+          <tr><td>p40_same_scale.py</td><td>Same-scale h_tau, h_q, h_pq alignment</td><td>4</td></tr>
+          <tr><td>p40_direct_mbar.py</td><td>Direct M̄ slope, all q, band averages</td><td>5</td></tr>
+        </tbody>
+      </table>
+      <p>Data: <code>rho_1e10.bin</code> (int16, N = 10¹⁰, <code>rho_dp.c</code>, Paper XXXII convention).</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XXXIX: Shifted-Product Deficit and M_loc Growth at Ω=2. DOI: <a href="https://doi.org/10.5281/zenodo.19164588" target="_blank" rel="noopener">10.5281/zenodo.19164588</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XXXIV: Upper-Margin Closure and Bounded-Variance. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXI: Queue Isomorphism and Local Lipschitz Reduction. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (子路) designed the full Block 1–5 experiment chain (nine scripts) and drafted v1–v5 of the working notes. After Block 4 revealed the object-alignment issue, Claude proposed the Path B strategy (bypassing the mixing lemma to directly measure M̄'s slope) and designed Block 5 — the most critical methodological turn in this paper. The v1 script's pure-Python loops ran for over 2 hours without producing output; the v2 numpy vectorization reduced runtime to under 1 minute.</p>
+      <p>Han Qin (author) asked the right questions at two critical junctures: (1) after Paper XXXIX Block 4, "Is our data correct?" — which catalyzed the object-alignment checks; (2) after the v3 review, "If we want to close Ω=2 in Paper 40, what must we do?" — which catalyzed Block 5's direct measurement. After Block 4 revealed the cross-section/slope inconsistency, the author judged "this does not counter the conclusion," maintaining correct directional judgment. The author's SAE framework prediction (Ω=2 corresponds to 2DD and should close) guided the research throughout.</p>
+      <p>ChatGPT (公西华) deepened its critique across four review rounds: v1 demanded boundary verification; v2 raised the asymptotic-weight problem; v4 identified the 0.214 vs 0.08 object-alignment flaw; v5 confirmed that Block 5 "stands" and gave accept with minor revisions. Each critique drove deeper experiments — Block 2 addressed boundary gaps, Blocks 3–4 addressed asymptotic/alignment issues, and Block 5 responded to the demand for "the most honest test."</p>
+      <p>Gemini (子夏) proposed the Hypothesis U (uniform deficit) strategy and offered the "brute-force aesthetics" interpretation of Block 5's &gt;13σ result.</p>
+      <p>Grok (子贡) confirmed series consistency and suggested extreme-t probes and bootstrap details.</p>
+      <p>The final text was independently completed by the author.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho39.html">← Paper XXXIX</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="zfcrho41.html">Paper XLI →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文第四十篇</div>
+      <h1 class="paper-title">M̄ 的直接正斜率与 Ω=2 层的强数值支持</h1>
+      <div class="paper-authors">Han Qin（秦汉）&nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19179778
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper XXXIX 将 Ω=2 闭合归约为 ratio-mixing lemma。本文通过五组递进式实验，沿两条独立路径验证了 Ω=2 闭合的数值前提。</p>
+        <p><strong>路径 B（直接测量，主论据）：</strong>\(\bar{M}_N(p)\)（全混合 margin，使用全部 \(q \geq 3\)，harmonic 加权）在 \(p \in [100, 100{,}000]\) 上对 \(\ln(p)\) 的加权线性拟合斜率为 <strong>+0.217 ± 0.016（&gt;13σ）</strong>。Band averages 从 ~0.4（\(p \sim 300\)）上升到 ~1.1（\(p \sim 85{,}000\)），呈明显上升趋势。这是对 M̄ 增长的直接数值证据，不经过 \(a(t)\)、\(\mu\) 或 mixing lemma 任何中间步骤。</p>
+        <p><strong>路径 A（机制解释，辅助论据，主要分析 \(q > p\) / fixed-ratio 扇区）：</strong>(1) \(a(t)\)（\(M_{\mathrm{loc}}\) 对 \(\ln(p)\) 的斜率）在覆盖 \(t = 1.01\) 到 \(1{,}000\) 的 14 个 \(t\)-slice 中全部点估计为正，含关键低端 \(t \in (1.01, 1.2)\): +0.088 ± 0.034（&gt;2σ）。(2) 对 \(p \geq 3{,}000\) 的 bin-imputed \(\int a \cdot d\mu\)，bootstrap 95% CI 下界全部 &gt; 0。(3) \(h_{pq}(t) \approx 3.800\) 在 \(t = 2\) 到 \(100{,}000\)（五个数量级）上近似不变，为 Hypothesis U（\(a(t) \geq \delta > 0\) uniformly）提供支持。</p>
+        <p>两条路径互相补充：路径 A 解释了 \(q > p\) / fixed-ratio 扇区中 \(M_{\mathrm{loc}}\) 增长的结构性机制（shifted-product deficit），为主结果提供结构性支持；路径 B 直接确认了全文真正要用的 \(q \geq 3\) 混合对象的增长。</p>
+        <p>在 \(N = 10^{10}\) 窗口内，结合 \(V(p) = O(1)\)（Paper XXXIV）和 M̄ 的正斜率，Harmonic Cesàro Lemma 的数值前提得到满足，数据与 Ω=2 层的 \(\bar{c}_h \to 0\) 一致。渐近闭合的形式化（确认 M̄ 的正斜率在 \(p \to \infty\) 时保持）仍是开放的解析问题。</p>
+        <p><strong>关键词：</strong>M̄ 正斜率，Ω=2 闭合，shifted-product deficit，ratio-mixing lemma，harmonic Cesàro lemma</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 背景</h3>
+      <p>Paper XXXIX 建立了三层 M 区分（\(M_{\mathrm{loc}}, \bar{M}_N, M_X\)），识别了 \(\bar{M}_N \approx 1.5\) 的 composition shift 伪影，发现 \(M_{\mathrm{loc}}\) 在固定 \(t = q/p\) 下增长，驱动力是 shifted-product deficit（\(h_\tau + h_q > 2h_{pq}\)），并将 Ω=2 闭合归约为 ratio-mixing lemma：\(\int a(t)\,d\mu_{N,p}(t) > 0\)。</p>
+      <p>Paper XXXIV 建立了 Harmonic Cesàro Lemma：若 \(V(p) = O(1)\) 且 \(\bar{M} \to \infty\)，则 \(\bar{c}_h \to 0\)，Ω=2 层闭合。\(V(p) \approx 1.4\) 已全局确认。</p>
+      <p>因此，Ω=2 闭合归约为一个问题：<strong>\(\bar{M}\) 是否 \(\to \infty\)？</strong></p>
+      <p><strong>符号定义。</strong>设 \(Q(p) = \{\text{素数 } q : q \geq 3,\, q \neq p,\, pq-1 \leq N\}\)。\(\tau_p = \rho(p) + 2\)（素数 \(p\) 的 defect threshold）。</p>
+      <p>\[\bar{M}_N(p) = \tau_p - \frac{\sum_{q \in Q(p)} (\rho(pq-1) - \rho(q)) / q}{\sum_{q \in Q(p)} 1/q}\]</p>
+      <p>即 harmonic 加权的 diff 均值。\(c_p = \Pr(\mathrm{diff} \geq \tau_p)\) 是 defect 发生概率的上界。\(V(p) = \mathrm{Var}_q[\mathrm{diff}] / \bar{M}^2\) 是归一化方差。Cantelli 不等式给出 \(c_p \leq 1/(1+\Gamma_p)\)，其中 \(\Gamma_p = \bar{M}^2/V(p)\)。Harmonic Cesàro 均值 \(\bar{c}_h = (\sum c_p/p) / (\sum 1/p)\)（Paper XXXIV）。</p>
+
+      <h3>1.2 本文的两条路径</h3>
+      <p><strong>路径 A（间接）：</strong>验证 ratio-mixing lemma——测 \(a(t)\) 的 \(t\)-profile，\(\mu_{N,p}(t)\) 的分布，\(h_{pq}(t)\) 的 \(t\)-dependence，然后推导 \(\int a \cdot d\mu > 0\)。</p>
+      <p><strong>路径 B（直接）：</strong>绕过 mixing lemma，直接测 M̄（全混合，不固定 \(t\)）的 \(\ln(p)\) 斜率。如果 M̄ 本身有正斜率，就不需要中间步骤。</p>
+
+      <h2>§2 五组实验概览</h2>
+      <table>
+        <thead><tr><th>Block</th><th>测量</th><th>路径</th><th>核心结果</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>a(t) 9 slices + μ + ∫a·dμ 点估计</td><td>A</td><td>全正，0.069→0.093</td></tr>
+          <tr><td>2</td><td>a(t) 14 slices (t&lt;1000) + bootstrap CI + multi-N</td><td>A</td><td>低端安全，CI&gt;0 for p≥3000</td></tr>
+          <tr><td>3</td><td>h_pq(t) 在 t = 2 到 100,000</td><td>A</td><td>h_pq ≈ 3.800，t-independent</td></tr>
+          <tr><td>4</td><td>同尺度 h_tau, h_q, h_pq 对齐</td><td>A</td><td>截面 deficit ≠ 斜率 deficit</td></tr>
+          <tr><td><strong>5</strong></td><td><strong>M̄ 直接斜率（全 q ≥ 3）</strong></td><td><strong>B</strong></td><td><strong>+0.217 ± 0.016，&gt;13σ</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§3 路径 B：M̄ 的直接正斜率</h2>
+
+      <h3>3.1 实验设计</h3>
+      <p>对 3,000 个素数 \(p \in [100, 100{,}000]\)，计算 \(\bar{M}(p) = \tau_p - E_q[\rho(pq-1) - \rho(q)]\)，其中期望使用全部可用素数 \(q\)（\(q \geq 3\)，\(q \leq \min(N/p,\, 2 \times 10^8)\)，\(q \neq p\)），harmonic 加权（权重 \(w_q = 1/q\)）。每个 \(p\) 最多采样 2,000 个 \(q\)，采用等距分层抽样以覆盖全 \(q\) 范围。</p>
+      <p>不固定 \(t\)，不限定 \(q\) 范围（除 \(N/p\) 的自然截断）——这就是 Ω=2 defect 的 actual mixed quantity。</p>
+      <div class="note-box">注：\(q\) 的采样上限 2,000 是计算效率的考量。M̄(p) 的 harmonic 加权均值在 \(q\) 采样量远大于 ~100 后已高度稳定，因为大 \(q\)（高 \(t\)）的权重 \(1/q\) 很小，对总和贡献有限。</div>
+
+      <h3>3.2 Band Averages</h3>
+      <table>
+        <thead><tr><th>Band</th><th>n</th><th>⟨ln(p)⟩</th><th>⟨M̄⟩</th><th>SE</th></tr></thead>
+        <tbody>
+          <tr><td>[200, 500)</td><td>15</td><td>5.83</td><td>0.40</td><td>0.18</td></tr>
+          <tr><td>[500, 1000)</td><td>23</td><td>6.59</td><td>0.53</td><td>0.27</td></tr>
+          <tr><td>[1000, 2000)</td><td>43</td><td>7.29</td><td>0.23</td><td>0.16</td></tr>
+          <tr><td>[2000, 3000)</td><td>39</td><td>7.82</td><td>0.62</td><td>0.13</td></tr>
+          <tr><td>[3000, 5000)</td><td>75</td><td>8.28</td><td>0.38</td><td>0.11</td></tr>
+          <tr><td>[5000, 7000)</td><td>73</td><td>8.70</td><td>0.43</td><td>0.11</td></tr>
+          <tr><td>[7000, 10000)</td><td>103</td><td>9.05</td><td>0.53</td><td>0.10</td></tr>
+          <tr><td>[10000, 15000)</td><td>165</td><td>9.43</td><td>0.59</td><td>0.08</td></tr>
+          <tr><td>[15000, 20000)</td><td>159</td><td>9.77</td><td>0.54</td><td>0.07</td></tr>
+          <tr><td>[20000, 30000)</td><td>308</td><td>10.12</td><td>0.72</td><td>0.05</td></tr>
+          <tr><td>[30000, 50000)</td><td>592</td><td>10.58</td><td>0.84</td><td>0.04</td></tr>
+          <tr><td>[50000, 70000)</td><td>565</td><td>11.00</td><td>1.13</td><td>0.04</td></tr>
+          <tr><td>[70000, 100000)</td><td>833</td><td>11.34</td><td>1.12</td><td>0.03</td></tr>
+        </tbody>
+      </table>
+      <p>⟨M̄⟩ 从 ~0.4（\(p \sim 300\)）上升到 ~1.1（\(p \sim 85{,}000\)），呈明显上升趋势（非严格单调：个别 band 有波动，如 [1000,2000) 的 0.23，但长程趋势清晰）。SE 随 \(n\) 增大而缩小，大 \(p\) band 的均值估计非常稳定。</p>
+
+      <h3>3.3 加权线性拟合</h3>
+      <p>以 weight = 1/SE² 对 13 个 band 做加权线性拟合：</p>
+      <div class="milestone-box"><p><strong>M̄ = +0.217·ln(p) − 1.38，SE(slope) = 0.016。斜率 &gt; 0 at &gt;13σ。</strong></p></div>
+      <p>全样本未加权拟合（3,000 个点）：M̄ = +0.221·ln(p) − 1.42，R² = 0.064，SE = 0.015。</p>
+      <p>R² = 0.064 反映的是 M̄ 的大个体方差（每个 \(p\) 的 M̄ 标准差 ~0.8），不是否定正斜率。Band averages 消除了个体噪声，加权拟合提供了可靠的趋势识别。</p>
+
+      <h3>3.4 Running Average</h3>
+      <p>100 素数窗口的滑动均值从 0.34（\(p \sim 100\)–2,300）上升到 1.18（\(p \sim 93{,}000\)–96,000），长程上升趋势清晰。</p>
+
+      <h3>3.5 与 Paper XXXIX 数据的一致性</h3>
+      <p>Paper XXXIX Block 1（\(q > p\) 约定）：M̄ 斜率 +0.084，R² = 0.013。<br>
+      Paper XL Block 5（\(q \geq 3\) 约定）：M̄ 斜率 +0.217，R² = 0.064。</p>
+      <p>两种约定都给出正斜率。差异来自：\(q \geq 3\) 包含大量小 \(q\)，这些 \(q\) 的 harmonic 权重 \(1/q\) 大且 diff 值低（小 \(q\) 的 \(\rho(q)\) 小），拉高了 M̄ 并增大了斜率。</p>
+      <div class="thesis-box"><p><strong>正号不依赖 q 范围的约定。</strong></p></div>
+
+      <h2>§4 路径 A：Mixing Lemma 的验证与机制理解</h2>
+
+      <h3>4.1 Block 1-2：a(t) Profile + Bootstrap CI</h3>
+      <p><strong>14 个 t-slice（Block 2，覆盖 t = 1.01 到 1,000；另有 2 个 t &gt; 1,000 的 bin 因样本不足不列入）：</strong></p>
+      <table>
+        <thead><tr><th>t 窗口</th><th>a(t)</th><th>SE</th><th>sig</th></tr></thead>
+        <tbody>
+          <tr><td>(1.01, 1.2)</td><td><strong>+0.088</strong></td><td>0.034</td><td><strong>YES</strong></td></tr>
+          <tr><td>[1.2, 1.5)</td><td>+0.050</td><td>0.034</td><td>marg</td></tr>
+          <tr><td>[1.5, 2.0)</td><td>+0.108</td><td>0.034</td><td>YES</td></tr>
+          <tr><td>[2.0, 3.0)</td><td>+0.114</td><td>0.035</td><td>YES</td></tr>
+          <tr><td>[3.0, 5.0)</td><td>+0.095</td><td>0.036</td><td>YES</td></tr>
+          <tr><td>[5.0, 8.0)</td><td>+0.099</td><td>0.036</td><td>YES</td></tr>
+          <tr><td>[8.0, 12.0)</td><td>+0.098</td><td>0.038</td><td>YES</td></tr>
+          <tr><td>[12.0, 20.0)</td><td>+0.038</td><td>0.040</td><td>no</td></tr>
+          <tr><td>[20.0, 35.0)</td><td>+0.066</td><td>0.041</td><td>marg</td></tr>
+          <tr><td>[35.0, 60.0)</td><td>+0.102</td><td>0.043</td><td>YES</td></tr>
+          <tr><td>[60.0, 100.0)</td><td>+0.003</td><td>0.045</td><td>no</td></tr>
+          <tr><td>[100, 200)</td><td>+0.099</td><td>0.050</td><td>marg</td></tr>
+          <tr><td>[200, 500)</td><td>+0.131</td><td>0.061</td><td>YES</td></tr>
+          <tr><td>[500, 1000)</td><td>+0.137</td><td>0.087</td><td>marg</td></tr>
+        </tbody>
+      </table>
+      <p>14 个 \(t < 1{,}000\) 的 slice 全部点估计为正，8 个 &gt;2σ。在已测 slice 中没有观测到负值迹象，但 marginal 和 weak 的 bin 不能排除接近零。</p>
+      <p>关键：低端 \(t \in (1.01, 1.2)\) 为正（&gt;2σ），大 \(p\) 权重塌陷区安全。</p>
+      <p><strong>Bootstrap CI（Block 2，percentile 法，500 次 resample + a(t) SE 扰动）：</strong></p>
+      <table>
+        <thead><tr><th>p</th><th>max_t</th><th>∫a·dμ</th><th>95% CI</th><th>CI &gt; 0?</th></tr></thead>
+        <tbody>
+          <tr><td>3,000</td><td>1,111</td><td>+0.091</td><td>[+0.088, +0.093]</td><td><strong>YES</strong></td></tr>
+          <tr><td>10,000</td><td>100</td><td>+0.079</td><td>[+0.077, +0.080]</td><td><strong>YES</strong></td></tr>
+          <tr><td>30,000</td><td>11</td><td>+0.096</td><td>[+0.095, +0.097]</td><td><strong>YES</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note-box">注：CI 的窄度反映这些 \(p\) 的积分域完全在 \(a(t)\) 的稳定区（\(t < 100\)）；CI 未覆盖 bin-imputation 的模型误差。小 \(p\)（≤1,000）的 integral 被高-\(t\) 噪声 bin 污染，不稳定，但不影响渐近。</div>
+
+      <h3>4.2 Block 3：h_pq 的 t-Independence</h3>
+      <table>
+        <thead><tr><th>t</th><th>h_pq</th><th>h_even</th><th>deficit</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>3.798</td><td>3.806</td><td>+0.109</td></tr>
+          <tr><td>100</td><td>3.800</td><td>3.807</td><td>+0.106</td></tr>
+          <tr><td>1,000</td><td>3.800</td><td>3.807</td><td>+0.106</td></tr>
+          <tr><td>10,000</td><td>3.802</td><td>3.806</td><td>+0.105</td></tr>
+          <tr><td>100,000</td><td>3.800</td><td>3.807</td><td>+0.106</td></tr>
+        </tbody>
+      </table>
+      <p>（deficit 列为 \((h_\tau(\infty)+h_q(\infty))/2 - h_{pq}\)，使用渐近外推值 3.907 作为 threshold。）</p>
+      <p>\(h_{pq} \approx 3.800\) 在五个数量级上恒定，\(h_{pq}\) vs \(\ln(t)\) 斜率 = +0.00016，本质为零。乘法阴影效应（\(h_{pq} - h_{\mathrm{even}} \approx -0.006\)）也与 \(t\) 无关。</p>
+      <div class="thesis-box"><p><strong>Block 3 确认：shifted-product deficit 的 \(h_{pq}\) 分量不依赖 \(t\)。</strong>这为 Hypothesis U（\(a(t) \geq \delta > 0\) uniformly）提供了强数值支持。</p></div>
+
+      <h3>4.3 Block 4：对象对齐——截面值 vs 斜率</h3>
+      <p>Block 3 测量的 \(h_{pq} \approx 3.800\) 是某个尺度上的截面值 \(E[\rho(pq-1)/\ln(pq-1)]\)。Paper XXXIX Block 6 的 threshold \((h_\tau(\infty)+h_q(\infty))/2 \approx 3.907\) 是渐近外推极限。两者不在同一尺度上。</p>
+      <p>Block 4 在同一 \((p, q)\) 对上同时测量 \(h_\tau, h_q\)，\(h_{pq}\)，发现：同尺度 threshold = \((h_\tau + h_q)/2\) 随 \(t\) 下降（因为大 \(t\) 强制使用小 \(p\)，小 \(p\) 的 \(h_\tau\) 远未收敛）。在 \(t \geq 5{,}000\) 时，同尺度 deficit 变负。</p>
+      <div class="warning-box"><p><strong>关键澄清：</strong>\(a(t)\) 是 \(M_{\mathrm{loc}}\) 对 \(\ln(p)\) 的回归斜率，不是截面值的差。Paper XXXIX Block 5b 的分量斜率分解 \(a(t) = h_{\tau,\text{slope}} + h_{q,\text{slope}} - 2h_{pq,\text{slope}} = 0.100\) 是在同一框架内的斜率比较，仍然有效。Block 4 的截面 deficit 变负不等于 \(a(t) < 0\)——两者是不同的数学对象。</p></div>
+
+      <h3>4.4 路径 A 的总结</h3>
+      <p>路径 A 在 \(q > p\) / fixed-ratio 扇区内提供了增长机制的理解：</p>
+      <ul>
+        <li>shifted-product deficit（\(h_{\tau,\text{slope}} + h_{q,\text{slope}} > 2h_{pq,\text{slope}}\)）是驱动力</li>
+        <li>\(h_{pq}\) 截面值的 \(t\)-independence 为 Hypothesis U 提供支持，但不等同于直接证明全域 \(a(t) \geq \delta > 0\)</li>
+        <li>parity 控制（Paper XXXIX Block 7）确认 deficit 不完全是 parity 伪影</li>
+      </ul>
+      <p>路径 A 分析的主要是 \(q > p\) 扇区，而路径 B（Block 5）测量的是 \(q \geq 3\) 的全混合对象。两者不是对同一对象的双重证明，而是互补：<strong>路径 A 解释了 \(q > p\) 扇区的增长机制，路径 B 直接确认了 \(q \geq 3\) 全混合对象的增长。</strong></p>
+
+      <h2>§5 Ω=2 的数值论证</h2>
+
+      <h3>5.1 主链条（路径 B）</h3>
+      <p>以下链条统一使用 \(q \geq 3\) 约定（Block 5 的测量约定）：</p>
+      <ol>
+        <li>\(\bar{M}_N(p)\)（\(q \geq 3\)，harmonic 加权）对 \(\ln(p)\) 的加权斜率 = +0.217 ± 0.016，&gt;13σ（\(N = 10^{10}\)，\(p \in [100, 100{,}000]\)）。</li>
+        <li>Band averages 从 ~0.4 上升到 ~1.1，趋势清晰。</li>
+        <li>→ 在当前窗口内，数据与 M̄ ~ 0.22·ln(p) → ∞ 一致。</li>
+        <li>\(V(p) \approx 1.4 = O(1)\)（Paper XXXIV，使用相同 \(q\) 约定下的 variance 测量）。</li>
+        <li>→ 在当前窗口内，\(\Gamma_p = \bar{M}^2/V\) 随 \(p\) 增大，Cantelli 上界 \(c_p\) 随 \(p\) 下降。</li>
+        <li>→ Harmonic Cesàro Lemma（Paper XXXIV）的数值前提得到满足。</li>
+        <li>→ <strong>在 \(N = 10^{10}\) 窗口内，数据与 Ω=2 层的 \(\bar{c}_h \to 0\) 一致。</strong></li>
+      </ol>
+
+      <h3>5.2 辅助链条（路径 A）</h3>
+      <p>路径 A 解释了为什么 M̄ 增长：</p>
+      <ul>
+        <li>\(a(t) > 0\) 在 14/14 个 \(t < 1{,}000\) 的 slice 中成立</li>
+        <li>\(h_{pq}\) 的 \(t\)-independence 保证增长机制在所有 ratio 下存在</li>
+        <li>\(\int a \cdot d\mu\) 在 \(p \geq 3{,}000\) 有 bootstrap CI &gt; 0</li>
+      </ul>
+      <p>路径 A 和路径 B 在交叉验证中一致：Block 1 的 \(\int a \cdot d\mu \approx 0.08\)–0.09 与 Paper XXXIX Block 1 的直接斜率 0.084（\(q > p\) 约定）量级匹配。</p>
+
+      <h3>5.3 诚实的边界</h3>
+      <p><strong>(a) 有限窗口。</strong>Block 5 的数据基于 \(N = 10^{10}\)，\(p \in [100, 100{,}000]\)。这是单一 \(N\) 的截面，不是对 \(N \to \infty\) 的直接扫描。渐近闭合需要确认正斜率在 \(p \to \infty\) 时保持——这是开放的解析问题。</p>
+      <p><strong>(b) q 约定。</strong>\(q \geq 3\) 和 \(q > p\) 两种约定都给出正斜率（0.217 vs 0.084）。Ω=2 defect 的精确定义（D(N) 的分解方式）决定了"正确"约定。两种约定下正号一致，核心结论不依赖约定选择。但正式闭合链条应固定一个约定贯穿始终——本文主链条（§5.1）统一使用 \(q \geq 3\) 约定。</p>
+      <p><strong>(c) 个体方差。</strong>M̄ 的 R² = 0.064，个体方差 ~0.8。但趋势检测的可靠性来自 band averages 的加权拟合（&gt;13σ），不是个体点的拟合优度。</p>
+      <p><strong>(d) 采样方案。</strong>每个 \(p\) 最多采样 2,000 个 \(q\)。harmonic 加权均值在 \(q\) 采样量 &gt; ~100 后高度稳定（大 \(q\) 权重 \(1/q\) 小）。Paper XXXIX Block 1 使用不同的采样方案得到一致的正斜率，支持结果的 robustness。</p>
+
+      <h2>§6 Composition Shift 的最终裁决</h2>
+      <p>Paper XXXIX 识别了 \(\bar{M} \approx 1.5\) 的 composition shift 伪影：混合不同 \(t\) 的 \(M_{\mathrm{loc}}\) 时，大 \(p\) 被迫使用小 \(t\)，掩盖了增长。</p>
+      <p>Block 5 证实：<strong>即使在存在 composition shift 的混合 M̄ 下，增长仍然是存在的。</strong>Paper XXXIX Block 1（\(q > p\) 约定）的混合斜率为 +0.084，低于固定 \(t\) 的 \(M_{\mathrm{loc}}\) 斜率（0.10）——composition shift 确实减弱了增长信号，但没有消灭它。Block 5（\(q \geq 3\) 约定）的斜率 0.217 更大，因为包含了小 \(q\) 的额外贡献，但两种约定的正号一致。</p>
+      <div class="milestone-box"><p>这解决了 Paper XXXIX 留下的最后一个问题：M̄ 的 composition shift 是否彻底抹平了增长？<strong>答案是否。</strong></p></div>
+
+      <h2>§7 讨论</h2>
+
+      <h3>7.1 Paper XL 的核心贡献</h3>
+      <p>(a) <strong>Block 5：M̄ 直接正斜率 +0.217 ± 0.016，&gt;13σ。</strong>Ω=2 闭合的最直接数值支持。</p>
+      <p>(b) Block 1-2：\(a(t)\) 全正 + bootstrap CI。ratio-mixing lemma 的数值支持。</p>
+      <p>(c) Block 3：\(h_{pq}\) 的 \(t\)-independence。shifted-product deficit 在五个数量级上恒定。</p>
+      <p>(d) Block 4：截面 deficit ≠ 斜率 deficit 的对象对齐澄清。</p>
+      <p>(e) 两条路径互相印证：路径 A（为什么）+ 路径 B（是什么）。</p>
+
+      <h3>7.2 Papers XXXIII–XL 的完整弧线</h3>
+      <table>
+        <thead><tr><th>Paper</th><th>核心发现</th></tr></thead>
+        <tbody>
+          <tr><td>XXXIII</td><td>Margin Threshold，m=240 穿过 1</td></tr>
+          <tr><td>XXXIV</td><td>V(p)=O(1)，Harmonic Cesàro Lemma</td></tr>
+          <tr><td>XXXV–XXXVII</td><td>B-C 侵蚀，entry/continuation 分解</td></tr>
+          <tr><td>XXXVIII</td><td>G = f(q/p)，composition shift 识别</td></tr>
+          <tr><td>XXXIX</td><td>M_loc 增长，shifted-product deficit，ratio-mixing lemma</td></tr>
+          <tr><td><strong>XL</strong></td><td><strong>M̄ 直接正斜率 &gt;13σ，Ω=2 强数值支持</strong></td></tr>
+        </tbody>
+      </table>
+      <p>从 Paper XXXIII 的"M̄ 可能 &gt; 1"到 Paper XL 的"M̄ 确实在增长，&gt;13σ"——八篇论文，一条完整的诊断链。</p>
+
+      <h3>7.3 距离估计</h3>
+      <p><strong>Ω=2 层：</strong>在 \(N = 10^{10}\) 窗口内，Ω=2 闭合的数值前提得到强支持（M̄ 正斜率 &gt;13σ + \(V(p) = O(1)\)）。解析上，需要形式化 M̄ 的正斜率在 \(p \to \infty\) 时保持。可能的路径：(i) shifted-product deficit 的解析确认（\(h_{pq}\) 的 \(t\)-independence + \(h_\tau > h_{pq}\) 的永久性）；(ii) parity 的 \(t\)-independent 正贡献作为 uniform lower bound；(iii) Lindley 框架的直接应用。</p>
+      <p><strong>Ω=3 层：</strong>shifted-product deficit 应平行推广到 \(p_1 p_2 q - 1\)。SAE 框架预测 Ω=3（3DD）的闭合应类似 Ω=2。</p>
+
+      <h2>§8 数据来源与可重复性</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td>p40_mixing_inputs.py</td><td>a(t) 9 slices + μ + ∫a·dμ 点估计</td><td>1</td></tr>
+          <tr><td>p40_boundary_v2.py</td><td>a(t) 16 slices + bootstrap CI + multi-N</td><td>2</td></tr>
+          <tr><td>p40_hpq_large_t.py</td><td>h_pq(t) 在 t = 2 到 100,000</td><td>3</td></tr>
+          <tr><td>p40_same_scale.py</td><td>同尺度 h_tau, h_q, h_pq 对齐</td><td>4</td></tr>
+          <tr><td>p40_direct_mbar.py</td><td>M̄ 直接斜率，全 q，band averages</td><td>5</td></tr>
+        </tbody>
+      </table>
+      <p>数据：<code>rho_1e10.bin</code>（int16，N = 10¹⁰，<code>rho_dp.c</code>，Paper XXXII convention）。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XXXIX: Shifted-Product Deficit and M_loc Growth at Ω=2. DOI: <a href="https://doi.org/10.5281/zenodo.19164588" target="_blank" rel="noopener">10.5281/zenodo.19164588</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XXXIV: Upper-Margin Closure and Bounded-Variance. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXI: Queue Isomorphism and Local Lipschitz Reduction. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）设计 Block 1–5 全部实验链（九个脚本），起草 v1–v5。在 Block 4 揭示对象对齐问题后，提出路径 B 方案（绕过 mixing lemma，直接测 M̄ 斜率），设计 Block 5——这是本文最关键的方法论转向。v1 脚本的纯 Python 循环导致 2 小时未出结果，v2 的 numpy 向量化将运行时间降到 1 分钟以内。</p>
+      <p>Han Qin（作者）在关键节点两次提出正确问题：(1) Paper XXXIX Block 4 后"我们的数据是对的吗"催生对象对齐检查；(2) v3 review 后"如果我们想在 Paper 40 close Ω=2，不得不做什么"催生 Block 5 的直接测量。作者在 Block 4 揭示截面/斜率不一致后判断"这不 counter 结论"，保持了正确的方向感。作者的 SAE 框架预测（Ω=2 对应 2DD，形式化可达，应该闭合）贯穿始终。</p>
+      <p>ChatGPT（公西华）在四轮 review 中逐层加深：v1 提出边界验证要求；v2 提出渐近加权问题；v4 指出 0.214 vs 0.08 的对象对齐硬伤；v5 确认 Block 5 "立住了"并给出 accept with minor。每一次批评都推动了更深入的实验——Block 2 回应边界问题，Block 3-4 回应渐近/对齐问题，Block 5 回应"最直接检验"的需求。</p>
+      <p>Gemini（子夏）提出 Hypothesis U（uniform deficit）策略，并从 Block 5 的 &gt;13σ 结果中提炼出"暴力美学"的解读。</p>
+      <p>Grok（子贡）确认系列一致性，建议极端 t 探针和 bootstrap 细节。</p>
+      <p>最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho39.html">← 论文 XXXIX</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="zfcrho41.html">论文 XLI →</a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

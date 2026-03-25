@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Recursive Framework, Ω≤6 Positive-Slope Closure Signal, and the Ω=2–8 Slope Spectrum — ZFCρ Paper XLI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLI: Recursive framework for Ω=k defect. Ω≤6 positive-slope closure signal confirmed across sf/ss/hp cores (94.39% harmonic density). Turning point at Ω≈7.2.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, recursive framework, squarefree, non-squarefree, Ω=2 closure, slope spectrum, harmonic density">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Unified Recursive Framework, Ω≤6 Positive-Slope Closure Signal, and the Ω=2–8 Slope Spectrum">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho41.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Unified Recursive Framework, Ω≤6 Positive-Slope Closure Signal, and the Ω=2–8 Slope Spectrum",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho41.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19201877"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "recursive framework", "squarefree",
+      "non-squarefree", "Ω closure", "slope spectrum", "harmonic density"
+    ],
+    "abstract": "Establishes a recursive framework for the Ω=k defect and completes M̄ positive-slope verification for sf/ss/hp cores at Ω≤6. Ω=2–6 yields significantly positive slopes across all core types; total coverage (measured positive slope + trivial) = 94.39% harmonic density. Turning point at Ω≈7.2 (sf spectrum). Ω≥7 = 5.61% addressed in Paper XLII.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho41.html">
+  <meta name="citation_title" content="Unified Recursive Framework, Ω≤6 Positive-Slope Closure Signal, and the Ω=2–8 Slope Spectrum">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19201877">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho41.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLI</div>
+      <h1 class="paper-title">Unified Recursive Framework, Ω≤6 Positive-Slope Closure Signal, and the Ω=2–8 Slope Spectrum</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19201877" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19201877
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>This paper establishes a recursive framework for the Ω=k defect (comprising a recursive main chain and a higher-power seed branch) and, at \(N = 10^{10}\), completes the M̄ positive-slope verification for squarefree (sf), single-square (ss), and higher-power (hp) cores at Ω≤6, together with the sf slope measurement at Ω=7–8.</p>
+        <p><strong>Core findings:</strong></p>
+        <p><strong>(1) Recursive framework.</strong> \(\bar{M}_{k,N}(m) = \rho(m) + 2 - E_q^{(h)}[\rho(mq-1) - \rho(q)]\), where core \(m\) is any Ω=(k−1) number and \(q\) is a prime with \(q \nmid m\). The sf and ss cores are generated by the recursive main chain; hp cores (\(p^3\), \(p^2q^2\), etc.) enter as independent seeds sharing the same M̄ formula.</p>
+        <p><strong>(2) Ω≤6 positive-slope closure signal.</strong> Across all three core types, Ω=2–6 yields significantly positive slopes:</p>
+        <table>
+          <thead><tr><th>Type</th><th>Ω≤6 density</th><th>Positive slope</th><th>σ range</th></tr></thead>
+          <tbody>
+            <tr><td>sf Ω=0,1 (trivial)</td><td>18.64%</td><td>trivial</td><td>—</td></tr>
+            <tr><td>sf Ω=2–6</td><td>45.08%</td><td>all positive</td><td>&gt;10σ</td></tr>
+            <tr><td>ss Ω=2–6</td><td>19.02%</td><td>all positive</td><td>&gt;4σ</td></tr>
+            <tr><td>hp Ω=3–6 (main mass)</td><td>~11.5%</td><td>all positive</td><td>&gt;2σ</td></tr>
+            <tr><td>hp residue</td><td>~0.2%</td><td>not individually tested</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p>The directly measured positive-slope region (sf Ω=2–6 + ss + hp main mass) covers approximately 75.8% of harmonic density; adding the trivial layers Ω=0 (\(h_0 = 4.24\%\), n=1 only) and Ω=1 (\(h_1 = 14.40\%\), prime density → 0) brings the total to <strong>94.39%</strong>.</p>
+        <p><strong>(3) Ω=7–8 turning point.</strong> The sf slope spectrum: Ω=7 at −0.016 ± 0.013 (−1.2σ, inconclusive), Ω=8 at −0.088 ± 0.023 (−3.8σ, significantly negative). A linear fit gives a zero crossing at Ω ≈ 7.2 (sf spectrum, current-window linear extrapolation).</p>
+        <p><strong>(4)</strong> Ω≥7 = 5.61% harmonic density, to be addressed in Paper XLII.</p>
+        <p><strong>Keywords:</strong> recursive framework, squarefree, non-squarefree, Ω closure, slope spectrum, harmonic density stratification</p>
+      </div>
+
+      <h2>§1 Recursive Framework</h2>
+
+      <h3>1.1 Recursive Main Chain</h3>
+      <p>Let \(m\) be any Ω=(k−1) number (Ω counted with multiplicity). Define \(Q_N(m) = \{\text{primes } q : q \geq 3,\, q \nmid m,\, mq-1 \leq N\}\).</p>
+      <div class="thesis-box">
+        <p><strong>\(\bar{M}_{k,N}(m) = \tau_m - E_q^{(h)}[\mathrm{diff}(m,q)]\)</strong></p>
+        <p>where \(\tau_m = \rho(m) + 2\), \(\mathrm{diff}(m,q) = \rho(mq-1) - \rho(q)\), and \(E^{(h)}\) is the harmonic-weighted expectation \(\sum(\mathrm{diff}/q) / \sum(1/q)\).</p>
+      </div>
+      <p>The constraint \(q \nmid m\) ensures \(q\) is a "new" prime factor of \(mq\). The recursive main chain starts from primes (Ω=1) and adds one new prime at each step:</p>
+      <ul>
+        <li><strong>sf chain:</strong> \(p \to pq \to pqr \to pqrs \to \ldots\) (all factors distinct)</li>
+        <li><strong>ss chain:</strong> \(p^2 \to p^2q \to p^2qr \to \ldots\) (one square factor + new distinct primes; \(p^2\) is the Ω=2 seed, entering directly as a core for Ω=3 recursion — it need not be generated from Ω=1 via \(q = p\), since \(q \nmid m\) excludes \(q = p\).)</li>
+      </ul>
+
+      <h3>1.2 Higher-Power Seed Branch</h3>
+      <p>The recursive main chain cannot generate all nsf forms:</p>
+      <ul>
+        <li>\(p^2q^2\) cannot be written as "some Ω=3 core × new prime" (the second square factor is not introduced by a new prime)</li>
+        <li>\(p^3\) cannot be written as "\(p^2 \times p\)" (\(q = p\) is excluded)</li>
+        <li>\(p^4, p^3q^2\), etc.: similarly</li>
+      </ul>
+      <p>These hp structures enter as <strong>independent seeds</strong> and are measured using the same M̄ formula: given any hp core \(m\) (e.g., \(p^2q^2\)), compute \(\bar{M} = \tau_m - E_q^{(h)}[\mathrm{diff}(m,q)]\) with \(q \nmid m\). The hp branch is not on the recursive main chain but shares the same measurement formula.</p>
+
+      <h3>1.3 Precise Definitions of the Three Types</h3>
+      <table>
+        <thead><tr><th>Type</th><th>Definition</th><th>Recursive status</th></tr></thead>
+        <tbody>
+          <tr><td>sf</td><td>All prime-factor exponents = 1</td><td>Recursive main chain</td></tr>
+          <tr><td>ss</td><td>Exactly one exponent = 2, rest = 1, no p³</td><td>Recursive main chain (p² seed)</td></tr>
+          <tr><td>hp</td><td>Some exponent ≥ 3, or multiple exponents ≥ 2</td><td>Independent seed</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><strong>Indexing convention.</strong> The sf main spectrum (§3) uses target-layer notation following Paper XL: "Ω=3" refers to target layer Ω=3, whose core is an Ω=2 semiprime. The ss/hp tables (§4–§5) use core-level notation: "Ω=2 ss (p²)" refers to core \(m = p^2\) (Ω(m) = 2) participating in the Ω=3 shifted-product measurement. Each row can be read as "core Ω=r → target Ω=r+1."</div>
+
+      <h3>1.4 Shifted-Product Deficit</h3>
+      <p><strong>(a) Multiplicative shadow (unconditional).</strong> \(mq-1\) sits next to \(mq\) and benefits from the multiplicative structure of \(mq\). Holds for any \(m\).</p>
+      <p><strong>(b) Parity (conditional).</strong> When \(m\) is odd and \(q\) is an odd prime, \(mq-1\) is even and enjoys parity advantage. When \(2 | m\), \(mq-1\) is odd and parity advantage is absent.</p>
+      <p>Experiments show that the multiplicative shadow alone suffices to drive a positive slope, even when parity advantage is absent.</p>
+      <p><strong>Two q conventions.</strong> Relaxed (\(q \geq 3, q \nmid m\); main results) and Canonical (\(q > P^+(m)\); definition verification). Both conventions yield the same sign at Ω=2,3.</p>
+
+      <h2>§2 Eight Experiments</h2>
+      <table>
+        <thead><tr><th>Block</th><th>Measurement</th><th>Core result</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Ω=3 sf (canonical + relaxed)</td><td>+0.233/&gt;14σ (rel), +0.093/&gt;5σ (can)</td></tr>
+          <tr><td>2</td><td>Ω=4 sf (relaxed)</td><td>+0.171/&gt;10σ</td></tr>
+          <tr><td>3</td><td>Ω=5,6,7,8 sf (relaxed)</td><td>Ω=5–6 positive; Ω=7 inconclusive; Ω=8 negative</td></tr>
+          <tr><td>4</td><td>h_k(N) corrected</td><td>Ω≤6 = 94.39%, Ω≥7 = 5.61%</td></tr>
+          <tr><td>5</td><td>sf/nsf density split</td><td>sf 63.70%, nsf 30.69%</td></tr>
+          <tr><td>6</td><td>ss M̄ slope</td><td>Ω=2–6 all positive, &gt;4σ</td></tr>
+          <tr><td>7</td><td>sf/ss/hp density split (N=10¹⁰)</td><td>sf 63.70%, ss 19.02%, hp 11.67%</td></tr>
+          <tr><td>8</td><td>hp M̄ slope</td><td>Ω=3–6 all positive, &gt;2σ</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><strong>Block 4 correction note:</strong> the original script failed to account for prime factors larger than \(\sqrt{N}\), causing large primes to be misclassified as Ω=0. After correction: Ω=0 count = 1 (n=1 only), H(N) = ln(N) + γ to four decimal places.</div>
+
+      <h2>§3 Squarefree Slope Spectrum</h2>
+
+      <h3>3.1 Ω=3</h3>
+      <p>3,000 sf semiprime cores, \(m \in [6, 100{,}000]\).</p>
+      <p><strong>Relaxed:</strong> M̄ = +0.233·ln(m) − 1.86, SE = 0.017, <strong>&gt;14σ</strong>.<br>
+      <strong>Canonical:</strong> slope = +0.093 ± 0.016, <strong>&gt;5σ</strong>.</p>
+      <p>The positive sign does not depend on the \(q\) convention. The Ω=3 relaxed slope (+0.233) exceeds both Paper XL's Ω=2 result (+0.217, different sampling) and the Block 6 control retest (+0.173, 2,000 primes). The difference arises from sampling scheme; the sign is consistent.</p>
+
+      <h3>3.2 Ω=4–6</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>slope</th><th>SE</th><th>σ</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>+0.171</td><td>0.016</td><td>10.8</td></tr>
+          <tr><td>5</td><td>+0.185</td><td>0.009</td><td>20.2</td></tr>
+          <tr><td>6</td><td>+0.111</td><td>0.010</td><td>10.8</td></tr>
+        </tbody>
+      </table>
+      <p>All &gt;10σ.</p>
+
+      <h3>3.3 Ω=7–8</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>slope</th><th>SE</th><th>σ</th><th>status</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>−0.016</td><td>0.013</td><td>−1.2</td><td>inconclusive</td></tr>
+          <tr><td>8</td><td>−0.088</td><td>0.023</td><td>−3.8</td><td>negative</td></tr>
+        </tbody>
+      </table>
+      <p>Linear fit zero crossing: <strong>Ω ≈ 7.2</strong> (7 points, not strictly monotone, current-window extrapolation).</p>
+
+      <h2>§4 Single-Square NSF</h2>
+      <table>
+        <thead><tr><th>Core</th><th>slope</th><th>SE</th><th>σ</th><th>⟨M̄⟩</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=2 ss (p²)</td><td>+0.135</td><td>0.030</td><td>4.4</td><td>−0.18</td></tr>
+          <tr><td>Ω=3 ss (p²q)</td><td>+0.247</td><td>0.015</td><td>16.6</td><td>−0.10</td></tr>
+          <tr><td>Ω=4 ss (p²qr)</td><td>+0.300</td><td>0.019</td><td>16.2</td><td>−0.43</td></tr>
+          <tr><td>Ω=5 ss</td><td>+0.414</td><td>0.013</td><td>31.3</td><td>−0.82</td></tr>
+          <tr><td>Ω=6 ss</td><td>+0.231</td><td>0.013</td><td>17.6</td><td>−0.81</td></tr>
+        </tbody>
+      </table>
+      <p>All positive, all &gt;4σ. The ss slopes are generally no smaller than sf, and often larger (Ω=4 ss +0.300 vs sf +0.171; Ω=5 ss +0.414 vs sf +0.185).</p>
+
+      <h2>§5 Higher-Power NSF</h2>
+
+      <h3>5.1 Results</h3>
+      <table>
+        <thead><tr><th>Core</th><th>slope</th><th>SE</th><th>σ</th><th>⟨M̄⟩</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=3 hp (p³)</td><td>+0.284</td><td>0.117</td><td>2.4</td><td>−0.55</td></tr>
+          <tr><td>Ω=4 hp (p²q²)</td><td>+0.252</td><td>0.039</td><td>6.5</td><td>−0.91</td></tr>
+          <tr><td>Ω=4 hp (p³q)</td><td>+0.259</td><td>0.016</td><td>16.7</td><td>−0.34</td></tr>
+          <tr><td>Ω=5 hp (p²q²r)</td><td>+0.388</td><td>0.025</td><td>15.6</td><td>−1.05</td></tr>
+          <tr><td>Ω=5 hp (p³qr)</td><td>+0.316</td><td>0.021</td><td>15.0</td><td>−0.65</td></tr>
+          <tr><td>Ω=6 hp (mixed)</td><td>+0.039</td><td>0.015</td><td>2.6</td><td>−1.07</td></tr>
+        </tbody>
+      </table>
+      <p>All positive, all &gt;2σ. Ω=6 hp is the weakest (+0.039, 2.6σ) but clears the threshold. Ω=4 hp (p⁴) was skipped due to insufficient samples (7 cores).</p>
+
+      <h3>5.2 hp Subtype Coverage</h3>
+      <p>The total hp Ω≤6 harmonic density is 11.67%. Block 8 coverage:</p>
+      <table>
+        <thead><tr><th>hp subtype</th><th>Density (qualitative)</th><th>Block 8</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>p³</td><td>small</td><td>✓ tested</td><td>+, 2.4σ</td></tr>
+          <tr><td>p²q²</td><td>medium</td><td>✓ tested</td><td>+, 6.5σ</td></tr>
+          <tr><td>p³q</td><td>medium</td><td>✓ tested</td><td>+, 16.7σ</td></tr>
+          <tr><td>p²q²r</td><td>large</td><td>✓ tested</td><td>+, 15.6σ</td></tr>
+          <tr><td>p³qr</td><td>large</td><td>✓ tested</td><td>+, 15.0σ</td></tr>
+          <tr><td>Ω=6 hp mixed</td><td>large</td><td>✓ aggregate</td><td>+, 2.6σ</td></tr>
+          <tr><td>p⁴</td><td>very small (Σ1/p⁴ ≈ 0.004)</td><td>insufficient samples</td><td>—</td></tr>
+          <tr><td>p⁴q, p⁵, p²q²r², etc.</td><td>very small</td><td>not individually tested</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>Block 8 covers the <strong>main mass</strong> of hp 11.67%. The untested very-high-power residue (p⁴, p⁴q, p⁵, etc.) has extremely small harmonic density: for example, \(\sum_{p \text{ prime}} 1/p^4 \approx 0.004\), contributing ~0.02% of H(N). These residues total no more than ~1–2% of the hp 11.67%, i.e., ~0.1–0.2% of total harmonic density.</p>
+
+      <h2>§6 Harmonic Density Stratification</h2>
+
+      <h3>6.1 Definitions</h3>
+      <p>\(H_k(N) = \sum_{n \leq N,\, \Omega(n)=k} 1/n\) (Ω counted with multiplicity). \(h_k(N) = H_k(N) / H(N)\), where \(H(N) = \sum_{n \leq N} 1/n\).</p>
+      <p>Ω(1) = 0 (the only Ω=0 positive integer), so \(H_0 = 1\), \(h_0 = 1/H(N) \approx 4.24\%\).</p>
+      <p>Sanity: \(H(10^{10}) = 23.603067\), matching \(\ln(10^{10}) + \gamma = 23.6031\) to four decimal places. Ω=0 count = 1.</p>
+
+      <h3>6.2 Total Density (N = 10¹⁰)</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>h_k</th><th>cumulative h_{≥k}</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>4.24%</td><td>100.00%</td></tr>
+          <tr><td>1</td><td>14.40%</td><td>95.76%</td></tr>
+          <tr><td>2</td><td>22.19%</td><td>81.37%</td></tr>
+          <tr><td>3</td><td>21.82%</td><td>59.17%</td></tr>
+          <tr><td>4</td><td>16.17%</td><td>37.35%</td></tr>
+          <tr><td>5</td><td>10.02%</td><td>21.19%</td></tr>
+          <tr><td>6</td><td>5.55%</td><td>11.17%</td></tr>
+          <tr><td>7</td><td>2.88%</td><td>5.61%</td></tr>
+          <tr><td>8</td><td>1.43%</td><td>2.74%</td></tr>
+          <tr><td>≥9</td><td>1.31%</td><td>1.31%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.3 sf/ss/hp Split (N = 10¹⁰)</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>h_sf</th><th>h_ss</th><th>h_hp</th><th>ss/(ss+hp)</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>4.24%</td><td>0</td><td>0</td><td>—</td></tr>
+          <tr><td>1</td><td>14.40%</td><td>0</td><td>0</td><td>—</td></tr>
+          <tr><td>2</td><td>20.28%</td><td>1.92%</td><td>0</td><td>100%</td></tr>
+          <tr><td>3</td><td>15.51%</td><td>5.58%</td><td>0.74%</td><td>88%</td></tr>
+          <tr><td>4</td><td>7.04%</td><td>6.43%</td><td>2.70%</td><td>70%</td></tr>
+          <tr><td>5</td><td>1.94%</td><td>3.83%</td><td>4.25%</td><td>47%</td></tr>
+          <tr><td>6</td><td>0.31%</td><td>1.26%</td><td>3.98%</td><td>24%</td></tr>
+          <tr><td>7</td><td>0.03%</td><td>0.23%</td><td>2.62%</td><td>8%</td></tr>
+        </tbody>
+      </table>
+      <p>The sf share decreases with Ω (100% at Ω=1 → 6% at Ω=6); the hp share increases correspondingly.</p>
+
+      <h3>6.4 Coverage Summary (N = 10¹⁰, H(N) = 23.603067)</h3>
+      <table>
+        <thead><tr><th>Range</th><th>Density</th><th>Closure status</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=0 (n=1, trivial)</td><td>4.24%</td><td>trivial</td></tr>
+          <tr><td>Ω=1 (primes, trivial)</td><td>14.40%</td><td>trivial (density → 0)</td></tr>
+          <tr><td>sf Ω=2–6 (M̄ positive slope measured)</td><td>45.08%</td><td><strong>positive-slope signal, &gt;10σ</strong></td></tr>
+          <tr><td>ss Ω=2–6 (M̄ positive slope measured)</td><td>19.02%</td><td><strong>positive-slope signal, &gt;4σ</strong></td></tr>
+          <tr><td>hp Ω=3–6 main mass (M̄ positive slope measured)</td><td>~11.5%</td><td><strong>positive-slope signal, &gt;2σ</strong></td></tr>
+          <tr><td>hp very-high-power residue (not individually regressed)</td><td>~0.2%</td><td>density very small</td></tr>
+          <tr><td><strong>Measured positive slope + trivial</strong></td><td><strong>~94.2%</strong></td><td></td></tr>
+          <tr><td>Ω≥7</td><td>5.61%</td><td>to be addressed in XLII</td></tr>
+        </tbody>
+      </table>
+      <p>94.39% = 63.70% (sf, including Ω=0,1 trivial) + 19.02% (ss) + 11.67% (hp) is the total Ω≤6 mass. Of this, directly measured positive slope + trivial totals approximately 94.2%; the remaining ~0.1–0.2% is hp very-high-power residue, extremely small but not individually regressed.</p>
+
+      <h3>6.5 Multi-N Trend</h3>
+      <table>
+        <thead><tr><th>N</th><th>sf Ω≤6</th><th>ss Ω≤6</th><th>hp Ω≤6</th><th>Ω≤6 total</th><th>Ω≥7</th></tr></thead>
+        <tbody>
+          <tr><td>10⁶</td><td>65.12%</td><td>18.86%</td><td>12.53%</td><td>96.51%</td><td>3.49%</td></tr>
+          <tr><td>10⁸</td><td>64.44%</td><td>18.98%</td><td>12.22%</td><td>95.64%</td><td>4.36%</td></tr>
+          <tr><td>10⁹</td><td>64.03%</td><td>19.02%</td><td>11.95%</td><td>95.00%</td><td>5.00%</td></tr>
+          <tr><td>10¹⁰</td><td>63.70%</td><td>19.02%</td><td>11.67%</td><td>94.39%</td><td>5.61%</td></tr>
+        </tbody>
+      </table>
+      <p>\(h(\Omega \geq 7)\) grows slowly (3.49% → 5.61%). The 5.61% is a current-window figure, not an asymptotic constant.</p>
+
+      <h2>§7 Closure Argument</h2>
+
+      <h3>7.1 Chain</h3>
+      <p>For Ω=k (k = 2,...,6), across sf + ss + hp cores:</p>
+      <ol>
+        <li>\(\bar{M}_{k,N}(m)\) has a positive slope against \(\ln(m)\) (sf &gt;10σ, ss &gt;4σ, hp main mass &gt;2σ).</li>
+        <li>→ Within the current window, the data are consistent with \(\bar{M}_k \to \infty\).</li>
+        <li>\(V_k(m) = O(1)\): confirmed at \(V \approx 1.4\) for Ω=2 sf in Paper XXXIV. Reasonably expected to hold for higher Ω and nsf, but not independently verified in this paper.</li>
+        <li>→ \(\Gamma \to \infty\), Cantelli \(c \to 0\), Cesàro \(\bar{c}_h \to 0\).</li>
+        <li>→ The Ω=k layer's defect contribution → 0.</li>
+      </ol>
+
+      <h3>7.2 Honest Boundaries</h3>
+      <p><strong>(a)</strong> Ω=4–6 have relaxed data only. Relaxed/canonical sign consistency verified at Ω=2,3.</p>
+      <p><strong>(b)</strong> \(V_k = O(1)\) not independently verified at Ω=3–6 and nsf.</p>
+      <p><strong>(c)</strong> Finite window: \(N = 10^{10}\).</p>
+      <p><strong>(d)</strong> The above constitutes a <strong>positive-slope closure signal</strong>, not a strict proof of closure.</p>
+      <p><strong>(e)</strong> hp Ω=6 is the weakest point (+0.039, 2.6σ) — marginal.</p>
+      <p><strong>(f)</strong> hp very-high-power residue (~0.2%) not individually tested.</p>
+
+      <h2>§8 Finite-Window Implications and Paper XLII</h2>
+
+      <h3>8.1 Established</h3>
+      <ul>
+        <li>Ω=0,1: trivial (18.64%)</li>
+        <li>Ω=2–6: positive-slope closure signal — sf + ss + hp, covering 75.8% measured + 18.6% trivial ≈ 94.4%</li>
+        <li>Ω≥7: 5.61%, not closing</li>
+      </ul>
+
+      <h3>8.2 Open Tasks for Paper XLII</h3>
+      <p><strong>(a)</strong> Control the ~5.6% harmonic density at Ω≥7.</p>
+      <p><strong>(b)</strong> Address the growth of \(h(\geq 7)\) with \(N\) (3.49% → 5.61%). XLII may require a moving cutoff \(K(N)\) or unified decay control.</p>
+      <p><strong>(c)</strong> Complete the passage from "closure signal" to "closure": canonical verification (Ω=4–6), \(V_k = O(1)\) verification, asymptotic extrapolation.</p>
+
+      <h2>§9 Discussion</h2>
+
+      <h3>9.1 Core Contributions</h3>
+      <p>(a) Recursive framework (main chain + hp seed branch) covering all integer factorization forms.</p>
+      <p>(b) sf Ω=2–8 + ss Ω=2–6 + hp Ω=3–6 slope spectrum.</p>
+      <p>(c) Turning point at Ω ≈ 7.2 (sf spectrum, current-window extrapolation).</p>
+      <p>(d) sf/ss/hp density stratification: measured positive slope + trivial = 94.39% (N = 10¹⁰, exact).</p>
+      <p>(e) nsf (ss + hp) slopes are no smaller than sf and often larger — the multiplicative shadow is effective with or without parity advantage.</p>
+
+      <h3>9.2 Why Are nsf Slopes Larger?</h3>
+      <p>Non-squarefree cores contain repeated prime factors, making \(\rho(m)\) smaller (DP handles repeated factors more efficiently), so \(\tau_m = \rho(m)+2\) grows more slowly while diff growth is unaffected. Result: M̄ starts lower but rises faster.</p>
+
+      <h3>9.3 Why Do High-Ω Slopes Decline?</h3>
+      <p>(a) Combinatorial complexity: the number of factorization paths grows exponentially with k. (b) Finite-scale effects. (c) Decreasing signal-to-noise ratio.</p>
+
+      <h2>§10 Data Sources and Reproducibility</h2>
+      <table>
+        <thead><tr><th>Script</th><th>Measurement</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td>p41_omega3_mbar.py</td><td>Ω=3 sf (can + rel)</td><td>1</td></tr>
+          <tr><td>p41_omega4_test.py</td><td>Ω=4 sf</td><td>2</td></tr>
+          <tr><td>p41_omega5to8.py</td><td>Ω=5–8 sf</td><td>3</td></tr>
+          <tr><td>p41_density_fast.py</td><td>h_k(N) corrected</td><td>4</td></tr>
+          <tr><td>p41_sf_density.py</td><td>sf/nsf split</td><td>5</td></tr>
+          <tr><td>p41_nonsf_mbar.py</td><td>ss M̄</td><td>6</td></tr>
+          <tr><td>p41_partition_fast.py</td><td>sf/ss/hp split (N=10¹⁰)</td><td>7</td></tr>
+          <tr><td>p41_hp_mbar.py</td><td>hp M̄</td><td>8</td></tr>
+        </tbody>
+      </table>
+      <p>Data: <code>rho_1e10.bin</code> (int16, N = 10¹⁰, <code>rho_dp.c</code>, Paper XXXII convention).</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XL: Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure. DOI: <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener">10.5281/zenodo.19179778</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XXXIX: Shifted-Product Deficit and M_loc Growth at Ω=2. DOI: <a href="https://doi.org/10.5281/zenodo.19164588" target="_blank" rel="noopener">10.5281/zenodo.19164588</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXXIV: Upper-Margin Closure and Bounded-Variance. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>Claude (子路) designed the recursive framework and all eight experimental blocks, wrote eight scripts, and drafted v1–v7 working notes plus the formal text. Discovered and corrected the Ω=0 bug in Block 4 (large prime factors not counted toward Ω).</p>
+      <p>Han Qin (author) proposed the unified recursive definition ("each Ω is the previous Ω plus one prime q"), demanded the complete Ω=4–8 spectrum, discovered the turning point, posed the "bundle from Ω≥4 or Ω≥7?" decision problem, and articulated the methodological principle "run data first whenever possible, because data will correct us" — which directly spawned Blocks 5–8 and pushed the tested coverage from 64% to 94.39%.</p>
+      <p>ChatGPT (公西华) deepened the analysis across seven review rounds (v1–v7): v2 identified four structural flaws (parity error, squarefree scope, relaxed/canonical distinction, Erdős-Kac fixed-threshold issue); v3 pointed out "95% ≠ tested-object coverage," spawning Blocks 5–6; v4 identified the nsf partition gap and Ω=0 bug, spawning Blocks 7–8 and the density correction; v5 flagged nsf index unification; v6 formalized hp as an independent seed branch, demanded same-window exact alignment, and required hp subtype coverage; v7 distinguished "measured positive slope" from "trivial coverage" and gave accept with minor revisions. Each round drove deeper experiments and more honest claims.</p>
+      <p>Gemini (子夏) and Grok (子贡) confirmed the recursive framework consensus and slope-spectrum consistency in earlier rounds and gave sustained acceptance in later rounds.</p>
+      <p>The final text was independently completed by the author.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho40.html">← Paper XL</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>Paper XLII →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文第四十一篇</div>
+      <h1 class="paper-title">统一递归框架，Ω≤6 正斜率闭合信号与 Ω=2–8 斜率谱</h1>
+      <div class="paper-authors">Han Qin（秦汉）&nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19201877" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19201877
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>本文建立了 Ω=k defect 的递归框架（含递归主链和 higher-power seed branch），并在 \(N = 10^{10}\) 上完成了 squarefree（sf）、single-square（ss）、higher-power（hp）三类 cores 的 Ω≤6 M̄ 正斜率验证，以及 sf 的 Ω=7–8 斜率测量。</p>
+        <p><strong>核心发现：</strong></p>
+        <p><strong>(1) 递归框架。</strong>\(\bar{M}_{k,N}(m) = \rho(m) + 2 - E_q^{(h)}[\rho(mq-1) - \rho(q)]\)，core \(m\) 为任意 Ω=(k-1) 数，\(q\) 为素数且 \(q \nmid m\)。sf 和 ss cores 由递归主链生成；hp cores（\(p^3\)，\(p^2q^2\) 等）作为独立 seed 直接参与，共享同一 M̄ 公式。</p>
+        <p><strong>(2) Ω≤6 正斜率闭合信号。</strong>在三类 cores 上，Ω=2–6 全部给出显著正斜率：</p>
+        <table>
+          <thead><tr><th>类型</th><th>Ω≤6 密度</th><th>正斜率</th><th>σ 范围</th></tr></thead>
+          <tbody>
+            <tr><td>sf Ω=0,1 (trivial)</td><td>18.64%</td><td>trivial</td><td>—</td></tr>
+            <tr><td>sf Ω=2–6</td><td>45.08%</td><td>全正</td><td>&gt;10σ</td></tr>
+            <tr><td>ss Ω=2–6</td><td>19.02%</td><td>全正</td><td>&gt;4σ</td></tr>
+            <tr><td>hp Ω=3–6（主质量）</td><td>~11.5%</td><td>全正</td><td>&gt;2σ</td></tr>
+            <tr><td>hp residue</td><td>~0.2%</td><td>未单独测</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p>已测正斜率覆盖 Ω=2–6 的 sf + ss + hp 约 75.8% harmonic 密度；加上 trivial 的 Ω=0（\(h_0 = 4.24\%\)，n=1）和 Ω=1（\(h_1 = 14.40\%\)，素数密度 → 0），合计 <strong>94.39%</strong>。</p>
+        <p><strong>(3) Ω=7–8 转折。</strong>sf 斜率谱：Ω=7 为 −0.016 ± 0.013（−1.2σ，inconclusive），Ω=8 为 −0.088 ± 0.023（−3.8σ，显著负）。线性拟合零交叉 Ω ≈ 7.2（sf spectrum，当前窗口线性外推）。</p>
+        <p><strong>(4)</strong> Ω≥7 = 5.61% harmonic 密度，留待 Paper XLII 继续控制。</p>
+        <p><strong>关键词：</strong>递归框架，squarefree，non-squarefree，Ω 闭合，斜率谱，harmonic 密度分层</p>
+      </div>
+
+      <h2>§1 递归框架</h2>
+
+      <h3>1.1 递归主链</h3>
+      <p>设 \(m\) 为任意 Ω=(k-1) 数（Ω 含重数），\(Q_N(m) = \{\text{素数 } q : q \geq 3,\, q \nmid m,\, mq-1 \leq N\}\)。</p>
+      <div class="thesis-box">
+        <p><strong>\(\bar{M}_{k,N}(m) = \tau_m - E_q^{(h)}[\mathrm{diff}(m,q)]\)</strong></p>
+        <p>其中 \(\tau_m = \rho(m) + 2\)，\(\mathrm{diff}(m,q) = \rho(mq-1) - \rho(q)\)，\(E^{(h)}\) 为 harmonic 加权期望 \(\sum(\mathrm{diff}/q) / \sum(1/q)\)。</p>
+      </div>
+      <p>\(q \nmid m\) 保证 \(q\) 是 \(mq\) 的"新"素因子。递归主链从素数（Ω=1）出发，每次乘一个新素数：</p>
+      <ul>
+        <li><strong>sf 链：</strong>\(p \to pq \to pqr \to pqrs \to \ldots\)（素因子两两不同）</li>
+        <li><strong>ss 链：</strong>\(p^2 \to p^2q \to p^2qr \to \ldots\)（一个平方因子 + 其余新素数；\(p^2\) 是 Ω=2 的 seed，直接作为 Ω=3 递归的 core，不需要从 Ω=1 通过 \(q = p\) 生成，因为 \(q \nmid m\) 排除了 \(q = p\)。）</li>
+      </ul>
+
+      <h3>1.2 Higher-power seed branch</h3>
+      <p>递归主链不能生成所有 nsf 形式：</p>
+      <ul>
+        <li>\(p^2q^2\) 不能写成"某 Ω=3 core × 新素数"（第二个平方因子不是新素数带来的）</li>
+        <li>\(p^3\) 不能写成"\(p^2 \times p\)"（\(q = p\) 被排除）</li>
+        <li>\(p^4, p^3q^2\) 等同理</li>
+      </ul>
+      <p>这些 hp 结构作为<strong>独立 seed</strong> 直接参与 M̄ 测量：给定任意 hp core \(m\)，仍用同一公式 \(\bar{M} = \tau_m - E_q^{(h)}[\mathrm{diff}(m,q)]\)（\(q \nmid m\)）。hp 不在递归主链上，但共享同一 M̄ 测量公式。</p>
+
+      <h3>1.3 三类的精确定义</h3>
+      <table>
+        <thead><tr><th>类型</th><th>定义</th><th>递归状态</th></tr></thead>
+        <tbody>
+          <tr><td>sf</td><td>\(n\) 的所有素因子指数 = 1</td><td>递归主链</td></tr>
+          <tr><td>ss</td><td>恰好一个素因子指数 = 2，其余 = 1，无 \(p^3\)</td><td>递归主链（\(p^2\) seed）</td></tr>
+          <tr><td>hp</td><td>存在某素因子指数 ≥ 3，或多个素因子指数 ≥ 2</td><td>独立 seed</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><strong>索引约定。</strong>sf 主谱（§3）沿用 Paper XL 的 target-layer 记法："Ω=3"指 target layer Ω=3，其 core 为 Ω=2 的 semiprime。ss/hp 表格（§4–§5）使用 core-level 记法："Ω=2 ss (p²)"指 core \(m = p^2\)（Ω(m) = 2）参与 Ω=3 层的 shifted product 测量。每行均可读作 "core Ω=r → target Ω=r+1"。</div>
+
+      <h3>1.4 Shifted-product deficit</h3>
+      <p><strong>(a) 乘法阴影（无条件）。</strong>\(mq-1\) 在 \(mq\) 旁边，受益于 \(mq\) 的乘法结构。对任何 \(m\) 成立。</p>
+      <p><strong>(b) Parity（有条件）。</strong>当 \(m\) 为奇数且 \(q\) 为奇素数时，\(mq-1\) 为偶数，parity 红利存在。当 \(2 | m\) 时，\(mq-1\) 为奇数，parity 红利不存在。</p>
+      <p>实验表明乘法阴影本身已足以驱动正斜率，即使 parity 红利缺失。</p>
+      <p><strong>两种 q 约定。</strong>Relaxed（\(q \geq 3, q \nmid m\)，主结果）和 Canonical（\(q > P^+(m)\)）。Ω=2,3 验证了两种约定正号一致。</p>
+
+      <h2>§2 八组实验</h2>
+      <table>
+        <thead><tr><th>Block</th><th>测量</th><th>核心结果</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Ω=3 sf（canonical + relaxed）</td><td>+0.233/&gt;14σ（rel），+0.093/&gt;5σ（can）</td></tr>
+          <tr><td>2</td><td>Ω=4 sf（relaxed）</td><td>+0.171/&gt;10σ</td></tr>
+          <tr><td>3</td><td>Ω=5,6,7,8 sf（relaxed）</td><td>Ω=5–6 正，Ω=7 inconclusive，Ω=8 负</td></tr>
+          <tr><td>4</td><td>h_k(N) 修正版</td><td>Ω≤6 = 94.39%，Ω≥7 = 5.61%</td></tr>
+          <tr><td>5</td><td>sf/nsf 密度拆分</td><td>sf 63.70%，nsf 30.69%</td></tr>
+          <tr><td>6</td><td>ss M̄ 斜率</td><td>Ω=2–6 全正，&gt;4σ</td></tr>
+          <tr><td>7</td><td>sf/ss/hp 密度拆分（N=10¹⁰）</td><td>sf 63.70%，ss 19.02%，hp 11.67%</td></tr>
+          <tr><td>8</td><td>hp M̄ 斜率</td><td>Ω=3–6 全正，&gt;2σ</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><strong>Block 4 修正说明：</strong>原始脚本未计入大于 \(\sqrt{N}\) 的素因子，导致大素数被错归 Ω=0。修正后 Ω=0 count = 1（仅 n=1），H(N) = ln(N) + γ 精确吻合。</div>
+
+      <h2>§3 Squarefree 斜率谱</h2>
+
+      <h3>3.1 Ω=3</h3>
+      <p>3,000 个 sf semiprime cores，\(m \in [6, 100{,}000]\)。</p>
+      <p><strong>Relaxed：</strong>M̄ = +0.233·ln(m) − 1.86，SE = 0.017，<strong>&gt;14σ</strong>。<br>
+      <strong>Canonical：</strong>slope = +0.093 ± 0.016，<strong>&gt;5σ</strong>。</p>
+      <p>正号不依赖约定。Ω=3 relaxed 斜率（+0.233）大于 Paper XL 的 Ω=2 结果（+0.217，不同采样方案）和本文 Block 6 对照组重测（+0.173，2,000 primes）。差异来自样本方案，正号一致。</p>
+
+      <h3>3.2 Ω=4–6</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>slope</th><th>SE</th><th>σ</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>+0.171</td><td>0.016</td><td>10.8</td></tr>
+          <tr><td>5</td><td>+0.185</td><td>0.009</td><td>20.2</td></tr>
+          <tr><td>6</td><td>+0.111</td><td>0.010</td><td>10.8</td></tr>
+        </tbody>
+      </table>
+      <p>全部 &gt;10σ。Ω=5 的异常高 σ 可能反映 core 大小分布差异（ln(m) 范围更宽，拟合 leverage 更大）。</p>
+
+      <h3>3.3 Ω=7–8</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>slope</th><th>SE</th><th>σ</th><th>status</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>−0.016</td><td>0.013</td><td>−1.2</td><td>inconclusive</td></tr>
+          <tr><td>8</td><td>−0.088</td><td>0.023</td><td>−3.8</td><td>负</td></tr>
+        </tbody>
+      </table>
+      <p>线性拟合零交叉 <strong>Ω ≈ 7.2</strong>（7 个点，非严格单调，当前窗口外推）。</p>
+
+      <h2>§4 Single-Square NSF</h2>
+      <table>
+        <thead><tr><th>Core</th><th>slope</th><th>SE</th><th>σ</th><th>⟨M̄⟩</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=2 ss (p²)</td><td>+0.135</td><td>0.030</td><td>4.4</td><td>−0.18</td></tr>
+          <tr><td>Ω=3 ss (p²q)</td><td>+0.247</td><td>0.015</td><td>16.6</td><td>−0.10</td></tr>
+          <tr><td>Ω=4 ss (p²qr)</td><td>+0.300</td><td>0.019</td><td>16.2</td><td>−0.43</td></tr>
+          <tr><td>Ω=5 ss</td><td>+0.414</td><td>0.013</td><td>31.3</td><td>−0.82</td></tr>
+          <tr><td>Ω=6 ss</td><td>+0.231</td><td>0.013</td><td>17.6</td><td>−0.81</td></tr>
+        </tbody>
+      </table>
+      <p>全正，全 &gt;4σ。ss 斜率普遍不低于 sf，部分更大（Ω=4 ss +0.300 vs sf +0.171；Ω=5 ss +0.414 vs sf +0.185）。</p>
+
+      <h2>§5 Higher-Power NSF</h2>
+
+      <h3>5.1 测量结果</h3>
+      <table>
+        <thead><tr><th>Core</th><th>slope</th><th>SE</th><th>σ</th><th>⟨M̄⟩</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=3 hp (p³)</td><td>+0.284</td><td>0.117</td><td>2.4</td><td>−0.55</td></tr>
+          <tr><td>Ω=4 hp (p²q²)</td><td>+0.252</td><td>0.039</td><td>6.5</td><td>−0.91</td></tr>
+          <tr><td>Ω=4 hp (p³q)</td><td>+0.259</td><td>0.016</td><td>16.7</td><td>−0.34</td></tr>
+          <tr><td>Ω=5 hp (p²q²r)</td><td>+0.388</td><td>0.025</td><td>15.6</td><td>−1.05</td></tr>
+          <tr><td>Ω=5 hp (p³qr)</td><td>+0.316</td><td>0.021</td><td>15.0</td><td>−0.65</td></tr>
+          <tr><td>Ω=6 hp (mixed)</td><td>+0.039</td><td>0.015</td><td>2.6</td><td>−1.07</td></tr>
+        </tbody>
+      </table>
+      <p>全正，全 &gt;2σ。Ω=6 hp 最弱（2.6σ）但过线。Ω=4 hp (p⁴) 因样本不足（7 cores）跳过。</p>
+
+      <h3>5.2 hp subtype 覆盖</h3>
+      <p>hp Ω≤6 的总 harmonic 密度 = 11.67%。Block 8 覆盖情况：</p>
+      <table>
+        <thead><tr><th>hp subtype</th><th>密度（定性）</th><th>Block 8</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>p³</td><td>小</td><td>✓ 测了</td><td>+, 2.4σ</td></tr>
+          <tr><td>p²q²</td><td>中</td><td>✓ 测了</td><td>+, 6.5σ</td></tr>
+          <tr><td>p³q</td><td>中</td><td>✓ 测了</td><td>+, 16.7σ</td></tr>
+          <tr><td>p²q²r</td><td>大</td><td>✓ 测了</td><td>+, 15.6σ</td></tr>
+          <tr><td>p³qr</td><td>大</td><td>✓ 测了</td><td>+, 15.0σ</td></tr>
+          <tr><td>Ω=6 hp mixed</td><td>大</td><td>✓ 聚合测了</td><td>+, 2.6σ</td></tr>
+          <tr><td>p⁴</td><td>极小（Σ1/p⁴ ≈ 0.004）</td><td>样本不足</td><td>—</td></tr>
+          <tr><td>p⁴q, p⁵, p²q²r² 等</td><td>极小</td><td>未单独测</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>Block 8 覆盖了 hp 11.67% 中的<strong>主质量</strong>。未测的极高幂次 residue 的 harmonic 密度极小（以 p⁴ 为例，\(\sum_{p \text{ prime}} 1/p^4 \approx 0.004\)，占 H(N) 的 ~0.02%）。这些 residue 合计不超过 hp 11.67% 的约 1–2%，即全体 harmonic 密度的 ~0.1–0.2%。</p>
+
+      <h2>§6 Harmonic 密度分层</h2>
+
+      <h3>6.1 定义</h3>
+      <p>\(H_k(N) = \sum_{n \leq N,\, \Omega(n)=k} 1/n\)（Ω 含重数）。\(h_k(N) = H_k(N) / H(N)\)，\(H(N) = \sum_{n \leq N} 1/n\)。</p>
+      <p>Ω(1) = 0（唯一的 Ω=0 正整数），\(H_0 = 1\)，\(h_0 = 1/H(N) \approx 4.24\%\)。</p>
+      <p>Sanity：\(H(10^{10}) = 23.603067\)，与 \(\ln(10^{10}) + \gamma = 23.6031\) 精确吻合。Ω=0 count = 1。</p>
+
+      <h3>6.2 总密度（N = 10¹⁰）</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>h_k</th><th>累计 h_{≥k}</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>4.24%</td><td>100.00%</td></tr>
+          <tr><td>1</td><td>14.40%</td><td>95.76%</td></tr>
+          <tr><td>2</td><td>22.19%</td><td>81.37%</td></tr>
+          <tr><td>3</td><td>21.82%</td><td>59.17%</td></tr>
+          <tr><td>4</td><td>16.17%</td><td>37.35%</td></tr>
+          <tr><td>5</td><td>10.02%</td><td>21.19%</td></tr>
+          <tr><td>6</td><td>5.55%</td><td>11.17%</td></tr>
+          <tr><td>7</td><td>2.88%</td><td>5.61%</td></tr>
+          <tr><td>8</td><td>1.43%</td><td>2.74%</td></tr>
+          <tr><td>≥9</td><td>1.31%</td><td>1.31%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.3 sf/ss/hp 三类拆分（N = 10¹⁰）</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>h_sf</th><th>h_ss</th><th>h_hp</th><th>ss/(ss+hp)</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>4.24%</td><td>0</td><td>0</td><td>—</td></tr>
+          <tr><td>1</td><td>14.40%</td><td>0</td><td>0</td><td>—</td></tr>
+          <tr><td>2</td><td>20.28%</td><td>1.92%</td><td>0</td><td>100%</td></tr>
+          <tr><td>3</td><td>15.51%</td><td>5.58%</td><td>0.74%</td><td>88%</td></tr>
+          <tr><td>4</td><td>7.04%</td><td>6.43%</td><td>2.70%</td><td>70%</td></tr>
+          <tr><td>5</td><td>1.94%</td><td>3.83%</td><td>4.25%</td><td>47%</td></tr>
+          <tr><td>6</td><td>0.31%</td><td>1.26%</td><td>3.98%</td><td>24%</td></tr>
+          <tr><td>7</td><td>0.03%</td><td>0.23%</td><td>2.62%</td><td>8%</td></tr>
+        </tbody>
+      </table>
+      <p>sf 占比随 Ω 递减（100% at Ω=1 → 6% at Ω=6）；hp 占比随 Ω 递增。</p>
+
+      <h3>6.4 覆盖总结（N = 10¹⁰，H(N) = 23.603067）</h3>
+      <table>
+        <thead><tr><th>范围</th><th>密度</th><th>闭合状态</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=0（n=1，trivial）</td><td>4.24%</td><td>trivial</td></tr>
+          <tr><td>Ω=1（素数，trivial）</td><td>14.40%</td><td>trivial（密度 → 0）</td></tr>
+          <tr><td>sf Ω=2–6（M̄ 正斜率实测）</td><td>45.08%</td><td><strong>正斜率信号，&gt;10σ</strong></td></tr>
+          <tr><td>ss Ω=2–6（M̄ 正斜率实测）</td><td>19.02%</td><td><strong>正斜率信号，&gt;4σ</strong></td></tr>
+          <tr><td>hp Ω=3–6 主质量（M̄ 正斜率实测）</td><td>~11.5%</td><td><strong>正斜率信号，&gt;2σ</strong></td></tr>
+          <tr><td>hp 极高幂次 residue（未单独测）</td><td>~0.2%</td><td>密度极小</td></tr>
+          <tr><td><strong>已测正斜率 + trivial 合计</strong></td><td><strong>~94.2%</strong></td><td></td></tr>
+          <tr><td>Ω≥7</td><td>5.61%</td><td>留 XLII</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.5 Multi-N 趋势</h3>
+      <table>
+        <thead><tr><th>N</th><th>sf Ω≤6</th><th>ss Ω≤6</th><th>hp Ω≤6</th><th>Ω≤6 总</th><th>Ω≥7</th></tr></thead>
+        <tbody>
+          <tr><td>10⁶</td><td>65.12%</td><td>18.86%</td><td>12.53%</td><td>96.51%</td><td>3.49%</td></tr>
+          <tr><td>10⁸</td><td>64.44%</td><td>18.98%</td><td>12.22%</td><td>95.64%</td><td>4.36%</td></tr>
+          <tr><td>10⁹</td><td>64.03%</td><td>19.02%</td><td>11.95%</td><td>95.00%</td><td>5.00%</td></tr>
+          <tr><td>10¹⁰</td><td>63.70%</td><td>19.02%</td><td>11.67%</td><td>94.39%</td><td>5.61%</td></tr>
+        </tbody>
+      </table>
+      <p>\(h(\Omega \geq 7)\) 缓慢增长（3.49% → 5.61%）。5.61% 是当前窗口数字，非渐近常数。</p>
+
+      <h2>§7 闭合论证</h2>
+
+      <h3>7.1 链条</h3>
+      <p>对 Ω=k（k = 2,...,6），在 sf + ss + hp 三类 cores 上：</p>
+      <ol>
+        <li>\(\bar{M}_{k,N}(m)\) 对 \(\ln(m)\) 有正斜率（sf &gt;10σ，ss &gt;4σ，hp 主质量 &gt;2σ）。</li>
+        <li>→ 在当前窗口内，数据与 \(\bar{M}_k \to \infty\) 一致。</li>
+        <li>\(V_k(m) = O(1)\)：Paper XXXIV 在 Ω=2 sf 确认 \(V \approx 1.4\)。高 Ω 和 nsf 合理预期有界但未单独验证。</li>
+        <li>→ \(\Gamma \to \infty\)，Cantelli \(c \to 0\)，Cesàro \(\bar{c}_h \to 0\)。</li>
+        <li>→ Ω=k 层 defect 贡献 → 0。</li>
+      </ol>
+
+      <h3>7.2 诚实的边界</h3>
+      <p><strong>(a)</strong> Ω=4–6 只有 relaxed 数据。Ω=2,3 验证了 relaxed/canonical 正号一致。</p>
+      <p><strong>(b)</strong> \(V_k = O(1)\) 在 Ω=3–6 和 nsf 上未单独验证。</p>
+      <p><strong>(c)</strong> 有限窗口 \(N = 10^{10}\)。</p>
+      <p><strong>(d)</strong> 以上是 <strong>positive-slope closure signal</strong>，非严格已证闭合。</p>
+      <p><strong>(e)</strong> hp Ω=6 最弱（+0.039，2.6σ），marginal。</p>
+      <p><strong>(f)</strong> hp 中极高幂次 residue（~0.2% 密度）未单独测。</p>
+
+      <h2>§8 有限窗口的启示与 Paper XLII</h2>
+
+      <h3>8.1 已建立</h3>
+      <ul>
+        <li>Ω=0,1：trivial（18.64%）</li>
+        <li>Ω=2–6：正斜率闭合信号——sf + ss + hp 三类，覆盖 75.75% harmonic 密度</li>
+        <li>已测正斜率 + trivial = 约 94.4%</li>
+        <li>Ω≥7：5.61%，不闭合</li>
+      </ul>
+
+      <h3>8.2 Paper XLII 的未解任务</h3>
+      <p><strong>(a)</strong> 控制 Ω≥7 的 5.61% harmonic 密度。</p>
+      <p><strong>(b)</strong> 处理 \(h(\geq 7)\) 随 N 增长（3.49% → 5.61%）。可能需要 moving cutoff \(K(N)\) 或统一衰减控制。</p>
+      <p><strong>(c)</strong> 完成 closure signal → closure：canonical 验证（Ω=4–6），\(V_k = O(1)\) 验证，渐近外推。</p>
+
+      <h2>§9 讨论</h2>
+
+      <h3>9.1 核心贡献</h3>
+      <p>(a) 递归框架（递归主链 + hp seed branch）——覆盖所有整数分解形式。</p>
+      <p>(b) sf Ω=2–8 + ss Ω=2–6 + hp Ω=3–6 的 M̄ 斜率谱。</p>
+      <p>(c) Turning point Ω ≈ 7.2（sf spectrum，当前窗口线性外推）。</p>
+      <p>(d) sf/ss/hp 密度拆分：已测正斜率 + trivial = 94.39%（N = 10¹⁰ 精确）。</p>
+      <p>(e) nsf（ss + hp）斜率不低于 sf，部分更大——乘法阴影在 parity 有无时都有效。</p>
+
+      <h3>9.2 为什么 nsf 斜率更大？</h3>
+      <p>nsf core 含重复素因子，\(\rho(m)\) 更小（DP 对重复因子分解更高效），\(\tau_m\) 增长更慢，而 diff 增长不受影响。M̄ 起点更低但斜率更大。</p>
+
+      <h3>9.3 为什么高 Ω 层斜率下降？</h3>
+      <p>(a) 组合复杂度：分解路径数随 k 指数增长。(b) 有限尺度效应。(c) 信噪比递减。</p>
+
+      <h2>§10 数据来源与可重复性</h2>
+      <table>
+        <thead><tr><th>脚本</th><th>测量</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td>p41_omega3_mbar.py</td><td>Ω=3 sf（can + rel）</td><td>1</td></tr>
+          <tr><td>p41_omega4_test.py</td><td>Ω=4 sf</td><td>2</td></tr>
+          <tr><td>p41_omega5to8.py</td><td>Ω=5–8 sf</td><td>3</td></tr>
+          <tr><td>p41_density_fast.py</td><td>h_k(N) 修正版</td><td>4</td></tr>
+          <tr><td>p41_sf_density.py</td><td>sf/nsf 拆分</td><td>5</td></tr>
+          <tr><td>p41_nonsf_mbar.py</td><td>ss M̄</td><td>6</td></tr>
+          <tr><td>p41_partition_fast.py</td><td>sf/ss/hp 拆分（N=10¹⁰）</td><td>7</td></tr>
+          <tr><td>p41_hp_mbar.py</td><td>hp M̄</td><td>8</td></tr>
+        </tbody>
+      </table>
+      <p>数据：<code>rho_1e10.bin</code>（int16，N = 10¹⁰，<code>rho_dp.c</code>，Paper XXXII convention）。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XL: Direct Positive Slope of M̄ and Strong Numerical Support for Ω=2 Closure. DOI: <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener">10.5281/zenodo.19179778</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XXXIX: Shifted-Product Deficit and M_loc Growth at Ω=2. DOI: <a href="https://doi.org/10.5281/zenodo.19164588" target="_blank" rel="noopener">10.5281/zenodo.19164588</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XXXIV: Upper-Margin Closure and Bounded-Variance. DOI: <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">10.5281/zenodo.19140015</a>.</p>
+
+      <h2>致谢</h2>
+      <p>Claude（子路）设计递归框架和 Block 1–8 全部实验，编写八个脚本，起草 v1–v7 working notes 和正式文本。发现并修正 Block 4 的 Ω=0 bug（大素因子未被计入 Ω）。</p>
+      <p>Han Qin（作者）提出统一递归定义（"每个 Ω 都是上一个 Ω 加一个素数 q"），要求验证 Ω=4–8 完整谱，发现 turning point，提出"Ω≥4 打包还是 Ω≥7 打包"的决策问题，以及"能先跑数据就先跑，因为数据会 correct 我们"的方法论——直接导致 Block 5–8 的诞生，将已测覆盖率从 64% 推到 94.39%。</p>
+      <p>ChatGPT（公西华）在七轮 review（v1–v7）中逐层加深：v2 指出四个硬伤（parity 错误，squarefree 范围，relaxed/canonical 区别，Erdős-Kac 固定阈值）；v3 指出"95% 不等于已测覆盖率"催生 Block 5–6；v4 指出 nsf partition gap 和 Ω=0 bug 催生 Block 7–8 和密度修正；v5 指出 nsf 索引统一；v6 指出 hp 递归定位，同窗口精确对齐，hp subtype 覆盖；v7 区分"已测正斜率"和"trivial coverage"并最终给出 accept with moderate revisions。每一轮 review 都推动了更深的实验和更诚实的表述。</p>
+      <p>Gemini（子夏）和 Grok（子贡）在前期确认递归框架共识和斜率谱一致性，在后期持续 accept。</p>
+      <p>最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho40.html">← 论文 XL</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>论文 XLII →</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
