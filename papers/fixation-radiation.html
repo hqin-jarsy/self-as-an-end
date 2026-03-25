@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixation, Fragility, and Radiation — A Structural Theory of Mass Extinction Dynamics / 固、脆弱与辐射：大灭绝动力学的结构性理论</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', serif; background: #faf9f7; color: #1a1a1a; line-height: 1.7; }
+    header { background: #1a1a1a; color: #faf9f7; padding: 2rem 2rem 1.5rem; }
+    header .site-title { font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.4rem; }
+    header .site-title a { color: inherit; text-decoration: none; }
+    header .site-title a:hover { opacity: 1; }
+    header h1 { font-size: 1.5rem; font-weight: 400; line-height: 1.4; }
+    header .series-label { margin-top: 0.6rem; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.5; }
+    .lang-toggle { display: flex; gap: 0; margin: 1.5rem 2rem 0; border-bottom: 1px solid #ddd; }
+    .lang-toggle button { background: none; border: none; padding: 0.6rem 1.4rem; cursor: pointer; font-size: 0.85rem; letter-spacing: 0.04em; color: #666; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
+    .lang-toggle button.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
+    .lang-toggle button:hover { color: #1a1a1a; }
+    .content { max-width: 780px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+    .meta { font-size: 0.82rem; color: #888; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e8e8e8; line-height: 1.6; }
+    .meta strong { color: #555; }
+    .abstract { background: #f2f0eb; border-left: 3px solid #1a1a1a; padding: 1.2rem 1.5rem; margin-bottom: 2.5rem; font-size: 0.92rem; line-height: 1.75; }
+    .abstract .label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .keywords { margin-top: 0.8rem; font-size: 0.82rem; color: #888; }
+    h2 { font-size: 1.15rem; font-weight: 600; margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #e8e8e8; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.8rem 0 0.7rem; color: #333; }
+    p { margin-bottom: 1rem; font-size: 0.95rem; }
+    .core-thesis { font-style: italic; color: #555; margin-bottom: 1.2rem; font-size: 0.9rem; padding-left: 1rem; border-left: 2px solid #ccc; }
+    .prediction-item { margin-bottom: 1.2rem; padding-left: 1rem; border-left: 2px solid #ccc; font-size: 0.92rem; }
+    .prediction-item .pred-label { font-weight: 600; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; color: #888; margin-bottom: 0.3rem; }
+    .references { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e8e8e8; font-size: 0.82rem; color: #777; line-height: 1.6; }
+    .references p { margin-bottom: 0.4rem; font-size: 0.82rem; }
+    .doi-link { display: inline-block; margin-top: 1.5rem; padding: 0.5rem 1.2rem; background: #1a1a1a; color: #faf9f7; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .doi-link:hover { background: #444; }
+    .nav-links { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e8e8e8; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; }
+    .nav-links a { color: #555; text-decoration: none; }
+    .nav-links a:hover { color: #1a1a1a; }
+    .series-nav { margin-top: 2rem; padding: 1rem 1.2rem; background: #f2f0eb; font-size: 0.82rem; }
+    .series-nav .label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .series-nav a { display: block; color: #555; text-decoration: none; padding: 0.2rem 0; }
+    .series-nav a:hover { color: #1a1a1a; }
+    .series-nav a.current { color: #1a1a1a; font-weight: 600; }
+    .writing-statement { font-size: 0.8rem; color: #999; margin-bottom: 1rem; font-style: italic; }
+    .event-block { margin: 1.8rem 0; padding: 1.2rem 1.5rem; border: 1px solid #e8e8e8; background: #faf9f7; }
+    .event-block h3 { margin-top: 0; border: none; padding: 0; margin-bottom: 0.8rem; font-size: 1rem; }
+    .event-block .event-meta { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: #aaa; margin-bottom: 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 1.5rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem 0.7rem; text-align: left; }
+    th { background: #f2f0eb; font-weight: 600; }
+    tr:nth-child(even) { background: #faf9f7; }
+  </style>
+  <!-- Google Scholar / citation meta tags -->
+  <meta name="citation_title" content="Fixation, Fragility, and Radiation: A Structural Theory of Mass Extinction Dynamics">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19225113">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/fixation-radiation.html">
+  <meta name="citation_keywords" content="mass extinction; selectivity; path dependence; adaptive radiation; lock-in; remainder; Fixation and Selection; Self-as-an-End; SAE; Han Qin; 固与选; 大灭绝; 演化锁死; 余项">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Fixation, Fragility, and Radiation: A Structural Theory of Mass Extinction Dynamics",
+    "alternativeHeadline": "固、脆弱与辐射：大灭绝动力学的结构性理论",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "identifier": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19225113"
+    },
+    "sameAs": "https://doi.org/10.5281/zenodo.19225113",
+    "url": "https://self-as-an-end.net/papers/fixation-radiation.html",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series"
+    },
+    "keywords": [
+      "Self-as-an-End", "SAE", "Han Qin", "秦汉",
+      "mass extinction", "大灭绝",
+      "selectivity", "选择性",
+      "path dependence", "路径依赖",
+      "adaptive radiation", "适应辐射",
+      "lock-in depth", "演化锁死",
+      "remainder", "余项",
+      "fixation and selection", "固与选",
+      "macroevolutionary regimes", "宏演化体制"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+  <!-- Cloudflare Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "your-token-here"}'></script>
+</head>
+<body>
+
+<header>
+  <div class="site-title"><a href="/">Self-as-an-End Theory Series — Han Qin (秦汉)</a></div>
+  <h1>Fixation, Fragility, and Radiation<br>
+  <span style="font-size:1.1rem;opacity:0.7">固、脆弱与辐射：大灭绝动力学的结构性理论</span></h1>
+  <div class="series-label">Fixation and Selection Series · Applied — Paleontology</div>
+</header>
+
+<div class="lang-toggle">
+  <button class="active" onclick="switchLang('en')">English</button>
+  <button onclick="switchLang('zh')">中文</button>
+</div>
+
+<div class="content">
+
+<!-- ==================== ENGLISH ==================== -->
+<div id="lang-en" class="lang-section active">
+
+  <div class="meta">
+    <strong>Author:</strong> Han Qin (秦汉) &nbsp;|&nbsp;
+    <strong>ORCID:</strong> <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" style="color:#888">0009-0009-9583-0018</a> &nbsp;|&nbsp;
+    <strong>Series:</strong> Self-as-an-End Theory · Fixation and Selection (Applied) &nbsp;|&nbsp;
+    <strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.19225113" target="_blank" style="color:#555">10.5281/zenodo.19225113</a>
+  </div>
+
+  <div class="writing-statement">Writing Statement: This paper was drafted in collaboration with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</div>
+
+  <div class="abstract">
+    <div class="label">Abstract</div>
+    <p>The Big Five mass extinctions share a common macroevolutionary structure that existing frameworks—whether catastrophist or gradualist—fail to unify. This paper proposes that the primary determinant of extinction vulnerability is not the nature of the environmental perturbation (cooling, warming, anoxia, acidification) but the degree of evolutionary lock-in—the depth of path dependence, selective confirmation bias, and energetic streamlining—accumulated by a lineage prior to crisis onset. Drawing on the Fixation and Selection framework (Qin 2025), I argue that the reproductive law (the directional solidification of generational trajectories through genomic path dependence) progressively forecloses replicative degrees of freedom via a self-reinforcing positive feedback loop. Mass extinctions function as violent interruptions of this loop, selectively clearing the most deeply locked-in lineages and reopening replicative space for lineages retaining greater adaptive flexibility—those with richer evolutionary remainders.</p>
+    <p>This framework makes three claims: (1) pre-extinction environmental deterioration, documented across all five events, is structurally secondary to the pre-existing depth of lock-in, which determines vulnerability regardless of perturbation direction; (2) extinction selectivity patterns across the Big Five—favoring physiologically flexible, broadly adapted, generalist lineages—are unified not by a shared kill mechanism but by a shared structural principle: shallower lock-in confers survivorship; (3) the directionality observed in post-extinction radiations reflects not a teleological drive but the structural consequence that lineages with richer remainders are both more likely to survive and more likely to radiate into novel functional space. The specific nature of the terminal trigger is recast as an interaction partner that selects which axes of the pre-existing lock-in profile become lethal, not the root cause of the outcome.</p>
+    <div class="keywords"><strong>Keywords:</strong> mass extinction, selectivity, path dependence, adaptive radiation, evolutionary dead ends, confirmation bias, macroevolutionary regimes</div>
+  </div>
+
+  <div class="series-nav">
+    <div class="label">Fixation and Selection Series</div>
+    <a href="fixed-selected-1.html">I — Causal Law Forecloses Distinction</a>
+    <a href="fixed-selected-2.html">II — Reproductive Law Forecloses Replication</a>
+    <a href="fixed-selected-3.html">III — Predictive Law Forecloses Choice</a>
+    <a href="fixed-selected-4.html">IV — Bilateral Non-Doubt Forecloses Self-Awareness</a>
+    <a href="fixation-radiation.html" class="current">Applied — Fixation, Fragility, and Radiation (Paleontology)</a>
+  </div>
+
+  <h2>1. Introduction</h2>
+  <p>The study of mass extinctions has long been organized around a central question: what killed them? The identification of the Chicxulub impact crater (Penfield 1978; Alvarez et al. 1980), the dating of flood basalt provinces (Burgess et al. 2014; Blackburn et al. 2013), and the reconstruction of ocean redox states (Bartlett et al. 2018) have yielded increasingly precise terminal triggers for each of the Big Five events. Yet a complementary question has received less systematic attention: <em>why were they vulnerable?</em></p>
+  <p>The distinction matters because the same environmental perturbation does not affect all lineages equally. End-Permian warming and anoxia preferentially eliminated marine clades with lower oxygen-carrying capacity (Song et al. 2024), while the end-Cretaceous impact winter selectively destroyed arboreal bird lineages through global forest collapse (Field et al. 2018). The kill mechanism differs—warming in one case, cooling in the other—yet both events preferentially eliminated deeply specialized lineages and spared broadly adapted generalists. This cross-event consistency in selectivity pattern, despite inconsistency in kill mechanism, demands a structural explanation.</p>
+  <p>This paper proposes such an explanation by applying the Fixation and Selection framework (Qin 2025a, 2025b) to the macroevolutionary record. The framework identifies a universal structural dynamic within evolutionary systems: the fourth step of each developmental round (fixation) forecloses the first step (selection), compressing degrees of freedom through an irreversible positive feedback loop of path dependence, confirmation bias, and energetic streamlining. In the biological round (5DD–8DD in the SAE dimensional sequence), this manifests as the progressive foreclosure of replicative freedom by reproductive law—the directional solidification of genomic trajectories across generations.</p>
+  <p>The core insight is that lock-in depth, not kill mechanism, is the primary structural determinant of extinction vulnerability. A lineage deep in the positive feedback loop—highly specialized, narrowly adapted, genetically streamlined—is fragile to any direction of environmental change, because it has exhausted its degrees of freedom for response. The specific perturbation selects the timing and the immediate physiological filter, but the underlying vulnerability is structural and precedes the crisis.</p>
+  <p>This reframing has three consequences. First, the longstanding debate between catastrophist and gradualist interpretations is repositioned: pre-extinction environmental deterioration and terminal triggers are not competing explanations but complementary aspects of the same structural process. Second, the apparent directionality of post-extinction radiations is explained without invoking teleology: lineages with richer remainders are both more likely to survive and more likely to explore novel functional space. Third, the specific nature of the trigger becomes structurally secondary.</p>
+
+  <h2>2. Theoretical Framework: Fixation Forecloses Selection</h2>
+
+  <h3>2.1 The Universal Law</h3>
+  <p>The Fixation and Selection framework (Qin 2025a) identifies a four-step cycle operating at every scale of the chisel-construct sequence: <em>selection (birth) → determination (self) → extension (other) → fixation (death)</em>. Fixation, the irreversible solidification of direction, does not merely complete the cycle; it retroactively constrains the space of selection within the same round. The construct, once solidified, excludes the directions it did not take. This exclusion is the structural meaning of foreclosure.</p>
+  <p>Foreclosure is simultaneously indispensable and destructive. Without foreclosure there is no structure, without structure no remainder, without remainder no emergence of the next round. Yet within each round, foreclosure is a real, irreversible compression of degrees of freedom that cannot be rationalized away. Both sides hold simultaneously and cannot be reconciled (Qin 2025a, Ch. 1).</p>
+
+  <h3>2.2 Round 2: Reproductive Law Forecloses Replication</h3>
+  <p>In the biological round (5DD–8DD), the chisel is replication (5DD)—the first instance where patterns persist rather than dissipate—and the construct is reproductive law (8DD)—the directional solidification of generational trajectories through genomic inheritance. The foreclosure mechanism operates through three mutually reinforcing channels (Qin 2025b, Ch. 3):</p>
+  <p><strong>Genetic path dependence.</strong> The genome is the biological form of memory. Each generation's adaptive "experience" is written into DNA, and evolution cannot retrace its steps. Dollo's law—complex features lost in evolution do not reappear—is a structural consequence: the genome has traveled too far in one direction, and all intermediate states required for reversal are disadvantageous under selection.</p>
+  <p><strong>Confirmation bias in natural selection.</strong> Natural selection preferentially preserves "what already works," reinforcing the existing adaptive direction while eliminating alternatives. The narrower the ecological niche, the stronger the confirmation bias: the koala's exclusive eucalyptus diet, the giant panda's near-exclusive bamboo dependence, the cheetah's extreme locomotor specialization—each represents a genome "confirming" an ever-narrower path.</p>
+  <p><strong>Biological energy conservation.</strong> Maintaining unused genetic pathways consumes resources. Selection favors streamlining: unused genes accumulate mutations and become pseudogenes. Cave fish lose eyes not because darkness causes degradation, but because the genes maintaining eyes are no longer preserved by selection pressure.</p>
+  <p>These three channels form a positive feedback loop: path dependence locks in direction → selection confirms direction → energy conservation eliminates alternatives → path dependence deepens. The loop is self-reinforcing and, in stable environments, produces exquisitely adapted organisms. In changing environments, it produces extinction.</p>
+  <p>A clarification against a potential tautology objection: the SAE contribution is not the observation that specialization produces fragility, but the claim that lock-in is a structural inevitability of reproductive law itself—not an accident or contingent outcome of particular evolutionary histories, but the necessary consequence of how the chisel-construct cycle operates in Round 2. The framework transforms an empirical regularity ("specialists die first") into a structural necessity ("the fixation step of every round forecloses the selection step of that same round").</p>
+  <p>Lock-in is not a single scalar but a multi-axis profile. Different perturbation types activate different axes: warming and hypoxia activate the respiratory-buffering axis (end-Permian); impact winter activates the habitat-dependence and trophic axes (K-Pg); glacioeustatic regression activates the geographic-range and thermal-niche axes (end-Ordovician). The framework's prediction is that the <em>interaction</em> between a lineage's lock-in profile and the perturbation profile determines vulnerability.</p>
+
+  <h3>2.3 Mass Extinction as Violent Interruption</h3>
+  <p>The Fixation and Selection framework draws a sharp distinction between the bridge (the structural emergence of a new round from the remainder of the current round's foreclosure) and mass extinction. Mass extinction is not a bridge. It is a catastrophe—an external force that violently clears existing pathways, forcibly reopening replicative space (Qin 2025b, §3.4). Yet it has a structural function analogous to the bridge's consequence: by clearing the most deeply locked-in lineages, it reopens the replicative space that foreclosure had compressed. The lineages that survive are, by structural necessity, those with shallower lock-in—broader adaptations, richer genetic diversity, more uncommitted degrees of freedom.</p>
+
+  <h3>2.4 The Remainder as Survival Criterion</h3>
+  <p>The SAE framework defines the remainder (余项) as that which survives every act of chiseling—the irreducible excess that no amount of structural solidification can eliminate (Qin 2025c). In the biological round, the remainder of reproductive law is offspring variability: each generation produces variation, but the organism does not choose which variations appear.</p>
+  <p>This concept maps directly onto the empirical survival criterion observed across mass extinctions: what survives is not "the most complex" or "the most adapted," but the lineage with the richest remainder—the greatest uncommitted degrees of freedom. Small body size, broad dietary range, wide geographic distribution, high reproductive rate, flexible metabolic capacity—these are all empirical manifestations of rich remainder: adaptive potential that has not yet been committed to a specific direction.</p>
+
+  <h2>3. The Five Extinctions: Lock-in Depth as the Unifying Variable</h2>
+
+  <div class="event-block">
+    <div class="event-meta">~444 Ma · Big Five No. 1</div>
+    <h3>3.1 End-Ordovician</h3>
+    <p><strong>Pre-extinction deterioration.</strong> The end-Ordovician extinction is increasingly understood as a prolonged, punctuated climate-sea level-habitat crisis rather than a short Hirnantian catastrophe (Rasmussen et al. 2019). Global redox proxy data document a global-scale anoxic event (HOAE) coincident with extinction onset and persisting through glaciation and deglaciation (Bartlett et al. 2018). Quantitative analysis supports a "common cause" signal: glacioeustatic sea-level fall and tropical cooling are implicated in the primary extinction pulse (Finnegan et al. 2012).</p>
+    <p><strong>Lock-in and selectivity.</strong> Extinction risk correlates with maximum paleolatitude (a thermal tolerance proxy) and with the fraction of geographic range impacted by stratigraphic truncation (Finnegan et al. 2012). Exclusively tropical taxa—those most deeply locked into warm-water niches—are disproportionately eliminated. Models trained on earlier intervals underpredict extinction of tropical specialists, consistent with the framework's prediction: lock-in to a narrow thermal niche produces fragility when that niche contracts.</p>
+    <p><strong>Post-extinction radiation.</strong> The aftermath catalyzed early radiations of jawed vertebrates (gnathostomes), facilitated by ecological release and atmospheric oxygen increases. The relevant novelty is functional: jaws and higher-activity predation niches represent new degrees of freedom in ecological space.</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">~372–359 Ma · Big Five No. 2</div>
+    <h3>3.2 Late Devonian</h3>
+    <p><strong>Pre-extinction deterioration.</strong> The Late Devonian crisis is intrinsically multi-pulse. Astronomical tuning constrains the Kellwasser anoxic horizons to ~90–110 kyr durations, with environmental disruption beginning hundreds of kyr before the Frasnian-Famennian boundary (De Vleeschouwer et al. 2017). Terrestrial records reveal ecosystem collapse linked to ozone-layer reduction and elevated UV-B during rapid warming (Marshall et al. 2020).</p>
+    <p><strong>Lock-in and selectivity.</strong> The clearest selectivity signal is vertebrate body size and life-history filtering: post-extinction ecosystems are dominated by small, fast-breeding ray-finned fishes, sharks, and tetrapods, while large, slow-breeding survivors fail to diversify (Sallan &amp; Galimberti 2015). Large body size and slow reproduction are indicators of deep lock-in: long generation times, high energetic investment per offspring, narrow adaptive flexibility.</p>
+    <p><strong>Post-extinction radiation.</strong> The Devonian-Carboniferous transition sees the diversification of crown-group tetrapods and later amniote origins, representing a fundamental expansion of terrestrial vertebrate functional space.</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">~252 Ma · Big Five No. 3</div>
+    <h3>3.3 End-Permian</h3>
+    <p><strong>Pre-extinction deterioration.</strong> High-precision U-Pb chronology constrains the main extinction interval to ~60 ± 48 kyr, embedded in a longer-lived carbon-cycle disturbance persisting ~500 kyr (Burgess et al. 2014). Ultra-high-resolution proxy work documents a cascading sequence in the ~2,000 years preceding collapse: wildfires → enhanced terrestrial input → marine euxinia, with terrestrial ecosystem collapse preceding marine collapse (Dal Corso et al. 2022).</p>
+    <p><strong>Lock-in and selectivity.</strong> The end-Permian provides the strongest case for explicitly physiological selectivity. Song et al. (2024) demonstrate that marine clades with lower oxygen-carrying capacity (hemerythrin proteins, O₂ diffusion-dependent respiration) experienced significantly greater extinction intensity and body-size reduction than clades with hemoglobin or hemocyanin. This respiratory-protein selectivity persists after controlling for geographic range and skeletal mineralogy. Knoll et al. (2007) independently identify preferential elimination of heavily calcified groups with limited respiratory and circulatory systems.</p>
+    <p>In the framework's terms, respiratory complexity is a measure of remainder richness at the physiological level. Hemoglobin/hemocyanin systems provide degrees of freedom for oxygen management under stress—adaptive capacity not yet committed to a single environmental regime. Hemerythrin systems and diffusion-dependent respiration represent deeper lock-in: functional, but only under stable oxygen conditions.</p>
+    <p><strong>Post-extinction radiation.</strong> The transition produces the "Modern/Mesozoic" evolutionary fauna: more diverse predators, more complex predator-prey interactions, and a two-step ecosystem modernization across the Triassic. The respiratory-protein selectivity directly channels subsequent dominance structure: lineages with advanced oxygen-transport systems disproportionately populate the rebuilt ecosystems.</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">~201 Ma · Big Five No. 4</div>
+    <h3>3.4 End-Triassic</h3>
+    <p><strong>Pre-extinction deterioration.</strong> High-precision U-Pb constraints link the extinction tightly to the onset of Central Atlantic Magmatic Province (CAMP) activity, with volcanism and associated atmospheric flux occurring in four pulses over ~600 kyr (Blackburn et al. 2013). Carbon-cycle perturbations and ocean acidification are documented as pre-boundary and boundary-crossing stressors.</p>
+    <p><strong>Lock-in and selectivity.</strong> Functional/ecological selectivity analysis shows strong filtering against sessile suspension feeders, with pronounced tropical and reef-system impacts (Dunhill et al. 2018). Sessile, filter-feeding lifestyles in tropical reef settings represent triple lock-in: positional (attached to substrate), trophic (dependent on suspended particles), and thermal (restricted to warm, shallow water). Mobile, deposit-feeding, and broadly distributed forms survive preferentially.</p>
+    <p><strong>Post-extinction radiation.</strong> The aftermath sets the stage for dinosaur dominance across ~136 Myr and, in the marine realm, accelerates the Mesozoic Marine Revolution—a long-term escalation of predator-prey interactions toward more active, mobile, and heavily defended forms (Vermeij 1977).</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">~66 Ma · Big Five No. 5</div>
+    <h3>3.5 End-Cretaceous</h3>
+    <p><strong>Pre-extinction deterioration.</strong> Multiproxy temperature syntheses support significant global surface-ocean cooling through the Campanian-Maastrichtian interval (Linnert et al. 2014). Whether this climatic trend produced a measurable pre-impact decline in dinosaur diversity remains actively contested. Condamine et al. (2021) report declining diversification across six major dinosaur families beginning ~76 Ma. Dean et al. (2025) challenge this conclusion using Bayesian occupancy modeling, arguing that decreasing fossil detection probability can mimic biological decline.</p>
+    <p>The framework's position on this debate is that the specific question—whether dinosaurs were declining before impact—is structurally secondary. What matters is that non-avian dinosaurs, as large-bodied, long-generation, highly specialized megafauna, were deeply locked in by the Late Cretaceous. Whether environmental deterioration had already begun to expose this lock-in or whether the lock-in remained latent until the impact exposed it, the structural vulnerability was the same.</p>
+    <p><strong>Lock-in and selectivity.</strong> Selectivity at the K-Pg is highly clade-dependent. Marine bivalves show few classic trait selectivities beyond geographic range (Jablonski &amp; Raup 1995). For birds, survivorship is biased toward non-arboreal ecology, consistent with global forest collapse as an ecological filter (Field et al. 2018). Non-avian dinosaurs represent extreme lock-in: large body size, long generation times, likely dependence on warm temperatures, and dietary specialization.</p>
+    <p><strong>Post-extinction radiation.</strong> The aftermath produces the radiation of crown birds and placental mammals. Mammalian radiation follows the pattern predicted by the framework: small-bodied, generalist, high-reproductive-rate lineages—those with the richest remainder—fill the vacated ecological space and subsequently diversify into the full range of Cenozoic ecological niches.</p>
+  </div>
+
+  <h2>4. Directionality Without Teleology</h2>
+
+  <h3>4.1 The Passive-vs-Driven Trend Debate</h3>
+  <p>A central methodological challenge is the distinction between passive and driven trends (McShea 1994). A passive trend—the expansion of variance away from a lower bound without directional selection—can produce an apparent increase in maximum complexity without any organism being selected for greater complexity as such. A driven trend requires directional selection.</p>
+  <p>The framework's contribution is to recast the question. The directionality observed across extinction-radiation cycles is neither passive diffusion nor driven selection toward complexity. It is a structural consequence of the remainder principle: each extinction event selectively removes the most deeply locked-in lineages (those with the least remainder) and preserves those with the most remainder. Over multiple extinction-radiation cycles, this filtering produces a ratchet-like pattern: each post-extinction radiation begins from a surviving pool enriched in remainder, and each new adaptive radiation explores a wider functional space than the pre-extinction radiation it replaces.</p>
+
+  <h3>4.2 Empirical Anchors for the Remainder-Enrichment Ratchet</h3>
+  <p><strong>Sepkoski's evolutionary faunas.</strong> Factor-analytic identification of stepwise Phanerozoic transitions reveals abrupt reorganizations of dominance structure broadly associated with major crises (Sepkoski 1981). Each successive evolutionary fauna dominates a broader range of ecological space than its predecessor—consistent with remainder enrichment through iterative filtering.</p>
+  <p><strong>The Mesozoic Marine Revolution.</strong> Vermeij (1977) documents long-term escalation of predator-prey interactions and the rise of mechanically more durable, more mobile, more actively defended forms in post-Permian and post-Triassic marine ecosystems. The survivors of end-Permian and end-Triassic filtering were disproportionately mobile, metabolically active, and physiologically flexible—remainder-rich—and their subsequent radiation intensified ecological interactions.</p>
+  <p><strong>Respiratory-protein selectivity at the end-Permian.</strong> Song et al. (2024) provide the most direct empirical link between physiological remainder and post-extinction dominance structure: preferential survival of clades with advanced oxygen-transport systems directly channels the composition of the subsequent Mesozoic fauna.</p>
+  <p><strong>Incumbent replacement.</strong> Rosenzweig &amp; McCord (1991) define evolutionary progress as the spread of key adaptations that relax trade-offs. In the framework's terms, each "key adaptation" is a new degree of freedom—a new dimension of remainder—that expands the functional space available to the lineage.</p>
+
+  <h3>4.3 Arguments Against a Universal Ratchet—and the Framework's Response</h3>
+  <p><em>Passive trend mechanisms</em> (McShea 1994): the framework does not claim directional selection toward complexity but structural filtering by remainder richness, producing a driven trend by selective removal of low-remainder lineages.</p>
+  <p><em>Inconsistent selectivity across events and taxa</em> (Payne &amp; Finnegan 2023): the framework predicts selectivity on remainder richness, not on any single trait. Remainder richness manifests differently: as respiratory physiology in marine invertebrates, as ecological flexibility in birds, as body size and reproductive rate in vertebrates.</p>
+  <p><em>Post-extinction ecological simplification</em> (Hull 2015): remainder-rich survivors are not pre-adapted to the post-extinction environment; they have <em>potential</em>, not pre-built solutions. Initial simplification reflects the gap between surviving with degrees of freedom and deploying them.</p>
+  <p><em>Heterogeneous environmental drivers</em>: the heterogeneity of kill mechanisms is not a problem to be explained away but the feature that confirms the structural nature of vulnerability. Lock-in depth predicts fragility regardless of perturbation direction.</p>
+
+  <h2>5. The Trigger as Interaction Partner</h2>
+  <p>A key implication of the framework is that the specific nature of the terminal trigger—asteroid impact, flood basalt volcanism, glaciation, marine transgression—is neither the root cause of extinction (as strong catastrophism holds) nor merely a timing device. The trigger is an <em>interaction partner</em>: it determines which axes of the pre-existing lock-in profile are activated, and therefore which lineages cross the threshold from latent vulnerability to actual extinction.</p>
+  <p>At the K-Pg, the Chicxulub impact produced global forest collapse, which activated the habitat-dependence axis: arboreal bird lineages died because their ecological substrate was physically destroyed (Field et al. 2018). Had the same biota faced a slow warming event instead, the habitat-dependence axis might not have been activated, and a different subset of locked-in lineages—those locked on the thermal-buffering axis—would have been preferentially eliminated. At the end-Permian, rapid warming and ocean deoxygenation activated the respiratory-buffering axis (Song et al. 2024). The lock-in profile was pre-existing; the perturbation determined which part of it became lethal.</p>
+  <p><strong>Gradualism</strong> correctly identifies that vulnerability builds over extended timescales through the positive feedback loop of lock-in. Pre-extinction environmental deterioration, documented across all five events (Payne &amp; Finnegan 2023), is the observable trace of this vulnerability accumulation.</p>
+  <p><strong>Catastrophism</strong> correctly identifies that the interruption of the loop requires an external force of sufficient magnitude to overcome the inertia of locked-in systems.</p>
+  <p>The synthesis: catastrophe and gradualism are not competing causes but sequential phases of the same process—the feedback loop deepens vulnerability (gradual phase), and an external perturbation exceeds the loop's absorption capacity on specific axes (catastrophic phase). The trigger does not merely select the timing; it selects the filter.</p>
+
+  <h2>6. Predictions</h2>
+
+  <div class="prediction-item">
+    <div class="pred-label">Prediction 6.1</div>
+    <p>Lock-in depth should predict extinction risk better than any single trait. Composite indices of lock-in (combining niche breadth, geographic range, dietary specialization, generation time, and genetic diversity) should outperform single-trait models in predicting genus-level extinction across events.</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">Prediction 6.2</div>
+    <p>The most specialized species should show suppressed genetic variation. Extremely specialized lineages approaching extinction should exhibit lower genetic diversity than sympatric generalists, even controlling for population size. Modern comparative genomics of endangered specialists (cheetah, giant panda, koala) versus sympatric generalists provides a contemporary test.</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">Prediction 6.3</div>
+    <p>Post-extinction recovery rate should correlate inversely with pre-extinction community lock-in depth. Events that eliminate more deeply locked-in communities (the end-Permian, with 96% marine species loss) should show slower recovery than events that eliminate less deeply locked-in communities. The empirical pattern—end-Permian recovery ~5–10 Myr versus K-Pg recovery ~1–3 Myr—is consistent.</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">Prediction 6.4</div>
+    <p>The greatest adaptive radiations should follow the most thorough clearings of lock-in. The magnitude of post-extinction radiation should correlate with the completeness with which the preceding extinction eliminated deeply locked-in lineages, not simply with the percentage of species lost.</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">Prediction 6.5</div>
+    <p>Kill mechanism should not predict post-extinction radiation structure. Events with different kill mechanisms (warming vs. cooling vs. impact) but similar pre-extinction lock-in distributions should produce similar post-extinction radiation patterns. Conversely, events with similar kill mechanisms but different pre-extinction lock-in distributions should produce different radiation patterns.</p>
+  </div>
+
+  <h2>7. Discussion: What the Framework Does Not Explain</h2>
+  <p>The framework deliberately leaves two questions open.</p>
+  <p>The first concerns scope. If lock-in depth is a continuous variable and perturbation severity is a continuous variable, their interaction should produce a continuous distribution of extinction outcomes, not a discrete binary of "bridge" and "catastrophe." The framework predicts the same structural logic applies across the spectrum. The Big Five are distinguished not by a qualitatively different mechanism but by quantitative extremity—perturbations severe enough to exceed the absorption capacity of even moderately locked-in lineages, producing biosphere-scale clearance and radiation. Whether this can be formalized into a predictive model of extinction severity as a function of lock-in distribution × perturbation magnitude is a challenge for future work.</p>
+  <p>The second concerns directionality. The remainder-enrichment ratchet explains why each post-extinction radiation tends to produce organisms with richer adaptive potential than the pre-extinction dominants. It does not explain why the sequence of extinction-radiation cycles, viewed across the full Phanerozoic, produces an apparent trajectory from simple marine invertebrates to complex terrestrial vertebrates to self-aware primates. This trajectory may be fully explicable as the cumulative effect of five rounds of remainder-enrichment filtering operating on a biosphere that began near the lower bound of complexity. Whether the pattern requires a deeper explanation is left to the reader.</p>
+
+  <h2>8. Conclusion</h2>
+  <p>The Big Five mass extinctions are unified not by a shared kill mechanism but by a shared structural dynamic: the progressive foreclosure of replicative freedom through path dependence, confirmation bias, and energetic streamlining, followed by violent interruption and selective clearance. The depth of evolutionary lock-in—not the direction of environmental change—determines which lineages are vulnerable. The richness of evolutionary remainder—not physiological complexity per se—determines which lineages survive and radiate.</p>
+  <p>This framework resolves the apparent paradox that mass extinctions are simultaneously destructive and generative: destruction falls preferentially on the most locked-in (least remainder), while generation arises preferentially from the least locked-in (most remainder). The iterative application of this filter across five major events produces a ratchet-like enrichment of adaptive potential in the surviving biota, which manifests empirically as the stepwise increase in organizational complexity across the Phanerozoic.</p>
+  <p style="font-style:italic;color:#555;margin-top:1.5rem;">The specific trigger—asteroid, flood basalt, glaciation—selects the timing. The structure selects the outcome.</p>
+
+  <a href="https://doi.org/10.5281/zenodo.19225113" target="_blank" class="doi-link">DOI: 10.5281/zenodo.19225113</a>
+
+  <div class="references">
+    <h2>References</h2>
+    <p>Alvarez, L.W., Alvarez, W., Asaro, F., &amp; Michel, H.V. (1980). Extraterrestrial cause for the Cretaceous-Tertiary extinction. <em>Science</em>, 208, 1095–1108.</p>
+    <p>Bartlett, R., et al. (2018). Abrupt global-ocean anoxia during the Late Ordovician–early Silurian detected using uranium isotopes of marine carbonates. <em>PNAS</em>, 115, 5896–5901.</p>
+    <p>Blackburn, T.J., et al. (2013). Zircon U-Pb geochronology links the end-Triassic extinction with the Central Atlantic Magmatic Province. <em>Science</em>, 340, 941–945.</p>
+    <p>Burgess, S.D., Bowring, S., &amp; Shen, S. (2014). High-precision timeline for Earth's most severe extinction. <em>PNAS</em>, 111, 3316–3321.</p>
+    <p>Condamine, F.L., Guinot, G., Benton, M.J., &amp; Currie, P.J. (2021). Dinosaur biodiversity declined well before the asteroid impact, influenced by ecological and environmental pressures. <em>Nature Communications</em>, 12, 3833.</p>
+    <p>Dal Corso, J., et al. (2022). Environmental crises at the Permian-Triassic mass extinction. <em>Nature Reviews Earth &amp; Environment</em>, 3, 197–214.</p>
+    <p>Dean, C.D., et al. (2025). The structure of the end-Cretaceous dinosaur fossil record in North America. <em>Current Biology</em>, 35.</p>
+    <p>De Vleeschouwer, D., et al. (2017). Timing and pacing of the Late Devonian mass extinction event regulated by eccentricity and obliquity. <em>Nature Communications</em>, 8, 2268.</p>
+    <p>Dunhill, A.M., Foster, W.J., Sciberras, J., &amp; Twitchett, R.J. (2018). Impact of the Late Triassic mass extinction on functional diversity and composition of marine ecosystems. <em>Palaeontology</em>, 61, 133–148.</p>
+    <p>Field, D.J., et al. (2018). Early evolution of modern birds structured by global forest collapse at the end-Cretaceous mass extinction. <em>Current Biology</em>, 28, 1825–1831.</p>
+    <p>Finnegan, S., et al. (2012). Climate change and the selective signature of the Late Ordovician mass extinction. <em>PNAS</em>, 109, 6829–6834.</p>
+    <p>Hull, P.M. (2015). Life in the aftermath of mass extinctions. <em>Current Biology</em>, 25, R941–R952.</p>
+    <p>Jablonski, D. (1986). Background and mass extinctions: the alternation of macroevolutionary regimes. <em>Science</em>, 231, 129–133.</p>
+    <p>Jablonski, D. &amp; Raup, D.M. (1995). Selectivity of end-Cretaceous marine bivalve extinctions. <em>Science</em>, 268, 389–391.</p>
+    <p>Jablonski, D. &amp; Edie, S.M. (2025). Mass extinctions and their rebounds: a macroevolutionary framework. <em>Paleobiology</em>.</p>
+    <p>Knoll, A.H., Bambach, R.K., Payne, J.L., Pruss, S., &amp; Fischer, W.W. (2007). Paleophysiology and end-Permian mass extinction. <em>Earth and Planetary Science Letters</em>, 256, 295–313.</p>
+    <p>Linnert, C., et al. (2014). Evidence for global cooling in the Late Cretaceous. <em>Nature Communications</em>, 5, 4194.</p>
+    <p>Marshall, J.E.A., et al. (2020). UV-B radiation was the Devonian-Carboniferous boundary terrestrial extinction kill mechanism. <em>Science Advances</em>, 6, eaba0768.</p>
+    <p>McShea, D.W. (1994). Mechanisms of large-scale evolutionary trends. <em>Evolution</em>, 48, 1747–1763.</p>
+    <p>Payne, J.L. &amp; Finnegan, S. (2023). Selectivity of mass extinctions: Patterns, processes, and future directions. <em>Cambridge Prisms: Extinction</em>, 1, e10.</p>
+    <p>Qin, H. (2025a). Fixation and Selection (I)—Causal Law Forecloses Distinction. <em>Self-as-an-End Theory Series</em>. DOI: <a href="https://doi.org/10.5281/zenodo.18859363" target="_blank" style="color:#999">10.5281/zenodo.18859363</a>.</p>
+    <p>Qin, H. (2025b). Fixation and Selection (II)—Reproductive Law Forecloses Replication. <em>Self-as-an-End Theory Series</em>. DOI: <a href="https://doi.org/10.5281/zenodo.18859393" target="_blank" style="color:#999">10.5281/zenodo.18859393</a>.</p>
+    <p>Qin, H. (2025c). SAE Methodological Overview: The Chisel-Construct Cycle. DOI: <a href="https://doi.org/10.5281/zenodo.18842450" target="_blank" style="color:#999">10.5281/zenodo.18842450</a>.</p>
+    <p>Qin, H. (2025d). From Replication to Cognition: The Chisel-Construct Cycle of Life (5D–8D). DOI: <a href="https://doi.org/10.5281/zenodo.18807376" target="_blank" style="color:#999">10.5281/zenodo.18807376</a>.</p>
+    <p>Qin, H. (2025e). Periodic Table of Life (Part I)—From Causality to Reproduction. DOI: <a href="https://doi.org/10.5281/zenodo.18818107" target="_blank" style="color:#999">10.5281/zenodo.18818107</a>.</p>
+    <p>Qin, H. (2025f). Periodic Table of Life (Part II)—From Reproduction to Prediction. DOI: <a href="https://doi.org/10.5281/zenodo.18818149" target="_blank" style="color:#999">10.5281/zenodo.18818149</a>.</p>
+    <p>Rasmussen, C.M.Ø., et al. (2019). Cascading trend of Early Paleozoic marine radiations paused by Late Ordovician extinctions. <em>PNAS</em>, 116, 7207–7213.</p>
+    <p>Rosenzweig, M.L. &amp; McCord, R.D. (1991). Incumbent replacement: evidence for long-term evolutionary progress. <em>Paleobiology</em>, 17, 202–213.</p>
+    <p>Sallan, L. &amp; Galimberti, A.K. (2015). Body-size reduction in vertebrates following the end-Devonian mass extinction. <em>Science</em>, 350, 812–815.</p>
+    <p>Sepkoski, J.J. (1981). A factor analytic description of the Phanerozoic marine fossil record. <em>Paleobiology</em>, 7, 36–53.</p>
+    <p>Song, H., et al. (2024). Respiratory protein-driven selectivity during the Permian-Triassic mass extinction. <em>The Innovation</em>, 5, 100618.</p>
+    <p>Vermeij, G.J. (1977). The Mesozoic Marine Revolution: evidence from snails, predators, and grazers. <em>Paleobiology</em>, 3, 245–258.</p>
+  </div>
+
+</div><!-- end lang-en -->
+
+<!-- ==================== CHINESE ==================== -->
+<div id="lang-zh" class="lang-section">
+
+  <div class="meta">
+    <strong>作者：</strong>秦汉 (Han Qin) &nbsp;|&nbsp;
+    <strong>ORCID：</strong> <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" style="color:#888">0009-0009-9583-0018</a> &nbsp;|&nbsp;
+    <strong>系列：</strong>以自我为目的理论 · 固与选（应用篇）&nbsp;|&nbsp;
+    <strong>DOI：</strong> <a href="https://doi.org/10.5281/zenodo.19225113" target="_blank" style="color:#555">10.5281/zenodo.19225113</a>
+  </div>
+
+  <div class="writing-statement">写作声明：本文与 Claude（Anthropic）协作起草，所有智识决定、框架设计及最终编辑判断均由作者完成。</div>
+
+  <div class="abstract">
+    <div class="label">摘要</div>
+    <p>五次大灭绝共享一个共同的宏演化结构，而现有框架——无论是灾变论还是渐进论——都未能将其统一。本文提出：决定灭绝脆弱性的主要因素不是环境扰动的性质（变冷、变热、缺氧、酸化），而是一个谱系在危机开始前所积累的演化锁死程度——路径依赖、选择性确认偏误和能量精简的深度。基于"固与选"框架（Qin 2025），本文论证：繁殖律（世代轨迹通过基因组路径依赖的方向性固化）通过自我强化的正反馈循环逐步封闭复制的自由度。大灭绝是对这个循环的暴力打断，选择性地清除锁死最深的谱系，同时为保留了更大适应灵活性的谱系——那些拥有更丰富演化余项的谱系——重新打开复制空间。</p>
+    <p>本文提出三个核心主张：（1）五次大灭绝中都有记录的灾前环境恶化，在结构上从属于预先存在的锁死深度——正是锁死深度决定了脆弱性，不论扰动方向如何；（2）五次大灭绝的选择性模式被统一的不是共享的杀伤机制，而是一个共享的结构性原则：锁死越浅，存活率越高；（3）灭绝后辐射中观察到的方向性不反映目的论驱动力，而是一个结构性后果：余项更丰富的谱系既更可能存活，也更可能辐射进入新的功能空间。具体的终端触发器被重新定位为交互伙伴，它决定了预先存在的锁死图谱中哪些轴被激活，而非结果的根本原因。</p>
+    <div class="keywords"><strong>关键词：</strong>大灭绝，选择性，路径依赖，适应辐射，演化死胡同，确认偏误，宏演化体制</div>
+  </div>
+
+  <div class="series-nav">
+    <div class="label">固与选系列</div>
+    <a href="fixed-selected-1.html">一——因果律封闭区分</a>
+    <a href="fixed-selected-2.html">二——繁殖律封闭复制</a>
+    <a href="fixed-selected-3.html">三——预测律封闭选择</a>
+    <a href="fixed-selected-4.html">四——双向不疑封闭自意识</a>
+    <a href="fixation-radiation.html" class="current">应用篇——固、脆弱与辐射（古生物学）</a>
+  </div>
+
+  <h2>一、引言</h2>
+  <p>大灭绝研究长期围绕一个中心问题展开：是什么杀死了它们？Chicxulub撞击坑的确认（Penfield 1978; Alvarez et al. 1980），洪流玄武岩省的精确定年（Burgess et al. 2014; Blackburn et al. 2013），海洋氧化还原状态的重建（Bartlett et al. 2018）——这些工作为五次大灭绝中的每一次都提供了越来越精确的终端触发器。但一个互补的问题却较少受到系统性关注：<em>它们为什么脆弱？</em></p>
+  <p>这个区分很重要，因为同一种环境扰动并不平等地影响所有谱系。二叠纪末的升温和缺氧优先淘汰了氧运输能力较低的海洋类群（Song et al. 2024），而白垩纪末的撞击冬天通过全球森林崩溃选择性地摧毁了树栖鸟类谱系（Field et al. 2018）。杀伤机制不同——一个是升温，一个是降温——但两次事件都优先淘汰了高度特化的谱系，保留了广泛适应的广适性物种。这种选择性模式的跨事件一致性，尽管杀伤机制不一致，要求一个结构性解释。</p>
+  <p>本文通过将"固与选"框架（Qin 2025a, 2025b）应用于宏演化记录来提供这个解释。该框架识别了演化系统内的一个通用结构动力学：每一轮发展循环的第四步（固）封闭第一步（选），通过路径依赖、确认偏误和能量精简的不可逆正反馈循环压缩自由度。在生物轮（SAE维度序列中的5DD-8DD），这表现为繁殖律对复制自由的逐步封闭——世代轨迹通过基因组继承的方向性固化。</p>
+  <p>核心洞察是：锁死深度，而非杀伤机制，是灭绝脆弱性的主要结构性决定因素。一个深陷正反馈循环的谱系——高度特化、狭隘适应、基因精简——对任何方向的环境变化都是脆弱的，因为它已经耗尽了响应的自由度。具体的扰动选择的是时间点和即时的生理过滤器，但底层的脆弱性是结构性的，先于危机而存在。</p>
+  <p>这个重构有三个后果。第一，灾变论与渐进论之间的长期争论被重新定位：灾前环境恶化和终端触发器不是竞争性解释，而是同一个结构过程的互补方面。第二，灭绝后辐射的表观方向性不需要诉诸目的论：余项更丰富的谱系既更可能通过过滤存活，也更可能在恢复期探索新的功能空间。第三，触发器的具体性质变成结构上次要的。</p>
+
+  <h2>二、理论框架：固封闭选</h2>
+
+  <h3>2.1 通用律</h3>
+  <p>"固与选"框架（Qin 2025a）识别了一个在凿构循环的每个尺度上运作的四步循环：<em>选（生）→ 定（自）→ 展（他）→ 固（死）</em>。固——方向的不可逆固化——不仅仅完成循环；它回溯性地约束本轮内的选择空间。构一旦固化，就排除了它没有走的方向。这个排除就是封闭的结构含义。</p>
+  <p>封闭既不可或缺又具有破坏性。没有封闭就没有结构，没有结构就没有余项，没有余项就没有下一轮的涌现。但在每一轮内部，封闭是真实的、不可逆的自由度压缩，不可被美化。两面同时成立，不可调和（Qin 2025a, 第一章）。</p>
+
+  <h3>2.2 第二轮：繁殖律封闭复制</h3>
+  <p>在生物轮（5DD-8DD），凿是复制（5DD）——模式首次不消散——构是繁殖律（8DD）——世代轨迹通过基因组继承的方向性固化。封闭机制通过三个互相强化的通道运作（Qin 2025b, 第三章）：</p>
+  <p><strong>遗传路径依赖。</strong>基因组是记忆的生物学形态。每一代的适应"经验"写入DNA，进化不能回头。多勒定律——进化中丧失的复杂特征不会重新出现——是路径依赖的结构性后果。</p>
+  <p><strong>自然选择的确认偏误。</strong>自然选择优先保留"已经work的"，强化已有的适应方向同时淘汰替代方案。生态位越窄，确认偏误越强：考拉的桉树叶专食、大熊猫的近乎纯竹饮食、猎豹的极端运动特化——每一个都代表基因组在"确认"一条越来越窄的路径。</p>
+  <p><strong>生物能量节约。</strong>维持基因组中不使用的遗传路径消耗资源。选择偏向精简：不使用的基因积累突变，变成假基因。洞穴鱼失去眼睛不是因为黑暗导致退化，而是因为维持眼睛的基因不再被选择压力保留。</p>
+  <p>三个通道形成正反馈循环：路径依赖锁定方向 → 选择确认方向 → 能量节约淘汰替代方案 → 路径依赖加深。循环自我强化，在稳定环境中产出精妙适应的生物体。在变化环境中，产出灭绝。</p>
+  <p>SAE的贡献不在于观察到特化产生脆弱性，而在于指出锁死是繁殖律本身的结构性宿命——不是偶然不幸或特定演化史的偶然结果，而是凿构循环在第二轮运作的必然后果。框架因此把一个经验规律（"特化物种先死"）转化为一个结构性必然（"每一轮的固都封闭本轮的选"）。</p>
+  <p>锁死不是一个单一标量，而是一个多轴图谱。不同扰动类型激活图谱的不同轴：升温与缺氧激活呼吸缓冲轴（二叠纪末）；撞击冬天激活栖息地依赖和营养轴（K-Pg）；冰川-海面升降激活地理分布和热适生态位轴（奥陶纪末）。框架的预测是：一个谱系的锁死图谱与扰动图谱之间的<em>交互作用</em>决定脆弱性。</p>
+
+  <h3>2.3 大灭绝作为暴力打断</h3>
+  <p>"固与选"框架严格区分小桥（从本轮封闭的余项中涌现出下一轮）和大灭绝。大灭绝不是小桥。它是灾难——外力暴力清除已有路径，强制打开复制空间（Qin 2025b, §3.4）。然而它有一个与小桥后果类似的结构性功能：通过清除锁死最深的谱系，它重新打开了封闭所压缩的复制空间。存活的谱系，在结构必然性上，是那些锁死较浅的——更宽的适应、更丰富的遗传多样性、更多未承诺的自由度。</p>
+
+  <h3>2.4 余项作为存活判据</h3>
+  <p>SAE框架将余项定义为每一次凿的行动之后幸存下来的东西——任何结构固化都无法消除的不可约剩余（Qin 2025c）。在生物轮中，繁殖律的余项是后代差异性：每一代产生变异，但生命体自己不选择出现哪些变异。</p>
+  <p>这个概念直接映射到大灭绝中观察到的经验存活判据：存活的不是"最复杂的"或"最适应的"，而是余项最丰富的谱系——拥有最多未承诺自由度的谱系。小体型、广食性、宽地理分布、高繁殖率、灵活的代谢能力——这些都是丰富余项的经验表现：尚未被承诺到特定方向的适应潜力。</p>
+
+  <h2>三、五次大灭绝：锁死深度作为统一变量</h2>
+
+  <div class="event-block">
+    <div class="event-meta">约4.44亿年前 · 五大之一</div>
+    <h3>3.1 奥陶纪末</h3>
+    <p><strong>灾前恶化。</strong>奥陶纪末灭绝越来越被理解为一个持续、间断性的气候-海平面-栖息地危机，而非短暂的赫南特灾变（Rasmussen et al. 2019）。全球氧化还原代理数据记录了一个与灭绝起始同时的全球性缺氧事件（HOAE）（Bartlett et al. 2018）。北美化石记录的定量分析支持"共同原因"信号：冰川-海面升降和热带变冷被确认为主要灭绝脉冲的驱动因素（Finnegan et al. 2012）。</p>
+    <p><strong>锁死与选择性。</strong>灭绝风险与最大古纬度（热耐受性代理）以及地理分布受地层截断影响的比例相关（Finnegan et al. 2012）。纯热带类群——锁死于温水生态位最深的——被不成比例地淘汰。基于早期时段训练的模型低估了热带特化物种的灭绝，与框架的预测一致：锁死于狭窄的热适生态位在该生态位收缩时产生脆弱性。</p>
+    <p><strong>灭绝后辐射。</strong>恢复期催化了有颌脊椎动物（颌口类）的早期辐射，由生态释放和大气氧含量增加促进。相关的新颖性是功能性的：颌和高活动捕食生态位代表了生态空间中新的自由度。</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">约3.72–3.59亿年前 · 五大之二</div>
+    <h3>3.2 泥盆纪晚期</h3>
+    <p><strong>灾前恶化。</strong>泥盆纪晚期危机本质上是多脉冲的。天文调谐将Kellwasser缺氧层约束为约90-110千年持续时间，环境扰动在弗拉斯-法门边界前数十万年就已开始（De Vleeschouwer et al. 2017）。陆地记录揭示了与臭氧层减薄和快速升温期间UV-B升高相关的生态系统崩溃（Marshall et al. 2020）。</p>
+    <p><strong>锁死与选择性。</strong>最清晰的选择性信号是脊椎动物体型和生活史过滤：灭绝后生态系统由小型、快速繁殖的辐鳍鱼、鲨鱼和四足动物主导，而大型、慢繁殖的幸存者未能多样化（Sallan &amp; Galimberti 2015）。大体型和慢繁殖是深度锁死的指标：长世代时间、高单位后代能量投资、狭窄的适应灵活性。</p>
+    <p><strong>灭绝后辐射。</strong>泥盆-石炭纪过渡期见证了冠群四足动物的多样化和后来的羊膜动物起源，代表了陆地脊椎动物功能空间的根本性扩张。</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">约2.52亿年前 · 五大之三</div>
+    <h3>3.3 二叠纪末</h3>
+    <p><strong>灾前恶化。</strong>高精度U-Pb年代学将主灭绝区间约束为约60 ± 48千年，嵌入在持续约50万年的长期碳循环扰动中（Burgess et al. 2014）。超高分辨率代理工作记录了崩溃前约2000年的级联序列：野火 → 增强的陆源输入 → 海洋硫化，陆地生态系统崩溃先于海洋崩溃（Dal Corso et al. 2022）。</p>
+    <p><strong>锁死与选择性。</strong>二叠纪末为明确的生理选择性提供了最强案例。Song et al. (2024)证明，氧运输能力较低（蚯蚓血红蛋白、依赖O₂扩散的呼吸）的海洋类群经历了显著更高的灭绝强度和体型缩小，而拥有血红蛋白或血蓝蛋白的类群则更好地存活。这种呼吸蛋白选择性在控制了地理分布和骨骼矿物学之后仍然显著。Knoll et al. (2007)独立确认了重碳酸盐化、呼吸循环系统有限的类群被优先淘汰。</p>
+    <p>在框架的术语中，呼吸复杂性是生理层面余项丰富度的度量。血红蛋白/血蓝蛋白系统提供了在胁迫下管理氧气的自由度——尚未承诺给单一环境体制的适应能力。蚯蚓血红蛋白系统和依赖扩散的呼吸代表更深的锁死：功能正常，但仅在氧条件稳定时。</p>
+    <p><strong>灭绝后辐射。</strong>过渡产生了"现代/中生代"演化动物群：更多样的捕食者、更复杂的捕食-被捕食互动、横跨三叠纪的两阶段生态系统现代化。呼吸蛋白选择性直接引导了后续的优势结构：拥有先进氧运输系统的谱系——生理余项更丰富的——不成比例地构成了重建后的生态系统。</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">约2.01亿年前 · 五大之四</div>
+    <h3>3.4 三叠纪末</h3>
+    <p><strong>灾前恶化。</strong>高精度U-Pb约束将灭绝与中大西洋岩浆省（CAMP）活动的起始紧密关联，火山活动及相关大气通量在约60万年内分四个脉冲发生（Blackburn et al. 2013）。碳循环扰动和海洋酸化被记录为边界前和跨边界的胁迫因素。</p>
+    <p><strong>锁死与选择性。</strong>功能/生态选择性分析显示对固着滤食者的强过滤，热带和礁系统影响最为突出（Dunhill et al. 2018）。热带礁环境中的固着滤食生活方式代表三重锁死：位置锁死（固着于基底）、营养锁死（依赖悬浮颗粒）、热锁死（限于温暖浅水）。运动的、沉积食性的、广泛分布的形态优先存活。</p>
+    <p><strong>灭绝后辐射。</strong>余波为恐龙跨约1.36亿年的优势地位奠定了基础，在海洋领域则加速了中生代海洋革命——捕食-被捕食互动向更活跃、更运动、防御更强的形态长期升级（Vermeij 1977）。</p>
+  </div>
+
+  <div class="event-block">
+    <div class="event-meta">约6600万年前 · 五大之五</div>
+    <h3>3.5 白垩纪末</h3>
+    <p><strong>灾前恶化。</strong>多代理温度综合支持坎帕-马斯特里赫特期间显著的全球表层海洋降温（Linnert et al. 2014）。这个气候趋势是否产生了可测量的撞击前恐龙多样性下降，仍是该领域争论最激烈的问题。Condamine et al. (2021)报告六个主要恐龙科从约7600万年前开始多样性下降。Dean et al. (2025)使用贝叶斯占据模型挑战了这一结论，认为递减的化石检出概率可以模拟生物学衰退。</p>
+    <p>框架对这场争论的立场是：恐龙是否在撞击前衰退这个具体问题在结构上是次要的。重要的是，非鸟恐龙作为大型、长世代、高度特化的巨型动物群，到白垩纪晚期已经深度锁死。无论环境恶化是否已经开始暴露这种锁死，还是锁死保持潜伏直到撞击暴露它，结构性脆弱是相同的。</p>
+    <p><strong>锁死与选择性。</strong>K-Pg的选择性高度依赖类群。海洋双壳类除地理分布外几乎没有经典的性状选择性（Jablonski &amp; Raup 1995）。对鸟类而言，存活偏向非树栖生态，与全球森林崩溃作为生态过滤器一致（Field et al. 2018）。非鸟恐龙作为一个整体代表了极端锁死：大体型、长世代时间、可能依赖温暖温度，以及（许多谱系）食性特化。</p>
+    <p><strong>灭绝后辐射。</strong>余波产生了冠群鸟类和有胎盘哺乳动物的辐射。哺乳动物辐射遵循框架预测的模式：小体型、广适性、高繁殖率的谱系——余项最丰富的——填充空出的生态空间，随后多样化进入新生代生态位的全部范围。</p>
+  </div>
+
+  <h2>四、方向性不需要目的论</h2>
+
+  <h3>4.1 被动趋势与驱动趋势之争</h3>
+  <p>对于宏演化中任何"方向性"主张，一个核心方法论挑战是被动趋势与驱动趋势的区分（McShea 1994）。被动趋势——方差从下界向外扩展，没有方向性选择——可以在没有任何生物体被选择为更复杂的情况下产生最大复杂性的表观增加。</p>
+  <p>框架的贡献是重构这个问题。跨灭绝-辐射循环观察到的方向性既不是被动扩散也不是朝向复杂性的驱动选择。它是余项原则的结构性后果：每次灭绝事件选择性地移除锁死最深的谱系（余项最少的），保留余项最丰富的（未承诺自由度最多的）。跨越多个灭绝-辐射循环，这种过滤产生了一个棘轮样的模式：每次灭绝后辐射从余项富集的存活池开始，每次新的适应辐射探索的功能空间比它所替代的灭绝前辐射更宽。</p>
+
+  <h3>4.2 余项富集棘轮的经验锚点</h3>
+  <p><strong>Sepkoski的演化动物群。</strong>对显生宙海洋动物群组成的因子分析识别出与主要危机广泛关联的阶跃式优势结构重组（Sepkoski 1981）。每个连续的演化动物群主导的生态空间范围比其前任更宽——与通过迭代过滤的余项富集一致。</p>
+  <p><strong>中生代海洋革命。</strong>Vermeij (1977)记录了二叠纪末和三叠纪末后海洋生态系统中捕食-被捕食互动的长期升级，以及机械上更耐久、更运动、更主动防御的形态的兴起。二叠纪末和三叠纪末过滤的幸存者不成比例地是运动的、代谢活跃的、生理灵活的——即余项丰富的——它们的后续辐射强化了生态互动。</p>
+  <p><strong>二叠纪末的呼吸蛋白选择性。</strong>Song et al. (2024)提供了生理余项与灭绝后优势结构之间最直接的经验联系：拥有先进氧运输系统的类群的优先存活直接引导了后续中生代动物群的组成。</p>
+
+  <h3>4.3 反对普遍棘轮的论据——及框架的回应</h3>
+  <p><em>被动趋势机制</em>（McShea 1994）：框架不主张朝向复杂性的方向性选择，而是余项丰富度的结构性过滤，通过选择性移除低余项谱系产生驱动趋势。</p>
+  <p><em>跨事件和跨类群的选择性不一致</em>（Payne &amp; Finnegan 2023）：框架预测的是余项丰富度的选择性，不是任何单一性状的选择性。余项丰富度在不同类群中的表现不同：在海洋无脊椎动物中表现为呼吸生理，在鸟类中表现为生态灵活性，在脊椎动物中表现为体型和繁殖率。</p>
+  <p><em>灭绝后生态简化</em>（Hull 2015）：余项丰富的幸存者不是预适应于灭绝后环境；它们有潜力，不是预建的解决方案。初始简化反映了拥有自由度与在新生态语境中部署它们之间的间隔。</p>
+  <p><em>环境驱动因素异质</em>：杀伤机制的异质性不是需要解释掉的问题，而是确认脆弱性结构本质的特征。锁死深度预测脆弱性，不论扰动方向。</p>
+
+  <h2>五、触发器作为交互伙伴</h2>
+  <p>框架的一个关键推论是：终端触发器的具体性质——小行星撞击、洪流玄武岩、冰期、海侵——既不是灭绝的根本原因（如强灾变论所主张），也不仅仅是一个计时装置。触发器是一个<em>交互伙伴</em>：它决定了预先存在的锁死图谱中哪些轴被激活，从而决定了哪些谱系从潜在脆弱性越过阈值变为实际灭绝。</p>
+  <p>在K-Pg，Chicxulub撞击产生了全球森林崩溃，激活了栖息地依赖轴：树栖鸟类谱系死亡是因为它们的生态基底被物理性摧毁（Field et al. 2018）。如果同一群生物面对的是缓慢升温事件，栖息地依赖轴可能不会被激活，而另一组锁死谱系——锁死在热缓冲轴上的——会被优先淘汰。在二叠纪末，快速升温和海洋脱氧激活了呼吸缓冲轴（Song et al. 2024）。锁死图谱是预先存在的；扰动决定了其中哪一部分变得致命。</p>
+  <p><strong>渐进论</strong>正确识别了脆弱性通过锁死的正反馈循环在长时间尺度上积累。五次事件中都有记录的灾前环境恶化（Payne &amp; Finnegan 2023）是这种脆弱性积累的可观察痕迹。</p>
+  <p><strong>灾变论</strong>正确识别了打断循环需要足够量级的外力来克服锁死系统的惯性。</p>
+  <p>综合是：灾变和渐进不是竞争性的原因，而是同一过程的序贯阶段：反馈循环加深脆弱性（渐进阶段），外部扰动在特定轴上超出循环的吸收能力（灾变阶段）。触发器不仅选择时间点，它选择过滤器。</p>
+
+  <h2>六、预测</h2>
+
+  <div class="prediction-item">
+    <div class="pred-label">预测 6.1</div>
+    <p>锁死深度应该比任何单一性状更好地预测灭绝风险。锁死的复合指数（综合生态位宽度、地理分布、食性特化、世代时间和遗传多样性）应该在预测跨事件的属级灭绝时优于单一性状模型。</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">预测 6.2</div>
+    <p>最特化的物种应该表现出被抑制的遗传变异。接近灭绝的极端特化谱系即使控制种群大小后也应表现出比同域广适物种更低的遗传多样性。现代濒危特化物种（猎豹、大熊猫、考拉）与同域广适物种的比较基因组学提供了当代检验。</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">预测 6.3</div>
+    <p>灭绝后恢复速率应与灭绝前群落的锁死深度呈负相关。淘汰了更深锁死群落的事件（二叠纪末，96%海洋物种丧失）应比淘汰较浅锁死群落的事件显示更慢的恢复。经验模式——二叠纪末恢复约5-10百万年对比K-Pg恢复约1-3百万年——是一致的。</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">预测 6.4</div>
+    <p>最大的适应辐射应跟随对锁死最彻底的清除之后。灭绝后辐射的规模应与先前灭绝淘汰深度锁死谱系的完整程度相关，而不简单地与物种丧失百分比相关。</p>
+  </div>
+  <div class="prediction-item">
+    <div class="pred-label">预测 6.5</div>
+    <p>杀伤机制不应预测灭绝后辐射结构。具有不同杀伤机制（升温 vs. 降温 vs. 撞击）但相似灭绝前锁死分布的事件应产生相似的灭绝后辐射模式。反之，具有相似杀伤机制但不同灭绝前锁死分布的事件应产生不同的辐射模式。</p>
+  </div>
+
+  <h2>七、讨论：框架未解释什么</h2>
+  <p>框架刻意留下两个开放问题。</p>
+  <p>第一个关于适用范围。如果锁死深度是连续变量，扰动严重程度也是连续变量，它们的交互应该产生连续的灭绝结果分布，而非"小桥"与"灾难"的离散二分。框架预测同样的结构逻辑适用于整个光谱。五次大灭绝的特殊性不在于质上不同的机制，而在于量的极端——扰动严重到足以超出即使中度锁死谱系的吸收能力，产生生物圈尺度的清除和辐射。这个定量图景能否被形式化为灭绝严重性作为锁死分布×扰动量级的函数的预测模型，是未来工作的挑战。</p>
+  <p>第二个关于方向性。余项富集棘轮解释了为什么每次灭绝后辐射倾向于产生比灭绝前优势者拥有更丰富适应潜力的生物体。它不解释为什么灭绝-辐射循环的序列，从整个显生宙来看，产生了从简单海洋无脊椎动物到复杂陆地脊椎动物再到有自我意识的灵长类的表观轨迹。这个轨迹是否需要更深层的解释，留给读者。</p>
+
+  <h2>八、结论</h2>
+  <p>五次大灭绝被统一的不是共享的杀伤机制，而是共享的结构动力学：通过路径依赖、确认偏误和能量精简对复制自由的逐步封闭，随后是暴力打断和选择性清除。演化锁死的深度——而非环境变化的方向——决定了哪些谱系脆弱。演化余项的丰富度——而非生理复杂性本身——决定了哪些谱系存活和辐射。</p>
+  <p>这个框架解决了大灭绝同时具有破坏性和生成性的表观悖论：破坏优先落在锁死最深的（余项最少的），而生成优先从锁死最浅的（余项最丰富的）中产生。这个过滤器跨五次主要事件的迭代应用，在存活的生物群中产生了棘轮样的适应潜力富集，在经验上表现为显生宙跨越式的组织复杂性阶跃增长。</p>
+  <p style="font-style:italic;color:#555;margin-top:1.5rem;">具体的触发器——小行星、洪流玄武岩、冰期——选择时间点。结构选择结果。</p>
+
+  <a href="https://doi.org/10.5281/zenodo.19225113" target="_blank" class="doi-link">DOI: 10.5281/zenodo.19225113</a>
+
+  <div class="references">
+    <h2>参考文献</h2>
+    <p>Alvarez, L.W., Alvarez, W., Asaro, F., &amp; Michel, H.V. (1980). Extraterrestrial cause for the Cretaceous-Tertiary extinction. <em>Science</em>, 208, 1095–1108.</p>
+    <p>Bartlett, R., et al. (2018). Abrupt global-ocean anoxia during the Late Ordovician–early Silurian detected using uranium isotopes of marine carbonates. <em>PNAS</em>, 115, 5896–5901.</p>
+    <p>Blackburn, T.J., et al. (2013). Zircon U-Pb geochronology links the end-Triassic extinction with the Central Atlantic Magmatic Province. <em>Science</em>, 340, 941–945.</p>
+    <p>Burgess, S.D., Bowring, S., &amp; Shen, S. (2014). High-precision timeline for Earth's most severe extinction. <em>PNAS</em>, 111, 3316–3321.</p>
+    <p>Condamine, F.L., Guinot, G., Benton, M.J., &amp; Currie, P.J. (2021). Dinosaur biodiversity declined well before the asteroid impact, influenced by ecological and environmental pressures. <em>Nature Communications</em>, 12, 3833.</p>
+    <p>Dal Corso, J., et al. (2022). Environmental crises at the Permian-Triassic mass extinction. <em>Nature Reviews Earth &amp; Environment</em>, 3, 197–214.</p>
+    <p>Dean, C.D., et al. (2025). The structure of the end-Cretaceous dinosaur fossil record in North America. <em>Current Biology</em>, 35.</p>
+    <p>De Vleeschouwer, D., et al. (2017). Timing and pacing of the Late Devonian mass extinction event regulated by eccentricity and obliquity. <em>Nature Communications</em>, 8, 2268.</p>
+    <p>Dunhill, A.M., Foster, W.J., Sciberras, J., &amp; Twitchett, R.J. (2018). Impact of the Late Triassic mass extinction on functional diversity and composition of marine ecosystems. <em>Palaeontology</em>, 61, 133–148.</p>
+    <p>Field, D.J., et al. (2018). Early evolution of modern birds structured by global forest collapse at the end-Cretaceous mass extinction. <em>Current Biology</em>, 28, 1825–1831.</p>
+    <p>Finnegan, S., et al. (2012). Climate change and the selective signature of the Late Ordovician mass extinction. <em>PNAS</em>, 109, 6829–6834.</p>
+    <p>Hull, P.M. (2015). Life in the aftermath of mass extinctions. <em>Current Biology</em>, 25, R941–R952.</p>
+    <p>Jablonski, D. (1986). Background and mass extinctions: the alternation of macroevolutionary regimes. <em>Science</em>, 231, 129–133.</p>
+    <p>Jablonski, D. &amp; Raup, D.M. (1995). Selectivity of end-Cretaceous marine bivalve extinctions. <em>Science</em>, 268, 389–391.</p>
+    <p>Jablonski, D. &amp; Edie, S.M. (2025). Mass extinctions and their rebounds: a macroevolutionary framework. <em>Paleobiology</em>.</p>
+    <p>Knoll, A.H., Bambach, R.K., Payne, J.L., Pruss, S., &amp; Fischer, W.W. (2007). Paleophysiology and end-Permian mass extinction. <em>Earth and Planetary Science Letters</em>, 256, 295–313.</p>
+    <p>Linnert, C., et al. (2014). Evidence for global cooling in the Late Cretaceous. <em>Nature Communications</em>, 5, 4194.</p>
+    <p>Marshall, J.E.A., et al. (2020). UV-B radiation was the Devonian-Carboniferous boundary terrestrial extinction kill mechanism. <em>Science Advances</em>, 6, eaba0768.</p>
+    <p>McShea, D.W. (1994). Mechanisms of large-scale evolutionary trends. <em>Evolution</em>, 48, 1747–1763.</p>
+    <p>Payne, J.L. &amp; Finnegan, S. (2023). Selectivity of mass extinctions: Patterns, processes, and future directions. <em>Cambridge Prisms: Extinction</em>, 1, e10.</p>
+    <p>Qin, H. (2025a). Fixation and Selection (I)—Causal Law Forecloses Distinction. DOI: <a href="https://doi.org/10.5281/zenodo.18859363" target="_blank" style="color:#999">10.5281/zenodo.18859363</a>.</p>
+    <p>Qin, H. (2025b). Fixation and Selection (II)—Reproductive Law Forecloses Replication. DOI: <a href="https://doi.org/10.5281/zenodo.18859393" target="_blank" style="color:#999">10.5281/zenodo.18859393</a>.</p>
+    <p>Qin, H. (2025c). SAE Methodological Overview: The Chisel-Construct Cycle. DOI: <a href="https://doi.org/10.5281/zenodo.18842450" target="_blank" style="color:#999">10.5281/zenodo.18842450</a>.</p>
+    <p>Qin, H. (2025d). From Replication to Cognition: The Chisel-Construct Cycle of Life (5D–8D). DOI: <a href="https://doi.org/10.5281/zenodo.18807376" target="_blank" style="color:#999">10.5281/zenodo.18807376</a>.</p>
+    <p>Qin, H. (2025e). Periodic Table of Life (Part I)—From Causality to Reproduction. DOI: <a href="https://doi.org/10.5281/zenodo.18818107" target="_blank" style="color:#999">10.5281/zenodo.18818107</a>.</p>
+    <p>Qin, H. (2025f). Periodic Table of Life (Part II)—From Reproduction to Prediction. DOI: <a href="https://doi.org/10.5281/zenodo.18818149" target="_blank" style="color:#999">10.5281/zenodo.18818149</a>.</p>
+    <p>Rasmussen, C.M.Ø., et al. (2019). Cascading trend of Early Paleozoic marine radiations paused by Late Ordovician extinctions. <em>PNAS</em>, 116, 7207–7213.</p>
+    <p>Rosenzweig, M.L. &amp; McCord, R.D. (1991). Incumbent replacement: evidence for long-term evolutionary progress. <em>Paleobiology</em>, 17, 202–213.</p>
+    <p>Sallan, L. &amp; Galimberti, A.K. (2015). Body-size reduction in vertebrates following the end-Devonian mass extinction. <em>Science</em>, 350, 812–815.</p>
+    <p>Sepkoski, J.J. (1981). A factor analytic description of the Phanerozoic marine fossil record. <em>Paleobiology</em>, 7, 36–53.</p>
+    <p>Song, H., et al. (2024). Respiratory protein-driven selectivity during the Permian-Triassic mass extinction. <em>The Innovation</em>, 5, 100618.</p>
+    <p>Vermeij, G.J. (1977). The Mesozoic Marine Revolution: evidence from snails, predators, and grazers. <em>Paleobiology</em>, 3, 245–258.</p>
+  </div>
+
+</div><!-- end lang-zh -->
+
+</div><!-- end .content -->
+
+<script>
+function switchLang(lang) {
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+  const btns = document.querySelectorAll('.lang-toggle button');
+  btns[0].classList.toggle('active', lang === 'en');
+  btns[1].classList.toggle('active', lang === 'zh');
+}
+</script>
+
+</body>
+</html>
