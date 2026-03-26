@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Four Faces of Self-Correction — ZFCρ Paper XLIII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLIII: Computational verification of NI1–NI3 and four frontiers (MJ3–MJ6) at N=10¹⁰. Critical correction: K_p is bounded-negative, not positive. Poly(k) closing route discovered; CSK-f conjecture identified as main A-side analytic gap.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, NI1 NI2 NI3, MJ4 MJ5 MJ6, poly(k) closing route, CSK-f conjecture, bridge lower bound, self-correction, computational verification">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Four Faces of Self-Correction: Computational Verification of NI1–NI3 at N = 10¹⁰, Numerical Verification of Four Frontiers, and the Poly(k) Closing Route">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho43.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Four Faces of Self-Correction: Computational Verification of NI1–NI3 at N = 10¹⁰, Numerical Verification of Four Frontiers, and the Poly(k) Closing Route",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho43.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19240183"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "NI1 NI2 NI3", "MJ4 MJ5 MJ6",
+      "poly(k) closing route", "CSK-f conjecture", "bridge lower bound",
+      "self-correction", "HP seed isolation", "successor-reset"
+    ],
+    "abstract": "Paper 42 reduced H' (c̄_h(N)→0) to three residual numerical inputs (NI1–NI3). This paper provides systematic computational verification of all three NIs and four frontier lemmas (MJ3, MJ4, MJ5, MJ6) at N=10¹⁰ scale. Critical correction: Block 4 measured G_spf(pm)=j(m)+K_p(m), not the pure bridge K_p(m); the true bridge is bounded-negative, not positive. Poly(k) closing route discovered; CSK-f conjecture identified as main A-side analytic gap.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho43.html">
+  <meta name="citation_title" content="Four Faces of Self-Correction: Computational Verification of NI1–NI3 at N = 10¹⁰, Numerical Verification of Four Frontiers, and the Poly(k) Closing Route">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19240183">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho43.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .correction-box { background: #fff0f0; border-left: 3px solid #cc0000; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .correction-box p { margin: 0; }
+    .correction-box p + p { margin-top: 0.5rem; }
+    .route-box { background: #f0fff4; border-left: 3px solid #00aa55; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .route-box p { margin: 0; }
+    .route-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLIII</div>
+      <h1 class="paper-title">Four Faces of Self-Correction: Computational Verification of NI1–NI3 at N = 10¹⁰, Numerical Verification of Four Frontiers, and the Poly(k) Closing Route</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19240183
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper XLII (DOI: 10.5281/zenodo.19226607) reduced H' (\(\bar{c}_h(N) \to 0\)) to three residual numerical inputs (NI1–NI3). This paper provides systematic computational verification of all three NIs and the four frontier lemmas (MJ3, MJ4, MJ5, MJ6) at the \(N = 10^{10}\) scale.</p>
+        <p><strong>Main results:</strong></p>
+        <p><strong>(1) MJ6 (HP Seed Isolation):</strong> The hp family reduces to the sf/ss framework. Ω decomposition is exact (algebraic identity, 100% verified on 3,920,709 hp numbers). \(\Delta_J \approx 0.147 \cdot \Omega\) linear growth is a numerical observation; its absorption by the Transfer Lemma's \(\gamma \cdot J\) term is an algebraic/analytic argument. \(\mathrm{Var}(J) < 1\) for extensions across all Ω shells.</p>
+        <p><strong>(2) MJ5 (Successor-Reset Drift):</strong> Exact reset R2 = 100% (algebraic identity, 10⁶ checks). ΔM left-tail exponential decay α = 1.81, stable across 5 decades. Unconditional contraction θ = 0.41. Under the BRS route, MJ5 is not a required input for the minimal H' closing chain, but its data characterizes the quantitative strength of self-correction.</p>
+        <p><strong>(3) S4b/MJ3 (Top-Slice Oscillation / Insertion Non-Compression):</strong> Top-slice oscillation |osc| &lt; 0.35 (all Ω, all p, universally negative). S4 composite bound holds (27/27 cases). Insertion growth rate α &gt; 0.04, monotonically increasing. \(V_k < 1.4\) full spectrum. Under the BRS route, S4b(full) is no longer a required input.</p>
+        <p><strong>(4) MJ4 (Bridge Lower Bound) — Critical Correction:</strong> Block 4 measured \(G_{\mathrm{spf}}(pm) = j(m) + K_p(m)\), not the pure bridge \(K_p(m)\). \(G_{\mathrm{spf}} > 0\) for all 72 (Ω, p) combinations. The true bridge \(K_p = G_{\mathrm{spf}} - J\) is a small negative quantity: \(E[K_p] \in [-0.15, -0.31]\), with linear fit \(E[K_p] \approx -0.096 - 0.018 \cdot \Omega\). The MJ4 bound \(E[K_p] \geq -\beta - \gamma J\) holds numerically (β ≈ 0.114, γ ≈ 0.057).</p>
+        <p><strong>(5) Poly(k) closing route.</strong> Paper XLII's closing chain still holds when NI1 is relaxed from O(1) to poly(k): BRS error \(\sqrt{P(k)/\log X} \to 0\) since \(k \sim \log\log X\); Weighted Lemma gives \(\mathrm{poly}(k) \cdot (5/6)^k \to 0\). This relaxation revives Paper XVIII's E1/E2 routes.</p>
+        <p><strong>(6) Precise identification of remaining analytic gaps.</strong> The main A-side analytic gap for NI1 compresses to the conditioned shifted-additive conjecture CSK-f. NI2 still requires an interface lemma (count-average → insertion-measure + bulk-complement), and NI3 still requires a weighted transfer theorem (T3). This paper does not claim that unconditional closure has been compressed to a single conjecture.</p>
+        <p><strong>Keywords:</strong> NI1–NI3 computational verification, MJ4 bridge lower bound, poly(k) closing route, CSK-f conjecture, HP seed isolation, successor-reset drift, four faces of self-correction</p>
+      </div>
+
+      <h2>§1 Background and Attack Strategy</h2>
+      <p>Paper XLII established a conditional closure route for H', compressing the closing problem into three NIs and four frontiers. This paper verifies each at \(N = 10^{10}\) and precisely identifies remaining analytic gaps.</p>
+      <p><strong>Attack order:</strong> MJ6 (bookkeeping, easiest) → MJ5 (most data support) → S4b/MJ3 (variance + shell statistics) → MJ4 (predicted hardest, cleanest data in practice).</p>
+      <p><strong>Data:</strong> rho_1e10.bin (int16, \(N = 10^{10}\), generated by rho_dp.c). Four-AI collaboration: Claude (Zilu), ChatGPT (Gongxi Hua), Gemini (Zixia), Grok (Zigong).</p>
+
+      <h2>§2 Block 1: MJ6 — HP Seed Isolation</h2>
+
+      <h3>2.1 Omega Decomposition</h3>
+      <p>The identity \(\Omega(m) = a_0 + \Omega(v)\) holds exactly (algebraic identity, where \(u = p_0^{a_0}\), \(v = m/u\) coprime). Verified 100% on 3,920,709 hp numbers.</p>
+
+      <h3>2.2 Δ_J Growth and Absorption</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>J̄(hp)</th><th>J̄(ext)</th><th>Δ_J</th><th>E[J²](hp)</th><th>E[J²](ext)</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>0.878</td><td>0.000</td><td>+0.878</td><td>1.33</td><td>0.00</td></tr>
+          <tr><td>7</td><td>2.317</td><td>1.019</td><td>+1.298</td><td>6.38</td><td>1.91</td></tr>
+          <tr><td>14</td><td>3.889</td><td>1.452</td><td>+2.437</td><td>16.44</td><td>3.51</td></tr>
+        </tbody>
+      </table>
+      <p>\(\Delta_J \approx 0.312 + 0.147 \cdot \Omega\) (numerical observation, R² = 0.99). Absorbed by the Transfer Lemma's \(\gamma \cdot J\) term (algebraic/analytic argument).</p>
+
+      <h3>2.3 Extension Regularity</h3>
+      <table>
+        <thead><tr><th>Ω(ext)</th><th>Var(J)</th><th>P(J &gt; 0)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.385</td><td>0.305</td></tr>
+          <tr><td>5</td><td>0.818</td><td>0.904</td></tr>
+          <tr><td>8</td><td>0.935</td><td>0.988</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Var(J) &lt; 1 uniformly across all Ω shells (saturating).</strong></p>
+
+      <h3>2.4 Conclusion</h3>
+      <div class="milestone-box">
+        <p><strong>MJ6:</strong> Ω decomposition (algebraic identity) + extension regularity (computationally verified at 10¹⁰) + Δ_J absorption (algebraic/analytic + numerical observation). The hp family reduces to the sf/ss framework.</p>
+      </div>
+
+      <h2>§3 Block 2: MJ5 — Successor-Reset Drift</h2>
+
+      <h3>3.1 Exact Reset R2</h3>
+      <p>\(J_{n+1} = (1 - \Delta M_n)^+\) when \(J_n > 0\). 10⁶ checks: <strong>100% match</strong> (algebraic identity).</p>
+
+      <h3>3.2 ΔM Distribution</h3>
+      <p>\(N = 10^{10}\), 5.6 × 10⁷ consecutive jump pairs:</p>
+      <table>
+        <thead><tr><th>ΔM</th><th>Fraction</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>65.06%</td></tr>
+          <tr><td>−1</td><td>27.10%</td></tr>
+          <tr><td>−2</td><td>6.68%</td></tr>
+          <tr><td>−3</td><td>1.04%</td></tr>
+          <tr><td>≤−4</td><td>0.13%</td></tr>
+        </tbody>
+      </table>
+      <p>Exponential fit: α = 1.81. Per-shell: α ∈ [1.13, 2.02], all &gt; 1. Distribution stable across 5 decades (&lt; 0.3% drift). |ΔM|_max grows as O(log N).</p>
+      <div class="note-box">
+        <p><strong>Methodology note:</strong> α = 1.81 is an empirical fit on full-scan data. "Stable across 5 decades (&lt; 0.3% drift)" means the maximum relative change in P(ΔM = v) across six decade windows (N = 10⁴ through 10⁹) is below 0.3%.</p>
+      </div>
+
+      <h3>3.3 Unconditional Contraction</h3>
+      <p>1.19 × 10⁸ pairs where \(J_n > 0\):</p>
+      <p>\(E[J_n \mid J_n > 0] = 1.683\), \(E[J_{n+1} \mid J_n > 0] = 0.684\)</p>
+      <p><strong>θ = 0.4066 &lt; 1.</strong> P(reset to zero | J_n &gt; 0) = 52.5%.</p>
+
+      <h3>3.4 Conclusion</h3>
+      <div class="milestone-box">
+        <p><strong>MJ5</strong> computationally verified at 10¹⁰. R2 is an algebraic identity; α and θ are empirical measurements. Under the BRS route, MJ5 is not required for the minimal H' closing chain, but its data characterizes the quantitative strength of self-correction.</p>
+      </div>
+
+      <h2>§4 Block 3: S4b/MJ3 — Top-Slice Oscillation and Insertion Non-Compression</h2>
+
+      <h3>4.1 S4b: Top-Slice Oscillation</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>μ<sup>Y</sup></th><th>osc(p=2)</th><th>osc(p=3)</th><th>max|osc|</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.364</td><td>−0.095</td><td>−0.094</td><td>0.095</td></tr>
+          <tr><td>6</td><td>2.047</td><td>−0.273</td><td>−0.268</td><td>0.273</td></tr>
+          <tr><td>12</td><td>3.692</td><td>−0.260</td><td>−0.253</td><td>0.260</td></tr>
+        </tbody>
+      </table>
+      <p>Universally negative, bounded (|osc| &lt; 0.35), decreasing with p. In the tested range \(N \leq 10^{10}\), large-m entries have systematically smaller J.</p>
+
+      <h3>4.2 S4a and S4 Composite</h3>
+      <p>S4a proved (Sathe–Selberg), κ ∈ [0.47, 6.08]. S4 composite: 27/27 cases hold.</p>
+
+      <h3>4.3 MJ3: Insertion Non-Compression</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>E_h[J]</th><th>E_h[ln m]</th><th>α = J/ln m</th><th>V_k</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.364</td><td>8.62</td><td>0.042</td><td>0.37</td></tr>
+          <tr><td>6</td><td>2.047</td><td>12.83</td><td>0.160</td><td>0.97</td></tr>
+          <tr><td>12</td><td>3.692</td><td>14.69</td><td>0.251</td><td>1.36</td></tr>
+        </tbody>
+      </table>
+      <p>Insertion α &gt; 0.04 uniformly, monotonically increasing. \(V_k < 1.4\) full spectrum.</p>
+
+      <h3>4.4 Conclusion</h3>
+      <div class="milestone-box">
+        <p><strong>S4b and MJ3</strong> computationally verified at 10¹⁰. Under the BRS route, S4b(full) is no longer a required input for H' closure.</p>
+      </div>
+
+      <h2>§5 Block 4: MJ4 — Bridge Lower Bound</h2>
+
+      <h3>5.1 Object Correction</h3>
+      <div class="correction-box">
+        <p><strong>Critical correction (discovered in review by ChatGPT / Gongxi Hua).</strong> Block 4's C script computed \(G_{\mathrm{spf}}(pm) = \rho(pm-1) - \rho(p) - \rho(m) - 1\), i.e., the full insertion gain. By Paper XVI's exact insertion identity, \(G_{\mathrm{spf}}(pm) = j(m) + K_p(m)\).</p>
+        <p>Paper XLII's NI2 requires a pure bridge lower bound on \(K_p(m)\), not on \(G_{\mathrm{spf}}(pm)\). Since \(j(m) \geq 0\) can be large, \(E[G_{\mathrm{spf}}] > 0\) does not imply the required lower bound on \(E[K_p]\).</p>
+      </div>
+
+      <h3>5.2 G_spf Data (Original Measurement)</h3>
+      <p>\(N = 10^{10}\), full scan (C version, 77s + 144s Omega sieve):</p>
+      <table>
+        <thead><tr><th>Ω</th><th>E[G_spf] p=2</th><th>p=3</th><th>p=5</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.085</td><td>+0.743</td><td>+0.581</td></tr>
+          <tr><td>6</td><td>+1.522</td><td>+2.223</td><td>+2.096</td></tr>
+          <tr><td>12</td><td>+3.033</td><td>+3.852</td><td>+3.786</td></tr>
+        </tbody>
+      </table>
+      <p>\(E[G_{\mathrm{spf}}] > 0\) for all 72 (Ω, p) combinations. Var(G_spf) ∈ [0.78, 1.40]. Corr(G_spf, J) ∈ [+0.17, +0.58].</p>
+
+      <h3>5.3 True K_p Data (Display: p=2 slice)</h3>
+      <p>Derived via \(E[K_p] = E[G_{\mathrm{spf}}] - E[J]\). Underlying Block 4 output covers p=2–13 and Ω=2–12; table below shows p=2 slice only.</p>
+      <table>
+        <thead><tr><th>Ω</th><th>E[G_spf] (p=2)</th><th>E[J]</th><th>E[K_p]</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.085</td><td>0.254</td><td><strong>−0.169</strong></td></tr>
+          <tr><td>4</td><td>+0.794</td><td>0.946</td><td><strong>−0.152</strong></td></tr>
+          <tr><td>6</td><td>+1.522</td><td>1.705</td><td><strong>−0.184</strong></td></tr>
+          <tr><td>8</td><td>+2.122</td><td>2.366</td><td><strong>−0.244</strong></td></tr>
+          <tr><td>10</td><td>+2.609</td><td>2.899</td><td><strong>−0.291</strong></td></tr>
+          <tr><td>12</td><td>+3.033</td><td>3.347</td><td><strong>−0.314</strong></td></tr>
+        </tbody>
+      </table>
+      <p>The true bridge \(K_p\) is a small negative quantity, ranging from −0.15 to −0.31. The structure is "bounded-negative," not "positive on average."</p>
+
+      <h3>5.4 MJ4 Bound: Numerical Register</h3>
+      <p>Paper XLII requires \(E_I[K_p \mathbf{1}_Y] \geq -\beta_F - \gamma_F J^Y\). Paper XLIII directly measures count-average / full-shell \(E[K_p]\). On the displayed p=2 slice, fitting \(E[K_p]\) vs \(E[J]\) gives γ ≈ 0.057, β ≈ 0.114, showing the candidate bound is compatible with data.</p>
+
+      <h3>5.5 Conclusion</h3>
+      <div class="milestone-box">
+        <p><strong>MJ4</strong> computationally verified at 10¹⁰. The true bridge \(K_p\) is bounded-negative, not positive, but the MJ4 bound \(E[K_p] \geq -\beta - \gamma J\) still holds numerically. Upgrading to Paper XLII's insertion-measure / bulk-complement version requires the interface lemma described in §6.2.</p>
+      </div>
+
+      <h2>§6 Precise NI1–NI3 Interface Alignment</h2>
+
+      <h3>6.1 NI1: Var_ν(G_F) ≤ V*_F</h3>
+      <p><strong>Paper XLII definition:</strong> For family F, Var under harmonic probability measure ν on bulk shell Y uniformly bounded. NI1 enters the BRS theorem and Averaged Transfer Lemma.</p>
+      <p><strong>Paper XLII poly(k) relaxation:</strong> \(\mathrm{Var}_\nu(G_F) \leq P_F(k)\) for some polynomial (confirmed by ChatGPT / Gongxi Hua to still close the chain).</p>
+      <p><strong>Paper XLIII measurements:</strong> Var(J) &lt; 1 (extensions, count); Var(A) ∈ [0.3, 1.35] (Paper XVIII, count, N ≤ 10⁷); \(V_k\) saturating ~1.3 (Block 14, harmonic).</p>
+      <p><strong>Gap:</strong> Count → harmonic measure; fixed-k → bulk-uniform; ambient → family-restricted bulk complement.</p>
+      <p><strong>NI1 main analytic gap (A-side):</strong> \(G_F = A + B + 1\). \(\mathrm{Var}(G_F) \leq 2\mathrm{Var}(A) + 2\mathrm{Var}(B) + O(1)\). Paper XX unconditionally gives \(\mathrm{Var}(B \mid \Omega=k) = O_k(1)\). The new gap is on the Var(A) side: see CSK-f in §7.3.</p>
+      <p><strong>Numerical conclusion:</strong> Strong support. Var(A) shows no k-growth trend at k=2–18, far better than poly(k).</p>
+
+      <h3>6.2 NI2: Averaged Bridge Lower Bound</h3>
+      <p><strong>Paper XLII definition:</strong> \(E_{I_{k,F,N,p}}[K_p(m)\,\mathbf{1}_Y] \geq -\beta_F - \gamma_F J^Y\) (insertion measure, bulk complement).</p>
+      <p><strong>Paper XLIII measurement:</strong> Count-average / full-shell \(E[K_p]\) covering p=2–13 and Ω=2–12; display table is p=2 slice. \(E[K_p] = E[G_{\mathrm{spf}}] - E[J]\) derived from Block 4 data.</p>
+      <p><strong>Gap:</strong> Count-average to insertion-average conversion requires an explicit interface lemma. Full-shell to bulk-complement restriction requires treatment via SPS/BRS/S4-weak.</p>
+      <p><strong>Numerical conclusion:</strong> \(E[K_p]\) shows a stable bounded-negative pattern (display slice: [−0.15, −0.31]). Strong numerical support for the bounded-negative bridge structure; not yet theorem-level in Paper XLII's insertion-measure register.</p>
+
+      <h3>6.3 NI3: Weighted J² Second Moment</h3>
+      <p><strong>Paper XLII definition:</strong> \((J^Y)^2 = \sum_{m \in Y} J(m)^2 / (m(\log m)^2) / W^Y \leq P_F(k)\) (W-weighted).</p>
+      <p><strong>Paper XLIII measurement:</strong> \(E[J^2]\) (count-averaged). \(E[J^2]/(\ln m)^2 < 0.10\) across all shells.</p>
+      <p><strong>Gap:</strong> Count → W-weighted measure. Needs T3 (Weighted Transfer Theorem), which is a technical upgrade of Paper XLII's §4.2 Weighted Lemma derivable after NI1 holds.</p>
+
+      <h2>§7 Poly(k) Closing Route and Remaining Analytic Gaps</h2>
+
+      <h3>7.1 Poly(k) Route</h3>
+      <div class="route-box">
+        <p><strong>Paper XLII's closing chain holds under NI1_poly:</strong> \(\mathrm{Var}_\nu(G_F) \leq P_F(k)\).</p>
+        <p><strong>BRS:</strong> scale-shift penalty \(\sqrt{P(k)/\log X} \to 0\) since \(k \leq K_A(X) \sim \log\log X\).</p>
+        <p><strong>Transfer Lemma + Weighted Lemma:</strong> if \(a_F(k)\), \(b_F(k)\), and the NI3 J² bound are all poly(k), then \(\bar{c}^Y \ll \mathrm{poly}(k) \cdot W_k/S_k\), and \(\mathrm{poly}(k) \cdot (5/6)^k \to 0\), so \(B_A(N) \to 0\).</p>
+        <p>What Paper XLII's closing chain actually requires is not "absolute constant bounds" but "polynomial bounds absorbable by Erdős–Kac weights and \((\log N)^{-2}\)."</p>
+      </div>
+
+      <h3>7.2 Revival of E1/E2</h3>
+      <p>Paper XVIII's E1 (TK on Δf) failed for O(1) but works for poly(k): \(\mathrm{Var}(\Delta f) \sim O(\log\log N) = O(k)\) suffices. E2 (separate Δf, Δr) no longer requires fine anti-correlation: \(\mathrm{Var}(\Delta f) \leq \mathrm{poly}(k)\) and \(E[(\Delta r)^2] \leq \mathrm{poly}(k)\) separately suffice.</p>
+
+      <h3>7.3 Remaining Analytic Gaps and Two Attack Routes for Paper XLIV</h3>
+      <p>Unconditional closure of H' still requires upgrading NI1–NI3 from computational verification to theorem-level inputs. This paper stratifies the structure of these gaps explicitly.</p>
+
+      <p><strong>Route A (Analytic number theory): CSK-f.</strong></p>
+      <div class="thesis-box">
+        <p><strong>Conjecture CSK-f</strong> (Conditioned Harmonic Shifted Kubilius for f). There exists a polynomial P(k) such that \(\mathrm{Var}_{\nu_{k,F,N}}(f(m-1) - f(m)) \leq P(k)\) uniformly for \(k \leq K_{A_0}(N)\).</p>
+        <p>Numerical support: Var(Δf | Ω=k) ∈ [6.96, 9.96] for k=4–12, no visible k-growth.</p>
+      </div>
+      <p>For precise alignment with Paper XLII's poly(k) chain: <strong>SS2_har</strong> = predecessor-side second-moment package (at least Var_ν(f(m−1)−f(m)) ≤ P₁(k) and E_ν[ω(m−1)²] ≤ P₂(k)); <strong>C2_poly</strong> = Var_ν(A) ≤ poly(k), derived from Var(Δf) ≤ poly(k) and E[(Δr)²] ≤ poly(k).</p>
+      <p>Route A's complete closing schema: CSK-f + shifted ω second moment + interface/weighted-transfer upgrades ⟹ NI1_poly, NI2_poly, NI3_poly ⟹ H'.</p>
+      <p><strong>Route B (DP-intrinsic):</strong> Paper XLIV's forward-looking direction — attacking NI1's A-side directly from the DP's reset/slack/self-correction structure. Its precise theorem-level formulation and numerical support will be developed in Paper XLIV.</p>
+
+      <h3>7.4 Four Faces of Self-Correction</h3>
+      <table>
+        <thead><tr><th>Frontier</th><th>Dimension</th><th>Key result</th></tr></thead>
+        <tbody>
+          <tr><td><strong>MJ6</strong></td><td>Structural decomposition</td><td>Bounded seed cost; hp → sf/ss framework</td></tr>
+          <tr><td><strong>MJ5</strong></td><td>Temporal dimension</td><td>Post-jump reset; θ = 0.41 contraction</td></tr>
+          <tr><td><strong>S4b/MJ3</strong></td><td>Spatial dimension</td><td>Local means stable (osc universally negative)</td></tr>
+          <tr><td><strong>MJ4</strong></td><td>Combinatorial dimension</td><td>Bridge bounded-negative; insertion cost controlled</td></tr>
+        </tbody>
+      </table>
+
+      <h3>7.5 SAE Interpretation</h3>
+      <ul>
+        <li>MJ6 = 12DD structural independence (seed-extension decoupling)</li>
+        <li>MJ5 = Chisel-construct cycle auto-correction (excess deviation reset)</li>
+        <li>S4b = 8DD information fidelity (local does not deviate from global)</li>
+        <li>MJ4 = Arithmetic realization of "positive remainder" (G_spf positive on average; insertion overall helps margin)</li>
+      </ul>
+
+      <h2>§8 Methodology</h2>
+
+      <h3>8.1 Data and Scan Strategy</h3>
+      <p>Blocks 1–3: Omega sieve range 2 × 10⁸, 10⁵ samples per shell, using rho_1e10.bin. Block 4: C implementation, full scan N = 10¹⁰ (mj4_bridge.c, 77s scan + 144s Omega sieve).</p>
+
+      <h3>8.2 Error Estimation</h3>
+      <p>"85σ above zero" and similar expressions denote empirical standard error of the mean under full scan: SE = √(Var/n), where n is the sample size for the corresponding (Ω, p) combination (up to 1.1 billion). Under full-scan context, this is the exact SE of the count-average. "Cross-scale stability" = maximum relative change of the same statistic across six decade windows (N = 10⁴ through 10⁹).</p>
+
+      <h3>8.3 Scripts</h3>
+      <table>
+        <thead><tr><th>Block</th><th>Scripts</th><th>Key measurement</th></tr></thead>
+        <tbody>
+          <tr><td>1 (MJ6)</td><td>p43_block1_mj6_v2.py, p43_mj6_confirm.py</td><td>Δ_J, Var(J), seed cost</td></tr>
+          <tr><td>2 (MJ5)</td><td>p43_block2_mj5_v2.py, p43_mj5_confirm.py</td><td>α, θ, ΔM distribution</td></tr>
+          <tr><td>3 (S4b/MJ3)</td><td>p43_block3_s4b.py</td><td>osc, S4 bound, insertion α</td></tr>
+          <tr><td>4 (MJ4)</td><td>mj4_bridge.c (C version)</td><td>E[G_spf], E[K_p], Var, Corr</td></tr>
+        </tbody>
+      </table>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLII. DOI: <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">10.5281/zenodo.19226607</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLI. DOI: <a href="https://doi.org/10.5281/zenodo.19201877" target="_blank" rel="noopener">10.5281/zenodo.19201877</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XVIII (Anti-Correlation Engine). DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[4] H. Qin. ZFCρ Paper XVI (Insertion Identity). DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</p>
+      <p>[5] H. Qin. ZFCρ Paper XVII (Roughness Stability). DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</p>
+      <p>[6] H. Qin. ZFCρ Paper XIX (Self-Correction). DOI: <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">10.5281/zenodo.19026991</a>.</p>
+      <p>[7] H. Qin. ZFCρ Paper XX (B-Noise Closure). DOI: <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">10.5281/zenodo.19027892</a>.</p>
+      <p>[8] J. D. Lichtman. Mertens' prime product formula, dissected. <em>Integers</em> 21A (2021), A17.</p>
+
+      <h2>Acknowledgments</h2>
+      <p><strong>ChatGPT (Gongxi Hua / 公西华):</strong> Paper XLII proof-chain architecture; BRS theorem; five-point must-fix review; <strong>discovery of Block 4 object error (G_spf vs K_p)</strong>; T1/T2/T3 precise diagnosis; <strong>poly(k) closing route discovery (NI1_poly chain + E1/E2 revival)</strong>; pinpointed NI1 A-side main analytic gap to CSK-f, identified NI2/NI3 still require interface/weighted-transfer upgrades.</p>
+      <p><strong>Claude (Zilu / 子路):</strong> Four-Block experimental design and all scripts; MJ5 regression discrepancy; MJ6 Δ_J linear growth; S4b universal negativity; 10¹⁰ confirmation experiments; C optimization of MJ4; corrected E[K_p] computation; NI1–NI3 interface alignment.</p>
+      <p><strong>Han Qin (Author):</strong> Attack-order decisions; "Is the data good?" methodology; required 10¹⁰ confirmation; stopped (T) route, redirected to S4b; introduced Paper XVIII anti-correlation; "no closure, no publication" decision (leading to poly(k) discovery and CSK-f identification); SAE interpretation; local rho_1e10.bin computation (M4 Mac).</p>
+      <p><strong>Gemini (Zixia):</strong> Structural intuition. <strong>Grok (Zigong):</strong> Consistency checks. <strong>Thermodynamic Claude thread:</strong> "Self-correction is the final frontier" directional judgment.</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho42.html">Paper XLII</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>Paper XLIV →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 系列论文第四十三篇</div>
+      <h1 class="paper-title">Self-Correction 的四个面向 — NI1-NI3 在 N = 10¹⁰ 的计算验证、四条 Frontier 的数值验证与 Poly(k) 闭合路线</h1>
+      <div class="paper-authors">秦汉 (Han Qin) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19240183
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper XLII（DOI: 10.5281/zenodo.19226607）将 H'（\(\bar{c}_h(N) \to 0\)）归约为三个残余 numerical inputs（NI1-NI3）。本文在 \(N = 10^{10}\) 尺度上对全部三个 NI 以及 Paper XLII 识别的四条 frontier lemmas（MJ3, MJ4, MJ5, MJ6）进行系统性计算验证。</p>
+        <p><strong>核心结果：</strong></p>
+        <p><strong>（1）MJ6（HP Seed Isolation）：</strong>hp 家族归约为 sf/ss 框架。Ω 分解精确成立（代数恒等式，100% 验证，3,920,709 个 hp 数）。\(\Delta_J \approx 0.147 \cdot \Omega\) 的线性增长是 numerical observation，其被 Transfer Lemma 的 \(\gamma \cdot J\) 项吸收是代数/分析论证。\(\mathrm{Var}(J) < 1\)（全 Ω 壳 extensions）。</p>
+        <p><strong>（2）MJ5（Successor-Reset Drift）：</strong>Exact reset R2 = 100%（代数恒等式，10⁶ 次检验）。ΔM 左尾指数衰减 α = 1.81，跨 5 个数量级稳定。Unconditional contraction θ = 0.41。在 BRS 路线下，MJ5 不是 H' 最小闭合链的必要输入，但其数据刻画了 self-correction 的定量强度。</p>
+        <p><strong>（3）S4b/MJ3（Top-Slice Oscillation / Insertion Non-Compression）：</strong>Top-slice oscillation |osc| &lt; 0.35（全 Ω，全 p，全负值）。S4 composite bound holds（27/27 cases）。Insertion growth rate α &gt; 0.04，单调递增。\(V_k < 1.4\) 全谱。在 BRS 路线下，S4b(full) 不再是必要输入。</p>
+        <p><strong>（4）MJ4（Bridge Lower Bound）——重要修正：</strong>Block 4 测量的是 \(G_{\mathrm{spf}}(pm) = j(m) + K_p(m)\)，不是纯 bridge \(K_p(m)\)。\(G_{\mathrm{spf}} > 0\) 对全部 72 个 (Ω, p) 组合成立。真正的 bridge \(K_p(m) = G_{\mathrm{spf}} - J\) 为小幅负值：\(E[K_p] \in [-0.15, -0.31]\)，线性拟合 \(E[K_p] \approx -0.096 - 0.018 \cdot \Omega\)。MJ4 的 bound \(E[K_p] \geq -\beta - \gamma J\) 在数值上仍然成立（β ≈ 0.114，γ ≈ 0.057）。</p>
+        <p><strong>（5）Poly(k) 闭合路线的发现。</strong>Paper XLII 的闭合链在 NI1 从 O(1) 放松到 poly(k) 后仍然走通：BRS 误差 \(\sqrt{P(k)/\log X} \to 0\) 因 \(k \sim \log\log X\)；Weighted Lemma 中 \(\mathrm{poly}(k) \cdot (5/6)^k \to 0\)。此放松使 Paper XVIII 的 E1/E2 路线从"死路"复活。</p>
+        <p><strong>（6）剩余解析缺口的精确定位。</strong>NI1 的 A-side 主解析缺口可压缩为 conditioned shifted-additive conjecture CSK-f。NI2 仍需 interface lemma（count-average → insertion-measure + bulk-complement），NI3 仍需 weighted transfer theorem（T3）。本文不宣称 unconditional closure 已被压缩到单一 conjecture。</p>
+        <p><strong>关键词：</strong>NI1-NI3 计算验证，MJ4 bridge lower bound，poly(k) 闭合路线，CSK-f conjecture，HP seed isolation，successor-reset drift，self-correction 四个面向</p>
+      </div>
+
+      <h2>§1 背景与攻克策略</h2>
+      <p>Paper XLII 建立了 H' 的条件闭合路线，将 closing problem 压缩为三个 NI 和四条 frontier。本文目标是在 \(N = 10^{10}\) 数据上逐条验证，并精确定位剩余解析缺口。</p>
+      <p><strong>攻克顺序：</strong>MJ6（bookkeeping，最容易）→ MJ5（最多数据支持）→ S4b/MJ3（variance + shell statistics）→ MJ4（预测最难，实际数据最干净）。</p>
+      <p><strong>数据：</strong>rho_1e10.bin（int16，\(N = 10^{10}\)，由 rho_dp.c 生成）。四 AI 协作：Claude（子路，实验+脚本），ChatGPT（公西华，解析推导+review），Gemini（子夏，物理直觉），Grok（子贡，一致性检查）。</p>
+
+      <h2>§2 Block 1: MJ6 — HP Seed Isolation</h2>
+
+      <h3>2.1 Omega 分解</h3>
+      <p>\(\Omega(m) = a_0 + \Omega(v)\) 精确成立（代数恒等式，其中 \(u = p_0^{a_0}\)，\(v = m/u\) 互素）。在 3,920,709 个 hp 数上验证：<strong>100% 匹配</strong>。</p>
+
+      <h3>2.2 Δ_J 增长与吸收</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>J̄(hp)</th><th>J̄(ext)</th><th>Δ_J</th><th>E[J²](hp)</th><th>E[J²](ext)</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>0.878</td><td>0.000</td><td>+0.878</td><td>1.33</td><td>0.00</td></tr>
+          <tr><td>7</td><td>2.317</td><td>1.019</td><td>+1.298</td><td>6.38</td><td>1.91</td></tr>
+          <tr><td>11</td><td>3.304</td><td>1.378</td><td>+1.926</td><td>12.17</td><td>3.16</td></tr>
+          <tr><td>14</td><td>3.889</td><td>1.452</td><td>+2.437</td><td>16.44</td><td>3.51</td></tr>
+        </tbody>
+      </table>
+      <p>\(\Delta_J \approx 0.312 + 0.147 \cdot \Omega\)（linear fit，R² = 0.99）。此线性增长是 <strong>numerical observation</strong>。其被 Transfer Lemma 的 \(\gamma \cdot J\) 项吸收是代数/分析论证。</p>
+
+      <h3>2.3 Extension 正则性</h3>
+      <table>
+        <thead><tr><th>Ω(ext)</th><th>Var(J)</th><th>P(J &gt; 0)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.385</td><td>0.305</td></tr>
+          <tr><td>5</td><td>0.818</td><td>0.904</td></tr>
+          <tr><td>8</td><td>0.935</td><td>0.988</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Var(J) &lt; 1 全 Ω 壳，明确饱和。</strong></p>
+
+      <h3>2.4 结论</h3>
+      <div class="milestone-box">
+        <p><strong>MJ6：</strong>Ω 分解（代数恒等式）+ extension regularity（10¹⁰ 计算验证）+ Δ_J 吸收（代数/分析论证 + numerical observation）。hp 归约为 sf/ss 框架。</p>
+      </div>
+
+      <h2>§3 Block 2: MJ5 — Successor-Reset Drift</h2>
+
+      <h3>3.1 Exact Reset R2</h3>
+      <p><strong>\(J_{n+1} = (1 - \Delta M_n)^+\) when \(J_n > 0\)。</strong>10⁶ 次检验：<strong>100% 匹配</strong>（代数恒等式）。</p>
+
+      <h3>3.2 ΔM 分布</h3>
+      <p>\(N = 10^{10}\)，5.6 × 10⁷ 对连续 jump pairs：</p>
+      <table>
+        <thead><tr><th>ΔM</th><th>比例</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>65.06%</td></tr>
+          <tr><td>−1</td><td>27.10%</td></tr>
+          <tr><td>−2</td><td>6.68%</td></tr>
+          <tr><td>−3</td><td>1.04%</td></tr>
+          <tr><td>−4</td><td>0.112%</td></tr>
+          <tr><td>−5</td><td>0.009%</td></tr>
+        </tbody>
+      </table>
+      <p>指数拟合：P(ΔM ≤ 1−u) ≈ 5.95 · exp(−1.81u)。α = 1.81，跨 Ω=2–12 全 &gt; 1.1。</p>
+      <div class="note-box">
+        <p><strong>方法学说明：</strong>α = 1.81 是在 full-scan 数据上的 empirical fit。"跨 5 个数量级稳定（drift &lt; 0.3%）"定义为：同一 P(ΔM = v) 在 N = 10⁴, 10⁵, 10⁶, 10⁷, 10⁸, 10⁹ 六个窗口内的最大相对变化 &lt; 0.3%。|ΔM|_max 对数增长：3(10³) → 5(10⁵) → 7(10⁹)。</p>
+      </div>
+
+      <h3>3.3 Unconditional Contraction</h3>
+      <p>1.19 × 10⁸ pairs where \(J_n > 0\)：</p>
+      <p>\(E[J_n \mid J_n > 0] = 1.683\)，\(E[J_{n+1} \mid J_n > 0] = 0.684\)</p>
+      <p><strong>θ = 0.4066 &lt; 1。</strong>P(reset | J_n &gt; 0) = 52.5%。</p>
+
+      <h3>3.4 结论</h3>
+      <div class="milestone-box">
+        <p><strong>MJ5</strong> 在 10¹⁰ 尺度上 computationally verified。R2 是代数恒等式；α, θ 是 empirical measurements。在 BRS 路线下 MJ5 不是 H' 最小闭合链的必要输入。</p>
+      </div>
+
+      <h2>§4 Block 3: S4b/MJ3 — Top-Slice Oscillation 与 Insertion Non-Compression</h2>
+
+      <h3>4.1 S4b：Top-Slice Oscillation</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>μ<sup>Y</sup></th><th>osc(p=2)</th><th>osc(p=3)</th><th>max|osc|</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.364</td><td>−0.095</td><td>−0.094</td><td>0.095</td></tr>
+          <tr><td>6</td><td>2.047</td><td>−0.273</td><td>−0.268</td><td>0.273</td></tr>
+          <tr><td>10</td><td>3.196</td><td>−0.222</td><td>−0.215</td><td>0.222</td></tr>
+          <tr><td>12</td><td>3.692</td><td>−0.260</td><td>−0.253</td><td>0.260</td></tr>
+        </tbody>
+      </table>
+      <p>全负，有界（|osc| &lt; 0.35），随 p 递减。在 \(N \leq 10^{10}\) 测试范围内，大 m 的 J 系统性更小。</p>
+
+      <h3>4.2 S4a 与 S4 Composite</h3>
+      <p>S4a 已证（Sathe-Selberg），κ ∈ [0.47, 6.08]。S4 composite：27/27 组合全部成立。</p>
+
+      <h3>4.3 MJ3：Insertion Non-Compression</h3>
+      <table>
+        <thead><tr><th>Ω</th><th>E_h[J]</th><th>E_h[ln m]</th><th>α = J/ln m</th><th>V_k</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.364</td><td>8.62</td><td>0.042</td><td>0.37</td></tr>
+          <tr><td>6</td><td>2.047</td><td>12.83</td><td>0.160</td><td>0.97</td></tr>
+          <tr><td>12</td><td>3.692</td><td>14.69</td><td>0.251</td><td>1.36</td></tr>
+        </tbody>
+      </table>
+      <p>α &gt; 0 全 Ω 壳，单调递增。\(V_k < 1.4\) 全谱。</p>
+
+      <h3>4.4 结论</h3>
+      <div class="milestone-box">
+        <p><strong>S4b 和 MJ3</strong> 在 10¹⁰ 尺度上 computationally verified。在 BRS 路线下 S4b(full) 不再是 H' 闭合的必要输入。</p>
+      </div>
+
+      <h2>§5 Block 4: MJ4 — Bridge Lower Bound</h2>
+
+      <h3>5.1 对象修正</h3>
+      <div class="correction-box">
+        <p><strong>重要修正（公西华 review 发现）。</strong>Block 4 的 C 脚本计算的是 \(G_{\mathrm{spf}}(pm) = \rho(pm-1) - \rho(p) - \rho(m) - 1\)，即 insertion gain 的全量。由 Paper XVI 的 exact insertion identity，\(G_{\mathrm{spf}}(pm) = j(m) + K_p(m)\)。</p>
+        <p>Paper XLII 的 NI2 需要的是纯 bridge \(K_p(m)\) 的 averaged lower bound，不是 \(G_{\mathrm{spf}}(pm)\)。由于 \(j(m) \geq 0\) 可以很大，\(E[G_{\mathrm{spf}}] > 0\) 不能推出 \(E[K_p]\) 的所需下界。</p>
+      </div>
+
+      <h3>5.2 G_spf 数据（原始测量）</h3>
+      <p>\(N = 10^{10}\)，full scan（C version，77s + 144s Omega sieve）：</p>
+      <table>
+        <thead><tr><th>Ω</th><th>E[G_spf] p=2</th><th>p=3</th><th>p=5</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.085</td><td>+0.743</td><td>+0.581</td></tr>
+          <tr><td>6</td><td>+1.522</td><td>+2.223</td><td>+2.096</td></tr>
+          <tr><td>12</td><td>+3.033</td><td>+3.852</td><td>+3.786</td></tr>
+        </tbody>
+      </table>
+      <p>\(E[G_{\mathrm{spf}}] > 0\) 对全部 72 个 (Ω, p) 组合。Var(G_spf) ∈ [0.78, 1.40]。Corr(G_spf, J) ∈ [+0.17, +0.58]。</p>
+
+      <h3>5.3 True K_p 数据（展示：p=2 切片）</h3>
+      <p>由 \(E[K_p] = E[G_{\mathrm{spf}}] - E[J]\)，可从现有 10¹⁰ count-average 数据恢复真正的 bridge 平均值。Block 4 底层 C 输出同时覆盖 p=2–13 与 Ω=2–12；表格只展示 p=2 切片。</p>
+      <table>
+        <thead><tr><th>Ω</th><th>E[G_spf] (p=2)</th><th>E[J]</th><th>E[K_p]</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>+0.085</td><td>0.254</td><td><strong>−0.169</strong></td></tr>
+          <tr><td>4</td><td>+0.794</td><td>0.946</td><td><strong>−0.152</strong></td></tr>
+          <tr><td>6</td><td>+1.522</td><td>1.705</td><td><strong>−0.184</strong></td></tr>
+          <tr><td>8</td><td>+2.122</td><td>2.366</td><td><strong>−0.244</strong></td></tr>
+          <tr><td>10</td><td>+2.609</td><td>2.899</td><td><strong>−0.291</strong></td></tr>
+          <tr><td>12</td><td>+3.033</td><td>3.347</td><td><strong>−0.314</strong></td></tr>
+        </tbody>
+      </table>
+      <p>真实 bridge \(K_p\) 为小幅负值（−0.15 至 −0.31）。结构为"有界负值"，而非"平均为正"。</p>
+
+      <h3>5.4 MJ4 Bound 的数值口径</h3>
+      <p>Paper XLII 所需的对象是 \(E_{I_{k,F,N,p}}[K_p(m)\,\mathbf{1}_Y] \geq -\beta_F - \gamma_F J^Y\)。本文直接测得的是 count-average / full-shell 口径下的 \(E[K_p]\)。在 p=2 切片上，拟合 \(E[K_p]\) vs \(E[J]\) 给出 γ ≈ 0.057，β ≈ 0.114，候选 bound 与数据相容。</p>
+      <p>因此，本节最稳的结论是：<strong>MJ4 的候选"有界负桥"结构在 10¹⁰ 测试范围内得到强数值支持；但把它提升为 Paper XLII 所需的 insertion-measure / bulk-complement 版本，仍需 §6.2 所述的 interface lemma。</strong></p>
+
+      <h3>5.5 结论</h3>
+      <div class="milestone-box">
+        <p><strong>MJ4</strong> 在 10¹⁰ 尺度上 computationally verified。真正的 bridge \(K_p\) 是小幅负值（有界负，不是正的），但 MJ4 的 bound 仍然成立。</p>
+      </div>
+
+      <h2>§6 NI1-NI3 的精确 Interface 对齐</h2>
+
+      <h3>6.1 NI1：Var_ν(G_F) ≤ V*_F</h3>
+      <p><strong>Paper XLII 的 exact definition：</strong>对 family F，在 bulk shell 上的 harmonic 概率测度 ν 下，G_F 的方差一致有界。NI1 进入 BRS theorem 和 Averaged Transfer Lemma。</p>
+      <p><strong>Paper XLII poly(k) 弱化（公西华确认闭合链仍走通）：</strong>\(\mathrm{Var}_\nu(G_F) \leq P_F(k)\)。</p>
+      <p><strong>Paper XLIII 测量的对象：</strong>Var(J) &lt; 1（extensions，count）；Var(A) ∈ [0.3, 1.35]（Paper XVIII，count，N ≤ 10⁷）；\(V_k\) 饱和 ~1.3（Paper XLII Block 14，harmonic）。</p>
+      <p><strong>NI1 主要新增解析缺口（A-side）：</strong>\(G_F = A + B + 1\)。Paper XX unconditionally 给出 \(\mathrm{Var}(B \mid \Omega=k) = O_k(1)\)。主缺口集中在 Var(A) 一侧，见 §7.3 的 CSK-f。</p>
+      <p><strong>差距：</strong>Count → harmonic measure；fixed-k → bulk-uniform；ambient shell → family-restricted bulk complement。</p>
+      <p><strong>数值结论：</strong>强支持。Var(A) 在 k=2–18 没有增长趋势，远好于 poly(k) 要求。</p>
+
+      <h3>6.2 NI2：Averaged Bridge Lower Bound</h3>
+      <p><strong>Paper XLII 的 exact definition：</strong>\(E_{I_{k,F,N,p}}[K_p(m)\,\mathbf{1}_Y] \geq -\beta_F - \gamma_F J^Y\)（insertion measure，bulk complement）。</p>
+      <p><strong>Paper XLIII 直接测得的对象：</strong>Block 4 底层 C 输出覆盖 p=2–13，Ω=2–12 的 count-average / full-shell 数据；正文表格为 p=2 展示切片。由 \(E[K_p] = E[G_{\mathrm{spf}}] - E[J]\) 可恢复真正的 bridge 平均值。</p>
+      <p><strong>对应关系：</strong>Count-average 与 insertion-average 的 theorem-level 转换仍需显式 interface lemma。Full shell 到 bulk complement 的限制也需与 SPS/BRS/S4-weak 一起处理。</p>
+      <p><strong>数值结论：</strong>\(E[K_p]\) 呈稳定小幅负值模式（展示切片 [−0.15, −0.31]）。MJ4 的 bounded-negative bridge 结构有强数值支持，但还不是 Paper XLII 所需 insertion-measure 版本的 theorem-level 结论。</p>
+
+      <h3>6.3 NI3：Weighted J² Second Moment</h3>
+      <p><strong>Paper XLII 的 exact definition：</strong>\((J^Y)^2 = \sum_{m \in Y} J(m)^2/(m(\log m)^2)/W^Y \leq P_F(k)\)（W-weighted）。</p>
+      <p><strong>Paper XLIII 测量的对象：</strong>\(E[J^2]\)（count-averaged）。\(E[J^2]/(\ln m)^2 < 0.10\) 全 Ω 壳。</p>
+      <p><strong>差距：</strong>Count → W-weighted measure；需要 T3（Weighted Transfer Theorem）。T3 是 Paper XLII §4.2 Weighted Lemma 的技术升级，在 NI1 成立后可推出。</p>
+
+      <h2>§7 Poly(k) 闭合路线与剩余解析缺口</h2>
+
+      <h3>7.1 Poly(k) 路线的发现</h3>
+      <div class="route-box">
+        <p><strong>Paper XLII 的闭合链在 NI1 从 O(1) 放松到 poly(k) 后仍然走通（公西华验证）：</strong></p>
+        <p><strong>BRS：</strong>scale-shift penalty \(\sqrt{P(k)/\log X} \to 0\)，因为 \(k \leq K_A(X) \sim \log\log X\)。</p>
+        <p><strong>Transfer Lemma + Weighted Lemma：</strong>若 \(a_F(k)\)，\(b_F(k)\) 以及 NI3 中的 J² 上界均为 poly(k)，则 \(\bar{c}^Y \ll \mathrm{poly}(k) \cdot W_k/S_k\)，而 \(\mathrm{poly}(k) \cdot (5/6)^k \to 0\)，所以 \(B_A(N) \to 0\)。</p>
+        <p>Paper XLII 的闭合真正需要的不是"绝对常数界"，而是"在 bulk window 中可被 Erdős-Kac 权重与 \((\log N)^{-2}\) 吃掉的多项式界"。</p>
+      </div>
+
+      <h3>7.2 E1/E2 路线的复活</h3>
+      <p>Paper XVIII 否掉 E1（TK on Δf）是因为 \(\mathrm{Var}(\Delta f) \sim O(\log\log N) \neq O(1)\)。但在 bulk window 中 \(k \sim \log\log N\)，所以 \(O(\log\log N) = O(k) = \mathrm{poly}(k)\)。E1 对 poly(k) 目标足够。E2 不再需要精细的反相关抵消：\(\mathrm{Var}(\Delta f) \leq \mathrm{poly}(k)\) 和 \(E[(\Delta r)^2] \leq \mathrm{poly}(k)\) 分别成立即可。</p>
+
+      <h3>7.3 剩余解析缺口与 Paper XLIV 的两条攻击路线</h3>
+      <p>H' 的 unconditional closure 仍需要将 NI1-NI3 从计算验证提升为 theorem-level 输入。本文的贡献，是把这些缺口的结构关系明确分层，而不是把全部解析问题压成单一 conjecture。</p>
+
+      <p><strong>路线 A（解析数论路线）：CSK-f。</strong></p>
+      <div class="thesis-box">
+        <p><strong>Conjecture CSK-f</strong>（Conditioned Harmonic Shifted Kubilius for f）。固定 \(A_0 > 0\)。令 \(f(n) := \sum_{q^a \| n} \rho_E(q^a)\)。则存在多项式 P(k)，使得对所有充分大的 N，所有 \(2 \leq k \leq K_{A_0}(N)\)，所有 family F：</p>
+        <p>\[\mathrm{Var}_{\nu_{k,F,N}}(f(m-1) - f(m)) \leq P(k)\]</p>
+        <p>数值支持：Paper XVIII 数据显示 Var(Δf | Ω=k) ∈ [6.96, 9.96] for k=4–12，没有可见 k-增长，远好于 poly(k) 要求。</p>
+      </div>
+      <p><strong>SS2_har</strong> = predecessor 侧的二阶矩包（至少包括 \(\mathrm{Var}_\nu(f(m-1) - f(m)) \leq P_1(k)\) 和 \(E_\nu[\omega(m-1)^2] \leq P_2(k)\)）；<strong>C2_poly</strong> = \(\mathrm{Var}_\nu(A) \leq \mathrm{poly}(k)\)，由 Var(Δf) ≤ poly(k) 与 E[(Δr)²] ≤ poly(k) 推出。</p>
+      <p>路线 A 的完整 closing schema：CSK-f + shifted ω second moment + interface / weighted-transfer upgrades ⟹ NI1_poly，NI2_poly，NI3_poly ⟹ H'。</p>
+      <p><strong>路线 B（DP-intrinsic 路线）：</strong>Paper XLIV 的前瞻性方向——直接从 reset/slack/self-correction 的 DP 结构攻击 NI1 的 A-side。其精确 theorem-level 表述与数值支撑将在 Paper XLIV 中展开。</p>
+
+      <h3>7.4 Self-Correction 的四个面向</h3>
+      <table>
+        <thead><tr><th>Frontier</th><th>面向</th><th>核心结果</th></tr></thead>
+        <tbody>
+          <tr><td><strong>MJ6</strong></td><td>结构分解</td><td>种子成本有界；hp → sf/ss 框架</td></tr>
+          <tr><td><strong>MJ5</strong></td><td>时间维度</td><td>jump 后 reset；θ = 0.41 contraction</td></tr>
+          <tr><td><strong>S4b/MJ3</strong></td><td>空间维度</td><td>局部均值在测试范围内不偏离全局（osc 全负）</td></tr>
+          <tr><td><strong>MJ4</strong></td><td>组合维度</td><td>bridge 为有界负值——insertion 代价可控</td></tr>
+        </tbody>
+      </table>
+
+      <h3>7.5 SAE 解释</h3>
+      <ul>
+        <li>MJ6 = 12DD 结构的分层独立性（种子与扩展解耦）</li>
+        <li>MJ5 = 凿-构循环的自动校正（过度偏离被 reset）</li>
+        <li>S4b = 8DD 信息传递的保真性（局部不偏离全局）</li>
+        <li>MJ4 = "余项为正"的算术实现（G_spf 平均为正，insertion 整体帮助 margin）</li>
+      </ul>
+
+      <h2>§8 方法学说明</h2>
+
+      <h3>8.1 数据与 Scan 策略</h3>
+      <p>Block 1-3：Omega sieve 范围 2 × 10⁸，采样 10⁵ per shell，使用 rho_1e10.bin（int16，\(N = 10^{10}\)）。Block 4：C 实现 full scan \(N = 10^{10}\)（mj4_bridge.c，77s scan + 144s Omega sieve）。</p>
+
+      <h3>8.2 误差估计</h3>
+      <p>"85σ above zero"等表述指 full-scan 下的 empirical standard error of the mean：SE = √(Var/n)，其中 n 是对应 (Ω, p) 组合的样本量（最大 11 亿）。在 full-scan 语境下，这是对 count-average 的 exact SE。"跨尺度稳定"定义为：同一统计量在 \(N = 10^4, 10^5, \ldots, 10^9\) 六个 decade 窗口内的最大相对变化。</p>
+
+      <h3>8.3 Scripts</h3>
+      <table>
+        <thead><tr><th>Block</th><th>Scripts</th><th>关键测量</th></tr></thead>
+        <tbody>
+          <tr><td>1 (MJ6)</td><td>p43_block1_mj6_v2.py, p43_mj6_confirm.py</td><td>Δ_J, Var(J), seed cost</td></tr>
+          <tr><td>2 (MJ5)</td><td>p43_block2_mj5_v2.py, p43_mj5_confirm.py</td><td>α, θ, ΔM 分布</td></tr>
+          <tr><td>3 (S4b/MJ3)</td><td>p43_block3_s4b.py</td><td>osc, S4 bound, insertion α</td></tr>
+          <tr><td>4 (MJ4)</td><td>mj4_bridge.c（C version）</td><td>E[G_spf], E[K_p], Var, Corr</td></tr>
+        </tbody>
+      </table>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLII. DOI: <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">10.5281/zenodo.19226607</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLI. DOI: <a href="https://doi.org/10.5281/zenodo.19201877" target="_blank" rel="noopener">10.5281/zenodo.19201877</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XVIII（反相关引擎）. DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[4] H. Qin. ZFCρ Paper XVI（insertion identity）. DOI: <a href="https://doi.org/10.5281/zenodo.19013602" target="_blank" rel="noopener">10.5281/zenodo.19013602</a>.</p>
+      <p>[5] H. Qin. ZFCρ Paper XVII（roughness stability）. DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</p>
+      <p>[6] H. Qin. ZFCρ Paper XIX（self-correction）. DOI: <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">10.5281/zenodo.19026991</a>.</p>
+      <p>[7] H. Qin. ZFCρ Paper XX（B-noise closure）. DOI: <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">10.5281/zenodo.19027892</a>.</p>
+      <p>[8] J. D. Lichtman. Mertens' prime product formula, dissected. <em>Integers</em> 21A (2021), A17.</p>
+
+      <h2>致谢</h2>
+      <p><strong>ChatGPT（公西华）：</strong>Paper XLII 完整推导链架构；BRS theorem；五点 must-fix review；<strong>发现 Block 4 对象错误（G_spf vs K_p）</strong>；T1/T2/T3 的精确诊断；<strong>poly(k) 闭合路线的发现（NI1_poly closing chain + E1/E2 复活）</strong>；将 NI1 的 A-side 主解析缺口精确定位到 CSK-f，并识别 NI2/NI3 仍需 interface / weighted-transfer upgrades。</p>
+      <p><strong>Claude（子路）：</strong>四个 Block 的实验设计与全部脚本；发现 MJ5 conditional-vs-unconditional regression 差异；识别 MJ6 Δ_J 线性增长；S4b oscillation 全负现象；10¹⁰ 确认实验设计；C 优化 MJ4；从 Block 4 数据计算修正的 E[K_p]；NI1-NI3 interface 对齐。</p>
+      <p><strong>Han Qin（作者）：</strong>攻克顺序决策；"数据很好吗？"方法论；要求 1e10 确认；Stop (T) thinking，转攻 S4b；引入 Paper XVIII anti-correlation；"没有 closure 不发 Paper 43"决策（导致 poly(k) 路线和 CSK-f 的发现）；SAE 解释；本地 rho_1e10.bin 全量运算（M4 Mac）。</p>
+      <p><strong>Gemini（子夏）：</strong>结构直觉。<strong>Grok（子贡）：</strong>一致性检查。<strong>热力学 Claude thread：</strong>"self-correction 是最后一关"的方向判断。</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho42.html">论文 XLII</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>论文 XLIV →</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"your-token-here"}'></script>
+
+</body>
+</html>
