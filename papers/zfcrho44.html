@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why DP min Produces Local Smoothness — ZFCρ Paper XLIV — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLIV: Reset-Slack decomposition A = ψ(ΔM⁻) − U⁻ answers why DP min produces local smoothness. Var(A) ≤ 2·Var(ΔM⁻) + 2·E[U²] (theorem). Le Chatelier predecessor-state quantification. Conjecture 2 (ΔM second moment) as principal target; M_spf-T-S decomposition narrows attack surface to SPF split variance.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, reset slack, DP min, Le Chatelier mechanism, anti-correlation engine, chisel-remainder coincidence, NI1 poly, Conjecture 2, SPF split, local smoothness">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why DP min Produces Local Smoothness: Reset-Slack Decomposition, Le Chatelier Dynamic Equilibrium, and Chisel-Remainder Coincidence">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho44.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Why DP min Produces Local Smoothness: Reset-Slack Decomposition, Le Chatelier Dynamic Equilibrium, and Chisel-Remainder Coincidence",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho44.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19247859"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "reset slack", "DP min", "Le Chatelier mechanism",
+      "anti-correlation engine", "chisel-remainder coincidence", "NI1 poly", "Conjecture 2",
+      "SPF split", "local smoothness", "predecessor-state decomposition"
+    ],
+    "abstract": "Paper 18 discovered Var(A | Ω=k) ≈ 1 across Ω-shells but did not explain why. This paper answers: A = ψ(ΔM⁻) − U⁻ (Reset-Slack decomposition). Theorem: Var(A) ≤ 2·Var(ΔM⁻) + 2·E[U²]. Le Chatelier mechanism: E[U²] = (1−w_shielded)·D(k) ≈ 0.4, stable via counterbalance of frequency suppression and decoherence intensity. Conjecture 2 (ΔM second moment) is the principal target; M_spf-T-S decomposition reduces it to the SPF split variance.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho44.html">
+  <meta name="citation_title" content="Why DP min Produces Local Smoothness: Reset-Slack Decomposition, Le Chatelier Dynamic Equilibrium, and Chisel-Remainder Coincidence">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19247859">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho44.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .decomp-box { background: #f0fff4; border-left: 3px solid #00aa55; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .decomp-box p { margin: 0; }
+    .decomp-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLIV</div>
+      <h1 class="paper-title">Why DP min Produces Local Smoothness: Reset-Slack Decomposition, Le Chatelier Dynamic Equilibrium, and Chisel-Remainder Coincidence</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19247859
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper 18 discovered that the first-difference variance \(\mathrm{Var}(A \mid \Omega=k)\) of the integer complexity function \(\rho_E\) remains approximately 1 across Ω-shells \(k=2\) to \(18\), attributing this to an anti-correlation engine between the additive part \(f\) and the combinatorial remainder \(r\). Paper 18 did not explain <em>why</em> the DP min recurrence generates this cancellation.</p>
+        <p><strong>This paper answers that question.</strong></p>
+        <p><strong>(1) Quantitative recasting of the anti-correlation engine.</strong> Transfer coefficient \(\tau(k) := \mathrm{Cov}(\Delta f, A)/\mathrm{Var}(\Delta f)\) satisfies \(\tau \in [0.14, 0.25]\): 75–86% of the \(\Delta f\) fluctuation is absorbed by the remainder before reaching \(A\). Controlling \(\mathrm{Var}(\Delta f)\) separately is an inefficient route. RW data (\(B_f^2 \sim (\log X)^{1.90}\)) confirms an exponential gap between the unconditional \(\Delta f\) variance and the conditioned target.</p>
+        <p><strong>(2) Reset-Slack decomposition.</strong> From the successor-reset identity (R2) of the DP min recurrence, \(A\) decomposes exactly as</p>
+        <p style="margin-top:0.6rem; padding-left:1rem;">\(A(m) = \psi(\Delta M^-(m)) - U^-(m)\)</p>
+        <p>where \(\psi(x) = -\min(x,1)\) is a 1-Lipschitz truncation, \(\Delta M^-(m) = M(m) - M(m-1)\) is the multiplicative-target predecessor difference, and \(U^-(m)\) is the reset slack (the amount by which DP min falls short of its theoretical ceiling). R2 guarantees \(U(m) = 0\) whenever \(J(m-1) > 0\), verified exactly across 5.8 million samples with zero failures.</p>
+        <p><strong>(3) Reset-Slack Reduction theorem.</strong> \(\mathrm{Var}(A) \leq 2 \cdot \mathrm{Var}(\Delta M^-) + 2 \cdot E[U^2]\), with coarser bound \(\mathrm{Var}(A) \leq 2 + 2 \cdot E[(\Delta M^-)^2]\). Local smoothness reduces to multiplicative-target smoothness plus reset-slack boundedness.</p>
+        <p><strong>(4) Le Chatelier predecessor-state quantification.</strong> \(E[U^2 \mid \Omega=k] = (1 - w_{\mathrm{shielded}}) \times \text{decoherence\_intensity}\). Frequency suppression stabilizing near 55–76%; decoherence intensity rising to peak 1.12 at k=5 then declining to ~0.88. Their product stabilizes at \(E[U^2] \approx 0.4\) through dynamic counterbalance — not saturation of a single quantity.</p>
+        <p><strong>(5) Dominance structure and NI1_poly reduction.</strong> Theorem A (theorem-level): Conjecture 2 (\(\Delta M\) second moment \(\leq\) poly(k)) implies Conjecture 1 (reset-slack smoothing) plus the A-side of NI1_poly. The \(M_\mathrm{spf}\text{-}T\text{-}S\) decomposition narrows the attack surface: \(P(S=0) > 97.6\%\), \(P(T=0) > 92.7\%\) for \(k \geq 4\), reducing Conjecture 2 essentially to the variance of the SPF split.</p>
+        <p><strong>In the SAE framework:</strong> The low transfer coefficient suggests a pre-dimensional pattern — selection output not significantly affected by structural-input fluctuation. R2 = transient chisel-remainder coincidence. Exposed sector = chisel-remainder separation. Le Chatelier = statistical steady state of the shielded-exposed cycle.</p>
+        <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, local smoothness, DP recurrence, Le Chatelier mechanism, reset slack, anti-correlation engine, chisel-construct-remainder</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 The Problem</h3>
+      <p>Paper 18 (DOI: 10.5281/zenodo.19024385) reported a striking empirical fact: the first difference \(A(n) := \rho_E(n-1) - \rho_E(n)\) has variance approximately 1 on each \(\Omega(n) = k\) shell, across \(k = 2\) to \(18\) and \(N = 10^4\) to \(10^7\), with no growth in \(N\).</p>
+      <p>Paper 18 attributed this to an anti-correlation engine: in the decomposition \(\rho_E = f + r\), the differentials \(\Delta f\) and \(\Delta r\) satisfy \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\), so that two quantities each of variance ~10 cancel to variance ~1. Paper 18 eliminated three proof routes (E1: TK on Δf, E2: f/r separately, E3: shell concentration) but offered no explanation for the cancellation mechanism.</p>
+      <p>Forty-two papers later, this paper provides that explanation.</p>
+
+      <h3>1.2 Main Results Summary</h3>
+      <p><strong>(1)</strong> Transfer coefficient \(\tau(k) \in [0.14, 0.25]\): 75–86% of \(\Delta f\) fluctuation absorbed by remainder before reaching \(A\).</p>
+      <p><strong>(2)</strong> \(A = \psi(\Delta M^-) - U^-\) exact decomposition; R2 guarantees \(J(m-1)>0 \Rightarrow U(m)=0\) (5.8M samples, 100%, zero failures).</p>
+      <p><strong>(3)</strong> \(\mathrm{Var}(A) \leq 2\cdot\mathrm{Var}(\Delta M^-) + 2\cdot E[U^2]\) (theorem-level).</p>
+      <p><strong>(4)</strong> \(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\), stable at ~0.4 through counterbalance.</p>
+      <p><strong>(5)</strong> Theorem A: Conjecture 2 \(\Rightarrow\) Conjecture 1 + A-side of NI1_poly. \(M_\mathrm{spf}\)-T-S narrows Conjecture 2 to SPF split variance.</p>
+
+      <h2>§2 Reset-Slack Decomposition</h2>
+
+      <h3>2.1 From Proposition J to R1/R2</h3>
+      <p>By Proposition J (Paper 17): \(A(m) = J(m) - 1\).</p>
+      <p>By the successor-reset identity of Paper 42 (DOI: 10.5281/zenodo.19226607):</p>
+      <ul>
+        <li><strong>(R1)</strong> \(J(m) \leq (1 - \Delta M^-(m))^+\), for all m.</li>
+        <li><strong>(R2)</strong> \(J(m) = (1 - \Delta M^-(m))^+\), when \(J(m-1) > 0\).</li>
+      </ul>
+      <p>R2 is an exact consequence of the DP min recurrence (Paper 42 §4.3). After a jump, the next jump size is entirely determined by the multiplicative-target difference \(\Delta M^-\), with zero wasted degrees of freedom.</p>
+
+      <h3>2.2 Reset Slack and Exact Decomposition</h3>
+      <p>Define the reset slack \(U^-(m) := \varphi(\Delta M^-(m)) - J(m) = (1-\Delta M^-(m))^+ - J(m) \geq 0\) (non-negativity from R1). Then</p>
+      <div class="decomp-box">
+        <p><strong>A(m) = J(m) − 1 = ψ(ΔM⁻(m)) − U⁻(m)</strong></p>
+        <p>where \(\psi(x) = -\min(x, 1) = (1-x)^+ - 1\).</p>
+      </div>
+      <p>ψ(ΔM⁻) is the bare response of the multiplicative target — what A would equal if DP min always achieved its theoretical ceiling (U = 0). U⁻ is the reset slack — the amount by which DP min falls short. R2 guarantees U = 0 whenever J(m-1) > 0.</p>
+      <p>This decomposition follows the selection structure of DP min, not the additive/combinatorial structure of \(\rho_E = f + r\). In a nonlinear optimization process, the control exerted by the mechanism far exceeds the fluctuation of the input.</p>
+
+      <h2>§3 Reset-Slack Reduction Theorem</h2>
+
+      <div class="proof-box">
+        <p><strong>Theorem (Reset-Slack Reduction).</strong> Under any probability measure ν on Y_{k,F,N},</p>
+        <p>\[\mathrm{Var}_\nu(A) \leq 2\cdot\mathrm{Var}_\nu(\Delta M^-) + 2\cdot E_\nu[(U^-)^2]\]</p>
+        <p><strong>Proof.</strong> From §2.2, \(A = \psi(\Delta M^-) - U^-\). Since ψ is 1-Lipschitz, \(\mathrm{Var}(\psi(X)) \leq \mathrm{Var}(X)\). By \(\mathrm{Var}(X-Y) \leq 2\mathrm{Var}(X) + 2E[Y^2]\): \(\mathrm{Var}(A) \leq 2\mathrm{Var}(\psi(\Delta M^-)) + 2E[(U^-)^2] \leq 2\mathrm{Var}(\Delta M^-) + 2E[(U^-)^2]\). ∎</p>
+        <p><strong>Corollary (Coarse bound).</strong> If \(E_\nu[(\Delta M^-)^2] \leq Q(k)\), then \(\mathrm{Var}_\nu(A) \leq 2 + 2Q(k)\).</p>
+      </div>
+      <p><strong>Significance:</strong> Local smoothness reduces to multiplicative-target smoothness plus reset-slack boundedness. Controlling the second moment of ΔM⁻ alone suffices (coarse bound).</p>
+
+      <h2>§4 Le Chatelier Mechanism: Predecessor-State Decomposition</h2>
+
+      <h3>4.1 Predecessor-State Decomposition</h3>
+      <p>R2 gives \(J(m-1) > 0 \Rightarrow U(m) = 0\). Therefore \(E[U^2 \mid \Omega=k] = P(J(m-1)=0 \mid \Omega=k) \cdot E[U^2 \mid J(m-1)=0, \Omega=k]\). Define:</p>
+      <ul>
+        <li><strong>Frequency suppression:</strong> \(w_\mathrm{shielded}(k) := P(J(m-1) > 0 \mid \Omega(m) = k)\)</li>
+        <li><strong>Decoherence intensity:</strong> \(D(k) := E[U^2 \mid J(m-1)=0, \Omega(m)=k]\)</li>
+      </ul>
+      <p>$$E[U^2 \mid \Omega=k] = (1 - w_\mathrm{shielded}(k)) \cdot D(k)$$</p>
+
+      <h3>4.2 Data (N = 10⁷)</h3>
+      <table>
+        <thead><tr><th>k</th><th>w_shielded</th><th>1−w_shielded</th><th>E[U²|shielded]</th><th>D(k) = E[U²|exposed]</th><th>product</th><th>E[U²]</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.760</td><td>0.240</td><td>0.000000</td><td>0.598</td><td>0.144</td><td>0.144</td></tr>
+          <tr><td>3</td><td>0.705</td><td>0.295</td><td>0.000000</td><td>0.950</td><td>0.280</td><td>0.280</td></tr>
+          <tr><td>4</td><td>0.651</td><td>0.349</td><td>0.000000</td><td>1.099</td><td>0.383</td><td>0.383</td></tr>
+          <tr><td>5</td><td>0.603</td><td>0.397</td><td>0.000000</td><td><strong>1.124</strong></td><td>0.447</td><td>0.447</td></tr>
+          <tr><td>6</td><td>0.574</td><td>0.426</td><td>0.000000</td><td>1.070</td><td>0.456</td><td>0.456</td></tr>
+          <tr><td>7</td><td>0.557</td><td>0.443</td><td>0.000000</td><td>1.012</td><td>0.448</td><td>0.448</td></tr>
+          <tr><td>8</td><td>0.554</td><td>0.446</td><td>0.000000</td><td>0.956</td><td>0.426</td><td>0.426</td></tr>
+          <tr><td>10</td><td>0.561</td><td>0.439</td><td>0.000000</td><td>0.885</td><td>0.388</td><td>0.388</td></tr>
+          <tr><td>12</td><td>0.570</td><td>0.430</td><td>0.000000</td><td>0.885</td><td>0.381</td><td>0.381</td></tr>
+        </tbody>
+      </table>
+      <p>\(E[U^2 | \mathrm{shielded}] = 0.000000\) exactly, across all k. The theorem-level guarantee of R2 is perfectly verified by data.</p>
+
+      <h3>4.3 Le Chatelier Stability</h3>
+      <p><strong>Frequency suppression</strong> \(w_\mathrm{shielded}\) decreases from 76.0% at k=2 to ~55% at k≥8. <strong>Decoherence intensity</strong> D(k) rises from 0.60 at k=2 to a peak of 1.124 at k=5, then declines to ~0.88 at k≥10. <strong>Their product E[U²] ≈ 0.38–0.46 is stable across all shells</strong> — a dynamic counterbalance of two opposing trends, not saturation of a single quantity.</p>
+      <p>At high Ω, D(k) declines because the exposed sector becomes dominated by reset-front positions (preceding non-jump, current jump, 99%+ of exposed), with true interior (consecutive non-jumps) nearly vanishing. The front's E[U²|front] ≈ 1.0, slowly declining, dominates D(k).</p>
+
+      <h3>4.4 Complete Le Chatelier Picture</h3>
+      <div class="thesis-box">
+        <p><strong>1. Shielded (J(m-1)>0, 55–76%):</strong> R2 guarantees U=0 — chisel-remainder coincidence.</p>
+        <p><strong>2. Exposed-front (J(m-1)=0, J(m)>0):</strong> Bulk of exposed sector (96%+ for k≥4), E[U²] ≈ 1.0.</p>
+        <p><strong>3. Exposed-interior (J(m-1)=0, J(m)=0):</strong> Extremely rare (&lt;4%), large E[U²] (~5) but negligible contribution.</p>
+        <p><strong>4. Overall:</strong> E[U²] = (1−w_shielded) × D(k) ≈ 0.4, stable.</p>
+      </div>
+
+      <h2>§5 The Anti-Correlation Engine Recast</h2>
+
+      <h3>5.1 Transfer Coefficient</h3>
+      <p>Since \(A = \Delta f + \Delta r\), we have \(\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f)\). Define \(\tau(k) := \mathrm{Cov}(\Delta f, A) / \mathrm{Var}(\Delta f)\).</p>
+      <table>
+        <thead><tr><th>k</th><th>Var(Δf)</th><th>Cov(Δf, A)</th><th>τ(k)</th><th>Var(A)</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>6.96</td><td>+1.00</td><td>0.14</td><td>0.72</td></tr>
+          <tr><td>8</td><td>9.90</td><td>+2.01</td><td>0.20</td><td>1.09</td></tr>
+          <tr><td>12</td><td>9.96</td><td>+2.48</td><td>0.25</td><td>1.30</td></tr>
+        </tbody>
+      </table>
+      <p>\(\tau(k) \in [0.14, 0.25]\). <strong>Between 75% and 86% of the Δf fluctuation is absorbed by the remainder before reaching A.</strong> Controlling Var(Δf) separately has almost no leverage on Var(A) — the correct direction is to work directly with A's DP-intrinsic decomposition (§2).</p>
+      <p>RW data confirms: \(B_f^2 \sim 6.82 \cdot (\log X)^{1.90}\). Renormalization cuts only a constant factor. The Mangerel unconditional gap gives \(E[(\Delta f)^2] \sim (\log X)^2\) while DCSK-f requires poly(log log X) — an exponential gap. Any "unconditional Var(Δf) first, then condition" route is infeasible.</p>
+
+      <h2>§6 Numerical Evidence</h2>
+
+      <h3>6.1 Main Table (N = 10⁷)</h3>
+      <table>
+        <thead><tr><th>k</th><th>count</th><th>Var(A)</th><th>Var(ΔM⁻)</th><th>E[U²]</th><th>P(U=0)</th><th>P(J&gt;0)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>1,873,585</td><td>0.265</td><td>1.777</td><td>0.144</td><td>94.0%</td><td>28.7%</td></tr>
+          <tr><td>3</td><td>2,342,020</td><td>0.450</td><td>1.244</td><td>0.280</td><td>89.4%</td><td>57.0%</td></tr>
+          <tr><td>4</td><td>1,898,522</td><td>0.579</td><td>1.193</td><td>0.383</td><td>85.6%</td><td>77.1%</td></tr>
+          <tr><td>5</td><td>1,204,532</td><td>0.694</td><td>1.259</td><td>0.447</td><td>82.6%</td><td>88.0%</td></tr>
+          <tr><td>6</td><td>670,289</td><td>0.810</td><td>1.327</td><td>0.456</td><td>81.3%</td><td>93.1%</td></tr>
+          <tr><td>7</td><td>347,258</td><td>0.922</td><td>1.387</td><td>0.448</td><td>80.9%</td><td>95.5%</td></tr>
+          <tr><td>8</td><td>173,246</td><td>1.031</td><td>1.444</td><td>0.426</td><td>81.3%</td><td>96.8%</td></tr>
+          <tr><td>9</td><td>84,360</td><td>1.126</td><td>1.498</td><td>0.408</td><td>81.6%</td><td>97.7%</td></tr>
+          <tr><td>10</td><td>40,665</td><td>1.212</td><td>1.553</td><td>0.388</td><td>82.4%</td><td>98.3%</td></tr>
+          <tr><td>11</td><td>19,245</td><td>1.300</td><td>1.622</td><td>0.391</td><td>82.1%</td><td>98.6%</td></tr>
+          <tr><td>12</td><td>9,145</td><td>1.347</td><td>1.628</td><td>0.381</td><td>82.6%</td><td>99.0%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 Reset-Slack Reduction Verification</h3>
+      <table>
+        <thead><tr><th>k</th><th>Var(A)</th><th>2·Var(ΔM⁻) + 2·E[U²]</th><th>ratio</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.265</td><td>3.842</td><td>6.9%</td></tr>
+          <tr><td>4</td><td>0.579</td><td>3.152</td><td>18.4%</td></tr>
+          <tr><td>6</td><td>0.810</td><td>3.566</td><td>22.7%</td></tr>
+          <tr><td>8</td><td>1.031</td><td>3.742</td><td>27.5%</td></tr>
+          <tr><td>10</td><td>1.212</td><td>3.882</td><td>31.2%</td></tr>
+          <tr><td>12</td><td>1.347</td><td>4.016</td><td>33.5%</td></tr>
+        </tbody>
+      </table>
+      <p>Bound holds at all k. Ratio far below 100% because ψ(ΔM⁻) and U⁻ are negatively correlated (large jump → large ψ → R2 guarantees U=0). R2 exact verification: <strong>5,800,087 samples, 100.000000%, zero failures</strong> across all Ω shells (k=2 to k=14).</p>
+
+      <h2>§7 SAE Interpretation</h2>
+
+      <h3>7.1 Pre-Dimensional Pattern</h3>
+      <p>The low transfer coefficient \(\tau(k) \in [0.14, 0.25]\) suggests a pre-dimensional pattern: in recurrence systems driven by selection (min/max), the structural input (construct), selection output (chisel), and residual response (remainder) may exhibit a ternary lock — the output of selection is not significantly affected by fluctuations in structural input, because the remainder absorbs the bulk of input fluctuation.</p>
+      <p>If this pattern holds for general min/max recurrence systems, it is more fundamental than 0DD (material existence) in the SAE dimension sequence — a candidate precondition for the dimension sequence to unfold. ZFCρ provides the first exact mathematical instance.</p>
+
+      <h3>7.2 Chisel-Remainder Coincidence (R2)</h3>
+      <p>R2's U=0 does not mean "the remainder is zero" — it means "the remainder is entirely determined by the chisel, with no independent degrees of freedom." At the moment of jump, DP min executes an exact reset (\(\rho_E(m) = M_m\)), erasing all history (memory wipe). Chisel and remainder coincide — the chisel's output is the remainder. This is transient: at the next step, remainder begins independent evolution.</p>
+
+      <h3>7.3 Chisel-Remainder Separation (Exposed Sector)</h3>
+      <p>In the exposed sector (J(m-1)=0), remainder regains independent degrees of freedom. The shielded sector (55–76%) is the chisel-remainder coincidence state; the exposed sector (24–45%) is the chisel-remainder separation state. Their statistical steady state is the Le Chatelier equilibrium.</p>
+
+      <h3>7.4 Ω Correspondence Table</h3>
+      <table>
+        <thead><tr><th>Ω level</th><th>Mathematical expression</th><th>SAE correspondence</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=1 (primes)</td><td>M(p)=+∞, δ(p)=1 universal</td><td>Absolute zero</td></tr>
+          <tr><td>Ω=3→4</td><td>P(J&gt;0) from minority to majority</td><td>Phase transition boundary</td></tr>
+          <tr><td>Ω≥4</td><td>Var(A)~1, Le Chatelier established</td><td>Ordered phase</td></tr>
+          <tr><td>Ω=5</td><td>D(k) peaks at 1.12</td><td>Decoherence intensity peak</td></tr>
+          <tr><td>Ω=7→8</td><td>sf-only fails, repeated factors needed</td><td>Redundancy as stability condition</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§8 Conjectures, Dominance Structure, and NI1_poly Reduction</h2>
+
+      <h3>8.1 Theorem A (Conjecture 2 Dominates Conjecture 1)</h3>
+      <div class="proof-box">
+        <p>By R1, \(U^- \leq (1-\Delta M^-)^+ \leq 1 + |\Delta M^-|\). Therefore \(E_\nu[(U^-)^2 \mid \Omega=k] \leq 2 + 2 \cdot E_\nu[(\Delta M^-)^2 \mid \Omega=k]\).</p>
+        <p>Thus Conjecture 2 ⟹ Conjecture 1. The two conjectures are not parallel targets — Conjecture 2 is the logically stronger principal target; closing it simultaneously closes Conjecture 1 and the A-side of NI1_poly.</p>
+      </div>
+
+      <h3>8.2 Conjecture 2 (ΔM Second Moment — Principal Target)</h3>
+      <p>\(E_\nu[(\Delta M^-)^2 \mid \Omega=k] \leq Q(k)\) for some polynomial Q. Numerical support: E[(ΔM⁻)²] ranges from 1.2 (k=4) to 6.6 (k=12), growing far slower than k².</p>
+      <p><strong>M_spf-T-S Canonical Decomposition:</strong> Three levels of multiplicative target: \(M_\mathrm{spf}(m)\) (SPF split), \(M_1(m)\) (best prime split), \(M(m)\) (full min). Two nonneg slacks: \(T(m) = M_\mathrm{spf} - M_1\) (prime-choice instability), \(S(m) = M_1 - M\) (DP selection gain). Exact: \(\Delta M^- = \Delta M_\mathrm{spf}^- - \Delta T^- - \Delta S^-\).</p>
+      <table>
+        <thead><tr><th>k</th><th>P(S=0)</th><th>E[S²]</th><th>P(T=0)</th><th>E[T²]</th><th>E[(ΔM_spf⁻)²]/E[(ΔM⁻)²]</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>97.6%</td><td>0.027</td><td>92.7%</td><td>0.102</td><td>1.099</td></tr>
+          <tr><td>8</td><td>99.8%</td><td>0.002</td><td>97.4%</td><td>0.031</td><td>1.053</td></tr>
+          <tr><td>12</td><td>100%</td><td>0.000</td><td>99.6%</td><td>0.006</td><td>1.068</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Implication: Conjecture 2 is essentially equivalent to controlling E[(ΔM_spf⁻)²].</strong> M_spf is a single canonical split — far more tractable than the full min. Since gcd(m, m-1) = 1, adjacent integers' SPF splits are entirely independent.</p>
+
+      <h3>8.3 Attack Hierarchy</h3>
+      <div class="chain-box">
+        Conj.2 (ΔM second moment) ⟹ Conj.1 (reset-slack smoothing) + A-side of NI1_poly<br>
+        A-side + Paper 20 B-side (Var(B)=O_k(1), unconditional) ⟹ full NI1_poly<br>
+        NI1_poly ⟹ NI2_poly easier (Theorem B, A-side control propagates to bridge)<br>
+        NI1_poly + NI2_poly + NI3_poly ⟹ Paper 42 chain ⟹ H'
+      </div>
+      <p>Paper XLIV does not close H' by itself. It explains and reduces the core local-smoothness input of H' (A-side of NI1) to a single principal target (Conjecture 2 / ΔM second moment), and narrows its attack surface to the SPF split variance problem. The B-side is unconditionally covered by Paper 20. NI2 and NI3 remain residual inputs, with numerical evidence in Paper 43.</p>
+
+      <h2>§9 Alternative Approach: Conditioning-First Analytic Route</h2>
+      <p>ChatGPT (Gongxihua) developed a conditioning-first route (Route A) based on the Goudout/Verwee 2026 framework, centering on a Fibre-in-Progressions Ratio Theorem for Ω-shells. This route addresses how one might close the conditioned predecessor statistics; it does not address <em>why</em> DP min produces smoothness. It is complementary to, not in competition with, the thermodynamic route of this paper.</p>
+      <p>A deep research survey confirms: no existing theorem simultaneously covers shifted additive observable + Ω-conditioning + unbounded prime-power weights. The closest literature triad (Mangerel 2022 + Verwee 2026 + Goudout bivariate fibre) each covers two of three requirements; the triangular gap remains open.</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XVIII (Anti-correlation engine). DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLII (H' conditional closure). DOI: <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">10.5281/zenodo.19226607</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XLIII (Self-correction at N=10¹⁰). DOI: <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener">10.5281/zenodo.19240183</a>.</p>
+      <p>[4] H. Qin. ZFCρ Paper XVII (Monotonicity). DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</p>
+      <p>[5] O. Mangerel. Additive functions in short intervals, gaps and a conjecture of Erdős. <em>Int. Math. Res. Not.</em> (2022).</p>
+      <p>[6] M. Verwee. Additive functions on shifted primes. (2026).</p>
+      <p>[7] É. Goudout. Lois de répartition des diviseurs. Doctoral thesis (2018–2021).</p>
+
+      <h2>Acknowledgments</h2>
+      <p><strong>ChatGPT (Gongxihua):</strong> Proof of the Reset-Slack Reduction theorem. Coarse bound tightening (2+2Q replacing 8+2Q). Predecessor-state decomposition suggestion (correcting the §4 statistical framework). Theorem A (Conj.2 dominates Conj.1) and Theorem B (NI2 conditional reduction). M_spf-T-S canonical-candidate decomposition. Two review rounds correcting four critical bugs. Dyadic Harmonic Transfer theorem, CSK-f → DCSK-f reduction, Route A complete proof sketch.</p>
+      <p><strong>Claude (Zilu):</strong> All numerical experiments (RW computation, ΔM_n statistics, U_n reset slack, R2 exact verification, predecessor-state decomposition, M_spf-T-S decomposition verification, S/U overlap analysis). Text drafting, data interpretation, working notes v1–v4. Identification of the transfer coefficient τ(k).</p>
+      <p><strong>Claude (Thermodynamic thread):</strong> Physical picture of the Le Chatelier mechanism. SAE interpretation of chisel-remainder coincidence (R2 = transient chisel-remainder fusion). SAE interpretation of decoherence (exposed sector = chisel-remainder separation). Positioning of the pre-dimensional pattern (more fundamental than 0DD). Redundancy-stability correction for Ω=7→8.</p>
+      <p><strong>Gemini (Zixia):</strong> Final review confirming the main axis. §2.4 "input structure vs. selection mechanism" comparison suggestion. §8 explicit closure-chain formulation suggestion.</p>
+      <p><strong>Han Qin (author):</strong> Directional decisions (thermodynamic route as main line), formulation of ZFCρ Principles v0.2, overall SAE framework architecture, final confirmation of the "do not decompose" principle, insistence on the ontological goal. Final text independently completed by the author.</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho43.html">Paper XLIII</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>Paper XLV →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XLIV</div>
+      <h1 class="paper-title">为什么 DP min 产生局部光滑性：Reset-Slack 分解、Le Chatelier 动态平衡与凿-余重合</h1>
+      <div class="paper-authors">Han Qin（秦汉）&nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19247859
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper 18 发现整数复杂度函数 \(\rho_E\) 的一阶差分方差 \(\mathrm{Var}(A \mid \Omega=k)\) 在 Ω-壳层上恒定于约 1，并将此归因于加法部分 \(f\) 与组合余项 \(r\) 之间的反相关引擎。但 Paper 18 没有回答为什么 DP min 递推会产生这种精确对消。</p>
+        <p><strong>本文回答这个问题。</strong></p>
+        <p><strong>（1）反相关引擎的定量改写。</strong> Transfer coefficient \(\tau(k) := \mathrm{Cov}(\Delta f, A)/\mathrm{Var}(\Delta f)\) 满足 \(\tau \in [0.14, 0.25]\)——\(\Delta f\) 涨落的 75-86% 在到达 \(A\) 之前被余项吸收。按 f/r 分解控制方差的路线是低效的。RW 数据（\(B_f^2 \sim (\log X)^{1.90}\)）确认：任何"先无条件控 Var(Δf)，再加 conditioning"的路线都有指数级差距。</p>
+        <p><strong>（2）Reset-Slack 分解。</strong> 由 DP min 递推的 successor-reset identity（R2），\(A\) 可精确分解为</p>
+        <p style="margin-top:0.6rem; padding-left:1rem;">\(A(m) = \psi(\Delta M^-(m)) - U^-(m)\)</p>
+        <p>其中 \(\psi(x) = -\min(x,1)\) 为 1-Lipschitz 截断，\(\Delta M^-(m) = M(m) - M(m-1)\) 为乘法目标差分，\(U^-(m)\) 为 reset slack（DP min 未达理论上限的量）。R2 保证 \(J(m-1) > 0\) 时 \(U(m) = 0\)（580 万样本精确验证，100%，零失败）。</p>
+        <p><strong>（3）Reset-Slack Reduction 定理。</strong> \(\mathrm{Var}(A) \leq 2\cdot\mathrm{Var}(\Delta M^-) + 2\cdot E[U^2]\)，粗 bound \(\mathrm{Var}(A) \leq 2 + 2\cdot E[(\Delta M^-)^2]\)。局部光滑性被归约为乘法目标的光滑性加 reset slack 的有界性。</p>
+        <p><strong>（4）Le Chatelier 的 predecessor-state 量化。</strong> \(E[U^2 \mid \Omega=k] = (1 - w_\mathrm{shielded}) \times D(k)\)，频率压制稳定在 55-76%，去相干强度先升后降（k=5 达峰值 1.12 后回落至约 0.88），两者的乘积稳定在 \(E[U^2] \approx 0.4\)——两个相反趋势的动态对冲，不是单个量的饱和。</p>
+        <p><strong>（5）Dominance structure 与 NI1_poly 归约。</strong> 定理 A（theorem-level）：Conjecture 2（\(\Delta M\) 二阶矩 \(\leq\) poly(k)）⟹ Conjecture 1（reset-slack smoothing）+ NI1_poly 的 A-side。\(M_\mathrm{spf}\text{-}T\text{-}S\) 分解将攻击面缩小到 SPF split 的方差问题（\(P(S=0) > 97.6\%\)，\(P(T=0) > 92.7\%\)）。</p>
+        <p><strong>SAE 框架解读：</strong> τ(k) 的低值提示 pre-dimensional pattern——选择的输出不受结构输入的涨落显著影响。R2 = 凿-余重合的瞬态。Exposed sector = 凿-余分离。Le Chatelier = shielded-exposed 循环的统计稳态。</p>
+        <p><strong>关键词：</strong> 整数复杂度，ρ-算术，局部光滑性，DP 递推，Le Chatelier 机制，reset slack，反相关引擎，凿-构-余</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 问题</h3>
+      <p>Paper 18（DOI: 10.5281/zenodo.19024385）报告了一个惊人的经验事实：整数复杂度函数 \(\rho_E\) 的一阶差分 \(A(n) := \rho_E(n-1) - \rho_E(n)\) 在 \(\Omega(n) = k\) 壳层上的方差恒定于约 1，跨 k = 2 到 18，跨 N = 10⁴ 到 10⁷，关于 N 无增长趋势。</p>
+      <p>Paper 18 将此归因于反相关引擎：\(\rho_E = f + r\) 分解中，\(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\)，两个各自方差约 10 的量精确对消到方差约 1。Paper 18 排除了三条证明路线但没有给出对消机制的解释。</p>
+      <p>42 篇 paper 之后，本文给出这个解释。</p>
+
+      <h2>§2 Reset-Slack 分解</h2>
+
+      <h3>2.1 从 Proposition J 到 R1/R2</h3>
+      <p>由 Proposition J（Paper 17）：\(A(m) = J(m) - 1\)。由 Paper 42 的 successor-reset identity：</p>
+      <ul>
+        <li><strong>(R1)</strong> \(J(m) \leq (1 - \Delta M^-(m))^+\)，对所有 m 成立。</li>
+        <li><strong>(R2)</strong> \(J(m) = (1 - \Delta M^-(m))^+\)，当 \(J(m-1) > 0\)。</li>
+      </ul>
+      <p>R2 是 DP min 递推的 exact consequence。Jump 后的下一步，jump 大小完全由乘法目标差分 \(\Delta M^-\) 决定，没有任何自由度浪费。</p>
+
+      <h3>2.2 Reset Slack 与精确分解</h3>
+      <p>定义 reset slack：\(U^-(m) := \varphi(\Delta M^-(m)) - J(m) = (1-\Delta M^-(m))^+ - J(m) \geq 0\)（不等号由 R1 保证）。则</p>
+      <div class="decomp-box">
+        <p><strong>A(m) = J(m) − 1 = ψ(ΔM⁻(m)) − U⁻(m)</strong></p>
+        <p>其中 \(\psi(x) = -\min(x, 1) = (1-x)^+ - 1\)。</p>
+      </div>
+      <p>ψ(ΔM⁻) 是乘法目标的裸响应——如果 DP min 总是达到理论上限（U=0），A 就等于 ψ(ΔM⁻)。U⁻ 是 reset slack——DP min 没有达到理论上限的量。R2 保证 J(m-1) > 0 时 U = 0 精确成立。</p>
+      <p>本分解按 DP min 的选择结构，而非按 \(\rho_E = f + r\) 的加法/组合结构。在非线性优化过程中，机制的控制力远大于输入的波动。</p>
+
+      <h2>§3 Reset-Slack Reduction 定理</h2>
+
+      <div class="proof-box">
+        <p><strong>定理（Reset-Slack Reduction）。</strong> 在 Y_{k,F,N} 上的任意概率测度 ν 下，</p>
+        <p>\[\mathrm{Var}_\nu(A) \leq 2\cdot\mathrm{Var}_\nu(\Delta M^-) + 2\cdot E_\nu[(U^-)^2]\]</p>
+        <p><strong>证明。</strong> 由 §2.2 的分解 \(A = \psi(\Delta M^-) - U^-\)。ψ 是 1-Lipschitz，故 \(\mathrm{Var}(\psi(X)) \leq \mathrm{Var}(X)\)。由 \(\mathrm{Var}(X-Y) \leq 2\mathrm{Var}(X) + 2E[Y^2]\)，得 \(\mathrm{Var}(A) \leq 2\mathrm{Var}(\Delta M^-) + 2E[(U^-)^2]\)。∎</p>
+        <p><strong>推论（Coarse bound）。</strong> 若 \(E_\nu[(\Delta M^-)^2] \leq Q(k)\)，则 \(\mathrm{Var}_\nu(A) \leq 2 + 2Q(k)\)。</p>
+      </div>
+      <p><strong>含义：</strong>局部光滑性归约为乘法目标的光滑性加 reset slack 的有界性。</p>
+
+      <h2>§4 Le Chatelier 机制：Predecessor-State Decomposition</h2>
+
+      <h3>4.1 Predecessor-State 分解</h3>
+      <p>R2 给出 \(J(m-1) > 0 \Rightarrow U(m) = 0\)。因此 \(E[U^2 \mid \Omega=k] = P(J(m-1)=0 \mid \Omega=k) \cdot E[U^2 \mid J(m-1)=0, \Omega=k]\)。定义：</p>
+      <ul>
+        <li><strong>频率压制项：</strong>\(w_\mathrm{shielded}(k) := P(J(m-1) > 0 \mid \Omega(m) = k)\)</li>
+        <li><strong>去相干强度项：</strong>\(D(k) := E[U^2 \mid J(m-1) = 0, \Omega(m) = k]\)</li>
+      </ul>
+      <p>$$E[U^2 \mid \Omega=k] = (1 - w_\mathrm{shielded}(k)) \cdot D(k)$$</p>
+
+      <h3>4.2 数据（N = 10⁷）</h3>
+      <table>
+        <thead><tr><th>k</th><th>w_shielded</th><th>1−w_shielded</th><th>E[U²|shielded]</th><th>D(k) = E[U²|exposed]</th><th>积</th><th>E[U²]</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0.760</td><td>0.240</td><td>0.000000</td><td>0.598</td><td>0.144</td><td>0.144</td></tr>
+          <tr><td>3</td><td>0.705</td><td>0.295</td><td>0.000000</td><td>0.950</td><td>0.280</td><td>0.280</td></tr>
+          <tr><td>4</td><td>0.651</td><td>0.349</td><td>0.000000</td><td>1.099</td><td>0.383</td><td>0.383</td></tr>
+          <tr><td>5</td><td>0.603</td><td>0.397</td><td>0.000000</td><td><strong>1.124</strong></td><td>0.447</td><td>0.447</td></tr>
+          <tr><td>6</td><td>0.574</td><td>0.426</td><td>0.000000</td><td>1.070</td><td>0.456</td><td>0.456</td></tr>
+          <tr><td>7</td><td>0.557</td><td>0.443</td><td>0.000000</td><td>1.012</td><td>0.448</td><td>0.448</td></tr>
+          <tr><td>8</td><td>0.554</td><td>0.446</td><td>0.000000</td><td>0.956</td><td>0.426</td><td>0.426</td></tr>
+          <tr><td>10</td><td>0.561</td><td>0.439</td><td>0.000000</td><td>0.885</td><td>0.388</td><td>0.388</td></tr>
+          <tr><td>12</td><td>0.570</td><td>0.430</td><td>0.000000</td><td>0.885</td><td>0.381</td><td>0.381</td></tr>
+        </tbody>
+      </table>
+      <p>\(E[U^2|\mathrm{shielded}] = 0.000000\) 精确，跨所有 k。R2 的 theorem-level 保证被数据完美验证。</p>
+
+      <h3>4.3 Le Chatelier 稳定性</h3>
+      <p><strong>频率压制</strong> \(w_\mathrm{shielded}\) 从 k=2 的 76.0% 下降到 k≥8 的约 55% 后稳定。<strong>去相干强度</strong> D(k) 从 k=2 的 0.60 升到 k=5 的 1.124（峰值），然后回落到约 0.88。<strong>两者的乘积 E[U²] ≈ 0.38–0.46 全壳层稳定</strong>——两个相反趋势的动态对冲，不是单个量的饱和。</p>
+      <p>高 Ω 时 D(k) 下降机制：exposed sector 几乎全部由 reset front（前一步 non-jump，当前步 jump）构成（96%+），连续 non-jump（true interior）极为罕见。Front 的 E[U²|front] ≈ 1.0 且缓慢下降，主导了 D(k) 的整体行为。</p>
+
+      <h3>4.4 Le Chatelier 的完整图景</h3>
+      <div class="thesis-box">
+        <p><strong>1. Shielded（J(m-1)>0, 55-76%）：</strong>R2 保证 U=0——凿-余重合态。</p>
+        <p><strong>2. Exposed-front（J(m-1)=0, J(m)>0）：</strong>暴露 sector 的主体（k≥4 时 96%+），E[U²] ≈ 1.0。</p>
+        <p><strong>3. Exposed-interior（J(m-1)=0, J(m)=0）：</strong>极稀有（&lt;4%），E[U²] 大（~5）但贡献 negligible。</p>
+        <p><strong>4. 总体：</strong>E[U²] = (1−w_shielded) × D(k) ≈ 0.4（稳定）。</p>
+      </div>
+
+      <h2>§5 反相关引擎的新读法</h2>
+
+      <p>由 \(A = \Delta f + \Delta r\)，有 \(\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f)\)。定义 \(\tau(k) := \mathrm{Cov}(\Delta f, A)/\mathrm{Var}(\Delta f)\)。</p>
+      <table>
+        <thead><tr><th>k</th><th>Var(Δf)</th><th>Cov(Δf, A)</th><th>τ(k)</th><th>Var(A)</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>6.96</td><td>+1.00</td><td>0.14</td><td>0.72</td></tr>
+          <tr><td>8</td><td>9.90</td><td>+2.01</td><td>0.20</td><td>1.09</td></tr>
+          <tr><td>12</td><td>9.96</td><td>+2.48</td><td>0.25</td><td>1.30</td></tr>
+        </tbody>
+      </table>
+      <p>\(\tau(k) \in [0.14, 0.25]\)——<strong>Δf 涨落的 75-86% 在到达 A 之前被余项吸收。</strong>控制 Var(Δf) 对 Var(A) 几乎没有杠杆。正确方向是直接看 A 的 DP-intrinsic 分解（§2）。</p>
+      <p>RW 数据进一步确认：\(B_f^2 \sim 6.82\cdot(\log X)^{1.90}\)，renormalization 只砍常数，不改变增长量级。Mangerel 无条件 gap 给 \(E[(\Delta f)^2] \sim (\log X)^2\)，而 DCSK-f 需要 poly(log log X)——指数级差距。</p>
+
+      <h2>§6 数值证据</h2>
+
+      <h3>6.1 主表（N = 10⁷）</h3>
+      <table>
+        <thead><tr><th>k</th><th>count</th><th>Var(A)</th><th>Var(ΔM⁻)</th><th>E[U²]</th><th>P(U=0)</th><th>P(J&gt;0)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>1,873,585</td><td>0.265</td><td>1.777</td><td>0.144</td><td>94.0%</td><td>28.7%</td></tr>
+          <tr><td>3</td><td>2,342,020</td><td>0.450</td><td>1.244</td><td>0.280</td><td>89.4%</td><td>57.0%</td></tr>
+          <tr><td>4</td><td>1,898,522</td><td>0.579</td><td>1.193</td><td>0.383</td><td>85.6%</td><td>77.1%</td></tr>
+          <tr><td>5</td><td>1,204,532</td><td>0.694</td><td>1.259</td><td>0.447</td><td>82.6%</td><td>88.0%</td></tr>
+          <tr><td>6</td><td>670,289</td><td>0.810</td><td>1.327</td><td>0.456</td><td>81.3%</td><td>93.1%</td></tr>
+          <tr><td>7</td><td>347,258</td><td>0.922</td><td>1.387</td><td>0.448</td><td>80.9%</td><td>95.5%</td></tr>
+          <tr><td>8</td><td>173,246</td><td>1.031</td><td>1.444</td><td>0.426</td><td>81.3%</td><td>96.8%</td></tr>
+          <tr><td>9</td><td>84,360</td><td>1.126</td><td>1.498</td><td>0.408</td><td>81.6%</td><td>97.7%</td></tr>
+          <tr><td>10</td><td>40,665</td><td>1.212</td><td>1.553</td><td>0.388</td><td>82.4%</td><td>98.3%</td></tr>
+          <tr><td>11</td><td>19,245</td><td>1.300</td><td>1.622</td><td>0.391</td><td>82.1%</td><td>98.6%</td></tr>
+          <tr><td>12</td><td>9,145</td><td>1.347</td><td>1.628</td><td>0.381</td><td>82.6%</td><td>99.0%</td></tr>
+        </tbody>
+      </table>
+      <p>R2 精确验证：<strong>5,800,087 样本，100.000000%，零失败</strong>，跨 k=2 到 k=14。</p>
+
+      <h2>§7 SAE 解读</h2>
+
+      <h3>7.1 Pre-Dimensional Pattern</h3>
+      <p>τ(k) 的低值提示一种 pre-dimensional pattern：在由 selection（min/max）驱动的递推系统中，结构输入（构）、选择输出（凿）与残差响应（余）之间可能存在三元锁定——选择的输出不受结构输入的涨落显著影响，因为残差吸收了输入涨落的主体。</p>
+      <p>如果这个 pattern 对一般的 min/max 递推系统成立，它比 SAE 维度序列的 0DD（物质存在）更基础——是维度序列展开的 candidate precondition。ZFCρ 提供了第一个精确的数学实例。</p>
+
+      <h3>7.2 凿-余重合（R2）</h3>
+      <p>R2 的 U=0 不是"余为零"——是"余完全由凿决定，没有独立自由度"。Jump 时刻，DP min 执行精确 reset（\(\rho_E(m) = M_m\)），所有历史信息被擦除（memory wipe）。凿和余在 jump 时刻合一，凿的输出就是余。这是瞬态：下一刻，余项开始独立演化，凿和余重新分离。</p>
+
+      <h3>7.3 凿-余分离（Exposed Sector）</h3>
+      <p>在 exposed sector（J(m-1)=0）中，余项重新获得独立自由度。Shielded sector（55-76%）是凿-余重合态，exposed sector（24-45%）是凿-余分离态。它们的统计稳态就是 Le Chatelier 平衡。</p>
+
+      <h3>7.4 Ω 对应表</h3>
+      <table>
+        <thead><tr><th>Ω 层次</th><th>数学表现</th><th>SAE 对应</th></tr></thead>
+        <tbody>
+          <tr><td>Ω=1（素数）</td><td>M(p)=+∞, δ(p)=1 universal</td><td>绝对零度</td></tr>
+          <tr><td>Ω=3→4</td><td>P(J&gt;0) 从少数派到多数派</td><td>相变边界</td></tr>
+          <tr><td>Ω≥4</td><td>Var(A)~1, Le Chatelier 建立</td><td>有序相</td></tr>
+          <tr><td>Ω=5</td><td>D(k) 达峰值 1.12</td><td>去相干强度峰值</td></tr>
+          <tr><td>Ω=7→8</td><td>sf-only 失效，需要重复因子</td><td>冗余作为稳定性条件</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§8 Conjectures, Dominance Structure 与 NI1_poly 归约</h2>
+
+      <h3>8.1 定理 A（Conjecture 2 Dominates Conjecture 1）</h3>
+      <div class="proof-box">
+        <p>由 R1，\(U^- \leq (1-\Delta M^-)^+ \leq 1 + |\Delta M^-|\)。故 \(E_\nu[(U^-)^2 \mid \Omega=k] \leq 2 + 2\cdot E_\nu[(\Delta M^-)^2 \mid \Omega=k]\)。</p>
+        <p>因此 Conjecture 2 ⟹ Conjecture 1。两个 conjecture 不是平行靶标——Conjecture 2 是逻辑上更强的主靶，关掉它就同时关掉 Conjecture 1 和 NI1_poly 的 A-side。</p>
+      </div>
+
+      <h3>8.2 Conjecture 2（ΔM Second Moment，主靶）</h3>
+      <p>\(E_\nu[(\Delta M^-)^2 \mid \Omega=k] \leq Q(k)\)，对某多项式 Q。数值支持：E[(ΔM⁻)²] 从 1.2（k=4）到 6.6（k=12），增长远慢于 k²。</p>
+      <p><strong>M_spf-T-S Canonical 分解：</strong>三层乘法目标（M_spf, M₁, M）和两个非负 slack（T, S）。精确：\(\Delta M^- = \Delta M_\mathrm{spf}^- - \Delta T^- - \Delta S^-\)。数值确认 P(S=0) > 97.6%，P(T=0) > 92.7%（k≥4）。<strong>Conjecture 2 本质上等价于控制 E[(ΔM_spf⁻)²]</strong>——单个 canonical split，比 full min 容易分析得多。</p>
+
+      <h3>8.3 攻击层次</h3>
+      <div class="chain-box">
+        Conj.2（ΔM second moment）⟹ Conj.1（reset-slack smoothing）+ A-side of NI1_poly<br>
+        A-side + Paper 20 B-side（Var(B)=O_k(1)，无条件）⟹ full NI1_poly<br>
+        NI1_poly ⟹ NI2_poly 更容易（定理 B，A-side 控制传递到 bridge）<br>
+        NI1_poly + NI2_poly + NI3_poly ⟹ Paper 42 chain ⟹ H'
+      </div>
+      <p>Paper XLIV 不单独关闭 H'。它把 H' 的核心局部光滑性输入（NI1 的 A-side）解释并归约为一个主靶标（Conjecture 2），并将攻击面缩小到 M_spf 的单点方差问题。B-side 由 Paper 20 无条件覆盖。NI2 和 NI3 仍为 residual inputs，数值证据见 Paper 43。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XVIII（反相关引擎）. DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLII（H' 条件闭合）. DOI: <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">10.5281/zenodo.19226607</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XLIII（Self-Correction at N=10¹⁰）. DOI: <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener">10.5281/zenodo.19240183</a>.</p>
+      <p>[4] H. Qin. ZFCρ Paper XVII（单调性）. DOI: <a href="https://doi.org/10.5281/zenodo.19016958" target="_blank" rel="noopener">10.5281/zenodo.19016958</a>.</p>
+      <p>[5] O. Mangerel. Additive functions in short intervals, gaps and a conjecture of Erdős. <em>Int. Math. Res. Not.</em> (2022).</p>
+      <p>[6] M. Verwee. Additive functions on shifted primes. (2026).</p>
+      <p>[7] É. Goudout. Lois de répartition des diviseurs. Doctoral thesis (2018–2021).</p>
+
+      <h2>致谢</h2>
+      <p><strong>ChatGPT（公西华）：</strong>Reset-Slack Reduction 定理的证明。Coarse bound 收紧（2+2Q 替代 8+2Q）。Predecessor-state decomposition 的建议（修正了 §4 的统计口径）。定理 A（Conj.2 dominates Conj.1）和定理 B（NI2 条件归约）。M_spf-T-S canonical-candidate 分解（Conjecture 2 的攻击面缩小）。两轮 review 修正了四个关键 bug。Dyadic Harmonic Transfer 定理，CSK-f → DCSK-f 归约，Route A 的完整 proof sketch。</p>
+      <p><strong>Claude（子路）：</strong>全部数值实验（RW 计算，ΔM_n statistics，U_n reset slack，R2 精确验证，Predecessor-state decomposition，M_spf-T-S 分解验证，S/U 重叠度分析），文本起草，数据判读，working notes v1–v4。Transfer coefficient τ(k) 的识别。</p>
+      <p><strong>Claude（热力学 thread）：</strong>Le Chatelier 机制的物理图景。凿-余重合的 SAE 解读（R2 = 凿-余合一的瞬态）。去相干的 SAE 解读（exposed sector = 凿-余分离）。Pre-dimensional pattern 的定位（比 0DD 更基础）。Ω=7→8 的冗余稳定性修正。</p>
+      <p><strong>Gemini（子夏）：</strong>Final review 确认主轴成立，§2.4 的"输入结构 vs 选择机制"对比建议，§8 闭合链的显式表述建议。</p>
+      <p><strong>Han Qin（作者）：</strong>方向决策（热力学路线为主线），ZFCρ Principles v0.2 的制定，SAE 框架的总体架构，"不要分解"原则的最终确认，本体论目标的坚持。最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho43.html">论文 XLIII</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>论文 XLV →</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

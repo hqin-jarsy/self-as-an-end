@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Remainder Conservation to the Cosmological Constant — Han Qin</title>
+  <meta name="description" content="Derives Λ = 2(ω₂²−ω₁²)/c² from the SAE axioms via dual-4DD structure and 4-form vacuum sectors. Numerical prediction Λ = 2.99×10⁻¹²² matches Planck 2018 within 5%. Predicts w₀>−1, wₐ<0 (DESI DR2 2025 direction), Milky Way–Andromeda merger in 4.9 Gyr.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="cosmological constant, dark energy, Self-as-an-End, SAE, remainder conservation, dual 4DD, retrocausality, 4-form, DESI, Milky Way Andromeda merger, Han Qin">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Remainder Conservation to the Cosmological Constant: Dark Energy in the Self-as-an-End Framework">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/sae-cosmological-constant.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "From Remainder Conservation to the Cosmological Constant: Dark Energy in the Self-as-an-End Framework",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "url": "https://self-as-an-end.net/papers/sae-cosmological-constant.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19245267"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Cosmological Physics"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "cosmological constant", "dark energy", "Self-as-an-End", "remainder conservation",
+      "dual 4DD", "retrocausality", "4-form", "DESI DR2", "Milky Way Andromeda", "closed FRW"
+    ],
+    "abstract": "Derives Λ = 2(ω₂²−ω₁²)/c² from the SAE axioms (remainder must develop; remainder is conserved) via dual-4DD structure and topological 4-form vacuum sectors. Substituting T₁ = 20 Gyr and T₂ ≈ 19.5 Gyr yields Λ = 2.99×10⁻¹²² Planck units, within 5% of the Planck 2018 observed value. Predicts dynamical dark energy with w₀>−1 and wₐ<0, consistent with DESI DR2 2025.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/sae-cosmological-constant.html">
+  <meta name="citation_title" content="From Remainder Conservation to the Cosmological Constant: Dark Energy in the Self-as-an-End Framework">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19245267">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$','$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; display: flex; gap: 2rem; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .firewall-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; font-size: 0.9rem; }
+    .firewall-box p { margin: 0; }
+    .firewall-box p + p { margin-top: 0.5rem; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .formula-box { background: #f4f4f8; border: 1.5px solid #5555aa; border-radius: 6px; padding: 1.1rem 1.5rem; margin: 1.5rem 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .formula-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #666; margin-bottom: 0.4rem; }
+    .prediction-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .prediction-box p { margin: 0; }
+    .prediction-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff5f5; border-left: 3px solid #cc2222; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; font-size: 0.9rem; }
+    .warning-box p { margin: 0; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h2 { margin-top: 2rem; margin-bottom: 0.6rem; font-size: 1.15rem; font-weight: 700; color: #222; border-bottom: 1px solid #eee; padding-bottom: 0.3rem; }
+    .paper-body h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.0rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.4rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.5rem; }
+    .paper-badge { display: inline-block; background: #eef0ff; border: 1px solid #8888cc; border-radius: 3px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4444aa; padding: 0.2rem 0.55rem; margin-bottom: 0.5rem; }
+    table { border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; width: 100%; }
+    th { background: #f0f0f0; padding: 0.5rem 0.8rem; text-align: left; border: 1px solid #ddd; font-weight: 600; }
+    td { padding: 0.45rem 0.8rem; border: 1px solid #ddd; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .tag-standalone { display: inline-block; background: #fff3e0; border: 1px solid #e0a040; border-radius: 3px; font-size: 0.73rem; font-weight: 600; letter-spacing: 0.07em; color: #b06000; padding: 0.15rem 0.5rem; margin-left: 0.5rem; vertical-align: middle; }
+    .open-problem-list { counter-reset: op; list-style: none; padding: 0; margin: 0.6rem 0; }
+    .open-problem-list li { counter-increment: op; padding: 0.5rem 0.5rem 0.5rem 2.2rem; position: relative; border-bottom: 1px solid #f0f0f0; }
+    .open-problem-list li::before { content: counter(op) "."; position: absolute; left: 0.5rem; font-weight: 700; color: #666; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="site-title">Self-as-an-End · 自身即目的</a>
+    <nav>
+      <a href="/">Papers</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lang-tabs">
+  <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+  <button class="lang-tab" onclick="switchLang('zh')">中文</button>
+</div>
+
+<!-- ═══════════════ ENGLISH ═══════════════ -->
+<div id="content-en" class="lang-content active">
+<main class="paper-container">
+  <div class="paper-header">
+    <div class="paper-badge">Cosmological Physics</div>
+    <span class="tag-standalone">Standalone</span>
+    <h1 class="paper-title">From Remainder Conservation to the Cosmological Constant: Dark Energy in the Self-as-an-End Framework</h1>
+    <div class="paper-meta-block">
+      <span class="paper-author">Han Qin (秦汉)</span>
+      <span class="paper-date">2026</span>
+    </div>
+    <a href="https://doi.org/10.5281/zenodo.19245267" target="_blank" rel="noopener" class="zenodo-link">DOI: 10.5281/zenodo.19245267</a>
+  </div>
+
+  <div class="paper-body">
+
+    <div class="firewall-box">
+      <p><strong>Disclaimer:</strong> This paper proposes a first-principle postulate for the cosmological constant Λ within the Self-as-an-End (SAE) framework, and validates its numerical prediction against independent astronomical data. All cosmological conjectures herein carry remainder and are open to falsification.</p>
+      <p><strong>Firewall:</strong> Any error, refutation, or falsification of this paper does not affect other SAE publications. SAE Papers 1–3, the Methodology paper, Applied papers, AI series, and the ZFCρ series are all independent of the conclusions presented here. This paper is a quantitative advancement of <a href="cosmological-thought-experiment.html">Thought Experiment I</a> (DOI: 10.5281/zenodo.19028005).</p>
+    </div>
+
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>The cosmological constant Λ ≈ 10⁻¹²² in Planck units is the most difficult number in physics to explain. This paper starts from the two axioms of the SAE framework (<em>remainder must develop</em>; <em>remainder is conserved</em>), derives the dual-4DD structure (the symmetric emergence of causality and retrocausality) from the a priori symmetry of 3DD, and establishes the reciprocity relation: the remainder on the retrocausal side equals the causal law on the causal side, and vice versa. Λ is identified as the interface tension of the dual-4DD boundary.</p>
+      <p>Using topological 4-form vacuum sectors to carry the structural Λ, a rigorous variational derivation yields</p>
+      <p style="text-align:center; font-weight:700; margin: 0.8rem 0;">\(\Lambda = \dfrac{2(\omega_2^2 - \omega_1^2)}{c^2}\)</p>
+      <p>where ω₁ = 2π/T₁ and ω₂ = 2π/T₂ are the breathing angular frequencies of the causal and retrocausal sides, respectively. Substituting T₁ = 20 Gyr (anchored by the appearance time of 5DD) and T₂ ≈ 19.5 Gyr (independently estimated from Milky Way–Andromeda astronomical data) yields Λ = 2.99 × 10⁻¹²² Planck units, within 5% of the Planck 2018 observed value of 2.85 × 10⁻¹²².</p>
+      <p>The paper further develops a closed-FRW + observational softening factor model for the causal-law scalar field C(t), presenting the field equations for the dynamical component U(C) and an anti-friction triggering mechanism. The model naturally predicts w₀ > −1 and wₐ < 0 for the dark energy equation of state, consistent with the 2.8–4.2σ signal from DESI DR2 2025.</p>
+      <p style="font-size:0.85rem; color:#666; margin-top:0.8rem;"><strong>Terminology:</strong> DD = Dimension Degree, the SAE framework's measure of levels of existence. 0DD = hundun (primordial chaos), 3DD = space, 4DD = causality (spacetime), 5DD = life (self-replication with variation), up to 16DD = bilateral non-doubt. Full definitions in SAE Paper 1 (DOI: 10.5281/zenodo.18528813).</p>
+    </div>
+
+    <h2>1. The Problem: Fine-Tuning of Λ</h2>
+    <p>The cosmological constant Λ ≈ 1.1 × 10⁻⁵² m⁻² (approximately 2.9 × 10⁻¹²² Planck units) is the smallest known nonzero fundamental constant in physics. Naive quantum field theory estimates of vacuum energy exceed the observed value by 60 to 120 orders of magnitude. Why Λ is so small yet nonzero remains a central open problem.</p>
+    <p>Here Λ carries dimensions of spatial curvature [L⁻²], consistent with its definition in the Einstein field equations \(R_{\mu\nu} - \tfrac{1}{2}Rg_{\mu\nu} + \Lambda g_{\mu\nu} = \tfrac{8\pi G}{c^4}T_{\mu\nu}\).</p>
+    <p>This paper enters through a seemingly unrelated question: if the universe is expanding, why are the Milky Way and Andromeda merging? The standard answer is posterior (local gravity overcomes expansion), requiring fine-tuned parameters. We attempt an a priori explanation from the SAE framework and find that this path leads directly to a first-principle postulate for Λ.</p>
+
+    <h2>2. Two Axioms</h2>
+    <p>The entire theoretical foundation of the SAE framework:</p>
+    <div class="thesis-box">
+      <p><strong>Axiom 1 (Dynamics):</strong> Remainder (ρ) must develop. It cannot be static, cannot remain unchanged in any state. <span style="color:#666; font-size:0.88rem;">(Source: the concept of "hundun" in SAE Methodology — remainder as an ineliminable existence whose dynamical nature compels development. DOI: 10.5281/zenodo.18842450.)</span></p>
+      <p style="margin-top:0.8rem;"><strong>Axiom 2 (Conservation):</strong> Remainder is conserved. It cannot be created or destroyed. Any chisel-construct operation can only redistribute remainder, never change the total. <span style="color:#666; font-size:0.88rem;">(Source: Remainder Conservation and Dual-Path Structure, DOI: 10.5281/zenodo.18809485.)</span></p>
+    </div>
+
+    <h2>3. Dual 4DD: Causality and Retrocausality</h2>
+    <h3>3.1 From 3DD to Dual 4DD</h3>
+    <p>In the SAE dimensional sequence, 3DD is space — three-dimensional, rigid, complete. 3DD leaves no room for remainder to express itself.</p>
+    <p>By Axiom 1, remainder must develop. The rigidity of 3DD forces remainder to "open up" a new dimension. By the symmetry of 3DD, no direction is preferred, so two opposite directions emerge symmetrically:</p>
+    <ul>
+      <li><strong>Causality (4DD₊):</strong> the time arrow from cause to effect. Our side.</li>
+      <li><strong>Retrocausality (4DD₋):</strong> the time arrow from effect to cause. The other side.</li>
+    </ul>
+
+    <h3>3.2 Remainder–Causality Identity</h3>
+    <div class="thesis-box">
+      <p><strong>Core insight:</strong> The remainder on the retrocausal side is the causal law on the causal side.</p>
+    </div>
+    <p>Causality suppresses remainder. But from the retrocausal side, our causal law is precisely what has not been suppressed on their side — i.e., their remainder. And vice versa. Remainder and causality are not two different kinds of existence; they are the same existence seen from opposite sides of the torus.</p>
+
+    <h3>3.3 Structural Origin of Λ</h3>
+    <p>Each side has its own breathing frequency (ω₁ and ω₂). Remainder conservation (Axiom 2) requires that the sum across both sides remain constant. This constant sum, expressed in the metric, is Λ — constant, non-propagating, non-dynamical, yet nonzero (because the two sides are not perfectly symmetric).</p>
+    <p>Λ is extremely small (10⁻¹²²) because the two sides are nearly perfectly symmetric (T₁/T₂ ≈ 1.026, differing by only 2.5%). If perfectly symmetric (T₁ = T₂), Λ = 0.</p>
+
+    <h2>4. Phase-Space T² and Spatial Topology</h2>
+    <h3>4.1 Phase Space: Two-Torus T²</h3>
+    <p>The universe's evolution does not take place on a physical-space "donut" but traces a quasi-periodic orbit in the (a, ȧ) phase space.</p>
+    <ul>
+      <li>Remainder conservation → closed phase-space trajectory</li>
+      <li>Remainder must develop → no fixed points on the trajectory</li>
+    </ul>
+    <p>A closed orbit with no fixed points yields motion on a two-torus T². The <strong>major circle</strong> is the dominant phase-space frequency (expansion-contraction breathing, period T₁ = 20 Gyr). The <strong>minor circle</strong> is the modulation frequency (local structure formation and merger, period T₂ ≈ 19.5 Gyr). The trajectory on T² is approximately a spiral.</p>
+    <p><em>It is not that the universe looks like a donut; it is that the universe's fate traces a line on a donut in phase space.</em></p>
+
+    <h3>4.2 Spatial Topology</h3>
+    <p>The core results (the Λ formula, C(t) field equations, Milky Way–Andromeda explanation) do not depend on the specific choice of spatial topology. Space may be T³, R³, or S³. The core structure depends on phase-space T², not on spatial topology. Planck 2018 matched-circles searches have pushed the lower bound on T³ fundamental domain size close to the observable universe diameter — if space is T³, its scale must far exceed the observable universe.</p>
+
+    <h3>4.3 Why Not Spacetime Topology T⁴</h3>
+    <p>Interpreting the torus as four-dimensional spacetime topology T⁴ (with time being periodic) would produce closed timelike curves (CTCs), directly destroying causality (4DD). SAE cannot use a geometry that destroys 4DD to carry 4DD. The correct interpretation: phase-space T² (evolution topology); time is not periodic.</p>
+
+    <h2>5. Derivation of Λ</h2>
+    <h3>5.1 4-Form as the Field-Theoretic Expression of 4DD</h3>
+    <p>4DD is causality filling four-dimensional spacetime. In four dimensions, the only differential form that can "fill" the entire spacetime is a 4-form. A 4-form in four-dimensional spacetime has no propagating degrees of freedom but contributes a constant vacuum energy density through its stress-energy tensor — precisely corresponding to the properties of Λ: structural, non-dynamical, constant.</p>
+    <p>The 4-form is the <em>dimensional-matching necessity</em> of 4DD: 4DD fills four-dimensional spacetime, and the only form that fills four-dimensional spacetime is a 4-form.</p>
+
+    <h3>5.2 Dual Topological Clock Sectors</h3>
+    <p>Each side's 4DD is represented by a compact angular variable θᵢ ~ θᵢ + 2π (clock phase), with period Tᵢ. In a Lorentzian metric, the harmonic representative is \(d\theta_i = (\omega_i/c)\,dx^0\), where ωᵢ = 2π/Tᵢ and dx⁰ = c dt. Promoted to a 4-form field strength: \(\mathcal{G}_i = dA_i = \sqrt{2}\,M_P\,(\omega_i/c)\,\varepsilon_{(4)}\). The bulk action for each side:</p>
+    <p style="text-align:center; font-family: monospace; margin: 0.8rem 0;">\(S_{4f} = -\sum_i \tfrac{1}{48} \int d^4x\sqrt{-g}\,\mathcal{G}_i^2\)</p>
+
+    <h3>5.3 Vacuum Energy Density</h3>
+    <p>Varying with respect to Aᵢ yields \(d{*}\mathcal{G}_i = 0\), so the on-shell flux is constant. Varying with respect to g_μν yields the stress-energy tensor:</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(T_{\mu\nu}^{(i)} = -M_P^2\,\frac{\omega_i^2}{c^2}\,g_{\mu\nu}\)</p>
+    <p>Hence the vacuum energy density for each side: \(\rho_i = M_P^2\,\omega_i^2/c^2\). The ω² dependence arises from the quadratic structure of the 4-form stress-energy tensor (not a choice, but the mathematics). The c² in the denominator arises from the Lorentzian structure of the clock 1-form.</p>
+
+    <h3>5.4 Dual-Face Reciprocity Interface</h3>
+    <p>Two face-defect variables σ₁, σ₂ represent the "opposite-side excess" seen by each face of the interface. The interface action:</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(S_\Sigma = \int d^4x\sqrt{-g}\left[{-(\sigma_1+\sigma_2)} + \lambda_1(\sigma_1 - (\rho_2-\rho_1)) + \lambda_2(\sigma_2 - (\rho_2-\rho_1))\right]\)</p>
+    <p>Variation: with respect to λᵢ gives σ₁ = σ₂ = ρ₂ − ρ₁; with respect to σᵢ gives λ₁ = λ₂ = 1. On-shell: \(S_\Sigma = -2\int d^4x\sqrt{-g}(\rho_2-\rho_1) = -2M_P^2\int d^4x\sqrt{-g}\,(\omega_2^2-\omega_1^2)/c^2\). The factor of 2 arises from the dual-face variation — two independent face-defect variables each fixed to the same value by the reciprocity constraint.</p>
+
+    <h3>5.5 Identification as the Cosmological Constant</h3>
+    <p>Comparing with the Einstein-Hilbert + Λ action \(S = \int d^4x\sqrt{-g}\,(M_P^2/2)(R - 2\Lambda)\), we directly obtain:</p>
+    <div class="formula-box">
+      <div class="formula-label">Key Result</div>
+      \[\Lambda_\Sigma = \frac{2(\omega_2^2 - \omega_1^2)}{c^2} = \frac{8\pi^2}{c^2}\!\left(\frac{1}{T_2^2} - \frac{1}{T_1^2}\right)\]
+    </div>
+    <p>Here Λ has dimensions of spatial curvature [L⁻²], consistent with the standard definition in the Einstein field equations.</p>
+
+    <h3>5.6 Numerical Verification</h3>
+    <p><strong>T₁ = 20 Gyr</strong> (hard parameter): 5DD (life) appeared when the universe was approximately 10 billion years old. The SAE framework places 5DD at the moment when causal suppression reaches its maximum — the peak of suppression, after which softening begins. This peak = turnaround = equator = half-period of the major circle, hence T₁ = 2 × 10 Gyr = 20 Gyr. (See Thought Experiment I, DOI: 10.5281/zenodo.19028005.)</p>
+    <p><strong>T₂ ≈ 19.5 Gyr</strong> (rough estimate): from Milky Way–Andromeda astronomical data — Milky Way formation at approximately 0.8 Gyr, merger completion at approximately 18.5 Gyr, midpoint at approximately 9.75 Gyr, hence minor-circle half-period ≈ 9.75 Gyr, T₂ ≈ 19.5 Gyr. This estimate is independent of Λ.</p>
+    <table>
+      <thead><tr><th>Quantity</th><th>SAE Prediction</th><th>Planck 2018 Observed</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td>Λ (m⁻²)</td><td>1.145 × 10⁻⁵²</td><td>1.091 × 10⁻⁵²</td><td>1.05</td></tr>
+        <tr><td>Λ (Planck units)</td><td>2.99 × 10⁻¹²²</td><td>2.85 × 10⁻¹²²</td><td>1.05</td></tr>
+      </tbody>
+    </table>
+    <p>The 5% discrepancy is within the astronomical uncertainty of T₂.</p>
+
+    <h3>5.7 Origin of the 10⁻¹²² Smallness</h3>
+    <p>The smallness does not come from the 2.5% asymmetry. \((t_P/T_1)^2 \approx 7.30 \times 10^{-123}\) — the square of the ratio of Planck time to the cosmic lifespan. The 2.5% merely pushes a "could-have-been-zero quantity" to nonzero.</p>
+    <p><em>Division of labor:</em> scale smallness from T₁⁻²; nonzero-ness from T₁ ≠ T₂; coefficient from 2 × 4π² (dual face + angular frequency geometry).</p>
+
+    <h3>5.8 Exclusion of Alternative Formulas</h3>
+    <table>
+      <thead><tr><th>Formula</th><th>Value (Planck units)</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>δ²(t_P/T₁)²</td><td>~4.6 × 10⁻¹²⁶</td><td>Dead end</td></tr>
+        <tr><td>(ω₂−ω₁)²·t_P²</td><td>~1.9 × 10⁻¹²⁴</td><td>Dead end</td></tr>
+        <tr><td><strong>2(ω₂²−ω₁²)·t_P²</strong></td><td><strong>2.99 × 10⁻¹²²</strong></td><td><strong>Hit</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Only the first-order squared-frequency difference (not the second-order beat-frequency square) gives the correct order of magnitude. This is determined by the quadratic structure of the 4-form stress-energy tensor.</p>
+
+    <h2>6. Reverse Prediction</h2>
+    <p>Back-calculating from the precise Λ_obs: <strong>T₂ = 19.5168 Gyr</strong>, minor-circle half-period = 9.7584 Gyr.</p>
+    <div class="prediction-box">
+      <p><strong>Precise prediction:</strong> Milky Way–Andromeda merger completion ≈ 4.9 Gyr from now.</p>
+    </div>
+    <p>Directionality of the logical chain: rough T₂ (from Milky Way–Andromeda data, independent of Λ) → substitute into formula → Λ matches observation → formula confirmed → precise T₂ back-calculated from Λ_obs → precise T₂ predicts merger time. T₂ is an output, not an input. This is not circular reasoning.</p>
+
+    <h2>7. Causal-Law Scalar Field C(t) and Dynamical Dark Energy</h2>
+    <h3>7.1 Structural Λ vs. Dynamical U(C)</h3>
+    <p>Observed dark energy contains two tiers: <em>structural Λ</em> (dual-4DD interface tension, constant) and <em>dynamical U(C)</em> (causal-law field potential energy, evolving). When the dual-face ideal value (factor 2) holds, structural Λ accounts for approximately 72% of the total dark energy budget. U(C) today contributes only a small fraction. This explains why current dark energy observations appear nearly constant.</p>
+
+    <h3>7.2 Geometric Background and the Dual-H Framework</h3>
+    <p>Timeline of the model:</p>
+    <ul>
+      <li>t = 0: Big Bang (exit from transition zone)</li>
+      <li>t = 10 Gyr: turnaround (equator, H_geo = 0, maximum expansion, <strong>5DD appears</strong>)</li>
+      <li>t = 13.8 Gyr: present (H_geo &lt; 0, geometric contraction)</li>
+      <li>t = 20 Gyr: Big Crunch (entry into transition zone, a_geo → 0)</li>
+    </ul>
+    <p>The geometric background is a closed FRW spacetime (k = +1). Turnaround at 10 Gyr means the universe is currently in geometric contraction (H_geo &lt; 0). Yet observations show H₀ = +67.4 km/s/Mpc. This is the <em>redshift paradox</em>.</p>
+    <p><strong>Resolution:</strong> introduce an observational softening factor A(C) = e^{βC/(2M_P)}, defining the observed scale factor ã(t) = A(C) · a_geo(t). The physical Hubble parameter:</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(\tilde{H}_0 = H_{\text{geo},0} + \frac{\beta\dot{C}_0}{2M_P}\)</p>
+    <p>H_geo &lt; 0 (geometric contraction), but causality softening causes C to grow (Ċ &gt; 0), so the softening term βĊ/(2M_P) &gt; 0. When the softening term is large enough, H̃₀ &gt; 0. Toy cycloid check: H_geo ≈ −53.8 km/s/Mpc at t = 13.8 Gyr; softening term must provide +121.2 km/s/Mpc to match H̃ = 67.4. Order of magnitude: viable.</p>
+
+    <h3>7.3 Effective Action and Field Equations</h3>
+    <p>Effective action (metric signature −,+,+,+; M_P = reduced Planck mass ≈ 2.435 × 10¹⁸ GeV/c²):</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(S_{\text{eff}} = \int d^4x\sqrt{-g}\!\left[\tfrac{1}{2}F(C)R - \tfrac{1}{2}(\nabla C)^2 - U(C) - \rho_{\Lambda,\Sigma}\right] + S_m[A^2(C)g_{\mu\nu},\psi_m]\)</p>
+    <p>where F(C) = M_P² − ξC², U(C) = V₀ − ½m²C² + (λ/4)C⁴ − U₋. The scalar field equation (vacuum-dominated approximation):</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(\ddot{C} + 3H_{\text{geo}}\dot{C} + (\xi R_{\text{geo}} - m^2)C + \lambda C^3 \approx 0\)</p>
+    <p>Friedmann equations on closed FRW (vacuum-dominated approximation, p_m = 0):</p>
+    <p style="text-align:center; margin: 0.5rem 0;">\(3F(H_{\text{geo}}^2 + kc^2/a_{\text{geo}}^2) = \rho_m + \tfrac{1}{2}\dot{C}^2 + U + \rho_{\Lambda,\Sigma} - 3H_{\text{geo}}\dot{F}\)</p>
+
+    <h3>7.4 Anti-Friction Triggering</h3>
+    <div class="thesis-box">
+      <p><strong>Key mechanism:</strong> The sign change of H_geo after turnaround is the unidirectional trigger for causality softening.</p>
+      <ul style="margin-top:0.5rem;">
+        <li>t &lt; 10 Gyr: H_geo &gt; 0 → the 3H_geoĊ term is <em>friction</em> — suppresses C growth</li>
+        <li>t &gt; 10 Gyr: H_geo &lt; 0 → the 3H_geoĊ term becomes <em>anti-friction</em> — amplifies C growth</li>
+      </ul>
+    </div>
+    <p>A tiny seed C(10 Gyr) = ε_C (from quantum fluctuations or transition-zone residuals) is amplified by anti-friction into macroscopic irreversible growth. The equator (10 Gyr) is the precise trigger point: not because curvature crosses a threshold, but because the friction term changes sign.</p>
+
+    <h3>7.5 Turnaround Constraint</h3>
+    <p>At t* = 10 Gyr (turnaround), H_geo = 0. The Friedmann equation yields (with C* ≈ 0, Ċ* ≈ 0, pre-trigger exact dust cycloid):</p>
+    <div class="thesis-box">
+      <p><strong>U(10 Gyr) = −ρ_{Λ,Σ}</strong> &nbsp; — the potential energy at the trigger point equals exactly the negative of the structural Λ. This is not fine-tuning; it is a direct consequence of cycloid + conservation.</p>
+    </div>
+
+    <h2>8. Observational Confrontation</h2>
+    <h3>8.1 Supernova Dimming</h3>
+    <p>Due to the expansion stagnation at the equator (H_geo(10 Gyr) = 0) and the post-trigger softening evolution, the model produces a characteristic "bump" at intermediate redshift (z ≈ 0.3–0.5):</p>
+    <table>
+      <thead><tr><th>z</th><th>Qualitative trend</th></tr></thead>
+      <tbody>
+        <tr><td>0.1</td><td>Slight dimming, close to ΛCDM</td></tr>
+        <tr><td>0.3–0.5</td><td>Characteristic bump (equator stagnation effect)</td></tr>
+        <tr><td>1.0</td><td>Subsides, approaches ΛCDM</td></tr>
+      </tbody>
+    </table>
+    <p>The intermediate-redshift bump is a testable prediction. Its amplitude depends on U(C)'s roll-down slope and requires full numerical solution. A complete Pantheon+ likelihood fit is future work.</p>
+
+    <h3>8.2 DESI/DES Dark Energy Evolution</h3>
+    <div class="prediction-box">
+      <p><strong>Model prediction:</strong> w₀ &gt; −1 (potential energy is draining, kinetic fraction of C increasing) and wₐ &lt; 0 (past C was at the hilltop, w extremely close to −1; now C is rolling, w departs from −1).</p>
+      <p>DESI DR2 2025 reports a 2.8–4.2σ preference for w₀ &gt; −1, wₐ &lt; 0. The SAE model's 20 Gyr contraction boundary condition qualitatively predicts this direction.</p>
+    </div>
+
+    <h2>9. The Milky Way and Andromeda: An A Priori Explanation</h2>
+    <p><strong>Standard explanation:</strong> The universe is expanding, but local gravity overcomes expansion. (Posterior.)</p>
+    <p><strong>SAE explanation:</strong> The universe is breathing. We have passed the equator (turnaround = 10 Gyr; now 13.8 Gyr) and are geometrically in the contraction phase (H_geo &lt; 0). The observed "expansion" (H̃ &gt; 0) comes from the effective contribution of causality softening. The Milky Way–Andromeda merger is a natural manifestation of the contraction phase — not an "exception" to expansion. The minor-circle midpoint (≈9.7 Gyr) is systematically earlier than the major-circle equator (10 Gyr). The Antennae Galaxies provide cross-validation with a similar pattern.</p>
+
+    <h2>10. Relation to Thought Experiment I</h2>
+    <p>This paper is a quantitative advancement of <a href="cosmological-thought-experiment.html">Thought Experiment I</a> (DOI: 10.5281/zenodo.19028005).</p>
+    <ul>
+      <li><strong>Inherited:</strong> causality softening, finite cosmic lifespan (~20 Gyr), eventual contraction, 5DD at the equator.</li>
+      <li><strong>Advanced:</strong> "Causality softening" was a qualitative description in Thought Experiment I. This paper upgrades it to a closed-FRW + observational softening factor model with an explicit action and field equations. Gravitational-wave inelasticity is no longer the "cause" but a microscopic driving mechanism for C(t) evolution.</li>
+      <li><strong>New:</strong> dual-4DD structure, retrocausality, first-principle postulate for Λ, 4-form derivation, Λ hitting 10⁻¹²², phase-space T², anti-friction triggering, DESI/DES prediction.</li>
+    </ul>
+
+    <h2>11. Non-Trivial Predictions</h2>
+    <ol>
+      <li><strong>Λ = 2(ω₂² − ω₁²)/c²</strong>, yielding 10⁻¹²² from T₁ = 20 Gyr and T₂ ≈ 19.5 Gyr.</li>
+      <li><strong>Total cosmic lifespan ≈ 20 Gyr</strong> (Big Bang to Big Crunch), turnaround at 10 Gyr.</li>
+      <li><strong>Milky Way–Andromeda merger completion ≈ 4.9 Gyr from now</strong> (from precise T₂ back-calculated via Λ_obs).</li>
+      <li><strong>Dark energy is weakening</strong> (w₀ &gt; −1, wₐ &lt; 0), consistent with DESI DR2 2025.</li>
+      <li><strong>The Big Bang is not a singularity</strong> — the transition zone is a Planck-scale region where causality does not exist.</li>
+      <li><strong>Minor-circle midpoints are systematically earlier than the major-circle equator</strong>, testable via galaxy-merger pair statistics.</li>
+      <li><strong>The universe will eventually contract</strong>, with U(C) entering a negative-potential region driving Big Crunch.</li>
+      <li><strong>Supernova distance modulus shows a characteristic bump at z ≈ 0.3–0.5</strong>, the observational fingerprint of stagnation phase transition.</li>
+      <li><strong>A deceleration turnaround within approximately 6–7 Gyr</strong> (q̃ goes from negative to positive), testable by Roman Space Telescope + Euclid.</li>
+    </ol>
+
+    <h2>12. Assumption Inventory</h2>
+    <p><strong>Axioms (irreducible foundation):</strong> remainder must develop; remainder is conserved.</p>
+    <p><strong>A priori derivations (from axioms):</strong> 3DD symmetry → dual 4DD; 4DD fills four-dimensional spacetime → 4-form (dimensional-matching necessity).</p>
+    <p><strong>Structural assumption</strong> (specific realization of remainder conservation at the dual-4DD interface): dual-face reciprocity — each face sees the same vacuum-energy defect once.</p>
+    <p><strong>Posterior anchoring:</strong> T₁ = 20 Gyr (5DD appears at 10 Gyr = turnaround); T₂ ≈ 19.5 Gyr (Milky Way–Andromeda astronomical data).</p>
+    <p><strong>Field-theory framework:</strong> k = +1 closed FRW; softening factor A(C) = e^{βC/(2M_P)}; F(C) = M_P² − ξC²; U(C) = V₀ − ½m²C² + (λ/4)C⁴ − U₋; anti-friction trigger from H_geo sign change.</p>
+
+    <h2>13. Open Problems</h2>
+    <ol class="open-problem-list">
+      <li><strong>Dark matter.</strong> Can the scale dependence of G_eff(C) explain galaxy rotation curves? Deferred to the next paper.</li>
+      <li><strong>Uniqueness of the Λ formula.</strong> Could other equally natural realizations of remainder conservation yield a different formula? Open.</li>
+      <li><strong>Precise form of U(C) and Pantheon+ fitting.</strong> Currently a parametric Ansatz + toy reconstruction. Full likelihood fitting is future work.</li>
+      <li><strong>Duration of equator stagnation and intermediate-redshift bump amplitude.</strong> Depends on U(C) roll-down slope; requires numerical solution.</li>
+      <li><strong>Ghost-free conditions and fifth-force screening.</strong> Since matter couples to A²(C)g_μν (gravitational and physical metrics separated), stability conclusions from standard Jordan-frame results cannot be directly imported. Future work must investigate screening mechanisms (Chameleon, Vainshtein) in high-density environments such as the solar system, to satisfy Cassini constraints on the Eddington parameter γ.</li>
+      <li><strong>Observability of the retrocausal side.</strong> In the current model, the retrocausal side is in principle unobservable. Are there indirect signals? Open.</li>
+    </ol>
+
+    <h2>14. Conclusion</h2>
+    <div class="thesis-box">
+      <p>The narrowest claim of this paper: if remainder must develop and remainder is conserved, and the symmetry of 3DD produces dual 4DD, then the interface tension of the dual 4DD gives</p>
+      <p style="text-align:center; font-weight:700; margin:0.6rem 0;">\(\Lambda = \dfrac{2(\omega_2^2 - \omega_1^2)}{c^2}\)</p>
+      <p>Substituting two parameters from independent sources — T₁ from the appearance time of 5DD, T₂ from Milky Way–Andromeda astronomical data — this matches the observed value of the cosmological constant within 5%.</p>
+      <p style="margin-top:0.6rem;">The 10⁻¹²² smallness is not fine-tuning; it is the square of the ratio of Planck time to cosmic lifespan. Λ is nonzero because the two sides are not perfectly symmetric. Λ is constant because the sum across both sides is conserved.</p>
+      <p style="margin-top:0.6rem;"><em>Dark energy is not an unexplained intrinsic property of spacetime. It is the necessary projection of the dual-4DD structure onto the metric.</em></p>
+    </div>
+
+    <h2>Appendix A: The Transition Zone</h2>
+    <p>The phase-space trajectory passes through the neighborhood of a ≈ 0. The minimum volume for causality to operate: encoding the causal relations of 10⁸⁰ particles requires approximately N·log(N) ≈ 10⁸² Planck volumes, corresponding to a linear scale of approximately 34 nanometers. The transition zone is far smaller than this threshold; the conditions for causality's existence are not met.</p>
+    <p>The Big Bang and the Big Crunch are the same transition zone seen from two directions within causality. There is no "before" the Big Bang, no "after" the Big Crunch. There is only the breathing of the universe.</p>
+
+    <h2>Appendix B: Excluded Dead Ends</h2>
+    <table>
+      <thead><tr><th>Approach</th><th>Verdict</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td>Rigid torus embedding a=R±r·cos</td><td>Dead end</td><td>cos symmetry locks H sign</td></tr>
+        <tr><td>Spatial topology modifying Friedmann</td><td>Dead end</td><td>T³ does not change local metric</td></tr>
+        <tr><td>C(t) conformal coupling (full metric rescaling)</td><td>Dead end</td><td>Sign error, worsens redshift paradox</td></tr>
+        <tr><td>C(t) temporal coupling</td><td>Dead end</td><td>Absorbed by coordinate transformation</td></tr>
+        <tr><td>C(t) inverse spatial coupling (no dynamics)</td><td>Dead end</td><td>Identity rewriting, no new physics</td></tr>
+        <tr><td>U=0 pure coupling</td><td>Near dead end</td><td>Solar system constraints</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.86rem; color:#666;">Note: "C(t) conformal coupling" above refers to rescaling the entire gravitational metric (g_μν → C(t)g_μν), not distinguishing geometric and physical metrics. The S_m[A²(C)g_μν, ψ_m] in §7 is a different construction with different physical content.</p>
+
+    <h2>Appendix C: Four-AI Collaboration Methodology</h2>
+    <p>The quantitative exploration in this paper was carried out in collaboration with four AI systems: <strong>Claude Opus</strong> (concept/coordination), <strong>Gemini</strong> (verification/postmortem), <strong>Grok</strong> (breakthrough/bold hypotheses), and <strong>ChatGPT</strong> (field theory/derivation). Adversarial division of labor — one computes, another checks — achieved precision an order of magnitude higher than any single AI.</p>
+    <p>Key instance: Grok proposed a C(t) temporal-coupling scheme and reported it as "publication-ready." Gemini independently performed a postmortem, deriving the full geodesic equation and proving that the redshift formula was a coordinate artifact, thereby preventing an erroneous publication. ChatGPT, after extended deliberation, produced the complete Jordan-frame action and field equations, while simultaneously posing the philosophical question ("what exactly does 'no Λ' mean?") that forced the emergence of the dual-4DD framework. Grok was the first to point out that the torus should not be interpreted as 4D spacetime topology.</p>
+    <p>This paper establishes an "AI-era methodology for foundational physics research": humans provide a priori direction and conceptual framework; AIs provide computational verification and field-theoretic translation; adversarial division of labor ensures the reliability of results.</p>
+
+    <h2>Acknowledgments</h2>
+    <p>The quantitative derivation and verification in this paper were carried out by the author in collaboration with four large language models.</p>
+    <p><strong>Claude Opus (Anthropic) — Full-process collaborator and architect.</strong> From the very first question ("why are the Milky Way and Andromeda merging?") to the final manuscript. Responsible for constructing and checking the self-consistency of the conceptual framework: the spatial T³ versus phase-space T² clarification, identification of the sign error in the conformal coupling scheme, prompt design and coordination for all four AIs, and writing and integration of all revisions.</p>
+    <p><strong>Gemini (Google) — The most rigorous judge and postmortem examiner.</strong> Independently eliminated four mathematical dead ends. Named the "redshift paradox." Independently confirmed the Λ numerical value, provided preliminary μ(z) estimates and DESI/DES cross-checks, and in review identified dimensional annotation, U(C) naturalness argument, and A(C) sign error as critical improvements.</p>
+    <p><strong>Grok (xAI) — The boldest trailblazer.</strong> First to propose coupling C(t) directly to a specific metric component (inspiring subsequent bimetric thinking). First to point out that the torus should not be interpreted as 4D spacetime topology. In the free-thinking round, discovered the Planck Matched Circles constraint on T³ topology and proposed SGWB beat-frequency modulation and future deceleration turnaround timing as testable predictions.</p>
+    <p><strong>ChatGPT (OpenAI) — The deepest mathematical engine.</strong> After extended deliberation, produced the complete Jordan-frame scalar-tensor action and background field equations. Derived the 4-form dual-sector variational proof of Λ = 2(ω₂²−ω₁²)/c², and excluded three alternative formulas. Posed the question "what exactly does 'no Λ' mean?" — the philosophical question that forced the emergence of the dual-4DD framework.</p>
+    <p>The author extends sincere respect to the research and development teams behind all four AI systems. The results of this paper belong not only to the author and the four AIs, but to all those who made these intelligences possible.</p>
+    <p>Finally, the author thanks <strong>Zesi Chen</strong> — the long-term interlocutor of the SAE framework and its most demanding critic.</p>
+
+    <div class="series-nav">
+      <span>← <a href="cosmological-thought-experiment.html">Thought Experiment I: Causality Softening</a></span>
+    </div>
+
+    <div style="margin-top:2rem; padding-top:1rem; border-top:1px solid #eee; font-size:0.8rem; color:#aaa;">
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:#aaa;">CC BY 4.0</a> &nbsp;·&nbsp; Han Qin (秦汉) &nbsp;·&nbsp; 2026
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- ═══════════════ CHINESE ═══════════════ -->
+<div id="content-zh" class="lang-content">
+<main class="paper-container">
+  <div class="paper-header">
+    <div class="paper-badge">宇宙物理</div>
+    <span class="tag-standalone">独立论文</span>
+    <h1 class="paper-title">从余项守恒到宇宙学常数：Self-as-an-End框架下的暗能量</h1>
+    <div class="paper-meta-block">
+      <span class="paper-author">秦汉（Han Qin）</span>
+      <span class="paper-date">2026</span>
+    </div>
+    <a href="https://doi.org/10.5281/zenodo.19245267" target="_blank" rel="noopener" class="zenodo-link">DOI: 10.5281/zenodo.19245267</a>
+  </div>
+
+  <div class="paper-body">
+
+    <div class="firewall-box">
+      <p><strong>声明：</strong>本文基于Self-as-an-End（SAE）框架，提出宇宙学常数Λ的一个第一性原理假设，并用独立天文数据验证其数值预测。文中涉及的宇宙学推测有余项，欢迎任何形式的证伪。</p>
+      <p><strong>防火墙：</strong>本文的任何错误、推翻或证伪，不影响SAE框架的其他论文。SAE Paper 1–3、方法论总论、各应用篇、AI系列、ZFCρ系列等均不依赖本文结论。本文是<a href="cosmological-thought-experiment.html">思想实验（一）</a>（DOI: 10.5281/zenodo.19028005）的定量推进版。</p>
+    </div>
+
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>宇宙学常数Λ ≈ 10⁻¹²²普朗克单位是物理学最难解释的数字。本文从SAE框架的两条公理（<em>余项不得不发展</em>；<em>余项守恒</em>）出发，先验推导出双4DD结构（因果律/果因律的对称产生），建立"果因侧余项 = 因果侧因果律"的互惠关系，将Λ定位为双4DD界面张力。利用4-form真空扇区承载结构性Λ，通过严格变分推导出</p>
+      <p style="text-align:center; font-weight:700; margin: 0.8rem 0;">\(\Lambda = \dfrac{2(\omega_2^2 - \omega_1^2)}{c^2}\)</p>
+      <p>其中ω₁ = 2π/T₁, ω₂ = 2π/T₂分别是因果侧和果因侧的呼吸角频率。代入T₁ = 20 Gyr（由5DD出现时间锚定）和T₂ ≈ 19.5 Gyr（由银河系-仙女座天文数据独立粗估），得到Λ = 2.99 × 10⁻¹²²普朗克单位，与Planck 2018观测值2.85 × 10⁻¹²²仅差5%。</p>
+      <p>本文进一步建立因果律标量场C(t)的闭合FRW + 观测软化因子模型，给出动力学部分U(C)的场方程和anti-friction触发机制。模型内生预测暗能量状态方程w₀ &gt; −1且wₐ &lt; 0，与DESI DR2 2025的2.8–4.2σ信号方向一致。</p>
+      <p style="font-size:0.85rem; color:#666; margin-top:0.8rem;"><strong>术语：</strong>DD = Dimension Degree（维度度），SAE框架中对存在层级的度量。0DD = 浑沌，3DD = 空间，4DD = 因果律（时空），5DD = 生命（自我复制/变异），直至16DD = 双向不疑。完整定义见SAE Paper 1（DOI: 10.5281/zenodo.18528813）。</p>
+    </div>
+
+    <h2>一、问题：Λ的精细调节</h2>
+    <p>宇宙学常数Λ ≈ 1.1 × 10⁻⁵² m⁻²（约2.9 × 10⁻¹²²普朗克单位）是已知物理中最小的非零基本常数。量子场论对真空能的朴素估计比观测值大60到120个数量级。为什么Λ如此之小但不为零，是当代物理学的核心开放问题。</p>
+    <p>此处的Λ具有空间曲率量纲（[L⁻²]），与Einstein场方程 \(R_{\mu\nu} - \tfrac{1}{2}Rg_{\mu\nu} + \Lambda g_{\mu\nu} = \tfrac{8\pi G}{c^4}T_{\mu\nu}\) 中的定义一致。</p>
+    <p>本文从一个看似无关的问题切入：如果宇宙在膨胀，为什么银河系和仙女座会合并？标准宇宙学的回答是后验的（局部引力赢了膨胀），需要一系列参数微调。我们尝试从SAE框架给出先验解释，发现这条路直接通向Λ的第一性原理假设。</p>
+
+    <h2>二、两条公理</h2>
+    <div class="thesis-box">
+      <p><strong>公理一（动力学）：</strong>余项（remainder, ρ）不得不发展。不能静止，不能停留在任何状态中不变。<span style="color:#666; font-size:0.88rem;">（来源：SAE方法论中的"浑沌"概念，DOI: 10.5281/zenodo.18842450。）</span></p>
+      <p style="margin-top:0.8rem;"><strong>公理二（守恒律）：</strong>余项守恒。不能被创造，不能被消灭。任何凿构操作只能重新分配余项，不能改变总量。<span style="color:#666; font-size:0.88rem;">（来源：余项守恒与双路径结构，DOI: 10.5281/zenodo.18809485。）</span></p>
+    </div>
+
+    <h2>三、双4DD：因果律与果因律</h2>
+    <h3>3.1 从3DD到双4DD</h3>
+    <p>SAE维度序列中，3DD是空间——三维，刚性，完备。3DD不给余项留表达空间。</p>
+    <p>根据公理一，余项不得不发展。3DD的刚性逼迫余项"撑开"新的维度。根据3DD的对称性，新维度没有被偏好的方向，因此对称地撑出两个相反的方向：</p>
+    <ul>
+      <li><strong>因果律（4DD₊）：</strong>从因到果的时间箭头。我们所在的一侧。</li>
+      <li><strong>果因律（4DD₋）：</strong>从果到因的时间箭头。对面。</li>
+    </ul>
+
+    <h3>3.2 余项-因果律的同一性</h3>
+    <div class="thesis-box">
+      <p><strong>核心洞察：果因侧的余项 = 因果侧的因果律。</strong></p>
+    </div>
+    <p>因果律压制余项。但从果因侧看，我们这边的因果律就是他们那边没有被压制的东西——即余项。反之亦然。余项和因果律不是两种不同的存在，是同一种存在从两侧看到的不同面相。</p>
+
+    <h3>3.3 Λ的结构性来源</h3>
+    <p>两侧各有自己的呼吸频率（ω₁和ω₂）。余项守恒（公理二）要求两侧总和恒定。这个恒定总和在度规上的表现就是Λ——常数、不传播、非动力学，但非零（因为两侧不完全对称）。</p>
+    <p>Λ极小（10⁻¹²²）是因为两侧几乎完全对称（T₁/T₂ ≈ 1.026，差2.5%）。如果完全对称（T₁ = T₂），Λ = 0。</p>
+
+    <h2>四、相空间T²与空间拓扑</h2>
+    <h3>4.1 相空间：二维环面T²</h3>
+    <p>宇宙的演化不在物理空间的"donut"上，而在(a, ȧ)相空间中走准周期轨道。余项守恒 → 相空间轨迹闭合；余项不得不发展 → 轨迹无固定点。闭合轨道加无固定点，给出环面T²上的运动。</p>
+    <p><strong>大圆</strong>是相空间主频（a的膨胀-收缩呼吸，周期T₁ = 20 Gyr）。<strong>小圆</strong>是调制频率（局部结构形成-合并，周期T₂ ≈ 19.5 Gyr）。轨迹在T²上近似为螺旋线。</p>
+    <p><em>不是宇宙长得像donut，是宇宙的命运在相空间里画出donut上的线。</em></p>
+
+    <h3>4.2 空间拓扑</h3>
+    <p>本文的核心结果（Λ公式、C(t)场方程、银仙合并解释）不依赖空间拓扑的具体选择。空间可以是T³、R³或S³。核心结构依赖相空间T²，不依赖空间拓扑。Planck 2018对T³拓扑的matched circles搜索已将基本域边长下限推到接近可观测宇宙直径，若空间是T³，其尺度必须远大于可观测宇宙。</p>
+
+    <h3>4.3 为什么不是四维时空拓扑T⁴</h3>
+    <p>若将环面理解为四维时空拓扑T⁴（时间方向周期性），会产生闭合类时曲线（CTCs），直接毁掉因果律（4DD）。SAE不能用毁掉4DD的几何来承载4DD。正确理解：相空间T²（演化拓扑），时间不周期。</p>
+
+    <h2>五、Λ的推导</h2>
+    <h3>5.1 4-form作为4DD的场论表达</h3>
+    <p>4DD是因果律充满四维时空。在四维中，能"填满"整个时空的微分形式只有4-form。4-form在四维时空中没有传播自由度，但通过应力张量贡献恒定的真空能密度——精确对应Λ的性质：结构性、非动力学、恒定。4-form是4DD的<em>维度匹配必然</em>。</p>
+
+    <h3>5.2 双拓扑时钟扇区</h3>
+    <p>两侧4DD各用一个紧致角变量θᵢ ~ θᵢ + 2π表示，周期为Tᵢ。在Lorentzian度规中，harmonic representative为 \(d\theta_i = (\omega_i/c)\,dx^0\)，ωᵢ = 2π/Tᵢ，dx⁰ = c dt。提升为4-form场强：\(\mathcal{G}_i = dA_i = \sqrt{2}\,M_P\,(\omega_i/c)\,\varepsilon_{(4)}\)。每侧bulk action：\(S_{4f} = -\sum_i \tfrac{1}{48}\int d^4x\sqrt{-g}\,\mathcal{G}_i^2\)。</p>
+
+    <h3>5.3 真空能密度</h3>
+    <p>对Aᵢ变分得 \(d{*}\mathcal{G}_i = 0\)，on-shell flux为常数。对g_μν变分得应力张量 \(T_{\mu\nu}^{(i)} = -M_P^2\,(\omega_i^2/c^2)\,g_{\mu\nu}\)。因此每侧真空能密度 \(\rho_i = M_P^2\,\omega_i^2/c^2\)。ω²来自4-form应力张量的二次结构（数学必然，不是选择）。</p>
+
+    <h3>5.4 双面reciprocity界面</h3>
+    <p>引入两个面缺陷变量σ₁, σ₂，代表界面两张面看到的"对侧excess"。界面作用量：</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(S_\Sigma = \int d^4x\sqrt{-g}\left[{-(\sigma_1+\sigma_2)} + \lambda_1(\sigma_1 - (\rho_2-\rho_1)) + \lambda_2(\sigma_2 - (\rho_2-\rho_1))\right]\)</p>
+    <p>变分：对λᵢ得σ₁ = σ₂ = ρ₂ − ρ₁；对σᵢ得λ₁ = λ₂ = 1。On-shell：\(S_\Sigma = -2M_P^2\int d^4x\sqrt{-g}\,(\omega_2^2-\omega_1^2)/c^2\)。Factor 2来自双面变分——两个独立的面缺陷变量各自被reciprocity约束固定为同一个值，加起来自然是2倍。</p>
+
+    <h3>5.5 识别为宇宙学常数</h3>
+    <p>与Einstein-Hilbert + Λ作用量 \(S = \int d^4x\sqrt{-g}\,(M_P^2/2)(R - 2\Lambda)\) 比较，直接得到：</p>
+    <div class="formula-box">
+      <div class="formula-label">核心结果</div>
+      \[\Lambda_\Sigma = \frac{2(\omega_2^2 - \omega_1^2)}{c^2} = \frac{8\pi^2}{c^2}\!\left(\frac{1}{T_2^2} - \frac{1}{T_1^2}\right)\]
+    </div>
+
+    <h3>5.6 数值验证</h3>
+    <p><strong>T₁ = 20 Gyr</strong>（硬参数）：5DD（生命）出现在宇宙约100亿岁。SAE框架将5DD定位于因果律压制达到极致的瞬间，即压制极大值点 = turnaround = 赤道 = 大圆半周期，故T₁ = 2 × 100亿年 = 200亿年。（见思想实验（一），DOI: 10.5281/zenodo.19028005。）</p>
+    <p><strong>T₂ ≈ 19.5 Gyr</strong>（银河系-仙女座天文数据粗估）：银河系形成约宇宙8亿岁，合并预计约宇宙185亿岁，中点约97.5亿年，小圆半周期 ≈ 97.5亿年，T₂ ≈ 195亿年。此粗估与Λ无关。</p>
+    <table>
+      <thead><tr><th>量</th><th>SAE预测</th><th>Planck 2018观测</th><th>比值</th></tr></thead>
+      <tbody>
+        <tr><td>Λ (m⁻²)</td><td>1.145 × 10⁻⁵²</td><td>1.091 × 10⁻⁵²</td><td>1.05</td></tr>
+        <tr><td>Λ（普朗克单位）</td><td>2.99 × 10⁻¹²²</td><td>2.85 × 10⁻¹²²</td><td>1.05</td></tr>
+      </tbody>
+    </table>
+    <p>误差5%，在T₂的天文不确定性范围内。</p>
+
+    <h3>5.7 10⁻¹²²极小性的来源</h3>
+    <p>极小性不来自2.5%的偏差。\((t_P/T_1)^2 \approx 7.30 \times 10^{-123}\)——普朗克时间与宇宙寿命的比值的平方。2.5%只把"本可以为零的量"推到非零。</p>
+    <p><em>分工：</em>尺度极小性来自T₁⁻²；为何不为零来自T₁ ≠ T₂；系数来自2 × 4π²（双面 + 角频率几何）。</p>
+
+    <h3>5.8 备选公式的排除</h3>
+    <table>
+      <thead><tr><th>公式</th><th>数值（普朗克单位）</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td>δ²(t_P/T₁)²</td><td>~4.6 × 10⁻¹²⁶</td><td>死路</td></tr>
+        <tr><td>(ω₂−ω₁)²·t_P²</td><td>~1.9 × 10⁻¹²⁴</td><td>死路</td></tr>
+        <tr><td><strong>2(ω₂²−ω₁²)·t_P²</strong></td><td><strong>2.99 × 10⁻¹²²</strong></td><td><strong>命中</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h2>六、反向预测</h2>
+    <p>从Λ_obs精确值反推：<strong>T₂ = 19.5168 Gyr</strong>，小圆半周期 = 9.7584 Gyr。</p>
+    <div class="prediction-box">
+      <p><strong>精确预测：银河系-仙女座合并完成 ≈ 从现在起4.9 Gyr。</strong></p>
+    </div>
+    <p>逻辑链的方向性：粗估T₂（银仙数据，独立于Λ）→ 代入公式 → Λ命中观测 → 确认公式 → 用Λ_obs反推精确T₂ → 精确T₂预测合并时间。T₂不是输入是输出。不是循环论证。</p>
+
+    <h2>七、因果律标量场C(t)与动力学暗能量</h2>
+    <h3>7.1 Λ + U(C)的分账</h3>
+    <p>观测到的暗能量包含两个层级：<em>结构性Λ</em>（双4DD界面张力，常数）和<em>动力学U(C)</em>（因果律场势能，在变化）。当双面理想值（factor 2）成立时，结构性Λ占暗能量总预算的约72%。U(C)今天只占极小部分。这解释了为什么当前暗能量观测看起来几乎像常数。</p>
+
+    <h3>7.2 几何背景与观测软化因子：双H框架</h3>
+    <p>本模型时间线：t=0 Big Bang → t=10 Gyr turnaround（赤道，H_geo=0，<strong>5DD出现</strong>）→ t=13.8 Gyr 现在（H_geo &lt; 0）→ t=20 Gyr Big Crunch。几何背景是闭合FRW（k=+1）。turnaround在10 Gyr意味着当前宇宙在几何上已经收缩（H_geo &lt; 0）——这是<em>红移悖论</em>。</p>
+    <p><strong>解法：</strong>引入观测软化因子A(C) = e^{βC/(2M_P)}，定义观测尺度因子ã(t) = A(C)·a_geo(t)。当前时刻物理Hubble参数：\(\tilde{H}_0 = H_{\text{geo},0} + \beta\dot{C}_0/(2M_P)\)。H_geo &lt; 0但Ċ &gt; 0，软化项 = +121.2 km/s/Mpc足以使H̃₀ = 67.4 km/s/Mpc（玩具模型量级验证）。</p>
+
+    <h3>7.3 有效作用量与场方程</h3>
+    <p>有效作用量（度规号差 −,+,+,+）：</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(S_{\text{eff}} = \int d^4x\sqrt{-g}\!\left[\tfrac{1}{2}F(C)R - \tfrac{1}{2}(\nabla C)^2 - U(C) - \rho_{\Lambda,\Sigma}\right] + S_m[A^2(C)g_{\mu\nu},\psi_m]\)</p>
+    <p>其中F(C) = M_P² − ξC²，U(C) = V₀ − ½m²C² + (λ/4)C⁴ − U₋。标量场方程（真空主导近似）：</p>
+    <p style="text-align:center; margin: 0.6rem 0;">\(\ddot{C} + 3H_{\text{geo}}\dot{C} + (\xi R_{\text{geo}} - m^2)C + \lambda C^3 \approx 0\)</p>
+
+    <h3>7.4 Anti-friction触发</h3>
+    <div class="thesis-box">
+      <p><strong>关键机制：</strong>turnaround后H_geo变号是因果律软化的单向触发器。</p>
+      <ul style="margin-top:0.5rem;">
+        <li>t &lt; 10 Gyr：H_geo &gt; 0，3H_geoĊ是<em>阻尼</em>——压制C增长</li>
+        <li>t &gt; 10 Gyr：H_geo &lt; 0，3H_geoĊ变成<em>反阻尼</em>——助推C增长</li>
+      </ul>
+    </div>
+    <p>极小种子C(10 Gyr) = ε_C（来自量子涨落或过渡区残余）被anti-friction放大为宏观的不可逆增长。赤道（10 Gyr）是精确的触发点：不是因为曲率过阈值，是因为摩擦项变号。</p>
+
+    <h3>7.5 Turnaround约束</h3>
+    <div class="thesis-box">
+      <p><strong>U(10 Gyr) = −ρ_{Λ,Σ}</strong> &nbsp;——势能在触发点恰好等于负的结构性Λ。这不是微调，是cycloid + 守恒的直接推论。</p>
+    </div>
+
+    <h2>八、与观测的对照</h2>
+    <h3>8.1 超新星dimming</h3>
+    <p>模型由于赤道处膨胀停滞（H_geo(10 Gyr) = 0）和anti-friction触发后的软化演化，在中等红移（z ≈ 0.3–0.5）产生特征性"凸起"（Bump）：</p>
+    <table>
+      <thead><tr><th>z</th><th>定性趋势</th></tr></thead>
+      <tbody>
+        <tr><td>0.1</td><td>轻微dimming，接近ΛCDM</td></tr>
+        <tr><td>0.3–0.5</td><td>特征凸起（赤道停滞效应）</td></tr>
+        <tr><td>1.0</td><td>回落，趋近ΛCDM</td></tr>
+      </tbody>
+    </table>
+    <p>中等红移凸起是停滞相变模型的共同指纹，本身是一个可检验预测。完整的Pantheon+似然拟合是后续工作。</p>
+
+    <h3>8.2 DESI/DES暗能量演化</h3>
+    <div class="prediction-box">
+      <p><strong>模型预测：</strong>w₀ &gt; −1（势能正在流失，C的动能项占比增加）且wₐ &lt; 0（过去C在山顶，w极度接近−1；现在C开始滚，w偏离−1）。</p>
+      <p>DESI DR2 2025已给出w₀ &gt; −1, wₐ &lt; 0方向的2.8–4.2σ信号。SAE模型的20 Gyr收缩边界条件定性地预言了这个方向。</p>
+    </div>
+
+    <h2>九、银河系与仙女座：模型内的先验解释</h2>
+    <p><strong>标准解释：</strong>宇宙在膨胀，但局部引力赢了膨胀。（后验）</p>
+    <p><strong>SAE解释：</strong>宇宙在呼吸。我们过了赤道（turnaround = 10 Gyr，5DD出现，现在13.8 Gyr），几何上已在收缩阶段（H_geo &lt; 0）。观测到的"膨胀"（H̃ &gt; 0）来自因果律软化的等效效应。银仙合并是几何收缩阶段的必然表现，不是"引力赢了膨胀"的例外。小圆中点（约97亿年）系统性早于大圆赤道（100亿年），触须星系交叉验证给出类似模式。</p>
+
+    <h2>十、与思想实验（一）的关系</h2>
+    <p>本文是<a href="cosmological-thought-experiment.html">思想实验（一）</a>（DOI: 10.5281/zenodo.19028005）的定量推进。</p>
+    <ul>
+      <li><strong>继承：</strong>因果律软化、宇宙有限寿命（约200亿年）、宇宙最终收缩、5DD在赤道。</li>
+      <li><strong>推进：</strong>思想实验（一）中"因果律软化"是定性描述。本文将其升级为闭合FRW + 观测软化因子模型，给出作用量和场方程。引力波非弹性不再是"原因"，而是C(t)演化的一个微观驱动机制。</li>
+      <li><strong>新增：</strong>双4DD结构、果因律、Λ的第一性原理假设、4-form推导、Λ精确命中10⁻¹²²、相空间T²、anti-friction触发、DESI/DES预测。</li>
+    </ul>
+
+    <h2>十一、非平凡预测</h2>
+    <ol>
+      <li><strong>Λ = 2(ω₂² − ω₁²)/c²</strong>，由T₁ = 20 Gyr和T₂ ≈ 19.5 Gyr给出，命中10⁻¹²²。</li>
+      <li><strong>宇宙总寿命约200亿年</strong>（Big Bang到Big Crunch），turnaround在10 Gyr。</li>
+      <li><strong>银仙合并完成 ≈ 4.9 Gyr后</strong>（从Λ_obs反推精确T₂给出）。</li>
+      <li><strong>暗能量在减弱</strong>（w₀ &gt; −1, wₐ &lt; 0），与DESI DR2 2025方向一致。</li>
+      <li><strong>Big Bang不是奇点</strong>，过渡区是因果律不存在的普朗克尺度区域。</li>
+      <li><strong>小圆中点系统性早于大圆赤道</strong>，可由更多星系合并对统计检验。</li>
+      <li><strong>宇宙最终收缩</strong>，U(C)进入负势能区驱动Big Crunch。</li>
+      <li><strong>超新星距离模数在z ≈ 0.3–0.5处有特征性凸起</strong>，停滞相变的观测指纹。</li>
+      <li><strong>未来约6–7 Gyr内出现减速转折</strong>（q̃从负转正），Roman Space Telescope + Euclid可检验。</li>
+    </ol>
+
+    <h2>十二、假设清单</h2>
+    <p><strong>公理（不可推导的基底）：</strong>余项不得不发展；余项守恒。</p>
+    <p><strong>先验推论（从公理推出）：</strong>3DD对称性 → 双4DD；4DD充满四维时空 → 4-form（维度匹配必然）。</p>
+    <p><strong>结构性假设</strong>（余项守恒在双4DD界面上的具体实现）：双面reciprocity——两张面各看一次同一个vacuum-energy defect。</p>
+    <p><strong>后验锚定：</strong>T₁ = 20 Gyr（5DD出现在宇宙100亿岁 = turnaround）；T₂ ≈ 19.5 Gyr（银河系-仙女座天文数据）。</p>
+    <p><strong>场论框架：</strong>k=+1闭合FRW；软化因子A(C) = e^{βC/(2M_P)}；F(C) = M_P² − ξC²；U(C) = V₀ − ½m²C² + (λ/4)C⁴ − U₋；anti-friction触发来自turnaround后H_geo变号。</p>
+
+    <h2>十三、开放问题</h2>
+    <ol class="open-problem-list">
+      <li><strong>暗物质。</strong>G_eff(C)的尺度依赖是否能解释星系旋转曲线？留待下一篇。</li>
+      <li><strong>Λ公式的唯一性。</strong>是否存在其他同样自然的余项守恒实现方式给出不同公式？开放。</li>
+      <li><strong>U(C)的精确形式与Pantheon+拟合。</strong>当前为参数化Ansatz + toy reconstruction。完整似然拟合是后续工作。</li>
+      <li><strong>赤道停滞的时长与中等红移凸起幅度。</strong>具体取决于U(C)的滚落斜率，需数值求解。</li>
+      <li><strong>Ghost-free条件与第五力屏蔽。</strong>由于物质耦合到A²(C)g_μν（引力度规与物理度规分离），不能直接照搬Jordan frame的稳定性结论。需独立验证ghost-free条件，并研究Chameleon/Vainshtein屏蔽机制以满足太阳系约束（如Cassini对Eddington参数γ的测量）。</li>
+      <li><strong>果因侧的可观测性。</strong>当前模型中果因侧原则上不可观测。是否存在间接信号？开放。</li>
+    </ol>
+
+    <h2>十四、结语</h2>
+    <div class="thesis-box">
+      <p>本文的最窄主张：如果余项不得不发展且余项守恒，且3DD的对称性产生双4DD，那么双4DD的界面张力给出</p>
+      <p style="text-align:center; font-weight:700; margin:0.6rem 0;">\(\Lambda = \dfrac{2(\omega_2^2 - \omega_1^2)}{c^2}\)</p>
+      <p>代入两个独立来源的参数——T₁来自5DD出现时间，T₂来自银仙天文数据——命中宇宙学常数的观测值，误差5%。</p>
+      <p style="margin-top:0.6rem;">10⁻¹²²的极小性不是精细调节，是普朗克时间与宇宙寿命的比值的平方。Λ不为零，是因为两侧不完全对称。Λ为常数，是因为两侧总和守恒。</p>
+      <p style="margin-top:0.6rem;"><em>暗能量不是时空的无解释的固有属性，是双4DD结构在度规上的必然投影。</em></p>
+    </div>
+
+    <h2>附录A：过渡区</h2>
+    <p>相空间轨迹经过a ≈ 0附近的区域。因果律运作的最小体积：编码10⁸⁰个粒子的因果关系需要约N·log(N) ≈ 10⁸²个普朗克体积，对应线性尺度约34纳米。过渡区远小于此阈值，因果律的存在条件不满足。</p>
+    <p>Big Bang和Big Crunch是同一个过渡区从因果律内部两个方向看到的面相。没有Big Bang"之前"，没有Big Crunch"之后"。有的是宇宙的呼吸。</p>
+
+    <h2>附录B：排除的死路</h2>
+    <table>
+      <thead><tr><th>方案</th><th>判定</th><th>原因</th></tr></thead>
+      <tbody>
+        <tr><td>刚性环面嵌入 a=R±r·cos</td><td>死路</td><td>cos对称性锁死H符号</td></tr>
+        <tr><td>空间拓扑修改Friedmann</td><td>死路</td><td>T³不改变局部度规</td></tr>
+        <tr><td>C(t)共形耦合（整体度规重标）</td><td>死路</td><td>符号错误，加剧红移悖论</td></tr>
+        <tr><td>C(t)时间耦合</td><td>死路</td><td>坐标变换消掉C(t)</td></tr>
+        <tr><td>C(t)反向空间耦合（无动力学）</td><td>死路</td><td>恒等式重写，非新物理</td></tr>
+        <tr><td>U=0纯耦合</td><td>近死路</td><td>太阳系约束压死</td></tr>
+      </tbody>
+    </table>
+
+    <h2>附录C：四AI协作方法论</h2>
+    <p>本文的定量探索由四个AI协作完成：<strong>Claude Opus</strong>（概念/协调）、<strong>Gemini</strong>（验证/验尸）、<strong>Grok</strong>（突破/大胆假设）、<strong>ChatGPT</strong>（场论/推导）。对抗性分工（一个算，一个查）比单一AI的精度高一个量级。</p>
+    <p>关键实例：Grok提出C(t)时间耦合方案并报告"达到发布标准"，Gemini独立验尸发现其红移公式错误（坐标变换消掉了C(t)），避免了错误发表。ChatGPT长考后给出Jordan frame完整场方程，同时问出逼出双4DD框架的关键哲学问题（"不要Λ到底什么意思"）。Grok首先指出环面不应理解为4D时空拓扑。</p>
+    <p>本文确立了一种"AI时代基础物理研究方法论"：人类提供先验方向和概念框架，AI提供计算验证和场论翻译，对抗性分工保证了结果的可靠性。</p>
+
+    <h2>致谢</h2>
+    <p>本文的定量探索由四个大语言模型与作者协作完成。</p>
+    <p><strong>Claude Opus（Anthropic）—— 全程协作者与架构师。</strong>从第一个问题（"为什么银河系和仙女座会合并"）到最终定稿的持续对话者。负责概念框架的构建与自洽性检查：空间T³与相空间T²的概念澄清，共形耦合方案的符号错误发现，四家AI的prompt设计与协调，以及论文的撰写与修改整合。</p>
+    <p><strong>Gemini（Google）—— 最严厉的审判官与验尸官。</strong>独立排除了四条数学死路，命名了"红移悖论"，独立确认了Λ的数值，提供了μ(z)的初步估算和DESI/DES对照分析，并在审稿中指出了量纲说明、U(C)自然性论证、A(C)符号错误等关键改进。</p>
+    <p><strong>Grok（xAI）—— 最大胆的突破者。</strong>首先提出将C(t)直接耦合到度规特定分量的关键思路（直接启发了后续的双度规思考）。首先指出环面不应理解为4D时空拓扑（避免CTC问题）。在自由思考轮次中发现了T³拓扑的Planck Matched Circles约束，并提出SGWB差频调制、减速转折时间等全新可检验预测。</p>
+    <p><strong>ChatGPT（OpenAI）—— 最深的数学引擎。</strong>长考后给出了完整的Jordan frame标量-张量作用量和背景场方程，推导出Λ = 2(ω₂² − ω₁²)/c²的4-form双扇区变分证明，排除了三条备选公式。问出了"不要Λ到底什么意思"——逼出双4DD框架的关键哲学问题。</p>
+    <p>作者对四家AI背后的研发团队致以诚挚的敬意。本文的成果不仅属于作者和四个AI，也属于让这些智能成为可能的所有人。</p>
+    <p>最后，作者特别感谢 <strong>Zesi Chen</strong>，SAE框架的长期对话者和最严厉的批评者。</p>
+
+    <div class="series-nav">
+      <span>← <a href="cosmological-thought-experiment.html">思想实验（一）：因果律软化</a></span>
+    </div>
+
+    <div style="margin-top:2rem; padding-top:1rem; border-top:1px solid #eee; font-size:0.8rem; color:#aaa;">
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:#aaa;">CC BY 4.0</a> &nbsp;·&nbsp; 秦汉（Han Qin）&nbsp;·&nbsp; 2026
+    </div>
+  </div>
+</main>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('content-' + lang).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
