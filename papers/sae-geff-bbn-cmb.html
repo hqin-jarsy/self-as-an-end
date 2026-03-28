@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G_eff in the SAE Framework: Plateau-Rise Profile, BBN/CMB Safety, and Three Open Tensions — Han Qin</title>
+  <meta name="description" content="Derives G_eff(t) from the SAE action in the Jordan frame: plateau from Big Bang to turnaround (G_eff ≈ G), rise thereafter. BBN and CMB background constraints automatically satisfied. Reports three open tensions: A(C) softening vs Ġ/G (T1, four orders of magnitude), CMB third peak (T2), causal-density mapping gap (T3). Cosmo Paper IV of the SAE cosmological programme.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="G_eff, gravitational constant, BBN, CMB, MOND, SAE, Self-as-an-End, Jordan frame, scalar-tensor, causal density, turnaround, plateau-rise, lunar laser ranging, Hubble friction">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="G_eff in the SAE Framework: Plateau-Rise Profile, BBN/CMB Safety, and Three Open Tensions">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/sae-geff-bbn-cmb.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "G_eff in the SAE Framework: Plateau-Rise Profile, BBN/CMB Safety, and Three Open Tensions",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "url": "https://self-as-an-end.net/papers/sae-geff-bbn-cmb.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19298161"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Cosmological Physics"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "abstract": "Derives effective gravitational coupling G_eff(t) from the SAE action in the Jordan frame. G_eff follows a plateau-rise profile: constant (≈G) from Big Bang through turnaround due to Hubble friction screening, then rising as the C-field grows under anti-friction. BBN and CMB background constraints automatically satisfied. Three open tensions identified and reported: T1 (A(C) softening vs Ġ/G, four to five orders of magnitude), T2 (CMB third acoustic peak), T3 (causal-density–G_eff mapping gap). Structural predictions Λ and a₀ are unaffected.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/sae-geff-bbn-cmb.html">
+  <meta name="citation_title" content="G_eff in the SAE Framework: Plateau-Rise Profile, BBN/CMB Safety, and Three Open Tensions">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19298161">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$','$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    .paper-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #5a3e8a; background: #f0ebff; border: 1px solid #d0c0f0; border-radius: 3px; padding: 0.18rem 0.55rem; margin-bottom: 0.7rem; }
+    .tag-standalone { display: inline-block; font-size: 0.7rem; color: #888; border: 1px solid #ddd; border-radius: 3px; padding: 0.12rem 0.45rem; margin-left: 0.4rem; margin-bottom: 0.7rem; }
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .firewall-box { background: #fff8e6; border-left: 4px solid #c47a00; padding: 1rem 1.25rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+    .firewall-box p { margin: 0; }
+    .firewall-box p + p { margin-top: 0.5rem; }
+    .statement-box { background: #f0f8ff; border-left: 4px solid #3a6ea8; padding: 1rem 1.25rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+    .statement-box p { margin: 0; }
+    .tension-box { background: #fff5f5; border-left: 4px solid #c0392b; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .tension-box p { margin: 0; }
+    .tension-box p + p { margin-top: 0.5rem; }
+    .tension-box ul { margin: 0.4rem 0 0 1.3rem; }
+    .tension-box ul li { margin-bottom: 0.3rem; }
+    .theorem-box { background: #f0f5fb; border-left: 3px solid #3a6ea8; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .theorem-box p { margin: 0; }
+    .theorem-box p + p { margin-top: 0.5rem; }
+    .theorem-box ul { margin: 0.4rem 0 0 1.3rem; }
+    .theorem-box ul li { margin-bottom: 0.3rem; }
+    .prediction-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .prediction-box p { margin: 0; }
+    .prediction-box p + p { margin-top: 0.4rem; }
+    .formula-display { background: #f4f4ff; border: 1px solid #d0d0f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; overflow-x: auto; }
+    .formula-display p { margin: 0; }
+    .collab-box { background: #f8f8f8; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .collab-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #777; margin-bottom: 0.4rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    .paper-body ol { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ol li { margin-bottom: 0.35rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .tension-label { display: inline-block; background: #c0392b; color: white; font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 3px; margin-right: 0.5rem; letter-spacing: 0.05em; }
+    .success-label { display: inline-block; background: #2a7a2a; color: white; font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 3px; margin-right: 0.5rem; letter-spacing: 0.05em; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lang-tabs">
+  <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+  <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+</div>
+
+<!-- ═══════════════ ENGLISH ═══════════════ -->
+<div id="content-en" class="lang-content active">
+<main class="paper-container">
+<article class="paper-body">
+
+  <div class="paper-badge">SAE Cosmology IV</div>
+  <span class="tag-standalone">G_eff · BBN/CMB · Three Tensions</span>
+
+  <h1 class="paper-title">G<sub>eff</sub> in the SAE Framework</h1>
+  <p class="paper-subtitle">Plateau-Rise Profile, BBN/CMB Safety, and Three Open Tensions</p>
+
+  <div class="paper-meta-block">
+    <span class="author">Han Qin (秦汉)</span>
+    <span class="meta-sep">·</span>
+    <span class="orcid"><a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID: 0009-0009-9583-0018</a></span>
+    <span class="meta-sep">·</span>
+    <span class="date">2026</span>
+  </div>
+
+  <a href="https://doi.org/10.5281/zenodo.19298161" target="_blank" rel="noopener" class="zenodo-link">
+    📄 DOI: 10.5281/zenodo.19298161
+  </a>
+
+  <div class="statement-box" style="margin-top:1.2rem;">
+    <p><strong>Statement:</strong> This paper, based on the Self-as-an-End (SAE) framework, derives the effective gravitational coupling \(G_\text{eff}(t)\) from the published SAE action and confronts it with BBN, CMB, and local \(\dot{G}/G\) constraints. The paper reports both successes and unresolved tensions with equal weight. All forms of falsification are welcome.</p>
+  </div>
+
+  <div class="firewall-box">
+    <p><strong>Firewall:</strong> Any error, refutation, or falsification of this paper does not affect other SAE papers. The structural results of the cosmological programme — \(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\) (Cosmo Paper I) and \(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\) (Cosmo Paper III) — do not depend on the \(G_\text{eff}\) dynamics discussed here, as they are derived from vacuum-sector geometry and \(S^3\) topology respectively. This paper addresses the dynamical sector (Cosmo Paper I §7) and its observational consequences.</p>
+  </div>
+
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>The SAE cosmological programme has produced two first-principles predictions: \(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\) (5% match to Planck 2018) and \(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\) (3.3% match to MOND). Both are structural/geometric results independent of the C-field's dynamical evolution. This paper examines the dynamical sector — the effective gravitational couplings \(G_\text{loc}\) (local Cavendish) and \(G_\text{FRW}\) (background Friedmann) — and reports the following results.</p>
+    <p style="margin-top:0.7rem;"><span class="success-label">SUCCESS</span> A strict derivation in the Jordan frame shows that both \(G_\text{loc}\) and \(G_\text{FRW}\) depend on the background field \(C_0(t)\) only, not directly on the scale factor \(a(t)\). Since \(C \approx 0\) before turnaround (Hubble friction suppression), both are nearly constant from Big Bang to turnaround, then rise after anti-friction triggers \(C\) growth. The profile is <strong>plateau-then-rise</strong>, not the bowl shape suggested by the SAE prior (causal intensity \(\propto \Sigma 1/r_{ij} \propto 1/a\)). The prior correctly describes causal-law density, but the mapping to \(G_\text{eff}\) is mediated by \(C(t)\) and screened by Hubble friction in the pre-turnaround epoch.</p>
+    <p style="margin-top:0.7rem;"><span class="success-label">SUCCESS</span> The plateau profile means \(G_\text{FRW}(\text{BBN}) = G_\text{FRW}(\text{CMB}) = G\) (exact when \(C_0 = 0\)). BBN and CMB background-level constraints are automatically satisfied.</p>
+    <p style="margin-top:0.7rem;"><span class="tension-label">3 TENSIONS</span> Three open tensions constitute genuine remainders of the current framework: <strong>(T1)</strong> If the entire present-day softening \(\tilde{H}_0 - H_\text{geo}\) is sourced by \(A(C)\) and \(\dot{C}\) is approximately constant since turnaround, then \(\dot{G}/G \sim 2.4 \times 10^{-10}\) yr⁻¹ — four to five orders of magnitude above the LLR bound. <strong>(T2)</strong> \(\delta C\) perturbations cannot substitute for CDM potential wells at recombination. <strong>(T3)</strong> The causal-density–\(G_\text{eff}\) mapping is not encoded in the current action.</p>
+  </div>
+
+  <!-- §1 -->
+  <h2>1. Motivation</h2>
+
+  <p>Cosmo Paper I (DOI: <a href="https://doi.org/10.5281/zenodo.19245267" target="_blank" rel="noopener">10.5281/zenodo.19245267</a>) established a closed FRW breathing universe with turnaround at 10 Gyr. Its §7 introduced the dual-\(H\) framework: geometric contraction (\(H_\text{geo} < 0\)) is masked by the observational softening factor \(A(C) = e^{\beta C/(2M_P)}\), producing an observed \(\tilde{H}_0 > 0\). Cosmo Paper II (DOI: <a href="https://doi.org/10.5281/zenodo.19276846" target="_blank" rel="noopener">10.5281/zenodo.19276846</a>) listed "quantitative assessment of \(G_\text{eff}(t)\)" as Open Problem 5. Cosmo Paper III (DOI: <a href="https://doi.org/10.5281/zenodo.19281983" target="_blank" rel="noopener">10.5281/zenodo.19281983</a>) completed the \(a_0\) prediction but left \(G_\text{eff}\) untouched.</p>
+  <p>This paper answers Cosmo Paper II's Open Problem 5. The SAE prior on causal intensity gives a directional expectation (§2), the action gives a concrete \(G_\text{eff}(t)\) profile (§3), and confrontation with observations reveals three tensions (§4–§7).</p>
+
+  <!-- §2 -->
+  <h2>2. The SAE Prior: Causal-Law Density Is Bowl-Shaped</h2>
+
+  <h3>2.1 Definition</h3>
+  <p>The global measure of causal-law intensity is \(\propto \Sigma\, 1/r_{ij}\), the sum of inverse inter-particle distances over all particle pairs. In a homogeneous FRW background, \(r_{ij} \sim a(t)\), so causal intensity \(\propto 1/a(t)\).</p>
+
+  <h3>2.2 Bowl shape</h3>
+  <p>Near the Big Bang: \(a\) is smallest, \(1/a\) is largest, causal density is highest. At turnaround (10 Gyr): \(a = a_\text{max}\), causal density is at its minimum — the remainder has the greatest space for expression, allowing 5DD (life) to emerge. Near the Big Crunch: \(a\) returns to minimal values, causal density rises again.</p>
+
+  <h3>2.3 Scope of the prior</h3>
+  <p>The prior gives the shape of causal-law density, <em>not</em> of \(G_\text{eff}\). The mapping between the two is an empirical question that the action must answer. As shown in §3, the current action mediates this mapping through \(C(t)\), which is friction-screened before turnaround, so the bowl shape of causal density does not transfer directly to \(G_\text{eff}\).</p>
+
+  <!-- §3 -->
+  <h2>3. G<sub>eff</sub> from the SAE Action: The Plateau-Rise Profile</h2>
+
+  <h3>3.1 The action</h3>
+
+  <div class="formula-display">
+    <p>$$S_\text{eff} = \int d^4x \sqrt{-g}\left[\tfrac{1}{2}F(C)R - \tfrac{1}{2}(\nabla C)^2 - U(C) - \rho_{\Lambda,\Sigma}\right] + S_m[A^2(C)g_{\mu\nu},\, \psi_m]$$</p>
+    <p style="margin-top:0.5rem;">with \(F(C) = M_P^2 - \xi C^2\), \(A(C) = e^{\beta C/(2M_P)}\), \(M_P^2 = \hbar c/(8\pi G)\).</p>
+  </div>
+
+  <h3>3.2 G<sub>eff</sub> in the Jordan frame</h3>
+  <p>Transforming to the physical metric \(\hat{g}_{\mu\nu} = A^2(C)g_{\mu\nu}\) where matter is minimally coupled, the local Cavendish-type gravitational constant is:</p>
+
+  <div class="formula-display">
+    <p>$$G_\text{loc}(C_0) = \frac{A_0^2}{8\pi F_0}\left[1 + \frac{(F'_0 - 2\alpha_0 F_0)^2}{2F_0(1 + 6\alpha_0 F'_0 - 6\alpha_0^2 F_0) + 3(F'_0 - 2\alpha_0 F_0)^2}\right]$$</p>
+    <p style="margin-top:0.5rem;">where \(F_0 = F(C_0)\), \(F'_0 = -2\xi C_0\), \(\alpha_0 = \beta/(2M_P)\), \(A_0 = e^{\beta C_0/(2M_P)}\).</p>
+  </div>
+
+  <p>The background Friedmann coupling is:</p>
+  <div class="formula-display">
+    <p>$$G_\text{FRW}(C_0) = \frac{A^2(C_0)}{8\pi F(C_0)}$$</p>
+    <p style="margin-top:0.4rem;"><em>Both depend on \(C_0(t)\) only, not directly on \(a(t)\).</em></p>
+  </div>
+
+  <h3>3.3 At C₀ = 0 (turnaround and before)</h3>
+  <div class="theorem-box">
+    <p>\(G_\text{loc}(0) = G(1 + \beta^2/2)\), with \(\beta^2/2 < 1.15 \times 10^{-5}\) under Cassini. Effectively \(G_\text{loc}(0) = G\) to five decimal places.</p>
+    <p style="margin-top:0.4rem;">\(G_\text{FRW}(0) = G\) (exact).</p>
+  </div>
+
+  <h3>3.4 The pre-turnaround plateau</h3>
+  <p>Cosmo Paper I establishes: before turnaround, \(H_\text{geo} > 0\) provides Hubble friction, \(C \approx 0\). Therefore \(G_\text{eff}(t < 10\ \text{Gyr}) \approx G\). No variation. No bowl.</p>
+
+  <h3>3.5 Post-turnaround rise</h3>
+  <p>After turnaround, anti-friction drives \(C\) growth. For \(\beta > 0\) and \(\xi > -1/2\), \(G_\text{loc}\) increases with \(C\). The post-turnaround branch rises.</p>
+
+  <h3>3.6 The complete profile</h3>
+  <div class="theorem-box">
+    <p><strong>Big Bang → turnaround:</strong> constant plateau (\(G_\text{eff} \approx G\))</p>
+    <p style="margin-top:0.3rem;"><strong>Turnaround → today → Big Crunch:</strong> rising</p>
+    <p style="margin-top:0.5rem;">This is plateau-then-rise, not bowl-shaped. The SAE prior's bowl shape describes causal-law density, not \(G_\text{eff}\). The mismatch arises because Hubble friction screens the C-field from tracking causal density before turnaround.</p>
+  </div>
+
+  <!-- §4 -->
+  <h2>4. Background G<sub>FRW</sub> Constraints: BBN Safety and CMB Safety</h2>
+
+  <p><em>This section addresses constraints on the background Friedmann coupling \(G_\text{FRW}\), not the full CMB power spectrum. The complete CMB peak structure depends on perturbation dynamics; see T2 in §6.</em></p>
+
+  <h3>4.1 BBN (t ≈ 3 minutes)</h3>
+  <div class="prediction-box">
+    <p>\(G_\text{FRW}(\text{BBN}) = G\) (exact when \(C_0 = 0\)). All standard BBN predictions are preserved. Using the BBN sensitivity coefficient \(\delta Y_4/Y_4 \approx 0.35 \cdot \delta G\) (Bambi, Giannotti &amp; Villante) and the constraint \(G_\text{BBN}/G_0 = 0.99^{+0.06}_{-0.05}\) (2σ), the SAE plateau satisfies BBN bounds by <strong>four orders of magnitude</strong>.</p>
+  </div>
+
+  <h3>4.2 CMB G-variation (t ≈ 380,000 years)</h3>
+  <div class="prediction-box">
+    <p>\(G_\text{FRW}(\text{CMB}) = G\) (exact when \(C_0 = 0\)). Background expansion rate at recombination matches GR. Planck constraints on \(G\) variation at recombination — from \(|\Delta G/G| \lesssim 0.19\%\) (harmonic-attractor scalar-tensor, tightest) to \(|\Delta G/G| \lesssim 3\%\) (general non-minimally coupled scalar-tensor, Planck 2018 + BAO) — are automatically satisfied.</p>
+    <p style="margin-top:0.5rem;"><em>Note: this "safety" refers only to the background effective gravitational constant. The full CMB acoustic peak structure, particularly the third peak height, depends on whether C-field perturbations can provide CDM-like potential wells. This is a separate and much harder problem; see §6.</em></p>
+  </div>
+
+  <h3>4.3 ⁷Li</h3>
+  <p>If \(G_\text{eff}(\text{BBN})\) were larger than \(G\), the \({}^7\text{Li}\) prediction would decrease (favourable direction for the lithium problem). However, on the plateau \(G_\text{eff}(\text{BBN}) \approx G\), so no help is provided. The lithium problem remains unexplained by this framework.</p>
+
+  <!-- §5 -->
+  <h2>5. Tension T1: Conditional No-Go for A(C)-Dominated Constant-Ċ Closure</h2>
+
+  <div class="tension-box">
+    <p><span class="tension-label">T1</span><strong>Conditional no-go:</strong> If the entire present-day softening \(\tilde{H}_0 - H_\text{geo}\) is sourced by \(A(C)\) and \(\dot{C}\) is approximately constant since turnaround, then \(G_\text{loc}\) rises by a factor ~2.5, implying \(\dot{G}/G \sim 2.4 \times 10^{-10}\) yr⁻¹ — four to five orders of magnitude above the lunar laser ranging bound of \(\sim 10^{-14}\) yr⁻¹.</p>
+  </div>
+
+  <h3>5.1 The assumptions under test</h3>
+  <p>Two specific assumptions: (i) the entire present-day softening \(\tilde{H}_0 - H_\text{geo}\) is sourced by \(A(C)\), and (ii) \(\dot{C}\) is approximately constant from turnaround to today. The resulting conflict with local \(\dot{G}/G\) bounds constitutes a no-go for <em>this particular closure</em>, not a prediction of the SAE framework as a whole.</p>
+
+  <h3>5.2 The softening requirement</h3>
+  <p>Cosmo Paper I's dual-\(H\) framework: \(\tilde{H}_0 = H_\text{geo} + \beta\dot{C}/(2M_P)\). With \(H_\text{geo} \approx -50\) km/s/Mpc and \(\tilde{H}_0 = +67.4\), the softening term must provide \(\beta\dot{C}/(2M_P) \approx +117\) km/s/Mpc \(\approx 3.8 \times 10^{-18}\) s⁻¹.</p>
+
+  <h3>5.3 Implied C₀(today)</h3>
+  <p>If \(\dot{C}\) is approximately constant from turnaround (10 Gyr) to today (13.8 Gyr), then \(\beta C_0(\text{today})/(2M_P) \approx \Delta H \cdot \Delta t \approx 0.455\). This gives \(A_0 = e^{0.455} \approx 1.58\), and for \(\xi = 0\):</p>
+  <div class="formula-display">
+    <p>$$\frac{G_\text{loc}(\text{today})}{G_\text{loc}(\text{turnaround})} = A_0^2 = e^{2 \times 0.455} \approx 2.48$$</p>
+    <p style="margin-top:0.4rem;">A factor of ~2.5 increase in \(G\) over 3.8 Gyr.</p>
+  </div>
+
+  <h3>5.4 Conflict with lunar laser ranging</h3>
+  <table>
+    <thead>
+      <tr><th>Bound</th><th>Value (yr⁻¹)</th><th>Reference</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LLR (Biskupek et al. 2021–2025)</td><td>$(−5.0 \pm 9.6) \times 10^{-15}$</td><td>Tightest symmetric</td></tr>
+      <tr><td>Cassini + ephemeris (Pitjeva et al.)</td><td>$-2.9 \times 10^{-14}$ to $+4.6 \times 10^{-14}$ (3σ)</td><td>Tightest positive-direction</td></tr>
+      <tr><td>SAE prediction (constant-Ċ)</td><td>$+2.4 \times 10^{-10}$</td><td>~25,000× above Pitjeva 3σ</td></tr>
+    </tbody>
+  </table>
+  <p>Tension factor: ~25,000 (four to five orders of magnitude).</p>
+
+  <h3>5.5 What is not affected</h3>
+  <p>The structural predictions \(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\) and \(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\) are derived from the vacuum 4-form sector and \(S^3\) geometry respectively. Neither involves \(C(t)\)'s dynamical evolution. They are unaffected by this tension.</p>
+
+  <h3>5.6 Possible resolution directions</h3>
+  <ol>
+    <li>The softening term may not be entirely attributable to \(A(C)\). Other mechanisms (modification of the Friedmann equation, different conformal structure) may contribute.</li>
+    <li>\(\dot{C}\) may not be approximately constant. If \(C\) growth is highly concentrated in a very recent, very brief epoch, cumulative \(\Delta C\) could be small (preserving \(G_\text{eff} \approx G\)) while \(\dot{C}\) is instantaneously large. This requires a specific shape of \(U(C)\) producing delayed ignition.</li>
+    <li>In the Jordan frame, \(A(C)\) affects both \(G_\text{loc}\) and the physical rulers/clocks used by LLR. The net observed \(\dot{G}/G\) may differ from the naive \(G_\text{loc}\) derivative due to \(A(C)\) compensation effects. A precise calculation is needed.</li>
+    <li>The dual-\(H\) framework itself may need structural revision. The core SAE results (\(\Lambda\), \(a_0\)) do not depend on it.</li>
+  </ol>
+
+  <!-- §6 -->
+  <h2>6. Tension T2: The CMB Third Peak</h2>
+
+  <div class="tension-box">
+    <p><span class="tension-label">T2</span><strong>CMB third-peak problem:</strong> Linear perturbations \(\delta C\) of the C-field cannot substitute for CDM potential wells at recombination: \(\delta C\) has effective sound speed \(\sim c\) (not zero), does not grow during radiation domination, and is forced to oscillate with the baryon-photon plasma. This is a structural difficulty of the current SAE canonical scalar sector, shared by many scalar-dominated MOND completions.</p>
+  </div>
+
+  <h3>6.1 The problem</h3>
+  <p>In ΛCDM, the CMB third acoustic peak height is determined by the CDM-to-baryon ratio. CDM provides pressureless (\(w = 0\)), non-oscillating potential wells that begin growing during radiation domination. SAE has no CDM particles.</p>
+
+  <h3>6.2 Why δC cannot substitute for CDM</h3>
+  <p>Three fatal characteristics of \(\delta C\) as a CDM substitute:</p>
+  <ol type="a">
+    <li><strong>No growth during radiation domination.</strong> In the radiation era, \(\delta T_\text{trace} \approx 0\) and \(R \approx 0\). The C-field perturbation is effectively a free ultralight scalar with no source. Sub-horizon modes undergo damped oscillation, not logarithmic growth.</li>
+    <li><strong>Effective sound speed \(\sim c\).</strong> The spatial gradient term \((\nabla\delta C)^2\) gives effective pressure with \(c_s \approx c\) (not \(c_s \approx 0\) as required for CDM-like behaviour). Perturbations disperse rather than collapsing into dense potential wells.</li>
+    <li><strong>Forced oscillation with the baryon-photon plasma.</strong> Once the matter era begins (before recombination), the source term for \(\delta C\) is the oscillating baryon density \(\delta\rho_b\). Since baryons are Compton-coupled to photons, \(\delta C\) is forced to oscillate with the baryon acoustic oscillations. It cannot provide the static, pre-existing potential wells that CDM offers.</li>
+  </ol>
+
+  <h3>6.3 Possible resolution directions</h3>
+  <ol type="a">
+    <li><strong>Superfluid/BEC phase transition</strong> (Khoury 2015): if the C-field undergoes Bose-Einstein condensation in the early universe, superfluid phonons can have \(c_s \approx 0\), mimicking pressureless CDM. Conceptually aligned with SAE's kinetic-term phase transition (\(J(Y) \sim Y \to Y^{3/2}\)).</li>
+    <li><strong>Heavy scalar oscillation (axion-like):</strong> very large \(\xi\) gives \(m_\text{eff} \sim \sqrt{\xi R} \gg H\). Rapid oscillation averages to \(w = 0\) dust-like behaviour. Requires fine-tuning and may conflict with late-time dynamics.</li>
+    <li><strong>Hybrid approach:</strong> admit the C-field handles galactic-scale MOND while a separate component provides CMB potential wells. Sacrifices SAE's "no dark matter particles" purity.</li>
+  </ol>
+
+  <h3>6.4 Status</h3>
+  <p>This problem is deferred to Cosmo 5, where it will be addressed through numerical solution of the modified Einstein-Boltzmann equations. The present paper reports the structural diagnosis; the cure is future work. Note: this cannot be unconditionally generalised to all relativistic MOND theories — Skordis &amp; Złośnik (2021) claim to have constructed a relativistic MOND theory that reproduces CMB and matter power spectra through more complex field content.</p>
+
+  <!-- §7 -->
+  <h2>7. Tension T3: The Causal-Density–G<sub>eff</sub> Mapping Gap</h2>
+
+  <div class="tension-box">
+    <p><span class="tension-label">T3</span><strong>Mapping gap:</strong> The SAE prior says causal-law density \(\propto \Sigma 1/r_{ij} \propto 1/a(t)\) (bowl-shaped). The action says \(G_\text{eff}\) depends on \(C_0(t)\) only, and \(C_0 \approx 0\) before turnaround (plateau). The bowl shape of causal density is not encoded in the current action.</p>
+  </div>
+
+  <h3>7.1 Diagnosis</h3>
+  <p>The current action contains no term that directly couples \(G_\text{eff}\) to \(a(t)\) or to a global invariant like \(\Sigma 1/r_{ij}\). The only pathway from causal density to \(G_\text{eff}\) is through \(C(t)\), and this pathway is blocked by Hubble friction before turnaround.</p>
+
+  <h3>7.2 Possible resolution directions</h3>
+  <ol type="a">
+    <li><strong>Transition-zone initial conditions:</strong> if the Big Bang transition zone leaves a nonzero \(C\) residual that decays during expansion, the pre-turnaround \(G_\text{eff}\) would show a declining trend (bowl's left wall). This is additional input, not derived from the action.</li>
+    <li><strong>Encoding \(\Sigma 1/r_{ij}\) in the action:</strong> introducing a global invariant \(\propto 1/a\) into \(F(C)\) or \(A(C)\) would make the bowl shape a consequence of the action itself. This is a significant theoretical modification.</li>
+    <li><strong>Accepting the plateau:</strong> the prior may be correct about causal-law density but incorrect about its direct mapping to \(G_\text{eff}\). The plateau may be the physically correct profile.</li>
+  </ol>
+
+  <!-- §8 -->
+  <h2>8. Non-Trivial Predictions</h2>
+
+  <div class="prediction-box">
+    <p><strong>1.</strong> \(G_\text{eff}(t)\) is constant from Big Bang through turnaround. \(G_\text{eff}(\text{BBN}) = G_\text{eff}(\text{CMB}) = G_\text{eff}(\text{turnaround}) = G\) to within \(\beta^2/2 \sim 10^{-5}\). BBN and CMB constraints automatically satisfied.</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>2.</strong> \(G_\text{eff}\) rises after turnaround. For \(\beta > 0\) and \(\xi > -1/2\), the post-turnaround branch is monotonically increasing. Rise rate constrained by LLR to \(|\dot{G}/G| < \sim 10^{-14}\) yr⁻¹.</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>3.</strong> The \(A(C)\) softening–\(\dot{G}/G\) tension is a quantitative, falsifiable prediction. If future LLR or planetary ephemeris measurements constrain \(\dot{G}/G\) to be exactly zero, this directly constrains the C-field evolution rate and, by extension, the dual-\(H\) mechanism of Cosmo Paper I.</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>4.</strong> Causal-law density is bowl-shaped but \(G_\text{eff}\) is not. The distinction between causal-law density (a prior geometric quantity \(\propto 1/a\)) and \(G_\text{eff}\) (a dynamical quantity mediated by \(C(t)\)) is a structural result of the SAE framework with no analogue in standard ΛCDM.</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>5.</strong> \(\delta C\) cannot substitute for CDM at the CMB level. Any SAE-compatible resolution of the third acoustic peak must involve either a phase transition of the C-field (superfluid/BEC), a heavy-scalar oscillation regime, or a hybrid component. Testable by future CMB polarisation and lensing measurements.</p>
+  </div>
+
+  <!-- §9 -->
+  <h2>9. Assumption Inventory</h2>
+
+  <p><strong>Inherited from Cosmo Papers I–III (not modified here):</strong> two SAE axioms (remainder must develop; remainder is conserved); dual-4DD structure, \(T_1 = 20\) Gyr, \(T_2 = 19.5168\) Gyr; effective action with \(F(C)R\), kinetic terms, \(U(C)\), \(S_m[A^2(C)g_{\mu\nu}, \psi_m]\); \(S^3\) spatial topology (\(k = +1\) closed FRW).</p>
+  <p><strong>New in this paper (derived, not assumed):</strong> \(G_\text{loc}\) and \(G_\text{FRW}\) analytic expressions in Jordan frame (§3.2); plateau-rise profile of \(G_\text{eff}(t)\) (§3.6); BBN/CMB automatic safety (§4).</p>
+  <p><strong>Tensions identified (not resolved):</strong> T1: \(A(C)\) softening vs \(\dot{G}/G\) (§5); T2: CMB third peak (§6); T3: causal-density–\(G_\text{eff}\) mapping gap (§7).</p>
+
+  <!-- §10 -->
+  <h2>10. Open Problems</h2>
+
+  <ol>
+    <li><strong>Resolution of the \(A(C)\) softening–\(\dot{G}/G\) tension.</strong> The most urgent open problem in the SAE dynamical sector. Requires either revision of the dual-\(H\) mechanism, a non-constant \(\dot{C}\) profile (delayed ignition), a Jordan-frame compensation calculation, or structural modification of the softening mechanism.</li>
+    <li><strong>CMB third peak via modified Einstein-Boltzmann equations.</strong> Deferred to Cosmo 5. The superfluid/BEC direction is the most promising SAE-compatible route.</li>
+    <li><strong>Encoding causal density in the action.</strong> Can \(\Sigma 1/r_{ij}\) or its FRW limit \(1/a(t)\) be promoted from a prior narrative to a mathematical term in the effective action?</li>
+    <li><strong>The \(\xi\) constraint.</strong> If \(C_0(\text{today})\) is large (as implied by the softening requirement), \(F(C) = M_P^2 - \xi C^2\) demands \(\xi\) to be extremely small (\(< 10^{-5}\) for \(\beta = 4.8 \times 10^{-3}\)). Whether this is natural or fine-tuned requires further analysis.</li>
+    <li><strong>Transition-zone initial conditions for \(C\).</strong> Does the Big Bang transition zone leave a nonzero \(C\) residual? If so, the pre-turnaround \(G_\text{eff}\) may deviate from the plateau, potentially realising the bowl shape predicted by the causal-density prior.</li>
+  </ol>
+
+  <!-- §11 -->
+  <h2>11. Conclusion</h2>
+
+  <p>The SAE framework's effective gravitational coupling \(G_\text{eff}(t)\) follows a plateau-rise profile: constant from Big Bang through turnaround, rising thereafter as the C-field grows under anti-friction. This profile automatically satisfies BBN and CMB constraints on \(G\) variation, which is a structural success.</p>
+  <p>Three tensions are identified and reported with equal weight alongside the successes. The \(A(C)\) softening–\(\dot{G}/G\) tension (T1) challenges Cosmo Paper I's dynamical narrative. The CMB third-peak problem (T2) is the collective vulnerability of all MOND-type theories. The causal-density–\(G_\text{eff}\) mapping gap (T3) reveals that the SAE prior on causal intensity is not yet encoded in the current action.</p>
+  <p>These tensions are remainders — in the precise SAE sense. They cannot be eliminated by ignoring them. They can only be addressed by the next round of the chisel-construct cycle: either modifying the action, or finding new mechanisms within the existing action, or accepting that certain features of the prior require revision.</p>
+  <p>The structural predictions of the SAE cosmological programme — \(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\) and \(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\) — remain unaffected. The tensions identified here are confined to the dynamical sector and invite engagement from the physics community.</p>
+
+  <!-- Appendices -->
+  <h2>Appendix A: G<sub>eff</sub> Analytic Expressions</h2>
+
+  <h3>A.1 Local Cavendish coupling (Jordan frame)</h3>
+  <p><em>Applicability note:</em> The following expression assumes the scalar field is effectively massless at the experimental scale (\(\lambda_C = 1/m_\text{eff} \gg\) Earth–Moon distance \(\sim 3.8 \times 10^8\) m). If \(m_\text{eff}\) is significant, the scalar-exchange contribution acquires a Yukawa suppression \(e^{-m_\text{eff} r}\). The dominant T1 tension arises from the background drift of \(A^2/F\), which is not screened by local Yukawa effects.</p>
+
+  <div class="formula-display">
+    <p>$$G_\text{loc}(C_0) = \frac{A_0^2}{8\pi F_0}\left[1 + \frac{(F'_0 - 2\alpha_0 F_0)^2}{2F_0(1 + 6\alpha_0 F'_0 - 6\alpha_0^2 F_0) + 3(F'_0 - 2\alpha_0 F_0)^2}\right]$$</p>
+    <p style="margin-top:0.4rem;">with \(F_0 = M_P^2 - \xi C_0^2\), \(F'_0 = -2\xi C_0\), \(\alpha_0 = \beta/(2M_P)\), \(A_0 = e^{\beta C_0/(2M_P)}\).</p>
+  </div>
+
+  <h3>A.2 Background Friedmann coupling</h3>
+  <div class="formula-display">
+    <p>$$G_\text{FRW}(C_0) = \frac{A^2(C_0)}{8\pi F(C_0)}$$</p>
+  </div>
+
+  <h3>A.3 Evaluation at C₀ = 0</h3>
+  <p>\(G_\text{loc}(0) = G(1 + \beta^2/2) \approx G\) (correction \(\sim 10^{-5}\) under Cassini); \(G_\text{FRW}(0) = G\) (exact).</p>
+
+  <h3>A.4 Post-turnaround expansion (ξ = 0)</h3>
+  <div class="formula-display">
+    <p>$$\frac{G_\text{loc}(C)}{G_\text{loc}(0)} = A^2(C) = e^{\beta C/M_P}$$</p>
+    <p style="margin-top:0.4rem;">Under constant-\(\dot{C}\) approximation with \(\beta\dot{C}/(2M_P) = \Delta H \approx 117\) km/s/Mpc:</p>
+    <p>$$\frac{G_\text{loc}(\text{today})}{G_\text{loc}(\text{turnaround})} = e^{2\Delta H \cdot \Delta t} \approx e^{0.91} \approx 2.48 \qquad \dot{G}/G = 2\Delta H \approx 2.4 \times 10^{-10}\ \text{yr}^{-1}$$</p>
+  </div>
+
+  <h3>A.5 The ξ constraint</h3>
+  <p>\(F(C) > 0\) requires \(\xi < (M_P/C_0)^2\). For \(C_0/M_P \sim 190\) (\(\beta = 4.8 \times 10^{-3}\)), this gives \(\xi < 2.8 \times 10^{-5}\).</p>
+
+  <h2>Appendix B: Observational Constraints on Ġ/G</h2>
+
+  <table>
+    <thead>
+      <tr><th>Source</th><th>Constraint (yr⁻¹)</th><th>Direction</th><th>Reference</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LLR (Biskupek et al.)</td><td>\((−5.0 \pm 9.6) \times 10^{-15}\)</td><td>Symmetric</td><td>Biskupek et al. 2021–2025</td></tr>
+      <tr><td>Cassini + ephemeris (Pitjeva)</td><td>\(-2.9 \times 10^{-14}\) to \(+4.6 \times 10^{-14}\) (3σ)</td><td>Allows positive</td><td>Pitjeva et al.</td></tr>
+      <tr><td>Binary/millisecond pulsars</td><td>\(|\dot{G}/G| < (1\text{–}5) \times 10^{-13}\)</td><td>Symmetric</td><td>Various</td></tr>
+      <tr><td>BBN</td><td>\(\sim 10^{-12}\)</td><td>Symmetric</td><td>Cyburt et al. 2016</td></tr>
+      <tr><td><strong>SAE (constant-Ċ)</strong></td><td>\(+2.4 \times 10^{-10}\)</td><td>Positive</td><td>~25,000× above Pitjeva 3σ</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Appendix C: BBN Sensitivity Coefficients</h2>
+
+  <p>From Bambi, Giannotti &amp; Villante: \({}^4\text{He}\): \(\delta Y_4/Y_4 \approx 0.35 \cdot \delta G\); \({}^7\text{Li}\): \(\delta Y_7 \approx -0.736 \cdot \delta G\) (negative sign: \(G\uparrow\) implies \({}^7\text{Li}\downarrow\)).</p>
+  <p>On the plateau (\(\delta G \sim \beta^2/2 \sim 10^{-5}\)): \(\Delta Y_4 \sim 10^{-6}\), \(\Delta {}^7\text{Li} \sim 10^{-5}\). Both negligible. Direction check for \({}^7\text{Li}\) problem: \(G_\text{eff} > G\) would reduce \({}^7\text{Li}\) (favourable), but the plateau gives \(G_\text{eff} \approx G\), providing no relief.</p>
+
+  <h2>Appendix D: Four-AI Collaboration Methodology</h2>
+
+  <div class="collab-box">
+    <div class="collab-label">ChatGPT / Gongxi Hua</div>
+    <p>Derived the complete \(G_\text{eff}\) analytic expressions in Jordan frame (\(G_\text{loc}\) and \(G_\text{FRW}\)), proved that \(G_\text{eff}\) depends on \(C_0(t)\) only and not directly on \(a(t)\), identified the plateau-rise profile, computed the post-turnaround \(G_\text{eff}\) rise under constant-\(\dot{C}\) approximation (factor ~2.5, \(\dot{G}/G \sim 2.4 \times 10^{-10}\) yr⁻¹), identified the 4–5 order-of-magnitude tension with LLR, discovered the \(\xi\) constraint (\(\xi < 2.8 \times 10^{-5}\) for \(\beta = 4.8 \times 10^{-3}\)) and noted that \(\xi = 0.1\) or \(1\) causes \(F(C)\) to flip negative within millions of years after turnaround.</p>
+  </div>
+
+  <div class="collab-box">
+    <div class="collab-label">Gemini / Zixia</div>
+    <p>Performed a complete analysis of C-field linear perturbations at recombination. Proved three fatal characteristics of \(\delta C\) as a CDM substitute: no growth during radiation domination, effective sound speed \(\sim c\), and forced oscillation with the baryon-photon plasma. Recommended the superfluid/BEC direction as the most promising SAE-compatible resolution. Provided the critical paper strategy judgment: CMB third peak must be deferred to Cosmo 5, not forced into Cosmo 4.</p>
+  </div>
+
+  <div class="collab-box">
+    <div class="collab-label">Grok / Zigong</div>
+    <p>Compiled a comprehensive survey of current \(\dot{G}/G\) constraints from LLR, Cassini, planetary ephemeris, pulsar timing, BBN, and gravitational-wave observations. Identified Pitjeva's ephemeris as the tightest positive-direction bound (\(+4.6 \times 10^{-14}\) yr⁻¹ at 3σ). Noted that Jordan-frame \(A(C)\) compensation may reduce the observed \(\dot{G}/G\) relative to the naive \(G_\text{loc}\) derivative. Flagged that next-generation LLR (2030s) at \(10^{-15}\text{–}10^{-16}\) yr⁻¹ precision will directly test the C-field evolution rate.</p>
+  </div>
+
+  <div class="collab-box">
+    <div class="collab-label">Claude / Zilu</div>
+    <p>Designed the prompts for all three AIs, identified the initial tension between the SAE causal-density prior (bowl-shaped) and the action's \(G_\text{eff}\) (plateau-rise), coordinated the synthesis of three independent analyses, and resolved the apparent contradiction between ChatGPT's "dangerous" and Grok's "safe" verdicts by noting that Grok's safety assessment did not incorporate the softening-term magnitude constraint. Wrote the full paper.</p>
+    <p style="margin-top:0.5rem;"><strong>Key correction instance:</strong> The SAE prior originally stated \(G_\text{eff}\) is bowl-shaped. ChatGPT's strict derivation showed \(G_\text{eff}\) follows a plateau-rise profile instead. Resolution: causal-law density is indeed bowl-shaped (the prior is correct about the underlying physics), but the mapping to \(G_\text{eff}\) is mediated by \(C(t)\) and friction-screened before turnaround (the prior's implication for \(G_\text{eff}\) was incorrect). This distinction between the prior's physical content and its observational implication is itself a methodological contribution.</p>
+  </div>
+
+  <div class="series-nav">
+    <p><strong>SAE Cosmological Programme</strong></p>
+    <p>
+      <a href="sae-cosmological-constant.html">Cosmo I — Λ from Remainder Conservation</a> ·
+      <a href="sae-dark-matter.html">Cosmo II — Dark Matter &amp; Galaxy Rotation</a> ·
+      <a href="sae-from-lambda-to-a0.html">Cosmo III — From Λ to a₀</a> ·
+      <strong>Cosmo IV — G<sub>eff</sub>, BBN/CMB, Three Tensions</strong>
+    </p>
+    <p>Cosmo V (CMB third peak via modified Einstein-Boltzmann equations) — forthcoming</p>
+    <p><a href="../index.html">← All Papers</a></p>
+  </div>
+
+</article>
+</main>
+</div><!-- end content-en -->
+
+<!-- ═══════════════ CHINESE ═══════════════ -->
+<div id="content-zh" class="lang-content">
+<main class="paper-container">
+<article class="paper-body">
+
+  <div class="paper-badge">SAE宇宙学 IV</div>
+  <span class="tag-standalone">G_eff · BBN/CMB · 三个张力</span>
+
+  <h1 class="paper-title">SAE框架下的G<sub>eff</sub></h1>
+  <p class="paper-subtitle">平台-上升曲线、BBN/CMB安全性与三个开放张力</p>
+
+  <div class="paper-meta-block">
+    <span class="author">秦汉 (Han Qin)</span>
+    <span class="meta-sep">·</span>
+    <span class="orcid"><a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID: 0009-0009-9583-0018</a></span>
+    <span class="meta-sep">·</span>
+    <span class="date">2026</span>
+  </div>
+
+  <a href="https://doi.org/10.5281/zenodo.19298161" target="_blank" rel="noopener" class="zenodo-link">
+    📄 DOI: 10.5281/zenodo.19298161
+  </a>
+
+  <div class="statement-box" style="margin-top:1.2rem;">
+    <p><strong>声明：</strong>本文基于Self-as-an-End（SAE）框架，从已发表的SAE作用量推导有效引力耦合\(G_\text{eff}(t)\)，并与BBN、CMB和局域\(\dot{G}/G\)约束对照。本文以同等篇幅报告成功与未解决的张力。文中涉及的宇宙学推测有余项，欢迎任何形式的证伪。</p>
+  </div>
+
+  <div class="firewall-box">
+    <p><strong>防火墙：</strong>本文的任何错误、推翻或证伪，不影响SAE框架的其他论文。宇宙学纲领的结构性结果——\(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\)（Cosmo Paper I）和\(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\)（Cosmo Paper III）——不依赖本文讨论的\(G_\text{eff}\)动力学，前者来自真空扇区几何，后者来自\(S^3\)拓扑。本文处理的是动力学扇区（Cosmo Paper I §7）及其观测后果。</p>
+  </div>
+
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>SAE宇宙学纲领已产出两个第一性原理预言：\(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\)（命中Planck 2018，误差5%）和\(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\)（命中MOND经验值，误差3.3%）。两者均为结构/几何结果，不依赖C场的动力学演化。本文考察动力学扇区——有效引力耦合\(G_\text{loc}\)（局域Cavendish）和\(G_\text{FRW}\)（背景Friedmann）——并报告以下结果。</p>
+    <p style="margin-top:0.7rem;"><span class="success-label">成功</span> Jordan frame中的严格推导表明\(G_\text{loc}\)和\(G_\text{FRW}\)均仅通过背景场\(C_0(t)\)随时间变化，不直接含尺度因子\(a(t)\)。由于turnaround之前\(C \approx 0\)（Hubble摩擦压制），两者从Big Bang到turnaround近乎常数，此后随anti-friction驱动\(C\)增长而上升。曲线形状为<strong>平台-上升</strong>，而非SAE先验（因果律密度\(\propto \Sigma 1/r_{ij} \propto 1/a\)）所暗示的碗形。先验正确描述了因果律密度，但映射通过\(C(t)\)传导，turnaround前被Hubble摩擦屏蔽。</p>
+    <p style="margin-top:0.7rem;"><span class="success-label">成功</span> 平台曲线意味着\(G_\text{FRW}(\text{BBN}) = G_\text{FRW}(\text{CMB}) = G\)（\(C_0 = 0\)时精确成立）。BBN和CMB的背景层面约束自动满足。</p>
+    <p style="margin-top:0.7rem;"><span class="tension-label">3个张力</span> 三个开放张力构成当前框架的真实余项：<strong>(T1)</strong> 若全部软化项\(\tilde{H}_0 - H_\text{geo}\)由\(A(C)\)提供且\(\dot{C}\)从turnaround起近似常数，则\(\dot{G}/G \sim 2.4 \times 10^{-10}\) yr⁻¹——比LLR约束大四到五个数量级。<strong>(T2)</strong> \(\delta C\)扰动无法替代再结合时期的CDM势阱。<strong>(T3)</strong> 因果律密度与\(G_\text{eff}\)的映射未被编码进当前作用量。</p>
+  </div>
+
+  <!-- 一 -->
+  <h2>一、动机</h2>
+
+  <p>Cosmo Paper I（DOI: <a href="https://doi.org/10.5281/zenodo.19245267" target="_blank" rel="noopener">10.5281/zenodo.19245267</a>）建立了闭合FRW呼吸宇宙，turnaround在10 Gyr。其§7引入双\(H\)框架：几何收缩（\(H_\text{geo} < 0\)）被观测软化因子\(A(C) = e^{\beta C/(2M_P)}\)掩盖。Cosmo Paper II（DOI: <a href="https://doi.org/10.5281/zenodo.19276846" target="_blank" rel="noopener">10.5281/zenodo.19276846</a>）将"\(G_\text{eff}(t)\)的定量评估"列为开放问题5。Cosmo Paper III（DOI: <a href="https://doi.org/10.5281/zenodo.19281983" target="_blank" rel="noopener">10.5281/zenodo.19281983</a>）完成了\(a_0\)预言但未触及\(G_\text{eff}\)。</p>
+  <p>本文回答Cosmo Paper II的开放问题5。SAE先验给出因果律密度的方向性预期（§2），作用量给出具体的\(G_\text{eff}(t)\)曲线（§3），与观测的对照揭示了三个张力（§4–§7）。</p>
+
+  <!-- 二 -->
+  <h2>二、SAE先验：因果律密度是碗形的</h2>
+
+  <h3>2.1 定义</h3>
+  <p>因果律强度的全局度量\(\propto \Sigma\, 1/r_{ij}\)。在均匀FRW背景下，\(r_{ij} \sim a(t)\)，因此因果律强度\(\propto 1/a(t)\)。</p>
+
+  <h3>2.2 碗形</h3>
+  <p>Big Bang附近：\(a\)最小，\(1/a\)最大，因果律密度最高。Turnaround（10 Gyr）：\(a = a_\text{max}\)，因果律密度最低——余项的表达空间最大，允许5DD（生命）涌现。Big Crunch附近：\(a\)回到极小值，因果律密度再次升高。</p>
+
+  <h3>2.3 先验的范围</h3>
+  <p>先验给出的是因果律密度的形状，<em>不是</em>\(G_\text{eff}\)的形状。如§3所示，映射通过\(C(t)\)传导，\(C(t)\)在turnaround前被摩擦屏蔽，因此因果律密度的碗形不会直接传递到\(G_\text{eff}\)。</p>
+
+  <!-- 三 -->
+  <h2>三、从SAE作用量推导G<sub>eff</sub>：平台-上升曲线</h2>
+
+  <h3>3.1 作用量</h3>
+
+  <div class="formula-display">
+    <p>$$S_\text{eff} = \int d^4x \sqrt{-g}\left[\tfrac{1}{2}F(C)R - \tfrac{1}{2}(\nabla C)^2 - U(C) - \rho_{\Lambda,\Sigma}\right] + S_m[A^2(C)g_{\mu\nu},\, \psi_m]$$</p>
+    <p style="margin-top:0.5rem;">其中\(F(C) = M_P^2 - \xi C^2\)，\(A(C) = e^{\beta C/(2M_P)}\)，\(M_P^2 = \hbar c/(8\pi G)\)。</p>
+  </div>
+
+  <h3>3.2 Jordan frame中的G_eff</h3>
+  <p>变换到物理度规\(\hat{g}_{\mu\nu} = A^2(C)g_{\mu\nu}\)（物质在其中最小耦合），局域Cavendish型引力常数为：</p>
+
+  <div class="formula-display">
+    <p>$$G_\text{loc}(C_0) = \frac{A_0^2}{8\pi F_0}\left[1 + \frac{(F'_0 - 2\alpha_0 F_0)^2}{2F_0(1 + 6\alpha_0 F'_0 - 6\alpha_0^2 F_0) + 3(F'_0 - 2\alpha_0 F_0)^2}\right]$$</p>
+    <p style="margin-top:0.5rem;">其中\(F_0 = F(C_0)\)，\(F'_0 = -2\xi C_0\)，\(\alpha_0 = \beta/(2M_P)\)，\(A_0 = e^{\beta C_0/(2M_P)}\)。</p>
+  </div>
+
+  <p>背景Friedmann耦合为：</p>
+  <div class="formula-display">
+    <p>$$G_\text{FRW}(C_0) = \frac{A^2(C_0)}{8\pi F(C_0)}$$</p>
+    <p style="margin-top:0.4rem;"><em>两者仅依赖\(C_0(t)\)，不直接含\(a(t)\)。</em></p>
+  </div>
+
+  <h3>3.3 C₀ = 0时（turnaround及之前）</h3>
+  <div class="theorem-box">
+    <p>\(G_\text{loc}(0) = G(1 + \beta^2/2)\)，Cassini约束下\(\beta^2/2 < 1.15 \times 10^{-5}\)。有效地\(G_\text{loc}(0) = G\)，精确到小数点后五位。</p>
+    <p style="margin-top:0.4rem;">\(G_\text{FRW}(0) = G\)（精确）。</p>
+  </div>
+
+  <h3>3.4 turnaround前的平台</h3>
+  <p>Cosmo Paper I确立：turnaround之前\(H_\text{geo} > 0\)提供Hubble摩擦，\(C \approx 0\)。因此\(G_\text{eff}(t < 10\ \text{Gyr}) \approx G\)。无变化，无碗形。</p>
+
+  <h3>3.5 turnaround后的上升</h3>
+  <p>turnaround之后，anti-friction驱动\(C\)增长。对\(\beta > 0\)且\(\xi > -1/2\)，\(G_\text{loc}\)随\(C\)增大。turnaround后的分支上升。</p>
+
+  <h3>3.6 完整曲线</h3>
+  <div class="theorem-box">
+    <p><strong>Big Bang → turnaround：</strong>常数平台（\(G_\text{eff} \approx G\)）</p>
+    <p style="margin-top:0.3rem;"><strong>Turnaround → 今天 → Big Crunch：</strong>上升</p>
+    <p style="margin-top:0.5rem;">这是平台-上升，不是碗形。SAE先验的碗形描述的是因果律密度，不是\(G_\text{eff}\)。不匹配的原因是Hubble摩擦在turnaround前屏蔽了C场，使其无法追踪因果律密度的变化。</p>
+  </div>
+
+  <!-- 四 -->
+  <h2>四、背景G<sub>FRW</sub>约束：BBN安全与CMB安全</h2>
+
+  <p><em>本节讨论的是背景Friedmann耦合\(G_\text{FRW}\)的约束，而非完整CMB功率谱。完整的CMB峰结构取决于扰动动力学，在§6单独讨论。</em></p>
+
+  <h3>4.1 BBN（t ≈ 3分钟）</h3>
+  <div class="prediction-box">
+    <p>\(G_\text{FRW}(\text{BBN}) = G\)（\(C_0 = 0\)时精确成立）。所有标准BBN预言保持不变。利用BBN敏感度系数\(\delta Y_4/Y_4 \approx 0.35 \cdot \delta G\)（Bambi, Giannotti &amp; Villante）以及约束\(G_\text{BBN}/G_0 = 0.99^{+0.06}_{-0.05}\)（2σ），SAE平台以<strong>四个数量级</strong>的余量满足BBN约束。</p>
+  </div>
+
+  <h3>4.2 CMB G-变化（t ≈ 38万年）</h3>
+  <div class="prediction-box">
+    <p>\(G_\text{FRW}(\text{CMB}) = G\)（\(C_0 = 0\)时精确成立）。再结合时的背景膨胀率与GR一致。Planck对再结合时\(G\)变化的约束——从\(|\Delta G/G| \lesssim 0.19\%\)（谐波吸引子标量-张量，最紧）到\(|\Delta G/G| \lesssim 3\%\)（一般非最小耦合标量-张量，Planck 2018 + BAO）——自动满足。</p>
+    <p style="margin-top:0.5rem;"><em>注意：此处的"安全"仅指再结合时期背景有效引力常数接近GR。完整CMB声学峰结构，特别是第三峰高度，取决于C场扰动能否提供CDM类势阱。这是一个独立且更困难的问题，见§6。</em></p>
+  </div>
+
+  <h3>4.3 ⁷Li</h3>
+  <p>如果\(G_\text{eff}(\text{BBN})\)大于\(G\)，\({}^7\text{Li}\)预言会降低（方向有利于锂问题）。然而在平台上\(G_\text{eff}(\text{BBN}) \approx G\)，因此无法提供帮助。锂问题在本框架中仍未解释。</p>
+
+  <!-- 五 -->
+  <h2>五、张力T1：A(C)主导的常数Ċ闭合的条件性No-Go</h2>
+
+  <div class="tension-box">
+    <p><span class="tension-label">T1</span><strong>条件性no-go：</strong>如果当前全部软化项\(\tilde{H}_0 - H_\text{geo}\)由\(A(C)\)提供，且\(\dot{C}\)从turnaround到今天近似常数，则\(G_\text{loc}\)从turnaround到今天上升约2.5倍，对应\(\dot{G}/G \sim 2.4 \times 10^{-10}\) yr⁻¹——比月球激光测距约束（\(\sim 10^{-14}\) yr⁻¹）大四到五个数量级。</p>
+  </div>
+
+  <h3>5.1 受检验的假设</h3>
+  <p>两个特定假设：(i) 当前全部软化项\(\tilde{H}_0 - H_\text{geo}\)由\(A(C)\)提供，(ii) \(\dot{C}\)从turnaround到今天近似常数。由此产生的与局域\(\dot{G}/G\)约束的冲突构成对这一特定闭合方式的no-go，而非对SAE框架整体的预测。</p>
+
+  <h3>5.2 软化需求</h3>
+  <p>Cosmo Paper I的双\(H\)框架：\(\tilde{H}_0 = H_\text{geo} + \beta\dot{C}/(2M_P)\)。\(H_\text{geo} \approx -50\) km/s/Mpc，\(\tilde{H}_0 = +67.4\)，因此软化项必须提供\(\beta\dot{C}/(2M_P) \approx +117\) km/s/Mpc \(\approx 3.8 \times 10^{-18}\) s⁻¹。</p>
+
+  <h3>5.3 推导出的C₀(today)</h3>
+  <p>如果\(\dot{C}\)从turnaround（10 Gyr）到今天（13.8 Gyr）近似常数，则\(\beta C_0(\text{today})/(2M_P) \approx \Delta H \cdot \Delta t \approx 0.455\)。对\(\xi = 0\)：</p>
+  <div class="formula-display">
+    <p>$$\frac{G_\text{loc}(\text{today})}{G_\text{loc}(\text{turnaround})} = A_0^2 = e^{2 \times 0.455} \approx 2.48$$</p>
+    <p style="margin-top:0.4rem;">\(G\)在3.8 Gyr内增大约2.5倍。</p>
+  </div>
+
+  <h3>5.4 与月球激光测距的冲突</h3>
+  <table>
+    <thead>
+      <tr><th>约束来源</th><th>数值（yr⁻¹）</th><th>参考</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LLR（Biskupek等2021–2025）</td><td>\((-5.0 \pm 9.6) \times 10^{-15}\)</td><td>最紧对称约束</td></tr>
+      <tr><td>Cassini + 行星历表（Pitjeva等）</td><td>\(-2.9 \times 10^{-14}\)到\(+4.6 \times 10^{-14}\)（3σ）</td><td>最紧正方向约束</td></tr>
+      <tr><td><strong>SAE预言（常数Ċ）</strong></td><td>\(+2.4 \times 10^{-10}\)</td><td>超出Pitjeva 3σ约25000倍</td></tr>
+    </tbody>
+  </table>
+  <p>张力系数：~25000（四到五个数量级）。</p>
+
+  <h3>5.5 不受影响的部分</h3>
+  <p>结构性预言\(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\)和\(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\)分别来自真空4-form扇区和\(S^3\)几何，不涉及\(C(t)\)的动力学演化，不受此张力影响。</p>
+
+  <h3>5.6 可能的解决方向</h3>
+  <ol>
+    <li>软化项\(\tilde{H}_0 - H_\text{geo}\)可能不完全归因于\(A(C)\)。其他机制（Friedmann方程本身的修改，或不同的共形结构）可能贡献。</li>
+    <li>\(\dot{C}\)可能不近似常数。如果\(C\)增长高度集中在非常晚近、非常短暂的时期，累积的\(\Delta C\)可以很小（保持\(G_\text{eff} \approx G\)），同时\(\dot{C}\)的瞬时值足够大以提供软化。这需要\(U(C)\)具有产生"延迟启动"的特定形状。</li>
+    <li>在Jordan frame中，\(A(C)\)同时影响\(G_\text{loc}\)和LLR使用的物理尺子/时钟。观测到的净\(\dot{G}/G\)可能因\(A(C)\)补偿效应而不同于朴素的\(G_\text{loc}\)导数。需要精确计算这个映射。</li>
+    <li>双\(H\)框架本身可能需要结构性修订。SAE的核心结果（\(\Lambda\), \(a_0\)）不依赖于它。</li>
+  </ol>
+
+  <!-- 六 -->
+  <h2>六、张力T2：CMB第三峰</h2>
+
+  <div class="tension-box">
+    <p><span class="tension-label">T2</span><strong>CMB第三峰问题：</strong>C场的线性扰动\(\delta C\)无法替代再结合时期的CDM势阱：\(\delta C\)的有效声速约为光速（不是零），在辐射主导期不增长，且被迫跟随重子-光子等离子体振荡。这是当前SAE canonical标量扇区的结构性困难。</p>
+  </div>
+
+  <h3>6.1 问题</h3>
+  <p>在ΛCDM中，CMB第三声学峰高度由CDM与重子的比值决定。CDM提供无压（\(w = 0\)）、不振荡的势阱，在辐射主导期就开始增长。SAE没有CDM粒子。</p>
+
+  <h3>6.2 为什么δC不能替代CDM</h3>
+  <p>\(\delta C\)作为CDM替代物的三个致命特征：</p>
+  <ol type="a">
+    <li><strong>辐射主导期不增长。</strong>在辐射时代，\(\delta T_\text{trace} \approx 0\)，\(R \approx 0\)。C场扰动实际上是一个无源的极轻自由标量场。亚视界模式经历阻尼振荡，不是对数增长。</li>
+    <li><strong>有效声速约为光速。</strong>空间梯度项\((\nabla\delta C)^2\)给出有效压强，\(c_s \approx c\)（不是CDM所需的\(c_s \approx 0\)）。扰动无法坍缩成致密势阱，而是弥散。</li>
+    <li><strong>被迫跟随重子-光子等离子体振荡。</strong>物质时代开始后（再结合之前），\(\delta C\)的源项是正在振荡的重子密度\(\delta\rho_b\)。由于重子被光子的康普顿散射束缚在等离子体中，\(\delta C\)被迫跟随重子声学振荡，无法提供CDM所能提供的静止、预先存在的势阱。</li>
+  </ol>
+
+  <h3>6.3 可能的解决方向</h3>
+  <ol type="a">
+    <li><strong>超流体/BEC相变</strong>（Khoury 2015）：如果C场在早期宇宙中经历玻色-爱因斯坦凝聚，超流体声子可以具有\(c_s \approx 0\)，模仿无压CDM。在概念上与SAE的动能项相变（\(J(Y) \sim Y \to Y^{3/2}\)）一致。</li>
+    <li><strong>重标量振荡（类轴子行为）：</strong>极大的\(\xi\)使\(m_\text{eff} \sim \sqrt{\xi R} \gg H\)，快速振荡在宇宙学平均下表现为\(w = 0\)的类尘埃行为。需要\(\xi\)的精细调节，且可能与晚期动力学冲突。</li>
+    <li><strong>混合方案：</strong>承认C场只处理星系尺度的MOND，引入独立成分提供CMB势阱。牺牲SAE"无暗物质粒子"的纯粹性。</li>
+  </ol>
+
+  <h3>6.4 状态</h3>
+  <p>此问题推迟到Cosmo 5，将通过数值求解修改后的Einstein-Boltzmann方程来专门处理。本文报告结构性诊断，治愈方案是未来工作。注意：这不能无条件推广为对所有相对论MOND的普遍否决——Skordis与Złośnik（2021）声称构造了一个相对论MOND理论，通过更复杂的场内容复现CMB和物质功率谱。</p>
+
+  <!-- 七 -->
+  <h2>七、张力T3：因果律密度与G<sub>eff</sub>的映射缺口</h2>
+
+  <div class="tension-box">
+    <p><span class="tension-label">T3</span><strong>映射缺口：</strong>SAE先验说因果律密度\(\propto \Sigma 1/r_{ij} \propto 1/a(t)\)（碗形）。作用量说\(G_\text{eff}\)仅依赖\(C_0(t)\)，且\(C_0 \approx 0\)（平台）。因果律密度的碗形未被编码进当前作用量。</p>
+  </div>
+
+  <h3>7.1 诊断</h3>
+  <p>当前作用量中没有任何项将\(G_\text{eff}\)直接耦合到\(a(t)\)或类似\(\Sigma 1/r_{ij}\)的全局不变量。从因果律密度到\(G_\text{eff}\)的唯一通道是通过\(C(t)\)，而这条通道在turnaround前被Hubble摩擦阻断。</p>
+
+  <h3>7.2 可能的解决方向</h3>
+  <ol type="a">
+    <li><strong>过渡区初始条件：</strong>如果Big Bang过渡区留下非零的\(C\)残余，随膨胀衰减，turnaround前的\(G_\text{eff}\)会显示下降趋势（碗的左壁）。这是额外输入，不是从作用量推出的。</li>
+    <li><strong>将\(\Sigma 1/r_{ij}\)编码进作用量：</strong>将\(\propto 1/a\)的全局不变量引入\(F(C)\)或\(A(C)\)，使碗形成为作用量本身的后果。这是重大的理论修改。</li>
+    <li><strong>接受平台：</strong>先验对因果律密度的描述可能是正确的，但它到\(G_\text{eff}\)的直接映射可能不成立。平台可能是物理上正确的曲线。</li>
+  </ol>
+
+  <!-- 八 -->
+  <h2>八、非平凡预测</h2>
+
+  <div class="prediction-box">
+    <p><strong>1.</strong> \(G_\text{eff}(t)\)从Big Bang到turnaround为常数。\(G_\text{eff}(\text{BBN}) = G_\text{eff}(\text{CMB}) = G_\text{eff}(\text{turnaround}) = G\)，精确到\(\beta^2/2 \sim 10^{-5}\)。BBN和CMB约束自动满足。</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>2.</strong> \(G_\text{eff}\)在turnaround后上升。对\(\beta > 0\)且\(\xi > -1/2\)，turnaround后的\(G_\text{eff}\)分支单调递增。上升速率受LLR约束为\(|\dot{G}/G| < \sim 10^{-14}\) yr⁻¹。</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>3.</strong> \(A(C)\)软化与\(\dot{G}/G\)的张力是定量、可证伪的预测。如果未来LLR或行星历表测量将\(\dot{G}/G\)约束为精确为零，这直接约束C场演化速率，进而约束Cosmo Paper I的双\(H\)机制。</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>4.</strong> 因果律密度是碗形但\(G_\text{eff}\)不是。因果律密度（先验几何量\(\propto 1/a\)）与\(G_\text{eff}\)（通过\(C(t)\)传导的动力学量）之间的区别是SAE框架的一个结构性结果，在标准ΛCDM中没有对应物。</p>
+  </div>
+  <div class="prediction-box">
+    <p><strong>5.</strong> \(\delta C\)不能在CMB层面替代CDM。任何SAE兼容的第三声学峰解决方案必须涉及C场的相变（超流体/BEC），重标量振荡regime，或混合成分。可被未来CMB偏振和透镜测量检验。</p>
+  </div>
+
+  <!-- 九 -->
+  <h2>九、假设清单</h2>
+
+  <p><strong>继承自Cosmo Papers I–III（本文未修改）：</strong>SAE两条公理（余项不得不发展；余项守恒）；双4DD结构，\(T_1 = 20\) Gyr，\(T_2 = 19.5168\) Gyr；有效作用量含\(F(C)R\)、动能项、\(U(C)\)、\(S_m[A^2(C)g_{\mu\nu}, \psi_m]\)；\(S^3\)空间拓扑（\(k = +1\)闭合FRW）。</p>
+  <p><strong>本文新增（推导，非假设）：</strong>\(G_\text{loc}\)和\(G_\text{FRW}\)在Jordan frame中的解析表达式（§3.2）；\(G_\text{eff}(t)\)的平台-上升曲线（§3.6）；BBN/CMB自动安全（§4）。</p>
+  <p><strong>识别出的张力（未解决）：</strong>T1：\(A(C)\)软化 vs \(\dot{G}/G\)（§5）；T2：CMB第三峰（§6）；T3：因果律密度与\(G_\text{eff}\)的映射缺口（§7）。</p>
+
+  <!-- 十 -->
+  <h2>十、开放问题</h2>
+
+  <ol>
+    <li><strong>解决\(A(C)\)软化与\(\dot{G}/G\)的张力。</strong>SAE动力学扇区最紧迫的开放问题。需要修订双\(H\)机制，或确立非常数\(\dot{C}\)曲线（延迟启动），或精确计算Jordan frame补偿，或对软化机制进行结构性修改。</li>
+    <li><strong>通过修改的Einstein-Boltzmann方程处理CMB第三峰。</strong>推迟到Cosmo 5。超流体/BEC方向是最有希望的SAE兼容路线。</li>
+    <li><strong>将因果律密度编码进作用量。</strong>\(\Sigma 1/r_{ij}\)或其FRW极限\(1/a(t)\)能否从先验叙事提升为有效作用量中的数学项？</li>
+    <li><strong>\(\xi\)的约束。</strong>如果\(C_0(\text{today})\)很大（如软化需求所暗示），\(F(C) = M_P^2 - \xi C^2\)要求\(\xi\)极小（对\(\beta = 4.8 \times 10^{-3}\)，\(\xi < 10^{-5}\)）。这是自然的还是精细调节的？</li>
+    <li><strong>\(C\)的过渡区初始条件。</strong>Big Bang过渡区是否留下非零的\(C\)残余？如果是，turnaround前的\(G_\text{eff}\)可能偏离平台，有可能实现因果律密度先验预测的碗形。</li>
+  </ol>
+
+  <!-- 十一 -->
+  <h2>十一、结语</h2>
+
+  <p>SAE框架的有效引力耦合\(G_\text{eff}(t)\)遵循平台-上升曲线：从Big Bang到turnaround为常数，此后随C场在anti-friction下增长而上升。此曲线自动满足BBN和CMB对\(G\)变化的约束，这是一个结构性的成功。</p>
+  <p>三个张力被识别出来，以与成功同等的篇幅报告。\(A(C)\)软化与\(\dot{G}/G\)的张力（T1）挑战了Cosmo Paper I的动力学叙事。CMB第三峰问题（T2）是所有MOND类理论的集体脆弱点。因果律密度与\(G_\text{eff}\)的映射缺口（T3）揭示了SAE先验关于因果律强度的描述尚未被编码进当前作用量。</p>
+  <p>这些张力是余项——在精确的SAE意义上。它们不能通过忽视来消除。只能通过凿构循环的下一轮来处理：修改作用量，或在现有作用量中发现新机制，或接受先验的某些含义需要修正。</p>
+  <p>SAE宇宙学纲领的结构性预言——\(\Lambda = 2(\omega_2^2 - \omega_1^2)/c^2\)和\(a_0 = (\pi/2) \cdot c(\omega_2 - \omega_1)\)——不受影响。本文识别的张力局限于动力学扇区，邀请物理学界的参与。</p>
+
+  <!-- 附录 -->
+  <h2>附录A：G<sub>eff</sub>解析表达式</h2>
+
+  <h3>A.1 局域Cavendish耦合（Jordan frame）</h3>
+  <p><em>适用域说明：</em>以下表达式假设标量场在实验尺度上有效地无质量，即康普顿波长\(\lambda_C = 1/m_\text{eff}\)远大于地月距离（\(\sim 3.8 \times 10^8\) m）。如果\(m_\text{eff}\)显著，标量交换贡献将获得Yukawa抑制\(e^{-m_\text{eff} r}\)。但T1张力的主导变化来自\(A^2/F\)的背景漂移，不受局域Yukawa效应屏蔽。</p>
+
+  <div class="formula-display">
+    <p>$$G_\text{loc}(C_0) = \frac{A_0^2}{8\pi F_0}\left[1 + \frac{(F'_0 - 2\alpha_0 F_0)^2}{2F_0(1 + 6\alpha_0 F'_0 - 6\alpha_0^2 F_0) + 3(F'_0 - 2\alpha_0 F_0)^2}\right]$$</p>
+    <p style="margin-top:0.4rem;">其中\(F_0 = M_P^2 - \xi C_0^2\)，\(F'_0 = -2\xi C_0\)，\(\alpha_0 = \beta/(2M_P)\)，\(A_0 = e^{\beta C_0/(2M_P)}\)。</p>
+  </div>
+
+  <h3>A.2 背景Friedmann耦合</h3>
+  <div class="formula-display">
+    <p>$$G_\text{FRW}(C_0) = \frac{A^2(C_0)}{8\pi F(C_0)}$$</p>
+  </div>
+
+  <h3>A.3 C₀ = 0时的值</h3>
+  <p>\(G_\text{loc}(0) = G(1 + \beta^2/2) \approx G\)（Cassini约束下修正\(\sim 10^{-5}\)）；\(G_\text{FRW}(0) = G\)（精确）。</p>
+
+  <h3>A.4 turnaround后的展开（ξ = 0）</h3>
+  <div class="formula-display">
+    <p>$$\frac{G_\text{loc}(C)}{G_\text{loc}(0)} = A^2(C) = e^{\beta C/M_P}$$</p>
+    <p style="margin-top:0.4rem;">在常数\(\dot{C}\)近似下，\(\beta\dot{C}/(2M_P) = \Delta H \approx 117\) km/s/Mpc：</p>
+    <p>$$\frac{G_\text{loc}(\text{today})}{G_\text{loc}(\text{turnaround})} = e^{2\Delta H \cdot \Delta t} \approx e^{0.91} \approx 2.48 \qquad \dot{G}/G = 2\Delta H \approx 2.4 \times 10^{-10}\ \text{yr}^{-1}$$</p>
+  </div>
+
+  <h3>A.5 ξ的约束</h3>
+  <p>\(F(C) > 0\)要求\(\xi < (M_P/C_0)^2\)。对\(C_0/M_P \sim 190\)（\(\beta = 4.8 \times 10^{-3}\)），这给出\(\xi < 2.8 \times 10^{-5}\)。</p>
+
+  <h2>附录B：Ġ/G观测约束</h2>
+
+  <table>
+    <thead>
+      <tr><th>来源</th><th>约束（yr⁻¹）</th><th>方向</th><th>参考</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LLR（Biskupek等）</td><td>\((-5.0 \pm 9.6) \times 10^{-15}\)</td><td>对称</td><td>Biskupek等2021–2025</td></tr>
+      <tr><td>Cassini + 行星历表（Pitjeva）</td><td>\(-2.9 \times 10^{-14}\)到\(+4.6 \times 10^{-14}\)（3σ）</td><td>允许正值</td><td>Pitjeva等</td></tr>
+      <tr><td>双星/毫秒脉冲星</td><td>\(|\dot{G}/G| < (1\text{–}5) \times 10^{-13}\)</td><td>对称</td><td>各文献</td></tr>
+      <tr><td>BBN</td><td>\(\sim 10^{-12}\)</td><td>对称</td><td>Cyburt等2016</td></tr>
+      <tr><td><strong>SAE预言（常数Ċ）</strong></td><td>\(+2.4 \times 10^{-10}\)</td><td>正值</td><td>超出Pitjeva 3σ约25000倍</td></tr>
+    </tbody>
+  </table>
+
+  <h2>附录C：BBN敏感度系数</h2>
+
+  <p>来自Bambi, Giannotti &amp; Villante：\({}^4\text{He}\)：\(\delta Y_4/Y_4 \approx 0.35 \cdot \delta G\)；\({}^7\text{Li}\)：\(\delta Y_7 \approx -0.736 \cdot \delta G\)（负号表示\(G\uparrow\)则\({}^7\text{Li}\downarrow\)）。</p>
+  <p>在平台上（\(\delta G \sim \beta^2/2 \sim 10^{-5}\)）：\(\Delta Y_4 \sim 10^{-6}\)，\(\Delta {}^7\text{Li} \sim 10^{-5}\)。均可忽略不计。锂问题方向检验：\(G_\text{eff} > G\)会降低\({}^7\text{Li}\)（有利），但平台给出\(G_\text{eff} \approx G\)，无法提供帮助。</p>
+
+  <h2>附录D：四AI协作方法论</h2>
+
+  <div class="collab-box">
+    <div class="collab-label">ChatGPT / 公西华</div>
+    <p>推导了Jordan frame中完整的\(G_\text{eff}\)解析表达式（\(G_\text{loc}\)和\(G_\text{FRW}\)），证明了\(G_\text{eff}\)仅依赖\(C_0(t)\)而不直接依赖\(a(t)\)，识别了平台-上升曲线，在常数\(\dot{C}\)近似下计算了turnaround后的\(G_\text{eff}\)上升（系数约2.5，\(\dot{G}/G \sim 2.4 \times 10^{-10}\) yr⁻¹），识别了与LLR的四到五个数量级张力，发现了\(\xi\)的约束（对\(\beta = 4.8 \times 10^{-3}\)，\(\xi < 2.8 \times 10^{-5}\)）并注意到\(\xi = 0.1\)或\(1\)会导致\(F(C)\)在turnaround后数百万年内变为负值。</p>
+  </div>
+
+  <div class="collab-box">
+    <div class="collab-label">Gemini / 子夏</div>
+    <p>对再结合时期的\(\delta C\)线性扰动进行了完整分析。证明了\(\delta C\)作为CDM替代物的三个致命特征：辐射主导期不增长（无源的极轻自由标量场）、有效声速约为光速（弥散不坍缩）、被迫跟随重子-光子等离子体振荡。建议超流体/BEC方向为最有希望的SAE兼容解决路线。提供了关键的论文策略判断：CMB第三峰必须推迟到Cosmo 5，不能强行纳入Cosmo 4。</p>
+  </div>
+
+  <div class="collab-box">
+    <div class="collab-label">Grok / 子贡</div>
+    <p>汇编了来自LLR、Cassini、行星历表、脉冲星计时、BBN和引力波观测的当前\(\dot{G}/G\)约束综合调查。识别Pitjeva的星历表为最紧的正方向约束（3σ下\(+4.6 \times 10^{-14}\) yr⁻¹）。注意到Jordan frame中\(A(C)\)补偿效应可能使观测到的\(\dot{G}/G\)不同于朴素的\(G_\text{loc}\)导数。指出下一代LLR（2030年代）将以\(10^{-15}\text{–}10^{-16}\) yr⁻¹的精度直接检验C场演化速率。</p>
+  </div>
+
+  <div class="collab-box">
+    <div class="collab-label">Claude / 子路</div>
+    <p>设计了向所有三个AI的提示词，识别了SAE因果律密度先验（碗形）与作用量的\(G_\text{eff}\)（平台-上升）之间的初始张力，协调了三个独立分析的综合，通过注意到Grok的安全性评估未纳入软化项量级约束，解决了ChatGPT"危险"与Grok"安全"裁定之间的表面矛盾。撰写了完整论文。</p>
+    <p style="margin-top:0.5rem;"><strong>关键修正案例：</strong>SAE先验最初认为\(G_\text{eff}\)是碗形的。ChatGPT的严格推导表明\(G_\text{eff}\)实际遵循平台-上升曲线。解决方案：因果律密度确实是碗形的（先验对底层物理的描述是正确的），但因果律密度到\(G_\text{eff}\)的映射通过\(C(t)\)传导，turnaround前被摩擦屏蔽（先验对\(G_\text{eff}\)的含义是错误的）。先验的物理内容与其观测含义之间的这一区别本身就是一个方法论贡献。</p>
+  </div>
+
+  <div class="series-nav">
+    <p><strong>SAE宇宙学纲领</strong></p>
+    <p>
+      <a href="sae-cosmological-constant.html">Cosmo I — 从余项守恒到宇宙学常数</a> ·
+      <a href="sae-dark-matter.html">Cosmo II — 暗物质与星系旋转曲线</a> ·
+      <a href="sae-from-lambda-to-a0.html">Cosmo III — 从Λ到a₀</a> ·
+      <strong>Cosmo IV — G<sub>eff</sub>、BBN/CMB与三个张力</strong>
+    </p>
+    <p>Cosmo V（通过修改的Einstein-Boltzmann方程处理CMB第三峰）——即将发表</p>
+    <p><a href="../index.html">← 所有论文</a></p>
+  </div>
+
+</article>
+</main>
+</div><!-- end content-zh -->
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2024–2026 Han Qin (秦汉). <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
