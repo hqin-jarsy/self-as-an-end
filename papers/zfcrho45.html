@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Reset Slack to Historical Reservoir — ZFCρ Paper XLV — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLV: Capacity-Allocation Law U(m)=min(C(m),R(m-1)), J(m)=max(C(m)-R(m-1),0). Reservoir Dynamics R(m)=max(R(m-1)-B(m),0). Three-sector unification. Remainder Transfer Law. 8,670,831 samples, zero failures.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, reservoir dynamics, capacity-allocation, remainder transfer law, Le Chatelier mechanism, chisel-construct-remainder, reset slack, predecessor defect, Conjecture 1">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Reset Slack to Historical Reservoir: Capacity-Allocation Law, Charge-Discharge Dynamics, and the Remainder Transfer Law">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho45.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "From Reset Slack to Historical Reservoir: Capacity-Allocation Law, Charge-Discharge Dynamics, and the Remainder Transfer Law",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho45.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19275286"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "reservoir dynamics", "capacity-allocation",
+      "remainder transfer law", "Le Chatelier mechanism", "chisel-construct-remainder",
+      "reset slack", "predecessor defect", "Conjecture 1", "Lindley recurrence"
+    ],
+    "abstract": "Paper 44 introduced Reset-Slack decomposition A = ψ(ΔM⁻) − U⁻ but left the ontological status of U unclear. This paper proves U is a historical quantity via two exact algebraic identities: Capacity-Allocation Law U(m)=min(C(m),R(m-1)), J(m)=max(C(m)−R(m-1),0); and Reservoir Dynamics R(m)=max(R(m-1)−B(m),0). Three-sector unification: Paper 44's R2/front/interior are three special cases of the Capacity-Allocation Law. Five a posteriori evidence groups confirm U is historical. Route to Conjecture 1: U≤R(m-1) implies E[U²]≤E[R²]; data shows E[R²|exposed,Ω=k]≈2.4 (k-independent). Verified on 8,670,831 samples with zero failures.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho45.html">
+  <meta name="citation_title" content="From Reset Slack to Historical Reservoir: Capacity-Allocation Law, Charge-Discharge Dynamics, and the Remainder Transfer Law">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19275286">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho45.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .decomp-box { background: #f0fff4; border-left: 3px solid #00aa55; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .decomp-box p { margin: 0; }
+    .decomp-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLV</div>
+      <h1 class="paper-title">From Reset Slack to Historical Reservoir: Capacity-Allocation Law, Charge-Discharge Dynamics, and the Remainder Transfer Law</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19275286
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper 44 introduced the Reset-Slack decomposition \(A = \psi(\Delta M^-) - U^-\), reducing local smoothness to multiplicative-target smoothness plus reset-slack boundedness. But the ontological status of \(U\) (reset slack) remained unclear — is it a current-step efficiency loss, or the transmission of a historical quantity?</p>
+        <p><strong>This paper proves that U is a historical quantity.</strong></p>
+        <p>Define the predecessor defect reservoir \(R(m) := M(m) - \rho_E(m) \geq 0\) and the signed capacity \(B(m) := 1 - M(m) + M(m-1)\), with release capacity \(C(m) := B(m)^+\). This paper proves two exact algebraic identities:</p>
+        <p><strong>Capacity-Allocation Law (Theorem 1):</strong> \(U(m) = \min(C(m), R(m-1))\), \(J(m) = \max(C(m) - R(m-1), 0)\).</p>
+        <p><strong>Reservoir Dynamics (Theorem 2):</strong> \(R(m) = \max(R(m-1) - B(m), 0)\).</p>
+        <p>The local dynamics of DP min is not "current multiplicative target directly produces jump" but rather "current capacity first repays the predecessor's historical debt, then converts the surplus into jump." These two identities unify the three sectors of Paper 44: R2 (shielded, \(R(m-1)=0\)) is the empty-reservoir special case; reset front (\(0 < R(m-1) < C\)) is the full-repayment state; true interior (\(R(m-1) \geq C\)) is the truncation state. Reservoir Dynamics gives a complete charge-discharge cycle: B &gt; 0 discharge (66%), B &lt; 0 recharge (13%), B = 0 neutral (21%).</p>
+        <p>Five groups of a posteriori data confirm that U is a historical quantity rather than a current selection error: (1) S/U overlap near zero (Jaccard &lt; 0.005), (2) 68–79% of U &gt; 0 predecessors have Ω = 2 (inefficient dissipators), (3) excursion length = 2 dominates (81%+), (4) R(m-1) concentrates at 1 (65–70%), (5) on the front sector U = R(m-1) pointwise exactly.</p>
+        <p>For Conjecture 1 (\(E[U^2] \leq \mathrm{poly}(k)\)): by the Capacity-Allocation Law, \(U \leq R(m-1)\), so \(E[U^2] \leq E[R^2]\). Data shows \(E[R^2 \mid \mathrm{exposed}, \Omega=k] \approx 2.4\) (k-independent); if this is a theorem, Conjecture 1 follows. This provides a route to Conjecture 1 independent of Conjecture 2.</p>
+        <p>In the SAE framework, the Capacity-Allocation Law is the precise algebraic realization of the Remainder Transfer Law — U is not a newly generated efficiency loss at the current step, but is carried as the predecessor's reservoir and released at the current step in the amount \(\min(\text{capacity}, \text{debt})\).</p>
+        <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, reservoir dynamics, capacity-allocation, remainder transfer law, Le Chatelier mechanism, chisel-construct-remainder</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 The Problem</h3>
+      <p>Paper 44 (DOI: 10.5281/zenodo.19247859) introduced the Reset-Slack decomposition</p>
+      <p style="padding-left:1.5rem;">\(A(m) = \psi(\Delta M^-(m)) - U^-(m)\)</p>
+      <p>where \(\psi(x) = -\min(x,1)\) and \(U^-(m) = (1-\Delta M^-(m))^+ - J(m) \geq 0\) is the reset slack. Paper 44 proved the Reset-Slack Reduction theorem \(\mathrm{Var}(A) \leq 2\cdot\mathrm{Var}(\Delta M^-) + 2\cdot E[U^2]\), reducing \(\mathrm{Var}(A)\) to two independent inputs.</p>
+      <p>Paper 44 described U as "the amount by which DP min falls short of its theoretical ceiling" — an efficiency loss. The S/U overlap analysis found Jaccard(S&gt;0, U&gt;0) ≈ 0: U &gt; 0 does not come from current-step selection errors (S &gt; 0), but from "construct's historical accumulation." But what is "construct's historical accumulation" in mathematical terms?</p>
+      <p><strong>This paper answers that question.</strong></p>
+
+      <h3>1.2 A Priori Proposition</h3>
+      <p>In the SAE framework, the remainder is the structural residue of chisel-construct operations, not random noise. If U is the remainder's realization in the DP recurrence, SAE requires: (1) U should not come from current-step selection errors, (2) U should come from the system's historical state, (3) U's transmission should be exact — no more, no less.</p>
+      <p>If U were mainly due to current-step selection errors (overlapping with S/T), or could only be statistically correlated rather than pointwise recovered, the SAE "historical carrier" thesis would fail. This paper's data and theorems rule out these failure modes.</p>
+
+      <h3>1.3 Notation</h3>
+      <p>As in Paper 44 §1.2. Additional notation:</p>
+      <ul>
+        <li>\(R(m) := M(m) - \rho_E(m) \geq 0\) — predecessor defect reservoir</li>
+        <li>\(B(m) := 1 - \Delta M^-(m) = 1 - M(m) + M(m-1)\) — signed capacity</li>
+        <li>\(C(m) := B(m)^+ = \max(B(m), 0)\) — release capacity</li>
+        <li>For brevity, \(U := U^-\) throughout.</li>
+      </ul>
+      <p><em>Note: All quantities (\(\rho_E, M, J, U, R, B\)) take integer values.</em></p>
+
+      <h3>1.4 Main Results</h3>
+      <p><strong>(1) Capacity-Allocation Law (Theorem 1).</strong> \(U(m) = \min(C(m), R(m-1))\), \(J(m) = \max(C(m) - R(m-1), 0)\). The local dynamics of DP is capacity allocation: current capacity first repays the predecessor's historical debt, surplus converts to jump.</p>
+      <p><strong>(2) Reservoir Dynamics (Theorem 2).</strong> \(R(m) = \max(R(m-1) - B(m), 0)\). The reservoir follows a Lindley-type recurrence; B &gt; 0 discharges, B &lt; 0 recharges.</p>
+      <p><strong>(3) Three-sector unification.</strong> R2 (shielded) = empty reservoir; reset front = full repayment; true interior = truncation. Paper 44's three-layer structure consists of three special cases of the Capacity-Allocation Law.</p>
+      <p><strong>(4) A posteriori evidence.</strong> Five data groups confirm U is a historical quantity, not a current selection error.</p>
+      <p><strong>(5) Reduction of Conjecture 1.</strong> \(U \leq R(m-1) \Rightarrow E[U^2] \leq E[R^2]\). If \(E[R^2 \mid \mathrm{exposed}, \Omega=k]\) is bounded (data ≈ 2.4, k-independent), Conjecture 1 holds.</p>
+
+      <h2>§2 A Posteriori Evidence: U Is a Historical Quantity</h2>
+
+      <h3>2.1 S/U Overlap Near Zero</h3>
+      <p>Paper 44 auxiliary experiment. Jaccard(S&gt;0, U&gt;0) &lt; 0.005 for k ≥ 4. Over 93% of U &gt; 0 events occur at integers where M = M_spf (SPF split is globally optimal) — the chisel made the correct selection but U is still nonzero. <strong>U &gt; 0 is not a selection error.</strong></p>
+
+      <h3>2.2 Predecessor Ω Strongly Biased toward Low Ω</h3>
+      <p>When U &gt; 0, Ω(m-1) = 2 accounts for 68–79%; when U = 0, only 16–33%.</p>
+      <table>
+        <thead><tr><th>Ω(m-1)</th><th>U&gt;0 share (k=4)</th><th>U=0 share (k=4)</th><th>U&gt;0 share (k=8)</th><th>U=0 share (k=8)</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>67.6%</td><td>15.9%</td><td>78.8%</td><td>32.8%</td></tr>
+          <tr><td>3</td><td>25.7%</td><td>29.7%</td><td>18.6%</td><td>36.9%</td></tr>
+          <tr><td>4</td><td>5.4%</td><td>25.1%</td><td>2.3%</td><td>19.2%</td></tr>
+          <tr><td>≥5</td><td>1.3%</td><td>29.3%</td><td>0.3%</td><td>11.1%</td></tr>
+        </tbody>
+      </table>
+      <p>Low-Ω integers are inefficient dissipators (P(J&gt;0) ~ 30%), frequently taking the successor path, accumulating R &gt; 0. High-Ω integers are efficient dissipators (P(J&gt;0) &gt; 77%), almost always jumping, R = 0. All system imbalance originates from dissipation-deficient low-complexity regions.</p>
+
+      <h3>2.3 Excursion Length = 2</h3>
+      <p>U &gt; 0 almost always occurs at exactly the second non-jump step: P(len=2) &gt; 81% for k ≥ 4. P(len=1) = 0 (J(m-1) = 0 is a necessary condition for U &gt; 0). Remainder transfer is instantaneous — a single non-jump step suffices; no long-excursion accumulation is needed.</p>
+
+      <h3>2.4 R(m-1) Concentrates at 1</h3>
+      <p>Distribution of R(m-1) given U &gt; 0:</p>
+      <table>
+        <thead><tr><th>R(m-1)</th><th>Share (k=4)</th><th>Share (k=8)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>65.1%</td><td>70.3%</td></tr>
+          <tr><td>2</td><td>25.5%</td><td>23.3%</td></tr>
+          <tr><td>3</td><td>7.6%</td><td>5.5%</td></tr>
+          <tr><td>4</td><td>1.5%</td><td>0.8%</td></tr>
+        </tbody>
+      </table>
+      <p>\(E[R \mid U>0] \approx 1.34\)–\(1.46\). \(\mathrm{Var}[R \mid U>0] \approx 0.4\)–\(0.5\). R = 1 (minimum debt: multiplicative target exceeds successor by exactly 1) is the dominant mode.</p>
+
+      <h3>2.5 U and R(m-1): Front-Dominated Correspondence</h3>
+      <p>On the front sector (J(m-1) = 0, J(m) &gt; 0, comprising 95%+ of U &gt; 0), U = R(m-1) pointwise exactly (corollary of Theorem 1). On the rare true interior (J(m-1) = 0, J(m) = 0, &lt;5%), U = C &lt; R(m-1) (truncation state). The empirical distributions of U and R(m-1) nearly coincide; deviation comes from rare interior truncation.</p>
+
+      <h2>§3 Capacity-Allocation Law</h2>
+
+      <h3>3.1 Definitions</h3>
+      <ul>
+        <li><strong>Signed capacity:</strong> \(B(m) := 1 - M(m) + M(m-1)\)</li>
+        <li><strong>Release capacity:</strong> \(C(m) := B(m)^+ = \max(B(m), 0)\)</li>
+        <li><strong>Predecessor reservoir:</strong> \(R(m) := M(m) - \rho_E(m) \geq 0\)</li>
+      </ul>
+      <p>\(C(m)\) is the current step's release capacity. \(R(m-1)\) is the predecessor's historical debt.</p>
+
+      <h3>3.2 Theorem 1 (Capacity-Allocation Law)</h3>
+
+      <div class="proof-box">
+        <p><strong>Theorem 1.</strong> For all m (Ω(m) ≥ 2, M(m) &lt; ∞, M(m-1) &lt; ∞):</p>
+        <p>\[U(m) = \min(C(m),\, R(m-1))\]</p>
+        <p>\[J(m) = \max(C(m) - R(m-1),\, 0)\]</p>
+        <p><strong>Proof.</strong> DP recurrence: \(\rho_E(m) = \min(\rho_E(m-1)+1,\, M(m))\).</p>
+        <p><strong>Case 1: J(m) &gt; 0</strong> (\(\rho_E(m) = M(m) < \rho_E(m-1)+1\)).</p>
+        <p>From \(M(m) < \rho_E(m-1)+1\) and all quantities being integer-valued, \(M(m) \leq \rho_E(m-1)\):</p>
+        <p>\(B(m) = 1 - M(m) + M(m-1) \geq 1 + M(m-1) - \rho_E(m-1) = 1 + R(m-1)\)</p>
+        <p>So \(C(m) = B(m) \geq 1 + R(m-1) > R(m-1) \geq 0\).</p>
+        <p>Therefore \(\max(C - R(m-1), 0) = C - R(m-1) = 1 - M(m) + \rho_E(m-1) = J(m)\).</p>
+        <p>\(\min(C, R(m-1)) = R(m-1)\). And \(U = C - J = R(m-1)\). ✓</p>
+        <p><strong>Case 2: J(m) = 0</strong> (\(\rho_E(m) = \rho_E(m-1)+1 \leq M(m)\)).</p>
+        <p>From \(\rho_E(m-1)+1 \leq M(m)\):</p>
+        <p>\(1 - M(m) + M(m-1) \leq M(m-1) - \rho_E(m-1) = R(m-1)\)</p>
+        <p>Since \(R(m-1) \geq 0\), taking the positive part: \(C(m) = (1 - M(m) + M(m-1))^+ \leq R(m-1)\).</p>
+        <p>Therefore \(\min(C, R(m-1)) = C = U\) (since J = 0 gives U = C - 0 = C).</p>
+        <p>\(\max(C - R(m-1), 0) = 0 = J\). ✓</p>
+        <p>Both cases cover all possibilities. ■</p>
+        <p><em>Remark.</em> Numerical verification: 8,670,831 samples (requiring Ω(m) ≥ 2), zero failures, across all Ω shells (k = 2 to 14) and all sectors. Theorem 2's verification uses 8,670,842 samples (including a small number of Ω(m) = 1 boundary points), also with zero failures.</p>
+      </div>
+
+      <h3>3.3 Theorem 2 (Reservoir Dynamics)</h3>
+
+      <div class="proof-box">
+        <p><strong>Theorem 2.</strong> For all m (same conditions as Theorem 1):</p>
+        <p>\[R(m) = \max(R(m-1) - B(m),\, 0)\]</p>
+        <p><strong>Proof.</strong></p>
+        <p><strong>Case 1: J(m) &gt; 0</strong> (\(\rho_E(m) = M(m)\)).</p>
+        <p>\(R(m) = M(m) - \rho_E(m) = 0\).</p>
+        <p>From Theorem 1 Case 1: \(B(m) \geq 1 + R(m-1) > R(m-1)\), so \(R(m-1) - B(m) < 0\).</p>
+        <p>\(\max(R(m-1) - B(m), 0) = 0 = R(m)\). ✓</p>
+        <p><strong>Case 2: J(m) = 0</strong> (\(\rho_E(m) = \rho_E(m-1)+1\)).</p>
+        <p>\(R(m) = M(m) - \rho_E(m) = M(m) - \rho_E(m-1) - 1\).</p>
+        <p>\(R(m-1) - B(m) = (M(m-1) - \rho_E(m-1)) - (1 - M(m) + M(m-1)) = M(m) - \rho_E(m-1) - 1 = R(m)\).</p>
+        <p>From Theorem 1 Case 2: \(C \leq R(m-1)\). When \(B \geq 0\), \(C = B \leq R(m-1)\), so \(R(m-1) - B \geq 0\). When \(B < 0\), \(R(m-1) - B = R(m-1) + |B| \geq 0\).</p>
+        <p>Therefore \(\max(R(m-1) - B(m), 0) = R(m)\). ✓</p>
+        <p>Both cases cover all possibilities. ■</p>
+        <p><em>Remark.</em> Numerical verification: 8,670,842 samples, zero failures.</p>
+      </div>
+
+      <h3>3.4 Three-Sector Unification (Discharge Regime, B &gt; 0)</h3>
+      <table>
+        <thead><tr><th>Sector</th><th>Condition</th><th>R(m-1) vs C</th><th>U</th><th>J</th><th>R(m)</th></tr></thead>
+        <tbody>
+          <tr><td>Shielded</td><td>R(m-1) = 0</td><td>0 ≤ C</td><td>0</td><td>C</td><td>0</td></tr>
+          <tr><td>Reset front</td><td>0 &lt; R(m-1) &lt; C</td><td>debt &lt; capacity</td><td>R(m-1)</td><td>C − R(m-1)</td><td>0</td></tr>
+          <tr><td>True interior</td><td>R(m-1) ≥ C &gt; 0</td><td>debt ≥ capacity</td><td>C</td><td>0</td><td>R(m-1) − C</td></tr>
+        </tbody>
+      </table>
+      <p>When B(m) ≤ 0, C(m) = 0, so U = J = 0. The dynamics is given by Theorem 2's recharge/neutral recurrence: R(m) = R(m-1) + |B(m)| (recharge) or R(m) = R(m-1) (neutral).</p>
+      <p>Paper 44's R2 (U = 0 on the shielded sector) is the R(m-1) = 0 special case. Paper 44's predecessor-state decomposition (\(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\)) is the macroscopic statistical consequence of Theorem 1.</p>
+
+      <h3>3.5 Charge-Discharge Dynamics</h3>
+      <p>\(B(m) = 1 - M(m) + M(m-1)\) is the signed capacity:</p>
+      <ul>
+        <li><strong>B &gt; 0 (discharge, 66%):</strong> Multiplicative target becomes cheaper. Capacity first repays reservoir, surplus becomes jump. R(m) = max(R(m-1) − B, 0) — reservoir decreases or clears.</li>
+        <li><strong>B &lt; 0 (recharge, 13%):</strong> Multiplicative target becomes more expensive. Reservoir increases: R(m) = R(m-1) + |B|.</li>
+        <li><strong>B = 0 (neutral, 21%):</strong> Reservoir unchanged: R(m) = R(m-1).</li>
+      </ul>
+      <p>Complete dynamics: the system carries a reservoir R ≥ 0 (historical debt). At each step, the signed capacity B determines discharge or recharge. Jump occurs only when discharging and capacity exceeds debt.</p>
+
+      <h2>§4 Remainder Transfer Law</h2>
+
+      <h3>4.1 Precise Statement</h3>
+      <div class="decomp-box">
+        <p><strong>Remainder Transfer Law:</strong> The predecessor's reservoir R(m-1) is released at the current step. Release amount = min(C(m), R(m-1)). When capacity suffices, full release (front); when insufficient, partial release (interior). Unreleased portion is retained in R(m) and carried forward. Each step's reservoir change is entirely determined by the signed capacity B(m).</p>
+      </div>
+      <p>This is not a conservation law (some total remaining constant) but a pointwise transfer law — the predecessor's debt is exactly transmitted, no more, no less. Macroscopically it manifests as conservation: all slack (U) has a source (predecessor reservoir), all reservoir has a destination (cleared by discharge, or carried forward).</p>
+
+      <h3>4.2 SAE Interpretation of Charge-Discharge</h3>
+      <ul>
+        <li><strong>Discharge (B&gt;0):</strong> The chisel finds a cheaper multiplicative path. Capacity first repays historical debt, surplus becomes jump. If debt is zero (R(m-1) = 0, shielded), all becomes jump — R2, the chisel-remainder coincidence state.</li>
+        <li><strong>Recharge (B&lt;0):</strong> The chisel finds no better path than successor. Reservoir increases — the construct accumulates new historical debt.</li>
+        <li><strong>Neutral (B=0):</strong> Historical state transmitted unchanged.</li>
+      </ul>
+      <p>The DP recurrence is not a memoryless greedy algorithm — it carries history (reservoir), releasing under favorable conditions, accumulating under unfavorable ones. The Le Chatelier mechanism's microscopic realization: high-frequency discharge (66%) continually clears the reservoir, low-frequency recharge (13%) occasionally accumulates, but accumulation amounts (R = 1 dominates) are minimal and typically cleared by the next discharge.</p>
+
+      <h3>4.3 Dissipator Picture</h3>
+      <p>Low-Ω integers (Ω ≤ 3) are inefficient dissipators: P(J&gt;0) ~ 30–57%, frequently recharging. High-Ω integers (Ω ≥ 4) are efficient dissipators: P(J&gt;0) &gt; 77%, frequently discharging.</p>
+      <p>68–79% of U &gt; 0 predecessors have Ω = 2 — all system imbalance originates from dissipation-deficient low-complexity regions.</p>
+
+      <h2>§5 Impact on the H′ Closure Chain</h2>
+
+      <h3>5.1 Reduction of Conjecture 1</h3>
+      <p>By Theorem 1, \(U(m) = \min(C(m), R(m-1)) \leq R(m-1)\). Therefore</p>
+      <p style="padding-left:1.5rem;">\(E[U^2 \mid \Omega(m)=k] \leq E[R(m-1)^2 \mid \Omega(m)=k]\)</p>
+      <p>Exact sector decomposition:</p>
+      <p style="padding-left:1.5rem;">\(E[U^2 \mid \Omega=k] = P(\text{front} \mid \Omega=k) \cdot E[R_\mathrm{prev}^2 \mid \text{front}, k] + P(\text{interior} \mid \Omega=k) \cdot E[C^2 \mid \text{interior}, k]\)</p>
+      <p>Since front comprises 95%+ of the exposed sector, numerically:</p>
+      <p style="padding-left:1.5rem;">\(E[U^2 \mid \Omega=k] \approx P(\text{exposed} \mid \Omega=k) \cdot E[R_\mathrm{prev}^2 \mid \text{exposed}, k]\)</p>
+      <p>Data: \(E[R^2 \mid \text{exposed}, \Omega=k] \approx 2.4\) (nearly k-independent).</p>
+      <div class="milestone-box">
+        <p><strong>If \(E[R(m-1)^2 \mid J(m-1)=0, \Omega(m)=k] \leq C_R\) (a constant, independent of k), then Conjecture 1 holds.</strong></p>
+        <p>Note: conditioning is on Ω(m) = k (current shell), but R is a quantity of m-1 — this requires current-to-predecessor fiber control.</p>
+      </div>
+
+      <h3>5.2 Relationship to Paper 44's Attack Hierarchy</h3>
+      <div class="chain-box">
+        Route A (Paper 44): Conj.2 ⟹ Conj.1 + NI1 A-side (one shot, primary attack)<br>
+        Route B (Paper 45): E[R²|exposed] bounded ⟹ Conj.1 (independent route)<br>
+        Note: NI1 still requires separate control of Var(ΔM⁻), so Route B does not replace Route A
+      </div>
+      <p>Paper 45's value is not in replacing Route A. Its value lies in the ontological explanation: it shows <em>why</em> Conjecture 1 should hold — U is strictly bounded by the reservoir, a historical quantity, whose second moment concerns a single integer's ρ_E-to-M relationship, far simpler than controlling the difference ΔM⁻.</p>
+
+      <h2>§6 Numerical Evidence</h2>
+
+      <h3>6.1 Theorem 1 Verification</h3>
+      <p>8,670,831 samples, zero failures. Across all Ω shells (k = 2 to 14).</p>
+      <table>
+        <thead><tr><th>Sector</th><th>Samples</th><th>Pass rate</th></tr></thead>
+        <tbody>
+          <tr><td>Shielded (R(m-1) = 0)</td><td>5,800,087</td><td>100.000000%</td></tr>
+          <tr><td>Reset front (0 &lt; R &lt; C)</td><td>2,565,983</td><td>100.000000%</td></tr>
+          <tr><td>True interior (R ≥ C)</td><td>304,761</td><td>100.000000%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 Theorem 2 Verification</h3>
+      <p>8,670,842 samples, zero failures. Across all Ω shells. R(m) ≥ 0 verification: zero violations. \(R(m) = M(m) - \rho_E(m) \geq 0\) holds exactly for all m ≤ 10⁷.</p>
+
+      <h3>6.3 B(m) Distribution</h3>
+      <table>
+        <thead><tr><th>B(m)</th><th>Share</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>B &gt; 0</td><td>66.4%</td><td>Discharge (multiplicative target becomes cheaper)</td></tr>
+          <tr><td>B = 0</td><td>20.6%</td><td>Neutral (multiplicative target unchanged)</td></tr>
+          <tr><td>B &lt; 0</td><td>13.0%</td><td>Recharge (multiplicative target becomes more expensive)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§7 SAE Interpretation</h2>
+
+      <h3>7.1 Deepening the Pre-Dimensional Pattern</h3>
+      <p>Paper 44's transfer coefficient τ(k) ∈ [0.14, 0.25] suggested a pre-dimensional pattern. Paper 45 provides a deeper foundation: the weak correlation between selection output (A) and structural input (Δf) is not because "the remainder passively absorbs fluctuation" — but because <strong>the remainder is exactly transmitted between steps</strong>. The remainder is not created to absorb fluctuation; it is the precise continuation of the previous step's cost differential.</p>
+
+      <h3>7.2 Deepening R2</h3>
+      <p>Paper 44 interpreted R2 (J(m-1) &gt; 0 ⟹ U(m) = 0) as "chisel-remainder coincidence." Paper 45 gives a more precise statement: R2 does not say "the remainder is zero after a jump" — it says "the jump emptied the reservoir, so the next step has no historical debt to repay." The microscopic mechanism of chisel-remainder coincidence is <em>reservoir clearing</em>.</p>
+
+      <h3>7.3 Precise Microscopic Mechanism of Le Chatelier</h3>
+      <p>Paper 44's Le Chatelier picture: \(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\), frequency suppression and decoherence intensity counterbalancing.</p>
+      <p>Paper 45 makes D(k) precise. The exact expression is \(D(k) = E[\min(C, R_\mathrm{prev})^2 \mid J(m-1)=0, \Omega(m)=k]\). Since front dominates (95%+), numerically \(D(k) \approx E[R^2 \mid \text{front}, k]\). The front's E[R²] slowly declines from ~2.7 to ~2.3 — not "selection bias purification" (Paper 44's formulation), but the reservoir's second moment gently declining within the front sector.</p>
+
+      <h2>§8 Open Questions</h2>
+      <p><strong>1.</strong> k-dependence of \(E[R(m-1)^2 \mid J(m-1)=0, \Omega(m)=k]\). Data says ≈ 2.4, k-independent. Proof requires current-to-predecessor fiber control.</p>
+      <p><strong>2.</strong> Structural explanation of R = 1 dominance (65–70%). R = 1 means M(m) = ρ_E(m) + 1 — minimum debt mode.</p>
+      <p><strong>3.</strong> Reservoir Dynamics and Paper 21's Lindley recurrence. \(R(m) = \max(R(m-1) - B(m), 0)\) is Lindley-type. What is its stationary distribution?</p>
+      <p><strong>4.</strong> Generalization of the Capacity-Allocation Law. Does it hold for all min/max recurrence systems?</p>
+
+      <h2>§9 Retrospective on Paper 44</h2>
+      <p>Paper 44's Le Chatelier picture and three-layer narrative do not require modification. Paper 45 provides the precise microscopic mechanism:</p>
+      <div class="thesis-box">
+        <p><strong>Paper 44:</strong> \(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\) (decoherence intensity rises then falls, counterbalance produces stability).</p>
+        <p><strong>Paper 45 makes precise:</strong> \(D(k) = E[\min(C, R_\mathrm{prev})^2 \mid \text{exposed}, \Omega=k]\). Front dominates (95%+), so \(D(k) \approx E[R^2 \mid \text{front}, k]\). The microscopic realization of decoherence is reservoir transfer — not accumulation, but single-step transfer.</p>
+        <p>Paper 44's "selection bias purification" should be corrected to: "the exposed sector is dominated by the front, and the front's E[R²] gently declines with k."</p>
+      </div>
+
+      <h2>Data Sources</h2>
+      <p>Scripts: su_overlap_detail.c, u_diag.c, cap_alloc_verify.c, reservoir_dynamics.c (C, gcc -O2). Data: ρ_E via DP min for n ≤ 10⁷+1.</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLIV (Why DP min produces local smoothness). DOI: <a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener">10.5281/zenodo.19247859</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLII (H' conditional closure). DOI: <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">10.5281/zenodo.19226607</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XLIII (Self-correction at N=10¹⁰). DOI: <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener">10.5281/zenodo.19240183</a>.</p>
+      <p>[4] H. Qin. ZFCρ Paper XVIII (Anti-correlation engine). DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[5] H. Qin. ZFCρ Paper XX (Unconditional B-bound). DOI: <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">10.5281/zenodo.19027892</a>.</p>
+      <p>[6] H. Qin. ZFCρ Paper XXI (Queue isomorphism). DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</p>
+
+      <h2>Acknowledgments</h2>
+      <p><strong>ChatGPT (Gongxihua):</strong> Exact min/max formulation of the Capacity-Allocation Law (upgrading from U = −D(m-1) to U = C ∧ R(m-1)). Proposal of Reservoir Dynamics R(m) = (R(m-1) − B(m))⁺. Two review rounds: proof gap correction (Case 2 inequality direction), exact/approximate layer separation, recharge dynamics completion. SPF Skeleton Reduction framework for Conjecture 2 attack.</p>
+      <p><strong>Claude (Zilu):</strong> All numerical experiments (S/U overlap, U &gt; 0 diagnostics, Capacity-Allocation exact verification, Reservoir Dynamics verification). Text drafting, working notes v1–v3, initial algebraic proof sketch (two cases). First discovery of the U = −D(m-1) empirical regularity.</p>
+      <p><strong>Claude (Thermodynamic thread):</strong> SAE positioning of the Remainder Transfer Law (pointwise transfer, not conservation). Dissipator picture (low Ω = inefficient dissipators). Correction suggestion for Paper 44's "decoherence" narrative. R2 = reservoir clearing microscopic interpretation.</p>
+      <p><strong>Gemini (Zixia):</strong> Case 1 proof tightening (M(m) ≤ ρ_E(m-1) ⟹ C ≥ 1+R &gt; R). "Fundamental Theorem" positioning suggestion.</p>
+      <p><strong>Grok (Zigong):</strong> Series consistency audit, proof completeness check, Conjecture 1 statement tightening, references completion.</p>
+      <p><strong>Han Qin (author):</strong> Directional decisions (U's ontology as Paper 45 main line), SAE a priori–a posteriori structure design, "Remainder Transfer Law" naming, Paper 45/46 scope decision. Final text independently completed by the author.</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho44.html">Paper XLIV</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>Paper XLVI →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 XLV</div>
+      <h1 class="paper-title">从 Reset Slack 到历史 Reservoir：Capacity-Allocation Law、Charge-Discharge Dynamics 与余项传递律</h1>
+      <div class="paper-authors">Han Qin（秦汉）&nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19275286
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper 44 引入 Reset-Slack 分解 \(A = \psi(\Delta M^-) - U^-\)，将局部光滑性归约为乘法目标光滑性加 reset slack 有界性。但 U（reset slack）的本体论地位未被澄清——它是当前步的效率损耗，还是历史量的传递？</p>
+        <p><strong>本文证明 U 是历史量。</strong></p>
+        <p>定义 predecessor defect reservoir \(R(m) := M(m) - \rho_E(m) \geq 0\) 和 signed capacity \(B(m) := 1 - M(m) + M(m-1)\)，release capacity \(C(m) := B(m)^+\)。本文证明两个精确恒等式：</p>
+        <p><strong>Capacity-Allocation Law（定理 1）：</strong>\(U(m) = \min(C(m), R(m-1))\)，\(J(m) = \max(C(m) - R(m-1), 0)\)。</p>
+        <p><strong>Reservoir Dynamics（定理 2）：</strong>\(R(m) = \max(R(m-1) - B(m), 0)\)。</p>
+        <p>DP min 的局部动力学不是"当前乘法目标直接产生 jump"，而是"当前容量先偿还 predecessor 的历史债务，再把余量转成 jump"。这两个恒等式统一了 Paper 44 的三个 sector：R2（shielded，R(m-1)=0）是 reservoir 为空的特例；reset front（0 &lt; R(m-1) &lt; C）是全额偿还态；true interior（R(m-1) ≥ C）是截断态。Reservoir Dynamics 进一步给出完整的 charge-discharge 循环：B&gt;0 时 discharge（66%），B&lt;0 时 recharge（13%），B=0 时 neutral（21%）。</p>
+        <p>五组后验数据支撑 U 是历史量而非当前选择误差：(1) S/U overlap 近零（Jaccard &lt; 0.005），(2) U&gt;0 的 predecessor 68-79% 是 Ω=2（低效散热器），(3) excursion length = 2 主导（81%+），(4) R(m-1) 集中在 1（65-70%），(5) front sector 上 U = R(m-1) 逐点精确。</p>
+        <p>对 Conjecture 1（\(E[U^2] \leq \mathrm{poly}(k)\)）：由 Capacity-Allocation Law，\(U \leq R(m-1)\)，故 \(E[U^2] \leq E[R^2]\)。数据显示 \(E[R^2 \mid \text{exposed}, \Omega=k] \approx 2.4\)（k-independent），若此为定理则 Conjecture 1 成立。这给了 Conjecture 1 一条独立于 Conjecture 2 的路线。</p>
+        <p>在 SAE 框架中，Capacity-Allocation Law 是余项传递律的精确代数实现——U 不是当前步新生的效率损耗，而是以前驱 reservoir 的形式被携带，并在当前步按 \(\min(\text{capacity}, \text{debt})\) 释放。</p>
+        <p><strong>关键词：</strong>整数复杂度，ρ-算术，reservoir dynamics，capacity-allocation，余项传递律，Le Chatelier 机制，凿-构-余</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 问题</h3>
+      <p>Paper 44（DOI: 10.5281/zenodo.19247859）引入 Reset-Slack 分解</p>
+      <p style="padding-left:1.5rem;">\(A(m) = \psi(\Delta M^-(m)) - U^-(m)\)</p>
+      <p>其中 \(\psi(x) = -\min(x,1)\)，\(U^-(m) = (1-\Delta M^-(m))^+ - J(m) \geq 0\) 为 reset slack。Paper 44 证明了 Reset-Slack Reduction 定理 \(\mathrm{Var}(A) \leq 2\cdot\mathrm{Var}(\Delta M^-) + 2\cdot E[U^2]\)，将 \(\mathrm{Var}(A)\) 的控制归约为两个独立输入。</p>
+      <p>Paper 44 把 U 描述为"DP min 未达理论上限的量"——一个效率损耗。Paper 44 的 S/U overlap 分析发现 Jaccard(S&gt;0, U&gt;0) ≈ 0，表明 U&gt;0 不来自当前步的选择错误（S&gt;0），而来自"构的历史积累"。但"构的历史积累"在数学上到底是什么？</p>
+      <p><strong>本文回答这个问题。</strong></p>
+
+      <h3>1.2 先验命题</h3>
+      <p>在 SAE 框架中，余项是凿-构操作后的结构性残留，不是随机噪声。如果 U 是余项在 DP 递推中的实现，SAE 要求：(1) U 不应来自当前步的选择错误，(2) U 应来自系统的历史状态，(3) U 的传递应是精确的——不多不少。</p>
+      <p>若 U 主要来自当前步选择错误（与 S/T 高度重合），或者只能在分布上相关而不能逐点 recover，SAE 的"历史携带量"路线就失败。本文的数据和定理排除了这些失败情形。</p>
+
+      <h3>1.3 记号</h3>
+      <p>同 Paper 44 §1.2。额外记号：</p>
+      <ul>
+        <li>\(R(m) := M(m) - \rho_E(m) \geq 0\)——predecessor defect reservoir</li>
+        <li>\(B(m) := 1 - \Delta M^-(m) = 1 - M(m) + M(m-1)\)——signed capacity</li>
+        <li>\(C(m) := B(m)^+ = \max(B(m), 0)\)——release capacity</li>
+        <li>下文为简便记 \(U := U^-\)。</li>
+      </ul>
+      <p><em>注：本文所有量（\(\rho_E, M, J, U, R, B\)）取整数值。</em></p>
+
+      <h3>1.4 主要结果</h3>
+      <p><strong>(1) Capacity-Allocation Law（定理 1）。</strong>\(U(m) = \min(C(m), R(m-1))\)，\(J(m) = \max(C(m) - R(m-1), 0)\)。DP 的局部动力学是容量分配：当前容量先偿还 predecessor 的历史债务，余量转化为 jump。</p>
+      <p><strong>(2) Reservoir Dynamics（定理 2）。</strong>\(R(m) = \max(R(m-1) - B(m), 0)\)。Reservoir 遵循 Lindley 型递推，B&gt;0 时 discharge，B&lt;0 时 recharge。</p>
+      <p><strong>(3) 三个 sector 的统一。</strong>R2（shielded）= reservoir 空；reset front = 全额偿还；true interior = 截断态。Paper 44 的三层结构是 Capacity-Allocation Law 的三个特例。</p>
+      <p><strong>(4) 后验证据。</strong>五组数据确认 U 是历史量而非当前选择误差。</p>
+      <p><strong>(5) 对 Conjecture 1 的归约。</strong>\(U \leq R(m-1) \Rightarrow E[U^2] \leq E[R^2]\)。若 \(E[R^2 \mid \text{exposed}, \Omega=k]\) 有界（数据 ≈ 2.4, k-independent），则 Conjecture 1 成立。</p>
+
+      <h2>§2 后验证据：U 是历史量</h2>
+
+      <h3>2.1 S/U Overlap 近零</h3>
+      <p>Paper 44 附属实验。Jaccard(S&gt;0, U&gt;0) &lt; 0.005 for k ≥ 4。93%+ 的 U&gt;0 发生在 M = M_spf（SPF split 全局最优）的整数上——凿做了正确选择但 U 仍非零。<strong>U&gt;0 不是凿的选择错误。</strong></p>
+
+      <h3>2.2 Predecessor Ω 极度偏向低 Ω</h3>
+      <p>U&gt;0 时 Ω(m-1)=2 占 68-79%，而 U=0 时只占 16-33%。</p>
+      <table>
+        <thead><tr><th>Ω(m-1)</th><th>U&gt;0 占比（k=4）</th><th>U=0 占比（k=4）</th><th>U&gt;0 占比（k=8）</th><th>U=0 占比（k=8）</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>67.6%</td><td>15.9%</td><td>78.8%</td><td>32.8%</td></tr>
+          <tr><td>3</td><td>25.7%</td><td>29.7%</td><td>18.6%</td><td>36.9%</td></tr>
+          <tr><td>4</td><td>5.4%</td><td>25.1%</td><td>2.3%</td><td>19.2%</td></tr>
+          <tr><td>≥5</td><td>1.3%</td><td>29.3%</td><td>0.3%</td><td>11.1%</td></tr>
+        </tbody>
+      </table>
+      <p>低 Ω 整数是低效散热器（P(J&gt;0) ~ 30%），经常走 successor path，积累 R&gt;0。高 Ω 整数是高效散热器（P(J&gt;0) &gt; 77%），几乎总是 jump，R=0。系统的所有不平衡源自散热不足的低复杂度区域。</p>
+
+      <h3>2.3 Excursion Length = 2</h3>
+      <p>U&gt;0 几乎总发生在恰好第二步 non-jump：P(len=2) &gt; 81% for k ≥ 4。P(len=1) = 0（J(m-1)=0 是 U&gt;0 的必要条件）。余项传递是瞬时的——一步 non-jump 就够，不需要长 excursion 的累积。</p>
+
+      <h3>2.4 R(m-1) 集中在 1</h3>
+      <p>R(m-1)|_{U&gt;0} 的分布：</p>
+      <table>
+        <thead><tr><th>R(m-1)</th><th>占比（k=4）</th><th>占比（k=8）</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>65.1%</td><td>70.3%</td></tr>
+          <tr><td>2</td><td>25.5%</td><td>23.3%</td></tr>
+          <tr><td>3</td><td>7.6%</td><td>5.5%</td></tr>
+          <tr><td>4</td><td>1.5%</td><td>0.8%</td></tr>
+        </tbody>
+      </table>
+      <p>\(E[R \mid U&gt;0] \approx 1.34\)–\(1.46\)。\(\mathrm{Var}[R \mid U&gt;0] \approx 0.4\)–\(0.5\)。R=1（最小债务：乘法目标只比 successor 贵 1）是主导模式。</p>
+
+      <h3>2.5 U 与 R(m-1) 的 Front-Dominated 对应</h3>
+      <p>在 front sector（J(m-1)=0, J(m)&gt;0，占 U&gt;0 的 95%+），U = R(m-1) 逐点精确（定理 1 的推论）。在 true interior（J(m-1)=0, J(m)=0，&lt;5%），U = C &lt; R(m-1)（截断态）。U 和 R(m-1) 的经验分布几乎重合，偏差来自稀有的 interior 截断。</p>
+
+      <h2>§3 Capacity-Allocation Law</h2>
+
+      <h3>3.1 定义</h3>
+      <ul>
+        <li><strong>Signed capacity：</strong>\(B(m) := 1 - M(m) + M(m-1)\)</li>
+        <li><strong>Release capacity：</strong>\(C(m) := B(m)^+ = \max(B(m), 0)\)</li>
+        <li><strong>Predecessor reservoir：</strong>\(R(m) := M(m) - \rho_E(m) \geq 0\)</li>
+      </ul>
+      <p>\(C(m)\) 是当前步的释放容量。\(R(m-1)\) 是 predecessor 的历史债务。</p>
+
+      <h3>3.2 定理 1（Capacity-Allocation Law）</h3>
+
+      <div class="proof-box">
+        <p><strong>定理 1.</strong> 对所有 m（Ω(m) ≥ 2, M(m) &lt; ∞, M(m-1) &lt; ∞）：</p>
+        <p>\[U(m) = \min(C(m),\, R(m-1))\]</p>
+        <p>\[J(m) = \max(C(m) - R(m-1),\, 0)\]</p>
+        <p><strong>证明。</strong>DP 递推：\(\rho_E(m) = \min(\rho_E(m-1)+1,\, M(m))\)。</p>
+        <p><strong>Case 1：J(m) &gt; 0</strong>（\(\rho_E(m) = M(m) &lt; \rho_E(m-1)+1\)）。</p>
+        <p>由 \(M(m) &lt; \rho_E(m-1)+1\) 且所有量取整数值，\(M(m) \leq \rho_E(m-1)\)，得</p>
+        <p>\(B(m) = 1 - M(m) + M(m-1) \geq 1 + M(m-1) - \rho_E(m-1) = 1 + R(m-1)\)</p>
+        <p>故 \(C(m) = B(m) \geq 1 + R(m-1) &gt; R(m-1) \geq 0\)。</p>
+        <p>因此 \(\max(C - R(m-1), 0) = C - R(m-1) = 1 - M(m) + \rho_E(m-1) = J(m)\)。</p>
+        <p>\(\min(C, R(m-1)) = R(m-1)\)。而 \(U = C - J = R(m-1)\)。✓</p>
+        <p><strong>Case 2：J(m) = 0</strong>（\(\rho_E(m) = \rho_E(m-1)+1 \leq M(m)\)）。</p>
+        <p>由 \(\rho_E(m-1)+1 \leq M(m)\)：</p>
+        <p>\(1 - M(m) + M(m-1) \leq M(m-1) - \rho_E(m-1) = R(m-1)\)</p>
+        <p>\(R(m-1) \geq 0\)，故取正部：\(C(m) = (1 - M(m) + M(m-1))^+ \leq R(m-1)\)。</p>
+        <p>因此 \(\min(C, R(m-1)) = C = U\)（因 J=0 时 \(U = C - 0 = C\)）。</p>
+        <p>\(\max(C - R(m-1), 0) = 0 = J\)。✓</p>
+        <p>两个 case 覆盖所有情况。■</p>
+        <p><em>Remark.</em> 数值验证：8,670,831 样本（要求 Ω(m) ≥ 2），零失败，跨所有 Ω 壳层（k=2 到 k=14）和所有 sector。定理 2 的验证使用 8,670,842 样本（包含 Ω(m)=1 的少量边界点），同样零失败。</p>
+      </div>
+
+      <h3>3.3 定理 2（Reservoir Dynamics）</h3>
+
+      <div class="proof-box">
+        <p><strong>定理 2.</strong> 对所有 m（同定理 1 条件）：</p>
+        <p>\[R(m) = \max(R(m-1) - B(m),\, 0)\]</p>
+        <p><strong>证明。</strong></p>
+        <p><strong>Case 1：J(m) &gt; 0</strong>（\(\rho_E(m) = M(m)\)）。</p>
+        <p>\(R(m) = M(m) - \rho_E(m) = 0\)。</p>
+        <p>由定理 1 Case 1：\(B(m) \geq 1 + R(m-1) &gt; R(m-1)\)，故 \(R(m-1) - B(m) &lt; 0\)。</p>
+        <p>\(\max(R(m-1) - B(m), 0) = 0 = R(m)\)。✓</p>
+        <p><strong>Case 2：J(m) = 0</strong>（\(\rho_E(m) = \rho_E(m-1)+1\)）。</p>
+        <p>\(R(m) = M(m) - \rho_E(m) = M(m) - \rho_E(m-1) - 1\)。</p>
+        <p>\(R(m-1) - B(m) = (M(m-1) - \rho_E(m-1)) - (1 - M(m) + M(m-1)) = M(m) - \rho_E(m-1) - 1 = R(m)\)。</p>
+        <p>由定理 1 Case 2：\(C \leq R(m-1)\)。当 \(B \geq 0\) 时 \(C = B \leq R(m-1)\)，故 \(R(m-1) - B \geq 0\)。当 \(B &lt; 0\) 时 \(R(m-1) - B = R(m-1) + |B| \geq 0\)。</p>
+        <p>故 \(\max(R(m-1) - B(m), 0) = R(m)\)。✓</p>
+        <p>两个 case 覆盖所有情况。■</p>
+        <p><em>Remark.</em> 数值验证：8,670,842 样本，零失败。</p>
+      </div>
+
+      <h3>3.4 三个 Sector 的统一（Discharge Regime, B &gt; 0）</h3>
+      <table>
+        <thead><tr><th>Sector</th><th>条件</th><th>R(m-1) vs C</th><th>U</th><th>J</th><th>R(m)</th></tr></thead>
+        <tbody>
+          <tr><td>Shielded</td><td>R(m-1) = 0</td><td>0 ≤ C</td><td>0</td><td>C</td><td>0</td></tr>
+          <tr><td>Reset front</td><td>0 &lt; R(m-1) &lt; C</td><td>debt &lt; capacity</td><td>R(m-1)</td><td>C − R(m-1)</td><td>0</td></tr>
+          <tr><td>True interior</td><td>R(m-1) ≥ C &gt; 0</td><td>debt ≥ capacity</td><td>C</td><td>0</td><td>R(m-1) − C</td></tr>
+        </tbody>
+      </table>
+      <p>当 B(m) ≤ 0 时，C(m) = 0，故 U = J = 0。动力学由定理 2 的 recharge/neutral 递推给出：R(m) = R(m-1) + |B(m)|（recharge）或 R(m) = R(m-1)（neutral）。</p>
+      <p>Paper 44 的 R2（shielded sector 上 U=0）是 R(m-1)=0 的特例。Paper 44 的 predecessor-state decomposition（\(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\)）是定理 1 的宏观统计后果。</p>
+
+      <h3>3.5 Charge-Discharge Dynamics</h3>
+      <p>\(B(m) = 1 - M(m) + M(m-1)\) 是 signed capacity：</p>
+      <ul>
+        <li><strong>B &gt; 0（discharge, 66%）：</strong>乘法目标变便宜。容量先偿还 reservoir，余量变 jump。R(m) = max(R(m-1) − B, 0)——reservoir 减少或清零。</li>
+        <li><strong>B &lt; 0（recharge, 13%）：</strong>乘法目标变贵。Reservoir 增加：R(m) = R(m-1) + |B|。</li>
+        <li><strong>B = 0（neutral, 21%）：</strong>Reservoir 不变：R(m) = R(m-1)。</li>
+      </ul>
+      <p>DP 递推的完整动力学：系统携带一个 reservoir R ≥ 0。每一步，signed capacity B 决定 discharge 或 recharge。Jump 只在 discharge 且容量超过债务时发生。</p>
+
+      <h2>§4 余项传递律</h2>
+
+      <h3>4.1 精确表述</h3>
+      <div class="decomp-box">
+        <p><strong>余项传递律（Remainder Transfer Law）：</strong>Predecessor 的 reservoir R(m-1) 在当前步被释放。释放量 = min(C(m), R(m-1))。容量足够时全部释放（front），不够时部分释放（interior）。未释放的部分保留在 R(m) 中继续传递。每一步的 reservoir 变化完全由 signed capacity B(m) 决定。</p>
+      </div>
+      <p>这不是守恒律（某个量的总和不变），而是逐点传递律——predecessor 的债务被精确传递，不多不少。宏观上表现为守恒：所有 slack（U）都有来源（predecessor reservoir），所有 reservoir 都有去处（被 discharge 清零，或继续 carry）。</p>
+
+      <h3>4.2 Charge-Discharge 的 SAE 含义</h3>
+      <ul>
+        <li><strong>Discharge（B&gt;0）：</strong>凿找到了便宜的乘法路径。容量先偿还历史债务，余量变 jump。如果债务为零（R(m-1)=0, shielded），全部变 jump——R2，凿-余重合态。</li>
+        <li><strong>Recharge（B&lt;0）：</strong>凿没有找到更好的路径。Reservoir 增加——构积累新的历史债务。</li>
+        <li><strong>Neutral（B=0）：</strong>历史状态原样传递。</li>
+      </ul>
+      <p>DP 递推不是无记忆的 greedy 算法——它携带历史（reservoir），在有利条件下释放，在不利条件下积累。Le Chatelier 机制的微观实现：高频的 discharge（66%）不断清零 reservoir，低频的 recharge（13%）偶尔积累，积累量（R=1 主导）极小，通常一步即被下一个 discharge 清零。</p>
+
+      <h3>4.3 散热器图景</h3>
+      <p>低 Ω 整数（Ω ≤ 3）是低效散热器：P(J&gt;0) ~ 30-57%，经常 recharge。高 Ω 整数（Ω ≥ 4）是高效散热器：P(J&gt;0) &gt; 77%，频繁 discharge。</p>
+      <p>U&gt;0 的 predecessor 68-79% 是 Ω=2——系统的所有不平衡源自散热不足的低复杂度区域。</p>
+
+      <h2>§5 对 H′ 闭合链的影响</h2>
+
+      <h3>5.1 对 Conjecture 1 的归约</h3>
+      <p>由定理 1，\(U(m) = \min(C(m), R(m-1)) \leq R(m-1)\)。因此</p>
+      <p style="padding-left:1.5rem;">\(E[U^2 \mid \Omega(m)=k] \leq E[R(m-1)^2 \mid \Omega(m)=k]\)</p>
+      <p>精确按 sector 拆开：</p>
+      <p style="padding-left:1.5rem;">\(E[U^2 \mid \Omega=k] = P(\text{front} \mid \Omega=k) \cdot E[R_\mathrm{prev}^2 \mid \text{front}, k] + P(\text{interior} \mid \Omega=k) \cdot E[C^2 \mid \text{interior}, k]\)</p>
+      <p>由于 front 占 exposed 的 95%+，数值上</p>
+      <p style="padding-left:1.5rem;">\(E[U^2 \mid \Omega=k] \approx P(\text{exposed} \mid \Omega=k) \cdot E[R_\mathrm{prev}^2 \mid \text{exposed}, k]\)</p>
+      <p>数据：\(E[R^2 \mid \text{exposed}, \Omega=k] \approx 2.4\)（几乎不依赖 k）。</p>
+      <div class="milestone-box">
+        <p><strong>若能证明 \(E[R(m-1)^2 \mid J(m-1)=0, \Omega(m)=k] \leq C_R\)（某常数，不依赖 k），则 Conjecture 1 成立。</strong></p>
+        <p>注意 conditioning 是 Ω(m)=k（current shell），R 是 m-1 的量——需要 current-to-predecessor fiber 的控制。</p>
+      </div>
+
+      <h3>5.2 与 Paper 44 攻击层次的关系</h3>
+      <div class="chain-box">
+        路线 A（Paper 44）：Conj.2 ⟹ Conj.1 + NI1 A-side（一步到位，主攻）<br>
+        路线 B（Paper 45）：E[R²|exposed] 有界 ⟹ Conj.1（独立路线）<br>
+        注：NI1 还需 Var(ΔM⁻) 单独控制，故路线 B 不替代路线 A
+      </div>
+      <p>Paper 45 的价值不在于替代路线 A。Paper 45 的价值在于本体论解释：它说明了为什么 Conjecture 1 应该成立——U 是被 reservoir 严格束缚的历史量，reservoir 的二阶矩是关于单个整数的 ρ_E 和 M 关系的量，远比差分 ΔM⁻ 的控制简单。</p>
+
+      <h2>§6 数值证据</h2>
+
+      <h3>6.1 定理 1 验证</h3>
+      <p>8,670,831 样本，零失败。跨所有 Ω 壳层（k=2 到 14）。</p>
+      <table>
+        <thead><tr><th>Sector</th><th>样本数</th><th>通过率</th></tr></thead>
+        <tbody>
+          <tr><td>Shielded（R(m-1)=0）</td><td>5,800,087</td><td>100.000000%</td></tr>
+          <tr><td>Reset front（0 &lt; R &lt; C）</td><td>2,565,983</td><td>100.000000%</td></tr>
+          <tr><td>True interior（R ≥ C）</td><td>304,761</td><td>100.000000%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 定理 2 验证</h3>
+      <p>8,670,842 样本，零失败。跨所有 Ω 壳层。R(m) ≥ 0 验证：零违反。\(R(m) = M(m) - \rho_E(m) \geq 0\) 对所有 m ≤ 10⁷ 精确成立。</p>
+
+      <h3>6.3 B(m) 分布</h3>
+      <table>
+        <thead><tr><th>B(m)</th><th>占比</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td>B &gt; 0</td><td>66.4%</td><td>Discharge（乘法目标变便宜）</td></tr>
+          <tr><td>B = 0</td><td>20.6%</td><td>Neutral（乘法目标不变）</td></tr>
+          <tr><td>B &lt; 0</td><td>13.0%</td><td>Recharge（乘法目标变贵）</td></tr>
+        </tbody>
+      </table>
+
+      <h2>§7 SAE 解读</h2>
+
+      <h3>7.1 Pre-Dimensional Pattern 的深化</h3>
+      <p>Paper 44 的 transfer coefficient τ(k) ∈ [0.14, 0.25] 提示 pre-dimensional pattern。Paper 45 给出了更深的根基：选择的输出（A）和结构输入（Δf）之间的弱相关不是因为"余项被动吸收了涨落"——而是因为<strong>余项在步与步之间精确传递</strong>。余项不是被创造来吸收涨落的，它是上一步的代价差的精确延续。</p>
+
+      <h3>7.2 R2 的深化</h3>
+      <p>Paper 44 把 R2（J(m-1)&gt;0 ⟹ U(m)=0）解读为"凿-余重合态"。Paper 45 给出了更精确的表述：R2 不是说"jump 后余项为零"——是说"jump 把 reservoir 清零了，所以下一步没有历史债务需要偿还"。凿-余重合的微观机制就是 <em>reservoir 清空</em>。</p>
+
+      <h3>7.3 Le Chatelier 的精确微观机制</h3>
+      <p>Paper 44 的 Le Chatelier 图景：\(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\)，频率压制和去相干强度对冲。</p>
+      <p>Paper 45 精确化了 D(k)。精确表达为 \(D(k) = E[\min(C, R_\mathrm{prev})^2 \mid J(m-1)=0, \Omega(m)=k]\)。由于 front 主导（95%+），数值上 \(D(k) \approx E[R^2 \mid \text{front}, k]\)。Front 的 E[R²] 从 ~2.7 缓慢降至 ~2.3——不是"selection bias 净化"（Paper 44 v3 的表述），而是 front 内部的 reservoir 二阶矩随 k 温和下降。</p>
+
+      <h2>§8 Open Questions</h2>
+      <p><strong>1.</strong> \(E[R(m-1)^2 \mid J(m-1)=0, \Omega(m)=k]\) 的 k-dependence。数据说 ≈ 2.4 不依赖 k。证明需要 current-to-predecessor fiber 控制。</p>
+      <p><strong>2.</strong> R=1 主导（65-70%）的结构性解释。R=1 意味着 M(m) = ρ_E(m) + 1——最小债务模式。</p>
+      <p><strong>3.</strong> Reservoir Dynamics 与 Paper 21 的 Lindley 递推。\(R(m) = \max(R(m-1) - B(m), 0)\) 是 Lindley 型。其 stationary distribution 是什么？</p>
+      <p><strong>4.</strong> Capacity-Allocation Law 的一般化。是否对所有 min/max 递推系统成立？</p>
+
+      <h2>§9 对 Paper 44 的回溯</h2>
+      <p>Paper 44 的 Le Chatelier 图景和三层叙事不需要修改。Paper 45 给出了精确的微观机制：</p>
+      <div class="thesis-box">
+        <p><strong>Paper 44：</strong>\(E[U^2] = (1-w_\mathrm{shielded}) \times D(k)\)（去相干强度先升后降，对冲产生稳定）。</p>
+        <p><strong>Paper 45 精确化：</strong>\(D(k) = E[\min(C, R_\mathrm{prev})^2 \mid \text{exposed}, \Omega=k]\)。Front 主导（95%+），\(D(k) \approx E[R^2 \mid \text{front}, k]\)。去相干的微观实现是 reservoir 传递——不是累积，是一步传递。</p>
+        <p>Paper 44 的"selection bias 净化"需修正为"exposed sector 内部被 front 主导，front 的 E[R²] 随 k 温和下降"。</p>
+      </div>
+
+      <h2>数据来源</h2>
+      <p>脚本：su_overlap_detail.c, u_diag.c, cap_alloc_verify.c, reservoir_dynamics.c（C, gcc -O2）。数据：ρ_E via DP min for n ≤ 10⁷+1。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLIV（Why DP min produces local smoothness）. DOI: <a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener">10.5281/zenodo.19247859</a>.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLII（H' 条件闭合）. DOI: <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">10.5281/zenodo.19226607</a>.</p>
+      <p>[3] H. Qin. ZFCρ Paper XLIII（Self-Correction at N=10¹⁰）. DOI: <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener">10.5281/zenodo.19240183</a>.</p>
+      <p>[4] H. Qin. ZFCρ Paper XVIII（反相关引擎）. DOI: <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">10.5281/zenodo.19024385</a>.</p>
+      <p>[5] H. Qin. ZFCρ Paper XX（Unconditional B-bound）. DOI: <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">10.5281/zenodo.19027892</a>.</p>
+      <p>[6] H. Qin. ZFCρ Paper XXI（Queue isomorphism）. DOI: <a href="https://doi.org/10.5281/zenodo.19037934" target="_blank" rel="noopener">10.5281/zenodo.19037934</a>.</p>
+
+      <h2>致谢</h2>
+      <p><strong>ChatGPT（公西华）：</strong>Capacity-Allocation Law 的 min/max 精确表述（从 U = -D(m-1) 升级为 U = C ∧ R(m-1)）。Reservoir Dynamics R(m) = (R(m-1) - B(m))⁺ 的提出。两轮 review：证明漏洞修正（Case 2 不等式方向），exact/approximate 混层修正，recharge dynamics 补全。SPF Skeleton Reduction 的 Conjecture 2 攻击框架。</p>
+      <p><strong>Claude（子路）：</strong>全部数值实验（S/U overlap, U&gt;0 diagnostics, Capacity-Allocation 精确验证, Reservoir Dynamics 验证），文本起草，working notes v1-v3，代数证明的初始 sketch（两个 case）。U = -D(m-1) 经验规律的首次发现。</p>
+      <p><strong>Claude（热力学 thread）：</strong>余项传递律的 SAE 定位（逐点传递，非守恒律）。散热器图景（低 Ω = 低效散热器）。对 Paper 44"去相干"叙述的修正建议。R2 = reservoir 清零的微观解读。</p>
+      <p><strong>Gemini（子夏）：</strong>Case 1 证明收紧（M(m) ≤ ρ_E(m-1) ⟹ C ≥ 1+R &gt; R）。"Fundamental Theorem"定位建议。</p>
+      <p><strong>Grok（子贡）：</strong>系列一致性审核，证明完整性检查，Conjecture 1 表述收紧，references 补全。</p>
+      <p><strong>Han Qin（作者）：</strong>方向决策（U 的本体论为 Paper 45 主线），SAE 先验-后验结构设计，"余项传递律"命名，Paper 45/46 的 scope 决策。最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        ← <a href="zfcrho44.html">论文 XLIV</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <span>论文 XLVI →</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
