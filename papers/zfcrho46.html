@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPF Skeleton Reduction, Analytic Interface, and Conditional Closure of Conjecture 2 — ZFCρ Paper XLVI — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLVI: SPF Skeleton Reduction M_spf=f+r̃_spf, Analytic Interface four-quantity decomposition of E[(Δf)²], θ latent variable, Conditional Closure Theorem (UBPD+PMH-DS+PCF+RT ⟹ Conjecture 2 ⟹ H'). 8.67 million samples, zero failures.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, SPF skeleton, analytic interface, conditioning bias, shell-depth variable, Conjecture 2, H' conditional closure, prime mean hypothesis, centered factorization">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SPF Skeleton Reduction, Analytic Interface, and Conditional Closure of Conjecture 2">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho46.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "SPF Skeleton Reduction, Analytic Interface, and Conditional Closure of Conjecture 2",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho46.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19303511"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "SPF skeleton", "analytic interface",
+      "conditioning bias", "shell-depth variable", "Conjecture 2", "H' conditional closure",
+      "prime mean hypothesis", "centered factorization", "ternary lock"
+    ],
+    "abstract": "Paper 44 narrowed the core bottleneck of H' to Conjecture 2. Paper 45 provided Conjecture 1 with an independent route. This paper further reduces the growth bottleneck of Conjecture 2 to the conditioned difference of the additive skeleton f, and provides a formal conditional closure requiring four hypotheses (UBPD, PMH-DS, PCF, RT). SPF Skeleton Reduction: M_spf = f + r̃_spf, exact identity, 8.67 million samples, zero failures. Analytic Interface: E[(Δf)²] decomposes into four quantities; growth comes entirely from (μ-μ⁻)² (conditioning bias). θ latent variable confirms all fluctuations are O(1). Conditional Closure: UBPD + PMH-DS + PCF + RT ⟹ Conjecture 2 ⟹ H'.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho46.html">
+  <meta name="citation_title" content="SPF Skeleton Reduction, Analytic Interface, and Conditional Closure of Conjecture 2">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19303511">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho46.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .decomp-box { background: #f0fff4; border-left: 3px solid #00aa55; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .decomp-box p { margin: 0; }
+    .decomp-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLVI</div>
+      <h1 class="paper-title">SPF Skeleton Reduction, Analytic Interface, and Conditional Closure of Conjecture 2</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19303511" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19303511
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>Paper 44 narrowed the core bottleneck of H' to Conjecture 2 (\(E[(\Delta M^-)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\)). Paper 45 provided Conjecture 1 with an independent route. This paper further reduces the growth bottleneck of Conjecture 2 to the conditioned difference of the additive skeleton \(f\), and provides a formal conditional closure requiring four hypotheses (UBPD, PMH-DS, PCF, RT).</p>
+        <p>First, the <strong>SPF Skeleton Reduction</strong> (exact identity, 8.67 million samples, zero failures): \(M_\mathrm{spf}(m) = f(m) + \tilde{r}_\mathrm{spf}(m)\), where \(\tilde{r}_\mathrm{spf} := M_\mathrm{spf} - f\). Thus \(\Delta M_\mathrm{spf}^- = \Delta f^- + \Delta\tilde{r}_\mathrm{spf}^-\). Data shows \(E[(\Delta\tilde{r})^2]\) declining (2.1 → 1.2, tame), \(E[(\Delta f)^2]\) growing (the sole bottleneck), and \(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) strongly negative (Corr ≈ −0.50 to −0.70, ternary lock). \(E[(\Delta f)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\) is a sufficient condition for closing Conjecture 2.</p>
+        <p>Second, the <strong>Analytic Interface</strong> decomposes \(E[(\Delta f)^2]\) into four quantities: \(\mathrm{Var}(f)\), \(\mathrm{Var}^-(f)\), \((\mu-\mu^-)^2\), \(\mathrm{Cov}(f,f^-)\). Three key findings: (A1) \(\mathrm{Var}(f \mid \Omega=k) = O(1)\) and declining (from 11.4 to 8.6), (A2) the growth of \(E[(\Delta f)^2]\) comes entirely from \((\mu-\mu^-)^2\) (mean drift), (A3) \(\mathrm{Corr}(f, f^-) \approx 0.89\) (\(k\)-independent). The latent variable \(\theta = \log N - \log n\) (shell-depth) confirms: \(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\), all terms \(O(1)\) (fixed log budget). Mean drift is the cost of conditioning; fluctuation is the intrinsic quantity. The coarse bound \(2\mathrm{Var}+2\mathrm{Var}^-+(\mu-\mu^-)^2 \approx 40\) is \(k\)-independent — two sides of conditioning in balance.</p>
+        <p><strong>Proposition 3 (UL-weak):</strong> \(\rho_E(p^a) \leq a \cdot \rho_E(p)\) (upper bound, unconditional), \(\rho_E(p^a) = a\cdot\rho_E(p) + \sum\delta_j\) (exact, \(\delta_j \leq 0\)). Data shows \(\sup|\delta| \leq 7\).</p>
+        <p><strong>Conditional Closure Theorem:</strong> UBPD + PMH-DS + PCF + RT \(\Rightarrow\) \(E[(\Delta f)^2] = O(k^2)\) \(\Rightarrow\) Conjecture 2 \(\Rightarrow\) Paper 44 dominance chain \(\Rightarrow\) H'.</p>
+        <p>In the SAE framework: mean drift is the cost of a narrowing observation window (conditioning bias), not intrinsic instability of the DP recurrence. The system's dynamical fluctuation (\(\mathrm{Var}(f)\), \(\mathrm{Var}(\xi)\)) is completely stable at \(O(1)\). The anti-correlation engine within the SPF skeleton (\(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) strongly negative) is a replica of Paper 18's chisel-construct-remainder ternary lock.</p>
+        <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, SPF skeleton, analytic interface, conditioning bias, shell-depth variable, Conjecture 2, H' conditional closure</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 The Problem</h3>
+      <p>Paper 44 (<a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19247859</a>) established the Reset-Slack Reduction and Theorem A (Conj.2 ⟹ Conj.1 + NI1 A-side); the \(M_\mathrm{spf}\)-T-S decomposition narrowed the attack surface to \(E[(\Delta M_\mathrm{spf}^-)^2]\). Paper 45 (<a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19275286</a>) proved the Capacity-Allocation Law, providing Conjecture 1 with an independent route.</p>
+      <p>The sole remaining principal target: <strong>Conjecture 2 (\(E[(\Delta M^-)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\))</strong>.</p>
+      <p>This paper reduces the growth bottleneck of Conjecture 2 to specific analytic number theory inputs (PMH-DS and PCF), and in the process discovers three groups of new regularities in the microscopic structure of the DP recurrence.</p>
+
+      <h3>1.2 A Priori Principles</h3>
+      <p><strong>(P1) Mean drift is the cost of conditioning; fluctuation is the intrinsic quantity.</strong> \(\Omega=k\) is an increasingly selective condition that pulls shell means but does not change fluctuations.</p>
+      <p><strong>(P2) Coarse bound conservation.</strong> Var declining (conditioning compresses diversity) and \((\mu-\mu^-)^2\) growing (conditioning separates shell from predecessor) are two sides of the same operation.</p>
+      <p><strong>(P3) Ternary lock within the SPF skeleton.</strong> Fluctuations of \(M_\mathrm{spf} = f + \tilde{r}\) are compressed by the DP selection mechanism; \(f\) and \(\tilde{r}\) differences are complementary.</p>
+      <p><strong>(P4) Centered factorization = subtracting the trend to see fluctuation.</strong> \(f(n) = \lambda\log n + \xi(n)\); the Euler product cares only about the fluctuation \(\xi\).</p>
+      <p><strong>(P5) Fixed log budget + near-affine \(f\).</strong> \(\Omega=k\) conditioning fixes the log budget; \(f\) nearly reads only the total budget. \(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) = O(1)\).</p>
+      <p><strong>(P6) Corr ≈ 0.89 from shared shell-depth \(\theta\).</strong> Centered residuals \(\xi\) are nearly uncorrelated.</p>
+      <p><strong>(P7) \(\tilde{r}\) declining = cofactor dense self-averaging.</strong> At high \(\Omega\), the cofactor enters a dense regime; \(\mathrm{Var}(\tilde{r})\) contracts.</p>
+
+      <h3>1.3 Notation</h3>
+      <p>As in Paper 44 §1.2. Additional notation: \(f(m) := \sum_{q^a \| m} \rho_E(q^a)\) (additive part); \(\tilde{r}_\mathrm{spf}(m) := M_\mathrm{spf}(m) - f(m)\) (SPF remainder); \(\theta := \log N - \log n\) (shell-depth); \(\xi(n) := f(n) - \lambda\log n\) (centered residual); \(\lambda \approx 3.12\) is the candidate linearization constant (\(E[\rho_E(p)]/E[\log p]\)).</p>
+
+      <h3>1.4 Main Results</h3>
+      <p><strong>(1) SPF Skeleton Reduction (theorem-level).</strong> \(M_\mathrm{spf} = f + \tilde{r}_\mathrm{spf}\), \(\Delta M_\mathrm{spf}^- = \Delta f^- + \Delta\tilde{r}_\mathrm{spf}^-\). \(E[(\Delta\tilde{r})^2]\) tame (declining, numerical \(O(1)\)); \(E[(\Delta f)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\) is a sufficient condition for closing Conjecture 2.</p>
+      <p><strong>(2) Analytic interface: three key findings.</strong> (A1) \(\mathrm{Var}(f) = O(1)\) and declining; (A2) growth comes entirely from \((\mu-\mu^-)^2\); (A3) \(\mathrm{Corr} \approx 0.89\), \(k\)-independent.</p>
+      <p><strong>(3) \(\theta\) latent variable verification.</strong> \(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\) (exact identity, all terms \(O(1)\)); \(\mathrm{Corr}(f,f^-) \approx \lambda^2\mathrm{Var}(\theta)/[\lambda^2\mathrm{Var}(\theta)+\mathrm{Var}(\xi)]\) (predicted/actual ratio ≈ 1.01).</p>
+      <p><strong>(4) Prime-power structure (Proposition 3).</strong> \(\rho_E(p^a) \leq a\cdot\rho_E(p)\) (unconditional upper bound). Adding UBPD gives \(\rho_E(p^a) = a\cdot\rho_E(p) + O(a)\).</p>
+      <p><strong>(5) Conditional Closure.</strong> UBPD + PMH-DS + PCF + RT \(\Rightarrow\) Conjecture 2 \(\Rightarrow\) H'.</p>
+
+      <h2>§2 SPF Skeleton Reduction</h2>
+
+      <h3>2.1 Exact Decomposition</h3>
+      <p>Define \(\tilde{r}_\mathrm{spf}(m) := M_\mathrm{spf}(m) - f(m)\).</p>
+      <div class="thesis-box">
+        <p><strong>Identity:</strong> \(M_\mathrm{spf}(m) = f(m) + \tilde{r}_\mathrm{spf}(m)\), \(\quad \Delta M_\mathrm{spf}^- = \Delta f^- + \Delta\tilde{r}_\mathrm{spf}^-\).</p>
+        <p><em>Numerical verification: 8,670,842 samples, zero failures.</em></p>
+      </div>
+      <p>Piecewise expansion of \(\tilde{r}_\mathrm{spf}\) (\(m = p^v \cdot b\), \(p = P^-(m)\), \((p,b)=1\)): \(\tilde{r}_\mathrm{spf} = r(m/p) - \varepsilon_\mathrm{spf}(m)\), where \(\varepsilon = 0\) (\(v=1\)) and \(\varepsilon = \rho_E(p^v) - \rho_E(p) - \rho_E(p^{v-1})\) (\(v \geq 2\)). \(\varepsilon\) is negligible (\(E[\varepsilon^2] < 0.03\) for \(k \geq 5\)).</p>
+
+      <h3>2.2 Core Moment Table (\(N = 10^7\))</h3>
+      <table>
+        <thead>
+          <tr><th>\(k\)</th><th>\(E[(\Delta M_\mathrm{spf})^2]\)</th><th>\(E[(\Delta f)^2]\)</th><th>\(E[(\Delta\tilde{r})^2]\)</th><th>\(\mathrm{Cov}(\Delta f,\Delta\tilde{r})\)</th><th>Corr</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>1.37</td><td>2.44</td><td>1.91</td><td>−1.47</td><td>−0.70</td></tr>
+          <tr><td>6</td><td>2.48</td><td>2.54</td><td>2.10</td><td>−1.36</td><td>−0.67</td></tr>
+          <tr><td>8</td><td>4.07</td><td>3.41</td><td>1.91</td><td>−1.19</td><td>−0.63</td></tr>
+          <tr><td>10</td><td>5.58</td><td>4.81</td><td>1.61</td><td>−1.03</td><td>−0.58</td></tr>
+          <tr><td>12</td><td>7.01</td><td>6.57</td><td>1.32</td><td>−0.87</td><td>−0.53</td></tr>
+          <tr><td>14</td><td>8.32</td><td>8.86</td><td>1.18</td><td>−0.80</td><td>−0.50</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.3 Three Findings</h3>
+      <p><strong>(F1) \(E[(\Delta\tilde{r})^2]\) is declining and tame.</strong> From 2.10 (\(k=6\) peak) to 1.18 (\(k=14\)). The cofactor (\(\Omega = k-1\)) enters a dense self-averaging regime at high \(k\) (P7). Decline is driven by \(\mathrm{Var}(\tilde{r} \mid \Omega=k)\) declining (1.08 → 0.41); \(\mathrm{Corr}(\tilde{r}, \tilde{r}^-) \approx 0\) (no correlation compression).</p>
+      <p><strong>(F2) \(E[(\Delta f)^2]\) is growing — the sole bottleneck.</strong> From 2.44 to 8.86. Growth comes from mean drift (§3).</p>
+      <p><strong>(F3) \(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) is strongly negative (Corr ≈ −0.50 to −0.70).</strong> Paper 18's anti-correlation engine replicated within the SPF skeleton (P3).</p>
+
+      <h3>2.4 Reduction of Conjecture 2</h3>
+      <p>\(E[(\Delta M_\mathrm{spf})^2] \leq 2\cdot E[(\Delta f)^2] + 2\cdot E[(\Delta\tilde{r})^2]\). Data shows \(E[(\Delta\tilde{r})^2] = O(1)\) (declining).</p>
+      <div class="milestone-box">
+        <p>A sufficient condition for closing Conjecture 2: \(E[(\Delta f)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\) plus \(E[(\Delta\tilde{r})^2 \mid \Omega=k] \leq \mathrm{poly}(k)\). The latter is strongly supported by data; the former is the only growing quantity.</p>
+      </div>
+      <p>Relationship to Paper 18: Paper 18 ruled out "unconditional control of \(\mathrm{Var}(\Delta f)\) first." This paper first strips away \(\tilde{r}\) (tame), then controls \(E[(\Delta f)^2]\) conditioned on \(\Omega=k\). The target has changed; the logic has not reversed.</p>
+
+      <h2>§3 Analytic Interface</h2>
+
+      <h3>3.1 Four-Quantity Decomposition</h3>
+      <div class="proof-box">
+        <p><strong>Exact identity:</strong> \(E[(\Delta^- f)^2 \mid \Omega=k] = \mathrm{Var}(f) + \mathrm{Var}^-(f) - 2\mathrm{Cov}(f,f^-) + (\mu-\mu^-)^2\)</p>
+        <p><strong>Coarse bound:</strong> \(E[(\Delta f)^2] \leq 2\mathrm{Var}(f) + 2\mathrm{Var}^-(f) + (\mu-\mu^-)^2\)</p>
+      </div>
+
+      <h3>3.2 Data (\(N = 10^7\))</h3>
+      <table>
+        <thead>
+          <tr><th>\(k\)</th><th>\(\mathrm{Var}(f)\)</th><th>\(\mathrm{Var}^-(f)\)</th><th>\((\mu-\mu^-)^2\)</th><th>\(\mathrm{Cov}(f,f^-)\)</th><th>Corr</th><th>\(E[(\Delta f)^2]\)</th><th>coarse</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>10.71</td><td>10.49</td><td>0.01</td><td>9.41</td><td>0.89</td><td>2.39</td><td>42.40</td></tr>
+          <tr><td>8</td><td>9.80</td><td>9.31</td><td>1.18</td><td>8.51</td><td>0.89</td><td>3.27</td><td>39.41</td></tr>
+          <tr><td>12</td><td>9.18</td><td>8.72</td><td>4.57</td><td>7.94</td><td>0.89</td><td>6.59</td><td>40.36</td></tr>
+          <tr><td>14</td><td>8.63</td><td>8.19</td><td>6.86</td><td>7.38</td><td>0.88</td><td>8.91</td><td>40.50</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.3 Three Key Findings</h3>
+      <p><strong>(A1) \(\mathrm{Var}(f \mid \Omega=k) = O(1)\) and declining (P5).</strong> From 11.4 to 8.6. Not \(O(k)\) — it is \(O(1)\) and decreasing. The \(\Omega=k\) conditioning fixes the log budget; \(f \approx \lambda\log n\) reads nearly only the total budget.</p>
+      <p><strong>(A2) Growth comes entirely from \((\mu-\mu^-)^2\) (P1).</strong> \(\mu_\mathrm{shell}\) declines slightly; \(\mu_\mathrm{pred}\) rises slightly. The gap is linear in \(k\) (≈ \(-0.2k\)). \((\mu-\mu^-)^2 \approx 0.04k^2\). Mean drift is the cost of conditioning, not dynamical instability.</p>
+      <p><strong>(A3) \(\mathrm{Corr}(f, f^-) \approx 0.89\), \(k\)-independent (P6).</strong> Comes from shared shell-depth \(\theta\).</p>
+      <p><strong>(A4) Coarse bound \(2\mathrm{Var}+2\mathrm{Var}^-+(\mu-\mu^-)^2 \approx 40\), \(k\)-independent (P2).</strong> Var declining exactly compensates \((\mu-\mu^-)^2\) growing — two sides of conditioning in balance. (The value 40 is the coarse bound; the actual value with \(\mathrm{Corr} \approx 0.89\) compresses to \(\sim 0.6k\).)</p>
+
+      <h3>3.4 \(\theta\) Latent Variable</h3>
+      <p>\(f(n) = \lambda(\log N - \theta) + \xi(n)\), \(\quad \theta = \log N - \log n\), \(\quad \lambda \approx 3.12\).</p>
+      <div class="thesis-box">
+        <p>\(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\)</p>
+      </div>
+      <table>
+        <thead><tr><th>\(k\)</th><th>\(\lambda^2\mathrm{Var}(\theta)\)</th><th>\(\mathrm{Var}(\xi)\)</th><th>cross</th><th>\(\mathrm{Var}(f)\)</th><th>check</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>9.51</td><td>1.12</td><td>+0.08</td><td>10.71</td><td>0.00</td></tr>
+          <tr><td>8</td><td>8.49</td><td>0.94</td><td>+0.37</td><td>9.80</td><td>0.00</td></tr>
+          <tr><td>12</td><td>7.86</td><td>0.86</td><td>+0.46</td><td>9.18</td><td>0.00</td></tr>
+          <tr><td>14</td><td>7.42</td><td>0.79</td><td>+0.43</td><td>8.63</td><td>0.00</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Q2 model:</strong> \(\mathrm{Corr}(f,f^-) \approx \lambda^2\mathrm{Var}(\theta) / [\lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi)]\)</p>
+      <table>
+        <thead><tr><th>\(k\)</th><th>predicted</th><th>actual</th><th>ratio</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>0.895</td><td>0.888</td><td>1.008</td></tr>
+          <tr><td>8</td><td>0.900</td><td>0.891</td><td>1.010</td></tr>
+          <tr><td>12</td><td>0.902</td><td>0.887</td><td>1.017</td></tr>
+        </tbody>
+      </table>
+      <p>The 89% correlation comes almost entirely from shared \(\theta\). \(\mathrm{Cov}(\xi,\xi^-) \approx 0\) — centered residuals are nearly uncorrelated.</p>
+
+      <h2>§4 Uniform Linearization (UL-weak)</h2>
+
+      <h3>4.1 Proposition 3 (Prime-Power Structure)</h3>
+      <p>The following three results hold unconditionally for all primes \(p\) and positive integers \(a\):</p>
+      <p><strong>(a) Successor dominance for primes.</strong> \(\rho_E(p) = \rho_E(p-1) + 1\). Proof: primes have no nontrivial factorization (\(M(p) = +\infty\)). <em>Verified: 664,579 primes, zero failures.</em></p>
+      <p><strong>(b) Prime-power sub-additivity.</strong> \(\delta_a(p) := \rho_E(p^a) - \rho_E(p) - \rho_E(p^{a-1}) \leq 0\). Proof: \(p \times p^{a-1}\) is a factorization of \(p^a\); by R1, \(\rho_E(p^a) \leq \rho_E(p) + \rho_E(p^{a-1})\). <em>Verified: \(\delta \leq 0\) exact, \(\max(\delta) = 0\).</em></p>
+      <p><strong>(c) Recursive expansion.</strong> \(\rho_E(p^a) = a\cdot\rho_E(p) + \sum_{j=2}^a \delta_j(p)\), \(\sum\delta \leq 0\). Upper bound: \(\rho_E(p^a) \leq a\cdot\rho_E(p)\).</p>
+      <p><strong>On the O(a) lower bound (UBPD hypothesis):</strong> The upper bound \(\rho_E(p^a) \leq a\cdot\rho_E(p)\) is an unconditional theorem. The lower bound requires \(\sup_{p,a} |\delta_a(p)| < \infty\) (Uniform Bounded Prime-power Defect, UBPD). Data shows \(|\delta| \leq 7\) (\(N = 10^7\)), but UBPD as a global assertion is not yet proved.</p>
+      <table>
+        <thead><tr><th>\(a\)</th><th>count</th><th>\(E[\delta]\)</th><th>\(\mathrm{Var}[\delta]\)</th><th>range</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>446</td><td>−1.64</td><td>1.61</td><td>[−7, 0]</td></tr>
+          <tr><td>3</td><td>47</td><td>−0.40</td><td>0.37</td><td>[−2, 0]</td></tr>
+          <tr><td>4</td><td>16</td><td>−0.81</td><td>0.65</td><td>[−2, 0]</td></tr>
+          <tr><td>5</td><td>9</td><td>−0.44</td><td>1.58</td><td>[−4, 0]</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 UL-weak and UL-strong</h3>
+      <p>UL-weak (\(\rho_E(p^a) \leq a\cdot\rho_E(p)\)) is an unconditional theorem. Adding UBPD gives \(\rho_E(p^a) = a\cdot\rho_E(p) + O(a)\).</p>
+      <p>UL-strong requires \(\rho_E(p) = \lambda\log p + O(1)\). Numerically very strong (\(\mathrm{Var}(\eta_1) = 0.62\), range [−4.83, +3.65]), but depends on the behavior of \(\rho_E(p-1)\). UL-strong is not the correct target for SCF — SCF requires the prime harmonic mean (PMH), not pointwise boundedness. UL-strong is neither necessary nor sufficient for PMH.</p>
+
+      <h2>§5 Centered Factorization and Conditional Closure</h2>
+
+      <h3>5.1 Centered Factorization Architecture</h3>
+      <p>By Proposition 3 (unconditional), \(\rho_E(p^a) \leq a\cdot\rho_E(p)\) and \(\delta_a \leq 0\). Adding UBPD, \(\rho_E(p^a) = a\cdot\rho_E(p) + O(a)\). Define \(\eta(p) := \rho_E(p) - \lambda\log p\), \(g_t(p^a) := e^{t\cdot(\rho_E(p^a) - \lambda a\log p)}\). The variable substitution \(w := s - \lambda t\) pulls the Euler product's singularity back to \(w=1\).</p>
+
+      <h3>5.2 PMH-DS (Prime Mean Hypothesis, Dirichlet-Series Version)</h3>
+      <div class="decomp-box">
+        <p><strong>Hypothesis PMH-DS.</strong> There exists \(\beta(t)\) (analytic near \(t=0\), \(\beta(0)=1\)) such that \(\sum_p [e^{t\cdot\eta(p)} - \beta(t)] / p^s\) admits analytic continuation in \(\mathrm{Re}(s) > 1-\delta\), uniformly for \(|t| \leq t_0\).</p>
+      </div>
+      <p>PMH-DS is stronger than the partial-sum version but is precisely the analytic input required by Selberg-Delange coefficient extraction. Numerical support: \(\eta(p)\) is approximately Gaussian on primes, \(E[\eta] = 0.00\), \(\mathrm{Var}[\eta] = 0.62\).</p>
+
+      <h3>5.3 SCF Theorem (Conditional on UBPD + PMH-DS)</h3>
+      <p>Under UBPD and PMH-DS, Selberg-Delange analysis of the centered Euler product gives:</p>
+      <p style="padding-left:1.5rem;">\(K_{x,k}(t) = \lambda t\log x + k\log\beta(t) + O(1)\)</p>
+      <p>Corollary (shell side only): \(\mu_{x,k} = \lambda\log x + k(\log\beta)'(0) + O(1)\), \(\mathrm{Var}(f \mid \Omega=k) = k(\log\beta)''(0) + O(1) = O(k)\).</p>
+      <p>Data is stronger: \(\mathrm{Var} = O(1)\), implying \((\log\beta)''(0) \approx 0\) — extra rigidity that SCF need not prove.</p>
+
+      <h3>5.4 PCF</h3>
+      <div class="decomp-box">
+        <p><strong>Hypothesis PCF.</strong> \(T_k(x;t) := \sum_{\Omega(n)=k,\, n\leq x} e^{t\cdot f(n-1)}\) satisfies \(\log T_k - \log T_k(0) = B_0(t;x) + k\cdot B_1(t;x) + O(1)\).</p>
+      </div>
+      <p>PCF is not almost independence (\(B_1 \neq 0\); data confirms \(\mu^-\) has \(k\)-slope). Literature interface: Goudout (conditioned shifted Erdős-Kac), Fouvry-Tenenbaum (shifted additive laws), Mangerel (bivariate Erdős-Kac), Verwee (weighted fibre framework). The path exists but is not yet directly covered.</p>
+
+      <h3>5.5 Remainder Tameness</h3>
+      <div class="decomp-box">
+        <p><strong>Hypothesis RT.</strong> \(E[(\Delta\tilde{r}_\mathrm{spf})^2 \mid \Omega=k] \leq \mathrm{poly}(k)\).</p>
+      </div>
+      <p>Data: \(E[(\Delta\tilde{r})^2]\) declines from 2.1 to 1.2 — far exceeding \(\mathrm{poly}(k)\) requirements. Listed as an explicit input to the conditional closure.</p>
+
+      <h3>5.6 Conditional Closure Theorem</h3>
+      <div class="milestone-box">
+        <p><strong>Theorem.</strong> Assume UBPD + PMH-DS + PCF + RT. Then:</p>
+        <p>(i) SCF holds: \(\mathrm{Var}(f \mid \Omega=k) = O(k)\), \(\mu_{x,k} = \lambda\log x + O(k)\) [shell side]</p>
+        <p>(ii) PCF gives: \(\mathrm{Var}^-(f \mid \Omega=k) = O(k)\), \(\mu^-_{x,k} = B'_0(0;x) + O(k)\) [predecessor side]</p>
+        <p>(iii) \(|\mu - \mu^-| = O(k)\)</p>
+        <p>(iv) \(E[(\Delta f)^2 \mid \Omega=k] \leq 2\mathrm{Var}(f) + 2\mathrm{Var}^-(f) + (\mu-\mu^-)^2 = O(k^2)\)</p>
+        <p>(v) \(E[(\Delta M_\mathrm{spf})^2] \leq 2E[(\Delta f)^2] + 2E[(\Delta\tilde{r})^2] = O(\mathrm{poly}(k))\) (from RT)</p>
+        <p>(vi) Conjecture 2 \(\Rightarrow\) Paper 44 Theorem A + Paper 20 B-side + Paper 42 chain \(\Rightarrow\) <strong>H'</strong>. ■</p>
+      </div>
+
+      <h2>§6 Numerical Evidence</h2>
+
+      <h3>6.1 SPF Skeleton Identity Verification</h3>
+      <p>\(M_\mathrm{spf} = f + \tilde{r}_\mathrm{spf}\): 8,670,842 samples, zero failures. \(\tilde{r}_\mathrm{spf} = r(m/P^-) - \varepsilon_\mathrm{spf}\): zero failures.</p>
+
+      <h3>6.2 UL-weak Verification</h3>
+      <p>Successor dominance: 664,579 primes, zero failures. \(\delta_a \leq 0\): exact across all samples. \(p \times p^{a-1}\) optimality: 100% at \(a=2,3\).</p>
+
+      <h3>6.3 \(\theta\) Latent Variable Verification</h3>
+      <p>\(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\): exact (check = 0.0000 across all \(k\)). \(\mathrm{Corr}(f,f^-) \approx \lambda^2\mathrm{Var}(\theta)/[\lambda^2\mathrm{Var}(\theta)+\mathrm{Var}(\xi)]\): predicted/actual ratio ≈ 1.01.</p>
+
+      <h3>6.4 \(\tilde{r}\) Decline Mechanism</h3>
+      <table>
+        <thead><tr><th>\(k\)</th><th>\(\mathrm{Var}(\tilde{r})\)</th><th>\(\mathrm{Corr}(\tilde{r},\tilde{r}^-)\)</th><th>\(E[(\Delta\tilde{r})^2]\)</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>1.054</td><td>0.096</td><td>1.91</td></tr>
+          <tr><td>8</td><td>0.895</td><td>0.032</td><td>1.91</td></tr>
+          <tr><td>12</td><td>0.574</td><td>0.025</td><td>1.32</td></tr>
+          <tr><td>14</td><td>0.405</td><td>−0.005</td><td>1.18</td></tr>
+        </tbody>
+      </table>
+      <p>Decline driven by \(\mathrm{Var}(\tilde{r})\); \(\mathrm{Corr} \approx 0\) (no compression effect).</p>
+
+      <h2>§7 SAE Interpretation</h2>
+
+      <h3>7.1 Conditioning Bias vs Dynamical Fluctuation</h3>
+      <p>The sole source of \(E[(\Delta f)^2]\) growth is \((\mu-\mu^-)^2\). Fluctuations (\(\mathrm{Var}(f)\), \(\mathrm{Var}(\xi)\)) are stable at \(O(1)\). <strong>The system has not deteriorated — the observation window has narrowed.</strong> As \(\Omega=k\) conditioning becomes more selective, shell and predecessor means separate further, but within-shell fluctuation shrinks.</p>
+      <p>This is the precise realization of SAE's intrinsic/observational quantity distinction within the DP recurrence.</p>
+
+      <h3>7.2 Ternary Lock within the SPF Skeleton</h3>
+      <p>\(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) is strongly negative — \(f\) and \(\tilde{r}\) differences are complementary. The fluctuation of \(M_\mathrm{spf}\) (chisel's output) is compressed because construct (\(f\)) and remainder (\(\tilde{r}\)) fluctuations cancel precisely. This is the replica of Paper 18's \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\) at the SPF skeleton level.</p>
+
+      <h3>7.3 Centered Factorization = Subtracting the Trend to See Fluctuation</h3>
+      <p>\(f = \lambda\log n + \xi\). The Euler product cares only about \(\xi\) (fluctuation), not \(\lambda\log n\) (trend). Centering is "subtracting the construct's mean trend to see only the remainder's fluctuation."</p>
+
+      <h2>§8 Complete H' Closure Chain</h2>
+      <div class="chain-box">
+        <pre>Proposition 3 (a)(b)(c)  (unconditional theorems)
++ UBPD  (uniform bounded prime-power defect, hypothesis)
++ PMH-DS  (prime Dirichlet-series analytic control, hypothesis)
+⟹ SCF  (shell cumulant fibre)
++ PCF  (predecessor cumulant fibre, hypothesis)
++ RT  (remainder tameness, hypothesis)
+⟹ E[(Δf)²|Ω=k] = O(k²)
+⟹ E[(ΔM_spf)²] = O(poly(k))
+⟹ Conjecture 2
+⟹ Conj.1 + NI1 A-side     [Paper 44 Thm A]
+⟹ NI1_poly                  [+ Paper 20 B-side]
+⟹ NI2_poly easier           [Paper 44 Thm B]
+⟹ Paper 42 chain
+⟹ H'</pre>
+      </div>
+      <p><strong>Distance assessment:</strong></p>
+      <table>
+        <thead><tr><th>Layer</th><th>Input</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Prime</td><td>Proposition 3 (a)(b)(c)</td><td><strong>theorem (unconditional)</strong></td></tr>
+          <tr><td>Prime</td><td>UBPD (sup|δ| &lt; ∞)</td><td>hypothesis (numerical |δ| ≤ 7)</td></tr>
+          <tr><td>Prime</td><td>PMH-DS</td><td>hypothesis (within Verwee framework)</td></tr>
+          <tr><td>Shifted</td><td>PCF</td><td>hypothesis (farthest from literature)</td></tr>
+          <tr><td>DP</td><td>RT (r̃ tame)</td><td>hypothesis (numerical O(1) and declining)</td></tr>
+          <tr><td>DP</td><td>SPF skeleton</td><td><strong>theorem (exact identity)</strong></td></tr>
+          <tr><td>DP</td><td>Conj.2→H'</td><td><strong>Paper 44+42 theorem chain</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§9 Open Questions</h2>
+      <p>1. <strong>Proof of PMH-DS.</strong> Prime harmonic mgf asymptotics for \(\eta(p)\). Standard Mertens framework + Selberg-Delange.</p>
+      <p>2. <strong>Proof of PCF.</strong> Shifted weighted Sathe-Selberg on \(\Omega\)-shells.</p>
+      <p>3. <strong>\((\log\beta)''(0) \approx 0\) — why is \(\mathrm{Var}(f|\Omega=k) = O(1)\)?</strong> Possibly related to multinomial constraints under fixed log budget (Ford).</p>
+      <p>4. <strong>Precise constant of the coarse bound ≈ 40.</strong> May admit a more compact expression.</p>
+      <p>5. <strong>UL-strong as bonus conjecture.</strong> \(\rho_E(p) = \lambda\log p + O(1)\) — stronger than PMH and not a necessary condition for it.</p>
+
+      <h2>Data Sources</h2>
+      <p>Scripts: <code>spf_skeleton.c</code>, <code>analytic_interface.c</code>, <code>theta_latent.c</code>, <code>q3_verify.c</code>, <code>ul_verify.c</code> (C, gcc -O2). Data: \(\rho_E\) via DP min for \(n \leq 10^7+1\).</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLIV. <a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19247859</a>.<br>
+      [2] H. Qin. ZFCρ Paper XLV. <a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19275286</a>.<br>
+      [3] H. Qin. ZFCρ Paper XLII. <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19226607</a>.<br>
+      [4] H. Qin. ZFCρ Paper XVIII. <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19024385</a>.<br>
+      [5] H. Qin. ZFCρ Paper XX. <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19027892</a>.<br>
+      [6] M. Verwee. Additive functions on shifted primes (2026). arXiv:2603.17682.<br>
+      [7] É. Goudout. Lois de répartition des diviseurs (2018).<br>
+      [8] A. Roy. Landau-Selberg-Delange for Ω (2025). arXiv:2511.15928.<br>
+      [9] A. Gafni, N. Robles. Selberg-Delange for Ω-counting (2025). arXiv:2502.05298.<br>
+      [10] R. Benatar. Short-interval Hildebrand-Tenenbaum (2024). arXiv:2408.16576.<br>
+      [11] E. Fouvry, G. Tenenbaum. Shifted additive laws.<br>
+      [12] K. Ford. Conditional prime-subset counts.<br>
+      [13] H. Helfgott. Ω-shell shifted averages (2021).<br>
+      [14] A. Mangerel. Bivariate Erdős-Kac (2016).</p>
+
+      <h2>Acknowledgments</h2>
+      <p><strong>ChatGPT (Gongxihua):</strong> Proposal of the SPF Skeleton Reduction (\(M_\mathrm{spf} = f + \tilde{r}_\mathrm{spf}\) decomposition). Centered factorization architecture (variable substitution \(w = s - \lambda t\), correct definition of PMH, complete derivation of the SCF theorem). Conditional Closure Theorem (SCF + PCF ⟹ Conjecture 2). Analytic interface exact identity (four-quantity decomposition of \(E[(\Delta f)^2]\)). Demotion of UL-strong (PMH is the correct prime input for SCF). Proposal of the \(\theta\) latent variable (shared shell-depth explaining Corr ≈ 0.89).</p>
+      <p><strong>Claude (Zilu):</strong> All numerical experiments (SPF skeleton verification, core moment table, analytic interface four quantities, \(\theta\) latent variable, Q3 verification, UL verification). Text drafting, working notes v1–v4. Unconditional proof of Proposition 3.</p>
+      <p><strong>Claude (Thermodynamic thread):</strong> Identification of P1 (conditioning bias). Interpretation of P2 (coarse bound conservation). UL \(\eta = O(a)\) correction. Coarse bound ≈ 40 as "Corr=0 baseline" explanation. Canonical ensemble analogy for SCF.</p>
+      <p><strong>Gemini (Zixia):</strong> Positioning of UL-weak as the "Archimedean fulcrum" of centered factorization. Emphasis on the rigidity constraint \((\log\beta)''(0) \approx 0\). Confirmation of selection bias vs dynamical fluctuation distinction.</p>
+      <p><strong>Grok (Zigong):</strong> Series consistency audit (Paper 42–46 chain verification). Suggestion to label Conditional Closure Theorem with explicit hypotheses. Numerical precision confirmation.</p>
+      <p><strong>Han Qin (author):</strong> A priori discovery of P1 ("mean drift is the cost of conditioning; fluctuation is the intrinsic quantity"). A priori audit methodology (P1–P7 vs Q1–Q3 distinction). Scope decision for Paper 46 (SPF skeleton + conditional closure). Acceptance of UL-strong → PMH demotion. Final text independently completed by the author.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho45.html">← Paper XLV</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 论文 46</div>
+      <h1 class="paper-title">SPF Skeleton Reduction、Analytic Interface 与 Conjecture 2 的 Conditional Closure</h1>
+      <div class="paper-authors">Han Qin（秦汉）&nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19303511" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19303511
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>Paper 44 把 H' 的核心瓶颈缩小到 Conjecture 2（\(E[(\Delta M^-)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\)）。Paper 45 给了 Conjecture 1 一条独立路线。本文进一步把 Conjecture 2 的增长瓶颈归约到 additive skeleton \(f\) 的 conditioned 差分，并给出 formal conditional closure（需要四个假设：UBPD, PMH-DS, PCF, RT）。</p>
+        <p>首先，<strong>SPF Skeleton Reduction</strong>（精确恒等式，870 万样本零失败）：\(M_\mathrm{spf}(m) = f(m) + \tilde{r}_\mathrm{spf}(m)\)，其中 \(\tilde{r}_\mathrm{spf} := M_\mathrm{spf} - f\)。因此 \(\Delta M_\mathrm{spf}^- = \Delta f^- + \Delta\tilde{r}_\mathrm{spf}^-\)。数据显示 \(E[(\Delta\tilde{r})^2]\) 在下降（2.1 → 1.2，tame），\(E[(\Delta f)^2]\) 在增长（唯一瓶颈），\(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) 强负（Corr ≈ −0.50 to −0.70，三元锁定）。\(E[(\Delta f)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\) 是关闭 Conjecture 2 的一个充分条件。</p>
+        <p>其次，<strong>Analytic Interface</strong> 把 \(E[(\Delta f)^2]\) 分解为四个量：\(\mathrm{Var}(f)\)，\(\mathrm{Var}^-(f)\)，\((\mu-\mu^-)^2\)，\(\mathrm{Cov}(f,f^-)\)。三个关键发现：(A1) \(\mathrm{Var}(f \mid \Omega=k) = O(1)\) 且下降（从 11.4 到 8.6），(A2) \(E[(\Delta f)^2]\) 的增长完全来自 \((\mu-\mu^-)^2\)（均值漂移），(A3) \(\mathrm{Corr}(f, f^-) \approx 0.89\)（\(k\)-independent）。Latent variable \(\theta = \log N - \log n\)（shell-depth）证实：\(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\)，各项均为 \(O(1)\)。均值漂移是 conditioning 的代价，涨落是本征量。Coarse bound \(2\mathrm{Var}+2\mathrm{Var}^-+(\mu-\mu^-)^2 \approx 40\) k-independent——conditioning 两面守恒。</p>
+        <p><strong>命题 3（UL-weak）：</strong>\(\rho_E(p^a) \leq a\cdot\rho_E(p)\)（上界，unconditional），\(\rho_E(p^a) = a\cdot\rho_E(p) + \sum\delta_j\)（精确，\(\delta_j \leq 0\)）。数值显示 \(\sup|\delta| \leq 7\)。</p>
+        <p><strong>Conditional Closure Theorem：</strong>UBPD + PMH-DS + PCF + RT \(\Rightarrow\) \(E[(\Delta f)^2] = O(k^2)\) \(\Rightarrow\) Conjecture 2 \(\Rightarrow\) Paper 44 dominance chain \(\Rightarrow\) H'。</p>
+        <p>在 SAE 框架中：均值漂移是观测窗口变窄的代价（conditioning bias），不是 DP 递推的内在不稳定。系统的动力学涨落（\(\mathrm{Var}(f)\), \(\mathrm{Var}(\xi)\)）完全稳定在 \(O(1)\)。SPF skeleton 内部的反相关引擎（\(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) 强负）是 Paper 18 凿-构-余三元锁定的翻版。</p>
+        <p><strong>关键词：</strong>整数复杂度，ρ-算术，SPF skeleton，analytic interface，conditioning bias，shell-depth variable，Conjecture 2，H' conditional closure</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 问题</h3>
+      <p>Paper 44（<a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19247859</a>）建立了 Reset-Slack Reduction 和定理 A（Conj.2 ⟹ Conj.1 + NI1 A-side），\(M_\mathrm{spf}\)-T-S 分解把攻击面缩小到 \(E[(\Delta M_\mathrm{spf}^-)^2]\)。Paper 45（<a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19275286</a>）证明了 Capacity-Allocation Law，给了 Conjecture 1 一条独立路线。</p>
+      <p>唯一剩下的主靶标：<strong>Conjecture 2（\(E[(\Delta M^-)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\)）</strong>。</p>
+      <p>本文把 Conjecture 2 归约到两个具体的解析数论输入（PMH 和 PCF），并在归约过程中发现了三组关于 DP 递推微观结构的新 regularity。</p>
+
+      <h3>1.2 先验</h3>
+      <p><strong>(P1) 均值漂移是 conditioning 的代价，涨落是本征量。</strong> \(\Omega=k\) 是越来越 selective 的条件，把 shell 均值拉偏但不改变涨落。</p>
+      <p><strong>(P2) Coarse bound 守恒。</strong> Var 下降（conditioning 压缩多样性）和 \((\mu-\mu^-)^2\) 增长（conditioning 拉开距离）是同一个操作的两面。</p>
+      <p><strong>(P3) SPF skeleton 内部的三元锁定。</strong> \(M_\mathrm{spf} = f + \tilde{r}\) 的涨落被 DP 选择机制压缩，\(f\) 和 \(\tilde{r}\) 的差分互补。</p>
+      <p><strong>(P4) Centered factorization = 减去趋势看涨落。</strong> \(f(n) = \lambda\log n + \xi(n)\)，Euler product 只关心涨落 \(\xi\)。</p>
+      <p><strong>(P5) Fixed log budget + \(f\) 的近仿射性。</strong> \(\Omega=k\) conditioning 固定了 log 预算，\(f\) 几乎只看预算总量。\(\mathrm{Var}(f) = O(1)\)。</p>
+      <p><strong>(P6) Corr ≈ 0.89 来自共享 shell-depth \(\theta\)。</strong> Centered residuals \(\xi\) 近似独立。</p>
+      <p><strong>(P7) \(\tilde{r}\) 下降 = cofactor 的 dense self-averaging。</strong> 高 \(\Omega\) 时 cofactor 进入 dense regime，\(\mathrm{Var}(\tilde{r})\) 收缩。</p>
+
+      <h3>1.3 记号</h3>
+      <p>同 Paper 44 §1.2。额外记号：\(f(m) := \sum_{q^a \| m} \rho_E(q^a)\)（additive part）；\(\tilde{r}_\mathrm{spf}(m) := M_\mathrm{spf}(m) - f(m)\)（SPF remainder）；\(\theta := \log N - \log n\)（shell-depth）；\(\xi(n) := f(n) - \lambda\log n\)（centered residual）；\(\lambda \approx 3.12\)（候选线性化常数）。</p>
+
+      <h3>1.4 主要结果</h3>
+      <p><strong>(1) SPF Skeleton Reduction（theorem-level）。</strong> \(M_\mathrm{spf} = f + \tilde{r}_\mathrm{spf}\)，\(E[(\Delta\tilde{r})^2]\) tame（下降，数值 \(O(1)\)），\(E[(\Delta f)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\) 是关闭 Conjecture 2 的一个充分条件。</p>
+      <p><strong>(2) Analytic interface 三大发现。</strong> (A1) \(\mathrm{Var}(f) = O(1)\) 且下降；(A2) 增长完全来自 \((\mu-\mu^-)^2\)；(A3) Corr ≈ 0.89 k-independent。</p>
+      <p><strong>(3) \(\theta\) latent variable 验证。</strong> \(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\)（精确恒等式，各项 \(O(1)\)）；predicted/actual ratio ≈ 1.01。</p>
+      <p><strong>(4) Prime-power structure（命题 3）。</strong> \(\rho_E(p^a) \leq a\cdot\rho_E(p)\)（unconditional upper bound）。加上 UBPD 给出 \(\rho_E(p^a) = a\cdot\rho_E(p) + O(a)\)。</p>
+      <p><strong>(5) Conditional Closure。</strong> UBPD + PMH-DS + PCF + RT \(\Rightarrow\) Conjecture 2 \(\Rightarrow\) H'。</p>
+
+      <h2>§2 SPF Skeleton Reduction</h2>
+
+      <h3>2.1 精确分解</h3>
+      <p>定义 \(\tilde{r}_\mathrm{spf}(m) := M_\mathrm{spf}(m) - f(m)\)。</p>
+      <div class="thesis-box">
+        <p><strong>恒等式：</strong> \(M_\mathrm{spf}(m) = f(m) + \tilde{r}_\mathrm{spf}(m)\)，\(\quad \Delta M_\mathrm{spf}^- = \Delta f^- + \Delta\tilde{r}_\mathrm{spf}^-\)。</p>
+        <p><em>数值验证：8,670,842 样本，零失败。</em></p>
+      </div>
+      <p>\(\tilde{r}_\mathrm{spf}\) 的 piecewise 展开（\(m = p^v \cdot b\), \(p = P^-(m)\), \((p,b)=1\)）：\(\tilde{r}_\mathrm{spf} = r(m/p) - \varepsilon_\mathrm{spf}(m)\)，\(\varepsilon = 0\)（\(v=1\)），\(\varepsilon = \rho_E(p^v) - \rho_E(p) - \rho_E(p^{v-1})\)（\(v \geq 2\)）。\(\varepsilon\) negligible（\(E[\varepsilon^2] < 0.03\) for \(k \geq 5\)）。</p>
+
+      <h3>2.2 核心矩表（\(N = 10^7\)）</h3>
+      <table>
+        <thead>
+          <tr><th>\(k\)</th><th>\(E[(\Delta M_\mathrm{spf})^2]\)</th><th>\(E[(\Delta f)^2]\)</th><th>\(E[(\Delta\tilde{r})^2]\)</th><th>\(\mathrm{Cov}(\Delta f,\Delta\tilde{r})\)</th><th>Corr</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>1.37</td><td>2.44</td><td>1.91</td><td>−1.47</td><td>−0.70</td></tr>
+          <tr><td>6</td><td>2.48</td><td>2.54</td><td>2.10</td><td>−1.36</td><td>−0.67</td></tr>
+          <tr><td>8</td><td>4.07</td><td>3.41</td><td>1.91</td><td>−1.19</td><td>−0.63</td></tr>
+          <tr><td>10</td><td>5.58</td><td>4.81</td><td>1.61</td><td>−1.03</td><td>−0.58</td></tr>
+          <tr><td>12</td><td>7.01</td><td>6.57</td><td>1.32</td><td>−0.87</td><td>−0.53</td></tr>
+          <tr><td>14</td><td>8.32</td><td>8.86</td><td>1.18</td><td>−0.80</td><td>−0.50</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.3 三个发现</h3>
+      <p><strong>(F1) \(E[(\Delta\tilde{r})^2]\) 在下降，是 tame 的。</strong> 从 2.10（\(k=6\) 峰值）降至 1.18（\(k=14\)）。Cofactor（\(\Omega = k-1\)）在高 \(k\) 进入 dense self-averaging regime（P7）。下降由 \(\mathrm{Var}(\tilde{r} \mid \Omega=k)\) 的下降驱动（1.08 → 0.41），\(\mathrm{Corr}(\tilde{r}, \tilde{r}^-) \approx 0\)（无相关性压缩）。</p>
+      <p><strong>(F2) \(E[(\Delta f)^2]\) 在增长——唯一瓶颈。</strong> 从 2.44 到 8.86。增长来自均值漂移（§3）。</p>
+      <p><strong>(F3) \(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) 强负（Corr ≈ −0.50 to −0.70）。</strong> Paper 18 反相关引擎在 SPF skeleton 内部的翻版（P3）。</p>
+
+      <h3>2.4 Conjecture 2 归约</h3>
+      <p>\(E[(\Delta M_\mathrm{spf})^2] \leq 2\cdot E[(\Delta f)^2] + 2\cdot E[(\Delta\tilde{r})^2]\)。数据显示 \(E[(\Delta\tilde{r})^2] = O(1)\)（下降）。</p>
+      <div class="milestone-box">
+        <p>一个关闭 Conjecture 2 的充分条件：\(E[(\Delta f)^2 \mid \Omega=k] \leq \mathrm{poly}(k)\) 加上 \(E[(\Delta\tilde{r})^2 \mid \Omega=k] \leq \mathrm{poly}(k)\)。后者由数据强支持但尚未证明为定理；前者是唯一增长的量。</p>
+      </div>
+
+      <h2>§3 Analytic Interface</h2>
+
+      <h3>3.1 四量分解</h3>
+      <div class="proof-box">
+        <p><strong>精确恒等式：</strong> \(E[(\Delta^- f)^2 \mid \Omega=k] = \mathrm{Var}(f) + \mathrm{Var}^-(f) - 2\mathrm{Cov}(f,f^-) + (\mu-\mu^-)^2\)</p>
+        <p><strong>粗上界：</strong> \(E[(\Delta f)^2] \leq 2\mathrm{Var}(f) + 2\mathrm{Var}^-(f) + (\mu-\mu^-)^2\)</p>
+      </div>
+
+      <h3>3.2 数据（\(N = 10^7\)）</h3>
+      <table>
+        <thead>
+          <tr><th>\(k\)</th><th>\(\mathrm{Var}(f)\)</th><th>\(\mathrm{Var}^-(f)\)</th><th>\((\mu-\mu^-)^2\)</th><th>\(\mathrm{Cov}(f,f^-)\)</th><th>Corr</th><th>\(E[(\Delta f)^2]\)</th><th>coarse</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>10.71</td><td>10.49</td><td>0.01</td><td>9.41</td><td>0.89</td><td>2.39</td><td>42.40</td></tr>
+          <tr><td>8</td><td>9.80</td><td>9.31</td><td>1.18</td><td>8.51</td><td>0.89</td><td>3.27</td><td>39.41</td></tr>
+          <tr><td>12</td><td>9.18</td><td>8.72</td><td>4.57</td><td>7.94</td><td>0.89</td><td>6.59</td><td>40.36</td></tr>
+          <tr><td>14</td><td>8.63</td><td>8.19</td><td>6.86</td><td>7.38</td><td>0.88</td><td>8.91</td><td>40.50</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.3 三大发现</h3>
+      <p><strong>(A1) \(\mathrm{Var}(f \mid \Omega=k) = O(1)\) 且下降（P5）。</strong> 从 11.4 到 8.6。不是 \(O(k)\)——是 \(O(1)\) 且递减。</p>
+      <p><strong>(A2) 增长完全来自 \((\mu-\mu^-)^2\)（P1）。</strong> \(\mu_\mathrm{shell}\) 微降，\(\mu_\mathrm{pred}\) 微升。Gap 线性于 \(k\)（≈ \(-0.2k\)）。\((\mu-\mu^-)^2 \approx 0.04k^2\)。均值漂移是 conditioning 的代价，不是动力学不稳定。</p>
+      <p><strong>(A3) \(\mathrm{Corr}(f, f^-) \approx 0.89\)，\(k\)-independent（P6）。</strong> 来自共享的 shell-depth \(\theta\)。</p>
+      <p><strong>(A4) Coarse bound \(2\mathrm{Var}+2\mathrm{Var}^-+(\mu-\mu^-)^2 \approx 40\)，\(k\)-independent（P2）。</strong> Var 下降恰好补偿 \((\mu-\mu^-)^2\) 增长——conditioning 两面守恒。</p>
+
+      <h3>3.4 \(\theta\) Latent Variable</h3>
+      <p>\(f(n) = \lambda(\log N - \theta) + \xi(n)\)，\(\theta = \log N - \log n\)，\(\lambda \approx 3.12\)。</p>
+      <div class="thesis-box">
+        <p>\(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\)</p>
+      </div>
+      <table>
+        <thead><tr><th>\(k\)</th><th>\(\lambda^2\mathrm{Var}(\theta)\)</th><th>\(\mathrm{Var}(\xi)\)</th><th>cross</th><th>\(\mathrm{Var}(f)\)</th><th>check</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>9.51</td><td>1.12</td><td>+0.08</td><td>10.71</td><td>0.00</td></tr>
+          <tr><td>8</td><td>8.49</td><td>0.94</td><td>+0.37</td><td>9.80</td><td>0.00</td></tr>
+          <tr><td>12</td><td>7.86</td><td>0.86</td><td>+0.46</td><td>9.18</td><td>0.00</td></tr>
+          <tr><td>14</td><td>7.42</td><td>0.79</td><td>+0.43</td><td>8.63</td><td>0.00</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Q2 model：</strong> \(\mathrm{Corr}(f,f^-) \approx \lambda^2\mathrm{Var}(\theta) / [\lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi)]\)</p>
+      <table>
+        <thead><tr><th>\(k\)</th><th>predicted</th><th>actual</th><th>ratio</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>0.895</td><td>0.888</td><td>1.008</td></tr>
+          <tr><td>8</td><td>0.900</td><td>0.891</td><td>1.010</td></tr>
+          <tr><td>12</td><td>0.902</td><td>0.887</td><td>1.017</td></tr>
+        </tbody>
+      </table>
+      <p>89% 的相关性几乎完全来自共享 \(\theta\)。\(\mathrm{Cov}(\xi,\xi^-) \approx 0\)——centered residuals 近乎不相关。</p>
+
+      <h2>§4 Uniform Linearization（UL-weak）</h2>
+
+      <h3>4.1 命题 3（Prime-Power Structure）</h3>
+      <p>以下三个结果对所有素数 \(p\) 和正整数 \(a\) 无条件成立：</p>
+      <p><strong>(a) Successor dominance for primes.</strong> \(\rho_E(p) = \rho_E(p-1) + 1\)。证明：素数没有非平凡因子分裂（\(M(p) = +\infty\)）。<em>数值验证：664,579 素数，零失败。</em></p>
+      <p><strong>(b) Prime-power sub-additivity.</strong> \(\delta_a(p) := \rho_E(p^a) - \rho_E(p) - \rho_E(p^{a-1}) \leq 0\)。证明：\(p \times p^{a-1}\) 是 \(p^a\) 的因子分裂，由 R1，\(\rho_E(p^a) \leq \rho_E(p) + \rho_E(p^{a-1})\)。<em>数值验证：\(\delta \leq 0\) 精确，\(\max(\delta) = 0\)。</em></p>
+      <p><strong>(c) 递推展开。</strong> \(\rho_E(p^a) = a\cdot\rho_E(p) + \sum_{j=2}^a \delta_j(p)\)，\(\sum\delta \leq 0\)。上界：\(\rho_E(p^a) \leq a\cdot\rho_E(p)\)。</p>
+      <p><strong>关于 O(a) 下界（UBPD hypothesis）：</strong>上界是 unconditional theorem。下界需要 \(\sup_{p,a} |\delta_a(p)| < \infty\)（UBPD）。数值显示 \(|\delta| \leq 7\)（\(N = 10^7\)），但 UBPD 作为全局断言尚未证明。</p>
+      <table>
+        <thead><tr><th>\(a\)</th><th>count</th><th>\(E[\delta]\)</th><th>\(\mathrm{Var}[\delta]\)</th><th>range</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>446</td><td>−1.64</td><td>1.61</td><td>[−7, 0]</td></tr>
+          <tr><td>3</td><td>47</td><td>−0.40</td><td>0.37</td><td>[−2, 0]</td></tr>
+          <tr><td>4</td><td>16</td><td>−0.81</td><td>0.65</td><td>[−2, 0]</td></tr>
+          <tr><td>5</td><td>9</td><td>−0.44</td><td>1.58</td><td>[−4, 0]</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 UL-weak 与 UL-strong 的关系</h3>
+      <p>UL-weak 是 unconditional theorem。加上 UBPD 给出 \(\rho_E(p^a) = a\cdot\rho_E(p) + O(a)\)。UL-strong 不是 SCF 的正确靶标——SCF 需要的是 prime harmonic mean（PMH），不是 pointwise boundedness。</p>
+
+      <h2>§5 Centered Factorization 与 Conditional Closure</h2>
+
+      <h3>5.1 Centered Factorization 架构</h3>
+      <p>由命题 3（unconditional），\(\rho_E(p^a) \leq a\cdot\rho_E(p)\) 且 \(\delta_a \leq 0\)。加上 UBPD 假设，\(\rho_E(p^a) = a\cdot\rho_E(p) + O(a)\)。定义 \(\eta(p) := \rho_E(p) - \lambda\log p\)。变量替换 \(w := s - \lambda t\) 把 Euler product 的奇点拉回 \(w=1\)。</p>
+
+      <h3>5.2 PMH-DS（Prime Mean Hypothesis, Dirichlet-series 版）</h3>
+      <div class="decomp-box">
+        <p><strong>Hypothesis PMH-DS。</strong> 存在 \(\beta(t)\)（\(t=0\) 附近解析，\(\beta(0)=1\)）使得 \(\sum_p [e^{t\cdot\eta(p)} - \beta(t)] / p^s\) 在 \(\mathrm{Re}(s) > 1-\delta\) 内解析延拓，对 \(|t| \leq t_0\) 一致成立。</p>
+      </div>
+      <p>数值支持：\(\eta(p)\) 在素数上近似 Gaussian，\(E[\eta] = 0.00\)，\(\mathrm{Var}[\eta] = 0.62\)。</p>
+
+      <h3>5.3 SCF 定理（Conditional on UBPD + PMH-DS）</h3>
+      <p>在 UBPD 和 PMH-DS 下，centered Euler product 的 Selberg-Delange 分析给出：\(K_{x,k}(t) = \lambda t\log x + k\log\beta(t) + O(1)\)。推论（shell side only）：\(\mathrm{Var}(f \mid \Omega=k) = k(\log\beta)''(0) + O(1) = O(k)\)。数据更强：\(\mathrm{Var} = O(1)\)，意味着 \((\log\beta)''(0) \approx 0\)。</p>
+
+      <h3>5.4 PCF</h3>
+      <div class="decomp-box">
+        <p><strong>Hypothesis PCF。</strong> \(T_k(x;t) := \sum_{\Omega(n)=k,\, n\leq x} e^{t\cdot f(n-1)}\) 满足 \(\log T_k - \log T_k(0) = B_0(t;x) + k\cdot B_1(t;x) + O(1)\)。</p>
+      </div>
+      <p>文献接口：Goudout，Fouvry-Tenenbaum，Mangerel，Verwee。路存在但未直接覆盖。</p>
+
+      <h3>5.5 Remainder Tameness</h3>
+      <div class="decomp-box">
+        <p><strong>Hypothesis RT。</strong> \(E[(\Delta\tilde{r}_\mathrm{spf})^2 \mid \Omega=k] \leq \mathrm{poly}(k)\)。</p>
+      </div>
+      <p>数据：\(E[(\Delta\tilde{r})^2]\) 从 2.1 降至 1.2——远超 \(\mathrm{poly}(k)\) 所需。</p>
+
+      <h3>5.6 Conditional Closure Theorem</h3>
+      <div class="milestone-box">
+        <p><strong>定理。</strong> 假设 UBPD + PMH-DS + PCF + RT 成立。则：</p>
+        <p>(i) SCF 成立：\(\mathrm{Var}(f \mid \Omega=k) = O(k)\)，\(\mu_{x,k} = \lambda\log x + O(k)\) [shell side]</p>
+        <p>(ii) PCF 给出：\(\mathrm{Var}^-(f \mid \Omega=k) = O(k)\)，\(\mu^-_{x,k} = B'_0(0;x) + O(k)\) [predecessor side]</p>
+        <p>(iii) \(|\mu - \mu^-| = O(k)\)</p>
+        <p>(iv) \(E[(\Delta f)^2 \mid \Omega=k] \leq 2\mathrm{Var}(f) + 2\mathrm{Var}^-(f) + (\mu-\mu^-)^2 = O(k^2)\)</p>
+        <p>(v) \(E[(\Delta M_\mathrm{spf})^2] \leq 2E[(\Delta f)^2] + 2E[(\Delta\tilde{r})^2] = O(\mathrm{poly}(k))\)（由 RT）</p>
+        <p>(vi) Conjecture 2 \(\Rightarrow\) Paper 44 定理 A + Paper 20 B-side + Paper 42 chain \(\Rightarrow\) <strong>H'</strong>。■</p>
+      </div>
+
+      <h2>§6 数值证据</h2>
+
+      <h3>6.1 SPF Skeleton 恒等式验证</h3>
+      <p>\(M_\mathrm{spf} = f + \tilde{r}_\mathrm{spf}\)：8,670,842 样本，零失败。\(\tilde{r}_\mathrm{spf} = r(m/P^-) - \varepsilon_\mathrm{spf}\)：零失败。</p>
+
+      <h3>6.2 UL-weak 验证</h3>
+      <p>Successor dominance：664,579 素数，零失败。\(\delta_a \leq 0\)：所有样本精确。\(p \times p^{a-1}\) 最优性：\(a=2,3\) 时 100%。</p>
+
+      <h3>6.3 \(\theta\) Latent Variable 验证</h3>
+      <p>\(\mathrm{Var}(f) = \lambda^2\mathrm{Var}(\theta) + \mathrm{Var}(\xi) - 2\lambda\mathrm{Cov}(\theta,\xi)\)：精确验证（check = 0.0000 across all \(k\)）。Predicted/actual ratio ≈ 1.01。</p>
+
+      <h3>6.4 \(\tilde{r}\) 下降机制</h3>
+      <table>
+        <thead><tr><th>\(k\)</th><th>\(\mathrm{Var}(\tilde{r})\)</th><th>\(\mathrm{Corr}(\tilde{r},\tilde{r}^-)\)</th><th>\(E[(\Delta\tilde{r})^2]\)</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>1.054</td><td>0.096</td><td>1.91</td></tr>
+          <tr><td>8</td><td>0.895</td><td>0.032</td><td>1.91</td></tr>
+          <tr><td>12</td><td>0.574</td><td>0.025</td><td>1.32</td></tr>
+          <tr><td>14</td><td>0.405</td><td>−0.005</td><td>1.18</td></tr>
+        </tbody>
+      </table>
+      <p>下降由 \(\mathrm{Var}(\tilde{r})\) 驱动，\(\mathrm{Corr} \approx 0\)（无压缩效应）。</p>
+
+      <h2>§7 SAE 解读</h2>
+
+      <h3>7.1 Conditioning Bias vs 动力学涨落</h3>
+      <p>\(E[(\Delta f)^2]\) 增长的唯一来源是 \((\mu-\mu^-)^2\)。涨落（\(\mathrm{Var}(f)\), \(\mathrm{Var}(\xi)\)）稳定在 \(O(1)\)。<strong>系统没有变坏——是观测窗口在变窄。</strong> 这是 SAE 的本征量/观测量区分在 DP 递推中的精确实现。</p>
+
+      <h3>7.2 SPF Skeleton 内的三元锁定</h3>
+      <p>\(\mathrm{Cov}(\Delta f, \Delta\tilde{r})\) 强负——\(f\) 和 \(\tilde{r}\) 的差分互补。\(M_\mathrm{spf}\)（凿的输出）的涨落被压缩，因为构（\(f\)）和余（\(\tilde{r}\)）的涨落精确对消。这是 Paper 18 的 \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\) 在 SPF skeleton 层面的翻版。</p>
+
+      <h3>7.3 Centered Factorization = 减去趋势看涨落</h3>
+      <p>\(f = \lambda\log n + \xi\)。Euler product 只关心 \(\xi\)（涨落），不关心 \(\lambda\log n\)（趋势）。Centering 就是"减去构的均值趋势，只看余项的涨落"。</p>
+
+      <h2>§8 完整 H' 闭合链</h2>
+      <div class="chain-box">
+        <pre>命题 3 (a)(b)(c)（unconditional theorems）
++ UBPD（uniform bounded prime-power defect, hypothesis）
++ PMH-DS（prime Dirichlet-series analytic control, hypothesis）
+⟹ SCF（shell cumulant fibre）
++ PCF（predecessor cumulant fibre, hypothesis）
++ RT（remainder tameness, hypothesis）
+⟹ E[(Δf)²|Ω=k] = O(k²)
+⟹ E[(ΔM_spf)²] = O(k²)
+⟹ Conjecture 2
+⟹ Conj.1 + NI1 A-side     [Paper 44 Thm A]
+⟹ NI1_poly                  [+ Paper 20 B-side]
+⟹ NI2_poly easier           [Paper 44 Thm B]
+⟹ Paper 42 chain
+⟹ H'</pre>
+      </div>
+      <p><strong>距离评估：</strong></p>
+      <table>
+        <thead><tr><th>层</th><th>输入</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td>Prime</td><td>命题 3 (a)(b)(c)</td><td><strong>theorem（unconditional）</strong></td></tr>
+          <tr><td>Prime</td><td>UBPD（sup|δ| &lt; ∞）</td><td>hypothesis（数值 |δ| ≤ 7）</td></tr>
+          <tr><td>Prime</td><td>PMH-DS</td><td>hypothesis（Verwee 框架内）</td></tr>
+          <tr><td>Shifted</td><td>PCF</td><td>hypothesis（文献最远）</td></tr>
+          <tr><td>DP</td><td>RT（r̃ tame）</td><td>hypothesis（数值 O(1) 且下降）</td></tr>
+          <tr><td>DP</td><td>SPF skeleton</td><td><strong>theorem（精确恒等式）</strong></td></tr>
+          <tr><td>DP</td><td>Conj.2→H'</td><td><strong>Paper 44+42 theorem chain</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§9 Open Questions</h2>
+      <p>1. <strong>PMH 的证明。</strong> \(\eta(p)\) 的 prime harmonic mgf 渐近。标准 Mertens 框架 + Selberg-Delange。</p>
+      <p>2. <strong>PCF 的证明。</strong> Shifted weighted Sathe-Selberg on \(\Omega\)-shell。</p>
+      <p>3. <strong>\((\log\beta)''(0) \approx 0\)——为什么 \(\mathrm{Var}(f|\Omega=k) = O(1)\)？</strong> Fixed log budget 下的 multinomial 约束（Ford）。</p>
+      <p>4. <strong>Coarse bound ≈ 40 的精确常数。</strong> 可能有更 compact 的表达式。</p>
+      <p>5. <strong>UL-strong 作为 bonus conjecture。</strong> \(\rho_E(p) = \lambda\log p + O(1)\)——比 PMH 更强且不是 PMH 的必要条件。</p>
+
+      <h2>数据来源</h2>
+      <p>脚本：<code>spf_skeleton.c</code>, <code>analytic_interface.c</code>, <code>theta_latent.c</code>, <code>q3_verify.c</code>, <code>ul_verify.c</code>（C, gcc -O2）。数据：\(\rho_E\) via DP min for \(n \leq 10^7+1\)。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLIV. <a href="https://doi.org/10.5281/zenodo.19247859" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19247859</a>.<br>
+      [2] H. Qin. ZFCρ Paper XLV. <a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19275286</a>.<br>
+      [3] H. Qin. ZFCρ Paper XLII. <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19226607</a>.<br>
+      [4] H. Qin. ZFCρ Paper XVIII. <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19024385</a>.<br>
+      [5] H. Qin. ZFCρ Paper XX. <a href="https://doi.org/10.5281/zenodo.19027892" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19027892</a>.<br>
+      [6] M. Verwee. Additive functions on shifted primes (2026). arXiv:2603.17682.<br>
+      [7] É. Goudout. Lois de répartition des diviseurs (2018).<br>
+      [8] A. Roy. Landau-Selberg-Delange for Ω (2025). arXiv:2511.15928.<br>
+      [9] A. Gafni, N. Robles. Selberg-Delange for Ω-counting (2025). arXiv:2502.05298.<br>
+      [10] R. Benatar. Short-interval Hildebrand-Tenenbaum (2024). arXiv:2408.16576.<br>
+      [11] E. Fouvry, G. Tenenbaum. Shifted additive laws.<br>
+      [12] K. Ford. Conditional prime-subset counts.<br>
+      [13] H. Helfgott. Ω-shell shifted averages (2021).<br>
+      [14] A. Mangerel. Bivariate Erdős-Kac (2016).</p>
+
+      <h2>致谢</h2>
+      <p><strong>ChatGPT（公西华）：</strong> SPF Skeleton Reduction 的提出（\(M_\mathrm{spf} = f + \tilde{r}_\mathrm{spf}\) 分解）。Centered factorization 架构（变量替换 \(w = s - \lambda t\)，PMH 的正确定义，SCF 定理的完整推导）。Conditional Closure Theorem（SCF + PCF ⟹ Conjecture 2 的证明）。Analytic interface 的精确恒等式（\(E[(\Delta f)^2]\) 的四量分解）。UL-strong 的降级判断（PMH 才是 SCF 的正确 prime input）。\(\theta\) latent variable 的提出（共享 shell-depth 解释 Corr ≈ 0.89）。</p>
+      <p><strong>Claude（子路）：</strong> 全部数值实验（SPF skeleton 验证, 核心矩表, analytic interface 四量, \(\theta\) latent variable, Q3 验证, UL 验证），文本起草, working notes v1-v4。UL-weak 的 unconditional proof（定理 3）。</p>
+      <p><strong>Claude（热力学 thread）：</strong> P1（conditioning bias）的识别。P2（coarse bound 守恒）的解读。UL 的 \(\eta = O(a)\) 修正。Coarse bound ≈ 40 = "Corr=0 时的 baseline"的解释。SCF 的 canonical ensemble 类比。</p>
+      <p><strong>Gemini（子夏）：</strong> UL-weak 作为 centered factorization 的"阿基米德支点"的定位。\((\log\beta)''(0) \approx 0\) 的刚性约束的强调。Selection bias vs 动力学涨落的辨析确认。</p>
+      <p><strong>Grok（子贡）：</strong> 系列一致性审核（Paper 42-46 chain 验证）。Conditional Closure Theorem 的"假设"标注建议。数值精度确认。</p>
+      <p><strong>Han Qin（作者）：</strong> P1 的先验发现（"均值漂移是 conditioning 代价，涨落是本征量"），先验审计方法论（P1-P7 vs Q1-Q3 的区分），Paper 46 的 scope 决策（SPF skeleton + conditional closure），UL-strong → PMH 的接受。最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho45.html">← 论文 XLV</a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · CC BY 4.0</span>
+    <span><a href="/index.html">Self-as-an-End</a></span>
+  </div>
+</footer>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "your-token-here"}'></script>
+
+</body>
+</html>
