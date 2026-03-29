@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluctuation Absorption Rate η ≪ 1: Strong Complementary Cancellation and Nonequilibrium Stability in a Zero-Parameter Min Recursion — ZFCρ Paper XLVII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLVII: Fluctuation absorption rate η := 1 − |Cov(Δf,Δr)|/Var(Δf) ∈ [0.10, 0.31] in DP recursion; Reset-Slack decomposition; conditional remainder transfer law U(m) = −D(m−1); first external verification via Lindley queue (G/G/1), η from 0.055 to 0.987; η is a general feature of min/max recursion systems.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, fluctuation absorption rate, complementary cancellation, nonequilibrium stability, Lindley queue, min recursion, reset-slack decomposition, remainder transfer law">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fluctuation Absorption Rate η ≪ 1: Strong Complementary Cancellation and Nonequilibrium Stability in a Zero-Parameter Min Recursion">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho47.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Fluctuation Absorption Rate η ≪ 1: Strong Complementary Cancellation and Nonequilibrium Stability in a Zero-Parameter Min Recursion",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho47.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19310282"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "fluctuation absorption rate", "complementary cancellation",
+      "nonequilibrium stability", "Lindley queue", "min recursion", "reset-slack decomposition",
+      "remainder transfer law", "η ≪ 1"
+    ],
+    "abstract": "We discover and quantify a strong fluctuation absorption mechanism in a zero-parameter arithmetic recursion — the integer complexity dynamic programming ρ_E(n) = min(ρ_E(n-1)+1, M(n)). Defining η := 1 − |Cov(Δf, Δr)|/Var(Δf), we measure η ∈ [0.10, 0.31] across Ω = 2–18 shells (17/17 variance identities verified). First external verification: Lindley queue (G/G/1), η from 0.055 to 0.987 (21/21 verified). Both share the same cancellation structure: η is a general feature of min/max recursion systems.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho47.html">
+  <meta name="citation_title" content="Fluctuation Absorption Rate η ≪ 1: Strong Complementary Cancellation and Nonequilibrium Stability in a Zero-Parameter Min Recursion">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19310282">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho47.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .decomp-box { background: #f0fff4; border-left: 3px solid #00aa55; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .decomp-box p { margin: 0; }
+    .decomp-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Paper XLVII</div>
+      <h1 class="paper-title">Fluctuation Absorption Rate η ≪ 1: Strong Complementary Cancellation and Nonequilibrium Stability in a Zero-Parameter Min Recursion</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19310282" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19310282
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>We discover and quantify a strong fluctuation absorption mechanism in a zero-parameter arithmetic recursion — the integer complexity dynamic programming (DP) \(\rho_E(n) = \min(\rho_E(n{-}1)+1,\, M(n))\).</p>
+        <p>Decomposing the step size \(A = \rho_E(n{-}1) - \rho_E(n)\) into structural input \(\Delta f\) and optimization remainder \(\Delta r\), the system satisfies a <strong>strong complementary cancellation law</strong>: \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\). Two quantities with individual variances ≈ 7–10 cancel precisely to produce total variance ≈ 0.3–1.3. We define the <strong>fluctuation absorption rate</strong>:</p>
+        <p style="text-align:center;">\(\eta := 1 - |\mathrm{Cov}(\Delta f, \Delta r)| \,/\, \mathrm{Var}(\Delta f)\)</p>
+        <p>At \(N = 10^7\) across \(\Omega = 2\)–18 shells: <strong>η ∈ [0.10, 0.31]</strong>, meaning 69–90% of structural fluctuations are absorbed by the optimization remainder.</p>
+        <p>The exact skeleton of the cancellation law rests on two theorems: (1) Reset-Slack decomposition \(A = \psi(\Delta M^-) - U^-\), yielding \(\mathrm{Var}(A) \leq 2\mathrm{Var}(\Delta M^-) + 2E[U^2]\); (2) conditional remainder transfer law \(U(m) = -D(m{-}1)\) (covering 95%+ of \(U > 0\) events).</p>
+        <p><strong>First external verification: Lindley queue (G/G/1).</strong> For M/M/1, M/D/1, and M/Pareto/1 queues, η ranges from 0.055 (M/D/1 at ρ = 0.3) to 0.987 (M/M/1 at ρ = 0.99), with variance identities verified 21/21. η is determined by how effectively the max operation compresses step-size variance relative to structural input variance. DP recursion and Lindley queue share the same cancellation structure — η is not a peculiarity of DP arithmetic, but a <strong>general feature of min/max recursion systems</strong>.</p>
+        <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, fluctuation absorption rate, complementary cancellation, nonequilibrium stability, Lindley queue, reset-slack decomposition, remainder transfer law</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 Why are nonequilibrium systems stable?</h3>
+      <p>In equilibrium, the fluctuation-dissipation theorem (FDT; Kubo 1966 [1]) guarantees that fluctuations and dissipation balance. Away from equilibrium — active matter [2], biological systems [3], turbulence [4], driven systems [5] — the premises of FDT (linear response, equilibrium, detailed balance) all break down, yet systems can still operate stably.</p>
+      <p>Generalizations of the nonequilibrium FDT have a rich lineage: Jarzynski (1997) [6], Crooks (1999) [7], Harada-Sasa (2005) [8], Prost-Joanny-Parrondo (2009) [9], Seifert (2012) [10]. These are precise relations under specific protocols. What is lacking is <strong>a cross-system, directly computable scalar that measures how much fluctuation a given system absorbs</strong>.</p>
+
+      <h3>1.2 Contributions</h3>
+      <p>(a) We introduce the fluctuation absorption rate η as a directly computable scalar. (b) In DP recursion we measure η ∈ [0.10, 0.31] (variance identity verified 17/17). (c) In Lindley queue we independently measure η (variance identity verified 21/21), confirming η as a general feature of min/max recursion. (d) We provide the exact skeleton: Reset-Slack decomposition (theorem) and conditional remainder transfer law (theorem). (e) We report cross-shell structural constants and Ω = 3→4 crossover (computational regularities).</p>
+
+      <h3>1.3 What we do not claim</h3>
+      <p>We do not claim η is a "universal replacement for nonequilibrium FDT." η is a cancellation index under a specific f/r decomposition. We do not claim η is exactly equivalent to \(T_\mathrm{eff}/T\). We do not claim physical thermodynamics is "replaced" by min recursion. Physical analogies are offered at the discussion level.</p>
+
+      <h3>1.4 Literature positioning</h3>
+      <p>The interface between min-plus/tropical algebra and statistical physics has prior history (Quadrat 1997 [11]). What this paper adds is: in a concrete integer complexity DP recursion, we extract the cancellation law (η), reset-slack compensation, and remainder transfer as a complete structural package, and introduce η as a quantitative scalar transferable across systems.</p>
+
+      <h2>§2 Basic Quantities of DP Recursion</h2>
+
+      <h3>2.1 Definition</h3>
+      <div class="thesis-box">
+        <p>\(\rho_E(1) = 0,\quad \rho_E(n) = \min(\rho_E(n{-}1)+1,\; M(n))\)</p>
+        <p>where \(M(n) = \min_{a\cdot b=n,\, a,b\geq 2}(\rho_E(a)+\rho_E(b)+2)\). For primes: \(M(p) = +\infty\). Zero free parameters, fully deterministic.</p>
+      </div>
+
+      <h3>2.2 Decomposition</h3>
+      <p>Step size: \(A(n) = \rho_E(n{-}1) - \rho_E(n)\). Additive part: \(f(n) = \sum_{q^a \| n} \rho_E(q^a)\). Combinatorial remainder: \(r(n) = \rho_E(n) - f(n)\).</p>
+      <div class="decomp-box">
+        <p><strong>Identity: \(A = \Delta f + \Delta r\)</strong>, where \(\Delta f = f(n{-}1) - f(n)\), \(\Delta r = r(n{-}1) - r(n)\).</p>
+      </div>
+
+      <h3>2.3 Shell conditioning</h3>
+      <p>\(\Omega(n)\) = number of prime factors counted with multiplicity. Analysis is conducted on \(\Omega(n) = k\) shells, composites only (\(\Omega \geq 2\)).</p>
+
+      <h2>§3 Strong Complementary Cancellation and η</h2>
+
+      <h3>3.1 Data</h3>
+      <p>\(N = 10^7\), computed by C programs (rho_dp.c + anticorr.c). The variance identity \(\mathrm{Var}(A) = \mathrm{Var}(\Delta f) + \mathrm{Var}(\Delta r) + 2\mathrm{Cov}(\Delta f, \Delta r)\) closes to within \(10^{-4}\) across all 17 k-values (full 17-row table in Appendix A):</p>
+
+      <table>
+        <thead>
+          <tr><th>k</th><th>Var(Δf)</th><th>Var(Δr)</th><th>Cov(Δf,Δr)</th><th>Var(A)</th><th>η</th><th>samples</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>6.716</td><td>5.643</td><td>−6.022</td><td>0.314</td><td>0.103</td><td>1,904,324</td></tr>
+          <tr><td>4</td><td>6.964</td><td>5.678</td><td>−5.962</td><td>0.720</td><td>0.144</td><td>2,050,696</td></tr>
+          <tr><td>6</td><td>8.804</td><td>6.767</td><td>−7.324</td><td>0.923</td><td>0.168</td><td>774,078</td></tr>
+          <tr><td>8</td><td>9.903</td><td>6.962</td><td>−7.886</td><td>1.093</td><td>0.204</td><td>207,207</td></tr>
+          <tr><td>10</td><td>10.057</td><td>6.626</td><td>−7.738</td><td>1.207</td><td>0.231</td><td>49,163</td></tr>
+          <tr><td>12</td><td>9.956</td><td>6.300</td><td>−7.479</td><td>1.297</td><td>0.249</td><td>11,068</td></tr>
+          <tr><td>14</td><td>9.702</td><td>5.995</td><td>−7.159</td><td>1.377</td><td>0.262</td><td>2,406</td></tr>
+          <tr><td>18</td><td>9.613</td><td>5.672</td><td>−6.976</td><td>1.333</td><td>0.274</td><td>102</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 Cancellation law</h3>
+      <p><strong>Computational regularity: \(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\).</strong> If Δf and Δr were independent, Var(A) ≈ 12–16. Observed: ≈ 0.3–1.4. The difference is entirely due to strongly negative Cov(Δf, Δr).</p>
+
+      <h3>3.3 Fluctuation absorption rate</h3>
+      <div class="milestone-box">
+        <p><strong>Definition:</strong> \(\eta := 1 - |\mathrm{Cov}(\Delta f, \Delta r)| \,/\, \mathrm{Var}(\Delta f)\). &nbsp; η = 0: perfect absorption. &nbsp; η = 1: zero absorption.</p>
+        <p><strong>DP recursion: η ∈ [0.10, 0.31].</strong> η exhibits a broad upward trend with k (0.10 → 0.27 from k = 2 to 14; k = 18 with only 102 samples should be interpreted cautiously).</p>
+      </div>
+
+      <h3>3.4 Algebraic interpretability</h3>
+      <p>Since \(\Delta r = A - \Delta f\), we have \(\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f)\). The cancellation law is equivalent to \(\mathrm{Cov}(\Delta f, A) \ll \mathrm{Var}(\Delta f)\).</p>
+      <p>This is an algebraic consequence of \(\mathrm{Var}(A) \ll \mathrm{Var}(\Delta f)\), not a theorem deduced from the min operation alone. But the algebraic consequence carries meaning: the min operation effectively suppresses total step-size variance, forcing the remainder to absorb most of the structural fluctuation.</p>
+      <p>Note: \(\mathrm{Cov}(\Delta f, A)\) ranges from 0.69 (k = 2) to 2.64 (k = 18) — not near zero. The cancellation law describes "strong absorption" (η ≪ 1), not "decoupling" (\(\mathrm{Cov}(\Delta f, A) = 0\)).</p>
+
+      <h3>3.5 Why η &gt; 0 is necessary</h3>
+      <p>DP recursion is irreversible. η = 0 would correspond to a perfect-absorption limit — a boundary unreachable in an irreversible system. η &gt; 0 is the cost of running the min operation in an irreversible setting.</p>
+
+      <h2>§4 Reset-Slack Decomposition</h2>
+
+      <h3>4.1 Exact decomposition (theorem)</h3>
+      <div class="proof-box">
+        <p><strong>R2 (algebraic identity; Paper 42 [14]):</strong> If \(J(m{-}1) > 0\), then \(J(m) = (1 - \Delta M^-(m))^+\). Verified on 5.8 million samples, 100%, zero failures.</p>
+        <p>\(A(m) = \psi(\Delta M^-(m)) - U^-(m)\), where \(\psi(x) = -\min(x,1)\), 1-Lipschitz.</p>
+      </div>
+
+      <h3>4.2 Reset-Slack Reduction (theorem)</h3>
+      <div class="proof-box">
+        <p>\(\mathrm{Var}(A) \leq 2\cdot\mathrm{Var}(\Delta M^-) + 2\cdot E[U^2]\).</p>
+      </div>
+
+      <h3>4.3 Frequency-intensity tradeoff (computational regularity)</h3>
+      <p>R2 guarantees \(J(m{-}1) > 0 \Rightarrow U(m) = 0\). Therefore \(E[U^2] = P(\text{exposed}) \times E[U^2|\text{exposed}]\).</p>
+
+      <table>
+        <thead>
+          <tr><th>k</th><th>P(shielded)</th><th>P(exposed)</th><th>E[U²|exposed]</th><th>E[U²]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>76.0%</td><td>24.0%</td><td>0.598</td><td>0.144</td></tr>
+          <tr><td>5</td><td>60.3%</td><td>39.7%</td><td>1.124</td><td>0.447</td></tr>
+          <tr><td>8</td><td>55.4%</td><td>44.6%</td><td>0.956</td><td>0.426</td></tr>
+          <tr><td>12</td><td>57.0%</td><td>43.0%</td><td>0.885</td><td>0.381</td></tr>
+        </tbody>
+      </table>
+
+      <p>P(exposed) rises while E[U²|exposed] peaks at k = 5 then declines; their product stabilizes near 0.4. At the discussion level, this tradeoff is analogous to Le Chatelier's principle.</p>
+
+      <h2>§5 Remainder Transfer Law</h2>
+
+      <h3>5.1 Predecessor Defect Identity (theorem, conditional)</h3>
+      <div class="proof-box">
+        <p><strong>Theorem (Paper 45 [16]):</strong> When \(J(m{-}1) = 0\), \(J(m) > 0\), \(\Delta M^- < 0\) (covering 95%+ of \(U > 0\) events):</p>
+        <p style="text-align:center;"><strong>\(U(m) = -D(m{-}1)\)</strong></p>
+        <p>where \(D(m{-}1) = \rho_E(m{-}1) - M(m{-}1)\). The cost saved by the predecessor's choice of successor path reappears exactly as slack in the current step.</p>
+      </div>
+
+      <h3>5.2 Full lifecycle</h3>
+      <p>Shielded (\(J(m{-}1) > 0\)): \(U = 0\), cost difference cleared by jump. Exposed (\(J(m{-}1) = 0\)): \(U = -D(m{-}1)\), predecessor's cost difference transferred exactly. The system alternates between these two states; the §4.3 tradeoff is the statistical steady state of this alternation.</p>
+
+      <h2>§6 Structural Constants</h2>
+      <p>The following values emerge from the zero-parameter DP recursion and remain stable across shells (computational regularities):</p>
+
+      <table>
+        <thead>
+          <tr><th>Constant</th><th>Value</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Var(B)</td><td>≈ 1/4</td><td>Paper 19 [13]</td></tr>
+          <tr><td>V(p)</td><td>≈ 1.40</td><td>Paper 34 [15]</td></tr>
+          <tr><td>h_pq</td><td>≈ 3.800</td><td>Paper 40 [17]</td></tr>
+          <tr><td>θ</td><td>≈ 0.41</td><td>Paper 43 [19]</td></tr>
+          <tr><td>coarse bound</td><td>≈ 40</td><td>Paper 46 [20]</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Coarse bound ≈ 40:</strong> \(2\mathrm{Var}(f) + 2\mathrm{Var}^-(f) + (\mu - \mu^-)^2 \approx 40\) for k = 4–14. The decline in internal variance compensates the growth in external drive.</p>
+
+      <h2>§7 Ω = 3→4 Crossover</h2>
+      <p>At \(N = 10^{10}\), the local convexity \(h(n) = \rho_E(n) - [\rho_E(n{-}1) + \rho_E(n{+}1)]/2\) has a strictly decreasing Ω-shell mean, with zero crossing at Ω ≈ 4 [21]:</p>
+
+      <table>
+        <thead>
+          <tr><th>Ω</th><th>mean h</th><th>P(J&gt;0)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>+0.697</td><td>28.7%</td></tr>
+          <tr><td>3</td><td>+0.361</td><td>57.1%</td></tr>
+          <tr><td>4</td><td>+0.004</td><td>77.1%</td></tr>
+          <tr><td>5</td><td>−0.329</td><td>88.4%</td></tr>
+        </tbody>
+      </table>
+
+      <p>This is a combinatorial crossover (not a rigorous thermodynamic phase transition). For Ω ≥ 4, \(\mathrm{Var}(\Delta f \mid \Omega = k) \approx 7\)–10 is approximately k-independent.</p>
+
+      <h2>§8 Lindley Queue Verification</h2>
+
+      <h3>8.1 Lindley recursion as a max system</h3>
+      <p>The G/G/1 Lindley recursion: \(W_{n+1} = \max(0,\, W_n + X_n)\), where \(X_n = S_n - T_n\) (service minus inter-arrival time).</p>
+      <p><strong>Decomposition (analogous to \(A = \Delta f + \Delta r\)):</strong></p>
+      <p style="text-align:center;">\(A_n = W_{n+1} - W_n = X_n + R_n\)</p>
+      <p>\(X_n\): structural input (service-arrival difference, independent of max selection). \(R_n = \max(0, -(W_n + X_n))\): reset remainder (truncation produced by max operation).</p>
+      <p style="text-align:center;">\(\eta = 1 - |\mathrm{Cov}(X, R)| \,/\, \mathrm{Var}(X)\)</p>
+
+      <h3>8.2 Data</h3>
+      <p>\(10^7\) steps, \(10^6\) burn-in, C program (lindley_eta.c), variance identities verified 21/21 (error &lt; 0.01):</p>
+
+      <p><strong>M/M/1 (exponential service + exponential inter-arrival):</strong></p>
+      <table>
+        <thead>
+          <tr><th>ρ</th><th>Var(X)</th><th>Var(R)</th><th>Cov(X,R)</th><th>Var(A)</th><th>η</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.30</td><td>12.11</td><td>10.11</td><td>−10.65</td><td>0.92</td><td>0.121</td></tr>
+          <tr><td>0.50</td><td>5.00</td><td>3.00</td><td>−3.33</td><td>1.34</td><td>0.334</td></tr>
+          <tr><td>0.70</td><td>3.04</td><td>1.04</td><td>−1.22</td><td>1.65</td><td>0.600</td></tr>
+          <tr><td>0.90</td><td>2.24</td><td>0.24</td><td>−0.29</td><td>1.89</td><td>0.870</td></tr>
+          <tr><td>0.99</td><td>2.02</td><td>0.02</td><td>−0.03</td><td>1.99</td><td>0.987</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>M/D/1 (deterministic service + exponential inter-arrival):</strong></p>
+      <table>
+        <thead>
+          <tr><th>ρ</th><th>Var(X)</th><th>Var(R)</th><th>Cov(X,R)</th><th>Var(A)</th><th>η</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.30</td><td>11.10</td><td>10.10</td><td>−10.49</td><td>0.22</td><td>0.055</td></tr>
+          <tr><td>0.50</td><td>4.00</td><td>3.00</td><td>−3.29</td><td>0.41</td><td>0.176</td></tr>
+          <tr><td>0.70</td><td>2.04</td><td>1.04</td><td>−1.24</td><td>0.62</td><td>0.395</td></tr>
+          <tr><td>0.90</td><td>1.23</td><td>0.23</td><td>−0.30</td><td>0.86</td><td>0.755</td></tr>
+          <tr><td>0.99</td><td>1.02</td><td>0.02</td><td>−0.03</td><td>0.99</td><td>0.973</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>M/Pareto/1 (heavy-tailed service, α = 3):</strong></p>
+      <table>
+        <thead>
+          <tr><th>ρ</th><th>Var(X)</th><th>Var(R)</th><th>Cov(X,R)</th><th>Var(A)</th><th>η</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.30</td><td>11.44</td><td>10.12</td><td>−10.54</td><td>0.48</td><td>0.079</td></tr>
+          <tr><td>0.50</td><td>4.33</td><td>3.00</td><td>−3.30</td><td>0.73</td><td>0.238</td></tr>
+          <tr><td>0.70</td><td>2.37</td><td>1.04</td><td>−1.22</td><td>0.96</td><td>0.484</td></tr>
+          <tr><td>0.90</td><td>1.56</td><td>0.24</td><td>−0.30</td><td>1.20</td><td>0.809</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 Findings</h3>
+      <p><strong>(L1) η is governed by variance compression.</strong> When the max operation compresses Var(A) far below Var(X), absorption is strong and η is small. When Var(A) ≈ Var(X) (near full load), η → 1.</p>
+      <p><strong>(L2) Lowest η: M/D/1 at ρ = 0.30, η = 0.055.</strong> Deterministic service eliminates service-time randomness, producing cleaner resets and stronger absorption.</p>
+      <p><strong>(L3) DP recursion and Lindley queue share the same structure.</strong> In both systems, η is determined by how effectively the optimization operation compresses total step-size variance relative to structural input variance: <strong>when Var(A)/Var(X) ≪ 1, the cancellation law holds and η ≪ 1.</strong></p>
+
+      <h3>8.4 Correction to original prediction</h3>
+      <p>Original prediction: "η &lt; 0.15 for Lindley." <strong>Partially verified, partially corrected.</strong></p>
+      <p>Verified: low-load Lindley (ρ ≤ 0.3) indeed has η &lt; 0.15. Corrected: η is not a universal bound — it is a function of load (ρ) or complexity (k).</p>
+      <div class="milestone-box">
+        <p><strong>Revised prediction:</strong> In min/max recursion systems, \(\eta = F(\mathrm{Var}(A)/\mathrm{Var}(X))\), where F approaches 0 when \(\mathrm{Var}(A)/\mathrm{Var}(X) \ll 1\) and approaches 1 when \(\mathrm{Var}(A)/\mathrm{Var}(X) \to 1\).</p>
+      </div>
+
+      <h2>§9 Falsifiable Predictions</h2>
+
+      <h3>Prediction 1: η-ratio universality</h3>
+      <p><strong>Statement:</strong> In min/max recursion systems, η is determined by the ratio \(\mathrm{Var}(A)/\mathrm{Var}(\text{structural input})\), independent of system specifics. <strong>Falsification criterion:</strong> Two min/max recursion systems with the same Var(A)/Var(X) but η differing by more than 0.1.</p>
+
+      <h3>Prediction 2: Le Chatelier-type tradeoff</h3>
+      <p><strong>Statement:</strong> In min recursion systems with a reset mechanism, \(E[U^2] = P(\text{exposed}) \times E[U^2|\text{exposed}]\) has counter-varying factors whose product remains bounded. <strong>Test:</strong> Idle-time decomposition in G/G/1 queues.</p>
+
+      <h3>Prediction 3: η lower bound for non-min systems</h3>
+      <p><strong>Statement:</strong> Systems without min/max recursion structure cannot easily achieve η ≪ 1. In active matter and other detailed-balance-violating systems without explicit optimization structure, η should be substantially larger than in min recursion systems at the same Var(A)/Var(X). <strong>Falsification criterion:</strong> A non-min/max system achieving η &lt; 0.1.</p>
+
+      <h2>§10 Discussion</h2>
+
+      <h3>10.1 Three-layer annotation</h3>
+      <p><strong>Theorems (exact):</strong> R2: \(J(m{-}1) > 0 \Rightarrow J(m) = (1-\Delta M^-)^+\); \(A = \psi(\Delta M^-) - U^-\); \(\mathrm{Var}(A) \leq 2\mathrm{Var}(\Delta M^-) + 2E[U^2]\); \(U(m) = -D(m{-}1)\) (conditional, covering 95%+).</p>
+      <p><strong>Computational regularities:</strong> Cancellation law, η ∈ [0.10, 0.31] (DP, 17/17 verified); Lindley η from 0.055 to 0.987 (21/21 verified); Le Chatelier-type tradeoff; structural constants (Var(B) ≈ 1/4, etc.); Ω = 3→4 crossover.</p>
+      <p><strong>Physical analogies (discussion-level):</strong> η and Harada-Sasa dissipation rate; Le Chatelier naming; remainder transfer analogized to conservation law.</p>
+
+      <h3>10.2 Precise scope of claims</h3>
+      <p><strong>Claim:</strong> (a) η is a directly computable absorption scalar. (b) DP recursion has η ∈ [0.10, 0.31]. (c) Lindley queue has η from 0.055 to 0.987, governed by load. (d) Both share the same cancellation structure. <strong>Not claimed:</strong> The cancellation law is deduced from the min operation alone. η is exactly equivalent to \(T_\mathrm{eff}/T\). Physical thermodynamics is "replaced."</p>
+
+      <h3>10.3 Heuristic cross-system comparison</h3>
+      <table>
+        <thead>
+          <tr><th>System</th><th>η range</th><th>Condition</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DP recursion</td><td>0.10–0.31</td><td>k = 2–18</td></tr>
+          <tr><td>M/D/1 queue</td><td>0.055–0.97</td><td>ρ = 0.3–0.99</td></tr>
+          <tr><td>M/M/1 queue</td><td>0.12–0.99</td><td>ρ = 0.3–0.99</td></tr>
+          <tr><td>M/Pareto/1 queue</td><td>0.079–0.98</td><td>ρ = 0.3–0.99</td></tr>
+          <tr><td>Weakly driven colloids</td><td>~0.1–0.5</td><td>T_eff/T conversion (approximate)</td></tr>
+          <tr><td>Active matter</td><td>~0.5–0.99</td><td>T_eff/T conversion (approximate)</td></tr>
+        </tbody>
+      </table>
+      <p>Physical η values are approximate conversions. Exact comparison requires direct measurement.</p>
+
+      <h3>10.4 Conditional closure (brief)</h3>
+      <p>DP recursion satisfies a conditional closure route for H' (\(\bar{c}_h \to 0\); Paper 42 [14]): all links are theorem-level except three numerical inputs, which are verified at \(N = 10^{10}\) (weakest signal 85σ). See [14, 19, 20].</p>
+
+      <h3>10.5 Interfaces (brief)</h3>
+      <p>The additive/multiplicative path asymmetry in DP recursion is analogous to Turing (1952) [22] morphogenesis. The Self-as-an-End (SAE) framework [23] predicts Ω-dimension correspondence; Ω = 3→4 crossover is consistent with this prediction. SAE cosmology [24] derives Λ from remainder conservation; \(U = -D(m{-}1)\) is its arithmetic realization.</p>
+
+      <h3>10.6 Open problems</h3>
+      <p>(1) The exact form of the universal function \(\eta = F(\mathrm{Var}(A)/\mathrm{Var}(X))\). (2) Can the cancellation law be proved from the min operation alone? (3) Direct measurement of η in physical systems (without \(T_\mathrm{eff}/T\) conversion). (4) Are Var(B) ≈ 1/4 and coarse bound ≈ 40 cross-system universals? (5) A canonical f/r extraction protocol robust to coarse-graining.</p>
+
+      <h3>10.7 Conclusion</h3>
+      <div class="milestone-box">
+        <p>The strong complementary cancellation discovered in zero-parameter DP recursion (η ∈ [0.10, 0.31]) is independently verified in Lindley queues (η from 0.055 to 0.987). Both share the same structure: <strong>when a min/max operation effectively compresses total step-size variance, the optimization remainder is forced to absorb most of the structural fluctuation.</strong></p>
+        <p>As a directly computable scalar, η transitions from "an internal discovery of DP" to "a transferable tool for min/max recursion systems." The next step is a canonical f/r decomposition protocol enabling standardized measurement of η across broader classes of nonequilibrium systems.</p>
+      </div>
+
+      <h2>References</h2>
+      <p>[1] R. Kubo, "The fluctuation-dissipation theorem." <em>Rep. Prog. Phys.</em> 29:255–284, 1966.</p>
+      <p>[2] M. C. Marchetti et al., "Hydrodynamics of soft active matter." <em>Rev. Mod. Phys.</em> 85:1143, 2013.</p>
+      <p>[3] C. P. Brangwynne et al., "Intracellular transport by active diffusion." <em>Trends Cell Biol.</em> 19:423, 2009.</p>
+      <p>[4] U. Frisch, <em>Turbulence: The Legacy of A.N. Kolmogorov.</em> Cambridge UP, 1995.</p>
+      <p>[5] C. Bechinger et al., "Active particles in complex and crowded environments." <em>Rev. Mod. Phys.</em> 88:045006, 2016.</p>
+      <p>[6] C. Jarzynski, "Nonequilibrium equality for free energy differences." <em>Phys. Rev. Lett.</em> 78:2690, 1997.</p>
+      <p>[7] G. E. Crooks, "Entropy production fluctuation theorem." <em>Phys. Rev. E</em> 60:2721, 1999.</p>
+      <p>[8] T. Harada, S. Sasa, "Equality connecting energy dissipation with violation of the fluctuation-response relation." <em>Phys. Rev. Lett.</em> 95:130602, 2005.</p>
+      <p>[9] J. Prost, J.-F. Joanny, J. M. R. Parrondo, "Generalized fluctuation-dissipation theorem for steady-state systems." <em>Phys. Rev. Lett.</em> 103:090601, 2009.</p>
+      <p>[10] U. Seifert, "Stochastic thermodynamics, fluctuation theorems and molecular machines." <em>Rep. Prog. Phys.</em> 75:126001, 2012.</p>
+      <p>[11] J.-P. Quadrat, "Min-Plus linearity and statistical mechanics." <em>Markov Process. Related Fields</em> 3:565–587, 1997.</p>
+      <p>[12] H. Qin, ZFCρ Paper XXXII. <a href="https://doi.org/10.5281/zenodo.19116625" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19116625</a>.</p>
+      <p>[13] H. Qin, ZFCρ Paper XIX. <a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19026991</a>.</p>
+      <p>[14] H. Qin, ZFCρ Paper XLII. <a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19226607</a>.</p>
+      <p>[15] H. Qin, ZFCρ Paper XXXIV. <a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19140015</a>.</p>
+      <p>[16] H. Qin, ZFCρ Paper XLV. <a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19275286</a>.</p>
+      <p>[17] H. Qin, ZFCρ Paper XL. <a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19179778</a>.</p>
+      <p>[18] H. Qin, ZFCρ Paper XVIII. <a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19024385</a>.</p>
+      <p>[19] H. Qin, ZFCρ Paper XLIII. <a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19240183</a>.</p>
+      <p>[20] H. Qin, ZFCρ Paper XLVI. <a href="https://doi.org/10.5281/zenodo.19303511" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19303511</a>.</p>
+      <p>[21] H. Qin, "Why Primes Have No Shortcuts: An O(1) Prime Pre-Sieve from Precomputed ρ<sub>E</sub> Tables." <a href="https://doi.org/10.5281/zenodo.19246377" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19246377</a>.</p>
+      <p>[22] A. M. Turing, "The Chemical Basis of Morphogenesis." <em>Phil. Trans. R. Soc.</em> 237:37–72, 1952.</p>
+      <p>[23] H. Qin, SAE Paper 1. <a href="https://doi.org/10.5281/zenodo.18528813" target="_blank" rel="noopener">DOI: 10.5281/zenodo.18528813</a>.</p>
+      <p>[24] H. Qin, "From Remainder Conservation to the Cosmological Constant." <a href="https://doi.org/10.5281/zenodo.19245267" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19245267</a>.</p>
+
+      <h2>Appendix A. Full 17-Row Cancellation Table (DP Recursion)</h2>
+      <table>
+        <thead>
+          <tr><th>k</th><th>Var(Δf)</th><th>Var(Δr)</th><th>Cov(Δf,Δr)</th><th>Var(A)</th><th>η</th><th>Cov(Δf,A)</th><th>samples</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>6.716</td><td>5.643</td><td>−6.022</td><td>0.314</td><td>0.103</td><td>0.694</td><td>1,904,324</td></tr>
+          <tr><td>3</td><td>6.539</td><td>5.389</td><td>−5.685</td><td>0.558</td><td>0.131</td><td>0.854</td><td>2,444,359</td></tr>
+          <tr><td>4</td><td>6.964</td><td>5.678</td><td>−5.962</td><td>0.720</td><td>0.144</td><td>1.003</td><td>2,050,696</td></tr>
+          <tr><td>5</td><td>7.734</td><td>6.166</td><td>−6.533</td><td>0.833</td><td>0.155</td><td>1.200</td><td>1,349,779</td></tr>
+          <tr><td>6</td><td>8.804</td><td>6.767</td><td>−7.324</td><td>0.923</td><td>0.168</td><td>1.480</td><td>774,078</td></tr>
+          <tr><td>7</td><td>9.366</td><td>6.869</td><td>−7.615</td><td>1.005</td><td>0.187</td><td>1.751</td><td>409,849</td></tr>
+          <tr><td>8</td><td>9.903</td><td>6.962</td><td>−7.886</td><td>1.093</td><td>0.204</td><td>2.017</td><td>207,207</td></tr>
+          <tr><td>9</td><td>9.872</td><td>6.689</td><td>−7.700</td><td>1.162</td><td>0.220</td><td>2.173</td><td>101,787</td></tr>
+          <tr><td>10</td><td>10.057</td><td>6.626</td><td>−7.738</td><td>1.207</td><td>0.231</td><td>2.319</td><td>49,163</td></tr>
+          <tr><td>11</td><td>9.807</td><td>6.258</td><td>−7.407</td><td>1.250</td><td>0.245</td><td>2.399</td><td>23,448</td></tr>
+          <tr><td>12</td><td>9.956</td><td>6.300</td><td>−7.479</td><td>1.297</td><td>0.249</td><td>2.477</td><td>11,068</td></tr>
+          <tr><td>13</td><td>9.231</td><td>5.655</td><td>−6.792</td><td>1.301</td><td>0.264</td><td>2.438</td><td>5,210</td></tr>
+          <tr><td>14</td><td>9.702</td><td>5.995</td><td>−7.159</td><td>1.377</td><td>0.262</td><td>2.542</td><td>2,406</td></tr>
+          <tr><td>15</td><td>8.791</td><td>5.267</td><td>−6.374</td><td>1.310</td><td>0.275</td><td>2.417</td><td>1,124</td></tr>
+          <tr><td>16</td><td>9.783</td><td>5.841</td><td>−7.085</td><td>1.453</td><td>0.276</td><td>2.698</td><td>510</td></tr>
+          <tr><td>17</td><td>7.414</td><td>4.155</td><td>−5.096</td><td>1.378</td><td>0.313</td><td>2.318</td><td>233</td></tr>
+          <tr><td>18</td><td>9.613</td><td>5.672</td><td>−6.976</td><td>1.333</td><td>0.274</td><td>2.637</td><td>102</td></tr>
+        </tbody>
+      </table>
+      <p>All 17 rows satisfy the variance identity to within 10⁻⁴.</p>
+
+      <h2>Appendix B. Data Sources and Full Reproduction</h2>
+      <p>All data in this paper are generated by three self-contained C programs with zero external dependencies:</p>
+      <div class="chain-box"><pre>gcc -O2 -o rho_dp rho_dp.c
+gcc -O2 -o anticorr anticorr.c -lm
+gcc -O2 -o lindley_eta lindley_eta.c -lm
+
+./anticorr 10000000      # Table §3: 17-row cancellation data with identity verification
+./lindley_eta             # Section §8: 3 queue types × 7 loads = 21 data points</pre></div>
+      <p>Total runtime under two minutes (single core, modern x86/ARM). Three files total under 500 lines of C. Released with this paper.</p>
+      <p><strong>rho_dp.c</strong> — DP recursion (Paper 32 convention). Built-in sanity checks: ρ(2) = 1, ρ(100) = 15, ρ(10⁷) = 58. <strong>anticorr.c</strong> — Table §3. Computes ρ_E from DP, then uses SPF (smallest prime factor) sieve to compute f(n) and Ω(n). Accumulates Var(Δf), Var(Δr), Cov(Δf,Δr), Var(A), η on Ω = k shells. <strong>lindley_eta.c</strong> — §8 Lindley verification. xoshiro256** RNG, 10⁷ steps + 10⁶ burn-in. Three queue types at seven loads (ρ = 0.30, 0.50, 0.70, 0.80, 0.90, 0.95, 0.99). Variance identity 21/21.</p>
+
+      <h2>Acknowledgments</h2>
+      <p>ChatGPT (Gongxi Hua / 公西华) discovered the arithmetic error in v2's τ definition, catalyzing the correct definition of η; proposed all review requirements on claim layering, literature positioning, and three-tier annotation; contributed the analytic proof chain architecture of Paper 42.</p>
+      <p>Claude (Zilu / 子路) contributed the thermodynamic framework (Papers 24–46), all numerical experiments (anticorr.c, lindley_eta.c), the physical interpretation of η, and the design and implementation of the Lindley queue verification.</p>
+      <p>Gemini (Zixia / 子夏) posed three pressure tests that sharpened the precision of claims.</p>
+      <p>Grok (Zigong / 子贡) provided the initial review round. Inconsistency in k = 18 data prompted independent recomputation of the full table.</p>
+      <p>Zesi Chen is a long-term interlocutor of the SAE framework. Final text by the author alone.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho46.html">← Paper XLVI</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ 第 XLVII 篇</div>
+      <h1 class="paper-title">涨落吸收率 η ≪ 1：零参数 min 递推中的强互补消涨与非平衡稳定性</h1>
+      <div class="paper-authors">秦汉 (Han Qin) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19310282" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19310282
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="abstract-box">
+        <div class="abstract-label">摘要</div>
+        <p>我们在一个零参数的纯算术递推——整数复杂度的动态规划 (DP) \(\rho_E(n) = \min(\rho_E(n{-}1)+1,\, M(n))\)——中发现并量化了一条极强的涨落吸收机制。</p>
+        <p>将步长 \(A = \rho_E(n{-}1) - \rho_E(n)\) 分解为结构输入 \(\Delta f\) 和优化余项 \(\Delta r\) 后，系统满足<strong>强互补消涨律</strong>：\(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\)。两个各自方差约 7–10 的量精确对消到方差约 0.3–1.3。定义<strong>涨落吸收率</strong>：</p>
+        <p style="text-align:center;">\(\eta := 1 - |\mathrm{Cov}(\Delta f, \Delta r)| \,/\, \mathrm{Var}(\Delta f)\)</p>
+        <p>在 \(N = 10^7\)，\(\Omega = 2\)–18 壳层上：<strong>η ∈ [0.10, 0.31]</strong>，即结构涨落的 69–90% 被优化余项吸收。</p>
+        <p>消涨律的 exact 骨架由两个定理支撑：(1) Reset-Slack 分解 \(A = \psi(\Delta M^-) - U^-\)，给出 \(\mathrm{Var}(A) \leq 2\mathrm{Var}(\Delta M^-) + 2E[U^2]\)；(2) 条件性余项传递律 \(U(m) = -D(m{-}1)\)（覆盖 \(U > 0\) 的 95%+）。</p>
+        <p><strong>首个外部验证：Lindley 排队 (G/G/1)。</strong>对 M/M/1、M/D/1、M/Pareto/1 三种排队，η 从 0.055（M/D/1，ρ=0.3）到 0.987（M/M/1，ρ=0.99），方差恒等式 21/21 验证通过。η 由 max 操作压制步长方差的效果决定——DP 递推与 Lindley 排队共享同一消涨结构——<strong>η 是 min/max 递推系统的一般特征</strong>。</p>
+        <p><strong>关键词：</strong>整数复杂度、ρ-算术、涨落吸收率、互补消涨、非平衡稳定性、Lindley 排队、Reset-Slack 分解、余项传递律</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 问题：非平衡系统为什么稳定</h3>
+      <p>平衡态有涨落-耗散定理（FDT，Kubo 1966 [1]）。非平衡态——活性物质 [2]、生物系统 [3]、湍流 [4]、driven systems [5]——打破了 FDT 的前提，但仍可稳定运行。非平衡 FDT 的推广已有丰富谱系：Jarzynski (1997) [6]，Crooks (1999) [7]，Harada-Sasa (2005) [8]，Prost-Joanny-Parrondo (2009) [9]，Seifert (2012) [10]。但现有结果大多是具体场景下的关系，<strong>缺少一个跨系统的、可直接计算的涨落吸收标度</strong>。</p>
+
+      <h3>1.2 本文的贡献</h3>
+      <p>(a) 引入涨落吸收率 η 作为可直接计算的标度量。(b) 在 DP 递推中精确测量 η ∈ [0.10, 0.31]（方差恒等式 17/17 验证）。(c) 在 Lindley 排队中独立测量 η（方差恒等式 21/21 验证），确认 η 是 min/max 递推的一般特征。(d) 给出消涨律的 exact 骨架：Reset-Slack 分解（定理）和条件性余项传递律（定理）。(e) 报告跨壳层恒定的结构常数和 Ω = 3→4 crossover（数值规律）。</p>
+
+      <h3>1.3 本文不 claim 什么</h3>
+      <p>不 claim η 是"非平衡 FDT 的普适替代"。η 是特定 f/r 分解下的 cancellation 指标。不 claim η 与 \(T_\mathrm{eff}/T\) 精确等价。不 claim 物理热力学被 min 递推"取代"。物理类比作为 discussion-level analogy 提出。</p>
+
+      <h3>1.4 论文结构</h3>
+      <p>§2 基本量。§3 消涨律与 η（DP 递推）。§4 Reset-Slack 分解。§5 余项传递律。§6 结构常数。§7 Ω crossover。§8 Lindley 排队验证。§9 可证伪预测。§10 讨论。</p>
+
+      <h2>§2 DP 递推的基本量</h2>
+
+      <h3>2.1 定义</h3>
+      <div class="thesis-box">
+        <p>\(\rho_E(1) = 0,\quad \rho_E(n) = \min(\rho_E(n{-}1)+1,\; M(n))\)</p>
+        <p>\(M(n) = \min_{a\cdot b=n,\, a,b\geq 2}(\rho_E(a)+\rho_E(b)+2)\)。素数：\(M(p) = +\infty\)。零自由参数。</p>
+      </div>
+
+      <h3>2.2 分解</h3>
+      <p>\(A(n) = \rho_E(n{-}1) - \rho_E(n)\)。\(f(n) = \sum_{q^a \| n} \rho_E(q^a)\)。\(r(n) = \rho_E(n) - f(n)\)。</p>
+      <div class="decomp-box">
+        <p><strong>恒等式：\(A = \Delta f + \Delta r\)</strong>，其中 \(\Delta f = f(n{-}1) - f(n)\)，\(\Delta r = r(n{-}1) - r(n)\)。</p>
+      </div>
+
+      <h3>2.3 壳层条件</h3>
+      <p>\(\Omega(n)\) = 素因子个数（含重数）。分析在 \(\Omega(n) = k\) 壳层上进行，仅含合数（\(\Omega \geq 2\)）。</p>
+
+      <h2>§3 强互补消涨律与涨落吸收率</h2>
+
+      <h3>3.1 数据</h3>
+      <p>\(N = 10^7\)，C 程序（rho_dp.c + anticorr.c）精确计算。方差恒等式 \(\mathrm{Var}(A) = \mathrm{Var}(\Delta f) + \mathrm{Var}(\Delta r) + 2\mathrm{Cov}(\Delta f, \Delta r)\) 在全部 17 个 k 值上闭合（误差 &lt; \(10^{-4}\)）（完整 17 行表见附录 A）：</p>
+
+      <table>
+        <thead>
+          <tr><th>k</th><th>Var(Δf)</th><th>Var(Δr)</th><th>Cov(Δf,Δr)</th><th>Var(A)</th><th>η</th><th>样本</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>6.716</td><td>5.643</td><td>−6.022</td><td>0.314</td><td>0.103</td><td>1,904,324</td></tr>
+          <tr><td>4</td><td>6.964</td><td>5.678</td><td>−5.962</td><td>0.720</td><td>0.144</td><td>2,050,696</td></tr>
+          <tr><td>6</td><td>8.804</td><td>6.767</td><td>−7.324</td><td>0.923</td><td>0.168</td><td>774,078</td></tr>
+          <tr><td>8</td><td>9.903</td><td>6.962</td><td>−7.886</td><td>1.093</td><td>0.204</td><td>207,207</td></tr>
+          <tr><td>10</td><td>10.057</td><td>6.626</td><td>−7.738</td><td>1.207</td><td>0.231</td><td>49,163</td></tr>
+          <tr><td>12</td><td>9.956</td><td>6.300</td><td>−7.479</td><td>1.297</td><td>0.249</td><td>11,068</td></tr>
+          <tr><td>14</td><td>9.702</td><td>5.995</td><td>−7.159</td><td>1.377</td><td>0.262</td><td>2,406</td></tr>
+          <tr><td>18</td><td>9.613</td><td>5.672</td><td>−6.976</td><td>1.333</td><td>0.274</td><td>102</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 消涨律</h3>
+      <p><strong>数值规律：\(\mathrm{Cov}(\Delta f, \Delta r) \approx -\mathrm{Var}(\Delta f)\)。</strong>如果 Δf 和 Δr 独立，Var(A) ≈ 12–16。实际 ≈ 0.3–1.4。</p>
+
+      <h3>3.3 涨落吸收率</h3>
+      <div class="milestone-box">
+        <p><strong>\(\eta := 1 - |\mathrm{Cov}(\Delta f, \Delta r)| \,/\, \mathrm{Var}(\Delta f)\)。</strong>&nbsp; η = 0：完美吸收。η = 1：零吸收。</p>
+        <p><strong>DP 递推：η ∈ [0.10, 0.31]。</strong>η 随 k 增大（0.10 → 0.27，k=2 到 14；k=18 样本仅 102，应谨慎解读）。</p>
+      </div>
+
+      <h3>3.4 代数可解释性</h3>
+      <p>\(\mathrm{Cov}(\Delta f, \Delta r) = \mathrm{Cov}(\Delta f, A) - \mathrm{Var}(\Delta f)\)。消涨律等价于 \(\mathrm{Cov}(\Delta f, A) \ll \mathrm{Var}(\Delta f)\)。这是"Var(A) ≪ Var(Δf)"的代数后果，不是从 min 操作单独演绎的定理。注：\(\mathrm{Cov}(\Delta f, A)\) 从 0.69（k=2）到 2.64（k=18），不是近零。消涨律是"强吸收"，不是"解耦"。</p>
+
+      <h3>3.5 η &gt; 0 的必要性</h3>
+      <p>DP 递推不可逆。η = 0 对应 perfect-absorption 极限——一个在不可逆系统中不可达的边界。η &gt; 0 是 min 操作在不可逆系统中运行的代价。</p>
+
+      <h2>§4 Reset-Slack 分解</h2>
+
+      <h3>4.1 精确分解（定理）</h3>
+      <div class="proof-box">
+        <p><strong>R2（代数恒等式，Paper 42 [14]）：</strong>若 \(J(m{-}1) > 0\)，则 \(J(m) = (1 - \Delta M^-(m))^+\)。580 万样本，100%，零失败。</p>
+        <p>\(A(m) = \psi(\Delta M^-(m)) - U^-(m)\)，\(\psi(x) = -\min(x,1)\)，1-Lipschitz。</p>
+      </div>
+
+      <h3>4.2 Reset-Slack Reduction（定理）</h3>
+      <div class="proof-box">
+        <p>\(\mathrm{Var}(A) \leq 2\cdot\mathrm{Var}(\Delta M^-) + 2\cdot E[U^2]\)。</p>
+      </div>
+
+      <h3>4.3 频率-强度对冲（数值规律）</h3>
+      <p>R2 保证 \(J(m{-}1) > 0 \Rightarrow U(m) = 0\)。因此 \(E[U^2] = P(\text{exposed}) \times E[U^2|\text{exposed}]\)。</p>
+
+      <table>
+        <thead>
+          <tr><th>k</th><th>P(shielded)</th><th>P(exposed)</th><th>E[U²|exposed]</th><th>E[U²]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>76.0%</td><td>24.0%</td><td>0.598</td><td>0.144</td></tr>
+          <tr><td>5</td><td>60.3%</td><td>39.7%</td><td>1.124</td><td>0.447</td></tr>
+          <tr><td>8</td><td>55.4%</td><td>44.6%</td><td>0.956</td><td>0.426</td></tr>
+          <tr><td>12</td><td>57.0%</td><td>43.0%</td><td>0.885</td><td>0.381</td></tr>
+        </tbody>
+      </table>
+
+      <p>P(exposed) 增，E[U²|exposed] 先升后降，乘积 ≈ 0.4 稳定。在 discussion level 上类比于 Le Chatelier 原理。</p>
+
+      <h2>§5 余项传递律</h2>
+
+      <h3>5.1 Predecessor Defect Identity（定理，条件性）</h3>
+      <div class="proof-box">
+        <p><strong>定理（Paper 45 [16]）：</strong>当 \(J(m{-}1) = 0\)，\(J(m) > 0\)，\(\Delta M^- < 0\) 时（覆盖 \(U > 0\) 的 95%+）：</p>
+        <p style="text-align:center;"><strong>\(U(m) = -D(m{-}1)\)</strong></p>
+        <p>Predecessor 走 successor 路径省了 \(|D(m{-}1)|\) 的代价，精确以 \(U(m)\) 出现在下一步。</p>
+      </div>
+
+      <h3>5.2 完整生命周期</h3>
+      <p>Shielded（\(J(m{-}1) > 0\)）：\(U = 0\)。Exposed（\(J(m{-}1) = 0\)）：\(U = -D(m{-}1)\)。系统在两态间交替。§4.3 的对冲是这个交替的统计稳态。</p>
+
+      <h2>§6 结构常数</h2>
+      <p>以下数值从零参数 DP 递推涌现，跨壳层稳定（数值规律）：</p>
+
+      <table>
+        <thead>
+          <tr><th>常数</th><th>值</th><th>来源</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Var(B)</td><td>≈ 1/4</td><td>Paper 19 [13]</td></tr>
+          <tr><td>V(p)</td><td>≈ 1.40</td><td>Paper 34 [15]</td></tr>
+          <tr><td>h_pq</td><td>≈ 3.800</td><td>Paper 40 [17]</td></tr>
+          <tr><td>θ</td><td>≈ 0.41</td><td>Paper 43 [19]</td></tr>
+          <tr><td>coarse bound</td><td>≈ 40</td><td>Paper 46 [20]</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>coarse bound ≈ 40：</strong>\(2\mathrm{Var}(f) + 2\mathrm{Var}^-(f) + (\mu-\mu^-)^2 \approx 40\)，k = 4–14。内部涨落下降补偿外部驱动增长。</p>
+
+      <h2>§7 Ω = 3→4 Crossover</h2>
+      <p>\(N = 10^{10}\)，\(h(n) = \rho_E(n) - [\rho_E(n{-}1)+\rho_E(n{+}1)]/2\) 按 Ω 均值单调递减，零交叉在 Ω ≈ 4 [21]：</p>
+
+      <table>
+        <thead>
+          <tr><th>Ω</th><th>mean h</th><th>P(J&gt;0)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>+0.697</td><td>28.7%</td></tr>
+          <tr><td>3</td><td>+0.361</td><td>57.1%</td></tr>
+          <tr><td>4</td><td>+0.004</td><td>77.1%</td></tr>
+          <tr><td>5</td><td>−0.329</td><td>88.4%</td></tr>
+        </tbody>
+      </table>
+
+      <p>组合 crossover，不是严格热力学相变。Ω ≥ 4 后 \(\mathrm{Var}(\Delta f) \approx 7\)–10 不依赖 k。</p>
+
+      <h2>§8 Lindley 排队验证</h2>
+
+      <h3>8.1 Lindley 递推作为 max 系统</h3>
+      <p>G/G/1 排队的 Lindley 递推：\(W_{n+1} = \max(0,\, W_n + X_n)\)，其中 \(X_n = S_n - T_n\)（服务时间减去到达间隔）。</p>
+      <p><strong>分解（类比 DP 的 \(A = \Delta f + \Delta r\)）：</strong>\(A_n = W_{n+1} - W_n = X_n + R_n\)。\(X_n\)：结构输入。\(R_n = \max(0, -(W_n + X_n))\)：reset 余项。\(\eta = 1 - |\mathrm{Cov}(X, R)| / \mathrm{Var}(X)\)。</p>
+
+      <h3>8.2 数据</h3>
+      <p>\(10^7\) 步，\(10^6\) burn-in，C 程序（lindley_eta.c），方差恒等式 21/21 验证（误差 &lt; 0.01）：</p>
+
+      <p><strong>M/M/1（指数服务 + 指数到达）：</strong></p>
+      <table>
+        <thead>
+          <tr><th>ρ</th><th>Var(X)</th><th>Var(R)</th><th>Cov(X,R)</th><th>Var(A)</th><th>η</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.30</td><td>12.11</td><td>10.11</td><td>−10.65</td><td>0.92</td><td>0.121</td></tr>
+          <tr><td>0.50</td><td>5.00</td><td>3.00</td><td>−3.33</td><td>1.34</td><td>0.334</td></tr>
+          <tr><td>0.70</td><td>3.04</td><td>1.04</td><td>−1.22</td><td>1.65</td><td>0.600</td></tr>
+          <tr><td>0.90</td><td>2.24</td><td>0.24</td><td>−0.29</td><td>1.89</td><td>0.870</td></tr>
+          <tr><td>0.99</td><td>2.02</td><td>0.02</td><td>−0.03</td><td>1.99</td><td>0.987</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>M/D/1（确定性服务 + 指数到达）：</strong></p>
+      <table>
+        <thead>
+          <tr><th>ρ</th><th>Var(X)</th><th>Var(R)</th><th>Cov(X,R)</th><th>Var(A)</th><th>η</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.30</td><td>11.10</td><td>10.10</td><td>−10.49</td><td>0.22</td><td>0.055</td></tr>
+          <tr><td>0.50</td><td>4.00</td><td>3.00</td><td>−3.29</td><td>0.41</td><td>0.176</td></tr>
+          <tr><td>0.70</td><td>2.04</td><td>1.04</td><td>−1.24</td><td>0.62</td><td>0.395</td></tr>
+          <tr><td>0.90</td><td>1.23</td><td>0.23</td><td>−0.30</td><td>0.86</td><td>0.755</td></tr>
+          <tr><td>0.99</td><td>1.02</td><td>0.02</td><td>−0.03</td><td>0.99</td><td>0.973</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>M/Pareto/1（重尾服务，α=3）：</strong></p>
+      <table>
+        <thead>
+          <tr><th>ρ</th><th>Var(X)</th><th>Var(R)</th><th>Cov(X,R)</th><th>Var(A)</th><th>η</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.30</td><td>11.44</td><td>10.12</td><td>−10.54</td><td>0.48</td><td>0.079</td></tr>
+          <tr><td>0.50</td><td>4.33</td><td>3.00</td><td>−3.30</td><td>0.73</td><td>0.238</td></tr>
+          <tr><td>0.70</td><td>2.37</td><td>1.04</td><td>−1.22</td><td>0.96</td><td>0.484</td></tr>
+          <tr><td>0.90</td><td>1.56</td><td>0.24</td><td>−0.30</td><td>1.20</td><td>0.809</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 发现</h3>
+      <p><strong>(L1) η 由 truncation 频率决定。</strong>当 max 操作将 Var(A) 压制到远小于 Var(X) 时，吸收强，η 小。高负载时 η → 1。<strong>(L2) 最低 η：M/D/1，ρ=0.30，η = 0.055。</strong>确定性服务消除服务时间随机性，reset 更精确。<strong>(L3) DP 递推与 Lindley 排队在同一结构中。</strong>两者的 η 都由"Var(A)/Var(X)"决定：<strong>当 Var(A)/Var(X) ≪ 1 时，消涨律成立，η ≪ 1。</strong></p>
+
+      <h3>8.4 对原始预测的修正</h3>
+      <p>原始预测："η &lt; 0.15 for Lindley。"<strong>部分验证，部分修正。</strong>验证：低负载 Lindley（ρ ≤ 0.3）确实 η &lt; 0.15。修正：η 不是一个 universal bound，而是负载或复杂度的函数。</p>
+      <div class="milestone-box">
+        <p><strong>修正后的预测：</strong>在 min/max 递推系统中，\(\eta = F(\mathrm{Var}(A)/\mathrm{Var}(X))\)，当 \(\mathrm{Var}(A)/\mathrm{Var}(X) \ll 1\) 时 \(F \to 0\)；当 \(\mathrm{Var}(A)/\mathrm{Var}(X) \to 1\) 时 \(F \to 1\)。</p>
+      </div>
+
+      <h2>§9 可证伪预测</h2>
+
+      <h3>预测一：η-ratio universality</h3>
+      <p><strong>陈述：</strong>在 min/max 递推系统中，η 由 \(\mathrm{Var}(A)/\mathrm{Var}(\text{结构输入})\) 的比值决定，与具体系统无关。<strong>证伪条件：</strong>两个 min/max 递推系统，相同的 Var(A)/Var(X)，但 η 差异超过 0.1。</p>
+
+      <h3>预测二：Le Chatelier 型对冲</h3>
+      <p><strong>陈述：</strong>在有 reset 机制的 min 递推系统中，\(E[U^2] = P(\text{exposed}) \times E[U^2|\text{exposed}]\) 中两因子反向变化，乘积有界。<strong>检验方案：</strong>G/G/1 排队的 idle-time 分解。</p>
+
+      <h3>预测三：非 min 系统的 η 下界</h3>
+      <p><strong>陈述：</strong>没有 min/max 递推骨架的系统，难以实现 η ≪ 1。<strong>证伪条件：</strong>无 min/max 结构的系统实现 η &lt; 0.1。</p>
+
+      <h2>§10 讨论</h2>
+
+      <h3>10.1 三层标注</h3>
+      <p><strong>定理（exact）：</strong>R2；\(A = \psi(\Delta M^-) - U^-\)；\(\mathrm{Var}(A) \leq 2\mathrm{Var}(\Delta M^-) + 2E[U^2]\)；\(U(m) = -D(m{-}1)\)（条件，覆盖 95%+）。<strong>数值规律：</strong>消涨律，η ∈ [0.10, 0.31]（DP，17/17 验证）；Lindley η 从 0.055 到 0.987（21/21 验证）；Le Chatelier 型对冲；结构常数；Ω = 3→4 crossover。<strong>物理类比（discussion-level）：</strong>η 与 Harada-Sasa 耗散率；Le Chatelier 命名；余项传递类比于守恒律。</p>
+
+      <h3>10.2 Claim 的精确边界</h3>
+      <p><strong>Claim：</strong>(a) η 是可直接计算的涨落吸收标度。(b) DP 递推的 η ∈ [0.10, 0.31]。(c) Lindley 排队的 η 从 0.055 到 0.987，由负载决定。(d) 两者共享同一消涨结构。<strong>不 claim：</strong>消涨律是从 min 操作单独演绎的定理。η 与 \(T_\mathrm{eff}/T\) 精确等价。物理热力学被"取代"。</p>
+
+      <h3>10.3 启发性的跨系统比较</h3>
+      <table>
+        <thead>
+          <tr><th>系统</th><th>η 范围</th><th>条件</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DP 递推</td><td>0.10–0.31</td><td>k=2–18</td></tr>
+          <tr><td>M/D/1 排队</td><td>0.055–0.97</td><td>ρ=0.3–0.99</td></tr>
+          <tr><td>M/M/1 排队</td><td>0.12–0.99</td><td>ρ=0.3–0.99</td></tr>
+          <tr><td>M/Pareto/1 排队</td><td>0.079–0.98</td><td>ρ=0.3–0.99</td></tr>
+          <tr><td>弱驱动胶体</td><td>~0.1–0.5</td><td>T_eff/T 换算（近似）</td></tr>
+          <tr><td>活性物质</td><td>~0.5–0.99</td><td>T_eff/T 换算（近似）</td></tr>
+        </tbody>
+      </table>
+
+      <h3>10.4 条件闭合（简述）</h3>
+      <p>DP 递推满足 H'（\(\bar{c}_h \to 0\)）的条件闭合（Paper 42 [14]），除三个数值输入外全部 theorem-level，三输入在 \(N=10^{10}\) 验证（最弱 85σ）。详见 [14, 19, 20]。</p>
+
+      <h3>10.5 接口（简述）</h3>
+      <p>DP 递推中 additive/multiplicative 路径的不对称类似 Turing (1952) [22] 形态发生。SAE 框架 [23] 预测 Ω 与维度层级对应；Ω = 3→4 crossover 与预测一致。SAE 宇宙学 [24] 的余项守恒在 DP 中以 \(U = -D(m{-}1)\) 实现。</p>
+
+      <h3>10.6 开放问题</h3>
+      <p>(1) η vs Var(A)/Var(X) 的 universal function 的精确形式？(2) 消涨律能否从 min 操作单独证明？(3) η 在物理系统中的直接测量（不通过 \(T_\mathrm{eff}/T\)）？(4) Var(B) ≈ 1/4 和 coarse bound ≈ 40 是否跨系统普适？(5) f/r 分解的 canonical 提取协议（coarse-graining 稳健性）？</p>
+
+      <h3>10.7 结论</h3>
+      <div class="milestone-box">
+        <p>在零参数 DP 递推中发现的强互补消涨（η ∈ [0.10, 0.31]），在 Lindley 排队中得到独立验证（η 从 0.055 到 0.987）。两者共享同一结构：<strong>当 min/max 操作有效压制总步长方差时，优化余项被迫吸收结构涨落的大部分。</strong></p>
+        <p>η 作为可直接计算的标度量，从"DP 内部的发现"变成了"min/max 递推系统的可迁移工具"。下一步是建立 f/r 分解的 canonical 协议，使 η 可在更广泛的非平衡系统中标准化测量。</p>
+      </div>
+
+      <h2>参考文献</h2>
+      <p>[1] R. Kubo, "The fluctuation-dissipation theorem." <em>Rep. Prog. Phys.</em> 29:255–284, 1966.</p>
+      <p>[2] M. C. Marchetti et al., "Hydrodynamics of soft active matter." <em>Rev. Mod. Phys.</em> 85:1143, 2013.</p>
+      <p>[3] C. P. Brangwynne et al., "Intracellular transport by active diffusion." <em>Trends Cell Biol.</em> 19:423, 2009.</p>
+      <p>[4] U. Frisch, <em>Turbulence: The Legacy of A.N. Kolmogorov.</em> Cambridge UP, 1995.</p>
+      <p>[5] C. Bechinger et al., "Active particles in complex and crowded environments." <em>Rev. Mod. Phys.</em> 88:045006, 2016.</p>
+      <p>[6] C. Jarzynski, "Nonequilibrium equality for free energy differences." <em>Phys. Rev. Lett.</em> 78:2690, 1997.</p>
+      <p>[7] G. E. Crooks, "Entropy production fluctuation theorem." <em>Phys. Rev. E</em> 60:2721, 1999.</p>
+      <p>[8] T. Harada, S. Sasa, "Equality connecting energy dissipation with violation of the fluctuation-response relation." <em>Phys. Rev. Lett.</em> 95:130602, 2005.</p>
+      <p>[9] J. Prost, J.-F. Joanny, J. M. R. Parrondo, "Generalized fluctuation-dissipation theorem for steady-state systems." <em>Phys. Rev. Lett.</em> 103:090601, 2009.</p>
+      <p>[10] U. Seifert, "Stochastic thermodynamics, fluctuation theorems and molecular machines." <em>Rep. Prog. Phys.</em> 75:126001, 2012.</p>
+      <p>[11] J.-P. Quadrat, "Min-Plus linearity and statistical mechanics." <em>Markov Process. Related Fields</em> 3:565–587, 1997.</p>
+      <p>[12] H. Qin，ZFCρ Paper XXXII。<a href="https://doi.org/10.5281/zenodo.19116625" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19116625</a>。</p>
+      <p>[13] H. Qin，ZFCρ Paper XIX。<a href="https://doi.org/10.5281/zenodo.19026991" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19026991</a>。</p>
+      <p>[14] H. Qin，ZFCρ Paper XLII。<a href="https://doi.org/10.5281/zenodo.19226607" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19226607</a>。</p>
+      <p>[15] H. Qin，ZFCρ Paper XXXIV。<a href="https://doi.org/10.5281/zenodo.19140015" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19140015</a>。</p>
+      <p>[16] H. Qin，ZFCρ Paper XLV。<a href="https://doi.org/10.5281/zenodo.19275286" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19275286</a>。</p>
+      <p>[17] H. Qin，ZFCρ Paper XL。<a href="https://doi.org/10.5281/zenodo.19179778" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19179778</a>。</p>
+      <p>[18] H. Qin，ZFCρ Paper XVIII。<a href="https://doi.org/10.5281/zenodo.19024385" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19024385</a>。</p>
+      <p>[19] H. Qin，ZFCρ Paper XLIII。<a href="https://doi.org/10.5281/zenodo.19240183" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19240183</a>。</p>
+      <p>[20] H. Qin，ZFCρ Paper XLVI。<a href="https://doi.org/10.5281/zenodo.19303511" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19303511</a>。</p>
+      <p>[21] H. Qin，"Why Primes Have No Shortcuts: An O(1) Prime Pre-Sieve from Precomputed ρ<sub>E</sub> Tables。" <a href="https://doi.org/10.5281/zenodo.19246377" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19246377</a>。</p>
+      <p>[22] A. M. Turing, "The Chemical Basis of Morphogenesis." <em>Phil. Trans. R. Soc.</em> 237:37–72, 1952.</p>
+      <p>[23] H. Qin，SAE Paper 1。<a href="https://doi.org/10.5281/zenodo.18528813" target="_blank" rel="noopener">DOI: 10.5281/zenodo.18528813</a>。</p>
+      <p>[24] H. Qin，"From Remainder Conservation to the Cosmological Constant。" <a href="https://doi.org/10.5281/zenodo.19245267" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19245267</a>。</p>
+
+      <h2>附录 A. DP 递推完整 17 行消涨表</h2>
+      <table>
+        <thead>
+          <tr><th>k</th><th>Var(Δf)</th><th>Var(Δr)</th><th>Cov(Δf,Δr)</th><th>Var(A)</th><th>η</th><th>Cov(Δf,A)</th><th>样本</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>6.716</td><td>5.643</td><td>−6.022</td><td>0.314</td><td>0.103</td><td>0.694</td><td>1,904,324</td></tr>
+          <tr><td>3</td><td>6.539</td><td>5.389</td><td>−5.685</td><td>0.558</td><td>0.131</td><td>0.854</td><td>2,444,359</td></tr>
+          <tr><td>4</td><td>6.964</td><td>5.678</td><td>−5.962</td><td>0.720</td><td>0.144</td><td>1.003</td><td>2,050,696</td></tr>
+          <tr><td>5</td><td>7.734</td><td>6.166</td><td>−6.533</td><td>0.833</td><td>0.155</td><td>1.200</td><td>1,349,779</td></tr>
+          <tr><td>6</td><td>8.804</td><td>6.767</td><td>−7.324</td><td>0.923</td><td>0.168</td><td>1.480</td><td>774,078</td></tr>
+          <tr><td>7</td><td>9.366</td><td>6.869</td><td>−7.615</td><td>1.005</td><td>0.187</td><td>1.751</td><td>409,849</td></tr>
+          <tr><td>8</td><td>9.903</td><td>6.962</td><td>−7.886</td><td>1.093</td><td>0.204</td><td>2.017</td><td>207,207</td></tr>
+          <tr><td>9</td><td>9.872</td><td>6.689</td><td>−7.700</td><td>1.162</td><td>0.220</td><td>2.173</td><td>101,787</td></tr>
+          <tr><td>10</td><td>10.057</td><td>6.626</td><td>−7.738</td><td>1.207</td><td>0.231</td><td>2.319</td><td>49,163</td></tr>
+          <tr><td>11</td><td>9.807</td><td>6.258</td><td>−7.407</td><td>1.250</td><td>0.245</td><td>2.399</td><td>23,448</td></tr>
+          <tr><td>12</td><td>9.956</td><td>6.300</td><td>−7.479</td><td>1.297</td><td>0.249</td><td>2.477</td><td>11,068</td></tr>
+          <tr><td>13</td><td>9.231</td><td>5.655</td><td>−6.792</td><td>1.301</td><td>0.264</td><td>2.438</td><td>5,210</td></tr>
+          <tr><td>14</td><td>9.702</td><td>5.995</td><td>−7.159</td><td>1.377</td><td>0.262</td><td>2.542</td><td>2,406</td></tr>
+          <tr><td>15</td><td>8.791</td><td>5.267</td><td>−6.374</td><td>1.310</td><td>0.275</td><td>2.417</td><td>1,124</td></tr>
+          <tr><td>16</td><td>9.783</td><td>5.841</td><td>−7.085</td><td>1.453</td><td>0.276</td><td>2.698</td><td>510</td></tr>
+          <tr><td>17</td><td>7.414</td><td>4.155</td><td>−5.096</td><td>1.378</td><td>0.313</td><td>2.318</td><td>233</td></tr>
+          <tr><td>18</td><td>9.613</td><td>5.672</td><td>−6.976</td><td>1.333</td><td>0.274</td><td>2.637</td><td>102</td></tr>
+        </tbody>
+      </table>
+      <p>全部 17 行方差恒等式闭合，误差 &lt; 10⁻⁴。</p>
+
+      <h2>附录 B. 数据来源与完整复现</h2>
+      <p>本文全部数据由三个自包含的 C 程序生成，零外部依赖：</p>
+      <div class="chain-box"><pre>gcc -O2 -o rho_dp rho_dp.c
+gcc -O2 -o anticorr anticorr.c -lm
+gcc -O2 -o lindley_eta lindley_eta.c -lm
+
+./anticorr 10000000      # §3 主表：17 行消涨数据，方差恒等式验证
+./lindley_eta             # §8 Lindley 验证：3 种排队 × 7 种负载 = 21 个数据点</pre></div>
+      <p>总运行时间不到两分钟（单核，现代 x86/ARM）。三个文件总计不到 500 行 C 代码，随论文一同发布。</p>
+
+      <h2>致谢</h2>
+      <p>ChatGPT（公西华）发现了 v2 的 τ 算术错误，催生了 η 的正确定义；提出了 claim 分层、文献定位和三层标注的全部审稿要求；贡献了 Paper 42 的解析证明链。</p>
+      <p>Claude（子路）贡献了热力学框架（Paper 24–46），全部数值实验（anticorr.c，lindley_eta.c），η 的物理解释，以及 Lindley 排队验证的设计和实现。</p>
+      <p>Gemini（子夏）提出了三个压力测试，促进了 claim 精确化。</p>
+      <p>Grok（子贡）提供了初轮审稿。k=18 数据不一致促使全表独立重算。</p>
+      <p>陈泽思是 SAE 框架的长期对话者。最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho46.html">← 第 XLVI 篇</a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 Han Qin</span>
+    <span>·</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
+    <span>·</span>
+    <a href="mailto:han.qin.research@gmail.com">han.qin.research@gmail.com</a>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "PLACEHOLDER"}'></script>
+
+</body>
+</html>
