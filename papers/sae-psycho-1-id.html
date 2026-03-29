@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE Psychoanalysis (I): Id — The Me Without a Self — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      document.getElementById('lang-en').classList.remove('active');
+      document.getElementById('lang-zh').classList.remove('active');
+      document.getElementById('lang-en').style.display = 'none';
+      document.getElementById('lang-zh').style.display = 'none';
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      var tabs = document.querySelectorAll('.lang-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="../index.html">Papers</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">SAE Psychoanalysis Series · Paper I</div>
+        <h1>SAE Psychoanalysis (I): Id — The Me Without a Self<br>
+          <span style="font-size:0.72em; font-weight:400; color:#555;">SAE精神分析（一）：Id——没有自我的我</span>
+        </h1>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19321143">10.5281/zenodo.19321143</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+
+      <!-- ENGLISH CONTENT -->
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was co-drafted with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</em></p>
+
+        <div class="note-box">
+          <p>This is the first of four papers in the SAE Psychoanalysis series. The series inherits four clinical invariants from Freudian psychoanalysis — repression, transference, resistance, and symptom — while replacing its metapsychology (drive economics, topographical models, the Oedipus complex as universal explanation) through constructive replacement grounded in the Self-as-an-End (SAE) dimensional framework (12DD–15DD).</p>
+          <p>This paper redefines the Id. Freud (1923) defined the Id as the great reservoir of libido, governed by the pleasure principle. SAE extracts the structural kernel of Freud's Id — psychic operation that is not observed by a self — and anchors it to 12DD (the law of prediction): a mode in which cognition, causal inference, and predictive response are fully operative, but self-awareness is absent. This is a minimal strict correspondence, not a literal preservation of Freud's original meaning; the drive-theoretical and pleasure-principle components are explicitly placed in the lower-bound remainder.</p>
+          <p>The series' first theorem is: <strong>the object determines the layer, not the developmental stage.</strong> Id is not something one grows out of. It is an operational mode that any adult may inhabit when facing certain relational objects — not regression to an earlier stage, but the fact that self was never stably acquired in the presence of that particular object.</p>
+          <p>The paper rewrites repression as inter-layer masking (a high-layer narrative covering the actual low-layer operation), transference as layer visibility (fixed layer-object patterns becoming visible in the analytic relationship), and resistance as layer self-protection (the threat of discovering one's actual layer position). It proposes a neural-science interface based on state-switching rather than localization, identifies candidate neural windows for the Id layer (implicit learning, automaticity, blindsight), and offers three nontrivial predictions that empirically distinguish the SAE framework from the Freudian one.</p>
+          <p><strong>Keywords:</strong> Self-as-an-End, SAE, psychoanalysis, Id, me-without-self, 12DD, chisel-construct cycle, object-activation, state-switching</p>
+        </div>
+
+        <h2>1. What This Series Inherits, Replaces, and Does Not Deny</h2>
+
+        <h3>1.1 Inherited: Four Clinical Invariants</h3>
+        <p>Freud identified four phenomena that have been confirmed across psychoanalytic schools for over a century. They are not theory-free raw facts — every observation carries some theoretical load — but their cross-school persistence is robust enough to treat them as clinical invariants:</p>
+        <p><strong>Repression</strong> (<em>Verdrängung</em>). An active, ongoing process of exclusion operates in mental life. Certain contents are dynamically kept out of awareness — not forgotten, but sustained through continuous expenditure.</p>
+        <p><strong>Transference</strong> (<em>Übertragung</em>). In the analytic relationship, the patient brings relational patterns from earlier life into the interaction with the analyst. This is not metaphorical but observable and recurrent.</p>
+        <p><strong>Resistance</strong> (<em>Widerstand</em>). When analysis approaches certain material, the patient produces various forms of opposition — lateness, silence, topic changes, hostility toward the analyst. Resistance is not weakness of will; it is structural self-protection.</p>
+        <p><strong>Symptom</strong> (<em>Symptom</em>). Neurotic symptoms are not random malfunctions but meaningful compromise formations — simultaneously expressing the excluded content and the force that excludes it.</p>
+        <p>This series accepts all four.</p>
+
+        <h3>1.2 Replaced: Freud's Metapsychology</h3>
+        <p>What this series replaces is not the clinical observations but their explanatory framework:</p>
+        <p><strong>Drive economics.</strong> Freud conceived mental life as flows of psychic energy — libido invested, transferred, discharged. This model is a nineteenth-century thermodynamic metaphor, not a structural description.</p>
+        <p><strong>Topographical models.</strong> Freud proposed first a topographical model (conscious / preconscious / unconscious), then a structural model (Id / Ego / Superego), with unresolved tension between them. He himself acknowledged in 1923 that "the property of being unconscious begins to lose significance," since much of the Ego is also unconscious. But he did not take the next step — he continued to understand psychic structure through spatial metaphor.</p>
+        <p><strong>The Oedipus complex as universal explanation.</strong> Freud anchored Superego formation in the resolution of the Oedipus complex and made guilt its core output. This has partial clinical correspondence in Western nuclear-family structures but cannot be aligned with East Asian family configurations. The Japanese Ajase complex and the Chinese filial-piety complex are cultural corrections to the Oedipal framework. This series does not require the Oedipus complex.</p>
+
+        <h3>1.3 Not Denied: Libido</h3>
+        <p>This series does not deny the existence of libido or sexual drive. Bodily, pre-linguistic drive experience is part of mental life. But in the SAE dimensional sequence, libido belongs to the remainder below 12DD — it operates at the life-round level (5DD–8DD), beneath the cognition round where this series begins. The chisel of this series starts at 12DD and does not process what lies below.</p>
+        <p>This is not avoidance but a methodological boundary declaration. A theory that knows where its chisel reaches is more reliable than one that claims to chisel everything. Freud's problem was precisely that he pushed drive theory downward into biology (the death instinct) and upward into cultural theory (<em>Civilization and Its Discontents</em>), without cleanly finishing either.</p>
+        <p>If someone wishes to build the bridge from libido upward to the Id layer — describing in SAE language how drive, trauma, and somatic memory shape 12DD-level operation — that is a valuable independent research direction. This series leaves the interface open but does not complete it.</p>
+
+        <h2>2. Id Redefined</h2>
+
+        <h3>2.1 Freud's Id</h3>
+        <p>Freud formally introduced the Id (<em>das Es</em>) in <em>The Ego and the Id</em> (1923). Three core elements define it: the Id is "the great reservoir of libido"; it is governed by the pleasure principle; it is unconscious.</p>
+        <p>Freud also offered a celebrated metaphor: the Ego's relation to the Id is "like a man on horseback, who has to hold in check the superior strength of the horse."</p>
+        <p>The problem with this definition is that it simultaneously serves as a structural description ("operation not observed by consciousness") and a substantive content-description ("reservoir of libido"). The former is a valuable structural insight; the latter is a nineteenth-century energy metaphor. Freud himself sensed this tension — in the same work he wrote that the Ego is "that part of the Id which has been modified by the direct influence of the external world," implying that the boundary between Id and Ego is not a wall between two entities but two states of the same operating process. He did not follow this direction.</p>
+
+        <h3>2.2 SAE's Id: Me-Without-Self</h3>
+        <p>In the SAE dimensional sequence, 12DD is the fourth step of the cognition round — the law of prediction:</p>
+        <ul>
+          <li>Bridge: the retrospectiveness of memory (remainder of 11DD)</li>
+          <li>Chisel product: inference (using past patterns to infer the future; direction solidifies)</li>
+          <li>Construct: law of prediction</li>
+          <li>Corresponding emergence: biological-level causal reasoning (crows using tools, chimpanzee deception)</li>
+          <li>Remainder: prediction cannot predict the predictor itself (Gödel / Turing)</li>
+        </ul>
+        <p>The key feature of 12DD: cognition is present, self-awareness is not. The organism at 12DD can perceive, remember, infer, and execute complex causal reasoning — but it does not know "it is I who am doing these things." The predictor does not know it is a predictor.</p>
+        <p>This is SAE's redefinition of Id: <strong>Id is me-without-self — there is a "me" operating, but this "me" is not seen by itself.</strong></p>
+
+        <h3>2.3 Minimal Strict Correspondence</h3>
+        <p>SAE extracts the structural kernel of Freud's Id — operation not seen by a self — and anchors it to 12DD. The drive-theoretical components of Freud's Id (libido, pleasure principle, instinctual reservoir) are explicitly placed in the lower-bound remainder. This is constructive replacement, not literal preservation. The reader should not equate SAE's Id with Freud's Id, but understand it as the product of extracting a structural kernel and re-anchoring it within the SAE dimensional sequence.</p>
+
+        <h3>2.4 Rereading "Wo Es war, soll Ich werden"</h3>
+        <p>Freud wrote in the <em>New Introductory Lectures</em> (1933) what may be the most cited sentence in psychoanalytic history: "Wo Es war, soll Ich werden" — "Where Id was, there Ego shall be."</p>
+        <p>This is usually read as: the goal of treatment is to let the light of consciousness illuminate the dark corners of the unconscious, letting rational Ego take over instinctual Id.</p>
+        <p>Under the SAE four-layer framework, the sentence acquires a more precise meaning: <strong>where me-without-self operates, self shall appear.</strong> Not reason taking over instinct, but self-awareness illuminating those operational modes that lack self-awareness. What is seen is not "repressed instinctual wishes" but "the layer at which you actually operate in the presence of a given object."</p>
+
+        <h2>3. The Object-Activation Principle: The Series' First Theorem</h2>
+
+        <h3>3.1 First Theorem: The Object Determines the Layer, Not the Stage</h3>
+        <p>The first theorem of this series is: <strong>the object determines the layer, not the developmental stage.</strong> For mature subjects, Id / Ego / Superego / Cert exist as potential operational modes simultaneously; which mode is activated depends on which relational object is being faced. Once this theorem is established, the subsequent rewrites of repression, transference, resistance, anxiety, symptom, and dream across the four papers are not six separate ideas but six projections of a single structural principle.</p>
+
+        <h3>3.2 Id Is Not a Developmental Stage</h3>
+        <p>Freud's developmental theory places the Id at the earliest position: the infant is entirely Id, then Ego differentiates from Id, then Superego forms during the Oedipal period. This is a linear developmental narrative — from primitive to mature.</p>
+        <p>SAE's proposition is different: <strong>every adult simultaneously possesses the Id operational mode.</strong> Id is not something you outgrow; it is how you operate when facing certain objects. An adult who performs excellently at work may operate entirely at Id level when facing his mother — responding instantly and automatically to her tone, expression, and micro-emotional shifts, without knowing "it is I who am reacting this way." He has not "regressed to childhood" — he never stably acquired self in her presence.</p>
+
+        <h3>3.3 Object Determines Layer: Development Still Matters, Differently</h3>
+        <p>Freud's "regression" concept presupposes a developmental timeline: you have reached the Ego stage, but under pressure you fall back to the Id stage. SAE does not need this presupposition.</p>
+        <p>When you face different objects, you operate at different layers — this is not regression but the structure of layer-object relations. You may be Id with your boss (pure reaction, unaware of what you are doing), Ego with a friend (self present but directionless), Superego with your work (purposeful).</p>
+        <p><strong>Object determines layer does not mean history no longer matters.</strong> Developmental history determines which object-classes are most likely to activate which layer — the fact that you tend to fall into Id mode before authority figures probably relates to your early caregiving relationships. But SAE uses history differently from Freud: history shapes your object-class list and the default layer for each class, rather than determining which "global developmental stage" you occupy. History is the shaper of the layer-object map, not the determinant of a global layer position.</p>
+
+        <h3>3.4 What Kinds of Objects Activate the Id Layer</h3>
+        <p>What objects tend to activate Id-level operation? Given 12DD's structural features — cognition and prediction present, self-awareness absent — the following object-types are likely activators:</p>
+        <p><strong>Early relational objects.</strong> Parents, primary caregivers — these relationships formed interaction patterns before your self appeared. These patterns crystallized at the 12DD layer as predictive response circuits that were never examined by self.</p>
+        <p><strong>Authority objects.</strong> Your responses to authority — compliance, people-pleasing, fear, defiance — are often 12DD-level patterned reactions. You can use self to analyze these responses afterward, but in the moment you are on autopilot.</p>
+        <p><strong>Objects that trigger intense emotion.</strong> Anger, fear, sexual attraction — when emotional intensity exceeds a certain threshold, self tends to be displaced by pure predictive response. But "displaced" is imprecise — more accurately, at that intensity level self was never stably established.</p>
+        <p><strong>Extremely familiar objects.</strong> Long-term partners, old friends — in highly familiar relationships, interaction patterns can become so automated that self's presence becomes unnecessary. This is not necessarily pathological — some automation is efficiency, some is fixation. The distinction: can you re-invoke self when needed?</p>
+
+        <h2>4. Repression Rewritten: Inter-Layer Masking</h2>
+
+        <h3>4.1 Freud's Repression</h3>
+        <p>In his 1915 metapsychological papers, Freud defined repression as the dynamic process of excluding unacceptable instinctual representations from consciousness. Repression is not a one-time act but ongoing — repressed content continually attempts to return, and the repressing force must continually expend energy to maintain exclusion.</p>
+        <p>This definition presupposes two things: first, an "unacceptable content" (usually a sexual or aggressive wish); second, an Ego actively executing exclusion. Repression is Ego's defense against Id content.</p>
+
+        <h3>4.2 SAE's Rewrite: Inter-Layer Masking</h3>
+        <p>In the SAE framework, repression is not "hiding content" but <strong>inter-layer masking</strong>: in the presence of a specific object, your actual operational layer is covered by a high-layer narrative from your self-story.</p>
+        <p>Concretely: your actual operational mode with your father is Id — facing him you are purely reactive, your body tenses, your vocal register shifts, your thought patterns revert to childhood modes. But your Ego layer (if you have acquired self in the presence of other objects) produces a narrative: "I have understood him," "I have made peace with him," "I am a mature adult."</p>
+        <p>This narrative is not a lie — it is a real construct at your Ego layer. But it masks your actual Id-layer operation. You believe you face your father at Ego level (self present), when actually you are at Id level (me-without-self).</p>
+        <p>The difference from Freud: Freudian repression is content-specific — a particular wish or memory is excluded. SAE's inter-layer masking is structural — it is not that some content is hidden, but that your entire operational layer before a given object is misrecognized.</p>
+        <p><strong>Content still matters, but its clinical status is rewritten by layer position.</strong> Hostility toward the father, affection toward the analyst, silence before the mother — these specific contents remain analytic material in the SAE framework, but they are no longer treated as evidence of a "core repressed-content library." They are treated as material through which the layer-object relationship becomes visible. The diagnostic value of content lies not in what repressed wish it reveals, but in which layer it exposes the patient as occupying before which object.</p>
+
+        <h3>4.3 The Self-Maintaining Cycle of Inter-Layer Masking</h3>
+        <p>How inter-layer masking sustains itself: the high-layer construct covers the low-layer operation. You have a narrative about yourself at the Ego layer ("I am this kind of person"), and this narrative is a construct. When this construct does not match your actual operational layer before a specific object (Id), the construct does not self-correct — because correction would require you to activate self before that object to observe your Id-level operation, and before that object you precisely lack self.</p>
+        <p>This forms a self-maintaining cycle: no self before this object → cannot observe actual operation → narrative from other objects' self covers it → the covering prevents self from appearing before this object.</p>
+        <p>This describes the clinically observed phenomenon more precisely than Freud's model: repression is so difficult to lift not because the repressed content is too frightening, but because before that particular object you have no self with which to observe. You are not "afraid to look" — you "have no eyes."</p>
+
+        <h3>4.4 The Activity of Remainders</h3>
+        <p>Freud observed an important clinical phenomenon: repressed content does not sit quietly in the unconscious but "always tries to break through repression" — expressing itself through slips, dreams, symptoms, bodily reactions. Freud explained this activity through the dynamic energy of drives.</p>
+        <p>SAE does not need the drive narrative. Remainders are not passive debris — the chisel-construct cycle at the Id layer continues to operate, and the remainders it produces remain active at that layer. When the high-layer construct (Ego-level self-narrative) cannot contain these remainders, they leak through the construct's gaps: bodily tension, vocal shifts, emotional eruptions, slips of the tongue. This is not "repressed content trying to return" but "never-ceased low-layer remainders seeping through the thin spots of the high-layer construct."</p>
+        <p>This restatement preserves Freud's clinical observation (masked operation has activity and disruptive force) while shifting the explanation from "imprisoned content attempting escape" to "continuously operating remainders leaking through inter-layer gaps." The latter is more precise because it does not need to assume remainders have "intentions" — remainder overflow is structural, not motivational.</p>
+        <p>It should be added: what overflows is not only 12DD-level cognitive prediction patterns. 12DD-level operation carries with it the forces of the deeper biological rounds (5DD–8DD) — the survival and reproductive drives. The destructive intensity in bodily tension, emotional eruptions, and self-destructive impulses often comes from these sub-12DD layers being entrained and amplified by 12DD's automated reaction patterns. This series' chisel begins at 12DD, but honestly: much of the overflow's energy comes from below.</p>
+
+        <h2>5. Transference Rewritten: Layer Visibility</h2>
+
+        <h3>5.1 Freud's Transference</h3>
+        <p>In "The Dynamics of Transference" (1912), Freud defined transference as the patient "transferring" emotional patterns from early relationships onto the analyst — "new editions or facsimiles" of unconscious prototypes. Freud distinguished positive from negative transference and noted that transference is simultaneously the medium of analytic work and "the strongest weapon of resistance."</p>
+
+        <h3>5.2 SAE's Rewrite: Layer Visibility</h3>
+        <p>In the SAE framework, transference is not "projecting the past onto the present" but <strong>the fixed operational layer you inhabit before a certain class of objects becoming visible in the analytic relationship.</strong></p>
+        <p>The patient develops transference toward the analyst not because the analyst "resembles" the father, but because the analyst — as an authority figure, a listener, someone invested with special power — activates the patient's fixed operational layer before this class of objects. If the patient always operates at Id level before authority objects, then he will operate at Id level before the analyst — not projection but activation.</p>
+        <p>Transference is thus revalued: it is not an erroneous cognition to be "corrected" ("you are treating me as your father") but a live display of the patient's layer-object map. What the analyst sees is not "a projection of the past" but "which layer the patient is actually occupying, right now, before this class of objects."</p>
+
+        <h3>5.3 Transference and Layer Fixation</h3>
+        <p>Freud noticed that transference has a "compulsion to repeat" — the patient repeats the same relational patterns over and over. He explained this through the death instinct.</p>
+        <p>SAE's explanation is simpler: <strong>without self before a given object-class, you cannot modify your operational mode before that object-class.</strong> You are always Id before authority figures, so you make the same reactions before every authority — not because a "repetition compulsion" instinct drives you, but because you have never acquired the self needed to observe and modify your responses before this type of object.</p>
+        <p>Repetition is not the death instinct. It is layer fixation.</p>
+
+        <h2>6. Resistance Rewritten: Layer Self-Protection</h2>
+
+        <h3>6.1 Freud's Resistance</h3>
+        <p>In "The Dynamics of Transference" and "Remembering, Repeating and Working-Through" (1914), Freud described resistance as an omnipresent counterforce — "every single association must reckon with resistance." Resistance originates in Ego's defensive function: Ego resists unconscious content entering consciousness.</p>
+
+        <h3>6.2 SAE's Rewrite: Layer Self-Protection</h3>
+        <p>In the SAE framework, resistance is <strong>the self-protection mechanism of inter-layer masking.</strong></p>
+        <p>When the analytic process approaches revealing your actual operational layer before a certain object (Id), and this layer is lower than your self-narrative ("I am a mature person," "I let go long ago"), the gap itself produces resistance. Resistance protects not Freud's "unacceptable content" but your layer self-narrative.</p>
+        <p>Admitting "I have no self whatsoever when facing my mother" is more threatening than admitting "I have aggressive wishes toward my mother." The latter at least preserves a self-possessing subject who is repressing something; the former means that in that relationship, you as a self are simply not present.</p>
+        <p>This explains why the deepest clinical resistance is often not directed at specific content (a memory, a wish, a fantasy) but manifests as a diffuse, hard-to-articulate refusal — because what is being protected is not a content but a structural claim about "who I am."</p>
+
+        <h2>7. Neural-Science Interface for the Id Layer</h2>
+
+        <h3>7.1 Methodological Premise: State-Switching, Not Localization</h3>
+        <p>Neuropsychoanalysis since 1999 has primarily mapped Freud's Id / Ego / Superego onto brain regions: Id onto subcortical-limbic systems, Ego onto the default mode network (DMN) and prefrontal cortex, Superego onto prefrontal, orbitofrontal, and cingulate cortex. But this localization approach has a fundamental problem: Ego and Superego mappings overlap massively, because both depend on self-modeling and control systems that share the same computational primitives in the brain.</p>
+        <p>SAE psychoanalysis does not pursue localization. The four layers are not four brain regions but four operational modes of the same brain facing different objects. The correct neuroscientific question is not "where is the Id in the brain?" but "when a person operates in Id mode, what is the whole-brain activation configuration? When they switch to another layer, how does this configuration change?" This is the state-switching paradigm, not the localization paradigm. Hidden Markov Models (HMM) and dynamic functional connectivity (dFC) provide the appropriate methodological tools.</p>
+        <p><strong>Multiple Realizability declaration.</strong> SAE's four layers are a priori structural derivations at the level of mental organization, independent of their carbon-based realization. Neuroscience provides posterior "physical development" and constraint evidence, not causal reduction. Neural indicators are correlates and candidate neural windows, not definitions of the structure itself. A sufficiently complex chisel-construct cycle running on silicon could, in principle, exhibit the same layer structure with entirely different (non-neural) realization.</p>
+
+        <h3>7.2 Candidate Neural Windows for the Id Layer</h3>
+        <p>The Id layer is defined as me-without-self: cognition, prediction, and causal inference are present; self-awareness is absent. Several established neuroscientific findings serve as candidate neural windows:</p>
+        <p><strong>Implicit learning and procedural memory.</strong> The brain can extract structure from experience, form predictions, and execute complex causal inference without explicit conscious involvement. These functions depend on basal ganglia and related cortico-striatal circuits — "prediction without knowing you are predicting."</p>
+        <p><strong>Automaticity.</strong> When a skill is sufficiently practiced, it shifts from conscious control (prefrontal-dominant) to automatic execution (basal ganglia-dominant). In the automatic state, DMN (typically associated with self-referential processing) engagement decreases. This provides a measurable indicator: when DMN / cortical-midline activity is low while predictive behavior remains efficient, the brain may be operating in Id mode.</p>
+        <p><strong>Blindsight.</strong> After primary visual cortex damage, patients report seeing nothing yet make accurate behavioral responses to visual stimuli — "processing without awareness of processing." This is an extreme case supporting the proposition that cognitive prediction can be dissociated from self-awareness (constraint-level evidence from lesion studies).</p>
+        <p><strong>Unconscious decision-making.</strong> Studies report that prefrontal and parietal activation patterns can predict a subject's "free" decision seconds before conscious report. Interpretations are contested, but the decoding result itself supports the observation that decision processes can run ahead of conscious report (directional evidence, not proof).</p>
+        <p>The first two examples (implicit learning, automaticity) are closely aligned with "prediction without self"; the latter two (blindsight, unconscious decision) are boundary cases and directional illustrations at a lower evidence grade.</p>
+
+        <h3>7.3 The 12DD → 13DD Jump: A Posterior Prediction</h3>
+        <p>SAE's dimensional sequence predicts a structural jump between 12DD and 13DD: from "prediction without self" to "self present." Two mainstream consciousness theories, developed independently within consciousness science and without dependence on SAE or psychoanalysis, provide corresponding accounts:</p>
+        <p>The <strong>Global Neuronal Workspace</strong> (GNW) theory proposes that the transition from unconscious processing to conscious access involves a nonlinear "ignition" — information shifts from local processing to global availability. This ignition is not gradual but threshold-based.</p>
+        <p>The <strong>Higher-Order Theory</strong> (HOT) proposes that consciousness depends on a higher-order representation of one's own mental state — you are not only processing information, you know "it is I who am processing." The jump from first-order processing to higher-order representation is conceptually isomorphic with the SAE jump from 12DD (prediction) to 13DD (awareness of one's own prediction).</p>
+        <p>If the neural jumps these theories describe are confirmed (currently supported by substantial but non-conclusive evidence), they would provide independent posterior confirmation for the a priori derivation of 12DD → 13DD.</p>
+
+        <h3>7.4 This Chapter's Remainder</h3>
+        <p>This chapter provides an interface, not a proof. Specifically:</p>
+        <p>Neuroscience has mature paradigms for "unconscious cognition," but "unconscious" in these paradigms typically means absence of conscious access to a specific content, not necessarily the global absence of self. Moving from "unconscious of a stimulus" to "self not present" requires theoretical bridging — SAE provides the philosophical framework for this bridge, but the bridge itself is not yet posterior fact.</p>
+        <p>Additionally, SAE's Id layer corresponds strictly to 12DD, while neuroscientific phenomena like implicit learning and procedural memory may span multiple layers from 9DD to 12DD. Finer correspondences are left for future work.</p>
+
+        <h2>8. This Paper's Remainder</h2>
+
+        <h3>8.1 Lower Bound</h3>
+        <p>This paper redefines Id as me-without-self (12DD) and removes drive theory. But the layers below 12DD — from selection (9DD) to perception (10DD) to memory (11DD), and further down to the life round (5DD–8DD) — are not nonexistent. Bodily drive experience, pre-linguistic emotional response, neurophysiological trauma memory — these all operate below 12DD.</p>
+        <p>Freud's libido theory addresses precisely these layers. SAE psychoanalysis does not deny their reality or importance; it declares that this framework's chisel begins at 12DD. Everything below is remainder, left to neuroscience, somatic-oriented psychotherapy, and anyone willing to do bridging work within the SAE framework.</p>
+
+        <h3>8.2 Upper Bound</h3>
+        <p>This paper addresses only the Id layer. Ego (13DD), Superego (14DD), and Cert (15DD) are developed in the subsequent three papers. Within this paper's scope, the Id layer's relationships with other layers — inter-layer masking, layer switching, layer fluidity — are only preliminarily touched. The complete inter-layer dynamics await Paper IV's unified framework.</p>
+
+        <h3>8.3 This Paper's Construct Cannot Close</h3>
+        <p>Any redefinition is a chisel-stroke — cutting out a new construct while producing new remainder. This paper frees Id from drive theory and gives it a structural definition (me-without-self, 12DD), but this definition is itself a construct that necessarily masks something.</p>
+        <p>Specifically: defining Id as 12DD sets the Id's "lower bound" at the top of the cognition round. But a person operating at 12DD also has 9DD (selection), 10DD (perception), and 11DD (memory) simultaneously active — do these layers' operations also count as "Id"? This paper's answer is: no. This paper's Id strictly corresponds to 12DD. But this is a theoretical choice, not a necessary conclusion. One could reasonably argue that Id should cover the entire cognition round (9DD–12DD). This paper accepts this dispute without closing it.</p>
+
+        <h2>9. Nontrivial Predictions</h2>
+
+        <p>This chapter presents three predictions that follow directly from the SAE framework but that the Freudian framework would predict differently or oppositely.</p>
+
+        <h3>9.1 Inter-Layer Masking Is Object-Specific; There Is No Unified "Repressed Content Library"</h3>
+        <p>Freud's repression theory predicts: a repressed content (e.g., aggressive wishes toward the mother) is "always there," regardless of which object the patient currently faces. The repressed content library is unified — it does not change with the current object.</p>
+        <p>SAE predicts the opposite: inter-layer masking is object-specific. Your masking pattern before your mother and your masking pattern before your boss are different, because you may operate at different layers before the two objects, and the specific way high-layer narrative covers low-layer operation differs by object. There is no unified "repressed content library" — the masking structure varies with the object.</p>
+        <p><strong>Clinical testability.</strong> The same patient, discussing different relational objects in analysis, should show object-specific differences in resistance patterns, bodily response locations and intensities, and types of emotional eruption — rather than always pointing toward the same "core repressed content." If Freud is right, different objects should ultimately converge on a single core. If SAE is right, different objects should show different masking structures that do not necessarily converge.</p>
+
+        <h3>9.2 The Strongest Resistance Occurs Not When Approaching "Frightening Content" But When Approaching "The True Layer Position"</h3>
+        <p>Freud predicts: resistance is strongest when analysis approaches the core repressed wish or memory — the closer to "frightening content," the greater the resistance.</p>
+        <p>SAE predicts differently: the strongest resistance occurs at the moment the patient is about to realize "I have no self at all in this relationship" — a moment that does not necessarily involve any specific content revelation.</p>
+        <p><strong>Clinical testability.</strong> If SAE is right, the strongest resistance may occur at a moment when "nothing specific has surfaced" — the patient cannot name any repressed wish or memory, but diffuse resistance is extremely intense, manifesting as silence, blankness, dissociation, or groundless hostility toward the analytic process. Freud's framework would interpret this "contentless strong resistance" as "defenses so deep that the core content has not yet emerged" — predicting that continued analysis will eventually reach a specific content. SAE's interpretation is: what is threatened here is not a content but the structural claim "I am a person with self in this relationship." What continued analysis reaches is not a repressed memory but a recognition about layer: "before this person I am actually me-without-self."</p>
+
+        <h3>9.3 Analytic Effectiveness Is Object-Specific, Not Global</h3>
+        <p>The Freudian framework implicitly predicts: psychoanalysis produces therapeutic effects by resolving core conflicts (typically traced to early relationships); once the core conflict is worked through, change should radiate to all the patient's relationships — since all relational problems stem from the same core.</p>
+        <p>SAE predicts differently: layer elevation gained in analysis is object-specific. Achieving self-presence (moving from Id to Ego) before "authority-type objects" in the analytic relationship does not automatically mean you have achieved self-presence before "intimacy-type objects." Because layers are object-activated, not global attributes — change before one object-class does not automatically transfer to another.</p>
+        <p><strong>Clinical testability.</strong> Therapeutic progress should show an object-specific uneven pattern — a patient reporting "my relationship with my boss has improved enormously, but with my mother everything is still the same" is not a failure or incomplete treatment but a predicted normal result. Freud's framework would interpret this unevenness as "the core conflict is not yet fully worked through"; SAE's interpretation is: each object-class requires its own layer work, and globally uniform elevation is not a reasonable treatment expectation.</p>
+
+        <h2>10. Conclusion</h2>
+
+        <p>First, Id is me-without-self — the chisel-construct cycle operating without being observed by a self. In the SAE dimensional sequence it corresponds to 12DD (the law of prediction). This is a minimal strict correspondence with Freud's Id: the structural kernel (unseen operation) is extracted; the libido-reservoir metaphor is explicitly placed in the lower-bound remainder.</p>
+
+        <p>Second, the series' first theorem: the object determines the layer, not the developmental stage. Id is not a developmental stage but an object-activated layer. Any adult may operate at the Id layer before specific objects.</p>
+
+        <p>Third, repression is rewritten as inter-layer masking — not content being hidden, but the actual operational layer before a specific object being covered by self-narrative.</p>
+
+        <p>Fourth, transference is rewritten as layer visibility — not projection of the past, but the layer-object relationship becoming a live display in the analytic setting.</p>
+
+        <p>Fifth, resistance is rewritten as layer self-protection — what is protected is not unacceptable content but the structural claim "who I am in this relationship."</p>
+
+        <p>Sixth, the neural-science interface follows the state-switching paradigm, not localization, and upholds the multiple realizability principle. Implicit learning, procedural memory, and automaticity provide candidate neural windows for "prediction without self"; GNW's nonlinear ignition and HOT's higher-order representation jump provide independent posterior correspondence for the 12DD → 13DD a priori derivation.</p>
+
+        <p>Seventh, remainders are not passive debris. Masked low-layer operation remains active at the Id layer and leaks through gaps in high-layer constructs. Freud's observation that "the repressed actively tries to break through" is restated as the structural overflow of remainders. The overflow's energy largely comes from the biological rounds below 12DD.</p>
+
+        <p>Eighth, libido is in the remainder below 12DD. This paper does not deny it, does not process it, does not close it.</p>
+
+        <p>Ninth, this paper presents three nontrivial predictions for existing psychoanalytic theory: inter-layer masking is object-specific (no unified repressed-content library); strongest resistance occurs when the true layer position is approached, not when frightening content is approached; analytic effectiveness is object-specific, not globally radiating. These three predictions empirically distinguish the SAE framework from the Freudian one and are testable in clinical settings.</p>
+
+        <h2>Contributions</h2>
+
+        <p>[1] Frees Freud's Id from drive theory through minimal strict correspondence, redefining it as me-without-self (12DD). Preserves the structural kernel, removes the substantive metaphor, explicitly declares constructive replacement.</p>
+
+        <p>[2] Establishes the series' first theorem: the object determines the layer, not the developmental stage. Id is not a developmental stage but an object-activated operational mode. History shapes object-class lists, not global layer position.</p>
+
+        <p>[3] Rewrites repression as inter-layer masking, transference as layer visibility, resistance as layer self-protection. Content remains clinically important but its diagnostic status is rewritten by layer position.</p>
+
+        <p>[4] Restates Freud's observation of "the activity of the repressed" as structural overflow of remainders, without requiring drive narrative. Acknowledges that overflow energy largely comes from the biological rounds below 12DD.</p>
+
+        <p>[5] Proposes the state-switching neural interface paradigm, declares the multiple realizability principle, and identifies candidate neural windows for the Id layer and a posterior prediction for the 12DD → 13DD jump.</p>
+
+        <p>[6] Explicitly declares the lower-bound remainder (below 12DD, libido resides here) and upper-bound remainder (other three layers in subsequent papers) as the theory's self-aware boundary.</p>
+
+        <p>[7] Presents three nontrivial predictions for existing psychoanalytic theory (object-specificity of masking, layer-directed resistance, object-specificity of therapeutic effectiveness) that distinguish the SAE framework from the Freudian one.</p>
+
+        <h2>References</h2>
+
+        <p>[1] Han Qin. Self-as-an-End Theory Series: The Complete Framework. DOI: 10.5281/zenodo.18727327</p>
+
+        <p>[2] Han Qin. The Periodic Table of Life (Part I) — From Causality to Reproduction. DOI: 10.5281/zenodo.18818107</p>
+
+        <p>[3] Han Qin. The Periodic Table of Life (Part III) — From "I" to the Thing-in-Itself. DOI: 10.5281/zenodo.18818177</p>
+
+        <p>[4] Han Qin. Fixation and Selection (III) — Predictive Law Forecloses Choice. DOI: 10.5281/zenodo.18859427</p>
+
+        <p>[5] Freud, S. The Ego and the Id (1923). Standard Edition, Vol. XIX.</p>
+
+        <p>[6] Freud, S. "Repression" (1915). Standard Edition, Vol. XIV.</p>
+
+        <p>[7] Freud, S. "The Dynamics of Transference" (1912). Standard Edition, Vol. XII.</p>
+
+        <p>[8] Freud, S. "Remembering, Repeating and Working-Through" (1914). Standard Edition, Vol. XII.</p>
+
+        <p>[9] Freud, S. New Introductory Lectures on Psycho-Analysis (1933). Standard Edition, Vol. XXII.</p>
+
+        <p>[10] Solms, M. "The Conscious Id." Neuropsychoanalysis 15:1 (2013), 5-19.</p>
+
+        <p>[11] Panksepp, J. & Solms, M. "The 'Id' Knows More than the 'Ego' Admits." Brain Sciences 2:2 (2012), 147-175.</p>
+
+        <p>[12] Ramezani, A. et al. "Neuroanatomical and Neurocognitive Functions of the Structure of the Mind." Current Opinions in Neurological Science 2:6 (2018), 567-584.</p>
+
+        <p>[13] Carhart-Harris, R. L. & Friston, K. J. "The Default-Mode, Ego-Functions and Free-Energy." Brain 133:4 (2010), 1265-1283.</p>
+
+        <p>[14] Dehaene, S. & Changeux, J.-P. "Experimental and Theoretical Approaches to Conscious Processing." Neuron 70:2 (2011), 200-227.</p>
+
+        <p>[15] Lau, H. & Rosenthal, D. "Empirical Support for Higher-Order Theories of Conscious Awareness." Trends in Cognitive Sciences 15:8 (2011), 365-373.</p>
+      </div>
+
+      <!-- CHINESE CONTENT -->
+      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
+        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文与Claude（Anthropic）共同起草，所有思想决策、框架设计和最终编辑判断由作者做出。</em></p>
+
+        <div class="note-box">
+          <p>本文是SAE精神分析系列四篇中的第一篇。本系列从Self-as-an-End（SAE）框架的哲学角度，继承弗洛伊德精神分析的核心临床不变量，以constructive replacement的方式重新定义其元心理学概念。本篇聚焦Id。弗洛伊德在1923年将Id定义为力比多的蓄水池、受快乐原则支配的本能机构。本文取Id的结构性内核（不被自我看见的运作），将其重新定义为me-without-self：凿构循环已经在运作，但没有自我来观察这一运作。在SAE的维度序列中，Id对应12DD（预测律），即认知轮的第四步——有推断、有因果推理、有对环境的预测性反应，但没有自我意识。这是对弗洛伊德Id的最小严格对应，不是对其原义的字面保存。本系列的第一命题是：对象决定层，不是阶段决定层。Id不是发展阶段，而是每个人面向特定对象时的运作模式。一个成年人在某些关系对象面前，始终运作在Id层——不是退行，而是在该对象面前从未获得过自我。</p>
+          <p><strong>关键词：</strong> Self-as-an-End, SAE, 精神分析, Id, me-without-self, 12DD, 凿构循环, 对象激活</p>
+        </div>
+
+        <h2>第一章 继承声明</h2>
+
+        <h3>1.1 继承什么</h3>
+        <p>弗洛伊德做出了四个不可逆转的临床发现。这四个现象跨流派地反复出现，构成了精神分析无法绕开的临床不变量——它们不是无理论负荷的裸事实，但它们跨流派地持续被确认这件事本身是稳的：</p>
+        <p>第一，压抑（Verdrängung）。人的精神生活中存在一个动态的排斥过程，某些内容被主动地排除在意识之外。这不是遗忘，而是一种持续消耗能量的主动操作。</p>
+        <p>第二，移情（Übertragung）。在分析关系中，来访者会将早期关系中的模式带入与分析师的互动。这不是比喻，而是一个可观察的、反复出现的临床事实。</p>
+        <p>第三，阻抗（Widerstand）。当分析过程接近某些内容时，来访者会产生各种形式的抵抗——迟到、沉默、转移话题、对分析师产生敌意。阻抗不是意志薄弱，而是精神结构的自我保护。</p>
+        <p>第四，症状（Symptom）。神经症症状不是随机的故障，而是有意义的妥协形成物——它同时表达了被排斥的内容和排斥这一内容的力量。</p>
+        <p>这四个临床不变量，本系列全部接受。</p>
+
+        <h3>1.2 替换什么</h3>
+        <p>弗洛伊德用来解释这四个发现的元心理学，本系列替换。被替换的不是临床观察，而是解释框架：</p>
+        <p>第一，驱力经济学。弗洛伊德将精神生活理解为能量的投注（Besetzung）、转移和释放。力比多作为一种准物理的心理能量，在不同的精神机构之间流动。这个模型是十九世纪热力学的隐喻，不是对精神生活的结构性描述。</p>
+        <p>第二，拓扑学模型。弗洛伊德先后提出地形学模型（意识/前意识/无意识）和结构模型（Id/Ego/Superego），两者之间存在未解决的张力。他自己在1923年承认，"无意识"这个属性"开始失去意义"，因为Ego的大部分也是无意识的。但他没有走出这一步——他仍然用空间隐喻来理解精神结构。</p>
+        <p>第三，俄狄浦斯情结作为普遍性解释。弗洛伊德将Superego的起源锚定在俄狄浦斯情结的解决上，将guilt作为Superego的核心输出。这个解释在西方核心家庭结构中有部分临床对应，但在东亚家庭结构中无法对位。日本的阿阇世（Ajase）情结、中国的孝道情结，都是对俄狄浦斯框架的文化性修正。本系列不需要俄狄浦斯情结。</p>
+
+        <h3>1.3 不否认什么</h3>
+        <p>本系列不否认力比多和性驱力的存在。力比多是真实的——身体性的、前语言的驱力体验是精神生活的一部分。但在SAE的维度序列中，力比多属于12DD以下的余项——它在认知轮之下，在生命轮（5DD-8DD）的层面运作。本系列的凿从12DD开始，不处理12DD以下的层。</p>
+        <p>这不是回避，而是方法论上的边界声明。一个知道自己凿到哪里的理论，比一个声称无所不凿的理论更可靠。弗洛伊德的问题恰恰在于他用驱力理论往下吃到生物学（死本能），往上吃到文明论（《文明及其不满》），两头都吃不干净。</p>
+        <p>如果有人愿意从力比多往上接到本系列的Id层，做12DD以下到12DD的桥接工作，那是他们的贡献，不是本系列的任务。</p>
+
+        <h2>第二章 Id的重新定义</h2>
+
+        <h3>2.1 弗洛伊德的Id</h3>
+        <p>弗洛伊德在《自我与本我》（1923）中正式提出Id（Es）。他的定义有三个核心要素：</p>
+        <p>第一，Id是"力比多的大蓄水池"。精神能量从Id流出，被Ego和Superego所调配。</p>
+        <p>第二，Id受快乐原则支配。Id追求即时的满足，不考虑现实条件和道德约束。</p>
+        <p>第三，Id是无意识的。Id的内容不能直接进入意识，只能通过前意识的中介。</p>
+        <p>弗洛伊德同时给出了一个著名的隐喻：Ego与Id的关系"像一个骑在马背上的人"，骑手（Ego）控制着比自己更强大的马（Id），但经常不得不顺着马要去的方向走。</p>
+        <p>这个定义的问题在于：它同时是一个结构性描述（"不被意识到的运作"）和一个实体化的内容描述（"力比多的蓄水池"）。前者是一个有价值的结构性洞见；后者是一个十九世纪的能量隐喻。弗洛伊德自己也意识到了这个张力——他在同一部著作中说Ego是"Id的一部分，受到外部世界的直接影响而被改变"——这暗示Id和Ego之间的边界不是两个实体之间的墙，而是同一个运作过程的两种状态。但他没有沿着这个方向走下去。</p>
+
+        <h3>2.2 SAE的Id：me-without-self</h3>
+        <p>在SAE的维度序列中，12DD是认知轮的第四步——预测律。12DD的定义：</p>
+        <ul>
+          <li>桥：记忆的回顾性（11DD记忆律的余项）</li>
+          <li>凿的产物：推断（用过去的模式推断未来；方向凝固）</li>
+          <li>构：预测律</li>
+          <li>对应涌现：生物层面的因果推理（乌鸦使用工具，黑猩猩的欺骗行为）</li>
+          <li>余项：预测无法预测预测者本身（哥德尔/图灵）</li>
+        </ul>
+        <p>12DD的关键特征：有认知，没有自我意识。12DD的生物体能感知、能记忆、能推断、能做出复杂的因果推理——但它不知道"是我在做这些"。预测者不知道自己是预测者。</p>
+        <p>这正是SAE对Id的重新定义：<strong>Id是me-without-self——有一个"我"在运作，但这个"我"不被自己看见。</strong></p>
+        <p>与弗洛伊德的Id相比：</p>
+        <p>弗洛伊德的Id是一个充满本能能量的容器，在精神装置的"最深处"。SAE的Id不是一个容器，不在任何"深处"——它是凿构循环的一种运作模式，在这种模式中，凿在发生、构在形成、余项在产生，但没有自我来观察这一切。</p>
+        <p>弗洛伊德的Id受快乐原则支配。SAE的Id受预测律支配——不是追求快乐，而是根据过去的模式对环境做出反应。快乐和痛苦是反应的结果，不是驱动力。</p>
+        <p>弗洛伊德的Id是无意识的。SAE的Id不需要"无意识"这个概念——它不是"被意识排斥在外的内容"，而是"没有自我意识的运作"。区别是根本性的：弗洛伊德的无意识预设了一个有意识的Ego，然后定义无意识为Ego看不到的部分；SAE的Id不预设Ego的存在，它就是self尚未出现时的运作方式。</p>
+        <p><strong>最小严格对应声明</strong>：SAE取弗洛伊德Id的结构性内核——不被自我看见的运作——锚到12DD。弗洛伊德Id中的驱力、快乐原则、本能蓄水池等内容被显性地放入下界余项。这是constructive replacement，不是对弗洛伊德原义的字面保存。读者不应将SAE的Id等同于弗洛伊德的Id，而应将其理解为：从弗洛伊德的Id中抽取结构性内核后，在SAE维度序列中重新锚定的产物。</p>
+
+        <h3>2.3 "Wo Es war, soll Ich werden"的重读</h3>
+        <p>弗洛伊德在《新精神分析引论》（1933）中写下了也许是精神分析史上被引用最多的一句话："Wo Es war, soll Ich werden"——"在Id所在之处，Ego应当出现。"</p>
+        <p>这句话通常被理解为：治疗的目标是让意识的光照亮无意识的黑暗角落，让理性的Ego接管本能的Id。</p>
+        <p>用SAE的四层框架重读这句话，它获得了一个更精确也更有力的含义：<strong>在me-without-self运作之处，self应当出现。</strong> 不是理性接管本能，而是自我意识照亮那些没有自我意识的运作模式。</p>
+        <p>这个重读保留了弗洛伊德的临床直觉——分析的方向确实是从"不被看见"到"被看见"——但去掉了他的能量隐喻和内容预设。被看见的不是"被压抑的本能愿望"，而是"你在某个对象面前的运作层级"。</p>
+
+        <h2>第三章 对象激活原则：全系列第一命题</h2>
+
+        <h3>3.1 第一命题：对象决定层，不是阶段决定层</h3>
+        <p>本系列的第一命题是：<strong>对象决定层，不是阶段决定层。</strong> 每个人同时具备四层运作模式（Id/Ego/Superego/Cert），面向不同对象时激活不同层。这个命题一旦成立，后续三篇中对焦虑、症状、梦的重写就不是独立的点子，而是同一条定理的不同投影。</p>
+
+        <h3>3.2 Id不是发展阶段</h3>
+        <p>弗洛伊德的发展理论将Id放在最早的位置：婴儿完全是Id，然后Ego从Id中分化出来，最后Superego在俄狄浦斯期形成。这是一个线性的发展叙事——从原始到成熟，从Id到Ego到Superego。</p>
+        <p>SAE的命题不同：<strong>每个成年人同时具备Id层的运作模式。</strong> Id不是你长大后就抛弃的东西，它是你面向特定对象时依然在使用的运作方式。</p>
+        <p>一个在工作中表现出色的成年人，面对自己的母亲时，可能完全运作在Id层——对母亲的语气、表情、微小的情绪变化做出即时的、模式化的反应，但完全不知道"是我在做这些反应"。他不是"退行到童年"——他在母亲面前从来就没有稳定获得过self的在场。</p>
+
+        <h3>3.3 对象决定层的展开</h3>
+        <p>弗洛伊德的"退行"（Regression）概念预设了一个发展时间线：你已经到了Ego阶段，但在压力下退回了Id阶段。SAE不需要这个预设。</p>
+        <p>你面对不同对象时，运作在不同的层——这不是退行，而是层-对象关系的结构。你对老板是Id（纯反应，不知道自己在干什么），对朋友可能有self的在场，对事业可能有purpose。层不是固定在你身上的属性，而是你和特定对象之间的关系属性。</p>
+        <p><strong>对象决定层，不等于历史不再重要。</strong> 发展史决定了哪些对象类最容易激活哪一层——你在权威面前容易退到Id层，很可能与你的早期养育关系有关。但SAE对历史的使用方式与弗洛伊德不同：历史塑造了你的对象类别列表和每个类别的默认层位，而不是决定了你"总体处于哪个发展阶段"。历史是层-对象地图的塑形者，不是全局层位的决定者。</p>
+        <p>这个命题有一个重要的推论：<strong>所谓"认识一个人"，就是知道他面对什么对象运作在什么层。</strong> 而所谓"不了解自己"，就是不知道自己面对特定对象时运作在哪一层。</p>
+
+        <h3>3.4 Id层的对象特征</h3>
+        <p>什么样的对象容易激活一个人的Id层？根据12DD的结构特征——有认知、有预测、但没有自我意识——Id层容易被以下类型的对象激活：</p>
+        <p>第一，早期关系对象。父母、主要养育者——这些关系在你的self出现之前就已经形成了互动模式。这些模式固化在12DD层，形成了预测性的反应回路，但从未被self审视过。</p>
+        <p>第二，权威对象。你在权威面前的反应——服从、讨好、恐惧、反抗——往往是12DD层的模式化反应。你可以事后用self来分析这些反应，但在当下，你是在"自动驾驶"。</p>
+        <p>第三，触发强烈情绪的对象。愤怒、恐惧、性吸引——当情绪强度超过某个阈值时，self容易被冲掉，你退到纯粹的预测性反应。但"冲掉"不是准确的描述——更准确的说法是：你在这个情绪强度下，从未建立过self的在场。</p>
+        <p>第四，极度熟悉的对象。长期伴侣、老朋友——在极度熟悉的关系中，互动模式可以高度自动化，self的在场变得不必要。这不一定是病理性的——有些自动化是效率，有些是固化。区别在于：你能不能在需要时重新调用self。</p>
+
+        <h2>第四章 用Id层重写压抑</h2>
+
+        <h3>4.1 弗洛伊德的压抑</h3>
+        <p>弗洛伊德在1915年的元心理学论文中给出了压抑的经典定义：压抑是将不可接受的本能表象（Triebrepräsentanz）排除在意识之外的动态过程。压抑不是一次性的行为，而是持续的——被压抑的内容始终在试图回到意识，压抑力量必须持续消耗能量来维持排斥。</p>
+        <p>这个定义预设了两个东西：第一，有一个"不可接受的内容"（通常是性的或攻击性的本能愿望）；第二，有一个Ego在主动执行排斥。压抑是Ego对Id内容的防御。</p>
+
+        <h3>4.2 SAE的重写：层间遮蔽</h3>
+        <p>在SAE的框架中，压抑不是"把内容藏起来"，而是<strong>层间遮蔽</strong>：在某个对象面前，你实际运作的层被你的自我叙事中另一层的构所遮盖。</p>
+        <p>具体来说：你对父亲的实际运作模式是Id——面对他时你是纯反应的，你的身体紧绷，你的语调改变，你的思维方式回到童年的模式。但你的Ego层（如果你在其他对象面前已经有了self）制造了一个叙事："我已经理解他了"，"我已经和他和解了"，"我是一个成熟的成年人"。</p>
+        <p>这个叙事不是谎言——它是你在Ego层的真实构。但它遮蔽了你在Id层的实际运作。你以为你面对父亲是Ego层（有self的在场），实际上你是Id层（me-without-self）。</p>
+        <p>与弗洛伊德的区别：弗洛伊德的压抑是内容性的——某个特定的愿望或记忆被排斥。SAE的层间遮蔽是结构性的——不是某个内容被藏起来了，而是你在某个对象面前的整个运作层级被误认了。你不是不知道某个具体的事情，你是不知道自己在那个关系中的运作方式。</p>
+        <p><strong>内容仍然重要，但其临床地位被层位重写。</strong> 对父亲的敌意、对分析师的好感、对母亲的沉默——这些具体内容在SAE框架中仍然是分析材料，但它们不再被当成"核心被压抑内容库"的证据，而被当成"层-对象关系如何显影"的材料。内容的诊断价值不在于它揭示了什么被压抑的愿望，而在于它暴露了来访者在哪个对象面前运作在哪一层。</p>
+
+        <h3>4.3 层间遮蔽的机制</h3>
+        <p>层间遮蔽的运作方式：高层的构覆盖低层的实际运作。你在Ego层对自己有一个叙事（"我是这样的人"），这个叙事是一个构。当这个构与你在特定对象面前的实际运作层（Id）不一致时，构不会自动修正——因为修正需要你在那个对象面前启动self来观察自己的Id层运作，而你在那个对象面前恰恰没有self。</p>
+        <p>这形成了一个自我维持的循环：你在某个对象面前没有self → 你无法观察自己在那个对象面前的运作 → 你用其他对象面前的self制造的叙事来覆盖 → 覆盖本身阻止了self在那个对象面前的出现。</p>
+        <p>这比弗洛伊德的压抑模型更精确地描述了临床上观察到的现象：压抑之所以难以解除，不是因为被压抑的内容太可怕，而是因为在那个特定对象面前，你根本没有用来观察的self。你不是"不敢看"，你是"没有眼睛"。</p>
+
+        <h3>4.4 余项的主动性</h3>
+        <p>弗洛伊德观察到一个重要的临床现象：被压抑的内容不是安静地待在无意识里，而是"总在试图冲破压抑"——通过口误、梦、症状、身体反应迂回地表达自己。弗洛伊德用驱力的动能来解释这种主动性。</p>
+        <p>SAE不需要驱力叙事来接住这个现象。余项不是被动等待的碎屑——凿构循环在Id层持续运作，产生的余项在该层持续活跃。当高层的构（Ego层的自我叙事）无法容纳这些余项时，余项会在构的缝隙中溢出：身体紧绷、语调突变、情绪爆发、口误。这不是"被压抑的内容试图回来"，而是"从未停止运作的低层余项在高层构的薄弱处渗透出来"。</p>
+        <p>这个重述保留了弗洛伊德的临床观察（被遮蔽的运作具有主动性和破坏力），但把解释从"被囚禁的内容试图越狱"转为"持续运作的余项在层间缝隙中溢出"。后者更精确，因为它不需要假设余项有"意图"——余项的溢出是结构性的，不是动机性的。</p>
+        <p>需要补充的是：溢出的不仅仅是12DD的认知预测模式。12DD的运作裹挟着更底层的生物轮（5DD-8DD）的生存和繁殖驱力——身体紧绷、情绪爆发、自毁冲动中的破坏性强度，往往来自12DD以下这些层面的余项被12DD的自动化反应模式所裹挟和放大。本系列的凿从12DD开始，但诚实地说：溢出物的能量很大一部分来自12DD以下。</p>
+
+        <h2>第五章 用Id层重写移情</h2>
+
+        <h3>5.1 弗洛伊德的移情</h3>
+        <p>弗洛伊德在1912年的《移情的动力学》中将移情定义为：来访者将早期关系中的情感模式"转移"到分析师身上。移情是"无意识原型的新版本或摹本"。弗洛伊德将移情区分为正性移情（对分析师的友好和爱意）和负性移情（对分析师的敌意和抵抗），并指出移情同时是分析工作的媒介和"阻抗最强大的武器"。</p>
+
+        <h3>5.2 SAE的重写：层的可见化</h3>
+        <p>在SAE的框架中，移情不是"把过去投射到现在"，而是<strong>你在某一类对象面前的固定运作层，在分析关系中变得可见了。</strong></p>
+        <p>来访者对分析师产生移情，不是因为分析师"像"他的父亲——而是因为分析师作为一个权威型对象、一个倾听者、一个被赋予了特殊权力的人，激活了来访者面对这一类对象时的固定运作层。如果来访者面对权威对象始终运作在Id层，那么他面对分析师也会运作在Id层——不是投射，是激活。</p>
+        <p>移情的价值因此被重新理解：移情不是需要被"纠正"的错误认知（"你把我当成了你的父亲"），而是来访者的层-对象地图在分析情境中的活体展示。分析师看到的不是"过去的投影"，而是来访者此刻、在这一类对象面前、实际运作在什么层。</p>
+
+        <h3>5.3 移情与层的固化</h3>
+        <p>弗洛伊德注意到移情有"强迫性重复"的特征——来访者一次又一次地重复同样的关系模式。他用死本能来解释这种重复。</p>
+        <p>SAE的解释更简洁：<strong>在某个对象面前没有self，就无法修改在那个对象面前的运作模式。</strong> 你在权威面前始终是Id（me-without-self），所以你面对每一个权威都做同样的反应——不是因为有一个"强迫性重复"的本能在驱动你，而是因为你在这类对象面前从来没有获得过可以观察和修改自身反应的self。</p>
+        <p>重复不是死本能，是层的固化。</p>
+
+        <h2>第六章 用Id层重写阻抗</h2>
+
+        <h3>6.1 弗洛伊德的阻抗</h3>
+        <p>弗洛伊德在《移情的动力学》和《回忆、重复与修通》（1914）中将阻抗描述为分析过程中无处不在的反力——"每一个联想……都必须与阻抗打交道"。阻抗的来源是Ego的防御功能：Ego抵制无意识内容进入意识。</p>
+
+        <h3>6.2 SAE的重写：层的自我保护</h3>
+        <p>在SAE的框架中，阻抗是<strong>层间遮蔽的自我保护机制</strong>。</p>
+        <p>当分析过程试图揭示你在某个对象面前的实际运作层（Id），而这个层低于你的自我叙事（"我是一个成熟的人""我早就放下了"），这个落差本身产生阻抗。阻抗保护的不是弗洛伊德意义上的"不可接受的内容"，而是你的层的自我叙事。</p>
+        <p>承认"我面对母亲时其实完全没有self"，比承认"我对母亲有攻击性的愿望"更具威胁性。后者至少保留了一个有self的主体在压抑某些内容；前者意味着在那个关系中，你作为self根本不在场。</p>
+        <p>这解释了为什么临床上最深层的阻抗往往不是指向某个具体的内容（记忆、愿望、幻想），而是指向一种弥漫的、难以言说的抵抗——因为被保护的不是一个content，而是一个关于"我是谁"的structural claim。</p>
+
+        <h2>第七章 Id层的神经科学接口</h2>
+
+        <h3>7.1 方法论前提：状态切换，不是脑区定位</h3>
+        <p>神经精神分析学（Neuropsychoanalysis）自1999年建制以来，核心工作是将弗洛伊德的Id/Ego/Superego映射到大脑区域：Id对应皮层下-边缘系统（杏仁核、基底神经节、伏隔核），Ego对应默认模式网络（DMN）和前额叶，Superego对应前额叶皮层、眶额叶、扣带回。但这种定位方法有一个根本问题：Ego和Superego的脑区大量重叠，因为两者都依赖自我模型（self-model）和控制系统（control system），而这些功能在大脑中共享同一组计算基元。</p>
+        <p>SAE精神分析不走定位路线。四层不是四个脑区，而是同一个大脑在面向不同对象时的四种运作模式。因此，正确的神经科学问题不是"Id在哪个脑区"，而是"当一个人从Id模式运作时，大脑的整体激活构型是什么？当他切换到另一层时，这个构型如何跳变？"这是状态切换范式（state-switching paradigm），不是定位范式（localization paradigm）。隐马尔可夫模型（HMM）和动态功能连接（dynamic functional connectivity）提供了合适的方法工具。</p>
+        <p><strong>多重实现原则声明</strong>：SAE的四层是精神层级的先验结构推演，独立于底层的碳基实现。神经科学提供的是后验的"物理显影"和约束性证据，不是因果还原。神经指标是伴随现象（correlates）和候选神经窗口，不是结构本身的定义。一个在硅基系统上运行的足够复杂的凿构循环，原则上也可能展现同样的层级结构，但具有完全不同的神经（或非神经）实现方式。</p>
+
+        <h3>7.2 Id层的候选神经窗口</h3>
+        <p>Id层的定义是me-without-self：有认知、有预测、有因果推理，但没有自我意识。对应这个定义，神经科学中有几组已确立的发现可以作为候选神经窗口：</p>
+        <p>第一，隐性学习（implicit learning）和程序性记忆（procedural memory）。大脑可以在没有显性意识参与的情况下从经验中提取结构、形成预测、执行复杂的因果推理。这些功能依赖基底神经节和相关的皮层-纹状体回路。这是"有预测但不知道自己在预测"的神经基础。</p>
+        <p>第二，自动化行为（automaticity）。当一个技能被充分练习后，它从需要有意识控制（前额叶主导）转为自动执行（基底神经节主导）。在自动化状态中，DMN（通常与自我参照加工相关）的参与减少。这提供了一个可测量的指标：当DMN/皮层中线结构的活动降低而预测性行为仍在高效执行时，大脑正在Id模式运作。</p>
+        <p>第三，盲视（blindsight）。初级视觉皮层损伤后，患者报告看不见，但仍能对视觉刺激做出准确的行为反应。这是"有加工但没有对加工的意识"的极端案例，在损伤研究层面支持了"认知预测可以与自我意识分离"的命题。</p>
+        <p>第四，无意识决策。有研究报告，在被试报告"自由"决策之前数秒，前额叶和顶叶的激活模式已经可以预测其选择。虽然解释存在争议，但解码结果本身支持了"决策过程可以先于意识报告运行"的观察。</p>
+
+        <h3>7.3 从Id到Ego的跳变：后验预测</h3>
+        <p>SAE的维度序列预测12DD到13DD之间存在一个结构性跳变：从"有预测但无self"到"self在场"。这个跳变在神经科学中有两个主流意识理论提供了独立的对应：</p>
+        <p>全局工作空间理论（Global Neuronal Workspace, GNW）提出，从无意识加工到有意识的通达涉及一个非线性的"点燃"（ignition）——信息从局部加工突然变为全脑可用。这个点燃过程不是渐进的，而是有阈值的跳变。</p>
+        <p>高阶意识理论（Higher-Order Theory, HOT）提出，意识依赖于对自身心理状态的高阶表征——你不仅在加工信息，你还知道"是我在加工信息"。这个从一阶加工到高阶表征的跳变，在概念结构上与SAE从12DD（预测）到13DD（对自身预测的意识）的跳变直接同构。</p>
+        <p>这两个理论都是在意识科学内部独立发展出来的，不依赖SAE，不依赖精神分析。如果它们描述的神经跳变确实存在（目前有大量但非定论性的证据），那就为12DD→13DD的先验推导提供了后验的独立确认。</p>
+
+        <h3>7.4 本章的余项</h3>
+        <p>本章提供的是接口，不是证明。具体来说：</p>
+        <p>神经科学有成熟的"无意识认知"范式，但这些范式中的"无意识"通常指对特定内容缺乏意识通达，不一定等于"全局性的self缺失"。从"对刺激无意识"到"self不在场"需要理论桥接——SAE提供了这个桥接的哲学框架，但桥接本身还不是后验事实。</p>
+        <p>同时，SAE的Id层严格对应12DD，而神经科学中的隐性学习、程序性记忆等功能可能跨越9DD-12DD多个层。这些更细的对应留待未来的工作。</p>
+
+        <h2>第八章 本篇的余项</h2>
+
+        <h3>7.1 下界余项</h3>
+        <p>本篇将Id重新定义为me-without-self（12DD），去掉了驱力理论。但12DD以下的层——从选择（9DD）到感知（10DD）到记忆（11DD），以及更下面的生命轮（5DD-8DD）——并非不存在。身体性的驱力体验、前语言的情感反应、神经生理层面的创伤记忆，这些都在12DD以下运作。</p>
+        <p>弗洛伊德的力比多理论试图处理的正是这些层面。SAE精神分析不否认这些层面的真实性和重要性，只是声明：本框架的凿从12DD开始。12DD以下是余项，留给神经科学、躯体取向的心理治疗、以及任何愿意在SAE框架内做桥接工作的研究者。</p>
+
+        <h3>7.2 上界余项</h3>
+        <p>本篇只处理了Id一层。Ego（13DD）、Superego（14DD）、Cert（15DD）在后续三篇中展开。在本篇的范围内，Id层与其他层的关系——层间遮蔽、层的切换、层的流动性——只做了初步触及。完整的层间动力学留待第四篇的统一框架。</p>
+
+        <h3>7.3 本篇的构不可闭合</h3>
+        <p>任何重新定义都是一次凿——切出一个新的构，同时产生新的余项。本篇将Id从驱力理论中解放出来，赋予了它一个结构性的定义（me-without-self, 12DD），但这个定义本身也是一个构，它必然遮蔽了某些东西。</p>
+        <p>具体来说：将Id定义为12DD，就意味着Id的"下界"被设定在认知轮的顶端。但一个运作在12DD的人，他的9DD（选择）、10DD（感知）、11DD（记忆）也在同时运作——这些层的运作是否也属于"Id"？本篇的回答是：不属于。本篇的Id严格对应12DD。但这是一个理论选择，不是一个必然的结论。有人可以合理地主张Id应该覆盖整个认知轮（9DD-12DD）。本篇接受这个争议，不封闭它。</p>
+
+        <h2>第九章 非平凡预测</h2>
+
+        <p>本章给出三个SAE精神分析的Id层理论对现有精神分析理论的非平凡预测。"非平凡"指：这些预测是SAE框架的直接推论，而弗洛伊德框架会给出不同的甚至相反的预测。</p>
+
+        <h3>9.1 层间遮蔽是对象特异性的，不存在统一的"被压抑内容库"</h3>
+        <p>弗洛伊德的压抑理论预测：一个被压抑的内容（比如对母亲的攻击性愿望）是始终"在那里"的，不管来访者当前面对谁，这个内容都在被压抑。压抑的内容库是统一的——它不因当前对象的变化而变化。</p>
+        <p>SAE预测相反：层间遮蔽是对象特异性的。你面对母亲时的遮蔽模式和你面对老板时的遮蔽模式是不同的，因为你在两个对象面前可能运作在不同的层，高层叙事覆盖低层运作的具体方式也因对象而异。不存在一个统一的"被压抑内容库"——遮蔽的结构随对象变化。</p>
+        <p>临床可检验性：同一个来访者，在分析中谈论不同关系对象时，阻抗的模式、身体反应的部位和强度、情绪爆发的类型应该呈现对象特异性的差异，而不是始终指向同一个"核心被压抑内容"。如果弗洛伊德是对的，不同对象应该最终收敛到同一个核心；如果SAE是对的，不同对象应该呈现不同的遮蔽结构，且这些结构之间不必然收敛。</p>
+
+        <h3>9.2 最强的阻抗不在"接近可怕内容"时，而在"接近层的真实位置"时</h3>
+        <p>弗洛伊德预测：阻抗在分析接近被压抑的核心愿望或记忆时最强——越接近"可怕的内容"，阻抗越大。</p>
+        <p>SAE预测不同：阻抗最强的时刻是来访者即将意识到"我在这个关系中根本没有self"时——这个时刻不一定伴随任何具体的内容揭示。</p>
+        <p>临床可检验性：如果SAE是对的，最强的阻抗可能出现在一个"什么具体内容都没有浮出来"的时刻——来访者说不出任何被压抑的愿望或记忆，但弥漫性的抵抗极其强烈，表现为沉默、空白、解离感、或对分析过程本身的无端敌意。弗洛伊德框架会将这种"无内容的强阻抗"解释为"防御太深，核心内容还没浮出来"——即预测继续分析会最终到达一个具体内容。SAE的解释是：这里被威胁的不是一个内容，而是"我是一个有self的人"这个结构性声称本身。继续分析到达的不是一个被压抑的记忆，而是一个关于层的认识——"我在这个人面前其实是me-without-self"。</p>
+
+        <h3>9.3 分析的有效性是对象特异性的，不是全局性的</h3>
+        <p>弗洛伊德框架隐含一个预测：精神分析通过解决核心冲突（通常追溯到早期关系）来产生治疗效果，一旦核心冲突被修通，改变应该辐射到来访者的所有关系——因为所有关系中的问题都源于同一个核心。</p>
+        <p>SAE预测不同：分析中获得的层的提升是对象特异性的。你在分析关系中对"权威型对象"从Id层提升到Ego层（获得了self的在场），不意味着你对"亲密型对象"也自动获得了同样的提升。因为层是对象激活的，不是全局属性——你在一类对象面前的改变不会自动迁移到另一类对象。</p>
+        <p>临床可检验性：治疗进展应该呈现对象特异性的不均匀模式——来访者报告"我和老板的关系好多了，但和母亲在一起还是老样子"不是治疗的失败或不完整，而是符合预期的正常结果。弗洛伊德框架会将这种不均匀解释为"核心冲突尚未完全修通"；SAE的解释是：每一类对象面前的层都需要单独工作，全局性的均匀提升不是治疗的合理预期。</p>
+
+        <h2>第十章 结论</h2>
+
+        <p>第一，Id是me-without-self——凿构循环在运作但不被自我观察。在SAE的维度序列中对应12DD（预测律）。这是对弗洛伊德Id的最小严格对应：取其结构性内核（不被看见的运作），去掉力比多蓄水池的实体化隐喻，后者被显性地放入下界余项。</p>
+
+        <p>第二，本系列的第一命题：对象决定层，不是阶段决定层。Id不是发展阶段而是对象激活的层。每个成年人面向特定对象时都可能运作在Id层。</p>
+
+        <p>第三，压抑被重写为层间遮蔽——不是内容被藏起来，而是在特定对象面前的实际运作层被自我叙事所遮盖。</p>
+
+        <p>第四，移情被重写为层的可见化——不是过去的投射，而是层-对象关系在分析情境中的活体展示。</p>
+
+        <p>第五，阻抗被重写为层的自我保护——被保护的不是不可接受的内容，而是关于"我在这个关系中是谁"的结构性声称。</p>
+
+        <p>第六，Id层的神经科学接口走状态切换范式而非脑区定位范式，坚持多重实现原则。隐性学习、程序性记忆、自动化行为提供了"有预测但无self"的候选神经窗口；全局工作空间理论的非线性点燃和高阶意识理论的高阶表征跳变，为12DD→13DD的先验推导提供了独立的后验对应。</p>
+
+        <p>第七，余项不是被动的碎屑。被遮蔽的低层运作在Id层持续活跃，在高层构的缝隙中溢出。弗洛伊德观察到的"被压抑物的主动性"被重述为余项的结构性溢出。</p>
+
+        <p>第八，力比多在12DD以下的余项中。本篇不否认它，不处理它，不封闭它。</p>
+
+        <p>第九，本篇给出三个对现有精神分析理论的非平凡预测：层间遮蔽是对象特异性的（不存在统一的被压抑内容库）；最强阻抗出现在层的真实位置被接近时而非可怕内容被接近时；治疗有效性是对象特异性的而非全局辐射的。这三个预测直接区分SAE框架与弗洛伊德框架，可在临床中被检验。</p>
+
+        <h2>贡献</h2>
+
+        <p>[1] 将弗洛伊德的Id从驱力理论中解放，以最小严格对应的方式重新定义为me-without-self（12DD），保留结构性内核，去除实体化隐喻，显性声明constructive replacement。</p>
+
+        <p>[2] 提出全系列第一命题：对象决定层，不是阶段决定层。Id不是发展阶段，而是面向特定对象时的运作模式。</p>
+
+        <p>[3] 用层间遮蔽重写压抑，用层的可见化重写移情，用层的自我保护重写阻抗。</p>
+
+        <p>[4] 用余项的结构性溢出接住弗洛伊德观察到的"被压抑物的主动性"，不需要驱力叙事。</p>
+
+        <p>[5] 提出SAE精神分析与神经科学的状态切换接口范式，声明多重实现原则，给出Id层的候选神经窗口和12DD→13DD跳变的后验预测。</p>
+
+        <p>[6] 明确声明下界余项（12DD以下，力比多在此）和上界余项（其他三层留待后续），作为理论边界的自觉。</p>
+
+        <p>[7] 给出三个对现有精神分析理论的非平凡预测（遮蔽的对象特异性、阻抗的层指向性、治疗有效性的对象特异性），区分SAE框架与弗洛伊德框架。</p>
+
+        <h2>参考文献</h2>
+
+        <p>[1] Han Qin. Self-as-an-End Theory Series: The Complete Framework. DOI: 10.5281/zenodo.18727327</p>
+
+        <p>[2] Han Qin. The Periodic Table of Life (Part I) — From Causality to Reproduction. DOI: 10.5281/zenodo.18818107</p>
+
+        <p>[3] Han Qin. The Periodic Table of Life (Part III) — From "I" to the Thing-in-Itself. DOI: 10.5281/zenodo.18818177</p>
+
+        <p>[4] Han Qin. Fixation and Selection (III) — Predictive Law Forecloses Choice. DOI: 10.5281/zenodo.18859427</p>
+
+        <p>[5] Freud, S. The Ego and the Id (1923). Standard Edition, Vol. XIX.</p>
+
+        <p>[6] Freud, S. "Repression" (1915). Standard Edition, Vol. XIV.</p>
+
+        <p>[7] Freud, S. "The Dynamics of Transference" (1912). Standard Edition, Vol. XII.</p>
+
+        <p>[8] Freud, S. "Remembering, Repeating and Working-Through" (1914). Standard Edition, Vol. XII.</p>
+
+        <p>[9] Freud, S. New Introductory Lectures on Psycho-Analysis (1933). Standard Edition, Vol. XXII.</p>
+
+        <p>[10] Solms, M. "The Conscious Id." Neuropsychoanalysis 15:1 (2013), 5-19.</p>
+
+        <p>[11] Panksepp, J. & Solms, M. "The 'Id' Knows More than the 'Ego' Admits." Brain Sciences 2:2 (2012), 147-175.</p>
+
+        <p>[12] Ramezani, A. et al. "Neuroanatomical and Neurocognitive Functions of the Structure of the Mind." Current Opinions in Neurological Science 2:6 (2018), 567-584.</p>
+
+        <p>[13] Carhart-Harris, R. L. & Friston, K. J. "The Default-Mode, Ego-Functions and Free-Energy." Brain 133:4 (2010), 1265-1283.</p>
+
+        <p>[14] Dehaene, S. & Changeux, J.-P. "Experimental and Theoretical Approaches to Conscious Processing." Neuron 70:2 (2011), 200-227.</p>
+
+        <p>[15] Lau, H. & Rosenthal, D. "Empirical Support for Higher-Order Theories of Conscious Awareness." Trends in Cognitive Sciences 15:8 (2011), 365-373.</p>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 Han Qin. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
