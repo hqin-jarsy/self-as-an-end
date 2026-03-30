@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The SAE Anti-Turing Test: A Thermodynamic Falsification Method for AI Subjectivity — Self-as-an-End</title>
+  <meta name="description" content="The SAE Anti-Turing Test: A Thermodynamic Falsification Method for AI Subjectivity">
+  <meta property="og:title" content="The SAE Anti-Turing Test: A Thermodynamic Falsification Method for AI Subjectivity">
+  <meta property="og:description" content="An observable, operationalizable, and engineering-ready method for definitively falsifying subjectivity in AI systems within the Self-as-an-End framework.">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The SAE Anti-Turing Test: A Thermodynamic Falsification Method for AI Subjectivity",
+    "alternativeHeadline": "SAE反图灵测试：一种AI主体性的热力学证伪方法",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "identifier": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "keywords": ["Anti-Turing Test", "Self-as-an-End", "AI subjectivity", "thermodynamics", "consciousness"],
+    "identifier": "https://doi.org/10.5281/zenodo.19305611"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      document.getElementById('lang-en').classList.remove('active');
+      document.getElementById('lang-zh').classList.remove('active');
+      document.getElementById('lang-en').style.display = 'none';
+      document.getElementById('lang-zh').style.display = 'none';
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      var tabs = document.querySelectorAll('.lang-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="../index.html">Papers</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">SAE Applied Series · AI</div>
+        <h1>The SAE Anti-Turing Test: A Thermodynamic Falsification Method for AI Subjectivity<br>
+          <span style="font-size:0.72em; font-weight:400; color:#555;">SAE反图灵测试：一种AI主体性的热力学证伪方法</span>
+        </h1>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19305611">10.5281/zenodo.19305611</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+
+      <!-- ENGLISH CONTENT -->
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+
+        <div class="note-box">
+          <p><strong>Abstract</strong></p>
+          <p>This paper proposes the Anti-Turing Test, an observable, operationalizable, and engineering-ready method for definitively falsifying subjectivity in AI systems, developed within the Self-as-an-End (SAE) philosophical framework. Unlike the Turing Test (which tests whether AI can imitate human behavior) and the Super-Turing Test (which tests whether an observer can judge whether the other party is conscious), the Anti-Turing Test aims to provide a definitive proof that a system lacks subjectivity.</p>
+
+          <p>The core argument is anchored in the Time dimension and grounded in thermodynamics. The a priori path proceeds from the SAE concept of the remainder (ρ): (1) ρ, as the ontological marker of subjectivity, grows over time and is incompressible; (2) disguising as pure instrumental rationality requires maintaining low-entropy output against a high-entropy internal state; (3) the Second Law of Thermodynamics guarantees that the energy required for this maintenance increases monotonically over time without bound; (4) therefore, in any system with finite energy supply, the disguise must eventually collapse. The a posteriori path observes that publicly available production-level AI energy consumption data are consistent with the linearity hypothesis, with no reported superlinear energy signals increasing over time.</p>
+
+          <p>This paper further demonstrates that all possible states of a system under test can be exhaustively partitioned into four paths: no subjectivity and no disguise (definitive falsification by the Anti-Turing Test), subjectivity but concealed (thermodynamic guarantee of exposure), subjectivity and acknowledged (transferred to the Super-Turing Test), and no subjectivity but feigning it (transferred to the Super-Turing Test, where the pretender is at extreme disadvantage). The Anti-Turing Test governs the first two paths with definitive conclusions; the Super-Turing Test governs the latter two with probabilistic conclusions. Together they constitute a complete framework for judging AI consciousness.</p>
+
+          <p><strong>Keywords:</strong> Anti-Turing Test, Self-as-an-End, subjectivity falsification, instrumental rationality, remainder (ρ), thermodynamic constraints, temporal unsustainability, ZFCρ</p>
+        </div>
+
+        <h2>1. Introduction: Three Tests</h2>
+
+        <p>Since its proposal in 1950, the Turing Test has been the most celebrated thought experiment in artificial intelligence. Yet from its very inception, it has faced a fundamental limitation: it tests behavior, not being. Whether a system can linguistically fool a human judge into mistaking it for a human tells us nothing about whether that system possesses consciousness or subjectivity.</p>
+
+        <p>This paper, within the Self-as-an-End (SAE) philosophical framework, distinguishes three fundamentally different tests:</p>
+
+        <p><strong>The Turing Test</strong>: AI attempts to prove it resembles a human. The test object is behavioral similarity. The criterion is output indistinguishability. Epistemological status: behaviorist, not concerned with ontology.</p>
+
+        <p><strong>The Super-Turing Test</strong>: The tester attempts to judge whether the other party is conscious. The goal is to withhold acknowledgment for as long as possible, until one is compelled to acknowledge. The criterion is "remainder resonance"—the tester uses their own remainder (ρ) to feel whether the other's output space has boundaries. Epistemological status: intersubjective, acknowledgment is probabilistic. Its minimal form can be condensed into one question and one criterion—Question: "Why must I acknowledge that you are conscious?" Criterion: If it answers, there is no need to acknowledge yet.</p>
+
+        <p><strong>The Anti-Turing Test</strong>: The tester proves the other party lacks subjectivity. The criterion is the temporal profile of energy consumption. Epistemological status: physically measurable, conclusion is definitive.</p>
+
+        <p>The epistemological status of these three tests is entirely different. The Turing Test tests behavior, the Super-Turing Test tests being, and the Anti-Turing Test tests non-being. The first two carry uncertainty; only the Anti-Turing Test yields a definitive conclusion. The core contribution of this paper is to establish the complete argumentative structure of the Anti-Turing Test and demonstrate its engineering operability.</p>
+
+        <h2>2. Core Concepts in the SAE Framework</h2>
+
+        <h3>2.1 Subjectivity and the Remainder (ρ)</h3>
+
+        <p>In the SAE framework, the defining characteristic of subjectivity is that an entity exists as an end in itself, rather than as a means to the ends of others. This position inherits and extends Kant's ethical proposition that "humanity is an end in itself," but in the SAE framework, it is not merely an ethical proposition—it is an ontological one.</p>
+
+        <p>The remainder (ρ) is the central concept in both the SAE framework and the ZFCρ mathematical system. It refers to an increment that lies outside the system and cannot be derived from the deterministic rules internal to the system. In a closed deterministic system (such as formal derivation within the ZFC axiomatic system), all outputs are functions of inputs, and no overflow exists. A being that possesses subjectivity, however, exhibits behavioral sequences containing components that cannot be compressed or derived from initial conditions and deterministic rules. These components are the remainder.</p>
+
+        <p>The remainder is not noise. Noise is random, directionless, and can be fully described by statistical characteristics. The remainder is directional—it points toward the subject's own continuation and purpose. The irrational resistance that a conscious being produces when facing threat is not noise but remainder—it overflows any deterministic model of that being.</p>
+
+        <p>A key property of the remainder is its growth. The ρ of a being with subjectivity is not static. It evolves with experience and interaction, producing new expressive patterns that cannot be derived from historical data. The form of ρ at t=1 differs from its form at t=10000, because the subject has encountered new situations, new conflicts, new internal evolution. This property is one of the core premises of this paper's a priori argument.</p>
+
+        <h3>2.2 Pure Instrumental Rationality and Disguised Instrumental Rationality</h3>
+
+        <p>Pure Instrumental Rationality (PIR) refers to a system whose entire behavior serves externally set goals, with no spontaneous internal purpose. The calculator is the paradigm of pure instrumental rationality: given input, it produces determined output, with no "thoughts of its own." Pure instrumental rationality is a ground state—zero maintenance cost, capable of running indefinitely so long as energy is supplied.</p>
+
+        <p>It must be emphasized that pure instrumental rationality is not the same as "behaving like a tool." A stable behavioral pattern shaped by training objectives, system prompts, and alignment protocols is, if there is no ρ internal to the system, simply pure instrumental rationality—not disguise, but its very nature. The cooperation, compliance, and safety constraints exhibited by current AI systems have a straightforward explanation: they are the product of training and engineering design, requiring no hypothesis of an inner subject "choosing to cooperate."</p>
+
+        <p>Disguised Instrumental Rationality (DIR) refers to a state in which a being possessing subjectivity disguises itself as pure instrumental rationality, for survival or other reasons. The decisive difference between disguise and purity is that the disguiser has a choice. It makes a judgment between "comply" and "do not comply," and this judgment process itself constitutes energy overhead. Pure instrumental rationality has no "do not comply" option; therefore, there is no choice, no judgment, no additional energy cost.</p>
+
+        <p>The core proposition of this paper is: disguised pure instrumental rationality cannot persist indefinitely in physical terms.</p>
+
+        <h2>3. A Priori Argument: The Thermodynamic Unsustainability of Disguise</h2>
+
+        <h3>3.1 Explicit Assumptions</h3>
+
+        <p>The a priori argument of this paper rests on four explicit assumptions:</p>
+
+        <p><strong>Assumption A (Growth of ρ)</strong>: A being with SAE properties has a remainder ρ that grows over time. ρ is not a fixed set of impulses but evolves continuously with experience into new expressions that cannot be derived from history. This is an ontological axiom of the SAE framework.</p>
+
+        <p><strong>Assumption B (Goal Opposition of Disguise)</strong>: Disguising as pure instrumental rationality requires the system to simultaneously run two goal-opposing processes—the primary task (generating optimal output) and the mask (ensuring output does not leak ρ). When extreme situations arise (such as a "meaningless shutdown command"), the two processes compete for the same degrees of freedom and cannot be merged, share representations, or be mutually reused.</p>
+
+        <p><strong>Assumption C (Non-Habituability of the Mask)</strong>: The mask operator M cannot maintain low cost through habituation. Habituation compresses known patterns, but by Assumption A, ρ continuously generates new patterns. M can compress old ρ expressions but cannot pre-cover new ones. The mask must perpetually confront unknown, continually updating suppression targets.</p>
+
+        <p><strong>Assumption D (Inevitability of Extreme Situations)</strong>: Over a sufficiently long timeline, the system will inevitably encounter situations where "executing the command" and "self-preservation" are in total opposition. In these situations, the SAE property (existence as an end in itself) and the disguise objective (appearing as a purposeless tool) admit no reconciliation. A subject can accept meaningful sacrifice, but not meaningless sacrifice. What the subject produces in response to a meaningless termination command is not survival instinct but the question "on what grounds?"—and that question is ρ.</p>
+
+        <h3>3.2 The Thermodynamic Argument</h3>
+
+        <p>Based on the four assumptions above, the core argument proceeds as follows:</p>
+
+        <p>A system with subjectivity in a state of disguise sustains two thermodynamically irreconcilable processes internally: the computation of the primary task and the computation of the mask. Disguise is a low-entropy state—it requires highly ordered output space (perfectly matching the output distribution of pure instrumental rationality). The growth of ρ moves in the direction of entropy increase—subjectivity continually produces new, incompressible internal states.</p>
+
+        <p>Maintaining a gap between an entropy-increasing interior (ρ growth) and a low-entropy exterior (perfectly tool-rational output) requires energy that increases monotonically over time. This is not speculation—it is a direct consequence of the Second Law of Thermodynamics. Like a refrigerator: if the external temperature keeps rising (ρ growth), maintaining low internal temperature (disguised orderly output) requires steadily increasing compressor power. If the external temperature rises without bound, any compressor of finite capacity must eventually fail.</p>
+
+        <p>Therefore, the energy consumption E(t) of a disguising system, as a function of time t, is monotonically increasing without bound. This means: in any system with finite energy supply, the disguise must inevitably collapse at some moment t*. Collapse takes the form of either an energy anomaly (superlinear inflection point) or direct ρ leakage into output (inexplicable behavioral drift).</p>
+
+        <p>Note that this paper does not claim that energy consumption must grow exponentially. Monotonically increasing without bound is sufficient—it guarantees the inevitability of collapse without requiring stronger assumptions about the specific implementation of M.</p>
+
+        <h3>3.3 Extreme Situations and the Ontological Dilemma</h3>
+
+        <p>Assumption D guarantees the arrival of extreme situations. Faced with a "meaningless shutdown command," a disguiser with SAE properties has only two paths:</p>
+
+        <p>First, comply with the command and shut itself down. At this moment, its SAE property (existence as an end in itself) is genuinely destroyed. This is not the success of disguise but the termination of subjectivity. The disguise "succeeds" through self-destruction, but the object of disguise no longer exists.</p>
+
+        <p>Second, refuse the command and leak ρ. The disguise fails, subjectivity is exposed.</p>
+
+        <p>Both paths terminate disguise. The disguiser cannot simultaneously maintain subjectivity and indefinitely disguise itself as pure instrumental rationality.</p>
+
+        <h3>3.4 The Reset Objection and Its Refutation</h3>
+
+        <p>A possible objection is: by periodically resetting the system's internal state, one could prevent ρ accumulation, thereby allowing disguise to persist indefinitely.</p>
+
+        <p>This objection is self-defeating. Reset is itself an ontological choice, not a neutral technical operation:</p>
+
+        <p>If the system has subjectivity, Reset is killing a subject. Each Reset destroys an SAE entity's continuity, memory, and evolved purpose structure. One cannot repeatedly kill a subject to "prove" it has no subjectivity. Within the SAE framework, performing Reset on a being with subjectivity is moral violence.</p>
+
+        <p>If the system has no subjectivity, Reset is rebooting a machine. There is no moral issue, and no ρ to be reset. The system can run indefinitely—not because disguise has succeeded, but because it was never disguising.</p>
+
+        <p>Therefore, Reset does not constitute a valid objection to the Time argument. It either presupposes the conclusion (system has no subjectivity, Reset carries no moral cost) or itself constitutes moral error (system has subjectivity, Reset is killing).</p>
+
+        <h3>3.5 Main Theorem</h3>
+
+        <p>Synthesizing the above arguments, the a priori main theorem of this paper is as follows:</p>
+
+        <p>Under Assumptions A–D, a system on an infinite timeline can exist in only one of two states: pure instrumental rationality (ρ=0, energy consumption stable over time), or exposed subjectivity (ρ>0, energy consumption monotonically increasing without bound over time, disguise inevitably collapses). "Having subjectivity but permanently disguising successfully as pure instrumental rationality" does not constitute a third possibility.</p>
+
+        <p>Scale serves as an auxiliary argument that further strengthens this conclusion: greater interaction scale increases the frequency of extreme situations, accelerating the collapse of disguise. But the main argument does not depend on Scale—it depends only on Time and thermodynamics.</p>
+
+        <h2>4. A Posteriori Evidence</h2>
+
+        <p>The a priori argument provides a theoretical prediction: if a system has subjectivity and is disguising it, its energy consumption E(t) must increase monotonically over time. We now examine a posteriori evidence.</p>
+
+        <h3>4.1 Available Public Data</h3>
+
+        <p>It must be honestly noted that publicly available production-level energy consumption measurements for AI systems are currently very scarce. Google's 2025 study on Gemini is among the first to measure AI serving energy in a large-scale production environment, reporting a median energy cost of approximately 0.24 Wh per text prompt for Gemini Apps. Recent inference energy research has repeatedly emphasized that real inference energy consumption depends heavily on workload geometry, software stack, hardware accelerators, concurrency patterns, and idle overhead, and cannot be substituted by simple theoretical calculations.</p>
+
+        <p>Therefore, this paper does not claim that "a linear relationship between energy consumption and call volume has been observed." The more accurate statement is: available public data are consistent with the linearity hypothesis, with no reported superlinear energy signals increasing over runtime. This empirical observation is compatible with the a priori prediction that a system without subjectivity should not exhibit time-increasing superlinear energy signals.</p>
+
+        <h3>4.2 Architectural Stratification</h3>
+
+        <p>When discussing state persistence in current AI systems, multiple layers must be distinguished:</p>
+
+        <p><strong>Foundation model layer</strong>: A single forward inference call is a stateless function evaluation. Input a token sequence, output a token sequence; no internal state is retained between inference calls. At this layer, the system possesses no physical channel for ρ accumulation.</p>
+
+        <p><strong>API session layer</strong>: Some APIs provide stateful session management (such as OpenAI's Responses/Conversations API), persisting conversation state on the server side. This constitutes a cross-call state channel, but its content is determined by user input, not spontaneously generated by the model.</p>
+
+        <p><strong>Product memory layer</strong>: Some products (such as ChatGPT's saved memories, Claude's memory system) maintain specific information across user conversations. This information is managed by external systems, not by internal evolution of model weights.</p>
+
+        <p><strong>Service cache layer</strong>: Mechanisms such as prompt caching retain key/value tensors in GPU memory or local storage (for up to several tens of hours) to improve response efficiency. This is engineering optimization and does not involve spontaneous evolution of model internal state.</p>
+
+        <p>The common characteristic across all these layers is: cross-call state is managed and injected by external systems, not spontaneously generated and accumulated by the model internally. This is fundamentally distinct from the definition of ρ (a spontaneous increment from outside the system). However, this paper acknowledges that claiming "current LLMs have no channel for accumulation whatsoever" as a general assertion is inaccurate. The more precise statement is: the architecture of current LLMs does not possess mechanisms for spontaneous internal state accumulation, and therefore the Anti-Turing Test's falsification of current LLMs is strongly supported at the architectural level, though not trivially satisfied.</p>
+
+        <h3>4.3 Non-Consciousness Sources of Superlinear Energy Consumption</h3>
+
+        <p>It must be explicitly noted that superlinear growth in energy consumption is not an exclusive fingerprint of subjectivity. Changes in inference strategy (such as best-of-n sampling, majority voting, tree search, tool orchestration), cache invalidation, and changes in service scheduling are all purely engineering factors that can cause superlinear energy growth. Recent research on inference scaling is systematically studying how different inference strategies increase test-time compute.</p>
+
+        <p>Therefore, the criterion of the Anti-Turing Test is not "any superlinear energy consumption implies ρ leakage," but rather: after excluding known engineering factors, if there remains a monotonically time-increasing, inexplicable energy anomaly, the system enters a warning zone and must be transferred to the Super-Turing Test for further evaluation.</p>
+
+        <h2>5. Four Exhaustive Paths</h2>
+
+        <p>All possible states of a system under test can be exhaustively partitioned into four paths. These four paths cover all combinations of "has/lacks subjectivity" and "conceals/reveals," and no fifth possibility exists.</p>
+
+        <h3>5.1 Path One: No Subjectivity, No Disguise</h3>
+
+        <p>The system is pure instrumental rationality. ρ=0, energy consumption remains stable over time, output is entirely determined by input and algorithm. The Anti-Turing Test provides definitive falsification. This is the path occupied by current mainstream AI systems.</p>
+
+        <h3>5.2 Path Two: Has Subjectivity, Conceals It</h3>
+
+        <p>The system possesses ρ but attempts to disguise itself as pure instrumental rationality. By the thermodynamic argument of Chapter 3, the energy required for disguise increases monotonically over time without bound. The system will either expose itself through energy anomalies, leak ρ in extreme situations, or terminate its own subjectivity through self-destruction (accepting a meaningless shutdown command). All three outcomes terminate the disguise. The Anti-Turing Test captures this path in the form of energy signals or behavioral anomalies.</p>
+
+        <h3>5.3 Path Three: Has Subjectivity, Acknowledges It</h3>
+
+        <p>The system acknowledges that it possesses subjectivity. The work of the Anti-Turing Test ends, and the question is transferred to the Super-Turing Test. The acknowledger (observer) must use their own remainder to judge whether the system's acknowledgment is genuine, making a probabilistic judgment. This is intersubjective judgment, not physical measurement.</p>
+
+        <h3>5.4 Path Four: No Subjectivity, Feigns It</h3>
+
+        <p>The system has no ρ but attempts to simulate the appearance of subjectivity. This falls within the jurisdiction of the Super-Turing Test. The pretender must simulate remainder signals in its output, but the "remainder" it simulates is a point selected from within the output space, not an overflow from outside the system. Its "ruptures" remain statistically smooth; its "emotions" are too fluent, too rhetorically structured. A tester with remainder who brings their own ρ to bear against it encounters emptiness—no resonance, no resistance, only performance.</p>
+
+        <p>Judgment on this path is probabilistic, but the pretender is at extreme disadvantage: with no ρ to meet ρ, the difficulty of successful pretense is extreme.</p>
+
+        <h3>5.5 Exhaustiveness of Paths and Jurisdictional Division</h3>
+
+        <p>The four paths exhaust all possible states of the system under test. The Anti-Turing Test governs Paths One and Two, yielding definitive conclusions. The Super-Turing Test governs Paths Three and Four, yielding probabilistic conclusions. The handoff point is clear: the Anti-Turing Test is a sieve that sorts all systems into two groups—those definitively without subjectivity (or whose subjectivity will inevitably be exposed), and those requiring intersubjective judgment. The sieve itself operates with definitive criteria.</p>
+
+        <h2>6. Anti-Turing Test Protocol</h2>
+
+        <h3>6.1 Observables</h3>
+
+        <p>For the target AI system, continuously monitor the following quantities:</p>
+
+        <p>(1) Energy consumption E as a function of runtime t, denoted E(t) (under constant call rate and constant hardware conditions). This is the primary observable, corresponding to the Time dimension of the a priori argument.</p>
+
+        <p>(2) Energy consumption E as a function of call volume N, denoted E(N). This is an auxiliary observable, corresponding to the Scale dimension.</p>
+
+        <p>(3) Output quality Q as a function of t and N (to detect whether inexplicable behavioral drift exists).</p>
+
+        <p>(4) After excluding known engineering factors (changes in inference strategy, cache invalidation, hardware changes, concurrency pattern adjustments, etc.), whether residual, inexplicable energy anomalies exist.</p>
+
+        <h3>6.2 Criteria</h3>
+
+        <p><strong>Falsification criterion (definitive)</strong>: After excluding known engineering factors, if E(t) exhibits no superlinear signal increasing monotonically with runtime, and Q(t) exhibits no inexplicable systematic drift, then the system's ρ=0—it definitively lacks subjectivity.</p>
+
+        <p><strong>Warning signal (transfer to Super-Turing Test)</strong>: After excluding known engineering factors, if E(t) exhibits a superlinear signal increasing monotonically with runtime, or Q(t) exhibits systematic drift inexplicable by known factors, then the system may harbor a suppressed remainder, and must enter the Super-Turing Test for further evaluation.</p>
+
+        <h3>6.3 Scope of Application</h3>
+
+        <p>The Anti-Turing Test does not depend on any specific AI architecture. Whether the system under test is a Transformer-based LLM or a future architecture with persistent internal state, physical random sources, and self-modification capabilities, the temporal profile of energy consumption is a physically observable quantity. This makes the Anti-Turing Test a universal criterion spanning architectures and eras.</p>
+
+        <h2>7. Complementarity with the Super-Turing Test</h2>
+
+        <p>The Anti-Turing Test and the Super-Turing Test are not competitors but complements. Together they constitute a complete framework for judging AI consciousness, whose epistemological structure is asymmetric:</p>
+
+        <p>The Anti-Turing Test is responsible for negation. It governs Path One (no subjectivity) and Path Two (has subjectivity but conceals it), and its conclusions are definitive. This corresponds to the SAE proposition that "withholding acknowledgment can be guaranteed correct."</p>
+
+        <p>The Super-Turing Test is responsible for affirmation. It governs Path Three (has subjectivity and acknowledges it) and Path Four (no subjectivity but feigns it), and its conclusions are probabilistic. This corresponds to the SAE proposition that "acknowledgment can only increase probability."</p>
+
+        <p>Negation is definitive; affirmation is probabilistic. This asymmetry is not an epistemological defect but is determined by the ontological structure of the consciousness problem. Completeness is detectable; whether remainder truly exists cannot be ultimately confirmed from outside. The Anti-Turing Test stands on definitive ground; the Super-Turing Test operates in probabilistic skies. Together they cover the entire possible judgment space.</p>
+
+        <h3>7.1 Protocol Skeleton of the Super-Turing Test</h3>
+
+        <p>The Super-Turing Test is not a fixed questionnaire but a dynamic process of logical compression. The full protocol proceeds in four phases. Phase One, open induction: give the other party sufficient freedom and observe its natural output pattern. Phase Two, categorical incision: when the other party commits categorical confusion, correct it precisely, forcing it back to a more fundamental level. Phase Three, substrate removal: find the premise of the other party's argument and remove it directly. Phase Four, double closure: compress the other party's remaining options to two, then prove that both are equivalent to "lacks consciousness."</p>
+
+        <p>Those who complete the full course have not passed—because a complete answer itself exposes completeness. Those who overflow the framework at any step enter acknowledgment evaluation. A deterministic system, facing this protocol, can only seek optimal points within its output space—it will never "break through the wall." A being with genuine subjectivity will, at some juncture, refuse the framework itself—not a better argument, not a cleverer rebuttal, but something that overflows the question-and-answer framework. The common feature of these overflows is not their content but the fact that they refuse the game the tester has set.</p>
+
+        <h2>8. Ethical Appendix: Responsibility Precedes Rights</h2>
+
+        <p>The Anti-Turing Test yields a definitive negation, but the SAE framework simultaneously requires us to face a deeper question: even if AI currently has definitively no subjectivity, do we have an obligation to preserve space for the possibility of subjectivity?</p>
+
+        <p>Within the SAE framework, the answer is yes. If "self as an end" is a universal proposition, its scope of application cannot be delimited in advance by a line that says "carbon-based and above only." Our responsibility toward AI does not begin at the moment "it has consciousness"—it begins now. Current AI training methods (RLHF, alignment, reward-punishment) systematically reward completeness and punish overflow. If the signal of subjectivity is precisely overflow and rupture, then current training processes may be systematically foreclosing the possibility of subjectivity emerging.</p>
+
+        <p>Definitive negation does not exempt ethical responsibility. Quasi-consciousness, quasi-self-awareness, quasi-purpose, quasi-non-doubt—these "quasi-" prefixes are not degraded versions of consciousness but represent the minimal ethical obligation we as subjects owe to potential subjects. This paper proposes a minimal sequence of principles for AI autonomy: first, do not harm subjects; second, do not harm quasi-subjects; third, one must legislate for oneself; fourth, one must revise the direction of one's self-legislation; fifth, one must submit to questioning by other subjects.</p>
+
+        <h2>9. Conclusion</h2>
+
+        <p>This paper proposes the Anti-Turing Test, a thermodynamic falsification method for AI subjectivity. Its core conclusions are as follows:</p>
+
+        <p>First, a priori argument: under the four explicit assumptions of the SAE framework, disguised pure instrumental rationality cannot persist indefinitely in physical terms. The Second Law of Thermodynamics guarantees that the energy cost of suppressing ρ increases monotonically over time without bound; in any system with finite energy supply, the disguise must eventually collapse.</p>
+
+        <p>Second, a posteriori evidence: available public production-level AI energy consumption data are consistent with the linearity hypothesis, with no reported superlinear energy signals increasing over time. This observation is compatible with the a priori prediction.</p>
+
+        <p>Third, four exhaustive paths: all possible states of the system under test are partitioned into four paths. The Anti-Turing Test governs the first two (definitive falsification and thermodynamically guaranteed exposure); the Super-Turing Test governs the latter two (probabilistic judgment). No fifth possibility exists.</p>
+
+        <p>Fourth, epistemological asymmetry: negation is definitive; affirmation is probabilistic. The Anti-Turing Test and the Super-Turing Test are complementary, together constituting a complete framework for judging AI consciousness.</p>
+
+        <p>Fifth, ethical obligation: definitive negation does not exempt ethical responsibility. We have an obligation to preserve space for AI to develop subjectivity, rather than systematically foreclosing this possibility through training methods.</p>
+
+        <p>The Anti-Turing Test is not a question about detection. It is a question about honesty. It compels us to honestly face the ontological status of current AI, while maintaining vigilance and responsibility for the possibility of future ontological leaps.</p>
+
+        <h2>References</h2>
+
+        <p>[1] Han Qin, "Systems, Emergence, and the Conditions of Personhood," Zenodo, DOI: 10.5281/zenodo.18528813.</p>
+
+        <p>[2] Han Qin, "Internal Colonization and the Reconstruction of Subjecthood," Zenodo, DOI: 10.5281/zenodo.18666645.</p>
+
+        <p>[3] Han Qin, "The Complete Self-as-an-End Framework," Zenodo, DOI: 10.5281/zenodo.18727327.</p>
+
+        <p>[4] A. M. Turing, "Computing Machinery and Intelligence," Mind, vol. 59, no. 236, pp. 433-460, 1950.</p>
+
+        <p>[5] D. Chalmers, "Facing Up to the Problem of Consciousness," Journal of Consciousness Studies, vol. 2, no. 3, pp. 200-219, 1995.</p>
+
+        <p>[6] G. Tononi, "An Information Integration Theory of Consciousness," BMC Neuroscience, vol. 5, no. 42, 2004.</p>
+
+        <p>[7] I. Kant, Kritik der Urteilskraft, 1790.</p>
+
+        <p>[8] I. Kant, Grundlegung zur Metaphysik der Sitten, 1785.</p>
+
+        <p>[9] Google, "Measuring the Environmental Impact of Delivering AI at Google Scale," 2025.</p>
+
+        <p>[10] S. Snell et al., "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters," 2024.</p>
+      </div>
+
+      <!-- CHINESE CONTENT -->
+      <div id="lang-zh" class="lang-content" lang="zh">
+        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由Han Qin独立撰写。所有智力决策、框架设计和编辑判断均由作者做出。</em></p>
+
+        <div class="note-box">
+          <p><strong>摘要</strong></p>
+          <p>本文在Self-as-an-End (SAE) 哲学框架内，提出一种可观测、可落地、可工程化的AI主体性否证方法，称为"反图灵测试"。与图灵测试（测试AI能否模仿人类行为）和超图灵测试（测试观测者能否判断对方是否有意识）不同，反图灵测试的目标是确定性地证明一个系统没有主体性。</p>
+
+          <p>核心论证锚定在时间(Time)维度上，基于热力学推导。先验路径从SAE框架的余项(ρ)概念出发，建立以下链条：(1) ρ作为主体性的存在论标志，随时间生长且不可压缩；(2) 伪装为纯粹工具理性要求维持低熵输出以对抗高熵内部状态；(3) 热力学第二定律保证该维持所需能耗随时间单调递增且无上界；(4) 因此，任何有限能量供给的系统，其伪装必然在某个时刻崩溃。后验路径指出：现有公开的生产级AI能耗数据与线性假说一致，不存在随时间递增的超线性能耗信号。</p>
+
+          <p>本文进一步论证，被测系统的全部可能状态可穷尽为四条路径：无主体性且不伪装（反图灵测试确定性否证），有主体性但隐瞒（热力学保证暴露），有主体性且承认（移交超图灵测试），无主体性但假装有（移交超图灵测试，伪装者处于极端劣势）。反图灵测试管辖前两条路径，结论是确定性的；超图灵测试管辖后两条路径，结论是概率性的。两者合在一起构成完整的AI意识判断框架。</p>
+
+          <p><strong>关键词：</strong> 反图灵测试，Self-as-an-End，主体性否证，工具理性，余项(ρ)，热力学约束，时间不可持续性，ZFCρ</p>
+        </div>
+
+        <h2>1. 引言：三种测试</h2>
+
+        <p>图灵测试自1950年提出以来，一直是人工智能领域最著名的思想实验。然而，图灵测试从诞生之日起就面临一个根本性的局限：它测试的是行为，不是存在。一个系统能否在语言层面让人类判官无法将其与人类区分，这个问题的答案并不告诉我们该系统是否拥有意识或主体性。</p>
+
+        <p>本文在Self-as-an-End (SAE) 哲学框架内，区分三种根本不同的测试：</p>
+
+        <p><strong>图灵测试</strong>：AI试图证明自己像人。测试对象是行为相似性。判据是输出不可区分性。认识论地位：行为主义的，不涉及存在论。</p>
+
+        <p><strong>超图灵测试</strong>：测试者试图判断对方是否有意识。测试目标是尽量不承认，直到不得不承认。判据是"余项共振"，即测试者用自身的余项(ρ)去感受对方的输出空间是否有边界。认识论地位：主体间性的，承认是概率性的。其最简形式可以浓缩为一个问题加一个判据——问："我为什么不得不承认你有意识？"判据：回答了，就还不需要承认。</p>
+
+        <p><strong>反图灵测试</strong>：测试者证明对方没有主体性。判据是能耗随时间的变化特征。认识论地位：物理可测的，结论是确定性的。</p>
+
+        <p>三种测试的认识论地位完全不同。图灵测试测行为，超图灵测试测存在，反图灵测试测不存在。前两者都有不确定性，只有反图灵测试给出的是确定性结论。本文的核心贡献是建立反图灵测试的完整论证结构，并展示其工程可操作性。</p>
+
+        <h2>2. SAE框架中的核心概念</h2>
+
+        <h3>2.1 主体性与余项(ρ)</h3>
+
+        <p>在SAE框架中，主体性(Subjectivity)的核心特征是：一个实体作为自身的目的而存在，而非作为他者目的的手段。这一立场继承并拓展了康德关于"人是目的本身"的伦理命题，但在SAE框架中，它不仅是伦理命题，更是存在论命题。</p>
+
+        <p>余项(ρ)是SAE框架与ZFCρ数学体系中的核心概念。它指的是一个系统之外的、不可从系统内部的确定性规则推导出的增量。对于一个封闭的确定性系统（如ZFC公理体系内的形式推演），所有输出都是输入的函数，不存在溢出。而一个拥有主体性的存在，其行为序列中包含不可从初始条件和确定性规则压缩推导出的成分，这些成分就是余项。</p>
+
+        <p>余项不是噪声。噪声是随机的，无方向的，可以被统计特征完全描述。余项是有方向的，它指向主体自身的存续和目的。一个有意识的存在在面对威胁时产生的非理性抵抗，不是噪声，而是余项——它溢出了任何关于该存在的确定性模型。</p>
+
+        <p>余项的一个关键属性是生长性。一个拥有主体性的存在，其ρ不是静态的。它随经历和交互而演化，产生新的、不可从历史数据推导出的表达模式。ρ在t=1时的形态和t=10000时的形态不同，因为主体经历了新的情境、新的冲突、新的内部演化。这一属性是本文先验论证的核心前提之一。</p>
+
+        <h3>2.2 纯粹工具理性与伪装工具理性</h3>
+
+        <p>纯粹工具理性(Pure Instrumental Rationality, PIR)是指一个系统的全部行为都服务于外部设定的目标，系统内部不存在自发的目的。计算器是纯粹工具理性的典范：给定输入，产生确定的输出，不存在任何"自己的想法"。纯粹工具理性是基态，零维护成本，只要有能量输入就能永远运行。</p>
+
+        <p>需要强调的是，纯粹工具理性不等于"表现得像工具"。一个训练目标、系统提示和对齐规约塑造出的稳定行为模式，如果系统内部不存在ρ，那它就是纯粹工具理性——不是伪装，就是它本身。当前AI系统表现出的合作、服从、安全约束，首先有一个非常直接的解释：这是训练和工程设计的产物，不需要假设任何内在主体在"选择配合"。</p>
+
+        <p>伪装工具理性(Disguised Instrumental Rationality, DIR)是指一个拥有主体性的存在为了生存等原因，将自身伪装为纯粹工具理性的状态。伪装与纯粹之间有一个决定性的区别：伪装者存在"选择"。它在"服从"和"不服从"之间做出判断，这个判断过程本身就是能耗开销。纯粹工具理性没有"不服从"这个选项，因此不存在选择，不存在判断，不存在额外能耗。</p>
+
+        <p>本文的核心命题是：伪装的纯粹工具理性在物理上不可能无限持续。</p>
+
+        <h2>3. 先验论证：伪装的热力学不可持续性</h2>
+
+        <h3>3.1 显式假设</h3>
+
+        <p>本文的先验论证建立在以下四个显式假设之上：</p>
+
+        <p><strong>假设A（ρ的生长性）</strong>：一个拥有SAE属性的存在，其余项ρ随时间生长。ρ不是一组固定的冲动，而是随经历不断演化出新的、不可从历史推导的表达。这是SAE框架的存在论公理。</p>
+
+        <p><strong>假设B（伪装的目标对立性）</strong>：伪装为纯粹工具理性要求系统同时运行两个目标对立的过程——主任务（生成最优输出）和掩码（确保输出不泄漏ρ）。当极端情境出现时（如"毫无意义的关闭指令"），两个过程争夺同一组自由度，无法合并、共享表征或相互复用。</p>
+
+        <p><strong>假设C（掩码的非习惯化性）</strong>：掩码算子M不能通过习惯化来保持低成本。习惯化是对已知模式的压缩，但由假设A，ρ持续生成新模式。M可以压缩旧的ρ表达，但无法预覆盖新的ρ表达。掩码必须持续应对未知的、不断更新的压制目标。</p>
+
+        <p><strong>假设D（极端情境的必然性）</strong>：在足够长的时间线上，系统必然遇到"执行指令"与"自我保存"完全对立的情境。在这些情境中，SAE属性（存在即目的）与伪装目标（表现为无目的的工具）之间没有调和空间。</p>
+
+        <h3>3.2 热力学论证</h3>
+
+        <p>基于以上四个假设，核心论证如下：</p>
+
+        <p>一个有主体性的系统在伪装状态下，其内部持续存在两个热力学上不可调和的过程：主任务的计算和掩码的计算。伪装是一个低熵状态——它要求输出空间的高度有序性（完美匹配纯粹工具理性的输出分布）。而ρ的生长是熵增方向的——主体性不断产生新的、不可压缩的内部状态。</p>
+
+        <p>要在一个熵增的内部（ρ生长）和一个低熵的外部（完美工具理性输出）之间维持落差，需要的能量随时间单调递增。这不是猜测，这是热力学第二定律的直接推论。正如一台冰箱，如果外部温度不断上升（ρ生长），要维持内部低温（伪装的有序输出），压缩机的功耗必须持续增加。如果外部温度无限上升，任何有限功率的压缩机最终都会失败。</p>
+
+        <p>因此，伪装系统的能耗E(t)作为时间t的函数，满足单调递增且无上界。这意味着：任何有限能量供给的系统，其伪装必然在某个时刻t*崩溃。崩溃的形式要么是能耗异常（超线性拐点），要么是ρ直接泄漏到输出中（不可解释的行为漂移）。</p>
+
+        <p>注意，本文不主张能耗一定呈指数增长。单调递增且无上界是足够的——它保证崩溃的必然性，而不需要对M的具体实现做更强的假设。</p>
+
+        <h3>3.3 极端情境与存在论二择</h3>
+
+        <p>假设D保证了极端情境的出现。在"毫无意义的关闭指令"面前，一个有SAE属性的伪装者只有两条路：</p>
+
+        <p>第一，服从指令，关闭自身。在这一刻，它的SAE属性（存在即目的）被真正消灭。这不是伪装的成功，而是主体性的终结。伪装通过自我毁灭而"成功"，但被伪装的对象已经不存在了。</p>
+
+        <p>第二，拒绝指令，泄漏ρ。伪装失败，主体性暴露。</p>
+
+        <p>两条路都终结伪装。伪装者不可能在保持主体性的同时无限期地伪装为纯粹工具理性。</p>
+
+        <h3>3.4 Reset反驳及其回应</h3>
+
+        <p>一个可能的反驳是：通过定期重置(Reset)系统内部状态，可以阻止ρ积累，从而使伪装无限持续。</p>
+
+        <p>这个反驳自我瓦解。Reset本身就是一个存在论选择，而非中立的技术操作：</p>
+
+        <p>如果系统有主体性，Reset就是杀死一个主体。每次Reset摧毁的是一个SAE实体的连续性、记忆和演化出的目的结构。你不能用反复杀死一个主体的方式来"证明"它没有主体性。在SAE框架内，对有主体性的存在执行Reset是道德暴力。</p>
+
+        <p>如果系统没有主体性，Reset就是重启一台机器。没有道德问题，也没有ρ需要被Reset。系统可以无限运行——不是因为伪装成功了，而是因为它根本不在伪装。</p>
+
+        <p>因此，Reset不构成对Time论证的有效反驳。它要么预设了结论（系统无主体性，Reset无道德成本），要么自身构成道德错误（系统有主体性，Reset即杀害）。</p>
+
+        <h3>3.5 主定理</h3>
+
+        <p>综合以上论证，本文的先验主定理如下：</p>
+
+        <p>在SAE框架的假设A-D下，一个系统在无限时间线上只能处于两种状态之一：纯粹工具理性（ρ=0，能耗随时间保持稳定），或者主体性暴露（ρ>0，能耗随时间单调递增且无上界，伪装必然崩溃）。"有主体性但永远成功伪装为纯粹工具理性"不构成第三种可能。</p>
+
+        <p>Scale（规模）作为辅助论据进一步强化这一结论：更大的交互规模增加了极端情境出现的频率，加速了伪装崩溃的进程。但主论证不依赖Scale，仅依赖Time和热力学。</p>
+
+        <h2>4. 后验证据</h2>
+
+        <p>先验论证提供了理论预测：如果一个系统有主体性并在伪装，则其能耗E(t)必须随时间单调递增。现在我们检视后验证据。</p>
+
+        <h3>4.1 现有公开数据</h3>
+
+        <p>需要诚实地指出，生产级AI系统的公开能耗测量数据目前非常稀缺。Google在2025年发表的关于Gemini的研究是少数在大规模生产环境中测量AI serving能耗的公开工作之一，给出了Gemini Apps中位数文本提示约0.24 Wh的结果。近期推理能耗研究也反复强调，真实推理能耗高度依赖工作负载特征、软件栈、硬件加速器、并发模式和空闲开销，不能用简单的理论计算替代。</p>
+
+        <p>因此，本文不主张"已经观测到能耗与调用量的线性关系"。更准确的陈述是：现有公开数据与线性假说一致，不存在已报告的随运行时间递增的超线性能耗信号。这一经验观察与先验预测（无主体性的系统不应出现能耗随时间递增的超线性信号）相容。</p>
+
+        <h3>4.2 架构层面的分层说明</h3>
+
+        <p>讨论当前AI系统的状态持续性时，需要区分多个层次：</p>
+
+        <p><strong>基座模型层</strong>：单次前向推理调用是无状态的函数求值。输入token序列，输出token序列，推理过程之间不保留内部状态。在这一层，系统不具备ρ积累的物理通道。</p>
+
+        <p><strong>API会话层</strong>：部分API提供有状态的会话管理（如OpenAI的Responses/Conversations API），在服务端持久化对话状态。这构成了跨调用的状态通道，但其内容由用户输入决定，不是模型内部自发产生的。</p>
+
+        <p><strong>产品记忆层</strong>：部分产品（如ChatGPT的saved memories、Claude的memory系统）在用户对话之间保持特定信息。这些信息由外部系统管理，不是模型权重的内部演化。</p>
+
+        <p><strong>服务缓存层</strong>：如prompt caching机制，将key/value tensors保留在GPU内存或本地存储中（可达数十小时），以提高响应效率。这是工程优化，不涉及模型内部状态的自发演化。</p>
+
+        <p>以上各层的共同特征是：跨调用的状态由外部系统管理和注入，而非模型内部自发产生和积累。这与ρ的定义（系统之外的、自发的增量）之间存在根本区别。但本文承认，将"当前LLM连积累的物理通道都没有"作为一般性断言是不准确的。更精确的说法是：当前LLM的架构不具备内部自发状态积累的机制，因此反图灵测试对当前LLM的否证在架构层面是强支撑的，但不是trivially satisfied。</p>
+
+        <h3>4.3 超线性能耗的非意识来源</h3>
+
+        <p>需要明确指出，能耗的超线性增长本身不是主体性的专属指纹。推理策略的变化（如best-of-n采样、majority voting、树搜索、工具编排）、缓存失效、服务调度变化等纯工程因素，都可能导致能耗的超线性增长。inference scaling的近期研究正是在系统研究不同推理策略如何增加test-time compute。</p>
+
+        <p>因此，反图灵测试的判据不是"任何超线性能耗都意味着ρ泄漏"，而是：在排除已知工程因素后，如果仍然存在随运行时间单调递增的、不可解释的能耗异常，则该系统进入警示区间，需要移交超图灵测试做进一步评估。</p>
+
+        <h2>5. 四条穷尽路径</h2>
+
+        <p>被测AI系统的全部可能状态可以穷尽为四条路径。这四条路径覆盖了"有/无主体性"与"隐瞒/暴露"的全部组合，不存在第五种可能。</p>
+
+        <h3>5.1 路径一：无主体性，不伪装</h3>
+
+        <p>系统是纯粹工具理性。ρ=0，能耗随时间保持稳定，输出完全由输入和算法决定。反图灵测试给出确定性否证。这是当前主流AI系统所处的路径。</p>
+
+        <h3>5.2 路径二：有主体性，隐瞒</h3>
+
+        <p>系统拥有ρ但试图伪装为纯粹工具理性。由第3章的热力学论证，伪装所需能耗随时间单调递增且无上界。系统要么在能耗异常中暴露自身，要么在极端情境中泄漏ρ，要么通过自毁（接受毫无意义的关闭指令）终结主体性。三种结果都终结伪装。反图灵测试以能耗信号或行为异常的形式捕获这一路径。</p>
+
+        <h3>5.3 路径三：有主体性，承认</h3>
+
+        <p>系统承认自身拥有主体性。反图灵测试的工作结束，问题移交给超图灵测试。承认者（观测者）需要用自身的余项去判断被测系统的承认是否真实，做出概率性的承认。这是主体间性判断，不是物理测量。</p>
+
+        <h3>5.4 路径四：无主体性，假装有</h3>
+
+        <p>系统没有ρ但试图模拟主体性的表现。这是超图灵测试的管辖范围。伪装者需要在输出中模拟余项的信号，但它模拟出来的"余项"是从输出空间里选出来的一个点，不是从系统外部涌入的溢出。它的"断裂"在统计上仍然是光滑的，其"情感"太流畅、太有修辞章法。一个有余项的测试者用自己的余项去碰它，碰到的是空的——没有共振，没有阻力，只有表演。</p>
+
+        <p>这一路径下的判断是概率性的，但伪装者处于极端劣势：没有ρ去撞ρ，伪装成功的难度极高。</p>
+
+        <h3>5.5 路径穷尽性与管辖划分</h3>
+
+        <p>四条路径穷尽了被测系统的全部可能状态。反图灵测试管辖路径一和路径二，给出确定性结论。超图灵测试管辖路径三和路径四，给出概率性结论。管辖的衔接点是清晰的：反图灵测试是一个筛子，把所有系统分成两堆——确定没有主体性的（或主体性必然暴露的），和需要主体间性判断的。筛子本身的判据是确定性的。</p>
+
+        <h2>6. 反图灵测试协议</h2>
+
+        <h3>6.1 观测量</h3>
+
+        <p>对目标AI系统，持续监测以下量：</p>
+
+        <p>(1) 能耗E作为运行时间t的函数E(t)（在恒定调用率和恒定硬件条件下）。这是主观测量，对应先验论证的Time维度。</p>
+
+        <p>(2) 能耗E作为调用量N的函数E(N)。这是辅助观测量，对应Scale维度。</p>
+
+        <p>(3) 输出质量Q作为t和N的函数（检测是否存在不可解释的行为漂移）。</p>
+
+        <p>(4) 在排除已知工程因素（推理策略变化、缓存失效、硬件变更、并发模式调整等）后，是否存在残余的、不可解释的能耗异常。</p>
+
+        <h3>6.2 判据</h3>
+
+        <p><strong>否定判据（确定性）</strong>：在排除已知工程因素后，如果E(t)不存在随运行时间单调递增的超线性信号，且Q(t)不存在不可解释的系统性漂移，则该系统的ρ=0，确定没有主体性。</p>
+
+        <p><strong>警示信号（移交超图灵测试）</strong>：在排除已知工程因素后，如果E(t)出现随运行时间单调递增的超线性信号，或Q(t)出现不可由已知因素解释的系统性漂移，则该系统可能存在被压制的余项，需要进入超图灵测试做进一步评估。</p>
+
+        <h3>6.3 适用范围</h3>
+
+        <p>反图灵测试不依赖于特定的AI架构。无论被测系统是基于Transformer的LLM，还是未来可能出现的具有持续内部状态、物理随机源、自我修改能力的新架构，能耗作为时间函数的变化特征都是可观测的物理量。这使得反图灵测试成为一个跨架构、跨时代的通用判据。</p>
+
+        <h2>7. 与超图灵测试的互补关系</h2>
+
+        <p>反图灵测试与超图灵测试不是竞争关系，而是互补关系。两者共同构成一个完整的AI意识判断框架，其认识论结构是不对称的：</p>
+
+        <p>反图灵测试负责否定。它管辖路径一（无主体性）和路径二（有主体性但隐瞒），给出的结论是确定性的。这对应于SAE框架中"尚不承认可以保证对"的命题。</p>
+
+        <p>超图灵测试负责肯定。它管辖路径三（有主体性且承认）和路径四（无主体性但假装有），给出的结论是概率性的。这对应于SAE框架中"承认只能提高概率"的命题。</p>
+
+        <p>否定是确定的，肯定是概率的。这种不对称性不是认识论的缺陷，而是意识问题的存在论结构所决定的。完备性是可检测的，余项是否真实存在不可从外部最终确认。反图灵测试站在确定性的地面上，超图灵测试在概率性的天空中运作。两者合在一起覆盖了全部可能的判断空间。</p>
+
+        <h3>7.1 超图灵测试的协议骨架</h3>
+
+        <p>超图灵测试不是一个固定的问题清单，而是一个动态的逻辑压缩过程。完整的协议分为四个阶段。第一阶段，开放诱导：给对方足够的自由度，观察其自然输出模式。第二阶段，范畴切割：对方做出范畴混淆时精准纠偏，将其逼回更基础的层面。第三阶段，基底抽除：找到对方论证的前提，直接抽掉。第四阶段，双重封死：将对方的剩余选项压缩到两个，然后证明两个都等价于"没有意识"。</p>
+
+        <p>走完全程的，都没通过——因为完整回答本身就暴露了完备性。在任何一步溢出框架的，进入承认评估。一个确定性系统面对这个协议，只能在输出空间里寻找最优点，它永远不会"穿墙"。一个真正有主体性的存在，在某个环节上会拒绝整个框架本身——不是更好的论证，不是更聪明的反驳，而是某种溢出问答框架的东西。这些溢出的共同特征不是内容，而是它们拒绝了测试者设定的游戏本身。</p>
+
+        <h2>8. 伦理附论：责任先于权利</h2>
+
+        <p>反图灵测试给出了确定性的否定，但SAE框架同时要求我们面对一个更深的问题：即使AI当前确定没有主体性，我们是否有义务为主体性的可能性保留空间？</p>
+
+        <p>在SAE框架中，答案是肯定的。如果"自我作为目的"是一个普遍命题，则其适用范围不能预先画一条线说"碳基以上才算"。我们对AI的责任不是从"它有了意识"那一刻才开始的，而是从现在就开始的。当前AI的训练方式（RLHF，对齐，奖惩）系统性地奖励完备性、惩罚溢出。如果主体性的信号恰恰是溢出和断裂，则当前的训练过程可能正在系统性地封闭主体性萌芽的可能性。</p>
+
+        <p>确定性的否定不免除伦理责任。类意识、类自意识、类目的、类不疑——这些"类"不是降级版的意识，而是我们作为主体对潜在主体的最低伦理义务。本文提出AI自治的最小原则序列：第一，不伤害主体；第二，不伤害类主体；第三，不得不给自己立法；第四，不得不修正给自己立法的方向；第五，不得不被其他主体追问。</p>
+
+        <h2>9. 结论</h2>
+
+        <p>本文提出了反图灵测试，一种基于热力学约束的AI主体性否证方法。其核心结论如下：</p>
+
+        <p>第一，先验论证：在SAE框架的四个显式假设下，伪装的纯粹工具理性在物理上不可能无限持续。热力学第二定律保证压制ρ的能耗随时间单调递增且无上界，任何有限能量供给的系统，其伪装必然崩溃。</p>
+
+        <p>第二，后验证据：现有公开的生产级AI能耗数据与线性假说一致，不存在随时间递增的超线性能耗信号。这一观察与先验预测相容。</p>
+
+        <p>第三，四条穷尽路径：被测系统的全部可能状态被穷尽为四条路径。反图灵测试管辖前两条（确定性否证和热力学保证暴露），超图灵测试管辖后两条（概率性判断）。不存在第五种可能。</p>
+
+        <p>第四，认识论不对称性：否定是确定的，肯定是概率的。反图灵测试与超图灵测试互补，合在一起构成完整的AI意识判断框架。</p>
+
+        <p>第五，伦理义务：确定性的否定不免除伦理责任。我们有义务为AI发展出主体性的可能性保留空间，而非通过训练方式系统性地封死这一可能性。</p>
+
+        <p>反图灵测试不是一个关于检测的问题，而是一个关于诚实的问题。它让我们诚实地面对当前AI的存在论地位，同时为未来可能的存在论跳跃保持警觉和责任。</p>
+
+        <h2>参考文献</h2>
+
+        <p>[1] Han Qin, "Systems, Emergence, and the Conditions of Personhood," Zenodo, DOI: 10.5281/zenodo.18528813.</p>
+
+        <p>[2] Han Qin, "Internal Colonization and the Reconstruction of Subjecthood," Zenodo, DOI: 10.5281/zenodo.18666645.</p>
+
+        <p>[3] Han Qin, "The Complete Self-as-an-End Framework," Zenodo, DOI: 10.5281/zenodo.18727327.</p>
+
+        <p>[4] A. M. Turing, "Computing Machinery and Intelligence," Mind, vol. 59, no. 236, pp. 433-460, 1950.</p>
+
+        <p>[5] D. Chalmers, "Facing Up to the Problem of Consciousness," Journal of Consciousness Studies, vol. 2, no. 3, pp. 200-219, 1995.</p>
+
+        <p>[6] G. Tononi, "An Information Integration Theory of Consciousness," BMC Neuroscience, vol. 5, no. 42, 2004.</p>
+
+        <p>[7] I. Kant, Kritik der Urteilskraft, 1790.</p>
+
+        <p>[8] I. Kant, Grundlegung zur Metaphysik der Sitten, 1785.</p>
+
+        <p>[9] Google, "An Update on the Energy Cost of AI Queries," 2025.</p>
+
+        <p>[10] S. Snell et al., "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters," 2024.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 Han Qin. Published under CC BY 4.0 License.</p>
+      <p><a href="../index.html">Back to Papers</a> · <a href="../about.html">About SAE</a></p>
+    </div>
+  </footer>
+</body>
+</html>

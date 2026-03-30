@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character-Refined Prime Input, Shell-Depth Lemma, and Parity-Mediated PCF₂ — ZFCρ Paper XLVII — Han Qin</title>
+  <meta name="description" content="ZFCρ Paper XLVII: Character-refined CR-PMH-DS(12), Shell-Depth Lemma (log-mgf k-independent), parity constraint mechanism (high Ω → even n → odd n-1 → positive ξ⁻), μ⁻ slope decomposition (0.077/k = 0.035 + 0.042), PCF₂ numerical confirmation. DOI: 10.5281/zenodo.19323564.">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta name="keywords" content="ZFCρ, integer complexity, character-refined PMH, shell-depth lemma, parity constraint, predecessor drift, PCF₂, Conjecture 2, H' closure, prime mean hypothesis">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Character-Refined Prime Input, Shell-Depth Lemma, and Parity-Mediated PCF₂">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho47.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Character-Refined Prime Input, Shell-Depth Lemma, and Parity-Mediated PCF₂",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "sameAs": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026-03",
+    "url": "https://self-as-an-end.net/papers/zfcrho47.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.19323564"
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Self-as-an-End Theory Series — Mathematical Foundations"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "ZFCρ", "integer complexity", "character-refined PMH", "shell-depth lemma",
+      "parity constraint", "predecessor drift", "PCF₂", "Conjecture 2",
+      "H' closure", "prime mean hypothesis", "ρ-arithmetic"
+    ],
+    "abstract": "Paper 46 reduced H' to four hypotheses (UBPD, PMH-DS, PCF, RT). This paper advances on three fronts: (1) η(p) exhibits character-refined non-uniformity across residue classes mod 12 (17.6% between-class variance), motivating CR-PMH-DS(12) and strategic reduction to CR-PMH-DS₂; (2) Shell-Depth Lemma: θ = log N - log n has leading-order log-mgf independent of k under Ω=k conditioning; (3) μ⁻ slope decomposition: 0.077/k decomposes precisely into θ contribution (46%) and parity-driven ξ⁻ shift (54%), with mechanism chain high Ω → even n → odd n-1 → positive η → ξ⁻ positive shift. PCF₂ numerically confirmed: μ⁻ = λ·log x + O(k), Var⁻ = O(1). Gap for H': proof of CR-PMH-DS₂ + parity strictification + UBPD + RT.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "inLanguage": ["en", "zh"]
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho47.html">
+  <meta name="citation_title" content="Character-Refined Prime Input, Shell-Depth Lemma, and Parity-Mediated PCF₂">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19323564">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho47.html">
+  <style>
+    .zenodo-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; font-size: 0.82rem; color: #444; text-decoration: none; margin-top: 0.5rem; }
+    .zenodo-link:hover { background: #ebebeb; }
+    .series-nav { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #888; }
+    .series-nav a { color: #555; text-decoration: none; }
+    .series-nav a:hover { text-decoration: underline; }
+    .thesis-box { background: #f8f8ff; border-left: 3px solid #2c2c8c; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .thesis-box p { margin: 0; }
+    .thesis-box p + p { margin-top: 0.5rem; }
+    .milestone-box { background: #f4fbf4; border-left: 3px solid #2a7a2a; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .milestone-box p { margin: 0; }
+    .milestone-box p + p { margin-top: 0.5rem; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #cc6600; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .warning-box p { margin: 0; }
+    .warning-box p + p { margin-top: 0.5rem; }
+    .proof-box { background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .proof-box p { margin: 0; }
+    .note-box { background: #fffef0; border: 1px solid #e8e0b0; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-size: 0.9rem; }
+    .abstract-box { background: #f9f9f9; border: 1px solid #e5e5e5; border-radius: 5px; padding: 1.1rem 1.3rem; margin-bottom: 1.8rem; }
+    .abstract-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
+    .paper-body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #333; }
+    .paper-body ul { margin: 0.6rem 0 0.6rem 1.5rem; }
+    .paper-body ul li { margin-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+    th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 0.45rem 0.7rem; border: 1px solid #ddd; }
+    td { padding: 0.4rem 0.7rem; border: 1px solid #ddd; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .chain-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; padding: 0.8rem 1.1rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; line-height: 1.7; }
+    .decomp-box { background: #f0fff4; border-left: 3px solid #00aa55; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    .decomp-box p { margin: 0; }
+    .decomp-box p + p { margin-top: 0.5rem; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.querySelector('.lang-tab[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<main class="paper-container">
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-tab" data-lang="zh" onclick="switchLang('zh')">中文</button>
+  </div>
+
+  <!-- ============================================================ ENGLISH ============================================================ -->
+  <div id="content-en" class="lang-content active">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Series · Paper XLVII</div>
+      <h1 class="paper-title">Character-Refined Prime Input, Shell-Depth Lemma, and Parity-Mediated PCF₂</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19323564" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19323564
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="note-box">
+        <p><strong>Abstract</strong></p>
+        <p>Paper 46 reduced the conditional closure of H' to four hypotheses (UBPD, PMH-DS, PCF, RT). This paper advances on three fronts.</p>
+        <p>First, η(p) = ρ_E(p) - λ·log p exhibits systematic non-uniformity across residue classes (Q=12 between-class variance is 17.6% of total), arising from the small-factor structure of p-1. This motivates upgrading scalar PMH-DS to character-refined CR-PMH-DS(12) — scalar is already an excellent approximation (residual ≈ -0.504, x-independent), CR is the structurally correct theoretical form. A further strategic reduction: Conjecture 2 requires only first- and second-order cumulants, so full PMH-DS reduces to CR-PMH-DS₂ (controlling only character-projected prime sums of η and η²).</p>
+        <p>Second, the Shell-Depth Lemma: θ = log N - log n has log-mgf independent of k in leading order (A₁(u) = 0) under Ω=k conditioning. Proof uses Sathe-Selberg counting ratio + partial summation. This rewrites the PCF architecture — θ is not the source of PCF's k-linear main term.</p>
+        <p>Third, the finite-window local slope of μ⁻ (+0.077/k at N=10⁷) decomposes precisely into two sources: θ's O(1/log x) correction (46%) and ξ⁻'s O(1) parity-driven shift (54%). The parity constraint mechanism: high Ω(n) → n even → n-1 odd → P⁻(n-1) larger → η more positive → ξ⁻ positive shift. Conditioning changes ξ⁻'s center through the parity chain but does not change its spread (Var(ξ⁻) ≈ 1.0, k-independent).</p>
+        <p>PCF₂ numerically confirmed: μ⁻ = λ·log x + O(k) ✓, Var⁻(f) = O(1) ✓. At the theorem level, the remaining gap for H' is: proof of CR-PMH-DS₂ + strictification of parity shift + UBPD + RT.</p>
+        <p><strong>Keywords:</strong> integer complexity, ρ-arithmetic, character-refined PMH, shell-depth, parity constraint, predecessor drift, Conjecture 2, H' closure</p>
+      </div>
+
+      <h2>§1 Introduction</h2>
+
+      <h3>1.1 The problem</h3>
+      <p>Paper 46 (DOI: 10.5281/zenodo.19303511) reduced H' to four hypotheses: UBPD, PMH-DS, PCF, RT. This paper advances on three fronts: (1) character refinement and second-order reduction of PMH-DS, (2) Shell-Depth Lemma, (3) parity-mediated PCF architecture.</p>
+
+      <h3>1.2 A priori principles</h3>
+      <p><strong>(P1)</strong> η and residue class are systematically linked. ρ_E(p) = ρ_E(p-1)+1; small factors of p-1 are determined by p mod q.</p>
+      <p><strong>(P2)</strong> The link does not block PMH. β(t) absorbs the principal character; residue bias enters log L(s,χ) for non-principal χ. Same order in t ≠ same order in singularity.</p>
+      <p><strong>(P3)</strong> PMH is an external mathematical input.</p>
+      <p><strong>(P4)</strong> θ-mediated separation. f(n-1) = λ·(log N - θ) + ξ⁻(n). θ's leading-order k-drift is zero (Shell-Depth Lemma); finite-N correction is O(1/log x). ξ⁻ has an O(1) parity-driven shift.</p>
+      <p><strong>(P5)</strong> Variance orthogonal, mean non-orthogonal. Var(ξ⁻) is k-independent; E[ξ⁻] has k-drift.</p>
+      <p><strong>(P6)</strong> θ is k-independent in leading order. Shell-Depth Lemma.</p>
+      <p><strong>(P7)</strong> μ⁻ slope = θ contribution + ξ⁻ contribution. +0.077 = 0.035 + 0.042.</p>
+      <p><strong>(P8)</strong> ξ⁻ positive drift from parity constraint. High Ω(n) → n even → n-1 odd → P⁻(n-1) large → η positive.</p>
+      <p><strong>(P9)</strong> ξ(n) negative drift from small-prime dominance. High Ω = small primes → η negative.</p>
+
+      <h3>1.3 Notation</h3>
+      <p>As in Paper 46. Additional:</p>
+      <p>η(p) := ρ_E(p) - λ·log p (centered prime residual).</p>
+      <p><strong>ξ and ξ⁻ definitions (both centered relative to current n):</strong></p>
+      <p>ξ(n) := f(n) - λ·log n</p>
+      <p>ξ⁻(n) := f(n-1) - λ·log n (not f(n-1) - λ·log(n-1))</p>
+      <p>This ensures f(n) = λ·(log N - θ) + ξ(n) and f(n-1) = λ·(log N - θ) + ξ⁻(n) share the same θ, making the decomposition check an exact identity.</p>
+      <p>Characters mod 12: χ₀ (principal), χ₃, χ₄, χ₁₂. Theoretical definition of c_χ(t): harmonic-prime Fourier coefficient c_χ(t) ~ lim_{x→∞} [1/log log x]·Σ_{p≤x, p∤Q} e^{tη(p)}·χ̄(p)/p. Numerical approximation uses classwise empirical mean c_χ^{emp}(t).</p>
+
+      <h3>1.4 Main results</h3>
+      <p><strong>(1)</strong> η(p) residue-class non-uniformity. Q=12 between/total = 17.6%.</p>
+      <p><strong>(2)</strong> CR-PMH-DS₂(12). Second-order character-refined prime input. Numerically verified.</p>
+      <p><strong>(3)</strong> Shell-Depth Lemma (theorem-level). log E[e^{-uθ} | Ω=k] = -log(1+u) + O(ε_x + 1/log x).</p>
+      <p><strong>(4)</strong> μ⁻ slope decomposition + parity constraint.</p>
+      <p><strong>(5)</strong> PCF₂ numerically confirmed. μ⁻ = O(k) ✓, Var⁻ = O(1) ✓.</p>
+
+      <h2>§2 Residue-Class Structure of η(p)</h2>
+
+      <h3>2.1 Data (N = 10⁷)</h3>
+      <table>
+        <thead>
+          <tr><th>q</th><th>between/total</th><th>Corr(η, χ)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>3</td><td>12.2%</td><td>-0.349</td></tr>
+          <tr><td>4</td><td>5.2%</td><td>-0.228</td></tr>
+          <tr><td>12</td><td><strong>17.6%</strong></td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 Classwise η (Q=12)</h3>
+      <table>
+        <thead>
+          <tr><th>a mod 12</th><th>E[η]</th><th>Var[η]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>-0.423</td><td>0.548</td></tr>
+          <tr><td>5</td><td>+0.063</td><td>0.483</td></tr>
+          <tr><td>7</td><td>-0.128</td><td>0.533</td></tr>
+          <tr><td>11</td><td>+0.487</td><td>0.483</td></tr>
+        </tbody>
+      </table>
+      <p>Structural explanation (P1): p ≡ 1 mod 3 ⟹ 3|p-1 ⟹ p-1 has small factor ⟹ ρ_E(p-1) smaller ⟹ η more negative.</p>
+
+      <h3>2.3 Character coefficients</h3>
+      <table>
+        <thead>
+          <tr><th>χ</th><th>c^{emp}(0)</th><th>c'^{emp}(0)</th><th>c''^{emp}(0)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>χ₀</td><td>1.000</td><td>0.000</td><td>0.621</td></tr>
+          <tr><td>χ₃</td><td><strong>0.000</strong></td><td>-0.275</td><td>0.017</td></tr>
+          <tr><td>χ₄</td><td><strong>0.000</strong></td><td>-0.180</td><td>-0.014</td></tr>
+          <tr><td>χ₁₂</td><td><strong>0.000</strong></td><td>+0.032</td><td>0.103</td></tr>
+        </tbody>
+      </table>
+      <p>c_χ(0) = 0 for χ ≠ χ₀ (character orthogonality). Residue bias enters log L(s,χ) for non-principal χ. Same order in t ≠ same order in singularity.</p>
+
+      <h2>§3 CR-PMH-DS₂(12)</h2>
+
+      <h3>3.1 Strategic reduction</h3>
+      <p>Conjecture 2 uses only first- and second-order cumulants. Full PMH-DS far exceeds requirements.</p>
+
+      <h3>3.2 Correct form</h3>
+      <p><strong>CR-PMH-DS(12):</strong></p>
+      <p>Σ_{p∤12} e^{t·η(p)} / p^w = β(t)·log(1/(w-1)) + Σ_{χ≠χ₀} c_χ(t)·log L(w,χ) + H₁₂(w,t)</p>
+      <p>H₁₂ analytic in Re(w) > 1-δ.</p>
+      <p>Key (P2): c_χ(t) and β(t)-1 are both O(t), but multiply different singularities. β multiplies log(1/(w-1)) (divergent at w=1); c_χ multiplies log L(w,χ) (finite at w=1 for fixed conductor).</p>
+
+      <h3>3.3 Second-order reduction</h3>
+      <p><strong>Hypothesis CR-PMH-DS₂(12).</strong></p>
+      <p>A₁(w) := Σ_{p∤12} [η(p) - Σ_{χ≠χ₀} c'_χ(0)·χ(p)] / p^w</p>
+      <p>A₂(w) := Σ_{p∤12} [η(p)² - Var(η) - Σ_{χ≠χ₀} c''_χ(0)·χ(p)] / p^w</p>
+      <p>Require A₁ and A₂ to admit analytic continuation in Re(w) > 1-δ. These are prime sums of fixed additive functions — standard Mertens type.</p>
+
+      <h3>3.4 Numerical verification</h3>
+      <table>
+        <thead>
+          <tr><th>t</th><th>raw Σ</th><th>β(t)·log log N</th><th>res_raw</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.00</td><td>2.208</td><td>2.780</td><td>-0.572</td></tr>
+          <tr><td>0.10</td><td>2.278</td><td>2.781</td><td>-0.504</td></tr>
+          <tr><td>0.50</td><td>2.685</td><td>2.818</td><td>-0.134</td></tr>
+        </tbody>
+      </table>
+      <p>x-flatness: res_raw ≈ -0.504 constant from x = 10⁵ to 10⁷. Scalar PMH-DS is already an excellent approximation. Character correction ~0.017 — formal correction, not numerical necessity.</p>
+
+      <h3>3.5 Roy Reduction</h3>
+      <p>Roy 2025's LSD for products of L-functions handles the second half: property P → LSD → coefficient extraction → SCF.</p>
+      <p>The first half (CR-PMH-DS → property P) remains to be proved. The analyticity of H₁₂ is the true gap — requires prime cancellation input.</p>
+      <p>Roy does not prove PMH-DS, but proves nearly everything except PMH-DS.</p>
+
+      <h3>3.6 Second-Order Bridge Proposition</h3>
+      <p><strong>Proposition.</strong> If CR-PMH-DS₂(12) holds (A₁, A₂ analytic in Re(w)>1-δ), plus UBPD (Local Euler Factor Lemma controlling prime-power tail), then via Selberg-Delange derivative extraction:</p>
+      <p>(i) μ_{x,k} = λ·log x + k·a₁ + O(1), where a₁ = (log β)'(0).</p>
+      <p>(ii) Var(f | Ω=k) = k·a₂ + O(1), where a₂ = (log β)''(0).</p>
+      <p><em>Remark.</em> Weaker than full SCF — gives only mean and variance k-linearity, not the full log-mgf. But sufficient for Conjecture 2.</p>
+
+      <h2>§4 Shell-Depth Lemma</h2>
+
+      <h3>4.1 Theorem</h3>
+      <p>Let S_k(y) := #{n ≤ y : Ω(n) = k}, ν_{x,k} := uniform measure on {n ≤ x : Ω(n) = k}, θ_x(n) := log x - log n.</p>
+      <p><strong>Hypothesis (SS_Ω).</strong> There exist K > 0, a locally Lipschitz function Φ_K, and ε_x → 0, such that for all sufficiently large x, uniformly for x^{1/2} ≤ y ≤ x and 1 ≤ k ≤ K·log₂x:</p>
+      <p>S_k(y) = [y/log y] · [(log₂y)^{k-1}/(k-1)!] · Φ_K((k-1)/log₂y) · (1 + O_K(ε_x))</p>
+      <p><em>Remark.</em> This is the standard Ω-Sathe-Selberg asymptotic. Gafni-Robles 2025 and Roy 2025 use equivalent forms.</p>
+      <p><strong>Shell-Depth Lemma.</strong> Under (SS_Ω), for 0 ≤ u ≤ u₀ < 1, uniformly for 1 ≤ k ≤ K·log₂x:</p>
+      <p><strong>log E_{ν_{x,k}}[e^{-uθ}] = -log(1+u) + O_{K,u₀}(ε_x + 1/log x)</strong></p>
+      <p>The leading order is independent of k.</p>
+      <p><em>Remark.</em> The theorem range is restricted to u ≥ 0 (decreasing weight n^{-u}). Extension to |u| < 1 requires stronger ratio bounds on small-t intervals; this is deferred. Application to Conjecture 2 requires only u ≥ 0.</p>
+
+      <h3>4.2 Proof</h3>
+      <p><strong>(1) Counting ratio.</strong> From (SS_Ω), for x^{-1/2} ≤ t ≤ 1:</p>
+      <p>S_k(xt)/S_k(x) = t · (1 + O_K(ε_x + (1+|log t|)/log x))  ...... (R)</p>
+      <p>In the central window k ≤ K·log₂x, the k-dependent corrections are O(1/log x).</p>
+      <p><strong>(2) Small-t truncation.</strong> Split [0,1] into [0, x^{-1/2}] ∪ [x^{-1/2}, 1]. The first segment uses the trivial bound 0 ≤ S_k(xt)/S_k(x) ≤ 1. Since u ≥ 0, ∫₀^{x^{-1/2}} t^{u-1} dt = O(x^{-u₀/2}) → 0.</p>
+      <p><strong>(3) Main segment.</strong> By Abel/partial summation: E[e^{-uθ}] = 1 - u·∫₀¹ t^{u-1}·[S_k(xt)/S_k(x)] dt. Substituting (R) into [x^{-1/2}, 1]:</p>
+      <p>Main term = 1 - u·∫₀¹ t^u dt = 1/(1+u)</p>
+      <p>Error controlled by ∫₀¹ t^u·(1+|log t|) dt < ∞.</p>
+      <p>Hence E[e^{-uθ}] = 1/(1+u) · (1 + O(ε_x + 1/log x)).</p>
+      <p><strong>(4) Take log.</strong> For 0 ≤ u ≤ u₀ < 1, 1/(1+u) is bounded away from 0; taking log yields the conclusion. ■</p>
+
+      <h3>4.3 Finite-N correction</h3>
+      <p>In the current data window (N = 10⁷, k = 2…14), E[θ|k] has local linear slope = -0.011/k. Multiplied by λ this gives +0.035 — an O(1/log x) correction visible at finite N, not a structural k-linear coefficient. At the theorem level, θ's k-drift = O(1/(log x · log₂x)) → 0 as x → ∞.</p>
+
+      <h2>§5 μ⁻ Slope Decomposition</h2>
+
+      <h3>5.1 Decomposition formula</h3>
+      <p>μ⁻ = λ·(log N - E[θ|k]) + E[ξ⁻|k] (exact identity, check = 0.000000 ✓)</p>
+
+      <h3>5.2 Data</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>E[θ]</th><th>E[ξ_n]</th><th>E[ξ⁻]</th><th>μ</th><th>μ⁻</th><th>μ-μ⁻</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>1.044</td><td>+0.374</td><td>+0.074</td><td>47.45</td><td>47.15</td><td>+0.30</td></tr>
+          <tr><td>8</td><td>0.935</td><td>-0.541</td><td>+0.546</td><td>46.88</td><td>47.96</td><td>-1.09</td></tr>
+          <tr><td>14</td><td>0.892</td><td>-2.024</td><td>+0.594</td><td>45.53</td><td>48.15</td><td>-2.62</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.3 Finite-window local slopes (N = 10⁷, k = 2…14)</h3>
+      <p><em>Note: These are finite-window local linear fits, not asymptotic coefficients. At the theorem level, θ contributes O(1/log x) → 0, ξ⁻ contributes O(1) (bounded parity shift).</em></p>
+      <table>
+        <thead>
+          <tr><th>Source</th><th>μ slope (local)</th><th>μ⁻ slope (local)</th><th>theorem order</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>θ (-λ × (-0.011))</td><td>+0.035</td><td>+0.035</td><td>O(1/log x)</td></tr>
+          <tr><td>ξ (shell / pred)</td><td><strong>-0.221</strong></td><td><strong>+0.042</strong></td><td>O(1)</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>-0.186</strong></td><td><strong>+0.077</strong></td><td>O(1)</td></tr>
+        </tbody>
+      </table>
+      <p>(μ-μ⁻) slope = -0.263. μ decline driven by ξ(n)'s strong negative drift (P9). μ⁻ rise from θ and ξ⁻ contributing roughly equal shares (P7).</p>
+
+      <h2>§6 Parity Constraint</h2>
+
+      <h3>6.1 Mechanism chain (P8)</h3>
+      <p>High Ω(n)=k → n has many prime factors, more likely divisible by 2 multiple times → n even → n-1 odd → P⁻(n-1) larger → large primes have more positive η(p) → ξ(n-1) positive drift.</p>
+
+      <h3>6.2 Quantitative verification</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>E[Ω(n-1)]</th><th>E[log P⁻(n-1)]</th><th>P(n-1 even)</th><th>E[ξ⁻]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>4.60</td><td>1.13</td><td>0.817</td><td>+0.074</td></tr>
+          <tr><td>8</td><td>2.65</td><td>4.70</td><td>0.049</td><td>+0.546</td></tr>
+          <tr><td>14</td><td>2.58</td><td>4.92</td><td>0.001</td><td>+0.594</td></tr>
+        </tbody>
+      </table>
+      <p>Slopes: E[Ω(n-1)] declining -0.143/k, E[log P⁻(n-1)] rising +0.305/k, P(even) declining -0.058/k.</p>
+
+      <h3>6.3 Even vs odd</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>E[ξ|even]</th><th>E[ξ|odd]</th><th>diff</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>0.159</td><td>0.373</td><td>-0.214</td></tr>
+          <tr><td>8</td><td>0.285</td><td>0.560</td><td>-0.275</td></tr>
+          <tr><td>12</td><td>0.297</td><td>0.604</td><td>-0.307</td></tr>
+        </tbody>
+      </table>
+      <p>Even n-1 has systematically lower ξ (η(2) more negative). At high k, even proportion drops dramatically → E[ξ⁻] pushed toward the more positive odd value.</p>
+
+      <h3>6.4 Within-stratum drift</h3>
+      <p>Stratified by Ω(n-1), E[ξ] rises with k within each stratum — not only a composition effect but also within-stratum drift (parity's second-order constraint on prime factor sizes).</p>
+
+      <h3>6.5 Variance orthogonality</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>Var(ξ⁻)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>1.10</td></tr>
+          <tr><td>8</td><td>1.00</td></tr>
+          <tr><td>14</td><td>0.99</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Var(ξ⁻) ≈ 1.0, k-independent. Conditioning changes the center but not the spread.</strong></p>
+
+      <h2>§7 PCF₂</h2>
+
+      <h3>7.1 Target</h3>
+      <p>Prove μ⁻ = O(k), Var⁻ = O(k).</p>
+
+      <h3>7.2 μ⁻ = O(k)</h3>
+      <p>In the current finite window (N=10⁷), local fit gives μ⁻ ≈ λ·log x + 0.077k + O(1). At the theorem level, only O(1/log x) from θ + O(1) from ξ⁻ is claimed, yielding μ⁻ = λ·log x + O(k).</p>
+      <p>Sufficient for Conjecture 2's poly(k) target.</p>
+
+      <h3>7.3 Var⁻ = O(1)</h3>
+      <p>Var⁻(f) = λ²·Var(θ|k) + Var(ξ⁻|k) - 2λ·Cov(θ,ξ⁻|k) ≈ O(1) + O(1) + O(1) = O(1).</p>
+      <p>Data confirmed: Var(ξ⁻) ≈ 1.0, k-independent (P5).</p>
+      <p><strong>Note:</strong> Var⁻ = O(1) requires two explicit inputs: (a) Var(ξ⁻|Ω=k) = O(1) (shifted-micro variance), (b) Cov(θ,ξ⁻|Ω=k) = O(1) (cross term). Both have strong numerical support but are not yet proved as theorems.</p>
+
+      <h3>7.4 Strictification route</h3>
+      <p>(a) θ contribution O(k): from Shell-Depth Lemma's O(1/log x) correction.</p>
+      <p>(b) ξ⁻ mean contribution O(1): high Ω(n) → n even → n-1 odd → E[ξ|odd] ≈ 0.5 (fixed constant). Parity constraint transmits a bounded shift.</p>
+      <p>(c) Var⁻ = O(1): requires shifted-micro variance input (Var(ξ⁻|k) = O(1)) and cross term input (Cov(θ,ξ⁻|k) = O(1)). Both numerically confirmed.</p>
+
+      <h2>§8 Complete H' Closure Chain</h2>
+      <div class="chain-box">
+        <pre>Proposition 3 (a)(b)(c) (unconditional)
++ UBPD → Local Euler Factor Lemma
+
++ CR-PMH-DS₂(12) → Shell: μ = λ log x + O(k), Var(f) = O(k)
+
++ Shell-Depth Lemma → E[θ|k] k-slope = O(1/log x)
++ Parity-mean input → E[ξ⁻|k] = O(1) (bounded shift)
++ Shifted-micro variance input → Var(ξ⁻|k) = O(1), Cov(θ,ξ⁻|k) = O(1)
+→ PCF₂: μ⁻ = λ log x + O(k), Var⁻ = O(k)
+→ |μ-μ⁻| = O(k)
+
++ RT → E[(Δr̃)²] ≤ poly(k)
+
+→ E[(Δf)²] = O(k²) → E[(ΔM_spf)²] = O(poly(k)) → Conjecture 2
+→ Paper 44 chain → H'</pre>
+      </div>
+
+      <h3>Distance assessment</h3>
+      <table>
+        <thead>
+          <tr><th>Layer</th><th>Input</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Prime</td><td>Proposition 3</td><td><strong>theorem</strong></td></tr>
+          <tr><td>Prime</td><td>UBPD + Local Factor</td><td>hypothesis + sketch</td></tr>
+          <tr><td>Prime</td><td>CR-PMH-DS₂(12)</td><td><strong>numerically verified + form determined</strong></td></tr>
+          <tr><td>Macro</td><td>Shell-Depth Lemma</td><td><strong>theorem</strong></td></tr>
+          <tr><td>Shifted-mean</td><td>Parity → E[ξ⁻|k] = O(1)</td><td><strong>mechanism complete + numerically confirmed</strong></td></tr>
+          <tr><td>Shifted-var</td><td>Var(ξ⁻|k) = O(1)</td><td><strong>numerically confirmed</strong> (needs strictification)</td></tr>
+          <tr><td>Shifted</td><td>PCF₂ (composite)</td><td><strong>numerically confirmed</strong></td></tr>
+          <tr><td>DP</td><td>RT</td><td>hypothesis (numerical O(1) declining)</td></tr>
+          <tr><td>DP</td><td>Conj.2→H'</td><td><strong>Paper 44+42 chain</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§9 SAE Interpretation</h2>
+
+      <h3>9.1 Three effects of conditioning</h3>
+      <p>Ω=k conditioning simultaneously does three things:</p>
+      <p>(a) <strong>Compresses within-shell fluctuation</strong> (Var(f), Var(ξ) = O(1) — Paper 46 P5)</p>
+      <p>(b) <strong>Separates shell and predecessor means</strong> (μ-μ⁻ ≈ -0.26k — Paper 46 P1)</p>
+      <p>(c) <strong>Indirectly distorts predecessor factor structure via parity</strong> (ξ⁻ mean drift +0.042/k — this paper P8)</p>
+      <p>(a) and (b) were understood in Paper 46. (c) is this paper's new discovery. Together they constitute the complete microscopic picture of "conditioning bias."</p>
+
+      <h3>9.2 Variance orthogonal, mean non-orthogonal</h3>
+      <p>Conditioning changes ξ⁻'s center (mean drift) but not its spread (variance k-independent). This is the precise realization of SAE's "fluctuation is the intrinsic quantity" on the predecessor side: the magnitude of fluctuation is determined by the system's internal structure; conditioning can only shift the observation window's center.</p>
+
+      <h3>9.3 Parity as arithmetic constraint propagation</h3>
+      <p>n and n-1's factor structures are coupled through two channels: (1) shared θ (positional coupling), (2) parity constraint (even-odd coupling). (1) accounts for 89% of Corr(f,f⁻). (2) accounts for ξ⁻'s mean drift. Both are propagation of arithmetic constraints — structural, not random.</p>
+
+      <h2>§10 Open Questions</h2>
+      <p>1. <strong>Proof of CR-PMH-DS₂.</strong> Analytic continuation of A₁, A₂ prime sums. Possibly via Bombieri-Vinogradov or large sieve.</p>
+      <p>2. <strong>Strictification of parity constraint.</strong> High Ω(n) → n even → n-1 odd → E[ξ|odd] bounded. Requires sieve bound.</p>
+      <p>3. <strong>Global proof of UBPD.</strong> sup|δ_a(p)| < ∞.</p>
+      <p>4. <strong>Strict proof of RT.</strong> E[(Δr̃)²] ≤ poly(k). Data says O(1) and declining.</p>
+      <p>5. <strong>Can E[ξ(n) | Ω=k]'s -0.221/k be derived from η's prime-size distribution?</strong></p>
+
+      <h2>Data Sources</h2>
+      <p>Scripts: pmh_uniformity.c, pmh_character.c, theta_latent.c, mu_slope_source.c, xi_drift_breakdown.c (C, gcc -O2). Data: ρ_E via DP min for n ≤ 10⁷+1.</p>
+
+      <h2>References</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLVI. DOI: 10.5281/zenodo.19303511.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLIV. DOI: 10.5281/zenodo.19247859.</p>
+      <p>[3] H. Qin. ZFCρ Paper XLII. DOI: 10.5281/zenodo.19226607.</p>
+      <p>[4] M. Verwee (2026). arXiv:2603.17682.</p>
+      <p>[5] A. Roy (2025). arXiv:2511.15928.</p>
+      <p>[6] A. Gafni, N. Robles (2025). arXiv:2502.05298.</p>
+      <p>[7] É. Goudout (2020). HAL:hal-02985866.</p>
+      <p>[8] R. Benatar (2024). arXiv:2408.16576.</p>
+      <p>[9] A. Mangerel (2016). Bivariate Erdős-Kac.</p>
+
+      <h2>Acknowledgments</h2>
+      <p><strong>ChatGPT (Gongxihua):</strong> Complete proof of the Shell-Depth Lemma (Sathe-Selberg counting ratio + partial summation). Correct form of CR-PMH-DS(12) and character coefficient correction (c_χ(0)=0 by orthogonality). Roy reduction (property P's correct object is the (z,t)-family). Strategic reduction proposal (full PMH → CR-PMH-DS₂). Precise judgment that PMH-DS ≠ SCF ("Roy proves nearly everything except PMH-DS"). Fourier-Sub-PCF₂ proposal. Local Euler Factor Lemma sketch. Demotion of UL-strong to bonus (PMH is SCF's correct prime input).</p>
+      <p><strong>Claude (Zilu):</strong> All numerical experiments (η residue-class uniformity, character-refined PMH verification, μ⁻ slope decomposition, ξ⁻ drift breakdown, parity verification). Text drafting, working notes v1–v5.</p>
+      <p><strong>Claude (Thermodynamic thread):</strong> η–Dirichlet character independence judgment (partially corrected by data but core judgment "does not block PMH" confirmed). PMH-DS three-step attack route proposal.</p>
+      <p><strong>Gemini (Zixia):</strong> First proposal of θ-mediated PCF architecture (Sub-PCF 1 + Sub-PCF 2 macroscopic/microscopic separation). Judgment that moment method cannot give O(1) log-mgf error. Bivariate Selberg-Delange as direct route suggestion.</p>
+      <p><strong>Grok (Zigong):</strong> Identification of two gaps in Goudout + bridge route (ω→Ω transfer + shifted weighted additive moment). Priority judgment that θ-mediated dominates Goudout route. Series consistency confirmation.</p>
+      <p><strong>Han Qin (author):</strong> A priori discovery of P8 (parity constraint) — identifying from data (P(n-1 even) dropping from 82% to 0.1%) that parity drives ξ⁻ drift. A priori audit methodology (incremental construction of P1–P9). Acceptance of strategic reduction. Proposal of μ⁻ slope decomposition.</p>
+      <p>Final text independently completed by the author.</p>
+
+      <div class="series-nav">
+        <a href="zfcrho46.html">← Paper XLVI</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ CHINESE ============================================================ -->
+  <div id="content-zh" class="lang-content">
+    <div class="paper-header">
+      <div class="paper-series">ZFCρ Series · Paper XLVII</div>
+      <h1 class="paper-title">字符精炼素数输入、Shell-Depth 引理与 Parity-Mediated PCF₂</h1>
+      <div class="paper-authors">Han Qin (秦汉) &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+      <a href="https://doi.org/10.5281/zenodo.19323564" target="_blank" rel="noopener" class="zenodo-link">
+        DOI: 10.5281/zenodo.19323564
+      </a>
+    </div>
+
+    <div class="paper-body">
+
+      <div class="note-box">
+        <p><strong>摘要</strong></p>
+        <p>Paper 46 把 H' 的条件闭合归约到四个假设（UBPD, PMH-DS, PCF, RT）。本文在三个方向推进。</p>
+        <p>第一，发现 η(p) = ρ_E(p) - λ·log p 在 residue classes 上有系统性非均匀性（Q=12 的 between-class variance 占总 variance 的 17.6%），来自 p-1 的小因子结构。这促使把 scalar PMH-DS 升级为 character-refined CR-PMH-DS(12)——scalar 已是极好近似（残差 ≈ -0.504, x-independent），CR 是结构上更正确的理论形式。进一步做战略降级：Conjecture 2 只需一二阶 cumulant，full PMH-DS 降为 CR-PMH-DS₂（只控制 η 和 η² 的 character-projected prime sum）。</p>
+        <p>第二，Shell-Depth Lemma：θ = log N - log n 在 Ω=k 条件下的 log-mgf 主阶与 k 无关（A₁(u) = 0）。证明用 Sathe-Selberg 计数比 + partial summation。这改写了 PCF 的架构——θ 不是 PCF 的 k-线性主项来源。</p>
+        <p>第三，发现 μ⁻ 的有限窗口局部斜率（+0.077/k at N=10⁷）可精确分解为两个来源：θ 的 O(1/log x) 修正（贡献 46%）和 ξ⁻ 的 O(1) parity-driven shift（贡献 54%）。Parity constraint 的机制：高 Ω(n) → n 偶 → n-1 奇 → P⁻(n-1) 更大 → η 更正 → ξ⁻ 正偏移。Conditioning 通过 parity 链改变了 ξ⁻ 的中心但不改变其散布（Var(ξ⁻) ≈ 1.0 k-independent）。</p>
+        <p>PCF₂ 数值确认：μ⁻ = λ·log x + O(k) ✓，Var⁻(f) = O(1) ✓。在 theorem 层面，H' 的剩余缺口为：CR-PMH-DS₂ 的证明 + parity shift 的严格化 + UBPD + RT。</p>
+        <p><strong>关键词：</strong> 整数复杂度，ρ-算术，character-refined PMH，shell-depth，parity constraint，predecessor drift，Conjecture 2，H' closure</p>
+      </div>
+
+      <h2>§1 引言</h2>
+
+      <h3>1.1 问题</h3>
+      <p>Paper 46（DOI: 10.5281/zenodo.19303511）把 H' 归约到四个假设：UBPD（uniform bounded prime-power defect），PMH-DS（prime mean hypothesis, Dirichlet-series 版），PCF（predecessor cumulant fibre），RT（remainder tameness）。</p>
+      <p>本文在三个方向推进：(1) PMH-DS 的 character refinement 和二阶降级，(2) Shell-Depth Lemma，(3) PCF 的 parity-mediated 架构。</p>
+
+      <h3>1.2 先验</h3>
+      <p><strong>(P1) η 和 residue class 有系统性关联。</strong> ρ_E(p) = ρ_E(p-1)+1，p-1 的小因子由 p mod q 决定。</p>
+      <p><strong>(P2) 关联不阻挡 PMH。</strong> β(t) 吸收主特征，residue bias 进入 log L(s,χ)。同阶于 t ≠ 同阶于奇性。</p>
+      <p><strong>(P3) PMH 是外部数学输入。</strong> SAE 不直接回答"Dirichlet series 是否延拓"。</p>
+      <p><strong>(P4) θ-mediated 分离。</strong> f(n-1) = λ·(log N - θ) + ξ⁻(n)。θ 的主阶 k-drift 为零（Shell-Depth Lemma），有限 N 下有 O(1/log x) 修正。ξ⁻ 有 O(1) 的 parity-driven shift。</p>
+      <p><strong>(P5) 方差正交、均值非正交。</strong> Var(ξ⁻) k-independent，E[ξ⁻] 有 k-drift。</p>
+      <p><strong>(P6) θ 主阶与 k 无关。</strong> Shell-Depth Lemma。</p>
+      <p><strong>(P7) μ⁻ slope = θ 贡献 + ξ⁻ 贡献。</strong> +0.077 = 0.035 + 0.042。</p>
+      <p><strong>(P8) ξ⁻ 正 drift 来自 parity constraint。</strong> 高 Ω(n) → n 偶 → n-1 奇 → P⁻(n-1) 大 → η 正。</p>
+      <p><strong>(P9) ξ(n) 负 drift 来自 small-prime dominance。</strong> 高 Ω = 小素因子 → η 负。</p>
+
+      <h3>1.3 记号</h3>
+      <p>同 Paper 46。额外记号：</p>
+      <p>η(p) := ρ_E(p) - λ·log p（centered prime residual）。</p>
+      <p><strong>ξ 和 ξ⁻ 的定义（注意：均相对当前 n centering）：</strong></p>
+      <p>ξ(n) := f(n) - λ·log n</p>
+      <p>ξ⁻(n) := f(n-1) - λ·log n（不是 f(n-1) - λ·log(n-1)）</p>
+      <p>这样 f(n) = λ·(log N - θ) + ξ(n)，f(n-1) = λ·(log N - θ) + ξ⁻(n)，其中 θ = log N - log n。两个分解共享同一个 θ，decomposition check 成为精确恒等式。</p>
+      <p>χ mod 12 的四个 characters：χ₀（principal），χ₃，χ₄，χ₁₂。c_χ(t) 的理论定义为 harmonic-prime Fourier coefficient：c_χ(t) ~ lim_{x→∞} [1/log log x]·Σ_{p≤x, p∤Q} e^{tη(p)}·χ̄(p)/p。数值近似用 classwise empirical mean c_χ^{emp}(t) := (1/φ(Q))·Σ_a e^{t·η_a}·χ(a)。本文表格中的数值来自 c_χ^{emp}。</p>
+
+      <h3>1.4 主要结果</h3>
+      <p><strong>(1) η(p) 的 residue-class 非均匀性。</strong> Q=12 between/total = 17.6%。Corr(η, χ₃) = -0.349。</p>
+      <p><strong>(2) CR-PMH-DS₂(12)。</strong> 二阶版 character-refined prime input。数值成立。</p>
+      <p><strong>(3) Shell-Depth Lemma（theorem-level）。</strong> log E[e^{-uθ} | Ω=k] = -log(1+u) + O(ε_x + 1/log x)。</p>
+      <p><strong>(4) μ⁻ slope decomposition + parity constraint。</strong> +0.077 = θ(0.035) + ξ⁻(0.042)。Parity 机制完整。</p>
+      <p><strong>(5) PCF₂ 数值确认。</strong> μ⁻ = O(k) ✓，Var⁻ = O(1) ✓。</p>
+
+      <h2>§2 η(p) 的 Residue-Class Structure</h2>
+
+      <h3>2.1 数据（N = 10⁷）</h3>
+      <table>
+        <thead>
+          <tr><th>q</th><th>between/total</th><th>Corr(η, χ)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>3</td><td>12.2%</td><td>-0.349</td></tr>
+          <tr><td>4</td><td>5.2%</td><td>-0.228</td></tr>
+          <tr><td>12</td><td><strong>17.6%</strong></td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 Classwise η（Q=12）</h3>
+      <table>
+        <thead>
+          <tr><th>a mod 12</th><th>E[η]</th><th>Var[η]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>-0.423</td><td>0.548</td></tr>
+          <tr><td>5</td><td>+0.063</td><td>0.483</td></tr>
+          <tr><td>7</td><td>-0.128</td><td>0.533</td></tr>
+          <tr><td>11</td><td>+0.487</td><td>0.483</td></tr>
+        </tbody>
+      </table>
+      <p>结构解释（P1）：p ≡ 1 mod 3 ⟹ 3|p-1 ⟹ p-1 有小因子 ⟹ ρ_E(p-1) 更小 ⟹ η 更负。</p>
+
+      <h3>2.3 Character coefficients</h3>
+      <p>c_χ(t) 的正确定义：harmonic-prime Fourier coefficient</p>
+      <p>c_χ(t) ~ lim_{x→∞} [1/log log x] · Σ_{p≤x, p∤Q} e^{tη(p)} · χ̄(p) / p</p>
+      <p>数值近似用 classwise empirical mean。</p>
+      <table>
+        <thead>
+          <tr><th>χ</th><th>c(0)</th><th>c'(0)</th><th>c''(0)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>χ₀</td><td>1.000</td><td>0.000</td><td>0.621</td></tr>
+          <tr><td>χ₃</td><td><strong>0.000</strong></td><td>-0.275</td><td>0.017</td></tr>
+          <tr><td>χ₄</td><td><strong>0.000</strong></td><td>-0.180</td><td>-0.014</td></tr>
+          <tr><td>χ₁₂</td><td><strong>0.000</strong></td><td>+0.032</td><td>0.103</td></tr>
+        </tbody>
+      </table>
+      <p>c_χ(0) = 0 for χ ≠ χ₀（character orthogonality）。Residue bias 只从一阶进入非主特征。</p>
+
+      <h2>§3 CR-PMH-DS₂(12)</h2>
+
+      <h3>3.1 战略降级</h3>
+      <p>Conjecture 2 只用一二阶 cumulant。Full PMH-DS（|t| ≤ t₀ 的 full log-mgf linearization）远超需要。二阶版只需 η 和 η² 的 character-projected prime sum。</p>
+
+      <h3>3.2 正确形式</h3>
+      <p><strong>CR-PMH-DS(12)：</strong></p>
+      <p>Σ_{p∤12} e^{t·η(p)} / p^w = β(t)·log(1/(w-1)) + Σ_{χ≠χ₀} c_χ(t)·log L(w,χ) + H₁₂(w,t)</p>
+      <p>H₁₂ 在 Re(w) > 1-δ 解析。</p>
+      <p><strong>关键（P2）：</strong> c_χ(t) 和 β(t)-1 同阶于 t，但乘的奇性不同。β 乘主奇点 log(1/(w-1))，c_χ 乘 log L(w,χ)（在 w=1 有限值）。</p>
+
+      <h3>3.3 二阶降级</h3>
+      <p><strong>Hypothesis CR-PMH-DS₂(12).</strong></p>
+      <p>A₁(w) := Σ_{p∤12} [η(p) - Σ_{χ≠χ₀} c'_χ(0)·χ(p)] / p^w</p>
+      <p>A₂(w) := Σ_{p∤12} [η(p)² - Var(η) - Σ_{χ≠χ₀} c''_χ(0)·χ(p)] / p^w</p>
+      <p>要求 A₁ 和 A₂ 在 Re(w) > 1-δ 延拓。这是两个固定 additive function 的 prime sum，标准 Mertens 型。</p>
+
+      <h3>3.4 数值验证</h3>
+      <table>
+        <thead>
+          <tr><th>t</th><th>raw Σ</th><th>β(t)·log log N</th><th>res_raw</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.00</td><td>2.208</td><td>2.780</td><td>-0.572</td></tr>
+          <tr><td>0.10</td><td>2.278</td><td>2.781</td><td>-0.504</td></tr>
+          <tr><td>0.50</td><td>2.685</td><td>2.818</td><td>-0.134</td></tr>
+        </tbody>
+      </table>
+      <p>x-flatness：res_raw ≈ -0.504 constant from x = 10⁵ to 10⁷。Scalar PMH-DS 已是极好近似。Character correction ~0.017——formal correction, not numerical necessity.</p>
+
+      <h3>3.5 Roy Reduction</h3>
+      <p>Roy 2025 的 LSD for products of L-functions 处理后半段：property P → LSD → coefficient extraction → SCF。</p>
+      <p>前半段（CR-PMH-DS → property P）仍需证明。H₁₂ 的解析性是真正的 gap——需要 prime cancellation input。</p>
+      <p>Roy 不是 PMH-DS 的证明，但他几乎证明了除 PMH-DS 之外的一切。</p>
+
+      <h3>3.6 二阶 Bridge Proposition</h3>
+      <p><strong>命题（CR-PMH-DS₂ → shell 一二阶 cumulant）。</strong> 若 CR-PMH-DS₂(12) 成立（A₁, A₂ 在 Re(w)>1-δ 延拓），加上 UBPD（Local Euler Factor Lemma 控制 prime-power tail），则通过 Selberg-Delange 的 derivative extraction（对 K_{x,k}(t) 在 t=0 取一二阶导）：</p>
+      <p>(i) μ_{x,k} = λ·log x + k·a₁ + O(1)，其中 a₁ = (log β)'(0) 由 A₁ 的 Mertens 常数决定。</p>
+      <p>(ii) Var(f | Ω=k) = k·a₂ + O(1)，其中 a₂ = (log β)''(0) 由 A₂ 的 Mertens 常数决定。</p>
+      <p><em>Remark.</em> 这比 full SCF 弱——只给均值和方差的 k-线性性，不给整个 log-mgf。但对 Conjecture 2 足够。严格证明需要 Selberg-Delange 系数对 z 的导数的 uniform control——这在 Roy 的框架内是标准的（Section 8 的 Cauchy extraction）。</p>
+
+      <h2>§4 Shell-Depth Lemma</h2>
+
+      <h3>4.1 定理</h3>
+      <p>设 S_k(y) := #{n ≤ y : Ω(n) = k}，ν_{x,k} := uniform measure on {n ≤ x : Ω(n) = k}，θ_x(n) := log x - log n。</p>
+      <p><strong>Hypothesis (SS_Ω).</strong> 存在常数 K > 0、局部 Lipschitz 函数 Φ_K、以及 ε_x → 0，使得对所有充分大的 x，一致于 x^{1/2} ≤ y ≤ x 和 1 ≤ k ≤ K·log₂x：</p>
+      <p>S_k(y) = [y/log y] · [(log₂y)^{k-1}/(k-1)!] · Φ_K((k-1)/log₂y) · (1 + O_K(ε_x))</p>
+      <p><em>Remark.</em> 这是标准的 Ω-Sathe-Selberg 渐近。Gafni-Robles 2025 和 Roy 2025 均使用了等价形式。</p>
+      <p><strong>Shell-Depth Lemma.</strong> 在 (SS_Ω) 下，对 0 ≤ u ≤ u₀ < 1，一致于 1 ≤ k ≤ K·log₂x：</p>
+      <p><strong>log E_{ν_{x,k}}[e^{-uθ}] = -log(1+u) + O_{K,u₀}(ε_x + 1/log x)</strong></p>
+      <p>主阶与 k 无关。</p>
+      <p><em>Remark.</em> 定理范围限于 u ≥ 0（即 n^{-u} 递减权重）。扩展到 |u| < 1 需要对小 t 区间给出比平凡界更强的 ratio bound，留待后续。对 Conjecture 2 的应用只需 u ≥ 0。</p>
+
+      <h3>4.2 证明</h3>
+      <p><strong>(1) 计数比。</strong> 由 (SS_Ω)，对 x^{-1/2} ≤ t ≤ 1（注意下界是 x^{-1/2}，不是 x^{1/2}）：</p>
+      <p>S_k(xt)/S_k(x) = t · [log x / log(xt)] · [(log₂(xt)/log₂x)^{k-1}] · [Φ_K(...)/Φ_K(...)] · (1+O(ε_x))</p>
+      <p>在 central window k ≤ K·log₂x 中：log₂(xt)/log₂x = 1 + O(|log t|/(log x · log₂x))，指数 k-1 乘以相对变化后只留 O(k/(log x · log₂x)) = O(1/log x)。Φ_K 比值同理。于是</p>
+      <p>S_k(xt)/S_k(x) = t · (1 + O_{K}(ε_x + (1+|log t|)/log x))  ...... (R)</p>
+      <p><strong>(2) 小 t 截断。</strong> 把 [0,1] 积分拆为 [0, x^{-1/2}] ∪ [x^{-1/2}, 1]。前段用平凡界 0 ≤ S_k(xt)/S_k(x) ≤ 1。因 u > -1（由 |u| < 1），∫₀^{x^{-1/2}} t^{u-1} dt = O(x^{-(1-u₀)/2}) → 0。</p>
+      <p><strong>(3) 主段。</strong> E[e^{-uθ}] = (1/S_k(x)) · Σ_{n≤x, Ω=k} (n/x)^u = 1 - u·∫₀¹ t^{u-1}·[S_k(xt)/S_k(x)] dt（Abel/partial summation）。</p>
+      <p>代入 (R) 到主段 [x^{-1/2}, 1]：</p>
+      <p>主项 = 1 - u·∫₀¹ t^u dt = 1 - u/(u+1) = 1/(1+u)</p>
+      <p>误差由 ∫₀¹ t^u·(1+|log t|) dt < ∞（u > -1）控制。</p>
+      <p>故 E[e^{-uθ}] = 1/(1+u) · (1 + O(ε_x + 1/log x))。</p>
+      <p><strong>(4) 取 log。</strong> |u| ≤ u₀ < 1 时 1/(1+u) 远离 0，取 log 得结论。■</p>
+
+      <h3>4.3 有限 N 修正</h3>
+      <p>在当前数据窗口（N = 10⁷, k = 2…14）内，E[θ|k] 的局部线性拟合斜率 = -0.011/k。乘以 λ 给出 +0.035——这是 O(1/log x) 修正在有限 N 下的体现，不是结构性的 k-线性系数。在 theorem 层面，θ 的 k-drift = O(1/(log x · log₂x)) → 0 as x → ∞。</p>
+
+      <h2>§5 μ⁻ Slope Decomposition</h2>
+
+      <h3>5.1 分解公式</h3>
+      <p>μ⁻ = λ·(log N - E[θ|k]) + E[ξ⁻|k]（精确恒等式，check = 0.000000 ✓）</p>
+      <p>μ⁻ 的 k-slope = -λ · d(E[θ])/dk + d(E[ξ⁻])/dk</p>
+
+      <h3>5.2 数据</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>E[θ]</th><th>E[ξ_n]</th><th>E[ξ⁻]</th><th>μ</th><th>μ⁻</th><th>μ-μ⁻</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>1.044</td><td>+0.374</td><td>+0.074</td><td>47.45</td><td>47.15</td><td>+0.30</td></tr>
+          <tr><td>8</td><td>0.935</td><td>-0.541</td><td>+0.546</td><td>46.88</td><td>47.96</td><td>-1.09</td></tr>
+          <tr><td>14</td><td>0.892</td><td>-2.024</td><td>+0.594</td><td>45.53</td><td>48.15</td><td>-2.62</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.3 有限窗口局部斜率（N = 10⁷, k = 2…14）</h3>
+      <p><em>注意：以下数字是有限窗口的局部线性拟合，不是 asymptotic coefficients。在 theorem 层面，θ 贡献 O(1/log x) → 0，ξ⁻ 贡献 O(1)（bounded parity shift）。</em></p>
+      <table>
+        <thead>
+          <tr><th>来源</th><th>μ slope（局部）</th><th>μ⁻ slope（局部）</th><th>theorem 量级</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>θ（-λ × (-0.011)）</td><td>+0.035</td><td>+0.035</td><td>O(1/log x)</td></tr>
+          <tr><td>ξ（shell / pred）</td><td><strong>-0.221</strong></td><td><strong>+0.042</strong></td><td>O(1)</td></tr>
+          <tr><td><strong>合计</strong></td><td><strong>-0.186</strong></td><td><strong>+0.077</strong></td><td>O(1)</td></tr>
+        </tbody>
+      </table>
+      <p>(μ-μ⁻) slope = -0.263。μ 下降主因是 ξ(n) 的强负 drift（P9）。μ⁻ 微升来自 θ 和 ξ⁻ 各贡献一半（P7）。</p>
+
+      <h2>§6 Parity Constraint</h2>
+
+      <h3>6.1 机制链（P8）</h3>
+      <p>高 Ω(n)=k → n 有很多素因子，更可能被 2 多次整除 → n 偶 → n-1 奇 → P⁻(n-1) 更大 → 大素因子的 η(p) 更正 → ξ(n-1) 正 drift。</p>
+
+      <h3>6.2 定量验证</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>E[Ω(n-1)]</th><th>E[log P⁻(n-1)]</th><th>P(n-1 even)</th><th>E[ξ⁻]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>4.60</td><td>1.13</td><td>0.817</td><td>+0.074</td></tr>
+          <tr><td>8</td><td>2.65</td><td>4.70</td><td>0.049</td><td>+0.546</td></tr>
+          <tr><td>14</td><td>2.58</td><td>4.92</td><td>0.001</td><td>+0.594</td></tr>
+        </tbody>
+      </table>
+      <p>斜率：E[Ω(n-1)] 下降 -0.143/k，E[log P⁻(n-1)] 上升 +0.305/k，P(even) 下降 -0.058/k。</p>
+
+      <h3>6.3 Even vs odd</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>E[ξ|even]</th><th>E[ξ|odd]</th><th>diff</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>0.159</td><td>0.373</td><td>-0.214</td></tr>
+          <tr><td>8</td><td>0.285</td><td>0.560</td><td>-0.275</td></tr>
+          <tr><td>12</td><td>0.297</td><td>0.604</td><td>-0.307</td></tr>
+        </tbody>
+      </table>
+      <p>偶数 n-1 的 ξ 系统性更低（η(2) 更负）。高 k 时偶数比例急剧下降 → E[ξ⁻] 被推向奇数的更正值。</p>
+
+      <h3>6.4 层内 drift</h3>
+      <p>按 Ω(n-1) 分层，每层内 E[ξ] 都随 k 微升——不只是组成效应，层内也有 drift（parity 对 within-stratum 素因子大小的二阶约束）。</p>
+
+      <h3>6.5 方差正交</h3>
+      <table>
+        <thead>
+          <tr><th>k</th><th>Var(ξ⁻)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>1.10</td></tr>
+          <tr><td>8</td><td>1.00</td></tr>
+          <tr><td>14</td><td>0.99</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Var(ξ⁻) ≈ 1.0 k-independent。Conditioning 改变中心不改变散布。</strong></p>
+
+      <h2>§7 PCF₂</h2>
+
+      <h3>7.1 目标</h3>
+      <p>证明 μ⁻ = O(k)，Var⁻ = O(k)。</p>
+
+      <h3>7.2 μ⁻ = O(k)</h3>
+      <p>在当前有限窗口（N=10⁷）上局部拟合为 μ⁻ ≈ λ·log x + 0.077k + O(1)。但在 theorem 层面，只主张 θ 项 O(1/log x) + ξ⁻ 项 O(1)，合计 μ⁻ = λ·log x + O(k)。</p>
+      <p>对 Conjecture 2 的 poly(k) 目标，这足够。</p>
+
+      <h3>7.3 Var⁻ = O(1)</h3>
+      <p>Var⁻(f) = λ²·Var(θ|k) + Var(ξ⁻|k) - 2λ·Cov(θ,ξ⁻|k) ≈ O(1) + O(1) + O(1) = O(1)。</p>
+      <p>数据确认：Var(ξ⁻) ≈ 1.0 k-independent（P5）。</p>
+      <p><strong>注意：</strong> Var⁻ = O(1) 需要两个显式输入：(a) Var(ξ⁻|Ω=k) = O(1)（shifted-micro variance），(b) Cov(θ,ξ⁻|Ω=k) = O(1)（cross term）。两者均有强数值支持但尚未证明为定理。</p>
+
+      <h3>7.4 严格化路线</h3>
+      <p>(a) θ 贡献的 O(k) 来自 Shell-Depth Lemma 的 O(1/log x) 修正。</p>
+      <p>(b) ξ⁻ 均值贡献的 O(1) bounded shift：高 Ω(n) 的 n 几乎都是偶数 → n-1 几乎都是奇数 → E[ξ | odd] ≈ 0.5（固定常数）。parity constraint 传递一个 bounded shift。</p>
+      <p>(c) Var⁻ = O(1) 需要 shifted-micro variance input（Var(ξ⁻|k) = O(1)）和 cross term input（Cov(θ,ξ⁻|k) = O(1)）。两者数值已确认。</p>
+
+      <h2>§8 完整 H' 闭合链</h2>
+      <div class="chain-box">
+        <pre>命题 3 (a)(b)(c)（unconditional）
++ UBPD → Local Euler Factor Lemma
+
++ CR-PMH-DS₂(12) → Shell: μ = λ log x + O(k), Var(f) = O(k)
+
++ Shell-Depth Lemma → E[θ|k] k-slope = O(1/log x)
++ Parity-mean input → E[ξ⁻|k] = O(1)（bounded shift）
++ Shifted-micro variance input → Var(ξ⁻|k) = O(1), Cov(θ,ξ⁻|k) = O(1)
+→ PCF₂: μ⁻ = λ log x + O(k), Var⁻ = O(k)
+→ |μ-μ⁻| = O(k)
+
++ RT → E[(Δr̃)²] ≤ poly(k)
+
+→ E[(Δf)²] = O(k²) → E[(ΔM_spf)²] = O(poly(k)) → Conjecture 2
+→ Paper 44 chain → H'</pre>
+      </div>
+
+      <h3>距离评估</h3>
+      <table>
+        <thead>
+          <tr><th>层</th><th>输入</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Prime</td><td>命题 3</td><td><strong>theorem</strong></td></tr>
+          <tr><td>Prime</td><td>UBPD + Local Factor</td><td>hypothesis + sketch</td></tr>
+          <tr><td>Prime</td><td>CR-PMH-DS₂(12)</td><td><strong>数值成立 + 形式确定</strong></td></tr>
+          <tr><td>Macro</td><td>Shell-Depth Lemma</td><td><strong>theorem</strong></td></tr>
+          <tr><td>Shifted-mean</td><td>Parity → E[ξ⁻|k] = O(1)</td><td><strong>机制完整 + 数值确认</strong></td></tr>
+          <tr><td>Shifted-var</td><td>Var(ξ⁻|k) = O(1)</td><td><strong>数值确认</strong>（尚需严格化）</td></tr>
+          <tr><td>Shifted</td><td>PCF₂（合成）</td><td><strong>数值确认</strong></td></tr>
+          <tr><td>DP</td><td>RT</td><td>hypothesis（数值 O(1) 下降）</td></tr>
+          <tr><td>DP</td><td>Conj.2→H'</td><td><strong>Paper 44+42 chain</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>§9 SAE 解读</h2>
+
+      <h3>9.1 Conditioning 的三重效应</h3>
+      <p>Ω=k conditioning 同时做了三件事：</p>
+      <p>(a) <strong>压缩 shell 内部的涨落</strong>（Var(f), Var(ξ) = O(1)——Paper 46 P5）</p>
+      <p>(b) <strong>拉开 shell 和 predecessor 的均值</strong>（μ-μ⁻ ≈ -0.26k——Paper 46 P1）</p>
+      <p>(c) <strong>通过 parity 间接扭曲 predecessor 的因子结构</strong>（ξ⁻ 均值 drift +0.042/k——本文 P8）</p>
+      <p>(a) 和 (b) 在 Paper 46 已经理解。(c) 是本文的新发现。三者共同构成了"conditioning bias"的完整微观图景。</p>
+
+      <h3>9.2 "方差正交、均值非正交"</h3>
+      <p>Conditioning 改变了 ξ⁻ 的中心（均值 drift）但不改变其散布（方差 k-independent）。这是 SAE 的"涨落是本征量"在 predecessor 侧的精确实现：涨落的大小由系统的内在结构决定，conditioning 只能移动观测窗口的中心。</p>
+
+      <h3>9.3 Parity 作为 arithmetic constraint propagation</h3>
+      <p>n 和 n-1 的因子结构通过两个渠道耦合：(1) 共享 θ（位置耦合），(2) parity constraint（奇偶耦合）。(1) 贡献了 89% 的 Corr(f,f⁻)。(2) 贡献了 ξ⁻ 的均值 drift。两者都是算术约束的传播——不是"随机"的，而是结构性的。</p>
+
+      <h2>§10 Open Questions</h2>
+      <p>1. <strong>CR-PMH-DS₂ 的证明。</strong> A₁, A₂ 的 prime sum 延拓。可能用 Bombieri-Vinogradov 或 large sieve。</p>
+      <p>2. <strong>Parity constraint 的严格化。</strong> 高 Ω(n) → n even → n-1 odd → E[ξ|odd] bounded。需要 sieve bound。</p>
+      <p>3. <strong>UBPD 的全局证明。</strong> sup|δ_a(p)| < ∞。</p>
+      <p>4. <strong>RT 的严格证明。</strong> E[(Δr̃)²] ≤ poly(k)。数据说 O(1) 且下降。</p>
+      <p>5. <strong>E[ξ(n) | Ω=k] 的 -0.221/k 能否从 η 的 prime-size distribution 精确推导？</strong></p>
+
+      <h2>数据来源</h2>
+      <p>脚本：pmh_uniformity.c, pmh_character.c, theta_latent.c, mu_slope_source.c, xi_drift_breakdown.c（C, gcc -O2）。数据：ρ_E via DP min for n ≤ 10⁷+1。</p>
+
+      <h2>参考文献</h2>
+      <p>[1] H. Qin. ZFCρ Paper XLVI. DOI: 10.5281/zenodo.19303511.</p>
+      <p>[2] H. Qin. ZFCρ Paper XLIV. DOI: 10.5281/zenodo.19247859.</p>
+      <p>[3] H. Qin. ZFCρ Paper XLII. DOI: 10.5281/zenodo.19226607.</p>
+      <p>[4] M. Verwee (2026). arXiv:2603.17682.</p>
+      <p>[5] A. Roy (2025). arXiv:2511.15928.</p>
+      <p>[6] A. Gafni, N. Robles (2025). arXiv:2502.05298.</p>
+      <p>[7] É. Goudout (2020). HAL:hal-02985866.</p>
+      <p>[8] R. Benatar (2024). arXiv:2408.16576.</p>
+      <p>[9] A. Mangerel (2016). Bivariate Erdős-Kac.</p>
+
+      <h2>致谢</h2>
+      <p><strong>ChatGPT（公西华）：</strong> Shell-Depth Lemma 的完整证明（Sathe-Selberg 计数比 + partial summation）。CR-PMH-DS(12) 的正确形式和 character coefficient 修正（c_χ(0)=0 by orthogonality）。Roy reduction（property P 的正确对象是 (z,t)-family）。战略降级建议（full PMH → CR-PMH-DS₂）。PMH-DS 不等于 SCF 的精确判断（"Roy 证了除 PMH-DS 之外的一切"）。Fourier-Sub-PCF₂ 建议。Local Euler Factor Lemma sketch。UL-strong 降级为 bonus（PMH 才是 SCF 的正确 prime input）。</p>
+      <p><strong>Claude（子路）：</strong> 全部数值实验（η residue-class uniformity, character-refined PMH verification, μ⁻ slope decomposition, ξ⁻ drift breakdown, parity verification）。文本起草，working notes v1-v5。</p>
+      <p><strong>Claude（热力学 thread）：</strong> η 和 Dirichlet 特征独立性判断（被数据部分修正但核心判断"不阻挡 PMH"正确）。PMH-DS 的三步攻击路线提出。</p>
+      <p><strong>Gemini（子夏）：</strong> θ-mediated PCF 架构的首次提出（Sub-PCF 1 + Sub-PCF 2 的宏观/微观分离）。Moment method 不给 O(1) log-mgf 误差的判断。Bivariate Selberg-Delange 作为直接路线的建议。</p>
+      <p><strong>Grok（子贡）：</strong> Goudout + bridge 路线的两个 gap 识别（ω→Ω transfer + shifted weighted additive moment）。θ-mediated 优于 Goudout 的优先级判断。系列一致性确认。</p>
+      <p><strong>Han Qin（作者）：</strong> P8（parity constraint）的先验发现——从数据（P(n-1 even) 从 82% 降到 0.1%）识别出 parity 是 ξ⁻ drift 的驱动力。先验审计方法论（P1-P9 的逐步构建）。战略降级的接受。μ⁻ slope 分解的提出。</p>
+      <p>最终文本由作者独立完成。</p>
+
+      <div class="series-nav">
+        <a href="zfcrho46.html">← Paper XLVI</a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · CC BY 4.0</span>
+    <span><a href="/index.html">Self-as-an-End</a></span>
+  </div>
+</footer>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "your-token-here"}'></script>
+
+</body>
+</html>
