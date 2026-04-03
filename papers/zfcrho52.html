@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′ — Self-as-an-End</title>
+  <meta name="description" content="Mean-Reversion, Spectral Valley, and the Projective Criterion for H′ — ZFCρ Paper LII">
+  <meta property="og:title" content="ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′">
+  <meta name="author" content="Han Qin">
+  <meta name="citation_title" content="ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19407328">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′",
+    "alternativeHeadline": "ZFCρ 第LII篇：均值回归，谱谷，与H'的投射准则",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "identifier": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "keywords": "integer complexity, mean-reversion, spectral valley, projective criterion, Maxwell-Woodroofe, martingale-coboundary, signed cancellation, ZFCrho, H-prime, DSF, BL-alpha, exponential forgetting",
+    "identifier": "https://doi.org/10.5281/zenodo.19407328"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      document.getElementById('lang-en').classList.remove('active');
+      document.getElementById('lang-zh').classList.remove('active');
+      document.getElementById('lang-en').style.display = 'none';
+      document.getElementById('lang-zh').style.display = 'none';
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      var tabs = document.querySelectorAll('.lang-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="../index.html">Papers</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">ZFCρ Series · Paper LII</div>
+        <h1>Mean-Reversion, Spectral Valley, and the Projective Criterion for H′<br>
+          <span style="font-size:0.72em; font-weight:400; color:#555;">ZFCρ Paper LII</span>
+        </h1>
+        <div style="font-size:0.85em; color:#555; margin-top:0.3em;">ZFCρ 第LII篇：均值回归，谱谷，与H'的投射准则</div>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19407328">10.5281/zenodo.19407328</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+
+      <!-- ENGLISH CONTENT -->
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+
+        <h2>Abstract</h2>
+        <p>We establish the structural mechanism behind the spectral target identified in Paper 51 for Hypothesis H′. Three experiments reveal that the stripped prime-index process h(p) exhibits mean-reversion: the sub-block variance ratio peaks at intermediate scale then decreases (cleanly observed at j ≥ 29); the block periodogram at zero frequency is lower than at nearby nonzero frequencies; and the autocovariance appears not absolutely summable, with the spectral target maintained by massive positive-negative cancellation. One exact finite-block identity is proved (periodogram expansion), along with four second-order formulae (curvature criterion, variance-ratio drift, block-block covariance expansion, adjacent-block negativity equivalence) and an L²-localization bound from coboundary structure.</p>
+        <p>Two conditional closure theorems are established: (I) a Maxwell-Woodroofe projective criterion Δ<sub>j</sub> ≤ K√j implies the spectral target in mean (E[I<sub>j</sub>(0)] ≤ Cj · D<sub>j</sub>) and an L²-version of BL<sub>α</sub>; (II) negative cross-product sum at the peak scale implies the spectral target deterministically. The remaining gap for H′ is reduced to one substantial dynamical conjecture — exponential forgetting of the stripped reset-state on O(j) scale — plus two technical upgrades (from mean to deterministic spectral target, and from L²-BL to deterministic BL). Thirty-six unconditional results at scales N = 10⁷ through 10¹⁰ support the framework.</p>
+        <p><strong>Keywords:</strong> ZFCρ, integer complexity, mean-reversion, spectral valley, projective criterion, Maxwell-Woodroofe, martingale-coboundary, signed cancellation, exponential forgetting, H′, DSF<sub>α</sub>, BL<sub>α</sub></p>
+
+        <h2>§1 Three Discoveries</h2>
+        <p>Paper 50 reduced H′ to DSF<sub>α</sub> + BL<sub>α</sub>. Paper 51 reformulated DSF<sub>α</sub> as a spectral target: I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub>, quantified the gap (Cauchy-Schwarz gives m<sub>j</sub> · D<sub>j</sub>; ratio m<sub>j</sub>/j = 2<sup>j</sup>/j² is exponential), and gave a divisor lemma for multiplicative reset. The present paper discovers the mechanism behind the spectral target.</p>
+        <p><strong>(i) Mean-reversion.</strong> The sub-block variance ratio V(n)/(n · σ²<sub>x</sub>) peaks at intermediate scale n* then decreases. At j = 32 (190M primes, N = 10¹⁰): peak ratio/j = 54.1, full-block O<sub>j</sub>/(j · D<sub>j</sub>) = 2.7. Anticorrelation removes 95% of intermediate variance. The pattern is clean at j ≥ 29; at j ≤ 23 the process is in a crossover regime where anticorrelation has not yet separated from noise.</p>
+        <p><strong>(ii) Spectral valley.</strong> The block periodogram at θ = 0 is a local minimum. At j = 32: I<sub>j</sub>(k=0)/(j · D<sub>j</sub>) = 2.7, while I<sub>j</sub>(k=50)/(j · D<sub>j</sub>) = 90.8. Zero frequency is specifically suppressed; the periodogram peak is at k ≈ 10–50, exceeding the zero-frequency value by 3–34×.</p>
+        <p><strong>(iii) Signed cancellation.</strong> The autocovariance is not absolutely summable (Σ|C(k)| diverges), but Σ C(k) = O(j · σ²) through massive positive-negative cancellation. The shallow/deep decomposition at j = 32: at cutoff L = 1,000,000, shallow contribution = 23.53 · O<sub>j</sub>, deep contribution = −22.53 · O<sub>j</sub>. The framework requiring Σ|C(k)| &lt; ∞ is inapplicable; the spectral target is maintained by signed cancellation, not by individual-lag decay.</p>
+
+        <h2>§2 Exact Finite-Block Identities</h2>
+        <p><strong>Lemma 2.1 (Periodogram expansion).</strong> For x<sub>1</sub>, …, x<sub>m<sub>j</sub></sub> and I<sub>j</sub>(θ) = |Σ x<sub>r</sub> e<sup>irθ</sup>|²:</p>
+        <p style="margin-left:1.5em; font-family:monospace;">I<sub>j</sub>(θ) = Γ<sub>j</sub>(0) + 2 Σ<sub>k≥1</sub> Γ<sub>j</sub>(k) cos(kθ)</p>
+        <p>where Γ<sub>j</sub>(0) = D<sub>j</sub>. At θ = 0: I<sub>j</sub>(0) = B<sub>j</sub>². Purely algebraic; no model assumptions.</p>
+        <p><strong>Corollary 2.2 (Curvature criterion for spectral valley).</strong> I<sub>j</sub>″(0) = −2 Σ k² Γ<sub>j</sub>(k). Therefore θ = 0 is a strict local minimum of I<sub>j</sub>(θ) if Σ k² Γ<sub>j</sub>(k) &lt; 0 — a k²-weighted signed condition on lag coefficients, requiring medium-to-large lags carry enough negative weight to overcome positive short-range contributions.</p>
+        <p><strong>Lemma 2.3 (Variance-ratio drift).</strong> R(n+1) − R(n) = 2/[n(n+1)] · Σ<sub>k=1</sub><sup>n</sup> k C(k). The variance ratio R(n) = V(n)/n peaks at n* if and only if Σ<sub>k=1</sub><sup>n*</sup> k C(k) changes sign from positive to negative at n*.</p>
+        <p><strong>Lemma 2.5 + Corollary 2.6 (Adjacent-block negativity equivalence).</strong> V(2n) = 2V(n) + 2 Cov(T<sub>n,1</sub>, T<sub>n,2</sub>). Therefore R(2n) &lt; R(n) if and only if adjacent peak-scale blocks have negative covariance. The data confirms both simultaneously.</p>
+
+        <h2>§3 Conditional Theorems</h2>
+        <p><strong>Theorem 3.1 (Algebraic cross-product bound — Conditional Theorem II).</strong> Partition x<sub>1</sub>, …, x<sub>m<sub>j</sub></sub> into K sub-blocks of size n* with sums T<sub>1</sub>, …, T<sub>K</sub>. If (a) Σ T<sub>k</sub>² ≤ A · j · D<sub>j</sub>; (b) cross-product sum Σ<sub>k&lt;ℓ</sub> T<sub>k</sub>T<sub>ℓ</sub> ≤ 0; and (c) remainder T<sub>rem</sub>² ≤ D<sub>j</sub>; then B<sub>j</sub>² = O(j · D<sub>j</sub>). This is purely algebraic — no probability, no covariance, no model. Condition (b) is the deterministic analogue of "inter-block negative covariance."</p>
+        <p><strong>Theorem 4.1 (MW projective criterion — Conditional Theorem I).</strong> Under a probabilistic model for the prime-indexed process, if the Maxwell-Woodroofe projective seminorm Δ<sub>j</sub> = Σ<sub>n≥1</sub> ‖E(S<sub>j,n</sub> | F<sub>j,0</sub>)‖₂ / n<sup>3/2</sup> satisfies Δ<sub>j</sub> ≤ K√j uniformly in j, then E[I<sub>j</sub>(0)] ≤ C · j · D<sub>j</sub> (spectral target in mean).</p>
+        <p><strong>Lemma 4.2 (Forgetting implies MW).</strong> If the hidden reset-state Y<sub>j,r</sub> has exponential forgetting with time R<sub>j</sub> ≤ cj — i.e., sup<sub>y,y′</sub> ‖G<sub>j</sub>(Y<sup>y</sup><sub>j,n</sub>) − G<sub>j</sub>(Y<sup>y′</sup><sub>j,n</sub>)‖₂ ≤ A exp(−n/R<sub>j</sub>) — then Δ<sub>j</sub> ≤ K√j.</p>
+        <p><em>Proof.</em> ‖E(S<sub>j,n</sub> | F<sub>j,0</sub>)‖₂ ≤ min(n, A·R<sub>j</sub>). Summing over n: Δ<sub>j</sub> ≤ C√R<sub>j</sub> ≤ K√j. □</p>
+        <p><strong>Proposition 4.3 (L²-BL<sub>α</sub> from coboundary).</strong> Under the MW hypotheses, with martingale-coboundary decomposition h<sub>i</sub> = M<sub>i</sub> + Z<sub>i</sub> − Z<sub>i+1</sub> satisfying sup E[M<sub>i</sub>²] = O(1) and sup E[Z<sub>i</sub>²] = O(j) on block I<sub>j</sub>: Σ<sub>j≥0</sub> sup<sub>|t|≤t₀</sub> ‖E<sub>j</sub>(t)‖₂ / |t|<sup>α</sup> &lt; ∞ for every α &lt; 1. This is an L²-version of BL<sub>α</sub>; upgrading to deterministic BL<sub>α</sub> requires a pathwise maximal estimate.</p>
+
+        <h2>§4 The Remaining Gap</h2>
+        <p><strong>Conjecture 52.1 (Exponential forgetting on O(j) scale).</strong> There exists a hidden reflected state Y<sub>j,r</sub>, a measurable function G<sub>j</sub> with h(p<sub>j,r</sub>) = G<sub>j</sub>(Y<sub>j,r</sub>), and a coupling satisfying:</p>
+        <p style="margin-left:1.5em; font-family:monospace;">sup<sub>y,y′</sub> ‖G<sub>j</sub>(Y<sup>y</sup><sub>j,n</sub>) − G<sub>j</sub>(Y<sup>y′</sup><sub>j,n</sub>)‖₂ ≤ A · exp(−n/(cj))</p>
+        <p>with forgetting time R<sub>j</sub> ≤ cj. The closure chain:</p>
+        <p style="margin-left:1.5em;">Conjecture 52.1 → Δ<sub>j</sub> ≤ K√j [Lemma 4.2] → E[I<sub>j</sub>(0)] ≤ Cj·D<sub>j</sub> [Theorem 4.1] → (deterministic upgrade) → DSF<sub>α</sub> [Paper 51]<br>
+        → L²-BL<sub>α</sub> [Prop. 4.3] → (pathwise upgrade) → BL<sub>α</sub><br>
+        → (with SD, unconditional [Paper 50]) → H′</p>
+        <p>The remaining gap has one substantial conjecture (52.1: connecting IC reservoir dynamics to prime-indexed process and proving geometric ergodicity) and two technical upgrades (mean-to-deterministic spectral target; L²-to-pathwise BL). <strong>If the underlying chain is geometrically ergodic with bounded observable, all three close simultaneously.</strong></p>
+        <p>The excluded routes are extended: Route 5 (absolute summability of autocovariance) and Route 6 (direct spectral density bound) are both inapplicable, as the data strongly suggests Σ|C(k)| diverges. The appropriate framework is martingale-coboundary decomposition (Gordin), not spectral density theory.</p>
+
+        <h2>§5 Data Tables</h2>
+        <p><strong>Table 1: Variance ratio V(n)/(n · σ²)/j at selected sub-block sizes (N = 10¹⁰).</strong></p>
+        <table style="width:100%; border-collapse:collapse; font-size:0.88em; margin:1em 0;">
+          <thead><tr style="background:#f5f5f5;">
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:left;">n</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=20</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=23</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=29</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=32</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">1</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.050</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.043</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.034</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.031</td></tr>
+            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">j²</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.13</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.13</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.12</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.11</td></tr>
+            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">10,000</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.24</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">1.85</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">7.33</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">9.38</td></tr>
+            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">100,000</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">9.85</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">13.96</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">34.12</td></tr>
+            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;"><strong>peak</strong></td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">~7.8</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">~25.3</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">~14.3</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>54.1</strong></td></tr>
+            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">full block</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">21.9</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">25.3</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">8.8</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">2.7</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Table 2: Periodogram I<sub>j</sub>(θ)/(j · D<sub>j</sub>) at low frequencies (N = 10¹⁰).</strong></p>
+        <table style="width:100%; border-collapse:collapse; font-size:0.88em; margin:1em 0;">
+          <thead><tr style="background:#f5f5f5;">
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:left;">freq index k</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=20</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=26</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=29</th>
+            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=32</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">0</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">22.0</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">4.2</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">8.9</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>2.7</strong></td></tr>
+            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">10</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>29.2</strong></td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>55.2</strong></td></tr>
+            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">50</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>15.9</strong></td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>90.8</strong></td></tr>
+            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">100</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">5.4</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">19.8</td></tr>
+          </tbody>
+        </table>
+        <p>O<sub>j</sub>/(j · D<sub>j</sub>) range across all tested j: 2.7 to 25.3, no systematic j-divergence (unconditional result 36).</p>
+
+        <h2>§6 Summary of Results</h2>
+        <p>New in Paper 52 (results 31–36): (31) variance ratio peaks then decreases at j = 29, 32; crossover/inconclusive at j ≤ 23; (32) periodogram at θ = 0 lower than at nearby nonzero frequencies at j = 29, 32; (33) peak intermediate variance up to 54× full-block variance at j = 32; (34) deep contribution is negative (anticorrelation) at all tested blocks; (35) autocovariance not absolutely summable, spectral target maintained by signed cancellation; (36) O<sub>j</sub>/(j · D<sub>j</sub>) bounded, range 2.7 to 25.3, no systematic j-divergence. Total: 36 unconditional results (Papers 50–52).</p>
+        <p>Proved results in this paper: curvature lemma; variance-ratio drift formula; block-block covariance expansion; adjacent-block negativity equivalence; MW projective criterion → spectral target in mean (Theorem 4.1); forgetting → MW (Lemma 4.2); negative cross-products → spectral target algebraically (Theorem 3.1); L²-BL<sub>α</sub> from coboundary (Proposition 4.3).</p>
+        <p>The proof strategy has shifted from "prove autocovariance decays fast" (Paper 51) to "prove anticorrelation is strong enough for signed cancellation" (Paper 52). The appropriate mathematical framework is Gordin's martingale-coboundary decomposition, which naturally accommodates non-absolutely-summable autocovariance through the telescope mechanism. The distance from ZFCρ to H′ is now: one substantial conjecture (IC dynamics forgetting time) and two technical upgrades (L² to pathwise) — all three likely closing simultaneously under geometric ergodicity.</p>
+      </div>
+
+      <!-- CHINESE CONTENT -->
+      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
+        <p style="font-size:0.9em; color:#666;"><em>\u5199\u4f5c\u58f0\u660e\uff1a\u672c\u6587\u7531\u79e6\u6c49\u72ec\u7acb\u5b8c\u6210\u3002\u6240\u6709\u667a\u8bc6\u51b3\u7b56\u3001\u6846\u67b6\u8bbe\u8ba1\u4e0e\u7f16\u8f91\u5224\u65ad\u5747\u7531\u4f5c\u8005\u505a\u51fa\u3002</em></p>
+
+        <h2>\u6458\u8981</h2>
+        <p>\u672c\u6587\u5efa\u7acb\u7b2c51\u7bc7\u4e2dH'\u8c31\u76ee\u6807\u80cc\u540e\u7684\u7ed3\u6784\u6027\u673a\u5236\u3002\u4e09\u7ec4\u5b9e\u9a8c\u63ed\u793a\u5265\u79bb\u7d20\u6570\u7d22\u5f15\u8fc7\u7a0bh(p)\u5177\u6709\u5747\u503c\u56de\u5f52\u7279\u5f81\uff1a\u5b50\u5757\u65b9\u5dee\u6bd4\u5728\u4e2d\u95f4\u5c3a\u5ea6\u8fbe\u5cf0\u540e\u4e0b\u964d\uff08j \u2265 29\u5904\u6e05\u6670\u53ef\u89c1\uff09\uff1b\u5757\u5468\u671f\u56fe\u5728\u96f6\u9891\u7387\u5904\u4f4e\u4e8e\u9644\u8fd1\u975e\u96f6\u9891\u7387\uff1b\u81ea\u534f\u65b9\u5dee\u770b\u8d77\u6765\u975e\u7edd\u5bf9\u53ef\u548c\uff0c\u8c31\u76ee\u6807\u901a\u8fc7\u5927\u91cf\u6b63\u8d1f\u5bf9\u6d88\u7ef4\u6301\u3002\u8bc1\u660e\u4e00\u4e2a\u7cbe\u786e\u6709\u9650\u5757\u6052\u7b49\u5f0f\uff08\u5468\u671f\u56fe\u5c55\u5f00\uff09\u53ca\u56db\u4e2a\u4e8c\u9636\u516c\u5f0f\uff0c\u4ee5\u53ca\u6765\u81ea\u5171\u8fb9\u754c\u7ed3\u6784\u7684L\u00b2\u5c40\u90e8\u5316\u754c\u3002</p>
+        <p>\u5efa\u7acb\u4e24\u4e2a\u6761\u4ef6\u95ed\u5408\u5b9a\u7406\uff1a(I) Maxwell-Woodroofe\u6295\u5c04\u51c6\u5219\u0394_j \u2264 K\u221aj\u8574\u542b\u5747\u503c\u610f\u4e49\u4e0b\u7684\u8c31\u76ee\u6807\u548cL\u00b2\u7248BL_\u03b1\uff1b(II) \u5cf0\u5c3a\u5ea6\u5904\u8d1f\u4ea4\u53c9\u79ef\u548c\u786e\u5b9a\u6027\u5730\u8574\u542b\u8c31\u76ee\u6807\u3002H'\u7684\u5269\u4f59\u5dee\u8ddd\u7f29\u51cf\u4e3a\u4e00\u4e2a\u5b9e\u8d28\u6027\u52a8\u529b\u5b66\u731c\u60f3\u2014\u2014\u5265\u79bb\u91cd\u7f6e\u6001\u5728O(j)\u5c3a\u5ea6\u4e0a\u7684\u6307\u6570\u9057\u5fd8\u2014\u2014\u52a0\u4e24\u4e2a\u6280\u672f\u5347\u7ea7\u3002</p>
+
+        <h2>§1 \u4e09\u4e2a\u53d1\u73b0</h2>
+        <p><strong>(i) \u5747\u503c\u56de\u5f52\u3002</strong> \u5b50\u5757\u65b9\u5dee\u6bd4V(n)/(n \u00b7 \u03c3\u00b2_x)\u5728\u4e2d\u95f4\u5c3a\u5ea6n*\u5904\u8fbe\u5cf0\u540e\u4e0b\u964d\u3002j = 32\uff08N = 10\u00b9\u2070\uff09\uff1a\u5cf0\u503c ratio/j = 54.1\uff0c\u5168\u5757O_j/(j \u00b7 D_j) = 2.7\u3002\u53cd\u5173\u8054\u6d88\u966495%\u4e2d\u95f4\u65b9\u5dee\u3002j \u2265 29\u5904\u6e05\u6670\uff0cj \u2264 23\u5904\u4e8ecrossover\u533a\u3002</p>
+        <p><strong>(ii) \u96f6\u9891\u7387\u88ab\u538b\u5236\u3002</strong> \u5757\u5468\u671f\u56fe\u5728\u03b8 = 0\u5904\u662f\u5c40\u90e8\u6781\u5c0f\u503c\u3002j = 32\uff1aI_j(k=0)/(j \u00b7 D_j) = 2.7\uff0c\u800cI_j(k=50)/(j \u00b7 D_j) = 90.8\u3002\u5468\u671f\u56fe\u5cf0\u5728k \u2248 10\u201350\u5904\uff0c\u8d85\u8fc7\u96f6\u9891\u7387\u503c3\u201334\u500d\u3002</p>
+        <p><strong>(iii) \u7b26\u53f7\u5bf9\u6d88\u3002</strong> \u81ea\u534f\u65b9\u5dee\u975e\u7edd\u5bf9\u53ef\u548c\uff0c\u4f46\u005c\u03a3 C(k) = O(j \u00b7 \u03c3\u00b2)\u901a\u8fc7\u5927\u91cf\u6b63\u8d1f\u5bf9\u6d88\u5b9e\u73b0\u3002j = 32\u5904\u6d45\u5c42/\u6df1\u5c42\u5206\u89e3\uff1a\u622a\u65adL = 1,000,000\u65f6\uff0c\u6d45\u5c42\u8d21\u732e = 23.53 \u00b7 O_j\uff0c\u6df1\u5c42\u8d21\u732e = \u221222.53 \u00b7 O_j\u3002\u8981\u6c42\u005c\u03a3|C(k)| < \u221e\u7684\u6846\u67b6\u4e0d\u9002\u7528\uff1b\u5bc6\u5ea6\u8c31\u7406\u8bba\u4e0d\u662f\u9002\u5f53\u7684\u6570\u5b66\u6846\u67b6\u3002</p>
+
+        <h2>§2 \u7cbe\u786e\u6709\u9650\u5757\u6052\u7b49\u5f0f</h2>
+        <p><strong>\u5f15\u74062.1\uff08\u5468\u671f\u56fe\u5c55\u5f00\uff09\u3002</strong> I_j(\u03b8) = \u0393_j(0) + 2\u00a0\u03a3_{k\u22651} \u0393_j(k)\u00a0cos(k\u03b8)\uff0c\u7eaf\u4ee3\u6570\uff0c\u65e0\u6a21\u578b\u5047\u8bbe\u3002\u5728\u03b8 = 0\uff1aI_j(0) = B_j\u00b2\u3002</p>
+        <p><strong>\u63a8\u8bba2.2\uff08\u8c31\u8c37\u66f2\u7387\u5224\u636e\uff09\u3002</strong> I_j\u2033(0) = \u22122\u00a0\u03a3\u00a0k\u00b2\u0393_j(k)\u3002\u03b8 = 0\u4e3a\u4e25\u683c\u5c40\u90e8\u6781\u5c0f\u503c\u5f53\u4e14\u4ec5\u5f53\u00a0\u03a3\u00a0k\u00b2\u0393_j(k) < 0\uff0c\u5373k\u00b2\u52a0\u6743\u7684\u8fdf\u5706\u9879\u5e26\u8db3\u591f\u8d1f\u6743\u3002</p>
+        <p><strong>\u5f15\u74062.3\uff08\u65b9\u5dee\u6bd4\u6f02\u79fb\uff09\u3002</strong> R(n+1) \u2212 R(n) = 2/[n(n+1)] \u00b7 \u03a3_{k=1}^n\u00a0k C(k)\u3002\u65b9\u5dee\u6bd4\u5728n*\u5904\u8fbe\u5cf0\u5f53\u4e14\u4ec5\u5f53\u03a3_{k=1}^{n*}\u00a0k C(k)\u4ece\u6b63\u5230\u8d1f\u3002</p>
+        <p><strong>\u63a8\u8bba2.6\uff08\u76f8\u90bb\u5757\u8d1f\u6027\u7b49\u4ef7\uff09\u3002</strong> R(2n) < R(n)\u5f53\u4e14\u4ec5\u5f53\u76f8\u90bb\u5cf0\u5c3a\u5ea6\u5757\u6709\u8d1f\u534f\u65b9\u5dee\u3002\u6570\u636e\u540c\u65f6\u786e\u8ba4\u4e86\u4e24\u8005\u3002</p>
+
+        <h2>§3 \u6761\u4ef6\u5b9a\u7406</h2>
+        <p><strong>\u5b9a\u74063.1\uff08\u4ee3\u6570\u4ea4\u53c9\u79ef\u754c\u2014\u2014\u6761\u4ef6\u5b9a\u7406II\uff09\u3002</strong> \u5c06x_1,\u2026,x_{m_j}\u5212\u5206\u4e3aK\u4e2a\u5927\u5c0f\u4e3an*\u7684\u5b50\u5757\uff0c\u548c\u4e3aT_1,\u2026,T_K\u3002\u5982\u679c (a)\u00a0\u03a3\u00a0T_k\u00b2 \u2264 A\u00b7j\u00b7D_j\uff1b (b)\u00a0\u4ea4\u53c9\u79ef\u548c\u03a3_{k<\u2113} T_kT_\u2113 \u2264 0\uff1b (c)\u00a0T_{rem}\u00b2 \u2264 D_j\uff1b\u5219B_j\u00b2 = O(j\u00b7D_j)\u3002\u7eaf\u4ee3\u6570\uff0c\u65e0\u6a5f\u7387\uff0c\u65e0\u6a21\u578b\u3002</p>
+        <p><strong>\u5b9a\u74064.1\uff08MW\u6295\u5c04\u51c6\u5219\u2014\u2014\u6761\u4ef6\u5b9a\u7406I\uff09\u3002</strong> \u5982\u679cMaxwell-Woodroofe\u6295\u5c04\u534a\u8303\u6570\u0394_j = \u03a3_{n\u22651}\u00a0\u2016E(S_{j,n}\u00a0|\u00a0F_{j,0})\u2016\u2082\u00a0/\u00a0n^{3/2}\u00a0\u2264 K\u221aj\uff0c\u5219E[I_j(0)] \u2264 C\u00b7j\u00b7D_j\uff08\u5747\u503c\u610f\u4e49\u4e0b\u7684\u8c31\u76ee\u6807\uff09\u3002</p>
+        <p><strong>\u5f15\u74064.2\uff08\u9057\u5fd8\u8574\u542bMW\uff09\u3002</strong> \u5982\u679c\u9690\u85cf\u91cd\u7f6e\u6001Y_{j,r}\u6709R_j \u2264 cj\u7684\u6307\u6570\u9057\u5fd8\uff0c\u5219\u0394_j \u2264 K\u221aj\u3002\u8bc1\u660e\uff1a\u2016E(S_{j,n}\u00a0|\u00a0F_{j,0})\u2016\u2082 \u2264 min(n,\u00a0A\u00b7R_j)\uff0c\u5bf9n\u6c42\u548c\u5f97\u0394_j \u2264 C\u221a{R_j} \u2264 K\u221aj\u3002</p>
+        <p><strong>\u547d\u98984.3\uff08\u6765\u81ea\u5171\u8fb9\u754c\u7684L\u00b2-BL_\u03b1\uff09\u3002</strong> \u5728MW\u5047\u8bbe\u4e0b\uff0c\u5e26\u9c9b\u516d\u91cd-\u5171\u8fb9\u754c\u5206\u89e3h_i = M_i + Z_i \u2212 Z_{i+1}\uff1a\u03a3_{j\u22650}\u00a0sup_{|t|\u2264t\u2080}\u00a0\u2016E_j(t)\u2016\u2082\u00a0/\u00a0|t|^\u03b1 < \u221e\u00a0\u5bf9\u6bcf\u4e2a\u03b1 < 1\u3002\u8fd9\u662fBL_\u03b1\u7684L\u00b2\u7248\u672c\uff1b\u5347\u7ea7\u5230\u786e\u5b9a\u6027BL_\u03b1\u9700\u8981\u9006\u65f6\u6781\u5927\u4f30\u8ba1\u3002</p>
+
+        <h2>§4 \u5269\u4f59\u5dee\u8ddd</h2>
+        <p><strong>\u731c\u60f352.1\uff08O(j)\u5c3a\u5ea6\u4e0a\u7684\u6307\u6570\u9057\u5fd8\uff09\u3002</strong> \u5b58\u5728\u9690\u85cf\u53cd\u5c04/\u50a8\u5907\u6001Y_{j,r}\u548c\u5ef6\u8fdf\u51fd\u6570G_j\uff0c\u9057\u5fd8\u65f6\u95f4R_j \u2264 cj\u3002\u95ed\u5408\u94fe\u6761\uff1a</p>
+        <p style="margin-left:1.2em;">\u731c\u60f352.1 \u2192 \u0394_j \u2264 K\u221aj [\u5f15\u76714.2] \u2192 E[I_j(0)] \u2264 Cj\u00b7D_j [\u5b9a\u76714.1] \u2192 (\u786e\u5b9a\u6027\u5347\u7ea7) \u2192 DSF_\u03b1 [\u7b2c51\u7bc7]<br>
+        \u2192 L\u00b2-BL_\u03b1 [\u547d\u91984.3] \u2192 (\u903b\u6f14\u5347\u7ea7) \u2192 BL_\u03b1<br>
+        \u2192 (\u52a0SD\u65e0\u6761\u4ef6\uff0c\u7b2c50\u7bc7) \u2192 H'</p>
+        <p>\u5269\u4f59\u5dee\u8ddd\uff1a\u4e00\u4e2a\u5b9e\u8d28\u6027\u731c\u60f3\uff08IC\u52a8\u529b\u5b66\u51e0\u4f55\u9047\u7b97\uff09\u52a0\u4e24\u4e2a\u6280\u672f\u5347\u7ea7\uff08L\u00b2\u5230\u903b\u6f14\uff09\u3002<strong>\u5982\u679c\u5e95\u5c42\u9a6c\u5c14\u53ef\u592b\u94fe\u662f\u51e0\u4f55\u9047\u7b97\u7684\u4e14\u53ef\u89c2\u5bdf\u91cf\u6709\u754c\uff0c\u4e09\u8005\u540c\u65f6\u95ed\u5408\u3002</strong></p>
+        <p>\u6392\u9664\u7684\u8def\u7ebf\u65b0\u589e\uff1a\u8def\u7ebf5\uff08\u81ea\u534f\u65b9\u5dee\u7edd\u5bf9\u53ef\u548c\u6027\uff09\u548c\u8def\u7ebf6\uff08\u76f4\u63a5\u8c31\u5bc6\u5ea6\u754c\uff09\u5747\u4e0d\u9002\u7528\u3002\u9002\u5f53\u7684\u6570\u5b66\u6846\u67b6\u662fGordin\u7684\u9cb3\u4fb0-\u5171\u8fb9\u754c\u5206\u89e3\u800c\u975e\u8c31\u5bc6\u5ea6\u7406\u8bba\u3002</p>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 Han Qin. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
