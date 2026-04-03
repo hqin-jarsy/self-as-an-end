@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LI: Exponential Block Decay, Spectral Reformulation, and the Periodogram Target for H′ — Self-as-an-End</title>
+  <meta name="description" content="Exponential Block Decay, Spectral Reformulation, and the Periodogram Target for H′ — ZFCρ Paper LI">
+  <meta property="og:title" content="ZFCρ Paper LI: Exponential Block Decay, Spectral Reformulation, and the Periodogram Target for H′">
+  <meta name="author" content="Han Qin">
+  <meta name="citation_title" content="ZFCρ Paper LI: Exponential Block Decay, Spectral Reformulation, and the Periodogram Target for H′">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19393954">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ZFCρ Paper LI: Exponential Block Decay, Spectral Reformulation, and the Periodogram Target for H′",
+    "alternativeHeadline": "ZFCρ 第LI篇：指数级块衰减，谱重表述，与H'的周期图目标",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "identifier": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "keywords": "integer complexity, exponential block decay, spectral reformulation, periodogram, dyadic block sums, DSF, ZFCrho, H-prime, divisor lemma, off-diagonal dominance, conductor invariance",
+    "identifier": "https://doi.org/10.5281/zenodo.19393954"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      document.getElementById('lang-en').classList.remove('active');
+      document.getElementById('lang-zh').classList.remove('active');
+      document.getElementById('lang-en').style.display = 'none';
+      document.getElementById('lang-zh').style.display = 'none';
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      var tabs = document.querySelectorAll('.lang-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="../index.html">Papers</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">ZFCρ Series · Paper LI</div>
+        <h1>Exponential Block Decay, Spectral Reformulation, and the Periodogram Target for H′<br>
+          <span style="font-size:0.72em; font-weight:400; color:#555;">ZFCρ Paper LI</span>
+        </h1>
+        <div style="font-size:0.85em; color:#555; margin-top:0.3em;">ZFCρ 第LI篇：指数级块衰减，谱重表述，与H'的周期图目标</div>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19393954">10.5281/zenodo.19393954</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+
+      <!-- ENGLISH CONTENT -->
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+
+        <h2>Abstract</h2>
+        <p>We advance the closure of Hypothesis H′ in the ZFCρ framework with four results. First, the stripped dyadic block sums B<sub>j</sub> decay exponentially: the rescaled quantity 2<sup>j</sup> · B<sub>j</sub>² is bounded (O(1)) across j = 10 to 33 at N = 10¹⁰. This exponential rate is a factor of ~j above pure white noise (which predicts |B<sub>j</sub>|² ~ D<sub>j</sub> ~ 1/(j · 2<sup>j</sup>)); the excess comes from off-diagonal correlations (O<sub>j</sub>/D<sub>j</sub> ~ j). Paper 50's reported "2<sup>−j/3</sup>" is corrected as a comparison artifact. The exponential rate is invariant under conductor stripping Q = 2 to 360, confirming the correlation is IC-intrinsic. Second, we give an exact finite-block spectral reformulation: the condition I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub> (periodogram at zero bounded by j times its Parseval average) implies |B<sub>j</sub>|² ≤ C/2<sup>j</sup>, hence DSF<sub>α</sub> for all α &gt; 0. This condition decomposes via a window inequality into a low-frequency mass bound and a spectral continuity condition. Third, the gap is quantified: Cauchy-Schwarz gives I<sub>j</sub>(0) ≤ m<sub>j</sub> · D<sub>j</sub>; the target is I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub>; the ratio is m<sub>j</sub>/j = 2<sup>j</sup>/j² — an exponential improvement is needed. Fourth, a divisor lemma on factor-subtrees gives the first quantitative bound on multiplicative reset. Thirty unconditional results at scales N = 10⁷ through 10¹⁰ support the framework.</p>
+        <p><strong>Keywords:</strong> integer complexity, exponential block decay, spectral reformulation, periodogram target, dyadic block sums, DSF, divisor lemma, off-diagonal dominance, conductor invariance, ZFCrho, H-prime</p>
+
+        <h2>Correction of Paper 50</h2>
+        <p>Paper 50 reported the empirical block decay rate as |B<sub>j</sub>| ~ 2<sup>−j/3</sup>. This paper corrects it: <strong>the block sums decay exponentially at rate ~2<sup>−j</sup>.</strong> The diagnostic 2<sup>j</sup> · B<sub>j</sub>² is O(1) with no systematic growth (median ≈ 5, range 0.3–10, N = 10¹⁰). Paper 50's "2<sup>−j/3</sup>" arose from comparing |B<sub>j</sub>| against √D<sub>j</sub> without accounting for the O<sub>j</sub>/D<sub>j</sub> ~ j factor. The ratio |B<sub>j</sub>|/√D<sub>j</sub> ~ √j was misinterpreted as a sub-WN decay rate. The exponential rate is conductor-invariant (OLS slopes −0.502 to −0.503 across Q = 2, 12, 60, 360), confirming the correlation is IC-intrinsic.</p>
+        <p>Off-diagonal dominance grows as O<sub>j</sub>/D<sub>j</sub> ~ j: at j=10, O<sub>j</sub>/D<sub>j</sub> = 36; at j=20, 439; at j=33, 1351. This is consistent with |B<sub>j</sub>|² ~ C/2<sup>j</sup> and D<sub>j</sub> ~ C′/(j · 2<sup>j</sup>) — the ratio |B<sub>j</sub>|²/D<sub>j</sub> ~ Cj/C′. The linear growth is not anomalous — it is the signature of moderate short-range correlations that boost block variance by a polynomial factor above the independent-summand baseline, without altering the exponential rate.</p>
+
+        <h2>Spectral Reformulation and the Gap</h2>
+        <p>For x<sub>r</sub> = h(p<sub>j,r</sub>)/p<sub>j,r</sub>, define the block Fourier transform F<sub>j</sub>(θ) = Σ<sub>r</sub> x<sub>r</sub> e<sup>irθ</sup> and periodogram I<sub>j</sub>(θ) = |F<sub>j</sub>(θ)|². Two exact, deterministic, model-free identities hold: I<sub>j</sub>(0) = B<sub>j</sub>² (definition) and (1/2π)∫I<sub>j</sub>(θ)dθ = D<sub>j</sub> (Parseval).</p>
+        <p><strong>Spectral Target:</strong> There exists C &gt; 0 such that I<sub>j</sub>(0) ≤ C · j · D<sub>j</sub> for all j. This is a j-linear spike bound: among the m<sub>j</sub> ~ 2<sup>j</sup>/j terms in block j, the target requires at least ~2<sup>j</sup>/j² to behave as effectively independent. If the target holds, then |B<sub>j</sub>|² ≤ C/2<sup>j</sup>, and DSF<sub>α</sub> = Σ<sub>j</sub> (1+j)<sup>1+2α</sup> |B<sub>j</sub>|² &lt; ∞ for all α &gt; 0 (exponential beats polynomial).</p>
+        <p><strong>The gap:</strong> Cauchy-Schwarz gives I<sub>j</sub>(0) ≤ m<sub>j</sub> · D<sub>j</sub>. The target requires Cj · D<sub>j</sub>. The gap factor is m<sub>j</sub>/j = 2<sup>j</sup>/j² — exponential. A window decomposition (Proposition 4.1) connects the target to the DSF/BL pair of Paper 50: for any δ &gt; 0, I<sub>j</sub>(0) ≤ (1/2δ)∫<sub>−δ</sub><sup>δ</sup> I<sub>j</sub>(θ)dθ + sup<sub>|θ|≤δ</sub>|I<sub>j</sub>(θ) − I<sub>j</sub>(0)|, splitting into low-frequency mass and spectral continuity near zero.</p>
+
+        <h2>Divisor Lemma and Failed Routes</h2>
+        <p><strong>Proposition 5.1 (Divisor Lemma).</strong> If T(n) and T(n+d) share a factor-subtree with root value g, then g | d. For n uniform in [2<sup>j</sup>, 2<sup>j+1</sup>]: P(∃ shared factor-subtree with root value ≥ M) ≤ 2τ(d)/M. Shallow sharing (small g) is common and explains C<sub>j</sub>(1) &gt; 0; deep sharing (large g, strong long-range correlation) decays as 1/M.</p>
+        <p>Four routes to covariance decay are excluded: Lipschitz → decay (fails; ρ(d) ~ λ log d grows), shared factors → decay (fails; bounded constant), additive path competition (fails; ρ(d) exceeds typical |η|), conductor stripping (fails; slopes identical Q = 2 to 360). All explain the existence of correlation but not decay. Two viable routes remain: regenerative/coboundary methods (reset-reservoir dynamics of Papers XXI–XLV) and direct spectral/divisor combination (divisor lemma + SPF skeleton truncation of Paper XLVI).</p>
+
+        <h2>Closure Chain (Updated)</h2>
+        <p>The honest state of the chain: Spectral target I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub> (unproved — the remaining condition) → |B<sub>j</sub>|² ≤ C/2<sup>j</sup> [§4.4] → DSF<sub>α</sub> for all α &gt; 0 [Σ j<sup>1+2α</sup>/2<sup>j</sup> &lt; ∞] → (with BL<sub>α</sub> + SD + Karamata) [Paper 50] → H′. The spectral target implies DSF<sub>α</sub>; whether it also implies BL<sub>α</sub> is an open question the window decomposition suggests but does not formally resolve. The data is consistent with the spectral target through N = 10¹⁰. What remains is to prove it.</p>
+
+        <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
+          <p style="margin:0; font-size:0.9em;">Full paper available on Zenodo: <a href="https://doi.org/10.5281/zenodo.19393954" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19393954</a></p>
+        </div>
+      </div>
+
+      <!-- CHINESE CONTENT -->
+      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
+        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立著作，所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
+
+        <h2>摘要</h2>
+        <p>本文在ZFCρ框架中推进假设H'的闭合，建立四项结果。第一，剥离后二进块和B<sub>j</sub>指数衰减：重标量2<sup>j</sup> · B<sub>j</sub>²在j = 10至33间有界（O(1)，N = 10¹⁰）。此指数速率比纯白噪声（预测|B<sub>j</sub>|² ~ D<sub>j</sub> ~ 1/(j · 2<sup>j</sup>)）高约j倍，excess来自非对角关联（O<sub>j</sub>/D<sub>j</sub> roughly of order j）。第50篇报告的"2<sup>−j/3</sup>"修正为比较伪迹。指数速率在导体剥离Q = 2至360下不变，确认关联为IC内禀。第二，精确有限块谱重表述：条件I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub>（零频率处周期图被j倍Parseval平均控制）蕴涵|B<sub>j</sub>|² ≤ C/2<sup>j</sup>，从而DSF<sub>α</sub>对所有α &gt; 0成立。此条件通过窗口不等式分解为低频质量界与谱连续性条件。第三，差距量化：Cauchy-Schwarz给I<sub>j</sub>(0) ≤ m<sub>j</sub> · D<sub>j</sub>，目标为I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub>，比值m<sub>j</sub>/j = 2<sup>j</sup>/j²，需指数级改进。第四，因子子树上的因子引理给出乘法重置的第一个定量界。30项无条件结果在N = 10⁷至10¹⁰上支持此框架。</p>
+        <p><strong>关键词：</strong>整数复杂度，指数块衰减，谱重表述，周期图目标，二进块和，DSF，因子引理，非对角线主导，导体不变性，ZFCrho，H'</p>
+
+        <h2>修正第50篇</h2>
+        <p>第50篇报告经验块衰减速率为|B<sub>j</sub>| ~ 2<sup>−j/3</sup>。本文修正：<strong>块和以速率~2<sup>−j</sup>指数衰减。</strong>诊断量2<sup>j</sup> · B<sub>j</sub>²为O(1)，无系统增长（中位数约5，范围0.3–10，N = 10¹⁰）。第50篇的"2<sup>−j/3</sup>"源于比较|B<sub>j</sub>|与√D<sub>j</sub>时未考虑O<sub>j</sub>/D<sub>j</sub> ~ j因子。比值|B<sub>j</sub>|/√D<sub>j</sub> ~ √j被误读为低于WN的衰减速率。指数速率在导体剥离下不变（OLS斜率在Q = 2, 12, 60, 360下一致为−0.502至−0.503），确认关联为IC内禀。</p>
+        <p>非对角线主导以O<sub>j</sub>/D<sub>j</sub> ~ j增长：j=10处为36，j=20处为439，j=33处为1351。与|B<sub>j</sub>|² ~ C/2<sup>j</sup>和D<sub>j</sub> ~ C′/(j · 2<sup>j</sup>)一致，比值|B<sub>j</sub>|²/D<sub>j</sub> ~ Cj/C′。此线性增长不是反常——是中等短程关联将块方差提升多项式因子j而不改变指数速率的特征。</p>
+
+        <h2>谱重表述与差距</h2>
+        <p>对x<sub>r</sub> = h(p<sub>j,r</sub>)/p<sub>j,r</sub>，定义块Fourier变换F<sub>j</sub>(θ)和周期图I<sub>j</sub>(θ) = |F<sub>j</sub>(θ)|²。两个精确确定性恒等式成立：I<sub>j</sub>(0) = B<sub>j</sub>²（定义）和(1/2π)∫I<sub>j</sub>(θ)dθ = D<sub>j</sub>（Parseval）。</p>
+        <p><strong>谱目标：</strong>存在C &gt; 0使得I<sub>j</sub>(0) ≤ C · j · D<sub>j</sub>对所有j成立。j-线性spike界：块j中m<sub>j</sub> ~ 2<sup>j</sup>/j个项里，目标要求至少~2<sup>j</sup>/j²个表现为有效独立。若目标成立，则|B<sub>j</sub>|² ≤ C/2<sup>j</sup>，从而DSF<sub>α</sub> = Σ<sub>j</sub>(1+j)<sup>1+2α</sup>|B<sub>j</sub>|² &lt; ∞对所有α &gt; 0成立（指数超越多项式）。</p>
+        <p><strong>差距：</strong>Cauchy-Schwarz给I<sub>j</sub>(0) ≤ m<sub>j</sub> · D<sub>j</sub>，目标为Cj · D<sub>j</sub>，差距因子m<sub>j</sub>/j = 2<sup>j</sup>/j²，指数级。窗口分解命题将目标连接到第50篇的DSF/BL对：对任意δ &gt; 0，I<sub>j</sub>(0) ≤ (1/2δ)∫<sub>−δ</sub><sup>δ</sup>I<sub>j</sub>(θ)dθ + sup<sub>|θ|≤δ</sub>|I<sub>j</sub>(θ) − I<sub>j</sub>(0)|，分解为低频质量与零频谱连续性。</p>
+
+        <h2>因子引理与排除的路线</h2>
+        <p><strong>命题5.1（因子引理）。</strong>若T(n)与T(n+d)共享根值为g的因子子树，则g | d。对[2<sup>j</sup>, 2<sup>j+1</sup>]中均匀的n：P(∃共享因子子树根值 ≥ M) ≤ 2τ(d)/M。浅层共享（小g）常见，解释C<sub>j</sub>(1) &gt; 0；深层共享（大g）概率以1/M趋于0。</p>
+        <p>四条协方差衰减路线排除：Lipschitz推衰减（失败，ρ(d) ~ λ log d增长）、共享因子推衰减（失败，bounded常数）、加法路径竞争性（失败，ρ(d)超过typical |η|）、导体剥离（失败，斜率Q = 2至360一致）。均解释关联存在但不给衰减。两条viable路线保留：再生/共边界方法（第XXI–XLV篇reset-reservoir动力学）和直接谱/因子组合（因子引理 + 第XLVI篇SPF骨架截断）。</p>
+
+        <h2>闭合链（更新）</h2>
+        <p>链的诚实状态：谱目标I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub>（未证明，剩余条件）→ |B<sub>j</sub>|² ≤ C/2<sup>j</sup> [§4.4] → DSF<sub>α</sub>（所有α &gt; 0）[Σ j<sup>1+2α</sup>/2<sup>j</sup> &lt; ∞] → （配合BL<sub>α</sub> + SD + Karamata）[第50篇] → H'。谱目标蕴涵DSF<sub>α</sub>；是否也蕴涵BL<sub>α</sub>是开放问题，窗口分解suggests此方向但未给出形式证明。数据consistent with谱目标至N = 10¹⁰。剩余的是证明它。</p>
+
+        <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
+          <p style="margin:0; font-size:0.9em;">完整论文见 Zenodo：<a href="https://doi.org/10.5281/zenodo.19393954" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19393954</a></p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <footer style="text-align:center; padding:2rem; color:#aaa; font-size:0.8rem; border-top:1px solid #eee; margin-top:3rem;">
+    <p>Han Qin · ORCID: <a href="https://orcid.org/0009-0009-9583-0018" style="color:#aaa;">0009-0009-9583-0018</a> · CC BY 4.0</p>
+    <p><a href="../index.html" style="color:#aaa;">Self-as-an-End</a></p>
+  </footer>
+</body>
+</html>
