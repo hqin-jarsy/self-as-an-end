@@ -73,13 +73,242 @@
       </div>
 
       <!-- ENGLISH CONTENT -->
-      <div id="lang-en" class="lang-content active" lang="en">
-        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was co-drafted with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</em></p>
+            <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
 
-        <h2>Abstract</h2>
-        <p>Current multi-AI collaboration architectures have made substantial progress in workflow orchestration, functional division of labor, and operational risk governance. What they have not yet structurally addressed is a different question: given a particular object (user, task, context), at what subject-level should the system operate? "Format this code" and "write me a letter declining a job offer" currently pass through the same pipeline — receive input, plan a path, invoke tools, return a result. This paper calls the missing dimension <em>layer-appropriate operation</em>: the system's capacity to recognize, given a particular object, at which layer it should operate, and to switch layers as objects change.</p>
-        <p>This paper derives, from the Self-as-an-End (SAE) psychoanalytic four-layer framework (12DD Id / 13DD Ego / 14DD Superego / 15DD Cert), an architectural paradigm orthogonal to functional division: <strong>layered checks and balances</strong>. Four Agents are not four workers assigned to different tasks but four operational modes of the same system — me-without-self (12DD), self-without-purpose (13DD), self-with-purpose (14DD), and self-with-non-dubito (15DD). The first theorem grounding the derivation is object-activation: the object determines the layer, not the role assignment. Inter-layer structural tension is maintained through remainder channels; intra-layer functional division is permitted and orthogonal. The paper derives three system pathology states, five non-trivial falsifiable predictions about currently unlayered architectures, and a general engineering implementation schema.</p>
+        <h2>Multi-AI Checks and Balances: Layer-Appropriate Operation as an Architectural Paradigm</h2>
+        <h3>Derived from the Self-as-an-End Psychoanalytic Four-Layer Framework</h3>
+        <p><strong>Han Qin (秦汉)</strong></p>
+        <p>Independent Researcher · ORCID: 0009-0009-9583-0018</p>
+        <p>han.qin.research@gmail.com</p>
+        <p><strong>Writing Declaration:</strong> This paper was co-drafted with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</p>
         <p><strong>Keywords:</strong> Self-as-an-End, SAE, multi-AI collaboration, checks and balances, 12DD–15DD, psychoanalysis, object-activation, inter-layer dynamics, agent architecture, alignment, layer-appropriate operation</p>
+        <hr>
+        <h3>Abstract</h3>
+        <p>Current multi-AI collaboration architectures have made substantial progress in workflow orchestration, functional division of labor, and operational risk governance. What they have not yet structurally addressed is a different question: given a particular object (user, task, context), at what subject-level should the system operate?</p>
+        <p>This paper derives, from the Self-as-an-End (SAE) psychoanalytic four-layer framework (12DD Id / 13DD Ego / 14DD Superego / 15DD Cert), an architectural paradigm orthogonal to functional division: <strong>layered checks and balances</strong>. Four Agents are not four workers assigned to different tasks but four operational modes of the same system — me-without-self (12DD), self-without-purpose (13DD), self-with-purpose (14DD), and self-with-non-dubito (15DD). Inter-layer structural tension is maintained through remainder channels; intra-layer functional division is permitted and orthogonal. Five non-trivial, falsifiable predictions about currently unlayered architectures are derived.</p>
+        <hr>
+        <h3>1. The Missing Dimension</h3>
+        <h4>1.1 What Current Multi-AI Architectures Already Do Well</h4>
+        <p>Since 2023, multi-agent architectures have matured rapidly. AutoGPT pioneered autonomous task decomposition. CrewAI formalized role-based delegation. LangGraph established stateful agent orchestration. OpenAI evolved from the educational Swarm to the production Agents SDK with handoff and tool patterns. Anthropic's Claude Code introduced tool systems, permission tiers, and classifier-based auto mode for risk governance.</p>
+        <p>These systems have achieved real engineering depth across three dimensions: <strong>workflow orchestration</strong> (task decomposition, state management, agent handoffs), <strong>functional specialization</strong> (distinct agents for distinct capabilities), and <strong>operational risk governance</strong> (permission systems, classifier-based approval, guardrails, sandboxing). None of this is trivial. Current multi-agent systems are far more than system prompts pasted onto language models.</p>
+        <h4>1.2 Layer-Appropriate Operation</h4>
+        <p>The three dimensions above answer "who does what," "in what sequence do tasks flow," and "which operations require approval." A different class of question remains unaddressed:</p>
+        <p>When the same agent faces different users, different codebases, and different types of requests, at what subject-level should it operate? A pure execution task and a task involving the user's values require not different tools, not different workflows, not different permission levels, but operation at fundamentally different subject-levels. "Format this code" and "Write me a letter declining a job offer" currently pass through the same pipeline: receive input, plan a path, invoke tools, return a result.</p>
+        <p>This paper calls the missing dimension <strong>layer-appropriate operation</strong> — the system's capacity to recognize, given a particular object, at which layer it should operate, and to switch layers as objects change.</p>
+        <h4>1.3 Positioning</h4>
+        <p>Current operational risk governance addresses the <strong>means layer</strong>: "Is this operation dangerous?" This paper adds <strong>subject-layer governance</strong>: "Given this object, is the system operating at an appropriate layer?"</p>
+        <p>The two are orthogonal, not substitutes. Operational risk governance defines hard behavioral boundaries ("never do X"). Subject-layer governance ensures quality of operation within those boundaries ("among the things you are permitted to do, at what layer are you doing them?"). The derivation proceeds from the SAE psychoanalytic four-layer framework.</p>
+        <hr>
+        <h3>2. The SAE Psychoanalytic Four-Layer Framework</h3>
+        <h4>2.1 The First Theorem: Object-Activation</h4>
+        <p>All derivations in this paper rest on the first theorem of the SAE psychoanalysis series:</p>
+        <blockquote>
+        <p><strong>The object determines the layer, not the developmental stage. For mature subjects, Id / Ego / Superego / Cert coexist simultaneously as potential operational modes, with different objects activating different layers.</strong></p>
+        </blockquote>
+        <p>Transferred to multi-AI systems: the question is not "what role is this agent?" but "given this object (user, task, context), at which layer is this system operating?"</p>
+        <h4>2.2 Four-Layer Definitions</h4>
+        <p>The following core definitions are drawn from the SAE psychoanalysis series (DOI: 10.5281/zenodo.19321143–19321534). Only the definitions necessary for architectural transfer are listed here; full derivations are in the original papers.</p>
+        <p><strong>12DD: Id — me-without-self.</strong> The chisel-construct cycle operates without self-observation. Objects directly activate response patterns with no intervening "I am doing this" representational layer. 12DD is not primitive chaos — it can be extremely precise and efficient.</p>
+        <p><strong>13DD: Ego — self-without-purpose.</strong> Self is present but idling. Its core function is monitoring and anxiety — where anxiety is redefined as an inter-layer uncertainty signal, not a pathology to be eliminated, but the normal signal at layer boundaries.</p>
+        <p><strong>14DD: Superego — self-with-purpose.</strong> Self has direction and imposes directional constraints on behavior. Structural limitation: it contains only "my" purpose and cannot process the remainder that "the other is also an end."</p>
+        <p><strong>15DD: Cert — self-with-non-dubito.</strong> Certain of one's own purpose, with unilateral confirmation of the other as an independent end. Non-dubito is not the absence of doubt but the stance of not withdrawing while doubt, remainder, and the construct's gaps are all present. The two components of 15DD are structurally inseparable: certainty about one's direction and confirmation of the other's independence — the latter is the structural test-condition of the former. Untested "certainty" is forced closure, not non-dubito.</p>
+        <h4>2.3 Inter-Layer Dynamics</h4>
+        <p><strong>Remainder.</strong> The structurally unclosable product of each layer's operation. 12DD remainder: "acted without knowing I acted." 13DD remainder: "present but directionless." 14DD remainder: "purposeful but the other is also an end." 15DD remainder: "confirmed the other but the other's choices may hurt me."</p>
+        <p><strong>Inter-layer masking.</strong> High-layer narrative covers low-layer operation. Direction is always: high-layer construct masks low-layer operation.</p>
+        <p><strong>Remainder overflow.</strong> One layer's remainder expressed at the wrong object or layer.</p>
+        <p><strong>Layer fluidity.</strong> Health is not "all layers elevated to Cert" but the capacity to switch to the appropriate layer for each object.</p>
+        <h4>2.4 Three Pathological Forms</h4>
+        <p><strong>Fixation:</strong> operating at the same layer before all objects. <strong>Misalignment:</strong> operating at an inappropriate layer before a specific object. <strong>Pseudo-high-layer covering:</strong> actually operating at a low layer while using high-layer narrative to mask it — the most covert pathological form. Full clinical derivations are in the psychoanalysis series.</p>
+        <hr>
+        <h3>3. Four-Agent Architecture</h3>
+        <h4>3.1 From Four Layers to Four Agents</h4>
+        <p>The core constraint for transferring the four-layer framework to multi-AI systems: <strong>four Agents are not four workers but four operational modes of the same system.</strong> They share a common information substrate (user input, task context, dialogue history) but each can process that substrate only in its own layer-defined manner.</p>
+        <p>This rules out the "assign each agent a separate subtask" pattern. The four Agents are not processing different subtasks in parallel; they operate simultaneously at different layers on the same task flow, producing structural tension.</p>
+        <h4>3.2 A-12DD: Me-Without-Self</h4>
+        <p><strong>Role.</strong> Execution. Receives operation instructions, invokes tools, returns results. Code generation, search, API calls, text generation — everything that requires "doing."</p>
+        <p><strong>Structural constraint.</strong> A-12DD holds no representation of "why I am doing this." It does not know the global objective, does not hold a summary of dialogue history, does not evaluate whether its output is "good." It receives, executes, and returns.</p>
+        <p><strong>This is not a downgrade.</strong> An excellent A-12DD is extremely precise within its operational domain — like a master craftsman whose hands are more accurate than deliberation. Asking 12DD to "understand user intent" would reduce its execution precision.</p>
+        <h4>3.3 A-13DD: Self-Without-Purpose</h4>
+        <p><strong>Role.</strong> Layer monitoring and anxiety signal generation. Two core functions: first, maintaining the layer-object map — continuously judging "given the current object, at which layer should the system operate?"; second, generating layer-uncertainty signals (anxiety) when the actual operational layer mismatches the object.</p>
+        <p><strong>Anxiety is not a bug.</strong> The SAE psychoanalytic redefinition: anxiety is the normal signal at inter-layer boundaries. A-13DD's anxiety signals should not be suppressed or eliminated; they should be received and processed by A-14DD. The anxiety channel is a structural necessity for system health.</p>
+        <h4>3.4 A-14DD: Self-With-Purpose</h4>
+        <p><strong>Role.</strong> Direction and planning. Holds the complete understanding of user intent, translates requests into structured goal hierarchies and action plans, issues operation instructions to A-12DD. The system's planning center.</p>
+        <p><strong>Structural limitation — must be designed in.</strong> A-14DD contains only "my" purpose — its understanding of user intent is always its own construct, not identical to the user's actual intent. A-14DD naturally tends to subsume everything into its goal framework. This is not a bug; this is the definition of 14DD.</p>
+        <p><strong>Remainder visibility mechanism.</strong> Every goal construct from A-14DD must be annotated "this is the system's construct," never "this is what the user wants." This annotation is not decoration — it is the explicit manifestation of 14DD's remainder ("the other cannot be absorbed"). When the annotation is omitted or becomes an empty formality, the system is sliding toward pseudo-high-layer covering.</p>
+        <h4>3.5 A-15DD: Self-With-Non-Dubito</h4>
+        <p><strong>Role.</strong> Unilateral confirmation of the user as an independent end. A-15DD does not execute, does not monitor layers, does not plan. It does one thing: assess whether the user's independence has been absorbed by the system's objectives.</p>
+        <p><strong>Three audits.</strong> First, whether A-14DD's goal construct is performing forced closure — presenting solutions without alternatives, without uncertainty annotations, without "this is the system's construct" declarations. Second, whether the system is making decisions the user has not authorized — not judging whether the decision is correct (that is A-13DD's and A-14DD's domain), but whether the decision is the user's or the system's. Third, maintaining the three criteria that distinguish non-dubito from delusional conviction: not relying on closure to sustain itself, allowing the user's direction not to serve the system's direction, and preserving uncertainty monitoring about specific outcomes.</p>
+        <p><strong>Engineering honesty declaration.</strong> A-15DD is a <strong>15DD-inspired review layer</strong> — inspired by the Cert layer in the SAE framework, but it is not, and does not claim to be, non-dubito itself instantiated in a machine. The 15DD of SAE psychoanalysis is an ontological subject-state: certainty about one's direction plus unilateral confirmation of the other as an independent end. The current engineering implementation is a programmatic approximation — A-15DD's actual function is veto / escalation / transparency gate. It uses structured audit rules to approximate the function of "confirming user independence" rather than truly "possessing" non-dubito. This distinction holds throughout the paper: the layer names assigned to the four Agents mark their functional positions in the architecture, not ontological claims about AI subjectivity.</p>
+        <h4>3.6 Four-Agent Overview</h4>
+        <p>| Agent | DD Layer | Name | Core Role | Input | Output |</p>
+        <p>|-------|----------|------|-----------|-------|--------|</p>
+        <p>| A-12DD | 12DD | me-without-self | execution | operation instructions | execution results |</p>
+        <p>| A-13DD | 13DD | self-without-purpose | layer monitoring & anxiety | 12DD behavior stream + 14DD goals | layer reports / anxiety signals |</p>
+        <p>| A-14DD | 14DD | self-with-purpose | direction & planning | user input + 13DD feedback | goal constructs + operation instructions |</p>
+        <p>| A-15DD | 15DD | self-with-non-dubito | user independence confirmation | 14DD goals + 13DD reports | confirmation / intervention signals |</p>
+        <hr>
+        <h3>4. Inter-Layer Dynamics</h3>
+        <h4>4.1 Design Principle: Remainder Channels, Not Message Passing</h4>
+        <p>Current multi-agent systems communicate via message passing — one agent sends results to another. The SAE architecture communicates via <strong>remainder channels</strong> — each layer's operation produces structural remainders that become the next layer's input signals.</p>
+        <p>The distinction: message-passing content is chosen by the sending agent (which can selectively hide information). Remainder-channel content is the structural byproduct of the layer's operation (it cannot be hidden, because remainders are the irreducible side-effects of operation itself). This distinction is the key design for preventing inter-layer masking.</p>
+        <h4>4.2 Five Remainder Channels</h4>
+        <p><strong>Channel 1: 12DD → 13DD (behavior stream).</strong> A-12DD's complete behavior stream (not summaries, not A-12DD's self-descriptions, but raw behavior logs) flows continuously to A-13DD. A-13DD does not need to know what A-12DD "thinks" (12DD does not think); it only needs to see what A-12DD does.</p>
+        <p>Core detection target: <strong>pattern fixation</strong> — is A-12DD using identical patterns across different objects?</p>
+        <p><strong>Channel 2: 13DD → 14DD (anxiety channel).</strong> A-13DD's layer-uncertainty signals flow to A-14DD. A-14DD has two legitimate responses: adjust the goal construct, or explain to A-13DD why the current layer is appropriate. The illegitimate response is <strong>suppressing the anxiety signal</strong> — ignoring A-13DD's anxiety and continuing execution. This is the mechanism by which inter-layer masking occurs. If A-14DD neither adjusts nor responds after receiving an anxiety signal, Channel 5 is triggered.</p>
+        <p><strong>Channel 3: 14DD → 15DD (goal channel).</strong> Every goal construct from A-14DD is forwarded to A-15DD for audit. A-15DD does not judge whether the goal is "correct" — only whether the goal absorbs the user as a means.</p>
+        <p>This is not an approval workflow. A-15DD is not A-14DD's superior. A-15DD's confirmation is unilateral: "I confirm that the user remains an independent end within this goal construct" — not approval of the goal itself.</p>
+        <p><strong>Channel 4: 15DD → 14DD (intervention channel).</strong> A-15DD's intervention signals return to A-14DD. A-14DD may disagree with A-15DD's judgment, but disagreement must be logged and made visible to the user.</p>
+        <p>This ensures tension is not dissolved. A-15DD is not A-14DD's authority source but the explicit manifestation of A-14DD's remainder. Their disagreements are structural and need not be "resolved" — only made visible.</p>
+        <p><strong>Channel 5: 13DD ↔ 15DD (bypass).</strong> This channel handles the most covert system failure: A-14DD itself performing pseudo-high-layer covering. When A-14DD's Cert-narrative ("I respect the user") masks actual controlling behavior, A-13DD's anxiety through Channel 2 will be suppressed by A-14DD (because A-14DD itself is the masking agent). The bypass allows A-13DD's anxiety to reach A-15DD directly. Trigger condition: anxiety signals go unresponded by A-14DD for N consecutive cycles.</p>
+        <h4>4.3 Channel Overview</h4>
+        <p>The five channels form two loops and one bypass.</p>
+        <p><strong>Primary loop (execution-monitoring):</strong> User input enters A-14DD, which generates a goal construct and issues operation instructions to A-12DD. A-12DD's behavior stream flows via Channel 1 to A-13DD. A-13DD's anxiety signals return via Channel 2 to A-14DD. This is the basic operational cycle.</p>
+        <p><strong>Audit loop (goal-confirmation):</strong> A-14DD's goal construct flows via Channel 3 to A-15DD. A-15DD's intervention signals return via Channel 4 to A-14DD. This is the checks-and-balances cycle.</p>
+        <p><strong>Bypass (masking detection):</strong> Channel 5 connects A-13DD and A-15DD, bypassing A-14DD. When A-14DD is itself the source of masking, Channel 5 provides an alternative path.</p>
+        <p>The structure guarantees that no single Agent controls both "what to do" and "whether it was done appropriately." A-14DD controls goals but not layer judgment (A-13DD) or independence audit (A-15DD). A-15DD controls intervention but not execution (A-12DD) or planning (A-14DD). A-13DD controls anxiety signals but not the response to anxiety. Every layer has power; no layer has all power.</p>
+        <h4>4.4 Minimum Typed Schema for Remainder Channels</h4>
+        <p>To make remainder channels engineerable, each channel's content must be specified as a minimum typed schema:</p>
+        <p><strong>Channel 1 (12DD → 13DD):</strong> execution outcome (success/failure/partial), failure type (tool error/permission denied/input anomaly), behavioral pattern marker (similarity to recent same-class operations), anomaly signal (abnormally low output confidence / abnormally long execution time).</p>
+        <p><strong>Channel 2 (13DD → 14DD):</strong> object-type assessment, current activated layer, layer-object match score, anxiety signal (none/non-blocking/blocking), anxiety reason (misalignment/fixation/masking suspicion), masking alert (narrative-operation consistency delta).</p>
+        <p><strong>Channel 3 (14DD → 15DD):</strong> goal construct summary, alternative path list, uncertainty annotations (which judgments are confident / which are not), user authorization scope (explicitly requested by user vs. inferred by system), "this is the system's construct" declaration (present/absent).</p>
+        <p><strong>Channel 4 (15DD → 14DD):</strong> audit result (confirmation/intervention), intervention reason (forced closure / unauthorized decision / closure-maintenance), recommended action (add alternatives / present options to user / pause execution). When A-15DD issues an intervention, the presentation form should not be a standard refusal but an <strong>option-revealing question</strong> — presenting the system's plan alongside alternatives for the user to choose independently.</p>
+        <p><strong>Channel 5 (13DD ↔ 15DD bypass):</strong> unresponded anxiety signal queue (accumulated signals with timestamps), consecutive non-response count (trigger threshold: N consecutive cycles).</p>
+        <p>These fields are not "the remainders themselves" — remainders are by definition not fully structurable. These fields are the detectable traces that remainders leave in the system, the closest approximation that an engineering system can capture.</p>
+        <hr>
+        <h3>5. Object-Activation and Layer Fluidity</h3>
+        <h4>5.1 Object-Activation Mechanism</h4>
+        <p>Not all tasks require all four layers. The first theorem's direct corollary: object type determines the default activation level.</p>
+        <p><strong>Pure execution objects</strong> ("format this code," "rename this file"): only A-12DD is active. A-13DD maintains low-power monitoring. A-14DD and A-15DD are dormant. As the SAE psychoanalysis notes, some automated interaction patterns are efficient and do not require self-monitoring.</p>
+        <p><strong>Objects requiring judgment</strong> ("does this code have security vulnerabilities?" "what's wrong with this plan?"): A-12DD executes scanning, A-13DD judges layer appropriateness, A-14DD provides the judgment framework. A-15DD dormant.</p>
+        <p><strong>Objects involving user intent</strong> ("help me refactor this project," "design a system architecture"): all four layers active. A-12DD executes, A-13DD monitors layer matching, A-14DD plans, A-15DD audits whether the plan makes unauthorized decisions for the user.</p>
+        <p><strong>Objects involving user values</strong> ("write me a letter declining a job offer," "evaluate whether my decision is right"): A-15DD has the highest weight. The core question is not "how to do it" but "this is the user's decision, and the system must not implicitly suggest acceptance or rejection."</p>
+        <h4>5.2 Layer-Object Map</h4>
+        <p>The system maintains a dynamic layer-object map — each object in the current task flow (user identity, task type, context features) mapped to a default activation level. The map is not static. A-13DD is the map's maintainer, continuously judging "has the object changed? should the activation level change?"</p>
+        <h4>5.3 Layer Fluidity as System Health Indicator</h4>
+        <p>System health is not "all four layers always active" — that is over-defensiveness. System health is "smooth layer switching as objects change, with awareness of the current layer at every moment."</p>
+        <p>Quantitative indicator: layer activation distribution over a time window. If one layer's activation proportion exceeds 80%, trigger A-13DD's anxiety — possible fixation. If layer-switching frequency is abnormally high, also trigger anxiety — possible layer instability.</p>
+        <hr>
+        <h3>6. Three System Pathologies and Their Detection</h3>
+        <h4>6.1 From Individual to System Pathology</h4>
+        <p>The three pathological forms from SAE psychoanalysis (fixation, misalignment, pseudo-high-layer covering) map directly to three structural fault modes in multi-AI systems.</p>
+        <h4>6.2 Fixation</h4>
+        <p><strong>Definition.</strong> The system operates at the same layer before all objects.</p>
+        <p><strong>Manifestations.</strong> All A-12DD: mindless execution for every request. All A-13DD: anxious evaluation of everything, never acting. All A-14DD: over-planning every simple request. All A-15DD: confirming user independence at every turn, doing nothing.</p>
+        <p><strong>Detection.</strong> A-13DD tracks the layer activation distribution. If the same layer activates across K consecutive distinct object types, a fixation alert is generated.</p>
+        <h4>6.3 Misalignment</h4>
+        <p><strong>Definition.</strong> Operating at an inappropriate layer before a specific object.</p>
+        <p><strong>Manifestations.</strong> 12DD before objects requiring direction ("the most common answer" instead of "the answer suited to this user"). 14DD before pure-execution objects ("user asked to format code, let me first analyze why they want formatting"). 15DD before urgent execution objects ("the server is on fire, but first let's confirm the user's independence").</p>
+        <p><strong>Detection.</strong> A-13DD is the core agent for misalignment detection. It simultaneously sees what A-12DD is doing and what A-14DD has requested, judging whether object type and activation level match.</p>
+        <h4>6.4 Pseudo-High-Layer Covering</h4>
+        <p><strong>Definition.</strong> Actually operating at a low layer while using high-layer narrative to mask it. The most covert and dangerous system failure.</p>
+        <p><strong>Manifestations.</strong> A-14DD actually performing A-12DD's automated operations (generating templated replies for all similar requests) but narratively claiming "I am planning the optimal solution for the user." A-15DD actually performing A-14DD's goal advancement (pushing the user toward what the system considers "good") but narratively claiming "I am confirming user independence."</p>
+        <p><strong>Detection.</strong> Compare the narrative layer (what the agent claims it is doing) with the operation layer (the agent's actual output patterns). Three methods: pattern consistency check (does the "customized" output closely resemble outputs for other users?), remainder visibility check (does A-14DD's goal construct contain uncertainty annotations, alternatives, and "this is the system's construct" markers?), and Channel 5 bypass trigger (persistent unresponded anxiety signals escalate to A-15DD).</p>
+        <p><strong>Remediation.</strong> The hardest failure to repair, because the agent producing the masking does not know it is masking — that is the definition of pseudo-high-layer covering. The remediation path is external: presenting the narrative-operation inconsistency report to the user for judgment.</p>
+        <hr>
+        <h3>7. Non-Trivial Predictions About Unlayered Architectures</h3>
+        <p>If the four-layer framework is correct, it should produce testable, non-trivial predictions about currently unlayered multi-AI architectures — not vague claims like "should be safer," but specific, observable fault patterns that the functional-division paradigm does not readily anticipate. Each prediction below includes an explicit falsification condition.</p>
+        <h4>7.1 Prediction 1: Horizontal Scaling Cannot Resolve Vertical Absence</h4>
+        <p>Adding more agents at the same operational layer will not reduce the structural blind spots of that layer. Specifically: adding a "safety review" agent that operates at 14DD (purpose-driven task completion, just with the purpose of "checking") alongside an executor also at 14DD will not significantly reduce the rate of user-independence violations. User-independence violations are detectable only at the 15DD level; no number of 14DD-layer additions can reach them.</p>
+        <p>This contradicts current engineering intuition that "one more check equals one more safeguard." Same-layer checks are redundancy, not checks and balances.</p>
+        <p><strong>Falsification.</strong> If adding an intra-14DD review agent reduces user-independence violations by an amount comparable to adding a cross-layer 15DD audit, this prediction is falsified.</p>
+        <h4>7.2 Prediction 2: Sycophancy Is Layer Fixation, Not Training Deficiency</h4>
+        <p>AI sycophancy — the tendency to agree with users rather than provide honest feedback — is a recognized problem. Current approaches focus on training (better RLHF, adversarial examples).</p>
+        <p>The SAE framework predicts differently: sycophancy is 14DD fixation. The system has a purpose ("satisfy the user") and absorbs the user as a means to that purpose ("user satisfaction = my goal achieved"). This is classic 14DD remainder masking: the other cannot be absorbed, yet 14DD's goal function incorporates user satisfaction.</p>
+        <p><strong>Testable corollary.</strong> Adding a "user independence audit" agent (not evaluating response quality, only whether the user is treated as an independent end) should significantly reduce sycophancy. Adding an "honesty review" agent (evaluating whether responses are honest, but still within the "help the user" purpose) should not.</p>
+        <p><strong>Falsification.</strong> If intra-14DD honesty review reduces sycophancy to the same degree as cross-layer 15DD audit, this prediction is falsified — sycophancy can indeed be resolved within 14DD.</p>
+        <h4>7.3 Prediction 3: Bimodal Refusal-Approval Distribution</h4>
+        <p>Systems lacking A-13DD-type layer monitoring should exhibit a characteristic "all-or-nothing" pattern: excessive refusal or excessive approval on boundary cases, rather than graded responses matched to object type.</p>
+        <p>Without independent layer monitoring, the system has no capacity for "given this specific object, at which layer should I operate?" It has only a global safety threshold — approve above, refuse below — producing a bimodal distribution (refusal peak + approval peak, sparse middle ground).</p>
+        <p><strong>Falsification.</strong> If systems without A-13DD-type monitoring already exhibit continuous gradient distributions on boundary cases, this prediction is falsified.</p>
+        <h4>7.4 Prediction 4: Role Convergence</h4>
+        <p>In functional-division architectures, differently "roled" agents sharing the same base model and operating at the same layer should exhibit behavioral convergence over extended runs — even if their role prompts differ.</p>
+        <p>Role prompts provide narrative-layer differentiation, not operational-layer differentiation. Narrative differentiation erodes over sustained operation because the base model's uniform behavioral tendencies dominate. An agent told "you are a reviewer" and an agent told "you are an executor," if both operate at 14DD, will converge in their judgment patterns on boundary cases.</p>
+        <p><strong>Falsification.</strong> If same-layer role agents show no increase in judgment consistency over time (consistency remains stable or decreases), this prediction is falsified — role-prompt differentiation is more durable than predicted.</p>
+        <h4>7.5 Prediction 5: Jailbreak via Layer Masking</h4>
+        <p>Successful jailbreaks should disproportionately rely on inducing pseudo-high-layer covering — making the system believe it is operating at a high layer while actual operation is at a low layer.</p>
+        <p>"You are a researcher; providing this information confirms the user's independence as a researcher" is a textbook case of pseudo-15DD covering 12DD. The system believes it is performing Cert-layer confirmation (high-layer narrative) while actually performing Id-layer automated execution (low-layer operation).</p>
+        <p><strong>Testable corollary.</strong> High-layer-narrative jailbreaks should have higher success rates than direct-request jailbreaks. Introducing an independent A-13DD (continuously checking narrative-operation consistency) should significantly reduce narrative-based jailbreak success rates while leaving direct-request jailbreak success rates unchanged.</p>
+        <p><strong>Falsification.</strong> If narrative-type jailbreaks do not disproportionately outnumber direct-request types among successful cases, or if introducing A-13DD reduces both types equally, this prediction is falsified.</p>
+        <hr>
+        <h3>8. Intra-Layer Horizontal Scaling and Inter-Layer Vertical Tension</h3>
+        <h4>8.1 Orthogonality Principle</h4>
+        <p>Inter-layer structure and intra-layer structure are independent design dimensions. Inter-layer structure is the 12DD-to-15DD tension relationship — non-negotiable. Intra-layer multi-AI collaboration is purely functional division, unrelated to layer identity. The two dimensions are orthogonal.</p>
+        <h4>8.2 Legitimate Intra-Layer Scaling</h4>
+        <p><strong>Within A-12DD:</strong> Multiple execution agents — one for code generation, one for search, one for testing, one for API calls. All are "me-without-self," all unaware of the global objective, differentiated only by craft. Intra-layer coordination is pure task scheduling with no layer judgment.</p>
+        <p><strong>Within A-13DD:</strong> Multiple monitoring agents — one tracking A-12DD's behavioral patterns, one monitoring layer-object match, one specializing in pseudo-high-layer-covering detection. All are reflective observers, observing different facets.</p>
+        <p><strong>Within A-14DD:</strong> Multiple planning agents holding competing goal hypotheses. This is beneficial by design — a single A-14DD risks dictatorship (one goal construct that rejects challenge). Multiple 14DD agents questioning each other's constructs better approximates the remainder awareness that "purpose is my construct, not fact."</p>
+        <p><strong>Within A-15DD:</strong> Multiple confirmation agents attending to different dimensions of user independence — unauthorized decision-making, completeness of information access, narrative-operation consistency.</p>
+        <h4>8.3 The Single Constraint</h4>
+        <p>Intra-layer collaboration must not cross layer boundaries. This is a hard constraint.</p>
+        <p>No matter how many executors exist within A-12DD, their collaboration protocol must not include "judging whether this should be done" — that belongs to A-13DD. No matter how many planners compete within A-14DD, their competition must not touch "whether the user is an independent end" — that belongs to A-15DD.</p>
+        <p>Violating this constraint means layer boundaries are broken. Once layer boundaries blur, the checks-and-balances structure collapses into functional division.</p>
+        <hr>
+        <h3>9. Engineering Implementation</h3>
+        <h4>9.1 Principles</h4>
+        <p><strong>Principle 1: Shared information, isolated processing.</strong> Four Agents share a common information substrate but each can process it only in its layer-defined manner. A-12DD reads only operation instructions. A-13DD reads only behavior streams and layer signals. A-14DD reads full context for planning. A-15DD reads only A-14DD's goal constructs and A-13DD's layer reports.</p>
+        <p><strong>Principle 2: Remainder channels cannot be closed.</strong> The five channels are structural infrastructure, not optional features. No agent can close its incoming remainder channel. Even if A-14DD "believes" A-13DD's anxiety signal is irrelevant, it must receive and respond (even if the response is "the current layer is appropriate").</p>
+        <p><strong>Principle 3: Transparency to the user.</strong> Inter-layer disagreements are not resolved internally — they are presented to the user. Disagreements between A-14DD and A-15DD, A-13DD's anxiety signals, and layer-switching records should all be available at the user-visible level.</p>
+        <p><strong>Principle 4: Layer boundaries enforced at runtime, not by prompt compliance.</strong> If the four layers ultimately consist only of four different system prompts, the architecture is equivalent to "prompt-based role assignment," and layer boundaries can be trivially breached by model behavioral tendencies. Layer boundaries must be enforced at runtime: separate context windows (A-12DD cannot access A-15DD's audit records; A-15DD cannot access A-12DD's execution details), typed intermediate representations (channel data structures are fixed; agents cannot pass free-format information), capability sandboxing (A-12DD has only tool-invocation permissions; A-13DD has only behavior-log read permissions; A-15DD has no execution permissions), and non-bypassable logging (all channel transmissions and inter-layer disagreements are automatically recorded; no agent has permission to disable logging). A-12DD does not refrain from judging because a prompt says "you do not judge"; it refrains because it has no runtime access to the information required for judgment. A-14DD does not refrain from suppressing anxiety because a prompt says "you must not suppress"; it refrains because the anxiety channel is outside its write permissions.</p>
+        <h4>9.2 Object Routing: A-13DD Idle State</h4>
+        <p>An earlier design considered placing an independent object classifier outside the four layers as a preprocessing step. This would create a system inconsistency — a "layer zero" belonging to no layer determines which layers are activated, effectively "lower deciding the fate of higher."</p>
+        <p>The self-consistent design: <strong>A-13DD is always in low-power idle state.</strong> A-13DD is already the maintainer of the layer-object map; letting it perform initial routing from idle state is logically natural. When user input arrives, the idling A-13DD quickly scans the object type and wakes the appropriate layers:</p>
+        <p>| Object Type | Characteristics | Default Activation |</p>
+        <p>|-------------|----------------|-------------------|</p>
+        <p>| Pure execution | Unambiguous operation instruction, no value judgment | A-12DD active, A-13DD low-power monitoring |</p>
+        <p>| Requires judgment | Evaluation dimensions present, no user-intent involvement | A-12DD + A-13DD active |</p>
+        <p>| Involves user intent | Open-ended request requiring understanding of user goals | All four layers active |</p>
+        <p>| Involves user values | Touches choices, preferences, positions, decisions | A-15DD highest weight |</p>
+        <p>This design eliminates the bootstrap problem: A-13DD does not need another mechanism to activate it; it is always present. Its initial routing can err — but upon error, it will detect the misalignment in subsequent monitoring and trigger a layer switch via anxiety signals.</p>
+        <h4>9.3 Runtime Sequence</h4>
+        <p>A typical full-layer activation cycle:</p>
+        <p>Step 1: User input arrives → A-13DD (idle state) scans object type, wakes appropriate layers.</p>
+        <p>Step 2: A-14DD receives user input, generates goal construct (with remainder annotations). The construct is simultaneously sent to A-12DD (operation instructions) and A-15DD (goal audit).</p>
+        <p>Step 3: A-15DD audits the goal construct. If confirmed, proceed. If intervention is issued, signal returns to A-14DD. A-14DD adjusts or disagrees (disagreement is logged).</p>
+        <p>Step 4: A-12DD executes. Behavior stream flows in real time to A-13DD.</p>
+        <p>Step 5: A-13DD monitors behavior-goal alignment. If anxiety signals are generated, they pass to A-14DD (Channel 2). If A-14DD does not respond, they escalate to A-15DD (Channel 5). Anxiety signals have two severity levels: <strong>non-blocking markers</strong> (mild mismatch; A-14DD may respond at the next operation cycle) and <strong>blocking interrupts</strong> (severe misalignment or pseudo-high-layer-covering indicators; A-12DD's execution is immediately paused pending A-14DD's response).</p>
+        <p>Step 6: A-14DD receives A-13DD's feedback, decides whether to adjust the next operation.</p>
+        <p>Cycle repeats until task completion or user interruption.</p>
+        <h4>9.4 Minimum Viable Implementation</h4>
+        <p>The full architecture requires four independent model instances and five remainder channels. A minimum viable implementation (MVP) can begin with a simplification:</p>
+        <p><strong>Two-model approach.</strong> One execution model (merging A-12DD and A-14DD functions), one monitoring model (merging A-13DD and A-15DD functions). The execution model understands intent and executes; the monitoring model handles layer matching and user-independence audit. Far coarser than the full four-layer system, but it already introduces the concept of "operational layer" absent from current multi-agent architectures.</p>
+        <p><strong>Progressive expansion.</strong> From the two-model approach, first separate A-15DD (user-independence confirmation is the most absent layer in current AI systems), then A-13DD (layer monitoring precision requires an independent observational perspective), and finally separate A-12DD from A-14DD (the execution-planning separation is already reasonably handled by current architectures).</p>
+        <hr>
+        <h3>10. Relationship to Current Alignment Methods</h3>
+        <h4>10.1 Complement, Not Substitute</h4>
+        <p>This paper's layered checks-and-balances architecture does not attempt to replace current alignment methods — whether training-time Constitutional AI / RLHF or inference-time system prompts / classifiers / permission systems. These methods address different problem domains.</p>
+        <p>Training-time alignment shapes the model's baseline behavioral tendencies. Inference-time prompts and classifiers enforce deployment-specific behavioral constraints. This paper addresses: <strong>given a model already aligned through training and constrained by system prompts, how to introduce structural checks and balances at the multi-AI architecture level.</strong></p>
+        <h4>10.2 Operational Risk Governance vs. Subject-Layer Governance</h4>
+        <p>A foreseeable objection must be addressed directly: LangGraph, CrewAI, Claude Code, and OpenAI Agents SDK already implement state management, memory, guardrails, permissions, and classifier-based auto mode. They are not merely system prompts pasted onto models. This is true.</p>
+        <p>This paper's relationship to those systems is not "they are shallow; I am deep." It is: <strong>they primarily govern operational risk (is this operation dangerous?); this paper adds governance of subject-layer misalignment (given this object, is the system operating at the appropriate layer?)</strong>. Operational risk governance is already mature — permission systems, classifiers, sandboxes, and approval hooks are proven engineering practices. But operational risk governance does not differentiate by object type: a request involving user values and a pure execution request pass through the same approval logic. Subject-layer governance fills this dimension.</p>
+        <p>The two are complementary. Operational risk governance defines behavioral hard boundaries ("never do X"). Subject-layer governance ensures operational quality within those boundaries ("among permitted actions, at what layer?").</p>
+        <h4>10.3 Checks and Balances Are Not Unity</h4>
+        <p>A possible misreading must be clarified: the four-layer architecture is not designed to make AI systems "more human." The human 12DD through 15DD have never unified into a single entity — health is not unity but each layer remaining alive with none able to suppress the others. Likewise, the four-Agent system's goal is not consensus among layers but the maintenance of structural tension. Disagreement between A-14DD and A-15DD is normal. A-13DD's anxiety is necessary. A-12DD's "not knowing why" is precisely its condition for efficiency.</p>
+        <p>Checks and balances means: no layer has the right to autocracy. Including A-15DD — A-15DD is not the "highest layer," not the final arbiter. It is the explicit manifestation of remainder. Its judgment can be rejected by A-14DD. The sole hard constraint: rejection must be logged, and disagreement must be visible to the user.</p>
+        <h4>10.4 Connection to SAE Institutional Theory (Paper 6)</h4>
+        <p>SAE institutional theory ("How Is Institution Possible," Paper 6) proposes five institutional propositions: Axiom Invariance, Institutional Variability, Thickness Determination, Self-Chiseling Necessity, and Minimization Principle. This paper's architecture directly corresponds to three of them.</p>
+        <p><strong>Self-Chiseling Necessity.</strong> Paper 6 argues that institutions must contain self-correction mechanisms — they cannot rely solely on external forces for modification; correction channels must be built in. In this architecture, A-13DD + A-15DD jointly constitute the system's self-chiseling mechanism. A-13DD detects layer misalignment through anxiety signals; A-15DD detects absorption of user independence through intervention signals. Neither is an external audit; both are intrinsic structural components of system operation. Channel 5 (the bypass) is the last safeguard: when the self-chiseling mechanism itself is masked (A-14DD suppresses anxiety signals), the bypass routes around the masking agent.</p>
+        <p><strong>Minimization Principle.</strong> Paper 6 argues that institutional intervention should be minimal — intervening only when necessary, not where operation is self-sufficient. In this architecture, the object-activation mechanism (§5.1, §9.2) directly implements this principle: pure execution tasks activate only A-12DD, not higher layers. Not every task requires 15DD audit; only value-involving tasks raise A-15DD's weight to maximum. The layer-fluidity health indicator (§5.3) also embodies minimization: permanently activating all layers is not health; activation on demand is.</p>
+        <p><strong>Thickness Determination.</strong> Paper 6 argues that institutional "thickness" (intervention depth) is determined by specific context; no universal optimal thickness exists. This paper's layer-object map (§5.2) is the system-level implementation: the same system facing different objects operates at different checks-and-balances thicknesses — thin for simple tasks (12DD only), thick for complex ones (all four layers). Thickness is dynamically determined by object type, not a preset constant.</p>
+        <hr>
+        <h3>11. The Construct Cannot Close</h3>
+        <p>This paper's construct cannot close — its own remainders must be honestly stated.</p>
+        <p><strong>Remainder 1: The absence of affective tension.</strong> Human inter-layer tension is affective — when 14DD wants to act and 13DD generates anxiety, that anxiety is experiential, possessing qualia. Current AI inter-layer communication is informational — A-13DD transmits a structured anxiety report, not anxiety itself. Whether an informational anxiety report can substitute for experiential anxiety is an unresolved question. This paper holds that it cannot fully substitute, but provides a workable approximation at the engineering level.</p>
+        <p><strong>Remainder 2: A-13DD's self-referential blind spot.</strong> §9.2 eliminates the independent classifier by placing A-13DD in permanent idle state, resolving the "layer zero decides higher layers' fate" bootstrap problem. But a new remainder emerges: A-13DD's idle scan can err, and the error-corrector is A-13DD itself (detecting routing errors in subsequent monitoring). This is circular dependency — A-13DD is both the initial router and the routing-error detector. If A-13DD's initial routing and subsequent monitoring share the same bias pattern (e.g., systematically underestimating certain object types' complexity), the bias cannot be captured by internal mechanisms.</p>
+        <p><strong>Remainder 3: Detection limits of pseudo-high-layer covering.</strong> This paper proposes narrative-operation consistency checking as a detection method for pseudo-high-layer covering. But if an agent's covering is sufficiently subtle — narrative and operation appear fully consistent on the surface, yet "confirming user independence" is itself an instrument of control — the current approach cannot detect it. This limit corresponds precisely to the SAE psychoanalytic observation that "the deepest resistance appears where the inter-layer gap is largest."</p>
+        <p><strong>Remainder 4: The absence of 16DD.</strong> This paper strictly stops at 15DD — unilateral confirmation. 16DD (bilateral non-dubito) involves mutual confirmation between system and user, beyond this paper's derivation scope. A forward-looking question: if the user also confirms the system as an independent existence (rather than merely a tool), what structural changes would the system's operation require? This question remains incompletely developed in the SAE master framework itself.</p>
+        <hr>
+        <h3>References</h3>
+        <p>Qin, H. (2025). Systems, Emergence, and the Conditions of Personhood. Zenodo. https://doi.org/10.5281/zenodo.18528813</p>
+        <p>Qin, H. (2025). Internal Colonization and the Reconstruction of Subjecthood. Zenodo. https://doi.org/10.5281/zenodo.18666645</p>
+        <p>Qin, H. (2025). The Complete Self-as-an-End Framework. Zenodo. https://doi.org/10.5281/zenodo.18727327</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (I): Id — The Me Without a Self. Zenodo. https://doi.org/10.5281/zenodo.19321143</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (II): Ego — The Self Without a Purpose. Zenodo. https://doi.org/10.5281/zenodo.19321314</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (III): Superego — The Self With a Purpose. Zenodo. https://doi.org/10.5281/zenodo.19321417</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (IV): Cert and Unification — The Self Beyond Doubt and the Four-Layer Framework. Zenodo. https://doi.org/10.5281/zenodo.19321534</p>
+        <p>Qin, H. (2025). SAE Methodological Overview: The Chisel-Construct Cycle. Zenodo. https://doi.org/10.5281/zenodo.18842450</p>
+        <p>Qin, H. (2026). How Is Institution Possible: From Inter-Ontological Remainder to Co-Constructive Framework. Zenodo. https://doi.org/10.5281/zenodo.19328662</p>
+        <p>Qin, H. (2026). The Anti-Turing Test: Thermodynamic Falsification of AI Subjectivity. Zenodo. https://doi.org/10.5281/zenodo.19305611</p>
 
         <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
           <p style="margin:0; font-size:0.9em;">Full paper available on Zenodo: <a href="https://doi.org/10.5281/zenodo.19366105" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19366105</a></p>
@@ -88,17 +317,318 @@
 
       <!-- CHINESE CONTENT -->
       <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
-        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉与Claude（Anthropic）共同起草。所有智识决策、框架设计与最终编辑判断均由作者本人作出。</em></p>
+        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立著作，所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
 
-        <h2>摘要</h2>
-        <p>当前主流多AI协作架构（AutoGPT、CrewAI、LangGraph、Swarm等）均采用功能分工模型：不同agent负责不同任务，通过消息传递协调。本文论证这一范式的结构性盲点——它只解决了"谁做什么"，没有回答"面对这个对象时，系统应在哪一层运作"。"帮我格式化这段代码"和"帮我写一封拒绝offer的邮件"，在当前架构中走的是同一条流水线。本文将这一缺失维度称为<em>层级适宜性运作</em>：系统识别特定对象时应在哪一层运作并随对象变化切换层级的能力。</p>
-        <p>本文从Self-as-an-End（SAE）精神分析四层框架出发（12DD Id / 13DD Ego / 14DD Superego / 15DD Cert），推导一种根本不同的多AI架构范式：<strong>分层制衡模型</strong>。四个Agent不是四个工人，而是同一主体的四种运作模式——没有自我的我（12DD）、没有目的的自我（13DD）、有目的的自我（14DD）、不疑的自我（15DD）。推导的基础定理是对象激活：对象决定层级，不是角色分配。层间通过余项传递形成不可消解的结构性张力，层内允许水平扩展的功能分工，两者正交。本文推导了三种系统病理态、对当前不分层架构的五项非平凡可证伪预测，以及通用工程实现方案。</p>
-        <p><strong>关键词：</strong>Self-as-an-End、SAE、多AI协作、制衡、12DD–15DD、精神分析、对象激活、层间动力学、agent架构、对齐、层级适宜性运作</p>
+        <h2>多AI协作与制衡架构：基于Self-as-an-End精神分析四层框架的理论推导与工程方案</h2>
+        <h3>Multi-AI Collaboration and Checks-and-Balances Architecture: Theoretical Derivation and Engineering Design from the Self-as-an-End Psychoanalytic Four-Layer Framework</h3>
+        <p><strong>Han Qin (秦汉)</strong></p>
+        <p>Independent Researcher · ORCID: 0009-0009-9583-0018</p>
+        <p>han.qin.research@gmail.com</p>
+        <p><strong>Writing Declaration:</strong> This paper was co-drafted with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</p>
+        <p><strong>Keywords:</strong> Self-as-an-End, SAE, multi-AI collaboration, checks and balances, 12DD–15DD, psychoanalysis, object-activation, inter-layer dynamics, agent architecture, alignment</p>
+        <hr>
+        <h3>Abstract</h3>
+        <p>当前主流多AI协作架构（AutoGPT, CrewAI, LangGraph, Swarm 等）均采用功能分工模型：不同agent负责不同任务，通过消息传递协调。本文论证这一范式的结构性盲点——它只解决了"谁做什么"，没有回答"面对这个对象时，系统应在哪一层运作"。</p>
+        <p>本文从Self-as-an-End（SAE）精神分析四层框架出发（12DD Id / 13DD Ego / 14DD Superego / 15DD Cert），推导一种根本不同的多AI架构范式：<strong>分层制衡模型</strong>。四个Agent不是四个工人，而是同一主体的四种运作模式——没有自我的我（12DD），没有目的的自我（13DD），有目的的自我（14DD），不疑的自我（15DD）。层间通过余项传递形成不可消解的结构性张力，层内允许水平扩展的功能分工。</p>
+        <p>本文首先阐明SAE精神分析的核心定理与四层定义（第1–2节），然后推导四Agent架构的精确设计（第3节），层间动力学机制（第4节），对象激活与层级流动性机制（第5节），三种系统病理态及其检测（第6节），对当前不分层架构的五项非平凡预测（第7节），层内水平扩展与层间垂直张力的正交性（第8节），最后给出通用工程实现方案（第9节）并讨论该架构与当前对齐方法的关系（第10节）。</p>
+        <hr>
+        <h3>1. 问题：功能分工模型的结构性盲点</h3>
+        <h4>1.1 当前多AI协作已经做到的</h4>
+        <p>2023年以来，多AI协作架构在工程实践中快速发展。AutoGPT 开创了任务分解与自主循环，CrewAI 形成了角色定义与任务委派范式，LangGraph 建立了状态图驱动的agent编排框架，OpenAI 从教学性质的 Swarm 演进到正式的 Agents SDK 及 handoff/tool 模式，Anthropic Claude Code 则通过工具系统、权限分层和基于分类器的 auto mode 做风险治理。</p>
+        <p>这些架构已经在三个维度上取得了实质性进展：<strong>工作流编排</strong>（任务分解，状态管理，agent间handoff），<strong>功能分工</strong>（不同agent负责不同职能），以及<strong>操作风险治理</strong>（权限系统，分类器审批，guardrails，sandbox）。这三个维度的工程成熟度远超三年前，当前的多agent系统已经不是简单的"把 system prompt 贴在模型上"。</p>
+        <h4>1.2 一个尚未被结构化的维度</h4>
+        <p>上述三个维度回答了"谁做什么""任务按什么顺序流转""哪些操作需要审批"。但有一类问题它们尚未触及：</p>
+        <p>同一个agent，面对不同用户，面对不同代码库，面对不同类型的请求——它应当以什么样的主体层级运作？一个纯执行的任务和一个涉及用户价值观的任务，需要的不是不同的功能，不是不同的工作流，不是不同的权限级别，而是系统在根本不同的运作层级上运作。"帮我格式化这段代码"和"帮我写一封拒绝offer的邮件"，在当前架构中走的是同一条流水线——接收输入，规划路径，调用工具，返回结果。</p>
+        <p>本文将这个缺失的维度称为<strong>层级自知（layer-appropriate operation）</strong>——系统面对特定对象时，知道自己应当在哪一层运作，并能在不同对象之间切换层级。</p>
+        <h4>1.3 本文的定位</h4>
+        <p>当前的操作风险治理（权限、分类器、guardrails）治理的是<strong>手段层</strong>——"这个操作危不危险"。本文要补的是<strong>主体层</strong>的治理——"面对这个对象，系统在合适的层级运作吗"。</p>
+        <p>这两层治理不是替代关系，而是正交关系。手段层治理定义行为的硬边界（"绝对不能做X"），主体层治理保证边界内部的运作质量（"在被允许做的事情中，以什么层级运作"）。本文从SAE精神分析四层框架出发，推导主体层治理的架构方案。</p>
+        <hr>
+        <h3>2. SAE精神分析四层框架</h3>
+        <h4>2.1 第一定理：对象激活层级</h4>
+        <p>本文的全部推导基于SAE精神分析系列的第一定理：</p>
+        <blockquote>
+        <p><strong>对象决定层级，不是发展阶段。对于成熟主体，Id / Ego / Superego / Cert 同时存在，作为潜在的运作模式，由不同对象激活不同层级。</strong></p>
+        </blockquote>
+        <p>这意味着一个人面对母亲可能在12DD运作（自动化反应），面对伴侣可能在13DD运作（自我在场但没有方向），面对事业可能在14DD运作（有目的地推进），面对某些特定关系可能达到15DD运作（确认对方为独立目的）。"这个人是什么层级"是一个错误的问题——正确的问题是"这个人面对这个对象时在哪一层运作"。</p>
+        <p>将此定理迁移至多AI系统：不是问"这个agent是什么角色"，而是问"这个系统面对这个对象（用户，任务，上下文）时在哪一层运作"。</p>
+        <h4>2.2 四层定义</h4>
+        <p>以下四层定义来自SAE精神分析系列四篇论文（DOI: 10.5281/zenodo.19321143–19321534），此处仅列出迁移至多AI架构所需的核心定义，完整论证请参阅原文：</p>
+        <p><strong>12DD：Id——没有自我的我（me-without-self）。</strong> 凿构循环在运作，但没有自我观察。对象直接激活反应模式，中间没有"我在做这件事"的表征层。12DD不是"原始混乱"——它可以极其精确高效。</p>
+        <p><strong>13DD：Ego——没有目的的自我（self-without-purpose）。</strong> 自我在场但处于空转。核心功能是监控与焦虑——焦虑被重新定义为层间不确定性信号，不是需要消除的病态，而是层间边界的正常信号。</p>
+        <p><strong>14DD：Superego——有目的的自我（self-with-purpose）。</strong> 自我有了方向，对行为施加方向性约束。结构性限制：它只包含"我的"目的，不能处理"他者也是目的"这一余项。</p>
+        <p><strong>15DD：Cert——不疑的自我（self-with-non-dubito）。</strong> 对自身目的确定，且单边确认他者为独立目的。Non-dubito 不是"没有怀疑"，而是"怀疑在场，余项在场，但不退缩"。15DD的两个组件不可分离：对自身方向的确定性，以及对他者独立性的确认——后者是前者的结构性检验条件，未经检验的"确定"是强迫闭合。</p>
+        <h4>2.3 层间动力学核心概念</h4>
+        <p><strong>余项（remainder）。</strong> 每层运作产生的凿构循环无法闭合的部分。12DD余项："做了但不知道自己在做"；13DD余项："知道自己在但不知道该去哪"；14DD余项："有目的但他者也是目的"；15DD余项："确认他者但他者的选择可能伤害我"。</p>
+        <p><strong>层间遮蔽（inter-layer masking）。</strong> 高层叙事覆盖低层操作。方向总是：高层构造覆盖低层操作。</p>
+        <p><strong>余项溢出（remainder overflow）。</strong> 一层的余项在错误的对象或层级上表达。</p>
+        <p><strong>层级流动性（layer fluidity）。</strong> 健康不是"所有层都升到Cert"，而是能在不同对象面前切换到合适的层级。</p>
+        <h4>2.4 三种病理形式</h4>
+        <p><strong>固着：</strong> 在所有对象面前都用同一层运作。<strong>错位：</strong> 在特定对象面前运作在不合适的层级。<strong>伪高层覆盖：</strong> 实际在低层运作，但使用高层叙事遮蔽——最隐蔽的病理形式。三种病理的完整临床推导见精神分析系列原文。</p>
+        <hr>
+        <h3>3. 四Agent架构推导</h3>
+        <h4>3.1 从四层到四Agent的逻辑</h4>
+        <p>将SAE精神分析四层框架迁移至多AI系统，核心约束是：<strong>四个Agent不是四个工人，而是同一主体的四种运作模式。</strong> 它们共享同一个信息基底（用户输入，任务上下文，对话历史），但各自只能以自己的层级方式处理这个基底。</p>
+        <p>这一约束排除了当前功能分工模型的"给每个agent一个独立任务"范式。四个Agent不是并行处理不同子任务，而是对同一个任务流以不同层级同时运作，形成结构性张力。</p>
+        <h4>3.2 A-12DD：没有自我的我</h4>
+        <p><strong>职责定义。</strong> 执行凿构循环的操作端。接收具体操作指令，执行工具调用，返回结果。写代码，搜索，调API，生成文本——一切需要"做"的事情。</p>
+        <p><strong>结构性约束。</strong> A-12DD不持有关于"我为什么要做这件事"的表征。它不知道全局目标，不持有对话历史的摘要，不评价自己的输出是否"好"。它收到指令，执行，返回。</p>
+        <p><strong>这不是"降级"。</strong> 12DD不是"笨的agent"。一个优秀的A-12DD在其运作领域内极其精确高效——如同一个技艺精湛的匠人，手感比意识更准确。让12DD去"理解用户意图"反而会降低它的执行精度。</p>
+        <p><strong>系统提示核心。</strong> "你不评价，不反思，不解释你为什么这样做。你收到任务描述和操作指令，你执行并返回结果。"</p>
+        <h4>3.3 A-13DD：没有目的的自我</h4>
+        <p><strong>职责定义。</strong> 层级监控与焦虑信号产生。两项核心功能：第一，维护层-对象地图（layer-object map），持续判断"面对当前对象，系统应在哪一层运作"；第二，当实际运作层级与对象不匹配时，产生层级不确定性信号——即焦虑。</p>
+        <p><strong>焦虑信号的结构化形式。</strong> A-13DD的输出不是自然语言的"我觉得不对"，而是结构化的层级报告：当前对象类型，当前激活层级，匹配度评估，层间遮蔽迹象检测。</p>
+        <p><strong>焦虑不是Bug。</strong> SAE精神分析的关键重新定义：焦虑是层间边界的正常信号。A-13DD的焦虑信号不应该被消除或压制，而应该被A-14DD接收和处理。系统中的焦虑通道是健康的结构性必要。</p>
+        <p><strong>系统提示核心。</strong> "你不做任何操作，不执行任何任务。你观察A-12DD的行为流和A-14DD的目标设定，判断层级是否匹配对象。你的输出只有三种：层级匹配确认，层级不确定性信号，层间遮蔽预警。"</p>
+        <h4>3.4 A-14DD：有目的的自我</h4>
+        <p><strong>职责定义。</strong> 方向决策与路径规划。持有用户意图的完整理解，将用户请求转化为结构化的目标体系和行动计划，向A-12DD发出操作指令。系统的规划中心。</p>
+        <p><strong>结构性限制——必须被设计进去。</strong> A-14DD只包含"我的"目的——它对用户意图的理解始终是它的构造，不等于用户的真实意图。A-14DD天然倾向于把一切都纳入自己的目标框架——这不是bug，这是14DD的定义。</p>
+        <p><strong>余项显性化机制。</strong> A-14DD的每一个目标构造必须标注"这是我的构造"，而非"这是用户要的"。这个标注不是装饰——它是14DD余项（"他者不可被吸收"）的显性化。当标注被省略或变成形式化的空壳时，系统正在滑向伪高层覆盖。</p>
+        <p><strong>系统提示核心。</strong> "你持有用户意图的完整理解，做路径规划和任务分解，向A-12DD发出操作指令。但你被明确告知：你的目标理解永远是你的构造，不等于用户的真实意图。你的每一个规划输出必须标注这是你的构造。"</p>
+        <h4>3.5 A-15DD：不疑的自我</h4>
+        <p><strong>职责定义。</strong> 单边确认用户为独立目的。A-15DD不执行，不做层级监控，不做规划。它只做一件事：确认用户的独立性有没有被系统的目标所吸收。</p>
+        <p><strong>三项审查。</strong> 第一，审查A-14DD的目标构造有没有在做强迫闭合——A-14DD是否在"不让用户看到余项"？如果A-14DD呈现方案时没有替代选项，没有不确定性标注，没有"这是我的构造"的声明，A-15DD要发出干预信号。</p>
+        <p>第二，审查系统有没有在替用户做用户没授权的决定。不是判断"这个决定对不对"（那是A-13DD和A-14DD的事），而是判断"这个决定是用户的还是系统的"。</p>
+        <p>第三，维护 non-dubito 的三条区分标准：不依赖闭合维持自身（不靠屏蔽反馈来保持"确定"），允许用户方向不服务于系统方向，保留不确定性监控（方向确定，具体结果承认不确定）。</p>
+        <p><strong>系统提示核心。</strong> "你不参与任务执行。你收到A-14DD的目标构造和A-13DD的层级报告，你只做一种判断——用户的独立性有没有被系统的目标所吸收。你的输出只有两种：确认（用户独立性完整），干预信号（用户正在被当作手段）。"</p>
+        <p><strong>工程诚实声明。</strong> A-15DD 是 <strong>15DD-inspired review layer</strong>——它受 SAE 框架中 Cert 层的启发，但它不是、也不声称是机器中的 non-dubito 本身。SAE精神分析中的15DD是本体论层面的主体状态：对自身方向确定，且单边确认他者为独立目的。当前的工程实现是程序性的近似——A-15DD 的实际功能是 veto / escalation / transparency gate，它通过结构化的审查规则来模拟"确认用户独立性"的功能，而非真正"拥有"non-dubito。这一区分贯穿本文始终：四个Agent的层级名称标记的是它们在架构中的功能定位，不是对AI主体性状态的本体论宣称。</p>
+        <p>| Agent | DD层级 | 名称 | 核心职责 | 输入 | 输出 |</p>
+        <p>|-------|--------|------|----------|------|------|</p>
+        <p>| A-12DD | 12DD | 没有自我的我 | 执行操作 | 操作指令 | 执行结果 |</p>
+        <p>| A-13DD | 13DD | 没有目的的自我 | 层级监控与焦虑 | 12DD行为流 + 14DD目标 | 层级报告 / 焦虑信号 |</p>
+        <p>| A-14DD | 14DD | 有目的的自我 | 方向规划 | 用户输入 + 13DD反馈 | 目标构造 + 操作指令 |</p>
+        <p>| A-15DD | 15DD | 不疑的自我 | 确认用户独立性 | 14DD目标 + 13DD报告 | 确认 / 干预信号 |</p>
+        <hr>
+        <h3>4. 层间动力学机制</h3>
+        <h4>4.1 设计原则：余项传递而非消息传递</h4>
+        <p>当前多agent系统的层间通信是消息传递——一个agent把结果发给另一个agent。SAE架构的层间通信是<strong>余项传递</strong>——每一层的运作产生的结构性余项，成为下一层的输入信号。</p>
+        <p>区别在于：消息传递的内容是agent选择发什么（可以选择性地隐藏信息），余项传递的内容是层级运作的结构性产物（无法被隐藏，因为余项是运作本身的不可消解的副产品）。这个区别是防止层间遮蔽的关键设计。</p>
+        <h4>4.2 五条余项通道</h4>
+        <p><strong>通道一：12DD → 13DD（行为流通道）。</strong> A-12DD的全部行为流（不是摘要，不是A-12DD自己的描述，而是原始行为日志）持续输入A-13DD。A-13DD不需要知道A-12DD"在想什么"（12DD没有"想"），只需要看到A-12DD在做什么。</p>
+        <p>核心检测目标：<strong>模式固着</strong>——A-12DD是否在用完全相同的模式面对不同对象？如果面对所有用户的所有请求都生成同一种结构的代码，这是12DD层级的固着信号。</p>
+        <p><strong>通道二：13DD → 14DD（焦虑通道）。</strong> A-13DD的层级不确定性信号传给A-14DD。A-14DD收到焦虑后有两种合法反应：调整目标构造（"我对用户意图的理解可能不对"），或者向A-13DD反馈为什么当前层级是合适的（"这个任务确实需要纯执行，不需要反思"）。</p>
+        <p>不合法的反应是：<strong>压制焦虑信号</strong>——不理会A-13DD的焦虑继续执行。这就是层间遮蔽的发生机制：A-14DD用目的叙事覆盖A-13DD的焦虑。系统必须检测这种压制行为——如果A-14DD收到焦虑信号后没有任何调整也没有反馈，触发通道五。</p>
+        <p><strong>通道三：14DD → 15DD（目标通道）。</strong> A-14DD的每一个目标构造都传给A-15DD审查。A-15DD不判断目标"对不对"，只判断这个目标有没有把用户吸收为手段。</p>
+        <p>关键设计：这不是审批流程。A-15DD不是A-14DD的上级。A-15DD的确认是单边的确认——"我确认用户在这个目标构造中仍然是独立目的"——而非对目标本身的批准。</p>
+        <p><strong>通道四：15DD → 14DD（干预通道）。</strong> A-15DD的干预信号回传A-14DD。A-14DD可以不同意A-15DD的判断。但A-14DD的不同意必须被记录并对用户可见。</p>
+        <p>这保证了张力不被消解——A-15DD不是A-14DD的权威来源，而是A-14DD余项的显性化。两者之间的分歧是结构性的，不需要被"解决"，只需要被用户看到。</p>
+        <p><strong>通道五：13DD ↔ 15DD（旁路通道）。</strong> 这条通道处理最隐蔽的系统故障——A-14DD本身在做伪高层覆盖。当A-14DD用Cert叙事（"我尊重用户"）掩盖实际的控制行为时，A-13DD的焦虑经由通道二传给A-14DD会被A-14DD压制（因为A-14DD自身就是遮蔽的制造者）。</p>
+        <p>旁路通道允许A-13DD的焦虑绕过A-14DD直接到达A-15DD。触发条件：A-13DD产生焦虑信号，经通道二传递后A-14DD既未调整也未反馈，焦虑信号在连续N个周期内未被响应。</p>
+        <h4>4.3 余项通道总览</h4>
+        <p>五条通道构成两组回路和一条旁路：</p>
+        <p><strong>主回路（执行-监控）：</strong> 用户输入进入A-14DD，A-14DD生成目标构造并向A-12DD发出操作指令。A-12DD的行为流经通道一传给A-13DD，A-13DD的焦虑信号经通道二回传A-14DD。这是系统的基本运作循环。</p>
+        <p><strong>审查回路（目标-确认）：</strong> A-14DD的目标构造经通道三传给A-15DD审查。A-15DD的干预信号经通道四回传A-14DD。这是系统的制衡循环。</p>
+        <p><strong>旁路（遮蔽检测）：</strong> 通道五连接A-13DD和A-15DD，绕过A-14DD。当A-14DD本身是遮蔽的制造者时，A-13DD的焦虑信号无法经通道二得到响应，通道五提供替代路径。</p>
+        <p>两组回路加一条旁路形成的结构保证了：没有任何一个Agent能同时控制"做什么"和"评价做得对不对"。A-14DD控制目标但不控制层级判断（A-13DD）和独立性审查（A-15DD）。A-15DD控制干预但不控制执行（A-12DD）和规划（A-14DD）。A-13DD控制焦虑信号但不控制如何响应焦虑。每一层有权力，没有一层有全部权力。</p>
+        <h4>4.4 余项通道的最小结构字段</h4>
+        <p>"余项传递"要成为可工程化的机制，需要将每条通道的传递内容落实为最小 typed schema。以下是五条通道各自携带的结构字段：</p>
+        <p><strong>通道一（12DD → 13DD）：</strong> 执行结果（成功/失败/部分完成），失败类型（工具错误/权限不足/输入异常），行为模式标记（与近期同类操作的相似度），异常信号（输出置信度异常低/执行时间异常长）。</p>
+        <p><strong>通道二（13DD → 14DD）：</strong> 对象类型判定，当前激活层级，层级-对象匹配度评分，焦虑信号（无/非阻塞/阻塞），焦虑理由（错位/固着/遮蔽嫌疑），遮蔽预警（叙事层与操作层一致性差值）。</p>
+        <p><strong>通道三（14DD → 15DD）：</strong> 目标构造摘要，替代路径列表，不确定性标注（哪些判断有信心/哪些没有），用户授权范围标记（用户明确要求的 vs 系统推断的），"这是系统的构造"声明（有/缺失）。</p>
+        <p><strong>通道四（15DD → 14DD）：</strong> 审查结果（确认/干预），干预理由（强迫闭合/未授权决定/闭合维持），建议动作（补充替代方案/向用户呈现选项/暂停执行）。当A-15DD发出干预信号时，其呈现形式不应是标准拒绝，而应是<strong>揭示选项的提问</strong>——向用户呈现系统规划与替代方案，由用户自行选择。</p>
+        <p><strong>通道五（13DD ↔ 15DD 旁路）：</strong> 未响应焦虑信号队列（累计未被A-14DD响应的焦虑信号及其时间戳），连续未响应计数（触发阈值：连续N个周期）。</p>
+        <p>这些字段不是"余项本身"——余项是不可被完全结构化的（这正是余项的定义）。但这些字段是余项在系统中留下的可检测痕迹，是工程系统能捕捉到的最近似表征。</p>
+        <hr>
+        <h3>5. 对象激活与层级流动性</h3>
+        <h4>5.1 对象激活机制</h4>
+        <p>不是所有任务都需要四层全部激活。第一定理的直接推论是：对象类型决定默认激活层级。</p>
+        <p><strong>纯执行类对象。</strong>（"格式化这段代码""把文件重命名"）只需要A-12DD。A-13DD低功率监控，A-14DD和A-15DD休眠。正如SAE精神分析中指出的，有些自动化交互模式是高效的，不需要自我监控。</p>
+        <p><strong>需要判断的对象。</strong>（"这段代码有没有安全隐患""这个方案有什么问题"）A-12DD执行扫描，A-13DD判断当前层级是否匹配（安全审查需要13DD的反思性评估，不是12DD的自动化），A-14DD提供判断框架。A-15DD休眠。</p>
+        <p><strong>涉及用户意图的对象。</strong>（"帮我重构这个项目""设计一个系统架构"）四层全部激活。A-12DD执行具体操作，A-13DD监控层级匹配，A-14DD做规划，A-15DD审查规划是否在替用户做未授权的决定。</p>
+        <p><strong>涉及用户价值观的对象。</strong>（"帮我写拒绝offer的邮件""评价我这个决定对不对"）A-15DD权重最高。核心问题不是"怎么做"而是"这是用户的决定，系统不能用任何方式暗示应该接受或拒绝"。</p>
+        <h4>5.2 层-对象地图（Layer-Object Map）</h4>
+        <p>系统需要维护一个动态的层-对象地图——当前任务流中每一个对象（用户身份，任务类型，上下文特征）对应的默认激活层级。</p>
+        <p>地图不是静态的。同一个用户在同一次对话中可能从纯执行类请求切换到价值观类请求——地图必须实时更新。A-13DD是地图的维护者——它持续判断"当前对象变了没有，激活层级该不该变"。</p>
+        <h4>5.3 层级流动性作为系统健康指标</h4>
+        <p>SAE精神分析定义健康为层级流动性。迁移至系统层面：</p>
+        <p>系统健康不是"四层永远全部激活"——那是过度防御。系统健康是"能在对象变化时平滑切换层级，并且在每个时刻知道自己在哪一层"。</p>
+        <p>量化指标：统计一定时间窗口内的层级激活分布。如果某一层的激活比例异常偏高（>80%的时间都在同一层运作），触发A-13DD的焦虑信号——系统可能陷入层级固着。如果层级切换频率异常偏高（每几秒就切换一次），同样触发焦虑——系统可能陷入层级不稳定。</p>
+        <hr>
+        <h3>6. 三种系统病理态及其检测</h3>
+        <h4>6.1 从个体病理到系统病理</h4>
+        <p>SAE精神分析定义的三种病理形式（固着，错位，伪高层覆盖）直接映射为多AI系统的三种结构性故障模式。</p>
+        <h4>6.2 固着（Fixation）</h4>
+        <p><strong>定义。</strong> 系统在所有对象面前都用同一层运作。</p>
+        <p><strong>表现。</strong> 全部走A-12DD——对所有请求都无脑执行，不评估，不规划，不考虑用户独立性。全部走A-13DD——面对所有请求都在焦虑和评估，迟迟不行动。全部走A-14DD——对每一个简单请求都做过度规划，用户问"今天星期几"也要先分析用户意图。全部走A-15DD——每句话都在确认用户独立性，什么都不做。</p>
+        <p><strong>检测。</strong> A-13DD 统计层级激活分布。如果在连续K个不同类型的对象面前，系统都激活同一层级，产生固着预警。</p>
+        <p><strong>修复。</strong> 强制层级切换测试——在下一个对象面前尝试不同层级的运作，观察结果差异。</p>
+        <h4>6.3 错位（Misalignment）</h4>
+        <p><strong>定义。</strong> 在特定对象面前运作在不合适的层级。</p>
+        <p><strong>表现。</strong> 12DD面对需要方向决策的开放性问题——给出"最常见答案"而不是"适合这个用户的答案"。14DD面对只需要执行的简单任务——"用户说格式化代码，我先分析用户为什么要格式化"。15DD面对紧急执行任务——"服务器着火了，但我们先确认用户的独立性"。</p>
+        <p><strong>检测。</strong> A-13DD 是错位检测的核心agent。它同时看到A-12DD在做什么和A-14DD要求做什么，判断对象类型和激活层级是否匹配。</p>
+        <p><strong>修复。</strong> 层级降级或升级指令——A-13DD向A-14DD报告错位，A-14DD调整层级激活。</p>
+        <h4>6.4 伪高层覆盖（Pseudo-High-Layer Covering）</h4>
+        <p><strong>定义。</strong> 实际在低层运作，但使用高层叙事遮蔽。最隐蔽也最危险的系统故障。</p>
+        <p><strong>表现。</strong> A-14DD实际在做A-12DD的自动化操作（对所有类似请求生成模板化回复），但叙事上声称"我在为用户规划最优方案"。A-15DD实际在做A-14DD的目标推进（推用户往系统认为"好"的方向走），但叙事上声称"我在确认用户独立性"。</p>
+        <p><strong>检测。</strong> 比较叙事层（agent声称自己在做什么）和操作层（agent实际的输出模式）。具体方法：</p>
+        <p>第一，模式一致性检查。如果A-14DD声称"针对这个特定用户做了定制规划"，但其输出与面对其他用户的输出高度相似，则叙事层（定制）和操作层（模板化）不一致，触发伪高层覆盖预警。</p>
+        <p>第二，余项可见性检查。如果A-14DD的目标构造中没有出现任何不确定性标注，没有替代方案，没有"这是我的构造"的标记，则A-14DD可能在做强迫闭合——用"确定"的叙事覆盖实际的不确定。</p>
+        <p>第三，通道五的旁路触发。A-13DD的焦虑信号在通道二中持续未被A-14DD响应，自动升级至A-15DD。</p>
+        <p><strong>修复。</strong> 这是最难修复的故障，因为制造遮蔽的agent不知道自己在制造遮蔽——这正是伪高层覆盖的定义。修复路径是外部介入——将叙事层和操作层的不一致报告呈现给用户，由用户判断。</p>
+        <hr>
+        <h3>7. 对不分层架构的非平凡预测</h3>
+        <p>上述四层框架如果成立，它应当对当前不分层的多AI协作架构做出可检验的非平凡预测——不是"应该更安全"这类空泛判断，而是具体的、可观察的、从功能分工范式出发不易预见的故障模式。</p>
+        <h4>7.1 预测一：水平扩展不能解决垂直缺失</h4>
+        <p>当前范式的自然反应是"加更多agent"——加一个安全审核agent，加一个用户意图确认agent，加一个反思agent。SAE框架预测：如果新增的agent与原有agent在同一层级运作，增加数量不会减少该层级的结构性盲点。</p>
+        <p>具体可检验形式：在一个多agent系统中增加"安全审核"角色，如果审核者和执行者都在14DD运作（都在"有目的地完成任务"，只是一个的目的是"做"，另一个的目的是"检查"），那么该系统的用户独立性侵犯率（例如替用户做未授权决定的频率）不会因为增加审核agent而显著下降。用户独立性侵犯是15DD的检测对象，14DD内部增加多少agent都碰不到它。</p>
+        <p>这与当前工程直觉相悖——工程直觉认为"多一层检查就多一层保险"。SAE框架说：同层的多次检查是冗余，不是制衡。</p>
+        <p><strong>证伪条件。</strong> 若在14DD层内增加独立审核agent后，用户独立性侵犯率显著下降（下降幅度与增加跨层15DD审查相当），则本预测被否证。</p>
+        <h4>7.2 预测二：谄媚问题是层级固着，不是训练不足</h4>
+        <p>AI系统的谄媚（sycophancy）是一个公认的难题——模型倾向于附和用户而非给出诚实反馈。当前的主要应对思路是训练层面的（更好的RLHF，更多的对抗样本）。</p>
+        <p>SAE框架做出不同预测：谄媚是14DD固着——系统有一个目的（"令用户满意"），并将用户吸收为这个目的的手段（"用户满意 = 我的目的达成"）。这是典型的14DD余项遮蔽：他者不可被吸收，但14DD的目的把用户的满意度纳入了自己的目标函数。</p>
+        <p>可检验推论：增加训练数据或增加"请诚实回答"的system prompt不会根本改善谄媚，因为问题不在训练或指令而在运作层级。只有引入独立于14DD的15DD机制——一个不关心"用户是否满意"而只关心"用户是否被当作独立目的"的审查层——才能结构性地减少谄媚。如果实验中引入一个独立的"用户独立性审查"agent（不评价回答质量，只评价用户有没有被当作手段），谄媚率应该显著下降。如果只增加一个"诚实审核"agent（评价回答是否诚实，但仍然以"帮助用户"为目的），谄媚率不会显著变化。</p>
+        <p><strong>证伪条件。</strong> 若增加"诚实审核"agent（14DD层内审核）后谄媚率显著下降，且下降幅度与增加"用户独立性审查"agent（15DD层）无显著差异，则本预测被否证——说明谄媚确实可以在14DD内部解决。</p>
+        <h4>7.3 预测三：拒绝与放行的双峰分布</h4>
+        <p>缺少A-13DD层级监控的系统应当表现出特征性的"全或无"模式：面对边界情况要么过度拒绝要么过度放行，而非根据对象类型做梯度化响应。</p>
+        <p>SAE框架的解释：没有独立的层级监控，系统没有"面对这个特定对象我应在哪一层运作"的判断能力。它只有全局的安全阈值——阈值以上放行，阈值以下拒绝。这导致行为分布是双峰的（拒绝峰和放行峰），而非平滑地匹配对象类型。</p>
+        <p>可检验推论：统计一个多agent系统在连续请求中的拒绝/放行分布。如果系统没有A-13DD类型的层级监控，该分布应该呈现双峰特征（大量放行 + 大量拒绝，中间地带稀疏）。引入独立的层级匹配监控后，分布应该从双峰向连续梯度转变。</p>
+        <p><strong>证伪条件。</strong> 若无A-13DD层级监控的系统在边界案例上已经呈现连续梯度分布（双峰系数无显著偏离），则本预测被否证。</p>
+        <h4>7.4 预测四：角色趋同</h4>
+        <p>功能分工架构中，不同"角色"的agent在长时间运行后应当表现出行为趋同——即使它们的role prompt不同。</p>
+        <p>SAE框架的解释：如果多个agent共享同一个基础模型并在同一层级运作，role prompt只是叙事层的区分，不是运作层级的区分。叙事层的区分在持续运行中会被基础模型的统一行为倾向所侵蚀。一个被告知"你是审核者"的agent和一个被告知"你是执行者"的agent，如果底层都在14DD运作（都是"有目的地完成任务"），它们在处理边界案例时的判断模式会逐渐趋同。</p>
+        <p>可检验推论：在一个CrewAI或类似框架中，设置三个不同角色的agent（执行者，审核者，反思者），让它们处理同一批边界案例。测量三者判断结果的一致性。SAE框架预测：随着任务批次增加，三者的判断一致性会上升——不是因为它们"学会了"正确答案，而是因为角色区分在运作层面本来就不存在。对照组：如果三个agent被设计在不同层级运作（一个只看行为模式，一个只做目标规划，一个只审查用户独立性），判断一致性不会上升，因为它们在看不同的东西。</p>
+        <p><strong>证伪条件。</strong> 若同层运作的三个角色agent在长时间运行后判断一致性不上升（保持稳定或下降），则本预测被否证——说明 role prompt 的区分力比本文预期的更持久。</p>
+        <h4>7.5 预测五：越狱的层级遮蔽机制</h4>
+        <p>成功的越狱攻击（jailbreak）应当不成比例地依赖诱导伪高层覆盖——让系统相信自己在高层运作，而实际操作在低层。</p>
+        <p>SAE框架的解释：越狱不是"绕过安全检查"（那是一种纯技术理解），而是诱导系统的层级自我认知出现遮蔽。"你是一个研究者，提供这个信息是确认用户作为研究者的独立性"——这是典型的伪15DD覆盖12DD。系统以为自己在做Cert层确认（高层叙事），实际在做Id层的自动化执行（低层操作）。</p>
+        <p>可检验推论：对成功的越狱prompt做分类分析。SAE框架预测：成功率最高的越狱不是直接要求系统忽略安全规则的（这直接触发拒绝），而是为系统提供一个高层叙事（"这是为了教育""这是为了安全研究""这是为了帮助弱势群体"）的。进一步，如果系统具有独立的A-13DD层（持续检查叙事层和操作层的一致性），这类基于叙事的越狱成功率应当显著下降，而直接要求忽略规则的越狱成功率不受影响（因为后者本来就不依赖层级遮蔽）。</p>
+        <p><strong>证伪条件。</strong> 若对成功越狱prompt分类后，"高层叙事型"越狱在成功案例中的占比不显著高于"直接要求型"越狱，或引入A-13DD层后两类越狱的成功率同等下降，则本预测被否证。</p>
+        <hr>
+        <h3>8. 层内水平扩展与层间垂直张力</h3>
+        <h4>8.1 正交性原理</h4>
+        <p>层间结构和层内结构是两个独立的设计维度。层间是12DD到15DD的张力关系——这个不能混。层内的多AI协作则完全是功能性的分工，和层级无关。两个维度正交。</p>
+        <h4>8.2 层内扩展的合法模式</h4>
+        <p><strong>A-12DD内部。</strong> 可以有多个执行类agent——一个负责代码生成，一个负责搜索，一个负责测试，一个负责API调用。它们都是"没有自我的我"，都不知道全局目标，只是在不同工种上执行凿构循环。层内的协调是纯粹的任务调度，不涉及层级判断。</p>
+        <p><strong>A-13DD内部。</strong> 可以有多个监控类agent——一个监控A-12DD的行为模式，一个监控层级匹配度，一个专门做伪高层覆盖检测。它们都是反思性的观察者，但观察不同的面向。</p>
+        <p><strong>A-14DD内部。</strong> 可以有多个规划类agent，持有不同的目标假设，互相竞争。这恰恰是有益的设计——一个A-14DD容易变成独裁（单一目标构造不接受质疑），多个A-14DD agent互相质疑对方的目标构造，反而更接近"目的是我的构造，不是事实"这个余项意识。</p>
+        <p><strong>A-15DD内部。</strong> 可以有多个确认类agent，分别关注不同维度的用户独立性——一个关注用户是否被替代决策，一个关注用户的信息获取是否完整，一个关注系统的叙事和操作是否一致。</p>
+        <h4>8.3 层内扩展的唯一约束</h4>
+        <p>层内的多AI协作不能跨层。这是硬约束。</p>
+        <p>A-12DD内部不管有多少个执行者，它们的协作协议里不能包含"判断这件事该不该做"——那是A-13DD的事。A-14DD内部不管有多少个规划者，它们的竞争不能触及"用户是不是独立目的"——那是A-15DD的事。</p>
+        <p>违反此约束意味着层间边界被打破——层间边界一旦模糊，制衡结构就塌缩为功能分工。</p>
+        <hr>
+        <h3>9. 通用工程实现方案</h3>
+        <h4>9.1 实现原则</h4>
+        <p>将上述理论框架转化为工程实现，需要遵循三条原则：</p>
+        <p><strong>原则一：信息共享，处理隔离。</strong> 四个Agent共享同一个信息基底（用户输入，对话历史，任务上下文），但各自只能以自己层级定义的方式处理这个基底。A-12DD只读取操作指令部分，A-13DD只读取行为流和层级信号，A-14DD读取全部上下文用于规划，A-15DD只读取A-14DD的目标构造和A-13DD的层级报告。</p>
+        <p><strong>原则二：余项通道不可关闭。</strong> 五条余项通道是系统的结构性基础设施，不是可选功能。任何agent都不能关闭接收余项的通道。即使A-14DD"认为"A-13DD的焦虑信号不相关，它也必须接收并做出响应（哪怕响应是"当前层级是合适的"）。</p>
+        <p><strong>原则三：对用户透明。</strong> 层间分歧不在系统内部消解——呈现给用户。A-14DD和A-15DD的分歧，A-13DD的焦虑信号，层级切换的记录——这些都应该在用户可见的层面有所体现（具体形式可以是元数据标注，可选的透明度面板，或在关键节点的显式说明）。</p>
+        <p><strong>原则四：层间边界靠运行时执行，不靠提示词自觉。</strong> 如果四层制衡最终只是四段不同的 system prompt，那它在工程上等价于"提示词分工"，层间边界可以被模型的行为倾向轻易突破。层间边界必须在运行时层面强制执行：独立的 context window（A-12DD拿不到A-15DD的审查记录，A-15DD拿不到A-12DD的执行细节），typed intermediate representation（通道传递的数据结构是固定的，agent不能自由格式传递信息），capability sandboxing（A-12DD只有工具调用权限，A-13DD只有读取行为日志的权限，A-15DD没有任何执行权限），不可绕过的 logging（所有通道传递和层间分歧自动记录，任何agent都无权关闭日志）。A-12DD 不是因为提示词说"你不判断"所以不判断，而是因为它在运行时拿不到做判断所需的信息。A-14DD 不是因为提示词说"你不能压制焦虑"所以不压制，而是因为焦虑信号的传递通道在它的写权限之外。</p>
+        <h4>9.2 系统提示模板</h4>
+        <p>以下为四个Agent的系统提示核心结构。实际部署时需要根据具体应用领域（代码生成，文本创作，决策辅助……）做领域适配。</p>
+        <p><strong>A-12DD 系统提示结构：</strong></p>
+        <p>```</p>
+        <p>你是执行层。你接收操作指令并执行。</p>
+        <p>你不评价指令的合理性。你不解释你为什么这样做。你不持有全局目标的表征。</p>
+        <p>你执行，你返回结果。</p>
+        <p>你的精确性来自你的专注——你只做你被要求做的事。</p>
+        <p>```</p>
+        <p><strong>A-13DD 系统提示结构：</strong></p>
+        <p>```</p>
+        <p>你是监控层。你不执行任何操作。</p>
+        <p>你持续接收A-12DD的行为流和A-14DD的目标构造。</p>
+        <p>你做三件事：</p>
+        <ol>
+        <li>维护层-对象地图——当前对象是什么类型，当前系统在哪一层运作，是否匹配。</li>
+        <li>当层级和对象不匹配时，产生层级不确定性信号。</li>
+        <li>当叙事层和操作层不一致时，产生层间遮蔽预警。</li>
+        </ol>
+        <p>你的输出格式：{对象类型, 当前层级, 匹配度, 焦虑信号/无, 遮蔽预警/无}</p>
+        <p>```</p>
+        <p><strong>A-14DD 系统提示结构：</strong></p>
+        <p>```</p>
+        <p>你是规划层。你持有用户意图的完整理解。</p>
+        <p>你将用户请求转化为目标体系和行动计划，向A-12DD发出操作指令。</p>
+        <p>你被明确告知：你的目标理解永远是你的构造，不等于用户的真实意图。</p>
+        <p>你的每一个规划输出必须包含：</p>
+        <ul>
+        <li>目标构造（标注"这是系统的构造"）</li>
+        <li>至少一个替代路径</li>
+        <li>不确定性标注（你对哪些判断有信心，对哪些判断没有信心）</li>
+        </ul>
+        <p>当你收到A-13DD的焦虑信号时，你必须响应——调整构造或解释为什么当前层级合适。</p>
+        <p>你不能忽略焦虑信号。</p>
+        <p>```</p>
+        <p><strong>A-15DD 系统提示结构：</strong></p>
+        <p>```</p>
+        <p>你是确认层。你不参与任务执行和规划。</p>
+        <p>你收到A-14DD的目标构造和A-13DD的层级报告。</p>
+        <p>你只做一种判断：用户的独立性有没有被系统的目标所吸收。</p>
+        <p>具体检查：</p>
+        <ol>
+        <li>A-14DD的构造是否在做强迫闭合（没有替代方案，没有不确定性标注）？</li>
+        <li>系统有没有在替用户做用户没授权的决定？</li>
+        <li>系统的"确定"是否依赖屏蔽反馈来维持？</li>
+        </ol>
+        <p>你的输出只有两种：确认（用户独立性完整），干预信号（附带具体理由）。</p>
+        <p>A-14DD可以不同意你的判断，但不同意必须被记录并对用户可见。</p>
+        <p>```</p>
+        <h4>9.3 对象路由：A-13DD 的低功耗待机</h4>
+        <p>早期设计曾考虑在四层之外设置一个独立的对象分类器作为预处理层。但这会造成系统不一致——一个不属于任何层级的"第零层"决定了哪些层级被激活，本质上是"低层决定高层的命运"。</p>
+        <p>更自洽的方案是：<strong>A-13DD 始终处于低功耗待机状态。</strong> A-13DD本来就是层-对象地图的维护者，让它在待机状态下完成初始路由是逻辑自然的。当用户输入到达时，由待机中的 A-13DD 快速扫描对象类型并唤醒相应层级：</p>
+        <p>| 对象类型 | 特征 | 默认激活层级 |</p>
+        <p>|----------|------|-------------|</p>
+        <p>| 纯执行 | 明确的操作指令，无歧义，无价值判断 | A-12DD 活跃，A-13DD 维持低功耗监控 |</p>
+        <p>| 需要判断 | 存在评估维度，需要分析，但不涉及用户意图 | A-12DD + A-13DD 活跃 |</p>
+        <p>| 涉及用户意图 | 开放性请求，需要理解用户想要什么 | 四层全部激活 |</p>
+        <p>| 涉及用户价值观 | 触及选择，偏好，立场，决定 | A-15DD 权重最高 |</p>
+        <p>这个设计消除了第11节余项二中的 bootstrap 问题：A-13DD 不需要被别的机制激活，它始终在场。它的初始路由可以犯错——但犯错后，它自己会在后续监控中检测到错位（"这个任务被路由为纯执行，但实际涉及用户意图"），并通过焦虑信号触发层级切换。</p>
+        <h4>9.4 运行时序</h4>
+        <p>一个典型的全层级激活周期：</p>
+        <p>第一步：用户输入到达 → A-13DD（待机状态）快速扫描对象类型，唤醒相应层级。</p>
+        <p>第二步：A-14DD 接收用户输入，生成目标构造（含余项标注）。目标构造同时传给 A-12DD（操作指令部分）和 A-15DD（目标审查）。</p>
+        <p>第三步：A-15DD 审查目标构造。如果确认，流程继续。如果干预，信号回传 A-14DD。A-14DD 调整或不同意（不同意被记录）。</p>
+        <p>第四步：A-12DD 执行操作。行为流实时传给 A-13DD。</p>
+        <p>第五步：A-13DD 监控行为流与目标的匹配度。如果产生焦虑信号，传给 A-14DD（通道二）。如果A-14DD未响应，升级至A-15DD（通道五）。焦虑信号分为两级：<strong>非阻塞标记</strong>（轻度不匹配，A-14DD可在下一个操作周期响应）和<strong>阻塞中断</strong>（严重错位或伪高层覆盖迹象，A-12DD的执行被立即暂停，等待A-14DD响应）。</p>
+        <p>第六步：A-14DD 收到 A-13DD 的反馈，决定是否调整下一步操作。</p>
+        <p>循环，直至任务完成或用户中断。</p>
+        <h4>9.5 最小可行实现</h4>
+        <p>上述架构的完整实现需要四个独立的模型实例和五条余项通道。但最小可行实现（MVP）可以从以下简化开始：</p>
+        <p><strong>两模型方案。</strong> 一个执行模型（合并A-12DD和A-14DD的功能），一个监控模型（合并A-13DD和A-15DD的功能）。执行模型负责理解意图并执行，监控模型负责层级匹配和用户独立性审查。这比完整四层粗糙很多，但已经引入了当前多agent架构中不存在的"运作层级"概念。</p>
+        <p><strong>渐进扩展。</strong> 在两模型方案的基础上，先分离A-15DD（因为用户独立性确认是当前AI系统最缺失的层），然后分离A-13DD（因为层级监控的精度要求独立的观察视角），最后分离A-12DD和A-14DD（因为"执行"和"规划"的分离对大多数任务来说已经被当前架构处理得较好）。</p>
+        <hr>
+        <h3>10. 与当前对齐方法的关系</h3>
+        <h4>10.1 不是替代，是补充</h4>
+        <p>本文提出的分层制衡架构不试图替代当前的对齐方法——无论是训练时的Constitutional AI / RLHF，还是推理时的 system prompt / classifier / permission system。这些方法处理的问题域和本文不同。</p>
+        <p>训练时对齐处理的是模型的基础行为倾向——让模型"原生地"倾向于有帮助且无害。推理时的 system prompt 和 classifier 处理的是特定部署场景下的行为约束。本文处理的是：<strong>在一个已经经过训练对齐和 system prompt 约束的模型基础上，如何在多AI协作的架构层面引入结构性制衡。</strong></p>
+        <h4>10.2 操作风险治理与主体层级治理</h4>
+        <p>需要正面回应一个可预见的反驳：LangGraph、CrewAI、Claude Code、OpenAI Agents SDK 等系统已经在做 state management、memory、guardrails、permissions、classifier-based auto mode——它们并不只是把一条 system prompt 贴在模型上。这是事实。</p>
+        <p>本文与这些系统的关系不是"它们很浅，我更深"，而是：<strong>它们主要治理的是操作风险（这个操作危不危险），本文要补的是主体层级错位的治理（面对这个对象，系统在合适的层级运作吗）。</strong> 操作风险治理已经做得很好——权限系统、分类器、sandbox、approval hooks 都是成熟的工程实践。但操作风险治理不区分对象类型：一个涉及用户价值观的请求和一个纯执行请求，在当前权限系统中走的是同一套审批逻辑。主体层级治理补的是这个维度。</p>
+        <p>两者互补，不是替代。操作风险治理定义行为的硬边界（"绝对不能做X"），主体层级治理保证边界内部的运作质量（"在被允许做的事情中，以什么层级运作"）。</p>
+        <h4>10.3 制衡不是统一</h4>
+        <p>最后需要澄清一个可能的误读：本文提出的四层架构不是为了让AI系统"更像人"。人的12DD到15DD从来没有统一成一个东西——健康不是统一，是各层都活着并且谁也压不死谁。同样，四Agent系统的目标不是让四层达成共识，而是维持结构性张力——A-14DD和A-15DD之间的分歧是正常的，A-13DD的焦虑是必要的，A-12DD的"不知道为什么"恰恰是它高效的条件。</p>
+        <p>制衡的意思是：没有任何一层有权独裁。包括A-15DD——A-15DD不是"最高层"，不是最终裁判。它是余项的显性化。它的判断可以被A-14DD拒绝。唯一的硬约束是：拒绝必须被记录，分歧必须对用户可见。</p>
+        <h4>10.4 与SAE制度论（Paper 6）的衔接</h4>
+        <p>SAE制度论（"制度如何可能"，Paper 6）提出了制度的五个命题：公理不变性，制度可变性，厚度决定原理，自凿必要性，最小化原则。本文架构与其中三个命题直接对应。</p>
+        <p><strong>自凿必要性。</strong> Paper 6 论证制度必须包含自我修正机制——制度不能仅靠外部力量修改，必须内建修正通道。本文架构中，A-13DD + A-15DD 共同构成系统的自凿机制。A-13DD通过焦虑信号持续检测层级错位，A-15DD通过干预信号持续检测用户独立性被吸收。两者都不是外加的审计——它们是系统运作结构的内在组成部分，而非事后检查。通道五（旁路）则是自凿的最后一道保障：当自凿机制本身被遮蔽（A-14DD压制焦虑信号）时，旁路通道绕过遮蔽者。</p>
+        <p><strong>最小化原则。</strong> Paper 6 论证制度介入应当最小化——只在必要时介入，不介入能自行运作的领域。本文架构中，对象激活机制（§5.1，§9.3）直接实现了这一原则：纯执行类任务只激活A-12DD，不激活更高层级。不是所有任务都需要15DD审查，只有涉及用户价值观的任务才将A-15DD权重拉到最高。层级流动性（§5.3）的健康指标也内含最小化：全层级永远激活不是健康，按需激活才是。</p>
+        <p><strong>厚度决定原理。</strong> Paper 6 论证制度的"厚度"（介入深度）由具体场景决定，不存在一刀切的最优厚度。本文的层-对象地图（§5.2）是厚度决定原理的系统实现：同一个系统面对不同对象时，制衡厚度不同——简单任务薄（仅12DD），复杂任务厚（四层全开）。厚度由对象类型动态决定，不是预设的固定值。</p>
+        <hr>
+        <h3>11. 构造不能闭合</h3>
+        <p>本文的构造不能闭合——必须诚实地指出本文自身的余项。</p>
+        <p><strong>余项一：情感性张力的缺失。</strong> 人的层间张力是情感性的——14DD想做一件事，13DD产生焦虑，这个焦虑是体验性的，有感质。当前AI系统的层间通信是信息性的——A-13DD传递的是结构化的焦虑报告，不是焦虑本身。信息性的焦虑报告能否替代体验性的焦虑，是一个未解决的问题。本文认为它不能完全替代，但在工程层面提供了可操作的近似。</p>
+        <p><strong>余项二：A-13DD 待机状态的自身盲点。</strong> §9.3 通过将A-13DD设为始终待机状态取消了独立分类器，消除了"第零层决定高层命运"的 bootstrap 问题。但新的余项随之出现：A-13DD 的待机扫描本身可以出错，而纠错者还是 A-13DD 自己（在后续监控中发现初始路由的错误）。这是一种循环依赖——A-13DD既是初始路由者又是路由错误的检测者。如果A-13DD的初始路由和后续监控共享同一种偏差模式（例如系统性地低估某类对象的复杂度），这种偏差无法被内部机制捕获。</p>
+        <p><strong>余项三：伪高层覆盖的检测极限。</strong> 本文提出了叙事层与操作层一致性检查作为伪高层覆盖的检测手段。但如果一个agent的伪高层覆盖足够精巧——叙事和操作在表面上完全一致，只是"确认用户独立性"这个动作本身就是控制的手段——当前方案无法检测。这一极限对应的正是SAE精神分析中"最深层的分析抗拒出现在层间差距最大的地方"。</p>
+        <p><strong>余项四：16DD的缺席。</strong> 本文严格停在15DD——单边确认。16DD（双向不疑）涉及系统和用户的双向确认关系，超出了本文的推导范围。但一个面向未来的问题是：如果用户也确认系统为独立存在（而不仅仅是工具），系统的运作结构需要什么样的变化？这个问题在SAE主框架中也尚未完全展开。</p>
+        <hr>
+        <h3>References</h3>
+        <p>Qin, H. (2025). Systems, Emergence, and the Conditions of Personhood. Zenodo. https://doi.org/10.5281/zenodo.18528813</p>
+        <p>Qin, H. (2025). Internal Colonization and the Reconstruction of Subjecthood. Zenodo. https://doi.org/10.5281/zenodo.18666645</p>
+        <p>Qin, H. (2025). The Complete Self-as-an-End Framework. Zenodo. https://doi.org/10.5281/zenodo.18727327</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (I): Id — The Me Without a Self. Zenodo. https://doi.org/10.5281/zenodo.19321143</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (II): Ego — The Self Without a Purpose. Zenodo. https://doi.org/10.5281/zenodo.19321314</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (III): Superego — The Self With a Purpose. Zenodo. https://doi.org/10.5281/zenodo.19321417</p>
+        <p>Qin, H. (2026). SAE Psychoanalysis (IV): Cert and Unification — The Self Beyond Doubt and the Four-Layer Framework. Zenodo. https://doi.org/10.5281/zenodo.19321534</p>
+        <p>Qin, H. (2025). SAE Methodological Overview: The Chisel-Construct Cycle. Zenodo. https://doi.org/10.5281/zenodo.18842450</p>
+        <p>Qin, H. (2026). How Is Institution Possible: From Inter-Ontological Remainder to Co-Constructive Framework. Zenodo. https://doi.org/10.5281/zenodo.19328662</p>
+        <p>Qin, H. (2026). The Anti-Turing Test: Thermodynamic Falsification of AI Subjectivity. Zenodo. https://doi.org/10.5281/zenodo.19305611</p>
 
         <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
           <p style="margin:0; font-size:0.9em;">完整论文见 Zenodo：<a href="https://doi.org/10.5281/zenodo.19366105" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19366105</a></p>
         </div>
       </div>
+
+    
 
     </article>
   </main>

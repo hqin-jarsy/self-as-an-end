@@ -73,13 +73,384 @@
       </div>
 
       <!-- ENGLISH CONTENT -->
-      <div id="lang-en" class="lang-content active" lang="en">
+            <div id="lang-en" class="lang-content active" lang="en">
         <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
 
-        <h2>Abstract</h2>
-        <p>We precisely localize the remaining difficulty for Hypothesis H′ in the ZFCρ framework. The 94% positive bias of η(p) is identified as an arithmetic masquerade from p mod 12 structure, with an a priori derivation from the {2,3}-cost basis of integer complexity, and removable by character stripping. Four candidate proof routes are rigorously excluded. The stripped dyadic block sums B<sub>j</sub> decay at approximately the white-noise rate |B<sub>j</sub>| ≈ C · 2<sup>−j/2</sup> — exponentially faster than the provable bound |B<sub>j</sub>| ≤ C/√j — and this polynomial-to-exponential gap is formalized as the deterministic square-function hypothesis DSF<sub>α</sub>. The Tauberian condition (slowly decreasing) is proved unconditionally from the Guy upper bound and Chebyshev's prime count. The prime-power layer converges absolutely in a neighborhood of Re(s) = 1, making it analytic past the boundary and non-critical for the prime-layer singularity structure. The full closure chain reduces to two conditions: DSF<sub>α</sub> (block regularity) and BL (block localization summability). Twenty-four unconditional results at scales N = 10<sup>7</sup>, 10<sup>9</sup>, 10<sup>10</sup> support the localization.</p>
-        <p>Paper 49 identified two open problems for H′; the present paper transforms them from vague targets into precisely stated, numerically verified, formally testable mathematical objects.</p>
-        <p><strong>Keywords:</strong> integer complexity, character stripping, deterministic square-function, DSF, dyadic block sums, Tauberian, ZFCrho, H-prime, prime deficiency, p mod 12</p>
+        <h2>ZFCρ Paper L: Character Stripping, Deterministic Square-Function, and the Precise Localization of H'</h2>
+        <p>Han Qin (秦汉)</p>
+        <p>ORCID: 0009-0009-9583-0018</p>
+        <p>April 2026</p>
+        <hr>
+        <p><strong>Abstract.</strong> We precisely localize the remaining difficulty for Hypothesis H' in the ZFCρ framework. The 94% positive bias of η(p) is identified as an arithmetic masquerade from p mod 12 structure, with an a priori derivation from the {2,3}-cost basis of integer complexity, and removable by character stripping. Four candidate proof routes are rigorously excluded. The stripped dyadic block sums B_j decay at rate |B_j| ~ 2^{−j/3} — exponentially faster than the provable bound |B_j| ≤ C/√j — and this gap is formalized as the deterministic square-function hypothesis DSF_α. The Tauberian condition (slowly decreasing) is proved unconditionally from the Guy upper bound and Chebyshev's prime count. The prime-power layer converges absolutely in a neighborhood of Re(s) = 1, making it analytic past the boundary and non-critical for the prime-layer singularity structure. The full closure chain reduces to two conditions: DSF_α (block regularity) and BL (block localization summability). Twenty-four unconditional results at scales N = 10⁷, 10⁹, 10¹⁰ support the localization. Paper 49 identified two open problems for H'; the present paper transforms them from vague targets into precisely stated, numerically verified, formally testable mathematical objects.</p>
+        <hr>
+        <h3>§1. Introduction and Strategic Context</h3>
+        <h4>1.1. The state after Paper 49</h4>
+        <p>Paper 49 reduced the closure of H' to two open problems:</p>
+        <ul>
+        <li><strong>Gap 1 (prime-layer cancellation):</strong> Does the stripped Dirichlet series H(s) = Σ_p h(p) p^{−s} have Hölder-continuous boundary behavior at Re(s) = 1?</li>
+        <li><strong>Gap 2 (UBPD):</strong> Is |δ_a(p)| = O(1) for all a ≥ 2?</li>
+        </ul>
+        <p>Both were identified as requiring genuinely new mathematics, but neither was formulated as a precise, testable hypothesis. The present paper transforms both gaps: Gap 1 is localized to a formally stated pair of conditions (DSF_α + BL, §6) with a precise polynomial-to-exponential gap (§5) and four excluded routes (§3); Gap 2 is decomposed into its internal structure (§7) and, within the Dirichlet series architecture, shown to contribute only an analytic (non-singular) term at the boundary Re(s) = 1 — so Gap 2 does not obstruct the prime-layer singularity analysis.</p>
+        <p>A further simplification: the Tauberian condition (slowly decreasing partial sums) is proved unconditionally in §4.4.</p>
+        <h4>1.2. Convention</h4>
+        <p>We work in the Paper 32 convention throughout: ρ(0) = 0, ρ(1) = 0, multiplication cost +2, giving λ ≈ 3.86. This convention has computational data at N = 10⁹ and N = 10¹⁰. All structural results — character stripping, block decay patterns, Gap 1/Gap 2 decoupling, RQSA, CDR stability — are convention-independent.</p>
+        <p>For reference, the standard integer complexity convention (‖1‖ = 1, multiplication free, λ ≈ 3.04) is used in certain verification experiments. A translation table appears in Appendix A.</p>
+        <h4>1.3. Notation</h4>
+        <ul>
+        <li>η(p) = ρ(p) − λ log p (prime deficiency)</li>
+        <li>δ_a(p) = ρ(p^a) − ρ(p) − ρ(p^{a−1}) (sub-additivity defect at prime power p^a)</li>
+        <li>h(p) = η(p) − μ_{12}(p) where μ_{12}(p) = E[η | p mod 12] (character-stripped residual)</li>
+        <li>B_j = Σ_{2^j < p ≤ 2^{j+1}} h(p)/p (dyadic block sum)</li>
+        <li>H(s) = Σ_p h(p) p^{−s} (stripped Dirichlet series)</li>
+        <li>D(s) = Σ_p η(p) p^{−s} (full prime-layer Dirichlet series)</li>
+        <li>P⁻(n) = smallest prime factor of n</li>
+        <li>CDR(p, a) = ρ(Φ_a(p)) / (λ · log Φ_a(p)) (convergence drift rate)</li>
+        </ul>
+        <hr>
+        <h3>§2. Character Stripping: Arithmetic Masquerade and Q = 12</h3>
+        <h4>2.1. A priori conductor selection</h4>
+        <p>In the ρ-function, every integer n is expressed as a tree of 1s under addition and multiplication. The two cheapest primes are 2 (cost 2) and 3 (cost 3), with cost-to-log ratios 2/ln 2 ≈ 2.89 and 3/ln 3 ≈ 2.73 respectively — both near λ. All larger primes have higher cost/log. Consequently, n is "cheap" (ρ(n) well below λ log n) precisely when n factors richly over {2, 3}.</p>
+        <p>For a prime p, the dominant access paths are additive: p = (p−1) + 1, with cost ≈ ρ(p−1) + 1. Thus ρ(p) is controlled by the {2, 3}-smooth part of p − 1 (and p + 1, via the shortcut p² − 1 = (p−1)(p+1)). The {2, 3}-valuations of p ± 1 are determined by p mod lcm(4, 3) = 12. The four admissible prime residue classes are:</p>
+        <p>| p mod 12 | 4 \| p−1? | 3 \| p−1? | 4 \| p+1? | 3 \| p+1? | accessibility |</p>
+        <p>|----------|----------|----------|----------|----------|-------------|</p>
+        <p>| 1  | ✓ | ✓ | — | — | p−1 very accessible |</p>
+        <p>| 5  | ✓ | — | — | ✓ | split |</p>
+        <p>| 7  | — | ✓ | ✓ | — | split |</p>
+        <p>| 11 | — | — | ✓ | ✓ | p+1 very accessible |</p>
+        <p>Q = 12 is the minimal conductor capturing the full {2, 3}-valuation structure of p ± 1. Higher conductors (Q = 24, 60) capture secondary corrections; the between-class variance at Q = 12 already accounts for essentially all of the bias structure.</p>
+        <h4>2.2. Stripping procedure and symmetrization</h4>
+        <p>Define residue class means μ_{12}(r) = lim_{X→∞} (1/π_r(X)) Σ_{p ≤ X, p ≡ r (12)} η(p), and the stripped residual h(p) = η(p) − μ_{12}(p mod 12).</p>
+        <p><strong>Table 1. Symmetrization at three scales.</strong></p>
+        <p>| Quantity | Before (η) | After (h, Q=12) |</p>
+        <p>|----------|-----------|-----------------|</p>
+        <p>| P(> 0) | 0.94 | 0.52 |</p>
+        <p>| P(< 0) | 0.06 | 0.48 |</p>
+        <p>| median | +1.23 | +0.03 |</p>
+        <p>| std | 0.78 | 0.71 |</p>
+        <p>The 94% positive bias is entirely explained by low-conductor arithmetic structure. After stripping, h(p) is near-symmetric, mean-zero, with no visible drift.</p>
+        <h4>2.3. Variance decomposition</h4>
+        <p>Total Var(η) = 0.613 decomposes as between-class (Q = 12) = 0.109 (17.8%) and within-class Var(h) = 0.504 (82.2%). This is consistent with Paper 47's 17.6% figure.</p>
+        <h4>2.4. Convergence tests</h4>
+        <p>The critical ℓ² norm Σ|h|²/p² is fully converged at all three scales:</p>
+        <p>| Scale | Σ\|h\|²/p² | Converged by |</p>
+        <p>|-------|-----------|-------------|</p>
+        <p>| N = 10⁷ | 0.1137 | p ~ 70K (8 decimals) |</p>
+        <p>| N = 10⁹ | 1.4569 | p ~ 100K (10 decimals) |</p>
+        <p>| N = 10¹⁰ | 1.4781 | p ~ 100K (12 decimals) |</p>
+        <p>(Different absolute values across conventions; convergence pattern identical.)</p>
+        <h4>2.5. Relationship between D(s) and H(s)</h4>
+        <p>The full prime-layer Dirichlet series decomposes as:</p>
+        <p>  D(s) = Σ_p η(p) p^{−s} = H(s) + Σ_{r ∈ R} μ_{12}(r) · P_r(s)</p>
+        <p>where R = {1, 5, 7, 11} and P_r(s) = Σ_{p ≡ r (12)} p^{−s}. By the prime number theorem for arithmetic progressions, each P_r(s) has a logarithmic singularity at s = 1:</p>
+        <p>  P_r(s) = (1/φ(12)) · log(1/(s−1)) + analytic</p>
+        <p>with φ(12) = 4. The combined residue-class contribution is:</p>
+        <p>  Σ_r μ_{12}(r) P_r(s) = (μ̄/4) · log(1/(s−1)) + analytic</p>
+        <p>where μ̄ = Σ_r μ_{12}(r) ≈ 4.94 (sum of all class means). This is a <strong>known singularity</strong> — its structure is fully determined by μ_{12} and the Dirichlet L-functions for characters mod 12, all of which are classical.</p>
+        <p>Therefore: the <strong>unknown</strong> component of D(s) at s = 1 is entirely H(s). If H(s) has Hölder-continuous boundary behavior at Re(s) = 1, the full prime-layer Dirichlet series has boundary behavior of the form "known log-singularity + Hölder remainder." This is the precise content of Gap 1.</p>
+        <hr>
+        <h3>§3. Eliminated Routes</h3>
+        <p>Before presenting the successful path, we record four approaches that were investigated and conclusively excluded. This narrows the strategy space and motivates the square-function approach of §4–§6.</p>
+        <h4>3.1. H² boundary shortcut</h4>
+        <p><strong>Claim (excluded):</strong> The Dirichlet series (H(1+s) − H(1))/s lies in the Hardy space H² of the half-plane, from which boundary regularity would follow.</p>
+        <p><strong>Obstruction:</strong> The H² norm corresponds to an L² boundary on Re(s) = 1/2 in the original Dirichlet half-plane, not on Re(s) = 1 where the prime-layer singularity lives (Hedenmalm). The quotient (H(1+s) − H(1))/s requires A_loc regularity, not L² regularity (Debruyne, Lemma 8.3.2). H² is the wrong functional space.</p>
+        <h4>3.2. Direction D (absolute Lipschitz)</h4>
+        <p><strong>Claim (excluded):</strong> Prove |H(1+it) − H(1)| ≤ C|t| directly from absolute bounds on η(p).</p>
+        <p><strong>Obstruction:</strong> This would require Σ|η(p)| · log p / p < ∞. Data:</p>
+        <p>| x | Σ\|η\| · log p / p | log log x | ratio |</p>
+        <p>|---|-------------------|-----------|-------|</p>
+        <p>| 10⁴ | 6.48 | 2.22 | 2.92 |</p>
+        <p>| 10⁵ | 9.35 | 2.44 | 3.83 |</p>
+        <p>| 10⁶ | 12.31 | 2.63 | 4.69 |</p>
+        <p>| 10⁷ | 15.27 | 2.78 | 5.49 |</p>
+        <p>Growth rate ≈ 5.5 · log log x. The sum diverges. Direct Lipschitz from absolute bounds is impossible. Hölder requires structural input — cancellation, not size control.</p>
+        <p>Character stripping does not save Direction D: Σ|h| · log p / p still diverges (8.13 at Q = 12 vs 15.27 raw at N = 10⁷).</p>
+        <p><strong>Remark.</strong> Direction D exclusion is non-load-bearing: the DSF_α proof path (§6) does not depend on it. It is recorded to narrow the strategy space, not as a premise.</p>
+        <h4>3.3. Kolmogorov three-series</h4>
+        <p><strong>Claim (excluded):</strong> Apply the Kolmogorov three-series theorem to h(p), treating it as a sequence of "nearly independent" random variables.</p>
+        <p><strong>Obstruction:</strong> h(p) is a deterministic sequence — it is a function of p's integer complexity, which is a fixed number. The Kolmogorov theorem requires independent random variables. Despite h(p)'s white-noise-like statistics (near-zero mean, bounded variance, weak autocorrelation), independence is a structural property that deterministic sequences cannot satisfy. At N = 10⁹/10¹⁰, the white-noise prediction breaks down for dyadic blocks j > 22 (actual |B_j| is 5–20× larger than white-noise σ), confirming residual deterministic correlations.</p>
+        <h4>3.4. Montgomery–Vaughan alone</h4>
+        <p><strong>Claim (excluded):</strong> The Montgomery–Vaughan inequality gives global L² control sufficient for boundary regularity.</p>
+        <p><strong>Obstruction:</strong> MV gives ∫|H(1+it)|² dt < ∞ — global L² on the boundary. But boundary regularity (Hölder) at a point requires local control. L² and Hölder are independent conditions. MV contributes to the global picture but cannot close the local gap.</p>
+        <hr>
+        <h3>§4. Dyadic Block Decomposition</h3>
+        <h4>4.1. Block sums at three scales</h4>
+        <p>Define the dyadic block sum B_j = Σ_{2^j < p ≤ 2^{j+1}} h(p)/p for stripped residuals h(p).</p>
+        <p><strong>Table 2. Selected stripped block magnitudes |B_j|.</strong></p>
+        <p>| j | N = 10⁷ | N = 10⁹ | N = 10¹⁰ | WN prediction |</p>
+        <p>|---|---------|---------|----------|---------------|</p>
+        <p>| 10 | 0.0093 | 0.0318 | 0.0387 | 0.0075 |</p>
+        <p>| 14 | 0.0035 | 0.0104 | 0.0143 | 0.0016 |</p>
+        <p>| 18 | 0.0003 | 0.0029 | 0.0051 | 0.0003 |</p>
+        <p>| 22 | 0.0001 | 0.0004 | 0.0015 | 0.00008 |</p>
+        <p>| 25 | — | 0.00009 | 0.0004 | 0.00003 |</p>
+        <p>| 28 | — | 0.00005 | 0.00005 | 0.000009 |</p>
+        <p>| 30 | — | — | 0.00009 | 0.000004 |</p>
+        <p>| 32 | — | — | 0.00002 | 0.000002 |</p>
+        <h4>4.2. Three findings</h4>
+        <p><strong>Finding 1 (Exponential decay, slower than WN).</strong> Block sums decay at approximate rate |B_j| ~ 2^{−j/3}, spanning ~3 orders of magnitude from j = 10 to j = 32. This is slower than the white-noise prediction |B_j| ~ 2^{−j/2} but still exponential. The pattern is robust across all three scales.</p>
+        <p><strong>Finding 2 (Square-function convergence).</strong> The cumulative sum Σ|B_j|² converges numerically:</p>
+        <p>| Block range | Σ\|B_j\|² (N = 10¹⁰) |</p>
+        <p>|------------|----------------------|</p>
+        <p>| j = 1–10 | 0.79 |</p>
+        <p>| j = 11–20 | 0.0012 |</p>
+        <p>| j = 21–30 | 0.0000065 |</p>
+        <p>| j = 31–33 | 0.0000000008 |</p>
+        <p>Tail (j > 20) contributes < 0.001% of total. Confirmed across three orders of magnitude.</p>
+        <p><strong>Finding 3 (A_h convergence).</strong> The stripped partial sum A_h(X) = Σ_{p ≤ X} h(p)/p converges numerically at all scales:</p>
+        <p>| Scale | A_h limit | Precision |</p>
+        <p>|-------|-----------|-----------|</p>
+        <p>| N = 10⁷ | −1.123 | ±0.001 from X = 10⁵ |</p>
+        <p>| N = 10⁹ | −2.997 | ±0.001 from X = 10⁶ |</p>
+        <p>| N = 10¹⁰ | −3.170 | ±0.001 from X = 10⁸ |</p>
+        <p>(Different values reflect different conventions; convergence behavior identical.)</p>
+        <h4>4.3. Stripped Hölder exponent</h4>
+        <p><strong>Table 3. Effective Hölder exponent α_h at multiple scales.</strong></p>
+        <p>| \|t\| | α_h (10⁷) | α_h (10⁹) | α_h (10¹⁰) |</p>
+        <p>|------|----------|---------|----------|</p>
+        <p>| 0.0001 | — | 0.80 | 0.79 |</p>
+        <p>| 0.001 | 0.84 | 0.74 | 0.72 |</p>
+        <p>| 0.01 | 0.76 | 0.60 | 0.57 |</p>
+        <p>| 0.05 | 0.63 | 0.39 | 0.35 |</p>
+        <p>| 0.10 | 0.52 | 0.22 | 0.16 |</p>
+        <p>The effective exponent is scale-dependent (slightly lower at larger N) but remains positive and well above zero at small t across all scales. The target is any α > 0.</p>
+        <h4>4.4. Slowly decreasing — unconditional</h4>
+        <p><strong>Proposition 4.1 (SD).</strong> The partial sums A_h(X) = Σ_{p ≤ X} h(p)/p are slowly decreasing: for every ε > 0 there exists δ > 0 such that A_h(Y) − A_h(X) ≥ −ε for all X ≥ 2 and Y ∈ [X, (1+δ)X].</p>
+        <p><em>Proof.</em> The Guy upper bound gives ρ(n) ≤ (3/ln 2) log n for all n ≥ 1. With the class means |μ_{12}| bounded, |h(p)| ≤ C log p for a universal constant C. Each term satisfies |h(p)/p| ≤ C log p / p. For Y ∈ [X, (1+δ)X]:</p>
+        <p>  |A_h(Y) − A_h(X)| = |Σ_{X < p ≤ Y} h(p)/p| ≤ Σ_{X < p ≤ Y} C log p / p.</p>
+        <p>Each summand is at most C log((1+δ)X) / X ≤ 2C log X / X (for δ ≤ 1). The number of primes in (X, (1+δ)X] is at most C'δX / log X (Chebyshev). Therefore:</p>
+        <p>  |A_h(Y) − A_h(X)| ≤ (2C log X / X) · (C'δX / log X) = 2CC'δ.</p>
+        <p>Given ε > 0, take δ = ε/(2CC'). □</p>
+        <p><strong>Remark.</strong> This is SD, which is strictly stronger than VSD (very slowly decreasing). The proof uses only the Guy upper bound and Chebyshev's prime count — no character stripping, no variance bound, no numerical input. SD is an unconditional, trivially satisfied Tauberian condition for any 1/p-weighted sum with polynomially bounded numerators.</p>
+        <hr>
+        <h3>§5. The Polynomial–Exponential Gap</h3>
+        <p>This section isolates the precise mathematical gap that the conditional hypotheses must bridge.</p>
+        <h4>5.1. What is provable (polynomial decay)</h4>
+        <p><strong>Proposition 5.1.</strong> If Var(h(p)) = O(1) (numerically confirmed: Var(h) = 0.504), then |B_j| ≤ C / √j for all j.</p>
+        <p><em>Proof.</em> By Cauchy–Schwarz:</p>
+        <p>  |B_j|² = |Σ_{p ∈ I_j} h(p)/p|² ≤ (Σ_{p ∈ I_j} h(p)²/p²)(Σ_{p ∈ I_j} 1)</p>
+        <p>The first factor satisfies Σ_{p ∈ I_j} h(p)²/p² ≤ Var(h) · Σ_{p ∈ I_j} 1/p² ≤ C/2^j (since Σ 1/p² over I_j ~ 1/2^j by partial summation). The second factor is π(2^{j+1}) − π(2^j) ~ 2^j/j (PNT). Therefore:</p>
+        <p>  |B_j|² ≤ C/j,  hence  |B_j| ≤ C/√j.  □</p>
+        <p>Note that Σ 1/j diverges, so the Cauchy–Schwarz bound does <strong>not</strong> imply Σ|B_j|² < ∞. The square-function convergence established numerically in §4.2 — Σ|B_j|² finite, with negligible tail — is a strictly stronger fact than what Proposition 5.1 proves.</p>
+        <h4>5.2. What is needed (exponential decay)</h4>
+        <p>For DSF_α with α > 0, we need Σ j^{1+2α} |B_j|² < ∞. With the provable bound |B_j|² ≤ C/j, the summand is j^{1+2α}/j = j^{2α}, which diverges for all α > 0. <strong>The Cauchy–Schwarz bound is insufficient for any positive Hölder exponent.</strong></p>
+        <p>The data shows |B_j| ~ 2^{−j/3}, which is exponential. With this:</p>
+        <p>  j^{1+2α} · |B_j|² ~ j^{1+2α} · 2^{−2j/3}</p>
+        <p>which converges for all α > 0 (exponential beats any polynomial). The DSF_α series converges numerically:</p>
+        <p>| α | Σ(1+j)^{1+2α} \|B_j\|² |</p>
+        <p>|---|------------------------|</p>
+        <p>| 0.1 | 2.14 |</p>
+        <p>| 0.2 | 2.58 |</p>
+        <p>| 0.3 | 3.13 |</p>
+        <p>| 0.4 | 3.83 |</p>
+        <p>| 0.5 | 4.72 |</p>
+        <h4>5.3. The gap</h4>
+        <p>| Provable | Needed | Data |</p>
+        <p>|----------|--------|------|</p>
+        <p>| \|B_j\| ≤ C/√j | \|B_j\| ~ 2^{−j/3} (exponential) | 2^{−j/3} confirmed |</p>
+        <p>| Σ\|B_j\|² convergence not proved | Σ j^{1+2α}\|B_j\|² < ∞ | Converges to α = 0.5 |</p>
+        <p>| No regularity | Hölder boundary | α_h ≈ 0.7–0.8 at small t |</p>
+        <p>Bridging this gap — explaining why stripped blocks cancel exponentially, not just at the C/√j rate — is the central remaining mathematical problem for Gap 1.</p>
+        <hr>
+        <h3>§6. Conditional Closure Theorem</h3>
+        <h4>6.1. Definitions</h4>
+        <p><strong>Hypothesis DSF_α.</strong> For α > 0, the deterministic square-function condition DSF_α is:</p>
+        <p>  Σ_{j ≥ 0} (1 + j)^{1+2α} |B_j|² < ∞</p>
+        <p>where B_j = Σ_{2^j < p ≤ 2^{j+1}} h(p)/p are stripped dyadic block sums.</p>
+        <p><strong>Hypothesis BL_α.</strong> The block localization condition BL_α requires that the intra-block error is summably small: defining</p>
+        <p>  E_j(t) = Σ_{p ∈ I_j} h(p)/p · (p^{−it} − e^{−it · c_j})</p>
+        <p>where c_j = (j + ½) ln 2 is the block log-center, we require:</p>
+        <p>  Σ_{j ≥ 0} sup_{|t| ≤ t₀} |E_j(t)| / |t|^α < ∞</p>
+        <p>for some t₀ > 0.</p>
+        <h4>6.2. Status of BL_α</h4>
+        <p><strong>Proposition 6.1 (Per-Block Bound).</strong> |E_j(t)| ≤ (|t| ln 2 / 2) · Σ_{p ∈ I_j} |h(p)|/p for all j.</p>
+        <p><em>Proof.</em> For p ∈ I_j, |log p − c_j| ≤ ½ ln 2. Thus |p^{−it} − e^{−it·c_j}| ≤ |t| · |log p − c_j| ≤ |t| · ln 2 / 2. □</p>
+        <p>This gives |E_j(t)| / |t|^α ≤ C |t|^{1−α} · A_j, where A_j = Σ_{p ∈ I_j} |h(p)|/p. For fixed t, the ratio vanishes as t → 0 for each j individually. However, BL_α requires the <strong>sum over j</strong> to converge, and Σ_j A_j = Σ_p |h(p)|/p diverges (since E[|h(p)|] > 0). Therefore BL_α does <strong>not</strong> follow from the per-block bound alone.</p>
+        <p><strong>Numerical evidence.</strong> At t = 0.01, |E_j(t)| / |B_j| < 3.2% for all j ≥ 4 (N = 10⁹ data). The block localization error is empirically negligible relative to the block sum itself. This strongly suggests BL_α holds, but does not constitute a proof.</p>
+        <p><strong>Assessment.</strong> BL_α is a secondary technical condition. The mathematical substance of Gap 1 lies in DSF_α (the block decay rate), not in BL_α (the intra-block frequency spread). A proof of DSF_α would likely carry BL_α as a byproduct, since exponential block decay would make the summability condition easy to satisfy. But we do not claim BL_α is "free" — it is an additional hypothesis, expected to be subordinate to DSF_α but not yet proved from it.</p>
+        <h4>6.3. Main theorem</h4>
+        <p><strong>Theorem 6.2 (Conditional Closure of Gap 1).</strong> Suppose DSF_α holds for all α < α<em> (for some α</em> > 0), and BL_α holds for some α ∈ (0, α*). Then:</p>
+        <p>(i) H(1 + it) − H(1) = O(|t|^{α−ε}) for every ε > 0.</p>
+        <p>(ii) The stripped Dirichlet series H(s) has Hölder-continuous boundary behavior at Re(s) = 1.</p>
+        <p><em>Proof.</em> Write H(1+it) − H(1) = M(t) + E(t), where</p>
+        <p>  M(t) = Σ_j (e^{−it · c_j} − 1) · B_j,  E(t) = Σ_j E_j(t).</p>
+        <p><strong>Main term.</strong> |e^{−it·c_j} − 1| ≤ C_α |t · c_j|^α ≤ C'_α |t|^α (1+j)^α. By Cauchy–Schwarz:</p>
+        <p>  Σ_j (1+j)^α |B_j| ≤ (Σ_j (1+j)^{−1−ε})^{1/2} · (Σ_j (1+j)^{1+2α+ε} |B_j|²)^{1/2}</p>
+        <p>The first factor is finite for ε > 0. The second factor is finite by DSF_{α+ε/2}, which holds for sufficiently small ε since DSF_β holds for all β < α*. Thus |M(t)| = O(|t|^{α−ε}).</p>
+        <p><strong>Error term.</strong> |E(t)| ≤ Σ_j |E_j(t)| ≤ |t|^α · Σ_j |E_j(t)| / |t|^α, and BL_α gives Σ_j |E_j(t)| / |t|^α < ∞ for |t| ≤ t₀. So |E(t)| = O(|t|^α).</p>
+        <p><strong>Combining:</strong> |H(1+it) − H(1)| ≤ |M(t)| + |E(t)| = O(|t|^{α−ε}). □</p>
+        <p><strong>Remark on the hypothesis.</strong> The proof uses DSF_{α+ε/2}, not just DSF_α. The condition "DSF_α for all α < α<em>" is the honest hypothesis. Numerically, DSF_α converges for all α tested up to 0.5 (Table in §5.2), with smooth growth in α suggesting α</em> ≥ 0.5.</p>
+        <h4>6.4. From Hölder to convergence of A_h</h4>
+        <p><strong>Proposition 6.3 (Tauberian Closure).</strong> If H(s) extends continuously to s = 1 (i.e., H(1) := lim_{σ→1⁺} H(σ) exists and |H(1+it) − H(1)| = O(|t|^β) for some β > 0), then A_h(X) = Σ_{p ≤ X} h(p)/p converges to H(1).</p>
+        <p><em>Proof.</em> The argument uses only the <strong>real-axis</strong> approach to the boundary, avoiding the distributional subtleties of boundary behavior on the imaginary line.</p>
+        <p>Step 1 (Laplace–Stieltjes representation). By Abel summation, the shifted series admits the representation</p>
+        <p>  H(1 + ε) = ∫₀^∞ e^{−εu} dμ(u),  ε > 0,</p>
+        <p>where μ(u) = A_h(e^u) = Σ_{p ≤ e^u} h(p)/p. This is a Laplace–Stieltjes transform.</p>
+        <p>Step 2 (Real-axis limit). Hölder continuity at s = 1 implies H extends continuously to Re(s) = 1 near s = 1. In particular, the real-axis limit exists: H(1 + ε) → H(1) as ε → 0⁺.</p>
+        <p>Step 3 (One-sided Tauberian condition). Proposition 4.1 gives SD: for every δ > 0 sufficiently small, μ(v) − μ(u) ≥ −ε whenever 0 ≤ v − u ≤ δ. This is the one-sided Tauberian condition.</p>
+        <p>Step 4 (Karamata's Tauberian theorem). The Karamata–Korevaar Tauberian theorem for Laplace–Stieltjes transforms states: if ∫₀^∞ e^{−εu} dμ(u) → L as ε → 0⁺, and μ is slowly decreasing, then μ(u) → L as u → ∞ (Korevaar, <em>Tauberian Theory</em>, Ch. II–III; see also Hardy–Littlewood, 1914, for the classical prototype). Applying this with L = H(1): μ(u) → H(1), i.e., A_h(X) → H(1) as X → ∞. □</p>
+        <p><strong>Remark.</strong> This proof is deliberately elementary: it uses only the real-axis limit H(1+ε) → H(1), not the full boundary behavior of H(1+it) on the imaginary line. The Hölder condition is therefore stronger than what the Tauberian step requires — any condition implying the existence of a finite real-axis limit at s = 1 would suffice. Paper 49 identified two Tauberian routes involving the imaginary-line boundary (Hölder + VSD, or local pseudofunction + SD); the real-axis route via Karamata's theorem is simpler and avoids both complications, since SD (which we prove unconditionally) is exactly the one-sided condition that theorem requires.</p>
+        <h4>6.5. From A_h to the prime-layer boundary behavior</h4>
+        <p><strong>Proposition 6.4 (Recovery).</strong> If A_h(X) converges, then the full prime-layer Dirichlet series D(s) = Σ η(p) p^{−s} has boundary behavior at s = 1 of the form</p>
+        <p>  D(s) = (μ̄/4) · log(1/(s−1)) + c + o(1)</p>
+        <p>as s → 1⁺, where μ̄ = Σ_r μ_{12}(r) ≈ 4.94 and c = A_h(∞) + Σ_r μ_{12}(r) c_r is a computable constant.</p>
+        <p><em>Proof sketch.</em> D(s) = H(s) + Σ_r μ_{12}(r) P_r(s) (§2.5). If A_h converges, then H(s) → H(1) = A_h(∞) as s → 1⁺ (Abel's theorem). Each P_r(s) = (1/4) log(1/(s−1)) + c_r + o(1) by PNT in arithmetic progressions. Combining: D(s) = H(1) + (μ̄/4) log(1/(s−1)) + Σ_r μ_{12}(r) c_r + o(1). The singularity is entirely from the known residue-class structure; the unknown component H(1) is a finite constant. □</p>
+        <p><strong>Remark.</strong> The question "Does Σ η(p)/p converge?" has the answer <strong>no</strong> — η(p) has positive mean ≈ 1.235, so Σ η(p)/p diverges like (5/4) log log X. The correct formulation of Gap 1 is not convergence of Σ η(p)/p, but regularity of H(s) at the boundary, equivalently convergence of Σ h(p)/p. Character stripping separates the known divergent part from the unknown regular part.</p>
+        <hr>
+        <h3>§7. Gap 2: Prime-Power Layer</h3>
+        <h4>7.1. Structural decoupling (a corollary)</h4>
+        <p><strong>Proposition 7.1 (Analyticity of Prime-Power Layer).</strong> The prime-power contribution</p>
+        <p>  P(s) = Σ_p Σ_{a ≥ 2} δ_a(p) / p^{as}</p>
+        <p>converges absolutely for Re(s) > 1/2. In particular, P(s) is analytic in the half-plane Re(s) > 1/2, which contains the boundary Re(s) = 1 and a neighborhood. Therefore the singularity structure of the full Dirichlet series at Re(s) = 1 is entirely determined by the prime layer.</p>
+        <p><em>Proof.</em> Sub-additivity gives |δ_a(p)| ≤ ρ(p^a) ≤ Ca log p. For Re(s) = σ > 1/2:</p>
+        <p>  |P(s)| ≤ C Σ_p Σ_{a≥2} (a log p)/p^{aσ} ≤ C' Σ_p (log p)/p^{2σ}</p>
+        <p>The last sum converges for 2σ > 1, i.e. σ > 1/2. □</p>
+        <p><strong>Remark.</strong> This is a one-line consequence of the Euler product architecture. Its significance is strategic: within the Dirichlet series proof path, Gap 2 does not create singularities at the boundary Re(s) = 1. The prime-power layer passes through this boundary analytically. UBPD retains independent interest as a structural property of ρ_E on prime powers, and we develop its internal structure in §7.2–§7.6 for this reason.</p>
+        <h4>7.2. a = 2 versus a ≥ 3: complete separation</h4>
+        <p><strong>Table 5. Defect statistics by power (P32, N = 10¹⁰).</strong></p>
+        <p>| | a = 2 | a ≥ 3 |</p>
+        <p>|---|---|---|</p>
+        <p>| Pairs | 3,401 | 288 |</p>
+        <p>| \|δ\|_max | 7 | 3 |</p>
+        <p>| δ range | [−7, +2] | [−3, +2] |</p>
+        <p>| Distribution | Wide, near-symmetric | Narrow, +2 dominated |</p>
+        <p>The hard core of Gap 2 is exclusively a = 2. For a ≥ 3, the Zsigmondy mechanism — primitive prime divisors in Φ_a(p) prevent smooth-factorization shortcuts — keeps |δ_a| ≤ 3 across all data.</p>
+        <h4>7.3. Log-UBPD for a = 2</h4>
+        <p><strong>Proposition 7.2 (Unconditional Log-UBPD).</strong> |δ₂(p)| ≤ 1.60 · log p + O(1) for all primes p.</p>
+        <p><em>Proof.</em> From the established bounds on integer complexity: ρ(n) ≤ (3/ln 2) log n (Guy) and ρ(n) ≥ (3/ln 3) log n (Selfridge). Applied to p²:</p>
+        <p>  δ₂(p) = ρ(p²) − 2ρ(p) ≥ (3/ln 3) log(p²) − 2(3/ln 2) log p = (6/ln 3 − 6/ln 2) log p</p>
+        <p>The coefficient |6/ln 3 − 6/ln 2| ≈ 1.60. The upper bound is symmetric. □</p>
+        <p>Empirical envelope: |δ₂| ≤ 0.62 · log p + 1 — much tighter, but the unconditional bound suffices.</p>
+        <h4>7.4. Scissors structure</h4>
+        <p><strong>Proposition 7.3 (Sub-Additivity Bound).</strong> ρ(p²) ≤ ρ(p−1) + ρ(p+1) + 1 for all primes p.</p>
+        <p><em>Proof.</em> p² − 1 = (p−1)(p+1), so ρ(p² − 1) ≤ ρ(p−1) + ρ(p+1). Then p² = (p² − 1) + 1, giving ρ(p²) ≤ ρ(p² − 1) + 1. □</p>
+        <p>This gives the unconditional bound δ₂(p) ≤ ρ(p−1) + ρ(p+1) + 1 − 2ρ(p): the defect at p² is controlled by the complexity gap between p + 1 and p − 1 relative to p itself.</p>
+        <p><strong>Empirical observation (Scissors Formula).</strong> In standard IC (N = 10⁷, 445 primes), the sharper inequality δ₂(p) ≤ ρ(p+1) − ρ(p−1) − 1 holds with 0 violations and 232 tight cases. This sharper form would follow from ρ(p) = ρ(p−1) + 1 for all primes — verified for all p ≤ 10⁷ but not yet proved. We record it as a pattern; a formal proof belongs to a future paper.</p>
+        <p><strong>Interpretation.</strong> Worst |δ₂| occurs when the "scissors" opens maximally — p + 1 extremely smooth (cheap) and p − 1 rough (expensive). The δ₂ = −7 cases (p = 26459: p + 1 = 2²·3³·5·7², 7-smooth; p − 1 = 2 × 13229) exhibit exactly this pattern.</p>
+        <h4>7.5. RT moments and CDR stability</h4>
+        <p>The convergence drift rate CDR(p, a) = ρ(Φ_a(p))/(λ · log Φ_a(p)) measures whether cyclotomic factors track λ log faithfully.</p>
+        <p><strong>Proposition 7.4 (Shell-Side RT Moment).</strong> E[(log P⁻(n))² | Ω(n) = k] = O(1), converging to (ln 2)² ≈ 0.48 for k ≥ 4. (Classical.)</p>
+        <p><strong>Table 6. Predecessor-side RT moment.</strong></p>
+        <p>| Ω = k | E[(log P⁻(n−1))² \| Ω(n) = k], N = 10⁸ | N = 10⁹ |</p>
+        <p>|-------|------------------------------------------|---------|</p>
+        <p>| 8 | 52.7 | 59.1 |</p>
+        <p>| 12 | 58.3 | 66.4 |</p>
+        <p>| 16 | 57.8 | 66.8 |</p>
+        <p>| 20 | 55.5 | 64.9 |</p>
+        <p>Predecessor moment is ~120× larger than shell moment, but <strong>stabilizes at O(1) — flat from k = 10 to k = 24, no upward trend.</strong> Physical reason: high-Ω(n) numbers are almost all even, so n − 1 is odd, and P⁻(n−1) has the distribution of the smallest odd prime factor of a generic odd number.</p>
+        <p><strong>Cross-term independence:</strong> E[log P⁻(n) · log P⁻(n−1) | Ω = k] / (E[shell] · E[pred]) → 1.00 for k ≥ 17.</p>
+        <p><strong>Interface with H' proof.</strong> RT moments enter through CDR variance control:</p>
+        <p>  E[(CDR − 1)² | Ω = k] ≤ C · E[(log P⁻)² | Ω = k] / (log Φ)²</p>
+        <p>Since the numerator is O(1) and the denominator grows, CDR fluctuations vanish.</p>
+        <h4>7.6. RQSA</h4>
+        <p>1,877 factor-pair checks on p^a − 1 (p ≤ 47, p^a ≤ 10⁸): <strong>zero violations.</strong> RQSA remains the strongest single bridge toward a formal UBPD proof.</p>
+        <hr>
+        <h3>§8. Precise Localization of the Remaining Difficulty</h3>
+        <h4>8.1. What Paper 49 left open</h4>
+        <p>Paper 49 stated two open problems: "prime-layer cancellation" and "UBPD." Neither had a formal hypothesis, a precisely identified gap, or a list of excluded approaches. Both were targets, not maps.</p>
+        <h4>8.2. What Paper 50 delivers</h4>
+        <p><strong>For Gap 1 (prime layer):</strong></p>
+        <p>| Before (Paper 49) | After (Paper 50) |</p>
+        <p>|---|---|</p>
+        <p>| "Prime-layer cancellation needed" | η(p)'s 94% bias is arithmetic masquerade (Q=12, a priori from {2,3}-cost basis); correct target is H(s) boundary regularity, not Σ η/p convergence (§2.5) |</p>
+        <p>| No candidate proof route | Four routes excluded (H², Direction D, Kolmogorov, MV), one surviving (deterministic square-function) |</p>
+        <p>| No formal hypothesis | DSF_α + BL_α precisely stated, numerically verified |</p>
+        <p>| Unknown gap structure | Provable \|B_j\| ≤ C/√j vs observed \|B_j\| ~ 2^{−j/3} |</p>
+        <p>| Tauberian condition open | SD proved unconditionally (Prop 4.1) |</p>
+        <p><strong>For Gap 2 (prime powers):</strong></p>
+        <p>| Before (Paper 49) | After (Paper 50) |</p>
+        <p>|---|---|</p>
+        <p>| "\|δ_a\| = O(1) needed" | Log-UBPD unconditional (Selfridge+Guy); a=2 is sole hard core; a≥3 bounded by Zsigmondy mechanism |</p>
+        <p>| RT moment status unknown | Both shell and predecessor moments O(1), cross-term independent |</p>
+        <p>| Gap 2 status unclear relative to H' | Prime-power layer analytic at Re(s) = 1 (Prop 7.1) — does not contribute to boundary singularity |</p>
+        <h4>8.3. The closure chain</h4>
+        <p>The full conditional chain to H':</p>
+        <p>```</p>
+        <p>DSF_α + BL_α  (UNPROVED — the remaining hypotheses)</p>
+        <p>    → Hölder regularity of H(s) at s = 1      [Thm 6.2, conditional]</p>
+        <p>        → real-axis limit H(1+ε) → H(1)        [continuity, unconditional given Hölder]</p>
+        <p>            + SD                                 [Prop 4.1, unconditional]</p>
+        <p>                → A_h(X) converges               [Prop 6.3, Karamata Tauberian]</p>
+        <p>                    → D(s) = known log-singularity</p>
+        <p>                      + finite constant          [Prop 6.4, unconditional]</p>
+        <p>                        + Prime-power layer analytic [Prop 7.1, unconditional]</p>
+        <p>                            → H' boundary behavior</p>
+        <p>```</p>
+        <p>Every link except "DSF_α + BL_α" is either proved unconditionally or is a known theorem from the literature. The remaining difficulty is concentrated in two conditions: DSF_α (block decay rate, the hard mathematical content) and BL_α (block localization summability, a secondary technical condition expected to follow from DSF_α but not yet reduced to it).</p>
+        <h4>8.4. The remaining mathematical problems</h4>
+        <p>| Problem | Precise statement | H'-critical? | Data support |</p>
+        <p>|---------|------------------|-------------|-------------|</p>
+        <p>| DSF_α | Σ (1+j)^{1+2α} \|B_j\|² < ∞ for all α < α* | <strong>Yes</strong> (main) | Converges to α = 0.5 at N = 10⁹ |</p>
+        <p>| BL_α | Σ_j sup \|E_j\|/\|t\|^α < ∞ | <strong>Yes</strong> (secondary) | E_j/B_j < 3.2% at t=0.01 |</p>
+        <p>| Zsigmondy bound | \|δ_a(p)\| = O(1) for a ≥ 3 | No (Prop 7.1) | \|δ_a\|_max = 3 at N = 10¹⁰ |</p>
+        <p>| Predecessor moment | E[(log P⁻(n−1))² \| Ω(n) = k] = O(1) | No (Prop 7.1) | Stabilizes at ~66, confirmed 10⁹ |</p>
+        <p>DSF_α is the principal remaining problem. BL_α is expected to be subordinate — a proof of exponential block decay would likely carry BL_α as a corollary, since exponentially decaying B_j would make the summability condition easy to satisfy. The Zsigmondy bound and predecessor moment are not H'-critical obstructions within the current proof architecture, but retain independent structural interest for the ZFCρ framework: they characterize the multiplicative regularity of ρ_E at prime powers and the statistical independence of consecutive factorizations.</p>
+        <h4>8.5. What DSF_α requires</h4>
+        <p>The provable bound is |B_j| ≤ C/√j (Proposition 5.1, from bounded variance). The data shows |B_j| ~ 2^{−j/3} (exponential). Bridging this gap requires explaining why stripped dyadic blocks cancel exponentially — why the residual arithmetic structure in h(p), after removing the Q = 12 character component, produces cancellation in dyadic sums far beyond what Cauchy–Schwarz alone guarantees.</p>
+        <p>Potential approaches:</p>
+        <ul>
+        <li>Deterministic Littlewood–Paley theory for multiplicative functions restricted to primes</li>
+        <li>Almost-orthogonality of character-stripped prime sums across dyadic ranges</li>
+        <li>Exponential mixing in the p mod q distribution for q > 12 (higher-conductor depletion)</li>
+        <li>Connection to the distribution of smooth numbers adjacent to primes (via the scissors mechanism)</li>
+        </ul>
+        <h4>8.6. Twenty-four unconditional results</h4>
+        <p>For reference, the full list of results established without any conditional hypothesis:</p>
+        <p><strong>Gap 1 (14 items).</strong></p>
+        <ol>
+        <li>Character stripping symmetrization: 94% → 52% at three scales.</li>
+        <li>ℓ² summability: Σ|h|²/p² converged (12 decimal places).</li>
+        <li>H² shortcut exclusion.</li>
+        <li>Direction D exclusion.</li>
+        <li>Kolmogorov exclusion.</li>
+        <li>Negative part tame: Σ|η⁻|/p ≈ 0.20, converging.</li>
+        <li>A_h numerical convergence at three scales (precision ±0.001).</li>
+        <li>Dyadic block decay ~ 2^{−j/3} at three scales.</li>
+        <li>Unweighted square-function Σ|B_j|² numerical convergence.</li>
+        <li>Stripped Hölder α_h ≈ 0.7–0.8 at small t.</li>
+        <li>Cauchy–Schwarz bound |B_j| ≤ C/√j (conditional on Var(h) = O(1)).</li>
+        <li>BL numerically negligible (E_j/B_j < 3.2% at t = 0.01).</li>
+        <li>DSF_α numerically converges to α = 0.5.</li>
+        <li>SD proved unconditionally (Proposition 4.1).</li>
+        </ol>
+        <p><strong>Gap 2 (10 items).</strong></p>
+        <ol>
+        <li>Log-UBPD for a = 2 unconditional.</li>
+        <li>a = 2 / a ≥ 3 complete separation.</li>
+        <li>RQSA zero violations (1,877 checks).</li>
+        <li>Shell-side RT moment O(1).</li>
+        <li>Predecessor-side RT moment O(1) (confirmed 10⁹).</li>
+        <li>CDR stable (mean 0.93, no downward trend).</li>
+        <li>Scissors formula perfect in standard IC (0/445).</li>
+        <li>Log-UBPD suffices for prime-side local factor.</li>
+        <li>Predecessor independence confirmed (cross-term → 1.0 for k ≥ 17).</li>
+        <li>Standard IC concavity cleaner (28 violations vs 3,087 in P32).</li>
+        </ol>
+        <hr>
+        <h3>§9. Conclusion</h3>
+        <p>Paper 49 identified two open problems for H'. Paper 50 does not claim to solve them — it transforms them. Each gap now has a precise formal statement, a list of excluded approaches, numerical verification at multiple scales, and a clear assessment of its role in the proof architecture.</p>
+        <p>The principal localization: Gap 1's remaining difficulty is the exponential decay of stripped dyadic block sums, formalized as DSF_α, together with the block localization condition BL_α. The Tauberian condition (SD, Proposition 4.1) is proved unconditionally. The correct formulation of Gap 1 is boundary regularity of the stripped Dirichlet series H(s), not convergence of Σ η(p)/p — the latter diverges due to the positive mean of η, a fact that character stripping makes transparent by separating the known divergent part from the unknown regular part.</p>
+        <p>The secondary localization: Gap 2's internal structure is now fully mapped (a = 2 core isolation, scissors mechanism, Log-UBPD, RT moments, RQSA), and its relationship to H' is clarified — the prime-power layer is analytic at Re(s) = 1 (Proposition 7.1), contributing no singularity to the boundary behavior.</p>
+        <p>The hypotheses DSF_α and BL_α are not conjectures pulled from thin air. DSF_α is supported by exponential block decay |B_j| ~ 2^{−j/3} confirmed across three orders of magnitude; BL_α by the empirical negligibility of intra-block errors. Both are motivated by the character-stripping framework that provides their a priori context, and by the elimination of every alternative path that might have circumvented them. What remains is to explain the cancellation mechanism that produces exponential block decay — and to prove it.</p>
+        <hr>
+        <h3>Appendix A. Convention Translation</h3>
+        <p>| Quantity | Paper 32 (ρ[1]=0, +2) | Standard IC (‖1‖=1, free) |</p>
+        <p>|----------|----------------------|--------------------------|</p>
+        <p>| λ | ≈ 3.86 | ≈ 3.04 |</p>
+        <p>| ρ(100) | 19 | 14 |</p>
+        <p>| ρ(10³) | 28 | 21 |</p>
+        <p>| η range (typical) | [−2, +4] | [−1, +3] |</p>
+        <p>| δ range (a=2) | [−7, +2] | [−4, 0] |</p>
+        <p>| A_h limit (10⁹) | −2.997 | — |</p>
+        <p>Structural results (symmetrization ratio, block decay rate, CDR mean, RQSA violations) are convention-independent.</p>
+        <hr>
+        <h3>Appendix B. Thermodynamic Reading</h3>
+        <p>The thermodynamic perspective developed in ZFCρ Paper 48 provides an interpretive layer for the results of the present paper, though the mathematical content is independent of it.</p>
+        <p>Q = 12 character stripping (§2) corresponds to the projection of the dissipation mechanism onto the prime layer: 2 and 3 are the "most efficient dissipation factors" in the IC cost function, and their modular accessibility for p ± 1 determines the residue-class structure of η(p). The between-class variance (17.8%) measures the fraction of η-variation attributable to this leading dissipation channel.</p>
+        <p>DSF_α (§6) is the frequency-domain counterpart of the step-absorption rate η ∈ [0.10, 0.31] established in Paper 48. The step-absorption rate measures how strongly the min/max recursion suppresses inter-step fluctuations; DSF_α measures how rapidly these fluctuations decay when decomposed into dyadic frequency bands. Both express the same phenomenon — the recursion's tendency to absorb perturbations — in complementary domains.</p>
+        <p>The analyticity of the prime-power layer at Re(s) = 1 (§7.1) corresponds to the automatic arithmetic suppression of higher-order multiplicative effects: the 1/p^{2a} denominator is the Dirichlet-series manifestation of the recursion's rapid damping at higher multiplicative depths.</p>
+        <hr>
+        <h3>Acknowledgments</h3>
+        <p>AI contributions. Gemini (子夏): character stripping framework, scissors formula, "Log-UBPD harmless," Zsigmondy a = 2 escapee mechanism. Grok (子贡): negative part tame, δ = −7 factor structure, α = 1/2 heuristic. ChatGPT (公西华): DSF_α + BL formulation, three impossibilities (H², A_loc, Kolmogorov), Log-UBPD chain analysis, "one big + one small" Gap 2 verdict, paper structure recommendation; post-draft theorem-level review identifying six corrections incorporated in the present version. Claude (子路): all numerical computations (15 programs at scales 10⁷–10¹⁰), independent Cauchy–Schwarz route to gap identification, RT moment O(1) discovery on both shell and predecessor sides, SD unconditional proof.</p>
 
         <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
           <p style="margin:0; font-size:0.9em;">Full paper available on Zenodo: <a href="https://doi.org/10.5281/zenodo.19381111" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19381111</a></p>
@@ -90,15 +461,308 @@
       <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
         <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立著作，所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
 
-        <h2>摘要</h2>
-        <p>本文对ZFCρ框架中假设H'的剩余困难进行精确定位。η(p)的94%正偏置被识别为来自p mod 12结构的算术伪装，可从整数复杂度的{2,3}-成本基础先验推导，并通过特征剥离消除。四条候选证明路线被严格排除。剥离后的二进块和B<sub>j</sub>以近似白噪声的速率|B<sub>j</sub>| ≈ C · 2<sup>−j/2</sup>衰减，远快于可证明的多项式界|B<sub>j</sub>| ≤ C/√j，这一多项式到指数的差距被形式化为确定性方函数假设DSF<sub>α</sub>。Tauber条件（缓慢递减）从Guy上界与Chebyshev素数计数无条件证明。素数幂层在Re(s) = 1的邻域内绝对收敛，因而解析延拓通过该边界，不影响素数层的奇异性结构。完整闭合链归结为两个未证条件：DSF<sub>α</sub>（块衰减）与BL<sub>α</sub>（块局部化可和性）。24项无条件结果在N = 10<sup>7</sup>, 10<sup>9</sup>, 10<sup>10</sup>三个尺度上支持这一定位。</p>
-        <p>第49篇识别了H'的两个开放问题，本文将它们从模糊的目标转化为精确表述的、经数值验证的、可形式检验的数学对象。</p>
-        <p><strong>关键词：</strong>整数复杂度，特征剥离，确定性方函数，DSF，二进块和，Tauber定理，ZFCrho，H'，素数亏损，p mod 12</p>
+        <h2>ZFCρ 第L篇：特征剥离，确定性方函数，与H'的精确定位</h2>
+        <p>秦汉 (Han Qin)</p>
+        <p>ORCID: 0009-0009-9583-0018</p>
+        <p>2026年4月</p>
+        <hr>
+        <p><strong>摘要。</strong> 本文对ZFCρ框架中假设H'的剩余困难进行精确定位。η(p)的94%正偏置被识别为来自p mod 12结构的算术伪装，可从整数复杂度的{2,3}-成本基础先验推导，并通过特征剥离消除。四条候选证明路线被严格排除。剥离后的二进块和B_j以|B_j| ~ 2^{−j/3}的速率衰减，远快于可证明的多项式界|B_j| ≤ C/√j，这一差距被形式化为确定性方函数假设DSF_α。Tauber条件（缓慢递减）从Guy上界与Chebyshev素数计数无条件证明。素数幂层在Re(s) = 1的邻域内绝对收敛，因而解析延拓通过该边界，不影响素数层的奇异性结构。完整闭合链归结为两个未证条件：DSF_α（块衰减）与BL_α（块局部化可和性）。24项无条件结果在N = 10⁷, 10⁹, 10¹⁰三个尺度上支持这一定位。第49篇识别了H'的两个开放问题，本文将它们从模糊的目标转化为精确表述的，经数值验证的，可形式检验的数学对象。</p>
+        <hr>
+        <h3>§1. 引言与战略背景</h3>
+        <h4>1.1. 第49篇之后的状态</h4>
+        <p>第49篇将H'的闭合归结为两个开放问题：</p>
+        <p><strong>缺口1（素数层消去）：</strong> 剥离后的Dirichlet级数H(s) = Σ_p h(p) p^{−s}在Re(s) = 1处是否具有Hölder连续的边界行为？</p>
+        <p><strong>缺口2（UBPD）：</strong> 对所有a ≥ 2，是否|δ_a(p)| = O(1)？</p>
+        <p>两者均被认为需要全新的数学，但都没有被表述为精确的可检验假设。本文对两个缺口进行转化：缺口1被定位到一对形式化条件（DSF_α + BL_α，§6），并配有精确的多项式-指数差距识别（§5）和四条排除路线（§3）；缺口2被分解为内部结构（§7），并在Dirichlet级数框架内显示其仅在Re(s) = 1的边界贡献解析（非奇异）项，因而不阻碍素数层的奇异性分析。</p>
+        <p>一个进一步的简化：闭合链最终步骤所需的Tauber条件（部分和缓慢递减）在§4.4中无条件证明。</p>
+        <h4>1.2. 约定</h4>
+        <p>全文使用第32篇约定：ρ(0) = 0，ρ(1) = 0，乘法代价+2，λ ≈ 3.86。该约定有N = 10⁹和N = 10¹⁰的计算数据。所有结构性结果（特征剥离，块衰减模式，缺口1/缺口2解耦，RQSA，CDR稳定性）与约定无关。</p>
+        <p>标准整数复杂度约定（‖1‖ = 1，乘法免费，λ ≈ 3.04）用于某些验证实验，翻译表见附录A。</p>
+        <h4>1.3. 记号</h4>
+        <ul>
+        <li>η(p) = ρ(p) − λ log p（素数亏损）</li>
+        <li>δ_a(p) = ρ(p^a) − ρ(p) − ρ(p^{a−1})（素数幂p^a处的次可加亏损）</li>
+        <li>h(p) = η(p) − μ_{12}(p)，其中μ_{12}(p) = E[η | p mod 12]（特征剥离残差）</li>
+        <li>B_j = Σ_{2^j < p ≤ 2^{j+1}} h(p)/p（二进块和）</li>
+        <li>H(s) = Σ_p h(p) p^{−s}（剥离Dirichlet级数）</li>
+        <li>D(s) = Σ_p η(p) p^{−s}（完整素数层Dirichlet级数）</li>
+        <li>P⁻(n) = n的最小素因子</li>
+        <li>CDR(p, a) = ρ(Φ_a(p)) / (λ · log Φ_a(p))（收敛漂移率）</li>
+        </ul>
+        <hr>
+        <h3>§2. 特征剥离：算术伪装与Q = 12</h3>
+        <h4>2.1. 导体选择的先验推导</h4>
+        <p>在ρ函数中，每个正整数n被表示为1在加法和乘法下的表达树。最便宜的两个素数是2（代价2）和3（代价3），成本对数比分别为2/ln 2 ≈ 2.89和3/ln 3 ≈ 2.73，都接近λ。所有更大的素数有更高的成本对数比。因此，n"便宜"（ρ(n)远低于λ log n）恰好当n在{2, 3}上因式分解丰富时。</p>
+        <p>对素数p，主要的访问路径是加法路径：p = (p−1) + 1，代价≈ ρ(p−1) + 1。因此ρ(p)被p − 1的{2, 3}-光滑部分控制（以及p + 1，通过捷径p² − 1 = (p−1)(p+1)）。p ± 1的{2, 3}-赋值由p mod lcm(4, 3) = 12决定。四个容许的素数剩余类为：</p>
+        <p>| p mod 12 | 4 \| p−1? | 3 \| p−1? | 4 \| p+1? | 3 \| p+1? | 可及性 |</p>
+        <p>|----------|----------|----------|----------|----------|--------|</p>
+        <p>| 1  | ✓ | ✓ | — | — | p−1高度可及 |</p>
+        <p>| 5  | ✓ | — | — | ✓ | 分散 |</p>
+        <p>| 7  | — | ✓ | ✓ | — | 分散 |</p>
+        <p>| 11 | — | — | ✓ | ✓ | p+1高度可及 |</p>
+        <p>Q = 12是捕获p ± 1完整{2, 3}-赋值结构的最小导体。更高导体（Q = 24, 60）捕获次要修正；Q = 12处的类间方差已解释了偏置结构的几乎全部。</p>
+        <h4>2.2. 剥离过程与对称化</h4>
+        <p>定义剩余类均值μ_{12}(r) = lim_{X→∞} (1/π_r(X)) Σ_{p ≤ X, p ≡ r (12)} η(p)，以及剥离残差h(p) = η(p) − μ_{12}(p mod 12)。</p>
+        <p><strong>表1. 三个尺度上的对称化。</strong></p>
+        <p>| 量 | 剥离前(η) | 剥离后(h, Q=12) |</p>
+        <p>|----|----------|----------------|</p>
+        <p>| P(> 0) | 0.94 | 0.52 |</p>
+        <p>| P(< 0) | 0.06 | 0.48 |</p>
+        <p>| 中位数 | +1.23 | +0.03 |</p>
+        <p>| 标准差 | 0.78 | 0.71 |</p>
+        <p>94%的正偏置完全由低导体的算术结构解释。剥离后h(p)近乎对称，均值近零，无可见漂移。</p>
+        <h4>2.3. 方差分解</h4>
+        <p>总Var(η) = 0.613分解为类间（Q = 12）= 0.109（17.8%）和类内Var(h) = 0.504（82.2%）。与第47篇的17.6%一致。</p>
+        <h4>2.4. 收敛测试</h4>
+        <p>关键的ℓ²范数Σ|h|²/p²在所有三个尺度上完全收敛：</p>
+        <p>| 尺度 | Σ\|h\|²/p² | 收敛于 |</p>
+        <p>|------|-----------|--------|</p>
+        <p>| N = 10⁷ | 0.1137 | p ~ 70K（8位小数）|</p>
+        <p>| N = 10⁹ | 1.4569 | p ~ 100K（10位小数）|</p>
+        <p>| N = 10¹⁰ | 1.4781 | p ~ 100K（12位小数）|</p>
+        <p>（不同约定下绝对值不同，收敛行为相同。）</p>
+        <h4>2.5. D(s)与H(s)的关系</h4>
+        <p>完整素数层Dirichlet级数分解为：</p>
+        <p>  D(s) = Σ_p η(p) p^{−s} = H(s) + Σ_{r ∈ R} μ_{12}(r) · P_r(s)</p>
+        <p>其中R = {1, 5, 7, 11}，P_r(s) = Σ_{p ≡ r (12)} p^{−s}。由算术级数中的素数定理，每个P_r(s)在s = 1处有对数奇异性：P_r(s) = (1/4) · log(1/(s−1)) + 解析项。组合得到的剩余类贡献为：</p>
+        <p>  Σ_r μ_{12}(r) P_r(s) = (μ̄/4) · log(1/(s−1)) + 解析项</p>
+        <p>其中μ̄ = Σ_r μ_{12}(r) ≈ 4.94。这是一个<strong>已知奇异性</strong>，其结构完全由μ_{12}和mod 12的Dirichlet L-函数决定。</p>
+        <p>因此：D(s)在s = 1处的<strong>未知</strong>部分完全是H(s)。如果H(s)在Re(s) = 1处有Hölder连续的边界行为，则完整的素数层Dirichlet级数具有"已知对数奇异性 + Hölder余项"的边界行为。这就是缺口1的精确内容。</p>
+        <hr>
+        <h3>§3. 排除的路线</h3>
+        <p>在呈现成功路径之前，记录四种被调查并被确定性排除的方法。</p>
+        <h4>3.1. H²边界捷径</h4>
+        <p><strong>声称（被排除）：</strong> (H(1+s) − H(1))/s位于半平面的Hardy空间H²中。</p>
+        <p><strong>障碍：</strong> H²范数对应于Re(s) = 1/2上的L²边界（Hedenmalm），而非素数层奇异性所在的Re(s) = 1。商(H(1+s) − H(1))/s需要A_loc正则性，而非L²正则性（Debruyne引理8.3.2）。</p>
+        <h4>3.2. 方向D（绝对Lipschitz）</h4>
+        <p><strong>声称（被排除）：</strong> 从η(p)的绝对界直接证明|H(1+it) − H(1)| ≤ C|t|。</p>
+        <p><strong>障碍：</strong> 这需要Σ|η(p)| · log p / p < ∞。数据显示该和以≈ 5.5 · log log x的速率发散。绝对界下的直接Lipschitz不可能。Hölder需要结构性输入（消去，而非大小控制）。</p>
+        <p>特征剥离不能挽救方向D：Σ|h| · log p / p仍然发散。</p>
+        <p><strong>注。</strong> 方向D的排除不承载证明链的重量：DSF_α路径（§6）不依赖于它。</p>
+        <h4>3.3. Kolmogorov三级数</h4>
+        <p><strong>声称（被排除）：</strong> 将h(p)视为"近独立"随机变量，应用Kolmogorov三级数定理。</p>
+        <p><strong>障碍：</strong> h(p)是确定性序列，不是独立随机变量。尽管h(p)有白噪声般的统计特征（近零均值，有界方差，弱自相关），独立性是确定性序列无法满足的结构性质。在N = 10⁹/10¹⁰下，白噪声预测在j > 22的二进块处失效（实际|B_j|是白噪声σ的5-20倍），确认了残余确定性关联的存在。</p>
+        <h4>3.4. 单独的Montgomery-Vaughan</h4>
+        <p><strong>声称（被排除）：</strong> Montgomery-Vaughan不等式给出的全局L²控制足以得到边界正则性。</p>
+        <p><strong>障碍：</strong> MV给出∫|H(1+it)|² dt < ∞（边界上的全局L²）。但一点处的边界正则性（Hölder）需要局部控制。L²和Hölder是独立条件。</p>
+        <hr>
+        <h3>§4. 二进块分解</h3>
+        <h4>4.1. 三个尺度上的块和</h4>
+        <p>定义二进块和B_j = Σ_{2^j < p ≤ 2^{j+1}} h(p)/p。</p>
+        <p><strong>表2. 剥离后的块量级|B_j|（选录）。</strong></p>
+        <p>| j | N = 10⁷ | N = 10⁹ | N = 10¹⁰ | WN预测 |</p>
+        <p>|---|---------|---------|----------|--------|</p>
+        <p>| 10 | 0.0093 | 0.0318 | 0.0387 | 0.0075 |</p>
+        <p>| 14 | 0.0035 | 0.0104 | 0.0143 | 0.0016 |</p>
+        <p>| 18 | 0.0003 | 0.0029 | 0.0051 | 0.0003 |</p>
+        <p>| 22 | 0.0001 | 0.0004 | 0.0015 | 0.00008 |</p>
+        <p>| 25 | — | 0.00009 | 0.0004 | 0.00003 |</p>
+        <p>| 28 | — | 0.00005 | 0.00005 | 0.000009 |</p>
+        <p>| 30 | — | — | 0.00009 | 0.000004 |</p>
+        <p>| 32 | — | — | 0.00002 | 0.000002 |</p>
+        <h4>4.2. 三个发现</h4>
+        <p><strong>发现1（指数衰减，比WN慢）。</strong> 块和以近似|B_j| ~ 2^{−j/3}的速率衰减，从j = 10到j = 32跨越约3个数量级。这比白噪声预测|B_j| ~ 2^{−j/2}慢，但仍为指数级。该模式在三个尺度上均稳健。</p>
+        <p><strong>发现2（方函数收敛）。</strong> 累计和Σ|B_j|²数值上收敛：</p>
+        <p>| 块范围 | Σ\|B_j\|²（N = 10¹⁰）|</p>
+        <p>|--------|----------------------|</p>
+        <p>| j = 1–10 | 0.79 |</p>
+        <p>| j = 11–20 | 0.0012 |</p>
+        <p>| j = 21–30 | 0.0000065 |</p>
+        <p>| j = 31–33 | 0.0000000008 |</p>
+        <p>尾部（j > 20）贡献不足总量的0.001%。</p>
+        <p><strong>发现3（A_h收敛）。</strong> 剥离部分和A_h(X) = Σ_{p ≤ X} h(p)/p在所有尺度上数值收敛。</p>
+        <h4>4.3. 剥离Hölder指数</h4>
+        <p>在小t处，有效Hölder指数α_h ≈ 0.7–0.8（N = 10⁹/10¹⁰）。指数依赖尺度（较大N处稍低），但在所有尺度的小t处均保持正值且远高于零。目标是任意α > 0。</p>
+        <h4>4.4. 缓慢递减（无条件）</h4>
+        <p><strong>命题4.1（SD）。</strong> 部分和A_h(X) = Σ_{p ≤ X} h(p)/p是缓慢递减的：对每个ε > 0存在δ > 0使得A_h(Y) − A_h(X) ≥ −ε对所有X ≥ 2和Y ∈ [X, (1+δ)X]成立。</p>
+        <p><strong>证明。</strong> Guy上界给出ρ(n) ≤ (3/ln 2) log n。类均值|μ_{12}|有界，所以|h(p)| ≤ C log p。每项满足|h(p)/p| ≤ C log p / p。对Y ∈ [X, (1+δ)X]：</p>
+        <p>  |A_h(Y) − A_h(X)| ≤ Σ_{X < p ≤ Y} C log p / p ≤ (2C log X / X) · (C'δX / log X) = 2CC'δ.</p>
+        <p>给定ε，取δ = ε/(2CC')。 □</p>
+        <p><strong>注。</strong> SD严格强于VSD。证明仅使用Guy上界和Chebyshev素数计数，无需特征剥离，无需方差界，无需任何数值输入。</p>
+        <hr>
+        <h3>§5. 多项式-指数差距</h3>
+        <p>本节隔离DSF_α必须弥合的精确数学差距。</p>
+        <h4>5.1. 可证明的（多项式衰减）</h4>
+        <p><strong>命题5.1.</strong> 若Var(h(p)) = O(1)（数值确认：Var(h) = 0.504），则|B_j| ≤ C/√j。</p>
+        <p><strong>证明。</strong> Cauchy-Schwarz：</p>
+        <p>  |B_j|² ≤ (Σ_{I_j} h(p)²/p²)(Σ_{I_j} 1) ≤ (C/2^j) · (2^j/j) = C/j.</p>
+        <p>因此：</p>
+        <p>  |B_j|² ≤ C/j, 从而 |B_j| ≤ C/√j.  □</p>
+        <p>注意Σ 1/j发散，所以Cauchy-Schwarz界<strong>不</strong>蕴涵Σ|B_j|² < ∞。§4.2中数值确立的方函数收敛是严格强于命题5.1所证明的。</p>
+        <h4>5.2. 所需的（指数衰减）</h4>
+        <p>对DSF_α（α > 0），需要Σ j^{1+2α} |B_j|² < ∞。在可证界|B_j|² ≤ C/j下，被求和项为j^{1+2α}/j = j^{2α}，对所有α > 0发散。<strong>Cauchy-Schwarz界不足以得到任何正的Hölder指数。</strong></p>
+        <p>数据显示|B_j| ~ 2^{−j/3}（指数级）。DSF_α级数数值收敛：</p>
+        <p>| α | Σ(1+j)^{1+2α} \|B_j\|² |</p>
+        <p>|---|------------------------|</p>
+        <p>| 0.1 | 2.14 |</p>
+        <p>| 0.2 | 2.58 |</p>
+        <p>| 0.3 | 3.13 |</p>
+        <p>| 0.4 | 3.83 |</p>
+        <p>| 0.5 | 4.72 |</p>
+        <h4>5.3. 差距</h4>
+        <p>| 可证 | 所需 | 数据 |</p>
+        <p>|------|------|------|</p>
+        <p>| \|B_j\| ≤ C/√j | \|B_j\| ~ 2^{−j/3}（指数）| 2^{−j/3}确认 |</p>
+        <p>| Σ\|B_j\|²收敛未证 | Σ j^{1+2α}\|B_j\|² < ∞ | 收敛至α = 0.5 |</p>
+        <p>| 无正则性 | Hölder边界 | α_h ≈ 0.7–0.8（小t处）|</p>
+        <p>弥合这一差距（解释为何剥离块以指数级而非仅√j速率消去）是缺口1剩余的核心数学问题。</p>
+        <hr>
+        <h3>§6. 条件闭合定理</h3>
+        <h4>6.1. 定义</h4>
+        <p><strong>假设DSF_α。</strong> 对α > 0，确定性方函数条件DSF_α为：</p>
+        <p>  Σ_{j ≥ 0} (1 + j)^{1+2α} |B_j|² < ∞</p>
+        <p><strong>假设BL_α。</strong> 块局部化条件BL_α要求块内误差可和地小：定义E_j(t) = Σ_{p ∈ I_j} h(p)/p · (p^{−it} − e^{−it · c_j})（c_j = (j + ½) ln 2为块对数中心），要求：</p>
+        <p>  Σ_{j ≥ 0} sup_{|t| ≤ t₀} |E_j(t)| / |t|^α < ∞</p>
+        <h4>6.2. BL_α的状态</h4>
+        <p><strong>命题6.1（逐块界）。</strong> |E_j(t)| ≤ (|t| ln 2 / 2) · Σ_{p ∈ I_j} |h(p)|/p。</p>
+        <p><strong>证明。</strong> 对p ∈ I_j，|log p − c_j| ≤ ½ ln 2，所以|p^{−it} − e^{−it·c_j}| ≤ |t| · ln 2 / 2。 □</p>
+        <p>这给出|E_j(t)| / |t|^α ≤ C|t|^{1−α} · A_j（其中A_j = Σ_{I_j} |h(p)|/p）。对固定t，每个j的比值当t趋于0时趋于零。但BL_α要求<strong>对j求和</strong>收敛，而Σ_j A_j = Σ_p |h(p)|/p发散。因此BL_α<strong>不</strong>由逐块界单独推出。</p>
+        <p><strong>数值证据。</strong> 在t = 0.01处，|E_j(t)| / |B_j| < 3.2%（N = 10⁹数据）。块局部化误差相对于块和本身在经验上可忽略。</p>
+        <p><strong>评估。</strong> BL_α是次要技术条件。缺口1的数学实质在DSF_α（块衰减速率），而非BL_α（块内频率分散）。DSF_α的证明很可能连带给出BL_α，因为指数级块衰减将使可和性条件容易满足。但我们不声称BL_α是"免费的"。</p>
+        <h4>6.3. 主定理</h4>
+        <p><strong>定理6.2（缺口1的条件闭合）。</strong> 假设DSF_α对所有α < α<em>成立（对某个α</em> > 0），且BL_α对某个α ∈ (0, α*)成立。则：</p>
+        <p>(i) H(1 + it) − H(1) = O(|t|^{α−ε})对每个ε > 0成立。</p>
+        <p>(ii) 剥离Dirichlet级数H(s)在Re(s) = 1处有Hölder连续的边界行为。</p>
+        <p><strong>证明。</strong> 将H(1+it) − H(1) = M(t) + E(t)分解为主项和误差项。</p>
+        <p><strong>主项。</strong> |e^{−it·c_j} − 1| ≤ C_α |t|^α (1+j)^α。由Cauchy-Schwarz：</p>
+        <p>  Σ_j (1+j)^α |B_j| ≤ (Σ_j (1+j)^{−1−ε})^{1/2} · (Σ_j (1+j)^{1+2α+ε} |B_j|²)^{1/2}</p>
+        <p>第一个因子对ε > 0有限。第二个因子由DSF_{α+ε/2}给出有限。|M(t)| = O(|t|^{α−ε})。</p>
+        <p><strong>误差项。</strong> BL_α给出Σ_j |E_j(t)| / |t|^α < ∞，所以|E(t)| = O(|t|^α)。</p>
+        <p>合并：|H(1+it) − H(1)| = O(|t|^{α−ε})。 □</p>
+        <p><strong>注。</strong> 证明使用DSF_{α+ε/2}而非DSF_α本身。"DSF_α对所有α < α*"是诚实的假设。数值上DSF_α对所有测试的α（至0.5）都收敛。</p>
+        <h4>6.4. 从Hölder到A_h收敛</h4>
+        <p><strong>命题6.3（Tauber闭合）。</strong> 若H(s)连续延拓至s = 1（即H(1) := lim_{σ→1⁺} H(σ)存在且|H(1+it) − H(1)| = O(|t|^β)对某β > 0成立），则A_h(X) = Σ_{p ≤ X} h(p)/p收敛于H(1)。</p>
+        <p><strong>证明。</strong> 本论证仅使用边界的<strong>实轴</strong>趋近，避免虚线上边界行为的分布论微妙性。</p>
+        <p>步骤1（Laplace-Stieltjes表示）。通过Abel求和，平移级数有表示</p>
+        <p>  H(1 + ε) = ∫₀^∞ e^{−εu} dμ(u),  ε > 0,</p>
+        <p>其中μ(u) = A_h(e^u)。</p>
+        <p>步骤2（实轴极限）。Hölder连续性蕴涵H在Re(s) = 1附近连续延拓。特别地，实轴极限存在：H(1 + ε) 当ε趋于0⁺时趋于H(1)。</p>
+        <p>步骤3（单侧Tauber条件）。命题4.1给出SD，这是单侧Tauber条件。</p>
+        <p>步骤4（Karamata Tauber定理）。Laplace-Stieltjes变换的Karamata-Korevaar型Tauber定理指出：若∫₀^∞ e^{−εu} dμ(u)当ε趋于0⁺时趋于L，且μ缓慢递减，则μ(u)当u趋于∞时趋于L（Korevaar，<em>Tauberian Theory</em>，第II-III章）。应用于L = H(1)：A_h(X)当X趋于∞时趋于H(1)。 □</p>
+        <p><strong>注。</strong> 此证明刻意取初等路线：仅使用实轴极限H(1+ε)趋于H(1)，而非H(1+it)在虚线上的完整边界行为。第49篇识别了两条涉及虚线边界的Tauber路线（Hölder + VSD，或局部拟函数 + SD）；经由Karamata定理的实轴路线更简单，也避免了两者的技术复杂性，因为SD（我们无条件证明的）恰好是该定理所需的单侧条件。</p>
+        <h4>6.5. 从A_h到素数层边界行为</h4>
+        <p><strong>命题6.4（恢复）。</strong> 若A_h(X)收敛，则完整素数层Dirichlet级数D(s)在s趋于1⁺时具有形式</p>
+        <p>  D(s) = (μ̄/4) · log(1/(s−1)) + c + o(1)</p>
+        <p>的边界行为，其中c = A_h(∞) + Σ_r μ_{12}(r) c_r是可计算常数。</p>
+        <p><strong>证明概要。</strong> D(s) = H(s) + Σ_r μ_{12}(r) P_r(s)（§2.5）。若A_h收敛则H(s)趋于H(1) = A_h(∞)（Abel定理）。每个P_r(s) = (1/4) log(1/(s−1)) + c_r + o(1)。奇异性完全来自已知的剩余类结构。 □</p>
+        <p><strong>注。</strong> "Σ η(p)/p是否收敛？"的答案是<strong>否</strong>。η(p)有正均值≈ 1.235，所以Σ η(p)/p以约(5/4) log log X的速率发散。缺口1的正确表述不是Σ η(p)/p的收敛，而是H(s)的边界正则性，等价于Σ h(p)/p的收敛。特征剥离将已知的发散部分与未知的正则部分分离开来。</p>
+        <hr>
+        <h3>§7. 缺口2：素数幂层</h3>
+        <h4>7.1. 结构解耦（一个推论）</h4>
+        <p><strong>命题7.1（素数幂层的解析性）。</strong> 素数幂贡献</p>
+        <p>  P(s) = Σ_p Σ_{a ≥ 2} δ_a(p) / p^{as}</p>
+        <p>在Re(s) > 1/2上绝对收敛。特别地，P(s)在包含边界Re(s) = 1及其邻域的半平面Re(s) > 1/2上解析。因此完整Dirichlet级数在Re(s) = 1处的奇异性结构完全由素数层决定。</p>
+        <p><strong>证明。</strong> 次可加性给出|δ_a(p)| ≤ Ca log p。对Re(s) = σ > 1/2：|P(s)| ≤ C' Σ_p (log p)/p^{2σ}，在2σ > 1时收敛。 □</p>
+        <p><strong>注。</strong> 这是Euler积框架的一行推论。其意义是战略性的：在当前证明路径内，缺口2不在Re(s) = 1的边界制造奇异性。UBPD作为ρ_E在素数幂上的结构性质保留独立的兴趣，我们在§7.2–§7.6中展开其内部结构。</p>
+        <h4>7.2. a = 2与a ≥ 3：完全分离</h4>
+        <p><strong>表5. 按幂次分的亏损统计（P32，N = 10¹⁰）。</strong></p>
+        <p>| | a = 2 | a ≥ 3 |</p>
+        <p>|---|---|---|</p>
+        <p>| 对数 | 3,401 | 288 |</p>
+        <p>| \|δ\|_max | 7 | 3 |</p>
+        <p>| δ范围 | [−7, +2] | [−3, +2] |</p>
+        <p>缺口2的困难核心完全在a = 2。对a ≥ 3，Zsigmondy机制（Φ_a(p)中的原始素因子阻止光滑因式分解捷径）保持|δ_a| ≤ 3。</p>
+        <h4>7.3. a = 2的Log-UBPD</h4>
+        <p><strong>命题7.2（无条件Log-UBPD）。</strong> 对所有素数p，|δ₂(p)| ≤ 1.60 · log p + O(1)。</p>
+        <p><strong>证明。</strong> 由已知的整数复杂度界：ρ(n) ≤ (3/ln 2) log n（Guy）和ρ(n) ≥ (3/ln 3) log n（Selfridge）。系数|6/ln 3 − 6/ln 2| ≈ 1.60。 □</p>
+        <p>经验包络：|δ₂| ≤ 0.62 · log p + 1，远更紧，但无条件界已足够。</p>
+        <h4>7.4. 剪刀结构</h4>
+        <p><strong>命题7.3（次可加界）。</strong> 对所有素数p，ρ(p²) ≤ ρ(p−1) + ρ(p+1) + 1。</p>
+        <p><strong>证明。</strong> p² − 1 = (p−1)(p+1)，所以ρ(p² − 1) ≤ ρ(p−1) + ρ(p+1)。然后p² = (p² − 1) + 1。 □</p>
+        <p><strong>经验观察（剪刀公式）。</strong> 在标准IC中（N = 10⁷，445个素数），更锐利的不等式δ₂(p) ≤ ρ(p+1) − ρ(p−1) − 1以0违例和232个紧致情形成立。该锐利形式需要ρ(p) = ρ(p−1) + 1对所有素数成立（已验证至p ≤ 10⁷但未证明）。我们将其记录为模式而非定理。</p>
+        <p><strong>解读。</strong> 最大的|δ₂|出现在"剪刀"最大程度张开时：p + 1极度光滑（便宜）而p − 1粗糙（昂贵）。δ₂ = −7的情形（p = 26459：p + 1 = 2²·3³·5·7²，7-光滑；p − 1 = 2 × 13229）正体现此模式。</p>
+        <h4>7.5. RT矩与CDR稳定性</h4>
+        <p><strong>命题7.4（壳侧RT矩）。</strong> E[(log P⁻(n))² | Ω(n) = k] = O(1)，对k ≥ 4收敛于(ln 2)² ≈ 0.48。（经典。）</p>
+        <p><strong>表6. 前驱侧RT矩。</strong></p>
+        <p>| Ω = k | E[(log P⁻(n−1))² \| Ω(n) = k]，N = 10⁸ | N = 10⁹ |</p>
+        <p>|-------|----------------------------------------|---------|</p>
+        <p>| 8 | 52.7 | 59.1 |</p>
+        <p>| 12 | 58.3 | 66.4 |</p>
+        <p>| 16 | 57.8 | 66.8 |</p>
+        <p>| 20 | 55.5 | 64.9 |</p>
+        <p>前驱矩约为壳侧矩的120倍，但<strong>稳定于O(1)，从k = 10到k = 24平坦，无上升趋势。</strong></p>
+        <p><strong>交叉项独立性：</strong> E[log P⁻(n) · log P⁻(n−1) | Ω = k] / (E[壳] · E[前驱])对k ≥ 17趋于1.00。</p>
+        <h4>7.6. RQSA</h4>
+        <p>1,877次因子对检验（p ≤ 47，p^a ≤ 10⁸）：<strong>零违例。</strong></p>
+        <hr>
+        <h3>§8. 剩余困难的精确定位</h3>
+        <h4>8.1. 第49篇留下了什么</h4>
+        <p>第49篇提出两个开放问题："素数层消去"和"UBPD"。两者均无形式化假设，无精确识别的差距，无排除方法列表。它们是目标，不是地图。</p>
+        <h4>8.2. 第50篇给出了什么</h4>
+        <p><strong>缺口1（素数层）：</strong></p>
+        <p>| 之前（第49篇）| 之后（第50篇）|</p>
+        <p>|---|---|</p>
+        <p>| "需要素数层消去" | η(p)的94%偏置是算术伪装；正确目标是H(s)边界正则性（§2.5）|</p>
+        <p>| 无候选路线 | 四条路线排除，一条存活（确定性方函数）|</p>
+        <p>| 无形式化假设 | DSF_α + BL_α精确表述，数值验证 |</p>
+        <p>| 差距结构未知 | 可证|B_j| ≤ C/√j vs 观测|B_j| ~ 2^{−j/3} |</p>
+        <p>| Tauber条件未定 | SD无条件证明（命题4.1）|</p>
+        <p><strong>缺口2（素数幂）：</strong></p>
+        <p>| 之前（第49篇）| 之后（第50篇）|</p>
+        <p>|---|---|</p>
+        <p>| "需要\|δ_a\| = O(1)" | Log-UBPD无条件；a = 2为唯一困难核心；a ≥ 3由Zsigmondy机制界定 |</p>
+        <p>| RT矩状态不明 | 壳侧和前驱侧矩均为O(1)，交叉项独立 |</p>
+        <p>| 缺口2与H'关系不清 | 素数幂层在Re(s) = 1解析（命题7.1），不贡献边界奇异性 |</p>
+        <h4>8.3. 闭合链</h4>
+        <p>通往H'的完整条件链：</p>
+        <p>```</p>
+        <p>DSF_α + BL_α（未证明，剩余假设）</p>
+        <p>    Hölder正则性 H(s) at s = 1     [定理6.2，条件性]</p>
+        <p>    实轴极限 H(1+ε) 趋于 H(1)      [连续性，给定Hölder后无条件]</p>
+        <p>        + SD                         [命题4.1，无条件]</p>
+        <p>            A_h(X) 收敛              [命题6.3，Karamata Tauber]</p>
+        <p>                D(s) = 已知对数奇异性</p>
+        <p>                  + 有限常数           [命题6.4，无条件]</p>
+        <p>                    + 素数幂层解析     [命题7.1，无条件]</p>
+        <p>                        H' 边界行为</p>
+        <p>```</p>
+        <p>除"DSF_α + BL_α"外，链中每一环要么无条件证明，要么是文献中的已知定理。</p>
+        <h4>8.4. 剩余数学问题</h4>
+        <p>| 问题 | 精确表述 | H'关键？ | 数据支持 |</p>
+        <p>|------|---------|---------|---------|</p>
+        <p>| DSF_α | Σ (1+j)^{1+2α} \|B_j\|² < ∞（所有α < α*）| <strong>是</strong>（主要）| 收敛至α = 0.5 |</p>
+        <p>| BL_α | Σ_j sup \|E_j\|/\|t\|^α < ∞ | <strong>是</strong>（次要）| E_j/B_j < 3.2% |</p>
+        <p>| Zsigmondy界 | a ≥ 3时\|δ_a(p)\| = O(1) | 否（命题7.1）| \|δ_a\|_max = 3 |</p>
+        <p>| 前驱矩 | E[(log P⁻(n−1))² \| Ω(n) = k] = O(1) | 否（命题7.1）| 稳定于~66 |</p>
+        <p>DSF_α是主要剩余问题。BL_α预期从属于DSF_α。Zsigmondy界和前驱矩在当前证明架构下非H'-关键障碍，但对ZFCρ框架保留独立的结构兴趣：它们刻画ρ_E在素数幂处的乘法正则性以及连续因式分解的统计独立性。</p>
+        <h4>8.5. DSF_α需要什么</h4>
+        <p>可证界为|B_j| ≤ C/√j（命题5.1）。数据显示|B_j| ~ 2^{−j/3}（指数级）。弥合此差距需要解释为何剥离后的二进块以指数级消去，远超Cauchy-Schwarz所保证的。</p>
+        <p>可能的进路：面向素数的确定性Littlewood-Paley理论，特征剥离素数和在二进区间上的近正交性，高导体（q > 12）中p mod q分布的指数混合，以及经由剪刀机制与素数相邻光滑数分布的联系。</p>
+        <h4>8.6. 24项无条件结果</h4>
+        <p><strong>缺口1（14项）。</strong> 1. 特征剥离对称化。2. ℓ²可和性。3. H²排除。4. 方向D排除。5. Kolmogorov排除。6. 负部分驯服。7. A_h数值收敛。8. 二进块衰减~2^{−j/3}。9. 方函数Σ|B_j|²数值收敛。10. 剥离Hölder α_h ≈ 0.7–0.8。11. Cauchy-Schwarz界|B_j| ≤ C/√j。12. BL数值可忽略。13. DSF_α数值收敛至α = 0.5。14. SD无条件证明。</p>
+        <p><strong>缺口2（10项）。</strong> 15. a = 2的Log-UBPD。16. a = 2/a ≥ 3完全分离。17. RQSA零违例。18. 壳侧RT矩O(1)。19. 前驱侧RT矩O(1)。20. CDR稳定。21. 标准IC剪刀完美。22. Log-UBPD对素数侧充分。23. 前驱独立性确认。24. 标准IC凹凸更清洁。</p>
+        <hr>
+        <h3>§9. 结论</h3>
+        <p>第49篇识别了H'的两个开放问题。第50篇不声称解决它们，而是转化它们。每个缺口现在有精确的形式表述，排除方法列表，多尺度数值验证，以及对其在证明架构中角色的清晰评估。</p>
+        <p>主要定位：缺口1的剩余困难是剥离二进块和的指数衰减，形式化为DSF_α，连同块局部化条件BL_α。Tauber条件（SD，命题4.1）无条件证明。缺口1的正确表述是剥离Dirichlet级数H(s)的边界正则性，而非Σ η(p)/p的收敛（后者由于η的正均值而发散），这一事实通过特征剥离将已知的发散部分与未知的正则部分分离变得透明。</p>
+        <p>次要定位：缺口2的内部结构已完全绘制（a = 2核心隔离，剪刀机制，Log-UBPD，RT矩，RQSA），其与H'的关系已澄清：素数幂层在Re(s) = 1处解析（命题7.1），不贡献边界奇异性。</p>
+        <p>假设DSF_α和BL_α不是凭空的猜测。DSF_α由跨越三个数量级确认的指数级块衰减|B_j| ~ 2^{−j/3}支持；BL_α由块内误差的经验可忽略性支持。两者均由提供其先验背景的特征剥离框架所驱动，并由排除了可能绕过它们的每一条替代路径所确认。剩下的是解释产生指数级块衰减的消去机制，并证明它。</p>
+        <hr>
+        <h3>附录A. 约定翻译</h3>
+        <p>| 量 | 第32篇（ρ[1]=0，+2）| 标准IC（‖1‖=1，免费）|</p>
+        <p>|----|-------------------|-------------------|</p>
+        <p>| λ | ≈ 3.86 | ≈ 3.04 |</p>
+        <p>| ρ(100) | 19 | 14 |</p>
+        <p>| ρ(10³) | 28 | 21 |</p>
+        <p>| η范围（典型）| [−2, +4] | [−1, +3] |</p>
+        <p>| δ范围（a=2）| [−7, +2] | [−4, 0] |</p>
+        <p>结构性结果（对称化比率，块衰减速率，CDR均值，RQSA违例数）与约定无关。</p>
+        <hr>
+        <h3>附录B. 热力学解读</h3>
+        <p>ZFCρ第48篇中发展的热力学视角为本文结果提供了一个解读层，但数学内容独立于它。</p>
+        <p>Q = 12特征剥离（§2）对应耗散机制在素数层上的投影：2和3是IC成本函数中"最高效的耗散因子"，它们对p ± 1的模可及性决定了η(p)的剩余类结构。</p>
+        <p>DSF_α（§6）是第48篇中建立的步间吸收率η ∈ [0.10, 0.31]的频率域对应物。步间吸收率衡量min/max递推对步间涨落的抑制强度；DSF_α衡量这些涨落分解到二进频带时的衰减速度。</p>
+        <p>素数幂层在Re(s) = 1处的解析性（§7.1）对应高阶乘法效应的自动算术压制：1/p^{2a}分母是递推在更高乘法深度处快速阻尼的Dirichlet级数表现。</p>
+        <hr>
+        <h3>致谢</h3>
+        <p>AI贡献。Gemini（子夏）：特征剥离框架，剪刀公式，"Log-UBPD无害"，Zsigmondy a = 2逃逸机制。Grok（子贡）：负部分驯服，δ = −7因子结构，α = 1/2启发式。ChatGPT（公西华）：DSF_α + BL表述，三个不可能性（H²，A_loc，Kolmogorov），Log-UBPD链分析，"一大一小"缺口2判决，论文结构建议；定稿后定理级审查识别六处修正纳入本版。Claude（子路）：全部数值计算（15个程序，尺度10⁷–10¹⁰），独立Cauchy-Schwarz路线至差距识别，壳侧和前驱侧RT矩O(1)发现，SD无条件证明。</p>
 
         <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
           <p style="margin:0; font-size:0.9em;">完整论文见 Zenodo：<a href="https://doi.org/10.5281/zenodo.19381111" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19381111</a></p>
         </div>
       </div>
+
+    
 
     </article>
   </main>

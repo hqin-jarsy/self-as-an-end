@@ -73,17 +73,216 @@
       </div>
 
       <!-- ENGLISH CONTENT -->
-      <div id="lang-en" class="lang-content active" lang="en">
+            <div id="lang-en" class="lang-content active" lang="en">
         <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
 
-        <h2>Abstract</h2>
-        <p>Paper 48 reduced H′ to two core open problems (prime-layer cancellation, UBPD) and three weak auxiliary inputs. This paper advances all five directions.</p>
+        <h2>The UAP_Ω Theorem, Slow Decrease, Cyclotomic Discount Rates, and the Two Final Gaps for H'</h2>
+        <h3>ZFCρ Paper XLIX</h3>
+        <p><strong>Han Qin</strong></p>
+        <p>ORCID: 0009-0009-9583-0018</p>
+        <p>March 2026</p>
+        <hr>
+        <h4>Abstract</h4>
+        <p>Paper 48 reduced H' to two core open problems (prime-layer cancellation, UBPD) and three weak auxiliary inputs. This paper advances all five directions.</p>
         <p>First, UAP_Ω^{SW} (Ω-shell-in-AP equidistribution in the Siegel-Walfisz range) is derived from Gafni-Robles 2025 AP Selberg-Delange expansion. The three auxiliary inputs become theorems. Coprime-shell numerical verification: ratio ≈ 1.00 ± 0.01.</p>
         <p>Second, the Slow Decrease Theorem is proved: A(X) = Σ_{p≤e^X} η(p)/p satisfies one-sided bounded decrease (A(X+h)-A(X) ≥ -Ch). This eliminates one of two Tauberian conditions.</p>
-        <p>Third, the prime-layer gap is precisely identified: not slow decrease (proved), but the boundary pseudofunction behavior of (D(1+s)-C)/s. A natural and sufficient intermediate target is Hölder continuity of D(1+it) at t=0. The ℓ²/H² route is fully assessed and shown insufficient.</p>
-        <p>Fourth, the Cyclotomic Discount Rate CDR(p,d) = ρ_E(Φ_d(p))/(λ·log Φ_d(p)) ≈ 0.97 (Zsigmondy explanation) establishes the complete physical mechanism for UBPD.</p>
-        <p>Fifth, the Restricted Quasi-Super-Additivity (RQSA) hypothesis is proposed. H′'s two core open problems now have precise mathematical targets: the direct Tauberian input for prime-layer is (D-C)/s boundary pseudofunction behavior; UBPD reduces to RQSA + quotient rigidity + benchmark-split rigidity.</p>
-        <p><strong>Keywords:</strong> integer complexity, UAP_Ω, slow decrease, Hölder continuity, cyclotomic discount rate, Zsigmondy, RQSA, UBPD, H-prime closure, ZFCrho</p>
+        <p>Third, the prime-layer gap is precisely identified: not slow decrease (proved), but the boundary pseudofunction behavior of (D(1+s)-C)/s. A natural and sufficient intermediate target is Hölder continuity of D(1+it) at t=0 — D(1+it)-C = O(|t|^α) — which combined with upgrading to very slowly decreasing would close prime-layer. The ℓ²/H² route (proposed by Gemini, reviewed by ChatGPT) is fully assessed and shown insufficient: Hardy space boundary lies at Re(s)=1/2, not Re(s)=0; division by s requires A_loc regularity, not L².</p>
+        <p>Fourth, the Cyclotomic Discount Rate CDR(p,d) = ρ_E(Φ_d(p))/(λ·log Φ_d(p)) ≈ 0.97 (Zsigmondy explanation) establishes the complete physical mechanism for UBPD. Experiment C verifies: large |δ| occurs only under "simultaneous smoothness coincidence."</p>
+        <p>Fifth, the Restricted Quasi-Super-Additivity (RQSA) hypothesis is proposed. UBPD's remaining bridges include at least three: RQSA (multiplicative incompressibility of p^a-1), quotient rigidity (ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C), and benchmark-split rigidity (min_j split ≥ j=1 split - C). General QSA fails (heuristic family shows O(log n) discount), but p^a-1's special algebraic structure (additive successor is a prime power, not smooth) makes RQSA plausible.</p>
+        <p>H''s two core open problems now have precise mathematical targets: the direct Tauberian input for prime-layer is (D-C)/s boundary pseudofunction behavior (Hölder continuity is a natural intermediate target); UBPD reduces to RQSA + quotient rigidity + benchmark-split rigidity.</p>
+        <p><strong>Keywords:</strong> integer complexity, UAP_Ω, slow decrease, Hölder continuity, cyclotomic discount rate, Zsigmondy, RQSA, UBPD, H' closure</p>
+        <hr>
+        <h3>§1 Introduction</h3>
+        <p>Paper 48 (DOI: 10.5281/zenodo.19328550) reduced H' to two core open problems and three weak auxiliaries. This paper contributes: UAP_Ω^{SW} theorem (§2), Slow Decrease theorem (§3), prime-layer gap identification (§4), CDR + Zsigmondy mechanism (§5), RQSA hypothesis (§6).</p>
+        <hr>
+        <h3>§2 UAP_Ω^{SW} Theorem</h3>
+        <h4>2.1 Theorem</h4>
+        <p>For d ≤ (log x)^b, (c,d)=1, 1 ≤ k ≤ K·log₂x (K<2):</p>
+        <p>S_k(x;d,c) = (1/φ(d))·S_k^{(d)}(x)·(1 + O((log log d)^A / log x))</p>
+        <h4>2.2 Proof sketch</h4>
+        <p>Gafni-Robles Lemma 3.1 → AP Selberg-Delange expansion → coprime shell summation → leading-term cancellation in difference → Cauchy coefficient extraction.</p>
+        <h4>2.3 Coprime-shell data</h4>
+        <p>| d | ratio at k=4 | ratio at k=8 | ratio at k=12 |</p>
+        <p>|---|-------------|-------------|--------------|</p>
+        <p>| 3 | 1.000 ± 0.001 | 1.003 | 1.011 |</p>
+        <p>| 7 | 1.001 | 1.005 | 1.021 |</p>
+        <p>| 13 | 1.002 | 1.010 | 1.020 |</p>
+        <h4>2.4 Master Proposition</h4>
+        <p>UAP_Ω^{SW} → Lemma A (q-adic a≥2) + Lemma B (E[ω]=O(log log x)) + Lemma C (E[Ω²]=O((log log x)²), needs UAP^×) → tail harmlessness + weak remainder mean + RT predecessor moment.</p>
+        <hr>
+        <h3>§3 Slow Decrease Theorem</h3>
+        <h4>3.1 Theorem</h4>
+        <p>There exists an absolute constant C > 0 such that for all sufficiently large X and 0 < h ≤ 1:</p>
+        <p>A(X+h) - A(X) ≥ -Ch</p>
+        <h4>3.2 Proof</h4>
+        <p>|η(p)| ≤ C_η·log p. By Mertens: Σ_{e^X < p ≤ e^{X+h}} (log p)/p = h + O(1/X). Therefore A(X+h)-A(X) ≥ -C_η·h + O(1/X) ≥ -Ch. ■</p>
+        <h4>3.3 Numerical support</h4>
+        <p>| dyadic window | block sum | oscillation |</p>
+        <p>|--------------|----------|-----------|</p>
+        <p>| [1K, 2K] | 0.052 | 0.051 |</p>
+        <p>| [100K, 200K] | 0.015 | 0.015 |</p>
+        <p>| [1M, 2M] | 0.004 | 0.004 |</p>
+        <p>| [2M, 4M] | 0.001 | 0.001 |</p>
+        <p>Window minimum ≈ A(start) throughout. Oscillation = O(1/log x).</p>
+        <h4>3.4 Significance</h4>
+        <p>Debruyne-Vindas one-sided Tauberian requires two conditions: (a) slow decrease, (b) boundary pseudofunction behavior. This theorem closes (a).</p>
+        <hr>
+        <h3>§4 Prime-Layer Gap Identification</h3>
+        <h4>4.1 ℓ² route assessment</h4>
+        <p>d_p = η(p)/p ∈ ℓ² (|η|=O(log p), Σ(log p)²/p² < ∞).</p>
+        <p><strong>But ℓ² cannot close prime-layer.</strong> Two gaps:</p>
+        <p>(a) Dirichlet-series H² has natural boundary at Re(s)=1/2 (Hedenmalm), not Re(s)=0. Boundary values of D(1+it) at Re(s)=0 cannot be obtained from H² directly.</p>
+        <p>(b) Even with L²_loc boundary for D, (D(1+s)-C)/s requires A_loc (local Wiener algebra) regularity (Debruyne thesis Lemma 8.3.2). L² is insufficient.</p>
+        <p><strong>However, L²_loc ⊂ pseudofunction is correct</strong> — the problem is regularity loss under division by s.</p>
+        <h4>4.2 Direct Tauberian target vs intermediate target</h4>
+        <p><strong>Direct target:</strong> (D(1+s)-C)/s has local pseudofunction boundary behavior on Re(s)=0. Combined with slow decrease from §3, Debruyne-Vindas gives A(X) → C.</p>
+        <p><strong>Natural intermediate target:</strong> D(1+it) - C = O(|t|^α) at t=0 for some α > 0 (Hölder continuity).</p>
+        <p>If Hölder holds → (D(1+it)-C)/(it) = O(|t|^{α-1}), locally integrable → L¹_loc ⊂ pseudofunction. But this is local information near t=0. To trigger Debruyne-Vindas from local information requires upgrading §3's slow decrease to very slowly decreasing, or supplementing with full-boundary pseudofunction control.</p>
+        <p><strong>Two viable paths:</strong></p>
+        <p>(a) Hölder at t=0 + very slowly decreasing → closure.</p>
+        <p>(b) (D-C)/s full-boundary pseudofunction + slow decrease → closure.</p>
+        <p>§3's theorem currently closes the slow decrease half of path (b). Hölder is the intermediate target for path (a).</p>
+        <h4>4.3 Hölder vs CR-PMH-DS</h4>
+        <p>Full CR-PMH-DS → D(w) analytic at w=1 → at least Lipschitz (α=1 Hölder), hence Hölder for all 0 < α ≤ 1. <strong>Hölder is an intermediate target between CR-PMH-DS and β'(0)=0.</strong> Much weaker than the former, stronger than the latter.</p>
+        <h4>4.4 Possible attack routes</h4>
+        <p>(a) Character structure: D = Σc'_χ·log L + H'₁₂. Non-principal log L is Hölder at t=0. H'₁₂'s Hölder depends on CR-PMH-DS remainder.</p>
+        <p>(b) Additive structure + second moment control.</p>
+        <p>(c) Direct partial-sum with uniform-in-t control.</p>
+        <hr>
+        <h3>§5 CDR + Zsigmondy Mechanism</h3>
+        <h4>5.1 CDR definition and data</h4>
+        <p>CDR(p,d) = ρ_E(Φ_d(p)) / (λ·log Φ_d(p))</p>
+        <p>| p | avg CDR | min CDR |</p>
+        <p>|---|---------|---------|</p>
+        <p>| 2 | 0.993 | 0.874 |</p>
+        <p>| 7 | 0.980 | 0.894 |</p>
+        <p>| 11 | 0.974 | 0.902 |</p>
+        <p>| 23 | 0.993 | 0.907 |</p>
+        <p>CDR ≈ 0.97. Zsigmondy's theorem: Φ_d(p) contains primitive prime factors → no multiplicative discount.</p>
+        <h4>5.2 The "cyclotomic trap" clarified</h4>
+        <p>False intuition: Σ φ(d)/2 = a/2 → additive cost (a/2)·λ·log p.</p>
+        <p>Correction: Φ_d(p) is not a perfect square. Primitive prime factors → CDR ≈ 1 → ρ_E(Φ_d) ≈ λ·φ(d)·log p (full price) → Σ ρ_E(Φ_d) ≈ a·λ·log p = multiplicative path.</p>
+        <h4>5.3 Experiment C: |δ| and simultaneous smoothness</h4>
+        <p><strong>p=23, a=6, δ=-4 (largest |δ|):</strong> Φ₁=22, Φ₂=24, Φ₃=553(7·79), Φ₆=507(3·13²). All smooth (largest prime factor 79).</p>
+        <p><strong>p=23, a=7, δ=-2:</strong> Φ₇=292,561 (prime). Primitive prime factor restores rigidity.</p>
+        <p>| |δ| | condition |</p>
+        <p>|-----|-----------|</p>
+        <p>| 0 | at least one Φ_d has large primitive prime factor |</p>
+        <p>| 3-4 | all Φ_d simultaneously smooth (extremely rare) |</p>
+        <h4>5.4 Large-a search</h4>
+        <p>| p | |δ| range | note |</p>
+        <p>|---|---------|------|</p>
+        <p>| 2,3,7 | 0 | perfectly additive |</p>
+        <p>| 5,13 | [0,1] | |</p>
+        <p>| 11 | [0,3] | |</p>
+        <p>| 23 | [0,4] | largest |</p>
+        <p>No counterexamples.</p>
+        <hr>
+        <h3>§6 RQSA, Quotient Rigidity, and the Remaining Bridges for UBPD</h3>
+        <h4>6.1 General QSA fails (heuristic family)</h4>
+        <p>For large X with X+1 = 2^k: ρ_E(X(X+2)) ≤ 2k+1 ≪ 2λ·log X. Discount O(log n).</p>
+        <p><em>Remark.</em> This family depends on primes near 2^k — heuristic from prime distribution, not a constructive counterexample. But it strongly indicates: uniform quasi-super-additivity cannot be expected for general integers. Even without X being prime, X having large prime factors (probability 1) suffices.</p>
+        <h4>6.2 RQSA for p^a-1</h4>
+        <p><strong>Hypothesis (Restricted QSA).</strong> There exists an absolute constant C_R such that for all p, a≥2, any factorization UV = p^a-1:</p>
+        <p>ρ_E(p^a-1) ≥ ρ_E(U) + ρ_E(V) - C_R</p>
+        <h4>6.3 Why RQSA should hold for p^a-1</h4>
+        <p>General QSA failure requires AB+1 (or AB-1) extremely smooth.</p>
+        <p><strong>But (p^a-1)+1 = p^a is a prime power — not smooth at all.</strong> p^a has no "extra" factors providing multiplicative shortcuts. DP cannot exploit a smooth neighbor of p^a-1 because the nearest candidate (p^a) is one of the least smooth structures possible.</p>
+        <p><strong>Prime-power rigidity of p^a blocks unlimited discounts for p^a-1.</strong></p>
+        <h4>6.4 Successor branch: RQSA + quotient rigidity</h4>
+        <p>UBPD requires ρ_E(p^a) ≥ ρ_E(p)+ρ_E(p^{a-1})-C.</p>
+        <p>ρ_E(p^a) = min(successor, best multiplicative split). Two branches.</p>
+        <p><strong>Successor branch:</strong> ρ_E(p^a) = ρ_E(p^a-1)+1.</p>
+        <p>By RQSA (U=p-1, V=R_a(p)): ρ_E(p^a-1) ≥ ρ_E(p-1)+ρ_E(R_a(p))-C_R = ρ_E(p)-1+ρ_E(R_a(p))-C_R.</p>
+        <p>With quotient rigidity (ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C_Q):</p>
+        <p>ρ_E(p^a) = ρ_E(p^a-1)+1 ≥ ρ_E(p)+ρ_E(p^{a-1})-C_R-C_Q. UBPD holds on successor branch.</p>
+        <h4>6.5 Multiplicative branch: benchmark-split rigidity</h4>
+        <p>If optimal split is j≠1: need min_j[ρ_E(p^j)+ρ_E(p^{a-j})] ≥ ρ_E(p)+ρ_E(p^{a-1})-C_M.</p>
+        <p>Equivalent to concavity of ρ_E on prime powers — decreasing marginal cost ρ_E(p^a)/a implies j=1 is optimal ("one large + one small" cheaper than "two medium").</p>
+        <p>Numerically supported: ρ_E(p^a)/a strictly decreasing for p=2,3,5,7,11. But unconditional proof not in hand.</p>
+        <h4>6.6 Summary</h4>
+        <p>Full UBPD requires at least three bridges:</p>
+        <p>(i) RQSA: ρ_E(p^a-1) ≥ ρ_E(U)+ρ_E(V)-C_R for all factorizations.</p>
+        <p>(ii) Quotient rigidity: ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C_Q.</p>
+        <p>(iii) Benchmark-split rigidity: min_j split ≥ j=1 split - C_M.</p>
+        <p><strong>This is a heuristic reduction, not a theorem. All three bridges are hypotheses.</strong></p>
+        <h4>6.7 RQSA status</h4>
+        <p>Hypothesis with complete physical mechanism + numerical support. Formalization requires proving that p^a's prime-power rigidity prevents p^a-1's DP tree from obtaining unbounded discounts. This is a Diophantine / additive combinatorics problem.</p>
+        <hr>
+        <h3>§7 Twisted Sum Correction</h3>
+        <p>Ση·χ/p diverges (c'_χ ≠ 0, expected). Step 2 should be Σa·χ/p converges.</p>
+        <hr>
+        <h3>§8 Complete H' Closure Chain</h3>
+        <p>```</p>
+        <p>Theorems (Papers 42-49):</p>
+        <p>  Proposition 3, Shell-Depth, Parity, Raw↔Char,</p>
+        <p>  Odd-Pred Reduction, 44+42 chain                ✅</p>
+        <p>  UAP_Ω^{SW} (§2)                                ✅ NEW</p>
+        <p>  → Lemma A/B/C (SW range)                      ✅ NEW</p>
+        <p>  Slow Decrease Theorem (§3)                      ✅ NEW</p>
+        <p>Heuristic reductions:</p>
+        <p>  RQSA + quotient rigidity + benchmark-split      three bridges for UBPD (§6)</p>
+        <p>    rigidity → UBPD</p>
+        <p>ℓ² route assessment:</p>
+        <p>  d_p ∈ ℓ²                                       ✅</p>
+        <p>  H² boundary at Re=1/2 not Re=0                 gap</p>
+        <p>  (D-C)/s needs A_loc not L²                      gap</p>
+        <p>Core open (precise mathematical targets):</p>
+        <p>  Prime-layer: (D(1+s)-C)/s boundary pseudofunction</p>
+        <p>    Intermediate: D(1+it) Hölder at t=0            sufficient (with very slow decrease)</p>
+        <p>  UBPD: RQSA + quotient rigidity + benchmark-split  three structural hypotheses</p>
+        <p>Numerical support:</p>
+        <p>  CDR ≈ 0.97, |δ| ≤ 4                            ✅</p>
+        <p>  Dyadic blocks → 0, A(X) slow decrease           ✅</p>
+        <p>  Coprime-shell ratio ≈ 1.00                       ✅</p>
+        <p>→ Conjecture 2 → H'</p>
+        <p>```</p>
+        <hr>
+        <h3>§9 SAE Interpretation</h3>
+        <h4>9.1 Two gaps in SAE terms</h4>
+        <p><strong>Hölder continuity = remainder regularity in prime frequency space.</strong> β'(0)=0 is zeroth-order information (no principal singularity). Hölder is first-order (bounded rate of change). SAE's "remainder conservation" in the frequency domain.</p>
+        <p><strong>RQSA = multiplicative incompressibility of DP networks.</strong> Prime-power rigidity of p^a blocks additive shortcuts. SAE's "remainder must develop" on the DP tree — no free lunch.</p>
+        <h4>9.2 From SAE axioms to H'</h4>
+        <p>Remainder must develop (Axiom 1) → ρ_E(n) grows → prime-layer fluctuates but conserves (β'(0)=0)</p>
+        <p>Remainder conserves (Axiom 2) → step-level conservation (U=-D(m-1)) → prime-level regularity (Hölder?)</p>
+        <p>RQSA is Axiom 1 on multiplicative structure: no unlimited discounts through algebraic identities.</p>
+        <hr>
+        <h3>§10 Open Questions</h3>
+        <ol>
+        <li><strong>(D(1+s)-C)/s boundary pseudofunction behavior.</strong> Hölder continuity of D(1+it) as intermediate target.</li>
+        </ol>
+        <ol>
+        <li><strong>RQSA for p^a-1.</strong> Prime-power rigidity → restricted quasi-super-additivity.</li>
+        </ol>
+        <ol>
+        <li><strong>Quotient rigidity.</strong> ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C.</li>
+        </ol>
+        <ol>
+        <li><strong>Benchmark-split rigidity.</strong> Concavity of ρ_E on prime powers.</li>
+        </ol>
+        <ol>
+        <li><strong>CDR theoretical lower bound.</strong> Zsigmondy gives existence; quantitative control needed.</li>
+        </ol>
+        <hr>
+        <h3>Data Sources</h3>
+        <p>Scripts: uap_check.c, paper49_exp.c, cdr_exp.c, tauberian_exp.c, zsigmondy_exp.c (C, gcc -O2). N = 10⁷.</p>
+        <hr>
+        <h3>References</h3>
+        <p>[1] H. Qin. Paper XLVIII. DOI: 10.5281/zenodo.19328550.</p>
+        <p>[2] A. Gafni, N. Robles (2025). arXiv:2502.05298.</p>
+        <p>[3] A. Roy (2025). arXiv:2511.15928.</p>
+        <p>[4] K. Zsigmondy (1892). Monatsh. Math. Phys. 3, 265-284.</p>
+        <p>[5] G. Debruyne, J. Vindas. Complex Tauberian theorems for Laplace transforms.</p>
+        <p>[6] H. Hedenmalm. Dirichlet series and functional analysis.</p>
+        <p>[7] P.D.T.A. Elliott (1994). Shifted Primes.</p>
+        <hr>
+        <h3>Acknowledgments</h3>
+        <p><strong>ChatGPT (Gongxihua):</strong> UAP_Ω^{SW} complete proof sketch. Slow decrease theorem and "not the bottleneck" judgment. ℓ² route step-by-step review and denial (H² boundary at wrong location + A_loc requirement). Hölder target identification. (D-C)/s requires Debruyne Lemma 8.3.2's A_loc. General QSA counterexample confirmation. RQSA reduction review and correction — identified multiplicative branch as third bridge.</p>
+        <p><strong>Gemini (Zixia):</strong> Zsigmondy/cyclotomic explanation and CDR concept. "Cyclotomic trap" clarification. ℓ²/H² → boundary values route (corrected by ChatGPT). RQSA hypothesis — general QSA fails but p^a-1's prime-power rigidity makes RQSA plausible. "p^a is one of the least smooth structures" as core argument.</p>
+        <p><strong>Grok (Zigong):</strong> Cyclotomic + Lindley initial route (inspired subsequent directions). Concavity data (ρ_E(p^a)/a decreasing). QSA random sample data.</p>
+        <p><strong>Claude (Zilu):</strong> All numerical experiments (coprime-shell UAP, UBPD large-a, CDR, twisted sums, dyadic blocks, oscillation, Experiment C). Text drafting, working notes v1-v5.</p>
+        <p><strong>Han Qin (author):</strong> Experiment design. "What prior is missing?" repeated questioning drove all route discoveries. Final reduction architecture.</p>
+        <p>Final text independently completed by the author.</p>
 
         <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
           <p style="margin:0; font-size:0.9em;">Full paper available on Zenodo: <a href="https://doi.org/10.5281/zenodo.19357194" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19357194</a></p>
@@ -94,18 +293,218 @@
       <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
         <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立著作，所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
 
-        <h2>摘要</h2>
-        <p>Paper 48 把 H′ 归约到两个核心 open（prime-layer cancellation、UBPD）和三个弱辅助输入。本文从五个方向推进。</p>
-        <p>第一，从 Gafni-Robles 2025 的 AP Selberg-Delange 展开推出 UAP_Ω^{SW}。三个弱辅助输入升为 theorem。Coprime-shell 数值验证：ratio ≈ 1.00 ± 0.01。</p>
+        <h2>UAP_Ω 定理、Slow Decrease、分圆折扣率与 H' 的最终两个 Gap</h2>
+        <h3>ZFCρ 论文 49</h3>
+        <p><strong>Han Qin</strong></p>
+        <p>ORCID: 0009-0009-9583-0018</p>
+        <p>2026 年 3 月</p>
+        <hr>
+        <h4>摘要</h4>
+        <p>Paper 48 把 H' 归约到两个核心 open（prime-layer cancellation、UBPD）和三个弱辅助输入。本文从五个方向推进。</p>
+        <p>第一，从 Gafni-Robles 2025 的 AP Selberg-Delange 展开推出 UAP_Ω^{SW}（Ω-shell-in-AP equidistribution，Siegel-Walfisz 范围）。三个弱辅助输入升为 theorem。Coprime-shell 数值验证：ratio ≈ 1.00 ± 0.01。</p>
         <p>第二，证明 Slow Decrease Theorem：A(X) = Σ_{p≤e^X} η(p)/p 满足 one-sided bounded decrease（A(X+h)-A(X) ≥ -Ch）。这消除了 Tauberian 框架中的一半条件。</p>
-        <p>第三，精确识别 prime-layer cancellation 的剩余 gap：不是 slow decrease（已证），而是 (D(1+s)-C)/s 的 boundary pseudofunction behavior。一个自然且足够的中间靶标是 D(1+it) 在 t=0 处的 Hölder 连续性。通过 ℓ² 路线的完整评估，排除了 Hardy 空间 H² 直接关闭的可能。</p>
-        <p>第四，引入分圆折扣率 CDR(p,d) = ρ_E(Φ_d(p))/(λ·log Φ_d(p)) ≈ 0.97（Zsigmondy 解释），建立 UBPD 的完整物理机制。</p>
-        <p>第五，提出 Restricted Quasi-Super-Additivity（RQSA）假说。H′ 的两个核心 open 现在有了精确的数学靶标：prime-layer 的直接 Tauberian 输入是 (D-C)/s 的 boundary pseudofunction 行为；UBPD 归约到 RQSA + quotient rigidity + benchmark-split rigidity。</p>
+        <p>第三，精确识别 prime-layer cancellation 的剩余 gap：不是 slow decrease（已证），而是 (D(1+s)-C)/s 的 boundary pseudofunction behavior。一个自然且足够的中间靶标是 D(1+it) 在 t=0 处的 Hölder 连续性——D(1+it)-C = O(|t|^α)——配合 very slowly decreasing 的升级即可关闭 prime-layer。通过 ℓ² 路线（Gemini 提出，公西华审查）的完整评估，排除了 Hardy 空间 H² 直接关闭的可能。</p>
+        <p>第四，引入分圆折扣率 CDR(p,d) = ρ_E(Φ_d(p))/(λ·log Φ_d(p)) ≈ 0.97（Zsigmondy 解释），建立 UBPD 的完整物理机制。实验 C 验证：大 |δ| 只在"全员 smooth 巧合"时发生。</p>
+        <p>第五，提出 Restricted Quasi-Super-Additivity (RQSA) hypothesis，识别出 UBPD 的剩余 bridge 至少包括三条：RQSA（p^a-1 的乘法不可压缩性）、quotient rigidity（ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C）、benchmark-split rigidity（min_j split ≥ j=1 split - C）。一般整数的 QSA 不成立（heuristic family），但 p^a-1 的特殊代数结构（加法后继是素数幂，没有 smooth 捷径）使 RQSA plausible。</p>
+        <p>H' 的两个核心 open 现在各有精确的数学靶标：prime-layer 的直接 Tauberian 输入是 (D-C)/s 的 boundary pseudofunction behavior（Hölder continuity 是自然的中间靶标）；UBPD 归约到 RQSA + quotient rigidity + benchmark-split rigidity。</p>
+        <p><strong>关键词：</strong> 整数复杂度，UAP_Ω，slow decrease，Hölder continuity，分圆折扣率，Zsigmondy，RQSA，UBPD，H' closure</p>
+        <hr>
+        <h3>§1 引言</h3>
+        <p>Paper 48（DOI: 10.5281/zenodo.19328550）把 H' 归约到两个核心 open 和三个弱辅助。本文的五个贡献：UAP_Ω^{SW} theorem（§2）、Slow Decrease theorem（§3）、prime-layer gap 精确化（§4）、CDR + Zsigmondy mechanism（§5）、RQSA hypothesis（§6）。</p>
+        <hr>
+        <h3>§2 UAP_Ω^{SW} Theorem</h3>
+        <h4>2.1 Theorem</h4>
+        <p>对 d ≤ (log x)^b, (c,d)=1, 1 ≤ k ≤ K·log₂x (K<2)：</p>
+        <p>S_k(x;d,c) = (1/φ(d))·S_k^{(d)}(x)·(1 + O((log log d)^A / log x))</p>
+        <h4>2.2 Proof sketch</h4>
+        <p>Gafni-Robles Lemma 3.1 → AP-SD 展开 → coprime shell 求和 → 差值主项抵消 → Cauchy coefficient extraction。详见 Paper 49 working notes v4 §1。</p>
+        <h4>2.3 Coprime-shell 数值</h4>
+        <p>| d | ratio at k=4 | ratio at k=8 | ratio at k=12 |</p>
+        <p>|---|-------------|-------------|--------------|</p>
+        <p>| 3 | 1.000 ± 0.001 | 1.003 | 1.011 |</p>
+        <p>| 7 | 1.001 | 1.005 | 1.021 |</p>
+        <p>| 13 | 1.002 | 1.010 | 1.020 |</p>
+        <h4>2.4 Master Proposition</h4>
+        <p>UAP_Ω^{SW} → Lemma A（q-adic a≥2）+ Lemma B（E[ω]=O(log log x)）+ Lemma C（E[Ω²]=O((log log x)²)，需 UAP^×）→ tail harmlessness + weak remainder mean + RT predecessor moment。</p>
+        <hr>
+        <h3>§3 Slow Decrease Theorem</h3>
+        <h4>3.1 Theorem</h4>
+        <p>存在绝对常数 C > 0，对 X 充分大，0 < h ≤ 1：</p>
+        <p>A(X+h) - A(X) ≥ -Ch</p>
+        <h4>3.2 Proof</h4>
+        <p>|η(p)| ≤ C_η·log p。Σ_{e^X < p ≤ e^{X+h}} (log p)/p = h + O(1/X)（Mertens）。因此 A(X+h)-A(X) ≥ -C_η·h + O(1/X) ≥ -Ch。■</p>
+        <h4>3.3 数值</h4>
+        <p>| dyadic window | block sum | oscillation |</p>
+        <p>|--------------|----------|-----------|</p>
+        <p>| [1K, 2K] | 0.052 | 0.051 |</p>
+        <p>| [100K, 200K] | 0.015 | 0.015 |</p>
+        <p>| [1M, 2M] | 0.004 | 0.004 |</p>
+        <p>| [2M, 4M] | 0.001 | 0.001 |</p>
+        <p>每个 window 内 min ≈ A(start)。oscillation = O(1/log x)。</p>
+        <h4>3.4 意义</h4>
+        <p>Debruyne-Vindas one-sided Tauberian 需要两个条件：(a) slow decrease，(b) boundary pseudofunction behavior。本 theorem 关闭 (a)。</p>
+        <hr>
+        <h3>§4 Prime-Layer Gap 精确化</h3>
+        <h4>4.1 ℓ² 路线评估</h4>
+        <p>d_p = η(p)/p ∈ ℓ²（|η|=O(log p)，Σ(log p)²/p² < ∞）。</p>
+        <p><strong>但 ℓ² 不能 close prime-layer。</strong> 两个 gap：</p>
+        <p>(a) Dirichlet-series H² 的自然边界在 Re(s)=1/2（Hedenmalm），不在 Re(s)=0。D(1+it) 在 Re(s)=0 的 boundary values 不能从 H² 直接获得。</p>
+        <p>(b) 即使有 D 的 L²_loc boundary，(D(1+s)-C)/s 需要 A_loc（local Wiener algebra）级 regularity（Debruyne thesis Lemma 8.3.2）。L² 不够。</p>
+        <p><strong>但 L²_loc ⊂ pseudofunction 是对的</strong>——问题在除以 s 后的 regularity loss。</p>
+        <h4>4.2 直接 Tauberian 靶标 vs 中间靶标</h4>
+        <p><strong>直接靶标：</strong> (D(1+s)-C)/s 在 Re(s)=0 上具有 local pseudofunction boundary behavior。配合 §3 的 slow decrease，Debruyne-Vindas 直接给出 A(X) → C。</p>
+        <p><strong>自然的中间靶标：</strong> D(1+it) - C = O(|t|^α) at t=0 for some α > 0（Hölder continuity）。</p>
+        <p>如果 Hölder 成立 → (D(1+it)-C)/(it) = O(|t|^{α-1})，locally integrable → L¹_loc ⊂ pseudofunction。但这只是 t=0 邻域的局部信息。要从局部触发 Debruyne-Vindas，还需要将 §3 的 slow decrease 升级为 very slowly decreasing，或者补充整边界的 pseudofunction 控制。</p>
+        <p><strong>两条可行路径：</strong></p>
+        <p>(a) Hölder at t=0 + very slowly decreasing → closure。</p>
+        <p>(b) (D-C)/s 整边界 pseudofunction + slow decrease → closure。</p>
+        <p>§3 的 theorem 目前关闭了 (b) 的 slow decrease 一半。Hölder 是 (a) 路径的中间靶标。</p>
+        <h4>4.3 Hölder vs CR-PMH-DS</h4>
+        <p>full CR-PMH-DS → D(w) 在 w=1 解析 → 至少 Lipschitz（α=1 的 Hölder），从而也推出任意 0 < α ≤ 1 的 Hölder。<strong>Hölder 是 CR-PMH-DS 和"无主奇点"之间的 intermediate target。</strong> 比前者弱得多，比后者强。</p>
+        <h4>4.4 可能攻击路线</h4>
+        <p>(a) Character structure：D = Σc'_χ·log L + H'₁₂。非主 χ 的 log L 在 t=0 Hölder。H'₁₂ 的 Hölder 取决于 CR-PMH-DS 的 remainder。</p>
+        <p>(b) Additive structure + 二阶矩控制。</p>
+        <p>(c) Direct partial-sum with uniform-in-t control。</p>
+        <hr>
+        <h3>§5 CDR + Zsigmondy Mechanism</h3>
+        <h4>5.1 CDR 定义和数据</h4>
+        <p>CDR(p,d) = ρ_E(Φ_d(p)) / (λ·log Φ_d(p))</p>
+        <p>| p | avg CDR | min CDR |</p>
+        <p>|---|---------|---------|</p>
+        <p>| 2 | 0.993 | 0.874 |</p>
+        <p>| 7 | 0.980 | 0.894 |</p>
+        <p>| 11 | 0.974 | 0.902 |</p>
+        <p>| 23 | 0.993 | 0.907 |</p>
+        <p>CDR ≈ 0.97。Zsigmondy 定理：Φ_d(p) 含本原素因子 → 无乘法折扣。</p>
+        <h4>5.2 "分圆陷阱"的澄清</h4>
+        <p>错误直觉：Σ φ(d)/2 = a/2 → 加法成本 (a/2)·λ·log p。</p>
+        <p>修正：Φ_d(p) 不是完全平方。本原素因子 → CDR ≈ 1 → ρ_E(Φ_d) ≈ λ·φ(d)·log p（全额）→ Σ ρ_E(Φ_d) ≈ a·λ·log p = 乘法路径。</p>
+        <h4>5.3 实验 C：|δ| 和全员 smooth 的关系</h4>
+        <p><strong>p=23, a=6, δ=-4（最大 |δ|）：</strong> Φ₁=22, Φ₂=24, Φ₃=553(7·79), Φ₆=507(3·13²)。全员 smooth（最大素因子 79）。</p>
+        <p><strong>p=23, a=7, δ=-2：</strong> Φ₇=292,561（素数）。本原素因子恢复刚性。</p>
+        <p>| |δ| | 条件 |</p>
+        <p>|-----|------|</p>
+        <p>| 0 | 至少一个 Φ_d 有大本原素因子 |</p>
+        <p>| 3-4 | 全员 smooth（极罕见巧合）|</p>
+        <h4>5.4 Large-a search</h4>
+        <p>| p | |δ| range | 注 |</p>
+        <p>|---|---------|---|</p>
+        <p>| 2,3,7 | 0 | 完美 additive |</p>
+        <p>| 5,13 | [0,1] | |</p>
+        <p>| 11 | [0,3] | |</p>
+        <p>| 23 | [0,4] | 最大 |</p>
+        <p>无反例。</p>
+        <hr>
+        <h3>§6 RQSA Hypothesis + Quotient Rigidity → UBPD</h3>
+        <h4>6.1 一般 QSA 不成立（Heuristic family）</h4>
+        <p>设 X 为大素数且 X+1 = 2^k（smooth）。则 X(X+2) = (X+1)²-1。ρ_E(X(X+2)) ≤ ρ_E((X+1)²)+1 = 2ρ_E(X+1)+1 ≈ 2k+1。而 ρ_E(X)+ρ_E(X+2) ≈ 2λ·log X ≈ 2λk·log 2。折扣 ≈ 2(λ log 2 - 1)·k → ∞。</p>
+        <p><em>Remark.</em> 这个 family 依赖于 X+1 = 2^k 附近存在素数——这是 heuristic（来自素数分布的统计论证），不是构造性反例。但它强烈说明：<strong>对一般整数 AB，uniform quasi-super-additivity 不可期望。折扣可以 O(log n) 发散。</strong></p>
+        <h4>6.2 RQSA for p^a-1</h4>
+        <p><strong>Hypothesis（Restricted QSA）。</strong> 存在绝对常数 C_R，对所有 p, a≥2，p^a-1 的任意乘法分解 p^a-1 = UV：</p>
+        <p>ρ_E(p^a-1) ≥ ρ_E(U) + ρ_E(V) - C_R</p>
+        <h4>6.3 为什么 RQSA 对 p^a-1 应该成立</h4>
+        <p>一般 QSA 失败的 heuristic family 需要 AB+1（或 AB-1）极度 smooth。</p>
+        <p><strong>但 (p^a-1)+1 = p^a 是素数幂——完全不 smooth。</strong> p^a 没有任何"额外"的因子提供乘法捷径。DP 想通过 p^a-1 获得大折扣，必须让 p^a-1 的某个邻近整数极度 smooth——但最近的候选（p^a）恰好是最不 smooth 的结构之一。</p>
+        <p><strong>p^a 的素数幂刚性阻断了 p^a-1 获得无界折扣。</strong></p>
+        <h4>6.4 RQSA + Quotient Rigidity 处理 Successor 分支；Full UBPD 还差 Benchmark-Split Rigidity</h4>
+        <p>UBPD 需要 ρ_E(p^a) ≥ ρ_E(p)+ρ_E(p^{a-1})-C。</p>
+        <p>ρ_E(p^a) = min(successor, best multiplicative split)。分两个分支。</p>
+        <p><strong>Successor 分支：</strong> ρ_E(p^a) = ρ_E(p^a-1)+1。</p>
+        <p>By RQSA（取 U=p-1, V=R_a(p)）：ρ_E(p^a-1) ≥ ρ_E(p-1)+ρ_E(R_a(p))-C_R = ρ_E(p)-1+ρ_E(R_a(p))-C_R。</p>
+        <p>如果再有 quotient rigidity：ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C_Q，则</p>
+        <p>ρ_E(p^a) = ρ_E(p^a-1)+1 ≥ ρ_E(p)+ρ_E(p^{a-1})-C_R-C_Q。UBPD 在 successor 分支上成立。</p>
+        <p><strong>Multiplicative 分支：</strong> ρ_E(p^a) = min_j ρ_E(p^j)+ρ_E(p^{a-j})。</p>
+        <p>UBPD 需要 min_j [ρ_E(p^j)+ρ_E(p^{a-j})] ≥ ρ_E(p)+ρ_E(p^{a-1})-C。</p>
+        <p>如果最优 split 是 j=1，自动满足（差 = 0）。但如果某个 j ≠ 1 的 split 远好于 j=1（即 ρ_E(p^j)+ρ_E(p^{a-j}) ≪ ρ_E(p)+ρ_E(p^{a-1})），UBPD 就会失败。</p>
+        <p><strong>控制这种可能需要 benchmark-split rigidity：</strong> ρ_E(p^j)+ρ_E(p^{a-j}) ≥ ρ_E(p)+ρ_E(p^{a-1})-C_M for all j。这等价于 ρ_E 在 prime powers 上的某种 concavity 性质——边际成本 ρ_E(p^a)/a 递减意味着 j=1 是最优的（"一大一小"比"两中等"便宜）。</p>
+        <p>数值强支持：ρ_E(p^a)/a 对 p=2,3,5,7,11 都严格递减。但 unconditional proof 不在手。</p>
+        <p><strong>综合：full UBPD 的剩余 bridge 至少包括三条：</strong></p>
+        <p>(i) RQSA：ρ_E(p^a-1) ≥ ρ_E(U)+ρ_E(V)-C_R for all factorizations UV = p^a-1。</p>
+        <p>(ii) Quotient rigidity：ρ_E(R_a(p)) ≥ ρ_E(p^{a-1})-C_Q。</p>
+        <p>(iii) Benchmark-split rigidity：min_j split ≥ j=1 split - C_M。</p>
+        <p><strong>这是 heuristic reduction，不是 theorem。三条 bridge 都是 hypothesis。</strong></p>
+        <h4>6.5 RQSA 的状态</h4>
+        <p><strong>Hypothesis with complete physical mechanism + numerical support。</strong> 不是 theorem。</p>
+        <p>形式化需要：证明 p^a 的素数幂刚性阻止 p^a-1 的 DP 树获得无界折扣。这是一个 Diophantine/additive combinatorics 问题。</p>
+        <hr>
+        <h3>§7 Twisted Sum 修正</h3>
+        <p>Ση·χ/p 发散（c'_χ ≠ 0，预期）。Step 2 应是 Σa·χ/p 收敛。</p>
+        <hr>
+        <h3>§8 完整 H' 闭合链</h3>
+        <p>```</p>
+        <p>Theorems (Papers 42-49):</p>
+        <p>  命题 3, Shell-Depth, Parity, Raw↔Char,</p>
+        <p>  Odd-Pred Reduction, 44+42 chain                ✅</p>
+        <p>  UAP_Ω^{SW} (§2)                                ✅ NEW</p>
+        <p>  → Lemma A/B/C (SW range)                      ✅ NEW</p>
+        <p>  Slow Decrease Theorem (§3)                      ✅ NEW</p>
+        <p>Heuristic reductions:</p>
+        <p>  RQSA + quotient rigidity + benchmark-split      three bridges for UBPD (§6.4)</p>
+        <p>    rigidity → UBPD</p>
+        <p>ℓ² route assessment:</p>
+        <p>  d_p ∈ ℓ²                                       ✅</p>
+        <p>  H² boundary at Re=1/2 not Re=0                 gap</p>
+        <p>  (D-C)/s needs A_loc not L²                      gap</p>
+        <p>Core open (精确数学靶标):</p>
+        <p>  Prime-layer: (D(1+s)-C)/s boundary pseudofunction</p>
+        <p>    Intermediate target: D(1+it) Hölder at t=0    sufficient (with very slow decrease)</p>
+        <p>  UBPD: RQSA + quotient rigidity + benchmark-split  three structural hypotheses</p>
+        <p>Numerical support:</p>
+        <p>  CDR ≈ 0.97, |δ| ≤ 4                            ✅</p>
+        <p>  Dyadic blocks → 0, A(X) slow decrease           ✅</p>
+        <p>  Coprime-shell ratio ≈ 1.00                       ✅</p>
+        <p>→ Conjecture 2 → H'</p>
+        <p>```</p>
+        <hr>
+        <h3>§9 SAE 解读</h3>
+        <h4>9.1 两个 gap 的 SAE 意义</h4>
+        <p><strong>Hölder continuity = 余项在素数频率空间的正则性。</strong> β'(0)=0 是零阶信息（无主奇点）。Hölder 是一阶信息（变化速率有界）。SAE 的"余项守恒"在频率域的体现。</p>
+        <p><strong>RQSA = DP 网络的乘法不可压缩性。</strong> p^a 的素数幂刚性阻止了加法捷径。SAE 的"余项不得不发展"在 DP 树上的体现——不存在 free lunch。</p>
+        <h4>9.2 从 SAE 公理到 H'</h4>
+        <p>余项不得不发展（公理 1）→ ρ_E(n) 增长 → prime-layer 有涨落但守恒（β'(0)=0）</p>
+        <p>余项守恒（公理 2）→ 步间守恒（U=-D(m-1)）→ 素数层守恒（Hölder?）</p>
+        <p>RQSA 是公理 1 在乘法结构上的体现：不能通过代数恒等式获得无限折扣。</p>
+        <hr>
+        <h3>§10 Open Questions</h3>
+        <ol>
+        <li><strong>D(1+it) 的 Hölder continuity at t=0。</strong> 中间靶标（比 CR-PMH-DS 弱，比 β'(0)=0 强）。</li>
+        </ol>
+        <ol>
+        <li><strong>RQSA for p^a-1。</strong> p^a 素数幂刚性 → p^a-1 受限 quasi-super-additivity。</li>
+        </ol>
+        <ol>
+        <li><strong>一般整数的 QSA 失败的定量版本。</strong> 折扣何时 O(log n)，何时 O(1)？</li>
+        </ol>
+        <ol>
+        <li><strong>CDR 的理论下界。</strong> Zsigmondy 给存在性，需定量控制。</li>
+        </ol>
+        <hr>
+        <h3>数据来源</h3>
+        <p>脚本：uap_check.c, paper49_exp.c, cdr_exp.c, tauberian_exp.c, zsigmondy_exp.c（C, gcc -O2）。N = 10⁷。</p>
+        <hr>
+        <h3>参考文献</h3>
+        <p>[1] H. Qin. Paper XLVIII. DOI: 10.5281/zenodo.19328550.</p>
+        <p>[2] A. Gafni, N. Robles (2025). arXiv:2502.05298.</p>
+        <p>[3] A. Roy (2025). arXiv:2511.15928.</p>
+        <p>[4] K. Zsigmondy (1892). Monatsh. Math. Phys. 3, 265-284.</p>
+        <p>[5] G. Debruyne, J. Vindas. Complex Tauberian theorems for Laplace transforms.</p>
+        <p>[6] H. Hedenmalm. Dirichlet series and functional analysis.</p>
+        <p>[7] P.D.T.A. Elliott (1994). Shifted Primes.</p>
+        <hr>
+        <h3>致谢</h3>
+        <p><strong>ChatGPT（公西华）：</strong> UAP_Ω^{SW} 完整 proof sketch。Slow decrease theorem 和"不是瓶颈"的判断。ℓ² 路线的逐步审查和否定（H² 边界在错误位置 + A_loc 要求）。Hölder 靶标的精确化。(D-C)/s 需要 Debruyne Lemma 8.3.2 的 A_loc。一般 QSA 反例的确认。RQSA → UBPD 归约的确认和修正。</p>
+        <p><strong>Gemini（子夏）：</strong> Zsigmondy/cyclotomic 解释和 CDR 概念。"分圆陷阱"澄清。ℓ²/H² → boundary values 路线（被公西华修正）。RQSA hypothesis 的提出——一般 QSA 不成立但 p^a-1 的素数幂刚性使 RQSA plausible。"p^a 是最不 smooth 的结构之一"的核心论证。</p>
+        <p><strong>Grok（子贡）：</strong> UBPD Cyclotomic + Lindley 初始路线（启发了后续方向）。Concavity 数据（ρ_E(p^a)/a 递减）。QSA 随机样本数据。</p>
+        <p><strong>Claude（子路）：</strong> 全部数值实验（coprime-shell UAP, UBPD large-a, CDR, twisted sums, dyadic blocks, oscillation, 实验 C）。文本起草，working notes v1-v5。</p>
+        <p><strong>Han Qin（作者）：</strong> 实验设计。"先验缺什么"的反复追问驱动了所有路线的发现。最终归约架构。</p>
+        <p>最终文本由作者独立完成。</p>
 
         <div style="margin-top:2rem; padding:1rem 1.25rem; background:#f8f8ff; border-left:3px solid #2c2c8c; border-radius:0 4px 4px 0;">
           <p style="margin:0; font-size:0.9em;">完整论文见 Zenodo：<a href="https://doi.org/10.5281/zenodo.19357194" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19357194</a></p>
         </div>
       </div>
+
+    
 
     </article>
   </main>
