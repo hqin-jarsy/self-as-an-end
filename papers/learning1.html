@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD — Self-as-an-End</title>
+  <meta name="description" content="Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD — SAE Learning Series · Paper One">
+  <meta property="og:title" content="Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD">
+  <meta name="author" content="Han Qin">
+  <meta name="citation_title" content="Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19426124">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD",
+    "alternativeHeadline": "记忆与预测的学习：11DD与12DD的建构、窗口与代价",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "identifier": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "keywords": "learning, memory, prediction, 11DD, 12DD, plasticity window, language acquisition, Self-as-an-End, bilingual development",
+    "identifier": "https://doi.org/10.5281/zenodo.19426124"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      document.getElementById('lang-en').classList.remove('active');
+      document.getElementById('lang-zh').classList.remove('active');
+      document.getElementById('lang-en').style.display = 'none';
+      document.getElementById('lang-zh').style.display = 'none';
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      var tabs = document.querySelectorAll('.lang-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">SAE Learning Series · Paper One</div>
+        <h1>Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD</h1>
+        <div style="font-size:0.85em; color:#555; margin-top:0.3em;">记忆与预测的学习：11DD与12DD的建构、窗口与代价</div>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19426124">10.5281/zenodo.19426124</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+
+      <!-- ENGLISH CONTENT -->
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+        <p><strong>SAE Learning Series — Paper One</strong></p>
+<p><strong>Han Qin</strong></p>
+<p>han.qin.research@gmail.com | ORCID: 0009-0009-9583-0018</p>
+<hr>
+<h3>1. Introduction: Learning Is Not One Thing</h3>
+<h4>1.1 The Question of This Series</h4>
+<p>The SAE framework's foundational papers[^1][^2][^3] established the DD-layer hierarchy of consciousness. The dream paper[^4] established sequential dependence and misalignment mechanisms. The nurturing paper[^5] established the framework of cross-subject DD-layer regulation. But a fundamental question has not yet been systematically addressed: how is each DD layer constructed in the first place?</p>
+<p>Everyday language uses "learning" as a single word, but it covers entirely different processes. An infant learning to avoid hot objects (9DD conditioning), a child remembering yesterday's trip to the zoo (11DD episodic encoding), a toddler imperceptibly acquiring their mother tongue (12DD automated script construction), a student learning to question the textbook (13DD metacognitive training), a young person discovering what they want to do with their life (14DD purpose discovery) — all called "learning," but occurring at different positions in the DD hierarchy, running different mechanisms, producing different results.</p>
+<p>This series of four papers addresses: 11DD and 12DD learning (this paper), 13DD metacognitive learning, 14DD purpose-driven learning, and the bridge from 14DD toward 15DD — learning to understand others' purposes.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "Systems, Emergence, and the Conditions of Personhood," DOI: 10.5281/zenodo.18528813.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "Internal Colonization and the Reconstruction of Subjecthood," DOI: 10.5281/zenodo.18666645.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "The Complete Self-as-an-End Framework," DOI: 10.5281/zenodo.18727327.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "Sequential Dependence in Consciousness: DD-Layer Reconstruction in Sleep, Dreams, and Anesthesia," DOI: 10.5281/zenodo.19176873.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "Cross-Subject DD-Layer Regulation: Six Forms of Nurturing," DOI: 10.5281/zenodo.19347095.</p>
+<h4>1.2 Why 11DD and 12DD Together</h4>
+<p>11DD is the material library; 12DD is the prediction script that emerges from it. They stand in a "raw material–product" relationship: without 11DD's accumulated memories, 12DD cannot construct prediction models.</p>
+<p>But their learning modes differ. 11DD's core task is encoding and storing experience; 12DD's core task is extracting patterns from that experience and consolidating them into automated scripts. They are paired here because during the plasticity window they are tightly coupled — 11DD's memory material is being processed by 12DD into prediction scripts in real time as it is encoded. After the window closes, they begin to decouple: 11DD continues encoding new memories throughout life (adults form new memories every day), but 12DD's foundational scripts have consolidated, and new content primarily enters through 13DD's explicit conscious channel.</p>
+<hr>
+<h3>2. 11DD Learning: Building the Material Library</h3>
+<p>Before diving into specifics, the 11DD–12DD interface needs clarification. 11DD handles retrievable storage traces (memories); 12DD handles extracting automatically runnable rules from those traces (prediction scripts). The proficient performance of a procedural skill — riding a bicycle, for instance — is the behavioral surface of their coupling, not something belonging exclusively to either layer: 11DD stores the vast accumulated motor traces from repeated trial and error; 12DD extracts movement patterns from them and consolidates these into automated scripts. The two work in tight collaboration but serve different functions: 11DD manages "keeping it stored"; 12DD manages "distilling what's stored into rules that can run automatically."</p>
+<h4>2.1 Procedural Memory: Repetition, Consolidation, and the Inexpressible</h4>
+<p>11DD's first sub-layer is procedural memory. Riding a bicycle, typing, walking, swimming — these skills transform from conscious control to unconscious automatic execution through extensive repetition. Once consolidated, procedural memory is extraordinarily stable: someone who hasn't ridden a bicycle in ten years recovers the skill within minutes.</p>
+<p>But procedural memory has a profound characteristic: it resists verbalization. You can ride a bicycle but struggle to describe precisely what your body is doing. This means procedural memory learning does not pass through 13DD's explicit conscious channel — you do not learn to ride a bicycle by "understanding"; you learn through the body's repeated trial and error, with 12DD extracting movement patterns and consolidating them into scripts.</p>
+<p>Procedural memory's strength is extreme stability and resistance to forgetting. Its cost is extreme difficulty of correction. Once an incorrect batting stance has consolidated, correcting it is harder than learning from scratch — because what must be overwritten is not a blank slot but a deeply rooted automated script. 12DD does not check whether its scripts are correct; it only runs them. Checking is 13DD's job, but procedural memory formation bypasses 13DD entirely.</p>
+<h4>2.2 Episodic Memory: Single Encoding, Instability, Reconstructibility</h4>
+<p>11DD's second sub-layer is episodic memory. Unlike procedural memory's requirement for extensive repetition, episodic memory can be one-shot: you remember what you had for lunch yesterday, an argument three years ago, your first day of school.</p>
+<p>But episodic memory is unstable. It decays quickly, is easily interfered with, and retrieval is highly dependent on contextual cues present at encoding. This is "state-dependent memory": memories encoded in a particular emotional state or physical environment are more easily retrieved in similar states and environments. The DD-layer explanation of rapid dream forgetting in the dream paper follows precisely this principle — dreams are encoded under a special DD configuration, and when the DD configuration switches upon waking, retrieval pathways break.</p>
+<p>Episodic memory also has a commonly underappreciated feature: every retrieval is a partial rewrite. Memory is not a video recording; each "playback" reprocesses the content under the current DD configuration. This is why memories deform over time — you think you are remembering, but you are reconstructing.</p>
+<p>Episodic memory's strengths are flexibility, one-shot availability, and constituting "my story" — autobiographical memory is the core material from which 13DD constructs its self-model. Its cost is instability and susceptibility to systematic distortion.</p>
+<h4>2.3 Spaced Repetition: Using Decay to Strengthen</h4>
+<p>Spaced repetition is the most thoroughly studied optimization strategy for 11DD learning. Why is reviewing after a day more effective than reviewing twice in a row?</p>
+<p>11DD encoding is not a one-time write to permanent storage. Each retrieval is effectively a re-encoding event. The essence of spaced repetition: at the moment when memory is about to decay below threshold, forced retrieval compels 11DD to re-encode. Each re-encoding is more robust than the last, because the process of "nearly forgotten but pulled back" itself strengthens the encoding signal.</p>
+<p>In SAE terms, near-forgetting is a form of remainder — the edge of prediction failure. Spaced repetition exploits this remainder to force the system to re-consolidate. This is structurally isomorphic to the nurturing paper's finding that "remainder is the catalyst for 13DD emergence": remainder is the universal catalyst through which DD systems upgrade themselves at every level.</p>
+<h4>2.4 "Remembering" Is Not "Learning"</h4>
+<p>The boundary between 11DD and 12DD becomes critical here.</p>
+<p>A student can recite all three of Newton's laws (11DD has encoded this information) yet be completely unable to solve a mechanics problem. The information is in 11DD, but 12DD has not constructed a prediction model from it. "Remembering" is 11DD's work; "learning" additionally requires 12DD to extract patterns from these materials, construct causal predictions, and form automatically runnable analytical scripts.</p>
+<p>11DD is the warehouse; 12DD is the factory. A warehouse full of raw materials does not mean the factory is operational. The many learning methods centered on "memory" — repeated copying, rote memorization, cramming before exams — work essentially at the 11DD level only, without giving 12DD the time and space for pattern extraction. These methods can get you through an exam (exams often test 11DD retrieval) but cannot produce genuine learning (which requires 12DD prediction model construction).</p>
+<hr>
+<h3>3. 12DD Learning: Constructing Prediction Scripts</h3>
+<h4>3.1 Two Modes: Direct-Write and Consolidated</h4>
+<p>12DD learning operates in two fundamentally different modes corresponding to different developmental stages.</p>
+<p><strong>Direct-write mode (window open).</strong> Input is written directly into 12DD's automated script layer, requiring no supervision, scrutiny, or conscious "learning" from 13DD. Characteristics: fast absorption, deep rooting, high automatization, extreme difficulty of overwriting. What is absorbed includes not only "content" but "the entire context in which that content was learned" — emotions, relationships, bodily states are all bundled into the package. A child "learning" their mother tongue is not "studying" — there are no grammar classes, no vocabulary lists, no tests — 12DD is automatically absorbing the language patterns in the environment.</p>
+<p><strong>Consolidated mode (window closed).</strong> 12DD's existing scripts have hardened into default operating programs. New input primarily enters through 13DD's explicit conscious channel: conscious learning, memorization, practice, error-correction, then attempting to "sink" the new skill down into 12DD. Adults have not entirely lost their implicit/statistical learning capacity — evidence from both language and music shows adults continuing to acquire structure through statistical regularities and cross-context accumulation — but the primary channel has shifted from 12DD's direct absorption to 13DD-mediated explicit processing. Characteristics: slow absorption, shallow rooting (requiring repeated consolidation to sink into 12DD), low automatization (requiring long-term practice to approach direct-write-mode automaticity). The typical experience of an adult learning a foreign language is consolidated mode: every sentence must pass through 13DD's scrutiny and translation, unlike the mother tongue which flows directly from 12DD.</p>
+<p>In Krashen's classic distinction[^6]: his "acquisition" is 12DD direct-write mode; his "learning" is 13DD→12DD explicit transfer.</p>
+<p style="font-size:0.85em;color:#666;">Krashen, S. D. <em>Principles and Practice in Second Language Acquisition.</em> Pergamon (1982).</p>
+<h4>3.2 13DD Learning Is Not Inferior Learning</h4>
+<p>Direct-write mode is strikingly efficient, but this does not make 13DD-involved learning "worse." Quite the opposite: 13DD learning has critical advantages that direct-write mode cannot achieve.</p>
+<p>Direct-write mode is non-selective — it swallows everything, including errors and fears. 13DD learning has selectivity — it can scrutinize input and decide "learn this, reject that." Direct-write mode is extremely difficult to self-correct once consolidated — biases, accents, incorrect causal attributions all take root alongside correct content. 13DD learning can correct errors — discovering mistakes in 12DD's existing scripts and overwriting them. Direct-write mode can only extract existing patterns from the environment; 13DD learning can question those patterns and construct new ones — this is the only path to original thinking.</p>
+<p>The real tragedy comes in two forms. One is forcing 13DD-style learning during the window period — making toddlers memorize vocabulary, do worksheets, take grammar classes — attempting to use 13DD's explicit channel for tasks that 12DD's direct-write mode handles far more efficiently. The other is expecting 12DD's direct-write efficiency after the window has closed — adults complaining "why can't I learn a language as fast as a child." Both tragedies stem from not understanding that 12DD has two modes, each with its own domain and its own stage. They are not better or worse than each other.</p>
+<h4>3.3 Timeline of Window Closure</h4>
+<p>12DD's direct-write windows close at different times across different domains, but the overall direction is consistent — from high plasticity toward consolidation. Window closure is gradual, not a single cutoff.</p>
+<p>Language has the clearest window. Phonetic discrimination begins narrowing between 6 and 12 months: Kuhl et al. (2006) tested American and Japanese infants and found that native-language phonetic perception improves significantly in the first year while non-native perception declines over the same period[^7]. Kuhl's "neural commitment" theory is highly compatible with the DD-layer framework: the infant's neural networks progressively commit to native-language phonetic patterns, enhancing detection of native-language higher-order patterns while reducing sensitivity to non-native phonetic schemes[^8]. In DD terms, 12DD's phonetic scripts are selectively consolidating — absorbing native patterns while excluding incompatible non-native patterns.</p>
+<p>The grammar critical period window extends longer, from early childhood through roughly puberty. Johnson and Newport's classic 1989 study tested 46 native Korean or Chinese speakers who had arrived in the United States between ages 3 and 39, living in the U.S. for 3 to 26 years before being tested on English grammaticality judgments[^9]. Results: those arriving before age 7 approached native-speaker levels; scores showed a linear negative correlation with age of arrival through puberty (r=-.77); after puberty, performance was low, highly variable, and no longer correlated with age of arrival. Importantly, the inflection point is not a sharp 7-year cutoff but a gradual decline from early childhood through puberty.</p>
+<p>Absolute pitch in music closes around age 7. Certain fine motor skill foundations also have early windows. The shared DD-layer pattern: 12DD's direct-write mode is highly active in early development and gradually transitions to consolidated mode with age, with specific timing varying by domain.</p>
+<p style="font-size:0.85em;color:#666;">Kuhl, P. K. et al., "Infants show a facilitation effect for native language phonetic perception between 6 and 12 months," <em>Developmental Science</em> 9(2), F13-F21 (2006).</p>
+<p style="font-size:0.85em;color:#666;">Kuhl, P. K. et al., "Phonetic learning as a pathway to language: new data and native language magnet theory expanded (NLM-e)," <em>Phil. Trans. R. Soc. B</em> 363(1493), 979-1000 (2008).</p>
+<p style="font-size:0.85em;color:#666;">Johnson, J. S. & Newport, E. L., "Critical period effects in second language learning," <em>Cognitive Psychology</em> 21(1), 60-99 (1989).</p>
+<hr>
+<h3>4. Language Acquisition: The Exemplary Case of 11DD–12DD Collaboration</h3>
+<h4>4.1 Mother Tongue Acquisition Is Not "Studying"</h4>
+<p>No child has ever learned their mother tongue through grammar classes. Mother tongue acquisition is the paradigm case of 12DD direct-write mode.</p>
+<p>11DD continuously encodes heard language input — vast streams of sound sequences, vocabulary, sentence structures, flowing in without interruption through daily interaction. 12DD extracts patterns from this material in real time: phonological rules (which sound combinations are legal in this language), grammatical structures (how words combine into sentences), pragmatic conventions (what to say in which situations). Extracted patterns are written as automated scripts.</p>
+<p>By age 3 to 4, most of the mother tongue's core grammar has been absorbed by 12DD. The evidence: children produce correct sentences they have never heard. Even more telling is "overgeneralization" — children produce systematic errors that reveal active rule extraction. This is precisely evidence of 12DD's prediction model running — it has extracted patterns and boldly generalized them.</p>
+<p>The entire process requires no 13DD involvement. The child does not know they are learning grammar, does not know what a subject or predicate is, but their 12DD has already written grammatical rules as automated scripts.</p>
+<h4>4.2 Why Adult Foreign Language Learning Feels "Unnatural"</h4>
+<p>Adults' 12DD has already consolidated mother tongue scripts. New languages primarily enter through 13DD's explicit channel: memorizing vocabulary, studying grammar rules, consciously constructing sentences.</p>
+<p>The most typical manifestation is "translation thinking": first generating meaning in 12DD's mother tongue scripts, then translating through 13DD into the target language. An extra relay step — speed and fluency drop dramatically. Native speakers' meaning flows directly from 12DD into language; adult L2 learners must bounce between 12DD (mother tongue) and 13DD (translation).</p>
+<p>Accent is another illustration. The mother tongue's phonological patterns are among 12DD's foundational scripts — what sounds "right" and "wrong" has been automatized. The target language's phonology must overwrite these scripts, but 12DD has already consolidated and overwriting is extremely difficult. An adult can "know" (13DD level) that their pronunciation is wrong, but 12DD's automated output still runs on mother tongue scripts.</p>
+<p>Very few adults achieve near-native second language proficiency. In DD-layer terms, these individuals may have succeeded, through sustained 13DD effort, in sinking the new language into 12DD — but this requires enormous immersive input and extremely long time periods. "Immersion" works better than classroom learning precisely because massive input feeds 12DD directly, bypassing 13DD's explicit bottleneck.</p>
+<p>But a more precise mechanism question deserves attention: does post-window "sinking" overwrite 12DD's old scripts, or build a parallel structure alongside them? Current evidence favors the latter. An adult's acquired foreign language more closely resembles an "exoskeleton" built by 13DD — a parallel operating system layered on top of the mother tongue scripts, maintained by explicit consciousness. With long use, 12DD generates a set of companion scripts for this exoskeleton, but these companion scripts permanently lack the naturalness of mother tongue scripts rooted in 11DD's deepest layers.</p>
+<p>The linguistic phenomenon of "interlanguage fossilization" receives a clear explanation in this framework: adult L2 learners plateau at a certain level and stop progressing, and the moment attention (13DD) relaxes, they immediately slip back to mother tongue grammar and phonology. This is not "insufficient effort" — 12DD's mother tongue foundational scripts were never overwritten; they were only temporarily taken over by 13DD's exoskeleton. When 13DD withdraws, the old scripts instantly resume operation. Even after living in a second language for twenty years with no daily-use difficulties, deep thinking may still reveal that the mother tongue requires less cognitive effort — because deep thinking draws on 12DD's foundational prediction models, and those models were direct-written in the mother tongue during the window period.</p>
+<h4>4.3 Evidence for the Critical Window</h4>
+<p>Three core evidence lines converge on "language acquisition has a window period."</p>
+<p>Johnson and Newport's 1989 study[^9] is the classic. Forty-six Korean or Chinese native speakers, arriving in the U.S. at ages 3 to 39, tested on English grammaticality judgments after 3 to 26 years of residence. Those arriving before age 7 approached native levels. Scores showed linear negative correlation with arrival age through puberty (r=-.77); after puberty, performance was low, highly variable, and uncorrelated with arrival age. The effect could not be explained by differences in English exposure, motivation, self-consciousness, or American identification.</p>
+<p>Kuhl et al. (2006)[^7] provided earlier-stage phonetic evidence. Testing American and Japanese infants at 6–8 and 10–12 months on discrimination of American English /r-l/: native contrast discrimination improved significantly in the first year while non-native discrimination declined. Werker and Tees (1984)[^10] demonstrated the same phenomenon even earlier: English-environment infants at 12 months showed significantly lower discrimination of non-native (Hindi, Salish) consonant contrasts than at 6 months.</p>
+<p>Deaf children's sign language acquisition provides the most inescapable evidence: those exposed to sign language late show lifelong grammatical ability below those exposed early. A missed window is a missed window.</p>
+<p style="font-size:0.85em;color:#666;">Werker, J. F. & Tees, R. C., "Cross-language speech perception: evidence for perceptual reorganization during the first year of life," <em>Infant Behavior and Development</em> 7, 49-63 (1984).</p>
+<hr>
+<h3>5. Bilingual Development: 12DD's Remainder Factory?</h3>
+<p><em>Methodological note: The DD-layer analysis in this section is an SAE generative hypothesis independent of the "bilingual cognitive advantage" debate. Bilingual cognitive advantage has experienced a severe replication crisis over the past decade. Multiple large-sample replications and meta-analyses find the effect indistinguishable from zero after correcting for publication bias[^11]. Bialystok (2024) has shifted her explanation from "executive function transfer" to "attentional system adaptation"[^12], but critics argue the hypothesis has retreated to near-unfalsifiability[^13]. This section does not take bilingual cognitive advantage as a premise. It proposes an independent hypothesis from DD-layer internal logic: bilingual environments create more remainder at the 12DD level, which may (but has not been confirmed to) accelerate 13DD emergence. This hypothesis can hold even if bilingual cognitive advantage does not exist, because it concerns not executive function performance but 12DD's script construction process itself.</em></p>
+<p style="font-size:0.85em;color:#666;">Paap, K. R. et al., "Bilingualism, like other types of brain training, does not produce far transfer," <em>International Journal of Bilingualism</em> 29(1) (2025).</p>
+<p style="font-size:0.85em;color:#666;">Bialystok, E., "Bilingualism modifies cognition through adaptation, not transfer," <em>Trends in Cognitive Sciences</em> 28(11), 987-997 (2024).</p>
+<p style="font-size:0.85em;color:#666;">"Back to the test: Popper's neglected legacy in bilingual advantage research," <em>Frontiers in Developmental Psychology</em> (2025).</p>
+<h4>5.1 Simultaneous Bilingualism: 12DD Faces Remainder from the Start</h4>
+<p>Children exposed to two languages from birth have their 12DD constructing two language prediction scripts in parallel. This means 12DD faces from the very beginning a fact that monolingual children never encounter: "the same meaning can be said two ways."</p>
+<p>A monolingual child's 12DD can bind language and meaning one-to-one — "apple" is apple, no other way to say it. A bilingual child's 12DD cannot: apple is also 苹果, table is also 桌子. "Binding is not unique" — this experience is written into 12DD's foundation from the start. Whether or not this translates into measurable executive function advantages, the remainder it creates at the 12DD level is real — the bilingual 12DD must handle competition, switching, and non-one-to-one binding between two script sets.</p>
+<h4>5.2 Bilingualism and 13DD Emergence: A Hypothesis Awaiting Testing</h4>
+<p>The DD-layer hypothesis: bilingualism creates more remainder at the 12DD level (two-script competition, switching, dual meaning-binding), and remainder — according to SAE's basic logic — catalyzes higher DD-layer emergence. Therefore, bilingual environments may accelerate 13DD emergence.</p>
+<p>Some phenomena are consistent with this direction. "Saying this in Chinese and saying it in English feel different" is the germination of metalinguistic awareness — reflective awareness of language itself, an early manifestation of 13DD. Code-switching — bilinguals switching languages mid-conversation — requires a "selector" to decide which script set to use at any moment. Whether this selector is an embryonic form of early 13DD function is a question worth testing.</p>
+<p>But honest disclosure is required: this hypothesis currently lacks direct evidence. The classic evidence base for bilingual cognitive advantage has been seriously undermined. A direct replication of Bialystok and Martin (2004) with 80 children found no difference between bilingual and monolingual children[^14]. Dick et al. (2019) tested 4,524 children aged 9–10 on inhibitory control, attention, task switching, and cognitive flexibility, finding no bilingual advantage. Paap et al. (2025) found the meta-analytic effect indistinguishable from zero after correcting for publication bias[^11]. On the other hand, some meta-analyses have found small but significant positive effects of bilingualism on overall executive function, particularly pronounced in children under 6.</p>
+<p>The DD-layer hypothesis's independence lies in this: even if bilingualism produces no measurable executive function advantage, the remainder bilingualism creates at the 12DD level remains real. But whether remainder accelerates 13DD emergence requires measurement tools different from executive function tasks: metalinguistic awareness tasks, second-order questions ("how do you know what you know?"), perspective-taking tasks. This is precisely the design direction of Prediction Three (Section 8).</p>
+<p style="font-size:0.85em;color:#666;">"Absence of a bilingual cognitive flexibility advantage: A replication study in preschoolers," <em>PLOS ONE</em> (2021).</p>
+<h4>5.3 Sequential Bilingualism: The Window Determines Efficiency</h4>
+<p>When the mother tongue is established first (12DD direct-write consolidated) and a second language comes later, acquisition efficiency depends on how open the 12DD window still is when the second language begins.</p>
+<p>Early sequential bilingualism (roughly ages 3–7): the window is still partially open; the second language can still be partly direct-written. Johnson and Newport's data directly support this — immigrants arriving in the U.S. before age 7 approached native levels.</p>
+<p>Late sequential bilingualism (post-puberty): entirely through 13DD's explicit channel. This is the other half of Johnson and Newport's data — post-puberty arrivals showed low, highly variable performance uncorrelated with arrival age.</p>
+<h4>5.4 Natural Bilingualism vs. Forced Bilingual Training</h4>
+<p>A natural bilingual environment — Chinese at home, English outside — is 12DD constructing two script sets in rich, safe, low-pressure input. Both languages enter through direct-write mode, carrying emotional tags of safety and naturalness. This is nurturing.</p>
+<p>Forced bilingual training — daily vocabulary drills, dictation tests, exams, scolding for mistakes — uses 13DD's explicit pressure to do what 12DD should be completing automatically. Inefficient (a detour), and anxiety gets written into the 12DD script. In the child's 12DD, "English" and "pressure/punishment/not good enough" are bundled together. The long-term consequence is not inability to learn English but that the English script in 12DD carries permanent negative emotional tags — every activation of the English script automatically triggers anxiety.</p>
+<p>This contrast does not depend on whether bilingual cognitive advantage exists. Even if bilingualism brings no extra cognitive advantage, the difference in 12DD script quality between natural absorption and forced training remains real.</p>
+<hr>
+<h3>6. 12DD's Package Absorption: Content and Emotion Are Inseparable</h3>
+<h4>6.1 12DD Does Not Separate Content from Context</h4>
+<p>The paper's strongest structural hypothesis is: early script-building learning bundles content with emotion/context as a complete package. This hypothesis has broad indirect support from conditioning, emotional memory, mood-congruent memory, and trauma memory literatures, but has not been directly verified as a "12DD package-write mechanism." The following discussion should be understood within this hypothesis framework.</p>
+<p>12DD's prediction scripts are not pure information packets. They are complete packages of "information + context + bodily state + emotion." Pavlovian conditioning is the simplest model: bell and food appear together, and 12DD binds them into a single script. 12DD does not "learn only that the bell predicts food" — it learns "bell + salivation + anticipatory emotion" as a complete package.</p>
+<p>Language acquisition works the same way. A child does not learn words in a vacuum. The child learns "Mommy smiling says 'apple' and I get the apple" — the complete scene. The 12DD script for "apple" includes warmth, satisfaction, and the emotional coloring of successful acquisition. These emotional undertones are not decorative additions; they are part of the script itself.</p>
+<h4>6.2 Window-Period Emotional Bindings Are Extremely Difficult to Overwrite</h4>
+<p>Scripts written under 12DD's direct-write mode are foundational and automated — they consolidate before 13DD has the capacity to scrutinize them. This means: scripts written under fear and pressure during the window period will trigger 12DD's automated response before 13DD's scrutiny can intervene, even when the adult's 13DD "knows" the fear is irrational.</p>
+<p>A child who learned piano under high pressure is the typical case. As an adult, their 13DD completely "knows" that playing piano is not frightening and will not be punished. But sitting at the piano, the hands still tremble. This is not "weak nerves" — 12DD's foundational script was written before 13DD matured: "piano" and "fear/scolding/not good enough" were packaged together and consolidated as an automated response. 13DD can cognitively deny this association but cannot prevent 12DD from automatically outputting a fear signal upon perceiving "piano." Overwriting this script requires enormous effort — essentially demanding that 13DD continuously suppress a 12DD automated output until a new script without the fear tag gradually replaces the old one.</p>
+<h4>6.3 The DD-Layer Mechanism of Trauma</h4>
+<p>PTSD's DD-layer essence follows directly from this principle: 12DD, under extreme pressure, writes a "threat–flee–freeze" script that is automatically triggered by any similar stimulus, with 13DD unable to overwrite it. An explosion on the battlefield is written into 12DD; afterward, any similar loud noise — a door slamming, fireworks — triggers the same script. 13DD "knowing this is a door not a bomb" arrives too late to block 12DD's automated fear response.</p>
+<p>Childhood trauma being more treatment-resistant than adult trauma receives a clear explanation in this framework: childhood trauma is written under 12DD's direct-write mode, rooting deeper. Adult trauma already has 13DD running, with at least partial explicit processing participating in encoding, making subsequent overwriting relatively (note: only relatively) easier.</p>
+<p>The connection to hypnotherapy's nurturing logic from the nurturing paper also falls here: temporarily lower 13DD → let 12DD's trauma scripts surface → 13DD comes back online to integrate these scripts. A complete DD analysis of trauma requires a separate paper; this paper establishes only the irreversibility of window-period writing as the foundation for future discussion.</p>
+<hr>
+<h3>7. Window-Period Ethics: Nurturing and Colonization Consequences Are Amplified Here</h3>
+<h4>7.1 The Window Period Is When Nurturing/Colonization Consequences Diverge Most</h4>
+<p>In adults, colonizing indoctrination is reversible. 13DD has matured and can retroactively scrutinize and reject unreasonable input. "I was indoctrinated with a false belief" — this judgment is itself evidence that 13DD is running. With 13DD, you can identify colonization and resist it.</p>
+<p>During the window period, colonizing indoctrination may be semi-permanent. What 12DD's direct-write mode swallows is extremely difficult to clear even after 13DD matures. You can cognitively (13DD) reject a childhood-indoctrinated belief, but the automated response patterns that belief left in 12DD may still run covertly — biases, fears, unconscious approach/avoidance reactions.</p>
+<p>The core of window-period ethics is therefore not "whether to teach" but "in what form will the teaching be permanently remembered by 12DD."</p>
+<h4>7.2 Nurturing Operations During the Window Period</h4>
+<p>Nurturing during the window period can be summarized in several principles.</p>
+<p>Provide a rich, diverse, safe environment. Give 11DD abundant material to encode and 12DD abundant patterns to extract. "Rich" is not "densely scheduled" — rich means high natural information density in the environment; dense scheduling means artificially cramming large amounts of structured content at the child. The former feeds 12DD's direct-write mode; the latter attempts to bypass direct-write mode and go through the 13DD channel.</p>
+<p>Do not force specific content. Let 12DD's pattern extraction decide for itself what is worth constructing into scripts. 12DD has its own agenda — the patterns it extracts from the environment may not be the ones the parent wants it to extract. Forcing specific content amounts to trying to make decisions for 12DD, but 12DD does not accept such substitution — it will process the input its own way, except it will also write the "being forced" emotional tag into the package.</p>
+<p>Maintain emotional safety. Ensure that scripts written into 12DD do not carry fear and pressure tags. This is the most important principle — not because fear and pressure are "bad" in themselves, but because under direct-write mode they will be permanently bound to the content.</p>
+<p>Allow mistakes and exploration. 12DD's prediction models need prediction failures (remainder) for optimization. Mistakes are not the enemy of learning but the engine of learning — every error is a calibration opportunity for 12DD's prediction model. Forbidding mistakes deprives 12DD of the raw material for self-optimization.</p>
+<p>To illustrate this structural difference (not as parenting advice but as a contrast between two learning modes): in a fresh-food market, 12DD simultaneously absorbs language (hearing people bargain), numbers (seeing price tags), social patterns (observing human interaction), sensory experience (colors, smells, textures). This is 12DD's direct-write mode running in a multi-sensory, full-context natural environment. Sitting at a desk doing worksheets, by contrast, attempts to use 13DD's explicit channel for tasks that 12DD's direct-write mode handles more naturally. The difference is not "which is better" (that depends on the child's age and 13DD's developmental stage) but that they draw on different DD layers.</p>
+<h4>7.3 Colonization Direction: Boundary Marker</h4>
+<p>Exploiting the window period's high plasticity to force-write the regulator's desired scripts, ignoring the emotional context of learning, using fear and punishment to drive learning — this is the colonization direction. 12DD will indeed absorb, but what it absorbs is not only "content" but "this content = pain." This paper marks this boundary without elaborating the colonization analysis.</p>
+<h4>7.4 What This Paper Does Not Do</h4>
+<p>It does not provide a "what to learn at what age" timetable — that requires professional developmental psychology judgment, not a philosophical framework. It does not evaluate specific educational methods or curricula — it provides structural principles, not an operations manual. It does not deny the value of structured learning — after 13DD emergence, structured learning is necessary and has irreplaceable functions; this paper objects only to forcing 13DD-requiring learning methods before 13DD has emerged. It is not a parenting guide — it is a philosophy paper concerned with the structural characteristics and ethical implications of the window period.</p>
+<hr>
+<h3>8. Theoretical Discussion</h3>
+<h4>8.1 Summary: 11DD and 12DD Learning Compared</h4>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Core task</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Encoding and storage</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Pattern extraction and script construction</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Procedural sub-layer</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Repetition → consolidation → extremely stable</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Absorbs procedures → automated scripts</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Episodic sub-layer</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Single encoding → unstable → reconstructible</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Extracts patterns from episodes → prediction models</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Window behavior</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Continuous encoding (never closes)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Direct-write (within window) → consolidated mode (post-window)</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Strength</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Flexible, one-shot available</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Extremely efficient, automated</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Cost</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Unstable, distortable</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Non-selective, emotion-bundled, hard to overwrite</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>Relation to 13DD</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">13DD can actively encode/retrieve</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Direct-write: excludes 13DD; consolidated: depends on 13DD channel</td></tr>
+</tbody></table>
+<h4>8.2 Relationship to Previous Papers</h4>
+<p>12DD's free-running in dreams (dream paper Section 5.1) and infant 12DD's direct-write absorption may be the same mechanism operating at different time scales. Their shared feature: 12DD runs more efficiently and freely when 13DD is absent (offline during sleep / not yet emerged during development). Rapid dream forgetting (11DD's cross-configuration encoding incompatibility) and this paper's state-dependent memory principle are also consistent.</p>
+<p>The nurturing paper's analysis of lulling — "externally shutting down the infant's 12DD" — is a direct upstream of this paper: infant 12DD in direct-write mode runs automatically and will not stop on its own; an external adult's 13DD must shut it down. Education analyzed as "feed 12DD + activate 13DD" receives a finer foundation here: feeding 12DD before and after the window are entirely different operations.</p>
+<p>In the psychoanalysis series, 12DD corresponds to Freud's Id — this paper analyzes how Id's scripts are written during early development.</p>
+<h4>8.3 Preview: 13DD Learning</h4>
+<p>The costs of 12DD learning — non-selectivity, emotion-bundling, post-consolidation difficulty of overwriting — are precisely 13DD learning's domain. 13DD learning's core: selectivity, error-correctability, the capacity to scrutinize and update 12DD's existing scripts. But 13DD learning does not occur in a vacuum; it requires 12DD to have material before there is anything to scrutinize. The next paper will develop this.</p>
+<h4>8.4 Limitations</h4>
+<p>12DD's "direct-write mode" versus "consolidated mode" is this paper's central model, currently a structural hypothesis rather than a confirmed neural mechanism. The neural basis of window closure — synaptic pruning? myelination? inhibitory circuit maturation? — is not addressed.</p>
+<p>"Emotion and content are inseparably written into 12DD" has indirect support from conditioning and emotional memory literatures but has not been directly verified as a "12DD mechanism."</p>
+<p>Bilingual cognitive advantage evidence is under severe academic dispute. Multiple meta-analyses find the effect near zero after correcting for publication bias, though some meta-analyses find small positive effects. This paper's DD-layer hypothesis (bilingual remainder → 13DD emergence) is independent of this dispute but lacks direct evidence.</p>
+<p>This paper is not a parenting guide or educational prescription.</p>
+<h4>8.5 Falsifiable Predictions</h4>
+<p>Predictions are graded by evidence support: proximal predictions (consistent with existing literature, directly experimentally designable) and distal predictions (derived from DD-layer internal logic, thin prior support).</p>
+<p><strong>Prediction One (proximal): Natural vs. forced bilingual emotional tag difference.</strong> Adults raised in natural bilingual environments should not show systematic anxiety when using their second language. Adults who learned a second language under high-pressure forced training should show measurable anxiety responses (skin conductance, heart rate variability) when using that language. This corresponds to 12DD script emotional tag differences. Emotion-memory binding has extensive literature support; this prediction's novel contribution is specifying it in the language learning context.</p>
+<p><strong>Prediction Two (proximal): Automatization difference between window-period and post-window acquisition.</strong> Skills acquired during the window period (mother tongue, early-learned instruments, childhood sports) should show lower prefrontal (13DD-related region) involvement during adult execution than comparable skills acquired after window closure. Testable via fMRI comparing the same individual's mother tongue vs. late-learned foreign language, or early-learned vs. adult-learned instrument. This prediction direction is consistent with existing critical period literature and L1/L2 brain imaging differences.</p>
+<p><strong>Prediction Three (distal, high-risk): Bilingual remainder and 13DD emergence speed.</strong> If bilingualism creates more remainder at the 12DD level and thereby affects 13DD emergence, then simultaneous bilingual children should show earlier performance ages on metalinguistic awareness tasks and second-order metacognitive questions ("how do you know what you know?") compared to matched monolingual children. Note: this prediction uses measurement tools that are not executive function tasks (whose evidence base has eroded) but metacognitive tasks directly targeting 13DD function. This is a generative prediction derived from the DD model's internal logic, with thin prior support.</p>
+<hr>
+<h3>9. Conclusion</h3>
+<p>11DD is the warehouse; 12DD is the factory. The warehouse stays open for life, but the factory's direct-write production line has a window period.</p>
+<p>The window period is not a starting line for a race; it is the pouring period for a foundation. What matters most when pouring a foundation is not how much rebar goes in, but whether the concrete has cracks.</p>
+<p>12DD absorbs not only content but temperature — whether you were warm or cold when you taught, 12DD remembers. Scripts written in safety and pleasure carry positive emotional tags; every future activation brings that warmth along. Scripts written in fear and pressure carry negative emotional tags; every future activation brings that fear along. 12DD does not discriminate; it swallows everything with equal thoroughness.</p>
+<p>Relax. 11DD knows what to remember; 12DD knows what patterns to extract. Give them a safe environment, rich input, room to make mistakes, and then step back.</p>
+<p>The age of 13DD will come. When it does, we will talk about scrutiny, correction, and transcendence. That is the next paper's business.</p>
+<hr>
+<h3>References</h3>
+<h4>Series Papers</h4>
+<ol>
+<li>Han Qin. "Sequential Dependence in Consciousness: DD-Layer Reconstruction in Sleep, Dreams, and Anesthesia." DOI: 10.5281/zenodo.19176873.</li>
+<li>Han Qin. "Cross-Subject DD-Layer Regulation: Six Forms of Nurturing." DOI: 10.5281/zenodo.19347095.</li>
+<li>Han Qin. "Life and Death, Self and Selflessness." DOI: 10.5281/zenodo.19201237.</li>
+</ul>
+<h4>SAE Framework</h4>
+<ol>
+<li>Han Qin. "Systems, Emergence, and the Conditions of Personhood." DOI: 10.5281/zenodo.18528813.</li>
+<li>Han Qin. "Internal Colonization and the Reconstruction of Subjecthood." DOI: 10.5281/zenodo.18666645.</li>
+<li>Han Qin. "The Complete Self-as-an-End Framework." DOI: 10.5281/zenodo.18727327.</li>
+</ul>
+<h4>Language Acquisition and Critical Period</h4>
+<ol>
+<li>Johnson, J. S. & Newport, E. L. "Critical period effects in second language learning." <em>Cognitive Psychology</em> 21(1), 60-99 (1989).</li>
+<li>Lenneberg, E. H. <em>Biological Foundations of Language.</em> Wiley (1967).</li>
+<li>Krashen, S. D. <em>Principles and Practice in Second Language Acquisition.</em> Pergamon (1982).</li>
+</ul>
+<h4>Phonetic Perception Development</h4>
+<ol>
+<li>Kuhl, P. K. et al. "Infants show a facilitation effect for native language phonetic perception between 6 and 12 months." <em>Developmental Science</em> 9(2), F13-F21 (2006).</li>
+<li>Kuhl, P. K. et al. "Phonetic learning as a pathway to language: new data and native language magnet theory expanded (NLM-e)." <em>Phil. Trans. R. Soc. B</em> 363(1493), 979-1000 (2008).</li>
+<li>Werker, J. F. & Tees, R. C. "Cross-language speech perception: evidence for perceptual reorganization during the first year of life." <em>Infant Behavior and Development</em> 7, 49-63 (1984).</li>
+</ul>
+<h4>Bilingual Cognitive Advantage Debate</h4>
+<ol>
+<li>Bialystok, E. "Bilingualism modifies cognition through adaptation, not transfer." <em>Trends in Cognitive Sciences</em> 28(11), 987-997 (2024).</li>
+<li>Paap, K. R. et al. "Bilingualism, like other types of brain training, does not produce far transfer." <em>International Journal of Bilingualism</em> 29(1) (2025).</li>
+<li>"Absence of a bilingual cognitive flexibility advantage: A replication study in preschoolers." <em>PLOS ONE</em> (2021).</li>
+<li>"Back to the test: Popper's neglected legacy in bilingual advantage research." <em>Frontiers in Developmental Psychology</em> (2025).</li>
+</ul>
+      </div>
+
+      <!-- CHINESE CONTENT -->
+      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
+        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立写作。所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
+        <p><strong>SAE学习系列 第一篇</strong></p>
+<p><strong>Han Qin</strong></p>
+<p>han.qin.research@gmail.com | ORCID: 0009-0009-9583-0018</p>
+<hr>
+<h3>摘要</h3>
+<p>11DD（记忆）和12DD（预测律）是意识功能层级中的"素材层"和"脚本层"。本文分析这两个DD层的学习模式、各自的优势与代价，以及它们与更高DD层学习的结构性区别。核心论点：本文提出一个结构模型——12DD在发育早期的学习更接近"直写模式"，输入被直接写为底层自动化脚本，效率极高但不挑食、情绪打包、固化后难以覆写；窗口关闭后，新技能主要经由13DD的显意识通道进入12DD，效率下降但获得了选择性和可纠错性。以语言习得（尤其双语发育）为核心案例，论证窗口期的价值不在于"抓紧灌输"而在于"塞进去的东西会变成地基"——12DD不区分内容与学习时的情绪背景，它把整包一起吞下去。涵育是在窗口期提供丰富且安全的环境让11DD和12DD自然吸收，殖民是利用窗口期的高可塑性强行写入调节者想要的脚本。</p>
+<p><strong>关键词</strong>：Self-as-an-End, DD层, 11DD, 12DD, 学习, 记忆, 预测律, 可塑性窗口, 语言习得, 双语, 关键期, 涵育</p>
+<hr>
+<h3>1. 引言：学习不只一种</h3>
+<h4>1.1 本系列的问题</h4>
+<p>SAE框架的基础论文[^1][^2][^3]建立了意识的DD层级结构。梦境论文[^4]建立了DD层的序贯依赖和错位机制。涵育论文[^5]建立了跨主体DD层调节的框架。但一个基础问题尚未被系统回答：每一个DD层是怎么被建构起来的？</p>
+<p>日常语言中"学习"是一个词，但它覆盖了完全不同的过程。婴儿学会趋避热的东西（9DD条件反射）、孩子记住了昨天去动物园（11DD情景记忆编码）、幼儿不知不觉学会了母语（12DD自动化脚本建构）、学生学会了质疑课本（13DD元认知训练）、青年找到了自己想做的事（14DD目的发现）——这些都叫"学习"，但它们在DD层中发生的位置、运行的机制、产出的结果完全不同。</p>
+<p>本系列四篇论文分别处理：11DD与12DD的记忆和预测学习（本篇）、13DD的元认知学习、14DD的目的驱动学习、以及14DD通向15DD的桥——学习理解他者目的。</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "Systems, Emergence, and the Conditions of Personhood," DOI: 10.5281/zenodo.18528813.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "Internal Colonization and the Reconstruction of Subjecthood," DOI: 10.5281/zenodo.18666645.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "The Complete Self-as-an-End Framework," DOI: 10.5281/zenodo.18727327.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "梦境、麻醉与意识的序贯依赖结构," DOI: 10.5281/zenodo.19176873.</p>
+<p style="font-size:0.85em;color:#666;">Han Qin, "跨主体的DD层调节：涵育的六种形态," DOI: 10.5281/zenodo.19347095.</p>
+<h4>1.2 为什么11DD和12DD放在一起</h4>
+<p>11DD是素材库，12DD是从素材库中涌现出的预测脚本。两者是"原料—产品"关系：没有11DD的记忆积累，12DD无法建构预测模型。</p>
+<p>但两者的学习模式不同。11DD的核心任务是编码和存储经验，12DD的核心任务是从这些经验中提取模式并固化为自动化脚本。放在一起是因为在窗口期内两者紧密耦合——11DD的记忆素材在被编码的同时就在被12DD实时加工为预测脚本。窗口关闭后，两者开始分离：11DD还能持续编码新记忆（成人每天都在形成新记忆），但12DD的底层脚本已经固化，新内容主要经由13DD的显意识通道才能进入。</p>
+<hr>
+<h3>2. 11DD学习：素材库的建构</h3>
+<p>在进入具体分析之前，需要先澄清11DD和12DD的接口。11DD负责可回收的存储痕迹（记忆），12DD负责从这些痕迹中抽取可自动运行的规则（预测脚本）。程序性技能的熟练表现——比如骑自行车——是两者耦合后的行为表面，而不是单独属于某一层：11DD存储了大量重复试错的运动痕迹，12DD从中提取了运动模式并固化为自动化脚本。两者紧密协作，但功能不同：11DD管"存着"，12DD管"从存着的东西里提炼出可以自动运行的规则"。</p>
+<h4>2.1 程序性记忆：重复、固化、不可言说</h4>
+<p>11DD的第一个子层级是程序性记忆。骑自行车、打字、走路、游泳——这些技能通过大量重复从显意识控制转变为无意识自动执行。程序性记忆一旦固化就极其稳定：一个人十年没骑过自行车，重新骑上去几分钟就能恢复。</p>
+<p>但程序性记忆有一个深刻的特征：它很难被语言化。你能骑自行车但很难用语言精确描述你的身体在做什么。这意味着程序性记忆的学习不走13DD的显意识通道——你不是靠"理解"学会骑自行车的，是靠身体的重复试错，12DD在这些重复中提取了运动模式并固化为脚本。</p>
+<p>程序性记忆的优势是极其稳定、抗遗忘。代价是修正极难。一旦错误的击球姿势固化了，纠正它比从零学还难——因为你要覆写的不是一个空白槽位，而是一个已经扎根的自动化脚本。12DD不会自己检查脚本对不对，它只管运行。检查是13DD的工作，但程序性记忆的形成过程根本不经过13DD。</p>
+<h4>2.2 情景性记忆：一次编码、不稳定、可重构</h4>
+<p>11DD的第二个子层级是情景性记忆。和程序性记忆需要大量重复不同，情景性记忆可以是一次性的：你记得昨天午餐吃了什么，记得三年前的一次争吵，记得第一天上学的场景。</p>
+<p>但情景性记忆不稳定。它衰减快，容易被干扰，提取高度依赖编码时的情境线索。这就是"状态依赖记忆"：在特定情绪状态、特定物理环境下编码的记忆，在相似的状态和环境下更容易被提取。梦境论文中"梦的快速遗忘"的DD层解释正是这个原理——梦境在特殊DD配置下编码，醒后DD配置改变，提取路径断裂。</p>
+<p>情景性记忆还有一个常被低估的特征：每次提取都是一次部分重写。记忆不是录像带，每次"播放"时都在被当前的DD配置重新加工。这就是为什么记忆会随时间变形——你以为你在回忆，其实你在重构。</p>
+<p>情景性记忆的优势是灵活、一次可得，而且构成了"我的故事"——自传式记忆是13DD建构自我模型的核心素材。代价是不稳定且可被系统性地扭曲。</p>
+<h4>2.3 间隔重复：利用衰减来增强</h4>
+<p>间隔重复（spaced repetition）是11DD学习中最被研究透彻的优化策略。为什么隔一天复习比连续复习两遍更有效？</p>
+<p>11DD的编码不是一次写入永久存储。每次提取实际上是一次重新编码。间隔重复的本质是：在记忆即将衰减到阈值以下的时刻强制提取，迫使11DD重新编码。每次重新编码都比上一次更稳固，因为"差点忘了又被拉回来"这个过程本身在信号层面强化了编码。</p>
+<p>用SAE的语言说，即将遗忘是一种余项——预测失败的边缘。间隔重复利用这个余项来逼迫系统重新巩固。这和涵育论文中"余项是13DD涌现的催化剂"是同构逻辑：余项是DD系统在各个层面升级自身的通用催化剂。</p>
+<h4>2.4 "记住"不等于"学会"</h4>
+<p>11DD和12DD的分界在这里变得关键。</p>
+<p>一个学生可以背出牛顿三定律的全部文字（11DD编码了这些信息），但面对一道力学题完全不会做。信息在11DD里了，但12DD没有从中建构出预测模型。"记住了"是11DD的工作，"学会了"还需要12DD从这些素材中提取模式、建构因果预测、形成可以自动运行的分析脚本。</p>
+<p>11DD是仓库，12DD是工厂。仓库里堆满原料不等于工厂投产了。大量以"记忆"为中心的学习方法——反复抄写、死记硬背、考前突击——本质上只在11DD层面工作，没有给12DD的模式提取留出时间和空间。这些方法能让你通过考试（考试测的往往是11DD的提取），但不能让你真正"学会"（学会需要12DD的预测模型建构）。</p>
+<hr>
+<h3>3. 12DD学习：预测脚本的建构</h3>
+<h4>3.1 两种模式：直写与固化</h4>
+<p>12DD的学习存在两种根本不同的运行模式，对应不同的发育阶段。</p>
+<p><strong>直写模式（窗口开放期）。</strong> 输入直接写入12DD的自动化脚本层，不需要13DD的监督、审查、有意识的"学习"。特征是吸收快、扎根深、自动化程度高、覆写极难。同时吸收的不只是"内容"，还有"学习这个内容时的整个情境"——情绪、关系、身体状态全部被打包写入。孩子"学"母语不是在"学"——没有语法课、没有单词表、没有考试——是12DD在自动吸收环境中的语言模式。</p>
+<p><strong>固化模式（窗口关闭后）。</strong> 12DD已有脚本变硬，成为默认运行程序。新输入主要经过13DD的显意识通道：有意识地学习、记忆、练习、纠错，然后试图把新技能"下沉"到12DD。成人并没有完全失去隐性/统计学习的能力——语言和音乐领域都有成年人通过统计规律和跨情境积累继续习得结构的证据——但主通道已经从12DD的直接吸收切换到了13DD的显意识中介。特征是吸收慢、扎根浅（需要反复巩固才能下沉到12DD）、自动化程度低（需要长期练习才能接近直写模式的自动化水平）。成人学外语的典型体验就是固化模式：每一句话都要过13DD的审查和翻译，不像母语那样直接从12DD涌出来。</p>
+<p>用Krashen的经典区分[^6]做DD翻译：他所说的"习得"（acquisition）就是12DD直写模式，"学习"（learning）就是13DD→12DD的显意识转移。</p>
+<p style="font-size:0.85em;color:#666;">Krashen, S. D. <em>Principles and Practice in Second Language Acquisition.</em> Pergamon (1982).</p>
+<h4>3.2 13DD学习不是劣等学习</h4>
+<p>直写模式效率惊人，但这不意味着13DD参与的学习就是"差的"。恰恰相反，13DD学习有直写模式做不到的关键优势。</p>
+<p>直写模式无选择性——什么都吞，包括错误和恐惧。13DD学习有选择性——能审查输入，决定"这个要学，那个不要"。直写模式固化后极难自我修正——偏见、口音、错误的因果归因，全部和正确的东西一起扎根。13DD学习能纠错——发现12DD既有脚本里的错误并覆写它。直写模式只能从环境中提取已有模式，13DD学习可以质疑这些模式并构造新的——这是通向原创思维的唯一路径。</p>
+<p>真正的悲剧有两种。一种是在窗口期强行使用13DD方式学习——逼幼儿背单词、做习题、上语法课——试图用13DD的显意识通道做12DD的直写模式远更擅长的事。另一种是在窗口关闭后还期待12DD的直写效率——成人抱怨"我学外语怎么就不如小孩快"。两种悲剧的根源都是不理解12DD有两种模式，各有领地、各有阶段，不是谁好谁差。</p>
+<h4>3.3 窗口关闭的时间线</h4>
+<p>12DD的各个子领域的直写窗口在不同时间关闭，但总体方向一致——从高可塑走向固化。窗口关闭是渐进的，不是一刀切。</p>
+<p>语言的窗口最清晰。语音辨别能力在6到12个月开始收窄：Kuhl等人（2006）测试了美国和日本婴儿，发现母语语音感知在第一年内显著提升，而非母语语音感知在同期下降[^7]。Kuhl提出的"神经承诺"（neural commitment）理论与DD层框架高度相容：婴儿的神经网络逐渐承诺于母语的语音模式，增强了对母语高阶模式的检测，同时降低了对非母语语音方案的敏感性[^8]。用DD层的话说，12DD的语音脚本在选择性固化——吸收母语模式的同时排斥不兼容的非母语模式。</p>
+<p>语法关键期的窗口更长，从幼年一直延伸到青春期前后。Johnson和Newport（1989）的经典研究测试了46名母语为韩语或中文的移民，到达美国时年龄从3岁到39岁不等，在美国居住3到26年后接受英语语法判断测试[^9]。结果显示：7岁前到达者接近母语水平；成绩与到达年龄呈线性负相关直到青春期（r=-.77）；青春期后表现低、变异大，且与到达年龄不再相关。重要的是，拐点不是7岁一刀切，而是从幼年到青春期的渐进下降。</p>
+<p>音乐领域的绝对音感窗口在7岁前后关闭。某些精细运动技能的基础模式也有早期窗口。共同的DD层模式是：12DD的直写模式在发育早期高度活跃，随年龄增长逐渐转向固化模式，具体时间因领域而异。</p>
+<p style="font-size:0.85em;color:#666;">Kuhl, P. K. et al., "Infants show a facilitation effect for native language phonetic perception between 6 and 12 months," <em>Developmental Science</em> 9(2), F13-F21 (2006).</p>
+<p style="font-size:0.85em;color:#666;">Kuhl, P. K. et al., "Phonetic learning as a pathway to language: new data and native language magnet theory expanded (NLM-e)," <em>Phil. Trans. R. Soc. B</em> 363(1493), 979-1000 (2008).</p>
+<p style="font-size:0.85em;color:#666;">Johnson, J. S. & Newport, E. L., "Critical period effects in second language learning," <em>Cognitive Psychology</em> 21(1), 60-99 (1989).</p>
+<hr>
+<h3>4. 语言习得：11DD与12DD协作的范例</h3>
+<h4>4.1 母语习得不是"学习"</h4>
+<p>没有任何幼儿是通过语法课学会母语的。母语习得是12DD直写模式的范例。</p>
+<p>11DD持续编码听到的语言输入——大量的声音序列、词汇、句子结构，在日常互动中不间断地进入11DD的编码系统。12DD从这些素材中实时提取模式：语音规则（哪些声音组合在这种语言中合法）、语法结构（词语如何组合成句子）、语用惯例（什么场合说什么话）。提取出的模式被写为自动化脚本。</p>
+<p>到3到4岁，大部分母语的核心语法已经被12DD吸收。证据是：孩子能说出他从未听过的正确句子。更有趣的是"过度泛化"现象——孩子说"我把它破了"或"两个鱼"，这些句子是错的，但错得有规律：孩子提取了语法规则（动宾结构、量词+名词）并将其泛化到不适用的情况。这恰恰是12DD预测模型在主动运行的证据——它提取了模式并大胆地推广了。</p>
+<p>整个过程不需要13DD参与。孩子不知道自己在学语法，不知道什么是主语谓语，不知道"过度泛化"这个词，但他的12DD已经把语法规则写成了自动化脚本。</p>
+<h4>4.2 成人学外语为什么"不自然"</h4>
+<p>成人的12DD已经固化了母语的脚本。新语言主要走13DD的显意识通道：背单词、学语法规则、有意识地构造句子。</p>
+<p>最典型的表现是"翻译思维"：先在12DD的母语脚本里生成意思，再通过13DD翻译成目标语言。多了一层中转，速度和流畅度都大幅下降。母语者说话时意思直接从12DD涌出来变成语言，学外语的成人要在12DD（母语）和13DD（翻译）之间来回跳。</p>
+<p>口音是另一个例证。母语的语音模式是12DD的底层脚本之一——什么声音"对"、什么声音"不对"的判断已经自动化了。目标语言的语音要覆写这些脚本，但12DD已经固化，覆写极其困难。成人可以"知道"（13DD层面）自己的发音不对，但12DD的自动化产出仍然按照母语脚本运行。</p>
+<p>极少数成人能达到接近母语的第二语言水平。用DD层分析，这些人可能是通过13DD的持续努力成功地把新语言下沉到了12DD——但这需要极大量的沉浸式输入和极长的时间。"沉浸式"之所以比课堂学习有效，正是因为大量输入直接喂12DD，绕过了13DD的显意识瓶颈——在窗口还部分开放的早期序贯双语者中，这可以激活残余的直写能力。</p>
+<p>但这里需要追问一个更精细的机制问题：窗口关闭后的"下沉"，到底是覆写了12DD的旧脚本，还是在旧脚本旁边建了一套平行结构？现有证据更支持后者。成人学的外语更像是13DD建立的一套"外骨骼"——一个叠加在母语脚本之上的、由显意识维护的平行运行系统。外骨骼用久了，12DD会为它生成一套配套的副产品脚本，但这套副产品永远缺乏母语那种根植于11DD底层的自然感。</p>
+<p>语言学中的"中介语石化"（interlanguage fossilization）现象在这个框架下得到了清晰的解释：成人学外语学到一定程度就不再进步了，而且只要注意力（13DD）一松懈，就立刻滑回母语的语法和语音模式。这不是因为"不够努力"，而是因为12DD的母语底层脚本根本没有被覆写——它只是被13DD的外骨骼暂时接管了。13DD一撤，12DD的旧脚本立刻恢复运行。即使在第二语言中生活了二十年、日常使用完全没有障碍，深层思考时仍然可能发现母语耗能更低——因为深层思考调用的是12DD的底层预测模型，而那套模型是在窗口期用母语直写的。</p>
+<h4>4.3 关键窗口期的证据</h4>
+<p>三条核心证据线汇聚在"语言习得有窗口期"这个判断上。</p>
+<p>Johnson和Newport的1989年研究[^9]是最经典的。46名韩语或中文母语移民，到达美国时年龄3到39岁，在美居住3到26年后接受276句英语语法判断测试。7岁前到达者接近母语水平。成绩与到达年龄呈线性负相关直到青春期（r=-.77），青春期后表现低、变异大且与到达年龄不再相关。效应不能被英语经验量、动机、自我意识或美国认同的差异解释。</p>
+<p>Kuhl等人2006年的研究[^7]从语音层面提供了更早期的证据。测试美国和日本6到8月龄与10到12月龄婴儿对美式英语/r-l/对比的辨别能力。结果：母语对比的辨别能力在第一年内显著提升，非母语对比的辨别在同期下降。Werker和Tees（1984）更早地展示了同一现象[^10]：英语环境婴儿在12个月时对非母语（印地语、萨利希语）辅音对比的辨别能力显著低于6个月时。</p>
+<p>聋儿的手语习得提供了最无法回避的证据：晚期接触手语的聋儿，其语法能力终身低于早期接触者。窗口错过了就是错过了。</p>
+<p style="font-size:0.85em;color:#666;">Werker, J. F. & Tees, R. C., "Cross-language speech perception: evidence for perceptual reorganization during the first year of life," <em>Infant Behavior and Development</em> 7, 49-63 (1984).</p>
+<hr>
+<h3>5. 双语发育：12DD的余项工厂？</h3>
+<p><em>方法学标注：本节的DD层分析是独立于"双语认知优势"争论的SAE生成性假说。双语认知优势在过去十年经历了严重的重复危机。多项大样本重复研究和元分析在校正发表偏差后发现效应不可区分于零[^11]。Bialystok（2024）已将解释从"执行功能迁移"转向"注意系统适应"[^12]，但批评者认为假说不断后移使其接近不可证伪[^13]。本节不以双语认知优势为前提。本节从DD层的内部逻辑出发提出一个独立假说：双语环境在12DD层面制造了更多余项，这可能（但尚未被证实）对13DD的涌现产生加速效应。这个假说即使双语认知优势不存在也可以成立，因为它关心的不是执行功能表现，而是12DD的脚本建构过程本身。</em></p>
+<p style="font-size:0.85em;color:#666;">Paap, K. R. et al., "Bilingualism, like other types of brain training, does not produce far transfer," <em>International Journal of Bilingualism</em> 29(1) (2025).</p>
+<p style="font-size:0.85em;color:#666;">Bialystok, E., "Bilingualism modifies cognition through adaptation, not transfer," <em>Trends in Cognitive Sciences</em> 28(11), 987-997 (2024).</p>
+<p style="font-size:0.85em;color:#666;">"Back to the test: Popper's neglected legacy in bilingual advantage research," <em>Frontiers in Developmental Psychology</em> (2025).</p>
+<h4>5.1 同时双语：12DD从一开始就面对余项</h4>
+<p>从出生起接触两种语言的孩子，12DD并行建构两套语言预测脚本。这意味着12DD从一开始就面对一个单语孩子不会遇到的事实："同一个意思可以有两种说法。"</p>
+<p>单语孩子的12DD可以把语言和意义一一绑定——"苹果"就是苹果，没有其他说法。双语孩子的12DD不行：苹果也是apple，桌子也是table。"绑定不是唯一的"这个经验从一开始就被写入了12DD的底层。无论这是否转化为可测量的执行功能优势，它在12DD层面制造的余项是真实的——双语者的12DD必须处理两套脚本之间的竞争、切换和不可一一绑定的经验。</p>
+<h4>5.2 双语与13DD涌现：一个待检验的假说</h4>
+<p>DD层假说是这样的：双语在12DD层面制造了更多余项（两套脚本竞争、切换、意义的双重绑定），而余项——根据SAE框架的基本逻辑——是高DD层涌现的催化剂。因此，双语环境可能对13DD的涌现产生加速效应。</p>
+<p>一些现象与这个假说方向一致。"我用中文说这个和用英文说这个，感觉不一样"是元语言意识的萌芽——对语言本身的反思性觉知，这是13DD的一种早期表现。语码转换（code-switching）——双语者在对话中切换语言——需要一个"选择器"来决定此刻用哪套脚本。这个选择器是否是早期13DD功能的雏形，是一个值得检验的问题。</p>
+<p>但必须诚实标注：这个假说目前没有直接证据支持。双语认知优势的经典证据基础已经严重动摇。对Bialystok和Martin（2004）的直接重复研究（N=80）未发现双语和单语儿童之间有任何差异[^14]。Dick等人（2019）在4524名9到10岁儿童中测试了抑制控制、注意、任务切换和认知灵活性，均未发现双语优势。Paap等人（2025）的元分析在校正发表偏差后发现效应不可区分于零[^11]。另一方面，也有元分析发现双语儿童在整体执行功能上有小但显著的正效应，且效应在6岁以下儿童中更为明显。</p>
+<p>DD层假说的独立性在于：即使双语不产生可测量的执行功能优势，双语在12DD层面制造的余项仍然是真实的——双语者确实必须处理两套脚本的竞争。但余项是否加速了13DD涌现，需要不同于执行功能测试的测量工具来检验：比如元语言意识任务、二阶问题（"你怎么知道你知道的？"）、perspective-taking任务。这正是本文预测三（第8节）的设计方向。</p>
+<p style="font-size:0.85em;color:#666;">"Absence of a bilingual cognitive flexibility advantage: A replication study in preschoolers," <em>PLOS ONE</em> (2021).</p>
+<h4>5.3 序贯双语：窗口决定效率</h4>
+<p>先建立母语（12DD直写固化），后学第二语言，习得效率取决于第二语言开始时12DD窗口的开放程度。</p>
+<p>早期序贯双语（大约3到7岁开始）：窗口还部分开放，第二语言还能在一定程度上直写。Johnson和Newport的数据直接支持这一点——7岁前到达美国的移民接近母语水平。</p>
+<p>晚期序贯双语（青春期后）：完全走13DD显意识通道。这也是Johnson和Newport数据的另一半——青春期后到达者表现低、变异大、与到达年龄不再相关。不是不能学，但已经不是直写了。</p>
+<h4>5.4 自然双语与强制双语</h4>
+<p>自然双语环境——家里说中文，外面说英文——是12DD在丰富、安全、低压力的输入中自然建构两套脚本。两种语言都通过直写模式进入12DD，携带的情绪标签是安全和自然。这是涵育。</p>
+<p>强制双语训练——每天背单词、默写、考试、答错挨骂——是用13DD的显意识压力去做12DD本应自动完成的事。效率低（绕路了），而且焦虑被写进了12DD的脚本。孩子的12DD里，"英语"和"压力/惩罚/不够好"被打包绑定了。长期后果不是学不会英语，而是12DD里的英语脚本自带负面情绪标签——一启动英语脚本就自动触发焦虑。</p>
+<p>这一对比不依赖双语认知优势是否存在。即使双语不带来额外的认知优势，自然吸收和强制灌输之间的12DD脚本质量差异仍然是真实的。</p>
+<hr>
+<h3>6. 12DD的整包吸收：内容与情绪不可分割</h3>
+<h4>6.1 12DD不做内容/情境分离</h4>
+<p>本文最强的结构假说是：早期脚本化学习会把内容与情绪/情境整包绑定。这个假说有条件反射、情绪记忆、mood-congruent memory和创伤记忆文献的广泛间接支持，但尚未被直接验证为"12DD的整包写入机制"。以下的论述应在这个假说框架下理解。</p>
+<p>12DD的预测脚本不是纯粹的信息包。它是"信息+情境+身体状态+情绪"的完整打包。巴甫洛夫的条件反射是最简单的模型：铃声和食物一起出现，12DD就把它们绑定成一个脚本。12DD不会"只学铃声预测食物"——它学到的是"铃声+唾液分泌+期待情绪"这个整包。</p>
+<p>语言习得中同样如此。孩子不是在真空中学单词。他在学"妈妈笑着说苹果的时候我拿到了苹果"这个完整场景。"苹果"这个词的12DD脚本里包含了温暖、满足、成功获取的情绪底色。这些情绪底色不是附加的装饰，是脚本本身的一部分。</p>
+<h4>6.2 窗口期写入的情绪绑定极难覆写</h4>
+<p>12DD直写模式下写入的脚本是底层的、自动化的——它在13DD有能力审查之前就已经固化了。这意味着：在窗口期在恐惧和压力下写入的脚本，即使成年后13DD"知道"这个恐惧不合理，12DD的自动化反应仍然会先于13DD的审查触发。</p>
+<p>一个在高压下学钢琴的孩子就是典型案例。成年后，他的13DD完全"知道"弹钢琴不可怕、不会被惩罚。但坐到钢琴前，手还是会发抖。这不是"心理素质差"，是12DD的底层脚本在13DD成熟之前就被写定了——"钢琴"和"恐惧/挨骂/不够好"被打包在一起，固化为自动化反应。13DD可以在认知上否认这个关联，但无法阻止12DD在感知到"钢琴"时自动输出恐惧信号。覆写这个脚本需要极大的努力——本质上是要求13DD持续压制一个12DD的自动化输出，直到新的、不带恐惧标签的脚本慢慢替换掉旧的。催眠治疗和某些暴露疗法就是在尝试做这件事。</p>
+<h4>6.3 创伤的DD层机制</h4>
+<p>PTSD的DD层本质可以从这个原理直接推出：12DD在极端压力下写入了一套"威胁—逃跑—冻结"脚本，这套脚本被任何类似的刺激自动触发，13DD无法覆写。战场上的爆炸声被写入12DD后，任何类似的巨响——关门声、烟花——都会触发同一个脚本，13DD"知道这是关门声不是炸弹"这个判断来不及阻止12DD的自动化恐惧反应。</p>
+<p>儿童期创伤比成年期创伤更难治疗，在这个框架下得到了清晰的解释：儿童期创伤是在12DD直写模式下被写入的，扎根更深。成年期创伤已经有13DD在运行，至少有部分显意识的加工参与了编码，后续的覆写相对（注意只是相对）容易一些。</p>
+<p>和涵育论文中催眠治疗的对接也在这里：催眠的涵育逻辑是暂时压低13DD→让12DD的创伤脚本浮出→13DD重新上线后整合这些脚本。完整的创伤DD分析需要另一篇论文展开，本文只点出窗口期写入的不可逆性作为后续讨论的基础。</p>
+<hr>
+<h3>7. 窗口期的伦理：涵育与殖民的后果在这里被放大</h3>
+<h4>7.1 窗口期是涵育/殖民后果差异最大的阶段</h4>
+<p>在成人身上，殖民性灌输的后果是可逆的。13DD已经成熟，可以事后审查和拒绝不合理的输入。"我被灌输了一个错误观念"这个判断本身就是13DD在运行的证据——有了13DD，你可以识别殖民并抵抗它。</p>
+<p>在窗口期，殖民性灌输的后果可能是半永久的。12DD直写模式下吞进去的东西，在13DD成熟后也极难清除。你可以在认知上（13DD）拒绝小时候被灌输的某个观念，但那个观念在12DD中留下的自动化反应模式可能仍然在暗中运行——偏见、恐惧、不自觉的趋避反应。</p>
+<p>窗口期伦理的核心因此不是"该不该教"，而是"教的方式会被12DD以什么形式永久记住"。</p>
+<h4>7.2 涵育的窗口期操作</h4>
+<p>涵育在窗口期应该做的事可以概括为几条原则。</p>
+<p>提供丰富、多样、安全的环境。让11DD有大量素材可以编码，让12DD有大量模式可以提取。"丰富"不是"密集安排"——丰富是环境中自然存在的信息密度高，密集安排是人为地把大量结构化内容塞给孩子。前者喂12DD的直写模式，后者试图绕过直写模式走13DD通道。</p>
+<p>不强制特定内容。让12DD的模式提取自己决定什么值得建构为脚本。12DD有自己的议程——它从环境中提取的模式不一定是家长想让它提取的。强制特定内容等于试图替12DD做决定，但12DD不接受这种替代——它会按自己的方式处理输入，只不过同时把"被强制"的情绪标签也一起写进去了。</p>
+<p>保持情绪安全。确保12DD写入的脚本不附带恐惧和压力标签。这是最重要的一条——不是因为恐惧和压力"不好"，而是因为在直写模式下它们会被永久绑定到内容上。</p>
+<p>允许犯错和探索。12DD的预测模型需要预测失败（余项）来优化。犯错不是学习的敌人而是学习的引擎——每一次错误都是12DD预测模型的一次校准机会。不允许犯错等于剥夺了12DD优化自身的原料。</p>
+<p>以菜市场为例来说明这个结构差异（不是作为育儿建议，而是作为两种学习模式的对比）。在菜市场里，12DD同时在吸收语言（听别人讲价）、数字（看价格标签）、社交模式（观察人与人互动）、感官体验（颜色、气味、触感）。这是12DD直写模式在多感官、全情境的自然环境中运行的典型形态。相比之下，坐在书桌前做练习题是在试图用13DD的显意识通道处理本可以由12DD直写模式自动完成的任务。两者的差异不在于"哪个更好"（这取决于孩子的年龄和13DD的发育阶段），而在于它们调用的DD层不同。</p>
+<h4>7.3 殖民方向的标注</h4>
+<p>在窗口期利用12DD的高可塑性强行写入调节者想要的脚本，忽视学习情境的情绪背景，用恐惧和惩罚驱动学习——这是殖民方向。12DD确实会吸收，但吸收的不只是"内容"，还有"这个内容=痛苦"。本文标注此边界，不展开殖民分析。</p>
+<h4>7.4 本文不做的事</h4>
+<p>不给出"几岁该学什么"的时间表——这需要发展心理学的专业判断，不是哲学框架能给出的。不评价具体的教育方法或课程——本文提供的是结构原则，不是操作手册。不否认结构化学习的价值——13DD涌现后，结构化学习是必要的且有其不可替代的功能，本文反对的只是在13DD涌现前强行使用需要13DD参与的学习方式。不做育儿指南——本文是哲学论文，关心的是窗口期的结构特征和伦理含义。</p>
+<hr>
+<h3>8. 理论讨论</h3>
+<h4>8.1 11DD和12DD学习的关系总结</h4>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>核心任务</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">编码和存储</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">模式提取和脚本建构</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>程序性子层</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">重复→固化→极稳定</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">吸收程序→自动化脚本</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>情景性子层</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">单次编码→不稳定→可重构</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">从情景中提取模式→预测模型</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>窗口期行为</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">持续编码（终身不关）</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">直写模式（窗口内）→固化模式（窗口后）</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>优势</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">灵活、一次可得</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">效率极高、自动化</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>代价</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">不稳定、可被扭曲</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">不挑食、情绪打包、固化后难覆写</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>与13DD的关系</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">13DD可以主动编码/提取</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">直写模式不需要13DD；固化后需要13DD通道</td></tr>
+</tbody></table>
+<h4>8.2 与前几篇论文的关系</h4>
+<p>梦境论文[^4]中12DD的自由运行（第5.1节普通梦境基线）和幼儿12DD的直写吸收，可能是同一种机制在不同时间尺度上的表现。两者的共同特征是：12DD在13DD缺席（睡眠中关闭/发育中尚未涌现）的条件下，运行效率更高、自由度更大。梦的快速遗忘（11DD的跨配置编码不兼容）和本篇11DD的状态依赖记忆原理也是一致的。</p>
+<p>涵育论文[^5]中"哄睡=从外部关闭幼儿的12DD"是本篇的直接上游：幼儿的12DD在直写模式下自动运行不会自己停，需要外部成人的13DD来关闭它。教育被涵育论文分析为"喂12DD+激活13DD"——本篇为这个分析提供了更精细的基础：喂12DD在窗口期和窗口后是完全不同的操作。</p>
+<p>心理分析系列中12DD对应弗洛伊德的Id——本篇分析的就是Id的脚本是如何在发育早期被写入的。自由联想是让12DD的脚本在13DD暂停审查时自由涌出，催眠治疗是试图帮13DD重新整合在直写窗口期被写入的创伤脚本。</p>
+<h4>8.3 下一篇预告：13DD学习</h4>
+<p>12DD学习的代价——不挑食、情绪打包、固化后难覆写——恰恰是13DD学习的领地。13DD学习的核心是选择性、可纠错性、对12DD既有脚本的审查和更新能力。但13DD的学习不是在真空中发生的，它需要12DD先有素材才有东西可以审视。下一篇将展开。</p>
+<h4>8.4 局限</h4>
+<p>12DD"直写模式"与"固化模式"是本文的核心模型，目前是结构假说而非已证实的神经机制。窗口关闭的神经基础——突触修剪？髓鞘化？抑制性回路成熟？——本文未涉及。</p>
+<p>"情绪和内容不可分割地写入12DD"有条件反射和情绪记忆文献的间接支持，但没有被直接验证为"12DD机制"。</p>
+<p>双语认知优势的证据存在严重学术争论。多项元分析校正发表偏差后效应接近零，但也有元分析发现小的正效应。本文的DD层假说（双语余项→13DD涌现）独立于这个争论，但缺少直接证据。</p>
+<p>本文不是育儿指南或教育处方。</p>
+<h4>8.5 可证伪预测</h4>
+<p>按证据支撑强度分级：近端预测（现有文献方向一致，可直接设计实验）和远端预测（从DD层内部逻辑推出，先验支撑薄弱）。</p>
+<p><strong>预测一（近端）：自然双语与强制双语的情绪标签差异。</strong> 自然双语环境中成长的成人，使用第二语言时不应伴随系统性的焦虑反应。而在高压强制训练下学习第二语言的成人，使用该语言时应呈现可测量的焦虑反应（皮肤电反应、心率变异性）。这对应12DD脚本的情绪标签差异——同样是"英语脚本"，但一个携带安全标签，一个携带恐惧标签。情绪-记忆绑定有大量文献支持，本预测的新增贡献是把它具体化到语言学习情境中。</p>
+<p><strong>预测二（近端）：窗口期与窗口后习得的自动化程度差异。</strong> 在窗口期习得的技能（母语、早期学习的乐器、童年运动）在成年后执行时，前额叶（13DD相关区域）参与度应低于窗口关闭后习得的同类技能。可用fMRI对比同一个人的母语和晚期学习的外语，或早期学习的乐器和成年后学习的乐器。这个预测方向与现有关键期文献和母语/二语脑成像差异文献一致。</p>
+<p><strong>预测三（远端，高风险）：双语余项与13DD的关系。</strong> 双语环境在12DD层面制造更多余项（两套脚本竞争）是确定的，但其对13DD的效应不一定表现为更早涌现——双语12DD更复杂，可能需要更长时间稳定，13DD涌现甚至可能更晚。更精确的预测是：双语环境下涌现的13DD可能更强（因为从一开始就处理更高密度的跨脚本冲突），这种"更强"应表现在元语言意识任务和跨框架推理任务上，而非知觉信心判断中的meta-d'。测量工具的选择对这条预测是否得到支持至关重要。</p>
+<hr>
+<h3>9. 结语</h3>
+<p>11DD是仓库，12DD是工厂。仓库终身营业，但工厂的直写产线有窗口期。</p>
+<p>窗口期不是赛跑的起跑线，是地基的浇筑期。地基浇筑时最重要的不是塞进去多少钢筋，是混凝土有没有裂缝。</p>
+<p>12DD吸收的不仅是内容，还有温度——你教的时候是温暖的还是冰冷的，12DD都记得。在安全和愉悦中写入的脚本自带正向情绪标签，将来每次被激活时都会携带那份温暖。在恐惧和压力中写入的脚本自带负向情绪标签，将来每次被激活时都会携带那份恐惧。12DD不区分，它一视同仁地全部吞下。</p>
+<p>放松一点。11DD知道该记什么，12DD知道该从中提取什么模式。给它们安全的环境、丰富的输入、犯错的空间，然后退开。</p>
+<p>13DD的时代会来的。到时候再谈审视、纠错和超越。那是下一篇的事。</p>
+<hr>
+<h3>参考文献</h3>
+<h4>系列论文</h4>
+<ol>
+<li>Han Qin. "梦境、麻醉与意识的序贯依赖结构." DOI: 10.5281/zenodo.19176873.</li>
+<li>Han Qin. "跨主体的DD层调节：涵育的六种形态." DOI: 10.5281/zenodo.19347095.</li>
+<li>Han Qin. "生与死，有我与无我." DOI: 10.5281/zenodo.19201237.</li>
+</ul>
+<h4>SAE框架</h4>
+<ol>
+<li>Han Qin. "Systems, Emergence, and the Conditions of Personhood." DOI: 10.5281/zenodo.18528813.</li>
+<li>Han Qin. "Internal Colonization and the Reconstruction of Subjecthood." DOI: 10.5281/zenodo.18666645.</li>
+<li>Han Qin. "The Complete Self-as-an-End Framework." DOI: 10.5281/zenodo.18727327.</li>
+</ul>
+<h4>语言习得与关键期</h4>
+<ol>
+<li>Johnson, J. S. & Newport, E. L. "Critical period effects in second language learning." <em>Cognitive Psychology</em> 21(1), 60-99 (1989).</li>
+<li>Lenneberg, E. H. <em>Biological Foundations of Language.</em> Wiley (1967).</li>
+<li>Krashen, S. D. <em>Principles and Practice in Second Language Acquisition.</em> Pergamon (1982).</li>
+</ul>
+<h4>语音感知发育</h4>
+<ol>
+<li>Kuhl, P. K. et al. "Infants show a facilitation effect for native language phonetic perception between 6 and 12 months." <em>Developmental Science</em> 9(2), F13-F21 (2006).</li>
+<li>Kuhl, P. K. et al. "Phonetic learning as a pathway to language: new data and native language magnet theory expanded (NLM-e)." <em>Phil. Trans. R. Soc. B</em> 363(1493), 979-1000 (2008).</li>
+<li>Werker, J. F. & Tees, R. C. "Cross-language speech perception: evidence for perceptual reorganization during the first year of life." <em>Infant Behavior and Development</em> 7, 49-63 (1984).</li>
+</ul>
+<h4>双语认知优势争论</h4>
+<ol>
+<li>Bialystok, E. "Bilingualism modifies cognition through adaptation, not transfer." <em>Trends in Cognitive Sciences</em> 28(11), 987-997 (2024).</li>
+<li>Paap, K. R. et al. "Bilingualism, like other types of brain training, does not produce far transfer." <em>International Journal of Bilingualism</em> 29(1) (2025).</li>
+<li>"Absence of a bilingual cognitive flexibility advantage: A replication study in preschoolers." <em>PLOS ONE</em> (2021).</li>
+<li>"Back to the test: Popper's neglected legacy in bilingual advantage research." <em>Frontiers in Developmental Psychology</em> (2025).</li>
+</ul>
+      </div>
+
+    </article>
+  </main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>

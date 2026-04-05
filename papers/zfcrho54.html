@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LIV: Recursive Ancestor Inheritance and the Origin of Power-Law Covariance in h(p) — Self-as-an-End</title>
+  <meta name="description" content="ZFCρ Paper LIV: Recursive Ancestor Inheritance and the Origin of Power-Law Covariance in h(p) — ZFCρ Series · Paper LIV">
+  <meta property="og:title" content="ZFCρ Paper LIV: Recursive Ancestor Inheritance and the Origin of Power-Law Covariance in h(p)">
+  <meta name="author" content="Han Qin">
+  <meta name="citation_title" content="ZFCρ Paper LIV: Recursive Ancestor Inheritance and the Origin of Power-Law Covariance in h(p)">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19426095">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ZFCρ Paper LIV: Recursive Ancestor Inheritance and the Origin of Power-Law Covariance in h(p)",
+    "alternativeHeadline": "ZFCρ 第LIV篇：递归祖先继承与h(p)幂律协方差的起源",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "identifier": "https://orcid.org/0009-0009-9583-0018"
+    },
+    "datePublished": "2026",
+    "keywords": "ZFCρ, integer complexity, recursive ancestor inheritance, power-law covariance, IC recursion tree, layered innovation theorem, H-prime",
+    "identifier": "https://doi.org/10.5281/zenodo.19426095"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      document.getElementById('lang-en').classList.remove('active');
+      document.getElementById('lang-zh').classList.remove('active');
+      document.getElementById('lang-en').style.display = 'none';
+      document.getElementById('lang-zh').style.display = 'none';
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      var tabs = document.querySelectorAll('.lang-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">ZFCρ Series · Paper LIV</div>
+        <h1>ZFCρ Paper LIV: Recursive Ancestor Inheritance and the Origin of Power-Law Covariance in h(p)</h1>
+        <div style="font-size:0.85em; color:#555; margin-top:0.3em;">ZFCρ 第LIV篇：递归祖先继承与h(p)幂律协方差的起源</div>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19426095">10.5281/zenodo.19426095</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+
+      <!-- ENGLISH CONTENT -->
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+        <p>Han Qin (秦汉)</p>
+<p>ORCID: 0009-0009-9583-0018</p>
+<p>April 2026</p>
+<hr>
+<h3>§1. Exact Shifted-Prime Reduction</h3>
+<p>For every prime p > 2, the IC recursion gives ρ(p) = ρ(p-1) + 1 (identity: p has no nontrivial factorization). Therefore:</p>
+<p>h(p) = ρ(p) - λ log p - μ_j = ρ(p-1) + 1 - λ log p - μ_j</p>
+<p>Since log p = log(p-1) + O(1/p), within dyadic block I_j (p ~ 2^j):</p>
+<p>h(p) = η(p-1) + O(2<sup>-j</sup>)</p>
+<p>where η(n) = ρ(n) - λ log n - μ̃_j is the detrended IC value field.</p>
+<p><strong>Proposition 1.1.</strong> The prime-indexed process h(p) is, up to O(2<sup>-j</sup>), the evaluation of the composite-indexed field η at the shifted primes p-1. All variation in h(p) comes from the factorization structure of p-1.</p>
+<p><strong>Cointegration (confirmed by Exp 7).</strong> ρ(p-1) has autocorrelation ~0.51 (near-flat), but this is a trend artifact: η(p-1) has autocorrelation ~0.04-0.11, matching h(p)'s. Corr(h(p), η(p-1)) = 0.901. The detrending by λ log(p-1) removes spurious persistence.</p>
+<hr>
+<h3>§2. Two Falsified Mechanisms</h3>
+<h4>2.1. Factor-subtree exhaustion (Paper 53 §6): DEAD</h4>
+<p><strong>Experiment 5.</strong> gcd(p_r-1, p_s-1) at various prime-index separations (N = 10¹⁰, 5000 pairs each):</p>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><th style="padding:0.35em 0.6em;border:1px solid #ddd;">separation</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">mean log(gcd)</th></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">1.30</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">100</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">1.51</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">10000</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">1.50</td></tr>
+</tbody></table>
+<p>Mean gcd ≈ 4.5, constant. Only trivial shared factors (2, 3, 6). No factor sharing to be "exhausted."</p>
+<h4>2.2. Spatial smoothness clustering: DEAD</h4>
+<p><strong>Experiment 8.</strong> Autocorrelation of smoothness indicators at j = 32:</p>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><th style="padding:0.35em 0.6em;border:1px solid #ddd;">indicator</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(lag=1)</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(lag=89)</th></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">I(P+(p-1) ≤ 10⁴)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">-0.001</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">-0.001</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">I(P+(p-1) ≤ √(p-1))</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">-0.001</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.000</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Ω(p-1)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.000</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">-0.001</td></tr>
+</tbody></table>
+<p>All below noise floor. <strong>Nearby primes' p-1 values are not co-smooth.</strong> Factor statistics explain 14% of h's lag-0 variance (Corr(Ω,h) = -0.37) but zero of its autocorrelation.</p>
+<h4>2.3. The distinction</h4>
+<p>Shallow factor statistics (Ω, P+, v_2, smooth indicators) capture <strong>contemporaneous variance</strong> of h(p) — which "price bucket" a prime falls into. But they carry zero <strong>autocorrelation</strong> — no information about serial dependence. The autocorrelation lives in the ρ-value field, not in factor counts.</p>
+<hr>
+<h3>§3. The Confirmed Mechanism: Recursive Ancestor Inheritance</h3>
+<h4>3.1. The gap compression test (Experiment 10)</h4>
+<p>For each prime p, compute η at three recursion layers:</p>
+<ul>
+<li>Layer 0: η₀ = η(p-1)</li>
+<li>Layer 1: η₁ = η((p-1)/2) (always valid since p-1 even)</li>
+<li>Layer 2: η₂ = η((p-1)/6) (valid for p ≡ 1 mod 6, ~50%)</li>
+</ul>
+<p>Innovation: δ₀₁ = ρ(p-1) - ρ((p-1)/2).</p>
+<p>Results at j = 32 (N = 10¹⁰, 190M primes):</p>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Quantity</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Value</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Stability across j</th></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₀, η₁) at lag 0</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>0.759</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.759-0.764</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(δ₀₁) at lag 1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>0.024</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.011-0.025</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₂) at lag 1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;"><strong>0.150</strong></td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.150-0.155</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₀) at lag 1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.108</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.100-0.109</td></tr>
+</tbody></table>
+<h4>3.2. Three confirmed facts</h4>
+<p><strong>Fact 1: Strong per-layer correlation inheritance.</strong> Corr(η₀, η₁) = 0.76. Each binary recursion layer passes 76% of its correlation to the next. In a linear projection η₀ ≈ β·η₁ + δ, R² = 0.58: layer 1 explains 58% of layer 0's variance in the regression sense. (Note: "76% correlation" and "58% variance explained" are distinct quantities; the former is not a variance ratio.)</p>
+<p><strong>Fact 2: Innovation whiteness.</strong> The per-layer innovation δ = ρ(p-1) - ρ((p-1)/2) has autocorrelation below 0.025 at lag 1, below 0.005 by lag 13. Each layer's contribution is nearly independent across prime indices.</p>
+<p><strong>Fact 3: Deeper layers carry stronger signal.</strong> η₂ (layer 2) has Corr = 0.150 at lag 1, vs η₀'s 0.108. Despite wider prime-index separation, the deeper layer shows 39% stronger autocorrelation. This is because dividing by 6 strips the deterministic factors 2 and 3, leaving a "purified ancestral skeleton" with less innovation noise.</p>
+<h4>3.3. Why η₁/η₀ ≈ 0.95 (not > 1)</h4>
+<p>Simple gap compression predicts that halving indices should increase correlation. But dividing by 2 halves both the gap AND the scale: (p-1)/2 ≈ 2<sup>j-1</sup>. The relative gap (gap/scale) is preserved. For a scale-invariant field, autocorrelation depends on relative gap, giving ratio ≈ 1. The observed 0.95 is consistent with slight scale-dependent effects.</p>
+<p>Layer 2 (÷6) shows enhancement because p ≡ 1 (mod 6) is a selected subset whose (p-1)/6 values carry a purified ancestral signal (factors 2 and 3 already stripped, their innovations removed).</p>
+<hr>
+<h3>§4. Layered Innovation Theorem</h3>
+<h4>4.0. Setup</h4>
+<p>As in Paper 53 §3.0. All theorems bound expectations under a second-order stationary model; applicability to deterministic h(p) depends on model fidelity.</p>
+<h4>4.1. Dyadic layered decomposition</h4>
+<p>Model the detrended value field as:</p>
+<p>η(n) = Σ<sub>ℓ=0</sub><sup>L</sup> a_ℓ · ξ<sub>ℓ, ⌊n/2^ℓ⌋</sub> + η_L(⌊n/2^L⌋)</p>
+<p>where:</p>
+<ul>
+<li>a_ℓ are layer weights with a_ℓ² ~ λ^ℓ for some 0 < λ < 1</li>
+<li>ξ<sub>ℓ,m</sub> are centered innovation fields at each dyadic scale</li>
+<li>η_L is the deep residual at truncation depth L</li>
+</ul>
+<h4>4.2. Assumptions</h4>
+<p><strong>(A1) Geometric weight decay.</strong> a_ℓ² ≤ C · λ^ℓ for some 0 < λ < 1.</p>
+<p><strong>(A2-int) Cross-cell innovation decorrelation with tail decay.</strong> For each layer ℓ, the innovation field ξ<sub>ℓ,m</sub> satisfies:</p>
+<p>|Cov(ξ<sub>ℓ,m</sub>, ξ<sub>ℓ,m+h</sub>)| ≤ C_ξ · (1 + |h|)<sup>-(1+β)</sup></p>
+<p>for some β > 0, uniformly in ℓ and m. (This is an integer-level assumption, stronger than what Exp 10 directly verifies. It implies the summability condition Σ<sub>h≠0</sub> |Cov| ≤ C_ξ' and additionally ensures the off-cell contribution decays.)</p>
+<p><strong>(A3) Residual control.</strong> The truncation residual η_L satisfies Var(η_L(⌊n/2^L⌋)) ≤ C · λ^L, i.e., it decays at the same geometric rate.</p>
+<p><strong>Empirical support for (A2).</strong> At prime-indexed points, the innovation δ(p_r) = ρ(p_r-1) - ρ((p_r-1)/2) has autocorrelation below 0.025 at lag 1, below 0.005 by lag 13 (Experiment 10). Prime-level near-whiteness is consistent with, but does not prove, integer-level tail decay.</p>
+<h4>4.3. Main theorem (integer-field covariance upper bound)</h4>
+<p><strong>Theorem 4.1 (Layered Innovation Theorem).</strong> Under (A1), (A2-int), and (A3), define the dyadic overlap kernel:</p>
+<p>K_ℓ(r) = P(⌊n/2^ℓ⌋ = ⌊(n+r)/2^ℓ⌋) = max(0, 1 - r/2^ℓ)</p>
+<p>for n uniform in a dyadic block of length 2^j. Then the integer-field covariance satisfies:</p>
+<p>C<sup>int</sup>_j(r) := Cov(η(n), η(n+r)) ≤ C₀ · r<sup>-α</sup></p>
+<p>for 1 ≤ r ≤ 2^j, where α = min(α₁, β) with α₁ = -log₂ λ.</p>
+<p><em>Proof sketch.</em> Expanding η(n) = Σ_ℓ a_ℓ ξ<sub>ℓ,⌊n/2^ℓ⌋</sub> + η_L, the covariance decomposes into same-layer diagonal, same-layer off-diagonal, cross-layer, and residual terms.</p>
+<p><strong>Same-layer diagonal.</strong> When ⌊n/2^ℓ⌋ = ⌊(n+r)/2^ℓ⌋ (probability K_ℓ(r)), the contribution is a_ℓ² · Var(ξ) · K_ℓ(r). Summing over ℓ:</p>
+<p>Σ<sub>ℓ≥0</sub> a_ℓ² · K_ℓ(r) ≤ C · Σ<sub>ℓ ≥ log₂ r</sub> λ^ℓ = C · r<sup>-α₁</sup></p>
+<p><strong>Same-layer off-diagonal.</strong> When indices differ by h = ⌊(n+r)/2^ℓ⌋ - ⌊n/2^ℓ⌋ ≥ 1 (which requires r ≥ 2^ℓ · h), (A2-int) gives |Cov| ≤ C_ξ · h<sup>-(1+β)</sup>. For fixed ℓ with 2^ℓ < r, the dominant off-diagonal term has h ≈ r/2^ℓ, contributing a_ℓ² · C_ξ · (r/2^ℓ)<sup>-(1+β)</sup>. Summing over ℓ < log₂ r:</p>
+<p>Σ<sub>ℓ < log₂ r</sub> C · λ^ℓ · (r/2^ℓ)<sup>-(1+β)</sup> ≤ C' · r<sup>-(1+β)</sup> · Σ_ℓ (λ · 2<sup>1+β</sup>)^ℓ</p>
+<p>which converges (for λ < 1 and β > 0) and gives O(r<sup>-(1+β)</sup>) ≤ O(r<sup>-β</sup>).</p>
+<p><strong>Cross-layer and residual.</strong> Similar estimates using (A2-int) and (A3). The cross-layer terms are bounded by products a_ℓ · a<sub>ℓ'</sub> times off-diagonal covariances, which sum to O(r<sup>-β</sup>). The residual contributes O(λ^L).</p>
+<p>Combining: C<sup>int</sup>_j(r) ≤ C₀ · r<sup>-α₁</sup> + C₁ · r<sup>-β</sup> + O(λ^L) ≤ C₂ · r<sup>-min(α₁,β)</sup>. □</p>
+<p><strong>Remark.</strong> This theorem gives an upper bound on integer-field covariance. A matching lower bound would require same-cell dominance (Var(ξ<sub>ℓ,m</sub>) ≥ c > 0). We state only the upper bound, which suffices for the F_j application.</p>
+<h4>4.4. From integer field to prime-indexed process</h4>
+<p><strong>Lemma 4.2 (Prime sampling).</strong> By Proposition 1.1, h(p_r) = η(p_r - 1) + O(2<sup>-j</sup>). The prime-level covariance C_j<sup>prime</sup>(k) = Cov(h(p_r), h(p<sub>r+k</sub>)) satisfies:</p>
+<p>C_j<sup>prime</sup>(k) = C<sup>int</sup>_j(p<sub>r+k</sub> - p_r) + O(2<sup>-j</sup>)</p>
+<p>Since consecutive primes differ by at least 2, the deterministic bound p<sub>r+k</sub> - p_r ≥ 2k holds. Substituting into Theorem 4.1:</p>
+<p>C_j<sup>prime</sup>(k) ≤ C₀ · (2k)<sup>-α</sup> + O(2<sup>-j</sup>) ≤ C₃ · k<sup>-α</sup></p>
+<p>for all k ≥ 1. This deterministic bound avoids any appeal to average prime gap estimates.</p>
+<h4>4.5. Calibration: pure binary model vs observation</h4>
+<p>Empirical data: Corr(η₀, η₁) = 0.76 (correlation, not variance ratio). In the pure binary model with η₀ ≈ b·η₁ + δ, this gives b = 0.76 and the per-layer variance weight ratio λ = b² ≈ 0.58, hence:</p>
+<p>α_binary = -log₂(0.58) ≈ 0.79</p>
+<p>Observed α ≈ 0.35-0.40 (from Paper 53). The gap arises because the actual IC recursion tree is not purely binary: factors 3, 5, 7, ... provide additional inheritance channels that slow the per-layer variance decay. The effective λ_eff ≈ 0.79-0.82, giving α_eff ≈ 0.32-0.34.</p>
+<p><strong>The binary model provides a heuristic upper bound on α; multi-factor corrections bring it toward observed values.</strong> This calibration is not a theorem-level derivation.</p>
+<hr>
+<h3>§5. Buildup Corollary</h3>
+<h4>5.1. Coarse smoothing lemma</h4>
+<p><strong>Lemma 5.1 (Coarse-to-prime transfer).</strong> The coarse-block covariance Γ_j<sup>(b)</sup>(m) from Paper 53 §3 relates to the prime-level covariance through triangular smoothing. Writing Y<sub>j,ℓ</sub> = Σ<sub>r=(ℓ-1)b+1</sub><sup>ℓb</sup> x<sub>j,r</sub> where x<sub>j,r</sub> = h(p<sub>j,r</sub>)/p<sub>j,r</sub>:</p>
+<p>Γ_j<sup>(b)</sup>(m) = Cov(Y_ℓ, Y<sub>ℓ+m</sub>) = Σ<sub>s=1</sub><sup>b</sup> Σ<sub>t=1</sub><sup>b</sup> Cov(x<sub>(ℓ-1)b+s</sub>, x<sub>(ℓ+m-1)b+t</sub>)</p>
+<p>Reindexing with k = (m-1)b + (t-s) ranging over [(m-1)b - (b-1), (m-1)b + (b-1)] and weighting by the number of (s,t) pairs giving each k:</p>
+<p>Γ_j<sup>(b)</sup>(m) = Σ<sub>d=-(b-1)</sub><sup>b-1</sup> (b - |d|) · C_x(mb + d)</p>
+<p>where C_x(k) = Cov(x<sub>j,r</sub>, x<sub>j,r+k</sub>) is the prime-level weighted covariance. Since x<sub>j,r</sub> = h(p<sub>j,r</sub>)/p<sub>j,r</sub> and p<sub>j,r</sub> ≈ 2^j within block I_j, C_x(k) ≈ 2<sup>-2j</sup> · C_j<sup>prime</sup>(k).</p>
+<p>The cumulative covariance is G_j<sup>(b)</sup>(M) = Σ<sub>m=1</sub><sup>M</sup> Γ_j<sup>(b)</sup>(m). The buildup height satisfies:</p>
+<p>F_j = sup_M G_j<sup>(b)</sup>(M) / (j·b·σ²) ≤ (b / σ²) · Σ<sub>k=1</sub><sup>M·b + b</sup> |C_x(k)|</p>
+<p><em>Proof.</em> |Γ_j<sup>(b)</sup>(m)| ≤ Σ_d (b-|d|) · |C_x(mb+d)| ≤ b · Σ<sub>d</sub> |C_x(mb+d)|. Summing over m ≤ M: Σ_m |Γ(m)| ≤ b · Σ<sub>k=1</sub><sup>Mb+b</sup> |C_x(k)|. Since G(M) ≤ Σ_m |Γ(m)|, the bound follows after dividing by j·b·σ². □</p>
+<h4>5.2. Buildup corollary</h4>
+<p><strong>Corollary 5.2.</strong> Under Theorem 4.1 and Lemma 4.2, suppose C_j<sup>prime</sup>(k) ≤ C₃ · k<sup>-α</sup> for α > 0. Let K_pk(j) be the peak scale in coarse blocks. Then:</p>
+<p>F_j ≤ (b/σ²) · Σ<sub>k=1</sub><sup>K_pk·b + b</sup> |C_x(k)| ≤ (1/σ²_x) · Σ<sub>k=1</sub><sup>K_pk·b</sup> C₃ · k<sup>-α</sup></p>
+<p>≤ C₄ · (K_pk · b)<sup>1-α</sup> / ((1-α) · σ²_x)</p>
+<p>If K_pk(j) ≤ j^c for some c, then F_j ≤ C₅ · j<sup>c(1-α) + 1-α</sup> (absorbing b ≈ j), which is polynomial in j. □</p>
+<h4>5.3. Connection to Papers 52-53</h4>
+<p>Corollary 5.2 establishes F_j polynomial (one half of Conjecture 53.1) under the layered innovation assumptions plus polynomial peak scale. The other half (L_j polynomial) requires a separate post-peak screening drift argument, deferred to Paper 55. Together, F_j and L_j polynomial would give the mean spectral target E[I_j(0)] ≤ Cj·D_j via Paper 53's Screening Return Theorem. From the mean spectral target to H', Paper 52's two technical upgrades (mean-to-deterministic, L²-to-pathwise) remain open.</p>
+<hr>
+<h3>§6. Structural Interpretation (Heuristic)</h3>
+<h4>6.1. Why factor statistics carry zero autocorrelation</h4>
+<p>Ω(p-1) and P+(p-1) are marginal descriptors of p-1's factorization — they count or measure factors but discard the recursive VALUE information that ρ encodes. Two nearby numbers can have identical Ω but very different ρ values (depending on which factors they have and how those factors' own ρ values compare).</p>
+<p>The recursive inheritance operates on the ρ-value field through the IC tree, not on factor labels. This creates a profound separation: <strong>attributes (factor counts) are independent, but prices (ρ values) are correlated.</strong></p>
+<h4>6.2. Correlation range (heuristic)</h4>
+<p>The precise relationship between IC tree depth j and the observed crossing scale n_cross ≈ 30j remains an open question. In the layered model, deeper layers provide broader spatial innovations, but the mapping from layer depth to correlation range depends on the full multi-factor tree structure, not just the binary backbone. We note only that polynomial correlation range in j is consistent with the geometric weight decay (A1) and leave the precise derivation to future work.</p>
+<h4>6.3. The complete picture</h4>
+<p>IC recursion has j layers (tree depth for numbers ~ 2^j). Each layer contributes an independent innovation field. Deeper layers provide spatially broader but weaker innovations. The sum over all layers produces power-law covariance. The additive path (ρ(n-1)+1) creates cross-layer correlation inheritance (Corr(η₀,η₁) = 0.76 per binary step). The multiplicative path (ρ(d)+ρ(n/d)+2) creates the innovations. The net result: screened long memory with power-law buildup and eventual screening return.</p>
+<hr>
+<h3>§7. Honest Conjectures and Deferred Problems</h3>
+<h4>7.1. Conjectures</h4>
+<p><strong>Conjecture 54.A (Geometric innovation decay).</strong> The layered decomposition of η(n) at dyadic scales satisfies (A1) with some 0 < λ < 1.</p>
+<p><strong>Conjecture 54.B (Innovation decorrelation).</strong> The dyadic cell innovation fields satisfy (A2-int): uniformly summable same-layer covariance. Empirical support: prime-level innovation autocorrelation below 0.025.</p>
+<h4>7.2. Deferred</h4>
+<p><strong>Problem 54.C.</strong> Characterize the post-peak screening drift ψ_j(R) controlling L_j (Paper 53's return time). This is the remaining input for the full Conjecture 53.1. Paper 55.</p>
+<hr>
+<h3>§8. Summary</h3>
+<h4>8.1. Proved and confirmed</h4>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Result</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">Type</th></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">h(p) = η(p-1) + O(2<sup>-j</sup>) (Prop 1.1)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Exact identity</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Prime sampling (Lemma 4.2)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Exact reduction</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Factor sharing constant (Exp 5)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Negative empirical</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Smoothness uncorrelated (Exp 8)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Negative empirical</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₀,η₁) = 0.76, white innovation (Exp 10)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Positive empirical</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Layered Innovation Theorem (Thm 4.1)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Conditional theorem (upper bound)</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Coarse smoothing (Lemma 5.1)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Exact identity</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Buildup Corollary (Cor 5.2)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Conditional corollary</td></tr>
+</tbody></table>
+<h4>8.2. Updated gap for mean spectral target</h4>
+<p>``<code> Conjecture 54.A (geometric decay) + 54.B (decorrelation) → Theorem 4.1: integer-field C(r) ≤ C·r<sup>-α</sup> → Lemma 4.2: prime-level transfer → Corollary 5.2: F_j polynomial + L_j polynomial (Problem 54.C, Paper 55) → Paper 53 Screening Return Theorem → E[I_j(0)] ≤ Cj·D_j (mean spectral target) + Paper 52 upgrade 1 (mean → deterministic) + Paper 52 upgrade 2 (L² → pathwise) → H' </code>``</p>
+<hr>
+<h3>§9. Conclusion</h3>
+<p>Paper 53 established the Screening Return Theorem and reduced H' to polynomial bounds on F_j and L_j. Paper 54 attacks the F_j side by identifying the structural origin of h(p)'s power-law covariance.</p>
+<p>Two candidate mechanisms were eliminated by experiment: factor-subtree exhaustion (gcd constant) and smoothness clustering (Ω uncorrelated). The confirmed mechanism is recursive ancestor inheritance: η(p-1) inherits 76% of its structure from η((p-1)/2) per binary layer, with nearly white innovations at each layer.</p>
+<p>The Layered Innovation Theorem (Theorem 4.1) formalizes this: dyadic decomposition with geometric weight decay and cross-cell decorrelation gives a power-law upper bound on integer-field covariance. The pure binary model predicts α = 0.79; multi-factor corrections reduce this toward the observed 0.35-0.40. A coarse smoothing lemma (Lemma 5.1) transfers the bound to the prime-level buildup height, and the Buildup Corollary (5.2) gives F_j polynomial under polynomial peak scale.</p>
+<p>The remaining gap for the mean spectral target (via Paper 53) is L_j polynomial — the post-peak screening drift question deferred to Paper 55. From mean spectral target to H', Paper 52's two technical upgrades (mean-to-deterministic and L²-to-pathwise) remain open. Each paper in the series (50-54) has narrowed the gap by identifying, testing, and sometimes falsifying structural hypotheses. The method of "先验引路，后验辅助，定理确定" continues to guide the program.</p>
+<hr>
+<h3>Acknowledgments</h3>
+<p>AI contributions. ChatGPT (公西华): Theorem 54.1 (old version) death certificate; replacement ancestor-field theorem architecture; toy model X(n) = Σ a_ℓ ξ_ℓ(⌊n/2^ℓ⌋); overlap kernel formulation K_ℓ(r) = (1-r/2^ℓ)₊; A2 two-layer separation; α = 0.79 correction; "shallow statistics explain variance, not covariance." Gemini (子夏): gap compression mechanism; "属性独立，价格相关"; cointegration explanation; scale invariance explanation for η₁/η₀ ≈ 0.95; Layer 2 as "purified ancestral skeleton"; dyadic alignment integral. Grok (子贡): α = -2log₂(r) = 0.79 arithmetic verification; Corr(h)/Corr(η) ratio constant ≈ 1.27; Ω negative autocorrelation transition at j ≈ 27; multi-factor correction λ_eff ≈ 0.79. Claude (子路): all experiments (Exp 1-10); cointegration verification; smooth-pair zero autocorrelation discovery; gap compression test design; three key numbers identification; nuanced η₁/η₀ interpretation; working notes v1-v4.</p>
+      </div>
+
+      <!-- CHINESE CONTENT -->
+      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
+        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立写作。所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
+        <p>秦汉 (Han Qin)</p>
+<p>ORCID: 0009-0009-9583-0018</p>
+<p>2026年4月</p>
+<hr>
+<p><strong>摘要。</strong> 识别h(p)幂律协方差的结构起源。N=10¹⁰上的十组实验系统性排除两个候选机制（因子子树耗竭：gcd恒定；空间光滑聚集：smooth指标autocorrelation为零），确认第三个：IC递推树的递归祖先继承。三个经验事实：(i) Corr(η(p-1), η((p-1)/2)) = 0.76（强逐层相关继承）；(ii) 层间innovation δ的autocorrelation < 0.025（近白噪声）；(iii) 更深层η((p-1)/6)的autocorrelation比η(p-1)更强（选择纯化的祖先信号）。证明条件性层叠创新定理：若整数值场η(n)的二进层叠分解具有几何衰减创新权重和跨格去相关创新，则整数场协方差有幂律上界。粗粒化平滑引理将此转移到素数级积累高度F_j，给出F_j多项式（猜想53.1的F_j半边）。L_j推迟到第55篇。从均值谱目标到H'仍保留第52篇的两个技术升级（均值到确定性，L²到逐路径）。</p>
+<hr>
+<h3>§1. 精确移位素数归约</h3>
+<p>对所有素数p > 2：ρ(p) = ρ(p-1) + 1（恒等式）。因此：</p>
+<p>h(p) = η(p-1) + O(2<sup>-j</sup>)</p>
+<p>其中η(n) = ρ(n) - λ·log(n) - μ̃_j。</p>
+<p><strong>命题1.1。</strong> 素数索引过程h(p)是复合索引η场在移位素数p-1处的求值（精度O(2<sup>-j</sup>)）。h(p)的全部变异来自p-1的因子结构。</p>
+<p><strong>协整（Exp 7确认）。</strong> ρ(p-1)的autocorrelation约0.51（近平坦），但这是趋势伪迹：η(p-1)的autocorrelation约0.04-0.11，与h(p)匹配。Corr(h, η(p-1)) = 0.901。</p>
+<hr>
+<h3>§2. 两个被否证的机制</h3>
+<h4>2.1. 因子子树耗竭（第53篇§6）：否证</h4>
+<p>gcd(p_r-1, p_s-1) ≈ 4.5，所有距离上恒定。只有trivial共享因子(2, 3, 6)。</p>
+<h4>2.2. 空间光滑聚集：否证</h4>
+<p>smooth indicator和Ω(p-1)的autocorrelation在所有lag上 < 0.002。相邻素数的p-1不会系统性地同时光滑。</p>
+<h4>2.3. 区分</h4>
+<p>浅层因子统计（Ω, P+, v_2）捕捉h的<strong>同期方差</strong>（Corr(Ω,h) = -0.37）但零<strong>自相关</strong>。自相关存在于ρ值场中，不在因子计数中。<strong>属性独立，价格相关。</strong></p>
+<hr>
+<h3>§3. 确认的机制：递归祖先继承</h3>
+<h4>3.1. 间距压缩测试（Exp 10）</h4>
+<p>三层ρ值：η₀ = η(p-1)，η₁ = η((p-1)/2)，η₂ = η((p-1)/6)。 Innovation: δ₀₁ = ρ(p-1) - ρ((p-1)/2)。</p>
+<p>j=32结果：</p>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><th style="padding:0.35em 0.6em;border:1px solid #ddd;">量</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">值</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">跨j稳定性</th></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₀, η₁) lag 0</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.759</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.759-0.764</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(δ₀₁) lag 1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.024</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.011-0.025</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₂) lag 1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.150</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.150-0.155</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">Corr(η₀) lag 1</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.108</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">0.100-0.109</td></tr>
+</tbody></table>
+<h4>3.2. 三个确认的事实</h4>
+<p><strong>事实1：强逐层相关继承。</strong> Corr(η₀, η₁) = 0.76。每个二进递归层传递76%的相关。线性投影η₀ ≈ β·η₁ + δ中R² = 0.58。（注："76%相关"和"58%方差解释"是不同的量；前者不是方差比。）</p>
+<p><strong>事实2：创新白噪声。</strong> 层间innovation δ的autocorrelation < 0.025。</p>
+<p><strong>事实3：更深层信号更强。</strong> η₂的Corr = 0.150 vs η₀的0.108。除以6剥离了确定性因子2和3，留下"纯化的祖先骨架"。</p>
+<h4>3.3. η₁/η₀ ≈ 0.95的解释</h4>
+<p>除以2同时halves间距和尺度，保持相对间距不变。对scale-invariant场，autocorrelation取决于相对间距。</p>
+<hr>
+<h3>§4. 层叠创新定理</h3>
+<h4>4.1. 二进层叠分解</h4>
+<p>η(n) = Σ<sub>ℓ≥0</sub> a_ℓ · ξ<sub>ℓ, ⌊n/2^ℓ⌋</sub> + deep residual</p>
+<h4>4.2. 假设</h4>
+<p><strong>(A1)</strong> 几何权重衰减：a_ℓ² ≤ C · λ^ℓ，0 < λ < 1。</p>
+<p><strong>(A2-int)</strong> 跨格创新去相关（尾衰减版）：|Cov(ξ<sub>ℓ,m</sub>, ξ<sub>ℓ,m+h</sub>)| ≤ C_ξ · (1+|h|)<sup>-(1+β)</sup>，β > 0。蕴含可和性且保证off-cell贡献衰减。</p>
+<p><strong>(A3)</strong> 残差控制：Var(η_L(⌊n/2^L⌋)) ≤ C·λ^L。</p>
+<p><strong>经验支持（A2-prime）。</strong> 素数索引上的innovation δ autocorrelation < 0.025（lag 1），< 0.005（lag 13）。与整数级尾衰减相容但不等价。</p>
+<h4>4.3. 主定理（整数场协方差上界）</h4>
+<p><strong>定理4.1（层叠创新定理）。</strong> 在(A1), (A2-int), (A3)下，整数场协方差满足：</p>
+<p>C<sup>int</sup>_j(r) ≤ C₀ · r<sup>-α</sup></p>
+<p>其中α = min(-log₂ λ, β)。同层对角贡献给r<sup>-α₁</sup>（α₁ = -log₂ λ），off-diagonal尾衰减给r<sup>-β</sup>。</p>
+<p><strong>注。</strong> 仅上界。下界需同格主导条件。</p>
+<h4>4.4. 从整数场到素数索引过程</h4>
+<p><strong>引理4.2（素数采样）。</strong> 连续素数差至少为2，故p<sub>r+k</sub> - p_r ≥ 2k（确定性下界）。代入定理4.1：C_j<sup>prime</sup>(k) ≤ C₃ · k<sup>-α</sup>。无需素数间距平均估计。</p>
+<h4>4.5. 校准</h4>
+<p>继承相关0.76（相关，非方差比）。纯二进模型λ = 0.76² ≈ 0.58。α_binary = -log₂(0.58) ≈ 0.79（启发性上界）。观测α ≈ 0.35-0.40。<strong>启发性校准，非定理级推导。</strong></p>
+<hr>
+<h3>§5. 积累推论</h3>
+<h4>5.1. 粗粒化平滑引理</h4>
+<p><strong>引理5.1。</strong> 第53篇§3的粗粒化协方差Γ_j<sup>(b)</sup>(m) = Σ<sub>d=-(b-1)</sub><sup>b-1</sup> (b-|d|) · C_x(mb+d)是素数级协方差的三角平滑。|Γ(m)| ≤ b·Σ_d |C_x(mb+d)|。对m ≤ M求和：Σ |Γ| ≤ b·Σ<sub>k≤Mb+b</sub> |C_x(k)|。故F_j ≤ (b/σ²)·Σ<sub>k≤K_pk·b</sub> |C_x(k)| / (j·b) = (1/(j·σ²))·Σ_k |C_x(k)|。</p>
+<h4>5.2. 积累推论</h4>
+<p><strong>推论5.2。</strong> 若C_j<sup>prime</sup>(k) ≤ C₃·k<sup>-α</sup>且K_pk(j) ≤ j^c，则F_j ≤ C₅·j<sup>c(1-α)+1-α</sup>，多项式。</p>
+<h4>5.3. 与第52-53篇的连接</h4>
+<p>推论5.2建立F_j多项式（猜想53.1的一半）。另一半（L_j多项式）需要单独的post-peak drift argument，推迟到第55篇。F_j + L_j多项式经第53篇的屏蔽回归定理给出均值谱目标。从均值谱目标到H'仍保留第52篇的两个技术升级（均值到确定性，L²到逐路径）。</p>
+<hr>
+<h3>§6. 结构解释（启发性）</h3>
+<h4>6.1. 为什么因子统计不携带自相关</h4>
+<p>Ω和P+是p-1因子化的边际描述符。ρ的递归继承操作在ρ值场上，不在因子标签上。</p>
+<h4>6.2. 为什么相关长度是O(j)</h4>
+<p>IC树深度约j层。每层提供跨越~2^ℓ长度的创新。最深的有意义层ℓ ~ j。在几何衰减权重下，有效范围随j多项式增长。</p>
+<hr>
+<h3>§7. 猜想和推迟的问题</h3>
+<p><strong>猜想54.A（几何创新衰减）。</strong> η(n)的层叠分解满足(A1)。</p>
+<p><strong>猜想54.B（创新去相关）。</strong> 二进格创新场满足(A2-int)。</p>
+<p><strong>问题54.C（推迟）。</strong> 刻画控制L_j的post-peak screening drift ψ_j(R)。第55篇。</p>
+<hr>
+<h3>§8. 总结</h3>
+<table style="width:100%;border-collapse:collapse;font-size:0.88em;margin:1em 0;">
+<tr><th style="padding:0.35em 0.6em;border:1px solid #ddd;">结果</th><th style="padding:0.35em 0.6em;border:1px solid #ddd;">类型</th></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">h(p) = η(p-1) + O(2<sup>-j</sup>)</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">精确恒等式</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">因子共享恒定</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">否定经验</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">光滑度无相关</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">否定经验</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">76%继承，白噪声创新</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">肯定经验</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">层叠创新定理</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">条件定理</td></tr>
+<tr><td style="padding:0.35em 0.6em;border:1px solid #ddd;">积累推论</td><td style="padding:0.35em 0.6em;border:1px solid #ddd;">条件推论</td></tr>
+</tbody></table>
+<hr>
+<h3>§9. 结论</h3>
+<p>第53篇建立了屏蔽回归定理并将H'归结为F_j和L_j的多项式界。第54篇通过识别h(p)幂律协方差的结构起源攻击F_j。</p>
+<p>两个候选机制被实验排除。确认的机制是递归祖先继承：η(p-1)通过每个二进层继承76%的结构，各层创新近白噪声。</p>
+<p>层叠创新定理将此形式化：二进分解配合几何权重衰减和跨格去相关给出整数场协方差的幂律上界。粗粒化平滑引理将此转移到素数级积累高度。积累推论给出F_j多项式。</p>
+<p>到均值谱目标的剩余距离（经第53篇）是L_j多项式，即post-peak screening drift问题，推迟到第55篇。从均值谱目标到H'仍保留第52篇的两个技术升级（均值到确定性，L²到逐路径）。</p>
+<hr>
+<h3>致谢</h3>
+<p>AI贡献。ChatGPT（公西华）：旧版定理54.1死亡证明，替代祖先场定理架构，toy model，重叠核公式，A2两层分离，α=0.79修正。Gemini（子夏）：间距压缩机制，"属性独立，价格相关"，协整解释，尺度不变性，层2"纯化祖先骨架"。Grok（子贡）：α = -2log₂(r) = 0.79算术验证，ratio constant 1.27，多因子修正。Claude（子路）：全部实验(Exp 1-10)，协整验证，smooth零相关发现，间距压缩测试设计，三个关键数字识别，working notes v1-v4。</p>
+      </div>
+
+    </article>
+  </main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>
