@@ -154,7 +154,16 @@
 <h4>4.2. Assumptions</h4>
 <p><strong>(A1) Geometric weight decay.</strong> a_ℓ² ≤ C · λ^ℓ for some 0 < λ < 1.</p>
 <p><strong>(A2-int) Cross-cell innovation decorrelation with tail decay.</strong> For each layer ℓ, the innovation field ξ<sub>ℓ,m</sub> satisfies:</p>
-<p>|Cov(ξ<sub>ℓ,m</sub>, ξ<sub>ℓ,m+h</sub>)| ≤ C_ξ · (1 + |h|)<sup>-(1+β)</sup></p>
+<div class="table-wrapper" style="overflow-x:auto; margin:1.5rem 0;">
+<table>
+<thead><tr>
+<th>Cov(ξ<sub>ℓ,m</sub>, ξ<sub>ℓ,m+h</sub>)</th>
+<th>≤ C_ξ · (1 +</th>
+<th>h</th>
+<th>)<sup>-(1+β)</sup></th>
+</tr></thead>
+<tbody>
+</tbody></table></div>
 <p>for some β > 0, uniformly in ℓ and m. (This is an integer-level assumption, stronger than what Exp 10 directly verifies. It implies the summability condition Σ<sub>h≠0</sub> |Cov| ≤ C_ξ' and additionally ensures the off-cell contribution decays.)</p>
 <p><strong>(A3) Residual control.</strong> The truncation residual η_L satisfies Var(η_L(⌊n/2^L⌋)) ≤ C · λ^L, i.e., it decays at the same geometric rate.</p>
 <p><strong>Empirical support for (A2).</strong> At prime-indexed points, the innovation δ(p_r) = ρ(p_r-1) - ρ((p_r-1)/2) has autocorrelation below 0.025 at lag 1, below 0.005 by lag 13 (Experiment 10). Prime-level near-whiteness is consistent with, but does not prove, integer-level tail decay.</p>

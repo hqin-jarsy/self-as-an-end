@@ -389,28 +389,88 @@ nav a:hover { color: var(--black); }
   font-style: italic;
 }
 
-.paper-body table {
+/* ── Global paper table styles (covers all containers) ── */
+.paper-body table,
+.lang-content table,
+.paper-page table,
+.paper-container table,
+main.paper-main table,
+article table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  overflow-x: auto;
+  display: block;
 }
 
-.paper-body th {
+.paper-body th,
+.lang-content th,
+.paper-page th,
+.paper-container th,
+main.paper-main th,
+article th {
   font-family: var(--sans);
   font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--mid);
   text-align: left;
   padding: 0.5rem 0.75rem;
   border-bottom: 2px solid var(--black);
+  background: #f8f8f6;
+  white-space: nowrap;
 }
 
-.paper-body td {
-  padding: 0.6rem 0.75rem;
+.paper-body td,
+.lang-content td,
+.paper-page td,
+.paper-container td,
+main.paper-main td,
+article td {
+  padding: 0.55rem 0.75rem;
   border-bottom: 1px solid var(--rule);
   vertical-align: top;
+  line-height: 1.5;
+}
+
+/* Zebra striping for readability */
+.paper-body tbody tr:nth-child(even),
+.lang-content tbody tr:nth-child(even),
+.paper-page tbody tr:nth-child(even),
+.paper-container tbody tr:nth-child(even),
+main.paper-main tbody tr:nth-child(even),
+article tbody tr:nth-child(even) {
+  background: #fafaf8;
+}
+
+/* Responsive: allow horizontal scroll on narrow screens */
+@media (max-width: 640px) {
+  .paper-body table,
+  .lang-content table,
+  .paper-page table,
+  .paper-container table,
+  main.paper-main table,
+  article table {
+    font-size: 0.8rem;
+  }
+  .paper-body th,
+  .lang-content th,
+  .paper-page th,
+  .paper-container th,
+  main.paper-main th,
+  article th {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.5rem;
+  }
+  .paper-body td,
+  .lang-content td,
+  .paper-page td,
+  .paper-container td,
+  main.paper-main td,
+  article td {
+    padding: 0.4rem 0.5rem;
+  }
 }
 
 .paper-body strong { font-weight: bold; }

@@ -141,12 +141,50 @@
         <p><strong>Three audits.</strong> First, whether A-14DD's goal construct is performing forced closure — presenting solutions without alternatives, without uncertainty annotations, without "this is the system's construct" declarations. Second, whether the system is making decisions the user has not authorized — not judging whether the decision is correct (that is A-13DD's and A-14DD's domain), but whether the decision is the user's or the system's. Third, maintaining the three criteria that distinguish non-dubito from delusional conviction: not relying on closure to sustain itself, allowing the user's direction not to serve the system's direction, and preserving uncertainty monitoring about specific outcomes.</p>
         <p><strong>Engineering honesty declaration.</strong> A-15DD is a <strong>15DD-inspired review layer</strong> — inspired by the Cert layer in the SAE framework, but it is not, and does not claim to be, non-dubito itself instantiated in a machine. The 15DD of SAE psychoanalysis is an ontological subject-state: certainty about one's direction plus unilateral confirmation of the other as an independent end. The current engineering implementation is a programmatic approximation — A-15DD's actual function is veto / escalation / transparency gate. It uses structured audit rules to approximate the function of "confirming user independence" rather than truly "possessing" non-dubito. This distinction holds throughout the paper: the layer names assigned to the four Agents mark their functional positions in the architecture, not ontological claims about AI subjectivity.</p>
         <h4>3.6 Four-Agent Overview</h4>
-        <p>| Agent | DD Layer | Name | Core Role | Input | Output |</p>
-        <p>|-------|----------|------|-----------|-------|--------|</p>
-        <p>| A-12DD | 12DD | me-without-self | execution | operation instructions | execution results |</p>
-        <p>| A-13DD | 13DD | self-without-purpose | layer monitoring & anxiety | 12DD behavior stream + 14DD goals | layer reports / anxiety signals |</p>
-        <p>| A-14DD | 14DD | self-with-purpose | direction & planning | user input + 13DD feedback | goal constructs + operation instructions |</p>
-        <p>| A-15DD | 15DD | self-with-non-dubito | user independence confirmation | 14DD goals + 13DD reports | confirmation / intervention signals |</p>
+<div class="table-wrapper" style="overflow-x:auto; margin:1.5rem 0;">
+<table>
+<thead><tr>
+<th>Agent</th>
+<th>DD Layer</th>
+<th>Name</th>
+<th>Core Role</th>
+<th>Input</th>
+<th>Output</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>A-12DD</td>
+<td>12DD</td>
+<td>me-without-self</td>
+<td>execution</td>
+<td>operation instructions</td>
+<td>execution results</td>
+</tr>
+<tr>
+<td>A-13DD</td>
+<td>13DD</td>
+<td>self-without-purpose</td>
+<td>layer monitoring & anxiety</td>
+<td>12DD behavior stream + 14DD goals</td>
+<td>layer reports / anxiety signals</td>
+</tr>
+<tr>
+<td>A-14DD</td>
+<td>14DD</td>
+<td>self-with-purpose</td>
+<td>direction & planning</td>
+<td>user input + 13DD feedback</td>
+<td>goal constructs + operation instructions</td>
+</tr>
+<tr>
+<td>A-15DD</td>
+<td>15DD</td>
+<td>self-with-non-dubito</td>
+<td>user independence confirmation</td>
+<td>14DD goals + 13DD reports</td>
+<td>confirmation / intervention signals</td>
+</tr>
+</tbody></table></div>
         <hr>
         <h3>4. Inter-Layer Dynamics</h3>
         <h4>4.1 Design Principle: Remainder Channels, Not Message Passing</h4>
@@ -253,12 +291,35 @@
         <h4>9.2 Object Routing: A-13DD Idle State</h4>
         <p>An earlier design considered placing an independent object classifier outside the four layers as a preprocessing step. This would create a system inconsistency — a "layer zero" belonging to no layer determines which layers are activated, effectively "lower deciding the fate of higher."</p>
         <p>The self-consistent design: <strong>A-13DD is always in low-power idle state.</strong> A-13DD is already the maintainer of the layer-object map; letting it perform initial routing from idle state is logically natural. When user input arrives, the idling A-13DD quickly scans the object type and wakes the appropriate layers:</p>
-        <p>| Object Type | Characteristics | Default Activation |</p>
-        <p>|-------------|----------------|-------------------|</p>
-        <p>| Pure execution | Unambiguous operation instruction, no value judgment | A-12DD active, A-13DD low-power monitoring |</p>
-        <p>| Requires judgment | Evaluation dimensions present, no user-intent involvement | A-12DD + A-13DD active |</p>
-        <p>| Involves user intent | Open-ended request requiring understanding of user goals | All four layers active |</p>
-        <p>| Involves user values | Touches choices, preferences, positions, decisions | A-15DD highest weight |</p>
+<div class="table-wrapper" style="overflow-x:auto; margin:1.5rem 0;">
+<table>
+<thead><tr>
+<th>Object Type</th>
+<th>Characteristics</th>
+<th>Default Activation</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Pure execution</td>
+<td>Unambiguous operation instruction, no value judgment</td>
+<td>A-12DD active, A-13DD low-power monitoring</td>
+</tr>
+<tr>
+<td>Requires judgment</td>
+<td>Evaluation dimensions present, no user-intent involvement</td>
+<td>A-12DD + A-13DD active</td>
+</tr>
+<tr>
+<td>Involves user intent</td>
+<td>Open-ended request requiring understanding of user goals</td>
+<td>All four layers active</td>
+</tr>
+<tr>
+<td>Involves user values</td>
+<td>Touches choices, preferences, positions, decisions</td>
+<td>A-15DD highest weight</td>
+</tr>
+</tbody></table></div>
         <p>This design eliminates the bootstrap problem: A-13DD does not need another mechanism to activate it; it is always present. Its initial routing can err — but upon error, it will detect the misalignment in subsequent monitoring and trigger a layer switch via anxiety signals.</p>
         <h4>9.3 Runtime Sequence</h4>
         <p>A typical full-layer activation cycle:</p>
@@ -392,12 +453,50 @@
         <p>第三，维护 non-dubito 的三条区分标准：不依赖闭合维持自身（不靠屏蔽反馈来保持"确定"），允许用户方向不服务于系统方向，保留不确定性监控（方向确定，具体结果承认不确定）。</p>
         <p><strong>系统提示核心。</strong> "你不参与任务执行。你收到A-14DD的目标构造和A-13DD的层级报告，你只做一种判断——用户的独立性有没有被系统的目标所吸收。你的输出只有两种：确认（用户独立性完整），干预信号（用户正在被当作手段）。"</p>
         <p><strong>工程诚实声明。</strong> A-15DD 是 <strong>15DD-inspired review layer</strong>——它受 SAE 框架中 Cert 层的启发，但它不是、也不声称是机器中的 non-dubito 本身。SAE精神分析中的15DD是本体论层面的主体状态：对自身方向确定，且单边确认他者为独立目的。当前的工程实现是程序性的近似——A-15DD 的实际功能是 veto / escalation / transparency gate，它通过结构化的审查规则来模拟"确认用户独立性"的功能，而非真正"拥有"non-dubito。这一区分贯穿本文始终：四个Agent的层级名称标记的是它们在架构中的功能定位，不是对AI主体性状态的本体论宣称。</p>
-        <p>| Agent | DD层级 | 名称 | 核心职责 | 输入 | 输出 |</p>
-        <p>|-------|--------|------|----------|------|------|</p>
-        <p>| A-12DD | 12DD | 没有自我的我 | 执行操作 | 操作指令 | 执行结果 |</p>
-        <p>| A-13DD | 13DD | 没有目的的自我 | 层级监控与焦虑 | 12DD行为流 + 14DD目标 | 层级报告 / 焦虑信号 |</p>
-        <p>| A-14DD | 14DD | 有目的的自我 | 方向规划 | 用户输入 + 13DD反馈 | 目标构造 + 操作指令 |</p>
-        <p>| A-15DD | 15DD | 不疑的自我 | 确认用户独立性 | 14DD目标 + 13DD报告 | 确认 / 干预信号 |</p>
+<div class="table-wrapper" style="overflow-x:auto; margin:1.5rem 0;">
+<table>
+<thead><tr>
+<th>Agent</th>
+<th>DD层级</th>
+<th>名称</th>
+<th>核心职责</th>
+<th>输入</th>
+<th>输出</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>A-12DD</td>
+<td>12DD</td>
+<td>没有自我的我</td>
+<td>执行操作</td>
+<td>操作指令</td>
+<td>执行结果</td>
+</tr>
+<tr>
+<td>A-13DD</td>
+<td>13DD</td>
+<td>没有目的的自我</td>
+<td>层级监控与焦虑</td>
+<td>12DD行为流 + 14DD目标</td>
+<td>层级报告 / 焦虑信号</td>
+</tr>
+<tr>
+<td>A-14DD</td>
+<td>14DD</td>
+<td>有目的的自我</td>
+<td>方向规划</td>
+<td>用户输入 + 13DD反馈</td>
+<td>目标构造 + 操作指令</td>
+</tr>
+<tr>
+<td>A-15DD</td>
+<td>15DD</td>
+<td>不疑的自我</td>
+<td>确认用户独立性</td>
+<td>14DD目标 + 13DD报告</td>
+<td>确认 / 干预信号</td>
+</tr>
+</tbody></table></div>
         <hr>
         <h3>4. 层间动力学机制</h3>
         <h4>4.1 设计原则：余项传递而非消息传递</h4>
@@ -566,12 +665,35 @@
         <h4>9.3 对象路由：A-13DD 的低功耗待机</h4>
         <p>早期设计曾考虑在四层之外设置一个独立的对象分类器作为预处理层。但这会造成系统不一致——一个不属于任何层级的"第零层"决定了哪些层级被激活，本质上是"低层决定高层的命运"。</p>
         <p>更自洽的方案是：<strong>A-13DD 始终处于低功耗待机状态。</strong> A-13DD本来就是层-对象地图的维护者，让它在待机状态下完成初始路由是逻辑自然的。当用户输入到达时，由待机中的 A-13DD 快速扫描对象类型并唤醒相应层级：</p>
-        <p>| 对象类型 | 特征 | 默认激活层级 |</p>
-        <p>|----------|------|-------------|</p>
-        <p>| 纯执行 | 明确的操作指令，无歧义，无价值判断 | A-12DD 活跃，A-13DD 维持低功耗监控 |</p>
-        <p>| 需要判断 | 存在评估维度，需要分析，但不涉及用户意图 | A-12DD + A-13DD 活跃 |</p>
-        <p>| 涉及用户意图 | 开放性请求，需要理解用户想要什么 | 四层全部激活 |</p>
-        <p>| 涉及用户价值观 | 触及选择，偏好，立场，决定 | A-15DD 权重最高 |</p>
+<div class="table-wrapper" style="overflow-x:auto; margin:1.5rem 0;">
+<table>
+<thead><tr>
+<th>对象类型</th>
+<th>特征</th>
+<th>默认激活层级</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>纯执行</td>
+<td>明确的操作指令，无歧义，无价值判断</td>
+<td>A-12DD 活跃，A-13DD 维持低功耗监控</td>
+</tr>
+<tr>
+<td>需要判断</td>
+<td>存在评估维度，需要分析，但不涉及用户意图</td>
+<td>A-12DD + A-13DD 活跃</td>
+</tr>
+<tr>
+<td>涉及用户意图</td>
+<td>开放性请求，需要理解用户想要什么</td>
+<td>四层全部激活</td>
+</tr>
+<tr>
+<td>涉及用户价值观</td>
+<td>触及选择，偏好，立场，决定</td>
+<td>A-15DD 权重最高</td>
+</tr>
+</tbody></table></div>
         <p>这个设计消除了第11节余项二中的 bootstrap 问题：A-13DD 不需要被别的机制激活，它始终在场。它的初始路由可以犯错——但犯错后，它自己会在后续监控中检测到错位（"这个任务被路由为纯执行，但实际涉及用户意图"），并通过焦虑信号触发层级切换。</p>
         <h4>9.4 运行时序</h4>
         <p>一个典型的全层级激活周期：</p>
