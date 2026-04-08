@@ -2,75 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase-Transition Windows and Experimental Design — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/favicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis — Self-as-an-End</title>
-  <meta name="description" content="Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis — SAE Methodology Series · Paper VI">
-  <meta property="og:title" content="Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis">
-  <meta name="author" content="Han Qin">
-  <meta name="citation_title" content="Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis">
+  <meta property="og:title" content="Phase-Transition Windows and Experimental Design">
+  <meta property="og:type" content="article">
+  <meta name="citation_title" content="Phase-Transition Windows and Experimental Design">
   <meta name="citation_author" content="Qin, Han">
-  <meta name="citation_publication_date" content="2026">
   <meta name="citation_doi" content="10.5281/zenodo.19464507">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis",
-    "alternativeHeadline": "相变窗口与实验设计：暴露异质性与二元分析在阈值型响应函数下的系统性错配",
-    "author": {"@type": "Person", "name": "Han Qin", "identifier": "https://orcid.org/0009-0009-9583-0018"},
-    "datePublished": "2026",
-    "keywords": "phase transition, experimental design, exposure heterogeneity, threshold response, SAE methodology",
+    "headline": "Phase-Transition Windows and Experimental Design",
+    "author": {"@type": "Person", "name": "Han Qin"},
     "identifier": "https://doi.org/10.5281/zenodo.19464507"
   }
   </script>
-  <link rel="stylesheet" href="../style.css">
-  <script>
-    function switchLang(lang, tab) {
-      ['lang-en','lang-zh'].forEach(function(id) {
-        document.getElementById(id).classList.remove('active');
-        document.getElementById(id).style.display = 'none';
-      });
-      document.getElementById('lang-' + lang).classList.add('active');
-      document.getElementById('lang-' + lang).style.display = 'block';
-      document.querySelectorAll('.lang-tab').forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-    }
-  </script>
 </head>
 <body>
-<header>
-  <div class="header-inner">
-    <a href="../index.html" class="site-title">Self-as-an-End</a>
-    <nav>
-      <a href="../index.html">Papers</a>
-      <a href="../about.html">About</a>
-      <a href="../endacc.html">end/acc</a>
-      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
-      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
-    </nav>
-  </div>
-</header>
+  <header>
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="/index.html">Papers</a>
+        <a href="/about.html">About</a>
+        <a href="/endacc.html">end/acc</a>
+        <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="paper-main">
-    <article class="paper-page">
-      <div class="paper-page-header">
-        <div class="paper-badge">SAE Methodology Series · Paper VI</div>
-        <h1>Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis</h1>
-        <div style="font-size:0.85em;color:#555;margin-top:0.3em;">相变窗口与实验设计：暴露异质性与二元分析在阈值型响应函数下的系统性错配</div>
-        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19464507">10.5281/zenodo.19464507</a> &nbsp;·&nbsp; CC BY 4.0</div>
-        <div class="paper-author">Han Qin · 2026</div>
-      </div>
+    <div class="paper-container">
       <div class="lang-tabs">
-        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
-        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+        <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('zh')">中文</button>
       </div>
-      <div id="lang-en" class="lang-content active" lang="en">
-        <p style="font-size:0.9em;color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
-        <p>Han Qin April 7, 2026 SAE Methodology Paper VI ORCID: 0009-0009-9583-0018</p>
-<hr>
-<h3>1. The Problem</h3>
+
+      <div id="lang-en" class="lang-content">
+        <div class="paper-header">
+          <h1 class="paper-title">Phase-Transition Windows and Experimental Design</h1>
+          <div class="paper-meta-line">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19464507">10.5281/zenodo.19464507</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        
+        <div class="paper-body">
+          <h2>1. The Problem</h2>
 <p>An intervention may be effective yet invisible to the trial designed to detect it — not because the intervention fails, but because the trial's design is structurally mismatched to the phenomenon.</p>
 <p>Specifically: if the response function has threshold structure, if realized exposure within the treatment arm is highly heterogeneous, and if the study neither measures nor exploits this continuous exposure state, then binary assignment combined with binary analysis will systematically dilute the signal from subjects who crossed the threshold.</p>
 <p>This problem is not new. Exposure-response analysis in pharmacology (FDA Guidance; ICH E4), MCP-Mod's continuous dose-response estimation, threshold regression and change-point analysis, adaptive enrichment designs, and the implementation fidelity literature in education and rehabilitation science all address aspects of "what to do when thresholds exist."</p>
@@ -78,98 +60,214 @@
 <p>If the distance from intervention onset to threshold (the sprouting distance) is much larger than the distance from threshold to full effect establishment (the establishment distance), i.e. the asymmetry ratio r >> 1, then signal dilution is not accidental but structural. Increasing sample size cannot recover the diluted effect size itself — it can only estimate a near-zero number more precisely.</p>
 <p>This asymmetry ratio r is the central object of this paper. Its existence, and the prior prediction that r >> 1, derive from the mathematical structure of phase-transition windows in the dynamic programming recursion of ZFCρ (an integer complexity theory built on ZFC set theory; foundational framework in Qin, DOI: 10.5281/zenodo.18914682).</p>
 <p>This paper's contributions were independently derived from ZFCρ's mathematical structure. They overlap with parts of the territory covered by the literatures named above, but the knowledge paths are different. This paper acknowledges these overlaps and positions its incremental contributions, but does not claim inheritance.</p>
-<h3>2. Definitions</h3>
-<h4>Definition 1: Three-Phase Response Structure</h4>
+<h2>2. Definitions</h2>
+<h3>Definition 1: Three-Phase Response Structure</h3>
 <p>Let the intervention response function g(z) depend on the subject's penetration depth z in the state space, with three segments:</p>
 <p>g(z) = 0, for z < F (sprouting zone: microscopic perturbation present, but macroscopic net effect is zero or negative)</p>
 <p>g(z) = δ · (z − F) / (E − F), for F ≤ z < E (flip to establishment: net effect ramps from zero to maximum)</p>
 <p>g(z) = δ, for z ≥ E (post-establishment: full effect)</p>
 <p>where F is the flip point, E is the establishment point, and δ is the true maximum effect size.</p>
-<h4>Definition 2: Asymmetry Ratio r</h4>
+<h3>Definition 2: Asymmetry Ratio r</h3>
 <p>r = F / (E − F)</p>
 <p>r measures the ratio of sprouting distance to establishment distance. r = 1 is symmetric; r >> 1 means the sprouting distance is much longer than the establishment distance.</p>
-<h4>Definition 3: Crossing Fraction π_cross</h4>
+<h3>Definition 3: Crossing Fraction π_cross</h3>
 <p>π_cross = P(Z_i ≥ F | treated)</p>
 <p>The proportion of treatment-arm subjects who actually cross the flip point. When Z_i follows an exponential distribution Exp(μ) within the treatment arm, π_cross = exp(−F/μ). As r increases, F increases (for fixed total window width), and π_cross decreases.</p>
-<h3>3. Mathematical Source: The Ω Phase Transition in ZFCρ</h3>
-<h4>3.1 Background</h4>
+<h2>3. Mathematical Source: The Ω Phase Transition in ZFCρ</h2>
+<h3>3.1 Background</h3>
 <p>In the ZFCρ framework, the integer complexity function ρ_E(n) measures the minimum cost of representing integer n using two path types: addition (successor, n→n+1) and multiplication (factorization and recombination). When integers are stratified by Ω (number of prime factors with multiplicity), the dynamic programming recursion exhibits a phase transition in Ω-space from a disordered phase (successor paths dominant) to an ordered phase (multiplicative paths dominant). This transition is a gradual window, not a sharp boundary.</p>
-<h4>3.2 Data</h4>
-<p>Data come from two independent sources: mean h from presieve computation at N = 10<sup>10</sup> scale, remaining indicators from autocorrelation analysis (anticorr.c) at N = 10^7 scale. Both released with ZFCρ Paper 44 (DOI: 10.5281/zenodo.19247859); all code and data available at that Zenodo page.</p>
+<h3>3.2 Data</h3>
+<p>Data come from three independent sources: mean h from presieve computation at N = 10^{10} scale, remaining step-level indicators from autocorrelation analysis (anticorr.c) at N = 10^7 scale — both released with ZFCρ Paper 44 (DOI: 10.5281/zenodo.19247859) — and the sixth indicator z/√j from ZFCρ Paper 57's spectral analysis (N = 10^{10}). All code and data available at the respective Zenodo pages.</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ω</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">mean h</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">P(J>0)</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">E[A]</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">w_shielded</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Var(A)</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">η</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.697</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">28.7%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">−0.701</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">76.0%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.314</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.103</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.361</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">57.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">−0.326</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">70.5%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.558</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.131</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.004</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">77.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.087</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">65.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.720</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.144</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">5</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">−0.329</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">88.4%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.503</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">60.3%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.833</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.155</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">6</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">−0.615</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">93.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.896</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">57.4%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.923</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.168</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">8</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">−1.056</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">96.8%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+1.572</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">55.4%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.093</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.204</td></tr>
+<thead><tr>
+<th>Ω</th>
+<th>mean h</th>
+<th>P(J>0)</th>
+<th>E[A]</th>
+<th>w_shielded</th>
+<th>Var(A)</th>
+<th>η</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>+0.697</td>
+<td>28.7%</td>
+<td>−0.701</td>
+<td>76.0%</td>
+<td>0.314</td>
+<td>0.103</td>
+</tr>
+<tr>
+<td>3</td>
+<td>+0.361</td>
+<td>57.1%</td>
+<td>−0.326</td>
+<td>70.5%</td>
+<td>0.558</td>
+<td>0.131</td>
+</tr>
+<tr>
+<td>4</td>
+<td>+0.004</td>
+<td>77.1%</td>
+<td>+0.087</td>
+<td>65.1%</td>
+<td>0.720</td>
+<td>0.144</td>
+</tr>
+<tr>
+<td>5</td>
+<td>−0.329</td>
+<td>88.4%</td>
+<td>+0.503</td>
+<td>60.3%</td>
+<td>0.833</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td>6</td>
+<td>−0.615</td>
+<td>93.1%</td>
+<td>+0.896</td>
+<td>57.4%</td>
+<td>0.923</td>
+<td>0.168</td>
+</tr>
+<tr>
+<td>8</td>
+<td>−1.056</td>
+<td>96.8%</td>
+<td>+1.572</td>
+<td>55.4%</td>
+<td>1.093</td>
+<td>0.204</td>
+</tr>
 </tbody></table>
 <p><strong>mean h (local convexity):</strong> h > 0 means successor retains local competitiveness; h < 0 means multiplicative dominates locally. h = 0 marks full establishment of the ordered phase.</p>
 <p><strong>P(J>0) (multiplicative win rate):</strong> Proportion of integers where multiplicative net saving J > 0. P(J>0) = 50% is the minority-to-majority crossover.</p>
 <p><strong>E[A] (expected net step):</strong> Average net saving of multiplicative over successor. E[A] = 0 is the flip point where net effect turns positive.</p>
 <p><strong>w_shielded (Le Chatelier shielding rate):</strong> Proportion of integers whose fluctuations are absorbed by the system's frequency-intensity hedging. w_shielded = 2/3 is the natural threshold below which the exposed sector dominates and the Le Chatelier buffer fails.</p>
 <p><strong>Var(A) (step variance):</strong> Var(A) = 1.0 marks O(1) fluctuations, an interior characteristic of the ordered phase.</p>
-<h4>3.3 Four Crossover Points (Linear Interpolation)</h4>
+<h3>3.3 Five Crossover Points</h3>
+<p>Step-level crossovers are computed by linear interpolation. The spectral indicator z/√j is located via the approximate mapping Ω_typ ≈ ln j.</p>
 <p><strong>P(J>0) = 50%:</strong> Ω* = 2 + (50 − 28.7)/(57.1 − 28.7) = <strong>2.750</strong>. Sprouting.</p>
+<p><strong>z/√j peak (spectral crossover):</strong> z/√j peaks at 5.03 at j = 23 (Paper 57 data), corresponding to Ω_typ = ln 23 ≈ <strong>3.14</strong>. Multiplicative shielding begins to suppress additive-inertia accumulation. The fluctuation spectral peak precedes the net-step zero crossing — susceptibility before order parameter, consistent with standard phase-transition structure.</p>
 <p><strong>w_shielded = 2/3:</strong> Ω* = 3 + (70.5 − 66.7)/(70.5 − 65.1) = <strong>3.710</strong>. Le Chatelier buffer failure.</p>
 <p><strong>E[A] = 0:</strong> Ω* = 3 + 0.326/(0.326 + 0.087) = <strong>3.790</strong>. Flip (the most physically meaningful crossover).</p>
 <p><strong>h(Ω) = 0:</strong> Ω* = 4 + 0.004/(0.004 + 0.329) = <strong>4.012</strong>. Establishment.</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Indicator</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Threshold</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ω*</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Phase</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">P(J>0) = 50%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">majority</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.750</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Sprouting</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">w_shielded = 2/3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2/3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3.710</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Buffer failure</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">E[A] = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">zero</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3.790</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Flip</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">h(Ω) = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">zero</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.012</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Establishment</td></tr>
+<thead><tr>
+<th>Indicator</th>
+<th>Threshold</th>
+<th>Ω*</th>
+<th>Phase</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>P(J>0) = 50%</td>
+<td>majority</td>
+<td>2.750</td>
+<td>Sprouting</td>
+<td>Paper 44</td>
+</tr>
+<tr>
+<td>z/√j peak</td>
+<td>peak</td>
+<td>≈ 3.14</td>
+<td>Spectral flip</td>
+<td>Paper 57</td>
+</tr>
+<tr>
+<td>w_shielded = 2/3</td>
+<td>2/3</td>
+<td>3.710</td>
+<td>Buffer failure</td>
+<td>Paper 44</td>
+</tr>
+<tr>
+<td>E[A] = 0</td>
+<td>zero</td>
+<td>3.790</td>
+<td>Flip</td>
+<td>anticorr.c</td>
+</tr>
+<tr>
+<td>h(Ω) = 0</td>
+<td>zero</td>
+<td>4.012</td>
+<td>Establishment</td>
+<td>presieve</td>
+</tr>
 </tbody></table>
-<h4>3.4 Extraction of the Asymmetry Ratio</h4>
-<p>Sprouting to flip: 3.79 − 2.75 = <strong>1.04</strong> Flip to establishment: 4.01 − 3.79 = <strong>0.22</strong> Asymmetry ratio: r = 1.04 / 0.22 ≈ <strong>4.7</strong> (rounded to ~5)</p>
+<h3>3.4 Four-Phase Structure</h3>
+<p><strong>Phase 1: Sprouting (Ω ≈ 2.75).</strong> Multiplicative paths first win on a majority of integers, but net effect remains negative. Additive inertia begins accumulating.</p>
+<p><strong>Phase 2: Spectral flip (Ω ≈ 3.14).</strong> z/√j peaks. Additive inertia reaches maximum; multiplicative shielding begins but does not yet dominate. Fluctuation control shifts from correlation-dominated to screening-dominated. Occurs before step-level indicators flip.</p>
+<p><strong>Phase 3: Flip (Ω ≈ 3.79).</strong> E[A] = 0; net effect turns positive. Le Chatelier shielding nearly simultaneously drops below 2/3 (Ω ≈ 3.71).</p>
+<p><strong>Phase 4: Establishment (Ω ≈ 4.01).</strong> h = 0; successor path loses local competitiveness. Ordered phase fully established.</p>
+<h3>3.5 Extraction of the Asymmetry Ratio</h3>
+<p>Sprouting to flip: 3.79 − 2.75 = <strong>1.04</strong></p>
+<p>Flip to establishment: 4.01 − 3.79 = <strong>0.22</strong></p>
+<p>Asymmetry ratio: r = 1.04 / 0.22 ≈ <strong>4.7</strong> (rounded to ~5)</p>
 <p>Total window width: 1.26. Flip-to-establishment is 17.5% of the window.</p>
-<h4>3.5 Status of the Ratio</h4>
+<h3>3.6 Status of the Ratio</h3>
 <p>r ≈ 5 is a numerical result within the ZFCρ model. The core argument depends only on the weaker condition r >> 1. Specific r values may differ across systems and must be independently estimated. ZFCρ's r ≈ 5 is a prior prediction whose cross-domain validity is an empirical question.</p>
 <p>Structural intuition: Le Chatelier buffering operates at full strength during sprouting, requiring prolonged effort to reach the flip. Once the buffer is breached, establishment is rapid — the buffer itself has already dropped below the minimum required to maintain the old pattern.</p>
-<h3>4. Core Theorem: Signal Dilution</h3>
+<h2>4. Core Theorem: Signal Dilution</h2>
 <p>Let each subject i have latent state Z_i (penetration depth), jointly determined by random assignment and individual factors. Outcome Y_i = g(Z_i) + ε_i, ε_i ~ N(0, σ²).</p>
 <p><strong>Theorem (Signal Dilution).</strong> Under binary assignment combined with binary analysis, the ITT average treatment effect ATE = E[g(Z_i) | treated] − E[g(Z_i) | control]. When control-arm Z_i ≈ 0, ATE = E[g(Z_i) | treated]. Since only fraction π_cross of the treatment arm crosses F, the ATE is systematically diluted by sprouting-zone subjects contributing zero effect. Larger r means smaller π_cross means worse dilution.</p>
 <p><strong>Corollary 1 (Limitation of sample size).</strong> Increasing n improves ATE precision (lower SE) but does not change the diluted ATE itself. When π_cross is small, the diluted ATE may require impractical n for adequate power.</p>
 <p><strong>Corollary 2 (Best-responder signal).</strong> Conditional on Z_i ≥ F, subgroup mean effect approaches δ. This explains why post-hoc subgroup analyses show effects while overall trials are negative.</p>
 <p><strong>Corollary 3 ("Promising but insufficient evidence" pattern).</strong> In small studies, selection on Z inflates π_cross and yields effects near δ. In large RCTs, π_cross reverts to population base rate and the effect is diluted. This resembles publication bias but has a different mechanism.</p>
 <p><strong>Monte Carlo verification (Appendix B):</strong> At r = 5, depth = 0.3, n = 500/arm: binary power = 9.3% (true d = 0.8); TIZ power = 97.7%. A 1000-subject "well-powered" RCT is functionally blind to the true large effect.</p>
-<h3>5. Subject Conditions</h3>
+<h2>5. Subject Conditions</h2>
 <p>The core theorem requires the following conditions to hold simultaneously:</p>
 <p><strong>Condition 1: The response function has threshold structure.</strong> Not all interventions have phase-transition responses. Purely linear causal relationships, one-time acute interventions, and surgical procedure-vs-no-procedure trials fall outside this paper's scope.</p>
 <p><strong>Condition 2: Realized exposure within the treatment arm is highly heterogeneous.</strong> If all subjects reach the same depth, no dilution occurs regardless of r. Sources of heterogeneity include adherence variation, physiological response differences, and implementation quality differences. This is nearly inevitable in complex interventions: metabolic therapy, psychotherapy, educational reform.</p>
 <p><strong>Condition 3: The study does not measure or exploit the continuous exposure state.</strong> If exposure-response analysis or adaptive titration is already being done, dilution is at least partially mitigated. The problem lies in the combination of binary assignment with binary analysis, not in binary randomization per se.</p>
 <p><strong>Condition 4: Outcomes are measured at the emergence layer, not the construct layer.</strong> The intervention acts on the foundational layer (construct); the outcome manifests at a higher level (emergence). If the outcome is measured directly at the construct layer (e.g., blood ketone levels rather than tumor size), the response may be continuous rather than threshold-type.</p>
 <p>When all four conditions hold, the signal dilution theorem applies. Strongly applicable domains: metabolic interventions, rehabilitation, complex psychological interventions, educational reform, digital health and behavior change, just-in-time adaptive interventions.</p>
-<h3>6. Rays</h3>
-<h4>Ray 1: Methodological Recommendations</h4>
+<h2>6. Rays</h2>
+<h3>Ray 1: Methodological Recommendations</h3>
 <p><strong>6.1.1 From binary exposure to time-in-zone.</strong> The analysis variable should include cumulative time spent above the candidate flip point. Causal caveat: time-in-zone is a post-randomization variable; directly substituting it for treatment assignment sacrifices causal identifiability. Three legitimate uses:</p>
-<p>(a) Mechanistic secondary analysis alongside the primary ITT. (b) Adaptive titration design with exposure intensity randomized at the design level. (c) Principal stratum or CACE framework, estimating causal effects for compliers. Requires monotonicity/exclusion restriction assumptions.</p>
+<p>(a) Mechanistic secondary analysis alongside the primary ITT.</p>
+<p>(b) Adaptive titration design with exposure intensity randomized at the design level.</p>
+<p>(c) Principal stratum or CACE framework, estimating causal effects for compliers. Requires monotonicity/exclusion restriction assumptions.</p>
 <p>Additional note on immortal time bias: if time-in-zone requires being alive or highly adherent, TIZ correlates with unobserved positive confounders. Must be addressed via time-varying covariates in Cox models or landmark analysis.</p>
 <p><strong>6.1.2 Monitoring density must match flip-to-establishment distance.</strong> The flip-to-establishment window is only 17.5% of the total window. If monitoring intervals exceed this window, sprouting and post-flip states become indistinguishable. Monitoring frequency should be determined by the estimated flip-to-establishment distance, not by administrative convenience.</p>
 <p><strong>6.1.3 Exposure verification as prerequisite for negative conclusions.</strong> Before declaring an intervention ineffective, one must first establish: what fraction of subjects crossed the flip point, and for how long? Low or undetermined crossing fractions mean the negative conclusion speaks to implementation, not mechanism. Negative results after verified exposure attainment constitute genuine mechanism falsification.</p>
 <p><strong>6.1.4 Prior testing for phase-transition structure.</strong> Before large-scale RCTs, use small-sample intensive monitoring: track state-outcome joint trajectories, test for breakpoints via segmented regression or change-point detection, estimate r, and design the large trial accordingly.</p>
-<h4>Ray 2: Diagnostic Checklist</h4>
-<p>Suggestive signals (limited specificity; may also arise from publication bias or fidelity deficits): (1) Small studies report strong effects; large RCTs report weak/null effects. (2) Best-responder subgroup analyses consistently positive. (3) Intervention intensity varies widely across studies; effect directions inconsistent. (4) The field is chronically "promising but insufficient." (5) Mechanistic research strongly supports efficacy; field trials fail to replicate.</p>
-<p>Confirmatory signals (higher specificity): (6) A measurable continuous state variable exists within the treatment arm, and the outcome shows a breakpoint/segmented relationship with it. (7) Best responders overlap substantially with prospectively defined flip-point crossers. (8) After controlling for fidelity and adherence, threshold/segmented models systematically outperform linear models.</p>
-<h4>Ray 3: Safety Direction</h4>
+<h3>Ray 2: Diagnostic Checklist</h3>
+<p>Suggestive signals (limited specificity; may also arise from publication bias or fidelity deficits):</p>
+<p>(1) Small studies report strong effects; large RCTs report weak/null effects.</p>
+<p>(2) Best-responder subgroup analyses consistently positive.</p>
+<p>(3) Intervention intensity varies widely across studies; effect directions inconsistent.</p>
+<p>(4) The field is chronically "promising but insufficient."</p>
+<p>(5) Mechanistic research strongly supports efficacy; field trials fail to replicate.</p>
+<p>Confirmatory signals (higher specificity):</p>
+<p>(6) A measurable continuous state variable exists within the treatment arm, and the outcome shows a breakpoint/segmented relationship with it.</p>
+<p>(7) Best responders overlap substantially with prospectively defined flip-point crossers.</p>
+<p>(8) After controlling for fidelity and adherence, threshold/segmented models systematically outperform linear models.</p>
+<h3>Ray 3: Safety Direction</h3>
 <p>The asymmetry applies equally to toxicity. If a chronic exposure's toxicity response has r >> 1, Phase III may report "safe" because 81% of subjects never crossed the toxicity flip point. Real-world chronic exposure pushes more individuals past the threshold, producing Phase IV failure. The exposure verification recommendations apply to safety assessment as well as efficacy.</p>
-<h4>Ray 4: Worked Example — ERGO2</h4>
+<h3>Ray 4: Worked Example — ERGO2</h3>
 <p>ERGO2 was an RCT in recurrent malignant glioma comparing ketogenic diet (KD) plus intermittent fasting plus re-irradiation versus standard diet plus re-irradiation. The primary endpoint (PFS) was not met; the trial is cited as evidence for "lack of clinical benefit."</p>
 <p>Under this paper's framework: latent state Z = Glucose-Ketone Index (GKI); candidate flip point F = GKI ≤ 2.0. The intervention lasted only several days; blood ketone levels had high inter-individual variance; many patients did not spend sufficient time at very low GKI. But best responders (lower day-6 glucose, higher day-6 ketones) had significantly longer PFS and OS — precisely the pattern predicted by Corollary 2.</p>
 <p>All five suggestive signals are met. Confirmatory signals are partially met or need testing (ERGO2 has GKI-continuous data but segmented regression has not been conducted; overlap between best responders and prospectively defined GKI ≤ 2.0 crossers needs verification).</p>
 <p>Recommendations: (a) Secondary analysis using "cumulative days at GKI ≤ 2.0" as exposure variable. (b) Future RCT should randomize patients to different GKI targets rather than KD-vs-standard. (c) Only a trial with verified time-in-zone ≥ 4 weeks at GKI ≤ 2.0 that is still negative would constitute mechanism falsification.</p>
-<h3>7. Non-Trivial Predictions</h3>
-<h4>Prediction 1: Best-responder effect sizes approximate the true effect in large negative RCTs</h4>
-<p>In any domain satisfying the subject conditions, within an overall-negative large RCT, the subgroup conditional on crossing the candidate flip point should show effect sizes approaching δ. <strong>Falsification:</strong> In multiple preregistered studies, prospectively defined crossers show null effects.</p>
-<h4>Prediction 2: Time-in-zone models systematically outperform binary models</h4>
-<p>In trials satisfying the subject conditions, exposure-response analysis using the continuous state variable should systematically outperform binary ITT analysis (higher R², lower AIC/BIC, larger likelihood ratio). <strong>Falsification:</strong> Prospectively measured TIZ models provide no additional explanatory power over binary models.</p>
-<h4>Prediction 3: The asymmetry ratio r > 1 in most construct-emergence systems</h4>
-<p>Independently estimated in systems with construct-emergence hierarchical structure, most should show r > 1 with median substantially above 1. ZFCρ's prior: r ≈ 5. <strong>Falsification:</strong> Cross-domain data show r is not systematically skewed; r ≈ 1 or reverse-skewed is the norm. If so, this paper's scope should be sharply narrowed.</p>
-<h4>Prediction 4: Exposure-verified negative trials are the true falsifiers</h4>
-<p>Among large negative trials currently cited as evidence that "intervention X is ineffective for outcome Y," most treatment arms should have low π_cross. Only trials with verified exposure attainment that remain negative constitute strong mechanism falsification. <strong>Falsification:</strong> A substantial fraction of subjects are prospectively verified to have crossed the flip point, yet the overall effect remains stably null.</p>
-<h3>8. Conclusion</h3>
+<h2>7. Non-Trivial Predictions</h2>
+<h3>Prediction 1: Best-responder effect sizes approximate the true effect in large negative RCTs</h3>
+<p>In any domain satisfying the subject conditions, within an overall-negative large RCT, the subgroup conditional on crossing the candidate flip point should show effect sizes approaching δ.</p>
+<p><strong>Falsification:</strong> In multiple preregistered studies, prospectively defined crossers show null effects.</p>
+<h3>Prediction 2: Time-in-zone models systematically outperform binary models</h3>
+<p>In trials satisfying the subject conditions, exposure-response analysis using the continuous state variable should systematically outperform binary ITT analysis (higher R², lower AIC/BIC, larger likelihood ratio).</p>
+<p><strong>Falsification:</strong> Prospectively measured TIZ models provide no additional explanatory power over binary models.</p>
+<h3>Prediction 3: The asymmetry ratio r > 1 in most construct-emergence systems</h3>
+<p>Independently estimated in systems with construct-emergence hierarchical structure, most should show r > 1 with median substantially above 1. ZFCρ's prior: r ≈ 5.</p>
+<p><strong>Falsification:</strong> Cross-domain data show r is not systematically skewed; r ≈ 1 or reverse-skewed is the norm. If so, this paper's scope should be sharply narrowed.</p>
+<h3>Prediction 4: Exposure-verified negative trials are the true falsifiers</h3>
+<p>Among large negative trials currently cited as evidence that "intervention X is ineffective for outcome Y," most treatment arms should have low π_cross. Only trials with verified exposure attainment that remain negative constitute strong mechanism falsification.</p>
+<p><strong>Falsification:</strong> A substantial fraction of subjects are prospectively verified to have crossed the flip point, yet the overall effect remains stably null.</p>
+<h2>8. Conclusion</h2>
 <p>This paper identifies and formalizes the asymmetry ratio r between distances on each side of the threshold as a key parameter affecting trial statistical power. This parameter has an independent mathematical source (the ZFCρ phase-transition window), yielding a prior prediction of r ≈ 5. Monte Carlo simulation demonstrates that at r = 5 with shallow penetration, a 1000-subject RCT achieves only 9.3% power for a large true effect (d = 0.8), while a time-in-zone design achieves 97.7%.</p>
 <p>The four methodological recommendations (time-in-zone, monitoring density, exposure verification, prior testing) do not depend on r = 5 specifically, only on r >> 1. The framework applies to both efficacy and safety assessment.</p>
 <p>Open questions: (1) What is the cross-domain distribution of r? (2) How should r be operationally estimated in education and psychotherapy? (3) How can this paper's diagnostic checklist be embedded in existing systematic review and meta-analysis methods?</p>
@@ -177,47 +275,137 @@
 <p>Relationship to the SAE framework: Within SAE (Self-as-an-End; foundational paper: Qin, DOI: 10.5281/zenodo.18528813), the three-phase structure and asymmetry originate from the general geometry of construct-emergence relations. "Construct" refers to structural components at the foundational layer; "emergence" to macroscopic patterns arising from construct combinations at higher levels. Le Chatelier shielding determines the length of the sprouting phase; once the buffer is breached, emergence-layer response establishes rapidly. This asymmetry is an intrinsic feature of construct-emergence hierarchical structure — but whether it appears across domains is a prediction to be tested, not an established fact.</p>
 <p>Full metabolic oncology application: SAE Biology Note 1 (forthcoming).</p>
 <hr>
-<h3>Appendix A: Worked Example Full Data (ERGO2)</h3>
+<h2>Appendix A: Worked Example Full Data (ERGO2)</h2>
 <p>See Section 6, Ray 4.</p>
-<h3>Appendix B: Monte Carlo Simulation</h3>
-<h4>Design</h4>
+<h2>Appendix B: Monte Carlo Simulation</h2>
+<h3>Design</h3>
 <p>Three-phase response function. True effect d = 0.8. Noise σ = 1.0. Window width 1.26. Penetration depths exponentially distributed. 2,000 simulations per condition. Binary design (t-test) vs TIZ (regression). Total subjects matched.</p>
-<h4>Result 1: r systematically destroys binary power</h4>
+<h3>Result 1: r systematically destroys binary power</h3>
 <p>n = 200/arm, depth = 50%.</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">r</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Sprout dist.</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Flip-est.</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">% crossed</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Binary</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">TIZ</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ratio</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.630</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.630</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">37%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.441</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.999</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.3×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.840</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.420</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">26%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.335</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.995</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3.0×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">5.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.050</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.210</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">19%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.226</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.985</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.4×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">10.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.145</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.115</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">16%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.210</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.976</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.7×</td></tr>
+<thead><tr>
+<th>r</th>
+<th>Sprout dist.</th>
+<th>Flip-est.</th>
+<th>% crossed</th>
+<th>Binary</th>
+<th>TIZ</th>
+<th>Ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>1.0</td>
+<td>0.630</td>
+<td>0.630</td>
+<td>37%</td>
+<td>0.441</td>
+<td>0.999</td>
+<td>2.3×</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>0.840</td>
+<td>0.420</td>
+<td>26%</td>
+<td>0.335</td>
+<td>0.995</td>
+<td>3.0×</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>1.050</td>
+<td>0.210</td>
+<td>19%</td>
+<td>0.226</td>
+<td>0.985</td>
+<td>4.4×</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>1.145</td>
+<td>0.115</td>
+<td>16%</td>
+<td>0.210</td>
+<td>0.976</td>
+<td>4.7×</td>
+</tr>
 </tbody></table>
-<h4>Result 2: Sample size has limited effect</h4>
+<h3>Result 2: Sample size has limited effect</h3>
 <p>r = 5, depth = 50%.</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">n/arm</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Binary</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">TIZ</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ratio</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">50</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.102</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.568</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">5.6×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">200</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.226</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.985</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.4×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">500</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.512</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.000</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.0×</td></tr>
+<thead><tr>
+<th>n/arm</th>
+<th>Binary</th>
+<th>TIZ</th>
+<th>Ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>50</td>
+<td>0.102</td>
+<td>0.568</td>
+<td>5.6×</td>
+</tr>
+<tr>
+<td>200</td>
+<td>0.226</td>
+<td>0.985</td>
+<td>4.4×</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.512</td>
+<td>1.000</td>
+<td>2.0×</td>
+</tr>
 </tbody></table>
 <p>TIZ at n = 50 (56.8%) surpasses binary at n = 500 (51.2%).</p>
-<h4>Result 3: Penetration depth is decisive</h4>
+<h3>Result 3: Penetration depth is decisive</h3>
 <p>r = 5, n = 200/arm.</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Depth</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">% crossed</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Binary</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">TIZ</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ratio</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">6%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.064</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.761</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">12.0×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.5</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">19%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.226</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.985</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.4×</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">43%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.856</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.000</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.2×</td></tr>
+<thead><tr>
+<th>Depth</th>
+<th>% crossed</th>
+<th>Binary</th>
+<th>TIZ</th>
+<th>Ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>0.3</td>
+<td>6%</td>
+<td>0.064</td>
+<td>0.761</td>
+<td>12.0×</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>19%</td>
+<td>0.226</td>
+<td>0.985</td>
+<td>4.4×</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>43%</td>
+<td>0.856</td>
+<td>1.000</td>
+<td>1.2×</td>
+</tr>
 </tbody></table>
-<h4>Critical scenario</h4>
+<h3>Critical scenario</h3>
 <p>r = 5, depth = 0.3, n = 500/arm: Binary power <strong>9.3%</strong>, TIZ <strong>97.7%</strong>, observed d = <strong>0.039</strong> (true 0.8).</p>
-<h4>Code</h4>
+<h3>Code</h3>
 <p>See attached: monte_carlo_sim.py.</p>
+        </div>
       </div>
-      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
-        <p style="font-size:0.9em;color:#666;"><em>写作声明：本文由秦汉独立写作。所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
-        <p>Han Qin 2026-04-07 SAE Methodology Paper VI</p>
-<hr>
-<h3>一、问题的提出</h3>
+
+      <div id="lang-zh" class="lang-content" style="display:none">
+        <div class="paper-header">
+          <h1 class="paper-title">相变窗口与实验设计</h1>
+          <div class="paper-meta-line">秦汉 &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19464507">10.5281/zenodo.19464507</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        
+        <div class="paper-body">
+          <h2>一、问题的提出</h2>
 <p>一个干预有效但试验看不到效果，原因可能不在干预本身，而在试验设计与现象结构的不匹配。</p>
 <p>具体地说：如果干预的响应函数具有阈值结构，而处理组内部的实际暴露（realized exposure）高度异质，研究又不测量或不利用这个连续暴露状态，那么二元赋值加二元分析会系统性地稀释越过阈值的受试者的信号。</p>
 <p>这个问题不新。药理学的exposure-response分析（FDA Guidance, ICH E4），MCP-Mod的连续剂量-反应估计，threshold regression和change-point analysis，adaptive enrichment design，教育学和康复科学中的implementation fidelity文献——都在不同角度处理"阈值存在时怎么办"。</p>
@@ -225,32 +413,88 @@
 <p>如果从干预开始到阈值的距离（萌芽距离）远大于从阈值到效应完全建立的距离（确立距离），即不对称比r >> 1，则信号稀释不是偶然发生的，而是结构性的。增加样本量不能恢复被稀释的效应量本身，只能更精确地估计一个接近零的数。</p>
 <p>这个不对称比r是本文的核心对象。它的存在和r >> 1的先验预测，来自ZFCρ（一种建立在ZFC集合论上的整数复杂度理论；基础框架见Qin, DOI: 10.5281/zenodo.18914682）动态规划递推中的相变窗口。</p>
 <p>本文的贡献从ZFCρ的数学结构独立推出，与上述已有文献覆盖了部分重叠的领土，但知识路径不同。本文承认这些重叠并明确定位增量贡献，但不声称继承关系。</p>
-<h3>二、定义</h3>
-<h4>定义1：三阶段响应结构</h4>
+<h2>二、定义</h2>
+<h3>定义1：三阶段响应结构</h3>
 <p>设干预的响应函数g(z)依赖于受试者在状态空间中的穿透深度z，具有三段结构：</p>
 <p>g(z) = 0，当z < F（萌芽区：微观层面已有扰动，但宏观净效果为零或为负）</p>
 <p>g(z) = δ · (z - F) / (E - F)，当F ≤ z < E（翻转到确立：净效果从零爬升到最大值）</p>
 <p>g(z) = δ，当z ≥ E（确立后：全效应）</p>
 <p>其中F是翻转点，E是确立点，δ是真实最大效应量。</p>
-<h4>定义2：不对称比r</h4>
+<h3>定义2：不对称比r</h3>
 <p>r = F / (E - F)</p>
 <p>r度量萌芽距离与确立距离的比值。r = 1时两侧对称；r >> 1时萌芽距离远大于确立距离。</p>
-<h4>定义3：越翻比π_cross</h4>
+<h3>定义3：越翻比π_cross</h3>
 <p>π_cross = P(Z_i ≥ F | treated)</p>
 <p>处理组中实际越过翻转点的受试者比例。当Z_i在处理组内服从指数分布Exp(μ)时，π_cross = exp(-F/μ)。r越大，F越大（固定总窗口宽度），π_cross越小。</p>
-<h3>三、数学来源：ZFCρ相变窗口</h3>
-<h4>3.1 背景</h4>
+<h2>三、数学来源：ZFCρ相变窗口</h2>
+<h3>3.1 背景</h3>
 <p>在ZFCρ框架中，整数复杂度函数ρ_E(n)度量用加法（successor, n+1）和乘法（因子分解与重组）两类路径表示整数n的最小代价。当整数按Ω（素因子个数，含重数）分层时，动态规划递推在Ω空间中展现出从无序相（successor路径主导）到有序相（乘法路径主导）的相变。这个相变是一个渐进窗口而非sharp boundary。</p>
-<h4>3.2 数据</h4>
-<p>以下数据来自两个独立来源：h(Ω)来自N=10<sup>10</sup>规模的预筛数值计算，其余指标来自N=10^7规模的自相关分析程序anticorr.c，两者均随ZFCρ Paper 44（DOI: 10.5281/zenodo.19247859）发布，所有代码和数据可通过该Zenodo页面获取。</p>
+<h3>3.2 数据</h3>
+<p>以下数据来自三个独立来源：h(Ω)来自N=10^{10}规模的预筛数值计算，P(J>0)等步间指标来自N=10^7规模的自相关分析程序anticorr.c，两者均随ZFCρ Paper 44（DOI: 10.5281/zenodo.19247859）发布；第六指标z/√j来自ZFCρ Paper 57的谱分析（N=10^{10}）。所有代码和数据可通过各自的Zenodo页面获取。</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ω</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">mean h</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">P(J>0)</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">E[A]</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">w_shielded</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Var(A)</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">η</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.697</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">28.7%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">-0.701</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">76.0%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.314</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.103</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.361</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">57.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">-0.326</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">70.5%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.558</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.131</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.004</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">77.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.087</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">65.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.720</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.144</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">5</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">-0.329</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">88.4%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.503</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">60.3%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.833</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.155</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">6</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">-0.615</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">93.1%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+0.896</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">57.4%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.923</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.168</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">8</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">-1.056</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">96.8%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">+1.572</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">55.4%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.093</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.204</td></tr>
+<thead><tr>
+<th>Ω</th>
+<th>mean h</th>
+<th>P(J>0)</th>
+<th>E[A]</th>
+<th>w_shielded</th>
+<th>Var(A)</th>
+<th>η</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>+0.697</td>
+<td>28.7%</td>
+<td>-0.701</td>
+<td>76.0%</td>
+<td>0.314</td>
+<td>0.103</td>
+</tr>
+<tr>
+<td>3</td>
+<td>+0.361</td>
+<td>57.1%</td>
+<td>-0.326</td>
+<td>70.5%</td>
+<td>0.558</td>
+<td>0.131</td>
+</tr>
+<tr>
+<td>4</td>
+<td>+0.004</td>
+<td>77.1%</td>
+<td>+0.087</td>
+<td>65.1%</td>
+<td>0.720</td>
+<td>0.144</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-0.329</td>
+<td>88.4%</td>
+<td>+0.503</td>
+<td>60.3%</td>
+<td>0.833</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-0.615</td>
+<td>93.1%</td>
+<td>+0.896</td>
+<td>57.4%</td>
+<td>0.923</td>
+<td>0.168</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-1.056</td>
+<td>96.8%</td>
+<td>+1.572</td>
+<td>55.4%</td>
+<td>1.093</td>
+<td>0.204</td>
+</tr>
 </tbody></table>
 <p>指标含义：</p>
 <p><strong>mean h（局部凸度）：</strong> h > 0时successor路径在局部仍有竞争力，h < 0时乘法路径局部绝对占优。h = 0标志有序相完全确立。</p>
@@ -258,67 +502,127 @@
 <p><strong>E[A]（净步长期望）：</strong> 乘法路径相对于successor的净代价节省。E[A] = 0是净效果从负变正的翻转点。</p>
 <p><strong>w_shielded（Le Chatelier屏蔽率）：</strong> 涨落被系统频率-强度对冲机制吸收的整数比例。w_shielded = 2/3是自然阈值：低于此值exposed sector主导，Le Chatelier缓冲失效。</p>
 <p><strong>Var(A)（步长方差）：</strong> Var(A) = 1.0标志涨落达到O(1)，属有序相内部特征。</p>
-<h4>3.3 四个Crossover点（线性内插）</h4>
+<h3>3.3 五个Crossover点</h3>
+<p>步间指标的crossover通过相邻Ω值的线性内插计算。谱指标z/√j通过j到Ω的近似映射（Ω_typ ≈ ln j）定位。</p>
 <p><strong>P(J>0) = 50%：</strong> Ω* = 2 + (50 - 28.7)/(57.1 - 28.7) = <strong>2.750</strong>。萌芽。</p>
+<p><strong>z/√j peak（谱crossover）：</strong> z/√j在j=23处达到峰值5.03（Paper 57数据），对应Ω_typ = ln 23 ≈ <strong>3.14</strong>。乘法屏蔽开始压制加法惯性积累。涨落谱强度的peak先于净步长的零交叉——susceptibility先于序参量，和物理相变结构一致。</p>
 <p><strong>w_shielded = 2/3：</strong> Ω* = 3 + (70.5 - 66.7)/(70.5 - 65.1) = <strong>3.710</strong>。Le Chatelier缓冲失效。</p>
 <p><strong>E[A] = 0：</strong> Ω* = 3 + 0.326/(0.326 + 0.087) = <strong>3.790</strong>。翻转（物理上最有意义的crossover）。</p>
 <p><strong>h(Ω) = 0：</strong> Ω* = 4 + 0.004/(0.004 + 0.329) = <strong>4.012</strong>。确立。</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">指标</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">阈值</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Ω*</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">阶段</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">P(J>0) = 50%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">多数</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.750</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">萌芽</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">w_shielded = 2/3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2/3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3.710</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">缓冲失效</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">E[A] = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">零</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3.790</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">翻转</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">h(Ω) = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">零</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.012</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">确立</td></tr>
+<thead><tr>
+<th>指标</th>
+<th>阈值</th>
+<th>Ω*</th>
+<th>阶段</th>
+<th>来源</th>
+</tr></thead><tbody>
+<tr>
+<td>P(J>0) = 50%</td>
+<td>多数</td>
+<td>2.750</td>
+<td>萌芽</td>
+<td>Paper 44</td>
+</tr>
+<tr>
+<td>z/√j peak</td>
+<td>peak</td>
+<td>≈ 3.14</td>
+<td>谱翻转</td>
+<td>Paper 57</td>
+</tr>
+<tr>
+<td>w_shielded = 2/3</td>
+<td>2/3</td>
+<td>3.710</td>
+<td>缓冲失效</td>
+<td>Paper 44</td>
+</tr>
+<tr>
+<td>E[A] = 0</td>
+<td>零</td>
+<td>3.790</td>
+<td>翻转</td>
+<td>anticorr.c</td>
+</tr>
+<tr>
+<td>h(Ω) = 0</td>
+<td>零</td>
+<td>4.012</td>
+<td>确立</td>
+<td>presieve</td>
+</tr>
 </tbody></table>
-<h4>3.4 不对称比的提取</h4>
-<p>萌芽到翻转：3.79 - 2.75 = <strong>1.04</strong> 翻转到确立：4.01 - 3.79 = <strong>0.22</strong> 不对称比：r = 1.04 / 0.22 ≈ <strong>4.7</strong>（取整约5）</p>
+<h3>3.4 四阶段结构</h3>
+<p><strong>阶段一：萌芽（Ω ≈ 2.75）。</strong> 乘法路径首次在多数整数上胜出，但净效果仍为负。加法惯性开始积累。</p>
+<p><strong>阶段二：谱翻转（Ω ≈ 3.14）。</strong> z/√j达到peak。加法惯性积累最大值，乘法屏蔽开始介入但还不占优——"散热器刚开机"。涨落控制权从correlation-dominated转为screening-dominated。发生在步间指标翻转之前。</p>
+<p><strong>阶段三：翻转（Ω ≈ 3.79）。</strong> E[A] = 0，净效果从负变正。Le Chatelier屏蔽率几乎同时跌破2/3（Ω ≈ 3.71）。</p>
+<p><strong>阶段四：确立（Ω ≈ 4.01）。</strong> h = 0，successor路径失去局部竞争力。有序相完全确立。</p>
+<h3>3.5 不对称比的提取</h3>
+<p>萌芽到翻转：3.79 - 2.75 = <strong>1.04</strong></p>
+<p>翻转到确立：4.01 - 3.79 = <strong>0.22</strong></p>
+<p>不对称比：r = 1.04 / 0.22 ≈ <strong>4.7</strong>（取整约5）</p>
 <p>窗口总宽度：1.26。翻转-确立占窗口17.5%。</p>
-<h4>3.5 比值的地位</h4>
+<h3>3.6 比值的地位</h3>
 <p>r ≈ 5是ZFCρ模型内的数值结果。本文的核心论证只依赖更弱的条件：r >> 1。具体的r值在不同系统中可能不同，需要独立估计。ZFCρ给出的r ≈ 5是先验预测，其跨领域有效性是待检验的经验问题。</p>
 <p>不对称性的结构性直觉：Le Chatelier缓冲在萌芽期全力运转，积累到翻转需要长时间对抗。一旦缓冲被突破，确立很快——因为缓冲机制本身已跌破维持旧pattern的最低要求。</p>
-<h3>四、核心定理：信号稀释</h3>
+<h2>四、核心定理：信号稀释</h2>
 <p>设每个受试者i有潜在状态Z_i（穿透深度），受随机分组和个体因素共同影响。结局Y_i = g(Z_i) + ε_i，ε_i ~ N(0, σ²)。</p>
 <p><strong>定理（信号稀释）。</strong> 在二元赋值加二元分析下，ITT平均处理效应ATE = E[g(Z_i) | treated] - E[g(Z_i) | control]。当对照组Z_i ≈ 0时，ATE = E[g(Z_i) | treated]。由于处理组中仅π_cross比例的受试者越过F，ATE被萌芽区的零效果受试者系统性稀释。r越大，π_cross越小，稀释越严重。</p>
 <p><strong>推论1（样本量的局限性）。</strong> 增加n使ATE估计更精确（标准误下降），但不改变ATE本身的被稀释程度。当π_cross很小时，被稀释的ATE可能小到需要不切实际的n才能达到足够power。</p>
 <p><strong>推论2（best responder信号）。</strong> 条件于Z_i ≥ F的子群，平均效应接近δ。这解释了事后子群分析常阳性而整体试验阴性的矛盾。</p>
 <p><strong>推论3（"有前景但证据不足"模式）。</strong> 小样本研究中π_cross因selection on Z偏高，效应接近δ；大规模RCT中π_cross回归群体基率，效应被稀释。这与publication bias表现相似但机制不同。</p>
 <p><strong>Monte Carlo验证（附录B）：</strong> r=5, depth=0.3, n=500/arm时，binary power = 9.3%（真实d = 0.8），TIZ power = 97.7%。1000人的"充分powered"RCT对大效应几乎完全失明。</p>
-<h3>五、主体条件</h3>
+<h2>五、主体条件</h2>
 <p>核心定理的成立需要以下条件同时满足：</p>
 <p><strong>条件1：响应函数具有阈值结构。</strong> 不是所有干预都有相变响应。纯线性因果关系（如抗体滴度对疫苗剂量）、一次性急性干预（效应迅速且treatment version统一）、外科/器械类明确procedure vs no-procedure试验，不在本文适用范围内。</p>
 <p><strong>条件2：处理组内部的realized exposure高度异质。</strong> 如果所有受试者达到相同深度，则无论r多大都不存在稀释问题。异质性来源包括依从性差异、生理反应差异、执行质量差异。这在代谢干预、心理治疗、教育改革等复杂干预中几乎必然存在。</p>
 <p><strong>条件3：研究不测量或不利用连续暴露状态。</strong> 如果试验已经做了exposure-response分析或adaptive titration，稀释问题至少部分被缓解。问题出在二元赋值加二元分析的组合上，不是二元随机化本身。</p>
 <p><strong>条件4：结局测量在涌现层而非构层。</strong> 干预作用于基础层（构），结局在更高层级（涌现）显现。如果结局直接在构层测量（如直接测血酮水平而非肿瘤大小），则可能看到连续而非阈值型响应。</p>
 <p>当四个条件同时成立时，信号稀释定理适用。典型强适用领域：代谢干预（酮症饮食、营养干预），康复治疗，心理治疗中的复杂干预，教育中的课程/教学改革，数字健康和行为改变项目，just-in-time adaptive interventions。</p>
-<h3>六、射线</h3>
-<h4>射线1：方法学建议</h4>
+<h2>六、射线</h2>
+<h3>射线1：方法学建议</h3>
 <p><strong>6.1.1 从binary暴露到time-in-zone。</strong> 分析变量应包括"在候选翻转点以上的状态空间中累积停留了多长时间"。因果推断限定：time-in-zone是post-randomization变量，直接替代treatment assignment会牺牲因果可识别性。三种合法用法：</p>
-<p>（a）mechanistic secondary analysis，在ITT主分析之外做探索性exposure-response分析。 （b）adaptive titration design，在设计层面对暴露强度随机化。 （c）principal stratum或CACE框架，估计compliers的因果效应。需monotonicity/exclusion restriction假设。</p>
+<p>（a）mechanistic secondary analysis，在ITT主分析之外做探索性exposure-response分析。</p>
+<p>（b）adaptive titration design，在设计层面对暴露强度随机化。</p>
+<p>（c）principal stratum或CACE框架，估计compliers的因果效应。需monotonicity/exclusion restriction假设。</p>
 <p>额外注意immortal time bias：如果time-in-zone以存活或高依从性为前提，则TIZ与未观测正向混杂因素相关，需用时变协变量Cox模型或landmark分析处理。</p>
 <p><strong>6.1.2 监测密度匹配翻转-确立距离。</strong> 翻转到确立仅占窗口17.5%，时间窗口可能很短。监测间隔如果大于这个窗口，无法区分萌芽和已过翻转。监测频率应由翻转-确立距离决定，不由行政便利决定。</p>
 <p><strong>6.1.3 阴性结论的暴露验证前置条件。</strong> 在宣布干预无效之前必须先回答：多大比例的受试者越过了翻转点？维持了多久？如果这个比例很低或不确定，阴性结论说明的是实施方案未达到有效暴露，不是干预机制无效。暴露达标后仍阴性才是对机制的有力证伪。</p>
 <p><strong>6.1.4 先做相变结构的先验检验。</strong> 大规模RCT前用小样本密集监测：追踪状态变量和结局的联合轨迹，用分段回归/threshold regression/change-point detection检验拐点，估计r，据此设计大规模试验。</p>
-<h4>射线2：诊断清单</h4>
-<p>提示性信号（特异性有限，也可能由publication bias或fidelity缺失产生）： （1）小样本强效果，大RCT弱/无效果。 （2）best responder子群总是阳性。 （3）干预强度跨研究差异大，效果方向不一致。 （4）领域长期"有前景但证据不足"。 （5）机制研究强支持但现场试验不复现。</p>
-<p>确认性信号（特异性更高）： （6）处理组内部存在可测连续状态变量，outcome对其呈breakpoint/segmented关系。 （7）best responder与事前定义的"越过翻转点者"高度重合。 （8）控制fidelity/adherence后，threshold模型系统性优于线性模型。</p>
-<h4>射线3：安全性方向</h4>
+<h3>射线2：诊断清单</h3>
+<p>提示性信号（特异性有限，也可能由publication bias或fidelity缺失产生）：</p>
+<p>（1）小样本强效果，大RCT弱/无效果。</p>
+<p>（2）best responder子群总是阳性。</p>
+<p>（3）干预强度跨研究差异大，效果方向不一致。</p>
+<p>（4）领域长期"有前景但证据不足"。</p>
+<p>（5）机制研究强支持但现场试验不复现。</p>
+<p>确认性信号（特异性更高）：</p>
+<p>（6）处理组内部存在可测连续状态变量，outcome对其呈breakpoint/segmented关系。</p>
+<p>（7）best responder与事前定义的"越过翻转点者"高度重合。</p>
+<p>（8）控制fidelity/adherence后，threshold模型系统性优于线性模型。</p>
+<h3>射线3：安全性方向</h3>
 <p>不对称性同样适用于毒性。如果慢性暴露的毒性响应也有r >> 1结构，Phase III中81%受试者可能未越过毒性翻转点，试验报告"安全"。真实世界长期暴露推更多人过翻转点，造成Phase IV failure。暴露验证建议同时适用于疗效和安全性评估。</p>
-<h4>射线4：Worked Example — ERGO2</h4>
+<h3>射线4：Worked Example — ERGO2</h3>
 <p>ERGO2是复发性恶性胶质瘤的RCT，比较酮症饮食（KD）+间歇性断食+再放疗 vs 标准饮食+再放疗。PFS未达主要终点，被引用为酮症饮食"缺乏临床获益"的证据。</p>
 <p>本文框架下的重新解读：</p>
 <p>潜在状态变量Z = Glucose-Ketone Index（GKI）。候选翻转点F = GKI ≤ 2.0。干预仅持续约数天，血酮水平跨个体方差大，许多患者未在极低GKI停留足够时间。但best responders（day-6血糖更低、血酮更高）的PFS和OS显著长于low responders——正是推论2预测的pattern。</p>
 <p>五条提示性信号全部成立。三条确认性信号部分成立或待验证（ERGO2有GKI连续数据但未做分段回归；best responder与事前定义的GKI ≤ 2.0 crossers的重合度待检验）。</p>
 <p>具体建议：（a）用"GKI ≤ 2.0累积天数"做secondary exposure-response分析。（b）下一个RCT应随机分配到不同GKI目标（如GKI ≤ 1.5 vs GKI ≤ 3.0 vs 标准饮食）。（c）在verified time-in-zone ≥ 4周、GKI ≤ 2.0条件下仍阴性，才是对机制本身的证伪。</p>
-<h3>七、非平凡预测</h3>
-<h4>预测1：大型阴性RCT中best responder的效应量接近真实效应</h4>
-<p>在任何符合主体条件的领域中，整体阴性的大型RCT内部，条件于越过候选翻转点的子群，其效应量应接近δ（真实最大效应）。 <strong>否证条件：</strong> 在多个预注册研究中，事前定义的crossers子群效应仍然为零。</p>
-<h4>预测2：time-in-zone模型系统性优于binary模型</h4>
-<p>在符合主体条件的试验中，以连续暴露状态变量做exposure-response分析或threshold regression，应系统性优于binary ITT分析（更高R²，更小AIC/BIC，或更大likelihood ratio）。 <strong>否证条件：</strong> prospectively measured time-in-zone模型不优于binary模型，无额外解释力。</p>
-<h4>预测3：不对称比r在多数构-涌现系统中大于1</h4>
-<p>在具有构-涌现层级结构的系统中独立估计r，多数系统应显示r > 1且中位值显著大于1。ZFCρ的先验预测是r ≈ 5。 <strong>否证条件：</strong> 跨领域数据表明r不系统偏斜，r ≈ 1或反向偏斜是常态。如果成立，本文适用范围应大幅收窄。</p>
-<h4>预测4：暴露达标后的阴性试验才是真正的证伪</h4>
-<p>在现有文献中被引用为"酮症饮食对癌症无效"（或其他"干预X对结局Y无效"）的大型阴性试验中，多数试验的处理组应有低π_cross——即多数受试者从未达到有效暴露。如果未来有试验在verified exposure条件下仍阴性，则构成对干预机制本身的强证伪。 <strong>否证条件：</strong> 有相当比例受试者被事前验证越过翻转点，总体效应仍稳定为零。</p>
-<h3>八、结论</h3>
+<h2>七、非平凡预测</h2>
+<h3>预测1：大型阴性RCT中best responder的效应量接近真实效应</h3>
+<p>在任何符合主体条件的领域中，整体阴性的大型RCT内部，条件于越过候选翻转点的子群，其效应量应接近δ（真实最大效应）。</p>
+<p><strong>否证条件：</strong> 在多个预注册研究中，事前定义的crossers子群效应仍然为零。</p>
+<h3>预测2：time-in-zone模型系统性优于binary模型</h3>
+<p>在符合主体条件的试验中，以连续暴露状态变量做exposure-response分析或threshold regression，应系统性优于binary ITT分析（更高R²，更小AIC/BIC，或更大likelihood ratio）。</p>
+<p><strong>否证条件：</strong> prospectively measured time-in-zone模型不优于binary模型，无额外解释力。</p>
+<h3>预测3：不对称比r在多数构-涌现系统中大于1</h3>
+<p>在具有构-涌现层级结构的系统中独立估计r，多数系统应显示r > 1且中位值显著大于1。ZFCρ的先验预测是r ≈ 5。</p>
+<p><strong>否证条件：</strong> 跨领域数据表明r不系统偏斜，r ≈ 1或反向偏斜是常态。如果成立，本文适用范围应大幅收窄。</p>
+<h3>预测4：暴露达标后的阴性试验才是真正的证伪</h3>
+<p>在现有文献中被引用为"酮症饮食对癌症无效"（或其他"干预X对结局Y无效"）的大型阴性试验中，多数试验的处理组应有低π_cross——即多数受试者从未达到有效暴露。如果未来有试验在verified exposure条件下仍阴性，则构成对干预机制本身的强证伪。</p>
+<p><strong>否证条件：</strong> 有相当比例受试者被事前验证越过翻转点，总体效应仍稳定为零。</p>
+<h2>八、结论</h2>
 <p>本文识别并形式化了阈值两侧距离的不对称比r作为影响试验统计功效的关键参数。这个参数有一个独立的数学来源（ZFCρ相变窗口），给出了r ≈ 5的先验预测。Monte Carlo模拟显示，在r = 5、浅穿透条件下，1000人的RCT对大效应（d = 0.8）的检测力仅为9.3%，而time-in-zone设计达97.7%。</p>
 <p>四项方法学建议（time-in-zone、监测密度、暴露验证、先验检验）不依赖r = 5这个具体值，只依赖r >> 1。本文的框架同时适用于疗效和安全性评估。</p>
 <p>开放问题：（1）r的跨领域分布是什么？（2）在教育学和心理治疗领域，r的操作化估计方法是什么？（3）如何把本文的诊断清单嵌入现有的systematic review和meta-analysis方法中？</p>
@@ -326,49 +630,145 @@
 <p>与SAE框架的关系：在SAE（Self-as-an-End，自我目的论框架；基础论文见Qin, DOI: 10.5281/zenodo.18528813）中，三阶段结构和不对称性来源于构-涌现关系的普遍几何。"构"（construct）指基础层结构性构件，"涌现"（emergence）指由构件组合在更高层级产生的宏观pattern。Le Chatelier屏蔽决定萌芽期长度；缓冲突破后涌现层迅速响应。这个不对称性是构-涌现层级结构的内在特征，也是本文预测r >> 1跨领域成立的理论基础——但这是一个有待检验的预测，不是已建立的事实。</p>
 <p>代谢肿瘤学中的完整应用见 SAE Biology Note 1: Phase Transition Window in Metabolic Oncology（forthcoming）。</p>
 <hr>
-<h3>附录A：Worked Example完整数据（ERGO2）</h3>
+<h2>附录A：Worked Example完整数据（ERGO2）</h2>
 <p>见正文第六节射线4。</p>
-<h3>附录B：Monte Carlo模拟</h3>
-<h4>设计</h4>
+<h2>附录B：Monte Carlo模拟</h2>
+<h3>设计</h3>
 <p>响应函数：三阶段。真实效应量Cohen's d = 0.8。噪声σ = 1.0。窗口总宽1.26。穿透深度服从指数分布。每条件2000次模拟。比较：binary（t检验）vs TIZ（回归）。总受试者数匹配。</p>
-<h4>结果1：r系统性摧毁binary power</h4>
+<h3>结果1：r系统性摧毁binary power</h3>
 <p>n=200/arm，depth=50%。</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">r</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">萌芽距离</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">翻转-确立</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">越翻%</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Binary</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">TIZ</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">倍数</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.630</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.630</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">37%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.441</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.999</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.3x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.840</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.420</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">26%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.335</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.995</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3.0x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">5.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.050</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.210</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">19%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.226</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.985</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.4x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">10.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.145</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.115</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">16%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.210</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.976</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.7x</td></tr>
+<thead><tr>
+<th>r</th>
+<th>萌芽距离</th>
+<th>翻转-确立</th>
+<th>越翻%</th>
+<th>Binary</th>
+<th>TIZ</th>
+<th>倍数</th>
+</tr></thead><tbody>
+<tr>
+<td>1.0</td>
+<td>0.630</td>
+<td>0.630</td>
+<td>37%</td>
+<td>0.441</td>
+<td>0.999</td>
+<td>2.3x</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>0.840</td>
+<td>0.420</td>
+<td>26%</td>
+<td>0.335</td>
+<td>0.995</td>
+<td>3.0x</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>1.050</td>
+<td>0.210</td>
+<td>19%</td>
+<td>0.226</td>
+<td>0.985</td>
+<td>4.4x</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>1.145</td>
+<td>0.115</td>
+<td>16%</td>
+<td>0.210</td>
+<td>0.976</td>
+<td>4.7x</td>
+</tr>
 </tbody></table>
-<h4>结果2：样本量的局限性</h4>
+<h3>结果2：样本量的局限性</h3>
 <p>r=5，depth=50%。</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">n/arm</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Binary</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">TIZ</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">倍数</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">50</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.102</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.568</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">5.6x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">200</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.226</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.985</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.4x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">500</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.512</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.000</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2.0x</td></tr>
+<thead><tr>
+<th>n/arm</th>
+<th>Binary</th>
+<th>TIZ</th>
+<th>倍数</th>
+</tr></thead><tbody>
+<tr>
+<td>50</td>
+<td>0.102</td>
+<td>0.568</td>
+<td>5.6x</td>
+</tr>
+<tr>
+<td>200</td>
+<td>0.226</td>
+<td>0.985</td>
+<td>4.4x</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.512</td>
+<td>1.000</td>
+<td>2.0x</td>
+</tr>
 </tbody></table>
 <p>TIZ在n=50时（56.8%）已超过binary在n=500时（51.2%）。</p>
-<h4>结果3：穿透深度是决定性变量</h4>
+<h3>结果3：穿透深度是决定性变量</h3>
 <p>r=5，n=200/arm。</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">深度</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">越翻%</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Binary</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">TIZ</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">倍数</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">6%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.064</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.761</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">12.0x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.5</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">19%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.226</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.985</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4.4x</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">43%</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">0.856</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.000</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1.2x</td></tr>
+<thead><tr>
+<th>深度</th>
+<th>越翻%</th>
+<th>Binary</th>
+<th>TIZ</th>
+<th>倍数</th>
+</tr></thead><tbody>
+<tr>
+<td>0.3</td>
+<td>6%</td>
+<td>0.064</td>
+<td>0.761</td>
+<td>12.0x</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>19%</td>
+<td>0.226</td>
+<td>0.985</td>
+<td>4.4x</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>43%</td>
+<td>0.856</td>
+<td>1.000</td>
+<td>1.2x</td>
+</tr>
 </tbody></table>
-<h4>关键场景</h4>
+<h3>关键场景</h3>
 <p>r=5，depth=0.3，n=500/arm：Binary power <strong>9.3%</strong>，TIZ <strong>97.7%</strong>，观测d = <strong>0.039</strong>（真实0.8）。</p>
-<h4>代码</h4>
+<h3>代码</h3>
 <p>见附件 monte_carlo_sim.py。</p>
+        </div>
       </div>
-    </article>
+    </div>
   </main>
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
-  </div>
-</footer>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+
+  <script>
+  function switchLang(lang) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('lang-zh').style.display = lang === 'zh' ? '' : 'none';
+    document.querySelectorAll('.lang-tab').forEach((t, i) => {
+      t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+    });
+  }
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    </div>
+  </footer>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}\'></script>
 </body>
 </html>
