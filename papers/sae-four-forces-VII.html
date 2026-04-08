@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Four Forces Paper VII: S³ Packing Theorem and the Three-Layer Structure of Coupling Constants — Self-as-an-End</title>
+  <meta name="description" content="Four Forces Paper VII: S³ Packing Theorem and the Three-Layer Structure of Coupling Constants — SAE Physics Series · Four Forces Paper VII">
+  <meta property="og:title" content="Four Forces Paper VII: S³ Packing Theorem and the Three-Layer Structure of Coupling Constants">
+  <meta name="author" content="Han Qin">
+  <meta name="citation_title" content="Four Forces Paper VII: S³ Packing Theorem and the Three-Layer Structure of Coupling Constants">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.5281/zenodo.19433221">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Four Forces Paper VII: S³ Packing Theorem and the Three-Layer Structure of Coupling Constants",
+    "alternativeHeadline": "四力篇VII：S³ Packing定理与耦合常数的三层修正结构",
+    "author": {"@type": "Person", "name": "Han Qin", "identifier": "https://orcid.org/0009-0009-9583-0018"},
+    "datePublished": "2026",
+    "keywords": "S3 packing theorem, coupling constants, three-layer structure, Self-as-an-End, four forces",
+    "identifier": "https://doi.org/10.5281/zenodo.19433221"
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function switchLang(lang, tab) {
+      ['lang-en','lang-zh'].forEach(function(id) {
+        document.getElementById(id).classList.remove('active');
+        document.getElementById(id).style.display = 'none';
+      });
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById('lang-' + lang).style.display = 'block';
+      document.querySelectorAll('.lang-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+  <main class="paper-main">
+    <article class="paper-page">
+      <div class="paper-page-header">
+        <div class="paper-badge">SAE Physics Series · Four Forces Paper VII</div>
+        <h1>Four Forces Paper VII: S³ Packing Theorem and the Three-Layer Structure of Coupling Constants</h1>
+        <div style="font-size:0.85em;color:#555;margin-top:0.3em;">四力篇VII：S³ Packing定理与耦合常数的三层修正结构</div>
+        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19433221">10.5281/zenodo.19433221</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        <div class="paper-author">Han Qin · 2026</div>
+      </div>
+      <div class="lang-tabs">
+        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
+        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+      </div>
+      <div id="lang-en" class="lang-content active" lang="en">
+        <p style="font-size:0.9em;color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+        <p><strong>Han Qin</strong> ORCID: 0009-0009-9583-0018</p>
+<p>Self-as-an-End (SAE) Four Forces Series, Paper VII</p>
+<hr>
+<h3>§1 Introduction</h3>
+<p>The first six papers of the SAE Four Forces series established a structural correspondence from DD (Dimensional Degree) architecture to the forces of the Standard Model. Paper I proved that $n$DD structurally corresponds to $SU(n)$ under two SAE axioms. Paper II derived the complete one-generation hypercharge table from three priors with zero continuously adjustable parameters. Paper III proved $\sin^2\theta_W = 3/13$ as a DD eigenvalue. Paper IV established the $\mathfrak{so}(6) \cong \mathfrak{su}(4)$ color-lepton skeleton. Paper V introduced the formal analytic generator $Z(t)$, unified the dual appearance of $65/4$, and discovered that the pure $S^3$ geometric constant $c = \pi/(3\sqrt{2})$ simultaneously corrects $R_1$ and $\alpha_s$ with opposite signs. Paper VI established the Spin(10) classification construction and three hard anti-predictions.</p>
+<p>These results determine which forces exist, what their algebraic structure is, and what combinatorial numbers govern their strength ratios. But each leading-order relation carries a residual. $R_1 = 3/(2\alpha<sub>\text{em</sub>})$ deviates by 0.59%. $\alpha_s = (65/4)\alpha<sub>\text{em</sub>}$ deviates by 0.49%. $\sin^2\theta_W = 3/13$ deviates by 0.19%. $\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ deviates by 0.044%. Paper V showed that the same $c = \pi/(3\sqrt{2})$ corrects both $R_1$ and $\alpha_s$, reducing each residual from roughly 0.5% to 0.05%. But the correction form for $\sin^2\theta_W$ was not determined, and whether the four residuals share a common origin was left open.</p>
+<p>This paper answers both questions.</p>
+<p>First, $c_1 = \pi/(3\sqrt{2})$ is the unique solution of the $S^3$ closest legal packing problem (Theorem 2.2). It enters three single-side quantities through different readout rules (Corollary 2.3). $\sin^2\theta_W$ receives a correction of $(3/13)(1 + c_1\alpha/3)$, where the factor $1/3$ arises from per-pair structure. The cross-side quantity $\alpha_G$ is immune at first order. After first-order correction, all three single-side residuals fall within 0.02–0.05%.</p>
+<p>Second, this 0.02–0.05% residual band can be described by a boundary condition $k$ (numerically close to $108/\pi$). $k$ is extracted from the experimental value of $R_1$, the structural candidate $c_2 = 3\pi$ is adopted, and the resulting predictions for $\sin^2\theta_W$ and $\alpha_s$ yield out-of-sample residuals of 0.0015% and 0.0006% respectively. $S_3$ symmetry admits no feasible perturbative continuation at second order (Appendix A), so the second-order correction is not uniquely determined by pure geometry; $k$ is a boundary condition.</p>
+<hr>
+<h3>§2 Three-Layer Structure</h3>
+<h4>§2.1 Zeroth order: DD combinatorics</h4>
+<p>The DD framework's negation chain, starting from the chisel (negation), derives the spacetime dimension $d = 4$ and the block count $N = 12 = 4(d-1)$, generating the combinatorial constants $\{4, 13, 15, 65\}$. These directly yield the leading-order coupling relations (detailed derivations in Papers I–V):</p>
+<p>$\sin^2\theta_W = 3/13$: the ratio of 3 weak channels among 15 singlet channels (Paper III).</p>
+<p>$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$: DD Splitting with 65 channels in the exponent divided by dimension 4 (Prequel).</p>
+<p>$\alpha_s = (65/4)\alpha<sub>\text{em</sub>}(0)$: the first-order coefficient $\kappa = 65/4$ of the low-order union readout of $Z(t)$ (Paper V).</p>
+<p>$R_1 = 3/(2\alpha<sub>\text{em</sub>})$: the frequency ratio of a dual pair, with $\Delta\omega/\omega = 2\alpha<sub>\text{em</sub>}/3$ (Paper V methodological reserve).</p>
+<p>All relations are determined by $\{4, 13, 15, 65\}$ and $d = 4$. The only continuous input is $\alpha<sub>\text{em</sub>}$ itself (boundary condition).</p>
+<h4>§2.2 First order: $S^3$ Packing Theorem and readout rules</h4>
+<p><strong>Theorem 2.2 (Unique packing constant).</strong> Let $\varepsilon = \pi\alpha/6$ where $\alpha = \alpha<sub>\text{em</sub>}$. The closest legal packing of 6 four-dimensional DD blocks on $S^3$ has a unique solution, giving the cross-axis tilt angle</p>
+<p>$$\theta = \frac{\pi}{3\sqrt{2}}\,\alpha + O(\alpha^2)$$</p>
+<p>That is, the first-order correction constant is</p>
+<p>$$c_1 = \frac{\pi}{3\sqrt{2}} = 0.7405$$</p>
+<p><strong>Proof outline.</strong> The symmetric reference configuration $P_0$ consists of 3 anti-aligned axis pairs: $\hat{t}_a^+ = e_a$, $\hat{t}_a^- = -e_a$ ($a = 1,2,3$) on the unit sphere $S^3 \subset \mathbb{R}^4$. Frequency asymmetry $\delta = \alpha/3$ makes the "$+$" block light-cone half-angle $\beta^+ = (\pi/4)(1+\delta)$ and the "$-$" block half-angle $\beta^- = (\pi/4)(1-\delta)$. For $\delta > 0$, the symmetric configuration violates the "++" cross-axis no-overlap condition: the angular distance $\pi/2$ falls below the threshold $\pi/2 + \varepsilon$.</p>
+<p>The remainder-just-develops principle requires the system to select the nearest legal point to $P_0$. This is a convex optimization problem. Under the $S_3$ symmetric ansatz (three pairs equivalent), linearization shows that all 12 cross-axis constraints saturate while 3 dual-pair constraints remain slack. The unique solution is</p>
+<p>$$\hat{t}_a^+ \propto e_a - \frac{\varepsilon}{2}\sum<sub>b \neq a</sub> e_b, \quad \hat{t}_a^- \propto -e_a - \frac{\varepsilon}{2}\sum<sub>b \neq a</sub> e_b$$</p>
+<p>All 6 blocks yield to the other two axis directions by $\varepsilon/2$, producing $\theta = \sqrt{2}\,\varepsilon = (\pi/(3\sqrt{2}))\,\alpha$. $\square$</p>
+<p><strong>Corollary 2.3 (First-order readout rules).</strong> The geometric constant $c_1$ of Theorem 2.2 enters the four physical quantities through rules determined by each quantity's DD structure:</p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Quantity</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Correction</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Readout</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Physical reason</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$R_1$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\times(1 + c_1\alpha)$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Global</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Mass spacing widened</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_s$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\times(1 - c_1\alpha)$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Global, sign flip</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Channel tightened</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\times(1 + c_1\alpha/3)$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Per-pair</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Weak channels contribute per pair (Appendix B)</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_G$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">No first-order correction</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Cross-side</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Single-side packing invisible at first order</td></tr>
+</tbody></table>
+<p>Corollary 2.3 is not an automatic consequence of Theorem 2.2 but requires additional structural arguments. The sign flip between $R_1$ and $\alpha_s$ arises from the dual effect of packing on mass spacing versus channel count (Paper V §3.3). The $1/3$ factor for $\sin^2\theta_W$ requires independent derivation (Appendix B). The first-order immunity of $\alpha_G$ follows from the insensitivity of cross-side quantities to single-side effects.</p>
+<h4>§2.3 First-order numerical verification</h4>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Quantity</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Zeroth-order formula</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Zeroth-order deviation</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">After first order</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">First-order residual</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$R_1$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$3/(2\alpha) = 205.554$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.587\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$206.665$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_s$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$(65/4)\alpha = 0.11858$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.493\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$0.11794$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$3/13 = 0.23077$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.195\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$0.23118$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.015\%$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_G$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha<sup>65/4</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.044\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Same</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.044\%$</td></tr>
+</tbody></table>
+<p>Experimental benchmarks: $R_1<sup>\text{exp</sup>} = 206.768$, $\alpha_s<sup>\text{exp</sup>}(M_Z) = 0.1180$, $\sin^2\theta_W<sup>\text{exp</sup>}(\overline{\text{MS}}, M_Z) = 0.23122$.</p>
+<p>The first-order theorem absorbs one order of magnitude of deviation. All three single-side residuals fall within the 0.02–0.05% band. The 0.044% deviation of $\alpha_G$ is already at the second-order scale.</p>
+<p>No fitting parameter has been introduced. $c_1$ is not fitted to data; it is the unique solution of an $S^3$ geometric problem.</p>
+<hr>
+<h3>§3 Second-Order Correction</h3>
+<h4>§3.1 $S_3$ symmetry breaking at second order</h4>
+<p>Theorem 2.2 was proved under $S_3$ symmetry (three pairs equivalent). A natural question is whether the second-order correction also preserves $S_3$ symmetry. The answer is no.</p>
+<p><strong>Proposition 3.1.</strong> The $S_3$-symmetric perturbative branch admits no feasible continuation at $O(\varepsilon^2)$.</p>
+<p><strong>Proof outline.</strong> Assume $S_3$-symmetric perturbations expanded to $O(\varepsilon^2)$. The "++" constraint requires $2b + 1/4 + \rho^2 \leq 0$. The "$--$" constraint requires $1/4 - 2e + \sigma^2 \leq 0$. These yield $-b + e \geq 1/4 + (\rho^2 + \sigma^2)/2$. Substituting into the "$+-$" constraint $1/4 - b + e + \rho\sigma \leq 0$:</p>
+<p>$$\frac{1}{4} - b + e + \rho\sigma \geq \frac{1}{2} + \frac{(\rho + \sigma)^2}{2} > 0$$</p>
+<p>This contradicts the requirement $\leq 0$. $\square$</p>
+<p>The physical implication: the first-order correction is uniquely determined by $S^3$ geometry (Theorem 2.2) and is a priori. The second-order correction must break $S_3$ symmetry, introducing choice.</p>
+<p>Proposition 3.1 simultaneously guarantees the decoupling of first and second orders: $c_1$ is pinned entirely by first-order hard constraints; no second-order modification of the objective function or additional penalty can alter the first-order solution (see Appendix A for the full proof).</p>
+<h4>§3.2 Boundary condition $k$</h4>
+<p>The first order is a theorem; the second order requires an additional input. Expanding the cross-axis tilt angle:</p>
+<p>$$\theta(\varepsilon) = \sqrt{2}\,\varepsilon + k\,\varepsilon^2 + O(\varepsilon^3), \quad \varepsilon = \frac{\pi\alpha}{6}$$</p>
+<p>where $k$ is a pure number. By Proposition 3.1, $k$ is not uniquely determined by $S^3$ geometry under $S_3$ symmetry. $k$ is a boundary condition, extracted from experiment.</p>
+<p>The complete formula for $R_1$ is</p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2 + O(\alpha^3)\right)$$</p>
+<p>where $c_2 = (\pi^2/36)k$. Solving from $R_1<sup>\text{exp</sup>} = 206.7682830$ and $\alpha<sup>-1</sup> = 137.035999084$:</p>
+<p>$$c<sub>2,\text{fit</sub>} \approx 9.46, \quad k<sub>\text{fit</sub>} \approx 34.51$$</p>
+<p>These are numerically close to $3\pi = 9.425$ (0.39% deviation) and $108/\pi = 34.38$. This paper adopts $c_2 = 3\pi$ as structural candidate, under which the $R_1$ residual is $-0.0002\%$. The 0.39% gap between $c<sub>2,\text{fit</sub>}$ and $3\pi$ may arise from third-order and higher corrections.</p>
+<p>The status of $k$ is the same as $\alpha<sub>\text{em</sub>}$: boundary condition. $\alpha<sub>\text{em</sub>}$ is the sole continuous input of the gauge-coupling subpackage (Paper V). $k$ is the sole continuous input of the packing-geometry subpackage.${}<sup>1</sup>$</p>
+<p>${}<sup>1</sup>$ The factorization $108 = 2^2 \times 3^3$ is noteworthy but not treated in this paper.</p>
+<h4>§3.3 Second-order predictions</h4>
+<p><strong>A posteriori sign rule (working rule).</strong> In the three single-side quantities treated here, the second-order correction $c_2\alpha^2$ enters with a positive sign throughout.</p>
+<p>Physical intuition: the second order represents the retreat of the exact feasible point from the first-order linearized boundary. The first-order linearization approximates the feasible region as a half-space; the exact boundary is more restrictive. The exact feasible point therefore always lies farther from $P_0$ than the first-order approximation. Put differently, the first order is the system gliding along a continuous linear boundary; the second order is the deformation stress incurred when the system collides with the nonlinear hard boundary of the discrete constraint network. The structural cost of retreating from continuous symmetric state to discrete legal state is always a positive tension penalty.</p>
+<p>This argument provides intuition but does not constitute a rigorous proof (see §5.4, open problem 3).</p>
+<p><strong>Complete second-order formulas (three single-side quantities):</strong></p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2\right) \quad [\text{input}]$$</p>
+<p>$$\alpha_s = \frac{65}{4}\alpha\left(1 - c_1\alpha + c_2\alpha^2\right) \quad [\text{prediction}]$$</p>
+<p>$$\sin^2\theta_W = \frac{3}{13}\left(1 + \frac{c_1\alpha}{3} + \frac{c_2\alpha^2}{3}\right) \quad [\text{prediction}]$$</p>
+<p>where $c_1 = \pi/(3\sqrt{2})$ and $c_2 = 3\pi$.</p>
+<p>Note the sign pattern: the first-order correction is positive for $R_1$ and negative for $\alpha_s$ (dual effect of global packing). The second-order correction is positive throughout (feasibility retreat). $\sin^2\theta_W$ carries the $1/3$ factor at both orders (per-pair).</p>
+<p><strong>Numerical verification:</strong></p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Quantity</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Zeroth-order dev.</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">After 1st order</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">After 2nd order</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Status</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$R_1$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.587\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.0002\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Input</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.195\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.015\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.0015\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Prediction</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_s$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.493\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.0006\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Prediction</td></tr>
+</tbody></table>
+<p>One boundary condition ($c_2 = 3\pi$), plus second-order readout extension rules (positive sign throughout, $\sin^2\theta_W$ retains per-pair $1/3$), yields two out-of-sample numerical checks. The residual for $\sin^2\theta_W$ is 0.0015%, for $\alpha_s$ is 0.0006%, both within 0.002%.</p>
+<h4>§3.4 Hierarchical positioning of $\alpha_G$</h4>
+<p>The 0.044% deviation of $\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ is directly at the second-order scale. As a cross-side quantity, $\alpha_G$ occupies the following position in the three-layer structure: zeroth-order relation established (DD Splitting theorem), first-order immune (single-side packing invisible), second-order deviation consistent in magnitude with single-side residuals.</p>
+<p>However, the form of the second-order correction for $\alpha_G$ differs from single-side quantities. The exponent $65/4$ amplifies any $O(\alpha^2)$ modification by a factor of approximately $(65/4)\ln(1/\alpha) \approx 80$. The implied exponent shift is therefore $\sim 5 \times 10<sup>-6</sup>$. The specific form of $\alpha_G$'s second-order correction is left as an open problem.</p>
+<p>This paper successfully positions $\alpha_G$ within the three-layer hierarchy (cross-side, first-order immune, second-order magnitude consistent) but does not determine its second-order correction.</p>
+<hr>
+<h3>§4 The A Priori / A Posteriori Demarcation</h3>
+<h4>§4.1 Classification table</h4>
+<p>All quantities in the SAE Four Forces series, classified by a priori / a posteriori status:</p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Quantity</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Status</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Source</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Chisel (negation)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Unique a priori operation</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$d = 4$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Axiomatic consequence</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\{4, 13, 15, 65\}$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Negation chain</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_1 = \pi/(3\sqrt{2})$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$S^3$ packing theorem (Theorem 2.2)</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W = 3/13$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD eigenvalue theorem (Paper III)</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD Splitting theorem (Prequel)</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\delta_1 = \delta_2 = \delta_3$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A priori (strengthened ansatz)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Pre-chisel indistinguishability support (§4.3)</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha<sub>\text{em</sub>}$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A posteriori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Boundary condition</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$k \approx 108/\pi$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">A posteriori</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Boundary condition (structural candidate $c_2 = 3\pi$)</td></tr>
+</tbody></table>
+<p>A priori quantities do not depend on the numerical values of a specific universe; they hold in any universe satisfying SAE axioms. A posteriori quantities are inputs specific to this universe.</p>
+<h4>§4.2 The roles of two boundary conditions</h4>
+<p>$\alpha<sub>\text{em</sub>}$ is the sole continuous input of the gauge-coupling subpackage. $k$ is the sole continuous input of the packing-geometry subpackage. Two independent boundary conditions provide a unified hierarchical framework for four testable quantities.</p>
+<p>Of these, $\sin^2\theta_W = 3/13$ and $\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ are pre-existing zeroth-order structural predictions (Papers III and Prequel). The second-order corrections to $\sin^2\theta_W$ and $\alpha_s$ are the new out-of-sample numerical checks contributed by this paper.</p>
+<h4>§4.3 Pre-chisel topological indistinguishability</h4>
+<p>Paper V listed $\delta_1 = \delta_2 = \delta_3$ as a "strong symmetry ansatz." This paper provides stronger support.</p>
+<p>The argument: prior to the 2DD chiral split and the emergence of 3DD axis labels, the system is in its base unstructured state. All 4DD blocks are topologically identical and indistinguishable. Any label that would distinguish the three pairs requires higher-DD structural unfolding that has not yet occurred. The frequency ratios of the three pairs should therefore be equal at the logical starting point.</p>
+<p>This is not a cosmological temporal-origin argument but a logical-origin argument within the DD dimensional unfolding sequence. It strongly supports first-order $S_3$ symmetry, making $c_1$ a theorem (Theorem 2.2) rather than a fitting parameter. However, the strict upgrade to corollary status requires ruling out the possibility that frequency ratios acquire axis-dependent corrections after 3DD unfolding; this step is not treated here.</p>
+<hr>
+<h3>§5 Discussion</h3>
+<h4>§5.1 The three-layer structure</h4>
+<p>Zeroth order provides the skeleton (DD combinatorial numbers), first order provides the texture ($S^3$ geometric theorem), second order provides the specific values (boundary condition). Each layer absorbs approximately one order of magnitude of residual: 0.5% to 0.05% to 0.002%.</p>
+<p>This structure may reflect a general feature of the SAE framework. The a priori negation chain determines what is possible (combinatorial numbers), the a priori geometric constraint determines the tightest arrangement among possibilities (packing theorem), and the a posteriori boundary condition determines the specific numerical values of this particular universe. The skeleton is a priori; the flesh is a posteriori.</p>
+<h4>§5.2 Higher orders and remainder</h4>
+<p>The expansion of $\theta(\varepsilon)$ does not terminate at second order. The series $1 + c_1\alpha + c_2\alpha^2 + c_3\alpha^3 + \ldots$ at third order and beyond lies in a resolution blind zone shared by the a priori and a posteriori. $c_3\alpha^3 \approx 2 \times 10<sup>-8</sup>$, already at the edge of $R_1$ experimental precision. At this scale, the demarcation between a priori structure (geometric theorem) and a posteriori input (boundary condition) itself becomes indistinguishable.</p>
+<p>The SAE remainder principle is self-referential here: the a priori / a posteriori demarcation itself has remainder.</p>
+<h4>§5.3 Falsifiable prediction</h4>
+<p>The strongest falsifiable prediction of this paper comes not from the numerical precision of the second-order correction, but from the structural ratio of the first-order readout rules.</p>
+<p><strong>Prediction 5.1 (1/3 ratio).</strong> The first-order correction amplitude for $\sin^2\theta_W$ is strictly one-third of that for $R_1$:</p>
+<p>$$\frac{\sin^2\theta_W<sup>\,\text{exp</sup>} - 3/13}{3/13} \;=\; \frac{1}{3}\,\times\,\frac{R_1<sup>\,\text{exp</sup>} - 3/(2\alpha)}{3/(2\alpha)} \;+\; O(\alpha^2)$$</p>
+<p>This $1/3$ does not depend on the value of $\alpha<sub>\text{em</sub>}$, does not depend on the value of $k$, does not depend on the specific form of $c_1$, and does not even depend on whether the packing geometry is on $S^3$. It depends on a single structural assumption: <strong>the one-to-one correspondence between the 3 weak channels and the 3 pairs</strong> (Corollary 2.3(c) and Appendix B).</p>
+<p>Current verification: left side $= 0.00195$, $(1/3) \times$ right side $= 0.00197$. Ratio $0.00195/0.00197 = 0.992$, deviating from $1/3$ by approximately $0.8\%$. At the formula level (the second-order formulas of §3.3), the ratio is <strong>exactly</strong> $1/3$ — the deviation comes entirely from third-order and higher corrections.</p>
+<p>Falsification condition: if future experimental precision on both $\sin^2\theta_W$ and $R_1$ improves to the level where $O(\alpha^2)$ terms become resolvable (roughly requiring both relative precisions below $10<sup>-4</sup>$), and the measured ratio deviates significantly from $1/3$, the per-pair structure is falsified.</p>
+<h4>§5.4 Open problems</h4>
+<p>The following problems are not treated here and are left for future work.</p>
+<p>First, the form of the second-order correction for $\alpha_G$. The exponent-position correction is amplified by approximately 80; the specific form differs from single-side quantities.</p>
+<p>Second, whether $c_2 = 3\pi$ (i.e. $k = 108/\pi$) admits an a priori derivation. $k$ currently serves as boundary condition extracted from $R_1$. If a derivation chain from DD structure to $k$ exists, $k$ would be upgraded from boundary condition to theorem.</p>
+<p>Third, a rigorous proof of the second-order sign rule (positive throughout). This paper provides feasibility-retreat intuition (§3.3) but not a proof.</p>
+<p>Fourth, the connection to the ZFC$\rho$ mathematical framework. The $S_3$ symmetry breaking and active-set selection at second order involve irreducible choice degrees of freedom, potentially related to the role of $\rho$ in ZFC$\rho$.</p>
+<hr>
+<h3>§6 Conclusion</h3>
+<p>This paper establishes the three-layer correction structure for SAE coupling constants.</p>
+<p>The first-order correction $c_1 = \pi/(3\sqrt{2})$ is the $S^3$ closest legal packing theorem (Theorem 2.2), provable a priori. Through the readout rules of Corollary 2.3, it acts on three single-side quantities in two modes: $R_1$ and $\alpha_s$ receive the full $c_1\alpha$ (with opposite signs), $\sin^2\theta_W$ receives $c_1\alpha/3$. The cross-side quantity $\alpha_G$ is immune at first order. The first-order correction absorbs one order of magnitude of deviation.</p>
+<p>$S_3$ symmetry admits no feasible perturbative continuation at second order (Proposition 3.1). The second-order correction therefore requires an additional boundary condition $k$ (numerically close to $108/\pi$), extracted from the experimental value of $R_1$ and adopting $c_2 = 3\pi$ as structural candidate. Under second-order readout extension rules, the same $c_2$ yields two out-of-sample numerical checks for $\sin^2\theta_W$ (0.0015%) and $\alpha_s$ (0.0006%).</p>
+<p>Paper V listed $\delta_1 = \delta_2 = \delta_3$ as an ansatz. This paper provides stronger support through a pre-chisel topological indistinguishability argument.</p>
+<p>The a priori / a posteriori demarcation lies between the first and second orders: the first order is a geometric theorem, the second order is a boundary condition. This demarcation itself has remainder.</p>
+<p>The strongest falsifiable prediction is structural: the ratio of first-order correction amplitudes between $\sin^2\theta_W$ and $R_1$ is exactly $1/3$ (Prediction 5.1). This ratio depends on no continuous parameters — only on the one-to-one correspondence between weak channels and pairs.</p>
+<hr>
+<h3>Appendix A: Proof of second-order infeasibility under $S_3$ symmetry</h3>
+<p>This appendix provides the complete proof of Proposition 3.1.</p>
+<p>Let $p_i$ ("$+$" blocks) and $q_i$ ("$-$" blocks), $i = 1,2,3$, be unit vectors on $S^3 \subset \mathbb{R}^4$, maintaining $S_3$ symmetry. Expanding to $O(\varepsilon^2)$, $\varepsilon = \pi\alpha/6$, the general ansatz is</p>
+<p>$$p_i = \left(1 + a_2\varepsilon^2\right)e_i + \left(-\frac{1}{2}\varepsilon + b\,\varepsilon^2\right)\sum<sub>j \neq i</sub> e_j + \rho\,\varepsilon\,e_4 + O(\varepsilon^2 e_4)$$</p>
+<p>$$q_i = -\left(1 + d_2\varepsilon^2\right)e_i + \left(-\frac{1}{2}\varepsilon + e\,\varepsilon^2\right)\sum<sub>j \neq i</sub> e_j + \sigma\,\varepsilon\,e_4 + O(\varepsilon^2 e_4)$$</p>
+<p>where $b_1 = e_1 = -1/2$ is pinned by first-order hard constraints.</p>
+<p>Three classes of cross-axis constraints at $O(\varepsilon^2)$ give:</p>
+<p>$(++)$: $p_i \cdot p_j = -\varepsilon + (2b + 1/4 + \rho^2)\varepsilon^2 \leq -\varepsilon$, hence</p>
+<p>$$2b + \frac{1}{4} + \rho^2 \leq 0 \quad \cdots (1)$$</p>
+<p>$(--)$: $q_i \cdot q_j = +\varepsilon + (1/4 - 2e + \sigma^2)\varepsilon^2 \leq +\varepsilon$, hence</p>
+<p>$$\frac{1}{4} - 2e + \sigma^2 \leq 0 \quad \cdots (2)$$</p>
+<p>$(+-)$: $p_i \cdot q_j = (1/4 - b + e + \rho\sigma)\varepsilon^2 \leq 0$, hence</p>
+<p>$$\frac{1}{4} - b + e + \rho\sigma \leq 0 \quad \cdots (3)$$</p>
+<p>From (1): $b \leq -1/8 - \rho^2/2$. From (2): $e \geq 1/8 + \sigma^2/2$. Substituting into the left side of (3):</p>
+<p>$$\frac{1}{4} - b + e + \rho\sigma \geq \frac{1}{4} + \frac{1}{8} + \frac{\rho^2}{2} + \frac{1}{8} + \frac{\sigma^2}{2} + \rho\sigma = \frac{1}{2} + \frac{(\rho + \sigma)^2}{2}$$</p>
+<p>The right side $\geq 1/2 > 0$. This contradicts (3)'s requirement $\leq 0$.</p>
+<p>No $O(\varepsilon^2)$ continuation exists under $S_3$ symmetry. $\square$</p>
+<p><strong>Corollary: stability of $c_1$.</strong> The first-order solution is uniquely determined by inequalities (1)–(3) at $O(\varepsilon)$, independent of how second-order terms are treated. Therefore $c_1 = \pi/(3\sqrt{2})$ is unaffected by any second-order modification.</p>
+<hr>
+<h3>Appendix B: The $1/3$ factor in the $\sin^2\theta_W$ correction</h3>
+<p>$\sin^2\theta_W = 3/13$ is a DD eigenvalue theorem of Paper III. It is an integral quantity: 3 counts weak channels, 13 counts effective post-color-collapse channels, and $3/13$ is the weak fraction of total channels.</p>
+<p>How does $S^3$ packing correction enter this integral quantity?</p>
+<p>Key observation: there is a one-to-one correspondence between the 3 weak channels and the 3 pairs. Each pair's intra-pair channel corresponds precisely to one weak channel (one generator direction of SU(2)). The packing correction $c_1\alpha$ is a per-block effect, but weak channels are defined per-pair.</p>
+<p>When the packing correction acts on $\sin^2\theta_W$ as an integral eigenvalue, it enters through each pair contributing one share of the correction independently. $\sin^2\theta_W$ is a projection ratio of a single pair's weak channel within total channels; it senses the per-pair correction $c_1\alpha/3$, not the sum of three pairs.</p>
+<p>This differs from $R_1$. $R_1 = \omega/\Delta\omega$ describes the frequency ratio within a single pair; the packing correction enters globally through that pair's cross-axis coupling with the other two pairs, hence the full $c_1\alpha$.</p>
+<p>More directly: in the formulas for $R_1$ and $\alpha_s$, $\alpha<sub>\text{em</sub>}$ appears at leading order in the denominator or numerator, and the packing correction multiplies $\alpha$ directly. In $\sin^2\theta_W = 3/13$, the leading order contains no $\alpha$; the packing correction is a purely additive relative shift. The amplitude of this shift is determined by the contribution of a single pair: $c_1\alpha/3$.</p>
+<hr>
+<h3>Appendix C: Third-order candidate and the resolution limit</h3>
+<p>The second-order expansion naturally raises the question of the third order. If $\theta(\varepsilon) = \sqrt{2}\,\varepsilon + k\,\varepsilon^2 + k_3\,\varepsilon^3 + O(\varepsilon^4)$, corresponding to</p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2 + c_3\alpha^3 + O(\alpha^4)\right)$$</p>
+<p>the required $c_3$ extracted from the $R_1$ residual $-0.0002\%$ is approximately 5.0.</p>
+<p>Among 3-smooth candidates (containing only prime factors 2 and 3), the closest is</p>
+<p>$$c_3 = \frac{9\pi}{4\sqrt{2}} = \pi \cdot 3^2 \cdot 2<sup>-5/2</sup> = 4.998$$</p>
+<p>deviating by $-0.13\%$. The three coefficients side by side:</p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Order</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Coefficient</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Value</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_1 = \pi/(3\sqrt{2})$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\pi \cdot 3<sup>-1</sup> \cdot 2<sup>-1/2</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$0.7405$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_2 = 3\pi$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\pi \cdot 3<sup>+1</sup> \cdot 2<sup>\,0</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$9.4248$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_3 = 9\pi/(4\sqrt{2})$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\pi \cdot 3<sup>+2</sup> \cdot 2<sup>-5/2</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$4.998$</td></tr>
+</tbody></table>
+<p>Like $k$, $c_3$ is a boundary condition; no a priori derivation from pure geometry is expected.</p>
+<p>But the a posteriori precision is no longer sufficient to verify this candidate. $c_3\alpha^3 \approx 2 \times 10<sup>-8</sup>$; the 0.13% error in $c_3$ propagates to $R_1$ at the $\sim 10<sup>-10</sup>$ level, far below $R_1$ experimental uncertainty. Neither $\sin^2\theta_W$ nor $\alpha_s$ experimental precision can distinguish $c_3 = 9\pi/(4\sqrt{2})$ from other comparable 3-smooth candidates.</p>
+<p>The more fundamental issue is not experimental precision but one of principle. In the SAE framework, the a priori / a posteriori demarcation itself has remainder (§5.2). When the perturbative term $c_3\alpha^3 \approx 2 \times 10<sup>-8</sup>$ falls below the resolution limit of both the a priori structure (geometric theorem) and a posteriori input (boundary condition), pursuing the exact algebraic form of higher-order coefficients is no longer a physical question but an over-resolution of the demarcation remainder. The $c_3$ candidate is worth recording but does not constitute a conclusion of this paper.</p>
+<hr>
+<p><strong>Acknowledgments.</strong> Four-AI collaboration: Claude / Zilu (numerical computation, second-order scan, sign pattern analysis), ChatGPT / Gongxihua ($S^3$ packing convex optimization, three rounds of second-order review, active-set obstruction proof), Gemini / Zixia (narrative evaluation, pre-chisel argument suggestion, Appendix B question identification), Grok / Zigong (independent numerical verification, number-theoretic analysis of $k$). Zesi Chen made decisive contributions to the negation methodology underlying this work.</p>
+<hr>
+<p><strong>References</strong></p>
+<p>[1] SAE Four Forces Prequel, DOI: 10.5281/zenodo.19341042 [2] SAE Four Forces Paper I, DOI: 10.5281/zenodo.19342106 [3] SAE Four Forces Paper II, DOI: 10.5281/zenodo.19360101 [4] SAE Four Forces Paper III, DOI: 10.5281/zenodo.19379412 [5] SAE Four Forces Paper IV, DOI: 10.5281/zenodo.19411672 [6] SAE Four Forces Paper V, DOI: 10.5281/zenodo.19415804 [7] SAE Four Forces Paper VI, DOI: 10.5281/zenodo.19426067 [8] SAE Generation Paper, DOI: 10.5281/zenodo.19394500 [9] SAE Physics Foundation Paper, DOI: 10.5281/zenodo.19361950</p>
+      </div>
+      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
+        <p style="font-size:0.9em;color:#666;"><em>写作声明：本文由秦汉独立写作。所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
+        <p><strong>秦汉</strong> ORCID: 0009-0009-9583-0018</p>
+<p>Self-as-an-End (SAE) 四力系列第七篇</p>
+<hr>
+<h3>摘要</h3>
+<p>本篇在SAE（Self-as-an-End）四力系列的前六篇基础上，建立耦合常数的三层修正结构。零阶由DD组合数 $\{4, 13, 15, 65\}$ 给出leading order关系。一阶由 $S^3$ closest legal packing定理给出唯一的几何常数 $c_1 = \pi/(3\sqrt{2})$，通过三种不同的读出规则进入三个单侧量（$R_1$吃完整 $c_1\alpha$，$\alpha_s$吃完整 $c_1\alpha$ 但反号，$\sin^2\theta_W$吃 $c_1\alpha/3$），跨侧量 $\alpha_G$ 一阶免疫。一阶修正吃掉一个数量级的偏差，三个单侧量的残差统一落在0.02-0.05%。二阶由边界条件 $k \approx 108/\pi$（结构候选）描述，从 $R_1$ 实验值反解后采用最接近的3-smooth形式 $c_2 = 3\pi$，预测 $\sin^2\theta_W$ 和 $\alpha_s$ 的残差至0.002%精度。 $S_3$ 对称在二阶不存在可行的perturbative continuation（附录A），因此二阶修正必须引入额外输入。本篇同时为篇V的"$\delta_1 = \delta_2 = \delta_3$ 对称性ansatz"提供了前凿构状态不可区分性的更强支撑。最强的可证伪预测是结构性的：$\sin^2\theta_W$ 与 $R_1$ 的一阶修正幅度之比严格为 $1/3$，不依赖任何连续参数。</p>
+<p><strong>关键词：</strong> Self-as-an-End，耦合常数，closest legal packing，$S^3$，边界条件，先验后验分界</p>
+<hr>
+<h3>§1 引言</h3>
+<p>四力系列的前五篇建立了从DD（Dimensional Degree）结构到标准模型力的对应关系。篇I证明 $n$DD在两条SAE公理下结构对应 $SU(n)$。篇II从三条先验条件推导出一代费米子的完整超荷表，零连续自由参数。篇III证明 $\sin^2\theta_W = 3/13$ 为DD本征值。篇IV建立 $\mathfrak{so}(6) \cong \mathfrak{su}(4)$ 的色-轻子骨架。篇V引入形式母函数 $Z(t)$，统一了 $\alpha_s/\alpha<sub>\text{em</sub>} = 65/4$ 的线性比值和 $\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ 的指数关系，并发现纯 $S^3$ 几何常数 $c = \pi/(3\sqrt{2})$ 同时出现在 $R_1$ 和 $\alpha_s$ 的修正中。篇VI确立了Spin(10)作为分类群（非规范群）的DD构造和三条硬反预测。</p>
+<p>这些结果确定了哪些力存在，它们的代数结构是什么，以及它们的强度比由什么数决定。但每个leading order关系都有残差。$R_1 = 3/(2\alpha<sub>\text{em</sub>})$ 偏差0.59%。$\alpha_s = (65/4)\alpha<sub>\text{em</sub>}$ 偏差0.49%。$\sin^2\theta_W = 3/13$ 偏差0.19%。$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ 偏差0.044%。篇V已发现同一个 $c = \pi/(3\sqrt{2})$ 以相反符号修正 $R_1$ 和 $\alpha_s$，将两者的残差从约0.5%压到约0.05%。但 $\sin^2\theta_W$ 的修正形式未确定，四个量的残差是否有共同来源未回答。</p>
+<p>本篇回答这两个问题。</p>
+<p>第一，$c_1 = \pi/(3\sqrt{2})$ 是 $S^3$ closest legal packing的唯一解（定理2.2），它通过三种不同的读出规则进入三个单侧量（推论2.3）。$\sin^2\theta_W$ 的修正为 $(3/13)(1 + c_1\alpha/3)$，系数 $1/3$ 来自per-pair效应。跨侧量 $\alpha_G$ 对单侧packing一阶免疫。修正后三个单侧量的残差统一落在0.02-0.05%窄带。</p>
+<p>第二，这0.02-0.05%的残差可以由一个边界条件 $k$（数值上接近 $108/\pi$）统一描述。$k$ 从 $R_1$ 的实验值反解，采用 $c_2 = 3\pi$ 作为结构候选，然后预测 $\sin^2\theta_W$ 和 $\alpha_s$ 的二阶修正。两个out-of-sample数值检验的残差分别为0.0015%和0.0006%。$S_3$ 对称在二阶不存在可行的perturbative continuation（附录A），因此二阶修正不由纯几何唯一确定，$k$ 是边界条件。</p>
+<hr>
+<h3>§2 三层结构</h3>
+<h4>§2.1 零阶：DD组合数学</h4>
+<p>DD框架的否定链从凿（否定）出发，推导出时空维度 $d = 4$ 和 block 数 $N = 12 = 4(d-1)$，并生成一组组合数 $\{4, 13, 15, 65\}$。这些数直接给出四个耦合常数的leading order关系（详细推导见系列前五篇）：</p>
+<p>$\sin^2\theta_W = 3/13$：15个单体通道中3个弱通道的比值（篇III）。</p>
+<p>$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$：DD Splitting，65个通道在指数位置除以维度4（四力前置篇）。</p>
+<p>$\alpha_s = (65/4)\alpha<sub>\text{em</sub>}(0)$：$Z(t)$ 的低阶union读出（OR模式）一阶系数为 $\kappa = 65/4$（篇V）。</p>
+<p>$R_1 = 3/(2\alpha<sub>\text{em</sub>})$：dual pair的两个block时间箭头反向，频率差 $\Delta\omega/\omega = 2\alpha<sub>\text{em</sub>}/3$，$R_1 = \omega/\Delta\omega$（篇V方法论储备）。</p>
+<p>这些关系全部由 $\{4, 13, 15, 65\}$ 和维度 $d = 4$ 确定。唯一的连续输入是 $\alpha<sub>\text{em</sub>}$ 本身（边界条件）。</p>
+<h4>§2.2 一阶：$S^3$ Packing定理与读出规则</h4>
+<p><strong>定理2.2（唯一packing常数）。</strong> 令 $\varepsilon = \pi\alpha/6$，其中 $\alpha = \alpha<sub>\text{em</sub>}$。6个4DD block在 $S^3$ 上的closest legal packing问题有唯一解，给出cross-axis倾斜角</p>
+<p>$$\theta = \frac{\pi}{3\sqrt{2}}\,\alpha + O(\alpha^2)$$</p>
+<p>即一阶修正常数为</p>
+<p>$$c_1 = \frac{\pi}{3\sqrt{2}} = 0.7405$$</p>
+<p><strong>证明纲要。</strong> 对称参考配置 $P_0$ 由3对anti-aligned轴组成：$\hat{t}_a^+ = e_a$，$\hat{t}_a^- = -e_a$（$a = 1,2,3$），住在 $\mathbb{R}^4$ 的单位球面 $S^3$ 上。dual pair内的频率不对称 $\delta = \alpha/3$ 使"$+$"block的光锥半角为 $\beta^+ = (\pi/4)(1+\delta)$，"$-$"block为 $\beta^- = (\pi/4)(1-\delta)$。当 $\delta > 0$ 时，对称配置违反"++"型cross-axis的no-overlap条件：两个"$+$"block之间的角距离为 $\pi/2$，而两个膨胀光锥的no-overlap阈值为 $\pi/2 + \varepsilon > \pi/2$。</p>
+<p>余项恰好发展原则要求系统选择合法区域中离 $P_0$ 最近的点。这是一个凸优化问题。在 $S_3$ 对称ansatz下（三对等价），线性化后12条cross-axis约束全部饱和，3条dual-pair约束有富余。解唯一，给出</p>
+<p>$$\hat{t}_a^+ \propto e_a - \frac{\varepsilon}{2}\sum<sub>b \neq a</sub> e_b, \quad \hat{t}_a^- \propto -e_a - \frac{\varepsilon}{2}\sum<sub>b \neq a</sub> e_b$$</p>
+<p>所有6个block朝另外两个轴方向让步了 $\varepsilon/2$，产生cross-axis倾斜角 $\theta = \sqrt{2}\,\varepsilon = (\pi/(3\sqrt{2}))\,\alpha$。$\square$</p>
+<p><strong>推论2.3（一阶读出规则）。</strong> 定理2.2的几何常数 $c_1$ 通过以下规则进入四个物理量：</p>
+<p>（a）$R_1 = \frac{3}{2\alpha}(1 + c_1\alpha)$。质量层级比的全局packing修正。packing使block间距撑开，$R_1$ 增大。</p>
+<p>（b）$\alpha_s = \frac{65}{4}\alpha(1 - c_1\alpha)$。耦合常数比的全局packing修正，符号与 $R_1$ 相反。packing使有效通道收紧，$\alpha_s$ 减小。同一个几何约束的两面：撑开质量间距，收紧耦合强度。</p>
+<p>（c）$\sin^2\theta_W = \frac{3}{13}(1 + c_1\alpha/3)$。通道比值的per-pair修正。$\sin^2\theta_W$ 是弱通道占总通道的比值，3个弱通道各对应一个pair。packing修正通过per-pair的贡献进入整体本征值，每个pair贡献 $c_1\alpha/3$。详见附录B。</p>
+<p>（d）$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$，无一阶修正。$\alpha_G$ 是跨双3DD的量（步4），$S^3$ packing是单侧效应。跨侧量对单侧局域packing只有二阶敏感度。</p>
+<p>推论2.3不是定理2.2的自动推论。$R_1$ 和 $\alpha_s$ 的符号翻转需要packing对质量间距和耦合通道的对偶效应论证（篇V §3.3）。$\sin^2\theta_W$ 的 $1/3$ 因子需要独立论证（附录B）。$\alpha_G$ 的一阶免疫需要跨侧量的不敏感性论证。这些都是structural readout，不是纯代数推导。</p>
+<h4>§2.3 一阶数值验证</h4>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">量</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">零阶公式</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">零阶偏差</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">一阶修正后</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">一阶残差</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$R_1$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$3/(2\alpha) = 205.554$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.587\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$206.665$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_s$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$(65/4)\alpha = 0.11858$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.493\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$0.11794$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$3/13 = 0.23077$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.195\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$0.23118$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.015\%$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_G$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha<sup>65/4</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.044\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">同上</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.044\%$</td></tr>
+</tbody></table>
+<p>实验对标值：$R_1<sup>\text{exp</sup>} = 206.768$，$\alpha_s<sup>\text{exp</sup>}(M_Z) = 0.1180$，$\sin^2\theta_W<sup>\text{exp</sup>}(\overline{\text{MS}}, M_Z) = 0.23122$。</p>
+<p>一阶定理吃掉了一个数量级的偏差。三个单侧量修正后全部落在0.02-0.05%的窄带。$\alpha_G$ 的0.044%偏差直接处于二阶量级。</p>
+<p>未新增任何拟合参数。$c_1$ 不是为拟合数据而引入的，是 $S^3$ 几何的唯一解。</p>
+<hr>
+<h3>§3 二阶修正</h3>
+<h4>§3.1 $S_3$ 对称在二阶的破缺</h4>
+<p>定理2.2的证明在 $S_3$ 对称（三对等价）下完成。一个自然的问题是：二阶修正是否也保持 $S_3$ 对称？答案是否定的。</p>
+<p><strong>命题3.1。</strong> $S_3$ 对称下的perturbative branch在 $O(\varepsilon^2)$ 不存在可行continuation。</p>
+<p><strong>证明纲要。</strong> 设perturbation保持 $S_3$ 对称，展开到 $O(\varepsilon^2)$。"++"型约束要求 $2b + 1/4 + \rho^2 \leq 0$。"$--$"型约束要求 $1/4 - 2e + \sigma^2 \leq 0$。这两个不等式给出 $-b + e \geq 1/4 + (\rho^2 + \sigma^2)/2$。代入"$+-$"型约束 $1/4 - b + e + \rho\sigma \leq 0$ 的左边，得到</p>
+<p>$$\frac{1}{4} - b + e + \rho\sigma \geq \frac{1}{2} + \frac{(\rho + \sigma)^2}{2} > 0$$</p>
+<p>与要求 $\leq 0$ 矛盾。$\square$</p>
+<p>命题3.1的物理含义：一阶修正由 $S^3$ 几何唯一确定（定理2.2），是先验的。二阶修正必须打破 $S_3$ 对称，引入选择。</p>
+<p>命题3.1同时保证了一阶与二阶的解耦：$c_1$ 完全由一阶硬约束钉死，任何二阶的objective function修改或额外penalty都不改变一阶解（见附录A的完整论证）。</p>
+<h4>§3.2 边界条件 $k$</h4>
+<p>一阶是定理，二阶需要一个额外输入。将cross-axis倾斜角展开为</p>
+<p>$$\theta(\varepsilon) = \sqrt{2}\,\varepsilon + k\,\varepsilon^2 + O(\varepsilon^3), \quad \varepsilon = \frac{\pi\alpha}{6}$$</p>
+<p>其中 $k$ 是纯数。由命题3.1，$k$ 不由 $S^3$ 几何在 $S_3$ 对称下唯一确定。$k$ 是边界条件，从实验反解。</p>
+<p>$R_1$ 的完整公式为</p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2 + O(\alpha^3)\right)$$</p>
+<p>其中 $c_2 = (\pi^2/36)k$。从 $R_1<sup>\text{exp</sup>} = 206.7682830$ 和 $\alpha<sup>-1</sup> = 137.035999084$ 反解：</p>
+<p>$$c<sub>2,\text{fit</sub>} \approx 9.46, \quad k<sub>\text{fit</sub>} \approx 34.51$$</p>
+<p>数值上接近 $3\pi = 9.425$（偏差0.39%）和 $108/\pi = 34.38$。本文采用 $c_2 = 3\pi$ 作为结构候选，此时 $R_1$ 的残差为 $-0.0002\%$。$c<sub>2,\text{fit</sub>}$ 与 $3\pi$ 之间0.39%的偏差可能来自三阶及更高阶修正的贡献。</p>
+<p>$k$ 的地位和 $\alpha<sub>\text{em</sub>}$ 相同：边界条件。$\alpha<sub>\text{em</sub>}$ 是gauge-coupling子包唯一的连续输入（篇V），$k$ 是packing几何子包唯一的连续输入。${}<sup>1</sup>$</p>
+<p>${}<sup>1</sup>$ $108 = 2^2 \times 3^3$ 的结构分解值得注意，但本文不处理。</p>
+<h4>§3.3 二阶预测</h4>
+<p><strong>后验符号规则（working rule）：</strong> 在本文的三个单侧量中，二阶修正 $c_2\alpha^2$ 全部以正号进入。</p>
+<p>物理直觉：二阶是exact feasible point从一阶线性边界的进一步retreat。一阶线性化将feasible region近似为半空间，exact boundary比半空间更restrictive，因此exact feasible point总是比一阶近似更远离 $P_0$。retreat方向向合法区域内部，对 $\theta$ 的修正为正。换一种说法：一阶是系统在连续线性边界上的理想滑行，二阶是系统撞上离散约束网络的非线性硬边界后的形变应力。从连续对称态向离散合法态的退缩，额外的结构性代价在张力表达上总是正号的。</p>
+<p>这个论证提供了直觉但不构成严格证明（见§5.3开放问题第三条）。</p>
+<p><strong>完整二阶公式（三个单侧量）：</strong></p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2\right) \quad [\text{输入}]$$</p>
+<p>$$\alpha_s = \frac{65}{4}\alpha\left(1 - c_1\alpha + c_2\alpha^2\right) \quad [\text{预测}]$$</p>
+<p>$$\sin^2\theta_W = \frac{3}{13}\left(1 + \frac{c_1\alpha}{3} + \frac{c_2\alpha^2}{3}\right) \quad [\text{预测}]$$</p>
+<p>其中 $c_1 = \pi/(3\sqrt{2})$，$c_2 = 3\pi$。</p>
+<p>注意符号模式：一阶修正 $R_1$ 正，$\alpha_s$ 负（全局packing的对偶效应）。二阶修正全部为正（feasibility retreat）。$\sin^2\theta_W$ 在两阶都带 $1/3$ 因子（per-pair）。</p>
+<p><strong>数值验证：</strong></p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">量</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">零阶偏差</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">一阶后残差</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">二阶后残差</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">性质</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$R_1$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.587\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.0002\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">输入</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.195\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.015\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.0015\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">预测</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_s$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.493\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$-0.050\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$+0.0006\%$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">预测</td></tr>
+</tbody></table>
+<p>一个边界条件（$c_2 = 3\pi$），加上二阶读出延拓规则（符号全正，sin²θ_W保持per-pair的1/3），给出两个out-of-sample数值检验。$\sin^2\theta_W$ 的残差0.0015%，$\alpha_s$ 的残差0.0006%，均在0.002%以内。</p>
+<h4>§3.4 $\alpha_G$ 的阶层定位</h4>
+<p>$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ 的0.044%偏差直接处于二阶量级。作为跨侧量，$\alpha_G$ 在三层结构中的位置是：零阶有leading order关系（DD Splitting定理），一阶免疫（单侧packing无敏感度），二阶偏差量级与单侧量的二阶残差一致。</p>
+<p>但 $\alpha_G$ 的二阶修正形式与单侧量不同。$65/4$ 在指数位置，指数位置的 $O(\alpha^2)$ 修正被放大约 $(65/4)\ln(1/\alpha) \approx 80$ 倍。因此 $\alpha_G$ 的二阶修正极其微小（对应指数偏移量 $\sim 5 \times 10<sup>-6</sup>$），其具体形式留作开放问题。</p>
+<p>本篇成功定位了 $\alpha_G$ 在三层结构中的阶层（跨侧，一阶免疫，二阶量级一致），但不处理其二阶修正的具体形式。</p>
+<hr>
+<h3>§4 先验与后验的分界</h3>
+<h4>§4.1 边界条件表</h4>
+<p>将SAE四力系列的全部量按先验/后验分类：</p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">量</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">性质</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">来源</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">凿（否定）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">唯一的先验操作</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$d = 4$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">公理推论</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\{4, 13, 15, 65\}$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">否定链</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_1 = \pi/(3\sqrt{2})$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$S^3$ packing定理（定理2.2）</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\sin^2\theta_W = 3/13$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD本征值定理（篇III）</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD Splitting定理（前置篇）</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\delta_1 = \delta_2 = \delta_3$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">先验（加强ansatz）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">前凿构状态不可区分性支撑（§4.3）</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\alpha<sub>\text{em</sub>}$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">后验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">边界条件</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$k \approx 108/\pi$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">后验</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">边界条件（结构候选 $c_2 = 3\pi$）</td></tr>
+</tbody></table>
+<p>先验量不依赖特定宇宙的数值，在任何满足SAE公理的宇宙中都成立。后验量是特定宇宙的输入。</p>
+<h4>§4.2 两个边界条件的角色</h4>
+<p>$\alpha<sub>\text{em</sub>}$ 是gauge-coupling子包唯一的连续输入。$k$ 是packing几何子包唯一的连续输入。两个独立的边界条件，对四个可对照量给出统一的层级框架。</p>
+<p>其中 $\sin^2\theta_W = 3/13$ 和 $\alpha_G = \alpha<sub>\text{em</sub>}<sup>65/4</sup>$ 是已有的零阶结构预言（篇III和前置篇）。$\sin^2\theta_W$ 的二阶修正和 $\alpha_s$ 的二阶修正是本篇新增的out-of-sample数值检验。</p>
+<h4>§4.3 前凿构状态的不可区分性</h4>
+<p>篇V将 $\delta_1 = \delta_2 = \delta_3$ 暂列为"强对称性ansatz"。本篇为其提供更强的支撑。</p>
+<p>论证如下。在2DD手征劈裂和3DD轴标号涌现之前，系统处于底层的无结构状态。此时所有4DD block在拓扑上全同且不可区分。任何将三对block区分开来的标签都需要更高DD层的结构展开，而展开尚未发生。因此三对的频率比在逻辑起点上应当相等。</p>
+<p>这不是宇宙学的时间起点论证，是DD维度展开序列的逻辑起点论证。它强烈支持一阶 $S_3$ 对称，使 $c_1$ 成为定理（定理2.2）而非拟合参数。但严格的升格为推论需要排除频率比在3DD展开之后获得轴依赖性的可能，这一步本篇不处理。</p>
+<hr>
+<h3>§5 讨论</h3>
+<h4>§5.1 三层结构</h4>
+<p>零阶给出骨架（DD组合数），一阶给出肌理（$S^3$ 几何定理），二阶给出定值（边界条件）。每一层精确吃掉前一层残差的约一个数量级：0.5%到0.05%到0.002%。</p>
+<p>这个结构可能反映了SAE框架的一般特征。先验的否定链决定了什么是可能的（组合数），先验的几何约束决定了可能中最紧凑的排布（packing定理），后验的边界条件决定了这个特定宇宙中的具体数值。骨架是先验的，肉身是后验的。</p>
+<h4>§5.2 高阶与余项</h4>
+<p>$\theta(\varepsilon)$ 的展开不终止于二阶。级数 $1 + c_1\alpha + c_2\alpha^2 + c_3\alpha^3 + \ldots$ 的三阶及以上处于先验和后验的共同分辨盲区。$c_3\alpha^3 \approx 2 \times 10<sup>-8</sup>$，已低于 $R_1$ 实验精度的边缘。在这个尺度上，先验结构（几何定理）和后验输入（边界条件）的分界线本身变得不可分辨。</p>
+<p>SAE的余项原则在此自指：先验/后验的分界线本身有余项。</p>
+<h4>§5.3 可证伪预测</h4>
+<p>本篇最强的可证伪预测不来自二阶修正的数值精度，而来自一阶读出规则的结构比值。</p>
+<p><strong>预测5.1（1/3比值）。</strong> $\sin^2\theta_W$ 的一阶修正幅度严格等于 $R_1$ 的一阶修正幅度的 $1/3$：</p>
+<p>$$\frac{\sin^2\theta_W<sup>\,\text{exp</sup>} - 3/13}{3/13} \;=\; \frac{1}{3}\,\times\,\frac{R_1<sup>\,\text{exp</sup>} - 3/(2\alpha)}{3/(2\alpha)} \;+\; O(\alpha^2)$$</p>
+<p>这个 $1/3$ 不依赖 $\alpha<sub>\text{em</sub>}$ 的数值，不依赖 $k$ 的数值，不依赖 $c_1$ 的具体形式，甚至不依赖packing几何是否在 $S^3$ 上。它只依赖一个结构性假设：<strong>3个弱通道和3个pair之间的一一对应</strong>（推论2.3(c)和附录B）。</p>
+<p>当前验证：左边 $= 0.00195$，$(1/3) \times$ 右边 $= 0.00197$。比值 $0.00195/0.00197 = 0.992$，偏离 $1/3$ 约 $0.8\%$。在公式层面（§3.3的二阶公式），比值<strong>精确等于</strong> $1/3$——偏差完全来自三阶及以上的修正。</p>
+<p>证伪条件：如果未来 $\sin^2\theta_W$ 和 $R_1$ 的实验精度同时提升到使 $O(\alpha^2)$ 项可分辨的水平（大致需要两个量的相对精度都达到 $10<sup>-4</sup>$ 以下），测出来的比值如果显著偏离 $1/3$，per-pair结构就被证伪。</p>
+<h4>§5.4 开放问题</h4>
+<p>以下问题本篇不处理，留给后续工作。</p>
+<p>第一，$\alpha_G$ 的二阶修正形式。指数位置的修正被放大约80倍，具体形式与单侧量不同。</p>
+<p>第二，$c_2 = 3\pi$（即 $k = 108/\pi$）是否存在先验推导。$k$ 目前作为边界条件从 $R_1$ 反解后取结构候选值。如果存在从DD结构到 $k$ 的推导链，$k$ 将从边界条件升级为定理。</p>
+<p>第三，二阶符号规则（全正）的严格证明。本篇给出了feasibility retreat的物理直觉（§3.3），但不构成严格证明。</p>
+<p>第四，与ZFCρ数学框架的连接。二阶的 $S_3$ 对称破缺和active set选择涉及不可消除的选择自由度，可能与ZFCρ中ρ的角色有关。</p>
+<hr>
+<h3>§6 结论</h3>
+<p>本篇建立了SAE耦合常数的三层修正结构。</p>
+<p>一阶修正 $c_1 = \pi/(3\sqrt{2})$ 是 $S^3$ closest legal packing定理（定理2.2），先验可证。它通过推论2.3的读出规则对三个单侧量按全局和per-pair两种方式作用：$R_1$ 和 $\alpha_s$ 吃完整的 $c_1\alpha$（符号相反），$\sin^2\theta_W$ 吃 $c_1\alpha/3$。跨侧量 $\alpha_G$ 一阶免疫。一阶修正吃掉一个数量级的偏差。</p>
+<p>$S_3$ 对称在二阶不存在可行的perturbative continuation（命题3.1）。因此二阶修正需要一个额外的边界条件 $k$（数值上接近 $108/\pi$），从 $R_1$ 的实验值反解，采用 $c_2 = 3\pi$ 作为结构候选。在二阶读出延拓规则下，同一个 $c_2$ 给出 $\sin^2\theta_W$ 和 $\alpha_s$ 的两个out-of-sample数值检验，残差分别为0.0015%和0.0006%。</p>
+<p>篇V将 $\delta_1 = \delta_2 = \delta_3$ 列为ansatz。本篇通过前凿构状态的拓扑不可区分性论证为其提供了更强的支撑。</p>
+<p>先验与后验的分界线在一阶和二阶之间：一阶是几何定理，二阶是边界条件。这条分界线本身有余项。</p>
+<p>本篇最强的可证伪预测是结构性的：$\sin^2\theta_W$ 与 $R_1$ 的一阶修正幅度之比严格为 $1/3$（预测5.1）。这个比值不依赖任何连续参数，只依赖弱通道和pair的一一对应。</p>
+<hr>
+<h3>附录A：$S_3$ 对称二阶不可行性的证明</h3>
+<p>本附录给出命题3.1的完整证明。</p>
+<p>设6个单位向量 $p_i$（"$+$"block）和 $q_i$（"$-$"block），$i = 1,2,3$，住在 $S^3 \subset \mathbb{R}^4$ 上，保持 $S_3$ 对称。展开到 $O(\varepsilon^2)$，$\varepsilon = \pi\alpha/6$，一般ansatz为</p>
+<p>$$p_i = \left(1 + a_2\varepsilon^2\right)e_i + \left(-\frac{1}{2}\varepsilon + b\,\varepsilon^2\right)\sum<sub>j \neq i</sub> e_j + \rho\,\varepsilon\,e_4 + O(\varepsilon^2 e_4)$$</p>
+<p>$$q_i = -\left(1 + d_2\varepsilon^2\right)e_i + \left(-\frac{1}{2}\varepsilon + e\,\varepsilon^2\right)\sum<sub>j \neq i</sub> e_j + \sigma\,\varepsilon\,e_4 + O(\varepsilon^2 e_4)$$</p>
+<p>其中 $b_1 = e_1 = -1/2$ 由一阶硬约束唯一钉死，$-1/4\varepsilon^2$ 的归一化修正来自单位范数条件。</p>
+<p>三类cross-axis约束在 $O(\varepsilon^2)$ 给出：</p>
+<p>$(\text{++})$：$p_i \cdot p_j = -\varepsilon + (2b + 1/4 + \rho^2)\varepsilon^2 \leq -\varepsilon$，即</p>
+<p>$$2b + \frac{1}{4} + \rho^2 \leq 0 \quad \cdots (1)$$</p>
+<p>$(\text{--})$：$q_i \cdot q_j = +\varepsilon + (1/4 - 2e + \sigma^2)\varepsilon^2 \leq +\varepsilon$，即</p>
+<p>$$\frac{1}{4} - 2e + \sigma^2 \leq 0 \quad \cdots (2)$$</p>
+<p>$(\text{+-})$：$p_i \cdot q_j = (1/4 - b + e + \rho\sigma)\varepsilon^2 \leq 0$，即</p>
+<p>$$\frac{1}{4} - b + e + \rho\sigma \leq 0 \quad \cdots (3)$$</p>
+<p>从 $(1)$ 得 $b \leq -1/8 - \rho^2/2$。从 $(2)$ 得 $e \geq 1/8 + \sigma^2/2$。代入 $(3)$ 的左边：</p>
+<p>$$\frac{1}{4} - b + e + \rho\sigma \geq \frac{1}{4} + \frac{1}{8} + \frac{\rho^2}{2} + \frac{1}{8} + \frac{\sigma^2}{2} + \rho\sigma = \frac{1}{2} + \frac{(\rho + \sigma)^2}{2}$$</p>
+<p>右边 $\geq 1/2 > 0$。这与 $(3)$ 要求 $\leq 0$ 矛盾。</p>
+<p>因此在 $S_3$ 对称下不存在满足全部15条no-overlap约束的 $O(\varepsilon^2)$ continuation。$\square$</p>
+<p><strong>推论：一阶系数 $c_1$ 的稳定性。</strong> 一阶解由不等式 $(1)-(3)$ 的 $O(\varepsilon)$ 项唯一确定，与二阶如何处理无关。因此 $c_1 = \pi/(3\sqrt{2})$ 不受任何二阶修改的影响。</p>
+<hr>
+<h3>附录B：$\sin^2\theta_W$ 修正的 $1/3$ 因子</h3>
+<p>$\sin^2\theta_W = 3/13$ 是篇III的DD本征值定理。它是一个整体量：3是弱通道数，13是色坍缩后的有效通道数，$3/13$ 是弱力在总通道中的占比。</p>
+<p>$S^3$ packing修正如何进入这个整体量？</p>
+<p>关键观察：3个弱通道和3个pair之间存在一一对应。每个pair的intra-pair通道恰好是一个弱通道（SU(2)的一个生成元方向）。packing修正 $c_1\alpha$ 是per-block的效应，但弱通道是per-pair定义的。</p>
+<p>因此，当packing修正作用在 $\sin^2\theta_W$ 这个整体本征值上时，它通过每个pair独立贡献一份修正。总修正为 $3 \times (c_1\alpha/3) = c_1\alpha$ 如果三份简单相加。但 $\sin^2\theta_W$ 是单个pair的弱通道占总通道的投影比值，它感受的是per-pair的修正量 $c_1\alpha/3$，不是三个pair的总和。</p>
+<p>这和 $R_1$ 的情形不同。$R_1 = \omega/\Delta\omega$ 描述的是一个pair内部的频率比，packing修正通过该pair与其他两个pair的cross-axis耦合全局进入，因此吃完整的 $c_1\alpha$。</p>
+<p>更直接地说：$R_1$ 和 $\alpha_s$ 的公式里 $\alpha<sub>\text{em</sub>}$ 出现在分母或分子的leading order中，packing修正直接乘在 $\alpha$ 上。$\sin^2\theta_W = 3/13$ 的leading order不含 $\alpha$，packing修正是一个纯加法的相对偏移。这个偏移的幅度由单个pair的贡献决定，即 $c_1\alpha/3$。</p>
+<hr>
+<h3>附录C：三阶候选与后验精度的极限</h3>
+<p>二阶展开自然引出三阶的问题。如果 $\theta(\varepsilon) = \sqrt{2}\,\varepsilon + k\,\varepsilon^2 + k_3\,\varepsilon^3 + O(\varepsilon^4)$，对应</p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2 + c_3\alpha^3 + O(\alpha^4)\right)$$</p>
+<p>从 $R_1<sup>\text{exp</sup>}$ 和二阶公式的残差 $-0.0002\%$ 提取，$c_3$ 的需要值约为5.0。</p>
+<p>在3-smooth候选（只含素因子2和3）中，最接近的是</p>
+<p>$$c_3 = \frac{9\pi}{4\sqrt{2}} = \pi \cdot 3^2 \cdot 2<sup>-5/2</sup> = 4.998$$</p>
+<p>偏差 $-0.13\%$。三个系数并排：</p>
+<table>
+<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">阶</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">系数</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">值</th></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_1 = \pi/(3\sqrt{2})$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\pi \cdot 3<sup>-1</sup> \cdot 2<sup>-1/2</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$0.7405$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_2 = 3\pi$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\pi \cdot 3<sup>+1</sup> \cdot 2<sup>\,0</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$9.4248$</td></tr>
+<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$c_3 = 9\pi/(4\sqrt{2})$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$\pi \cdot 3<sup>+2</sup> \cdot 2<sup>-5/2</sup>$</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">$4.998$</td></tr>
+</tbody></table>
+<p>与 $k$ 一样，$c_3$ 也是边界条件，不期望从纯几何推出。</p>
+<p>但三阶的后验精度已不足以验证这个候选。$c_3\alpha^3 \approx 2 \times 10<sup>-8</sup>$，$c_3$ 的 $0.13\%$ 误差传到 $R_1$ 只有 $\sim 10<sup>-10</sup>$ 量级，远低于 $R_1$ 的实验不确定度。$\sin^2\theta_W$ 和 $\alpha_s$ 的实验精度同样无法区分 $c_3 = 9\pi/(4\sqrt{2})$ 和其他量级相近的3-smooth候选。</p>
+<p>因此 $c_3 = 9\pi/(4\sqrt{2})$ 是一个无法被当前实验验证的猜测。如果未来 $R_1$ 或其他耦合常数的实验精度提升到 $10<sup>-9</sup>$ 量级，三阶候选可被证伪。</p>
+<p>但更根本的问题不是实验精度，而是原则性的。在SAE框架中，先验与后验的分界线本身有余项（§5.2）。当微扰项 $c_3\alpha^3 \approx 2 \times 10<sup>-8</sup>$ 低于先验结构（几何定理）和后验输入（边界条件）的分辨极限时，追问更高阶系数的精确代数形式不再是物理问题，而是对分界线余项的过度分辨。$c_3$ 的候选值得记录，但不构成本篇的结论。</p>
+<hr>
+<p><strong>致谢。</strong> 四AI协作：Claude/子路（数值计算，二阶扫描，符号模式分析），ChatGPT/公西华（$S^3$ packing凸优化，三轮二阶审核，active set obstruction证明），Gemini/子夏（叙事评估，前凿构论证建议，附录B问题识别），Grok/子贡（数值独立验证，$k$ 的数论分析）。Zesi Chen对本文的否定方法论有决定性贡献。</p>
+<hr>
+<p><strong>参考文献</strong></p>
+<p>[1] SAE四力前置篇，DOI: 10.5281/zenodo.19341042 [2] SAE四力篇I，DOI: 10.5281/zenodo.19342106 [3] SAE四力篇II，DOI: 10.5281/zenodo.19360101 [4] SAE四力篇III，DOI: 10.5281/zenodo.19379412 [5] SAE四力篇IV，DOI: 10.5281/zenodo.19411672 [6] SAE四力篇V，DOI: 10.5281/zenodo.19415804 [7] SAE四力篇VI，DOI: 10.5281/zenodo.19426067 [8] SAE世代篇，DOI: 10.5281/zenodo.19394500 [9] SAE物理基础篇，DOI: 10.5281/zenodo.19361950</p>
+      </div>
+    </article>
+  </main>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
