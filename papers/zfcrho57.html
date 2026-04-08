@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper 57: The Screened Spectral Bound and the Block Mean Target — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta property="og:title" content="ZFCρ Paper 57: The Screened Spectral Bound and the Block Mean Target">
+  <meta property="og:type" content="article">
+  <meta name="citation_title" content="ZFCρ Paper 57: The Screened Spectral Bound and the Block Mean Target">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_doi" content="10.5281/zenodo.19469014">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ZFCρ Paper 57: The Screened Spectral Bound and the Block Mean Target",
+    "author": {"@type": "Person", "name": "Han Qin"},
+    "identifier": "https://doi.org/10.5281/zenodo.19469014"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="/index.html">Papers</a>
+        <a href="/about.html">About</a>
+        <a href="/endacc.html">end/acc</a>
+        <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="paper-main">
+    <div class="paper-container">
+      <div class="lang-tabs">
+        <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('zh')">中文</button>
+      </div>
+
+      <div id="lang-en" class="lang-content">
+        <div class="paper-header">
+          <h1 class="paper-title">ZFCρ Paper 57: The Screened Spectral Bound and the Block Mean Target</h1>
+          <div class="paper-meta-line">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19469014">10.5281/zenodo.19469014</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract">
+          <h2>Abstract</h2>
+          <p>Paper 56 promoted the direct weighted spectral ratio R_j^{wt} = I_j(0)/(j·D_j) to the front-door conjecture for the mean spectral target, with Papers 53–55 reinterpreted as the mechanism/proof program. This paper completes the DSF branch by proving a conditional theorem that connects the screened long-memory framework of Papers 53–54 to the spectral ratio.</p>
+<p><strong>Theorem 57.1 (Screened Spectral Bound).</strong> If the prime-index autocorrelation satisfies power-law buildup (|ρ(k)| ≤ A·k^{-α} for k ≤ n_cross, α > 0), post-crossover screening (cumulative negative), and linear crossover scale (n_cross ≤ c·j), then the variance ratio Ψ_j ≤ 1 + C·j^{1-α}, giving E[R_j^{wt}] = O(j^{-α}) → 0.</p>
+<p>Extended data at 7 dyadic blocks (j = 14, 17, 20, 23, 26, 29, 32) confirms: R_wt ∈ [2.7, 25.3] bounded, z/√j shows a crossover peak at j ≈ 23 then declines, and z²/j^{0.65} ∈ [9.0, 72.0] is bounded with the same crossover — all consistent with z² = O(j^{0.65}) from α ≈ 0.35. The oscillation (single-realization fluctuation) is larger than the trend, but the upper envelope is controlled.</p>
+<p>Under the three conjectural inputs (supported by Papers 53–56), Theorem 57.1 conditionally closes the mean spectral target for the DSF branch. The remaining gaps for H' are BL_α verification, mean-to-deterministic, and L²-to-pathwise upgrades.</p>
+<p><strong>Keywords:</strong> integer complexity, spectral target, screened long memory, block mean, DSF, H' conjecture</p>
+<hr>
+        </div>
+        <div class="paper-body">
+          <h2>§1. Introduction</h2>
+<h3>1.1 From Paper 56 to Paper 57</h3>
+<p>Paper 56 made two contributions. Part I proved the Affine Trough Theorem, filling Paper 55's signed gap (positive-tail bound does not control zero-crossing). Part II measured the exact weighted spectral ratio R_j^{wt} = I_j(0)/(j·D_j) on the Paper 51/53 observable and found it bounded at j = 20–32. This led to a strategic pivot: Conjecture 56.2 (R_j^{wt} = O(1)) became the front-door conjecture, and Papers 53–55 were reassigned as the mechanism/proof program.</p>
+<p>Paper 56 also identified the <strong>block mean theorem</strong> (z_j = O(√j)) as the cleanest proof target, noting that B_j^{wt} is 84–99% dominated by the block mean of η.</p>
+<p>Paper 57 proves the conditional theorem that links the screened covariance framework (Papers 53–54) to this block mean target, and extends the empirical verification to 7 j-values.</p>
+<h3>1.2 The logical arc</h3>
+<pre><code>Paper 53: screened long memory framework, n_cross/j ≈ 30
+Paper 54: power-law autocorrelation C(k) ~ k^{-α}, α ≈ 0.35
+Paper 55: damped oscillation, r ≈ 0.80, positive-tail bound
+Paper 56: sign-change theorem + direct spectral ratio as front-door
+Paper 57: screened covariance → E[z²] = O(j^{1-α}) → E[R_wt] → 0</code></pre>
+<p>Each earlier paper contributes a named conjectural input to Theorem 57.1.</p>
+<hr>
+<h2>§2. Framework</h2>
+<h3>2.1 Notation</h3>
+<p>Primes p in dyadic block I_j = [2^j, 2^{j+1}), indexed as p_1 < p_2 < ... < p_{m_j}.</p>
+<p>Detrended residual: η(p) = ρ_E(p) − λ ln p − μ_{p mod 12} (Paper 55).</p>
+<p>Weighted block sum: B_j^{wt} = Σ_{r=1}^{m_j} η(p_r)/p_r.</p>
+<p>Spectral quantities: I_j(0) = (B_j^{wt})², D_j = Σ (η(p_r)/p_r)².</p>
+<p>Spectral ratio: R_j^{wt} = I_j(0)/(j · D_j).</p>
+<p>Prime-index autocorrelation: C_j(k) = Cov(η(p_r), η(p_{r+k})), ρ_j(k) = C_j(k)/σ².</p>
+<p>Variance ratio: Ψ_j = Var(Σ η_r) / (m_j · σ²) = 1 + 2·Σ_{k=1}^{m_j-1} (1−k/m_j)·ρ_j(k).</p>
+<h3>2.2 Proposition (Weight Equivalence)</h3>
+<p><strong>Proposition 2.1.</strong> For primes in I_j = [2^j, 2^{j+1}):</p>
+<p>(1/4) · Ψ_j ≤ E[z_j²] ≤ 4 · Ψ_j,                              (2.1)</p>
+<p>where z_j = B_j^{wt} / √(σ² · Σ 1/p²) is the standardized weighted block sum.</p>
+<p><strong>Proof.</strong> Var(B_j^{wt}) = Σ_{r,s} C_j(|r−s|)/(p_r·p_s). Since all p_r ∈ [2^j, 2^{j+1}]:</p>
+<p>1/p_r·p_s ∈ [1/2^{2(j+1)}, 1/2^{2j}].</p>
+<p>Therefore Var(B_j^{wt}) ∈ [V_j/4·2^{2j}, V_j/2^{2j}], where V_j = Σ_{r,s} C_j(|r−s|) = m_j·σ²·Ψ_j.</p>
+<p>Similarly σ²·Σ 1/p² ∈ [m_j·σ²/4·2^{2j}, m_j·σ²/2^{2j}].</p>
+<p>Dividing: E[z²] = Var(B_wt)/(σ²·Σ 1/p²) ∈ [Ψ_j/4, 4·Ψ_j]. □</p>
+<p><strong>Remark.</strong> The factor-of-4 bound is crude but sufficient: it preserves the polynomial scaling O(j^{1-α}) while only affecting the constant. In practice, the dominant covariance contributions come from small lags |r−s| where p_r ≈ p_s, making the effective factor much closer to 1.</p>
+<hr>
+<h2>§3. The Screened Spectral Bound</h2>
+<h3>3.1 Theorem 57.1</h3>
+<p><strong>Theorem 57.1 (Screened Spectral Bound).</strong> Assume:</p>
+<p><strong>(A) Power-law buildup.</strong> There exist A > 0 and 0 < α < 1 such that for all k ≤ n_cross(j):</p>
+<table>
+<thead><tr>
+<th>ρ_j(k)</th>
+<th>≤ A · k^{-α}.</th>
+</tr></thead><tbody>
+</tbody></table>
+<p><strong>(B) Post-crossover screening.</strong> The cumulative post-crossover covariance is nonpositive:</p>
+<p>Σ_{k=n_cross+1}^{m_j-1} (1 − k/m_j) · ρ_j(k) ≤ 0.</p>
+<p><strong>(C) Linear crossover scale.</strong> There exists c > 0 such that n_cross(j) ≤ c · j for all j.</p>
+<p>Then the variance ratio satisfies</p>
+<p>Ψ_j ≤ 1 + C₁ · j^{1-α},                                         (3.1)</p>
+<p>where C₁ = 2A · c^{1-α} / (1−α).</p>
+<h3>3.2 Proof</h3>
+<p>Split Ψ_j at the crossover:</p>
+<p>Ψ_j = 1 + 2·[Σ_{k=1}^{n_cross} + Σ_{k=n_cross+1}^{m_j-1}] (1−k/m_j)·ρ_j(k).</p>
+<p><strong>Buildup term.</strong> For k ≤ n_cross ≤ cj, we have k/m_j ≤ cj/(2^j/j) = cj²/2^j → 0, so (1−k/m_j) ≤ 1. By assumption (A):</p>
+<p>Σ_{k=1}^{n_cross} (1−k/m_j)·|ρ_j(k)| ≤ Σ_{k=1}^{cj} A·k^{-α} ≤ A·∫_0^{cj} x^{-α} dx = A·(cj)^{1-α}/(1-α).</p>
+<p><strong>Screening term.</strong> By assumption (B): Σ_{k>n_cross} (1−k/m_j)·ρ_j(k) ≤ 0.</p>
+<p>Combining:</p>
+<p>Ψ_j ≤ 1 + 2A·(cj)^{1-α}/(1−α) + 0 = 1 + C₁·j^{1-α}. □</p>
+<h3>3.3 Corollary (Spectral ratio decay)</h3>
+<p><strong>Corollary 57.2.</strong> Under Theorem 57.1, the weight equivalence (Proposition 2.1), and the second-moment hypothesis</p>
+<p><strong>(D) D_j = (1 + o(1)) · σ² · Σ_{p ∈ I_j} 1/p²,</strong></p>
+<p>we have:</p>
+<p>E[R_j^{wt}] = E[(B_j^{wt})²] / (j · D_j) ≤ 4Ψ_j / (j · (1+o(1))) = O(j^{-α}).     (3.2)</p>
+<p>For α > 0: <strong>E[R_j^{wt}] → 0 as j → ∞.</strong></p>
+<p>The mean spectral target E[I_j(0)] ≤ C·j·D_j holds for all sufficiently large j. □</p>
+<p><strong>Remark on hypothesis (D).</strong> This is verified empirically to high precision: D_wt actual / (E[η²]·Σ 1/p²) = 1.000 ± 0.007 across all 7 tested blocks (§4.4). Hypothesis (D) says that the weighted second moment has no anomalous structure beyond what the marginal variance σ² and the 1/p² weights predict. This is a much weaker condition than any of the covariance assumptions (A)–(C), since it only concerns the diagonal (k=0) term.</p>
+<p><strong>Remark.</strong> With α ≈ 0.35 (Paper 54): E[R_wt] = O(j^{-0.35}). At j = 32: j^{-0.35} ≈ 0.29. The actual R_wt = 2.7 is larger than this bound, which is expected: R_wt is a single realization, while the bound controls the expectation. The gap between E[R_wt] and the actual R_wt is the mean-to-deterministic upgrade (Paper 52, §8).</p>
+<hr>
+<h2>§4. Extended Data</h2>
+<h3>4.1 Seven-block spectral ratio</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>m_j</th>
+<th>R_wt</th>
+<th>z</th>
+<th>√j</th>
+<th>z/√j</th>
+<th>j^{0.65}</th>
+<th>z²/j^{0.65}</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>1,612</td>
+<td>8.7</td>
+<td>11.4</td>
+<td>3.74</td>
+<td>3.06</td>
+<td>5.6</td>
+<td>23.4</td>
+</tr>
+<tr>
+<td>17</td>
+<td>10,749</td>
+<td>15.9</td>
+<td>16.7</td>
+<td>4.12</td>
+<td>4.04</td>
+<td>6.4</td>
+<td>43.5</td>
+</tr>
+<tr>
+<td>20</td>
+<td>73,586</td>
+<td>22.0</td>
+<td>21.0</td>
+<td>4.47</td>
+<td>4.70</td>
+<td>7.2</td>
+<td>61.0</td>
+</tr>
+<tr>
+<td>23</td>
+<td>513,708</td>
+<td>25.3</td>
+<td>24.1</td>
+<td>4.80</td>
+<td>5.03</td>
+<td>8.1</td>
+<td>72.0</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>4.2</td>
+<td>10.5</td>
+<td>5.10</td>
+<td>2.05</td>
+<td>8.9</td>
+<td>12.4</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26,207,278</td>
+<td>8.9</td>
+<td>16.0</td>
+<td>5.39</td>
+<td>2.97</td>
+<td>9.7</td>
+<td>26.5</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190,335,585</td>
+<td>2.7</td>
+<td>9.3</td>
+<td>5.66</td>
+<td>1.64</td>
+<td>9.5</td>
+<td>9.0</td>
+</tr>
+</tbody></table>
+<p><strong>R_wt is bounded</strong> (2.7–25.3) across all 7 tested blocks, with no upward trend.</p>
+<h3>4.2 The z/√j crossover</h3>
+<p>z/√j shows a structured pattern: rising from 3.06 (j=14) to a peak of 5.03 (j=23), then declining to 1.64 (j=32).</p>
+<p>This crossover matches the screened long-memory picture:</p>
+<ul>
+<li><strong>Small j (14–23):</strong> IC trees are shallow, screening is weak. Correlations build up, z/√j increases.</li>
+<li><strong>Large j (26–32):</strong> IC trees are deep, screening is strong. Multiplicative resets dominate, z/√j decreases.</li>
+</ul>
+<p>The transition at j ≈ 23 is consistent with Paper 53's observation that α(j) decreases with j (heavier tails at larger j) while screening depth increases proportionally.</p>
+<p><strong>Phase-transition interpretation.</strong> The crossover has a precise arithmetic origin. In block [2^j, 2^{j+1}], the typical integer n has Ω(n) ~ ln ln n ≈ ln j prime factors. At j = 23: ln 23 ≈ 3.14, which falls in the middle of the phase-transition window [2.75, 4.01] identified in SAE Physics Paper VI. Below j ≈ 20 (ln j < 3, pre-window), multiplicative paths are a minority and screening has not established; correlations accumulate freely and z/√j rises. At j ≈ 23 (ln j ≈ 3.1, mid-window), multiplicative paths have just become the majority but screening is still weak — maximum accumulation before screening takes hold. Above j ≈ 25 (ln j > 3.2, post-window), screening is fully established, each cycle dissipates η ≈ 20%, and z/√j declines. The z/√j crossover is therefore the spectral projection of the phase transition — the sixth independent indicator of the transition window, and the first purely spectral one.</p>
+<h3>4.3 Mean dominance</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>Mean part %</th>
+<th>Fluct part %</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>96.8%</td>
+<td>3.2%</td>
+</tr>
+<tr>
+<td>17</td>
+<td>99.1%</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>20</td>
+<td>98.6%</td>
+<td>1.4%</td>
+</tr>
+<tr>
+<td>23</td>
+<td>94.7%</td>
+<td>5.3%</td>
+</tr>
+<tr>
+<td>26</td>
+<td>84.2%</td>
+<td>15.8%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>(111.9%)*</td>
+<td>11.9%</td>
+</tr>
+<tr>
+<td>32</td>
+<td>90.4%</td>
+<td>9.6%</td>
+</tr>
+</tbody></table>
+<p>(*At j=29, mean and fluctuation parts have opposite signs.)</p>
+<p>Mean dominance is consistent across all 7 tested blocks. The fluctuation part Φ_j is at iid scale (|Φ_j|/√(σ²·Σ 1/p²) = 0.29–1.91), confirming that the screened long-memory mechanism keeps correlated fluctuations controlled.</p>
+<h3>4.4 Second moment verification</h3>
+<p>D_wt actual / D_wt predicted (= E[η²]·Σ 1/p²) = 1.000 ± 0.007 across all 7 blocks. No anomalous second-moment structure.</p>
+<hr>
+<h2>§5. Conjectural Inputs</h2>
+<p>The three inputs to Theorem 57.1 are empirical laws with mechanism explanations from the preceding papers.</p>
+<h3>5.1 Conjecture 57.A (Power-law buildup)</h3>
+<p>Within block I_j, the normalized prime-index autocorrelation satisfies |ρ_j(k)| ≤ A·k^{-α} for k ≤ n_cross(j), with A > 0 and 0 < α < 1 uniform in j.</p>
+<p><strong>Evidence.</strong> Paper 54 established C(k) ~ k^{-α} with α ≈ 0.286 (global fit) to α ≈ 0.35–0.40 (within-block). The power law arises from recursive ancestor inheritance in the DP factorization tree.</p>
+<h3>5.2 Conjecture 57.B (Post-crossover screening)</h3>
+<p>The Abel-weighted post-crossover covariance is nonpositive:</p>
+<p>Σ_{k > n_cross}^{m_j-1} (1−k/m_j)·ρ_j(k) ≤ 0.</p>
+<p><strong>This is the genuinely new prime-level conjectural input of this paper.</strong> It is formulated on prime-index autocorrelation ρ_j(k), not on the coarse-block covariance G_j(M) studied in Papers 53–56.</p>
+<p><strong>Motivation from Papers 53–56 (not inheritance).</strong> Papers 53–56 established screening at the coarse-block level: G_j(M) crosses zero (Paper 56), the post-peak profile is a damped oscillation with r ≈ 0.80 (Paper 55), and the positive tail mass is bounded (Paper 55 Thm 55.3). These coarse-block results strongly motivate 57.B, but they do not directly imply it: the passage from coarse-block sign changes to prime-index Abel-weighted covariance involves additional averaging structure. Conjecture 57.B asserts that the screening mechanism observed at coarse scale persists at the prime-index level with sufficient strength to make the cumulative tail nonpositive.</p>
+<h3>5.3 Conjecture 57.C (Linear crossover)</h3>
+<p>n_cross(j) ≤ c·j for some constant c > 0 uniform in j.</p>
+<p><strong>Evidence.</strong> Paper 53 measured n_cross/j ≈ 27–33, stable across j = 26–32. The crossover scale is proportional to IC tree depth (~j), with proportionality constant ≈ 30.</p>
+<h3>5.4 Hypothesis (D) (Second-moment regularity)</h3>
+<p>D_j = (1 + o(1)) · σ² · Σ_{p ∈ I_j} 1/p².</p>
+<p>This asserts that the weighted second moment has no anomalous structure beyond marginal variance × weight sum. It is a much weaker condition than (A)–(C), concerning only the diagonal (k=0) term.</p>
+<p><strong>Evidence.</strong> Verified empirically: D_wt actual / (E[η²]·Σ 1/p²) = 1.000 ± 0.007 across all 7 tested blocks.</p>
+<hr>
+<h2>§6. Conditional Closure of the DSF Branch</h2>
+<h3>6.1 The complete chain</h3>
+<p>Under Conjectures 57.A + 57.B + 57.C + Hypothesis (D):</p>
+<pre><code>Theorem 57.1: Ψ_j ≤ 1 + C·j^{1-α}
+    → Proposition 2.1: E[z²] ≤ 4·Ψ_j = O(j^{1-α})
+        → Hypothesis (D): D_j ≈ σ²·Σ(1/p²)
+            → Corollary 57.2: E[R_wt] = O(j^{-α}) → 0
+                → E[I_j(0)] ≤ C·j·D_j (mean spectral target)
+                    → mean-DSF_α (Paper 51)</code></pre>
+<p>This conditionally closes the mean spectral target for the DSF branch. The three conjectural inputs distill the empirical discoveries of Papers 53–54 into precise, testable mathematical statements.</p>
+<h3>6.2 Connection to Paper 56's Conjecture 56.2</h3>
+<p>Conjecture 56.2 stated R_j^{wt} = O(1). Corollary 57.2 gives the stronger E[R_wt] = O(j^{-α}) → 0. Conjecture 56.2 is therefore a consequence of Conjectures 57.A–C (at the expectation level).</p>
+<p>The empirical data is consistent with both: R_wt is bounded at all tested blocks, and z/√j shows a declining trend for j ≥ 23.</p>
+<h3>6.3 The hierarchy of Papers 53–57</h3>
+<table>
+<thead><tr>
+<th>Paper</th>
+<th>Role in H' program</th>
+</tr></thead><tbody>
+<tr>
+<td>53</td>
+<td>Framework: screened long memory, coarse covariance, n_cross/j ≈ 30</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Input: power-law autocorrelation (→ Conj 57.A)</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Input: damped oscillation, positive-tail bound (→ Conj 57.B)</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Pivot: direct spectral ratio as front-door, sign-change theorem</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Conditional bridge: screened spectral bound → E[R_wt] → 0</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§7. The Block Mean as Proof Target</h2>
+<h3>7.1 Proposition (Mean–Fluctuation Decomposition)</h3>
+<p><strong>Proposition 7.1.</strong> (= Paper 56, Proposition 4.1.) Let η̄_j = (1/m_j) Σ η(p) be the block mean. Then</p>
+<p>B_j^{wt} = η̄_j · S_j + Φ_j,</p>
+<p>where S_j = Σ 1/p and Φ_j = Σ (η(p)−η̄_j)/p is the centered fluctuation.</p>
+<p>Under the empirically observed mean-dominated regime (84–99%, §4.3), R_wt is primarily controlled by the block mean η̄_j. The condition z_j = O(√j) reduces approximately to</p>
+<table>
+<thead><tr>
+<th>η̄_j</th>
+<th>² · m_j / σ² = O(j).</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>Since m_j ~ 2^j/j: |η̄_j| = O(j/√(2^j)).</p>
+<h3>7.2 Why the block mean decays</h3>
+<p>Theorem 57.1, at the expectation level, supports the conclusion that the block mean decays: the screened covariance structure ensures that the block sum B_j (and hence the block mean η̄_j) grows at most as √(j^{1-α}) faster than CLT rate. The extra √j over naive CLT comes from the power-law correlations up to the crossover scale; but the 1/j in the spectral ratio absorbs this excess.</p>
+<p>The crossover peak at j ≈ 23 (§4.2) corresponds to the transition from correlation-dominated to screening-dominated behavior: below j ≈ 23, the power-law buildup increases z/√j; above j ≈ 23, screening wins and z/√j declines.</p>
+<hr>
+<h2>§8. Remaining Gaps for H'</h2>
+<h3>8.1 What Theorem 57.1 closes</h3>
+<p>The DSF branch (mean spectral target → mean-DSF_α), conditional on Conjectures 57.A–C.</p>
+<h3>8.2 What remains</h3>
+<p><strong>Gap 1: Mean to deterministic.</strong> Theorem 57.1 bounds E[R_wt], not the actual R_wt for the single deterministic realization. To pass from E[I_j(0)] ≤ C·j·D_j to the actual I_j(0) ≤ C·j·D_j requires a concentration argument or a stronger deterministic bound. This is Paper 52's Upgrade 1.</p>
+<p><strong>Gap 2: BL_α.</strong> Paper 51 established that the spectral target I_j(0) ≤ C·j·D_j implies DSF_α but not automatically BL_α. The BL branch requires a separate verification (spectral continuity or direct localization argument).</p>
+<p><strong>Gap 3: L² to pathwise.</strong> Paper 52's Upgrade 2. Passing from L² bounds to pathwise (almost-sure) statements.</p>
+<h3>8.3 Updated H' distance</h3>
+<pre><code>Papers 53–57: DSF branch (mean, conditional) ✓
+
+Remaining:
+    Gap 1: mean → deterministic (concentration)
+    Gap 2: BL_α (separate branch)
+    Gap 3: L² → pathwise
+        → DSF_α + BL_α → H'</code></pre>
+<hr>
+<h2>§9. AI Contributions</h2>
+<p><strong>Claude (子路, experimental partner):</strong> All computational experiments. paper57_spectral.c (extended weighted spectral ratio, j=14–32). Variance decomposition algebra and weight equivalence proof (Proposition 2.1). Theorem 57.1 proof construction. Block mean analysis: z/√j crossover discovery. Working notes v1.</p>
+<p><strong>ChatGPT (公西华, structural gatekeeper):</strong> Strategic direction for Paper 57. Identified "conditional theorem linking screened covariance to block mean" as the requirement for standalone paper (vs note). Gave explicit theorem target: E[z²] ≤ 1 + j^γ with γ < 1. Confirmed 7-point data strengthens block-mean pivot. Specified claim hierarchy (what to say, what not to say). Positioned Paper 57 as DSF branch capstone.</p>
+<p><strong>Gemini (子夏):</strong> Physical intuition for Papers 55–56 mechanisms feeding into Conjectures 57.A–B. Coulomb friction / screening floor interpretation of β.</p>
+<p><strong>Grok (子贡):</strong> Numerical predictions for Paper 55–56 oscillation parameters.</p>
+<hr>
+<h2>§10. Data and Methods</h2>
+<p>All experiments used the rho_1e10.bin dataset (ρ_E values for n = 0 to 10^10, int16 binary format).</p>
+<p><strong>paper57_spectral.c:</strong> Single-pass computation of weighted (x = η/p) and unweighted (η) spectral ratios at j = 14, 17, 20, 23, 26, 29, 32. Accumulates B_wt, D_wt, B_uw, D_uw, plus mean/fluctuation decomposition. Verified D_wt = E[η²]·Σ(1/p²) to 0.7% and z²/j ≈ R_wt to 4+ digits at all blocks.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li>[P51] Qin, H. ZFCρ Paper 51: Spectral target and DSF. DOI: (series)</li>
+<li>[P52] Qin, H. ZFCρ Paper 52: Mean-reversion and two upgrades. DOI: (series)</li>
+<li>[P53] Qin, H. ZFCρ Paper 53 v2: Screening Return Theorem. DOI: 10.5281/zenodo.19415440</li>
+<li>[P54] Qin, H. ZFCρ Paper 54: Recursive ancestor inheritance. DOI: 10.5281/zenodo.19426094</li>
+<li>[P55] Qin, H. ZFCρ Paper 55: Damped oscillation, 70/30 law, positive-tail theorem. DOI: 10.5281/zenodo.19447349</li>
+<li>[P56] Qin, H. ZFCρ Paper 56: Affine trough theorem and spectral closure equation. DOI: 10.5281/zenodo.19464605</li>
+<li>[Thermo] Qin, H. SAE Thermodynamic interface paper. DOI: 10.5281/zenodo.19310282</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="lang-zh" class="lang-content" style="display:none">
+        <div class="paper-header">
+          <h1 class="paper-title">ZFCρ 第五十七篇：筛选谱界与块均值目标</h1>
+          <div class="paper-meta-line">秦汉 &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19469014">10.5281/zenodo.19469014</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract">
+          <h2>摘要</h2>
+          <p>第五十六篇将直接加权谱比值 R_j^{wt} = I_j(0)/(j·D_j) 提升为均值谱目标的正门猜想，第53–55篇重新解读为机制/证明纲要。本文通过一个条件定理完成DSF分支，将第53–54篇的筛选长记忆框架连接到谱比值。</p>
+<p><strong>定理57.1（筛选谱界）。</strong> 若素数序号自相关满足幂律积累（|ρ(k)| ≤ A·k^{-α}，k ≤ n_cross，α > 0），交叉后屏蔽（累积负值），以及线性交叉尺度（n_cross ≤ c·j），则方差比 Ψ_j ≤ 1 + C·j^{1-α}，由此 E[R_j^{wt}] = O(j^{-α}) → 0。</p>
+<p>7个二进块（j = 14, 17, 20, 23, 26, 29, 32）的扩展数据确认：R_wt ∈ [2.7, 25.3] 有界，z/√j 在 j ≈ 23 处展现交叉峰值后下降，z²/j^{0.65} ∈ [9.0, 72.0] 有界——均与α ≈ 0.35下的 z² = O(j^{0.65}) 一致。单次实现的波动大于趋势，但上包络受控。</p>
+<p>在第53–56篇支持的三个猜想输入加上二阶矩正则假设下，定理57.1条件性关闭DSF分支的均值谱目标。H'的剩余差距为BL_α验证，均值到确定性升级，以及L²到逐路径升级。</p>
+<hr>
+        </div>
+        <div class="paper-body">
+          
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  function switchLang(lang) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('lang-zh').style.display = lang === 'zh' ? '' : 'none';
+    document.querySelectorAll('.lang-tab').forEach((t, i) => {
+      t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+    });
+  }
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    </div>
+  </footer>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>

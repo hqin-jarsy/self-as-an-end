@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper 56: The Affine Trough Theorem, Direct Spectral Ratio, and the Spectral Closure Equation — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta property="og:title" content="ZFCρ Paper 56: The Affine Trough Theorem, Direct Spectral Ratio, and the Spectral Closure Equation">
+  <meta property="og:type" content="article">
+  <meta name="citation_title" content="ZFCρ Paper 56: The Affine Trough Theorem, Direct Spectral Ratio, and the Spectral Closure Equation">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_doi" content="10.5281/zenodo.19464606">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ZFCρ Paper 56: The Affine Trough Theorem, Direct Spectral Ratio, and the Spectral Closure Equation",
+    "author": {"@type": "Person", "name": "Han Qin"},
+    "identifier": "https://doi.org/10.5281/zenodo.19464606"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="/index.html">Papers</a>
+        <a href="/about.html">About</a>
+        <a href="/endacc.html">end/acc</a>
+        <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="paper-main">
+    <div class="paper-container">
+      <div class="lang-tabs">
+        <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('zh')">中文</button>
+      </div>
+
+      <div id="lang-en" class="lang-content">
+        <div class="paper-header">
+          <h1 class="paper-title">ZFCρ Paper 56: The Affine Trough Theorem, Direct Spectral Ratio, and the Spectral Closure Equation</h1>
+          <div class="paper-meta-line">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19464606">10.5281/zenodo.19464606</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract">
+          <h2>Abstract</h2>
+          <p>Paper 55 established damped oscillation of the cumulative covariance G̃_j(M) with rebound ratio r ≈ 0.80, but explicitly noted that the geometric envelope controls the positive tail mass Q̃_j, not the first zero-crossing L_j. This paper addresses both the signed gap and the broader strategic question of what the mean spectral target actually requires.</p>
+<p><strong>Part I (Sign-change theorem).</strong> We prove a Modified Affine Trough Theorem: if successive post-peak maxima contract geometrically (P_{k+1} ≤ r·P_k) and troughs satisfy an affine deficit (U_k ≤ a·P_k − β with β > 0), then G̃_j must cross zero after at most k<em> = ⌈ln(a·P_0/β)/ln(1/r)⌉ cycles. At j = 26 and 29, k</em> = 2 with a·P_0/β ∈ [1.30, 1.46] (bounded). This fills the exact signed gap identified in Paper 55.</p>
+<p><strong>Part II (Direct spectral ratio).</strong> We measure the exact Paper 51/53 observable R_j^{wt} = I_j(0)/(j·D_j) with the weighted sequence x_r = η(p)/p. Results at j = 20, 23, 26, 29, 32: R_wt = 22.0, 25.3, 4.2, 8.9, 2.7 — bounded with no upward trend. The weighted block sum B_j^{wt} is 84–99% dominated by the block mean of η, and the standardized ratio z/√j ∈ [1.5, 4.9] is bounded. We propose Conjecture 56.2 (R_j^{wt} = O(1)) as the new front-door conjecture for the mean spectral target, with Papers 53–55 reinterpreted as the mechanism/proof program explaining why this ratio is bounded.</p>
+<p><strong>Keywords:</strong> integer complexity, spectral target, affine trough, zero-crossing, block mean, H' conjecture</p>
+<hr>
+        </div>
+        <div class="paper-body">
+          <h2>§1. Introduction</h2>
+<h3>1.1 The signed gap from Paper 55</h3>
+<p>Paper 55 proved the Positive-Tail Theorem (Thm 55.3): under geometric peak contraction with r < 1 and bounded period T_j, the positive tail mass satisfies Q̃_j ≤ T_j · F̃_j / (1 − r). Paper 55 also explicitly stated that this bound does not control the first zero-crossing L_j, because peaks can shrink while troughs remain positive. To bound L_j, an additional trough-depth or sign-change hypothesis is needed.</p>
+<p>Part I of this paper supplies that hypothesis.</p>
+<h3>1.2 The F̃·L/N problem</h3>
+<p>Paper 53's Corollary 4.2 requires F̃_j · L_j / N_j → 0 for the mean spectral target. Paper 54 delivered F̃_j polynomial. But Paper 55 showed the oscillation period T_j ~ 2^j, comparable to N_j ~ 2^j/j². Since L_j = O(T_j) from the affine trough theorem (Part I), L_j may be exponential in j, not polynomial. The product F̃ · L / N then gives polynomial (not → 0), and the Paper 53 coarse-block route does not close.</p>
+<p>This motivates Part II: direct measurement of the actual spectral ratio, bypassing the F̃ · L decomposition entirely.</p>
+<h3>1.3 Summary of contributions</h3>
+<table>
+<thead><tr>
+<th>Part</th>
+<th>Contribution</th>
+<th>Type</th>
+</tr></thead><tbody>
+<tr>
+<td>I</td>
+<td>Affine trough theorem → finite-cycle zero-crossing (k* = 2 on tested blocks)</td>
+<td>Theorem</td>
+</tr>
+<tr>
+<td>II</td>
+<td>R_j^{wt} bounded at j = 20–32, mean-dominated</td>
+<td>Empirical</td>
+</tr>
+<tr>
+<td>II</td>
+<td>Conjecture 56.2: R_j^{wt} = O(1)</td>
+<td>Conjecture</td>
+</tr>
+<tr>
+<td>III</td>
+<td>Papers 53–55 = mechanism, direct ratio = statement</td>
+<td>Strategic</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§2. The Affine Trough Theorem</h2>
+<h3>2.1 Setup</h3>
+<p>Within dyadic block I_j = [2^j, 2^{j+1}), let G̃_j(M) = G_j(M)/(j·b·σ²) be the normalized cumulative coarse-block covariance (Paper 53 Definition 3.2). After the principal peak, let P_{j,0} > P_{j,1} > ... be successive local maxima and U_{j,0}, U_{j,1}, ... the succeeding local minima (each U_{j,k} is the minimum between P_{j,k} and P_{j,k+1}).</p>
+<h3>2.2 Theorem 56.1 (Modified Affine Trough Theorem)</h3>
+<p><strong>Theorem 56.1.</strong> Suppose:</p>
+<p>(i) Peak contraction: P_{j,k+1} ≤ r_j · P_{j,k} for all k ≥ 0, with 0 < r_j < 1.</p>
+<p>(ii) Bounded period: M_{j,k+1} − M_{j,k} ≤ T_j for all k ≥ 0.</p>
+<p>(iii) Affine trough deficit: U_{j,k} ≤ a_j · P_{j,k} − β_j for all k ≥ 0, with a_j ≥ 0 and β_j > 0.</p>
+<p>Then G̃_j(M) has a nonpositive trough (hence a zero-crossing) by cycle</p>
+<p>k* ≤ ⌈ln(a_j · P_{j,0} / β_j) / ln(1/r_j)⌉₊,                (2.1)</p>
+<p>and therefore</p>
+<p>L_j ≤ M_pk(j) + T_j · (k* + 1).                                (2.2)</p>
+<p><strong>Proof.</strong> At cycle k, the peak height is at most r_j^k · P_{j,0}. The affine trough condition gives</p>
+<p>U_{j,k} ≤ a_j · r_j^k · P_{j,0} − β_j.</p>
+<p>This is nonpositive when a_j · r_j^k · P_{j,0} ≤ β_j, i.e. when</p>
+<p>r_j^k ≤ β_j / (a_j · P_{j,0}).</p>
+<p>Taking logarithms (both sides positive, r_j < 1 so ln r_j < 0):</p>
+<p>k ≥ ln(a_j · P_{j,0} / β_j) / ln(1/r_j).</p>
+<p>A nonpositive trough means G̃_j passed through zero in the preceding descent from P_{j,k}. The total elapsed time from the principal peak is at most (k* + 1) periods. □</p>
+<p><strong>Remark.</strong> The condition a_j ≥ 0 (rather than the stronger 0 ≤ a_j < 1) is essential: at j = 26, a = 1.256 > 1. The theorem works for any a ≥ 0 because peak contraction (r < 1) ensures a · r^k · P_0 → 0 regardless of a.</p>
+<h3>2.3 Data verification</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>P_{j,0}</th>
+<th>U_{j,0}</th>
+<th>P_{j,1}</th>
+<th>U_{j,1}</th>
+<th>a_j</th>
+<th>β_j</th>
+<th>a·P₀/β</th>
+<th>k*</th>
+<th>L_pred</th>
+<th>L_obs</th>
+</tr></thead><tbody>
+<tr>
+<td>26</td>
+<td>30,295</td>
+<td>11,994</td>
+<td>24,413</td>
+<td>4,608</td>
+<td>1.256</td>
+<td>26,047</td>
+<td>1.46</td>
+<td>2</td>
+<td>269</td>
+<td>264</td>
+</tr>
+<tr>
+<td>29</td>
+<td>123,225</td>
+<td>21,471</td>
+<td>98,885</td>
+<td>3,233</td>
+<td>0.749</td>
+<td>70,862</td>
+<td>1.30</td>
+<td>2</td>
+<td>1,994</td>
+<td>1,217</td>
+</tr>
+</tbody></table>
+<p>The affine fit is exact (two points determine two parameters). The key structural finding is that <strong>a · P₀ / β is bounded</strong> (1.30 and 1.46), yielding k* = 2 at both tested j values (j = 26, 29). Whether this pattern persists at larger j remains to be verified; j = 32 does not yet have a resolved second peak for affine fitting.</p>
+<h3>2.4 The affine trough deficit β</h3>
+<p>The constant β_j > 0 admits a natural physical interpretation as an <strong>irreducible screening floor</strong>: the minimum negative covariance injected per half-cycle by the multiplicative reset mechanism, independent of the current oscillation amplitude. This interpretation is suggested by the data (β is fitted from two points per j) and is consistent with the DP's factor structure providing a baseline level of negative correction even at small peak heights.</p>
+<p>Normalized: β̃_j = β_j / (j · b · σ²) = 2.23 (j=26) and 4.88 (j=29). The normalized floor is growing with j, consistent with deeper IC trees producing stronger resets at larger scales.</p>
+<h3>2.5 What Theorem 56.1 resolves and what it does not</h3>
+<p><strong>Resolves:</strong> The signed gap from Paper 55. Paper 55's geometric envelope controls Q̃_j (positive tail mass) but not L_j (first zero-crossing). Theorem 56.1, under the affine trough condition, proves zero-crossing after finitely many cycles.</p>
+<p><strong>Does not resolve:</strong> The quantitative closure of the mean spectral target. Since T_j ~ 2^j (Paper 55), L_j = O(T_j) is potentially exponential in j. Paper 53's Corollary 4.2 requires L_j polynomial for F̃ · L / N → 0. The affine trough theorem alone does not provide this.</p>
+<p>This limitation motivates Part II.</p>
+<hr>
+<h2>§3. Direct Weighted Spectral Ratio</h2>
+<h3>3.1 The exact observable</h3>
+<p>Paper 51 defines the spectral target as I_j(0) ≤ C · j · D_j, where</p>
+<p>x_r = h(p_{j,r}) / p_{j,r},     I_j(0) = (Σ x_r)²,     D_j = Σ x_r².     (3.1)</p>
+<p>With the Paper 55 detrending h(p) = η(p) = ρ_E(p) − λ ln p − μ_{p mod 12}, the weighted observable is x_r = η(p)/p. The spectral ratio is</p>
+<p>R_j^{wt} := I_j(0) / (j · D_j) = B_j² / (j · D_j),                          (3.2)</p>
+<p>where B_j = Σ_{p ∈ I_j} η(p)/p. The mean spectral target is R_j^{wt} ≤ C for some universal constant C.</p>
+<h3>3.2 Results</h3>
+<p>455,052,511 primes at N = 10^10. Both weighted (Paper 51/53 exact) and unweighted versions computed:</p>
+<table>
+<thead><tr>
+<th>j</th>
+<th>n_primes</th>
+<th>R_wt</th>
+<th>R_uw</th>
+<th>R_wt/R_uw</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>73,586</td>
+<td>22.0</td>
+<td>22.2</td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>23</td>
+<td>513,708</td>
+<td>25.3</td>
+<td>23.6</td>
+<td>1.07</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>4.2</td>
+<td>3.1</td>
+<td>1.36</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26,207,278</td>
+<td>8.9</td>
+<td>11.6</td>
+<td>0.77</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190,335,585</td>
+<td>2.7</td>
+<td>2.3</td>
+<td>1.18</td>
+</tr>
+</tbody></table>
+<p><strong>Finding 1.</strong> R_wt is bounded: range [2.7, 25.3] with no upward trend. The mean spectral target I_j(0) ≤ 26 · j · D_j holds at all tested blocks.</p>
+<p><strong>Finding 2.</strong> The 1/p weighting does not qualitatively change the picture. R_wt/R_uw ∈ [0.77, 1.36], with no systematic direction. The observable is aligned with Paper 51/53.</p>
+<p><strong>Finding 3.</strong> D_wt matches the iid prediction E[η²] · Σ(1/p²) to within 0.2%. No anomalous structure in the second moment.</p>
+<h3>3.3 Comparison with Paper 53 coarse bound</h3>
+<p>Paper 53's sufficient condition for the mean spectral target is A_j + 2 · F̃ · L / N ≤ C. The coarse-block quantities give:</p>
+<table>
+<thead><tr>
+<th>j</th>
+<th>A_j</th>
+<th>F̃·L/N</th>
+<th>A + 2F̃L/N</th>
+<th>R_wt</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>0.38</td>
+<td>0.36</td>
+<td>1.10</td>
+<td>22.0</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0.72</td>
+<td>0.75</td>
+<td>2.22</td>
+<td>25.3</td>
+</tr>
+<tr>
+<td>26</td>
+<td>0.94</td>
+<td>0.15</td>
+<td>1.24</td>
+<td>4.2</td>
+</tr>
+<tr>
+<td>29</td>
+<td>1.09</td>
+<td>0.34</td>
+<td>1.77</td>
+<td>8.9</td>
+</tr>
+</tbody></table>
+<p>The actual ratio R_wt substantially exceeds the coarse bound A + 2F̃L/N. This is not a contradiction, nor does it indicate theorem failure. The two columns measure different things: A_j + 2F̃L/N is a <strong>mechanism-side sufficient coefficient</strong> derived from a coarse-block random model for E[I_j(0)], while R_wt is the <strong>actual front-door observable</strong> computed on a single deterministic realization. The coarse route was designed as an analytical sufficient condition for proving R_wt = O(1), not as a numerically faithful predictor of R_wt itself. The discrepancy confirms that the F̃·L decomposition is a crude upper route; the actual spectral ratio benefits from cancellation structure that the coarse bound does not capture.</p>
+<hr>
+<h2>§4. Block Mean Decomposition</h2>
+<h3>4.1 Proposition (Mean–Fluctuation Decomposition)</h3>
+<p><strong>Proposition 4.1.</strong> Let η̄_j = (1/m_j) Σ_{p ∈ I_j} η(p) be the block mean of η. Then</p>
+<p>B_j^{wt} = η̄_j · S_j + Φ_j,                                      (4.1)</p>
+<p>where S_j = Σ_{p ∈ I_j} 1/p and Φ_j = Σ_{p ∈ I_j} (η(p) − η̄_j)/p is the centered fluctuation. Therefore</p>
+<p>R_j^{wt} = (η̄_j · S_j + Φ_j)² / (j · D_j).                      (4.2)</p>
+<p>If the mean term dominates (|η̄_j · S_j| ≫ |Φ_j|), then</p>
+<p>R_j^{wt} ≈ η̄_j² · S_j² / (j · D_j).                              (4.3)</p>
+<p><strong>Remark.</strong> S_j = Σ 1/p over I_j satisfies S_j ≈ ln 2 / j (by Mertens' theorem applied to dyadic blocks). D_j ≈ σ² · Σ 1/p² ≈ σ² · ln 2 / (j · 2^j). Therefore the mean-dominated approximation gives</p>
+<p>R_j^{wt} ≈ η̄_j² · (ln 2)² / j² · j · 2^j / (σ² · ln 2) = η̄_j² · ln 2 · 2^j / (j · σ²).     (4.4)</p>
+<p>For R_wt = O(1), this requires η̄_j² = O(j · σ² / 2^j), i.e.</p>
+<table>
+<thead><tr>
+<th>η̄_j</th>
+<th>= O(√(j/2^j)).                                               (4.5)</th>
+</tr></thead><tbody>
+</tbody></table>
+<h3>4.2 Data: mean dominance</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>Mean part</th>
+<th>Fluct part</th>
+<th>Mean %</th>
+<th>Fluct %</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>2.81e-3</td>
+<td>3.97e-5</td>
+<td>98.6%</td>
+<td>1.4%</td>
+</tr>
+<tr>
+<td>23</td>
+<td>1.04e-3</td>
+<td>5.82e-5</td>
+<td>94.7%</td>
+<td>5.3%</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1.34e-4</td>
+<td>2.51e-5</td>
+<td>84.2%</td>
+<td>15.8%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>9.18e-5</td>
+<td>9.74e-6</td>
+<td>(111.9%)*</td>
+<td>11.9%</td>
+</tr>
+<tr>
+<td>32</td>
+<td>1.45e-5</td>
+<td>1.55e-6</td>
+<td>90.4%</td>
+<td>9.6%</td>
+</tr>
+</tbody></table>
+<p>(*At j=29, mean and fluctuation parts have opposite signs; mean part exceeds total.)</p>
+<p>The mean term dominates B_wt at 84–99% across all tested blocks.</p>
+<h3>4.3 Standardized block mean</h3>
+<p>Define the standardized weighted block sum</p>
+<p>z_j = B_j^{wt} / √(σ² · Σ_{p ∈ I_j} 1/p²).                       (4.6)</p>
+<p>Then R_wt ≈ z_j² / j (verified to 4+ digits on all blocks). The mean spectral target R_wt = O(1) is equivalent to</p>
+<p>z_j = O(√j).                                                        (4.7)</p>
+<table>
+<thead><tr>
+<th>j</th>
+<th>z_j</th>
+<th>√j</th>
+<th>z_j/√j</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>21.0</td>
+<td>4.47</td>
+<td>4.70</td>
+</tr>
+<tr>
+<td>23</td>
+<td>24.1</td>
+<td>4.80</td>
+<td>5.03</td>
+</tr>
+<tr>
+<td>26</td>
+<td>10.5</td>
+<td>5.10</td>
+<td>2.05</td>
+</tr>
+<tr>
+<td>29</td>
+<td>16.0</td>
+<td>5.39</td>
+<td>2.97</td>
+</tr>
+<tr>
+<td>32</td>
+<td>9.3</td>
+<td>5.66</td>
+<td>1.64</td>
+</tr>
+</tbody></table>
+<p>z_j/√j ranges from 1.64 to 5.03, with an overall decreasing trend. This is consistent with z_j = O(√j) and possibly z_j = o(√j).</p>
+<p>For comparison, if η were iid across primes, z_j would be O(1) (CLT). The observed z_j ≈ 10–24 indicates persistent correlation (long memory), but the growth rate is at most √j — much slower than the n^{H-1/2} growth expected from unscreened long memory. This is consistent with the screened long memory framework of Papers 53–55: correlations build up but are screened on the O(j) scale.</p>
+<h3>4.4 Fluctuation part</h3>
+<p>The centered fluctuation Φ_j = B_wt − η̄_j · S_j satisfies</p>
+<table>
+<thead><tr>
+<th>Φ_j</th>
+<th>/ √(σ² · Σ 1/p²) = 0.29, 1.28, 1.65, 1.91, 0.90</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>at j = 20, 23, 26, 29, 32. This is O(1), consistent with the fluctuation part being at iid scale. The screened long memory mechanism (Papers 53–55) keeps the correlated fluctuation controlled.</p>
+<hr>
+<h2>§5. The Front-Door Conjecture</h2>
+<h3>5.1 Conjecture 56.2 (Direct Spectral Boundedness)</h3>
+<p><strong>Conjecture 56.2.</strong> There exists a constant C > 0 such that for all sufficiently large j:</p>
+<p>R_j^{wt} := I_j(0) / (j · D_j) ≤ C,</p>
+<p>where I_j(0) = (Σ_{p ∈ I_j} η(p)/p)² and D_j = Σ_{p ∈ I_j} (η(p)/p)².</p>
+<p><strong>Mean-dominated reduction (proof target).</strong> Under the empirically observed mean-dominated regime (§4.2), Conjecture 56.2 reduces approximately to</p>
+<p>z_j = O(√j),                                                        (5.1)</p>
+<p>or equivalently</p>
+<table>
+<thead><tr>
+<th>η̄_j</th>
+<th>² · m_j / σ² = O(j),                                          (5.2)</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>where η̄_j is the block mean of η over I_j and m_j is the number of primes in I_j. This reduction holds as long as the fluctuation part Φ_j remains small relative to the mean part (currently 1–16%); it is an empirically supported proof target, not a strict equivalence.</p>
+<p><strong>Empirical support.</strong> R_wt ∈ [2.7, 25.3] at j = 20–32. z/√j ∈ [1.6, 5.0], decreasing.</p>
+<h3>5.2 Consequence: mean spectral target</h3>
+<p>Under Conjecture 56.2, I_j(0) ≤ C · j · D_j holds directly. By Paper 51, this gives DSF_α.</p>
+<h3>5.3 Relation to Paper 53 Corollary 4.2</h3>
+<p>Paper 53's coarse-block route uses F̃_j · L_j / N_j → 0 as a sufficient condition for R_wt = O(1). This is a decomposition of the closure equation into separate conditions on F̃ (buildup height) and L (return time). The two components are each difficult to bound individually (F̃ is polynomial, L may be exponential), but their combination in the actual spectral ratio R_wt is bounded. The F̃ · L decomposition is analogous to bounding the magnitude and argument of e^{iπ} separately rather than writing Euler's formula directly.</p>
+<p>Conjecture 56.2 replaces the decomposed sufficient condition with the direct statement.</p>
+<hr>
+<h2>§6. Role Reassignment for the H' Program</h2>
+<h3>6.1 Revised closure chain</h3>
+<pre><code>Conjecture 56.2: R_j^{wt} = O(1)
+    → I_j(0) ≤ C·j·D_j  (mean spectral target)
+        → DSF_α  (Paper 51)
+
+Mechanism / proof program for Conjecture 56.2:
+    Paper 54: F̃_j polynomial (buildup structure)
+    Paper 55: positive-tail bound, r ≈ 0.80, η ≈ 0.20
+    Paper 56 Part I: affine trough → sign-change after k* = 2 cycles
+    §4: block mean decomposition, z/√j bounded
+
+Remaining open problems:
+    BL_α verification (not automatic from spectral target)
+    Mean → deterministic upgrade (Paper 52)
+    L² → pathwise upgrade (Paper 52)
+        → H'</code></pre>
+<h3>6.2 Papers 53–55: from statement to mechanism</h3>
+<p>Under the revised framing:</p>
+<table>
+<thead><tr>
+<th>Paper</th>
+<th>Previous role</th>
+<th>Revised role</th>
+</tr></thead><tbody>
+<tr>
+<td>53</td>
+<td>Closing theorem (F̃·L/N)</td>
+<td>Mechanism: coarse sufficient condition</td>
+</tr>
+<tr>
+<td>54</td>
+<td>F̃_j polynomial (half of Conj 53.1)</td>
+<td>Mechanism: explains buildup structure</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Positive-tail bound + oscillation</td>
+<td>Mechanism: explains screening envelope</td>
+</tr>
+<tr>
+<td>56 Part I</td>
+<td>Sign-change theorem</td>
+<td>Mechanism: explains zero-crossing</td>
+</tr>
+<tr>
+<td>56 Part II</td>
+<td>Direct spectral measurement</td>
+<td><strong>Statement</strong>: front-door conjecture</td>
+</tr>
+</tbody></table>
+<p>This is not a demotion. Papers 53–55 remain essential as the mechanistic explanation for why R_wt is bounded. The reassignment clarifies the logical hierarchy: the conjecture (R_wt = O(1)) is the statement; the papers are the proof program.</p>
+<h3>6.3 Block mean as proof target</h3>
+<p>The mean-dominated structure (§4) suggests that the most direct route to proving Conjecture 56.2 is a <strong>block mean theorem</strong>: prove that the weighted block mean of η satisfies z_j = O(√j). This reduces the spectral target to a statement about the average behavior of the detrended complexity field within dyadic blocks, rather than the detailed oscillation structure of G_j(M).</p>
+<p>The screened long memory framework (Paper 53) provides the mechanism: additive inertia creates power-law buildup, multiplicative screening creates the return, and their balance ensures the block mean does not grow faster than √j.</p>
+<hr>
+<h2>§7. AI Contributions</h2>
+<p><strong>Claude (子路, experimental partner):</strong> All computational experiments. paper56_abel.c (identified centering bug: A_j + 2S_j = 0 is tautology). paper56_direct.c (unweighted spectral ratio). paper56_weighted.c (exact Paper 51/53 observable — the critical experiment confirming R_wt bounded). Block mean decomposition and z/√j analysis. Affine trough fit and k* = 2 verification. Working notes v1–v2.</p>
+<p><strong>ChatGPT (公西华, structural gatekeeper):</strong> Seven rounds of review across Papers 55–56. R1: affine trough theorem with a < 1 (too restrictive). R2: corrected to a ≥ 0. R3: identified L_j = O(T_j) ≠ L_j polynomial — the fundamental reason F̃·L/N route fails. R4: strategic pivot to direct spectral ratio as front-door conjecture, Papers 53–55 as mechanism. Recommended Part I + Part II structure. R5: accepted weighted data, confirmed pivot. "Block mean theorem is the cleanest proof path." Required algebraic bridge proposition (§4.1). Gave claim hierarchy (what to say, what not to say). Verdict: "Ready to draft. Not ready to claim closure."</p>
+<p><strong>Gemini (子夏, physical intuition):</strong> β as "Coulomb friction" (dry friction vs viscous damping). Two-parameter (a, b) = (fluid + crystal) interpretation. Q ≈ πk* ≈ 6 (near-critical damping). State-dependent damping for swing deepening mechanism.</p>
+<p><strong>Grok (子贡, numerical analysis):</strong> r_trough = r_peak × swing_ratio identity (exact to 3 decimals). Swing depth model and j=32 prediction (3–5%, observed 3.9%).</p>
+<hr>
+<h2>§8. Data and Methods</h2>
+<p>All experiments used the rho_1e10.bin dataset (ρ_E values for n = 0 to 10^10, int16 binary format).</p>
+<p><strong>paper56_weighted.c:</strong> Single-pass computation of both weighted (x = η/p) and unweighted (η) spectral ratios. For each prime p in block I_j, accumulates B_wt = Σ η/p, D_wt = Σ (η/p)², B_uw = Σ η, D_uw = Σ η², plus the mean/fluctuation decomposition quantities. Verified D_wt = E[η²]·Σ(1/p²) to 0.2% and z²/j ≈ R_wt to 4+ digits.</p>
+<p><strong>Affine trough parameters:</strong> Computed from two (P, U) data points per j-block, using the G̃_j(M) profiles from Paper 55's paper55_windrift.c output.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li>[P51] Qin, H. ZFCρ Paper 51: Spectral target and DSF. DOI: (series)</li>
+<li>[P52] Qin, H. ZFCρ Paper 52: Mean-reversion and two upgrades. DOI: (series)</li>
+<li>[P53] Qin, H. ZFCρ Paper 53 v2: Screening Return Theorem. DOI: 10.5281/zenodo.19415440</li>
+<li>[P54] Qin, H. ZFCρ Paper 54: Recursive ancestor inheritance. DOI: 10.5281/zenodo.19426094</li>
+<li>[P55] Qin, H. ZFCρ Paper 55: Damped oscillation, 70/30 law, positive-tail theorem. DOI: 10.5281/zenodo.19447349</li>
+<li>[Thermo] Qin, H. SAE Thermodynamic interface paper. DOI: 10.5281/zenodo.19310282</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="lang-zh" class="lang-content" style="display:none">
+        <div class="paper-header">
+          <h1 class="paper-title">ZFCρ 第五十六篇：仿射谷定理，直接谱比值，与谱闭合方程</h1>
+          <div class="paper-meta-line">秦汉 &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19464606">10.5281/zenodo.19464606</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract">
+          <h2>摘要</h2>
+          <p>第五十五篇建立了累积协方差 G̃_j(M) 的阻尼振荡（回弹比 r ≈ 0.80），但明确指出几何包络仅控制正尾质量 Q̃_j，不控制首次过零时间 L_j。本文同时处理这个符号缺口和更广泛的战略问题：均值谱目标究竟需要什么。</p>
+<p><strong>第一部分（符号变换定理）。</strong> 我们证明修正仿射谷定理：若逐次峰后极大几何收缩（P_{k+1} ≤ r·P_k），且谷值满足仿射亏缺条件（U_k ≤ a·P_k − β，β > 0），则 G̃_j 必在 k<em> = ⌈ln(a·P_0/β)/ln(1/r)⌉ 个周期后过零。在 j = 26 和 29 处，k</em> = 2，且 a·P_0/β ∈ [1.30, 1.46]（有界）。这精确填补了第五十五篇识别的符号缺口。</p>
+<p><strong>第二部分（直接谱比值）。</strong> 我们测量了第51/53篇的精确可观测量 R_j^{wt} = I_j(0)/(j·D_j)，使用加权序列 x_r = η(p)/p。j = 20, 23, 26, 29, 32 处的结果：R_wt = 22.0, 25.3, 4.2, 8.9, 2.7——有界且无上升趋势。加权块和 B_j^{wt} 的 84–99% 由块均值 η̄_j 主导，标准化比值 z/√j ∈ [1.5, 4.9] 有界。我们提出猜想56.2（R_j^{wt} = O(1)）作为均值谱目标的新正门猜想，第53–55篇重新解读为解释该比值为何有界的机制/证明纲要。</p>
+<hr>
+        </div>
+        <div class="paper-body">
+          
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  function switchLang(lang) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('lang-zh').style.display = lang === 'zh' ? '' : 'none';
+    document.querySelectorAll('.lang-tab').forEach((t, i) => {
+      t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+    });
+  }
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    </div>
+  </footer>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
