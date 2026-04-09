@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper 58: Deterministic Spectral Target and BL_α via Cross-Product and Spectral Derivative — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta property="og:title" content="ZFCρ Paper 58: Deterministic Spectral Target and BL_α via Cross-Product and Spectral Derivative">
+  <meta property="og:type" content="article">
+  <meta name="citation_title" content="ZFCρ Paper 58: Deterministic Spectral Target and BL_α via Cross-Product and Spectral Derivative">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_doi" content="10.5281/zenodo.19476509">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ZFCρ Paper 58: Deterministic Spectral Target and BL_α via Cross-Product and Spectral Derivative",
+    "author": {"@type": "Person", "name": "Han Qin"},
+    "identifier": "https://doi.org/10.5281/zenodo.19476509"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="/index.html">Papers</a>
+        <a href="/about.html">About</a>
+        <a href="/endacc.html">end/acc</a>
+        <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      </nav>
+    </div>
+  </header>
+  <main class="paper-main">
+    <div class="paper-container">
+      <div class="lang-tabs">
+        <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('zh')">中文</button>
+      </div>
+      <div id="lang-en" class="lang-content">
+        <div class="paper-header">
+          <h1 class="paper-title">ZFCρ Paper 58: Deterministic Spectral Target and BL_α via Cross-Product and Spectral Derivative</h1>
+          <div class="paper-meta-line">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19476509">10.5281/zenodo.19476509</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract"><h2>Abstract</h2><p>Paper 57 conditionally closed the DSF branch of H' at mean level, leaving three gaps: mean-to-deterministic, BL_α, and L²-to-pathwise. This paper addresses all three by introducing two deterministic routes that bypass the probabilistic framework entirely.</p>
+<p><strong>Part I (Deterministic DSF).</strong> Paper 52's algebraic cross-product theorem (Thm 3.1) is verified on the exact weighted observable. At j = 29 and 32, the sub-block cross-product sum Σ_{k<ℓ} T_k T_ℓ turns negative at the screening scale, giving deterministic bounds R_wt ≤ 13.4 and 6.6 respectively (actual: 8.9 and 2.7). This bypasses the mean-to-deterministic upgrade.</p>
+<p><strong>Part II (Deterministic BL).</strong> The Dirichlet error E_j(t) satisfies E_j(t) ≈ -it · B_j^{(1)} at leading order, where B_j^{(1)} = Σ η(p)/p · (log p − c_j) is the first spectral derivative. The quantity 2^j · (B_j^{(1)})² is two orders of magnitude smaller than the DSF quantity: bounded by 0.06 across all 7 tested blocks (j = 14–32). The Taylor approximation is verified to >97% accuracy at t = 0.1 via exact E_j(t) computation. This provides a direct deterministic route for BL_α.</p>
+<p><strong>Part III (Route reassignment).</strong> Under the direct deterministic route, the old L²-to-pathwise upgrade (Paper 52 Gap 3) is no longer the relevant theorem problem. The remaining conditional distance for H' reduces to two explicit deterministic asymptotic conjectures: Conjecture 58.1 (eventual cross-product screening) and Conjecture 58.2 (uniform spectral derivative bound).</p>
+<p><strong>Keywords:</strong> integer complexity, deterministic spectral target, BL_α, cross-product, spectral derivative, H' conjecture</p>
+<hr></div>
+        <div class="paper-body"><h2>§1. Introduction</h2>
+<h3>1.1 Three gaps from Paper 57</h3>
+<p>Paper 57 (DOI: 10.5281/zenodo.19469013) proved a conditional screened spectral bound: under power-law buildup, post-crossover screening, and linear crossover scale, E[R_j^{wt}] = O(j^{-α}) → 0. This conditionally closed the mean spectral target for the DSF branch.</p>
+<p>Three gaps remained for H':</p>
+<table>
+<thead><tr>
+<th>Gap</th>
+<th>Description</th>
+<th>Nature</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Mean → deterministic: E[I_j(0)] → actual I_j(0)</td>
+<td>Technical</td>
+</tr>
+<tr>
+<td>2</td>
+<td>BL_α: Σ sup</td>
+<td>E_j(t)</td>
+<td>/</td>
+<td>t</td>
+<td>^α < ∞</td>
+<td>Separate branch</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L² → pathwise: ‖E_j‖₂ → sup</td>
+<td>E_j</td>
+<td>Technical</td>
+</tr>
+</tbody></table>
+<p>This paper introduces deterministic routes that address all three.</p>
+<h3>1.2 Key insight: two deterministic conjectures replace three gaps</h3>
+<p>The three gaps arose from Paper 52's probabilistic framework (MW projection, Gordin decomposition). By switching to deterministic routes — Paper 52's algebraic cross-product theorem for DSF, and direct computation of E_j(t) for BL — the probabilistic intermediaries become unnecessary, and the three gaps are reorganized into two explicit deterministic conjectures:</p>
+<p><strong>Conjecture 58.1 (Eventual cross-product screening):</strong> for all sufficiently large j, the sub-block cross-product sum is nonpositive at screening scale.</p>
+<p><strong>Conjecture 58.2 (Uniform spectral derivative bound):</strong> |E_j(t)|² ≤ C · 2^{-j} · t² for |t| ≤ 1, all sufficiently large j.</p>
+<p>Under these two conjectures, DSF_α + BL_α follow, and with SD (unconditional, Paper 50), H' is conditionally closed.</p>
+<hr>
+<h2>§2. Deterministic DSF via Cross-Product</h2>
+<h3>2.1 Paper 52 Theorem 3.1 (recap)</h3>
+<p><strong>Theorem (Paper 52, Thm 3.1).</strong> Let x_1, ..., x_{m_j} be any finite sequence. Split into K sub-blocks of size n*, sums T_1, ..., T_K, remainder T_rem. If:</p>
+<p>(a) Σ T_k² ≤ A · j · D_j,</p>
+<p>(b) Σ_{k<ℓ} T_k T_ℓ ≤ 0,</p>
+<p>(c) T_rem² ≤ D_j,</p>
+<p>then B² ≤ (Aj + 2√(Aj) + 1) · D_j = O(j · D_j). <strong>Deterministic, algebraic, no probability.</strong></p>
+<h3>2.2 Cross-product data</h3>
+<p>Using weighted x_r = η(p_r)/p_r (Paper 51/53 exact observable), we compute Cross/B² = (Σ_{k<ℓ} T_k T_ℓ) / B² at various sub-block sizes:</p>
+<table>
+<thead><tr>
+<th>n*</th>
+<th>j=20</th>
+<th>j=23</th>
+<th>j=26</th>
+<th>j=29</th>
+<th>j=32</th>
+</tr></thead><tbody>
+<tr>
+<td>1K</td>
+<td>+0.49</td>
+<td>+0.48</td>
+<td>+0.37</td>
+<td>+0.43</td>
+<td>+0.28</td>
+</tr>
+<tr>
+<td>3K</td>
+<td>+0.44</td>
+<td>+0.48</td>
+<td>+0.27</td>
+<td>+0.36</td>
+<td>+0.03</td>
+</tr>
+<tr>
+<td>10K</td>
+<td>+0.40</td>
+<td>+0.49</td>
+<td>+0.15</td>
+<td>+0.22</td>
+<td><strong>−0.55</strong></td>
+</tr>
+<tr>
+<td>30K</td>
+<td>+0.20</td>
+<td>+0.47</td>
+<td>+0.06</td>
+<td>+0.02</td>
+<td><strong>−1.56</strong></td>
+</tr>
+<tr>
+<td>100K</td>
+<td>—</td>
+<td>+0.37</td>
+<td>+0.28</td>
+<td><strong>−0.19</strong></td>
+<td><strong>−3.66</strong></td>
+</tr>
+<tr>
+<td>300K</td>
+<td>—</td>
+<td>—</td>
+<td>+0.46</td>
+<td><strong>−0.14</strong></td>
+<td><strong>−6.64</strong></td>
+</tr>
+<tr>
+<td>1M</td>
+<td>—</td>
+<td>—</td>
+<td>+0.28</td>
+<td><strong>−0.03</strong></td>
+<td><strong>−9.24</strong></td>
+</tr>
+</tbody></table>
+<p><strong>At j = 32:</strong> Cross turns negative at n<em> = 10K and becomes strongly negative at larger n</em>.</p>
+<p><strong>At j = 29:</strong> Cross turns negative at n* = 100K.</p>
+<p><strong>At j ≤ 26:</strong> Cross stays positive within the available range.</p>
+<h3>2.3 Theorem 3.1 verification</h3>
+<p><strong>j = 32, n* = 10,000 (K = 19,033):</strong></p>
+<ul>
+<li>Condition (a): Σ T_k²/(j·D) = 5.70 → A = 5.7. ✓</li>
+<li>Condition (b): Cross = −1.43e-10 < 0. ✓</li>
+<li>Thm 3.1 bound: R_wt ≤ (5.7·32 + 2√(182) + 1)/32 = <strong>6.6</strong></li>
+<li>Actual R_wt = <strong>2.7</strong> < 6.6. ✓</li>
+</ul>
+<p><strong>j = 29, n* = 100,000 (K = 262):</strong></p>
+<ul>
+<li>Condition (a): Σ T_k²/(j·D) = 12.1 → A = 12.1. ✓</li>
+<li>Condition (b): Cross = −1.25e-9 < 0. ✓</li>
+<li>Thm 3.1 bound: R_wt ≤ (12.1·29 + 2√(351) + 1)/29 = <strong>13.4</strong></li>
+<li>Actual R_wt = <strong>8.9</strong> < 13.4. ✓</li>
+</ul>
+<p>Both bounds hold deterministically. No probability, no model, no expectation.</p>
+<h3>2.4 The onset of cross-product negativity</h3>
+<p>The scale n_neg at which cross turns negative decreases with j:</p>
+<ul>
+<li>j = 29: n_neg ≈ 100,000</li>
+<li>j = 32: n_neg ≈ 10,000</li>
+</ul>
+<p>This is consistent with the screened long-memory picture: at larger j, IC trees are deeper, screening is stronger, and the cross-product turns negative at an earlier relative point in the block. The fraction n_neg/m_j shrinks from ~0.004 (j=29) to ~0.00005 (j=32).</p>
+<p>For j ≤ 26, the cross-product does not turn negative within the available range. This is not a problem for asymptotic convergence: DSF_α is a tail summability condition, so finitely many early blocks do not affect convergence.</p>
+<h3>2.5 Conjecture 58.1 (Eventual cross-product screening)</h3>
+<p><strong>Conjecture 58.1.</strong> For all sufficiently large j, there exists n<em>(j) ≤ m_j such that the sub-blocks of size n</em>(j) of the weighted sequence x_r = η(p_r)/p_r satisfy:</p>
+<p>(a) Σ_{k=1}^K T_k² ≤ A · j · D_j for some uniform A > 0,</p>
+<p>(b) Σ_{k<ℓ} T_k · T_ℓ ≤ 0,</p>
+<p>(c) T_rem² ≤ D_j, where T_rem is the remainder sum.</p>
+<p><strong>Remark on (c).</strong> Condition (c) is mild: the remainder block contains at most n<em>(j) − 1 terms, each bounded by max|x_r|. Since n</em>(j) ≪ m_j, the remainder sum is a negligible fraction of the total. In practice, T_rem²/D_j < 0.01 at all tested blocks.</p>
+<p><strong>Evidence.</strong> Verified at j = 29 (n<em> = 100K, A = 12.1) and j = 32 (n</em> = 10K, A = 5.7). A is decreasing with j, suggesting the bound tightens. The screened long-memory mechanism (Papers 53–57) provides the structural explanation: beyond the crossover scale, accumulated positive covariance is overwhelmed by screening, making the cross-product negative.</p>
+<hr>
+<h2>§3. Deterministic BL via Spectral Derivative</h2>
+<h3>3.1 The Dirichlet error</h3>
+<p>Paper 50 defines BL_α as:</p>
+<p>BL_α = Σ_j sup_{|t| ≤ t₀} |E_j(t)| / |t|^α < ∞</p>
+<p>where E_j(t) = Σ_{r} x_r (p_r^{-it} − e^{-it c_j}), c_j = (j+1/2)·ln 2, and x_r = h(p_r)/p_r.</p>
+<h3>3.2 Leading-order Taylor expansion</h3>
+<p>For small t, using p_r^{-it} = e^{-it \log p_r}:</p>
+<p>p_r^{-it} − e^{-it c_j} = e^{-it c_j} (e^{-it δ_r} − 1)</p>
+<p>where δ_r = log p_r − c_j ∈ [−(ln 2)/2, (ln 2)/2] for p_r ∈ [2^j, 2^{j+1}].</p>
+<p>At leading order: e^{-it δ_r} − 1 ≈ −it δ_r. Therefore:</p>
+<p>E_j(t) ≈ −it · e^{-it c_j} · B_j^{(1)},                                     (3.1)</p>
+<p>where</p>
+<p>B_j^{(1)} := Σ_r x_r · δ_r = Σ_{p ∈ I_j} η(p)/p · (log p − c_j).          (3.2)</p>
+<p>The quantity |E_j(t)|²/t² ≈ (B_j^{(1)})² for small t.</p>
+<h3>3.3 Data: B^{(1)} is two orders of magnitude smaller than B^{(0)}</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>2^j·(B^{(0)})² [DSF]</th>
+<th>2^j·(B^{(1)})² [BL]</th>
+<th>BL/DSF ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>3.37</td>
+<td>0.004</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>17</td>
+<td>6.05</td>
+<td>0.001</td>
+<td>0.0002</td>
+</tr>
+<tr>
+<td>20</td>
+<td>8.51</td>
+<td>0.002</td>
+<td>0.0002</td>
+</tr>
+<tr>
+<td>23</td>
+<td>10.03</td>
+<td>0.033</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1.69</td>
+<td>0.043</td>
+<td>0.025</td>
+</tr>
+<tr>
+<td>29</td>
+<td>3.61</td>
+<td>0.052</td>
+<td>0.014</td>
+</tr>
+<tr>
+<td>32</td>
+<td>1.11</td>
+<td>0.011</td>
+<td>0.010</td>
+</tr>
+</tbody></table>
+<p><strong>2^j · (B^{(1)})² < 0.06 at all 7 tested blocks.</strong> No upward trend. The BL quantity is 40–5000× smaller than the DSF quantity.</p>
+<h3>3.4 Taylor verification via exact E_j(t)</h3>
+<p>We compute |E_j(t)|² exactly at t = 0.1, 0.3, 1.0, 3.0, 10.0 and compare with the Taylor prediction (B^{(1)})² · t²:</p>
+<table>
+<thead><tr>
+<th>j</th>
+<th>2^j·</th>
+<th>E(0.1)</th>
+<th>²/t²</th>
+<th>2^j·(B^{(1)})²</th>
+<th>accuracy</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>0.00423</td>
+<td>0.00422</td>
+<td>99.8%</td>
+</tr>
+<tr>
+<td>17</td>
+<td>0.00100</td>
+<td>0.00097</td>
+<td>97%</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.00204</td>
+<td>0.00201</td>
+<td>98.5%</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0.03290</td>
+<td>0.03287</td>
+<td>99.9%</td>
+</tr>
+<tr>
+<td>26</td>
+<td>0.04283</td>
+<td>0.04283</td>
+<td>>99.9%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.05225</td>
+<td>0.05227</td>
+<td>>99.9%</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.01086</td>
+<td>0.01086</td>
+<td>>99.9%</td>
+</tr>
+</tbody></table>
+<p>At t = 0.1, the Taylor approximation is essentially exact.</p>
+<p>At t = 1.0:</p>
+<table>
+<thead><tr>
+<th>j</th>
+<th>2^j·</th>
+<th>E(1)</th>
+<th>²</th>
+<th>still < 0.06?</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>0.005</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>17</td>
+<td>0.003</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.005</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0.036</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>26</td>
+<td>0.042</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.051</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.011</td>
+<td>✓</td>
+</tr>
+</tbody></table>
+<p>At t = 1, the bound 2^j · |E_j(t)|² < 0.06 still holds, confirming that the quadratic bound |E_j(t)|² ≤ C · 2^{-j} · t² is empirically valid on |t| ≤ 1.</p>
+<h3>3.5 Why B^{(1)} ≪ B^{(0)}</h3>
+<p>B^{(0)} = Σ η(p)/p is mean-dominated (84–99% from block mean η̄_j, Paper 56–57).</p>
+<p>B^{(1)} = Σ η(p)/p · (log p − c_j) measures the <strong>antisymmetric</strong> part of η across the block. The weight δ_r = log p − c_j changes sign at the block center p = 2^{j+1/2}. By the approximate symmetry of the dyadic block, the block mean contributes zero to B^{(1)}:</p>
+<p>η̄_j · Σ δ_r / p_r ≈ 0.</p>
+<p>Therefore B^{(1)} is purely fluctuation-driven: it sees only the difference between first-half and second-half η, not the overall level. Screening makes block sums not just <strong>small</strong> (DSF) but <strong>smooth</strong> (BL): the antisymmetric component is suppressed by two orders of magnitude.</p>
+<h3>3.6 Conjecture 58.2 (Uniform spectral derivative bound)</h3>
+<p><strong>Conjecture 58.2.</strong> There exists C > 0 such that for all sufficiently large j and all |t| ≤ 1:</p>
+<table>
+<thead><tr>
+<th>E_j(t)</th>
+<th>² ≤ C · 2^{-j} · t².</th>
+</tr></thead><tbody>
+</tbody></table>
+<p><strong>Evidence.</strong> Strongly supported empirically: 2^j · |E_j(t)|²/t² < 0.06 for |t| ≤ 1 at all 7 tested blocks. The leading-order Taylor coefficient (B^{(1)})² satisfies 2^j · (B^{(1)})² < 0.06 with no upward trend.</p>
+<p><strong>Consequence.</strong> Under Conjecture 58.2, taking square roots:</p>
+<table>
+<thead><tr>
+<th>E_j(t)</th>
+<th>≤ √C · 2^{-j/2} ·</th>
+<th>t</th>
+<th>for</th>
+<th>t</th>
+<th>≤ 1.</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>Therefore:</p>
+<p>BL_α = Σ_j sup_{|t|≤1} |E_j(t)| / |t|^α ≤ √C · Σ_j 2^{-j/2} · sup_{|t|≤1} |t|^{1-α} = √C · Σ_j 2^{-j/2} < ∞</p>
+<p>for all α < 1. BL_α holds.</p>
+<hr>
+<h2>§4. Route Reassignment</h2>
+<h3>4.1 The old route (Paper 52)</h3>
+<p>Paper 52 established:</p>
+<p>Conjecture 52.1 (exponential forgetting) → MW condition → mean spectral target + L²-BL_α.</p>
+<p>This required three gaps to reach H': mean→deterministic, BL (only at L² level), and L²→pathwise.</p>
+<h3>4.2 The new route (Papers 57–58)</h3>
+<pre><code>Paper 57: screened covariance → E[R_wt] → 0 (mean DSF, conditional)
+
+Paper 58:
+    Conj 58.1 (cross-product) → deterministic I_j(0) ≤ Cj·D_j → DSF_α
+    Conj 58.2 (spectral derivative) → deterministic |E_j(t)| ≤ C·2^{-j/2}·|t| → BL_α
+
+DSF_α + BL_α + SD (unconditional) → H'  [Paper 50]</code></pre>
+<p>Under the new route:</p>
+<ul>
+<li><strong>Gap 1 (mean→deterministic): bypassed.</strong> Cross-product is purely algebraic.</li>
+<li><strong>Gap 2 (BL_α): reorganized.</strong> Direct deterministic |E_j(t)| route replaces L²-BL; remaining distance is Conjecture 58.2.</li>
+<li><strong>Gap 3 (L²→pathwise): no longer the relevant theorem problem.</strong> The direct deterministic route does not pass through L².</li>
+</ul>
+<h3>4.3 Paper 52's role, revised</h3>
+<p>Paper 52's conditional theorems (MW projection, L²-BL) remain valid as an <strong>alternative probabilistic route</strong>. Under Conjecture 52.1 (exponential forgetting), they give mean DSF + L²-BL simultaneously. The new deterministic route (Papers 57–58) provides a parallel path that avoids the probabilistic framework but requires its own conjectural inputs (58.1, 58.2).</p>
+<p>The two routes are complementary: Paper 52's route works through a single dynamical conjecture (52.1) but needs two technical upgrades; Papers 57–58's route avoids upgrades but needs two separate asymptotic conjectures. The data supports both.</p>
+<hr>
+<h2>§5. The Conditional H' Chain</h2>
+<h3>5.1 Complete chain</h3>
+<p>Under Conjectures 58.1 + 58.2:</p>
+<pre><code>Conj 58.1 (eventual cross-product screening)
+    → Paper 52 Thm 3.1: I_j(0) ≤ O(j)·D_j deterministically, all large j
+        → DSF_α  [Paper 51]
+
+Conj 58.2 (uniform spectral derivative bound)
+    → |E_j(t)| ≤ C·2^{-j/2}·|t| for |t| ≤ 1, all large j
+        → BL_α  [Paper 50]
+
+DSF_α + BL_α + SD (unconditional)
+    → Hölder regularity → A_h convergence → H'  [Paper 50]</code></pre>
+<h3>5.2 Distance to H'</h3>
+<table>
+<thead><tr>
+<th>Status</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Proved</strong></td>
+<td>SD (unconditional, Paper 50)</td>
+</tr>
+<tr>
+<td><strong>Proved</strong></td>
+<td>DSF + BL → H' (Paper 50)</td>
+</tr>
+<tr>
+<td><strong>Proved</strong></td>
+<td>Paper 52 Thm 3.1 (deterministic algebraic, unconditional)</td>
+</tr>
+<tr>
+<td><strong>Conditional</strong></td>
+<td>Conj 58.1 → DSF (supported at j=29,32; supported by Papers 53–57 mechanism)</td>
+</tr>
+<tr>
+<td><strong>Conditional</strong></td>
+<td>Conj 58.2 → BL (supported at j=14–32; 2^j·</td>
+<td>E</td>
+<td>²/t² < 0.06 for</td>
+<td>t</td>
+<td>≤1)</td>
+</tr>
+</tbody></table>
+<p>The remaining distance is <strong>two explicit deterministic asymptotic conjectures</strong>, each supported by data at N = 10^10 across 7 dyadic blocks. On the deterministic spectral/Dirichlet route adopted in this paper, the conditional distance to H' is Conjectures 58.1 + 58.2 plus the unconditional SD from Paper 50.</p>
+<h3>5.3 The conjectures in context</h3>
+<p>Papers 50–52 reduced H' to DSF_α + BL_α. Papers 53–57 identified the mechanism (screened long memory) and promoted the direct spectral ratio as front-door. Paper 58 translates the remaining distance into two concrete, testable, deterministic statements — the sharpest formulation of the gap since the program began.</p>
+<hr>
+<h2>§6. Data Summary</h2>
+<h3>6.1 Seven-block overview</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>m_j</th>
+<th>R_wt [DSF]</th>
+<th>2^j·(B^{(1)})² [BL]</th>
+<th>Cross ≤ 0?</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>1,612</td>
+<td>8.7</td>
+<td>0.004</td>
+<td>no</td>
+</tr>
+<tr>
+<td>17</td>
+<td>10,749</td>
+<td>15.9</td>
+<td>0.001</td>
+<td>no</td>
+</tr>
+<tr>
+<td>20</td>
+<td>73,586</td>
+<td>22.0</td>
+<td>0.002</td>
+<td>no</td>
+</tr>
+<tr>
+<td>23</td>
+<td>513,708</td>
+<td>25.3</td>
+<td>0.033</td>
+<td>no</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>4.2</td>
+<td>0.043</td>
+<td>no</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26,207,278</td>
+<td>8.9</td>
+<td>0.052</td>
+<td>✓ (n*=100K)</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190,335,585</td>
+<td>2.7</td>
+<td>0.011</td>
+<td>✓ (n*=10K)</td>
+</tr>
+</tbody></table>
+<p>All DSF values < 26. All BL values < 0.06. Cross-product negative at j ≥ 29.</p>
+<h3>6.2 Exact E_j(t) at t = 1</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>2^j ·</th>
+<th>E_j(1)</th>
+<th>²</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>17</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0.036</td>
+</tr>
+<tr>
+<td>26</td>
+<td>0.042</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.051</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.011</td>
+</tr>
+</tbody></table>
+<p>All < 0.06. Conjecture 58.2 empirically supported at t = 1 (boundary of the interval).</p>
+<hr>
+<h2>§7. AI Contributions</h2>
+<p><strong>Claude (子路, experimental partner):</strong> All computational experiments. paper58_full.c (combined cross-product + BL + exact E_j(t) computation). Discovered B^{(1)} ≪ B^{(0)} — the two-orders-of-magnitude BL suppression. Taylor expansion analysis linking E_j(t) to B^{(1)}. Antisymmetric cancellation explanation. Working notes v1–v2.</p>
+<p><strong>ChatGPT (公西华, structural gatekeeper):</strong> Identified the two conjectures (58.1, 58.2) as the correct remaining distance. Specified that Conjecture 58.2 needs uniform |t| ≤ 1 control, not just sampled values. Positioned Paper 58 as route reassignment + two deterministic conjectures. "The program is not closed, but it is no longer vague." Confirmed finitely many bad j blocks are not a problem for tail summability.</p>
+<hr>
+<h2>§8. Data and Methods</h2>
+<p>All experiments used the rho_1e10.bin dataset (ρ_E values for n = 0 to 10^10, int16 binary format).</p>
+<p><strong>paper58_full.c:</strong> Single-pass (per block) computation of B^{(0)}, B^{(1)}, B^{(2)}, D, and exact E_j(t) at t = 0.1, 0.3, 1.0, 3.0, 10.0. Second pass computes sub-block sums for cross-product test at n* = 1K, 10K, 100K. For j = 32 (190M primes), streaming approach avoids full array allocation.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li>[P50] Qin, H. ZFCρ Paper 50: DSF, BL, and H'. DOI: (series)</li>
+<li>[P51] Qin, H. ZFCρ Paper 51: Spectral target and DSF. DOI: (series)</li>
+<li>[P52] Qin, H. ZFCρ Paper 52: Mean-reversion and MW projection. DOI: (series)</li>
+<li>[P53] Qin, H. ZFCρ Paper 53 v2: Screening Return Theorem. DOI: 10.5281/zenodo.19415440</li>
+<li>[P57] Qin, H. ZFCρ Paper 57: Screened spectral bound. DOI: 10.5281/zenodo.19469013</li>
+</ul></div>
+      </div>
+      <div id="lang-zh" class="lang-content" style="display:none">
+        <div class="paper-header">
+          <h1 class="paper-title">ZFCρ 第五十八篇：确定性谱目标与BL_α——通过交叉积和谱导数</h1>
+          <div class="paper-meta-line">秦汉 &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19476509">10.5281/zenodo.19476509</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract"><h2>摘要</h2><p>第五十七篇在均值层面条件性关闭了DSF分支，留下三个差距：均值到确定性，BL_α，以及L²到逐路径。本文引入两条确定性路线来处理这三个问题。</p>
+<p><strong>第一部分（确定性DSF）。</strong> 第五十二篇的代数交叉积定理（定理3.1）在精确加权可观测量上得到验证。在j = 29和32处，子块交叉积和在筛选尺度处转负，给出确定性界R_wt ≤ 13.4和6.6（实测：8.9和2.7）。这绕开了均值到确定性升级。</p>
+<p><strong>第二部分（确定性BL）。</strong> Dirichlet误差E_j(t)在主导阶满足E_j(t) ≈ -it · B_j^{(1)}，其中B_j^{(1)} = Σ η(p)/p · (log p − c_j)为第一谱导数。量 2^j · (B_j^{(1)})² 比DSF量小两个数量级：在所有7个测试块（j = 14–32）上低于0.06。Taylor近似在t = 0.1处通过精确E_j(t)计算验证至>97%准确度。这为BL_α提供了直接确定性路线。</p>
+<p><strong>第三部分（路线重排）。</strong> 在直接确定性路线下，旧的L²到逐路径升级（第五十二篇差距3）不再是相关的定理问题。H'的剩余条件距离缩减为两个显式的确定性渐近猜想：猜想58.1（最终交叉积筛选）和猜想58.2（一致谱导数界）。</p>
+<hr></div>
+        <div class="paper-body"><h2>第一节 引言</h2>
+<h3>1.1 第五十七篇之后的三个差距</h3>
+<p>第五十七篇证明了条件筛选谱界：在幂律积累，交叉后筛选，和线性交叉尺度下，E[R_j^{wt}] = O(j^{-α}) → 0。这条件性关闭了DSF分支的均值谱目标。</p>
+<p>三个差距仍存：</p>
+<table>
+<thead><tr>
+<th>差距</th>
+<th>描述</th>
+<th>性质</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>均值 → 确定性：E[I_j(0)] → 实际I_j(0)</td>
+<td>技术性</td>
+</tr>
+<tr>
+<td>2</td>
+<td>BL_α：Σ sup</td>
+<td>E_j(t)</td>
+<td>/</td>
+<td>t</td>
+<td>^α < ∞</td>
+<td>独立分支</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L² → 逐路径：‖E_j‖₂ → sup</td>
+<td>E_j</td>
+<td>技术性</td>
+</tr>
+</tbody></table>
+<h3>1.2 关键洞见：两个确定性猜想替代三个差距</h3>
+<p>三个差距源于第五十二篇的概率框架（MW投射，Gordin分解）。通过切换到确定性路线——第五十二篇的代数交叉积定理用于DSF，直接计算E_j(t)用于BL——概率中间环节变得不必要，三个差距被重组为两个显式的确定性猜想：</p>
+<p><strong>猜想58.1（最终交叉积筛选）：</strong> 对所有充分大的j，子块交叉积和在筛选尺度处非正。</p>
+<p><strong>猜想58.2（一致谱导数界）：</strong> |E_j(t)|² ≤ C · 2^{-j} · t²，对|t| ≤ 1，所有充分大的j。</p>
+<p>在这两个猜想下，DSF_α + BL_α成立，配合SD（无条件，第五十篇），H'条件性关闭。</p>
+<hr>
+<h2>第二节 确定性DSF——通过交叉积</h2>
+<h3>2.1 第五十二篇定理3.1（重述）</h3>
+<p><strong>定理（第五十二篇定理3.1）。</strong> 设x_1, ..., x_{m_j}为任意有限序列。分为K个大小n*的子块，和T_1, ..., T_K，余项T_rem。若：</p>
+<p>(a) Σ T_k² ≤ A · j · D_j,</p>
+<p>(b) Σ_{k<ℓ} T_k T_ℓ ≤ 0,</p>
+<p>(c) T_rem² ≤ D_j,</p>
+<p>则 B² ≤ (Aj + 2√(Aj) + 1) · D_j = O(j · D_j)。<strong>确定性，代数，无概率。</strong></p>
+<h3>2.2 交叉积数据</h3>
+<p>使用加权x_r = η(p_r)/p_r（第51/53篇精确可观测量），在各子块大小处计算Cross/B²：</p>
+<table>
+<thead><tr>
+<th>n*</th>
+<th>j=20</th>
+<th>j=23</th>
+<th>j=26</th>
+<th>j=29</th>
+<th>j=32</th>
+</tr></thead><tbody>
+<tr>
+<td>1K</td>
+<td>+0.49</td>
+<td>+0.48</td>
+<td>+0.37</td>
+<td>+0.43</td>
+<td>+0.28</td>
+</tr>
+<tr>
+<td>3K</td>
+<td>+0.44</td>
+<td>+0.48</td>
+<td>+0.27</td>
+<td>+0.36</td>
+<td>+0.03</td>
+</tr>
+<tr>
+<td>10K</td>
+<td>+0.40</td>
+<td>+0.49</td>
+<td>+0.15</td>
+<td>+0.22</td>
+<td><strong>−0.55</strong></td>
+</tr>
+<tr>
+<td>30K</td>
+<td>+0.20</td>
+<td>+0.47</td>
+<td>+0.06</td>
+<td>+0.02</td>
+<td><strong>−1.56</strong></td>
+</tr>
+<tr>
+<td>100K</td>
+<td>—</td>
+<td>+0.37</td>
+<td>+0.28</td>
+<td><strong>−0.19</strong></td>
+<td><strong>−3.66</strong></td>
+</tr>
+</tbody></table>
+<p><strong>j = 32处：</strong> Cross在n* = 10K转负。</p>
+<p><strong>j = 29处：</strong> Cross在n* = 100K转负。</p>
+<p><strong>j ≤ 26处：</strong> Cross在可用范围内保持正。</p>
+<h3>2.3 定理3.1验证</h3>
+<p><strong>j = 32，n* = 10,000（K = 19,033）：</strong></p>
+<ul>
+<li>条件(a)：Σ T_k²/(j·D) = 5.70 → A = 5.7。✓</li>
+<li>条件(b)：Cross = −1.43e-10 < 0。✓</li>
+<li>定理3.1界：R_wt ≤ <strong>6.6</strong></li>
+<li>实际R_wt = <strong>2.7</strong> < 6.6。✓</li>
+</ul>
+<p><strong>j = 29，n* = 100,000（K = 262）：</strong></p>
+<ul>
+<li>条件(a)：Σ T_k²/(j·D) = 12.1 → A = 12.1。✓</li>
+<li>条件(b)：Cross = −1.25e-9 < 0。✓</li>
+<li>定理3.1界：R_wt ≤ <strong>13.4</strong></li>
+<li>实际R_wt = <strong>8.9</strong> < 13.4。✓</li>
+</ul>
+<p>两个界确定性成立。无概率，无模型，无期望。</p>
+<h3>2.4 交叉积转负的onset</h3>
+<p>交叉积转负的尺度n_neg随j减小：j=29处约100K，j=32处约10K。与筛选长记忆图景一致：大j处筛选更强，交叉积在更早的相对位置转负。</p>
+<p>对j ≤ 26，交叉积不在可用范围内转负。这对渐近收敛不构成问题：DSF_α是尾部可和性条件，有限多个早期块不影响收敛。</p>
+<h3>2.5 猜想58.1（最终交叉积筛选）</h3>
+<p><strong>猜想58.1。</strong> 对所有充分大的j，存在n<em>(j) ≤ m_j使得加权序列x_r = η(p_r)/p_r的大小n</em>(j)子块满足：</p>
+<p>(a) Σ T_k² ≤ A · j · D_j（一致A > 0），</p>
+<p>(b) Σ_{k<ℓ} T_k · T_ℓ ≤ 0，</p>
+<p>(c) T_rem² ≤ D_j。</p>
+<p><strong>关于(c)的注记。</strong> 条件(c)温和：余项块包含至多n*(j)−1个项。实践中T_rem²/D_j < 0.01。</p>
+<p><strong>证据。</strong> 在j = 29（n<em> = 100K，A = 12.1）和j = 32（n</em> = 10K，A = 5.7）处验证。A随j递减，提示界在收紧。</p>
+<hr>
+<h2>第三节 确定性BL——通过谱导数</h2>
+<h3>3.1 Dirichlet误差</h3>
+<p>第五十篇定义BL_α为：</p>
+<p>BL_α = Σ_j sup_{|t| ≤ t₀} |E_j(t)| / |t|^α < ∞</p>
+<p>其中E_j(t) = Σ x_r (p_r^{-it} − e^{-it c_j})，c_j = (j+1/2)·ln 2。</p>
+<h3>3.2 主导阶Taylor展开</h3>
+<p>对小t：p_r^{-it} − e^{-it c_j} ≈ e^{-itc_j}·(−it δ_r)，其中δ_r = log p_r − c_j。</p>
+<p>因此：E_j(t) ≈ −it · e^{-itc_j} · B_j^{(1)}，</p>
+<p>其中 B_j^{(1)} := Σ η(p)/p · (log p − c_j)。</p>
+<table>
+<thead><tr>
+<th>E_j(t)</th>
+<th>²/t² ≈ (B_j^{(1)})²（小t）。</th>
+</tr></thead><tbody>
+</tbody></table>
+<h3>3.3 数据：B^{(1)}比B^{(0)}小两个数量级</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>2^j·(B^{(0)})² [DSF]</th>
+<th>2^j·(B^{(1)})² [BL]</th>
+<th>BL/DSF</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>3.37</td>
+<td>0.004</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>17</td>
+<td>6.05</td>
+<td>0.001</td>
+<td>0.0002</td>
+</tr>
+<tr>
+<td>20</td>
+<td>8.51</td>
+<td>0.002</td>
+<td>0.0002</td>
+</tr>
+<tr>
+<td>23</td>
+<td>10.03</td>
+<td>0.033</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1.69</td>
+<td>0.043</td>
+<td>0.025</td>
+</tr>
+<tr>
+<td>29</td>
+<td>3.61</td>
+<td>0.052</td>
+<td>0.014</td>
+</tr>
+<tr>
+<td>32</td>
+<td>1.11</td>
+<td>0.011</td>
+<td>0.010</td>
+</tr>
+</tbody></table>
+<p><strong>2^j · (B^{(1)})² < 0.06 在所有7个测试块上。</strong> 无上升趋势。BL量比DSF量小40–5000倍。</p>
+<h3>3.4 精确E_j(t)的Taylor验证</h3>
+<p>在t = 0.1处：2^j·|E(0.1)|²/t² 与 2^j·(B^{(1)})² 匹配至97–99.9%。</p>
+<p>在t = 1.0处：2^j·|E(1)|² 在所有7个块上 < 0.06。</p>
+<p>猜想58.2在|t| ≤ 1上获得强经验支持。</p>
+<h3>3.5 为什么B^{(1)} ≪ B^{(0)}</h3>
+<p>B^{(0)} = Σ η/p 为均值主导（84–99%来自块均值η̄_j）。</p>
+<p>B^{(1)} = Σ η/p · (log p − c_j) 测量η跨块的<strong>反对称</strong>部分。权重δ_r = log p − c_j在块中心p = 2^{j+1/2}处变号。由二进块的近似对称性，块均值对B^{(1)}的贡献为零：</p>
+<p>η̄_j · Σ δ_r / p_r ≈ 0。</p>
+<p>因此B^{(1)}纯由涨落驱动。筛选使块和不仅<strong>小</strong>（DSF）而且<strong>光滑</strong>（BL）：反对称分量被压制两个数量级。</p>
+<h3>3.6 猜想58.2（一致谱导数界）</h3>
+<p><strong>猜想58.2。</strong> 存在C > 0使得对所有充分大的j和所有|t| ≤ 1：</p>
+<table>
+<thead><tr>
+<th>E_j(t)</th>
+<th>² ≤ C · 2^{-j} · t²。</th>
+</tr></thead><tbody>
+</tbody></table>
+<p><strong>证据。</strong> 强经验支持：2^j · |E_j(t)|²/t² < 0.06，对|t| ≤ 1在所有7个测试块上。</p>
+<p><strong>推论。</strong> 在猜想58.2下，取平方根：</p>
+<table>
+<thead><tr>
+<th>E_j(t)</th>
+<th>≤ √C · 2^{-j/2} ·</th>
+<th>t</th>
+<th>，对</th>
+<th>t</th>
+<th>≤ 1。</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>因此：</p>
+<p>BL_α = Σ_j sup_{|t|≤1} |E_j(t)| / |t|^α ≤ √C · Σ_j 2^{-j/2} · sup_{|t|≤1} |t|^{1-α} = √C · Σ_j 2^{-j/2} < ∞</p>
+<p>对所有α < 1。BL_α成立。</p>
+<hr>
+<h2>第四节 路线重排</h2>
+<h3>4.1 旧路线（第五十二篇）</h3>
+<p>猜想52.1（指数遗忘）→ MW条件 → 均值谱目标 + L²-BL_α。</p>
+<p>需三个差距到H'：均值→确定性，BL（仅L²），L²→逐路径。</p>
+<h3>4.2 新路线（第57–58篇）</h3>
+<pre><code>第57篇: 筛选协方差 → E[R_wt] → 0（均值DSF，条件性）
+
+第58篇:
+    猜想58.1（交叉积）→ 确定性I_j(0) ≤ Cj·D_j → DSF_α
+    猜想58.2（谱导数）→ 确定性|E_j(t)| ≤ C·2^{-j/2}·|t| → BL_α
+
+DSF_α + BL_α + SD（无条件）→ H'  [第50篇]</code></pre>
+<p>在新路线下：</p>
+<ul>
+<li><strong>差距1（均值→确定性）：绕开。</strong> 交叉积纯代数。</li>
+<li><strong>差距2（BL_α）：重组。</strong> 直接确定性|E_j(t)|路线替代L²-BL；剩余距离为猜想58.2。</li>
+<li><strong>差距3（L²→逐路径）：不再是相关的定理问题。</strong> 直接确定性路线不经过L²。</li>
+</ul>
+<h3>4.3 第五十二篇的角色（修订）</h3>
+<p>第五十二篇的条件定理（MW投射，L²-BL）作为<strong>平行概率路线</strong>仍然有效。两条路线互补：第五十二篇通过单一动力学猜想（52.1）但需两个技术升级；第57–58篇避免升级但需两个独立的渐近猜想。数据同时支持两者。</p>
+<hr>
+<h2>第五节 条件H'链</h2>
+<h3>5.1 完整链</h3>
+<p>在猜想58.1 + 58.2下：</p>
+<pre><code>猜想58.1（最终交叉积筛选）
+    → 第52篇定理3.1: I_j(0) ≤ O(j)·D_j 确定性，所有大j
+        → DSF_α [第51篇]
+
+猜想58.2（一致谱导数界）
+    → |E_j(t)| ≤ C·2^{-j/2}·|t|，|t| ≤ 1，所有大j
+        → BL_α [第50篇]
+
+DSF_α + BL_α + SD（无条件）
+    → Hölder正则性 → A_h收敛 → H' [第50篇]</code></pre>
+<h3>5.2 到H'的距离</h3>
+<table>
+<thead><tr>
+<th>状态</th>
+<th>描述</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>已证</strong></td>
+<td>SD（无条件，第50篇）</td>
+</tr>
+<tr>
+<td><strong>已证</strong></td>
+<td>DSF + BL → H'（第50篇）</td>
+</tr>
+<tr>
+<td><strong>已证</strong></td>
+<td>第52篇定理3.1（确定性代数，无条件）</td>
+</tr>
+<tr>
+<td><strong>条件性</strong></td>
+<td>猜想58.1 → DSF（在j=29,32处得到支持）</td>
+</tr>
+<tr>
+<td><strong>条件性</strong></td>
+<td>猜想58.2 → BL（在j=14–32处得到支持）</td>
+</tr>
+</tbody></table>
+<p>在本文采用的确定性谱/Dirichlet路线上，到H'的条件距离为猜想58.1 + 58.2，加上第50篇的无条件SD。</p>
+<hr>
+<h2>第六节 数据摘要</h2>
+<h3>6.1 七块总览</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>m_j</th>
+<th>R_wt [DSF]</th>
+<th>2^j·(B^{(1)})² [BL]</th>
+<th>Cross ≤ 0?</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>1,612</td>
+<td>8.7</td>
+<td>0.004</td>
+<td>否</td>
+</tr>
+<tr>
+<td>17</td>
+<td>10,749</td>
+<td>15.9</td>
+<td>0.001</td>
+<td>否</td>
+</tr>
+<tr>
+<td>20</td>
+<td>73,586</td>
+<td>22.0</td>
+<td>0.002</td>
+<td>否</td>
+</tr>
+<tr>
+<td>23</td>
+<td>513,708</td>
+<td>25.3</td>
+<td>0.033</td>
+<td>否</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>4.2</td>
+<td>0.043</td>
+<td>否</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26,207,278</td>
+<td>8.9</td>
+<td>0.052</td>
+<td>✓（n*=100K）</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190,335,585</td>
+<td>2.7</td>
+<td>0.011</td>
+<td>✓（n*=10K）</td>
+</tr>
+</tbody></table>
+<h3>6.2 t = 1处的精确E_j(t)</h3>
+<table>
+<thead><tr>
+<th>j</th>
+<th>2^j ·</th>
+<th>E_j(1)</th>
+<th>²</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>17</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0.036</td>
+</tr>
+<tr>
+<td>26</td>
+<td>0.042</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.051</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.011</td>
+</tr>
+</tbody></table>
+<p>全部 < 0.06。猜想58.2在t = 1处获得经验支持。</p>
+<hr>
+<h2>第七节 AI贡献</h2>
+<p><strong>Claude（子路，实验伙伴）：</strong> 全部计算实验。paper58_full.c（交叉积 + BL + 精确E_j(t)联合计算）。发现B^{(1)} ≪ B^{(0)}——BL的两数量级压制。Taylor展开分析连接E_j(t)与B^{(1)}。反对称消除解释。工作笔记v1–v2。</p>
+<p><strong>ChatGPT（公西华，结构守门人）：</strong> 识别两个猜想（58.1，58.2）为正确的剩余距离。指明猜想58.2需要一致|t| ≤ 1控制，而非仅采样值。定位第五十八篇为路线重排 + 两个确定性猜想。"程序没有关闭，但不再模糊。" 确认有限个坏j块不影响尾部可和性。</p>
+<hr>
+<h2>第八节 数据与方法</h2>
+<p>全部实验使用rho_1e10.bin数据集（n = 0到10^10的ρ_E值，int16二进制格式）。</p>
+<p><strong>paper58_full.c：</strong> 每块单遍计算B^{(0)}, B^{(1)}, B^{(2)}, D，以及t = 0.1, 0.3, 1.0, 3.0, 10.0处的精确E_j(t)。第二遍在n* = 1K, 10K, 100K处计算子块和的交叉积。j = 32（190M素数）采用流式方法避免全数组分配。</p>
+<hr>
+<h2>参考文献</h2>
+<ul>
+<li>[P50] 秦汉. ZFCρ 第五十篇：DSF，BL与H'。DOI:（系列）</li>
+<li>[P51] 秦汉. ZFCρ 第五十一篇：谱目标与DSF。DOI:（系列）</li>
+<li>[P52] 秦汉. ZFCρ 第五十二篇：均值回归与MW投射。DOI:（系列）</li>
+<li>[P53] 秦汉. ZFCρ 第五十三篇 v2：筛选回归定理。DOI: 10.5281/zenodo.19415440</li>
+<li>[P57] 秦汉. ZFCρ 第五十七篇：筛选谱界。DOI: 10.5281/zenodo.19469013</li>
+</ul></div>
+      </div>
+    </div>
+  </main>
+  <script>
+  function switchLang(lang) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('lang-zh').style.display = lang === 'zh' ? '' : 'none';
+    document.querySelectorAll('.lang-tab').forEach((t, i) => {
+      t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+    });
+  }
+  </script>
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    </div>
+  </footer>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>

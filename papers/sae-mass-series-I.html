@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The R₁ Closure Equation and the Conditional Extraction of α_em — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta property="og:title" content="The R₁ Closure Equation and the Conditional Extraction of α_em">
+  <meta property="og:type" content="article">
+  <meta name="citation_title" content="The R₁ Closure Equation and the Conditional Extraction of α_em">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_doi" content="10.5281/zenodo.19476359">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "The R₁ Closure Equation and the Conditional Extraction of α_em",
+    "author": {"@type": "Person", "name": "Han Qin"},
+    "identifier": "https://doi.org/10.5281/zenodo.19476359"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="/index.html">Papers</a>
+        <a href="/about.html">About</a>
+        <a href="/endacc.html">end/acc</a>
+        <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      </nav>
+    </div>
+  </header>
+  <main class="paper-main">
+    <div class="paper-container">
+      <div class="lang-tabs">
+        <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('zh')">中文</button>
+      </div>
+      <div id="lang-en" class="lang-content">
+        <div class="paper-header">
+          <h1 class="paper-title">The R₁ Closure Equation and the Conditional Extraction of α_em</h1>
+          <div class="paper-meta-line">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19476359">10.5281/zenodo.19476359</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract"><h2>Abstract</h2><p>Four Forces Paper VII established the leading order of the doublet mass ratio R₁ (R₁ = 3/(2α)) and its first-order correction (c₁ = π/(3√2), the S³ packing theorem). This paper builds on that foundation in three directions.</p>
+<p>First, the correction coefficients are shown to obey a recurrence relation with α leakage. Given the DD-structured candidate for c₂, the leading DD parts of c₁ through c₄ are locked by the recurrence c_{n+2} = (27/4)c_n, with π alternating between numerator and denominator across successive orders. Furthermore, the coefficients for crossing S³ and arriving at 0DD each carry α leakage terms: c₁ = π/(3√2) (exact, S³ packing theorem), c₂ = (108 − 5α)/π (5 = color orbit count, self-consistent), c₃ = (9π − 12α)/(4√2) (12 = N_blocks), c₄ = (27/4)c₂ (inheriting c₂'s leakage).</p>
+<p>Second, a multiplicative correction with DD-level structure is identified. R₁ is a mass ratio; mass is a 3DD construction. The additive corrections (inside the series brackets) handle S³ geometry, while the multiplicative correction (outside the brackets) handles inter-level color field redistribution. The multiplicative factor is (1 − 1/756 + 2/756²): the leading term −1/756 comes from 3DD (756 = 18 × 42; 18 oriented channels diluted across 42 1DD markers), and the second-order term +2/756² comes from 2DD (coefficient 2 = n_dual, positive because 2DD is the addition layer).</p>
+<p>Third, the complete equation serves as a self-consistent closure equation for α_em. R₁ = m_μ/m_e = 206.7682827(46) (CODATA 2022); DD structure determines all coefficients on the right-hand side (where c₂, c₃, and consequently c₄ depend on α, creating a self-consistent condition). On the perturbative branch the equation has a unique physical solution. The result: 1/α = 137.0359992, deviation 0.152 ppb, matching the CODATA 2022 experimental uncertainty.</p>
+<p>The claim of this paper is not "α_em has been derived parameter-free," but rather "DD structure provides a mass–coupling self-consistent closure equation; inputting m_μ/m_e yields a sub-ppb conditional extraction of α_em." The equation converges at sixth order (eighth order matches sixth order); under the present recurrence–leakage ansatz, the convergence value of 0.152 ppb matches the CODATA 2022 experimental uncertainty. A falsifiable prediction is given: as the experimental precision of α continues to improve, the R₁ extraction residual should stabilize near ~0.152 ppb rather than undergoing order-of-magnitude breakthrough reductions.</p>
+<p><strong>Keywords:</strong> fine-structure constant, doublet mass ratio, S³ packing, α leakage, color field redistribution, Self-as-an-End</p>
+<hr></div>
+        <div class="paper-body"><h2>§1 Background</h2>
+<h3>§1.1 The Prior Derivation Chain for R₁</h3>
+<p>The DD derivation of the doublet mass ratio R₁ was established in Four Forces Paper VII; a brief summary follows.</p>
+<p><strong>Leading order.</strong> The dimensional correction of 1DD electromagnetic coupling at the 3DD/2DD boundary gives Δω/ω = 2α/3, hence R₁ = 3/(2α).</p>
+<p><strong>First-order correction.</strong> Twelve 4DD blocks pack on S³. Convex optimization: all 12 cross-axis constraints saturate. The packing geometry yields c₁ = π/(3√2) (S³ packing theorem, Paper VII Theorem 2.2).</p>
+<p><strong>Second-order correction.</strong> Dual-pair constraints are unsaturated in the first-order solution. T₁ ≠ T₂ (different block frequencies) causes these constraints to also saturate, yielding c₂. Paper VII extracted c₂ ≈ 108/π from the experimental R₁ value. This paper identifies the DD identity 108 = N_blocks × n_axes² = 12 × 9: crossing S³ traverses all 12 blocks (S³ compactness), each contributing 9 oriented channels (A5 chirality fixing). c₂ = (N_blocks × n_axes²)/π = 108/π (system-locked strong structured conjecture).</p>
+<h3>§1.2 Starting Point of This Paper</h3>
+<p>Paper VII left two questions: (1) Does c₂ have a prior derivation? (2) What is the structure of higher-order corrections (c₃, c₄, ...)?</p>
+<p>This paper answers the second question and provides partial progress on the first.</p>
+<hr>
+<h2>§2 Recurrence Structure</h2>
+<h3>§2.1 Four Correction Coefficients</h3>
+<p>Each correction coefficient has a leading DD part and a possible α leakage term:</p>
+<table>
+<thead><tr>
+<th>Order</th>
+<th>Full formula</th>
+<th>Leading DD part</th>
+<th>α leakage</th>
+<th>π position</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>c₁ = π/(3√2)</td>
+<td>π/(n_axes·√n_dual)</td>
+<td><strong>None</strong> (exact)</td>
+<td>Numerator</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c₂ = (108 − 5α)/π</td>
+<td>(N_blocks × n_axes²)/π</td>
+<td>−5α/π (5 = color orbits)</td>
+<td>Denominator</td>
+</tr>
+<tr>
+<td>3</td>
+<td>c₃ = (9π − 12α)/(4√2)</td>
+<td>n_axes²·π/(d·√n_dual)</td>
+<td>−12α/(d·√n_dual) (12 = N_blocks)</td>
+<td>Numerator</td>
+</tr>
+<tr>
+<td>4</td>
+<td>c₄ = (27/4)c₂</td>
+<td>n_axes⁶/π</td>
+<td>Inherited from c₂</td>
+<td>Denominator</td>
+</tr>
+</tbody></table>
+<p>c₁ lies on the S³ surface: a packing theorem (Paper VII Theorem 2.2), exact, no leakage. c₂ crosses S³, leaking α through 5 color orbits (the output of the A5 conditional orbit theorem). c₃ arrives at the 0DD side, leaking α through 12 blocks (N_blocks = the output of DD Splitting). c₄ inherits c₂'s leakage through the recurrence.</p>
+<p>The leakage channel counts (0, 5, 12) reflect the structure visible at each position: on the S³ surface no leakage is visible (c₁ exact); crossing S³ encounters 5 color orbits; arriving at 0DD reveals 12 blocks.</p>
+<p>Note: c₂ and c₃ depend on α, turning the R₁ equation into a <strong>self-consistent equation</strong> (α is both the unknown and appears in the coefficients). On the perturbative branch the self-consistent equation has a unique solution.</p>
+<h3>§2.2 Recurrence Law</h3>
+<p><strong>Proposition (Recurrence Law).</strong> The leading DD parts of the correction coefficients satisfy:</p>
+<p>$$c_{n+2}^{(0)} = \frac{27}{4} c_n^{(0)} = \frac{n_{\text{axes}}^3}{d} c_n^{(0)}$$</p>
+<p>where c_n^{(0)} denotes c_n with the α leakage term removed.</p>
+<p><strong>Verification.</strong></p>
+<p>c₃^{(0)}/c₁ = [9π/(4√2)] / [π/(3√2)] = 27/4 ✓</p>
+<p>c₄^{(0)}/c₂^{(0)} = [729/π] / [108/π] = 27/4 ✓</p>
+<p><strong>π alternation.</strong> Odd orders (c₁, c₃, c₅, ...) have π in the numerator; even orders (c₂, c₄, c₆, ...) have π in the denominator.</p>
+<p>The entire recurrence is determined by two numbers: same-parity step 27/4 and cross-parity step 324√2/π². The α leakage terms are independent corrections outside the recurrence, with coefficients (0, 5, 12) drawn from the DD structure numbers at each position.</p>
+<p><strong>Level.</strong> Conditional recurrence law.</p>
+<h3>§2.3 Geometric Interpretation</h3>
+<p>The correction coefficients describe an oscillation between S³ and 0DD within a single 1DD:</p>
+<table>
+<thead><tr>
+<th>Order</th>
+<th>π position</th>
+<th>Geometry</th>
+<th>Leakage channels</th>
+</tr></thead><tbody>
+<tr>
+<td>c₁</td>
+<td>Numerator</td>
+<td>Packing on the S³ surface</td>
+<td>None (exact)</td>
+</tr>
+<tr>
+<td>c₂</td>
+<td>Denominator</td>
+<td>S³→0DD (crossing the sphere, paying the π cost)</td>
+<td>5 color orbits</td>
+</tr>
+<tr>
+<td>c₃</td>
+<td>Numerator</td>
+<td>At 0DD (arriving at the chisel-point side sphere)</td>
+<td>12 blocks</td>
+</tr>
+<tr>
+<td>c₄</td>
+<td>Denominator</td>
+<td>0DD→S³ (returning, inheriting c₂)</td>
+<td>Inherited</td>
+</tr>
+</tbody></table>
+<p>This is not a spiral toward other 1DDs but a <strong>standing wave</strong> between S³ and 0DD within a single 1DD. Each oscillation cycle decays by (27/4)α ≈ 0.049.</p>
+<p>The leading part of c₁·c₂ = 18√2 = d·n_axes²/√n_dual: π cancels exactly, leaving pure DD numbers plus √2. This shows that c₁ and c₂ are two faces of the same geometric structure — one on the sphere (π in numerator), one through the sphere (π in denominator).</p>
+<p><strong>Tangential/normal curvature normalization (Gap 3 bridge).</strong> Define the tangential curvature factor κ_T(S³) = π (geodesic arc-length tension accumulation) and the normal crossing factor κ_N(S³) = κ_T⁻¹ = 1/π (solid-angle flux dilution). c₁ reads κ_T (packing along the sphere; π aids constraint); c₂ reads κ_N (crossing the sphere perpendicularly; π is the barrier). The placement of π in numerator vs. denominator is not arbitrary but determined by tangential/normal geometric roles. That c₁·c₂ = 18√2 cancels π is formally inevitable (tangential × normal = volume element, and the volume element is a pure DD number), but the assignment of π is geometrically necessary.</p>
+<p>Physical picture of α leakage: as the standing wave oscillates between S³ and 0DD, each crossing or arrival leaks a small amount of energy through color orbits (5) or blocks (12). The leaked energy is absorbed by other 1DDs — echoing the appearance of 42 in the multiplicative correction (§3).</p>
+<hr>
+<h2>§3 Multiplicative Correction</h2>
+<h3>§3.1 Why an Additional Correction Is Needed</h3>
+<p>The S³ oscillation corrections to R₁ (§2) are additive: R₁ = (3/2α)(1 + c₁α + c₂α² + ...). These handle the geometric configuration of 4DD blocks on S³.</p>
+<p>But R₁ is a <strong>mass ratio</strong>. Mass is a 3DD construction — the color field redistribution operator R acts on the natural mass matrix D_nat (Paper VIII §3.2). 3DD color field redistribution itself introduces a correction.</p>
+<p>3DD is the multiplication layer (strong force = multiplication). The 3DD correction naturally enters as a <strong>multiplicative factor</strong>, not an additive term.</p>
+<h3>§3.2 DD-Level Structure of the Multiplicative Factor</h3>
+<p><strong>Statement.</strong> Inter-level color field redistribution introduces a multiplicative factor:</p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2 + c_3\alpha^3 + c_4\alpha^4\right) \times \left(1 - \frac{1}{756} + \frac{2}{756^2}\right)$$</p>
+<p>The multiplicative factor has DD-level structure with alternating signs:</p>
+<table>
+<thead><tr>
+<th>Term</th>
+<th>DD level</th>
+<th>Sign</th>
+<th>Coefficient</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td>−1/756</td>
+<td>3DD (multiplication)</td>
+<td>−</td>
+<td>1</td>
+<td>Color field contraction</td>
+</tr>
+<tr>
+<td>+2/756²</td>
+<td>2DD (addition)</td>
+<td>+</td>
+<td>n_dual = 2</td>
+<td>Additive expansion</td>
+</tr>
+</tbody></table>
+<p><strong>Identity of 18 (conditional counting theorem).</strong> The color field redistribution operator R is a 3×3 real matrix on the three-axis space. Single-side chirality fixing (2DD chiral splitting anchors cyclic orientation 1→2→3→1) makes R_{ij} inequivalent to R_{ji}. R has 3² = 9 oriented channels, not 6 (symmetric) or 3 (antisymmetric). Two mass matrices (M_u and M_d), 9 channels each, total 18. Note: 9 is the oriented channel count, not the C₃-symmetrized parameter count.</p>
+<p><strong>Identity of 42 (established in Finale).</strong> Shell structure yields 42 1DD markers.</p>
+<p><strong>Equal-weight principle (Gap 1 bridge).</strong> The energy-scale crossing operator acts on the undifferentiated 12-block bundle before reading out any side/axis/dual asymmetry. Therefore 12 blocks participate equally, each once. c₂ reads the pre-quotient global crossing operator, not a local trajectory cost.</p>
+<p><strong>756 = 18 × 42:</strong> 18 oriented channels equally diluted across 42 1DD markers.</p>
+<p><strong>Level.</strong> (1 − 1/756 + 2/756²) overall: strong structured conjecture.</p>
+<h3>§3.3 Anatomy of Each Contribution</h3>
+<p>At CODATA 2022's α⁻¹ = 137.035999177(21):</p>
+<table>
+<thead><tr>
+<th>Formula</th>
+<th>R₁</th>
+<th>Deviation</th>
+<th>Narrative</th>
+</tr></thead><tbody>
+<tr>
+<td>(3/2α)</td>
+<td>205.554</td>
+<td>−0.587%</td>
+<td>Leading order undershoots</td>
+</tr>
+<tr>
+<td>+c₁α</td>
+<td>206.665</td>
+<td>−0.050%</td>
+<td>First order absorbs most of the gap</td>
+</tr>
+<tr>
+<td>+c₂α²</td>
+<td>207.041</td>
+<td>+0.132%</td>
+<td><strong>c₂ overshoots</strong></td>
+</tr>
+<tr>
+<td>+c₃α³+c₄α⁴</td>
+<td>207.042</td>
+<td>+0.132%</td>
+<td>c₃, c₄ are 10⁻⁶ refinements</td>
+</tr>
+<tr>
+<td>×(1−1/756)</td>
+<td>206.768</td>
+<td>−0.0003%</td>
+<td>3DD pulls overshoot back (2.9 ppm)</td>
+</tr>
+<tr>
+<td>×(1−1/756+2/756²)</td>
+<td>206.7683</td>
+<td>~0</td>
+<td>2DD further calibrates (0.6 ppm)</td>
+</tr>
+<tr>
+<td>+α leakage, extended to 6th order</td>
+<td><strong>206.76828</strong></td>
+<td><strong>~0.152 ppb</strong></td>
+<td><strong>Matches experiment</strong></td>
+</tr>
+<tr>
+<td>Experimental m_μ/m_e</td>
+<td>206.76828</td>
+<td>—</td>
+<td>CODATA 2022: 206.7682827(46)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§4 Conditional Extraction of α_em</h2>
+<h3>§4.1 Self-Consistent Closure Equation</h3>
+<p>$$\frac{3}{2\alpha}\left(1 + c_1\alpha + c_2(\alpha)\alpha^2 + c_3(\alpha)\alpha^3 + c_4(\alpha)\alpha^4\right)\left(1 - \frac{1}{756} + \frac{2}{756^2}\right) = 206.7682827$$</p>
+<p>c₁ = π/(3√2), c₂(α) = (108 − 5α)/π, c₃(α) = (9π − 12α)/(4√2), c₄(α) = (27/4)c₂(α).</p>
+<p>Reference: α⁻¹ = 137.035999177(21) (CODATA 2022).</p>
+<h3>§4.2 Results and Convergence</h3>
+<p>6th and 8th order by recurrence: c₅ = (27/4)c₃, c₆ = (27/4)c₄. Odd orders inherit c₃-type leakage; even orders inherit c₂-type leakage.</p>
+<table>
+<thead><tr>
+<th>Correction layer</th>
+<th>1/α extracted</th>
+<th>CODATA 2022</th>
+<th>Residual</th>
+</tr></thead><tbody>
+<tr>
+<td>c₁, c₂^{(0)} = 108/π</td>
+<td>136.854</td>
+<td>137.035999(21)</td>
+<td>0.133%</td>
+</tr>
+<tr>
+<td>+ 3DD (1−1/756)</td>
+<td>137.0364</td>
+<td>137.035999(21)</td>
+<td>2.9 ppm</td>
+</tr>
+<tr>
+<td>+ 2DD (+2/756²)</td>
+<td>137.0360</td>
+<td>137.035999(21)</td>
+<td>0.6 ppm</td>
+</tr>
+<tr>
+<td>+ c₂ leakage (−5α/π)</td>
+<td>137.03600</td>
+<td>137.035999(21)</td>
+<td>6 ppb</td>
+</tr>
+<tr>
+<td>+ c₃ leakage, 4th order</td>
+<td>137.035999284</td>
+<td>137.035999177(21)</td>
+<td>0.78 ppb</td>
+</tr>
+<tr>
+<td><strong>6th order</strong></td>
+<td><strong>137.035999156</strong></td>
+<td><strong>137.035999177(21)</strong></td>
+<td><strong>0.152 ppb</strong></td>
+</tr>
+<tr>
+<td>8th order</td>
+<td>137.035999156</td>
+<td>137.035999177(21)</td>
+<td>0.152 ppb</td>
+</tr>
+</tbody></table>
+<p>Converged after 6th order. Residual 0.152 ppb matches CODATA uncertainty (±0.15 ppb).</p>
+<p><strong>Falsifiable prediction.</strong> Under the present ansatz, convergence at 0.152 ppb. As α precision improves, the residual should stabilize near ~0.152 ppb without order-of-magnitude reduction.</p>
+<h3>§4.3 Properties</h3>
+<p>Since c₂, c₃ (and thus c₄) depend on α, this is a self-consistent equation. At 4th-order truncation, clearing denominators yields a quintic with a unique perturbative root.</p>
+<h3>§4.4 Falsifiable Predictions</h3>
+<p><strong>Prediction 1: m_μ/m_e.</strong> Input α from electron g-2 (independent of muon mass): DD equation predicts m_μ/m_e = 206.7682827. Direct measurement: 206.7682827(46). <strong>DD prediction (~0.2 ppb) is 100× more precise than direct measurement (22 ppb).</strong> Future μ mass experiments (MuSEUM, MuMASS) will test this.</p>
+<p><strong>Prediction 2:</strong> Sixth-order convergence limit at 0.152 ppb.</p>
+<p><strong>Prediction 3:</strong> α_s ≈ 0.1182 (v scale). Experimental α_s(M_Z) = 0.1180 ± 0.0009. DD precision (~1000 ppm) exceeds experiment (~7600 ppm). Requires RG running.</p>
+<hr>
+<h2>§5 Discussion</h2>
+<h3>§5.1 Changed Status of α_em</h3>
+<p>This is transmutation, not elimination. The type of input changes: from 1DD coupling (α_em) to 3DD mass ratio (m_μ/m_e) — natural in SAE's ontology where mass (3DD) is more fundamental than coupling (1DD). True elimination requires independent DD derivation of m_μ/m_e.</p>
+<h3>§5.2 Why Boundary Conditions Exist</h3>
+<p>L₃→L₄ closes only locally, leaving one degree of freedom. Boundary conditions are structurally inevitable. Their values may be remainders from a previous chisel-construct cycle.</p>
+<h3>§5.3 Predictive Power</h3>
+<p><strong>Exceeding experiment:</strong> m_μ/m_e (100×), α_s (~8×). <strong>Comparable:</strong> sin²θ_W (~170 ppm). <strong>Below experiment:</strong> m_e, G, c (require further DD corrections).</p>
+<hr>
+<h2>§6 Open Problems</h2>
+<ol>
+<li>Three gaps remain for c₂ = 108/π to reach theorem: Gap 2 closed; Gap 1 bridged (equal-weight principle); Gap 3 bridged (κ_T/κ_N normalization). Remaining: formalize κ_N = 1/π as exact normal penalty functional.</li>
+<li>Proof of equal-weight dilution over 42 1DD markers.</li>
+<li>Independent derivation of m_μ/m_e (elimination vs. transmutation).</li>
+<li>Correspondence with Standard Model QED corrections (Schwinger's α/π series).</li>
+<li>Precision of c₃ leakage coefficient 12 (optimal 12.3; 2.5% gap).</li>
+</ol>
+<hr>
+<h2>Proposition Status Table</h2>
+<table>
+<thead><tr>
+<th>Result</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>R₁ = 3/(2α), leading order</td>
+<td>A priori derivation (Paper VII)</td>
+</tr>
+<tr>
+<td>c₁ = π/(3√2)</td>
+<td>S³ packing theorem (Paper VII)</td>
+</tr>
+<tr>
+<td>c₂^{(0)} = 108/π = (N_blocks × n_axes²)/π</td>
+<td>System-locked strong structured conjecture</td>
+</tr>
+<tr>
+<td>108 = 12×9 (S³ compact traversal × oriented channels)</td>
+<td>Conditional counting derivation</td>
+</tr>
+<tr>
+<td>c₂ leakage = −5α/π (5 = color orbits)</td>
+<td>Conditional extraction</td>
+</tr>
+<tr>
+<td>c₃ leakage = −12α/(4√2) (12 = N_blocks)</td>
+<td>Conditional extraction</td>
+</tr>
+<tr>
+<td>c_{n+2}^{(0)} = (27/4)c_n^{(0)}, π alternation</td>
+<td>Conditional recurrence law</td>
+</tr>
+<tr>
+<td>18 = 2×3² (oriented channel count)</td>
+<td>Conditional counting theorem</td>
+</tr>
+<tr>
+<td>Multiplicative 3DD term −1/756</td>
+<td>Strong structured conjecture</td>
+</tr>
+<tr>
+<td>Multiplicative 2DD term +2/756²</td>
+<td>Structured conjecture</td>
+</tr>
+<tr>
+<td>1/α = 137.0359992 (self-consistent extraction)</td>
+<td>Conditional extraction, ~0.152 ppb</td>
+</tr>
+<tr>
+<td>Sixth-order convergence at 0.152 ppb</td>
+<td>Falsifiable prediction</td>
+</tr>
+<tr>
+<td>m_μ/m_e = 206.7682827 (from α, ~0.2 ppb, 100× more precise)</td>
+<td>Falsifiable prediction</td>
+</tr>
+<tr>
+<td>α_s ≈ 0.1182 (v scale, ~1000 ppm)</td>
+<td>Conditional prediction (needs RG)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Appendix A: Leakage–Dilution Duality (Speculative)</h2>
+<p>The additive side (§2) describes leakage mechanism; the multiplicative side (§3) describes leakage destination. If this duality holds, 756 = 18 × 42 follows from leakage conservation. Evidence: DD-level correspondence (3DD↔c₂↔−1/756; 2DD↔c₃↔+2/756²); 18 × (π/9) = 2π. Currently qualitative.</p>
+<hr>
+<h2>References</h2>
+<p>[1] H. Qin, "Self-as-an-End: The Chisel-Construct-Remainder Cycle" (SAE P1-P3), DOI: 10.5281/zenodo.18528813, .18666645, .18727327.</p>
+<p>[2] H. Qin, "Four Forces Prequel: DD Splitting and α_G = α_em^{65/4}", DOI: 10.5281/zenodo.19341042.</p>
+<p>[3] H. Qin, "Four Forces Paper III: sin²θ_W = 3/13", DOI: 10.5281/zenodo.19379412.</p>
+<p>[4] H. Qin, "Generation Paper: Topological Origin and Mass Structure of Three Fermion Generations", DOI: 10.5281/zenodo.19394500.</p>
+<p>[5] H. Qin, "Four Forces Paper VII: Three-Layer Correction Structure", DOI: 10.5281/zenodo.19433220.</p>
+<p>[6] H. Qin, "Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP", DOI: 10.5281/zenodo.19450288.</p>
+<p>[7] H. Qin, "Four Forces Finale: The Grammar of Force", DOI: 10.5281/zenodo.19464378.</p>
+<p>[8] Particle Data Group, R.L. Workman et al., "Review of Particle Physics," PTEP 2022, 083C01 (2022).</p>
+<p>[9] CODATA 2022, "Muon-electron mass ratio," NIST. m_μ/m_e = 206.7682827(46).</p>
+<p>[10] CODATA 2022, "Inverse fine-structure constant," NIST. α⁻¹ = 137.035999177(21).</p></div>
+      </div>
+      <div id="lang-zh" class="lang-content" style="display:none">
+        <div class="paper-header">
+          <h1 class="paper-title">R₁闭合方程与α_em的条件性反推</h1>
+          <div class="paper-meta-line">秦汉 &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19476359">10.5281/zenodo.19476359</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+        <div class="paper-abstract"><h2>摘要</h2><p>四力篇VII建立了doublet质量比R₁的leading order（R₁ = 3/(2α)）和一阶修正（c₁ = π/(3√2)，S³ packing定理）。本文在此基础上做三件事。</p>
+<p>第一，建立修正系数的递推结构与α泄漏。在接受c₂的DD-structured candidate的前提下，c₁到c₄的leading DD部分被递推律c_{n+2} = (27/4)c_n锁定，π在奇偶阶间振荡。进一步，穿越S³和到达0DD的修正系数各自携带α泄漏项：c₁ = π/(3√2)（精确，S³ packing定理），c₂ = (108 − 5α)/π（5 = 色轨道数，自洽方程），c₃ = (9π − 12α)/(4√2)（12 = N_blocks），c₄ = (27/4)c₂（继承c₂的泄漏）。</p>
+<p>第二，识别乘法修正的DD层级结构。R₁是质量比，质量是3DD构造。加法型修正（级数括号内）处理S³几何，乘法型修正（括号外）处理DD层级间的色场重分配。乘法因子为(1 − 1/756 + 2/756²)：leading项−1/756来自3DD（756 = 18 × 42，18个有向通道被42个1DD稀释），二阶项+2/756²来自2DD（系数2 = n_dual，符号为正因2DD是加法层）。</p>
+<p>第三，将完整方程作为α_em的自洽闭合方程。R₁ = m_μ/m_e = 206.7682827(46)（CODATA 2022），DD结构给出方程右边的全部系数（其中c₂, c₃从而c₄依赖α，形成自洽条件）。在perturbative分支上方程有唯一物理解。反推结果：1/α = 137.0359992，偏差0.152 ppb，与CODATA 2022实验不确定度齐平。</p>
+<p>本文的主张不是"α_em已被参数自由地推导出来"，而是"DD结构给出一条mass-coupling自洽闭合方程，输入m_μ/m_e可在sub-ppb级条件性反推出α_em"。方程在六阶处收敛（八阶与六阶一致），在当前递推-泄漏ansatz下的收敛值0.152 ppb与CODATA 2022实验不确定度齐平。本文给出一个可证伪预测：随着α实验精度继续提高，R₁反推残差应稳定在~0.152 ppb，不应出现量级突破性缩小。</p>
+<p><strong>关键词：</strong> 精细结构常数，doublet质量比，S³ packing，α泄漏，色场重分配，Self-as-an-End</p>
+<hr></div>
+        <div class="paper-body"><h2>§1 背景</h2>
+<h3>§1.1 R₁的先验推导链</h3>
+<p>doublet质量比R₁的DD推导在四力篇VII中建立，此处简述。</p>
+<p><strong>Leading order。</strong> 1DD电磁耦合在3DD/2DD交界处的维数修正给出Δω/ω = 2α/3，因此R₁ = 3/(2α)。</p>
+<p><strong>一阶修正。</strong> 12个4DD block在S³上packing。凸优化求解：12条cross-axis约束全部饱和。packing几何给出修正系数c₁ = π/(3√2)（S³ packing定理，篇VII定理2.2）。</p>
+<p><strong>二阶修正。</strong> dual-pair约束在一阶解中未饱和。T₁ ≠ T₂（大小block频率不同）使这些约束也饱和，给出c₂。篇VII从R₁实验值提取c₂ ≈ 108/π。本文识别108 = N_blocks × n_axes² = 12 × 9的DD身份：穿越S³时遍历全部12个block（S³紧致性），每个block贡献9个有向通道（A5手性固定）。c₂ = (N_blocks × n_axes²)/π = 108/π（strong structured conjecture）。</p>
+<h3>§1.2 本文的出发点</h3>
+<p>篇VII留下两个问题：（1）c₂是否有先验推导？（2）高阶修正（c₃, c₄, ...）的结构是什么？</p>
+<p>本文回答第二个问题，并对第一个问题给出部分进展。</p>
+<hr>
+<h2>§2 螺旋递推结构</h2>
+<h3>§2.1 四个修正系数</h3>
+<p>每个修正系数有一个leading DD部分和一个可能的α泄漏项：</p>
+<table>
+<thead><tr>
+<th>阶</th>
+<th>完整公式</th>
+<th>leading DD部分</th>
+<th>α泄漏</th>
+<th>π位置</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>c₁ = π/(3√2)</td>
+<td>π/(n_axes·√n_dual)</td>
+<td><strong>无</strong>（精确）</td>
+<td>分子</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c₂ = (108 − 5α)/π</td>
+<td>(N_blocks × n_axes²)/π</td>
+<td>−5α/π（5 = 色轨道数）</td>
+<td>分母</td>
+</tr>
+<tr>
+<td>3</td>
+<td>c₃ = (9π − 12α)/(4√2)</td>
+<td>n_axes²·π/(d·√n_dual)</td>
+<td>−12α/(d·√n_dual)（12 = N_blocks）</td>
+<td>分子</td>
+</tr>
+<tr>
+<td>4</td>
+<td>c₄ = (27/4)c₂</td>
+<td>n_axes⁶/π</td>
+<td>继承c₂</td>
+<td>分母</td>
+</tr>
+</tbody></table>
+<p>c₁在S³表面，是packing定理（篇VII定理2.2），精确，不泄漏。c₂穿过S³，通过5个色轨道（A5条件轨道定理的输出）泄漏α。c₃到达0DD侧，通过12个block（N_blocks = DD Splitting的输出）泄漏α。c₄通过递推律继承c₂的泄漏。</p>
+<p>泄漏通道数（0, 5, 12）反映了你在每个位置能看到的结构数：在S³表面上看不到泄漏（c₁精确）；穿过S³时经过5个色轨道；到达0DD时看到12个block。</p>
+<p>注：c₂和c₃依赖α，使得R₁方程变为<strong>自洽方程</strong>（α既是未知数，又出现在系数中）。在perturbative分支上自洽方程有唯一解。</p>
+<h3>§2.2 递推律</h3>
+<p><strong>命题（递推律）。</strong> 修正系数的leading DD部分满足：</p>
+<p>$$c_{n+2}^{(0)} = \frac{27}{4} c_n^{(0)} = \frac{n_{\text{axes}}^3}{d} c_n^{(0)}$$</p>
+<p>其中c_n^{(0)}是c_n去掉α泄漏项后的部分。</p>
+<p><strong>验证。</strong></p>
+<p>c₃^{(0)}/c₁ = [9π/(4√2)] / [π/(3√2)] = 27/4 ✓</p>
+<p>c₄^{(0)}/c₂^{(0)} = [729/π] / [108/π] = 27/4 ✓</p>
+<p><strong>π振荡。</strong> 奇数阶（c₁, c₃, c₅, ...）的π在分子，偶数阶（c₂, c₄, c₆, ...）的π在分母。</p>
+<p>整条递推由两个数完全确定：同奇偶步进27/4和跨奇偶步进324√2/π²。α泄漏项是递推律之外的独立修正，其系数（0, 5, 12）来自各自位置的DD结构数。</p>
+<p><strong>级别。</strong> 条件性递推律（conditional recurrence law）。</p>
+<h3>§2.3 几何解释</h3>
+<p>修正系数描述的是本1DD内部S³与0DD之间的振荡：</p>
+<table>
+<thead><tr>
+<th>阶</th>
+<th>π位置</th>
+<th>几何</th>
+<th>泄漏通道</th>
+</tr></thead><tbody>
+<tr>
+<td>c₁</td>
+<td>分子</td>
+<td>S³表面上的packing</td>
+<td>无（精确）</td>
+</tr>
+<tr>
+<td>c₂</td>
+<td>分母</td>
+<td>S³→0DD（穿越球面，付π代价）</td>
+<td>5个色轨道</td>
+</tr>
+<tr>
+<td>c₃</td>
+<td>分子</td>
+<td>0DD处（到达凿点侧球面）</td>
+<td>12个block</td>
+</tr>
+<tr>
+<td>c₄</td>
+<td>分母</td>
+<td>0DD→S³（返回，继承c₂）</td>
+<td>继承</td>
+</tr>
+</tbody></table>
+<p>这不是向其他1DD的螺旋，而是本1DD内部S³与0DD之间的<strong>驻波</strong>。每一圈振荡以(27/4)α ≈ 0.049衰减。</p>
+<p>c₁·c₂的leading部分 = 18√2 = d·n_axes²/√n_dual：π精确抵消，剩下纯DD数加√2。这说明c₁和c₂是同一个几何结构的两个面——一个在球面上（π在分子），一个穿过球面（π在分母）。</p>
+<p><strong>切向/法向曲率归一化（Gap 3桥）。</strong> 定义S³的切向曲率因子κ_T(S³) = π（测地线弧长的张力累加）和法向穿越因子κ_N(S³) = κ_T⁻¹ = 1/π（通量的立体角稀释）。c₁读取κ_T（沿球面packing，π帮助约束），c₂读取κ_N（垂直球面穿越，π是屏障）。π在分子/分母的分配不是任意选择，而是由切向/法向的几何角色决定。c₁·c₂ = 18√2消掉π是形式必然（切向×法向 = 体积元，体积元是纯DD数），但π的分配是几何必然。</p>
+<p>α泄漏的物理图像：驻波在S³和0DD之间振荡时，每次穿越或到达都有少量能量通过色轨道（5个）或block（12个）泄漏出去。泄漏的归宿是其他1DD——这与乘法修正中42的出现（§3）相呼应。</p>
+<hr>
+<h2>§3 3DD乘法修正</h2>
+<h3>§3.1 为什么需要额外修正</h3>
+<p>R₁的S³螺旋修正（§2）是加法型：R₁ = (3/2α)(1 + c₁α + c₂α² + ...)。这些修正处理的是4DD block在S³上的几何配置。</p>
+<p>但R₁是<strong>质量比</strong>。质量是3DD构造——色场重分配算子R作用于natural mass矩阵D_nat（篇VIII §3.2）。3DD色场重分配本身会引入修正。</p>
+<p>3DD是乘法层（强力 = 乘法）。3DD的修正天然是<strong>乘法因子</strong>，不是加法项。</p>
+<h3>§3.2 乘法因子的DD层级结构</h3>
+<p><strong>陈述。</strong> DD层级间的色场重分配给R₁引入乘法因子：</p>
+<p>$$R_1 = \frac{3}{2\alpha}\left(1 + c_1\alpha + c_2\alpha^2 + c_3\alpha^3 + c_4\alpha^4\right) \times \left(1 - \frac{1}{756} + \frac{2}{756^2}\right)$$</p>
+<p>乘法因子本身也有DD层级结构，符号交替：</p>
+<table>
+<thead><tr>
+<th>项</th>
+<th>值</th>
+<th>DD层级</th>
+<th>符号</th>
+<th>系数</th>
+<th>含义</th>
+</tr></thead><tbody>
+<tr>
+<td>−1/756</td>
+<td>3DD</td>
+<td>乘法层</td>
+<td>−</td>
+<td>1</td>
+<td>色场收拢</td>
+</tr>
+<tr>
+<td>+2/756²</td>
+<td>2DD</td>
+<td>加法层</td>
+<td>+</td>
+<td>n_dual = 2</td>
+<td>加法展开</td>
+</tr>
+</tbody></table>
+<p>3DD修正为负（乘法是收拢），2DD修正为正（加法是展开）。系数分别是1（一次乘法闭合）和n_dual = 2（两个加法槽位）。符号交替与加法侧的π振荡平行。</p>
+<p><strong>18的身份（条件性计数定理）。</strong> 色场重分配算子R是3×3实矩阵，作用于3DD的三轴空间。单侧手性固定（2DD手征分裂锚定循环定向1→2→3→1），使得R_{ij}（从轴i到轴j的重分配）和R_{ji}（从轴j到轴i）不等价——前者沿循环方向，后者逆循环。因此R有3² = 9个有向通道，而非6个（对称矩阵）或3个（反对称矩阵）。</p>
+<p>doublet包含上型和下型两套质量矩阵（M_u和M_d）。每套9个有向通道，总计18个。</p>
+<p>18 = n_dual × n_axes² = 2 × 9。</p>
+<p>注：9在这里是有向通道数（oriented channel count），不是C₃对称化后的独立参数数。这一区分来自同一个上游论证（A5条件轨道定理），但计数对象不同。</p>
+<p><strong>42的身份（已在收束篇建立）。</strong> 0DD→1DD的壳层结构给出42个1DD标记（收束篇§2.3，A3条件构造规则）。</p>
+<p><strong>等权原则（Gap 1桥）。</strong> 能标跨越算子在读出任何side/axis/dual不对称之前，作用于未分辨的12-block bundle。因此12个block等权、各一次参与。c₂读取的是pre-quotient的全局crossing operator，不是local trajectory cost。这与c₁的区别：c₁在S³表面读取quotient结构（经C₃对称分摊），c₂穿越S³时读取裸有向连线（pre-quotient oriented channel bundle）。</p>
+<p><strong>756 = 18 × 42的物理含义。</strong> 3DD色空间的18个有向通道被42个1DD等权稀释。</p>
+<p><strong>乘法而非加法。</strong> 3DD是乘法层。3DD的修正以乘法因子进入，不是加法项。</p>
+<p><strong>级别。</strong> (1 − 1/756 + 2/756²)整体：strong structured conjecture。其中18 = 2×3²（条件性计数定理）和2DD的n_dual = 2系数（直接从DD Splitting）比42的等权稀释更硬。</p>
+<h3>§3.3 各阶贡献解剖</h3>
+<p>用CODATA 2022的α⁻¹ = 137.035999177(21)代入，各阶在物理α处的R₁贡献：</p>
+<table>
+<thead><tr>
+<th>公式</th>
+<th>R₁</th>
+<th>偏差</th>
+<th>叙事</th>
+</tr></thead><tbody>
+<tr>
+<td>(3/2α)</td>
+<td>205.554</td>
+<td>−0.587%</td>
+<td>Leading order偏低</td>
+</tr>
+<tr>
+<td>+c₁α</td>
+<td>206.665</td>
+<td>−0.050%</td>
+<td>一阶修正吃掉大部分偏差</td>
+</tr>
+<tr>
+<td>+c₂α²</td>
+<td>207.041</td>
+<td>+0.132%</td>
+<td><strong>c₂ overshoot——超过了实验值</strong></td>
+</tr>
+<tr>
+<td>+c₃α³+c₄α⁴</td>
+<td>207.042</td>
+<td>+0.132%</td>
+<td>c₃, c₄是refinement，量级10⁻⁶</td>
+</tr>
+<tr>
+<td>×(1−1/756)</td>
+<td>206.768</td>
+<td>−0.0003%</td>
+<td>3DD乘法修正把overshoot拉回（2.9 ppm）</td>
+</tr>
+<tr>
+<td>×(1−1/756+2/756²)</td>
+<td>206.7683</td>
+<td>~0</td>
+<td>2DD修正进一步校准（0.6 ppm）</td>
+</tr>
+<tr>
+<td>+α泄漏并按递推律延伸到6阶</td>
+<td><strong>206.76828</strong></td>
+<td><strong>~0.152 ppb</strong></td>
+<td><strong>α泄漏 + 6阶收敛闭合到实验精度</strong></td>
+</tr>
+<tr>
+<td>实验值 m_μ/m_e</td>
+<td>206.76828</td>
+<td>—</td>
+<td>CODATA 2022: 206.7682827(46)</td>
+</tr>
+</tbody></table>
+<p>关键叙事：修正分三层。<strong>加法型S³振荡</strong>（c₁到c₄的leading DD部分）给出主结构，其中c₂ overshoot 0.132%。<strong>乘法型DD层级</strong>（3DD负修正 + 2DD正修正）把overshoot拉回到ppm级。<strong>α泄漏</strong>（c₂的5色轨道泄漏 + c₃的12 block泄漏）在ppm级内进一步闭合到sub-ppb。三层修正互相校准，最终与CODATA实验不确定度齐平。</p>
+<hr>
+<h2>§4 α_em的条件性反推</h2>
+<h3>§4.1 自洽闭合方程</h3>
+<p>将R₁等于m_μ/m_e的实验值，注意c₂和c₃依赖α，方程变为自洽条件：</p>
+<p>$$\frac{3}{2\alpha}\left(1 + c_1\alpha + c_2(\alpha)\alpha^2 + c_3(\alpha)\alpha^3 + c_4(\alpha)\alpha^4\right)\left(1 - \frac{1}{756} + \frac{2}{756^2}\right) = 206.7682827$$</p>
+<p>其中：</p>
+<p>c₁ = π/(3√2)（常数）</p>
+<p>c₂(α) = (108 − 5α)/π</p>
+<p>c₃(α) = (9π − 12α)/(4√2)</p>
+<p>c₄(α) = (27/4)c₂(α)</p>
+<p>左边：DD结构确定的α的自洽函数。</p>
+<p>右边：m_μ/m_e = 206.7682827(46)（CODATA 2022，NIST推荐值）。</p>
+<p>在perturbative分支（小α，物理解支）上，自洽方程有唯一解。</p>
+<p>参考值：α⁻¹ = 137.035999177(21)（CODATA 2022）。</p>
+<h3>§4.2 结果与收敛</h3>
+<p>6阶与8阶结果由递推延伸得到：c₅ = (27/4)c₃，c₆ = (27/4)c₄，c₇ = (27/4)c₅，c₈ = (27/4)c₆。奇阶继承c₃型泄漏（−12α/(4√2)），偶阶继承c₂型泄漏（−5α/π）。</p>
+<p>逐步添加修正的反推精度：</p>
+<table>
+<thead><tr>
+<th>修正层</th>
+<th>1/α反推</th>
+<th>CODATA 2022</th>
+<th>残差</th>
+</tr></thead><tbody>
+<tr>
+<td>c₁, c₂^{(0)} = 108/π</td>
+<td>136.854</td>
+<td>137.035999(21)</td>
+<td>0.133%</td>
+</tr>
+<tr>
+<td>+ 3DD乘法 (1−1/756)</td>
+<td>137.0364</td>
+<td>137.035999(21)</td>
+<td>2.9 ppm</td>
+</tr>
+<tr>
+<td>+ 2DD乘法 (+2/756²)</td>
+<td>137.0360</td>
+<td>137.035999(21)</td>
+<td>0.6 ppm</td>
+</tr>
+<tr>
+<td>+ c₂泄漏 (−5α/π)</td>
+<td>137.03600</td>
+<td>137.035999(21)</td>
+<td>6 ppb</td>
+</tr>
+<tr>
+<td>+ c₃泄漏 (−12α/(4√2))，4阶</td>
+<td>137.035999284</td>
+<td>137.035999177(21)</td>
+<td>0.78 ppb</td>
+</tr>
+<tr>
+<td><strong>同上，6阶</strong></td>
+<td><strong>137.035999156</strong></td>
+<td><strong>137.035999177(21)</strong></td>
+<td><strong>0.152 ppb</strong></td>
+</tr>
+<tr>
+<td>同上，8阶</td>
+<td>137.035999156</td>
+<td>137.035999177(21)</td>
+<td>0.152 ppb</td>
+</tr>
+</tbody></table>
+<p>六阶后完全收敛：八阶与六阶一致。最终残差0.152 ppb与CODATA 2022的实验不确定度（±0.15 ppb）齐平。</p>
+<p><strong>可证伪预测。</strong> 在当前递推-泄漏ansatz下，DD结构的R₁方程在六阶处收敛到0.152 ppb。这给出一个前向预测：</p>
+<p><strong>随着α_em实验精度的提高（例如通过改进的electron g-2测量或原子干涉实验），R₁方程的反推值与实验值之间的偏差应稳定在~0.152 ppb附近，不应出现量级突破性缩小。</strong></p>
+<p>如果未来实验将α的不确定度推到0.01 ppb级而R₁反推残差不变（仍为~0.152 ppb），则方程的理论精度极限被确认。如果残差跟随实验精度缩小到远低于0.152 ppb，则说明R₁方程中存在本文未识别的额外修正项——这同样是有价值的信息，因为它指出了DD结构中新物理的方向。</p>
+<h3>§4.3 方程的性质</h3>
+<p>由于c₂和c₃依赖α（从而c₄通过递推继承c₂的α依赖），这是一个<strong>自洽方程</strong>而非简单多项式。按4阶截断，清分母后为quintic；在perturbative/小α分支上有唯一物理解。</p>
+<p>方程的意义：<strong>DD结构把α_em和m_μ/m_e绑在一条自洽闭合方程里。</strong> 给定一个可以反推另一个。α_em不是被消除了，而是从"独立边界条件"转变为"conditionally extractable quantity"——条件是接受DD结构和m_μ/m_e的实验值。</p>
+<p>自洽性是关键的新特征：c₂和c₃中的α泄漏项使得方程不再是简单的"代入已知系数求解"，而是"系数本身依赖解"。这和QED的自能修正在结构上平行——耦合常数反馈到修正系数中。</p>
+<h3>§4.4 可证伪预测</h3>
+<p>DD方程可以双向使用：输入α反推m_μ/m_e，或输入m_μ/m_e反推α。当输入来自<strong>独立实验</strong>时，输出就是可证伪预测。</p>
+<p><strong>预测1：m_μ/m_e的高精度预测。</strong> 输入CODATA 2022的α⁻¹ = 137.035999177(21)（来自electron g-2测量，与μ子质量无关），DD方程预测：</p>
+<p>m_μ/m_e = 206.7682827</p>
+<p>直接测量值：206.7682827(46)（CODATA 2022，不确定度22 ppb）。DD预测的偏差0.2 ppb，在实验不确定度内0.01σ。<strong>DD方程的预测精度（~0.2 ppb）比m_μ/m_e的直接测量（22 ppb）高约100倍。</strong></p>
+<p>这意味着：如果未来m_μ/m_e的直接测量精度从22 ppb继续提高，测量值应收敛到DD方程的预测值。如果提高精度后的测量值偏离DD预测超过~0.2 ppb，则DD方程存在未识别的修正项。</p>
+<p><strong>预测2：六阶收敛极限。</strong> DD方程在六阶处收敛（八阶与六阶一致），在当前递推-泄漏ansatz下的收敛值0.152 ppb。随着α实验精度继续提高，R₁反推残差应稳定在~0.152 ppb附近，不应出现量级突破性缩小。</p>
+<p><strong>预测3：α_s的DD预测。</strong> α_s = (65/4)α(1 − c₁α + c₂α² + ...)给出α_s ≈ 0.1182（v能标）。实验值α_s(M_Z) = 0.1180 ± 0.0009（7600 ppm不确定度）。DD预测精度（~1000 ppm）优于当前实验精度。完整比较需要从v到M_Z的RG running。</p>
+<hr>
+<h2>§5 讨论</h2>
+<h3>§5.1 α_em的地位变化</h3>
+<p>四力收束篇列出五个开放问题，第一个就是"α_em的先验推导"。本文给出的不是完整推导，但是重大进展：</p>
+<p><strong>之前：</strong> α_em是三个独立边界条件之一（ℏ, G, m_e），或等价地（ℏ, G, α_em）。</p>
+<p><strong>之后：</strong> α_em是DD结构加m_μ/m_e的自洽推论，精度与CODATA实验不确定度齐平（0.152 ppb）。边界条件从（ℏ, G, α_em）变为（ℏ, G, m_μ/m_e）。</p>
+<p>这是transmutation（转换），不是elimination（消除）。实验输入的个数没有减少。但输入的<strong>类型</strong>改变了：从1DD耦合常数（α_em）转换为3DD质量比（m_μ/m_e）。在SAE的本体论中，这是一个自然的方向——质量是3DD构造，比1DD耦合常数更"基本"（在DD层级上更高）。</p>
+<p>真正的elimination需要m_μ/m_e本身也从DD结构独立推出。这仍是开放问题。</p>
+<h3>§5.2 为什么存在边界条件</h3>
+<p>物理基础篇的闭合方程表显示：L₁→L₂和L₂→L₃精确闭合（不留自由度），L₃→L₄只是局域闭合（留一个自由度）。<strong>边界条件的存在是L₃→L₄局域闭合的结构性后果。</strong></p>
+<p>这意味着边界条件不可完全消除——它们是DD闭合结构的必然产物。但可以追问：边界条件的<strong>值</strong>（ℏ, G, m_e的具体数字）从哪来？一种可能：它们是前一轮（更大的凿构循环）的余项。SAE的余项不可消灭原则意味着：每一轮结束时留下的余项成为下一轮的初始条件。我们宇宙的物理常数可能就是这样的余项。</p>
+<p>这一哲学图像与本文的技术结果相容，但不依赖本文的技术结果。</p>
+<h3>§5.3 预测能力与实验检验</h3>
+<p>DD方程的双向性使其成为高精度预测工具。以下是从α_em出发的主要推论及其实验状态：</p>
+<p><strong>高于当前实验精度的预测（DD方程比直接测量更准）：</strong></p>
+<p>m_μ/m_e：DD预测精度~0.2 ppb，直接测量精度22 ppb。比直接测量精确约100倍。未来μ子质量精密测量（如MuSEUM, MuMASS实验）将直接检验此预测。</p>
+<p>α_s(v能标)：DD预测精度~1000 ppm，实验精度~7600 ppm。需要从v到M_Z的RG running完成完整比较。</p>
+<p><strong>与当前实验精度可比的预测：</strong></p>
+<p>sin²θ_W = (3/13)(1 + c₁α/3 + ...) ≈ 0.2312（一阶修正后）。实验精度~170 ppm。DD的高阶修正尚未完整展开，当前理论精度与实验精度可比。</p>
+<p><strong>低于当前实验精度的推论（需要进一步DD修正才能竞争）：</strong></p>
+<p>m_e（从v和DD结构）：1.4 ppm偏差，实验精度0.3 ppb。</p>
+<p>G（从m_P和DD结构）：0.03%偏差，实验精度22 ppm。</p>
+<p>c（从ℏ, G, m_e和DD结构）：0.03%偏差，c在SI中是精确定义值。</p>
+<hr>
+<h2>§6 开放问题</h2>
+<ol>
+<li><strong>c₂ = 108/π从system-locked conjecture到theorem的剩余gap。</strong> Gap 2（9通道 vs 3轨道）已由系统一致性关闭。Gap 1（12 block等权参与）已加入等权原则桥，尚需进一步形式化。Gap 3（π角色翻转）已加入切向/法向归一化桥：κ_T = π, κ_N = 1/π。剩余的形式化任务是将κ_N = 1/π从"强几何理由"推到"精确法向penalty functional的推导"。</li>
+</ol>
+<ol>
+<li><strong>等权稀释的证明。</strong> 18 = 2×9已升为条件性计数定理。但乘法因子中42个1DD的等权稀释尚未证明。如果稀释有加权（例如壳层距离依赖），756会改变。</li>
+</ol>
+<ol>
+<li><strong>m_μ/m_e的独立推导。</strong> 如果R₁方程两边的所有系数都从DD结构先验推出，那α_em就被完全推出（elimination而非transmutation）。这需要问题1的解决。</li>
+</ol>
+<ol>
+<li><strong>与标准模型QED修正的关系。</strong> 标准模型中m_μ/m_e的QED radiative corrections给出类似的级数结构（Schwinger的α/π等）。R₁的DD修正和QED修正之间的具体对应关系有待建立。α泄漏项的自洽结构与QED自能修正在形式上平行。</li>
+</ol>
+<ol>
+<li><strong>c₃泄漏系数12的精确性。</strong> c₃ = (9π − 12α)/(4√2)中的12 = N_blocks给出0.152 ppb精度，但最优值为12.3。12和12.3的差距（2.5%）可能来自乘法因子中更高阶DD修正（1DD层级），或来自c₂中108的0.034%不精确。</li>
+</ol>
+<hr>
+<h2>命题状态总表</h2>
+<table>
+<thead><tr>
+<th>结果</th>
+<th>级别</th>
+</tr></thead><tbody>
+<tr>
+<td>R₁ = 3/(2α), leading order</td>
+<td>先验推导（篇VII）</td>
+</tr>
+<tr>
+<td>c₁ = π/(3√2)</td>
+<td>S³ packing定理（篇VII）</td>
+</tr>
+<tr>
+<td>c₂^{(0)} = 108/π = (N_blocks × n_axes²)/π</td>
+<td>system-locked strong structured conjecture（本文）</td>
+</tr>
+<tr>
+<td>108 = 12×9（S³紧致遍历 × 有向通道）</td>
+<td>conditional counting derivation（本文）</td>
+</tr>
+<tr>
+<td>c₂泄漏 = −5α/π（5 = 色轨道数）</td>
+<td>conditional extraction（本文）</td>
+</tr>
+<tr>
+<td>c₃泄漏 = −12α/(4√2)（12 = N_blocks）</td>
+<td>conditional extraction（本文）</td>
+</tr>
+<tr>
+<td>c_{n+2}^{(0)} = (27/4)c_n^{(0)}，π振荡</td>
+<td>条件性递推律（本文）</td>
+</tr>
+<tr>
+<td>18 = 2×3²（有向通道数）</td>
+<td>条件性计数定理（本文）</td>
+</tr>
+<tr>
+<td>乘法因子3DD项 −1/756</td>
+<td>strong structured conjecture（本文）</td>
+</tr>
+<tr>
+<td>乘法因子2DD项 +2/756²</td>
+<td>structured conjecture（本文）</td>
+</tr>
+<tr>
+<td>1/α = 137.0359992（自洽反推）</td>
+<td>条件性反推，~0.152 ppb精度（本文）</td>
+</tr>
+<tr>
+<td>六阶收敛极限0.152 ppb</td>
+<td>可证伪预测（本文）</td>
+</tr>
+<tr>
+<td>m_μ/m_e = 206.7682827（从α反推，精度~0.2 ppb，比直接测量精确100倍）</td>
+<td>可证伪预测（本文）</td>
+</tr>
+<tr>
+<td>α_s ≈ 0.1182（v能标，DD预测，精度~1000 ppm）</td>
+<td>条件性预测（本文，需RG running验证）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>附录A：泄漏—稀释对偶（推测性讨论）</h2>
+<p>以下是关于加法侧α泄漏和乘法侧DD稀释之间关系的推测性解读。这不是本文主结果的一部分。</p>
+<p><strong>观察。</strong> 加法侧和乘法侧描述的可能是同一件事的两面：</p>
+<p>加法侧（§2）描述<strong>泄漏机制</strong>：本1DD内部S³与0DD之间的振荡过程中，α通过色轨道（5个）和block（12个）泄漏。</p>
+<p>乘法侧（§3）描述<strong>泄漏归宿</strong>：泄漏出去的能量被42个1DD吸收，每个吸收1/(18×42)的份额。</p>
+<p>如果这一对偶成立，那756 = 18 × 42不是独立的"等权稀释ansatz"，而是泄漏守恒的推论：从本1DD漏出的总量 = 42个1DD各自吸收的量之和。</p>
+<p><strong>证据。</strong> 支持这一解读的间接证据：</p>
+<p>加法侧和乘法侧的DD层级对应：3DD在加法侧贡献c₂（穿越S³），在乘法侧贡献−1/756（乘法收拢）。2DD在加法侧贡献c₃（到达0DD），在乘法侧贡献+2/756²（加法展开）。两边的层级结构和符号模式一致。</p>
+<p>18 × (π/9) = 2π：18个有向通道各自承载π/9的S³曲率，总和恰好是完整圆周2π。泄漏通道的总数和球面几何的整体结构匹配。</p>
+<p><strong>局限。</strong> 这一图像目前是定性的。将"泄漏守恒"写成定量的等式需要精确定义泄漏的度量，并证明加法侧的α泄漏总量等于乘法侧的稀释因子。这尚未完成。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "Self-as-an-End: 凿-构-余项循环" (SAE P1-P3), DOI: 10.5281/zenodo.18528813, .18666645, .18727327.</p>
+<p>[2] H. Qin, "四力前置篇：DD Splitting与α_G = α_em^{65/4}", DOI: 10.5281/zenodo.19341042.</p>
+<p>[3] H. Qin, "四力篇III：sin²θ_W = 3/13", DOI: 10.5281/zenodo.19379412.</p>
+<p>[4] H. Qin, "世代篇：三代费米子的拓扑起源与质量结构", DOI: 10.5281/zenodo.19394500.</p>
+<p>[5] H. Qin, "四力篇VII：三层修正结构", DOI: 10.5281/zenodo.19433220.</p>
+<p>[6] H. Qin, "四力篇VIII：强CP的层级消解", DOI: 10.5281/zenodo.19450288.</p>
+<p>[7] H. Qin, "四力收束篇：力的语法", DOI: 10.5281/zenodo.19464378.</p>
+<p>[8] Particle Data Group, R.L. Workman et al., "Review of Particle Physics," PTEP 2022, 083C01 (2022).</p>
+<p>[9] CODATA 2022, "Muon-electron mass ratio," NIST. m_μ/m_e = 206.7682827(46).</p>
+<p>[10] CODATA 2022, "Inverse fine-structure constant," NIST. α⁻¹ = 137.035999177(21).</p></div>
+      </div>
+    </div>
+  </main>
+  <script>
+  function switchLang(lang) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('lang-zh').style.display = lang === 'zh' ? '' : 'none';
+    document.querySelectorAll('.lang-tab').forEach((t, i) => {
+      t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+    });
+  }
+  </script>
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    </div>
+  </footer>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
