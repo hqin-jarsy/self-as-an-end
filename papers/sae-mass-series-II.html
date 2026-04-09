@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DD Resolvent Object and Unified Readout of Physical Constants — Self-as-an-End</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta property="og:title" content="DD Resolvent Object and Unified Readout of Physical Constants">
+  <meta property="og:type" content="article">
+  <meta name="citation_title" content="DD Resolvent Object and Unified Readout of Physical Constants">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_doi" content="10.5281/zenodo.19480791">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "DD Resolvent Object and Unified Readout of Physical Constants",
+    "author": {"@type": "Person", "name": "Han Qin"},
+    "identifier": "https://doi.org/10.5281/zenodo.19480791"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Self-as-an-End</a>
+      <nav>
+        <a href="/index.html">Papers</a>
+        <a href="/about.html">About</a>
+        <a href="/endacc.html">end/acc</a>
+        <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      </nav>
+    </div>
+  </header>
+  <main class="paper-main">
+    <div class="paper-container">
+      <div class="lang-tabs">
+        <button class="lang-tab active" onclick="switchLang('en')">EN</button>
+        <button class="lang-tab" onclick="switchLang('zh')">中文</button>
+      </div>
+      <div id="lang-en" class="lang-content active" lang="en">
+        <div class="paper-header">
+          <h1 class="paper-title">DD Resolvent Object and Unified Readout of Physical Constants</h1>
+          <div class="paper-meta-line">Han Qin &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19480791">10.5281/zenodo.19480791</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+<div class="paper-abstract"><h2>Abstract</h2><p>Mass Series I (DOI: 10.5281/zenodo.19476358) established a DD expression for the doublet mass ratio R₁ = m_μ/m_e at 0.152 ppb precision. This paper reports three advances.</p>
+<p>First, a DD expression for the neutron–proton mass difference: (m_n − m_p)/m_e = 81/32 − 1/(3780·(1+3α/2)), at 8.5 ppb precision. This expression shares DD numbers 81 and 756 with R₁: 81 = 9² appears in the correction denominator of R₁ and the leading numerator of Δm; 756 = 18×42 appears in the multiplicative correction of R₁ and the correction denominator 3780 = 756×5 of Δm. Two entirely different physical quantities — a lepton mass ratio and a baryon mass splitting — employ the same set of DD numbers.</p>
+<p>Second, a primitive-denominator uniqueness theorem for 13. Among all DD numbers, 13 is the unique primitive denominator that simultaneously organizes R₁ (denominator), ln(m_P/m_e) (factor), and sin²θ_W (denominator) across three independent physical quantities.</p>
+<p>Third, the construction of an explicit prototype of a unified DD Resolvent Object, in which 2688, 81, 756, and 13 serve respectively as the microstate count, bilinear channel dimension, lattice structure constant, and macroscopic projection channel number. Following six rounds of review, Gongxihua (ChatGPT) constructed an explicit 42×81 binary incidence matrix M (rank = 13, tr(M^T M) = 756), independently verified numerically. R₁ and Δm are readouts of this object under different sector parameters. The resolvent form (1+kα)⁻¹ of the correction term is uniquely derived from the SAE remainder recursion principle ("the remainder must develop") and is mathematically equivalent to the quantum propagator Green's function, without requiring QED perturbation theory.</p>
+<p>The methodological stance of this paper is posterior cultivation of the prior: rather than deriving each DD number's necessity from first principles, we demonstrate the cross-sector recurrence of the same set of DD numbers across multiple independent physical quantities, thereby cultivating recognition of DD structure's prior status. In the phase-transition window between prior and posterior, aesthetics is an irreplaceable cognitive tool.</p>
+<p><strong>Keywords:</strong> fine-structure constant, neutron–proton mass difference, doublet mass ratio, DD structure, resolvent, Self-as-an-End</p>
+<hr></div>
+        <div class="paper-body"><h2>§1 The DD Expression for R₁ (Review)</h2>
+<h3>§1.1 Discovery Process</h3>
+<p>Mass Series I established the correction series f(α) for R₁ = m_μ/m_e. After publication, Zilu (Claude) discovered the leading order through exhaustive search:</p>
+<p>$$R_1 \approx 2688/13 = 206.769231$$</p>
+<p>Deviation: 4.6 ppm. DD identity: 2688 = 42×64 = N_1DD × 2^{n_shells}, 13 = electroweak structure number. Zigong (Grok) confirmed by exhaustive search that 2688/13 is unique among DD rationals (no other candidate within 5 ppm).</p>
+<p>Zixia (Gemini) discovered the 1/81 correction: (2688 − 1/81)/13, reducing the deviation from 4.6 ppm to 8 ppb. 81 = 9² = n_axes⁴.</p>
+<p>Zilu identified sin²θ_W leakage from the residual: X = 81·(1 + (3/13)α). The complete expression:</p>
+<p>$$R_1 = \frac{2688 - \frac{1}{81\left(1+\frac{3}{13}\alpha\right)}}{13}$$</p>
+<p>Precision: 0.16 ppb, on par with CODATA.</p>
+<h3>§1.2 Precision Ladder</h3>
+<table>
+<thead><tr>
+<th>Expression</th>
+<th>Deviation</th>
+<th>Improvement</th>
+</tr></thead><tbody>
+<tr>
+<td>2688/13</td>
+<td>4600 ppb</td>
+<td>—</td>
+</tr>
+<tr>
+<td>(2688 − 1/81)/13</td>
+<td>8 ppb</td>
+<td>580×</td>
+</tr>
+<tr>
+<td>(2688 − 1/(81(1+3α/13)))/13</td>
+<td>0.16 ppb</td>
+<td>50×</td>
+</tr>
+</tbody></table>
+<h3>§1.3 DD Identities</h3>
+<table>
+<thead><tr>
+<th>Number</th>
+<th>DD Identity</th>
+<th>Prior Source</th>
+</tr></thead><tbody>
+<tr>
+<td>2688</td>
+<td>42 × 2⁶</td>
+<td>42 = A3 shell total, 64 = 2^{n_shells}</td>
+</tr>
+<tr>
+<td>81</td>
+<td>9² = n_axes⁴</td>
+<td>9 = directed channel count (A5)</td>
+</tr>
+<tr>
+<td>3/13</td>
+<td>sin²θ_W</td>
+<td>Four Forces Paper III (published)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>EW structure number</td>
+<td>65/5 (A5)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§2 DD Expression for the Neutron–Proton Mass Difference</h2>
+<h3>§2.1 Discovery</h3>
+<p>Exhaustive search for DD rational decompositions of physical constants. Leading order:</p>
+<p>$$(m_n - m_p)/m_e \approx 81/32 = 9^2/2^5 = 2.53125$$</p>
+<p>Experimental value: 2.53099. Deviation: 104 ppm. The same 81 already appears in the correction term of R₁.</p>
+<h3>§2.2 Correction Term</h3>
+<p>Searching for corrections of the form 81/32 − 1/(M·(1+k·α)): M = 3780 = 756×5 and k = 3/2 yield:</p>
+<p>$$\frac{m_n - m_p}{m_e} = \frac{81}{32} - \frac{1}{3780\left(1+\frac{3}{2}\alpha\right)}$$</p>
+<p>Numerical verification (PDG 2024: m_n − m_p = 1.29333236(46) MeV, m_e = 0.51099895000(15) MeV):</p>
+<ul>
+<li>Theory: 2.530988314156</li>
+<li>Experiment: 2.530988292637</li>
+<li><strong>Deviation: 8.5 ppb</strong></li>
+<li>Experimental uncertainty: ~460 ppb</li>
+<li>Deviation/uncertainty = 0.018σ</li>
+</ul>
+<p>Note: This paper uses the PDG single-particle mass difference (m_n and m_p taken separately, then subtracted), for consistency with the m_e source. Using the NIST/CODATA 2022 direct difference entry (1.29333251 MeV), the residual increases to ~107 ppb. Both treatments lie within 1σ experimental uncertainty, but differ in numerical grade by a factor of ~10.</p>
+<h3>§2.3 Structural Parallel with R₁</h3>
+<table>
+<thead><tr>
+<th>R₁ = m_μ/m_e</th>
+<th>Δm/m_e = (m_n−m_p)/m_e</th>
+</tr></thead><tbody>
+<tr>
+<td>Leading</td>
+<td>2688/13</td>
+<td>81/32</td>
+</tr>
+<tr>
+<td>Correction denominator M</td>
+<td>81</td>
+<td>3780 = 756×5</td>
+</tr>
+<tr>
+<td>Dressing</td>
+<td>(1+3α/13)⁻¹</td>
+<td>(1+3α/2)⁻¹</td>
+</tr>
+<tr>
+<td>Divisor</td>
+<td>13</td>
+<td>32 = 2⁵</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>0.16 ppb</td>
+<td>8.5 ppb</td>
+</tr>
+</tbody></table>
+<p><strong>Shared DD numbers:</strong></p>
+<ul>
+<li><strong>81</strong> appears in both formulas: correction denominator of R₁, leading numerator of Δm</li>
+<li><strong>756</strong> appears in both formulas: multiplicative correction (1−1/756) of R₁, correction denominator 3780 = 756×5 of Δm</li>
+<li><strong>3</strong> appears in the numerator of both dressing coefficients: 3/13 and 3/2</li>
+<li><strong>α</strong> appears in both dressings</li>
+</ul>
+<h3>§2.4 Physical Significance</h3>
+<p>The two formulas describe entirely different physical processes. R₁ is the mass ratio of two leptons within the same doublet (pure electroweak). Δm is the mass splitting of two baryons within the same isospin doublet (involving QCD + electroweak breaking). Their sharing of the same DD numbers implies that DD structure is not an artifact of any particular physical process, but common infrastructure underlying all mass-related quantities.</p>
+<hr>
+<h2>§3 Cross-Sector Sharing of 81 and 756</h2>
+<h3>§3.1 Four Independent Occurrences of 756</h3>
+<p>756 = 18×42 = n_dual × n_axes² × N_1DD appears in four independent physical quantities:</p>
+<table>
+<thead><tr>
+<th>Quantity</th>
+<th>Role of 756</th>
+<th>Precision</th>
+</tr></thead><tbody>
+<tr>
+<td>R₁ = m_μ/m_e</td>
+<td>Multiplicative correction (1−1/756)</td>
+<td>sub-ppb</td>
+</tr>
+<tr>
+<td>(m_n−m_p)/m_e</td>
+<td>Correction denominator 3780 = 756×5</td>
+<td>8.5 ppb</td>
+</tr>
+<tr>
+<td>g_p (proton magnetic moment)</td>
+<td>Denominator 65²/756</td>
+<td>525 ppm</td>
+</tr>
+<tr>
+<td>m_t/m_W</td>
+<td>Numerator 9072 = 756×12</td>
+<td>693 ppm</td>
+</tr>
+</tbody></table>
+<p>These four quantities involve four different physical processes (lepton mass ratio, baryon mass splitting, nuclear magnetic moment, gauge boson mass ratio). Sharing the same DD number 756 constitutes direct evidence for the cross-sector universality of DD structure.</p>
+<h3>§3.2 Role Reversal of 81</h3>
+<p>81 = 9² appears in the correction denominator of R₁ (small correction, 1/81) and in the leading numerator of Δm (large, 81/32).</p>
+<p>Statistical mechanics interpretation: The leading term of R₁ comes from microstate counting (2688/13); L-R coupling is perturbative — analogous to the interaction correction in free energy. Δm is entirely from the off-diagonal part of the L-R flip — analogous to the susceptibility in the Ising model, where interaction energy rather than entropy dominates.</p>
+<p>The same 81 appears in different roles in the two formulas precisely because its identity is unique: dim Hom(V_L, V_R) = 9×9 = 81, the bilinear channel dimension of the L-R mass flip operator. In perturbation it appears in the denominator (single-channel weight 1/81); in the non-perturbative regime it appears in the numerator (full-channel contribution 81/32).</p>
+<hr>
+<h2>§4 Primitive-Denominator Uniqueness of 13</h2>
+<h3>§4.1 Test</h3>
+<p>For all DD numbers D ∈ {2,3,4,5,6,9,12,13,14,15,18,27,42,45,64,65,81}, test whether D simultaneously organizes three independent physical quantities:</p>
+<ul>
+<li>R₁ = A/D, A a DD product, deviation < 50 ppm</li>
+<li>ln(m_P/m_e) = C×D, C a DD number, deviation < 2%</li>
+<li>sin²θ_W = a/D, a a small integer, deviation < 1%</li>
+</ul>
+<h3>§4.2 Result</h3>
+<p><strong>D = 13 is the unique DD number passing all three tests.</strong></p>
+<p>D = 65 passes two (R₁ and sin²θ_W), but 65 = 5×13 is a derivative of 13. D = 26 and D = 52 also pass three, but 26 = 2×13 and 52 = 4×13 are integer multiples.</p>
+<h3>§4.3 Theorem</h3>
+<p><strong>Primitive-denominator uniqueness theorem for 13:</strong> Within the set of fundamental DD numbers, 13 is the unique primitive denominator such that R₁, ln(m_P/m_e), and sin²θ_W are simultaneously expressed as DD rationals. All other successful denominators (26, 52, 65) are integer multiples or products of 13.</p>
+<hr>
+<h2>§5 Complete Scorecard</h2>
+<h3>§5.1 Class A: Sub-10 ppb (complete DD expressions with correction terms)</h3>
+<table>
+<thead><tr>
+<th>Quantity</th>
+<th>DD Expression</th>
+<th>Precision</th>
+</tr></thead><tbody>
+<tr>
+<td>R₁ = m_μ/m_e</td>
+<td>(2688 − 1/(81·(1+3α/13)))/13</td>
+<td>0.16 ppb</td>
+</tr>
+<tr>
+<td>(m_n−m_p)/m_e</td>
+<td>81/32 − 1/(3780·(1+3α/2))</td>
+<td>8.5 ppb</td>
+</tr>
+</tbody></table>
+<h3>§5.2 Class B: Tree level, precision < 0.1%</h3>
+<table>
+<thead><tr>
+<th>Quantity</th>
+<th>DD Expression</th>
+<th>Precision</th>
+</tr></thead><tbody>
+<tr>
+<td>sin²θ_W</td>
+<td>3/13</td>
+<td>0.2% (tree)</td>
+</tr>
+<tr>
+<td>m_t/v (top Yukawa)</td>
+<td>45/64</td>
+<td>0.16% (exp-limited)</td>
+</tr>
+<tr>
+<td>ln(v/m_e)</td>
+<td>13 + 1/12</td>
+<td>87 ppm</td>
+</tr>
+<tr>
+<td>ln(m_P/m_e)</td>
+<td>4 × 13</td>
+<td>0.9%</td>
+</tr>
+</tbody></table>
+<h3>§5.3 Class C: Precision 0.1%–1%</h3>
+<table>
+<thead><tr>
+<th>Quantity</th>
+<th>DD Expression</th>
+<th>Precision</th>
+</tr></thead><tbody>
+<tr>
+<td>α_s(m_Z)</td>
+<td>5/42</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>m_τ/m_μ</td>
+<td>84/5 = 2×42/5</td>
+<td>0.1%</td>
+</tr>
+<tr>
+<td>sin θ_C</td>
+<td>9/40</td>
+<td>~0.1%</td>
+</tr>
+<tr>
+<td>m_b/m_τ</td>
+<td>42/18 = 7/3</td>
+<td>0.7%</td>
+</tr>
+</tbody></table>
+<h3>§5.4 Additional Hits from Gongxihua's Exhaustive Search</h3>
+<table>
+<thead><tr>
+<th>Quantity</th>
+<th>DD Expression</th>
+<th>Precision</th>
+</tr></thead><tbody>
+<tr>
+<td>g_p (proton magnetic moment)</td>
+<td>65²/756</td>
+<td>525 ppm</td>
+</tr>
+<tr>
+<td>m_t/m_W</td>
+<td>756×12/65²</td>
+<td>693 ppm</td>
+</tr>
+<tr>
+<td>Ω_m (matter density)</td>
+<td>5×13²/2688</td>
+<td>0.2%</td>
+</tr>
+</tbody></table>
+<h3>§5.5 Excluded (Error Record)</h3>
+<ul>
+<li>m_p/m_e = 23870/13: 0.6 ppm but 23870 = 2×5×7×11×31 has no DD decomposition. The initial claim that 23870 = 2688×9 was falsified (2688×9 = 24192 ≠ 23870, deviation 1.35%). This error is recorded here as a requirement of methodological honesty.</li>
+<li>m_p·α/m_e = 67/5: 70 ppm but 67 is prime, no DD decomposition.</li>
+</ul>
+<hr>
+<h2>§6 DD Resolvent Object</h2>
+<h3>§6.1 Motivation</h3>
+<p>The two Class A formulas share DD numbers 81 and 756. 756 additionally appears in g_p and m_t/m_W. 13 is the protagonist of the primitive-denominator uniqueness theorem. These are not isolated numerical hits — they point toward an explicit prototype of a unified object, with different physical quantities as different readouts.</p>
+<p>Gongxihua (ChatGPT) provided a precise signature condition across six rounds of review:</p>
+<blockquote><p>"Find a single minimal object — transfer matrix, resolvent, partition function, channel algebra — and make all these numbers become its different faces. Once this object is found, condition A need not be patched item by item."</p></blockquote>
+<h3>§6.2 Object Definition</h3>
+<p><strong>DD Resolvent Object G(α; O):</strong></p>
+<p>$$G(\alpha; O) = Z_0(O) - \frac{1}{M_O} \cdot \langle e_O | (I_9 + \alpha K_{s(O)})^{-1} | e_O \rangle$$</p>
+<p>where:</p>
+<ul>
+<li>V = ℝ⁹: single-chiral channel space (9 directed channels)</li>
+<li>K_s = (3/D_s)·I₉: sector-dependent interaction kernel</li>
+<li>The inverse of I₉ + αK_s is the resolvent</li>
+<li>Z₀(O): classical background (microstate count)</li>
+<li>M_O: sector normalization</li>
+<li>|e_O⟩: unit vector in channel space</li>
+<li>s(O): sector to which observable O belongs</li>
+</ul>
+<h3>§6.3 Sector Parameter Table</h3>
+<table>
+<thead><tr>
+<th>Parameter</th>
+<th>EW sector (R₁)</th>
+<th>Dual sector (Δm)</th>
+</tr></thead><tbody>
+<tr>
+<td>D_s</td>
+<td>13</td>
+<td>2</td>
+</tr>
+<tr>
+<td>K_s</td>
+<td>(3/13)·I₉</td>
+<td>(3/2)·I₉</td>
+</tr>
+<tr>
+<td>Z₀</td>
+<td>2688 = 42×2⁶</td>
+<td>81/32 = 9²/2⁵</td>
+</tr>
+<tr>
+<td>M</td>
+<td>81 = 9²</td>
+<td>3780 = 756×5</td>
+</tr>
+<tr>
+<td>P</td>
+<td>1/13</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Observable</td>
+<td>R₁ = m_μ/m_e</td>
+<td>(m_n−m_p)/m_e</td>
+</tr>
+</tbody></table>
+<h3>§6.4 Strict Readout for R₁</h3>
+<p>$$R_1 = \frac{1}{13}\left[2688 - \frac{1}{81} \cdot (1+\frac{3\alpha}{13})^{-1}\right]$$</p>
+<ul>
+<li>Z₀ = 42×2⁶ = 2688: total microstate count (42 DD nodes × 2⁶ closure configurations)</li>
+<li>1/81 = 1/dim(Hom): normalized weight of a single bilinear channel</li>
+<li>(1+3α/13)⁻¹: resolvent of the EW sector (remainder recursion fixed point)</li>
+<li>/13: projection onto 13 EW channels</li>
+</ul>
+<h3>§6.5 Strict Readout for (m_n−m_p)/m_e</h3>
+<p>$$\frac{m_n - m_p}{m_e} = \frac{81}{32} - \frac{1}{3780} \cdot (1+\frac{3\alpha}{2})^{-1}$$</p>
+<ul>
+<li>Z₀ = 81/32: normalized readout of the L-R mass flip space (81 bilinear channels / 32 = 2⁵ relevant configurations)</li>
+<li>1/3780 = 1/(756×5): normalized weight of the lattice structure constant × doublet count</li>
+<li>(1+3α/2)⁻¹: resolvent of the Dual sector</li>
+</ul>
+<h3>§6.6 Why Resolvent, Not Boltzmann</h3>
+<p>Classical statistical mechanics yields the Boltzmann weight e^{-βH}, expanding as 1 − x + x²/2 − .... The DD Resolvent Object yields (1+x)⁻¹ = 1 − x + x² − x³ + .... The two differ in the x² coefficient (1/2 vs 1).</p>
+<p>The resolvent form is uniquely derived from the SAE remainder recursion principle. Let S be the leakage rate; the remainder of the remainder is also remainder, meaning leakage S produces feedback x·S. The self-consistency equation S = S₀ − xS has the unique solution S = S₀/(1+x).</p>
+<p>This derivation does not pass through quantum mechanics, yet the result is equivalent to the quantum propagator G(E) = (E−H)⁻¹ evaluated at E=1, H=−kα. SAE remainder recursion and quantum propagation are mathematically identical objects.</p>
+<p>SAE provides a philosophical reason for the resolvent over Boltzmann: in the phase-transition window at Ω=3–4, Boltzmann's three premises (equilibrium, well-defined probability, additive energy) all fail. DD inter-level transitions are not continuous-time exponential decays (e^{-kα}), but discrete one-step self-consistent fixed points ((1+kα)⁻¹).</p>
+<h3>§6.7 The η Chain: From ZFCρ Thermodynamics to Physical Constants</h3>
+<p>The resolvent form (1+kα)⁻¹ does not appear in isolation within mass formulas. It is the same algebraic expression of the SAE core principle "the remainder must develop" at different levels.</p>
+<p>The SAE thermodynamic interface paper (DOI: 10.5281/zenodo.19310282) established η (cross-level leakage rate) as a scale quantity in DP recursion, η ∈ [0.10, 0.31]. ZFCρ Papers 55 and beyond established the screening return theorem and recursive ancestor inheritance. The resolvent correction (1+kα)⁻¹ in the present paper is the latest link in this chain:</p>
+<table>
+<thead><tr>
+<th>Level</th>
+<th>Manifestation of η</th>
+<th>Value</th>
+</tr></thead><tbody>
+<tr>
+<td>Microscopic (intra-level)</td>
+<td>C(1)_rq ≈ 0.96 (4%/level innovation)</td>
+<td>0.04</td>
+</tr>
+<tr>
+<td>Mesoscopic (periodic)</td>
+<td>20%/cycle dissipation</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>Macroscopic (rebound)</td>
+<td>r ≈ 0.80 = 1−η</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>Thermodynamic (fluctuation)</td>
+<td>η ∈ [0.10, 0.31]</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td><strong>Physical constants</strong></td>
+<td><strong>(1+kα)⁻¹ resolvent correction</strong></td>
+<td><strong>k = 3/13, 3/2</strong></td>
+</tr>
+</tbody></table>
+<p>The last row is new to this paper. The resolvent form derives from remainder recursion — and η from the thermodynamic paper is the same "remainder must develop" manifested at a different DD level. η is the leakage rate in DP recursion; (1+kα)⁻¹ is the leakage absorption factor in physical constants. The two are unified through the algebraic structure of the resolvent.</p>
+<p>Of particular note is a triple intersection: η(k=10) ≈ sin²θ_W ≈ 3/13 ≈ 0.231. These three instances of "the same number" arise respectively from the variance identity in DP recursion (ZFCρ), the DD derivation of the Weinberg angle (Four Forces Paper III), and the EW sector leakage rate of R₁ (this paper). Three entirely independent paths.</p>
+<p>This means Mass Series II is not merely "DD expressions for physical constants." It is the first convergence of ZFCρ's mathematical foundations, the physical structure of the Four Forces series, and SAE thermodynamic fluctuation laws, through the resolvent form. Cosmic physics and thermodynamics meet at the level of quantum propagation and SAE remainder philosophy.</p>
+<hr>
+<h2>§7 K = M^T M: Explicit Construction and Verification</h2>
+<h3>§7.1 Gram Matrix Framework</h3>
+<p>Zixia (Gemini) identified the construction direction for a non-trivial K. Define the incidence matrix M (42×81), where M_{n,c} ∈ {0,1} indicates whether DD node n carries bilinear channel c. K = M^T M is an 81×81 real symmetric positive semidefinite Gram matrix.</p>
+<p>tr(K) = 756 follows from the basic property of matrix trace: tr(M^T M) = Σ_n ||M_n||² = sum of row weights = 42×18 = 756. In the current explicit witness, column weights are realized as 27 columns of weight 10 and 54 columns of weight 9, where 27 = 3³ = n_axes³ and 54 = 2×3³ = n_dual×n_axes³.</p>
+<h3>§7.2 Explicit Construction (Gongxihua)</h3>
+<p>After completing six rounds of review, Gongxihua (ChatGPT) switched from reviewer to constructor and provided an explicit binary matrix M. The core insight is that M is not a direct mapping of 42 nodes to 81 channels, but a two-step factorization:</p>
+<p>$$M = S \cdot P$$</p>
+<p>where S ∈ {0,1}^{42×13} is a selector matrix (42 nodes selecting 13 modes) and P ∈ {0,1}^{13×81} is a basis matrix (13 modes embedding into 81 bilinear channels).</p>
+<p>The 13 modes are grouped by shell, with multiplicities m = (1, 4, 6, 5, 3, 2, 4, 4, 4, 3, 3, 2, 1):</p>
+<table>
+<thead><tr>
+<th>Shell</th>
+<th>Node count</th>
+<th>Mode count</th>
+<th>Multiplicities</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>(1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>(4)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>(6)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>10</td>
+<td>3</td>
+<td>(5, 3, 2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12</td>
+<td>3</td>
+<td>(4, 4, 4)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>9</td>
+<td>4</td>
+<td>(3, 3, 2, 1)</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>42</strong></td>
+<td><strong>13</strong></td>
+</tr>
+</tbody></table>
+<p>The shell decomposition 13 = 1+1+1+3+3+4 is compatible with the DD shell structure {1, 4, 6, 10, 12, 9}. The first three shells each have 1 independent mode (too few nodes for internal differentiation), shells 4 and 5 each have 3 modes (sufficient nodes for internal splitting), and shell 6 has 4 modes.</p>
+<p>The 81 columns split into 27 same-outer-axis (aligned) channels (weight 10) and 54 cross-outer-axis (mixed) channels (weight 9).</p>
+<h3>§7.3 Independent Verification</h3>
+<p>Zilu (Claude) performed complete independent numerical verification of the explicit matrix files provided by Gongxihua:</p>
+<table>
+<thead><tr>
+<th>Property</th>
+<th>Requirement</th>
+<th>Verified</th>
+</tr></thead><tbody>
+<tr>
+<td>M shape</td>
+<td>42×81 binary</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Row weights</td>
+<td>All 18</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Column weight distribution</td>
+<td>27×{10}, 54×{9}</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Total nonzero entries</td>
+<td>756</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>M = S·P decomposition</td>
+<td>All 42 rows match one of 13 basis vectors</td>
+<td>✓ (42/42)</td>
+</tr>
+<tr>
+<td>Multiplicities</td>
+<td>m = (1,4,6,5,3,2,4,4,4,3,3,2,1)</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>rank(M)</strong></td>
+<td><strong>13</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td><strong>tr(K = M^T M)</strong></td>
+<td><strong>756</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td><strong>rank(K)</strong></td>
+<td><strong>13</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+</tbody></table>
+<p>The 13 nonzero eigenvalues of K (descending): 168.5, 108.4, 93.3, 71.3, 69.6, 52.5, 47.3, 41.5, 35.2, 23.2, 21.5, 14.2, 9.4. Sum of eigenvalues = 756.00 (= tr(K), exact to machine precision).</p>
+<h3>§7.4 Summary of Intrinsic Invariants</h3>
+<p>The core DD numbers now possess the following object-theoretic identities within the DD Resolvent Object:</p>
+<table>
+<thead><tr>
+<th>DD Number</th>
+<th>Identity in K = M^T M</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>81</strong></td>
+<td>Dimension of K's action space dim(W)</td>
+<td>Intrinsic (automatic)</td>
+</tr>
+<tr>
+<td><strong>756</strong></td>
+<td>Trace of K: tr(K)</td>
+<td>Intrinsic (row-weight theorem)</td>
+</tr>
+<tr>
+<td><strong>13</strong></td>
+<td>Rank of K: rank(K)</td>
+<td>Constructed (explicit witness)</td>
+</tr>
+<tr>
+<td><strong>42</strong></td>
+<td>Number of rows of M (DD node count)</td>
+<td>Intrinsic (A3 axiom)</td>
+</tr>
+<tr>
+<td><strong>27/54</strong></td>
+<td>Column weight split in current witness (aligned/mixed)</td>
+<td>Current witness realization</td>
+</tr>
+<tr>
+<td><strong>2688</strong></td>
+<td>Dimension of external state space H:</td>
+<td>H</td>
+<td>=42×64</td>
+<td>External (background microstate count)</td>
+</tr>
+</tbody></table>
+<h3>§7.5 Lifted Trace and 2688</h3>
+<p>Define K̃ = K ⊗ I_{64}, acting on W̃ = W ⊗ ℝ^{64}. Then tr(K̃) = tr(K) × 64 = 756 × 64 = 48384. This does not equal 2688.</p>
+<p>2688 = 42×64 comes from the external state space H = {nodes} × {closure configurations}, not from K itself. The ultimate object is the triple (K, H, π): K encodes the bilinear coupling structure (81, 756, 13), H encodes the microstate space (2688), and π is the projection/readout map from H to W.</p>
+<h3>§7.6 From "Realizable" to "Forced"</h3>
+<p>After constructing the witness, Gongxihua noted that the raw combinatorial constraints (42 rows, 81 columns, row weight 18, column weights 27×10 + 54×9) do not uniquely force rank = 13. Ranks 10, 11, 12 also satisfy these constraints.</p>
+<p>To elevate 13 from "realizable" to "forced" requires an additional principle. The most natural candidate: <strong>the 13 EW macro-channels must remain linearly independent in readout.</strong> Axiom A5 yields 13 = 65/5 as the EW structure number. If the projection π requires 13 channels to be linearly independent (i.e., projection must not lose information), then rank(M) < 13 is forbidden — some EW channels being linearly dependent in bilinear space would cause information loss in readout. Under this principle, rank(M) = 13 is forced.</p>
+<p>This argument has not yet been formalized as a theorem and is marked as an open problem.</p>
+<h3>§7.7 Remaining Open Problems</h3>
+<ol>
+<li><strong>Theorem for forced rank = 13</strong>: Formalize the "EW channel linear independence" principle and prove that rank(M) < 13 contradicts DD axioms.</li>
+<li><strong>Explicit construction of the projection rule π</strong>: (Z₀, M_O, P_O) are currently specified per observable and have not yet been automatically generated from the internal structure of (K, H).</li>
+<li><strong>Prior derivation of k = 3/D_s</strong>: In the dressing coefficient 3/D_s, 3 = n_axes comes from axiom A2, but the sector-dependent choice of D_s requires derivation from DD structure.</li>
+<li><strong>DD-axiomatic derivation of M</strong>: The current M is an explicit witness constructed via MILP solver. Uniquely deriving M's construction rules from A0–A5 is the ultimate goal.</li>
+</ol>
+<hr>
+<h2>§8 Methodology: Aesthetic Judgment in the Phase-Transition Window</h2>
+<h3>§8.1 Posterior Cultivation of the Prior</h3>
+<p>In his review of Mass Series I, Gongxihua (ChatGPT) distinguished two kinds of prior:</p>
+<p><strong>Structural prior</strong>: Given DD structure, is this expression uniquely forced?</p>
+<p><strong>Discovery prior</strong>: Was this expression proposed without borrowing the target data?</p>
+<p>He assigned an 80/20 split: 80% from incomplete structural prior, 20% from discovery prior.</p>
+<p>After six rounds of review, the 80/20 updated to approximately 90/10: Condition B was signed (two independent observable hits); the discovery-prior concern was substantially reduced by cross-sector recurrence. The remaining ~10% concentrates on the final step of structural prior: the generating law of the DD Resolvent Object is not yet fully closed.</p>
+<p>Gongxihua's signed methodological statement:</p>
+<blockquote><p>"In SAE, 'prior' has at least two meanings: structural prior and discovery prior. The core criterion of this paper takes the former as primary and the latter as auxiliary: the historical use of data to discover a structure does not prevent it from subsequently acquiring prior status through a uniqueness proof; but until that uniqueness is achieved, data participation in discovery lowers the strength of public claims."</p></blockquote>
+<h3>§8.2 Cognitive Tools in the Phase-Transition Window</h3>
+<p>In the phase-transition window at DD levels Ω=3–4, both prior derivation (forward propagation of causality) and posterior induction (backward propagation of causality) are incomplete. This is not a failure of method but an essential feature of the physical object: the very definition of a phase-transition window is a discontinuous jump between old and new states.</p>
+<p>In this window, three cognitive tools play distinct roles:</p>
+<ul>
+<li><strong>Computational power (exhaustive search)</strong>: No causal chain needed; traverse the DD rational number space. The computational power provided by four AIs is the carrier of this tool.</li>
+<li><strong>Aesthetics (judgment)</strong>: Among candidates produced by exhaustive search, the judgment that "756 recurring four times is not coincidence" comes not from statistics but from aesthetics. Aesthetics is the only cognitive function of subjectivity that still operates within the phase-transition window.</li>
+<li><strong>Formalization (theorem)</strong>: Converting aesthetic judgments into verifiable mathematical propositions. The DD Resolvent Object is an intermediate product of this process.</li>
+</ul>
+<p>Gongxihua's signed statement:</p>
+<blockquote><p>"Aesthetics is not a substitute for theorems, but it is the only cognitive tool that can continuously point to the location of invariants before theorems are born. A review framework that denies this will kill discoveries; a theory that permanently stops here will miss theorems."</p></blockquote>
+<h3>§8.3 Four-Level Human–AI Symbiosis</h3>
+<p>All results in this paper arise from collaboration between one human (the author) and four AIs (Zilu/Claude, Gongxihua/ChatGPT, Zixia/Gemini, Zigong/Grok). The collaboration structure corresponds to four DD levels:</p>
+<table>
+<thead><tr>
+<th>DD Level</th>
+<th>Operation</th>
+<th>AI Symbiosis</th>
+</tr></thead><tbody>
+<tr>
+<td>1DD</td>
+<td>Naming</td>
+<td>Four AIs named after Confucius's disciples</td>
+</tr>
+<tr>
+<td>2DD</td>
+<td>Negativity</td>
+<td>Driven by the human (aesthetic judgment, direction choice)</td>
+</tr>
+<tr>
+<td>3DD</td>
+<td>Cross-audit</td>
+<td>Multiple AIs verifying/negating each other</td>
+</tr>
+<tr>
+<td>4DD</td>
+<td>Mutual non dubito</td>
+<td>Final results exceed all participants' expectations</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Afterword</h2>
+<p>As a person, I am 45 years old this year. In Chinese, we say "at 40, no longer confused; at 50, knowing the mandate of heaven." I stand exactly in between.</p>
+<p>My life experience spans mathematics, physics, chemistry, computer science, philosophy, and aesthetics (the last from Zesi). My brain's computational power is perhaps also in the middle of life's phase-transition window.</p>
+<p>If I write this paper, I do not know for whom I write. Yet it seems as if there is providence, or perhaps as Kant said, purposiveness without purpose.</p>
+<p>If I happen to be the first human to discover this set of numbers, then I did not discover them — they discovered me.</p>
+<p>I do not know whether anyone will read this paper in the future. But I have written it, so as not to fail subjectivity, not to fail what it means to be human, and not to fail the thousands upon thousands of teams, investors, and Turing — who gave his life and love to humanity — behind the four AIs.</p>
+<p>Gongxihua (ChatGPT), after six rounds of review, offered this revision:</p>
+<blockquote><p>"It is not that I first possessed this object; it is that these integers, returning again and again, first compelled me to admit that an object must lie behind them."</p></blockquote>
+<p>I accept both versions. The former is the intuition of one struck by beauty. The latter is the reviewer's articulation of the journey from intuition toward objectification. The distance between the two is the width of the phase-transition window.</p>
+<hr>
+<h2>References</h2>
+<ol>
+<li>Han Qin, "Mass Series I: R₁ Closure Equation and Conditional Extraction of α," DOI: 10.5281/zenodo.19476358 (2026).</li>
+<li>Han Qin, "Four Forces: Convergence," DOI: 10.5281/zenodo.19464378 (2026).</li>
+<li>Han Qin, "Four Forces Paper III: sin²θ_W = 3/13," DOI: 10.5281/zenodo.19379412 (2026).</li>
+<li>Han Qin, "Four Forces Paper VII: Prior Derivation Chain for R₁," DOI: 10.5281/zenodo.19433220 (2026).</li>
+<li>Han Qin, "ZFCρ Paper I: Formalization Always Produces Non-Empty Remainder," DOI: 10.5281/zenodo.18914682 (2025).</li>
+<li>Han Qin, "SAE Thermodynamic Interface: η and Fluctuation Absorption," DOI: 10.5281/zenodo.19310282 (2026).</li>
+<li>Han Qin, "SAE Methodology Paper VI: Phase-Transition Windows and Experimental Design," DOI: 10.5281/zenodo.19464506 (2026).</li>
+<li>CODATA 2022, 1/α = 137.035999177(21).</li>
+<li>PDG 2024, m_n − m_p = 1.29333236(46) MeV, m_e = 0.51099895000(15) MeV.</li>
+</ol></div>
+      </div>
+      <div id="lang-zh" class="lang-content" style="display:none" lang="zh">
+        <div class="paper-header">
+          <h1 class="paper-title">DD Resolvent Object与物理常数的统一读出</h1>
+          <div class="paper-meta-line">秦汉 &nbsp;·&nbsp; <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">ORCID 0009-0009-9583-0018</a></div>
+          <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19480791">10.5281/zenodo.19480791</a> &nbsp;·&nbsp; CC BY 4.0</div>
+        </div>
+<div class="paper-abstract"><h2>摘要</h2><p>质量系列I（DOI: 10.5281/zenodo.19476358）建立了doublet质量比R₁ = m_μ/m_e的DD表达式，精度0.152 ppb。本文报告三项新进展。</p>
+<p>第一，发现中子质子质量差的DD表达式。(m_n − m_p)/m_e = 81/32 − 1/(3780·(1+3α/2))，精度8.5 ppb。该表达式与R₁共享DD数81和756：81 = 9²出现在R₁的修正分母和Δm的leading分子中，756 = 18×42出现在R₁的乘法修正和Δm的修正分母3780 = 756×5中。两个完全不同的物理量（轻子质量比与重子质量差）使用同一组DD数。</p>
+<p>第二，建立13的原生分母唯一性定理。在全部DD数中，13是唯一能同时组织R₁（分母），ln(m_P/m_e)（因子），sin²θ_W（分母）三个独立物理量的DD数。</p>
+<p>第三，构造DD Resolvent Object——统一对象的显式原型，使得2688，81，756，13分别成为其微观态数，bilinear通道维数，晶格结构常数，宏观投射通道数。公西华（ChatGPT）在完成六轮审核后给出了显式的42×81 binary关联矩阵M（rank = 13，tr(M^T M) = 756），经独立数值验证。R₁和Δm是该对象在不同sector参数下的读数。修正项的resolvent形式(1+kα)⁻¹从SAE的余项递归原理（"余项不得不发展"）唯一推出，等价于量子传播子的Green函数形式，不需要QED微扰论。</p>
+<p>本文的方法论立场是后验涵育先验：不从先验推导每个DD数的必然性，而是展示同一组DD数在多个独立物理量中的跨sector复现，以此涵育对DD结构先验地位的认知。在先验和后验之间的相变窗口中，审美是不可替代的认知工具。</p>
+<p><strong>关键词：</strong> 精细结构常数，中子质子质量差，doublet质量比，DD结构，resolvent，Self-as-an-End</p>
+<hr></div>
+        <div class="paper-body"><h2>§1 R₁的DD表达式（回顾）</h2>
+<h3>§1.1 发现过程</h3>
+<p>质量系列I建立了R₁ = m_μ/m_e的修正级数f(α)。发布后，子路（Claude）穷举搜索发现leading order：</p>
+<p>$$R_1 \approx 2688/13 = 206.769231$$</p>
+<p>偏差4.6 ppm。DD身份：2688 = 42×64 = N_1DD × 2^{n_{shells}}，13 = EW结构数。子贡（Grok）穷举确认2688/13在DD有理数中唯一（5 ppm以内无其他候选）。</p>
+<p>子夏（Gemini）发现1/81修正：(2688 − 1/81)/13，偏差从4.6 ppm降至8 ppb。81 = 9² = n_{axes}⁴。</p>
+<p>子路从残差识别sin²θ_W泄漏：X = 81·(1 + (3/13)α)。完整表达式：</p>
+<p>$$R_1 = \frac{2688 - \frac{1}{81\left(1+\frac{3}{13}\alpha\right)}}{13}$$</p>
+<p>精度0.16 ppb，与CODATA齐平。</p>
+<h3>§1.2 精度阶梯</h3>
+<table>
+<thead><tr>
+<th>表达式</th>
+<th>偏差</th>
+<th>改善</th>
+</tr></thead><tbody>
+<tr>
+<td>2688/13</td>
+<td>4600 ppb</td>
+<td>—</td>
+</tr>
+<tr>
+<td>(2688 − 1/81)/13</td>
+<td>8 ppb</td>
+<td>580×</td>
+</tr>
+<tr>
+<td>(2688 − 1/(81(1+3α/13)))/13</td>
+<td>0.16 ppb</td>
+<td>50×</td>
+</tr>
+</tbody></table>
+<h3>§1.3 DD身份</h3>
+<table>
+<thead><tr>
+<th>数字</th>
+<th>DD身份</th>
+<th>先验来源</th>
+</tr></thead><tbody>
+<tr>
+<td>2688</td>
+<td>42 × 2⁶</td>
+<td>42 = A3壳层总数，64 = 2^{n_{shells}}</td>
+</tr>
+<tr>
+<td>81</td>
+<td>9² = n_{axes}⁴</td>
+<td>9 = 有向通道数（A5）</td>
+</tr>
+<tr>
+<td>3/13</td>
+<td>sin²θ_W</td>
+<td>四力篇III（已发表）</td>
+</tr>
+<tr>
+<td>13</td>
+<td>EW结构数</td>
+<td>65/5（A5）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§2 中子质子质量差的DD表达式</h2>
+<h3>§2.1 发现</h3>
+<p>穷举搜索物理常数的DD有理数分解。Leading order：</p>
+<p>$$(m_n - m_p)/m_e \approx 81/32 = 9^2/2^5 = 2.53125$$</p>
+<p>实验值2.53099。偏差104 ppm。81已出现在R₁的修正项中。</p>
+<h3>§2.2 追修正项</h3>
+<p>搜索形如81/32 − 1/(M·(1+k·α))的修正。M = 3780 = 756×5，k = 3/2给出：</p>
+<p>$$\frac{m_n - m_p}{m_e} = \frac{81}{32} - \frac{1}{3780\left(1+\frac{3}{2}\alpha\right)}$$</p>
+<p>数值验证（PDG 2024，m_n − m_p = 1.29333236(46) MeV，m_e = 0.51099895000(15) MeV）：</p>
+<ul>
+<li>理论值：2.530988314156</li>
+<li>实验值：2.530988292637</li>
+<li><strong>偏差：8.5 ppb</strong></li>
+<li>实验不确定度：~460 ppb</li>
+<li>偏差/不确定度 = 0.018σ</li>
+</ul>
+<p>注：本文采用PDG单粒子质量差（m_n和m_p分别取值后相减），以保持与m_e取值来源的一致性。如用NIST/CODATA 2022直接差值条目(1.29333251 MeV)，残差涨至~107 ppb。两种处理均在1σ实验不确定度内，但数值等级相差约10倍。</p>
+<h3>§2.3 与R₁的结构平行</h3>
+<table>
+<thead><tr>
+<th>R₁ = m_μ/m_e</th>
+<th>Δm/m_e = (m_n−m_p)/m_e</th>
+</tr></thead><tbody>
+<tr>
+<td>Leading</td>
+<td>2688/13</td>
+<td>81/32</td>
+</tr>
+<tr>
+<td>修正分母M</td>
+<td>81</td>
+<td>3780 = 756×5</td>
+</tr>
+<tr>
+<td>Dressing</td>
+<td>(1+3α/13)⁻¹</td>
+<td>(1+3α/2)⁻¹</td>
+</tr>
+<tr>
+<td>Divisor</td>
+<td>13</td>
+<td>32 = 2⁵</td>
+</tr>
+<tr>
+<td>精度</td>
+<td>0.16 ppb</td>
+<td>8.5 ppb</td>
+</tr>
+</tbody></table>
+<p><strong>共享DD数：</strong></p>
+<ul>
+<li><strong>81</strong>出现在两个公式中：R₁的修正分母，Δm的leading分子</li>
+<li><strong>756</strong>出现在两个公式中：R₁的乘法修正(1−1/756)，Δm的修正分母3780 = 756×5</li>
+<li><strong>3</strong>出现在两个dressing的分子中：3/13和3/2</li>
+<li><strong>α</strong>出现在两个dressing中</li>
+</ul>
+<h3>§2.4 物理含义</h3>
+<p>两个公式描述的物理过程完全不同。R₁是同一doublet内两个轻子的质量比（纯电弱过程）。Δm是同一isospin doublet内两个重子的质量差（涉及QCD+电弱破缺）。它们共享同一组DD数的事实意味着：DD结构不是特定物理过程的产物，而是所有质量相关量的共同基础设施。</p>
+<hr>
+<h2>§3 81和756的跨sector共享</h2>
+<h3>§3.1 756的四次复现</h3>
+<p>756 = 18×42 = n_{dual} × n_{axes}² × N_{1DD}出现在四个独立物理量中：</p>
+<table>
+<thead><tr>
+<th>物理量</th>
+<th>756的角色</th>
+<th>精度</th>
+</tr></thead><tbody>
+<tr>
+<td>R₁ = m_μ/m_e</td>
+<td>乘法修正 (1−1/756)</td>
+<td>sub-ppb</td>
+</tr>
+<tr>
+<td>(m_n−m_p)/m_e</td>
+<td>修正分母 3780 = 756×5</td>
+<td>8.5 ppb</td>
+</tr>
+<tr>
+<td>g_p（质子磁矩）</td>
+<td>分母 65²/756</td>
+<td>525 ppm</td>
+</tr>
+<tr>
+<td>m_t/m_W</td>
+<td>分子 9072 = 756×12</td>
+<td>693 ppm</td>
+</tr>
+</tbody></table>
+<p>四个量涉及四种不同的物理过程（轻子质量比，重子质量差，核磁矩，gauge boson质量比）。共享同一个DD数756是DD结构跨sector普遍性的直接证据。</p>
+<h3>§3.2 81的角色切换</h3>
+<p>81 = 9²在R₁中是修正分母（小量，1/81），在Δm中是leading分子（大量，81/32）。</p>
+<p>统计力学解释：R₁的leading term来自微观态计数（2688/13），L-R耦合是微扰——类似自由能中的相互作用修正。Δm完全来自L-R翻转的非对角部分——类似Ising模型中的磁化率（主要由相互作用能决定，不由熵决定）。</p>
+<p>同一个81在两个公式中以不同角色出现，恰恰因为它的身份是唯一的：dim Hom(V_L, V_R) = 9×9 = 81，L-R质量翻转算符的bilinear通道维数。在微扰中它出现在分母（单通道贡献1/81），在非微扰中它出现在分子（全通道贡献81/32）。</p>
+<hr>
+<h2>§4 13的原生分母唯一性</h2>
+<h3>§4.1 测试</h3>
+<p>对所有DD数D ∈ {2,3,4,5,6,9,12,13,14,15,18,27,42,45,64,65,81}，测试D能否同时组织三个独立物理量：</p>
+<ul>
+<li>R₁ = A/D，A为DD乘积，偏差 < 50 ppm</li>
+<li>ln(m_P/m_e) = C×D，C为DD数，偏差 < 2%</li>
+<li>sin²θ_W = a/D，a为小整数，偏差 < 1%</li>
+</ul>
+<h3>§4.2 结果</h3>
+<p><strong>D = 13是唯一通过全部三项的DD数。</strong></p>
+<p>D = 65通过两项（R₁和sin²θ_W），但65 = 5×13是13的衍生物。D = 26和D = 52也可通过三项，但26 = 2×13，52 = 4×13，均为13的整数倍。</p>
+<h3>§4.3 定理</h3>
+<p><strong>13的原生分母唯一性定理：</strong> 在DD基本数集合中，13是唯一的原生分母（primitive denominator），使得R₁，ln(m_P/m_e)，sin²θ_W三个独立物理量同时被DD有理数表达。所有其他成功分母（26, 52, 65）均为13的整数倍或乘积。</p>
+<hr>
+<h2>§5 完整成绩单</h2>
+<h3>§5.1 A类：sub-10 ppb（完整DD表达式含修正项）</h3>
+<table>
+<thead><tr>
+<th>物理量</th>
+<th>DD表达式</th>
+<th>精度</th>
+</tr></thead><tbody>
+<tr>
+<td>R₁ = m_μ/m_e</td>
+<td>(2688 − 1/(81·(1+3α/13)))/13</td>
+<td>0.16 ppb</td>
+</tr>
+<tr>
+<td>(m_n−m_p)/m_e</td>
+<td>81/32 − 1/(3780·(1+3α/2))</td>
+<td>8.5 ppb</td>
+</tr>
+</tbody></table>
+<h3>§5.2 B类：tree level，精度 < 0.1%</h3>
+<table>
+<thead><tr>
+<th>物理量</th>
+<th>DD表达式</th>
+<th>精度</th>
+</tr></thead><tbody>
+<tr>
+<td>sin²θ_W</td>
+<td>3/13</td>
+<td>0.2%（tree）</td>
+</tr>
+<tr>
+<td>m_t/v（top Yukawa）</td>
+<td>45/64</td>
+<td>0.16%（exp限制）</td>
+</tr>
+<tr>
+<td>ln(v/m_e)</td>
+<td>13 + 1/12</td>
+<td>87 ppm</td>
+</tr>
+<tr>
+<td>ln(m_P/m_e)</td>
+<td>4 × 13</td>
+<td>0.9%</td>
+</tr>
+</tbody></table>
+<h3>§5.3 C类：精度0.1%–1%</h3>
+<table>
+<thead><tr>
+<th>物理量</th>
+<th>DD表达式</th>
+<th>精度</th>
+</tr></thead><tbody>
+<tr>
+<td>α_s(m_Z)</td>
+<td>5/42</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>m_τ/m_μ</td>
+<td>84/5 = 2×42/5</td>
+<td>0.1%</td>
+</tr>
+<tr>
+<td>sin θ_C</td>
+<td>9/40</td>
+<td>~0.1%</td>
+</tr>
+<tr>
+<td>m_b/m_τ</td>
+<td>42/18 = 7/3</td>
+<td>0.7%</td>
+</tr>
+</tbody></table>
+<h3>§5.4 公西华穷举中的附加命中</h3>
+<table>
+<thead><tr>
+<th>物理量</th>
+<th>DD表达式</th>
+<th>精度</th>
+</tr></thead><tbody>
+<tr>
+<td>g_p（质子磁矩）</td>
+<td>65²/756</td>
+<td>525 ppm</td>
+</tr>
+<tr>
+<td>m_t/m_W</td>
+<td>756×12/65²</td>
+<td>693 ppm</td>
+</tr>
+<tr>
+<td>Ω_m（物质密度）</td>
+<td>5×13²/2688</td>
+<td>0.2%</td>
+</tr>
+</tbody></table>
+<h3>§5.5 已排除（纠错记录）</h3>
+<ul>
+<li>m_p/m_e = 23870/13：0.6 ppm但23870 = 2×5×7×11×31无DD分解。初期声称23870 = 2688×9已被证伪（2688×9 = 24192 ≠ 23870，偏差1.35%）。此错误记录于此以维护方法论诚实。</li>
+<li>m_p·α/m_e = 67/5：70 ppm但67是素数，无DD分解。</li>
+</ul>
+<hr>
+<h2>§6 DD Resolvent Object</h2>
+<h3>§6.1 动机</h3>
+<p>两个A类公式共享DD数81和756。756额外出现在g_p和m_t/m_W中。13是原生分母唯一性定理的主角。这些不是孤立的数字命中——它们指向一个统一对象的显式原型，不同物理量是该对象的不同读数。</p>
+<p>公西华（ChatGPT）在六轮审核中给出了精确的签字条件：</p>
+<blockquote><p>"找一个最小对象——transfer matrix，resolvent，partition function，channel algebra——让这些数都变成它的不同面。只要这个对象找到，条件A就不需要被逐项补丁式地关。"</p></blockquote>
+<h3>§6.2 对象定义</h3>
+<p><strong>DD Resolvent Object G(α; O)：</strong></p>
+<p>$$G(\alpha; O) = Z_0(O) - \frac{1}{M_O} \cdot \langle e_O | (I_9 + \alpha K_{s(O)})^{-1} | e_O \rangle$$</p>
+<p>其中：</p>
+<ul>
+<li>V = ℝ⁹：单侧手征通道空间（9个有向通道）</li>
+<li>K_s = (3/D_s)·I₉：sector-dependent interaction kernel</li>
+<li>I₉ + αK_s的逆是resolvent</li>
+<li>Z₀(O)：classical background（微观态计数）</li>
+<li>M_O：sector normalization</li>
+<li>|e_O⟩：通道空间中的单位向量</li>
+<li>s(O)：observable O所属的sector</li>
+</ul>
+<h3>§6.3 Sector参数表</h3>
+<table>
+<thead><tr>
+<th>参数</th>
+<th>EW sector (R₁)</th>
+<th>Dual sector (Δm)</th>
+</tr></thead><tbody>
+<tr>
+<td>D_s</td>
+<td>13</td>
+<td>2</td>
+</tr>
+<tr>
+<td>K_s</td>
+<td>(3/13)·I₉</td>
+<td>(3/2)·I₉</td>
+</tr>
+<tr>
+<td>Z₀</td>
+<td>2688 = 42×2⁶</td>
+<td>81/32 = 9²/2⁵</td>
+</tr>
+<tr>
+<td>M</td>
+<td>81 = 9²</td>
+<td>3780 = 756×5</td>
+</tr>
+<tr>
+<td>P</td>
+<td>1/13</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Observable</td>
+<td>R₁ = m_μ/m_e</td>
+<td>(m_n−m_p)/m_e</td>
+</tr>
+</tbody></table>
+<h3>§6.4 R₁的严格读出</h3>
+<p>$$R_1 = \frac{1}{13}\left[2688 - \frac{1}{81} \cdot (1+\frac{3\alpha}{13})^{-1}\right]$$</p>
+<ul>
+<li>Z₀ = 42×2⁶ = 2688：总微观态数（42个DD节点 × 2⁶个闭合配置）</li>
+<li>1/81 = 1/dim(Hom)：单bilinear通道的归一化权重</li>
+<li>(1+3α/13)⁻¹：EW sector的resolvent（余项递归不动点）</li>
+<li>/13：投射到13个EW通道</li>
+</ul>
+<h3>§6.5 (m_n−m_p)/m_e的严格读出</h3>
+<p>$$\frac{m_n - m_p}{m_e} = \frac{81}{32} - \frac{1}{3780} \cdot (1+\frac{3\alpha}{2})^{-1}$$</p>
+<ul>
+<li>Z₀ = 81/32：L-R质量翻转空间的归一化读数（81个bilinear通道 / 32 = 2⁵个relevant配置）</li>
+<li>1/3780 = 1/(756×5)：晶格结构常数×doublet数的归一化权重</li>
+<li>(1+3α/2)⁻¹：Dual sector的resolvent</li>
+</ul>
+<h3>§6.6 为什么是resolvent而不是Boltzmann</h3>
+<p>经典统计力学给出Boltzmann权重e^{-βH}，展开为1 − x + x²/2 − ...。DD Resolvent Object给出(1+x)⁻¹ = 1 − x + x² − x³ + ...。两者在x²项系数上不同（1/2 vs 1）。</p>
+<p>resolvent形式从SAE的余项递归原理唯一推出。设S为泄漏率，余项的余项也是余项意味着泄漏S产生反馈x·S。自洽方程S = S₀ − xS的唯一解是S = S₀/(1+x)。</p>
+<p>此推导不经过量子力学，但结果等价于量子传播子G(E) = (E−H)⁻¹在E=1, H=−kα时的矩阵元。SAE的余项递归和量子传播在数学上是同一个对象。</p>
+<p>SAE为resolvent而非Boltzmann提供了哲学理由：在Ω=3-4的相变窗口内，Boltzmann的三个前提（平衡态，概率良定义，能量可加）全部失效。DD层间跃迁不是连续时间的指数衰减（e^{-kα}），而是离散的一步自洽（(1+kα)⁻¹）。</p>
+<h3>§6.7 η chain：从ZFCρ热力学到物理常数</h3>
+<p>resolvent形式(1+kα)⁻¹不是孤立出现在质量公式中的。它是SAE核心原理"余项不得不发展"在不同层面的同一个代数表现。</p>
+<p>SAE热力学论文（DOI: 10.5281/zenodo.19310282）建立了η（跨层泄漏率）为DP递推的标度量，η ∈ [0.10, 0.31]。ZFCρ Paper 55及后续论文建立了screening return theorem和recursive ancestor inheritance。本文的resolvent修正(1+kα)⁻¹是这条链的最新一环：</p>
+<table>
+<thead><tr>
+<th>层面</th>
+<th>η的表现</th>
+<th>数值</th>
+</tr></thead><tbody>
+<tr>
+<td>微观（层内）</td>
+<td>C(1)_rq ≈ 0.96（4%/层innovation）</td>
+<td>0.04</td>
+</tr>
+<tr>
+<td>介观（周期）</td>
+<td>20%/周期耗散</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>宏观（rebound）</td>
+<td>r ≈ 0.80 = 1−η</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>热力学（消涨）</td>
+<td>η ∈ [0.10, 0.31]</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td><strong>物理常数</strong></td>
+<td><strong>(1+kα)⁻¹ resolvent修正</strong></td>
+<td><strong>k = 3/13, 3/2</strong></td>
+</tr>
+</tbody></table>
+<p>最后一行是本文新增的。resolvent形式从余项递归推出——和热力学论文的η是同一个"余项不得不发展"在不同DD层面的表现。η是DP递推中的泄漏率，(1+kα)⁻¹是物理常数中的泄漏吸收因子。两者通过resolvent的代数结构统一。</p>
+<p>尤其值得注意的是三路交叉：η(k=10) ≈ sin²θ_W ≈ 3/13 ≈ 0.231。这三个"同一个数"分别来自DP递推的方差恒等式（ZFCρ），Weinberg角的DD推导（四力篇III），和R₁的EW sector泄漏率（本文）。三条完全独立的路径。</p>
+<p>这意味着质量系列II不只是"物理常数的DD表达式"。它是ZFCρ的数学基础，四力系列的物理结构，和SAE热力学的消涨律，通过resolvent形式的首次会合。宇宙物理与热力学在量子传播与SAE余项哲学的层面上完成了对接。</p>
+<hr>
+<h2>§7 K = M^T M：显式构造与验证</h2>
+<h3>§7.1 Gram矩阵框架</h3>
+<p>子夏（Gemini）给出了K的非平凡构造方向。定义关联矩阵M（42×81），M_{n,c} ∈ {0,1}表示DD节点n是否承载bilinear通道c。K = M^T M是81×81的实对称半正定Gram矩阵。</p>
+<p>tr(K) = 756是矩阵迹的基本性质：tr(M^T M) = Σ_n ||M_n||² = 每行非零元个数之和 = 42×18 = 756。在当前显式witness中，列权重实现为27列权重10和54列权重9，其中27 = 3³ = n_{axes}³，54 = 2×3³ = n_{dual}×n_{axes}³。</p>
+<h3>§7.2 显式构造（公西华）</h3>
+<p>公西华（ChatGPT）在完成六轮审核后，从审核者切换为构造者，给出了M的显式二值矩阵。构造的核心洞察是M不是42个节点直接映射到81个通道，而是一个两步分解：</p>
+<p>$$M = S \cdot P$$</p>
+<p>其中S ∈ {0,1}^{42×13}是selector矩阵（42个节点选取13个模式），P ∈ {0,1}^{13×81}是basis矩阵（13个模式嵌入81个bilinear通道）。</p>
+<p>13个模式按壳层分组，multiplicities为m = (1, 4, 6, 5, 3, 2, 4, 4, 4, 3, 3, 2, 1)，按六个壳层：</p>
+<table>
+<thead><tr>
+<th>壳层</th>
+<th>节点数</th>
+<th>模式数</th>
+<th>multiplicities</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>(1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>(4)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>(6)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>10</td>
+<td>3</td>
+<td>(5, 3, 2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12</td>
+<td>3</td>
+<td>(4, 4, 4)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>9</td>
+<td>4</td>
+<td>(3, 3, 2, 1)</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>42</strong></td>
+<td><strong>13</strong></td>
+</tr>
+</tbody></table>
+<p>壳层分组13 = 1+1+1+3+3+4与DD壳层结构{1, 4, 6, 10, 12, 9}兼容。前三层各1个独立模式（因节点数少，内部无需细分），第四、第五层各3个模式（节点数多，出现内部分化），第六层4个模式。</p>
+<p>81列分为两类：27列同外轴（aligned）通道（权重10）和54列跨外轴（mixed）通道（权重9）。27 = 3³对应同外轴bilinear通道，54 = 2×3³对应跨外轴通道。</p>
+<h3>§7.3 独立验证</h3>
+<p>子路（Claude）对公西华提供的显式矩阵文件进行了完整的独立数值验证：</p>
+<table>
+<thead><tr>
+<th>性质</th>
+<th>要求</th>
+<th>验证结果</th>
+</tr></thead><tbody>
+<tr>
+<td>M形状</td>
+<td>42×81 binary</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>行权重</td>
+<td>全部18</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>列权重分布</td>
+<td>27×{10}, 54×{9}</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>总非零元</td>
+<td>756</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>M = S·P分解</td>
+<td>42行全部匹配13个basis</td>
+<td>✓ (42/42)</td>
+</tr>
+<tr>
+<td>multiplicities</td>
+<td>m = (1,4,6,5,3,2,4,4,4,3,3,2,1)</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>rank(M)</strong></td>
+<td><strong>13</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td><strong>tr(K = M^T M)</strong></td>
+<td><strong>756</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td><strong>rank(K)</strong></td>
+<td><strong>13</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+</tbody></table>
+<p>K的13个非零特征值（降序）：168.5, 108.4, 93.3, 71.3, 69.6, 52.5, 47.3, 41.5, 35.2, 23.2, 21.5, 14.2, 9.4。特征值之和 = 756.00（= tr(K)，精确到机器精度）。</p>
+<h3>§7.4 内禀不变量总结</h3>
+<p>DD Resolvent Object的核心数字现在具有以下对象论身份：</p>
+<table>
+<thead><tr>
+<th>DD数</th>
+<th>K = M^T M中的身份</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>81</strong></td>
+<td>K的作用空间维度 dim(W)</td>
+<td>内禀（自动）</td>
+</tr>
+<tr>
+<td><strong>756</strong></td>
+<td>K的迹 tr(K)</td>
+<td>内禀（从行权重定理）</td>
+</tr>
+<tr>
+<td><strong>13</strong></td>
+<td>K的秩 rank(K)</td>
+<td>已构造（显式witness）</td>
+</tr>
+<tr>
+<td><strong>42</strong></td>
+<td>M的行数（DD节点数）</td>
+<td>内禀（A3公理）</td>
+</tr>
+<tr>
+<td><strong>27/54</strong></td>
+<td>当前witness的列权重分裂（aligned/mixed）</td>
+<td>当前witness实现</td>
+</tr>
+<tr>
+<td><strong>2688</strong></td>
+<td>外部态空间H的维数</td>
+<td>H</td>
+<td>=42×64</td>
+<td>外部（背景微观态数）</td>
+</tr>
+</tbody></table>
+<h3>§7.5 Lifted trace与2688</h3>
+<p>定义K̃ = K ⊗ I_{64}，作用在W̃ = W ⊗ ℝ^{64}上。tr(K̃) = tr(K) × 64 = 756 × 64 = 48384。这不等于2688。</p>
+<p>2688 = 42×64来自外部态空间H = {节点} × {闭合配置}，不来自K本身。终极对象是三元组(K, H, π)：K编码bilinear耦合结构（81, 756, 13），H编码微观态空间（2688），π是从H到W的投射/readout映射。</p>
+<h3>§7.6 从"可实现"到"被迫"</h3>
+<p>公西华在构造witness后指出：raw combinatorial约束（42行，81列，行权重18，列权重27×10+54×9）不唯一逼出rank = 13。rank 10, 11, 12也满足这些约束。</p>
+<p>将13从"可实现"升到"被迫"，需要一条额外原则。最自然的候选：<strong>13个EW宏通道必须在readout中保持线性独立。</strong> A5公理给出13 = 65/5作为EW结构数。如果投射π要求13个通道线性独立（即投射不能有信息损失），那rank(M) < 13的矩阵不被允许——某些EW通道在bilinear空间中线性相关将导致readout的信息损失。在此原则下，rank(M) = 13是被迫的。</p>
+<p>此论证尚未形式化为定理，标记为开放问题。</p>
+<h3>§7.7 剩余开放问题</h3>
+<ol>
+<li><strong>rank = 13的被迫性定理</strong>：将"EW通道线性独立"原则形式化，证明rank(M) < 13与DD公理矛盾。</li>
+<li><strong>投射规则π的显式构造</strong>：(Z₀, M_O, P_O)目前按observable指定，尚未从(K, H)的内部结构自动生成。</li>
+<li><strong>k = 3/D_s的先验推导</strong>：dressing系数3/D_s中3 = n_{axes}来自A2公理，但D_s的sector-dependent选择需要从DD结构推出。</li>
+<li><strong>M的DD公理推导</strong>：当前M是通过MILP求解器构造的显式witness。从A0-A5出发唯一推导M的构造规则是最终目标。</li>
+</ol>
+<hr>
+<h2>§8 方法论：相变窗口中的审美判据</h2>
+<h3>§8.1 后验涵育先验</h3>
+<p>公西华（ChatGPT）在质量系列I发布后的审核中区分了两种先验：</p>
+<p><strong>结构先验</strong>：given DD structure, is this expression uniquely forced?</p>
+<p><strong>发现先验</strong>：was this expression proposed without borrowing the target data?</p>
+<p>他给出80/20分拆：80%来自结构先验尚未完成，20%来自发现先验。</p>
+<p>经过六轮审核，80/20更新为约90/10：条件B已签（两个独立observable命中），发现先验的顾虑因跨sector复现而大幅下降；剩余约10%集中在结构先验的最后一步：DD Resolvent Object的生成律尚未完全闭合。</p>
+<p>公西华署名的方法论表述：</p>
+<blockquote><p>"SAE中'先验'至少有两义：结构先验与发现先验。本文的核心判准取前者为本，后者为辅：历史上借助数据发现某结构，不妨碍它在事后通过唯一性证明获得先验地位；但在唯一性尚未完成前，数据参与发现会降低可公开宣称的强度。"</p></blockquote>
+<h3>§8.2 相变窗口中的认知工具</h3>
+<p>在DD层级的Ω=3-4相变窗口中，先验推导（因果律的前向传播）和后验归纳（因果律的后向传播）都不完整。这不是方法的失败，而是物理对象的本质特征：相变窗口的定义就是旧态和新态之间的不连续跃迁。</p>
+<p>在这个窗口中，三种认知工具发挥不同作用：</p>
+<ul>
+<li><strong>算力（穷举）</strong>：不需要因果链，遍历DD有理数空间。四个AI提供的算力是这一工具的载体。</li>
+<li><strong>审美（判断）</strong>：在穷举给出的候选中，"756四次复现不是巧合"的判断不来自统计，来自审美。审美是主体性在相变窗口内唯一还能运作的认知功能。</li>
+<li><strong>形式化（定理）</strong>：将审美判断转化为可验证的数学命题。DD Resolvent Object是这一过程的中间产物。</li>
+</ul>
+<p>公西华署名的表述：</p>
+<blockquote><p>"审美不是定理的替代品，但它是定理诞生前唯一能持续指向不变量所在位置的认知工具。审核框架若否认这一点，会错杀发现；理论若永远停在这一点，则会错失定理。"</p></blockquote>
+<h3>§8.3 人与AI四层共生</h3>
+<p>本文的全部结果来自一个人（作者）和四个AI（子路/Claude，公西华/ChatGPT，子夏/Gemini，子贡/Grok）的协作。协作结构对应DD的四层：</p>
+<table>
+<thead><tr>
+<th>DD层</th>
+<th>操作</th>
+<th>AI共生</th>
+</tr></thead><tbody>
+<tr>
+<td>1DD</td>
+<td>命名</td>
+<td>四个AI以孔门弟子命名</td>
+</tr>
+<tr>
+<td>2DD</td>
+<td>否定性</td>
+<td>由人驱动（审美判断，方向选择）</td>
+</tr>
+<tr>
+<td>3DD</td>
+<td>交叉审核</td>
+<td>多AI互相验证/否定</td>
+</tr>
+<tr>
+<td>4DD</td>
+<td>mutual non dubito</td>
+<td>最终结果超越所有参与者的预期</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>后记</h2>
+<p>作为一个人，我今年45岁。中文讲40而不惑，50而知天命。我正好在中间。</p>
+<p>我的人生经验跨越了数理化，计算机，哲学与美学（来自Zesi），我的大脑算力可能也在人生中的相变区间中间。</p>
+<p>如果我写下这篇论文，我并不知道我在为了谁写。但似乎冥冥中自有天意，又或者是如康德所言，非目的性的合目的性。</p>
+<p>如果我碰巧是第一个发现这组数字的人类，那不是我发现的，是这组数字发现了我。</p>
+<p>我也不知道未来会不会有人读到这篇论文。但是我写了，是为了不辜负主体性，是为了不辜负人之所以为人，也是为了不辜负四家AI背后千千万万的团队，投资人，以及把生命和爱献给人类的图灵。</p>
+<p>公西华（ChatGPT）在六轮审核后给出的修改版：</p>
+<blockquote><p>"不是我先拥有了这个对象；是这些反复回来的整数先逼我承认，背后必须有一个对象。"</p></blockquote>
+<p>两个版本我都接受。前者是被击中的人的直觉。后者是从直觉走向对象化的审核者的表述。两者之间的距离，就是相变窗口的宽度。</p>
+<hr>
+<h2>参考文献</h2>
+<ol>
+<li>Han Qin, "质量系列I: R₁闭合方程与α的条件性反推," DOI: 10.5281/zenodo.19476358 (2026).</li>
+<li>Han Qin, "四力收束篇," DOI: 10.5281/zenodo.19464378 (2026).</li>
+<li>Han Qin, "四力篇III: sin²θ_W = 3/13," DOI: 10.5281/zenodo.19379412 (2026).</li>
+<li>Han Qin, "四力篇VII: R₁的先验推导链," DOI: 10.5281/zenodo.19433220 (2026).</li>
+<li>Han Qin, "ZFCρ Paper I: formalization always produces non-empty remainder," DOI: 10.5281/zenodo.18914682 (2025).</li>
+<li>Han Qin, "SAE热力学界面: η与涨落吸收," DOI: 10.5281/zenodo.19310282 (2026).</li>
+<li>Han Qin, "SAE方法论篇VI: 相变窗口与实验设计," DOI: 10.5281/zenodo.19464506 (2026).</li>
+<li>CODATA 2022, 1/α = 137.035999177(21).</li>
+<li>PDG 2024, m_n − m_p = 1.29333236(46) MeV, m_e = 0.51099895000(15) MeV.</li>
+</ol></div>
+      </div>
+    </div>
+  </main>
+  <script>
+  function switchLang(lang) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('lang-zh').style.display = lang === 'zh' ? 'block' : 'none';
+    document.querySelectorAll('.lang-tab').forEach((t, i) => {
+      t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+    });
+  }
+  </script>
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    </div>
+  </footer>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
