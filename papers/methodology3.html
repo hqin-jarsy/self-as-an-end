@@ -111,12 +111,12 @@
 
   <!-- Language Tabs -->
   <div class="lang-tabs">
-    <div class="lang-tab active" onclick="switchLang('en', this)">English</div>
-    <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
+    <div class="lang-tab active" onclick="switchLang('en')">English</div>
+    <div class="lang-tab" onclick="switchLang('zh')">中文</div>
   </div>
 
   <!-- ========== ENGLISH ========== -->
-  <div class="lang-content active" id="lang-en">
+  <div class="lang-content active" id="lang-en" style="display:block">
 
   <div class="abstract-box">
     <div class="abstract-label">Abstract</div>
@@ -281,7 +281,7 @@
   </div><!-- end lang-en -->
 
   <!-- ========== CHINESE ========== -->
-  <div class="lang-content" id="lang-zh">
+  <div class="lang-content" id="lang-zh" style="display:none">
 
   <div class="abstract-box">
     <div class="abstract-label">摘要</div>
@@ -459,11 +459,12 @@
 </footer>
 
 <script>
-function switchLang(lang, tab) {
-  document.querySelectorAll('.lang-content').forEach(function(el) { el.classList.remove('active'); });
-  document.querySelectorAll('.lang-tab').forEach(function(el) { el.classList.remove('active'); });
-  document.getElementById('lang-' + lang).classList.add('active');
-  tab.classList.add('active');
+function switchLang(lang) {
+  document.getElementById('lang-en').style.display = lang === 'en' ? 'block' : 'none';
+  document.getElementById('lang-zh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.querySelectorAll('.lang-tab').forEach(function(t, i) {
+    t.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'zh' && i === 1));
+  });
   var titles = {
     en: 'How to Find Remainders with AI',
     zh: '怎么用AI找余项'
