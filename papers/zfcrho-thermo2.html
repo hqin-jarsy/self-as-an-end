@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microscopic Mechanism of the Fluctuation Absorption Rate η: From Per-Layer Innovation to Damped Oscillation — Han Qin</title>
+  <meta name="description" content="The first thermodynamic interface paper (DOI: 10.5281/zenodo.19310282) defined the fluctuation absorption rate η and reported η ∈ [0.10, 0.31] in the zero-parameter integer complexity DP recursion. Th">
+  <meta name="author" content="Han Qin (秦汉)">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .paper-table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
+    .paper-table th, .paper-table td { border: 1px solid #ddd; padding: 0.4em 0.7em; text-align: left; vertical-align: top; }
+    .paper-table th { background: #f5f5f5; font-weight: 600; }
+    .math { font-family: monospace; background: #f8f8f8; padding: 0.3em 0.6em; border-radius: 3px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../guide.html">Guide</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<main class="paper-page">
+  <div class="lang-switcher">
+    <button onclick="switchLang('en')" id="btn-en" class="active">EN</button>
+    <button onclick="switchLang('zh')" id="btn-zh">ZH</button>
+  </div>
+  <div class="lang-content" id="lang-en" style="display:block">
+    <div class="paper-header">
+      <h1 class="paper-title">Microscopic Mechanism of the Fluctuation Absorption Rate η: From Per-Layer Innovation to Damped Oscillation</h1>
+      <p class="paper-subtitle">ZFCρ Thermodynamic Interface II</p>
+      <p class="paper-author">Han Qin &nbsp;&middot;&nbsp; <a href="https://doi.org/10.5281/zenodo.19511065" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19511065</a></p>
+    </div>
+    <div class="abstract"><h2>Abstract</h2><p>The first thermodynamic interface paper (DOI: 10.5281/zenodo.19310282) defined the fluctuation absorption rate η and reported η ∈ [0.10, 0.31] in the zero-parameter integer complexity DP recursion. This paper provides a mechanistic answer to the question left open: why does the canonical DP value fall near 0.2?</p><p>The detrended residual field χ(p) = ρ_E(p) − λ ln p − μ_{p mod 12}, decomposed by dyadic layer v₂(p−1) = ℓ, reveals a quantitative chain across three scales (455 million primes, N = 10¹⁰):</p><p>Microscopic: the within-layer autocorrelation C(1)_ρ(q) ≈ 0.96, constant across all 25 layers. Only 4% of each layer's variation is innovation; 96% is inherited from ancestors.</p><p>Mesoscopic to macroscopic: define the effective layer count m_eff := ln(0.80)/ln(0.96) ≈ 5.47. One oscillation cycle integrates approximately 5–6 effective innovation layers, yielding a compound dissipation rate 1 − 0.96^{5.47} ≈ 0.20. The cumulative covariance G_j(M) within dyadic blocks exhibits damped oscillation after its principal peak, with successive-peak ratio r ≈ 0.80 = 1 − η, independently verified at j = 26 and 29.</p><p>Scale-invariant: the conditional variance Var(χ | v₂ = ℓ) ≈ 0.5, constant across 25 layers. Each layer contributes O(1) to the spectral budget. The additive/multiplicative competition of the DP recursion is scale-invariant: trend is absorbed by the 2^ℓ factor; residual fluctuations do not depend on scale.</p><p>The key intermediary is delayed multiplicative feedback: when ρ values are systematically elevated, multiplicative decomposition becomes more efficient (restoring force), while each innovation layer dissipates 4% of coherent energy (damping), producing underdamped oscillation rather than monotone relaxation. This discrete feedback structure naturally points toward a resolvent-like correction kernel (1+x)⁻¹ rather than continuous exponential decay e^{-x}. The data rule out primitive monotone-screening closure but do not by themselves exclude all continuous-time oscillatory alternatives.</p><p>The damped oscillation mechanism is specific to the DP recursion: Lindley queues, which share the universal step-level η definition but lack multiplicative feedback, do not exhibit the same oscillatory G(M) profile (rebound ratio ≈ 0.95, not 1−η). The step-level definition of η is universal; the microscopic mechanism realizing η is system-specific. The value 0.2 is the intrinsic central scale of the zero-parameter DP recursion, not a universal constant for all min/max systems.</p><p>Falsifiable prediction: at N ≥ 10¹², the rebound ratio r at dyadic blocks j = 35–40 should fall within [0.75, 0.85].</p><p>**Keywords:** fluctuation absorption rate, damped oscillation, recursive ancestor inheritance, scale-invariant variance, resolvent, integer complexity</p><p>---</p></div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>The first thermodynamic interface paper (DOI: 10.5281/zenodo.19310282) defined the fluctuation absorption rate η and reported η ∈ [0.10, 0.31] in the zero-parameter integer complexity DP recursion. This paper provides a mechanistic answer to the question left open: why does the canonical DP value fall near 0.2?</p>
+<p>The detrended residual field χ(p) = ρ_E(p) − λ ln p − μ_{p mod 12}, decomposed by dyadic layer v₂(p−1) = ℓ, reveals a quantitative chain across three scales (455 million primes, N = 10¹⁰):</p>
+<p>Microscopic: the within-layer autocorrelation C(1)_ρ(q) ≈ 0.96, constant across all 25 layers. Only 4% of each layer's variation is innovation; 96% is inherited from ancestors.</p>
+<p>Mesoscopic to macroscopic: define the effective layer count m_eff := ln(0.80)/ln(0.96) ≈ 5.47. One oscillation cycle integrates approximately 5–6 effective innovation layers, yielding a compound dissipation rate 1 − 0.96^{5.47} ≈ 0.20. The cumulative covariance G_j(M) within dyadic blocks exhibits damped oscillation after its principal peak, with successive-peak ratio r ≈ 0.80 = 1 − η, independently verified at j = 26 and 29.</p>
+<p>Scale-invariant: the conditional variance Var(χ | v₂ = ℓ) ≈ 0.5, constant across 25 layers. Each layer contributes O(1) to the spectral budget. The additive/multiplicative competition of the DP recursion is scale-invariant: trend is absorbed by the 2^ℓ factor; residual fluctuations do not depend on scale.</p>
+<p>The key intermediary is delayed multiplicative feedback: when ρ values are systematically elevated, multiplicative decomposition becomes more efficient (restoring force), while each innovation layer dissipates 4% of coherent energy (damping), producing underdamped oscillation rather than monotone relaxation. This discrete feedback structure naturally points toward a resolvent-like correction kernel (1+x)⁻¹ rather than continuous exponential decay e^{-x}. The data rule out primitive monotone-screening closure but do not by themselves exclude all continuous-time oscillatory alternatives.</p>
+<p>The damped oscillation mechanism is specific to the DP recursion: Lindley queues, which share the universal step-level η definition but lack multiplicative feedback, do not exhibit the same oscillatory G(M) profile (rebound ratio ≈ 0.95, not 1−η). The step-level definition of η is universal; the microscopic mechanism realizing η is system-specific. The value 0.2 is the intrinsic central scale of the zero-parameter DP recursion, not a universal constant for all min/max systems.</p>
+<p>Falsifiable prediction: at N ≥ 10¹², the rebound ratio r at dyadic blocks j = 35–40 should fall within [0.75, 0.85].</p>
+<p><strong>Keywords:</strong> fluctuation absorption rate, damped oscillation, recursive ancestor inheritance, scale-invariant variance, resolvent, integer complexity</p>
+<hr>
+<h2>§1 Introduction</h2>
+<h3>1.1 The open question from Paper I</h3>
+<p>Paper I [1] established the fluctuation absorption rate η := 1 − |Cov(Δf, Δr)|/Var(Δf) in the zero-parameter DP recursion ρ_E(n) = min(ρ_E(n−1)+1, M(n)), reporting η ∈ [0.10, 0.31] across 17 Ω-shells (variance identity 17/17 verified). Lindley queues (G/G/1) independently validated η's generality (21/21). The exact skeleton of the complementary cancellation law (Reset-Slack decomposition, conditional remainder transfer law) was established.</p>
+<p>The core open question: why does the DP canonical η fall near 0.2, rather than 0.05 (as in M/D/1 at ρ = 0.3) or 0.5? Paper I measured η but did not explain it.</p>
+<h3>1.2 η ≈ 0.2 is not a number — it is a chain</h3>
+<p>Paper I reported η ∈ [0.10, 0.31] across 17 Ω-shells. Throughout this paper, η_c ≈ 0.2 denotes the median of shells Ω = 4–12 (sample > 2000 each), giving η values in [0.168, 0.249] with median ≈ 0.20. The low-Ω end (k = 2, η = 0.10) and high-Ω end (k ≥ 14, sample < 2500) are excluded from the central value.</p>
+<p>The substantive content of this paper is not the algebraic identity 1 − r = 1 − C(1)^{m_eff} — which is a tautological rewriting — but rather that two independent observables can be unified by a single effective-layer picture:</p>
+<table class="paper-table"><thead><tr>
+<th>Observable</th>
+<th>Value</th>
+<th>Source</th>
+<th>Independence</th>
+</tr></thead><tbody>
+<tr>
+<td>C(1)_ρ(q)</td>
+<td>0.96</td>
+<td>within-layer χ-autocorrelation</td>
+<td>prime sequence measurement</td>
+</tr>
+<tr>
+<td>r</td>
+<td>0.80</td>
+<td>G_j(M) successive-peak ratio</td>
+<td>dyadic block cumulative covariance</td>
+</tr>
+</tbody></table>
+<p>Their relationship:</p>
+<p>m_eff := ln r / ln C(1) = ln(0.80)/ln(0.96) ≈ 5.47</p>
+<p>Here m_eff is inferred from two independent observables rather than predicted a priori. The substantive content is that the inferred value m_eff ≈ 5.47 admits a plausible interpretation as the number of effective innovation layers integrated over one oscillation cycle. From this, the typical unabsorbed fraction of the zero-parameter DP recursion falls at η_c ≈ 1 − r ≈ 0.2.</p>
+<h3>1.3 Claim-status map</h3>
+<table class="paper-table"><thead><tr>
+<th>Claim</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr>
+<td>(a) η_c ≈ 0.2 is quantitatively consistent with 4% innovation × m_eff ≈ 5.5 effective layers</td>
+<td>Numerical regularity</td>
+<td>C(1)=0.96, r=0.80, 25 layers</td>
+</tr>
+<tr>
+<td>(b) r ≈ 0.80 indicates block-scale screening is a damped oscillation realization of step-level absorption</td>
+<td>Numerical regularity</td>
+<td>j=26, 29 independent</td>
+</tr>
+<tr>
+<td>(c) Var(χ</td>
+<td>ℓ) ≈ 0.5 is consistent with the scale-invariant additive/multiplicative competition</td>
+<td>Numerical regularity</td>
+<td>25 layers, 455M primes</td>
+</tr>
+<tr>
+<td>(d) Discrete delayed feedback points toward a resolvent-like correction kernel</td>
+<td>Mechanism argument</td>
+<td>Open problem</td>
+</tr>
+</tbody></table>
+<p>This paper does not claim: η ≈ 0.2 holds for all min/max recursions. Does not claim the resolvent strictly excludes all Boltzmann-type alternatives. Does not claim the χ-field statistics are identical to the step-level η definition (the bridge is built in §2).</p>
+<h3>1.4 Notation</h3>
+<p>To avoid confusion between the fluctuation absorption rate and the detrended field (which shared the letter η in Papers 54–55):</p>
+<ul>
+<li><strong>η</strong>: always the fluctuation absorption rate η := 1 − |Cov(Δf, Δr)|/Var(Δf).</li>
+<li><strong>χ(p)</strong>: the detrended residual field χ(p) = ρ_E(p) − λ ln p − μ_{p mod 12}. (Denoted η(p) in Papers 54–55.)</li>
+<li><strong>C(1)_ρ(q)</strong>: within-layer autocorrelation of ρ(q) for consecutive same-layer primes, where q = (p−1)/2^{v₂(p−1)} is the odd part of p−1.</li>
+</ul>
+<p>Other notation follows Paper I: A = Δf + Δr (step decomposition), Ω = number of prime factors (shell condition), f/r = structural input / optimization remainder.</p>
+<h3>1.5 Paper structure</h3>
+<p>§2 builds a bridge from the χ-field language of Papers 54–55 to the f/r language of Paper I. §3–§5 develop the η chain at three scales (microscopic / mesoscopic-macroscopic / scale-invariant). §6 discusses discrete feedback and the resolvent-like correction kernel. §7 gives discussion and open problems.</p>
+<hr>
+<h2>§2 From Ancestor Inheritance to Complementary Cancellation: Bridge</h2>
+<h3>2.1 The connection problem</h3>
+<p>Paper I's η is defined on the step decomposition A = Δf + Δr. This paper's main evidence comes from the χ-field autocorrelation, conditional variance, and dyadic block cumulative covariance G_j(M). A careful reader will ask: are you explaining the same η, or a different spectral quantity?</p>
+<p>This section establishes the connection. The core proposition: delayed multiplicative feedback drives Δf and Δr into anti-phase, and this anti-phase coupling is the microscopic origin of the complementary cancellation law.</p>
+<h3>2.2 Exact shift reduction</h3>
+<p>For a prime p, ρ_E(p) = ρ_E(p−1) + 1 (the additive path is the only path for primes). Therefore</p>
+<p>χ(p) = ρ_E(p) − λ ln p − μ_{p mod 12} = [ρ_E(p−1) − λ ln(p−1)] + [1 − λ·ln(p/(p−1)) − μ_{p mod 12}]</p>
+<p>The second bracket satisfies ln(p/(p−1)) = O(1/p) = O(2^{-j}) within dyadic block I_j. Thus χ(p) is essentially determined by ρ_E(p−1) — a value at a composite number.</p>
+<p>Note: χ is defined only on primes (§3.1). The argument here is that χ(p) is driven by the ρ_E value at the composite p−1, not that χ(p−1) is defined.</p>
+<h3>2.3 Multiplicative path = carrier of structural input f</h3>
+<p>At composite n, ρ_E(n) = min(ρ_E(n−1)+1, M(n)). When M(n) < ρ_E(n−1)+1, the multiplicative path wins.</p>
+<p>In Paper I's language: f(n) = Σ_{q^a ∥ n} ρ_E(q^a) is the factorization contribution (structural input), r(n) = ρ_E(n) − f(n) is the optimization remainder. A = Δf + Δr.</p>
+<p>The cancellation law Cov(Δf, Δr) ≈ −Var(Δf) says: when Δf is large (the factor structure gives a large multiplicative saving), Δr tends to compensate in the opposite direction — the min operation compresses away the excess "saving."</p>
+<h3>2.4 χ-field autocorrelation: an empirical shadow of the cancellation law</h3>
+<p>The within-layer autocorrelation C(1)_ρ(q) ≈ 0.96 means that consecutive same-layer primes have highly correlated χ values. 96% of the signal comes from shared ancestral factor structure; only 4% is layer-specific innovation.</p>
+<p>Heuristic translation to f/r language: consecutive primes p and p' share most of their factor structure (their p−1 and p'−1 have similar deep dyadic structure). Therefore Δf(p) and Δf(p') are highly correlated. The cancellation law requires Δr to track Δf (anti-phase absorption) — so Δr(p) and Δr(p') are also highly correlated. The entire (f, r) pair propagates within each layer with high correlation.</p>
+<p>The within-layer autocorrelation of the χ-field can be viewed as an empirical projection of the cancellation law along the sequence direction. The precise mapping between C(1) and η remains an open problem.</p>
+<h3>2.5 Damped oscillation = block-scale accumulation of the cancellation law</h3>
+<p>G_j(M) is the cumulative covariance of the first M coarse blocks within dyadic block I_j. It measures how χ-field correlations accumulate and decay within a block.</p>
+<p>In Paper I's language: G_j(M) buildup (positive first half) corresponds to local imperfect cancellation (accumulation of η > 0). G_j(M) decay (negative second half and oscillation) corresponds to the delayed multiplicative feedback — when accumulated positive bias is large enough, multiplicative paths become more efficient, pulling ρ back, producing overshoot.</p>
+<p>Rebound ratio r ≈ 0.80 = 1 − η. Each oscillation cycle, the accumulated cancellation imperfection (η ≈ 0.2) is absorbed by one cycle of damping. 80% survives to the next cycle.</p>
+<p><strong>§2 conclusion:</strong> The χ-field autocorrelation (C(1) ≈ 0.96), conditional variance (Var(χ|ℓ) ≈ 0.5), and damped oscillation (r ≈ 0.80) are not "another spectral quantity" — they are projections of the cancellation law Cov(Δf, Δr) ≈ −Var(Δf) at different scales. §3–§5 develop these three projections.</p>
+<hr>
+<h2>§3 Microscopic Mechanism: Recursive Ancestor Inheritance</h2>
+<h3>3.1 The χ-field on primes</h3>
+<p>χ(p) = ρ_E(p) − λ · ln p − μ_{p mod 12}</p>
+<p>where λ = 3.856763 (regression slope of ρ_E vs ln p over 455,052,511 primes, N = 10¹⁰), and μ_r is the residue class mean correction (r = 1: −0.747, r = 5: −0.326, r = 7: −0.211, r = 11: +0.276). χ has mean zero by construction.</p>
+<h3>3.2 Dyadic layer decomposition</h3>
+<p>Each prime p > 2 has p−1 even. Define the dyadic layer ℓ = v₂(p−1). By Dirichlet's theorem: the fraction of primes with v₂(p−1) = ℓ converges to π_ℓ = 2^{−ℓ}, and the mean gap between consecutive same-layer primes is L_ℓ = 2^ℓ. The structural identity π_ℓ · L_ℓ = 1 holds exactly.</p>
+<h3>3.3 Core observation: C(1)_ρ(q) ≈ 0.96 across 25 layers</h3>
+<p>For each dyadic layer ℓ, all primes in that layer are sorted by prime index, and the lag-1 autocorrelation of consecutive χ values is computed.</p>
+<p>Result: C(1)_ρ(q) ≈ 0.96 across all 25 layers (ℓ = 1 to 25).</p>
+<table class="paper-table"><thead><tr>
+<th>ℓ</th>
+<th>C(1)</th>
+<th>ℓ</th>
+<th>C(1)</th>
+<th>ℓ</th>
+<th>C(1)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.960</td>
+<td>10</td>
+<td>0.963</td>
+<td>19</td>
+<td>0.958</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.959</td>
+<td>11</td>
+<td>0.961</td>
+<td>20</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.961</td>
+<td>12</td>
+<td>0.960</td>
+<td>21</td>
+<td>0.952</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.960</td>
+<td>13</td>
+<td>0.962</td>
+<td>22</td>
+<td>0.949</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.961</td>
+<td>14</td>
+<td>0.959</td>
+<td>23</td>
+<td>0.944</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.962</td>
+<td>15</td>
+<td>0.958</td>
+<td>24</td>
+<td>0.940</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.963</td>
+<td>16</td>
+<td>0.957</td>
+<td>25</td>
+<td>0.937</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.964</td>
+<td>17</td>
+<td>0.956</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.963</td>
+<td>18</td>
+<td>0.959</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Mean for ℓ = 1–18 (sample > 20,000): 0.960. Layers ℓ = 19–25 (sample 436–13,963) are slightly lower (0.937–0.958). Two explanations are not mutually exclusive: finite-sample effects (ℓ = 20 has only 436 primes) and a higher-order correction C(1)(ℓ) = C_∞ − δ/ℓ^β. The latter is directionally consistent with Paper I's trend of η increasing with Ω (η from 0.10 to 0.27): deeper layers have slightly higher innovation rate, hence slightly lower absorption efficiency. Current data (N = 10¹⁰) cannot distinguish the two effects; N ≥ 10¹² is needed. This issue does not affect the qualitative structure of the η chain — if C(1) has ℓ-dependence, m_eff becomes a slowly varying function rather than a constant.</p>
+<h3>3.4 Meaning of the 4% innovation</h3>
+<p>1 − C(1) ≈ 0.04. In each step, 96% of the χ variation is predictable from the previous step (ancestor inheritance); 4% is unpredictable (layer-specific innovation).</p>
+<p>Under a one-step AR surrogate for within-layer propagation, the implied innovation variance is V_i ≈ (1 − C(1)²) × Var(χ|ℓ) ≈ (1 − 0.92) × 0.5 ≈ 0.04, comparable in magnitude to Paper I's step variance Var(A) ≈ 0.3–1.3. Note that the AR(1) approximation is a surrogate model, not an identity automatically following from the lag-1 autocorrelation.</p>
+<h3>3.5 Scale invariance of the DP recursion: why C(1) is constant</h3>
+<p>The additive/multiplicative competition ρ_E(n) = min(ρ_E(n−1)+1, M(n)) is scale-invariant. The multiplicative efficiency depends on the relative factor structure, not the absolute size of n.</p>
+<p>For the dyadic decomposition p − 1 = 2^ℓ · q: the trend component λ·ℓ·ln 2 is absorbed by the 2^ℓ factor (appearing in E[χ|ℓ], which decreases by ~0.35 per layer). The residual variation comes from ρ(q) − λ ln q — the same detrended complexity problem at scale q. Since the DP competition is scale-invariant, Var(ρ(q) − λ ln q) is independent of q's scale. Therefore C(1)_ρ(q) does not depend on ℓ.</p>
+<h3>3.6 Relation to Paper 54</h3>
+<p>Paper 54 [2] reached complementary conclusions from a different angle:</p>
+<table class="paper-table"><thead><tr>
+<th>Paper 54 quantity</th>
+<th>Value</th>
+<th>This paper's counterpart</th>
+</tr></thead><tbody>
+<tr>
+<td>Corr(χ₀, χ₁) = 0.76</td>
+<td>cross-layer (adjacent dyadic layers)</td>
+<td>inter-layer transfer</td>
+</tr>
+<tr>
+<td>Innovation δ autocorrelation < 0.025</td>
+<td>innovation is near-white</td>
+<td>independence of 4% innovation</td>
+</tr>
+<tr>
+<td>C(1)_ρ(q) ≈ 0.96</td>
+<td>within-layer consecutive primes (this paper's core)</td>
+<td>intra-layer inheritance</td>
+</tr>
+</tbody></table>
+<h3>3.7 From 4% innovation to η: preview</h3>
+<p>C(1) ≈ 0.96 is the starting point of the η chain. How does 4% per-layer innovation compound to η ≈ 0.2? The answer is in §4: damped oscillation compounds the per-layer innovation across m_eff ≈ 5.5 effective layers, giving 1 − 0.96^{5.47} ≈ 0.20.</p>
+<hr>
+<h2>§4 Mesoscopic-Macroscopic Mechanism: Damped Oscillation and m_eff</h2>
+<h3>4.1 G_j(M) is not monotonically decreasing</h3>
+<p>Within dyadic block I_j = [2^j, 2^{j+1}), the cumulative covariance G_j(M) is computed over M coarse blocks. The standard screening picture predicts monotone post-peak decay. The actual behavior is damped oscillation:</p>
+<p>j = 29 profile:</p>
+<table class="paper-table"><thead><tr>
+<th>Position</th>
+<th>M</th>
+<th>G_j(M)</th>
+<th>Fraction of peak</th>
+</tr></thead><tbody>
+<tr>
+<td>Peak</td>
+<td>74</td>
+<td>123,225</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>First trough</td>
+<td>~394</td>
+<td>21,471</td>
+<td>17.4%</td>
+</tr>
+<tr>
+<td><strong>Rebound</strong></td>
+<td><strong>~724</strong></td>
+<td><strong>98,265</strong></td>
+<td><strong>79.7%</strong></td>
+</tr>
+<tr>
+<td>Second decay</td>
+<td>~1,217</td>
+<td>0</td>
+<td>0% (zero-crossing)</td>
+</tr>
+</tbody></table>
+<p>Rebound peak / original peak = 0.797 ≈ 0.80. At j = 26: rebound ratio = 0.806. Two independent j values yield consistent r ≈ 0.80.</p>
+<h3>4.2 Three elements of damped oscillation</h3>
+<p>Restoring force (multiplicative screening): when χ values are systematically high, multiplicative decomposition becomes more efficient — pulling ρ back toward trend. Overshoot is possible.</p>
+<p>Damping (per-layer innovation dissipation): each dyadic layer has 4% unpredictable innovation (§3.3). Coherent signal loses 4% per layer to incoherent fluctuations.</p>
+<p>Inertia (spectral budget): dyadic block I_j contains O(2^j/j) primes across O(j) effective layers. Larger j means more layers, more inertia, slower oscillation, longer period.</p>
+<h3>4.3 m_eff: quantitative bridge from 0.96 to 0.80</h3>
+<p>Define the effective layer count</p>
+<p>m_eff := ln r / ln C(1) = ln(0.80) / ln(0.96) = (−0.2231)/(−0.04082) = 5.47</p>
+<p>Note: m_eff is defined from r and C(1), so 1 − C(1)^{m_eff} = 1 − r is an algebraic identity. The substantive content is not the identity itself, but that the inferred m_eff ≈ 5.47 admits a plausible interpretation as the number of effective innovation layers integrated over one oscillation cycle. Paper 55's delayed feedback oscillation provides structural justification for this effective layer count.</p>
+<p>Inference of η_c:</p>
+<p>η_c = 1 − r = 1 − C(1)^{m_eff} ≈ 0.20</p>
+<p>This derivation introduces no new free parameters, using only independently observed per-layer retention (C(1) ≈ 0.96) and successive-peak ratio (r ≈ 0.80). m_eff is inferred, not predicted a priori.</p>
+<h3>4.4 Period scaling</h3>
+<table class="paper-table"><thead><tr>
+<th>j</th>
+<th>Half-period (M)</th>
+<th>Full period (M)</th>
+<th>T ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>26</td>
+<td>~40</td>
+<td>~80</td>
+<td>—</td>
+</tr>
+<tr>
+<td>29</td>
+<td>~320</td>
+<td>~650</td>
+<td>~8.0</td>
+</tr>
+</tbody></table>
+<p>T_{29}/T_{26} = 8.000 = 2³. Paper 59's fine-grained j-scan (19 consecutive j values, j = 14–32) confirms: R_wt = B_j²/(j·D_j) oscillates with period ≈ 7–9 in j, all 19 values within [0.79, 25.3].</p>
+<h3>4.5 R_wt oscillation is the block-scale readout of the η chain</h3>
+<p>Paper I's η is measured step-by-step. This paper's r is measured block-by-block. Their relationship: 1 − η = r. The step-level cancellation law Cov(Δf, Δr) ≈ −Var(Δf) is the microscopic process; block-level damped oscillation r ≈ 0.80 is its macroscopic manifestation after accumulation over O(j) layers.</p>
+<h3>4.6 Claim boundary</h3>
+<p><strong>Claims:</strong> The observed rebound ratio r ≈ 0.80 indicates that block-scale screening return can be understood as a damped oscillation realization of the step-level absorption mechanism. m_eff ≈ 5.47 is directly inferred from two independent observables.</p>
+<p><strong>Does not claim:</strong> r ≈ 0.80 is an exact constant. m_eff ≈ 5.47 has an a priori derivation. The damped oscillation provides mechanism support for sub-exponential G_j(M) return, but does not constitute a proof of L_j polynomial — Paper 55 explicitly noted that the geometric envelope controls positive tail mass, not first return time.</p>
+<h3>4.7 Lindley queues do not share the damped oscillation mechanism</h3>
+<p>Direct test: for 9 Lindley queue configurations from Paper I (M/D/1, M/M/1, M/Pareto/1, each at 3 loads), the cumulative autocovariance G(M) of the waiting time W_n was computed.</p>
+<p>Result: Lindley G(M) rebound ratios are all in [0.93, 0.99] (shallow troughs), not equal to 1−η. Most cases show no clear oscillation.</p>
+<table class="paper-table"><thead><tr>
+<th>Queue</th>
+<th>η</th>
+<th>1−η (predicted r)</th>
+<th>r_rebound (observed)</th>
+</tr></thead><tbody>
+<tr>
+<td>M/D/1 ρ=0.70</td>
+<td>0.40</td>
+<td>0.60</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>M/M/1 ρ=0.70</td>
+<td>0.60</td>
+<td>0.40</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td>M/Par/1 ρ=0.90</td>
+<td>0.81</td>
+<td>0.19</td>
+<td>0.94</td>
+</tr>
+</tbody></table>
+<p>Reason: The DP recursion has multiplicative structure (factorization creates delayed feedback → overshoot → oscillation). Lindley queues are purely additive + max truncation, with no delayed feedback and no oscillation.</p>
+<p>Conclusion: η as a step-level absorption measure is universal (Paper I: both DP and Lindley share it). The microscopic mechanism realizing η is system-specific. The DP's damped oscillation (r ≈ 0.80 = 1−η, m_eff ≈ 5.47) arises from the delayed feedback of the additive/multiplicative competition — a mechanism specific to the DP recursion. Lindley's η comes from direct truncation (max operation), without oscillation. m_eff ≈ 5.47 is the DP's intrinsic number, not a universal constant.</p>
+<hr>
+<h2>§5 Scale-Invariant Shell Variance</h2>
+<h3>5.1 Core observation: Var(χ | v₂ = ℓ) ≈ 0.5 across 25 layers</h3>
+<table class="paper-table"><thead><tr>
+<th>ℓ</th>
+<th>Var(χ</th>
+<th>ℓ)</th>
+<th>ℓ</th>
+<th>Var(χ</th>
+<th>ℓ)</th>
+<th>ℓ</th>
+<th>Var(χ</th>
+<th>ℓ)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.554</td>
+<td>10</td>
+<td>0.513</td>
+<td>19</td>
+<td>0.425</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.554</td>
+<td>11</td>
+<td>0.467</td>
+<td>20</td>
+<td>0.421</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.514</td>
+<td>12</td>
+<td>0.503</td>
+<td>21</td>
+<td>0.347</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.532</td>
+<td>13</td>
+<td>0.446</td>
+<td>22</td>
+<td>0.436</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.488</td>
+<td>14</td>
+<td>0.501</td>
+<td>23</td>
+<td>0.232</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.524</td>
+<td>15</td>
+<td>0.447</td>
+<td>24</td>
+<td>0.401</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.485</td>
+<td>16</td>
+<td>0.485</td>
+<td>25</td>
+<td>0.358</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.514</td>
+<td>17</td>
+<td>0.425</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.465</td>
+<td>18</td>
+<td>0.509</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Odd-layer mean: 0.474. Even-layer mean: 0.521. Overall mean: 0.497 ≈ 1/2.</p>
+<h3>5.2 Meaning: "fluctuations are an eigenquantity"</h3>
+<p>Conditioning on v₂(p−1) = ℓ changes the conditional mean E[χ|ℓ] (decreasing by ~0.35 per layer) but not the conditional variance. Mean is non-orthogonal; variance is orthogonal. The detrended residual variance does not depend on which layer of the DP recursion you observe.</p>
+<h3>5.3 Scale invariance of the DP (mechanism)</h3>
+<p>In p−1 = 2^ℓ · q, the trend component λ·ℓ·ln 2 is absorbed by the 2^ℓ factor (appearing in E[χ|ℓ]). The residual comes from ρ(q) − λ ln q — the same detrended complexity problem replicated at scale q. Since the DP competition is scale-invariant, Var(ρ(q) − λ ln q) is independent of q's scale.</p>
+<h3>5.4 Per-layer spectral budget</h3>
+<p>From π_ℓ · L_ℓ = 1 and Var(χ|ℓ) = O(1), each layer's contribution to the spectral budget equals Var(χ|ℓ) ≈ 0.5. Total budget = Σ 0.5 = O(log N) = O(j) — polynomial, not exponential. This is the per-unit-range budget that supports screened long memory.</p>
+<h3>5.5 Connection to Paper I's structural constants</h3>
+<p>Paper I reported Var(B) ≈ 1/4 (splitting cost variance). Var(χ|ℓ) ≈ 0.5 = 2 × Var(B). A possible relation: χ's fluctuation receives contributions from two independent DP paths to the odd part q of p−1 (additive and multiplicative), each contributing Var(B) ≈ 1/4, totaling ~1/2. This is currently at observation level, not proved.</p>
+<h3>5.6 Connection to the η chain</h3>
+<p>The approximate constancy of Var(χ|ℓ) supports a stable central scale for η across layers, rather than exact layerwise constancy. Paper I's η ∈ [0.10, 0.31] has shell dependence; what Var(χ|ℓ) ≈ const supports is that η_c ≈ 0.2 is well-defined and does not drift with scale.</p>
+<hr>
+<h2>§6 Discrete Feedback and the Resolvent-Like Correction Kernel</h2>
+<h3>6.1 Two correction forms</h3>
+<table class="paper-table"><thead><tr>
+<th>Form</th>
+<th>Expansion</th>
+<th>Source</th>
+<th>x² coefficient</th>
+</tr></thead><tbody>
+<tr>
+<td>e^{-x} (Boltzmann)</td>
+<td>1 − x + x²/2 − ...</td>
+<td>Continuous decay dS/dt = −xS</td>
+<td>1/2</td>
+</tr>
+<tr>
+<td>(1+x)⁻¹ (resolvent)</td>
+<td>1 − x + x² − x³ + ...</td>
+<td>Discrete self-consistency S + xS = S₀</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>Both agree at first order (1−x); they diverge at second order.</p>
+<h3>6.2 Damped oscillation rules out primitive monotone-screening</h3>
+<p>The data rule out a primitive one-parameter monotone-screening closure — because G_j(M) exhibits damped oscillation post-peak (§4.1), rebounding to 80% of the original peak.</p>
+<p>The data support a discrete resolvent-like feedback kernel as the natural lowest-order discrete closure. However, damped oscillation alone does not exclude every continuous-time, memory-kernel, or complex-eigenvalue alternative. The DP recursion is discrete (one step per n), making discrete feedback the most natural lowest-order explanation.</p>
+<h3>6.3 Discrete self-consistency equation</h3>
+<p>Let S be the coherent signal (systematic χ deviation) at a given layer. Each step, S produces feedback x·S (multiplicative screening response proportional to deviation). One-step self-consistency:</p>
+<p>S + xS = S₀ → S = S₀/(1+x) = S₀ · (1+x)⁻¹</p>
+<p>This is the resolvent form, assuming feedback completes in one step — consistent with the discrete nature of the DP recursion.</p>
+<h3>6.4 Interface with Paper I</h3>
+<p>Paper I did not discuss correction forms. The definition η = 1 − |Cov|/Var does not depend on whether the correction is resolvent or Boltzmann. This section's argument — that damped oscillation (§4.1 data) together with the DP's discrete nature point toward a resolvent-like kernel — is a structural statement about DP dynamics, independent of η's definition.</p>
+<h3>6.5 Distinction from state-counting closure</h3>
+<p>The SAE framework uses Boltzmann's relation S = k_B ln W at the L₄→L₅ layer — a state-counting closure measuring how many microstates correspond to a macrostate. This section discusses a discrete feedback correction kernel — measuring how each step's feedback modifies the signal. The former is not a competitor of the latter. Boltzmann's state-counting is fully valid for equilibrium enumeration. What this section questions is: in a far-from-equilibrium discrete recursion, is the correction kernel e^{-x} or (1+x)⁻¹?</p>
+<h3>6.6 Claim boundary</h3>
+<p><strong>Claims:</strong> The data rule out primitive monotone-screening closure and support a discrete resolvent-like feedback kernel as the natural lowest-order discrete closure.</p>
+<p><strong>Does not claim:</strong> Damped oscillation alone suffices to exclude all continuous-time oscillatory alternatives. Boltzmann weight (e^{-βH}), continuous exponential decay (e^{-x}), and monotone relaxation are three different concepts — this paper targets primitive monotone-screening, not Boltzmann weight or general exponential forms.</p>
+<hr>
+<h2>§7 Discussion</h2>
+<h3>7.1 The complete η chain</h3>
+<table class="paper-table"><thead><tr>
+<th>Scale</th>
+<th>Quantity</th>
+<th>Value</th>
+<th>Section</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Microscopic (intra-layer)</td>
+<td>C(1)_ρ(q)</td>
+<td>0.96</td>
+<td>§3</td>
+<td>Numerical regularity, 25 layers</td>
+</tr>
+<tr>
+<td>Effective layers</td>
+<td>m_eff</td>
+<td>5.47</td>
+<td>§4</td>
+<td>Inferred from C(1) and r</td>
+</tr>
+<tr>
+<td>Mesoscopic (per-cycle)</td>
+<td>1 − C(1)^{m_eff}</td>
+<td>0.20</td>
+<td>§4</td>
+<td>Numerical regularity</td>
+</tr>
+<tr>
+<td>Macroscopic (rebound)</td>
+<td>r</td>
+<td>0.80</td>
+<td>§4</td>
+<td>Numerical regularity, j=26,29</td>
+</tr>
+<tr>
+<td>Thermodynamic (step-level)</td>
+<td>η</td>
+<td>[0.10, 0.31]</td>
+<td>Paper I</td>
+<td>Numerical regularity, 17/17</td>
+</tr>
+<tr>
+<td>Scale invariance</td>
+<td>Var(χ</td>
+<td>ℓ)</td>
+<td>0.5</td>
+<td>§5</td>
+<td>Numerical regularity, 25 layers</td>
+</tr>
+<tr>
+<td>Correction kernel</td>
+<td>(1+x)⁻¹</td>
+<td>—</td>
+<td>§6</td>
+<td>Mechanism argument</td>
+</tr>
+</tbody></table>
+<p>From 0.96 to 0.80 to 0.20: one chain.</p>
+<h3>7.2 Three-tier annotation</h3>
+<p><strong>Exact skeleton (theorems/identities):</strong></p>
+<ul>
+<li>Exact shift reduction (§2.2)</li>
+<li>Structural identity π_ℓ · L_ℓ = 1</li>
+<li>Variance identity 17/17 (DP, Paper I), 21/21 (Lindley, Paper I)</li>
+<li>Step decomposition A = Δf + Δr (algebraic identity)</li>
+</ul>
+<p><strong>Numerical regularity (verified at N = 10⁹–10¹⁰):</strong></p>
+<ul>
+<li>C(1)_ρ(q) ≈ 0.96 across 25 layers</li>
+<li>Var(χ|ℓ) ≈ 0.5 across 25 layers</li>
+<li>Rebound ratio r ≈ 0.80 (j = 26, 29)</li>
+<li>m_eff = ln(0.80)/ln(0.96) ≈ 5.47</li>
+<li>R_wt ∈ [0.79, 25.3] across 19 j-values</li>
+</ul>
+<p><strong>Discussion-level (mechanism arguments / physical analogies):</strong></p>
+<ul>
+<li>Restoring force / damping / inertia analogy for damped oscillation</li>
+<li>Resolvent vs Boltzmann as correction kernel form</li>
+<li>Var(χ|ℓ) ≈ 2·Var(B) as a possible relation</li>
+</ul>
+<h3>7.3 Progress from Paper I to Paper II</h3>
+<table class="paper-table"><thead><tr>
+<th></th>
+<th>Paper I</th>
+<th>Paper II</th>
+</tr></thead><tbody>
+<tr>
+<td>What η is</td>
+<td>Definition + measurement</td>
+<td>Unchanged (continued)</td>
+</tr>
+<tr>
+<td>Why η ≈ 0.2</td>
+<td>Not answered</td>
+<td>4%/layer × m_eff ≈ 5.5 effective layers</td>
+</tr>
+<tr>
+<td>Validation systems</td>
+<td>DP + Lindley</td>
+<td>Unchanged (no new physical systems)</td>
+</tr>
+<tr>
+<td>Correction form</td>
+<td>Not discussed</td>
+<td>Resolvent-like (open problem)</td>
+</tr>
+<tr>
+<td>Structural constants</td>
+<td>Var(B) ≈ 1/4, coarse ≈ 40</td>
+<td>+ Var(χ</td>
+<td>ℓ) ≈ 0.5, C(1) ≈ 0.96</td>
+</tr>
+<tr>
+<td>Bridge</td>
+<td>—</td>
+<td>§2: from χ-field to f/r language</td>
+</tr>
+</tbody></table>
+<h3>7.4 Claim boundaries (summary)</h3>
+<p><strong>(a)</strong> In the zero-parameter DP recursion, the observed central absorption scale η_c ≈ 0.2 is quantitatively consistent with the compound mechanism "~4% innovation per layer × ~5–6 effective layers per cycle." No new free parameters are introduced; only independently observed per-layer retention (C(1) ≈ 0.96) and successive-peak ratio (r ≈ 0.80) are used.</p>
+<p><strong>(b)</strong> The observed rebound ratio r ≈ 0.80 indicates that block-scale screening return can be understood as a damped oscillation realization of the same absorption mechanism. This mechanism is specific to the DP recursion (arising from delayed feedback of additive/multiplicative competition). Lindley queues do not share this oscillation (rebound ratio ≈ 0.95, not 1−η) — the step-level definition of η is universal, but its microscopic realization is system-specific.</p>
+<p><strong>(c)</strong> The approximately layer-invariant shell variance Var(χ|ℓ) ≈ 0.5 is consistent with the scale-invariant additive/multiplicative competition of the DP. It supports a stable central scale for η across layers, rather than exact layerwise constancy.</p>
+<p><strong>(d)</strong> The discrete delayed feedback mechanism naturally points toward a resolvent-like correction kernel (1+x)⁻¹; whether this suffices to strictly exclude all Boltzmann-type alternatives remains an open problem.</p>
+<h3>7.5 Falsifiable prediction</h3>
+<p><strong>Prediction:</strong> At N ≥ 10¹², the G_j(M) rebound ratio at dyadic blocks j = 35–40 falls within [0.75, 0.85].</p>
+<p>Current verification: r = 0.797 (j = 29), r = 0.806 (j = 26). Two independent j values. The j = 32 rebound is not fully resolved within the N = 10¹⁰ measurement window.</p>
+<p><strong>Falsification condition:</strong> If r at j = 35–40 systematically deviates from [0.75, 0.85] — e.g., r → 1 (oscillation disappears) or r → 0 (oscillation intensifies) — then the m_eff-constant hypothesis is falsified and the quantitative link in the η chain requires revision.</p>
+<h3>7.6 Open problems</h3>
+<p><strong>(1) Canonical f/r extraction protocol (highest priority).</strong> To measure η in physical systems (active matter, chemical reaction networks, molecular motors), a standardized f/r extraction method is needed. The most natural candidate: define structural input Δf and optimization remainder Δr within a discrete time step τ (enzyme turnover time, collision interval, or external drive period).</p>
+<p><strong>(2) Rigorous derivation of the resolvent form.</strong> Prove from the DP recursion's discreteness that the correction kernel is (1+x)⁻¹ rather than e^{-x}.</p>
+<p><strong>(3) A priori derivation of C(1) ≈ 0.96.</strong> Currently C(1) is an observable. Can its value be derived from the DP recursion's structure?</p>
+<p><strong>(4) Structural meaning of m_eff ≈ 5.47.</strong> Why does one oscillation cycle span ~5.5 effective innovation layers?</p>
+<p><strong>(5) Convergence of the η chain in the N → ∞ limit.</strong> Do C(1) and Var(χ|ℓ) converge to exact values (0.96 and 1/2) as N → ∞?</p>
+<p><strong>(6) ℓ-dependence of C(1).</strong> Layers ℓ = 19–25 show C(1) slightly below 0.96 (§3.3). If this is a genuine higher-order correction C(1)(ℓ) = C_∞ − δ/ℓ^β, then m_eff and η have weak ℓ-dependence. N ≥ 10¹² data can distinguish finite-sample effects from genuine running.</p>
+<p><strong>(7) Microscopic η derivation for purely additive-truncation systems.</strong> For systems lacking multiplicative feedback (e.g., Lindley queues with max-operation truncation), the exact analytic derivation of η from arrival/service rate distributions remains open.</p>
+<p><strong>(8) Precise degree of scale invariance and possible logarithmic running.</strong> Are Var(χ|ℓ) ≈ 0.5 and C(1) ≈ 0.96 strictly scale-invariant, or do they exhibit extremely slow logarithmic decay analogous to renormalization group running of coupling constants in quantum field theory? If such decay exists, its rate (beta function) would be the ultimate fingerprint of the DP graph network.</p>
+<hr>
+<h2>Data and Methods</h2>
+<p>All data from rho_1e10.bin (ρ_E values, n = 0 to 10¹⁰, int16 binary, Paper 32 convention).</p>
+<p><strong>paper55v2.c:</strong> Three-pass analysis. Pass 1: λ regression. Pass 1b: class means. Pass 2: per-layer statistics (Var, C(1), innovation variance). 455,052,511 primes.</p>
+<p><strong>paper55_windrift.c:</strong> G_j(M) profile at j = 26, 29, 32. Rebound ratio and oscillation period extraction.</p>
+<p><strong>anticorr.c:</strong> Paper I's η measurement. 17 Ω-shells. N = 10⁷.</p>
+<p><strong>lindley_eta.c:</strong> Paper I's Lindley verification. M/M/1, M/D/1, M/Pareto/1. 21 parameter sets.</p>
+<p><strong>lindley_rebound.c:</strong> Lindley G(M) rebound test (this paper, §4.7). 9 configurations.</p>
+<p>All data from Paper I and this paper can be independently reproduced by the above C programs on the same dataset.</p>
+<hr>
+<h2>References</h2>
+<p>[1] Han Qin, "Fluctuation absorption rate η ≪ 1: strong complementary cancellation and nonequilibrium stability," DOI: 10.5281/zenodo.19310282 (2026).</p>
+<p>[2] Han Qin, "ZFCρ Paper 54: Recursive ancestor inheritance and power-law covariance," DOI: 10.5281/zenodo.19426094 (2026).</p>
+<p>[3] Han Qin, "ZFCρ Paper 55: Damped oscillation, 70/30 law, and positive-tail theorem," DOI: 10.5281/zenodo.19447349 (2026).</p>
+<p>[4] Han Qin, "ZFCρ Paper 59: Spectral ratio boundedness and the two-conjecture closure of H'," (2026).</p>
+<p>[5] Kubo, R., "The fluctuation-dissipation theorem," Rep. Prog. Phys. 29, 255 (1966).</p>
+<p>[6] Jarzynski, C., "Nonequilibrium equality for free energy differences," Phys. Rev. Lett. 78, 2690 (1997).</p>
+<p>[7] Crooks, G.E., "Entropy production fluctuation theorem and the nonequilibrium work relation for free energy differences," Phys. Rev. E 60, 2721 (1999).</p>
+<p>[8] Harada, T. and Sasa, S., "Equality connecting energy dissipation with a violation of the fluctuation-response relation," Phys. Rev. Lett. 95, 130602 (2005).</p>
+<p>[9] Prost, J., Joanny, J.-F., and Parrondo, J.M.R., "Generalized fluctuation-dissipation theorem for steady-state systems," Phys. Rev. Lett. 103, 090601 (2009).</p>
+<p>[10] Seifert, U., "Stochastic thermodynamics, fluctuation theorems and molecular machines," Rep. Prog. Phys. 75, 126001 (2012).</p>
+    </div>
+  </div>
+  <div class="lang-content" id="lang-zh" style="display:none">
+    <div class="paper-header">
+      <h1 class="paper-title">涨落吸收率η的微观机制：从层间创新到阻尼振荡</h1>
+      <p class="paper-subtitle">ZFCρ 热力学界面 篇II</p>
+      <p class="paper-author">Han Qin (秦汉) &nbsp;&middot;&nbsp; <a href="https://doi.org/10.5281/zenodo.19511065" target="_blank" rel="noopener">DOI: 10.5281/zenodo.19511065</a></p>
+    </div>
+    <div class="abstract"><h2>摘要</h2><p>第一篇热力学接口论文(DOI: 10.5281/zenodo.19310282)定义了涨落吸收率η并报告了DP递推中η ∈ [0.10, 0.31]。但未回答：为什么零参数DP递推的中心η落在约0.2？</p><p>本文给出机制性解答。将去趋势残差场χ(p) = ρ_E(p) - λ ln p - μ_{p mod 12}按二进层v₂(p-1) = ℓ分解后，发现三个尺度上的定量链：</p><p>微观：同层相邻素数的χ-autocorrelation C(1)_ρ(q) ≈ 0.96，跨25层恒定(455M素数，N = 10¹⁰)。每层仅4%的涨落是创新，96%继承自祖先。</p><p>介观→宏观：定义有效层数m_eff := ln(0.80)/ln(0.96) ≈ 5.47。一个振荡周期跨约5-6个有效创新层，复合耗散率1 - 0.96^{m_eff} ≈ 0.20。dyadic block的累积协方差G_j(M)在峰值后呈阻尼振荡，rebound ratio r ≈ 0.80 = 1 - η，独立验证于j = 26和29。</p><p>尺度不变：条件方差Var(χ | v₂ = ℓ) ≈ 0.5跨25层恒定。每层对谱预算的贡献为O(1)。DP递推的加法/乘法竞争是scale-invariant的——趋势被2^ℓ因子吸收，残差涨落不依赖尺度。</p><p>机制链的关键中介是delayed multiplicative feedback：当ρ值系统性偏高时，乘法分解效率提升(恢复力)，每个创新层耗散4%的相干能量(阻尼)，产生欠阻尼振荡而非单调弛豫。这个离散反馈结构自然导向resolvent-like的修正核(1+x)⁻¹，而非连续指数衰减e^{-x}。</p><p>本文解释的是零参数DP递推的canonical η为何落在约0.2。不claim所有min/max递推都给出η ≈ 0.2——第一篇已经展示Lindley排队的η覆盖[0.055, 0.987]的宽区间。η的具体值由系统的truncation频率和反馈结构决定；0.2是DP递推的intrinsic central scale。</p><p>**关键词：** 涨落吸收率，阻尼振荡，递归祖先继承，尺度不变方差，resolvent，整数复杂度</p><p>---</p></div>
+    <div class="paper-body">
+<h2>摘要</h2>
+<p>第一篇热力学接口论文(DOI: 10.5281/zenodo.19310282)定义了涨落吸收率η并报告了DP递推中η ∈ [0.10, 0.31]。但未回答：为什么零参数DP递推的中心η落在约0.2？</p>
+<p>本文给出机制性解答。将去趋势残差场χ(p) = ρ_E(p) - λ ln p - μ_{p mod 12}按二进层v₂(p-1) = ℓ分解后，发现三个尺度上的定量链：</p>
+<p>微观：同层相邻素数的χ-autocorrelation C(1)_ρ(q) ≈ 0.96，跨25层恒定(455M素数，N = 10¹⁰)。每层仅4%的涨落是创新，96%继承自祖先。</p>
+<p>介观→宏观：定义有效层数m_eff := ln(0.80)/ln(0.96) ≈ 5.47。一个振荡周期跨约5-6个有效创新层，复合耗散率1 - 0.96^{m_eff} ≈ 0.20。dyadic block的累积协方差G_j(M)在峰值后呈阻尼振荡，rebound ratio r ≈ 0.80 = 1 - η，独立验证于j = 26和29。</p>
+<p>尺度不变：条件方差Var(χ | v₂ = ℓ) ≈ 0.5跨25层恒定。每层对谱预算的贡献为O(1)。DP递推的加法/乘法竞争是scale-invariant的——趋势被2^ℓ因子吸收，残差涨落不依赖尺度。</p>
+<p>机制链的关键中介是delayed multiplicative feedback：当ρ值系统性偏高时，乘法分解效率提升(恢复力)，每个创新层耗散4%的相干能量(阻尼)，产生欠阻尼振荡而非单调弛豫。这个离散反馈结构自然导向resolvent-like的修正核(1+x)⁻¹，而非连续指数衰减e^{-x}。</p>
+<p>本文解释的是零参数DP递推的canonical η为何落在约0.2。不claim所有min/max递推都给出η ≈ 0.2——第一篇已经展示Lindley排队的η覆盖[0.055, 0.987]的宽区间。η的具体值由系统的truncation频率和反馈结构决定；0.2是DP递推的intrinsic central scale。</p>
+<p><strong>关键词：</strong> 涨落吸收率，阻尼振荡，递归祖先继承，尺度不变方差，resolvent，整数复杂度</p>
+<hr>
+<h2>§1 引言</h2>
+<h3>1.1 第一篇的遗留问题</h3>
+<p>第一篇[1]在零参数DP递推ρ_E(n) = min(ρ_E(n-1)+1, M(n))中建立了涨落吸收率</p>
+<p>η := 1 - |Cov(Δf, Δr)| / Var(Δf)</p>
+<p>并报告η ∈ <a href="17个Ω壳层, 方差恒等式17/17验证" target="_blank" rel="noopener">0.10, 0.31</a>。Lindley排队(G/G/1)独立验证了η的一般性(21/21)。消涨律的exact骨架(Reset-Slack分解, 条件性余项传递律)已建立。</p>
+<p>遗留的核心问题：<strong>为什么DP递推的中心η ≈ 0.2？</strong> 为什么不是0.05(如M/D/1 at ρ=0.3)或0.5？第一篇测量了η但没有解释η。</p>
+<h3>1.2 η ≈ 0.2不是一个数——是一条链</h3>
+<p>第一篇报告η ∈ [0.10, 0.31]跨17个Ω壳层。本文中η_c ≈ 0.2指Ω = 4-12壳层（样本 > 2000）的中位数（0.168-0.249, median ≈ 0.20）。低Ω端（k=2, η=0.10）和高Ω端（k≥14, 样本<2500）不计入中心值。</p>
+<p>本文的非平凡内容不是恒等式1 - r = 1 - C(1)^{m_eff}本身——这是代数改写——而是：两个独立观测量可以由同一个effective-layer picture统一解释：</p>
+<table class="paper-table"><thead><tr>
+<th>观测量</th>
+<th>值</th>
+<th>来源</th>
+<th>独立性</th>
+</tr></thead><tbody>
+<tr>
+<td>C(1)_ρ(q)</td>
+<td>0.96</td>
+<td>同层相邻素数的χ-autocorrelation</td>
+<td>素数序列内测量</td>
+</tr>
+<tr>
+<td>r</td>
+<td>0.80</td>
+<td>G_j(M)的successive-peak ratio</td>
+<td>dyadic block的累积协方差</td>
+</tr>
+</tbody></table>
+<p>两者的关系：</p>
+<p class="math">$$m_{\text{eff}} := \frac{\ln r}{\ln C(1)} = \frac{\ln 0.80}{\ln 0.96} \approx 5.47$$</p>
+<p>m_eff是从两个独立观测量推断出的（inferred），不是先验推出的。非平凡内容是m_eff ≈ 5.47落在可解释的范围内——一个振荡周期整合约5-6个有效创新层。由此，zero-parameter DP递推的典型未吸收比例落在η_c ≈ 1 - r ≈ 0.2。</p>
+<h3>1.3 本文的claim-status map</h3>
+<table class="paper-table"><thead><tr>
+<th>Claim</th>
+<th>状态</th>
+<th>证据</th>
+</tr></thead><tbody>
+<tr>
+<td>(a) η ≈ 0.2与"4%创新 × m_eff ≈ 5.5有效层"定量一致</td>
+<td>数值规律</td>
+<td>C(1)=0.96, r=0.80, 25层恒定</td>
+</tr>
+<tr>
+<td>(b) r ≈ 0.80表明block-scale screening是步间吸收的阻尼振荡实现</td>
+<td>数值规律</td>
+<td>j=26,29独立验证</td>
+</tr>
+<tr>
+<td>(c) Var(χ\</td>
+<td>ℓ) ≈ 0.5与DP的scale-invariant竞争一致</td>
+<td>数值规律</td>
+<td>25层, 455M素数</td>
+</tr>
+<tr>
+<td>(d) 离散延迟反馈导向resolvent-like修正核</td>
+<td>机制论证</td>
+<td>开放问题</td>
+</tr>
+</tbody></table>
+<p>本文不claim：η ≈ 0.2对所有min/max递推成立。不claim resolvent严格排除所有Boltzmann-type alternatives。不claim χ-field的统计性质等同于η的步间定义(桥在§2建立)。</p>
+<h3>1.4 符号约定</h3>
+<p>第一篇定义的η(涨落吸收率)与ZFCρ Paper 54-55中的去趋势场使用了相同字母。为避免混淆，本文统一：</p>
+<ul>
+<li><strong>η</strong>：永远指涨落吸收率η := 1 - |Cov(Δf, Δr)|/Var(Δf)。</li>
+<li><strong>χ(p)</strong>：去趋势残差场χ(p) = ρ_E(p) - λ ln p - μ_{p mod 12}。（Paper 54-55中记作η(p)。）</li>
+<li><strong>C(1)_ρ(q)</strong>：同层相邻素数的ρ(q)-autocorrelation，q = (p-1)/2^{v₂(p-1)}为p-1的奇部分。</li>
+</ul>
+<p>其余符号延续第一篇：A = Δf + Δr（步长分解），Ω = 素因子个数（壳层条件），f/r = 结构输入/优化余项。</p>
+<h3>1.5 论文结构</h3>
+<p>§2建立bridge：从Paper 54-55的χ-field语言到第一篇的f/r语言。§3-§5展开η chain的三个尺度(微观/介观-宏观/scale-invariant)。§6讨论离散反馈与resolvent-like修正核。§7总结讨论。</p>
+<hr>
+<h2>§2 从祖先继承到互补消涨：bridge</h2>
+<h3>2.1 问题：两套语言的连接</h3>
+<p>第一篇的η定义在步长分解A = Δf + Δr上：η度量Δf和Δr的互补消涨程度。第二篇的主要证据来自χ-field的autocorrelation、条件方差、和dyadic block的累积协方差G_j(M)。</p>
+<p><strong>一个严谨读者会问：你在解释同一个η，还是在解释另一个谱量？</strong></p>
+<p>本节建立连接。核心命题：delayed multiplicative feedback使Δf和Δr进入反相，这个反相就是消涨律的微观起源。</p>
+<h3>2.2 精确移位归约</h3>
+<p>对素数p，ρ_E(p) = ρ_E(p-1) + 1（加法路径是素数的唯一路径）。因此</p>
+<p>χ(p) = ρ_E(p) - λ ln p - μ_{p mod 12} = [ρ_E(p-1) - λ ln(p-1)] + [1 - λ·ln(p/(p-1)) - μ_{p mod 12}]</p>
+<p>第二项中ln(p/(p-1)) = O(1/p) = O(2^{-j})（在dyadic block I_j内）。因此χ(p)本质上由ρ_E(p-1)——一个合数处的值——决定。</p>
+<p>注：χ仅定义在素数上（§3.1）。此处的论点是χ(p)由合数p-1处的ρ_E值驱动，不是说χ(p-1)有定义。</p>
+<p><strong>素数位置的χ完全由p-1处的ρ_E决定。</strong> χ-field在素数位置的全部变异来自p-1的因子结构——即来自合数的乘法路径。</p>
+<h3>2.3 乘法路径 = 结构输入f的载体</h3>
+<p>在合数n处，ρ_E(n) = min(ρ_E(n-1)+1, M(n))。当M(n) < ρ_E(n-1)+1时，乘法路径胜出，步长A > 0。</p>
+<p>在第一篇的语言中：f(n) = Σ_{q^a ∥ n} ρ_E(q^a)是n的因子化贡献（结构输入），r(n) = ρ_E(n) - f(n)是优化余项。A = Δf + Δr。</p>
+<p><strong>f的变异来自n的因子结构。r的变异来自min操作的压缩。</strong> 消涨律Cov(Δf, Δr) ≈ -Var(Δf)说的是：当Δf大（因子结构给了大的乘法节省）时，Δr倾向于反向补偿——min操作把多余的"节省"压缩掉了。</p>
+<h3>2.4 χ-field的autocorrelation：消涨律的经验投影</h3>
+<p>χ-field的同层autocorrelation C(1)_ρ(q) ≈ 0.96意味着：同一二进层中相邻素数的χ值高度相关。96%的信号来自共享的祖先因子结构，只有4%是本层独有的创新。</p>
+<p><strong>翻译回f/r语言（heuristic）：</strong> 相邻素数p和p'共享大部分因子结构（它们的p-1和p'-1有相似的二进深层结构）。因此Δf(p)和Δf(p')高度相关。消涨律要求Δr跟随Δf变化（反相吸收）——所以Δr(p)和Δr(p')也高度相关。整个(f, r)对在同层内以高相关系数传递。</p>
+<p>χ-field的同层自相关可视为消涨律在序列方向上的经验投影。两者之间的精确映射（从C(1)到η的解析关系）是开放问题。</p>
+<h3>2.5 阻尼振荡 = 消涨律在块尺度上的积累</h3>
+<p>G_j(M) = 第j个dyadic block内前M个粗格的累积协方差。它度量的是：χ-field在块内的相关性如何积累和消退。</p>
+<p>在第一篇的语言中：G_j(M)的积累（前半段正）对应Cov(Δf, Δr)的局部不完美消涨（η > 0的积累效应）。G_j(M)的消退（后半段转负和振荡）对应乘法屏蔽的延迟反馈——当积累的正偏差足够大时，乘法路径变得更高效，把ρ拉回，产生过冲。</p>
+<p><strong>rebound ratio r ≈ 0.80 = 1 - η。</strong> 每个振荡周期，积累的消涨不完美（η ≈ 0.2）被一个周期的阻尼吸收。80%存活到下一个周期。</p>
+<p><strong>§2的结论：</strong> χ-field的autocorrelation（C(1) ≈ 0.96）、条件方差（Var(χ|ℓ) ≈ 0.5）、和阻尼振荡（r ≈ 0.80）不是"另一个谱量"——它们是消涨律Cov(Δf, Δr) ≈ -Var(Δf)在不同尺度上的投影。§3-§5展开这三个投影。</p>
+<hr>
+<h2>§3 微观机制：递归祖先继承</h2>
+<h3>3.1 χ-field在素数上的定义</h3>
+<p>χ(p) = ρ_E(p) - λ · ln p - μ_{p mod 12}</p>
+<p>其中λ = 3.856763（ρ_E vs ln p的回归斜率，455,052,511素数，N = 10¹⁰），μ_r是residue class r mod 12的均值校正（r = 1: -0.747, r = 5: -0.326, r = 7: -0.211, r = 11: +0.276）。</p>
+<p>χ均值为零（construction）。</p>
+<h3>3.2 二进层分解</h3>
+<p>每个素数p > 2有p-1偶。定义二进层ℓ = v₂(p-1)。由Dirichlet定理：v₂(p-1) = ℓ的素数占比π_ℓ = 2^{-ℓ}，同层相邻素数的间距L_ℓ = 2^ℓ。结构恒等式π_ℓ · L_ℓ = 1精确成立。</p>
+<p>验证（455M素数）：</p>
+<table class="paper-table"><thead><tr>
+<th>ℓ</th>
+<th>计数</th>
+<th>π_ℓ（观测）</th>
+<th>2^{-ℓ}</th>
+<th>间距（观测）</th>
+<th>2^ℓ</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>227,529,235</td>
+<td>0.50001</td>
+<td>0.50000</td>
+<td>2.0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>14,218,504</td>
+<td>0.03125</td>
+<td>0.03125</td>
+<td>32.0</td>
+<td>32</td>
+</tr>
+<tr>
+<td>10</td>
+<td>443,963</td>
+<td>0.00098</td>
+<td>0.00098</td>
+<td>1,025</td>
+<td>1,024</td>
+</tr>
+<tr>
+<td>15</td>
+<td>13,963</td>
+<td>0.00003</td>
+<td>0.00003</td>
+<td>32,591</td>
+<td>32,768</td>
+</tr>
+<tr>
+<td>20</td>
+<td>436</td>
+<td>0.0000010</td>
+<td>0.0000010</td>
+<td>1,044,351</td>
+<td>1,048,576</td>
+</tr>
+</tbody></table>
+<h3>3.3 核心观测：C(1)_ρ(q) ≈ 0.96跨25层恒定</h3>
+<p>对每个二进层ℓ，取该层的全部素数按prime index排序，计算相邻χ值的autocorrelation。</p>
+<p><strong>结果：C(1)_ρ(q) ≈ 0.96跨全部25层（ℓ = 1到25）恒定。</strong></p>
+<table class="paper-table"><thead><tr>
+<th>ℓ</th>
+<th>C(1)</th>
+<th>ℓ</th>
+<th>C(1)</th>
+<th>ℓ</th>
+<th>C(1)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.960</td>
+<td>10</td>
+<td>0.963</td>
+<td>19</td>
+<td>0.958</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.959</td>
+<td>11</td>
+<td>0.961</td>
+<td>20</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.961</td>
+<td>12</td>
+<td>0.960</td>
+<td>21</td>
+<td>0.952</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.960</td>
+<td>13</td>
+<td>0.962</td>
+<td>22</td>
+<td>0.949</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.961</td>
+<td>14</td>
+<td>0.959</td>
+<td>23</td>
+<td>0.944</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.962</td>
+<td>15</td>
+<td>0.958</td>
+<td>24</td>
+<td>0.940</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.963</td>
+<td>16</td>
+<td>0.957</td>
+<td>25</td>
+<td>0.937</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.964</td>
+<td>17</td>
+<td>0.956</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.963</td>
+<td>18</td>
+<td>0.959</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>ℓ = 1到18（样本 > 20,000）的均值：0.960。ℓ = 19到25（样本436到13,963）稍低（0.937-0.958）。两种解释不互斥：有限样本效应（ℓ=20仅436个素数）和高阶修正C(1)(ℓ) = C_∞ - δ/ℓ^β。后者和第一篇中η随Ω增大的趋势（η从0.10到0.27）在方向上一致：深层创新率略高 → 吸收效率略低。在N = 10¹⁰的数据范围内两种效应不可区分。区分需要N ≥ 10¹²。此问题和本文主旨（η ≈ 0.2的机制）不直接相关——即使C(1)有ℓ-dependence，η chain的定性结构不变，只是m_eff从常数变为缓慢函数。</p>
+<h3>3.4 4%创新的含义</h3>
+<p>1 - C(1) ≈ 0.04。每一步中，96%的χ变异可从上一步预测（祖先继承），4%不可预测（本层创新）。</p>
+<p>在one-step AR surrogate下（将同层传播近似为AR(1)过程），implied innovation variance为V_i ≈ (1 - C(1)²) × Var(χ|ℓ) ≈ (1 - 0.92) × 0.5 ≈ 0.04。这和第一篇的步长方差Var(A) ≈ 0.3-1.3在同一量级。注意AR(1)是近似模型，不是从"有lag-1 autocorrelation"自动推出的恒等式。</p>
+<h3>3.5 DP递推的scale invariance：为什么C(1)恒定</h3>
+<p>ρ_E(n) = min(ρ_E(n-1)+1, M(n))的加法/乘法竞争是scale-invariant的。乘法效率——n的因子结构能"节省"多少ρ——取决于相对因子结构（什么比例的ρ可以通过乘法捕获），不取决于n的绝对大小。</p>
+<p>对二进分解p - 1 = 2^ℓ · q：2^ℓ因子吸收了λ · ℓ · ln 2的趋势（这出现在E[χ|ℓ]中，随ℓ下降约0.35/层）。残差χ(p)的变异来自ρ(q) - λ ln q，这是同一个去趋势复杂度问题在尺度q上的复制。由于DP竞争是scale-invariant的，Var(ρ(q) - λ ln q)不依赖q的尺度。</p>
+<p><strong>因此C(1)_ρ(q)不依赖ℓ。</strong> 每一层的DP递推"看起来一样"——同样的加法/乘法竞争，同样的96%继承/4%创新。</p>
+<h3>3.6 与Paper 54的关系</h3>
+<p>Paper 54[2]从不同角度得到了互补的结论：</p>
+<table class="paper-table"><thead><tr>
+<th>Paper 54的量</th>
+<th>值</th>
+<th>本文的对应</th>
+</tr></thead><tbody>
+<tr>
+<td>Corr(χ₀, χ₁) = 0.76</td>
+<td>跨层（二进分解的相邻层）</td>
+<td>层间传递</td>
+</tr>
+<tr>
+<td>Innovation δ autocorrelation < 0.025</td>
+<td>创新近白噪声</td>
+<td>4%创新的独立性</td>
+</tr>
+<tr>
+<td>C(1)_ρ(q) ≈ 0.96</td>
+<td>同层相邻素数（本文核心）</td>
+<td>层内继承</td>
+</tr>
+</tbody></table>
+<p>Paper 54的Corr(χ₀, χ₁) = 0.76度量的是不同二进层之间的correlation。本文的C(1) ≈ 0.96度量的是同一层内相邻素数之间的correlation。两者是同一递归祖先继承在不同方向的切面。</p>
+<h3>3.7 从4%创新到η：preview</h3>
+<p>C(1) ≈ 0.96是η chain的起点。单层的4%创新如何在多层复合后给出η ≈ 0.2？答案在§4：阻尼振荡把单层创新在m_eff ≈ 5.5个有效层上复合，给出1 - 0.96^{5.47} ≈ 0.20。</p>
+<hr>
+<h2>§4 介观-宏观机制：阻尼振荡与m_eff</h2>
+<h3>4.1 G_j(M)不是单调衰减</h3>
+<p>在dyadic block I_j = [2^j, 2^{j+1})内，将素数按prime index排序后分为M个粗格（coarse block），定义累积协方差G_j(M)为前M个粗格中χ值的全部pairwise covariance之和。</p>
+<p>标准的screening picture预测G_j(M)在积累峰之后单调衰减到零。<strong>实际行为不是单调衰减——是阻尼振荡。</strong></p>
+<p>j = 29的G_j(M) profile：</p>
+<table class="paper-table"><thead><tr>
+<th>位置</th>
+<th>M</th>
+<th>G_j(M)</th>
+<th>占峰值比</th>
+</tr></thead><tbody>
+<tr>
+<td>峰值</td>
+<td>74</td>
+<td>123,225</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>第一谷</td>
+<td>~394</td>
+<td>21,471</td>
+<td>17.4%</td>
+</tr>
+<tr>
+<td><strong>rebound</strong></td>
+<td><strong>~724</strong></td>
+<td><strong>98,265</strong></td>
+<td><strong>79.7%</strong></td>
+</tr>
+<tr>
+<td>第二衰减</td>
+<td>~1,217</td>
+<td>0</td>
+<td>0% (过零)</td>
+</tr>
+</tbody></table>
+<p><strong>rebound峰/原始峰 = 0.797 ≈ 0.80。</strong></p>
+<p>j = 26的G_j(M) profile给出rebound ratio = 0.806。两个独立的j值给出一致的r ≈ 0.80。</p>
+<h3>4.2 阻尼振荡的三个元素</h3>
+<p>经典阻尼振荡需要三个元素：恢复力、阻尼、惯性。DP递推的对应：</p>
+<p><strong>恢复力（乘法屏蔽）：</strong> 当χ值系统性偏高（ρ值高于趋势）时，乘法分解的效率提升——因为ρ(a) + ρ(b) + 2相对于ρ(n-1)+1的竞争力增强。这把ρ拉回趋势。如果拉过头（overshoot），χ变为负，乘法效率下降，加法路径接管，χ回升——产生振荡。</p>
+<p><strong>阻尼（层间创新耗散）：</strong> 每个二进层有4%的不可预测创新（§3.3）。相干信号（积累的正偏差）每经过一层损失4%到不相干涨落中。多层复合后，相干振幅衰减。</p>
+<p><strong>惯性（谱预算）：</strong> dyadic block I_j包含O(2^j/j)个素数，跨O(j)个有效二进层。更大的j → 更多层参与 → 更大的"惯性" → 更慢的振荡 → 更长的周期。</p>
+<h3>4.3 m_eff：从0.96到0.80的定量桥</h3>
+<p>定义有效层数</p>
+<p class="math">$$m_{\text{eff}} := \frac{\ln r}{\ln C(1)} = \frac{\ln 0.80}{\ln 0.96} = \frac{-0.2231}{-0.04082} = 5.47$$</p>
+<p>注：m_eff由r和C(1)定义，因此1 - C(1)^{m_eff} = 1 - r是代数恒等式。<strong>非平凡内容不是等式本身，而是推断出的m_eff ≈ 5.47落在可解释的范围内：</strong> 一个振荡周期中，相干信号经过约5-6个有效创新层。Paper 55的delayed feedback振荡为这个有效层数提供了结构解释——乘法屏蔽的响应延迟约5-6层抵达，恰好构成一个完整的反馈周期。</p>
+<p><strong>η_c的推断：</strong></p>
+<p class="math">$$\eta_c = 1 - r = 1 - C(1)^{m_{\text{eff}}} \approx 0.20$$</p>
+<p>此推导不引入新的自由参数，仅使用独立观测到的per-layer retention (C(1) ≈ 0.96)与successive-peak ratio (r ≈ 0.80)。m_eff是inferred的，不是先验预测的。</p>
+<h3>4.4 周期的j-dependence</h3>
+<p>Paper 55报告了振荡的半周期和周期：</p>
+<table class="paper-table"><thead><tr>
+<th>j</th>
+<th>半周期(M)</th>
+<th>全周期(M)</th>
+<th>T_j比值</th>
+</tr></thead><tbody>
+<tr>
+<td>26</td>
+<td>~40</td>
+<td>~80</td>
+<td>—</td>
+</tr>
+<tr>
+<td>29</td>
+<td>~320</td>
+<td>~650</td>
+<td>~8.0</td>
+</tr>
+</tbody></table>
+<p>T_{29}/T_{26} = 8.000 = 2³。周期以2³为因子按j增长，和dyadic block的2³ = 8倍size增长一致。</p>
+<p>Paper 59的fine-grained j-scan（19个连续j值，j = 14到32）进一步确认：R_wt = B_j²/(j·D_j)呈阻尼振荡，周期约7-9 in j，全部19个值落在[0.79, 25.3]内。</p>
+<h3>4.5 R_wt振荡是η chain的块尺度读数</h3>
+<p>第一篇的η在步间（step-by-step）测量。本文的r在块间（block-by-block）测量。两者的关系：</p>
+<ul>
+<li>步间η ≈ 0.2：每一步A中有20%的涨落没被吸收。</li>
+<li>块间r ≈ 0.80：每个振荡周期80%的相干振幅存活。</li>
+<li>1 - η = r。</li>
+</ul>
+<p><strong>同一个消涨律在两个尺度上给出一致的数字。</strong> 步间消涨律Cov(Δf, Δr) ≈ -Var(Δf)是微观过程；块间阻尼振荡r ≈ 0.80是该微观过程在O(j)层上积累后的宏观表现。</p>
+<h3>4.6 claim边界</h3>
+<p><strong>本节claim：</strong> 观测到的rebound ratio r ≈ 0.80表明block-scale screening return可以理解为步间吸收机制的阻尼振荡实现。m_eff ≈ 5.47由两个独立观测量直接推出。</p>
+<p><strong>本节不claim：</strong> r ≈ 0.80是精确常数（可能随j微弱变化）。m_eff ≈ 5.47有先验推导（它是两个观测量的比值，不是从DP公理推出的）。阻尼振荡为G_j(M)的回零时间L_j提供了机制支持，但不构成L_j polynomial的证明——Paper 55已经明确指出geometric envelope控制positive tail mass而非first return time。</p>
+<h3>4.7 Lindley排队不共享阻尼振荡机制</h3>
+<p>阻尼振荡机制是否universal？直接测试：对第一篇中验证的9组Lindley排队（M/D/1, M/M/1, M/Pareto/1各3个负载），计算等待时间W_n的累积协方差G(M)，检查rebound ratio是否等于1-η。</p>
+<p><strong>结果：否。</strong> Lindley的G(M) rebound ratio全部在0.93-0.99（浅谷），不等于1-η。多数case无清晰振荡。</p>
+<table class="paper-table"><thead><tr>
+<th>队列</th>
+<th>η</th>
+<th>1-η（预测r）</th>
+<th>r_rebound（实测）</th>
+</tr></thead><tbody>
+<tr>
+<td>M/D/1 ρ=0.70</td>
+<td>0.40</td>
+<td>0.60</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>M/M/1 ρ=0.70</td>
+<td>0.60</td>
+<td>0.40</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td>M/Par/1 ρ=0.90</td>
+<td>0.81</td>
+<td>0.19</td>
+<td>0.94</td>
+</tr>
+</tbody></table>
+<p><strong>原因：</strong> DP递推有乘法结构（因子分解产生delayed feedback → overshoot → 振荡）。Lindley排队没有——它是纯加法 + max截断，无delayed feedback，无振荡。</p>
+<p><strong>结论：</strong> η作为步间吸收标度是universal的（第一篇，DP和Lindley共享）。η的微观机制是system-specific的。DP的阻尼振荡（r ≈ 0.80 = 1-η，m_eff ≈ 5.47）来自加法/乘法竞争的delayed feedback——是DP递推特有的mechanism。Lindley的η来自direct truncation（max操作直接截断负值），不经过振荡。</p>
+<p>m_eff ≈ 5.47是DP的本征数，不是universal constant。</p>
+<hr>
+<h2>§5 尺度不变壳方差</h2>
+<h3>5.1 核心观测：Var(χ | v₂ = ℓ) ≈ 0.5跨25层恒定</h3>
+<p>将455,052,511素数按v₂(p-1) = ℓ分层，计算每层内χ的条件方差。</p>
+<table class="paper-table"><thead><tr>
+<th>ℓ</th>
+<th>Var(χ\</th>
+<th>ℓ)</th>
+<th>ℓ</th>
+<th>Var(χ\</th>
+<th>ℓ)</th>
+<th>ℓ</th>
+<th>Var(χ\</th>
+<th>ℓ)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.554</td>
+<td>10</td>
+<td>0.513</td>
+<td>19</td>
+<td>0.425</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.554</td>
+<td>11</td>
+<td>0.467</td>
+<td>20</td>
+<td>0.421</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.514</td>
+<td>12</td>
+<td>0.503</td>
+<td>21</td>
+<td>0.347</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.532</td>
+<td>13</td>
+<td>0.446</td>
+<td>22</td>
+<td>0.436</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.488</td>
+<td>14</td>
+<td>0.501</td>
+<td>23</td>
+<td>0.232</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.524</td>
+<td>15</td>
+<td>0.447</td>
+<td>24</td>
+<td>0.401</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.485</td>
+<td>16</td>
+<td>0.485</td>
+<td>25</td>
+<td>0.358</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.514</td>
+<td>17</td>
+<td>0.425</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.465</td>
+<td>18</td>
+<td>0.509</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>奇层均值：0.474。偶层均值：0.521。总均值：0.497 ≈ 1/2。</p>
+<p>奇偶振荡的经验结构V_ℓ ≈ V_<em> + Δ·(-1)^ℓ + o(1)，V_</em> ≈ 0.50，Δ ≈ 0.024，可能和mod 4结构有关。</p>
+<h3>5.2 含义："涨落是本征量"</h3>
+<p>Conditioning on v₂(p-1) = ℓ改变了条件均值E[χ|ℓ]（随ℓ下降约0.35/层），但不改变条件方差。</p>
+<p><strong>均值非正交，方差正交。</strong> 这是"涨落是本征量"的精确表述：去趋势后的残差方差不依赖你在DP递推的哪个层级观察它。</p>
+<h3>5.3 DP递推的scale invariance（mechanism）</h3>
+<p>为什么Var(χ|ℓ)恒定？因为p-1 = 2^ℓ · q中，趋势成分λ·ℓ·ln 2被2^ℓ因子吸收（出现在E[χ|ℓ]中），残差来自ρ(q) - λ ln q——同一个去趋势复杂度问题在尺度q上的复制。DP递推的加法/乘法竞争是scale-invariant的（§3.5），所以Var(ρ(q) - λ ln q)不依赖q的尺度。</p>
+<p><strong>构（2^ℓ因子）吸收趋势。余（ρ(q) - λ ln q）是scale-invariant的。每层的"凿"去掉了ℓ·ln 2的趋势，但留下同样大小的方差。</strong></p>
+<h3>5.4 每层对谱预算的贡献</h3>
+<p>由π_ℓ · L_ℓ = 1和Var(χ|ℓ) = O(1)：</p>
+<p>每层对谱预算的贡献 = π_ℓ · Var(χ|ℓ) · L_ℓ = Var(χ|ℓ) ≈ 0.5</p>
+<p>总谱预算 = Σ_{ℓ=1}^{log₂ N} 0.5 = O(log N) = O(j)</p>
+<p>这是多项式（in j），不是指数。screened long memory的热力学根源：<strong>每层贡献O(1)，总积累是O(j)，被N_j ~ 2^j的指数增长稀释。</strong></p>
+<h3>5.5 Var(χ|ℓ) ≈ 0.5和第一篇的结构常数</h3>
+<p>第一篇报告了Var(B) ≈ 1/4（分裂代价B = ρ(a)+ρ(b)+2-ρ(ab)的方差）作为DP递推的结构常数。</p>
+<p>Var(χ|ℓ) ≈ 0.5 = 2 × Var(B)。可能的关系：χ的涨落来自两个独立的DP路径对p-1的奇部分q的贡献（加法和乘法各一条），每条路径贡献Var(B) ≈ 1/4，总方差 ≈ 1/2。</p>
+<p>这个关系目前是observation-level，不是证明。</p>
+<h3>5.6 和η chain的连接</h3>
+<p>Var(χ|ℓ) ≈ 0.5恒定保证了η chain（§3-§4）在所有尺度上成立：</p>
+<ul>
+<li>如果Var(χ|ℓ)随ℓ增大 → 深层的涨落更大 → C(1)可能偏离0.96 → η chain断裂。</li>
+<li>如果Var(χ|ℓ)随ℓ减小 → 深层的涨落被压制 → 不需要η来控制。</li>
+<li><strong>Var(χ|ℓ)恒定 → 每一层面对同样大小的涨落 → 支撑η的stable central scale跨层成立。</strong></li>
+</ul>
+<p>Var(χ|ℓ) ≈ 0.5的近似恒定不意味着η在每一层严格相同——第一篇报告η ∈ [0.10, 0.31]有shell dependence。它支撑的是：η的中心尺度（η_c ≈ 0.2）在所有层都有定义且不随尺度漂移，而非精确的layerwise constancy。</p>
+<hr>
+<h2>§6 离散反馈与resolvent-like修正核</h2>
+<h3>6.1 两种修正形式的区分</h3>
+<table class="paper-table"><thead><tr>
+<th>形式</th>
+<th>展开</th>
+<th>来源</th>
+<th>x²系数</th>
+</tr></thead><tbody>
+<tr>
+<td>e^{-x} (Boltzmann)</td>
+<td>1 - x + x²/2 - ...</td>
+<td>连续时间衰减 dS/dt = -xS</td>
+<td>1/2</td>
+</tr>
+<tr>
+<td>(1+x)⁻¹ (resolvent)</td>
+<td>1 - x + x² - x³ + ...</td>
+<td>离散一步自洽 S + xS = S₀</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>两者在一阶展开相同（1-x），在二阶开始分歧。</p>
+<h3>6.2 阻尼振荡排除了primitive monotone-screening</h3>
+<p>现有数据排除了primitive one-parameter monotone-screening closure（单调弛豫到零，无过冲）——因为G_j(M)在post-peak呈阻尼振荡（§4.1），rebound到峰值的80%。</p>
+<p>数据支持discrete resolvent-like feedback kernel作为最自然的最低阶离散闭包。但仅凭阻尼振荡本身，还不足以排除所有连续时间、带记忆或复特征根的替代模型。DP递推是离散的（每个n一步），离散反馈是最自然的最低阶解释。</p>
+<h3>6.3 离散自洽方程</h3>
+<p>设S为某一层的信号（相干χ偏差）。每一步，S产生反馈x·S（乘法屏蔽的响应和偏差成正比）。一步内完成全部反馈的自洽条件：</p>
+<p>S + xS = S₀ → S = S₀/(1+x) = S₀ · (1+x)⁻¹</p>
+<p>这是resolvent形式。它假设反馈在一步内完成——和DP递推的离散本性一致（每个n一步）。</p>
+<p>连续衰减方程dS/dt = -xS → S = S₀·e^{-xt}假设反馈在连续时间中渐进完成。DP递推不是连续过程——它是n → n+1的离散步。</p>
+<h3>6.4 和第一篇的接口</h3>
+<p>第一篇没有讨论修正形式。η的定义η = 1 - |Cov|/Var不依赖于修正是resolvent还是Boltzmann。</p>
+<p>本节的论点是：<strong>阻尼振荡的存在（§4.1的硬数据）和DP递推的离散本性一起，自然导向resolvent-like的修正核。</strong> 这个论点独立于η的定义——它是关于DP动力学的结构声明，不是关于η的值。</p>
+<h3>6.5 和state-counting closure的区分</h3>
+<p>SAE框架在L₄→L₅处使用Boltzmann relation S = k_B ln W[4]——这是state-counting closure，度量的是"有多少微观态对应同一个宏观态"。</p>
+<p>本节讨论的是discrete feedback correction kernel——度量的是"每一步的反馈如何修正信号"。</p>
+<p><strong>前者不是后者的竞争者。</strong> Boltzmann的state-counting (S = k_B ln W)在equilibrium enumeration中完全成立。本节质疑的是：在远离平衡的离散递推中，修正核的函数形式是e^{-x}还是(1+x)⁻¹。两者是不同层面的陈述。</p>
+<h3>6.6 claim边界</h3>
+<p><strong>本节claim：</strong> 现有数据排除了primitive monotone-screening closure，并支持discrete resolvent-like feedback kernel作为最自然的最低阶离散闭包。阻尼振荡的存在是此论点的实证支持。</p>
+<p><strong>本节不claim：</strong> 仅凭阻尼振荡足以排除所有连续时间振荡替代模型。Boltzmann权重（e^{-βH}）、连续指数衰减（e^{-x}）、单调弛豫是三个不同概念——本文针对的是primitive monotone-screening，不对Boltzmann权重或一般指数形式做全局否定。</p>
+<hr>
+<h2>§7 讨论</h2>
+<h3>7.1 η chain的完整链路</h3>
+<table class="paper-table"><thead><tr>
+<th>尺度</th>
+<th>量</th>
+<th>值</th>
+<th>§节</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr>
+<td>微观（层内）</td>
+<td>C(1)_ρ(q)</td>
+<td>0.96</td>
+<td>§3</td>
+<td>数值规律，25层恒定</td>
+</tr>
+<tr>
+<td>有效层数</td>
+<td>m_eff</td>
+<td>5.47</td>
+<td>§4</td>
+<td>从C(1)和r直接推出</td>
+</tr>
+<tr>
+<td>介观（周期）</td>
+<td>1 - C(1)^{m_eff}</td>
+<td>0.20</td>
+<td>§4</td>
+<td>数值规律</td>
+</tr>
+<tr>
+<td>宏观（rebound）</td>
+<td>r</td>
+<td>0.80</td>
+<td>§4</td>
+<td>数值规律，j=26,29</td>
+</tr>
+<tr>
+<td>热力学（步间）</td>
+<td>η</td>
+<td>[0.10, 0.31]</td>
+<td>第一篇</td>
+<td>数值规律，17/17</td>
+</tr>
+<tr>
+<td>scale invariance</td>
+<td>Var(χ\</td>
+<td>ℓ)</td>
+<td>0.5</td>
+<td>§5</td>
+<td>数值规律，25层</td>
+</tr>
+<tr>
+<td>修正核</td>
+<td>(1+x)⁻¹</td>
+<td>—</td>
+<td>§6</td>
+<td>机制论证</td>
+</tr>
+</tbody></table>
+<p><strong>从0.96到0.80到0.20：一条链。</strong></p>
+<h3>7.2 三层标注</h3>
+<p><strong>Exact skeleton（定理/恒等式）：</strong></p>
+<ul>
+<li>精确移位归约h(p) = χ(p-1) + O(2^{-j})</li>
+<li>结构恒等式π_ℓ · L_ℓ = 1</li>
+<li>方差恒等式17/17（DP, 第一篇），21/21（Lindley, 第一篇）</li>
+<li>步长分解A = Δf + Δr（代数恒等式）</li>
+</ul>
+<p><strong>Numerical regularity（N = 10⁹-10¹⁰验证）：</strong></p>
+<ul>
+<li>C(1)_ρ(q) ≈ 0.96跨25层恒定</li>
+<li>Var(χ|ℓ) ≈ 0.5跨25层恒定</li>
+<li>Rebound ratio r ≈ 0.80（j=26, 29）</li>
+<li>m_eff = ln(0.80)/ln(0.96) ≈ 5.47</li>
+<li>R_wt ∈ [0.79, 25.3]跨19个j值</li>
+</ul>
+<p><strong>Discussion-level（机制论证/物理类比）：</strong></p>
+<ul>
+<li>阻尼振荡的恢复力/阻尼/惯性类比</li>
+<li>Resolvent vs Boltzmann作为修正核形式</li>
+<li>Var(χ|ℓ) ≈ 2·Var(B)的可能关系</li>
+</ul>
+<h3>7.3 第一篇→第二篇的进展</h3>
+<table class="paper-table"><thead><tr>
+<th></th>
+<th>第一篇</th>
+<th>第二篇</th>
+</tr></thead><tbody>
+<tr>
+<td>η是什么</td>
+<td>定义 + 测量</td>
+<td>不变（延续）</td>
+</tr>
+<tr>
+<td>η为什么是0.2</td>
+<td>未回答</td>
+<td>4%/层 × m_eff ≈ 5.5有效层</td>
+</tr>
+<tr>
+<td>验证系统</td>
+<td>DP + Lindley</td>
+<td>不变（不新增物理系统）</td>
+</tr>
+<tr>
+<td>修正形式</td>
+<td>未讨论</td>
+<td>resolvent-like（开放问题）</td>
+</tr>
+<tr>
+<td>结构常数</td>
+<td>Var(B) ≈ 1/4, coarse ≈ 40</td>
+<td>+ Var(χ\</td>
+<td>ℓ) ≈ 0.5, C(1) ≈ 0.96</td>
+</tr>
+<tr>
+<td>bridge</td>
+<td>—</td>
+<td>§2 从χ-field到f/r语言</td>
+</tr>
+</tbody></table>
+<h3>7.4 Claim边界（汇总）</h3>
+<p><strong>(a)</strong> 在zero-parameter DP递推中，观测到的中心吸收尺度η ≈ 0.2，与"每层约4%创新 × 每周期约5-6个有效层"的复合机制定量一致。不引入新的自由参数，仅使用独立观测到的per-layer retention (C(1) ≈ 0.96)与rebound ratio (r ≈ 0.80)。</p>
+<p><strong>(b)</strong> 观测到的rebound ratio r ≈ 0.80表明，block-scale screening return可以理解为同一吸收机制的阻尼振荡实现。此机制是DP递推特有的（来自加法/乘法竞争的delayed feedback）。Lindley排队的G(M)不共享此振荡（rebound ratio ≈ 0.95，不等于1-η）——η的步间定义是universal的，但η的微观实现机制是system-specific的。</p>
+<p><strong>(c)</strong> 近似层不变的壳方差Var(χ|ℓ) ≈ 0.5与DP的scale-invariant加法/乘法竞争一致。它是η chain在所有尺度成立的稳定性条件。</p>
+<p><strong>(d)</strong> 离散延迟反馈机制自然导向resolvent-like修正核(1+x)⁻¹；是否足以严格排除所有Boltzmann-type alternatives，仍是开放问题。</p>
+<h3>7.5 可证伪预测</h3>
+<p><strong>预测：</strong> 在N ≥ 10¹²的数据上，dyadic blocks j = 35-40的G_j(M) rebound ratio落在[0.75, 0.85]。</p>
+<p>当前验证：r = 0.797（j=29），r = 0.806（j=26）。两个独立j值。j=32的rebound在N = 10¹⁰的测量窗口内未完全分辨。</p>
+<p><strong>证伪条件：</strong> 如果r在j = 35-40处系统性偏离[0.75, 0.85]——例如r → 1（振荡消失）或r → 0（振荡加剧）——则m_eff恒定的假设被证伪，η chain的定量环节需要修正。</p>
+<p><strong>非平凡性：</strong> r ≈ 0.80来自C(1) ≈ 0.96和m_eff ≈ 5.47。§3.3讨论了C(1)在深层可能有高阶修正C(1)(ℓ) = C_∞ - δ/ℓ^β。如果此修正存在，r在大j处会偏移。预测r恒定等价于预测C(1)的高阶修正在复合后被m_eff的自适应所补偿——这不是显然的。</p>
+<p><strong>可操作性：</strong> 需要ρ_E计算到N = 10¹²（约100倍于当前N = 10¹⁰的计算量和存储）。技术上可行，需要集群资源。</p>
+<h3>7.6 开放问题</h3>
+<p><strong>(1) f/r分解的canonical提取协议（最高优先级）。</strong> 第一篇定义了η并在DP和Lindley中测量。如果要在物理系统（活性物质、化学反应网络、分子马达）中测量η，需要一个标准化的f/r提取方法。最自然的候选：在离散时间步τ（酶的turnover time, 碰撞间隔, 或外部驱动周期）内定义结构输入Δf和优化余项Δr。τ太短则f/r混合不清，τ太长则多个反馈周期被平均掉。寻找canonical τ等价于寻找系统的"有效离散步长"。</p>
+<p><strong>(2) Resolvent形式的严格推导。</strong> 从DP递推的离散性出发，严格证明修正核是(1+x)⁻¹而非e^{-x}。可能需要把DP的min操作和延迟反馈写成显式的离散动力系统，分析其Green函数。</p>
+<p><strong>(3) C(1) ≈ 0.96的先验推导。</strong> 目前C(1)是观测量。能否从DP递推的结构推出C(1)的值？如果能，η ≈ 0.2就有了完全先验的推导链。</p>
+<p><strong>(4) m_eff ≈ 5.47的结构含义。</strong> 为什么一个振荡周期跨约5.5个有效创新层？这个数字是否和DP递推的某个组合参数相关？</p>
+<p><strong>(5) N → ∞极限下η chain的收敛。</strong> 当前数据在N = 10¹⁰。η chain中的每个环节在N → ∞时是否收敛？C(1)是否趋向精确的0.96？Var(χ|ℓ)是否趋向精确的1/2？</p>
+<p><strong>(6) C(1)的ℓ-dependence。</strong> ℓ = 19-25的C(1)略低于0.96（§3.3）。如果是高阶修正C(1)(ℓ) = C_∞ - δ/ℓ^β，那m_eff和η在深层有微弱的ℓ-dependence。这和第一篇η(k)随Ω增大的趋势方向一致。N ≥ 10¹²的数据可以区分有限样本效应和真实高阶修正。</p>
+<p><strong>(7) 纯加法-截断系统的η微观推导。</strong> 本文揭示了DP递推的η ≈ 0.2源于乘法延迟反馈导致的阻尼振荡。对于缺乏乘法反馈的纯加法系统（如Lindley排队的max操作截断），其η值的确切解析推导（如何从到达率/服务率分布直接计算出η的积分形式）仍是开放问题。解决这一问题将完善非平衡消涨律的动力学分类学：乘法反馈系统（DP类）vs 纯截断系统（Lindley类）各有什么样的micro-to-macro chain。</p>
+<p><strong>(8) 尺度不变性的精确程度与可能的对数级跑动。</strong> 本文报告Var(χ|ℓ) ≈ 0.5和C(1) ≈ 0.96跨25层"近似恒定"。在渐近极限ℓ → ∞下，这些量是严格的尺度不变（纯分形行为），还是存在极其缓慢的对数级衰减？§3.3已经标记了深层C(1)略低的初步迹象，其方向和第一篇η(k)随Ω增大的趋势一致。如果存在此衰减，它类似于量子场论中耦合常数的renormalization running——DP递推在宏观极限下存在一种极其微弱的"拓扑退相干"，其衰减率（beta函数）是DP图网络的终极指纹。当前N = 10¹⁰的数据范围（25层）不足以区分严格恒定和对数级running。N ≥ 10¹²可以开始分辨。</p>
+<hr>
+<h2>数据与方法</h2>
+<p>所有数据来自rho_1e10.bin（ρ_E值，n = 0到10¹⁰，int16二进制格式，Paper 32 convention）。</p>
+<p><strong>paper55v2.c：</strong> 三遍分析。Pass 1：λ回归。Pass 1b：class means。Pass 2：per-layer statistics（Var, C(1), innovation variance）。455,052,511素数。</p>
+<p><strong>paper55_windrift.c：</strong> G_j(M) profile，j = 26, 29, 32。rebound ratio和振荡周期提取。</p>
+<p><strong>anticorr.c：</strong> 第一篇的η测量。17个Ω壳层。N = 10⁷。</p>
+<p><strong>lindley_eta.c：</strong> 第一篇的Lindley验证。M/M/1, M/D/1, M/Pareto/1。21组参数。</p>
+<p>第一篇和本文的全部数据可由上述四个C程序在同一数据集上独立重复。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] Han Qin, "涨落吸收率η ≪ 1: 强互补消涨与非平衡稳定性," DOI: 10.5281/zenodo.19310282 (2026).</p>
+<p>[2] Han Qin, "ZFCρ Paper 54: Recursive ancestor inheritance and power-law covariance," DOI: 10.5281/zenodo.19426094 (2026).</p>
+<p>[3] Han Qin, "ZFCρ Paper 55: Damped oscillation, 70/30 law, and positive-tail theorem," DOI: 10.5281/zenodo.19447349 (2026).</p>
+<p>[4] Han Qin, "ZFCρ Paper 59: Spectral ratio boundedness and the two-conjecture closure of H'," (2026).</p>
+<p>[5] Kubo, R., "The fluctuation-dissipation theorem," Rep. Prog. Phys. 29, 255 (1966).</p>
+<p>[6] Jarzynski, C., "Nonequilibrium equality for free energy differences," Phys. Rev. Lett. 78, 2690 (1997).</p>
+<p>[7] Crooks, G.E., "Entropy production fluctuation theorem and the nonequilibrium work relation for free energy differences," Phys. Rev. E 60, 2721 (1999).</p>
+<p>[8] Harada, T. and Sasa, S., "Equality connecting energy dissipation with a violation of the fluctuation-response relation," Phys. Rev. Lett. 95, 130602 (2005).</p>
+<p>[9] Prost, J., Joanny, J.-F., and Parrondo, J.M.R., "Generalized fluctuation-dissipation theorem for steady-state systems," Phys. Rev. Lett. 103, 090601 (2009).</p>
+<p>[10] Seifert, U., "Stochastic thermodynamics, fluctuation theorems and molecular machines," Rep. Prog. Phys. 75, 126001 (2012).</p>
+    </div>
+  </div>
+</main>
+<script>
+function switchLang(lang) {
+  document.getElementById("lang-en").style.display = lang === "en" ? "block" : "none";
+  document.getElementById("lang-zh").style.display = lang === "zh" ? "block" : "none";
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+  document.getElementById("btn-zh").classList.toggle("active", lang === "zh");
+}
+</script>
+</body>
+</html>
