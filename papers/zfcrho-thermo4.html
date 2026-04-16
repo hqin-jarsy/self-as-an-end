@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper IV: Toward a First-Principles Derivation of the Tsallis q Parameter -- Han Qin</title>
+  <meta name="description" content="Tsallis nonextensive statistical mechanics introduced a parameter q to characterize deviations from Boltzmann-Gibbs statistics. Over thirty years, q has been widely fitted in experiment (QGP q ≈ 1.15,">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo4.html">
+  <meta name="citation_doi" content="10.5281/zenodo.19605665">
+  <style>
+    .zenodo-link{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .9rem;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;font-size:.82rem;color:#444;text-decoration:none;margin-top:.5rem}.zenodo-link:hover{background:#ebebeb}.series-nav{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #e0e0e0;font-size:.85rem;color:#888}.series-nav a{color:#555;text-decoration:none}.series-nav a:hover{text-decoration:underline}.lang-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:2px solid #e0e0e0}.lang-tab{padding:.45rem 1.1rem;border:1px solid #ddd;border-bottom:none;border-radius:4px 4px 0 0;cursor:pointer;font-size:.85rem;background:#f5f5f5;color:#666;transition:background .15s;margin-bottom:-2px}.lang-tab.active{background:#fff;border-bottom:2px solid #fff;color:#222;font-weight:600}.lang-content{display:none}.lang-content.active{display:block}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../guide.html">Guide</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics Series · Paper IV · Zenodo 19605665</div>
+    <h1 id="paper-title">ZFCρ Thermodynamics Paper IV: Toward a First-Principles Derivation of the Tsallis q Parameter</h1>
+    <div class="paper-subtitle-line" id="paper-subtitle" style="font-size:1rem;color:#666;margin-top:.3rem;font-style:italic;">ZFCρ Thermodynamics Series · Paper IV</div>
+    <div class="paper-author">Han Qin (&#31192;&#27721;) &nbsp;&middot;&nbsp; Independent Researcher &nbsp;&middot;&nbsp; April 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19605665" target="_blank" rel="noopener">10.5281/zenodo.19605665</a> &nbsp;&middot;&nbsp; CC BY 4.0 &nbsp;&middot;&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+    <div style="margin-top:.5rem"><a class="zenodo-link" href="https://zenodo.org/records/19605665" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a></div>
+  </div>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en')">English</div>
+    <div class="lang-tab" onclick="switchLang('zh')">&#20013;&#25991;</div>
+  </div>
+
+  <div id="lang-en" class="lang-content active" style="display:block" lang="en">
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Tsallis nonextensive statistical mechanics introduced a parameter q to characterize deviations from Boltzmann-Gibbs statistics. Over thirty years, q has been widely fitted in experiment (QGP q ≈ 1.15, cosmic rays q ≈ 1.2, solar wind q ≈ 1.7, gravitational systems q ≈ 2.0) but has never been derived from first principles.
+
+This paper identifies the exact interpolation family to which q belongs. The Tsallis q-exponential at q = 1 + 1/K takes the form
+
+e_q(-x) = (1 + x/K)^{-K}
+
+whose K → ∞ limit is the mathematical definition of the exponential function:
+
+lim_{K→∞} (1 + x/K)^{-K} = e^{-x}
+
+The Boltzmann distribution e^{-βE} is thus the infinite-order limit of this interpolation family. At q = 2 (K = 1), one recovers the DD resolvent (1+x)⁻¹, the natural kernel of the ZFCρ DP recursion. The parameter K admits a conjectural physical interpretation as the effective feedback order.
+
+An iterated discrete shielding derivation shows that K layers of equal-weight single-layer resolvent screening naturally produce the q-exponential. An extremal inequality (Theorem 2) proves that equal-weight allocation yields the strongest shielding under fixed total coupling; unequal allocations increase the effective q. A supplementary lemma shows that the second-order effective q equals 1 + Σλ² (Herfindahl index of layer weights), linking q directly to the concentration of shielding across layers.
+
+A reparametrization lemma proves that neither the second-order Taylor coefficient nor the tail exponent is invariant under general reparametrizations. Corollary: any regime diagnostic must first fix a canonical control variable.
+
+A channel-averaged shielding conjecture is proposed: in an f/r dual-channel system,
+
+q = Ω_eff / n_ch
+
+where Ω_eff is the effective shell depth (the physical generalization of the ZFCρ prime-factor count Ω) and n_ch is the channel count. For dual channels (n_ch = 2), q = Ω_eff/2. The conjecture has exact endpoint anchoring (Ω_eff = 2 ↔ q = 1, Ω_eff = 4 ↔ q = 2), a structural explanation for q ≥ 1 (Ω_eff ≥ n_ch), and admits a multi-channel generalization Ω_eff = Σq_i. The first-principles content of this paper lies in the interpolation family and the iterated shielding theorems; q = Ω_eff/n_ch remains a structurally motivated conjecture. Predictions and compatibility checks are given, the hardest being: independently extract K from any nonequilibrium system's autocorrelation function, then predict q = 1 + 1/K.
+
+---</p>
+  </div>
+  <div class="paper-body">
+<h1>ZFCρ Thermodynamics Paper IV</h1>
+<p><strong>Toward a First-Principles Derivation of the Tsallis q Parameter: the Interpolation Family, a Reparametrization Lemma, and the Channel-Averaged Shielding Conjecture</strong></p>
+<p>Han Qin</p>
+<p>SAE Research · 2026</p>
+<hr>
+<h2>Abstract</h2>
+<p>Tsallis nonextensive statistical mechanics introduced a parameter q to characterize deviations from Boltzmann-Gibbs statistics. Over thirty years, q has been widely fitted in experiment (QGP q ≈ 1.15, cosmic rays q ≈ 1.2, solar wind q ≈ 1.7, gravitational systems q ≈ 2.0) but has never been derived from first principles.</p>
+<p>This paper identifies the exact interpolation family to which q belongs. The Tsallis q-exponential at q = 1 + 1/K takes the form</p>
+<p>e_q(-x) = (1 + x/K)^{-K}</p>
+<p>whose K → ∞ limit is the mathematical definition of the exponential function:</p>
+<p>lim_{K→∞} (1 + x/K)^{-K} = e^{-x}</p>
+<p>The Boltzmann distribution e^{-βE} is thus the infinite-order limit of this interpolation family. At q = 2 (K = 1), one recovers the DD resolvent (1+x)⁻¹, the natural kernel of the ZFCρ DP recursion. The parameter K admits a conjectural physical interpretation as the effective feedback order.</p>
+<p>An iterated discrete shielding derivation shows that K layers of equal-weight single-layer resolvent screening naturally produce the q-exponential. An extremal inequality (Theorem 2) proves that equal-weight allocation yields the strongest shielding under fixed total coupling; unequal allocations increase the effective q. A supplementary lemma shows that the second-order effective q equals 1 + Σλ² (Herfindahl index of layer weights), linking q directly to the concentration of shielding across layers.</p>
+<p>A reparametrization lemma proves that neither the second-order Taylor coefficient nor the tail exponent is invariant under general reparametrizations. Corollary: any regime diagnostic must first fix a canonical control variable.</p>
+<p>A channel-averaged shielding conjecture is proposed: in an f/r dual-channel system,</p>
+<p>q = Ω_eff / n_ch</p>
+<p>where Ω_eff is the effective shell depth (the physical generalization of the ZFCρ prime-factor count Ω) and n_ch is the channel count. For dual channels (n_ch = 2), q = Ω_eff/2. The conjecture has exact endpoint anchoring (Ω_eff = 2 ↔ q = 1, Ω_eff = 4 ↔ q = 2), a structural explanation for q ≥ 1 (Ω_eff ≥ n_ch), and admits a multi-channel generalization Ω_eff = Σq_i. The first-principles content of this paper lies in the interpolation family and the iterated shielding theorems; q = Ω_eff/n_ch remains a structurally motivated conjecture. Predictions and compatibility checks are given, the hardest being: independently extract K from any nonequilibrium system's autocorrelation function, then predict q = 1 + 1/K.</p>
+<hr>
+<h2>§1 The Problem: Where Does Tsallis q Come From?</h2>
+<h3>1.1 Thirty Years of Free Parameters</h3>
+<p>In 1988, Tsallis proposed a generalization of Boltzmann-Gibbs statistics [1]. The central object is the q-exponential</p>
+<p>$$e_q(u) = [1 + (1-q)u]_+^{1/(1-q)}$$</p>
+<p>which recovers the standard exponential when q = 1 and generates power-law tails when q ≠ 1.</p>
+<p>Over three decades, q-exponentials have been successfully fitted across physical systems. Tsallis distributions fitted to ALICE and CMS data [2,3] yield q ≈ 1.11–1.15 for hadron transverse momentum spectra [16]. The solar-wind q-triplet gives q_stat ≈ 1.71 ± 0.07 [4]. Cosmic-ray spectra yield q ≈ 1.2 [5]. Gravitational systems approach q ≈ 2 [6]. Applications of Tsallis entropy to black-hole thermodynamics continue through 2025 [7,8].</p>
+<p>Yet q remains a free parameter. Each system is fitted independently, and no microscopic mechanism has predicted which q a given system should exhibit.</p>
+<p>This is the central criticism of Tsallis statistics. The Boltzmann distribution e^{-βE} has no free parameter—given temperature T, the distribution is fully determined. Tsallis adds a parameter q, gaining fitting power but losing explanatory power.</p>
+<h3>1.2 Three Layers of Objects</h3>
+<p>Before entering the derivation, three layers of objects must be distinguished. These are frequently conflated in the literature.</p>
+<p><strong>Kernel layer.</strong> The fundamental weight function: Boltzmann writes e^{-βE}, resolvent writes (1+x)⁻¹, Tsallis writes e_q(-x). This is the raw weight assigned to microstates.</p>
+<p><strong>Occupation layer.</strong> The statistical distribution function. For bosons, the Bose-Einstein distribution 1/(e^{βE}−1) uses e^{βE} at the kernel layer. Replacing the kernel modifies the occupation layer.</p>
+<p><strong>Observed flux layer.</strong> The spectrum actually measured by a distant observer. It is the occupation layer after propagation effects (e.g. greybody factors for black holes).</p>
+<p>This paper operates exclusively at the kernel layer. Modifications at the occupation and flux layers are deferred to subsequent work.</p>
+<h3>1.3 Contributions</h3>
+<p>This paper makes five contributions:</p>
+<p>(1) Exact interpolation family: q = 1+1/K connects Boltzmann (K → ∞) and DD resolvent (K = 1) in a single-parameter family.</p>
+<p>(2) Iterated shielding derivation: K layers of equal-weight discrete screening naturally produce the q-exponential. An extremal inequality proves equal weight is the strongest shielding. A supplementary lemma reveals q_eff^{(2)} = 1 + Σλ², linking q to layer-weight concentration.</p>
+<p>(3) Reparametrization lemma: Neither the second-order Taylor coefficient nor the tail exponent is reparametrization-invariant.</p>
+<p>(4) Channel-averaged shielding conjecture: q = Ω_eff/n_ch links Tsallis q to the ZFCρ prime-factor structure through channel counting.</p>
+<p>(5) Physical interpretation of experimental q values and falsifiable predictions.</p>
+<hr>
+<h2>§2 The Exact Interpolation Family</h2>
+<h3>2.1 q = 1 + 1/K</h3>
+<p>Setting q = 1 + 1/K (K > 0) in the Tsallis q-exponential definition yields</p>
+<p>$$e_q(-x) = [1 + (q-1)x]^{1/(1-q)} = \left(1 + \frac{x}{K}\right)^{-K}$$</p>
+<p>This is an exact algebraic identity, free of approximation.</p>
+<table><thead><tr>
+<th>K</th>
+<th>q = 1+1/K</th>
+<th>e_q(-x)</th>
+<th>System</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>2.0</td>
+<td>(1+x)⁻¹</td>
+<td>DD resolvent</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.5</td>
+<td>(1+x/2)⁻²</td>
+<td>Moderate feedback</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.2</td>
+<td>(1+x/5)⁻⁵</td>
+<td>Weak feedback</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1.1</td>
+<td>(1+x/10)⁻¹⁰</td>
+<td>Near-Boltzmann</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>1.0</td>
+<td>e⁻ˣ</td>
+<td>Boltzmann</td>
+</tr>
+</tbody></table>
+<h3>2.2 Boltzmann as Infinite-Order Limit</h3>
+<p>$$\lim_{K \to \infty} \left(1 + \frac{x}{K}\right)^{-K} = e^{-x}$$</p>
+<p>This is not an approximation. It is the mathematical definition of the exponential function itself.</p>
+<p>Within the interpolation family considered here, the Boltzmann distribution e^{-βE} corresponds to the K → ∞ continuous limit—a system whose single-step feedback has been subdivided into infinitely many micro-steps, each contributing vanishing feedback, the macroscopic result being smooth exponential decay.</p>
+<p>The DD resolvent (1+x)⁻¹ corresponds to K = 1: feedback completes in a single step with no subdivision. This is the natural kernel of the ZFCρ DP recursion X_{n+1} = min(X_n + A_n, B_n).</p>
+<h3>2.3 Physical Meaning of K</h3>
+<p>The precise mathematical identity of K is the shape parameter of the q-exponential family.</p>
+<p>The physical interpretation of K is a conjecture, not a theorem: <strong>K is the effective feedback order</strong>—the number of coherent feedback steps the system sustains before decorrelation.</p>
+<p>K → ∞ should not be read as "infinite memory" (semantically counterintuitive since Boltzmann is memoryless). The more accurate reading is "infinite subdivision": a single feedback step is partitioned into infinitely many micro-steps, each with vanishing coupling. The calculus continuous limit is the mathematical realization of this operation.</p>
+<p>K = 1 is "no subdivision": feedback completes in one step without intermediaries.</p>
+<p>Intermediate values K ∈ (1, ∞) correspond to finite subdivision. Smaller K means coarser, more direct single-step feedback; larger K means finer, smoother feedback.</p>
+<h3>2.4 Connection to m_eff</h3>
+<p>Thermo II [11] defined the effective layer count m_eff, extracted from η ≈ 1 − C(1)^{m_eff}. Thermo III [12] provided preliminary support for this structure in the Brusselator.</p>
+<p>K and m_eff may measure the same physical quantity through different extraction routes. Their precise relationship is not yet established. In ZFCρ, m_eff = 5.47, yielding q = 1.18 if K = m_eff. In the Brusselator, m_eff = 11.3, yielding q = 1.09. These values fall within the range of observed experimental q values, but the identification K ≈ m_eff remains conjecture.</p>
+<hr>
+<h2>§3 Iterated Shielding Derivation</h2>
+<h3>3.1 Discrete Shielding Model</h3>
+<p>Let S₀ > 0 be the initial signal, x ≥ 0 the total shielding amplitude (control parameter), and K a positive integer (number of shielding layers). Given K nonnegative couplings c₁, ..., c_K ≥ 0, define the signal after K layers of discrete shielding as</p>
+<p>$$S_K(\mathbf{c}) = S_0 \prod_{i=1}^{K} (1 + c_i)^{-1}$$</p>
+<p>subject to the total coupling constraint Σc_i = x.</p>
+<p>Physical picture: each prime factor contributes one layer of multiplicative screening. The signal is attenuated by (1+c_i)⁻¹ at each layer. The total coupling x is fixed (corresponding to the total control parameter, e.g. βE). In Boltzmann statistics, x = βE has a clear physical meaning (ratio of energy to thermal-bath temperature). In the SAE/ZFCρ framework, x can be understood as the total unresolved structural tension facing the current state—the system absorbs it by distributing it across K shielding layers. The precise ontological identity of x is an open problem (§10).</p>
+<h3>3.2 Theorem 1 (Discrete Shielding Iteration)</h3>
+<p><strong>(a) Equal-weight allocation.</strong> If c_i = x/K for i = 1, ..., K, then</p>
+<p>$$S_K^{\text{eq}}(x) = S_0 \left(1 + \frac{x}{K}\right)^{-K} = S_0 \cdot e_q(-x), \quad q = 1 + \frac{1}{K}$$</p>
+<p>Proof: Direct substitution. ∎</p>
+<p><strong>(b) Boltzmann limit.</strong></p>
+<p>$$\lim_{K \to \infty} \left(1 + \frac{x}{K}\right)^{-K} = e^{-x}$$</p>
+<p>Proof: Take logarithms; the standard limit lim_{K→∞} K·log(1+x/K) = x applies. ∎</p>
+<p><strong>(c) Uniqueness.</strong> Let a function family F_K satisfy: (i) it is generated by K identical single-layer resolvent iterations, F_K(x) = S₀·[1+γ_K(x)]^{-K}; (ii) the total coupling is normalized by exact additive constraint K·γ_K(x) = x. Then F_K(x) = S₀·(1+x/K)^{-K} is the unique such family.</p>
+<p>Proof: From K·γ_K(x) = x, obtain γ_K(x) = x/K. Substitute. ∎</p>
+<p>Note: Uniqueness requires the exact additive normalization Σc_i = x. If only first-order normalization is imposed (K·γ_K(x) = x + O(x²)), uniqueness fails.</p>
+<h3>3.3 Theorem 2 (Extremal Inequality Under Fixed Total Coupling)</h3>
+<p>Let c_i ≥ 0 with Σc_i = x. Then</p>
+<p>$$\left(1 + \frac{x}{K}\right)^{-K} \leq \prod_{i=1}^{K}(1+c_i)^{-1} \leq (1+x)^{-1}$$</p>
+<p>Left equality holds iff c₁ = ... = c_K = x/K (equal weight). Right equality holds iff some c_j = x with all others zero (full concentration).</p>
+<p><strong>Proof (left bound).</strong> Since log(1+t) is concave on [0,∞), Jensen's inequality gives</p>
+<p>(1/K)·Σlog(1+c_i) ≤ log(1 + (1/K)·Σc_i) = log(1+x/K)</p>
+<p>Multiply by K, exponentiate, and invert to obtain the bound. Equality in Jensen requires all c_i equal. ∎</p>
+<p><strong>Proof (right bound).</strong> Expand the product: ∏(1+c_i) = 1 + Σc_i + Σ_{i<j}c_ic_j + ... ≥ 1 + x. Invert. Equality holds iff all cross-terms vanish. ∎</p>
+<p><strong>Physical interpretation: Equal-weight allocation produces the strongest shielding (smallest surviving signal) for a given total coupling.</strong> The more concentrated the coupling across fewer layers, the weaker the shielding.</p>
+<h3>3.4 Corollary (Existence and Uniqueness of K_eff)</h3>
+<p>Fix x > 0 and define f_ν(x) = (1+x/ν)^{-ν} for ν > 0. Then f_ν(x) is strictly decreasing in ν.</p>
+<p>Therefore, for any c_i ≥ 0 with Σc_i = x, there exists a unique K_eff ∈ [1, K] such that</p>
+<p>$$\prod_{i=1}^{K}(1+c_i)^{-1} = \left(1 + \frac{x}{K_{\text{eff}}}\right)^{-K_{\text{eff}}}$$</p>
+<p>and one may define</p>
+<p>$$q_{\text{eff}} = 1 + \frac{1}{K_{\text{eff}}} \in \left[1 + \frac{1}{K},\; 2\right]$$</p>
+<p>Any unequal-weight system can be uniquely re-encoded as an equal-weight system with a smaller effective order. Larger q strictly corresponds to smaller K_eff.</p>
+<h3>3.5 Supplementary Lemma (Second-Order Effective q)</h3>
+<p>Let c_i = λ_i·x with λ_i ≥ 0 and Σλ_i = 1. Then as x → 0,</p>
+<p>$$\prod_{i=1}^{K}(1+\lambda_i x)^{-1} = 1 - x + \frac{1+\sum_i \lambda_i^2}{2} x^2 + O(x^3)$$</p>
+<p>Matching with the Tsallis q-exponential expansion e_q(-x) = 1 − x + (q/2)x² + O(x³) gives</p>
+<p>$$q_{\text{eff}}^{(2)} = 1 + \sum_{i=1}^{K} \lambda_i^2$$</p>
+<p><strong>The layer-weight concentration (Herfindahl index) Σλ² directly determines the local effective q.</strong></p>
+<table><thead><tr>
+<th>Configuration</th>
+<th>Σλ²</th>
+<th>q_eff^{(2)}</th>
+</tr></thead><tbody>
+<tr>
+<td>Equal weight (λ_i = 1/K)</td>
+<td>1/K</td>
+<td>1 + 1/K (exact q)</td>
+</tr>
+<tr>
+<td>Full concentration (one layer)</td>
+<td>1</td>
+<td>2 (pure resolvent)</td>
+</tr>
+<tr>
+<td>General unequal</td>
+<td>∈ [1/K, 1]</td>
+<td>∈ [1+1/K, 2]</td>
+</tr>
+</tbody></table>
+<p><strong>Value of this formula: one need not prove equal sharing to obtain q.</strong> The locally measured q is the shielding-weight concentration. Equal sharing is merely the most uniform endpoint of this spectrum.</p>
+<h3>3.6 Status Summary</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>Theorem 1 (iterated shielding → q-exponential)</td>
+<td><strong>Exact</strong></td>
+</tr>
+<tr>
+<td>Theorem 2 (extremal inequality)</td>
+<td><strong>Lemma (proved)</strong></td>
+</tr>
+<tr>
+<td>Corollary (K_eff existence/uniqueness)</td>
+<td><strong>Lemma (proved)</strong></td>
+</tr>
+<tr>
+<td>Supplementary lemma (q_eff^{(2)} = 1+Σλ²)</td>
+<td><strong>Lemma (proved)</strong></td>
+</tr>
+<tr>
+<td>Equal-sharing assumption</td>
+<td>Physical assumption (same level as Boltzmann's equal-probability postulate)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§4 Reparametrization Lemma</h2>
+<h3>4.1 Second-Order Coefficient Is Not Invariant</h3>
+<p>Under the standard parametrization (z = x):</p>
+<p>$$e^{-x} = 1 - x + \frac{x^2}{2} - \cdots$$</p>
+<p>$$(1+x)^{-1} = 1 - x + x^2 - \cdots$$</p>
+<p>The second-order coefficients differ by a factor of 2, noted in the literature but not elevated to a systematic diagnostic [9].</p>
+<p>However, under reparametrization z = f(x) with f(x) = x + a₂x² + O(x³),</p>
+<p>$$\frac{1}{1+f(x)} = 1 - x + (1-a_2)x^2 + O(x^3)$$</p>
+<p>Choosing a₂ = 1/2 makes the second-order coefficient exactly 1/2—identical to Boltzmann.</p>
+<p><strong>Proposition 1.</strong> The second-order Taylor coefficient is not invariant under general reparametrizations z = f(x).</p>
+<h3>4.2 Tail Exponent Is Not Invariant</h3>
+<p>For the resolvent kernel R_K(z) = (1+z/K)^{-K}, when z = f(x) with f(x) ~ x^ν (large x),</p>
+<p>$$R_K(f(x)) \sim x^{-K\nu}$$</p>
+<p>The tail exponent reads Kν, not K.</p>
+<p><strong>Proposition 2.</strong> The tail exponent is not invariant under general nonlinear reparametrizations.</p>
+<h3>4.3 Corollary</h3>
+<p>The combined implication of Propositions 1 and 2:</p>
+<p><strong>Any kernel-shape regime diagnostic—whether second-order coefficient or tail exponent—must first fix the canonical control variable before extraction and comparison.</strong></p>
+<p>The second-order coefficient is too local (probing only the x → 0 neighborhood). The q-family is a more appropriate global object, but q extraction also requires a fixed canonical variable. The factor-of-2 diagnostic retains value as a gauge-fixed convenience under the canonical parametrization z = βE, but its status is "gauge-fixed convenience" rather than "reparametrization-invariant diagnostic."</p>
+<hr>
+<h2>§5 Phenomenological Anchors</h2>
+<h3>5.1 Experimental q-Value Table</h3>
+<table><thead><tr>
+<th>System</th>
+<th>q_obs</th>
+<th>K = 1/(q−1)</th>
+<th>Ω_eff = 2q</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>Ideal gas</td>
+<td>1.0</td>
+<td>∞</td>
+<td>2.0</td>
+<td>Definition</td>
+</tr>
+<tr>
+<td>QGP (ALICE/CMS)</td>
+<td>~1.15</td>
+<td>~6.7</td>
+<td>~2.3</td>
+<td>[16]</td>
+</tr>
+<tr>
+<td>Cosmic rays</td>
+<td>~1.2</td>
+<td>~5.0</td>
+<td>~2.4</td>
+<td>[5]</td>
+</tr>
+<tr>
+<td>Solar wind q_stat</td>
+<td>~1.71±0.07</td>
+<td>~2.8</td>
+<td>~3.4</td>
+<td>[4]</td>
+</tr>
+<tr>
+<td>Gravitational systems</td>
+<td>~1.8</td>
+<td>~1.25</td>
+<td>~3.6</td>
+<td>[6]</td>
+</tr>
+<tr>
+<td>Black hole (DD prediction)</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>This paper</td>
+</tr>
+</tbody></table>
+<p>Heuristic reading of K: in the QGP, K ≈ 7 suggests roughly 7 steps of coherent feedback depth. For the solar wind, K ≈ 3 suggests ~3 steps of local self-organization. For the black hole, K = 1 is the simplest one-step feedback. These readings depend on the physical interpretation of K (§2.3), which is itself conjectural.</p>
+<h3>5.2 Conditions of Use</h3>
+<p>The q values above come from independent fitting by different experimental groups with non-uniform protocols. LHC q values are fitted from power-law tails of particle transverse-momentum spectra. The solar-wind q_stat is fitted from proton density distributions. Comparability is limited.</p>
+<p>A single system may have multiple q values. The solar-wind q-triplet yields q_stat ≈ 1.71, q_rel ≈ 3.8, q_sen ≈ −0.6 [4]. This paper treats only the stationary distribution kernel q (i.e., q_stat).</p>
+<p>The table should therefore be viewed as <strong>phenomenological anchors</strong>, not evidence for precise mapping. Its value lies in the observation that all known experimental q_stat values fall within the Boltzmann–resolvent corridor q ∈ [1, 2], consistent with K ∈ [1, ∞).</p>
+<hr>
+<h2>§6 Channel-Averaged Shielding Conjecture</h2>
+<h3>6.1 Statement</h3>
+<p><strong>Conjecture (channel-averaged shielding law).</strong> In an f/r dual-channel system, the Tsallis q parameter equals the per-channel effective shell depth:</p>
+<p>$$q = \frac{\Omega_{\text{eff}}}{n_{\text{ch}}}$$</p>
+<p>where Ω_eff is the effective shell depth (the physical generalization of the ZFCρ prime-factor count Ω(n)) and n_ch is the channel count. For dual channels (f/r decomposition), n_ch = 2.</p>
+<p><strong>Important caveat: this is an effective equal-depth approximation.</strong> In real systems, f and r channels may have highly asymmetric shielding depths—for example, Thermo III [12] reports η_{r←f} ≈ 0.192 versus η_{f←r} ≈ 0.002 in the Brusselator. The equal-depth approximation q = Ω_eff/n_ch averages out this asymmetry. A more precise treatment uses the multi-channel generalization Ω_eff = Σq_i (§6.6), allowing different channels to have different q_i. The macroscopically measured q is typically captured by the dominant channel (the one carrying the largest variance).</p>
+<p>Combining with q = 1 + 1/K gives</p>
+<p>$$K = \frac{n_{\text{ch}}}{\Omega_{\text{eff}} - n_{\text{ch}}}$$</p>
+<h3>6.2 Endpoint Anchoring</h3>
+<p>Both endpoints are definitional within their respective frameworks:</p>
+<table><thead><tr>
+<th>Endpoint</th>
+<th>ZFCρ</th>
+<th>Tsallis</th>
+<th>Correspondence</th>
+</tr></thead><tbody>
+<tr>
+<td>Ω_eff = 2</td>
+<td>Minimal decomposable configuration (2 prime factors)</td>
+<td>q = 1 (Boltzmann)</td>
+<td>One layer per channel, zero feedback surplus</td>
+</tr>
+<tr>
+<td>Ω_eff = 4</td>
+<td>Multiplicative dominance established (h crosses zero)</td>
+<td>q = 2 (resolvent)</td>
+<td>Two layers per channel: base + feedback</td>
+</tr>
+</tbody></table>
+<p>Endpoint alignment is not a fitting result. Ω = 2 is the smallest shell in ZFCρ with two prime factors. q = 1 is the definition of Boltzmann statistics. Their correspondence follows from the combinatorial constraint that at least n_ch prime factors are needed to distribute one per channel.</p>
+<h3>6.3 Structural Reason for Division by n_ch</h3>
+<p>The Ω_eff prime factors are distributed across n_ch channels. Each channel receives Ω_eff/n_ch shielding layers. q counts per-channel shielding depth, not total system shielding.</p>
+<p>Structural reason for q ≥ 1 (within the channel-averaged shielding model): Ω_eff ≥ n_ch. At least n_ch prime factors are needed to assign one to each channel. Within this model, configurations with fewer than n_ch factors do not constitute effective dissipative systems.</p>
+<p><strong>Exclusion of q < 1 within this framework:</strong> From q = 1+1/K, if q < 1 then K = 1/(q−1) < 0. Negative K would mean negative iterated shielding layers, which has no physical meaning in the discrete iteration model (each shielding layer represents one actual feedback operation). Stationary-state feedback kernels with q < 1 are therefore excluded within this framework. The q < 1 branch in Tsallis statistics (corresponding to compact-support distributions) involves a different physical mechanism outside the scope of the layered resolvent model.</p>
+<h3>6.4 q Not Limited to [1, 2] (Mathematical Extension / Higher-Order Conjectural Regime)</h3>
+<p>Ω_eff can exceed 2n_ch. In ZFCρ, Ω has no upper bound. A second phase-transition structure exists between Ω = 7 and 8 (qualitative change in single-layer closure behavior; ZFCρ Paper 42 [15] data: Ω = 7 closes but extremely slowly, Ω = 8 may never close). This corresponds to q > 2, K < 1.</p>
+<p>This regime is a mathematical extension of the channel-averaged shielding law and currently lacks independent empirical support. The physical meaning of K < 1 (if any) may be "feedback intensity exceeding first order"—single-step feedback producing multiple cascading effects. This interpretation belongs to a higher-order conjectural regime, not on the same evidence tier as the empirically common q ∈ [1, 2] corridor.</p>
+<h3>6.5 Preliminary Remarks on the q-Triplet</h3>
+<p>The solar-wind q-triplet yields three q values: q_stat ≈ 1.71, q_rel ≈ 3.8, q_sen ≈ −0.6 [4]. As noted in §5.2, this paper treats only q_stat.</p>
+<p>A preliminary observation worth recording: if different observables (stationary distribution, relaxation dynamics, sensitivity) probe different depths of a system's feedback structure, then it is natural for the same system to yield different q values from different observables—each reflects a different effective K.</p>
+<table><thead><tr>
+<th>q value</th>
+<th>Type</th>
+<th>Ω_eff = 2q</th>
+<th>Probed physics (speculative)</th>
+</tr></thead><tbody>
+<tr>
+<td>q_stat ≈ 1.71</td>
+<td>Stationary distribution</td>
+<td>~3.4</td>
+<td>Low-order feedback structure</td>
+</tr>
+<tr>
+<td>q_rel ≈ 3.8</td>
+<td>Relaxation</td>
+<td>~7.6</td>
+<td>Deeper feedback (memory/recovery)</td>
+</tr>
+<tr>
+<td>q_sen ≈ −0.6</td>
+<td>Sensitivity</td>
+<td>—</td>
+<td>Outside corridor (q < 1 branch), not treated</td>
+</tr>
+</tbody></table>
+<p>This observation is currently speculative. Mapping each q to specific physical layers requires independent arguments beyond this paper's scope. We merely record the numerical coincidence that q_rel ≈ 3.8 maps to Ω_eff ≈ 7.6, which falls in the vicinity of the ZFCρ second phase-transition zone (Ω = 7–8). Whether this coincidence has structural significance is an open question.</p>
+<h3>6.6 Multi-Channel Generalization</h3>
+<p>A more general form (proposed by 公西华):</p>
+<p>$$\Omega_{\text{eff}} = \sum_{i=1}^{n_{\text{ch}}} q_i$$</p>
+<p>The equal-depth approximation (all q_i equal) recovers q = Ω_eff/n_ch. Unequal depths allow different channels to carry different shielding loads.</p>
+<p>This generalization matters because it resolves the question of Ω_eff > 4: <strong>one need not push a single dual-channel q above 2. The more natural route is channel proliferation.</strong> Complex systems grow in complexity not by deepening the same channel but by spawning new functional channels.</p>
+<p>Corollary: for a three-channel system (n_ch = 3), the mapping becomes q = Ω_eff/3.</p>
+<h3>6.7 Epistemic Status of Linearity</h3>
+<p>The linear map q = Ω_eff/n_ch is the simplest form satisfying endpoint anchoring. Nonlinear maps (e.g. q = (Ω_eff/n_ch)^α) satisfy the endpoints for α = 1 only if both endpoints must equal 1 and 2 respectively. More generally, any monotone continuous function with q(2) = 1 and q(4) = 2 is a candidate.</p>
+<p>Linearity is chosen by Ockham's razor: no empirical data currently require nonlinear correction. Linearity itself is not derived from endpoint anchoring—it is a simplicity assumption, corresponding physically to the equal-depth approximation (§6.1). Should future data systematically deviate from linear predictions, introducing nonlinear corrections is the natural next step.</p>
+<h3>6.8 Status Summary</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>q = Ω_eff/n_ch</td>
+<td><strong>Conjecture (structurally motivated)</strong></td>
+</tr>
+<tr>
+<td>Endpoint alignment</td>
+<td>Exact within framework</td>
+</tr>
+<tr>
+<td>Linearity (vs nonlinear maps)</td>
+<td>Open: infinitely many monotone maps satisfy endpoints; linearity is simplest</td>
+</tr>
+<tr>
+<td>Identification q_i = d_eff</td>
+<td>Additional physical assumption</td>
+</tr>
+<tr>
+<td>n_ch = 2 (dual channel)</td>
+<td>Physical assumption (from f/r decomposition)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§7 Physical Location of the Phase-Transition Window</h2>
+<h3>7.1 Preliminary Correspondence Between Ω-Window and q-Window</h3>
+<p>The ZFCρ five-indicator phase-transition window lies at Ω ∈ [2.75, 4.01]. Under q = Ω_eff/2, this maps to q ∈ [1.375, 2.005]. This window covers some mid-to-high q systems (solar wind, gravitational systems, black holes) but not all known q_stat systems—QGP (q ≈ 1.15) and cosmic rays (q ≈ 1.2) lie below the window.</p>
+<table><thead><tr>
+<th>ZFCρ indicator</th>
+<th>Ω</th>
+<th>q = Ω/2</th>
+<th>Physical meaning</th>
+</tr></thead><tbody>
+<tr>
+<td>P(J>0) = 50%</td>
+<td>2.75</td>
+<td>1.375</td>
+<td>Multiplicative paths become majority</td>
+</tr>
+<tr>
+<td>z/√j peak</td>
+<td>~3.14</td>
+<td>~1.57</td>
+<td>Susceptibility peak</td>
+</tr>
+<tr>
+<td>E[A] = 0</td>
+<td>3.79</td>
+<td>1.895</td>
+<td>Net step turns positive</td>
+</tr>
+<tr>
+<td>h(Ω) = 0</td>
+<td>4.01</td>
+<td>2.005</td>
+<td>Convexity vanishes; multiplicative fully established</td>
+</tr>
+</tbody></table>
+<h3>7.2 Second Phase-Transition Zone</h3>
+<p>ZFCρ exhibits a second phase transition between Ω = 7 and 8 (qualitative change in single-layer closure). q = 3.5–4. The solar-wind q_rel ≈ 3.8 maps to Ω ≈ 7.6, falling in this zone—but q_rel measures relaxation dynamics rather than stationary distribution. Different q types may probe different Ω layers.</p>
+<h3>7.3 Complete h(Ω) Behavior (N = 10^10 Confirmed)</h3>
+<p>At N = 10^10, h(Ω) decreases monotonically through Ω = 29 with no upturn. |Δh| converges to ~0.10 for Ω ≥ 12. The M̄ slope crosses −1.000 at Ω = 11, with high-Ω values approaching zero from below.</p>
+<p>Interpretation: Multiplicative suppression of additive accumulation continues but enters diminishing marginal returns at high Ω. Each additional prime-factor layer contributes a roughly constant marginal |Δh| ≈ 0.10—neither increasing nor decreasing.</p>
+<hr>
+<h2>§8 Black-Hole Crossover Conjecture (Interpretive Layer)</h2>
+<p>The following content belongs to the interpretive layer and does not constitute exact results or conjectures of this paper.</p>
+<h3>8.1 T_H(M_P)/T_P = 1/(8π)</h3>
+<p>The Hawking temperature of a Planck-mass black hole is T_H = T_P/(8π). This is an exact algebraic result (verified by substituting M_P = √(ℏc/G) into T_H = ℏc³/(8πGMk_B)).</p>
+<p>At T_H, a typical Hawking photon (E ~ k_BT_H) has βE = 1. Boltzmann gives e⁻¹ ≈ 0.368; resolvent gives (1+1)⁻¹ = 0.5; deviation 36%.</p>
+<h3>8.2 Crossover Conjecture</h3>
+<p>Under certain observer-dependent and probe-dependent coarse-grainings, the effective thermal kernel may crossover from a memory-bearing form (small K, resolvent-like) to a Gibbs-like form (large K, Boltzmann-like). The vicinity of a black-hole horizon may be the most prominent physical scenario for such a crossover.</p>
+<p>This is not a claim that "the event horizon is an observer-independent thermodynamic phase surface." It is an observer-/extraction-protocol-dependent crossover conjecture.</p>
+<h3>8.3 Complementarity with Island Formula</h3>
+<p>The DD resolvent framework is highly compatible with the island formula developed during 2019–2026 [14]. The island formula provides a <strong>computational tool</strong> (how to compute radiation entropy so the Page curve holds). The DD framework provides a <strong>mechanistic interpretation</strong> (why the effective kernel takes different forms in different regions). The two are complementary, not contradictory.</p>
+<h3>8.4 Emergence of Temperature (Discussion Level)</h3>
+<p>Within this framework, temperature T may be viewed as the Boltzmann-side coarse-grained parameter—sufficient when the effective kernel lies very close to the q = 1 (K → ∞) end. k_B serves as the coefficient translating between feedback-order language and temperature language.</p>
+<p>Free photon gas sits at the complete-mixing limit (K = ∞, q = 1). In this limit, Boltzmann description is exact and temperature is exact—this is why the Planck spectrum and CMB measurements are so precise.</p>
+<p>The stronger claim that "temperature is an emergent quantity" currently lacks mathematical closure. Upgrading it requires at minimum an explicit map from (K, η, ...) to β. Until then, it remains a discussion-level interpretive framework.</p>
+<hr>
+<h2>§9 Predictions and Compatibility Checks</h2>
+<h3>Predictions</h3>
+<p><strong>P1 (Conditional prediction: predict q from K).</strong> If a system's effective kernel is indeed controlled by the same K that governs both the layered resolvent shape and the observable memory depth, then K extracted independently from the f-channel autocorrelation function should agree with Tsallis q = 1 + 1/K fitted from the distribution tail. This is the paper's hardest prediction and can be immediately cross-validated on existing data.</p>
+<p><strong>P2 (Three-channel system).</strong> If a system with n_ch = 3 exists (three symmetric drive/restore channels), its q = Ω_eff/3 rather than Ω_eff/2. For the same Ω_eff, a three-channel system has lower q—closer to Boltzmann. This is a direct corollary of the channel-averaged shielding conjecture, testable once a three-channel system is identified.</p>
+<h3>Compatibility Checks (Gauge-Fixed / Compatibility Level)</h3>
+<p><strong>C1 (Second-order coefficient).</strong> Under the canonical parametrization (z = βE), the second-order Taylor coefficient of (1+x/K)^{-K} is (K+1)/(2K). For K ≈ 7 (QGP), this gives ≈0.571; for pure Boltzmann, 0.500. The 14% difference is a gauge-fixed convenience check: it depends on the choice of canonical variable (§4) and is not a reparametrization-invariant diagnostic. Consistency would support the framework if future experiments resolve second-order kernel corrections.</p>
+<p><strong>C2 (Brusselator q-value compatibility).</strong> Thermo III [12] extracted m_eff = 11.3 from the Brusselator via η and C(1). m_eff is a DP-level mechanism parameter, not automatically identifiable with Tsallis kernel parameter K. If K ≈ m_eff holds approximately, the Brusselator's steady-state fluctuation distribution should approach q = 1 + 1/11.3 = 1.09. This is a compatibility check testing two assumptions simultaneously (K ≈ m_eff and layered-resolvent applicability).</p>
+<p><strong>C3 (Hawking radiation kernel-level inference).</strong> At the kernel level, a black hole with effective K = 1 (q = 2) would have its Hawking radiation kernel biased toward the (1+βE)⁻¹ power-law form rather than e^{-βE}. The deviation at βE ~ 1 is approximately 36%. Note: from kernel to observed flux requires occupation-layer corrections (Bose-Einstein/Fermi-Dirac) and greybody factors. This inference is discussed within the §8.2 crossover conjecture framework and is not presented as an independent prediction.</p>
+<hr>
+<h2>§10 Open Problems and Claim Boundaries</h2>
+<h3>10.1 Status Map</h3>
+<table><thead><tr>
+<th>Level</th>
+<th>Content</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Exact</strong></td>
+<td>q = 1+1/K, exp_q bridge, K=1→resolvent, K→∞→Boltzmann; discrete shielding theorem (§3.2); uniqueness (§3.2c)</td>
+</tr>
+<tr>
+<td><strong>Lemma</strong></td>
+<td>Reparametrization constraints (Propositions 1+2+Corollary, §4); extremal inequality (§3.3); K_eff existence/uniqueness (§3.4); second-order effective parameter q_eff^{(2)} = 1+Σλ² (§3.5)</td>
+</tr>
+<tr>
+<td><strong>Conditional corollary</strong></td>
+<td>Under channel decomposition + baseline one-layer-per-channel + effective equal sharing: q = Ω_eff/n_ch</td>
+</tr>
+<tr>
+<td><strong>Conjecture</strong></td>
+<td>Physical systems satisfy the above structural assumptions; Ω_eff is independently extractable; prime-factor depth corresponds to thermal-kernel shielding depth</td>
+</tr>
+<tr>
+<td><strong>Interpretation</strong></td>
+<td>BH crossover, temperature emergence, information encoding switch</td>
+</tr>
+</tbody></table>
+<h3>10.2 Propositions Beyond This Paper's Scope</h3>
+<p>The following propositions may hold within the SAE framework, but this paper's evidence does not support them at the claim level. They are marked as interpretive or long-term open:</p>
+<ul>
+<li>"The event horizon is a Boltzmann/resolvent physical phase surface" — currently only an observer-dependent crossover conjecture</li>
+<li>"The information paradox is resolved by kernel switching" — currently only compatibility / interpretive layer</li>
+<li>"The numerical coincidence Ω = 4.01 and βE = 4.01 constitutes structural identity" — currently coincidence-level + indirect support from q = Ω_eff/n_ch</li>
+<li>"Temperature is not fundamental but emergent" — direction supported, but lacking an explicit (K, η) → β map</li>
+<li>"q = Ω_eff/n_ch" — structurally motivated conjecture, not theorem</li>
+</ul>
+<h3>10.3 Open Problems</h3>
+<ul>
+<li>For a given class of physical systems, prove that the effective thermal kernel can be written as a layered resolvent product (Assumption A1) and determine the statistical structure of layer weights {λ_i}. Under full equal-sharing, the exact relation q = Ω_eff/n_ch follows; under general unequal weighting, the local effective parameter satisfies q_eff^{(2)} = 1 + Σλ².</li>
+<li>The precise relationship between K and m_eff. Is K = m_eff? Or K = f(m_eff)?</li>
+<li>Whether the "canonical control variable" is βE or something more fundamental.</li>
+<li>The physical domain of applicability of Ω_eff = Σq_i (multi-channel budget generalization).</li>
+<li>An analytic explanation for |Δh| converging to ~0.10 at high Ω.</li>
+</ul>
+<hr>
+<h2>References</h2>
+<p>[1] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988). DOI: 10.1007/BF01016429.</p>
+<p>[2] ALICE Collaboration (K. Aamodt et al.), "Transverse momentum spectra of charged particles in proton-proton collisions at √s = 900 GeV with ALICE at the LHC," <em>European Physical Journal C</em> <strong>71</strong>, 1655 (2011). DOI: 10.1140/epjc/s10052-011-1655-9.</p>
+<p>[3] CMS Collaboration (V. Khachatryan et al.), "Charged particle transverse momentum spectra in pp collisions at √s = 0.9 and 7 TeV," <em>Journal of High Energy Physics</em> <strong>2011</strong>, 064 (2011). DOI: 10.1007/JHEP05(2011)064.</p>
+<p>[4] G. Livadiotis and D. J. McComas, "Understanding kappa distributions: A toolbox for space science and astrophysics," <em>Space Science Reviews</em> <strong>175</strong>, 183–214 (2013). DOI: 10.1007/s11214-013-9982-9.</p>
+<p>[5] C. Beck, "Non-extensive statistical mechanics and particle spectra in elementary interactions," <em>Physica A</em> <strong>286</strong>, 164–180 (2000). DOI: 10.1016/S0378-4371(00)00354-X.</p>
+<p>[6] A. R. Plastino and A. Plastino, "Stellar polytropes and Tsallis' entropy," <em>Physics Letters A</em> <strong>174</strong>, 384–386 (1993). DOI: 10.1016/0375-9601(93)90195-6.</p>
+<p>[7] E. M. C. Abreu, J. Ananias Neto, A. C. R. Mendes, and W. Oliveira, "New bounds for Tsallis parameter in a noncommutative phase-space entropy," <em>Physics Letters B</em> <strong>727</strong>, 524–528 (2013). DOI: 10.1016/j.physletb.2013.10.053.</p>
+<p>[8] P. Chunaksorn, P. Music, and R. Yongram, "Black hole thermodynamics via Tsallis statistical mechanics," <em>European Physical Journal C</em> <strong>85</strong>, 532 (2025). DOI: 10.1140/epjc/s10052-025-14239-1.</p>
+<p>[9] C. Tsallis, <em>Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World</em> (Springer, New York, 2009). DOI: 10.1007/978-0-387-85359-8.</p>
+<p>[10] H. Qin, "ZFCρ Thermodynamics Paper I: η Exists," Zenodo (2025). DOI: 10.5281/zenodo.19310282.</p>
+<p>[11] H. Qin, "ZFCρ Thermodynamics Paper II: η ≈ 0.20 Mechanism," Zenodo (2025). DOI: 10.5281/zenodo.19511064.</p>
+<p>[12] H. Qin, "ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of η," Zenodo (2026). DOI: 10.5281/zenodo.19597684.</p>
+<p>[13] G. E. Volovik, "Tsallis–Cirto entropy of black hole and black hole atom," <em>JETP Letters</em> <strong>120</strong>, 749–753 (2024). DOI: 10.1134/S0021364024603361.</p>
+<p>[14] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, "The entropy of Hawking radiation," <em>Reviews of Modern Physics</em> <strong>93</strong>, 035002 (2021). DOI: 10.1103/RevModPhys.93.035002.</p>
+<p>[15] H. Qin, "ZFCρ Paper XLII: Conditional Closure of H'," Zenodo (2025). DOI: 10.5281/zenodo.19226607.</p>
+<p>[16] M. D. Azmi and J. Cleymans, "The Tsallis distribution at large transverse momenta," <em>European Physical Journal C</em> <strong>75</strong>, 430 (2015). DOI: 10.1140/epjc/s10052-015-3629-9.</p>
+  </div>
+  </div>
+
+  <div id="lang-zh" class="lang-content" style="display:none" lang="zh">
+  <div class="paper-page-header-zh">
+    <h1>ZFCρ热力学论文 IV：Tsallis q参数的第一性原理推导与通道平均屏蔽律</h1>
+    <div class="paper-subtitle-line" style="font-size:1rem;color:#666;margin-top:.3rem;">ZFCρ热力学系列 · 第四篇</div>
+  </div>
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>Tsallis非广延统计力学引入了参数q来描述偏离Boltzmann-Gibbs统计的程度。三十年来，q在实验中被广泛拟合（QGP q≈1.15，宇宙射线q≈1.2，太阳风q≈1.7，引力系统q≈2.0），但始终缺少第一性原理的推导：q为什么是这个值？
+
+本文给出了q的精确插值族身份。Tsallis q-exponential在q = 1 + 1/K时的形式为
+
+e_q(-x) = (1 + x/K)^{-K}
+
+其K→∞极限恰好是指数函数的数学定义：
+
+lim_{K→∞} (1 + x/K)^{-K} = e^{-x}
+
+因此Boltzmann分布e^{-βE}就是上述插值族的无穷阶极限。q = 2（K = 1）给出DD resolvent (1+x)⁻¹，对应ZFCρ中DP递推的最简反馈核。整个Tsallis q族是一个由K参数化的精确插值族，K的物理含义是有效反馈阶数（effective feedback order）。
+
+本文证明了一个重参数化引理（reparametrization lemma）：Boltzmann和resolvent在二阶泰勒系数上的因子2差异不是重参数化不变量；尾指数也不是任意非线性重参数化下的不变量。推论：任何regime诊断都必须先固定canonical control variable。
+
+本文提出通道平均屏蔽律猜想（channel-averaged shielding conjecture）：在f/r双通道系统中，
+
+q = Ω_eff / n_ch
+
+其中Ω_eff是有效壳层深度（对应ZFCρ中的素因子个数Ω），n_ch是通道数。双通道时n_ch = 2，q = Ω_eff/2。这个猜想有精确的端点锚定（Ω_eff = 2 ↔ q = 1，Ω_eff = 4 ↔ q = 2），物理解释为"每通道分到的屏蔽层数"，并解释了q ≥ 1的结构原因（Ω_eff ≥ n_ch，至少需要n_ch个素因子才能在各通道之间分配）。
+
+实验q值表提供了初步后验支持。本文的first-principles部分是插值族与迭代屏蔽定理；q = Ω_eff/n_ch仍是structurally motivated conjecture。非平凡预测和兼容性检验被给出，其中最硬的一项是：从任何非平衡系统的f通道自相关函数独立提取K，预测其Tsallis q = 1 + 1/K。
+
+---</p>
+  </div>
+  <div class="paper-body">
+<h1>ZFCρ热力学论文 IV：Tsallis q参数的第一性原理推导与通道平均屏蔽律</h1>
+<p><strong>Toward a First-Principles Derivation of the Tsallis q Parameter: the Interpolation Family, a Reparametrization Lemma, and the Channel-Averaged Shielding Conjecture</strong></p>
+<p>Han Qin（秦汉）</p>
+<p>SAE Research · 2026</p>
+<hr>
+<h2>摘要</h2>
+<p>Tsallis非广延统计力学引入了参数q来描述偏离Boltzmann-Gibbs统计的程度。三十年来，q在实验中被广泛拟合（QGP q≈1.15，宇宙射线q≈1.2，太阳风q≈1.7，引力系统q≈2.0），但始终缺少第一性原理的推导：q为什么是这个值？</p>
+<p>本文给出了q的精确插值族身份。Tsallis q-exponential在q = 1 + 1/K时的形式为</p>
+<p>e_q(-x) = (1 + x/K)^{-K}</p>
+<p>其K→∞极限恰好是指数函数的数学定义：</p>
+<p>lim_{K→∞} (1 + x/K)^{-K} = e^{-x}</p>
+<p>因此Boltzmann分布e^{-βE}就是上述插值族的无穷阶极限。q = 2（K = 1）给出DD resolvent (1+x)⁻¹，对应ZFCρ中DP递推的最简反馈核。整个Tsallis q族是一个由K参数化的精确插值族，K的物理含义是有效反馈阶数（effective feedback order）。</p>
+<p>本文证明了一个重参数化引理（reparametrization lemma）：Boltzmann和resolvent在二阶泰勒系数上的因子2差异不是重参数化不变量；尾指数也不是任意非线性重参数化下的不变量。推论：任何regime诊断都必须先固定canonical control variable。</p>
+<p>本文提出通道平均屏蔽律猜想（channel-averaged shielding conjecture）：在f/r双通道系统中，</p>
+<p>q = Ω_eff / n_ch</p>
+<p>其中Ω_eff是有效壳层深度（对应ZFCρ中的素因子个数Ω），n_ch是通道数。双通道时n_ch = 2，q = Ω_eff/2。这个猜想有精确的端点锚定（Ω_eff = 2 ↔ q = 1，Ω_eff = 4 ↔ q = 2），物理解释为"每通道分到的屏蔽层数"，并解释了q ≥ 1的结构原因（Ω_eff ≥ n_ch，至少需要n_ch个素因子才能在各通道之间分配）。</p>
+<p>实验q值表提供了初步后验支持。本文的first-principles部分是插值族与迭代屏蔽定理；q = Ω_eff/n_ch仍是structurally motivated conjecture。非平凡预测和兼容性检验被给出，其中最硬的一项是：从任何非平衡系统的f通道自相关函数独立提取K，预测其Tsallis q = 1 + 1/K。</p>
+<hr>
+<h2>§1 痛点：Tsallis q从哪来</h2>
+<h3>1.1 三十年的自由参数</h3>
+<p>1988年，Tsallis提出了Boltzmann-Gibbs统计的推广[1]。核心对象是q-exponential</p>
+<p>$$e_q(u) = [1 + (1-q)u]_+^{1/(1-q)}$$</p>
+<p>当q = 1时回到标准指数函数e^u。当q ≠ 1时，分布从指数尾变为幂律尾。</p>
+<p>在随后的三十年中，q-exponential在大量物理系统中被成功拟合。LHC的ALICE和CMS实验数据[2,3]被用Tsallis分布拟合，给出强子横动量谱的q ≈ 1.11-1.15[16]。太阳风的q-triplet给出q_stat ≈ 1.71±0.07[4]。宇宙射线能谱中q ≈ 1.2[5]。引力系统（如球状星团速度分布）中q接近2[6]。黑洞热力学中Tsallis熵的应用从2019年延续至今[7,8]。</p>
+<p>但q始终是一个自由参数。每个系统拟合出不同的q值，没有人从微观机制推导出q应该是多少。</p>
+<p>这是Tsallis统计最被批评的一点。Boltzmann统计的e^{-βE}没有自由参数——给定温度T，分布完全确定。Tsallis多了一个参数q，拟合力更强了，但解释力弱了。物理学家不喜欢不能从第一性原理推导的自由参数。</p>
+<h3>1.2 三层对象的区分</h3>
+<p>在进入推导之前，必须区分三个层次的对象。这三层在文献中经常被混淆。</p>
+<p><strong>Kernel层。</strong> 最底层的权重函数：Boltzmann写e^{-βE}，resolvent写(1+x)⁻¹，Tsallis写e_q(-x)。这是微观态被赋予的原始权重。</p>
+<p><strong>Occupation层。</strong> 统计分布函数。对boson，Bose-Einstein分布1/(e^{βE}-1)在kernel层使用了e^{βE}。如果替换kernel，occupation层也会改变。</p>
+<p><strong>Observed flux层。</strong> 远方观测者实际测到的谱。它是occupation层经过传播效应（如黑洞的greybody factor）后的结果。</p>
+<p>本文的讨论限于kernel层。关于occupation层和observed flux层的修正是后续工作。</p>
+<h3>1.3 本文的贡献</h3>
+<p>本文有五项贡献：</p>
+<p>（1）精确插值族：q = 1+1/K将Boltzmann（K→∞）和DD resolvent（K=1）连成一个单参数族。</p>
+<p>（2）迭代屏蔽推导：K层离散屏蔽的等权迭代自然产生q-exponential。固定总耦合下的极值不等式证明等权是最强屏蔽。二阶有效参数q_eff^{(2)} = 1+Σλ²揭示q测量的是层权重集中度。</p>
+<p>（3）重参数化引理：二阶泰勒系数和尾指数都不是重参数化不变量，诊断必须在canonical variable上进行。</p>
+<p>（4）通道平均屏蔽律猜想：q = Ω_eff/n_ch，将Tsallis q和ZFCρ的Ω通过通道结构关联。</p>
+<p>（5）实验q值的物理解读和可证伪预测。</p>
+<hr>
+<h2>§2 精确插值族</h2>
+<h3>2.1 q = 1 + 1/K</h3>
+<p>取q = 1 + 1/K（K > 0），代入Tsallis q-exponential的定义：</p>
+<p>$$e_q(-x) = [1 + (q-1)x]^{1/(1-q)} = \left(1 + \frac{x}{K}\right)^{-K}$$</p>
+<p>这是一个精确的代数恒等式，不含任何近似。</p>
+<table><thead><tr>
+<th>K</th>
+<th>q = 1+1/K</th>
+<th>e_q(-x)</th>
+<th>系统</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>2.0</td>
+<td>(1+x)⁻¹</td>
+<td>DD resolvent</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.5</td>
+<td>(1+x/2)⁻²</td>
+<td>中等反馈</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.2</td>
+<td>(1+x/5)⁻⁵</td>
+<td>弱反馈</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1.1</td>
+<td>(1+x/10)⁻¹⁰</td>
+<td>近Boltzmann</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>1.0</td>
+<td>e⁻ˣ</td>
+<td>Boltzmann</td>
+</tr>
+</tbody></table>
+<h3>2.2 Boltzmann是无穷阶极限</h3>
+<p>$$\lim_{K \to \infty} \left(1 + \frac{x}{K}\right)^{-K} = e^{-x}$$</p>
+<p>这不是一个近似。这是指数函数的数学定义本身。</p>
+<p>因此，在本文考察的插值族中，Boltzmann分布e^{-βE}对应K→∞的连续极限——"无穷阶反馈"的系统，每一步反馈都被无穷多个微步细分，宏观上看起来像无记忆的连续指数衰减。</p>
+<p>DD resolvent (1+x)⁻¹对应K = 1——"一步反馈"。系统在每一步直接回写到自身状态，没有细分。这是ZFCρ中DP递推 X_{n+1} = min(X_n + A_n, B_n) 的自然核。</p>
+<h3>2.3 物理含义：K是什么</h3>
+<p>K的精确数学身份是q-exponential族的形状参数。</p>
+<p>K的物理解读是一个猜想，不是定理：<strong>K是有效反馈阶数（effective feedback order）</strong>——系统在"忘记"之前能维持多少步的相干反馈。</p>
+<p>K→∞不应该读作"无穷记忆"（这在语义上反直觉，因为Boltzmann是无记忆的）。更准确的读法是"无穷细分"：一步反馈被细分为无穷多个微步，每个微步的反馈量趋零，总效果是平滑的指数衰减。微积分的连续极限恰好是这个操作的数学实现。</p>
+<p>K = 1则是"不细分"：反馈在一步内完成，不经过中间步骤。</p>
+<p>中间值K ∈ (1, ∞)对应"有限步细分"。K越小，单步反馈越粗糙越直接；K越大，反馈越细致越平滑。</p>
+<h3>2.4 K和m_eff的连接</h3>
+<p>Thermo II[11]定义了有效层数m_eff，从η ≈ 1 - C(1)^{m_eff}提取。Thermo III[12]在Brusselator中为这一结构提供了初步支持。</p>
+<p>K和m_eff测量的可能是同一个物理量的两种提取方式。但目前二者的精确关系尚未建立。在ZFCρ中m_eff = 5.47，对应K = 5.47则q = 1.18。在Brusselator中m_eff = 11.3，对应K = 11.3则q = 1.09。这些数值处于已知实验q值的范围内，但m_eff和K的等同仍然是猜想而非证明。</p>
+<hr>
+<h2>§3 迭代屏蔽推导</h2>
+<h3>3.1 离散屏蔽模型</h3>
+<p>设S₀ > 0为初始信号，x ≥ 0为总屏蔽振幅（control parameter），K为正整数（屏蔽层数）。给定K个非负耦合c₁, ..., c_K ≥ 0，定义K层离散屏蔽后的信号为</p>
+<p>$$S_K(\mathbf{c}) = S_0 \prod_{i=1}^{K} (1 + c_i)^{-1}$$</p>
+<p>约束总耦合：Σc_i = x。</p>
+<p>物理图像：每个素因子对应一层乘法屏蔽。信号经过每层时被(1+c_i)⁻¹衰减。c_i是第i层的耦合强度。总耦合x固定（对应总的control parameter如βE）。在Boltzmann统计中，x = βE有明确的物理含义（能量与热浴温度的比值）。在SAE/ZFCρ的底层结构中，x可以被理解为当前状态面临的未结算结构张力总和——系统通过将其分配到K层屏蔽中逐层吸收。x的精确本体论身份是§10的开放问题之一。</p>
+<h3>3.2 定理1（离散屏蔽迭代）</h3>
+<p><strong>(a) 等权分配。</strong> 若c_i = x/K（i = 1, ..., K），则</p>
+<p>$$S_K^{\text{eq}}(x) = S_0 \left(1 + \frac{x}{K}\right)^{-K} = S_0 \cdot e_q(-x), \quad q = 1 + \frac{1}{K}$$</p>
+<p>证明：直接代入。∎</p>
+<p><strong>(b) Boltzmann极限。</strong></p>
+<p>$$\lim_{K \to \infty} \left(1 + \frac{x}{K}\right)^{-K} = e^{-x}$$</p>
+<p>证明：取对数，由标准极限lim_{K→∞} K·log(1+x/K) = x得。∎</p>
+<p><strong>(c) 唯一性。</strong> 设函数族F_K满足：（i）由K个相同的单层resolvent迭代生成，F_K(x) = S₀·[1+γ_K(x)]^{-K}；（ii）总耦合按精确加法归一化为K·γ_K(x) = x。则F_K(x) = S₀·(1+x/K)^{-K}是唯一可能的函数族。</p>
+<p>证明：由K·γ_K(x) = x得γ_K(x) = x/K，代回即得。∎</p>
+<p>注意：唯一性依赖于精确的加法归一化Σc_i = x。若只要求一阶归一化（K·γ_K(x) = x + O(x²)），唯一性不成立。</p>
+<h3>3.3 定理2（固定总耦合下的极值不等式）</h3>
+<p>设c_i ≥ 0，Σc_i = x。则</p>
+<p>$$\left(1 + \frac{x}{K}\right)^{-K} \leq \prod_{i=1}^{K}(1+c_i)^{-1} \leq (1+x)^{-1}$$</p>
+<p>左端等号当且仅当c₁ = ... = c_K = x/K（等权）。右端等号当且仅当某一个c_j = x，其余为0（全集中）。</p>
+<p><strong>证明（左端）。</strong> log(1+t)在[0,∞)上是凹函数。由Jensen不等式：</p>
+<p>(1/K)·Σlog(1+c_i) ≤ log(1 + (1/K)·Σc_i) = log(1+x/K)</p>
+<p>乘以K再指数化，取倒数即得。凹函数Jensen取等当且仅当c_i全部相等。∎</p>
+<p><strong>证明（右端）。</strong> 展开乘积：∏(1+c_i) = 1 + Σc_i + Σ_{i<j}c_ic_j + ... ≥ 1 + x。取倒数即得。取等当且仅当所有交叉项为零。∎</p>
+<p><strong>物理解读：等权分配是同样总耦合下最有效率的屏蔽（信号最小）。</strong> 耦合越集中到少数层，屏蔽越弱，残留信号越大。</p>
+<h3>3.4 推论（有效阶数K_eff的存在唯一性）</h3>
+<p>固定x > 0，定义f_ν(x) = (1+x/ν)^{-ν}，ν > 0。则f_ν(x)对ν严格单调递减。</p>
+<p>因此，对任意c_i ≥ 0（Σc_i = x），存在唯一的K_eff ∈ [1, K]使得</p>
+<p>$$\prod_{i=1}^{K}(1+c_i)^{-1} = \left(1 + \frac{x}{K_{\text{eff}}}\right)^{-K_{\text{eff}}}$$</p>
+<p>从而可定义</p>
+<p>$$q_{\text{eff}} = 1 + \frac{1}{K_{\text{eff}}} \in \left[1 + \frac{1}{K},\; 2\right]$$</p>
+<p>不等权系统总可以被唯一重编码为一个等权但有效阶数更小的系统。q变大严格对应K_eff变小。</p>
+<h3>3.5 补充引理（二阶有效q）</h3>
+<p>设c_i = λ_i·x，λ_i ≥ 0，Σλ_i = 1。则当x→0时：</p>
+<p>$$\prod_{i=1}^{K}(1+\lambda_i x)^{-1} = 1 - x + \frac{1+\sum_i \lambda_i^2}{2} x^2 + O(x^3)$$</p>
+<p>与Tsallis q-exponential的二阶展开e_q(-x) = 1 - x + (q/2)x² + O(x³)匹配，得</p>
+<p>$$q_{\text{eff}}^{(2)} = 1 + \sum_{i=1}^{K} \lambda_i^2$$</p>
+<p><strong>层权重集中度（Herfindahl指数）Σλ²直接决定了局部有效q。</strong></p>
+<table><thead><tr>
+<th>配置</th>
+<th>Σλ²</th>
+<th>q_eff^{(2)}</th>
+</tr></thead><tbody>
+<tr>
+<td>等权（λ_i = 1/K）</td>
+<td>1/K</td>
+<td>1 + 1/K（精确q）</td>
+</tr>
+<tr>
+<td>全集中（一层独占）</td>
+<td>1</td>
+<td>2（纯resolvent）</td>
+</tr>
+<tr>
+<td>一般不等权</td>
+<td>∈ [1/K, 1]</td>
+<td>∈ [1+1/K, 2]</td>
+</tr>
+</tbody></table>
+<p><strong>这条公式的价值：不需要先证明equal sharing就能得到q。</strong> q在局部上测到的就是屏蔽层权重的集中度。Equal sharing只是这个谱上最均匀的端点。</p>
+<h3>3.6 状态标记</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>定理1（迭代屏蔽 → q-exponential）</td>
+<td><strong>Exact</strong></td>
+</tr>
+<tr>
+<td>定理2（极值不等式）</td>
+<td><strong>Lemma（已证）</strong></td>
+</tr>
+<tr>
+<td>推论（K_eff存在唯一性）</td>
+<td><strong>Lemma（已证）</strong></td>
+</tr>
+<tr>
+<td>补充引理（q_eff^{(2)} = 1+Σλ²）</td>
+<td><strong>Lemma（已证）</strong></td>
+</tr>
+<tr>
+<td>equal sharing假设</td>
+<td>物理假设（和Boltzmann等概率假设同级）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§4 重参数化引理</h2>
+<h3>4.1 二阶泰勒系数不是不变量</h3>
+<p>对标准参数化（z = x）：</p>
+<p>$$e^{-x} = 1 - x + \frac{x^2}{2} - \cdots$$</p>
+<p>$$(1+x)^{-1} = 1 - x + x^2 - \cdots$$</p>
+<p>二阶系数之比为2。这个因子2在文献中被注意到但未被提升为系统性诊断[9]。</p>
+<p>然而，如果允许重参数化z = f(x)，其中f(x) = x + a₂x² + O(x³)，则</p>
+<p>$$\frac{1}{1+f(x)} = 1 - x + (1-a_2)x^2 + O(x^3)$$</p>
+<p>选择a₂ = 1/2时，二阶系数精确变为1/2——和Boltzmann相同。</p>
+<p><strong>命题1。</strong> 二阶泰勒系数在一般的重参数化z = f(x)下不是不变量。对任何目标二阶系数值c₂，都存在f使得(1+f(x))⁻¹的展开给出c₂。</p>
+<h3>4.2 尾指数也不是不变量</h3>
+<p>对resolvent核R_K(z) = (1+z/K)^{-K}，当z = f(x)且f(x) ~ x^ν（大x极限）时：</p>
+<p>$$R_K(f(x)) \sim x^{-K\nu}$$</p>
+<p>从尾部读出的power-law指数是Kν而非K。</p>
+<p><strong>命题2。</strong> 尾指数在一般的非线性重参数化下不是不变量。读出的指数依赖于f的大x行为。</p>
+<h3>4.3 推论：必须先固定canonical variable</h3>
+<p>命题1和命题2的组合推论是：</p>
+<p><strong>任何基于kernel形状的regime诊断——无论是二阶系数还是尾指数——都必须先固定canonical control variable，再进行提取和比较。</strong></p>
+<p>二阶系数太local（只看x→0邻域），不能作为主诊断。q-family是更合适的全局对象，但q的提取也必须在canonical variable固定之后才有物理可比性。</p>
+<p>这并不否定因子2的价值——在canonical参数化（z = βE）下，因子2是一个方便的快速判据。但它的身份是"gauge-fixed convenience"而非"reparametrization-invariant diagnostic"。</p>
+<h3>4.4 状态标记</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>命题1（二阶系数非不变）</td>
+<td><strong>Lemma</strong>（可证明）</td>
+</tr>
+<tr>
+<td>命题2（尾指数非不变）</td>
+<td><strong>Lemma</strong>（可证明）</td>
+</tr>
+<tr>
+<td>推论（需固定canonical variable）</td>
+<td><strong>Corollary</strong></td>
+</tr>
+<tr>
+<td>"canonical variable是βE"</td>
+<td>物理假设，不是数学定理</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§5 现象学锚点</h2>
+<h3>5.1 实验q值表</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>q_obs</th>
+<th>K = 1/(q-1)</th>
+<th>Ω_eff = 2q</th>
+<th>来源</th>
+</tr></thead><tbody>
+<tr>
+<td>理想气体</td>
+<td>1.0</td>
+<td>∞</td>
+<td>2.0</td>
+<td>定义</td>
+</tr>
+<tr>
+<td>QGP (ALICE/CMS)</td>
+<td>~1.15</td>
+<td>~6.7</td>
+<td>~2.3</td>
+<td>[16]</td>
+</tr>
+<tr>
+<td>宇宙射线</td>
+<td>~1.2</td>
+<td>~5.0</td>
+<td>~2.4</td>
+<td>[5]</td>
+</tr>
+<tr>
+<td>太阳风 q_stat</td>
+<td>~1.71±0.07</td>
+<td>~2.8</td>
+<td>~3.4</td>
+<td>[4]</td>
+</tr>
+<tr>
+<td>引力系统</td>
+<td>~1.8</td>
+<td>~1.25</td>
+<td>~3.6</td>
+<td>[6]</td>
+</tr>
+<tr>
+<td>黑洞（DD预测）</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>本文</td>
+</tr>
+</tbody></table>
+<p>K的启发性解读（heuristic reading）：在QGP中K≈7，可以读作系统约有7步的相干反馈深度。太阳风K≈3对应约3步的局部自组织深度。黑洞K=1对应最简一步反馈。这些读法依赖于K的物理解读（§2.3），后者本身是猜想。</p>
+<h3>5.2 使用条件</h3>
+<p>上表中的q值来自不同实验组的独立拟合，拟合协议不统一。LHC的q是从粒子横动量谱的power-law尾拟合的。太阳风的q_stat是从质子密度分布拟合的。这些q值之间的可比性受限于各自的拟合协议。</p>
+<p>此外，同一个系统可能有多个q值。太阳风的q-triplet给出q_stat ≈ 1.71，q_rel ≈ 3.8，q_sen ≈ -0.6[4]。本文只讨论稳态分布核的那个q（即q_stat），不处理relaxation或sensitivity方向的q。</p>
+<p>因此，上表应被视为<strong>现象学锚点</strong>，不是精确映射的证据。它的价值在于：已知的实验q值全部落在q ∈ [1, 2]的Boltzmann-resolvent走廊内（q_stat而言），和K ∈ [1, ∞)的反馈阶数解读一致。</p>
+<hr>
+<h2>§6 通道平均屏蔽律猜想</h2>
+<h3>6.1 猜想的陈述</h3>
+<p><strong>猜想（通道平均屏蔽律）。</strong> 在f/r双通道系统中，Tsallis q参数等于每通道的有效壳层深度：</p>
+<p>$$q = \frac{\Omega_{\text{eff}}}{n_{\text{ch}}}$$</p>
+<p>其中Ω_eff是系统的有效壳层深度（对应ZFCρ中整数n的素因子个数Ω(n)的物理推广），n_ch是通道数。双通道（f/r分解）时n_ch = 2。</p>
+<p><strong>重要限定：这是等深近似（effective equal-depth approximation）。</strong> 真实系统中f和r通道的屏蔽深度可能高度不对称——例如Thermo III[12]中Brusselator的η_{r←f} ≈ 0.192而η_{f←r} ≈ 0.002。等深近似q = Ω_eff/n_ch将这种不对称平均掉了。更精确的处理是§6.6的Ω_eff = Σq_i推广，允许不同通道有不同的q_i。宏观测到的q值往往被主导通道（携带最大方差的通道）的q_i截获。</p>
+<p>结合q = 1 + 1/K得</p>
+<p>$$K = \frac{n_{\text{ch}}}{\Omega_{\text{eff}} - n_{\text{ch}}}$$</p>
+<h3>6.2 端点锚定</h3>
+<p>两个端点在各自框架中都是定义性的：</p>
+<table><thead><tr>
+<th>端点</th>
+<th>ZFCρ</th>
+<th>Tsallis</th>
+<th>对应</th>
+</tr></thead><tbody>
+<tr>
+<td>Ω_eff = 2</td>
+<td>最小可分解配置（2个素因子）</td>
+<td>q = 1（Boltzmann）</td>
+<td>每通道1层，零反馈余量</td>
+</tr>
+<tr>
+<td>Ω_eff = 4</td>
+<td>乘法完全确立（h穿零）</td>
+<td>q = 2（resolvent）</td>
+<td>每通道2层：基础+反馈</td>
+</tr>
+</tbody></table>
+<p>端点对齐不是拟合的结果。Ω = 2是ZFCρ中"刚好有两个素因子"的最小壳层。q = 1是Boltzmann统计的定义。两者的对应来自"至少需要n_ch个素因子才能在各通道之间分配"这个组合论约束。</p>
+<h3>6.3 "除以n_ch"的结构理由</h3>
+<p>Ω_eff个素因子被均分到n_ch个通道中。每通道Ω_eff/n_ch层屏蔽。q数的不是"系统总共有多少屏蔽"，而是"每通道有多少屏蔽"。</p>
+<p>q ≥ 1的结构原因（在通道平均屏蔽模型内）：Ω_eff ≥ n_ch。系统至少需要n_ch个素因子才能在各通道之间分配——每通道至少一个。在本模型中，少于n_ch个素因子的配置不构成有效的耗散系统。</p>
+<p><strong>q < 1在本框架中的排除：</strong> 由q = 1+1/K，若q < 1则K = 1/(q-1) < 0。负的K意味着负的迭代屏蔽层数，在离散迭代模型中没有物理含义（每一层屏蔽是一次实际的反馈操作，不能有负次）。因此在稳态反馈核的层面上，q < 1在本框架中是被排除的。Tsallis文献中q < 1的分支（对应compact support分布）属于不同的物理机制，不在本文的layered resolvent模型覆盖范围内。</p>
+<h3>6.4 q不限于[1, 2]（数学延拓/高阶猜想regime）</h3>
+<p>Ω_eff可以大于2n_ch。在ZFCρ中，Ω没有上界。Ω = 7-8之间有第二相变结构（单层闭合行为的质变，ZFCρ Paper 42[15]数据：Ω=7闭合但极慢，Ω=8可能永不闭合）。对应q > 2，K < 1。</p>
+<p>这一区域是通道平均屏蔽律的数学延拓，目前缺少独立的经验支持。K < 1对应的物理含义（如果有的话）可能是"反馈强度超过一阶"——单步反馈产生多次级联效应。但这一解读属于高阶猜想regime，与前面经验上常见的q ∈ [1, 2]走廊不在同一证据层级上。</p>
+<h3>6.5 关于q-triplet的初步讨论</h3>
+<p>太阳风的q-triplet给出三个q值：q_stat ≈ 1.71，q_rel ≈ 3.8，q_sen ≈ -0.6[4]。§5.2已指出本文只处理q_stat（稳态分布核）。</p>
+<p>但值得记录一个初步观察：如果不同的观测量（稳态分布、弛豫动力学、灵敏度）探测的是系统反馈结构的不同深度，那同一个系统在不同观测量上给出不同q值就是自然的——它们各自反映了不同的有效K值。</p>
+<table><thead><tr>
+<th>q值</th>
+<th>类型</th>
+<th>Ω_eff = 2q</th>
+<th>探测的物理（推测）</th>
+</tr></thead><tbody>
+<tr>
+<td>q_stat ≈ 1.71</td>
+<td>稳态分布</td>
+<td>~3.4</td>
+<td>低阶反馈结构</td>
+</tr>
+<tr>
+<td>q_rel ≈ 3.8</td>
+<td>弛豫</td>
+<td>~7.6</td>
+<td>更深层反馈（记忆/恢复）</td>
+</tr>
+<tr>
+<td>q_sen ≈ -0.6</td>
+<td>灵敏度</td>
+<td>—</td>
+<td>走廊外（q<1分支），本文不处理</td>
+</tr>
+</tbody></table>
+<p>这个观察目前是speculative。将q-triplet的三个q各自映射到具体的物理层级需要独立的论证，超出了本文的scope。我们仅记录数值吻合：q_rel ≈ 3.8对应的Ω_eff ≈ 7.6，恰好落在ZFCρ第二相变区（Ω=7-8）附近。这个吻合是否有结构意义是一个开放问题。</p>
+<h3>6.6 多通道推广</h3>
+<p>公西华提出的更一般形式：</p>
+<p>$$\Omega_{\text{eff}} = \sum_{i=1}^{n_{\text{ch}}} q_i$$</p>
+<p>等深近似（所有q_i相等）时退回q = Ω_eff/n_ch。非等深情况允许不同通道有不同的屏蔽深度。</p>
+<p>这个推广很重要，因为它解决了"Ω_eff > 4怎么办"：<strong>不需要把单个双通道的q推到2以上。更可能的方式是通道在增殖。</strong> 复杂系统不是靠压深同一条通道，而是靠开出更多功能通道。</p>
+<p>推论：如果存在三通道系统（n_ch = 3），映射为q = Ω_eff/3。</p>
+<h3>6.7 线性性的认识论地位</h3>
+<p>线性映射q = Ω_eff/n_ch是满足端点锚定的最简形式。非线性映射（如q = (Ω_eff/n_ch)^α）对任何α > 0同样满足端点q(n_ch) = 1和q(2n_ch) = 2^α（只有α=1时右端=2）。更一般地，任何满足q(2) = 1和q(4) = 2的单调连续函数都是候选映射。</p>
+<p>本文选择线性形式基于奥卡姆剃刀：没有经验数据要求非线性修正。线性性本身不是从端点锚定推出的——它是一个最简假设，对应物理上的"等深近似"（§6.1）。如果未来实验数据系统性偏离线性预测，引入非线性修正是自然的下一步。</p>
+<h3>6.8 状态标记</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>q = Ω_eff/n_ch</td>
+<td><strong>Conjecture（structurally motivated）</strong></td>
+</tr>
+<tr>
+<td>端点对齐</td>
+<td>Exact within framework</td>
+</tr>
+<tr>
+<td>线性（非某种非线性映射）</td>
+<td>Open：满足端点的单调映射无穷多，线性是最简</td>
+</tr>
+<tr>
+<td>q_i = d_eff的识别</td>
+<td>额外物理假设</td>
+</tr>
+<tr>
+<td>n_ch = 2（双通道）</td>
+<td>物理假设（来自f/r分解）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§7 相变窗口的物理定位</h2>
+<h3>7.1 Ω窗口到q窗口的初步对应</h3>
+<p>ZFCρ中Ω的五指标相变窗口在Ω ∈ [2.75, 4.01]之间。如果q = Ω_eff/2，则对应q ∈ [1.375, 2.005]。该窗口覆盖一部分中高q系统（太阳风、引力系统、黑洞），但不覆盖全部已知q_stat系统——QGP（q≈1.15）和宇宙射线（q≈1.2）位于窗口下方。</p>
+<table><thead><tr>
+<th>ZFCρ指标</th>
+<th>Ω</th>
+<th>q = Ω/2</th>
+<th>物理含义</th>
+</tr></thead><tbody>
+<tr>
+<td>P(J>0)=50%</td>
+<td>2.75</td>
+<td>1.375</td>
+<td>乘法路径成为多数</td>
+</tr>
+<tr>
+<td>z/√j peak</td>
+<td>~3.14</td>
+<td>~1.57</td>
+<td>susceptibility peak</td>
+</tr>
+<tr>
+<td>E[A]=0</td>
+<td>3.79</td>
+<td>1.895</td>
+<td>净步长翻正</td>
+</tr>
+<tr>
+<td>h(Ω)=0</td>
+<td>4.01</td>
+<td>2.005</td>
+<td>凸度消失，乘法完全确立</td>
+</tr>
+</tbody></table>
+<h3>7.2 第二相变区</h3>
+<p>ZFCρ在Ω = 7-8之间有第二相变（单层闭合行为的质变）。q = 3.5-4。太阳风q_rel ≈ 3.8 → Ω ≈ 7.6正好在此区间——但q_rel测量的是relaxation（弛豫）而非稳态分布。不同的q可能探测不同的Ω层。</p>
+<h3>7.3 h(Ω)的完整行为（N=10^10确认）</h3>
+<p>h(Ω)在N=10^10上单调递减到Ω=29，无掉头。|Δh|在Ω ≥ 12后收敛到~0.10。M̄ slope在Ω=11处穿过-1.000，高Ω区从负侧缓慢趋近零。</p>
+<p>这意味着：乘法对加法的压制持续进行，但边际压制效率在高Ω区进入饱和。每多一层素因子的边际h贡献趋于恒定（~0.10），不是越来越大，也不是越来越小。</p>
+<hr>
+<h2>§8 黑洞crossover猜想（解释层）</h2>
+<p>以下内容属于解释层（interpretive layer），不属于本文的精确结果或猜想。</p>
+<h3>8.1 T_H(M_P)/T_P = 1/(8π)</h3>
+<p>普朗克质量黑洞的Hawking温度T_H = T_P/(8π)。这是一个精确的代数结果（已验证：T_H = ℏc³/(8πGM_P k_B)，M_P = √(ℏc/G)，代入得T_H/T_P = 1/(8π)）。</p>
+<p>在T_H处，典型Hawking光子（E ~ k_BT_H）的βE = 1。Boltzmann给e⁻¹ ≈ 0.368，resolvent给(1+1)⁻¹ = 0.5，偏差36%。</p>
+<h3>8.2 Crossover猜想</h3>
+<p>在某些observer-dependent和probe-dependent的粗粒化下，有效热核可能从memory-bearing形式（小K，类resolvent）crossover到Gibbs-like形式（大K，类Boltzmann）。黑洞视界附近可能是这种crossover最显著的物理场景。</p>
+<p>这不是"黑洞视界是observer-independent的物理相变面"的claim。这是一个和观察者/提取协议相关的crossover猜想。</p>
+<h3>8.3 与岛屿公式的互补性</h3>
+<p>DD resolvent方案和2019-2026年发展的岛屿公式（island formula）高度兼容。岛屿公式是<strong>计算工具</strong>（如何计算辐射熵使Page曲线成立）。DD框架提供的是<strong>机制层解释</strong>（为什么有效kernel在不同区域有不同形式）。两者互补而非矛盾。</p>
+<h3>8.4 温度的涌现性（讨论层）</h3>
+<p>在本文的框架中，温度T可以被视为Boltzmann端的粗粒化参数——当有效kernel极接近q = 1（K→∞）端时，T是一个充分的描述。k_B是将反馈阶数语言翻译为温度语言的系数。</p>
+<p>自由光子气体处于完全混合极限（K = ∞，q = 1）。在这个极限中Boltzmann描述精确，温度精确——这就是为什么Planck谱和CMB测量如此精确。</p>
+<p>但"温度是涌现量"这个更强的说法目前缺少数学闭合。要让它升格，至少需要一个从(K, η, ...)到β的显式映射。在此之前，它只能作为discussion-level的解释框架。</p>
+<hr>
+<h2>§9 非平凡预测与兼容性检验</h2>
+<h3>预测</h3>
+<p><strong>P1（条件性预测：从K预测q）。</strong> 若某系统的有效kernel确实由同一个K同时控制layered resolvent形状和可观测的memory depth，则从f通道自相关函数独立提取的K，应与从分布尾部拟合得到的Tsallis q = 1 + 1/K一致。这是本文最硬的预测，可在已有实验数据上立刻做交叉验证。</p>
+<p><strong>P2（三通道系统）。</strong> 如果存在n_ch = 3的系统（三个对等的驱动/恢复通道），其q = Ω_eff/3而非Ω_eff/2。对相同Ω_eff，三通道系统的q比双通道系统低——更接近Boltzmann。这是通道平均屏蔽律猜想的直接推论，一旦找到三通道系统即可验证。</p>
+<h3>兼容性检验（gauge-fixed / compatibility level）</h3>
+<p><strong>C1（二阶系数检验）。</strong> 在canonical参数化（z = βE）下，(1+x/K)^{-K}的二阶泰勒系数是(K+1)/(2K)。对K≈7（QGP），系数≈0.571；对纯Boltzmann，系数=0.500。差异14%。这是一个gauge-fixed convenience check：它依赖于canonical variable的选择（§4），不是重参数化不变的诊断。但如果未来实验能在canonical参数化下分辨二阶修正项，一致性会支持本文框架。</p>
+<p><strong>C2（Brusselator的q值兼容性）。</strong> 在Brusselator中，Thermo III[12]从η和C(1)反推得m_eff = 11.3。m_eff是DP层面的机制参数，不能自动等同于Tsallis kernel参数K。但如果K ≈ m_eff近似成立，则预期Brusselator的稳态涨落分布接近q = 1 + 1/11.3 = 1.09。这是一个兼容性检验，不是硬预测：它同时检验两个假设（K ≈ m_eff以及layered resolvent适用性）。</p>
+<p><strong>C3（Hawking辐射的kernel层推论）。</strong> 在kernel层面，黑洞的有效K=1（q=2）意味着Hawking辐射的kernel偏向(1+βE)⁻¹的power-law形式而非e^{-βE}。偏差在βE~1处约36%。但注意：从kernel到observed flux需经过occupation层（Bose-Einstein/Fermi-Dirac修正）和greybody factor。此推论在§8.2的crossover猜想框架内讨论，不作为独立预测。</p>
+<hr>
+<h2>§10 开放问题与claim边界</h2>
+<h3>10.1 Status map</h3>
+<table><thead><tr>
+<th>层级</th>
+<th>内容</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Exact</strong></td>
+<td>q = 1+1/K，exp_q bridge，K=1→resolvent，K→∞→Boltzmann；离散屏蔽定理（§3.2）；唯一性（§3.2c）</td>
+</tr>
+<tr>
+<td><strong>Lemma</strong></td>
+<td>重参数化约束（命题1+2+推论，§4）；极值不等式（§3.3）；K_eff存在唯一性（§3.4）；二阶有效参数q_eff^{(2)} = 1+Σλ²（§3.5）</td>
+</tr>
+<tr>
+<td><strong>Conditional corollary</strong></td>
+<td>若系统满足通道分解+baseline one-layer-per-channel+effective equal sharing，则q = Ω_eff/n_ch</td>
+</tr>
+<tr>
+<td><strong>Conjecture</strong></td>
+<td>物理系统确实满足上述结构假设；Ω_eff可被独立提取；prime-factor depth对应热核屏蔽深度</td>
+</tr>
+<tr>
+<td><strong>Interpretation</strong></td>
+<td>BH crossover，温度涌现，信息编码切换</td>
+</tr>
+</tbody></table>
+<h3>10.2 超出本文scope的命题</h3>
+<p>以下命题在SAE框架中方向上可能成立，但本文的证据不足以支撑它们到claim层。它们标为解释层或远期开放问题：</p>
+<ul>
+<li>"黑洞视界是Boltzmann/resolvent的物理相变面" — 目前只能说observer-dependent crossover conjecture</li>
+<li>"信息悖论被kernel切换解决" — 目前只能说compatibility / interpretive layer</li>
+<li>"Ω = 4.01和βE = 4.01的数值吻合是结构同一" — 目前只是coincidence-level + q = Ω_eff/n_ch的间接支撑</li>
+<li>"温度不是基本量而是涌现量" — 方向对，但缺(K, η)→β的显式映射</li>
+<li>"q = Ω_eff/n_ch" — structurally motivated conjecture，不是theorem</li>
+</ul>
+<h3>10.3 开放问题</h3>
+<ul>
+<li>给定一类物理系统，证明其有效热核可写成layered resolvent product（假设A1），并确定其层权重{λ_i}的统计结构。在full equal-sharing情形下得到精确关系q = Ω_eff/n_ch；在一般不等权情形下，局部有效参数满足q_eff^{(2)} = 1+Σλ²。</li>
+<li>K和m_eff的精确关系。是K = m_eff？还是K = f(m_eff)？</li>
+<li>"canonical control variable"是βE还是某个更基本的量。</li>
+<li>Ω_eff = Σq_i（公西华的通道预算推广）的物理适用范围。</li>
+<li>高Ω区h(Ω)的|Δh|收敛到~0.10的解析解释。</li>
+</ul>
+<hr>
+<h2>参考文献</h2>
+<p>[1] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988). DOI: 10.1007/BF01016429.</p>
+<p>[2] ALICE Collaboration (K. Aamodt et al.), "Transverse momentum spectra of charged particles in proton-proton collisions at √s = 900 GeV with ALICE at the LHC," <em>European Physical Journal C</em> <strong>71</strong>, 1655 (2011). DOI: 10.1140/epjc/s10052-011-1655-9.</p>
+<p>[3] CMS Collaboration (V. Khachatryan et al.), "Charged particle transverse momentum spectra in pp collisions at √s = 0.9 and 7 TeV," <em>Journal of High Energy Physics</em> <strong>2011</strong>, 064 (2011). DOI: 10.1007/JHEP05(2011)064.</p>
+<p>[4] G. Livadiotis and D. J. McComas, "Understanding kappa distributions: A toolbox for space science and astrophysics," <em>Space Science Reviews</em> <strong>175</strong>, 183–214 (2013). DOI: 10.1007/s11214-013-9982-9.</p>
+<p>[5] C. Beck, "Non-extensive statistical mechanics and particle spectra in elementary interactions," <em>Physica A</em> <strong>286</strong>, 164–180 (2000). DOI: 10.1016/S0378-4371(00)00354-X.</p>
+<p>[6] A. R. Plastino and A. Plastino, "Stellar polytropes and Tsallis' entropy," <em>Physics Letters A</em> <strong>174</strong>, 384–386 (1993). DOI: 10.1016/0375-9601(93)90195-6.</p>
+<p>[7] E. M. C. Abreu, J. Ananias Neto, A. C. R. Mendes, and W. Oliveira, "New bounds for Tsallis parameter in a noncommutative phase-space entropy," <em>Physics Letters B</em> <strong>727</strong>, 524–528 (2013). DOI: 10.1016/j.physletb.2013.10.053.</p>
+<p>[8] P. Chunaksorn, P. Music, and R. Yongram, "Black hole thermodynamics via Tsallis statistical mechanics," <em>European Physical Journal C</em> <strong>85</strong>, 532 (2025). DOI: 10.1140/epjc/s10052-025-14239-1.</p>
+<p>[9] C. Tsallis, <em>Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World</em> (Springer, New York, 2009). DOI: 10.1007/978-0-387-85359-8.</p>
+<p>[10] H. Qin, "ZFCρ Thermodynamics Paper I: η Exists," Zenodo (2025). DOI: 10.5281/zenodo.19310282.</p>
+<p>[11] H. Qin, "ZFCρ Thermodynamics Paper II: η ≈ 0.20 Mechanism," Zenodo (2025). DOI: 10.5281/zenodo.19511064.</p>
+<p>[12] H. Qin, "ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of η," Zenodo (2026). DOI: 10.5281/zenodo.19597684.</p>
+<p>[13] G. E. Volovik, "Tsallis–Cirto entropy of black hole and black hole atom," <em>JETP Letters</em> <strong>120</strong>, 749–753 (2024). DOI: 10.1134/S0021364024603361.</p>
+<p>[14] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, "The entropy of Hawking radiation," <em>Reviews of Modern Physics</em> <strong>93</strong>, 035002 (2021). DOI: 10.1103/RevModPhys.93.035002.</p>
+<p>[15] H. Qin, "ZFCρ Paper XLII: Conditional Closure of H'," Zenodo (2025). DOI: 10.5281/zenodo.19226607.</p>
+<p>[16] M. D. Azmi and J. Cleymans, "The Tsallis distribution at large transverse momenta," <em>European Physical Journal C</em> <strong>75</strong>, 430 (2015). DOI: 10.1140/epjc/s10052-015-3629-9.</p>
+  </div>
+  </div>
+
+</article>
+
+<script>
+function switchLang(lang) {
+  document.getElementById("lang-en").style.display = lang === "en" ? "block" : "none";
+  document.getElementById("lang-zh").style.display = lang === "zh" ? "block" : "none";
+  document.querySelectorAll(".lang-tab").forEach((t, i) => {
+    t.classList.toggle("active", (lang === "en" && i === 0) || (lang === "zh" && i === 1));
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of the Fluctuation Absorption Rate η -- Han Qin</title>
+  <meta name="description" content="Nonequilibrium statistical mechanics lacks a scalar parameter that is simultaneously dimensionless, approximately cross-scale stable, dynamically endogenous, and operationally measurable. This paper i">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo3.html">
+  <meta name="citation_doi" content="10.5281/zenodo.19597685">
+  <style>
+    .zenodo-link{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .9rem;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;font-size:.82rem;color:#444;text-decoration:none;margin-top:.5rem}.zenodo-link:hover{background:#ebebeb}.series-nav{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #e0e0e0;font-size:.85rem;color:#888}.series-nav a{color:#555;text-decoration:none}.series-nav a:hover{text-decoration:underline}.lang-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:2px solid #e0e0e0}.lang-tab{padding:.45rem 1.1rem;border:1px solid #ddd;border-bottom:none;border-radius:4px 4px 0 0;cursor:pointer;font-size:.85rem;background:#f5f5f5;color:#666;transition:background .15s;margin-bottom:-2px}.lang-tab.active{background:#fff;border-bottom:2px solid #fff;color:#222;font-weight:600}.lang-content{display:none}.lang-content.active{display:block}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../guide.html">Guide</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics Series · Paper III · Zenodo 19597685</div>
+    <h1 id="paper-title">ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of the Fluctuation Absorption Rate η</h1>
+    <div class="paper-subtitle-line" id="paper-subtitle" style="font-size:1rem;color:#666;margin-top:.3rem;font-style:italic;">ZFCρ Thermodynamics Series · Paper III</div>
+    <div class="paper-author">Han Qin (&#31192;&#27721;) &nbsp;&middot;&nbsp; Independent Researcher &nbsp;&middot;&nbsp; April 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19597685" target="_blank" rel="noopener">10.5281/zenodo.19597685</a> &nbsp;&middot;&nbsp; CC BY 4.0 &nbsp;&middot;&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+    <div style="margin-top:.5rem"><a class="zenodo-link" href="https://zenodo.org/records/19597685" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a></div>
+  </div>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('en')">English</div>
+    <div class="lang-tab" onclick="switchLang('zh')">&#20013;&#25991;</div>
+  </div>
+
+  <div id="lang-en" class="lang-content active" style="display:block" lang="en">
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p>Nonequilibrium statistical mechanics lacks a scalar parameter that is simultaneously dimensionless, approximately cross-scale stable, dynamically endogenous, and operationally measurable. This paper introduces the convention-corrected coupling κ, which quantifies the compensatory coupling between a driving channel f and a restoring channel r in dissipative two-channel dynamics, independent of sign conventions. Four regimes are classified: null (κ ≈ 0, f and r uncoupled), absorptive (0 < κ < 1, partial absorption), overscreening (κ > 1, over-compensation), and anti-compensatory (κ < 0, co-amplification).
+
+We define the algebraic continuation η̄ := 1 − κ, reportable in all regimes. The name "fluctuation absorption rate η" is reserved for the absorptive regime, where η = η̄ = 1 − κ carries a clear physical meaning: the fraction of driving fluctuations not offset by the restoring response in each discrete step.
+
+The concept of an admissible decomposition family is introduced: η does not claim invariance under arbitrary basis rotations, but seeks identifiability, reproducibility, and cross-scale testability within physically interpretable decomposition families.
+
+A τ-selection taxonomy distinguishes two system classes. In channel-independent systems (e.g. Ornstein–Uhlenbeck processes, Lindley queues), f and r are independent stochastic processes; η̄(τ) may exhibit a null corner at small τ. In state-coupled systems (e.g. Brusselator chemical oscillations, Schlögl bistable model), f and r share state variables; η̄(τ) enters a plateau directly at small τ without an under-resolved region.
+
+Three benchmark systems form a discriminating triad. The Ornstein–Uhlenbeck process (κ ≈ 0, η̄ ≈ 1) serves as a null test. The Brusselator (κ ≈ 0.8, η ≈ 0.19–0.20) exhibits an absorptive plateau stable across noise intensities σ/x* ≤ 1. The Schlögl model (κ > 1, η̄ < 0 throughout) exhibits overscreening.
+
+The Brusselator's η ≈ 0.20 coincides with the value observed in ZFCρ prime-step recursion, a mathematically and physically unrelated system. Parameter-space scanning reveals that η is not a constant but a continuous dynamical indicator: under moderate noise (σ/x* ≤ 1), η ranges over [0.14, 0.34] across the oscillatory regime with mean 0.20, increasing monotonically with distance from the Hopf bifurcation.
+
+A candidate unifying ansatz is reported: η ≈ 0.20 can be factored as the composite dissipation 1 − C(1)^{m_eff}, where C(1) is the lag-1 autocorrelation (per-step retention) and m_eff the effective decay depth. In ZFCρ, C(1) = 0.96, m_eff = 5.47; in the Brusselator, C(1) = 0.98, m_eff = 11.3. The individual parameters differ but the composite converges. We note that m_eff in the Brusselator is inferred from η and C(1) rather than independently measured; this factorization is therefore suggestive rather than conclusive. Whether η ≈ 0.20 represents a fixed point of the composite dissipation function in state-coupled systems is a high-priority open problem.
+
+Four falsifiable predictions are stated. The strongest is experimental: in Belousov–Zhabotinsky reaction data, if synthesis and degradation rates can be independently measured under conditions where noise does not dominate the deterministic coupling, η should lie in [0.14, 0.34].
+
+---</p>
+  </div>
+  <div class="paper-body">
+<h1>ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of the Fluctuation Absorption Rate η</h1>
+<p>Han Qin</p>
+<p>SAE Research · 2026</p>
+<hr>
+<h2>Abstract</h2>
+<p>Nonequilibrium statistical mechanics lacks a scalar parameter that is simultaneously dimensionless, approximately cross-scale stable, dynamically endogenous, and operationally measurable. This paper introduces the convention-corrected coupling κ, which quantifies the compensatory coupling between a driving channel f and a restoring channel r in dissipative two-channel dynamics, independent of sign conventions. Four regimes are classified: null (κ ≈ 0, f and r uncoupled), absorptive (0 < κ < 1, partial absorption), overscreening (κ > 1, over-compensation), and anti-compensatory (κ < 0, co-amplification).</p>
+<p>We define the algebraic continuation η̄ := 1 − κ, reportable in all regimes. The name "fluctuation absorption rate η" is reserved for the absorptive regime, where η = η̄ = 1 − κ carries a clear physical meaning: the fraction of driving fluctuations not offset by the restoring response in each discrete step.</p>
+<p>The concept of an admissible decomposition family is introduced: η does not claim invariance under arbitrary basis rotations, but seeks identifiability, reproducibility, and cross-scale testability within physically interpretable decomposition families.</p>
+<p>A τ-selection taxonomy distinguishes two system classes. In channel-independent systems (e.g. Ornstein–Uhlenbeck processes, Lindley queues), f and r are independent stochastic processes; η̄(τ) may exhibit a null corner at small τ. In state-coupled systems (e.g. Brusselator chemical oscillations, Schlögl bistable model), f and r share state variables; η̄(τ) enters a plateau directly at small τ without an under-resolved region.</p>
+<p>Three benchmark systems form a discriminating triad. The Ornstein–Uhlenbeck process (κ ≈ 0, η̄ ≈ 1) serves as a null test. The Brusselator (κ ≈ 0.8, η ≈ 0.19–0.20) exhibits an absorptive plateau stable across noise intensities σ/x* ≤ 1. The Schlögl model (κ > 1, η̄ < 0 throughout) exhibits overscreening.</p>
+<p>The Brusselator's η ≈ 0.20 coincides with the value observed in ZFCρ prime-step recursion, a mathematically and physically unrelated system. Parameter-space scanning reveals that η is not a constant but a continuous dynamical indicator: under moderate noise (σ/x* ≤ 1), η ranges over [0.14, 0.34] across the oscillatory regime with mean 0.20, increasing monotonically with distance from the Hopf bifurcation.</p>
+<p>A candidate unifying ansatz is reported: η ≈ 0.20 can be factored as the composite dissipation 1 − C(1)^{m_eff}, where C(1) is the lag-1 autocorrelation (per-step retention) and m_eff the effective decay depth. In ZFCρ, C(1) = 0.96, m_eff = 5.47; in the Brusselator, C(1) = 0.98, m_eff = 11.3. The individual parameters differ but the composite converges. We note that m_eff in the Brusselator is inferred from η and C(1) rather than independently measured; this factorization is therefore suggestive rather than conclusive. Whether η ≈ 0.20 represents a fixed point of the composite dissipation function in state-coupled systems is a high-priority open problem.</p>
+<p>Four falsifiable predictions are stated. The strongest is experimental: in Belousov–Zhabotinsky reaction data, if synthesis and degradation rates can be independently measured under conditions where noise does not dominate the deterministic coupling, η should lie in [0.14, 0.34].</p>
+<hr>
+<h2>1. Introduction: a four-criterion gap in nonequilibrium parameters</h2>
+<h3>1.1 The problem</h3>
+<p>Equilibrium statistical mechanics has a complete toolkit. Partition functions bridge micro and macro scales exactly; free-energy minimisation gives equilibrium criteria; the fluctuation–dissipation theorem yields transport coefficients in the linear-response regime.</p>
+<p>Away from equilibrium, most of these tools fail. The most important advances of the past thirty years are the Jarzynski equality and the Crooks fluctuation theorem [1, 2], which give exact identities relating work and free-energy differences arbitrarily far from equilibrium. But identities are not dynamical theories: they say "on average, the free-energy difference is correct," not "how much leaks per step."</p>
+<p>Many quantities describe nonequilibrium behaviour. When we ask which of them simultaneously satisfy four operational criteria, a gap appears.</p>
+<p>The four criteria are: dimensionless (cross-system comparability), approximately cross-scale stable (similar values at different coarse-graining scales), dynamically endogenous (arising from the system's drive–response structure, not an externally imposed statistic), and operationally measurable (with an explicit extraction protocol and error estimate).</p>
+<h3>1.2 Existing quantities</h3>
+<p>The entropy production rate σ = dS_i/dt is the closest candidate. It is non-negative, dynamically endogenous, and measurable. But it carries dimensions (J K⁻¹ s⁻¹) and depends on system size; σ for a bacterium and σ for a star are not comparable.</p>
+<p>The Jarzynski dissipated work W_diss = W − ΔF can be rendered dimensionless under special conditions, but describes a single-trajectory path quantity rather than an intrinsic dynamical parameter.</p>
+<p>The effective temperature T_eff from FDR violation characterises distance from equilibrium, but depends on which observable is chosen [3] and is not an intrinsic system property.</p>
+<p>The Lyapunov exponent λ is dimensionless and cross-scale stable, but measures orbital instability (chaos), not dissipation. Conservative Hamiltonian systems can have positive Lyapunov exponents.</p>
+<p>The Hurst exponent H is dimensionless and cross-scale stable, but is a statistical descriptor (time-series self-similarity), not a product of dynamical mechanism.</p>
+<p>The thermodynamic uncertainty relation (TUR) provides a lower bound on current fluctuations [4] and is among the sharpest results in nonequilibrium physics. But TUR constrains the precision–cost trade-off of a single current, not the coupling between two independently observable processes.</p>
+<p>We also checked the Fano factor, the Kullback–Leibler divergence rate (relative entropy production rate), excess entropy production in the sense of Maes [5], and dynamical activity in the sense of Lecomte, Appert-Rolland, and van Wijland [6]. Each satisfies two or three of the four criteria, but none satisfies all four.</p>
+<table><thead><tr>
+<th>Quantity</th>
+<th>Dimensionless</th>
+<th>Cross-scale stable</th>
+<th>Dynamically endogenous</th>
+<th>Operationally measurable</th>
+</tr></thead><tbody>
+<tr>
+<td>σ (entropy production rate)</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>W_diss (Jarzynski)</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>T_eff (FDR violation)</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>λ (Lyapunov)</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓*</td>
+<td>×</td>
+</tr>
+<tr>
+<td>H (Hurst)</td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>TUR Q-value</td>
+<td>✓</td>
+<td>○</td>
+<td>○</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>η (this paper)</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody></table>
+<p>Note: ✓* indicates that the Lyapunov exponent is a geometric rather than a thermodynamic quantity. ○ indicates partial satisfaction. This table does not claim η is unique; the design aim is to combine all four desiderata in one measurable scalar.</p>
+<h3>1.3 Contributions</h3>
+<p>This paper proposes the fluctuation absorption rate η as a candidate to fill the gap. η is defined via decomposing system dynamics into a driving channel f (forward) and a restoring channel r (reset). η measures the fraction of f-fluctuations that r fails to offset.</p>
+<p>The concept draws on the Le Chatelier intuition of compensatory response: a system responds to perturbation by partially counteracting it [7]. η quantifies the "partially." But η is not a near-equilibrium linear-response coefficient. It requires neither near-equilibrium conditions, nor linearisation, nor Onsager reciprocal relations. η is a far-from-equilibrium operationalisation of the Le Chatelier spirit, not a quantitative version of the Le Chatelier principle itself.</p>
+<p>The paper has four contributions: (1) convention-corrected coupling κ and four-regime classification; (2) admissible decomposition family; (3) τ-selection taxonomy (channel-independent vs state-coupled systems); (4) three-system benchmark panel (OU / Brusselator / Schlögl).</p>
+<hr>
+<h2>2. Convention-corrected coupling κ and regime classification</h2>
+<h3>2.1 Sign conventions and the definition of κ</h3>
+<p>Consider a dissipative system whose observable X evolves in discrete steps as</p>
+<p>ΔX_n = Δf_n + s_r · Δr_n + ξ_n</p>
+<p>where Δf_n is the contribution of the driving channel (which, acting alone, would push the system away from its steady state), Δr_n is the restoring channel's contribution, s_r ∈ {+1, −1} is a sign-convention flag, and ξ_n is external noise.</p>
+<p>In the drive–restoration convention (ΔX = Δf − Δr), s_r = −1. If the negative sign has been absorbed into Δr (ΔX = Δf + Δr), then s_r = +1.</p>
+<p>This sign difference flips the sign of Cov(Δf, Δr), so the same physical system may be reported with different η̄ values depending solely on the convention chosen.</p>
+<p>To eliminate this dependence, we define the convention-corrected coupling:</p>
+<p>κ := −s_r · Cov(Δf, Δr) / Var(Δf)</p>
+<p>Physically, κ is the fraction of f-fluctuations offset by the r-response after removing the sign-convention ambiguity.</p>
+<p><strong>Throughout this paper, we adopt the f − r convention (ΔX = Δf − Δr), so s_r = −1. Under this convention, Cov(Δf, Δr) > 0 indicates compensation (f rises → r follows → net effect is damped), and κ = Cov / Var(Δf).</strong></p>
+<h3>2.2 Four regimes</h3>
+<p>The value of κ partitions systems into four classes.</p>
+<p><strong>Null regime (κ ≈ 0).</strong> f- and r-fluctuations are nearly uncorrelated. The restoring channel has negligible predictive power over the driving channel. The Ornstein–Uhlenbeck process falls here when decomposed into noise kicks and restoring force (at small τ, the external kick and the current restoring channel are approximately independent).</p>
+<p><strong>Absorptive regime (0 < κ < 1).</strong> The restoring channel offsets part, but not all, of the driving fluctuations. The fluctuation absorption rate η := 1 − κ has a clear physical meaning in this regime: it is the fraction of driving fluctuations left unabsorbed per step.</p>
+<p><strong>Overscreening regime (κ > 1).</strong> The restoring response exceeds the driving fluctuations. This is mathematically legitimate: Cauchy–Schwarz only bounds |Cov| ≤ √(Var(f) Var(r)), so the ratio can exceed 1 when Var(r) > Var(f). Physically, the restoring force overshoots. The Schlögl model lies here under its natural decomposition.</p>
+<p><strong>Anti-compensatory regime (κ < 0).</strong> The corrected coupling is negative, meaning f and r co-amplify rather than compensate. This typically signals a misidentified decomposition or a far-from-steady-state transient.</p>
+<h3>2.3 η̄ and the three-family definition of η</h3>
+<p>The algebraic continuation η̄ := 1 − κ is computable and reportable in all regimes. The name "fluctuation absorption rate η" is reserved for the absorptive regime. In the null regime one reports κ ≈ 0 or η̄ ≈ 1; in the overscreening regime, κ > 1 or η̄ < 0.</p>
+<p>Within the absorptive regime, the primary quantity is</p>
+<p>η_{r←f} := 1 − κ = 1 + s_r · Cov(Δf, Δr) / Var(Δf)</p>
+<p>This is the r-upon-f absorption residual. η_{r←f} = 0 means perfect absorption; η_{r←f} = 1 means no absorption.</p>
+<p>The reverse diagnostic</p>
+<p>η_{f←r} := 1 + s_r · Cov(Δf, Δr) / Var(Δr)</p>
+<p>measures f's offsetting of r. In most physical systems η_{r←f} ≠ η_{f←r} because Var(f) ≠ Var(r). The asymmetry itself carries information: a large gap indicates a power imbalance between the two channels.</p>
+<p>The symmetric coupling residual</p>
+<p>η_sym := 1 − |Corr(Δf, Δr)|</p>
+<p>is independent of which channel serves as denominator, measuring total coupling residual. It is useful when the drive/restore assignment is uncertain.</p>
+<h3>2.4 Compatibility with Thermo I</h3>
+<p>Thermo I (DOI: 10.5281/zenodo.19310282) defined η = 1 − |Cov(Δf, Δr)| / Var(Δf) using absolute value. In Thermo I's DP recursion and Lindley-queue verification, Cov was consistently negative (under the f + r convention), so |Cov| = −Cov and the Thermo I η coincides numerically with the present η_{r←f}. The κ framework generalises, rather than replaces, the Thermo I definition.</p>
+<h3>2.5 Protocol A: canonical extraction in six steps</h3>
+<p><strong>Step 1 (Choose observable).</strong> Select the system observable X(t).</p>
+<p><strong>Step 2 (Declare f/r decomposition and convention).</strong> Within the admissible family (§3), choose an f/r decomposition and declare s_r. If the dynamical equations are known, read f and r directly from the equations (§3.4). If not, use Protocol B (Appendix A) as a heuristic proxy.</p>
+<p><strong>Step 3 (Scan τ).</strong> Generate a candidate list of τ values (e.g. logarithmically spaced). For each τ, integrate f(t) and r(t) over τ-windows to obtain the Δf_n and Δr_n sequences. The operational workflow is sequential: first propose a candidate decomposition, then scan τ, then compare plateau widths and causal interpretability.</p>
+<p><strong>Step 4 (Compute).</strong> For each τ, compute κ, η̄, η_{r←f}, η_{f←r}, η_sym. Report the raw sign of Cov.</p>
+<p><strong>Step 5 (Classify regime).</strong> Determine regime from κ. Interpret η̄ as a fluctuation absorption rate only in the absorptive regime.</p>
+<p><strong>Step 6 (Report stability).</strong> At canonical τ (§4.2), compute η̄(τ), η̄(2τ), η̄(4τ); report bootstrap 95% CIs and stability grade (§4.4).</p>
+<hr>
+<h2>3. Admissible decomposition family</h2>
+<h3>3.1 η̄ is not a coordinate invariant</h3>
+<p>Given a system's f and r channels, any linear rotation f′ = cos θ · f + sin θ · r, r′ = −sin θ · f + cos θ · r defines a new pair of "channels." Computing η̄ at different θ generally yields different values.</p>
+<p>Numerical experiments on the Brusselator confirm this (§5.2.3). The natural decomposition (θ = 0°) gives η ≈ 0.19. Rotation to θ = 90° gives η̄ ≈ 0.006. Some angles produce η̄ < 0.</p>
+<h3>3.2 A protocol-defined quantity</h3>
+<p>η does not claim global uniqueness under arbitrary basis rotations. It is a protocol-defined quantity whose value depends on three choices: (1) f/r decomposition; (2) time scale τ; (3) statistical estimation method.</p>
+<p>This parallels many observables in experimental physics. A crystal's elastic modulus depends on the chosen stress direction. A fluid's viscosity depends on shear rate. These quantities are not "arbitrary": they are reproducible under a given protocol, comparable across laboratories, and informative about the material. But they do depend on the measurement protocol.</p>
+<p>η is exactly the same. We do not solve the uniqueness problem for arbitrary decompositions; we solve the identifiability problem for natural, physically interpretable decompositions.</p>
+<h3>3.3 Definition of the admissible family</h3>
+<p>An f/r decomposition is admissible if it satisfies three conditions:</p>
+<p><strong>(i) Physical interpretability.</strong> f and r can each be independently assigned a physical meaning. In a chemical reaction, f = synthesis rate and r = degradation rate. In a queueing system, f = arrivals and r = service. Pure mathematical rotations (e.g. the θ = 45° mixed basis) typically fail this condition.</p>
+<p><strong>(ii) Causal-directional consistency.</strong> In the κ > 0 regime, the roles of f and r are consistent with their dynamical identities. For channel-independent systems, time-lag analysis should show f does not systematically lag behind r. For state-coupled systems (f and r share state variables), the coupling is typically zero-lag structural coupling; the causal direction is then defined by the equation's drive/restore roles (e.g. synthesis = f, degradation = r), not by temporal lead–lag.</p>
+<p><strong>(iii) τ-stability.</strong> In the neighbourhood of canonical τ (§4), η̄(τ) lies on a stable plateau (meeting the cross-scale stability criteria of §4.4).</p>
+<p>Within the admissible family, different decompositions may give different η values. In practice, the physically natural decomposition is usually unique or nearly so. In the Brusselator, f = a + x²y (synthesis) and r = (b+1)x (degradation) is the only natural decomposition. In Lindley queues, f = inter-arrival time and r = service time is likewise unique.</p>
+<h3>3.4 Reading from equations vs inferring from data</h3>
+<p>When the dynamical equations are known (model-known case), f and r can be read directly from the equations. This is the simplest and most reliable case.</p>
+<p>When only observational data are available (model-unknown case), f and r must be inferred from data. This is harder and generally requires additional assumptions. Protocol B (Appendix A) provides one heuristic approach, with lower reliability than the model-known case.</p>
+<hr>
+<h2>4. τ-selection taxonomy</h2>
+<h3>4.1 Two system classes</h3>
+<p>Numerical experiments reveal a previously undiscussed fundamental distinction.</p>
+<p><strong>Channel-independent systems.</strong> f and r are separate stochastic processes that influence each other indirectly through the system state but do not share dynamical variables. Lindley queues (f = inter-arrival times, r = service times, mutually independent) and the Ornstein–Uhlenbeck process (at small τ, external noise kicks are approximately independent of the current restoring channel) belong here.</p>
+<p>In channel-independent systems, f–r covariance at very short τ is dominated by external noise. As τ → 0, Cov(Δf, Δr) may approach zero (no instantaneous causal link), pushing η̄ toward 1. This is the under-resolved region.</p>
+<p><strong>State-coupled systems.</strong> f and r share state variables; each channel's instantaneous value depends directly on the same variable the other channel operates on. The Brusselator (f = a + x²y, r = (b+1)x, both functions of x) and the Schlögl model (f = μx + a, r = x³, also sharing x) belong here.</p>
+<p>In state-coupled systems, the f–r coupling is a deterministic structural product that cannot be diluted by stochastic noise. Even at very short τ, Cov(Δf, Δr) is dominated by the deterministic dependence of f and r on shared state variables. η̄(τ) enters a plateau directly at small τ without passing through an under-resolved region.</p>
+<h3>4.2 Definition of canonical τ</h3>
+<p>The canonical τ is the smallest time scale simultaneously satisfying two conditions:</p>
+<p><strong>Causal interpretability.</strong> For channel-independent systems, time-lag analysis at this τ shows that f does not systematically lag behind r, and the sign of κ is stable over consecutive steps. For state-coupled systems, zero-lag structural coupling is permitted; the requirement is that the f/r decomposition is consistent with the equation-level drive/restore roles.</p>
+<p><strong>Plateau stability.</strong> η̄(τ), η̄(2τ), η̄(4τ) satisfy the cross-scale stability criteria (§4.4).</p>
+<p>In channel-independent systems, canonical τ is typically near the relaxation time τ_relax = 1/|λ₁| (λ₁ being the dominant eigenvalue of the linearised Jacobian). Below this lies the under-resolved region; above it, the over-smoothed region.</p>
+<p>In state-coupled systems, canonical τ can be far smaller than τ_relax. The Brusselator has τ_relax ≈ 2 (from eigenvalues 0.5 ± 0.866i), but the η plateau begins at τ ≈ 0.01. Canonical τ is set by numerical resolution and sample size, not by the system's intrinsic dynamics.</p>
+<h3>4.3 Two η̄(τ) morphologies</h3>
+<p>Channel-independent systems exhibit a three-region η̄(τ) structure: under-resolved region (η̄ elevated, tending toward 1) → canonical plateau → over-smoothed region (η̄ approaches an asymptotic value).</p>
+<p>State-coupled systems exhibit a two-region structure: plateau (beginning at very small τ) → monotone decline (tending toward 0 or negative values at large τ). The Brusselator at σ = 0.1 shows η̄ declining from 0.192 at τ = 0.01 to −0.05 at τ = 100. No under-resolved region exists.</p>
+<h3>4.4 Two-layer cross-scale stability criteria</h3>
+<p><strong>Statistical layer.</strong> Compute η̄ and its bootstrap 95% confidence interval at τ, 2τ, and 4τ. If the three CIs overlap, the statistical layer is passed.</p>
+<p><strong>Effect layer.</strong> When |η̄(τ)| ≥ 0.1, compute the maximum relative drift Δ_rel = max|η̄(kτ) − η̄(τ)| / |η̄(τ)|. When |η̄(τ)| < 0.1 (near-null or regime boundaries), use absolute drift Δ_abs = max|η̄(kτ) − η̄(τ)|. Grades:</p>
+<ul>
+<li>Δ < 10% (relative) or < 0.01 (absolute): rigid</li>
+<li>10%–15% or 0.01–0.015: stable</li>
+<li>15%–20% or 0.015–0.02: provisionally stable</li>
+<li>Beyond: scale-drifting</li>
+</ul>
+<p>Report the stability grade alongside every η̄ value.</p>
+<hr>
+<h2>5. Benchmark panel</h2>
+<h3>5.1 Experimental design</h3>
+<p>Three systems are tested, all with known dynamical equations (model-known case); f/r decompositions are read directly from the equations.</p>
+<table><thead><tr>
+<th>System</th>
+<th>Dynamics</th>
+<th>f</th>
+<th>r</th>
+<th>Expected regime</th>
+</tr></thead><tbody>
+<tr>
+<td>Ornstein–Uhlenbeck</td>
+<td>dx = −γx dt + σ dW</td>
+<td>σξ (noise kick)</td>
+<td>γx (restoring force)</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Brusselator</td>
+<td>dx/dt = a + x²y − (b+1)x</td>
+<td>a + x²y (synthesis)</td>
+<td>(b+1)x (degradation)</td>
+<td>absorptive</td>
+</tr>
+<tr>
+<td>Schlögl</td>
+<td>dx/dt = −x³ + μx + a + σξ</td>
+<td>μx + a (linear drive)</td>
+<td>x³ (cubic restoring)</td>
+<td>overscreening</td>
+</tr>
+</tbody></table>
+<p>The Brusselator is the most classical theoretical model of chemical oscillation (Prigogine 1968). The experimentally most studied system is the Belousov–Zhabotinsky reaction and its Oregonator reduction.</p>
+<p>All systems are discretised via Euler–Maruyama. Brusselator: dt = 0.001, T = 5000 (5 × 10⁶ steps); OU: dt = 0.001, T = 5000; Schlögl: dt = 0.001, T = 2000. The first 10% of data is discarded as burn-in. Statistical errors are estimated by block bootstrap (block size: 50 τ-windows) on the Δf and Δr sequences. Multiple noise intensities are tested per system. Sign convention: f − r (ΔX = Δf − Δr), s_r = −1.</p>
+<h3>5.2 Results</h3>
+<h4>5.2.1 Ornstein–Uhlenbeck: null test</h4>
+<p>Parameters: γ ∈ {0.5, 1.0, 5.0}, σ = 1.0, T = 5000.</p>
+<table><thead><tr>
+<th>γ</th>
+<th>κ(τ = 0.01)</th>
+<th>η̄(τ = 0.01)</th>
+<th>η̄(τ = 0.1)</th>
+<th>η̄(τ = 1.0)</th>
+</tr></thead><tbody>
+<tr>
+<td>0.5</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.996</td>
+<td>0.975</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.994</td>
+<td>0.941</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>0.002</td>
+<td>0.998</td>
+<td>0.998</td>
+<td>0.934</td>
+</tr>
+</tbody></table>
+<p>κ ≈ 0 and η̄ ≈ 1 throughout. The protocol correctly identifies null regime. This is the zero-check: had κ reported ≈ 0.8 when f and r are independent, the protocol would have a systematic bias. The OU result rules this out.</p>
+<h4>5.2.2 Brusselator: absorptive plateau</h4>
+<p>Parameters: a = 1, b = 3 (oscillatory regime, b > 1 + a² = 2), σ ∈ {0.1, 0.5, 1.0, 3.0}, T = 500–5000.</p>
+<table><thead><tr>
+<th>σ</th>
+<th>η(τ = 0.01)</th>
+<th>η(τ = 0.1)</th>
+<th>η(τ = 1.0)</th>
+<th>η(τ = 10.0)</th>
+</tr></thead><tbody>
+<tr>
+<td>0.1</td>
+<td>0.192</td>
+<td>0.189</td>
+<td>0.109</td>
+<td>0.080</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.174</td>
+<td>0.165</td>
+<td>0.058</td>
+<td>−0.048</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.200</td>
+<td>0.177</td>
+<td>0.042</td>
+<td>−0.029</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>0.432</td>
+<td>0.241</td>
+<td>0.017</td>
+<td>−0.026</td>
+</tr>
+</tbody></table>
+<p>Three key observations:</p>
+<p>First, for σ = 0.1 to 1.0, small-τ η is stable at 0.17–0.20. At σ = 1.0, η(τ = 0.001) = 0.200. The value derives from the deterministic coupling structure of f and r (both functions of x), not from noise statistics.</p>
+<p>Second, η̄(τ) decreases monotonically from the small-τ plateau toward 0 (and eventually negative values, entering the overscreening regime) at large τ. There is no under-resolved region, because f = a + x²y and r = (b+1)x share the state variable x; coupling persists at all time scales.</p>
+<p>Third, at σ = 3.0 (extreme noise, σ/x* = 3.0), small-τ η rises to 0.43. Noise begins to disrupt the deterministic f–r coupling. Even so, η(τ = 0.1) = 0.24 remains in the absorptive regime.</p>
+<p>The asymmetry between η_{r←f} and η_{f←r} is large: at τ = 0.01, η_{r←f} ≈ 0.192 while η_{f←r} ≈ 0.002. From the definitions, κ_{r←f} = 0.808 and κ_{f←r} = 0.998, whose ratio gives Var(r)/Var(f) = κ_{r←f}/κ_{f←r} ≈ 0.81. That is, Var(f) is slightly larger than Var(r). κ_{f←r} is close to 1 because Cov and Var(r) are numerically close (both governed by the oscillation amplitude of x), making Cov/Var(r) ≈ 1. Meanwhile Var(f) exceeds Var(r) slightly (the x²y term in a + x²y generates additional variance at oscillation peaks), so Cov/Var(f) ≈ 0.81. Physically: from r's viewpoint, f nearly perfectly predicts r (κ_{f←r} ≈ 1); from f's viewpoint, r offsets only about 80% of f's fluctuations (κ_{r←f} ≈ 0.8). The asymmetry reflects the variance ratio of the two channels.</p>
+<h4>5.2.3 Brusselator: f/r rotation experiment</h4>
+<p>This section performs a basis-sensitivity scan at the comparison scale τ = τ_relax ≈ 2.0, chosen to ensure adequate sample sizes for all rotation angles. It does not report the natural decomposition's canonical small-τ plateau value (which is η ≈ 0.19–0.20, see §5.2.2).</p>
+<p>At θ = 0° (natural), η̄ = 0.062. At θ = 45°, η̄ = 0.985. At θ = 90° (f and r swapped), η̄ = 0.006. At θ ≈ 142.5°, η̄ reaches its minimum at about −2.7 (overscreening).</p>
+<p>This confirms §3.1: η̄ is not a rotation invariant. The natural decomposition (synthesis/degradation) gives a value in the absorptive regime. Non-physical rotations produce either near-1 (null-like) or negative (overscreening-like) values.</p>
+<h4>5.2.4 Schlögl: overscreening</h4>
+<p>Parameters: μ = 1.0, a = 0.5 (monostable) and μ = 2.5, a = 0.0 (near-bifurcation), σ ∈ {0.1, 0.5, 1.0}, T = 2000.</p>
+<p>η̄ is negative for all parameter combinations and all τ.</p>
+<table><thead><tr>
+<th>(μ, a)</th>
+<th>σ</th>
+<th>η̄(τ = 0.01)</th>
+<th>η̄(τ = 1.0)</th>
+<th>η̄(τ = 10.0)</th>
+</tr></thead><tbody>
+<tr>
+<td>(1.0, 0.5)</td>
+<td>0.1</td>
+<td>−3.25</td>
+<td>−3.24</td>
+<td>−3.23</td>
+</tr>
+<tr>
+<td>(1.0, 0.5)</td>
+<td>0.5</td>
+<td>−2.27</td>
+<td>−1.84</td>
+<td>−0.96</td>
+</tr>
+<tr>
+<td>(1.0, 0.5)</td>
+<td>1.0</td>
+<td>−0.95</td>
+<td>−0.74</td>
+<td>−0.63</td>
+</tr>
+<tr>
+<td>(2.5, 0.0)</td>
+<td>0.1</td>
+<td>−2.00</td>
+<td>−1.99</td>
+<td>−1.99</td>
+</tr>
+<tr>
+<td>(2.5, 0.0)</td>
+<td>1.0</td>
+<td>−0.09</td>
+<td>−0.04</td>
+<td>−0.02</td>
+</tr>
+</tbody></table>
+<p>κ > 1 throughout. The cubic restoring force x³ far exceeds the linear drive μx + a, giving Var(r) ≫ Var(f) and large Cov.</p>
+<p>Physical meaning: the Schlögl model is an overdamped nonequilibrium system. The restoring process not only absorbs the driving fluctuations but overshoots. This is the nonequilibrium analogue of overdamping in equilibrium thermodynamics.</p>
+<p>Notably, as noise increases (σ = 1.0) near the bifurcation (μ = 2.5), η̄ rises from −2.0 to −0.02, approaching null regime. This likely reflects weakening restoring force as the linearised Jacobian's eigenvalue approaches zero.</p>
+<h3>5.3 η ≈ 0.20: a recurrent absorptive window</h3>
+<p>The Brusselator's η ≈ 0.19–0.20 under its natural f/r decomposition coincides with values observed in entirely different domains:</p>
+<table><thead><tr>
+<th>System</th>
+<th>Domain</th>
+<th>f/r decomposition</th>
+<th>η</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>ZFCρ DP recursion</td>
+<td>Number theory</td>
+<td>Additive step / multiplicative screening</td>
+<td>0.10–0.31 (median ≈ 0.20)</td>
+<td>Thermo I</td>
+</tr>
+<tr>
+<td>Lindley M/M/1</td>
+<td>Queueing theory</td>
+<td>Arrivals / service</td>
+<td>≈ 0.15</td>
+<td>Thermo I</td>
+</tr>
+<tr>
+<td>Brusselator</td>
+<td>Chemical kinetics</td>
+<td>Synthesis / degradation</td>
+<td>0.19–0.20</td>
+<td>This paper</td>
+</tr>
+</tbody></table>
+<p>ZFCρ and Brusselator share no mathematical structure, physical domain, or dynamical equations. Their only common feature is that both are state-coupled, two-channel dissipative systems in which f and r share state variables.</p>
+<p>We report this as a recurrent absorptive window in state-coupled two-channel systems. This is not a universality claim for η itself (the Schlögl η̄ < 0 and OU η̄ ≈ 1 rule that out). It is a recurrent regime: in systems satisfying specific structural conditions (state-coupled, two-channel, restoring force not overwhelmingly dominant, noise not dominating the deterministic coupling), η tends to lie near 0.15–0.25.</p>
+<p>Calibration of claim strength: η ≈ 0.20 is the mean across the oscillatory regime (§5.4), not a constant. The full claim is: under moderate noise (σ/x<em> ≤ 1), on the canonical small-τ plateau of state-coupled two-channel oscillatory systems, η has a central tendency in [0.15, 0.25] and a parameter range in [0.14, 0.34]. When σ/x</em> > 1, noise begins to disrupt deterministic coupling and η may exceed this range (e.g. η = 0.43 at σ = 3.0 in §5.2.2). Two state-coupled systems (ZFCρ, Brusselator) directly support this claim. Lindley M/M/1 (η ≈ 0.15) is a channel-independent system whose η falls in a similar range possibly for different reasons, and is not counted as direct support for the state-coupled claim.</p>
+<p>The phenomenon has a loose analogy with Feigenbaum's universality [8]: δ ≈ 4.669 appears in all period-doubling systems regardless of specific dynamics, arising from a renormalisation-group fixed point. Whether η ≈ 0.20 similarly arises from a fixed point of f/r coupling dynamics is a high-priority open problem (§7.1).</p>
+<h3>5.4 Parameter-space scan: η as a continuous dynamical indicator</h3>
+<p>To test the robustness of η ≈ 0.20, we scanned the Brusselator parameter space: a ∈ {0.5, 1.0, 1.5, 2.0}, b ranging from damped (b < 1 + a²) into deep-oscillatory regime (b ≫ 1 + a²), σ = 0.3, τ = 0.05.</p>
+<p>Representative data points:</p>
+<table><thead><tr>
+<th>a</th>
+<th>b</th>
+<th>regime</th>
+<th>η</th>
+</tr></thead><tbody>
+<tr>
+<td>0.5</td>
+<td>0.75</td>
+<td>damped</td>
+<td>0.006</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1.35</td>
+<td>oscillatory</td>
+<td>0.148</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1.75</td>
+<td>oscillatory</td>
+<td>0.207</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>6.25</td>
+<td>oscillatory</td>
+<td>0.342</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.90</td>
+<td>damped</td>
+<td>0.124</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>2.10</td>
+<td>oscillatory</td>
+<td>0.140</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>3.00</td>
+<td>oscillatory</td>
+<td>0.206</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>7.00</td>
+<td>oscillatory</td>
+<td>0.260</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>4.90</td>
+<td>damped</td>
+<td>0.148</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>5.10</td>
+<td>oscillatory</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>7.00</td>
+<td>oscillatory</td>
+<td>0.192</td>
+</tr>
+</tbody></table>
+<p>(Full 20-point dataset in supplementary material.)</p>
+<p>Three key observations:</p>
+<p>First, η varies continuously across the bifurcation b = 1 + a²; there is no jump. Mean η̄ in the damped regime is 0.103; mean η in the oscillatory regime is 0.203. The bifurcation is not a singular point of η but a smooth transition from low to moderate absorption.</p>
+<p>Second, the oscillatory-regime range is [0.14, 0.34]. η is not constant; it increases monotonically with distance from bifurcation ((b − b_crit)/b_crit). η ≈ 0.20 appears at moderate distance from bifurcation.</p>
+<p>Third, across all a values, the oscillatory-regime mean η is near 0.20 (a = 0.5: 0.25; a = 1.0: 0.21; a = 1.5: 0.19; a = 2.0: 0.18). The influence of a is weaker than that of b.</p>
+<p>η is therefore not a universal constant, but a continuous dynamical indicator. It increases with distance from bifurcation, taking the value ≈ 0.2 at moderate distance. This has more physical content than "η is always 0.2."</p>
+<h3>5.5 Composite dissipation structure: a candidate unifying ansatz</h3>
+<p>Thermo II (DOI: 10.5281/zenodo.19511064) showed η ≈ 0.20 = 1 − C(1)^{m_eff}, where C(1) ≈ 0.96 is the per-layer retention rate in ZFCρ and m_eff ≈ 5.47 the effective layer count.</p>
+<p>If this composite-dissipation mechanism is cross-system, the Brusselator's f-channel time series should also decompose into a similar exponential-decay structure. We computed the step-wise autocorrelation function on the τ = 0.05 integrated f-channel series.</p>
+<table><thead><tr>
+<th>lag k</th>
+<th>ACF_f(k)</th>
+<th>ACF_f(k)/ACF_f(k−1)</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>1.000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.982</td>
+<td>0.982</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.938</td>
+<td>0.956</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.883</td>
+<td>0.942</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.770</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.525</td>
+<td>—</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.324</td>
+<td>—</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.189</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>The f-channel lag-1 autocorrelation is C(1) = 0.982. The ratio ACF(k)/ACF(k−1) is not strictly constant (declining from 0.982 to ~0.88), indicating that the Brusselator's f-channel autocorrelation decay is not purely exponential, though C(1)^k serves as a first-order approximation.</p>
+<p>Assuming η = 1 − C(1)^{m_eff}:</p>
+<table><thead><tr>
+<th>System</th>
+<th>C(1)</th>
+<th>m_eff</th>
+<th>1 − C(1)^{m_eff}</th>
+</tr></thead><tbody>
+<tr>
+<td>ZFCρ</td>
+<td>0.96</td>
+<td>5.47</td>
+<td>0.200</td>
+</tr>
+<tr>
+<td>Brusselator f-channel</td>
+<td>0.982</td>
+<td>11.3</td>
+<td>0.190</td>
+</tr>
+</tbody></table>
+<p>The individual parameters differ but the composite values are close. Different systems reach a similar η via different paths: ZFCρ via "96% retention per step, 5.5 steps per cycle," the Brusselator via "98% retention per step, 11 steps per cycle." Same product, different recipes.</p>
+<p>Limitations of this analysis must be noted. In the Brusselator, m_eff = 11.3 is inferred from η and C(1) (m_eff = ln(1 − η)/ln(C(1))), not independently measured. In ZFCρ, m_eff = 5.47 can be independently confirmed from the period of G_j(M) damped oscillation, but no analogous independent measurement of m_eff exists for the Brusselator. The factorisation 1 − C(1)^{m_eff} ≈ η is therefore a post hoc factorisation in the Brusselator, not an independent verification.</p>
+<p>Furthermore, C(1) in ZFCρ is a spatial autocorrelation across same-layer prime indices, while in the Brusselator it is the temporal lag-1 ACF of an integrated time series. Both can be described as "first-step retention," but they are not the same observable.</p>
+<p>We report this as a candidate unifying ansatz, not an established mechanism. Its suggestive value lies in the observation that two completely different systems reach the same η via different (C(1), m_eff) paths, hinting at a constraint that causes 1 − C(1)^{m_eff} to converge. This hint is suggestive, not conclusive.</p>
+<h3>5.6 Falsifiable predictions</h3>
+<p><strong>Prediction P1 (parameter-space prediction).</strong> For any state-coupled two-channel oscillatory system under natural f/r decomposition and moderate noise (σ/x* ≤ 1), on the canonical small-τ plateau:</p>
+<p>(i) η falls in [0.14, 0.34] across the oscillatory regime;</p>
+<p>(ii) η increases monotonically with parametric distance from the Hopf bifurcation;</p>
+<p>(iii) η varies continuously (no jump) at the bifurcation, transitioning smoothly from damped-regime low values (η̄ < 0.15) to oscillatory-regime moderate values (η ≈ 0.20).</p>
+<p>This can be tested immediately on the Van der Pol oscillator, Lotka–Volterra predator–prey model, FitzHugh–Nagumo neuron model, and similar standard systems. Any system whose natural-decomposition η falls outside [0.14, 0.34] constitutes a counterexample.</p>
+<p><strong>Prediction P2 (composite-dissipation ansatz).</strong> For any state-coupled system yielding η ≈ 0.2, the f-channel (or r-channel) step-wise autocorrelation should exhibit approximate exponential decay ACF(k) ≈ C(1)^k such that 1 − C(1)^{m_eff} ≈ η.</p>
+<p>C(1) and m_eff vary with the system, but the composite 1 − C(1)^{m_eff} converges to [0.15, 0.25]. A system in which ACF(k) decays as a power law rather than exponentially, or in which the composite value deviates from η by more than 50%, would constitute a counterexample.</p>
+<p><strong>Prediction P3 (experimental, hardest).</strong> In experimental data from the Belousov–Zhabotinsky reaction or its Oregonator model, if synthesis and degradation rates can be independently measured (via isotope labelling or rapid-mixing experiments), and under conditions where noise does not dominate the deterministic coupling and the natural f/r decomposition is identifiable, η should fall in the absorptive regime with a value in [0.14, 0.34].</p>
+<p>This is a purely experimental prediction testable in a standard chemical-kinetics laboratory.</p>
+<p><strong>Prediction P4 (η̄(τ) morphology predicts coupling type).</strong> Given an unknown system's time series and its f/r decomposition, the η̄(τ) curve morphology diagnoses the f/r coupling type:</p>
+<p>(i) If η̄(τ) enters a plateau directly at small τ (no ascending segment), the system is state-coupled;</p>
+<p>(ii) If η̄(τ) descends from a high value (η̄ → 1) to a plateau at small τ, the system is channel-independent.</p>
+<p>This can be tested by blind measurement of η̄(τ) on a new system of known coupling type.</p>
+<hr>
+<h2>6. Interface with existing frameworks</h2>
+<h3>6.1 Relation to three entropy-production decompositions</h3>
+<p>Nonequilibrium statistical mechanics has three mature decomposition frameworks. Onsager's force–flux decomposition [9] treats the near-equilibrium linear-response regime, writing entropy production as a product of generalised forces and fluxes. Hatano and Sasa's housekeeping/excess decomposition [10] splits entropy production into a steady-state maintenance cost and an excess from deviation. Esposito and Van den Broeck's adiabatic/non-adiabatic decomposition [11] further refines this partition.</p>
+<p>The f/r decomposition is orthogonal to these three, and they are complementary. The key distinction is that f/r decomposes the dynamical processes themselves (which processes drive, which restore), while the others decompose entropy production (different sources of total dissipation). Both decompositions can be performed simultaneously: first extract η via f/r, then use Hatano–Sasa to trace which of η's physical sources are housekeeping contributions and which are excess.</p>
+<p>κ and the off-diagonal elements of the Onsager matrix L share the feature of quantifying inter-process coupling strength. In the near-equilibrium linear-response regime, both measure "how much one process responds to the other." But κ is an operational definition requiring neither near-equilibrium conditions nor linearisation, while Onsager coefficients are products of linear-response theory. The two are not the same object.</p>
+<h3>6.2 Relation to information-theoretic quantities</h3>
+<p>κ = Cov(Δf, Δr) / Var(Δf) is the regression slope β_{r~f} in a linear regression of Δr on Δf. Note that this is not the coefficient of determination R² (which equals Corr(Δf, Δr)²).</p>
+<p>η_{r←f} = 1 − κ is therefore the directional linear-coupling residual under unit-response normalisation: if one unit of f-fluctuation is fully offset by one unit of r-response, then κ = 1 and η = 0. This is different from "how much of r's variance is explained by f" (the meaning of R²). η_sym = 1 − |Corr| is the symmetric coupling residual.</p>
+<p>These quantities have a conceptual kinship with the Granger-causality literature [12]: Granger causality also measures how much one process's history helps predict the other. But η_{r←f} is synchronous (Cov within the same τ-window), while Granger causality is inter-temporal (past f predicting future r). They measure different aspects of inter-process dependence.</p>
+<p>The mutual information in the Sagawa–Ueda information-thermodynamics framework [14] links measurement and system; the coupling measured by f/r decomposition links two internal processes. Both involve statistical dependence between two random variables, but in different physical contexts (external measurement vs internal coupling).</p>
+<h3>6.3 Complementarity with TUR</h3>
+<p>The thermodynamic uncertainty relation (TUR) gives (ΔJ)²/⟨J⟩² ≥ 2k_BT/σ_tot [4], an inequality constraining the precision–cost trade-off of a single current J.</p>
+<p>η and TUR are complementary, not derivable from each other. TUR bounds current precision from below; η quantifies drive–response decoupling. TUR involves no two-process decomposition; it treats one net current.</p>
+<p>Both move in the same qualitative direction: in systems with strong f/r symmetry breaking, the TUR bound is loose (high entropy production) and η is large (high decoupling). But this alignment is qualitative; no mathematical path derives η from TUR.</p>
+<hr>
+<h2>7. Open problems</h2>
+<h3>7.1 Structural explanation of η ≈ 0.20</h3>
+<p>ZFCρ and the Brusselator yield η ≈ 0.20 under completely different dynamics. §5.5 showed this is not because C(1) or m_eff are individually constant, but because the composite 1 − C(1)^{m_eff} converges in both systems. ZFCρ's path: C(1) = 0.96, m_eff = 5.47. Brusselator's path: C(1) = 0.982, m_eff = 11.3.</p>
+<p>The key open question: what mathematical structure (if any) guarantees convergence of 1 − C(1)^{m_eff} across different systems? One possible direction: view C(1) and m_eff as a point in a two-dimensional space and seek the contour on which 1 − C(1)^m = const. Along this contour, higher C(1) (higher per-step retention) requires larger m_eff (more effective layers) to maintain the same composite dissipation. This is a form of compensation: systems can reach the same η via different (C(1), m_eff) combinations.</p>
+<p>But this only describes the phenomenon; it does not explain why the contour is at η ≈ 0.2 rather than at η ≈ 0.1 or 0.5. Answering this may require starting from a fixed-point equation for f/r coupling. As noted in §5.5, m_eff in the Brusselator is currently inferred rather than independently measured; an independent measurement method is needed.</p>
+<p>Additional systems are required. The current evidence—two state-coupled systems plus a parameter scan—is suggestive but not sufficient for a fully rigorous proof.</p>
+<h3>7.2 The specificity of natural decomposition</h3>
+<p>η̄ is not a rotation invariant (§3.1). A natural conjecture was that the canonical decomposition maximises the η̄(τ) plateau width (a maximum-scale-invariance principle).</p>
+<p>We tested this numerically on the Brusselator. For each rotation angle θ (0° to 180°, step 10°), the η̄(τ) plateau width (consecutive τ-points with < 10% variation) was computed over 25 log-spaced τ values. Note that this plateau analysis covers the full τ range, unlike the comparison-scale rotation experiment of §5.2.3 (which scans θ at a single τ). The natural decomposition yields η ≈ 0.20 on the canonical small-τ plateau (§5.2.2) and η̄ = 0.062 at τ_relax (§5.2.3); these correspond to different τ scales.</p>
+<p>Result: the conjecture fails. θ = 50°–100° give the widest plateaus (25/25 τ-points all stable), but η̄ > 1—outside the absorptive regime. Even among absorptive-regime decompositions, θ = 30° (width 16, η̄ ≈ 0.81) is wider than θ = 0° (width 7, η ≈ 0.20).</p>
+<p>The natural decomposition has a different specificity: <strong>it is the only decomposition whose η falls within the recurrent absorptive window (0.15–0.25).</strong> θ = 10° gives η̄ = 0.44; θ = 20° gives η̄ = 0.63; θ = 30° gives η̄ = 0.81. Only θ = 0° (and the equivalent θ = 180°) gives η ≈ 0.20.</p>
+<p>This specificity connects to the candidate unifying ansatz of §5.5: only the natural decomposition produces an f-channel time series with the approximate exponential-decay autocorrelation structure that places 1 − C(1)^{m_eff} on the ≈ 0.20 contour. Rotation destroys this structure.</p>
+<p>Thus the canonical status of the natural decomposition does not derive from an optimality principle (widest plateau or minimum η), but from its alignment with the underlying composite-dissipation structure. This is a deeper criterion than a variational principle, but harder to formalise. Its full understanding may require answering why 1 − C(1)^{m_eff} converges in state-coupled systems—the problem of §7.1.</p>
+<h3>7.3 Open quantum systems</h3>
+<p>The Lindblad master equation for open quantum systems, dρ/dt = −i[H, ρ] + Σ(LρL† − ...), has a natural f/r decomposition: f = −i[H, ρ] (unitary evolution) and r = Σ(LρL† − ...) (Lindblad dissipators). The decoherence time is a natural τ.</p>
+<p>This direction currently lacks numerical verification. Whether η̄ in a concrete open quantum system (e.g. a driven-dissipative cavity) falls in the absorptive regime is unknown.</p>
+<h3>7.4 η and Jacobian eigenstructure</h3>
+<p>Whether the Brusselator's η ≈ 0.19 has a simple analytic relation to the Jacobian eigenvalues (0.5 ± 0.866i) is an open question. The nonlinear term x²y prevents complete linearisation from yielding a closed formula, but the correlation between η and the damping ratio Re(λ)/|λ| deserves further exploration.</p>
+<h3>7.5 Housekeeping entropy and η</h3>
+<p>In state-coupled systems, stronger coupling should imply higher housekeeping entropy production (the cost of maintaining f–r coordination) and lower η. This is a prediction testable in the Brusselator by varying parameters. If confirmed, it would provide a quantitative interface between η and the Hatano–Sasa framework.</p>
+<hr>
+<h2>References</h2>
+<p>[1] C. Jarzynski, Phys. Rev. Lett. 78, 2690 (1997).</p>
+<p>[2] G. E. Crooks, Phys. Rev. E 60, 2721 (1999).</p>
+<p>[3] L. F. Cugliandolo, J. Kurchan, and L. Peliti, Phys. Rev. E 55, 3898 (1997).</p>
+<p>[4] A. C. Barato and U. Seifert, Phys. Rev. Lett. 114, 158101 (2015).</p>
+<p>[5] C. Maes, J. Stat. Phys. 95, 367 (1999).</p>
+<p>[6] V. Lecomte, C. Appert-Rolland, and F. van Wijland, J. Stat. Phys. 127, 51 (2007).</p>
+<p>[7] O. Shpielberg et al., Phys. Rev. Lett. 116, 240603 (2016).</p>
+<p>[8] M. J. Feigenbaum, J. Stat. Phys. 19, 25 (1978).</p>
+<p>[9] L. Onsager, Phys. Rev. 37, 405 (1931).</p>
+<p>[10] T. Hatano and S. Sasa, Phys. Rev. Lett. 86, 3463 (2001).</p>
+<p>[11] M. Esposito and C. Van den Broeck, Phys. Rev. Lett. 104, 090601 (2010).</p>
+<p>[12] C. W. J. Granger, Econometrica 37, 424 (1969).</p>
+<p>[13] T. Schreiber, Phys. Rev. Lett. 85, 461 (2000).</p>
+<p>[14] T. Sagawa and M. Ueda, Phys. Rev. Lett. 104, 090602 (2010).</p>
+<hr>
+<h2>Appendix A: Protocol B (single-channel heuristic proxy)</h2>
+<p>When only a single time series X(t) is available and f and r cannot be independently observed, an attractor-based conditional decomposition can be used.</p>
+<p>Step 1: Estimate the attractor X* (fixed point or limit-cycle centreline).</p>
+<p>Step 2: Define deviation δ_n = X(nτ) − X*.</p>
+<p>Step 3: Conditional decomposition. If |δ_{n+1}| > |δ_n| (moving away from attractor), assign ΔX_n to f. If |δ_{n+1}| < |δ_n| (approaching attractor), assign to r.</p>
+<p>Step 4: Compute κ and η̄.</p>
+<p><strong>Limitations.</strong> Protocol B is a heuristic proxy, not an exact protocol. It assumes f and r alternate in dominance (rather than acting simultaneously); this fails for strongly coupled systems. η̄ from Protocol B should not be regarded as an unbiased estimator of Protocol A's η.</p>
+<p>In particular, for systems exhibiting limit cycles, the simple radial-distance criterion |δ_{n+1}| ≷ |δ_n| fails, because the dynamics are predominantly tangential (phase evolution along the cycle) rather than radial (divergence/convergence). For such limit-cycle oscillators, Protocol B should be upgraded to phase-angle splitting in phase space, or one should rely on Protocol A's multi-variable equation-based extraction.</p>
+<p><strong>Theoretical note.</strong> Takens' embedding theorem [15] shows that a single time series with sufficient embedding dimension contains the topological information of the original dynamical system. Protocol B can be viewed as a first-order approximation to Takens reconstruction. However, the conditions for Takens' theorem (sufficient embedding dimension, low noise, dense sampling) are often violated in practical nonequilibrium systems.</p>
+<p>[15] F. Takens, in Dynamical Systems and Turbulence, Lecture Notes in Math. 898, 366 (1981).</p>
+<hr>
+<h2>Appendix B: η̄(τ) dual-morphology diagrams</h2>
+<p>(Formal version should include two figures.)</p>
+<p><strong>Figure B1: Channel-independent systems (Lindley M/M/1 type).</strong> η̄(τ) exhibits three-region structure: under-resolved region (τ ≪ τ_relax, η̄ elevated) → canonical plateau → over-smoothed region (τ ≫ τ_relax, η̄ approaches asymptotic value).</p>
+<p><strong>Figure B2: State-coupled systems (Brusselator type).</strong> η̄(τ) exhibits two-region structure: plateau (beginning at very small τ, η ≈ 0.19) → monotone decline (large τ, tending toward 0 or negative). No under-resolved region.</p>
+<p>The contrast between these two morphologies directly illustrates the core argument of §4.1: the shape of η̄(τ) depends on the f/r coupling type, not on any universal property of η itself.</p>
+  </div>
+  </div>
+
+  <div id="lang-zh" class="lang-content" style="display:none" lang="zh">
+  <div class="paper-page-header-zh">
+    <h1>ZFCρ热力学论文 III：涨落吸收率η的规范提取与regime分类</h1>
+    <div class="paper-subtitle-line" style="font-size:1rem;color:#666;margin-top:.3rem;">ZFCρ热力学系列 · 第三篇</div>
+  </div>
+  <div class="abstract-box">
+    <div class="abstract-label">摘要</div>
+    <p>非平衡统计力学缺少一个同时满足无量纲，跨尺度稳定，动力学内生，定量可测这四个条件的标量参数。本文定义了convention-corrected coupling κ，将耗散系统的双通道动力学（驱动通道f与恢复通道r）的补偿程度统一归结为一个不依赖符号约定的标量。在此基础上建立了四种regime的分类：null（κ≈0，f与r独立），absorptive（0<κ<1，部分吸收），overscreening（κ>1，过度补偿），anti-compensatory（κ<0，反向协同）。
+
+我们定义代数延拓量η̄ := 1-κ，它在所有regime中均可报告。涨落吸收率η这一名称仅保留给absorptive regime（0<κ<1），在此regime中η = η̄ = 1-κ具有"每步未被对冲的涨落比例"的明确物理含义。
+
+我们引入了admissible decomposition family的概念：η不追求在任意坐标旋转下的全局唯一性，而是在物理可解释的分解族内寻求可识别性，可重复性，可跨尺度测试性。
+
+τ-selection taxonomy将系统分为两类。通道独立系统（如Ornstein-Uhlenbeck过程和Lindley排队）的f与r是独立随机过程，η̄(τ)在极小τ端可能出现null corner。状态耦合系统（如Brusselator化学振荡和Schlögl双稳态模型）的f与r共享状态变量，η̄(τ)在小τ端直接进入平台。
+
+三个benchmark系统构成一组判别三联组。Ornstein-Uhlenbeck过程（κ≈0，η̄≈1）是null test。Brusselator（κ≈0.8，η≈0.19-0.20）展示了absorptive plateau。Schlögl模型（κ>1，η̄<0全程）展示了overscreening。
+
+Brusselator的η≈0.20与ZFCρ素数步递推中的η≈0.20数值吻合。参数空间扫描表明η不是恒定值而是连续动力学指标：在Brusselator的整个振荡regime内η ∈ [0.14, 0.34]，均值0.20，且η与离Hopf分岔点的距离单调正相关。
+
+我们观察到一个候选统一拟设（candidate unifying ansatz）：η≈0.20可被分解为复合耗散1 - C(1)^{m_eff}，其中C(1)是f通道的逐步自相关，m_eff是有效衰减层数。ZFCρ中C(1) = 0.96, m_eff = 5.47；Brusselator中C(1) = 0.98, m_eff = 11.3。两者的C(1)和m_eff各自不同，但复合值收敛。需要指出的是，Brusselator中的m_eff是从η和C(1)反推的，尚非独立测量，因此这一分解目前是suggestive而非conclusive。η≈0.20是否是某类f/r耦合系统中复合耗散函数的不动点，是一个高优先级的开放问题。
+
+本文给出四项可证伪预测，其中最硬的一项是：在BZ/Oregonator反应的实验数据中，如果合成速率和降解速率可独立测量，η应落在0.14-0.34范围内。
+
+---</p>
+  </div>
+  <div class="paper-body">
+<h1>ZFCρ热力学论文 III：涨落吸收率η的规范提取与regime分类</h1>
+<p><strong>Canonical f/r Extraction and Regime Classification of the Fluctuation Absorption Rate η</strong></p>
+<p>Han Qin（秦汉）</p>
+<p>SAE Research · 2026</p>
+<hr>
+<h2>摘要</h2>
+<p>非平衡统计力学缺少一个同时满足无量纲，跨尺度稳定，动力学内生，定量可测这四个条件的标量参数。本文定义了convention-corrected coupling κ，将耗散系统的双通道动力学（驱动通道f与恢复通道r）的补偿程度统一归结为一个不依赖符号约定的标量。在此基础上建立了四种regime的分类：null（κ≈0，f与r独立），absorptive（0<κ<1，部分吸收），overscreening（κ>1，过度补偿），anti-compensatory（κ<0，反向协同）。</p>
+<p>我们定义代数延拓量η̄ := 1-κ，它在所有regime中均可报告。涨落吸收率η这一名称仅保留给absorptive regime（0<κ<1），在此regime中η = η̄ = 1-κ具有"每步未被对冲的涨落比例"的明确物理含义。</p>
+<p>我们引入了admissible decomposition family的概念：η不追求在任意坐标旋转下的全局唯一性，而是在物理可解释的分解族内寻求可识别性，可重复性，可跨尺度测试性。</p>
+<p>τ-selection taxonomy将系统分为两类。通道独立系统（如Ornstein-Uhlenbeck过程和Lindley排队）的f与r是独立随机过程，η̄(τ)在极小τ端可能出现null corner。状态耦合系统（如Brusselator化学振荡和Schlögl双稳态模型）的f与r共享状态变量，η̄(τ)在小τ端直接进入平台。</p>
+<p>三个benchmark系统构成一组判别三联组。Ornstein-Uhlenbeck过程（κ≈0，η̄≈1）是null test。Brusselator（κ≈0.8，η≈0.19-0.20）展示了absorptive plateau。Schlögl模型（κ>1，η̄<0全程）展示了overscreening。</p>
+<p>Brusselator的η≈0.20与ZFCρ素数步递推中的η≈0.20数值吻合。参数空间扫描表明η不是恒定值而是连续动力学指标：在Brusselator的整个振荡regime内η ∈ [0.14, 0.34]，均值0.20，且η与离Hopf分岔点的距离单调正相关。</p>
+<p>我们观察到一个候选统一拟设（candidate unifying ansatz）：η≈0.20可被分解为复合耗散1 - C(1)^{m_eff}，其中C(1)是f通道的逐步自相关，m_eff是有效衰减层数。ZFCρ中C(1) = 0.96, m_eff = 5.47；Brusselator中C(1) = 0.98, m_eff = 11.3。两者的C(1)和m_eff各自不同，但复合值收敛。需要指出的是，Brusselator中的m_eff是从η和C(1)反推的，尚非独立测量，因此这一分解目前是suggestive而非conclusive。η≈0.20是否是某类f/r耦合系统中复合耗散函数的不动点，是一个高优先级的开放问题。</p>
+<p>本文给出四项可证伪预测，其中最硬的一项是：在BZ/Oregonator反应的实验数据中，如果合成速率和降解速率可独立测量，η应落在0.14-0.34范围内。</p>
+<hr>
+<h2>§1 引言：非平衡参数的四条件空位</h2>
+<h3>1.1 问题</h3>
+<p>平衡统计力学有一套完整的工具箱。配分函数提供了从微观到宏观的精确桥梁，自由能极小化给出了稳态判据，涨落耗散定理在线性响应区给出了输运系数的精确表达式。</p>
+<p>一旦离开平衡，这些工具大部分失效。过去三十年最重要的进展是Jarzynski等式和Crooks涨落定理[1,2]，它们在远离平衡的条件下给出了关于功和自由能差的精确恒等式。但恒等式不是动力学理论：它们告诉你"平均而言自由能差是对的"，不告诉你"每一步泄漏多少"。</p>
+<p>热力学家手里有许多描述非平衡行为的量。但当我们检查这些量是否同时满足四个操作性条件时，会发现一个空位。</p>
+<p>这四个条件是：无量纲（可跨系统比较），跨尺度稳定（在不同粗粒化尺度下给出近似相同的值），动力学内生（来自系统的驱动-响应结构，不是外加的统计量），定量可测（有明确的提取协议和误差估计）。</p>
+<h3>1.2 已有量的检查</h3>
+<p>熵产生率σ = dS_i/dt是最接近的量。它是正定的，动力学内生的，定量可测的。但它有量纲（J/K·s），依赖系统尺寸。一个细胞的σ和一颗恒星的σ无法比较。</p>
+<p>Jarzynski耗散功W_diss = W - ΔF可以在特定条件下定义无量纲形式，但它描述的是单次过程的路径量，不是系统的内禀动力学参数。</p>
+<p>FDR violation和有效温度T_eff描述的是系统偏离平衡的程度，但有效温度依赖于所选的观测量[3]，不是系统的内禀性质。</p>
+<p>Lyapunov指数λ是无量纲的，跨尺度稳定的，但它测量的是轨道不稳定性（混沌），不是耗散。保守Hamilton系统也可以有正的Lyapunov指数。</p>
+<p>Hurst指数H是无量纲的，跨尺度稳定的，但它是统计描述（时间序列自相似性），不是动力学机制的产物。</p>
+<p>热力学不确定性关系（TUR）给出了电流涨落的下界[4]，是非平衡统计力学最精确的结果之一。但TUR约束的是单一电流的精度-成本权衡，不是两个独立可观测过程之间的耦合度。</p>
+<p>我们还检查了Fano factor，KL散度率（相对熵产生率），Maes的excess entropy production[5]，以及Lecomte等人的dynamical activity[6]。这些量各自满足上述四个条件中的两到三个，但没有一个同时满足全部四个。</p>
+<table><thead><tr>
+<th>量</th>
+<th>无量纲</th>
+<th>跨尺度稳定</th>
+<th>动力学内生</th>
+<th>定量可测</th>
+</tr></thead><tbody>
+<tr>
+<td>σ（熵产率）</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>W_diss（Jarzynski）</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>T_eff（FDR violation）</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>λ（Lyapunov）</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓*</td>
+<td>×</td>
+</tr>
+<tr>
+<td>H（Hurst）</td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>TUR Q值</td>
+<td>✓</td>
+<td>○</td>
+<td>○</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>η（本文）</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody></table>
+<p>注：✓*表示Lyapunov指数是几何量而非热力学量。○表示部分满足。本表不是"η是唯一"的claim；η的设计目标是把这四个通常分散在不同指标中的要求压进同一个可测标量。</p>
+<h3>1.3 本文的贡献</h3>
+<p>本文提出涨落吸收率η作为填补上述空位的候选量。η的定义基于将系统动力学分解为驱动通道f（forward）和恢复通道r（reset）两个竞争过程。η测量的是r对f的涨落"没有对冲掉"的比例。</p>
+<p>η的概念来自Le Chatelier-like的补偿响应思想：系统受到扰动后，会产生部分抵消扰动的响应[7]。η量化了"部分"的程度。但η不是平衡态附近的线性响应系数。η不需要近平衡假设，不需要线性化，不需要Onsager互易关系。η是对Le Chatelier精神的远平衡操作化，不是Le Chatelier原理的定量版本。</p>
+<p>本文的贡献有四项：（1）convention-corrected coupling κ和四regime分类；（2）admissible decomposition family的概念；（3）τ-selection taxonomy（通道独立系统 vs 状态耦合系统）；（4）三系统benchmark panel（OU/Brusselator/Schlögl）。</p>
+<hr>
+<h2>§2 Convention-Corrected Coupling κ与Regime分类</h2>
+<h3>2.1 符号约定与κ的定义</h3>
+<p>考虑一个耗散系统，其可观测量X的离散化动力学可以写成两个通道的竞争：</p>
+<p>$$\Delta X_n = \Delta f_n + s_r \cdot \Delta r_n + \xi_n$$</p>
+<p>其中Δf_n是驱动通道在第n步的贡献（如果单独作用，会使系统偏离稳态），Δr_n是恢复通道的贡献（提供恢复力），s_r ∈ {+1, -1}是符号约定标志，ξ_n是外部噪声。</p>
+<p>不同的文献采用不同的符号约定。在drive-restoration记法中（ΔX = Δf - Δr），s_r = -1。在某些文献中恢复项的负号已经被吸进Δr的定义里（ΔX = Δf + Δr），此时s_r = +1。</p>
+<p>这个符号差异会翻转Cov(Δf, Δr)的正负号，导致同一个物理系统的η̄可能被报告为不同的值，仅取决于写法。</p>
+<p>为消除这种依赖，我们定义convention-corrected coupling：</p>
+<p>$$\kappa := -s_r \cdot \frac{\text{Cov}(\Delta f, \Delta r)}{\text{Var}(\Delta f)}$$</p>
+<p>κ的物理含义是：在消除了符号约定的影响之后，恢复通道r对驱动通道f的涨落对冲了多少比例。κ越大，对冲越强。</p>
+<p><strong>本文统一采用f-r convention（ΔX = Δf - Δr），s_r = -1。在此约定下，Cov(Δf, Δr) > 0表示补偿（f升→r跟升→净效果被阻尼），κ = Cov/Var(Δf)。</strong></p>
+<h3>2.2 四个Regime</h3>
+<p>κ的值域自然地将系统分为四类。</p>
+<p><strong>Null regime（κ ≈ 0）：</strong> f和r的涨落几乎无关。恢复通道没有"预测"驱动通道的能力。Ornstein-Uhlenbeck过程在噪声kick与恢复力的分解下属于此类（小τ端外部kick与当前恢复通道近似独立）。</p>
+<p><strong>Absorptive regime（0 < κ < 1）：</strong> 恢复通道对冲了驱动通道的部分涨落，但不是全部。系统处于"部分吸收"状态。涨落吸收率η := 1 - κ在此regime中有明确的物理含义：它是每一步中未被对冲的涨落比例。</p>
+<p><strong>Overscreening regime（κ > 1）：</strong> 恢复通道的响应超过了驱动通道的涨落。这在数学上完全合法（Cauchy-Schwarz不等式只约束|Cov| ≤ √(Var(f)·Var(r))，当Var(r) > Var(f)时比值可以超过1）。物理上，这意味着恢复力不只把系统拉回来，还拉过了头。Schlögl模型在自然分解下全程处于此regime。</p>
+<p><strong>Anti-compensatory regime（κ < 0）：</strong> 校正后的耦合为负，意味着f和r不是在补偿而是在协同。这通常指示分解本身有问题（将一个过程错标为"驱动"或"恢复"），或者系统正处于远离稳态的瞬态。</p>
+<h3>2.3 η̄与η的三族定义</h3>
+<p>代数延拓量η̄ := 1 - κ在所有regime中均可计算和报告。涨落吸收率η这一名称仅保留给absorptive regime。在null regime中报告κ≈0或η̄≈1；在overscreening regime中报告κ>1或η̄<0。</p>
+<p>在absorptive regime内，定义主量</p>
+<p>$$\eta_{r \leftarrow f} := 1 - \kappa = 1 + s_r \cdot \frac{\text{Cov}(\Delta f, \Delta r)}{\text{Var}(\Delta f)}$$</p>
+<p>这是r对f的涨落吸收残差。η_{r←f} = 0意味着完美吸收，η_{r←f} = 1意味着完全无吸收。</p>
+<p>反向诊断量</p>
+<p>$$\eta_{f \leftarrow r} := 1 + s_r \cdot \frac{\text{Cov}(\Delta f, \Delta r)}{\text{Var}(\Delta r)}$$</p>
+<p>测量f对r的涨落对冲。在大多数物理系统中η_{r←f} ≠ η_{f←r}，因为f和r的方差通常不等。两者的差异本身是有信息的：差异大说明f和r的"力量"悬殊。</p>
+<p>对称耦合量</p>
+<p>$$\eta_{\text{sym}} := 1 - |\text{Corr}(\Delta f, \Delta r)|$$</p>
+<p>不依赖于哪个通道做分母，测量的是f和r的总耦合残差。η_sym适合在不确定哪个通道是"驱动"哪个是"恢复"的情况下使用。</p>
+<h3>2.4 与Thermo I的兼容性</h3>
+<p>Thermo I（DOI: 10.5281/zenodo.19310282）定义的η = 1 - |Cov(Δf, Δr)|/Var(Δf)使用了绝对值。在Thermo I的DP递推和Lindley排队验证中，Cov始终为负（在f+r convention下），所以|Cov| = -Cov，Thermo I的η和本文的η_{r←f}数值一致。</p>
+<p>本文的κ框架是Thermo I定义的推广，而非替代。</p>
+<h3>2.5 Protocol A：规范提取六步</h3>
+<p>以下是η的完整提取协议。</p>
+<p><strong>Step 1（选定observable）。</strong> 选定系统的可观测量X(t)。</p>
+<p><strong>Step 2（声明f/r分解与convention）。</strong> 在admissible family（§3）内选定f/r分解，声明s_r的值。如果模型已知，从方程直接读取f和r（§3.4）。如果模型未知，使用Protocol B（附录A）作为启发式代理。</p>
+<p><strong>Step 3（扫描τ）。</strong> 生成候选τ列表（如对数间隔序列）。对每个τ，将f(t)和r(t)在τ窗口内积分得到Δf_n和Δr_n序列。实际流程是：先给候选分解，再扫τ，再比较平台宽度与因果可解释性。</p>
+<p><strong>Step 4（计算）。</strong> 对每个τ，计算κ, η̄, η_{r←f}, η_{f←r}, η_sym。报告Cov的原始符号。</p>
+<p><strong>Step 5（判定regime）。</strong> 根据κ的值判定regime（null/absorptive/overscreening/anti-compensatory）。仅在absorptive regime中将η̄解释为涨落吸收率η。</p>
+<p><strong>Step 6（报告稳定性）。</strong> 对canonical τ（§4.2），计算η̄(τ), η̄(2τ), η̄(4τ)，报告bootstrap 95% CI和稳定性等级（§4.4）。</p>
+<hr>
+<h2>§3 Admissible Decomposition Family</h2>
+<h3>3.1 η̄不是坐标不变量</h3>
+<p>给定一个系统的f和r通道，任何线性变换</p>
+<p>$$f' = \cos\theta \cdot f + \sin\theta \cdot r, \quad r' = -\sin\theta \cdot f + \cos\theta \cdot r$$</p>
+<p>都定义了一组新的"通道"。在不同的θ下计算η̄，一般会得到不同的值。</p>
+<p>我们在Brusselator上的数值实验证实了这一点（§5.2.3）。自然分解（θ = 0°）给出η ≈ 0.19。旋转到θ = 90°给出η̄ ≈ 0.006。旋转到某些角度给出η̄ < 0。</p>
+<p>这意味着η̄不是任意坐标旋转下的不变量。</p>
+<h3>3.2 Protocol-defined quantity</h3>
+<p>η不追求在任意basis rotation下的全局唯一性。η是一个protocol-defined quantity，其值取决于三个选择：（1）f/r分解；（2）时间尺度τ；（3）统计估计方法。</p>
+<p>这和实验物理的许多可观测量类似。一个晶体的弹性模量取决于你选择的应力方向。一个流体的粘度取决于剪切速率。这些量不是"任意的"：它们在给定协议下可重复，可跨实验室比较，可用来区分不同材料。但它们确实依赖于测量协议。</p>
+<p>η的情况完全一样。我们不解决arbitrary decompositions的唯一性；我们只解决natural, physically interpretable decompositions的可识别性。</p>
+<h3>3.3 Admissible family的定义</h3>
+<p>一个f/r分解是admissible的，如果满足以下三个条件：</p>
+<p><strong>（i）物理可解释性。</strong> f和r可以被独立地赋予物理含义。例如，在化学反应中f = 合成速率，r = 降解速率；在排队系统中f = 到达，r = 服务。纯数学旋转（如θ = 45°的混合基底）通常不满足此条件。</p>
+<p><strong>（ii）因果方向一致性。</strong> 在κ > 0的regime中，f和r的角色与动力学方程中的驱动/恢复角色一致。对通道独立系统，这意味着时间滞后分析显示f不系统性滞后于r。对状态耦合系统（f和r共享状态变量），f和r的因果关系通常是零滞后的结构耦合，此时因果方向由方程中的角色定义（如合成=f，降解=r），而非时间领先/滞后。</p>
+<p><strong>（iii）τ-稳定性。</strong> 在canonical τ（§4定义）的邻域内，η̄(τ)处于稳定平台（变化率满足跨尺度稳定性判据，§4.4）。</p>
+<p>在admissible family内，不同的分解可能给出不同的η值。但实践中，物理自然的分解往往只有一个或少数几个。在Brusselator中，f = a + x²y（合成），r = (b+1)x（降解）是唯一的自然分解。在Lindley排队中，f = 到达间隔，r = 服务时间，也是唯一的。</p>
+<h3>3.4 从方程读取 vs 从数据推断</h3>
+<p>当系统的动力学方程已知时（模型已知情况），f和r可以直接从方程中读取。这是最简单也最可靠的情况。Brusselator就是这种情况。</p>
+<p>当只有观测数据而无模型时（模型未知情况），需要从数据中推断f和r。这是一个更困难的问题，在很多情况下需要额外假设。本文的Protocol B（附录A）提供了一种启发式方法，但其可靠性低于模型已知的情况。</p>
+<hr>
+<h2>§4 τ-Selection Taxonomy</h2>
+<h3>4.1 两类系统</h3>
+<p>数值实验揭示了一个此前未被讨论的根本区分。</p>
+<p><strong>通道独立系统。</strong> f和r是两个独立的随机过程，通过系统状态间接影响彼此但不共享动力学变量。Lindley排队（f = 到达间隔，r = 服务时间，两者独立同分布）和Ornstein-Uhlenbeck过程（小τ端外部噪声kick与当前恢复通道近似独立）属于此类。</p>
+<p>在通道独立系统中，f和r在极短时间尺度上的协方差由外部噪声主导。当τ → 0时，Cov(Δf, Δr)可能趋向零（因为f和r在瞬时尺度上无因果关联），η̄趋向1。这是under-resolved区域。</p>
+<p><strong>状态耦合系统。</strong> f和r共享状态变量，一个通道的瞬时值直接依赖另一个通道正在操作的同一个变量。Brusselator（f = a + x²y，r = (b+1)x，两者都是x的函数）和Schlögl模型（f = μx + a，r = x³，同样共享x）属于此类。</p>
+<p>在状态耦合系统中，f和r的耦合是确定性结构的产物，不可被随机噪声稀释。即使在极短时间尺度上，Cov(Δf, Δr)仍然由f和r对共享状态变量的确定性依赖主导。η̄(τ)在小τ端直接进入平台，不经过under-resolved区。</p>
+<h3>4.2 Canonical τ的定义</h3>
+<p>canonical τ是最小的同时满足以下两个条件的时间尺度：</p>
+<p><strong>因果可解释性。</strong> 对通道独立系统，在此τ下时间滞后分析显示f不系统性滞后于r，且κ的符号在连续若干步中保持稳定。对状态耦合系统，允许零滞后结构耦合；要求f和r的分解与方程中的驱动/恢复角色一致。</p>
+<p><strong>平台稳定性。</strong> η̄(τ), η̄(2τ), η̄(4τ)满足跨尺度稳定性判据（§4.4）。</p>
+<p>在通道独立系统中，canonical τ通常在系统弛豫时间τ_relax = 1/|λ₁|附近（λ₁是线性化Jacobian的主特征值）。在其下方是under-resolved区，在其上方是over-smoothed区。</p>
+<p>在状态耦合系统中，canonical τ可以远小于τ_relax。Brusselator的τ_relax ≈ 2（从Jacobian特征值0.5 ± 0.866i），但η的平台从τ ≈ 0.01就开始了。canonical τ在这里是由数值分辨率和数据量决定的，不是由系统动力学决定的。</p>
+<h3>4.3 两种η̄(τ)曲线</h3>
+<p>通道独立系统的η̄(τ)呈现三区域结构：under-resolved区（η̄偏高，趋向1）→ canonical平台 → over-smoothed区（η̄趋向渐近值）。Lindley M/M/1排队的η̄(τ)曲线应该展示这种形态。</p>
+<p>状态耦合系统的η̄(τ)呈现两区域结构：平台（从极小τ开始）→ 单调下降（趋向0或负值）。Brusselator在σ = 0.1时，η̄从τ = 0.01处的0.192单调下降到τ = 100时的-0.05。没有under-resolved区。</p>
+<h3>4.4 跨尺度稳定性的两层判据</h3>
+<p><strong>统计层。</strong> 在τ, 2τ, 4τ三个尺度上分别计算η̄及其bootstrap 95%置信区间。如果三个置信区间互相重叠，通过统计层。</p>
+<p><strong>效应层。</strong> 计算三个η̄值之间的最大相对漂移Δ = max|η̄(kτ) - η̄(τ)|/|η̄(τ)|。分四级：</p>
+<ul>
+<li>Δ < 10%：rigid</li>
+<li>10% ≤ Δ < 15%：stable</li>
+<li>15% ≤ Δ < 20%：provisionally stable</li>
+<li>Δ ≥ 20%：scale-drifting</li>
+</ul>
+<p>报告η̄时必须同时报告稳定性等级。</p>
+<hr>
+<h2>§5 Benchmark Panel</h2>
+<h3>5.1 实验设计</h3>
+<p>我们在三个系统上测试了上述框架。三个系统的动力学方程已知（模型已知情况），f/r分解从方程直接读取。</p>
+<table><thead><tr>
+<th>系统</th>
+<th>动力学</th>
+<th>f</th>
+<th>r</th>
+<th>预期regime</th>
+</tr></thead><tbody>
+<tr>
+<td>Ornstein-Uhlenbeck</td>
+<td>dx = -γx dt + σdW</td>
+<td>σξ（噪声kick）</td>
+<td>γx（恢复力）</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Brusselator</td>
+<td>dx/dt = a+x²y-(b+1)x</td>
+<td>a+x²y（合成）</td>
+<td>(b+1)x（降解）</td>
+<td>absorptive</td>
+</tr>
+<tr>
+<td>Schlögl</td>
+<td>dx/dt = -x³+μx+a+σξ</td>
+<td>μx+a（线性驱动）</td>
+<td>x³（立方恢复）</td>
+<td>overscreening</td>
+</tr>
+</tbody></table>
+<p>Brusselator是理论上最经典的化学振荡模型（Prigogine 1968）。实验上最标准、最广泛验证的是Belousov-Zhabotinsky反应及其Oregonator简化模型。</p>
+<p>所有系统使用Euler-Maruyama离散化。Brusselator：dt = 0.001, T = 5000（500万步）；OU：dt = 0.001, T = 5000；Schlögl：dt = 0.001, T = 2000。前10%数据作为burn-in丢弃。η̄的统计误差通过对Δf和Δr序列做block bootstrap（block size = 50个τ窗口）估计。每个系统跑多组噪声强度以检验η对噪声的敏感性。符号约定统一采用f-r convention（ΔX = Δf - Δr），s_r = -1。</p>
+<h3>5.2 结果</h3>
+<h4>5.2.1 Ornstein-Uhlenbeck：null test</h4>
+<p>参数：γ ∈ {0.5, 1.0, 5.0}，σ = 1.0，T = 5000。</p>
+<table><thead><tr>
+<th>γ</th>
+<th>κ(τ=0.01)</th>
+<th>η̄(τ=0.01)</th>
+<th>η̄(τ=0.1)</th>
+<th>η̄(τ=1.0)</th>
+</tr></thead><tbody>
+<tr>
+<td>0.5</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.996</td>
+<td>0.975</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.994</td>
+<td>0.941</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>0.002</td>
+<td>0.998</td>
+<td>0.998</td>
+<td>0.934</td>
+</tr>
+</tbody></table>
+<p>κ全程接近0，η̄全程接近1。噪声kick（f）和恢复力（r = γx）之间几乎无协方差。协议正确地识别了null regime。</p>
+<p>这是η的零检验。如果κ在f和r独立时也报告出≈0.8，那协议就有系统性偏差。OU的κ≈0证明没有。</p>
+<h4>5.2.2 Brusselator：absorptive plateau</h4>
+<p>参数：a = 1, b = 3（振荡regime，b > 1+a² = 2），σ ∈ {0.1, 0.5, 1.0, 3.0}，T = 500-5000。</p>
+<table><thead><tr>
+<th>σ</th>
+<th>η(τ=0.01)</th>
+<th>η(τ=0.1)</th>
+<th>η(τ=1.0)</th>
+<th>η(τ=10.0)</th>
+</tr></thead><tbody>
+<tr>
+<td>0.1</td>
+<td>0.192</td>
+<td>0.189</td>
+<td>0.109</td>
+<td>0.080</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.174</td>
+<td>0.165</td>
+<td>0.058</td>
+<td>-0.048</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.200</td>
+<td>0.177</td>
+<td>0.042</td>
+<td>-0.029</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>0.432</td>
+<td>0.241</td>
+<td>0.017</td>
+<td>-0.026</td>
+</tr>
+</tbody></table>
+<p>三个关键观测：</p>
+<p>第一，在σ = 0.1到1.0的范围内，小τ端（τ ≤ 0.1）η稳定在0.17-0.20。σ = 1.0时η(τ=0.001) = 0.200。η的值来自f和r的确定性耦合结构（两者都是x的函数），不来自噪声的统计性质。</p>
+<p>第二，η̄(τ)从小τ端的平台单调下降到大τ端的0附近（甚至变负，进入overscreening regime）。没有under-resolved区。这是因为f = a+x²y和r = (b+1)x共享状态变量x，耦合在所有时间尺度上存在。</p>
+<p>第三，σ = 3.0（极强噪声，σ/x* = 3.0）时小τ端η上升到0.43。噪声开始部分破坏f和r的确定性耦合。但即使在这种极端条件下，η(τ=0.1) = 0.24仍然在absorptive regime内。</p>
+<p>η_{r←f}和η_{f←r}的不对称度很大：在τ = 0.01处，η_{r←f} ≈ 0.192而η_{f←r} ≈ 0.002。这两个量的差异需要仔细解读。κ_{r←f} = Cov/Var(f) ≈ 0.808，而κ_{f←r} = Cov/Var(r) ≈ 0.998。后者接近1是因为在Brusselator中Cov和Var(r)数值接近（两者都由x的大幅振荡主导），而Var(f)较小（a+x²y中a提供了稳定的偏移基线）。这意味着从r的视角看，f几乎完美预测了r的涨落（κ_{f←r}≈1），但从f的视角看，r只对冲了约80%（κ_{r←f}≈0.8）。不对称度反映的是两通道方差的比值，不是耦合强度的方向性。</p>
+<h4>5.2.3 Brusselator：f/r旋转实验</h4>
+<p>在比较尺度τ = τ_relax ≈ 2.0处（此处选择τ_relax是为了在所有旋转角上获得足够的统计样本，它不是canonical τ），我们将f和r做线性旋转（§3.1），在0°到180°之间扫描η̄。</p>
+<p>自然分解（θ = 0°）给出η̄ = 0.062。旋转到θ = 45°时η̄ = 0.985。旋转到θ = 90°（f和r互换）时η̄ = 0.006。旋转到θ ≈ 142.5°时η̄取到最小值约-2.7（overscreening regime）。</p>
+<p>这证实了§3.1的论断：η̄不是旋转不变量。自然分解（合成/降解）在所有admissible分解中给出了一个处于absorptive regime的值。非物理的旋转分解要么给出接近1的值（null-like），要么给出负值（overscreening-like）。</p>
+<h4>5.2.4 Schlögl：overscreening</h4>
+<p>参数：μ = 1.0, a = 0.5（单稳态）和μ = 2.5, a = 0.0（近分岔），σ ∈ {0.1, 0.5, 1.0}，T = 2000。</p>
+<p>在所有参数组合和所有τ下，η̄均为负值。</p>
+<table><thead><tr>
+<th>(μ, a)</th>
+<th>σ</th>
+<th>η̄(τ=0.01)</th>
+<th>η̄(τ=1.0)</th>
+<th>η̄(τ=10.0)</th>
+</tr></thead><tbody>
+<tr>
+<td>(1.0, 0.5)</td>
+<td>0.1</td>
+<td>-3.25</td>
+<td>-3.24</td>
+<td>-3.23</td>
+</tr>
+<tr>
+<td>(1.0, 0.5)</td>
+<td>0.5</td>
+<td>-2.27</td>
+<td>-1.84</td>
+<td>-0.96</td>
+</tr>
+<tr>
+<td>(1.0, 0.5)</td>
+<td>1.0</td>
+<td>-0.95</td>
+<td>-0.74</td>
+<td>-0.63</td>
+</tr>
+<tr>
+<td>(2.5, 0.0)</td>
+<td>0.1</td>
+<td>-2.00</td>
+<td>-1.99</td>
+<td>-1.99</td>
+</tr>
+<tr>
+<td>(2.5, 0.0)</td>
+<td>1.0</td>
+<td>-0.09</td>
+<td>-0.04</td>
+<td>-0.02</td>
+</tr>
+</tbody></table>
+<p>κ > 1全程成立。恢复力x³远强于线性驱动μx+a，导致Var(r) >> Var(f)且Cov很大。</p>
+<p>物理含义：Schlögl模型是过度阻尼的非平衡系统。恢复过程不只吸收了驱动的涨落，还"拉过了头"。这和平衡态热力学中的过阻尼（overdamped）是同一类现象的非平衡版本。</p>
+<p>值得注意的是，当噪声增大（σ = 1.0）且系统接近分岔点（μ = 2.5）时，η̄从-2.0上升到-0.02，接近null regime。这可能反映了分岔附近恢复力变弱（线性化Jacobian的特征值接近零）。</p>
+<h3>5.3 η≈0.20：一个recurrent absorptive window</h3>
+<p>Brusselator在自然f/r分解下的η≈0.19-0.20，与此前在完全不同领域中观测到的值吻合：</p>
+<table><thead><tr>
+<th>系统</th>
+<th>领域</th>
+<th>f/r分解</th>
+<th>η</th>
+<th>来源</th>
+</tr></thead><tbody>
+<tr>
+<td>ZFCρ DP递推</td>
+<td>数论</td>
+<td>加法步/乘法屏蔽</td>
+<td>0.10-0.31（中位数≈0.20）</td>
+<td>Thermo I</td>
+</tr>
+<tr>
+<td>Lindley M/M/1</td>
+<td>排队论</td>
+<td>到达/服务</td>
+<td>≈0.15</td>
+<td>Thermo I</td>
+</tr>
+<tr>
+<td>Brusselator</td>
+<td>化学动力学</td>
+<td>合成/降解</td>
+<td>0.19-0.20</td>
+<td>本文</td>
+</tr>
+</tbody></table>
+<p>ZFCρ和Brusselator是数学结构，物理领域，动力学方程完全不同的系统。前者是定义在素数上的整数值递推，后者是连续状态空间上的非线性微分方程。两者唯一的共同点是：都是状态耦合的双通道耗散系统，f和r共享状态变量。</p>
+<p>我们将此现象报告为state-coupled two-channel系统中一个可重复出现的中等吸收窗口（recurrent absorptive window）。这不是η本身的普适性claim（Schlögl的η̄ < 0和OU的η̄ ≈ 1已经否定了这一点）。这是一种recurrent regime：在满足特定结构条件（状态耦合，双通道，恢复力非过度主导）的系统中，η倾向于落在0.15-0.25附近。</p>
+<p>需要校准这个claim的强度。η ≈ 0.20是振荡regime均值（§5.4），不是恒定值。完整的claim是：在状态耦合双通道振荡系统中，η的中心趋势在0.15-0.25之间，参数范围在0.14-0.34之间。三个独立系统（ZFCρ，Lindley，Brusselator）的数据支持中心趋势claim，但样本量不足以排除0.15-0.25之外的中心趋势值。</p>
+<p>此外，§7.2将表明，η ≈ 0.20在旋转实验中具有一种特殊性：它是唯一一个落在recurrent absorptive window内的自然分解值，这和候选统一拟设（§5.5）直接相连。</p>
+<h3>5.4 参数空间扫描：η作为连续动力学指标</h3>
+<p>为检验η≈0.20的稳健性，我们扫描了Brusselator的完整参数空间。a ∈ {0.5, 1.0, 1.5, 2.0}，b从阻尼regime（b < 1+a²）扫到深振荡regime（b >> 1+a²），σ = 0.3，τ = 0.05。</p>
+<p>代表性数据点：</p>
+<table><thead><tr>
+<th>a</th>
+<th>b</th>
+<th>regime</th>
+<th>η</th>
+</tr></thead><tbody>
+<tr>
+<td>0.5</td>
+<td>0.75</td>
+<td>阻尼</td>
+<td>0.006</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1.35</td>
+<td>振荡</td>
+<td>0.148</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1.75</td>
+<td>振荡</td>
+<td>0.207</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>6.25</td>
+<td>振荡</td>
+<td>0.342</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.90</td>
+<td>阻尼</td>
+<td>0.124</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>2.10</td>
+<td>振荡</td>
+<td>0.140</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>3.00</td>
+<td>振荡</td>
+<td>0.206</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>7.00</td>
+<td>振荡</td>
+<td>0.260</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>4.90</td>
+<td>阻尼</td>
+<td>0.148</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>5.10</td>
+<td>振荡</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>7.00</td>
+<td>振荡</td>
+<td>0.192</td>
+</tr>
+</tbody></table>
+<p>（完整20组数据见补充材料。）</p>
+<p>三个关键观测：</p>
+<p>第一，η在分岔点b = 1+a²附近连续变化，不是跳跃。阻尼regime均值η̄ = 0.103，振荡regime均值η = 0.203。分岔点不是η的奇异点，而是η̄从低值区到中值区的平滑过渡。</p>
+<p>第二，振荡regime内η的范围是0.14-0.34。η不是恒定值。它随系统远离分岔点（(b-b_crit)/b_crit增大）而单调增大。η ≈ 0.20出现在"中等偏离"处。</p>
+<p>第三，跨所有a值，振荡regime的η均值都落在0.20附近（a=0.5: 0.25, a=1.0: 0.21, a=1.5: 0.19, a=2.0: 0.18）。a的影响弱于b的影响。</p>
+<p>η因此不是一个普适常数，而是一个连续动力学指标。它随系统远离分岔点而增大，在中等偏离处取值约0.2。这比"η恒等于0.2"更有物理内容。</p>
+<h3>5.5 复合耗散结构：候选统一拟设</h3>
+<p>Thermo II（DOI: 10.5281/zenodo.19511064）给出η ≈ 0.20 = 1 - C(1)^{m_eff}，其中C(1) ≈ 0.96是ZFCρ中的层间继承率，m_eff ≈ 5.47是有效层数。</p>
+<p>如果这个复合耗散机制是跨系统的，Brusselator的f通道时间序列也应该可以被分解为类似的指数衰减结构。我们在τ = 0.05的f通道积分序列上计算了逐步自相关函数。</p>
+<table><thead><tr>
+<th>lag k</th>
+<th>ACF_f(k)</th>
+<th>ACF_f(k)/ACF_f(k-1)</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>1.000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.982</td>
+<td>0.982</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.938</td>
+<td>0.956</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.883</td>
+<td>0.942</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.770</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.525</td>
+<td>—</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.324</td>
+<td>—</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.189</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>f通道的lag-1自相关C(1) = 0.982。ACF(k)/ACF(k-1)不严格恒定（从0.982逐步下降到~0.88），说明Brusselator的f通道自相关衰减不是纯指数的，但作为一阶近似可以使用C(1)^k。</p>
+<p>如果假设η = 1 - C(1)^{m_eff}：</p>
+<table><thead><tr>
+<th>系统</th>
+<th>C(1)</th>
+<th>m_eff</th>
+<th>1 - C(1)^{m_eff}</th>
+</tr></thead><tbody>
+<tr>
+<td>ZFCρ</td>
+<td>0.96</td>
+<td>5.47</td>
+<td>0.200</td>
+</tr>
+<tr>
+<td>Brusselator f-channel</td>
+<td>0.982</td>
+<td>11.3</td>
+<td>0.190</td>
+</tr>
+</tbody></table>
+<p>C(1)和m_eff各自不同，但复合值接近。不同系统通过不同的路径到达类似的η：ZFCρ走的是"每步继承96%，5.5步一个周期"，Brusselator走的是"每步继承98%，11步一个周期"。</p>
+<p>需要标明此分析的局限性。Brusselator中的m_eff = 11.3是从η = 0.19和C(1) = 0.982反推的（m_eff = ln(1-η)/ln(C(1))），不是独立测量。在ZFCρ中，m_eff = 5.47可以从G_j(M)振荡的周期独立确认，但在Brusselator中目前没有m_eff的独立测量方法。因此，1 - C(1)^{m_eff} ≈ η在Brusselator中是一个post hoc factorization，不是独立验证。</p>
+<p>此外，ZFCρ中的C(1)是同层prime-index的空间自相关，Brusselator中的C(1)是时间序列的lag-1 ACF。两者可以类比为"first-step retention"，但不是同一种可观测量。</p>
+<p>我们将此分析报告为一个候选统一拟设（candidate unifying ansatz），而非已确立的机制。它的suggestive价值在于：两个完全不同的系统通过不同的(C(1), m_eff)路径到达同一个η，暗示可能存在某种约束使1 - C(1)^{m_eff}收敛。但这一暗示目前是suggestive而非conclusive。</p>
+<h3>5.6 非平凡预测</h3>
+<p>基于上述实验结果，我们提出以下可证伪预测：</p>
+<p><strong>预测P1（参数空间预测）。</strong> 对任意状态耦合双通道振荡系统，在自然f/r分解下，η(小τ)应满足：</p>
+<p>（i）η在振荡regime内落在0.14-0.34范围；</p>
+<p>（ii）η与系统离Hopf分岔点的参数距离单调正相关；</p>
+<p>（iii）在分岔点处η连续（无跳跃），从阻尼regime的低值（η̄ < 0.15）平滑过渡到振荡regime的中值（η ≈ 0.20）。</p>
+<p>该预测可在Van der Pol振荡器，Lotka-Volterra捕食模型，FitzHugh-Nagumo神经模型等标准系统中立刻检验。任何一个系统在自然f/r分解下如果η落在0.14-0.34范围之外，即构成对P1的反例。</p>
+<p><strong>预测P2（复合耗散拟设）。</strong> 对任意给出η ≈ 0.2的状态耦合系统，其f通道（或r通道）的逐步自相关应满足近似指数衰减ACF(k) ≈ C(1)^k，使得1 - C(1)^{m_eff} ≈ η。</p>
+<p>C(1)和m_eff各自随系统而变，但复合值1 - C(1)^{m_eff}收敛到0.15-0.25。如果在某个系统中ACF(k)衰减不满足指数形式（如幂律衰减），或者复合值显著偏离η（如偏差>50%），即构成对P2的反例。</p>
+<p><strong>预测P3（实验预测，最硬）。</strong> 在Belousov-Zhabotinsky反应或其Oregonator模型的实验数据中，如果合成速率和降解速率可以被独立测量（通过同位素标记或快速混合实验），η应落在absorptive regime内，值在0.14-0.34范围。</p>
+<p>该预测是纯实验性的，可以在标准化学动力学实验室中检验。</p>
+<p><strong>预测P4（η̄(τ)形态预测耦合类型）。</strong> 给定一个未知系统的时间序列及其f/r分解，η̄(τ)曲线的形态可以诊断f/r耦合类型：</p>
+<p>（i）如果η̄(τ)在小τ端直接进入平台（无上升段），系统是状态耦合的；</p>
+<p>（ii）如果η̄(τ)在小τ端从高值（η̄ → 1）下降到平台，系统是通道独立的。</p>
+<p>该预测可通过在一个已知耦合类型的新系统上盲测η̄(τ)来检验。</p>
+<hr>
+<h2>§6 与已有框架的接口</h2>
+<h3>6.1 与三种熵产分解的关系</h3>
+<p>非平衡统计力学已有三种成熟的分解框架。Onsager的力-流分解[9]处理近平衡线性响应区域，将熵产写成广义力和广义流的乘积。Hatano-Sasa的housekeeping/excess分解[10]将熵产分为维持稳态的housekeeping部分和偏离稳态的excess部分。Esposito-Van den Broeck的adiabatic/non-adiabatic分解[11]进一步细化了这种区分。</p>
+<p>f/r分解与这三种分解是正交的，可以互补。关键区别在于：f/r分解作用于动力学过程本身（哪些过程在驱动，哪些在恢复），它们分解的是熵产（总耗散的不同来源）。两种分解可以同时进行：先做f/r分解得到η，再用Hatano-Sasa分解追溯η的物理来源中哪些是housekeeping贡献，哪些是excess贡献。</p>
+<p>κ和Onsager矩阵L的off-diagonal元素在都度量"两个过程之间的互耦强度"这一点上可以类比。在近平衡线性响应区域，两者都量化"一个过程对另一个过程的响应"。但κ是一个不需要近平衡假设和线性化的操作性定义，而Onsager系数是线性响应理论的产物。两者不是同一个对象。</p>
+<h3>6.2 与信息论量的关系</h3>
+<p>κ = Cov(Δf, Δr)/Var(Δf)在统计学中是f对r做线性回归时的回归斜率β_{r~f}。注意这不是决定系数R²（后者等于Corr(Δf, Δr)²）。</p>
+<p>η_{r←f} = 1 - κ因此是"1减去回归斜率"，描述的是一个有方向的线性耦合残差：r的涨落中有多少比例不能被f的涨落线性预测。η_sym = 1 - |Corr|描述的是对称耦合残差。</p>
+<p>这些量和Granger因果性[12]的文献有概念上的亲缘关系：Granger因果性也测量"一个过程的历史对预测另一个过程有多大帮助"。但η_{r←f}是同步的（同一个τ窗口内的Cov），Granger因果性是跨时间的（过去的f预测未来的r）。两者度量不同方面的过程间依赖。</p>
+<p>Sagawa-Ueda信息热力学框架[14]中的mutual information是测量装置和系统之间的互信息，用来修正Landauer bound。f/r分解中的耦合量度的是系统内部两个过程之间的关联。形式上都涉及两个随机变量之间的统计依赖，但物理语境不同（外部测量 vs 内部耦合）。</p>
+<h3>6.3 与TUR的互补性</h3>
+<p>热力学不确定性关系（TUR）给出 (ΔJ)²/⟨J⟩² ≥ 2k_BT/σ_tot [4]。这是一个不等式，约束的是单一电流J的涨落-均值比和总熵产σ_tot之间的权衡。</p>
+<p>η和TUR不是推导关系，是互补关系。TUR约束电流精度的下限。η量化驱动-响应解耦的程度。TUR中没有"两个独立可观测过程"的分解，它处理的是一个净电流。</p>
+<p>两者在定性方向上一致：在f/r对称性破缺很大的系统中，TUR的bound应该松（因为熵产大），η也应该大（因为f和r解耦程度高）。但这种一致性是定性的，不存在从TUR推出η的数学路径。</p>
+<hr>
+<h2>§7 开放问题</h2>
+<h3>7.1 η≈0.20的结构性解释</h3>
+<p>ZFCρ和Brusselator在完全不同的动力学方程下给出η≈0.20。§5.5提出了一个候选统一拟设：1 - C(1)^{m_eff}在两个系统中收敛到同一个值，但C(1)和m_eff各自不同。</p>
+<p>关键的开放问题是：什么数学结构（如果存在的话）保证了1 - C(1)^{m_eff}在不同系统中收敛？一个可能的方向是将C(1)和m_eff视为一个二维空间中的点，寻找使1 - C(1)^m = const的等高线。在这条等高线上，C(1)越大（每步继承率越高），m_eff必须越大（有效层数越多）来维持相同的复合耗散率。这是一种"补偿"：系统可以通过不同的C(1)-m_eff组合到达相同的η。</p>
+<p>但这只是描述了现象，没有解释为什么等高线是η ≈ 0.2而不是η ≈ 0.1或η ≈ 0.5。回答这个问题可能需要从f/r耦合的不动点方程出发。此外，如§5.5所述，Brusselator中m_eff目前是反推的，尚需找到独立测量方法。</p>
+<p>更多系统的数据是回答此问题的前提。目前三个系统加上参数扫描的结果是suggestive的，但完全严格的证明仍然是开放的。</p>
+<h3>7.2 自然分解的特殊性</h3>
+<p>η̄在f/r旋转下不是不变量（§3.1）。一个自然的猜想是：canonical分解是使η̄(τ)平台最宽的分解（最大尺度不变性原理）。</p>
+<p>我们在Brusselator上数值验证了这个猜想。对每个旋转角θ（0°到180°，步长10°），计算η̄(τ)在25个对数间隔τ值上的平台宽度（连续变化<10%的τ点数）。</p>
+<p>结果：猜想不成立。θ = 50°-100°的平台最宽（25/25个τ点全稳定），但η̄ > 1，不在absorptive regime内。即使只看absorptive regime内的分解，θ = 30°（平台宽度16，η̄ ≈ 0.81）也比θ = 0°（平台宽度7，η ≈ 0.20）更宽。</p>
+<p>但自然分解有一个不同的特殊性：<strong>它是唯一一个η落在recurrent absorptive window（0.15-0.25）内的分解。</strong> θ = 10°给η̄ = 0.44，θ = 20°给η̄ = 0.63，θ = 30°给η̄ = 0.81。只有θ = 0°（和等价的θ = 180°）给η ≈ 0.20。</p>
+<p>这个特殊性和§5.5的候选统一拟设相连：只有自然分解给出的f通道时间序列呈现近似指数衰减的自相关结构，使得1 - C(1)^{m_eff}落在≈0.20的等高线上。旋转后的分解破坏了这个结构。</p>
+<p>因此，自然分解的canonical地位不来自某种最优性原理（如最宽平台或最小η），而来自它与底层复合耗散结构的吻合。这是一个比变分原理更深的判据，但也更难形式化。它的完全理解可能需要弄清楚为什么1 - C(1)^{m_eff}在状态耦合系统中收敛——这是§7.1的问题。</p>
+<h3>7.3 开放量子系统</h3>
+<p>开放量子系统的Lindblad主方程 dρ/dt = -i[H, ρ] + Σ(LρL† - ...) 有一个自然的f/r分解：f = -i[H, ρ]（酉演化），r = Σ(LρL† - ...）（Lindblad耗散算子）。退相干时间是自然的τ。</p>
+<p>这个方向目前缺少数值验证。如果在一个具体的开放量子系统（如driven-dissipative cavity）中测量η̄，结果是否也落在absorptive regime？</p>
+<h3>7.4 η和Jacobian特征结构的关系</h3>
+<p>Brusselator的η≈0.19是否和Jacobian特征值（0.5 ± 0.866i）之间有简单的解析关系？目前的数值实验无法给出闭合公式（非线性项x²y阻碍了线性化的完全消除），但η和阻尼率Re(λ)/|λ|之间的关联值得进一步探索。</p>
+<h3>7.5 Housekeeping entropy和η的定量关系</h3>
+<p>在f/r耦合系统中，耦合越强，维持f-r协调的代价（housekeeping entropy production）应该越大，κ应该越大，η应该越小。这是一个可在Brusselator中直接测试的预测。如果成立，η和Hatano-Sasa框架之间就有了定量接口。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] Jarzynski, C. Phys. Rev. Lett. 78, 2690 (1997).</p>
+<p>[2] Crooks, G. E. Phys. Rev. E 60, 2721 (1999).</p>
+<p>[3] Cugliandolo, L. F., Kurchan, J. & Peliti, L. Phys. Rev. E 55, 3898 (1997).</p>
+<p>[4] Barato, A. C. & Seifert, U. Phys. Rev. Lett. 114, 158101 (2015).</p>
+<p>[5] Maes, C. J. Stat. Phys. 95, 367 (1999).</p>
+<p>[6] Lecomte, V., Appert-Rolland, C. & van Wijland, F. J. Stat. Phys. 127, 51 (2007).</p>
+<p>[7] Shpielberg, O. et al. Phys. Rev. Lett. 116, 240603 (2016).</p>
+<p>[8] Feigenbaum, M. J. J. Stat. Phys. 19, 25 (1978).</p>
+<p>[9] Onsager, L. Phys. Rev. 37, 405 (1931).</p>
+<p>[10] Hatano, T. & Sasa, S. Phys. Rev. Lett. 86, 3463 (2001).</p>
+<p>[11] Esposito, M. & Van den Broeck, C. Phys. Rev. Lett. 104, 090601 (2010).</p>
+<p>[12] Granger, C. W. J. Econometrica 37, 424 (1969).</p>
+<p>[13] Schreiber, T. Phys. Rev. Lett. 85, 461 (2000).</p>
+<p>[14] Sagawa, T. & Ueda, M. Phys. Rev. Lett. 104, 090602 (2010).</p>
+<hr>
+<h2>附录A：Protocol B（单通道启发式代理）</h2>
+<p>当只有一条时间序列X(t)而无法独立观测f和r时，可利用吸引子结构做条件分解。</p>
+<p>Step 1：估计吸引子X*（固定点或极限环中心线）。</p>
+<p>Step 2：定义偏差δ_n = X(nτ) - X*。</p>
+<p>Step 3：条件分解。当|δ_{n+1}| > |δ_n|时（远离吸引子），ΔX_n归入f。当|δ_{n+1}| < |δ_n|时（趋向吸引子），ΔX_n归入r。</p>
+<p>Step 4：计算κ和η̄。</p>
+<p><strong>局限声明。</strong> Protocol B是启发式代理（heuristic proxy），不是精确协议。它假设f和r在时间上交替主导（不是同时作用），对强耦合系统这个假设会失效。Protocol B给出的η̄不能被视为Protocol A的无偏估计。</p>
+<p>特别是对于存在极限环（limit cycle）的持续振荡系统，简单的径向距离测度|δ_{n+1}| ≷ |δ_n|会失效，因为系统主要沿着等势流形进行相位演化，而非径向发散/收敛。对于此类极限环振荡器，Protocol B需要被升级为相空间中的角度/相位切分（phase-angle splitting），或直接依赖Protocol A的多变量方程提取。</p>
+<p><strong>理论注脚。</strong> Takens嵌入定理[15]表明，单一时间序列在embedding dimension足够大时包含了原始动力系统的拓扑信息。Protocol B可以被视为Takens重构的一阶近似。但Takens定理的条件（足够的embedding dimension，低噪声，密采样）在实际非平衡系统中经常不满足。</p>
+<p>[15] Takens, F. In: Dynamical Systems and Turbulence, Lecture Notes in Math. 898, 366 (1981).</p>
+<hr>
+<h2>附录B：η̄(τ)双曲线图</h2>
+<p>（此附录在正式版中应包含两幅图。）</p>
+<p><strong>图B1：通道独立系统（Lindley M/M/1类）。</strong> η̄(τ)呈三区域结构。under-resolved区（τ << τ_relax，η̄偏高）→ canonical平台 → over-smoothed区（τ >> τ_relax，η̄趋向渐近值）。</p>
+<p><strong>图B2：状态耦合系统（Brusselator类）。</strong> η̄(τ)呈两区域结构。平台（从极小τ开始，η≈0.19）→ 单调下降（大τ端趋向0或负值）。无under-resolved区。</p>
+<p>两幅图的对比直观地展示了§4.1的核心论点：η̄(τ)的形态取决于f/r的耦合类型，不是η本身的普适性质。</p>
+  </div>
+  </div>
+
+</article>
+
+<script>
+function switchLang(lang) {
+  document.getElementById("lang-en").style.display = lang === "en" ? "block" : "none";
+  document.getElementById("lang-zh").style.display = lang === "zh" ? "block" : "none";
+  document.querySelectorAll(".lang-tab").forEach((t, i) => {
+    t.classList.toggle("active", (lang === "en" && i === 0) || (lang === "zh" && i === 1));
+  });
+}
+</script>
+</body>
+</html>
