@@ -1,0 +1,843 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper V: The Channel-Normalized Winding Ratio -- Han Qin</title>
+  <meta name="description" content="Thermodynamics Paper IV (DOI: 10.5281/zenodo.19605664) established the exact interpolation family q = 1 + 1/K and listed &quot;independently extracting K from dynamics to predict the Tsallis q&quot; as its hard">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo5.html">
+  <meta name="citation_doi" content="10.5281/zenodo.19649781">
+  <style>.zenodo-link{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .9rem;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;font-size:.82rem;color:#444;text-decoration:none;margin-top:.5rem}.zenodo-link:hover{background:#ebebeb}.lang-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:2px solid #e0e0e0}.lang-tab{padding:.45rem 1.1rem;border:1px solid #ddd;border-bottom:none;border-radius:4px 4px 0 0;cursor:pointer;font-size:.85rem;background:#f5f5f5;color:#666;transition:background .15s;margin-bottom:-2px}.lang-tab.active{background:#fff;border-bottom:2px solid #fff;color:#222;font-weight:600}.lang-content{display:none}.lang-content.active{display:block}</style>
+</head><body>
+<header><div class="header-inner"><a href="../index.html" class="site-title">Self-as-an-End</a><nav><a href="../index.html">Papers</a><a href="../guide.html">Guide</a><a href="../about.html">About</a><a href="../endacc.html">end/acc</a><a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a><a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a></nav></div></header>
+<article class="paper-page"><div class="paper-page-header">
+  <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics Series · Paper V · Zenodo 19649781</div>
+  <h1 id="paper-title">ZFCρ Thermodynamics Paper V: The Channel-Normalized Winding Ratio</h1>
+  <div class="paper-subtitle-line" style="font-size:1rem;color:#666;margin-top:.3rem;font-style:italic;">Dynamical Prediction of the Tsallis q Parameter in State-Coupled Oscillators · ZFCρ Thermodynamics V</div>
+  <div class="paper-author">Han Qin (&#31192;&#27721;) &nbsp;&middot;&nbsp; Independent Researcher &nbsp;&middot;&nbsp; April 2026</div>
+  <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19649781" target="_blank" rel="noopener">10.5281/zenodo.19649781</a> &nbsp;&middot;&nbsp; CC BY 4.0 &nbsp;&middot;&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+  <div style="margin-top:.5rem"><a class="zenodo-link" href="https://zenodo.org/records/19649781" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a></div>
+</div>
+<div class="lang-tabs"><div class="lang-tab active" onclick="switchLang('en')">English</div><div class="lang-tab" onclick="switchLang('zh')">&#20013;&#25991;</div></div>
+<div id="lang-en" class="lang-content active" style="display:block" lang="en">
+<div class="abstract-box"><div class="abstract-label">Abstract</div><p>Thermodynamics Paper IV (DOI: 10.5281/zenodo.19605664) established the exact interpolation family q = 1 + 1/K and listed "independently extracting K from dynamics to predict the Tsallis q" as its hardest testable prediction. The present paper realizes this prediction for the first time, on the Brusselator chemical oscillator.
+
+The central finding is that K in a continuous-time oscillator is not the one-lag effective depth m_eff(τ) — which diverges as 1/τ and is not an intrinsic parameter — but rather the channel-normalized winding ratio:
+
+K_dyn = T / (n_ch · τ_dec)
+
+where T is the oscillation period, τ_dec is the radial decay time (both extracted from the damped-oscillation fit of the f-channel autocorrelation function), and n_ch = 2 is the number of forward/reset channels. The Tsallis q is then predicted as
+
+q = 1 + n_ch · τ_dec / T
+
+This formula contains zero free parameters and does not depend on any sampling step τ. Across a seven-point scan of the Brusselator bifurcation parameter b = 2.2–5.0, the formula yields MAE = 0.022 and a maximum deviation |Δq| = 0.068, substantially outperforming the fixed-τ proxy m_eff(τ) which collapses to |Δq| = 0.215 at b = 5.0.
+
+The factor n_ch = 2 is not a fitted parameter. It is consistent with, and naturally explained by, the channel-averaged shielding conjecture of Thermo IV (q = Ω_eff / n_ch): q measures per-channel shielding depth, so the total winding ratio T/τ_dec must be divided by the channel count.
+
+The paper also reports two negative results that sharpen the scope of Thermo IV's open problem 2: (1) m_eff(τ) ∝ 1/τ is a representation effect, not an intrinsic layer count, in continuous-time systems; (2) the inverse participation ratio K_part = 1/Σw_j² constructed from macroscopic ACF mode weights fails at finite βE because ACF mode weights are not microscopic shielding-layer weights. Neither negative result invalidates Thermo IV's mathematical results; both precisely narrow the conditions under which the K ↔ m_eff bridge can hold.
+
+---</p></div>
+<div class="paper-body"><h1>ZFCρ Thermodynamics Paper V: The Channel-Normalized Winding Ratio — Dynamical Prediction of the Tsallis q Parameter in State-Coupled Oscillators</h1>
+<p>Han Qin</p>
+<p>SAE Research · 2026</p>
+<hr>
+<h2>Abstract</h2>
+<p>Thermodynamics Paper IV (DOI: 10.5281/zenodo.19605664) established the exact interpolation family q = 1 + 1/K and listed "independently extracting K from dynamics to predict the Tsallis q" as its hardest testable prediction. The present paper realizes this prediction for the first time, on the Brusselator chemical oscillator.</p>
+<p>The central finding is that K in a continuous-time oscillator is not the one-lag effective depth m_eff(τ) — which diverges as 1/τ and is not an intrinsic parameter — but rather the channel-normalized winding ratio:</p>
+<p>K_dyn = T / (n_ch · τ_dec)</p>
+<p>where T is the oscillation period, τ_dec is the radial decay time (both extracted from the damped-oscillation fit of the f-channel autocorrelation function), and n_ch = 2 is the number of forward/reset channels. The Tsallis q is then predicted as</p>
+<p>q = 1 + n_ch · τ_dec / T</p>
+<p>This formula contains zero free parameters and does not depend on any sampling step τ. Across a seven-point scan of the Brusselator bifurcation parameter b = 2.2–5.0, the formula yields MAE = 0.022 and a maximum deviation |Δq| = 0.068, substantially outperforming the fixed-τ proxy m_eff(τ) which collapses to |Δq| = 0.215 at b = 5.0.</p>
+<p>The factor n_ch = 2 is not a fitted parameter. It is consistent with, and naturally explained by, the channel-averaged shielding conjecture of Thermo IV (q = Ω_eff / n_ch): q measures per-channel shielding depth, so the total winding ratio T/τ_dec must be divided by the channel count.</p>
+<p>The paper also reports two negative results that sharpen the scope of Thermo IV's open problem 2: (1) m_eff(τ) ∝ 1/τ is a representation effect, not an intrinsic layer count, in continuous-time systems; (2) the inverse participation ratio K_part = 1/Σw_j² constructed from macroscopic ACF mode weights fails at finite βE because ACF mode weights are not microscopic shielding-layer weights. Neither negative result invalidates Thermo IV's mathematical results; both precisely narrow the conditions under which the K ↔ m_eff bridge can hold.</p>
+<hr>
+<h2>§1 Problem: How to Extract Thermo IV's K from Dynamics</h2>
+<h3>1.1 Known and unknown</h3>
+<p>Thermo IV established two exact results:</p>
+<p>$$e_q(-x) = \left(1 + \frac{x}{K}\right)^{-K}, \quad q = 1 + \frac{1}{K}$$</p>
+<p>and the channel-averaged shielding conjecture:</p>
+<p>$$q = \frac{\Omega_{\text{eff}}}{n_{\text{ch}}}$$</p>
+<p>The interpolation family is an algebraic identity. The physical interpretation of K as an effective feedback order is a conjecture. Thermo IV listed "independently extracting K from the autocorrelation function to predict q" as prediction P1 — the hardest testable prediction [1].</p>
+<p>The question is: how should K be measured in a continuous-time system?</p>
+<p>Thermo II–III [2,3] defined the effective depth m_eff via η ≈ 1 − C(1)^{m_eff}. If K = m_eff, then the same parameter simultaneously determines the dissipation rate η and the distribution shape q. This is Thermo IV's open problem 2.</p>
+<h3>1.2 Contributions</h3>
+<p>This paper makes four contributions:</p>
+<p>(1) Negative result: m_eff(τ) is not an intrinsic quantity in continuous-time oscillators (§2).</p>
+<p>(2) Negative result: Thermo IV's q_eff^{(2)} = 1 + Σλ² does not apply to macroscopic ACF mode weights at finite βE (§3).</p>
+<p>(3) Positive result: the channel-normalized winding ratio K_dyn = T/(n_ch · τ_dec) is identified as the operationally accessible dynamical counterpart of K in continuous-time oscillators (§4).</p>
+<p>(4) Parameter scan: q_pred = 1 + n_ch · τ_dec / T gives |Δq| < 0.07 across seven parameter points with zero τ-dependence (§5).</p>
+<hr>
+<h2>§2 Negative Result I: m_eff(τ) Is Not Intrinsic</h2>
+<h3>2.1 The τ-divergence of m_eff</h3>
+<p>On the Brusselator (a = 1, b = 3, σ = 0.3), using Thermo III's Protocol A (f = a + x²y for synthesis, r = (b+1)x for degradation [8]) to extract η and C(1), then computing m_eff = log(1−η)/log(C(1)):</p>
+<table><thead><tr>
+<th>τ_steps</th>
+<th>τ (time units)</th>
+<th>η</th>
+<th>C(1)</th>
+<th>m_eff</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>0.010</td>
+<td>0.195</td>
+<td>0.999</td>
+<td>143</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.025</td>
+<td>0.194</td>
+<td>0.994</td>
+<td>36</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.050</td>
+<td>0.193</td>
+<td>0.981</td>
+<td>11.2</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.100</td>
+<td>0.188</td>
+<td>0.943</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.250</td>
+<td>0.165</td>
+<td>0.817</td>
+<td>0.9</td>
+</tr>
+</tbody></table>
+<p>η exhibits a plateau (0.19–0.20 from τ = 0.01 to 0.05), but m_eff spans two orders of magnitude from 143 to 0.9.</p>
+<h3>2.2 Mathematical inevitability</h3>
+<p>For any smooth continuous-time process, the short-lag retention satisfies C(1;τ) ≈ e^{−aτ}, so log C(1) ≈ −aτ, giving m_eff = log(1−η)/(−aτ) ∝ 1/τ.</p>
+<p>This is not a numerical artifact. It is a representation effect: slicing the same physical feedback process at different step sizes naturally yields different step counts.</p>
+<h3>2.3 The accidental precision of fixed τ</h3>
+<p>At fixed τ_steps = 10, m_eff(b = 3.0) = 11.2, predicting q = 1 + 1/11.2 = 1.089. The measured q_fit(r²) = 1.091. Deviation: +0.001.</p>
+<p>However, this precision holds only near b ≈ 3.0. At b = 5.0, the deviation grows to 0.215, because a fixed τ = 0.05 corresponds to different dynamical scales at different b.</p>
+<h3>2.4 Diagnosis</h3>
+<p>m_eff(τ) is not an intrinsic parameter. It counts "how many steps of size τ fit inside a fixed feedback budget." In continuous-time oscillators, K should not be extracted via one-lag C(1).</p>
+<hr>
+<h2>§3 Negative Result II: K_part Does Not Apply at Finite βE</h2>
+<h3>3.1 Theoretical motivation</h3>
+<p>Thermo IV §3.5 proved a supplementary lemma: in the x → 0 second-order expansion,</p>
+<p>$$q_{\text{eff}}^{(2)} = 1 + \sum_i \lambda_i^2$$</p>
+<p>where λ_i are shielding-layer weights (Σλ_i = 1). This suggested an independent K-extraction scheme:</p>
+<p>$$K_{\text{part}} = \frac{1}{\sum_i \lambda_i^2} \quad (\text{inverse participation ratio})$$</p>
+<h3>3.2 Experiment: ACF mode decomposition</h3>
+<p>Fitting the Brusselator (b = 3.0) f-channel autocorrelation to a damped oscillation plus pure decay:</p>
+<p>C(τ) = w₁ · e^{−g₁τ} · cos(ωτ) + w₂ · e^{−g₂τ}</p>
+<p>yields w₁ = 0.477, w₂ = 0.523 (normalized). Σw² = 0.477² + 0.523² = 0.501.</p>
+<p>K_part = 1/0.501 = 2.0. Predicted q = 1 + 0.501 = 1.501.</p>
+<p>Measured q_fit = 1.091. <strong>Deviation: 0.41.</strong></p>
+<h3>3.3 Why it fails</h3>
+<p>q_eff^{(2)} = 1 + Σλ² is a second-order local expansion at x → 0. The Brusselator's effective βE ≈ 2.5–3.5 lies far from the small-x limit.</p>
+<p>More fundamentally, this experiment is not a counterexample to Thermo IV §3.5, but a counterexample to the incorrect identification λ_i^{shield} = w_j^{ACF}. The two macroscopic ACF modes (oscillation + decay) are geometric rendering of the 4DD continuous flow; the λ_i in Thermo IV's theorem are microscopic weights of discrete shielding layers in the underlying feedback network. Eleven shielding layers are nested inside the internal structure of a single macroscopic oscillatory mode; spectral decomposition of the ACF cannot reach them.</p>
+<h3>3.4 Impact on Thermo IV</h3>
+<p><strong>None.</strong> The supplementary lemma remains mathematically valid. The Brusselator experiment shows only that macroscopic ACF mode weights w_j cannot be identified with microscopic shielding-layer weights λ_i, especially outside the small-x regime. This is a boundary-condition test, not a counterexample.</p>
+<hr>
+<h2>§4 Positive Result: The Channel-Normalized Winding Ratio</h2>
+<h3>4.1 Extracting T and τ_dec from the ACF</h3>
+<p>The f-channel autocorrelation function is fitted to a damped oscillation plus pure decay:</p>
+<p>$$C_f(\tau) = w_1 \cdot e^{-g_1 \tau} \cos(\omega \tau) + w_2 \cdot e^{-g_2 \tau}$$</p>
+<p>Two macroscopic timescales are read directly from the fit parameters:</p>
+<ul>
+<li><strong>Oscillation period</strong> T: from the first minimum of the ACF at t_min (giving T = 2 · t_min), or equivalently from the fitted angular frequency ω (giving T = 2π/ω). The data tables in this paper use the t_min method. At b = 3.0 the two methods differ by approximately 15% (t_min gives T = 5.76, ω gives T = 6.65), reflecting the non-sinusoidal character of the ACF oscillation under finite noise.</li>
+<li><strong>Radial decay time</strong> τ_dec = 1/g₂: the time constant of the pure-decay component extracted from the f-channel ACF. Note that τ_dec is not measured directly from phase-space radial regression, but is separated from the non-oscillatory term in the damped-oscillation fit.</li>
+</ul>
+<p>Neither quantity depends on the sampling step τ — they are macroscopic dynamical parameters of the system.</p>
+<h3>4.2 Definition of K_dyn</h3>
+<p><strong>Definition (channel-normalized winding ratio).</strong> In a state-coupled two-channel oscillator, the dynamical feedback order is defined as</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}$$</p>
+<p>where n_ch = 2 is the number of forward/reset channels. The Tsallis q is predicted as</p>
+<p>$$q_{\text{pred}} = 1 + \frac{1}{K_{\text{dyn}}} = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<h3>4.3 Physical interpretation</h3>
+<p>q − 1 = n_ch · τ_dec / T: the radial decay time as a fraction of the per-channel period budget.</p>
+<p>The physical picture can be understood as time-division multiplexing of feedback bandwidth. The system possesses one macroscopic time resource — the oscillation period T — but n_ch channels must each process radial fluctuations. Because the dynamical operators associated with different channels do not commute (f and r share the state variable x), the underlying dynamics cannot execute causal settlement on multiple channels simultaneously. The system must therefore partition time: each channel is allocated an effective causal window of T/n_ch. Within this window, the rate at which the system erases a radial fluctuation is set by τ_dec. The effective shielding depth per channel per period is thus (T/n_ch)/τ_dec = K_dyn.</p>
+<p>q − 1 measures the inverse of this per-channel depth — the fraction of each channel's time budget consumed by a single decay event.</p>
+<h3>4.4 Structural basis for n_ch = 2</h3>
+<p>The original hypothesis (proposed by Gemini) was m_eff ≈ T/τ_dec. Experiments showed that T/τ_dec yields an effective count approximately twice the required K. Applying Thermo IV's two-channel normalization n_ch = 2, the ratio T/(n_ch · τ_dec) produces substantially more robust predictions across the full b-scan (§5).</p>
+<p>n_ch = 2 is not fitted from the present Brusselator data. It is a structural parameter of the Thermo IV framework, arising from the forward/reset channel decomposition. Thermo IV's channel-averaged shielding conjecture specifies that q measures per-channel shielding depth, so the total winding ratio T/τ_dec must be divided by the channel count.</p>
+<h3>4.5 Connection to Thermo IV</h3>
+<p>Thermo IV's exact structure q = 1 + 1/K is fully preserved. This paper changes only how K is extracted:</p>
+<table><thead><tr>
+<th></th>
+<th>Thermo IV's K</th>
+<th>This paper's K_dyn</th>
+</tr></thead><tbody>
+<tr>
+<td>Definition</td>
+<td>Effective feedback order (conjecture)</td>
+<td>T/(n_ch · τ_dec) (dynamically observable)</td>
+</tr>
+<tr>
+<td>Extraction</td>
+<td>Unspecified (listed as open problem)</td>
+<td>From damped-oscillation fit of ACF</td>
+</tr>
+<tr>
+<td>τ-dependence</td>
+<td>—</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Relation to m_eff</td>
+<td>K "may equal" m_eff (conjecture)</td>
+<td>K_dyn ≠ m_eff(τ) in general</td>
+</tr>
+</tbody></table>
+<h3>4.6 Status labels</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>K_dyn = T/(n_ch · τ_dec)</td>
+<td><strong>Empirical dynamical law / structurally motivated bridge</strong></td>
+</tr>
+<tr>
+<td>n_ch = 2 from Thermo IV</td>
+<td>Strong structural evidence, not proof</td>
+</tr>
+<tr>
+<td>T and τ_dec from ACF</td>
+<td>Operationally defined extraction protocol</td>
+</tr>
+<tr>
+<td>q = 1 + 1/K_dyn</td>
+<td>Exact if K_dyn = K</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§5 Data: b-Scan</h2>
+<h3>5.1 Experimental setup</h3>
+<p>Brusselator SDE [8]: dx = (a + x²y − (b+1)x)dt + σdW_x, dy = (bx − x²y)dt + σdW_y. Parameters: a = 1, σ = 0.30, dt = 0.005. Steady-state sampling: 1M steps. r² = (x − x̄)² + (y − ȳ)² serves as the canonical energy-like observable. q_fit is extracted from the CCDF of r² via Tsallis q-exponential global fit.</p>
+<p><strong>Methodological note:</strong> The main results are reported using CCDF global fitting. As a robustification direction, raw-data MLE [9] and KS goodness-of-fit testing [10] should be implemented in follow-up work, with block-bootstrap 95% confidence intervals for pointwise uncertainty. CCDF fitting may be inferior to MLE for q-exponential parameter estimation [9], but is sufficient to support the MAE = 0.022 level of the present conclusions.</p>
+<h3>5.2 Results</h3>
+<table><thead><tr>
+<th>b</th>
+<th>T</th>
+<th>τ_dec</th>
+<th>K_dyn = T/(2τ_dec)</th>
+<th>q_pred</th>
+<th>q_fit(r²)</th>
+<th>Δq</th>
+</tr></thead><tbody>
+<tr>
+<td>2.2</td>
+<td>5.58</td>
+<td>0.288</td>
+<td>9.70</td>
+<td>1.103</td>
+<td>1.110</td>
+<td>+0.007</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>5.62</td>
+<td>0.280</td>
+<td>10.02</td>
+<td>1.100</td>
+<td>1.089</td>
+<td>−0.011</td>
+</tr>
+<tr>
+<td>2.8</td>
+<td>5.68</td>
+<td>0.278</td>
+<td>10.22</td>
+<td>1.098</td>
+<td>1.085</td>
+<td>−0.013</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>5.76</td>
+<td>0.276</td>
+<td>10.43</td>
+<td>1.096</td>
+<td>1.091</td>
+<td>−0.005</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>6.07</td>
+<td>0.263</td>
+<td>11.54</td>
+<td>1.087</td>
+<td>1.103</td>
+<td>+0.016</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>6.39</td>
+<td>0.276</td>
+<td>11.58</td>
+<td>1.086</td>
+<td>1.122</td>
+<td>+0.036</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>6.26</td>
+<td>0.349</td>
+<td>8.97</td>
+<td>1.112</td>
+<td>1.179</td>
+<td>+0.068</td>
+</tr>
+</tbody></table>
+<h3>5.3 Error statistics</h3>
+<ul>
+<li>MAE = (1/7) · Σ|Δq| = 0.022</li>
+<li>RMSE = √((1/7) · Σ(Δq)²) = 0.031</li>
+<li>Maximum |Δq| = 0.068 (b = 5.0)</li>
+<li>Core region (b = 2.2–3.5): maximum |Δq| = 0.016</li>
+</ul>
+<h3>5.4 Comparison with alternative methods</h3>
+<table><thead><tr>
+<th>Method</th>
+<th>Δq at b=3.0</th>
+<th>Δq at b=5.0</th>
+<th>τ-dependent?</th>
+<th>Free parameters</th>
+</tr></thead><tbody>
+<tr>
+<td>Fixed τ=10 m_eff</td>
+<td>0.001</td>
+<td>0.215</td>
+<td>Severely</td>
+<td>1 (choice of τ)</td>
+</tr>
+<tr>
+<td>T_fb method</td>
+<td>0.048</td>
+<td>—</td>
+<td>Partially</td>
+<td>0 but γ_f non-constant</td>
+</tr>
+<tr>
+<td>K_part = 1/Σw²</td>
+<td>0.410</td>
+<td>0.373</td>
+<td>No</td>
+<td>0 but x→0 fails</td>
+</tr>
+<tr>
+<td><strong>K_dyn = T/(n_ch·τ_dec)</strong></td>
+<td><strong>0.005</strong></td>
+<td><strong>0.068</strong></td>
+<td><strong>No</strong></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody></table>
+<p>K_dyn trades the 10⁻³ accidental precision at a single point (b = 3.0) for cross-parameter robustness. This is what good theory should do.</p>
+<hr>
+<h2>§6 Methodology: Prior-Guided Posterior Verification</h2>
+<h3>6.1 Prior basis for three key choices</h3>
+<p>The experimental design of this paper rests on prior theory published in Thermo III–IV. Three critical choices were determined by theory before the present experiments:</p>
+<p><strong>Observable (r²):</strong> Thermo IV's §1.2 distinguishes kernel/occupation/flux layers, and §4 proves that the tail exponent is not a reparametrization invariant. r² is an energy-like variable corresponding to the canonical control variable βE. This is a theory-predicted canonical observable, not the result of trying multiple options.</p>
+<p><strong>Regime (moderate-noise σ = 0.10–0.30):</strong> Thermo III [3] independently established the Brusselator's moderate-noise absorptive regime — η ≈ 0.19–0.20 is most stable in this window. The coincidence of q's identification window with η's identification window is supporting evidence, not a consumed degree of freedom.</p>
+<p><strong>Estimator (global CCDF fit rather than tail-only):</strong> Thermo IV §4's reparametrization lemma proves that the tail exponent is not invariant under general reparametrizations. Choosing global fit over tail fit is a methodological consequence of Thermo IV, not a post-hoc selection.</p>
+<h3>6.2 Guarding against posterior colonization of priors</h3>
+<p>Prior-guided choices substantially reduce the researcher degrees of freedom in the present experiment, but do not entirely eliminate implementation-level freedom. The nature of a degree of freedom depends on its information source: choices derived from previously published theory are conceptual-level constraints (they do not consume the current experiment's degrees of freedom), but implementation choices such as CCDF vs MLE, fitting window, and bootstrap block size still exist.</p>
+<table><thead><tr>
+<th></th>
+<th>Unconstrained posterior fitting</th>
+<th>This paper</th>
+</tr></thead><tbody>
+<tr>
+<td>Observable</td>
+<td>Try several, pick the best</td>
+<td>Theory-predicted canonical variable</td>
+</tr>
+<tr>
+<td>Parameter window</td>
+<td>Scan many, pick the prettiest</td>
+<td>Prior paper established regime</td>
+</tr>
+<tr>
+<td>Fitting method</td>
+<td>Multiple methods, pick closest</td>
+<td>Lemma excluded certain methods</td>
+</tr>
+</tbody></table>
+<p>The experimental design of this paper is a theory-constrained compatibility test with time-stamped priors, not unconstrained post-hoc selection. A strictly confirmatory test still requires pre-freezing the observable, regime, estimator, and error criteria on a second system.</p>
+<hr>
+<h2>§7 Claim Boundary and Open Problems</h2>
+<h3>7.1 Status map</h3>
+<table><thead><tr>
+<th>Level</th>
+<th>Content</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Exact</strong> (from Thermo IV)</td>
+<td>q = 1 + 1/K, exact interpolation family</td>
+</tr>
+<tr>
+<td><strong>Empirical dynamical law</strong></td>
+<td>K_dyn = T/(n_ch · τ_dec), channel-normalized winding ratio</td>
+</tr>
+<tr>
+<td><strong>Negative result</strong></td>
+<td>m_eff(τ) ∝ 1/τ is not intrinsic; K_part fails at finite βE</td>
+</tr>
+<tr>
+<td><strong>Structural evidence</strong></td>
+<td>n_ch = 2 consistent with Thermo IV's channel-averaged shielding</td>
+</tr>
+<tr>
+<td><strong>Open</strong></td>
+<td>Second-system verification; exclusionary test for n_ch; MLE + bootstrap</td>
+</tr>
+</tbody></table>
+<h3>7.2 Main claim</h3>
+<p>In a state-coupled two-channel oscillator, the Tsallis excess q − 1 extracted on the canonical energy-like observable r² is predicted by the channel-normalized decay fraction n_ch · τ_dec / T, where τ_dec is extracted from the pure-decay component of the f-channel ACF:</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}, \quad q_{\text{pred}} = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p>This formula yields τ-free cross-parameter predictions (MAE = 0.022) across b = 2.2–5.0, substantially outperforming the fixed-τ proxy m_eff(τ). This paper does not claim K = m_eff(τ) as a scale-free identity; instead, it identifies K in continuous-time oscillators as a channel-normalized period–decay ratio.</p>
+<h3>7.3 Propositions beyond the scope of this paper</h3>
+<ul>
+<li>Whether K_dyn applies to non-oscillatory systems — currently verified only on oscillators.</li>
+<li>Whether the factor 2 in n_ch = 2 truly arises from the f/r channel count — or from other geometric factors (half-period, r² frequency folding) — requires exclusionary tests on three-channel systems or single-channel models. The primary candidate for a three-channel test is the Lorenz attractor (ẋ = σ(y−x), ẏ = x(ρ−z)−y, ż = xy−βz; three state variables → n_ch = 3), testing q = 1 + 3τ_dec/T. An alternative is the full three-variable Oregonator model.</li>
+<li>Whether q_pred = 1 + n_ch · τ_dec / T is exact — or a leading-order approximation requiring higher-precision data and/or additional systems.</li>
+</ul>
+<h3>7.4 Open problems</h3>
+<ul>
+<li>First-principles derivation of K_dyn = T/(n_ch · τ_dec) — from what physical principle does "K equals the channel-normalized winding ratio" follow?</li>
+<li>K extraction in non-oscillatory systems (e.g., DP recursion, Schlögl model) — K_dyn's definition relies on an oscillation period T; what replaces it when T does not exist?</li>
+<li>Exclusionary test for n_ch — verify q = 1 + 3τ_dec/T on the Lorenz system (n_ch = 3), or verify that the factor 2 disappears in a single-channel model.</li>
+<li>Source of high-b deviation — |Δq| = 0.068 at b = 5.0; does this arise from breakdown of the equal-sharing assumption under strong nonlinearity?</li>
+<li>Reverse mapping from K_dyn to Ω_eff — from q = Ω_eff/n_ch and q = 1 + n_ch · τ_dec/T, one obtains Ω_eff = n_ch + n_ch² · τ_dec/T. For the Brusselator (n_ch = 2, T ≈ 5.76, τ_dec ≈ 0.276), Ω_eff ≈ 2.19 — close to the Boltzmann end. Does this kernel-level Ω_eff have an independent physical interpretation? What is its relation to the cycle-level winding budget T/τ_dec ≈ 20.9?</li>
+<li>Connection to the Lyapunov spectrum — τ_dec dynamically corresponds to the convergence rate in the transverse direction, i.e., τ_dec ∝ 1/|λ₋| where λ₋ is the most negative Lyapunov exponent. Substitution yields q = 1 + n_ch/(T · |λ₋|), directly linking the distribution shape parameter to the orbital convergence rate. Testing this relation on chaotic systems (e.g., Lorenz) is a longer-term direction.</li>
+</ul>
+<hr>
+<h2>References</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper IV: Toward a First-Principles Derivation of the Tsallis q Parameter," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper II: η ≈ 0.20 Mechanism," Zenodo (2025). DOI: 10.5281/zenodo.19511064.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of η," Zenodo (2026). DOI: 10.5281/zenodo.19597684.</p>
+<p>[4] H. Qin, "ZFCρ Thermodynamics Paper I: η Exists," Zenodo (2025). DOI: 10.5281/zenodo.19310282.</p>
+<p>[5] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988). DOI: 10.1007/BF01016429.</p>
+<p>[6] G. Livadiotis and D. J. McComas, "Understanding kappa distributions: A toolbox for space science and astrophysics," <em>Space Science Reviews</em> <strong>175</strong>, 183–214 (2013). DOI: 10.1007/s11214-013-9982-9.</p>
+<p>[7] C. Tsallis, <em>Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World</em> (Springer, New York, 2009). DOI: 10.1007/978-0-387-85359-8.</p>
+<p>[8] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968). DOI: 10.1063/1.1668896.</p>
+<p>[9] C. R. Shalizi, "Maximum Likelihood Estimation for q-Exponential (Tsallis) Distributions," arXiv:math/0701854 (2007).</p>
+<p>[10] A. Clauset, C. R. Shalizi, and M. E. J. Newman, "Power-law distributions in empirical data," <em>SIAM Review</em> <strong>51</strong>, 661–703 (2009). DOI: 10.1137/070710111.</p></div></div>
+<div id="lang-zh" class="lang-content" style="display:none" lang="zh">
+<div class="paper-page-header-zh"><h1>ZFCρ热力学论文 V：通道归一化卷绕比与Tsallis q的动力学预测</h1>
+<div class="paper-subtitle-line" style="font-size:1rem;color:#666;margin-top:.3rem;">ZFCρ热力学系列 · 第五篇</div>
+</div>
+<div class="abstract-box"><div class="abstract-label">&#25688;&#35201;</div><p>Thermo IV（DOI: 10.5281/zenodo.19605664）建立了精确插值族q = 1 + 1/K，并将"从动力学中独立提取K来预测Tsallis q"列为最硬的可检验预测。本文在Brusselator化学振荡器上实现了这一预测的首次闭环。
+
+核心发现：连续时间振荡器中的K不是one-lag有效层数m_eff(τ)（后者对采样步长τ严重敏感），而是通道归一化卷绕比（channel-normalized winding ratio）：
+
+K_dyn = T / (n_ch · τ_dec)
+
+其中T是振荡周期，τ_dec是径向衰减时间（均从f通道自相关函数的阻尼振荡拟合中提取），n_ch = 2是f/r双通道数。Tsallis q由此预测为
+
+q = 1 + n_ch · τ_dec / T
+
+该公式不含自由参数，不依赖采样步长τ的选择，只需要自相关函数的两个宏观时间尺度。在Brusselator的b = 2.2-5.0参数扫描中，|Δq| < 0.07（7个参数点），显著优于固定τ的m_eff代理方法（后者在b = 5.0处偏差达0.215）。
+
+n_ch = 2的出现不是拟合结果，而是与Thermo IV通道平均屏蔽律q = Ω_eff/n_ch一致，并由其自然解释：q测量的是每通道的屏蔽深度，所以总卷绕比T/τ_dec需要除以通道数。
+
+本文同时报告了两个负结果：（1）m_eff(τ) ∝ 1/τ在连续时间系统中不是本征量；（2）Thermo IV补充引理q_eff^{(2)} = 1+Σλ²的ACF模式权重版本（K_part = 1/Σλ²）在有限βE的Brusselator上不适用。这两个负结果精确缩小了Thermo IV开放问题2的范围。
+
+---</p></div>
+<div class="paper-body"><h1>ZFCρ热力学论文 V：通道归一化卷绕比与Tsallis q的动力学预测</h1>
+<p><strong>The Channel-Normalized Winding Ratio: Dynamical Prediction of the Tsallis q Parameter in State-Coupled Oscillators</strong></p>
+<p>Han Qin（秦汉）</p>
+<p>SAE Research · 2026</p>
+<hr>
+<h2>摘要</h2>
+<p>Thermo IV（DOI: 10.5281/zenodo.19605664）建立了精确插值族q = 1 + 1/K，并将"从动力学中独立提取K来预测Tsallis q"列为最硬的可检验预测。本文在Brusselator化学振荡器上实现了这一预测的首次闭环。</p>
+<p>核心发现：连续时间振荡器中的K不是one-lag有效层数m_eff(τ)（后者对采样步长τ严重敏感），而是通道归一化卷绕比（channel-normalized winding ratio）：</p>
+<p>K_dyn = T / (n_ch · τ_dec)</p>
+<p>其中T是振荡周期，τ_dec是径向衰减时间（均从f通道自相关函数的阻尼振荡拟合中提取），n_ch = 2是f/r双通道数。Tsallis q由此预测为</p>
+<p>q = 1 + n_ch · τ_dec / T</p>
+<p>该公式不含自由参数，不依赖采样步长τ的选择，只需要自相关函数的两个宏观时间尺度。在Brusselator的b = 2.2-5.0参数扫描中，|Δq| < 0.07（7个参数点），显著优于固定τ的m_eff代理方法（后者在b = 5.0处偏差达0.215）。</p>
+<p>n_ch = 2的出现不是拟合结果，而是与Thermo IV通道平均屏蔽律q = Ω_eff/n_ch一致，并由其自然解释：q测量的是每通道的屏蔽深度，所以总卷绕比T/τ_dec需要除以通道数。</p>
+<p>本文同时报告了两个负结果：（1）m_eff(τ) ∝ 1/τ在连续时间系统中不是本征量；（2）Thermo IV补充引理q_eff^{(2)} = 1+Σλ²的ACF模式权重版本（K_part = 1/Σλ²）在有限βE的Brusselator上不适用。这两个负结果精确缩小了Thermo IV开放问题2的范围。</p>
+<hr>
+<h2>§1 问题：Thermo IV的K如何从动力学中提取？</h2>
+<h3>1.1 已知与未知</h3>
+<p>Thermo IV建立了两项精确结果：</p>
+<p>$$e_q(-x) = \left(1 + \frac{x}{K}\right)^{-K}, \quad q = 1 + \frac{1}{K}$$</p>
+<p>以及通道平均屏蔽律猜想：</p>
+<p>$$q = \frac{\Omega_{\text{eff}}}{n_{\text{ch}}}$$</p>
+<p>精确插值族是代数恒等式。K的物理解读（有效反馈阶数）是猜想。Thermo IV将"从自相关函数独立提取K来预测q"列为预测P1——最硬的可检验预测[1]。</p>
+<p><strong>问题：K在连续时间系统中如何测量？</strong></p>
+<p>Thermo II-III[2,3]定义了有效层数m_eff，从η ≈ 1 - C(1)^{m_eff}提取。如果K = m_eff，则同一个参数同时决定耗散率η和分布形状q。这是Thermo IV的开放问题2。</p>
+<h3>1.2 本文的贡献</h3>
+<p>本文有四项贡献：</p>
+<p>（1）负结果：m_eff(τ)在连续时间振荡器中不是本征量（§2）。</p>
+<p>（2）负结果：Thermo IV的q_eff^{(2)} = 1+Σλ²在有限βE系统中不适用于宏观ACF模式权重（§3）。</p>
+<p>（3）正结果：通道归一化卷绕比K_dyn = T/(n_ch·τ_dec)是本文识别出的、连续时间振荡器中K的可操作动力学对应（§4）。</p>
+<p>（4）b扫描数据：q_pred = 1 + n_ch·τ_dec/T在7个参数点上给出|Δq| < 0.07的无τ预测（§5）。</p>
+<hr>
+<h2>§2 负结果一：m_eff(τ)不是本征量</h2>
+<h3>2.1 m_eff对τ的发散</h3>
+<p>在Brusselator（a=1, b=3, σ=0.3）上，使用Thermo III的Protocol A（f = a+x²y合成，r = (b+1)x降解）提取η和C(1)，然后计算m_eff = log(1-η)/log(C(1))。</p>
+<table><thead><tr>
+<th>τ_steps</th>
+<th>τ（时间单位）</th>
+<th>η</th>
+<th>C(1)</th>
+<th>m_eff</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>0.010</td>
+<td>0.195</td>
+<td>0.999</td>
+<td>143</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.025</td>
+<td>0.194</td>
+<td>0.994</td>
+<td>36</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.050</td>
+<td>0.193</td>
+<td>0.981</td>
+<td>11.2</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.100</td>
+<td>0.188</td>
+<td>0.943</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.250</td>
+<td>0.165</td>
+<td>0.817</td>
+<td>0.9</td>
+</tr>
+</tbody></table>
+<p>η有平台（0.19-0.20从τ=0.01到0.05），但m_eff从143降到0.9，跨越两个数量级。</p>
+<h3>2.2 发散的数学必然性</h3>
+<p>对任何平滑连续时间过程，短时lag-1自相关满足C(1;τ) ≈ e^{-aτ}。于是log C(1) ≈ -aτ，m_eff = log(1-η)/(-aτ) ∝ 1/τ。</p>
+<p>这不是数值bug，是representation effect：用不同步长切同一个物理反馈过程，步数自然不同。</p>
+<h3>2.3 固定τ的偶然精确</h3>
+<p>固定τ_steps = 10时，m_eff(b=3.0) = 11.2，预测q = 1 + 1/11.2 = 1.089。测量q_fit(r²) = 1.091。偏差+0.001。</p>
+<p>但这个精确只在b ≈ 3.0附近成立。b = 5.0时偏差增大到0.215。原因：固定τ = 0.05在不同b的系统中不是同一个动力学尺度。</p>
+<h3>2.4 诊断</h3>
+<p>m_eff(τ)不是本征参数。它是"用τ作为步长时，一个固定反馈预算包含多少步"的计数。连续时间振荡器中，K不应该通过one-lag C(1)来提取。</p>
+<hr>
+<h2>§3 负结果二：K_part不适用于有限βE</h2>
+<h3>3.1 理论动机</h3>
+<p>Thermo IV §3.5证明了补充引理：在x→0的二阶展开下，</p>
+<p>$$q_{\text{eff}}^{(2)} = 1 + \sum_i \lambda_i^2$$</p>
+<p>其中λ_i是屏蔽层权重（Σλ_i = 1）。这暗示了一个独立的K提取方案：</p>
+<p>$$K_{\text{part}} = \frac{1}{\sum_i \lambda_i^2} \quad (\text{inverse participation ratio})$$</p>
+<h3>3.2 实验：ACF模式分解</h3>
+<p>将Brusselator（b=3.0）的f通道自相关函数拟合为阻尼振荡+纯衰减：</p>
+<p>C(τ) = w₁·e^{-g₁τ}·cos(ωτ) + w₂·e^{-g₂τ}</p>
+<p>结果：w₁ = 0.477, w₂ = 0.523（归一化后）。Σw² = 0.477² + 0.523² = 0.501。</p>
+<p>K_part = 1/0.501 = 2.0。预测q = 1 + 0.501 = 1.501。</p>
+<p>实际q_fit = 1.091。<strong>偏差0.41。</strong></p>
+<h3>3.3 失败原因</h3>
+<p>q_eff^{(2)} = 1+Σλ²是x→0的二阶局部展开。Brusselator的有效βE ≈ 2.5-3.5，不在小x极限。</p>
+<p>更根本地，本实验不是对Thermo IV §3.5引理的反例，而是对错误识别λ_i^{shield} = w_j^{ACF}的反例。ACF的2个宏观模式（振荡+衰减）是4DD连续流形的几何渲染结果，而Thermo IV定理中的λ_i是1DD/2DD图网络中离散屏蔽层的微观权重。11层屏蔽嵌套在宏观振荡模式的内部结构中，ACF的频谱分解无法触及。</p>
+<h3>3.4 对Thermo IV的影响</h3>
+<p><strong>无影响。</strong> 补充引理在数学上仍然正确。Brusselator实验只说明"宏观ACF模式权重w_j ≠ 微观屏蔽层权重λ_i"，尤其在非小x区域不能混用。这是一个边界条件检验，不是反例。</p>
+<hr>
+<h2>§4 正结果：通道归一化卷绕比</h2>
+<h3>4.1 从ACF中提取T和τ_dec</h3>
+<p>将f通道自相关函数拟合为阻尼振荡+纯衰减：</p>
+<p>$$C_f(\tau) = w_1 \cdot e^{-g_1 \tau} \cos(\omega \tau) + w_2 \cdot e^{-g_2 \tau}$$</p>
+<p>两个宏观时间尺度直接从拟合参数中读出：</p>
+<ul>
+<li><strong>振荡周期</strong> T：从ACF的第一个极小值位置t_min读出半周期（T = 2·t_min），或等价地从拟合的角频率ω读出（T = 2π/ω）。本文的数据表使用t_min方法。两种方法在b=3.0处的差异约15%（t_min给T=5.76，ω给T=6.65），反映了有限噪声下ACF振荡的非正弦性。</li>
+<li><strong>径向衰减时间</strong> τ_dec = 1/g₂：从f通道ACF的pure-decay component提取的时间常数。注意τ_dec不是直接从相空间径向回归测得，而是从ACF的阻尼振荡拟合中的非振荡项分离出来的。</li>
+</ul>
+<p>这两个量不依赖采样步长τ——它们是系统动力学的宏观参数。</p>
+<h3>4.2 K_dyn的定义</h3>
+<p><strong>定义（通道归一化卷绕比）。</strong> 在状态耦合双通道振荡器中，定义动力学反馈阶数为</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}$$</p>
+<p>其中n_ch = 2是f/r双通道数。Tsallis q由此预测为</p>
+<p>$$q_{\text{pred}} = 1 + \frac{1}{K_{\text{dyn}}} = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<h3>4.3 物理解读</h3>
+<p>q - 1 = n_ch·τ_dec/T = 径向衰减时间占每通道周期份额。</p>
+<p>物理图像可以理解为拓扑带宽的时间分时复用：系统拥有一个宏观的本征时间资源（振荡周期T），但有n_ch个通道需要处理涨落。由于不同通道对应的动力学算子不对易（f和r共享状态变量x），底层无法同时在多个通道上执行因果清算。因此系统必须切分时间——每通道被分配到T/n_ch的有效因果窗口。在这个窗口内，系统抹平径向涨落的速度由τ_dec决定。每通道在一个周期内能嵌入的有效屏蔽深度 = (T/n_ch)/τ_dec = K_dyn。</p>
+<p>q - 1测量的就是这个分配到各通道的局部深度的倒数——衰减时间占每通道时间份额的比例。</p>
+<h3>4.4 n_ch = 2的结构理由</h3>
+<p>原始假说（子夏提出）：m_eff ≈ T/τ_dec。实验给出T/τ_dec约为所需K的两倍。用Thermo IV的双通道归一化n_ch = 2后，T/(n_ch·τ_dec)在b = 2.2-5.0的扫描中给出跨参数空间更稳健的预测（§5）。</p>
+<p>这个2不是拟合出来的。Thermo IV的通道平均屏蔽律[1]指定q测量的是"每通道的屏蔽深度"，不是总深度。所以总卷绕比T/τ_dec需要除以通道数n_ch = 2。</p>
+<p>n_ch = 2是Thermo IV框架中的基本结构参数（来自f/r双通道分解），不是从本次Brusselator数据拟合的。</p>
+<h3>4.5 与Thermo IV的连接</h3>
+<p>Thermo IV的精确结构q = 1 + 1/K被完整保留。本文只改变了K的提取方式：</p>
+<table><thead><tr>
+<th></th>
+<th>Thermo IV的K</th>
+<th>本文的K_dyn</th>
+</tr></thead><tbody>
+<tr>
+<td>定义</td>
+<td>有效反馈阶数（物理猜想）</td>
+<td>T/(n_ch·τ_dec)（动力学可观测）</td>
+</tr>
+<tr>
+<td>提取方式</td>
+<td>未指定（列为open problem）</td>
+<td>从ACF的阻尼振荡拟合</td>
+</tr>
+<tr>
+<td>τ依赖性</td>
+<td>—</td>
+<td>无</td>
+</tr>
+<tr>
+<td>和m_eff的关系</td>
+<td>K "可能等于" m_eff（猜想）</td>
+<td>K_dyn ≠ m_eff(τ)（除非τ恰好是canonical步长）</td>
+</tr>
+</tbody></table>
+<h3>4.6 状态标记</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>K_dyn = T/(n_ch·τ_dec)</td>
+<td><strong>Empirical dynamical law / structurally motivated bridge</strong></td>
+</tr>
+<tr>
+<td>n_ch = 2来自Thermo IV</td>
+<td>Strong structural evidence, not proof</td>
+</tr>
+<tr>
+<td>T和τ_dec从ACF提取</td>
+<td>可操作的观测协议</td>
+</tr>
+<tr>
+<td>q = 1 + 1/K_dyn</td>
+<td>精确（如果K_dyn = K）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§5 数据：b扫描</h2>
+<h3>5.1 实验设置</h3>
+<p>Brusselator SDE：dx = (a + x²y - (b+1)x)dt + σdW_x, dy = (bx - x²y)dt + σdW_y[8]。参数：a = 1, σ = 0.30, dt = 0.005。稳态采样1M步。r² = (x-x̄)² + (y-ȳ)²作为canonical energy-like observable。q_fit从r²的CCDF全局拟合Tsallis q-exponential。</p>
+<p><strong>方法学注记：</strong> 本文的主结果以CCDF全局拟合报告。作为稳健化方向，raw-data MLE[9]和KS拟合优度检验[10]应在后续工作中实施，并以block bootstrap 95% CI报告逐点不确定性。当前的CCDF拟合在q-exponential参数估计中可能劣于MLE[9]，但已足以支撑MAE=0.022量级的主结论。</p>
+<h3>5.2 结果</h3>
+<table><thead><tr>
+<th>b</th>
+<th>T</th>
+<th>τ_dec</th>
+<th>K_dyn = T/(2τ_dec)</th>
+<th>q_pred</th>
+<th>q_fit(r²)</th>
+<th>Δq</th>
+</tr></thead><tbody>
+<tr>
+<td>2.2</td>
+<td>5.58</td>
+<td>0.288</td>
+<td>9.70</td>
+<td>1.103</td>
+<td>1.110</td>
+<td>+0.007</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>5.62</td>
+<td>0.280</td>
+<td>10.02</td>
+<td>1.100</td>
+<td>1.089</td>
+<td>-0.011</td>
+</tr>
+<tr>
+<td>2.8</td>
+<td>5.68</td>
+<td>0.278</td>
+<td>10.22</td>
+<td>1.098</td>
+<td>1.085</td>
+<td>-0.013</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>5.76</td>
+<td>0.276</td>
+<td>10.43</td>
+<td>1.096</td>
+<td>1.091</td>
+<td>-0.005</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>6.07</td>
+<td>0.263</td>
+<td>11.54</td>
+<td>1.087</td>
+<td>1.103</td>
+<td>+0.016</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>6.39</td>
+<td>0.276</td>
+<td>11.58</td>
+<td>1.086</td>
+<td>1.122</td>
+<td>+0.036</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>6.26</td>
+<td>0.349</td>
+<td>8.97</td>
+<td>1.112</td>
+<td>1.179</td>
+<td>+0.068</td>
+</tr>
+</tbody></table>
+<h3>5.3 误差统计</h3>
+<ul>
+<li>MAE = (1/7)·Σ|Δq| = 0.022</li>
+<li>RMSE = √((1/7)·Σ(Δq)²) = 0.031</li>
+<li>最大|Δq| = 0.068（b = 5.0）</li>
+<li>核心区（b = 2.2-3.5）：最大|Δq| = 0.016</li>
+</ul>
+<h3>5.4 与固定τ方法的对比</h3>
+<table><thead><tr>
+<th>方法</th>
+<th>b=3.0 Δq</th>
+<th>b=5.0 Δq</th>
+<th>τ依赖？</th>
+<th>自由参数</th>
+</tr></thead><tbody>
+<tr>
+<td>固定τ=10的m_eff</td>
+<td>0.001</td>
+<td>0.215</td>
+<td>严重</td>
+<td>1（τ的选择）</td>
+</tr>
+<tr>
+<td>T_fb方法</td>
+<td>0.048</td>
+<td>—</td>
+<td>部分</td>
+<td>0 但γ_f非常数</td>
+</tr>
+<tr>
+<td>K_part = 1/Σλ²</td>
+<td>0.410</td>
+<td>0.373</td>
+<td>否</td>
+<td>0 但x→0失效</td>
+</tr>
+<tr>
+<td><strong>K_dyn = T/(n_ch·τ_dec)</strong></td>
+<td><strong>0.005</strong></td>
+<td><strong>0.068</strong></td>
+<td><strong>否</strong></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody></table>
+<p>K_dyn方法牺牲了单点（b=3.0）的10⁻³偶然精确，换来了跨参数空间的稳健性。这是好理论该做的事。</p>
+<hr>
+<h2>§6 方法论：先验指导的后验验证</h2>
+<h3>6.1 三个选择的先验理由</h3>
+<p>本文的实验设计基于Thermo III-IV已发表的先验理论。三个关键选择在实验之前已由理论确定：</p>
+<p><strong>Observable（r²）：</strong> Thermo IV的§1.2区分了kernel/occupation/flux三层对象，§4证明了尾指数不是重参数化不变量。r²是能量类变量，对应canonical control variable βE。这不是"试了多个选最好的"，而是理论预测的canonical observable。</p>
+<p><strong>Regime（moderate-noise σ=0.10-0.30）：</strong> Thermo III[3]独立确立了Brusselator的moderate-noise absorptive regime——η≈0.19-0.20在此窗口最稳定。q的识别窗口与η的识别窗口重合是支持性证据，不是自由度。</p>
+<p><strong>Estimator（全局CCDF拟合而非tail-only）：</strong> Thermo IV §4的重参数化引理证明尾指数不是一般重参数化下的不变量。选全局拟合而非尾拟合是Thermo IV的方法论推论。</p>
+<h3>6.2 后验殖民先验的警示</h3>
+<p>先验指导的选择显著降低了当前实验的研究者自由度，但并不完全消除实现层自由度。信息来源决定自由度的性质：来自已发表先验理论的选择是概念层约束（不消耗当前实验的自由度），但拟合方法（CCDF vs MLE）、拟合窗口、bootstrap block size等实现层选择仍然存在。</p>
+<table><thead><tr>
+<th></th>
+<th>纯后验拟合</th>
+<th>本文的做法</th>
+</tr></thead><tbody>
+<tr>
+<td>Observable</td>
+<td>试多个选最好的</td>
+<td>理论预测canonical variable</td>
+</tr>
+<tr>
+<td>参数窗口</td>
+<td>扫多个选最漂亮的</td>
+<td>前序论文已确立regime</td>
+</tr>
+<tr>
+<td>拟合方法</td>
+<td>多种方法选最接近的</td>
+<td>引理已排除某些方法</td>
+</tr>
+</tbody></table>
+<p>本文的实验设计是theory-constrained compatibility test with time-stamped priors，不是无约束的post-hoc selection。严格的confirmatory test仍需在第二系统上预先冻结observable、regime、estimator和误差准则。</p>
+<hr>
+<h2>§7 Claim边界与开放问题</h2>
+<h3>7.1 Status map</h3>
+<table><thead><tr>
+<th>层级</th>
+<th>内容</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Exact</strong>（来自Thermo IV）</td>
+<td>q = 1+1/K，精确插值族</td>
+</tr>
+<tr>
+<td><strong>Empirical dynamical law</strong></td>
+<td>K_dyn = T/(n_ch·τ_dec)，通道归一化卷绕比</td>
+</tr>
+<tr>
+<td><strong>Negative result</strong></td>
+<td>m_eff(τ) ∝ 1/τ不是本征量；K_part在有限βE不适用</td>
+</tr>
+<tr>
+<td><strong>Structural evidence</strong></td>
+<td>n_ch = 2来自Thermo IV通道平均屏蔽律</td>
+</tr>
+<tr>
+<td><strong>Open</strong></td>
+<td>第二系统验证；n_ch的排除性检验；MLE+bootstrap稳健化</td>
+</tr>
+</tbody></table>
+<h3>7.2 本文的主claim</h3>
+<p>在状态耦合双通道振荡器中，canonical energy-like observable r²上提取的Tsallis excess q-1由通道归一化的径向衰减时间占比n_ch·τ_dec/T预测。这里的τ_dec是从f通道ACF的pure-decay component提取的时间常数。</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}, \quad q_{\text{pred}} = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p>该公式在b = 2.2-5.0的扫描中给出无τ选择的跨参数预测（MAE = 0.022），显著优于固定采样步长的m_eff(τ)代理。本文不claim K = m_eff(τ)为尺度自由恒等式；相反，结果表明连续时间振荡器中的K是一个通道归一化的period-decay ratio。</p>
+<h3>7.3 超出本文scope的命题</h3>
+<ul>
+<li>K_dyn是否适用于非振荡系统——目前仅在振荡器上验证</li>
+<li>n_ch = 2中的因子2是否真正来自f/r通道数——还是来自其他几何因子（如半周期、r²的频率折叠）——需要三通道系统或单通道模型的排除性检验。首选三通道验证系统：Lorenz吸引子（ẋ=σ(y-x), ẏ=x(ρ-z)-y, ż=xy-βz，三个状态变量 → n_ch=3），验证q = 1 + 3τ_dec/T。备选：Oregonator完整三变量模型。</li>
+<li>q_pred = 1 + n_ch·τ_dec/T是否精确——还是一个leading-order近似，需要更高精度的数据和/或更多系统</li>
+</ul>
+<h3>7.4 开放问题</h3>
+<ul>
+<li>K_dyn = T/(n_ch·τ_dec)的第一性原理推导——从什么物理原理推出"K等于通道归一化卷绕比"？</li>
+<li>非振荡系统（如DP递推、Schlögl模型）中的K提取——K_dyn的定义依赖于振荡周期T，非振荡系统怎么办？</li>
+<li>n_ch的排除性检验——在Lorenz系统（n_ch=3）上验证q = 1 + 3τ_dec/T，或构造单通道模型验证因子2消失。</li>
+<li>高b偏差的来源——b = 5.0时|Δq| = 0.068，是否来自强非线性下equal-sharing假设的breakdown？</li>
+<li>从K_dyn到Ω_eff的反向映射——由q = Ω_eff/n_ch和q = 1 + n_ch·τ_dec/T，推出Ω_eff = n_ch + n_ch²·τ_dec/T。对Brusselator（n_ch=2, T≈5.76, τ_dec≈0.276），Ω_eff ≈ 2.19——接近Boltzmann端。这个Ω_eff有没有独立的物理解读？它和cycle-level winding budget T/τ_dec ≈ 20.9之间是否存在更深层的双尺度关系？</li>
+<li>τ_dec与最大负Lyapunov指数的关系——τ_dec在动力学上对应系统法向的收敛速率，即τ_dec ∝ 1/|λ₋|。代入得q = 1 + n_ch/(T·|λ₋|)，将分布形状参数直接和轨道收敛率联系。在混沌系统（如Lorenz）上检验这一关系是远期方向。</li>
+</ul>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper IV: Toward a First-Principles Derivation of the Tsallis q Parameter," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper II: η ≈ 0.20 Mechanism," Zenodo (2025). DOI: 10.5281/zenodo.19511064.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of η," Zenodo (2026). DOI: 10.5281/zenodo.19597684.</p>
+<p>[4] H. Qin, "ZFCρ Thermodynamics Paper I: η Exists," Zenodo (2025). DOI: 10.5281/zenodo.19310282.</p>
+<p>[5] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988). DOI: 10.1007/BF01016429.</p>
+<p>[6] G. Livadiotis and D. J. McComas, "Understanding kappa distributions: A toolbox for space science and astrophysics," <em>Space Science Reviews</em> <strong>175</strong>, 183–214 (2013). DOI: 10.1007/s11214-013-9982-9.</p>
+<p>[7] C. Tsallis, <em>Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World</em> (Springer, New York, 2009). DOI: 10.1007/978-0-387-85359-8.</p>
+<p>[8] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968). DOI: 10.1063/1.1668896.</p>
+<p>[9] C. R. Shalizi, "Maximum Likelihood Estimation for q-Exponential (Tsallis) Distributions," arXiv:math/0701854 (2007).</p>
+<p>[10] A. Clauset, C. R. Shalizi, and M. E. J. Newman, "Power-law distributions in empirical data," <em>SIAM Review</em> <strong>51</strong>, 661–703 (2009). DOI: 10.1137/070710111.</p></div></div>
+</article>
+<script>function switchLang(lang){document.getElementById("lang-en").style.display=lang==="en"?"block":"none";document.getElementById("lang-zh").style.display=lang==="zh"?"block":"none";document.querySelectorAll(".lang-tab").forEach((t,i)=>{t.classList.toggle("active",(lang==="en"&&i===0)||(lang==="zh"&&i===1));});}</script>
+</body></html>
