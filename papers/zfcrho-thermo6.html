@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper VI: Causal Correlation Volume, Tail-Active Multiplicative Coupling, and the Conditional Derivation of the Channel-Normalized Winding Ratio — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho-thermo6.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo6.html">
+  <meta name="citation_title" content="ZFCρ Thermodynamics Paper VI: Causal Correlation Volume, Tail-Active Multiplicative Coupling, and the Conditional Derivation of the Channel-Normalized Winding Ratio">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19658596">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/zfcrho-thermo6.html">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics · Paper VI</div>
+    <h1>ZFCρ Thermodynamics Paper VI: Causal Correlation Volume, Tail-Active Multiplicative Coupling, and the Conditional Derivation of the Channel-Normalized Winding Ratio<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ热力学论文 VI：因果相关体积与通道归一化卷绕比的条件性推导</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19658596" target="_blank" rel="noopener">10.5281/zenodo.19658596</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19658596" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Thermodynamics Paper V (DOI: 10.5281/zenodo.19649780) established the empirical dynamical law q = 1 + n_ch · τ_dec / T but did not explain why K equals the channel-normalized winding ratio. This paper provides a conditional derivation and characterizes the formula's applicability boundary through cross-domain positive and negative example systems.
+
+The derivation proceeds in four steps. (1) Lemma 1: the causal correlation volume of an exponential ACF equals τ_dec exactly. (2) Lemma 2: the Laplace transform of an exponential lifetime is precisely the resolvent 1/(1+c) — this is the key bridge connecting causal slots to Thermo IV's shielding layers. (3) Proposition 1: under conditions A1–A6 (where A5 is subdivided into exponential survival, exposure attenuation, and Markov-renewal factorization), each channel's effective shielding depth is K_dyn = T/(n_ch · τ_dec), yielding q = 1 + n_ch · τ_dec / T via Thermo IV's exact interpolation family (conditional theorem). (4) Proposition 2: asymmetric channel generalization with K_i = α_i · T / τ_i, reducing to the symmetric formula. A Fokker-Planck zero-flux condition provides a consistency layer.
+
+Positive examples and boundary positives across multiple dynamical classes support the formula: the Brusselator chemical oscillator (n_ch = 2, 14 parameter points, MAE = 0.022) and the symmetric extended Brusselator (n_ch = 3) serve as strong positives; the Selkov glycolysis model (n_ch = 2, weakly tail-active) and an FHN-parameterized synthetic oscillator (n_ch = 2) serve as boundary positives. Six negative example systems delineate the applicability boundary: chaotic systems (Lorenz), relaxation oscillation (Goodwin), bounded coupling (Repressilator), and single-variable nonlinearity (x², x³) each violate distinct necessary conditions.
+
+Core finding: q > 1 requires two-variable multiplicative coupling, but not any multiplicative coupling. Selkov possesses an x²y term, yet that term saturates along the nullcline (x²y → b), producing no heavy tail. Brusselator's x²y does not saturate along its nullcline (x²y ~ bx) and remains active in the tail. What matters for "tail-active" is not algebraic form but whether the multiplicative term saturates in the dynamical tail region.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, thermodynamics, causal correlation volume, tail-active coupling, channel-normalized winding ratio, Tsallis q</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>Thermodynamics Paper V (DOI: 10.5281/zenodo.19649780) established the empirical dynamical law q = 1 + n_ch · τ_dec / T but did not explain why K equals the channel-normalized winding ratio. This paper provides a conditional derivation and characterizes the formula's applicability boundary through cross-domain positive and negative example systems.</p>
+<p>The derivation proceeds in four steps. (1) Lemma 1: the causal correlation volume of an exponential ACF equals τ_dec exactly. (2) Lemma 2: the Laplace transform of an exponential lifetime is precisely the resolvent 1/(1+c) — this is the key bridge connecting causal slots to Thermo IV's shielding layers. (3) Proposition 1: under conditions A1–A6 (where A5 is subdivided into exponential survival, exposure attenuation, and Markov-renewal factorization), each channel's effective shielding depth is K_dyn = T/(n_ch · τ_dec), yielding q = 1 + n_ch · τ_dec / T via Thermo IV's exact interpolation family (conditional theorem). (4) Proposition 2: asymmetric channel generalization with K_i = α_i · T / τ_i, reducing to the symmetric formula. A Fokker-Planck zero-flux condition provides a consistency layer.</p>
+<p>Positive examples and boundary positives across multiple dynamical classes support the formula: the Brusselator chemical oscillator (n_ch = 2, 14 parameter points, MAE = 0.022) and the symmetric extended Brusselator (n_ch = 3) serve as strong positives; the Selkov glycolysis model (n_ch = 2, weakly tail-active) and an FHN-parameterized synthetic oscillator (n_ch = 2) serve as boundary positives. Six negative example systems delineate the applicability boundary: chaotic systems (Lorenz), relaxation oscillation (Goodwin), bounded coupling (Repressilator), and single-variable nonlinearity (x², x³) each violate distinct necessary conditions.</p>
+<p>Core finding: q > 1 requires two-variable multiplicative coupling, but not any multiplicative coupling. Selkov possesses an x²y term, yet that term saturates along the nullcline (x²y → b), producing no heavy tail. Brusselator's x²y does not saturate along its nullcline (x²y ~ bx) and remains active in the tail. What matters for "tail-active" is not algebraic form but whether the multiplicative term saturates in the dynamical tail region.</p>
+<hr>
+<h2>§1 Problem: Why Does K Equal the Channel-Normalized Winding Ratio?</h2>
+<h3>1.1 The empirical law from Thermo V</h3>
+<p>Thermo V [1] established</p>
+<p>$$q = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p>and verified it across a seven-point scan of the Brusselator bifurcation parameter (MAE = 0.022). The formula requires only two macroscopic timescales — oscillation period T and radial decay time τ_dec — and no sampling step τ.</p>
+<p>Thermo V did not explain why K equals T/(n_ch · τ_dec). The formula's status was empirical dynamical law.</p>
+<h3>1.2 This paper's question</h3>
+<p>From what physical principle does it follow that the effective feedback order in a continuous-time oscillator equals the number of causal correlation volumes that fit into each channel's per-period time budget?</p>
+<h3>1.3 Contributions</h3>
+<p>(1) Conditional derivation: Lemma 1 (exact) + Lemma 2 (exact, exponential-slot resolvent bridge) + Proposition 1 (conditional theorem) + Proposition 2 (asymmetric generalization) + FPE consistency layer.</p>
+<p>(2) Strong positives: Brusselator (chemistry, n_ch = 2), symmetric extended Brusselator (chemistry, n_ch = 3). Boundary positives: Selkov (glycolysis, n_ch = 2, weakly tail-active), FHN-parameterized synthetic oscillator (n_ch = 2).</p>
+<p>(3) Negative boundary controls: Lorenz (chaotic), Goodwin (relaxation), Repressilator (bounded coupling), Selkov low-noise (insufficient exploration), single-variable x²/x³ (no two-variable coupling).</p>
+<p>(4) Formal graded definition of tail-active multiplicative coupling (Definition 2a/2b/2c) — explaining why Selkov's x²y does not produce q > 1 while Brusselator's does.</p>
+<hr>
+<h2>§2 Conditional Derivation</h2>
+<h3>2.1 Exact input from Thermo IV</h3>
+<p>Thermo IV [2] established the exact interpolation family:</p>
+<p>$$e_q(-x) = \left(1 + \frac{x}{K}\right)^{-K}, \quad q = 1 + \frac{1}{K}$$</p>
+<p>and the discrete shielding theorem: if total control x is equally partitioned across K resolvent layers, each coupling x/K, the total kernel is (1 + x/K)^{-K}.</p>
+<p>This paper does not re-derive the Tsallis kernel. It explains why K = T/(n_ch · τ_dec) in continuous-time oscillators.</p>
+<h3>2.2 Lemma 1: Causal correlation volume and renewal slots</h3>
+<p><strong>Lemma 1.</strong> Let the pure-decay component of the radial memory kernel be C_dec(t) = C_dec(0) · e^{-t/τ_dec} (t ≥ 0). Define the one-sided causal correlation time:</p>
+<p>$$\tau_+ := \int_0^\infty \frac{C_{\text{dec}}(t)}{C_{\text{dec}}(0)} dt$$</p>
+<p>Then τ₊ = τ_dec.</p>
+<p><strong>Status: Exact.</strong></p>
+<p><strong>Definition 1 (causal renewal slot).</strong> In a time window of length L, if radial memory is dominated by the exponential kernel e^{-t/τ_dec}, the effective number of causal slots is N_slot(L) := L / τ_dec.</p>
+<p>Lemma 1 and Definition 1 together establish τ_dec as the unit length of a causal memory volume and use that unit to count how many independent causal slots fit inside any time window L.</p>
+<h3>2.3 Lemma 2 and Proposition 1: Exponential-slot resolvent screening</h3>
+<p><strong>Lemma 2 (exponential-slot resolvent lemma).</strong> Let a causal slot's normalized lifetime be U := t/τ_dec, with exponential distribution p(U) = e^{-U} (U ≥ 0). If tail-active f/r screening within the slot attenuates a residual signal at dimensionless intensity c ≥ 0 (conditional transfer factor e^{-cU} given lifetime U), then the slot-averaged transfer function is</p>
+<p>$$R(c) := \mathbb{E}[e^{-cU}] = \int_0^\infty e^{-cU} e^{-U} dU = \frac{1}{1+c}$$</p>
+<p><strong>Status: Exact under exponential-slot assumption.</strong></p>
+<p>Lemma 2 is the key bridge of the entire derivation: it connects an exponential-lifetime causal slot to Thermo IV's single resolvent layer. The resolvent is not an arbitrary choice but the characteristic Laplace transform of exponential renewal. For comparison: a deterministic lifetime (U = 1) gives e^{-c} (Boltzmann); a gamma lifetime (U ~ Γ(a,1)) gives (1+c/a)^{-a}; a → ∞ recovers Boltzmann.</p>
+<p><strong>Proposition 1.</strong> Consider a stable state-coupled oscillator satisfying:</p>
+<p><strong>A1.</strong> A stable limit cycle with period T.</p>
+<p><strong>A2.</strong> n_ch admissible active channels.</p>
+<p><strong>A3.</strong> Each channel receives an effective causal time budget L_ch = T/n_ch per period. (Structural assumption: A3 is an approximation under phase-averaged symmetry. On a stable limit cycle, channels co-evolve at different phases rather than strictly alternating in time. A3 should be understood as equal-share causal contribution under phase averaging.)</p>
+<p><strong>A4.</strong> Radial memory is dominated by an exponential pure-decay mode with time constant τ_dec.</p>
+<p><strong>A5a.</strong> Tail-relevant radial memory has an exponential causal survival kernel: S(t) = e^{-t/τ_dec}.</p>
+<p><strong>A5b.</strong> Within one normalized slot lifetime U = t/τ_dec, tail-active f/r screening acts at dimensionless intensity c, yielding conditional transfer e^{-cU}.</p>
+<p><strong>A5c.</strong> Successive slots renew by Markov-renewal factorization: multi-slot transfer is multiplicative.</p>
+<p><strong>A6.</strong> Under phase averaging, slots within each channel equally share total control x.</p>
+<p>Then each channel's effective shielding depth is</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}$$</p>
+<p>and the channel kernel is (1 + x/K_dyn)^{-K_dyn}, giving</p>
+<p>$$q = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p><strong>Derivation.</strong> By Lemma 1, one causal slot has length τ_dec. By A3, each channel's per-period budget is T/n_ch, giving K_dyn = (T/n_ch)/τ_dec slots. By Lemma 2 and A5a–A5b, each slot's averaged transfer is R(c) = 1/(1+c), i.e., one resolvent layer. By A5c (Markov-renewal independence), K_dyn slots yield ∏(1+c_j)^{-1}. By A6 (equal sharing), c_j = x/K_dyn, so the total transfer is (1+x/K_dyn)^{-K_dyn}. By Thermo IV's exact identity q = 1+1/K, this gives q = 1 + n_ch · τ_dec / T.</p>
+<p><strong>Status: Conditional theorem under A5a–c + structural assumptions A3, A6.</strong> A5 is upgraded from physical identification to conditional theorem: "one causal slot = one resolvent screening layer" is no longer metaphor but a corollary of Lemma 2 + Markov-renewal product structure.</p>
+<h3>2.4 Definition 2: Tail-active multiplicative coupling (graded)</h3>
+<p>Given canonical energy-like observable E(z) and multiplicative coupling term M(z), define the tail-projected gain:</p>
+<p>$$G_M(e) := \mathbb{E}[\Pi_E M(Z) \mid E(Z) = e]$$</p>
+<p>where Π_E M is the projection of M onto the radial/energy direction. In finite data, approximate using high-quantile intervals (e.g., e ∈ [Q₀.₉₀, Q₀.₉₉]). Define the tail-activity index:</p>
+<p>$$\alpha_M := \frac{d \log |G_M(e)|}{d \log e} \quad \text{(tail-relevant range)}$$</p>
+<p><strong>Definition 2a (strongly tail-active):</strong> α_M > 0 asymptotically in the tail-relevant range. The multiplicative term grows with radial departure.</p>
+<p><strong>Definition 2b (weakly tail-active):</strong> α_M > 0 in an intermediate range but saturates at extreme tail. Fluctuations under sufficient noise can explore the unsaturated edge.</p>
+<p><strong>Definition 2c (tail-inactive):</strong> α_M ≈ 0 or G_M(e) converges to a constant in the tail-relevant range.</p>
+<p>Classification:</p>
+<ul>
+<li>Brusselator x²y: along y-nullcline (y = b/x), x²y = bx, α_M ≈ 1. <strong>Strongly tail-active (2a).</strong></li>
+<li>Extended Brusselator: retains x²y. <strong>Strongly tail-active (2a).</strong></li>
+<li>Selkov x²y: along y-nullcline (y = b/(a+x²)), x²y = bx²/(a+x²) → b, α_M → 0. <strong>Weakly tail-active (2b).</strong></li>
+<li>Repressilator Hill function α/(1+p^n): bounded by α, α_M = 0. <strong>Tail-inactive (2c).</strong></li>
+<li>Single-variable x², x³: no two-variable multiplicative coupling. <strong>Tail-inactive (2c).</strong></li>
+</ul>
+<p><strong>Remark.</strong> "Tail-active" is not an algebraic property (whether x²y appears in the equations) but a dynamical property (whether the term continues to grow along the trajectories actually visited by the invariant measure in the tail region).</p>
+<h3>2.5 Proposition 2: Asymmetric channel generalization</h3>
+<p><strong>Proposition 2.</strong> Let channel i receive time share α_i · T (α_i > 0, Σα_i = 1) with radial decay time τ_i. Then:</p>
+<p>$$K_i = \frac{\alpha_i T}{\tau_i}, \quad q_i = 1 + \frac{\tau_i}{\alpha_i T}$$</p>
+<p>$$\Omega_{\text{eff}} = \sum_i q_i = n_{\text{ch}} + \sum_i \frac{\tau_i}{\alpha_i T}$$</p>
+<p>Under equal readout: q_avg = Ω_eff / n_ch. Symmetric limit α_i = 1/n_ch, τ_i = τ_dec recovers the main formula.</p>
+<p><strong>Caveat:</strong> q_avg is an arithmetic-average readout approximation. In genuinely asymmetric cases, the macroscopic q is more likely captured by the dominant channel (carrying the largest variance): q_obs ≈ Σ_i w_i · q_i where w_i = Var_i / Σ_j Var_j.</p>
+<h3>2.6 FPE consistency layer</h3>
+<p>Phase-averaged one-dimensional effective Fokker-Planck equation [13]:</p>
+<p>$$\partial_t P(E,t) = -\partial_E[A(E)P] + \frac{1}{2}\partial_E^2[B(E)P]$$</p>
+<p>Zero-flux stationary condition yields P'/P = (2A−B')/B. For P(E) ∝ (1+βE/K)^{-K}:</p>
+<p>$$\frac{2A(E) - B'(E)}{B(E)} = -\frac{\beta}{1 + \beta E/K}$$</p>
+<p>In Floquet-FPE language: q − 1 = n_ch · ω / (2π · λ_dec), i.e., the ratio of phase rotation rate to radial contraction rate times the channel factor.</p>
+<p><strong>Status: Exact condition (FPE zero-flux); consistency check with the main formula.</strong></p>
+<h3>2.7 Resolvent endpoint and stable corridor</h3>
+<p>The resolvent endpoint K = 1 corresponds to τ_dec = T/n_ch: each channel's period accommodates exactly one causal slot, giving q = 2. If τ_dec > T/n_ch, then K < 1 and q > 2 — radial memory persists across cycles, and the single-period screening interpretation breaks down. This regime is labeled "beyond the one-cycle absorptive corridor."</p>
+<p>Stable applicability corridor: 1 ≤ K < ∞, equivalently 1 ≤ q ≤ 2.</p>
+<hr>
+<h2>§3 Positive Examples</h2>
+<p>Positives are graded into strong positives (formula stably applicable, tail-activity clear) and boundary positives (weakly tail-active or synthetic test systems).</p>
+<h3>3.1 Strong positive: Brusselator (n_ch = 2, chemical oscillation)</h3>
+<p>Published in Thermo V [1]. dx/dt = a+x²y−(b+1)x, dy/dt = bx−x²y [8]. a = 1, b scanned 2.0–5.0. Tail-active (Definition 2a): x²y along y-nullcline gives x²y = bx (unsaturated).</p>
+<p>Representative results (σ = 0.3):</p>
+<table><thead><tr>
+<th>b</th>
+<th>T</th>
+<th>τ_dec</th>
+<th>K_dyn</th>
+<th>q_pred</th>
+<th>q_fit</th>
+<th>Δq</th>
+</tr></thead><tbody>
+<tr>
+<td>2.0</td>
+<td>5.75</td>
+<td>0.315</td>
+<td>9.13</td>
+<td>1.110</td>
+<td>1.117</td>
+<td>+0.007</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>5.75</td>
+<td>0.274</td>
+<td>10.49</td>
+<td>1.095</td>
+<td>1.094</td>
+<td>−0.002</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>5.76</td>
+<td>0.276</td>
+<td>10.43</td>
+<td>1.096</td>
+<td>1.091</td>
+<td>−0.005</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>6.07</td>
+<td>0.263</td>
+<td>11.54</td>
+<td>1.087</td>
+<td>1.103</td>
+<td>+0.016</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>6.39</td>
+<td>0.276</td>
+<td>11.58</td>
+<td>1.086</td>
+<td>1.122</td>
+<td>+0.036</td>
+</tr>
+</tbody></table>
+<p>Core region (b = 2.0–3.5) MAE = 0.008, max |Δq| = 0.016. Full range (b = 2.0–5.0) MAE = 0.022. Deviation increases at b ≥ 4.0 (equal-sharing assumption A6 begins to break down under strong nonlinearity).</p>
+<h3>3.2 Strong positive: Symmetric extended Brusselator (n_ch = 3)</h3>
+<p>dx/dt = a+x²y−(b+1)x, dy/dt = bx−x²y+c·(w−y), dw/dt = d·y−e·w. a = 1, b = 3, symmetric coupling c, d, e. The w channel inherits tail-activity from y's x²y dynamics through linear coupling, giving n_ch = 3.</p>
+<table><thead><tr>
+<th>Coupling</th>
+<th>q_fit</th>
+<th>q(n=2)</th>
+<th>Δq(n=2)</th>
+<th>q(n=3)</th>
+<th>Δq(n=3)</th>
+</tr></thead><tbody>
+<tr>
+<td>c=d=e=0.2</td>
+<td>1.123</td>
+<td>1.096</td>
+<td>+0.027</td>
+<td>1.145</td>
+<td>−0.022</td>
+</tr>
+<tr>
+<td>c=d=e=0.3</td>
+<td>1.131</td>
+<td>1.096</td>
+<td>+0.036</td>
+<td>1.143</td>
+<td>−0.012</td>
+</tr>
+</tbody></table>
+<p>n_ch = 3 is systematically closer than n_ch = 2 under symmetric coupling. The c = d = e = 0.3 case gives clear separation (|Δq| gap = 0.024); c = d = e = 0.2 is weaker (gap = 0.005), requiring error bars for confirmation. The channel-count factor receives cross-system support but does not yet constitute decisive exclusion.</p>
+<h3>3.3 Boundary positive: Selkov (n_ch = 2, glycolysis, weakly tail-active)</h3>
+<p>dx/dt = −x+ay+x²y, dy/dt = b−ay−x²y [12]. a = 0.1, b = 0.6.</p>
+<p>Selkov's x²y is truncated on the deterministic nullcline (y = b/(a+x²) → x²y → b), classifying as weakly tail-active (Definition 2b). At low noise (σ ≤ 0.10), q ≈ 1.0001 — fluctuations cannot reach the unsaturated region. At σ = 0.3, fluctuations push trajectories away from the nullcline, exploring the tail-active edge: q = 1.070.</p>
+<p>q_fit = 1.070, q_pred(n_ch=2) = 1.088, Δq = −0.019.</p>
+<p>Selkov's significance lies in demonstrating that tail-activity is determined by the invariant measure's actual tail exploration, not by the algebraic presence of x²y.</p>
+<h3>3.4 Boundary positive: FHN-parameterized synthetic oscillator (n_ch = 2)</h3>
+<p>dx/dt = x − x²y/3 − y, dy/dt = ε(x+a−by). ε = 0.08, a = 0.7, b = 0.8, σ = 0.1.</p>
+<p>This is a synthetic test system parameterized after FitzHugh-Nagumo [9]: the standard FHN single-variable cubic v³ is replaced by the two-variable coupling x²y. The modified system no longer represents neural dynamics; it tests whether fast-slow systems obey the same period-decay law when tail-active multiplicative coupling is introduced.</p>
+<p>q_fit = 1.459, q_pred(n_ch=2) = 1.410, Δq = +0.049.</p>
+<p>The q value is substantially higher than Brusselator (1.46 vs 1.09) because τ_dec/T is larger. This confirms the formula operates beyond the q ≈ 1.1 small-deviation regime. Currently a single parameter point; further parameter scans are needed.</p>
+<h3>3.5 Positive examples summary</h3>
+<table><thead><tr>
+<th>System</th>
+<th>Grade</th>
+<th>n_ch</th>
+<th>q range</th>
+<th></th>
+<th>Δq</th>
+<th>range</th>
+<th>Tail-activity</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator</td>
+<td>Strong</td>
+<td>2</td>
+<td>1.09–1.12</td>
+<td>0.002–0.016 (core)</td>
+<td>2a (strongly)</td>
+</tr>
+<tr>
+<td>Symm. ext. Brusselator</td>
+<td>Strong</td>
+<td>3</td>
+<td>1.12–1.13</td>
+<td>0.012–0.022</td>
+<td>2a (strongly)</td>
+</tr>
+<tr>
+<td>Selkov (σ=0.3)</td>
+<td>Boundary</td>
+<td>2</td>
+<td>1.07</td>
+<td>0.019</td>
+<td>2b (weakly)</td>
+</tr>
+<tr>
+<td>FHN synthetic</td>
+<td>Boundary</td>
+<td>2</td>
+<td>1.46</td>
+<td>0.049</td>
+<td>2a (synthetic)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§4 Negative Examples: Applicability Boundary</h2>
+<p>Each negative example exposes a specific necessary condition violation.</p>
+<h3>4.1 Lorenz attractor (chaos → q = 1)</h3>
+<p>ẋ = σ(y−x), ẏ = x(ρ−z)−y, ż = xy−βz [14]. σ = 10, ρ = 28, β = 8/3.</p>
+<p>q_fit = 1.0001. Under the canonical observable and fitting protocol of this paper, the Lorenz system's rapid mixing due to a positive Lyapunov exponent (λ₊ = 0.906) drives the q-exponential fit back to q ≈ 1.</p>
+<p><strong>Exposes condition C1:</strong> stable non-chaotic limit cycle is necessary.</p>
+<h3>4.2 Goodwin oscillator (relaxation → unstable q)</h3>
+<p>dx₁ = a/(K^n+x₃^n)−bx₁, dx₂ = αx₁−βx₂, dx₃ = αx₂−βx₃ [15]. n = 12.</p>
+<p>q_fit varies wildly with noise: σ = 0.005 → q = 1.00, σ = 0.02 → q = 1.50, σ = 0.10 → q = 2.09. No stable window. Strong relaxation switching may break the single (T, τ_dec) kernel dominance.</p>
+<p><strong>Exposes condition C2:</strong> smooth oscillation (not relaxation switching) is necessary.</p>
+<h3>4.3 Repressilator (bounded Hill function → q = 1)</h3>
+<p>dp₁ = α/(1+p₃^n)−p₁, cyclic [16]. n = 3.</p>
+<p>q_fit = 1.0001 despite clear oscillation (T ≈ 5, rel_amp = 0.66). Hill function α/(1+p^n) is bounded by α — tail-truncated, producing no heavy tail.</p>
+<p><strong>Exposes condition C5:</strong> tail-active multiplicative coupling is necessary. Bounded functions do not qualify.</p>
+<h3>4.4 Selkov low noise (σ = 0.05 → q = 1)</h3>
+<p>Same Selkov equations, σ = 0.05. q_fit = 1.0001.</p>
+<p>Selkov's x²y saturates on the nullcline (x²y → b). At low noise, fluctuations cannot explore the tail-active edge.</p>
+<p><strong>Exposes conditions C3/C5:</strong> sufficient noise is needed to activate weakly tail-active systems.</p>
+<h3>4.5 Single-variable nonlinearity (x³, x² → q = 1)</h3>
+<p>dx = a+x³−(b+1)x, dy = bx−x³ (cubic, single variable): q = 1.0001.</p>
+<p>dx = a+x²−(b+1)x, dy = bx−x² (quadratic, single variable): q = 1.0001.</p>
+<p><strong>Exposes condition C5:</strong> single-variable nonlinearity does not produce q > 1. Two-variable multiplicative coupling is necessary: in x²y coupling, fluctuations in x are amplified by y (mutual amplifiers), producing super-exponential extreme fluctuations.</p>
+<h3>4.6 Negative examples summary</h3>
+<table><thead><tr>
+<th>System</th>
+<th>Type</th>
+<th>q</th>
+<th>Condition violated</th>
+</tr></thead><tbody>
+<tr>
+<td>Lorenz</td>
+<td>Chaotic</td>
+<td>1.00</td>
+<td>C1 (non-chaotic)</td>
+</tr>
+<tr>
+<td>Goodwin</td>
+<td>Relaxation</td>
+<td>Unstable</td>
+<td>C2 (smooth oscillation)</td>
+</tr>
+<tr>
+<td>Repressilator</td>
+<td>Bounded coupling</td>
+<td>1.00</td>
+<td>C5 (tail-active)</td>
+</tr>
+<tr>
+<td>Selkov low noise</td>
+<td>Insufficient noise</td>
+<td>1.00</td>
+<td>C3 (moderate noise)</td>
+</tr>
+<tr>
+<td>x³ single var</td>
+<td>Single variable</td>
+<td>1.00</td>
+<td>C5 (two-variable coupling)</td>
+</tr>
+<tr>
+<td>x² single var</td>
+<td>Single variable</td>
+<td>1.00</td>
+<td>C5 (two-variable coupling)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§5 Applicability Conditions</h2>
+<h3>5.1 Seven necessary conditions</h3>
+<p><strong>C1. Stable non-chaotic limit cycle.</strong> A clear period T must exist. Chaotic mixing via positive Lyapunov exponents drives q toward 1.</p>
+<p><strong>C2. Smooth oscillation, not strong relaxation switching.</strong> Relaxation oscillation may lack a single stable q window.</p>
+<p><strong>C3. Moderate-noise absorptive regime.</strong> Inherited from Thermo III [3]. Too little noise: insufficient tail statistics. Too much noise: deterministic structure drowned.</p>
+<p><strong>C4. ACF has a clean damped-oscillation + pure-decay decomposition.</strong> T and τ_dec must be reliably extractable from the same ACF.</p>
+<p><strong>C5. Tail-active multiplicative f/r opposition.</strong> The multiplicative coupling term must not saturate in the tail-relevant range (Definition 2a/2b). Strongly tail-active (2a) systems yield strong positives; weakly tail-active (2b) systems yield boundary positives under sufficient noise. Tail-inactive (2c) systems give q = 1.</p>
+<p><strong>C6. Active channel count.</strong> n_ch counts channels participating in tail-active multiplicative feedback, not raw state-variable count.</p>
+<p><strong>C7. Canonical energy-like observable.</strong> q must be extracted on r² or equivalent. Thermo IV's reparametrization lemma [2] shows that arbitrary observable choices break q comparability.</p>
+<h3>5.2 Eligible system class</h3>
+<p>Tail-active multiplicative state-coupled absorptive oscillators. Not all nonequilibrium systems, not all oscillators, not all systems with multiplicative terms.</p>
+<h3>5.3 Stable corridor</h3>
+<p>1 ≤ K_dyn < ∞, equivalently 1 ≤ q ≤ 2. The resolvent endpoint (K = 1, q = 2) corresponds to τ_dec = T/n_ch. Beyond (K < 1, q > 2): cross-cycle memory persistence, outside the one-cycle absorptive corridor.</p>
+<hr>
+<h2>§6 Status Map and Open Problems</h2>
+<h3>6.1 Status map</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>q = 1+1/K</td>
+<td>Exact (Thermo IV)</td>
+</tr>
+<tr>
+<td>K-layer equal-weight screening → (1+x/K)^{-K}</td>
+<td>Exact (Thermo IV)</td>
+</tr>
+<tr>
+<td>τ₊ = τ_dec (causal correlation volume)</td>
+<td>Exact (Lemma 1)</td>
+</tr>
+<tr>
+<td>E[e^{-cU}] = 1/(1+c) (exponential lifetime → resolvent)</td>
+<td>Exact (Lemma 2)</td>
+</tr>
+<tr>
+<td>Per-channel T/n_ch (time sharing)</td>
+<td>Structural assumption (A3)</td>
+</tr>
+<tr>
+<td>One causal slot = one screening layer</td>
+<td><strong>Conditional theorem under A5a–c</strong></td>
+</tr>
+<tr>
+<td>K_dyn = T/(n_ch · τ_dec)</td>
+<td>Conditional theorem + empirical support</td>
+</tr>
+<tr>
+<td>q = 1 + n_ch · τ_dec / T</td>
+<td>Conditional theorem + empirical support</td>
+</tr>
+<tr>
+<td>Tail-active graded definition</td>
+<td>Definition 2a/2b/2c + examples</td>
+</tr>
+<tr>
+<td>n_ch from channel time-sharing</td>
+<td>Cross-system supported (n=2 and n=3)</td>
+</tr>
+<tr>
+<td>Asymmetric Ω_eff = n_ch + Σ τ_i/(α_i T)</td>
+<td>Conditional corollary (readout approx.)</td>
+</tr>
+<tr>
+<td>FPE zero-flux condition</td>
+<td>Exact (consistency layer)</td>
+</tr>
+<tr>
+<td>Formula applies to tail-active multiplicative oscillators</td>
+<td>Current strongest claim</td>
+</tr>
+<tr>
+<td>Formula applies to all oscillators</td>
+<td>False</td>
+</tr>
+</tbody></table>
+<h3>6.2 Open problems</h3>
+<ol>
+<li><strong>Empirical testing of A5a–c.</strong> Lemma 2 upgraded A5 from physical identification to conditional theorem. Can A5a (exponential survival) and A5c (Markov-renewal independence) be directly tested from Brusselator time-series data, e.g., by checking residual independence across adjacent τ_dec intervals?</li>
+</ol>
+<ol>
+<li><strong>Non-oscillatory systems.</strong> The formula depends on oscillation period T. What quantity replaces T in non-oscillatory systems (DP recursion, Schlögl model)?</li>
+</ol>
+<ol>
+<li><strong>General definition of n_ch.</strong> Currently defined as the number of channels participating in tail-active multiplicative feedback. How is n_ch determined in more complex systems (multi-frequency, multi-attractor)?</li>
+</ol>
+<ol>
+<li><strong>Experimental verification of asymmetric channels.</strong> Proposition 2 provides the unequal-share version K_i = α_i T/τ_i, but no systematic experiment has tested α_i ≠ 1/n_ch.</li>
+</ol>
+<ol>
+<li><strong>Connection to the Lyapunov spectrum.</strong> Under weak noise, τ_dec ≈ 1/|λ₋|, giving q = 1 + n_ch/(T · |λ₋|). At the chaos-period boundary, both |λ₋| and T vary simultaneously — does q exhibit phase-transition behavior at that boundary?</li>
+</ol>
+<ol>
+<li><strong>Can tail-activity be predicted from equation coefficients?</strong> Currently requires nullcline analysis. Can it be determined from the Jacobian or simpler algebraic properties?</li>
+</ol>
+<hr>
+<h2>Methods</h2>
+<p>All SDEs integrated via Euler-Maruyama. Brusselator: dt = 0.005, 2M–3M total steps, 200K–300K burn-in, random seed 42. Extended Brusselator and diagnostic systems: same parameters. Selkov: dt = 0.005. FHN synthetic oscillator: dt = 0.005.</p>
+<p>q_fit extraction: CCDF global fit of Tsallis q-exponential on canonical observable r², fitting interval above median (E > median(r²)), Nelder-Mead optimization. Location/scale parameters not fixed. MLE robustification deferred to future work [10, 11].</p>
+<p>ACF extraction: from de-meaned x-channel (or f-channel) time series. Fitting model: C(τ) = w₁ · e^{-g₁τ} · cos(ωτ) + w₂ · e^{-g₂τ}. T from ACF first minimum t_min (T = 2 · t_min). τ_dec = 1/g₂. Fitting window: lag 1 to min(150–200 lag points, max_lag).</p>
+<p>n_ch determination: for each system, q was predicted with n_ch = n_var−1, n_var, n_var+1; the value closest to q_fit was selected. In all positive examples, the best n_ch equaled the state-variable count n_var.</p>
+<p>Error propagation: τ_dec fitting uncertainty (typically 10–15%) propagates directly to q_pred. Pointwise bootstrap CIs are not yet provided; this is an implementation-level degree of freedom (cf. Thermo V §6.2).</p>
+<hr>
+<h2>References</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper V: The Channel-Normalized Winding Ratio," Zenodo (2026). DOI: 10.5281/zenodo.19649780.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper IV: Toward a First-Principles Derivation of the Tsallis q Parameter," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of η," Zenodo (2026). DOI: 10.5281/zenodo.19597684.</p>
+<p>[4] H. Qin, "ZFCρ Thermodynamics Paper II: η ≈ 0.20 Mechanism," Zenodo (2025). DOI: 10.5281/zenodo.19511064.</p>
+<p>[5] H. Qin, "ZFCρ Thermodynamics Paper I: η Exists," Zenodo (2025). DOI: 10.5281/zenodo.19310282.</p>
+<p>[6] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[7] C. Tsallis, <em>Introduction to Nonextensive Statistical Mechanics</em> (Springer, 2009).</p>
+<p>[8] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968).</p>
+<p>[9] R. FitzHugh, "Impulses and physiological states in theoretical models of nerve membrane," <em>Biophysical Journal</em> <strong>1</strong>, 445–466 (1961).</p>
+<p>[10] C. R. Shalizi, "Maximum Likelihood Estimation for q-Exponential (Tsallis) Distributions," arXiv:math/0701854 (2007).</p>
+<p>[11] A. Clauset, C. R. Shalizi, and M. E. J. Newman, "Power-law distributions in empirical data," <em>SIAM Review</em> <strong>51</strong>, 661–703 (2009).</p>
+<p>[12] E. E. Selkov, "Self-oscillations in glycolysis," <em>European Journal of Biochemistry</em> <strong>4</strong>, 79–86 (1968).</p>
+<p>[13] H. Risken, <em>The Fokker–Planck Equation: Methods of Solution and Applications</em>, 2nd ed. (Springer, 1996).</p>
+<p>[14] E. N. Lorenz, "Deterministic nonperiodic flow," <em>Journal of the Atmospheric Sciences</em> <strong>20</strong>, 130–141 (1963).</p>
+<p>[15] B. C. Goodwin, "Oscillatory behavior in enzymatic control processes," <em>Advances in Enzyme Regulation</em> <strong>3</strong>, 425–438 (1965).</p>
+<p>[16] M. B. Elowitz and S. Leibler, "A synthetic oscillatory network of transcriptional regulators," <em>Nature</em> <strong>403</strong>, 335–338 (2000).</p>
+    </div>
+  </div>
+
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Thermo V（DOI: 10.5281/zenodo.19649780）建立了经验动力学律q = 1 + n_ch·τ_dec/T，但未解释为什么K等于通道归一化卷绕比。本文给出条件性推导，并通过跨领域正例与负例系统刻画公式的适用边界。
+
+条件性推导分四步。（1）Lemma 1：指数ACF的因果相关体积恰好等于τ_dec（exact）。（2）Lemma 2：指数寿命的Laplace变换恰好等于resolvent 1/(1+c)（exact）——这是将因果槽和Thermo IV屏蔽层精确接上的关键桥。（3）Proposition 1：在A1-A6条件下（其中A5细分为指数survival、exposure attenuation和Markov-renewal factorization三个子条件），每通道有效屏蔽层数K_dyn = T/(n_ch·τ_dec)，代入Thermo IV的精确插值族得q = 1+n_ch·τ_dec/T（conditional theorem）。（4）Proposition 2：不对称通道推广，K_i = α_i·T/τ_i，退化到对称公式。Fokker-Planck零流条件给出q-exponential稳态解的drift-diffusion约束作为consistency layer。
+
+跨多个动力学类别的正例与边界正例支持该公式：Brusselator化学振荡器（n_ch=2，14个参数点，MAE=0.022）和对称扩展Brusselator（n_ch=3）作为强正例；Selkov糖酵解模型（n_ch=2，weakly tail-active）和FHN-parameterized合成振荡器（n_ch=2）作为边界正例。六个负例系统刻画适用边界：混沌系统（Lorenz）、relaxation振荡（Goodwin）、有界耦合（Repressilator）、单变量非线性（x²、x³）各自违反不同的必要条件。
+
+核心发现：q > 1需要两变量乘法耦合，但不是任意乘法耦合——Selkov虽有x²y项，但该项在动力学尾部被nullcline截断（x²y → b），因此不产生重尾。Brusselator的x²y沿nullcline不被截断（x²y ~ bx），在尾部持续active。"tail-active"的关键不是代数形式，是动力学中乘法项在尾部是否饱和。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 热力学, 因果相关体积, 尾部活跃耦合, 通道归一化卷绕比, Tsallis q</div>
+    </div>
+    <div class="paper-body">
+<h2>摘要</h2>
+<p>Thermo V（DOI: 10.5281/zenodo.19649780）建立了经验动力学律q = 1 + n_ch·τ_dec/T，但未解释为什么K等于通道归一化卷绕比。本文给出条件性推导，并通过跨领域正例与负例系统刻画公式的适用边界。</p>
+<p>条件性推导分四步。（1）Lemma 1：指数ACF的因果相关体积恰好等于τ_dec（exact）。（2）Lemma 2：指数寿命的Laplace变换恰好等于resolvent 1/(1+c)（exact）——这是将因果槽和Thermo IV屏蔽层精确接上的关键桥。（3）Proposition 1：在A1-A6条件下（其中A5细分为指数survival、exposure attenuation和Markov-renewal factorization三个子条件），每通道有效屏蔽层数K_dyn = T/(n_ch·τ_dec)，代入Thermo IV的精确插值族得q = 1+n_ch·τ_dec/T（conditional theorem）。（4）Proposition 2：不对称通道推广，K_i = α_i·T/τ_i，退化到对称公式。Fokker-Planck零流条件给出q-exponential稳态解的drift-diffusion约束作为consistency layer。</p>
+<p>跨多个动力学类别的正例与边界正例支持该公式：Brusselator化学振荡器（n_ch=2，14个参数点，MAE=0.022）和对称扩展Brusselator（n_ch=3）作为强正例；Selkov糖酵解模型（n_ch=2，weakly tail-active）和FHN-parameterized合成振荡器（n_ch=2）作为边界正例。六个负例系统刻画适用边界：混沌系统（Lorenz）、relaxation振荡（Goodwin）、有界耦合（Repressilator）、单变量非线性（x²、x³）各自违反不同的必要条件。</p>
+<p>核心发现：q > 1需要两变量乘法耦合，但不是任意乘法耦合——Selkov虽有x²y项，但该项在动力学尾部被nullcline截断（x²y → b），因此不产生重尾。Brusselator的x²y沿nullcline不被截断（x²y ~ bx），在尾部持续active。"tail-active"的关键不是代数形式，是动力学中乘法项在尾部是否饱和。</p>
+<hr>
+<h2>§1 问题：为什么K等于通道归一化卷绕比？</h2>
+<h3>1.1 Thermo V的经验律</h3>
+<p>Thermo V[1]建立了</p>
+<p>$$q = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p>并在Brusselator的b = 2.2-5.0扫描中给出MAE = 0.022的零参数预测。该公式不依赖采样步长τ，只需要两个宏观时间尺度：振荡周期T和径向衰减时间τ_dec。</p>
+<p>但Thermo V没有解释<strong>为什么</strong>K等于T/(n_ch·τ_dec)。公式的地位是empirical dynamical law。</p>
+<h3>1.2 本文的问题</h3>
+<p>从什么物理原理推出：连续时间振荡器的有效反馈阶数K_dyn恰好等于"每通道在一个振荡周期内可容纳的因果相关体积数"？</p>
+<h3>1.3 本文的贡献</h3>
+<p>（1）条件性推导：Lemma 1（exact） + Proposition 1（conditional） + Proposition 2（不对称推广） + FPE consistency layer。</p>
+<p>（2）强正例：Brusselator（化学，n_ch=2）、对称扩展Brusselator（化学，n_ch=3）。边界正例：Selkov（糖酵解，n_ch=2，weakly tail-active）、FHN-parameterized合成振荡器（n_ch=2）。</p>
+<p>（3）负例边界刻画：Lorenz（混沌）、Goodwin（relaxation）、Repressilator（有界耦合）、Selkov低噪（噪声不足）、x³/x²单变量（无两变量耦合）。</p>
+<p>（4）tail-active multiplicative coupling的形式化定义——解释了为什么Selkov的x²y不产生q > 1而Brusselator的x²y产生。</p>
+<hr>
+<h2>§2 条件性推导</h2>
+<h3>2.1 Thermo IV的精确输入</h3>
+<p>Thermo IV[2]已给出精确插值族：</p>
+<p>$$e_q(-x) = \left(1 + \frac{x}{K}\right)^{-K}, \quad q = 1 + \frac{1}{K}$$</p>
+<p>以及离散屏蔽定理：若总控制量x被等权分配到K个resolvent层，每层耦合x/K，则总核为(1+x/K)^{-K}。</p>
+<p>因此本文不需要重新证明Tsallis kernel。只需要解释为什么连续时间振荡器中K = T/(n_ch·τ_dec)。</p>
+<h3>2.2 Lemma 1：因果相关体积与更新槽</h3>
+<p><strong>Lemma 1.</strong> 设径向记忆核的纯衰减部分为C_dec(t) = C_dec(0)·e^{-t/τ_dec}（t ≥ 0）。定义一侧因果相关时间：</p>
+<p>$$\tau_+ := \int_0^\infty \frac{C_{\text{dec}}(t)}{C_{\text{dec}}(0)} dt$$</p>
+<p>则τ₊ = τ_dec。</p>
+<p><strong>推导.</strong> τ₊ = ∫₀^∞ e^{-t/τ_dec} dt = τ_dec。</p>
+<p><strong>状态：Exact。</strong></p>
+<p><strong>Definition 1（因果更新槽）.</strong> 在时间窗口L内，若径向记忆由指数核e^{-t/τ_dec}主导，定义有效因果槽数为</p>
+<p>$$N_{\text{slot}}(L) := \frac{L}{\tau_{\text{dec}}}$$</p>
+<p>当N_slot非整数时，核(1+x/K)^{-K}按Thermo IV的K > 0连续参数形式理解。</p>
+<p>Lemma 1和Definition 1合在一起做一件事：把ACF的时间常数τ_dec定义为因果记忆体积的单位长度，然后用这个单位去度量任意时间窗口L内可容纳多少个独立的因果槽。注意这里使用因果单侧积分[0,∞)，不是时间平均中常见的双侧effective sample size。</p>
+<h3>2.3 Proposition 1：相关体积屏蔽命题</h3>
+<p><strong>Lemma 2（exponential-slot resolvent lemma）.</strong> 设一个因果相关槽的归一化寿命为U := t/τ_dec，并假设该槽的记忆寿命服从指数分布p(U) = e^{-U}（U ≥ 0）。若在该槽内，tail-active f/r屏蔽事件以无量纲强度c ≥ 0连续衰减残差信号（给定寿命U时的传递因子为e^{-cU}），则经过该槽平均后的单槽传递函数为</p>
+<p>$$R(c) := \mathbb{E}[e^{-cU}] = \int_0^\infty e^{-cU} e^{-U} dU = \frac{1}{1+c}$$</p>
+<p><strong>推导.</strong> R(c) = ∫₀^∞ e^{-(1+c)U} dU = 1/(1+c)。</p>
+<p><strong>状态：Exact lemma under exponential-slot assumption。</strong></p>
+<p>Lemma 2是整个推导的关键桥：它把指数寿命的因果槽和Thermo IV的resolvent层精确接上。resolvent不是任意选择，而是指数renewal lifetime的Laplace变换的特征形态。作为对比：deterministic寿命（U=1）给e^{-c}（Boltzmann），gamma寿命（U~Γ(a,1)）给(1+c/a)^{-a}（a-stage renewal），a→∞退化为Boltzmann。</p>
+<p><strong>Proposition 1.</strong> 考虑一个稳定的状态耦合振荡器。设：</p>
+<p><strong>A1.</strong> 存在稳定极限环，周期为T。</p>
+<p><strong>A2.</strong> 系统有n_ch个admissible active channels。</p>
+<p><strong>A3.</strong> 在一个周期内，每通道获得的有效因果时间预算为L_ch = T/n_ch。（结构假设：A3是对称情况下相位平均的近似。在稳定极限环上，各通道在不同相位共同演化而非严格交替占用时间。A3应理解为相位平均下的等权因果份额，而非时间分片。精确的通道分时机制留待未来工作。）</p>
+<p><strong>A4.</strong> 径向记忆由指数pure-decay mode主导，时间常数为τ_dec。</p>
+<p><strong>A5a.</strong> tail-relevant radial memory具有指数因果survival kernel：S(t) = e^{-t/τ_dec}。</p>
+<p><strong>A5b.</strong> 在一个归一化槽寿命U = t/τ_dec内，tail-active f/r屏蔽以无量纲强度c连续作用，使条件传递为e^{-cU}。</p>
+<p><strong>A5c.</strong> 相邻槽在给定边界状态后按Markov-renewal方式更新，因此多槽传递可乘。</p>
+<p><strong>A6.</strong> 在相位平均意义下，通道内各slot等权分享总控制量x。</p>
+<p>则每通道有效屏蔽层数为</p>
+<p>$$K_{\text{dyn}} = \frac{L_{\text{ch}}}{\tau_{\text{dec}}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}$$</p>
+<p>并且该通道上的kernel为(1 + x/K_dyn)^{-K_dyn}。因此</p>
+<p>$$q = 1 + \frac{1}{K_{\text{dyn}}} = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p><strong>推导.</strong> 由Lemma 1，一个因果槽的长度为τ_dec。由A3，每通道在一个周期内的因果时间预算为T/n_ch，故每通道可容纳K_dyn = (T/n_ch)/τ_dec个因果槽。由Lemma 2和A5a-A5b，每个因果槽的平均传递函数为R(c) = 1/(1+c)，即一个resolvent层。由A5c（Markov-renewal独立），K_dyn个槽的总传递为∏(1+c_j)^{-1}。由A6（等权分享），c_j = x/K_dyn，故总传递 = (1+x/K_dyn)^{-K_dyn}。由Thermo IV精确插值族q = 1+1/K，得q = 1+n_ch·τ_dec/T。</p>
+<p><strong>状态：Conditional theorem under A5a-A5c + structural assumptions A3, A6。</strong> A5从physical identification升级为conditional theorem——"一个因果槽=一个resolvent屏蔽层"不再是比喻，而是Lemma 2 + Markov-renewal乘积结构的推论。A5a-A5c是结构假设，不是从ACF单独推出。</p>
+<h3>2.4 Definition 2：tail-active multiplicative coupling（分级定义）</h3>
+<p>给定canonical energy-like observable E(z)和乘法耦合项M(z)，定义tail-projected gain：</p>
+<p>$$G_M(e) := \mathbb{E}[\Pi_E M(Z) \mid E(Z) = e]$$</p>
+<p>其中Π_E M是M对径向/能量方向的投影。在有限数据中，以高分位区间（如e ∈ [Q₀.₉₀, Q₀.₉₉]）近似。定义tail-activity index：</p>
+<p>$$\alpha_M := \frac{d \log |G_M(e)|}{d \log e} \quad \text{(tail-relevant range)}$$</p>
+<p><strong>Definition 2a（strongly tail-active）：</strong> α_M > 0在tail-relevant range渐近成立。乘法项在尾部持续增长。</p>
+<p><strong>Definition 2b（weakly tail-active）：</strong> α_M > 0在intermediate range成立，但在极端尾部趋向饱和。涨落在足够噪声下可以探索到未饱和区域。</p>
+<p><strong>Definition 2c（tail-inactive）：</strong> α_M ≈ 0或G_M(e)在tail-relevant range收敛到常数。乘法项在尾部饱和。</p>
+<p>分类：</p>
+<ul>
+<li>Brusselator的x²y：沿y-nullcline（y = b/x），x²y = bx，α_M ≈ 1。<strong>Strongly tail-active（2a）。</strong></li>
+<li>扩展Brusselator：保留x²y，<strong>strongly tail-active（2a）。</strong></li>
+<li>Selkov的x²y：沿y-nullcline（y = b/(a+x²)），x²y = bx²/(a+x²) → b，α_M → 0。<strong>Weakly tail-active（2b）</strong>——在intermediate x有增长，但大x饱和。σ ≥ 0.3时涨落可探索未饱和边缘。</li>
+<li>Repressilator的Hill函数α/(1+p^n)：有界于α，α_M = 0。<strong>Tail-inactive（2c）。</strong></li>
+<li>单变量x²、x³：无两变量乘法耦合。<strong>Tail-inactive（2c）。</strong></li>
+</ul>
+<p><strong>注记.</strong> "tail-active"不是代数性质（方程中是否出现x²y），而是<strong>动力学性质</strong>（该项在系统invariant measure实际访问的尾部轨道上是否继续随偏离增长）。代数上相同的x²y项在不同动力学系统中可以属于不同的tail-activity等级。</p>
+<h3>2.5 Proposition 2：不对称通道推广</h3>
+<p><strong>Proposition 2.</strong> 设系统有n_ch个active channels。通道i获得周期时间份额α_i·T（α_i > 0，Σα_i = 1），径向衰减时间为τ_i。则通道i的有效反馈阶数和分布参数为</p>
+<p>$$K_i = \frac{\alpha_i T}{\tau_i}, \quad q_i = 1 + \frac{\tau_i}{\alpha_i T}$$</p>
+<p>总屏蔽预算为</p>
+<p>$$\Omega_{\text{eff}} = \sum_i q_i = n_{\text{ch}} + \sum_i \frac{\tau_i}{\alpha_i T}$$</p>
+<p>若observable对所有通道等权读取，则</p>
+<p>$$q_{\text{avg}} = \frac{\Omega_{\text{eff}}}{n_{\text{ch}}} = 1 + \frac{1}{n_{\text{ch}}} \sum_i \frac{\tau_i}{\alpha_i T}$$</p>
+<p>对称条件α_i = 1/n_ch，τ_i = τ_dec退回主公式q = 1 + n_ch·τ_dec/T。</p>
+<p><strong>Caveat：</strong> q_avg = Ω_eff/n_ch是通道预算的算术平均读取近似。在真正不对称情形，不同q_i的混合分布一般不是精确的q-exponential。macroscopic observable的q更可能由主导通道（携带最大方差的通道）截获：q_obs ≈ Σ_i w_i·q_i，其中w_i = Var_i/Σ_j Var_j是方差权重。对称情况下所有w_i = 1/n_ch，退回等权公式。</p>
+<p><strong>状态：Conditional corollary within Thermo IV channel-budget model。对称退化检查exact；不对称情形为readout approximation。</strong></p>
+<h3>2.6 FPE consistency layer</h3>
+<p>令E为canonical energy-like observable。相位平均后的一维有效Fokker-Planck方程[13]：</p>
+<p>$$\partial_t P(E,t) = -\partial_E[A(E)P] + \frac{1}{2}\partial_E^2[B(E)P]$$</p>
+<p>稳态零流条件J(E) = 0给出P'(E)/P(E) = (2A(E)-B'(E))/B(E)。若P(E) ∝ (1+βE/K)^{-K}，则P'/P = -β/(1+βE/K)。因此精确条件为</p>
+<p>$$\frac{2A(E) - B'(E)}{B(E)} = -\frac{\beta}{1 + \beta E/K}$$</p>
+<p>这是FPE框架下q-exponential稳态解P(E) ∝ (1+βE/K)^{-K}的精确条件。</p>
+<p>在Floquet-FPE语言中：</p>
+<p>$$q - 1 = \frac{n_{\text{ch}} \cdot \omega}{2\pi \cdot \lambda_{\text{dec}}}$$</p>
+<p>其中ω = 2π/T是相位旋转率，λ_dec = 1/τ_dec是径向收缩率。q-1是相位旋转率与径向收缩率之比乘以通道因子。</p>
+<p><strong>状态：Exact condition（FPE零流）；与Thermo VI主公式的consistency check。</strong></p>
+<h3>2.7 Resolvent端点与稳定走廊</h3>
+<p>Resolvent端K = 1对应τ_dec = T/n_ch。此时每通道周期只能容纳一个因果槽：</p>
+<p>$$\tau_{\text{dec}} = \frac{T}{n_{\text{ch}}} \Leftrightarrow K = 1 \Leftrightarrow q = 2$$</p>
+<p>若τ_dec > T/n_ch，则K < 1，q > 2。旧的径向记忆跨周期残留，单周期screening slots解释失效。标为"beyond the one-cycle absorptive corridor"。</p>
+<p>稳定适用走廊：1 ≤ K < ∞，即1 ≤ q ≤ 2。</p>
+<hr>
+<h2>§3 正例系统</h2>
+<p>正例分为强正例（公式稳定适用，tail-activity清晰）和边界正例（weakly tail-active或合成测试系统）。</p>
+<h3>3.1 强正例：Brusselator（n_ch = 2，化学振荡）</h3>
+<p>已在Thermo V[1]发布。dx/dt = a+x²y-(b+1)x, dy/dt = bx-x²y[8]。a=1, b扫描2.0-5.0。Tail-active（Definition 2a）：x²y沿y-nullcline给x²y = bx（不饱和）。</p>
+<p>代表性结果（σ=0.3）：</p>
+<table><thead><tr>
+<th>b</th>
+<th>T</th>
+<th>τ_dec</th>
+<th>K_dyn</th>
+<th>q_pred</th>
+<th>q_fit</th>
+<th>Δq</th>
+</tr></thead><tbody>
+<tr>
+<td>2.0</td>
+<td>5.75</td>
+<td>0.315</td>
+<td>9.13</td>
+<td>1.110</td>
+<td>1.117</td>
+<td>+0.007</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>5.75</td>
+<td>0.274</td>
+<td>10.49</td>
+<td>1.095</td>
+<td>1.094</td>
+<td>-0.002</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>5.76</td>
+<td>0.276</td>
+<td>10.43</td>
+<td>1.096</td>
+<td>1.091</td>
+<td>-0.005</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>6.07</td>
+<td>0.263</td>
+<td>11.54</td>
+<td>1.087</td>
+<td>1.103</td>
+<td>+0.016</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>6.39</td>
+<td>0.276</td>
+<td>11.58</td>
+<td>1.086</td>
+<td>1.122</td>
+<td>+0.036</td>
+</tr>
+</tbody></table>
+<p>b = 2.0-3.5范围（core region）MAE = 0.008，最大|Δq| = 0.016。b = 2.0-5.0全范围MAE = 0.022（与Thermo V一致）。b ≥ 4.0偏差增大（强非线性下equal-sharing假设A6开始breakdown）。</p>
+<h3>3.2 强正例：对称扩展Brusselator（n_ch = 3）</h3>
+<p>dx/dt = a+x²y-(b+1)x, dy/dt = bx-x²y+c·(w-y), dw/dt = d·y-e·w。a=1, b=3, 耦合参数c, d, e取对称值。w通道通过与y的线性耦合间接继承x²y的tail-activity，因此n_ch=3。这种间接继承的一般条件留待开放问题。</p>
+<table><thead><tr>
+<th>耦合</th>
+<th>q_fit</th>
+<th>q(n=2)</th>
+<th>Δq(n=2)</th>
+<th>q(n=3)</th>
+<th>Δq(n=3)</th>
+</tr></thead><tbody>
+<tr>
+<td>c=d=e=0.2</td>
+<td>1.123</td>
+<td>1.096</td>
+<td>+0.027</td>
+<td>1.145</td>
+<td>-0.022</td>
+</tr>
+<tr>
+<td>c=d=e=0.3</td>
+<td>1.131</td>
+<td>1.096</td>
+<td>+0.036</td>
+<td>1.143</td>
+<td>-0.012</td>
+</tr>
+</tbody></table>
+<p>对称耦合下n_ch=3系统性优于n_ch=2，其中c=d=e=0.3的区分较清楚（|Δq|差距0.024）；c=d=e=0.2的区分较弱（|Δq|差距仅0.005），需要误差条确认。n_ch的通道计数因子获得跨系统支持，但尚未达到决定性排除。</p>
+<h3>3.3 边界正例：Selkov（n_ch = 2，糖酵解，weakly tail-active）</h3>
+<p>dx/dt = -x+ay+x²y, dy/dt = b-ay-x²y[12]。a=0.1, b=0.6。</p>
+<p>Selkov的x²y在deterministic nullcline上被截断（y = b/(a+x²)→x²y→b），属于weakly tail-active（Definition 2b）。在低噪声（σ ≤ 0.10）下q ≈ 1.0001——涨落无法探索到未饱和区域。σ = 0.3时涨落推离nullcline，探索tail-active边缘，出现q = 1.070。</p>
+<p>q_fit = 1.070, q_pred(n_ch=2) = 1.088, Δq = -0.019。</p>
+<p>Selkov的信息量在于：它不是和Brusselator同等级的正例，而是说明<strong>tail-activity是由invariant measure实际访问的尾部决定的，不是由方程的代数项决定的</strong>。</p>
+<h3>3.4 边界正例：FHN-parameterized合成振荡器（n_ch = 2）</h3>
+<p>dx/dt = x - x²y/3 - y, dy/dt = ε(x+a-by)。ε=0.08, a=0.7, b=0.8, σ=0.1。</p>
+<p>这是一个FitzHugh-Nagumo参数化的合成测试系统：标准FHN[9]的单变量三次项v³被替换为双变量x²y耦合。修改后的系统与真正的神经元动力学不再等价，但它测试的是：<strong>快慢系统在引入tail-active multiplicative coupling后是否服从同一period-decay law。</strong></p>
+<p>q_fit = 1.459, q_pred(n_ch=2) = 1.410, Δq = +0.049。</p>
+<p>q值显著高于Brusselator（1.46 vs 1.09），因为τ_dec/T更大——FHN的径向衰减慢于其振荡。这证明公式不局限于q ≈ 1.1附近的小偏差区域。当前只有单参数点，需要进一步的参数扫描确认稳健性。</p>
+<h3>3.5 正例汇总</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>等级</th>
+<th>n_ch</th>
+<th>q范围</th>
+<th></th>
+<th>Δq</th>
+<th>范围</th>
+<th>tail-activity</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator</td>
+<td>强正例</td>
+<td>2</td>
+<td>1.09-1.12</td>
+<td>0.002-0.016 (core)</td>
+<td>2a（strongly）</td>
+</tr>
+<tr>
+<td>对称扩展Brusselator</td>
+<td>强正例</td>
+<td>3</td>
+<td>1.12-1.13</td>
+<td>0.012-0.022</td>
+<td>2a（strongly）</td>
+</tr>
+<tr>
+<td>Selkov (σ=0.3)</td>
+<td>边界正例</td>
+<td>2</td>
+<td>1.07</td>
+<td>0.019</td>
+<td>2b（weakly）</td>
+</tr>
+<tr>
+<td>FHN合成振荡器</td>
+<td>边界正例</td>
+<td>2</td>
+<td>1.46</td>
+<td>0.049</td>
+<td>2a（synthetic）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§4 负例系统：适用边界刻画</h2>
+<p>每个负例精确暴露一个必要条件的违反。</p>
+<h3>4.1 Lorenz吸引子（混沌→q=1）</h3>
+<p>ẋ=σ(y-x), ẏ=x(ρ-z)-y, ż=xy-βz[14]。σ=10, ρ=28, β=8/3。</p>
+<p>q_fit = 1.0001。在本文的canonical observable与拟合协议下，Lorenz的正Lyapunov指数（λ₊=0.906）导致的快速混合使q-exponential拟合回到q≈1。</p>
+<p><strong>暴露条件C1：</strong> 稳定极限环（非混沌）是必要条件。</p>
+<h3>4.2 Goodwin振荡器（relaxation→q不稳定）</h3>
+<p>dx₁=a/(K^n+x₃^n)-bx₁, dx₂=αx₁-βx₂, dx₃=αx₂-βx₃[15]。n=12。</p>
+<p>q_fit随噪声剧变：σ=0.005→q=1.00，σ=0.02→q=1.50，σ=0.10→q=2.09。无stable window。强relaxation switching可能破坏单一(T, τ_dec)对同一个kernel的支配，从而没有稳定q window。</p>
+<p><strong>暴露条件C2：</strong> 平滑振荡（非relaxation switching）是必要条件。</p>
+<h3>4.3 Repressilator（有界Hill函数→q=1）</h3>
+<p>dp₁=α/(1+p₃^n)-p₁，循环[16]。n=3。</p>
+<p>q_fit = 1.0001。尽管振荡清晰（T≈5，rel_amp=0.66）。Hill函数α/(1+p^n)有界于α→尾部截断→无重尾。</p>
+<p><strong>暴露条件C5：</strong> tail-active multiplicative coupling。有界函数不满足。</p>
+<h3>4.4 Selkov低噪声（σ=0.05→q=1）</h3>
+<p>同Selkov方程，σ=0.05。q_fit = 1.0001。</p>
+<p>Selkov的x²y在nullcline上被截断（x²y→b）。低噪声下涨落无法探索尾部的tail-active边缘。</p>
+<p><strong>暴露条件C3/C5：</strong> 需要sufficient noise才能在（弱）tail-active系统中看到q>1。</p>
+<h3>4.5 单变量非线性（x³、x²→q=1）</h3>
+<p>dx = a+x³-(b+1)x, dy = bx-x³（x³单变量）：q=1.0001。</p>
+<p>dx = a+x²-(b+1)x, dy = bx-x²（x²单变量）：q=1.0001。</p>
+<p><strong>暴露条件C5：</strong> 单变量非线性不产生q>1。需要两变量乘法耦合。物理解读：单变量非线性的涨落被单通道衰减抑制；两变量乘法耦合中，x的涨落被y放大（互为放大器），产生超越指数的极端涨落。</p>
+<h3>4.6 负例汇总</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>类型</th>
+<th>q</th>
+<th>违反条件</th>
+</tr></thead><tbody>
+<tr>
+<td>Lorenz</td>
+<td>混沌</td>
+<td>1.00</td>
+<td>C1（非混沌）</td>
+</tr>
+<tr>
+<td>Goodwin</td>
+<td>Relaxation</td>
+<td>不稳定</td>
+<td>C2（平滑振荡）</td>
+</tr>
+<tr>
+<td>Repressilator</td>
+<td>有界耦合</td>
+<td>1.00</td>
+<td>C5（tail-active）</td>
+</tr>
+<tr>
+<td>Selkov低噪</td>
+<td>噪声不足</td>
+<td>1.00</td>
+<td>C3（moderate noise）</td>
+</tr>
+<tr>
+<td>x³单变量</td>
+<td>单变量</td>
+<td>1.00</td>
+<td>C5（需两变量耦合）</td>
+</tr>
+<tr>
+<td>x²单变量</td>
+<td>单变量</td>
+<td>1.00</td>
+<td>C5（需两变量耦合）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§5 适用条件</h2>
+<h3>5.1 七条必要条件</h3>
+<p><strong>C1. 稳定非混沌极限环。</strong> 必须有清晰周期T。正Lyapunov指数的混沌混合将q推向1。</p>
+<p><strong>C2. 平滑振荡，非强relaxation switching。</strong> Relaxation oscillation可能无单一稳定q窗口。</p>
+<p><strong>C3. Moderate-noise absorptive regime。</strong> 继承Thermo III[3]。噪声太低尾部统计不足，太高确定性结构被淹没。</p>
+<p><strong>C4. ACF有清晰的阻尼振荡+纯衰减分解。</strong> T和τ_dec必须从同一个ACF中可靠提取。</p>
+<p><strong>C5. Tail-active multiplicative f/r opposition。</strong> 乘法耦合项在tail-relevant range中不饱和（Definition 2a/2b）。不是"方程中出现x²y就够"——Selkov有x²y但被nullcline截断（Definition 2b），仅在高噪声下边缘有效；Repressilator的Hill函数完全饱和（Definition 2c）。strongly tail-active（2a）系统给出强正例，weakly tail-active（2b）系统给出边界正例。</p>
+<p><strong>C6. Active channel count。</strong> n_ch是参与tail-active multiplicative feedback的有效通道数，不是裸状态变量数。在正例中恰好等于变量数，但不是一般定理。</p>
+<p><strong>C7. Canonical energy-like observable。</strong> q必须在r²或等价的energy-like变量上提取。Thermo IV[2]的重参数化引理已说明，乱选observable会破坏q的可比性。</p>
+<h3>5.2 适用系统类</h3>
+<p>$$\text{tail-active multiplicative state-coupled absorptive oscillators}$$</p>
+<p>不是所有非平衡系统，不是所有振荡器，不是所有有乘法项的系统。</p>
+<h3>5.3 稳定走廊</h3>
+<p>1 ≤ K_dyn < ∞，即1 ≤ q ≤ 2。</p>
+<p>K_dyn = 1（q = 2）对应resolvent端：τ_dec = T/n_ch，每通道一个因果槽。</p>
+<p>K_dyn < 1（q > 2）：跨周期记忆残留，超出单周期absorptive corridor。</p>
+<hr>
+<h2>§6 Status Map与开放问题</h2>
+<h3>6.1 Status map</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>q = 1+1/K</td>
+<td>Exact（Thermo IV）</td>
+</tr>
+<tr>
+<td>K层等权屏蔽→(1+x/K)^{-K}</td>
+<td>Exact（Thermo IV）</td>
+</tr>
+<tr>
+<td>τ₊ = τ_dec（因果相关体积）</td>
+<td>Exact（Lemma 1）</td>
+</tr>
+<tr>
+<td>E[e^{-cU}] = 1/(1+c)（指数寿命→resolvent）</td>
+<td>Exact（Lemma 2）</td>
+</tr>
+<tr>
+<td>每通道T/n_ch（时间均分）</td>
+<td>Structural assumption（A3）</td>
+</tr>
+<tr>
+<td>一个因果槽 = 一个屏蔽层</td>
+<td><strong>Conditional theorem under A5a-c</strong>（升级自physical identification）</td>
+</tr>
+<tr>
+<td>K_dyn = T/(n_ch·τ_dec)</td>
+<td>Conditional theorem + empirical support</td>
+</tr>
+<tr>
+<td>q = 1+n_ch·τ_dec/T</td>
+<td>Conditional theorem + empirical support</td>
+</tr>
+<tr>
+<td>tail-active分级定义</td>
+<td>Definition 2a/2b/2c + positive/negative examples</td>
+</tr>
+<tr>
+<td>n_ch来自通道分时</td>
+<td>Cross-system supported (n=2 and n=3)</td>
+</tr>
+<tr>
+<td>不对称推广Ω_eff = n_ch+Στ_i/(α_i·T)</td>
+<td>Conditional corollary（readout approximation）</td>
+</tr>
+<tr>
+<td>FPE零流条件</td>
+<td>Exact（consistency layer）</td>
+</tr>
+<tr>
+<td>公式适用于tail-active multiplicative oscillators</td>
+<td>Current strongest claim</td>
+</tr>
+<tr>
+<td>公式适用于所有振荡系统</td>
+<td>False</td>
+</tr>
+</tbody></table>
+<h3>6.2 开放问题</h3>
+<ol>
+<li><strong>A5a-c的经验检验。</strong> Lemma 2将A5从physical identification升级为conditional theorem（指数寿命的Laplace变换=resolvent）。但A5a（指数survival kernel）和A5c（Markov-renewal独立）目前是结构假设。能否直接从Brusselator的时间序列数据中检验这两个条件？例如，检验相邻τ_dec区间的残差是否近似独立。</li>
+</ol>
+<ol>
+<li><strong>非振荡系统。</strong> 公式依赖振荡周期T。非振荡系统（DP递推、Schlögl）中什么量替代T？</li>
+</ol>
+<ol>
+<li><strong>n_ch的一般定义。</strong> 当前定义为"参与tail-active multiplicative feedback的有效通道数"。在更复杂的系统中（如多频率、多吸引子），n_ch如何确定？</li>
+</ol>
+<ol>
+<li><strong>不对称通道的实验验证。</strong> Proposition 2给出了K_i = α_i·T/τ_i的不等权版本，但尚无系统实验测试α_i ≠ 1/n_ch的情况。</li>
+</ol>
+<ol>
+<li><strong>与Lyapunov谱的连接。</strong> 在弱噪声下τ_dec ≈ 1/|λ₋|，代入得q = 1+n_ch/(T·|λ₋|)。在混沌系统的混沌-周期边界处，|λ₋|和T同时变化——q是否在该边界处有相变行为？</li>
+</ol>
+<ol>
+<li><strong>tail-active的判据是否可以从方程系数预测？</strong> 当前需要分析nullcline才知道x²y是否饱和。能否从Jacobian或更简单的代数性质判断？</li>
+</ol>
+<hr>
+<h2>Methods</h2>
+<p>所有SDE采用Euler-Maruyama积分。Brusselator：dt=0.005, 总步数2M-3M, burn-in 200K-300K步, 随机种子42。扩展Brusselator和诊断系统同参数。Selkov：dt=0.005。FHN合成振荡器：dt=0.005。</p>
+<p>q_fit提取方法：从canonical observable r²的CCDF（complementary cumulative distribution function）全局拟合Tsallis q-exponential，拟合区间为median以上（即E > median(r²)），优化方法Nelder-Mead。未固定location或scale参数。MLE稳健化留待未来工作[10,11]。</p>
+<p>ACF提取：从x通道（或f通道）的去均值时间序列计算。拟合模型：C(τ) = w₁·e^{-g₁τ}·cos(ωτ) + w₂·e^{-g₂τ}。T从ACF第一个极小值位置t_min读出（T = 2·t_min）。τ_dec = 1/g₂。拟合窗口：lag 1至min(150-200个lag点, max_lag)。</p>
+<p>n_ch的判定：对每个系统分别用n_ch = n_var-1, n_var, n_var+1预测q，选最接近q_fit的n_ch。在所有正例中，最佳n_ch均等于状态变量数n_var。</p>
+<p>误差传播：τ_dec的拟合不确定性（通常在10-15%量级）直接传播到q_pred。目前未提供逐点bootstrap CI，这是一个实现层自由度（参见Thermo V §6.2讨论）。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper V: The Channel-Normalized Winding Ratio," Zenodo (2026). DOI: 10.5281/zenodo.19649780.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper IV: Toward a First-Principles Derivation of the Tsallis q Parameter," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper III: Canonical f/r Extraction and Regime Classification of η," Zenodo (2026). DOI: 10.5281/zenodo.19597684.</p>
+<p>[4] H. Qin, "ZFCρ Thermodynamics Paper II: η ≈ 0.20 Mechanism," Zenodo (2025). DOI: 10.5281/zenodo.19511064.</p>
+<p>[5] H. Qin, "ZFCρ Thermodynamics Paper I: η Exists," Zenodo (2025). DOI: 10.5281/zenodo.19310282.</p>
+<p>[6] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[7] C. Tsallis, <em>Introduction to Nonextensive Statistical Mechanics</em> (Springer, 2009).</p>
+<p>[8] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968).</p>
+<p>[9] R. FitzHugh, "Impulses and physiological states in theoretical models of nerve membrane," <em>Biophysical Journal</em> <strong>1</strong>, 445–466 (1961).</p>
+<p>[10] C. R. Shalizi, "Maximum Likelihood Estimation for q-Exponential (Tsallis) Distributions," arXiv:math/0701854 (2007).</p>
+<p>[11] A. Clauset, C. R. Shalizi, and M. E. J. Newman, "Power-law distributions in empirical data," <em>SIAM Review</em> <strong>51</strong>, 661–703 (2009).</p>
+<p>[12] E. E. Selkov, "Self-oscillations in glycolysis," <em>European Journal of Biochemistry</em> <strong>4</strong>, 79–86 (1968).</p>
+<p>[13] H. Risken, <em>The Fokker–Planck Equation: Methods of Solution and Applications</em>, 2nd ed. (Springer, 1996).</p>
+<p>[14] E. N. Lorenz, "Deterministic nonperiodic flow," <em>Journal of the Atmospheric Sciences</em> <strong>20</strong>, 130–141 (1963).</p>
+<p>[15] B. C. Goodwin, "Oscillatory behavior in enzymatic control processes," <em>Advances in Enzyme Regulation</em> <strong>3</strong>, 425–438 (1965).</p>
+<p>[16] M. B. Elowitz and S. Leibler, "A synthetic oscillatory network of transcriptional regulators," <em>Nature</em> <strong>403</strong>, 335–338 (2000).</p>
+    </div>
+  </div>
+
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
