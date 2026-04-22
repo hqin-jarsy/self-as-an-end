@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXV: Branch Centering and the Spectral Route — From False Mean Modes to the Conditional Ψ = O(j) Architecture — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho65.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho65.html">
+  <meta name="citation_title" content="ZFCρ Paper LXV: Branch Centering and the Spectral Route — From False Mean Modes to the Conditional Ψ = O(j) Architecture">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19687344">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXV</div>
+    <h1>ZFCρ Paper LXV: Branch Centering and the Spectral Route — From False Mean Modes to the Conditional Ψ = O(j) Architecture<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXV篇：分支中心化与余项谱界——从错误均値模到Ψ = O(j)的条件架构</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19687344" target="_blank" rel="noopener">10.5281/zenodo.19687344</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19687344" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p></p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, branch centering, spectral route, false mean modes, conditional Ψ = O(j), H prime</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. Introduction: From Decomposition to Construction</h2>
+<p>Papers 62-64 completed the structural characterization of B_j: two-river synchronization (P62), zero-mode pinning (P63), 2D remainder measure anatomy (P64). Paper 65 enters the constructive phase: building a conditional proof architecture for 59.1.</p>
+<p>The core shift: from "what is B_j composed of" (posterior/Via Negativa) to "what conditions imply |B_j| = O(√(jD_j))" (prior/Via Rho).</p>
+<hr>
+<h2>§2. Raw Branch-Split ACF and the v3 Hypothesis</h2>
+<p>For primes p in block I_j, classify by branch: add-path (ρ(p-1) = ρ(p-2)+1, fraction α ≈ 25.6%) or mult-path (ρ(p-1) < ρ_add, fraction 74.4%).</p>
+<p><strong>Table 1. Raw branch-split ACF (j = 29).</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>ACF_all</th>
+<th>ACF_AA</th>
+<th>ACF_MM</th>
+<th>ACF_cross</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.157</td>
+<td>0.383</td>
+<td>0.186</td>
+<td>+0.07</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.078</td>
+<td>0.304</td>
+<td>0.108</td>
+<td>-0.005</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.051</td>
+<td>0.281</td>
+<td>0.079</td>
+<td>-0.030</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.025</td>
+<td>0.255</td>
+<td>0.053</td>
+<td>-0.056</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0.013</td>
+<td>0.246</td>
+<td>0.041</td>
+<td>-0.068</td>
+</tr>
+</tbody></table>
+<p><strong>v3 hypothesis:</strong> "Composite ACF is small because strong within-branch positive correlations are precisely cancelled by cross-branch negative correlations."</p>
+<hr>
+<h2>§3. Branch Centering Kills v3</h2>
+<p><strong>Table 2. Branch-mean plateau prediction (j = 29).</strong></p>
+<table><thead><tr>
+<th>Quantity</th>
+<th>Predicted</th>
+<th>Observed plateau</th>
+</tr></thead><tbody>
+<tr>
+<td>μ_A²/σ²</td>
+<td>0.227</td>
+<td>~0.25</td>
+</tr>
+<tr>
+<td>μ_M²/σ²</td>
+<td>0.026</td>
+<td>~0.04</td>
+</tr>
+<tr>
+<td>μ_A·μ_M/σ²</td>
+<td>-0.076</td>
+<td>~-0.07</td>
+</tr>
+</tbody></table>
+<p><strong>Table 3. Raw vs branch-centered ACF (j = 29).</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>raw_AA</th>
+<th>cent_AA</th>
+<th>raw_MM</th>
+<th>cent_MM</th>
+<th>raw_AM</th>
+<th>cent_AM</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.383</td>
+<td>0.165</td>
+<td>0.186</td>
+<td>0.173</td>
+<td>+0.071</td>
+<td>+0.170</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.281</td>
+<td>0.066</td>
+<td>0.079</td>
+<td>0.057</td>
+<td>-0.030</td>
+<td>+0.054</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.255</td>
+<td>0.037</td>
+<td>0.053</td>
+<td>0.029</td>
+<td>-0.056</td>
+<td>+0.024</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0.246</td>
+<td>0.025</td>
+<td>0.041</td>
+<td>0.015</td>
+<td>-0.068</td>
+<td>+0.011</td>
+</tr>
+</tbody></table>
+<p>AA plateau drops from 0.25 to 0.025. Cross-ACF flips from -0.06 to +0.01. Under product branch measure, the algebraic identity α²μ_A² + (1-α)²μ_M² + 2α(1-α)μ_Aμ_M = [αμ_A + (1-α)μ_M]² = 0 (by λ calibration) ensures branch mean mode contributes zero to composite ACF. Finite-lag branch-transition defect is < 10⁻³ at lag > 10 (§8).</p>
+<hr>
+<h2>§4. Reference Centering and the Scale Law μ_A(j) ~ 1/2^j</h2>
+<p><strong>Table 4. Branch mean scaling.</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>μ_A(j)</th>
+<th>2^j·μ_A</th>
+<th>μ_A/σ_x</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>5.54e-8</td>
+<td>232</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>29</td>
+<td>4.76e-10</td>
+<td>256</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>32</td>
+<td>5.89e-11</td>
+<td>253</td>
+<td>0.47</td>
+</tr>
+</tbody></table>
+<p>μ_A(j) halves with each j. Scaled quantity 2^j·μ_A ≈ 253 is constant. μ_A/σ_x ≈ 0.47 is a j-independent structural constant.</p>
+<p><strong>Table 5. Three reference types (j = 32).</strong></p>
+<table><thead><tr>
+<th>Reference</th>
+<th>var_η/var_x</th>
+<th>cent_AA(lag 2000)</th>
+</tr></thead><tbody>
+<tr>
+<td>Global</td>
+<td>3.64</td>
+<td>2.18</td>
+</tr>
+<tr>
+<td>Leave-one-out</td>
+<td>8.95</td>
+<td>2.61</td>
+</tr>
+<tr>
+<td>Adjacent</td>
+<td>0.94</td>
+<td>0.086</td>
+</tr>
+</tbody></table>
+<p>Global centering catastrophically fails at large j. Adjacent centering works at all j.</p>
+<hr>
+<h2>§5. Wrong Gauge Creates False Rivers</h2>
+<p>j = 32 global reference ANOVA: |B_branch|/√(jD) = 372, |B_resid|/√(jD) = 370, |B_j|/√(jD) = 1.6. Two enormous artificial terms cancel to B_j. This is not mechanism — it is wrong-gauge artifact. Any ANOVA that ignores μ_τ(j) ~ 1/2^j will generate false "two large rivers."</p>
+<hr>
+<h2>§6. Correct Branch-Centered Decomposition</h2>
+<p>With j-smooth reference means μ_A<em>(j), μ_M</em>(j) and η_i = x_i - μ_{τ_i}*(j):</p>
+<p>B_j = (μ_A<em> - μ_M</em>)(N_A - π_A*·m) + Σ η_i + m·ε_gauge = B_count + B_resid + B_gauge</p>
+<hr>
+<h2>§7. Count Term via Branch-Orthogonality</h2>
+<p><strong>Table 6. Count fluctuation.</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>(N_A - α·m)²/(j·m)</th>
+<th>‖B_count‖/√(jD)</th>
+</tr></thead><tbody>
+<tr>
+<td>29</td>
+<td>0.004</td>
+<td>0.033</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.011</td>
+<td>0.459</td>
+</tr>
+</tbody></table>
+<p>Count fluctuation bounded. |B_count| negligible relative to 59.1 target. Paper 64 Branch-Orthogonality (count s₁/s₂ = 321, MI → 7.2e-6) provides structural support.</p>
+<hr>
+<h2>§8. Branch Transition Kernel</h2>
+<p>P(A|A) - π_A < 0.001 at lag > 10 (j = 29, 32). Branch labels mix to product measure within ~5 lags. The gauge projection is valid at all lags beyond the short-range clustering scale.</p>
+<hr>
+<h2>§9. Centered Residual Spectral Structure</h2>
+<p><strong>Table 7. Adjacent-centered ACF (j = 29).</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>cent_AA</th>
+<th>cent_MM</th>
+<th>cent_AM</th>
+<th>cent_all</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.169</td>
+<td>0.175</td>
+<td>0.163</td>
+<td>0.175</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.071</td>
+<td>0.058</td>
+<td>0.050</td>
+<td>0.056</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.043</td>
+<td>0.030</td>
+<td>0.021</td>
+<td>0.027</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0.032</td>
+<td>0.016</td>
+<td>0.008</td>
+<td>0.014</td>
+</tr>
+</tbody></table>
+<p>All centered ACFs are positive, slowly decaying, and comparable — a common-mode screened field.</p>
+<p><strong>Note:</strong> This section's branch-centering uses same-block means for diagnostic purposes only. Proof-relevant centering must use j-smooth external references (§4) to avoid ANOVA tautology.</p>
+<p><strong>Table 8. Ψ_η(W)/j under adjacent reference (j = 29; global and adjacent coincidentally agree at this j).</strong></p>
+<table><thead><tr>
+<th>W</th>
+<th>Ψ_η</th>
+<th>Ψ_η/j</th>
+</tr></thead><tbody>
+<tr>
+<td>500</td>
+<td>24.0</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>59.6</td>
+<td>2.05</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>101.9</td>
+<td>3.52</td>
+</tr>
+</tbody></table>
+<p>Ψ_η/j still growing at W = 5000. The spectral bound Ψ_η = O(j) is qualitatively supported but not yet closed.</p>
+<hr>
+<h2>§10. Killed Routes</h2>
+<p>Haar-Carleson (geometric energy decay, not O(1)/scale). v3 cross-branch anti-correlation (algebraic artifact of μ_Aμ_M < 0). Global reference centering (μ_A(j) ~ 1/2^j scale mismatch).</p>
+<hr>
+<h2>§11. Conditional Theorem</h2>
+<p><strong>Theorem 65.A (Branch-Centered Spectral Criterion).</strong> With j-smooth branch reference and B_j = B_count + B_resid + B_gauge, if (a) |B_gauge| = O(√(jD_j)), (b) Var(N_A - π_A*m) = O(jm), (c0) residual variance scale: m_j·σ²_{η,j} = O(D_j), (c1) residual correlation amplification: Ψ_η = O(j), (d) cross-term controlled, then Var(B_j) = O(jD_j).</p>
+<p>Conditions (a), (b), (c0), (d) confirmed experimentally. Condition (c1) remains open.</p>
+<p>Note: This gives L²/variance bound. Upgrade to deterministic 59.1 requires additional pathwise argument.</p>
+<hr>
+<h2>§12. Closure Chain Update</h2>
+<table><thead><tr>
+<th>Layer</th>
+<th>Statement</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>Spectral ratio</td>
+<td>R_wt = O(1)</td>
+<td>Paper 59</td>
+</tr>
+<tr>
+<td>Two-river</td>
+<td>‖Δ_j‖ = O(j^{3/2}·√D_j)</td>
+<td>Paper 62</td>
+</tr>
+<tr>
+<td>Zero-mode</td>
+<td>Differential level pinning</td>
+<td>Paper 63</td>
+</tr>
+<tr>
+<td>Anatomy</td>
+<td>Zero-mode 2D decomposition</td>
+<td>Paper 64</td>
+</tr>
+<tr>
+<td>Construction</td>
+<td>59.1 ⟸ gauge + count O(j) + Ψ_η O(j)</td>
+<td>Paper 65</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§13. Conclusion</h2>
+<p>Paper 65 establishes the conditional proof architecture for 59.1. The v3 → v4 reframe (cross-branch anti-correlation killed by branch centering) reveals that branch mean is a gauge mode automatically cancelled by λ calibration. The remaining open core is Ψ_η = O(j) for the centered residual — a screened spectral bound that is qualitatively supported but quantitatively unproven. Three of four conditions in Theorem 65.A are experimentally confirmed. This paper identifies the correct residual process but does not yet prove its O(j) spectral bound.</p>
+<hr>
+<h2>References</h2>
+<p>[50-64] As in Paper 64. [64] DOI: 10.5281/zenodo.19674521.</p>
+<hr>
+<h2>AI Contributions</h2>
+<p>Claude (子路): All 16 experiments across 4 code files, branch-split ACF identification, v3→v4 reframe, μ_A ~ 1/2^j scale law discovery, working notes v1-v3. ChatGPT (公西华): Branch-Mean ANOVA decomposition proposal, μ²/σ² plateau prediction (confirmed by EXP H), reference centering tautology caveat, j-smooth reference definition, "wrong gauge creates false rivers" identification, Theorem 65.A structure, three gatekeeper reviews, honest positioning. Gemini (子夏): v3 physical interpretation (overturned but inspired centering experiment), spectral renormalization blueprint, α_fit drift identification. Grok (子贡): v3 Dream Theorem formulation (overturned). Independent Review Claude: Spectral route C (earliest proposal), branch-mean explanation (independent confirmation), full-block Corr → -1 prediction (confirmed), Conjecture 65.C, 6 gatekeeper experiments specification.</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p></p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 分支中心化, 谱界路线, 错误均值模, 条件Ψ = O(j), H′</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. 引言：从分解到构造</h2>
+<h3>1.1. Papers 62-64的状态</h3>
+<p>Paper 62将59.1重述为双河同步：|Δ_j| = O(j^{3/2}·√D_j)。Paper 63定位为零模pinning，发现increment二阶正交性。Paper 64给出B_j零模的二维余项测度解剖：Branch-Orthogonality（count s₁/s₂ = 321），Γ̃(g) limit profile，count vs mean分解。</p>
+<p>这三篇完成了59.1的结构定位——B_j的来源、坐标系、组成成分都已characterize。但59.1本身未被reduce或prove。Paper 64的surrogate结果明确显示β-pinning = B_j restating。</p>
+<h3>1.2. Paper 65的目标</h3>
+<p>从decomposition阶段进入constructive阶段：构造59.1的条件证明架构。</p>
+<p>核心转变：不是问"B_j由什么组成"（后验/Via Negativa），而是问"什么条件能推出|B_j| = O(√(jD_j))"（先验/Via Rho）。</p>
+<h3>1.3. 方法论说明</h3>
+<p>本文经历了一次experiment-driven reframe：初始假说"cross-branch anti-correlation是59.1的mechanism"（v3）被branch centering实验推翻（v4）。如实记录这一路径。</p>
+<hr>
+<h2>§2. Raw Branch-Split ACF与v3假说</h2>
+<h3>2.1. 分支分裂</h3>
+<p>对block I_j内每个素数p，按ρ(p-1)是否等于加法路径成本ρ(p-2)+1分类：add-path（ρ(p-1) = ρ_add，占α ≈ 25.6%）和mult-path（ρ(p-1) = ρ_mult < ρ_add，占74.4%）。</p>
+<h3>2.2. Raw Branch-Split ACF</h3>
+<p><strong>表1. Raw branch-split ACF（j=29，representative）。</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>ACF_all</th>
+<th>ACF_add-add</th>
+<th>ACF_mult-mult</th>
+<th>ACF_cross</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.157</td>
+<td>0.383</td>
+<td>0.186</td>
+<td>+0.07</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.078</td>
+<td>0.304</td>
+<td>0.108</td>
+<td>-0.005</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.051</td>
+<td>0.281</td>
+<td>0.079</td>
+<td>-0.030</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.025</td>
+<td>0.255</td>
+<td>0.053</td>
+<td>-0.056</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0.013</td>
+<td>0.246</td>
+<td>0.041</td>
+<td>-0.068</td>
+</tr>
+</tbody></table>
+<p>所有j=22-32一致，slow drift only。</p>
+<h3>2.3. 三个表面事实</h3>
+<p><strong>ACF_add几乎不衰减：</strong> 从0.38（lag 1）到0.25（lag 2000）——add-path素数间的余项相关极其persistent。</p>
+<p><strong>ACF_mult也persistent：</strong> 从0.19到0.04。</p>
+<p><strong>ACF_cross翻负：</strong> lag ~10处穿零，稳定在-0.06。</p>
+<h3>2.4. 验证</h3>
+<p>composite ACF_all = α²·ACF_aa + (1-α)²·ACF_mm + α(1-α)·(ACF_am + ACF_ma)</p>
+<p>j=32 lag 2000: 0.066·0.248 + 0.553·0.045 + 0.190·(-0.124) = 0.017。实测0.018。✓</p>
+<p><strong>v3假说：</strong> "composite ACF ≈ 0.02之所以小，是因为strong within-branch正相关被cross-branch负相关精确对消。59.1 = cross-branch cancellation precision。"</p>
+<hr>
+<h2>§3. Branch Centering杀死v3</h2>
+<h3>3.1. Branch-specific means</h3>
+<p>每个block内：μ_A = mean(x_p | add-path)，μ_M = mean(x_p | mult-path)。</p>
+<p>同块样本恒等式为α_j·μ_A(j) + (1-α_j)·μ_M(j) = B_j/m_j。λ calibration使该量在全局/渐近gauge下接近零；有限块residual正是59.1所要控制的对象。</p>
+<h3>3.2. Branch-Mean Plateau预测</h3>
+<p><strong>表2. Branch-mean plateau prediction vs observed（j=29）。</strong></p>
+<table><thead><tr>
+<th>量</th>
+<th>预测值（from μ）</th>
+<th>观测ACF plateau</th>
+</tr></thead><tbody>
+<tr>
+<td>μ_A²/σ²</td>
+<td>0.227</td>
+<td>ACF_add ≈ 0.25</td>
+</tr>
+<tr>
+<td>μ_M²/σ²</td>
+<td>0.026</td>
+<td>ACF_mult ≈ 0.04</td>
+</tr>
+<tr>
+<td>μ_A·μ_M/σ²</td>
+<td>-0.076</td>
+<td>ACF_cross ≈ -0.07</td>
+</tr>
+</tbody></table>
+<p><strong>Branch mean explains ~90% of all ACF plateaus。</strong></p>
+<h3>3.3. Branch-Centered ACF</h3>
+<p><strong>表3. Raw vs branch-centered ACF（j=29）。</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>raw_AA</th>
+<th>cent_AA</th>
+<th>raw_MM</th>
+<th>cent_MM</th>
+<th>raw_AM</th>
+<th>cent_AM</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.383</td>
+<td>0.165</td>
+<td>0.186</td>
+<td>0.173</td>
+<td>+0.071</td>
+<td>+0.170</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.304</td>
+<td>0.095</td>
+<td>0.108</td>
+<td>0.087</td>
+<td>-0.005</td>
+<td>+0.082</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.281</td>
+<td>0.066</td>
+<td>0.079</td>
+<td>0.057</td>
+<td>-0.030</td>
+<td>+0.054</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.255</td>
+<td>0.037</td>
+<td>0.053</td>
+<td>0.029</td>
+<td>-0.056</td>
+<td>+0.024</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0.246</td>
+<td>0.025</td>
+<td>0.041</td>
+<td>0.015</td>
+<td>-0.068</td>
+<td>+0.011</td>
+</tr>
+</tbody></table>
+<h3>3.4. 三个决定性事实</h3>
+<p><strong>ACF_add平台从0.25掉到0.025。</strong> ~90%的"persistence"是branch mean μ_A²/σ²未被减掉。</p>
+<p><strong>Cross-ACF从-0.06翻正到+0.01。</strong> 负cross-ACF完全来自μ_A·μ_M/σ² < 0。减去branch mean后，add和mult之间实际是微弱正相关——共享同一个landscape drift。</p>
+<p><strong>所有centered ACF正值、缓慢衰减、量级相似：</strong> 0.02-0.17范围，screened power-law衰减。这是一个共模衰减场。</p>
+<h3>3.5. 代数解释</h3>
+<p>Branch mean mode对composite ACF的贡献：</p>
+<p>α²·(μ_A²/σ²) + (1-α)²·(μ_M²/σ²) + 2α(1-α)·(μ_A·μ_M/σ²)</p>
+<p>= [α·μ_A + (1-α)·μ_M]²/σ²</p>
+<p>= 0（by λ calibration）</p>
+<p><strong>这是代数恒等式（在product branch measure下成立）。</strong> 在product-mixing尺度上，composite ACF at large lag等于centered residual ACF。Branch mean mode在composite中代数消去。有限lag下还存在branch-transition defect；EXP O（§8）显示该defect在lag > 10后小于10^{-3}量级。</p>
+<h3>3.6. v3 → v4 Via Negativa</h3>
+<p>v3假说"cross-branch anti-correlation是mechanism"被branch centering实验杀死。v4图景：branch mean是gauge mode（8%方差，被λ algebra消去），centered residual（92%方差）是screened power-law——59.1的hard core。</p>
+<p>Variance remaining after centering: var_c/var_x ≈ 0.923（所有j一致）。μ_A/σ_x ≈ 0.47-0.50是j-independent structural constant。</p>
+<p><strong>注：</strong> 本节branch-centering仅用于诊断raw ACF plateau的来源。Proof-relevant centering必须使用§4的j-smooth external reference（例如adjacent或fitted C_τ·2^{-j}），避免同块ANOVA tautology。</p>
+<hr>
+<h2>§4. Reference Centering与μ_A(j) ~ 1/2^j</h2>
+<h3>4.1. Branch mean的j-dependence</h3>
+<p><strong>表4. μ_A(j)随j的变化。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>μ_A(j)</th>
+<th>μ_M(j)</th>
+<th>2^j·μ_A (scaled)</th>
+<th>μ_A/σ_x</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>5.54e-8</td>
+<td>-2.67e-8</td>
+<td>232.3</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>25</td>
+<td>7.39e-9</td>
+<td>-2.83e-9</td>
+<td>248.1</td>
+<td>0.47</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1.89e-9</td>
+<td>-6.60e-10</td>
+<td>253.5</td>
+<td>0.47</td>
+</tr>
+<tr>
+<td>29</td>
+<td>4.76e-10</td>
+<td>-1.60e-10</td>
+<td>255.5</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>32</td>
+<td>5.89e-11</td>
+<td>-2.04e-11</td>
+<td>253.1</td>
+<td>0.47</td>
+</tr>
+</tbody></table>
+<p>μ_A(j) halves with each j（ratio ≈ 2.0），因为h(p)/p中的1/p因子。Scaled quantity 2^j·μ_A ≈ 253 constant。μ_A/σ_x ≈ 0.47是structural constant。</p>
+<h3>4.2. Global reference失败</h3>
+<p>Global weighted average μ_A_ref = 3.9e-10（被中间j主导）。对j=32（μ_A_local = 5.9e-11）：μ_A_ref/μ_A_local ≈ 7。</p>
+<p><strong>表5. 三种reference centering对比（j=32）。</strong></p>
+<table><thead><tr>
+<th>Reference</th>
+<th>var_η/var_x</th>
+<th>cent_AA(lag 2000)</th>
+</tr></thead><tbody>
+<tr>
+<td>Global</td>
+<td>3.64</td>
+<td>2.18</td>
+</tr>
+<tr>
+<td>Leave-one-out</td>
+<td>8.95</td>
+<td>2.61</td>
+</tr>
+<tr>
+<td>Adjacent</td>
+<td>0.94</td>
+<td>0.086</td>
+</tr>
+</tbody></table>
+<p>Global centering增加variance 3.6倍。Normalized covariance ratio > 2——完全失去correlation coefficient的解释意义（wrong reference使η包含大constant offset，归一化后比值可超过1）。</p>
+<h3>4.3. Adjacent centering work</h3>
+<p>Adjacent centering（μ_A^adj = average of j-1 and j+1 block means）在所有j给出：var_η/var_x ≈ 0.92-0.94，centered ACF是正常screened power-law。Non-tautological（μ_A(j±1) ≠ μ_A(j)），且尊重μ_A ~ 1/2^j的local scale。</p>
+<hr>
+<h2>§5. 错误Gauge创造假河流</h2>
+<h3>5.1. Global-ref ANOVA的artifact</h3>
+<p><strong>表6. Global reference ANOVA（j=32）。</strong></p>
+<p>B_j = μ_A_ref·N_A + μ_M_ref·N_M + Σ η_i</p>
+<table><thead><tr>
+<th>项</th>
+<th>值</th>
+<th>除以√(jD)</th>
+</tr></thead><tbody>
+<tr>
+<td>B_branch = μ_A_ref·N_A + μ_M_ref·N_M</td>
+<td>-3.64e-3</td>
+<td><strong>372</strong></td>
+</tr>
+<tr>
+<td>B_resid = Σ η_i</td>
+<td>3.62e-3</td>
+<td><strong>370</strong></td>
+</tr>
+<tr>
+<td>B_j</td>
+<td>-1.6e-5</td>
+<td>1.6</td>
+</tr>
+</tbody></table>
+<p>两个巨大的项（372和370倍√(jD)）精确cancel到1.6。</p>
+<h3>5.2. 这不是mechanism</h3>
+<p>这和v3的"两条大河对消"是同构现象。但它是wrong reference centering的artifact：μ_A_ref = 3.9e-10 >> μ_A_local = 5.9e-11引入了巨大的constant offset。</p>
+<p>δ_A(j) = μ_A(j) - μ_A_ref。当m_j·δ_A >> √(jD_j)时，reference centering创造两个巨大的artificial terms并迫使它们cancel回到真实B_j。</p>
+<h3>5.3. 教训</h3>
+<p>任何ANOVA decomposition如果不尊重μ_τ(j) ~ 1/2^j的scale covariance，都会生成假"两条大河精确对消"的图景。这不是IC递推的深层结构——是bad gauge的algebraic consequence。</p>
+<p>Paper 65的reference centering必须使用j-smooth reference（adjacent或fitted C_A/2^j）。</p>
+<hr>
+<h2>§6. 正确的Branch-Centered分解</h2>
+<h3>6.1. 定义</h3>
+<p>取j-smooth branch reference means μ_A<em>(j), μ_M</em>(j)，满足gauge condition π_A<em>·μ_A</em> + π_M<em>·μ_M</em> = ε_gauge(j)。</p>
+<p>定义centered residual η_i = x_i - μ_{τ_i}*(j)。</p>
+<h3>6.2. 恒等分解</h3>
+<p>B_j = Σ x_i = (μ_A<em> - μ_M</em>)(N_A - π_A*·m) + Σ η_i + m·ε_gauge</p>
+<p>= B_count + B_resid + B_gauge</p>
+<h3>6.3. Adjacent reference实测</h3>
+<p><strong>表7. Adjacent-reference ANOVA（selected j）。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>‖B_count‖/√(jD)</th>
+<th>‖B_resid‖/√(jD)</th>
+<th>‖B_gauge‖/√(jD)</th>
+<th>‖B_j‖/√(jD)</th>
+</tr></thead><tbody>
+<tr>
+<td>29</td>
+<td>~0.03</td>
+<td>~3.0</td>
+<td>< 0.01</td>
+<td>2.98</td>
+</tr>
+<tr>
+<td>32</td>
+<td>~0.5</td>
+<td>~1.6</td>
+<td>< 0.01</td>
+<td>1.64</td>
+</tr>
+</tbody></table>
+<p>Count term远小于59.1 target。B_resid ≈ B_j——59.1的hard core在centered residual。</p>
+<hr>
+<h2>§7. Count Term：Branch-Orthogonality</h2>
+<h3>7.1. Count fluctuation</h3>
+<p><strong>表8. Count fluctuation scaling。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>N_A - α_ref·m</th>
+<th>(N_A - α·m)²/(j·m)</th>
+<th>‖B_count‖/√(jD)</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>0.9</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>29</td>
+<td>1648</td>
+<td>0.004</td>
+<td>0.033</td>
+</tr>
+<tr>
+<td>31</td>
+<td>7856</td>
+<td>0.020</td>
+<td>0.314</td>
+</tr>
+<tr>
+<td>32</td>
+<td>-8134</td>
+<td>0.011</td>
+<td>0.459</td>
+</tr>
+</tbody></table>
+<p>(N_A - α·m)²/(j·m) bounded at ~0.01 level。|B_count|/√(jD) < 0.5。</p>
+<h3>7.2. 来源</h3>
+<p>Paper 64确认count matrix N(u,g)极端rank-one（s₁/s₂ = 321 at j=29），mutual information → 7.2e-6。Branch-Orthogonality排除了position-coupled amplification；total count fluctuation由表8直接确认在O(√(j·m))尺度内。Count term在测试区间保持在0.5·√(jD)以下，不是当前主导项。</p>
+<hr>
+<h2>§8. Branch Transition Kernel</h2>
+<h3>8.1. 数据</h3>
+<p><strong>表9. Branch transition kernel P_ℓ(A|A) - π_A（j=29）。</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>P(A</th>
+<th>A) - π_A</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>-0.022</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-0.004</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-0.001</td>
+</tr>
+<tr>
+<td>10</td>
+<td>-0.0004</td>
+</tr>
+<tr>
+<td>50</td>
+<td>+0.0002</td>
+</tr>
+<tr>
+<td>100</td>
+<td>+0.0004</td>
+</tr>
+</tbody></table>
+<p>Branch labels在~5 lags内mix到product measure（残余 < 0.001 at lag > 10）。</p>
+<h3>8.2. 意义</h3>
+<p>v4的branch-mean gauge projection（composite ACF = centered residual ACF by λ algebra）在lag > 5-10严格成立。Short-lag branch clustering（lag 1的-0.022偏差）只产生可忽略的修正。</p>
+<hr>
+<h2>§9. Centered Residual的Spectral结构</h2>
+<h3>9.1. Adjacent-centered ACF</h3>
+<p><strong>表10. Adjacent-centered ACF（j=29）。</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>cent_AA</th>
+<th>cent_MM</th>
+<th>cent_AM</th>
+<th>cent_all</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.169</td>
+<td>0.175</td>
+<td>0.163</td>
+<td>0.175</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.098</td>
+<td>0.089</td>
+<td>0.078</td>
+<td>0.085</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.071</td>
+<td>0.058</td>
+<td>0.050</td>
+<td>0.056</td>
+</tr>
+<tr>
+<td>500</td>
+<td>0.043</td>
+<td>0.030</td>
+<td>0.021</td>
+<td>0.027</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>0.032</td>
+<td>0.016</td>
+<td>0.008</td>
+<td>0.014</td>
+</tr>
+</tbody></table>
+<p><strong>所有ACF正值、缓慢衰减、量级相似。</strong> Within-branch和cross-branch的centered ACF统一为一个共模衰减场。</p>
+<h3>9.2. Ψ_η(W)/j</h3>
+<p><strong>表11. Ψ_η(W)/j under adjacent reference（j=29；此j处global与adjacent coincidentally一致）。</strong></p>
+<table><thead><tr>
+<th>W</th>
+<th>Ψ_η(W)</th>
+<th>Ψ_η/j</th>
+</tr></thead><tbody>
+<tr>
+<td>100</td>
+<td>8.1</td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>500</td>
+<td>24.0</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>38.2</td>
+<td>1.32</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>59.6</td>
+<td>2.05</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>101.9</td>
+<td>3.52</td>
+</tr>
+</tbody></table>
+<p><strong>Ψ_η/j在W=5000仍在增长。</strong> 尚未stabilize。</p>
+<h3>9.3. Open gap</h3>
+<p>Adjacent-centered residual有正确的qualitative form：正的screened power-law ACF，branch mean mode已移除。但Ψ_η(W)/j的integrated quantity在W=5000仍增长。Paper 65 identifies the correct residual process，but the proof of Ψ_η = O(j) remains the next technical gap。</p>
+<hr>
+<h2>§10. Killed Routes</h2>
+<h3>10.1. Haar-Carleson（EXP B）</h3>
+<p>Haar scale energy几何衰减（21%, 5.6%, 1.5%...），不是每scale O(1)。Dead。</p>
+<h3>10.2. v3 Cross-Branch Anti-Correlation（EXP G/H）</h3>
+<p>Raw cross-ACF ≈ -0.06是μ_A·μ_M/σ² < 0的algebraic artifact。Centering后翻正。Dead。</p>
+<h3>10.3. Global Reference Centering（EXP J/K）</h3>
+<p>μ_A(j) ~ 1/2^j使global reference在大j处catastrophic fail。Dead as proof tool。</p>
+<hr>
+<h2>§11. 条件定理</h2>
+<h3>11.1. Theorem 65.A（Branch-Centered Spectral Criterion）</h3>
+<p>设x_i = h(p_i)/p_i on block I_j，τ_i ∈ {A, M}为branch type。取j-smooth branch reference means μ_A<em>(j), μ_M</em>(j)，定义η_i = x_i - μ_{τ_i}*(j)。</p>
+<p><strong>恒等分解：</strong> B_j = B_count + B_resid + B_gauge</p>
+<p>其中：</p>
+<ul>
+<li>B_count = (μ_A<em> - μ_M</em>)(N_A - π_A*·m_j)</li>
+<li>B_resid = Σ η_i</li>
+<li>B_gauge = m_j·(π_A<em>·μ_A</em> + π_M<em>·μ_M</em>)</li>
+</ul>
+<p><strong>条件：</strong> 若存在j-smooth branch reference使得：</p>
+<p>(a) |B_gauge| = O(√(jD_j))</p>
+<p>(b) Var(N_A - π_A*·m) = O(j·m)</p>
+<p>(c0) Residual variance scale: m_j·σ²_{η,j} = O(D_j)</p>
+<p>(c1) Residual correlation amplification: Ψ_η = O(j)</p>
+<p>(d) Count-residual cross-term controlled</p>
+<p>则Var(B_j) = O(j·D_j)，即59.1的L² analogue成立。</p>
+<h3>11.2. 实验支持状态</h3>
+<table><thead><tr>
+<th>条件</th>
+<th>状态</th>
+<th>来源</th>
+</tr></thead><tbody>
+<tr>
+<td>(a) Gauge defect</td>
+<td>✅ confirmed</td>
+<td>Adjacent ref gauge defect small</td>
+</tr>
+<tr>
+<td>(b) Count fluctuation</td>
+<td>✅ confirmed</td>
+<td>Paper 64 BO + EXP L</td>
+</tr>
+<tr>
+<td>(c0) Residual variance scale</td>
+<td>✅ confirmed</td>
+<td>var_η/var_x ≈ 0.92-0.94</td>
+</tr>
+<tr>
+<td>(c1) Ψ_η = O(j)</td>
+<td><strong>OPEN</strong></td>
+<td>Qualitative support（screened ACF），quantitative Ψ/j still growing</td>
+</tr>
+<tr>
+<td>(d) Cross-term</td>
+<td>✅ measured small</td>
+<td>EXP M: ‖cross‖/(jD_j) < 1.4 at j=29</td>
+</tr>
+</tbody></table>
+<h3>11.3. Remaining technical gap</h3>
+<p>条件(c1)是唯一的open condition。在finite-window形式下：</p>
+<p>Ψ_{η,j}(W) = 1 + 2·Σ_{k=1}^{W-1} (1-k/W)·r_{η,j}(k)</p>
+<p>full-block analogue对应spectral density at zero frequency：</p>
+<p>2π·f_{η,j}(0)/σ²_{η,j} = O(j)</p>
+<p>这需要η_p的screened power-law ACF的integrated sum bound，目前有empirical support但无rigorous proof。</p>
+<h3>11.4. Deterministic vs L² caveat</h3>
+<p>Theorem 65.A给出的是L²/variance bound。59.1是deterministic block statement |B_j| = O(√(jD_j))。从L² bound到deterministic bound需要额外的pathwise/concentration argument。这是second-level gap。</p>
+<hr>
+<h2>§12. 闭合链更新</h2>
+<p><strong>59.1的四层进化 + Paper 65的constructive addition：</strong></p>
+<table><thead><tr>
+<th>层级</th>
+<th>表述</th>
+<th>来源</th>
+</tr></thead><tbody>
+<tr>
+<td>谱比层</td>
+<td>R_wt = O(1)</td>
+<td>Paper 59</td>
+</tr>
+<tr>
+<td>双河层</td>
+<td>‖Δ_j‖ = O(j^{3/2}·√D_j)</td>
+<td>Paper 62</td>
+</tr>
+<tr>
+<td>零模层</td>
+<td>differential level pinning</td>
+<td>Paper 63</td>
+</tr>
+<tr>
+<td>解剖层</td>
+<td>零模 = Γ⁺+Γ⁻ = free-boundary flux Ward defect</td>
+<td>Paper 64</td>
+</tr>
+<tr>
+<td>构造层</td>
+<td>59.1 ⟸ branch gauge + count O(j) + Ψ_η O(j)</td>
+<td>Paper 65</td>
+</tr>
+</tbody></table>
+<p>Paper 65不改变闭合链的逻辑假设。它给出59.1的条件构造架构，将remaining gap精确定位为centered residual的spectral bound Ψ_η = O(j)。</p>
+<hr>
+<h2>§13. 结论</h2>
+<p>Paper 65启动了ZFCρ系列的constructive phase。通过branch-split ACF分析和branch centering实验，确定了：</p>
+<p><strong>(i) v3假说被杀死。</strong> "cross-branch anti-correlation是59.1的mechanism"是branch mean μ_A·μ_M < 0的algebraic artifact。Centering后cross-ACF翻正。</p>
+<p><strong>(ii) Branch mean是gauge mode。</strong> μ_A/σ_x ≈ 0.47是j-independent structural constant。Branch mean占总方差8%，被λ calibration的algebraic identity精确消去。不是动态对消——是代数恒等式。</p>
+<p><strong>(iii) Reference centering必须j-smooth。</strong> μ_A(j) ~ C_A/2^j。Global reference在大j处catastrophic fail，创造假"两条大河"artifact。Adjacent-block centering在所有j稳定。</p>
+<p><strong>(iv) 条件定理。</strong> 59.1 ⟸ gauge defect control (✅) + count fluctuation O(j) (✅) + Ψ_η = O(j) (<strong>OPEN</strong>) + cross-term control (✅)。</p>
+<p><strong>(v) Remaining gap。</strong> Centered residual η_p有正确的qualitative form（screened power-law ACF），但Ψ_η(W)/j在W=5000仍增长。证明Ψ_η = O(j)是下一步的technical core。</p>
+<p><strong>本文identifies correct residual process，does not yet prove its O(j) spectral bound。</strong></p>
+<hr>
+<h2>参考文献</h2>
+<p>[50] 第L篇。特征剥离, DSF_α, BL_α, SD, 闭合链。DOI: 10.5281/zenodo.19381111。</p>
+<p>[53] 第LIII篇。Screening与相关截断。DOI: 10.5281/zenodo.19415440。</p>
+<p>[54] 第LIV篇。递归祖先继承与幂律ACF。DOI: 10.5281/zenodo.19426094。</p>
+<p>[59] 第LIX篇。谱比有界性与H'的双猜想闭合。DOI: 10.5281/zenodo.19480518。</p>
+<p>[61] 第LXI篇。谱导数界的条件归约。DOI: 10.5281/zenodo.19605749。</p>
+<p>[62] 第LXII篇。双河同步。DOI: 10.5281/zenodo.19656365。</p>
+<p>[63] 第LXIII篇。余项增量二阶正交性与零模Pinning。DOI: 10.5281/zenodo.19659860。</p>
+<p>[64] 第LXIV篇。余项测度的二维解剖。DOI: 10.5281/zenodo.19674521。</p>
+<hr>
+<h2>AI贡献</h2>
+<p>Claude（子路）：全部数值实验设计与实现（paper65_abc.c branch-split ACF+Haar+spectral，paper65_ef.c full-block correlation+within-branch Ψ，paper65_ghi.c branch-centered ACF+mean plateau prediction+ANOVA bug identification，paper65_ref.c reference-centering ACF 3 types+reference ANOVA+count fluctuation+cross-term+Ψ_η+branch transition kernel），16个实验的全部执行，branch-split ACF的initial identification，v3→v4 reframe，reference centering scale law μ_A ~ 1/2^j的发现，working notes v1-v3。ChatGPT（公西华）：Branch-Mean ANOVA decomposition的原始提出（x_i = μ_{τ_i} + η_i），ACF plateau = μ²/σ²的定量预测（被EXP H精确验证），reference centering的critical caveat（同block centering是tautological），j-smooth reference的定义（fitted C_A/2^j），"wrong gauge creates false rivers"的识别，Conditional Theorem 65.A的定理结构，三轮gatekeeper review（6个必做实验→v3 final check→定稿签字），"59.1 identifies correct residual process, does not yet prove O(j) bound"的honest positioning。Gemini（子夏）：v3阶段的"dual polarized landscape"physical interpretation（被v4否定但启发了branch centering实验），spectral density重整化群蓝图，α_fit drift作为"唯一命门"的识别。Grok（子贡）：v3 Dream Theorem（Cov ≈ -Var）的formulation（被v4否定），cross-branch cancellation的initial naming。独立评审Claude：Spectral route C的最早提出（Ψ = O(j^{0.7}) from α=0.3 + n_cross），Branch-mean解释的independent confirmation（和ChatGPT同时），Q4 reconciliation（Paper 62的+0.65 = sub-block landscape vs Paper 65的-0.06 = within-block residual），full-block Corr → -1的prediction（被EXP E2确认），Conjecture 65.C（1 - |ρ| = O(j²/2^j)），"v4给了theorem template但还没close"的assessment，6个gatekeeper实验的detailed specification。</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

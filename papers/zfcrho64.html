@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXIV: Two-Dimensional Anatomy of the Remainder Measure — Branch-Orthogonality, Free-Boundary Profiles, and Surrogate Layering — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho64.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho64.html">
+  <meta name="citation_title" content="ZFCρ Paper LXIV: Two-Dimensional Anatomy of the Remainder Measure — Branch-Orthogonality, Free-Boundary Profiles, and Surrogate Layering">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19674522">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXIV</div>
+    <h1>ZFCρ Paper LXIV: Two-Dimensional Anatomy of the Remainder Measure — Branch-Orthogonality, Free-Boundary Profiles, and Surrogate Layering<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXIV篇：余项测度的二维解剪——Branch-Orthogonality、自由边界轮廓与Surrogate分层</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19674522" target="_blank" rel="noopener">10.5281/zenodo.19674522</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19674522" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p></p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, remainder measure, branch-orthogonality, free-boundary profiles, surrogate layering, H prime</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. Introduction</h2>
+<h3>1.1. From Paper 63 to Paper 64</h3>
+<p>Paper 62 restated 59.1 as two-river synchronization: |Δ_j| = O(j^{3/2}·√D_j). Paper 63, through the transport pairing negative result and increment second-order orthogonality, located 59.1 as a differential level zero-mode pinning problem.</p>
+<p>Paper 64 asks: if 59.1 is zero-mode pinning, in what space does this zero-mode live, and what is its internal composition?</p>
+<p>This paper defines the two-dimensional remainder measure M_j(u,g) and anatomizes B_j's sources in (position, gap) coordinates.</p>
+<h3>1.2. Methodological Note</h3>
+<p>This paper underwent three experiment-driven reframings. The initial hypothesis "rank-one separation is IC-specific structure" was partially overturned by surrogate tests; the subsequent hypothesis "β-charge pinning reduces 59.1" was shown by EXP G to be a restatement of 59.1. The five surviving findings have all been refined through surrogate testing. This path is recorded faithfully.</p>
+<h3>1.3. Contributions</h3>
+<p>(i) Definitive quantitative confirmation of Branch-Orthogonality (§3)</p>
+<p>(ii) Asymptotic stability of the free-boundary profile Γ̃(g) (§4)</p>
+<p>(iii) Count vs Mean decomposition (§5)</p>
+<p>(iv) SVD zero-mode decomposition (§6)</p>
+<p>(v) Surrogate three-layer separation (§7)</p>
+<p>(vi) λ-Ward gauge check (§8)</p>
+<p>(vii) Candidate SAE axiom correspondence (§9)</p>
+<p>This paper does not claim to prove or reduce 59.1. Its contribution is defining and analyzing the two-dimensional remainder measure M_j(u,g), showing how B_j's zero-mode is composed of branch-position count, gap marginal profile, mean mass, and low-order SVD modes.</p>
+<hr>
+<h2>§2. Definition of the Two-Dimensional Remainder Measure</h2>
+<h3>2.1. Coordinates</h3>
+<p>For primes p in dyadic block I_j = [2^j, 2^{j+1}), define two coordinates:</p>
+<p><strong>Position coordinate u:</strong> u_p = rank_{I_j}(p)/m_j ∈ [0,1], where rank is p's ordinal in the block's prime sequence, m_j is total prime count.</p>
+<p><strong>Branch gap coordinate g:</strong> g(p-1) = ρ_add(p-1) - ρ_mult(p-1), where ρ_add(p-1) = ρ(p-2)+1 (additive path cost), ρ_mult(p-1) = min_{a·b=p-1}[ρ(a)+ρ(b)+2] (optimal multiplicative cost).</p>
+<h3>2.2. Three Matrices</h3>
+<p>Discretize u into n_u bins (default 20), g truncated to [-5, +10] (16 bins):</p>
+<p><strong>Note:</strong> All observed gaps in the tested range fall within this interval; any out-of-range gap is merged into the endpoint tail bin, ensuring every p ∈ I_j is counted in exactly one (u,g)-cell. The zero-mode identity in §2.3 is therefore exact.</p>
+<p><strong>Count matrix:</strong> N_j(u,g) = #{p ∈ I_j : u_p ∈ bin(u), g(p-1) = g}</p>
+<p><strong>Signed mass matrix:</strong> M_j(u,g) = Σ_{p ∈ bin(u,g)} h(p)/p</p>
+<p><strong>Mean mass matrix:</strong> x̄_j(u,g) = M_j(u,g)/N_j(u,g)</p>
+<p>with M = N ⊙ x̄ (Hadamard product).</p>
+<h3>2.3. Zero-Mode Identity</h3>
+<p>B_j = Σ_{u,g} M_j(u,g). Defining gap marginal signed mass Γ_j(g) = Σ_u M_j(u,g), we have B_j = Σ_g Γ_j(g). <strong>This is an identity (coordinate expansion), not a reduction.</strong></p>
+<p>Define near-boundary/tie-side and far-multiplicative-side flux: Γ⁺_j = Σ_{g≤1} Γ_j(g) (near-boundary/tie-side aggregate; dominant positive flux from g = 0, 1; small far-additive negative contributions are included but negligible), Γ⁻_j = Σ_{g≥2} Γ_j(g) (far-multiplicative side, persistently negative). Then B_j = Γ⁺_j + Γ⁻_j.</p>
+<hr>
+<h2>§3. Quantitative Confirmation of Branch-Orthogonality</h2>
+<h3>3.1. Count Matrix SVD</h3>
+<p><strong>Table 1. Count matrix N_j(u,g) SVD (20 u-bins).</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>s₁/s₂</th>
+<th>Rank-1 energy</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>55</td>
+<td>99.95%</td>
+</tr>
+<tr>
+<td>22</td>
+<td>73</td>
+<td>99.97%</td>
+</tr>
+<tr>
+<td>25</td>
+<td>148</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>27</td>
+<td>240</td>
+<td>99.998%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>321</td>
+<td>99.999%</td>
+</tr>
+</tbody></table>
+<p>s₁/s₂ grows monotonically with j; branch-position independence strengthens asymptotically.</p>
+<h3>3.2. Independence Diagnostics</h3>
+<p><strong>Table 2. Count independence metrics (20 u-bins).</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>χ²/dof</th>
+<th>max TV</th>
+<th>I(U;G) normalized</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>0.75</td>
+<td>0.024</td>
+<td>4.4e-4</td>
+</tr>
+<tr>
+<td>22</td>
+<td>0.98</td>
+<td>0.015</td>
+<td>1.7e-4</td>
+</tr>
+<tr>
+<td>25</td>
+<td>1.44</td>
+<td>0.008</td>
+<td>3.5e-5</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1.86</td>
+<td>0.005</td>
+<td>1.4e-5</td>
+</tr>
+<tr>
+<td>29</td>
+<td>3.72</td>
+<td>0.003</td>
+<td>7.2e-6</td>
+</tr>
+</tbody></table>
+<p>Max TV distance decreases from 0.024 to 0.003. Mutual information from 4.4 × 10⁻⁴ to 7.2 × 10⁻⁶. Physical deviations shrink while χ²/dof grows due to increasing sample size — the correct signature of asymptotic independence.</p>
+<h3>3.3. Connection to Paper 63</h3>
+<p>Paper 63 §3.5 proposed Branch-Orthogonality as an empirical proposition. Tables 1-2 provide its definitive quantitative confirmation: count matrix is nearly perfectly rank-one, mutual information decreases rapidly with j, supporting asymptotic independence of branch type and position.</p>
+<hr>
+<h2>§4. Asymptotic Stability of the Free-Boundary Profile</h2>
+<h3>4.1. Normalized Profile</h3>
+<p>Define Γ̃_j(g) = Γ_j(g)/Σ_g|Γ_j(g)|.</p>
+<p><strong>Table 3. Normalized profile Γ̃_j(g) (selected g values).</strong></p>
+<table><thead><tr>
+<th>g</th>
+<th>j=20</th>
+<th>j=22</th>
+<th>j=25</th>
+<th>j=27</th>
+<th>j=29</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>+0.309</td>
+<td>+0.318</td>
+<td>+0.333</td>
+<td>+0.336</td>
+<td>+0.338</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>+0.091</td>
+<td>+0.125</td>
+<td>+0.150</td>
+<td>+0.161</td>
+<td>+0.166</td>
+</tr>
+<tr>
+<td>+2</td>
+<td>-0.180</td>
+<td>-0.156</td>
+<td>-0.132</td>
+<td>-0.125</td>
+<td>-0.121</td>
+</tr>
+<tr>
+<td>+3</td>
+<td>-0.220</td>
+<td>-0.210</td>
+<td>-0.202</td>
+<td>-0.198</td>
+<td>-0.197</td>
+</tr>
+<tr>
+<td>+4</td>
+<td>-0.120</td>
+<td>-0.116</td>
+<td>-0.112</td>
+<td>-0.111</td>
+<td>-0.111</td>
+</tr>
+</tbody></table>
+<h3>4.2. Convergence</h3>
+<p><strong>Table 4. Adjacent-j L1 distances.</strong></p>
+<table><thead><tr>
+<th>j pair</th>
+<th>‖Γ̃_j − Γ̃_{j-1}‖₁</th>
+</tr></thead><tbody>
+<tr>
+<td>24-25</td>
+<td>0.023</td>
+</tr>
+<tr>
+<td>25-26</td>
+<td>0.020</td>
+</tr>
+<tr>
+<td>26-27</td>
+<td>0.011</td>
+</tr>
+<tr>
+<td>27-28</td>
+<td>0.010</td>
+</tr>
+<tr>
+<td>28-29</td>
+<td><strong>0.006</strong></td>
+</tr>
+</tbody></table>
+<p>Adjacent-j L1 distances decrease monotonically. Γ̃_j(g) shows strong convergence toward a stable limit profile Γ̃_∞(g) over the tested range.</p>
+<h3>4.3. Interpretation</h3>
+<p>Sign flip stable at g ≈ 1.5. Tie primes (g = 0) and near-tie (g = 1) contribute positively; deep multiplicative primes (g ≥ 2) contribute negatively. The min-operation free boundary has an asymptotically stable statistical structure in gap space.</p>
+<hr>
+<h2>§5. Count Versus Mean Decomposition</h2>
+<h3>5.1. Three-Matrix SVD</h3>
+<p><strong>Table 5. SVD s₁/s₂ of three matrices (20 u-bins).</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>Count N</th>
+<th>Signed M</th>
+<th>Mean x̄</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>55</td>
+<td>13</td>
+<td>3.3</td>
+</tr>
+<tr>
+<td>22</td>
+<td>73</td>
+<td>19</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>25</td>
+<td>148</td>
+<td>35</td>
+<td>3.3</td>
+</tr>
+<tr>
+<td>27</td>
+<td>240</td>
+<td>41</td>
+<td>4.1</td>
+</tr>
+<tr>
+<td>28</td>
+<td>240</td>
+<td>44</td>
+<td>5.8</td>
+</tr>
+<tr>
+<td>29</td>
+<td>321</td>
+<td>53</td>
+<td>4.0</td>
+</tr>
+</tbody></table>
+<h3>5.2. Finding</h3>
+<p>Count is extremely rank-one (s₁/s₂ = 55-321). Mean mass is weakly rank-one (s₁/s₂ = 3-6). Signed mass is intermediate: M = N ⊙ x̄, so M's rank-one = count's extreme rank-one diluted by mean's non-separability.</p>
+<p>The initial "99.93% rank-one of signed mass" is primarily count baseline. IC-specific two-dimensional structure lives in the mean mass x̄(u,g).</p>
+<hr>
+<h2>§6. SVD Zero-Mode Decomposition</h2>
+<h3>6.1. Mode Decomposition</h3>
+<p>If M_j = Σ_r s_r a_r b_r^T, then B_j = Σ_r s_r (Σ_u a_r)(Σ_g b_r). Define B^(r) = s_r (Σ_u a_r)(Σ_g b_r).</p>
+<p><strong>Table 6. SVD zero-mode decomposition (20 u-bins).</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>‖B⁽¹⁾‖/√(jD)</th>
+<th>‖B⁽²⁾‖/√(jD)</th>
+<th>‖B⁽³⁾‖/√(jD)</th>
+<th>‖B_j‖/√(jD)</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>4.71</td>
+<td>0.02</td>
+<td>0.01</td>
+<td>4.69</td>
+</tr>
+<tr>
+<td>22</td>
+<td>5.08</td>
+<td>0.14</td>
+<td>0.01</td>
+<td>4.93</td>
+</tr>
+<tr>
+<td>25</td>
+<td>3.76</td>
+<td>0.17</td>
+<td>0.00</td>
+<td>3.57</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1.23</td>
+<td>0.39</td>
+<td>0.00</td>
+<td>0.89</td>
+</tr>
+<tr>
+<td>28</td>
+<td>1.12</td>
+<td>0.34</td>
+<td>0.03</td>
+<td>1.39</td>
+</tr>
+<tr>
+<td>29</td>
+<td>2.69</td>
+<td>0.22</td>
+<td>0.09</td>
+<td>2.98</td>
+</tr>
+</tbody></table>
+<p>Modes 1-5 reconstruct B_j to residual < 10⁻⁶.</p>
+<h3>6.2. Interpretation</h3>
+<p>Mode 1 is the dominant low-mode term of B_j's zero-mode. Mode 2 is non-negligible near zero-crossings, contributing 20-40% of √(jD_j) at j = 27-28. Modes 3+ are negligible in the tested range. Table values are absolute; actual reconstruction uses signed B^(r). Any proof route for 59.1 must control both Mode 1 and Mode 2.</p>
+<hr>
+<h2>§7. Surrogate Three-Layer Separation</h2>
+<h3>7.1. Design</h3>
+<p><strong>Null 1:</strong> Permute h(p)/p within each gap class. Preserves Γ(g) marginals, breaks within-class u-landscape.</p>
+<p><strong>Null 2:</strong> Randomize gap labels within each u-bin. Preserves position landscape, breaks gap structure.</p>
+<p><strong>Null 3:</strong> Replace h(p)/p with i.i.d. Gaussian of same variance. Baseline.</p>
+<h3>7.2. Results</h3>
+<p><strong>Table 7. Signed mass SVD s₁/s₂ comparison.</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>REAL</th>
+<th>Null 1</th>
+<th>Null 2</th>
+<th>Null 3</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>19</td>
+<td>30-43</td>
+<td>4-6</td>
+<td>1.1-1.4</td>
+</tr>
+<tr>
+<td>25</td>
+<td>35</td>
+<td>69-86</td>
+<td>4-6</td>
+<td>1.1-1.4</td>
+</tr>
+<tr>
+<td>27</td>
+<td>41</td>
+<td>138-171</td>
+<td>5-6</td>
+<td>1.2-1.7</td>
+</tr>
+<tr>
+<td>28</td>
+<td>44</td>
+<td>178-207</td>
+<td>5-8</td>
+<td>1.0-1.3</td>
+</tr>
+<tr>
+<td>29</td>
+<td>53</td>
+<td>223-258</td>
+<td>8-9</td>
+<td>1.1-1.5</td>
+</tr>
+</tbody></table>
+<h3>7.3. Three-Layer Interpretation</h3>
+<p><strong>Null 3 → Null 2 (s₁/s₂ from ~1.3 to ~5-8):</strong> Gap distribution non-uniformity.</p>
+<p><strong>Null 2 → Null 1 (from ~5-8 to ~30-258):</strong> Gap-conditioned mean profile Γ(g) — the dominant source of rank-one.</p>
+<p><strong>Null 1 → REAL (from ~30-258 down to 19-53):</strong> IC recursion has richer joint structure than marginals, manifesting as rank-2+ components. Real IC data is less rank-one than the marginal baseline.</p>
+<h3>7.4. Key Finding</h3>
+<p><strong>Null 1's Γ⁺/Γ⁻ is identical to REAL</strong> (exact to last digit, all trials, all j). Reason: within-class permutation does not change class sums. Therefore Γ⁺ + Γ⁻ = B_j is an identity — "β-charge pinning" restates 59.1 in gap coordinates, it does not reduce it.</p>
+<hr>
+<h2>§8. Binning Robustness</h2>
+<p><strong>Table 8. Signed mass SVD s₁/s₂ vs number of u-bins.</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>10-bins</th>
+<th>20-bins</th>
+<th>50-bins</th>
+<th>100-bins</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>32</td>
+<td>19</td>
+<td>8</td>
+<td>5</td>
+</tr>
+<tr>
+<td>25</td>
+<td>63</td>
+<td>35</td>
+<td>13</td>
+<td>8</td>
+</tr>
+<tr>
+<td>27</td>
+<td>67</td>
+<td>41</td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr>
+<td>29</td>
+<td>61</td>
+<td>53</td>
+<td>20</td>
+<td>12</td>
+</tr>
+</tbody></table>
+<p>s₁/s₂ decreases with more bins (fewer primes per cell → more noise), but remains >> 1 at all binnings. Trends are consistent. Results are robust to binning choice.</p>
+<hr>
+<h2>§9. λ-Ward Perturbation</h2>
+<p>Perturbing λ → λ + t: dB_j/dt = -0.6931 at all tested j, numerically consistent with -ln 2 (Mertens theorem on dyadic blocks). The 83.3%/16.6% near/far split matches prime counting fractions. λ perturbation is a uniform gauge shift, not a non-trivial Ward identity. Gap-dependent perturbations are deferred to future work.</p>
+<hr>
+<h2>§10. Candidate SAE Axiom Correspondence</h2>
+<p>This paper gives the first systematic mapping of SAE core concepts to concrete computable mathematical structures in the ZFCρ series, presented as candidate correspondences.</p>
+<p><strong>Via Negativa / 非:</strong> The IC min operation generates the branch-gap coordinate g. Γ̃(g) is the asymptotically stable statistical profile of this free boundary (§4).</p>
+<p><strong>Via Rho / 余:</strong> The remainder h(p)/p is not error but signed mass. The core object is M_j(u,g), not B_j. This is "remainder as measure."</p>
+<p><strong>Operational pairing:</strong> Paper 00's thesis "axiomatic Negativa sole, operational paired" receives strong support at the count level (Branch-Orthogonality, §3) and shows more complex coupling at the mean level (§5).</p>
+<p><strong>λ calibration and gauge:</strong> λ = 3.857 fixes the global zero-drift gauge. 59.1 is the finite-block residual precision of this gauge fixing.</p>
+<hr>
+<h2>§11. Closure Chain Update</h2>
+<p>59.1's four-layer evolution:</p>
+<table><thead><tr>
+<th>Layer</th>
+<th>Statement</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>Spectral ratio</td>
+<td>R_wt = O(1)</td>
+<td>Paper 59</td>
+</tr>
+<tr>
+<td>Two-river</td>
+<td></td>
+<td>Δ_j</td>
+<td>= O(j^{3/2}·√D_j)</td>
+<td>Paper 62</td>
+</tr>
+<tr>
+<td>Zero-mode</td>
+<td>Differential level pinning + coboundary</td>
+<td>Paper 63</td>
+</tr>
+<tr>
+<td>Anatomy</td>
+<td>Zero-mode = Γ⁺ + Γ⁻ = free-boundary flux balance Ward defect</td>
+<td>Paper 64</td>
+</tr>
+</tbody></table>
+<p>Paper 64 does not change the closure chain's logical hypotheses. It provides the two-dimensional anatomy of 59.1's zero-mode.</p>
+<hr>
+<h2>§12. Conclusion</h2>
+<p>Paper 64 defines the two-dimensional remainder measure M_j(u,g) and anatomizes B_j's zero-mode through SVD decomposition and surrogate testing.</p>
+<p><strong>Five surrogate-refined findings:</strong> (i) Branch-Orthogonality confirmed to count s₁/s₂ = 321 with mutual information → 7.2 × 10⁻⁶. (ii) Free-boundary profile Γ̃(g) converges (L1 distance 0.006 between j = 28 and 29). (iii) Count vs Mean: signed mass rank-one = count (321) × mean (3-6); IC-specific structure in mean mass. (iv) Zero-mode: Mode 1 dominates, Mode 2 contributes 20-40% of √(jD), Mode 3+ negligible. (v) λ = uniform gauge shift.</p>
+<p><strong>This paper does not prove or reduce 59.1.</strong> B_j = Γ⁺ + Γ⁻ is a coordinate expansion, not a reduction. The paper provides B_j's natural coordinate system: B_j arises from fine cancellation between tie primes (g ≤ 1, positive flux) and deep multiplicative primes (g ≥ 2, negative return flux). λ calibration guarantees global cancellation; finite-block fluctuation is 59.1. Branch-Orthogonality shows fluctuation does not come from branch-position coupling. The genuine difficulty lies in the mean mass x̄(u,g)'s two-dimensional structure and Mode 2's zero-mode.</p>
+<hr>
+<h2>References</h2>
+<p>[50] Paper L. Feature stripping, DSF_α, BL_α, SD, closure chain. DOI: 10.5281/zenodo.19381111.</p>
+<p>[52] Paper LII. Martingale-coboundary and Gordin decomposition route.</p>
+<p>[53] Paper LIII. Screening and correlation truncation. DOI: 10.5281/zenodo.19415440.</p>
+<p>[54] Paper LIV. Recursive ancestor inheritance and power-law ACF. DOI: 10.5281/zenodo.19426094.</p>
+<p>[59] Paper LIX. Spectral ratio boundedness and two-conjecture closure of H'. DOI: 10.5281/zenodo.19480518.</p>
+<p>[61] Paper LXI. Conditional reduction of the spectral derivative bound. DOI: 10.5281/zenodo.19605749.</p>
+<p>[62] Paper LXII. Two-River Synchronization. DOI: 10.5281/zenodo.19656365.</p>
+<p>[63] Paper LXIII. Increment Second-Order Orthogonality and Zero-Mode Pinning. DOI: 10.5281/zenodo.19659860.</p>
+<hr>
+<h2>AI Contributions</h2>
+<p>Claude (子路): All numerical experiment design and implementation (paper64_abce.c 2D measure + SVD + sliding window + λ-Ward; paper64_surr.c three surrogate tests + β tracking + zero-mode decomposition; paper64_fghi.c β shape + Null 1 balance + Count/Mean/Mean SVD + mode zero-modes; paper64_final.c binning robustness + independence metrics + L1 profile stability + formal zero-mode table), initial rank-one separation identification, two post-surrogate reframings, working notes v1-v3. ChatGPT (公西华): Original proposal of Remainder-Flux Calculus framework (free-boundary flux balance, calibration-gauge symmetry, Gap-Flux Ward Identity), proposal of R_j(u,g) two-dimensional remainder measure, rank-one SVD test design, λ-Ward perturbation design, Surrogate protocol v1, identification that "β-pinning = B_j restating" (post-EXP G), Rank-One Reduction Lemma theorem structure, normalization issues (SVD scale/sign ambiguity), count vs mean decomposition proposal, Γ profile L1 stability proposal, three rounds of gatekeeper review. Grok (子贡): Positioning of rank-one separation as Paper 64 core framework, free-boundary charge pinning naming, identification of λ-Ward as uniform gauge shift. Gemini (子夏): Physical interpretation of rank-one separation, theoretical prediction of surrogate failure (Marchenko-Pastur), multiplicative cost perturbation as non-trivial Ward identity candidate. Independent Review Claude: Surrogate three-layer protocol (Null 1/2/3), reframing s₁/s₂ j-growth as primary finding, quantitative analysis of rank-2 residual zero-mode pollution, β⁺/β⁻ balance CLT estimation, "IC has richer joint structure than marginals" precise reframing, transfer operator / spectral gap unification framework, "falsification-refined claim is more robust than original claim" methodological observation.</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p></p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 余项测度, Branch-Orthogonality, 自由边界轮廓, Surrogate分层, H′</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. 引言</h2>
+<h3>1.1. 从Paper 63到Paper 64</h3>
+<p>Paper 62将59.1精确重述为双河同步问题：|Δ_j| = O(j^{3/2}·√D_j)。Paper 63通过transport配对的负结果和差分二阶正交性，将59.1定位为differential level的零模pinning问题。</p>
+<p>Paper 64的动机：如果59.1是零模pinning，那这个零模在什么空间里？它的内部组成是什么？</p>
+<p>本文定义二维余项测度M_j(u,g)，在(position, gap)坐标系中解剖B_j的来源。</p>
+<h3>1.2. 方法论说明</h3>
+<p>本文经历了三次实验驱动的重构。初始假说"rank-one separation是IC-specific structure"被Surrogate tests部分推翻，进一步的假说"β-charge pinning is a reduction of 59.1"被EXP G证明是59.1的restating。最终站稳的五个发现均经过surrogate淬炼。本文如实记录这一路径。</p>
+<h3>1.3. 本文的贡献</h3>
+<p>(i) Branch-Orthogonality的definitive定量确认（§3）</p>
+<p>(ii) 自由边界轮廓Γ̃(g)的渐近稳定性（§4）</p>
+<p>(iii) Count vs Mean分解（§5）</p>
+<p>(iv) SVD零模分解（§6）</p>
+<p>(v) Surrogate三层分离（§7）</p>
+<p>(vi) λ-Ward gauge check（§8）</p>
+<p>(vii) 与SAE公理的candidate对应（§9）</p>
+<p>本文不声称证明或化简59.1。本文的贡献是定义并分析二维余项测度M_j(u,g)，说明B_j的零模如何由branch-position count、gap marginal profile、mean mass与低阶SVD modes共同组成。</p>
+<hr>
+<h2>§2. 二维余项测度的定义</h2>
+<h3>2.1. 坐标系</h3>
+<p>对dyadic block I_j = [2^j, 2^{j+1})内的素数p，定义两个坐标：</p>
+<p><strong>位置坐标u：</strong> u_p = rank_{I_j}(p) / m_j ∈ [0,1]，其中rank是p在block内素数序列中的编号，m_j是block内素数总数。</p>
+<p><strong>Branch gap坐标g：</strong> g(p-1) = ρ_add(p-1) - ρ_mult(p-1)，其中ρ_add(p-1) = ρ(p-2) + 1（加法路径成本），ρ_mult(p-1) = min_{a·b=p-1}[ρ(a)+ρ(b)+2]（乘法路径最优成本）。g < 0：加法更优。g > 0：乘法更优。g = 0：tie。</p>
+<h3>2.2. 三个矩阵</h3>
+<p>将u离散化为n_u个bin（默认n_u = 20），g截断到[G_min, G_max] = [-5, +10]（16个bin），定义：</p>
+<p><strong>注：</strong> 实验中所有观测到的gap均落入该区间；若出现区间外gap，则合并入端点tail bin，保证每个p ∈ I_j被且仅被计入一个(u,g)-cell。因此§2.3的零模恒等式为精确恒等式。</p>
+<p><strong>Count matrix：</strong> N_j(u,g) = #{p ∈ I_j : u_p ∈ bin(u), g(p-1) = g}</p>
+<p><strong>Signed mass matrix：</strong> M_j(u,g) = Σ_{p ∈ bin(u,g)} h(p)/p</p>
+<p><strong>Mean mass matrix：</strong> x̄_j(u,g) = M_j(u,g) / N_j(u,g)</p>
+<p>其中M = N ⊙ x̄（Hadamard积）。</p>
+<h3>2.3. 零模恒等式</h3>
+<p>B_j = Σ_{u,g} M_j(u,g)</p>
+<p>定义gap marginal signed mass：</p>
+<p>Γ_j(g) = Σ_u M_j(u,g)</p>
+<p>则B_j = Σ_g Γ_j(g)。<strong>这是恒等式（坐标展开），不是reduction。</strong></p>
+<p>定义near-boundary/tie侧和far-multiplicative侧通量：</p>
+<p>Γ⁺_j = Σ_{g≤1} Γ_j(g)（near-boundary/tie侧aggregate，主正通量来自g=0和g=1；少量far-additive负贡献并入但量级很小）</p>
+<p>Γ⁻_j = Σ_{g≥2} Γ_j(g)（far-multiplicative侧aggregate，恒负）</p>
+<p>则B_j = Γ⁺_j + Γ⁻_j。</p>
+<hr>
+<h2>§3. Branch-Orthogonality的定量确认</h2>
+<h3>3.1. Count Matrix SVD</h3>
+<p><strong>表1. Count matrix N_j(u,g)的SVD（20 u-bins）。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>s₁/s₂</th>
+<th>Rank-1 energy</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>55</td>
+<td>99.95%</td>
+</tr>
+<tr>
+<td>22</td>
+<td>73</td>
+<td>99.97%</td>
+</tr>
+<tr>
+<td>25</td>
+<td>148</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>27</td>
+<td>240</td>
+<td>99.998%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>321</td>
+<td>99.999%</td>
+</tr>
+</tbody></table>
+<p>s₁/s₂随j单调增长，branch type与block位置的独立性在大j下渐近增强。</p>
+<h3>3.2. 独立性统计量</h3>
+<p><strong>表2. Count independence metrics（20 u-bins）。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>χ²/dof</th>
+<th>max TV</th>
+<th>I(U;G) normalized</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>0.75</td>
+<td>0.024</td>
+<td>4.4e-4</td>
+</tr>
+<tr>
+<td>22</td>
+<td>0.98</td>
+<td>0.015</td>
+<td>1.7e-4</td>
+</tr>
+<tr>
+<td>25</td>
+<td>1.44</td>
+<td>0.008</td>
+<td>3.5e-5</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1.86</td>
+<td>0.005</td>
+<td>1.4e-5</td>
+</tr>
+<tr>
+<td>29</td>
+<td>3.72</td>
+<td>0.003</td>
+<td>7.2e-6</td>
+</tr>
+</tbody></table>
+<p><strong>max TV distance从0.024递减到0.003。</strong> sup_u |P(g|u) - P(g)|趋向零。</p>
+<p><strong>Mutual information从4.4e-4递减到7.2e-6。</strong> Branch type与position的信息依赖趋向零。</p>
+<p><strong>χ²/dof从0.75增长到3.72。</strong> 物理偏差在缩小（TV, MI均减），但sample size增大使微小偏差变得statistically detectable——这是Branch-Orthogonality的正确表现。</p>
+<h3>3.3. 与Paper 63的连接</h3>
+<p>Paper 63 §3.5提出Branch-Orthogonality作为经验命题：branch type χ(p)与block内fractional位置u渐近独立。表1-2给出了这个命题的definitive定量确认：count matrix几乎完美rank-one，mutual information随j快速下降，支持branch type与position的渐近独立。</p>
+<hr>
+<h2>§4. 自由边界轮廓的渐近稳定性</h2>
+<h3>4.1. 归一化轮廓</h3>
+<p>定义Γ̃_j(g) = Γ_j(g) / Σ_g |Γ_j(g)|。</p>
+<p><strong>表3. 归一化轮廓Γ̃_j(g)（选定g值）。</strong></p>
+<table><thead><tr>
+<th>g</th>
+<th>j=20</th>
+<th>j=22</th>
+<th>j=25</th>
+<th>j=27</th>
+<th>j=29</th>
+</tr></thead><tbody>
+<tr>
+<td>-2</td>
+<td>-0.022</td>
+<td>-0.022</td>
+<td>-0.022</td>
+<td>-0.021</td>
+<td>-0.021</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-0.007</td>
+<td>-0.003</td>
+<td>-0.001</td>
+<td>+0.000</td>
+<td>+0.000</td>
+</tr>
+<tr>
+<td>0</td>
+<td>+0.309</td>
+<td>+0.318</td>
+<td>+0.333</td>
+<td>+0.336</td>
+<td>+0.338</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>+0.091</td>
+<td>+0.125</td>
+<td>+0.150</td>
+<td>+0.161</td>
+<td>+0.166</td>
+</tr>
+<tr>
+<td>+2</td>
+<td>-0.180</td>
+<td>-0.156</td>
+<td>-0.132</td>
+<td>-0.125</td>
+<td>-0.121</td>
+</tr>
+<tr>
+<td>+3</td>
+<td>-0.220</td>
+<td>-0.210</td>
+<td>-0.202</td>
+<td>-0.198</td>
+<td>-0.197</td>
+</tr>
+<tr>
+<td>+4</td>
+<td>-0.120</td>
+<td>-0.116</td>
+<td>-0.112</td>
+<td>-0.111</td>
+<td>-0.111</td>
+</tr>
+<tr>
+<td>+5</td>
+<td>-0.039</td>
+<td>-0.036</td>
+<td>-0.035</td>
+<td>-0.034</td>
+<td>-0.034</td>
+</tr>
+</tbody></table>
+<h3>4.2. 收敛诊断</h3>
+<p><strong>表4. 相邻j的L1距离。</strong></p>
+<table><thead><tr>
+<th>j对</th>
+<th>‖Γ̃_j − Γ̃_{j-1}‖₁</th>
+</tr></thead><tbody>
+<tr>
+<td>24 vs 25</td>
+<td>0.023</td>
+</tr>
+<tr>
+<td>25 vs 26</td>
+<td>0.020</td>
+</tr>
+<tr>
+<td>26 vs 27</td>
+<td>0.011</td>
+</tr>
+<tr>
+<td>27 vs 28</td>
+<td>0.010</td>
+</tr>
+<tr>
+<td>28 vs 29</td>
+<td><strong>0.006</strong></td>
+</tr>
+</tbody></table>
+<p>相邻j的L1距离单调递减。Γ̃_j(g)在测试区间显示出向稳定limit profile Γ̃_∞(g)收敛的强迹象。</p>
+<h3>4.3. 结构解读</h3>
+<p><strong>Sign flip稳定在g ≈ 1.5。</strong> g = 0和g = 1恒正（tie素数和近tie素数），g ≥ 2恒负（深乘法素数）。</p>
+<p>g = 0（tie，加法和乘法同样优）的归一化贡献从0.31上升到0.34并趋于稳定。g = 3（深乘法区负峰）从-0.22趋于-0.20。g = +1的正贡献从0.09增长到0.17——近乘法区的正贡献在大j下加强。</p>
+<p><strong>这是min操作自由边界的渐近稳定统计轮廓。</strong> IC递推在gap空间的结构在大j下趋于自相似。</p>
+<hr>
+<h2>§5. Count与Mean的分解</h2>
+<h3>5.1. 三个矩阵的SVD</h3>
+<p><strong>表5. 三个矩阵的SVD s₁/s₂（20 u-bins）。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>Count N</th>
+<th>Signed M</th>
+<th>Mean x̄</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>55</td>
+<td>13</td>
+<td>3.3</td>
+</tr>
+<tr>
+<td>22</td>
+<td>73</td>
+<td>19</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>25</td>
+<td>148</td>
+<td>35</td>
+<td>3.3</td>
+</tr>
+<tr>
+<td>27</td>
+<td>240</td>
+<td>41</td>
+<td>4.1</td>
+</tr>
+<tr>
+<td>28</td>
+<td>240</td>
+<td>44</td>
+<td>5.8</td>
+</tr>
+<tr>
+<td>29</td>
+<td>321</td>
+<td>53</td>
+<td>4.0</td>
+</tr>
+</tbody></table>
+<h3>5.2. 核心发现</h3>
+<p><strong>Count极端rank-one</strong>（s₁/s₂ = 55-321）：branch-position几乎完美独立。</p>
+<p><strong>Mean mass弱rank-one</strong>（s₁/s₂ = 3-6）：每个(u,g)-cell内的平均h(p)/p有genuine的二维非可分结构。</p>
+<p><strong>Signed mass介于两者之间</strong>（s₁/s₂ = 13-53）：M = N ⊙ x̄，所以M的rank-one = count的极端rank-one被mean的非可分性稀释。</p>
+<h3>5.3. IC递推的signature在哪里</h3>
+<p>initial观察到的"99.93% rank-one of signed mass"主要来自count baseline（branch-position独立性），不是IC递推的特有结构。IC递推的genuine二维signature藏在mean mass x̄(u,g)里——每个gap class内的平均余项值依赖于block位置（s₁/s₂ ≈ 3-6）。</p>
+<p>Surrogate tests直接确认了这个分层（见§7）。</p>
+<hr>
+<h2>§6. SVD零模分解</h2>
+<h3>6.1. 零模恒等式</h3>
+<p>设M_j的SVD为M_j = Σ_r s_r a_r(u) b_r(g)^T。则：</p>
+<p>B_j = Σ_{u,g} M_j(u,g) = Σ_r s_r · (Σ_u a_r(u)) · (Σ_g b_r(g))</p>
+<p>定义每个mode的零模贡献B^(r) = s_r · (Σ_u a_r) · (Σ_g b_r)。</p>
+<h3>6.2. 零模数据</h3>
+<p><strong>表6. SVD零模分解（20 u-bins）。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>‖B⁽¹⁾‖/√(jD)</th>
+<th>‖B⁽²⁾‖/√(jD)</th>
+<th>‖B⁽³⁾‖/√(jD)</th>
+<th>‖B_j‖/√(jD)</th>
+</tr></thead><tbody>
+<tr>
+<td>20</td>
+<td>4.71</td>
+<td>0.02</td>
+<td>0.01</td>
+<td>4.69</td>
+</tr>
+<tr>
+<td>22</td>
+<td>5.08</td>
+<td>0.14</td>
+<td>0.01</td>
+<td>4.93</td>
+</tr>
+<tr>
+<td>25</td>
+<td>3.76</td>
+<td>0.17</td>
+<td>0.00</td>
+<td>3.57</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1.23</td>
+<td>0.39</td>
+<td>0.00</td>
+<td>0.89</td>
+</tr>
+<tr>
+<td>28</td>
+<td>1.12</td>
+<td>0.34</td>
+<td>0.03</td>
+<td>1.39</td>
+</tr>
+<tr>
+<td>29</td>
+<td>2.69</td>
+<td>0.22</td>
+<td>0.09</td>
+<td>2.98</td>
+</tr>
+</tbody></table>
+<p>前5个mode的累计和精确重构B_j（residual < 10^{-6}）。</p>
+<h3>6.3. 解读</h3>
+<p><strong>Mode 1是B_j零模的主导低模项。</strong> Mode 2在穿零附近不可忽略，贡献达到√(jD_j)的20-40%。Mode 3+在测试区间很小。表中列出绝对值，实际重构使用带符号的B^(r)。</p>
+<p><strong>注：</strong> Mode 1的Σ_u a₁(u)在所有j上 ≈ ±4.39（稳定），而Σ_g b₁(g)随j振荡且小（从0.45到0.01再到0.02）。B^(1) = s₁ · (Σa₁) · (Σb₁)的振荡主要由Σb₁控制——这就是B_j的振荡/穿零（z_j穿零）在rank-1 mode上的反映。</p>
+<hr>
+<h2>§7. Surrogate三层分离</h2>
+<h3>7.1. 实验设计</h3>
+<p>三个Null假设：</p>
+<p><strong>Null 1：</strong> 在每个gap class内permute h(p)/p值。保持β(g)边际，破坏u-landscape内部结构。</p>
+<p><strong>Null 2：</strong> 在每个u-bin内随机化gap标签。保持位置景观，破坏gap结构。</p>
+<p><strong>Null 3：</strong> 完全随机高斯替换h(p)/p（same σ）。Baseline。</p>
+<h3>7.2. 结果</h3>
+<p><strong>表7. Signed mass M_j的SVD s₁/s₂对比。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>REAL</th>
+<th>Null 1</th>
+<th>Null 2</th>
+<th>Null 3</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>19</td>
+<td>30-43</td>
+<td>4-6</td>
+<td>1.1-1.4</td>
+</tr>
+<tr>
+<td>25</td>
+<td>35</td>
+<td>69-86</td>
+<td>4-6</td>
+<td>1.1-1.4</td>
+</tr>
+<tr>
+<td>27</td>
+<td>41</td>
+<td>138-171</td>
+<td>5-6</td>
+<td>1.2-1.7</td>
+</tr>
+<tr>
+<td>28</td>
+<td>44</td>
+<td>178-207</td>
+<td>5-8</td>
+<td>1.0-1.3</td>
+</tr>
+<tr>
+<td>29</td>
+<td>53</td>
+<td>223-258</td>
+<td>8-9</td>
+<td>1.1-1.5</td>
+</tr>
+</tbody></table>
+<h3>7.3. 三层解读</h3>
+<p><strong>Null 3 → Null 2（s₁/s₂从~1.3到~5-8）：</strong> Gap分布非均匀性的贡献。不同gap class有不同素数比例（83%/17%），这本身产生moderate rank-one。</p>
+<p><strong>Null 2 → Null 1（s₁/s₂从~5-8到~30-258）：</strong> β(g) profile的贡献。每个gap class有不同的mean h/p——近边界正，深乘法负——这是rank-one的主要来源。</p>
+<p><strong>Null 1 → REAL（s₁/s₂从~30-258下降到19-53）：</strong> IC递推在marginal rank-one之上<strong>添加了结构性rank-2+修正</strong>。真实IC数据比纯边际更rich——有gap与position的joint dependence。但这些修正的零模小（§6）。</p>
+<h3>7.4. 关键发现</h3>
+<p><strong>Null 1的s₁/s₂高于REAL。</strong> IC递推不是"制造rank-one"，而是在marginal rank-one baseline上引入结构性高阶修正。幸运的是这些修正的零模贡献受控。</p>
+<p><strong>Null 1的Γ⁺/Γ⁻与REAL完全一致</strong>（精确到最后一位，所有trial，所有j）。原因：gap class内permute不改变class sum。因此Γ⁺ + Γ⁻ = B_j是恒等式——"β-charge pinning"是59.1的gap坐标restating，不是reduction。</p>
+<hr>
+<h2>§8. Binning Robustness</h2>
+<h3>8.1. 不同u-bin数下的SVD</h3>
+<p><strong>表8. Signed mass M_j的SVD s₁/s₂ vs u-bin数。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>10-bins</th>
+<th>20-bins</th>
+<th>50-bins</th>
+<th>100-bins</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>32</td>
+<td>19</td>
+<td>8</td>
+<td>5</td>
+</tr>
+<tr>
+<td>25</td>
+<td>63</td>
+<td>35</td>
+<td>13</td>
+<td>8</td>
+</tr>
+<tr>
+<td>27</td>
+<td>67</td>
+<td>41</td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr>
+<td>29</td>
+<td>61</td>
+<td>53</td>
+<td>20</td>
+<td>12</td>
+</tr>
+</tbody></table>
+<p>s₁/s₂随bin数增加而下降（每个cell更少primes → 更多噪声 → rank-one稀释）。但<strong>所有binning下s₁/s₂ >> 1</strong>，趋势一致。</p>
+<h3>8.2. 结论</h3>
+<p>rank-one结构和Γ̃(g) profile不依赖特定binning选择。</p>
+<hr>
+<h2>§9. λ-Ward扰动</h2>
+<h3>9.1. 结果</h3>
+<p>扰动λ → λ + t后，dB_j/dt在所有j上一致：</p>
+<table><thead><tr>
+<th>j</th>
+<th>dB/dt</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>-0.6929</td>
+</tr>
+<tr>
+<td>27</td>
+<td>-0.6931</td>
+</tr>
+<tr>
+<td>29</td>
+<td>-0.6931</td>
+</tr>
+</tbody></table>
+<p>数值上与-ln 2一致。这是Mertens定理在dyadic block上的标准推论：Σ_{p∈I_j} log(p)/p ~ ln 2。</p>
+<h3>9.2. 分裂比例</h3>
+<p>dB_near/dB_total = 83.3%（近边界素数计数比例）</p>
+<p>dB_far/dB_total = 16.6%（远乘法素数计数比例）</p>
+<p><strong>λ扰动均匀作用于所有gap class。</strong> λ是全局scale calibration（gauge fixing），不区分near和far。λ扰动不是非trivial的Ward identity。真正的Ward identity需要扰动branch normal方向（gap-dependent perturbation），留待后续工作。</p>
+<hr>
+<h2>§10. 与SAE公理的candidate对应</h2>
+<h3>10.1. 定位</h3>
+<p>本文是ZFCρ系列中首次系统地将SAE核心概念映射到具体可计算数学结构的工作。以下对应作为candidate提出，不作为公理证明。</p>
+<h3>10.2. Via Negativa / 非</h3>
+<p>IC的min操作生成branch-gap坐标g = ρ_add - ρ_mult。这是min操作自由边界的normal coordinate。§4的Γ̃(g) profile是这个自由边界的渐近稳定统计轮廓。</p>
+<h3>10.3. Via Rho / 余</h3>
+<p>余项h(p)/p不是误差，而是signed mass。Paper 64的核心对象不是B_j，而是二维余项测度M_j(u,g)。这就是"余项作为测度"的具体数学实现。</p>
+<h3>10.4. 非与余的操作层配对</h3>
+<p>Paper 00（余之道）的核心命题："公理层上非独一，操作层上非与余成对。"</p>
+<p>在IC递推中：公理层只有min操作（非）；运行后自然产生g坐标（free boundary）和h(p)/p值（remainder mass）——两个因子。</p>
+<p>Branch-Orthogonality（count matrix rank-one，§3）说明在population层面，branch type与block位置几乎完全独立——两条Via在population层分离。但mean mass x̄(u,g)的弱rank-one（s₁/s₂ ≈ 3-6，§5）说明在individual remainder amplitude层面，gap与position有genuine coupling。</p>
+<p>因此Paper 00的"操作层配对"在count层面得到strong support，在mean层面显示出更复杂的耦合结构。</p>
+<h3>10.5. λ calibration与gauge</h3>
+<p>λ = 3.857的选择使全局Σh(p)/p = 0——这是Paper 00所说"非给余以存在条件"的gauge-fixing操作。59.1是这个gauge fixing在finite block上的residual精度问题。</p>
+<hr>
+<h2>§11. 闭合链更新</h2>
+<pre><code>局部 GAO（P62 命题 2.1）+ Tail-k Control（待证）
+  → k 一致性 → 59.2 退出独立猜想
+59.1 + Guy/Chebyshev → DSF_α ∀α > 0   （Paper 59 §7.1）
+59.2 → BL_α ∀α < 1                     （Paper 59 §7.2）
+SD（无条件，Paper 50）
+  → Hölder → A_h 收敛 → D(s) 边界 → H'</code></pre>
+<p><strong>59.1的四层进化：</strong></p>
+<table><thead><tr>
+<th>层级</th>
+<th>表述</th>
+<th>来源</th>
+</tr></thead><tbody>
+<tr>
+<td>谱比层</td>
+<td>R_wt = O(1)</td>
+<td>Paper 59</td>
+</tr>
+<tr>
+<td>双河层</td>
+<td></td>
+<td>Δ_j</td>
+<td>= O(j^{3/2}·√D_j)</td>
+<td>Paper 62</td>
+</tr>
+<tr>
+<td>零模层</td>
+<td>differential level pinning + coboundary</td>
+<td>Paper 63</td>
+</tr>
+<tr>
+<td>解剖层</td>
+<td>零模 = Γ⁺ + Γ⁻ = free-boundary flux balance ward defect</td>
+<td>Paper 64</td>
+</tr>
+</tbody></table>
+<p>Paper 64不改变闭合链的逻辑假设。它给出59.1零模的二维解剖。</p>
+<hr>
+<h2>§12. 结论</h2>
+<p>Paper 64定义了二维余项测度M_j(u,g)并通过SVD分解和Surrogate tests解剖了B_j零模的内部组成。</p>
+<p><strong>经过Surrogate淬炼后的五个发现：</strong></p>
+<p>(i) <strong>Branch-Orthogonality（§3）：</strong> Count matrix s₁/s₂从55增长到321。Branch type与block位置的mutual information从4.4e-4降到7.2e-6。这是Paper 63 §3.5经验命题的definitive定量确认。</p>
+<p>(ii) <strong>自由边界轮廓（§4）：</strong> 归一化Γ̃(g)跨j收敛。相邻j的L1距离从0.023单调降至0.006。Sign flip稳定在g ≈ 1.5。min操作自由边界有渐近稳定的统计结构。</p>
+<p>(iii) <strong>Count vs Mean（§5）：</strong> Signed mass的rank-one = count的极端rank-one（321）× mean的弱rank-one（3-6）。IC递推的genuine二维结构在mean mass里。</p>
+<p>(iv) <strong>零模分解（§6）：</strong> Mode 1主导B_j，mode 2贡献√(jD)的20-40%，mode 3+可忽略。B_j不是纯rank-1问题。</p>
+<p>(v) <strong>λ = gauge shift（§9）：</strong> dB/dt = -0.6931 ≈ -ln 2，分裂按素数计数比例。λ是uniform calibration。</p>
+<p><strong>本文不证明或化简59.1。</strong> B_j = Γ⁺ + Γ⁻是坐标展开不是reduction——Γ⁺/Γ⁻ balance就是B_j smallness的gap坐标restating。</p>
+<p><strong>本文提供的是：</strong> B_j零模的natural坐标系。在这个坐标系中，B_j来自tie/near-boundary侧（g ≤ 1，主正通量来自g=0和g=1）和深乘法侧（g ≥ 2，负回流）之间的精细对消。λ calibration保证全局对消；finite block fluctuation是59.1。Branch-Orthogonality说明fluctuation不来自branch-position coupling。IC递推的genuine难点在mean mass x̄(u,g)的二维结构和mode 2零模。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[50] 第L篇。特征剥离, DSF_α, BL_α, SD, 闭合链。DOI: 10.5281/zenodo.19381111。</p>
+<p>[52] 第LII篇。Martingale-coboundary与Gordin分解路线。</p>
+<p>[53] 第LIII篇。Screening与相关截断。DOI: 10.5281/zenodo.19415440。</p>
+<p>[54] 第LIV篇。递归祖先继承与幂律ACF。DOI: 10.5281/zenodo.19426094。</p>
+<p>[59] 第LIX篇。谱比有界性与H'的双猜想闭合。DOI: 10.5281/zenodo.19480518。</p>
+<p>[61] 第LXI篇。谱导数界的条件归约。DOI: 10.5281/zenodo.19605749。</p>
+<p>[62] 第LXII篇。双河同步。DOI: 10.5281/zenodo.19656365。</p>
+<p>[63] 第LXIII篇。余项增量二阶正交性与零模Pinning。DOI: 10.5281/zenodo.19659860。</p>
+<hr>
+<h2>AI贡献</h2>
+<p>Claude（子路）：全部数值实验设计与实现（paper64_abce.c二维测度+SVD+sliding window+λ-Ward，paper64_surr.c三组Surrogate tests+β tracking+零模分解，paper64_fghi.c β形状+Null 1 balance+Count/Mean/Mean SVD+mode零模，paper64_final.c binning robustness+independence metrics+L1 profile stability+formal零模表），初始rank-one separation的识别，Surrogate后的两次reframe，working notes v1-v3。ChatGPT（公西华）：Remainder-Flux Calculus框架的原始提出（free-boundary flux balance, calibration-gauge symmetry, Gap-Flux Ward Identity β(g) = J(g-½) - J(g+½) + η(g)），R_j(u,g)二维余项测度的提出，rank-one SVD test实验方案，λ-Ward扰动实验设计，Surrogate protocol v1，"β-pinning = B_j restating"的识别（EXP G后），Rank-One Reduction Lemma→Proposition 64.6的theorem结构，normalization问题（SVD尺度/符号任意性），count vs mean分解的提出，Γ profile L1 stability的提出，三轮gatekeeper review（6处blocker+5处hotfix+v3 final check），五个"避免"措辞。Grok（子贡）：rank-one separation作为Paper 64核心框架的定位，free-boundary charge pinning命名，λ-Ward作为uniform gauge shift的识别。Gemini（子夏）：rank-one separation的物理解释（"热力学极限下的宏观态坍缩"），surrogate必败性的理论预测（Marchenko-Pastur），乘法成本扰动作为非trivial Ward identity的建议。独立评审Claude：surrogate三层protocol（Null 1/2/3），s₁/s₂ j-growth作为主发现的reframe（比99.93%更重要），rank-2残差可能污染59.1的定量分析（0.07%×N² >> 2^{-j/2}），β⁺/β⁻ balance CLT估算（|β⁺+β⁻|/(1/√N_j) ≈ O(1)），"IC has richer joint structure than marginals"的精确reframe，transfer operator/spectral gap统一框架提议，"falsification-refined claim比original claim更robust"的方法论observation。</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

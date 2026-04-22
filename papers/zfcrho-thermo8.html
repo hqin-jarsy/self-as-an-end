@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper VIII: Copying Fidelity, Renewal Retention, and the Thermodynamic Division of Labor across Biological DD Layers — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho-thermo8.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo8.html">
+  <meta name="citation_title" content="ZFCρ Thermodynamics Paper VIII: Copying Fidelity, Renewal Retention, and the Thermodynamic Division of Labor across Biological DD Layers">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19688304">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics · Paper VIII</div>
+    <h1>ZFCρ Thermodynamics Paper VIII: Copying Fidelity, Renewal Retention, and the Thermodynamic Division of Labor across Biological DD Layers<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ热力学论文 VIII：复制保真度、Renewal保留率与生物DD层级的热力学分工</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19688304" target="_blank" rel="noopener">10.5281/zenodo.19688304</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19688304" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Thermodynamics Paper VII established renewal encapsulation: τ_slot = T^(n), τ_dec = τ_slot/(−ln ρ_ret). The retention coefficient ρ_ret was left as an open parameter. This paper identifies its physical source and verifies the Thermo V–VI q-formula in 5–8DD biological systems.
+
+Three main results. First, a copying-retention lemma: in a linear copy channel, renewal retention equals copying fidelity (ρ_ret = f). The simple case f = 1−μ (per-symbol error rate) gives τ_dec = T/(−ln(1−μ)) with zero free parameters. Experimental verification: fidelity scanned from 0 to 0.99, ρ_ret matches fidelity linearly (ratio 1.00–1.03). DNA per-site μ ≈ 10⁻⁹ gives per-site τ_dec ≈ 10⁹·T_generation.
+
+Second, a thermodynamic division of labor between 5–6DD and 7–8DD. Chemical concentration systems (5–6DD) show q > 1: CICR (Δq = 0.004), gene positive feedback (Δq = 0.001), and glycolytic oscillator (Δq = 0.009) all verify the Thermo V–VI formula with zero parameters. Bounded voltage-gated conductance modules (7–8DD, exemplified by standard Hodgkin-Huxley) give q ≈ 1 due to sigmoid homeostatic attractors, but supply renewal gates through spike trains. C5 is refined into three sub-conditions: C5a (multiplicative coupling exists), C5b (asymmetric f/r opposition), C5c (f-channel tail not homeostatically clipped). The Repressilator shows a sharp Hill-coefficient transition at n = 2 → 3.
+
+Third, a soft-gate cascade proposition. Defining the canonical non-Boltzmann excess δ_i := q_i − 1, if each soft gate satisfies linear response δ_{i+1} = ε_i·δ_i + O(δ²), then multi-layer transmission gives δ_{i+m} = δ_i·∏ε_j + O(δ²). If all ε_j > 0 and the source δ > 0, transmission is formally nonzero; if any ε_j = 0, the pathway is cut. This is a conditional necessary transmission condition; ε_i require independent measurement.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, thermodynamics, copying fidelity, renewal retention, biological DD layers, thermodynamic division of labor</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>Thermodynamics Paper VII established renewal encapsulation: τ_slot = T^(n), τ_dec = τ_slot/(−ln ρ_ret). The retention coefficient ρ_ret was left as an open parameter. This paper identifies its physical source and verifies the Thermo V–VI q-formula in 5–8DD biological systems.</p>
+<p>Three main results. First, a copying-retention lemma: in a linear copy channel, renewal retention equals copying fidelity (ρ_ret = f). The simple case f = 1−μ (per-symbol error rate) gives τ_dec = T/(−ln(1−μ)) with zero free parameters. Experimental verification: fidelity scanned from 0 to 0.99, ρ_ret matches fidelity linearly (ratio 1.00–1.03). DNA per-site μ ≈ 10⁻⁹ gives per-site τ_dec ≈ 10⁹·T_generation.</p>
+<p>Second, a thermodynamic division of labor between 5–6DD and 7–8DD. Chemical concentration systems (5–6DD) show q > 1: CICR (Δq = 0.004), gene positive feedback (Δq = 0.001), and glycolytic oscillator (Δq = 0.009) all verify the Thermo V–VI formula with zero parameters. Bounded voltage-gated conductance modules (7–8DD, exemplified by standard Hodgkin-Huxley) give q ≈ 1 due to sigmoid homeostatic attractors, but supply renewal gates through spike trains. C5 is refined into three sub-conditions: C5a (multiplicative coupling exists), C5b (asymmetric f/r opposition), C5c (f-channel tail not homeostatically clipped). The Repressilator shows a sharp Hill-coefficient transition at n = 2 → 3.</p>
+<p>Third, a soft-gate cascade proposition. Defining the canonical non-Boltzmann excess δ_i := q_i − 1, if each soft gate satisfies linear response δ_{i+1} = ε_i·δ_i + O(δ²), then multi-layer transmission gives δ_{i+m} = δ_i·∏ε_j + O(δ²). If all ε_j > 0 and the source δ > 0, transmission is formally nonzero; if any ε_j = 0, the pathway is cut. This is a conditional necessary transmission condition; ε_i require independent measurement.</p>
+<hr>
+<h2>§1 Problem: Where Does ρ_ret Come From?</h2>
+<h3>1.1 Starting from Thermo VII</h3>
+<p>Thermo VII [1] established renewal encapsulation: the lower layer's closure period T^(n) becomes the upper layer's update slot τ_slot, and the upper layer's ACF decay time is jointly determined by slot and retention:</p>
+<p>$$\tau_{\text{dec}}^{(n+1)} = \frac{\tau_{\text{slot}}^{(n+1)}}{-\ln\rho_{\text{ret}}}$$</p>
+<p>where τ_slot comes from the lower layer (clock) and ρ_ret comes from the upper layer (memory).</p>
+<p>Thermo VII verified this formula (16 parameter combinations, ratio 0.83–1.28) but left a core open question: <strong>what is the physical source of ρ_ret?</strong> Is it a free parameter, or can it be predicted from system properties?</p>
+<p>Simultaneously, the Thermo V–VI [2, 3] q-formula q = 1 + n_ch·τ_dec/T had been verified on the Brusselator (4DD) but not tested in 5–8DD biological systems.</p>
+<h3>1.2 Contributions</h3>
+<p>(1) Copying-retention lemma: ρ_ret = f (copying fidelity) in linear copy channels; f = 1−μ as simplest case (experimentally verified, zero free parameters).</p>
+<p>(2) 5–8DD biological q-scan: CICR, gene positive feedback, glycolytic oscillator as positive examples; HH, LV, Repressilator as negative examples with diagnostic.</p>
+<p>(3) C5 condition refined into three sub-conditions C5a/C5b/C5c. Hill coefficient sharp transition at n = 2 → 3. Observable selection principle: r² as canonical.</p>
+<p>(4) DD-layer thermodynamic division of labor: 5–6DD supplies q > 1, 7–8DD bounded gating supplies renewal gate, 5DD copying supplies ρ_ret > 0. Minimal thermodynamic signature candidate for chemical-type life: (q > 1, ρ_ret > 0, renewal gating).</p>
+<p>(5) Soft-gate cascade proposition: necessary condition for non-Boltzmann excess transmission through multiplicative gate chain.</p>
+<hr>
+<h2>§2 Copying-Retention Lemma: Copying Fidelity as Memory</h2>
+<h3>2.1 Via Negativa: three naive paths excluded</h3>
+<p><strong>Path 1: ρ_ret = C(1) ≈ 0.96 (ZFCρ topological constant).</strong> Direct measurement of Brusselator cycle-to-cycle lag-1 autocorrelation gives uniformly <strong>negative</strong> values (−0.11 to −0.96 depending on b and σ). HH neuron: ρ_cyc(ISI) = −0.998. Excluded.</p>
+<p><strong>Path 2: ρ_ret measured directly from lower-layer Poincaré return map.</strong> Measured cycle correlations are negative — compensatory alternation, not memory. Excluded.</p>
+<p><strong>Path 3: AR(1) as model for cycle-to-cycle dynamics.</strong> AR(1) predicts lag-2 = (lag-1)². Measured lag-2 significantly exceeds lag-1² (e.g., b = 3.0, σ = 0.1: lag-1 = −0.85, lag-1² = 0.72, lag-2 = 0.81). Excluded.</p>
+<h3>2.2 Cycle compensation vs copying memory</h3>
+<p>The three exclusions reveal a critical distinction:</p>
+<table><thead><tr>
+<th>Quantity</th>
+<th>Notation</th>
+<th>Range</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td>Cycle-to-cycle raw correlation</td>
+<td>ρ_cyc</td>
+<td>Can be positive or negative</td>
+<td>Return map property</td>
+</tr>
+<tr>
+<td>Copying retention</td>
+<td>ρ_ret</td>
+<td>0 < ρ_ret < 1</td>
+<td>Copy/memory channel retention</td>
+</tr>
+</tbody></table>
+<p>ρ_cyc < 0 is compensatory alternation in restorative systems — the f/r opposition at cycle level. This is <strong>reflex</strong>, not <strong>memory</strong>. ρ_ret > 0 is same-sign retention in copying systems — previous-generation information partially preserved. This is <strong>memory</strong>.</p>
+<p>The lower-layer oscillation cycle itself is not an AR(1) memory channel. Copying (e.g., DNA replication) is an additional renewal memory channel superimposed on oscillatory dynamics.</p>
+<h3>2.3 Copying-retention lemma</h3>
+<p><strong>Lemma (copy-channel retention).</strong> If the upper-layer renewal variable z_m updates through a linear copy channel:</p>
+<p>$$z_{m+1} = f \cdot z_m + (1-f) \cdot u_m + \epsilon_m$$</p>
+<p>where u_m, ε_m are independent of z_m, and the process is at its stationary distribution (|f| < 1), then the lag-1 retention on event index is:</p>
+<p>$$\rho_{\text{ret}} = f$$</p>
+<p><strong>Proof.</strong> Stationary Cov(z_m, z_{m+1}) = Cov(z_m, f·z_m + (1−f)·u_m + ε_m) = f·Var(z_m). At stationarity Var(z_m) = Var(z_{m+1}). Therefore Corr(z_m, z_{m+1}) = f. QED.</p>
+<p><strong>Simple case:</strong> If copying error rate is μ and f = 1−μ, then ρ_ret = 1−μ.</p>
+<p><strong>General spectral version:</strong> For a finite-state copy channel with transition matrix P_copy, |λ₂(P_copy)| (modulus of the leading nontrivial eigenvalue) controls the dominant long-time retention scale. When the observable projects onto the leading nontrivial eigenmode and the channel satisfies appropriate reversibility/normality conditions, measured single-mode retention equals |λ₂|. The linear copy channel with f = 1−μ is the simplest case of this spectral theory.</p>
+<p><strong>Experimental verification.</strong> Brusselator + template variable z, updated at each Poincaré crossing: z_{m+1} = f·z_m + (1−f)·(A_m/A_mean) + noise. Fidelity f scanned from 0 to 0.99.</p>
+<table><thead><tr>
+<th>Fidelity</th>
+<th>ρ_ret (measured)</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>0.00</td>
+<td>−0.012</td>
+<td>Compensation (no copying = residual ρ_cyc)</td>
+</tr>
+<tr>
+<td>0.10</td>
+<td>+0.090</td>
+<td>Memory emergence</td>
+</tr>
+<tr>
+<td>0.50</td>
+<td>+0.496</td>
+<td></td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>+0.900</td>
+<td></td>
+</tr>
+<tr>
+<td>0.99</td>
+<td>+0.989</td>
+<td>Near-perfect memory</td>
+</tr>
+</tbody></table>
+<p>ρ_ret ≈ fidelity (linear). For any fidelity in [0, 1), ρ_ret = f holds exactly. Fidelity = 1 corresponds to perfect copying (AR(1) with ρ = 1, non-stationary).</p>
+<h3>2.4 Verification: τ_dec = T/(−ln(1−μ))</h3>
+<p>Substituting ρ_ret = f into Thermo VII's formula:</p>
+<table><thead><tr>
+<th>Fidelity</th>
+<th>ρ_ret</th>
+<th>τ_dec (theory)</th>
+<th>τ_dec (meas)</th>
+<th>Ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>0.50</td>
+<td>0.496</td>
+<td>1.94</td>
+<td>2.00</td>
+<td>1.03</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td>0.699</td>
+<td>3.78</td>
+<td>3.86</td>
+<td>1.02</td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>0.901</td>
+<td>12.97</td>
+<td>12.92</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>0.95</td>
+<td>0.951</td>
+<td>27.20</td>
+<td>27.23</td>
+<td>1.00</td>
+</tr>
+</tbody></table>
+<p>Zero free parameters. Ratio 1.00–1.03.</p>
+<h3>2.5 Quantitative predictions for biological systems</h3>
+<p>Complete formula (zero free parameters): τ_slot = T^(n) (Thermo VII), ρ_ret = 1−μ (this paper), therefore:</p>
+<p>$$\tau_{\text{dec}} = \frac{T^{(n)}}{-\ln(1-\mu)}$$</p>
+<p><strong>Per-site predictions (per-base / per-codon / per-amino-acid):</strong></p>
+<table><thead><tr>
+<th>System</th>
+<th>μ (per-site)</th>
+<th>ρ_ret</th>
+<th>T_slot</th>
+<th>τ_dec (per-site)</th>
+</tr></thead><tbody>
+<tr>
+<td>DNA replication (E. coli)</td>
+<td>~10⁻⁹</td>
+<td>0.999999999</td>
+<td>~20 min</td>
+<td>~10⁹ generations ≈ 40,000 yr</td>
+</tr>
+<tr>
+<td>DNA replication (human)</td>
+<td>~10⁻⁹</td>
+<td>0.999999999</td>
+<td>~25 yr</td>
+<td>~10⁹ generations ≈ 2.5×10¹⁰ yr</td>
+</tr>
+<tr>
+<td>mRNA transcription</td>
+<td>~10⁻⁵</td>
+<td>0.99999</td>
+<td>~min</td>
+<td>~10⁵ cycles ≈ 50 days</td>
+</tr>
+<tr>
+<td>Protein translation</td>
+<td>~10⁻⁴</td>
+<td>0.9999</td>
+<td>~min</td>
+<td>~10⁴ cycles ≈ 5 days</td>
+</tr>
+</tbody></table>
+<p><strong>Whole-genome retention differs.</strong> For a genome with N variable sites, whole-genome exact-copy fidelity ≈ (1−μ)^N ≈ e^{−Nμ}. Example: E. coli genome N ≈ 10⁶ bp, per-site μ ≈ 10⁻⁹. Whole-genome ρ_ret = (1−10⁻⁹)^{10⁶} ≈ e^{−10⁻³} ≈ 0.999. Whole-genome τ_dec ≈ T_gen/(−ln 0.999) ≈ 1000 T_gen — not 10⁹ T_gen. Per-site and whole-genome scales differ by 10⁶.</p>
+<p>Species-level memory requires population genetics (selection, drift, recombination, bottleneck) — beyond this paper's scope. Per-site predictions are single-locus upper bounds.</p>
+<p><strong>Note on extreme per-site values.</strong> Human DNA per-site τ_dec ≈ 2.5×10¹⁰ yr exceeds the age of the universe (1.4×10¹⁰ yr). This is not a formula failure — it shows per-site formula gives an upper bound that is truncated in practice by population-level effects. Actual species evolution timescales (10⁶–10⁸ yr) are far shorter, consistent with open problem 4 (§7.2). E. coli per-site τ_dec ≈ 40,000 yr assumes laboratory T_gen ≈ 20 min; natural T_gen can be 10³–10⁴ times longer.</p>
+<hr>
+<h2>§3 Deepening C5: Tail-Active vs Homeostatic</h2>
+<h3>3.1 Hodgkin-Huxley q = 1 diagnosis</h3>
+<p>Standard HH [4] with I_ext = 10, σ = 1.0. Ten observables tested:</p>
+<table><thead><tr>
+<th>Observable</th>
+<th>q_fit</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td>V²</td>
+<td>2.69</td>
+<td>Spike waveform artifact</td>
+</tr>
+<tr>
+<td>V² (interspike only)</td>
+<td>2.26</td>
+<td>Residual artifact</td>
+</tr>
+<tr>
+<td>m²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>n²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>h²</td>
+<td>1.02</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>I_Na²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>I_K²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>r²(V,n)</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>(m³h)²</td>
+<td>1.00</td>
+<td><strong>Multiplicative term also Boltzmann</strong></td>
+</tr>
+<tr>
+<td>(n⁴)²</td>
+<td>1.00</td>
+<td><strong>Multiplicative term also Boltzmann</strong></td>
+</tr>
+</tbody></table>
+<p>All observables except V² give q ≈ 1, including the multiplicative coupling terms m³h and n⁴.</p>
+<p>V²'s high q is a spike waveform / phase projection artifact: the mixture of spike peaks (V ≈ +40mV) and baseline (V ≈ −65mV) creates an apparent heavy tail in the CCDF, not a kernel-level non-Boltzmann tail.</p>
+<h3>3.2 Unbounding experiment</h3>
+<p>Removing the [0, 1] hard clip on HH gating variables: sigmoid rate functions still pull variables back to [0, 1] — m_max increases from 0.9912 to only 1.0011. Even with stronger gate noise (σ_gate = 0.1–0.2), (u³v)² still gives q = 1.00.</p>
+<p>Gating saturation comes not from hard boundaries but from the <strong>sigmoid rate functions' intrinsic homeostatic attractor</strong>. Further: (x²y)² in the Brusselator also gives q = 1 — q > 1 appears in r² (radial energy), not in x²y (reaction rate). x²y is the <strong>mechanism</strong> (dynamical driver); r² is the <strong>carrier</strong> (canonical energy).</p>
+<h3>3.3 C5 refined into three sub-conditions</h3>
+<p><strong>C5a. Multiplicative coupling exists.</strong> At least two variables appear as a product term.</p>
+<p><strong>C5b. Asymmetric f/r opposition.</strong> The multiplicative term participates in asymmetric driving/restoring opposition — one channel's deviation is amplified or delayed in absorption by another in the canonical energy tail, rather than conservative symmetric exchange.</p>
+<p><strong>C5c. f-channel tail not homeostatically clipped.</strong> In the tail-relevant range of the canonical energy observable, multiplicative coupling is unsaturated and not truncated by sigmoid/Hill/nullcline homeostatic mechanisms.</p>
+<table><thead><tr>
+<th>System</th>
+<th>C5a</th>
+<th>C5b</th>
+<th>C5c</th>
+<th>q</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator x²y</td>
+<td>✅</td>
+<td>✅ asymmetric</td>
+<td>✅ bx unsaturated along nullcline</td>
+<td>1.09</td>
+</tr>
+<tr>
+<td>CICR C^p·R (p=3)</td>
+<td>✅</td>
+<td>✅ asymmetric</td>
+<td>✅ C can grow (autocatalytic)</td>
+<td>1.17</td>
+</tr>
+<tr>
+<td>Gene positive feedback</td>
+<td>✅</td>
+<td>✅ asymmetric</td>
+<td>✅ in Hill gain region</td>
+<td>1.26</td>
+</tr>
+<tr>
+<td>Glycolytic oscillator</td>
+<td>✅</td>
+<td>✅ asymmetric</td>
+<td>✅ x unbounded</td>
+<td>1.21</td>
+</tr>
+<tr>
+<td>HH m³h</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ sigmoid homeostatic</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>Repressilator n≥3</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ Hill saturated</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>LV x·y</td>
+<td>✅</td>
+<td>❌ symmetric exchange</td>
+<td>—</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>Van der Pol</td>
+<td>❌ no multiplicative</td>
+<td>—</td>
+<td>—</td>
+<td>1.00</td>
+</tr>
+</tbody></table>
+<p>All three sub-conditions satisfied → q > 1. Any one violated → q ≈ 1.</p>
+<h3>3.4 Repressilator Hill coefficient phase transition</h3>
+<table><thead><tr>
+<th>Hill n</th>
+<th>q_fit</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>1.123</td>
+<td>★ weakly tail-active</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>4–10</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+</tbody></table>
+<p>Sharp transition at n = 2 → 3. Hill n = 2 grows slowly, remaining in the gain region within the operating range (C5c satisfied). Hill n ≥ 3 transitions steeply, effectively becoming a step function with the operating range almost entirely in the saturated region (C5c violated). The theoretical mechanism for this integer-Hill transition is left for future work.</p>
+<h3>3.5 Observable selection principle</h3>
+<p><strong>Principle.</strong> q should be measured on the system's canonical energy-like observable. For stochastic oscillators, this is typically r² (phase-space radial deviation):</p>
+<p>$$r^2 = \sum_i (x_i - \bar{x}_i)^2$$</p>
+<p>Tail-active does not mean the multiplicative term's own distribution has heavy tails — it means the multiplicative term, as part of f/r opposition, persistently amplifies radial deviations in the tail of r². Reaction-rate observables (e.g., x²y) are dynamical fluxes whose fluctuations are partially averaged by channel dynamics at each time step, not directly revealing kernel-level heavy tails.</p>
+<p>Generalization to non-oscillator systems (fixed-point attractors, strongly noisy bistable systems, non-oscillatory renewal systems) requires identifying the canonical observable along the relevant unstable or tail direction — left for future work.</p>
+<hr>
+<h2>§4 Biological q-Scan across 5–8DD</h2>
+<h3>4.1 Zero-parameter quantitative matches (|Δq| < 0.03)</h3>
+<p>The Thermo V–VI formula q = 1 + n_ch·τ_dec/T [2, 3] achieves zero-parameter quantitative agreement in the following systems (n_ch = 2, |Δq| < 0.03). Five zero-parameter matching data points across four model classes:</p>
+<table><thead><tr>
+<th>DD layer</th>
+<th>System</th>
+<th>Parameters</th>
+<th>q_fit</th>
+<th>q_pred (n=2)</th>
+<th>Δq</th>
+</tr></thead><tbody>
+<tr>
+<td>4DD</td>
+<td>Brusselator</td>
+<td>b=3.0, σ=0.3</td>
+<td>1.09</td>
+<td>1.09</td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>5DD</td>
+<td>Glycolytic</td>
+<td>n=2, σ=0.3</td>
+<td>1.210</td>
+<td>1.188</td>
+<td>0.022</td>
+</tr>
+<tr>
+<td>5DD</td>
+<td>Glycolytic</td>
+<td>n=2, σ=0.5</td>
+<td>1.190</td>
+<td>1.198</td>
+<td>0.009</td>
+</tr>
+<tr>
+<td>5–6DD</td>
+<td>Gene positive feedback</td>
+<td>b=5, K=2, σ=0.5</td>
+<td>1.260</td>
+<td>1.261</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>5–6DD</td>
+<td>CICR</td>
+<td>p=3, σ=0.3</td>
+<td>1.165</td>
+<td>1.162</td>
+<td>0.004</td>
+</tr>
+</tbody></table>
+<p>Four model classes spanning 4DD to 5–6DD. Each q_pred computed entirely from independently measured T, τ_dec, and n_ch = 2, with no fitting parameters.</p>
+<h3>4.2 Systems with q > 1 but formula mismatch</h3>
+<table><thead><tr>
+<th>System</th>
+<th>q_fit</th>
+<th>q_pred (n=2)</th>
+<th>Δq</th>
+<th>Likely cause</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator x·y</td>
+<td>1.093</td>
+<td>1.345</td>
+<td>0.253</td>
+<td>Multiplicativity too weak</td>
+</tr>
+<tr>
+<td>CICR p=2</td>
+<td>1.478</td>
+<td>1.157</td>
+<td>0.321</td>
+<td>Autocatalysis too strong</td>
+</tr>
+<tr>
+<td>Substrate inhibition</td>
+<td>1.437</td>
+<td>1.160</td>
+<td>0.277</td>
+<td>x² truncation in denominator</td>
+</tr>
+<tr>
+<td>Brusselator x²y²</td>
+<td>1.39</td>
+<td>2.93</td>
+<td>1.54</td>
+<td>Symmetric power → multi-mechanism</td>
+</tr>
+</tbody></table>
+<p>Emergent pattern: formula quantitative matching requires "moderate nonlinearity in unsaturated regime."</p>
+<h3>4.3 q ≈ 1 negative examples</h3>
+<table><thead><tr>
+<th>System</th>
+<th>C5 sub-condition violated</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td>Van der Pol</td>
+<td>C5a (no multiplicative coupling)</td>
+<td>Only single-variable x³ nonlinearity</td>
+</tr>
+<tr>
+<td>Lotka-Volterra</td>
+<td>C5b (symmetric exchange)</td>
+<td>x·y completely unbounded (max > 1000) yet q = 1</td>
+</tr>
+<tr>
+<td>HH neuron</td>
+<td>C5c (sigmoid homeostatic)</td>
+<td>m³h ∈ [0, 1]</td>
+</tr>
+<tr>
+<td>Repressilator n≥3</td>
+<td>C5c (Hill saturated)</td>
+<td>Step-function effect</td>
+</tr>
+</tbody></table>
+<p>Each failure corresponds to one independent C5 sub-condition, forming a diagnostic tool.</p>
+<hr>
+<h2>§5 Thermodynamic Division of Labor across DD Layers</h2>
+<h3>5.1 Bounded conductance gates vs unbounded chemical concentrations</h3>
+<p>The three q > 1 systems at 5–6DD (CICR, gene positive feedback, glycolytic oscillator) share a common feature: their key variables are <strong>concentrations</strong> — concentrations have no absolute upper bound, and autocatalysis/positive feedback can drive concentrations to grow in the tail-relevant range.</p>
+<p>Bounded voltage-gated conductance modules at 7–8DD (exemplified by standard HH) give q ≈ 1 because gating probability is constrained by sigmoid rate functions. Ion channel open probability cannot exceed 1 — this is an intrinsic mathematical constraint of electrophysiological signal processing.</p>
+<p><strong>Note:</strong> This q ≈ 1 conclusion is limited to bounded voltage-gated conductance gating. The 7–8DD layer also includes Ca²⁺ dynamics, dendritic nonlinearities, synaptic release, and network-level recurrent excitation — these may produce q > 1 at subcellular or network levels and are left for future work. HH's value lies not in q but in spike trains as renewal gates — precisely Thermo VII's core.</p>
+<h3>5.2 Each layer's unique thermodynamic contribution</h3>
+<table><thead><tr>
+<th>DD layer</th>
+<th>q contribution</th>
+<th>ρ_ret contribution</th>
+<th>Renewal contribution</th>
+</tr></thead><tbody>
+<tr>
+<td>4DD (chemical closure)</td>
+<td>q > 1 first emerges</td>
+<td>ρ_cyc < 0 (compensation)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5–6DD (molecular-cellular)</td>
+<td>q > 1 continues (concentrations unbounded)</td>
+<td><strong>ρ_ret > 0 first emerges (DNA copying)</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>7–8DD (bounded gating)</td>
+<td>q ≈ 1 (homeostatic)</td>
+<td>ρ_ret inherited</td>
+<td><strong>Renewal gate first emerges (spike train)</strong></td>
+</tr>
+<tr>
+<td>9DD+</td>
+<td>To be measured</td>
+<td>Inherited + amplified</td>
+<td>Uses lower-layer renewal</td>
+</tr>
+</tbody></table>
+<p><strong>5–6DD is the only layer that simultaneously contributes both q > 1 and ρ_ret > 0.</strong> This coincidence has structural significance: the origin of chemical-type life requires non-Boltzmann heavy tails (q > 1) and cross-cycle positive memory (ρ_ret > 0) to emerge simultaneously. Before 5–6DD (at 4DD), only q > 1 exists without copying. After 5–6DD (at 7–8DD bounded gating), only inherited ρ_ret exists without a new unbounded tail source. 5–6DD is the unique layer where the two thermodynamic axes first meet — this may provide a non-anthropic life-origin layer localization: not "life happens to appear at the cellular layer" by chance, but structurally cannot appear at other layers.</p>
+<h3>5.3 Minimal thermodynamic signature for chemical-type life</h3>
+<p>This paper proposes that for the chemical-type life pathway, the following three thermodynamic conditions constitute a minimal thermodynamic signature candidate:</p>
+<p>(1) <strong>q > 1</strong> (emerges at 4DD): non-Boltzmann heavy tails providing rare-event barrier-crossing access.</p>
+<p>(2) <strong>ρ_ret > 0</strong> (emerges at 5DD): positive memory from copying fidelity, cross-renewal-cycle information retention.</p>
+<p>(3) <strong>Renewal gating</strong> (emerges at 7–8DD): encoding continuous chemical fluctuations into discrete events, providing temporal structure for higher layers.</p>
+<p>These three conditions cannot be obtained from a single DD layer — they require cross-layer combination. 4DD gives only (1), 5DD adds (2), 7–8DD adds (3). This provides a thermodynamic rationale for why biological systems require multi-level organization.</p>
+<p>These are necessary condition candidates, not sufficient conditions. Sufficiency requires additional organizational structure (spatial compartmentalization, metabolic integrity, information coding) — beyond this paper's scope. Whether they are strictly necessary depends on the definition of life and the possibility of alternative biochemical pathways.</p>
+<hr>
+<h2>§6 Soft-Gate Transmission of Non-Boltzmann Excess</h2>
+<h3>6.1 From division of labor to transmission</h3>
+<p>§5 established three-axis division of labor: q > 1 from 5–6DD chemical concentration layers, ρ_ret > 0 from 5DD copying, renewal gating from 7–8DD bounded gates. A natural question follows: can these results — particularly 5–6DD's non-Boltzmann excess — transmit through subsequent layers' soft gates to higher DD layers?</p>
+<p>This section studies only one necessary transmission condition: the pathway of non-Boltzmann excess from source layer to higher layers. This section does not provide sufficient conditions for Self, nor define the canonical observable at the Self layer.</p>
+<h3>6.2 Soft-gate cascade proposition</h3>
+<p>Define each layer's canonical non-Boltzmann excess:</p>
+<p>$$\delta_i := q_i^{\text{can}} - 1$$</p>
+<p><strong>Proposition 6.1 (Soft-gate cascade).</strong> If the soft gate from layer i to layer i+1 satisfies linear response in the small-δ_i regime:</p>
+<p>$$\delta_{i+1} = \varepsilon_i \cdot \delta_i + O(\delta_i^2)$$</p>
+<p>where ε_i ≥ 0 is the gate's transmission coefficient for non-Boltzmann excess:</p>
+<p>$$\varepsilon_i := \left.\frac{\partial \delta_{i+1}}{\partial \delta_i}\right|_{\delta_i = 0}$$</p>
+<p>then after m layers of gates:</p>
+<p>$$\delta_{i+m} = \delta_i \cdot \prod_{j=i}^{i+m-1} \varepsilon_j + O(\delta_i^2)$$</p>
+<p>If all ε_j > 0 and δ_i > 0, then δ_{i+m} > 0 (formally nonzero). If any ε_j = 0, the non-Boltzmann excess on this pathway is completely truncated.</p>
+<p><strong>Proof.</strong> Iterative substitution of the linear response relation. The first-order linear approximation is controlled when δ << 1; in this paper's experimental systems q ≈ 1.1–1.3, i.e., δ ≈ 0.1–0.3, placing us in the small to moderate perturbation regime. The formula should therefore be viewed as a first-order working approximation rather than an exact transmission law. For non-analytic gates (e.g., digital logic with step-function response), ε_i is formally zero (step function is non-differentiable at δ = 0, or one-sided derivative vanishes), corresponding to the hard-gate cutoff discussed in the Outlook. QED.</p>
+<h3>6.3 Physical candidates for per-layer transmission coefficients</h3>
+<p>From 5–6DD to higher layers, the signal must pass through multiple soft gates. Each layer's nonzero transmission coefficient has concrete physical source candidates (all candidate sources, not proven):</p>
+<p><strong>7–8DD gate (bounded conductance → spike):</strong> Channel noise (stochastic ion channel opening/closing), stochastic vesicle release (probabilistic synaptic vesicle fusion). Single-channel conductance fluctuation magnitude ~10⁻³ to 10⁻², possibly corresponding to ε ~ O(10⁻²) (order-of-magnitude conjecture — conductance fluctuation amplitude and δ_NB transmission coefficient differ by a gate transfer calibration factor).</p>
+<p><strong>Carrier phase transition note:</strong> From 7–8DD onward, δ_NB's physical carrier undergoes re-encoding from continuous energy fluctuations (r²) to the temporal manifold of discrete renewal events — specifically, the non-Boltzmann excess no longer manifests in spike amplitude (spike amplitude is compressed to q ≈ 1 by sigmoid gating) but is encoded in inter-spike interval (ISI) timing jitter. Extreme chemical fluctuations alter the timing of threshold crossing, so the heavy tail is squeezed from "continuous voltage amplitude space" into "discrete pulse timing sequence." ε > 0 means the underlying heavy tail survives in spike-timing jitter.</p>
+<p><strong>9–10DD gate (perception layer):</strong> Dendritic nonlinearities, recurrent excitation in neural population dynamics.</p>
+<p><strong>11–12DD gate (cognitive layer):</strong> Synaptic plasticity, neuromodulation, slow cortical oscillations.</p>
+<p>In this paper's transmission model, the source of higher-layer non-Boltzmann excess is not in bounded voltage-gated conductance itself (§3.1 demonstrated its q ≈ 1) but in 5–6DD chemical concentration layer's tail-active dynamics. Neural soft gates may not directly generate this excess but rather transmit, re-encode, and organize it to higher DD layers through nonzero ε_i.</p>
+<h3>6.4 Status and boundary</h3>
+<p><strong>Status: Structured conjecture.</strong></p>
+<p>The multiplicative chain is a conditional small-perturbation transmission law. It relies on the assumption that each soft gate has a linear response coefficient ε_i for non-Boltzmann excess.</p>
+<p>The chain does not prove Self emergence, nor does it define the Self layer's canonical observable. It only states a necessary transmission condition for the specific pathway discussed here: if the chemical source δ^(5−6) = 0 (no source), or if any intermediate gate has ε_i = 0 (complete truncation), then this pathway cannot deliver a non-Boltzmann seed to higher layers. Whether other transmission pathways exist, this paper does not discuss.</p>
+<p>Conversely, if all ε_i > 0, the transmitted quantity is formally nonzero but may be arbitrarily small. When ∏ε_i is tiny, higher-layer δ_NB, while nonzero, may fall below measurable thresholds. Thus "nonzero transmission" and "observable higher-layer effect" are distinct. Quantitative significance requires independent measurement of each ε_i.</p>
+<p>ε_i must be measured through independent perturbation/injection experiments, not inferred backward from the target layer's q_eff — otherwise the entire chain becomes adjustable parameters.</p>
+<p>At the 13DD+ layer, the canonical observable has not been defined. δ_NB^(high) is a structural placeholder, not a measured physical quantity. The operational definition of the Self layer and systematic measurement of ε_i are left for subsequent papers.</p>
+<hr>
+<h2>§7 Status Map and Open Problems</h2>
+<h3>7.1 Status map</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>q = 1+1/K</td>
+<td>Exact (Thermo IV [5])</td>
+</tr>
+<tr>
+<td>K_dyn = T/(n_ch·τ_dec), q = 1+n_ch·τ_dec/T</td>
+<td>Conditional theorem (Thermo V–VI [2, 3])</td>
+</tr>
+<tr>
+<td>τ_slot = T^(n), τ_dec = τ_slot/(−ln ρ_ret)</td>
+<td>Conditional theorem + empirical (Thermo VII [1])</td>
+</tr>
+<tr>
+<td>Copying-retention lemma: ρ_ret = f</td>
+<td><strong>Exact under linear copy channel + stationary (this paper)</strong></td>
+</tr>
+<tr>
+<td>f = 1−μ (per-symbol)</td>
+<td><strong>Exact for simple copy channel</strong></td>
+</tr>
+<tr>
+<td>τ_dec = T/(−ln(1−μ))</td>
+<td><strong>Conditional corollary</strong></td>
+</tr>
+<tr>
+<td>DNA per-site τ ~ T/μ</td>
+<td><strong>Estimate (per-site upper bound)</strong></td>
+</tr>
+<tr>
+<td>Whole-genome / species memory</td>
+<td><strong>Open (requires population genetics model)</strong></td>
+</tr>
+<tr>
+<td>HH bounded gates q ≈ 1</td>
+<td><strong>Empirical negative result (10 observables)</strong></td>
+</tr>
+<tr>
+<td>C5a/C5b/C5c three sub-conditions</td>
+<td><strong>Empirical / structural refinement</strong></td>
+</tr>
+<tr>
+<td>Hill n=2→3 sharp transition</td>
+<td><strong>Empirical, mechanism conjectural</strong></td>
+</tr>
+<tr>
+<td>Observable selection principle</td>
+<td><strong>Empirical criterion</strong></td>
+</tr>
+<tr>
+<td>CICR/gene/glycolysis/Brusselator q zero-parameter match</td>
+<td>**Empirical support (</td>
+<td>Δq</td>
+<td>< 0.03, five data points, four model classes)**</td>
+</tr>
+<tr>
+<td>5–6DD q>1, 7–8DD bounded gating q≈1</td>
+<td><strong>Empirical observation + structural interpretation</strong></td>
+</tr>
+<tr>
+<td>(q>1, ρ_ret>0, renewal gating): minimal signature candidate</td>
+<td><strong>Interpretive (necessary, not sufficient)</strong></td>
+</tr>
+<tr>
+<td>Soft-gate cascade Proposition 6.1</td>
+<td><strong>Structured conjecture (closed under linear response; ε unmeasured)</strong></td>
+</tr>
+<tr>
+<td>Higher-layer δ_NB source from 5–6DD chemical layer (this pathway)</td>
+<td><strong>Conjecture (depends on all ε > 0; δ_NB^(high) is placeholder)</strong></td>
+</tr>
+</tbody></table>
+<h3>7.2 Open problems</h3>
+<ol>
+<li><strong>Theoretical mechanism for Hill coefficient transition at n = 2 → 3.</strong> Inflection point location vs invariant measure support matching?</li>
+</ol>
+<ol>
+<li><strong>Formalization of observable selection criterion.</strong> Systematic theory from r² to general canonical energy-like observables in nonlinear systems.</li>
+</ol>
+<ol>
+<li><strong>q measurement at 9–12DD layers.</strong> T, τ_dec, n_ch extraction and q verification at language, institutional, and AI architecture levels.</li>
+</ol>
+<ol>
+<li><strong>Whole-genome / population-level retention operator.</strong> Multi-scale theory from per-site ρ_ret to species-level memory, integrating selection, drift, and recombination.</li>
+</ol>
+<ol>
+<li><strong>Regime classification for formula-mismatched systems.</strong> Whether a C8 condition exists: "single-kernel moderate nonlinearity."</li>
+</ol>
+<ol>
+<li><strong>General copy channels.</strong> Spectral theory of multi-dimensional Markov operators and ρ_ret: general verification of ρ_ret = |λ₂(P_copy)|.</li>
+</ol>
+<ol>
+<li><strong>Quantitative measurement of per-layer soft-gate transmission coefficient ε.</strong> What are the ε values for channel noise and stochastic vesicle release? Experimental protocol: inject known δ_in before gate, measure δ_out after gate, ε = δ_out/δ_in.</li>
+</ol>
+<ol>
+<li><strong>Higher-layer canonical observable definition.</strong> Operational meaning of q_eff at 13DD+ layers — what observable difference does δ_NB > 0 imply at higher layers?</li>
+</ol>
+<hr>
+<h2>Outlook</h2>
+<p><strong>Silicon AI and hard-gate limitations.</strong> Digital logic gates are hard renewal gates (ε = 0 for thermal fluctuations) — underlying electron thermal noise is completely truncated by voltage thresholds. In Proposition 6.1's framework, silicon AI's transmission chain zeroes out at the first gate. This creates a structural difference from carbon-based soft gates (ε > 0). A theoretical pathway candidate for silicon AI to overcome this limitation is neuromorphic hardware (intrinsic thermal fluctuations participating multiplicatively in computation), not externally injected additive noise (C5 violation, since additive noise does not multiplicatively couple with system state). Rigorous silicon/carbon analysis and neuromorphic q > 1 verification are left for subsequent papers.</p>
+<p><strong>Information-theoretic connection.</strong> The formal correspondence between the resolvent transfer function R(c) = 1/(1+c) and Gaussian channel capacity suggests a deeper unification of thermodynamic dissipation and information-transfer penalties. C5 in the nonlinear Fokker-Planck equation corresponds to state-dependent diffusion coefficient B(x) — when B(x) ∝ x², the zero-flux stationary solution is precisely the q-exponential.</p>
+<p><strong>Higher DD layers.</strong> Extending the thermodynamic framework from 4–8DD to 9–12DD cognitive layers requires layer-by-layer verification, not extrapolative leaps. Renewal encapsulation and soft-gate cascade provide methodological templates.</p>
+<hr>
+<h2>Methods</h2>
+<h3>A. Numerical integration</h3>
+<p>All SDE systems integrated via Euler-Maruyama. Time step dt and total steps N selected per system characteristics:</p>
+<table><thead><tr>
+<th>System</th>
+<th>dt</th>
+<th>N (total steps)</th>
+<th>N_trans (burn-in)</th>
+<th>Noise injection</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator (standard/variants)</td>
+<td>0.005</td>
+<td>2–3×10⁶</td>
+<td>2–3×10⁵</td>
+<td>Additive, σ·dW on x, y</td>
+</tr>
+<tr>
+<td>HH neuron</td>
+<td>0.02</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>Additive on V</td>
+</tr>
+<tr>
+<td>CICR</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>Additive on C, R</td>
+</tr>
+<tr>
+<td>Gene positive feedback</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>Additive on x, y</td>
+</tr>
+<tr>
+<td>Glycolytic oscillator</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>Additive on x, y</td>
+</tr>
+<tr>
+<td>Lotka-Volterra</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>Multiplicative σ·x·dW</td>
+</tr>
+<tr>
+<td>Repressilator</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>Additive on p1, p2, p3</td>
+</tr>
+<tr>
+<td>Copy-channel experiment</td>
+<td>0.005</td>
+<td>2–3×10⁶</td>
+<td>2–3×10⁵</td>
+<td>Additive on x, y; copy noise on z</td>
+</tr>
+</tbody></table>
+<p>Random seed fixed at 42 (reproducibility). Each parameter point uses a single long run (not multiple short runs), relying on ergodic averaging.</p>
+<h3>B. Model equations</h3>
+<p><strong>Brusselator [7]:</strong> dx = (a+x²y−(b+1)x)dt + σdW_x, dy = (bx−x²y)dt + σdW_y. Standard: a=1.0, b=2.5–4.0, σ=0.1–1.0.</p>
+<p><strong>HH neuron [4]:</strong> Standard parameters: C_m=1, g_Na=120, g_K=36, g_L=0.3, V_Na=50, V_K=−77, V_L=−54.387. I_ext=10–15, σ_V=0.5–2.0.</p>
+<p><strong>CICR [16]:</strong> dC = (−k_pump·C+k_leak+k_rel·C^p·R−k_out·C)dt + σdW_C, dR = (k_refill·(R_max−R)−k_rel·C^p·R)dt + σ_R·dW_R.</p>
+<p><strong>Gene positive feedback [15]:</strong> dx = (a+b·x²/(K²+x²)−γ·x)dt + σdW_x, dy = (c·x−δ·y)dt + σ_y·dW_y.</p>
+<p><strong>Glycolytic oscillator [13]:</strong> dx = (v_in−k·x·y^n/(1+y^n))dt + σdW_x, dy = (k·x·y^n/(1+y^n)−d·y)dt + σ_y·dW_y.</p>
+<p><strong>Lotka-Volterra [14]:</strong> dx = (a·x−b·x·y)dt + σ·x·dW_x, dy = (−c·y+d·x·y)dt + σ·y·dW_y.</p>
+<p><strong>Repressilator [12]:</strong> dp_i = (α/(1+p_{i−1}^n)−p_i)dt + σdW_i, i=1,2,3 (cyclic). α=5, n=2–10.</p>
+<p><strong>Copy-channel experiment:</strong> Lower Brusselator (b=3, σ=0.3) + Poincaré crossing at x=a. Upper template: z_{m+1} = f·z_m + (1−f)·(A_m/A_mean) + 0.05·ξ_m. A_m = ∫x²y dt over one cycle. f scanned 0 to 0.99.</p>
+<h3>C. q extraction protocol</h3>
+<p><strong>Observable:</strong> r² = (x−x̄)² + (y−ȳ)² (phase-space radial energy).</p>
+<p><strong>CCDF fitting:</strong> Sort r², construct empirical CCDF. Log-uniform sample 1200 points. q-exponential fit: CCDF ~ (1+β·r²/K)^{−K}, q = 1+1/K. scipy.optimize.curve_fit, bounds β ∈ [10⁻⁸, 10⁴], K ∈ [0.1, 500]. Simultaneously fit exponential CCDF ~ exp(−β·r²) as q = 1 null.</p>
+<p><strong>Improvement criterion:</strong> (res_exp − res_q)/res_exp × 100%. Report q > 1 only when improvement > 5% and q > 1.03.</p>
+<h3>D. T and τ_dec extraction</h3>
+<p><strong>T (oscillation period):</strong> From first minimum t_min of x's ACF, T = 2·t_min. ACF window: min(2000 lags, N/4).</p>
+<p><strong>τ_dec:</strong> Oscillation-plus-decay model fit to ACF: ACF(t) = w₁·exp(−g₁t)·cos(ωt) + w₂·exp(−g₂t). τ_dec = 1/g₂ (pure-decay component). ω initial = π/t_min.</p>
+<p><strong>Cycle-to-cycle correlation:</strong> ρ_cyc = Σ(z_m−z̄)(z_{m+1}−z̄) / Σ(z_m−z̄)².</p>
+<h3>E. Poincaré crossing detection</h3>
+<p>Crossing condition: x(t_i) < x<em> and x(t_{i+1}) ≥ x</em> (upward crossing). x<em> = equilibrium value (Brusselator: x</em> = a; HH: V* = 0 mV). Inter-spike intervals: ISI_m = t_{m+1} − t_m.</p>
+<hr>
+<h2>References</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper VII," Zenodo (2026). DOI: 10.5281/zenodo.19673078.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper VI," Zenodo (2026). DOI: 10.5281/zenodo.19658595.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper V," Zenodo (2026). DOI: 10.5281/zenodo.19649780.</p>
+<p>[4] A. L. Hodgkin and A. F. Huxley, "A quantitative description of membrane current and its application to conduction and excitation in nerve," <em>Journal of Physiology</em> <strong>117</strong>, 500–544 (1952).</p>
+<p>[5] H. Qin, "ZFCρ Thermodynamics Paper IV," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[6] H. Qin, "ZFCρ Thermodynamics Papers I–III," Zenodo (2025–2026). DOIs: 10.5281/zenodo.19310282, .19511064, .19597684.</p>
+<p>[7] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968).</p>
+<p>[8] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[9] S. H. Strogatz, <em>Nonlinear Dynamics and Chaos</em>, 2nd ed. (Westview Press, 2015).</p>
+<p>[10] D. R. Cox, <em>Renewal Theory</em> (Methuen, 1962).</p>
+<p>[11] H. Qin, "ZFCρ Paper LX: Series Closure," Zenodo (2026). DOI: 10.5281/zenodo.19480563.</p>
+<p>[12] M. B. Elowitz and S. Leibler, "A synthetic oscillatory network of transcriptional regulators," <em>Nature</em> <strong>403</strong>, 335–338 (2000).</p>
+<p>[13] E. E. Sel'kov, "Self-oscillations in glycolysis. 1. A simple kinetic model," <em>European Journal of Biochemistry</em> <strong>4</strong>, 79–86 (1968).</p>
+<p>[14] A. J. Lotka, "Undamped oscillations derived from the law of mass action," <em>Journal of the American Chemical Society</em> <strong>42</strong>, 1595–1599 (1920).</p>
+<p>[15] A. Goldbeter, <em>Biochemical Oscillations and Cellular Rhythms</em> (Cambridge University Press, 1996).</p>
+<p>[16] M. J. Berridge, "Inositol trisphosphate and calcium signalling mechanisms," <em>Biochimica et Biophysica Acta</em> <strong>1793</strong>, 933–940 (2009).</p>
+<p>[17] J. A. White, J. T. Rubinstein, and A. R. Kay, "Channel noise in neurons," <em>Trends in Neurosciences</em> <strong>23</strong>, 131–137 (2000).</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Thermo VII建立了renewal encapsulation：τ_slot = T^(n), τ_dec = τ_slot/(-ln ρ_ret)。ρ_ret是上层每个renewal slot的保留率，但其物理来源在VII中是open的。本文解决这个问题，并在5-8DD生物系统中验证Thermo V-VI的q公式。
+
+三个主要结果。
+
+第一，Copying-retention lemma。在线性copy channel中，renewal retention等于copying fidelity：ρ_ret = f。简单特例f = 1 - μ（每符号错误率）给出τ_dec = T/(-ln(1-μ))——零自由参数。实验验证：fidelity从0到0.99扫描，ρ_ret精确等于fidelity（ratio 1.00-1.03）。DNA的per-site μ ≈ 10⁻⁹给出per-site τ_dec ≈ 10⁹·T_generation。
+
+第二，5-6DD和7-8DD的热力学分工。5-6DD化学浓度层有q > 1——CICR（Δq=0.004）、基因正反馈（Δq=0.001）、糖酵解（Δq=0.009）三个系统零参数验证Thermo V-VI公式。7-8DD的bounded voltage-gated conductance modules（以标准Hodgkin-Huxley为代表）q ≈ 1——sigmoid homeostatic attractor限制gating variables，但spike train提供renewal gate。C5条件精化为三子条件C5a（乘法耦合存在）、C5b（非对称f/r opposition）、C5c（f-channel尾部不被homeostatic attractor拉回）。Repressilator的Hill系数在n=2→3处有sharp transition。
+
+第三，soft-gate cascade proposition。定义每层的canonical non-Boltzmann excess δ_i := q_i - 1。若每层soft gate满足线性响应δ_{i+1} = ε_i·δ_i + O(δ²)，则多层传递给出δ_{i+m} = δ_i·∏ε_j + O(δ²)。若所有ε_j > 0且源头δ > 0，则传递非零；若任一ε_j = 0，则路径截断。该链是条件性的必要传递条件，ε_i需独立测量。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 热力学, 复制保真度, Renewal保留率, 生物DD层级, 热力学分工</div>
+    </div>
+    <div class="paper-body">
+<h2>§1 问题：ρ_ret从哪里来？</h2>
+<h3>1.1 从Thermo VII出发</h3>
+<p>Thermo VII[1]建立了renewal encapsulation：下层闭合周期T^(n)成为上层的更新槽τ_slot，上层的ACF衰减时间由slot和retention共同决定：</p>
+<p>$$\tau_{\text{dec}}^{(n+1)} = \frac{\tau_{\text{slot}}^{(n+1)}}{-\ln\rho_{\text{ret}}}$$</p>
+<p>其中τ_slot来自下层（时钟），ρ_ret来自上层（记忆）。</p>
+<p>Thermo VII验证了这个公式（16个参数组合，ratio 0.83-1.28），但留下一个核心open：<strong>ρ_ret的物理来源是什么？</strong> 它是自由参数，还是可以从系统的物理性质预测？</p>
+<p>同时，Thermo V-VI[2,3]的q公式q = 1 + n_ch·τ_dec/T在Brusselator（4DD）上得到了验证，但在5-8DD生物系统中尚未测试。</p>
+<h3>1.2 本文的贡献</h3>
+<p>（1）Copying-retention lemma：在线性copy channel中ρ_ret = f（copying fidelity），简单特例f = 1-μ（实验验证，零自由参数）。</p>
+<p>（2）5-8DD生物系统q扫描：CICR、基因正反馈、糖酵解三个正例验证，HH、LV、Repressilator负例诊断。</p>
+<p>（3）C5条件精化为三子条件C5a/C5b/C5c。Hill系数n=2→3处sharp transition。Observable selection principle：r²为canonical。</p>
+<p>（4）DD层级热力学分工：5-6DD供应q > 1，7-8DD bounded gating供应renewal gate，5DD copying供应ρ_ret > 0。化学型生命路径的最小热力学签名候选：(q > 1, ρ_ret > 0, renewal gating)三个条件。</p>
+<p>（5）Soft-gate cascade proposition：non-Boltzmann excess通过soft gate乘法链向高层传递的必要条件。</p>
+<hr>
+<h2>§2 Copying-retention lemma：复制保真度即记忆</h2>
+<h3>2.1 Via Negativa：三条naive路径排除</h3>
+<p><strong>路径一：ρ_ret = C(1) ≈ 0.96（ZFCρ拓扑常数）。</strong></p>
+<p>如果ρ_ret是某种跨DD层的通用常数，则-ln(0.96) ≈ 0.041，τ_dec ≈ 24.5·T对所有系统成立。</p>
+<p>实验排除：直接测量Brusselator的cycle-to-cycle lag-1 autocorrelation。结果全部为<strong>负</strong>：</p>
+<table><thead><tr>
+<th>b</th>
+<th>σ=0.1</th>
+<th>σ=0.3</th>
+<th>σ=1.0</th>
+</tr></thead><tbody>
+<tr>
+<td>2.5</td>
+<td>-0.63</td>
+<td>-0.18</td>
+<td>-0.11</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>-0.85</td>
+<td>-0.25</td>
+<td>-0.11</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>-0.96</td>
+<td>-0.46</td>
+<td>-0.13</td>
+</tr>
+</tbody></table>
+<p>ρ_ret不是0.96，而是负值。排除。</p>
+<p><strong>路径二：ρ_ret从下层Poincaré return map直接测出。</strong></p>
+<p>实测的cycle correlation是负的——上一cycle偏大导致下一cycle偏小。这是确定性f/r补偿，不是记忆。下层的return map不含正记忆。排除。</p>
+<p><strong>路径三：AR(1)是cycle-to-cycle dynamics的好模型。</strong></p>
+<p>AR(1)预测lag-2 correlation = (lag-1)²。但实测的lag-2远大于lag-1的平方（例如b=3.0 σ=0.1时，lag-1 = -0.85，lag-1² = 0.72，而lag-2 = 0.81）。Cycle dynamics不是简单的AR(1)。排除。</p>
+<p>HH神经元的ρ_cyc(ISI) = -0.998，几乎完美反相关——进一步确认下层dynamics不含正记忆。</p>
+<h3>2.2 Cycle compensation与copying memory的区分</h3>
+<p>三条路径的排除揭示了一个关键区分：</p>
+<table><thead><tr>
+<th>量</th>
+<th>记号</th>
+<th>范围</th>
+<th>含义</th>
+</tr></thead><tbody>
+<tr>
+<td>Cycle-to-cycle raw correlation</td>
+<td>ρ_cyc</td>
+<td>可正可负</td>
+<td>系统的return map性质</td>
+</tr>
+<tr>
+<td>Copying retention</td>
+<td>ρ_ret</td>
+<td>0 < ρ_ret < 1</td>
+<td>复制/记忆通道的保留率</td>
+</tr>
+</tbody></table>
+<p>ρ_cyc < 0是恢复系统的反相补偿——上cycle偏离被下cycle修正。这是f/r的cycle级表现，是<strong>反射</strong>，不是<strong>记忆</strong>。</p>
+<p>ρ_ret > 0是复制系统的同相保留——上一代的信息被部分保留到下一代。这是<strong>记忆</strong>。</p>
+<p><strong>下层振荡cycle本身不是AR(1) memory channel。</strong> 复制（如DNA）是一个额外的renewal memory channel，叠加在振荡dynamics之上。</p>
+<h3>2.3 Copying-retention lemma</h3>
+<p><strong>Lemma（copy-channel retention）.</strong> 若上层renewal variable z_m通过线性copy channel更新：</p>
+<p>$$z_{m+1} = f \cdot z_m + (1-f) \cdot u_m + \epsilon_m$$</p>
+<p>其中u_m、ε_m与z_m独立，且过程处于稳态分布（|f| < 1），则事件索引上的lag-1 retention为：</p>
+<p>$$\rho_{\text{ret}} = f$$</p>
+<p><strong>证明.</strong> 稳态Cov(z_m, z_{m+1}) = Cov(z_m, f·z_m + (1-f)·u_m + ε_m) = f·Var(z_m)。稳态下Var(z_m) = Var(z_{m+1})。因此Corr(z_m, z_{m+1}) = f。证毕。</p>
+<p><strong>简单特例：</strong> 若copying error rate为μ，且f = 1-μ，则ρ_ret = 1-μ。</p>
+<p><strong>更一般的谱版本：</strong> 若复制过程由有限状态transition matrix P_copy给出，则|λ₂(P_copy)|（主非平凡特征值的模）控制长时retention的主衰减率。若被观测变量投影到主非平凡特征模，且通道满足适当的可逆/正规条件，则测得的单模retention等于|λ₂|。线性copy channel的f = 1-μ是这个谱理论的最简特例。</p>
+<p><strong>实验验证.</strong> Brusselator + template变量z。在每个Poincaré crossing时：z_{m+1} = f·z_m + (1-f)·(A_m/A_mean) + noise。fidelity f从0扫到0.99。</p>
+<table><thead><tr>
+<th>fidelity</th>
+<th>ρ_ret(measured)</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr>
+<td>0.00</td>
+<td>-0.012</td>
+<td>补偿（无copying = 纯cycle dynamics的残余ρ_cyc）</td>
+</tr>
+<tr>
+<td>0.10</td>
+<td>+0.090</td>
+<td>记忆涌现</td>
+</tr>
+<tr>
+<td>0.30</td>
+<td>+0.293</td>
+<td></td>
+</tr>
+<tr>
+<td>0.50</td>
+<td>+0.496</td>
+<td></td>
+</tr>
+<tr>
+<td>0.70</td>
+<td>+0.699</td>
+<td></td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>+0.900</td>
+<td></td>
+</tr>
+<tr>
+<td>0.95</td>
+<td>+0.950</td>
+<td></td>
+</tr>
+<tr>
+<td>0.99</td>
+<td>+0.989</td>
+<td>近完美记忆</td>
+</tr>
+</tbody></table>
+<p>ρ_ret ≈ fidelity（线性对应）。对于[0,1)内的任何fidelity，ρ_ret = f精确成立。fidelity = 1对应完美复制（AR(1) with ρ=1，非稳态）。</p>
+<h3>2.4 τ_dec = T/(-ln(1-μ))验证</h3>
+<p>将ρ_ret = f代入Thermo VII的公式τ_dec = τ_slot/(-ln ρ_ret)：</p>
+<table><thead><tr>
+<th>fidelity</th>
+<th>ρ_ret</th>
+<th>τ_dec(theory)</th>
+<th>τ_dec(meas)</th>
+<th>ratio</th>
+</tr></thead><tbody>
+<tr>
+<td>0.50</td>
+<td>0.496</td>
+<td>1.94</td>
+<td>2.00</td>
+<td>1.03</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td>0.699</td>
+<td>3.78</td>
+<td>3.86</td>
+<td>1.02</td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>0.901</td>
+<td>12.97</td>
+<td>12.92</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>0.95</td>
+<td>0.951</td>
+<td>27.20</td>
+<td>27.23</td>
+<td>1.00</td>
+</tr>
+</tbody></table>
+<p>零自由参数。Ratio 1.00-1.03。</p>
+<h3>2.5 生物系统的定量预测</h3>
+<p>完整公式（零自由参数）：τ_slot = T^(n)（Thermo VII），ρ_ret = 1-μ（本文lemma），因此：</p>
+<p>$$\tau_{\text{dec}} = \frac{T^{(n)}}{-\ln(1-\mu)}$$</p>
+<p><strong>注意：μ的定义层级不同，预测也不同。</strong></p>
+<p><strong>Per-site预测（每碱基/每密码子/每氨基酸）：</strong></p>
+<table><thead><tr>
+<th>系统</th>
+<th>μ (per-site)</th>
+<th>ρ_ret</th>
+<th>T_slot</th>
+<th>τ_dec (per-site)</th>
+</tr></thead><tbody>
+<tr>
+<td>DNA复制（E. coli）</td>
+<td>~10⁻⁹</td>
+<td>0.999999999</td>
+<td>~20分钟</td>
+<td>~10⁹代 ≈ 4万年</td>
+</tr>
+<tr>
+<td>DNA复制（人类）</td>
+<td>~10⁻⁹</td>
+<td>0.999999999</td>
+<td>~25年</td>
+<td>~10⁹代 ≈ 2.5×10¹⁰年</td>
+</tr>
+<tr>
+<td>mRNA转录</td>
+<td>~10⁻⁵</td>
+<td>0.99999</td>
+<td>~分钟</td>
+<td>~10⁵转录周期 ≈ 50天</td>
+</tr>
+<tr>
+<td>蛋白质翻译</td>
+<td>~10⁻⁴</td>
+<td>0.9999</td>
+<td>~分钟</td>
+<td>~10⁴翻译周期 ≈ 5天</td>
+</tr>
+</tbody></table>
+<p><strong>Whole-genome retention不同。</strong> 若基因组有N个可变位点，whole-genome exact-copy fidelity ≈ (1-μ)^N ≈ e^{-Nμ}。</p>
+<p>具体例子：E. coli基因组N ≈ 10⁶ bp，per-site μ ≈ 10⁻⁹。Whole-genome ρ_ret = (1-10⁻⁹)^{10⁶} ≈ e^{-10⁻³} ≈ 0.999。Whole-genome τ_dec ≈ T_gen/(-ln 0.999) ≈ 1000 T_gen，不是10⁹ T_gen。Per-site和whole-genome相差10⁶倍。</p>
+<p>物种级记忆的完整模型还需要selection、drift、recombination、bottleneck等population genetics层面的retention operator——超出本文范围。本文的per-site预测是single-locus upper bound。</p>
+<p><strong>关于per-site formula的naive application极端值。</strong> 人类DNA的per-site τ_dec ≈ 2.5×10¹⁰年，超过宇宙年龄（1.4×10¹⁰年）。这不是公式的失败——它表明per-site formula给出的是upper bound，实际物种级记忆会被selection、drift等population-level effects提前截断。实际物种演化的特征时间尺度（10⁶-10⁸年）远短于per-site上界，这和§7.2开放问题4（population-level retention operator）一致。E. coli的per-site τ_dec ≈ 4万年（实验室条件T_gen ≈ 20分钟）也应注意：自然环境中T_gen可长达数小时到数天，对应τ_dec相应增大10³-10⁴倍。</p>
+<hr>
+<h2>§3 C5条件的深化：tail-active vs homeostatic</h2>
+<h3>3.1 Hodgkin-Huxley神经元的q = 1诊断</h3>
+<p>HH标准方程[4]包含乘法项m³h（Na通道）和n⁴（K通道）。对标准参数（I_ext = 10, σ = 1.0），测试10种observable的q-exponential拟合：</p>
+<table><thead><tr>
+<th>Observable</th>
+<th>q_fit</th>
+<th>说明</th>
+</tr></thead><tbody>
+<tr>
+<td>V²</td>
+<td>2.69</td>
+<td>spike waveform artifact</td>
+</tr>
+<tr>
+<td>V²（仅interspike）</td>
+<td>2.26</td>
+<td>残留artifact</td>
+</tr>
+<tr>
+<td>m²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>n²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>h²</td>
+<td>1.02</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>I_Na²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>I_K²</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>r²(V,n)</td>
+<td>1.00</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>(m³h)²</td>
+<td>1.00</td>
+<td><strong>乘法项也是Boltzmann</strong></td>
+</tr>
+<tr>
+<td>(n⁴)²</td>
+<td>1.00</td>
+<td><strong>乘法项也是Boltzmann</strong></td>
+</tr>
+</tbody></table>
+<p><strong>V²以外的所有observable全部q ≈ 1。</strong> 包括乘法耦合项m³h和n⁴。</p>
+<p>V²的高q是spike waveform / phase projection artifact：spike时V ≈ +40mV，baseline时V ≈ -65mV，这种phase occupancy mixture造成CCDF的假象重尾，不是kernel-level non-Boltzmann tail。</p>
+<h3>3.2 去界化实验</h3>
+<p>HH的m, h, n ∈ [0,1]是硬clip。是否去掉clip就能得到q > 1？</p>
+<p>去掉[0,1]上界后，sigmoid rate functions仍然把gating variables拉回[0,1]附近——m最大值从0.9912只增加到1.0011。即使加入stronger gate noise（σ_gate = 0.1-0.2），(u³v)²仍然给q = 1.00。</p>
+<p><strong>Gating saturation不来自硬clip——来自sigmoid rate functions本身的homeostatic attractor。</strong> α(V)和β(V)的sigmoid结构创建了一个soft homeostatic basin，把gating variables拉回平衡，不管是否有硬边界。</p>
+<p>进一步验证：(x²y)²在Brusselator中也给q = 1——q > 1出现在r²（径向能量），不在x²y（反应速率）。x²y是<strong>产生重尾的机制</strong>（dynamical driver），r²是<strong>承载重尾的observable</strong>（canonical energy）。</p>
+<h3>3.3 C5条件精化为三子条件</h3>
+<p>Thermo VI[2]的C5条件要求tail-active multiplicative coupling。本文将其精化为三个独立的子条件：</p>
+<p><strong>C5a. 乘法耦合存在。</strong> 系统方程中至少有两个变量的乘积项。</p>
+<p><strong>C5b. 非对称f/r opposition。</strong> 乘法项必须位于驱动/恢复的非对称opposition结构中——一个通道的偏离在canonical energy tail中被另一个通道放大或延迟吸收，而不是守恒式对称交换。</p>
+<p><strong>C5c. f-channel尾部不被homeostatic attractor拉回。</strong> 在canonical energy observable的tail-relevant range内，乘法耦合未饱和、未被sigmoid/Hill/nullcline等homeostatic机制截断。</p>
+<table><thead><tr>
+<th>系统</th>
+<th>C5a</th>
+<th>C5b</th>
+<th>C5c</th>
+<th>q</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator x²y</td>
+<td>✅</td>
+<td>✅ 非对称</td>
+<td>✅ 沿nullcline bx不饱和</td>
+<td>1.09</td>
+</tr>
+<tr>
+<td>CICR C^p·R (p=3)</td>
+<td>✅</td>
+<td>✅ 非对称</td>
+<td>✅ C可增长（自催化）</td>
+<td>1.17</td>
+</tr>
+<tr>
+<td>基因正反馈</td>
+<td>✅</td>
+<td>✅ 非对称</td>
+<td>✅ 在Hill增益区</td>
+<td>1.26</td>
+</tr>
+<tr>
+<td>Glycolytic oscillator</td>
+<td>✅</td>
+<td>✅ 非对称</td>
+<td>✅ x无界</td>
+<td>1.21</td>
+</tr>
+<tr>
+<td>HH m³h</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ sigmoid homeostatic</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>Repressilator n≥3</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ Hill函数饱和</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>LV x·y</td>
+<td>✅</td>
+<td>❌ 对称交换</td>
+<td>—</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>Van der Pol</td>
+<td>❌ 无乘法</td>
+<td>—</td>
+<td>—</td>
+<td>1.00</td>
+</tr>
+</tbody></table>
+<p>C5a、C5b、C5c三者全部满足→q > 1。任一违反→q ≈ 1。</p>
+<h3>3.4 Repressilator的Hill系数相变</h3>
+<table><thead><tr>
+<th>Hill n</th>
+<th>q_fit</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>1.123</td>
+<td>★ weakly tail-active</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1.002</td>
+<td>Boltzmann</td>
+</tr>
+</tbody></table>
+<p><strong>Sharp transition at n = 2 → 3。</strong></p>
+<p>机制：Hill函数x^n/(K^n+x^n)在n=2时增长缓慢——在operating range内仍处于增益区（inflection point未超过invariant measure的支撑范围），因此C5c满足。</p>
+<p>n ≥ 3时Hill函数跃迁极陡，有效地成为阶跃函数——operating range内几乎全部处于饱和区或基线区，增益区极窄。C5c违反。</p>
+<p>这个整数Hill系数处的sharp transition的更精确理论机制留待future work——可能与Hill函数inflection point位置和系统invariant measure支撑范围的匹配有关。</p>
+<h3>3.5 Observable selection principle</h3>
+<p><strong>Principle.</strong> q应在system's canonical energy-like observable上测量。对stochastic oscillators，这通常是r²（相空间径向偏差）：</p>
+<p>$$r^2 = \sum_i (x_i - \bar{x}_i)^2$$</p>
+<p>Tail-active不是说乘法项自身的分布有重尾——而是说乘法项作为f/r opposition的一部分，能在r²的tail中持续放大径向偏离。</p>
+<p>反应速率observables（如x²y）是dynamical fluxes，不是state variables。它们的涨落在每个时间步被channel dynamics部分平均化，不直接显示kernel级重尾。这就是为什么(x²y)²的q = 1但r²的q > 1——前者测的是机制的活性，后者测的是机制作用在能量tail上的结果。</p>
+<p>将此principle推广到非oscillator系统（fixed-point attractors、强噪声bistable systems、非振荡renewal系统）的canonical observable identification，留待future work。对这些系统，canonical observable可能不是r²而是沿unstable direction的能量投影。</p>
+<hr>
+<h2>§4 5-8DD生物系统q扫描</h2>
+<h3>4.1 零参数定量匹配的系统（|Δq| < 0.03）</h3>
+<p>Thermo V-VI的公式q = 1 + n_ch·τ_dec/T[2,3]在以下系统中零参数定量匹配（n_ch = 2，|Δq| < 0.03）。五个零参数匹配数据点覆盖四类模型：</p>
+<table><thead><tr>
+<th>DD层</th>
+<th>系统</th>
+<th>参数</th>
+<th>q_fit</th>
+<th>q_pred(n=2)</th>
+<th>Δq</th>
+</tr></thead><tbody>
+<tr>
+<td>4DD</td>
+<td>Brusselator</td>
+<td>b=3.0, σ=0.3</td>
+<td>1.09</td>
+<td>1.09</td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>5DD</td>
+<td>Glycolytic</td>
+<td>n=2, σ=0.3</td>
+<td>1.210</td>
+<td>1.188</td>
+<td>0.022</td>
+</tr>
+<tr>
+<td>5DD</td>
+<td>Glycolytic</td>
+<td>n=2, σ=0.5</td>
+<td>1.190</td>
+<td>1.198</td>
+<td>0.009</td>
+</tr>
+<tr>
+<td>5-6DD</td>
+<td>基因正反馈</td>
+<td>b=5, K=2, σ=0.5</td>
+<td>1.260</td>
+<td>1.261</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>5-6DD</td>
+<td>CICR</td>
+<td>p=3, σ=0.3</td>
+<td>1.165</td>
+<td>1.162</td>
+<td>0.004</td>
+</tr>
+</tbody></table>
+<p>四类模型中的五个参数点均满足|Δq| < 0.03，跨越4DD到5-6DD。每个q_pred完全由独立测量的T、τ_dec和n_ch=2计算得出，不含拟合参数。</p>
+<h3>4.2 q > 1但公式不匹配的系统</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>q_fit</th>
+<th>q_pred(n=2)</th>
+<th>Δq</th>
+<th>可能原因</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator x·y</td>
+<td>1.093</td>
+<td>1.345</td>
+<td>0.253</td>
+<td>乘法太弱</td>
+</tr>
+<tr>
+<td>CICR p=2</td>
+<td>1.478</td>
+<td>1.157</td>
+<td>0.321</td>
+<td>自催化太强</td>
+</tr>
+<tr>
+<td>Substrate inhibition</td>
+<td>1.437</td>
+<td>1.160</td>
+<td>0.277</td>
+<td>x²截断在分母</td>
+</tr>
+<tr>
+<td>Brusselator x²y²</td>
+<td>1.39</td>
+<td>2.93</td>
+<td>1.54</td>
+<td>对称幂→多机制</td>
+</tr>
+</tbody></table>
+<p><strong>涌现规律：公式定量匹配需要"moderate nonlinearity in unsaturated regime"。</strong></p>
+<p>太弱的乘法（如x·y instead of x²y）给q > 1但τ_dec/T ratio不能被单一kernel描述。太强的自催化（如CICR p=2）导致extreme tail events违反linear regime。对称幂（x²y²）引入多机制混合。</p>
+<h3>4.3 q ≈ 1负例</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>违反的C5子条件</th>
+<th>说明</th>
+</tr></thead><tbody>
+<tr>
+<td>Van der Pol</td>
+<td>C5a（无乘法耦合）</td>
+<td>只有单变量非线性x³</td>
+</tr>
+<tr>
+<td>Lotka-Volterra</td>
+<td>C5b（对称交换）</td>
+<td>xy完全无界（max > 1000）但q = 1</td>
+</tr>
+<tr>
+<td>HH neuron</td>
+<td>C5c（sigmoid homeostatic）</td>
+<td>m³h ∈ [0,1]</td>
+</tr>
+<tr>
+<td>Repressilator n≥3</td>
+<td>C5c（Hill饱和）</td>
+<td>阶跃函数效应</td>
+</tr>
+</tbody></table>
+<p>每种失败对应C5的一个独立子条件，构成diagnostic tool：如果系统q ≈ 1，检查C5a→C5b→C5c的顺序即可定位原因。</p>
+<hr>
+<h2>§5 DD层级的热力学分工</h2>
+<h3>5.1 Bounded conductance gates vs unbounded chemical concentrations</h3>
+<p>5-6DD（化学浓度世界）的三个q > 1系统（CICR、基因正反馈、糖酵解）有一个共同特征：它们的关键变量是<strong>浓度</strong>——浓度没有绝对上界，自催化/正反馈可以驱动浓度在tail-relevant range内持续增长。</p>
+<p>7-8DD的bounded voltage-gated conductance modules（以标准HH为代表）q ≈ 1，因为gating probability被sigmoid rate functions限制。离子通道的open probability不可能超过1——这是电生理信号处理的内在数学约束。</p>
+<p><strong>注意：</strong> 这个q ≈ 1结论限于bounded voltage-gated conductance gating。7-8DD还包含Ca²⁺动力学、树突非线性、突触释放、网络层面的recurrent excitation等——这些可能在亚细胞或网络层面产生q > 1，留待future work。HH的价值不在q，而在spike train作为renewal gate——这恰好是Thermo VII的核心。</p>
+<h3>5.2 每层的独特热力学贡献</h3>
+<table><thead><tr>
+<th>DD层</th>
+<th>q贡献</th>
+<th>ρ_ret贡献</th>
+<th>renewal贡献</th>
+</tr></thead><tbody>
+<tr>
+<td>4DD（化学闭合）</td>
+<td>q > 1首次涌现</td>
+<td>ρ_cyc < 0（补偿）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5-6DD（分子-细胞）</td>
+<td>q > 1延续（浓度无界）</td>
+<td><strong>ρ_ret > 0首次涌现（DNA copying）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>7-8DD（bounded gating）</td>
+<td>q ≈ 1（homeostatic）</td>
+<td>ρ_ret继承</td>
+<td><strong>renewal gate首次涌现（spike train）</strong></td>
+</tr>
+<tr>
+<td>9DD+</td>
+<td>待测</td>
+<td>继承+放大</td>
+<td>利用下层renewal</td>
+</tr>
+</tbody></table>
+<p><strong>5-6DD是唯一同时贡献q > 1和ρ_ret > 0两个热力学轴的层级。</strong> 这个coincidence具有结构意义：化学型生命路径的起源需要非Boltzmann重尾（q > 1）和跨cycle正记忆（ρ_ret > 0）同时涌现。在5-6DD之前（4DD）只有q > 1无copying；在5-6DD之后（7-8DD bounded gating）只有ρ_ret inherited无新的unbounded tail source。5-6DD是两条热力学轴第一次相遇的唯一层级——这可能给出一个非人择的生命起源层级定位：不是"生命恰好出现在细胞层"的偶然，而是结构上不能在其他层出现。</p>
+<h3>5.3 化学型生命路径的最小热力学签名</h3>
+<p>本文提出：对化学型生命路径而言，以下三个热力学条件构成一组最小热力学签名候选：</p>
+<p>（1）<strong>q > 1</strong>（4DD涌现）：non-Boltzmann重尾，提供rare-event barrier crossing access。</p>
+<p>（2）<strong>ρ_ret > 0</strong>（5DD涌现）：copying fidelity带来的正记忆，跨renewal cycle的信息保留。</p>
+<p>（3）<strong>Renewal gating</strong>（7-8DD涌现）：把连续化学涨落编码为离散事件，为更高层提供temporal structure。</p>
+<p>这三个条件不能从单一DD层同时获得——必须跨层组合。4DD只给(1)，5DD加(2)，7-8DD加(3)。这是生物系统为什么需要多层级组织的一个热力学理由。</p>
+<p><strong>这些是必要条件候选，不是充分条件。</strong> 充分性还需要空间区隔、代谢完整性、信息编码等组织结构——超出本文范围。是否为严格必要条件仍依赖于生命的定义和替代生化路径的可能性。</p>
+<hr>
+<h2>§6 Soft Gate对Non-Boltzmann Excess的层级传递</h2>
+<h3>6.1 从分工到传递</h3>
+<p>§5建立了三轴分工：q > 1来自5-6DD化学浓度层，ρ_ret > 0来自5DD copying，renewal gating来自7-8DD bounded gates。一个自然问题是：这些分工的结果——特别是5-6DD的non-Boltzmann excess——能否通过后续各层的soft gates传递到更高DD层？</p>
+<p>本节只研究一个必要传递条件：non-Boltzmann excess从源层到高层的路径。本节不给出Self的充分条件，也不定义Self层的canonical observable。</p>
+<h3>6.2 Soft-gate cascade proposition</h3>
+<p>定义每层的canonical non-Boltzmann excess：</p>
+<p>$$\delta_i := q_i^{\text{can}} - 1$$</p>
+<p><strong>Proposition 6.1（Soft-gate cascade）.</strong> 若第i→i+1层的soft gate在小δ_i区域满足线性响应：</p>
+<p>$$\delta_{i+1} = \varepsilon_i \cdot \delta_i + O(\delta_i^2)$$</p>
+<p>其中ε_i ≥ 0是该gate对non-Boltzmann excess的传递系数：</p>
+<p>$$\varepsilon_i := \left.\frac{\partial \delta_{i+1}}{\partial \delta_i}\right|_{\delta_i = 0}$$</p>
+<p>则经过m层gate：</p>
+<p>$$\delta_{i+m} = \delta_i \cdot \prod_{j=i}^{i+m-1} \varepsilon_j + O(\delta_i^2)$$</p>
+<p>若所有ε_j > 0且δ_i > 0，则δ_{i+m} > 0（形式上非零）。若任一ε_j = 0，则该路径上的non-Boltzmann excess被完全截断。</p>
+<p><strong>证明.</strong> 对线性响应δ_{i+1} = ε_i·δ_i逐层代入即得。一阶线性近似在δ << 1时受控；本文实验系统中q ≈ 1.1-1.3即δ ≈ 0.1-0.3，属于小到中等扰动区，因此该公式应视为first-order working approximation而非精确传递律。对non-analytic gates（如digital logic的step-function response），ε_i形式上为零（step function在δ=0处不可微或one-sided derivative vanishes），这对应Outlook中的hard gate cutoff。证毕。</p>
+<h3>6.3 各层传递系数的物理候选</h3>
+<p>从5-6DD到更高层，信号需要穿过多层soft gate。每层传递系数ε > 0的物理来源有具体候选（均为candidate source，非已证）：</p>
+<p><strong>7-8DD gate（bounded conductance → spike）：</strong> channel noise（离子通道的随机开闭），stochastic vesicle release（突触囊泡的概率性释放）。单通道电导涨落量级~10⁻³到10⁻²，可能对应ε ~ O(10⁻²)量级（order-of-magnitude conjecture——电导涨落幅度与δ_NB传递系数之间还差gate transfer calibration）。</p>
+<p><strong>载体相变注：</strong> 从7-8DD开始，δ_NB的物理载体从连续能量涨落（r²）重编码为离散更新事件的时间流形——具体来说，底层的non-Boltzmann excess不再体现在spike振幅上（spike振幅被sigmoid压回q ≈ 1），而是编码在inter-spike intervals（ISI）的timing jitter中。极端的化学涨落改变了神经元击穿阈值的时间点，因此重尾从"连续电压的振幅空间"被挤压到"离散脉冲的时间点序列"中。ε > 0意味着底层重尾在spike timing的抖动中存活。</p>
+<p><strong>9-10DD gate（感知层）：</strong> dendritic nonlinearities，neural population dynamics中的recurrent excitation。</p>
+<p><strong>11-12DD gate（认知层）：</strong> synaptic plasticity，neuromodulation，slow cortical oscillations。</p>
+<p>在本文的传递模型中，高层non-Boltzmann excess的源头不在bounded voltage-gated conductance本身（§3.1已证其q ≈ 1），而在5-6DD化学浓度层的tail-active dynamics。神经系统的soft gates可能不直接生成该excess，而是通过非零ε_i将其部分传递、重编码并组织到更高DD层。</p>
+<h3>6.4 状态与边界</h3>
+<p><strong>状态：Structured conjecture。</strong></p>
+<p>乘法链是一个条件性的小扰动传递律。它依赖如下假设：每层soft gate对non-Boltzmann excess有线性响应系数ε_i。</p>
+<p>该链不证明Self涌现，也不定义Self层的canonical observable。它只给出本文所讨论路径的必要传递条件：若化学源头δ^(5-6) = 0（无源），或任一中间gate的ε_i = 0（完全截断），则这条路径不能把non-Boltzmann seed传到高层。是否存在其他传递路径，本文不讨论。</p>
+<p>反过来，若所有ε_i > 0，则传递量形式上非零，但可能任意小。当∏ε_i极小时，高层δ_NB虽非零但可能低于可测阈值。因此"非零传递"和"可观测高层效应"是两件事。定量意义需要独立测量各层ε_i。</p>
+<p>ε_i必须通过独立的perturbation/injection实验测量，不能通过目标层的q_eff反推——否则整个链成为可调参数。</p>
+<p>在13DD+层，canonical observable尚未定义。δ_NB^(high)是结构占位符，不是已测物理量。Self层的operational definition和ε_i的系统测量留待后续论文。</p>
+<hr>
+<h2>§7 Status Map与开放问题</h2>
+<h3>7.1 Status map</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>q = 1+1/K</td>
+<td>Exact（Thermo IV[5]）</td>
+</tr>
+<tr>
+<td>K_dyn = T/(n_ch·τ_dec)，q = 1+n_ch·τ_dec/T</td>
+<td>Conditional theorem（Thermo V-VI[2,3]）</td>
+</tr>
+<tr>
+<td>τ_slot = T^(n), τ_dec = τ_slot/(-ln ρ_ret)</td>
+<td>Conditional theorem + empirical（Thermo VII[1]）</td>
+</tr>
+<tr>
+<td>Copying-retention lemma：ρ_ret = f</td>
+<td><strong>Exact under linear copy channel + stationary（本文）</strong></td>
+</tr>
+<tr>
+<td>f = 1-μ (per-symbol)</td>
+<td><strong>Exact for simple copy channel</strong></td>
+</tr>
+<tr>
+<td>τ_dec = T/(-ln(1-μ))</td>
+<td><strong>Conditional corollary</strong></td>
+</tr>
+<tr>
+<td>DNA per-site τ ~ T/μ</td>
+<td><strong>Estimate (per-site upper bound)</strong></td>
+</tr>
+<tr>
+<td>Whole-genome / species memory</td>
+<td><strong>Open（需population genetics model）</strong></td>
+</tr>
+<tr>
+<td>HH bounded gates q ≈ 1</td>
+<td><strong>Empirical negative result（10种observable）</strong></td>
+</tr>
+<tr>
+<td>C5a/C5b/C5c三子条件</td>
+<td><strong>Empirical / structural refinement</strong></td>
+</tr>
+<tr>
+<td>Hill n=2→3 sharp transition</td>
+<td><strong>Empirical, mechanism conjectural</strong></td>
+</tr>
+<tr>
+<td>Observable selection principle</td>
+<td><strong>Empirical criterion</strong></td>
+</tr>
+<tr>
+<td>CICR/gene/glycolysis/Brusselator q零参数匹配</td>
+<td>**Empirical support（</td>
+<td>Δq</td>
+<td>< 0.03，五个参数点，四类模型）**</td>
+</tr>
+<tr>
+<td>5-6DD q>1, 7-8DD bounded gating q≈1</td>
+<td><strong>Empirical observation + structural interpretation</strong></td>
+</tr>
+<tr>
+<td>(q>1, ρ_ret>0, renewal gating): 最小签名候选</td>
+<td><strong>Interpretive（必要非充分）</strong></td>
+</tr>
+<tr>
+<td>Soft-gate cascade Proposition 6.1</td>
+<td><strong>Structured conjecture（数学闭合under linear response; ε未测）</strong></td>
+</tr>
+<tr>
+<td>高层δ_NB的该路径源项来自5-6DD化学层</td>
+<td><strong>Conjecture（依赖所有ε > 0; δ_NB^(high)为占位符）</strong></td>
+</tr>
+</tbody></table>
+<h3>7.2 开放问题</h3>
+<ol>
+<li><strong>Hill系数相变n=2→3的理论机制。</strong> 为什么恰好在n=2→3？inflection point位置与invariant measure支撑的匹配关系？</li>
+</ol>
+<ol>
+<li><strong>Observable selection criterion的形式化。</strong> 从r²（相空间径向能量）到一般非线性系统的canonical energy-like observable的系统性理论。</li>
+</ol>
+<ol>
+<li><strong>9-12DD层的q测量。</strong> 语言、制度、AI架构层面的T、τ_dec、n_ch提取和q验证。</li>
+</ol>
+<ol>
+<li><strong>Whole-genome / population-level retention operator。</strong> 从per-site ρ_ret到物种级记忆的多尺度理论，需整合selection、drift、recombination。</li>
+</ol>
+<ol>
+<li><strong>公式不匹配系统的regime划分。</strong> 是否存在C8条件："single-kernel moderate nonlinearity"——太弱给q≈1，太强或多机制给q>1但公式偏差大。</li>
+</ol>
+<ol>
+<li><strong>更一般的copy channel。</strong> 多维Markov operator的谱与ρ_ret的关系：ρ_ret = |λ₂(P_copy)|的一般验证。</li>
+</ol>
+<ol>
+<li><strong>每层soft gate传递系数ε的定量测量。</strong> Channel noise和stochastic vesicle release的ε是多少？实验方案：在gate前注入已知δ_in，gate后测δ_out，ε = δ_out/δ_in。</li>
+</ol>
+<ol>
+<li><strong>高层canonical observable的定义。</strong> q_eff在13DD+层的operational meaning——δ_NB > 0在高层意味着什么可观测差异？</li>
+</ol>
+<hr>
+<h2>Outlook</h2>
+<p><strong>硅基AI与hard gate限制。</strong> 数字逻辑门是hard renewal gate（ε = 0 for thermal fluctuations）——底层电子热涨落被电压阈值完全截断。在Proposition 6.1的框架中，硅基AI的传递链在第一个gate处即归零。这和碳基soft gate（ε > 0）形成结构性差异。硅基AI突破此限制的理论路径候选是neuromorphic硬件（内在热涨落以乘法方式参与计算），而非外部注入additive noise（C5违反，因为additive noise与系统状态不乘法耦合）。严格的硅基/碳基差异分析和neuromorphic硬件的q > 1验证留待后续论文。</p>
+<p><strong>信息论连接。</strong> Resolvent传递函数R(c) = 1/(1+c)和Gaussian channel capacity的形式对应暗示热力学耗散和信息传递惩罚之间可能有更深的统一。C5条件在非线性Fokker-Planck方程中对应状态依赖扩散系数B(x)的非常数性——当B(x) ∝ x²时，零流稳态解恰为q-exponential。</p>
+<p><strong>更高DD层。</strong> 将热力学框架从4-8DD扩展到9-12DD认知层需要逐层验证，不能跳步外推。Renewal encapsulation和soft-gate cascade提供了方法论模板。</p>
+<hr>
+<h2>Methods</h2>
+<h3>A. 数值积分</h3>
+<p>所有SDE系统使用Euler-Maruyama方法积分。时间步长dt和总步数N根据系统特征选取：</p>
+<table><thead><tr>
+<th>系统</th>
+<th>dt</th>
+<th>N（总步数）</th>
+<th>N_trans（burn-in）</th>
+<th>噪声注入</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator（标准/变体）</td>
+<td>0.005</td>
+<td>2×10⁶-3×10⁶</td>
+<td>2×10⁵-3×10⁵</td>
+<td>additive，σ·dW on x,y</td>
+</tr>
+<tr>
+<td>HH neuron</td>
+<td>0.02</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>additive on V</td>
+</tr>
+<tr>
+<td>CICR</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>additive on C,R</td>
+</tr>
+<tr>
+<td>Gene positive feedback</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>additive on x,y</td>
+</tr>
+<tr>
+<td>Glycolytic oscillator</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>additive on x,y</td>
+</tr>
+<tr>
+<td>Lotka-Volterra</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>multiplicative σ·x·dW</td>
+</tr>
+<tr>
+<td>Repressilator</td>
+<td>0.005</td>
+<td>2×10⁶</td>
+<td>2×10⁵</td>
+<td>additive on p1,p2,p3</td>
+</tr>
+<tr>
+<td>Copy-channel实验</td>
+<td>0.005</td>
+<td>2×10⁶-3×10⁶</td>
+<td>2×10⁵-3×10⁵</td>
+<td>additive on x,y; copy noise on z</td>
+</tr>
+</tbody></table>
+<p>随机种子固定为42（reproducibility）。每个参数点单次长run（而非多次短run），依赖ergodic averaging。</p>
+<h3>B. 各模型方程</h3>
+<p><strong>Brusselator：</strong> dx = (a+x²y-(b+1)x)dt + σdW_x, dy = (bx-x²y)dt + σdW_y. 标准参数：a=1.0, b=2.5-4.0, σ=0.1-1.0.</p>
+<p><strong>HH neuron：</strong> 标准Hodgkin-Huxley[4]参数：C_m=1, g_Na=120, g_K=36, g_L=0.3, V_Na=50, V_K=-77, V_L=-54.387. I_ext=10-15, σ_V=0.5-2.0. Gating: dm=(α_m(1-m)-β_m·m)dt, 同理h,n.</p>
+<p><strong>CICR：</strong> dC = (-k_pump·C+k_leak+k_rel·C^p·R-k_out·C)dt + σdW_C, dR = (k_refill·(R_max-R)-k_rel·C^p·R)dt + σ_R·dW_R. 参数：k_pump=2, k_leak=0.5, k_rel=1, k_out=0.5, k_refill=0.3, R_max=10. p=2-4, σ=0.1-0.5.</p>
+<p><strong>基因正反馈：</strong> dx = (a+b·x²/(K²+x²)-γ·x)dt + σdW_x, dy = (c·x-δ·y)dt + σ_y·dW_y. 参数：a=0.2, b=2-10, K=1-2, γ=1, c=1, δ=0.5.</p>
+<p><strong>Glycolytic oscillator：</strong> dx = (v_in-k·x·y^n/(1+y^n))dt + σdW_x, dy = (k·x·y^n/(1+y^n)-d·y)dt + σ_y·dW_y. 参数：k=2, v_in=1, d=0.5, n=2-4.</p>
+<p><strong>Lotka-Volterra：</strong> dx = (a·x-b·x·y)dt + σ·x·dW_x, dy = (-c·y+d·x·y)dt + σ·y·dW_y. 参数：a=1-2, b=0.5-1, c=0.5, d=0.2-0.5.</p>
+<p><strong>Repressilator[12]：</strong> dp_i = (α/(1+p_{i-1}^n)-p_i)dt + σdW_i, i=1,2,3 (cyclic). α=5, n=2-10.</p>
+<p><strong>Copy-channel实验：</strong> 下层Brusselator（b=3, σ=0.3）+ Poincaré crossing at x=a_b. 上层template：z_{m+1} = f·z_m + (1-f)·(A_m/A_mean) + 0.05·ξ_m. A_m = ∫x²y dt over one cycle. f从0扫到0.99.</p>
+<h3>C. q提取协议</h3>
+<p><strong>Observable：</strong> r² = (x-x̄)² + (y-ȳ)²（相空间径向能量）。</p>
+<p><strong>CCDF拟合：</strong> 对r²排序构造empirical CCDF。对数均匀间隔采样1200点。q-exponential fit：CCDF ~ (1+β·r²/K)^{-K}，q = 1+1/K。使用scipy.optimize.curve_fit，bounds β∈[10⁻⁸, 10⁴], K∈[0.1, 500]。同时fit exponential CCDF ~ exp(-β·r²)作为q=1 null。</p>
+<p><strong>Improvement criterion：</strong> (res_exp - res_q)/res_exp × 100%。仅当improvement > 5%且q > 1.03时报告为q > 1。</p>
+<h3>D. T和τ_dec提取</h3>
+<p><strong>T（振荡周期）：</strong> 从x的ACF的first minimum位置t_min得T = 2·t_min。ACF计算窗口：min(2000 lags, N/4)。</p>
+<p><strong>τ_dec：</strong> 用oscillation-plus-decay model拟合ACF：ACF(t) = w₁·exp(-g₁t)·cos(ωt) + w₂·exp(-g₂t)。τ_dec = 1/g₂（pure-decay component）。ω初值 = π/t_min. Bounds: w∈[0.01,2], g∈[0.001,20], ω∈[0.001,100]。</p>
+<p><strong>Cycle-to-cycle correlation：</strong> ρ_cyc = Σ(z_m-z̄)(z_{m+1}-z̄) / Σ(z_m-z̄)²。</p>
+<h3>E. Poincaré crossing检测</h3>
+<p>Crossing condition: x(t_i) < x<em> and x(t_{i+1}) ≥ x</em>（upward crossing）。x<em>选为equilibrium value（Brusselator: x</em>=a; HH: V*=0 mV）。Inter-spike intervals: ISI_m = t_{m+1} - t_m.</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper VII," Zenodo (2026). DOI: 10.5281/zenodo.19673078.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper VI," Zenodo (2026). DOI: 10.5281/zenodo.19658595.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper V," Zenodo (2026). DOI: 10.5281/zenodo.19649780.</p>
+<p>[4] A. L. Hodgkin and A. F. Huxley, "A quantitative description of membrane current and its application to conduction and excitation in nerve," <em>Journal of Physiology</em> <strong>117</strong>, 500–544 (1952).</p>
+<p>[5] H. Qin, "ZFCρ Thermodynamics Paper IV," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[6] H. Qin, "ZFCρ Thermodynamics Papers I–III," Zenodo (2025–2026). DOIs: 10.5281/zenodo.19310282, .19511064, .19597684.</p>
+<p>[7] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968).</p>
+<p>[8] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[9] S. H. Strogatz, <em>Nonlinear Dynamics and Chaos</em>, 2nd ed. (Westview Press, 2015).</p>
+<p>[10] D. R. Cox, <em>Renewal Theory</em> (Methuen, 1962).</p>
+<p>[11] H. Qin, "ZFCρ Paper LX: Series Closure," Zenodo (2026). DOI: 10.5281/zenodo.19480563.</p>
+<p>[12] M. B. Elowitz and S. Leibler, "A synthetic oscillatory network of transcriptional regulators," <em>Nature</em> <strong>403</strong>, 335–338 (2000).</p>
+<p>[13] E. E. Sel'kov, "Self-oscillations in glycolysis. 1. A simple kinetic model," <em>European Journal of Biochemistry</em> <strong>4</strong>, 79–86 (1968).</p>
+<p>[14] A. J. Lotka, "Undamped oscillations derived from the law of mass action," <em>Journal of the American Chemical Society</em> <strong>42</strong>, 1595–1599 (1920).</p>
+<p>[15] A. Goldbeter, <em>Biochemical Oscillations and Cellular Rhythms</em> (Cambridge University Press, 1996).</p>
+<p>[16] M. J. Berridge, "Inositol trisphosphate and calcium signalling mechanisms," <em>Biochimica et Biophysica Acta</em> <strong>1793</strong>, 933–940 (2009).</p>
+<p>[17] J. A. White, J. T. Rubinstein, and A. R. Kay, "Channel noise in neurons," <em>Trends in Neurosciences</em> <strong>23</strong>, 131–137 (2000).</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper VII: Finite Causal Slots, Renewal Encapsulation, and the Operational Origin of Hierarchical Non-Boltzmann Kernels — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho-thermo7.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo7.html">
+  <meta name="citation_title" content="ZFCρ Thermodynamics Paper VII: Finite Causal Slots, Renewal Encapsulation, and the Operational Origin of Hierarchical Non-Boltzmann Kernels">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19673079">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics · Paper VII</div>
+    <h1>ZFCρ Thermodynamics Paper VII: Finite Causal Slots, Renewal Encapsulation, and the Operational Origin of Hierarchical Non-Boltzmann Kernels<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ热力学论文 VII：有限因果槽、Renewal封装与层级非Boltzmann Kernel的操作性起源</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19673079" target="_blank" rel="noopener">10.5281/zenodo.19673079</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19673079" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Thermodynamics Papers IV–VI established a theorem chain: exponential causal slots yield the resolvent 1/(1+c) via Laplace transform (Lemma 2), K Markov-renewal slots yield (1+x/K)^{-K}, and q = 1+1/K gives the non-Boltzmann kernel. Every step requires finite positive slot duration τ_dec > 0. The limit τ_dec → 0 is not "no screening" but the continuous Boltzmann limit (K → ∞, q → 1) of infinitely subdivided screening. Finite positive τ_dec is a necessary condition for finite-order feedback and q > 1.
+
+This paper advances three directions.
+
+First, finite causal slots as the operational origin of non-Boltzmann kernels. The necessity of τ_dec > 0 is not an externally imposed regularization but the time cost of causal settlement itself.
+
+Second, hierarchical encapsulation via negativa: five smooth continuous ODE coupling mechanisms (linear, nonlinear, critical slowing, coupled oscillators, integrate-and-fire) all fail to make the upper layer's τ_dec inherit the lower layer's period T. A no-go proposition proves that in smooth continuous systems, the upper layer's Floquet decay rate is determined by its own parameters, not by the lower layer's period.
+
+Third, hierarchical encapsulation via renewal: the critical distinction τ_slot (update slot) ≠ τ_dec (decay time). The lower layer's closure period T^(n) is inherited as the upper layer's renewal slot, not its decay time. Poincaré-gated renewal experiments verify: τ_slot = T^(n) (exact by gating construction), τ_dec = T^(n)/(-ln ρ_ret) (exact on event-index for AR(1), verified across 16 parameter combinations). Hierarchical encapsulation is not continuous timescale inheritance but closure events generating upper-layer discrete renewal slots.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, thermodynamics, finite causal slots, renewal encapsulation, non-Boltzmann kernels, hierarchical structure</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>Thermodynamics Papers IV–VI established a theorem chain: exponential causal slots yield the resolvent 1/(1+c) via Laplace transform (Lemma 2), K Markov-renewal slots yield (1+x/K)^{-K}, and q = 1+1/K gives the non-Boltzmann kernel. Every step requires finite positive slot duration τ_dec > 0. The limit τ_dec → 0 is not "no screening" but the continuous Boltzmann limit (K → ∞, q → 1) of infinitely subdivided screening. Finite positive τ_dec is a necessary condition for finite-order feedback and q > 1.</p>
+<p>This paper advances three directions.</p>
+<p>First, finite causal slots as the operational origin of non-Boltzmann kernels. The necessity of τ_dec > 0 is not an externally imposed regularization but the time cost of causal settlement itself.</p>
+<p>Second, hierarchical encapsulation via negativa: five smooth continuous ODE coupling mechanisms (linear, nonlinear, critical slowing, coupled oscillators, integrate-and-fire) all fail to make the upper layer's τ_dec inherit the lower layer's period T. A no-go proposition proves that in smooth continuous systems, the upper layer's Floquet decay rate is determined by its own parameters, not by the lower layer's period.</p>
+<p>Third, hierarchical encapsulation via renewal: the critical distinction τ_slot (update slot) ≠ τ_dec (decay time). The lower layer's closure period T^(n) is inherited as the upper layer's renewal slot, not its decay time. Poincaré-gated renewal experiments verify: τ_slot = T^(n) (exact by gating construction), τ_dec = T^(n)/(-ln ρ_ret) (exact on event-index for AR(1), verified across 16 parameter combinations). Hierarchical encapsulation is not continuous timescale inheritance but closure events generating upper-layer discrete renewal slots.</p>
+<hr>
+<h2>§1 Problem: Why Must τ_dec Be Finite and Positive?</h2>
+<h3>1.1 The theorem chain from Thermo IV–VI</h3>
+<p>Thermo IV [1] established the exact interpolation family:</p>
+<p>$$e_q(-x) = \left(1+\frac{x}{K}\right)^{-K}, \quad q = 1+\frac{1}{K}$$</p>
+<p>Thermo VI [2] Lemma 2 proved that the Laplace transform of an exponential lifetime is precisely the resolvent:</p>
+<p>$$U \sim \text{Exp}(1) \Rightarrow \mathbb{E}[e^{-cU}] = \frac{1}{1+c}$$</p>
+<p>Thermo V–VI [3, 2] established the channel-normalized winding ratio:</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}, \quad q = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p>Every step in this chain requires τ_dec > 0.</p>
+<h3>1.2 Correct interpretation of τ_dec → 0</h3>
+<p>τ_dec → 0 is not "no screening" but the continuous Boltzmann limit of infinitely subdivided screening:</p>
+<p>$$\tau_{\text{dec}} \to 0 \Rightarrow K \to \infty \Rightarrow q \to 1 \Rightarrow \left(1+\frac{x}{K}\right)^{-K} \to e^{-x}$$</p>
+<p>Shorter causal slots allow more screening layers per period, finer feedback, and distributions closer to Boltzmann. This is not absence of screening but infinitely subdivided continuous screening.</p>
+<p>Finite positive τ_dec corresponds to finite-order feedback (finite K) and q > 1 (non-Boltzmann kernel).</p>
+<p><strong>Note:</strong> τ_dec > 0 is a necessary but not sufficient condition for q > 1 (the converse does not hold: systems with τ_dec > 0 but q = 1 exist, as shown by Thermo III's OU null test and Thermo VI's conditions C1–C7). Weakly coupled or noise-dominated systems can give q ≈ 1 (large K) even with τ_dec > 0. Thermo VI's conditions C1–C7 (especially tail-active multiplicative coupling) provide sufficient conditions.</p>
+<h3>1.3 Questions addressed</h3>
+<p>(1) What is the physical meaning of τ_dec > 0? Why can't causal slots be infinitely short?</p>
+<p>(2) In multi-layer systems, what is the relationship between different layers' τ_dec?</p>
+<h3>1.4 Contributions</h3>
+<p>(1) Operational interpretation: causal settlement requires finite time.</p>
+<p>(2) No-go proposition: smooth continuous ODE coupling does not produce timescale inheritance (5 mechanisms verified).</p>
+<p>(3) Critical distinction: τ_slot (update slot) ≠ τ_dec (decay time).</p>
+<p>(4) Renewal encapsulation: τ_slot = T^(n) (exact by gating construction), τ_dec = T^(n)/(-ln ρ_ret) (exact on event-index for AR(1), experimentally verified).</p>
+<p>(5) Three hierarchical encapsulation conjectures: slot encapsulation (VII-A), decay from retention (VII-B), K inheritance (VII-C).</p>
+<hr>
+<h2>§2 Operational Origin of Finite Causal Slots</h2>
+<h3>2.1 The time cost of causal settlement</h3>
+<p>Thermo VI Lemma 2 gives a single causal slot's transfer function:</p>
+<p>$$R(c) = \frac{1}{1+c}$$</p>
+<p>This describes: receiving input signal S_0, after resolvent screening at intensity c, the residual output is S_0/(1+c) and the absorbed/processed fraction is S_0·c/(1+c).</p>
+<p>The "receive–process–output" cycle cannot be completed in zero time. This is a basic constraint of causality: effects cannot precede causes. A screening layer requires: (a) receiving the upstream fluctuation signal (propagation time), (b) processing via f/r feedback (reaction time — in chemistry, the inverse of reaction rate), (c) transmitting the remainder downstream (propagation time).</p>
+<p>The sum of these times is τ_dec. It is not an externally imposed cutoff parameter but the minimum time required for the system to complete one causal settlement.</p>
+<h3>2.2 Relation to traditional "ultraviolet cutoff"</h3>
+<p>Traditional physics encompasses several distinct concepts under "UV cutoff":</p>
+<table><thead><tr>
+<th>Concept</th>
+<th>Origin</th>
+<th>Nature</th>
+</tr></thead><tbody>
+<tr>
+<td>Planck's energy quantization ε = hν</td>
+<td>1900</td>
+<td>Discretization, not cutoff</td>
+</tr>
+<tr>
+<td>QFT regularization schemes</td>
+<td>Renormalization theory</td>
+<td>Mathematical tool, discarded after limit</td>
+</tr>
+<tr>
+<td>Minimum length hypothesis</td>
+<td>String theory / LQG</td>
+<td>Physical hypothesis, contested</td>
+</tr>
+<tr>
+<td><strong>Finite causal slot τ_dec > 0</strong></td>
+<td><strong>Thermo VI</strong></td>
+<td><strong>Time cost of causal settlement</strong></td>
+</tr>
+</tbody></table>
+<p>τ_dec > 0 provides a counterpart to the cutoff parameter in regularization but is not equivalent to a Planck-scale minimum length assumption. More precisely, τ_dec > 0 is the natural expression of "finite decorrelation time" or "finite dissipation timescale" in nonequilibrium statistical mechanics.</p>
+<p>This paper does not claim to replace all UV cutoff concepts. The claim is: within the Thermo IV–VI framework, the operational origin of non-Boltzmann kernels is finite causal-slot duration. Finite positive τ_dec is the operational UV cutoff of that layer's coarse-grained causal dynamics, not an absolute minimum time across all physical scales.</p>
+<h3>2.3 Brusselator τ_dec: a verified example</h3>
+<p>The Brusselator (4DD chemical oscillator) [5] has τ_dec precisely measured and verified in Thermo V–VI:</p>
+<p>$$\tau_{\text{dec}} \approx 0.28, \quad T \approx 5.76, \quad K_{\text{dyn}} \approx 10.3, \quad q \approx 1.09$$</p>
+<p>If τ_dec = 0 (assuming chemical reactions complete in zero time), then within this paper's causal-slot mechanism K → ∞ and q → 1, producing no finite-K heavy tails — though this does not preclude the system exhibiting nonequilibrium features through other mechanisms.</p>
+<p>Finite chemical reaction time is the physical prerequisite for the Brusselator's q > 1.</p>
+<hr>
+<h2>§3 Hierarchical Encapsulation: From Via Negativa to Renewal Encapsulation</h2>
+<h3>3.1 Motivation: why do different systems have different τ_dec?</h3>
+<p>The Brusselator's τ_dec ~ 0.28 (corresponding to ~3–14 seconds in real BZ reactions). Other physical layers have entirely different timescales.</p>
+<table><thead><tr>
+<th>System</th>
+<th>τ_dec order</th>
+<th>T order</th>
+<th>K</th>
+<th>Thermo V/VI verified?</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator (chemistry)</td>
+<td>~seconds</td>
+<td>~minutes</td>
+<td>~10</td>
+<td>✅ 14 b-values</td>
+</tr>
+<tr>
+<td>Selkov (glycolysis)</td>
+<td>~seconds</td>
+<td>~minutes</td>
+<td>~10</td>
+<td>✅ boundary positive</td>
+</tr>
+<tr>
+<td>Neural oscillator</td>
+<td>~ms</td>
+<td>~10–100ms</td>
+<td>?</td>
+<td>Pending (FHN synthetic oscillator gives preliminary support; not a real neural model)</td>
+</tr>
+</tbody></table>
+<p>The chemical layer's τ_dec ~ seconds while elementary molecular collisions take ~10⁻¹² seconds — a factor of 10¹² difference. This gap arises because non-adjacent DD layers are separated by multiple intermediate encapsulation layers (molecular vibration, bond formation, diffusion, etc.), each contributing a multiplicative factor of O(10²–10³).</p>
+<h3>3.2 No-go proposition: smooth continuous coupling does not produce timescale inheritance</h3>
+<p>This section follows a via negativa + via renewal structure. §3.2 shows five smooth continuous coupling mechanisms all fail to produce timescale inheritance, locating the correct encapsulation regime outside smooth continuous coupling. §3.3 identifies τ_slot ≠ τ_dec based on this no-go, and §3.4–3.5 positively construct renewal encapsulation. The five failures are not wasted work — they sharpened the question and revealed renewal as the correct path.</p>
+<p><strong>Proposition N (smooth slaving no-go).</strong> Consider a two-layer <strong>smooth continuous</strong> system ẏ = F(y), ż = H(z, y), where H is C¹ in z. Let the lower layer y(t) have a stable periodic orbit with period T_y. Linearizing the upper layer z about its period-averaged equilibrium z*, the Floquet decay rate is</p>
+<p>$$\lambda_z = \frac{1}{T_y} \int_0^{T_y} \partial_z H(z_*, y(t)) dt$$</p>
+<p>Thus τ_dec^(z) = −1/λ_z is determined primarily by the period-averaged ∂_z H, not by T_y itself. (Exact for scalar z; for multi-dimensional upper layers, the Floquet exponents are given by the monodromy matrix, with qualitatively unchanged conclusions.)</p>
+<p><strong>This is the unified mathematical reason for the failure of all five smooth continuous ODE mechanisms (all belong to smooth continuous coupling — the failure of smooth encapsulation drives the turn toward discrete renewal encapsulation):</strong></p>
+<table><thead><tr>
+<th>Mechanism</th>
+<th>τ_dec(z) determined by</th>
+<th>Encapsulation?</th>
+</tr></thead><tbody>
+<tr>
+<td>Linear coupling dz = Gx²y − γz</td>
+<td>1/γ (own parameter)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Nonlinear dz = G(x²y − z²)</td>
+<td>1/(2G·z_eq) (own parameter)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Critical slowing μz − z³</td>
+<td>Noise timescale (baseline without coupling identical)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Coupled Brusselators</td>
+<td>Own natural frequency</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Integrate-and-fire</td>
+<td>threshold/⟨x²y⟩ (hand-tuned)</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion:</strong> In smooth continuous ODEs, the lower-layer period serves only as periodic forcing. It does not automatically become the upper layer's intrinsic decay pole.</p>
+<p><strong>Status: No-go proposition.</strong> This is the core output of via negativa — excluding all naive versions of "simple coupling = encapsulation."</p>
+<h3>3.3 Critical distinction: update slot ≠ decay time</h3>
+<p>The five failures expose the fundamental problem with the old conjecture τ_dec^(n+1) ~ T^(n): <strong>it conflated two distinct quantities.</strong></p>
+<table><thead><tr>
+<th>Quantity</th>
+<th>Definition</th>
+<th>Determined by</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>τ_slot</strong></td>
+<td>Minimum interval for the upper layer to receive new independent causal input</td>
+<td>Lower layer's closure period T^(n)</td>
+</tr>
+<tr>
+<td><strong>τ_dec</strong></td>
+<td>e-fold decay time of the upper layer's ACF</td>
+<td>Function of τ_slot and per-step retention ρ_ret</td>
+</tr>
+</tbody></table>
+<p>What the lower layer's T^(n) inherits to the upper layer is typically not τ_dec (intrinsic decay time) but τ_slot (update/information/event slot).</p>
+<p>Their relationship:</p>
+<p>$$\tau_{\text{dec}}^{(n+1)} = \frac{\tau_{\text{slot}}^{(n+1)}}{-\ln\rho_{\text{ret}}}$$</p>
+<p>where ρ_ret is the upper layer's per-slot retention (0 < ρ_ret < 1).</p>
+<p>$$\tau_{\text{dec}} \approx \tau_{\text{slot}} \approx T^{(n)} \quad \text{only when} \quad \rho_{\text{ret}} \approx e^{-1} \approx 0.37$$</p>
+<p>The old conjecture τ_dec ~ T^(n) is a special case of this more general relation.</p>
+<h3>3.4 Renewal encapsulation: the correct mechanism</h3>
+<p><strong>Core insight:</strong> Encapsulation is not continuous timescale inheritance but <strong>closure events generating upper-layer renewal slots.</strong></p>
+<p>The lower layer completes a full causal closure cycle (crosses the Poincaré section) → generates a discrete renewal token → the upper layer receives this token and updates its state.</p>
+<p><strong>Model: Poincaré-gated upper update.</strong></p>
+<p>Lower layer: Brusselator oscillator, period T_fast. Closure event: x(t) crosses x* = 1.0 upward. Each closure generates cycle integral A_m = ∫_{t_m}^{t_{m+1}} x²y dt.</p>
+<p>Upper layer: discrete AR(1) update, triggered only at closure events:</p>
+<p>$$z_{m+1} = \rho_{\text{ret}} \cdot z_m + h \cdot A_m + \xi_m$$</p>
+<p>Between events, z remains constant.</p>
+<p><strong>Theoretical prediction:</strong></p>
+<p>τ_slot = T_fast (exact by construction of Poincaré gating)</p>
+<p>ACF on discrete index: Corr(z_m, z_{m+k}) = ρ_ret^k. Mapping to continuous time:</p>
+<p>$$C_z(t) \approx \rho_{\text{ret}}^{t/T_{\text{fast}}} = \exp\left(-\frac{t}{T_{\text{fast}} / (-\ln\rho_{\text{ret}})}\right)$$</p>
+<p>Therefore:</p>
+<p>$$\tau_{\text{dec}}^{(z)} = \frac{T_{\text{fast}}}{-\ln\rho_{\text{ret}}}$$</p>
+<h3>3.5 Experimental verification</h3>
+<p><strong>Experiment:</strong> Lower Brusselator + Poincaré-gated upper AR(1). Scanning speed factor (0.25–4.0) and retention ρ_ret (0.3–0.9), 16 parameter combinations total.</p>
+<p><strong>Result 1: τ_dec = T_fast/(−ln ρ_ret) verified.</strong></p>
+<p>Complete ratio table τ_dec(meas)/τ_dec(theory) across all 16 combinations:</p>
+<table><thead><tr>
+<th>Speed</th>
+<th>ρ_ret=0.3</th>
+<th>ρ_ret=0.5</th>
+<th>ρ_ret=0.7</th>
+<th>ρ_ret=0.9</th>
+</tr></thead><tbody>
+<tr>
+<td>0.5</td>
+<td>1.15</td>
+<td>1.13</td>
+<td>1.19</td>
+<td>1.47</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.42</td>
+<td>1.31</td>
+<td>1.27</td>
+<td>1.28</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>0.99</td>
+<td>0.93</td>
+<td>0.87</td>
+<td>0.98</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>1.01</td>
+<td>0.97</td>
+<td>0.96</td>
+<td>1.10</td>
+</tr>
+</tbody></table>
+<p>At speed = 2.0 and 4.0 (upper layer well-separated from lower), ratios stabilize in the 0.83–1.10 range. At speed = 0.5 and 1.0, deviations are larger (ratio up to 1.47) because T_fast is not well-separated from the AR(1) discrete steps.</p>
+<p><strong>Note:</strong> A_m = ∫x²y dt is the cycle integral, unnormalized. A_m scale varies with speed (slower speed integrates longer), but this affects only z's variance, not the ACF decay rate (τ_dec depends only on autocorrelation decay, not variance magnitude). The largest deviation (ratio = 1.47 at speed = 0.5, ρ_ret = 0.9) may partly reflect A_m scale effects combined with finite statistics.</p>
+<p><strong>Result 2: Scaling test.</strong> Fixed ρ_ret = 0.5, varying lower-layer speed. τ_dec(meas)/τ_dec(theory) = 0.91–1.28. τ_dec tracks T_fast linearly.</p>
+<p><strong>Status: Conditional theorem + empirical support.</strong> τ_slot = T (exact by gating construction). τ_dec = T/(−ln ρ_ret) (exact on event-index for AR(1); the exponential form in continuous time is its slot-sampled envelope). Verified at the slot-envelope level with order-one numerical accuracy (16-combination ratio 0.83–1.28).</p>
+<h3>3.6 Revised hierarchical encapsulation conjectures (three)</h3>
+<p><strong>Conjecture VII-A (slot encapsulation).</strong> If the lower layer (n) has a stable closure period T^(n) and the upper layer can only receive independent input after lower-layer closure events, then</p>
+<p>$$\tau_{\text{slot}}^{(n+1)} \sim T^{(n)}$$</p>
+<p>This is an event update slot, not an ACF e-fold decay time.</p>
+<p><strong>Conjecture VII-B (decay from slot retention).</strong> The upper layer's ACF decay time is determined by slot retention:</p>
+<p>$$\tau_{\text{dec}}^{(n+1)} = \frac{\tau_{\text{slot}}^{(n+1)}}{-\ln\rho_{\text{ret}}}$$</p>
+<p>Thus τ_dec ~ T^(n) holds only in the order-one retention regime ρ_ret = O(e⁻¹).</p>
+<p><strong>Conjecture VII-C (K inheritance with retention).</strong> Upper-layer Thermo VI parameters require distinguishing slot-level and decay-level:</p>
+<p>Slot-level K (from slot encapsulation):</p>
+<p>$$K_{\text{slot}}^{(n+1)} := \frac{T^{(n+1)}}{n_{\text{ch}}^{(n+1)} \cdot \tau_{\text{slot}}^{(n+1)}} \approx \frac{T^{(n+1)}}{n_{\text{ch}}^{(n+1)} \cdot T^{(n)}}$$</p>
+<p>Decay-level K (Thermo VI's q formula should connect to this):</p>
+<p>$$K_{\text{dec}}^{(n+1)} := \frac{T^{(n+1)}}{n_{\text{ch}}^{(n+1)} \cdot \tau_{\text{dec}}^{(n+1)}} = (-\ln\rho_{\text{ret}}) \cdot K_{\text{slot}}^{(n+1)} \approx \frac{T^{(n+1)} \cdot (-\ln\rho_{\text{ret}})}{n_{\text{ch}}^{(n+1)} \cdot T^{(n)}}$$</p>
+<p>K_dec ≈ K_slot only when ρ_ret ≈ e⁻¹.</p>
+<p><strong>Status: Conditional corollary</strong> (derived from VII-A + VII-B substituted into Thermo VI; experimental verification of K_dec is open).</p>
+<h3>3.7 Coarse-graining as causal-slot encapsulation (revised)</h3>
+<p>Traditional statistical mechanics understands coarse-graining as "averaging over microscopic degrees of freedom" — an information-loss operation.</p>
+<p>In the causal-slot framework, coarse-graining has a more precise interpretation:</p>
+<p><strong>Coarse-graining = the lower layer's closure period generates an upper-layer renewal slot.</strong></p>
+<p>Coarse-graining is not purely information loss; it is also causal encapsulation. Microscopic phase information from the lower layer is compressed, but residual statistics (such as q^(n) − 1) can be inherited as effective initial conditions or noise structure for the upper layer's dynamics.</p>
+<p>The key requirement: encapsulation needs the lower layer to complete a <strong>topological closure event</strong> (Poincaré return), not simply continuous forcing. Continuous forcing only modifies the upper layer's effective drift without changing its update frequency. Closure events generate discrete renewal tokens.</p>
+<hr>
+<h2>§4 4DD Closure and the Emergence of Chemical Timescales</h2>
+<h3>4.1 Significance of 4DD closure</h3>
+<p>In the SAE framework, 4DD marks the closure of the physical layer — stable molecules, chemical bonds, and well-defined reaction rates come into existence. In SAE/DD vocabulary, this corresponds to the emergence of stable chemical-layer causal slots; in standard physics language, it corresponds to the appearance of stable molecules, reaction rates, and sustainable chemical oscillators.</p>
+<p>In causal-slot language: <strong>4DD closure = emergence of chemical-level causal slots.</strong> Before 4DD closure, the chemical layer's T and τ_dec cannot be canonically defined (no stable molecules means no stable chemical reaction periods). After 4DD closure, chemical oscillators have well-defined T and τ_dec, and the Thermo V–VI formula becomes applicable.</p>
+<p>4DD closure is the structural prerequisite for q > 1 becoming possible at the chemical layer. Note: this does not say "q = 1 before 4DD closure" — rather, the chemical layer's q is not canonically definable before 4DD closure. After closure, finite K and q > 1 become possible.</p>
+<h3>4.2 Implications for chemical-type life pathways</h3>
+<p>If life requires sustainable chemical reaction networks, metabolic cycles, and channel multiplication, then 4DD closure is a structural prerequisite for the chemical-type life pathway.</p>
+<p><strong>Conjecture:</strong> 4DD closure is a structural prerequisite for chemical-type life pathways.</p>
+<p>Basis: (1) No 4DD closure → no stable molecules → no sustainable chemical reaction networks. (2) No chemical causal slots → chemical-layer K undefined → q > 1 impossible at the chemical layer. (3) Once q > 1 is realized at the chemical layer, power-law tails may enhance coarse-grained rare-event access (barrier-crossing / rare-event access, not directly modifying quantum tunneling amplitudes; the specific correction magnitude requires independent estimation in particular chemical systems).</p>
+<p><strong>Status: Structural conjecture.</strong> Steps (1)–(2) have direct support from Thermo V–VI. Step (3) is conditional on q-exponential being the correct kernel for chemical fluctuations.</p>
+<h3>4.3 Connection to 2^k barriers</h3>
+<p>The h(Ω) experiments [Paper 50–60 series, 7] found a phase-transition signal at Ω = 4 = 2² (first zero-crossing of h(Ω)). In the causal-slot framework, this can be interpreted as: the Ω = 4 phase transition corresponds to physical-layer closure and the first emergence of chemical-level causal slots.</p>
+<p><strong>Status:</strong> The Ω = 4 zero-crossing of h(Ω) is experimentally confirmed. Interpreting it as "chemical causal-slot emergence" is a structural explanation, not independent verification. Near Ω = 7–8, ZFCρ Paper 42 found a second phase transition in single-layer closure behavior (Ω = 7 closes very slowly, Ω = 8 may not close). Its interpretation in the causal-slot framework is left for future work. The h(Ω) number-theoretic phase-transition signals and the physical DD-closure interpretation operate at two different levels; this paper does not equate them as proven theorems.</p>
+<p>Higher 2^k barriers (16, 32) currently lack direct h(Ω) experimental confirmation and are left for future work.</p>
+<hr>
+<h2>§5 Status Map and Open Problems</h2>
+<h3>5.1 Status map</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>q = 1+1/K</td>
+<td>Exact (Thermo IV)</td>
+</tr>
+<tr>
+<td>E[e^{-cU}] = 1/(1+c)</td>
+<td>Exact (Thermo VI Lemma 2)</td>
+</tr>
+<tr>
+<td>K_dyn = T/(n_ch·τ_dec), q = 1+n_ch·τ_dec/T</td>
+<td>Conditional theorem + empirical support (Thermo V–VI)</td>
+</tr>
+<tr>
+<td>τ_dec > 0 necessary for q > 1 (under Thermo VI applicability)</td>
+<td>Exact (algebraic)</td>
+</tr>
+<tr>
+<td>Finite causal slot = time cost of causal settlement</td>
+<td>Operational interpretation (not theorem)</td>
+</tr>
+<tr>
+<td>Brusselator τ_dec ≈ 0.28, q ≈ 1.09</td>
+<td>Empirical (14 parameter points, Thermo V–VI)</td>
+</tr>
+<tr>
+<td>Smooth ODE does not produce timescale inheritance</td>
+<td><strong>No-go proposition (5 mechanisms verified)</strong></td>
+</tr>
+<tr>
+<td>τ_slot ≠ τ_dec (update slot ≠ decay time)</td>
+<td><strong>Critical distinction</strong></td>
+</tr>
+<tr>
+<td>τ_slot^(n+1) = T^(n) (slot encapsulation)</td>
+<td><strong>Exact by Poincaré gating + empirically verified</strong></td>
+</tr>
+<tr>
+<td>τ_dec = τ_slot/(−ln ρ_ret)</td>
+<td><strong>Exact on event-index for AR(1) + empirically verified</strong></td>
+</tr>
+<tr>
+<td>K_slot^(n+1) ≈ T^(n+1)/(n_ch·T^(n))</td>
+<td><strong>Conditional corollary (from VII-A)</strong></td>
+</tr>
+<tr>
+<td>K_dec^(n+1) = (−ln ρ_ret)·K_slot^(n+1)</td>
+<td><strong>Conditional corollary (VII-A+VII-B into Thermo VI); experimental verification open</strong></td>
+</tr>
+<tr>
+<td>4DD closure = chemical causal-slot emergence</td>
+<td>Conjecture (structural support from Thermo V–VI and h(Ω))</td>
+</tr>
+<tr>
+<td>4DD closure as structural prerequisite for chemical-type life</td>
+<td>Conjecture</td>
+</tr>
+</tbody></table>
+<h3>5.2 Open problems</h3>
+<ol>
+<li><strong>How is renewal gating realized in physical systems?</strong> The Poincaré-gated model is constructed. In real chemical/biological systems, what mechanisms serve as "update only after closure events"? A strong candidate is <strong>allosteric enzymes with high Hill coefficients</strong> (n = 4–8): the Hill function approaches a step function, triggering discrete upper-layer updates only when substrate concentration breaches the threshold. Other candidates: all-or-none neuronal action potentials, cell-cycle checkpoint mechanisms.</li>
+</ol>
+<ol>
+<li><strong>Physical origin of ρ_ret (per-step retention).</strong> ρ_ret in τ_dec = τ_slot/(−ln ρ_ret) is not inherited from the lower layer — it is the upper layer's own memory parameter. A possibility: ρ_ret may relate to ZFCρ's single-step inheritance rate C(1) ≈ 0.96. If ρ_ret ≈ 0.96 is a cross-DD topological constant, then −ln(0.96) ≈ 0.041, giving τ_dec ≈ 24.5·T — the upper layer requires ~25 lower-layer cycles for one e-fold decay. This would lock ρ_ret from a "free fitting parameter" to a "topological constant."</li>
+</ol>
+<ol>
+<li><strong>Experimental verification of K inheritance.</strong> Conjecture VII-C distinguishes slot-level and decay-level quantities: K_slot^(n+1) ≈ T^(n+1)/(n_ch·T^(n)), while Thermo VI's q formula should connect to K_dec^(n+1) = (−ln ρ_ret)·K_slot^(n+1). Requires a genuine two-layer oscillator system simultaneously measuring T^(n), T^(n+1), ρ_ret, and q^(n+1), verifying K_dec rather than K_slot alone.</li>
+</ol>
+<ol>
+<li><strong>Renewal slots in non-oscillatory systems.</strong> For oscillators, the closure event is a Poincaré return. In non-oscillatory systems (DP recursion, Schlögl model), what events serve as renewal triggers?</li>
+</ol>
+<ol>
+<li><strong>Causal-slot measurement in 5–8DD biological systems.</strong> In enzyme kinetics models or real neuronal firing data, verify renewal encapsulation: do neuronal firing events serve as renewal slots for upper layers (e.g., neural circuits)?</li>
+</ol>
+<ol>
+<li><strong>Mori-Zwanzig memory kernel.</strong> Even if smooth ODE coupling does not change the upper layer's τ_dec, the lower layer's period T may enter the upper layer's memory kernel K(t) as peak structure. This provides an alternative pathway by which "lower-layer period influences upper layer," worth independent investigation.</li>
+</ol>
+<hr>
+<h2>Outlook</h2>
+<p>This paper focuses on the operational origin of finite causal slots, the no-go proposition for continuous encapsulation, and experimental verification of renewal encapsulation. The following directions are reserved as future work:</p>
+<p><strong>Physical realization of renewal gating.</strong> The Poincaré-gated model is constructed. A strong candidate for real-world gating is <strong>allosteric enzymes with high Hill coefficients</strong>: when n is large (n = 4–8), the Hill function v = V_max·[S]^n/(K_d+[S]^n) approaches a step function — the upper layer does not respond when substrate concentration is below K_d, triggering discrete updates only at the moment the threshold is breached. Nature uses protein folding (a product of 4DD closure) to create physical discrete renewal gates within smooth chemical concentration fields. Other candidates: all-or-none neuronal action potentials, cell-cycle checkpoints.</p>
+<p><strong>Information-theoretic connection.</strong> The formal correspondence between the resolvent transfer function R(c) = 1/(1+c) and Gaussian channel capacity hints at a deeper unification of thermodynamic dissipation and information-transfer penalties. However, physically identifying the resolvent's c with Shannon's SNR requires independent argument.</p>
+<p><strong>Origin of life.</strong> If 4DD closure indeed causes chemical renewal slots to emerge, then q > 1 may provide polynomial corrections to Kramers-type barrier-crossing rates. Whether such corrections have quantitative significance for understanding prebiotic complexity growth requires independent estimation in specific reaction systems.</p>
+<p><strong>Artificial intelligence systems.</strong> The relationship between Transformer residual connections, multi-head attention, and the causal-slot framework merits systematic study. The truncation effect of digital abstraction barriers (logic gate voltage thresholds forcing continuous thermal fluctuations into discrete 0/1) on inter-layer causal-slot transmission is one pathway toward understanding the essential difference between carbon-based life and silicon-based AI.</p>
+<p><strong>Higher DD layers.</strong> Extending the causal-slot framework from 4DD chemistry to 8DD biology and higher requires layer-by-layer verification, not extrapolative leaps. Renewal encapsulation verification provides a methodological template for such stepwise extension.</p>
+<hr>
+<h2>References</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper IV," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper VI," Zenodo (2026). DOI: 10.5281/zenodo.19658595.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper V," Zenodo (2026). DOI: 10.5281/zenodo.19649780.</p>
+<p>[4] H. Qin, "ZFCρ Thermodynamics Papers I–III," Zenodo (2025–2026). DOIs: 10.5281/zenodo.19310282, .19511064, .19597684.</p>
+<p>[5] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968).</p>
+<p>[6] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[7] H. Qin, "ZFCρ Paper LX: Series Closure," Zenodo (2026). DOI: 10.5281/zenodo.19480563.</p>
+<p>[8] S. H. Strogatz, <em>Nonlinear Dynamics and Chaos</em>, 2nd ed. (Westview Press, 2015).</p>
+<p>[9] J. Guckenheimer and P. Holmes, <em>Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields</em> (Springer, 1983).</p>
+<p>[10] D. R. Cox, <em>Renewal Theory</em> (Methuen, 1962).</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Thermo IV-VI建立了一条定理链：指数因果槽（Lemma 2）通过Laplace变换给出resolvent 1/(1+c)，K个Markov-renewal槽的乘积给出(1+x/K)^{-K}，代入q = 1+1/K得到非Boltzmann kernel。这条链的每一步都要求因果槽有有限正长度τ_dec > 0。τ_dec → 0不是"无屏蔽"，而是屏蔽被无限细分后的连续Boltzmann极限（K → ∞, q → 1）。有限正的τ_dec是有限阶反馈和q > 1的必要条件。
+
+本文推进三个方向。
+
+第一，有限因果槽作为非Boltzmann kernel的操作性起源。τ_dec > 0的必要性不是人为添加的正则化，而是因果结算本身的时间成本。
+
+第二，层级封装的via negativa：五种连续ODE耦合机制（线性、非线性、临界慢化、双振荡器、积分发火）全部未能让上层τ_dec自动继承下层周期T。No-go proposition证明了在平滑连续系统中，上层的Floquet衰减率由自身参数决定，不由下层周期决定。
+
+第三，层级封装的正面构造（via renewal）：关键区分τ_slot（更新槽）≠ τ_dec（衰减时间）。下层闭合周期T^(n)继承为上层的renewal slot，不是衰减时间。Poincaré-gated renewal实验验证了：τ_slot = T^(n)（exact by gating construction），τ_dec = T^(n)/(-ln ρ_ret)（exact on event-index for AR(1)，16个参数组合验证）。层级封装不是连续时间尺度继承，而是闭合事件生成上层discrete renewal slot。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 热力学, 有限因果槽, Renewal封装, 非Boltzmann Kernel, 层级结构</div>
+    </div>
+    <div class="paper-body">
+<h2>§1 问题：为什么τ_dec必须有限正？</h2>
+<h3>1.1 Thermo IV-VI的定理链</h3>
+<p>Thermo IV[1]建立了精确插值族：</p>
+<p>$$e_q(-x) = \left(1+\frac{x}{K}\right)^{-K}, \quad q = 1+\frac{1}{K}$$</p>
+<p>Thermo VI[2]的Lemma 2证明了指数寿命的Laplace变换精确等于resolvent：</p>
+<p>$$U \sim \text{Exp}(1) \Rightarrow \mathbb{E}[e^{-cU}] = \frac{1}{1+c}$$</p>
+<p>Thermo V-VI[3,2]建立了通道归一化卷绕比：</p>
+<p>$$K_{\text{dyn}} = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}}, \quad q = 1 + \frac{n_{\text{ch}} \cdot \tau_{\text{dec}}}{T}$$</p>
+<p><strong>这条链的每一步都要求τ_dec > 0。</strong></p>
+<h3>1.2 τ_dec → 0的正确解读</h3>
+<p>τ_dec → 0不是"无屏蔽"——而是屏蔽被无限细分后的连续Boltzmann极限：</p>
+<p>$$\tau_{\text{dec}} \to 0 \Rightarrow K = \frac{T}{n_{\text{ch}} \cdot \tau_{\text{dec}}} \to \infty \Rightarrow q \to 1 \Rightarrow \left(1+\frac{x}{K}\right)^{-K} \to e^{-x}$$</p>
+<p>物理含义：因果槽越短，单位周期内可容纳的屏蔽层越多，反馈越精细，分布越接近Boltzmann。这不是没有屏蔽，而是无限细分的连续屏蔽。</p>
+<p>有限正的τ_dec才对应有限阶反馈（K有限）和q > 1（非Boltzmann kernel）。</p>
+<p><strong>注意：</strong> τ_dec > 0是q > 1的必要条件，但不是充分条件（反之不然：存在τ_dec > 0但q = 1的系统，如Thermo III的OU null test和Thermo VI的C1-C7条件所示）。弱耦合系统或噪声主导的系统也可以给q ≈ 1（K很大），即使τ_dec > 0。Thermo VI的条件C1-C7（特别是tail-active multiplicative coupling）提供了充分条件。</p>
+<h3>1.3 本文的问题</h3>
+<p>（1）τ_dec > 0的物理意义是什么？为什么因果槽不能无限短？</p>
+<p>（2）在多层系统中，不同层的τ_dec之间有什么关系？</p>
+<h3>1.4 本文的贡献</h3>
+<p>（1）τ_dec > 0的操作性解读：因果结算需要有限时间。</p>
+<p>（2）No-go proposition：连续ODE耦合不产生timescale inheritance（5种机制验证）。</p>
+<p>（3）关键区分：τ_slot（更新槽）≠ τ_dec（衰减时间）。</p>
+<p>（4）Renewal encapsulation：τ_slot = T^(n)（exact by gating construction），τ_dec = T^(n)/(-ln ρ_ret)（exact on event-index for AR(1)，实验验证）。</p>
+<p>（5）层级封装三猜想：slot encapsulation（VII-A）、decay from retention（VII-B）、K inheritance（VII-C）。</p>
+<hr>
+<h2>§2 有限因果槽的操作性起源</h2>
+<h3>2.1 因果结算的时间成本</h3>
+<p>Thermo VI的Lemma 2给出单个因果槽的传递函数：</p>
+<p>$$R(c) = \frac{1}{1+c}$$</p>
+<p>这个函数描述的物理过程是：接收输入信号S_0，经强度c的resolvent屏蔽后，输出残留为S_0/(1+c)，被吸收/处理部分为S_0·c/(1+c)。</p>
+<p><strong>"接收-处理-输出"不能在零时间内完成。</strong> 这是因果性的基本约束：效果不能先于原因。一个屏蔽层需要：</p>
+<p>（a）接收来自上游的涨落信号（需要传播时间）</p>
+<p>（b）通过f/r反馈处理信号（需要反应时间——化学层就是反应速率的倒数）</p>
+<p>（c）将余项传递给下游（需要传播时间）</p>
+<p>这三步的总时间就是τ_dec。它不是人为添加的截断参数，而是系统完成一次因果结算所需的最短时间。</p>
+<h3>2.2 与传统"紫外截断"的关系</h3>
+<p>传统物理学中的"紫外截断"是多个不同概念：</p>
+<table><thead><tr>
+<th>概念</th>
+<th>来源</th>
+<th>性质</th>
+</tr></thead><tbody>
+<tr>
+<td>Planck的能量量子化ε=hν</td>
+<td>1900</td>
+<td>离散化，不是截断</td>
+</tr>
+<tr>
+<td>QFT的正则化方案</td>
+<td>重整化理论</td>
+<td>数学工具，最终取极限丢弃</td>
+</tr>
+<tr>
+<td>最小长度假设</td>
+<td>弦论/LQG</td>
+<td>物理假设，有争议</td>
+</tr>
+<tr>
+<td><strong>有限因果槽τ_dec > 0</strong></td>
+<td><strong>Thermo VI</strong></td>
+<td><strong>因果结算的时间成本</strong></td>
+</tr>
+</tbody></table>
+<p>τ_dec > 0提供了一个对应物（counterpart）给正则化中的截断参数，但不等同于Planck尺度的最小长度假设。更精确地说：τ_dec > 0是"有限decorrelation time"或"finite dissipation timescale"在非平衡统计力学中的自然表达。</p>
+<p>本文的claim不是"替代所有UV cutoff概念"，而是："在Thermo IV-VI框架中，非Boltzmann kernel的操作性起源是有限因果槽时长。"有限正的τ_dec是该层coarse-grained因果动力学的操作性UV cutoff，而不是所有物理尺度上的绝对最小时间。</p>
+<h3>2.3 Brusselator的τ_dec：一个已验证的例子</h3>
+<p>Brusselator（4DD化学振荡器）[4]的τ_dec已在Thermo V-VI中被精确测量和验证：</p>
+<p>$$\tau_{\text{dec}} \approx 0.28 \text{ (无量纲)}, \quad T \approx 5.76, \quad K_{\text{dyn}} \approx 10.3, \quad q \approx 1.09$$</p>
+<p>这里的τ_dec不是人为选择的——它是f通道ACF的pure-decay component的时间常数，由Brusselator的化学动力学决定（分子碰撞和扩散的特征时间）。</p>
+<p>如果τ_dec = 0（假设化学反应可以在零时间内完成），则在本文的causal-slot机制内K → ∞，q → 1，不再产生finite-K重尾——但这不排除系统仍可通过其他机制表现出非平衡特征。</p>
+<p><strong>有限的化学反应时间是Brusselator具有q > 1的物理前提。</strong></p>
+<hr>
+<h2>§3 层级封装：从Via Negativa到Renewal Encapsulation</h2>
+<h3>3.1 动机：为什么不同系统有不同的τ_dec？</h3>
+<p>Brusselator的τ_dec ~ 0.28（对应真实BZ反应的~3-14秒）。但其他物理层的"因果槽"有完全不同的时间尺度。</p>
+<table><thead><tr>
+<th>系统</th>
+<th>τ_dec量级</th>
+<th>T量级</th>
+<th>K</th>
+<th>有Thermo V/VI验证？</th>
+</tr></thead><tbody>
+<tr>
+<td>Brusselator（化学）</td>
+<td>~秒</td>
+<td>~分钟</td>
+<td>~10</td>
+<td>✅ 14个b值</td>
+</tr>
+<tr>
+<td>Selkov（糖酵解）</td>
+<td>~秒</td>
+<td>~分钟</td>
+<td>~10</td>
+<td>✅ 边界正例</td>
+</tr>
+<tr>
+<td>神经元振荡器</td>
+<td>~ms</td>
+<td>~10-100ms</td>
+<td>?</td>
+<td>待测（FHN合成振荡器初步支持，非真实神经元模型）</td>
+</tr>
+</tbody></table>
+<p><strong>问题：</strong> 化学层的τ_dec ~ 秒，而化学反应的基本步骤（分子碰撞）时间 ~ 10⁻¹² 秒。τ_dec比单次分子碰撞慢10¹²倍。这10¹²倍的差距从哪来？不相邻DD层之间的τ_dec比值可以远大于单次封装的O(1)因子，因为多次封装是乘性叠加。化学层τ_dec（~秒）与分子碰撞时间（~10⁻¹²秒）之间约有4-5个中间封装层（分子振动、键合、扩散等），每层承担数量级O(10²-10³)的封装因子。</p>
+<h3>3.2 No-go proposition：平滑连续耦合不产生时间尺度继承</h3>
+<p>本节的结构是via negativa + via renewal。§3.2展示5种平滑连续耦合机制全部失败产生timescale inheritance，从而定位封装的正确regime不在smooth continuous coupling里。§3.3基于这个no-go，识别τ_slot ≠ τ_dec的关键区分，并在§3.4-3.5 positively构造renewal encapsulation。五次失败不是浪费——它们sharpened了问题，让renewal model作为正确路径显露出来。</p>
+<p><strong>Proposition N（smooth slaving no-go）.</strong> 考虑两层<strong>平滑连续</strong>系统 ẏ = F(y)，ż = H(z,y)，其中H关于z是C¹的。下层y(t)有稳定周期T_y。上层z在周期平均态z*附近线性化后，Floquet衰减率为</p>
+<p>$$\lambda_z = \frac{1}{T_y} \int_0^{T_y} \partial_z H(z_*, y(t)) dt$$</p>
+<p>因此τ_dec^(z) = -1/λ_z主要由∂_z H的周期平均决定，不由T_y本身决定。（标量z情形精确成立；多维上层变量的Floquet指数由monodromy matrix给出，结论定性不变。）</p>
+<p><strong>这是以下五种平滑连续ODE机制全部失败的共同数学原因（均属smooth continuous coupling——smooth的封装失败推动了向discrete renewal封装的转向）：</strong></p>
+<table><thead><tr>
+<th>机制</th>
+<th>τ_dec(z)由什么决定</th>
+<th>封装？</th>
+</tr></thead><tbody>
+<tr>
+<td>线性耦合 dz = Gx²y - γz</td>
+<td>1/γ（自身参数）</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>非线性 dz = G(x²y - z²)</td>
+<td>1/(2G·z_eq)（自身参数）</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>临界慢化 μz - z³</td>
+<td>噪声timescale（基线无耦合也相同）</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>双Brusselator</td>
+<td>自身固有周期</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>积分发火</td>
+<td>threshold/⟨x²y⟩（手调参数）</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<p><strong>结论：</strong> 在平滑连续ODE中，下层周期只是周期性forcing。它不会自动变成上层的内禀衰减极点。</p>
+<p><strong>状态：No-go proposition。</strong> 这是via negativa的核心产出——排除了"简单耦合即封装"的全部naive versions。</p>
+<h3>3.3 关键区分：更新槽 ≠ 衰减时间</h3>
+<p>五次失败暴露了旧猜想τ_dec^(n+1) ~ T^(n)的根本问题：<strong>它混淆了两个不同的量。</strong></p>
+<table><thead><tr>
+<th>量</th>
+<th>定义</th>
+<th>由什么决定</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>τ_slot</strong></td>
+<td>上层接收新独立因果输入的最小间隔</td>
+<td>下层闭合周期T^(n)</td>
+</tr>
+<tr>
+<td><strong>τ_dec</strong></td>
+<td>上层ACF的e-fold衰减时间</td>
+<td>τ_slot和每步retention ρ_ret的函数</td>
+</tr>
+</tbody></table>
+<p>下层T^(n)继承给上层的通常不是τ_dec（内禀衰减时间），而是τ_slot（更新槽/信息槽/事件槽）。</p>
+<p>两者的关系：</p>
+<p>$$\tau_{\text{dec}}^{(n+1)} = \frac{\tau_{\text{slot}}^{(n+1)}}{-\ln\rho_{\text{ret}}}$$</p>
+<p>其中ρ_ret是上层每个更新槽的retention（0 < ρ < 1）。</p>
+<p>$$\tau_{\text{dec}} \approx \tau_{\text{slot}} \approx T^{(n)} \quad \text{仅当} \quad \rho \approx e^{-1} \approx 0.37$$</p>
+<p>旧猜想τ_dec ~ T^(n)是这个更一般关系的特殊情形。</p>
+<h3>3.4 Renewal encapsulation：正确的封装机制</h3>
+<p><strong>核心洞察：</strong> 封装不是连续时间尺度继承，而是<strong>闭合事件生成上层renewal slot。</strong></p>
+<p>下层完成一个完整的因果闭合周期（穿过Poincaré截面）→ 生成一个离散renewal token → 上层接收这个token并更新自身状态。</p>
+<p><strong>模型：Poincaré-gated upper update.</strong></p>
+<p>下层：Brusselator振荡器，周期T_fast。定义闭合事件：x(t)穿过x* = 1.0向上。每次闭合生成周期积分A_m = ∫_{t_m}^{t_{m+1}} x²y dt。</p>
+<p>上层：离散AR(1)更新，只在闭合事件时触发：</p>
+<p>$$z_{m+1} = \rho_{\text{ret}} \cdot z_m + h \cdot A_m + \xi_m$$</p>
+<p>两个事件之间，z保持不变。</p>
+<p><strong>理论预测：</strong></p>
+<p>τ_slot = T_fast（exact，by construction of Poincaré gating）</p>
+<p>ACF在离散index上：Corr(z_m, z_{m+k}) = ρ_ret^k。映射回连续时间：</p>
+<p>$$C_z(t) \approx \rho_{\text{ret}}^{t/T_{\text{fast}}} = \exp\left(-\frac{t}{T_{\text{fast}} / (-\ln\rho_{\text{ret}})}\right)$$</p>
+<p>因此：</p>
+<p>$$\tau_{\text{dec}}^{(z)} = \frac{T_{\text{fast}}}{-\ln\rho_{\text{ret}}}$$</p>
+<h3>3.5 实验验证</h3>
+<p><strong>实验：</strong> 下层Brusselator + Poincaré-gated上层AR(1)。扫描speed factor（0.25-4.0）和retention ρ_ret（0.3-0.9），共16个参数组合。</p>
+<p><strong>结果一：τ_dec = T_fast/(-ln ρ_ret)验证通过。</strong></p>
+<p>完整16参数组合的τ_dec(meas)/τ_dec(theory)比值：</p>
+<table><thead><tr>
+<th>speed</th>
+<th>ρ_ret=0.3</th>
+<th>ρ_ret=0.5</th>
+<th>ρ_ret=0.7</th>
+<th>ρ_ret=0.9</th>
+</tr></thead><tbody>
+<tr>
+<td>0.5</td>
+<td>1.15</td>
+<td>1.13</td>
+<td>1.19</td>
+<td>1.47</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.42</td>
+<td>1.31</td>
+<td>1.27</td>
+<td>1.28</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>0.99</td>
+<td>0.93</td>
+<td>0.87</td>
+<td>0.98</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>1.01</td>
+<td>0.97</td>
+<td>0.96</td>
+<td>1.10</td>
+</tr>
+</tbody></table>
+<p>speed=2.0和4.0（上层充分慢于下层）的ratio稳定在0.83-1.10范围。speed=0.5和1.0偏差较大（ratio可达1.47），因为此时T_fast与AR(1)的离散步长不够分离。</p>
+<p><strong>注：</strong> A_m = ∫x²y dt是周期积分，未做归一化（A_m/T_slot）。A_m的scale在不同speed下不同（slow speed积分时间更长），但这只影响z的variance，不影响ACF的衰减率（τ_dec只取决于自相关衰减，不取决于方差大小）。ρ_ret=0.9时的最大偏差（ratio=1.47 at speed=0.5）可能部分来自A_m的scale effect叠加有限统计。</p>
+<p><strong>结果二：Scaling test。</strong> 固定ρ=0.5，改变下层速度。τ_dec(meas)/τ_dec(theory) = 0.91-1.28。τ_dec随T_fast线性跟踪。</p>
+<p><strong>状态：Conditional theorem + empirical support。</strong> τ_slot = T（exact by gating construction）。τ_dec = T/(-ln ρ_ret)（exact on event-index for AR(1)；连续时间ACF的指数形式是其slot-sampled envelope）。在slot-envelope层面得到数量级和线性缩放验证（16参数组合ratio 0.83-1.28）。</p>
+<h3>3.6 新版层级封装猜想（三条）</h3>
+<p><strong>Conjecture VII-A（slot encapsulation）.</strong> 若下层(n)具有稳定闭合周期T^(n)，并且上层只能在下层闭合事件后接收独立输入，则</p>
+<p>$$\tau_{\text{slot}}^{(n+1)} \sim T^{(n)}$$</p>
+<p>这是事件更新槽，不是ACF e-fold衰减时间。</p>
+<p><strong>Conjecture VII-B（decay from slot retention）.</strong> 上层的ACF衰减时间由slot retention决定：</p>
+<p>$$\tau_{\text{dec}}^{(n+1)} = \frac{\tau_{\text{slot}}^{(n+1)}}{-\ln\rho_{\text{ret}}}$$</p>
+<p>因此τ_dec ~ T^(n)仅在ρ_ret = O(e⁻¹)的order-one retention regime中成立。</p>
+<p><strong>Conjecture VII-C（K inheritance with retention）.</strong> 上层的Thermo VI参数需要区分slot-level和decay-level：</p>
+<p>Slot-level K（由slot encapsulation给出）：</p>
+<p>$$K_{\text{slot}}^{(n+1)} := \frac{T^{(n+1)}}{n_{\text{ch}}^{(n+1)} \cdot \tau_{\text{slot}}^{(n+1)}} \approx \frac{T^{(n+1)}}{n_{\text{ch}}^{(n+1)} \cdot T^{(n)}}$$</p>
+<p>Decay-level K（Thermo VI的q公式应接此量）：</p>
+<p>$$K_{\text{dec}}^{(n+1)} := \frac{T^{(n+1)}}{n_{\text{ch}}^{(n+1)} \cdot \tau_{\text{dec}}^{(n+1)}} = (-\ln\rho_{\text{ret}}) \cdot K_{\text{slot}}^{(n+1)} \approx \frac{T^{(n+1)} \cdot (-\ln\rho_{\text{ret}})}{n_{\text{ch}}^{(n+1)} \cdot T^{(n)}}$$</p>
+<p>仅当ρ_ret ≈ e⁻¹时，K_dec ≈ K_slot。</p>
+<p><strong>状态：Conditional corollary</strong>（从VII-A + VII-B代入Thermo VI公式推出；K_dec的实验验证是open）。</p>
+<h3>3.7 粗粒化的因果槽解读（修正版）</h3>
+<p>传统统计力学的粗粒化通常被理解为"对微观自由度求平均"——一种信息损失操作。</p>
+<p>在因果槽框架中，粗粒化有了更精确的解读：</p>
+<p><strong>粗粒化 = 下层的闭合周期生成上层的一个renewal slot。</strong></p>
+<p>粗粒化不仅是信息丢失；它也是因果封装。下层的微观相位信息被压缩，但下层的residual statistics（如q^(n)-1）可以作为上层动力学的有效初始条件或噪声结构被继承。</p>
+<p>关键：封装需要下层完成<strong>拓扑闭合事件</strong>（Poincaré return），不是简单的连续forcing。连续forcing只改变上层的effective drift，不改变上层的更新频率。闭合事件才生成discrete renewal token。</p>
+<hr>
+<h2>§4 4DD闭合与化学时间尺度的涌现</h2>
+<h3>4.1 4DD闭合的意义</h3>
+<p>在SAE框架中，4DD标记物理层的闭合——稳定分子、化学键、well-defined的反应速率开始存在。</p>
+<p>在因果槽语言中：<strong>4DD闭合 = 化学级因果槽涌现。</strong> 在4DD闭合之前，化学层的T和τ_dec不能被规范定义（没有稳定分子就没有稳定的化学反应周期）。4DD闭合后，化学振荡器有明确的T和τ_dec，Thermo V-VI的公式变得适用。</p>
+<p><strong>4DD闭合是q > 1在化学层成为可能的结构前提。</strong> 注意：这不是说"4DD闭合前q = 1"——而是化学层的q在4DD闭合前不可规范定义。4DD闭合后，有限K和q > 1才成为可能。</p>
+<h3>4.2 对化学型生命路径的含义</h3>
+<p>如果生命需要可持续的化学反应网络、代谢循环和通道增殖，则4DD闭合是化学型生命路径的结构前提。没有稳定化学因果槽，就没有可持续的反应网络。</p>
+<p><strong>猜想：</strong> 4DD闭合是化学型生命路径的结构性前提条件。</p>
+<p>依据：</p>
+<p>（1）没有4DD闭合 → 没有稳定分子 → 没有可持续的化学反应网络</p>
+<p>（2）没有化学因果槽 → 化学层K无定义 → q > 1不可能在化学层实现</p>
+<p>（3）q > 1在化学层实现后，幂律尾可能增强coarse-grained rare-event access（barrier-crossing / rare-event access，不是直接修改量子隧穿振幅；具体的correction量级需要在特定化学系统上独立估计）</p>
+<p><strong>状态：结构猜想。</strong> 步骤(1)-(2)有Thermo V-VI的直接支撑。步骤(3)是conditional——依赖q-exponential确实是描述化学涨落的正确kernel。</p>
+<h3>4.3 与2^k壁的连接</h3>
+<p>h(Ω)实验[Paper 50-60系列]在Ω = 4 = 2²处发现了相变信号（h(Ω)首次穿零）。在因果槽框架中，这可以解读为：</p>
+<p><strong>Ω = 4处的相变 = 物理层闭合 = 化学级因果槽首次涌现。</strong></p>
+<p><strong>状态：</strong> h(Ω)的Ω=4穿零是实验确认的。将其解读为"化学因果槽涌现"是结构解释，不是独立验证。在Ω=7-8附近，ZFCρ Paper 42发现单层闭合行为的第二相变（Ω=7闭合极慢，Ω=8可能不闭合），这在因果槽框架中的解释留待future work。h(Ω)的数论相变信号和DD层闭合的物理解释是两个不同层级的观察，本文不把二者等同为已证定理。</p>
+<p>更高的2^k壁（16, 32）目前没有h(Ω)实验的直接确认，留待未来工作。</p>
+<hr>
+<h2>§5 Status Map与开放问题</h2>
+<h3>5.1 Status map</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>q = 1+1/K</td>
+<td>Exact（Thermo IV）</td>
+</tr>
+<tr>
+<td>E[e^{-cU}] = 1/(1+c)</td>
+<td>Exact（Thermo VI Lemma 2）</td>
+</tr>
+<tr>
+<td>K_dyn = T/(n_ch·τ_dec)，q = 1+n_ch·τ_dec/T</td>
+<td>Conditional theorem + empirical support（Thermo V-VI）</td>
+</tr>
+<tr>
+<td>τ_dec > 0是q > 1的必要条件（在Thermo VI公式适用条件下）</td>
+<td>Exact（代数推论）</td>
+</tr>
+<tr>
+<td>有限因果槽 = 因果结算的时间成本</td>
+<td>操作性解读（非定理）</td>
+</tr>
+<tr>
+<td>Brusselator τ_dec ≈ 0.28, q ≈ 1.09</td>
+<td>Empirical（14参数点，Thermo V-VI）</td>
+</tr>
+<tr>
+<td>连续ODE不产生timescale inheritance</td>
+<td><strong>No-go proposition（5种机制验证）</strong></td>
+</tr>
+<tr>
+<td>τ_slot ≠ τ_dec（更新槽 ≠ 衰减时间）</td>
+<td><strong>关键区分</strong></td>
+</tr>
+<tr>
+<td>τ_slot^(n+1) = T^(n)（slot encapsulation）</td>
+<td><strong>Exact by Poincaré gating + empirically verified</strong></td>
+</tr>
+<tr>
+<td>τ_dec = τ_slot/(-ln ρ_ret)</td>
+<td><strong>Exact on event-index for AR(1) + empirically verified</strong></td>
+</tr>
+<tr>
+<td>K_slot^(n+1) ≈ T^(n+1)/(n_ch·T^(n))</td>
+<td><strong>Conditional corollary（VII-A代入）</strong></td>
+</tr>
+<tr>
+<td>K_dec^(n+1) = (-ln ρ_ret)·K_slot^(n+1)</td>
+<td><strong>Conditional corollary（VII-A+VII-B代入Thermo VI）；实验验证open</strong></td>
+</tr>
+<tr>
+<td>4DD闭合 = 化学因果槽涌现</td>
+<td>猜想（有Thermo V-VI和h(Ω)结构支持）</td>
+</tr>
+<tr>
+<td>4DD闭合是化学型生命路径的结构前提</td>
+<td>猜想</td>
+</tr>
+</tbody></table>
+<h3>5.2 开放问题</h3>
+<ol>
+<li><strong>Renewal gating在真实物理系统中如何实现？</strong> Poincaré-gated model是构造的——真实化学/生物系统中，什么机制起到"只在闭合事件后更新上层"的作用？候选：阈值触发的酶活化、神经元的全或无动作电位、细胞周期的checkpoint机制。</li>
+</ol>
+<ol>
+<li><strong>ρ_ret（每步retention）的物理来源。</strong> τ_dec = τ_slot/(-ln ρ_ret)中的ρ_ret不是从下层继承的——它是上层自身的记忆参数。ρ_ret的物理来源是什么？一个可能性：ρ_ret可能和ZFCρ中的单步继承率C(1)≈0.96有关——如果ρ_ret≈0.96是跨DD层的拓扑常数，则-ln(0.96)≈0.041，τ_dec≈24.5·T——上层需要约25个下层周期完成一个e-fold衰减。这会把ρ_ret从"自由拟合参数"锁死为"拓扑常数"。</li>
+</ol>
+<ol>
+<li><strong>K继承的实验验证。</strong> Conjecture VII-C区分slot-level与decay-level两个量：K_slot^(n+1) ≈ T^(n+1)/(n_ch·T^(n))，而Thermo VI的q公式应接K_dec^(n+1) = (-ln ρ_ret)·K_slot^(n+1)。需要一个真正的两层振荡系统同时测量T^(n)、T^(n+1)、ρ_ret与q^(n+1)，检验K_dec而非只检验K_slot。</li>
+</ol>
+<ol>
+<li><strong>非振荡系统的renewal slot。</strong> 振荡器的闭合事件是Poincaré return。非振荡系统（如DP递推、Schlögl模型）中什么事件起到同样的renewal作用？</li>
+</ol>
+<ol>
+<li><strong>5-8DD生物系统的因果槽测量。</strong> 在酶动力学模型或真实神经元放电数据中，验证renewal encapsulation：神经元的firing event是否作为上层（如neural circuit）的renewal slot？</li>
+</ol>
+<ol>
+<li><strong>Mori-Zwanzig memory kernel。</strong> 即使连续ODE不改变上层τ_dec，下层周期T可能进入上层的memory kernel K(t)作为峰结构。这提供了另一种"下层周期影响上层"的途径，值得独立检验。</li>
+</ol>
+<hr>
+<h2>Outlook</h2>
+<p>本文聚焦于有限因果槽的操作性起源、连续封装的no-go proposition和renewal encapsulation的实验验证。以下方向作为future work保留：</p>
+<p><strong>Renewal gating的物理实现：</strong> Poincaré-gated model是构造的。真实系统中什么机制起到event gating的作用？一个有力的候选是<strong>高Hill系数的别构酶</strong>：当Hill系数n很大（n=4-8）时，Hill函数v = V_max·[S]^n/(K_d+[S]^n)接近阶跃函数——底物浓度低于K_d时上层完全不响应，只在突破阈值的瞬间触发离散更新。大自然利用蛋白质折叠（4DD闭合的产物）在平滑的化学浓度场中造出了物理的discrete renewal gate。其他候选：神经元的全或无动作电位、细胞周期的checkpoint机制。</p>
+<p><strong>信息论连接：</strong> resolvent传递函数R(c) = 1/(1+c)和Gaussian channel的形式对应暗示热力学耗散和信息传递惩罚之间可能有更深的统一。但resolvent的c和Shannon SNR的物理identification需要独立论证。</p>
+<p><strong>生命起源：</strong> 如果4DD闭合确实使化学renewal slots涌现，则q > 1增强的rare-event access（barrier-crossing，非直接quantum tunneling）可能对理解前生物化学的复杂度增长有定量意义。</p>
+<p><strong>人工智能系统：</strong> Transformer架构中的残差连接、多头注意力和因果槽框架的关系值得系统研究。数字抽象边界对因果槽层间传递的截断效应是理解碳基与硅基差异的一条路径。</p>
+<p><strong>更高DD层：</strong> 将因果槽框架从4DD化学层扩展到8DD生物层和更高层级，需要逐层验证，不能跳步外推。Renewal encapsulation的验证为这种逐层扩展提供了方法论模板。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper IV," Zenodo (2026). DOI: 10.5281/zenodo.19605664.</p>
+<p>[2] H. Qin, "ZFCρ Thermodynamics Paper VI," Zenodo (2026). DOI: 10.5281/zenodo.19658595.</p>
+<p>[3] H. Qin, "ZFCρ Thermodynamics Paper V," Zenodo (2026). DOI: 10.5281/zenodo.19649780.</p>
+<p>[4] H. Qin, "ZFCρ Thermodynamics Papers I–III," Zenodo (2025–2026). DOIs: 10.5281/zenodo.19310282, .19511064, .19597684.</p>
+<p>[5] I. Prigogine and R. Lefever, "Symmetry Breaking Instabilities in Dissipative Systems. II," <em>Journal of Chemical Physics</em> <strong>48</strong>, 1695–1700 (1968).</p>
+<p>[6] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[7] H. Qin, "ZFCρ Paper LX: Series Closure," Zenodo (2026). DOI: 10.5281/zenodo.19480563.</p>
+<p>[8] S. H. Strogatz, <em>Nonlinear Dynamics and Chaos</em>, 2nd ed. (Westview Press, 2015).</p>
+<p>[9] J. Guckenheimer and P. Holmes, <em>Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields</em> (Springer, 1983).</p>
+<p>[10] D. R. Cox, <em>Renewal Theory</em> (Methuen, 1962).</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
