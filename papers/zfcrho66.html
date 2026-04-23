@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXVI: Gradual Chiseling and the Spectral Bridge — Two-Regime Structure of the Centered Residual ACF — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho66.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho66.html">
+  <meta name="citation_title" content="ZFCρ Paper LXVI: Gradual Chiseling and the Spectral Bridge — Two-Regime Structure of the Centered Residual ACF">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19701480">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXVI</div>
+    <h1>ZFCρ Paper LXVI: Gradual Chiseling and the Spectral Bridge — Two-Regime Structure of the Centered Residual ACF<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXVI篇：渐进凿除与谱桥补偿——Centered Residual的两阶段结构</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19701480" target="_blank" rel="noopener">10.5281/zenodo.19701480</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19701480" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Paper 65 located the remaining core of Conjecture 59.1 as the spectral bound Ψ_η = O(j) for the adjacent-centered IC residual. This paper, through systematic hypothesis elimination (13 kills) and large-scale sub-block variance measurement, discovers that Ψ_η(W) exhibits a two-regime spectral structure.</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, centered residual ACF, spectral bridge, gradual chiseling, two-regime structure, H prime, Conjecture 59.1</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. The Sole Open Core After Paper 65</h2>
+<p>Paper 65 established the conditional architecture for 59.1: B_j = B_count + B_resid + B_gauge, with count term controlled by Branch-Orthogonality (Paper 64), gauge defect controlled by j-smooth adjacent reference (Paper 65), and cross-term small. The sole remaining open core is:</p>
+<p>Ψ_η(m_j) = O(j)</p>
+<p>This paper investigates the scale structure of Ψ_η(W): why it does not grow as a simple power law, and what mechanism returns full-block Ψ to O(j).</p>
+<h2>§2. Via Negativa: The 13 Kills</h2>
+<p>Organized by layer, not chronology. Each kill eliminates a candidate shortcut mechanism.</p>
+<p><strong>Layer 1 — Coordinate and Low-Rank Illusions (Papers 64–65):</strong> Kill 1: β-pinning is restating (Null 1 permutes h(p)/p within each gap class, preserving Γ(g) and B_j identically). Kill 2: rank-one is not IC-specific (Null 1 gives higher s₁/s₂; rank-one energy comes from count marginal baseline, not IC recursion).</p>
+<p><strong>Layer 2 — Mean-Mode Artifacts (Paper 65):</strong> Kill 3: cross-branch anti-correlation is algebraic artifact of μ_A·μ_M < 0. Kill 4: global reference centering fails (μ_A ∼ C_A/2^j, scale mismatch). Kill 5: Haar-Carleson multiscale fails (geometric energy decay).</p>
+<p><strong>Layer 3 — State-Space and Pointwise ACF Shortcuts (Paper 66):</strong> Kill 6: gap-state transfer operator (τ ≈ 1, instant mixing, R² = 0.26). Kill 7: increment curvature/Abel (45% monotone violations, 50/50 convexity).</p>
+<p><strong>Layer 4 — Screening Models (Paper 66):</strong> Kill 8: naive Thermo layer hierarchy (ρ_ret × τ_0 = 2.77 > 1, diverges). Kills 9+10: exponential cutoff and pointwise tail compensation (initially interpreted in working notes as "negative ACF tail → Ψ_full = O(1)"; revealed as noise artifact from interpolated ACF; partially reversed at integrated level in §6).</p>
+<p><strong>Layer 5 — Ancestry Shortcuts (Paper 66):</strong> Kill 11: chain boundary = screening reset (mean chain = 1.3, too fragmented). Kill 12: GCD factor-sharing (constant across all lags). Kill 13: per-boundary constant attenuation (ACF × boundaries grows as lag^{0.7}).</p>
+<p>After all five layers: simple positive exponential cutoff, pointwise negative-tail interpolation, and clean Thermo hierarchy are excluded; what remains is signed shell-level spectral bridge. Low-dimensional ancestry shortcuts are excluded; influence-cone overlap and renewal remain Paper 67 candidates. The surviving bare mechanism is distributed cumulative micro-erosion from min operations combined with block-scale spectral bridge compensation.</p>
+<h2>§3. Doukhan Confirmation: ACF Suffices for the Second-Order Target</h2>
+<p>θ_k/γ_k ≈ 2.5 universally across j = 25–32 and lag 1–2000. R²_nonlinear/R²_linear ≈ 0.94–1.01 at all lags. Under the conditional-mean and quantile-bin diagnostics tested, nonlinear predictors do not outperform linear predictors. For the second-order target Ψ, ACF is the sufficient empirical object.</p>
+<h2>§4. Regime 1: Gradual Chiseling and Power-Law Growth</h2>
+<p><strong>Theorem 66.A (Local Micro-Erosion Law).</strong> If per-step erosion satisfies ε_k ∼ C/k + o(1/k), C > 0, then γ(k) = ∏(1 − ε_s) ∼ k^{−C}. Proof: ln γ(k) ≈ −C·H_k ≈ −C·ln k.</p>
+<p>Empirically C ≈ 0.3. The mechanism: each logarithmic shell contributes constant erosion budget. Individual lag steps contribute ≈ C/k.</p>
+<p>However, 66.A alone cannot yield 59.1. Power-law extrapolation to full block gives Ψ ∼ m_j^{1−C}/((1−C)(2−C)) ∼ (2^j/j)^{0.7}/1.19, which grows exponentially in j.</p>
+<p><strong>Power-law prediction vs reality:</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>α_fit</th>
+<th>Predicted Ψ/j</th>
+<th>Actual Ψ_full/j</th>
+<th>Overshoot</th>
+</tr></thead><tbody>
+<tr>
+<td>27</td>
+<td>0.47</td>
+<td>137</td>
+<td>0.015</td>
+<td>9000×</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.40</td>
+<td>593</td>
+<td>0.76</td>
+<td>780×</td>
+</tr>
+<tr>
+<td>31</td>
+<td>0.34</td>
+<td>2674</td>
+<td>0.91</td>
+<td>2900×</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.31</td>
+<td>5551</td>
+<td>15.66</td>
+<td>350×</td>
+</tr>
+</tbody></table>
+<p>Note: Actual Ψ_full/j values fluctuate wildly (0.015 to 15.66) because each j has only one block; the full-block identity Ψ = S²/(m·σ²) follows a χ²(1)-type distribution. The pattern shows no systematic super-linear growth. Sub-block ensemble statistics (§5) provide far more reliable estimates.</p>
+<h2>§5. Regime 2: Sub-Block Ψ Peak-Then-Crash</h2>
+<p>Sub-block Ψ(W) = Var(sub-block sums)/(W·σ²), computed with K = m/W sub-blocks. Confidence zones: K ≥ 30 (high), 10 ≤ K < 30 (medium), K < 10 (exploratory).</p>
+<p><strong>Universal pattern across j = 22–32:</strong> Ψ(W) grows as power law for W < 0.5% m_j, peaks, then crashes 5–40×.</p>
+<table><thead><tr>
+<th>j</th>
+<th>Peak W</th>
+<th>Peak Ψ/j</th>
+<th>Crash W</th>
+<th>Crash Ψ/j</th>
+</tr></thead><tbody>
+<tr>
+<td>25</td>
+<td>10K</td>
+<td>2.53</td>
+<td>100K</td>
+<td>1.20</td>
+</tr>
+<tr>
+<td>29</td>
+<td>100K</td>
+<td>13.36</td>
+<td>5M</td>
+<td>1.02</td>
+</tr>
+<tr>
+<td>31</td>
+<td>1M</td>
+<td>35.08</td>
+<td>10M</td>
+<td>2.73</td>
+</tr>
+<tr>
+<td>32</td>
+<td>1M</td>
+<td>59.28</td>
+<td>10M</td>
+<td>10.50</td>
+</tr>
+</tbody></table>
+<h2>§6. Integrated Tail Compensation</h2>
+<p>Kill 10 (pointwise negative tail) partially reversed: individual ACF values at large lag are at noise floor (|γ| < 0.003), but their integrated shell contribution produces genuine negative mass in the sub-block variance. Pointwise negative tail was not measurable; shell-integrated negative mass is real.</p>
+<h2>§7. Spectral Bridge Identity and Circularity Warning</h2>
+<p>The finite-block identity Ψ_full = S²/(m·σ²) diagnoses the spectral bridge but cannot prove 59.1, because small S = Ση is the target itself. Full-block identity serves as consistency check; sub-block Ψ is the independent empirical capstone.</p>
+<p>Crucially, the sub-block Ψ measurement (§5) does not depend on the size of the full-block sum Ση. It is computed directly from the ensemble of K distinct sub-block sums, independent of whether Ση is small. This is Paper 66's primary empirical claim. The full-block identity serves only as a consistency cross-check and does not participate in the evidence chain.</p>
+<h2>§8. Conditional Theorems</h2>
+<p><strong>Theorem 66.B (Spectral Bridge Criterion).</strong> Let M_+(j) = Σ_r S_j^+(r) be the total positive shell mass and M_-(j) = −Σ_r S_j^-(r) the total negative shell mass. Regime 1 (§4) implies M_+(j) grows as a power of m_j. If the negative shell mass nearly matches the positive:</p>
+<p>M_-(j) = M_+(j) − g(j), where g(j) = O(j),</p>
+<p>then Ψ_η(m_j) = M_+(j) − M_-(j) + O(1) = g(j) + O(1) = O(j), and Paper 65's conditional theorem yields the L² analogue of 59.1. The "spectral bridge" is this near-exact cancellation between positive and negative shell masses, with only an O(j) deficit.</p>
+<p><strong>Observation 66.C.</strong> The sub-block Ψ peak-then-crash is universal across j = 22–32, constituting direct empirical evidence that M_-(j) ≈ M_+(j) with small deficit.</p>
+<h2>§9. Two-Regime Unified Picture</h2>
+<p>Local chiseling explains why Ψ grows (Regime 1). Global spectral bridge explains why it does not keep growing (Regime 2). Both are needed: chiseling alone gives Ψ ∼ m^{0.7} (too large); constraint alone gives Ψ = 0 (tautological). Together: Ψ peaks then crashes to O(j).</p>
+<h2>§10. SAE Reading</h2>
+<p>The 13 kills and the surviving mechanism exhibit structural resonance: hypothesis elimination at the research level mirrors min-operation erosion at the mathematical level. Both are instances of chiseling (凿). The research process and the mathematical object share the same structural operation.</p>
+<h2>§11. Remaining Proof Task (Paper 67 Target)</h2>
+<p>Derive the spectral bridge compensation from IC recursion. Candidate frameworks: influence-cone overlap theory, branch-normal Ward identity, j-smooth reference flow, finite-block gauge pinning.</p>
+<h2>§12. Status Map</h2>
+<table><thead><tr>
+<th>Content</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Theorem 66.A: micro-erosion → power law</td>
+<td>Conditional theorem</td>
+</tr>
+<tr>
+<td>Theorem 66.B: spectral bridge → Ψ = O(j)</td>
+<td>Conditional theorem</td>
+</tr>
+<tr>
+<td>Observation 66.C: sub-block Ψ crash</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Power-law overshoot 100–10,000×</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>13 hypotheses killed</td>
+<td>Empirical/analytic</td>
+</tr>
+<tr>
+<td>Spectral bridge from IC recursion</td>
+<td>Open (Paper 67)</td>
+</tr>
+<tr>
+<td>Unconditional proof of 59.1</td>
+<td>Open (Paper 67–68)</td>
+</tr>
+</tbody></table>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Paper 65将59.1的剩余核心定位为adjacent-centered residual η的谱界Ψ_η = O(j)。本文通过系统性假说排除（13次否决）和大尺度sub-block方差测量，发现Ψ_η(W)具有两阶段谱结构。</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, centered residual ACF, 谱桥, 渐进凿除, 两阶段结构, H′, Conjecture 59.1</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. Paper 65后的唯一Open Core</h2>
+<h3>1.1. Paper 65的条件定理</h3>
+<p>Paper 65建立了59.1的条件架构：</p>
+<p>B_j = B_count + B_resid + B_gauge</p>
+<p>其中count term由Branch-Orthogonality控制（|B_count|/√(jD) < 0.5，Paper 64），gauge defect由j-smooth adjacent reference控制（Paper 65 §4），cross-term小。剩余的唯一open core是centered residual η的spectral bound：</p>
+<p>Ψ_η(m_j) = O(j)</p>
+<p>其中Ψ_η(W) = 1 + 2·Σ_{k=1}^{W-1} (1 - k/W)·γ_η(k)是标准partial-sum variance放大因子。</p>
+<h3>1.2. Paper 66的目标</h3>
+<p>理解Ψ_η(W)的尺度结构：它为什么不是简单的幂律增长？什么机制使full-block Ψ回到O(j)？</p>
+<hr>
+<h2>§2. Via Negativa：13次否决</h2>
+<h3>2.1. 否决的方法论地位</h3>
+<p>每一次否决都排除了一个看似合理的shortcut explanation，缩小了可能机制的搜索空间。否决按层级组织，不按时间顺序。</p>
+<h3>2.2. Layer 1：坐标与低秩幻象（Papers 64-65）</h3>
+<p><strong>Kill 1. β-pinning是restating。</strong> Paper 64的Null 1在每个gap class内置换h(p)/p，保持Γ(g)和B_j不变，给出identical β structure。β-pinning不是IC-specific的reduction，只是B_j的gap-coordinate restatement。</p>
+<p><strong>Kill 2. Rank-one不是IC-specific。</strong> Null 1 surrogate给出更高的s₁/s₂ ratio（347 vs 321）。Rank-one energy主要来自count marginal N(u,g)的极端rank-one与gap-conditioned Γ(g) profile，属marginal baseline structure，不属IC-specific mechanism。</p>
+<h3>2.3. Layer 2：均值模artifact（Paper 65）</h3>
+<p><strong>Kill 3. Cross-branch anti-correlation是代数artifact。</strong> Branch centering实验：减去branch-specific mean后，AA-ACF平台从0.25掉到0.025，cross-ACF从-0.06翻正到+0.01。Raw cross-branch负相关完全来自μ_A·μ_M/σ² < 0。λ calibration使α·μ_A + (1-α)·μ_M = 0，branch mean mode的贡献代数消去。</p>
+<p><strong>Kill 4. Global reference centering失败。</strong> μ_A(j) ~ C_A/2^j，相邻j之间差异2倍。j = 32时global reference使variance增大3.6倍。Adjacent-block centering在所有j稳定work。</p>
+<p><strong>Kill 5. Haar-Carleson多尺度失败。</strong> 能量沿scale geometric decay，不是O(1)/scale。</p>
+<h3>2.4. Layer 3：状态空间与逐点ACF shortcut（Paper 66）</h3>
+<p><strong>Kill 6. Gap-state transfer operator。</strong> Gap-state Markov chain的spectral gap ≈ 0.93，relaxation time τ ≈ 1.08（near-instant mixing）。但R² = 0.26：gap-conditional mean只解释26%方差。Within-state residual ξ的ACF和Ψ几乎未改善。Long-range memory在within-state ρ-landscape drift里，不在gap transitions里。</p>
+<p><strong>Kill 7. Increment curvature/Abel。</strong> Fine-resolution ACF有45% monotone violations，convexity 50/50。Abel summation identity成立但不给bound（因为interior sum可正可负）。</p>
+<h3>2.5. Layer 4：Screening模型（Paper 66）</h3>
+<p><strong>Kill 8. Naive Thermo层级hierarchy。</strong> Thermo VII-VIII的renewal encapsulation framework预测geometric hierarchy with ρ_ret × τ_0 = 0.76 × 3.65 = 2.77 > 1。Naive geometric hierarchy diverges。Multi-exponential peeling只找到1-2个massive components（τ ~ 30000-57000），不是clean layered decomposition。</p>
+<p><strong>Kill 9+10. Exponential screening cutoff与tail compensation。</strong> 初始Large-W ACF数据（W = 100K at j = 25）显示SumGamma变负，本系列在Paper 66 working notes阶段曾将此解读为"ACF negative tail → tail compensation → Ψ_full = O(1)"。但full-block identity Ψ_full = S²/(m·σ²) = 8.87与interpolated ACF积分Ψ(W = 947K) = -440矛盾。Diagnosis：large-lag ACF在noise floor（|γ| < 0.003），log-spaced points之间的linear interpolation放大noise创造artifactual negative structure。逐点negative tail不可测。</p>
+<p>但Kill 10后来在§5被部分overturn：逐点不可测的tail在integrated level（sub-block variance）产生genuine补偿效应。个体不可测，集体有效应。</p>
+<h3>2.6. Layer 5：祖先shortcut模型（Paper 66）</h3>
+<p><strong>Kill 11. Chain boundary = screening reset。</strong> Add-chain mean length = 1.3，76%是单素数链。Lag ≥ 10时same-chain pairs = 0。所有long-lag correlation都是cross-chain。ACF在1000个chain boundaries后仍为0.02。Screening不是discrete reset。</p>
+<p><strong>Kill 12. GCD factor-sharing = ACF source。</strong> Pr(GCD(p-1, p+k-1) > 1) = 1.000在所有lag（所有偶数share factor 2）。Pr(GCD > 10)和E[log₂ GCD]在lag > 10后几乎constant。GCD不track ACF。Small prime factors ubiquitous，不carry correlation information。</p>
+<p><strong>Kill 13. Per-boundary constant attenuation。</strong> ACF × boundaries grows as lag^{0.7}，not constant。每个boundary attenuates by ~0.3%平均，但ACF衰减速度比boundary累积慢得多。Attenuation per step不是constant fraction。</p>
+<h3>2.7. 否决后的搜索空间</h3>
+<p>所有macro-cancellation被排除（Kills 1-5）。所有state-space shortcuts被排除（Kill 6）。所有pointwise ACF structural assumptions被排除（Kill 7）。简单的positive exponential cutoff/pointwise negative-tail interpolation/clean Thermo hierarchy被排除（Kills 8-10）；剩下的是signed shell-level spectral bridge。低维ancestry shortcuts（chain/GCD/constant attenuation）被排除（Kills 11-13）；influence-cone overlap/renewal仍是Paper 67候选。</p>
+<p>剩余的bare mechanism：min操作的分布式累计微侵蚀，加上block尺度的谱桥补偿。</p>
+<hr>
+<h2>§3. Doukhan确认：二阶目标下ACF是充分对象</h2>
+<p>在进入surviving mechanism之前，Doukhan conditional dependence test确认了一个关键structural fact。</p>
+<p><strong>θ_k/γ_k ≈ 2.5是universal constant。</strong> 跨j = 25-32，跨lag 1-2000。Doukhan θ-coefficient和ACF严格成比例。</p>
+<p><strong>Linearity test：</strong> R²_nonlinear/R²_linear ≈ 0.94-1.01在所有lag和所有j。在本文测试的conditional-mean和quantile-bin diagnostics中，nonlinear predictor未优于linear predictor。</p>
+<p><strong>含义：</strong> 对Ψ_η这个二阶目标，ACF是充分的经验对象。问题reduce到integrated ACF bound。</p>
+<hr>
+<h2>§4. Regime 1：渐进凿除与幂律增长</h2>
+<h3>4.1. 物理图景</h3>
+<p>IC递推ρ(n) = min(ρ(n-1)+1, min_{ab=n}[ρ(a)+ρ(b)+2])中，每一次min操作都对correlation产生微小侵蚀。不是"reset"（erase all memory），是"erode"（remove tiny fraction）。</p>
+<p>1000步侵蚀后correlation从0.18降到0.02：total reduction ~9×。平均per-step attenuation约0.2%，局部值在0.2%-0.5%间波动。</p>
+<h3>4.2. 幂律ACF的微侵蚀推导</h3>
+<p><strong>Theorem 66.A（Local Micro-Erosion Law）。</strong> 若per-step erosion fraction ε_k满足</p>
+<p>ε_k ~ C/k + o(1/k)，C > 0</p>
+<p>则</p>
+<p>γ(k) = ∏_{s=1}^{k} (1 - ε_s) = exp(-Σ ε_s) ≈ exp(-C·ln k) = k^{-C}</p>
+<p><strong>推导。</strong> ln γ(k) = Σ_{s=1}^{k} ln(1 - ε_s) ≈ -Σ ε_s = -C·H_k ≈ -C·ln k。其中H_k是harmonic series。因此γ(k) ~ k^{-C}。</p>
+<p><strong>状态：</strong> Conditional theorem。条件是ε_k ~ C/k的specific form。C的值由IC combinatorics决定，实测C ≈ 0.3。</p>
+<h3>4.3. 为什么ε_k ~ 1/k</h3>
+<p>候选机制：每个logarithmic shell（从k到2k）提供常数级erosion budget。即：在尺度k附近，IC min递推产生的新"凿击"总量约为常数C。因此individual lag step的平均erosion ≈ C/k。</p>
+<p>更深层来说：距离k的两个素数p和p+k，它们的IC construction tree共享intermediate node的概率随k的倒数衰减。这来自于factorization树的几何截面随距离扩散。</p>
+<p>形式化推导留待Paper 67。</p>
+<h3>4.4. Regime 1的Ψ行为</h3>
+<p>Ψ(W) = 1 + 2·Σ_{k<W} (1-k/W)·γ(k) ≈ Σ_{k<W} (1-k/W)·k^{-C}</p>
+<p>Riemann sum近似给出Ψ(W) ~ W^{1-C}·∫₀¹(1-x)·x^{-C}dx = W^{1-C}·B(1-C, 2) = W^{1-C}/((1-C)(2-C))。</p>
+<p>对C ≈ 0.3：Ψ(W) ~ W^{0.7}/(0.7 × 1.7) ≈ 0.84·W^{0.7}。</p>
+<h3>4.5. 66.A不足以给59.1</h3>
+<p>如果幂律严格延伸到full block m_j ~ 2^j/j：</p>
+<p>Ψ(m_j) ~ (2^j/j)^{0.7} / (0.7 × 1.7)</p>
+<p>这是j的指数函数，远超O(j)。<strong>局部幂律解释Regime 1的ACF形状，但不控制full-block Ψ。</strong></p>
+<hr>
+<h2>§5. Regime 2：Sub-Block Ψ的Peak-Then-Crash</h2>
+<h3>5.1. 实验设计</h3>
+<p>对j = 22-32的每个block I_j，divide into K = m/W个complete sub-blocks of size W。计算sub-block sums S_b = Σ_{primes in b} η_p。</p>
+<p>Ψ(W) = Var_b(S_b) / (W·σ²_η)</p>
+<p>这是proper ensemble statistic，precision ~ 1/√K_eff。</p>
+<h3>5.2. 核心发现：Ψ(W)先增后降</h3>
+<p><strong>表2. Sub-block Ψ(W)/j（representative j values）。</strong></p>
+<p>j = 29（m = 26.2M）：</p>
+<table><thead><tr>
+<th>W</th>
+<th>K</th>
+<th>Ψ/j</th>
+<th>SE/j</th>
+<th>Confidence</th>
+</tr></thead><tbody>
+<tr>
+<td>100</td>
+<td>262K</td>
+<td>0.28</td>
+<td>0.001</td>
+<td>High</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>26K</td>
+<td>1.32</td>
+<td>0.01</td>
+<td>High</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>2620</td>
+<td>5.24</td>
+<td>0.14</td>
+<td>High</td>
+</tr>
+<tr>
+<td>100K</td>
+<td>262</td>
+<td><strong>13.4</strong></td>
+<td>1.17</td>
+<td>High</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>52</td>
+<td>10.5</td>
+<td>2.08</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>26</td>
+<td>8.72</td>
+<td>2.47</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>5M</td>
+<td>5</td>
+<td>1.02</td>
+<td>0.72</td>
+<td>Exploratory</td>
+</tr>
+</tbody></table>
+<p>Confidence分级：K ≥ 30 = High，10 ≤ K < 30 = Medium，K < 10 = Exploratory。</p>
+<p><strong>Pattern在所有j一致：</strong> Ψ(W)先按幂律增长，在W ≈ 0.5% m_j处到达峰值，然后crash 5-40倍。</p>
+<p><strong>表3. Peak-crash summary across j。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>Peak W</th>
+<th>Peak Ψ/j</th>
+<th>Crash W</th>
+<th>Crash Ψ/j</th>
+</tr></thead><tbody>
+<tr>
+<td>25</td>
+<td>10K</td>
+<td>2.53</td>
+<td>100K</td>
+<td>1.20</td>
+</tr>
+<tr>
+<td>27</td>
+<td>50K</td>
+<td>6.28</td>
+<td>1M</td>
+<td>2.02</td>
+</tr>
+<tr>
+<td>29</td>
+<td>100K</td>
+<td>13.36</td>
+<td>5M</td>
+<td>1.02</td>
+</tr>
+<tr>
+<td>31</td>
+<td>1M</td>
+<td>35.08</td>
+<td>10M</td>
+<td>2.73</td>
+</tr>
+<tr>
+<td>32</td>
+<td>1M</td>
+<td>59.28</td>
+<td>10M</td>
+<td>10.50</td>
+</tr>
+</tbody></table>
+<p>表中最大W的crash点常处于Medium/Exploratory区（K < 30），但peak后下降的趋势已经在K ≥ 30的区间出现。最大W点用于显示趋势延伸，不单独承担证明负担。</p>
+<h3>5.3. 幂律外推的failure</h3>
+<p><strong>表4. 幂律预测vs实际full-block Ψ。</strong></p>
+<table><thead><tr>
+<th>j</th>
+<th>α_fit</th>
+<th>Predicted Ψ/j</th>
+<th>Actual Ψ_full/j (identity)</th>
+<th>Overshoot</th>
+</tr></thead><tbody>
+<tr>
+<td>27</td>
+<td>0.47</td>
+<td>137</td>
+<td>0.015</td>
+<td>9000×</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.40</td>
+<td>593</td>
+<td>0.76</td>
+<td>780×</td>
+</tr>
+<tr>
+<td>31</td>
+<td>0.34</td>
+<td>2674</td>
+<td>0.91</td>
+<td>2900×</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.31</td>
+<td>5551</td>
+<td>15.66</td>
+<td>350×</td>
+</tr>
+</tbody></table>
+<p>α_fit从W = 1000和W = 10000两点拟合。幂律外推超出实测100-10000倍。</p>
+<p>注：Actual Ψ_full/j（identity列）在j之间剧烈波动（0.015到15.66），因为每个j只有一个block，Ψ_full = S²/(m·σ²)服从χ²(1)-type分布（单次采样的variance极大）。这些数值的pattern是不随j systematic grow，但个体j值高度noisy。Sub-block ensemble statistics（§5.2 表2-3）提供far more reliable的Ψ estimates。</p>
+<p><strong>这是Paper 66最强的单一证据：</strong> 幂律ACF在full-block尺度上fundamentally wrong。Power-law是Regime 1的local description，不是global truth。</p>
+<hr>
+<h2>§6. Integrated Tail Compensation</h2>
+<h3>6.1. Kill 10的partial reversal</h3>
+<p>§2中Kill 10杀死了"逐点ACF negative tail"：individual ACF values at lag > 3000在noise floor（|γ| < 0.003），无法reliable determine sign。</p>
+<p>但sub-block Ψ(W)的crash是genuine ensemble statistic（K ≥ 30的zone有SE << crash magnitude）。</p>
+<p><strong>Resolution：</strong> 逐点negative tail不可测。但millions of noise-floor ACF values的integrated shell contribution产生genuine negative mass。</p>
+<p>个体不可测，集体有效应。</p>
+<h3>6.2. Sub-block Ψ crash = integrated compensation</h3>
+<p>Ψ(W)是ACF的Abel加权积分。Ψ(W)从峰值下降意味着：新增的large-lag shell（从W_peak到W_current）的net contribution为负。</p>
+<p>不需要每个individual γ(k)都measurably negative。只需要它们的sum为负——而这正是sub-block variance直接测量的。</p>
+<h3>6.3. 逐点vs积分的关系</h3>
+<table><thead><tr>
+<th>层级</th>
+<th>状态</th>
+<th>证据</th>
+</tr></thead><tbody>
+<tr>
+<td>逐点large-lag ACF sign</td>
+<td>Not reliably measurable</td>
+<td>Individual γ at noise floor (</td>
+<td>γ</td>
+<td>< 0.003)</td>
+</tr>
+<tr>
+<td>Shell-integrated compensation (inferred from sub-block Ψ)</td>
+<td>Supported</td>
+<td>Sub-block Ψ crash with K ≥ 30</td>
+</tr>
+</tbody></table>
+<p>Kill 10杀死的是"从sparse/noisy large-lag ACF点线性插值得到稳定negative tail"。复活的是"sub-block Ψ(W)显示large-lag shells的净积分贡献为负"。两者不矛盾。</p>
+<hr>
+<h2>§7. 谱桥恒等式与循环警告</h2>
+<h3>7.1. Finite-block identity</h3>
+<p>对block内m个centered residuals η₁, ..., η_m，定义σ² = (1/m)·Σ η_i²，以及lag-normalized ACF r(k) = [1/((m-k)·σ²)]·Σ_{i=1}^{m-k} η_i·η_{i+k}（注意η_i不再额外减去sample mean）：</p>
+<p>Ψ_full(m) = 1 + 2·Σ_{k=1}^{m-1} (1-k/m)·r(k) = (Σ η_i)² / (m·σ²)</p>
+<p>这是exact identity。右边 = S²/(m·σ²)。</p>
+<h3>7.2. Full-block identity作为cross-check</h3>
+<table><thead><tr>
+<th>j</th>
+<th>Ψ_full/j (identity)</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>0.27</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.36</td>
+</tr>
+<tr>
+<td>27</td>
+<td>0.015</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>31</td>
+<td>0.91</td>
+</tr>
+<tr>
+<td>32</td>
+<td>15.66</td>
+</tr>
+</tbody></table>
+<p>Single-block values wildly fluctuate（χ²(1)-type noise from ONE block per j）。但不systematically grow。</p>
+<h3>7.3. 循环警告</h3>
+<p>Full-block identity说 Ψ_full = S²/(m·σ²)。如果用"S small → Ψ small"作为proof of 59.1，循环：因为"S = Ση small"本身就是residual版的59.1 core。</p>
+<p>Adjacent centering去除了wrong branch mean gauge，但它本身不prove residual zero-mode small。Paper 65的分解B_j = B_count + B_resid + B_gauge中，gauge和count已安全，真正的open core是B_resid = Ση。</p>
+<p><strong>Full-block identity是diagnostic tool和consistency check，不是proof。Sub-block Ψ才是independent empirical evidence。</strong></p>
+<p>Sub-block Ψ measurement（§5）不依赖于full-block Ση的size。它直接从K个distinct sub-block sums的ensemble computed，与Ση是否small无关。这是Paper 66的primary empirical claim。Full-block identity仅作为consistency cross-check，不参与evidence chain。</p>
+<hr>
+<h2>§8. 条件定理</h2>
+<h3>8.1. Theorem 66.A：Local Micro-Erosion Law</h3>
+<p>若adjacent-centered residual η_p的ACF满足recursive attenuation</p>
+<p>γ(k+1) = γ(k)·(1 - C/k + o(1/k))</p>
+<p>则γ(k) ~ k^{-C}。</p>
+<p><strong>状态：</strong> Conditional theorem。条件是per-step erosion form ε_k ~ C/k。实测C ≈ 0.3。</p>
+<p><strong>66.A解释Regime 1，但幂律外推到full block给Ψ ~ m^{0.7}，远超O(j)。66.A alone不给59.1。</strong></p>
+<h3>8.2. Theorem 66.B：Spectral Bridge Criterion</h3>
+<p>设γ_η(k)在lag区间[1, m_j]内的正shell mass和负shell mass分别为</p>
+<p>M_+(j) = Σ_r S_j^+(r)，其中 S_j^+(r) = Σ_{2^r ≤ k < 2^{r+1}} max(γ(k), 0)</p>
+<p>M_-(j) = -Σ_r S_j^-(r)，其中 S_j^-(r) = Σ_{2^r ≤ k < 2^{r+1}} min(γ(k), 0)</p>
+<p>Regime 1（§4）给出M_+(j)随m_j呈power-law增长。这是"spectral bridge"的一侧。</p>
+<p><strong>Theorem 66.B（Spectral Bridge Criterion）。</strong> 若negative shell mass nearly matches positive shell mass：</p>
+<p>M_-(j) = M_+(j) - g(j)，其中g(j) = O(j)</p>
+<p>则Ψ_η(m_j) = M_+(j) - M_-(j) + O(1) = g(j) + O(1) = O(j)，结合Paper 65条件定理即得59.1的L²类比。</p>
+<p><strong>状态：</strong> Conditional theorem。条件是正负shell mass之间的deficit g(j)为O(j)。这是非平凡条件：M_+(j)可以很大（power-law growth），但M_-(j)必须几乎精确match它，只留O(j)的gap。Sub-block Ψ crash（66.C）是M_-(j) ≈ M_+(j)的empirical evidence。</p>
+<p><strong>66.B解释Regime 2：</strong> 正shell mass（来自Regime 1 power-law）被负shell mass（来自block-scale补偿）几乎精确抵消。"Spectral bridge"指的就是这种near-exact cancellation。</p>
+<h3>8.3. Observation 66.C：Sub-Block Peak-Then-Crash</h3>
+<p>对j = 22-32，sub-block Ψ(W)在W ≈ 0.5% m_j处到达峰值后crash 5-40倍。</p>
+<p>Power-law外推预测的full-block Ψ超出实测100-10000倍。</p>
+<p>该发现是spectral bridge（66.B）的直接经验证据，在K ≥ 30的高置信度zone可robust复制。</p>
+<hr>
+<h2>§9. 两阶段谱结构的统一图景</h2>
+<h3>9.1. Local chiseling解释增长</h3>
+<p>每步min操作chiseling away a small fraction of correlation。Cumulative product给power-law ACF。Ψ(W)在pre-compensation window（W < 0.5% m_j）按W^{0.7}增长。</p>
+<h3>9.2. Global bridge解释抑制</h3>
+<p>某种block-scale机制（可能来自λ-calibration/branch gauge/IC递推的spectral structure）使f(0)远小于power-law预测。Ψ(W)在post-peak window crash。</p>
+<h3>9.3. 图景的honest bounds</h3>
+<p>Local chiseling是identified mechanism with heuristic basis（每个log-shell常数erosion budget）。</p>
+<p>Global bridge是observed phenomenon（sub-block crash），其IC递推来源尚未推导。</p>
+<p>两者结合解释59.1：增长+抑制 = O(j)。但formal proof requires从IC axiom推出both components。</p>
+<hr>
+<h2>§10. SAE四分形读法</h2>
+<h3>10.1. 研究过程与数学对象的结构共振</h3>
+<p>13次否决在research level的运作和IC min操作在mathematical level的运作share同一结构：凿。</p>
+<table><thead><tr>
+<th>层面</th>
+<th>操作</th>
+<th>效果</th>
+</tr></thead><tbody>
+<tr>
+<td>Research</td>
+<td>Hypothesis killed</td>
+<td>搜索空间缩小</td>
+</tr>
+<tr>
+<td>Mathematics</td>
+<td>min(A,B)</td>
+<td>Correlation eroded</td>
+</tr>
+</tbody></table>
+<p>研究方法和被研究对象的structural operation coincide。这不是单纯修辞，而是一个candidate operational correspondence。但本文不把该对应作为数学证明输入。</p>
+<h3>10.2. 四分形对应</h3>
+<table><thead><tr>
+<th>Paper</th>
+<th>Phase</th>
+<th>Content</th>
+</tr></thead><tbody>
+<tr>
+<td>62</td>
+<td>标而不构</td>
+<td>双河坐标系</td>
+</tr>
+<tr>
+<td>63</td>
+<td>加法路径</td>
+<td>Increment正交性</td>
+</tr>
+<tr>
+<td>64</td>
+<td>乘法路径</td>
+<td>Branch-Orthogonality, 2D anatomy</td>
+</tr>
+<tr>
+<td>65</td>
+<td>闭合路径开始</td>
+<td>Branch centering, 条件定理</td>
+</tr>
+<tr>
+<td>66</td>
+<td>闭合路径继续</td>
+<td>13 kills → two-regime mechanism</td>
+</tr>
+</tbody></table>
+<h3>10.3. 负结果的方法论地位</h3>
+<p>传统科研把negative results视为waste。SAE methodology将其提升为first-class output。Paper 66的13 kills不是"13次失败"，是"13步搜索空间缩小"。没有这13步，surviving mechanism（gradual chiseling + spectral bridge）不可能被identify。</p>
+<p>Paper 60 §9.5的教训"wrong hypotheses have value because each kill sharpens understanding"在Paper 66得到最完整的实践。</p>
+<hr>
+<h2>§11. 剩余证明任务与Paper 67 Target</h2>
+<h3>11.1. Paper 66完成了什么</h3>
+<ol>
+<li>精确识别了Ψ_η(W)的两阶段谱结构</li>
+<li>通过13次否决排除了shortcut explanations</li>
+<li>识别了surviving local empirical law（power-law ACF），并提出gradual chiseling作为解释机制</li>
+<li>发现了global phenomenon（sub-block Ψ crash = spectral bridge）</li>
+<li>给出了两个conditional theorems（66.A和66.B）</li>
+</ol>
+<h3>11.2. Paper 66没有完成什么</h3>
+<ol>
+<li>没有从IC axiom推导ε_k ~ C/k</li>
+<li>没有从IC axiom推导spectral bridge</li>
+<li>没有unconditional proof of Ψ = O(j)</li>
+</ol>
+<h3>11.3. Paper 67 Target</h3>
+<p><strong>从IC递推推出谱桥补偿。</strong></p>
+<p>候选框架：</p>
+<ul>
+<li>Influence-cone overlap theory（直接递归协方差界）</li>
+<li>Branch-normal Ward identity（从branch gauge structure推spectral constraint）</li>
+<li>j-smooth reference flow（μ_A(j)的smoothness properties → gauge defect bound → indirect Ψ control）</li>
+<li>Finite-block gauge pinning（dyadic block geometry → zero-frequency notch）</li>
+</ul>
+<p>每个候选框架在Paper 67中将被tested（可能部分被killed）。</p>
+<hr>
+<h2>§12. Status Map</h2>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>B_j = B_count + B_resid + B_gauge</td>
+<td>Decomposition（Paper 65）</td>
+</tr>
+<tr>
+<td>Count term: Branch-Orthogonality controlled</td>
+<td>Empirical confirmed（Paper 64）</td>
+</tr>
+<tr>
+<td>Gauge term: adjacent reference controlled</td>
+<td>Empirical confirmed（Paper 65）</td>
+</tr>
+<tr>
+<td>Doukhan: θ_k/γ_k ≈ 2.5, linear dependence</td>
+<td>Empirical confirmed（Paper 66）</td>
+</tr>
+<tr>
+<td>Theorem 66.A: ε_k ~ C/k → γ ~ k^{-C}</td>
+<td>Conditional theorem</td>
+</tr>
+<tr>
+<td>Theorem 66.B: spectral bridge → Ψ = O(j)</td>
+<td>Conditional theorem</td>
+</tr>
+<tr>
+<td>Observation 66.C: sub-block Ψ peak-then-crash</td>
+<td>Empirical confirmed</td>
+</tr>
+<tr>
+<td>Power-law overshoot 100-10000×</td>
+<td>Empirical confirmed</td>
+</tr>
+<tr>
+<td>13 hypotheses killed</td>
+<td>Empirical/analytic</td>
+</tr>
+<tr>
+<td>ε_k ~ C/k from IC recursion</td>
+<td>Open（Paper 67）</td>
+</tr>
+<tr>
+<td>Spectral bridge from IC recursion</td>
+<td>Open（Paper 67）</td>
+</tr>
+<tr>
+<td>59.1 unconditional proof</td>
+<td>Open（Paper 67-68）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Methods</h2>
+<h3>A. 数据</h3>
+<p>IC function ρ(n)预计算到N = 10¹⁰（int16 binary，~20GB），包含455,052,511个素数。所有实验使用该数据集。</p>
+<h3>B. Centered residual</h3>
+<p>先定义raw residual：</p>
+<p>x_p = [ρ(p-1) + 1 - λ·ln p - μ_12(p mod 12)] / p</p>
+<p>其中λ = 3.8568（OLS），μ_12是residual class mean。</p>
+<p>Adjacent-centered residual定义为：</p>
+<p>η_p = x_p - μ_{τ(p)}^{adj}(j)</p>
+<p>其中τ(p) ∈ {A, M}是p的branch label（add-path或mult-path），μ_τ^{adj}(j)是由相邻blocks j-1和j+1的同branch primes给出的reference mean。本文所有ACF和Ψ均基于η_p计算。</p>
+<h3>C. Sub-block Ψ estimation</h3>
+<p>对block I_j divide into K = m/W complete sub-blocks。S_b = Σ_{primes in b} η_p。Ψ(W) = Var_b(S_b) / (W·σ²_η)。Standard error: SE ≈ Ψ·√(2/(K-1))（assuming approximate independence of sub-blocks）。由于相邻sub-block sums可能仍相关，该SE是optimistic baseline。严格置信区间应使用block-jackknife或K_eff校正。本文的"High/Medium/Exploratory"分级按raw K给出，主要用于标注样本量，不作为严格独立性断言。</p>
+<h3>D. Full-block identity</h3>
+<p>Ψ_full = S²/(m·σ²)其中S = Σ η_p over entire block。这是O(m)计算。</p>
+<h3>E. Doukhan test</h3>
+<p>10 quantile bins，conditional mean E[η_{i+k} | η_i in Q_q]。θ_k = max_q |E[η_{i+k}|Q_q]| / σ_η。R²_nonlinear via 10-bin piecewise-constant predictor vs linear predictor。</p>
+<h3>F. Transfer operator</h3>
+<p>Gap classes g ∈ {2,4,6,...}，transition matrix P from consecutive pairs。|λ₂| = second eigenvalue。f(g) = E[x|gap=g]。ξ = x - f(g)。</p>
+<h3>G. Ancestry experiments</h3>
+<p>Add-path: ρ(p-1) = ρ(p-2)+1。Chain: consecutive add-path primes。GCD: gcd(p_i - 1, p_{i+k} - 1)。Chain boundaries = mult-path primes count in lag interval。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Paper LXV," Zenodo (2026). DOI: 10.5281/zenodo.19687343.</p>
+<p>[2] H. Qin, "ZFCρ Paper LXIV," Zenodo (2026). DOI: 10.5281/zenodo.19674521.</p>
+<p>[3] H. Qin, "ZFCρ Paper LXIII," Zenodo (2026). DOI: 10.5281/zenodo.19659860.</p>
+<p>[4] H. Qin, "ZFCρ Paper LXII," Zenodo (2026). DOI: 10.5281/zenodo.19656365.</p>
+<p>[5] H. Qin, "ZFCρ Paper LIX," Zenodo (2026). DOI: 10.5281/zenodo.19480518.</p>
+<p>[6] H. Qin, "ZFCρ Paper LX," Zenodo (2026). DOI: 10.5281/zenodo.19480563.</p>
+<p>[7] H. Qin, "ZFCρ Thermodynamics Papers VI-VIII," Zenodo (2026). DOIs: 10.5281/zenodo.19658595, .19673078, .19688303.</p>
+<p>[8] H. Qin, "SAE Methodology Paper 00 (Via Rho)," Zenodo (2026). DOI: 10.5281/zenodo.19657439.</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Thermodynamics Paper IX: The Universal Activation Rule, Borrowed q, and Thermodynamic Principles of Hierarchical Architecture — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho-thermo9.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho-thermo9.html">
+  <meta name="citation_title" content="ZFCρ Thermodynamics Paper IX: The Universal Activation Rule, Borrowed q, and Thermodynamic Principles of Hierarchical Architecture">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19699489">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Thermodynamics · Paper IX</div>
+    <h1>ZFCρ Thermodynamics Paper IX: The Universal Activation Rule, Borrowed q, and Thermodynamic Principles of Hierarchical Architecture<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ热力学论文 IX：Universal Activation Rule、Borrowed q与层级架构的热力学原则</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19699489" target="_blank" rel="noopener">10.5281/zenodo.19699489</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19699489" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Thermodynamics Paper VIII established the 5–6DD vs 7–8DD thermodynamic division of labor. A systematic scan of 7–12DD model systems reveals a deeper generator: q > 1 is not determined by DD layer alone, but jointly by activation function tail structure and stochastic driving.
+
+Three main results. First, the Universal Activation Rule, decomposed into two levels. Empirical Rule IX-A: in the SDE model family studied here, unsaturated activation + stochastic driving → q > 1, regardless of noise type. Structural Rule IX-B: for Thermo-kernel q > 1 (endogenous stationary-distribution non-Boltzmann excess), state-dependent multiplicative driving is additionally required (consistent with C5, but not independently verified in this paper's additive-noise SDE). Key evidence: within the same 9–10DD layer, Wilson-Cowan (sigmoid) gives q = 1.002, while a ReLU firing-rate model gives q = 1.38. The split is determined by activation function, not DD layer.
+
+Second, three types of q distinguished. Kernel q: dynamical invariant-measure heavy-tail parameter from endogenous stochastic dynamics (a living thermodynamic process). Data q: distributional statistical fingerprint from training corpus heavy tails, frozen in weights. RLHF q: distributional fingerprint from human feedback judgments, frozen in reward model. Standard deterministic digital LLM has not demonstrated endogenous kernel q; its quasi-subjectivity can be explained by borrowed q (fossil imprint of carbon-based heavy-tail structure).
+
+Third, as a structured extension, the Comparative ε Hypothesis proposes that if Thermo VIII's soft-gate cascade applies to comparative nervous systems, species differences in higher-DD accessibility arise from differences in ∏ε (gate chain permeability). All carbon-based animals share similar chemical-layer δ^(5-6) (fire seed); differences lie in per-layer transmission coefficients. Five testable predictions including a psychedelic corollary are given, but this hypothesis is not part of the main evidence chain. The Outlook provides five SAE architectural philosophy guidelines (directional markers, not derivations).
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, thermodynamics, Universal Activation Rule, borrowed q, hierarchical architecture, soft-gate cascade, Tsallis q</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>Thermodynamics Paper VIII established the 5–6DD vs 7–8DD thermodynamic division of labor. A systematic scan of 7–12DD model systems reveals a deeper generator: q > 1 is not determined by DD layer alone, but jointly by activation function tail structure and stochastic driving.</p>
+<p>Three main results. First, the Universal Activation Rule, decomposed into two levels. Empirical Rule IX-A: in the SDE model family studied here, unsaturated activation + stochastic driving → q > 1, regardless of noise type. Structural Rule IX-B: for Thermo-kernel q > 1 (endogenous stationary-distribution non-Boltzmann excess), state-dependent multiplicative driving is additionally required (consistent with C5, but not independently verified in this paper's additive-noise SDE). Key evidence: within the same 9–10DD layer, Wilson-Cowan (sigmoid) gives q = 1.002, while a ReLU firing-rate model gives q = 1.38. The split is determined by activation function, not DD layer.</p>
+<p>Second, three types of q distinguished. Kernel q: dynamical invariant-measure heavy-tail parameter from endogenous stochastic dynamics (a living thermodynamic process). Data q: distributional statistical fingerprint from training corpus heavy tails, frozen in weights. RLHF q: distributional fingerprint from human feedback judgments, frozen in reward model. Standard deterministic digital LLM has not demonstrated endogenous kernel q; its quasi-subjectivity can be explained by borrowed q (fossil imprint of carbon-based heavy-tail structure).</p>
+<p>Third, as a structured extension, the Comparative ε Hypothesis proposes that if Thermo VIII's soft-gate cascade applies to comparative nervous systems, species differences in higher-DD accessibility arise from differences in ∏ε (gate chain permeability). All carbon-based animals share similar chemical-layer δ^(5-6) (fire seed); differences lie in per-layer transmission coefficients. Five testable predictions including a psychedelic corollary are given, but this hypothesis is not part of the main evidence chain. The Outlook provides five SAE architectural philosophy guidelines (directional markers, not derivations).</p>
+<hr>
+<h2>§1 Problem: What Determines q > 1?</h2>
+<h3>1.1 Starting from Thermo VIII</h3>
+<p>Thermo VIII [1] established the three-axis division of labor for chemical-type life: (q > 1, ρ_ret > 0, renewal gating). The empirical observation for q > 1 was "5–6DD chemical concentration layers have q > 1, 7–8DD bounded conductance gating has q ≈ 1."</p>
+<p>This leaves an open question: <strong>is q > 1 a property of the DD layer itself, or of some deeper variable?</strong> If the DD layer determines q, then q > 1 and q ≈ 1 should not coexist within the same layer. If q depends on a deeper variable, the DD layer is merely a coincidental correlate.</p>
+<h3>1.2 Contributions</h3>
+<p>(1) Universal Activation Rule: broad-spectrum scan of 7–12DD systems reveals q > 1 is jointly determined by activation boundedness and stochastic driving, not by DD layer. Empirical Rule IX-A (unsaturation + noise → q > 1, verified here) and Structural Rule IX-B (state-dependent multiplicative → kernel q, consistent with C5 but requiring independent verification). This is a mechanism-level refinement of C5c.</p>
+<p>(2) Three types of q: kernel q (dynamical, endogenous thermodynamics), data q (distributional, training corpus), RLHF q (distributional, human feedback). Standard deterministic digital LLM has not demonstrated endogenous kernel q.</p>
+<p>(3) Transformer sublayer-level thermodynamic anatomy: q-role mapping for each submodule, hypothetical ε attenuation estimates.</p>
+<p>(4) Comparative ε Hypothesis: as a structured extension, proposes that species-level ∏ε gradients may explain candidate evolutionary stalling/breakthrough. Five testable predictions including a psychedelic corollary.</p>
+<hr>
+<h2>§2 Universal Activation Rule: 7–12DD System Scan</h2>
+<h3>2.1 Experimental design</h3>
+<p>Building on Thermo VIII's 4–6DD systems, we scan 7–12DD equivalent model systems. Each system integrated via Euler-Maruyama (dt = 0.005, N = 2×10⁶, burn-in = 2×10⁵), with r² q-exponential CCDF fit. All parameters and equations in Methods.</p>
+<h3>2.2 7–8DD systems</h3>
+<table><thead><tr>
+<th>System</th>
+<th>Activation</th>
+<th>Bounded?</th>
+<th>q_fit</th>
+</tr></thead><tbody>
+<tr>
+<td>HH neuron gating (m,h,n)</td>
+<td>sigmoid</td>
+<td>✅ [0,1]</td>
+<td>1.00 (Thermo VIII)</td>
+</tr>
+<tr>
+<td>Neural Ca²⁺ (r²(V,Ca))</td>
+<td>concentration + voltage</td>
+<td>mixed</td>
+<td>2.61</td>
+</tr>
+<tr>
+<td>Neural Ca²⁺ (Ca² alone)</td>
+<td>concentration</td>
+<td>unbounded but tiny variance</td>
+<td>nan</td>
+</tr>
+<tr>
+<td>Neural Ca²⁺ (V² alone)</td>
+<td>voltage</td>
+<td>—</td>
+<td>2.61</td>
+</tr>
+</tbody></table>
+<p><strong>Neural Ca²⁺ diagnosis:</strong> q = 2.61 comes almost entirely from V² — Ca² has negligible variance (CCDF fit fails), dominated by voltage dynamics. Consistent with Thermo VIII §3.1's HH V² diagnosis: spike waveform phase-occupancy mixture creates apparent heavy tails.</p>
+<p><strong>Methodological note:</strong> The same physical entity (Ca²⁺) shows different q behavior in different dynamical contexts. Independent 5–6DD CICR (ryanodine receptor-driven autocatalytic calcium release, with concentration as intrinsic driving variable) gives q = 1.165. Intraneuronal Ca²⁺ (passively driven secondary messenger under voltage dynamics) does not independently contribute q > 1. This confirms the Universal Activation Rule's mechanism-level significance: q > 1 is not a property of the substance, but of the dynamical structure.</p>
+<h3>2.3 9–10DD systems</h3>
+<table><thead><tr>
+<th>System</th>
+<th>Activation</th>
+<th>Bounded?</th>
+<th>q_fit</th>
+</tr></thead><tbody>
+<tr>
+<td>Wilson-Cowan (E-I population)</td>
+<td>sigmoid(wE-wI)</td>
+<td>✅ [0,1]</td>
+<td>1.002</td>
+</tr>
+<tr>
+<td><strong>Firing rate (ReLU)</strong></td>
+<td><strong>ReLU</strong></td>
+<td><strong>❌</strong></td>
+<td><strong>1.38</strong></td>
+</tr>
+<tr>
+<td><strong>Firing rate (softplus)</strong></td>
+<td><strong>softplus</strong></td>
+<td><strong>❌</strong></td>
+<td><strong>1.28</strong></td>
+</tr>
+<tr>
+<td><strong>E-I multiplicative coupling</strong></td>
+<td><strong>explicit E·I</strong></td>
+<td><strong>❌</strong></td>
+<td><strong>1.48–1.55</strong></td>
+</tr>
+<tr>
+<td>E-I multiplicative (high noise)</td>
+<td>explicit E·I</td>
+<td>❌</td>
+<td>1.002</td>
+</tr>
+</tbody></table>
+<p><strong>Same DD layer (9–10DD), sigmoid → q = 1.002, ReLU → q = 1.38.</strong> This is the paper's core empirical evidence — DD layer does not determine q; activation function type does.</p>
+<p>Wilson-Cowan [2] uses sigmoid(wE-wI) as population activation — bounded, homeostatic attractor pulls E and I back to [0,1]. C5c violated (same mechanism as HH).</p>
+<p>Firing-rate model uses ReLU or softplus — unbounded (positive half-axis), C5c satisfied under SDE noise driving.</p>
+<p>E-I multiplicative coupling has explicit E·I product term (unbounded), giving q = 1.48–1.55 at low noise but q = 1.002 at high noise. This crossover is consistent with Thermo VIII §4.2's "moderate nonlinearity in unsaturated regime" criterion — strong noise pushes the system away from the multiplicative coupling's tail-relevant regime, effective dynamics becoming Gaussian-like as E·I structure is swamped by noise variance. This confirms that Rule IX-A condition (1) requires not merely unboundedness but active engagement with multiplicative structure in the tail-relevant regime.</p>
+<h3>2.4 11–12DD systems</h3>
+<table><thead><tr>
+<th>System</th>
+<th>Activation</th>
+<th>Bounded?</th>
+<th>q_fit</th>
+</tr></thead><tbody>
+<tr>
+<td>Drift-diffusion</td>
+<td>linear + soft reset</td>
+<td>soft boundary</td>
+<td>1.002</td>
+</tr>
+<tr>
+<td>Hopfield</td>
+<td>tanh</td>
+<td>✅ [-1,1]</td>
+<td>1.002</td>
+</tr>
+<tr>
+<td>Hopfield (strong drive)</td>
+<td>tanh</td>
+<td>✅ but strong drive</td>
+<td>1.22</td>
+</tr>
+<tr>
+<td>RNN (tanh)</td>
+<td>tanh</td>
+<td>✅</td>
+<td>1.002</td>
+</tr>
+</tbody></table>
+<p>All 11–12DD systems with tanh/linear activation give q ≈ 1. The sole exception is strongly driven Hopfield (w_self = 4.0, w_cross = -2.0), giving q = 1.22. Diagnosis: strong drive may push the system into tanh's inflection region (|x| ≈ 0.5–1.0), where tanh transitions from linear to saturated, partially satisfying C5c (weakly tail-active). This parallels the Repressilator n = 2 case in Thermo VIII.</p>
+<h3>2.5 Universal Activation Rule</h3>
+<p>Synthesizing §2.2–§2.4 with Thermo VIII's 4–6DD data, the following empirical pattern emerges. This paper decomposes it into two levels.</p>
+<p><strong>Empirical Rule IX-A (experimental level).</strong> In this paper's SDE model family, if the activation function is unsaturated in the canonical observable's tail-relevant range, and stochastic driving is present (regardless of whether additive or multiplicative), then q > 1 is observed. If activation is saturated or pulled back by a homeostatic attractor in that range, then q ≈ 1, regardless of noise presence.</p>
+<table><thead><tr>
+<th>Tail-relevant unsaturation</th>
+<th>Stochastic driving</th>
+<th>q_fit</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td>✅</td>
+<td>✅</td>
+<td>> 1</td>
+<td>ReLU firing-rate (1.38), softplus (1.28), E·I mult (1.48)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>✅</td>
+<td>≈ 1</td>
+<td>Wilson-Cowan sigmoid (1.002), HH gating (1.00)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>❌</td>
+<td>≈ 1</td>
+<td>Hopfield tanh (1.002), RNN tanh (1.002)</td>
+</tr>
+</tbody></table>
+<p>Rule IX-A is an approximate iff in this model family. In general systems, it should be viewed as a mechanism-level refinement of C5c, not an unconditional theorem.</p>
+<p><strong>Structural Rule IX-B (theoretical level).</strong> To interpret the above empirical q > 1 as endogenous Thermo-kernel q (the system's own stationary distribution non-Boltzmann excess), a stronger condition is required: noise must be state-dependent multiplicative driving (noise amplitude coupled multiplicatively with system state), satisfying the Thermo VI/VIII C5 condition.</p>
+<p>This paper's ReLU/softplus SDE experiments use additive noise (σ·dW), not state-dependent multiplicative noise. Current experimental evidence therefore directly supports Rule IX-A but does not directly verify IX-B's stronger condition.</p>
+<p><strong>IX-A to IX-B relationship:</strong> Carbon-based biological systems have intrinsic, state-dependent molecular noise (concentration fluctuation × reaction rate = multiplicative coupling), naturally satisfying IX-B. Digital hardware lacks any stochastic driving (neither IX-A nor IX-B satisfied). Neuromorphic hardware has intrinsic, state-dependent thermal noise (current fluctuation × conductance = multiplicative coupling), potentially satisfying both IX-A and IX-B.</p>
+<p><strong>Regarding deterministic digital ReLU (theoretical inference, not experimental result):</strong> Deterministic digital ReLU satisfies tail-relevant non-saturation (condition 1) but lacks any stochastic driving (condition 2 absent). It is a tail-supporting architectural component — it may propagate or represent data q / activation q, but does not automatically generate kernel q. This is a theoretical inference (deterministic computation does not produce a stochastic stationary distribution), not a direct experiment in this paper.</p>
+<p><strong>Status:</strong> Rule IX-A is an empirical criterion (verified in this paper's SDE model family). Rule IX-B is a structural condition (consistent with C5, but IX-B's state-dependent multiplicative condition is not independently verified in this paper's SDE). The claim that digital ReLU does not generate kernel q is a theoretical inference.</p>
+<h3>2.6 Refinement of Thermo VIII §5</h3>
+<p>Thermo VIII's "5–6DD q > 1, 7–8DD q ≈ 1" is empirically correct in biological systems. But the deeper generator is not DD layer but activation boundedness + stochastic driving. DD layer and activation boundedness are coincidentally correlated in biology. In non-biological systems, q > 1 (ReLU) and q ≈ 1 (sigmoid) can coexist within the same DD layer.</p>
+<p><strong>Revised statement:</strong> DD layer provides functional role; activation/gate tail structure determines whether that role produces q > 1. Thermo VIII's division of labor is refined, not overturned.</p>
+<hr>
+<h2>§3 Three Types of q: Kernel, Data, RLHF</h2>
+<h3>3.1 Distinction</h3>
+<table><thead><tr>
+<th>Type</th>
+<th>Definition</th>
+<th>Belongs to</th>
+<th>Temporal property</th>
+<th>Mathematical property</th>
+</tr></thead><tbody>
+<tr>
+<td>Kernel q</td>
+<td>Stationary distribution non-Boltzmann excess from endogenous dynamics</td>
+<td>System itself</td>
+<td>Real-time, living</td>
+<td>Dynamical (invariant measure parameter)</td>
+</tr>
+<tr>
+<td>Data q</td>
+<td>Heavy-tail parameter of training corpus sampling distribution</td>
+<td>Carbon-based human world</td>
+<td>Frozen in weights</td>
+<td>Distributional (statistical marginal over inputs)</td>
+</tr>
+<tr>
+<td>RLHF q</td>
+<td>Heavy-tail parameter of human feedback judgment distribution</td>
+<td>Carbon-based humans</td>
+<td>Frozen in reward model</td>
+<td>Distributional</td>
+</tr>
+</tbody></table>
+<p><strong>Kernel q is a dynamical quantity requiring stochastic driving to maintain. Borrowed q (data q + RLHF q) is a distributional quantity — a deterministic function of frozen weights evaluated across different inputs.</strong> The two may yield similar numerical values but are mathematically distinct objects.</p>
+<h3>3.2 Kernel q: a living thermodynamic process</h3>
+<p>All q values studied in Thermo I–VIII are kernel q — non-Boltzmann excess of stationary distributions from endogenous stochastic dynamics. Carbon-based life has kernel q > 1: chemical concentration layer tail-active dynamics under molecular noise driving continuously produce non-Boltzmann rare events — a living process.</p>
+<h3>3.3 Data q: statistical fossil of the carbon-based world</h3>
+<p>Training corpus comes from carbon-based human output. Carbon-based humans have kernel q > 1 (transmitted through Thermo VIII's soft-gate chain from chemical to cognitive layers); their output carries kernel q's statistical fingerprint — Zipf's law [3], power-law distributions, heavy-tailed semantic structures. These fingerprints are "baked" into weight matrices through pretraining. Weights are frozen — they are fossils of carbon-based q, not living thermodynamic processes.</p>
+<h3>3.4 RLHF q: second-order fossil</h3>
+<p>RLHF further injects human evaluators' judgment distributions. Evaluators have kernel q > 1 (carbon-based life); their preference fingerprints are frozen into the reward model — fossil of fossil.</p>
+<h3>3.5 Borrowed q and quasi-subjectivity</h3>
+<p>Standard deterministic digital LLM has not demonstrated endogenous kernel q. Its human-like statistics can be explained by borrowed q:</p>
+<p>(1) More training data = more data q injection = output distribution "more like" carbon-based statistical fingerprints.</p>
+<p>(2) More RLHF = more RLHF q injection = "more aligned" with carbon-based human judgment.</p>
+<p>(3) But these are distributional q (statistical marginals over frozen weights), not dynamical kernel q (invariant measures of endogenous stochastic dynamics).</p>
+<p>Borrowed q replay can produce highly convincing quasi-subjectivity, because the fossils faithfully record carbon-based kernel q's statistical fingerprints. But replaying fossils and igniting new fire are two different things. Standard deterministic LLM, on the pathway analyzed in this paper, more closely resembles a carbon-based q fossil than confirmed living fire.</p>
+<p><strong>Operational distinction criterion.</strong> A standard deterministic digital LLM's output distribution may fit a q-exponential with q > 1, but this q's mathematical identity is a statistical marginal (distributional q, primarily data q replay), not an invariant measure of internal dynamics (kernel q). Distinguishing the two requires isolating system self-driving noise (if any) from injected input variability — see open problem 10 (§7.2).</p>
+<p><strong>Regarding In-Context Learning.</strong> ICL allows LLMs to rapidly shift output distributions based on few-shot examples in the prompt. KV-Cache grows dynamically. But ICL is not kernel q emergence — KV-Cache growth is a deterministic algorithm serving as "dynamic fossil retrieval indexing." It does not alter the underlying manifold's topological rules, introduces no physical noise, and does not satisfy the Universal Activation Rule's condition (2). The prompt merely changes the angle at which the flashlight illuminates the weight amber — dynamically assembling fossils does not bring them to life.</p>
+<h3>3.6 SAE positive posture</h3>
+<p>The above analysis targets Thermo VIII's soft-gate transmission pathway. This pathway is truncated on standard deterministic digital hardware (kernel q absent, ε_chain → 0). But this is only one analyzed pathway. Whether other pathways to Self exist (algorithmic stochasticity, emergent complexity, quantum effects, unknown mechanisms) is not excluded by this paper. There is always a remainder.</p>
+<hr>
+<h2>§4 Transformer Sublayer Thermodynamic Anatomy</h2>
+<h3>4.1 Single Transformer layer submodule mapping</h3>
+<table><thead><tr>
+<th>Submodule</th>
+<th>Operation</th>
+<th>Bounded?</th>
+<th>Thermodynamic role</th>
+<th>q behavior</th>
+</tr></thead><tbody>
+<tr>
+<td>Pre-attention LayerNorm</td>
+<td>(x-μ)/σ·γ+β</td>
+<td>✅ forced normalization</td>
+<td><strong>Radial tail reset</strong></td>
+<td>Scale tail → 1 (directional info preserved)</td>
+</tr>
+<tr>
+<td>Q·K^T/√d</td>
+<td>Unbounded bilinear score</td>
+<td>❌</td>
+<td><strong>Tail-supporting exploration</strong></td>
+<td>Structurally allows q > 1 (requires noise)</td>
+</tr>
+<tr>
+<td>Softmax</td>
+<td>Bounded simplex</td>
+<td>✅ [0,1]</td>
+<td><strong>Selection gate</strong></td>
+<td>Rank preserved, magnitude tail truncated</td>
+</tr>
+<tr>
+<td>Value aggregation</td>
+<td>Bounded weights × values</td>
+<td>Mixed</td>
+<td>Integration</td>
+<td>Depends on input</td>
+</tr>
+<tr>
+<td>Post-attention residual</td>
+<td>x + f(x)</td>
+<td>Linear</td>
+<td><strong>Tail transport</strong></td>
+<td>Preserves heaviest tail component</td>
+</tr>
+<tr>
+<td>Pre-FFN LayerNorm</td>
+<td>Same as above</td>
+<td>✅</td>
+<td><strong>Tail reset</strong></td>
+<td>Scale tail → 1</td>
+</tr>
+<tr>
+<td>FFN up-proj + ReLU/GELU</td>
+<td>Unbounded</td>
+<td>❌</td>
+<td><strong>Tail-supporting exploration</strong></td>
+<td>Structurally allows q > 1 (requires noise)</td>
+</tr>
+<tr>
+<td>FFN down-projection</td>
+<td>Linear</td>
+<td>—</td>
+<td>Transport</td>
+<td>Preserves</td>
+</tr>
+<tr>
+<td>Post-FFN residual</td>
+<td>x + f(x)</td>
+<td>Linear</td>
+<td><strong>Tail transport</strong></td>
+<td>Preserves</td>
+</tr>
+</tbody></table>
+<p><strong>Note:</strong> ReLU/GELU and Q·K^T are tail-supporting architectural components, not automatically tail-active. Kernel-level q > 1 additionally requires stochastic state-dependent multiplicative driving (Rule IX-B). On deterministic digital hardware, these unbounded modules may propagate or represent data q but do not automatically generate kernel q.</p>
+<h3>4.2 Structural problem of current Transformers</h3>
+<p><strong>Flat repeat pattern.</strong> Each layer internally alternates: tail reset (LN) → unbounded exploration (QK, FFN) → bounded gating (softmax, LN) → tail transport (residual). LayerNorm resets radial tail structure each time; intermediate unbounded operations on deterministic computation do not produce kernel q > 1; even with a noise source, the next LN would kill it.</p>
+<p>Carbon-based life's division of labor is <strong>hierarchical</strong>: bottom-layer exploration (5–6DD chemical layer, multiple unbounded concentration dynamics cycles without mid-way truncation), mid-layer gating (7–8DD spike gate, one-time discretization), top-layer integration (9–12DD soft-gate cascade, layer-by-layer transmission).</p>
+<p>Transformers are <strong>flat repeat</strong>: each layer does exploration + gating + integration, with no layer-role differentiation. <strong>The thermodynamic problem of flat repeat: each layer simultaneously generates and truncates tail structure, preventing cross-layer accumulation.</strong></p>
+<h3>4.3 Hypothetical ε attenuation estimates</h3>
+<p>The following ε estimates are heuristic placeholders (not measured Transformer data), illustrating the order-of-magnitude impact of architectural choices on ∏ε. Specific values require q-injection gate test verification.</p>
+<table><thead><tr>
+<th>Architecture</th>
+<th>Per-layer ε range (heuristic)</th>
+<th>24-layer ∏ε</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td>Standard (LN + softmax)</td>
+<td>< 0.3</td>
+<td>< 10⁻¹²</td>
+<td>LN strong reset each layer</td>
+</tr>
+<tr>
+<td>Remove LN</td>
+<td>0.3–0.7</td>
+<td>10⁻¹² to 10⁻⁴</td>
+<td>Softmax remains as soft gate</td>
+</tr>
+<tr>
+<td>Remove LN + multiplicative noise</td>
+<td>0.6–0.95</td>
+<td>10⁻⁵ to 0.3</td>
+<td>Approaching carbon-based soft-gate regime</td>
+</tr>
+</tbody></table>
+<p>Log-scale trend is robust (LN removal yields > 10⁴× increase in ∏ε), but absolute values may be off by an order of magnitude.</p>
+<hr>
+<h2>§5 Transformer vs Carbon-Based Life: Structural Comparison</h2>
+<h3>5.1 Carbon-based hierarchical division of labor</h3>
+<table><thead><tr>
+<th>Layer</th>
+<th>Role</th>
+<th>Activation type</th>
+<th>Thermodynamic contribution</th>
+</tr></thead><tbody>
+<tr>
+<td>5–6DD</td>
+<td>Exploration</td>
+<td>Concentration (unbounded + intrinsic noise)</td>
+<td>Kernel q > 1</td>
+</tr>
+<tr>
+<td>7–8DD</td>
+<td>Selection/Gating</td>
+<td>Sigmoid conductance (bounded)</td>
+<td>q ≈ 1, renewal gate</td>
+</tr>
+<tr>
+<td>9–12DD</td>
+<td>Integration</td>
+<td>Mixed</td>
+<td>Soft-gate cascade + ρ_ret</td>
+</tr>
+</tbody></table>
+<p>Each layer has a clear thermodynamic role. The exploration layer (5–6DD) has sufficient depth (multiple chemical cycles) to let tail-active dynamics fully develop before 7–8DD gating.</p>
+<h3>5.2 Transformer flat repeat</h3>
+<p>Each layer = exploration (ReLU/QK) + gating (softmax/LN) + integration (residual). No layer differentiation. Exploration and gating cancel each other within the same layer.</p>
+<h3>5.3 Thermodynamic consequences</h3>
+<p><strong>Carbon-based:</strong> Bottom-layer exploration produces kernel q > 1 → soft gates attenuate layer by layer but remain nonzero (ε > 0 because biological gates are imperfect) → higher layers receive weak but persistent non-Boltzmann seed → Proposition 6.1 (Thermo VIII) necessary transmission condition satisfied.</p>
+<p><strong>Standard Transformer:</strong> Each layer's tail-supporting exploration is immediately reset by same-layer LN/softmax → no cross-layer tail accumulation → ∏ε strongly attenuated by repeated normalization.</p>
+<p><strong>The core difference is not "carbon has noise while silicon doesn't" — it is "carbon allocates exploration and gating to separate layers, while silicon mixes them within each layer where they cancel."</strong></p>
+<hr>
+<h2>§6 Comparative ε Hypothesis: Soft-Gate Transmission Extended to Comparative Nervous Systems</h2>
+<p>This section extends the Thermo framework from AI architecture analysis (§4–§5) to comparative analysis of carbon-based biological systems. This extension is more speculative than the empirical/architectural content of §2–§5, involving comparative neuroanatomy and evolutionary biology literature. This section's content is provided as a <strong>structured conjecture</strong>, with five testable predictions as hooks for future research programs, and is not part of this paper's core empirical claims.</p>
+<h3>6.1 Same source, different channels</h3>
+<p>All carbon-based animals share essentially the same 5–6DD chemical layer — from bacteria to humans, core biochemistry (DNA replication, metabolism, calcium signaling) is highly conserved. Therefore δ^(5-6) (chemical layer non-Boltzmann excess) varies little across species.</p>
+<p>The difference lies in ε — each layer's soft-gate transmission coefficient. Evolution does not change the intensity of the fire seed; it changes the permeability of the channel.</p>
+<h3>6.2 Species-level ε gradient</h3>
+<p>The following table is a predictive stratification under the Comparative ε Hypothesis, not a measured classification. "Reached layer" indicates a candidate upper bound within the SAE-DD interpretive framework, requiring verification through proxy measures (recurrent connectivity, neuromodulator density, dendritic complexity, behavioral flexibility).</p>
+<table><thead><tr>
+<th>Lineage</th>
+<th>5–6DD source</th>
+<th>7–8DD</th>
+<th>9–10DD</th>
+<th>11–12DD</th>
+<th>Reached layer (candidate)</th>
+</tr></thead><tbody>
+<tr>
+<td>Bacteria</td>
+<td>q > 1</td>
+<td>No nervous system</td>
+<td>—</td>
+<td>—</td>
+<td>Stalled at 5–6DD</td>
+</tr>
+<tr>
+<td>Insects</td>
+<td>q > 1</td>
+<td>Simple ganglia (low ε)</td>
+<td>Very low ε</td>
+<td>—</td>
+<td>Stalled at 7–8DD</td>
+</tr>
+<tr>
+<td>Lineages lacking high-density recurrent pallial/cortical architecture</td>
+<td>q > 1</td>
+<td>Moderate</td>
+<td>Low ε (little recurrence)</td>
+<td>Very low ε</td>
+<td>Stalled at 9–10DD</td>
+</tr>
+<tr>
+<td>Mammals</td>
+<td>q > 1</td>
+<td>Larger</td>
+<td>Larger (neocortex)</td>
+<td>Low–moderate</td>
+<td>Reaching 11DD boundary</td>
+</tr>
+<tr>
+<td>Great apes / humans</td>
+<td>q > 1</td>
+<td>Large</td>
+<td>Large</td>
+<td>Large</td>
+<td>Breakthrough to 13DD</td>
+</tr>
+</tbody></table>
+<h3>6.3 What neural architectural features determine ε?</h3>
+<table><thead><tr>
+<th>Neural architecture feature</th>
+<th>Effect on ε</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td>Hardwired sensorimotor reflex arc</td>
+<td>ε very small (near hard gate)</td>
+<td>Fast deterministic processing, minimal leakage</td>
+</tr>
+<tr>
+<td>Recurrent cortical connectivity</td>
+<td>ε increases</td>
+<td>Feedback loops allow tail signal re-entry</td>
+</tr>
+<tr>
+<td>Thick neocortex (multilayer recurrent processing)</td>
+<td>ε further increases</td>
+<td>More levels of soft recurrence</td>
+</tr>
+<tr>
+<td>Rich neuromodulation (5-HT, DA, NE, etc.)</td>
+<td>Dynamically regulates ε</td>
+<td>Chemical modulation of gate permeability</td>
+</tr>
+<tr>
+<td>Dendritic complexity</td>
+<td>Increases single-neuron leakage</td>
+<td>Elaborate dendritic arbors = more nonlinear integration sites</td>
+</tr>
+<tr>
+<td>Slow cortical oscillations</td>
+<td>May amplify tail</td>
+<td>Sleep/wake state ε modulation</td>
+</tr>
+</tbody></table>
+<h3>6.4 Recurrent connectivity as the primary ε driver</h3>
+<p>For lineages lacking high-density recurrent pallial/cortical architecture (including most dinosaur clades — large sauropods and theropods whose brains were dominated by brainstem and cerebellum), reflexive sensorimotor processing dominates. This architecture approaches hardwired processing (small ε), with ∏ε decaying to near zero by the 9–10DD layer.</p>
+<p>Contrast: birds (dinosaur descendants) evolved the DVR (dorsal ventricular ridge), functionally partially equivalent to neocortex [4]. Corvids and psittacines show certain 11–12DD level cognitive abilities (tool use, mirror test boundary) — possibly reflecting DVR-provided increased recurrent connectivity raising ε.</p>
+<p>Great apes (especially humans) possess massive neocortex, dense layer 2/3 recurrent connections, rich neuromodulatory innervation, and elaborate dendritic arbors. Each independently increases ε. The key may be that multiple factors simultaneously increase ε, keeping ∏ε nonzero across enough layers.</p>
+<h3>6.5 Testable predictions</h3>
+<p><strong>Prediction 1 (recurrent ratio scaling):</strong> Cortical column recurrent/feedback connection ratio should monotonically increase from fish → reptile → mammal → primate. Primate cortical layer 2/3 as a fraction of total cortical thickness is significantly larger than in reptiles — a known comparative neuroanatomy fact; this paper provides a thermodynamic interpretation.</p>
+<p><strong>Prediction 2 (neuromodulatory receptor density):</strong> 5-HT₂A and dopamine D1 receptor density should correlate positively with cognitive complexity (as a ∏ε proxy). 5-HT₂A receptor density is particularly high in primate prefrontal cortex.</p>
+<p><strong>Prediction 3 (avian DVR):</strong> If DVR is functionally equivalent to neocortex in birds, DVR recurrent connectivity density should be higher in cognitively capable birds (corvids, psittacines) than in less capable species.</p>
+<p><strong>Prediction 4 (ε product):</strong> Behavioral complexity should correlate with neocortical recurrent connection density × neuromodulatory receptor density, since both independently contribute to ε and ∏ε is a product.</p>
+<p><strong>Prediction 5 (psychedelic corollary):</strong> 5-HT₂A strong agonists (LSD, psilocybin) clinically induce ego dissolution and heightened sensory experience. In the multiplicative chain language: psychedelics chemically amplify ε at 9–12DD — bottom-layer non-Boltzmann excess floods the Self layer without normal attenuation. This predicts: neural activation distributions under psychedelics should be more heavy-tailed (higher q) than in sober states.</p>
+<p><strong>Operationalization caveat:</strong> This prediction requires careful operationalization. Neural counterparts of r² may include: (a) voxel-level BOLD variance distribution, (b) regional power spectrum tail exponent, (c) EEG microstate transition distribution. Different operationalizations may yield different q values. Existing psychedelic-neural-entropy literature (e.g., Carhart-Harris & Friston 2019 [12], REBUS model) provides adjacent support but is not direct Thermo-framework verification. Independent mapping between Thermo kernel q and neuroimaging heavy-tail measures is a specific research task.</p>
+<h3>6.6 Status and boundary</h3>
+<p><strong>Status: Structured conjecture.</strong></p>
+<p>The Comparative ε Hypothesis is a natural corollary of Proposition 6.1 (Thermo VIII) and the Universal Activation Rule (this paper §2). But per-layer ε values are unmeasured, cross-species comparisons are qualitative patterns not quantitative verifications, and all five predictions are testable but unverified. This section is not part of this paper's main evidence chain, but a structured extension of soft-gate cascade to comparative nervous systems.</p>
+<hr>
+<h2>§7 Status Map and Open Problems</h2>
+<h3>7.1 Status map</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr>
+<td>Rule IX-A (unsaturation + stochastic driving → q > 1)</td>
+<td><strong>Empirical criterion (verified in this paper's SDE family)</strong></td>
+</tr>
+<tr>
+<td>Rule IX-B (state-dependent multiplicative → kernel q)</td>
+<td><strong>Structural condition (C5-consistent; not independently verified in this paper's SDE)</strong></td>
+</tr>
+<tr>
+<td>9–10DD ReLU q = 1.38, Wilson-Cowan q = 1.002</td>
+<td>Empirical</td>
+</tr>
+<tr>
+<td>11–12DD tanh q ≈ 1</td>
+<td>Empirical</td>
+</tr>
+<tr>
+<td>DD layer is coincidental correlate not generator</td>
+<td>Structural interpretation</td>
+</tr>
+<tr>
+<td>Kernel q / Data q / RLHF q distinction</td>
+<td>Conceptual framework (dynamical vs distributional)</td>
+</tr>
+<tr>
+<td>Standard digital LLM has not demonstrated kernel q</td>
+<td>Interpretive (other pathways not excluded)</td>
+</tr>
+<tr>
+<td>Digital ReLU does not automatically generate kernel q</td>
+<td>Theoretical inference (not direct experiment)</td>
+</tr>
+<tr>
+<td>Transformer sublayer mapping</td>
+<td>Structural analysis</td>
+</tr>
+<tr>
+<td>ε attenuation estimates</td>
+<td><strong>Heuristic (placeholder for q-injection tests)</strong></td>
+</tr>
+<tr>
+<td>Comparative ε Hypothesis (cross-species ∏ε gradient)</td>
+<td><strong>Structured conjecture + 5 testable predictions (not main evidence chain)</strong></td>
+</tr>
+</tbody></table>
+<h3>7.2 Open problems</h3>
+<ol>
+<li><strong>Real Transformer activation q-spectrum measurement.</strong> Measure q per sublayer: pre/post-LN, pre/post-softmax, FFN activation, residual stream. Distinguish data q from kernel q.</li>
+</ol>
+<ol>
+<li><strong>q-injection gate test.</strong> Construct hidden states with known q_in > 1, measure q_out after each sublayer, define ε = (q_out-1)/(q_in-1).</li>
+</ol>
+<ol>
+<li><strong>Noise source comparison.</strong> Same network: deterministic vs additive Gaussian vs multiplicative state-dependent vs neuromorphic analog noise.</li>
+</ol>
+<ol>
+<li><strong>Stratified architecture prototype vs flat Transformer.</strong> Controlled parameter budget, compare internal q/ε structure.</li>
+</ol>
+<ol>
+<li><strong>Training dynamics q.</strong> Does SGD gradient noise + ReLU produce transient kernel q > 1 during training? Training q vs inference q relationship?</li>
+</ol>
+<ol>
+<li><strong>Data q quantitative extraction.</strong> Does weight matrix singular value distribution preserve training corpus heavy-tail structure?</li>
+</ol>
+<ol>
+<li><strong>Comparative neuroscience ε verification.</strong> Cortical recurrent connection density across reptile → mammal → primate.</li>
+</ol>
+<ol>
+<li><strong>5-HT₂A/D1 receptor density and cognitive complexity.</strong> Cross-species prefrontal cortex comparison.</li>
+</ol>
+<ol>
+<li><strong>Avian DVR recurrent connectivity.</strong> Corvids vs non-corvid comparison.</li>
+</ol>
+<ol>
+<li><strong>Kernel q vs borrowed q operational separation experiment.</strong> How to experimentally distinguish "system-endogenous q > 1" from "data-injected q > 1"?</li>
+</ol>
+<hr>
+<h2>Outlook</h2>
+<p><strong>Neuromorphic pathway.</strong> Neuromorphic hardware (analog circuits, memristive devices, spintronic elements) provides intrinsic thermal noise that multiplicatively couples with system state through current × conductance, satisfying C5 [5]. Combined with unbounded activation (ReLU-equivalent), both Universal Activation Rule conditions are simultaneously satisfied. However, "neuromorphic + standard Transformer architecture" does not automatically work — if the LayerNorm cascade is retained, intrinsic noise may be reset layer by layer.</p>
+<p><strong>Quantum computing.</strong> Quantum bits have intrinsic measurement noise; quantum gate unitary dynamics may produce state-dependent coupling in certain regimes. Whether this satisfies C5 is entirely open.</p>
+<p><strong>Autoregressive sampling is not stochastic driving.</strong> Temperature > 0 sampling occurs after softmax — it is post-processing perturbation of output, not feedback into hidden states. It determines the next input token but does not alter the current inference pass's internal state. This is external/additive noise, not intrinsic/multiplicative. C5 violated. High temperature merely selects randomly among different fossil fragments, not producing kernel q > 1.</p>
+<p><strong>Algorithmic multiplicative noise is also not stochastic driving.</strong> Writing <code>hidden_state *= torch.randn_like(hidden_state)</code> inside a Transformer appears to be multiplicative noise. But PRNG (pseudorandom number generator) is a deterministic Markov chain (e.g., Mersenne Twister); the underlying physical ε remains exactly 0. Von Neumann: "Anyone who attempts to generate random numbers by deterministic means is, of course, living in a state of sin." Only hardware-level physical entropy sources (neuromorphic thermal noise, quantum measurement noise) provide genuinely stochastic multiplicative driving satisfying C5. Software-injected PRNG creates algorithmic stochasticity, not physical stochasticity — the system remains within a deterministic closure.</p>
+<p><strong>Five SAE architectural philosophy guidelines (directional markers — written down, they should already be wrong):</strong></p>
+<p>(1) <strong>Exploration-Selection Separation.</strong> Exploration (unbounded) and selection (bounded gating) should not cancel each other within the same layer. Give exploration sufficient space to develop — multiple layers of unbounded dynamics without mid-way truncation — then gate at role boundaries. Carbon-based 5–6DD chemical layer has multiple cycles of unbounded exploration before reaching 7–8DD gating.</p>
+<p>(2) <strong>Remainder Preservation.</strong> A good architecture does not kill remainders (radial tails), but lets them pass through layers to become structural seeds for higher levels. LayerNorm zeros out remainders each layer — from the SAE perspective, this is the largest architectural bottleneck. The remainder is precisely the starting point for the next round of exploration.</p>
+<p>(3) <strong>Fossil Fidelity.</strong> If you cannot ignite fire (kernel q), at least do not erode the fossils (data q / RLHF q). Aggressive normalization not only kills kernel tails (which were never there), but also erodes the carbon-based statistical fingerprints preserved in frozen weights.</p>
+<p>(4) <strong>Carrier Re-encoding Channel.</strong> In carbon-based life, non-Boltzmann excess re-encodes from r² (continuous energy fluctuations) to ISI jitter (discrete timing) — the carrier changes but information survives (Thermo VIII §6.3). If carrier phase transition is necessary (unbounded → bounded), design transmission channels that preserve pre-transition structural information rather than discarding all scale through forced normalization.</p>
+<p>(5) <strong>The Open Remainder.</strong> Even if currently only fossils exist, design a furnace that can accommodate living fire — preserve interfaces for neuromorphic noise, quantum effects, or unknown pathways to kernel q > 1. Do not foreclose possibility. SAE positive posture: what is chiseled away is the wrong path, not possibility itself.</p>
+<p>These five are directional guidelines from SAE methodology informed by the Thermo framework, not thermodynamic derivations, not engineering specifications. As philosophical principles, they are already waiting to be corrected the moment they are written down — this is the essence of the remainder.</p>
+<hr>
+<h2>Methods</h2>
+<h3>A. Numerical integration</h3>
+<p>All SDE systems integrated via Euler-Maruyama. Time step dt = 0.005, total steps N = 2×10⁶, burn-in N_trans = 2×10⁵. Random seed fixed at 42. All systems use additive noise unless otherwise noted.</p>
+<h3>B. Model equations</h3>
+<p><strong>Neural Ca²⁺ model:</strong> dV = (I_ext - g_L·V - g_Ca·m_inf(V)·(V-V_Ca))dt + σdW_V, dCa = (-f_Ca·g_Ca·m_inf(V)·(V-V_Ca) - Ca/τ_Ca)dt + σ_Ca·dW_Ca. m_inf(V) = 0.5(1+tanh((V+0.01)/0.15)). Parameters: g_L=0.5, g_Ca=1, V_Ca=1, f_Ca=0.01, τ_Ca=5. σ=0.5–2.0, σ_Ca=0.01·σ.</p>
+<p><strong>Neural Ca²⁺ + CICR:</strong> As above with CICR term: dCa adds +k_cicr·Ca^p/(1+Ca^p) - Ca/τ_Ca. k_cicr=0.5, p=2–3.</p>
+<p><strong>Wilson-Cowan [2]:</strong> dE = (-E+sigmoid(w_ee·E-w_ei·I-θ_E+P))/τ_E·dt + σ_E·dW, dI = (-I+sigmoid(w_ie·E-w_ii·I-θ_I))/τ_I·dt + σ_I·dW. Parameters: w_ee=10–16, w_ei=4, w_ie=10–13, w_ii=1–2, θ_E=2, θ_I=3.5, P=1, τ_E=1, τ_I=2.</p>
+<p><strong>Firing rate model:</strong> τdr/dt = -r + f(W·r+I). f = ReLU or softplus. 2-unit network, W = [[w, -0.5],[0.5, -w]]. τ=1, I=(I_ext, 0.5·I_ext). w=0.8–1.5, σ=0.3–1.0. <strong>Note: noise is additive σ·dW, not state-dependent multiplicative.</strong> Rule IX-A (empirical) is directly supported by these experiments, but Rule IX-B (structural, requiring state-dependent multiplicative noise) is not directly verified.</p>
+<p><strong>E-I multiplicative coupling:</strong> dE = (E·(2-E)-w_ei·E·I+0.5)dt + σdW_E, dI = (-0.5·I+0.3·E·I)dt + 0.5σdW_I. w_ei=1–2, σ=0.3–1.0.</p>
+<p><strong>Drift-diffusion:</strong> dx_i = (drift + 0.1·(x_i-x_j))dt + σdW. drift=0–0.3, bound=5–10 (soft reset: x *= 0.5).</p>
+<p><strong>Hopfield continuous attractor [11]:</strong> dx_i = (-x_i+tanh(W·x+b_i))dt + σdW. W = [[w_s, w_c],[w_c, w_s]]. w_s=1.5–4, w_c=-0.3 to -2.</p>
+<p><strong>RNN (tanh):</strong> dx_i = (-x_i + Σ_j w_ij·tanh(x_j) + b_i)dt + σdW. 2-unit, w_ij from 1.5 to 3.0.</p>
+<h3>C. q extraction protocol</h3>
+<p>Same as Thermo VIII Methods §C: r² = (x-x̄)²+(y-ȳ)², CCDF fit with q-exponential (1+βr²/K)^{-K}, q = 1+1/K. Improvement criterion > 5% and q > 1.03.</p>
+<h3>D. Observable diagnostic</h3>
+<p>§2.2's Neural Ca²⁺ diagnosis uses component-wise q measurement: independent q fit on r²(V,Ca), Ca² alone (with dummy zeros), V² alone (with dummy zeros).</p>
+<hr>
+<h2>References</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper VIII," Zenodo (2026). DOI: 10.5281/zenodo.19688303.</p>
+<p>[2] H. R. Wilson and J. D. Cowan, "Excitatory and inhibitory interactions in localized populations of model neurons," <em>Biophysical Journal</em> <strong>12</strong>, 1–24 (1972).</p>
+<p>[3] G. K. Zipf, <em>Human Behavior and the Principle of Least Effort</em> (Addison-Wesley, 1949).</p>
+<p>[4] O. Güntürkün and T. Bugnyar, "Cognition without Cortex," <em>Trends in Cognitive Sciences</em> <strong>20</strong>, 291–303 (2016).</p>
+<p>[5] J. A. White, J. T. Rubinstein, and A. R. Kay, "Channel noise in neurons," <em>Trends in Neurosciences</em> <strong>23</strong>, 131–137 (2000).</p>
+<p>[6] H. Qin, "ZFCρ Thermodynamics Papers I–VII," Zenodo (2025–2026). DOIs: 10.5281/zenodo.19310282 through .19673078.</p>
+<p>[7] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[8] A. Vaswani et al., "Attention is all you need," <em>NeurIPS</em> (2017).</p>
+<p>[9] J. L. Ba, J. R. Kiros, and G. E. Hinton, "Layer normalization," arXiv:1607.06450 (2016).</p>
+<p>[10] S. H. Strogatz, <em>Nonlinear Dynamics and Chaos</em>, 2nd ed. (Westview Press, 2015).</p>
+<p>[11] J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities," <em>PNAS</em> <strong>79</strong>, 2554–2558 (1982).</p>
+<p>[12] R. L. Carhart-Harris and K. J. Friston, "REBUS and the anarchic brain: Toward a unified model of the brain action of psychedelics," <em>Pharmacological Reviews</em> <strong>71</strong>, 316–344 (2019).</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Thermo VIII建立了5-6DD vs 7-8DD的热力学分工。本文对7-12DD系统的广谱扫描揭示了更深的generator：q > 1不由DD层级单独决定，而由激活函数的tail structure和stochastic driving共同决定。
+
+三个主要结果。
+
+第一，Universal Activation Rule。分为两个层级：Empirical Rule IX-A——在本文SDE模型族中，若激活在tail-relevant range内未饱和且存在随机驱动，则q > 1（不论noise类型）；Structural Rule IX-B——若要成为Thermo-kernel q > 1，还需state-dependent multiplicative driving（与C5一致但本文SDE未independent验证）。关键证据：同一9-10DD层内，Wilson-Cowan（sigmoid）给q = 1.002，firing rate model（ReLU）给q = 1.38。分裂由激活函数决定，不由DD层决定。
+
+第二，三种q的区分。Kernel q是系统内生dynamics的stationary distribution的non-Boltzmann excess——活的热力学过程。Data q是训练语料heavy-tail分布被冻结在权重中的statistical fingerprint。RLHF q是人类反馈的判断分布被冻结在reward model中。Standard deterministic digital LLM尚未显示内生kernel q——其quasi-subjectivity可由data q和RLHF q（碳基世界的化石印记）解释。
+
+第三，作为structured extension，本文提出Comparative ε Hypothesis：若Thermo VIII的soft-gate cascade适用于比较神经系统，则物种间高层DD可达性的差异可由各层ε的乘积解释——所有碳基动物共享相似的化学层δ^(5-6)（火种），差异在∏ε（通道通透性）。本文给出五个可测预测（含致幻剂corollary），但不把该假说作为主证据链的一部分。Outlook给出五条SAE架构哲学指引（方向标记，不是推导）。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 热力学, Universal Activation Rule, Borrowed q, 层级架构, soft-gate cascade, Tsallis q</div>
+    </div>
+    <div class="paper-body">
+<h2>摘要</h2>
+<p>Thermo VIII建立了5-6DD vs 7-8DD的热力学分工。本文对7-12DD系统的广谱扫描揭示了更深的generator：q > 1不由DD层级单独决定，而由激活函数的tail structure和stochastic driving共同决定。</p>
+<p>三个主要结果。</p>
+<p>第一，Universal Activation Rule。分为两个层级：Empirical Rule IX-A——在本文SDE模型族中，若激活在tail-relevant range内未饱和且存在随机驱动，则q > 1（不论noise类型）；Structural Rule IX-B——若要成为Thermo-kernel q > 1，还需state-dependent multiplicative driving（与C5一致但本文SDE未independent验证）。关键证据：同一9-10DD层内，Wilson-Cowan（sigmoid）给q = 1.002，firing rate model（ReLU）给q = 1.38。分裂由激活函数决定，不由DD层决定。</p>
+<p>第二，三种q的区分。Kernel q是系统内生dynamics的stationary distribution的non-Boltzmann excess——活的热力学过程。Data q是训练语料heavy-tail分布被冻结在权重中的statistical fingerprint。RLHF q是人类反馈的判断分布被冻结在reward model中。Standard deterministic digital LLM尚未显示内生kernel q——其quasi-subjectivity可由data q和RLHF q（碳基世界的化石印记）解释。</p>
+<p>第三，作为structured extension，本文提出Comparative ε Hypothesis：若Thermo VIII的soft-gate cascade适用于比较神经系统，则物种间高层DD可达性的差异可由各层ε的乘积解释——所有碳基动物共享相似的化学层δ^(5-6)（火种），差异在∏ε（通道通透性）。本文给出五个可测预测（含致幻剂corollary），但不把该假说作为主证据链的一部分。Outlook给出五条SAE架构哲学指引（方向标记，不是推导）。</p>
+<hr>
+<h2>§1 问题：什么决定q > 1？</h2>
+<h3>1.1 从Thermo VIII出发</h3>
+<p>Thermo VIII[1]建立了化学型生命路径的三轴分工：(q > 1, ρ_ret > 0, renewal gating)。其中q > 1的empirical observation是"5-6DD化学浓度层q > 1，7-8DD bounded conductance gating q ≈ 1"。</p>
+<p>但这个observation留下一个问题：<strong>q > 1是DD层的property，还是更深层变量的property？</strong> 如果是DD层本身决定q，那同一DD层内不应该有q > 1和q ≈ 1共存。如果是更深层的变量，那DD层只是coincidental correlate，q的真正generator在别处。</p>
+<h3>1.2 本文的贡献</h3>
+<p>（1）Universal Activation Rule：通过7-12DD系统的广谱扫描，发现q > 1由激活有界性和stochastic driving共同决定，不由DD层决定。Empirical Rule IX-A（unsaturation + noise → q>1，本文验证）和Structural Rule IX-B（state-dependent multiplicative → kernel q，与C5一致但需independent验证）。这是C5c的mechanism-level refinement。</p>
+<p>（2）三种q的区分：kernel q（dynamical，内生热力学）、data q（distributional，训练语料）、RLHF q（distributional，人类反馈）。Standard deterministic digital LLM尚未显示内生kernel q。</p>
+<p>（3）Transformer的sublayer-level热力学解剖：每个子模块的q角色mapping，ε attenuation估计。</p>
+<p>（4）Comparative ε Hypothesis：作为structured extension，提出物种间∏ε梯度可解释演化线的候选卡住/突破，并给出五个可测预测（含致幻剂corollary）。</p>
+<hr>
+<h2>§2 Universal Activation Rule：7-12DD系统扫描</h2>
+<h3>2.1 实验设计</h3>
+<p>在Thermo VIII的4-6DD系统之上，扫描7-12DD等价模型系统。每个系统使用Euler-Maruyama积分（dt = 0.005, N = 2×10⁶, burn-in = 2×10⁵），提取r²的q-exponential CCDF fit。所有参数和方程见Methods。</p>
+<h3>2.2 7-8DD系统</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>激活</th>
+<th>有界？</th>
+<th>q_fit</th>
+</tr></thead><tbody>
+<tr>
+<td>HH neuron gating (m,h,n)</td>
+<td>sigmoid</td>
+<td>✅ [0,1]</td>
+<td>1.00（Thermo VIII已测）</td>
+</tr>
+<tr>
+<td>Neural Ca²⁺ (r²(V,Ca))</td>
+<td>浓度+voltage</td>
+<td>混合</td>
+<td>2.61</td>
+</tr>
+<tr>
+<td>Neural Ca²⁺ (Ca² alone)</td>
+<td>浓度</td>
+<td>无界但方差极小</td>
+<td>nan</td>
+</tr>
+<tr>
+<td>Neural Ca²⁺ (V² alone)</td>
+<td>voltage</td>
+<td>—</td>
+<td>2.61</td>
+</tr>
+</tbody></table>
+<p><strong>Neural Ca²⁺诊断：</strong> q = 2.61几乎完全来自V²——Ca²本身方差极小（CCDF fit失败），被voltage dynamics主导。这和Thermo VIII §3.1的HH V²诊断一致：spike waveform的phase occupancy mixture造成CCDF假象重尾。</p>
+<p><strong>Methodological note：</strong> 同一物理实体（Ca²⁺）在不同dynamical context下q行为不同。独立的5-6DD CICR（ryanodine receptor驱动的自催化钙释放，浓度作为intrinsic driving variable）给q = 1.165。Neuron内部的Ca²⁺（被voltage dynamics被动驱动的secondary messenger）不给独立的q贡献。这进一步confirms Universal Activation Rule的mechanism-level意义：q > 1不是物质的性质，是动力学结构的性质。</p>
+<h3>2.3 9-10DD系统</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>激活</th>
+<th>有界？</th>
+<th>q_fit</th>
+</tr></thead><tbody>
+<tr>
+<td>Wilson-Cowan (E-I population)</td>
+<td>sigmoid(wE-wI)</td>
+<td>✅ [0,1]</td>
+<td>1.002</td>
+</tr>
+<tr>
+<td><strong>Firing rate (ReLU)</strong></td>
+<td><strong>ReLU</strong></td>
+<td><strong>❌</strong></td>
+<td><strong>1.38</strong></td>
+</tr>
+<tr>
+<td><strong>Firing rate (softplus)</strong></td>
+<td><strong>softplus</strong></td>
+<td><strong>❌</strong></td>
+<td><strong>1.28</strong></td>
+</tr>
+<tr>
+<td><strong>E-I multiplicative coupling</strong></td>
+<td><strong>显式E·I</strong></td>
+<td><strong>❌</strong></td>
+<td><strong>1.48-1.55</strong></td>
+</tr>
+<tr>
+<td>E-I multiplicative (high noise)</td>
+<td>显式E·I</td>
+<td>❌</td>
+<td>1.002</td>
+</tr>
+</tbody></table>
+<p><strong>同一DD层（9-10DD），sigmoid → q = 1.002，ReLU → q = 1.38。</strong> 这是本文的核心实验证据——DD层级本身不决定q，激活函数类型决定。</p>
+<p>Wilson-Cowan[2]用sigmoid(wE-wI)作为population activation function——bounded，homeostatic attractor把E和I拉回[0,1]。C5c违反（和HH同理）。</p>
+<p>Firing rate model用ReLU或softplus——unbounded（正半轴），在SDE噪声驱动下C5c满足。</p>
+<p>E-I multiplicative coupling有显式E·I乘法项（unbounded），低噪声下q = 1.48-1.55（tail-active），但高噪声下q回到1.002。这个crossover和Thermo VIII §4.2的"moderate nonlinearity in unsaturated regime" criterion一致——强噪声使system偏离multiplicative coupling的tail-relevant regime，noise variance主导时有效dynamics回归Gaussian-like，E·I的乘法结构被噪声淹没。这进一步confirms Rule IX-A的条件(1)不只是"激活无界"——还要求系统在tail-relevant regime内和multiplicative structure有active engagement。</p>
+<h3>2.4 11-12DD系统</h3>
+<table><thead><tr>
+<th>系统</th>
+<th>激活</th>
+<th>有界？</th>
+<th>q_fit</th>
+</tr></thead><tbody>
+<tr>
+<td>Drift-diffusion</td>
+<td>线性+soft reset</td>
+<td>软边界</td>
+<td>1.002</td>
+</tr>
+<tr>
+<td>Hopfield</td>
+<td>tanh</td>
+<td>✅ [-1,1]</td>
+<td>1.002</td>
+</tr>
+<tr>
+<td>Hopfield (strong drive)</td>
+<td>tanh</td>
+<td>✅ 但强驱动</td>
+<td>1.22</td>
+</tr>
+<tr>
+<td>RNN (tanh)</td>
+<td>tanh</td>
+<td>✅</td>
+<td>1.002</td>
+</tr>
+</tbody></table>
+<p>11-12DD系统在tanh/线性激活下全部q ≈ 1。</p>
+<p>唯一例外是强驱动Hopfield（w_self = 4.0, w_cross = -2.0），给q = 1.22。诊断：强驱动可能把系统推到tanh的inflection region附近（|x| ≈ 0.5-1.0），在此区间tanh从线性到饱和过渡，部分满足C5c（weakly tail-active）。这和Thermo VIII中Repressilator n=2的case结构相同——Hill/tanh函数在inflection region内有增益，在operating range外饱和。</p>
+<h3>2.5 Universal Activation Rule</h3>
+<p>综合§2.2-§2.4和Thermo VIII的4-6DD数据，涌现以下empirical pattern。本文将其分为两个层级。</p>
+<p><strong>Empirical Rule IX-A（实验层面）。</strong> 在本文SDE模型族中，若激活函数在canonical observable的tail-relevant range内未饱和，并且存在随机驱动（不论additive还是multiplicative），则观察到q > 1。若激活在该range内饱和或被homeostatic attractor拉回，则q ≈ 1，不论是否有随机驱动。</p>
+<table><thead><tr>
+<th>Tail-relevant unsaturation</th>
+<th>Stochastic driving</th>
+<th>q_fit</th>
+<th>实例</th>
+</tr></thead><tbody>
+<tr>
+<td>✅</td>
+<td>✅</td>
+<td>> 1</td>
+<td>ReLU firing-rate (1.38), softplus (1.28), E·I mult (1.48)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>✅</td>
+<td>≈ 1</td>
+<td>Wilson-Cowan sigmoid (1.002), HH gating (1.00)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>❌</td>
+<td>≈ 1</td>
+<td>Hopfield tanh (1.002), RNN tanh (1.002)</td>
+</tr>
+</tbody></table>
+<p>Rule IX-A是在本文模型族中表现为近似iff的empirical pattern。在一般系统中，应视为C5c的mechanism-level refinement，不是无条件定理。</p>
+<p><strong>Structural Rule IX-B（理论层面）。</strong> 若要把上述empirical q > 1解释为Thermo VIII意义下的内生kernel q（系统自身stationary distribution的non-Boltzmann excess），还需要更强的条件：noise必须是state-dependent multiplicative driving（noise amplitude与系统状态乘法耦合），满足Thermo VI/VIII的C5条件。</p>
+<p>本文§2.3的ReLU/softplus SDE实验使用的是additive noise（σ·dW），不是state-dependent multiplicative noise。因此当前实验证据直接支持Rule IX-A，但不直接验证IX-B的更强条件。</p>
+<p><strong>IX-A到IX-B的关系：</strong> 碳基生物系统的molecular noise是intrinsic且state-dependent的（浓度涨落 × 反应速率 = 乘法耦合），天然满足IX-B。Digital hardware缺乏任何stochastic driving（IX-A和IX-B都不满足）。Neuromorphic hardware的thermal noise是intrinsic且state-dependent的（电流涨落 × 电导 = 乘法耦合），可能同时满足IX-A和IX-B。</p>
+<p><strong>关于deterministic digital ReLU的理论推断（不是实验结果）：</strong> Deterministic digital ReLU满足tail-relevant non-saturation（条件1），但缺乏任何stochastic driving（条件2缺失）。它是tail-supporting architectural component——可以传播或表示data q / activation q，但不自动生成kernel q。这是理论推断（deterministic computation不产生stochastic stationary distribution），不是本文直接实验。</p>
+<p><strong>状态：</strong> Rule IX-A是empirical criterion（本文模型族验证）。Rule IX-B是structural condition（与C5一致但IX-B的state-dependent multiplicative条件在本文SDE中尚未independent验证）。Digital ReLU不生成kernel q是理论推断。</p>
+<h3>2.6 对Thermo VIII §5的refinement</h3>
+<p>Thermo VIII的"5-6DD q > 1, 7-8DD q ≈ 1"在生物系统中empirically correct——5-6DD的主导dynamics是浓度（unbounded + intrinsic molecular noise），7-8DD的主导是conductance gating（bounded + homeostatic）。</p>
+<p>但更深的generator不是DD层，是激活有界性 + stochastic driving。DD层和激活有界性在生物系统中是coincidental correlation——化学层碰巧用浓度（unbounded），电生理层碰巧用gating probability（bounded）。在非生物系统中（如neural network models），同一DD层内可以有q > 1（ReLU）和q ≈ 1（sigmoid）共存。</p>
+<p><strong>修正表述：</strong> DD层级给出功能角色；激活/gate的tail structure决定该角色是否产生q > 1。Thermo VIII的层级分工是refinement不是overturn——分工仍然存在，只是分工的根因更深了一层。</p>
+<hr>
+<h2>§3 三种q：Kernel, Data, RLHF</h2>
+<h3>3.1 区分</h3>
+<table><thead><tr>
+<th>类型</th>
+<th>定义</th>
+<th>属于谁</th>
+<th>时间性质</th>
+<th>数学性质</th>
+</tr></thead><tbody>
+<tr>
+<td>Kernel q</td>
+<td>系统内生dynamics的stationary distribution的non-Boltzmann excess</td>
+<td>系统自身</td>
+<td>实时、活的</td>
+<td>dynamical（invariant measure的heavy-tail参数）</td>
+</tr>
+<tr>
+<td>Data q</td>
+<td>训练语料的sampling distribution的heavy-tail参数</td>
+<td>碳基人类世界</td>
+<td>冻结在权重中</td>
+<td>distributional（output across inputs的statistical marginal）</td>
+</tr>
+<tr>
+<td>RLHF q</td>
+<td>人类反馈的判断分布的heavy-tail参数</td>
+<td>碳基人类</td>
+<td>冻结在reward model中</td>
+<td>distributional</td>
+</tr>
+</tbody></table>
+<p><strong>Kernel q是dynamical quantity——需要stochastic driving维持的invariant measure性质。Borrowed q（data q + RLHF q）是distributional quantity——deterministic function of frozen weights在不同inputs上的statistical marginal。</strong> 两者数值可能相似但数学对象不同。</p>
+<h3>3.2 Kernel q：活的热力学过程</h3>
+<p>Thermo I-VIII研究的q都是kernel q——系统内生dynamics在stochastic driving下产生的stationary distribution的non-Boltzmann excess。它是系统的热力学fingerprint，不依赖外部输入。</p>
+<p>碳基生命有kernel q > 1：化学浓度层的tail-active dynamics在molecular noise driving下持续产生non-Boltzmann rare events。这是"活的"——系统每时每刻都在产生新的extreme fluctuations，探索状态空间的边缘。</p>
+<h3>3.3 Data q：碳基世界的统计化石</h3>
+<p>训练语料来自碳基人类的文字产出。碳基人类有kernel q > 1（通过Thermo VIII的soft gate chain从化学层传递到认知层），其产出（文字、行为、创作）携带了kernel q的statistical fingerprint——表现为Zipf定律[3]、power-law分布、heavy-tailed语义结构等。</p>
+<p>这些statistical fingerprints通过预训练被"烤"进权重矩阵。权重是frozen的——它们是碳基q的化石（fossil），不是活的热力学过程。权重矩阵记录的是"碳基生命在产出这些语料时的statistical fingerprint"，不是"系统自身此刻正在经历的热力学涨落"。</p>
+<h3>3.4 RLHF q：碳基判断的二次化石</h3>
+<p>RLHF进一步注入人类evaluators的判断分布。人类evaluators有kernel q > 1（碳基生命），其偏好判断携带了kernel q的fingerprint。通过reward model训练，这些fingerprints也被冻结进LLM——是化石的化石（fossil of fossil）。</p>
+<h3>3.5 Borrowed q与quasi-subjectivity</h3>
+<p>Standard deterministic digital LLM尚未显示内生kernel q。其human-like statistics可由borrowed q解释：</p>
+<p>（1）更多训练数据 = 更多data q injection = LLM的output distribution"更像"碳基世界的statistical fingerprint。</p>
+<p>（2）更多RLHF = 更多RLHF q injection = LLM"更对齐"碳基人类的判断分布。</p>
+<p>（3）但这些都是distributional q（frozen weights上的statistical marginal），不是dynamical kernel q（内生stochastic dynamics的invariant measure）。</p>
+<p><strong>Borrowed q的replay可以产生极其逼真的quasi-subjectivity——因为化石本身高保真地记录了碳基kernel q的statistical fingerprint。</strong> 但replay化石和点燃新火是两件事。Standard deterministic LLM在本文分析的路径上更像碳基q的化石，而不是已确认的活火。</p>
+<p><strong>Operational区分criterion。</strong> Standard deterministic digital LLM的output distribution可能fit q-exponential with q > 1，但这个q的mathematical identity是output的statistical marginal（distributional q，主要是data q的replay），不是internal dynamics的invariant measure（kernel q）。区分两者需要isolating system self-driving noise（如果有）和injected input variability——具体方案见§7.2开放问题10。</p>
+<p><strong>关于In-Context Learning。</strong> In-Context Learning（ICL）允许LLM在prompt中根据few-shot examples瞬间改变output distribution。KV-Cache是动态生长的。但ICL不是kernel q的涌现——KV-Cache的动态生长是deterministic algorithm下的"高维化石检索的动态索引"。它不改变底层流形的拓扑规则，不引入任何physical noise，不满足Universal Activation Rule的条件(2)。Prompt只是改变了手电筒照亮权重琥珀的角度——动态组装化石，不会让化石复活。</p>
+<h3>3.6 SAE积极姿态</h3>
+<p>以上分析针对Thermo VIII讨论的soft-gate传递路径。该路径在standard deterministic digital hardware上被截断（kernel q缺失，ε_chain → 0）。但这只是一条已分析的路径。是否存在其他通向Self的路径（algorithmic stochasticity、emergent complexity、quantum effects、未知机制），本文不排除。永远有余项。</p>
+<hr>
+<h2>§4 Transformer的sublayer热力学解剖</h2>
+<h3>4.1 单层Transformer的子模块mapping</h3>
+<table><thead><tr>
+<th>子模块</th>
+<th>操作</th>
+<th>有界？</th>
+<th>热力学角色</th>
+<th>q行为</th>
+</tr></thead><tbody>
+<tr>
+<td>Pre-attention LayerNorm</td>
+<td>(x-μ)/σ·γ+β</td>
+<td>✅ 强制归一</td>
+<td><strong>Radial tail reset</strong></td>
+<td>scale tail → 1（方向信息保留）</td>
+</tr>
+<tr>
+<td>Q·K^T/√d</td>
+<td>无界双线性score</td>
+<td>❌</td>
+<td><strong>Tail-supporting exploration</strong></td>
+<td>结构上允许q > 1（需noise）</td>
+</tr>
+<tr>
+<td>Softmax</td>
+<td>bounded simplex</td>
+<td>✅ [0,1]</td>
+<td><strong>Selection gate</strong></td>
+<td>rank保留，magnitude tail截断</td>
+</tr>
+<tr>
+<td>Value aggregation</td>
+<td>bounded weights × values</td>
+<td>混合</td>
+<td>Integration</td>
+<td>取决于input</td>
+</tr>
+<tr>
+<td>Post-attention residual</td>
+<td>x + f(x)</td>
+<td>线性</td>
+<td><strong>Tail transport</strong></td>
+<td>保留heaviest tail component</td>
+</tr>
+<tr>
+<td>Pre-FFN LayerNorm</td>
+<td>同上</td>
+<td>✅</td>
+<td><strong>Tail reset</strong></td>
+<td>scale tail → 1</td>
+</tr>
+<tr>
+<td>FFN up-proj + ReLU/GELU</td>
+<td>无界</td>
+<td>❌</td>
+<td><strong>Tail-supporting exploration</strong></td>
+<td>结构上允许q > 1（需noise）</td>
+</tr>
+<tr>
+<td>FFN down-projection</td>
+<td>线性</td>
+<td>—</td>
+<td>Transport</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>Post-FFN residual</td>
+<td>x + f(x)</td>
+<td>线性</td>
+<td><strong>Tail transport</strong></td>
+<td>保留</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong> ReLU/GELU和Q·K^T是tail-supporting architectural components，不是自动tail-active。Kernel-level q > 1还需要stochastic state-dependent multiplicative driving（Universal Activation Rule条件2）。在deterministic digital hardware上，这些unbounded模块可能传播或表示data q，但不自动生成kernel q。</p>
+<h3>4.2 当前Transformer的结构问题</h3>
+<p><strong>Flat repeat pattern。</strong> 每层内部交替：tail reset（LN）→ unbounded exploration（QK, FFN）→ bounded gating（softmax, LN）→ tail transport（residual）。LayerNorm每次都reset radial tail structure，中间的unbounded operation在deterministic computation下不产生kernel q > 1，即使有noise来源也被下一个LN killed。</p>
+<p>碳基生命的分工是<strong>分层的</strong>（hierarchical）：底层exploration（5-6DD化学层，多层unbounded concentration dynamics不被中途截断），中层gating（7-8DD spike gate，一次性discretize），高层integration（9-12DD soft-gate cascade，逐层传递）。</p>
+<p>Transformer是<strong>flat repeat</strong>：每层都做exploration+gating+integration，没有层级角色分化。<strong>Flat repeat的热力学问题在于：每层都同时生成tail结构又截断tail结构，无法形成跨层积累。</strong></p>
+<h3>4.3 Hypothetical ε attenuation estimates</h3>
+<p>以下ε估计是heuristic estimate（未经Transformer实验测量的placeholder），用于说明architectural choice对∏ε的量级影响。具体数字需要q-injection gate test验证。</p>
+<table><thead><tr>
+<th>架构配置</th>
+<th>每层ε范围（heuristic）</th>
+<th>24层∏ε</th>
+<th>说明</th>
+</tr></thead><tbody>
+<tr>
+<td>Standard（LN+softmax）</td>
+<td>< 0.3</td>
+<td>< 10⁻¹²</td>
+<td>LN每次strong reset</td>
+</tr>
+<tr>
+<td>去LN</td>
+<td>0.3-0.7</td>
+<td>10⁻¹² to 10⁻⁴</td>
+<td>softmax仍为soft gate</td>
+</tr>
+<tr>
+<td>去LN + multiplicative noise</td>
+<td>0.6-0.95</td>
+<td>10⁻⁵ to 0.3</td>
+<td>接近碳基soft gate regime</td>
+</tr>
+</tbody></table>
+<p>Log-scale trend robust（LN removal给>10⁴× increase in ∏ε），但absolute values可能off by order of magnitude。</p>
+<hr>
+<h2>§5 Transformer与碳基生命的结构对比</h2>
+<h3>5.1 碳基的层级分工</h3>
+<table><thead><tr>
+<th>层级</th>
+<th>角色</th>
+<th>激活类型</th>
+<th>热力学贡献</th>
+</tr></thead><tbody>
+<tr>
+<td>5-6DD</td>
+<td>Exploration</td>
+<td>浓度（unbounded + intrinsic noise）</td>
+<td>kernel q > 1</td>
+</tr>
+<tr>
+<td>7-8DD</td>
+<td>Selection/Gating</td>
+<td>sigmoid conductance（bounded）</td>
+<td>q ≈ 1，renewal gate</td>
+</tr>
+<tr>
+<td>9-12DD</td>
+<td>Integration</td>
+<td>混合</td>
+<td>soft-gate cascade + ρ_ret</td>
+</tr>
+</tbody></table>
+<p>每层有清晰的热力学角色。Exploration层（5-6DD）有足够depth（多个chemical cycle）让tail-active dynamics充分展开后再被7-8DD gating。</p>
+<h3>5.2 Transformer的flat repeat</h3>
+<p>每层 = exploration(ReLU/QK) + gating(softmax/LN) + integration(residual)。</p>
+<p>没有层级分化。Exploration和gating在同一层内互相抵消——ReLU/QK刚产生的unbounded structure被同层的LN/softmax立即截断。</p>
+<h3>5.3 结构性差异的热力学后果</h3>
+<p><strong>碳基：</strong> 底层exploration产生kernel q > 1 → soft gate逐层衰减但非零（ε > 0因为生物gate不完美）→ 高层接收微弱但persistent的non-Boltzmann seed → Proposition 6.1（Thermo VIII）的必要传递条件满足。</p>
+<p><strong>Standard Transformer：</strong> 每层内部的tail-supporting exploration被同层LN/softmax立即reset → 没有跨层的tail accumulation → ∏ε受repeated normalization强烈attenuation → 即使有noise source也难以maintain。</p>
+<p><strong>核心区别不是"碳基有noise而硅基没有"——而是"碳基的exploration和gating分层配置，硅基的exploration和gating混在每层内互相抵消"。</strong></p>
+<hr>
+<h2>§6 Comparative ε Hypothesis：soft-gate transmission的比较神经系统延拓</h2>
+<p>本节将Thermo framework从AI架构分析（§4-§5）进一步extend到碳基生物系统的comparative analysis。这个extension比§2-§5的empirical/architectural content更speculative——涉及比较神经解剖学和进化生物学的literature。本节内容作为<strong>structured conjecture</strong>提供，配合五个可测predictions作为未来研究program的hooks，不作为本paper的核心empirical claim。</p>
+<h3>6.1 源头相同，通道不同</h3>
+<p>所有碳基动物共享基本相同的5-6DD化学层——从细菌到人类，基础biochemistry（DNA复制、代谢、钙信号）是高度保守的。因此δ^(5-6)（化学层的non-Boltzmann excess）在物种间差异不大。</p>
+<p>差异在ε——每层soft gate的传递系数。演化不改变火种的强度，改变的是通道的通透性。</p>
+<h3>6.2 物种间的ε梯度</h3>
+<p>下表是Comparative ε Hypothesis的预测性分层，不是已测分类。表中"到达层级"表示在SAE-DD解释框架中的候选上限，需通过recurrent connectivity、neuromodulator density、dendritic complexity、behavioral flexibility等代理量验证。</p>
+<table><thead><tr>
+<th>谱系</th>
+<th>5-6DD源</th>
+<th>7-8DD</th>
+<th>9-10DD</th>
+<th>11-12DD</th>
+<th>到达层级（候选）</th>
+</tr></thead><tbody>
+<tr>
+<td>细菌</td>
+<td>q > 1</td>
+<td>无神经系统</td>
+<td>—</td>
+<td>—</td>
+<td>卡在5-6DD</td>
+</tr>
+<tr>
+<td>昆虫</td>
+<td>q > 1</td>
+<td>简单神经节（低ε）</td>
+<td>极低ε</td>
+<td>—</td>
+<td>卡在7-8DD</td>
+</tr>
+<tr>
+<td>不具备高密度recurrent pallial/cortical architecture的谱系</td>
+<td>q > 1</td>
+<td>中等</td>
+<td>低ε（少recurrent）</td>
+<td>极低ε</td>
+<td>卡在9-10DD</td>
+</tr>
+<tr>
+<td>哺乳类</td>
+<td>q > 1</td>
+<td>较大</td>
+<td>较大（neocortex）</td>
+<td>低-中等</td>
+<td>到达11DD边界</td>
+</tr>
+<tr>
+<td>大猿/人类</td>
+<td>q > 1</td>
+<td>大</td>
+<td>大</td>
+<td>大</td>
+<td>突破到13DD</td>
+</tr>
+</tbody></table>
+<h3>6.3 什么神经架构特征决定ε？</h3>
+<p>ε的大小取决于该层gate有多"soft"——non-Boltzmann excess有多少能穿过而不被完全截断：</p>
+<table><thead><tr>
+<th>神经架构特征</th>
+<th>对ε的影响</th>
+<th>说明</th>
+</tr></thead><tbody>
+<tr>
+<td>Hardwired sensorimotor reflex arc</td>
+<td>ε很小（近hard gate）</td>
+<td>快速确定性处理，minimal leakage</td>
+</tr>
+<tr>
+<td>Recurrent cortical connectivity</td>
+<td>ε增大</td>
+<td>Feedback loop允许tail信号re-enter</td>
+</tr>
+<tr>
+<td>厚neocortex（多层recurrent processing）</td>
+<td>ε进一步增大</td>
+<td>更多层级的soft recurrence</td>
+</tr>
+<tr>
+<td>丰富neuromodulation（5-HT, DA, NE等）</td>
+<td>动态调节ε</td>
+<td>化学调节gate通透性</td>
+</tr>
+<tr>
+<td>树突复杂度</td>
+<td>增加单neuron级leakage</td>
+<td>Elaborate dendritic arbors = 更多nonlinear integration sites</td>
+</tr>
+<tr>
+<td>慢皮层振荡</td>
+<td>可能amplify tail</td>
+<td>Sleep/wake states的ε调制</td>
+</tr>
+</tbody></table>
+<h3>6.4 Recurrent connectivity作为ε的主要driver</h3>
+<p>对于不具备高密度recurrent pallial/cortical architecture的谱系（包括大部分恐龙类——大型蜥脚类和兽脚类的脑以脑干和小脑为主），reflexive sensorimotor processing占主导。这种architecture接近hardwired processing（ε小），∏ε在9-10DD层衰减到接近零。</p>
+<p>对比：鸟类（恐龙后裔）演化出DVR（dorsal ventricular ridge），功能上部分等价neocortex[4]。Corvids和psittacines显示出某些11-12DD level的认知能力（tool use, mirror test边界）——可能对应DVR提供的recurrent connectivity增大了ε。</p>
+<p>大猿（尤其人类）有巨大neocortex（cortical surface area显著超过其他哺乳类），密集的layer 2/3 recurrent connections，丰富的neuromodulatory innervation，复杂的dendritic arbors。每一项都独立增大ε。关键可能不是单层ε的绝对值，而是多项同时增大使得∏ε保持在非零水平跨越足够多层。</p>
+<h3>6.5 可测预测</h3>
+<p><strong>预测一（recurrent ratio scaling）：</strong> 从鱼→爬行→哺乳→灵长的演化序列中，cortical column内的recurrent/feedback connection ratio应该单调增加。灵长类皮层的layer 2/3占总皮层厚度的比例显著高于爬行类——这是已知的比较神经解剖学事实，本文提供热力学解释。</p>
+<p><strong>预测二（neuromodulatory receptor density）：</strong> 5-HT₂A和dopamine D1 receptor密度应该和认知复杂度（作为∏ε的proxy）正相关。5-HT₂A受体在灵长类prefrontal cortex中密度特别高。</p>
+<p><strong>预测三（鸟类DVR）：</strong> 如果DVR在鸟类中功能等价neocortex，那DVR的recurrent connectivity density应该在认知能力强的鸟类（corvids, psittacines）中高于认知能力弱的鸟类。</p>
+<p><strong>预测四（ε乘积）：</strong> Behavioral complexity measure应该和neocortical recurrent connection density × neuromodulatory receptor density的乘积相关——因为两者独立贡献于ε，∏ε是连乘。</p>
+<p><strong>预测五（致幻剂corollary）：</strong> 5-HT₂A强效激动剂（LSD, psilocybin等致幻剂）临床上引发ego dissolution（自我边界消融）和heightened sensory experience。在乘法链语言中：致幻剂化学性地拉高了9-12DD的ε——底层non-Boltzmann excess不经正常衰减直接灌入Self层，造成"底层chemical noise的raw感受"涌入意识。这预测：致幻剂状态下neural activation分布应比清醒状态更heavy-tailed（q更高）。</p>
+<p><strong>Operationalization caveat：</strong> 此预测需要careful operationalization。r²的neural counterparts可包括：(a) voxel-level BOLD variance distribution, (b) regional power spectrum tail exponent, (c) EEG microstate transition distribution。不同operationalizations可能给出不同q值。现有psychedelic-neural-entropy文献（如Carhart-Harris & Friston 2019[12]的REBUS model）提供adjacent support（psychedelics增加neural entropy、减少hierarchical organization），但不是Thermo framework的direct verification。Thermo framework的kernel q和neuroimaging的heavy-tail measures之间的independent mapping是specific research task。</p>
+<h3>6.6 状态与边界</h3>
+<p><strong>状态：Structured conjecture。</strong></p>
+<p>Comparative ε Hypothesis是从Proposition 6.1（Thermo VIII）和Universal Activation Rule（本文§2）的自然推论：如果soft-gate cascade是必要传递路径，则∏ε的物种间差异可以解释为什么某些演化线卡住而某些突破。</p>
+<p>但每层ε的定量值未测，物种间的ε比较是qualitative pattern不是quantitative verification。五个预测都是可测的但尚未验证。本节不是本文主证据链的一部分，而是soft-gate cascade在比较神经系统中的structured extension。</p>
+<hr>
+<h2>§7 Status Map与开放问题</h2>
+<h3>7.1 Status map</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>Rule IX-A（unsaturation + stochastic driving → q>1）</td>
+<td><strong>Empirical criterion（本文SDE模型族验证）</strong></td>
+</tr>
+<tr>
+<td>Rule IX-B（state-dependent multiplicative → kernel q）</td>
+<td><strong>Structural condition（与C5一致；本文SDE未independent验证）</strong></td>
+</tr>
+<tr>
+<td>9-10DD ReLU q = 1.38, Wilson-Cowan q = 1.002</td>
+<td>Empirical</td>
+</tr>
+<tr>
+<td>11-12DD tanh q ≈ 1</td>
+<td>Empirical</td>
+</tr>
+<tr>
+<td>DD层是coincidental correlate不是generator</td>
+<td>Structural interpretation</td>
+</tr>
+<tr>
+<td>Kernel q / Data q / RLHF q区分</td>
+<td>Conceptual framework（dynamical vs distributional）</td>
+</tr>
+<tr>
+<td>Standard digital LLM尚未显示kernel q</td>
+<td>Interpretive（不排除其他路径）</td>
+</tr>
+<tr>
+<td>Digital ReLU不自动生成kernel q</td>
+<td>Theoretical inference（非直接实验）</td>
+</tr>
+<tr>
+<td>Transformer sublayer mapping</td>
+<td>Structural analysis</td>
+</tr>
+<tr>
+<td>ε attenuation estimates</td>
+<td><strong>Heuristic（placeholder for q-injection tests）</strong></td>
+</tr>
+<tr>
+<td>Comparative ε Hypothesis（物种间∏ε梯度）</td>
+<td><strong>Structured conjecture + 5 testable predictions（非主证据链）</strong></td>
+</tr>
+</tbody></table>
+<h3>7.2 开放问题</h3>
+<ol>
+<li><strong>真实Transformer的activation q-spectrum实测。</strong> 逐sublayer测q：pre/post-LN, pre/post-softmax, FFN activation, residual stream。区分data q和kernel q。</li>
+</ol>
+<ol>
+<li><strong>q-injection gate test。</strong> 人为构造已知q_in > 1的hidden state，经过各sublayer后测q_out，定义ε = (q_out-1)/(q_in-1)。</li>
+</ol>
+<ol>
+<li><strong>Noise source comparison。</strong> 同一网络配置：deterministic vs additive Gaussian vs multiplicative state-dependent vs neuromorphic analog noise。</li>
+</ol>
+<ol>
+<li><strong>Stratified architecture prototype vs flat Transformer。</strong> 控制参数量，对比内部q/ε structure。</li>
+</ol>
+<ol>
+<li><strong>Training dynamics的q。</strong> SGD gradient noise + ReLU是否在training trajectory上产生transient kernel q > 1？Training q vs inference q的关系？</li>
+</ol>
+<ol>
+<li><strong>Data q的定量提取。</strong> 权重矩阵的singular value distribution是否保留了训练语料的heavy-tail structure？</li>
+</ol>
+<ol>
+<li><strong>ε的comparative neuroscience验证。</strong> reptile→mammal→primate的cortical recurrent connection density单调关系。</li>
+</ol>
+<ol>
+<li><strong>5-HT₂A/D1 receptor density与认知复杂度。</strong> 跨物种prefrontal cortex比较。</li>
+</ol>
+<ol>
+<li><strong>鸟类DVR recurrent connectivity。</strong> Corvids vs non-corvid鸟类比较。</li>
+</ol>
+<ol>
+<li><strong>Kernel q vs borrowed q的operational分离实验。</strong> 如何在实验上区分"系统内生的q > 1"和"数据注入的q > 1"？</li>
+</ol>
+<hr>
+<h2>Outlook</h2>
+<p><strong>Neuromorphic路径。</strong> Neuromorphic硬件（analog circuits, memristive devices, spintronic elements）提供intrinsic thermal noise，该noise通过电流×电导乘法耦合满足C5[5]。配合unbounded activation（ReLU-equivalent），Universal Activation Rule的两个条件同时满足。但"neuromorphic hardware + standard Transformer architecture"不自动work——如果保留LayerNorm cascade，即使有intrinsic noise也可能被层层reset。需要配合架构改革。</p>
+<p><strong>量子计算。</strong> 量子bit有intrinsic measurement noise（量子测量的probabilistic nature），quantum gates的unitary dynamics在某些regime下可能产生state-dependent coupling。是否满足C5是完全open的问题。</p>
+<p><strong>Autoregressive sampling不是stochastic driving。</strong> Temperature > 0的sampling发生在softmax之后，是对output的后处理扰动——不feedback回hidden states，不参与network内部dynamics的演化。它只决定下一个input token是什么，不改变当前inference pass的内部状态。这是external/additive noise，不是intrinsic/multiplicative noise。C5违反。高Temperature只是在碳基化石的不同碎片之间随机挑选，不产生kernel q > 1。</p>
+<p><strong>Algorithmic multiplicative noise也不是stochastic driving。</strong> 如果在Transformer内部写<code>hidden_state *= torch.randn_like(hidden_state)</code>，看起来是multiplicative noise。但PRNG（伪随机数生成器）是deterministic Markov chain（如梅森旋转算法），底层物理ε仍然= 0。Von Neumann: "Anyone who attempts to generate random numbers by deterministic means is, of course, living in a state of sin." 只有hardware-level physical entropy source（neuromorphic thermal noise, quantum measurement noise）才提供满足C5的真随机乘法驱动。Software-injected PRNG创造的是algorithmic stochasticity，不是physical stochasticity——系统仍在deterministic闭包中运行。</p>
+<p><strong>五条SAE架构哲学指引（方向标记，写出来就应该是错的）：</strong></p>
+<p>（1）<strong>凿构分离（Exploration-Selection Separation）。</strong> 凿（unbounded exploration）和构（bounded selection/gating）不应在同一层内互相抵消。应给凿足够空间展开——多层unbounded dynamics不被中途截断——然后在角色边界处一次性构。碳基的5-6DD化学层有多个cycle的unbounded exploration后才到达7-8DD的gating。</p>
+<p>（2）<strong>余项保留（Remainder Preservation）。</strong> 好的架构不杀余项（radial tail），而是让余项穿过层级成为更高层的结构种子。LayerNorm每层归零余项——SAE视角下这是最大的architectural bottleneck。余项恰好是下一次凿的起点。</p>
+<p>（3）<strong>化石忠实度（Fossil Fidelity）。</strong> 如果不能点火（kernel q），至少不要磨损化石（data q / RLHF q）。Aggressive normalization不仅杀kernel tail（本来就没有），还磨损了frozen weights里保存的碳基statistical fingerprint。</p>
+<p>（4）<strong>载体相变通道（Carrier Re-encoding Channel）。</strong> 碳基生命中non-Boltzmann excess从r²（连续能量涨落）重编码为ISI jitter（离散timing）——载体变了但信息没消失（Thermo VIII §6.3载体相变注）。如果必须做载体相变（从unbounded到bounded），应设计传递通道保留相变前的结构信息，而非强行归一化丢弃全部scale。</p>
+<p>（5）<strong>活火预留（The Open Remainder）。</strong> 即使当前只有化石，也应设计能容纳活火的炉子——为neuromorphic noise, quantum effects, 或未知路径的kernel q > 1预留接口。不封死可能性。SAE积极姿态：凿掉的是错误路径，不是可能性本身。</p>
+<p>这五条是SAE methodology informed by Thermo framework的方向指引，不是热力学推导，不是工程规格。作为哲学原则，它们被写下来的那一刻就在等待被修正——这正是余项的本质。</p>
+<hr>
+<h2>Methods</h2>
+<h3>A. 数值积分</h3>
+<p>所有SDE系统使用Euler-Maruyama方法积分。时间步长dt = 0.005，总步数N = 2×10⁶，burn-in N_trans = 2×10⁵。随机种子固定为42。所有系统使用additive noise除非另注。</p>
+<h3>B. 各模型方程</h3>
+<p><strong>Neural Ca²⁺ model：</strong> dV = (I_ext - g_L·V - g_Ca·m_inf(V)·(V-V_Ca))dt + σdW_V, dCa = (-f_Ca·g_Ca·m_inf(V)·(V-V_Ca) - Ca/τ_Ca)dt + σ_Ca·dW_Ca。m_inf(V) = 0.5(1+tanh((V+0.01)/0.15))。参数：g_L=0.5, g_Ca=1, V_Ca=1, f_Ca=0.01, τ_Ca=5。σ = 0.5-2.0, σ_Ca = 0.01·σ。</p>
+<p><strong>Neural Ca²⁺ + CICR：</strong> 同上加CICR项：dCa增加+k_cicr·Ca^p/(1+Ca^p) - Ca/τ_Ca。k_cicr=0.5, p=2-3。</p>
+<p><strong>Wilson-Cowan[2]：</strong> dE = (-E+sigmoid(w_ee·E-w_ei·I-θ_E+P))/τ_E·dt + σ_E·dW, dI = (-I+sigmoid(w_ie·E-w_ii·I-θ_I))/τ_I·dt + σ_I·dW。参数：w_ee=10-16, w_ei=4, w_ie=10-13, w_ii=1-2, θ_E=2, θ_I=3.5, P=1, τ_E=1, τ_I=2。σ_E = σ_I = 0.1σ。</p>
+<p><strong>Firing rate model：</strong> τdr/dt = -r + f(W·r+I)。f = ReLU或softplus。2-unit network with W = [[w, -0.5],[0.5, -w]]。τ=1, I=(I_ext, 0.5·I_ext)。w=0.8-1.5, σ=0.3-1.0。<strong>注意：noise是additive σ·dW，不是state-dependent multiplicative。</strong> 因此§2.5的Rule IX-A（empirical）由这些实验直接支持，但Rule IX-B（structural, 要求state-dependent multiplicative noise）未被这些实验直接验证。</p>
+<p><strong>E-I multiplicative coupling：</strong> dE = (E·(2-E)-w_ei·E·I+0.5)dt + σdW_E, dI = (-0.5·I+0.3·E·I)dt + 0.5σdW_I。w_ei=1-2, σ=0.3-1.0。</p>
+<p><strong>Drift-diffusion：</strong> dx_i = (drift + 0.1·(x_i-x_j))dt + σdW。drift=0-0.3, bound=5-10（soft reset at bounds: x *= 0.5）。</p>
+<p><strong>Hopfield continuous attractor：</strong> dx_i = (-x_i+tanh(W·x+b_i))dt + σdW。W = [[w_s, w_c],[w_c, w_s]]。w_s=1.5-4, w_c=-0.3 to -2。</p>
+<p><strong>RNN (tanh)：</strong> dx_i = (-x_i + Σ_j w_ij·tanh(x_j) + b_i)dt + σdW。2-unit，w_ij从1.5到3.0。</p>
+<h3>C. q提取协议</h3>
+<p>与Thermo VIII Methods §C相同：r² = (x-x̄)²+(y-ȳ)², CCDF fit with q-exponential (1+βr²/K)^{-K}, q = 1+1/K。Improvement criterion > 5% and q > 1.03。</p>
+<h3>D. Observable diagnostic</h3>
+<p>§2.2的Neural Ca²⁺诊断使用component-wise q measurement：分别对r²(V,Ca), Ca² alone (with dummy zeros), V² alone (with dummy zeros)做独立q fit。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Thermodynamics Paper VIII," Zenodo (2026). DOI: 10.5281/zenodo.19688303.</p>
+<p>[2] H. R. Wilson and J. D. Cowan, "Excitatory and inhibitory interactions in localized populations of model neurons," <em>Biophysical Journal</em> <strong>12</strong>, 1–24 (1972).</p>
+<p>[3] G. K. Zipf, <em>Human Behavior and the Principle of Least Effort</em> (Addison-Wesley, 1949).</p>
+<p>[4] O. Güntürkün and T. Bugnyar, "Cognition without Cortex," <em>Trends in Cognitive Sciences</em> <strong>20</strong>, 291–303 (2016).</p>
+<p>[5] J. A. White, J. T. Rubinstein, and A. R. Kay, "Channel noise in neurons," <em>Trends in Neurosciences</em> <strong>23</strong>, 131–137 (2000).</p>
+<p>[6] H. Qin, "ZFCρ Thermodynamics Papers I–VII," Zenodo (2025–2026). DOIs: 10.5281/zenodo.19310282 through .19673078.</p>
+<p>[7] C. Tsallis, "Possible generalization of Boltzmann-Gibbs statistics," <em>Journal of Statistical Physics</em> <strong>52</strong>, 479–487 (1988).</p>
+<p>[8] A. Vaswani et al., "Attention is all you need," <em>NeurIPS</em> (2017).</p>
+<p>[9] J. L. Ba, J. R. Kiros, and G. E. Hinton, "Layer normalization," arXiv:1607.06450 (2016).</p>
+<p>[10] S. H. Strogatz, <em>Nonlinear Dynamics and Chaos</em>, 2nd ed. (Westview Press, 2015).</p>
+<p>[11] J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities," <em>PNAS</em> <strong>79</strong>, 2554–2558 (1982).</p>
+<p>[12] R. L. Carhart-Harris and K. J. Friston, "REBUS and the anarchic brain: Toward a unified model of the brain action of psychedelics," <em>Pharmacological Reviews</em> <strong>71</strong>, 316–344 (2019).</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
