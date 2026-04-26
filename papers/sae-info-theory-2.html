@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE Information Theory II: A Structural Derivation of Landauer's Principle within the SAE Framework — Three Pillars and Their Open Problems — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/sae-info-theory-2.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/sae-info-theory-2.html">
+  <meta name="citation_title" content="SAE Information Theory II: A Structural Derivation of Landauer's Principle within the SAE Framework — Three Pillars and Their Open Problems">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19780315">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · SAE Information Theory · Paper II</div>
+    <h1>SAE Information Theory II: A Structural Derivation of Landauer's Principle within the SAE Framework — Three Pillars and Their Open Problems<br><span style="font-size:1.1rem;opacity:0.75">SAE 信息论 II：SAE Framework 下 Landauer 原理的结构推导——三支柱与开放问题</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19780315" target="_blank" rel="noopener">10.5281/zenodo.19780315</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19780315" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>The first paper in the SAE Information Theory series (Qin 2026, DOI: 10.5281/zenodo.19740019) established the 4DD ontology of information and a foundational axiom (energy-information conservation across 42 × 1DD), and in §4.5.1 offered a conditional ontological reading of the $\ln 2$ factor in Landauer's principle: $\ln 2$ can be read as a projection factor produced when continuous measurement formalism reads a discrete substrate. The present paper takes up the task of lifting this reading into a structural derivation within the SAE framework.
+
+We identify three prerequisites of any Landauer derivation, each handled by a separate pillar. Pillar 1 concerns the structural relation between Shannon $H$ and SAE $I$ in the erasure setting. Pillar 2 concerns the structural bridge between the statistical temperature $T$ in Landauer's formula and the SAE geometric quantity $c^3$. Pillar 3 concerns the structural origin of $\ln 2$ given the inherited substrate-binary commitment. Each pillar is examined for what it can and cannot deliver inside the SAE framework, and a combination analysis honestly assesses the actual contribution.
+
+Three honest acknowledgments are central. First, the derivation is framework-internal and conditional on inherited commitments (substrate-binary from Paper I §4.5.1, $E = Ic^3$ from the Mass Series, etc.), not an unconditioned physics-level first-principles derivation. Second, the combination analysis shows that the actual derivation backbone remains a standard Bennett-style entropy argument; the SAE contribution is to supply $\ln 2$ with a substrate-binary structural reading and to give the erasure operation a substrate-redistribution ontological picture, not to provide an alternative derivation backbone. Third, a macroscopic 1-bit erasure does not correspond to a single substrate event but to a statistical aggregation across substrate-level events, and the substrate-level minimal quantity $I_{\text{bit}}$ is calibrated through combination with the Landauer constraint rather than derived independently.
+
+The paper explicitly marks three success tiers as all substantive contributions. The strongest tier requires the verification of the Thermo Series $\tau_{\text{dec}}(c^3)$ relation together with a tightening of the commensurate condition. The middle tier delivers the structural derivation with the $T$-$c^3$ bridge bottleneck precisely identified. The weakest tier achieves a first-time precise localization of the walls in the SAE-internal Landauer derivation chain. All three tiers count as substantive scientific contributions: precisely localizing the walls gives subsequent SAE work a specific set of targets.
+
+Keywords: Landauer's principle; derivation of $\ln 2$; substrate-binary commitment; $E = Ic^3$; $T$-$c^3$ structural bridge; SAE framework; conditional structural derivation
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> SAE information theory, Landauer's principle, ln 2, discrete substrate, measurement projection, erasure, three pillars, 4DD ontology</div>
+    </div>
+    <div class="paper-body">
+<h2>Three Pillars and Their Open Problems</h2>
+<p>Self-as-an-End Information Theory Series, Paper II</p>
+<p>Han Qin · DOI: TBD</p>
+<p>ORCID: 0009-0009-9583-0018</p>
+<p>CC BY 4.0</p>
+<p><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
+<hr>
+<h2>Abstract</h2>
+<p>The first paper in the SAE Information Theory series (Qin 2026, DOI: 10.5281/zenodo.19740019) established the 4DD ontology of information and a foundational axiom (energy-information conservation across 42 × 1DD), and in §4.5.1 offered a conditional ontological reading of the $\ln 2$ factor in Landauer's principle: $\ln 2$ can be read as a projection factor produced when continuous measurement formalism reads a discrete substrate. The present paper takes up the task of lifting this reading into a structural derivation within the SAE framework.</p>
+<p>We identify three prerequisites of any Landauer derivation, each handled by a separate pillar. Pillar 1 concerns the structural relation between Shannon $H$ and SAE $I$ in the erasure setting. Pillar 2 concerns the structural bridge between the statistical temperature $T$ in Landauer's formula and the SAE geometric quantity $c^3$. Pillar 3 concerns the structural origin of $\ln 2$ given the inherited substrate-binary commitment. Each pillar is examined for what it can and cannot deliver inside the SAE framework, and a combination analysis honestly assesses the actual contribution.</p>
+<p>Three honest acknowledgments are central. First, the derivation is framework-internal and conditional on inherited commitments (substrate-binary from Paper I §4.5.1, $E = Ic^3$ from the Mass Series, etc.), not an unconditioned physics-level first-principles derivation. Second, the combination analysis shows that the actual derivation backbone remains a standard Bennett-style entropy argument; the SAE contribution is to supply $\ln 2$ with a substrate-binary structural reading and to give the erasure operation a substrate-redistribution ontological picture, not to provide an alternative derivation backbone. Third, a macroscopic 1-bit erasure does not correspond to a single substrate event but to a statistical aggregation across substrate-level events, and the substrate-level minimal quantity $I_{\text{bit}}$ is calibrated through combination with the Landauer constraint rather than derived independently.</p>
+<p>The paper explicitly marks three success tiers as all substantive contributions. The strongest tier requires the verification of the Thermo Series $\tau_{\text{dec}}(c^3)$ relation together with a tightening of the commensurate condition. The middle tier delivers the structural derivation with the $T$-$c^3$ bridge bottleneck precisely identified. The weakest tier achieves a first-time precise localization of the walls in the SAE-internal Landauer derivation chain. All three tiers count as substantive scientific contributions: precisely localizing the walls gives subsequent SAE work a specific set of targets.</p>
+<p><strong>Keywords</strong>: Landauer's principle; derivation of $\ln 2$; substrate-binary commitment; $E = Ic^3$; $T$-$c^3$ structural bridge; SAE framework; conditional structural derivation</p>
+<hr>
+<h2>§1 Introduction: Standard Landauer's Principle and the SAE Derivation Goal</h2>
+<h3>§1.1 The standard statement of Landauer's principle and Bennett's derivation</h3>
+<p>Landauer's original argument (Landauer 1961) gives the minimum energy cost of erasing one bit of information:</p>
+<p>$$E_{\min} = k_B T \ln 2$$</p>
+<p>Bennett (1982) supplied a thermodynamic derivation grounded in the second law and a phase-space volume reduction. The key observation in Bennett's argument is that erasure is a logically irreversible operation corresponding to a halving of phase-space volume, so the system entropy decreases by $k_B \ln 2$, the second law forces the reservoir entropy to increase by at least the same amount, and the reservoir energy must therefore increase by at least $k_B T \ln 2$.</p>
+<p>Bennett's derivation is phenomenological. It does not explain why $\ln 2$ specifically appears; it only shows that $\ln 2$ must appear once Shannon's framework is coupled to thermodynamics. Within Bennett's argument, $\ln 2$ enters as input rather than emerging as output: it comes from the unit-conversion factor between the base-2 Shannon entropy $H = -\sum p \log_2 p$ and the thermodynamic entropy $S = -k_B \sum p \ln p$, and the phase-space halving by 2 is itself an input rather than a derived quantity.</p>
+<p>Bennett's derivation is internally complete within its own scope. The present paper does not challenge Bennett's derivation, but asks a different question: <strong>can the SAE framework give $\ln 2$ a deeper structural reading than that of a unit-convention artifact?</strong></p>
+<h3>§1.2 The four targets of Paper II</h3>
+<p>Paper I §4.5.1 gives a conditional ontological reading: under the SAE 4DD substrate ontology, $\ln 2$ can be read as a projection factor produced when continuous measurement formalism reads a discrete substrate. But this is a reading, not a derivation. The present paper's task is to upgrade the reading to a structural derivation.</p>
+<p>The four targets are:</p>
+<p><strong>(G1)</strong> The structural relation between $H$ and $I$ in the erasure setting: identify the specific structural relation between Shannon $H$ (operational quantity at the 1DD level) and SAE $I$ (substrate quantity at the 4DD level) under erasure operations. This target does not require a general regime-dependent framework; it requires only the relation specific to erasure.</p>
+<p><strong>(G2)</strong> A structural bridge between $T$ and $c^3$ in the erasure setting: explore candidate bridging routes between the statistical temperature $T$ in Landauer's formula and the SAE geometric parameter $c^3$. This target does not assume a closed solution; it aims at articulating candidate routes.</p>
+<p><strong>(G3)</strong> The structural origin of $\ln 2$ given the substrate-binary commitment: under the inherited substrate-binary commitment of Paper I §4.5.1, derive $\ln 2$ as the quantitative signature of continuous measurement reading a discrete substrate.</p>
+<p><strong>(G4)</strong> Combination of the three prerequisites yielding Landauer's formula: through a combination analysis, honestly mark the contribution character of each step (structural reading vs. derivational step vs. standard entropy argument).</p>
+<p>The four targets correspond to four pillars (G1 → Pillar 1, G2 → Pillar 2, G3 → Pillar 3, G4 → combination analysis). §2 handles Pillar 1, §3 handles Pillar 2, §4 handles Pillar 3, §5 handles the combination analysis.</p>
+<h3>§1.3 The epistemic character of the derivation: framework-internal structural derivation</h3>
+<p>A framing must be made explicit at the outset: <strong>the derivation in this paper is a framework-internal structural derivation, not an unconditioned first-principles physics derivation</strong>.</p>
+<p>Specifically:</p>
+<p>First, the derivation inherits multiple SAE prior commitments. The substrate-binary commitment comes from Paper I §4.5.1 and is not derived here. $E = Ic^3$ comes from the Mass Series (Qin 2026f, DOI: 10.5281/zenodo.19510868) and is invoked rather than derived. $\tau_{\text{dec}}$, taken as the timescale of 4DD closure, comes from the Thermo Series and is used here as a candidate bridging tool, not derived.</p>
+<p>Second, certain derivational steps are conditional on inherited commitments rather than independent derivations. The substrate-binary commitment is the essential input of Pillar 3; if future SAE work modifies that commitment (for example by finding that the substrate's minimal unit is not binary), the Pillar 3 derivation will need corresponding revision.</p>
+<p>Third, certain parameters—most notably $I_{\text{bit}}$, the substrate-level minimal information quantity—are calibrated through combination with the Landauer constraint rather than derived independently. See §2.3 for full discussion.</p>
+<p>The phrase "first-principles" within the SAE framework should be read as "framework first-principles given inherited commitments", <strong>not as "physics first-principles independent of any prior commitments"</strong>. Readers should distinguish the two readings clearly. This paper's title chooses "structural derivation" rather than "first-principles derivation" precisely to avoid this ambiguity.</p>
+<p>The epistemic status of such framework-internal derivation has a historical analog. Once Newton's gravitational framework is given, Kepler's three laws follow as internal consequences—but this does not mean Kepler's laws are unconditionedly derived; they are conditional on the inverse-square gravitational commitment. The framework itself is a commitment, not a derived result, but once the commitment is given, the logical consequences within the framework are genuine derivations. The status of the present paper is analogous: once the SAE framework is given, Landauer's formula follows as a framework-internal consequence, but the SAE framework itself (including substrate-binary, $E = Ic^3$, $\tau_{\text{dec}}$) consists of inherited commitments rather than unconditioned derivations.</p>
+<h3>§1.4 Success criteria: three tiers, all substantive</h3>
+<p>To prevent outcome misalignment, the paper makes its success criteria explicit at the outset. The minimum delivery is a systematic examination of the three pillars in the Landauer derivation chain. All three tiers count as substantive contributions.</p>
+<p><strong>Strongest tier</strong>: All three pillars complete a conditional first-principles derivation; the paper delivers "a conditional structural derivation of Landauer's formula within the SAE framework". This tier requires both the verification of the Thermo $\tau_{\text{dec}}(c^3)$ relation in §3.4 and a tightening of the commensurate-condition rigor; it cannot be guaranteed.</p>
+<p><strong>Middle tier</strong>: Two pillars complete and the bottleneck of the third pillar is precisely identified; the paper delivers "a two-pillar derivation plus precise bottleneck localization". This tier represents the realistic expectation given the present outline: Pillar 1's substrate-redistribution reading and Pillar 3's conditional derivation are complete, while Pillar 2 remains a comparison among candidate bridging routes with the $T$-$c^3$ bottleneck precisely localized.</p>
+<p><strong>Weakest tier</strong>: All three pillars are partial, but each obstacle in the Landauer chain has been precisely localized; the paper delivers "a structural exploration of Landauer's derivation in the SAE framework, with walls identified". This tier protects the paper from collapse below the substantive-contribution level: precise localization of the walls in the SAE-internal Landauer derivation chain provides specific targets for future SAE work.</p>
+<p>The weakest tier remains a substantive scientific contribution. This pattern of "negative-result-as-substantive-contribution" is already demonstrated by ZFCρ Paper 66 (Qin 2026, DOI: 10.5281/zenodo.19701479), where the "13 kills" pattern—systematic exclusion plus precise localization—is recognized as a legitimate contribution. The present paper follows the same pattern.</p>
+<h3>§1.5 What the paper does and does not do</h3>
+<p><strong>The paper does</strong>:</p>
+<p>First, handle Pillar 1: structural-relation reading of $H$-$I$ under erasure, plus dimensional analysis of $I_{\text{bit}}$ and an explicit acknowledgment of the statistical-aggregation issue (§2).</p>
+<p>Second, handle Pillar 2: discussion of candidate structural bridging routes between $T$ and $c^3$, comparing three routes (§3), without assuming a closed solution.</p>
+<p>Third, handle Pillar 3: a structural derivation of $\ln 2$ given the inherited substrate-binary commitment (§4).</p>
+<p>Fourth, the combination analysis: honest marking of each step's contribution character, making explicit that the actual derivation backbone remains a standard Bennett-style entropy argument and that the SAE contribution lies at the substrate-reading layer (§5).</p>
+<p>Fifth, document byproducts that emerge naturally during the derivation (§6).</p>
+<p>Sixth, a claim-status map plus a detailed exposition of the three-tier success criterion (§7).</p>
+<p><strong>The paper does not</strong>:</p>
+<p>First, claim an unconditioned physics-level first-principles derivation.</p>
+<p>Second, derive the Paper I §4.5.1 substrate-binary commitment—it is inherited.</p>
+<p>Third, verify the Thermo Series $\tau_{\text{dec}}(c^3)$ relation. If verification can be carried out within the writing window, it is done; otherwise it remains a prerequisite open problem.</p>
+<p>Fourth, develop a universal $H$-$I$ general mapping across multiple regimes. The earlier overreach of Paper II v0/v1 has been rejected.</p>
+<p>Fifth, commit to data-q (the series north star direction) as a central tool. The data-q direction is recorded in the series outline but is not invoked in this paper.</p>
+<p>Sixth, develop the information-side formalism of the 42 channels. Paper I §7.2 defers this task and the present paper does not address it.</p>
+<p>Seventh, address biological, conscious, or AI information applications. These are subsequent candidate directions (Candidate D in the series outline), not engaged here.</p>
+<h3>§1.6 Knowledge lineage</h3>
+<p>The lineage inherited from Paper I extends here in directions relevant to Paper II.</p>
+<p>Shannon (1948) established operational information theory. Landauer (1961) gave the original $E_{\min} = k_B T \ln 2$. Bennett (1982) gave the thermodynamic derivation of Landauer's principle. Boltzmann and Gibbs established the canonical statistical-mechanics framework, providing standard relations such as $\Delta S = \Delta E / T$.</p>
+<p>Within the SAE framework: the Mass Series (Qin 2026f) establishes $E = Ic^3$ as a Class-A derivation. Paper I (Qin 2026, Information Theory I) establishes the 4DD substrate ontology and the conditional reading of $\ln 2$ (§4.5.1). The Thermo Series develops $\tau_{\text{dec}}$, the $q$-exponential family, the resolvent kernel, and other candidate bridging tools.</p>
+<p>Each of these prior works is internally complete within its own scope. The present paper's contribution is to attempt, within the SAE framework, a structural derivation of Landauer's principle, together with an honest documentation of the status of each step in the derivation chain.</p>
+<hr>
+<h2>§2 Pillar 1: The Structural Relation between $H$ and $I$ in the Erasure Setting</h2>
+<h3>§2.1 Precise setup of information erasure</h3>
+<p>Erasure is defined as the operation taking a system from a known state (an arbitrary $p_i$ probability distribution) to a reference state (e.g. all 0). The minimum-cost setting takes the system from a uniform two-state distribution ($p_1 = p_2 = 1/2$) to a single state, erasing 1 bit of Shannon information.</p>
+<p>Shannon quantifies the information change under erasure:</p>
+<p>$$\Delta H_{\text{Shannon}} = H_{\text{before}} - H_{\text{after}} = (-\sum_i p_i \log_2 p_i) - 0 = 1 \text{ bit} = \ln 2 \text{ nats}$$</p>
+<p>Within the SAE framework, erasure is a physical operation, and one must examine what happens at the 4DD substrate level. Shannon's quantification at the 1DD operational level is complete, but the present paper asks about the substrate-level picture.</p>
+<h3>§2.2 The substrate-level ontological reading of erasure</h3>
+<p>Under the SAE 4DD ontology, information $I$ is a 4DD substrate quantity with dimension kg·s/m, a physical quantity rather than a statistical functional. The substrate-level picture of an erasure operation:</p>
+<p>Before erasure, the system is distributed across two substrate states; the substrate level has two branches $I_1$ and $I_2$.</p>
+<p>After erasure, the system is forced into a single reference state; only $I_1$ remains at the substrate level.</p>
+<p>At the substrate level, the $I_2$ branch is "removed" or "merged" into $I_1$.</p>
+<p>But the 4DD closure asymmetry (Paper I §4.1) says that $I$ is a closure-side cumulative quantity that cannot be reversed. The $I_2$ branch cannot reverse into nonexistence—that would violate closure asymmetry. So the "removal" must be a redistribution: the substrate content must transfer to the environment (the heat reservoir) as a thermal-energy increment.</p>
+<p>This is the <strong>ontological reading</strong> of Pillar 1:</p>
+<p>> Erasure is a substrate-redistribution operation. The substrate content of the $I_2$ branch is not destroyed; it transfers to the heat reservoir as a thermal-energy increment. Information is not destroyed, only relocated from system to environment.</p>
+<p>This reading is isomorphic to the standard reading of energy conservation: energy is not destroyed, only converted from one form to another. The information conservation axiom of Paper I, instantiated in the erasure setting under the SAE framework, becomes precisely this substrate-redistribution picture.</p>
+<p><strong>Important acknowledgment</strong>: this section gives an <strong>ontological reading</strong> that describes the substrate-level picture of the erasure operation. It is <strong>not a derivational step that independently determines the magnitude of $\Delta I$</strong>. The specific magnitude involves statistical aggregation across substrate-level events, not a single-event substrate quantum—see §2.3 for detailed discussion.</p>
+<h3>§2.3 The relation between $H$ and $I$ under erasure: from substrate event to macroscopic erasure</h3>
+<p>This section examines the specific quantitative relation that Pillar 1 aims to deliver: how much substrate-level $\Delta I$ does a 1-bit Shannon information erasure correspond to?</p>
+<h4>§2.3.1 The naive picture and the dimensional check</h4>
+<p>A naive picture might say: erasing 1 bit of Shannon information corresponds to a substrate-level "1 substrate quantum of $I$" transfer. Denote this quantum by $I_{\text{bit}}$:</p>
+<p>$$\Delta I_{\text{system}} = I_{\text{bit}} \quad \text{for 1-bit erasure}$$</p>
+<p>After substrate-level transfer to the reservoir, this becomes thermal energy via $E = Ic^3$:</p>
+<p>$$\Delta E_{\text{reservoir}} = I_{\text{bit}} \cdot c^3$$</p>
+<p>If this $\Delta E_{\text{reservoir}}$ equals the Landauer formula $k_B T \ln 2$ at room temperature, then $I_{\text{bit}}$ is calibrated by the equality.</p>
+<p><strong>The dimensional check exposes the problem with this naive picture</strong>:</p>
+<p>If $I_{\text{bit}}$ is identified with Planck-scale physics (i.e. the substrate-level minimal quantity is naturally set by Planck units), the natural candidate is</p>
+<p>$$I_{\text{bit}} = \frac{E_P}{c^3} = \frac{m_P}{c} \approx \frac{2.18 \times 10^{-8} \text{ kg}}{3 \times 10^8 \text{ m/s}} \approx 7.27 \times 10^{-17} \text{ kg·s/m}$$</p>
+<p>Substituting,</p>
+<p>$$\Delta E_{\text{reservoir}} = I_{\text{bit}} \cdot c^3 = E_P \approx 2 \times 10^9 \text{ J}$$</p>
+<p>Compared with the Landauer value $k_B T \ln 2$ at $T = 300$ K,</p>
+<p>$$k_B T \ln 2 \approx 1.38 \times 10^{-23} \times 300 \times 0.693 \approx 2.87 \times 10^{-21} \text{ J}$$</p>
+<p>the discrepancy is 30 orders of magnitude.</p>
+<h4>§2.3.2 The meaning of the 30-order gap</h4>
+<p>The 30-order gap directly falsifies the naive picture. It implies:</p>
+<p><strong>A macroscopic 1-bit erasure does not correspond to a single substrate-level event</strong>. It in fact involves a large number of substrate events undergoing statistical aggregation. Each substrate event transfers a very small amount of substrate-level $I$ (about Planck scale); aggregated over many events, this yields a macroscopic energy scale matching $k_B T \ln 2$.</p>
+<p>The specific form of this statistical aggregation is not derived within the present paper. Articulating that form involves the ontological character of information as a 4DD macroscopic category—the substrate-aggregation magnitude required for information to exist is a topic for a dedicated subsequent paper in the SAE Information Theory series. The present paper neither presupposes a specific aggregation form nor presupposes that such a form must yield a closed derivation, retaining the calibration-parameter character of §2.3.3 as the boundary of the present paper.</p>
+<h4>§2.3.3 The calibration character of $I_{\text{bit}}$: an honest acknowledgment</h4>
+<p>If the present paper uses $I_{\text{bit}}$ as a derivational parameter and Landauer's formula as a constraint, setting $\Delta E_{\text{reservoir}} = k_B T \ln 2$, then $I_{\text{bit}}$ is calibrated through the combination, not derived independently.</p>
+<p>> <strong>This is a calibration step, not a first-principles derivational step</strong>.</p>
+<p>Specifically:</p>
+<ul>
+<li>Independently deriving $I_{\text{bit}}$ would require an SAE substrate-level statistical mechanics (absent).</li>
+<li>Independently deriving $\Delta E_{\text{reservoir}}$ would require a complete SAE dynamics (absent).</li>
+<li>The actual procedure invokes Landauer's formula as a constraint, then inversely calibrates the effective magnitude of $I_{\text{bit}}$ from $\Delta E_{\text{reservoir}} = k_B T \ln 2$ and $E = Ic^3$.</li>
+</ul>
+<p>This means $I_{\text{bit}}$ in the present paper is a <strong>calibrated parameter</strong>, not a derived quantity. Paper II does not hide this fact: in the §7.1 claim-status map, $I_{\text{bit}}$ is specifically marked as "open / calibration parameter".</p>
+<p><strong>An epistemic note on this calibration status</strong>: the absence of a Planck-scale derivation of $I_{\text{bit}}$ may not be merely a technical gap awaiting a substrate-level statistical mechanics; it may be a more fundamental ontological feature. If information is strictly a 4DD aggregated category, and substrate-level single events below the causal-settling scale do not carry information, then "$I_{\text{bit}}$ at the Planck scale" as a well-defined quantity may itself be a misposed question. The articulation of this point is left to subsequent papers in the SAE Information Theory series. The present paper presupposes neither reading (technical gap nor ontological feature) and only explicitly marks the calibration status within the present paper.</p>
+<h4>§2.3.4 The precise relation between Shannon $H$ and SAE $I$ under erasure</h4>
+<p>Acknowledging that $I_{\text{bit}}$ is a calibrated parameter, the relation between Shannon $H$ and SAE $I$ under erasure can be articulated as</p>
+<p>$$\Delta H_{\text{Shannon}} \text{ in nats} = \ln 2 \quad \Leftrightarrow \quad \Delta I_{\text{system}} = N_{\text{eff}} \cdot I_{\text{bit, micro}}$$</p>
+<p>where $N_{\text{eff}}$ is the substrate-level event count (large) and $I_{\text{bit, micro}}$ is the substrate-level single-event $I$ transfer (Planck scale); the product is calibrated by the Landauer constraint to $\Delta E_{\text{reservoir}} / c^3 = k_B T \ln 2 / c^3$.</p>
+<p>This is the specific structural relation between $H$ and $I$ in the erasure setting: a 1-bit Shannon information change corresponds at the substrate level to a collective transfer across a large number of events, with the aggregate amount calibrated through Landauer's formula.</p>
+<p><strong>Key point</strong>: this relation is a <strong>calibrated relation</strong>, not derived from independent SAE inputs. It establishes dimensional consistency and the substrate-level picture, but does not provide an independent prediction of $\Delta E_{\text{reservoir}}$—the latter is supplied by the Bennett-style entropy argument (§5).</p>
+<h3>§2.4 Pillar 1's partial deliverable and open status</h3>
+<p><strong>First-principles part of Pillar 1</strong>:</p>
+<p>First, the ontological reading of erasure as substrate redistribution: erasure is not an abstract logical operation but a substrate-level physical transfer.</p>
+<p>Second, the direction of $I$ transfer—from system to reservoir—is determined by the 4DD closure asymmetry. The closure asymmetry rules out reverse flow of $I$, so erasure must dissipate into the reservoir.</p>
+<p><strong>Open in Pillar 1</strong>:</p>
+<p>First, a first-principles derivation of the magnitude of $I_{\text{bit}}$. Planck-scale identification fails dimensionally (the 30-order gap); this requires joint work with a substrate-level statistical mechanics.</p>
+<p>Second, the specific form of statistical aggregation underlying macroscopic erasure. Substantive new SAE work is required.</p>
+<p>Third, the substrate-level reading of general $H$-amount erasure (non-1-bit cases). The present paper handles only the minimal 1-bit case.</p>
+<p><strong>Future directions</strong>:</p>
+<p>First, $I_{\text{bit}}$ Planck-scale identification through careful dimensional analysis combined with SAE Planck-scale physics. This may require linking with the small-integer combinatorial structure of ZFCρ Paper 68 (DOI: 10.5281/zenodo.19739810) as a reference framework.</p>
+<p>Second, a substrate-level statistical mechanics as a future SAE development. This may combine with the $q$-exponential family of the Thermo Series and 4DD closure to yield a substrate-level partition-function analog.</p>
+<hr>
+<h2>§3 Pillar 2: Candidate Structural Bridges between $T$ and $c^3$</h2>
+<h3>§3.1 Statement of the bridging problem</h3>
+<p>The Pillar 1 reading says that $\Delta I_{\text{system}}$ transfers to the reservoir, where it is converted to thermal energy. The amount of energy depends on the conversion mechanism between the reservoir thermal state (characterized by $T$) and the substrate $I$.</p>
+<p>Within the SAE framework, $E = Ic^3$ supplies the universal substrate-level conversion: 1 unit of $I$ corresponds to $c^3$ units of $E$.</p>
+<p>But the reservoir is a statistical ensemble characterized by $T$, not by a single $E$ value. A bridge is required: in the erasure setting, how does $T$ (statistical temperature) relate to $c^3$ (geometric DD breakthrough rate)?</p>
+<p>This section explores three candidate bridging routes, <strong>without assuming a closed solution</strong>—Pillar 2 is the most fragile pillar of the present paper, and earlier reviewer pressure has reinforced the necessity of this framing.</p>
+<h3>§3.2 Candidate route 1: $\tau_{\text{dec}}$ commensurate condition</h3>
+<h4>§3.2.1 The candidate framework</h4>
+<p>$\tau_{\text{dec}}$ comes from the Thermo Series as the timescale of 4DD closure—the characteristic scale of substrate-level closure in the time dimension. The thermal scale $k_B T$ has a corresponding thermal de Broglie time</p>
+<p>$$\tau_T = \frac{\hbar}{k_B T}$$</p>
+<h4>§3.2.2 The tentative connection</h4>
+<p>Suppose, in the erasure setting, that $\tau_{\text{dec}}$ and $\tau_T$ must be commensurate: that erasure completes within the thermal-equilibrium timescale.</p>
+<p>If the commensurate condition $\tau_{\text{dec}} = \tau_T$ holds:</p>
+<p>$$T = \frac{\hbar}{k_B \tau_{\text{dec}}}$$</p>
+<p>Combined with $\tau_{\text{dec}}(c^3, \text{system parameters})$ from the Thermo Series (assuming this relation has been quantitatively established), this yields a specific $T$-$c^3$ bridge.</p>
+<h4>§3.2.3 The rigor problem of the commensurate condition</h4>
+<p>But the rigor of the commensurate condition is a prominent issue, which the present paper does not bury.</p>
+<p>It is not an obvious physical necessity. $\tau_{\text{dec}}$ and $\tau_T$ are different physical processes (system-specific decoherence vs. $T$-only thermal time). Equating them assumes a specific match between erasure dynamics and thermal dynamics that is not obviously justified.</p>
+<p><strong>Candidates for physical motivation</strong> (not rigorous derivation):</p>
+<p>First, a boundary-case argument:</p>
+<ul>
+<li>When $\tau_{\text{dec}} \gg \tau_T$, closure is too rigid; erasure cannot occur within the thermal timescale.</li>
+<li>When $\tau_{\text{dec}} \ll \tau_T$, closure is unstable; there is no information to erase.</li>
+<li>$\tau_{\text{dec}} \sim \tau_T$ is the critical boundary.</li>
+</ul>
+<p>Second, a thermal-equilibrium implication: erasure occurs while the system is in contact with the reservoir; if completion of erasure requires closure dynamics, then closure dynamics must complete within the thermal timescale; hence $\tau_{\text{dec}} \lesssim \tau_T$.</p>
+<p><strong>The key logical gap</strong>: from the boundary inequality $\tau_{\text{dec}} \lesssim \tau_T$ to strict equality $\tau_{\text{dec}} = \tau_T$ does not follow. Any $\tau_{\text{dec}}$ within the reservoir's thermalization timescale supports erasure; strict commensurate is not required. Strict equality assumes critical-boundary saturation, but this saturation is not obviously physically obligatory.</p>
+<p><strong>Honest acknowledgment</strong>: this route supplies dimensional structure and plausible physical motivation, but <strong>is not a rigorous physical derivation</strong>. The commensurate condition is an ad-hoc assumption with motivation but no rigor. The present paper marks this assumption status prominently in this section without burying it.</p>
+<h3>§3.3 Candidate route 2: direct dimensional analysis</h3>
+<p>Substituting $E = Ic^3$ into the Gibbs-Boltzmann factor:</p>
+<p>$$p_i = \frac{1}{Z} \exp\left(-\frac{E_i}{k_B T}\right) = \frac{1}{Z} \exp\left(-\frac{c^3 I_i}{k_B T}\right) = \frac{1}{Z} \exp\left(-\beta_{\text{info}} I_i\right)$$</p>
+<p>where $\beta_{\text{info}} \equiv c^3 / (k_B T)$ is a natural dimensionless combination (with dimension [s/(kg·m)]$^{-1}$, i.e. [kg·m/s], reciprocal to the dimension of $I$ at kg·s/m; the dimensional check passes).</p>
+<p>$\beta_{\text{info}}$ supplies a dimensional bridge between $T$ and $c^3$, but it <strong>is not a derivation</strong>—it is a dimensional-analysis observation.</p>
+<p>This route is weaker than route 1 (it supplies no dynamical content), but the dimensional analysis is clean and there is no ad-hoc assumption. It articulates that the SAE framework naturally contains the $T$-$c^3$ dimensional combination, but does not close the bridge.</p>
+<p>$\beta_{\text{info}}$ is recorded as a byproduct in §6.1, where it may be invoked in other SAE work.</p>
+<h3>§3.4 Candidate route 3: a specific Thermo $\tau_{\text{dec}}$-$c^3$ relation (verification still open)</h3>
+<p>The status of this section requires honest disclosure.</p>
+<h4>§3.4.1 Prerequisite verification status</h4>
+<p>Pillar 2 route 1, combined with a specific Thermo input, may yield a closed $T$-$c^3$ bridge—provided the Thermo Series has established a quantitative form for $\tau_{\text{dec}} = f(c^3, \text{system parameters})$.</p>
+<p>At the time of writing, this verification—after a search through the specific theorems of Thermo Series Papers I–X—is partial. The Thermo Series establishes $\tau_{\text{dec}}$ as a framework concept of the 4DD closure timescale, and develops the behavior of $\tau_{\text{dec}}$ in various regimes in Papers III, VII, X (exponential decay, the $q$-exponential family, the closing convergence). But the specific quantitative functional form of $\tau_{\text{dec}}$ in $c^3$, particularly in the erasure setting, has not been established in closed form.</p>
+<h4>§3.4.2 Two outcomes contingent on verification</h4>
+<p><strong>If future Thermo work establishes a specific closed form for $\tau_{\text{dec}}(c^3)$</strong>: Pillar 2 route 1 plus the Thermo input plus the (still ad-hoc but motivated) commensurate condition may yield a closed $T$-$c^3$ bridge. Paper II reaches the strongest tier.</p>
+<p><strong>If not established</strong>: Pillar 2 supplies only structural bridging candidates plus dimensional analysis (route 2) plus commensurate-condition motivation (route 1). Paper II reaches the middle tier.</p>
+<p>The present paper's outcome is the middle tier, since the verification is not complete. Future work may upgrade to the strongest tier.</p>
+<h3>§3.5 Pillar 2's partial deliverable and open status</h3>
+<p><strong>First-principles part of Pillar 2 (regardless of verification)</strong>:</p>
+<p>First, the articulation of $\beta_{\text{info}} = c^3 / (k_B T)$ as a natural dimensional combination.</p>
+<p>Second, an explicit comparison among three candidate bridging routes, with the ad-hoc character of each honestly marked.</p>
+<p><strong>First-principles part of Pillar 2 (if verification works)</strong>:</p>
+<p>First, a structural $T$-$c^3$ bridge through $\tau_{\text{dec}}$ commensurate (pending commensurate rigor).</p>
+<p><strong>Open in Pillar 2</strong>:</p>
+<p>First, the physical rigor of the commensurate condition. The logical gap from boundary inequality to strict equality.</p>
+<p>Second, the verification of the quantitative $\tau_{\text{dec}}(c^3)$ relation in the Thermo Series (a search through specific Thermo theorems or new work).</p>
+<p><strong>The most fragile pillar of Paper II</strong>—the framing of this section as "comparison among candidate bridging routes" assumes no closed solution.</p>
+<hr>
+<h2>§4 Pillar 3: Derivation of $\ln 2$ Given the Inherited Substrate-Binary Commitment</h2>
+<h3>§4.1 The task: upgrading the Paper I §4.5.1 conditional reading</h3>
+<p>Paper I §4.5.1 supplies a conditional ontological reading: $\ln 2$ can be read as a projection factor produced when continuous measurement formalism reads a discrete substrate. The task of Pillar 3 is to upgrade this reading to a derivation, <strong>given the inherited substrate-binary commitment</strong>.</p>
+<p><strong>Key framing</strong>: this derivation is conditional on the inherited commitment of Paper I §4.5.1—the substrate-level minimal information unit is binary (from the binary nature of the 4DD encapsulation operational category).</p>
+<p>> The substrate-binary commitment is itself an inherited claim of Paper I; <strong>Paper II does not derive substrate-binary</strong>.</p>
+<p>$\ln 2$ is not derived from no commitment; it is derived from the substrate-binary commitment.</p>
+<h3>§4.2 The derivation chain: given substrate-binary, $\ln 2$ follows</h3>
+<p>The specific derivation chain has six steps:</p>
+<p><strong>(a)</strong> The 4DD encapsulation operational category is binary.</p>
+<p>> Source: <strong>Paper I §4.5.1 inherited claim</strong>. Paper I argues that 4DD is the closure level, that its operational category is encapsulation, and that the minimal distinction of encapsulation is binary (in or out). The present paper does not derive (a).</p>
+<p><strong>(b)</strong> The substrate-level minimal information unit = 1 binary distinction = 1 bit (a physical bit, not the Shannon convention bit).</p>
+<p>> Source: <strong>direct from (a)</strong>. The minimal unit of the encapsulation operation is 1 binary distinction, corresponding to 1 substrate-level bit. Note that this bit is a substrate-level physical-dimension unit, not a Shannon operational-level statistical unit.</p>
+<p><strong>(c)</strong> The continuous measurement formalism uses $\ln$ (natural log) as its measurement scale. Free energy, entropy, and other statistical quantities at the continuous limit are defined with $\ln$.</p>
+<p>> Source: <strong>standard mathematical convention</strong>. The Boltzmann-Gibbs framework defines entropy as $S = -k_B \sum p \ln p$ in nats (natural-log base). This is a standard mathematical choice in the continuous formalism.</p>
+<p><strong>(d)</strong> The mathematical identity:</p>
+<p>$$\log_2 x = \frac{\ln x}{\ln 2}$$</p>
+<p>> Source: <strong>mathematical identity</strong>.</p>
+<p><strong>(e)</strong> Counting 1 binary discrete event using the continuous $\ln$ measurement: the result is $\ln 2$.</p>
+<p>> Source: <strong>from (b) + (c) + (d)</strong>. The specific reading: a substrate-level 1 binary distinction (from (b)), under the continuous measurement formalism (from (c)), via the $\log_2 \to \ln$ conversion (from (d)), gives 1 binary unit = $\log_2 2 = 1$ bit = $\ln 2$ nats.</p>
+<p><strong>(f)</strong> Therefore the entropy cost of erasing 1 substrate-binary-bit (read out continuously) is unavoidably $\ln 2$.</p>
+<p>> Source: <strong>from (e)</strong>. Erasing 1 binary substrate distinction necessarily registers as a $\ln 2$-magnitude entropy change in the continuous-measurement readout.</p>
+<h3>§4.3 The honest character of the derivation</h3>
+<p>This section acknowledges the epistemic status of the derivation.</p>
+<p><strong>The real heavy lifting is in (a)-(b)</strong>: that the substrate is binary. This is an inherited commitment of the SAE framework, not a Paper II derivation.</p>
+<p><strong>Step (f) follows from (b)+(c)+(d) trivially</strong>—the main mathematical content is the identity $\log_2 = \ln/\ln 2$ read under the SAE physical interpretation. Not new mathematics.</p>
+<p><strong>So Pillar 3 is a conditional derivation given the substrate-binary commitment</strong>, <strong>not a first-principles derivation</strong>.</p>
+<p><strong>Honest framing</strong>: Pillar 3 delivers "given Paper I §4.5.1's substrate-binary commitment, $\ln 2$ is unavoidable in the continuous-measurement readout of substrate-level binary erasure events".</p>
+<p>This is itself a substantive structural derivation. It upgrades $\ln 2$ from a unit-convention artifact to a quantitative consequence of the substrate-binary commitment. The specific contributions:</p>
+<p>First, a <strong>reframe of the origin of $\ln 2$</strong>: from "phase-space halving by 2 in Bennett's argument" reframed to "the projection signature of substrate-level binary distinction in continuous readout".</p>
+<p>Second, <strong>$\ln 2$ is not a unit-convention artifact</strong>: within the SAE framework, $\ln 2$ is a specific quantitative consequence of the substrate-binary commitment, not an arbitrary choice of base-2 vs base-$e$.</p>
+<p>But conditional on the inherited commitment—substrate-binary itself is not derived; it is a commitment supplied by Paper I.</p>
+<h3>§4.4 Pillar 3's partial deliverable and open status</h3>
+<p><strong>First-principles part of Pillar 3</strong>:</p>
+<p>First, given the inherited substrate-binary commitment, $\ln 2$ follows as the quantitative signature of continuous-discrete projection.</p>
+<p>Second, $\ln 2$ is not a unit-convention artifact; it is a specific quantitative consequence of the substrate-binary commitment.</p>
+<p><strong>Open in Pillar 3</strong>:</p>
+<p>First, a strict derivation of the substrate-binary commitment from more fundamental SAE principles. Paper I §4.5.1 remains a commitment, not a derived theorem.</p>
+<p>Second, if future SAE work develops the possibility that the substrate-level minimal unit is not binary (e.g. ternary or continuous), Pillar 3's derivation would require revision.</p>
+<p>Third, the ontological status of "4DD encapsulation is binary"—Paper I §4.5.1 supplies motivation, but a strict derivation from deeper SAE principles is still open.</p>
+<hr>
+<h2>§5 Combination of the Three Pillars: Actual Derivation Logic and Contribution Character</h2>
+<p>This section is the most critical of the paper. It honestly reflects the actual contribution structure of the three pillars and avoids the overclaim framing of "a three-pillar first-principles derivation".</p>
+<h3>§5.1 The actual derivation chain: a standard Bennett-style entropy argument plus the $\ln 2$ reading from Pillar 3</h3>
+<p>A careful examination of the derivation logic reveals that, from the three-pillar inputs together with standard thermodynamics, reaching Landauer's formula requires five steps:</p>
+<p><strong>Step 1</strong>: Erasing 1 bit reduces the system entropy by $\Delta H_{\text{system}} = \ln 2$ in nats.</p>
+<p>> Source: <strong>from Pillar 3</strong>—given the inherited substrate-binary commitment, $\ln 2$ is the unavoidable factor in continuous-measurement readout.</p>
+<p><strong>Step 2</strong>: The second law: total entropy does not decrease.</p>
+<p>> Source: <strong>standard thermodynamics</strong>.</p>
+<p><strong>Step 3</strong>: The reservoir entropy must increase by at least $\ln 2$ (balancing Step 1).</p>
+<p>> Source: <strong>from Step 1 + Step 2</strong>.</p>
+<p><strong>Step 4</strong>: $\Delta S_{\text{reservoir}} = \Delta E_{\text{reservoir}} / T$.</p>
+<p>> Source: <strong>standard thermodynamics</strong>—the entropy-energy relation of a reservoir at thermal equilibrium.</p>
+<p><strong>Step 5</strong>: Setting $\Delta S_{\text{reservoir}} \cdot k_B = k_B \ln 2$ and solving:</p>
+<p>$$\Delta E_{\text{reservoir}} = k_B T \ln 2$$</p>
+<p>Landauer's formula is recovered.</p>
+<p><strong>Honest acknowledgment</strong>:</p>
+<p>> <strong>This derivation chain is in fact a standard Bennett-style entropy argument plus the substrate-binary structural reading of $\ln 2$ supplied by Pillar 3</strong>.</p>
+<p>Pillar 1 (the substrate-redistribution picture) and Pillar 2 ($T$-$c^3$ bridging) <strong>do not directly enter this derivation chain as derivational steps</strong>. They supply ontological context describing the structural picture of erasure within the SAE framework, but they are not steps in the entropy argument.</p>
+<h3>§5.2 The actual contribution character of each pillar</h3>
+<p><strong>Pillar 1's actual contribution</strong>: the ontological reading of erasure as substrate redistribution. This gives Bennett's entropy argument an SAE-framework structural context—erasure is not an abstract logical operation but a physical substrate transfer. But the specific magnitude of $\Delta E_{\text{reservoir}}$ does not come from the Pillar 1 derivation chain; it is set by the entropy argument.</p>
+<p><strong>Pillar 2's actual contribution</strong>: $T$-$c^3$ bridging candidates. Within the SAE framework, the relation between $T$ (a statistical quantity) and $c^3$ (a geometric quantity) is articulated. But the derivation of Landauer's formula via the entropy argument does not require a $T$-$c^3$ bridge—$T$ enters directly as the reservoir characterization. The $T$-$c^3$ bridge is a secondary structure within the SAE framework, not a necessary ingredient of the Landauer derivation.</p>
+<p><strong>Pillar 3's actual contribution</strong>: $\ln 2$ as a quantitative consequence of the substrate-binary commitment. This is what directly enters the derivation chain as the input to Step 1. <strong>Pillar 3 is the only pillar that genuinely enters the derivation chain as a derivational input</strong>.</p>
+<p><strong>Overall structure</strong>: the present paper's derivation is</p>
+<p>> Pillar 3 provides derivational input + Pillars 1, 2 provide ontological context + a standard entropy argument supplies the derivation backbone.</p>
+<p>Not "a three-pillar combined first-principles derivation".</p>
+<h3>§5.3 Specific comparison with the standard Bennett derivation</h3>
+<p>Bennett (1982): a basic entropy argument plus a phase-space volume reduction by a factor of 2 (uniform 2-state to single state). $\ln 2$ comes from the phase-space volume ratio.</p>
+<p>SAE: a basic entropy argument plus the inherited substrate-binary commitment yielding $\ln 2$. The phase-space-volume reading is replaced by a substrate-level discrete-binary-commitment reading.</p>
+<p>> <strong>The SAE contribution is not at the derivation backbone (which remains the entropy argument)</strong>.</p>
+<p>></p>
+<p>> <strong>The SAE contribution is at the ontological reading layer</strong>:</p>
+<p>First, the origin reading of $\ln 2$: reframed from "phase-space convention artifact" to "consequence of the substrate-binary commitment".</p>
+<p>Second, the reading of the erasure operation: reframed from "abstract logical operation" to "substrate redistribution to the reservoir".</p>
+<p>Third, the reading of $T$ characterization: reframed from "statistical-only" to "potentially related to substrate $c^3$ via candidate bridges".</p>
+<p>This is a <strong>structural-reading contribution</strong>, not an <strong>alternative derivation path</strong>. The derivation backbone agrees with Bennett's; the SAE framework supplies an alternative ontological-reading layer atop the backbone.</p>
+<h3>§5.4 Combined deliverable: framework-internal structural derivation plus ontological context</h3>
+<p>An honest summary of the §5 deliverable:</p>
+<p>> <strong>A conditional structural derivation of Landauer's formula within the SAE framework, given</strong>:</p>
+<p>></p>
+<p>> (i) The Paper I §4.5.1 substrate-binary inherited commitment (Pillar 3's essential input).</p>
+<p>></p>
+<p>> (ii) The standard thermodynamic entropy-argument backbone (Bennett-style).</p>
+<p>></p>
+<p>> (iii) The SAE ontological context: erasure as substrate redistribution (Pillar 1) and candidate $T$-$c^3$ connections (Pillar 2).</p>
+<p><strong>Result</strong>:</p>
+<p>First, $E_{\min} = k_B T \ln 2$ is recovered (a structural reading via the standard Bennett argument with substrate-binary input from Pillar 3).</p>
+<p>Second, a substrate-binary structural reading of $\ln 2$ is supplied.</p>
+<p>Third, an ontological context (erasure as a substrate operation) is established.</p>
+<p>Fourth, candidate bridges ($T$-$c^3$) are flagged as future directions.</p>
+<p><strong>Limitations</strong>:</p>
+<p>First, no alternative derivation backbone is supplied (the entropy argument is retained).</p>
+<p>Second, substrate-binary is not derived (inherited from Paper I).</p>
+<p>Third, the $T$-$c^3$ bridge is not closed (candidate routes remain).</p>
+<p><strong>Distinguish "recover the formula" from "supply a substrate reading"</strong>: the present paper does both, but the two are different in character. "Recover the formula" is numerical recovery via the standard backbone with input substitution; "supply a substrate reading" is an ontological-interpretation-layer contribution. Both are substantive, but of different types—the former demonstrates internal consistency, the latter adds a reading layer. Readers should distinguish them clearly.</p>
+<hr>
+<h2>§6 Byproducts</h2>
+<p>The contents of this section are not predetermined. Observations that emerge naturally during the derivation are documented here.</p>
+<h3>§6.1 $\beta_{\text{info}} = c^3 / (k_B T)$ as a natural dimensional parameter</h3>
+<p>$\beta_{\text{info}}$ emerges naturally in Pillar 2 route 2. It is not a framework claim but a useful structural parameter, potentially invocable in other SAE work.</p>
+<p>Specific candidates: first, as the natural inverse-temperature parameter for a 4DD substrate-level partition function; second, as the natural dimensionless ratio between the substrate-level energy scale $c^3 I$ and the thermal scale $k_B T$; third, as a candidate building block for a future substrate-level statistical mechanics.</p>
+<h3>§6.2 Erasure as a specific instance of 4DD substrate redistribution</h3>
+<p>Erasure under SAE is a specific case of substrate-redistribution operations. Other operations (computation, measurement, copying) may admit similar SAE readings as substrate redistributions.</p>
+<p>Future paper-direction candidates:</p>
+<p>First, computation as a substrate transformation: computation is a transformation within the substrate state space and may not require redistribution to the environment. Reversible computation under SAE reads as a substrate-level closed transformation.</p>
+<p>Second, measurement as a substrate coupling: measurement is a coupling between the system substrate and the measurement device substrate, with substrate $I$ redistributed between the two substrates.</p>
+<p>Third, copying as substrate proliferation: copying involves the creation of new substrate states, possibly requiring an external $I$ input. The no-cloning theorem in the quantum case may reflect substrate-level constraints.</p>
+<h3>§6.3 The epistemic upgrade of the substrate-binary assumption</h3>
+<p>Through the Pillar 3 derivation, the substrate-binary assumption is promoted from a background commitment of Paper I §4.5.1 into an essential ingredient of the derivation. This increases the assumption's weight within the SAE framework.</p>
+<p>Future-work directions: a strict derivation of binary-by-categorical from more fundamental SAE principles. Specific candidates:</p>
+<p>First, derivation of binary from the minimal-distinction principle of 4DD encapsulation.</p>
+<p>Second, tracing back the binary structure of non-doubt (the operational category of 15DD) to 4DD encapsulation.</p>
+<p>Third, joint work with the {2,3}-skeleton plus mod-6 automaton of ZFCρ Paper 68 (DOI: 10.5281/zenodo.19739810)—there may be a deep SAE-internal connection between substrate-binary and small-integer combinatorial structure.</p>
+<h3>§6.4 $H$-$I$ relation in non-erasure settings (open)</h3>
+<p>The substrate-redistribution reading in the erasure setting gives a specific instance of the $H$-$I$ relation (analogous to the saturation instance of the Bekenstein bound in Paper I §4.5.2). Subsequent papers may extend to other operational contexts:</p>
+<p>First, $H$-$I$ relations under computation operations.</p>
+<p>Second, $H$-$I$ relations under measurement operations (involving observers as 4DD structures).</p>
+<p>Third, $H$-$I$ relations at equilibrium (in conjunction with the thermodynamic limit).</p>
+<p>Fourth, $H$-$I$ relations far from equilibrium (in conjunction with the Thermo Series $q$-exponential family).</p>
+<p>Each operational context may yield a distinct specific instance, gradually building up a general $H$-$I$ structural map.</p>
+<h3>§6.5 $I_{\text{bit}}$ Planck-scale identification as a future direction</h3>
+<p>The Gemini Pointer 1 (raised during Paper II review) observed numerically a 30-order-of-magnitude gap between this pointer's Planck-scale identification and the Landauer room-temperature erasure energy. Direct substitution does not work—a macroscopic erasure does not correspond to a single substrate quantum. But the underlying idea ($I_{\text{bit}}$ identified by Planck-scale physics) is worth recording as a future direction.</p>
+<p>Possible paths:</p>
+<p>First, joint SAE Planck-scale physics and substrate-level statistical mechanics, deriving the specific forms of $I_{\text{bit, micro}}$ and $N_{\text{eff}}$ that recover the macroscopic $\Delta E_{\text{reservoir}} = k_B T \ln 2$ scale.</p>
+<p>Second, joint with the holographic principle / Bekenstein bound: Paper I §4.5.2 has established the black-hole horizon saturation instance. $I_{\text{bit, micro}}$ may relate to the Planck area $\ell_P^2$, consistent with the dimensional analysis of holographic information.</p>
+<p>Third, joint with the small-integer skeleton of ZFCρ Paper 68: the substrate-binary commitment combined with small-integer combinatorial constraints may jointly yield a natural scale for $I_{\text{bit}}$.</p>
+<hr>
+<h2>§7 Methodology</h2>
+<h3>§7.1 Claim-status map</h3>
+<table><thead><tr>
+<th>Content</th>
+<th>Level</th>
+<th>Location</th>
+<th>Basis</th>
+</tr></thead><tbody>
+<tr>
+<td>Erasure as substrate-redistribution ontological reading</td>
+<td>structural reading</td>
+<td>§2.2</td>
+<td>Based on Paper I §4.1 closure asymmetry plus energy conservation</td>
+</tr>
+<tr>
+<td>Substrate-event-to-macroscopic statistical aggregation in erasure</td>
+<td>open</td>
+<td>§2.3.2</td>
+<td>Not derived; requires substantive new SAE framework work</td>
+</tr>
+<tr>
+<td>Magnitude of $I_{\text{bit}}$</td>
+<td>open / calibration parameter</td>
+<td>§2.3.3</td>
+<td>Planck-scale identification fails dimensionally (30-order gap); practical use calibrated through combination</td>
+</tr>
+<tr>
+<td>Calibrated $H$-$I$ relation in the erasure setting</td>
+<td>calibrated structural relation</td>
+<td>§2.3.4</td>
+<td>Calibrated by the Landauer constraint; not an independent prediction</td>
+</tr>
+<tr>
+<td>4DD encapsulation operational category is binary</td>
+<td>inherited SAE commitment</td>
+<td>§4.2 step (a)</td>
+<td>Inherited from Paper I §4.5.1; not derived here</td>
+</tr>
+<tr>
+<td>Substrate-level minimal information unit is binary</td>
+<td>inherited consequence</td>
+<td>§4.2 step (b)</td>
+<td>Direct from inherited commitment (a)</td>
+</tr>
+<tr>
+<td>$\ln 2$ as continuous-discrete projection signature given substrate-binary</td>
+<td>conditional derivation</td>
+<td>§4</td>
+<td>Given the inherited substrate-binary commitment</td>
+</tr>
+<tr>
+<td>$\tau_{\text{dec}}$ commensurate condition</td>
+<td>ad-hoc assumption with motivation</td>
+<td>§3.2.3</td>
+<td>Physical motivation but no rigorous derivation; logical gap from boundary inequality to strict equality</td>
+</tr>
+<tr>
+<td>$\tau_{\text{dec}}$-$c^3$ Thermo quantitative relation</td>
+<td>open / verification needed</td>
+<td>§3.4</td>
+<td>Thermo framework concept established but closed-form relation not</td>
+</tr>
+<tr>
+<td>$\beta_{\text{info}} = c^3/(k_B T)$ as natural dimensional parameter</td>
+<td>dimensional observation</td>
+<td>§3.3, §6.1</td>
+<td>Dimensional analysis</td>
+</tr>
+<tr>
+<td>Combination derivation of $E_{\min} = k_B T \ln 2$</td>
+<td>structural reading via standard Bennett argument with substrate-binary input from Pillar 3</td>
+<td>§5</td>
+<td>Pillar 3 input plus Bennett-style argument</td>
+</tr>
+<tr>
+<td>Pillars 1, 2 contributions are ontological context, not derivational steps</td>
+<td>honest acknowledgment</td>
+<td>§5.1-§5.2</td>
+<td>Actual derivation chain analysis</td>
+</tr>
+<tr>
+<td>$\ln 2$ is not a unit-convention artifact but a substrate-binary consequence</td>
+<td>conditional structural claim</td>
+<td>§4.3, §5.3</td>
+<td>Given the inherited substrate-binary commitment</td>
+</tr>
+<tr>
+<td>$I_{\text{bit}}$ Planck-scale identification</td>
+<td>future direction</td>
+<td>§6.5</td>
+<td>Dimensional issue requires substantive new work</td>
+</tr>
+</tbody></table>
+<h3>§7.2 Three-tier outcomes in detail</h3>
+<p>Inheriting the §1.4 success criterion, the three tiers are detailed as follows.</p>
+<p><strong>Strongest tier</strong> (if §3.4 verification works and the commensurate-condition rigor is strengthened):</p>
+<p>Pillar 1's structural reading + Pillar 2's closed bridge via the verified Thermo relation + Pillar 3's conditional derivation + the standard entropy argument.</p>
+<p>Delivers: a conditional first-principles derivation of Landauer's formula within the SAE framework, with all prerequisites satisfied given the inherited commitments.</p>
+<p><strong>Middle tier</strong> (current outline expectation; current paper outcome):</p>
+<p>Pillar 1's structural reading + Pillar 2's candidate-bridge comparison + Pillar 3's conditional derivation + the standard entropy argument.</p>
+<p>Delivers: the structural derivation with the $T$-$c^3$ bridge bottleneck identified. The reframe of $\ln 2$'s origin is complete; the ontological reading of erasure is complete; $T$-$c^3$ candidate routes are compared with the bottleneck precisely localized at the rigor of the commensurate condition and the verification of $\tau_{\text{dec}}(c^3)$.</p>
+<p><strong>Weakest tier</strong> (if Pillar 3's commitment chain is found problematic during writing):</p>
+<p>Pillar 1's structural reading + reconsideration of the substrate-binary commitment.</p>
+<p>Delivers: precise localization of the derivation walls. The first systematic mapping of the obstacles in the SAE-internal Landauer derivation chain, providing specific targets for future SAE work.</p>
+<p><strong>The actual tier reached by this paper</strong>: the middle tier. Reasons:</p>
+<p>Pillar 3's conditional derivation is complete (given Paper I §4.5.1's inherited substrate-binary commitment).</p>
+<p>Pillar 1's substrate-redistribution ontological reading is complete; the deferral of $I_{\text{bit}}$ statistical aggregation is explicitly acknowledged as a future direction, not a blocking issue.</p>
+<p>Pillar 2's three candidate routes are compared; the $T$-$c^3$ bridge bottleneck is precisely localized at the rigor of the commensurate condition and the verification of $\tau_{\text{dec}}(c^3)$.</p>
+<p>The §5 combination analysis honestly acknowledges: the actual derivation backbone is the standard Bennett-style entropy argument; Pillar 3 supplies $\ln 2$ as derivational input; Pillars 1 and 2 supply ontological context.</p>
+<p>The middle tier outcome is consistent with the present paper's scope and resources.</p>
+<h3>§7.3 Relations to Mass / Thermo / Paper I</h3>
+<p><strong>Paper I</strong>: §4.5.1 substrate-binary commitment is essential (Pillar 3's essential input). §4.1 closure asymmetry is essential (Pillar 1). The §4.5.2 Bekenstein-bound saturation instance serves as a reference for similar readings.</p>
+<p><strong>Mass Series</strong>: $E = Ic^3$ is the essential Class-A result (Pillar 1's dimensional analysis, Pillar 2 route 2's $\beta_{\text{info}}$, the universal $I$-to-$E$ conversion).</p>
+<p><strong>Thermo Series</strong>: $\tau_{\text{dec}}$ as the timescale of 4DD closure (Pillar 2's candidate route 1). The $q$-exponential family and the resolvent kernel as future bridging tools (recorded in §6.4). Specific Thermo theorem invocations remain open for verification (§3.4).</p>
+<p><strong>Cross-series resonance (non-commitment observation)</strong>:</p>
+<p>First, the {2,3}-skeleton plus mod-6 automaton of ZFCρ Paper 68 (DOI: 10.5281/zenodo.19739810) shares the pattern of "specific small integers as structural irreducibility anchors" with the substrate-binary commitment. The resonance is tentative; the present paper does not commit to a cross-series structural identification.</p>
+<p>Second, Four Forces Paper 0 ("Gravity Is Not a Force, It Is Information Reading"; DOI: TBD) §3.4 articulates 4DD as a q=1 clean-reading layer—4DD does not involve self-reference, and the reading objects (1-2DD energy and momentum) and connection layer (3DD mass) are non-subjective, so q=1. The Bennett-style entropy argument plus Pillar 3 in §5 of the present Paper II derives Landauer's formula without involving self-reference or multiplicative coupling; it aligns directly to the q=1 baseline of round 1 (the physical round). The two papers reach a consistent reading of the q=1 baseline independently from two different directions (Paper 0's gravity reading mechanism, and Paper II's Landauer erasure derivation), confirming the q=1 character of the round 1 closure from two separate vantages. This is a cross-series structural alignment, not a derivation—each paper's derivation stands independently, and the alignment serves as a series-coherence indicator.</p>
+<p>Invocation level here is deeper than in Paper I, due to the cross-series interface (Landauer). But the paper retains an independent information-theory voice: the main derivation is a Bennett-style entropy argument plus Pillar 3's ontological reading, not dependent on the specific dynamics of the Mass / Thermo Series.</p>
+<hr>
+<h2>§8 Open Problems</h2>
+<p>First, a first-principles derivation of the magnitude of $I_{\text{bit, micro}}$ (requires SAE substrate-level statistical mechanics combined with Planck-scale physics).</p>
+<p>Second, the specific form of substrate-event statistical aggregation underlying macroscopic erasure.</p>
+<p>Third, a strict derivation of the substrate-binary commitment from more fundamental SAE principles.</p>
+<p>Fourth, verification of the quantitative $\tau_{\text{dec}}$-$c^3$ relation in the Thermo Series (search of specific Thermo theorems or new work).</p>
+<p>Fifth, improving the rigor of the commensurate condition—filling the logical gap from boundary inequality to strict equality.</p>
+<p>Sixth, the general $H$-$I$ relation in non-erasure settings (computation, measurement, copying, equilibrium, far from equilibrium, in different operational contexts).</p>
+<p>Seventh, the 42-channel extension of the Landauer derivation (the task deferred in Paper I §7.2).</p>
+<p>Eighth, quantum erasure (Landauer cost in the quantum information context), in conjunction with the SAE reading of von Neumann entropy.</p>
+<p>Ninth, far-from-equilibrium Landauer corrections—the manifestation of the Thermo Series $q$-exponential family in the erasure setting.</p>
+<p>Tenth, the interface between information geometry and the SAE substrate ontology (information geometry vs. substrate-redistribution geometry).</p>
+<hr>
+<h2>§9 Postscript</h2>
+<p>This paper does not claim an unconditioned physics-level first-principles derivation. The claim is a framework-internal conditional structural derivation: given the Paper I §4.5.1 substrate-binary inherited commitment, given the Mass Series $E = Ic^3$ Class-A result, given the standard thermodynamic backbone, Landauer's formula $E_{\min} = k_B T \ln 2$ follows as a framework-internal consequence, plus a substrate-binary structural reading of $\ln 2$, plus an ontological picture of erasure as substrate redistribution.</p>
+<p>Three things this paper actually does: first, reframe $\ln 2$ from a unit-convention artifact to a quantitative signature of the substrate-binary commitment; second, reframe the erasure operation from an abstract logical operation into a physical substrate-transfer operation; third, articulate a candidate $T$-$c^3$ bridge as a secondary structure within the SAE framework.</p>
+<p>Three things this paper does not do: first, derive substrate-binary (inherited from Paper I); second, close the $T$-$c^3$ bridge (candidate routes plus bottleneck localization); third, replace the Bennett entropy-argument backbone (SAE adds a reading layer atop the backbone).</p>
+<p>This paper reaches the middle tier. This is not a weakness—it is an honest reflection of the actual position of the SAE framework on the Landauer problem. The weakest tier (wall localization) remains a substantive contribution; the strongest tier (closed bridge) depends on future Thermo Series work. Paper II's actual contribution is determined through the drafting process and recorded here.</p>
+<p>The middle-tier assessment is conditional on the state of the SAE Information Theory series at the time of this paper's writing. Once subsequent papers are completed (in particular those expected to handle the specific form of substrate aggregation and the causal-settling scale), the tier reached by this paper may be reassessed retroactively. Such retroactive re-evaluation does not affect the standalone contribution of this paper as a precise localization of the Landauer derivation chain—each paper in the series stands at the honest position of its own publication moment.</p>
+<p>Research precedes the paper. The paper records the position already reached, without pretending to have arrived where it has not.</p>
+<hr>
+<h2>References</h2>
+<p>Bennett, C. H. (1982). The thermodynamics of computation: a review. <em>International Journal of Theoretical Physics</em>, 21(12), 905-940.</p>
+<p>Boltzmann, L. (1872). Weitere Studien über das Wärmegleichgewicht unter Gasmolekülen. <em>Wiener Berichte</em>, 66, 275-370.</p>
+<p>Gibbs, J. W. (1902). <em>Elementary Principles in Statistical Mechanics</em>. Yale University Press.</p>
+<p>Landauer, R. (1961). Irreversibility and heat generation in the computing process. <em>IBM Journal of Research and Development</em>, 5(3), 183-191.</p>
+<p>Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, 27, 379-423, 623-656.</p>
+<p>Qin, H. (2026a). SAE Information Theory I: The 4DD ontology of information and a foundational axiom. <em>Self-as-an-End Information Theory Series, opening paper</em>. DOI: 10.5281/zenodo.19740019.</p>
+<p>Qin, H. (2026b). SAE Foundations Paper 1: Systems, Emergence, and the Conditions of Personhood. DOI: 10.5281/zenodo.18528813.</p>
+<p>Qin, H. (2026c). SAE Foundations Paper 2: Internal Colonization and the Reconstruction of Subjecthood. DOI: 10.5281/zenodo.18666645.</p>
+<p>Qin, H. (2026d). SAE Foundations Paper 3: The Complete Self-as-an-End Framework. DOI: 10.5281/zenodo.18727327.</p>
+<p>Qin, H. (2026e). SAE Mass Series I: Doublet Mass Ratio. DOI: 10.5281/zenodo.19476358.</p>
+<p>Qin, H. (2026f). SAE Four Forces Series Convergence: $E = Ic^3$. DOI: 10.5281/zenodo.19510868.</p>
+<p>Qin, H. (2026g). SAE Thermo Series Paper I: Decoherence Timescale and 4DD Closure. DOI: 10.5281/zenodo.19310282.</p>
+<p>Qin, H. (2026h). SAE Thermo Series Paper X: Closing — Beyond Thermodynamics. DOI: 10.5281/zenodo.19703273.</p>
+<p>Qin, H. (2026i). SAE Life and Death Series Paper IV: Planck-Tick Discrete Substrate. DOI: 10.5281/zenodo.19385464.</p>
+<p>Qin, H. (2026j). ZFCρ Series Paper 68: {2,3}-Skeleton, Mod-6 Automaton, and the Goldilocks Crossing. DOI: 10.5281/zenodo.19739810.</p>
+<p>Qin, H. (2026k). Four Forces Paper 0: Gravity Is Not a Force, It Is Information Reading. DOI: TBD.</p>
+<hr>
+<p><em>The Chinese version is the authoritative version; the English is an independent rewrite (not a translation).</em></p>
+<p><em>SAE Information Theory series standing outline: see series outline document.</em></p>
+<p><em>This paper is part of the Self-as-an-End theoretical series — https://self-as-an-end.net</em></p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>SAE 信息论系列第一篇（Qin 2026, DOI: 10.5281/zenodo.19740019）建立信息的 4DD 本体论与一条基础公理（能量-信息守恒 across 42 × 1DD），并在 §4.5.1 对 Landauer $\ln 2$ 给出条件性的本体论解读：$\ln 2$ 可以读为连续测量形式系统读取离散底层时产生的投影因子。本文的任务是把这一解读升级为 SAE 框架下的结构推导。
+
+具体而言，本文识别 Landauer 推导的三个前置条件，对应三个支柱。支柱一是擦除情境下 Shannon $H$ 与 SAE $I$ 的结构关系。支柱二是 Landauer 公式中统计温度 $T$ 与 SAE 几何量 $c^3$ 之间的结构桥接。支柱三是给定底层二元承诺下 $\ln 2$ 的结构来源。本文分别审视三支柱在 SAE 框架下能交付什么、不能交付什么，最后通过组合分析诚实评估实际贡献的性质。
+
+核心诚实承认有三层。第一，本文的推导是框架内部的结构推导，条件性地依赖于继承自 Paper I §4.5.1 的底层二元承诺与 Mass 系列的 $E = Ic^3$ 等承诺，而非不依赖任何前置承诺的物理层第一性原理推导。第二，组合分析显示 Landauer 公式实际推导主干仍然是标准 Bennett 式熵论证，SAE 框架的贡献在于给 $\ln 2$ 提供底层二元的结构性解读，给擦除操作提供底层重分配的本体论图像，而非提供替代性的推导主干。第三，宏观 1 比特擦除不对应单个底层事件，涉及底层事件的统计累积，底层最小量 $I_{\text{bit}}$ 通过组合加 Landauer 约束标定，而非独立推出。
+
+本文明确标记三档结果（最强、中间、最弱）均作为实质性贡献。最强档需要 Thermo 系列 $\tau_{\text{dec}}(c^3)$ 关系经验证加共度条件严格化均达成。中间档是结构推导加 $T$-$c^3$ 桥接瓶颈精确定位。最弱档是 SAE 框架下 Landauer 推导链各处障碍的首次精确定位。三档全部作为实质性科学贡献——精确定位推导链的障碍让后续 SAE 工作有具体目标。
+
+关键词：Landauer 原理；$\ln 2$ 推导；底层二元承诺；$E = Ic^3$；$T$-$c^3$ 结构桥接；SAE 框架；条件性结构推导
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>SAE信息论, Landauer原理, ln 2, 离散底层, 测量投影, 擦除, 三支柱, 4DD本体论</div>
+    </div>
+    <div class="paper-body">
+<h2>三支柱与开放问题</h2>
+<p>Self-as-an-End 信息论系列第二篇</p>
+<p>秦汉 · DOI: TBD</p>
+<hr>
+<h2>摘要</h2>
+<p>SAE 信息论系列第一篇（Qin 2026, DOI: 10.5281/zenodo.19740019）建立信息的 4DD 本体论与一条基础公理（能量-信息守恒 across 42 × 1DD），并在 §4.5.1 对 Landauer $\ln 2$ 给出条件性的本体论解读：$\ln 2$ 可以读为连续测量形式系统读取离散底层时产生的投影因子。本文的任务是把这一解读升级为 SAE 框架下的结构推导。</p>
+<p>具体而言，本文识别 Landauer 推导的三个前置条件，对应三个支柱。支柱一是擦除情境下 Shannon $H$ 与 SAE $I$ 的结构关系。支柱二是 Landauer 公式中统计温度 $T$ 与 SAE 几何量 $c^3$ 之间的结构桥接。支柱三是给定底层二元承诺下 $\ln 2$ 的结构来源。本文分别审视三支柱在 SAE 框架下能交付什么、不能交付什么，最后通过组合分析诚实评估实际贡献的性质。</p>
+<p>核心诚实承认有三层。第一，本文的推导是框架内部的结构推导，条件性地依赖于继承自 Paper I §4.5.1 的底层二元承诺与 Mass 系列的 $E = Ic^3$ 等承诺，而非不依赖任何前置承诺的物理层第一性原理推导。第二，组合分析显示 Landauer 公式实际推导主干仍然是标准 Bennett 式熵论证，SAE 框架的贡献在于给 $\ln 2$ 提供底层二元的结构性解读，给擦除操作提供底层重分配的本体论图像，而非提供替代性的推导主干。第三，宏观 1 比特擦除不对应单个底层事件，涉及底层事件的统计累积，底层最小量 $I_{\text{bit}}$ 通过组合加 Landauer 约束标定，而非独立推出。</p>
+<p>本文明确标记三档结果（最强、中间、最弱）均作为实质性贡献。最强档需要 Thermo 系列 $\tau_{\text{dec}}(c^3)$ 关系经验证加共度条件严格化均达成。中间档是结构推导加 $T$-$c^3$ 桥接瓶颈精确定位。最弱档是 SAE 框架下 Landauer 推导链各处障碍的首次精确定位。三档全部作为实质性科学贡献——精确定位推导链的障碍让后续 SAE 工作有具体目标。</p>
+<p><strong>关键词</strong>：Landauer 原理；$\ln 2$ 推导；底层二元承诺；$E = Ic^3$；$T$-$c^3$ 结构桥接；SAE 框架；条件性结构推导</p>
+<hr>
+<h2>§1 引言：Landauer 原理的标准形式与 SAE 推导目标</h2>
+<h3>§1.1 Landauer 原理的标准陈述与 Bennett 推导</h3>
+<p>Landauer (1961) 的原始论证给出擦除 1 比特信息所需的最小能量代价</p>
+<p>$$E_{\min} = k_B T \ln 2$$</p>
+<p>Bennett (1982) 给出基于热力学第二定律与相空间体积约简的推导。Bennett 论证的关键观察是：擦除是逻辑上不可逆的操作，在相空间中对应体积减半，所以系统熵减少 $k_B \ln 2$，第二定律要求热源熵增加至少同量，因此热源能量增加至少 $k_B T \ln 2$。</p>
+<p>Bennett 推导是现象层的。它不解释 $\ln 2$ 为何特定地出现，只表明当 Shannon 框架与热力学框架耦合时 $\ln 2$ 必然出现。在 Bennett 论证中，$\ln 2$ 作为输入而非输出——它来自 Shannon 熵的二底单位约定 $H = -\sum p \log_2 p$ 与热力学熵 $S = -k_B \sum p \ln p$ 之间的单位转换，相空间体积比 2 是输入而非推导出的量。</p>
+<p>Bennett 推导在自身范围内完整。本文不挑战 Bennett 推导，而是问一个不同的问题：<strong>SAE 框架是否能给 $\ln 2$ 一个比单位约定遗物更深的结构性解读？</strong></p>
+<h3>§1.2 Paper II 的四个推导目标</h3>
+<p>Paper I §4.5.1 给出条件性的本体论解读：在 SAE 4DD 底层本体论下，$\ln 2$ 可以读为连续测量形式系统读取离散底层的投影因子。但这是解读不是推导。本文的任务是把解读升级为结构推导。</p>
+<p>具体目标四项：</p>
+<p><strong>(G1)</strong> 擦除情境下 $H$ 与 $I$ 的结构关系：识别 Shannon $H$（操作层 1DD 量）与 SAE $I$（底层 4DD 量）在擦除操作下的具体结构关系。本目标不需要跨多种状态 regime 的一般框架，只需要擦除情境的特定关系。</p>
+<p><strong>(G2)</strong> $T$ 与 $c^3$ 在擦除情境下的结构桥接：探索 Landauer 公式中统计温度 $T$ 与 SAE 几何参数 $c^3$ 之间的候选桥接路径。本目标不假定有闭合解，目标是阐明候选路径。</p>
+<p><strong>(G3)</strong> 给定底层二元承诺下 $\ln 2$ 的结构来源：在 Paper I §4.5.1 继承的底层二元承诺下，将 $\ln 2$ 推导为连续测量读取离散底层的定量签名。</p>
+<p><strong>(G4)</strong> 三个前置条件组合产生 Landauer 公式：通过组合分析诚实标记每一步的贡献性质（结构性解读 vs 推导步骤 vs 标准熵论证）。</p>
+<p>四个目标对应四个支柱（G1 → 支柱 1，G2 → 支柱 2，G3 → 支柱 3，G4 → 组合分析）。本文 §2 处理支柱 1，§3 处理支柱 2，§4 处理支柱 3，§5 处理组合分析。</p>
+<h3>§1.3 推导的认识论性质：框架内部的结构推导</h3>
+<p>本文有一个必须开门见山的定位：<strong>本文推导是框架内部的结构推导，不是不依赖任何前置承诺的物理层第一性原理推导</strong>。</p>
+<p>具体而言：</p>
+<p>第一，推导继承多个 SAE 框架的前置承诺。底层二元承诺来自 Paper I §4.5.1，本文不推导。$E = Ic^3$ 来自 Mass 系列（Qin 2026f, DOI: 10.5281/zenodo.19510868），本文调用而不推导。$\tau_{\text{dec}}$ 作为 4DD 闭合时间尺度来自 Thermo 系列，本文用作候选桥接工具而不推导。</p>
+<p>第二，推导某些步骤是条件性地依赖于继承承诺，不是独立推导。底层二元承诺是支柱 3 的本质输入；如果未来 SAE 工作修正此承诺（例如发现底层最小单位不是二元的），支柱 3 推导需要相应修正。</p>
+<p>第三，某些参数（特别是 $I_{\text{bit}}$，底层最小信息量）通过组合加 Landauer 约束标定，而非独立推出。具体见 §2.3。</p>
+<p>"第一性原理"这个用语在 SAE 框架内应读为"给定继承承诺下的框架第一性原理"，<strong>而非"不依赖任何前置承诺的物理学第一性原理"</strong>。读者应明确区分两种读法。本文标题选择"结构推导"而非"第一性原理推导"正是为了避免此模糊。</p>
+<p>这种框架内部推导的认识论状态有历史类比。给定 Newton 万有引力框架后，Kepler 三定律作为内部推论自然成立，但这不意味着 Kepler 三定律是不依赖任何前置承诺地推出——它们条件性地依赖平方反比引力的承诺。框架本身是承诺而非推导，但承诺给定后框架内的逻辑后果是真正的推导。本文地位类似：SAE 框架给定后，Landauer 公式作为框架内的条件性后果自然成立，但 SAE 框架本身（包括底层二元、$E = Ic^3$、$\tau_{\text{dec}}$）是继承的承诺，而非不依赖任何前置承诺的推导。</p>
+<h3>§1.4 成功标准：三档结果均作为实质性贡献</h3>
+<p>为避免对结果的预期错位，本文一开始明确成功标准。最低交付是对 Landauer 推导链三支柱的系统性检查。三档结果均作为实质性贡献。</p>
+<p><strong>最强档</strong>：三支柱全部完成条件性的第一性原理推导，本文交付"SAE 框架下 Landauer 公式的条件性结构推导"。此档需要 §3.4 Thermo $\tau_{\text{dec}}(c^3)$ 验证加共度条件严格化两者都达成，不可保证。</p>
+<p><strong>中间档</strong>：两支柱完成、第三支柱瓶颈精确定位，本文交付"两支柱推导加精确瓶颈定位"。此档是当前提纲的现实预期——支柱 1 的底层重分配解读加支柱 3 的条件性推导完成，支柱 2 仍是候选桥接路径比较，$T$-$c^3$ 桥接瓶颈精确定位。</p>
+<p><strong>最弱档</strong>：三支柱皆部分完成，但 Landauer 各步骤卡在哪首次精确定位，本文交付"SAE 框架下 Landauer 推导的结构性探索加障碍定位"。此档保护本文在实质性贡献层面不塌陷——精确定位 SAE 框架下 Landauer 推导链的障碍让未来 SAE 工作有具体目标。</p>
+<p>最弱档仍然是实质性科学贡献。这种"否定性结果作为实质性贡献"的模式在 ZFCρ 系列 Paper 66（Qin 2026, DOI: 10.5281/zenodo.19701479）已经展示——"13 kills"模式即系统性排除加精确定位是合法贡献。本文遵循同一模式。</p>
+<h3>§1.5 本文做与不做</h3>
+<p><strong>本文做</strong>：</p>
+<p>第一，处理支柱 1：擦除情境下 $H$-$I$ 结构关系解读加 $I_{\text{bit}}$ 量纲分析与统计累积问题的明确承认（§2）。</p>
+<p>第二，处理支柱 2：$T$-$c^3$ 候选结构桥接路径的探讨，三条候选路径的比较（§3）。不假定有闭合解。</p>
+<p>第三，处理支柱 3：给定继承的底层二元承诺下 $\ln 2$ 的结构推导链（§4）。</p>
+<p>第四，组合分析：诚实标记每一步的贡献性质，明确实际推导主干仍是标准 Bennett 式熵论证，SAE 框架贡献在于底层解读层（§5）。</p>
+<p>第五，副产品的随机记录（§6）。</p>
+<p>第六，主张-状态映射加三档成功标准的详述（§7）。</p>
+<p><strong>本文不做</strong>：</p>
+<p>第一，不主张不依赖任何前置承诺的物理层第一性原理推导。</p>
+<p>第二，不推导 Paper I §4.5.1 的底层二元承诺——继承自 Paper I。</p>
+<p>第三，不验证 Thermo 系列 $\tau_{\text{dec}}(c^3)$ 关系。如果验证在写作过程中可以完成则做，否则作为前置开放问题。</p>
+<p>第四，不展开跨多个 regime 的一般 $H$-$I$ 映射。Paper II v0/v1 的此类过度主张已被否决。</p>
+<p>第五，不把 data q（系列大纲北极星方向）作为中心工具。data q 方向记录在系列大纲中，本文不调用。</p>
+<p>第六，不展开 42 通道信息侧形式系统。Paper I §7.2 推迟此任务，本文不处理。</p>
+<p>第七，不处理生物 / 意识 / AI 信息应用。这些是后续候选方向（系列大纲候选方向 D），本文不涉及。</p>
+<h3>§1.6 知识谱系</h3>
+<p>继承 Paper I 知识谱系，扩展 Paper II 相关。</p>
+<p>Shannon (1948) 建立操作层信息论。Landauer (1961) 给出原始 $E_{\min} = k_B T \ln 2$。Bennett (1982) 给出 Landauer 原理的热力学推导。Boltzmann 与 Gibbs 建立统计力学正则框架，提供 $\Delta S = \Delta E / T$ 等标准关系。</p>
+<p>SAE 框架内：Mass 系列（Qin 2026f）建立 $E = Ic^3$ 作为 A 类推导结果。Paper I（Qin 2026 信息论 I）建立 4DD 底层本体论加 $\ln 2$ 条件性解读（§4.5.1）。Thermo 系列建立 $\tau_{\text{dec}}$、$q$-指数族、解析核等候选桥接工具。</p>
+<p>每篇前作在各自范围内完整。本文贡献是在 SAE 框架下尝试 Landauer 结构推导，加上对推导链各步骤状态的诚实记录。</p>
+<hr>
+<h2>§2 支柱 1：擦除情境下的 $H$-$I$ 结构关系</h2>
+<h3>§2.1 信息擦除的精确设置</h3>
+<p>擦除操作定义：从已知态（任意 $p_i$ 概率分布）变到参考态（如全 0）。最小代价情境是从二态均匀分布（$p_1 = p_2 = 1/2$）到单态，擦除 1 比特 Shannon 信息。</p>
+<p>Shannon 量化擦除的信息变化为</p>
+<p>$$\Delta H_{\text{Shannon}} = H_{\text{before}} - H_{\text{after}} = (-\sum_i p_i \log_2 p_i) - 0 = 1 \text{ 比特} = \ln 2 \text{ nats}$$</p>
+<p>在 SAE 框架下，擦除是物理操作，需要审视该操作在 4DD 底层发生什么。Shannon 量化在操作层 1DD 完整，但本文问的是底层图像。</p>
+<h3>§2.2 擦除操作在 4DD 底层的本体论解读</h3>
+<p>在 SAE 4DD 本体论下，信息 $I$ 是 4DD 底色，量纲 kg·s/m，是物理量而非统计泛函。擦除操作的底层图像：</p>
+<p>擦除前，系统在两个底层态之间分布，底层有 $I_1$ 和 $I_2$ 两个分支。</p>
+<p>擦除后，系统被强制到单参考态，底层仅余 $I_1$。</p>
+<p>底层上，$I_2$ 分支被"移除"或"合并"到 $I_1$。</p>
+<p>但 4DD 闭合不对称（Paper I §4.1）说 $I$ 是闭合侧累积不可逆量。$I_2$ 分支不能反向到不存在——这违反闭合不对称。所以"移除"必然是重分配：底层内容必然转移到环境（热源）作为热源热能增量。</p>
+<p>这是支柱 1 的<strong>本体论解读</strong>：</p>
+<p>> 擦除是底层重分配操作。$I_2$ 分支的底层内容不消失，转移到热源作为热源热能增量。信息不被销毁，只是从系统转移到环境。</p>
+<p>本解读跟能量守恒的标准解读同构——能量不被销毁，只是从一种形式转换到另一种形式。Paper I 的信息守恒公理在擦除情境下的具体实例化即此底层重分配图像。</p>
+<p><strong>重要承认</strong>：本节给出<strong>本体论解读</strong>描述擦除操作在底层的图像，<strong>而非独立决定 $\Delta I$ 具体量级的推导步骤</strong>。具体量级涉及底层事件的统计累积，不是单底层事件的量子——见 §2.3 详细讨论。</p>
+<h3>§2.3 $H$ 与 $I$ 的擦除结构关系：从底层事件到宏观擦除</h3>
+<p>本节审视支柱 1 想要交付的具体定量关系：擦除 1 比特 Shannon 信息对应底层 $\Delta I$ 多少？</p>
+<h4>§2.3.1 朴素图像与量纲检查</h4>
+<p>朴素图像可能说：擦除 1 比特 Shannon 信息对应底层"1 个底层 $I$ 量子"的转移。如记此量子为 $I_{\text{bit}}$，则</p>
+<p>$$\Delta I_{\text{system}} = I_{\text{bit}} \quad \text{对 1 比特擦除}$$</p>
+<p>底层转移到热源后通过 $E = Ic^3$ 转化成热能：</p>
+<p>$$\Delta E_{\text{reservoir}} = I_{\text{bit}} \cdot c^3$$</p>
+<p>如果此 $\Delta E_{\text{reservoir}}$ 等于室温下 Landauer 公式 $k_B T \ln 2$，则 $I_{\text{bit}}$ 由此标定。</p>
+<p><strong>但量纲检查暴露此朴素图像的问题</strong>：</p>
+<p>如果 $I_{\text{bit}}$ 由 Planck 尺度物理识别（即底层最小量自然由 Planck 单位设定），自然候选是</p>
+<p>$$I_{\text{bit}} = \frac{E_P}{c^3} = \frac{m_P}{c} \approx \frac{2.18 \times 10^{-8} \text{ kg}}{3 \times 10^8 \text{ m/s}} \approx 7.27 \times 10^{-17} \text{ kg·s/m}$$</p>
+<p>代入</p>
+<p>$$\Delta E_{\text{reservoir}} = I_{\text{bit}} \cdot c^3 = E_P \approx 2 \times 10^9 \text{ J}$$</p>
+<p>跟 Landauer 室温 $T = 300$ K 下的 $k_B T \ln 2$</p>
+<p>$$k_B T \ln 2 \approx 1.38 \times 10^{-23} \times 300 \times 0.693 \approx 2.87 \times 10^{-21} \text{ J}$$</p>
+<p>差 30 个数量级。</p>
+<h4>§2.3.2 30 数量级缺口 的意义</h4>
+<p>30 数量级缺口 直接证伪朴素图像。意味着：</p>
+<p><strong>宏观 1 比特擦除不对应单个底层事件</strong>。实际涉及大量底层事件加上统计累积。每个底层事件转移的底层 $I$ 很小（约 Planck 尺度），跨大量事件累积起来产生跟 $k_B T \ln 2$ 匹配的宏观能量量级。</p>
+<p>具体的统计累积形式不在本文范围内推导。这一累积形式涉及信息作为 4DD 宏观范畴的本体论性质——信息存在的底层累积量级是后续 paper 处理的专门主题（SAE 信息论系列后续 paper）。本文不预设具体累积形式，也不预设此形式必须产生闭合推导，保持 §2.3.3 标定参数性质作为本文边界。</p>
+<h4>§2.3.3 $I_{\text{bit}}$ 的标定性质：诚实承认</h4>
+<p>如果本文用 $I_{\text{bit}}$ 作为推导参数加 Landauer 公式作为约束，设 $\Delta E_{\text{reservoir}} = k_B T \ln 2$，那么 $I_{\text{bit}}$ 通过组合标定，而非独立推出。</p>
+<p>> <strong>这是标定步骤而非第一性原理推导步骤</strong>。</p>
+<p>具体而言：</p>
+<ul>
+<li>独立推出 $I_{\text{bit}}$ 需要 SAE 底层统计力学（缺）</li>
+<li>独立推出 $\Delta E_{\text{reservoir}}$ 需要 SAE 完整动力学（缺）</li>
+<li>实际程序是调用 Landauer 公式作为约束，从 $\Delta E_{\text{reservoir}} = k_B T \ln 2$ 加 $E = Ic^3$ 反向标定 $I_{\text{bit}}$ 的有效量级</li>
+</ul>
+<p>这意味着 $I_{\text{bit}}$ 在本文中是<strong>经标定的参数</strong>而非推导出的量。Paper II 不掩饰此事实，§7.1 主张-状态映射中 $I_{\text{bit}}$ 特别标记为"开放 / 标定参数"。</p>
+<p><strong>关于此标定状态的认识论注</strong>：$I_{\text{bit}}$ 在 Planck 尺度上推导的缺失可能不只是技术性缺口等待底层统计力学填补，可能是更根本的本体论特征——如果信息严格作为 4DD 累积范畴而底层单事件低于因果 settling 尺度时不携带信息，那"$I_{\text{bit}}$ 在 Planck 尺度"作为 良定义量本身可能是 不当问题。具体阐述留给 SAE 信息论系列后续 paper 处理，本文不预设两种读法（技术性缺口或本体论特征）中任何一种，只明确标记当前 paper 内的标定状态。</p>
+<h4>§2.3.4 Shannon $H$ 与 SAE $I$ 在擦除情境的精确关系</h4>
+<p>承认 $I_{\text{bit}}$ 是经标定的参数后，擦除情境下 Shannon $H$ 与 SAE $I$ 的关系可以阐述如下：</p>
+<p>$$\Delta H_{\text{Shannon}} \text{ in nats} = \ln 2 \quad \Leftrightarrow \quad \Delta I_{\text{system}} = N_{\text{eff}} \cdot I_{\text{bit, micro}}$$</p>
+<p>其中 $N_{\text{eff}}$ 是底层事件数（量大），$I_{\text{bit, micro}}$ 是底层单事件 $I$ 转移量（Planck 尺度），乘积通过 Landauer 约束标定为 $\Delta E_{\text{reservoir}} / c^3 = k_B T \ln 2 / c^3$。</p>
+<p>这是擦除情境下 $H$ 与 $I$ 的特定结构关系：1 比特 Shannon 信息变化对应底层大量事件的集体转移，累积量通过 Landauer 公式标定。</p>
+<p><strong>关键点</strong>：本关系是<strong>经标定的关系</strong>，而非从独立 SAE 输入推导出的。它建立量纲一致性与底层图像，但不提供 $\Delta E_{\text{reservoir}}$ 的独立预测——后者由 Bennett 式熵论证提供（§5）。</p>
+<h3>§2.4 支柱 1 的部分交付与开放状态</h3>
+<p><strong>支柱 1 第一性原理部分</strong>：</p>
+<p>第一，擦除作为底层重分配的本体论解读：擦除不是抽象逻辑操作，是底层物理转移操作。</p>
+<p>第二，$I$ 转移方向从系统到热源由 4DD 闭合不对称决定。闭合不对称排除 $I$ 反向流动，所以擦除必然耗散到热源。</p>
+<p><strong>支柱 1 开放部分</strong>：</p>
+<p>第一，$I_{\text{bit}}$ 具体量级的第一性原理推导。Planck 尺度识别量纲不直接成立（30 数量级缺口），需要底层统计力学的联合工作。</p>
+<p>第二，宏观擦除涉及底层事件的统计累积的具体形式。需要实质性的新 SAE 框架工作来推导。</p>
+<p>第三，一般 $H$ 量擦除（非 1 比特情况）的底层解读。本文只处理 1 比特最小情况。</p>
+<p><strong>未来方向</strong>：</p>
+<p>第一，$I_{\text{bit}}$ 在 Planck 尺度的识别通过仔细量纲分析加 SAE Planck 尺度物理。可能需要联合 ZFCρ 系列 Paper 68 的小整数组合结构（DOI: 10.5281/zenodo.19739810）作为参考框架。</p>
+<p>第二，底层统计力学作为未来 SAE 框架发展。这可能跟 Thermo 系列 $q$-指数族加 4DD 闭合联合产生底层配分函数类比。</p>
+<hr>
+<h2>§3 支柱 2：$T$ 与 $c^3$ 的候选结构桥接</h2>
+<h3>§3.1 桥接问题陈述</h3>
+<p>支柱 1 解读说 $\Delta I_{\text{system}}$ 转移到热源。热源接收并转化成热能。具体多少能量取决于热源热态（由 $T$ 表征）与底层 $I$ 之间的转换机制。</p>
+<p>SAE 框架下 $E = Ic^3$ 给出普适的底层转换：1 单位 $I$ 对应 $c^3$ 单位 $E$。</p>
+<p>但热源是统计系综，由 $T$ 表征而非由单一 $E$ 值表征。需要桥接：在擦除情境下 $T$（统计温度）如何关联到 $c^3$（几何意义上的 DD 突破速率）？</p>
+<p>本节探索三条候选桥接路径，<strong>不假定有闭合解</strong>——支柱 2 是本文最脆弱的支柱，公西华 v1 评审已经推到承认此定位的必要性。</p>
+<h3>§3.2 候选桥接路径 1：$\tau_{\text{dec}}$ 共度条件</h3>
+<h4>§3.2.1 候选框架</h4>
+<p>$\tau_{\text{dec}}$ 来自 Thermo 系列，作为 4DD 闭合时间尺度——即底层闭合在时间维度上的特征尺度。热尺度 $k_B T$ 有对应的热 de Broglie 时间</p>
+<p>$$\tau_T = \frac{\hbar}{k_B T}$$</p>
+<h4>§3.2.2 试探性连接</h4>
+<p>在擦除情境下，假定 $\tau_{\text{dec}}$ 与 $\tau_T$ 必须共度：擦除在热平衡时间尺度内完成。</p>
+<p>如果共度条件 $\tau_{\text{dec}} = \tau_T$ 成立：</p>
+<p>$$T = \frac{\hbar}{k_B \tau_{\text{dec}}}$$</p>
+<p>加上 Thermo 系列的 $\tau_{\text{dec}}(c^3, \text{系统参数})$（如果该关系已经定量建立），产生 $T$-$c^3$ 的具体桥接。</p>
+<h4>§3.2.3 共度条件的严格性问题</h4>
+<p>但共度条件的严格性是显著问题，本文不掩盖。</p>
+<p>不是显然的物理必然。$\tau_{\text{dec}}$ 跟 $\tau_T$ 是不同的物理过程（系统特定的退相干 vs 仅依赖 $T$ 的热时间）。让两者相等假设擦除动力学跟热动力学之间有特定匹配，不显然有物理依据。</p>
+<p><strong>物理依据候选</strong>（不是严格推导）：</p>
+<p>第一，边界情况论证：</p>
+<ul>
+<li>$\tau_{\text{dec}} \gg \tau_T$ 时闭合太刚硬，擦除不能在热时间尺度内发生</li>
+<li>$\tau_{\text{dec}} \ll \tau_T$ 时闭合不稳定，没有信息可擦除</li>
+<li>$\tau_{\text{dec}} \sim \tau_T$ 是临界边界</li>
+</ul>
+<p>第二，热平衡蕴含：擦除发生在系统与热源接触的时段；如果擦除完成需要闭合动力学，则闭合动力学必须在热时间尺度内完成；所以 $\tau_{\text{dec}} \lesssim \tau_T$。</p>
+<p><strong>关键逻辑缺口</strong>：从边界不等式 $\tau_{\text{dec}} \lesssim \tau_T$ 到严格相等 $\tau_{\text{dec}} = \tau_T$ 不成立——任何 $\tau_{\text{dec}}$ 在热源热化时间尺度内都可擦除，不必严格共度。严格相等假设临界边界饱和，但此饱和不显然在物理上必须。</p>
+<p><strong>诚实承认</strong>：本路径提供量纲结构加合情合理的物理依据，<strong>不是严格物理推导</strong>。共度条件是带依据但无严格推导的临时假设。本文在此节显著标记此假设状态，不掩盖。</p>
+<h3>§3.3 候选桥接路径 2：直接量纲分析</h3>
+<p>代入 $E = Ic^3$ 到 Gibbs-Boltzmann 因子：</p>
+<p>$$p_i = \frac{1}{Z} \exp\left(-\frac{E_i}{k_B T}\right) = \frac{1}{Z} \exp\left(-\frac{c^3 I_i}{k_B T}\right) = \frac{1}{Z} \exp\left(-\beta_{\text{info}} I_i\right)$$</p>
+<p>其中 $\beta_{\text{info}} \equiv c^3 / (k_B T)$ 是自然的无量纲组合（量纲 [s/(kg·m)]$^{-1}$，即 [kg·m/s]，与 $I$ 量纲 kg·s/m 互逆，量纲检查通过）。</p>
+<p>$\beta_{\text{info}}$ 提供 $T$ 与 $c^3$ 之间的量纲桥接，但<strong>不是推导</strong>——是量纲分析观察。</p>
+<p>此路径比路径 1 弱（不提供动力学内容），但量纲干净加无临时假设。它阐明 SAE 框架自然包含 $T$-$c^3$ 量纲组合，但不闭合桥接。</p>
+<p>$\beta_{\text{info}}$ 作为副产品记录在 §6.1，可能在其他 SAE 工作中被调用。</p>
+<h3>§3.4 候选桥接路径 3：$\tau_{\text{dec}}$-$c^3$ Thermo 系列具体关系（验证仍开放）</h3>
+<p>本节状态需要诚实披露。</p>
+<h4>§3.4.1 前置验证状态</h4>
+<p>支柱 2 路径 1 加特定 Thermo 输入可能产生 $T$-$c^3$ 闭合桥接——前提是 Thermo 系列已经建立 $\tau_{\text{dec}} = f(c^3, \text{系统参数})$ 的定量形式。</p>
+<p>写作本文时此验证在 Thermo 系列 Paper I 至 X 中具体定理的搜索状态：部分。Thermo 系列建立 $\tau_{\text{dec}}$ 作为 4DD 闭合时间尺度的框架概念，并在 Paper III、VII、X 中发展各 regime 的 $\tau_{\text{dec}}$ 行为（指数衰减、$q$-指数族、收束）。但 $\tau_{\text{dec}}$ 与 $c^3$ 的具体定量函数形式——特别是在擦除情境下——并未在闭合形式层面建立。</p>
+<h4>§3.4.2 取决于验证结果的两种可能</h4>
+<p><strong>若未来 Thermo 工作建立 $\tau_{\text{dec}}(c^3)$ 的具体闭合形式</strong>：支柱 2 路径 1 加 Thermo 特定输入加共度条件（仍是临时但有依据）可能产生 $T$-$c^3$ 闭合桥接。Paper II 进入最强档。</p>
+<p><strong>若未建立</strong>：支柱 2 仅提供结构桥接候选加量纲分析（路径 2）加共度条件依据（路径 1）。Paper II 进入中间档。</p>
+<p>本文当前结果是中间档，因为验证未完成。但未来工作可能升级到最强档。</p>
+<h3>§3.5 支柱 2 的部分交付与开放状态</h3>
+<p><strong>支柱 2 第一性原理部分（不论验证结果）</strong>：</p>
+<p>第一，$\beta_{\text{info}} = c^3 / (k_B T)$ 作为自然量纲组合的阐明。</p>
+<p>第二，三条候选桥接路径的明确比较加临时性的诚实标记。</p>
+<p><strong>支柱 2 第一性原理部分（如验证成立）</strong>：</p>
+<p>第一，通过 $\tau_{\text{dec}}$ 共度的 $T$-$c^3$ 结构桥接（待共度严格化）。</p>
+<p><strong>支柱 2 开放部分</strong>：</p>
+<p>第一，共度条件的物理严格性。从边界不等式到严格相等的逻辑缺口。</p>
+<p>第二，Thermo 系列 $\tau_{\text{dec}}(c^3)$ 具体定量关系的验证。</p>
+<p><strong>Paper II 最脆弱的支柱</strong>——本节定位为"候选桥接路径的比较"，不假定有闭合解。</p>
+<hr>
+<h2>§4 支柱 3：给定继承的底层二元承诺下 $\ln 2$ 的推导</h2>
+<h3>§4.1 升级 Paper I §4.5.1 条件性解读的任务</h3>
+<p>Paper I §4.5.1 给出条件性的本体论解读：$\ln 2$ 可以读为连续测量形式系统读取离散底层的投影因子。本支柱任务是把解读升级为推导，<strong>给定继承的底层二元承诺</strong>。</p>
+<p><strong>关键定位</strong>：本推导条件性地依赖 Paper I §4.5.1 的继承承诺——底层最小信息单位是二元的（来自 4DD 封装操作范畴的二元性）。</p>
+<p>> 底层二元本身是 Paper I 的继承主张，<strong>Paper II 不推导底层二元</strong>。</p>
+<p>$\ln 2$ 不是从无承诺推出，而是从底层二元承诺推出。</p>
+<h3>§4.2 推导链：给定底层二元，$\ln 2$ 自然成立</h3>
+<p>具体推导链六步：</p>
+<p><strong>(a)</strong> 4DD 封装操作范畴是二元的。</p>
+<p>> 来源：<strong>Paper I §4.5.1 继承主张</strong>。Paper I 论证 4DD 是闭合层，操作范畴是封装，封装的最小区分是二元的（内或外）。本文不推导 (a)。</p>
+<p><strong>(b)</strong> 底层最小信息单位 = 1 个二元区分 = 1 比特（物理比特，不是 Shannon 约定意义上的比特）。</p>
+<p>> 来源：<strong>直接由 (a) 而来</strong>。封装操作的最小单位是 1 个二元区分，对应底层 1 比特。注意此比特是底层物理量纲单位，不是 Shannon 操作层统计单位。</p>
+<p><strong>(c)</strong> 连续测量形式系统用 $\ln$（自然对数）作为测量尺度。自由能、熵等统计量在连续极限下用 $\ln$ 定义。</p>
+<p>> 来源：<strong>标准数学约定</strong>。Boltzmann-Gibbs 框架的熵 $S = -k_B \sum p \ln p$ 用 nats（自然对数底）作为单位。这是连续形式系统的标准数学选择。</p>
+<p><strong>(d)</strong> 数学恒等式：</p>
+<p>$$\log_2 x = \frac{\ln x}{\ln 2}$$</p>
+<p>> 来源：<strong>数学恒等式</strong>。</p>
+<p><strong>(e)</strong> 用连续 $\ln$ 测量计数 1 个二元离散事件：结果是 $\ln 2$。</p>
+<p>> 来源：<strong>由 (b) + (c) + (d) 而来</strong>。具体读法：底层 1 个二元区分（来自 (b)）在连续测量形式系统下（来自 (c)）通过 $\log_2 \to \ln$ 转换（来自 (d)）读出，1 个二元单位 = $\log_2 2 = 1$ 比特 = $\ln 2$ nats。</p>
+<p><strong>(f)</strong> 因此擦除 1 个底层二元比特的熵代价（在连续测量读出下）必然是 $\ln 2$。</p>
+<p>> 来源：<strong>由 (e) 而来</strong>。擦除 1 个二元底层区分在连续测量读出时必然显示为 $\ln 2$ 大小的熵变化。</p>
+<h3>§4.3 推导的诚实性质</h3>
+<p>本节承认推导的认识论状态。</p>
+<p><strong>真正吃重在 (a)-(b)</strong>：底层是二元的。这是 SAE 框架的继承承诺，不是 Paper II 的推导。</p>
+<p><strong>步骤 (f) 由 (b)+(c)+(d) 平凡地成立</strong>——主要数学内容是恒等式 $\log_2 = \ln/\ln 2$ 在 SAE 物理解读下的读法。不是新数学。</p>
+<p><strong>所以支柱 3 是给定底层二元承诺的条件性推导</strong>，<strong>不是第一性原理推导</strong>。</p>
+<p><strong>诚实定位</strong>：支柱 3 交付"给定 Paper I §4.5.1 的底层二元承诺，$\ln 2$ 在底层二元擦除事件的连续测量读出中不可避免"。</p>
+<p>这本身是实质性的结构推导。它把 $\ln 2$ 从单位约定遗物升级到底层二元承诺的定量后果。具体贡献：</p>
+<p>第一，<strong>$\ln 2$ 来源的重定位</strong>：从"Bennett 推导中相空间体积比 2"重定位为"底层二元区分在连续读出中的投影签名"。</p>
+<p>第二，<strong>$\ln 2$ 不是单位约定遗物</strong>：在 SAE 框架内，$\ln 2$ 是底层二元承诺的具体定量后果，不是二底 vs $e$ 底的任意选择。</p>
+<p>但条件性地依赖继承承诺——底层二元本身不被推导，只是 Paper I 给出的承诺。</p>
+<h3>§4.4 支柱 3 的部分交付与开放状态</h3>
+<p><strong>支柱 3 第一性原理部分</strong>：</p>
+<p>第一，给定继承的底层二元承诺，$\ln 2$ 作为连续-离散投影的定量签名自然成立。</p>
+<p>第二，$\ln 2$ 不是单位约定遗物，是底层二元承诺的具体定量后果。</p>
+<p><strong>支柱 3 开放部分</strong>：</p>
+<p>第一，从更基础 SAE 原则严格推导底层二元承诺。Paper I §4.5.1 仍是承诺而非推导出的定理。</p>
+<p>第二，如果未来 SAE 框架发展出底层最小单位不是二元的可能性（例如三元或连续），支柱 3 推导需要修正。</p>
+<p>第三，4DD 封装是二元的本体论状态——Paper I §4.5.1 给出依据但从更深 SAE 原则严格推导仍开放。</p>
+<hr>
+<h2>§5 三支柱组合：实际推导逻辑与贡献性质</h2>
+<p>本节是本文最关键的一节。它诚实反映三支柱实际贡献结构，避免"三支柱第一性原理推导"的过度主张定位。</p>
+<h3>§5.1 实际推导链：标准 Bennett 式熵论证加支柱 3 $\ln 2$ 解读</h3>
+<p>仔细审视推导逻辑，从三支柱输入加标准热力学到达 Landauer 公式需要五步：</p>
+<p><strong>步骤 1</strong>：擦除 1 比特使系统熵减少 $\Delta H_{\text{system}} = \ln 2$ nats。</p>
+<p>> 来源：<strong>由支柱 3 而来</strong>——给定继承的底层二元承诺，$\ln 2$ 是连续测量读出中不可避免的因子。</p>
+<p><strong>步骤 2</strong>：第二定律：总熵不减少。</p>
+<p>> 来源：<strong>标准热力学</strong>。</p>
+<p><strong>步骤 3</strong>：热源熵必须增加至少 $\ln 2$（平衡步骤 1）。</p>
+<p>> 来源：<strong>由步骤 1 + 步骤 2 而来</strong>。</p>
+<p><strong>步骤 4</strong>：$\Delta S_{\text{reservoir}} = \Delta E_{\text{reservoir}} / T$。</p>
+<p>> 来源：<strong>标准热力学</strong>——热平衡下热源的熵-能量关系。</p>
+<p><strong>步骤 5</strong>：设 $\Delta S_{\text{reservoir}} \cdot k_B = k_B \ln 2$，求解</p>
+<p>$$\Delta E_{\text{reservoir}} = k_B T \ln 2$$</p>
+<p>Landauer 公式恢复。</p>
+<p><strong>诚实承认</strong>：</p>
+<p>> <strong>此推导链实际上是标准 Bennett 式熵论证加上支柱 3 给 $\ln 2$ 一个底层二元的结构性解读</strong>。</p>
+<p>支柱 1（底层重分配图像）和支柱 2（$T$-$c^3$ 桥接）<strong>不直接进入此推导链作为推导步骤</strong>。它们提供本体论上下文描述擦除在 SAE 框架下的结构图像，但不是熵论证的推导步骤。</p>
+<h3>§5.2 三支柱的实际贡献性质</h3>
+<p><strong>支柱 1 实际贡献</strong>：擦除作为底层重分配的本体论解读。这给 Bennett 熵论证一个 SAE 框架的结构上下文——擦除不是抽象逻辑操作，是物理底层转移操作。但具体 $\Delta E_{\text{reservoir}}$ 量级不来自支柱 1 推导链，是由熵论证设定的。</p>
+<p><strong>支柱 2 实际贡献</strong>：$T$-$c^3$ 桥接候选。在 SAE 框架内阐明 $T$ 统计量与 $c^3$ 几何量的关系。但 Landauer 公式通过熵论证推导不需要 $T$-$c^3$ 桥接——$T$ 直接作为热源表征出现。$T$-$c^3$ 桥接是 SAE 框架内的次级结构，不是 Landauer 推导必需的成分。</p>
+<p><strong>支柱 3 实际贡献</strong>：$\ln 2$ 作为底层二元承诺的定量后果。这是支柱 3 直接进入推导链作为步骤 1 输入。<strong>支柱 3 是唯一真正进入推导链作为推导输入的支柱</strong>。</p>
+<p><strong>整体结构</strong>：本文推导是</p>
+<p>> 支柱 3 提供推导输入 + 支柱 1、2 提供本体论上下文 + 标准熵论证作为推导主干。</p>
+<p>不是"三支柱组合的第一性原理推导"。</p>
+<h3>§5.3 与标准 Bennett 推导的具体比较</h3>
+<p>Bennett (1982) 推导：基本熵论证加相空间体积减少 2 倍（均匀 2 态到单态）。$\ln 2$ 来自相空间体积比。</p>
+<p>SAE 推导：基本熵论证加底层二元继承承诺产生 $\ln 2$。相空间体积比解读被底层二元离散承诺解读替代。</p>
+<p>> <strong>SAE 贡献不在推导主干（仍是熵论证）</strong>。</p>
+<p>></p>
+<p>> <strong>SAE 贡献在本体论解读层</strong>：</p>
+<p>第一，$\ln 2$ 来源解读：从"相空间约定遗物"重定位为"底层二元承诺后果"。</p>
+<p>第二，擦除操作解读：从"抽象逻辑操作"重定位为"底层重分配到热源"。</p>
+<p>第三，$T$ 表征解读：从"仅统计的"重定位为"通过候选桥接可能与底层 $c^3$ 关联"。</p>
+<p>这是<strong>结构性解读贡献</strong>而非<strong>替代推导路径</strong>。推导主干跟 Bennett 一致，SAE 框架在主干之上提供本体论解读的替代层。</p>
+<h3>§5.4 组合交付：框架内部结构推导加本体论上下文</h3>
+<p>本文 §5 交付的诚实总结：</p>
+<p>> <strong>SAE 框架内 Landauer 公式的条件性结构推导，给定</strong>：</p>
+<p>></p>
+<p>> (i) Paper I §4.5.1 底层二元继承承诺（支柱 3 本质输入）</p>
+<p>></p>
+<p>> (ii) 标准热力学熵论证主干（Bennett 式）</p>
+<p>></p>
+<p>> (iii) SAE 框架本体论上下文：擦除作为底层重分配（支柱 1）、$T$ 与 $c^3$ 候选连接（支柱 2）</p>
+<p><strong>结果</strong>：</p>
+<p>第一，恢复 $E_{\min} = k_B T \ln 2$（通过标准 Bennett 论证加支柱 3 底层二元输入的结构性解读）。</p>
+<p>第二，提供 $\ln 2$ 的底层二元结构解读。</p>
+<p>第三，建立本体论上下文（擦除作为底层操作）。</p>
+<p>第四，标记候选桥接（$T$-$c^3$）作为未来方向。</p>
+<p><strong>局限</strong>：</p>
+<p>第一，不提供替代的推导主干（仍是熵论证）。</p>
+<p>第二，不推导底层二元（继承自 Paper I）。</p>
+<p>第三，不闭合 $T$-$c^3$ 桥接（仍是候选）。</p>
+<p><strong>区分"恢复公式"与"提供底层解读"</strong>：本文同时做两件事但性质不同。"恢复公式"是通过标准主干加输入代入的数值恢复；"提供底层解读"是本体论解释层贡献。两者都是实质性贡献但类型不同——前者展示内部一致性，后者增加解读层。读者应明确区分。</p>
+<hr>
+<h2>§6 副产品</h2>
+<p>不预定本节内容。推导过程中自然出现的观察记录在此。</p>
+<h3>§6.1 $\beta_{\text{info}} = c^3 / (k_B T)$ 作为自然量纲参数</h3>
+<p>$\beta_{\text{info}}$ 在支柱 2 路径 2 自然出现。它不是框架主张但是有用的结构参数——可能在其他 SAE 工作中被调用。</p>
+<p>具体候选：第一，作为 4DD 底层配分函数的自然倒温度参数；第二，作为底层能量尺度 $c^3 I$ 与热尺度 $k_B T$ 比值的自然无量纲量；第三，作为未来底层统计力学的候选构件。</p>
+<h3>§6.2 擦除操作作为 4DD 底层重分配的特定实例</h3>
+<p>擦除在 SAE 下是底层重分配操作的特定情况。其他操作（计算、测量、复制）可能允许类似的 SAE 解读作为底层重分配。</p>
+<p>未来论文方向候选：</p>
+<p>第一，计算操作作为底层变换：计算是底层态空间内的变换，可能不需要重分配到环境。可逆计算在 SAE 框架下解读为底层封闭变换。</p>
+<p>第二，测量操作作为底层耦合：测量是系统底层与测量装置底层的耦合，底层 $I$ 在两个底层之间重分配。</p>
+<p>第三，复制操作作为底层增殖：复制涉及创造新的底层态，可能需要外部 $I$ 输入。量子情况下的不可克隆定理可能反映底层约束。</p>
+<h3>§6.3 底层二元假设的认识论位置升级</h3>
+<p>通过支柱 3 推导，底层二元假设从 Paper I §4.5.1 的背景承诺进入推导的本质成分。这增加了该假设在 SAE 框架内的权重。</p>
+<p>未来工作方向：从更基础 SAE 原则严格推导二元的范畴性。具体候选：</p>
+<p>第一，从 4DD 封装的最小区分原则推导二元。</p>
+<p>第二，从非疑（15DD 操作范畴）的二元结构追溯到 4DD 封装。</p>
+<p>第三，跟 ZFCρ 系列 Paper 68 的 {2,3}-skeleton 加 mod-6 自动机（DOI: 10.5281/zenodo.19739810）联合工作——底层二元跟小整数组合结构之间可能有 SAE 框架内的深层连接。</p>
+<h3>§6.4 非擦除情境下的 $H$-$I$ 关系（开放）</h3>
+<p>擦除情境的底层重分配解读给 $H$-$I$ 关系一个特定实例（类似 Paper I §4.5.2 Bekenstein 界的饱和实例）。后续 paper 可能扩展到其他操作上下文：</p>
+<p>第一，计算操作下的 $H$-$I$ 关系。</p>
+<p>第二，测量操作下的 $H$-$I$ 关系（涉及观察者作为 4DD 结构）。</p>
+<p>第三，平衡态下的 $H$-$I$ 关系（与热力学极限联合）。</p>
+<p>第四，远离平衡态下的 $H$-$I$ 关系（与 Thermo 系列 $q$-指数族联合）。</p>
+<p>每个操作上下文可能产生不同的特定实例，逐步建立起 $H$-$I$ 一般结构映射。</p>
+<h3>§6.5 $I_{\text{bit}}$ 在 Planck 尺度的识别作为未来方向</h3>
+<p>子夏 Pointer 1（Paper II 评审阶段提出）数值上跟 Landauer 室温擦除能量差 30 个数量级，表明直接代入不成立——宏观擦除不对应单底层量子。但底层想法（$I_{\text{bit}}$ 由 Planck 尺度物理识别）值得作为未来方向记录。</p>
+<p>可能路径：</p>
+<p>第一，SAE Planck 尺度物理联合底层统计力学推导 $I_{\text{bit, micro}}$ 加 $N_{\text{eff}}$ 的具体形式，恢复宏观 $\Delta E_{\text{reservoir}} = k_B T \ln 2$ 量级。</p>
+<p>第二，跟全息原理 / Bekenstein 界联合：Paper I §4.5.2 已建立黑洞视界的饱和实例。$I_{\text{bit, micro}}$ 可能跟 Planck 面积 $\ell_P^2$ 相关，与全息信息的量纲分析一致。</p>
+<p>第三，跟 ZFCρ Paper 68 的小整数骨架联合：底层二元承诺加小整数组合约束可能联合产生 $I_{\text{bit}}$ 的自然尺度。</p>
+<hr>
+<h2>§7 方法论</h2>
+<h3>§7.1 主张-状态映射</h3>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+<th>位置</th>
+<th>依据</th>
+</tr></thead><tbody>
+<tr>
+<td>擦除作为底层重分配的本体论解读</td>
+<td>结构性解读</td>
+<td>§2.2</td>
+<td>基于 Paper I §4.1 闭合不对称加能量守恒</td>
+</tr>
+<tr>
+<td>擦除底层事件到宏观的统计累积</td>
+<td>开放</td>
+<td>§2.3.2</td>
+<td>未推导，需要实质性新 SAE 框架工作</td>
+</tr>
+<tr>
+<td>$I_{\text{bit}}$ 具体量级</td>
+<td>开放 / 标定参数</td>
+<td>§2.3.3</td>
+<td>Planck 尺度识别有量纲问题（30 数量级缺口）；实际使用通过组合标定</td>
+</tr>
+<tr>
+<td>擦除情境下经标定的 $H$-$I$ 关系</td>
+<td>经标定的结构关系</td>
+<td>§2.3.4</td>
+<td>通过 Landauer 约束标定，不是独立预测</td>
+</tr>
+<tr>
+<td>4DD 封装操作范畴是二元的</td>
+<td>继承的 SAE 承诺</td>
+<td>§4.2 步骤 (a)</td>
+<td>继承自 Paper I §4.5.1，本文不推导</td>
+</tr>
+<tr>
+<td>底层最小信息单位是二元的</td>
+<td>继承后果</td>
+<td>§4.2 步骤 (b)</td>
+<td>直接由继承承诺 (a) 而来</td>
+</tr>
+<tr>
+<td>$\ln 2$ 作为给定底层二元的连续-离散投影签名</td>
+<td>条件性推导</td>
+<td>§4</td>
+<td>给定继承的底层二元承诺</td>
+</tr>
+<tr>
+<td>$\tau_{\text{dec}}$ 共度条件</td>
+<td>带依据的临时假设</td>
+<td>§3.2.3</td>
+<td>物理依据但无严格推导；从边界不等式到严格相等有逻辑缺口</td>
+</tr>
+<tr>
+<td>$\tau_{\text{dec}}$-$c^3$ Thermo 系列定量关系</td>
+<td>开放 / 需验证</td>
+<td>§3.4</td>
+<td>Thermo 系列框架概念已建立但闭合形式关系未建立</td>
+</tr>
+<tr>
+<td>$\beta_{\text{info}} = c^3/(k_B T)$ 作为自然量纲参数</td>
+<td>量纲观察</td>
+<td>§3.3, §6.1</td>
+<td>量纲分析</td>
+</tr>
+<tr>
+<td>组合推导 $E_{\min} = k_B T \ln 2$</td>
+<td>通过标准 Bennett 论证加支柱 3 底层二元输入的结构性解读</td>
+<td>§5</td>
+<td>支柱 3 输入加 Bennett 式论证</td>
+</tr>
+<tr>
+<td>支柱 1、2 贡献是本体论上下文而非推导步骤</td>
+<td>诚实承认</td>
+<td>§5.1-§5.2</td>
+<td>实际推导链分析</td>
+</tr>
+<tr>
+<td>$\ln 2$ 不是单位约定遗物而是底层二元后果</td>
+<td>条件性结构主张</td>
+<td>§4.3, §5.3</td>
+<td>给定继承的底层二元承诺</td>
+</tr>
+<tr>
+<td>$I_{\text{bit}}$ 在 Planck 尺度的识别</td>
+<td>未来方向</td>
+<td>§6.5</td>
+<td>量纲问题需要实质性新工作</td>
+</tr>
+</tbody></table>
+<h3>§7.2 三档结果的详述</h3>
+<p>继承 §1.4 成功标准，详细描述三档结果。</p>
+<p><strong>最强档</strong>（如 §3.4 验证成立 加共度条件严格化）：</p>
+<p>支柱 1 结构性解读 + 支柱 2 通过经验证的 Thermo 关系闭合桥接 + 支柱 3 条件性推导 + 标准熵论证。</p>
+<p>交付：SAE 框架下 Landauer 的条件性第一性原理推导，所有前置条件在继承承诺下满足。</p>
+<p><strong>中间档</strong>（当前提纲预期，本文实际结果）：</p>
+<p>支柱 1 结构性解读 + 支柱 2 候选桥接比较 + 支柱 3 条件性推导 + 标准熵论证。</p>
+<p>交付：结构推导加 $T$-$c^3$ 桥接瓶颈定位。$\ln 2$ 来源重定位完成，擦除操作本体论解读完成，$T$-$c^3$ 桥接作为候选路径比较，瓶颈精确定位在共度条件严格性与 Thermo $\tau_{\text{dec}}(c^3)$ 验证。</p>
+<p><strong>最弱档</strong>（如写作过程发现支柱 3 承诺链自身有问题）：</p>
+<p>支柱 1 结构性解读 + 支柱 3 底层二元承诺重新审视。</p>
+<p>交付：推导障碍的精确定位。SAE 框架下 Landauer 推导链各步骤障碍的具体位置首次映射，让未来 SAE 框架工作有具体目标。</p>
+<p><strong>本文实际进档</strong>：中间档。理由：</p>
+<p>支柱 3 条件性推导完成（给定 Paper I §4.5.1 继承的底层二元承诺）。</p>
+<p>支柱 1 底层重分配本体论解读完成；$I_{\text{bit}}$ 统计累积推迟但明确承认作为未来方向，不是阻塞性问题。</p>
+<p>支柱 2 三条候选路径比较完成；$T$-$c^3$ 桥接瓶颈在共度条件严格性加 Thermo $\tau_{\text{dec}}(c^3)$ 验证处精确定位。</p>
+<p>§5 组合分析完成诚实承认：实际推导主干是标准 Bennett 式熵论证，支柱 3 提供 $\ln 2$ 推导输入，支柱 1、2 提供本体论上下文。</p>
+<p>中间档结果跟 Paper II 当前范围与资源一致。</p>
+<h3>§7.3 与 Mass / Thermo / Paper I 的关系</h3>
+<p><strong>Paper I</strong>：§4.5.1 底层二元承诺本质（支柱 3 本质输入）。§4.1 闭合不对称本质（支柱 1）。§4.5.2 Bekenstein 界饱和实例作为类似解读的参考。</p>
+<p><strong>Mass 系列</strong>：$E = Ic^3$ A 类结果本质（支柱 1 量纲分析、支柱 2 路径 2 $\beta_{\text{info}}$、$I$ 到 $E$ 的普适转换关系）。</p>
+<p><strong>Thermo 系列</strong>：$\tau_{\text{dec}}$ 作为 4DD 闭合时间尺度（支柱 2 候选路径 1）。$q$-指数族与解析核作为未来桥接工具（§6.4 记录）。具体 Thermo 定理调用仍需验证（§3.4）。</p>
+<p><strong>跨系列共振（非承诺性观察）</strong>：</p>
+<p>第一，ZFCρ Paper 68 的 {2,3}-skeleton 加 mod-6 自动机（DOI: 10.5281/zenodo.19739810）跟底层二元承诺之间共享"特定小整数作为结构性不可约锚"的模式。此共振是试探性的，本文不承诺跨系列结构性识别。</p>
+<p>第二，四力 Paper 0「引力不是力，是信息读取」（DOI: TBD）§3.4 阐述 4DD 作为 q=1 干净读取层——4DD 不涉及自指，读取对象（1-2DD 能量动量）和 connection 层（3DD 质量）都是非主体的，所以 q=1。本文 Paper II §5 的 Bennett 式熵论证加支柱 3 推导 Landauer 公式不涉及自指也不涉及乘性耦合，直接对齐到第一轮物理轮的 q=1 基线。两文在 q=1 基线这一点独立到达一致解读，从两个不同方向（Paper 0 引力读取机制 / Paper II Landauer 擦除推导）确认第一轮闭合的 q=1 性质。这是跨系列结构性对齐而非推导——两 paper 各自推导独立完整，对齐作为系列整体一致性指标。</p>
+<p>调用层级比 Paper I 更深，因为跨系列接口（Landauer）。但本文仍保持信息论独立声音——主干推导是 Bennett 式熵论证加支柱 3 本体论解读，不依赖 Mass / Thermo 系列的具体动力学。</p>
+<hr>
+<h2>§8 开放问题</h2>
+<p>第一，$I_{\text{bit, micro}}$ 具体量级的第一性原理推导（需要 SAE 底层统计力学联合 Planck 尺度物理）。</p>
+<p>第二，宏观擦除涉及底层事件统计累积的具体形式。</p>
+<p>第三，从更基础 SAE 原则严格推导底层二元承诺。</p>
+<p>第四，$\tau_{\text{dec}}$-$c^3$ Thermo 系列定量关系的验证（搜索 Thermo 系列具体定理或新工作）。</p>
+<p>第五，共度条件严格性的改进——填补从边界不等式到严格相等的逻辑缺口。</p>
+<p>第六，一般 $H$-$I$ 关系在非擦除情境（计算、测量、复制、平衡态、远离平衡态各操作上下文）。</p>
+<p>第七，Landauer 推导的 42 通道扩展（Paper I §7.2 推迟的任务）。</p>
+<p>第八，量子擦除（量子信息上下文中的 Landauer 代价），与 von Neumann 熵的 SAE 解读联合。</p>
+<p>第九，远离平衡态的 Landauer 修正——Thermo 系列 $q$-指数族在擦除情境的体现。</p>
+<p>第十，信息几何与 SAE 底层本体论的接口（信息几何 vs 底层重分配几何）。</p>
+<hr>
+<h2>§9 后记</h2>
+<p>本文不主张不依赖任何前置承诺的物理学第一性原理推导。本文主张的是 SAE 框架内的条件性结构推导：给定 Paper I §4.5.1 底层二元继承承诺，给定 Mass 系列 $E = Ic^3$ A 类结果，给定标准热力学主干，Landauer 公式 $E_{\min} = k_B T \ln 2$ 作为框架内的后果自然成立，加上 $\ln 2$ 的底层二元结构性解读，加上擦除作为底层重分配的本体论图像。</p>
+<p>三件事是真正在本文做的：第一，把 $\ln 2$ 从单位约定遗物重定位为底层二元承诺的定量签名；第二，把擦除操作从抽象逻辑操作重定位为物理底层转移操作；第三，把 $T$-$c^3$ 候选桥接作为 SAE 框架内的次级结构阐明。</p>
+<p>三件事不是在本文做的：第一，不推导底层二元（继承自 Paper I）；第二，不闭合 $T$-$c^3$ 桥接（候选路径加瓶颈定位）；第三，不替换 Bennett 熵论证主干（SAE 在主干之上增加解读层）。</p>
+<p>本文进中间档。这不是弱点——是诚实反映 SAE 框架在 Landauer 问题上的真实位置。最弱档（障碍定位）仍是实质性贡献；最强档（闭合桥接）取决于未来 Thermo 系列工作。Paper II 的实际贡献通过写作过程确定，记录在此文。</p>
+<p>中间档评估条件性地依赖于本文写作时刻的 SAE 信息论系列状态。后续 paper（特别是预期处理底层累积具体形式与因果 settling 尺度的 paper）发展完成后，本文进档可能 回溯性重新评估。但此回溯性重新评估不影响本文作为 Landauer 推导链精确定位的独立贡献——系列内每篇 各自站在自己发表时刻的诚实位置。</p>
+<p>科研先于论文。论文记录已发现的位置，不假装已抵达未抵达的位置。</p>
+<hr>
+<h2>参考文献</h2>
+<p>Bennett, C. H. (1982). The thermodynamics of computation: a review. <em>International Journal of Theoretical Physics</em>, 21(12), 905-940.</p>
+<p>Boltzmann, L. (1872). Weitere Studien über das Wärmegleichgewicht unter Gasmolekülen. <em>Wiener Berichte</em>, 66, 275-370.</p>
+<p>Gibbs, J. W. (1902). <em>Elementary Principles in Statistical Mechanics</em>. Yale University Press.</p>
+<p>Landauer, R. (1961). Irreversibility and heat generation in the computing process. <em>IBM Journal of Research and Development</em>, 5(3), 183-191.</p>
+<p>Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, 27, 379-423, 623-656.</p>
+<p>秦汉 (2026a). SAE 信息论 I：信息的 4DD 本体论与一条基础公理. <em>Self-as-an-End 信息论系列开篇</em>. DOI: 10.5281/zenodo.19740019.</p>
+<p>秦汉 (2026b). SAE 基础第一篇：Systems, Emergence, and the Conditions of Personhood. DOI: 10.5281/zenodo.18528813.</p>
+<p>秦汉 (2026c). SAE 基础第二篇：Internal Colonization and the Reconstruction of Subjecthood. DOI: 10.5281/zenodo.18666645.</p>
+<p>秦汉 (2026d). SAE 基础第三篇：The Complete Self-as-an-End Framework. DOI: 10.5281/zenodo.18727327.</p>
+<p>秦汉 (2026e). SAE Mass 系列 I：Doublet Mass Ratio. DOI: 10.5281/zenodo.19476358.</p>
+<p>秦汉 (2026f). SAE 四力系列收束篇：$E = Ic^3$ Convergence. DOI: 10.5281/zenodo.19510868.</p>
+<p>秦汉 (2026g). SAE Thermo 系列 Paper I：Decoherence Timescale and 4DD Closure. DOI: 10.5281/zenodo.19310282.</p>
+<p>秦汉 (2026h). SAE Thermo 系列 Paper X：收束篇——人不仅仅是热力学. DOI: 10.5281/zenodo.19703273.</p>
+<p>秦汉 (2026i). SAE 生死系列 Paper IV：Planck-Tick Discrete Substrate. DOI: 10.5281/zenodo.19385464.</p>
+<p>秦汉 (2026j). ZFCρ 系列 Paper 68：{2,3}-Skeleton, Mod-6 Automaton, and Goldilocks Crossing. DOI: 10.5281/zenodo.19739810.</p>
+<p>秦汉 (2026k). 四力 Paper 0：引力不是力，是信息读取. DOI: TBD.</p>
+<hr>
+<p><em>中文版为权威版本；英文版为独立重写（非翻译）。</em></p>
+<p><em>Self-as-an-End 信息论系列 系列大纲：见系列大纲文档.</em></p>
+<p><em>本文 part of Self-as-an-End 理论系列 — https://self-as-an-end.net</em></p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
