@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXVII: Scale-Dependent Erosion Rate and the Intrinsic Spectral Bridge — Discovery of the C_eff Trajectory — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho67.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho67.html">
+  <meta name="citation_title" content="ZFCρ Paper LXVII: Scale-Dependent Erosion Rate and the Intrinsic Spectral Bridge — Discovery of the C_eff Trajectory">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19705714">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXVII</div>
+    <h1>ZFCρ Paper LXVII: Scale-Dependent Erosion Rate and the Intrinsic Spectral Bridge — Discovery of the C_eff Trajectory<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXVII篇：尺度依赖侵蚀率与内生谱桥——C_eff轨迹的发现</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19705714" target="_blank" rel="noopener">10.5281/zenodo.19705714</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19705714" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Paper 66 established the two-regime spectral structure of the adjacent-centered residual Ψ_η(W) (local power-law growth + large-scale crash) and showed that simple bridge projection is insufficient to explain the crash (Kills 14–15). This paper introduces the scale-dependent effective erosion exponent C_eff(W), discovering it to be the primary surviving quantitative object that unifies both regimes.</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, scale-dependent erosion, spectral bridge, C_eff trajectory, centered residual, H prime, Conjecture 59.1</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. Status After Paper 66</h2>
+<p>Paper 66 discovered the two-regime Ψ_η(W) structure: Regime 1 (power-law growth, W^{0.7}) and Regime 2 (crash, 5–40×). Power-law extrapolation overshoots reality by 100–10,000×. Thirteen hypotheses killed. Surviving mechanism: gradual chiseling, but insufficient alone for 59.1.</p>
+<h2>§2. Framework 5a Killed (Kills 14–15)</h2>
+<p><strong>Kill 14:</strong> Simple Schur complement bridge reduces Ψ by only 10–30% (need 70%+). Peak at W = 10% m (not 0.5%).</p>
+<p><strong>Kill 15:</strong> Non-dyadic blocks [3·2^j, 4·2^j] show same peak-then-crash. Dyadic geometry not essential.</p>
+<p>These kills close the class of simple externally imposed bridge/boundary mechanisms. Any surviving spectral bridge must be intrinsic and scale-dependent.</p>
+<h2>§3. C_eff Definition and Log-Budget Identity</h2>
+<p><strong>Definition.</strong> C_eff(W₁ → W₂) = 1 − [log Ψ(W₂) − log Ψ(W₁)] / [log W₂ − log W₁].</p>
+<p>C_eff < 1: Ψ growing (Regime 1). C_eff > 1: Ψ shrinking (Regime 2). C_eff = 1: critical summability threshold.</p>
+<p><strong>Proposition 67.A (Log-Budget Identity, exact).</strong> For any scale chain W₀ < W₁ < ⋯ < W_R = m_j:</p>
+<p>log Ψ(m_j) − log Ψ(W₀) = Σ_r (1 − C_{j,r}) · Δ_r</p>
+<p>where Δ_r = log(W_{r+1}/W_r). This is a direct telescoping identity from the definition.</p>
+<p><strong>Corollary 67.B (Cumulative Erosion Criterion).</strong> Let W₀ be a fixed starting scale (e.g., W₀ = 100 or 500, not varying with j). If Ψ(W₀) = O(j) and the cumulative budget Σ(1 − C_{j,r})·Δ_r ≤ B for some constant B independent of j, then Ψ(m_j) ≤ Ψ(W₀)·e^B = O(j), and Paper 65's conditional theorem yields the L² analogue of 59.1. More generally, if budget ≤ B·log j, then Ψ(m_j) = O(j^{B+1}) — a polynomial bound but not automatically O(j). For 59.1, budget = O(1) is required.</p>
+<p>Note: when C_eff < 1 (Regime 1), each term (1 − C_r)·Δ_r is positive, driving Ψ growth. Once C_eff crosses 1.0 (Regime 2), the terms become negative, actively subtracting from the budget. It is this eventually increasing property of C_eff that locks the total budget from above.</p>
+<p>Scope caveat: the bounded budget claim rests on j = 22–32 data. Whether the budget remains bounded for j > 32 cannot be determined empirically; this is a core Paper 68 target.</p>
+<h2>§4. C_eff Trajectory: All j = 22–32</h2>
+<p>Representative trajectory (j = 32, m = 190M):</p>
+<p>C_eff rises from ~0.28 (shallow trough at W ≈ 500–1K) through 0.43, 0.66, 0.76, crossing <strong>0.99</strong> at W ≈ 2M (1.1% of m), then reaching <strong>2.89</strong> at W = 5–10M.</p>
+<p>All 11 dyadic blocks (j = 22–32) show the same pattern: eventually increasing C_eff crossing 1.0. Crossing at W/m_j ≈ 1–3%.</p>
+<p>Note: C_eff is not strictly monotone — a shallow trough at the smallest scales (W < 1K) precedes the sustained rise. "Eventually increasing" is the precise characterization.</p>
+<h2>§5. Block-Relative Collapse and Non-Dyadic Confirmation</h2>
+<p><strong>Observation 67.C (Universal C_eff Trajectory).</strong> Across all j = 22–32, C_eff(W) starts near 0.3, exhibits a shallow trough, then eventually increases past 1.0. The crossing occurs at W/m_j of order 10⁻² (range 0.4%–3.7%).</p>
+<p><strong>Observation 67.D (Block-Relative Collapse).</strong> When plotted against W/m_j, C_eff trajectories from all j collapse to a common shape. Against absolute W, crossing shifts over two orders of magnitude (10K to 5M) — no collapse. The screening length scales with block size, not with any absolute prime count.</p>
+<p><strong>Non-Dyadic Persistence.</strong> Non-dyadic blocks [3·2^j, 4·2^j] for j = 25, 27, 29 reproduce the same C_eff trajectory shape and crossing. The non-dyadic crossing is delayed by roughly a factor of 2–3 relative to dyadic (e.g., dyadic j=25 crosses at W/m ≈ 1%, non-dyadic at W/m ≈ 5%), likely due to lower reference accuracy. The fundamental pattern is preserved.</p>
+<h2>§6. Cumulative Erosion Budget</h2>
+<p>Budgets across j = 22–32 range from 0.5 to 3.4, with no systematic growth. Compatible with O(1) and O(log j) — current data cannot distinguish.</p>
+<p>For Corollary 67.B: only O(1) bounded budget directly yields Ψ_full = O(j) (59.1 satisfied). O(log j) budget only gives O(j^{B+1}) polynomial bound, which does not automatically satisfy 59.1. Current empirical evidence: if budget ≤ 3.5 for all j (O(1) scenario), then Ψ_full = O(j). Whether this bound persists for j > 32 is a Paper 68 target.</p>
+<p>Budget-predicted log(Ψ_full) matches actual within ±0.5 in log scale.</p>
+<h2>§7. Small-W C_eff Drift</h2>
+<p><strong>Observation 67.E.</strong> C_eff(100→200) decreases from 0.55 (j = 22) to 0.31 (j = 32). The IC field becomes locally smoother at larger j — neighboring primes' construction landscapes share more structure, producing weaker short-lag decorrelation. This recovers Paper 66's α_fit drift in the C_eff framework.</p>
+<h2>§8. Via Negativa → Via Rho Transition</h2>
+<p>This is the first round with zero kills after 15 consecutive kills across Papers 62–67. Via Negativa completed the systematic clearing of the search space; C_eff is the unique surviving quantitative object that passes all empirical tests.</p>
+<p>Paper 67 marks the transition from elimination to construction. The C_eff trajectory is the primary surviving quantitative object that passes all empirical tests, providing a target that any eventual IC-recursion derivation must reproduce.</p>
+<p>Epistemic caution: first all-confirm removes the natural self-correction of kills. Every claim in this paper carries explicit epistemic status labels (identity / conditional / empirical observation).</p>
+<h2>§9. Paper 68 Target</h2>
+<p>Derive from IC recursion ρ(n) = min(ρ(n−1)+1, min_{ab=n}[ρ(a)+ρ(b)+2]):</p>
+<p>(a) Why C_eff eventually increases</p>
+<p>(b) Why crossing occurs at W/m_j = O(1)</p>
+<p>(c) Cumulative budget bound</p>
+<p>Candidate frameworks: influence-cone overlap divergence, near-optimal factorization multiplicity, min-plus corrector theory.</p>
+<h2>§10. Status Map</h2>
+<table><thead><tr>
+<th>Content</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Proposition 67.A: log-budget identity</td>
+<td>Exact identity</td>
+</tr>
+<tr>
+<td>Corollary 67.B: budget bounded → Ψ = O(j)</td>
+<td>Conditional theorem</td>
+</tr>
+<tr>
+<td>Observation 67.C: C_eff eventually increasing, crossing 1</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Observation 67.D: block-relative collapse W/m_j ≈ 1–3%</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Observation 67.E: small-W drift</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Non-dyadic persistence</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Budget bounded (0.5–3.4)</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>15 hypotheses killed</td>
+<td>Empirical/analytic</td>
+</tr>
+<tr>
+<td>C_eff increase from IC recursion</td>
+<td>Open (Paper 68)</td>
+</tr>
+<tr>
+<td>59.1 unconditional</td>
+<td>Open (Paper 68–69)</td>
+</tr>
+</tbody></table>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Paper 66建立了adjacent-centered residual Ψ_η(W)的两阶段谱结构（局部幂律增长 + 大尺度crash），并证明simple bridge projection不足以解释crash（Kills 14-15）。本文引入尺度依赖的有效侵蚀指数C_eff(W)，发现它是统一两个regime的primary surviving quantitative object。</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 尺度依赖侵蚀率, 谱桥, C_eff轨迹, centered residual, H′, Conjecture 59.1</div>
+    </div>
+    <div class="paper-body">
+<h2>§1. Paper 66后的状态</h2>
+<h3>1.1. 两阶段谱结构</h3>
+<p>Paper 66（DOI: 10.5281/zenodo.19701479）发现Ψ_η(W)先按power-law增长（Regime 1: W^{1-C}, C ≈ 0.3），在W ≈ 0.5% m_j处到达peak，然后crash 5-40倍（Regime 2）。Power-law外推超出实测100-10000倍。</p>
+<h3>1.2. 13 kills和surviving mechanism</h3>
+<p>Paper 66通过13次假说否决（坐标幻象/均值artifact/状态空间shortcut/screening模型/祖先shortcut）排除了所有macro-cancellation和shortcut mechanisms。Surviving bare mechanism是min操作的累计微侵蚀（gradual chiseling），但Paper 66的conditional theorem 66.A（ε_k ~ C/k → power-law）alone不给59.1——需要additional mechanism控制full-block Ψ。</p>
+<h3>1.3. Paper 67的目标</h3>
+<p>理解Regime 2的crash mechanism：什么使Ψ(W)在大W处停止增长并下降？</p>
+<hr>
+<h2>§2. Framework 5a Killed（Kills 14-15）</h2>
+<h3>2.1. Kill 14：Simple Schur complement bridge太弱</h3>
+<p>Power-law kernel K₀(k) + 单一zero-mode projection（Schur complement K_bridge = K₀ - K₀a(a'K₀a)⁻¹a'K₀）只减少Ψ 10-30%。Peak位置在W = 10% m（不是0.5% m）。需要5-10倍更强的correction。</p>
+<p>单一零模投影不足以解释crash。</p>
+<h3>2.2. Kill 15：Non-dyadic blocks同样crash</h3>
+<p>[3·2^25, 4·2^25]（m = 1.8M）和[3·2^27, 4·2^27]（m = 6.7M）的sub-block Ψ同样show peak-then-crash pattern。</p>
+<p>Crash不依赖dyadic block geometry。机制内在于IC field。</p>
+<h3>2.3. Simple externally imposed mechanisms的终结</h3>
+<p>Kills 14-15共同排除了"simple externally imposed bridge/boundary"作为crash mechanism：bridge projection（Kill 14）和dyadic boundary geometry（Kill 15）均fail。Paper 66的Kill 8另行排除了naive Thermo hierarchy作为structural mechanism。综合来看，任何surviving的spectral bridge必须是intrinsic且scale-dependent的——不是外加的single constraint。</p>
+<hr>
+<h2>§3. C_eff定义与Log-Budget Identity</h2>
+<h3>3.1. 定义</h3>
+<p>设Ψ_j(W)是j-block内以size W sub-blocks测得的方差放大因子。定义尺度区间[W₁, W₂]上的effective erosion exponent：</p>
+<p>C_eff(W₁ → W₂) = 1 - [log Ψ(W₂) - log Ψ(W₁)] / [log W₂ - log W₁]</p>
+<p>当C_eff < 1时Ψ(W)在增长（ACF正贡献主导）。当C_eff > 1时Ψ(W)在下降（ACF负/零贡献使variance增速低于W线性）。C_eff = 1是临界阈值：Σk^{-C}在C = 1处从divergent变成convergent。</p>
+<h3>3.2. Proposition 67.A（Log-Budget Identity）</h3>
+<p><strong>Proposition（精确恒等式）。</strong> 对任意尺度链W₀ < W₁ < ... < W_R = m_j，设Δ_r = log(W_{r+1}/W_r)。则：</p>
+<p>log Ψ_j(m_j) - log Ψ_j(W₀) = Σ_{r=0}^{R-1} (1 - C_{j,r})·Δ_r</p>
+<p>其中C_{j,r} = C_eff(W_r → W_{r+1})。</p>
+<p><strong>推导。</strong> 直接从C_eff定义展开telescoping sum。每个term (1 - C_{j,r})·Δ_r = log Ψ(W_{r+1}) - log Ψ(W_r)。求和得结论。</p>
+<p><strong>状态：</strong> Exact identity from definition。不是条件定理——是数学恒等式。</p>
+<h3>3.3. Corollary 67.B（Cumulative Erosion Criterion）</h3>
+<p><strong>Corollary。</strong> 设W₀为固定起始尺度（例如W₀ = 100或500，不随j变化）。若Ψ_j(W₀) = O(j)，且cumulative erosion budget满足</p>
+<p>Σ_r (1 - C_{j,r})·Δ_r ≤ B</p>
+<p>for some constant B independent of j，则Ψ_j(m_j) ≤ Ψ_j(W₀)·e^B = O(j)。</p>
+<p><strong>推导。</strong> 从Proposition 67.A: Ψ(m_j) = Ψ(W₀)·exp(budget)。若budget ≤ B则Ψ(m_j) ≤ Ψ(W₀)·e^B。</p>
+<p><strong>对59.1的含义：</strong> 若Corollary 67.B成立（budget = O(1)），结合Paper 65条件定理（59.1 ⟸ gauge + count + Ψ_η = O(j)）即得59.1的L²类比。</p>
+<p>更一般：若budget ≤ B·log j，则Ψ_j(m_j) ≤ Ψ_j(W₀)·j^B = O(j^{B+1})。这只给多项式上界，不自动给O(j)。59.1严格要求budget = O(1)（即B·log j with B → 0）或等价地budget bounded by constant。</p>
+<p>注意累积budget的物理含义：当C_eff < 1时（Regime 1），每一项(1 - C_r)·Δ_r为正，为budget做正贡献，驱动Ψ增长。一旦C_eff穿越临界阈值1.0（Regime 2），(1 - C_r)变为负值，budget开始被扣除。正是C_eff的eventually increasing性质使得Regime 2的negative budget抵消Regime 1的positive budget，锁死总budget的上限。</p>
+<p><strong>Scope caveat：</strong> Bounded budget claim目前依赖j=22-32范围内的empirical evidence。对j > 32, budget是否继续bounded无法从当前data确定。Asymptotic budget behavior是Paper 68 target的core sub-question之一。</p>
+<p><strong>状态：</strong> Conditional on budget bound。Budget的bound是Paper 68 target。</p>
+<hr>
+<h2>§4. C_eff轨迹：全j=22-32精细测量</h2>
+<h3>4.1. 半decade分辨率</h3>
+<p>W grid: 100, 200, 500, 1K, 2K, 5K, 10K, 20K, 50K, 100K, 200K, 500K, 1M, 2M, 5M, 10M, 20M, 50M（对每个j，只要K ≥ 4）。</p>
+<h3>4.2. Representative trajectory: j = 32（m = 190M）</h3>
+<table><thead><tr>
+<th>Scale range</th>
+<th>C_eff</th>
+<th>Regime</th>
+</tr></thead><tbody>
+<tr>
+<td>100→200</td>
+<td>0.31</td>
+<td></td>
+</tr>
+<tr>
+<td>200→500</td>
+<td>0.29</td>
+<td>Shallow trough</td>
+</tr>
+<tr>
+<td>500→1K</td>
+<td>0.28</td>
+<td>← minimum</td>
+</tr>
+<tr>
+<td>1K→2K</td>
+<td>0.29</td>
+<td></td>
+</tr>
+<tr>
+<td>2K→5K</td>
+<td>0.30</td>
+<td></td>
+</tr>
+<tr>
+<td>5K→10K</td>
+<td>0.34</td>
+<td>Regime 1:</td>
+</tr>
+<tr>
+<td>10K→20K</td>
+<td>0.37</td>
+<td>power-law</td>
+</tr>
+<tr>
+<td>20K→50K</td>
+<td>0.43</td>
+<td>growth</td>
+</tr>
+<tr>
+<td>50K→100K</td>
+<td>0.38</td>
+<td></td>
+</tr>
+<tr>
+<td>100K→200K</td>
+<td>0.43</td>
+<td></td>
+</tr>
+<tr>
+<td>200K→500K</td>
+<td>0.66</td>
+<td></td>
+</tr>
+<tr>
+<td>500K→1M</td>
+<td>0.76</td>
+<td>Approaching</td>
+</tr>
+<tr>
+<td>1M→2M</td>
+<td><strong>0.99</strong></td>
+<td>← crossing</td>
+</tr>
+<tr>
+<td>2M→5M</td>
+<td><strong>1.46</strong></td>
+<td>Regime 2:</td>
+</tr>
+<tr>
+<td>5M→10M</td>
+<td><strong>2.89</strong></td>
+<td>crash</td>
+</tr>
+<tr>
+<td>10M→20M</td>
+<td>1.57</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>C_eff从shallow trough（~0.28 at lag 500-1K）开始，经持续上升穿过C = 1 at W ≈ 2M = 1.1% of m_j，然后继续增大至2.89。</p>
+<p>注意：前几个scale的C_eff有浅trough（0.31 → 0.29 → 0.28），不是严格单调。但从trough之后持续上升——"eventually increasing"是precise characterization。Initial trough的mechanism是open sub-question，可能与small-W drift（Observation 67.E）相关。</p>
+<h3>4.3. 穿越1.0在所有j确认</h3>
+<table><thead><tr>
+<th>j</th>
+<th>m_j</th>
+<th>Approx crossing W</th>
+<th>W/m_j</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>268K</td>
+<td>~10K</td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td>23</td>
+<td>514K</td>
+<td>~5-10K</td>
+<td>1-2%</td>
+</tr>
+<tr>
+<td>24</td>
+<td>986K</td>
+<td>~5-10K</td>
+<td>0.5-1%</td>
+</tr>
+<tr>
+<td>25</td>
+<td>1.9M</td>
+<td>~20-50K</td>
+<td>1-3%</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3.6M</td>
+<td>~20-50K</td>
+<td>0.5-1.4%</td>
+</tr>
+<tr>
+<td>27</td>
+<td>7.0M</td>
+<td>~50-100K</td>
+<td>0.7-1.4%</td>
+</tr>
+<tr>
+<td>28</td>
+<td>13.6M</td>
+<td>~50-100K</td>
+<td>0.4-0.7%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26M</td>
+<td>~200-500K</td>
+<td>0.8-2%</td>
+</tr>
+<tr>
+<td>30</td>
+<td>51M</td>
+<td>~500K-1M</td>
+<td>1-2%</td>
+</tr>
+<tr>
+<td>31</td>
+<td>98M</td>
+<td>~1-2M</td>
+<td>1-2%</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190M</td>
+<td>~2-5M</td>
+<td>1-3%</td>
+</tr>
+</tbody></table>
+<p><strong>全部11个j在W/m_j量级10^{-2}处穿越（实测范围约0.4%-3.7%）。</strong></p>
+<hr>
+<h2>§5. Block-Relative Collapse与Non-Dyadic确认</h2>
+<h3>5.1. Observation 67.C（Universal C_eff Trajectory）</h3>
+<p>对j = 22-32的所有dyadic blocks，C_eff(W)从短尺度~0.3起步，经shallow trough后eventually increasing，穿过critical threshold 1.0。穿越点在W/m_j量级10^{-2}（0.4%-3.7%）。</p>
+<h3>5.2. Observation 67.D（Block-Relative Collapse）</h3>
+<p>以W/m_j为横轴绘制C_eff轨迹时，所有j=22-32的曲线坍缩到共同形状。穿越C = 1的位置集中在W/m_j ≈ 0.4%-3.7%带。</p>
+<p>以absolute W为横轴时，穿越位置从10K（j=22）到2-5M（j=32）跨越两个数量级——不collapse。</p>
+<p><strong>含义：</strong> crash的尺度与block size成比例。Screening length不是absolute number of primes，而是block size的固定fraction。</p>
+<h3>5.2. Non-dyadic confirmation</h3>
+<p>Non-dyadic [3·2^25, 4·2^25]和[3·2^27, 4·2^27]和[3·2^29, 4·2^29]的C_eff轨迹与对应dyadic blocks定性一致：从~0.3起步，eventually increase，穿越1.0，crash。</p>
+<p>Non-dyadic的穿越点relatively于dyadic延迟约factor 2-3（例如dyadic j=25在W/m ≈ 1%穿越，non-dyadic j=25在W/m ≈ 5%穿越）。这一延迟likely来自non-dyadic blocks使用的enclosing dyadic reference accuracy较低。但fundamental pattern（eventually increasing C_eff, crossing 1.0, crash）完全保持。</p>
+<p><strong>含义（强化）：</strong> C_eff的scale-dependent erosion是IC field的intrinsic property，不依赖于dyadic block boundaries。</p>
+<hr>
+<h2>§6. 累计侵蚀Budget</h2>
+<h3>6.1. 测量结果</h3>
+<table><thead><tr>
+<th>j</th>
+<th>Budget = Σ(1-C_r)·Δ_r</th>
+<th>log j</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>0.53</td>
+<td>3.09</td>
+</tr>
+<tr>
+<td>23</td>
+<td>1.43</td>
+<td>3.14</td>
+</tr>
+<tr>
+<td>24</td>
+<td>0.50</td>
+<td>3.18</td>
+</tr>
+<tr>
+<td>25</td>
+<td>1.26</td>
+<td>3.22</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1.50</td>
+<td>3.26</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1.92</td>
+<td>3.30</td>
+</tr>
+<tr>
+<td>28</td>
+<td>1.47</td>
+<td>3.33</td>
+</tr>
+<tr>
+<td>29</td>
+<td>1.30</td>
+<td>3.37</td>
+</tr>
+<tr>
+<td>30</td>
+<td>3.17</td>
+<td>3.40</td>
+</tr>
+<tr>
+<td>31</td>
+<td>1.54</td>
+<td>3.43</td>
+</tr>
+<tr>
+<td>32</td>
+<td>3.35</td>
+<td>3.47</td>
+</tr>
+</tbody></table>
+<h3>6.2. 解读</h3>
+<p>Budgets range 0.5 to 3.4。不systematic grow with j。Compatible with O(1)和O(log j)——当前data不能区分这两种scenario。</p>
+<p>对Corollary 67.B：只有O(1) bounded budget直接给出Ψ_full = O(j)（59.1 satisfied）。O(log j)的budget只给出O(j^{B+1})的多项式上界，不自动满足59.1。</p>
+<p>当前empirical evidence：若budget ≤ B = 3.5 for all j（O(1) scenario），则Ψ_full ≤ Ψ(W₀)·e^{3.5} ≈ 33·Ψ(W₀) = O(j)。但j > 32时budget是否继续bounded无法从当前data确定。</p>
+<p><strong>Budget bounded是core empirical claim。Specific growth rate（O(1) vs O(log j)）是Paper 68 target。</strong></p>
+<h3>6.3. Budget prediction vs actual</h3>
+<table><thead><tr>
+<th>j</th>
+<th>Predicted log Ψ_full</th>
+<th>Actual log Ψ_full</th>
+<th>Diff</th>
+</tr></thead><tbody>
+<tr>
+<td>28</td>
+<td>3.56</td>
+<td>3.57</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>29</td>
+<td>3.39</td>
+<td>3.10</td>
+<td>0.29</td>
+</tr>
+<tr>
+<td>30</td>
+<td>5.26</td>
+<td>4.80</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>31</td>
+<td>3.62</td>
+<td>3.34</td>
+<td>0.28</td>
+</tr>
+</tbody></table>
+<p>Budget identity prediction matches actual within ±0.5 in log scale。Mismatch from coarse W grid discretization。</p>
+<hr>
+<h2>§7. Small-W C_eff Drift</h2>
+<h3>7.1. Observation 67.E（Small-W Drift）</h3>
+<table><thead><tr>
+<th>j</th>
+<th>C_eff(100→200)</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.41</td>
+</tr>
+<tr>
+<td>27</td>
+<td>0.36</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.33</td>
+</tr>
+<tr>
+<td>31</td>
+<td>0.32</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.31</td>
+</tr>
+</tbody></table>
+<p>短尺度erosion rate从0.55（j=22）降到0.31（j=32）。</p>
+<h3>7.2. 解读</h3>
+<p>这是Paper 66的α_fit drift在C_eff framework中的精确表达。物理解释：较大j上的IC field在局部更smooth——邻近primes的construction landscapes共享更多structure，short-lag decorrelation更慢。</p>
+<p>这是second-order effect，不影响main discovery（C_eff crossing 1.0）。但它影响peak height和crossing位置的j-dependence。</p>
+<hr>
+<h2>§8. Via Negativa → Via Rho</h2>
+<h3>8.1. 第一轮零kill</h3>
+<p>Papers 62-67总共16轮实验。前15轮每轮至少kill一个hypothesis（总计15 kills）。本轮（Paper 67 EXP A/B/C）是第一轮所有predictions confirmed, zero kills。</p>
+<h3>8.2. 方法论意义</h3>
+<p>Via Negativa的15次kill完成了搜索空间的systematic clearing。剩余空间的primary surviving quantitative object——C_eff trajectory——通过所有current tests。</p>
+<p>Paper 67 marks transition from pure Via Negativa（eliminating shortcuts）to integrated Via Negativa + Via Rho（identifying empirical anchor for construction）。C_eff trajectory提供quantitative target：any eventual mechanism must reproduce this measured trajectory。</p>
+<h3>8.3. Epistemic caution</h3>
+<p>First all-confirm round removes the natural self-correction of kills。Via Negativa的失败hypothesis自己暴露；Via Rho的confirmations需要额外rigor。Paper 67的每个claim都require precision in epistemic status labeling（identity vs conditional vs empirical observation）。</p>
+<p>"All predictions confirmed"可能意味着(a) found right mechanism或(b) predictions loose enough to be confirmed by多种mechanisms。本文通过specific quantitative predictions（C_eff crossing at 1-3% of m_j, non-dyadic persistence, budget bounded）对(b)的空间进行了限制。</p>
+<hr>
+<h2>§9. Paper 68 Target</h2>
+<h3>9.1. Paper 67完成了什么</h3>
+<ol>
+<li>引入C_eff作为统一两个regime的定量对象</li>
+<li>给出精确的log-budget identity（Proposition 67.A）</li>
+<li>建立conditional criterion（Corollary 67.B）</li>
+<li>全j=22-32 comprehensive C_eff trajectory</li>
+<li>Non-dyadic和curve collapse confirmation</li>
+<li>15 kills的Via Negativa到Via Rho transition</li>
+</ol>
+<h3>9.2. Paper 67没有完成什么</h3>
+<ol>
+<li>没有从IC axiom推导C_eff的上升rate</li>
+<li>没有从IC axiom推导1-3% crossing ratio</li>
+<li>没有unconditional proof of 59.1</li>
+<li>没有确定budget是O(1)还是O(log j)</li>
+</ol>
+<h3>9.3. Paper 68 target</h3>
+<p>从IC递推ρ(n) = min(ρ(n-1)+1, min_{ab=n}[ρ(a)+ρ(b)+2])推导：</p>
+<p>(a) C_eff(W)的eventually increasing behavior</p>
+<p>(b) 穿越C = 1的scale W<em>的order（W</em> = O(m_j)？）</p>
+<p>(c) Cumulative budget的bound</p>
+<p>候选框架：</p>
+<ul>
+<li>Influence-cone overlap divergence（IC tree共享节点概率随lag衰减）</li>
+<li>Near-optimal factorization multiplicity（更大lag → 更多独立factorization events → stronger decorrelation）</li>
+<li>Min-plus corrector theory（ρ as calibrated corrector field with bounded low-frequency power）</li>
+</ul>
+<hr>
+<h2>§10. Status Map</h2>
+<table><thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr>
+<td>Proposition 67.A: log-budget identity</td>
+<td>Exact identity</td>
+</tr>
+<tr>
+<td>Corollary 67.B: budget bounded → Ψ = O(j)</td>
+<td>Conditional theorem</td>
+</tr>
+<tr>
+<td>Observation 67.C: C_eff eventually increasing, crossing 1.0 at all j</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Observation 67.D: block-relative collapse W/m_j ≈ 1-3%</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Observation 67.E: small-W drift C_eff(small) decreasing with j</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Non-dyadic persistence</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>Cumulative budget bounded (0.5-3.4)</td>
+<td>Empirically confirmed</td>
+</tr>
+<tr>
+<td>15 hypotheses killed (Papers 62-67)</td>
+<td>Empirical/analytic</td>
+</tr>
+<tr>
+<td>C_eff increase rate from IC recursion</td>
+<td>Open (Paper 68)</td>
+</tr>
+<tr>
+<td>Budget specific growth rate (O(1) vs O(log j))</td>
+<td>Open (Paper 68)</td>
+</tr>
+<tr>
+<td>59.1 unconditional proof</td>
+<td>Open (Paper 68-69)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Methods</h2>
+<h3>A. 数据</h3>
+<p>IC function ρ(n)预计算到N = 10¹⁰（int16 binary），包含455,052,511个素数。</p>
+<h3>B. Centered residual</h3>
+<p>x_p = [ρ(p-1) + 1 - λ·ln p - μ_12(p mod 12)] / p（raw residual）。η_p = x_p - μ_{τ(p)}^{adj}(j)（adjacent-centered residual）。Adjacent reference uses j±1 blocks' branch-specific means。</p>
+<h3>C. Sub-block Ψ estimation</h3>
+<p>Block I_j divided into K = m/W complete sub-blocks。S_b = Σ_{primes in b} η_p。Ψ(W) = Var_b(S_b) / (W·σ²_η)。Standard error optimistic baseline assuming sub-block independence; strict confidence requires block-jackknife or K_eff correction。Confidence tiers: K ≥ 30 (high), 10 ≤ K < 30 (medium), K < 10 (exploratory)。</p>
+<h3>D. C_eff computation</h3>
+<p>C_eff(W₁ → W₂) = 1 - [log Ψ(W₂) - log Ψ(W₁)] / [log W₂ - log W₁]。Cumulative budget = Σ(1-C_r)·Δ_r where Δ_r = log(W_{r+1}/W_r)。</p>
+<h3>E. Non-dyadic blocks</h3>
+<p>Blocks [3·2^j, 4·2^j) for j = 25, 27, 29。Reference from enclosing dyadic block j+1's adjacent neighbors。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] H. Qin, "ZFCρ Paper LXVI," Zenodo (2026). DOI: 10.5281/zenodo.19701479.</p>
+<p>[2] H. Qin, "ZFCρ Paper LXV," Zenodo (2026). DOI: 10.5281/zenodo.19687343.</p>
+<p>[3] H. Qin, "ZFCρ Paper LXIV," Zenodo (2026). DOI: 10.5281/zenodo.19674521.</p>
+<p>[4] H. Qin, "ZFCρ Paper LX," Zenodo (2026). DOI: 10.5281/zenodo.19480563.</p>
+<p>[5] H. Qin, "SAE Methodology Paper 00 (Via Rho)," Zenodo (2026). DOI: 10.5281/zenodo.19657439.</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
