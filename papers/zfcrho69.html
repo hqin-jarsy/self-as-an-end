@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ H’ Series Paper LXIX: Finite Skeleton Phase Transitions and the Two-Leg Mechanism for Conjecture 59.1 — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho69.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho69.html">
+  <meta name="citation_title" content="ZFCρ H’ Series Paper LXIX: Finite Skeleton Phase Transitions and the Two-Leg Mechanism for Conjecture 59.1">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19829875">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXIX</div>
+    <h1>ZFCρ H’ Series Paper LXIX: Finite Skeleton Phase Transitions and the Two-Leg Mechanism for Conjecture 59.1<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ H’系列第LXIX篇：有限骨架相变与59.1的双·Leg机制</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19829875" target="_blank" rel="noopener">10.5281/zenodo.19829875</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19829875" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>This paper reports the results of six experimental rounds identifying a double mechanism candidate for the spectral side of Conjecture 59.1.
+
+The principal findings are: (1) The C_eff crossing observed in ρ_{2,3} is entirely a mod-6 class-mean gauge artifact — after class-centering, crossing vanishes and Ψ continues to grow. Multi-primorial centering (mod-6, 30, 210, 2310) shows that the entire gauge structure of ρ_{2,3} is captured at mod-6, with no additional contribution from higher primorials. (2) Full IC[d≤200] retains C_eff crossing even after centering at all tested gauge layers (up to mod-2310, 480 classes), and Ψ exhibits a peak-then-crash trajectory — providing strong evidence for genuine dynamic decorrelation surviving all tested gauge removal. Multi-primorial gauge fractions grow significantly (mod-6 ≈ 10%, mod-210 ≈ 20%). (3) Bug-fixed progressive skeleton data (nf=2..25) show smooth descent rather than discrete phase transitions: Ψ_100K decreases monotonically from 1990 (nf=2) to 4.7 (nf=25), with C_eff first crossing 1.0 between nf=2→3 (introduction of ÷5). Skeleton[nf large] converges to Full IC's Ψ regime.
+
+The two-leg observation (gauge + genuine decorrelation) holds as an empirical structure: ρ_{2,3} exhibits only Leg 1, while Full IC exhibits both Leg 1 and Leg 2. However, v1's claim of "two phase transitions at nf=2→3 and nf=7→8" and the resulting Criterion 69.A (built on the nf=8 boundary) are bug artifacts and are withdrawn in v2.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, Conjecture 59.1, two-leg mechanism, C_eff, gauge artifact, mod-6, decorrelation, full IC, spectral bound</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>This paper reports the results of six experimental rounds identifying a double mechanism candidate for the spectral side of Conjecture 59.1.</p>
+<p>The principal findings are: (1) The C_eff crossing observed in ρ_{2,3} is entirely a mod-6 class-mean gauge artifact — after class-centering, crossing vanishes and Ψ continues to grow. Multi-primorial centering (mod-6, 30, 210, 2310) shows that the entire gauge structure of ρ_{2,3} is captured at mod-6, with no additional contribution from higher primorials. (2) Full IC[d≤200] retains C_eff crossing even after centering at all tested gauge layers (up to mod-2310, 480 classes), and Ψ exhibits a peak-then-crash trajectory — providing strong evidence for genuine dynamic decorrelation surviving all tested gauge removal. Multi-primorial gauge fractions grow significantly (mod-6 ≈ 10%, mod-210 ≈ 20%). (3) Bug-fixed progressive skeleton data (nf=2..25) show smooth descent rather than discrete phase transitions: Ψ_100K decreases monotonically from 1990 (nf=2) to 4.7 (nf=25), with C_eff first crossing 1.0 between nf=2→3 (introduction of ÷5). Skeleton[nf large] converges to Full IC's Ψ regime.</p>
+<p>The two-leg observation (gauge + genuine decorrelation) holds as an empirical structure: ρ_{2,3} exhibits only Leg 1, while Full IC exhibits both Leg 1 and Leg 2. However, v1's claim of "two phase transitions at nf=2→3 and nf=7→8" and the resulting Criterion 69.A (built on the nf=8 boundary) are bug artifacts and are withdrawn in v2.</p>
+<hr>
+<h2>§1. Introduction: From Paper 68 to Paper 69</h2>
+<h3>1.1. The Legacy of Paper 68</h3>
+<p>Paper 68 (DOI: 10.5281/zenodo.19739810) established the {2,3}-skeleton as the Goldilocks minimum crossing mechanism through 18 kills. Its conditional Theorem 68.A stated: if ρ_{2,3} exhibits C_eff crossing and its cumulative budget is bounded, then Ψ = O(j). Its Extension Principle 68.B conjectured that full IC could be modeled as the {2,3}-skeleton plus a sparse perturbation.</p>
+<h3>1.2. The Actual Trajectory of Paper 69</h3>
+<p>The original target was to prove C_eff crossing for the {2,3}-skeleton via a dual-channel renormalization group argument on the mod-6 automaton.</p>
+<p>The actual trajectory was entirely different. Six experimental rounds systematically killed every mechanism candidate, ultimately revealing the empirical two-leg structure of 59.1:</p>
+<ul>
+<li>C_eff crossing in ρ_{2,3} is a gauge artifact, not a dynamic mechanism (§3).</li>
+<li>Conjecture 59.1 requires two legs: gauge cancellation and genuine dynamic decorrelation (§5).</li>
+<li>ρ_{2,3} has only Leg 1; Full IC has both Leg 1 and Leg 2 (§5.4).</li>
+</ul>
+<p><strong>v2 revision:</strong> v1 claimed "two discrete phase transitions" (÷3→÷5 and ÷17→÷19) and a proof program based on the nf=8 boundary, both built on bug-affected progressive skeleton data. With the bug fixed, the data show smooth convergence of skeleton to Full IC, and the only identifiable qualitative transition is at nf=2→3 (where C_eff first crosses 1.0). v1's "second transition" (Ψ from 531 to 45.6 at nf=7→8) is bug propagation artifact. Criterion 69.A (built on nf=8) is withdrawn. The proof program is reformulated in §7.</p>
+<h3>1.3. Structure of this Paper</h3>
+<p>§2–§3: RG foundations, cross-class discovery, and class-centering kill (verified).</p>
+<p>§4: Multi-layer gauge hypothesis and kill for ρ_{2,3} (verified).</p>
+<p>§5: Near-perfect gauge cancellation in Full IC[d≤200] and genuine decorrelation (verified).</p>
+<p>§6: Progressive skeleton trajectory (v2 bug-fixed data).</p>
+<p>§7: Two-leg observation and reformulation of the proof program (v2 revised).</p>
+<p>§8: Methodological afterword and interpretive observations.</p>
+<p>§9: Status map (v2 updated).</p>
+<p>§10: Methods + bug disclosure (v2 added §10.6).</p>
+<hr>
+<h2>§2. Round 1: Dual-Channel RG Foundations</h2>
+<h3>2.1. Mod-6 Transition Probabilities</h3>
+<p>For ρ_{2,3}, the path choice at each integer (add, ÷2, ÷3) is stratified by mod-6 residue class:</p>
+<table><thead><tr>
+<th>n mod 6</th>
+<th>p_add</th>
+<th>p_div2</th>
+<th>p_div3</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>0.000</td>
+<td>0.711</td>
+<td>0.289</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.269</td>
+<td>0.731</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.046</td>
+<td>0.000</td>
+<td>0.954</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.742</td>
+<td>0.258</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>Global</td>
+<td>0.510</td>
+<td>0.283</td>
+<td>0.207</td>
+</tr>
+</tbody></table>
+<p>Positions 1 and 5 always add (prime-like), position 0 never adds, and position 3 almost always divides by 3.</p>
+<h3>2.2. Cross-Scale Coupling</h3>
+<p>Half-scale alignment measurements:</p>
+<table><thead><tr>
+<th>Channel</th>
+<th>Correlation</th>
+</tr></thead><tbody>
+<tr>
+<td>÷2 channel</td>
+<td>0.571–0.578</td>
+</tr>
+<tr>
+<td>÷3 channel</td>
+<td>0.646–0.654</td>
+</tr>
+</tbody></table>
+<p>Both channels exhibit strong cross-scale correlation. The ÷3 channel is stronger (0.65 > 0.57), stable across block index j.</p>
+<h3>2.3. Failure of the Simple RG Model</h3>
+<p>A simple multiplicative model predicts C_eff ≈ 0.74, but the empirical C_eff crosses above 1.0. The gap is 20–30 percentage points. (Kill 19.)</p>
+<hr>
+<h2>§3. Rounds 2–3: Cross-Class Discovery and Class-Centering Kill</h2>
+<h3>3.1. Cross-Class Anti-Correlation (Round 2)</h3>
+<p>Mod-6 partitions primes into two classes: p ≡ 1 mod 6 and p ≡ 5 mod 6.</p>
+<p>At j = 27, cross-class ACF γ₁₅ turns negative around lag k ≈ 5000, while within-class ACF stays positive throughout. The initial assessment: this is the bridge term.</p>
+<p>Additionally, pure same-scale γ_same = 0 — every pair of primes has at least one multiplicative event between them.</p>
+<h3>3.2. Class-Centering Kill (Round 3, Kill 20)</h3>
+<p>ChatGPT warned that Paper 65 had seen the same false positive: raw branch anti-correlation was a mean-mode artifact.</p>
+<p>Class means: μ₁ = −0.564, μ₅ = +0.564, with μ₁ × μ₅ = −0.318 (negative).</p>
+<p>After class-centering, all cross-class ACFs become positive. The anti-correlation vanishes entirely.</p>
+<p>Kill 20: Cross-class anti-correlation is a mean-mode artifact. The Paper 65 lesson replays at the mod-6 level.</p>
+<h3>3.3. Within-Class C_eff Does Not Cross</h3>
+<p>After class-centering, the within-class C_eff reaches at most approximately 0.45 — it never approaches 1.0. Within-class Ψ grows without bound in the observed range.</p>
+<p>The C_eff crossing in ρ_{2,3} comes entirely from gauge. Remove the gauge, and there is no intrinsic decorrelation.</p>
+<hr>
+<h2>§4. Round 4: Multi-Layer Gauge Hypothesis and Kill</h2>
+<p><em>Note: Throughout this section and subsequent sections, primorial centering (mod-6, mod-30, mod-210, mod-2310) is used to identify strippable class-mean gauge layers. This is diagnostic stripping. A formal proof target would require replacement by j-smooth external residue-class references, deferred to future work.</em></p>
+<h3>4.1. Hypothesis</h3>
+<p>Ψ = O(j) arises from layer-by-layer class-mean gauge cancellation, with each prime p contributing O(1/p), for a total of Σ1/p ∼ ln ln n = O(j).</p>
+<h3>4.2. Experiment: Six-Layer Gauge Stripping</h3>
+<p>For ρ_{2,3}, class means were stripped at primorial levels 1, 2, 6, 30, 210, and 2310.</p>
+<table><thead><tr>
+<th>ω</th>
+<th>Primorial</th>
+<th>Gauge fraction</th>
+<th>Incremental</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0.0000</td>
+<td>baseline</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>0.0000</td>
+<td>zero</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td><strong>0.0771</strong></td>
+<td><strong>all</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>0.0771</td>
+<td>zero</td>
+</tr>
+<tr>
+<td>4</td>
+<td>210</td>
+<td>0.0771</td>
+<td>zero</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2310</td>
+<td>0.0773</td>
+<td>≈ zero</td>
+</tr>
+</tbody></table>
+<p>Kill 21: The multi-layer gauge hypothesis is killed for ρ_{2,3}. All gauge removal occurs at ω = 2 (mod-6). Layers ω = 3 through 5 contribute nothing.</p>
+<p>The reason is structural: ρ_{2,3} has only factors 2 and 3. The quantity mod-6 = lcm(2,3) exhausts the residue structure. Higher primes have no factor channels in this skeleton.</p>
+<h3>4.3. Yet 7.7% Produces 80% Cumulative Suppression</h3>
+<p>Running-sum data:</p>
+<table><thead><tr>
+<th>W</th>
+<th>Σ_within</th>
+<th>Σ_cross</th>
+<th>Σ_all</th>
+</tr></thead><tbody>
+<tr>
+<td>1000</td>
+<td>267.8</td>
+<td>114.6</td>
+<td>191.2</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>1512.0</td>
+<td>−18.7</td>
+<td>746.6</td>
+</tr>
+<tr>
+<td>50000</td>
+<td>4773.0</td>
+<td>−2891.6</td>
+<td><strong>940.7</strong></td>
+</tr>
+</tbody></table>
+<p>A pointwise variance removal of 7.7% translates into 80% suppression at the cumulative level. The power of gauge lies not in pointwise amplitude but in the coherence of integrated spectral mass.</p>
+<hr>
+<h2>§5. Round 5: Near-Perfect Cancellation in Full IC[d≤200] and Genuine Decorrelation</h2>
+<h3>5.1. Multi-Layer Gauge in Full IC[d≤200] Confirmed</h3>
+<table><thead><tr>
+<th>ω</th>
+<th>Primorial</th>
+<th>Full IC[d≤200] gauge</th>
+<th>ρ_{2,3} gauge</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>6</td>
+<td><strong>10.3%</strong></td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>18.2%</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>210</td>
+<td>20.3%</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2310</td>
+<td>20.6%</td>
+<td>7.7%</td>
+</tr>
+</tbody></table>
+<p>Full IC[d≤200] has genuinely multi-layer gauge structure, growing from ~10% at mod-6 to ~20% at mod-210, in contrast to the flat 7.7% of ρ_{2,3}.</p>
+<p><em>v2 note: v1 §5.1 reported mod-6 gauge as 5.6% and mod-210 as 21.2%. Independent verification on the bug-free Full IC pipeline yields the values shown above (mod-6 = 10.3%, mod-210 = 20.3%). The cause of the v1 discrepancy is pending review of the original Round 5 code; the qualitative claim — multi-layer growth from ~10% to ~20% — is unaffected.</em></p>
+<h3>5.2. −1.0001: Near-Perfect Cancellation</h3>
+<p>Running-sum comparison:</p>
+<table><thead><tr>
+<th>W</th>
+<th>ρ_{2,3} Σ_all</th>
+<th>Full IC[d≤200] Σ_all</th>
+<th>Full IC cross/within</th>
+</tr></thead><tbody>
+<tr>
+<td>5000</td>
+<td>533.7</td>
+<td>15.8</td>
+<td>−0.94</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>746.7</td>
+<td>15.4</td>
+<td>−0.97</td>
+</tr>
+<tr>
+<td>50000</td>
+<td>940.8</td>
+<td><strong>−0.4</strong></td>
+<td><strong>−1.0001</strong></td>
+</tr>
+</tbody></table>
+<p>Full IC[d≤200]: Σ_within = 5143.45, Σ_cross = −5144.16. In the observed range, near-perfect cancellation to four decimal places.</p>
+<p>ρ_{2,3}: only −0.61.</p>
+<h3>5.3. Genuine Decorrelation Survives All Gauge Removal</h3>
+<p>The key finding of Round 5c: Full IC[d≤200] after mod-2310 centering (480 classes):</p>
+<table><thead><tr>
+<th>W</th>
+<th>C_eff (mod-2310 centered)</th>
+</tr></thead><tbody>
+<tr>
+<td>5000</td>
+<td>0.825</td>
+</tr>
+<tr>
+<td>10000</td>
+<td><strong>1.092</strong></td>
+</tr>
+<tr>
+<td>50000</td>
+<td><strong>1.297</strong></td>
+</tr>
+<tr>
+<td>100000</td>
+<td><strong>2.966</strong></td>
+</tr>
+</tbody></table>
+<p>C_eff still crosses. Ψ still exhibits peak-then-crash (42.5 → 39.9 → 28.9 → 7.9).</p>
+<p>By contrast, ρ_{2,3} after mod-6 centering: C_eff reaches at most 0.963, never crossing.</p>
+<p>Full IC[d≤200] shows strong evidence of genuine dynamic decorrelation surviving all gauge removal. ρ_{2,3} does not.</p>
+<h3>5.4. Two Legs</h3>
+<table><thead><tr>
+<th></th>
+<th>ρ_{2,3}</th>
+<th>Full IC[d≤200]</th>
+</tr></thead><tbody>
+<tr>
+<td>Leg 1 (gauge)</td>
+<td>✅ single-layer mod-6</td>
+<td>✅ multi-layer</td>
+</tr>
+<tr>
+<td>Leg 2 (genuine decorrelation)</td>
+<td>❌ absent</td>
+<td>✅ strong evidence</td>
+</tr>
+<tr>
+<td>Ψ low regime</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<p>Conjecture 59.1 requires both legs working together.</p>
+<hr>
+<h2>§6. Round 6 (v2): Smooth Convergence of the Progressive Skeleton</h2>
+<p><em>This section is fully rewritten for v2 based on bug-fixed data. The "two discrete phase transitions" claimed in v1 were artifacts of a code bug in the skeleton builder. See §10.6.</em></p>
+<h3>6.1. Bug-fixed progressive skeleton (nf = 2..25)</h3>
+<p>All systems use mod-6 centering. From 2 factors to 25 factors plus Full IC[d≤200]:</p>
+<table><thead><tr>
+<th>nf</th>
+<th>Max prime</th>
+<th>λ</th>
+<th>var</th>
+<th>Ψ(100K)</th>
+<th>C_eff(100K)</th>
+<th>Ratio50K</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>5.25</td>
+<td>4.12</td>
+<td>1990</td>
+<td>0.96</td>
+<td>-0.61</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>4.90</td>
+<td>2.60</td>
+<td>460</td>
+<td>1.45</td>
+<td>-0.99</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7</td>
+<td>4.82</td>
+<td>1.75</td>
+<td>153</td>
+<td>2.57</td>
+<td>-0.94</td>
+</tr>
+<tr>
+<td>5</td>
+<td>11</td>
+<td>4.81</td>
+<td>1.58</td>
+<td>152</td>
+<td>1.78</td>
+<td>-0.96</td>
+</tr>
+<tr>
+<td>6</td>
+<td>13</td>
+<td>4.79</td>
+<td>1.38</td>
+<td>87</td>
+<td>2.44</td>
+<td>-0.99</td>
+</tr>
+<tr>
+<td>7</td>
+<td>17</td>
+<td>4.78</td>
+<td>1.31</td>
+<td>70</td>
+<td>2.49</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>19</td>
+<td>4.77</td>
+<td>1.24</td>
+<td>36</td>
+<td>2.67</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>23</td>
+<td>4.77</td>
+<td>1.22</td>
+<td>33</td>
+<td>2.63</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>29</td>
+<td>4.77</td>
+<td>1.17</td>
+<td>24</td>
+<td>3.27</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>37</td>
+<td>4.76</td>
+<td>1.10</td>
+<td>8</td>
+<td>3.56</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>16</td>
+<td>53</td>
+<td>4.75</td>
+<td>1.04</td>
+<td>5</td>
+<td>3.65</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>25</td>
+<td>97</td>
+<td>4.74</td>
+<td>1.00</td>
+<td><strong>4.7</strong></td>
+<td>3.31</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>Full IC[d≤200]</td>
+<td>d≤200</td>
+<td>4.62</td>
+<td>0.80</td>
+<td><strong>5.8</strong></td>
+<td>2.95</td>
+<td>-1.00</td>
+</tr>
+</tbody></table>
+<h3>6.2. Single qualitative shift at nf = 2 → 3 (÷3 → ÷5)</h3>
+<p>The only clearly identifiable qualitative shift is between nf = 2 and nf = 3:</p>
+<ul>
+<li>C_eff: 0.96 → 1.45 (first crosses 1.0 and stays above)</li>
+<li>Ratio50K: -0.61 → -0.99 (jumps from imperfect to near-perfect cancellation)</li>
+<li>Ψ(100K): 1990 → 460 (4× drop)</li>
+</ul>
+<p>After nf = 3, the behavior is smooth monotone descent across all metrics. No second discrete transition is observable.</p>
+<p>A candidate interpretation: the introduction of factor 5 turns on Full IC's signature behavior at the metrics level — near-perfect cancellation (Ratio → -1) and super-Brownian decay (C_eff > 1) appear together. Under this reading, skeleton[nf ≥ 3] is already qualitatively "like Full IC", and what remains is quantitative convergence.</p>
+<h3>6.3. Skeleton converges to Full IC</h3>
+<p>Bug-fixed data strongly support skeleton[nf large] ≈ Full IC:</p>
+<table><thead><tr>
+<th>Metric</th>
+<th>Skeleton[nf=25]</th>
+<th>Full IC</th>
+<th>Distance</th>
+</tr></thead><tbody>
+<tr>
+<td>λ</td>
+<td>4.74</td>
+<td>4.62</td>
+<td>2.6%</td>
+</tr>
+<tr>
+<td>var</td>
+<td>1.00</td>
+<td>0.80</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Ψ_100K</td>
+<td>4.7</td>
+<td>5.8</td>
+<td>within range</td>
+</tr>
+<tr>
+<td>Ratio50K</td>
+<td>-1.000</td>
+<td>-1.000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C_eff_100K</td>
+<td>3.31</td>
+<td>2.95</td>
+<td>12%</td>
+</tr>
+</tbody></table>
+<p>Skeleton[nf=25] has <strong>smaller</strong> Ψ_100K than Full IC (4.7 vs 5.8), indicating the skeleton at nf=25 has reached and slightly undershot Full IC's bounded regime. This is smooth convergence rather than approximation strictly from below.</p>
+<p>The one significant remaining gap is in gauge6: skeleton has 0.053 vs Full IC's 0.103. This implies that Full IC contains gauge structure <strong>not captured by prime-only factor channels</strong> — likely the contribution of composite divisors (4, 6, 8, 9, 10, ..., 200). This connects to §7's reformulated discussion.</p>
+<h3>6.4. v1's claimed "second transition" is a bug artifact</h3>
+<p>v1 §6.3 claimed: between nf = 7 and nf = 8, Ψ_100K collapsed from 531 to 45.6 — a 10× drop interpreted as a "phase transition" signature.</p>
+<p>Bug-fixed data (v2): nf = 7 has Ψ_100K = 70, nf = 8 has Ψ_100K = 36 — a 2× drop, of the same order as other smooth descent steps (nf = 6 → 7: ~1.25×, nf = 8 → 9: ~1.1×, nf = 9 → 10: ~1.4×). No discrete jump.</p>
+<p>The specific bug: in r6d/r1's <code>build_rho_factors</code>, the inner loop lacks an <code>f < n</code> guard. When d = f = n = p (where p is in the factor set), the code evaluates <code>rho[p] + rho[1] + 2 = 3</code> (since rho[p] is still uninitialized at that moment), incorrectly overwriting the correct value <code>rho[p-1]+1</code>. For all p ≥ 5 in the factor list, rho[p] is wrongly set to 3, propagating through the entire recursive structure. See §10.6.</p>
+<hr>
+<h2>§7. Withdrawal of v1's Criterion 69.A and Reformulation of the Proof Program</h2>
+<p><em>v2 revision: v1's Criterion 69.A was based on bug-affected progressive skeleton data (the "phase transition at nf=8"). Bug-fixed data show no such transition; Criterion 69.A is therefore withdrawn. This section reformulates the surviving observations.</em></p>
+<h3>7.1. Withdrawal of v1's Criterion 69.A</h3>
+<p>v1 stated (withdrawn):</p>
+<p>> If ρ_{S₈} enters a low-Ψ regime (computational verification), and this low-Ψ phase is stable under factor-set enlargement, then Full IC[d≤200] belongs to the same bounded-phase universality class.</p>
+<p><strong>Problem:</strong> The identification of S₈ = {2,3,5,7,11,13,17,19} as the critical factor set was based on v1's "second phase transition at nf = 7 → 8". Bug-fixed v2 data show no such transition; nf = 8 is a generic point on the smooth descent curve, not a structural boundary.</p>
+<p><strong>v2 withdraws this criterion.</strong> No specific S_n threshold is identifiable from current data as a proof anchor.</p>
+<h3>7.2. Observations preserved in v2</h3>
+<p>The following observations have been independently verified (§3–§5) and constitute the technical contribution of Paper 69:</p>
+<p><strong>Observation 1 (§3–§4):</strong> The C_eff crossing of ρ_{2,3} is a mod-6 class-mean gauge artifact. Multi-primorial centering (mod-6, 30, 210, 2310) shows that the entire gauge structure of ρ_{2,3} is captured at mod-6, with no additional contribution from higher primorials. The class-centered Ψ of ρ_{2,3} grows persistently — ρ_{2,3} alone is insufficient to produce a bounded phase.</p>
+<p><strong>Observation 2 (§5):</strong> Full IC[d≤200] retains C_eff crossing and a peak-then-crash Ψ pattern after centering at all tested gauge layers (up to mod-2310). Multi-primorial gauge fractions grow from ~10% at mod-6 to ~20% at mod-210. Full IC has gauge structure beyond ρ_{2,3}'s mod-6 layer AND has decorrelation behavior surviving all tested gauge removal.</p>
+<p><strong>Observation 3 (§5.4 Two-leg structure):</strong></p>
+<table><thead><tr>
+<th></th>
+<th>ρ_{2,3}</th>
+<th>Full IC[d≤200]</th>
+</tr></thead><tbody>
+<tr>
+<td>Leg 1 (gauge cancellation)</td>
+<td>✅ single layer mod-6, 7.7%</td>
+<td>✅ multi-layer, growing to 20%</td>
+</tr>
+<tr>
+<td>Leg 2 (decorrelation surviving gauge removal)</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Bounded Ψ in observed range</td>
+<td>❌</td>
+<td>✅ (Ψ_100K ≈ 5.8)</td>
+</tr>
+</tbody></table>
+<p>The two-leg observation holds as an empirical structure: a bounded Ψ regime requires both legs; ρ_{2,3} has only Leg 1 and cannot reach the bounded regime; Full IC has both and does.</p>
+<p><strong>Observation 4 (§6, v2 bug-fixed):</strong> The progressive skeleton (nf = 2..25) shows smooth descent toward Full IC. Skeleton[nf=25]'s Ψ_100K (~4.7) approaches and slightly undershoots Full IC's (~5.8). One qualitative shift is identifiable at nf = 2 → 3 (C_eff first crosses 1.0; Ratio jumps to ~−0.99). Subsequent behavior is monotone convergence. The skeleton has prime-channel-only structure; Full IC's d ≤ 200 includes composite divisors (4, 6, 8, 9, 10, ..., 200), which are the candidate origin of the residual ~50% gauge6 gap between skeleton[nf large] and Full IC.</p>
+<h3>7.3. Reformulating the proof program for 59.1</h3>
+<p>v1's proof program (computational verification + phase stability + set inclusion) depended on a specific nf = 8 boundary and is withdrawn.</p>
+<p><strong>v2 status:</strong> Paper 69 does not provide a complete proof program for the spectral side of 59.1. The two-leg observation suggests that the bounded Ψ regime arises from a compound effect of gauge cancellation and decorrelation, but does not provide a constructive proof path.</p>
+<p><strong>Open questions for future work:</strong></p>
+<p>(i) Role of composite-divisor structure: is the remaining gap between skeleton[nf large] and Full IC entirely attributable to composite d (4, 6, 8, ..., 200)? (Paper 70 candidate experiment: prime-only IC vs Full IC vs composite-only IC. Initial v2 supplementary data indicate that composite-only IC has var ≈ 1.7, structurally distinct from both prime-only ≈ 1.0 and Full IC ≈ 0.8.)</p>
+<p>(ii) Nature of genuine decorrelation: §5.3's observation — that Full IC retains C_eff crossing and Ψ peak-then-crash even after mod-2310 centering — is an empirical fact whose mechanism remains unclear. Spectral analysis of a transfer-like operator on Full IC is one possible direction.</p>
+<p>(iii) Convergence rate: a quantitative characterization of skeleton → Full IC convergence (in λ, var, gauge6, Ψ) remains open.</p>
+<h3>7.4. Relation to Paper 68 (unchanged from v1)</h3>
+<p>Theorem 68.A (conditional theorem for ρ_{2,3}): the conditions are not satisfied — ρ_{2,3} has only Leg 1, and Ψ is unbounded. The theorem itself remains correct as a conditional statement, but ρ_{2,3} is not the proof target.</p>
+<p>Extension Principle 68.B requires revision: Full IC is not a small perturbation of ρ_{2,3} — it is a qualitatively different object (multi-layer gauge plus genuine decorrelation evidence). However, the {2,3}-skeleton remains invaluable as a diagnostic tool — it isolates Leg 1 and reveals the gauge mechanism in its purest form.</p>
+<h3>7.5. Kill Table (v2)</h3>
+<table><thead><tr>
+<th>Kill #</th>
+<th>Hypothesis</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>19</td>
+<td>Simple multiplicative RG sufficient</td>
+<td>Gap 20–30% (Round 1)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Cross-class anti-correlation = dynamic bridge</td>
+<td>Class-centering: mean-mode artifact (Round 3)</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Multi-layer primorial gauge (Σ1/p) for ρ_{2,3}</td>
+<td>All gauge at mod-6 only (Round 4)</td>
+</tr>
+</tbody></table>
+<p><em>v2 note: v1 claimed "21 kills total" including Papers 62–68's 18 kills plus Paper 69's Kills 19–21. After bug fixing, Kills 19, 20, 21 all still stand — they target observations on ρ_{2,3} and Full IC and do not depend on the bug-affected progressive skeleton data.</em></p>
+<hr>
+<h2>§8. Afterword</h2>
+<h3>8.1. Methodological Reflection: The Completion of Via Negativa</h3>
+<p><em>This section records methodological observations and is not a component of the preceding theorems.</em></p>
+<p>The trajectory across Papers 62–69:</p>
+<p>Papers 62–67: empirical phase. The C_eff trajectory characterized. 18 kills.</p>
+<p>Paper 68: structural identification. The {2,3}-skeleton as Goldilocks. Kills 14–18.</p>
+<p>Paper 69: mechanism identification. Gauge plus genuine decorrelation. Kills 19–21.</p>
+<p>Each time a "true mechanism" appeared to be found — raw A/M anti-correlation, cross-class anti-correlation, multi-layer gauge — a class-centering test demoted it to gauge artifact. But gauge artifacts are not false — they are real mathematical phenomena whose origin lies in algebraic structure rather than dynamic process.</p>
+<p>The two surviving legs — gauge cancellation (Leg 1) and genuine dynamic decorrelation (Leg 2) — are what remains after 21 kills have stripped away every incorrect mechanism candidate. <em>(v2 note: v1's text here also referred to "two phase transitions"; in light of the v2 bug fix, that addition is removed; the kill count of 21 is unaffected since Kills 19–21 target ρ_{2,3} and Full IC observations rather than the bug-affected progressive skeleton.)</em></p>
+<p>Via Negativa: strip away everything that is not the current answer candidate. What remains is the current minimum mechanism candidate.</p>
+<h3>8.2. A Cognitive-Linguistic Observation</h3>
+<p><em>This section records a structural resonance discovered during the writing process, following the discipline of Paper 68 §8 — structural analogy, not derivation.</em></p>
+<p>Chinese and English exhibit different structural affordances at the cognitive level. English linearity operates at two levels — within the token (letter sequences) and at the sentence level (SVO syntax) — forming a double-layer add guidance that favors logical rigor. Each Chinese character is a compressed package, with more flexible syntax, closer to a mult event — facilitating jumps and divergent thinking.</p>
+<p>A mixed mode of primarily Chinese with English terminology anchors constitutes a cognitive {2,3}-skeleton. Chinese offers the advantage of divergence (jumps, compression, intuitive connections); English offers the advantage of logic (rigor, linearity, precise definitions). The mixture is Goldilocks — Chinese provides jump channels, English provides positioning anchors, and the two work synergistically in the cumulative cognitive process.</p>
+<h3>8.3. Withdrawal of v1 §8.3</h3>
+<p><em>v1 §8.3 proposed a SAE-framework reading of "Self-emergence at the 8→9 boundary", corresponding v1's claimed "second phase transition at nf=7→8" to SAE's 8DD→9DD (structure→Self) boundary.</em></p>
+<p><strong>That phase transition does not exist in bug-fixed v2 data.</strong> The empirical anchor of v1 §8.3 has dissolved. The section is withdrawn as a philosophical observation.</p>
+<p>A broader SAE-framework reading of ZFCρ should be reformulated in independent SAE texts and should not be built on a specific (and now retracted) phase transition.</p>
+<h3>8.4. Boundaries of This Section</h3>
+<p>The observations in §8.1–§8.2 are interpretive extensions of mathematical findings. They form structural resonances with core SAE concepts, but the scope of each observation requires further substantiation in independent SAE texts. The technical contribution of Paper 69 is defined by §1–§7.</p>
+<p><em>v2 revision: v1 §8.3 contained an SAE reading built on a now-retracted phase transition. v2 §8.3 has been replaced by a withdrawal note.</em></p>
+<hr>
+<h2>§9. Status Map (v2)</h2>
+<table><thead><tr>
+<th>Proposition</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>{2,3}-skeleton C_eff crossing</td>
+<td>Empirically confirmed (source is gauge artifact, kills Leg 2 for ρ_{2,3})</td>
+</tr>
+<tr>
+<td>{2,3}-skeleton multi-primorial gauge: all at mod-6</td>
+<td>✅ Verified (mod-6 = mod-30 = mod-210 ≈ 0.077)</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] C_eff crossing</td>
+<td>Empirically confirmed (gauge + genuine decorrelation)</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] multi-layer gauge growth</td>
+<td>✅ Verified (mod-6 ≈ 0.10, mod-210 ≈ 0.20)</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] genuine decorrelation surviving mod-2310 centering</td>
+<td>✅ Verified</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] Ψ entered bounded regime</td>
+<td>✅ Verified (Ψ_100K ≈ 5.8 at j = 25)</td>
+</tr>
+<tr>
+<td>ρ_{S₈} Ψ entered low-Ψ regime at "phase transition"</td>
+<td>❌ <strong>Bug artifact, withdrawn (v2)</strong></td>
+</tr>
+<tr>
+<td>Two phase transitions in skeleton trajectory</td>
+<td>❌ <strong>Bug artifact, withdrawn (v2)</strong></td>
+</tr>
+<tr>
+<td>Skeleton smoothly converges to Full IC</td>
+<td>✅ Verified (v2, bug-fixed data)</td>
+</tr>
+<tr>
+<td>Single qualitative shift at nf = 2 → 3 (C_eff first crosses 1.0)</td>
+<td>✅ Verified (v2)</td>
+</tr>
+<tr>
+<td>Phase stability under factor enlargement</td>
+<td>❌ <strong>Withdrawn — premise (phase transition) does not exist</strong></td>
+</tr>
+<tr>
+<td>Criterion 69.A</td>
+<td>❌ <strong>Withdrawn (v2)</strong></td>
+</tr>
+<tr>
+<td>Two-leg observation (gauge + decorrelation) as empirical structure</td>
+<td>✅ Verified</td>
+</tr>
+</tbody></table>
+<h3>Paper 70 Target (v2 revised)</h3>
+<p>The v1 target list (phase stability proof, ρ_{S₈} spectral analysis, exact Full IC extension, unconditional 59.1 closure) is withdrawn — those targets were built on the now-retracted Criterion 69.A.</p>
+<p>Paper 70 candidate directions (TBD):</p>
+<ol>
+<li>Composite-divisor decomposition: a quantitative analysis of prime-only IC vs composite-only IC vs Full IC (preliminary v2 data: composite-only IC has var ≈ 1.7, structurally distinct from both prime-only and Full IC).</li>
+<li>Quantitative characterization of the skeleton → Full IC convergence rate.</li>
+<li>Investigation of the mechanism behind §5.3's genuine decorrelation.</li>
+<li>Methodological foundation reset based on lessons from the v1 bug.</li>
+</ol>
+<p>The specific direction is left as an independent decision for Paper 70.</p>
+<hr>
+<h2>§10. Methods</h2>
+<h3>10.1. Computational Environment</h3>
+<p>All experiments were carried out on a single machine using C (gcc -O3).</p>
+<h3>10.2. Data Range</h3>
+<p>N = 10⁸. Prime sieve: Eratosthenes. j = 25 as the primary test block (block size 2²⁵ ≈ 3.4 × 10⁷).</p>
+<h3>10.3. Construction of ρ</h3>
+<p>ρ_{S}(n) for factor set S = {p₁, ..., p_k}:</p>
+<ul>
+<li>ρ(0) = 0, ρ(1) = 1</li>
+<li>For n ≥ 2: ρ(n) = min(ρ(n−1) + 1, min_{p ∈ S, p|n}(ρ(p) + ρ(n/p) + 2))</li>
+</ul>
+<p>Full IC: trial division with d ≤ 200 approximating all factorizations.</p>
+<h3>10.4. Experimental Code</h3>
+<p>paper69_r1.c through paper69_r6d.c. All code and data available at the project repository.</p>
+<h3>10.5. Four-AI Review</h3>
+<p>Claude (子路, primary writer/executor), ChatGPT (公西华, strictest reviewer), Gemini (子夏, divergent thinking), Grok (子贡, consistency checking). Each round of experimental results was independently reviewed by all four.</p>
+<p>ChatGPT's class-centering warning in Round 3 ("first rule out mean-mode artifact") was the single most critical contribution to this paper — without it, Kill 20 would not have occurred.</p>
+<h3>10.6. v2 Bug Disclosure</h3>
+<p><strong>Date discovered:</strong> 2026-04-27 (the day after Paper 69 v1 release).</p>
+<p><strong>Location:</strong> <code>paper69_r6d.c</code>, function <code>build_rho_factors</code> (also affects all earlier <code>paper69_r1.c</code> through <code>paper69_r5*.c</code> skeleton-building code).</p>
+<p><strong>Bug description:</strong></p>
+<pre><code>static void build_rho_factors(long N, int *factors, int n_factors) {
+    rho[0] = 0; rho[1] = 1;
+    for (long n = 2; n <= N; n++) {
+        int best = rho[n-1] + 1;
+        for (int fi = 0; fi < n_factors; fi++) {
+            int f = factors[fi];
+            if (n % f == 0) {                    // <-- MISSING: f < n guard
+                int v = rho[f] + rho[n/f] + 2;
+                if (v < best) best = v;
+            }
+        }
+        rho[n] = (int16_t)best;
+    }
+}</code></pre>
+<p>When n = p ∈ factors (a prime in the factor list), the inner loop hits the f = p case. At that point, n/f = 1 and the code evaluates v = rho[p] + rho[1] + 2. But rho[p] has not yet been set (it remains 0 from calloc), giving v = 0 + 1 + 2 = 3. For all p ≥ 5 in the factor list, the correct value rho[p−1] + 1 ≥ 5 is wrongly overwritten by 3.</p>
+<p>The error then propagates through the entire recursive structure: every n with large prime factors receives a systematically depressed ρ value.</p>
+<p><strong>Bug fix:</strong></p>
+<pre><code>if (f < n && n % f == 0) {        // <-- Fixed: explicit f < n guard</code></pre>
+<p><code>build_rho_full</code> (used for Full IC) is unaffected — its inner loop has a <code>(long)d*d <= n</code> break that implicitly excludes d = n for n ≥ 2.</p>
+<p><strong>Verification:</strong> A smoke test at N = 10⁶ confirms the bug-fixed <code>build_rho_factors</code> produces identical output to the bug-free <code>build_rho_full</code> when given the complete divisor set [2, 200]. The case nf = 2 (factor list {2, 3}) does not trigger the bug, since no prime ≥ 5 is in the list.</p>
+<p><strong>v1 Affected sections:</strong></p>
+<p>✅ Unaffected (independently verified):</p>
+<ul>
+<li>§2 (RG basics for ρ_{2,3})</li>
+<li>§3 (Cross-class observations + Kill 20 for ρ_{2,3})</li>
+<li>§4 (Multi-layer gauge for ρ_{2,3})</li>
+<li>§5 (Full IC observations: gauge structure, genuine decorrelation, Ratio → −1)</li>
+</ul>
+<p>❌ Affected (withdrawn or revised):</p>
+<ul>
+<li>§6 (Progressive skeleton): the "two phase transitions" claim is entirely artifact. v2 §6 is rewritten with bug-fixed data showing smooth convergence.</li>
+<li>§7 (Criterion 69.A): withdrawn. It was built on §6's nf = 8 boundary, which does not exist in bug-fixed data.</li>
+<li>§8.3 (Self-emergence at 8 → 9): withdrawn. Its empirical anchor (the second phase transition) is gone.</li>
+<li>Abstract and §1.2: updated to reflect the v2 thesis.</li>
+</ul>
+<p><strong>v1 specific numerical discrepancies (independent verification on bug-free pipeline):</strong></p>
+<p>§5.1 mod-6 gauge for Full IC: v1 published 0.056; verified 0.103. mod-30 / mod-210 are close to v1. The multi-layer growth pattern (~10% to ~20%) holds qualitatively.</p>
+<p>§5.3 mod-2310 centered C_eff for Full IC: v1 published 0.825 / 1.092 / 1.297 / 2.966 across W = 5K / 10K / 50K / 100K. Verified 0.683 / 1.082 / 1.182 / 3.086. Differences in the 0.10–0.15 range. The qualitative pattern (crossing 1.0, jump at 50K → 100K) is confirmed.</p>
+<p><strong>Lessons learned:</strong></p>
+<p>(i) Builder code lacking invariant checks / assertions allowed the bug to persist through 20+ experiments and 7+ papers without detection.</p>
+<p>(ii) Aggregate metrics (Ψ, C_eff, ratios) are insensitive to systematic shifts that preserve qualitative patterns. The bug produced systematically wrong but internally-consistent numbers.</p>
+<p>(iii) Cross-validation with an independent algorithm (in this case, comparing skeleton[nf=46] λ against Prime-only IC λ from the bug-free Full IC pipeline) was the eventual detection mechanism. Such cross-checks should be standard for future work.</p>
+<p>(iv) Eyeball pattern-matching on aggregate trajectory tables is unreliable for identifying phase transitions when the data generation pipeline has not been independently verified.</p>
+<p><strong>v2 verification scripts:</strong></p>
+<ul>
+<li><code>paper69_v2.c</code> — bug-fixed re-run of the entire skeleton trajectory.</li>
+<li><code>paper69_verify.c</code> — independent verification of §3–§5 published values.</li>
+<li>Output files: <code>p69_v2.txt</code>, <code>p69_verify.txt</code>.</li>
+</ul>
+<p>Available at the project repository.</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>本文通过6轮实验identify了59.1 spectral side的double mechanism candidate。
+
+核心发现：（1）ρ_{2,3}的C_eff crossing完全来自mod-6 class-mean gauge的artifact——class-centering后crossing消失，Ψ持续增长。Multi-primorial centering (mod-6, 30, 210, 2310) 显示ρ_{2,3}的全部gauge structure在mod-6一层完成，higher primorials无额外贡献。（2）Full IC[d≤200]在所有gauge层级（mod-2310, 480 classes）centering后C_eff仍然crossing，Ψ仍然peak-then-crash——存在genuine dynamic decorrelation的strong evidence。Multi-primorial gauge fractions显著增长（mod-6 ≈ 10%, mod-210 ≈ 20%）。（3）Bug-fixed progressive skeleton (nf=2..25) 数据显示smooth descent rather than discrete phase transitions: Ψ_100K从1990 (nf=2) 单调递减至4.7 (nf=25)，with C_eff first crossing 1.0 between nf=2→3 (÷3→÷5的引入). Skeleton[nf large] converges to Full IC的Ψ regime。
+
+Two-leg observation（gauge + genuine decorrelation）作为empirical structure holds：ρ_{2,3}只显Leg 1，Full IC同时显Leg 1和Leg 2。但v1声称的"two phase transitions at nf=2→3 and nf=7→8" 以及基于nf=8 boundary的Criterion 69.A都是bug artifact，v2撤回。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, Conjecture 59.1, 双·Leg机制, C_eff, gauge artifact, mod-6, decorrelation, Full IC, 谱界</div>
+    </div>
+    <div class="paper-body">
+<h2>摘要</h2>
+<p>本文通过6轮实验identify了59.1 spectral side的double mechanism candidate。</p>
+<p>核心发现：（1）ρ_{2,3}的C_eff crossing完全来自mod-6 class-mean gauge的artifact——class-centering后crossing消失，Ψ持续增长。Multi-primorial centering (mod-6, 30, 210, 2310) 显示ρ_{2,3}的全部gauge structure在mod-6一层完成，higher primorials无额外贡献。（2）Full IC[d≤200]在所有gauge层级（mod-2310, 480 classes）centering后C_eff仍然crossing，Ψ仍然peak-then-crash——存在genuine dynamic decorrelation的strong evidence。Multi-primorial gauge fractions显著增长（mod-6 ≈ 10%, mod-210 ≈ 20%）。（3）Bug-fixed progressive skeleton (nf=2..25) 数据显示smooth descent rather than discrete phase transitions: Ψ_100K从1990 (nf=2) 单调递减至4.7 (nf=25)，with C_eff first crossing 1.0 between nf=2→3 (÷3→÷5的引入). Skeleton[nf large] converges to Full IC的Ψ regime。</p>
+<p>Two-leg observation（gauge + genuine decorrelation）作为empirical structure holds：ρ_{2,3}只显Leg 1，Full IC同时显Leg 1和Leg 2。但v1声称的"two phase transitions at nf=2→3 and nf=7→8" 以及基于nf=8 boundary的Criterion 69.A都是bug artifact，v2撤回。</p>
+<hr>
+<h2>§1. 引言：从Paper 68到Paper 69</h2>
+<h3>1.1. Paper 68的遗产</h3>
+<p>Paper 68（DOI: 10.5281/zenodo.19739810）通过18次kill建立了{2,3}-skeleton作为Goldilocks minimum crossing mechanism：</p>
+<ul>
+<li>Kill 16：multiplicity不necessary</li>
+<li>Kill 17：pure halving不sufficient</li>
+<li>Kill 18：{2,5}不sufficient</li>
+<li>{2,3}-skeleton DOES cross</li>
+</ul>
+<p>Theorem 68.A（conditional）：若ρ_{2,3}的C_eff crossing且cumulative budget bounded，则Ψ = O(j)。Extension Principle 68.B（conjectural）：full IC可建模为{2,3}-skeleton + sparse perturbation。</p>
+<h3>1.2. Paper 69的目标</h3>
+<p>Paper 69的original target：prove C_eff crossing for {2,3}-skeleton via dual-channel RG on mod-6 automaton。</p>
+<p>实际trajectory完全不同。6轮实验systematically killed每一个mechanism candidate，最终reveal了59.1的empirical two-leg structure：</p>
+<ul>
+<li>C_eff crossing for ρ_{2,3}是gauge artifact（不是dynamic mechanism）——§3</li>
+<li>59.1需要<strong>两条腿</strong>：gauge cancellation + genuine dynamic decorrelation——§5</li>
+<li>ρ_{2,3}只有Leg 1；Full IC同时有Leg 1和Leg 2——§5.4</li>
+</ul>
+<p><strong>v2修订</strong>：v1基于progressive skeleton的bug-affected数据claim了"two discrete phase transitions" (÷3→÷5 and ÷17→÷19) 和基于nf=8 boundary的proof program。Bug fix后数据显示skeleton smoothly converges to Full IC，唯一可识别的qualitative transition是nf=2→3 (C_eff first crosses 1.0)。v1的"second transition" (Ψ from 531 to 45.6 at nf=7→8) 是bug propagation artifact。Criterion 69.A (基于nf=8) 撤回。Proof program需要重新formulate (§7更新)。</p>
+<h3>1.3. 本文结构</h3>
+<p>§2-§3：RG基础 + cross-class发现与class-centering kill (verified)</p>
+<p>§4：Multi-layer gauge假说与kill for ρ_{2,3} (verified)</p>
+<p>§5：Full IC的近完美gauge cancellation与genuine decorrelation (verified)</p>
+<p>§6：Progressive skeleton trajectory (v2 bug-fixed data)</p>
+<p>§7：Two-leg observation与proof program的reformulation (v2 revised)</p>
+<p>§8：方法论反思 + 认知-语言后记</p>
+<p>§9：Status map (v2 updated)</p>
+<p>§10：Methods + bug disclosure (v2 added §10.6)</p>
+<hr>
+<h2>§2. Round 1：Dual-Channel RG基础</h2>
+<h3>2.1. Mod-6转移概率</h3>
+<p>对ρ_{2,3}，每个integer的path choice（add, ÷2, ÷3）按mod-6 residue class分层：</p>
+<table><thead><tr>
+<th>n mod 6</th>
+<th>p_add</th>
+<th>p_div2</th>
+<th>p_div3</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>0.000</td>
+<td>0.711</td>
+<td>0.289</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.269</td>
+<td>0.731</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.046</td>
+<td>0.000</td>
+<td>0.954</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.742</td>
+<td>0.258</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>Global</td>
+<td>0.510</td>
+<td>0.283</td>
+<td>0.207</td>
+</tr>
+</tbody></table>
+<p>清晰的结构：mod 1和5 always add（prime-like positions），mod 0 never add，mod 3几乎always ÷3。</p>
+<h3>2.2. Cross-scale coupling</h3>
+<p>Half-scale alignment（EXP E）：</p>
+<table><thead><tr>
+<th>通道</th>
+<th>Corr(η(p), η(nearest prime to p/k))</th>
+</tr></thead><tbody>
+<tr>
+<td>÷2通道</td>
+<td>0.571–0.578</td>
+</tr>
+<tr>
+<td>÷3通道</td>
+<td>0.646–0.654</td>
+</tr>
+</tbody></table>
+<p>两个通道都有strong cross-scale correlation。Factor 3通道更强（0.65 > 0.57）。Stable across j。</p>
+<h3>2.3. Simple RG模型的failure</h3>
+<p>简单乘法模型预测C_eff ≈ 0.74。但empirical C_eff crossing到1.0以上。<strong>20-30个百分点的gap。</strong>（Kill 19）</p>
+<hr>
+<h2>§3. Round 2-3：Cross-Class发现与Class-Centering Kill</h2>
+<h3>3.1. Cross-class反相关（Round 2）</h3>
+<p>Mod-6将素数分为两个class：p ≡ 1 mod 6和p ≡ 5 mod 6。</p>
+<p>在j=27处：</p>
+<table><thead><tr>
+<th>lag</th>
+<th>γ_within (avg)</th>
+<th>γ_cross (avg)</th>
+<th>γ_all</th>
+</tr></thead><tbody>
+<tr>
+<td>100</td>
+<td>0.369</td>
+<td>0.217</td>
+<td>0.293</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>0.245</td>
+<td>0.096</td>
+<td>0.170</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>0.134</td>
+<td><strong>-0.013</strong></td>
+<td>0.061</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>0.114</td>
+<td><strong>-0.034</strong></td>
+<td>0.040</td>
+</tr>
+<tr>
+<td>20000</td>
+<td>0.100</td>
+<td><strong>-0.046</strong></td>
+<td>0.027</td>
+</tr>
+</tbody></table>
+<p>Cross-class correlation在k≈5000变负。Within-class始终正。初步判断：这就是bridge term。</p>
+<p>同时发现：pure same-scale γ_same = 0——任何两个素数之间都有mult event（EXP G）。</p>
+<h3>3.2. Class-centering kill（Round 3，Kill 20）</h3>
+<p>ChatGPT（公西华）警告：Paper 65曾发生同样的误判——raw branch anti-correlation可能只是mean-mode artifact。</p>
+<p>Class means：μ₁ = -0.564，μ₅ = +0.564。μ₁ × μ₅ = -0.318（负数）。</p>
+<p><strong>Class-centering后：所有cross-class ACF变正。反相关完全消失。</strong></p>
+<table><thead><tr>
+<th>lag</th>
+<th>γ₁₅ raw</th>
+<th>γ₁₅ class-centered</th>
+</tr></thead><tbody>
+<tr>
+<td>1000</td>
+<td>+0.096</td>
+<td><strong>+0.186</strong></td>
+</tr>
+<tr>
+<td>5000</td>
+<td><strong>-0.058</strong></td>
+<td><strong>+0.019</strong></td>
+</tr>
+<tr>
+<td>10000</td>
+<td><strong>-0.020</strong></td>
+<td><strong>+0.061</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Kill 20：Cross-class反相关 = mean-mode artifact。</strong> Paper 65教训在mod-6层面精确重演。</p>
+<h3>3.3. Within-class C_eff不crossing</h3>
+<p>Class-centered后的within-class C_eff最高约0.45——永远不接近1.0。Within-class Ψ无限增长。</p>
+<p><strong>ρ_{2,3}的C_eff crossing完全来自gauge。去掉gauge后，没有intrinsic decorrelation。</strong></p>
+<hr>
+<h2>§4. Round 4：Multi-Layer Gauge假说与Kill</h2>
+<p><em>注：本节及后续各节中的primorial centering（mod-6, mod-30, mod-210, mod-2310）用于识别可剥离的class-mean gauge层，属于diagnostic stripping。Formal proof target不以同块centering作为直接前提，而需在后续工作中用j-smooth external residue reference取代。</em></p>
+<h3>4.1. 假说</h3>
+<p>Ψ = O(j)来自逐层class-mean gauge消除，每个素数p贡献O(1/p)，总量 = Σ1/p ∼ ln ln n = O(j)。</p>
+<h3>4.2. 实验：6层gauge剥离</h3>
+<p>对ρ_{2,3}在primorial层级1, 2, 6, 30, 210, 2310处逐层剥离class means。</p>
+<table><thead><tr>
+<th>ω</th>
+<th>Primorial</th>
+<th>Gauge fraction</th>
+<th>额外贡献</th>
+</tr></thead><tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0.0000</td>
+<td>基线</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>0.0000</td>
+<td>零</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td><strong>0.0771</strong></td>
+<td><strong>全部</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>0.0771</td>
+<td>零</td>
+</tr>
+<tr>
+<td>4</td>
+<td>210</td>
+<td>0.0771</td>
+<td>零</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2310</td>
+<td>0.0773</td>
+<td>≈零</td>
+</tr>
+</tbody></table>
+<p><strong>Kill 21：Multi-layer gauge假说被kill。</strong> 所有gauge消除在ω=2（mod-6）一层完成。ω=3到ω=5贡献为零。</p>
+<p>原因：ρ_{2,3}只有factor 2和3。mod-6 = lcm(2,3)是完整residue结构。更高素数没有factor通道。</p>
+<h3>4.3. 但7.7%产生了80%的cumulative suppression</h3>
+<p>Running sum数据（EXP J）：</p>
+<table><thead><tr>
+<th>W</th>
+<th>Σ_within</th>
+<th>Σ_cross</th>
+<th>Σ_all</th>
+</tr></thead><tbody>
+<tr>
+<td>1000</td>
+<td>267.8</td>
+<td>114.6</td>
+<td>191.2</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>1512.0</td>
+<td>-18.7</td>
+<td>746.6</td>
+</tr>
+<tr>
+<td>50000</td>
+<td>4773.0</td>
+<td>-2891.6</td>
+<td><strong>940.7</strong></td>
+</tr>
+</tbody></table>
+<p>7.7%的pointwise variance消除→cumulative层面80%的Ψ suppression。Gauge的力量不在点态振幅，在integrated spectral mass的coherence。</p>
+<hr>
+<h2>§5. Round 5：Full IC[d≤200]的近完美消除与Genuine Decorrelation</h2>
+<h3>5.1. Full IC[d≤200]的multi-layer gauge confirmed</h3>
+<table><thead><tr>
+<th>ω</th>
+<th>Primorial</th>
+<th>Full IC[d≤200] gauge</th>
+<th>ρ_{2,3} gauge</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>6</td>
+<td><strong>10.3%</strong></td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>18.2%</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>210</td>
+<td>20.3%</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2310</td>
+<td>20.6%</td>
+<td>7.7%</td>
+</tr>
+</tbody></table>
+<p>Full IC[d≤200]有genuinely multi-layer gauge structure。从mod-6到mod-210增长~10个百分点，对比ρ_{2,3}的flat 7.7%。</p>
+<p><em>v2注：v1的§5.1表中mod-6 gauge published为5.6%, mod-210 published为21.2%。Independent verification得到上表数值（mod-6 = 10.3%, mod-210 = 20.3%）。差异原因待Round 5的original code审查；qualitative claim（multi-layer growth from ~10% to ~20%）unaffected。</em></p>
+<h3>5.2. -1.0001：近完美消除</h3>
+<p>Running sum对比：</p>
+<table><thead><tr>
+<th>W</th>
+<th>ρ_{2,3} Σ_all</th>
+<th>Full IC[d≤200] Σ_all</th>
+<th>Full IC cross/within</th>
+</tr></thead><tbody>
+<tr>
+<td>5000</td>
+<td>533.7</td>
+<td>15.8</td>
+<td>-0.94</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>746.7</td>
+<td>15.4</td>
+<td>-0.97</td>
+</tr>
+<tr>
+<td>50000</td>
+<td>940.8</td>
+<td><strong>-0.4</strong></td>
+<td><strong>-1.0001</strong></td>
+</tr>
+</tbody></table>
+<p>Full IC[d≤200]：Σ_within = 5143.45，Σ_cross = -5144.16。在observed range内精确到小数点后四位的近完美消除。</p>
+<p>ρ_{2,3}：只到-0.61。</p>
+<h3>5.3. Genuine decorrelation survives all gauge removal</h3>
+<p><strong>Round 5c的关键发现：</strong> Full IC[d≤200]在mod-2310（480个class）centering后：</p>
+<table><thead><tr>
+<th>W</th>
+<th>C_eff (mod-2310 centered)</th>
+</tr></thead><tbody>
+<tr>
+<td>5000</td>
+<td>0.825</td>
+</tr>
+<tr>
+<td>10000</td>
+<td><strong>1.092</strong></td>
+</tr>
+<tr>
+<td>50000</td>
+<td><strong>1.297</strong></td>
+</tr>
+<tr>
+<td>100000</td>
+<td><strong>2.966</strong></td>
+</tr>
+</tbody></table>
+<p><strong>C_eff仍然crossing。Ψ仍然peak-then-crash（42.5→39.9→28.9→7.9）。</strong></p>
+<p>对比ρ_{2,3}：mod-6 centering后C_eff最高0.963，不crossing。</p>
+<p><strong>Full IC[d≤200]有genuine dynamic decorrelation that survives all gauge removal的strong evidence。ρ_{2,3}没有。</strong></p>
+<h3>5.4. 两条腿</h3>
+<table><thead><tr>
+<th></th>
+<th>ρ_{2,3}</th>
+<th>Full IC[d≤200]</th>
+</tr></thead><tbody>
+<tr>
+<td>Leg 1（gauge）</td>
+<td>✅ 单层mod-6</td>
+<td>✅ 多层</td>
+</tr>
+<tr>
+<td>Leg 2（genuine decorrelation）</td>
+<td>❌ 不存在</td>
+<td>✅ strong evidence</td>
+</tr>
+<tr>
+<td>Ψ low regime</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<p>59.1需要两条腿共同工作。</p>
+<hr>
+<h2>§6. Round 6 (v2)：Progressive Skeleton的Smooth Convergence</h2>
+<p><em>本节基于bug-fixed数据（v2）完全重写。v1声称的"two discrete phase transitions"是skeleton builder的代码bug导致的artifact。详见§10.6。</em></p>
+<h3>6.1. Bug-fixed progressive skeleton (nf=2..25)</h3>
+<p>统一用mod-6 centering，从2个因子extend到25个因子 + Full IC[d≤200]：</p>
+<table><thead><tr>
+<th>nf</th>
+<th>最大素数</th>
+<th>λ</th>
+<th>var</th>
+<th>Ψ(100K)</th>
+<th>C_eff(100K)</th>
+<th>Ratio50K</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>5.25</td>
+<td>4.12</td>
+<td>1990</td>
+<td>0.96</td>
+<td>-0.61</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>4.90</td>
+<td>2.60</td>
+<td>460</td>
+<td>1.45</td>
+<td>-0.99</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7</td>
+<td>4.82</td>
+<td>1.75</td>
+<td>153</td>
+<td>2.57</td>
+<td>-0.94</td>
+</tr>
+<tr>
+<td>5</td>
+<td>11</td>
+<td>4.81</td>
+<td>1.58</td>
+<td>152</td>
+<td>1.78</td>
+<td>-0.96</td>
+</tr>
+<tr>
+<td>6</td>
+<td>13</td>
+<td>4.79</td>
+<td>1.38</td>
+<td>87</td>
+<td>2.44</td>
+<td>-0.99</td>
+</tr>
+<tr>
+<td>7</td>
+<td>17</td>
+<td>4.78</td>
+<td>1.31</td>
+<td>70</td>
+<td>2.49</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>19</td>
+<td>4.77</td>
+<td>1.24</td>
+<td>36</td>
+<td>2.67</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>23</td>
+<td>4.77</td>
+<td>1.22</td>
+<td>33</td>
+<td>2.63</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>29</td>
+<td>4.77</td>
+<td>1.17</td>
+<td>24</td>
+<td>3.27</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>37</td>
+<td>4.76</td>
+<td>1.10</td>
+<td>8</td>
+<td>3.56</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>16</td>
+<td>53</td>
+<td>4.75</td>
+<td>1.04</td>
+<td>5</td>
+<td>3.65</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>25</td>
+<td>97</td>
+<td>4.74</td>
+<td>1.00</td>
+<td><strong>4.7</strong></td>
+<td>3.31</td>
+<td>-1.00</td>
+</tr>
+<tr>
+<td>Full IC[d≤200]</td>
+<td>d≤200</td>
+<td>4.62</td>
+<td>0.80</td>
+<td><strong>5.8</strong></td>
+<td>2.95</td>
+<td>-1.00</td>
+</tr>
+</tbody></table>
+<h3>6.2. Single qualitative transition at nf=2→3 (÷3→÷5)</h3>
+<p>唯一可清晰identify的qualitative shift在nf=2→3:</p>
+<ul>
+<li>C_eff: 0.96 → 1.45 (首次跨越1.0并保持)</li>
+<li>Ratio50K: -0.61 → -0.99 (从imperfect cancellation 跃至 near-perfect)</li>
+<li>Ψ(100K): 1990 → 460 (4× drop)</li>
+</ul>
+<p>之后的behavior是smooth monotone descent across all metrics。No second discrete transition observable.</p>
+<p>一个candidate interpretation：Factor 5的引入使Full IC behavior at the metrics level "turns on"——near-perfect cancellation (Ratio→-1) 和 super-Brownian decay (C_eff > 1) 同时出现。在此读法下，nf=3+ skeleton已经qualitatively"like Full IC"，剩下的只是quantitative convergence。</p>
+<h3>6.3. Skeleton converges to Full IC</h3>
+<p>Bug-fixed数据强烈support skeleton[nf large]≈Full IC：</p>
+<table><thead><tr>
+<th>Metric</th>
+<th>Skeleton[nf=25]</th>
+<th>Full IC</th>
+<th>距离</th>
+</tr></thead><tbody>
+<tr>
+<td>λ</td>
+<td>4.74</td>
+<td>4.62</td>
+<td>2.6%</td>
+</tr>
+<tr>
+<td>var</td>
+<td>1.00</td>
+<td>0.80</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Ψ_100K</td>
+<td>4.7</td>
+<td>5.8</td>
+<td>within range</td>
+</tr>
+<tr>
+<td>Ratio50K</td>
+<td>-1.000</td>
+<td>-1.000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C_eff_100K</td>
+<td>3.31</td>
+<td>2.95</td>
+<td>12%</td>
+</tr>
+</tbody></table>
+<p>Skeleton[nf=25] <strong>比Full IC的Ψ_100K更小</strong> (4.7 vs 5.8)，说明skeleton在nf=25时已经at或slightly past Full IC's bounded regime。"Skeleton converges to and crosses Full IC"——这是smooth convergence not approximation from below.</p>
+<p>唯一显著remaining gap是gauge6: skeleton 0.053 vs Full IC 0.103。这意味着Full IC有一些gauge structure还<strong>not captured by prime-only factor channels</strong>——可能是composite divisors (4, 6, 8, 9, 10, ...) 贡献的gauge structure。这与§7的reformulated discussion相关。</p>
+<h3>6.4. v1声称的"second transition"为bug artifact</h3>
+<p>v1 §6.3 claimed: nf=7→8之间Ψ_100K从531 collapse到45.6，10×的drop作为"phase transition" signature。</p>
+<p>Bug-fixed数据 (v2)：nf=7 Ψ_100K=70, nf=8 Ψ_100K=36，2× drop——和其他step的smooth decay step (nf=6→7 ~1.25×, nf=8→9 ~1.1×, nf=9→10 ~1.4×) 同量级。No discrete jump。</p>
+<p>具体bug: r6d/r1代码中的 <code>build_rho_factors</code> 缺少 <code>f < n</code> guard，使 d=n=p (p∈factor set) 时evaluate <code>rho[p] + rho[1] + 2 = 3</code>，错误覆盖正确的<code>rho[p-1]+1</code>值. 对所有 p ≥ 5在factor list中，rho[p]被错误置3，propagate through entire recursive structure。详见§10.6。</p>
+<hr>
+<h2>§7. v1的Criterion 69.A撤回 + 重新审视proof program</h2>
+<p><em>v2修订：v1的Criterion 69.A基于bug-affected progressive skeleton数据（"phase transition at nf=8"）。Bug-fixed数据显示该transition不存在，Criterion 69.A因此撤回。本节重新formulate observations。</em></p>
+<h3>7.1. v1 Criterion 69.A的撤回</h3>
+<p>v1声称（撤回）：</p>
+<p>> 若ρ_{S₈}的Ψ进入low-Ψ regime（computational verification），且bounded phase在factor-set enlargement下stable，则Full IC[d≤200]落在同一bounded-phase universality class。</p>
+<p><strong>问题</strong>：S₈ = {2,3,5,7,11,13,17,19} 作为critical factor set的identification基于v1的"second phase transition at nf=7→8"。Bug-fixed v2数据显示该transition不存在；nf=8 是skeleton smooth descent上的generic point，不是structural boundary。</p>
+<p><strong>v2撤回此criterion。</strong> No specific S_n threshold作为proof anchor identifiable from current data.</p>
+<h3>7.2. v2保留的observations</h3>
+<p>下列observations经independent verification confirmed（§3-§5），构成Paper 69的technical contribution:</p>
+<p><strong>Observation 1 (§3-§4)</strong>: ρ_{2,3}的C_eff crossing是mod-6 class-mean gauge artifact。Multi-primorial centering (mod-6, 30, 210, 2310) 显示gauge structure完全在mod-6一层，没有higher primorials的additional contribution。Class-centered ρ_{2,3} Ψ persistently grows——ρ_{2,3} alone不足以produce bounded phase。</p>
+<p><strong>Observation 2 (§5)</strong>: Full IC[d≤200]在所有tested gauge layers (up to mod-2310) centering后保持C_eff crossing和peak-then-crash Ψ pattern。Multi-primorial gauge fractions从mod-6 (~10%) 增长到mod-210 (~20%)。Full IC has genuine gauge structure beyond ρ_{2,3}'s mod-6, AND has decorrelation behavior surviving all tested gauge removal.</p>
+<p><strong>Observation 3 (§5.4 Two-leg)</strong>:</p>
+<table><thead><tr>
+<th></th>
+<th>ρ_{2,3}</th>
+<th>Full IC[d≤200]</th>
+</tr></thead><tbody>
+<tr>
+<td>Leg 1 (gauge cancellation)</td>
+<td>✅ 单层 mod-6, 7.7%</td>
+<td>✅ 多层, growing to 20%</td>
+</tr>
+<tr>
+<td>Leg 2 (decorrelation surviving gauge removal)</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Bounded Ψ in observed range</td>
+<td>❌</td>
+<td>✅ (Ψ_100K ≈ 5.8)</td>
+</tr>
+</tbody></table>
+<p>Two-leg observation作为empirical structure holds：bounded Ψ regime需要both legs，ρ_{2,3} only has Leg 1 thus cannot achieve bounded phase, Full IC has both and does.</p>
+<p><strong>Observation 4 (§6, v2 bug-fixed)</strong>: Progressive skeleton (nf=2..25) shows smooth descent toward Full IC. Skeleton[nf=25]'s Ψ_100K (~4.7) approaches and slightly under-shoots Full IC's (~5.8). One qualitative shift identifiable at nf=2→3 (C_eff first crosses 1.0, Ratio跃至 -0.99). 之后monotone convergence。Skeleton has prime-channel-only structure; Full IC's d ≤ 200 includes composite divisors (4, 6, 8, 9, 10, ..., 200) ——这些是skeleton[nf large]和Full IC剩余~50% gauge6 gap的candidate origin。</p>
+<h3>7.3. 重新审视proof program for 59.1</h3>
+<p>v1's proof program (computational verification + phase stability + set inclusion) 依赖specific nf=8 boundary，撤回。</p>
+<p>v2 status: 没有完整proof program为59.1的spectral side。Two-leg observation提示<strong>bounded Ψ regime的mechanism是gauge + decorrelation的compound effect</strong>, but不提供constructive proof path。</p>
+<p><strong>Open questions for future work:</strong></p>
+<p>(i) Composite divisor structure的角色：Skeleton[nf large] vs Full IC 的remaining gap是否完全由composite d (4, 6, 8, ..., 200) 贡献？(Paper 70 candidate experiment: prime-only IC vs full IC vs composite-only IC——initial data in v2 supplementary suggest composite-only IC has var ≈ 1.7, distinct from both prime-only ≈ 1.0 and full IC ≈ 0.8.)</p>
+<p>(ii) Genuine decorrelation的nature：§5.3的observation——Full IC在mod-2310 centering后C_eff仍然crosses 1.0 and Ψ peak-then-crashes——是empirical fact但mechanism unclear. Spectral analysis of transfer-like operator on Full IC is one direction.</p>
+<p>(iii) Convergence rate：Skeleton →Full IC的convergence rate (in λ, var, gauge6, Ψ各metric) 的quantitative characterization。</p>
+<h3>7.4. 与Paper 68的关系 (unchanged from v1)</h3>
+<p>Theorem 68.A (ρ_{2,3}的conditional theorem)：条件不满足——ρ_{2,3}只有Leg 1，Ψ unbounded。定理本身correct（conditional），但ρ_{2,3}不是proof target。</p>
+<p>Extension Principle 68.B需要修正：Full IC不是ρ_{2,3}的small perturbation——是qualitatively different object（multi-layer gauge + genuine decorrelation evidence）。但{2,3}-skeleton作为<strong>diagnostic tool</strong>仍然invaluable——它isolate了Leg 1让我们理解gauge mechanism。</p>
+<h3>7.5. Kill表 (v2 revised)</h3>
+<table><thead><tr>
+<th>Kill #</th>
+<th>假说</th>
+<th>Kill来源</th>
+</tr></thead><tbody>
+<tr>
+<td>19</td>
+<td>Simple multiplicative RG sufficient</td>
+<td>Gap 20-30% (Round 1)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Cross-class反相关 = dynamic bridge</td>
+<td>Class-centering: mean-mode artifact (Round 3)</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Multi-layer primorial gauge (Σ1/p) for ρ_{2,3}</td>
+<td>All gauge at mod-6 only (Round 4)</td>
+</tr>
+</tbody></table>
+<p><em>v2注：v1声称"21 kills total"包括Paper 62-68的18 kills + Paper 69的Kills 19-21. Bug fix后Kills 19, 20, 21都仍然stand——它们针对ρ_{2,3}和Full IC的observations，没有依赖progressive skeleton的bug-affected数据。</em></p>
+<hr>
+<h2>§8. 后记</h2>
+<h3>8.1. 方法论反思：Via Negativa的完成</h3>
+<p><em>本节是方法论观察，不是前文定理的组成部分。</em></p>
+<p>Paper 62-69的trajectory：</p>
+<p>Papers 62-67：empirical phase。C_eff trajectory characterized。18 kills。</p>
+<p>Paper 68：structural identification。{2,3}-skeleton as Goldilocks。Kills 14-18。</p>
+<p>Paper 69：mechanism identification。Gauge + genuine decorrelation。Kills 19-21。</p>
+<p>每次以为找到了"真正的mechanism"——raw A/M反相关、cross-class反相关、multi-layer gauge——class-centering测试都把它降级为gauge artifact。但gauge artifact不是"假的"——它是真实的数学现象，只是来源是代数结构而非动态过程。</p>
+<p>最终留下的两条腿——gauge cancellation（Leg 1）和genuine dynamic decorrelation（Leg 2）——是21次kill凿去所有错误mechanism candidate后的remainder。<em>(v2注：v1此处文字还提到"两个相变"，鉴于v2 bug fix该phrase已删除；21次kill的count不受影响，因Kills 19-21 target的是ρ_{2,3}和Full IC的observations，不依赖bug-affected progressive skeleton。)</em></p>
+<p>Via Negativa：凿去一切不是当前答案候选的。凿完后剩下的是当前最小机制候选。</p>
+<h3>8.2. 认知-语言观察</h3>
+<p><em>本节记录session中发现的structural resonance，matching Paper 68 §8的discipline——structural analogy, not derivation。</em></p>
+<p>本文写作过程中观察到：中文与英文在认知层面具有不同的structural affordance。英文的线性在两个层级生效——token内部（字母序列）和句子层面（SVO语法）——形成双层add引导，逻辑极为严密。中文每个字是压缩包，句法更灵活，更接近mult event——跳跃容易，易于发散思维。</p>
+<p>中文为主 + 英文术语锚点的混合模式，构成认知的{2,3}-skeleton。中文具有发散的优势（跳跃、压缩、直觉连接），英文具有逻辑的优势（严密、线性、精确定义）。混合是Goldilocks——中文提供跳跃通道，英文提供定位锚点，两者在认知的cumulative process中协同工作。</p>
+<h3>8.3. v1 §8.3的撤回</h3>
+<p><em>v1 §8.3提出了"Self-emergence at 8→9 boundary"的SAE-framework解读，将v1声称的"second phase transition at nf=7→8"对应于SAE的8DD→9DD (structure→Self) boundary。</em></p>
+<p><strong>Bug-fixed v2数据中该相变不存在。</strong> v1 §8.3的empirical anchor消失。该节作为philosophical observation撤回。</p>
+<p>更广泛的SAE-framework对ZFCρ的解读应在SAE独立文本中重新formulate，不应建立在specific (and now retracted) phase transition上。</p>
+<h3>8.4. 本节的边界</h3>
+<p>§8.1-§8.2的观察是数学发现的解释性延伸，与SAE框架的核心概念形成结构共振，但每条观察的适用范围需在SAE独立文本中进一步论证。Paper 69的technical contribution限定在§1-§7。</p>
+<p><em>v2修订：v1 §8.3包含了基于已撤回phase transition的SAE解读。v2 §8.3已改为撤回声明。</em></p>
+<hr>
+<h2>§9. Status Map (v2)</h2>
+<table><thead><tr>
+<th>命题</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr>
+<td>{2,3}-skeleton C_eff crossing</td>
+<td>Empirically confirmed（来源是gauge artifact, kills Leg 2 for ρ_{2,3}）</td>
+</tr>
+<tr>
+<td>{2,3}-skeleton multi-primorial gauge: all at mod-6</td>
+<td>✅ Verified (mod-6=mod-30=mod-210≈0.077)</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] C_eff crossing</td>
+<td>Empirically confirmed（gauge + genuine decorrelation）</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] multi-layer gauge growth</td>
+<td>✅ Verified (mod-6≈0.10, mod-210≈0.20)</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] genuine decorrelation surviving mod-2310 centering</td>
+<td>✅ Verified</td>
+</tr>
+<tr>
+<td>Full IC[d≤200] Ψ entered bounded regime</td>
+<td>✅ Verified (Ψ_100K ≈ 5.8 at j=25)</td>
+</tr>
+<tr>
+<td>ρ_{S₈} Ψ entered low-Ψ regime at "phase transition"</td>
+<td>❌ <strong>Bug artifact, withdrawn (v2)</strong></td>
+</tr>
+<tr>
+<td>Two phase transitions in skeleton trajectory</td>
+<td>❌ <strong>Bug artifact, withdrawn (v2)</strong></td>
+</tr>
+<tr>
+<td>Skeleton smoothly converges to Full IC</td>
+<td>✅ Verified (v2, bug-fixed data)</td>
+</tr>
+<tr>
+<td>Single qualitative shift at nf=2→3 (C_eff first crosses 1.0)</td>
+<td>✅ Verified (v2)</td>
+</tr>
+<tr>
+<td>Phase stability under factor enlargement</td>
+<td>❌ <strong>Withdrawn—premise (phase transition) doesn't exist</strong></td>
+</tr>
+<tr>
+<td>Criterion 69.A</td>
+<td>❌ <strong>Withdrawn (v2)</strong></td>
+</tr>
+<tr>
+<td>Two-leg observation (gauge + decorrelation) as empirical structure</td>
+<td>✅ Verified</td>
+</tr>
+</tbody></table>
+<h3>Paper 70 target (v2 revised)</h3>
+<p>Paper 70 v1 list (phase stability proof, ρ_{S₈} spectral analysis, exact Full IC extension, 59.1 unconditional closure) 撤回——它们建立在v1 Criterion 69.A之上。</p>
+<p>Paper 70 candidate directions (TBD):</p>
+<ol>
+<li>Composite-divisor decomposition: prime-only IC vs composite-only IC vs Full IC的quantitative分析 (preliminary v2 data: composite-only IC has var ≈ 1.7, structurally different from both prime-only and Full IC)</li>
+<li>Skeleton → Full IC convergence rate的quantitative characterization</li>
+<li>§5.3 genuine decorrelation的mechanism investigation</li>
+<li>Methodological foundation reset based on lessons learned from v1 bug</li>
+</ol>
+<p>具体方向待Paper 70作为independent decision确定。</p>
+<hr>
+<h2>§10. Methods</h2>
+<h3>10.1. 计算环境</h3>
+<p>所有实验在单机上用C语言（gcc -O3）完成。</p>
+<h3>10.2. 数据范围</h3>
+<p>N = 10⁸。素数筛：Eratosthenes。j = 25为primary test block（block size 2²⁵ ≈ 3.4×10⁷）。</p>
+<h3>10.3. ρ的build</h3>
+<p>ρ_{S}(n)对因子集S = {p₁,...,p_k}：</p>
+<ul>
+<li>ρ(0) = 0, ρ(1) = 1</li>
+<li>对n ≥ 2：ρ(n) = min(ρ(n-1)+1, min_{p∈S, p|n}(ρ(p)+ρ(n/p)+2))</li>
+</ul>
+<p>Full IC：用d ≤ 200的trial division近似all factorizations。</p>
+<h3>10.4. 实验代码</h3>
+<p>paper69_r1.c through paper69_r6d.c。所有代码和数据available at project repository。</p>
+<h3>10.5. 四AI审阅</h3>
+<p>Claude（子路，primary writer/executor），ChatGPT（公西华，strictest reviewer），Gemini（子夏，divergent thinking），Grok（子贡，consistency checking）。每轮实验结果经四家independent review。</p>
+<p>ChatGPT在Round 3的class-centering warning（"先排除mean-mode artifact"）是本文最关键的single contribution——没有这个warning，Kill 20不会发生。</p>
+<h3>10.6. v2 Bug Disclosure</h3>
+<p><strong>发现日期：</strong> 2026-04-27 (Paper 69 v1发布次日)</p>
+<p><strong>Bug位置：</strong> <code>paper69_r6d.c</code> 中 <code>build_rho_factors</code> 函数 (also affecting all earlier <code>paper69_r1.c</code> through <code>paper69_r5*.c</code> 的skeleton-building code)</p>
+<p><strong>Bug描述：</strong></p>
+<pre><code>static void build_rho_factors(long N, int *factors, int n_factors) {
+    rho[0] = 0; rho[1] = 1;
+    for (long n = 2; n <= N; n++) {
+        int best = rho[n-1] + 1;
+        for (int fi = 0; fi < n_factors; fi++) {
+            int f = factors[fi];
+            if (n % f == 0) {                    // ← MISSING: f < n guard
+                int v = rho[f] + rho[n/f] + 2;
+                if (v < best) best = v;
+            }
+        }
+        rho[n] = (int16_t)best;
+    }
+}</code></pre>
+<p>当 n=p ∈ factors (prime in factor list)，inner loop hits f=p case. 此时 <code>n/f = 1</code>, 计算 <code>v = rho[p] + rho[1] + 2</code>. 但 <code>rho[p]</code> 当时还未被set (calloc=0)，所以 <code>v = 0 + 1 + 2 = 3</code>. 对所有 p ≥ 5 in factor list, 正确value <code>rho[p-1]+1 ≥ 5</code> 被错误覆盖为3.</p>
+<p>错误propagate through整个recursive structure：所有n with large prime factors得到systematically压低的ρ values.</p>
+<p><strong>Bug fix：</strong></p>
+<pre><code>if (f < n && n % f == 0) {        // ← Fixed: explicit f < n guard</code></pre>
+<p><code>build_rho_full</code> (用于Full IC) 不受影响——its inner loop has <code>(long)d*d <= n</code> break which隐式exclude d=n case for n≥2。</p>
+<p><strong>Verification:</strong> smoke test with N=10⁶ confirms bug-fixed <code>build_rho_factors</code> produces identical output to bug-free <code>build_rho_full</code> when given complete divisor set [2,200]. nf=2 (factor list = {2,3}) does not trigger bug since no prime ≥ 5 in list.</p>
+<p><strong>v1 Affected sections:</strong></p>
+<p>✅ Unaffected (verified independently):</p>
+<ul>
+<li>§2 (RG basics for ρ_{2,3})</li>
+<li>§3 (Cross-class observations + Kill 20 for ρ_{2,3})</li>
+<li>§4 (Multi-layer gauge for ρ_{2,3})</li>
+<li>§5 (Full IC observations: gauge structure, genuine decorrelation, Ratio→-1)</li>
+</ul>
+<p>❌ Affected (withdrawn or revised):</p>
+<ul>
+<li>§6 (Progressive skeleton): "Two phase transitions" claim entirely artifact. v2 §6 rewritten with bug-fixed data showing smooth convergence.</li>
+<li>§7 (Criterion 69.A): Withdrawn. Built on §6's nf=8 boundary which doesn't exist in bug-fixed data.</li>
+<li>§8.3 (Self-emergence at 8→9): Withdrawn. Empirical anchor (second phase transition) gone.</li>
+<li>Abstract和§1.2: Updated to reflect v2 revised thesis.</li>
+</ul>
+<p><strong>v1 specific数值偏差 (independent verification on bug-free pipeline):</strong></p>
+<p>§5.1 mod-6 gauge for Full IC: v1 published 0.056, verified 0.103. mod-30/mod-210 close to v1. Multi-layer growth pattern (~10% to ~20%) holds qualitatively.</p>
+<p>§5.3 mod-2310 centered C_eff for Full IC: v1 published 0.825/1.092/1.297/2.966 across W=5K/10K/50K/100K. Verified 0.683/1.082/1.182/3.086. Differences in 0.10-0.15 range. Qualitative pattern (crossing 1.0, jump at 50K-100K) confirmed.</p>
+<p><strong>Lessons learned:</strong></p>
+<p>(i) Builder code lacking invariant checks/assertions allowed bug to persist through 20+ experiments and 7+ papers without detection.</p>
+<p>(ii) Aggregate metrics (Ψ, C_eff, ratios) are insensitive to systematic shifts that preserve qualitative patterns. Bug produced systematically wrong but internally-consistent numbers.</p>
+<p>(iii) Cross-validation with independent algorithm (e.g., Full IC pipeline using different builder) was the eventual detection mechanism. Such cross-checks should be standard for future work.</p>
+<p>(iv) Eyeball pattern matching on aggregate trajectory tables is unreliable for identifying phase transitions when the data generation pipeline is not independently verified.</p>
+<p><strong>v2 verification scripts:</strong></p>
+<p><code>paper69_v2.c</code> - bug-fixed re-run of all skeleton trajectory</p>
+<p><code>paper69_verify.c</code> - independent verification of §3-§5 published values</p>
+<p>Output files: <code>p69_v2.txt</code>, <code>p69_verify.txt</code></p>
+<p>Available at project repository.</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
