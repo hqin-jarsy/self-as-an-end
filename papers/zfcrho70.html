@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXX: The Block-Wise Effective Skeleton — A Reduction of Conjecture 59.1 — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho70.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho70.html">
+  <meta name="citation_title" content="ZFCρ Paper LXX: The Block-Wise Effective Skeleton — A Reduction of Conjecture 59.1">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.19985155">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXX</div>
+    <h1>ZFCρ Paper LXX: The Block-Wise Effective Skeleton — A Reduction of Conjecture 59.1<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXX篇：分块有效骨架——对 Conjecture 59.1 的化归</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19985155" target="_blank" rel="noopener">10.5281/zenodo.19985155</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.19985155" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Conjecture 59.1 in the ZFCρ programme asserts that the spectral block ratio
+
+$$R_{\rm wt}(j) = \frac{B_j(\rho_{\rm Full})^2}{j \cdot D_j(\rho_{\rm Full})}$$
+
+stays bounded uniformly in the dyadic block index $j$, where $B_j$ and $D_j$ are the first and second moments over primes $p \in I_j = [2^j, 2^{j+1})$ of the stripped residual $x(p) = (\rho(p) - \lambda \log p - \mu_{12}(p \bmod 12)) / p$.
+
+This paper proves a Block-Wise Effective Skeleton Theorem (Theorem 70.A): for every dyadic block $I_j$, the full IC recursion $\rho_{\rm Full}$ agrees pointwise on $[1, 2^{j+1})$ with the truncated recursion $\rho_D$ as soon as $D \ge \sqrt{2^{j+1}}$. The theorem is deterministic; its proof is by elementary strong induction. As an immediate consequence, with $D^*(j) := \lceil \sqrt{2^{j+1}} \rceil$,
+
+$$x_{\rho_{\rm Full}}(p) = x_{\rho_{S_{D^*(j)}}}(p) \quad \forall p \in I_j,$$
+
+and therefore $B_j(\rho_{\rm Full}) = B_j(\rho_{S_{D^*(j)}})$, $D_j(\rho_{\rm Full}) = D_j(\rho_{S_{D^*(j)}})$, $R_{\rm wt}(j; \rho_{\rm Full}) = R_{\rm wt}(j; \rho_{S_{D^*(j)}})$. Conjecture 59.1 reduces to the equivalent bounded-phase statement
+
+$$\sup_j \frac{B_j(\rho_{S_{D^*(j)}})^2}{j \cdot D_j(\rho_{S_{D^*(j)}})} < \infty.$$
+
+The reduction replaces the abstract object $\rho_{\rm Full}$ by a concrete block-specific finite skeleton of size order $\sqrt{2^j}$.
+
+The theorem is deterministic; the experimental programme R0 through R9 identifies and validates the corrected block-wise computational substrate. An interim claim from rounds R6 and R7 of a global finite-$D$ saturation cutoff $D_{\rm sat}(10^9) \le 2048$ is here corrected: it was an artefact of a silent factor cap at $1860$ in our reference C builder. After the builder was repaired (rounds R8 and R9), the substrate exhibits the block-wise structure predicted by Theorem 70.A, whose first-nonzero threshold matches $\lceil \log_2(D^2) \rceil$ exactly across four consecutive doubling transitions $D = 2048, 4096, 8192, 16384$.
+
+This paper does not prove 59.1. It identifies the correct finite arithmetic object and reduces the conjecture to a per-block bounded-phase statement on $B_j^2 / (j D_j)$, now amenable to one of three explicit routes: a spectral-ratio log-budget telescoping, a direct second-moment estimate, or a spectral flatness argument.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, Conjecture 59.1, block-wise effective skeleton, spectral block ratio, reduction, H prime</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>Conjecture 59.1 in the ZFCρ programme asserts that the spectral block ratio</p>
+<p>$$R_{\rm wt}(j) = \frac{B_j(\rho_{\rm Full})^2}{j \cdot D_j(\rho_{\rm Full})}$$</p>
+<p>stays bounded uniformly in the dyadic block index $j$, where $B_j$ and $D_j$ are the first and second moments over primes $p \in I_j = [2^j, 2^{j+1})$ of the stripped residual $x(p) = (\rho(p) - \lambda \log p - \mu_{12}(p \bmod 12)) / p$.</p>
+<p>This paper proves a Block-Wise Effective Skeleton Theorem (Theorem 70.A): for every dyadic block $I_j$, the full IC recursion $\rho_{\rm Full}$ agrees pointwise on $[1, 2^{j+1})$ with the truncated recursion $\rho_D$ as soon as $D \ge \sqrt{2^{j+1}}$. The theorem is deterministic; its proof is by elementary strong induction. As an immediate consequence, with $D^*(j) := \lceil \sqrt{2^{j+1}} \rceil$,</p>
+<p>$$x_{\rho_{\rm Full}}(p) = x_{\rho_{S_{D^*(j)}}}(p) \quad \forall p \in I_j,$$</p>
+<p>and therefore $B_j(\rho_{\rm Full}) = B_j(\rho_{S_{D^<em>(j)}})$, $D_j(\rho_{\rm Full}) = D_j(\rho_{S_{D^</em>(j)}})$, $R_{\rm wt}(j; \rho_{\rm Full}) = R_{\rm wt}(j; \rho_{S_{D^*(j)}})$. Conjecture 59.1 reduces to the equivalent bounded-phase statement</p>
+<p>$$\sup_j \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})} < \infty.$$</p>
+<p>The reduction replaces the abstract object $\rho_{\rm Full}$ by a concrete block-specific finite skeleton of size order $\sqrt{2^j}$.</p>
+<p>The theorem is deterministic; the experimental programme R0 through R9 identifies and validates the corrected block-wise computational substrate. An interim claim from rounds R6 and R7 of a global finite-$D$ saturation cutoff $D_{\rm sat}(10^9) \le 2048$ is here corrected: it was an artefact of a silent factor cap at $1860$ in our reference C builder. After the builder was repaired (rounds R8 and R9), the substrate exhibits the block-wise structure predicted by Theorem 70.A, whose first-nonzero threshold matches $\lceil \log_2(D^2) \rceil$ exactly across four consecutive doubling transitions $D = 2048, 4096, 8192, 16384$.</p>
+<p>This paper does not prove 59.1. It identifies the correct finite arithmetic object and reduces the conjecture to a per-block bounded-phase statement on $B_j^2 / (j D_j)$, now amenable to one of three explicit routes: a spectral-ratio log-budget telescoping, a direct second-moment estimate, or a spectral flatness argument.</p>
+<hr>
+<h2>§1. Introduction</h2>
+<h3>1.1 Setting</h3>
+<p>The ZFCρ series studies a family of integer-complexity-like recursions parametrised by a <em>factor channel skeleton</em> $S \subseteq \mathbb{N}_{\ge 2}$. For $S$ closed under inclusion of all primes appropriate to the range, the recursion $\rho_S : \mathbb{N} \to \mathbb{N}$ is defined by</p>
+<p>$$\rho_S(0) = 0, \qquad \rho_S(1) = 0,$$</p>
+<p>$$\rho_S(n) = \min \Bigl\{ \rho_S(n-1) + 1, \quad \min_{\substack{a \mid n \\ 2 \le a \le \min(\sqrt{n}, \max S) \\ a \in S}} \bigl[ \rho_S(a) + \rho_S(n/a) + 2 \bigr] \Bigr\}, \qquad n \ge 2.$$</p>
+<p>The "successor" branch costs one step. Each "factor split" $n = a \cdot b$ with smaller factor $a \in S$ costs two steps plus the costs of building $a$ and $b$. This convention is fixed throughout the ZFCρ series.</p>
+<p>When $S$ contains every integer $\ge 2$ up to $\sqrt{N}$ for the working range $n \le N$, the recursion is denoted $\rho_{\rm Full}$ on $[1, N]$. By a standard orientation argument every nontrivial factorisation $n = a \cdot b$ with $n \le N$ admits the choice $a \le b$, hence $a \le \sqrt{n} \le \sqrt{N}$, so the upper truncation $\max S \ge \sqrt{N}$ has no effect.</p>
+<h3>1.2 The spectral block ratio</h3>
+<p>Following paper 50, paper 59, and the subsequent ZFCρ literature, fix the constant</p>
+<p>$$\lambda_{\rm Full IC} = 3.856763$$</p>
+<p>(an empirical asymptotic slope of $\rho_{\rm Full}(n) / \log n$ established in paper 50, §2.1) and the residue-class correction $\mu_{12}(\cdot)$ defined on $\mathbb{Z}/12\mathbb{Z}$ (paper 50, §3). For each skeleton $S$ and each prime $p$, define the <em>stripped residual</em></p>
+<p>$$r_S(p) := \rho_S(p) - \lambda_{\rm Full IC} \log p - \mu_{12}(p \bmod 12)$$</p>
+<p>and the <em>normalised residual</em></p>
+<p>$$x_S(p) := \frac{r_S(p)}{p}.$$</p>
+<p>For the dyadic block $I_j = [2^j, 2^{j+1})$, define the first and second moments</p>
+<p>$$B_j(S) := \sum_{p \in I_j, \; p \text{ prime}} x_S(p), \qquad D_j(S) := \sum_{p \in I_j, \; p \text{ prime}} x_S(p)^2,$$</p>
+<p>and the <em>spectral block ratio</em></p>
+<p>$$R_{\rm wt}(j; S) := \frac{B_j(S)^2}{j \cdot D_j(S)}.$$</p>
+<p>When $S$ is the Full IC skeleton, we abbreviate $B_j := B_j(\rho_{\rm Full})$, $D_j := D_j(\rho_{\rm Full})$, $R_{\rm wt}(j) := R_{\rm wt}(j; \rho_{\rm Full})$.</p>
+<p>For the experimental programme reported below (R0 through R9), it is sometimes convenient to track a separate diagnostic quantity, the <em>cross-$\lambda$ drift mean</em></p>
+<p>$$M_j^{\rm drift}(S) := -\frac{\sum_{p \in I_j} (\rho_S(p) - \lambda_{\rm Full IC} \log p) / p}{\sum_{p \in I_j} 1/p}.$$</p>
+<p>This drift mean is $-1$ times a weighted mean of the unstripped residual; it is convenient as a low-cost increment monitor during builds, since it does not require computing the second moment $D_j(S)$. We use $M_j^{\rm drift}$ only as an experimental diagnostic and do not conflate it with $R_{\rm wt}$. Throughout statement contexts, $R_{\rm wt}$ refers exclusively to the spectral block ratio $B_j^2 / (j D_j)$ defined above.</p>
+<h3>1.3 Conjecture 59.1</h3>
+<p>The conjecture under study is the following.</p>
+<p><strong>Conjecture 59.1.</strong> <em>There exists a constant $M$ such that</em></p>
+<p>$$R_{\rm wt}(j) = \frac{B_j^2}{j \cdot D_j} \le M$$</p>
+<p><em>for all $j$ sufficiently large.</em></p>
+<p>Paper 59 reported empirically at $N = 10^{10}$ that $R_{\rm wt}(j) \in [0.79, 25.3]$ over the tested range $j = 14, \ldots, 32$. The conjecture is equivalent to the assertion that this range stays bounded as $N$ and $j$ grow.</p>
+<h3>1.4 What this paper does</h3>
+<p>Paper 70 has three goals.</p>
+<p>First, <strong>identify the correct finite arithmetic object</strong>. Conjecture 59.1 ostensibly references the Full IC recursion, an object that on its face requires every divisor up to $\sqrt{N}$. We show that this is misleading. For each dyadic block $I_j$ separately, the Full IC recursion agrees identically with a much smaller truncated recursion of cutoff order $\sqrt{2^j}$.</p>
+<p>Second, <strong>reduce 59.1 to a bounded-phase statement</strong> on the block-specific finite skeleton.</p>
+<p>Third, <strong>document the methodological trajectory</strong> by which this reduction was reached. Two earlier rounds of experiments (R6 and R7) appeared to demonstrate a much stronger universal finite-$D$ saturation. That apparent saturation was traced to a silent factor cap in our reference C builder. Round R8 exposed the cap by direct target-domination certification; round R9, with the builder repaired, then revealed the correct block-wise structure. We document this not as a confession but as a Via Negativa event: the apparent global structure was an instrument-layer remainder, and the correct theorem only became visible once the instrument was repaired.</p>
+<p>The remainder of the paper is organised as follows. §2 sets up two response identities under skeleton enlargement: a linear zero-mode identity for the first moment $B_j$, and a multiplicative log-budget identity for the spectral ratio $R_{\rm wt}$. §3 reviews the small-$c$ shortcut-slack diagnostics of rounds R3 through R6. §4 documents the R8 reset. §5 states and proves the Block-Wise Effective Skeleton Theorem (Theorem 70.A). §6 presents the R9 empirical confirmation, including the deterministic first-nonzero threshold $j = \lceil \log_2(D^2) \rceil$ matched across four consecutive doubling transitions. §7 carries out the reduction of 59.1 to the per-block bounded-phase statement. §8 lists the three available proof routes for that statement and the open conditions remaining. §9 sketches the connection to standard integer complexity. §10 concludes.</p>
+<hr>
+<h2>§2. Two response identities under skeleton enlargement</h2>
+<p>Let $S_1 \subseteq S_2$ be two skeletons with the same full prime content but possibly different composite content, with $\max S_1, \max S_2 \le \sqrt{N}$. Write $\rho_1, \rho_2$ for the corresponding recursions on $[0, N]$. Since adding factor channels can only lower the value of the minimum, $\rho_2 \le \rho_1$ pointwise.</p>
+<h3>2.1 Linear zero-mode response identity</h3>
+<p>For each skeleton $S$, recall</p>
+<p>$$B_j(S) = \sum_{p \in I_j} x_S(p), \qquad x_S(p) = \frac{\rho_S(p) - \lambda \log p - \mu_{12}(p \bmod 12)}{p}.$$</p>
+<p><strong>Lemma 2.1 (Linear zero-mode response).</strong> <em>For any $S_1 \subseteq S_2$ in the sense above,</em></p>
+<p>$$B_j(S_2) - B_j(S_1) = \sum_{p \in I_j, \; p \text{ prime}} \frac{\rho_{S_2}(p) - \rho_{S_1}(p)}{p}.$$</p>
+<p><em>Each term in the sum is non-positive.</em></p>
+<p><em>Proof.</em> By linearity of summation, the contributions of $\lambda \log p / p$ and $\mu_{12}(p \bmod 12) / p$ to $x_{S_1}(p)$ and $x_{S_2}(p)$ cancel in the difference, leaving only the $\rho$-difference. The sign follows from $\rho_{S_2} \le \rho_{S_1}$ pointwise. $\square$</p>
+<p>For a chain $S_0 \subseteq S_1 \subseteq \cdots \subseteq S_K$, telescoping gives the <em>linear zero-mode budget</em></p>
+<p>$$B_j(S_K) - B_j(S_0) = \sum_{k=0}^{K-1} \bigl[ B_j(S_{k+1}) - B_j(S_k) \bigr],$$</p>
+<p>each summand non-positive. This identity controls the <em>first moment</em> $B_j$ but not the spectral ratio $R_{\rm wt}(j) = B_j^2 / (j D_j)$, since the second moment $D_j(S)$ also varies with $S$. We shall therefore distinguish carefully between (i) bounds on $B_j$ alone and (ii) bounds on $R_{\rm wt}$.</p>
+<h3>2.2 Spectral-ratio log-budget identity</h3>
+<p>The natural budget identity for $R_{\rm wt}$ itself is multiplicative. For a chain $S_0 \subseteq S_1 \subseteq \cdots \subseteq S_K$ with each $R_j(S_k) := R_{\rm wt}(j; S_k) > 0$, define the per-step ratio</p>
+<p>$$Q_{j,k} := \frac{R_j(S_{k+1})}{R_j(S_k)}.$$</p>
+<p>Then telescoping in logarithmic form gives</p>
+<p>$$\log R_j(S_K) - \log R_j(S_0) = \sum_{k=0}^{K-1} \log Q_{j,k}.$$</p>
+<p>Unlike Lemma 2.1, the per-step ratios $\log Q_{j,k}$ have no fixed sign in general: enlarging the skeleton lowers $B_j$ algebraically (each $\rho$-difference term is non-positive, so $B_j(S_{k+1}) \le B_j(S_k)$), but the absolute value $|B_j|$ need not decrease monotonically; and it can either lower or raise $D_j$ depending on whether the affected primes had above- or below-average residual squared. Bounding $\sup_K \log R_j(S_K)$ uniformly in $j$ requires controlling both the $B$-direction and the $D$-direction simultaneously. Identity 2.2 is the natural target for any spectral-ratio budget argument; identity 2.1 is the natural target for a first-moment argument alone.</p>
+<p>We use identity 2.1 in §3 (small-$c$ diagnostics) and §6 (R9 increment monitoring), and identity 2.2 in §8.1 (spectral-ratio log-budget route).</p>
+<hr>
+<h2>§3. The small-$c$ shortcut-slack criterion</h2>
+<p>Before turning to the block-wise structure, we record a diagnostic that survived the R8 reset and remains in force at small composite cutoffs.</p>
+<p>For a skeleton $S$ and a composite $c \notin S$, define the shortcut slack</p>
+<p>$$\sigma_S(c) := C^{\rm nat}_S(c) - \rho_S(c), \qquad C^{\rm nat}_S(c) := \min_{\substack{ab = c \\ 2 \le a, b < c}} \bigl[ \rho_S(a) + \rho_S(b) + 2 \bigr].$$</p>
+<p>$\sigma_S(c) \ge 0$ always, since $\rho_S(c)$ is a minimum that includes the natural decomposition path. $\sigma_S(c) > 0$ means $c$ has a strictly cheaper construction (typically through the successor chain) than any of its multiplicative factorisations under $S$.</p>
+<p>We say $c$ is <em>response-essential over $S$</em> if there exists $n \le N$ such that $\rho_{S \cup \{c\}}(n) < \rho_S(n)$.</p>
+<p><strong>Empirical Criterion 3.1 (Shortcut slack predicts essentiality at small $c$).</strong> <em>In all tests carried out in rounds R3 through R6, with $S$ chosen as $S_{10} = \{2, 3, 4, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47\}$ (the prime channels through 47, plus the dyadic shortcut $\{4\}$), or as $S_{14} = \{2, 3, \ldots, 25\} \cup \{\text{primes through } 50\}$, the equivalence</em></p>
+<p>$$\sigma_S(c) > 0 \iff c \text{ is response-essential over } S$$</p>
+<p><em>holds in 56 out of 56 tests for $c$ ranging from $46$ through $177$.</em></p>
+<p>The rounds and counts are: R3b (10 cases), R3d (11 cases of $p^2$ for primes $p \le 47$), R5a (19 mixed-product cases), R6a (16 cases including six predicted-redundant controls). All matched. We do not assert this criterion at large $c$. As we shall see in §4, the criterion's literal form fails for $c$ much larger than the elements of $S$, where the relevant question shifts from $\sigma_S(c)$ (the single-element slack at $c$) to <em>target-domination at all $n = c \cdot m$</em> (whether each candidate target has a cheaper alternative path under $S$). The transition between these two regimes is exactly what R8 and R9 exhibit.</p>
+<p>The small-$c$ criterion remains useful in two ways. First, it provides a cheap pre-filter for candidate essential channels in the small range, enabling efficient enumeration when constructing minimal skeletons. Second, it is consistent with the Block-Wise Effective Skeleton picture: a $c$ that is response-essential over $S$ in the small range affects $\rho$ on targets $n = c \cdot m$ with $m \ge c$, hence $n \ge c^2$, hence $n$ in dyadic blocks $j(n) \ge 2 \log_2 c$. The shortcut slack at small $c$ is precisely the local mechanism by which composite channels $c$ contribute to the <em>higher</em> dyadic blocks of the saturated skeleton.</p>
+<hr>
+<h2>§4. The R8 reset: target-domination certification and the silent factor cap</h2>
+<p>Round R6 reported that for $N = 10^9$, the increment from skeletons $D_3 = \{2, \ldots, 2048\}$ to $D_4 = \{2, \ldots, 4096\}$ to $D_5 = \{2, \ldots, 8192\}$ to $D_6 = \{2, \ldots, 16384\}$ produced byte-identical $\rho$ arrays at all sanity points and zero $B_\delta$ in all sixteen tested dyadic blocks $j = 14, \ldots, 29$. Round R7 extended this to $D_7 = \{2, \ldots, 32768\}$, observing the same freezing. As $32768 > \sqrt{10^9} \approx 31623$, this appeared to constitute an empirical certificate that</p>
+<p>$$\rho_{S_{2048}}(n) = \rho_{\rm Full}(n) \qquad \text{for all } n \le 10^9.$$</p>
+<p>If true, this would have established a global finite-$D$ saturation cutoff $D_{\rm sat}(10^9) \le 2048$, far below the trivial bound $\sqrt{N}$. The interim narrative organised the trajectory around this apparent finding.</p>
+<h3>4.1 Round R8a: target-domination test</h3>
+<p>Round R8a tested the certificate directly. Define</p>
+<p>$$G_D(n) := \min_{\substack{c \mid n \\ D < c \le \sqrt{n} \\ c \text{ composite}}} \bigl[ \rho_D(c) + \rho_D(n/c) + 2 \bigr],$$</p>
+<p>with $G_D(n) := +\infty$ if no such $c$ exists. The certificate $\rho_{\rm Full} = \rho_D$ on $[1, N]$ is equivalent to</p>
+<p>$$G_D(n) \ge \rho_D(n) \qquad \text{for all } n \le N.$$</p>
+<p>For $D = 2048$ and $N = 10^9$, R8a enumerated all composite $c \in (2048, 31622]$ and all $m \in [c, N/c]$, checking the inequality at each $n = c \cdot m$.</p>
+<p>The result was</p>
+<table><thead><tr>
+<th>Quantity</th>
+<th>Value</th>
+</tr></thead><tbody>
+<tr>
+<td>Composites $c$ tested</td>
+<td>26,482</td>
+</tr>
+<tr>
+<td>Total $(c, m)$ pairs checked</td>
+<td>1,984,522,004</td>
+</tr>
+<tr>
+<td>Violations $\rho_D(c \cdot m) > \rho_D(c) + \rho_D(m) + 2$</td>
+<td>31,427,448</td>
+</tr>
+</tbody></table>
+<p>Roughly 1.6% of all checked pairs were violations, distributed across 10,723 distinct $c$ values. A single explicit instance: $c = 2049$, $m = 2101$, $n = 4,304,949 = 2049 \times 2101$. Independent verification by a Python reference implementation confirmed $\rho_{S_{2048}}(2049) = 27$, $\rho_{S_{2048}}(2101) = 28$, $\rho_{S_{2048}}(4304949) = 59$, and so the candidate factor split via $2049$ would cost $27 + 28 + 2 = 57 < 59$. Adding $2049$ to the skeleton would strictly lower $\rho$ at $n = 4304949$.</p>
+<p>This contradicted the R7 freezing claim.</p>
+<h3>4.2 The factor cap</h3>
+<p>Tracing the contradiction to its source, we examined the build logs across all skeletons. The reference C builder \texttt{p70\_r2\_builder} was found to silently truncate every input factor list at 1860 elements regardless of the declared input. Every build whose declared factor list exceeded approximately 1860 entries reported</p>
+<pre><code>Factors: 1859 entries, max = 1860</code></pre>
+<p>regardless of input. This appeared in builds for $D_3, D_4, D_5, D_6, D_7$ as well as the analogous $E$-class and $H$-class builds at other $N$. Builds with smaller declared factor lists (e.g. $\{2, \ldots, 1024\}$) reported correct entry counts and maxima.</p>
+<p>Every "freezing" observation across rounds R5c, R6c, R7a was therefore comparing the same effective skeleton $S_{1860}$ to itself, and the apparent absence of $B_\delta$ was tautological.</p>
+<h3>4.3 Recovery: independent Python verification at $N = 5 \times 10^6$</h3>
+<p>A Python reference DP, tested at moderate $N$, confirmed thirteen primes in $I_{22} = [2^{22}, 2^{23})$ at which $\rho_{S_{2048}}(p) \neq \rho_{S_{4096}}(p)$. Five examples:</p>
+<table><thead><tr>
+<th>$p$</th>
+<th>$\rho_{S_{2048}}(p)$</th>
+<th>$\rho_{S_{4096}}(p)$</th>
+</tr></thead><tbody>
+<tr>
+<td>4,329,539</td>
+<td>60</td>
+<td>59</td>
+</tr>
+<tr>
+<td>4,518,221</td>
+<td>59</td>
+<td>58</td>
+</tr>
+<tr>
+<td>4,722,947</td>
+<td>59</td>
+<td>58</td>
+</tr>
+<tr>
+<td>4,748,039</td>
+<td>61</td>
+<td>60</td>
+</tr>
+<tr>
+<td>4,750,643</td>
+<td>60</td>
+<td>59</td>
+</tr>
+</tbody></table>
+<p>The R6c claim that $B_\delta(j = 22)$ is zero for the $D_3 \to D_4$ transition was therefore an artefact of the cap, not a reflection of substrate behaviour.</p>
+<h3>4.4 Methodological note</h3>
+<p>We document this episode explicitly. The interim narrative of "global finite-$D$ saturation at $D_{\rm sat}(10^9) \le 2048$" was wrong. It was supplanted by the correct picture only after the measurement instrument was repaired. We treat the episode as a <em>Via Negativa</em> event in the sense developed in the SAE methodology series: the apparent global structure was a remainder at the instrument layer, and the correct block-wise structure became visible only after that remainder was excised. (For the general framing of "remainder excision" as a methodological discipline distinct from ordinary error correction, see SAE Methodology Paper 0, "余之道 / Via Rho", DOI 10.5281/zenodo.19657439.)</p>
+<p>For round R9 the C builder was rewritten with no static factor cap, with hard assertions verifying $\#\text{factors loaded} = \#\text{factors requested}$ and $\max(\text{loaded}) = \max(\text{requested})$, with the first and last 32 factors logged on every build, and with a 64-bit FNV-1a checksum of the full $\rho$ array reported. Three regression tests at $N = 5 \times 10^6$ were embedded into the build process: factor-count integrity, the $\rho_{S_{2048}}(4304949) = 59$ value, and the five $j = 22$ prime values above. All R9 builds passed all three regressions.</p>
+<hr>
+<h2>§5. The Block-Wise Effective Skeleton Theorem</h2>
+<p>We now state and prove the central theorem of this paper.</p>
+<h3>5.1 Statement</h3>
+<p>For an integer $D \ge 2$, the truncated recursion $\rho_D := \rho_{S_D}$ where $S_D := \{2, 3, \ldots, D\}$ is given by</p>
+<p>$$\rho_D(n) = \min \Bigl\{ \rho_D(n-1) + 1, \quad \min_{\substack{a \mid n \\ 2 \le a \le \min(\sqrt{n}, D)}} \bigl[ \rho_D(a) + \rho_D(n/a) + 2 \bigr] \Bigr\}, \qquad n \ge 2.$$</p>
+<p>The Full IC recursion is the same with the constraint $a \le D$ removed (equivalently, $D = \infty$).</p>
+<p>For each dyadic block $I_j = [2^j, 2^{j+1})$, define the <strong>block cutoff</strong></p>
+<p>$$D^*(j) := \lceil \sqrt{2^{j+1}} \rceil.$$</p>
+<p>We also use the dyadic variant $D^{*(2)}(j) := 2^{\lceil (j+1)/2 \rceil}$ when working with skeletons indexed by powers of two.</p>
+<p><strong>Theorem 70.A (Block-Wise Effective Skeleton).</strong> <em>For every integer $j \ge 1$, if $D \ge \sqrt{2^{j+1}}$, then</em></p>
+<p>$$\rho_D(n) = \rho_{\rm Full}(n) \qquad \text{for all } n < 2^{j+1}.$$</p>
+<p><em>In particular, $\rho_D(p) = \rho_{\rm Full}(p)$ for all primes $p \in I_j$, and consequently</em></p>
+<p>$$x_{\rho_D}(p) = x_{\rho_{\rm Full}}(p) \quad \forall p \in I_j,$$</p>
+<p><em>so that</em></p>
+<p>$$B_j(\rho_D) = B_j(\rho_{\rm Full}), \qquad D_j(\rho_D) = D_j(\rho_{\rm Full}), \qquad R_{\rm wt}(j; \rho_D) = R_{\rm wt}(j; \rho_{\rm Full}).$$</p>
+<h3>5.2 Proof</h3>
+<p>We prove the pointwise equality $\rho_D(n) = \rho_{\rm Full}(n)$ for all $n < 2^{j+1}$, by strong induction on $n$.</p>
+<p><em>Base case.</em> For $n = 0$ and $n = 1$, both recursions return $0$ by definition.</p>
+<p><em>Inductive step.</em> Fix $n$ with $2 \le n < 2^{j+1}$ and assume $\rho_D(m) = \rho_{\rm Full}(m)$ for all $m < n$.</p>
+<p>Both recursions take the minimum of two candidates: the <em>successor candidate</em> and the <em>factor candidate</em>. By the inductive hypothesis,</p>
+<p>$$\rho_D(n - 1) + 1 = \rho_{\rm Full}(n - 1) + 1.$$</p>
+<p>The successor candidates agree.</p>
+<p>Consider the factor candidates. The Full IC factor candidate is</p>
+<p>$$\min_{\substack{a \mid n \\ 2 \le a \le \sqrt{n}}} \bigl[ \rho_{\rm Full}(a) + \rho_{\rm Full}(n/a) + 2 \bigr].$$</p>
+<p>The truncated factor candidate is</p>
+<p>$$\min_{\substack{a \mid n \\ 2 \le a \le \min(\sqrt{n}, D)}} \bigl[ \rho_D(a) + \rho_D(n/a) + 2 \bigr].$$</p>
+<p>Since $n < 2^{j+1}$, every divisor $a$ with $a \le \sqrt{n}$ satisfies</p>
+<p>$$a \le \sqrt{n} < \sqrt{2^{j+1}} \le D,$$</p>
+<p>where the last inequality is the hypothesis of the theorem. Therefore the constraint $a \le D$ is automatically satisfied for every $a$ in the Full IC range. The two minima are taken over the same set of divisors $a$.</p>
+<p>For each such $a$, both $a$ and $n/a$ are strictly less than $n$ (since $n = a \cdot b$ with $b = n/a \ge 1$, and we may assume the trivial split $a = 1$ or $a = n$ is excluded by the $2 \le a \le \sqrt{n}$ constraint). By the inductive hypothesis,</p>
+<p>$$\rho_D(a) = \rho_{\rm Full}(a), \qquad \rho_D(n/a) = \rho_{\rm Full}(n/a).$$</p>
+<p>Therefore the costs $\rho_D(a) + \rho_D(n/a) + 2$ and $\rho_{\rm Full}(a) + \rho_{\rm Full}(n/a) + 2$ are equal for every such $a$. The two factor minima coincide.</p>
+<p>Both branches of the recursion produce the same value at $n$, so $\rho_D(n) = \rho_{\rm Full}(n)$.</p>
+<p>The inductive step is complete. The conclusion holds for all $n < 2^{j+1}$, in particular for all primes $p \in I_j$.</p>
+<p>The equalities for $x$, $B_j$, $D_j$, and $R_{\rm wt}$ follow from their definitions, since each is a function of $\{\rho(p) : p \in I_j\}$ alone, and the values of $\rho$ at primes in $I_j$ now agree.</p>
+<p>This completes the proof. $\square$</p>
+<h3>5.3 Remarks</h3>
+<p>The proof is elementary. Its content is in identifying $\sqrt{2^{j+1}}$ as the correct cutoff. The crucial step is the orientation $a \le \sqrt{n}$ for any nontrivial factorisation $n = a \cdot b$, combined with the upper bound $n < 2^{j+1}$.</p>
+<p>The theorem is <em>block-wise</em>: it holds separately for each $j$. The natural cutoff $D^<em>(j) = \lceil \sqrt{2^{j+1}} \rceil$ grows like $2^{j/2}$. Across blocks $j = 14, 16, 18, 20, 22, 24, 26, 28$, the cutoffs $D^{</em>(2)}(j)$ are $128, 256, 512, 1024, 2048, 4096, 8192, 16384$. To cover all blocks $j \le 30$ at once would require $D \ge \sqrt{2^{31}} \approx 46341$, that is, a skeleton of size order $\sqrt{N}$ for $N = 2^{31}$. The trivial bound $D_{\rm sat}^{\rm univ}(N) \le \sqrt{N}$ is therefore essentially tight when one demands a single skeleton uniform over all $j$. The block-wise theorem extracts the genuine arithmetic content: one need not insist on a single uniform skeleton.</p>
+<h2>§6. R9: Empirical Confirmation of the Block-Wise Cutoff</h2>
+<p>Theorem 70.A is deterministic. Its proof requires no experiment. Round R9 plays a different role: it identifies and validates the corrected computational substrate after the R8 reset, and it confirms that the substrate exhibits exactly the support threshold predicted by the theorem.</p>
+<p>With the C builder repaired, round R9 ran a clean re-baseline at $N = 10^9$. We built five skeletons</p>
+<p>$$S_{2048}, \quad S_{4096}, \quad S_{8192}, \quad S_{16384}, \quad S_{32768}$$</p>
+<p>and computed cumulative cross-$\lambda$ block increments along the doubling chain. Every build's full $\rho$ array was checksummed by the 64-bit FNV-1a hash; the five hashes were</p>
+<pre><code>S_2048   0xc5aafff40a05e437
+S_4096   0x6db2201465b599aa
+S_8192   0x694bf2937d12f33f
+S_16384  0x2ea5373daf059e52
+S_32768  0x6462f1ca7809fe0b</code></pre>
+<p>All five distinct, confirming that the skeletons were genuinely different objects (and confirming the absence of the cap that had collapsed all R6c builds to the same effective $S_{1860}$).</p>
+<h3>6.1 The first-nonzero threshold</h3>
+<p>For each consecutive doubling transition we recorded the smallest dyadic block $j$ at which $B_\delta(j) \neq 0$. Theorem 70.A predicts that adding channels in $(D, 2D]$ can affect block $j$ only if $j \ge \lceil \log_2(D^2) \rceil$. This is a deterministic support threshold, not a soft empirical estimate: a channel $c \in (D, 2D]$ can serve as the smaller factor in a split $n = c \cdot m$ only if $c \le \sqrt{n}$, which forces $n \ge c^2 > D^2$, hence $j(n) \ge \lceil \log_2(D^2) \rceil$.</p>
+<p>The R9 data:</p>
+<table><thead><tr>
+<th>Transition (added range)</th>
+<th>First $j$ with $B_\delta \neq 0$</th>
+<th>$\lceil \log_2(D^2) \rceil$</th>
+</tr></thead><tbody>
+<tr>
+<td>$S_{2048} \to S_{4096}$ ($D = 2048$)</td>
+<td>$j = 22$</td>
+<td>$22$</td>
+</tr>
+<tr>
+<td>$S_{4096} \to S_{8192}$ ($D = 4096$)</td>
+<td>$j = 24$</td>
+<td>$24$</td>
+</tr>
+<tr>
+<td>$S_{8192} \to S_{16384}$ ($D = 8192$)</td>
+<td>$j = 26$</td>
+<td>$26$</td>
+</tr>
+<tr>
+<td>$S_{16384} \to S_{32768}$ ($D = 16384$)</td>
+<td>$j = 28$</td>
+<td>$28$</td>
+</tr>
+</tbody></table>
+<p>A perfect match in all four transitions. The theorem-side of this observation is the inequality $j \ge \lceil \log_2(D^2) \rceil$: blocks below the threshold are unaffected by construction. The empirical content is that the effect appears immediately at $j = \lceil \log_2(D^2) \rceil$ rather than only at higher blocks. That is, for every doubling we tested, the substrate uses the newly available channels as soon as it is permitted to.</p>
+<h3>6.2 The $M^{\rm drift}_j$ saturation table</h3>
+<p>We computed the cross-$\lambda$ drift mean $M^{\rm drift}_j(S_D; N = 10^9)$ for each block and each tested $D$. (The drift mean, defined in §1.2, is an experimental diagnostic independent of the second moment $D_j$. We use it here, rather than the full spectral ratio $R_{\rm wt} = B_j^2/(j D_j)$, because $M^{\rm drift}_j$ requires only first-moment computation and is therefore the natural increment monitor during builds. By Theorem 70.A, the equality $\rho_D = \rho_{\rm Full}$ on each block implies equality of every block-level functional of $\rho$, including both $M^{\rm drift}_j$ and $R_{\rm wt}(j)$. The saturation pattern in the diagnostic faithfully tracks the saturation pattern in the spectral ratio.) The table:</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\sqrt{2^j}$</th>
+<th>$D = 2048$</th>
+<th>$D = 4096$</th>
+<th>$D = 8192$</th>
+<th>$D = 16384$</th>
+<th>$D = 32768$</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>128</td>
+<td>0.4618</td>
+<td>0.4618</td>
+<td>0.4618</td>
+<td>0.4618</td>
+<td>0.4618</td>
+</tr>
+<tr>
+<td>15</td>
+<td>181</td>
+<td>0.4475</td>
+<td>0.4475</td>
+<td>0.4475</td>
+<td>0.4475</td>
+<td>0.4475</td>
+</tr>
+<tr>
+<td>16</td>
+<td>256</td>
+<td>0.3815</td>
+<td>0.3815</td>
+<td>0.3815</td>
+<td>0.3815</td>
+<td>0.3815</td>
+</tr>
+<tr>
+<td>17</td>
+<td>362</td>
+<td>0.3713</td>
+<td>0.3713</td>
+<td>0.3713</td>
+<td>0.3713</td>
+<td>0.3713</td>
+</tr>
+<tr>
+<td>18</td>
+<td>512</td>
+<td>0.3472</td>
+<td>0.3472</td>
+<td>0.3472</td>
+<td>0.3472</td>
+<td>0.3472</td>
+</tr>
+<tr>
+<td>19</td>
+<td>724</td>
+<td>0.3261</td>
+<td>0.3261</td>
+<td>0.3261</td>
+<td>0.3261</td>
+<td>0.3261</td>
+</tr>
+<tr>
+<td>20</td>
+<td>1024</td>
+<td>0.3104</td>
+<td>0.3104</td>
+<td>0.3104</td>
+<td>0.3104</td>
+<td>0.3104</td>
+</tr>
+<tr>
+<td>21</td>
+<td>1448</td>
+<td>0.2992</td>
+<td>0.2992</td>
+<td>0.2992</td>
+<td>0.2992</td>
+<td>0.2992</td>
+</tr>
+<tr>
+<td>22</td>
+<td>2048</td>
+<td>0.2850</td>
+<td><strong>0.2858</strong></td>
+<td>0.2858</td>
+<td>0.2858</td>
+<td>0.2858</td>
+</tr>
+<tr>
+<td>23</td>
+<td>2896</td>
+<td>0.2750</td>
+<td><strong>0.2778</strong></td>
+<td>0.2778</td>
+<td>0.2778</td>
+<td>0.2778</td>
+</tr>
+<tr>
+<td>24</td>
+<td>4096</td>
+<td>0.2618</td>
+<td>0.2674</td>
+<td><strong>0.2681</strong></td>
+<td>0.2681</td>
+<td>0.2681</td>
+</tr>
+<tr>
+<td>25</td>
+<td>5793</td>
+<td>0.2510</td>
+<td>0.2596</td>
+<td><strong>0.2620</strong></td>
+<td>0.2620</td>
+<td>0.2620</td>
+</tr>
+<tr>
+<td>26</td>
+<td>8192</td>
+<td>0.2391</td>
+<td>0.2510</td>
+<td>0.2557</td>
+<td><strong>0.2563</strong></td>
+<td>0.2563</td>
+</tr>
+<tr>
+<td>27</td>
+<td>11585</td>
+<td>0.2291</td>
+<td>0.2439</td>
+<td>0.2512</td>
+<td><strong>0.2534</strong></td>
+<td>0.2534</td>
+</tr>
+<tr>
+<td>28</td>
+<td>16384</td>
+<td>0.2183</td>
+<td>0.2357</td>
+<td>0.2457</td>
+<td>0.2499</td>
+<td><strong>0.2505</strong></td>
+</tr>
+<tr>
+<td>29</td>
+<td>23170</td>
+<td>0.2095</td>
+<td>0.2295</td>
+<td>0.2418</td>
+<td>0.2483</td>
+<td>0.2501</td>
+</tr>
+</tbody></table>
+<p><em>Note</em>: $j = 29$ is the edge block at $N = 10^9$ (since $\lfloor \log_2 10^9 \rfloor = 29$) and $I_{29} = [2^{29}, 2^{30})$ is truncated at $N$. Its row is shown for completeness but does not participate in the saturation comparison; we treat $j = 14, \ldots, 28$ as the complete-block range.</p>
+<p>In each row, <strong>bold</strong> marks the smallest tested $D$ at which $M^{\rm drift}_j(S_D)$ reaches its saturation value (the value at $D = 32768$). The saturation cutoffs match the theoretical $D^<em>(j) = \lceil \sqrt{2^{j+1}} \rceil$ to the resolution of the tested doubling grid. The block $j = 29$ is not yet saturated at $D = 32768$, consistent with the prediction $D^</em>(29) = \lceil \sqrt{2^{30}} \rceil = \lceil 32768 \cdot \sqrt{2} \rceil \approx 46341 > 32768$, but as noted above, this row is also affected by the $N$-edge truncation and is not used as evidence either way.</p>
+<p>The truncation introduces an artefact in $M^{\rm drift}_j(j = 29)$ unrelated to skeleton saturation. We do not treat its values as comparable with complete blocks.</p>
+<h3>6.3 Target-domination violations as a function of $D$</h3>
+<p>R9 also rebuilt the R8a target-domination certifier on the corrected skeletons. The number of pairs $(c, m)$ with $c$ composite, $D < c \le \sqrt{N}$, $m \in [c, N/c]$, satisfying the violation condition $\rho_D(c \cdot m) > \rho_D(c) + \rho_D(m) + 2$:</p>
+<table><thead><tr>
+<th>$D$</th>
+<th>Violations</th>
+</tr></thead><tbody>
+<tr>
+<td>2,048</td>
+<td>29,402,307</td>
+</tr>
+<tr>
+<td>4,096</td>
+<td>13,141,296</td>
+</tr>
+<tr>
+<td>8,192</td>
+<td>4,451,879</td>
+</tr>
+<tr>
+<td>16,384</td>
+<td>824,657</td>
+</tr>
+<tr>
+<td>32,768</td>
+<td>$0$ (vacuous: $c$ range empty)</td>
+</tr>
+</tbody></table>
+<p>For $D = 32768 \ge \sqrt{N}$ the certifier's outer loop is empty, so the certificate holds trivially. For $D < \sqrt{N}$ the violation count decays smoothly with $D$. Each doubling of $D$ reduces violations by a factor of roughly $2$ to $5$. The decay does not jump to zero at any sub-$\sqrt{N}$ value, consistent with $D_{\rm sat}^{\rm univ}(N) \approx \sqrt{N}$ being essentially tight when one demands a single uniform skeleton.</p>
+<h3>6.4 Status</h3>
+<p>R9 confirms three things directly:</p>
+<ol>
+<li>The block-wise cutoff $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$ is observed exactly in the saturation pattern.</li>
+<li>The first-nonzero threshold $j = \lceil \log_2(D^2) \rceil$ matches in all four tested doubling transitions.</li>
+<li>The universal cutoff cannot be sub-$\sqrt{N}$: the violation curve decays smoothly with $D$ and reaches zero only when the test range itself becomes empty.</li>
+</ol>
+<p>These observations make Theorem 70.A's prediction sharp at the resolution of the tested grid and disprove the interim R6/R7 universal-saturation claim.</p>
+<hr>
+<h2>§7. Reduction of 59.1</h2>
+<p>Define</p>
+<p>$$R_j^<em>(N) := R_{\rm wt}\bigl(j; \rho_{S_{D^</em>(j)}}; N\bigr) = \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})}, \qquad D^*(j) = \lceil \sqrt{2^{j+1}} \rceil.$$</p>
+<p>By Theorem 70.A applied to the prime range $I_j$ at any $N \ge 2^{j+1} - 1$, $x_{\rho_D}(p) = x_{\rho_{\rm Full}}(p)$ for every $p \in I_j$, hence $B_j$ and $D_j$ agree, hence</p>
+<p>$$R_j^*(N) = R_{\rm wt}(j; \rho_{\rm Full}; N).$$</p>
+<p>Conjecture 59.1 is therefore equivalent to the <strong>block-wise saturated bounded-phase statement</strong>:</p>
+<p><strong>Conjecture 59.1$^<em>$.</strong> </em>There exists a constant $M$ such that*</p>
+<p>$$R_j^<em>(N) = \frac{B_j(\rho_{S_{D^</em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^*(j)}})} \le M$$</p>
+<p><em>for all $j$ sufficiently large and all $N \ge 2^{j+1} - 1$.</em></p>
+<p>The two formulations are mathematically identical. The reduction has not closed the question; it has <em>replaced</em> the abstract object $\rho_{\rm Full}$ by a concrete finite skeleton of explicit size. Every quantity in Conjecture 59.1$^*$ is computable in time polynomial in $2^j$.</p>
+<h3>7.1 What the reduction does</h3>
+<p><strong>It identifies the right object.</strong> The Full IC recursion on $[1, N]$ formally requires every divisor up to $\sqrt{N}$. Conjecture 59.1$^*$ shows that for each block $I_j$ separately, only $O(\sqrt{2^j})$ divisors matter. The "Full IC" appearing in 59.1 was a misleading abstraction at the block level.</p>
+<p><strong>It gives exact theoretical access.</strong> For every $j$, the residuals $r(p) = \rho(p) - \lambda \log p - \mu_{12}(p \bmod 12)$ over primes $p \in I_j$ are now produced by an arithmetic recursion of explicit small width. Any bound on these residuals, in particular on the first and second moments $B_j$ and $D_j$, can in principle be derived from the structure of the cutoff $\sqrt{2^{j+1}}$.</p>
+<p><strong>It separates two questions that were previously conflated.</strong> The "skeleton size" question (how large must the factor channel set be?) and the "spectral bound" question (how large is the spectral block ratio?) are now decoupled. The first is answered by Theorem 70.A: $D^*(j)$. The second, the bounded-phase question for $B_j^2 / (j D_j)$, is the genuine residual problem.</p>
+<h3>7.2 What the reduction does not do</h3>
+<p>It does not bound $R_j^<em>$. The empirical drift means at $N = 10^9$ in Table §6.2 lie in $[0.21, 0.46]$ over $j = 14, \ldots, 28$. These are first-moment diagnostics, not the spectral ratio; they suggest that the corresponding $R_j^</em>$ values are also bounded in the tested range, but neither quantity has been bounded asymptotically.</p>
+<p>It does not bound $D_{\rm sat}(j)$ from below. The theorem gives only $D_{\rm sat}(j) \le \lceil \sqrt{2^{j+1}} \rceil$. To prove $D_{\rm sat}(j) \asymp \sqrt{2^j}$ one would need to show that for infinitely many $j$ there exist primes in $I_j$ whose value $\rho(p)$ is genuinely changed by the inclusion of factor channels near $\sqrt{p}$. R9's saturation table is consistent with this lower bound at the tested resolution but does not establish it.</p>
+<p>It does not address $N$-uniformity, <strong>which is arguably the central open question of the post-reduction programme</strong>. The reduction holds at every $N \ge 2^{j+1} - 1$ separately, but the question whether the bound on $R_j^<em>(N)$ is uniform in $N$ remains open. R9 was carried out at $N = 10^9$. A finite-$N$ bound that grows with $N$ would not, on its own, refute Conjecture 59.1$^</em>$, but it would substantially weaken the empirical evidence in its favour. Conversely, $N$-uniform stability of $R_j^*(N)$ across $N = 10^9, 10^{10}, 10^{11}$ would convert the present per-$N$ reduction into something close to an empirically grounded asymptotic statement. We list this explicitly in §8.4(ii) and treat it as a precondition to which the three routes of §8 should ultimately be applied.</p>
+<hr>
+<h2>§8. Three routes to the bounded-phase statement</h2>
+<p>We sketch the three available approaches to Conjecture 59.1$^*$.</p>
+<h3>8.1 Route A: spectral-ratio log-budget</h3>
+<p>Choose a base cutoff $D_0$ and apply the spectral-ratio log-budget identity (§2.2) along a doubling chain $D_0 \to 2 D_0 \to \cdots \to D^*(j)$:</p>
+<p>$$\log R_j(S_{D^*(j)}) = \log R_j(S_{D_0}) + \sum_{k} \log Q_{j,k}, \qquad Q_{j,k} = \frac{R_j(S_{D_{k+1}})}{R_j(S_{D_k})}.$$</p>
+<p>Each $\log Q_{j,k}$ is the per-step contribution to the spectral ratio. By the support theorem (§6.1), the steps with $D_k < \sqrt{2^j} / 2$ contribute zero (their incremental channels cannot reach any $n$ in $I_j$). Boundedness of $R_j(S_{D^*(j)})$ uniformly in $j$ would follow from a quantitative bound</p>
+<p>$$\sum_{k} \log Q_{j,k} \le \log \bigl( M / R_j(S_{D_0}) \bigr) + o(1)$$</p>
+<p>with $M$ independent of $j$.</p>
+<p>The strength of this route is its alignment with the R6 layer-budget data (correctly reinterpreted post-R9). Its weakness is that the per-step ratios $\log Q_{j,k}$ have no fixed sign in general, since enlarging the skeleton can either lower or raise $D_j(S)$ (it always lowers $|B_j|$ in absolute value, but the second moment is a separate question).</p>
+<h3>8.2 Route B: direct second-moment route</h3>
+<p>Conjecture 59.1$^*$ asserts $B_j^2 \le M \cdot j \cdot D_j$. Equivalently,</p>
+<p>$$|B_j(\rho_{S_{D^<em>(j)}})| = O\bigl(\sqrt{j \cdot D_j(\rho_{S_{D^</em>(j)}})}\bigr).$$</p>
+<p>This is a direct estimate on the first moment in terms of the second moment of the stripped residual over primes in the dyadic block. It is the cleanest target.</p>
+<p>In probabilistic language: $B_j$ is the sum of the residual values $x(p)$ over primes in $I_j$, and $D_j$ is the sum of their squares. The conjecture asserts that this sum is no larger than $\sqrt{j}$ times the natural Cauchy-Schwarz scale, that is, that the residual values $x(p)$ behave (over primes in the dyadic block) like a sequence of weakly correlated random terms whose first moment does not concentrate.</p>
+<p>The strength of Route B is finality: a single such estimate would close 59.1$^<em>$. The weakness is technical depth. The recursion $\rho_{S_{D^</em>(j)}}$ is implicitly defined by minimisation over a finite skeleton of size $\sqrt{2^j}$, and there is at present no analytic handle on the joint distribution of $\{x(p) : p \in I_j\}$.</p>
+<h3>8.3 Route C: spectral flatness</h3>
+<p>The first moment $B_j$ is, up to normalisation, the value at frequency zero of a periodogram of the stripped residual sequence over primes in $I_j$. Conjecture 59.1$^*$ then asserts that the zero-frequency spike $B_j^2$ is at most $O(j)$ times the average periodogram mass, which is essentially $D_j$ up to a constant.</p>
+<p>Spectral flatness arguments along these lines were sketched in paper 65 but stalled at the level of universal bounds; with the block-wise reduction in hand, they may become tractable for each block separately.</p>
+<p>This route is the most classical in formulation. Its strength is that it connects 59.1$^<em>$ to a substantial literature on equidistribution of arithmetic sequences. Its weakness is that the relevant theorems of that literature usually require independence assumptions that the deterministic recursion $\rho_{S_{D^</em>(j)}}$ does not obviously satisfy.</p>
+<h3>8.4 Open conditions</h3>
+<p>The three routes share the following open conditions, which we list explicitly so that future work can target them.</p>
+<p>(i) <strong>Lower bound on $D_{\rm sat}(j)$.</strong> Show that for infinitely many $j$, $D_{\rm sat}(j) \ge c \sqrt{2^j}$ for some $c > 0$. This would establish that the block-wise cutoff is sharp.</p>
+<p>(ii) <strong>Cross-$N$ stability of $R_j^<em>$.</strong> Verify or refute that $R_j^</em>(N)$ stabilises as $N$ grows, for each fixed $j$. This is the central empirical question conditioning the entire programme: a route-A/B/C bound at fixed $N$ would not entail Conjecture 59.1$^*$ unless cross-$N$ stability holds. R9 was carried out at $N = 10^9$; comparable data at $N = 10^{10}, 10^{11}$ would be the immediate next experimental priority.</p>
+<p>(iii) <strong>Spectral-ratio log-budget integrability.</strong> For Route A: show $\sum_k \log Q_{j,k} = O(1)$ uniformly in $j$.</p>
+<p>(iv) <strong>Second-moment-controlled first-moment bound.</strong> For Route B: show $|B_j(\rho_{S_{D^<em>(j)}})| = O\bigl(\sqrt{j \cdot D_j(\rho_{S_{D^</em>(j)}})}\bigr)$.</p>
+<p>(v) <strong>Spectral concentration.</strong> For Route C: bound the periodogram spike at zero frequency by $O(j)$ times the second-moment mass.</p>
+<p>We emphasise that none of these conditions is closed by the work in this paper. The contribution of Paper 70 is the reduction of 59.1 to these explicit, computable, finite-object conditions.</p>
+<h3>8.5 Comparative remark on the three routes</h3>
+<p>We do not commit to any of the three routes here, but we record our current reading for the benefit of subsequent work. Route B (direct second-moment estimate) is the cleanest target: a single estimate $|B_j| = O(\sqrt{j D_j})$ for the block-wise saturated skeleton would close 59.1$^<em>$, and the per-block character of the reduction makes such an estimate genuinely accessible to direct computation in a way that the abstract Full IC formulation was not. Its difficulty is technical depth rather than structural obstruction. Route A (spectral-ratio log-budget) is the most directly aligned with our existing experimental data, but the absence of a fixed sign for the per-step $\log Q_{j,k}$ is a genuine concern: telescoping arguments with sign-indefinite summands generally require additional control beyond what the response identities alone provide. Route C (spectral flatness) is the most classical in formulation and has the benefit of connecting 59.1$^</em>$ to the equidistribution literature, but the deterministic minimisation defining $\rho_{S_{D^*(j)}}$ does not satisfy the independence assumptions on which the relevant theorems of that literature typically rely. On balance, our reading is that Route B is the most likely route to a clean closure if technical depth can be navigated, with Routes A and C providing complementary partial information.</p>
+<hr>
+<h2>§9. Connection to standard integer complexity</h2>
+<p>The ZFCρ recursion $\rho_S$ shares with the Mahler-Popken integer complexity $\| n \|$ a multiplicative branch ($n = a \cdot b$) but differs essentially in the additive branch: the ZFCρ recursion permits only the successor step $\rho(n) \le \rho(n - 1) + 1$, whereas $\| n \|$ admits arbitrary $n = a + b$ at unit cost. The two recursions are not equivalent, and the empirical asymptotic constant $\lambda_{\rm Full IC} = 3.856763$ established in paper 50 is for the ZFCρ recursion only.</p>
+<p>Theorem 70.A's argument is structural to the multiplicative branch alone (any $n = a \cdot b$ with $n < 2^{j+1}$ has $a < \sqrt{2^{j+1}}$) and so does not transfer verbatim to $\| n \|$: an optimal $\| n \|$ expression for $n \in I_j$ may use an additive split with both summands far from $\sqrt{n}$. Any genuine transfer would require a separate treatment of the additive branch. We do not pursue the connection further; the multiplicative-branch reduction we have established suffices for our purposes here, since the ZFCρ recursion has no additive branch beyond the successor step.</p>
+<hr>
+<h2>§10. Conclusion</h2>
+<p>This paper has done four things.</p>
+<p>It has identified an interim claim from rounds R6 and R7 of the ZFCρ programme (a global finite-$D$ saturation cutoff $D_{\rm sat}(10^9) \le 2048$) as an artefact of a silent factor cap in our reference C builder. The cap was located at $1860$. With the cap in place, all builds with declared factor lists exceeding this size collapsed to the same effective skeleton $S_{1860}$, producing apparent freezing across the doubling chain $D = 2048 \to 4096 \to \cdots \to 32768$. The cap was first detected by direct target-domination certification in round R8a (31,427,448 violations at $D = 2048$, $N = 10^9$), then traced to the build logs.</p>
+<p>It has presented the corrected experimental programme (round R9), with the C builder rewritten to dynamically size factor arrays, with hard assertions verifying factor list integrity, with FNV-1a checksums of the full $\rho$ array, and with three regression tests embedded in every build.</p>
+<p>It has stated and proved the <strong>Block-Wise Effective Skeleton Theorem</strong> (Theorem 70.A): for every dyadic block $I_j = [2^j, 2^{j+1})$, the recursion $\rho_D$ agrees pointwise with $\rho_{\rm Full}$ on $[1, 2^{j+1})$ as soon as $D \ge \sqrt{2^{j+1}}$. The proof is elementary; its content is the identification of $\sqrt{2^{j+1}}$ as the correct cutoff. R9's saturation data confirm the cutoff to the resolution of the tested doubling grid, and the first-nonzero threshold $j = \lceil \log_2(D^2) \rceil$ matches in all four tested transitions.</p>
+<p>It has carried out the reduction of Conjecture 59.1 to the block-wise saturated bounded-phase statement Conjecture 59.1$^*$:</p>
+<p>$$\sup_j \frac{B_j(\rho_{S_{\lceil\sqrt{2^{j+1}}\rceil}})^2}{j \cdot D_j(\rho_{S_{\lceil\sqrt{2^{j+1}}\rceil}})} < \infty.$$</p>
+<p>This reduction does not close 59.1. It replaces the abstract object $\rho_{\rm Full}$ by a sequence of explicit finite skeletons, one per dyadic block, of sizes growing as $\sqrt{2^j}$. The remaining open question is the per-block first-moment-versus-second-moment bound $|B_j| = O(\sqrt{j D_j})$, addressable by one of three routes (spectral-ratio log-budget, direct second-moment estimate, spectral flatness).</p>
+<p>The status at the close of this paper is:</p>
+<ul>
+<li><strong>Global finite-$D$ closure on $[1, N]$ at sub-$\sqrt{N}$ cutoff: false.</strong> The trivial bound $D_{\rm sat}^{\rm univ}(N) \approx \sqrt{N}$ is essentially tight.</li>
+<li><strong>Block-wise finite-$D$ closure with cutoff $\sqrt{2^{j+1}}$: theorem.</strong></li>
+<li><strong>59.1 itself: reduced to a block-wise zero-mode bound; still open.</strong></li>
+</ul>
+<p>We treat this not as failure but as appropriate epistemic placement. The interim narrative had over-claimed; R8 corrected the over-claim; R9 produced the right substrate result; R10 (the present paper) puts that result on a clean theorem. The path resembles paper 67's finite-scale closure programme, which proceeded similarly through identification of the correct finite object first and its asymptotic control as a separate question.</p>
+<p>We close with three remarks.</p>
+<p>First, the <em>Via Negativa</em> visible in this paper (interim claim, instrument-layer remainder, correction, correct theorem) is methodologically routine within the SAE methodology framework (cf. paper 0 of that series, op. cit.) and, we hope, instructive in its own right. The empirical signal of "freezing across $D_3 \to D_4 \to D_5 \to D_6$" looked exactly like a substantive substrate phenomenon. It was not. The check that turned the interim claim into a corrected theorem was the direct target-domination certification of R8, which exists for exactly this purpose: to reject false finite-closure claims by counterexample. Theorem 70.A may now be regarded as the surviving substrate statement after that rejection.</p>
+<p>Second, the Block-Wise Effective Skeleton Theorem is the cleanest object the ZFCρ programme has produced for 59.1 to date. Earlier formulations (paper 65's spectral flatness, paper 67's scale-budget, paper 69's two-leg synchronisation, the linear zero-mode response identity used in §2.1) all referenced "Full IC" as if it were a single object. Theorem 70.A reveals that Full IC, restricted to any dyadic block, <em>is</em> a finite computable object of size order $\sqrt{2^j}$. This may sharpen previous formulations as well.</p>
+<p>Third, the present reduction makes Conjecture 59.1 amenable to direct attack on the per-block residuals. The recursion $\rho_{S_{D^*(j)}}$ for fixed $j$ is a concrete arithmetic object. Its behaviour over primes in the dyadic block $I_j$ is in principle computable, in time polynomial in $2^j$, and analytically approachable in ways that the abstract Full IC was not.</p>
+<p>The full proof of 59.1 remains for future work.</p>
+<hr>
+<h2>Acknowledgments</h2>
+<p>The four-AI collaborative methodology used throughout this paper (formalised across the ZFCρ series) is gratefully acknowledged. Specifically, the round-by-round dialogue with ChatGPT (公西华 in our internal naming) shaped the formulation of Theorem 70.A and the present block-wise reduction; Claude (子路) carried out the experimental programme R0 through R9 and the present drafting; Gemini (子夏) and Grok (子贡) contributed cross-checks at earlier rounds. The methodological framework underlying this collaboration is described in the SAE Methodology series (paper 0, "余之道 / Via Rho").</p>
+<p>The interim claim in rounds R6 and R7 of a global finite-$D$ saturation, here corrected, was a collective error: shared by all four AI participants and the principal investigator alike. The detection and correction procedure (R8 direct certification, R9 builder repair, R10 present formulation) is the appropriate response to such errors and is the procedure we recommend for future claims of finite-$D$ closure in related programmes.</p>
+<hr>
+<h2>References</h2>
+<p>[Within ZFCρ series:]</p>
+<ul>
+<li>Paper 50: Cross-$\lambda$ frame and the constant $\lambda_{\rm Full IC} = 3.856763$. (Zenodo, DOI to be inserted at upload.)</li>
+<li>Paper 59: Statement of Conjecture 59.1; baseline $R_{\rm wt}(j) \in [0.79, 25.3]$ at $N = 10^{10}$. (Zenodo, DOI to be inserted at upload.)</li>
+<li>Paper 65: Spectral flatness formulation. (Zenodo, DOI to be inserted at upload.)</li>
+<li>Paper 67: Scale-budget closure at finite scale via dyadic exhaustion. (Zenodo, DOI to be inserted at upload.)</li>
+<li>Paper 69 (v2): Two-leg mechanism and two phase transitions. DOI 10.5281/zenodo.19783658.</li>
+</ul>
+<p>[Beyond ZFCρ:]</p>
+<ul>
+<li>Mahler, K. and Popken, J. "On a maximum problem in arithmetic." (1953).</li>
+<li>Selfridge, J. "Notes on integer complexity." (Various, 1970s onward.)</li>
+<li>Coppersmith, D. and Guy, R. "Subadditivity properties of integer complexity." (Standard references in the integer complexity literature.)</li>
+</ul>
+<p>[SAE methodology:]</p>
+<ul>
+<li>SAE Methodology Paper 0: "余之道 / Via Rho." DOI 10.5281/zenodo.19657439.</li>
+</ul>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>ZFCρ 系列中的 59.1 猜想断言, 谱块比
+
+$$R_{\rm wt}(j) = \frac{B_j(\rho_{\rm Full})^2}{j \cdot D_j(\rho_{\rm Full})}$$
+
+在二进制块指标 $j$ 上一致地保持有界, 其中 $B_j$ 与 $D_j$ 分别为剥离残差 $x(p) = (\rho(p) - \lambda \log p - \mu_{12}(p \bmod 12)) / p$ 在 $I_j = [2^j, 2^{j+1})$ 中素数上的一阶矩与二阶矩.
+
+本文证明分块有效骨架定理 (定理 70.A): 对每一个二进制块 $I_j$, 一旦 $D \ge \sqrt{2^{j+1}}$, 全 IC 递归 $\rho_{\rm Full}$ 即在 $[1, 2^{j+1})$ 上与截断递归 $\rho_D$ 逐点相等. 该定理是确定性的, 证明由初等强归纳给出. 作为直接推论, 取 $D^*(j) := \lceil \sqrt{2^{j+1}} \rceil$, 有
+
+$$x_{\rho_{\rm Full}}(p) = x_{\rho_{S_{D^*(j)}}}(p) \quad \forall p \in I_j,$$
+
+故 $B_j(\rho_{\rm Full}) = B_j(\rho_{S_{D^*(j)}})$, $D_j(\rho_{\rm Full}) = D_j(\rho_{S_{D^*(j)}})$, $R_{\rm wt}(j; \rho_{\rm Full}) = R_{\rm wt}(j; \rho_{S_{D^*(j)}})$. 故 59.1 化归为等价的有界相位陈述
+
+$$\sup_j \frac{B_j(\rho_{S_{D^*(j)}})^2}{j \cdot D_j(\rho_{S_{D^*(j)}})} < \infty.$$
+
+这一化归把抽象对象 $\rho_{\rm Full}$ 替换为每个块所对应的具体有限骨架, 其规模量级为 $\sqrt{2^j}$.
+
+定理是确定性的; 实验程序 R0 至 R9 起的作用是识别并验证修正后的分块计算衬底. R6 与 R7 阶段曾给出过一项临时论断, 即存在全局有限 $D$ 饱和截断 $D_{\rm sat}(10^9) \le 2048$. 本文对此进行修正: 该论断源于参考 C 构建器中一处对因子数静默截顶于 1860 的缺陷. 构建器修复之后 (R8 与 R9 两轮), 衬底呈现出定理 70.A 所预测的分块结构, 其首个非零阈值在四个连续倍增过渡 $D = 2048, 4096, 8192, 16384$ 上精确匹配 $\lceil \log_2(D^2) \rceil$.
+
+本文不证明 59.1. 它识别出正确的有限算术对象, 并把猜想化归为 $B_j^2 / (j D_j)$ 上的分块有界相位陈述, 该陈述已可由三条明确路线之一加以处理: 谱比对数预算电报和, 直接二阶矩估计, 谱平坦性论证.
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, Conjecture 59.1, 分块有效骨架, 谱块比, 化归, H′</div>
+    </div>
+    <div class="paper-body">
+<h2>摘要</h2>
+<p>ZFCρ 系列中的 59.1 猜想断言, 谱块比</p>
+<p>$$R_{\rm wt}(j) = \frac{B_j(\rho_{\rm Full})^2}{j \cdot D_j(\rho_{\rm Full})}$$</p>
+<p>在二进制块指标 $j$ 上一致地保持有界, 其中 $B_j$ 与 $D_j$ 分别为剥离残差 $x(p) = (\rho(p) - \lambda \log p - \mu_{12}(p \bmod 12)) / p$ 在 $I_j = [2^j, 2^{j+1})$ 中素数上的一阶矩与二阶矩.</p>
+<p>本文证明分块有效骨架定理 (定理 70.A): 对每一个二进制块 $I_j$, 一旦 $D \ge \sqrt{2^{j+1}}$, 全 IC 递归 $\rho_{\rm Full}$ 即在 $[1, 2^{j+1})$ 上与截断递归 $\rho_D$ 逐点相等. 该定理是确定性的, 证明由初等强归纳给出. 作为直接推论, 取 $D^*(j) := \lceil \sqrt{2^{j+1}} \rceil$, 有</p>
+<p>$$x_{\rho_{\rm Full}}(p) = x_{\rho_{S_{D^*(j)}}}(p) \quad \forall p \in I_j,$$</p>
+<p>故 $B_j(\rho_{\rm Full}) = B_j(\rho_{S_{D^<em>(j)}})$, $D_j(\rho_{\rm Full}) = D_j(\rho_{S_{D^</em>(j)}})$, $R_{\rm wt}(j; \rho_{\rm Full}) = R_{\rm wt}(j; \rho_{S_{D^*(j)}})$. 故 59.1 化归为等价的有界相位陈述</p>
+<p>$$\sup_j \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})} < \infty.$$</p>
+<p>这一化归把抽象对象 $\rho_{\rm Full}$ 替换为每个块所对应的具体有限骨架, 其规模量级为 $\sqrt{2^j}$.</p>
+<p>定理是确定性的; 实验程序 R0 至 R9 起的作用是识别并验证修正后的分块计算衬底. R6 与 R7 阶段曾给出过一项临时论断, 即存在全局有限 $D$ 饱和截断 $D_{\rm sat}(10^9) \le 2048$. 本文对此进行修正: 该论断源于参考 C 构建器中一处对因子数静默截顶于 1860 的缺陷. 构建器修复之后 (R8 与 R9 两轮), 衬底呈现出定理 70.A 所预测的分块结构, 其首个非零阈值在四个连续倍增过渡 $D = 2048, 4096, 8192, 16384$ 上精确匹配 $\lceil \log_2(D^2) \rceil$.</p>
+<p>本文不证明 59.1. 它识别出正确的有限算术对象, 并把猜想化归为 $B_j^2 / (j D_j)$ 上的分块有界相位陈述, 该陈述已可由三条明确路线之一加以处理: 谱比对数预算电报和, 直接二阶矩估计, 谱平坦性论证.</p>
+<hr>
+<h2>§1. 引言</h2>
+<h3>1.1 设定</h3>
+<p>ZFCρ 系列研究一族整数复杂度类的递归, 由因子通道骨架 $S \subseteq \mathbb{N}_{\ge 2}$ 参数化. 当 $S$ 包含工作范围所需的全部素数时, 递归 $\rho_S : \mathbb{N} \to \mathbb{N}$ 由下式定义:</p>
+<p>$$\rho_S(0) = 0, \qquad \rho_S(1) = 0,$$</p>
+<p>$$\rho_S(n) = \min \Bigl\{ \rho_S(n-1) + 1, \quad \min_{\substack{a \mid n \\ 2 \le a \le \min(\sqrt{n}, \max S) \\ a \in S}} \bigl[ \rho_S(a) + \rho_S(n/a) + 2 \bigr] \Bigr\}, \qquad n \ge 2.$$</p>
+<p>后继分支耗费一步. 每个因子分裂 $n = a \cdot b$, 其中较小因子 $a \in S$, 耗费两步加上构造 $a$ 与 $b$ 的成本. 此约定贯穿整个 ZFCρ 系列.</p>
+<p>当 $S$ 包含工作范围 $n \le N$ 所需的所有 $\ge 2$ 直至 $\sqrt{N}$ 的整数时, 该递归在 $[1, N]$ 上记为 $\rho_{\rm Full}$. 由标准的取向论证, 任意非平凡因子分裂 $n = a \cdot b$, $n \le N$, 都可取 $a \le b$, 从而 $a \le \sqrt{n} \le \sqrt{N}$. 因此上截断 $\max S \ge \sqrt{N}$ 对结果不产生影响.</p>
+<h3>1.2 谱块比</h3>
+<p>按 paper 50, paper 59 以及后续 ZFCρ 文献的约定, 取常数</p>
+<p>$$\lambda_{\rm Full IC} = 3.856763$$</p>
+<p>(此为 paper 50 §2.1 经验测得的 $\rho_{\rm Full}(n) / \log n$ 渐近斜率), 以及定义于 $\mathbb{Z}/12\mathbb{Z}$ 上的剩余类修正 $\mu_{12}(\cdot)$ (paper 50 §3). 对每一骨架 $S$ 与每一素数 $p$, 定义<em>剥离残差</em></p>
+<p>$$r_S(p) := \rho_S(p) - \lambda_{\rm Full IC} \log p - \mu_{12}(p \bmod 12)$$</p>
+<p>与<em>归一化残差</em></p>
+<p>$$x_S(p) := \frac{r_S(p)}{p}.$$</p>
+<p>对二进制块 $I_j = [2^j, 2^{j+1})$, 定义一阶矩与二阶矩</p>
+<p>$$B_j(S) := \sum_{p \in I_j, \; p \text{ 素}} x_S(p), \qquad D_j(S) := \sum_{p \in I_j, \; p \text{ 素}} x_S(p)^2,$$</p>
+<p>以及<em>谱块比</em></p>
+<p>$$R_{\rm wt}(j; S) := \frac{B_j(S)^2}{j \cdot D_j(S)}.$$</p>
+<p>当 $S$ 为 Full IC 骨架时, 简记 $B_j := B_j(\rho_{\rm Full})$, $D_j := D_j(\rho_{\rm Full})$, $R_{\rm wt}(j) := R_{\rm wt}(j; \rho_{\rm Full})$.</p>
+<p>下文报告的实验程序 (R0 至 R9), 有时跟踪一项独立诊断量, 即<em>cross-$\lambda$ 漂移均值</em></p>
+<p>$$M_j^{\rm drift}(S) := -\frac{\sum_{p \in I_j} (\rho_S(p) - \lambda_{\rm Full IC} \log p) / p}{\sum_{p \in I_j} 1/p}.$$</p>
+<p>漂移均值是未剥离残差的加权平均之负, 在构建过程中作为低成本增量监控量, 因为它不要求计算二阶矩 $D_j(S)$. 我们仅把 $M_j^{\rm drift}$ 用作实验诊断, 不与 $R_{\rm wt}$ 混同. 在通篇陈述上下文中, $R_{\rm wt}$ 专指上述定义的谱块比 $B_j^2 / (j D_j)$.</p>
+<h3>1.3 59.1 猜想</h3>
+<p>研究对象是如下猜想.</p>
+<p><strong>猜想 59.1.</strong> <em>存在常数 $M$, 使得</em></p>
+<p>$$R_{\rm wt}(j) = \frac{B_j^2}{j \cdot D_j} \le M$$</p>
+<p><em>对所有充分大的 $j$ 成立.</em></p>
+<p>paper 59 在 $N = 10^{10}$ 下经验观察到 $R_{\rm wt}(j) \in [0.79, 25.3]$, 范围为测试区间 $j = 14, \ldots, 32$. 该猜想等价于断言此范围在 $N$ 与 $j$ 增长时保持有界.</p>
+<h3>1.4 本文所做工作</h3>
+<p>paper 70 有三个目标.</p>
+<p>第一, <strong>识别正确的有限算术对象</strong>. 59.1 表面上引用 Full IC 递归, 该对象似乎需要每个直至 $\sqrt{N}$ 的因子. 我们说明这是误导. 对每个二进制块 $I_j$ 单独考虑, Full IC 递归与一个截断半径量级为 $\sqrt{2^j}$ 的较小递归在 $I_j$ 上恒等.</p>
+<p>第二, <strong>把 59.1 化归为分块有限骨架上的有界相位陈述</strong>.</p>
+<p>第三, <strong>记录达到该化归的方法学轨迹</strong>. R6 与 R7 两轮的实验曾呈现出一个看似更强的全局有限 $D$ 饱和. 该饱和现象实际源于参考 C 构建器中的一处静默因子截断. R8 通过直接的 target-domination 认证暴露了截断, R9 在构建器修复后揭示出正确的分块结构. 我们记录这一过程, 不作为忏悔, 而作为 Via Negativa 事件: 表面上的全局结构是仪器层面的余项, 正确定理只在仪器修复之后才显现出来.</p>
+<p>本文余下部分组织如下. §2 建立骨架放大下的两条响应恒等式: 一条是关于一阶矩 $B_j$ 的线性零模恒等式, 一条是关于谱比 $R_{\rm wt}$ 的乘法对数预算恒等式. §3 回顾 R3 至 R6 各轮的小 $c$ 捷径松弛诊断. §4 记录 R8 重置. §5 陈述并证明分块有效骨架定理 (Theorem 70.A). §6 给出 R9 的经验验证, 包括首个非零阈值 $j = \lceil \log_2(D^2) \rceil$ 在四个连续倍增过渡上的匹配. §7 把 59.1 化归为分块有界相位陈述. §8 列出该陈述的三条可用证明路线及其余的开放条件. §9 简述与标准整数复杂度的关联. §10 作结.</p>
+<hr>
+<h2>§2. 骨架放大下的两条响应恒等式</h2>
+<p>设 $S_1 \subseteq S_2$ 为两骨架, 具有同样的全部素数内容但可能不同的合数内容, 满足 $\max S_1, \max S_2 \le \sqrt{N}$. 记 $\rho_1, \rho_2$ 为 $[0, N]$ 上对应的递归. 因为加入因子通道只能降低取最小的结果, 故 $\rho_2 \le \rho_1$ 逐点.</p>
+<h3>2.1 线性零模响应恒等式</h3>
+<p>对每一骨架 $S$, 回顾</p>
+<p>$$B_j(S) = \sum_{p \in I_j} x_S(p), \qquad x_S(p) = \frac{\rho_S(p) - \lambda \log p - \mu_{12}(p \bmod 12)}{p}.$$</p>
+<p><strong>引理 2.1 (线性零模响应).</strong> <em>对上述意义下的任意 $S_1 \subseteq S_2$ 有</em></p>
+<p>$$B_j(S_2) - B_j(S_1) = \sum_{p \in I_j, \; p \text{ 素}} \frac{\rho_{S_2}(p) - \rho_{S_1}(p)}{p}.$$</p>
+<p><em>和中每一项非正.</em></p>
+<p><em>证明.</em> 由求和的线性性, $\lambda \log p / p$ 与 $\mu_{12}(p \bmod 12) / p$ 在 $x_{S_1}(p)$ 与 $x_{S_2}(p)$ 之差中相消, 仅留 $\rho$ 之差. 符号由 $\rho_{S_2} \le \rho_{S_1}$ 逐点得到. $\square$</p>
+<p>对一条链 $S_0 \subseteq S_1 \subseteq \cdots \subseteq S_K$, 电报和给出<em>线性零模预算</em></p>
+<p>$$B_j(S_K) - B_j(S_0) = \sum_{k=0}^{K-1} \bigl[ B_j(S_{k+1}) - B_j(S_k) \bigr],$$</p>
+<p>每一被加项非正. 该恒等式控制<em>一阶矩</em> $B_j$, 但不控制谱比 $R_{\rm wt}(j) = B_j^2 / (j D_j)$, 因为二阶矩 $D_j(S)$ 也随 $S$ 变化. 因此我们必须谨慎区分: (i) $B_j$ 自身的界, 与 (ii) $R_{\rm wt}$ 的界.</p>
+<h3>2.2 谱比对数预算恒等式</h3>
+<p>$R_{\rm wt}$ 自身的自然预算恒等式是乘法形式. 对一条链 $S_0 \subseteq S_1 \subseteq \cdots \subseteq S_K$, 各 $R_j(S_k) := R_{\rm wt}(j; S_k) > 0$, 定义逐步比</p>
+<p>$$Q_{j,k} := \frac{R_j(S_{k+1})}{R_j(S_k)}.$$</p>
+<p>则取对数后电报和给出</p>
+<p>$$\log R_j(S_K) - \log R_j(S_0) = \sum_{k=0}^{K-1} \log Q_{j,k}.$$</p>
+<p>与引理 2.1 不同, 一般而言逐步比 $\log Q_{j,k}$ 没有固定符号: 放大骨架使 $B_j$ 代数地下降 (因每一项 $\rho$ 之差非正, 故 $B_j(S_{k+1}) \le B_j(S_k)$), 但绝对值 $|B_j|$ 不一定单调下降; 二阶矩 $D_j$ 既可下降也可上升, 取决于受影响素数的残差平方相对均值的大小. 在 $j$ 上一致地控制 $\sup_K \log R_j(S_K)$, 需同时控制 $B$ 方向与 $D$ 方向. 恒等式 2.2 是任何谱比预算论证的自然目标; 恒等式 2.1 则是一阶矩单独论证的自然目标.</p>
+<p>§3 (小 $c$ 诊断) 与 §6 (R9 增量监控) 用恒等式 2.1, §8.1 (谱比对数预算路线) 用恒等式 2.2.</p>
+<hr>
+<h2>§3. 小 $c$ 捷径松弛判据</h2>
+<p>在转向分块结构之前, 我们记录一项在 R8 重置中得以保留, 并在小合数截断下仍然有效的诊断.</p>
+<p>对骨架 $S$ 与合数 $c \notin S$, 定义捷径松弛</p>
+<p>$$\sigma_S(c) := C^{\rm nat}_S(c) - \rho_S(c), \qquad C^{\rm nat}_S(c) := \min_{\substack{ab = c \\ 2 \le a, b < c}} \bigl[ \rho_S(a) + \rho_S(b) + 2 \bigr].$$</p>
+<p>恒有 $\sigma_S(c) \ge 0$, 因为 $\rho_S(c)$ 是包括自然分解路径在内的最小值. $\sigma_S(c) > 0$ 意味着 $c$ 有比其在 $S$ 下任何乘性分解都更廉价的构造 (一般通过后继链).</p>
+<p>我们称 $c$ 为<strong>对 $S$ 响应本质</strong>, 若存在 $n \le N$ 使 $\rho_{S \cup \{c\}}(n) < \rho_S(n)$.</p>
+<p><strong>经验判据 3.1 (小 $c$ 处捷径松弛预测本质性).</strong> <em>在 R3 至 R6 各轮全部测试中, 取 $S$ 为 $S_{10} = \{2, 3, 4, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47\}$ (47 以下的素数通道, 加上二进制捷径 $\{4\}$), 或取 $S_{14} = \{2, 3, \ldots, 25\} \cup \{50 \text{ 以下的素数}\}$, 等价关系</em></p>
+<p>$$\sigma_S(c) > 0 \iff c \text{ 对 } S \text{ 响应本质}$$</p>
+<p><em>在 $c$ 取值从 46 至 177 的 56 项测试中全部成立, 即 56 项匹配 56 项.</em></p>
+<p>各轮分项: R3b 共 10 项, R3d 共 11 项 (素数 $p \le 47$ 的 $p^2$), R5a 共 19 项混合乘积, R6a 共 16 项含六项预测冗余的对照. 全部匹配.</p>
+<p>我们不主张此判据在大 $c$ 处仍成立. 如 §4 将看到, 当 $c$ 远大于 $S$ 中元素时, 判据的字面形式失效. 关键问题从对 $c$ 自身的单点松弛 $\sigma_S(c)$, 转移到<strong>对所有 $n = c \cdot m$ 目标的支配性</strong>, 即每一目标候选是否在 $S$ 下有更廉价的备择路径. 这两类机制之间的过渡正是 R8 与 R9 所揭示的现象.</p>
+<p>小 $c$ 判据在两个方面仍有实用价值. 一是为小范围内的本质通道候选提供低成本预筛选, 在构造极小骨架时能够进行高效枚举. 二是它与分块有效骨架图景一致: 若 $c$ 在小范围对 $S$ 响应本质, 则 $c$ 影响目标 $n = c \cdot m$ ($m \ge c$) 上的 $\rho$, 故 $n \ge c^2$, 即 $n$ 落于二进制块 $j(n) \ge 2 \log_2 c$. 小 $c$ 处的捷径松弛恰是合数通道 $c$ 对饱和骨架的<strong>较高</strong>二进制块作出贡献的局部机制.</p>
+<hr>
+<h2>§4. R8 重置: target-domination 认证与静默因子截断</h2>
+<p>R6 报告: 在 $N = 10^9$ 下, 从骨架 $D_3 = \{2, \ldots, 2048\}$ 至 $D_4 = \{2, \ldots, 4096\}$ 至 $D_5 = \{2, \ldots, 8192\}$ 至 $D_6 = \{2, \ldots, 16384\}$ 的递增, 在所有 sanity 点上产生逐字节相同的 $\rho$ 数组, 在所测的全部 16 个二进制块 $j = 14, \ldots, 29$ 上 $B_\delta$ 为零. R7 把这一现象延伸至 $D_7 = \{2, \ldots, 32768\}$, 观察到同样的冻结. 由于 $32768 > \sqrt{10^9} \approx 31623$, 这看起来构成一项经验认证:</p>
+<p>$$\rho_{S_{2048}}(n) = \rho_{\rm Full}(n) \qquad \text{对所有 } n \le 10^9.$$</p>
+<p>若该论断成立, 即建立全局有限 $D$ 饱和截断 $D_{\rm sat}(10^9) \le 2048$, 远低于平凡界 $\sqrt{N}$. 临时叙事曾围绕此发现组织轨迹.</p>
+<h3>4.1 R8a 轮: target-domination 测试</h3>
+<p>R8a 直接测试此认证. 定义</p>
+<p>$$G_D(n) := \min_{\substack{c \mid n \\ D < c \le \sqrt{n} \\ c \text{ 合}}} \bigl[ \rho_D(c) + \rho_D(n/c) + 2 \bigr],$$</p>
+<p>如果此类 $c$ 不存在, 则约定 $G_D(n) := +\infty$. 认证 $\rho_{\rm Full} = \rho_D$ 在 $[1, N]$ 上等价于</p>
+<p>$$G_D(n) \ge \rho_D(n) \qquad \text{对所有 } n \le N.$$</p>
+<p>对 $D = 2048$ 与 $N = 10^9$, R8a 枚举了所有合数 $c \in (2048, 31622]$ 以及全部 $m \in [c, N/c]$, 在每个 $n = c \cdot m$ 处验证不等式.</p>
+<p>结果如下:</p>
+<table><thead><tr>
+<th>量</th>
+<th>值</th>
+</tr></thead><tbody>
+<tr>
+<td>所测合数 $c$ 数</td>
+<td>26,482</td>
+</tr>
+<tr>
+<td>所测 $(c, m)$ 对总数</td>
+<td>1,984,522,004</td>
+</tr>
+<tr>
+<td>违背项 $\rho_D(c \cdot m) > \rho_D(c) + \rho_D(m) + 2$</td>
+<td>31,427,448</td>
+</tr>
+</tbody></table>
+<p>约 1.6% 的全部所测对为违背项, 分布于 10,723 个不同 $c$ 值. 一项明确实例: $c = 2049$, $m = 2101$, $n = 4,304,949 = 2049 \times 2101$. 由 Python 参考实现独立验证: $\rho_{S_{2048}}(2049) = 27$, $\rho_{S_{2048}}(2101) = 28$, $\rho_{S_{2048}}(4304949) = 59$, 故经 2049 的候选因子分裂耗费 $27 + 28 + 2 = 57 < 59$. 把 2049 加入骨架将严格降低 $\rho$ 在 $n = 4304949$ 处的值.</p>
+<p>这与 R7 冻结论断相矛盾.</p>
+<h3>4.2 因子截断</h3>
+<p>为追溯矛盾根源, 我们检查所有骨架的构建日志. 参考 C 构建器 \texttt{p70\_r2\_builder} 被发现在每次构建时, 不论申报输入如何, 都把因子表静默截顶于 1860 项. 每一项申报因子表超过约 1860 项的构建均报告</p>
+<pre><code>Factors: 1859 entries, max = 1860</code></pre>
+<p>无论输入为何. 此现象出现于 $D_3, D_4, D_5, D_6, D_7$ 各项构建, 也出现于其他 $N$ 下相应的 $E$ 类与 $H$ 类构建. 申报因子表较小的构建 (例如 $\{2, \ldots, 1024\}$) 报告正确的项数与最大值.</p>
+<p>R5c, R6c, R7a 各轮的全部 "冻结" 观测因此都是同一有效骨架 $S_{1860}$ 与其自身的比较, $B_\delta$ 表面缺失只是恒真.</p>
+<h3>4.3 修复: $N = 5 \times 10^6$ 处的 Python 独立验证</h3>
+<p>中等 $N$ 下用 Python 参考动态规划测试, 确认在 $I_{22} = [2^{22}, 2^{23})$ 中存在十三个素数, 在它们处 $\rho_{S_{2048}}(p) \neq \rho_{S_{4096}}(p)$. 五项实例:</p>
+<table><thead><tr>
+<th>$p$</th>
+<th>$\rho_{S_{2048}}(p)$</th>
+<th>$\rho_{S_{4096}}(p)$</th>
+</tr></thead><tbody>
+<tr>
+<td>4,329,539</td>
+<td>60</td>
+<td>59</td>
+</tr>
+<tr>
+<td>4,518,221</td>
+<td>59</td>
+<td>58</td>
+</tr>
+<tr>
+<td>4,722,947</td>
+<td>59</td>
+<td>58</td>
+</tr>
+<tr>
+<td>4,748,039</td>
+<td>61</td>
+<td>60</td>
+</tr>
+<tr>
+<td>4,750,643</td>
+<td>60</td>
+<td>59</td>
+</tr>
+</tbody></table>
+<p>R6c 关于 $D_3 \to D_4$ 过渡中 $B_\delta(j = 22)$ 为零的论断, 故为截断的伪影, 而非衬底行为的反映.</p>
+<h3>4.4 方法学注记</h3>
+<p>我们明确记录这一段经历. "全局有限 $D$ 饱和于 $D_{\rm sat}(10^9) \le 2048$" 这一临时叙事是错的. 它在测量仪器修复之后才被正确图景所取代. 我们把这一段视作 SAE 方法学系列意义下的 <em>Via Negativa</em> 事件: 表面上的全局结构是仪器层面的余项, 正确的分块结构只在该余项被剔除之后才显现. (关于 "余项剔除" 作为有别于一般纠错的方法学纪律的一般框架, 参见 SAE 方法学 paper 0, "余之道 / Via Rho", DOI 10.5281/zenodo.19657439.)</p>
+<p>R9 轮中, C 构建器被重写, 不再含有静态因子上限, 加入了硬断言以验证 $\#\text{factors loaded} = \#\text{factors requested}$ 且 $\max(\text{loaded}) = \max(\text{requested})$, 在每次构建时记录前后各 32 个因子, 并对全 $\rho$ 数组报告 64 位 FNV-1a 校验和. $N = 5 \times 10^6$ 处的三项回归测试已嵌入构建过程: 因子计数完整性, $\rho_{S_{2048}}(4304949) = 59$ 这一值, 以及上述五个 $j = 22$ 素数的值. R9 全部构建均通过全部三项回归.</p>
+<hr>
+<h2>§5. 分块有效骨架定理</h2>
+<p>我们现在陈述并证明本文的核心定理.</p>
+<h3>5.1 陈述</h3>
+<p>对整数 $D \ge 2$, 截断递归 $\rho_D := \rho_{S_D}$ 取 $S_D := \{2, 3, \ldots, D\}$, 形为</p>
+<p>$$\rho_D(n) = \min \Bigl\{ \rho_D(n-1) + 1, \quad \min_{\substack{a \mid n \\ 2 \le a \le \min(\sqrt{n}, D)}} \bigl[ \rho_D(a) + \rho_D(n/a) + 2 \bigr] \Bigr\}, \qquad n \ge 2.$$</p>
+<p>Full IC 递归则去掉约束 $a \le D$ (等价地, $D = \infty$).</p>
+<p>对每个二进制块 $I_j = [2^j, 2^{j+1})$, 定义<strong>块截断</strong></p>
+<p>$$D^*(j) := \lceil \sqrt{2^{j+1}} \rceil.$$</p>
+<p>当工作在以 2 为底的骨架上时, 也用其二进制变体 $D^{*(2)}(j) := 2^{\lceil (j+1)/2 \rceil}$.</p>
+<p><strong>定理 70.A (分块有效骨架).</strong> <em>对任意整数 $j \ge 1$, 若 $D \ge \sqrt{2^{j+1}}$, 则</em></p>
+<p>$$\rho_D(n) = \rho_{\rm Full}(n) \qquad \text{对所有 } n < 2^{j+1}.$$</p>
+<p><em>特别地, $\rho_D(p) = \rho_{\rm Full}(p)$ 对所有素数 $p \in I_j$ 成立, 故</em></p>
+<p>$$x_{\rho_D}(p) = x_{\rho_{\rm Full}}(p) \quad \forall p \in I_j,$$</p>
+<p><em>因而</em></p>
+<p>$$B_j(\rho_D) = B_j(\rho_{\rm Full}), \qquad D_j(\rho_D) = D_j(\rho_{\rm Full}), \qquad R_{\rm wt}(j; \rho_D) = R_{\rm wt}(j; \rho_{\rm Full}).$$</p>
+<h3>5.2 证明</h3>
+<p>我们对 $n$ 强归纳证明 $\rho_D(n) = \rho_{\rm Full}(n)$ 对所有 $n < 2^{j+1}$ 成立.</p>
+<p><em>基底.</em> $n = 0$ 与 $n = 1$ 时, 两递归按定义均返回 0.</p>
+<p><em>归纳步.</em> 取 $n$ 满足 $2 \le n < 2^{j+1}$, 假设 $\rho_D(m) = \rho_{\rm Full}(m)$ 对所有 $m < n$ 成立.</p>
+<p>两递归各取两候选之最小值, 即<em>后继候选</em>与<em>因子候选</em>. 由归纳假设,</p>
+<p>$$\rho_D(n - 1) + 1 = \rho_{\rm Full}(n - 1) + 1.$$</p>
+<p>后继候选相等.</p>
+<p>考察因子候选. Full IC 因子候选为</p>
+<p>$$\min_{\substack{a \mid n \\ 2 \le a \le \sqrt{n}}} \bigl[ \rho_{\rm Full}(a) + \rho_{\rm Full}(n/a) + 2 \bigr].$$</p>
+<p>截断因子候选为</p>
+<p>$$\min_{\substack{a \mid n \\ 2 \le a \le \min(\sqrt{n}, D)}} \bigl[ \rho_D(a) + \rho_D(n/a) + 2 \bigr].$$</p>
+<p>由 $n < 2^{j+1}$, 任一具有 $a \le \sqrt{n}$ 的因子 $a$ 满足</p>
+<p>$$a \le \sqrt{n} < \sqrt{2^{j+1}} \le D,$$</p>
+<p>末一不等号由定理假设给出. 故约束 $a \le D$ 在 Full IC 范围中的每个 $a$ 处自动满足. 两个最小值取于同一组 $a$.</p>
+<p>对每一这样的 $a$, 由于 $n = a \cdot b$, $b = n/a \ge 1$, 而平凡分裂 $a = 1$ 或 $a = n$ 已被 $2 \le a \le \sqrt{n}$ 排除, 故 $a$ 与 $n/a$ 严格小于 $n$. 由归纳假设,</p>
+<p>$$\rho_D(a) = \rho_{\rm Full}(a), \qquad \rho_D(n/a) = \rho_{\rm Full}(n/a).$$</p>
+<p>因此对每一这样的 $a$, 两成本 $\rho_D(a) + \rho_D(n/a) + 2$ 与 $\rho_{\rm Full}(a) + \rho_{\rm Full}(n/a) + 2$ 相等. 两因子最小值一致.</p>
+<p>递归两分支均在 $n$ 处给出同一值, 故 $\rho_D(n) = \rho_{\rm Full}(n)$.</p>
+<p>归纳步完成. 结论对所有 $n < 2^{j+1}$ 成立, 特别对所有素数 $p \in I_j$ 成立.</p>
+<p>关于 $x$, $B_j$, $D_j$, $R_{\rm wt}$ 的相等由各自定义直接得出, 因为它们都仅是 $\{\rho(p) : p \in I_j\}$ 的函数, 而 $\rho$ 在 $I_j$ 上的素值现在一致.</p>
+<p>证毕. $\square$</p>
+<h3>5.3 注</h3>
+<p>证明初等. 内容在于把 $\sqrt{2^{j+1}}$ 识别为正确的截断. 关键步骤是任一非平凡因子分裂 $n = a \cdot b$ 可取向为 $a \le \sqrt{n}$, 配合上界 $n < 2^{j+1}$.</p>
+<p>定理是<strong>分块的</strong>: 对每个 $j$ 单独成立. 自然截断 $D^<em>(j) = \lceil \sqrt{2^{j+1}} \rceil$ 量级为 $2^{j/2}$. 在 $j = 14, 16, 18, 20, 22, 24, 26, 28$ 各块上, 截断 $D^{</em>(2)}(j)$ 分别为 $128, 256, 512, 1024, 2048, 4096, 8192, 16384$. 若要求一个统一骨架同时覆盖所有 $j \le 30$, 需 $D \ge \sqrt{2^{31}} \approx 46341$, 即对 $N = 2^{31}$ 而言量级为 $\sqrt{N}$ 的骨架. 故对要求一个在所有 $j$ 上一致的骨架, 平凡界 $D_{\rm sat}^{\rm univ}(N) \le \sqrt{N}$ 实际上是紧的. 分块定理则提取出真正的算术内容: 不必坚持要求一个统一骨架.</p>
+<h2>§6. R9: 分块截断的经验确认</h2>
+<p>定理 70.A 是确定性的. 它的证明不需要任何实验. R9 起的角色不同: 它在 R8 重置之后识别并验证修正后的计算衬底, 并确认衬底呈现出定理所预测的支撑阈值.</p>
+<p>C 构建器修复后, R9 在 $N = 10^9$ 下进行了一次清洁的重新基线测试. 我们构造了五个骨架</p>
+<p>$$S_{2048}, \quad S_{4096}, \quad S_{8192}, \quad S_{16384}, \quad S_{32768}$$</p>
+<p>并沿倍增链计算累积 cross-$\lambda$ 块增量. 每次构建对全 $\rho$ 数组以 64 位 FNV-1a 哈希校验, 五个哈希为</p>
+<pre><code>S_2048   0xc5aafff40a05e437
+S_4096   0x6db2201465b599aa
+S_8192   0x694bf2937d12f33f
+S_16384  0x2ea5373daf059e52
+S_32768  0x6462f1ca7809fe0b</code></pre>
+<p>五者全部不同, 确认骨架确为不同对象 (并确认 R6c 时把全部构建塌陷为同一有效 $S_{1860}$ 的截断已不复存在).</p>
+<h3>6.1 首个非零阈值</h3>
+<p>对每个连续倍增过渡, 我们记录使得 $B_\delta(j) \neq 0$ 的最小二进制块 $j$. 定理 70.A 预测: 加入 $(D, 2D]$ 范围内的通道仅在 $j \ge \lceil \log_2(D^2) \rceil$ 时方可影响块 $j$. 这是确定性的支撑阈值, 而非软经验估计. 通道 $c \in (D, 2D]$ 仅当 $c \le \sqrt{n}$ 时方能在分裂 $n = c \cdot m$ 中作为较小因子, 即要求 $n \ge c^2 > D^2$, 故 $j(n) \ge \lceil \log_2(D^2) \rceil$.</p>
+<p>R9 数据:</p>
+<table><thead><tr>
+<th>过渡 (新增范围)</th>
+<th>首个使 $B_\delta \neq 0$ 的 $j$</th>
+<th>$\lceil \log_2(D^2) \rceil$</th>
+</tr></thead><tbody>
+<tr>
+<td>$S_{2048} \to S_{4096}$ ($D = 2048$)</td>
+<td>$j = 22$</td>
+<td>$22$</td>
+</tr>
+<tr>
+<td>$S_{4096} \to S_{8192}$ ($D = 4096$)</td>
+<td>$j = 24$</td>
+<td>$24$</td>
+</tr>
+<tr>
+<td>$S_{8192} \to S_{16384}$ ($D = 8192$)</td>
+<td>$j = 26$</td>
+<td>$26$</td>
+</tr>
+<tr>
+<td>$S_{16384} \to S_{32768}$ ($D = 16384$)</td>
+<td>$j = 28$</td>
+<td>$28$</td>
+</tr>
+</tbody></table>
+<p>四个过渡完美匹配. 该观察的定理一侧是不等式 $j \ge \lceil \log_2(D^2) \rceil$: 阈值之下的块按构造不受影响. 经验内容则是: 效果一旦被允许就立即在 $j = \lceil \log_2(D^2) \rceil$ 处出现, 而非延迟到更高的块. 即每一倍增中, 衬底一旦获得新通道就立即使用.</p>
+<h3>6.2 $M^{\rm drift}_j$ 饱和表</h3>
+<p>我们计算了 cross-$\lambda$ 漂移均值 $M^{\rm drift}_j(S_D; N = 10^9)$ 在每个块与每个所测 $D$ 上的值. (漂移均值的定义见 §1.2, 它是与二阶矩 $D_j$ 无关的实验诊断量. 我们在此不使用完整的谱比 $R_{\rm wt} = B_j^2 / (j D_j)$, 而使用 $M^{\rm drift}_j$, 因为后者只需一阶矩计算, 故是构建过程中的自然增量监控量. 由定理 70.A, 每块上 $\rho_D = \rho_{\rm Full}$ 的相等蕴含 $\rho$ 的每一块层泛函相等, 包括 $M^{\rm drift}_j$ 与 $R_{\rm wt}(j)$ 双方. 诊断量的饱和样式忠实跟踪谱比的饱和样式.) 表如下:</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\sqrt{2^j}$</th>
+<th>$D = 2048$</th>
+<th>$D = 4096$</th>
+<th>$D = 8192$</th>
+<th>$D = 16384$</th>
+<th>$D = 32768$</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>128</td>
+<td>0.4618</td>
+<td>0.4618</td>
+<td>0.4618</td>
+<td>0.4618</td>
+<td>0.4618</td>
+</tr>
+<tr>
+<td>15</td>
+<td>181</td>
+<td>0.4475</td>
+<td>0.4475</td>
+<td>0.4475</td>
+<td>0.4475</td>
+<td>0.4475</td>
+</tr>
+<tr>
+<td>16</td>
+<td>256</td>
+<td>0.3815</td>
+<td>0.3815</td>
+<td>0.3815</td>
+<td>0.3815</td>
+<td>0.3815</td>
+</tr>
+<tr>
+<td>17</td>
+<td>362</td>
+<td>0.3713</td>
+<td>0.3713</td>
+<td>0.3713</td>
+<td>0.3713</td>
+<td>0.3713</td>
+</tr>
+<tr>
+<td>18</td>
+<td>512</td>
+<td>0.3472</td>
+<td>0.3472</td>
+<td>0.3472</td>
+<td>0.3472</td>
+<td>0.3472</td>
+</tr>
+<tr>
+<td>19</td>
+<td>724</td>
+<td>0.3261</td>
+<td>0.3261</td>
+<td>0.3261</td>
+<td>0.3261</td>
+<td>0.3261</td>
+</tr>
+<tr>
+<td>20</td>
+<td>1024</td>
+<td>0.3104</td>
+<td>0.3104</td>
+<td>0.3104</td>
+<td>0.3104</td>
+<td>0.3104</td>
+</tr>
+<tr>
+<td>21</td>
+<td>1448</td>
+<td>0.2992</td>
+<td>0.2992</td>
+<td>0.2992</td>
+<td>0.2992</td>
+<td>0.2992</td>
+</tr>
+<tr>
+<td>22</td>
+<td>2048</td>
+<td>0.2850</td>
+<td><strong>0.2858</strong></td>
+<td>0.2858</td>
+<td>0.2858</td>
+<td>0.2858</td>
+</tr>
+<tr>
+<td>23</td>
+<td>2896</td>
+<td>0.2750</td>
+<td><strong>0.2778</strong></td>
+<td>0.2778</td>
+<td>0.2778</td>
+<td>0.2778</td>
+</tr>
+<tr>
+<td>24</td>
+<td>4096</td>
+<td>0.2618</td>
+<td>0.2674</td>
+<td><strong>0.2681</strong></td>
+<td>0.2681</td>
+<td>0.2681</td>
+</tr>
+<tr>
+<td>25</td>
+<td>5793</td>
+<td>0.2510</td>
+<td>0.2596</td>
+<td><strong>0.2620</strong></td>
+<td>0.2620</td>
+<td>0.2620</td>
+</tr>
+<tr>
+<td>26</td>
+<td>8192</td>
+<td>0.2391</td>
+<td>0.2510</td>
+<td>0.2557</td>
+<td><strong>0.2563</strong></td>
+<td>0.2563</td>
+</tr>
+<tr>
+<td>27</td>
+<td>11585</td>
+<td>0.2291</td>
+<td>0.2439</td>
+<td>0.2512</td>
+<td><strong>0.2534</strong></td>
+<td>0.2534</td>
+</tr>
+<tr>
+<td>28</td>
+<td>16384</td>
+<td>0.2183</td>
+<td>0.2357</td>
+<td>0.2457</td>
+<td>0.2499</td>
+<td><strong>0.2505</strong></td>
+</tr>
+<tr>
+<td>29</td>
+<td>23170</td>
+<td>0.2095</td>
+<td>0.2295</td>
+<td>0.2418</td>
+<td>0.2483</td>
+<td>0.2501</td>
+</tr>
+</tbody></table>
+<p><em>注</em>: $j = 29$ 是 $N = 10^9$ 处的边界块 (因 $\lfloor \log_2 10^9 \rfloor = 29$), $I_{29} = [2^{29}, 2^{30})$ 在 $N$ 处被截短. 该行仅为完整性列出, 不参与饱和比较; 我们以 $j = 14, \ldots, 28$ 为完整块范围.</p>
+<p>每行<strong>粗体</strong>标注 $M^{\rm drift}_j(S_D)$ 首次达到饱和值 (即 $D = 32768$ 处的值) 所对应的最小所测 $D$. 饱和截断在所测倍增网格的分辨率下与理论值 $D^<em>(j) = \lceil \sqrt{2^{j+1}} \rceil$ 匹配. 块 $j = 29$ 在 $D = 32768$ 处尚未饱和, 与预测 $D^</em>(29) = \lceil \sqrt{2^{30}} \rceil = \lceil 32768 \cdot \sqrt{2} \rceil \approx 46341 > 32768$ 一致, 但如上所注, 该行也受 $N$ 边界截短影响, 不作为饱和证据使用.</p>
+<p>该截短在 $M^{\rm drift}_j(j = 29)$ 中引入与骨架饱和无关的伪影. 我们不把其取值与完整块的取值并列比较.</p>
+<h3>6.3 target-domination 违背项数关于 $D$ 的曲线</h3>
+<p>R9 也在修复后的骨架上重建了 R8a target-domination 认证器. 对每个 $D$, 满足违背条件 $\rho_D(c \cdot m) > \rho_D(c) + \rho_D(m) + 2$, $c$ 合数, $D < c \le \sqrt{N}$, $m \in [c, N/c]$ 的 $(c, m)$ 对数:</p>
+<table><thead><tr>
+<th>$D$</th>
+<th>违背项数</th>
+</tr></thead><tbody>
+<tr>
+<td>2,048</td>
+<td>29,402,307</td>
+</tr>
+<tr>
+<td>4,096</td>
+<td>13,141,296</td>
+</tr>
+<tr>
+<td>8,192</td>
+<td>4,451,879</td>
+</tr>
+<tr>
+<td>16,384</td>
+<td>824,657</td>
+</tr>
+<tr>
+<td>32,768</td>
+<td>$0$ (空集: $c$ 范围空)</td>
+</tr>
+</tbody></table>
+<p>对 $D = 32768 \ge \sqrt{N}$ 而言, 认证器外环为空, 故认证平凡成立. 对 $D < \sqrt{N}$, 违背项数随 $D$ 平滑下降. 每次 $D$ 的倍增使违背项数减少为约二至五分之一. 该衰减并未在任何子 $\sqrt{N}$ 值处骤跌为零, 与 $D_{\rm sat}^{\rm univ}(N) \approx \sqrt{N}$ 在要求统一骨架时实质上紧致这一点一致.</p>
+<h3>6.4 状态</h3>
+<p>R9 直接确认了三件事:</p>
+<ol>
+<li>分块截断 $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$ 在饱和样式中精确观测到.</li>
+<li>首个非零阈值 $j = \lceil \log_2(D^2) \rceil$ 在四个所测倍增过渡上完全匹配.</li>
+<li>全局截断不可能为子 $\sqrt{N}$: 违背项数随 $D$ 平滑下降, 仅在测试范围本身变空时才达到零.</li>
+</ol>
+<p>这些观察使定理 70.A 的预测在所测网格分辨率下精确, 并否证 R6 与 R7 的临时全局饱和论断.</p>
+<hr>
+<h2>§7. 59.1 的化归</h2>
+<p>定义</p>
+<p>$$R_j^<em>(N) := R_{\rm wt}\bigl(j; \rho_{S_{D^</em>(j)}}; N\bigr) = \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})}, \qquad D^*(j) = \lceil \sqrt{2^{j+1}} \rceil.$$</p>
+<p>由定理 70.A 应用于 $I_j$ 上素数, 在任意 $N \ge 2^{j+1} - 1$ 处, $x_{\rho_D}(p) = x_{\rho_{\rm Full}}(p)$ 对每一 $p \in I_j$ 成立, 故 $B_j$ 与 $D_j$ 一致, 故</p>
+<p>$$R_j^*(N) = R_{\rm wt}(j; \rho_{\rm Full}; N).$$</p>
+<p>故 59.1 等价于<strong>分块饱和有界相位陈述</strong>:</p>
+<p><strong>猜想 59.1$^<em>$.</strong> </em>存在常数 $M$, 使得*</p>
+<p>$$R_j^<em>(N) = \frac{B_j(\rho_{S_{D^</em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^*(j)}})} \le M$$</p>
+<p><em>对所有充分大的 $j$ 与所有 $N \ge 2^{j+1} - 1$ 成立.</em></p>
+<p>两种表述在数学上完全相同. 化归没有关闭问题, 而是把抽象对象 $\rho_{\rm Full}$ 替换为有显式量级的具体有限骨架. 猜想 59.1$^*$ 中的每一量在 $2^j$ 的多项式时间内可计算.</p>
+<h3>7.1 化归所做的事</h3>
+<p><strong>它识别出正确的对象.</strong> Full IC 递归在 $[1, N]$ 上形式上需要每个直至 $\sqrt{N}$ 的因子. 猜想 59.1$^*$ 表明: 对每个块 $I_j$ 单独考虑, 仅有 $O(\sqrt{2^j})$ 个因子是相关的. 59.1 中所引用的 "Full IC" 在块层面上是误导性的抽象.</p>
+<p><strong>它提供精确的理论入口.</strong> 对每个 $j$, 残差 $r(p) = \rho(p) - \lambda \log p - \mu_{12}(p \bmod 12)$ 在 $I_j$ 上的素数处现在由一个具有显式小宽度的算术递归生成. 这些残差的任何界, 特别是关于一阶矩 $B_j$ 与二阶矩 $D_j$ 的界, 原则上都可由截断 $\sqrt{2^{j+1}}$ 的结构推出.</p>
+<p><strong>它分离出此前混淆的两个问题.</strong> "骨架规模"问题 (因子通道集需要多大) 与 "谱界"问题 (谱块比有多大) 现在得以解耦. 第一个问题由定理 70.A 给出回答: $D^*(j)$. 第二个问题, 即关于 $B_j^2 / (j D_j)$ 的有界相位问题, 是真正的残余问题.</p>
+<h3>7.2 化归未做的事</h3>
+<p>它并未给出 $R_j^<em>$ 的界. 表 §6.2 中 $N = 10^9$ 处的经验漂移均值在 $j = 14, \ldots, 28$ 范围内位于 $[0.21, 0.46]$. 这些是一阶矩诊断量, 不是谱比; 它们提示对应的 $R_j^</em>$ 也在测试范围内有界, 但两者均未在渐近上证明.</p>
+<p>它也未给出 $D_{\rm sat}(j)$ 的下界. 定理仅给出 $D_{\rm sat}(j) \le \lceil \sqrt{2^{j+1}} \rceil$. 要证明 $D_{\rm sat}(j) \asymp \sqrt{2^j}$, 需说明对无穷多个 $j$, $I_j$ 中存在素数, 其 $\rho(p)$ 因加入靠近 $\sqrt{p}$ 的因子通道而真正改变. R9 饱和表在所测分辨率下与此下界相容, 但未予建立.</p>
+<p>它没有处理 $N$ 一致性问题, <strong>此问题或可视为化归后程序的中心开放问题</strong>. 化归在每一 $N \ge 2^{j+1} - 1$ 上独立成立, 但 $R_j^<em>(N)$ 的界是否在 $N$ 上一致仍未解决. R9 在 $N = 10^9$ 进行. 一个随 $N$ 增长的有限 $N$ 界, 其本身不会反驳猜想 59.1$^</em>$, 但会显著削弱支持其的经验证据. 反之, $R_j^*(N)$ 在 $N = 10^9, 10^{10}, 10^{11}$ 上的 $N$ 一致稳定性会把当前的逐 $N$ 化归转化为接近经验性的渐近陈述. 我们在 §8.4(ii) 显式列出此项, 并视作 §8 三条路线最终应用的前提条件.</p>
+<hr>
+<h2>§8. 通向有界相位陈述的三条路线</h2>
+<p>我们简述对猜想 59.1$^*$ 的三种可用进路.</p>
+<h3>8.1 路线 A: 谱比对数预算</h3>
+<p>取基础截断 $D_0$, 沿倍增链 $D_0 \to 2 D_0 \to \cdots \to D^*(j)$ 应用谱比对数预算恒等式 (§2.2):</p>
+<p>$$\log R_j(S_{D^*(j)}) = \log R_j(S_{D_0}) + \sum_{k} \log Q_{j,k}, \qquad Q_{j,k} = \frac{R_j(S_{D_{k+1}})}{R_j(S_{D_k})}.$$</p>
+<p>每一 $\log Q_{j,k}$ 是对谱比的逐步贡献. 由支撑定理 (§6.1), 满足 $D_k < \sqrt{2^j}/2$ 的步骤贡献为零 (其增量通道无法触及 $I_j$ 中的任何 $n$). $R_j(S_{D^*(j)})$ 在 $j$ 上一致有界可由如下定量界得出:</p>
+<p>$$\sum_{k} \log Q_{j,k} \le \log \bigl( M / R_j(S_{D_0}) \bigr) + o(1),$$</p>
+<p>其中 $M$ 与 $j$ 无关.</p>
+<p>此路线的优点是与 R6 各层预算数据 (经 R9 修正后正确解读) 直接对齐. 弱点在于一般而言逐步比 $\log Q_{j,k}$ 没有固定符号: 放大骨架既可能使 $D_j(S)$ 下降也可能使其上升 (但绝对值 $|B_j|$ 一定下降, 第二阶矩则是另一问题).</p>
+<h3>8.2 路线 B: 直接二阶矩</h3>
+<p>猜想 59.1$^*$ 断言 $B_j^2 \le M \cdot j \cdot D_j$. 等价地,</p>
+<p>$$|B_j(\rho_{S_{D^<em>(j)}})| = O\bigl(\sqrt{j \cdot D_j(\rho_{S_{D^</em>(j)}})}\bigr).$$</p>
+<p>这是关于二进制块素数上剥离残差一阶矩相对于二阶矩的直接估计. 它是最干净的目标.</p>
+<p>以概率语言表述: $B_j$ 是 $I_j$ 中素数残差值 $x(p)$ 之和, $D_j$ 是其平方之和. 该猜想断言此和不超过 $\sqrt{j}$ 倍的自然 Cauchy-Schwarz 尺度. 也即, 残差值 $x(p)$ 在二进制块素数上行为如同弱相关随机项之列, 其一阶矩不集中.</p>
+<p>路线 B 的优点是终决性: 单个此类估计即可关闭 59.1$^<em>$. 弱点在技术深度. 递归 $\rho_{S_{D^</em>(j)}}$ 由对量级为 $\sqrt{2^j}$ 的有限骨架取最小值隐式定义, 目前对 $\{x(p) : p \in I_j\}$ 的联合分布尚无解析手柄.</p>
+<h3>8.3 路线 C: 谱平坦性</h3>
+<p>一阶矩 $B_j$ 在归一化下是 $I_j$ 上素数处剥离残差序列周期图在零频率处的取值. 猜想 59.1$^*$ 即断言: 零频率峰值 $B_j^2$ 至多为周期图平均质量的 $O(j)$ 倍, 而后者本质上是 $D_j$ 至常数倍.</p>
+<p>paper 65 曾沿此线路勾画谱平坦性论证, 但停滞于通用界层面. 在分块化归在手之后, 这些论证可能对每一块单独变得可处理.</p>
+<p>此路线在表述上最为经典. 强项在于把 59.1$^<em>$ 联接至关于算术序列均匀分布的大量文献. 弱点在于该文献的相关定理一般要求独立性假设, 而确定性递归 $\rho_{S_{D^</em>(j)}}$ 显然不满足该假设.</p>
+<h3>8.4 开放条件</h3>
+<p>三条路线共享如下开放条件, 我们明确列出, 以便后续工作可以靶向解决.</p>
+<p>(i) <strong>$D_{\rm sat}(j)$ 的下界.</strong> 证明对无穷多个 $j$, $D_{\rm sat}(j) \ge c \sqrt{2^j}$ 对某 $c > 0$ 成立. 这将建立分块截断的紧致性.</p>
+<p>(ii) <strong>$R_j^<em>$ 的跨 $N$ 稳定性.</strong> 验证或否证 $R_j^</em>(N)$ 对每个固定 $j$ 随 $N$ 增长而稳定. 此为整个程序的中心经验问题: 即使在固定 $N$ 上得到 Route A/B/C 的界, 也不蕴含猜想 59.1$^*$, 除非跨 $N$ 稳定性成立. R9 在 $N = 10^9$ 进行; $N = 10^{10}, 10^{11}$ 处可比较的数据是当前最优先的实验任务.</p>
+<p>(iii) <strong>谱比对数预算可积性.</strong> 路线 A 所需: 证明 $\sum_k \log Q_{j,k} = O(1)$ 在 $j$ 上一致.</p>
+<p>(iv) <strong>二阶矩控一阶矩界.</strong> 路线 B 所需: 证明 $|B_j(\rho_{S_{D^<em>(j)}})| = O\bigl(\sqrt{j \cdot D_j(\rho_{S_{D^</em>(j)}})}\bigr)$.</p>
+<p>(v) <strong>谱集中.</strong> 路线 C 所需: 在零频率处把周期图峰值的界控制为二阶矩质量的 $O(j)$ 倍.</p>
+<p>我们强调, 这些条件均未由本文工作关闭. paper 70 的贡献在于把 59.1 化归为这些显式的, 可计算的, 有限对象上的条件.</p>
+<h3>8.5 关于三条路线的比较性注记</h3>
+<p>我们不在此承诺任何一条路线, 但记录我们当前的读法以供后续工作参考. 路线 B (直接二阶矩估计) 是最干净的目标: 关于分块饱和骨架的单一估计 $|B_j| = O(\sqrt{j D_j})$ 即可关闭 59.1$^<em>$, 且化归的逐块特征使得这样的估计真正可用直接计算入手, 这是抽象 Full IC 表述所不容的. 其困难是技术深度而非结构性障碍. 路线 A (谱比对数预算) 与既有实验数据最直接对齐, 但逐步 $\log Q_{j,k}$ 没有固定符号是真问题: 含符号不定被加项的电报和论证, 一般需要响应恒等式以外的额外控制. 路线 C (谱平坦性) 在表述上最为经典, 优势在于把 59.1$^</em>$ 联接至均匀分布文献, 但定义 $\rho_{S_{D^*(j)}}$ 的确定性最小化, 不满足该文献相关定理通常所依的独立性假设. 综合而言, 我们的读法是: 若技术深度可以处理, 路线 B 最有可能给出干净的关闭; 路线 A 与 C 提供互补的部分信息.</p>
+<hr>
+<h2>§9. 与标准整数复杂度的关联</h2>
+<p>ZFCρ 递归 $\rho_S$ 与 Mahler-Popken 整数复杂度 $\| n \|$ 共有乘法分支 ($n = a \cdot b$), 但加法分支本质不同: ZFCρ 递归仅允许后继步 $\rho(n) \le \rho(n - 1) + 1$, 而 $\| n \|$ 允许任意 $n = a + b$ 以单位成本进行. 两递归不等价, paper 50 经验测得的渐近常数 $\lambda_{\rm Full IC} = 3.856763$ 仅针对 ZFCρ 递归.</p>
+<p>定理 70.A 的论证结构性地仅作用于乘法分支 (任一 $n = a \cdot b$ 满足 $n < 2^{j+1}$ 必有 $a < \sqrt{2^{j+1}}$), 故不能逐字转移到 $\| n \|$: 对 $n \in I_j$ 而言, $\| n \|$ 的最优表达可能使用两加项均远离 $\sqrt{n}$ 的加法分裂. 任何真正的转移都需要对加法分支的独立处理. 我们不进一步追究这一关联; 我们建立的乘法分支化归对此目的已足够, 因为 ZFCρ 递归没有超出后继步的加法分支.</p>
+<hr>
+<h2>§10. 结语</h2>
+<p>本文做了四件事.</p>
+<p>我们识别出 ZFCρ 程序 R6 与 R7 阶段的一项临时论断 (全局有限 $D$ 饱和截断 $D_{\rm sat}(10^9) \le 2048$) 为参考 C 构建器中静默因子截断的伪影. 截断位于 1860. 在截断存在的情形下, 一切申报因子表大于此值的构建均塌陷为同一有效骨架 $S_{1860}$, 在倍增链 $D = 2048 \to 4096 \to \cdots \to 32768$ 上呈现表面冻结. 截断首次由 R8a 直接 target-domination 认证检出 ($D = 2048$, $N = 10^9$ 处 31,427,448 项违背), 进而追溯至构建日志.</p>
+<p>我们呈现了修正后的实验程序 (R9 轮): C 构建器重写, 因子数组动态分配, 加入因子表完整性的硬断言, 对全 $\rho$ 数组 FNV-1a 校验和, 并在每次构建中嵌入三项回归测试.</p>
+<p>我们陈述并证明了<strong>分块有效骨架定理</strong> (定理 70.A): 对每个二进制块 $I_j = [2^j, 2^{j+1})$, 一旦 $D \ge \sqrt{2^{j+1}}$, 递归 $\rho_D$ 即在 $[1, 2^{j+1})$ 上与 $\rho_{\rm Full}$ 逐点相等. 证明初等; 内容在于把 $\sqrt{2^{j+1}}$ 识别为正确的截断. R9 饱和数据在所测倍增网格的分辨率下确认了该截断, 首个非零阈值 $j = \lceil \log_2(D^2) \rceil$ 在四个所测过渡上完全匹配.</p>
+<p>我们把猜想 59.1 化归为分块饱和有界相位陈述, 即猜想 59.1$^*$:</p>
+<p>$$\sup_j \frac{B_j(\rho_{S_{\lceil\sqrt{2^{j+1}}\rceil}})^2}{j \cdot D_j(\rho_{S_{\lceil\sqrt{2^{j+1}}\rceil}})} < \infty.$$</p>
+<p>此化归不关闭 59.1. 它把抽象对象 $\rho_{\rm Full}$ 替换为一族显式的有限骨架, 每个二进制块对应一个, 规模随 $j$ 增长为 $\sqrt{2^j}$. 余下的开放问题为分块的一阶矩相对二阶矩界 $|B_j| = O(\sqrt{j D_j})$, 可由三条路线之一处理 (谱比对数预算, 直接二阶矩估计, 谱平坦性).</p>
+<p>本文末尾的状态是:</p>
+<ul>
+<li><strong>在 $[1, N]$ 上以子 $\sqrt{N}$ 截断给出全局有限 $D$ 闭合: 否.</strong> 平凡界 $D_{\rm sat}^{\rm univ}(N) \approx \sqrt{N}$ 实质上紧致.</li>
+<li><strong>以截断 $\sqrt{2^{j+1}}$ 给出分块有限 $D$ 闭合: 定理.</strong></li>
+<li><strong>59.1 本身: 化归为分块零模界; 仍开放.</strong></li>
+</ul>
+<p>我们把这一情形看作恰当的认知定位, 而非失败. 临时叙事曾过度承诺; R8 修正了过度承诺; R9 给出了正确的衬底结果; R10 (即本文) 把该结果置于干净的定理之上. 这条路径与 paper 67 的有限尺度闭合程序相似, 后者也是先识别正确的有限对象, 再把渐近控制作为单独问题处理.</p>
+<p>我们以三点结语结束.</p>
+<p>第一, 本文呈现的 <em>Via Negativa</em> (临时论断, 仪器层余项, 修正, 正确定理) 在 SAE 方法学框架内属于常态 (参见该系列 paper 0, op. cit.), 我们希望这一示范本身有教益. "$D_3 \to D_4 \to D_5 \to D_6$ 全部冻结" 的经验信号看起来恰似实质性的衬底现象. 它不是. 把临时论断转化为修正定理的检查正是 R8 的直接 target-domination 认证, 该认证存在的目的恰为如此: 通过反例否决错误的有限闭合论断. 定理 70.A 现在可以视作经此否决之后留存的衬底陈述.</p>
+<p>第二, 分块有效骨架定理是 ZFCρ 程序对 59.1 至今给出的最干净对象. 此前的表述 (paper 65 的谱平坦性, paper 67 的尺度预算, paper 69 的双腿同步, §2.1 所用的线性零模响应恒等式) 都把 "Full IC" 引为单一对象. 定理 70.A 揭示: Full IC 限制于任一二进制块, <strong>就是</strong>一个量级为 $\sqrt{2^j}$ 的有限可计算对象. 这或许也能锐化此前的表述.</p>
+<p>第三, 当前的化归使 59.1 易于对每一块的残差直接进攻. 对固定 $j$, 递归 $\rho_{S_{D^*(j)}}$ 是具体的算术对象. 它在 $I_j$ 上素数处的行为原则上可在 $2^j$ 的多项式时间内计算, 也以抽象 Full IC 所不容的方式可解析处理.</p>
+<p>59.1 的完整证明仍是后续工作.</p>
+<hr>
+<h2>致谢</h2>
+<p>通篇所用的四 AI 协作方法 (在 ZFCρ 系列中正式确立) 谨此致谢. 具体而言, 与 ChatGPT (内部命名为 公西华) 的逐轮对话塑造了定理 70.A 的表述与本分块化归; Claude (子路) 执行了 R0 至 R9 实验程序与本文撰写; Gemini (子夏) 与 Grok (子贡) 在早期各轮提供交叉核对. 该协作框架在 SAE 方法学系列 (paper 0, "余之道 / Via Rho") 中有所描述.</p>
+<p>R6 与 R7 阶段一度成立的全局有限 $D$ 饱和论断, 本文已予修正, 此为集体性错误: 四 AI 参与者与主要研究者皆有份额. 检测与修正流程 (R8 直接认证, R9 构建器修复, R10 本文表述) 是面对此类错误的恰当响应, 也是我们在相关程序中对未来有限 $D$ 闭合论断的推荐流程.</p>
+<hr>
+<h2>参考文献</h2>
+<p>[ZFCρ 系列内]</p>
+<ul>
+<li>Paper 50: cross-$\lambda$ 框架与常数 $\lambda_{\rm Full IC} = 3.856763$. (Zenodo, DOI 于上传时填入.)</li>
+<li>Paper 59: 猜想 59.1 的陈述; $N = 10^{10}$ 下 $R_{\rm wt}(j) \in [0.79, 25.3]$ 的基线. (Zenodo, DOI 于上传时填入.)</li>
+<li>Paper 65: 谱平坦性表述. (Zenodo, DOI 于上传时填入.)</li>
+<li>Paper 67: 通过二进制穷举的有限尺度闭合. (Zenodo, DOI 于上传时填入.)</li>
+<li>Paper 69 (v2): 双腿机制与两次相变. DOI 10.5281/zenodo.19783658.</li>
+</ul>
+<p>[ZFCρ 系列外]</p>
+<ul>
+<li>Mahler, K. and Popken, J. "On a maximum problem in arithmetic." (1953).</li>
+<li>Selfridge, J. "Notes on integer complexity." (1970 年代以降的多项工作.)</li>
+<li>Coppersmith, D. and Guy, R. "Subadditivity properties of integer complexity." (整数复杂度文献的标准参考.)</li>
+</ul>
+<p>[SAE 方法学]</p>
+<ul>
+<li>SAE Methodology Paper 0: "余之道 / Via Rho." DOI 10.5281/zenodo.19657439.</li>
+</ul>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

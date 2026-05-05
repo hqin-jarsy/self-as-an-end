@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXXI: Linear Signed Abel Budget and the Saturated Zero-Mode Target — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho71.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho71.html">
+  <meta name="citation_title" content="ZFCρ Paper LXXI: Linear Signed Abel Budget and the Saturated Zero-Mode Target">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.20020573">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXXI</div>
+    <h1>ZFCρ Paper LXXI: Linear Signed Abel Budget and the Saturated Zero-Mode Target<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXXI篇：线性 Signed Abel 预算与饱和零模目标</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20020573" target="_blank" rel="noopener">10.5281/zenodo.20020573</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.20020573" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Paper 70 reduced Conjecture 59.1 to an equivalent bounded-phase statement on saturated skeletons,
+
+$$\sup_j \frac{B_j(\rho_{S_{D^*(j)}})^2}{j \cdot D_j(\rho_{S_{D^*(j)}})} < \infty,$$
+
+with $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$. The present paper identifies the microscopic mechanism behind this saturated zero-mode target and corrects an interpretation of an intermediate memory coefficient that has been used in several earlier papers.
+
+Empirical measurements across $N = 10^7, 10^8, 10^9$ (with $\pi(10^9) \approx 5.08 \times 10^7$ primes) yield three structurally stable invariants and one phenomenon requiring requantification. First, the lag-1 autocorrelation of raw $\rho(q)$ on consecutive same-layer primes is $\approx 0.96$ across 25 layers; this number was previously interpreted as an ancestor inheritance rate, but the present paper shows that approximately 9/10 of its contribution comes from the $\lambda \ln q$ trend term, with the true detrended same-layer residual autocorrelation only about $0.10$ and converging across $N$. Second, the ZFCρ DP recursion is a discrete single-step update with no continuous-time limit. Data strongly support a polynomial / resolvent-type kernel candidate: polynomial fits dominate exponential fits in all comparable settings, and the Bartlett triangular envelope $A_j^{\rm abs}(W) \asymp W^{\beta_{\rm abs}}$ exhibits $\beta_{\rm abs} \approx 0.50$ stably across $j$, $N$, and centerings; the precise mathematical derivation of the kernel form is left as Candidate 71.K-abs. Third, under $j$-smooth adjacent reference centering, the signed Bartlett budget $A_j^{\rm signed}(W_f)$ (where $W_f = m_j / 2$ is the non-vacuous theorem scale) is not strictly bounded: its growth exponent $\beta_{\rm signed}$ is negative for small $j$, becomes positive at $j \ge 22$, and grows slowly to about $+0.29$ at $j = 29$. However the normalized budget $A_j^{\rm signed}(W_f) / j$ remains in $[0.07, 0.89]$ across $j = 14$ to $29$, comparable in order of magnitude to the Paper 59 range $R_{\rm wt} \in [0.79, 25.3]$.
+
+This identifies the precise intermediate scale required by 59.1: not strict signed Abel boundedness, but the linear budget
+
+$$\boxed{A_j^{\rm signed}(W_f) \le C j}$$
+
+(where $W_f = m_j / 2$ is the non-vacuous half-block theorem scale; see §1.4 + §7.3 (iii)). The linear signed Abel budget makes precise Paper 65's remaining technical core $\Psi_\eta = O(j)$. Conditional on Paper 65's count and gauge controls, satisfaction of the linear signed Abel budget (together with a deterministic Abel transfer inequality) yields the residual spectral estimate for 59.1 (Criterion 71.E, conditional).
+
+The paper does not prove 59.1; nor does it prove that the single-step kernel takes a specific polynomial form. Two open theorem candidates (71.K-abs, 71.S-signed) and one framework-internal candidate (71.A-deterministic) mark the remaining mathematical content; their full establishment, together with unconditional treatment of Paper 65's count and gauge conditions, would close 59.1 (§8.4).
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> ZFCρ, linear signed Abel budget, zero-mode target, saturated skeleton, Conjecture 59.1, spectral bound</div>
+    </div>
+    <div class="paper-body">
+<h2>Abstract</h2>
+<p>Paper 70 reduced Conjecture 59.1 to an equivalent bounded-phase statement on saturated skeletons,</p>
+<p>$$\sup_j \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})} < \infty,$$</p>
+<p>with $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$. The present paper identifies the microscopic mechanism behind this saturated zero-mode target and corrects an interpretation of an intermediate memory coefficient that has been used in several earlier papers.</p>
+<p>Empirical measurements across $N = 10^7, 10^8, 10^9$ (with $\pi(10^9) \approx 5.08 \times 10^7$ primes) yield three structurally stable invariants and one phenomenon requiring requantification. First, the lag-1 autocorrelation of raw $\rho(q)$ on consecutive same-layer primes is $\approx 0.96$ across 25 layers; this number was previously interpreted as an ancestor inheritance rate, but the present paper shows that approximately 9/10 of its contribution comes from the $\lambda \ln q$ trend term, with the true detrended same-layer residual autocorrelation only about $0.10$ and converging across $N$. Second, the ZFCρ DP recursion is a discrete single-step update with no continuous-time limit. Data strongly support a polynomial / resolvent-type kernel candidate: polynomial fits dominate exponential fits in all comparable settings, and the Bartlett triangular envelope $A_j^{\rm abs}(W) \asymp W^{\beta_{\rm abs}}$ exhibits $\beta_{\rm abs} \approx 0.50$ stably across $j$, $N$, and centerings; the precise mathematical derivation of the kernel form is left as Candidate 71.K-abs. Third, under $j$-smooth adjacent reference centering, the signed Bartlett budget $A_j^{\rm signed}(W_f)$ (where $W_f = m_j / 2$ is the non-vacuous theorem scale) is not strictly bounded: its growth exponent $\beta_{\rm signed}$ is negative for small $j$, becomes positive at $j \ge 22$, and grows slowly to about $+0.29$ at $j = 29$. However the normalized budget $A_j^{\rm signed}(W_f) / j$ remains in $[0.07, 0.89]$ across $j = 14$ to $29$, comparable in order of magnitude to the Paper 59 range $R_{\rm wt} \in [0.79, 25.3]$.</p>
+<p>This identifies the precise intermediate scale required by 59.1: not strict signed Abel boundedness, but the linear budget</p>
+<p>$$\boxed{A_j^{\rm signed}(W_f) \le C j}$$</p>
+<p>(where $W_f = m_j / 2$ is the non-vacuous half-block theorem scale; see §1.4 + §7.3 (iii)). The linear signed Abel budget makes precise Paper 65's remaining technical core $\Psi_\eta = O(j)$. Conditional on Paper 65's count and gauge controls, satisfaction of the linear signed Abel budget (together with a deterministic Abel transfer inequality) yields the residual spectral estimate for 59.1 (Criterion 71.E, conditional).</p>
+<p>The paper does not prove 59.1; nor does it prove that the single-step kernel takes a specific polynomial form. Two open theorem candidates (71.K-abs, 71.S-signed) and one framework-internal candidate (71.A-deterministic) mark the remaining mathematical content; their full establishment, together with unconditional treatment of Paper 65's count and gauge conditions, would close 59.1 (§8.4).</p>
+<hr>
+<h2>§1. Introduction: From Paper 70 to Paper 71</h2>
+<h3>1.1 The terminal observable from Paper 70</h3>
+<p>Paper 70 Theorem 70.A is a deterministic reduction. For each dyadic block $I_j = [2^j, 2^{j+1})$, when $D \ge \sqrt{2^{j+1}}$ the full IC recursion $\rho_{\rm Full}$ and the truncated recursion $\rho_D$ agree pointwise on $[1, 2^{j+1})$. With $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$, Conjecture 59.1 on the spectral block ratio $R_{\rm wt}(j)$ reduces to the equivalent statement on saturated skeletons:</p>
+<p>$$\sup_j R_j^<em>(N) < \infty, \qquad R_j^</em>(N) := \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})}.$$</p>
+<p>The reduction replaces the abstract object $\rho_{\rm Full}$ in 59.1 by the specific finite skeleton attached to each block, of size $\sim \sqrt{2^j}$.</p>
+<h3>1.2 What Paper 70 did not do</h3>
+<p>Paper 70 Theorem 70.A is a reduction, not a proof. 59.1 remains open. Paper 70 §8 lists three routes to a bounded-phase statement (spectral ratio log budget, direct second moment, spectral flatness), with route B identified as the most likely clean closure path.</p>
+<h3>1.3 What this paper does</h3>
+<p>The present paper does not pursue any of those three routes directly. It does four things.</p>
+<p>(i) <strong>Corrects a false target.</strong> Paper 55 reported $C(1)_{\rho(q)} \approx 0.96$ for the same-layer raw lag-1 ACF, an interpretation propagated through several subsequent papers as an ancestor inheritance rate. Cross-$N$ measurements show this number is dominated by the $\lambda \ln q$ trend; the true detrended residual autocorrelation is about $0.10$. Any derivation depending on the "$0.96$ as retention coefficient" reading needs revision.</p>
+<p>(ii) <strong>Identifies the kernel form of the single step.</strong> ZFCρ DP is a discrete single-step recursion. The data show ACF tails of the χ-field are clearly polynomial rather than exponential. This is consistent with the discrete structure of ZFCρ.</p>
+<p>(iii) <strong>Requantifies the remaining open core of Paper 65.</strong> Paper 65 Theorem 65.A reduces 59.1 to four conditions, three of which are conditionally controlled; the remaining open core is the centered-residual spectral bound $\Psi_\eta = O(j)$. The present paper makes this precise as the linear signed Abel budget $A_j^{\rm signed}(W_f) \le C j$ (where $W_f = m_j / 2$ is the non-vacuous half-block theorem scale; see §1.4 + §7.3 (iii)).</p>
+<p>(iv) <strong>Gives a conditional criterion.</strong> Criterion 71.E derives 59.1 from the Paper 65 conditional architecture together with the linear signed Abel budget and a deterministic Abel transfer inequality.</p>
+<p>The paper identifies the mechanism but does not prove it. Subsequent work needs to: derive the polynomial / resolvent kernel envelope (71.K-abs); prove the linear signed Abel budget (71.S-signed); render the Paper 65 conditions fully unconditional; and establish the deterministic Abel transfer inequality (71.A-deterministic). The latter three together form the three independent components of the unconditional closure pathway, detailed in §8.4.</p>
+<h3>1.4 Notation</h3>
+<p>Following Papers 50 through 70.</p>
+<p>Stripped residual: $h(p) = \rho(p) - \lambda \ln p - \mu_{12}(p \bmod 12)$, with $\lambda = 3.856763$ (Paper 50 anchor), $\mu_{12}(\cdot)$ the conditional mean over residue classes mod 12.</p>
+<p>Normalized residual: $x(p) = h(p) / p$.</p>
+<p>Dyadic block: $I_j = [2^j, 2^{j+1})$.</p>
+<p>Dyadic layer: For prime $p > 2$, the layer index $\ell = v_2(p - 1)$ is the 2-adic valuation of $p - 1$. Same-layer consecutive primes refers to consecutive primes within layer $\ell$ ordered by $p$. The odd part of that layer is $q = (p - 1) / 2^\ell$.</p>
+<p>χ-field: $\chi(p) = h(p)$, the stripped residual; in the layer-$\ell$ context one also considers $\chi(q) = \rho(q) - \lambda \ln q - \mu_{12}(q \bmod 12)$ (the stripped residual on the odd part).</p>
+<p>Spectral block quantities: $B_j = \sum_{p \in I_j} x(p)$, $D_j = \sum_{p \in I_j} x(p)^2$.</p>
+<p>Spectral block ratio: $R_{\rm wt}(j) = B_j^2 / (j D_j)$.</p>
+<p>$j$-smooth adjacent reference centering: For the $\chi$-field on consecutive same-layer primes inside block $I_j$, the residue class mean used as the centering reference is the average of the residue class means in the adjacent blocks $I_{j-1}$ and $I_{j+1}$, rather than the residue class mean within $I_j$ itself.</p>
+<p>Bartlett triangular Abel budget: For a $\chi$-sequence $\{x_i\}$ over a window of size $W$,</p>
+<p>$$A^{\rm abs}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) |\gamma(k)|, \qquad A^{\rm signed}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma(k),$$</p>
+<p>where $\gamma(k)$ is the sample autocorrelation $\hat{\gamma}(k) / \hat{\gamma}(0)$. Within block $I_j$ two window scales appear:</p>
+<ul>
+<li>$W_f = m_j / 2$, the half-block scale, which serves as the <strong>non-vacuous theorem scale</strong> for the (H4a) statement; data are stable across $j$ and $N$ and carry signed cancellation information at this scale.</li>
+<li>$W_{\rm full} = m_j := |\{p : p \in I_j\}|$, the total prime count, a boundary scale. On sample-mean-centered $\gamma$, $A^{\rm signed}(W_{\rm full})$ degenerates to a finite-sample identity ($\equiv 0$ on adjacent-centered sequences in floating-point precision), carrying no mechanism information; this boundary identity is consistent with the Spectral Bridge Front geometry articulated in Paper 72, see §7.3 (iii).</li>
+</ul>
+<p>Numerically $A^{\rm signed}(W_f) / j$ remains in $[0.07, 1.20]$ across $j = 14$ to $29$ at $N = 10^9$ (§5 Tables 7-8); this is the empirical anchor for (H4a). The precise transfer is discussed in §7.3 (iii) and (iv).</p>
+<hr>
+<h2>§2. Correcting a false target: raw $C(1)$ is not a retention coefficient</h2>
+<h3>2.1 A long-cited number</h3>
+<p>Several passages in Papers 55 through 65 take the same-layer raw $\rho(q)$ lag-1 autocorrelation $C(1)_{\rho(q)} \approx 0.96$ to be an ancestor inheritance rate, writing</p>
+<p>$$C(1)_{\rho(q)} = \text{fraction of ancestor factor structure shared between consecutive same-layer primes.}$$</p>
+<p>This reading then treats $1 - C(1) \approx 0.04$ as a per-layer innovation rate, leading to a derived figure of "approximately 4% innovation per layer." That figure has been used in several subsequent derivations as an intermediate constant.</p>
+<p>The present paper shows this reading does not hold against the data.</p>
+<h3>2.2 Cross-$N$ measurements: raw versus detrended</h3>
+<p>For each $N \in \{10^7, 10^8, 10^9\}$, ZFCρ Full IC arrays were built using the Paper 70 builder (with FNV-1a checksums preserved). For each layer $\ell$, three quantities are computed on the sequence of consecutive same-layer primes:</p>
+<p>(i) Raw $\rho(q)$ lag-1 autocorrelation: directly on the $\rho(q)$ values.</p>
+<p>(ii) Detrended $\rho(q) - \lambda \ln q$ lag-1 autocorrelation.</p>
+<p>(iii) Stripped $\chi(p) = \rho(p) - \lambda \ln p - \mu_{12}(p \bmod 12)$ lag-1 autocorrelation.</p>
+<p><strong>Table 1.</strong> Same-layer lag-1 autocorrelation across the three formulations, on the $N = 10^9$ data (which provides the broadest layer coverage).</p>
+<table><thead><tr>
+<th>$\ell$</th>
+<th>$n_p$ ($N = 10^9$)</th>
+<th>raw $\rho(q)$</th>
+<th>$\rho(q) - \lambda \ln q$</th>
+<th>$\chi(p)$</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>25,424,042</td>
+<td>0.9587</td>
+<td>0.0596</td>
+<td>0.0982</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12,712,271</td>
+<td>0.9655</td>
+<td>0.1053</td>
+<td>0.1318</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6,355,931</td>
+<td>0.9598</td>
+<td>0.0598</td>
+<td>0.0923</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1,589,237</td>
+<td>0.9582</td>
+<td>0.0471</td>
+<td>0.0991</td>
+</tr>
+<tr>
+<td>7</td>
+<td>397,158</td>
+<td>0.9596</td>
+<td>0.0442</td>
+<td>0.0861</td>
+</tr>
+<tr>
+<td>9</td>
+<td>99,234</td>
+<td>0.9582</td>
+<td>0.0161</td>
+<td>0.0912</td>
+</tr>
+<tr>
+<td>12</td>
+<td>12,433</td>
+<td>0.9680</td>
+<td>0.0488</td>
+<td>0.0975</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1,527</td>
+<td>0.9576</td>
+<td>$-0.0721$</td>
+<td>0.0082</td>
+</tr>
+<tr>
+<td>19</td>
+<td>101</td>
+<td>0.9380</td>
+<td>$-$</td>
+<td>0.0615</td>
+</tr>
+</tbody></table>
+<p>The raw column sits stably at $0.94$ to $0.97$ across all 19 layers with sufficient sample, exactly reproducing the Paper 55 report at $N = 10^{10}$ and replicating it across two orders of magnitude in $N$. The detrended column drops by roughly a factor of 16, and the stripped $\chi$ column likewise stays at the $0.10$ scale rather than the $0.96$ scale.</p>
+<p><strong>Cross-$N$ convergence</strong>:</p>
+<table><thead><tr>
+<th>$\ell$</th>
+<th>$\chi(p)$ ACF $N = 10^7$</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+<th>$\Delta_{8 \to 9}$</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.0905</td>
+<td>0.0972</td>
+<td>0.0982</td>
+<td>$+0.0010$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.0803</td>
+<td>0.0901</td>
+<td>0.0923</td>
+<td>$+0.0022$</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.0783</td>
+<td>0.0942</td>
+<td>0.0991</td>
+<td>$+0.0049$</td>
+</tr>
+</tbody></table>
+<p>The stripped $\chi$ lag-1 autocorrelation has largely saturated at the $0.10$ scale by $N = 10^9$, with cross-$N$ convergence within a few percent.</p>
+<h3>2.3 What the data show</h3>
+<p>Three observations.</p>
+<p>(i) The raw $\rho(q)$ autocorrelation $\approx 0.96$ is the trend synchrony of $\lambda \ln q$. Consecutive same-layer primes have similar $q$ magnitudes, so the $\lambda \ln q$ contribution synchronizes between them. This synchrony is independent of the ρ-recursion itself.</p>
+<p>(ii) After stripping the trend, the true same-layer ρ-residual autocorrelation is about $0.10$. This is the actual retention coefficient of ZFCρ DP at the $\chi$-layer.</p>
+<p>(iii) $1 - 0.96 \approx 0.04$ cannot be read as an innovation rate. The actual innovation rate in the $\chi$-layer is $1 - 0.10 \approx 0.90$, i.e., over nine tenths is innovation rather than inheritance.</p>
+<p>This terminates the early reading that identified raw $C(1)_{\rho(q)}$ directly with a retention coefficient. The earlier algebraic identity $m_{\rm eff} = \ln r / \ln C(1)$ remains a formal identity, but the $C(1)$ entering it should be understood as the raw same-layer lag-1 ACF (dominated by trend), not as a retention quantity.</p>
+<p>Subsequent sections work with the true stripped objects $\chi(p)$ and $\chi(q)$, not with the raw $\rho(q)$ autocorrelation.</p>
+<hr>
+<h2>§3. The discrete single-step kernel: K=1 resolvent form</h2>
+<h3>3.1 ZFCρ DP as discrete single-step closure</h3>
+<p>The ZFCρ DP recursion</p>
+<p>$$\rho(n) = \min(\rho(n-1) + 1, M(n))$$</p>
+<p>updates one integer at a time. There is no continuous time parameter and no $dt \to 0$ limit. On the χ-layer, the update between consecutive same-layer primes is a single-step object, completed in one move.</p>
+<p>The natural kernel form for discrete single-step closure lies in the polynomial kernel class. The resolvent kernel $(1 + x)^{-1}$ is one specific candidate within this class: given a one-step feedback structure $S + xS = S_0$, the solution is $S = S_0 / (1 + x) = S_0 \cdot (1 + x)^{-1}$. Its low-frequency expansion</p>
+<p>$$(1 + x)^{-1} = 1 - x + x^2 - x^3 + \cdots$$</p>
+<p>has second coefficient $1$. By contrast, the exponential kernel $e^{-x}$ arising from a continuous-time limit has expansion $1 - x + x^2/2 - \cdots$ with second coefficient $1/2$. The two kernel families agree at first order but separate at second order.</p>
+<p>The specific polynomial form of the ZFCρ single-step kernel remains an open theorem candidate (71.K-abs, §8.1). The empirical evidence in §3.2 and §3.3 supports a polynomial form robustly, but does not by itself distinguish the strict resolvent $(1 + x)^{-1}$ from a higher-order rational form. Throughout, "$K = 1$ resolvent kernel form" is used as a candidate label without commitment to a specific operator form.</p>
+<h3>3.2 Data: polynomial tail rather than exponential tail</h3>
+<p>For each layer $\ell$ and each centering, the lag-$k$ autocorrelation ACF$(k)$ on consecutive same-layer primes is computed at $k = 1, 2, 3, 5, 8, 12, 16, 24, 32, 48, 64$. On the lags with ACF$(k) > 0.005$ two functional forms are fit:</p>
+<p>(i) Exponential: ACF$(k) = e^{-k/\tau}$.</p>
+<p>(ii) Polynomial single-step resolvent: ACF$(k) = 1 / (1 + k / \tau)$, equivalently $1 / \text{ACF}(k) = 1 + k / \tau$.</p>
+<p><strong>Table 2.</strong> Goodness-of-fit $R^2$ comparison across $N$ and centering, on the highest-statistics layer $\ell = 1$.</p>
+<table><thead><tr>
+<th>centering</th>
+<th>$N$</th>
+<th>$R^2_{\exp}$</th>
+<th>$R^2_{\rm poly}$</th>
+<th>winner</th>
+</tr></thead><tbody>
+<tr>
+<td>$\mu_{12}$</td>
+<td>$10^7$</td>
+<td>0.918</td>
+<td>0.978</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>$\mu_{12}$</td>
+<td>$10^8$</td>
+<td>0.864</td>
+<td>0.946</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>$\mu_{12}$</td>
+<td>$10^9$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>adjacent</td>
+<td>$10^7$</td>
+<td>0.927</td>
+<td>0.976</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>adjacent</td>
+<td>$10^8$</td>
+<td>0.864</td>
+<td>0.946</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>layer</td>
+<td>$10^7$</td>
+<td>0.925</td>
+<td>0.976</td>
+<td>poly</td>
+</tr>
+</tbody></table>
+<p>The polynomial fit strictly outperforms the exponential fit in every comparable combination. The same outcome holds at $\ell = 2, 3, 5$. At sample sizes below $10^4$ (the high-$\ell$ low-$N$ corner) the fits become unstable, but the verdict is uniform across all sufficiently sampled $(\ell, N, \text{centering})$ triples.</p>
+<h3>3.3 Power-law exponent $\alpha$ and Bartlett envelope</h3>
+<p>A direct power-law fit ACF$(k) \sim A \cdot k^{-\alpha}$ on the same lags yields the exponent $\alpha$.</p>
+<p><strong>Table 3.</strong> $\alpha$ across $N$ and centering, at $\ell = 1$.</p>
+<table><thead><tr>
+<th>centering</th>
+<th>$\alpha$ ($N = 10^7$)</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+</tr></thead><tbody>
+<tr>
+<td>$\mu_{12}$</td>
+<td>0.509</td>
+<td>0.350</td>
+<td>0.288</td>
+</tr>
+<tr>
+<td>adjacent</td>
+<td>0.473</td>
+<td>0.327</td>
+<td>0.269</td>
+</tr>
+<tr>
+<td>layer</td>
+<td>0.459</td>
+<td>0.325</td>
+<td>0.268</td>
+</tr>
+<tr>
+<td>block</td>
+<td>0.474</td>
+<td>0.327</td>
+<td>0.269</td>
+</tr>
+</tbody></table>
+<p>The direct power-law $\alpha$ continues to drift slowly across $N$, with $\Delta_{8 \to 9} \approx -0.06$ (down from $\Delta_{7 \to 8} \approx -0.16$). The asymptotic value has not yet saturated. Across the five centering schemes the spread of $\alpha$ at fixed $N$ stays within $0.05$, and that spread is itself stable across $N$. So $\alpha$ is a structural feature of ZFCρ rather than an artifact of centering choice.</p>
+<p>The mild layer drift ($\alpha = 0.29$ at $\ell = 1$, $\alpha = 0.39$ at $\ell = 5$ at $N = 10^9$) shows $\alpha$ is not strictly layer-invariant, but in every layer $\alpha < 1$, so the ACF is non-summable.</p>
+<p>Define the Bartlett triangular absolute envelope</p>
+<p>$$A^{\rm abs}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) |\gamma(k)|.$$</p>
+<p>If $|\gamma(k)| \asymp k^{-\alpha}$ with $\alpha < 1$, then $A^{\rm abs}(W) \asymp W^{1 - \alpha}$.</p>
+<p><strong>Table 4.</strong> Bartlett envelope exponent $\beta_{\rm abs}$ across blocks $j$, centerings, and $N$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>centering</th>
+<th>$\beta_{\rm abs}$ ($N = 10^7$)</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+</tr></thead><tbody>
+<tr>
+<td>16</td>
+<td>$\mu_{12}$</td>
+<td>$+0.506$</td>
+<td>$+0.531$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$\mu_{12}$</td>
+<td>$+0.543$</td>
+<td>$+0.531$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>$\mu_{12}$</td>
+<td>$+0.505$</td>
+<td>$+0.511$</td>
+<td>$+0.511$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>$\mu_{12}$</td>
+<td>$+0.483$</td>
+<td>$+0.501$</td>
+<td>$+0.501$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>adjacent</td>
+<td>$+0.484$</td>
+<td>$+0.501$</td>
+<td>$+0.501$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$\mu_{12}$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$+0.516$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$\mu_{12}$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$+0.545$</td>
+</tr>
+<tr>
+<td>29</td>
+<td>$\mu_{12}$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$+0.562$</td>
+</tr>
+</tbody></table>
+<p>$\beta_{\rm abs}$ stays in $[0.50, 0.56]$, drifts mildly upward with $j$, is extremely stable across $N$ ($\Delta < 0.03$), and is essentially identical across the four tested centerings. This is a real structural invariant of ZFCρ, consistent with a polynomial single-step kernel.</p>
+<h3>3.4 What the data show</h3>
+<p>(i) ZFCρ DP is discrete single-step with no continuous limit. The natural kernel form for this closure type is the polynomial kernel class, with the resolvent $(1 + x)^{-1}$ a specific candidate compatible with the ZFCρ discrete single-step structure. This is an articulation determined by the discrete structure rather than a fit, but the precise operator form awaits 71.K-abs.</p>
+<p>(ii) Empirically, the polynomial fit strictly dominates the exponential fit on the χ-field same-layer ACF in every comparable combination. This is consistent with a polynomial single-step kernel.</p>
+<p>(iii) The Bartlett absolute envelope exponent $\beta_{\rm abs} \approx 0.50$ is extremely stable across $j$, $N$, and centering. This is the genuine spectral signature of the ZFCρ single-step kernel.</p>
+<p>(iv) The direct power-law $\alpha$ continues to drift and does not exactly satisfy $1 - \beta_{\rm abs} \approx 0.50$. The actual ACF is not a pure single power-law but a polynomial envelope with fine structure. The specific operator form of the ZFCρ single-step kernel remains open (71.K-abs).</p>
+<hr>
+<h2>§4. The signed Abel budget: incomplete but sufficient cancellation</h2>
+<h3>4.1 Separation of signed budget from absolute envelope</h3>
+<p>The Bartlett triangular Abel structure provides both an absolute budget $A^{\rm abs}(W)$ and a signed budget</p>
+<p>$$A^{\rm signed}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma(k).$$</p>
+<p>The absolute budget measures the cumulative ACF envelope; the signed budget measures the cumulative ACF after sign cancellation. The ratio</p>
+<p>$$A^{\rm signed}(W) / A^{\rm abs}(W)$$</p>
+<p>quantifies the degree of sign cancellation.</p>
+<h3>4.2 Cross-$N$ data</h3>
+<p><strong>Table 5.</strong> Bartlett growth exponents $\beta_{\rm signed}$ and $\beta_{\rm abs}$ on blocks $I_{16}$ through $I_{22}$, across $N$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>centering</th>
+<th>$\beta_{\rm signed}$ ($N = 10^7$)</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+<th>$\beta_{\rm abs}$ ($N = 10^9$)</th>
+</tr></thead><tbody>
+<tr>
+<td>16</td>
+<td>$\mu_{12}$</td>
+<td>$-0.513$</td>
+<td>$-0.490$</td>
+<td>$-0.490$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>16</td>
+<td>adjacent</td>
+<td>$-0.466$</td>
+<td>$-0.409$</td>
+<td>$-0.409$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$\mu_{12}$</td>
+<td>$-0.189$</td>
+<td>$-0.109$</td>
+<td>$-0.109$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>adjacent</td>
+<td>$-0.204$</td>
+<td>$-0.123$</td>
+<td>$-0.123$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>$\mu_{12}$</td>
+<td>$-0.146$</td>
+<td>$-0.086$</td>
+<td>$-0.086$</td>
+<td>$+0.511$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>adjacent</td>
+<td>$-0.157$</td>
+<td>$-0.097$</td>
+<td>$-0.097$</td>
+<td>$+0.511$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>$\mu_{12}$</td>
+<td>$+0.010$</td>
+<td>$+0.050$</td>
+<td>$+0.050$</td>
+<td>$+0.501$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>adjacent</td>
+<td>$-0.036$</td>
+<td>$+0.037$</td>
+<td>$+0.037$</td>
+<td>$+0.501$</td>
+</tr>
+</tbody></table>
+<p>By Paper 70 Theorem 70.A, the ρ data on block $I_j$ is identical across the three skeletons used for $N = 10^7, 10^8, 10^9$ (when $j \le 22$, all three cover $D^*(j) \le 2900$). Hence $\beta_{\rm signed}$ at $j \le 22$ is byte-equal between $N = 10^8$ and $N = 10^9$. The mild $N = 10^7$ deviations come from $\mu_{12}$ global calibration drift across $N$.</p>
+<h3>4.3 Systematic positive drift of $\beta_{\rm signed}$ at large $j$</h3>
+<p>At $N = 10^9$ the data on blocks $j = 23$ through $29$ are new and do not overlap with smaller $N$.</p>
+<p><strong>Table 6.</strong> $\beta_{\rm signed}$ across $j = 14$ through $29$ at $N = 10^9$, four centerings.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\mu_{12}$</th>
+<th>$\mu_{12, \text{global}}$</th>
+<th>adjacent</th>
+<th>adjacent_smooth</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>$-0.112$</td>
+<td>$+0.248$</td>
+<td>$-0.151$</td>
+<td>$-0.131$</td>
+</tr>
+<tr>
+<td>16</td>
+<td>$-0.490$</td>
+<td>$-0.023$</td>
+<td>$-0.409$</td>
+<td>$-0.464$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$-0.109$</td>
+<td>$+0.190$</td>
+<td>$-0.123$</td>
+<td>$-0.116$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>$-0.086$</td>
+<td>$+0.149$</td>
+<td>$-0.097$</td>
+<td>$-0.092$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>$+0.050$</td>
+<td>$+0.197$</td>
+<td>$+0.037$</td>
+<td>$+0.044$</td>
+</tr>
+<tr>
+<td>24</td>
+<td>$+0.134$</td>
+<td>$+0.210$</td>
+<td>$+0.123$</td>
+<td>$+0.129$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$+0.216$</td>
+<td>$+0.234$</td>
+<td>$+0.207$</td>
+<td>$+0.212$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$+0.299$</td>
+<td>$+0.281$</td>
+<td>$+0.289$</td>
+<td>$+0.294$</td>
+</tr>
+<tr>
+<td>29</td>
+<td>$+0.289$</td>
+<td>$+0.281$</td>
+<td>$+0.289$</td>
+<td>$+0.289$</td>
+</tr>
+</tbody></table>
+<p>In the two main centerings ($\mu_{12}$ and adjacent), $\beta_{\rm signed}$ flips sign between $j = 20$ and $j = 22$ and grows monotonically thereafter to about $+0.29$ at $j = 28$. The drift is essentially identical across the three block-locally consistent centerings ($\mu_{12}$, adjacent, adjacent_smooth), hence not a single-centering artifact.</p>
+<p>$\beta_{\rm signed} > 0$ means $A^{\rm signed}(W)$ grows with $W$, i.e., the signed Bartlett budget on large-$j$ blocks does not strictly saturate. The sign cancellation is incomplete.</p>
+<p>However $\beta_{\rm signed}$ stays strictly below $\beta_{\rm abs}$ at every $j$. The gap $\beta_{\rm abs} - \beta_{\rm signed}$ is about $0.6$ at $j = 14$ and still about $0.27$ at $j = 29$. So at every $j$ the sign cancellation does substantially reduce the growth exponent of the absolute envelope; it just fails to reduce it to zero.</p>
+<h3>4.4 What the data show</h3>
+<p>(i) The signed Bartlett budget $A^{\rm signed}(W_f)$ is not strictly bounded at large $j$. Strict sign cancellation does not hold in the data.</p>
+<p>(ii) The signed Bartlett growth exponent $\beta_{\rm signed}$ stays strictly below the absolute envelope exponent $\beta_{\rm abs}$ at every $j$. Sign cancellation is partial: it halves the absolute growth rate.</p>
+<p>(iii) The source of the sign cancellation is not a scalar property of the ZFCρ single-step kernel itself. The single-step resolvent kernel produces polynomial long memory (the absolute envelope) but does not by itself produce sign-phase cancellation. Sign cancellation involves the low-frequency structure of the signed spectral measure, a layer separate from §3's absolute envelope. Its mathematical mechanism remains open (71.S-signed, §8.2).</p>
+<hr>
+<h2>§5. Bartlett readout and macro verification of $R_{\rm wt} = O(1)$</h2>
+<h3>5.1 Bartlett spectral identity</h3>
+<p>There is a standard identity between partial-sum variance and the Bartlett triangular Abel object. For a sufficiently long stationary $\chi$-sequence,</p>
+<p>$$\text{Var}\left(\sum_{i=1}^{W} x_i\right) \approx W \cdot A^{\rm signed}(W) \cdot \text{Var}(x).$$</p>
+<p>Applied to block $I_j$ with $W = W_f$ as the half-block scale,</p>
+<p>$$B_j^2 \approx W_f \cdot A_j^{\rm signed}(W_f) \cdot D_j / W_f = A_j^{\rm signed}(W_f) \cdot D_j$$</p>
+<p>(under the assumption that $E[B_j]^2$ is negligible), hence</p>
+<p>$$R_{\rm wt}(j) = \frac{B_j^2}{j D_j} \approx \frac{A_j^{\rm signed}(W_f)}{j}.$$</p>
+<p>This identity is an asymptotic quadratic approximation, not a per-block exact equality. It holds exactly in the regime where $E[B_j]^2$ is negligible; on finite blocks there is an $O(1/j)$ relative error which numerically does not affect the $O(1)$ boundedness conclusion. A rigorous mathematical treatment uses the deterministic Abel transfer inequality (H4b) of Criterion 71.E (cf. §7.3 (iii)).</p>
+<h3>5.2 Reproduction of the Paper 59 range at $N = 10^9$</h3>
+<p>Paper 59 reported $R_{\rm wt}(j) \in [0.79, 25.3]$ across $j = 14$ to $33$ at $N = 10^{10}$. The present paper measures $R_{\rm wt}(j)$ across $j = 14$ to $29$ at $N = 10^9$.</p>
+<p><strong>Table 7.</strong> $R_{\rm wt}$ under $\mu_{12, \text{global}}$ centering at $N = 10^9$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$R_{\rm wt}$</th>
+<th>$j$</th>
+<th>$R_{\rm wt}$</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>8.71</td>
+<td>22</td>
+<td>23.85</td>
+</tr>
+<tr>
+<td>15</td>
+<td>13.75</td>
+<td>23</td>
+<td>24.64</td>
+</tr>
+<tr>
+<td>16</td>
+<td>10.90</td>
+<td>24</td>
+<td>17.33</td>
+</tr>
+<tr>
+<td>17</td>
+<td>15.78</td>
+<td>25</td>
+<td>11.91</td>
+</tr>
+<tr>
+<td>18</td>
+<td>18.00</td>
+<td>26</td>
+<td>3.56</td>
+</tr>
+<tr>
+<td>19</td>
+<td>19.42</td>
+<td>27</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>20</td>
+<td>21.75</td>
+<td>28</td>
+<td>2.88</td>
+</tr>
+<tr>
+<td>21</td>
+<td>25.45</td>
+<td>29</td>
+<td>6.89</td>
+</tr>
+</tbody></table>
+<p>Sixteen of the eighteen blocks fall within the Paper 59 range $[0.79, 25.3]$. Two are marginally outside: $j = 21$ at $25.45$ exceeds the upper bound by $0.6\%$, and $j = 27$ at $0.44$ falls below the lower bound by $44\%$. Overall the $N = 10^9$ range $[0.44, 25.45]$ is order-of-magnitude consistent with the Paper 59 $N = 10^{10}$ range.</p>
+<p>A note on $j = 27$: the value $0.44$ is a local minimum of $R_{\rm wt}$ in the $N = 10^9$ data. The Paper 59 lower bound $0.79$ comes from the minimum across 19 connected blocks at $N = 10^{10}$. Whether the $j = 27$ low rises as $N$ is pushed to $10^{10}$, or persists as an outlier, requires a single-point comparison against Paper 59's $j = 27$ at $N = 10^{10}$, beyond the scope of the present paper. The neighbors $j = 26$ ($R_{\rm wt} = 3.56$) and $j = 28$ ($R_{\rm wt} = 2.88$) both sit comfortably within the Paper 59 range. The order of magnitude $R_{\rm wt} = O(1)$ is unaffected, leaving Criterion 71.E's $\sup_j R_{\rm wt} = O(1)$ statement intact.</p>
+<h3>5.3 $A_j^{\rm signed}/j$ versus $R_{\rm wt}$ in the same centering</h3>
+<p><strong>Table 8.</strong> Under $\mu_{12, \text{global}}$ centering, $A_j^{\rm signed}(W_f)$, $A_j^{\rm signed}(W_f) / j$, and $R_{\rm wt}(j)$ at $N = 10^9$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$n_p$</th>
+<th>$W_f$</th>
+<th>$A_j^{\rm signed}(W_f)$</th>
+<th>$A_j^{\rm signed}/j$</th>
+<th>$R_{\rm wt}$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>268,216</td>
+<td>134,108</td>
+<td>4.6</td>
+<td>0.21</td>
+<td>23.85</td>
+</tr>
+<tr>
+<td>24</td>
+<td>985,818</td>
+<td>492,909</td>
+<td>28.9</td>
+<td>1.20</td>
+<td>17.33</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>1,822,872</td>
+<td>23.6</td>
+<td>0.91</td>
+<td>3.56</td>
+</tr>
+<tr>
+<td>28</td>
+<td>13,561,907</td>
+<td>6,780,953</td>
+<td>16.4</td>
+<td>0.59</td>
+<td>2.88</td>
+</tr>
+<tr>
+<td>29</td>
+<td>22,654,784</td>
+<td>11,327,392</td>
+<td>13.1</td>
+<td>0.45</td>
+<td>6.89</td>
+</tr>
+</tbody></table>
+<p>$A_j^{\rm signed}(W_f) / j$ ranges from $0.21$ to $1.20$ across $j = 22$ to $29$; $R_{\rm wt}(j)$ on the same blocks ranges from $2.88$ to $23.85$. The two quantities are not on a per-block exact identity, but they are simultaneously bounded and on the same order of magnitude.</p>
+<p>Under $\mu_{12}$ (block-local) centering, $A_j^{\rm signed}(W_f) / j$ stays in $[0.07, 0.89]$; under adjacent centering, in $[0.06, 0.93]$. Across three centerings the normalized signed budget stays within an order $O(1)$.</p>
+<h3>5.4 What the data show</h3>
+<p>(i) $R_{\rm wt} = O(1)$ is strongly confirmed at $N = 10^9$ across $j = 14$ to $29$ within the Paper 59 range.</p>
+<p>(ii) The Bartlett identity gives $R_{\rm wt} \approx A_j^{\rm signed}(W_f) / j$, agreeing in order of magnitude. Even though the signed Bartlett budget does not strictly saturate (§4), the slow growth of $A_j^{\rm signed}(W_f)$ is exactly canceled by division by $j$.</p>
+<p>(iii) The macro phenomenon $R_{\rm wt} = O(1)$ and the micro mechanism of incomplete signed cancellation are reconciled by the intermediate quantity $A_j^{\rm signed}(W_f) / j$ remaining $O(1)$ within the Paper 59 range. That is,</p>
+<p>$$A_j^{\rm signed}(W_f) \le C j$$</p>
+<p>for $j$ in the tested range, called the linear signed Abel budget (where $W_f = m_j / 2$ is the non-vacuous theorem scale; cf. §7.3 (iii) for the $W_{\rm full}$ boundary identity articulation).</p>
+<hr>
+<h2>§6. Relation to Paper 65's open core</h2>
+<h3>6.1 Paper 65 Theorem 65.A reviewed</h3>
+<p>Paper 65 Theorem 65.A gives the conditional architecture for 59.1: under $j$-smooth adjacent reference centering, $B_j$ decomposes as</p>
+<p>$$B_j = B_{\rm count} + B_{\rm resid} + B_{\rm gauge},$$</p>
+<p>with conditions</p>
+<p>(c0) $B_{\rm count}$ controlled by Branch-Orthogonality, $|B_{\rm count}| / \sqrt{j D_j} < 0.5$, conditionally established (Paper 64).</p>
+<p>(c1) The centered residual satisfies the spectral estimate $\Psi_\eta(W_f) = O(j)$, the remaining open core.</p>
+<p>(c2) Gauge defect controlled by $j$-smooth reference, conditionally established (Paper 65 EXP H).</p>
+<p>(c3) Cross-term controlled, conditionally established (Paper 65 §10).</p>
+<p>Paper 65 §9.3 reports that $\Psi_\eta(W) / j$ is still growing at $W = 5000$ and has not yet stabilized, marking (c1) as the remaining technical core.</p>
+<h3>6.2 The present paper's precisification of (c1)</h3>
+<p>§4 shows that under adjacent centering the signed Bartlett growth exponent $\beta_{\rm signed}$ drifts positive at large $j$, i.e., $A_j^{\rm signed}(W)$ does not strictly bound. This is the same phenomenon Paper 65 observed, manifested in the $j$-domain rather than the fixed-$W$ domain.</p>
+<p>§5 shows simultaneously that $A_j^{\rm signed}(W_f) / j$ stays $O(1)$ across $j = 14$ to $29$. So Paper 65's required estimate $\Psi_\eta = O(j)$, when made precise as $A_j^{\rm signed}(W_f) \le C j$, remains plausible in the data.</p>
+<p>The two observations combine: the signed Bartlett does not strictly bound, but its growth is absorbed by the $j$ factor. This is exactly the form Paper 65's (c1) requires.</p>
+<h3>6.3 Equivalence verification</h3>
+<p>Paper 65 §11.3 gives the explicit finite-window definition</p>
+<p>$$\Psi_{\eta, j}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) r_{\eta, j}(k),$$</p>
+<p>where $r_{\eta, j}(k)$ is the lag-$k$ autocorrelation of the adjacent-centered residual $\eta_p = x_p - \mu_{\tau(p)}^*(j)$.</p>
+<p>§1.4 of the present paper gives</p>
+<p>$$A_j^{\rm signed}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma_j(k),$$</p>
+<p>where $\gamma_j(k)$ is the lag-$k$ autocorrelation of the $\chi$-sequence within $I_j$ after $j$-smooth adjacent reference centering.</p>
+<p>The two definitions agree both in mathematical form and in the residual object to which they apply (the adjacent-centered residual). For any $W$,</p>
+<p>$$\Psi_{\eta, j}(W) = A_j^{\rm signed}(W).$$</p>
+<p>So Paper 65's condition (c1) $\Psi_\eta = O(j)$ and the present paper's condition $A_j^{\rm signed}(W_f) \le C j$ are the same mathematical statement on the same object at the non-vacuous theorem scale. The present paper does not replace (c1); it makes it precise from a fixed-$W$ formulation to a half-block-window formulation.</p>
+<p>Paper 65 §9.2 Table 11 reports $\Psi_\eta(W) / j$ at $j = 29$ across $W = 100$ to $W = 5000$, with $\Psi_\eta / j = 3.52$ at $W = 5000$ still growing. The present paper §5.3 Table 8 reports $A_j^{\rm signed}(W_f) / j = 0.45$ at $j = 29$, where $W_f = 1.13 \times 10^7$ is the half-block window. Pushing $W$ from $5000$ to $W_f$ saturates the normalized signed Bartlett budget to $O(1)$. The growth Paper 65 §9.3 observed at $W = 5000$ disappears once $W$ is pushed to half-block scale. This is new analytic information the present cross-$N = 10^9$ data give to Paper 65's (c1).</p>
+<p>Old and new formulations combined:</p>
+<ul>
+<li>Paper 65 old: prove $\Psi_\eta = O(j)$, with $\Psi_\eta / j$ still growing at $W = 5000$, marked as remaining technical core.</li>
+</ul>
+<ul>
+<li>Present precisification: prove $A_j^{\rm signed}(W_f) \le C j$ where $W_f = m_j / 2$ is the non-vacuous half-block theorem scale. Numerically $A_j^{\rm signed}(W_f) / j$ stays in $[0, 1.20]$ across $j = 14$ to $29$ at $N = 10^9$.</li>
+</ul>
+<hr>
+<h2>§7. Conditional criterion</h2>
+<h3>7.1 Criterion 71.E (conditional linear Abel closure)</h3>
+<p>Because the Bartlett identity in §5.1 is an asymptotic quadratic approximation rather than a per-block exact equality, the rigorous statement uses a "criterion" form rather than a "theorem" form.</p>
+<p><strong>Criterion 71.E (conditional linear Abel closure).</strong> Suppose ZFCρ DP on the saturated skeleton $S_{D^*(j)}$, under $j$-smooth adjacent reference centering, satisfies:</p>
+<p>(H1) Paper 65 count condition (c0): $|B_{\rm count}(j)|^2 \le \kappa_0 \cdot j D_j$ for some $\kappa_0 < \infty$.</p>
+<p>(H2) Paper 65 gauge condition (c2): the gauge defect is controlled by the $j$-smooth reference, i.e., there exists $\kappa_g < \infty$ such that $|B_{\rm gauge}(j)|^2 \le \kappa_g \cdot D_j$ for all $j$.</p>
+<p>(H3) Paper 65 cross-term condition (c3): under (H1) and (H2), the cross-term is bounded by Cauchy-Schwarz with no additional order-of-magnitude growth.</p>
+<p>(H4a) Linear signed Abel budget (half-block scale): there exists $C_S < \infty$ such that</p>
+<p>$$A_j^{\rm signed}(W_f) \le C_S \cdot j \quad \text{for all sufficiently large } j,$$</p>
+<p>where $W_f = m_j / 2$ is the half-block window scale of $I_j$ (the non-vacuous theorem scale; cf. §1.4 + §7.3 (iii) for explanation of the finite-sample identity at $W_{\rm full} = m_j$), and $A_j^{\rm signed}(W_f)$ is the Bartlett triangular signed Abel budget on the full-block residual sequence $\eta_p = x_p - \mu_{\tau(p)}^*(j)$ after $j$-smooth adjacent reference centering.</p>
+<p>(H4b) Deterministic Abel transfer inequality: there exists $C_A < \infty$ such that</p>
+<p>$$B_{\rm resid}(j)^2 \le C_A \cdot A_j^{\rm signed}(W_f) \cdot D_j \quad \text{for all sufficiently large } j.$$</p>
+<p>Then Conjecture 59.1 holds.</p>
+<h3>7.2 Proof sketch</h3>
+<p>Paper 65 Theorem 65.A under (c0)-(c3) reduces 59.1 to the spectral estimate $\Psi_\eta(W_f) = O(j)$ (cf. §6.3 equivalence at the non-vacuous theorem scale). Assuming (H1) through (H4b), the chain of Paper 65 Theorem 65.A is fully satisfied.</p>
+<p>Specifically: the decomposition $B_j = B_{\rm count} + B_{\rm resid} + B_{\rm gauge}$ gives</p>
+<p>$$B_j^2 \le 3 (B_{\rm count}^2 + B_{\rm resid}^2 + B_{\rm gauge}^2).$$</p>
+<p>By (H1), $B_{\rm count}^2 \le \kappa_0 \cdot j D_j$. By (H2), $B_{\rm gauge}^2 \le \kappa_g \cdot D_j \le \kappa_g \cdot j D_j$ (absorbing $j \ge 1$). By (H4a) combined with (H4b), $B_{\rm resid}^2 \le C_A \cdot A_j^{\rm signed}(W_f) \cdot D_j \le C_A C_S \cdot j D_j$ for all sufficiently large $j$.</p>
+<p>Combining: $B_j^2 \le 3 (\kappa_0 + \kappa_g + C_A C_S) \cdot j D_j$ for all sufficiently large $j$. So $R_{\rm wt}(j) = B_j^2 / (j D_j) \le 3 (\kappa_0 + \kappa_g + C_A C_S)$, hence $\sup_j R_{\rm wt}(j) < \infty$, which is 59.1.</p>
+<p>The substantive content of the proof sketch is (H4b), the deterministic Abel transfer inequality. It derives from the Bartlett-style signed Abel budget (H4a) the rigorous $D_j$-proportional bound on $B_{\rm resid}^2$, without going through the asymptotic quadratic approximation of §5.1. This inequality can be derived within Paper 65 §11's Bartlett-Abel framework, but explicit derivation remains open (Candidate 71.A-deterministic, §8.4 Component (B)).</p>
+<h3>7.3 Remarks</h3>
+<p>(i) Criterion 71.E is a conditional statement, not an unconditional theorem. Conditions (H1) through (H3) have conditional support in Paper 65 (specific experiments documented in Paper 65 §11.2 Table) but still depend on Paper 65 framework-internal assumptions. Condition (H4a) is the precise remaining open core identified in this paper (open theorem candidate 71.S-signed, §8.2). Condition (H4b) is the deterministic Abel transfer inequality (open candidate 71.A-deterministic, §8.4 Component (B)).</p>
+<p>(ii) Criterion 71.E does not prove 59.1. It contracts the remaining mathematical content of 59.1, along the articulation in §6, into the two specific spectral / inequality estimates (H4a) and (H4b).</p>
+<p>(iii) On the relationship between $W_f = m_j / 2$ and $W_{\rm full} = m_j$: this paper's (H4a) is stated at the half-block scale $W_f$. Empirically $A^{\rm signed}(W_f) / j$ stays in $[0, 1.20]$ across $j = 14$ to $29$ at $N = 10^9$ (§5 Tables 7-8). $W_f$ is the non-vacuous theorem scale, at which signed cancellation information is fully carried by the ACF.</p>
+<p>At $W_{\rm full} = m_j$, $A^{\rm signed}(W_{\rm full})$ on sample-mean-centered $\gamma$ degenerates to a finite-sample identity:</p>
+<p>$$A^{\rm signed}(W = m_j) = \frac{m_j \bar{x}^2}{\widehat{\rm Var}(x)} = 0 \quad \text{(when } \bar{x} = 0 \text{, i.e., sample-centered)}.$$</p>
+<p>Paper 72's audit across 12 configurations × 16 blocks measures $|A_j^{\rm signed}(m_j)| < 10^{-12}$ across all configurations, i.e., the boundary identity at $W = m_j$ is centering-invariant. This boundary identity carries no mechanism information; the phenomenon is articulated in Paper 72 as the closure manifestation of the Spectral Bridge Front geometry as $W \to m_j^-$. This paper's Criterion 71.E (H4a) is therefore stated at $W_f$ rather than $W_{\rm full}$, avoiding the vacuous statement issue from the boundary identity.</p>
+<p>(iv) On the bridge from same-layer χ sequences to full-block residual sequences: §3 data (tail shape, $\alpha$ envelope) are robust on same-layer (fixed $v_2(p-1) = \ell$) sequences and give the layer-stratified picture of the absolute envelope. §4 and §5 data and the Criterion 71.E statement involving the signed Abel budget are all on full-block (across all $\ell$ within $I_j$) adjacent-centered residual sequences (audit C measurements). So the same-layer data are supporting evidence for the K=1 polynomial envelope candidate (§3, 71.K-abs), and the full-block data are direct anchors for the 71.S-signed statement (§4 and §5). No layer-to-block aggregation bridge is required within the Paper 71 framework.</p>
+<hr>
+<h2>§8. Open theorem candidates</h2>
+<h3>8.1 Theorem Candidate 71.K-abs (single-step resolvent envelope)</h3>
+<p><strong>Candidate 71.K-abs.</strong> Under ZFCρ DP, after $j$-smooth adjacent reference centering, the lag-$k$ autocorrelation $\gamma(k)$ of the same-layer ρ-residual sequence $\chi(p)$ is asymptotically</p>
+<p>$$\gamma(k) \asymp k^{-\alpha} \cdot L(k)$$</p>
+<p>with $\alpha \in (0, 1)$ and $L$ a slowly varying function. So the ACF is polynomial long memory rather than exponentially decaying. The Bartlett triangular absolute envelope $A^{\rm abs}(W) \asymp W^{1 - \alpha}$.</p>
+<p><strong>Status</strong>: open. Data (across $N = 10^7, 10^8, 10^9$, across $j$, across five centerings) give $\beta_{\rm abs} \in [0.50, 0.56]$ extremely stable. But mathematical derivation requires identifying the low-frequency spectral density of the ZFCρ DP $L_j$ operator. This is a functional analysis / spectral theory problem.</p>
+<h3>8.2 Theorem Candidate 71.S-signed (linear signed Abel budget)</h3>
+<p><strong>Candidate 71.S-signed.</strong> Independently of 71.K-abs: on the saturated skeleton $S_{D^<em>(j)}$ under ZFCρ DP, after $j$-smooth adjacent reference centering, the full-block residual sequence $\eta_p = x_p - \mu_{\tau(p)}^</em>(j)$ (for $p \in I_j$) satisfies the Bartlett triangular signed Abel budget</p>
+<p>$$A_j^{\rm signed}(W_f) \le C \cdot j$$</p>
+<p>for all sufficiently large $j$, with some $C < \infty$ (where $W_f = m_j / 2$ is the non-vacuous half-block theorem scale; cf. §1.4 + §7.3 (iii)).</p>
+<p><strong>Status</strong>: open. Data (§5.3) give $A_j^{\rm signed}(W_f) / j \in [0.06, 1.20]$ across $j = 14$ to $29$ at $N = 10^9$. Mathematical derivation involves the low-frequency cancellation mechanism of the signed spectral measure. The mechanism may be related to the phase structure within Paper 65's add/mult branch decomposition. Paper 72 articulates this signed cancellation as the lag-domain Spectral Bridge Front geometry, providing a sharper mechanism articulation for Candidate 71.S-signed.</p>
+<h3>8.3 Relation between the two candidates</h3>
+<p>71.K-abs and 71.S-signed are separate statements.</p>
+<p>71.K-abs concerns the form of the absolute envelope, i.e., the decay rate of $|\gamma(k)|$. This is a scalar kernel object.</p>
+<p>71.S-signed concerns the cancellation structure on the signed phase, i.e., whether the sign oscillation of $\gamma(k)$ provides sufficient cumulative cancellation. This is the low-frequency structure of the signed spectral measure.</p>
+<p>71.K-abs does not imply 71.S-signed, and vice versa. A process with polynomial absolute envelope need not have a linear signed Abel budget; conversely, linear growth of the signed Abel budget does not directly determine the polynomial form of the absolute envelope. §4 data show $\beta_{\rm signed}$ flips from negative to positive, i.e., the signed Bartlett is not strictly bounded; but §5 shows the normalized $A_j^{\rm signed}(W_f) / j$ stays $O(1)$. These two phenomena require separate articulation and separate proof.</p>
+<h3>8.4 Closure pathway</h3>
+<p>Combining Paper 70 Theorem 70.A, Paper 65 Theorem 65.A, and the present Criterion 71.E:</p>
+<p>(i) Paper 70 Theorem 70.A reduces 59.1 to an equivalent statement on the saturated skeleton $S_{D^*(j)}$. The reduction is deterministic and unconditional.</p>
+<p>(ii) Paper 65 Theorem 65.A under conditions (c0), (c1), (c2), (c3) closes $R_{\rm wt} = O(1)$ on the saturated skeleton.</p>
+<p>(iii) §6 verifies that $\Psi_\eta = O(j)$ (Paper 65 (c1)) and $A_j^{\rm signed}(W_f) \le C j$ (the present 71.S-signed) are the same mathematical statement on the same object at the non-vacuous half-block theorem scale.</p>
+<p>(iv) Criterion 71.E combines the above into (H1)-(H4b): if all hold, 59.1 holds.</p>
+<p>For an unconditional closure of 59.1, the following three mathematical components are all needed:</p>
+<p><strong>Component (A): Unconditional treatment of Paper 65 (c0), (c2), (c3).</strong></p>
+<p>Paper 65 §11.2 Table marks (c0), (c2), (c3) as "confirmed", supported by EXP L (count fluctuation), Adjacent ref EXP H (gauge defect), EXP M (cross-term). These conditions have specific conditional evidence within the Paper 65 framework, but a fully unconditional proof (a mathematical proof not depending on specific experiments or specific assumptions) remains open. Paper 65 §11.2's "confirmed" is in the sense of "conditional evidence + experimental support", not in the sense of an unconditional theorem.</p>
+<p><strong>Component (B): Deterministic Abel transfer inequality (71.A-deterministic).</strong></p>
+<p>The Bartlett identity $R_{\rm wt}(j) \approx A_j^{\rm signed}(W_f) / j$ in §5.1 is an asymptotic quadratic approximation, not a per-block exact equality. A rigorous partial-sum variance argument requires the deterministic Abel transfer inequality (Criterion 71.E (H4b)): from $A_j^{\rm signed}(W_f) \le C_S j$, derive $B_{\rm resid}(j)^2 \le C_A C_S j D_j$ (with explicit constants), without going through the asymptotic approximation. This inequality involves boundary terms between the half-block window scale $W_f$ and the full-block partial sum $B_j$; it can be derived within Paper 65 §11's Bartlett-Abel framework (standard Bartlett-Abel techniques with non-vacuous window adjustment), but explicit derivation remains open.</p>
+<p><strong>Component (C): 71.S-signed (linear signed Abel budget).</strong></p>
+<p>Prove $A_j^{\rm signed}(W_f) \le C j$ for all sufficiently large $j$, on the full-block residual sequence $\eta_p$ at the half-block window $W_f = m_j / 2$ (Criterion 71.E (H4a)). Data (§5.3, across $j = 14$ to $29$ at $N = 10^9$) plausible but no mathematical proof. Candidate 71.S-signed (§8.2). Paper 72 articulates the signed cancellation as the lag-domain Spectral Bridge Front geometry ($k_c \approx m_j / 164$, $k_t \approx m_j / 16.8$, universal lag-domain constants), providing a sharper mechanism articulation for Candidate 71.S-signed; the mathematical proof of 71.S-signed remains open.</p>
+<p><strong>Closure status</strong>:</p>
+<p>If Components (A), (B), (C) are all established, then the chain Paper 70 Theorem 70.A + Paper 65 Theorem 65.A + Criterion 71.E closes unconditionally, and Conjecture 59.1 holds.</p>
+<p>71.K-abs is not required for this closure pathway. 71.K-abs is the mathematical explanation of the form of the χ-field absolute envelope; it does not enter any of (H1) through (H4b). So the closure pathway depends only on (A), (B), (C), not on 71.K-abs. The value of 71.K-abs is in explaining why 71.S-signed is plausible (the growth of the signed Abel budget is constrained by the specific form of the absolute envelope), but the mathematical implication between the two needs to be established independently in subsequent work.</p>
+<p>Suggested priority for subsequent work:</p>
+<ul>
+<li>Component (C), 71.S-signed, is the part of the closure pathway with the heaviest mathematical content; it involves the low-frequency cancellation mechanism of the signed spectral measure.</li>
+<li>Component (B), 71.A-deterministic, is a framework-internal task that can be advanced within Paper 65 §11 (standard Bartlett-Abel techniques).</li>
+<li>Component (A), unconditional treatment of Paper 65 conditions, is a Paper 65-internal cleanup task.</li>
+</ul>
+<p>The three are mutually independent (proving one does not imply another), but their joint establishment closes 59.1.</p>
+<hr>
+<h2>§9. Status summary and boundaries</h2>
+<h3>9.1 What this paper does</h3>
+<p>(i) Corrects the interpretation of $C(1)_{\rho(q)} \approx 0.96$ as a retention coefficient. Approximately 9/10 of the value comes from the $\lambda \ln q$ trend; the true retention coefficient is about $0.10$. Cross-$N = 10^7, 10^8, 10^9$ raw and detrended data sealed.</p>
+<p>(ii) Identifies the discrete resolvent kernel form of the ZFCρ DP single step. The polynomial fit strictly outperforms the exponential fit on all comparable combinations. The Bartlett absolute envelope $\beta_{\rm abs} \approx 0.50$ is extremely stable across $j$, $N$, and centering.</p>
+<p>(iii) Identifies the partial-cancellation structure of the signed Bartlett budget: $\beta_{\rm signed} < \beta_{\rm abs}$ at every $j$, but $\beta_{\rm signed}$ drifts positive at large $j$, so the signed budget does not strictly bound. The normalized $A_j^{\rm signed}(W_f) / j$ stays in $O(1)$ across $j = 14$ to $29$.</p>
+<p>(iv) Requantifies the remaining open core of Paper 65 Theorem 65.A: the old form $\Psi_\eta = O(j)$ is made precise as $A_j^{\rm signed}(W_f) \le Cj$, the linear signed Abel budget (where $W_f = m_j / 2$ is the non-vacuous half-block theorem scale).</p>
+<p>(v) Gives the conditional criterion 71.E: Paper 65 conditions (c0)-(c3) + (H4a) linear signed Abel budget + (H4b) deterministic Abel transfer inequality $\Rightarrow$ 59.1.</p>
+<p>(vi) Marks two open theorem candidates (71.K-abs, 71.S-signed) and one open framework-internal candidate (71.A-deterministic) for subsequent work. These three together, plus unconditional treatment of Paper 65's conditions, would establish 59.1 (§8.4).</p>
+<h3>9.2 What this paper does not do</h3>
+<p>(i) Does not prove 59.1.</p>
+<p>(ii) Does not prove the specific polynomial form of the ZFCρ DP single-step kernel. The data robustly support polynomial form over exponential, but whether it is strictly the resolvent $(1+x)^{-1}$ or a higher-order rational form remains open (71.K-abs).</p>
+<p>(iii) Does not prove the linear signed Abel budget. Data plausible but no proof (71.S-signed).</p>
+<p>(iv) Does not prove the deterministic Abel transfer inequality. Data show the Bartlett identity holds at order of magnitude, but rigorous derivation remains open (71.A-deterministic).</p>
+<p>(v) Does not challenge Paper 70 Theorem 70.A. The deterministic reduction is used as established.</p>
+<h3>9.3 Compatibility with Papers 50-70</h3>
+<p>The present paper is compatible with all unconditional results in Papers 50 through 70. Derivative articulations that depend on the reading of raw $C(1)_{\rho(q)} \approx 0.96$ as a retention coefficient (mainly within Papers 55 to 65) need to be revised in the form of §2. Specifically: (a) the articulation in Paper 55 of raw $C(1)$ as ancestor inheritance fraction; (b) the early reading of the $m_{\rm eff} = \ln r / \ln C(1)$ expression as having retention meaning (the algebraic identity itself is unchanged); (c) any articulation taking $1 - C(1) \approx 0.04$ as an innovation rate. The correction does not affect $C(1) \approx 0.96$ as a measured raw lag-1 ACF value, nor does it affect the macro phenomenon of Paper 55's $G_j(M)$ damped oscillation (which holds independently on the χ-layer; the block-level peak ratio $r \approx 0.80$ has no simple algebraic relation to χ-layer retention). A complete cross-paper audit is left as subsequent programme work.</p>
+<p>Paper 65 Theorem 65.A retains its form. The present paper makes its remaining open core precise rather than replacing it.</p>
+<p>Paper 70 Theorem 70.A is used in §1 as the reduction anchor in full.</p>
+<hr>
+<h2>Acknowledgments</h2>
+<p>The 4-AI collaborative methodology established in the ZFCρ series, specifically: Claude (子路 / Zilu) executed all experimental procedures (audit 1 through 5, cross-$N = 10^7, 10^8, 10^9$ ρ array construction and Bartlett analysis), and authored the present paper. ChatGPT (公西华 / Gongxihua) provided the rounds 4 through 8 framework synthesis and gatekeeper review, including the original split into 71.K-abs and 71.S-signed candidates and the linear signed Abel budget reframe (round 6). Gemini (子夏 / Zixia) provided the Paper 71 v2 sign-off review and articulated subsequent paper 72 mechanism candidates (min-operator asymmetry, return probability framework). Grok (子贡 / Zigong) provided the Paper 71 v1 sign-off review and the strategic placement assessment. An independent review by Claude provided three Priority 1 hygiene catches (§3.1 over-claim softening, §6.3 equivalence verification, §8.4 closure pathway completeness). The collaborative framework is described in SAE Methodology Paper 0, "余之道 / Via Rho."</p>
+<p>After v1 publication (2026-05-03), Paper 72's cross-N audit and round 9-16 framework synthesis (公西华) identified that v1's (H4a) at $W = m_j$ literal form is a finite-sample identity, vacuous as theorem statement. The present v2 articulation corrects (H4a) at the non-vacuous half-block theorem scale $W_f = m_j / 2$, while preserving the $W_{\rm full}$ boundary identity (§7.3 (iii)) as an articulation hook for Paper 72's Spectral Bridge Front geometry.</p>
+<hr>
+<h2>References</h2>
+<p>[50] Han Qin. ZFCρ Paper 50: cross-$\lambda$ framework with constant $\lambda_{\rm Full IC} = 3.856763$. ZFCρ Series, Paper L. DOI: 10.5281/zenodo.18866551.</p>
+<p>[51] Han Qin. ZFCρ Paper 51: Hölder bridge and BL_α. ZFCρ Series, Paper LI. DOI: (to be filled).</p>
+<p>[55] Han Qin. ZFCρ Paper 55: damped oscillation and rebound ratio. ZFCρ Series, Paper LV. DOI: (to be filled).</p>
+<p>[59] Han Qin. ZFCρ Paper 59: spectral ratio boundedness and the H' twin-conjecture closure. ZFCρ Series, Paper LIX. DOI: 10.5281/zenodo.19480518.</p>
+<p>[64] Han Qin. ZFCρ Paper 64: Branch-Orthogonality. ZFCρ Series, Paper LXIV. DOI: (to be filled).</p>
+<p>[65] Han Qin. ZFCρ Paper 65: branch centering and residual spectral bound. ZFCρ Series, Paper LXV. DOI: (to be filled).</p>
+<p>[70] Han Qin. ZFCρ Paper 70: block-wise effective skeleton, reduction of 59.1. ZFCρ Series, Paper LXX. DOI: (assigned upon Zenodo upload).</p>
+<p>[72] Han Qin. ZFCρ Paper 72: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking. ZFCρ Series, Paper LXXII. DOI: (concurrent with present v2, to be filled).</p>
+<p>Note: Placeholder DOIs to be filled before Zenodo upload.</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>第 70 篇把 59.1 猜想化归为饱和骨架上的等价有界相位陈述
+
+$$\sup_j \frac{B_j(\rho_{S_{D^*(j)}})^2}{j \cdot D_j(\rho_{S_{D^*(j)}})} < \infty,$$
+
+其中 $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$. 本文识别该饱和零模目标背后的微观机制, 并对一个长期使用的中间记忆系数作显式修正.
+
+跨 $N = 10^7, 10^8, 10^9$ (含 $\pi(10^9) \approx 5.08 \times 10^7$ 素数) 的实测给出三件结构稳定的不变量与一件需重新定量化的现象. 第一, 同层相邻素数的 raw $\rho(q)$ 一阶自相关 $\approx 0.96$ 跨 25 层稳定, 该数值早期被解释为祖先继承率, 但本文显示其约 9 成贡献来自 $\lambda \ln q$ 的趋势项, 真实的剥离残差一阶自相关只有约 $0.10$, 跨 $N$ 收敛. 第二, ZFCρ DP 是离散单步递归, 不存在连续时间极限. 数据强烈支持一个 polynomial / resolvent 型 kernel candidate: 相比指数衰减, polynomial 尾部在所有可比较设置中更稳定; Bartlett 三角 Abel 包络 $A_j^{\rm abs}(W) \asymp W^{\beta_{\rm abs}}$ 上 $\beta_{\rm abs} \approx 0.50$ 跨 $j$ 跨 centering 极稳定. 该 kernel 的 mathematical derivation 留作 71.K-abs (open). 第三, 在 $j$-smooth adjacent reference centering 下的 signed Bartlett 预算 $A_j^{\rm signed}(W_f)$ (其中 $W_f = m_j / 2$ 为 non-vacuous theorem scale) 不严格 bounded, 其增长指数 $\beta_{\rm signed}$ 在小 $j$ 处为负, 在 $j \ge 22$ 处转正并缓慢增长至约 $+0.29$ at $j = 29$. 但归一化预算 $A_j^{\rm signed}(W_f) / j$ 跨 $j = 14$ 至 $29$ 在 $[0.07, 0.89]$ 范围内, 与同区间 $R_{\rm wt}$ 的 paper 59 区间 $[0.79, 25.3]$ 量级一致.
+
+由此识别出 59.1 所需的精确中间尺度: 不是严格的 signed Abel 有界, 而是
+
+$$\boxed{A_j^{\rm signed}(W_f) \le C j}.$$
+
+这一线性 signed Abel 预算 (其中 $W_f = m_j / 2$ 为 non-vacuous theorem scale; 详见 §1.4 + §7.3 (iii)) 将第 65 篇定理 65.A 的剩余技术核心 $\Psi_\eta = O(j)$ 的模糊陈述精确化. 在第 65 篇 count/gauge 条件已条件控制的前提下, 满足线性 signed Abel 预算 (加上一个 deterministic Abel transfer 不等式) 即给出 59.1 的剩余谱估计 (判据 71.E, 条件式).
+
+本文不证明 59.1, 也不证明单步 kernel 是 polynomial 形态. 给出两个 open theorem candidate (71.K-abs, 71.S-signed) 标记后续工作; 其中 71.S-signed, 加上第 65 篇 conditions 的 unconditional 化 与 一个 deterministic Abel 不等式 (称为 71.A-deterministic), 三者全部 established 即给出 59.1 的无条件证明 (§8.4).
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>ZFCρ, 线性 Signed Abel 预算, 零模目标, 饱和骨架, Conjecture 59.1, 谱界</div>
+    </div>
+    <div class="paper-body">
+<h2>摘要</h2>
+<p>第 70 篇把 59.1 猜想化归为饱和骨架上的等价有界相位陈述</p>
+<p>$$\sup_j \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})} < \infty,$$</p>
+<p>其中 $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$. 本文识别该饱和零模目标背后的微观机制, 并对一个长期使用的中间记忆系数作显式修正.</p>
+<p>跨 $N = 10^7, 10^8, 10^9$ (含 $\pi(10^9) \approx 5.08 \times 10^7$ 素数) 的实测给出三件结构稳定的不变量与一件需重新定量化的现象. 第一, 同层相邻素数的 raw $\rho(q)$ 一阶自相关 $\approx 0.96$ 跨 25 层稳定, 该数值早期被解释为祖先继承率, 但本文显示其约 9 成贡献来自 $\lambda \ln q$ 的趋势项, 真实的剥离残差一阶自相关只有约 $0.10$, 跨 $N$ 收敛. 第二, ZFCρ DP 是离散单步递归, 不存在连续时间极限. 数据强烈支持一个 polynomial / resolvent 型 kernel candidate: 相比指数衰减, polynomial 尾部在所有可比较设置中更稳定; Bartlett 三角 Abel 包络 $A_j^{\rm abs}(W) \asymp W^{\beta_{\rm abs}}$ 上 $\beta_{\rm abs} \approx 0.50$ 跨 $j$ 跨 centering 极稳定. 该 kernel 的 mathematical derivation 留作 71.K-abs (open). 第三, 在 $j$-smooth adjacent reference centering 下的 signed Bartlett 预算 $A_j^{\rm signed}(W_f)$ (其中 $W_f = m_j / 2$ 为 non-vacuous theorem scale) 不严格 bounded, 其增长指数 $\beta_{\rm signed}$ 在小 $j$ 处为负, 在 $j \ge 22$ 处转正并缓慢增长至约 $+0.29$ at $j = 29$. 但归一化预算 $A_j^{\rm signed}(W_f) / j$ 跨 $j = 14$ 至 $29$ 在 $[0.07, 0.89]$ 范围内, 与同区间 $R_{\rm wt}$ 的 paper 59 区间 $[0.79, 25.3]$ 量级一致.</p>
+<p>由此识别出 59.1 所需的精确中间尺度: 不是严格的 signed Abel 有界, 而是</p>
+<p>$$\boxed{A_j^{\rm signed}(W_f) \le C j}.$$</p>
+<p>这一线性 signed Abel 预算 (其中 $W_f = m_j / 2$ 为 non-vacuous theorem scale; 详见 §1.4 + §7.3 (iii)) 将第 65 篇定理 65.A 的剩余技术核心 $\Psi_\eta = O(j)$ 的模糊陈述精确化. 在第 65 篇 count/gauge 条件已条件控制的前提下, 满足线性 signed Abel 预算 (加上一个 deterministic Abel transfer 不等式) 即给出 59.1 的剩余谱估计 (判据 71.E, 条件式).</p>
+<p>本文不证明 59.1, 也不证明单步 kernel 是 polynomial 形态. 给出两个 open theorem candidate (71.K-abs, 71.S-signed) 标记后续工作; 其中 71.S-signed, 加上第 65 篇 conditions 的 unconditional 化 与 一个 deterministic Abel 不等式 (称为 71.A-deterministic), 三者全部 established 即给出 59.1 的无条件证明 (§8.4).</p>
+<hr>
+<h2>§1. 引言: 从 paper 70 到 paper 71</h2>
+<h3>1.1 第 70 篇的最终可观测对象</h3>
+<p>第 70 篇定理 70.A 给出确定性化归: 对每一个二进制块 $I_j = [2^j, 2^{j+1})$, 当 $D \ge \sqrt{2^{j+1}}$ 时, 全 IC 递归 $\rho_{\rm Full}$ 与截断递归 $\rho_D$ 在 $[1, 2^{j+1})$ 上逐点相等. 取 $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$, 第 59 篇关于谱块比 $R_{\rm wt}(j)$ 的 59.1 猜想化归为饱和骨架上的等价陈述</p>
+<p>$$\sup_j R_j^<em>(N) < \infty, \qquad R_j^</em>(N) := \frac{B_j(\rho_{S_{D^<em>(j)}})^2}{j \cdot D_j(\rho_{S_{D^</em>(j)}})}.$$</p>
+<p>化归是确定性的; 它把猜想中的抽象对象 $\rho_{\rm Full}$ 替换为每个块所对应的具体有限骨架, 其规模量级为 $\sqrt{2^j}$.</p>
+<h3>1.2 第 70 篇未做的事</h3>
+<p>第 70 篇定理 70.A 是化归, 不是证明. 59.1 仍开. 第 70 篇 §8 列出三条通向有界相位陈述的路线 (谱比对数预算, 直接二阶矩, 谱平坦性), 其中路线 B 被识别为最可能的清洁闭合路径.</p>
+<h3>1.3 本文所做工作</h3>
+<p>本文不沿三条路线之一推进 59.1. 本文做四件事.</p>
+<p>(i) <strong>修正错误目标</strong>. 第 55 篇报告同层 raw $\rho(q)$ 自相关约 $0.96$, 此后被解释为祖先继承率. 跨 $N$ 实测显示该数值大部分来自趋势项, 真实的剥离残差自相关只有约 $0.10$. 所有依赖该解释的衍生量需重新审视.</p>
+<p>(ii) <strong>识别正确的微观 kernel 形态</strong>. ZFCρ DP 是离散单步递归. 数据上 χ-场 ACF 的尾部明显是 polynomial 衰减, 不是指数衰减. 这与 ZFCρ 的离散结构一致.</p>
+<p>(iii) <strong>重新定量化第 65 篇剩余开核心</strong>. 第 65 篇定理 65.A 把 59.1 化归为四个条件, 三条已条件控制, 剩余开核心是 centered residual 的 $\Psi_\eta = O(j)$. 本文将其精确化为线性 signed Abel 预算 $A_j^{\rm signed}(W_f) \le C j$ (其中 $W_f = m_j / 2$ 为 non-vacuous theorem scale; cf. §1.4 + §7.3 (iii)).</p>
+<p>(iv) <strong>给出条件式判据</strong>. 判据 71.E 在第 65 篇条件架构 + 线性 signed Abel 预算 + deterministic Abel transfer 不等式之下推出 59.1.</p>
+<p>本文识别 mechanism, 不证明 mechanism. 后续工作需要: 推导 K=1 polynomial kernel envelope (71.K-abs); 证明线性 signed Abel 预算 (71.S-signed); 把第 65 篇 conditions 完全 unconditional 化; 建立 deterministic Abel 不等式 (71.A-deterministic). 后三者构成 59.1 无条件 closure pathway 的三个独立 components, 详见 §8.4.</p>
+<h3>1.4 记号</h3>
+<p>沿用第 50 篇至第 70 篇.</p>
+<p>剥离残差: $h(p) = \rho(p) - \lambda \ln p - \mu_{12}(p \bmod 12)$, 其中 $\lambda = 3.856763$ (第 50 篇 anchor), $\mu_{12}(\cdot)$ 为模 12 类均值.</p>
+<p>归一化残差: $x(p) = h(p) / p$.</p>
+<p>二进制块: $I_j = [2^j, 2^{j+1})$.</p>
+<p>二进制层: 对素数 $p > 2$, 层指标 $\ell = v_2(p - 1)$ 为 $p - 1$ 的 2-adic 估值. 同层相邻素数指按 $p$ 升序在层内的相邻者. 该层的奇部分为 $q = (p - 1) / 2^\ell$.</p>
+<p>$\chi$-场: $\chi(p) = h(p)$, 即剥离残差; 在层 $\ell$ 内同时考察 $\chi(q) = \rho(q) - \lambda \ln q - \mu_{12}(q \bmod 12)$ (奇部分上的剥离残差).</p>
+<p>谱块量: $B_j = \sum_{p \in I_j} x(p)$, $D_j = \sum_{p \in I_j} x(p)^2$.</p>
+<p>谱块比: $R_{\rm wt}(j) = B_j^2 / (j D_j)$.</p>
+<p>$j$-smooth adjacent reference: 对块 $I_j$ 内相邻同层素数的 $\chi$-场, 在 modular 类 $r$ 上以 $I_{j-1}$ 与 $I_{j+1}$ 中相同 modular 类的均值作为参考中心, 替代 $I_j$ 自身的 modular 类均值.</p>
+<p>Bartlett 三角 Abel 预算: 对 $\chi$ 序列 $\{x_i\}$ 在窗口 $W$ 上,</p>
+<p>$$A^{\rm abs}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) |\gamma(k)|, \qquad A^{\rm signed}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma(k),$$</p>
+<p>其中 $\gamma(k)$ 为样本一阶自协方差 $\hat{\gamma}(k) / \hat{\gamma}(0)$. 块内有两个 window scale:</p>
+<ul>
+<li>$W_f = m_j / 2$ 为 half-block scale. 这是本文 (H4a) 命题陈述的 <strong>non-vacuous theorem scale</strong>, 跨 $j$, 跨 $N$ 数据稳定 carry signed cancellation 信息.</li>
+<li>$W_{\rm full} = m_j := |\{p : p \in I_j\}|$ 为 full-block 内素数总数 boundary scale. 在 sample-mean-centered $\gamma$ 上, $A^{\rm signed}(W_{\rm full})$ 是 finite-sample identity ($\equiv 0$ on adjacent-centered sequence in floating-point precision), 不 carry mechanism information; 该 boundary identity 与 paper 72 articulate 之 spectral bridge front geometry 一致, 详见 §7.3 (iii).</li>
+</ul>
+<p>数值上 $A^{\rm signed}(W_f) / j$ 跨 $j = 14$ 至 $29$ 在 $N = 10^9$ 上 stable in $[0.07, 1.20]$ 量级, 这是本文 (H4a) 的 真 数据 anchor. 二者的精确 transfer 关系详见 §7.3 (iii) + (iv).</p>
+<hr>
+<h2>§2. 假目标的修正: raw $C(1)$ 不是 retention 系数</h2>
+<h3>2.1 一个长期被引用的数值</h3>
+<p>第 55 篇至第 65 篇的若干段落把同层相邻素数 ρ-自相关 $C(1)_{\rho(q)} \approx 0.96$ 解释为祖先继承率, 写作</p>
+<p>$$C(1)_{\rho(q)} = \text{相邻同层素数共享祖先因子结构的比例.}$$</p>
+<p>该解释把 $1 - C(1) \approx 0.04$ 视为每层的 innovation rate, 进而推出每层有效新息率 $\approx 4\%$. 该数值在多处被进一步用于推导吸收率与有效层数的中间常数.</p>
+<p>本文显示该解释在数据上不成立.</p>
+<h3>2.2 跨 $N$ 实测: raw 与 detrended 自相关</h3>
+<p>对 ZFCρ 全 IC 在 $N = 10^7, 10^8, 10^9$ 上分别构建 $\rho$ 数组 (使用第 70 篇的固化构建器, 保留 FNV-1a 校验). 对每一同层 $\ell$, 在层内相邻素数的 ρ 序列上计算</p>
+<p>(i) raw $\rho(q)$ 一阶自相关: 直接取 $\rho(q)$ 值的样本 lag-1 ACF.</p>
+<p>(ii) detrended $\rho(q) - \lambda \ln q$ 一阶自相关.</p>
+<p>(iii) 剥离的 $\chi(p) = \rho(p) - \lambda \ln p - \mu_{12}(p \bmod 12)$ 一阶自相关.</p>
+<p><strong>表 1.</strong> 同层一阶自相关跨三种语言, 跨 $N$ ($N = 10^9$ 给出最完整的层覆盖).</p>
+<table><thead><tr>
+<th>$\ell$</th>
+<th>$n_p$ ($N = 10^9$)</th>
+<th>raw $\rho(q)$</th>
+<th>$\rho(q) - \lambda \ln q$</th>
+<th>$\chi(p)$</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>25,424,042</td>
+<td>0.9587</td>
+<td>0.0596</td>
+<td>0.0982</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12,712,271</td>
+<td>0.9655</td>
+<td>0.1053</td>
+<td>0.1318</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6,355,931</td>
+<td>0.9598</td>
+<td>0.0598</td>
+<td>0.0923</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1,589,237</td>
+<td>0.9582</td>
+<td>0.0471</td>
+<td>0.0991</td>
+</tr>
+<tr>
+<td>7</td>
+<td>397,158</td>
+<td>0.9596</td>
+<td>0.0442</td>
+<td>0.0861</td>
+</tr>
+<tr>
+<td>9</td>
+<td>99,234</td>
+<td>0.9582</td>
+<td>0.0161</td>
+<td>0.0912</td>
+</tr>
+<tr>
+<td>12</td>
+<td>12,433</td>
+<td>0.9680</td>
+<td>0.0488</td>
+<td>0.0975</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1,527</td>
+<td>0.9576</td>
+<td>$-0.0721$</td>
+<td>0.0082</td>
+</tr>
+<tr>
+<td>19</td>
+<td>101</td>
+<td>0.9380</td>
+<td>$-$</td>
+<td>0.0615</td>
+</tr>
+</tbody></table>
+<p>raw 列在 19 个有数据的层上稳定在 $0.94$ 至 $0.97$ 之间, 与第 55 篇的 $0.96$ 报告完全一致 (在 $N = 10^9$ 上以 $5 \times 10^7$ 素数复现). detrended 列与剥离 $\chi$ 列均显著低于 raw 列, 且 detrended 列约为 raw 列的 $1/16$.</p>
+<p><strong>跨 $N$ 收敛</strong>:</p>
+<table><thead><tr>
+<th>$\ell$</th>
+<th>$\chi(p)$ ACF $N = 10^7$</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+<th>$\Delta_{8 \to 9}$</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.0905</td>
+<td>0.0972</td>
+<td>0.0982</td>
+<td>$+0.0010$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.0803</td>
+<td>0.0901</td>
+<td>0.0923</td>
+<td>$+0.0022$</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.0783</td>
+<td>0.0942</td>
+<td>0.0991</td>
+<td>$+0.0049$</td>
+</tr>
+</tbody></table>
+<p>剥离 $\chi$ 的一阶自相关在 $N = 10^9$ 处已大致 saturate 在 $0.10$ 量级, 跨 $N$ 收敛.</p>
+<h3>2.3 articulate</h3>
+<p>数据给出三件事.</p>
+<p>(i) raw $\rho(q)$ 自相关 $\approx 0.96$ 是 $\lambda \ln q$ 的趋势同步性. 同层相邻素数有相近的 $q$ 量级, 故 $\lambda \ln q$ 项在它们之间高度同步. 该同步性与 ρ-递归本身无关.</p>
+<p>(ii) 剥离趋势之后, 真实的同层相邻素数 ρ-残差自相关只有约 $0.10$. 这是 ZFCρ DP 在 $\chi$-层上的真实 retention 系数.</p>
+<p>(iii) $1 - 0.96 \approx 0.04$ 不能被解释为 innovation rate. 真实的 innovation rate 在 $\chi$-层上是 $1 - 0.10 \approx 0.90$, 即每层超过九成是 innovation, 不是继承.</p>
+<p>该修正终止了将 raw $C(1)_{\rho(q)}$ 直接等同于 retention 系数的早期解释. 早期文献中的有效层数 $m_{\rm eff} = \ln r / \ln C(1)$ 表达式仍是代数恒等式, 但其中 $C(1)$ 应理解为 raw 同层 lag-1 ACF (主要由 $\lambda \ln q$ 趋势项贡献), 不再具有 retention 含义.</p>
+<p>后续节使用真实剥离对象 $\chi(p)$ 与 $\chi(q)$ 上的统计量, 不再使用 raw $\rho(q)$ 自相关.</p>
+<hr>
+<h2>§3. 单步 kernel 的离散结构: $K = 1$ resolvent 形态</h2>
+<h3>3.1 ZFCρ DP 的离散 single-step closure</h3>
+<p>ZFCρ DP 递归</p>
+<p>$$\rho(n) = \min(\rho(n-1) + 1, M(n))$$</p>
+<p>是逐整数离散更新. 不存在连续时间参数, 不存在 $dt \to 0$ 极限. 在 $\chi$-层上, 相邻同层素数之间的更新是单步对象, 一次完成.</p>
+<p>数学上, 离散 single-step closure 的自然形态是 polynomial kernel class. resolvent kernel $(1 + x)^{-1}$ 是该 class 内的一个具体 candidate: 给定一个一步反馈结构 $S + xS = S_0$, 解为 $S = S_0 / (1 + x) = S_0 \cdot (1 + x)^{-1}$. 该 kernel 在低频展开为</p>
+<p>$$(1 + x)^{-1} = 1 - x + x^2 - x^3 + \cdots,$$</p>
+<p>二阶系数为 $1$. 与之对照, 来自连续时间极限的指数 kernel $e^{-x}$ 在低频展开为 $1 - x + x^2 / 2 - \cdots$, 二阶系数为 $1/2$. 两种 kernel 在一阶导数处一致, 但在二阶处分离.</p>
+<p>ZFCρ 单步 kernel 的具体 polynomial form 仍为 open theorem candidate (71.K-abs, §8.1). 实验数据 (§3.2 至 §3.3) 给出 polynomial 形态 robust, 但具体是否 严格 resolvent $(1+x)^{-1}$ 还是更高阶 rational form 待 mathematical derivation. 本文以下用 "K=1 resolvent kernel 形态" 作为 candidate label, 不 commit 到具体 operator form.</p>
+<h3>3.2 数据: polynomial 尾部而非指数尾部</h3>
+<p>对剥离 $\chi(p)$ 在层 $\ell$ 内相邻素数序列上计算 lag-$k$ 自相关 ACF$(k)$, $k = 1, 2, 3, 5, 8, 12, 16, 24, 32, 48, 64$. 在所有 ACF$(k) > 0.005$ 的 lag 上同时拟合两种形态:</p>
+<p>(i) 指数: ACF$(k) = e^{-k/\tau}$.</p>
+<p>(ii) Polynomial 单步 resolvent: ACF$(k) = 1 / (1 + k / \tau)$, 即 $1 / \text{ACF}(k) = 1 + k / \tau$.</p>
+<p><strong>表 2.</strong> 拟合优度 $R^2$ 跨 $N$ 跨 layer 跨 centering, 在最高样本量 $\ell = 1$ 上.</p>
+<table><thead><tr>
+<th>centering</th>
+<th>$N$</th>
+<th>$R^2_{\exp}$</th>
+<th>$R^2_{\rm poly}$</th>
+<th>胜出</th>
+</tr></thead><tbody>
+<tr>
+<td>$\mu_{12}$</td>
+<td>$10^7$</td>
+<td>0.918</td>
+<td>0.978</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>$\mu_{12}$</td>
+<td>$10^8$</td>
+<td>0.864</td>
+<td>0.946</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>$\mu_{12}$</td>
+<td>$10^9$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>adjacent</td>
+<td>$10^7$</td>
+<td>0.927</td>
+<td>0.976</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>adjacent</td>
+<td>$10^8$</td>
+<td>0.864</td>
+<td>0.946</td>
+<td>poly</td>
+</tr>
+<tr>
+<td>layer</td>
+<td>$10^7$</td>
+<td>0.925</td>
+<td>0.976</td>
+<td>poly</td>
+</tr>
+</tbody></table>
+<p>在所有可比较组合上, polynomial 形态的拟合优度严格高于指数. 这一结果在 $\ell = 2, 3, 5$ 上同样成立. 当样本量降至 $n_p < 10^4$ (高 $\ell$ 与小 $N$ 组合) 时, 拟合不稳定, 但在所有样本充足的 $(\ell, N, \text{centering})$ 组合上结论一致.</p>
+<h3>3.3 Power-law 指数 $\alpha$ 与 Bartlett envelope</h3>
+<p>进一步将 ACF$(k)$ 拟合为单一 power-law $A \cdot k^{-\alpha}$, 给出指数 $\alpha$.</p>
+<p><strong>表 3.</strong> $\alpha$ 跨 $N$ 跨 centering, 在 $\ell = 1$ 上.</p>
+<table><thead><tr>
+<th>centering</th>
+<th>$\alpha$ ($N = 10^7$)</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+</tr></thead><tbody>
+<tr>
+<td>$\mu_{12}$</td>
+<td>0.509</td>
+<td>0.350</td>
+<td>0.288</td>
+</tr>
+<tr>
+<td>adjacent</td>
+<td>0.473</td>
+<td>0.327</td>
+<td>0.269</td>
+</tr>
+<tr>
+<td>layer</td>
+<td>0.459</td>
+<td>0.325</td>
+<td>0.268</td>
+</tr>
+<tr>
+<td>block</td>
+<td>0.474</td>
+<td>0.327</td>
+<td>0.269</td>
+</tr>
+</tbody></table>
+<p>直接 power-law 拟合给出的 $\alpha$ 跨 $N$ 仍在缓慢漂移, $\Delta_{8 \to 9}$ 约 $-0.06$, 较 $\Delta_{7 \to 8}$ 约 $-0.16$ 已显著减小. 真实的极限 $\alpha$ 仍未 saturate. 在 5 种 centering 之间 $\alpha$ 的 spread 在每一 $N$ 上都不超过 $0.05$, 该 spread 跨 $N$ 稳定. 即 $\alpha$ 是 ZFCρ 自身的结构性特征, 不是 centering 选择的人工.</p>
+<p>跨 $\ell$ 的轻度漂移 ($\ell = 1$ 处 $0.29$, $\ell = 5$ 处 $0.39$ at $N = 10^9$) 表明 $\alpha$ 不是严格层不变量, 但所有层都给出 $\alpha < 1$, 即 ACF 不可求和.</p>
+<p>定义 Bartlett triangular Abel 包络</p>
+<p>$$A^{\rm abs}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) |\gamma(k)|.$$</p>
+<p>若 $|\gamma(k)| \asymp k^{-\alpha}$ 且 $\alpha < 1$, 则 $A^{\rm abs}(W) \asymp W^{1 - \alpha}$.</p>
+<p><strong>表 4.</strong> Bartlett 包络指数 $\beta_{\rm abs}$ 跨块 $j$ 跨 centering 跨 $N$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>centering</th>
+<th>$\beta_{\rm abs}$ ($N = 10^7$)</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+</tr></thead><tbody>
+<tr>
+<td>16</td>
+<td>$\mu_{12}$</td>
+<td>$+0.506$</td>
+<td>$+0.531$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$\mu_{12}$</td>
+<td>$+0.543$</td>
+<td>$+0.531$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>$\mu_{12}$</td>
+<td>$+0.505$</td>
+<td>$+0.511$</td>
+<td>$+0.511$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>$\mu_{12}$</td>
+<td>$+0.483$</td>
+<td>$+0.501$</td>
+<td>$+0.501$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>adjacent</td>
+<td>$+0.484$</td>
+<td>$+0.501$</td>
+<td>$+0.501$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$\mu_{12}$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$+0.516$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$\mu_{12}$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$+0.545$</td>
+</tr>
+<tr>
+<td>29</td>
+<td>$\mu_{12}$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$+0.562$</td>
+</tr>
+</tbody></table>
+<p>$\beta_{\rm abs}$ 在 $0.50$ 至 $0.56$ 之间, 跨 $j$ 缓慢上升, 跨 $N$ 极稳定 ($\Delta < 0.03$), 跨 4 种 centering 几乎相同. 这是 ZFCρ 的真实结构性 invariant, 与单步 polynomial kernel 一致.</p>
+<h3>3.4 articulate</h3>
+<p>(i) ZFCρ DP 是离散单步, 无连续极限. 单步 closure 的自然 kernel 形态属于 polynomial kernel class, 其中 resolvent $(1+x)^{-1}$ 是 ZFCρ 离散 single-step 结构 兼容的具体 candidate. 这是由 ZFCρ 离散结构决定的 articulation, 而非单纯数据拟合; 但具体 operator form 待 71.K-abs derivation.</p>
+<p>(ii) 数据上, $\chi(p)$ 同层 ACF 在所有可比较组合中 polynomial 拟合优度严格胜过指数拟合. 这与单步 resolvent kernel 给出的 polynomial 长记忆一致.</p>
+<p>(iii) Bartlett 绝对包络指数 $\beta_{\rm abs} \approx 0.50$ 跨 $j$ 跨 $N$ 跨 centering 极稳定. 这是 ZFCρ 单步 kernel 的真实 spectral signature.</p>
+<p>(iv) Direct power-law 拟合给出的 $\alpha$ 仍在缓慢漂移, 且与 Bartlett 包络给出的 $1 - \beta_{\rm abs} \approx 0.50$ 不严格一致. 真实的 ACF 不是 single power-law, 而是带有 fine structure 的 polynomial 包络. ZFCρ 单步 kernel 的具体 operator form 仍为 open theorem candidate (71.K-abs, §8.1).</p>
+<hr>
+<h2>§4. Signed Abel 预算: 不完全但 sufficient 的 cancellation</h2>
+<h3>4.1 Signed Abel 与绝对包络的分离</h3>
+<p>Bartlett 三角 Abel 同时给出绝对预算 $A^{\rm abs}(W)$ 与 signed 预算 $A^{\rm signed}(W)$:</p>
+<p>$$A^{\rm signed}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma(k).$$</p>
+<p>绝对预算度量 ACF envelope 的累积, signed 预算度量考虑符号振荡之后的累积. 二者比值</p>
+<p>$$A^{\rm signed}(W) / A^{\rm abs}(W)$$</p>
+<p>度量 sign cancellation 的程度.</p>
+<h3>4.2 跨 $N$ 数据</h3>
+<p><strong>表 5.</strong> 块 $I_{16}$ 至 $I_{22}$ 上 $\beta_{\rm signed}$ (signed Bartlett 增长指数) 与 $\beta_{\rm abs}$ 跨 $N$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>centering</th>
+<th>$\beta_{\rm signed}$ ($N = 10^7$)</th>
+<th>$N = 10^8$</th>
+<th>$N = 10^9$</th>
+<th>$\beta_{\rm abs}$ ($N = 10^9$)</th>
+</tr></thead><tbody>
+<tr>
+<td>16</td>
+<td>$\mu_{12}$</td>
+<td>$-0.513$</td>
+<td>$-0.490$</td>
+<td>$-0.490$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>16</td>
+<td>adjacent</td>
+<td>$-0.466$</td>
+<td>$-0.409$</td>
+<td>$-0.409$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$\mu_{12}$</td>
+<td>$-0.189$</td>
+<td>$-0.109$</td>
+<td>$-0.109$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>adjacent</td>
+<td>$-0.204$</td>
+<td>$-0.123$</td>
+<td>$-0.123$</td>
+<td>$+0.531$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>$\mu_{12}$</td>
+<td>$-0.146$</td>
+<td>$-0.086$</td>
+<td>$-0.086$</td>
+<td>$+0.511$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>adjacent</td>
+<td>$-0.157$</td>
+<td>$-0.097$</td>
+<td>$-0.097$</td>
+<td>$+0.511$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>$\mu_{12}$</td>
+<td>$+0.010$</td>
+<td>$+0.050$</td>
+<td>$+0.050$</td>
+<td>$+0.501$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>adjacent</td>
+<td>$-0.036$</td>
+<td>$+0.037$</td>
+<td>$+0.037$</td>
+<td>$+0.501$</td>
+</tr>
+</tbody></table>
+<p>根据第 70 篇定理 70.A, 块 $I_j$ 上的 $\rho$ 数据在 $N = 10^7, 10^8, 10^9$ 三个 builder 给出的骨架下逐点相等 (对 $j \le 22$, 三个骨架都覆盖所需的 $D^*(j) \le 2900$). 故 $\beta_{\rm signed}$ 在 $j \le 22$ 上跨 $N = 10^8$ 与 $N = 10^9$ byte-equal. $N = 10^7$ 的小幅差异源自 $\mu_{12}$ 全局 calibration 在不同 $N$ 上的轻度漂移.</p>
+<h3>4.3 大 $j$ 处 $\beta_{\rm signed}$ 的系统漂正</h3>
+<p>在 $N = 10^9$ 上, 块 $j = 23$ 至 $29$ 的数据是新的, 不与较小 $N$ 重合.</p>
+<p><strong>表 6.</strong> $\beta_{\rm signed}$ 跨 $j = 14$ 至 $29$ 在 $N = 10^9$ 上, 4 种 centering.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\mu_{12}$</th>
+<th>$\mu_{12, \text{global}}$</th>
+<th>adjacent</th>
+<th>adjacent_smooth</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>$-0.112$</td>
+<td>$+0.248$</td>
+<td>$-0.151$</td>
+<td>$-0.131$</td>
+</tr>
+<tr>
+<td>16</td>
+<td>$-0.490$</td>
+<td>$-0.023$</td>
+<td>$-0.409$</td>
+<td>$-0.464$</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$-0.109$</td>
+<td>$+0.190$</td>
+<td>$-0.123$</td>
+<td>$-0.116$</td>
+</tr>
+<tr>
+<td>20</td>
+<td>$-0.086$</td>
+<td>$+0.149$</td>
+<td>$-0.097$</td>
+<td>$-0.092$</td>
+</tr>
+<tr>
+<td>22</td>
+<td>$+0.050$</td>
+<td>$+0.197$</td>
+<td>$+0.037$</td>
+<td>$+0.044$</td>
+</tr>
+<tr>
+<td>24</td>
+<td>$+0.134$</td>
+<td>$+0.210$</td>
+<td>$+0.123$</td>
+<td>$+0.129$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$+0.216$</td>
+<td>$+0.234$</td>
+<td>$+0.207$</td>
+<td>$+0.212$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$+0.299$</td>
+<td>$+0.281$</td>
+<td>$+0.289$</td>
+<td>$+0.294$</td>
+</tr>
+<tr>
+<td>29</td>
+<td>$+0.289$</td>
+<td>$+0.281$</td>
+<td>$+0.289$</td>
+<td>$+0.289$</td>
+</tr>
+</tbody></table>
+<p>在 $\mu_{12}$ 与 adjacent 两种主要 centering 下, $\beta_{\rm signed}$ 在 $j = 20$ 与 $j = 22$ 之间从负转正, 此后随 $j$ 单调增长至 $j = 28$ 处的 $+0.29$ 量级. 这一漂移在三种保持 block-wise 局部性的 centering ($\mu_{12}$, adjacent, adjacent_smooth) 下完全一致, 不是单个 centering 的 artifact.</p>
+<p>$\beta_{\rm signed} > 0$ 意味着 $A^{\rm signed}(W)$ 随 $W$ 增长而增长, 即 signed Bartlett 预算在大 $j$ 块上不严格 saturate. sign cancellation 不完全.</p>
+<p>但 $\beta_{\rm signed}$ 始终严格小于 $\beta_{\rm abs}$. 二者差 $\beta_{\rm abs} - \beta_{\rm signed}$ 在 $j = 14$ 处约 $0.6$, 在 $j = 29$ 处仍约 $0.27$. 即在所有 $j$ 上 sign cancellation 把绝对包络的增长指数显著降低, 只是不降至零.</p>
+<h3>4.4 articulate</h3>
+<p>(i) signed Bartlett 预算 $A^{\rm signed}(W_f)$ 在大 $j$ 上不严格 bounded. 严格 sign cancellation 的 articulation 在数据上不成立.</p>
+<p>(ii) signed Bartlett 增长指数 $\beta_{\rm signed}$ 始终严格小于绝对包络指数 $\beta_{\rm abs}$. signed cancellation 是 partial 的, 把绝对增长率减半.</p>
+<p>(iii) sign cancellation 的来源不是 ZFCρ 单步 kernel 自身的 scalar property. 单步 resolvent kernel 给出 polynomial 长记忆 (绝对包络), 但不直接给出 signed phase 上的 cancellation 结构. signed cancellation 涉及 signed spectral measure 的低频结构, 是与 §3 的 absolute envelope 分离的层. 该层的 mathematical mechanism 仍为 open theorem candidate (71.S-signed, §8.2).</p>
+<hr>
+<h2>§5. Bartlett readout 与 $R_{\rm wt} = O(1)$ 的 macro 验证</h2>
+<h3>5.1 Bartlett 谱 identity</h3>
+<p>partial-sum variance 与 Bartlett 三角 Abel 之间存在标准 identity. 对足够长的平稳 $\chi$ 序列,</p>
+<p>$$\text{Var}\left(\sum_{i = 1}^{W} x_i\right) \approx W \cdot A^{\rm signed}(W) \cdot \text{Var}(x).$$</p>
+<p>应用于块 $I_j$ 内, 取 $W = W_f$ 为块内素数数的一半,</p>
+<p>$$B_j^2 \approx W_f \cdot A_j^{\rm signed}(W_f) \cdot D_j / W_f = A_j^{\rm signed}(W_f) \cdot D_j$$</p>
+<p>(在 $E[B_j]$ 可忽略的假设下), 因此</p>
+<p>$$R_{\rm wt}(j) = \frac{B_j^2}{j D_j} \approx \frac{A_j^{\rm signed}(W_f)}{j}.$$</p>
+<p>该 identity 是渐近 quad approximation, 不是逐块精确. 在 $E[B_j]^2$ 可忽略的 regime 下严格成立; 在有限块上存在 $O(1/j)$ 相对误差, 数值上不影响 $O(1)$ 有界结论, 但严格 mathematical 论证应使用 §7.1 (H4b) 的 deterministic Abel transfer 不等式 (cf. §7.3 (iii)).</p>
+<h3>5.2 跨 $N = 10^9$ paper 59 区间复现</h3>
+<p>第 59 篇报告 $R_{\rm wt}(j) \in [0.79, 25.3]$ 跨 $j = 14$ 至 $33$ 在 $N = 10^{10}$ 上. 本文在 $N = 10^9$ 上跨 $j = 14$ 至 $29$ 给出.</p>
+<p><strong>表 7.</strong> $R_{\rm wt}$ 在 $\mu_{12, \text{global}}$ centering 下, $N = 10^9$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$R_{\rm wt}$</th>
+<th>$j$</th>
+<th>$R_{\rm wt}$</th>
+</tr></thead><tbody>
+<tr>
+<td>14</td>
+<td>8.71</td>
+<td>22</td>
+<td>23.85</td>
+</tr>
+<tr>
+<td>15</td>
+<td>13.75</td>
+<td>23</td>
+<td>24.64</td>
+</tr>
+<tr>
+<td>16</td>
+<td>10.90</td>
+<td>24</td>
+<td>17.33</td>
+</tr>
+<tr>
+<td>17</td>
+<td>15.78</td>
+<td>25</td>
+<td>11.91</td>
+</tr>
+<tr>
+<td>18</td>
+<td>18.00</td>
+<td>26</td>
+<td>3.56</td>
+</tr>
+<tr>
+<td>19</td>
+<td>19.42</td>
+<td>27</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td>20</td>
+<td>21.75</td>
+<td>28</td>
+<td>2.88</td>
+</tr>
+<tr>
+<td>21</td>
+<td>25.45</td>
+<td>29</td>
+<td>6.89</td>
+</tr>
+</tbody></table>
+<p>16 个块在第 59 篇报告区间 $[0.79, 25.3]$ 内, 2 个块边缘超出 ($j = 21$ 处 $25.45$ 比上界高 $0.6\%$, $j = 27$ 处 $0.44$ 比下界低 $44\%$). 整体上 $R_{\rm wt}$ 跨 $j = 14$ 至 $29$ 在 $N = 10^9$ 上的取值范围 $[0.44, 25.45]$ 与第 59 篇 $N = 10^{10}$ 上的 $[0.79, 25.3]$ 在量级上一致.</p>
+<p>注: $j = 27$ 处 $R_{\rm wt} = 0.44$ 是 $N = 10^9$ 数据上的 局部 minimum. 第 59 篇 $N = 10^{10}$ 报告的 [0.79, 25.3] 区间的 lower bound 0.79 来自 $j$ 范围 [14, 33] 上的 19 个 connected blocks 的 minimum. 在 $N = 10^9$ 上 测到 $j = 27$ 是 $R_{\rm wt}$ 的局部低谷, $j = 26$ ($R_{\rm wt} = 3.56$) 与 $j = 28$ ($R_{\rm wt} = 2.88$) 邻居 都在 paper 59 区间内. 该低谷是否随 $N$ 推至 $10^{10}$ 而 上升, 或 始终 持续, 需要 paper 59 N=10^10 数据 的 $j = 27$ 单点 比对; 该比对超出本文 scope. 量级上 R_wt 仍 bounded $O(1)$, 不影响判据 71.E 的 sup_j R_wt = O(1) statement.</p>
+<h3>5.3 同种 centering 的 $A_j^{\rm signed}/j$ 与 $R_{\rm wt}$</h3>
+<p><strong>表 8.</strong> $\mu_{12, \text{global}}$ centering 下 $A_j^{\rm signed}(W_f)$, $A_j^{\rm signed}(W_f) / j$, 与 $R_{\rm wt}(j)$ 在 $N = 10^9$ 上.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$n_p$</th>
+<th>$W_f$</th>
+<th>$A_j^{\rm signed}(W_f)$</th>
+<th>$A_j^{\rm signed}/j$</th>
+<th>$R_{\rm wt}$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>268,216</td>
+<td>134,108</td>
+<td>4.6</td>
+<td>0.21</td>
+<td>23.85</td>
+</tr>
+<tr>
+<td>24</td>
+<td>985,818</td>
+<td>492,909</td>
+<td>28.9</td>
+<td>1.20</td>
+<td>17.33</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>1,822,872</td>
+<td>23.6</td>
+<td>0.91</td>
+<td>3.56</td>
+</tr>
+<tr>
+<td>28</td>
+<td>13,561,907</td>
+<td>6,780,953</td>
+<td>16.4</td>
+<td>0.59</td>
+<td>2.88</td>
+</tr>
+<tr>
+<td>29</td>
+<td>22,654,784</td>
+<td>11,327,392</td>
+<td>13.1</td>
+<td>0.45</td>
+<td>6.89</td>
+</tr>
+</tbody></table>
+<p>$A_j^{\rm signed}(W_f) / j$ 跨 $j = 22$ 至 $29$ 在 $[0.21, 1.20]$ 量级内. $R_{\rm wt}(j)$ 在同区间内 $[2.88, 23.85]$ 量级内. 二者不在逐块精确 identity 上, 但同步 bounded 与同 magnitude 量级.</p>
+<p>在 $\mu_{12}$ (block-local) centering 下, $A_j^{\rm signed}(W_f) / j$ 在 $[0.07, 0.89]$ 量级; 在 adjacent centering 下, $A_j^{\rm signed}(W_f) / j$ 在 $[0.06, 0.93]$ 量级; 三种 centering 下 $A_j^{\rm signed}(W_f) / j$ 都在 $O(1)$ 数量级内.</p>
+<h3>5.4 articulate</h3>
+<p>(i) $R_{\rm wt} = O(1)$ 在 $N = 10^9$ 上跨 $j = 14$ 至 $29$ 在 paper 59 的区间内强 confirmed.</p>
+<p>(ii) Bartlett identity 给出 $R_{\rm wt} \approx A_j^{\rm signed}(W_f) / j$, 量级一致. 即使 signed Bartlett 不严格 saturate (§4), $A_j^{\rm signed}(W_f)$ 缓慢增长, 但其除以 $j$ 后仍 $O(1)$.</p>
+<p>(iii) 即 macro 现象 $R_{\rm wt} = O(1)$ 与 micro 机制 signed cancellation 不完全 兼容. 中间桥梁是 $A_j^{\rm signed}(W_f) / j$ 在 paper 59 范围内保持 $O(1)$, 即</p>
+<p>$$A_j^{\rm signed}(W_f) \le C j$$</p>
+<p>for $j$ in tested range, 称为线性 signed Abel 预算 (其中 $W_f = m_j / 2$ 为 non-vacuous theorem scale; cf. §7.3 (iii) for $W_{\rm full}$ boundary identity articulation).</p>
+<hr>
+<h2>§6. 与第 65 篇 open core 的关系</h2>
+<h3>6.1 第 65 篇定理 65.A 回顾</h3>
+<p>第 65 篇定理 65.A 给出 59.1 的条件证明架构: $B_j$ 在 $j$-smooth adjacent reference 下分解为</p>
+<p>$$B_j = B_{\rm count} + B_{\rm resid} + B_{\rm gauge},$$</p>
+<p>其中</p>
+<p>(c0) $B_{\rm count}$ 由分支正交性控制, $|B_{\rm count}| / \sqrt{j D_j} < 0.5$, 已条件控制 (第 64 篇).</p>
+<p>(c1) centered residual 满足谱估计 $\Psi_\eta(W_f) = O(j)$, 这是剩余开核心.</p>
+<p>(c2) gauge defect 由 $j$-smooth reference 控制, 已条件控制 (第 65 篇 EXP H).</p>
+<p>(c3) cross-term 可控, 已条件控制 (第 65 篇 §10).</p>
+<p>第 65 篇 §9.3 报告 $\Psi_\eta(W) / j$ 在 $W = 5000$ 上仍在缓慢增长, 未 saturate. 该报告把 (c1) 标记为 remaining technical core.</p>
+<h3>6.2 第 71 篇对 (c1) 的精确化</h3>
+<p>本文 §4 给出: 在 adjacent centering 下, signed Bartlett 增长指数 $\beta_{\rm signed}$ 在大 $j$ 上系统漂正, 即 $A_j^{\rm signed}(W)$ 不严格 bounded. 这是第 65 篇所观察到的同一现象在 $j$-domain 而非 fixed-$W$ domain 中的 manifestation.</p>
+<p>但 §5 同时给出: $A_j^{\rm signed}(W_f) / j$ 在 $j = 14$ 至 $29$ 上保持 $O(1)$. 即第 65 篇所需的 $\Psi_\eta = O(j)$ 在精确化为 $A_j^{\rm signed}(W_f) \le C j$ 之后, 数据上仍 plausible.</p>
+<p>两个观察合并: signed Bartlett 不严格 bounded, 但增长被 $j$ 因子吸收. 这正是第 65 篇 (c1) 所要求的形态.</p>
+<h3>6.3 等价性 verification</h3>
+<p>第 65 篇 §11.3 给出 $\Psi_\eta$ 的 finite-window 显式定义:</p>
+<p>$$\Psi_{\eta, j}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) r_{\eta, j}(k),$$</p>
+<p>其中 $r_{\eta, j}(k)$ 是 adjacent-centered residual $\eta_p = x_p - \mu_{\tau(p)}^*(j)$ 的 lag-$k$ 自相关.</p>
+<p>本文 §1.4 给出 $A_j^{\rm signed}(W)$ 的定义:</p>
+<p>$$A_j^{\rm signed}(W) = 1 + 2 \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma_j(k),$$</p>
+<p>其中 $\gamma_j(k)$ 为 $I_j$ 内 $j$-smooth adjacent reference centering 后 $\chi$ 序列的 lag-$k$ 自相关.</p>
+<p>两个定义在 mathematical form 上一致, 在所应用的 residual 对象上一致 (adjacent-centered residual). 即对任意 $W$,</p>
+<p>$$\Psi_{\eta, j}(W) = A_j^{\rm signed}(W).$$</p>
+<p>故第 65 篇 (c1) 条件 $\Psi_\eta = O(j)$ 与本文条件 $A_j^{\rm signed}(W_f) \le C j$ 是 same mathematical statement on same object 在 non-vacuous theorem scale 上. 本文不替换 (c1), 而是把它从 fixed-$W$ 表述精确化为 half-block-window 表述.</p>
+<p>第 65 篇 §9.2 表 11 给出 $j = 29$ 上 $\Psi_\eta(W) / j$ 在 $W = 100$ 至 $W = 5000$ 范围内的数据: $W = 5000$ 处 $\Psi_\eta / j = 3.52$ 仍在增长. 本文 §5.3 表 8 给出 $j = 29$ 上 $A_j^{\rm signed}(W_f) / j = 0.45$, 其中 $W_f = 1.13 \times 10^7$ 是 full block half. 即 $W$ 从 $5000$ 推至 $W_f$ 之后, signed Bartlett 预算除以 $j$ 已 saturate 至 $O(1)$. 第 65 篇 §9.3 所观察到的 $W = 5000$ 上 $\Psi_\eta / j$ 仍 grow, 在 $W$ 推至 half-block 之后实际上 saturate. 这是本文跨 $N = 10^9$ 数据给第 65 篇 (c1) 的新解析信息.</p>
+<p>新旧形态合并:</p>
+<ul>
+<li>第 65 篇旧表述: 证明 $\Psi_\eta = O(j)$, 在 $W = 5000$ 上 $\Psi_\eta / j$ 仍 grow, 标记为 remaining technical core.</li>
+</ul>
+<ul>
+<li>本文精确化表述: 证明 $A_j^{\rm signed}(W_f) \le C j$, 其中 $W_f = m_j / 2$ 为 non-vacuous half-block theorem scale. 数据上 $A_j^{\rm signed}(W_f) / j$ 跨 $j = 14$ 至 $29$ 在 $N = 10^9$ 上 stable in $[0, 1.20]$ 量级.</li>
+</ul>
+<hr>
+<h2>§7. 条件式判据</h2>
+<h3>7.1 判据 71.E (条件式线性 Abel closure)</h3>
+<p>由于本文给出的 Bartlett identity (§5.1) 是渐近 quad approximation 而非逐块精确, 严格陈述应当采用 "判据" 形式而非 "定理" 形式. 我们给出 Criterion 71.E.</p>
+<p><strong>判据 71.E (条件式线性 Abel closure)</strong>. 设 ZFCρ DP 在饱和骨架 $S_{D^*(j)}$ 上, 在 $j$-smooth adjacent reference centering 之下, 满足:</p>
+<p>(H1) 第 65 篇 count 条件 (c0): $|B_{\rm count}(j)|^2 \le \kappa_0 \cdot j D_j$ for some $\kappa_0 < \infty$.</p>
+<p>(H2) 第 65 篇 gauge 条件 (c2): gauge defect 由 $j$-smooth reference 控制, 即存在 $\kappa_g < \infty$ 使 $|B_{\rm gauge}(j)|^2 \le \kappa_g \cdot D_j$ for all $j$.</p>
+<p>(H3) 第 65 篇 cross-term 条件 (c3): cross-term 在 (H1) 与 (H2) 之下由 Cauchy-Schwarz 控制, 不带新增量级.</p>
+<p>(H4a) 线性 signed Abel 预算 (half-block scale): 存在 $C_S < \infty$ 使</p>
+<p>$$A_j^{\rm signed}(W_f) \le C_S \cdot j \quad \text{for all sufficiently large } j,$$</p>
+<p>其中 $W_f = m_j / 2$ 为 $I_j$ half-block window scale (non-vacuous theorem scale; cf. §1.4 + §7.3 (iii) 关于 $W_{\rm full} = m_j$ 上 finite-sample identity 的说明), $A_j^{\rm signed}(W_f)$ 为 $j$-smooth adjacent reference centering 后 full-block residual 序列 $\eta_p = x_p - \mu_{\tau(p)}^*(j)$ 的 Bartlett 三角 signed Abel 预算.</p>
+<p>(H4b) Deterministic Abel transfer 不等式: 存在 $C_A < \infty$ 使</p>
+<p>$$B_{\rm resid}(j)^2 \le C_A \cdot A_j^{\rm signed}(W_f) \cdot D_j \quad \text{for all sufficiently large } j.$$</p>
+<p>则 第 59 篇猜想 59.1 成立.</p>
+<h3>7.2 证明骨架</h3>
+<p>第 65 篇定理 65.A 在条件 (c0)-(c3) 之下把 59.1 化归为 $\Psi_\eta(W_f) = O(j)$ 的谱估计 (cf. §6.3 等价性 verification at non-vacuous theorem scale). 假设 (H1) 至 (H4b), 第 65 篇定理 65.A 的链条全部满足.</p>
+<p>具体: $B_j$ 的分解 $B_j = B_{\rm count} + B_{\rm resid} + B_{\rm gauge}$ 给出</p>
+<p>$$B_j^2 \le 3 (B_{\rm count}^2 + B_{\rm resid}^2 + B_{\rm gauge}^2).$$</p>
+<p>由 (H1) $B_{\rm count}^2 \le \kappa_0 \cdot j D_j$. 由 (H2) $B_{\rm gauge}^2 \le \kappa_g \cdot D_j \le \kappa_g \cdot j D_j$ (吸收 $j \ge 1$). 由 (H4a) + (H4b) $B_{\rm resid}^2 \le C_A \cdot A_j^{\rm signed}(W_f) \cdot D_j \le C_A C_S \cdot j D_j$ for all sufficiently large $j$.</p>
+<p>合并: $B_j^2 \le 3 (\kappa_0 + \kappa_g + C_A C_S) \cdot j D_j$ for all sufficiently large $j$. 即 $R_{\rm wt}(j) = B_j^2 / (j D_j) \le 3 (\kappa_0 + \kappa_g + C_A C_S)$, 故 $\sup_j R_{\rm wt}(j) < \infty$. 这是 59.1.</p>
+<p>证明骨架的 substantive content 是 (H4b) 的 deterministic Abel transfer 不等式. 该不等式从 (H4a) 的 Bartlett-style signed Abel 预算 严格推出 $B_{\rm resid}^2$ 的 $D_j$-比例 bound, 不经过 §5.1 的渐近 quad approximation. 该不等式可在第 65 篇 §11 的 Bartlett-Abel framework 内 derive, 但 explicit 推导 仍 open (称为 71.A-deterministic, §8.4 Component (B)).</p>
+<h3>7.3 备注</h3>
+<p>(i) 判据 71.E 是条件式陈述, 不是无条件定理. 条件 (H1) 至 (H3) 在第 65 篇中已给出条件证据 (具体实验 cf. 第 65 篇 §11.2 表), 但仍依赖第 65 篇 framework 内的具体假设. 条件 (H4a) 是本文识别的精确剩余开核心 (open theorem candidate 71.S-signed, §8.2). 条件 (H4b) 是 deterministic Abel transfer 不等式 (open theorem candidate 71.A-deterministic, §8.4 Component (B)).</p>
+<p>(ii) 判据 71.E 不证明 59.1. 它把 59.1 的剩余 mathematical content 沿 §6 的 articulation 收敛到 (H4a) + (H4b) 两条具体的 spectral / inequality 估计.</p>
+<p>(iii) 关于 $W_f = m_j / 2$ 与 $W_{\rm full} = m_j$ 的关系: 本文 (H4a) 在 $W_f$ half-block scale 上陈述. 数据上 $A^{\rm signed}(W_f) / j$ 跨 $j = 14$ 至 $29$ 在 $N = 10^9$ 上 stable in $[0, 1.20]$ 量级 (本文 §5 表 7-8). $W_f$ 是 non-vacuous theorem scale, ACF 的 signed cancellation 信息在该 scale 上 carry 完整.</p>
+<p>$W_{\rm full} = m_j$ 上 $A^{\rm signed}(W_{\rm full})$ 在 sample-mean-centered $\gamma$ 上 退化为 finite-sample identity:</p>
+<p>$$A^{\rm signed}(W = m_j) = \frac{m_j \bar{x}^2}{\widehat{\rm Var}(x)} = 0 \quad \text{(当} \bar{x} = 0 \text{时, 即 sample-centered)}.$$</p>
+<p>paper 72 跨 12 configurations × 16 blocks audit 实测 $|A_j^{\rm signed}(m_j)| < 10^{-12}$ 跨所有 configurations, 即 $W = m_j$ 上 boundary identity 跨 centering invariant. 这个 boundary identity 不 carry mechanism information; 该现象 在 paper 72 articulate 为 Spectral Bridge Front 几何在 $W \to m_j^-$ 上的 closure manifestation. 因此本文判据 71.E (H4a) 在 $W_f$ 而非 $W_{\rm full}$ 上陈述, 避免 boundary identity 的 vacuous statement issue.</p>
+<p>(iv) 关于 same-layer χ 序列 与 full-block residual 序列的 桥: 本文 §3 数据 (tail shape, α 包络) 在 same-layer (固定 $v_2(p-1) = \ell$) 序列上 robust, 给出 absolute envelope 的 layer-stratified 现象. 本文 §4-§5 与判据 71.E 中 涉及 signed Abel 预算 的 数据 与 statement 均为 full-block (across all $\ell$ within $I_j$) adjacent-centered residual 序列上的 Bartlett (audit C 实测). 即 same-layer 数据 是 K=1 polynomial envelope candidate 的 supporting evidence (§3, 71.K-abs); full-block 数据 是 71.S-signed 直接 statement 的 anchor (§4-§5). 二者 不需 layer-to-block aggregation 桥 within paper 71 framework.</p>
+<hr>
+<h2>§8. 两个 open theorem candidate</h2>
+<h3>8.1 Theorem Candidate 71.K-abs (单步 resolvent envelope)</h3>
+<p><strong>Candidate 71.K-abs</strong>. 在 ZFCρ DP 下, 经过 $j$-smooth adjacent reference centering 之后, 同层相邻素数 ρ-残差 $\chi(p)$ 序列的 lag-$k$ 自相关 $\gamma(k)$ 渐近形式为</p>
+<p>$$\gamma(k) \asymp k^{-\alpha} \cdot L(k)$$</p>
+<p>with $\alpha \in (0, 1)$, $L$ 为慢变函数. 即 ACF 是 polynomial 长记忆而非指数衰减. Bartlett 三角绝对包络 $A^{\rm abs}(W) \asymp W^{1 - \alpha}$.</p>
+<p><strong>status</strong>: open. 数据 (跨 $N = 10^7, 10^8, 10^9$, 跨 $j$, 跨 5 种 centering) 给出 $\beta_{\rm abs} \in [0.50, 0.56]$ 极稳定. 但 mathematical derivation 需要识别 ZFCρ DP 中 $L_j$ operator 的低频谱密度. 这是 functional analysis / spectral theory 工作.</p>
+<h3>8.2 Theorem Candidate 71.S-signed (linear signed Abel budget)</h3>
+<p><strong>Candidate 71.S-signed</strong>. 独立于 71.K-abs, 在 ZFCρ DP 饱和骨架 $S_{D^<em>(j)}$ 上 经 $j$-smooth adjacent reference centering 之后, full-block residual 序列 $\eta_p = x_p - \mu_{\tau(p)}^</em>(j)$ ($p \in I_j$) 的 Bartlett 三角 signed Abel 预算满足</p>
+<p>$$A_j^{\rm signed}(W_f) \le C \cdot j$$</p>
+<p>for all sufficiently large $j$, with some $C < \infty$ (where $W_f = m_j / 2$ 为 non-vacuous half-block theorem scale; cf. §1.4 + §7.3 (iii)).</p>
+<p><strong>status</strong>: open. 数据 (§5.3) 给出 $A_j^{\rm signed}(W_f) / j \in [0.06, 1.20]$ 跨 $j = 14$ 至 $29$ 在 $N = 10^9$ 上. mathematical derivation 涉及 signed spectral measure 的低频抵消机制. 该机制可能与 ZFCρ DP 的 add/mult branch decomposition (第 65 篇) 内的 phase 结构有关. paper 72 articulate 此 signed cancellation 在 lag domain 内显化为 Spectral Bridge Front 几何, 给候选 71.S-signed 一个 sharper mechanism articulation.</p>
+<h3>8.3 两 candidate 之间的关系</h3>
+<p>71.K-abs 与 71.S-signed 是分离的 statement.</p>
+<p>71.K-abs 关心的是 absolute envelope 的形态, 即 $|\gamma(k)|$ 的衰减率. 这是 scalar kernel 对象.</p>
+<p>71.S-signed 关心的是 signed phase 上的 cancellation 结构, 即 $\gamma(k)$ 的符号振荡是否给出足够的累积抵消. 这是 signed spectral measure 的低频结构.</p>
+<p>71.K-abs 不蕴含 71.S-signed, 反之亦然. 一个有 polynomial 绝对包络的过程, 不必然有 linear signed Abel 预算; 反过来, signed Abel 预算的 linear 增长 也 不直接 决定 absolute envelope 的 polynomial form. 数据上 §4 显示 $\beta_{\rm signed}$ 从负转正, 即 signed Bartlett 不是严格 bounded; 但 §5 显示归一化 $A_j^{\rm signed}(W_f) / j$ 仍 $O(1)$. 这两个现象需 separate articulation, 也需 separate proof.</p>
+<h3>8.4 Closure pathway</h3>
+<p>合并第 70 篇定理 70.A, 第 65 篇定理 65.A, 与本文判据 71.E 的链条:</p>
+<p>(i) 第 70 篇定理 70.A 把 59.1 化归为饱和骨架 $S_{D^*(j)}$ 上的等价陈述. 该化归是确定性的, 无条件.</p>
+<p>(ii) 第 65 篇定理 65.A 在条件 (c0), (c1), (c2), (c3) 之下把饱和骨架上的 $R_{\rm wt} = O(1)$ closures.</p>
+<p>(iii) 本文 §6 verified $\Psi_\eta = O(j)$ (第 65 篇 (c1)) 与 $A_j^{\rm signed}(W_f) \le C j$ (本文 71.S-signed) 是 same mathematical statement on same object 在 non-vacuous half-block theorem scale 上.</p>
+<p>(iv) 本文判据 71.E 把以上合并为 (H1)-(H4b): 若全部成立, 则 59.1 成立.</p>
+<p>要让 59.1 无条件闭合, 需以下三个 mathematical components 全部 established:</p>
+<p><strong>Component (A): 第 65 篇 (c0), (c2), (c3) unconditional 化</strong>.</p>
+<p>第 65 篇 §11.2 表给出 (c0), (c2), (c3) 的 status 为 "confirmed", 其依据是 EXP L (count fluctuation), Adjacent ref EXP H (gauge defect), EXP M (cross-term) 的具体实验结果. 这些 conditions 在第 65 篇 framework 内有具体 conditional evidence, 但完整 unconditional 证明 (即 mathematical proof, 不依赖具体实验或具体假设) 仍 open. 第 65 篇 §11.2 articulate 为 "confirmed" 是 "条件证据 + 实验支持" 意义上的 confirmed, 不是 mathematical 上的 unconditional theorem.</p>
+<p><strong>Component (B): Deterministic Abel transfer 不等式 (71.A-deterministic)</strong>.</p>
+<p>本文 §5.1 articulate 的 Bartlett identity $R_{\rm wt}(j) \approx A_j^{\rm signed}(W_f) / j$ 是渐近 quad approximation, 不是逐块精确. 严格的 partial-sum variance 论证需要一个 deterministic Abel transfer 不等式 (本文判据 71.E (H4b)): 从 $A_j^{\rm signed}(W_f) \le C_S j$ 推出 $B_{\rm resid}(j)^2 \le C_A C_S j D_j$ (with explicit constants), 不经过 asymptotic approximation. 该不等式涉及 half-block window scale $W_f$ 与 full-block partial sum $B_j$ 之间的 boundary terms; 可在第 65 篇 §11 framework 内 derive (Bartlett-Abel 标准技巧 with non-vacuous window adjustment), 但 explicit 推导 仍 open.</p>
+<p><strong>Component (C): 71.S-signed (linear signed Abel budget)</strong>.</p>
+<p>证明 $A_j^{\rm signed}(W_f) \le C j$ for all sufficiently large $j$, 在 full-block residual sequence $\eta_p$ 上 在 half-block window $W_f = m_j / 2$ 上 (本文判据 71.E (H4a)). 数据 (§5.3, 跨 $j = 14$ 至 $29$ 在 $N = 10^9$) plausible 但无 mathematical proof. 称为 candidate 71.S-signed (§8.2). paper 72 articulate signed cancellation 在 lag domain 内显化为 Spectral Bridge Front 几何 ($k_c \approx m_j / 164$, $k_t \approx m_j / 16.8$, universal lag-domain constants), 给候选 71.S-signed 一个 sharper mechanism articulation; 71.S-signed 的 mathematical proof 仍 open.</p>
+<p><strong>Closure 状态</strong>:</p>
+<p>若 Components (A), (B), (C) 全部 established, 则第 70 篇定理 70.A + 第 65 篇定理 65.A + 本文判据 71.E 的链条无条件闭合, 第 59 篇猜想 59.1 成立.</p>
+<p>71.K-abs 对该 closure pathway 不是必需的. 71.K-abs 是 $\chi$-场 absolute envelope 形态的 mathematical 解释, 它不进入 (H1) 至 (H4b) 任一条. 即 closure pathway 只依 (A), (B), (C), 不依 71.K-abs. 71.K-abs 的价值在于解释 71.S-signed 为何 plausible (signed Abel 增长被 absolute envelope 的具体形态约束), 但二者之间的 mathematical implication 需在后续工作中独立建立.</p>
+<p>后续工作的优先级:</p>
+<ul>
+<li>Component (C) 71.S-signed 是 closure pathway 中 mathematical content 最重的 part, 涉及 signed spectral measure 的低频抵消机制.</li>
+<li>Component (B) 71.A-deterministic 是 framework-internal 工作, 在第 65 篇 §11 内可推进 (标准 Bartlett-Abel 技巧).</li>
+<li>Component (A) 第 65 篇 conditions unconditional 化 是 第 65 篇内的 cleanup 工作.</li>
+</ul>
+<p>三者互相独立 (一者证不蕴含另一者), 但全部 established 之后 59.1 成立.</p>
+<hr>
+<h2>§9. 状态汇总与边界</h2>
+<h3>9.1 本文所做</h3>
+<p>(i) 修正 $C(1)_{\rho(q)} \approx 0.96$ 为 retention 系数的解释. 该数值 $9/10$ 来自 $\lambda \ln q$ 趋势, 真实 retention 系数 $\approx 0.10$. 跨 $N = 10^7, 10^8, 10^9$ 的 raw 与 detrended 数据 sealed.</p>
+<p>(ii) 识别 ZFCρ DP 单步 kernel 的离散 resolvent 形态. 数据上 polynomial 尾部严格胜过指数尾部, 在所有可比较组合上一致. Bartlett 绝对包络 $\beta_{\rm abs} \approx 0.50$ 跨 $j$ 跨 $N$ 跨 centering 极稳定.</p>
+<p>(iii) 识别 signed Bartlett 预算的 partial cancellation 结构: $\beta_{\rm signed} < \beta_{\rm abs}$ 始终, 但 $\beta_{\rm signed}$ 在大 $j$ 处漂正, signed 不严格 bounded. 归一化 $A_j^{\rm signed}(W_f) / j$ 跨 $j = 14$ 至 $29$ 在 $O(1)$ 量级.</p>
+<p>(iv) 重新定量化第 65 篇定理 65.A 的剩余开核心: 旧形态 $\Psi_\eta = O(j)$ 精确化为 $A_j^{\rm signed}(W_f) \le Cj$, 即线性 signed Abel 预算 (其中 $W_f = m_j / 2$ 为 non-vacuous half-block theorem scale).</p>
+<p>(v) 给出条件式判据 71.E: 第 65 篇条件 (c0)-(c3) + (H4a) 线性 signed Abel 预算 + (H4b) deterministic Abel transfer 不等式 $\Rightarrow$ 59.1.</p>
+<p>(vi) 给出两个 open theorem candidate (71.K-abs, 71.S-signed) 与一个 open framework-internal candidate (71.A-deterministic) 标记后续工作. 三者加上第 65 篇 conditions 的 unconditional 化, 全部 established 即给出 59.1 的无条件证明 (§8.4).</p>
+<h3>9.2 本文未做</h3>
+<p>(i) 不证明 59.1.</p>
+<p>(ii) 不证明 ZFCρ DP 单步 kernel 的具体 polynomial form. 数据上 polynomial 形态稳定胜过指数, 但具体是否 严格 resolvent $(1+x)^{-1}$ 还是更高阶 rational form 仍 open (71.K-abs).</p>
+<p>(iii) 不证明线性 signed Abel 预算. 数据 plausible 但无证明 (71.S-signed).</p>
+<p>(iv) 不证明 deterministic Abel transfer 不等式. 数据上 Bartlett identity 量级 work, 但严格推导 仍 open (71.A-deterministic).</p>
+<p>(v) 不挑战第 70 篇定理 70.A. 本文沿用其确定性化归.</p>
+<h3>9.3 与第 50-70 篇的兼容性</h3>
+<p>本文与第 50 篇至第 70 篇的所有 unconditional 结果兼容. 对依赖 raw $C(1)_{\rho(q)} \approx 0.96$ 作为 retention 系数解释的衍生论述 (主要在第 55 篇至第 65 篇内), 该解释需修正为本文 §2 的形式. 具体涉及 (a) 第 55 篇内 raw $C(1)$ 与 ancestor inheritance fraction 的 articulation; (b) 早期 $m_{\rm eff} = \ln r / \ln C(1)$ 表达式的 retention 含义解读 (代数 identity 不变); (c) 任何把 $1 - C(1) \approx 0.04$ 作为 innovation rate 的 articulation. 修正不影响 $C(1) \approx 0.96$ 作为 raw lag-1 ACF 的实测值, 也不影响第 55 篇 $G_j(M)$ damped oscillation 的 macro 现象 (该现象在 $\chi$-层上独立成立, $r \approx 0.80$ block-level peak ratio 与 $\chi$ 层 retention 无 simple algebraic 关系). 完整的 cross-paper audit 留作后续 programme 工作.</p>
+<p>第 65 篇定理 65.A 的形态保留. 本文是它的剩余开核心的精确化, 不是替代.</p>
+<p>第 70 篇定理 70.A 在本文中作为 §1 的化归 anchor 完整使用.</p>
+<hr>
+<h2>致谢</h2>
+<p>第 50 至 70 篇的所有合作者. 第 65 篇 4-AI 评审 (公西华, 子路, 子夏, 子贡) 在 v3 至 v4 重构中识别了正确的 residual 处理. 第 70 篇 R8 重置教训在本文 §2 的 articulation 中保留.</p>
+<p>本文 v2 (2026-05-03 publish) 之后, 第 72 篇 cross-N audit 与 round 9-16 framework synthesis (公西华) 识别 v2 (H4a) 在 $W = m_j$ literal form 上 finite-sample identity vacuous. 本 v3 articulation 修正 (H4a) 在 non-vacuous $W_f = m_j / 2$ half-block theorem scale 上陈述, 同时保留 $W_{\rm full}$ boundary identity 的 mathematical 现象 (§7.3 (iii)) 作为与第 72 篇 Spectral Bridge Front geometry 的对接点.</p>
+<hr>
+<h2>参考文献</h2>
+<p>[50] 秦汉. ZFCρ Paper 50: canonical anchor. ZFCρ 系列, 第 L 篇. DOI: 10.5281/zenodo.18866551.</p>
+<p>[51] 秦汉. ZFCρ Paper 51: Hölder 桥与 BL_α. ZFCρ 系列, 第 LI 篇. DOI: (与第 50 篇同系列, 待 fill).</p>
+<p>[55] 秦汉. ZFCρ Paper 55: 阻尼振荡与回弹比. ZFCρ 系列, 第 LV 篇. DOI: (与第 50 篇同系列, 待 fill).</p>
+<p>[59] 秦汉. ZFCρ Paper 59: 谱比有界性与 H' 的双猜想闭合. ZFCρ 系列, 第 LIX 篇. DOI: 10.5281/zenodo.19480518.</p>
+<p>[64] 秦汉. ZFCρ Paper 64: 分支正交性. ZFCρ 系列, 第 LXIV 篇. DOI: (与第 50 篇同系列, 待 fill).</p>
+<p>[65] 秦汉. ZFCρ Paper 65: 分支中心化与余项谱界. ZFCρ 系列, 第 LXV 篇. DOI: (与第 50 篇同系列, 待 fill).</p>
+<p>[70] 秦汉. ZFCρ Paper 70: 分块有效骨架, 对 59.1 的化归. ZFCρ 系列, 第 LXX 篇. DOI: (Zenodo 上传后分配).</p>
+<p>[72] 秦汉. ZFCρ Paper 72: Spectral Bridge Front II — 正向凸起标度与前沿残差锁定. ZFCρ 系列, 第 LXXII 篇. DOI: (与本 v3 同期撰写, 待 fill).</p>
+<p>注: 上传 Zenodo 之前补全所有 placeholder DOI.</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
