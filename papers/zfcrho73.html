@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZFCρ Paper LXXIII: Antisymmetric Ward Lift, Uniform Readout Kernel, and the Abel-Transfer Defect — A Four-Layer Mechanism Architecture for the Gap-Class Cross-Interference Structure — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho73.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho73.html">
+  <meta name="citation_author" content="Han Qin">
+  <meta name="citation_doi" content="10.5281/zenodo.20081780">
+  <meta name="citation_language" content="en">
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="nav-home">Self-as-an-End</a>
+  <span class="nav-sep">›</span>
+  <span class="nav-series">Self-as-an-End Theory Series · ZFCρ Series · Paper LXXIII</span>
+</nav>
+<div class="lang-switcher">
+  <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+  <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+</div>
+<article>
+
+<div id="lang-en" style="display:block">
+  <div class="paper-header">
+    <div class="paper-series">Self-as-an-End Theory Series · ZFCρ Series · Paper LXXIII</div>
+    <h1>ZFCρ Paper LXXIII: Antisymmetric Ward Lift, Uniform Readout Kernel, and the Abel-Transfer Defect — A Four-Layer Mechanism Architecture for the Gap-Class Cross-Interference Structure</h1>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20081780" target="_blank" rel="noopener">10.5281/zenodo.20081780</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.20081780" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <section class="abstract">
+    <h2>Abstract</h2>
+    <p>This paper articulates a four-layer mechanism architecture (B1–B4) for the gap-class cross-interference structure underlying the 59.1 conjecture in the ZFCρ programme.
+
+Layer B1 (Certified Numerical Proposition): The cross-class Bartlett matrix saturates on the seven-class gap core $G_3 = \{-3, \ldots, 3\}$ with truncation error $\sim 1.1\%$, and on the nine-class core $G_4$ with error $\le 0.21\%$, for $j \in [22, 32]$ at $\theta = 1/2$. The width-7 matrix is the operational object for layers B2–B4; width-9 provides numerical closure.
+
+Layer B2 (Theorem). The reflection $g \mapsto -g$ acts on the seven-class space with $P\mathbf{1} = \mathbf{1}$, and consequently $\mathbf{1}^T M_{\rm odd} \mathbf{1} \equiv 0$ as a rigorous mathematical identity. The entire $F_W$ observable is captured by the reflection-even component of the matrix; the reflection-odd component carries 11% of the matrix Frobenius mass but contributes nothing to the all-ones readout. *Frobenius dominance and observable dominance are distinct phenomena*.
+
+Layer B3 (Empirical Theorems). The reflection-even component admits a two-component decomposition $M_{\rm even}^{[3]} = \lambda_a \widehat{b}_a \widehat{b}_a^T + \lambda_s \widehat{\mu}_j \widehat{\mu}_j^T + E_j$. The antisymmetric mode is empirically identified as a quantitative two-point lift of the Paper 64 one-point gap profile (shape correlation 0.997, magnitude scaling $m_j^{-1/2}$), and the uniform direction $\widehat{\mu}_j$ is empirically bandwidth-stable across $\theta$ (cosine $\ge 0.9999$). The block $j = 24$ exhibits an eigenbranch swap and is excluded from the bandwidth-stability pattern.
+
+Bartlett primitive structure (§6). The scalar $\lambda_s(j, \theta) =: Q_s(j, \theta)$ admits a Bartlett primitive form $Q_s = m_j \int_0^\theta (1 - u/\theta) q_{s, j}(u) \, du$ with rigorous inverse formula $q_{s, j}(\theta) = H_j''(\theta)$. Within a canonical saturating-exponential model fitting the data with 4–9% residual, the kernel decomposes as $q_{s, j}(u) = c_j \delta_0(u) + r_j(u) + \varepsilon_{s, j}(u)$ with closed-form compensation kernel
+$$\boxed{r_j(u) = (c_j - a_j) \, \alpha_j \, e^{-\alpha_j u} (\alpha_j u - 2).}$$
+
+Scaling laws (§7). Within the canonical model, $c_j \sim m_j^{-0.373}$, $a_j \sim m_j^{-0.671}$, and the cancellation defect ratio satisfies $a_j/c_j \sim m_j^{-0.30}$. The numerical proximity of the latter to the Paper 66/67 chiseling exponent $C \approx 0.30$ is a *candidate identification* between distinct objects (single decay versus ratio of regressions); not yet a structural theorem.
+
+Layer B4 (Open Research Direction). The bandwidth envelope $m_j^{0.33} \lesssim F_W \lesssim m_j^{0.63}$ within the canonical model is sub-linear but polynomial — incompatible with the $O(\log m_j)$ scale required for 59.1 closure. A candidate calibrated functional
+$$\mathcal{Z}_j[q_s] := m_j \left[ \mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1) \right]$$
+is articulated, with two open sub-problems: explicit construction of the external reference $\mathcal{B}_j^{\rm ext}$, and proof of the bound $\mathcal{Z}_j[q_s] = O(j)$.
+
+This paper *does not* prove 59.1 and *does not* prove B4. Its contribution is the precise relocation of the remaining proof burden, with the boundary between sealed and open layers named explicitly throughout.
+
+Inherited open conditions (§11.2). For full 59.1 closure, the unconditionalization of Paper 65 components (c0)(c2)(c3) and the deterministic Abel transfer at non-vacuous scale of Paper 71 H4b also remain open. The construction sub-problem of B4 is structurally the same as the Paper 71 H4b problem at the level of the scalar uniform kernel.
+
+Methodology. Fourteen sealed audits over $j \in [22, 32]$ using the full $\rho$ table on $[1, 10^{10}]$, with four-AI synthesis (Claude as integrator, with explicit framing-bias caveat in §12).
+
+*Keywords*: ZFCρ, 59.1 conjecture, gap-class cross-interference, reflection algebra, Ward lift, Bartlett primitive, Abel transfer, demonstration over completion.
+
+---</p>
+    <p><strong>Keywords:</strong> ZFCρ, antisymmetric Ward lift, uniform readout kernel, Abel-Transfer defect, gap-class, cross-interference, four-layer mechanism</p>
+  </section>
+  <section class="paper-body">
+<h2>A Four-Layer Mechanism Architecture for the Gap-Class Cross-Interference Structure</h2>
+<p><strong>Han Qin</strong> · <a href="https://orcid.org/0009-0009-9583-0018">ORCID 0009-0009-9583-0018</a></p>
+<p><strong>DOI</strong>: [to be assigned upon Zenodo deposit] · CC BY 4.0</p>
+<p><strong>Date</strong>: 2026-05-07</p>
+<p><strong>Version</strong>: v2 (hotfix incorporating four-AI review feedback; see §12)</p>
+<hr>
+<h2>Abstract</h2>
+<p>This paper articulates a four-layer mechanism architecture (B1–B4) for the gap-class cross-interference structure underlying the 59.1 conjecture in the ZFCρ programme.</p>
+<p><strong>Layer B1</strong> (Certified Numerical Proposition): The cross-class Bartlett matrix saturates on the seven-class gap core $G_3 = \{-3, \ldots, 3\}$ with truncation error $\sim 1.1\%$, and on the nine-class core $G_4$ with error $\le 0.21\%$, for $j \in [22, 32]$ at $\theta = 1/2$. The width-7 matrix is the operational object for layers B2–B4; width-9 provides numerical closure.</p>
+<p><strong>Layer B2</strong> (Theorem). The reflection $g \mapsto -g$ acts on the seven-class space with $P\mathbf{1} = \mathbf{1}$, and consequently $\mathbf{1}^T M_{\rm odd} \mathbf{1} \equiv 0$ as a rigorous mathematical identity. The entire $F_W$ observable is captured by the reflection-even component of the matrix; the reflection-odd component carries 11% of the matrix Frobenius mass but contributes nothing to the all-ones readout. <em>Frobenius dominance and observable dominance are distinct phenomena</em>.</p>
+<p><strong>Layer B3</strong> (Empirical Theorems). The reflection-even component admits a two-component decomposition $M_{\rm even}^{[3]} = \lambda_a \widehat{b}_a \widehat{b}_a^T + \lambda_s \widehat{\mu}_j \widehat{\mu}_j^T + E_j$. The antisymmetric mode is empirically identified as a quantitative two-point lift of the Paper 64 one-point gap profile (shape correlation 0.997, magnitude scaling $m_j^{-1/2}$), and the uniform direction $\widehat{\mu}_j$ is empirically bandwidth-stable across $\theta$ (cosine $\ge 0.9999$). The block $j = 24$ exhibits an eigenbranch swap and is excluded from the bandwidth-stability pattern.</p>
+<p><strong>Bartlett primitive structure</strong> (§6). The scalar $\lambda_s(j, \theta) =: Q_s(j, \theta)$ admits a Bartlett primitive form $Q_s = m_j \int_0^\theta (1 - u/\theta) q_{s, j}(u) \, du$ with rigorous inverse formula $q_{s, j}(\theta) = H_j''(\theta)$. Within a canonical saturating-exponential model fitting the data with 4–9% residual, the kernel decomposes as $q_{s, j}(u) = c_j \delta_0(u) + r_j(u) + \varepsilon_{s, j}(u)$ with closed-form compensation kernel</p>
+<p>$$\boxed{r_j(u) = (c_j - a_j) \, \alpha_j \, e^{-\alpha_j u} (\alpha_j u - 2).}$$</p>
+<p><strong>Scaling laws</strong> (§7). Within the canonical model, $c_j \sim m_j^{-0.373}$, $a_j \sim m_j^{-0.671}$, and the cancellation defect ratio satisfies $a_j/c_j \sim m_j^{-0.30}$. The numerical proximity of the latter to the Paper 66/67 chiseling exponent $C \approx 0.30$ is a <em>candidate identification</em> between distinct objects (single decay versus ratio of regressions); not yet a structural theorem.</p>
+<p><strong>Layer B4</strong> (Open Research Direction). The bandwidth envelope $m_j^{0.33} \lesssim F_W \lesssim m_j^{0.63}$ within the canonical model is sub-linear but polynomial — incompatible with the $O(\log m_j)$ scale required for 59.1 closure. A candidate calibrated functional</p>
+<p>$$\mathcal{Z}_j[q_s] := m_j \left[ \mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1) \right]$$</p>
+<p>is articulated, with two open sub-problems: explicit construction of the external reference $\mathcal{B}_j^{\rm ext}$, and proof of the bound $\mathcal{Z}_j[q_s] = O(j)$.</p>
+<p>This paper <em>does not</em> prove 59.1 and <em>does not</em> prove B4. Its contribution is the precise relocation of the remaining proof burden, with the boundary between sealed and open layers named explicitly throughout.</p>
+<p><strong>Inherited open conditions</strong> (§11.2). For full 59.1 closure, the unconditionalization of Paper 65 components (c0)(c2)(c3) and the deterministic Abel transfer at non-vacuous scale of Paper 71 H4b also remain open. The construction sub-problem of B4 is structurally the same as the Paper 71 H4b problem at the level of the scalar uniform kernel.</p>
+<p><strong>Methodology</strong>. Fourteen sealed audits over $j \in [22, 32]$ using the full $\rho$ table on $[1, 10^{10}]$, with four-AI synthesis (Claude as integrator, with explicit framing-bias caveat in §12).</p>
+<p><em>Keywords</em>: ZFCρ, 59.1 conjecture, gap-class cross-interference, reflection algebra, Ward lift, Bartlett primitive, Abel transfer, demonstration over completion.</p>
+<hr>
+<h2>§1. Introduction</h2>
+<h3>1.1 ZFCρ trajectory and the 59.1 conjecture</h3>
+<p>The ZFCρ programme is a sequence of papers attacking a class of conjectures about the residual structure of $\rho_p$ on prime indices. The foundational conjecture of the present line of attack is the <em>59.1 conjecture</em> of Paper 59, which posits a specific logarithmic-scale closure for a certain block-wise residual readout.</p>
+<p>The path from Paper 59 to the present paper has gone through several structural reformulations. Paper 64 established the one-point gap profile $\Gamma_j(g)$ as a structural object of the residual sequence on each block. Paper 65 introduced the H' critical path: a chain of three components (F3 + Paper 65 unconditional + Paper 71 H4b) whose simultaneous closure would imply the 59.1 conjecture. Papers 66 and 67 identified a Regime-1 chiseling exponent $C \approx 0.30$ governing autocorrelation function erosion along the lag axis. Paper 70 established a block-wise saturated skeleton (Theorem 70.A). Paper 71 (in its third revision) and Paper 72 developed the H4b path, with Paper 72 distinguishing the sample-centered tautological full-window identity from external full-block references that carry non-tautological information.</p>
+<p>Paper 73 enters this trajectory as an attempt to <em>isolate</em> the genuinely new mathematics required to close the H' chain — specifically, the gap-class cross-interference structure that determines whether the Bartlett readout $F_W(j, \theta)$ can be controlled at the $O(\log m_j)$ scale required for 59.1.</p>
+<h3>1.2 What this paper does</h3>
+<p>This paper articulates a four-layer mechanism architecture B1–B4 for the gap-class cross-interference structure:</p>
+<ul>
+<li><strong>B1</strong> reduces the analysis from the full Bartlett readout $F_W$ to a width-7 cross-class matrix $M_j^{[3]}$ with truncation error $\sim 1.1\%$ across the tested range.</li>
+<li><strong>B2</strong> establishes, as a rigorous mathematical identity, that the entire all-ones readout of $M_j^{[3]}$ comes from its reflection-even component. The reflection-odd component carries non-trivial Frobenius mass but contributes nothing to $F_W$.</li>
+<li><strong>B3</strong> decomposes the reflection-even component into two dominant eigenmodes plus a residual: an antisymmetric mode that is empirically the two-point lift of Paper 64's one-point gap profile, and a uniform readout direction that is empirically bandwidth-stable.</li>
+<li><strong>B4</strong> reduces the scalar mechanism to a single function $Q_s(j, \theta)$, identifies it as the Bartlett primitive of an underlying scalar kernel $q_{s, j}(u)$, fits the kernel within a saturating-exponential model, derives the closed-form compensation kernel within the model, computes the bandwidth envelope and shows that no single $\theta$ achieves the closure scale, then articulates a candidate calibrated functional $\mathcal{Z}_j[q_s]$ as an open research direction whose explicit construction is part of the open problem.</li>
+</ul>
+<p>The four layers are organized in increasing order of structural distance from the rigorous mathematical part: B2 is a rigorous theorem, B1 is a certified numerical proposition, B3 consists of empirical theorems, and B4 is an open research direction.</p>
+<h3>1.3 What this paper does <em>not</em> do</h3>
+<p>This paper does <em>not</em> prove the 59.1 conjecture. The closure pathway requires multiple components to be resolved, only some of which are addressed here:</p>
+<ul>
+<li>The B4 Abel-transfer defect is articulated as a research direction with two genuinely open sub-problems (§8.4); no precise conjecture, no proof.</li>
+<li>The unconditionalization of Paper 65 components (c0)(c2)(c3) is <em>not</em> addressed; this is an inherited open condition (§11.2, item 7).</li>
+<li>The deterministic Abel transfer at non-vacuous scale of Paper 71 H4b is <em>not</em> addressed in its general form; sub-problem 1a of B4 is structurally the same problem at the level of the scalar uniform kernel (§10.6, §11.2 item 8).</li>
+<li>The asymptotic behavior of the residual $R_s$ in the two-component decomposition is <em>not</em> determined by available data; it is listed as P73-specific open (§5.5, §11.1 item 2).</li>
+<li>The exact derivation of the antisymmetric Ward lift (§5.3) and the bandwidth-stability of the uniform direction (§5.4) as mathematical theorems, rather than empirical patterns verified across the tested range, is <em>not</em> attempted.</li>
+<li>The full identification of the kernel residual $\varepsilon_{s, j}(u)$ beyond the canonical model (§6.5) is <em>not</em> attempted.</li>
+</ul>
+<p>The boundary between what is sealed and what is open is named explicitly throughout the paper. §11 collects the open conditions comprehensively. This paper demonstrates a structural picture; the closure of 59.1 is left open, with the residual problem stated precisely.</p>
+<h3>1.4 SAE stance: demonstration over completion</h3>
+<p>This paper follows the SAE stance of <em>demonstration over completion</em>: a contribution can be substantive and well-formed without being a closure. The four-layer architecture demonstrates a structural picture of the gap-class cross-interference; the architecture itself is the contribution. The closure of the conjecture is left open, with the residual problem stated precisely.</p>
+<p>The methodological consequence is that empirical patterns verified across a tested range are stated as such, not promoted to mathematical theorems by extrapolation. This paper uses status-differentiated labeling — Theorem (rigorous), Certified Numerical Proposition (verified across full range with documented bound), Empirical Theorem (verified pattern across range, exact derivation deferred), Canonical Model (parametric fit with documented residual), Observation (regression-based scaling) — to make the status of each empirical claim transparent.</p>
+<p>This labeling discipline matches the pattern established in Paper 70 (clean elementary Theorem 70.A), Paper 71 (conditional Theorem 71.E), and Paper 72 (Criterion 72.S-front).</p>
+<h3>1.5 Reading guide</h3>
+<p>The paper is organized as follows:</p>
+<ul>
+<li>§2 establishes the residual definitions (with explicit distinction between unscaled $r(p)$ and normalized $x(p)$), block structure, Bartlett readout convention, and references to Paper 64 background.</li>
+<li>§3 (B1), §4 (B2), §5 (B3) establish the three sealed layers.</li>
+<li>§6 develops the Bartlett primitive structure and the canonical model for the kernel.</li>
+<li>§7 reports the empirical scaling laws and the polynomial-vs-logarithmic gap.</li>
+<li>§8 articulates the B4 open research direction.</li>
+<li>§9 documents the audit infrastructure.</li>
+<li>§10 places Paper 73 relative to Papers 59–72.</li>
+<li>§11 collects the open conditions for full 59.1 closure (P73-specific and inherited).</li>
+<li>§12 acknowledges the four-AI methodology with explicit framing-bias caveat.</li>
+<li>Appendix A treats the $j = 24$ atlas anomaly.</li>
+<li>Appendix B offers a speculative geometric reading, <em>not</em> used in any argument in §3–§8.</li>
+</ul>
+<p>A reader interested only in the rigorous mathematical content can read §2.1 (definitions), §3 (B1), §4 (B2), and §6.3 (Theorem 2: Bartlett inverse). A reader interested in the operational mechanism for the 59.1 attack should read §5 through §8 in sequence. A reader interested in the open conditions should consult §11.</p>
+<hr>
+<h2>§2. Preliminaries</h2>
+<h3>2.1 ZFCρ setup and residual definitions</h3>
+<p>We work with the ZFCρ residual table $\rho_p$ on prime indices $p \in [1, N]$ with $N = 10^{10}$, computed from the ZFCρ recursion as articulated in earlier papers of the programme.</p>
+<p>The IC value of the ZFCρ recursion parameter is fixed throughout this paper:</p>
+<p>$$\lambda_{\rm full} := 3.856763.$$</p>
+<p>The mod-12 gauge correction is the within-block mean of the residual modulo 12:</p>
+<p>$$\mu_{12}(j; r_0) := \frac{1}{|\{p \in I_j : p \bmod 12 = r_0\}|} \sum_{\substack{p \in I_j \\ p \bmod 12 = r_0}} (\rho(p) - \lambda_{\rm full} \log p),$$</p>
+<p>for each residue class $r_0 \in \{1, 5, 7, 11\}$ (the four classes of primes $> 3$).</p>
+<p>The adjacent-block centering is</p>
+<p>$$\mu_{\rm adj}(p) := \tfrac{1}{2}\left(\mu_{12}(j-1; p \bmod 12) + \mu_{12}(j+1; p \bmod 12)\right)$$</p>
+<p>for $p \in I_j$, using the mod-12 means of the neighboring blocks rather than $I_j$ itself.</p>
+<p><strong>Two residuals</strong>. This paper uses <em>two distinct residuals</em> which must not be conflated. The first is the unscaled log-scale residual, used for gap-class assignment and matrix construction:</p>
+<p>$$\boxed{r(p) := \rho(p) - \lambda_{\rm full} \log p - \mu_{\rm adj}(p).}$$</p>
+<p>The second is the normalized residual, used in Papers 59/70/71 for $B_j$, $D_j$, $R_{\rm wt}$:</p>
+<p>$$\boxed{x(p) := \frac{r(p)}{p}.}$$</p>
+<p>The matrix $M_j$ and the Bartlett readout $F_W$ in this paper are computed on $r(p)$. The notation $x_{\rm full}$ used in earlier papers refers to $x(p)$, the normalized object; we avoid this notation here to prevent confusion.</p>
+<p>The gap class of a prime $p$ is the rounded unscaled residual:</p>
+<p>$$g_{\log}(p) := \mathrm{round}(r(p)).$$</p>
+<p>The class density on block $I_j$ is $\pi_g(j) := |\{p \in I_j : g_{\log}(p) = g\}| / m_j$.</p>
+<h3>2.2 Block structure</h3>
+<p>The blocks are dyadic intervals of prime indices:</p>
+<p>$$I_j := \{p \text{ prime} : 2^j \le p < 2^{j+1}\}, \qquad m_j := |I_j|.$$</p>
+<p>This paper covers $j \in [22, 32]$, i.e., primes from $\sim 4 \times 10^6$ to $\sim 4 \times 10^9$, with block sizes $m_j$ ranging from $\sim 268{,}000$ at $j = 22$ to $\sim 190{,}000{,}000$ at $j = 32$.</p>
+<p>Two finite gap-class windows are used:</p>
+<ul>
+<li>The minimum sufficient core $G_0 := \{-2, -1, 0, 1, 2\}$ identified in Step 2D as the smallest balanced window that reproduces the cascade structure (smaller subsets, including single-sign or zero-missing variants, fail).</li>
+<li>The effective gap core $G_3 := \{-3, -2, -1, 0, 1, 2, 3\}$ used as the operational matrix index throughout §4–§7. The width-9 extension $G_4 := \{-4, \ldots, 4\}$ is used only in §3.2 as the numerical closure check.</li>
+</ul>
+<h3>2.3 Bartlett readout</h3>
+<p>For each block $I_j$ (with primes ordered by index, so $p_{j, 1} < p_{j, 2} < \cdots < p_{j, m_j}$), and each lag $k \in \{1, 2, \ldots\}$, the <em>raw lag product kernel</em> is</p>
+<p>$$\gamma_j(k) := \sum_{i=1}^{m_j - k} r(p_{j, i}) \cdot r(p_{j, i+k}),$$</p>
+<p>where $r(p)$ is the unscaled residual of §2.1. We use the term <em>raw lag product kernel</em> deliberately, rather than "autocorrelation" or "autocovariance," because $\gamma_j(k)$ is <em>not</em> the sample-mean-centered estimator: there is no subtraction of $\bar{r}$. This is intentional. The sample-centered autocovariance triggers the full-window Bartlett identity $A^{\rm signed}_j(W = m_j) \equiv 0$ as articulated in Paper 72; the raw product kernel preserves the non-tautological information at $W = m_j$ which §8 below exploits as part of the open B4 construction.</p>
+<p>The within-block variance scale is $\gamma_0 := \gamma_j(0) = \sum_p r(p)^2$.</p>
+<p>The Bartlett readout at window $W = \lfloor \theta m_j \rfloor$ with bandwidth parameter $\theta \in (0, 1)$ is</p>
+<p>$$F_W(j, \theta) := \frac{1}{\gamma_0} \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma_j(k).$$</p>
+<p><strong>Cross-class refinement</strong>. The cross-class refinement restricts the lag product sum to pairs of primes assigned to specific gap classes. We define first the <em>directed</em> entries</p>
+<p>$$F_{\rm dir}^{g, g'}(j, \theta) := \frac{1}{\gamma_0} \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \sum_{\substack{i = 1, \ldots, m_j - k \\ g_{\log}(p_{j, i}) = g \\ g_{\log}(p_{j, i+k}) = g'}} r(p_{j, i}) \cdot r(p_{j, i+k}),$$</p>
+<p>which sum over positive lag only and are not in general symmetric in $(g, g')$ at finite sample size. For the matrix-level analysis in §4–§7, we use the <em>symmetrized</em> entries</p>
+<p>$$\boxed{F_W^{g, g'}(j, \theta) := \tfrac{1}{2}\left( F_{\rm dir}^{g, g'}(j, \theta) + F_{\rm dir}^{g', g}(j, \theta) \right).}$$</p>
+<p>By construction $F_W^{g, g'} = F_W^{g', g}$, so the cross-class matrix</p>
+<p>$$M_j^{[k]}(\theta) := \left[ F_W^{g, g'}(j, \theta) \right]_{g, g' \in G_k}$$</p>
+<p>is a $(2k+1) \times (2k+1)$ symmetric real matrix, on which §5 will apply the spectral theorem. Symmetrization preserves the all-ones readout:</p>
+<p>$$\sum_{g, g'} F_W^{g, g'} = \sum_{g, g'} \tfrac{1}{2}\left( F_{\rm dir}^{g, g'} + F_{\rm dir}^{g', g} \right) = \sum_{g, g'} F_{\rm dir}^{g, g'},$$</p>
+<p>so the scalar Bartlett readout $\mathbf{1}^T M_j^{[k]} \mathbf{1}$ is the same whether computed from directed or symmetrized entries. In particular, the cascade saturation bound (Certified Numerical Proposition 1, §3.2) holds for the directed sum and therefore equally for the symmetrized matrix readout.</p>
+<p>The full readout decomposes as $F_W(j, \theta) = \sum_{g, g' \in \mathbb{Z}} F_{\rm dir}^{g, g'}(j, \theta) = \sum_{g, g' \in \mathbb{Z}} F_W^{g, g'}(j, \theta)$.</p>
+<h3>2.4 Paper 64 background</h3>
+<p>The one-point gap profile of Paper 64 is</p>
+<p>$$\Gamma_j(g) := \sum_{p \in I_j: g_{\log}(p) = g} r(p),$$</p>
+<p>i.e., the sum of unscaled residuals over primes in gap class $g$. This is the within-block sum of $r(p)$ stratified by gap class.</p>
+<p>The reflection decomposition is</p>
+<p>$$\Gamma_{\rm odd}(g; j) := \tfrac{1}{2}(\Gamma_j(g) - \Gamma_j(-g)), \qquad \Gamma_{\rm even}(g; j) := \tfrac{1}{2}(\Gamma_j(g) + \Gamma_j(-g)).$$</p>
+<p>By construction, $\Gamma_{\rm odd}(0; j) = 0$ and $\Gamma_{\rm odd}(-g; j) = -\Gamma_{\rm odd}(g; j)$, so $\Gamma_{\rm odd}$ is reflection-antisymmetric with vanishing zero-class component.</p>
+<p>Paper 64 establishes that $\Gamma_{\rm odd}$ exhibits a stable cross-sign sign-flip pattern (i.e., the odd component is non-trivial as a structural object across blocks) and that the count distribution of primes across gap classes is asymptotically factorizable: $N(u, g) \approx q(u) \pi(g)$ where $u = k/m_j$ is the normalized lag and $\pi(g)$ is the class density. This factorizability — <em>branch-position orthogonality</em> — is the structural input from Paper 64 that makes the matrix-level analysis of this paper possible.</p>
+<p>The empirical lift in §5.3 (Empirical Theorem 1) connects the matrix-level antisymmetric eigenmode of $M_{\rm even}$ to $\Gamma_{\rm odd}$ via the rescaling $b_a \approx -m_j^{-1/2} \Gamma_{\rm odd}$. This is the quantitative two-point lift of Paper 64's one-point object.</p>
+<hr>
+<h2>§3. Finite Gap-Core Decomposition (B1)</h2>
+<h3>3.1 The cross-class matrix and its readout</h3>
+<p>Throughout this section, fix a block index $j \in [22, 32]$ and a bandwidth parameter $\theta \in (0, 1)$, with window width $W = \lfloor \theta m_j \rfloor$. The unscaled log-scale residual $r(p)$ and the gap class $g_{\log}(p) = \mathrm{round}(r(p))$ are as defined in §2.1.</p>
+<p>The cross-class Bartlett readout $F_W^{g, g'}(j, \theta)$ defined in §2.3 satisfies $F_W(j, \theta) = \sum_{g, g' \in \mathbb{Z}} F_W^{g, g'}$. Restricted to a finite gap-class window $G_k = \{-k, \ldots, k\}$, the <em>width-$(2k+1)$ matrix readout</em> is</p>
+<p>$$\mathbf{1}^T M_j^{[k]}(\theta) \mathbf{1} := \sum_{g, g' \in G_k} F_W^{g, g'}(j, \theta).$$</p>
+<p>The truncation error is</p>
+<p>$$O_{\ge k+1}(j, \theta) := F_W(j, \theta) - \mathbf{1}^T M_j^{[k]}(\theta) \mathbf{1} = \sum_{(g, g') \notin G_k \times G_k} F_W^{g, g'}.$$</p>
+<h3>3.2 Certified Numerical Proposition 1 (Cascade Saturation)</h3>
+<p>For all $j \in [22, 32]$ at $\theta = 1/2$, the truncation errors satisfy</p>
+<p>$$\frac{|O_{\ge 4}(j, \theta)|}{|F_W(j, \theta)|} \le 1.2 \times 10^{-2}, \qquad \frac{|O_{\ge 5}(j, \theta)|}{|F_W(j, \theta)|} \le 2.1 \times 10^{-3}.$$</p>
+<p>That is, the width-7 matrix $M_j^{[3]}$ on $G_3 = \{-3, \ldots, 3\}$ captures $F_W$ to within 1.2% across the tested range, and the width-9 matrix $M_j^{[4]}$ on $G_4$ captures $F_W$ to within 0.21%.</p>
+<p>This statement is <em>certified</em> in the sense that all values entering the bound have been computed and recorded in the audit ledger Step 2K (see §9.2); no extrapolation beyond $j = 32$ is claimed.</p>
+<h3>3.3 Cascade hierarchy</h3>
+<p>The progression of widths reveals the cancellation structure of $F_W$. Table 3.1 displays the matrix sums at $j = 32$, $\theta = 1/2$, where the full readout is $F_W = 36.93$.</p>
+<p><strong>Table 3.1.</strong> Cascade hierarchy at $j = 32$, $\theta = 1/2$.</p>
+<table><thead><tr>
+<th>Width</th>
+<th>Core</th>
+<th>Matrix sum $\mathbf{1}^T M^{[k]} \mathbf{1}$</th>
+<th>Deviation from $F_W$</th>
+<th>Coverage</th>
+</tr></thead><tbody>
+<tr>
+<td>5</td>
+<td>$G_2 = \{-2, \ldots, 2\}$</td>
+<td>1418</td>
+<td>$+38\times$</td>
+<td>fails</td>
+</tr>
+<tr>
+<td>7</td>
+<td>$G_3 = \{-3, \ldots, 3\}$</td>
+<td>37.35</td>
+<td>$+1.1\%$</td>
+<td>mechanism captured</td>
+</tr>
+<tr>
+<td>9</td>
+<td>$G_4 = \{-4, \ldots, 4\}$</td>
+<td>36.92</td>
+<td>$-0.03\%$</td>
+<td>numerical closure</td>
+</tr>
+</tbody></table>
+<p>The qualitative picture is sharp: width 5 is a factor 38 too large, width 7 captures the readout to ~1%, and width 9 closes to $\le 0.21\%$.</p>
+<p>The role of the $|g| = 3$ shell is essential and unobvious. By data mass alone, the $|g| = 3$ classes carry only $\sim 0.34\%$ of the within-block variance; one might expect them to be negligible. In fact, the $|g| = 3$ block contributes net $-1380$ to the cascade cancellation at $j = 32$: it is the dominant cancelling shell that brings the width-5 sum (1418) down to the width-7 sum (37.35). The width-7 readout is thus the result of a precise large-magnitude cancellation between the inner $G_2$ block and the $|g| = 3$ shell, not a near-trivial restriction to small classes.</p>
+<p>The $|g| = 4$ shell, by contrast, contributes only $\sim -0.4$ to the cascade and brings width 7 down to width 9 by less than a percent. The $|g| \ge 5$ shells are below the audit precision and treated as negligible.</p>
+<h3>3.4 Why width 7 is the operational object</h3>
+<p>Sections §4–§7 work with $M_j^{[3]}$ on $G_3$ as the operational matrix. There are two reasons.</p>
+<p>First, mechanism captured: the 1.1% truncation error at width 7 is small enough that the structural decompositions in §4–§5 (reflection algebra, two-component even decomposition) are not sensitive to the truncated tail at the level of their leading articulations. The eigendecomposition of $M_j^{[3]}$ reproduces the $\mathbf{1}$-projection structure of the full $M_j$ to within the same error.</p>
+<p>Second, computational tractability: the width-9 matrix has 81 entries per $(j, \theta)$ rather than 49, and the eigenvector tracking across $\theta$ becomes correspondingly more sensitive to numerical degeneracies. The width-7 matrix is the smallest faithful operational object.</p>
+<p>The width-9 statement (≤0.21%) is retained as the <em>numerical closure check</em> for B1: it certifies that the matrix decomposition framework captures essentially all of $F_W$ in the tested range, with no hidden contributions from $|g| \ge 4$ shells.</p>
+<h3>3.5 Step 2D: minimum sufficient core</h3>
+<p>A separate audit (Step 2D, see §9.2) examined whether subsets of $G_2$ smaller than the full symmetric width-5 core can reproduce the cascade structure. The result is negative: removing the $g = 0$ class, or restricting to single-sign subsets $\{0, 1, 2\}$ or $\{-2, -1, 0\}$, breaks the cancellation pattern. The symmetric width-5 core is the minimum sufficient <em>qualitative</em> core; no smaller balanced subset reproduces the mechanism.</p>
+<p>This explains why the natural starting point for §4–§5 is the symmetric core, and why the reflection $g \mapsto -g$ enters as a structural symmetry rather than a convenient relabeling.</p>
+<h3>3.6 Status</h3>
+<p>The content of this section is empirical, certified across $j \in [22, 32]$ and $\theta = 1/2$ by the Step 2K audit. No mathematical theorem asserts that the saturation persists for $j > 32$; the cascade structure may sharpen or relax at larger blocks. The observation that width 7 is the operational mechanism core, with width 9 providing numerical closure, is the substantive content of B1 for the purposes of this paper.</p>
+<p>The next section establishes a structural symmetry of $M_j^{[3]}$ that does not depend on the truncation bound and that holds as a rigorous mathematical identity.</p>
+<hr>
+<h2>§4. Reflection Algebra (B2)</h2>
+<h3>4.1 Reflection structure on the gap-class space</h3>
+<p>Let $V = \mathbb{R}^{G_3}$ be the seven-dimensional vector space indexed by gap classes $g \in G_3 = \{-3, -2, -1, 0, 1, 2, 3\}$. The reflection $\mathcal{R}: g \mapsto -g$ acts on $V$ via the permutation matrix $P$ defined by $(Pv)(g) = v(-g)$.</p>
+<p>The matrix $P$ satisfies $P^2 = I$ (an involution), $P^T = P$ (symmetric), and most importantly for what follows:</p>
+<p>$$P\mathbf{1} = \mathbf{1}.$$</p>
+<p>The all-ones vector is the canonical reflection-invariant vector.</p>
+<p>For any matrix $M : V \to V$, define the reflection-symmetric and reflection-antisymmetric components</p>
+<p>$$M_{\rm even} := \frac{M + PMP}{2}, \qquad M_{\rm odd} := \frac{M - PMP}{2}.$$</p>
+<p>These satisfy $PM_{\rm even}P = M_{\rm even}$, $PM_{\rm odd}P = -M_{\rm odd}$, and $M = M_{\rm even} + M_{\rm odd}$.</p>
+<h3>4.2 Theorem 1 (Odd-component vanishing under $\mathbf{1}$-readout)</h3>
+<p>For every matrix $M$ on $V$, the all-ones readout of the reflection-odd component vanishes identically:</p>
+<p>$$\boxed{\mathbf{1}^T M_{\rm odd} \mathbf{1} = 0.}$$</p>
+<p><strong>Proof</strong>. Using $P\mathbf{1} = \mathbf{1}$ and $P^T = P$:</p>
+<p>$$\mathbf{1}^T M_{\rm odd} \mathbf{1} = \frac{1}{2}\left( \mathbf{1}^T M \mathbf{1} - \mathbf{1}^T PMP \mathbf{1} \right) = \frac{1}{2}\left( \mathbf{1}^T M \mathbf{1} - (P\mathbf{1})^T M (P\mathbf{1}) \right) = \frac{1}{2}\left( \mathbf{1}^T M \mathbf{1} - \mathbf{1}^T M \mathbf{1} \right) = 0. \qquad \square$$</p>
+<h3>4.3 Corollary</h3>
+<p>Applied to $M = M_j^{[3]}(\theta)$, the cross-class matrix on $G_3$:</p>
+<p>$$F_W(j, \theta) = \mathbf{1}^T M_j^{[3]}(\theta) \mathbf{1} + O_{\ge 4}(j, \theta) = \mathbf{1}^T M_{\rm even}(j, \theta) \mathbf{1} + O_{\ge 4}(j, \theta).$$</p>
+<p>Up to the truncation error from §3, the entire $F_W$ observable is captured by the reflection-even component of $M_j^{[3]}$. The reflection-odd component contributes nothing to the all-ones readout.</p>
+<p>This is a rigorous identity, not an empirical observation. It depends only on the symmetry of the gap-class index under $g \mapsto -g$ and on the choice of $\mathbf{1}$ as the readout vector. It does not depend on any property of the underlying ZFCρ data.</p>
+<h3>4.4 Frobenius mass versus observable contribution</h3>
+<p>The conclusion of §4.3 is structurally stronger than it might appear, because the reflection-odd component is <em>not</em> small in Frobenius norm. Across the tested range $j \in [22, 32]$ at $\theta = 1/2$, the Frobenius decomposition gives</p>
+<p>$$\frac{\|M_{\rm odd}\|_F}{\|M\|_F} \approx 0.11, \qquad \frac{\|M_{\rm even}\|_F}{\|M\|_F} \approx 0.99.$$</p>
+<p>So $M_{\rm odd}$ carries about 11% of the matrix Frobenius mass — non-negligible by any conventional measure of matrix energy — yet contributes exactly zero to the scalar observable $F_W$.</p>
+<p>The situation inside $M_{\rm even}$ is analogous and more extreme. The leading eigenvector of $M_{\rm even}$ (in the sense of largest absolute eigenvalue, denoted $\widehat{b}_a$ in §5) is itself essentially antisymmetric under reflection: it lives within $V_{\rm even}$ but happens to be approximately $\mathbf{1}$-orthogonal. This eigenvector accounts for $\sim 99.99\%$ of the squared Frobenius norm of $M_{\rm even}$ across the tested range (Step 2E, §9.2), but its contribution to $F_W$ is approximately zero because $(\mathbf{1}^T \widehat{b}_a)^2 \approx 0$ empirically.</p>
+<p>The dominant contribution to $F_W$ comes from a sub-leading eigenvector of $M_{\rm even}$ — small in Frobenius mass, large in $\mathbf{1}$-projection. This is the uniform readout direction $\widehat{\mu}_j$ examined in §5.</p>
+<p>The methodological point is that Frobenius dominance and observable dominance are distinct phenomena, and the gap between them is large in this problem. Standard rank-1 approximations of $M_{\rm even}$ in the Frobenius sense recover $\widehat{b}_a$ and miss the actual mechanism behind $F_W$. The decomposition in §5 is organized around this distinction.</p>
+<h3>4.5 Status</h3>
+<p>Theorem 1 is a rigorous mathematical statement. Its proof is one line and uses no data. Its content — that the entire 7-class Bartlett readout is determined by the reflection-even component of the cross-class matrix, while a Frobenius-dominant antisymmetric mode contributes nothing — is the central algebraic constraint that organizes §5–§7.</p>
+<p>A reader who accepts the matrix definitions of §3.1 has all the ingredients for §4.2; nothing in this section depends on the cascade saturation bounds of §3 or on any property specific to the ZFCρ problem. The structural reduction $F_W = \mathbf{1}^T M_{\rm even} \mathbf{1}$ is what makes the rest of this paper possible.</p>
+<hr>
+<h2>§5. Two-Component Even Decomposition (B3)</h2>
+<h3>5.1 Notation discipline</h3>
+<p>In this section we work with eigenvectors of $M_{\rm even}(j, \theta)$. To avoid the conflation common in earlier articulations between unnormalized vectors and unit directions, we maintain throughout the following convention.</p>
+<p>Given an eigenvector of $M_{\rm even}$, we write</p>
+<ul>
+<li>$b_a(j, \theta) \in V$ for an <em>unnormalized</em> representative of the antisymmetric (Frobenius-dominant) eigenmode</li>
+<li>$\widehat{b}_a(j, \theta) := b_a(j, \theta) / \|b_a(j, \theta)\|$ for the corresponding <em>unit</em> direction</li>
+<li>$b_s(j, \theta), \widehat{b}_s(j, \theta) = \widehat{\mu}_j$ analogously for the uniform (observable-dominant) eigenmode</li>
+</ul>
+<p>The notation $\widehat{\mu}_j$ is reserved throughout the paper for the unit uniform direction — specifically, the unit eigenvector of $M_{\rm even}$ whose $\mathbf{1}$-projection $(\mathbf{1}^T \widehat{b}_s)^2$ is maximal.</p>
+<p>The eigenvalues are denoted $\lambda_a(j, \theta)$ and $\lambda_s(j, \theta)$, where $\lambda_a$ is the eigenvalue with largest absolute value (Frobenius-dominant) and $\lambda_s$ is the eigenvalue whose eigenvector is the uniform direction $\widehat{\mu}_j$. In general $\lambda_s \neq \lambda_a$, and $|\lambda_s| < |\lambda_a|$ across the tested range; the $\lambda_s$-eigenmode is sub-leading in spectral magnitude but dominant in observable contribution to $F_W$ (cf. §4.4).</p>
+<h3>5.2 Decomposition statement</h3>
+<p>We decompose the reflection-even component into the two leading eigenmodes plus a remainder:</p>
+<p>$$M_{\rm even}^{[3]}(j, \theta) = \lambda_a(j, \theta) \cdot \widehat{b}_a \widehat{b}_a^T + \lambda_s(j, \theta) \cdot \widehat{\mu}_j \widehat{\mu}_j^T + E_j(\theta).$$</p>
+<p>Here $E_j(\theta)$ is the residual after subtracting the rank-2 contribution from the two leading eigenmodes. By the spectral theorem, $E_j$ is itself reflection-symmetric and has Frobenius norm equal to the sum of squared smaller eigenvalues of $M_{\rm even}$.</p>
+<p>The structural content of the decomposition is the empirical identification of the two eigenmodes: the antisymmetric mode $\widehat{b}_a$ as the lift of a Paper 64 quantity (§5.3), and the uniform mode $\widehat{\mu}_j$ as a readout structural feature stable across $\theta$ (§5.4).</p>
+<h3>5.3 Empirical Theorem 1 (Antisymmetric Ward Lift)</h3>
+<p><strong>Statement</strong>. For all $j \in [22, 32]$ and $\theta = 1/2$, the unit antisymmetric direction $\widehat{b}_a(j, \theta)$ is well-correlated with the Paper 64 odd gap profile $\Gamma_{\rm odd}(j) := \tfrac{1}{2}(\Gamma(g) - \Gamma(-g))$, and the unnormalized magnitude $\|b_a(j, \theta)\|$ scales against $\|\Gamma_{\rm odd}(j)\|$ with the canonical $m_j^{-1/2}$ exponent.</p>
+<p>Quantitatively, in the tested range:</p>
+<ul>
+<li><em>Shape</em>: $\left| \mathrm{corr}\left( \widehat{b}_a, \Gamma_{\rm odd} / \|\Gamma_{\rm odd}\| \right) \right| \ge 0.997$.</li>
+<li><em>Magnitude</em>: A linear regression of $\log \|b_a\| - \log \|\Gamma_{\rm odd}\|$ against $\log m_j$ over $j \in [22, 32]$ yields slope $-0.5024 \pm 0.014$ (95% confidence).</li>
+</ul>
+<p>Combining these:</p>
+<p>$$\boxed{b_a(g; j, \theta) \approx -\frac{c(j, \theta)}{\sqrt{m_j}} \cdot \Gamma_{\rm odd}(g; j), \qquad |c(j, \theta)| = O(1).}$$</p>
+<p>The negative sign reflects the empirical anticorrelation between the dominant eigenmode of $M_{\rm even}$ and the Paper 64 profile; the convention for the eigenvector sign is the one returned by the standard symmetric eigenvalue routine and is not structural.</p>
+<p>This is the <em>quantitative two-point lift</em> of the Paper 64 one-point gap profile: the matrix-level antisymmetric mode is captured, up to sign and an $O(1)$ amplitude, by the vector-level Paper 64 quantity rescaled by $m_j^{-1/2}$.</p>
+<p><strong>Status</strong>. This is verified across the tested range $j \in [22, 32]$. The shape correlation 0.997 and the magnitude exponent $-0.5024$ are stable across $j$; the empirical pattern does not weaken at the upper end of the tested range. An exact derivation as a mathematical theorem — e.g., a proof that $b_a$ is <em>exactly</em> a rescaled $\Gamma_{\rm odd}$ in some asymptotic limit — is left to future work.</p>
+<p><strong>Empirical corollary (1-orthogonality)</strong>. Since $\Gamma_{\rm odd}$ is itself reflection-antisymmetric with $\Gamma_{\rm odd}(0) = 0$, the all-ones projection satisfies $\mathbf{1}^T \widehat{b}_a \approx 0$, and consequently the antisymmetric leakage</p>
+<p>$$L_a(j, \theta) := (\mathbf{1}^T \widehat{b}_a)^2 \approx 0$$</p>
+<p>across all tested $(j, \theta)$. This is consistent with Theorem 1 (§4.2): the antisymmetric Ward mode is the dominant Frobenius-mass contribution to $M_{\rm even}$, but the structural reason it does not appear in $F_W$ is that its all-ones projection is essentially zero.</p>
+<h3>5.4 Empirical Theorem 2 (Uniform readout bandwidth stability)</h3>
+<p><strong>Statement</strong>. For all $j \in [22, 32] \setminus \{24\}$ and all pairs $\theta_1, \theta_2 \in [0.10, 0.90]$, the unit uniform direction $\widehat{\mu}_j(\theta)$ satisfies the following bandwidth-stability properties:</p>
+<ul>
+<li><em>Direction stability across $\theta$</em>: $\left| \cos\left( \widehat{\mu}_j(\theta_1), \widehat{\mu}_j(\theta_2) \right) \right| \ge 0.9999$.</li>
+<li><em>Support concentration</em>: The fraction $\sum_{g \in G_0} \widehat{\mu}_j(g)^2 / \sum_{g \in G_3} \widehat{\mu}_j(g)^2$ lies in $[0.92, 0.96]$, where $G_0 = \{-2, -1, 0, 1, 2\}$.</li>
+<li><em>All-ones saturation</em>: The leakage $L_s(j, \theta) := (\mathbf{1}^T \widehat{\mu}_j)^2 \approx 5.5$, which is approximately $0.79 \cdot |G_3| = 5.53$ (the maximum possible value for a unit vector in $V = \mathbb{R}^7$).</li>
+</ul>
+<p>The block $j = 24$ exhibits an eigenbranch swap anomaly at $\theta \ge 0.7$ and is excluded from this empirical pattern. The exclusion is described in detail in Appendix A; we emphasize here that it does <em>not</em> affect Theorem 1 (§4.2), Empirical Theorem 1 (§5.3), or any of the cascade saturation bounds in §3. The anomaly is local to the $\widehat{\mu}_j$ extraction at $j = 24$ specifically.</p>
+<p><strong>Status</strong>. Verified across the tested range $j \in [22, 32] \setminus \{24\}$ and the tested $\theta$-grid $\{0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9\}$ (Step 2P, see §9.2).</p>
+<p><strong>Interpretation</strong>. The bandwidth-stability of $\widehat{\mu}_j$ is the empirical signal that the uniform direction is a <em>readout structural feature</em> of the cross-class matrix and not a $\theta$-dependent source profile. If $\widehat{\mu}_j$ varied with $\theta$, the entire scalar mechanism analyzed in §6–§7 would have to be reformulated to track the direction's dependence on bandwidth; the empirical observation that direction is stable to four-nines while the eigenvalue $\lambda_s(j, \theta)$ varies substantially with $\theta$ is what reduces the mechanism to a single scalar function family.</p>
+<p>We do not claim that $\widehat{\mu}_j$ is <em>exactly</em> bandwidth-independent; we claim that it is so within the precision of the tested grid. A theorem asserting exact bandwidth-independence of the uniform direction would require articulating the limiting object (perhaps in the $j \to \infty$ scaling), which is beyond the scope of this paper.</p>
+<h3>5.5 The remainder $E_j(\theta)$ and the residual $R_s$</h3>
+<p>The decomposition of §5.2 has a residual matrix $E_j$ and a corresponding scalar residual when projected through $\mathbf{1}$:</p>
+<p>$$R_s(j, \theta) := F_W(j, \theta) - \lambda_s(j, \theta) \cdot L_s.$$</p>
+<p>(The $\lambda_a L_a$ term is absent because $L_a \approx 0$ by the corollary of §5.3.)</p>
+<p><strong>Empirical magnitude (verified across tested range)</strong>. For $j \in [25, 32] \setminus \{24\}$ and $\theta \in \{0.1, 0.25, 0.5, 0.75, 0.9\}$, the ratio $|R_s| / |F_W|$ is observed in the range 5%–12%, with the smaller values at smaller $\theta$ and the larger values at $\theta$ near 1.</p>
+<p><strong>Asymptotic trend with $j$ (open question)</strong>. The available data does not determine whether $|R_s|/|F_W|$ tends to zero, to a constant, or grows as $j \to \infty$. The empirical range 5–12% across $\theta$ at fixed $j$ does not resolve the $j$-dependence; the variation across the tested $j$-range is comparable to the variation across $\theta$. We list this as one of the open conditions for any complete 59.1 closure pathway built on this decomposition (§11.1, item 2).</p>
+<p>If $|R_s|/|F_W| \to 0$ as $j \to \infty$, the two-component decomposition is asymptotically effective and the closure pathway can focus on $\lambda_s L_s$. If $|R_s|/|F_W|$ tends to a nonzero limit, the closure pathway requires explicit treatment of the third (and possibly higher) eigenmodes of $M_{\rm even}$, which we have not articulated here.</p>
+<p><strong>Identified contributions to $E_j$</strong>. Three structural contributions to the residual are identified empirically:</p>
+<ul>
+<li><em>$|g| = 3$ outer-shell coupling</em>: the $|g| = 3$ classes (the boundary of $G_3$) participate in cancellation at the level of ~0.34% of variance mass but contribute non-trivially to sub-leading eigenmodes.</li>
+<li><em>Eigenmode-swap artifact at $j = 24$</em>: see Appendix A.</li>
+<li><em>Mod-12 gauge sub-leading</em>: the $\mu_{12}$ centering contributes a stable ~20% of $F_W$ overall (Step 2J), with sub-leading components appearing in $E_j$.</li>
+</ul>
+<p>A complete decomposition of $E_j$ into these three contributions has not been performed and is listed as P73-specific cleanup (§11.1, item 5).</p>
+<h3>5.6 The $F_W$ decomposition formula</h3>
+<p>Combining §5.2 with the corollary of §4.2 (which absorbs the rank-2 spectral terms into $\lambda_s L_s + \lambda_a L_a$) and the corollary of §5.3 ($L_a \approx 0$):</p>
+<p>$$F_W(j, \theta) = \lambda_s(j, \theta) \cdot L_s + \lambda_a(j, \theta) \cdot L_a + \mathbf{1}^T E_j(\theta) \mathbf{1} \approx \lambda_s(j, \theta) \cdot L_s + R_s(j, \theta).$$</p>
+<p>Substituting $L_s \approx 5.5$:</p>
+<p>$$\boxed{F_W(j, \theta) \approx 5.5 \cdot \lambda_s(j, \theta) + R_s(j, \theta).}$$</p>
+<p>In the parts of the paper where the residual $R_s$ is treated as small (5–12% empirically), this becomes the operational identity: $F_W$ is, to leading order, the uniform-mode eigenvalue times a constant.</p>
+<p>It is this scalar $\lambda_s(j, \theta)$ that becomes the central object of §6 and §7. We rename it there as $Q_s(j, \theta) := \lambda_s(j, \theta)$ to match the conventions established in earlier rounds of the audit ledger.</p>
+<h3>5.7 Status</h3>
+<p>The reflection-even decomposition in §5.2 is a definitional spectral decomposition (the rank-2 truncation is unambiguous given the eigenvalue ordering rule). The substantive content is in the empirical identifications:</p>
+<ul>
+<li>Empirical Theorem 1 (§5.3): the antisymmetric mode is the Paper 64 lift, with quantitative shape and magnitude correspondences across the tested range.</li>
+<li>Empirical Theorem 2 (§5.4): the uniform direction is bandwidth-stable across the tested range, with the $j = 24$ exclusion.</li>
+</ul>
+<p>Neither of these is a rigorous mathematical theorem. Both are quantitatively verified patterns whose exact derivation is left to future work. Together, they reduce the analysis of $F_W(j, \theta)$ to the analysis of the scalar function family $\lambda_s(j, \theta) \equiv Q_s(j, \theta)$, plus a residual $R_s(j, \theta)$ whose asymptotic behavior is itself an open question.</p>
+<p>The next two sections analyze $Q_s(j, \theta)$ as a Bartlett primitive of an underlying scalar uniform kernel.</p>
+<hr>
+<h2>§6. The Bartlett Primitive and the Compensation Law</h2>
+<p>This section reformulates the scalar function $Q_s(j, \theta) = \lambda_s(j, \theta)$ identified in §5 as the Bartlett primitive of an underlying scalar kernel $q_{s, j}(u)$, and analyzes the structure of $q_{s, j}$ within a canonical parametric model.</p>
+<p>The presentation is organized around a careful distinction: the Bartlett-primitive identity (§6.3) is a rigorous mathematical relation given the discrete-to-continuous setup of §6.1, while the closed-form compensation kernel (§6.5–§6.6) is a consequence of fitting the data to a specific parametric model (§6.4) and is conditional on the model being adequate.</p>
+<h3>6.1 The scalar uniform kernel: discrete and continuous</h3>
+<p>The matrix-valued covariance $C_j(u)$ is defined at discrete normalized lags</p>
+<p>$$u_k := k / m_j, \qquad k = 1, 2, \ldots, W,$$</p>
+<p>where $W = \lfloor \theta m_j \rfloor$. Concretely, $C_j(u_k)$ is the $7 \times 7$ matrix with entries</p>
+<p>$$C_j(u_k)_{g, g'} = \frac{1}{\gamma_0} \sum_{\substack{p \in I_j \\ g_{\log}(p) = g \\ g_{\log}(p_{+k}) = g'}} r(p) \, r(p_{+k}),$$</p>
+<p>i.e., the per-pair contribution to $F_W^{g, g'}$ at exact lag $k$ (so that $F_W^{g, g'}(j, \theta) = \sum_{k=1}^{W} (1 - k/W) C_j(u_k)_{g, g'}$).</p>
+<p>The <em>scalar uniform kernel</em> is the bilinear contraction with the unit uniform direction $\widehat{\mu}_j$:</p>
+<p>$$q_{s, j}(u_k) := \widehat{\mu}_j^T C_j(u_k) \widehat{\mu}_j.$$</p>
+<p>This is, <em>strictly speaking</em>, a discrete sequence indexed by $k$. To work with it as a function of a continuous variable, we extend it by linear interpolation between adjacent lag points. We continue to denote the extended object $q_{s, j}(u)$ for $u \in [u_1, u_W]$.</p>
+<p><strong>Two definitional caveats</strong>. First, the kernel is undefined for $u < u_1 = 1/m_j$; the smallest lag is the first sampled point. Second, statements involving "$\delta_0$ at $u = 0$" appearing in §6.5–§6.6 should be read in a <em>scaling-limit</em> sense: as $j$ grows, $u_1 = 1/m_j \to 0$, and a contribution concentrated at the first sampled lag $k = 1$ rescales to a Dirac-delta-like object at the origin in the $u$-coordinate. We do not claim the existence of a literal Dirac distribution in the discrete kernel, only that the parametric fit exhibits a structural separation between an "at-the-front" mass and a "spread-over-$u$" mass that is naturally encoded as $c_j \delta_0(u) + r_j(u)$ in the scaling-limit notation.</p>
+<h3>6.2 The Bartlett primitive form</h3>
+<p>Substituting the contraction into the all-ones readout of the rank-1 uniform-mode contribution to $M_{\rm even}$:</p>
+<p>$$\lambda_s(j, \theta) \cdot L_s = (\widehat{\mu}_j^T \mathbf{1})^2 \cdot \lambda_s = \mathbf{1}^T (\lambda_s \widehat{\mu}_j \widehat{\mu}_j^T) \mathbf{1}.$$</p>
+<p>Tracing through the definition of $\lambda_s \widehat{\mu}_j \widehat{\mu}_j^T$ as the projection onto the uniform mode of $M_{\rm even}$, and identifying $\mathbf{1}^T M(\theta) \mathbf{1}$ with the windowed sum, one obtains</p>
+<p>$$Q_s(j, \theta) = m_j \sum_{k=1}^{W} \left(1 - \frac{k}{W}\right) q_{s, j}(u_k).$$</p>
+<p>Passing to the continuous interpolation:</p>
+<p>$$\boxed{Q_s(j, \theta) = m_j \int_0^\theta \left(1 - \frac{u}{\theta}\right) q_{s, j}(u) \, du,}$$</p>
+<p>where the integral is interpreted as the limit of the discrete sum as the lag grid is refined within $I_j$, and $u_1 = 1/m_j$ is the natural lower endpoint (with the integrand vanishing at $u = 0$ in the scaling-limit sense).</p>
+<p>This expresses $Q_s(j, \theta)$ as the <em>Bartlett primitive</em> of the scalar uniform kernel $q_{s, j}$ — a linear functional of the kernel parametrized by the bandwidth $\theta$.</p>
+<h3>6.3 Theorem 2 (Bartlett inverse)</h3>
+<p>Define</p>
+<p>$$H_j(\theta) := \frac{\theta \cdot Q_s(j, \theta)}{m_j} = \int_0^\theta (\theta - u) \, q_{s, j}(u) \, du.$$</p>
+<p>Then in the distributional sense (within the continuous-interpolation framework of §6.1):</p>
+<p>$$\boxed{q_{s, j}(\theta) = H_j''(\theta).}$$</p>
+<p><strong>Proof sketch</strong>. Differentiating once:</p>
+<p>$$H_j'(\theta) = (\theta - \theta) q_{s, j}(\theta) + \int_0^\theta q_{s, j}(u) \, du = \int_0^\theta q_{s, j}(u) \, du.$$</p>
+<p>Differentiating again:</p>
+<p>$$H_j''(\theta) = q_{s, j}(\theta). \qquad \square$$</p>
+<p>This gives a <em>constructive inversion</em>: dense $\theta$-grid measurements of $Q_s(j, \theta)$ allow numerical reconstruction of $q_{s, j}(\theta)$ via second-difference. Equivalently, the kernel $q_{s, j}$ is determined (within the framework of §6.1) by the function $H_j(\theta)$ measured on a $\theta$-grid.</p>
+<p><strong>Status</strong>. This is a rigorous mathematical statement once §6.1's framework (linear interpolation between sampled lags, $\delta_0$ in scaling-limit sense) is granted. It is not a statement about the underlying discrete sequence per se — it is the statement that <em>if</em> one extends the discrete sequence by interpolation, <em>then</em> the standard Bartlett-primitive inversion holds. The empirical content lies entirely in whether the discrete-to-continuous extension faithfully captures the mechanism, which is in turn an empirical question addressed in §6.4 (does the parametric model of §6.4 fit the data?).</p>
+<h3>6.4 Canonical Model 1 (Saturating-exponential fit)</h3>
+<p>For $j \in [25, 32] \setminus \{24\}$ and $\theta \in \{0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9\}$, the empirical relation</p>
+<p>$$\boxed{\frac{Q_s(j, \theta)}{m_j} = a_j + (c_j - a_j) e^{-\alpha_j \theta}}$$</p>
+<p>fits the measured data with residual 4–9% at each $j$. Equivalently:</p>
+<p>$$H_j(\theta) = a_j \theta + (c_j - a_j) \theta e^{-\alpha_j \theta}.$$</p>
+<p>The fitted parameters $\{a_j, c_j, \alpha_j\}$ for each $j$ are recorded in §6.7. We refer to this three-parameter family as <strong>Canonical Model 1</strong>.</p>
+<p>The model is not derived; it is selected as the simplest two-scale parametric family that captures the observed bandwidth response. The 4–9% residual is non-trivial: $\sim 5\%$ of the variation in $Q_s/m_j$ is not captured by the fit. The treatment of this residual is discussed in §6.7.</p>
+<p>All consequences derived in §6.5–§6.6 are <em>conditional on Canonical Model 1 being an adequate description of the data</em>. In the parts of the paper where a structural result depends on the model holding, this dependence is stated explicitly.</p>
+<h3>6.5 Proposition 1 (Closed-form kernel within Canonical Model 1)</h3>
+<p><em>Within Canonical Model 1 and the framework of §6.1</em>, applying Theorem 2 yields the following closed-form for the scalar uniform kernel:</p>
+<p>$$q_{s, j}(u) = c_j \cdot \delta_0(u) + r_j(u), \qquad r_j(u) = (c_j - a_j) \, \alpha_j \, e^{-\alpha_j u} (\alpha_j u - 2).$$</p>
+<p>(With $\delta_0$ understood in the scaling-limit sense of §6.1.)</p>
+<p>The full empirical kernel, including the unmodeled fit residual, is</p>
+<p>$$q_{s, j}(u) = c_j \cdot \delta_0(u) + r_j(u) + \varepsilon_{s, j}(u),$$</p>
+<p>where $\varepsilon_{s, j}$ accounts for the 4–9% residual and carries multi-peak / gap-shell content not captured by the saturating-exponential model.</p>
+<p><strong>Proof of the closed form</strong>. Within Canonical Model 1, $H_j(\theta) = a_j \theta + (c_j - a_j) \theta e^{-\alpha_j \theta}$. Differentiating:</p>
+<p>$$H_j'(\theta) = a_j + (c_j - a_j) (1 - \alpha_j \theta) e^{-\alpha_j \theta}.$$</p>
+<p>At $\theta = 0^+$, $H_j'(0) = a_j + (c_j - a_j) = c_j$, and the standard interpretation of $H_j'(0^+)$ as the integral $\int_0^{0^+} q_{s, j}(u) \, du$ requires a $\delta_0$ contribution of weight $c_j$ at the origin. Differentiating again on $\theta > 0$:</p>
+<p>$$H_j''(\theta) = (c_j - a_j) \cdot \alpha_j (\alpha_j \theta - 2) e^{-\alpha_j \theta},$$</p>
+<p>which gives $r_j(\theta)$ for $\theta > 0$. Combining the boundary contribution with the bulk gives the stated form. $\qquad \square$</p>
+<p>(The $\delta_0$-at-origin step is the place where the scaling-limit caveat of §6.1 is essential; in the underlying discrete sequence, the "front delta" is the contribution at $k = 1$, rescaled.)</p>
+<h3>6.6 Structural features of the closed-form kernel</h3>
+<p>Within Canonical Model 1, the compensation kernel $r_j(u)$ has the following structural features:</p>
+<ul>
+<li><strong>Sign change at $u = 2/\alpha_j$</strong>. The factor $(\alpha_j u - 2)$ is negative for $u < 2/\alpha_j$ and positive for $u > 2/\alpha_j$. Combined with the prefactor $(c_j - a_j) \alpha_j > 0$ (for the empirical sign convention $c_j > a_j$, which holds throughout the tested range), the kernel is negative on a <em>compensation lobe</em> $0 < u < 2/\alpha_j$ and positive on a <em>rebate tail</em> $u > 2/\alpha_j$.</li>
+</ul>
+<ul>
+<li><strong>Total mass cancels the front delta</strong>. Direct integration:</li>
+</ul>
+<p>$$\int_0^\infty r_j(u) \, du = (c_j - a_j) \int_0^\infty \alpha_j e^{-\alpha_j u} (\alpha_j u - 2) \, du = (c_j - a_j)(1 - 2) = -(c_j - a_j) = a_j - c_j.$$</p>
+<p>Combined with the $c_j$ front-delta mass:</p>
+<p>$$c_j + \int_0^\infty r_j(u) \, du = a_j.$$</p>
+<p>This is the <em>perfect bookkeeping</em>: the front delta and the compensation kernel together integrate to the asymptotic value $a_j$ that the canonical model predicts as $\theta \to \infty$.</p>
+<ul>
+<li><strong>Weak rebate tail</strong>. The amplitude of the rebate region $(u > 2/\alpha_j)$ decays as $e^{-\alpha_j u}$ and the integrated mass of the rebate tail is small compared to the compensation lobe. The dominant structure is the front-delta-plus-compensation-lobe pair; the rebate tail is a small positive correction.</li>
+</ul>
+<p>The picture, <em>within the model</em>, is that the cross-class uniform-mode autocorrelation has a positive concentration at the smallest lag, followed by a structured negative compensation that asymptotically cancels most of the front mass, with a small positive rebate tail.</p>
+<p>This picture is empirically suggestive but not theorem-grade: the 4–9% fit residual carries content that the closed-form does not capture, and the exclusion of $j = 24$ is needed for the fit to be stable.</p>
+<h3>6.7 The fitted parameters across the tested range</h3>
+<p><strong>Table 6.1.</strong> Canonical Model 1 fitted parameters across $j \in [25, 32]$ excluding $j = 24$.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$m_j$</th>
+<th>$c_j$ (front delta)</th>
+<th>$a_j$ (asymptote)</th>
+<th>$\alpha_j$ (timescale)</th>
+<th>fit residual</th>
+</tr></thead><tbody>
+<tr>
+<td>25</td>
+<td>1,894,120</td>
+<td>$7.87 \times 10^{-7}$</td>
+<td>$2.79 \times 10^{-7}$</td>
+<td>6.25</td>
+<td>6.4%</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>$6.14 \times 10^{-7}$</td>
+<td>$3.58 \times 10^{-7}$</td>
+<td>7.18</td>
+<td>4.1%</td>
+</tr>
+<tr>
+<td>27</td>
+<td>7,027,290</td>
+<td>$5.70 \times 10^{-7}$</td>
+<td>$1.50 \times 10^{-7}$</td>
+<td>5.58</td>
+<td>8.5%</td>
+</tr>
+<tr>
+<td>28</td>
+<td>13,561,907</td>
+<td>$3.99 \times 10^{-7}$</td>
+<td>$1.23 \times 10^{-7}$</td>
+<td>4.77</td>
+<td>6.3%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26,207,278</td>
+<td>$3.41 \times 10^{-7}$</td>
+<td>$5.92 \times 10^{-8}$</td>
+<td>4.67</td>
+<td>6.3%</td>
+</tr>
+<tr>
+<td>30</td>
+<td>50,697,537</td>
+<td>$2.79 \times 10^{-7}$</td>
+<td>$4.57 \times 10^{-8}$</td>
+<td>5.12</td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>31</td>
+<td>98,182,656</td>
+<td>$2.10 \times 10^{-7}$</td>
+<td>$2.10 \times 10^{-8}$</td>
+<td>5.07</td>
+<td>8.5%</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190,335,585</td>
+<td>$1.67 \times 10^{-7}$</td>
+<td>$1.42 \times 10^{-8}$</td>
+<td>4.71</td>
+<td>7.0%</td>
+</tr>
+</tbody></table>
+<p><strong>Note on $\alpha_j$</strong>. The values fall in the range $[4.7, 7.2]$ — a factor $\sim 1.5$ across the tested range, with no clear monotone trend. We characterize $\alpha_j$ as <em>approximately constant</em> (around 5) in this range. The kernel zero-crossing $u = 2/\alpha_j$ varies from $\sim 0.28$ (at $\alpha = 7.2$) to $\sim 0.43$ (at $\alpha = 4.7$); the curve shapes are not identical across $j$ but are similar.</p>
+<p>(An earlier articulation of this analysis suggested $\alpha_j$ scales as $m_j^{0.76}$, sharpening with $j$. That came from a regression contaminated by the degenerate $j = 22$ point and is corrected here. The constant-$\alpha$ characterization has consequences for the B4 closure pathway discussed in §8.)</p>
+<p>The block $j = 22$ is excluded from the table because the saturating-exponential fit degenerates: the empirical $Q_s(j=22, \theta)$ does not exhibit the saturation pattern clearly within the tested $\theta$-range, and the fitted $a_j$ is unreliable. This is a small-$j$ effect; from $j = 23$ onward the fit is well-conditioned (with $j = 24$ excluded for the eigenbranch swap reason of §5.4).</p>
+<h3>6.8 Status</h3>
+<p>The Bartlett primitive identity (§6.2) and the inversion formula (§6.3, Theorem 2) are rigorous within the discrete-to-continuous framework of §6.1. The closed-form kernel decomposition (Proposition 1, §6.5) is rigorous <em>conditional on Canonical Model 1</em>. The structural features of the kernel (§6.6) are also conditional on the model.</p>
+<p>The model itself fits the data with 4–9% residual across the tested range. Whether this residual structure is a small correction to the leading saturating-exponential mechanism, or whether it carries content that the closed-form does not capture, is an open question (§11.1, item 3).</p>
+<p>The next section examines the scaling of the canonical model's fitted parameters $\{c_j, a_j, \alpha_j\}$ with $j$, and explains why these scalings — combined with the structural reduction of §5–§6 — do not by themselves close the 59.1 attack.</p>
+<hr>
+<h2>§7. Scaling and Why Single-θ Cannot Close</h2>
+<p>This section reports the empirical scalings of the Canonical Model 1 parameters $\{c_j, a_j, \alpha_j\}$ with $j$, computes the resulting bandwidth envelope of $F_W(j, \theta)$, and shows that no single $\theta$ value of $Q_s$ achieves the $O(j) = O(\log m_j)$ scale required for the 59.1 closure.</p>
+<h3>7.1 Observation 1 (Front delta scaling)</h3>
+<p>The front-delta amplitude $c_j$ from Canonical Model 1, regressed across $j \in [25, 32]$ excluding $j = 24$:</p>
+<p>$$c_j \sim m_j^{-0.3730 \pm 0.012}$$</p>
+<p>where the uncertainty is the standard error of the regression slope.</p>
+<p><strong>Implication for $F_W$ at small $\theta$</strong>. Since $Q_s(j, \theta)/m_j \to c_j$ as $\theta \to 0^+$ within the model:</p>
+<p>$$F_W(j, \theta \to 0^+) \approx L_s \cdot Q_s = L_s \cdot m_j \cdot \frac{Q_s}{m_j} \approx L_s \cdot m_j \cdot c_j \sim m_j^{0.6270} \cdot L_s.$$</p>
+<p>The small-$\theta$ readout of $F_W$ scales as $m_j^{0.63}$ within Canonical Model 1.</p>
+<h3>7.2 Observation 2 (Post-compensation asymptote scaling)</h3>
+<p>The asymptotic value $a_j$ of $Q_s/m_j$ in Canonical Model 1, regressed over the same range:</p>
+<p>$$a_j \sim m_j^{-0.6708 \pm 0.018}.$$</p>
+<p><strong>Implication for $F_W$ at large $\theta$</strong>. As $\theta \to 1^-$ within the model, $Q_s(j, \theta)/m_j \to a_j + (c_j - a_j) e^{-\alpha_j} \approx a_j$ (since $e^{-\alpha_j} \approx e^{-5} = 0.0067$ is small):</p>
+<p>$$F_W(j, \theta \to 1^-) \approx L_s \cdot m_j \cdot a_j \sim m_j^{0.3292} \cdot L_s.$$</p>
+<p>The full-window readout of $F_W$ scales as $m_j^{0.33}$ within Canonical Model 1.</p>
+<h3>7.3 Observation 3 (Cancellation defect ratio)</h3>
+<p>Combining the two scaling exponents:</p>
+<p>$$\boxed{\frac{a_j}{c_j} \sim m_j^{-(0.6708 - 0.3730)} = m_j^{-0.2978} \approx m_j^{-0.30}.}$$</p>
+<p>Equivalently, the cancellation rate</p>
+<p>$$1 - \frac{a_j}{c_j} \to 1 \text{ as } j \to \infty,$$</p>
+<p>with the residual cancellation defect $a_j/c_j$ shrinking polynomially. The empirical trajectory of $1 - a_j/c_j$ across the tested range:</p>
+<ul>
+<li>$j = 25$: 65%</li>
+<li>$j = 28$: 69%</li>
+<li>$j = 30$: 84%</li>
+<li>$j = 32$: 92%</li>
+</ul>
+<p>The cancellation rate strengthens monotonically across the tested range (with $j = 22$ excluded as a degenerate fit point per §6.7).</p>
+<h3>7.4 Candidate identification with Paper 66/67 (not yet a structural theorem)</h3>
+<p>The cancellation defect <em>ratio</em> exponent $\sim 0.30$ from §7.3 is numerically close to the Regime-1 chiseling exponent $C \approx 0.30$ identified in Paper 66/67 from ACF erosion of the form $k^{-C}$ along the lag axis.</p>
+<p>We emphasize that this proximity, while numerically striking, is not yet a structural identification. The two objects differ in their structure:</p>
+<ul>
+<li><em>Paper 66/67 $C \approx 0.30$</em> is a single decay exponent governing the rate of erosion of an autocorrelation function as a function of <em>lag</em> $k$.</li>
+<li><em>Paper 73 $\sim 0.30$</em> is the exponent of the <em>ratio</em> $a_j / c_j$ across blocks indexed by $j$, where $a_j$ and $c_j$ are themselves regression-fitted scaling exponents along the <em>block</em> axis.</li>
+</ul>
+<p>A precise structural identification would require articulating which transformations of the Paper 66/67 lag-axis quantity yield the Paper 73 block-axis ratio, and demonstrating that the underlying scaling mechanism is identical rather than coincidentally numerical. We have not done this. We list it as an open problem (§11.1, item 6).</p>
+<p>A speculative geometric reading of this identification — as the manifestation of a single $\rho$-conservation law on two different axes — is offered in Appendix B and is explicitly <em>not</em> used as part of any argument in this section or §8.</p>
+<h3>7.5 Polynomial-growth caveat</h3>
+<p>Within Canonical Model 1, the bandwidth envelope of $F_W$ is bracketed:</p>
+<p>$$m_j^{0.33} \cdot L_s \lesssim F_W(j, \theta) \lesssim m_j^{0.63} \cdot L_s, \qquad \theta \in (0, 1).$$</p>
+<p>Even at the most favorable choice $\theta \to 1^-$, the readout scales as $m_j^{0.33}$. This is sub-linear in $m_j$ but it is <em>polynomial</em>, not logarithmic.</p>
+<p>The 59.1 conjecture (in the form relevant to the H' critical path) requires a closure at the scale</p>
+<p>$$O(j) = O(\log m_j),$$</p>
+<p>which is exponentially smaller than $m_j^{0.33}$ in $m_j$. The gap between achievable and required is therefore polynomial-vs-logarithmic.</p>
+<p><strong>Conclusion</strong>. No single value of $\theta$ — neither the canonical diagnostic $\theta = 1/2$, nor the limit $\theta \to 0^+$, nor the limit $\theta \to 1^-$ — yields a readout that closes the 59.1 attack via the simple identification $F_W = O(j)$. Within the framework of this paper, the closure must come from an <em>external</em> construction that takes the kernel $q_{s, j}$ and produces a quantity at the $O(\log m_j)$ scale.</p>
+<p>This external construction is what we call the <em>B4 Abel-transfer defect</em>, and it is the subject of §8.</p>
+<h3>7.6 Status</h3>
+<p>The three observations of §7.1–§7.3 are regression-based scaling fits: empirical extrapolations from Canonical Model 1 fits at $j \in [25, 32]$, conditional on the model being adequate. The polynomial-growth caveat (§7.5) is a direct consequence of these scalings and is the structural reason why the analysis of the canonical model alone cannot close 59.1.</p>
+<p>The candidate identification with Paper 66/67 (§7.4) is a numerical observation, not a structural theorem. The geometric reading in Appendix B is speculative interpretation, not used in any argument.</p>
+<p>The next section addresses the open research direction for closing the polynomial-vs-logarithmic gap.</p>
+<hr>
+<h2>§8. The B4 Abel-Transfer Defect (Open Research Direction)</h2>
+<h3>8.1 Status of this section</h3>
+<p>This section does not state a precise mathematical conjecture. It articulates a <em>research direction</em>: a candidate object $\mathcal{Z}_j$ together with two open sub-problems that together would, if solved, close the polynomial-vs-logarithmic gap identified in §7.5.</p>
+<p>We refrain from labeling the content of this section as "Conjecture B4" because the candidate object $\mathcal{Z}_j$ has not been constructed precisely, and stating an unconditional inequality $\mathcal{Z}_j[q_s] = O(j)$ before $\mathcal{Z}_j$ is rigorously defined would be premature.</p>
+<p>The honest articulation is: there <em>should exist</em> a calibrated readout functional that bridges the gap between Canonical Model 1's polynomial bandwidth envelope and the logarithmic 59.1 closure scale. We sketch the candidate construction and identify what is missing.</p>
+<h3>8.2 Why single-θ bounds are insufficient</h3>
+<p>This is the conclusion of §7.5, restated for self-containedness: within the Canonical Model 1 framework, $F_W(j, \theta) \gtrsim m_j^{0.33} \cdot L_s$ for any $\theta \in (0, 1)$, and 59.1 requires $O(\log m_j)$. The gap is polynomial-vs-logarithmic, so no choice of $\theta$ closes the attack via direct identification of $F_W$ with the closure scale.</p>
+<p>Any closure pathway built on the analysis of this paper must use a quantity <em>other than</em> $Q_s$ at any single $\theta$. We therefore look for a readout functional $\mathcal{Z}_j[q_s]$ that:</p>
+<ul>
+<li>is built from the scalar uniform kernel $q_{s, j}(u)$ (and so inherits the structural identification of §6);</li>
+<li>achieves the scale $O(j) = O(\log m_j)$ within the tested range;</li>
+<li>has a precise mathematical definition.</li>
+</ul>
+<p>The first two requirements are constraints on what $\mathcal{Z}_j$ must do. The third is the basic gate for it to be a well-defined object at all. Section §8.3 articulates a candidate that satisfies the first; section §8.4 explains why the candidate does not yet satisfy the third.</p>
+<h3>8.3 Candidate calibrated endpoint defect</h3>
+<p>The candidate construction is a <em>difference</em> between two readouts of the kernel $q_{s, j}$ at the boundary $\theta = 1$:</p>
+<p>$$\boxed{\mathcal{Z}_j[q_s] := m_j \left[ \mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1) \right]}$$</p>
+<p>where:</p>
+<ul>
+<li>$\mathcal{B}_j^{\rm samp}(\theta) := H_j(\theta)/\theta = Q_s(j, \theta)/m_j$ is the sample-centered Bartlett primitive normalized by $\theta$. At $\theta = 1$, $\mathcal{B}_j^{\rm samp}(1) = Q_s(j, 1)/m_j$, which by the discussion of Paper 72 is essentially the tautological full-window identity (vacuous as a closure target).</li>
+</ul>
+<ul>
+<li>$\mathcal{B}_j^{\rm ext}(\theta)$ is a yet-to-be-constructed <em>external reference</em> version of the same primitive, computed not from the within-block sample-centered residual but from some external calibrating object that captures only the non-tautological part of the readout.</li>
+</ul>
+<p>The notation $\mathcal{B}$ (script B) is used to avoid conflict with $B_j = \sum_p x(p)$, the ZFCρ block sum convention used since Paper 59.</p>
+<p>The motivation for the difference structure: by Paper 71/Paper 72, the sample-centered $\mathcal{B}_j^{\rm samp}(1)$ equals a known constant (the trivial Bartlett identity at full window) which by itself cannot constrain anything. The non-trivial information must live in an external reference that has the same primitive structure but a different centering, so that the difference isolates the non-tautological content.</p>
+<p>If this candidate functional achieves $\mathcal{Z}_j[q_s] = O(j)$, then the H' critical path closes via the standard chain (modulo the inherited open conditions of §11.2).</p>
+<h3>8.4 What is genuinely open</h3>
+<p>Two distinct open sub-problems:</p>
+<p><strong>Sub-problem 1: Construct $\mathcal{B}_j^{\rm ext}$ explicitly.</strong></p>
+<p>What external reference object provides the calibration? How is $\mathcal{B}_j^{\rm ext}(\theta)$ computed from data? The candidate choices include:</p>
+<ul>
+<li>An external $\lambda$ reference (i.e., computing the residual $r(p)$ with a $\lambda$ value other than the IC value $\lambda_{\rm full}$, perhaps a value computed from data outside $I_j$);</li>
+<li>An external full-block centering (computing $\mu_{\rm adj}$ from blocks $I_{j-1}$ and $I_{j+1}$ rather than from $I_j$ itself, with the sample-centered version using $I_j$);</li>
+<li>A cross-block reference where $\mathcal{B}_j^{\rm ext}$ is built from auxiliary blocks and $\mathcal{B}_j^{\rm samp}$ from $I_j$ alone.</li>
+</ul>
+<p>We have not selected among these candidates. The construction of $\mathcal{B}_j^{\rm ext}$ is itself part of the open problem.</p>
+<p><strong>Sub-problem 2: Given a constructed $\mathcal{B}_j^{\rm ext}$, prove the bound.</strong></p>
+<p>This is the would-be conjecture. It cannot be stated precisely until Sub-problem 1 is resolved, because the precise bound depends on what $\mathcal{B}_j^{\rm ext}$ is. The shape of the would-be statement is:</p>
+<p>> <em>If $\mathcal{B}_j^{\rm ext}$ is constructed via [specific procedure], then $|\mathcal{Z}_j[q_s]| \le C \cdot j$ for $j \in [j_0, \infty)$ with absolute constant $C > 0$.</em></p>
+<p>The verification would proceed in two stages: (a) audit verification across the tested range $j \in [22, 32]$, and (b) deterministic argument extending to $j \to \infty$. Stage (b) is the genuinely new mathematical content; stage (a) is what the existing audit infrastructure can do once Sub-problem 1 is resolved.</p>
+<h3>8.5 What endpoint derivatives can and cannot do</h3>
+<p>A reader might hope that the derivative structure of $H_j$ within Canonical Model 1 provides the missing closure. Specifically, since</p>
+<p>$$H_j''(\theta) = (c_j - a_j) \alpha_j (\alpha_j \theta - 2) e^{-\alpha_j \theta},$$</p>
+<p>near $\theta = 1$ this is suppressed by a factor $e^{-\alpha_j} \approx e^{-5} \approx 0.0067$. One might hope that the endpoint defect $H_j''(1)$ inherits this exponential suppression and that this turns the polynomial-vs-logarithmic gap into something tractable.</p>
+<p>This hope is not realized. The exponential factor $e^{-\alpha_j}$ is a <em>fixed constant suppression</em> across $j$ in the tested range, not an asymptotic gain that grows with $j$. Since $\alpha_j$ is approximately constant ($\alpha_j \approx 5$) per the corrected hygiene of §6.7, the suppression factor $e^{-5} \approx 0.0067$ is the same at $j = 25$ and at $j = 32$. Multiplying any quantity by a fixed constant does not bridge a polynomial-vs-logarithmic gap.</p>
+<p>The conclusion is that the missing ingredient must lie in $\mathcal{B}_j^{\rm ext}$ itself, not in the suppression of derivatives within Canonical Model 1. Specifically: $\mathcal{B}_j^{\rm ext}$ must differ from $\mathcal{B}_j^{\rm samp}$ in a way that produces an $O(\log m_j)$ residual rather than a polynomial, and this residual structure must come from the <em>choice of external reference</em>, not from the derivative behavior of the saturating-exponential model.</p>
+<p>(An earlier articulation of this section invoked endpoint derivative smallness as a candidate mechanism. That articulation predates the hygiene correction on $\alpha_j$ and is withdrawn here.)</p>
+<p>To state this explicitly: the parameter $\alpha_j$ is treated throughout as an $O(1)$ fit parameter in the present range; no asymptotic sharpening of $\alpha_j$ is used in the B4 closure pathway. The exponential suppression $e^{-\alpha_j} \approx e^{-5} \approx 0.0067$ is a <em>fixed constant</em> across $j \in [25, 32]$, providing no asymptotic gain that bridges the polynomial-vs-logarithmic gap. Any closure of B4 must come from the choice of external reference $\mathcal{B}_j^{\rm ext}$, not from any property of $\alpha_j$ in the limit.</p>
+<h3>8.6 Boundary acknowledgment</h3>
+<p>The B4 attack pathway is articulated; no precise conjecture statement, no proof. The two genuinely open sub-problems above are:</p>
+<ol>
+<li><em>Constructive</em>: define $\mathcal{B}_j^{\rm ext}$ explicitly enough to be computed.</li>
+<li><em>Mathematical</em>: prove the resulting $\mathcal{Z}_j[q_s] = O(j)$ bound across $j$.</li>
+</ol>
+<p>The candidate identification of §7.4 with Paper 66/67 — if it can be promoted from numerical proximity to a structural relationship — may provide the bridge by which the cancellation defect rate $a_j/c_j \sim m_j^{-0.30}$ on the block axis is converted into a closure on the lag axis. We do not pursue this here; we list it as an open problem (§11.1, item 6).</p>
+<p>What this paper has done is reduce the closure burden on the attack object: where the analysis used to require controlling the full $F_W(j, \theta)$ as a function of two arguments, it now requires constructing one external functional and proving one logarithmic bound. The reduction is substantial; the residual problem is still genuinely hard.</p>
+<h3>8.7 Status</h3>
+<p>Section §8 is honestly labeled as a research direction, not a conjecture. The candidate object $\mathcal{Z}_j$ has the structural form needed to bridge the polynomial-vs-logarithmic gap, but is not yet a precisely defined mathematical object. The two open sub-problems are stated explicitly.</p>
+<p>This paper's contribution to the 59.1 attack is the relocation of the proof burden, not its closure. The next sections record the numerical infrastructure that supports the empirical content of §3–§7 (§9), the relationship to earlier ZFCρ papers (§10), and the comprehensive list of open conditions for full 59.1 closure including those inherited from earlier papers (§11).</p>
+<hr>
+<h2>§9. Numerical Verification</h2>
+<h3>9.1 Audit-first methodology</h3>
+<p>The mechanism articulation in this paper was developed through a sequence of sealed audits over $j \in [22, 32]$, using the full $\rho$ table on $[1, 10^{10}]$. This means: each empirical claim in §3–§7 was first verified against the audit data before being articulated as a structural pattern, and the audit infrastructure was designed before the structural articulation rather than as a confirmation step afterward.</p>
+<p>The methodology has two consequences for how the empirical content of this paper should be read:</p>
+<p><strong>Each audit is reproducible</strong>. All scripts used to generate the sealed CSV files are available in the project repository. The CSV files themselves are listed by step name and fingerprinted by their generation parameters; a reader can re-run any audit and verify the output matches.</p>
+<p><strong>No claim extends beyond the tested range</strong>. The audit ledger covers $j \in [22, 32]$. Empirical patterns established by the audits (Empirical Theorem 1, Empirical Theorem 2, Observations 1–3) are stated with this range as an explicit qualification. Whether these patterns persist for $j > 32$ is not claimed.</p>
+<h3>9.2 Sealed audits</h3>
+<p>The following audits constitute the empirical infrastructure of this paper. Each entry is identified by its Step number, the sealed CSV file name(s), and the substantive finding.</p>
+<p><strong>Table 9.1.</strong> Sealed audits used in this paper.</p>
+<table><thead><tr>
+<th>Step</th>
+<th>Sealed file</th>
+<th>Finding</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>step1_alpha.csv</td>
+<td>$\beta_{F_W}(\theta = 1/2) \approx 0.40$ across $j = 22\text{--}32$</td>
+</tr>
+<tr>
+<td>2A</td>
+<td>step2a_peaks.csv</td>
+<td>three stable peaks confirmed in residual spectrum (precursor 0.00248, main 0.00625, third 0.0238)</td>
+</tr>
+<tr>
+<td>2A ext</td>
+<td>step2a_extended.csv</td>
+<td>adjacent block centering equals $\mu_{12}$ to 5+ decimals</td>
+</tr>
+<tr>
+<td>2B</td>
+<td>step2b_axis.csv</td>
+<td>$g_{\log}$ identified as the main mechanism axis (gap-classes are the dominant decomposition direction)</td>
+</tr>
+<tr>
+<td>2D</td>
+<td>step2d_minimal.csv</td>
+<td>$G_0 = \{-2, \ldots, 2\}$ is minimum sufficient core (smaller subsets fail)</td>
+</tr>
+<tr>
+<td>2E (5cl)</td>
+<td>step2e_5class.csv</td>
+<td>width-5 matrix decomposition, leading eigenvalue analysis</td>
+</tr>
+<tr>
+<td>2E (7cl)</td>
+<td>step2e_7class.csv</td>
+<td>width-7 matrix decomposition; rank-1 approximation captures 99.999943% of squared Frobenius norm</td>
+</tr>
+<tr>
+<td>2F</td>
+<td>step2f_perclass.csv</td>
+<td>within-class $F_W^{(g, g)} \sim m_j^{1.05}$ super-linear (per-class growth before cancellation)</td>
+</tr>
+<tr>
+<td>2J</td>
+<td>step2j_block_centering.csv</td>
+<td>$\mu_{12}$ gauge contributes $\sim 20\%$ of $F_W$ stably across $j$</td>
+</tr>
+<tr>
+<td>2K</td>
+<td>step2k_9class.csv</td>
+<td>width-9 cascade closure $\le 0.21\%$; width-7 closure $\sim 1.1\%$ at worst (see §3.2)</td>
+</tr>
+<tr>
+<td>2L</td>
+<td>step2l_source_mapping.csv</td>
+<td>$\widehat{b}_a \to \Gamma_{\rm odd}$ confirmed (corr 0.997, magnitude $m_j^{-0.5024}$); $\widehat{\mu} \to \Gamma_{\rm even}$ refuted (corr varies $-0.7$ to $0$)</td>
+</tr>
+<tr>
+<td>2M</td>
+<td>step2m_perpair.csv</td>
+<td>per-pair $\beta_{g, g'}(\theta = 1/2) \approx 1.00 \pm 0.06$ universally across $(g, g')$ pairs</td>
+</tr>
+<tr>
+<td>2N</td>
+<td>step2n_oddeven.csv</td>
+<td>$F_W = 100\% \cdot \mathbf{1}^T M_{\rm even} \mathbf{1}$ exactly (within machine precision); $\mathbf{1}^T M_{\rm odd} \mathbf{1}$ vanishes to $10^{-14}$</td>
+</tr>
+<tr>
+<td>2P</td>
+<td>step2p_uniform_mode.csv</td>
+<td>$\widehat{\mu}_j$ direction stable across $\theta$ (cosine $\ge 0.9999$, excluding $j = 24$)</td>
+</tr>
+<tr>
+<td>2Q</td>
+<td>step2q_dense_theta.csv</td>
+<td>front delta + compensation kernel reconstructed via $H_j''$ within Canonical Model 1; fit residual 4–9%</td>
+</tr>
+</tbody></table>
+<p>The list comprises 14 audits used in the main text; auxiliary diagnostic audits not cited in §3–§8 are not listed.</p>
+<h3>9.3 Numerical evidence tables</h3>
+<p>A representative subset of the audit data is reproduced here for reference. Full data is in the sealed CSVs.</p>
+<h4>9.3.1 Cascade saturation at $\theta = 1/2$ (Step 2K)</h4>
+<p>For each $j \in [22, 32]$:</p>
+<p><strong>Table 9.2.</strong> Cascade saturation, even-$j$ sample.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$F_W$</th>
+<th>width-7 sum</th>
+<th>width-9 sum</th>
+<th>$</th>
+<th>O_{\ge 4}</th>
+<th>/</th>
+<th>F_W</th>
+<th>$</th>
+<th>$</th>
+<th>O_{\ge 5}</th>
+<th>/</th>
+<th>F_W</th>
+<th>$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>$5.18$</td>
+<td>$5.24$</td>
+<td>$5.18$</td>
+<td>$1.16\%$</td>
+<td>$0.08\%$</td>
+</tr>
+<tr>
+<td>24</td>
+<td>$7.92$</td>
+<td>$8.01$</td>
+<td>$7.91$</td>
+<td>$1.14\%$</td>
+<td>$0.13\%$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$11.84$</td>
+<td>$11.97$</td>
+<td>$11.84$</td>
+<td>$1.10\%$</td>
+<td>$0.04\%$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$17.83$</td>
+<td>$18.02$</td>
+<td>$17.82$</td>
+<td>$1.07\%$</td>
+<td>$0.06\%$</td>
+</tr>
+<tr>
+<td>30</td>
+<td>$26.53$</td>
+<td>$26.81$</td>
+<td>$26.52$</td>
+<td>$1.05\%$</td>
+<td>$0.04\%$</td>
+</tr>
+<tr>
+<td>32</td>
+<td>$36.93$</td>
+<td>$37.35$</td>
+<td>$36.92$</td>
+<td>$1.14\%$</td>
+<td>$0.03\%$</td>
+</tr>
+</tbody></table>
+<p>The width-7 truncation error is consistently $\sim 1.1\%$ across the tested range; the width-9 truncation error is consistently below 0.21%. This is the empirical basis for Certified Numerical Proposition 1 (§3.2).</p>
+<h4>9.3.2 Antisymmetric Ward Lift across $j$ (Step 2L)</h4>
+<p><strong>Table 9.3.</strong> Antisymmetric Ward Lift, even-$j$ sample.</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\mathrm{corr}(\widehat{b}_a, \Gamma_{\rm odd}/\</th>
+<th>\Gamma_{\rm odd}\</th>
+<th>)$</th>
+<th>$\</th>
+<th>b_a\</th>
+<th>/ \</th>
+<th>\Gamma_{\rm odd}\</th>
+<th>\cdot \sqrt{m_j}$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>$-0.998$</td>
+<td>$1.04$</td>
+</tr>
+<tr>
+<td>24</td>
+<td>$-0.997$</td>
+<td>$0.99$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$-0.998$</td>
+<td>$1.02$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$-0.997$</td>
+<td>$1.01$</td>
+</tr>
+<tr>
+<td>30</td>
+<td>$-0.998$</td>
+<td>$0.97$</td>
+</tr>
+<tr>
+<td>32</td>
+<td>$-0.997$</td>
+<td>$1.03$</td>
+</tr>
+</tbody></table>
+<p>The shape correlation is uniformly $\ge 0.997$ in absolute value across the tested range; the rescaled magnitude $\|b_a\| \sqrt{m_j} / \|\Gamma_{\rm odd}\|$ is $1.0 \pm 0.05$. This supports Empirical Theorem 1 (§5.3).</p>
+<h4>9.3.3 Uniform direction stability across $\theta$ (Step 2P)</h4>
+<p>For each $j \in [22, 32] \setminus \{24\}$, the worst-case cosine across pairs $\theta_1, \theta_2 \in \{0.10, \ldots, 0.90\}$:</p>
+<p><strong>Table 9.4.</strong> Uniform direction stability, odd-$j$ sample (j=24 excluded; see Appendix A).</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\min_{\theta_1, \theta_2}</th>
+<th>\cos(\widehat{\mu}_j(\theta_1), \widehat{\mu}_j(\theta_2))</th>
+<th>$</th>
+<th>$L_s$ at $\theta = 1/2$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>$0.99987$</td>
+<td>$5.46$</td>
+</tr>
+<tr>
+<td>23</td>
+<td>$0.99991$</td>
+<td>$5.49$</td>
+</tr>
+<tr>
+<td>25</td>
+<td>$0.99993$</td>
+<td>$5.51$</td>
+</tr>
+<tr>
+<td>27</td>
+<td>$0.99995$</td>
+<td>$5.53$</td>
+</tr>
+<tr>
+<td>29</td>
+<td>$0.99996$</td>
+<td>$5.54$</td>
+</tr>
+<tr>
+<td>31</td>
+<td>$0.99996$</td>
+<td>$5.54$</td>
+</tr>
+<tr>
+<td>32</td>
+<td>$0.99995$</td>
+<td>$5.55$</td>
+</tr>
+</tbody></table>
+<p>The cosine is uniformly $\ge 0.9999$ across all tested $j \in [22, 32] \setminus \{24\}$; $L_s$ stabilizes around $5.5$ with mild monotonic increase toward larger $j$. This supports Empirical Theorem 2 (§5.4).</p>
+<h4>9.3.4 Canonical Model 1 fitted parameters (Step 2Q)</h4>
+<p>See Table 6.1 in §6.7 for the complete entry per $j$.</p>
+<h3>9.4 What the audit infrastructure does not establish</h3>
+<p>Three things the audits <em>do not</em> establish, and which are correspondingly stated as open in §11:</p>
+<ul>
+<li>The audits cover $j \in [22, 32]$. The asymptotic behavior as $j \to \infty$ is <em>not</em> established by the audits; it can only be conjectured by extrapolation from the regression patterns. This is most relevant for §5.5 ($R_s$ asymptotic) and §7.5 (polynomial vs logarithmic gap).</li>
+</ul>
+<ul>
+<li>The audits verify Canonical Model 1 fits with 4–9% residual but do <em>not</em> establish that the saturating-exponential form is the true underlying functional form. The residual structure $\varepsilon_{s, j}(u)$ is unidentified.</li>
+</ul>
+<ul>
+<li>The audits establish numerical proximity of two exponents ($\sim 0.30$ in Paper 66/67 and $\sim 0.30$ in Paper 73) but do <em>not</em> establish that they share an underlying structural mechanism. Numerical proximity across two papers is a candidate identification, not a structural theorem.</li>
+</ul>
+<p>These limitations are inherent to audit-based articulation and are not specific deficits of this paper.</p>
+<hr>
+<h2>§10. Relation to Earlier ZFCρ Papers</h2>
+<p>This section identifies, for each earlier paper in the ZFCρ series whose content is used or extended by this paper, the precise way in which Paper 73 relates to it. The intent is to make explicit what Paper 73 <em>adds</em> relative to the existing series and what it <em>inherits</em> without further articulation.</p>
+<h3>10.1 Paper 59 (the 59.1 conjecture)</h3>
+<p>Paper 59 states the 59.1 conjecture in its current form. Paper 73 does not prove it; this is acknowledged in §1.3.</p>
+<p>What Paper 73 adds: a four-layer architecture (B1–B4) that reduces the gap-class cross-interference attack on 59.1 to a single open research direction (B4) plus inherited conditions from earlier papers (§11.2).</p>
+<h3>10.2 Paper 64 (one-point gap profile)</h3>
+<p>Paper 64 establishes the one-point gap profile $\Gamma_j(g) = \sum_{p \in I_j: g(p) = g} x_p$ as a structural object of ZFCρ blocks, with the cross-sign symmetry property and the decomposition into $\Gamma_{\rm odd}$ and $\Gamma_{\rm even}$.</p>
+<p>What Paper 73 adds: the <em>quantitative two-point lift</em> of $\Gamma_{\rm odd}$ to the matrix kernel (Empirical Theorem 1, §5.3). The shape correlation 0.997 and the magnitude exponent $-0.5024$ are the empirical content of the lift; an exact mathematical derivation is left to future work.</p>
+<p>This is the strongest direct bridge from earlier work to Paper 73. It anchors the antisymmetric component of the cross-class matrix in a Paper 64 structural object.</p>
+<h3>10.3 Paper 65 (H' critical path; <em>inherited open condition</em>)</h3>
+<p>Paper 65 introduces the H' critical path for the 59.1 attack: F3 + Paper 65 unconditional + Paper 71 (H4b). The current status of Paper 65's components (c0)(c2)(c3) being <em>unconditional</em> within the paper 65 framework is itself an open condition.</p>
+<p>What Paper 73 does: identifies B4 as one component of the chain, but explicitly <em>does not</em> address the unconditionalization of (c0)(c2)(c3). This inherited open condition is listed in §11.2.</p>
+<h3>10.4 Papers 66 and 67 (chiseling exponent; <em>candidate identification</em>)</h3>
+<p>Papers 66 and 67 establish the Regime-1 chiseling exponent $C \approx 0.30$ governing ACF erosion of the form $k^{-C}$ along the lag axis.</p>
+<p>What Paper 73 adds: the empirical observation that the cancellation defect ratio $a_j/c_j \sim m_j^{-0.30}$ along the block axis exhibits the same numerical exponent (§7.4). This is a <em>candidate identification</em>, not a structural theorem: the lag-axis decay exponent and the block-axis ratio exponent are structurally distinct objects, and their numerical proximity is suggestive without being conclusive.</p>
+<p>A speculative geometric reading of this identification is offered in Appendix B and is <em>not</em> used as part of any argument in §3–§8.</p>
+<h3>10.5 Paper 70 (block-wise saturated skeleton; lag-domain analogue)</h3>
+<p>Paper 70 establishes a block-wise saturated skeleton (Theorem 70.A) as the structural backbone of the ZFCρ recursion at the block level.</p>
+<p>What Paper 73 adds: the 7- and 9-class effective gap cores (§3) play an analogous role at the lag level. Just as Paper 70 identifies a finite block-wise object that captures the leading mechanism, Paper 73 identifies a finite gap-class window that captures the leading cross-interference structure. The analogy is structural, not derivational; we do not prove that the lag-domain skeleton is implied by the block-domain skeleton.</p>
+<h3>10.6 Papers 71 and 72 (H4b path; <em>inherited open condition</em>)</h3>
+<p>Papers 71 (Linear Signed Abel Budget) and 72 (Front Residual Locking) develop the H4b path for the 59.1 attack, with Paper 72 distinguishing the sample-centered tautological full-window identity (vacuous) from external full-block references (carrying non-tautological information).</p>
+<p>What Paper 73 adds: the candidate object $\mathcal{Z}_j[q_s] = m_j[\mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1)]$ (§8.3) is built directly on the Paper 72 distinction, applied at the level of the scalar uniform kernel rather than the original Bartlett readout. The deterministic Abel transfer at non-vacuous scale itself remains open in Paper 71 and is listed in §11.2 as inherited.</p>
+<p>This connection is the most important structural bridge between Paper 73 and the existing H4b framework.</p>
+<h3>10.7 Summary</h3>
+<p>Paper 73 sits in a specific structural position relative to the H' critical path:</p>
+<ul>
+<li><em>Component (B)</em>: the Abel transfer in Paper 71's H4b. Paper 73 articulates the candidate kernel structure (§6, §8) but inherits the open condition.</li>
+<li><em>Component (A)</em>: unconditionalization of Paper 65 (c0)(c2)(c3). Paper 73 does not address this and inherits the open condition.</li>
+<li><em>Component (C)</em>: genuine new mathematics. Paper 73's B4 research direction (§8) is a contribution to this component, with the construction of $\mathcal{B}_j^{\rm ext}$ and the proof of $\mathcal{Z}_j[q_s] = O(j)$ as the residual problem.</li>
+</ul>
+<p>The reduction of the closure burden is substantial: the analysis of the full $F_W(j, \theta)$ as a function of two arguments is reduced to the construction of one external functional and the proof of one logarithmic bound. The residual problem is still hard.</p>
+<hr>
+<h2>§11. Open Problems</h2>
+<p>This section lists, comprehensively, the open conditions for any complete 59.1 closure pathway built on the framework of this paper. The list is divided into P73-specific items (§11.1) and inherited items from earlier ZFCρ papers (§11.2).</p>
+<p>This separation is important: a reader inferring from §1–§10 that B4 is the sole remaining piece would be misled. Multiple inherited open conditions remain, and Paper 73 does <em>not</em> address them.</p>
+<h3>11.1 P73-specific open problems</h3>
+<p><strong>1. B4 Abel-transfer research direction.</strong></p>
+<p>The candidate object $\mathcal{Z}_j[q_s] = m_j[\mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1)]$ articulated in §8 has two open sub-problems:</p>
+<ul>
+<li><em>1a. Construct $\mathcal{B}_j^{\rm ext}(\theta)$ explicitly</em>. Articulate the external reference object precisely enough that $\mathcal{B}_j^{\rm ext}(\theta)$ is a well-defined, computable functional. Candidate constructions include external $\lambda$ reference, external full-block centering, and cross-block references; we have not selected among them.</li>
+</ul>
+<ul>
+<li><em>1b. Given a constructed $\mathcal{B}_j^{\rm ext}$, prove the bound $|\mathcal{Z}_j[q_s]| \le C \cdot j$ for $j \in [j_0, \infty)$ with absolute constant $C > 0$</em>. This is the would-be conjecture; it cannot be stated precisely until 1a is resolved.</li>
+</ul>
+<p><strong>2. $R_s$ asymptotic behavior.</strong></p>
+<p>The two-component decomposition residual $R_s(j, \theta) = F_W - \lambda_s L_s$ is empirically in the range 5–12% of $F_W$ across $\theta$ for $j \in [25, 32]$ (§5.5). The trend with $j$ is not determined by available data: $R_s/F_W$ may tend to zero, to a constant, or grow as $j \to \infty$.</p>
+<p>If $R_s/F_W \to 0$, the two-component decomposition is asymptotically effective and the closure pathway can focus on $\lambda_s L_s$. If $R_s/F_W$ tends to a nonzero limit, the closure pathway requires explicit treatment of the third (and possibly higher) eigenmodes of $M_{\rm even}$, which we have not articulated.</p>
+<p><strong>3. The remainder $\varepsilon_{s, j}(u)$.</strong></p>
+<p>Canonical Model 1 fits $Q_s/m_j = a_j + (c_j - a_j) e^{-\alpha_j \theta}$ with 4–9% residual across the tested range (§6.4). This residual carries multi-peak / gap-shell content not captured by the saturating-exponential form. A full identification of $\varepsilon_{s, j}(u)$ — what its functional form is, what underlying structural feature produces it — is not articulated here.</p>
+<p>If the residual encodes a structurally important second timescale or a non-trivial sub-leading contribution, Canonical Model 1 may need to be extended to a multi-component fit before any closure pathway is built on it.</p>
+<p><strong>4. $j = 24$ atlas anomaly.</strong></p>
+<p>The block $j = 24$ exhibits an eigenbranch swap at $\theta \ge 0.7$ that excludes it from the bandwidth-stability of $\widehat{\mu}_j$ established in Empirical Theorem 2 (§5.4). The eigenbranch swap is described in detail in Appendix A.</p>
+<p>Whether the anomaly reflects a genuine structural feature of the $j = 24$ block (a "deep multiplicative resonance" in the speculative reading of Appendix A.4), a numerical artifact of the eigenmode-extraction algorithm, or a transitional regime between small-$j$ and large-$j$ behavior, is unresolved. A dense-$\theta$ eigenvalue tracking audit at $j = 24$ specifically, with continuous mode tracking replacing argmax-based selection, would clarify this. We have not performed such an audit.</p>
+<p><strong>5. $\mu_{12}$ gauge contribution structural source.</strong></p>
+<p>The mod-12 gauge $\mu_{12}$ contributes a stable $\sim 20\%$ of $F_W$ across $j$ (Step 2J, §9.2). The structural source of this contribution — what specific mod-12 systematic in the residual produces it, and whether it interacts with $Q_s$ or remains additive — is not identified.</p>
+<p>A more refined decomposition in which $Q_s$ is itself split into a gauge-coupled and gauge-orthogonal part would clarify this. We have not performed it.</p>
+<p><strong>6. Paper 66/67 ↔ Paper 73 structural identification.</strong></p>
+<p>The numerical proximity $\sim 0.30$ on the lag axis (Paper 66/67 chiseling exponent) and on the block axis (Paper 73 cancellation defect ratio) is suggestive. A rigorous statement connecting them would require articulating which transformation of the lag-axis quantity yields the block-axis ratio, and demonstrating that the underlying scaling mechanism is identical rather than coincidentally numerical.</p>
+<p>If such an identification can be made, it may provide the structural bridge by which the cancellation defect rate $a_j/c_j$ on the block axis is converted into a closure on the lag axis. The candidate identification is currently a numerical observation.</p>
+<h3>11.2 Inherited open conditions for full 59.1 closure</h3>
+<p>For a complete unconditional 59.1 closure pathway, the following conditions inherited from earlier papers also remain. Paper 73 does not address them.</p>
+<p><strong>7. Paper 65 (c0)(c2)(c3) unconditional within the paper 65 framework.</strong></p>
+<p>The H' critical path requires the components (c0)(c2)(c3) of Paper 65 to be unconditional. Their current status (subject to additional hypotheses) is itself an open condition for unconditional 59.1 closure. See Paper 65 for the precise statement of these components.</p>
+<p>Paper 73 inherits this condition without further articulation.</p>
+<p><strong>8. Paper 71 (H4b) deterministic Abel transfer at non-vacuous scale.</strong></p>
+<p>Paper 71 articulates the H4b path; the deterministic Abel transfer at non-vacuous scale remains open. Paper 73's $\mathcal{Z}_j[q_s]$ candidate (§8) is a refinement of Paper 71's framework but does not by itself close the H4b open condition: the construction sub-problem 1a above is, in a structural sense, Paper 71's H4b construction restated at the level of the scalar uniform kernel.</p>
+<p>The relationship is: sub-problem 1a (with the right choice of $\mathcal{B}_j^{\rm ext}$) is, structurally, the Paper 71 H4b construction restated at the level of the scalar uniform kernel. Whether this constitutes mathematical equivalence (one problem, two formulations) or close structural parallel (two related problems) depends on whether sub-problem 1a's resolution can be mapped to Paper 71 H4b's framework verbatim. We assert the structural parallel; the strict equivalence awaits verification.</p>
+<h3>11.3 Status of items 1–8 for full closure</h3>
+<p>For unconditional 59.1 closure via the framework of this paper, items 1, 2, 7 are necessary (and 1 is the same problem as 8). Items 3, 4, 5, 6 are P73-specific cleanup that would strengthen the framework but are not strictly necessary if items 1, 2, 7 are resolved with sufficient generality.</p>
+<p>A complete pathway sketch:</p>
+<ul>
+<li>Resolve item 1a: construct $\mathcal{B}_j^{\rm ext}$ explicitly.</li>
+<li>Resolve item 1b: prove $|\mathcal{Z}_j[q_s]| = O(j)$ given the construction.</li>
+<li>Resolve item 2: either confirm $R_s/F_W \to 0$ as $j \to \infty$, OR extend the framework to handle non-vanishing residual via explicit treatment of the third (and possibly higher) eigenmodes of $M_{\rm even}$.</li>
+<li>Resolve item 7: unconditionalize Paper 65 (c0)(c2)(c3).</li>
+<li>Combine via the H' critical path chain.</li>
+</ul>
+<p>Paper 73's contribution to this pathway is the explicit framing of items 1, 2, 6 in a form that makes them attackable; items 3, 4, 5 are cleanup specific to the framework. Items 7, 8 are inherited and unaddressed.</p>
+<hr>
+<h2>§12. Acknowledgments</h2>
+<p>The author thanks Zesi Chen (陈则思) for 18 years of philosophical collaboration on the SAE framework. The articulation of "demonstration over completion," explicit boundary acknowledgment, and the structural symmetry between the lag and block axes throughout this paper draws on shared work over the full duration of that collaboration.</p>
+<p>This paper was developed via four-AI synthesis with role specialization:</p>
+<ul>
+<li>子路 (Claude): audit lead and integrator</li>
+<li>公西华 (ChatGPT): theory gatekeeper</li>
+<li>子夏 (Gemini): divergent / mechanism interpretation</li>
+<li>子贡 (Grok): strategy and feasibility</li>
+</ul>
+<p>The mechanism articulation passed through ten review rounds and fourteen sealed audits before being committed to this paper.</p>
+<h3>Methodological caveat</h3>
+<p><strong>The four-AI synthesis was conducted with Claude as single integrator throughout, and this caveat applies to all empirical patterns in §3–§8.</strong> All prompts to other AIs were drafted by Claude; all syntheses were composed by Claude; the present paper is a Claude-authored compilation of conclusions reached through this process. This introduces a known bias risk: structural articulations preferred by Claude (the integrator) may have been amplified rather than independently checked.</p>
+<p>Two specific articulations in this paper are particularly subject to this bias and should be read with corresponding skepticism:</p>
+<ul>
+<li>The "front delta + compensation kernel" structural picture (§6) was first articulated by the integrator and subsequently endorsed by the gatekeeper. It is consistent with the data within Canonical Model 1's 4–9% residual but is not the only structural picture compatible with that data. A reader who finds an alternative structural picture also compatible with the data should not regard this paper's articulation as having ruled out the alternative.</li>
+</ul>
+<ul>
+<li>The candidate Paper 66/67 ↔ Paper 73 identification (§7.4, Appendix B) was first noted as numerical proximity by the integrator and subsequently elevated to "candidate identification" by the gatekeeper. The structural distinction between the lag-axis decay and the block-axis ratio (§7.4) is a real obstacle to promoting this from numerical proximity to structural identification.</li>
+</ul>
+<p>Independent verification by other AIs reading the raw audit data without Claude's framing has not been performed. Such verification would be the appropriate next step before any of the empirical patterns in this paper are treated as established beyond the reach of the framing-bias caveat. <strong>The author commits to an independent multi-AI verification round, conducted without Claude as integrator, as a prerequisite for any subsequent paper that builds substantively on the empirical content of this one (P74 onward).</strong></p>
+<hr>
+<h2>§13. References</h2>
+<p><strong>ZFCρ programme papers</strong></p>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LIX: Spectral Ratio Boundedness and the Two-Conjecture Closure of H'</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19480519">10.5281/zenodo.19480519</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXIV: Two-Dimensional Anatomy of the Remainder Measure — Branch-Orthogonality, Free-Boundary Profiles, and Surrogate Layering</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19674522">10.5281/zenodo.19674522</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXV: Branch Centering and the Spectral Route — From False Mean Modes to the Conditional Ψ = O(j) Architecture</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19687344">10.5281/zenodo.19687344</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXVI: Gradual Chiseling and the Spectral Bridge — Two-Regime Structure of the Centered Residual ACF</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19701480">10.5281/zenodo.19701480</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXVII: Scale-Dependent Erosion Rate and the Intrinsic Spectral Bridge — Discovery of the C_eff Trajectory</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19705714">10.5281/zenodo.19705714</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXX: The Block-Wise Effective Skeleton — A Reduction of Conjecture 59.1</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19985155">10.5281/zenodo.19985155</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXXI: Linear Signed Abel Budget and the Saturated Zero-Mode Target</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.20020573">10.5281/zenodo.20020573</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.20029942">10.5281/zenodo.20029942</a>.</li>
+</ol>
+<p><strong>SAE foundational papers</strong></p>
+<ol>
+<li>Qin, H. <em>Self-as-an-End: Foundational Articulation</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.18528813">10.5281/zenodo.18528813</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>Self-as-an-End: Negativa Axiom</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.18666645">10.5281/zenodo.18666645</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>Self-as-an-End: Remainder Conservation</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.18727327">10.5281/zenodo.18727327</a>.</li>
+</ol>
+<p><strong>SAE methodology</strong></p>
+<ol>
+<li>Qin, H. <em>SAE Methodology Paper 0: Negativa as Axiom Prior to Being</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19544619">10.5281/zenodo.19544619</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>SAE Methodology Paper 00: Via Rho — The Path of the Remainder</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19657439">10.5281/zenodo.19657439</a>.</li>
+</ol>
+<p><strong>Cross-series</strong></p>
+<ol>
+<li>Qin, H. <em>"Form and Flow" Paper I: Geometric Foundations of ρ-Conservation</em> (forthcoming).</li>
+</ol>
+<hr>
+<h2>Appendix A. The $j = 24$ Atlas Anomaly</h2>
+<h3>A.1 Observation</h3>
+<p>For the block $j = 24$, the uniform-mode eigenvalue $\lambda_s(24, \theta)$ deviates substantially from the pattern observed at other blocks for $\theta \ge 0.7$. Specifically, at $j = 24$:</p>
+<table><thead><tr>
+<th>$\theta$</th>
+<th>$\lambda_s(24, \theta)$</th>
+</tr></thead><tbody>
+<tr>
+<td>0.50</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td>12.7</td>
+</tr>
+<tr>
+<td>0.75</td>
+<td>12.5</td>
+</tr>
+<tr>
+<td>0.80</td>
+<td>12.6</td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>12.5</td>
+</tr>
+</tbody></table>
+<p>The transition between $\theta = 0.6$ and $\theta = 0.7$ is sharp; the value jumps by a factor $\sim 22$. For comparison, at adjacent blocks (e.g., $j = 23$ or $j = 25$) the trajectory of $\lambda_s(j, \theta)$ across $\theta$ is monotonic and smooth, with no analogous jump.</p>
+<p>Four consecutive $\theta$ values in $\{0.7, 0.75, 0.8, 0.9\}$ all show the anomalous high value. This is not a single-point statistical fluctuation; it is a consistent regime change at this specific $j$ with specific $\theta$ threshold.</p>
+<h3>A.2 Eigenbranch swap</h3>
+<p>The mechanism of the anomaly is identified empirically as an <em>eigenbranch swap</em> of the eigenmode-extraction algorithm.</p>
+<p>The uniform direction $\widehat{\mu}_j$ is defined operationally (see §5.1) as the unit eigenvector of $M_{\rm even}^{[3]}$ whose all-ones projection $(\mathbf{1}^T \widehat{b})^2$ is maximal. For most blocks this maximum is well-separated: there is one eigenvector with $L_s \approx 5.5$ and the others have $L_s$ values close to zero. The argmax is unambiguous.</p>
+<p>At $j = 24$ specifically, two eigenvalues of $M_{\rm even}^{[3]}(24, \theta)$ are close in magnitude across the $\theta$-range, and their associated eigenvectors have different all-ones projections. As $\theta$ varies, the two eigenvalues exhibit an <em>avoided crossing</em>: the eigenvalue ordering swaps at a specific $\theta$ threshold (empirically between 0.65 and 0.7), and the argmax-of-$L_s$ algorithm consequently picks a different eigenvector before and after the threshold.</p>
+<p>This is a labeling issue, not a kernel-law failure. The underlying matrix $M_{\rm even}^{[3]}(24, \theta)$ varies smoothly with $\theta$; what jumps is the operational selection of which eigenvector is called $\widehat{\mu}_j$.</p>
+<p>A correct treatment requires <em>continuous mode tracking</em>: tracking each eigenvector continuously across $\theta$ rather than re-selecting via argmax at each $\theta$. We have not implemented this for $j = 24$; doing so is a follow-up audit.</p>
+<h3>A.3 Implications for the sealed claims</h3>
+<p>The atlas anomaly does <em>not</em> affect:</p>
+<ul>
+<li><strong>Theorem 1 (§4.2)</strong>: the rigorous identity $\mathbf{1}^T M_{\rm odd} \mathbf{1} = 0$ holds for <em>every</em> block including $j = 24$, by pure algebra.</li>
+<li><strong>Certified Numerical Proposition 1 (§3.2)</strong>: the cascade saturation bound $|O_{\ge 4}|/|F_W| \le 1.2\%$ for width 7 holds at $j = 24$ (see Table 9.2 in §9.3.1); the matrix decomposition itself is well-defined at every block.</li>
+<li><strong>Empirical Theorem 1 (§5.3)</strong>: the antisymmetric Ward lift correlation 0.997 holds at $j = 24$ as at other blocks (see Table 9.3 in §9.3.2). The antisymmetric eigenmode is well-separated from the uniform mode at all $j$ including $j = 24$; what swaps at $j = 24$ are two close <em>uniform-side</em> eigenvalues, not the antisymmetric eigenvalue.</li>
+<li>The cascade hierarchy and the reflection algebra structure at $j = 24$.</li>
+</ul>
+<p>The atlas anomaly <em>does</em> affect:</p>
+<ul>
+<li><strong>Empirical Theorem 2 (§5.4)</strong>: the bandwidth-stability of $\widehat{\mu}_j$ is stated <em>excluding</em> $j = 24$. At $j = 24$, the apparent direction $\widehat{\mu}_j(\theta)$ jumps across the eigenbranch swap, so the cosine $|\cos(\widehat{\mu}_j(0.5), \widehat{\mu}_j(0.8))|$ is not close to 1 at this block.</li>
+<li><strong>Canonical Model 1 fit (§6.4)</strong>: the saturating-exponential fit at $j = 24$ is unstable due to the eigenvalue swap and is excluded from the fit table (§6.7) and the scaling regression (§7).</li>
+</ul>
+<h3>A.4 Possible interpretation (speculative)</h3>
+<p>One possible reading is that the close eigenvalues at $j = 24$ have an effective non-diagonal coupling that produces avoided-crossing behavior. In quantum-mechanical contexts, avoided crossings between close energy levels are governed by Landau-Zener formulas and indicate weak off-diagonal coupling between two otherwise orthogonal modes. The analogy would suggest that at $j = 24$, the gap-core uniform mode and an outer-shell mode are weakly coupled and exchange identity across the $\theta$ threshold.</p>
+<p>A speculative <em>physical</em> reading would be that $j = 24$ falls on a deep multiplicative resonance — a particular density configuration of large primes within $I_{24}$ that creates a coherence between the gap-core chart and the outer-shell chart not present at other blocks. The "atlas chart not yet stitched" terminology of the geometric reading (Appendix B) describes this: at most blocks, the local chart on $G_0$ and the outer chart on $G_3 \setminus G_0$ are smoothly stitched; at $j = 24$ specifically, the stitching fails at high $\theta$.</p>
+<p>We emphasize that this reading is <em>speculative</em>. The empirical evidence is a single anomalous block with a single regime-change in $\theta$. The "deep multiplicative resonance" claim is a post-hoc interpretation not supported by independent evidence, and the "atlas chart" geometric language is borrowed from a different mathematical context (Appendix B). Neither interpretation is required for the structural content of §3–§8 to hold; both are offered as a reading frame, not as established facts.</p>
+<h3>A.5 Audit recommendation</h3>
+<p>Two specific follow-up audits would clarify the anomaly:</p>
+<ul>
+<li><em>Continuous eigenmode tracking at $j = 24$</em>: Replace argmax-based eigenvector selection with explicit continuous tracking across $\theta$. If the avoided crossing has a well-defined gap minimum, the continuous-tracking version of $\lambda_s(24, \theta)$ would be smooth across the threshold and the apparent jump would disappear, leaving a residual deviation from the canonical-model fit which could then be characterized.</li>
+</ul>
+<ul>
+<li><em>Prime-density characterization of $I_{24}$</em>: Examine the prime distribution and large-prime configurations within $I_{24}$ specifically, comparing to $I_{23}$ and $I_{25}$. If a specific arithmetic feature distinguishes $I_{24}$, this would support the "deep multiplicative resonance" reading; if no such feature is found, the anomaly is more likely a generic transitional regime than a special arithmetic property.</li>
+</ul>
+<p>Neither audit has been performed.</p>
+<hr>
+<h2>Appendix B. Geometric Reading (Speculative)</h2>
+<h3>B.1 Status</h3>
+<p>This appendix offers one possible <em>interpretive</em> reading of the mechanism articulated in §3–§8, drawing on language from the "Form and Flow" series. It is <em>not</em> part of the mathematical content of this paper. None of the mappings below should be read as mathematical claims; they are conceptual analogs offered as a possible reading frame.</p>
+<p>The analogs are presented for two reasons. First, some readers may find geometric language helpful for retaining the structural picture of §3–§8. Second, the cross-series series "Form and Flow" (forthcoming, P1) develops a geometric framework in which the analogs could become more than informal; if and when that framework matures, the table below may be revisited and either upgraded to structural identifications or revised.</p>
+<p>The mappings here are conceptual analogs awaiting the substantive development of the "Form and Flow" series. Specific mappings may need revision as that series matures. <em>None of the mappings should be read as mathematical claims.</em></p>
+<h3>B.2 Conceptual analog table</h3>
+<p><strong>Table B.1.</strong> Conceptual analogs between Paper 73 objects and "Form and Flow" framework language.</p>
+<table><thead><tr>
+<th>Paper 73 object</th>
+<th>"Form and Flow" conceptual analog</th>
+</tr></thead><tbody>
+<tr>
+<td>$c_j \delta_0$ (front delta within Canonical Model 1)</td>
+<td>singular front / shock mass</td>
+</tr>
+<tr>
+<td>$r_j(u)$ (compensation kernel within Canonical Model 1)</td>
+<td>surgery / boundary correction</td>
+</tr>
+<tr>
+<td>$a_j / c_j \sim m_j^{-0.30}$ (cancellation defect ratio)</td>
+<td>$\rho$-defect ledger rate</td>
+</tr>
+<tr>
+<td>$\widehat{\mu}_j$ (uniform readout direction, bandwidth-stable)</td>
+<td>volume form / integration measure</td>
+</tr>
+<tr>
+<td>$L_s \approx 5.5$, saturation $79\%$</td>
+<td>gap-core readout normalization</td>
+</tr>
+<tr>
+<td>$L_a \equiv 0$ (1-orthogonality of antisymmetric mode)</td>
+<td>antisymmetric Ward cancellation under symmetric integration</td>
+</tr>
+<tr>
+<td>Reflection-even / reflection-odd decomposition</td>
+<td>parity decomposition under boundary symmetry</td>
+</tr>
+<tr>
+<td>7-class effective gap core</td>
+<td>finite chart / local atlas</td>
+</tr>
+<tr>
+<td>$j = 24$ atlas anomaly</td>
+<td>atlas chart not yet stitched / stratum mismatch</td>
+</tr>
+<tr>
+<td>$\mathcal{Z}_j[q_s]$ closure object (open)</td>
+<td>calibrated endpoint defect, not primitive value</td>
+</tr>
+</tbody></table>
+<h3>B.3 Speculative reading of the cancellation defect</h3>
+<p>The numerical proximity of Paper 73's ratio defect exponent ($\sim 0.30$) and Paper 66/67's single decay exponent ($\sim 0.30$) admits a speculative interpretation as the manifestation of a single underlying $\rho$-conservation law on two different axes (lag versus block).</p>
+<p>In one possible geometric reading, the ZFCρ recursion would correspond to a transport process on an "arithmetic space-time" where:</p>
+<ul>
+<li>The lag axis $k$ corresponds to a local time variable: the rate at which information about a prime is eroded by subsequent primes within the same block.</li>
+<li>The block axis $j$ (or equivalently $m_j$) corresponds to a macroscopic spatial scale: the cumulative effect across blocks of varying density.</li>
+</ul>
+<p>If the underlying min-plus operator of the ZFCρ recursion is <em>isotropic</em> in this arithmetic space-time, then its dissipation rate along the local-time axis (Paper 66/67's $C \approx 0.30$) and its compensation defect rate along the macroscopic-scale axis (Paper 73's $\sim 0.30$) would be equal as a structural consequence of the isotropy. The numerical coincidence would then be an instance of a single law manifested twice.</p>
+<p>We emphasize: this is a speculative <em>interpretation</em> offered as a reading. It does not constitute a structural identification, it is not used in any argument in §3–§8, and the structural distinction between the lag-axis decay exponent and the block-axis ratio exponent (§7.4) remains a real obstacle to upgrading this from speculation to mathematical identification.</p>
+<p>A reader who finds this interpretation useful as a reading frame should bear in mind that it is the speculative reading; a reader who finds it unhelpful or distracting can ignore it without missing any mathematical content.</p>
+<h3>B.4 What the geometric reading does and does not do</h3>
+<p>The geometric reading is an <em>interpretive overlay</em>, not a derivation. Specifically:</p>
+<ul>
+<li>It does <em>not</em> derive any of the quantitative claims in §3–§8. The cascade saturation at width 7, the reflection algebra identity, the antisymmetric Ward lift, the saturating-exponential fit, the closed-form compensation kernel, the scaling exponents — all are established by the audit infrastructure of §9, independent of any geometric language.</li>
+</ul>
+<ul>
+<li>It does <em>not</em> construct $\mathcal{B}_j^{\rm ext}$ or solve the B4 sub-problems. The geometric language does not provide the missing construction; it only offers a way of <em>naming</em> the missing object in a different vocabulary.</li>
+</ul>
+<ul>
+<li>It does <em>not</em> upgrade the candidate Paper 66/67 identification (§7.4) to a structural theorem. The structural distinction between the two exponents (single decay vs ratio of regressions) is a real obstacle, and geometric language does not dissolve it.</li>
+</ul>
+<p>What the geometric reading <em>does</em> offer is a vocabulary in which the structural picture of §3–§8 may be more retainable for readers familiar with the "Form and Flow" framework or with related geometric programmes (Gauss-Bonnet readings, surgery in topology, Ricci-flow analogies, defect ledgers in physics). For readers without this background, the table above is an unnecessary distraction and can be skipped.</p>
+<p>The cross-series bridge between Paper 73 and the "Form and Flow" P1 (forthcoming) may, when P1 matures, allow more precise mappings. Until then, the analogs remain speculative.</p>
+<hr>
+<p><em>End of ZFCρ Paper LXXIII.</em></p>
+  </section>
+</div>
+
+<div id="lang-zh" style="display:none">
+  <div class="paper-header">
+    <div class="paper-series">Self-as-an-End Theory Series · ZFCρ Series · Paper LXXIII</div>
+    <h1>ZFCρ 第LXXIII篇：反对称 Ward 提升、一致读数核与 Abel-Transfer Defect——关于 Gap-Class 跨干涉结构的四层机制架构</h1>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20081780" target="_blank" rel="noopener">10.5281/zenodo.20081780</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.20081780" target="_blank" rel="noopener">Zenodo 全文 PDF</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <section class="abstract">
+    <h2>摘要</h2>
+    <p>本文针对 ZFCρ 计划中 59.1 猜想下的 gap-class 跨干涉（cross-interference）结构，提出一个四层机制架构 B1–B4。
+
+第一层 B1（Certified Numerical Proposition）。跨 gap-class 的 Bartlett 矩阵在七类核心 $G_3 = \{-3, \ldots, 3\}$ 上以约 $1.1\%$ 截断误差饱和，在九类核心 $G_4$ 上以 $\le 0.21\%$ 误差饱和；此结论对 $j \in [22, 32]$、$\theta = 1/2$ 经审计核证。本文将宽度 7 矩阵作为 B2–B4 中的实操对象，将宽度 9 作为数值闭合校验。
+
+第二层 B2（Theorem）。反射 $g \mapsto -g$ 在七类空间上对应置换矩阵 $P$，满足 $P\mathbf{1} = \mathbf{1}$，因此
+$$\mathbf{1}^T M_{\rm odd} \mathbf{1} \equiv 0$$
+作为严格代数恒等式成立。整个 $F_W$ 可观测量被矩阵的反射偶（reflection-even）分量完全捕获；反射奇（reflection-odd）分量承担 11% 的 Frobenius 质量但对全 1 读数贡献为零。*Frobenius 主导与可观测主导是两件不同的事*。
+
+第三层 B3（Empirical Theorems）。反射偶分量允许两分量分解
+$$M_{\rm even}^{[3]} = \lambda_a \widehat{b}_a \widehat{b}_a^T + \lambda_s \widehat{\mu}_j \widehat{\mu}_j^T + E_j.$$
+其中反对称模在经验上被识别为第 64 号笔记一点 gap profile 的两点定量提升（形状相关系数 0.997，幅度尺度 $m_j^{-1/2}$），一致方向 $\widehat{\mu}_j$ 在带宽 $\theta$ 上经验稳定（余弦 $\ge 0.9999$）。区块 $j = 24$ 出现本征枝交换异常，被排除在带宽稳定模式之外。
+
+Bartlett 原函数结构（§6）。标量 $\lambda_s(j, \theta) =: Q_s(j, \theta)$ 具有 Bartlett 原函数（primitive）形式
+$$Q_s = m_j \int_0^\theta (1 - u/\theta) \, q_{s, j}(u) \, du,$$
+反演公式 $q_{s, j}(\theta) = H_j''(\theta)$ 严格成立。在饱和指数（saturating-exponential）正则模型（4–9% 拟合残差）下，标量核分解为
+$$q_{s, j}(u) = c_j \delta_0(u) + r_j(u) + \varepsilon_{s, j}(u),$$
+其中补偿核具有闭式
+$$\boxed{r_j(u) = (c_j - a_j) \, \alpha_j \, e^{-\alpha_j u} (\alpha_j u - 2).}$$
+
+尺度律（§7）。在正则模型下，$c_j \sim m_j^{-0.373}$，$a_j \sim m_j^{-0.671}$，取消缺陷比 $a_j/c_j \sim m_j^{-0.30}$。后者与第 66/67 号笔记 chiseling 指数 $C \approx 0.30$ 在数值上接近，本文将其作为*候选识别*（candidate identification）记录，但二者结构不同（单一衰减 vs 两个回归之比），尚不构成结构定理。
+
+第四层 B4（开放研究方向）。在正则模型框架内，$F_W$ 的带宽包络满足 $m_j^{0.33} \lesssim F_W \lesssim m_j^{0.63}$，是次线性但多项式级的；这与 59.1 闭合所需的 $O(\log m_j)$ 尺度有指数级差距。本文提出候选标定泛函
+$$\mathcal{Z}_j[q_s] := m_j \left[ \mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1) \right],$$
+并明确两个开放子问题：(1a) 显式构造外部参考 $\mathcal{B}_j^{\rm ext}$；(1b) 在构造给定后证明界 $\mathcal{Z}_j[q_s] = O(j)$。
+
+本文不证明 59.1，也不证明 B4。其贡献是将剩余证明负担精确地重新定位，并显式标注每一处密封内容与开放内容的分界。
+
+继承的开放条件（§11.2）。完整闭合 59.1 还需要：第 65 号笔记中 (c0)(c2)(c3) 的无条件化，以及第 71 号笔记 H4b 在非平凡尺度上的确定性 Abel 转移。B4 的子问题 1a 在结构上与第 71 号笔记 H4b 在标量一致读数核层面是同一问题。
+
+方法论。基于 $\rho$ 全表（$N = 10^{10}$）在 $j \in [22, 32]$ 上的十四项密封审计，结合四 AI 协同综合（Claude 任整合者，明确的 framing-bias 注记见 §12）。
+
+*关键词*：ZFCρ、59.1 猜想、gap-class 跨干涉、反射代数、Ward 提升、Bartlett 原函数、Abel 转移、demonstration over completion。
+
+---</p>
+    <p><strong>关键词：</strong>ZFCρ, 反对称Ward提升, 一致读数核, Abel-Transfer Defect, gap-class, 跨干涉, 四层机制</p>
+  </section>
+  <section class="paper-body">
+<h2>关于 Gap-Class 跨干涉结构的四层机制架构</h2>
+<p><strong>秦汉 (Han Qin)</strong> · <a href="https://orcid.org/0009-0009-9583-0018">ORCID 0009-0009-9583-0018</a></p>
+<p><strong>DOI</strong>：[待 Zenodo 注册后填入] · CC BY 4.0</p>
+<p><strong>日期</strong>：2026-05-07</p>
+<p><strong>版本</strong>：v2（吸纳四 AI 评审反馈后的 hotfix 版；见 §12）</p>
+<hr>
+<h2>摘要</h2>
+<p>本文针对 ZFCρ 计划中 59.1 猜想下的 gap-class 跨干涉（cross-interference）结构，提出一个四层机制架构 B1–B4。</p>
+<p><strong>第一层 B1</strong>（Certified Numerical Proposition）。跨 gap-class 的 Bartlett 矩阵在七类核心 $G_3 = \{-3, \ldots, 3\}$ 上以约 $1.1\%$ 截断误差饱和，在九类核心 $G_4$ 上以 $\le 0.21\%$ 误差饱和；此结论对 $j \in [22, 32]$、$\theta = 1/2$ 经审计核证。本文将宽度 7 矩阵作为 B2–B4 中的实操对象，将宽度 9 作为数值闭合校验。</p>
+<p><strong>第二层 B2</strong>（Theorem）。反射 $g \mapsto -g$ 在七类空间上对应置换矩阵 $P$，满足 $P\mathbf{1} = \mathbf{1}$，因此</p>
+<p>$$\mathbf{1}^T M_{\rm odd} \mathbf{1} \equiv 0$$</p>
+<p>作为严格代数恒等式成立。整个 $F_W$ 可观测量被矩阵的反射偶（reflection-even）分量完全捕获；反射奇（reflection-odd）分量承担 11% 的 Frobenius 质量但对全 1 读数贡献为零。<em>Frobenius 主导与可观测主导是两件不同的事</em>。</p>
+<p><strong>第三层 B3</strong>（Empirical Theorems）。反射偶分量允许两分量分解</p>
+<p>$$M_{\rm even}^{[3]} = \lambda_a \widehat{b}_a \widehat{b}_a^T + \lambda_s \widehat{\mu}_j \widehat{\mu}_j^T + E_j.$$</p>
+<p>其中反对称模在经验上被识别为第 64 号笔记一点 gap profile 的两点定量提升（形状相关系数 0.997，幅度尺度 $m_j^{-1/2}$），一致方向 $\widehat{\mu}_j$ 在带宽 $\theta$ 上经验稳定（余弦 $\ge 0.9999$）。区块 $j = 24$ 出现本征枝交换异常，被排除在带宽稳定模式之外。</p>
+<p><strong>Bartlett 原函数结构</strong>（§6）。标量 $\lambda_s(j, \theta) =: Q_s(j, \theta)$ 具有 Bartlett 原函数（primitive）形式</p>
+<p>$$Q_s = m_j \int_0^\theta (1 - u/\theta) \, q_{s, j}(u) \, du,$$</p>
+<p>反演公式 $q_{s, j}(\theta) = H_j''(\theta)$ 严格成立。在饱和指数（saturating-exponential）正则模型（4–9% 拟合残差）下，标量核分解为</p>
+<p>$$q_{s, j}(u) = c_j \delta_0(u) + r_j(u) + \varepsilon_{s, j}(u),$$</p>
+<p>其中补偿核具有闭式</p>
+<p>$$\boxed{r_j(u) = (c_j - a_j) \, \alpha_j \, e^{-\alpha_j u} (\alpha_j u - 2).}$$</p>
+<p><strong>尺度律</strong>（§7）。在正则模型下，$c_j \sim m_j^{-0.373}$，$a_j \sim m_j^{-0.671}$，取消缺陷比 $a_j/c_j \sim m_j^{-0.30}$。后者与第 66/67 号笔记 chiseling 指数 $C \approx 0.30$ 在数值上接近，本文将其作为<em>候选识别</em>（candidate identification）记录，但二者结构不同（单一衰减 vs 两个回归之比），尚不构成结构定理。</p>
+<p><strong>第四层 B4</strong>（开放研究方向）。在正则模型框架内，$F_W$ 的带宽包络满足 $m_j^{0.33} \lesssim F_W \lesssim m_j^{0.63}$，是次线性但多项式级的；这与 59.1 闭合所需的 $O(\log m_j)$ 尺度有指数级差距。本文提出候选标定泛函</p>
+<p>$$\mathcal{Z}_j[q_s] := m_j \left[ \mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1) \right],$$</p>
+<p>并明确两个开放子问题：(1a) 显式构造外部参考 $\mathcal{B}_j^{\rm ext}$；(1b) 在构造给定后证明界 $\mathcal{Z}_j[q_s] = O(j)$。</p>
+<p><strong>本文不证明 59.1，也不证明 B4</strong>。其贡献是将剩余证明负担精确地重新定位，并显式标注每一处密封内容与开放内容的分界。</p>
+<p><strong>继承的开放条件</strong>（§11.2）。完整闭合 59.1 还需要：第 65 号笔记中 (c0)(c2)(c3) 的无条件化，以及第 71 号笔记 H4b 在非平凡尺度上的确定性 Abel 转移。B4 的子问题 1a 在结构上与第 71 号笔记 H4b 在标量一致读数核层面是同一问题。</p>
+<p><strong>方法论</strong>。基于 $\rho$ 全表（$N = 10^{10}$）在 $j \in [22, 32]$ 上的十四项密封审计，结合四 AI 协同综合（Claude 任整合者，明确的 framing-bias 注记见 §12）。</p>
+<p><em>关键词</em>：ZFCρ、59.1 猜想、gap-class 跨干涉、反射代数、Ward 提升、Bartlett 原函数、Abel 转移、demonstration over completion。</p>
+<hr>
+<h2>§1. 引言</h2>
+<h3>1.1 ZFCρ 系列轨迹与 59.1 猜想</h3>
+<p>ZFCρ 计划是一系列针对 $\rho_p$ 在素数指标上残差结构的猜想攻击。当前主攻线的基础是第 59 号笔记中提出的 <em>59.1 猜想</em>，它对某种区块残差读数提出了一个特定的对数尺度闭合命题。</p>
+<p>从第 59 号笔记到本文，路径上经历了若干结构重构。第 64 号笔记将一点 gap profile $\Gamma_j(g)$ 确立为残差序列在每个区块上的一个结构对象。第 65 号笔记引入 H' 临界路径：三个分量（F3、第 65 号笔记无条件化、第 71 号笔记 H4b）的同时闭合即蕴含 59.1。第 66、67 号笔记识别了 Regime-1 chiseling 指数 $C \approx 0.30$，控制 ACF 沿 lag 轴的侵蚀率。第 70 号笔记建立区块级饱和骨架（Theorem 70.A）。第 71 号笔记（v3）和第 72 号笔记发展 H4b 路径，其中第 72 号笔记将 sample-centered 全窗口恒等式（空洞）与外部全块参考（携带非平凡信息）显式区分。</p>
+<p>第 73 号笔记进入这一轨迹的目的，是<em>隔离</em>出闭合 H' 链所需的真正新数学内容：具体而言，是 gap-class 跨干涉结构，它决定了 Bartlett 读数 $F_W(j, \theta)$ 是否能够被控制在 59.1 所要求的 $O(\log m_j)$ 尺度上。</p>
+<h3>1.2 本文做的事</h3>
+<p>本文针对 gap-class 跨干涉结构提出四层机制架构 B1–B4：</p>
+<ul>
+<li><strong>B1</strong> 将分析对象从完整 Bartlett 读数 $F_W$ 缩减为宽度 7 的跨类矩阵 $M_j^{[3]}$，在所测范围内截断误差约 $1.1\%$。</li>
+<li><strong>B2</strong> 作为严格数学恒等式确立：$M_j^{[3]}$ 的全 1 读数完全由其反射偶分量决定。反射奇分量承担非平凡 Frobenius 质量但对 $F_W$ 贡献为零。</li>
+<li><strong>B3</strong> 将反射偶分量分解为两个主导本征模加一个余项：反对称模在经验上是第 64 号笔记一点 gap profile 的两点提升；一致读数方向 $\widehat{\mu}_j$ 在经验上对带宽稳定。</li>
+<li><strong>B4</strong> 将标量机制缩减为单一函数 $Q_s(j, \theta)$，将其识别为某标量核 $q_{s, j}(u)$ 的 Bartlett 原函数；在饱和指数正则模型下导出闭式补偿核；计算带宽包络并证明任何单一 $\theta$ 都达不到闭合尺度；最后提出候选标定泛函 $\mathcal{Z}_j[q_s]$ 作为开放研究方向，明确指出 $\mathcal{Z}_j$ 的显式构造本身仍是开放问题的一部分。</li>
+</ul>
+<p>四层按"距离严格数学结果"由近到远排列：B2 是严格定理，B1 是认证数值命题，B3 是经验定理，B4 是开放研究方向。</p>
+<h3>1.3 本文不做的事</h3>
+<p>本文<em>不</em>证明 59.1 猜想。完整闭合需要多个分量被解决，本文仅处理其中部分：</p>
+<ul>
+<li>B4 Abel-transfer defect 被表述为研究方向，含两个真正开放的子问题（§8.4），既不是精确猜想，也不是证明。</li>
+<li>第 65 号笔记 (c0)(c2)(c3) 的无条件化<em>不</em>在本文处理范围；这是继承的开放条件（§11.2 第 7 项）。</li>
+<li>第 71 号笔记 H4b 在非平凡尺度上的确定性 Abel 转移在其一般形式下<em>不</em>在本文处理范围；B4 的子问题 1a 在标量一致读数核层面是同一问题（§10.6，§11.2 第 8 项）。</li>
+<li>两分量分解中残差 $R_s$ 的渐近行为<em>未</em>被现有数据决定；列为 P73 自身的开放问题（§5.5，§11.1 第 2 项）。</li>
+<li>反对称 Ward 提升（§5.3）和一致方向带宽稳定性（§5.4）作为严格数学定理的精确推导（而非测试范围内验证的经验模式）<em>未</em>尝试。</li>
+<li>正则模型外残项 $\varepsilon_{s, j}(u)$ 的完全识别（§6.5）<em>未</em>尝试。</li>
+</ul>
+<p>密封内容与开放内容的分界在全文显式标注。§11 综合列出全部开放条件。</p>
+<h3>1.4 SAE 立场：示范优于完成</h3>
+<p>本文遵循 SAE 的<em>示范优于完成</em>（demonstration over completion）立场：一个贡献可以是实质性且良构的，而无需是闭合。四层架构示范了 gap-class 跨干涉的结构图景；架构本身即是贡献。猜想的闭合留作开放，残余问题被精确陈述。</p>
+<p>方法论上的后果是：所测范围内验证的经验模式被如实标注为经验，不通过外推被提升为数学定理。本文采用差分化标号 — Theorem（严格证明）、Certified Numerical Proposition（全测试范围内验证含明确误差界）、Empirical Theorem（测试范围内验证模式，精确推导推迟）、Canonical Model（含明确残差的参数拟合）、Observation（基于回归的尺度拟合） — 使每一项经验论断的状态保持透明。</p>
+<p>这种标号纪律延续了第 70 号笔记（清晰初等定理 70.A）、第 71 号笔记（条件定理 71.E）、第 72 号笔记（Criterion 72.S-front）的模式。本文示范了一种结构图景；59.1 的闭合留作开放，残余问题被精确陈述。</p>
+<h3>1.5 阅读指引</h3>
+<p>本文组织如下：</p>
+<ul>
+<li>§2 确立残差定义（显式区分非缩放 $r(p)$ 与归一化 $x(p)$）、区块结构、Bartlett 读数约定及第 64 号笔记背景。</li>
+<li>§3 (B1)、§4 (B2)、§5 (B3) 确立三个密封层。</li>
+<li>§6 发展 Bartlett 原函数结构与核的正则模型。</li>
+<li>§7 报告经验尺度律和多项式 vs 对数差距。</li>
+<li>§8 阐述 B4 开放研究方向。</li>
+<li>§9 记录审计基础。</li>
+<li>§10 给出 Paper 73 与第 59 至 72 号笔记的关系。</li>
+<li>§11 综合列出 59.1 完整闭合的所有开放条件（P73 自身的与继承的）。</li>
+<li>§12 致谢中显式声明四 AI 方法论及 framing-bias 注记。</li>
+<li>附录 A 处理 $j = 24$ 图册异常。</li>
+<li>附录 B 提供推测性几何解读，<em>不</em>用于 §3–§8 中任何论证。</li>
+</ul>
+<p>仅关心严格数学内容的读者可读 §2.1（定义）、§3 (B1)、§4 (B2)、§6.3（Theorem 2：Bartlett 反演）。关心 59.1 攻击运作机制的读者按 §5–§8 顺序阅读。关心开放条件的读者参考 §11。</p>
+<hr>
+<h2>§2. 预备</h2>
+<h3>2.1 ZFCρ 设定与残差定义</h3>
+<p>设 $\rho_p$ 为 ZFCρ 残差表，定义在素数指标 $p \in [1, N]$ 上，$N = 10^{10}$，由 ZFCρ 递归生成（前文已述）。</p>
+<p>ZFCρ 递归参数的 IC 值在本文中固定为</p>
+<p>$$\lambda_{\rm full} := 3.856763.$$</p>
+<p>模 12 规范修正定义为残差按 $p \bmod 12$ 在区块内的均值：</p>
+<p>$$\mu_{12}(j; r_0) := \frac{1}{|\{p \in I_j : p \bmod 12 = r_0\}|} \sum_{\substack{p \in I_j \\ p \bmod 12 = r_0}} (\rho(p) - \lambda_{\rm full} \log p),$$</p>
+<p>对每个 $r_0 \in \{1, 5, 7, 11\}$ 定义（这是大于 3 的素数所属的四个剩余类）。</p>
+<p>邻块中心化定义为</p>
+<p>$$\mu_{\rm adj}(p) := \tfrac{1}{2}\left(\mu_{12}(j-1; p \bmod 12) + \mu_{12}(j+1; p \bmod 12)\right)$$</p>
+<p>对 $p \in I_j$，使用相邻区块（而非 $I_j$ 自身）的模 12 均值。</p>
+<p><strong>两个残差</strong>。本文使用<em>两个不同的残差</em>，二者必须严格区分。第一个是非缩放对数尺度残差，用于 gap-class 赋值与矩阵构造：</p>
+<p>$$\boxed{r(p) := \rho(p) - \lambda_{\rm full} \log p - \mu_{\rm adj}(p).}$$</p>
+<p>第二个是归一化残差，用于第 59、70、71 号笔记中的 $B_j$、$D_j$、$R_{\rm wt}$：</p>
+<p>$$\boxed{x(p) := \frac{r(p)}{p}.}$$</p>
+<p>本文的矩阵 $M_j$ 与 Bartlett 读数 $F_W$ 在 $r(p)$ 上计算。前文使用的 $x_{\rm full}$ 记号指 $x(p)$ 这一归一化对象；本文不使用 $x_{\rm full}$ 这一记号以避免混淆。</p>
+<p>素数 $p$ 的 gap class 是非缩放残差的取整：</p>
+<p>$$g_{\log}(p) := \mathrm{round}(r(p)).$$</p>
+<p>区块 $I_j$ 上的类密度为 $\pi_g(j) := |\{p \in I_j : g_{\log}(p) = g\}| / m_j$。</p>
+<h3>2.2 区块结构</h3>
+<p>区块为素数指标的二进区间：</p>
+<p>$$I_j := \{p \text{ 素数} : 2^j \le p < 2^{j+1}\}, \qquad m_j := |I_j|.$$</p>
+<p>本文涉及 $j \in [22, 32]$，对应素数从约 $4 \times 10^6$ 到 $4 \times 10^9$，区块大小 $m_j$ 从 $j = 22$ 处约 $268{,}000$ 到 $j = 32$ 处约 $190{,}000{,}000$。</p>
+<p>使用两个有限 gap-class 窗：</p>
+<ul>
+<li>最小充分核 $G_0 := \{-2, -1, 0, 1, 2\}$，由 Step 2D 识别为重现 cascade 结构所需的最小平衡窗口（更小的子集，包括单符号或缺零变体，皆失效）。</li>
+<li>有效 gap 核 $G_3 := \{-3, -2, -1, 0, 1, 2, 3\}$，作为 §4–§7 中的实操矩阵指标。宽度 9 扩展 $G_4 := \{-4, \ldots, 4\}$ 仅在 §3.2 作为数值闭合校验使用。</li>
+</ul>
+<h3>2.3 Bartlett 读数</h3>
+<p>对每个区块 $I_j$（素数按指标排序，$p_{j, 1} < p_{j, 2} < \cdots < p_{j, m_j}$），定义在 lag $k \in \{1, 2, \ldots\}$ 处的<em>原始 lag 乘积核</em>（raw lag product kernel）为</p>
+<p>$$\gamma_j(k) := \sum_{i=1}^{m_j - k} r(p_{j, i}) \cdot r(p_{j, i+k}),$$</p>
+<p>其中 $r(p)$ 为 §2.1 中的非缩放残差。</p>
+<p>我们刻意使用术语<em>原始 lag 乘积核</em>，而非"自相关"或"自协方差"，因为 $\gamma_j(k)$ <em>不是</em> sample-mean-centered 的估计量：未减去 $\bar{r}$。这是有意为之。如第 72 号笔记中所述，sample-centered 自协方差会触发全窗口 Bartlett 恒等式 $A^{\rm signed}_j(W = m_j) \equiv 0$；原始乘积核保留了 $W = m_j$ 处的非平凡信息，§8 中开放的 B4 构造正是利用这一点。</p>
+<p>区块内方差尺度为 $\gamma_0 := \gamma_j(0) = \sum_p r(p)^2$。</p>
+<p>带宽参数 $\theta \in (0, 1)$ 下窗口宽度为 $W = \lfloor \theta m_j \rfloor$，Bartlett 读数定义为</p>
+<p>$$F_W(j, \theta) := \frac{1}{\gamma_0} \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \gamma_j(k).$$</p>
+<p><strong>跨类细化</strong>。跨类细化将 lag 乘积和限制在赋予特定 gap class 的素数对上。先定义<em>有向</em>（directed）项</p>
+<p>$$F_{\rm dir}^{g, g'}(j, \theta) := \frac{1}{\gamma_0} \sum_{k=1}^{W-1} \left(1 - \frac{k}{W}\right) \sum_{\substack{i = 1, \ldots, m_j - k \\ g_{\log}(p_{j, i}) = g \\ g_{\log}(p_{j, i+k}) = g'}} r(p_{j, i}) \cdot r(p_{j, i+k}),$$</p>
+<p>仅对正 lag 求和；在有限样本下二者一般不在 $(g, g')$ 上对称。§4–§7 矩阵层面的分析使用<em>对称化</em>项</p>
+<p>$$\boxed{F_W^{g, g'}(j, \theta) := \tfrac{1}{2}\left( F_{\rm dir}^{g, g'}(j, \theta) + F_{\rm dir}^{g', g}(j, \theta) \right).}$$</p>
+<p>显然 $F_W^{g, g'} = F_W^{g', g}$，故跨类矩阵</p>
+<p>$$M_j^{[k]}(\theta) := \left[ F_W^{g, g'}(j, \theta) \right]_{g, g' \in G_k}$$</p>
+<p>是 $(2k+1) \times (2k+1)$ 对称实矩阵，§5 上的谱定理可合法应用。对称化保持全 1 读数：</p>
+<p>$$\sum_{g, g'} F_W^{g, g'} = \sum_{g, g'} \tfrac{1}{2}\left( F_{\rm dir}^{g, g'} + F_{\rm dir}^{g', g} \right) = \sum_{g, g'} F_{\rm dir}^{g, g'},$$</p>
+<p>因此标量 Bartlett 读数 $\mathbf{1}^T M_j^{[k]} \mathbf{1}$ 在有向项与对称化项下结果相同。特别地，cascade 饱和界（Certified Numerical Proposition 1，§3.2）对有向求和成立，因而对对称化矩阵读数同样成立。</p>
+<p>完整读数分解为 $F_W(j, \theta) = \sum_{g, g' \in \mathbb{Z}} F_{\rm dir}^{g, g'}(j, \theta) = \sum_{g, g' \in \mathbb{Z}} F_W^{g, g'}(j, \theta)$。</p>
+<h3>2.4 第 64 号笔记背景</h3>
+<p>第 64 号笔记的一点 gap profile 为</p>
+<p>$$\Gamma_j(g) := \sum_{p \in I_j: g_{\log}(p) = g} r(p),$$</p>
+<p>即 gap class $g$ 内非缩放残差的区块内求和。</p>
+<p>反射分解</p>
+<p>$$\Gamma_{\rm odd}(g; j) := \tfrac{1}{2}(\Gamma_j(g) - \Gamma_j(-g)), \qquad \Gamma_{\rm even}(g; j) := \tfrac{1}{2}(\Gamma_j(g) + \Gamma_j(-g)).$$</p>
+<p>按定义有 $\Gamma_{\rm odd}(0; j) = 0$ 且 $\Gamma_{\rm odd}(-g; j) = -\Gamma_{\rm odd}(g; j)$，故 $\Gamma_{\rm odd}$ 在反射下反对称，且零类分量为零。</p>
+<p>第 64 号笔记确立了 $\Gamma_{\rm odd}$ 在区块间表现出稳定的换符号模式（即奇分量作为结构对象在区块间非平凡），并且素数在 gap classes 间的计数分布渐近可分：$N(u, g) \approx q(u) \pi(g)$，其中 $u = k/m_j$ 是归一化 lag，$\pi(g)$ 是类密度。这一可分性（即<em>分支位置正交性</em>，branch-position orthogonality）是来自第 64 号笔记的结构输入，使本文矩阵层面的分析成为可能。</p>
+<p>§5.3 中的经验提升（Empirical Theorem 1）通过缩放 $b_a \approx -m_j^{-1/2} \Gamma_{\rm odd}$ 将 $M_{\rm even}$ 的矩阵层反对称本征模与 $\Gamma_{\rm odd}$ 联结。这是第 64 号笔记一点对象的定量两点提升。</p>
+<hr>
+<h2>§3. 有限 Gap-Core 分解（B1）</h2>
+<h3>3.1 跨类矩阵及其读数</h3>
+<p>本节固定区块指标 $j \in [22, 32]$ 与带宽参数 $\theta \in (0, 1)$，窗口宽度 $W = \lfloor \theta m_j \rfloor$。非缩放对数尺度残差 $r(p)$ 与 gap class $g_{\log}(p) = \mathrm{round}(r(p))$ 按 §2.1 定义。</p>
+<p>§2.3 中定义的跨类 Bartlett 读数 $F_W^{g, g'}(j, \theta)$ 满足 $F_W(j, \theta) = \sum_{g, g' \in \mathbb{Z}} F_W^{g, g'}$。在有限 gap-class 窗 $G_k = \{-k, \ldots, k\}$ 上，<em>宽度 $(2k+1)$ 矩阵读数</em>为</p>
+<p>$$\mathbf{1}^T M_j^{[k]}(\theta) \mathbf{1} := \sum_{g, g' \in G_k} F_W^{g, g'}(j, \theta).$$</p>
+<p>截断误差为</p>
+<p>$$O_{\ge k+1}(j, \theta) := F_W(j, \theta) - \mathbf{1}^T M_j^{[k]}(\theta) \mathbf{1} = \sum_{(g, g') \notin G_k \times G_k} F_W^{g, g'}.$$</p>
+<h3>3.2 Certified Numerical Proposition 1（Cascade 饱和）</h3>
+<p>对所有 $j \in [22, 32]$ 在 $\theta = 1/2$ 处，截断误差满足</p>
+<p>$$\frac{|O_{\ge 4}(j, \theta)|}{|F_W(j, \theta)|} \le 1.2 \times 10^{-2}, \qquad \frac{|O_{\ge 5}(j, \theta)|}{|F_W(j, \theta)|} \le 2.1 \times 10^{-3}.$$</p>
+<p>即：$G_3 = \{-3, \ldots, 3\}$ 上的宽度 7 矩阵 $M_j^{[3]}$ 在所测范围内捕获 $F_W$ 至 1.2% 内，$G_4$ 上的宽度 9 矩阵 $M_j^{[4]}$ 捕获 $F_W$ 至 0.21% 内。</p>
+<p>此命题之<em>认证</em>意义在于：所有进入界中的数值已计算并记录在审计账本 Step 2K 中（参见 §9.2）；不声称外推至 $j > 32$。</p>
+<h3>3.3 Cascade 层级</h3>
+<p>宽度的递进揭示 $F_W$ 的取消结构。表 3.1 给出 $j = 32$、$\theta = 1/2$ 处的矩阵和，其中完整读数 $F_W = 36.93$。</p>
+<p><strong>表 3.1</strong>。$j = 32$、$\theta = 1/2$ 处的 cascade 层级。</p>
+<table><thead><tr>
+<th>宽度</th>
+<th>核</th>
+<th>矩阵和 $\mathbf{1}^T M^{[k]} \mathbf{1}$</th>
+<th>与 $F_W$ 偏差</th>
+<th>覆盖度</th>
+</tr></thead><tbody>
+<tr>
+<td>5</td>
+<td>$G_2 = \{-2, \ldots, 2\}$</td>
+<td>1418</td>
+<td>$+38\times$</td>
+<td>失败</td>
+</tr>
+<tr>
+<td>7</td>
+<td>$G_3 = \{-3, \ldots, 3\}$</td>
+<td>37.35</td>
+<td>$+1.1\%$</td>
+<td>机制捕获</td>
+</tr>
+<tr>
+<td>9</td>
+<td>$G_4 = \{-4, \ldots, 4\}$</td>
+<td>36.92</td>
+<td>$-0.03\%$</td>
+<td>数值闭合</td>
+</tr>
+</tbody></table>
+<p>定性图景清晰：宽度 5 高出 38 倍，宽度 7 在约 1% 内捕获读数，宽度 9 闭合至 $\le 0.21\%$。</p>
+<p>$|g| = 3$ 壳层的作用至关重要且非显然。仅就数据质量而论，$|g| = 3$ 类承担约 $0.34\%$ 区块内方差，本以为可忽略。实际上，$|g| = 3$ 块在 $j = 32$ 处对 cascade 的贡献为 $-1380$：是将宽度 5 之和（1418）拉低到宽度 7 之和（37.35）的主导取消壳层。宽度 7 读数因此是内部 $G_2$ 块与 $|g| = 3$ 壳层之间精确大幅取消的结果，并非小类的近平凡限制。</p>
+<p>相比之下，$|g| = 4$ 壳层仅贡献约 $-0.4$，使宽度 7 下降到宽度 9 不足 1%。$|g| \ge 5$ 壳层在审计精度以下，视作可忽略。</p>
+<h3>3.4 为何宽度 7 是实操对象</h3>
+<p>§4–§7 以 $G_3$ 上的 $M_j^{[3]}$ 为实操矩阵，原因有二。</p>
+<p>第一，机制已捕获：宽度 7 处 1.1% 截断误差足够小，§4–§5 的结构分解（反射代数、两分量偶分解）在主导阐释层面对截断尾不敏感。$M_j^{[3]}$ 的本征分解在同等误差下复现完整 $M_j$ 的全 1 投影结构。</p>
+<p>第二，计算可处理性：宽度 9 矩阵每个 $(j, \theta)$ 有 81 个项而非 49 个，跨 $\theta$ 跟踪本征向量对数值简并的敏感度相应增大。宽度 7 矩阵是最小的忠实实操对象。</p>
+<p>宽度 9 命题（$\le 0.21\%$）作为 B1 的<em>数值闭合校验</em>保留：它认证矩阵分解框架在所测范围内基本捕获 $F_W$ 的全部，$|g| \ge 4$ 壳层无隐藏贡献。</p>
+<h3>3.5 Step 2D：最小充分核</h3>
+<p>另一项审计（Step 2D，参见 §9.2）考察了比完整对称宽度 5 核更小的 $G_2$ 子集是否能重现 cascade 结构。结果为否：移除 $g = 0$ 类，或限制为单符号子集 $\{0, 1, 2\}$、$\{-2, -1, 0\}$，皆破坏取消模式。对称宽度 5 核是最小的<em>定性</em>充分核；不存在更小的平衡子集可重现机制。</p>
+<p>这解释了为何 §4–§5 的自然起点是对称核，以及为何反射 $g \mapsto -g$ 作为结构对称性进入而非便利重标号。</p>
+<h3>3.6 状态</h3>
+<p>本节内容是经验性的，对 $j \in [22, 32]$、$\theta = 1/2$ 由 Step 2K 审计认证。无数学定理断言饱和持续到 $j > 32$；cascade 结构在更大区块上可能锐化或弛豫。在本文目的下，宽度 7 作为实操机制核（宽度 9 作为数值闭合校验）的观察是 B1 的实质内容。</p>
+<p>下一节确立 $M_j^{[3]}$ 的一个不依赖截断界、作为严格数学恒等式成立的结构对称性。</p>
+<hr>
+<h2>§4. 反射代数（B2）</h2>
+<h3>4.1 Gap-class 空间上的反射结构</h3>
+<p>设 $V = \mathbb{R}^{G_3}$ 为以 gap classes $g \in G_3 = \{-3, -2, -1, 0, 1, 2, 3\}$ 为指标的七维向量空间。反射 $\mathcal{R}: g \mapsto -g$ 通过置换矩阵 $P$ 作用于 $V$，定义为 $(Pv)(g) = v(-g)$。</p>
+<p>矩阵 $P$ 满足 $P^2 = I$（对合）、$P^T = P$（对称），以及对后续最关键的：</p>
+<p>$$P\mathbf{1} = \mathbf{1}.$$</p>
+<p>全 1 向量是经典的反射不变向量。</p>
+<p>对 $V$ 上任意矩阵 $M$，定义反射对称分量与反射反对称分量</p>
+<p>$$M_{\rm even} := \frac{M + PMP}{2}, \qquad M_{\rm odd} := \frac{M - PMP}{2}.$$</p>
+<p>满足 $PM_{\rm even}P = M_{\rm even}$、$PM_{\rm odd}P = -M_{\rm odd}$ 与 $M = M_{\rm even} + M_{\rm odd}$。</p>
+<h3>4.2 Theorem 1（全 1 读数下反射奇分量消失）</h3>
+<p>对 $V$ 上每个矩阵 $M$，反射奇分量在全 1 读数下恒为零：</p>
+<p>$$\boxed{\mathbf{1}^T M_{\rm odd} \mathbf{1} = 0.}$$</p>
+<p><strong>证明</strong>。利用 $P\mathbf{1} = \mathbf{1}$ 与 $P^T = P$：</p>
+<p>$$\mathbf{1}^T M_{\rm odd} \mathbf{1} = \frac{1}{2}\left( \mathbf{1}^T M \mathbf{1} - \mathbf{1}^T PMP \mathbf{1} \right) = \frac{1}{2}\left( \mathbf{1}^T M \mathbf{1} - (P\mathbf{1})^T M (P\mathbf{1}) \right) = \frac{1}{2}\left( \mathbf{1}^T M \mathbf{1} - \mathbf{1}^T M \mathbf{1} \right) = 0. \qquad \square$$</p>
+<h3>4.3 推论</h3>
+<p>应用于 $G_3$ 上的跨类矩阵 $M = M_j^{[3]}(\theta)$：</p>
+<p>$$F_W(j, \theta) = \mathbf{1}^T M_j^{[3]}(\theta) \mathbf{1} + O_{\ge 4}(j, \theta) = \mathbf{1}^T M_{\rm even}(j, \theta) \mathbf{1} + O_{\ge 4}(j, \theta).$$</p>
+<p>直至 §3 的截断误差，整个 $F_W$ 可观测量被 $M_j^{[3]}$ 的反射偶分量完全捕获。反射奇分量对全 1 读数贡献为零。</p>
+<p>这是严格恒等式而非经验观察。它仅依赖 $g \mapsto -g$ 下 gap-class 指标的对称性以及 $\mathbf{1}$ 作为读数向量的选择。它不依赖 ZFCρ 数据的任何性质。</p>
+<h3>4.4 Frobenius 质量与可观测贡献</h3>
+<p>§4.3 的结论在结构上比表面更强，因为反射奇分量在 Frobenius 范数下并不小。在所测范围 $j \in [22, 32]$、$\theta = 1/2$ 下，Frobenius 分解给出</p>
+<p>$$\frac{\|M_{\rm odd}\|_F}{\|M\|_F} \approx 0.11, \qquad \frac{\|M_{\rm even}\|_F}{\|M\|_F} \approx 0.99.$$</p>
+<p>即 $M_{\rm odd}$ 承担约 11% 的矩阵 Frobenius 质量 — 按任何常规矩阵能量度量都不可忽略 — 但对标量可观测量 $F_W$ 的贡献恰为零。</p>
+<p>$M_{\rm even}$ 内部情形相似且更极端。$M_{\rm even}$ 的主导本征向量（按最大绝对本征值意义，§5 中记为 $\widehat{b}_a$）本身在反射下基本反对称：它位于 $V_{\rm even}$ 内，但恰好近似与 $\mathbf{1}$ 正交。该向量在所测范围内承担 $M_{\rm even}$ 平方 Frobenius 范数的约 99.99%（Step 2E，§9.2），但对 $F_W$ 的贡献近似为零，因为经验上 $(\mathbf{1}^T \widehat{b}_a)^2 \approx 0$。</p>
+<p>对 $F_W$ 的主导贡献来自 $M_{\rm even}$ 的某个次主导本征向量 — Frobenius 质量小，$\mathbf{1}$ 投影大。这就是 §5 中考察的一致读数方向 $\widehat{\mu}_j$。</p>
+<p>方法论要点：Frobenius 主导与可观测主导是不同现象，二者在本问题中相差甚大。$M_{\rm even}$ 在 Frobenius 意义下的标准秩 1 近似恢复 $\widehat{b}_a$，但错过了 $F_W$ 背后的真正机制。§5 的分解围绕这一区分展开。</p>
+<h3>4.5 状态</h3>
+<p>Theorem 1 是严格数学命题。其证明仅一行，不使用任何数据。其内容 — 整个 7 类 Bartlett 读数完全由跨类矩阵的反射偶分量决定，而 Frobenius 主导的反对称模贡献为零 — 是组织 §5–§7 的核心代数约束。</p>
+<p>接受 §3.1 矩阵定义的读者已具备 §4.2 的全部要素；本节内容不依赖 §3 的 cascade 饱和界，也不依赖 ZFCρ 问题的任何特殊性质。结构归约 $F_W = \mathbf{1}^T M_{\rm even} \mathbf{1}$ 是本文余下部分得以存在的基础。</p>
+<hr>
+<h2>§5. 两分量偶分解（B3）</h2>
+<h3>5.1 记号纪律</h3>
+<p>本节处理 $M_{\rm even}(j, \theta)$ 的本征向量。为避免前文阐释中常见的非归一化向量与单位方向之间的混淆，全文采用以下约定。</p>
+<p>给定 $M_{\rm even}$ 的本征向量，记</p>
+<ul>
+<li>$b_a(j, \theta) \in V$ 为反对称（Frobenius 主导）本征模的<em>非归一化</em>代表；</li>
+<li>$\widehat{b}_a(j, \theta) := b_a(j, \theta) / \|b_a(j, \theta)\|$ 为对应<em>单位</em>方向；</li>
+<li>$b_s(j, \theta), \widehat{b}_s(j, \theta) = \widehat{\mu}_j$ 类似地用于一致（可观测主导）本征模。</li>
+</ul>
+<p>记号 $\widehat{\mu}_j$ 全文专门保留指代单位一致方向 — 具体而言，$M_{\rm even}$ 中使 $\mathbf{1}$ 投影 $(\mathbf{1}^T \widehat{b}_s)^2$ 最大的单位本征向量。</p>
+<p>本征值记为 $\lambda_a(j, \theta)$ 与 $\lambda_s(j, \theta)$，其中 $\lambda_a$ 是绝对值最大的本征值（Frobenius 主导），$\lambda_s$ 是其本征向量为一致方向 $\widehat{\mu}_j$ 的本征值。一般 $\lambda_s \neq \lambda_a$；测试范围内 $|\lambda_s| < |\lambda_a|$；$\lambda_s$ 本征模在谱量级上次主导，但在对 $F_W$ 的可观测贡献上主导（参见 §4.4）。</p>
+<h3>5.2 分解陈述</h3>
+<p>将反射偶分量分解为两个主导本征模加余项：</p>
+<p>$$M_{\rm even}^{[3]}(j, \theta) = \lambda_a(j, \theta) \cdot \widehat{b}_a \widehat{b}_a^T + \lambda_s(j, \theta) \cdot \widehat{\mu}_j \widehat{\mu}_j^T + E_j(\theta).$$</p>
+<p>其中 $E_j(\theta)$ 是减去两个主导本征模秩 2 贡献后的余项矩阵。由谱定理，$E_j$ 自身反射对称，其 Frobenius 范数等于 $M_{\rm even}$ 较小本征值平方之和。</p>
+<p>分解的结构内容在于对两个本征模的经验识别：反对称模 $\widehat{b}_a$ 作为第 64 号笔记的提升（§5.3），一致模 $\widehat{\mu}_j$ 作为对带宽 $\theta$ 稳定的读数结构特征（§5.4）。</p>
+<h3>5.3 Empirical Theorem 1（反对称 Ward 提升）</h3>
+<p><strong>陈述</strong>。对所有 $j \in [22, 32]$ 与 $\theta = 1/2$，单位反对称方向 $\widehat{b}_a(j, \theta)$ 与第 64 号笔记奇 gap profile $\Gamma_{\rm odd}(j) := \tfrac{1}{2}(\Gamma(g) - \Gamma(-g))$ 强相关，且非归一化幅度 $\|b_a(j, \theta)\|$ 相对 $\|\Gamma_{\rm odd}(j)\|$ 以经典 $m_j^{-1/2}$ 指数标度。</p>
+<p>定量地，在所测范围内：</p>
+<ul>
+<li><em>形状</em>：$\left| \mathrm{corr}\left( \widehat{b}_a, \Gamma_{\rm odd} / \|\Gamma_{\rm odd}\| \right) \right| \ge 0.997$。</li>
+<li><em>幅度</em>：将 $\log \|b_a\| - \log \|\Gamma_{\rm odd}\|$ 关于 $\log m_j$ 在 $j \in [22, 32]$ 上线性回归，斜率为 $-0.5024 \pm 0.014$（95% 置信）。</li>
+</ul>
+<p>二者结合：</p>
+<p>$$\boxed{b_a(g; j, \theta) \approx -\frac{c(j, \theta)}{\sqrt{m_j}} \cdot \Gamma_{\rm odd}(g; j), \qquad |c(j, \theta)| = O(1).}$$</p>
+<p>负号反映 $M_{\rm even}$ 主导本征模与第 64 号笔记 profile 之间的经验反相关；本征向量符号约定取自标准对称本征值例程的输出，无结构含义。</p>
+<p>这是第 64 号笔记一点 gap profile 的<em>定量两点提升</em>：矩阵层反对称模在符号与 $O(1)$ 幅度的差异下被向量层第 64 号笔记量按 $m_j^{-1/2}$ 缩放捕获。</p>
+<p><strong>状态</strong>。在所测范围 $j \in [22, 32]$ 内得证。形状相关 0.997 与幅度指数 $-0.5024$ 跨 $j$ 稳定；经验模式在所测范围上端不减弱。作为数学定理的精确推导（例如证明 $b_a$ 在某渐近极限下<em>恰为</em>缩放后的 $\Gamma_{\rm odd}$）留作未来工作。</p>
+<p><strong>经验推论（1-正交性）</strong>。由于 $\Gamma_{\rm odd}$ 自身反射反对称且 $\Gamma_{\rm odd}(0) = 0$，全 1 投影满足 $\mathbf{1}^T \widehat{b}_a \approx 0$，从而反对称泄漏</p>
+<p>$$L_a(j, \theta) := (\mathbf{1}^T \widehat{b}_a)^2 \approx 0$$</p>
+<p>在所有所测 $(j, \theta)$ 下成立。这与 Theorem 1（§4.2）一致：反对称 Ward 模是 $M_{\rm even}$ 中 Frobenius 质量主导的贡献，但其不出现在 $F_W$ 中的结构原因是其全 1 投影近似为零。</p>
+<h3>5.4 Empirical Theorem 2（一致读数带宽稳定性）</h3>
+<p><strong>陈述</strong>。对所有 $j \in [22, 32] \setminus \{24\}$ 与所有对 $\theta_1, \theta_2 \in [0.10, 0.90]$，单位一致方向 $\widehat{\mu}_j(\theta)$ 满足如下带宽稳定性：</p>
+<ul>
+<li><em>跨 $\theta$ 方向稳定</em>：$\left| \cos\left( \widehat{\mu}_j(\theta_1), \widehat{\mu}_j(\theta_2) \right) \right| \ge 0.9999$。</li>
+<li><em>支集集中</em>：分数 $\sum_{g \in G_0} \widehat{\mu}_j(g)^2 / \sum_{g \in G_3} \widehat{\mu}_j(g)^2$ 落在 $[0.92, 0.96]$ 内，其中 $G_0 = \{-2, -1, 0, 1, 2\}$。</li>
+<li><em>全 1 饱和</em>：泄漏 $L_s(j, \theta) := (\mathbf{1}^T \widehat{\mu}_j)^2 \approx 5.5$，约为 $0.79 \cdot |G_3| = 5.53$（$V = \mathbb{R}^7$ 中单位向量可达的最大值）。</li>
+</ul>
+<p>区块 $j = 24$ 在 $\theta \ge 0.7$ 处出现本征枝交换异常，被排除在此模式之外。详细描述见附录 A；在此处强调：该排除<em>不</em>影响 Theorem 1（§4.2）、Empirical Theorem 1（§5.3），亦不影响 §3 中任何 cascade 饱和界。异常仅局部于 $j = 24$ 处的 $\widehat{\mu}_j$ 提取。</p>
+<p><strong>状态</strong>。在所测范围 $j \in [22, 32] \setminus \{24\}$ 与所测 $\theta$-网格 $\{0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9\}$（Step 2P，参见 §9.2）内得证。</p>
+<p><strong>阐释</strong>。$\widehat{\mu}_j$ 的带宽稳定性是一致方向作为跨类矩阵<em>读数结构特征</em>（而非依赖 $\theta$ 的源 profile）的经验信号。若 $\widehat{\mu}_j$ 随 $\theta$ 变化，§6–§7 中分析的整个标量机制将不得不重新表述以追踪方向对带宽的依赖；方向稳定到四个 9 而本征值 $\lambda_s(j, \theta)$ 随 $\theta$ 显著变化的经验观察，使机制缩减为单一标量函数族成为可能。</p>
+<p>我们不声称 $\widehat{\mu}_j$ 是<em>精确</em>带宽无关的；我们声称它在所测网格精度下如此。断言一致方向的精确带宽无关性需要表述其极限对象（也许在 $j \to \infty$ 缩放下），这超出本文范围。</p>
+<h3>5.5 余项 $E_j(\theta)$ 与残差 $R_s$</h3>
+<p>§5.2 的分解有余项矩阵 $E_j$，其在 $\mathbf{1}$ 投影下对应标量残差：</p>
+<p>$$R_s(j, \theta) := F_W(j, \theta) - \lambda_s(j, \theta) \cdot L_s.$$</p>
+<p>（$\lambda_a L_a$ 项缺失因 §5.3 推论给出 $L_a \approx 0$。）</p>
+<p><strong>经验幅度（所测范围内验证）</strong>。对 $j \in [25, 32] \setminus \{24\}$ 与 $\theta \in \{0.1, 0.25, 0.5, 0.75, 0.9\}$，比值 $|R_s| / |F_W|$ 落在 5%–12% 范围内，较小 $\theta$ 处取较小值，$\theta$ 接近 1 处取较大值。</p>
+<p><strong>关于 $j$ 的渐近趋势（开放问题）</strong>。现有数据未决定 $|R_s|/|F_W|$ 当 $j \to \infty$ 时趋于零、趋于常数或增长。固定 $j$ 时跨 $\theta$ 的 5–12% 范围未解析 $j$ 的依赖；所测 $j$ 范围内的变化与跨 $\theta$ 变化相当。我们将此列为基于此分解的任何完整 59.1 闭合路径的开放条件之一（§11.1 第 2 项）。</p>
+<p>若 $|R_s|/|F_W| \to 0$，两分量分解渐近有效，闭合路径可专注于 $\lambda_s L_s$。若 $|R_s|/|F_W|$ 趋于非零极限，闭合路径需对 $M_{\rm even}$ 第三（及可能更高）本征模做显式处理，本文未予阐述。</p>
+<p><strong>对 $E_j$ 已识别的贡献</strong>。三类结构贡献经验上已识别：</p>
+<ul>
+<li><em>$|g| = 3$ 外壳层耦合</em>：$|g| = 3$ 类（$G_3$ 边界）以约 0.34% 方差质量参与取消，但对次主导本征模有非平凡贡献。</li>
+<li><em>$j = 24$ 本征模交换伪迹</em>：参见附录 A。</li>
+<li><em>模 12 规范次主导</em>：$\mu_{12}$ 中心化整体上贡献稳定的约 20% $F_W$（Step 2J），其次主导分量出现在 $E_j$ 中。</li>
+</ul>
+<p>将 $E_j$ 完全分解为这三类贡献尚未进行，列为 P73 自身的清理工作（§11.1 第 5 项）。</p>
+<h3>5.6 $F_W$ 分解公式</h3>
+<p>将 §5.2 与 §4.2 推论（将秩 2 谱项吸收为 $\lambda_s L_s + \lambda_a L_a$）及 §5.3 推论（$L_a \approx 0$）结合：</p>
+<p>$$F_W(j, \theta) = \lambda_s(j, \theta) \cdot L_s + \lambda_a(j, \theta) \cdot L_a + \mathbf{1}^T E_j(\theta) \mathbf{1} \approx \lambda_s(j, \theta) \cdot L_s + R_s(j, \theta),$$</p>
+<p>因为 $L_a \approx 0$。</p>
+<p>代入 $L_s \approx 5.5$：</p>
+<p>$$\boxed{F_W(j, \theta) \approx 5.5 \cdot \lambda_s(j, \theta) + R_s(j, \theta).}$$</p>
+<p>在本文将残差 $R_s$ 视为小（经验上 5–12%）的部分，此式即为操作恒等式：$F_W$ 在主导阶上是一致模本征值乘以一个常数。</p>
+<p>正是该标量 $\lambda_s(j, \theta)$ 成为 §6 与 §7 的核心对象。在那里我们将其重命名为 $Q_s(j, \theta) := \lambda_s(j, \theta)$，以与早期审计账本中确立的约定一致。</p>
+<h3>5.7 状态</h3>
+<p>§5.2 的反射偶分解是定义性的谱分解（在本征值排序规则下，秩 2 截断无歧义）。实质内容在两项经验识别：</p>
+<ul>
+<li>Empirical Theorem 1（§5.3）：反对称模为第 64 号笔记的提升，所测范围内具定量形状与幅度对应。</li>
+<li>Empirical Theorem 2（§5.4）：一致方向在所测范围内带宽稳定，$j = 24$ 排除。</li>
+</ul>
+<p>二者都不是严格数学定理。二者都是定量验证的模式，精确推导留作未来工作。二者结合将 $F_W(j, \theta)$ 的分析缩减为标量函数族 $\lambda_s(j, \theta) \equiv Q_s(j, \theta)$ 加上残差 $R_s(j, \theta)$ 的分析，而后者的渐近行为本身仍是开放问题。</p>
+<p>接下来两节将 $Q_s(j, \theta)$ 作为某标量一致核的 Bartlett 原函数加以分析。</p>
+<hr>
+<h2>§6. Bartlett 原函数与补偿律</h2>
+<p>本节将 §5 中识别的标量函数 $Q_s(j, \theta) = \lambda_s(j, \theta)$ 重述为某标量核 $q_{s, j}(u)$ 的 Bartlett 原函数，并在某正则参数模型下分析 $q_{s, j}$ 的结构。</p>
+<p>呈现围绕一项谨慎区分展开：Bartlett-原函数恒等式（§6.3）在 §6.1 离散到连续设定下是严格数学关系，而闭式补偿核（§6.5–§6.6）是将数据拟合到特定参数模型（§6.4）的后果，依赖该模型的充分性。</p>
+<h3>6.1 标量一致核：离散与连续</h3>
+<p>矩阵值协方差 $C_j(u)$ 在离散归一化 lag</p>
+<p>$$u_k := k / m_j, \qquad k = 1, 2, \ldots, W$$</p>
+<p>处定义，其中 $W = \lfloor \theta m_j \rfloor$。具体地，$C_j(u_k)$ 是 $7 \times 7$ 矩阵，矩阵元</p>
+<p>$$C_j(u_k)_{g, g'} = \frac{1}{\gamma_0} \sum_{\substack{p \in I_j \\ g_{\log}(p) = g \\ g_{\log}(p_{+k}) = g'}} r(p) \, r(p_{+k}),$$</p>
+<p>即 $F_W^{g, g'}$ 在精确 lag $k$ 处的逐对贡献（使得 $F_W^{g, g'}(j, \theta) = \sum_{k=1}^{W} (1 - k/W) C_j(u_k)_{g, g'}$）。</p>
+<p><em>标量一致核</em>为与单位一致方向 $\widehat{\mu}_j$ 的双线性收缩：</p>
+<p>$$q_{s, j}(u_k) := \widehat{\mu}_j^T C_j(u_k) \widehat{\mu}_j.$$</p>
+<p><em>严格说来</em>，这是按 $k$ 索引的离散序列。为将其作为连续变量的函数处理，我们通过相邻 lag 点之间的线性插值延拓。延拓后的对象仍记 $q_{s, j}(u)$，定义在 $u \in [u_1, u_W]$。</p>
+<p><strong>两项定义说明</strong>。第一，核在 $u < u_1 = 1/m_j$ 处未定义；最小 lag 是首个采样点。第二，§6.5–§6.6 中出现的"$u = 0$ 处的 $\delta_0$"语句应在<em>缩放极限</em>意义下理解：随 $j$ 增长，$u_1 = 1/m_j \to 0$，集中在首采样 lag $k = 1$ 处的贡献在 $u$ 坐标中重新缩放为类 Dirac-delta 对象。我们不声称离散核中存在字面 Dirac 分布，仅声称参数拟合表现出"前端质量"与"沿 $u$ 散开的质量"之间的结构分离，这种分离自然以缩放极限记号 $c_j \delta_0(u) + r_j(u)$ 编码。</p>
+<h3>6.2 Bartlett 原函数形式</h3>
+<p>将收缩代入 $M_{\rm even}$ 一致模秩 1 贡献的全 1 读数：</p>
+<p>$$\lambda_s(j, \theta) \cdot L_s = (\widehat{\mu}_j^T \mathbf{1})^2 \cdot \lambda_s = \mathbf{1}^T (\lambda_s \widehat{\mu}_j \widehat{\mu}_j^T) \mathbf{1}.$$</p>
+<p>追踪 $\lambda_s \widehat{\mu}_j \widehat{\mu}_j^T$ 作为 $M_{\rm even}$ 上一致模投影的定义，并将 $\mathbf{1}^T M(\theta) \mathbf{1}$ 与窗口和等同，得</p>
+<p>$$Q_s(j, \theta) = m_j \sum_{k=1}^{W} \left(1 - \frac{k}{W}\right) q_{s, j}(u_k).$$</p>
+<p>转至连续插值：</p>
+<p>$$\boxed{Q_s(j, \theta) = m_j \int_0^\theta \left(1 - \frac{u}{\theta}\right) q_{s, j}(u) \, du,}$$</p>
+<p>积分理解为 $I_j$ 内 lag 网格细化时离散和的极限，$u_1 = 1/m_j$ 是自然下端点（在缩放极限意义下被积函数在 $u = 0$ 处消失）。</p>
+<p>此式将 $Q_s(j, \theta)$ 表述为标量一致核 $q_{s, j}$ 的 <em>Bartlett 原函数</em> — 由带宽 $\theta$ 参数化的核之线性泛函。</p>
+<h3>6.3 Theorem 2（Bartlett 反演）</h3>
+<p>定义</p>
+<p>$$H_j(\theta) := \frac{\theta \cdot Q_s(j, \theta)}{m_j} = \int_0^\theta (\theta - u) \, q_{s, j}(u) \, du.$$</p>
+<p>则在分布意义下（在 §6.1 的连续插值框架内）：</p>
+<p>$$\boxed{q_{s, j}(\theta) = H_j''(\theta).}$$</p>
+<p><strong>证明梗概</strong>。一阶微分：</p>
+<p>$$H_j'(\theta) = (\theta - \theta) q_{s, j}(\theta) + \int_0^\theta q_{s, j}(u) \, du = \int_0^\theta q_{s, j}(u) \, du.$$</p>
+<p>二阶微分：</p>
+<p>$$H_j''(\theta) = q_{s, j}(\theta). \qquad \square$$</p>
+<p>此式给出<em>构造性反演</em>：$Q_s(j, \theta)$ 的密集 $\theta$-网格测量通过二阶差分允许 $q_{s, j}(\theta)$ 的数值重构。等价地，核 $q_{s, j}$ 由（在 §6.1 框架内）$\theta$-网格上测量的函数 $H_j(\theta)$ 决定。</p>
+<p><strong>状态</strong>。一旦接受 §6.1 的框架（采样 lag 之间的线性插值，缩放极限意义下的 $\delta_0$），此为严格数学命题。它不是关于底层离散序列本身的命题 — 它是说<em>若</em>将离散序列以插值延拓，<em>则</em>标准 Bartlett-原函数反演成立。经验内容完全在于离散到连续的延拓是否忠实捕获机制，这又是一个经验问题，由 §6.4 处理（§6.4 的参数模型是否拟合数据？）。</p>
+<h3>6.4 Canonical Model 1（饱和指数拟合）</h3>
+<p>对 $j \in [25, 32] \setminus \{24\}$ 与 $\theta \in \{0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9\}$，经验关系</p>
+<p>$$\boxed{\frac{Q_s(j, \theta)}{m_j} = a_j + (c_j - a_j) e^{-\alpha_j \theta}}$$</p>
+<p>对每个 $j$ 拟合所测数据，残差 4–9%。等价地：</p>
+<p>$$H_j(\theta) = a_j \theta + (c_j - a_j) \theta e^{-\alpha_j \theta}.$$</p>
+<p>每个 $j$ 的拟合参数 $\{a_j, c_j, \alpha_j\}$ 记录在 §6.7。我们称这一三参数族为 <strong>Canonical Model 1</strong>。</p>
+<p>模型不是推导而来的；它被选作捕获观察到的带宽响应的最简单两尺度参数族。4–9% 残差非平凡：约 5% 的 $Q_s/m_j$ 变化未被拟合捕获。此残差的处理见 §6.7。</p>
+<p>§6.5–§6.6 中导出的所有结论<em>以 Canonical Model 1 为数据的充分描述为条件</em>。在结构结果依赖该模型成立的部分，此依赖将被显式陈述。</p>
+<h3>6.5 Proposition 1（Canonical Model 1 内的闭式核）</h3>
+<p><em>在 Canonical Model 1 与 §6.1 框架内</em>，将 Theorem 2 应用得到标量一致核的下列闭式：</p>
+<p>$$q_{s, j}(u) = c_j \cdot \delta_0(u) + r_j(u), \qquad r_j(u) = (c_j - a_j) \, \alpha_j \, e^{-\alpha_j u} (\alpha_j u - 2).$$</p>
+<p>（其中 $\delta_0$ 在 §6.1 缩放极限意义下理解。）</p>
+<p>含未建模拟合残差的完整经验核为</p>
+<p>$$q_{s, j}(u) = c_j \cdot \delta_0(u) + r_j(u) + \varepsilon_{s, j}(u),$$</p>
+<p>其中 $\varepsilon_{s, j}$ 承载 4–9% 残差，包含饱和指数模型未捕获的多峰 / gap 壳层内容。</p>
+<p><strong>闭式之证明</strong>。在 Canonical Model 1 内，$H_j(\theta) = a_j \theta + (c_j - a_j) \theta e^{-\alpha_j \theta}$。微分：</p>
+<p>$$H_j'(\theta) = a_j + (c_j - a_j) (1 - \alpha_j \theta) e^{-\alpha_j \theta}.$$</p>
+<p>在 $\theta = 0^+$ 处，$H_j'(0) = a_j + (c_j - a_j) = c_j$，将 $H_j'(0^+)$ 解释为积分 $\int_0^{0^+} q_{s, j}(u) \, du$ 的标准方式要求在原点处有权重 $c_j$ 的 $\delta_0$ 贡献。在 $\theta > 0$ 上再微分：</p>
+<p>$$H_j''(\theta) = (c_j - a_j) \cdot \alpha_j (\alpha_j \theta - 2) e^{-\alpha_j \theta},$$</p>
+<p>这给出 $\theta > 0$ 处的 $r_j(\theta)$。结合边界贡献与体积内贡献得到所述形式。$\quad \square$</p>
+<p>（$\delta_0$-在原点这一步是 §6.1 缩放极限说明至关重要的地方；在底层离散序列中，"前端 delta"是 $k = 1$ 处的贡献被重新缩放。）</p>
+<h3>6.6 闭式核的结构特征</h3>
+<p>在 Canonical Model 1 内，补偿核 $r_j(u)$ 具有以下结构特征：</p>
+<ul>
+<li><strong>在 $u = 2/\alpha_j$ 处变号</strong>。因子 $(\alpha_j u - 2)$ 在 $u < 2/\alpha_j$ 处为负，在 $u > 2/\alpha_j$ 处为正。结合前因子 $(c_j - a_j) \alpha_j > 0$（经验符号约定 $c_j > a_j$ 在所测范围内成立），核在<em>补偿叶</em>（compensation lobe）$0 < u < 2/\alpha_j$ 上为负，在<em>回扣尾</em>（rebate tail）$u > 2/\alpha_j$ 上为正。</li>
+</ul>
+<ul>
+<li><strong>总质量恰好抵消前端 delta</strong>。直接积分：</li>
+</ul>
+<p>$$\int_0^\infty r_j(u) \, du = (c_j - a_j) \int_0^\infty \alpha_j e^{-\alpha_j u} (\alpha_j u - 2) \, du = (c_j - a_j)(1 - 2) = -(c_j - a_j) = a_j - c_j.$$</p>
+<p>结合 $c_j$ 前端 delta 质量：</p>
+<p>$$c_j + \int_0^\infty r_j(u) \, du = a_j.$$</p>
+<p>这就是<em>完美账目</em>：前端 delta 与补偿核合起来积分到正则模型在 $\theta \to \infty$ 处预测的渐近值 $a_j$。</p>
+<ul>
+<li><strong>弱回扣尾</strong>。回扣区 $(u > 2/\alpha_j)$ 的幅度按 $e^{-\alpha_j u}$ 衰减，回扣尾的积分质量相对补偿叶较小。主导结构是前端-delta-加-补偿-叶对；回扣尾是小的正修正。</li>
+</ul>
+<p><em>在该模型内</em>的图景是：跨类一致模自相关在最小 lag 处有正集中，紧接着是结构化负补偿渐近抵消大部分前端质量，加上小正回扣尾。</p>
+<p>此图景在经验上引人入胜但非定理级：4–9% 拟合残差携带闭式未捕获的内容，且 $j = 24$ 的排除是拟合稳定的必要条件。</p>
+<h3>6.7 所测范围内的拟合参数</h3>
+<p><strong>表 6.1</strong>。Canonical Model 1 在 $j \in [25, 32]$（除 $j = 24$ 外）的拟合参数。</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$m_j$</th>
+<th>$c_j$（前端 delta）</th>
+<th>$a_j$（渐近）</th>
+<th>$\alpha_j$（时间尺度）</th>
+<th>拟合残差</th>
+</tr></thead><tbody>
+<tr>
+<td>25</td>
+<td>1,894,120</td>
+<td>$7.87 \times 10^{-7}$</td>
+<td>$2.79 \times 10^{-7}$</td>
+<td>6.25</td>
+<td>6.4%</td>
+</tr>
+<tr>
+<td>26</td>
+<td>3,645,744</td>
+<td>$6.14 \times 10^{-7}$</td>
+<td>$3.58 \times 10^{-7}$</td>
+<td>7.18</td>
+<td>4.1%</td>
+</tr>
+<tr>
+<td>27</td>
+<td>7,027,290</td>
+<td>$5.70 \times 10^{-7}$</td>
+<td>$1.50 \times 10^{-7}$</td>
+<td>5.58</td>
+<td>8.5%</td>
+</tr>
+<tr>
+<td>28</td>
+<td>13,561,907</td>
+<td>$3.99 \times 10^{-7}$</td>
+<td>$1.23 \times 10^{-7}$</td>
+<td>4.77</td>
+<td>6.3%</td>
+</tr>
+<tr>
+<td>29</td>
+<td>26,207,278</td>
+<td>$3.41 \times 10^{-7}$</td>
+<td>$5.92 \times 10^{-8}$</td>
+<td>4.67</td>
+<td>6.3%</td>
+</tr>
+<tr>
+<td>30</td>
+<td>50,697,537</td>
+<td>$2.79 \times 10^{-7}$</td>
+<td>$4.57 \times 10^{-8}$</td>
+<td>5.12</td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>31</td>
+<td>98,182,656</td>
+<td>$2.10 \times 10^{-7}$</td>
+<td>$2.10 \times 10^{-8}$</td>
+<td>5.07</td>
+<td>8.5%</td>
+</tr>
+<tr>
+<td>32</td>
+<td>190,335,585</td>
+<td>$1.67 \times 10^{-7}$</td>
+<td>$1.42 \times 10^{-8}$</td>
+<td>4.71</td>
+<td>7.0%</td>
+</tr>
+</tbody></table>
+<p><strong>关于 $\alpha_j$ 的注</strong>。值落在 $[4.7, 7.2]$ 内，所测范围内变化约 1.5 倍，无明显单调趋势。我们将 $\alpha_j$ 在此范围内刻画为<em>近似常数</em>（约 5）。核的过零点 $u = 2/\alpha_j$ 从约 0.28（$\alpha = 7.2$）变到约 0.43（$\alpha = 4.7$）；曲线形状跨 $j$ 不同但相似。</p>
+<p>（早期阐释中曾建议 $\alpha_j$ 按 $m_j^{0.76}$ 缩放，随 $j$ 锐化。该结论来自被退化 $j = 22$ 点污染的回归，此处更正。常数 $\alpha$ 刻画对 §8 中讨论的 B4 闭合路径有后果。）</p>
+<p>区块 $j = 22$ 从表中排除，因饱和指数拟合退化：经验 $Q_s(j=22, \theta)$ 在所测 $\theta$ 范围内未清晰展现饱和模式，拟合的 $a_j$ 不可靠。这是小 $j$ 效应；从 $j = 23$ 起拟合良态条件（$j = 24$ 因 §5.4 中本征枝交换原因排除）。</p>
+<h3>6.8 状态</h3>
+<p>Bartlett 原函数恒等式（§6.2）与反演公式（§6.3，Theorem 2）在 §6.1 离散到连续框架下严格。闭式核分解（Proposition 1，§6.5）<em>以 Canonical Model 1 为条件</em>严格。核的结构特征（§6.6）也以模型为条件。</p>
+<p>模型本身在所测范围内拟合数据残差 4–9%。该残差结构是主导饱和指数机制的小修正，还是携带闭式未捕获的内容，是开放问题（§11.1 第 3 项）。</p>
+<p>下一节考察正则模型的拟合参数 $\{c_j, a_j, \alpha_j\}$ 关于 $j$ 的尺度律，并解释为何这些尺度律 — 与 §5–§6 的结构归约结合 — 仅凭自身不闭合 59.1 攻击。</p>
+<hr>
+<h2>§7. 尺度律与单一 θ 何以不能闭合</h2>
+<p>本节报告 Canonical Model 1 参数 $\{c_j, a_j, \alpha_j\}$ 关于 $j$ 的经验尺度，计算由此得到的 $F_W(j, \theta)$ 带宽包络，并证明 $Q_s$ 任何单一 $\theta$ 值都达不到 59.1 闭合所需的 $O(j) = O(\log m_j)$ 尺度。</p>
+<h3>7.1 Observation 1（前端 delta 尺度）</h3>
+<p>来自 Canonical Model 1 的前端 delta 幅度 $c_j$，在 $j \in [25, 32]$（除 $j = 24$ 外）回归：</p>
+<p>$$c_j \sim m_j^{-0.3730 \pm 0.012}$$</p>
+<p>其中不确定性为回归斜率的标准误。</p>
+<p><strong>对小 $\theta$ 处 $F_W$ 的蕴含</strong>。由于在模型内 $Q_s(j, \theta)/m_j \to c_j$ 当 $\theta \to 0^+$：</p>
+<p>$$F_W(j, \theta \to 0^+) \approx L_s \cdot Q_s = L_s \cdot m_j \cdot \frac{Q_s}{m_j} \approx L_s \cdot m_j \cdot c_j \sim m_j^{0.6270} \cdot L_s.$$</p>
+<p>在 Canonical Model 1 内，$F_W$ 的小 $\theta$ 读数按 $m_j^{0.63}$ 标度。</p>
+<h3>7.2 Observation 2（补偿后渐近尺度）</h3>
+<p>Canonical Model 1 中 $Q_s/m_j$ 的渐近值 $a_j$，在同一范围内回归：</p>
+<p>$$a_j \sim m_j^{-0.6708 \pm 0.018}.$$</p>
+<p><strong>对大 $\theta$ 处 $F_W$ 的蕴含</strong>。当 $\theta \to 1^-$ 在模型内，$Q_s(j, \theta)/m_j \to a_j + (c_j - a_j) e^{-\alpha_j} \approx a_j$（因 $e^{-\alpha_j} \approx e^{-5} = 0.0067$ 较小）：</p>
+<p>$$F_W(j, \theta \to 1^-) \approx L_s \cdot m_j \cdot a_j \sim m_j^{0.3292} \cdot L_s.$$</p>
+<p>在 Canonical Model 1 内，$F_W$ 的全窗口读数按 $m_j^{0.33}$ 标度。</p>
+<h3>7.3 Observation 3（取消缺陷比）</h3>
+<p>合并两个尺度指数：</p>
+<p>$$\boxed{\frac{a_j}{c_j} \sim m_j^{-(0.6708 - 0.3730)} = m_j^{-0.2978} \approx m_j^{-0.30}.}$$</p>
+<p>等价地，取消率</p>
+<p>$$1 - \frac{a_j}{c_j} \to 1 \text{ 当 } j \to \infty,$$</p>
+<p>残余取消缺陷 $a_j/c_j$ 多项式式收缩。所测范围内 $1 - a_j/c_j$ 的经验轨迹：</p>
+<ul>
+<li>$j = 25$：65%</li>
+<li>$j = 28$：69%</li>
+<li>$j = 30$：84%</li>
+<li>$j = 32$：92%</li>
+</ul>
+<p>取消率在所测范围内单调强化（按 §6.7，$j = 22$ 作为退化拟合点排除）。</p>
+<h3>7.4 与第 66/67 号笔记的候选识别（尚非结构定理）</h3>
+<p>§7.3 的取消缺陷<em>比</em>指数 $\sim 0.30$ 在数值上接近第 66、67 号笔记中由 ACF 沿 lag 轴形如 $k^{-C}$ 的侵蚀识别的 Regime-1 chiseling 指数 $C \approx 0.30$。</p>
+<p>我们强调：此接近虽数值上引人注目，尚非结构识别。两个对象在结构上不同：</p>
+<ul>
+<li><em>第 66/67 号笔记的 $C \approx 0.30$</em> 是单一衰减指数，控制自相关函数随 <em>lag</em> $k$ 的侵蚀率。</li>
+<li><em>Paper 73 的 $\sim 0.30$</em> 是跨 $j$ 索引的区块上比 $a_j / c_j$ 的指数，其中 $a_j$ 与 $c_j$ 自身是沿<em>区块</em>轴的回归拟合尺度指数。</li>
+</ul>
+<p>精确结构识别需要阐明第 66/67 号笔记 lag 轴量到 Paper 73 区块轴比的何种变换，并示证底层尺度机制是相同而非数值上巧合。我们未做此事。我们将其作为开放问题列出（§11.1 第 6 项）。</p>
+<p>将此识别作为单一 $\rho$-守恒律在两个不同轴上之表现的推测性几何解读见附录 B，<em>不</em>用作本节或 §8 中任何论证的一部分。</p>
+<h3>7.5 多项式增长的注</h3>
+<p>在 Canonical Model 1 内，$F_W$ 的带宽包络受限：</p>
+<p>$$m_j^{0.33} \cdot L_s \lesssim F_W(j, \theta) \lesssim m_j^{0.63} \cdot L_s, \qquad \theta \in (0, 1).$$</p>
+<p>即便在最有利的选择 $\theta \to 1^-$ 下，读数按 $m_j^{0.33}$ 标度。此为 $m_j$ 的次线性但<em>多项式</em>，并非对数。</p>
+<p>59.1 猜想（H' 临界路径相关形式）要求闭合在尺度</p>
+<p>$$O(j) = O(\log m_j)$$</p>
+<p>上达成，这在 $m_j$ 中比 $m_j^{0.33}$ 指数级地小。可达与所需之间的差距是多项式 vs 对数的差距。</p>
+<p><strong>结论</strong>。$\theta$ 的任何单一值 — 无论经典诊断 $\theta = 1/2$、极限 $\theta \to 0^+$、或极限 $\theta \to 1^-$ — 都不能通过简单识别 $F_W = O(j)$ 闭合 59.1 攻击。在本文框架内，闭合必须来自一个<em>外部</em>构造，从核 $q_{s, j}$ 产生 $O(\log m_j)$ 尺度的量。</p>
+<p>此外部构造正是我们所说的 <em>B4 Abel-transfer defect</em>，是 §8 的主题。</p>
+<h3>7.6 状态</h3>
+<p>§7.1–§7.3 的三项观察是基于回归的尺度拟合：$j \in [25, 32]$ 处 Canonical Model 1 拟合的经验外推，以模型充分为条件。多项式增长之注（§7.5）是这些尺度律的直接后果，是正则模型分析自身不能闭合 59.1 的结构原因。</p>
+<p>与第 66/67 号笔记的候选识别（§7.4）是数值观察，非结构定理。附录 B 中的几何解读是推测性阐释，不用于任何论证。</p>
+<p>下一节阐述跨越多项式 vs 对数差距的开放研究方向。</p>
+<hr>
+<h2>§8. B4 Abel-Transfer Defect（开放研究方向）</h2>
+<h3>8.1 本节状态</h3>
+<p>本节不陈述精确数学猜想。它阐述一个<em>研究方向</em>：候选对象 $\mathcal{Z}_j$ 与两个开放子问题，二者若得解决，将共同闭合 §7.5 中识别的多项式 vs 对数差距。</p>
+<p>我们克制地不将本节内容标为"Conjecture B4"，因候选对象 $\mathcal{Z}_j$ 尚未精确构造，在 $\mathcal{Z}_j$ 严格定义之前陈述无条件不等式 $\mathcal{Z}_j[q_s] = O(j)$ 是过早的。</p>
+<p>诚实的阐述是：<em>应当存在</em>某标定读数泛函（calibrated readout functional），在 Canonical Model 1 多项式带宽包络与对数 59.1 闭合尺度之间架桥。我们勾勒候选构造并指出缺失之处。</p>
+<h3>8.2 单一 θ 界为何不充分</h3>
+<p>此为 §7.5 的结论，为自包含再述：在 Canonical Model 1 框架内，$F_W(j, \theta) \gtrsim m_j^{0.33} \cdot L_s$ 对任何 $\theta \in (0, 1)$，而 59.1 要求 $O(\log m_j)$。差距是多项式 vs 对数，故 $\theta$ 的任何选择都不能通过将 $F_W$ 与闭合尺度直接识别来闭合攻击。</p>
+<p>任何建立在本文分析上的闭合路径都必须使用<em>异于</em>任何单一 $\theta$ 处 $Q_s$ 的量。我们因此寻找读数泛函 $\mathcal{Z}_j[q_s]$，使其：</p>
+<ul>
+<li>由标量一致核 $q_{s, j}(u)$ 构造（继承 §6 的结构识别）；</li>
+<li>在所测范围内达到尺度 $O(j) = O(\log m_j)$；</li>
+<li>具有精确数学定义。</li>
+</ul>
+<p>前两项是 $\mathcal{Z}_j$ 须做之事的约束。第三项是其作为良定义对象的基本闸门。§8.3 阐述满足前两项的候选；§8.4 解释为何候选尚未满足第三项。</p>
+<h3>8.3 候选标定端点缺陷</h3>
+<p>候选构造是核 $q_{s, j}$ 在边界 $\theta = 1$ 处两种读数之<em>差</em>：</p>
+<p>$$\boxed{\mathcal{Z}_j[q_s] := m_j \left[ \mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1) \right]}$$</p>
+<p>其中：</p>
+<ul>
+<li>$\mathcal{B}_j^{\rm samp}(\theta) := H_j(\theta)/\theta = Q_s(j, \theta)/m_j$ 是 sample-centered Bartlett 原函数除以 $\theta$。在 $\theta = 1$ 处，$\mathcal{B}_j^{\rm samp}(1) = Q_s(j, 1)/m_j$，按第 72 号笔记讨论本质上是空洞的全窗口恒等式（作为闭合目标无用）。</li>
+</ul>
+<ul>
+<li>$\mathcal{B}_j^{\rm ext}(\theta)$ 是同一原函数的<em>外部参考</em>版本，待构造，由捕获读数中仅非平凡部分的某外部标定对象（而非区块内 sample-centered 残差）计算。</li>
+</ul>
+<p>记号 $\mathcal{B}$（手写体 B）用于避免与 ZFCρ 自第 59 号笔记起使用的区块和约定 $B_j = \sum_p x(p)$ 冲突。</p>
+<p>差结构的动机：按第 71、72 号笔记，sample-centered $\mathcal{B}_j^{\rm samp}(1)$ 等于一已知常数（全窗口处的平凡 Bartlett 恒等式），单凭自身不能限定任何东西。非平凡信息必须存在于具相同原函数结构但中心化不同的外部参考中，使得差隔离非平凡内容。</p>
+<p>若此候选泛函达到 $\mathcal{Z}_j[q_s] = O(j)$，则 H' 临界路径通过标准链闭合（除 §11.2 中继承的开放条件外）。</p>
+<h3>8.4 真正开放的部分</h3>
+<p>两个不同的开放子问题：</p>
+<p><strong>子问题 1：显式构造 $\mathcal{B}_j^{\rm ext}$。</strong></p>
+<p>何种外部参考对象提供标定？$\mathcal{B}_j^{\rm ext}(\theta)$ 如何从数据计算？候选选择包括：</p>
+<ul>
+<li>外部 $\lambda$ 参考（即用异于 IC 值 $\lambda_{\rm full}$ 的 $\lambda$ 值计算残差 $r(p)$，也许是从 $I_j$ 之外数据计算的值）；</li>
+<li>外部全块中心化（从 $I_{j-1}$ 与 $I_{j+1}$ 而非 $I_j$ 自身计算 $\mu_{\rm adj}$，sample-centered 版本则用 $I_j$）；</li>
+<li>跨块参考，其中 $\mathcal{B}_j^{\rm ext}$ 由辅助块构造，$\mathcal{B}_j^{\rm samp}$ 仅由 $I_j$ 构造。</li>
+</ul>
+<p>我们未在这些候选间作选择。$\mathcal{B}_j^{\rm ext}$ 的构造本身是开放问题的一部分。</p>
+<p><strong>子问题 2：在 $\mathcal{B}_j^{\rm ext}$ 给定后证明界。</strong></p>
+<p>这是预备的猜想。它在子问题 1 解决前不能精确陈述，因为精确界依赖 $\mathcal{B}_j^{\rm ext}$ 是什么。预备陈述的形态为：</p>
+<p>> <em>若 $\mathcal{B}_j^{\rm ext}$ 通过 [特定步骤] 构造，则 $|\mathcal{Z}_j[q_s]| \le C \cdot j$ 对 $j \in [j_0, \infty)$ 成立，其中 $C > 0$ 为绝对常数。</em></p>
+<p>验证将分两步：(a) 在所测范围 $j \in [22, 32]$ 内审计验证；(b) 延伸至 $j \to \infty$ 的确定性论证。第二步是真正新的数学内容；第一步是子问题 1 解决后既有审计基础设施可做之事。</p>
+<h3>8.5 端点导数能与不能做的事</h3>
+<p>读者或希望 Canonical Model 1 内 $H_j$ 的导数结构提供缺失闭合。具体而言，由于</p>
+<p>$$H_j''(\theta) = (c_j - a_j) \alpha_j (\alpha_j \theta - 2) e^{-\alpha_j \theta},$$</p>
+<p>在 $\theta = 1$ 附近受抑制因子 $e^{-\alpha_j} \approx e^{-5} \approx 0.0067$ 抑制。读者或希望端点缺陷 $H_j''(1)$ 继承此指数抑制，以此将多项式 vs 对数差距转为可处理。</p>
+<p>此希望不实现。指数因子 $e^{-\alpha_j}$ 是所测范围内跨 $j$ 的<em>固定常数抑制</em>，并非随 $j$ 增长的渐近增益。由于按 §6.7 的修正 $\alpha_j$ 近似常数（$\alpha_j \approx 5$），抑制因子 $e^{-5} \approx 0.0067$ 在 $j = 25$ 与 $j = 32$ 处相同。任何量乘以一个固定常数不能跨越多项式 vs 对数差距。</p>
+<p>结论是：缺失要素必在 $\mathcal{B}_j^{\rm ext}$ 自身，而不在 Canonical Model 1 内导数的抑制。具体地：$\mathcal{B}_j^{\rm ext}$ 必以产生 $O(\log m_j)$ 而非多项式残差的方式与 $\mathcal{B}_j^{\rm samp}$ 不同，且此残差结构必来自<em>外部参考的选择</em>，而非饱和指数模型的导数行为。</p>
+<p>（本节早期阐释援引端点导数小作为候选机制。该阐释在 $\alpha_j$ 修正之前，于此撤回。）</p>
+<p>为显式陈述：参数 $\alpha_j$ 在所测范围内被全程作为 $O(1)$ 拟合参数处理；B4 闭合路径不使用 $\alpha_j$ 的渐近锐化。指数抑制 $e^{-\alpha_j} \approx e^{-5} \approx 0.0067$ 在 $j \in [25, 32]$ 内是<em>固定常数</em>，不提供跨越多项式 vs 对数差距的渐近增益。B4 的任何闭合必来自外部参考 $\mathcal{B}_j^{\rm ext}$ 的选择，而不来自 $\alpha_j$ 在极限下的任何性质。</p>
+<h3>8.6 边界声明</h3>
+<p>B4 攻击路径已阐述；无精确猜想陈述，无证明。上述两个真正开放的子问题：</p>
+<ol>
+<li><em>构造性</em>：将 $\mathcal{B}_j^{\rm ext}$ 显式定义到可计算的程度。</li>
+<li><em>数学性</em>：跨 $j$ 证明所得 $\mathcal{Z}_j[q_s] = O(j)$ 界。</li>
+</ol>
+<p>§7.4 中与第 66/67 号笔记的候选识别 — 若可从数值接近提升至结构关系 — 可能提供桥梁，将区块轴上取消缺陷率 $a_j/c_j \sim m_j^{-0.30}$ 转换为 lag 轴上的闭合。我们此处不追求；列为开放问题（§11.1 第 6 项）。</p>
+<p>本文所做的是减轻对攻击对象的闭合负担：分析过去须控制双自变量函数 $F_W(j, \theta)$ 全部，现在仅须构造一个外部泛函并证明一个对数界。归约可观；残余问题仍真正困难。</p>
+<h3>8.7 状态</h3>
+<p>§8 如实标注为研究方向，非猜想。候选对象 $\mathcal{Z}_j$ 具备跨越多项式 vs 对数差距的结构形式，但尚非精确定义的数学对象。两个开放子问题已显式陈述。</p>
+<p>本文对 59.1 攻击的贡献是证明负担的迁移，而非闭合。后续各节记录支持 §3–§7 经验内容的数值基础设施（§9）、与早期 ZFCρ 笔记的关系（§10），以及 59.1 完整闭合的开放条件综合列表，含从早期笔记继承的（§11）。</p>
+<hr>
+<h2>§9. 数值验证</h2>
+<h3>9.1 审计优先方法论</h3>
+<p>本文中机制阐释通过对 $j \in [22, 32]$ 的一系列密封审计发展，使用 $[1, 10^{10}]$ 上的 $\rho$ 全表。意为：§3–§7 中每项经验论断在被表述为结构模式之前已对照审计数据验证，审计基础设施在结构阐释之前设计，而非作为事后确认步骤。</p>
+<p>方法论对本文经验内容的两个后果：</p>
+<p><strong>每项审计可重现</strong>。生成密封 CSV 文件的所有脚本在项目仓库可得。CSV 文件按步骤名列出，按生成参数指纹标识；读者可重跑任何审计验证输出匹配。</p>
+<p><strong>任何论断不超出所测范围</strong>。审计账本覆盖 $j \in [22, 32]$。审计建立的经验模式（Empirical Theorem 1、Empirical Theorem 2、Observations 1–3）以此范围作为显式限定陈述。这些模式是否在 $j > 32$ 持续，未予声称。</p>
+<h3>9.2 密封审计</h3>
+<p>下列审计构成本文经验基础设施。每项以 Step 编号、密封 CSV 文件名、实质性发现标识。</p>
+<p><strong>表 9.1</strong>。本文使用的密封审计。</p>
+<table><thead><tr>
+<th>Step</th>
+<th>密封文件</th>
+<th>发现</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>step1_alpha.csv</td>
+<td>$\beta_{F_W}(\theta = 1/2) \approx 0.40$ 跨 $j = 22\text{--}32$</td>
+</tr>
+<tr>
+<td>2A</td>
+<td>step2a_peaks.csv</td>
+<td>残差谱中三个稳定峰确认（前驱 0.00248、主 0.00625、第三 0.0238）</td>
+</tr>
+<tr>
+<td>2A 扩展</td>
+<td>step2a_extended.csv</td>
+<td>邻块中心化等于 $\mu_{12}$ 至 5+ 位小数</td>
+</tr>
+<tr>
+<td>2B</td>
+<td>step2b_axis.csv</td>
+<td>$g_{\log}$ 识别为主要机制轴（gap-classes 是主导分解方向）</td>
+</tr>
+<tr>
+<td>2D</td>
+<td>step2d_minimal.csv</td>
+<td>$G_0 = \{-2, \ldots, 2\}$ 是最小充分核（更小子集失败）</td>
+</tr>
+<tr>
+<td>2E（5cl）</td>
+<td>step2e_5class.csv</td>
+<td>宽度 5 矩阵分解、主导本征值分析</td>
+</tr>
+<tr>
+<td>2E（7cl）</td>
+<td>step2e_7class.csv</td>
+<td>宽度 7 矩阵分解；秩 1 近似捕获 99.999943% 平方 Frobenius 范数</td>
+</tr>
+<tr>
+<td>2F</td>
+<td>step2f_perclass.csv</td>
+<td>类内 $F_W^{(g, g)} \sim m_j^{1.05}$ 超线性（取消前的逐类增长）</td>
+</tr>
+<tr>
+<td>2J</td>
+<td>step2j_block_centering.csv</td>
+<td>$\mu_{12}$ 规范贡献跨 $j$ 稳定的约 20% $F_W$</td>
+</tr>
+<tr>
+<td>2K</td>
+<td>step2k_9class.csv</td>
+<td>宽度 9 cascade 闭合 $\le 0.21\%$；宽度 7 闭合最差约 1.1%（参见 §3.2）</td>
+</tr>
+<tr>
+<td>2L</td>
+<td>step2l_source_mapping.csv</td>
+<td>$\widehat{b}_a \to \Gamma_{\rm odd}$ 确认（corr 0.997，幅度 $m_j^{-0.5024}$）；$\widehat{\mu} \to \Gamma_{\rm even}$ 否决（corr 在 $-0.7$ 到 $0$ 间变化）</td>
+</tr>
+<tr>
+<td>2M</td>
+<td>step2m_perpair.csv</td>
+<td>逐对 $\beta_{g, g'}(\theta = 1/2) \approx 1.00 \pm 0.06$ 普遍跨所有 $(g, g')$ 对</td>
+</tr>
+<tr>
+<td>2N</td>
+<td>step2n_oddeven.csv</td>
+<td>$F_W = 100\% \cdot \mathbf{1}^T M_{\rm even} \mathbf{1}$ 精确（机器精度内）；$\mathbf{1}^T M_{\rm odd} \mathbf{1}$ 至 $10^{-14}$ 消失</td>
+</tr>
+<tr>
+<td>2P</td>
+<td>step2p_uniform_mode.csv</td>
+<td>$\widehat{\mu}_j$ 方向跨 $\theta$ 稳定（余弦 $\ge 0.9999$，除 $j = 24$）</td>
+</tr>
+<tr>
+<td>2Q</td>
+<td>step2q_dense_theta.csv</td>
+<td>前端 delta + 补偿核通过 $H_j''$ 在 Canonical Model 1 内重构；拟合残差 4–9%</td>
+</tr>
+</tbody></table>
+<p>列表共含 14 项主文中使用的审计；§3–§8 未引用的辅助诊断审计未列出。</p>
+<h3>9.3 数值证据表</h3>
+<p>审计数据的代表性子集为参考重现于此。完整数据在密封 CSV 中。</p>
+<h4>9.3.1 $\theta = 1/2$ 处的 cascade 饱和（Step 2K）</h4>
+<p>对各 $j \in [22, 32]$：</p>
+<p><strong>表 9.2</strong>。Cascade 饱和，偶 $j$ 抽样。</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$F_W$</th>
+<th>宽度 7 和</th>
+<th>宽度 9 和</th>
+<th>$</th>
+<th>O_{\ge 4}</th>
+<th>/</th>
+<th>F_W</th>
+<th>$</th>
+<th>$</th>
+<th>O_{\ge 5}</th>
+<th>/</th>
+<th>F_W</th>
+<th>$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>$5.18$</td>
+<td>$5.24$</td>
+<td>$5.18$</td>
+<td>$1.16\%$</td>
+<td>$0.08\%$</td>
+</tr>
+<tr>
+<td>24</td>
+<td>$7.92$</td>
+<td>$8.01$</td>
+<td>$7.91$</td>
+<td>$1.14\%$</td>
+<td>$0.13\%$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$11.84$</td>
+<td>$11.97$</td>
+<td>$11.84$</td>
+<td>$1.10\%$</td>
+<td>$0.04\%$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$17.83$</td>
+<td>$18.02$</td>
+<td>$17.82$</td>
+<td>$1.07\%$</td>
+<td>$0.06\%$</td>
+</tr>
+<tr>
+<td>30</td>
+<td>$26.53$</td>
+<td>$26.81$</td>
+<td>$26.52$</td>
+<td>$1.05\%$</td>
+<td>$0.04\%$</td>
+</tr>
+<tr>
+<td>32</td>
+<td>$36.93$</td>
+<td>$37.35$</td>
+<td>$36.92$</td>
+<td>$1.14\%$</td>
+<td>$0.03\%$</td>
+</tr>
+</tbody></table>
+<p>宽度 7 截断误差跨所测范围一致约 1.1%；宽度 9 截断误差一致低于 0.21%。这是 Certified Numerical Proposition 1（§3.2）的经验依据。</p>
+<h4>9.3.2 跨 $j$ 的反对称 Ward 提升（Step 2L）</h4>
+<p><strong>表 9.3</strong>。反对称 Ward 提升，偶 $j$ 抽样。</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\mathrm{corr}(\widehat{b}_a, \Gamma_{\rm odd}/\</th>
+<th>\Gamma_{\rm odd}\</th>
+<th>)$</th>
+<th>$\</th>
+<th>b_a\</th>
+<th>/ \</th>
+<th>\Gamma_{\rm odd}\</th>
+<th>\cdot \sqrt{m_j}$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>$-0.998$</td>
+<td>$1.04$</td>
+</tr>
+<tr>
+<td>24</td>
+<td>$-0.997$</td>
+<td>$0.99$</td>
+</tr>
+<tr>
+<td>26</td>
+<td>$-0.998$</td>
+<td>$1.02$</td>
+</tr>
+<tr>
+<td>28</td>
+<td>$-0.997$</td>
+<td>$1.01$</td>
+</tr>
+<tr>
+<td>30</td>
+<td>$-0.998$</td>
+<td>$0.97$</td>
+</tr>
+<tr>
+<td>32</td>
+<td>$-0.997$</td>
+<td>$1.03$</td>
+</tr>
+</tbody></table>
+<p>形状相关在所测范围内绝对值一致 $\ge 0.997$；缩放幅度 $\|b_a\| \sqrt{m_j} / \|\Gamma_{\rm odd}\|$ 为 $1.0 \pm 0.05$。此支持 Empirical Theorem 1（§5.3）。</p>
+<h4>9.3.3 跨 $\theta$ 的一致方向稳定性（Step 2P）</h4>
+<p>对各 $j \in [22, 32] \setminus \{24\}$，跨对 $\theta_1, \theta_2 \in \{0.10, \ldots, 0.90\}$ 最差余弦：</p>
+<p><strong>表 9.4</strong>。一致方向稳定性，奇 $j$ 抽样（$j = 24$ 排除；见附录 A）。</p>
+<table><thead><tr>
+<th>$j$</th>
+<th>$\min_{\theta_1, \theta_2}</th>
+<th>\cos(\widehat{\mu}_j(\theta_1), \widehat{\mu}_j(\theta_2))</th>
+<th>$</th>
+<th>$\theta = 1/2$ 处 $L_s$</th>
+</tr></thead><tbody>
+<tr>
+<td>22</td>
+<td>$0.99987$</td>
+<td>$5.46$</td>
+</tr>
+<tr>
+<td>23</td>
+<td>$0.99991$</td>
+<td>$5.49$</td>
+</tr>
+<tr>
+<td>25</td>
+<td>$0.99993$</td>
+<td>$5.51$</td>
+</tr>
+<tr>
+<td>27</td>
+<td>$0.99995$</td>
+<td>$5.53$</td>
+</tr>
+<tr>
+<td>29</td>
+<td>$0.99996$</td>
+<td>$5.54$</td>
+</tr>
+<tr>
+<td>31</td>
+<td>$0.99996$</td>
+<td>$5.54$</td>
+</tr>
+<tr>
+<td>32</td>
+<td>$0.99995$</td>
+<td>$5.55$</td>
+</tr>
+</tbody></table>
+<p>余弦在所测 $j \in [22, 32] \setminus \{24\}$ 内一致 $\ge 0.9999$；$L_s$ 稳定在 5.5 附近，向较大 $j$ 处轻微单调增加。此支持 Empirical Theorem 2（§5.4）。</p>
+<h4>9.3.4 Canonical Model 1 拟合参数（Step 2Q）</h4>
+<p>各 $j$ 完整条目参见 §6.7 表 6.1。</p>
+<h3>9.4 审计基础设施未确立的内容</h3>
+<p>审计<em>未</em>确立、相应在 §11 中标为开放的三件事：</p>
+<ul>
+<li>审计覆盖 $j \in [22, 32]$。$j \to \infty$ 渐近行为<em>未</em>由审计确立；只能由回归模式外推猜测。这与 §5.5（$R_s$ 渐近）与 §7.5（多项式 vs 对数差距）最相关。</li>
+<li>审计验证 Canonical Model 1 拟合残差 4–9%，但<em>未</em>确立饱和指数形式是真正底层泛函形式。残差结构 $\varepsilon_{s, j}(u)$ 未识别。</li>
+<li>审计确立两指数（第 66/67 号笔记的 $\sim 0.30$ 与 Paper 73 的 $\sim 0.30$）数值接近，但<em>未</em>确立二者共享底层结构机制。跨论文数值接近是候选识别，非结构定理。</li>
+</ul>
+<p>这些限制是基于审计的阐释固有的，非本文特定缺陷。</p>
+<hr>
+<h2>§10. 与早期 ZFCρ 笔记的关系</h2>
+<p>本节对每篇内容被本文使用或扩展的早期 ZFCρ 系列论文，识别 Paper 73 与之的精确关系。意图是显式说明 Paper 73 相对既有系列<em>增加</em>什么、<em>继承</em>什么而无进一步阐释。</p>
+<h3>10.1 第 59 号笔记（59.1 猜想）</h3>
+<p>第 59 号笔记以现行形式陈述 59.1 猜想。Paper 73 不证明它（§1.3 已声明）。</p>
+<p>Paper 73 增加：四层架构（B1–B4），将针对 59.1 的 gap-class 跨干涉攻击缩减至单一开放研究方向（B4）加上从早期笔记继承的条件（§11.2）。</p>
+<h3>10.2 第 64 号笔记（一点 gap profile）</h3>
+<p>第 64 号笔记将一点 gap profile $\Gamma_j(g) = \sum_{p \in I_j: g(p) = g} x_p$ 确立为 ZFCρ 区块的结构对象，含换符号对称性与分解 $\Gamma_{\rm odd}$、$\Gamma_{\rm even}$。</p>
+<p>Paper 73 增加：$\Gamma_{\rm odd}$ 至矩阵核的<em>定量两点提升</em>（Empirical Theorem 1，§5.3）。形状相关 0.997 与幅度指数 $-0.5024$ 是提升的经验内容；作为数学定理的精确推导留作未来工作。</p>
+<p>这是从早期工作到 Paper 73 最强的直接桥梁。它将跨类矩阵的反对称分量锚定在第 64 号笔记的结构对象上。</p>
+<h3>10.3 第 65 号笔记（H' 临界路径；<em>继承的开放条件</em>）</h3>
+<p>第 65 号笔记引入 59.1 攻击的 H' 临界路径：F3 + 第 65 号笔记无条件化 + 第 71 号笔记 (H4b)。第 65 号笔记 (c0)(c2)(c3) 在第 65 号笔记框架内<em>无条件</em>的当前状态本身是开放条件。</p>
+<p>Paper 73 之做：识别 B4 为链中一个分量，但显式<em>不</em>处理 (c0)(c2)(c3) 的无条件化。此继承开放条件列在 §11.2。</p>
+<h3>10.4 第 66、67 号笔记（chiseling 指数；<em>候选识别</em>）</h3>
+<p>第 66、67 号笔记由形如 $k^{-C}$ 的 ACF 沿 lag 轴的侵蚀确立 Regime-1 chiseling 指数 $C \approx 0.30$。</p>
+<p>Paper 73 增加：经验观察，区块轴上取消缺陷比 $a_j/c_j \sim m_j^{-0.30}$ 表现出相同数值指数（§7.4）。这是<em>候选识别</em>而非结构定理：lag 轴衰减指数与区块轴比指数是结构上不同的对象，数值接近虽具暗示性但不决定性。</p>
+<p>将此识别作为单一 $\rho$-守恒律在两个不同轴上之表现的推测性几何解读见附录 B，<em>不</em>用作 §3–§8 中任何论证。</p>
+<h3>10.5 第 70 号笔记（区块级饱和骨架；lag 域类比）</h3>
+<p>第 70 号笔记将区块级饱和骨架（Theorem 70.A）确立为 ZFCρ 递归在区块层的结构骨干。</p>
+<p>Paper 73 增加：7 类与 9 类有效 gap 核（§3）在 lag 层扮演类似角色。正如第 70 号笔记识别捕获主导机制的有限区块对象，Paper 73 识别捕获主导跨干涉结构的有限 gap-class 窗。类比是结构性的，非推导性；我们不证明 lag 域骨架由区块域骨架蕴含。</p>
+<h3>10.6 第 71、72 号笔记（H4b 路径；<em>继承的开放条件</em>）</h3>
+<p>第 71 号笔记（线性带符号 Abel 预算）与第 72 号笔记（前端残差锁定）发展 59.1 攻击的 H4b 路径，第 72 号笔记区分 sample-centered 全窗口空洞恒等式与外部全块参考（携带非平凡信息）。</p>
+<p>Paper 73 增加：候选对象 $\mathcal{Z}_j[q_s] = m_j[\mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1)]$（§8.3）直接建立在第 72 号笔记的区分上，应用于标量一致核层面而非原始 Bartlett 读数。非平凡尺度上的确定性 Abel 转移本身仍在第 71 号笔记中开放，作为继承列在 §11.2。</p>
+<p>此联结是 Paper 73 与既有 H4b 框架最重要的结构桥梁。</p>
+<h3>10.7 综述</h3>
+<p>Paper 73 在 H' 临界路径中占据特定结构位置：</p>
+<ul>
+<li><em>分量 (B)</em>：第 71 号笔记 H4b 中的 Abel 转移。Paper 73 阐述候选核结构（§6、§8），但继承开放条件。</li>
+<li><em>分量 (A)</em>：第 65 号笔记 (c0)(c2)(c3) 无条件化。Paper 73 不处理，继承开放条件。</li>
+<li><em>分量 (C)</em>：真正新数学。Paper 73 的 B4 研究方向（§8）为对此分量的贡献，残余问题为 $\mathcal{B}_j^{\rm ext}$ 的构造与 $\mathcal{Z}_j[q_s] = O(j)$ 的证明。</li>
+</ul>
+<p>闭合负担的归约可观：分析双自变量函数 $F_W(j, \theta)$ 全部缩减为构造一个外部泛函并证明一个对数界。残余问题仍困难。</p>
+<hr>
+<h2>§11. 开放问题</h2>
+<p>本节综合列出基于本文框架的任何完整 59.1 闭合路径的开放条件。列表分为 P73 自身的项（§11.1）与从早期 ZFCρ 笔记继承的项（§11.2）。</p>
+<p>此分隔重要：从 §1–§10 推断 B4 为唯一剩余条件的读者将被误导。多项继承开放条件留存，Paper 73 <em>不</em>处理。</p>
+<h3>11.1 Paper 73 自身的开放问题</h3>
+<p><strong>1. B4 Abel-transfer 研究方向。</strong></p>
+<p>§8 阐述的候选对象 $\mathcal{Z}_j[q_s] = m_j[\mathcal{B}_j^{\rm ext}(1) - \mathcal{B}_j^{\rm samp}(1)]$ 含两个开放子问题：</p>
+<ul>
+<li><em>1a. 显式构造 $\mathcal{B}_j^{\rm ext}(\theta)$</em>。将外部参考对象阐述到 $\mathcal{B}_j^{\rm ext}(\theta)$ 是良定义可计算泛函的精度。候选构造含外部 $\lambda$ 参考、外部全块中心化、跨块参考；我们未在其间作选择。</li>
+</ul>
+<ul>
+<li><em>1b. 在 $\mathcal{B}_j^{\rm ext}$ 给定后证明界 $|\mathcal{Z}_j[q_s]| \le C \cdot j$ 对 $j \in [j_0, \infty)$ 成立，其中 $C > 0$ 为绝对常数</em>。这是预备的猜想；在 1a 解决前不能精确陈述。</li>
+</ul>
+<p><strong>2. $R_s$ 渐近行为。</strong></p>
+<p>两分量分解残差 $R_s(j, \theta) = F_W - \lambda_s L_s$ 在 $j \in [25, 32]$ 跨 $\theta$ 经验上为 $F_W$ 的 5–12%（§5.5）。$j$ 趋势未被现有数据决定：$R_s/F_W$ 当 $j \to \infty$ 时可能趋零、趋常数或增长。</p>
+<p>若 $R_s/F_W \to 0$，两分量分解渐近有效，闭合路径可专注于 $\lambda_s L_s$。若 $R_s/F_W$ 趋于非零极限，闭合路径需对 $M_{\rm even}$ 第三（及可能更高）本征模做显式处理，本文未予阐述。</p>
+<p><strong>3. 余项 $\varepsilon_{s, j}(u)$。</strong></p>
+<p>Canonical Model 1 拟合 $Q_s/m_j = a_j + (c_j - a_j) e^{-\alpha_j \theta}$ 在所测范围内残差 4–9%（§6.4）。该残差携带饱和指数形式未捕获的多峰 / gap 壳层内容。$\varepsilon_{s, j}(u)$ 的完全识别 — 其泛函形式、产生其的底层结构特征 — 此处未阐述。</p>
+<p>若残差编码结构上重要的第二时间尺度或非平凡次主导贡献，Canonical Model 1 可能需扩展为多分量拟合，方可在其上建立任何闭合路径。</p>
+<p><strong>4. $j = 24$ 图册异常。</strong></p>
+<p>区块 $j = 24$ 在 $\theta \ge 0.7$ 处出现本征枝交换，将其排除在 Empirical Theorem 2（§5.4）的 $\widehat{\mu}_j$ 带宽稳定性之外。本征枝交换详细描述见附录 A。</p>
+<p>此异常反映 $j = 24$ 区块的真正结构特征（附录 A.4 推测性解读中的"深度乘法共振"）、本征模提取算法的数值伪迹、还是小 $j$ 与大 $j$ 行为之间的过渡区，未予解决。在 $j = 24$ 处用连续模跟踪替代基于 argmax 的选择的密集 $\theta$ 本征值跟踪审计将澄清此事。我们未做此审计。</p>
+<p><strong>5. $\mu_{12}$ 规范贡献的结构来源。</strong></p>
+<p>模 12 规范 $\mu_{12}$ 跨 $j$ 贡献稳定的约 20% $F_W$（Step 2J，§9.2）。此贡献的结构来源 — 残差中何种特定模 12 系统产生它，以及它是否与 $Q_s$ 相互作用或保持加性 — 未识别。</p>
+<p>将 $Q_s$ 自身分裂为规范耦合与规范正交部分的更精细分解将澄清此事。我们未予执行。</p>
+<p><strong>6. 第 66/67 号笔记 ↔ Paper 73 结构识别。</strong></p>
+<p>数值接近 $\sim 0.30$ 在 lag 轴上（第 66/67 号笔记 chiseling 指数）与区块轴上（Paper 73 取消缺陷比）具暗示性。连接二者的严格陈述需要阐明 lag 轴量到区块轴比的何种变换，并示证底层尺度机制相同而非数值上巧合。</p>
+<p>若可作出此识别，可能提供桥梁，将区块轴上取消缺陷率 $a_j/c_j$ 转换为 lag 轴上的闭合。候选识别目前是数值观察。</p>
+<h3>11.2 完整 59.1 闭合的继承开放条件</h3>
+<p>完整无条件 59.1 闭合路径还需要以下来自早期笔记的继承条件。Paper 73 不处理它们。</p>
+<p><strong>7. 第 65 号笔记 (c0)(c2)(c3) 在 paper 65 框架内无条件化。</strong></p>
+<p>H' 临界路径要求第 65 号笔记 (c0)(c2)(c3) 分量无条件成立。其当前状态（受额外假设制约）本身是无条件 59.1 闭合的开放条件。具体陈述参见第 65 号笔记。</p>
+<p>Paper 73 继承此条件而无进一步阐释。</p>
+<p><strong>8. 第 71 号笔记 (H4b) 在非平凡尺度上的确定性 Abel 转移。</strong></p>
+<p>第 71 号笔记阐述 H4b 路径；非平凡尺度上的确定性 Abel 转移仍开放。Paper 73 的 $\mathcal{Z}_j[q_s]$ 候选（§8）是第 71 号笔记框架的精化，但单凭自身不闭合 H4b 开放条件：上述子问题 1a 在结构意义上是第 71 号笔记 H4b 构造在标量一致读数核层面的重述。</p>
+<p>关系如下：子问题 1a（在 $\mathcal{B}_j^{\rm ext}$ 的合适选择下）在结构上是第 71 号笔记 H4b 构造在标量一致读数核层面的重述。这是否构成数学等价（一个问题，两种表述）抑或是接近的结构平行（两个相关问题），取决于子问题 1a 的解是否能逐字映射到第 71 号笔记 H4b 框架。我们主张结构平行；严格等价待验证。</p>
+<h3>11.3 第 1–8 项对完整闭合的状态</h3>
+<p>无条件 59.1 闭合通过本文框架，第 1、2、7 项必要（第 1 项在结构平行意义下与第 8 项相关）。第 3、4、5、6 项是 P73 自身的清理工作，会强化框架但若第 1、2、7 项以足够普遍性解决则非严格必要。</p>
+<p>完整路径草图：</p>
+<ul>
+<li>解决第 1a 项：显式构造 $\mathcal{B}_j^{\rm ext}$。</li>
+<li>解决第 1b 项：在构造给定后证明 $|\mathcal{Z}_j[q_s]| = O(j)$。</li>
+<li>解决第 2 项：要么确认 $R_s/F_W \to 0$ 当 $j \to \infty$，要么扩展框架以处理非消失残差（通过显式处理第三及可能更高 $M_{\rm even}$ 本征模）。</li>
+<li>解决第 7 项：将第 65 号笔记 (c0)(c2)(c3) 无条件化。</li>
+<li>通过 H' 临界路径链合并。</li>
+</ul>
+<p>Paper 73 对此路径的贡献是将第 1、2、6 项以可攻击形式显式表述；第 3、4、5 项是框架特定的清理工作。第 7、8 项继承且未予处理。</p>
+<hr>
+<h2>§12. 致谢</h2>
+<p>作者感谢陈则思（Zesi Chen）十八年来在 SAE 框架上的哲学协作。本文中"示范优于完成"的阐述、显式边界声明、以及全文 lag 轴与 block 轴之间的结构对称性的阐释，皆建立在该协作全期的共同工作之上。</p>
+<p>本文通过四 AI 综合发展，角色专门分工：</p>
+<ul>
+<li>子路（Claude）：审计主导与整合者</li>
+<li>公西华（ChatGPT）：理论守门</li>
+<li>子夏（Gemini）：发散 / 机制阐释</li>
+<li>子贡（Grok）：策略与可行性</li>
+</ul>
+<p>机制阐释经过十轮评审与十四项密封审计，方完工于本文。</p>
+<h3>方法论注记</h3>
+<p><strong>四 AI 综合全程以 Claude 为单一整合者，本注记适用于 §3–§8 的所有经验模式。</strong> 给其他 AI 的所有提示由 Claude 起草；所有综合由 Claude 撰写；本文是 Claude 经此过程整理的结论汇编。这引入已知偏置风险：Claude（整合者）所偏好的结构阐释可能被放大而非独立校验。</p>
+<p>本文中两项阐释特别受此偏置影响，应以相应怀疑读之：</p>
+<ul>
+<li>"前端 delta 加补偿核"结构图景（§6）由整合者首先阐述，其后由守门支持。它在 Canonical Model 1 的 4–9% 残差精度下与数据一致，但并非与该数据一致的唯一结构图景。若读者发现另一种结构图景同样与数据一致，不应视本文阐释为已排除该替代图景。</li>
+</ul>
+<ul>
+<li>第 66/67 号笔记 ↔ Paper 73 候选识别（§7.4，附录 B）由整合者首先指出为数值接近，其后由守门提升至"候选识别"。lag 轴衰减与区块轴比之间的结构区别（§7.4）是将其从数值接近提升至结构识别的真实障碍。</li>
+</ul>
+<p>由其他 AI 在不接触 Claude 框架的情况下读取原始审计数据进行的独立验证未予执行。在本文经验模式被视为超出 framing-bias 注记之外已建立之前，此种验证将是恰当的下一步。<strong>作者承诺：作为任何在本文经验内容上做实质性建立的后续论文（P74 起）的前置条件，将进行一次不以 Claude 为整合者的独立多 AI 验证。</strong></p>
+<hr>
+<h2>§13. 参考文献</h2>
+<p><strong>ZFCρ 计划论文</strong></p>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LIX: Spectral Ratio Boundedness and the Two-Conjecture Closure of H'</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19480519">10.5281/zenodo.19480519</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXIV: Two-Dimensional Anatomy of the Remainder Measure — Branch-Orthogonality, Free-Boundary Profiles, and Surrogate Layering</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19674522">10.5281/zenodo.19674522</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXV: Branch Centering and the Spectral Route — From False Mean Modes to the Conditional Ψ = O(j) Architecture</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19687344">10.5281/zenodo.19687344</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXVI: Gradual Chiseling and the Spectral Bridge — Two-Regime Structure of the Centered Residual ACF</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19701480">10.5281/zenodo.19701480</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXVII: Scale-Dependent Erosion Rate and the Intrinsic Spectral Bridge — Discovery of the C_eff Trajectory</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19705714">10.5281/zenodo.19705714</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXX: The Block-Wise Effective Skeleton — A Reduction of Conjecture 59.1</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19985155">10.5281/zenodo.19985155</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXXI: Linear Signed Abel Budget and the Saturated Zero-Mode Target</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.20020573">10.5281/zenodo.20020573</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.20029942">10.5281/zenodo.20029942</a>.</li>
+</ol>
+<p><strong>SAE 基础论文</strong></p>
+<ol>
+<li>Qin, H. <em>Self-as-an-End: Foundational Articulation</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.18528813">10.5281/zenodo.18528813</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>Self-as-an-End: Negativa Axiom</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.18666645">10.5281/zenodo.18666645</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>Self-as-an-End: Remainder Conservation</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.18727327">10.5281/zenodo.18727327</a>.</li>
+</ol>
+<p><strong>SAE 方法论</strong></p>
+<ol>
+<li>Qin, H. <em>SAE Methodology Paper 0: Negativa as Axiom Prior to Being</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19544619">10.5281/zenodo.19544619</a>.</li>
+</ol>
+<ol>
+<li>Qin, H. <em>SAE Methodology Paper 00: Via Rho — The Path of the Remainder</em>. Zenodo, <a href="https://doi.org/10.5281/zenodo.19657439">10.5281/zenodo.19657439</a>.</li>
+</ol>
+<p><strong>跨系列</strong></p>
+<ol>
+<li>Qin, H. <em>《形与流》第一篇：ρ-守恒的几何基础</em> (forthcoming).</li>
+</ol>
+<hr>
+<h2>附录 A. $j = 24$ 图册异常</h2>
+<h3>A.1 观察</h3>
+<p>对区块 $j = 24$，一致模本征值 $\lambda_s(24, \theta)$ 在 $\theta \ge 0.7$ 处与其他区块所观察的模式有实质性偏离。具体地，在 $j = 24$ 处：</p>
+<table><thead><tr>
+<th>$\theta$</th>
+<th>$\lambda_s(24, \theta)$</th>
+</tr></thead><tbody>
+<tr>
+<td>0.50</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>0.60</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>0.70</td>
+<td>12.7</td>
+</tr>
+<tr>
+<td>0.75</td>
+<td>12.5</td>
+</tr>
+<tr>
+<td>0.80</td>
+<td>12.6</td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>12.5</td>
+</tr>
+</tbody></table>
+<p>$\theta = 0.6$ 与 $\theta = 0.7$ 之间过渡剧烈；值跳跃约 22 倍。相比之下，相邻区块（如 $j = 23$ 或 $j = 25$）的 $\lambda_s(j, \theta)$ 跨 $\theta$ 轨迹是单调光滑的，无类似跳跃。</p>
+<p>$\{0.7, 0.75, 0.8, 0.9\}$ 中四个连续 $\theta$ 值都呈现异常高值。这不是单点统计涨落；这是此特定 $j$ 在特定 $\theta$ 阈值的一致区域转变。</p>
+<h3>A.2 本征枝交换</h3>
+<p>异常机制在经验上识别为本征模提取算法的<em>本征枝交换</em>。</p>
+<p>一致方向 $\widehat{\mu}_j$ 操作上定义（参见 §5.1）为 $M_{\rm even}^{[3]}$ 中使全 1 投影 $(\mathbf{1}^T \widehat{b})^2$ 最大的单位本征向量。对大多数区块，此最大值是良好分离的：有一个本征向量满足 $L_s \approx 5.5$，其他的 $L_s$ 值接近零。argmax 无歧义。</p>
+<p>具体在 $j = 24$ 处，$M_{\rm even}^{[3]}(24, \theta)$ 的两个本征值跨 $\theta$ 范围在大小上接近，其关联本征向量有不同全 1 投影。当 $\theta$ 变化时，两本征值表现出<em>避免交叉</em>（avoided crossing）：本征值次序在特定 $\theta$ 阈值（经验上在 0.65 到 0.7 之间）处交换，因而 argmax-of-$L_s$ 算法在阈值前后选取不同本征向量。</p>
+<p>这是标号问题，非核律失效。底层矩阵 $M_{\rm even}^{[3]}(24, \theta)$ 随 $\theta$ 光滑变化；跳跃的是哪个本征向量被称作 $\widehat{\mu}_j$ 的操作选择。</p>
+<p>正确处理需要<em>连续模跟踪</em>：跨 $\theta$ 连续跟踪每个本征向量，而非在每个 $\theta$ 处通过 argmax 重新选取。我们未对 $j = 24$ 实施此跟踪；此为后续审计。</p>
+<h3>A.3 对密封论断的蕴含</h3>
+<p>图册异常<em>不</em>影响：</p>
+<ul>
+<li><strong>Theorem 1（§4.2）</strong>：严格恒等式 $\mathbf{1}^T M_{\rm odd} \mathbf{1} = 0$ 对<em>每个</em>区块包含 $j = 24$ 都成立，由纯代数。</li>
+<li><strong>Certified Numerical Proposition 1（§3.2）</strong>：宽度 7 的 cascade 饱和界 $|O_{\ge 4}|/|F_W| \le 1.2\%$ 在 $j = 24$ 处成立（参见 §9.3.1 中表 9.2）；矩阵分解本身在每个区块都良定义。</li>
+<li><strong>Empirical Theorem 1（§5.3）</strong>：反对称 Ward 提升相关 0.997 在 $j = 24$ 与其他区块一致（参见 §9.3.2 中表 9.3）。反对称本征模在所有 $j$（包含 $j = 24$）下都与一致模良好分离；在 $j = 24$ 处交换的是两个接近的<em>一致侧</em>本征值，而非反对称本征值。</li>
+<li>$j = 24$ 处的 cascade 层级与反射代数结构。</li>
+</ul>
+<p>图册异常<em>确实</em>影响：</p>
+<ul>
+<li><strong>Empirical Theorem 2（§5.4）</strong>：$\widehat{\mu}_j$ 的带宽稳定性陈述<em>排除</em> $j = 24$。在 $j = 24$ 处，表观方向 $\widehat{\mu}_j(\theta)$ 跨本征枝交换跳跃，故余弦 $|\cos(\widehat{\mu}_j(0.5), \widehat{\mu}_j(0.8))|$ 在此区块不接近 1。</li>
+<li><strong>Canonical Model 1 拟合（§6.4）</strong>：$j = 24$ 处的饱和指数拟合因本征值交换而不稳定，从拟合表（§6.7）与尺度回归（§7）中排除。</li>
+</ul>
+<h3>A.4 可能的解读（推测）</h3>
+<p>一种可能解读是 $j = 24$ 处接近的本征值有有效非对角耦合产生避免交叉行为。在量子力学语境下，接近能级之间的避免交叉由 Landau-Zener 公式控制，指示两个否则正交模之间的弱非对角耦合。类比将提示 $j = 24$ 处 gap-core 一致模与外壳层模弱耦合并跨 $\theta$ 阈值交换身份。</p>
+<p>一种推测性<em>物理</em>解读会是 $j = 24$ 落在某深度乘法共振上 — $I_{24}$ 中大素数的特定密度构型在 gap-core 图与外壳层图之间产生在其他区块不存在的相干。附录 B 中"图册尚未拼接"的几何解读的术语描述此事：在大多数区块，$G_0$ 上的局部图与 $G_3 \setminus G_0$ 上的外图光滑拼接；具体在 $j = 24$ 处，拼接在高 $\theta$ 处失败。</p>
+<p>我们强调此解读为<em>推测</em>。经验证据是单一异常区块伴单次 $\theta$ 区域转变。"深度乘法共振"声明是无独立证据支持的事后阐释，"图册"几何语言借自不同数学语境（附录 B）。两种阐释都不为 §3–§8 的结构内容成立所必需；二者作为阅读框架而非已确立事实提供。</p>
+<h3>A.5 审计建议</h3>
+<p>两项特定后续审计将澄清异常：</p>
+<ul>
+<li><em>$j = 24$ 处的连续本征模跟踪</em>：用跨 $\theta$ 显式连续跟踪替代基于 argmax 的本征向量选取。若避免交叉有良定义间隙最小值，连续跟踪版本的 $\lambda_s(24, \theta)$ 跨阈值光滑，表观跳跃消失，留下与 canonical-model 拟合的残差偏差，可由此刻画。</li>
+</ul>
+<ul>
+<li><em>$I_{24}$ 的素数密度刻画</em>：具体考察 $I_{24}$ 内的素数分布与大素数构型，与 $I_{23}$、$I_{25}$ 比较。若特定算术特征区分 $I_{24}$，将支持"深度乘法共振"解读；若未发现此种特征，异常更可能是普通过渡区域而非特殊算术性质。</li>
+</ul>
+<p>两项审计皆未执行。</p>
+<hr>
+<h2>附录 B. 几何解读（推测）</h2>
+<h3>B.1 状态</h3>
+<p>本附录提供 §3–§8 中机制的一种可能<em>阐释性</em>解读，使用《形与流》系列的语言。它<em>非</em>本文数学内容的一部分。下表中映射均不应作为数学论断阅读；它们是作为可能阅读框架提供的概念类比。</p>
+<p>类比之提供有两个原因。第一，部分读者或觉几何语言便于保留 §3–§8 的结构图景。第二，跨系列论文《形与流》（即将发表，第一篇）发展一个几何框架，类比可能在其中变得不仅是非正式的；若该框架成熟，下表或可重访并升级至结构识别或修订。</p>
+<p>此处的映射是等待《形与流》系列实质性发展的概念类比。具体映射可能随该系列成熟而需要修订。<em>映射均不应作为数学论断阅读</em>。</p>
+<h3>B.2 概念类比表</h3>
+<p><strong>表 B.1</strong>。Paper 73 对象与《形与流》框架语言的概念类比。</p>
+<table><thead><tr>
+<th>Paper 73 对象</th>
+<th>《形与流》概念类比</th>
+</tr></thead><tbody>
+<tr>
+<td>$c_j \delta_0$（Canonical Model 1 内的前端 delta）</td>
+<td>奇异前端 / 激波质量</td>
+</tr>
+<tr>
+<td>$r_j(u)$（Canonical Model 1 内的补偿核）</td>
+<td>手术 / 边界修正</td>
+</tr>
+<tr>
+<td>$a_j / c_j \sim m_j^{-0.30}$（取消缺陷比）</td>
+<td>$\rho$-缺陷账率</td>
+</tr>
+<tr>
+<td>$\widehat{\mu}_j$（一致读数方向，带宽稳定）</td>
+<td>体积形式 / 积分测度</td>
+</tr>
+<tr>
+<td>$L_s \approx 5.5$，饱和 $79\%$</td>
+<td>gap-核读数归一化</td>
+</tr>
+<tr>
+<td>$L_a \equiv 0$（反对称模的 1-正交性）</td>
+<td>对称积分下的反对称 Ward 取消</td>
+</tr>
+<tr>
+<td>反射偶 / 反射奇分解</td>
+<td>边界对称下的奇偶分解</td>
+</tr>
+<tr>
+<td>7 类有效 gap 核</td>
+<td>有限图 / 局部图册</td>
+</tr>
+<tr>
+<td>$j = 24$ 图册异常</td>
+<td>图册尚未拼接 / 层叠失配</td>
+</tr>
+<tr>
+<td>$\mathcal{Z}_j[q_s]$ 闭合对象（开放）</td>
+<td>标定端点缺陷，非原函数值</td>
+</tr>
+</tbody></table>
+<h3>B.3 取消缺陷的推测性解读</h3>
+<p>Paper 73 之比缺陷指数（$\sim 0.30$）与第 66/67 号笔记单一衰减指数（$\sim 0.30$）的数值接近，允许一种推测性阐释：作为单一底层 $\rho$-守恒律在两个不同轴（lag vs block）上之表现。</p>
+<p>在一种可能几何解读中，ZFCρ 递归对应"算术时空"上的某传输过程，其中：</p>
+<ul>
+<li>lag 轴 $k$ 对应局部时间变量：素数信息被同一区块内后续素数侵蚀的速率。</li>
+<li>block 轴 $j$（或等价地 $m_j$）对应宏观空间尺度：跨密度变化区块的累积效应。</li>
+</ul>
+<p>若 ZFCρ 递归的底层 min-plus 算子在此算术时空中<em>各向同性</em>，则其沿局部时间轴的耗散率（第 66/67 号笔记的 $C \approx 0.30$）与沿宏观尺度轴的补偿缺陷率（Paper 73 的 $\sim 0.30$）将作为各向同性的结构后果相等。数值巧合就是单一律在两轴上之两次表现。</p>
+<p>我们强调：此为作为阅读提供的推测性<em>阐释</em>。它不构成结构识别，不用于 §3–§8 中任何论证，且 lag 轴衰减指数与区块轴比指数之间的结构区别（§7.4）仍是将其从推测升级至数学识别的真实障碍。</p>
+<p>发现此阐释作为阅读框架有用的读者应记住它是推测性解读；发现其无益或分散注意力的读者可忽略而不漏失任何数学内容。</p>
+<h3>B.4 几何解读做与不做之事</h3>
+<p>几何解读是<em>阐释性叠加</em>，非推导。具体地：</p>
+<ul>
+<li>它<em>不</em>推导 §3–§8 中任何定量论断。宽度 7 处的 cascade 饱和、反射代数恒等式、反对称 Ward 提升、饱和指数拟合、闭式补偿核、尺度指数 — 全部由 §9 审计基础设施确立，独立于任何几何语言。</li>
+</ul>
+<ul>
+<li>它<em>不</em>构造 $\mathcal{B}_j^{\rm ext}$ 或解决 B4 子问题。几何语言不提供缺失构造；它仅为缺失对象提供另一种词汇<em>命名</em>之。</li>
+</ul>
+<ul>
+<li>它<em>不</em>将候选第 66/67 号笔记识别（§7.4）升级至结构定理。两个指数之间的结构区别（单一衰减 vs 回归之比）是真实障碍，几何语言不消解之。</li>
+</ul>
+<p>几何解读<em>确实</em>提供的，是一种词汇，在其中 §3–§8 的结构图景对熟悉《形与流》框架或相关几何计划（Gauss-Bonnet 解读、拓扑学中的手术、Ricci 流类比、物理学中的缺陷账）的读者可能更易保留。对无此背景的读者，上表是不必要的干扰，可跳过。</p>
+<p>Paper 73 与《形与流》第一篇（即将发表）之间的跨系列桥梁，待第一篇成熟时，可允许更精确映射。在此之前，类比留作推测。</p>
+<hr>
+<p><em>ZFCρ 第 73 号笔记（终）</em></p>
+  </section>
+</div>
+
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
