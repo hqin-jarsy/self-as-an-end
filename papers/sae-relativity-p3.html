@@ -16,6 +16,17 @@
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_journal_title" content="Zenodo">
   <meta name="citation_doi" content="10.5281/zenodo.19992253">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <header>
@@ -3521,6 +3532,7 @@ function switchLang(lang, tab) {
   var target = document.getElementById('lang-' + lang);
   if (target) target.style.display = 'block';
   tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
 }
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
