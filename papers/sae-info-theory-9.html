@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE Information Theory IX: The H–I Floor Mapping and the 5DD Macro Bit — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/sae-info-theory-9.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/sae-info-theory-9.html">
+  <meta name="citation_title" content="SAE Information Theory IX: The H–I Floor Mapping and the 5DD Macro Bit">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.20225439">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · SAE Information Theory · Paper IX</div>
+    <h1>SAE Information Theory IX: The H–I Floor Mapping and the 5DD Macro Bit<br><span style="font-size:1.1rem;opacity:0.75">SAE 信息论 IX：H–I 地板映射与 5DD 宏观比特</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20225439" target="_blank" rel="noopener">10.5281/zenodo.20225439</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.20225439" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Shannon's H, as a statistical functional on 1DD probability distributions, lives at the operational layer of information theory. SAE's I, as the 4DD ontological channel quantity inherited from $E = Ic^3$ (Mass Series convergence paper, Class A structural derivation), lives at the ontological layer. P1 §2.4 articulated the general mathematical relation between H and I as an open task for future papers in the information theory series.
+
+This paper takes up that open task with a specific scope restriction. The central contribution of this paper is the H–I floor mapping; the dimensional position of $X_4 = E/c^4$ serves as auxiliary content supporting the central contribution. It does not establish a universal closed-form mapping between H and I across all regimes. Instead it articulates a regime-anchored floor mapping, separating the substrate-physics-determined projection floor from process-dependent overhead.
+
+The floor mapping takes the form
+
+$$I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits},$$
+
+where $N_{floor}^{regime}(T) = E_P / (2\pi k_B T)$ is the regime-level minimum substrate aggregation count per 5DD macro bit, inherited from P3's causal spectrum span via the Bekenstein 1-bit thermal-floor identity. The floor admits a closed-form expression in regime parameters. The process overhead is left to specialized papers in adjacent fields (biology, chemistry, neuroscience, quantum information) to articulate within their own contexts.
+
+The floor mapping rests on two substantive commitments. First, $I_{SAE}^{(4DD)}$ functions as a state-layer ontological quantity, which by the standard thermodynamic distinction between state quantities (internal energy, free energy, entropy) and path quantities (heat, work) requires path-independence at the state level. Second, the 5DD macro bit is well-defined as an ontological category through its projection equivalence class: substrate histories yielding the same stable macroscopic readout share a regime-determined minimum support, independent of the specific process producing the readout.
+
+This paper also establishes the dimensional position of $X_4 = E/c^4$ as the 5D channel quantity inherited from the Mass Series $c^k$ ladder, with order-of-magnitude verification at biological scales (RNA, cellular). The dimensional anchoring supports the substantive content of the central contribution.
+
+Falsifiable claim: across different physical processes operating in the same regime, the extrapolated minimum substrate projection, obtained through reversible-limit extrapolation of measured information cost, converges to the same order of magnitude $E_P/(2\pi k_BT)$. Partial empirical support exists from the Landauer-floor literature. Multi-bit aggregation cases and cross-process tests remain an open empirical program.
+
+Keywords: H–I bridge, floor mapping, 5DD macro bit, state quantity layering, projection equivalence class, causal aggregation depth, Bekenstein thermal floor, Landauer principle, SAE information theory.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> H–I bridge, floor mapping, 5DD macro bit, state quantity layering, projection equivalence class, causal aggregation depth, Bekenstein thermal floor, Landauer principle, SAE information theory</div>
+    </div>
+    <div class="paper-body">
+<h2>SAE 信息论 IX：H–I 地板映射与 5DD 宏观比特</h2>
+<p>Han Qin (秦汉) · Independent Researcher · 2026</p>
+<p>DOI: <a href="https://doi.org/10.5281/zenodo.20225440">10.5281/zenodo.20225440</a> · CC BY 4.0</p>
+<hr>
+<h2>Abstract</h2>
+<p>Shannon's H, as a statistical functional on 1DD probability distributions, lives at the operational layer of information theory. SAE's I, as the 4DD ontological channel quantity inherited from $E = Ic^3$ (Mass Series convergence paper, Class A structural derivation), lives at the ontological layer. P1 §2.4 articulated the general mathematical relation between H and I as an open task for future papers in the information theory series.</p>
+<p>This paper takes up that open task with a specific scope restriction. The central contribution of this paper is the H–I floor mapping; the dimensional position of $X_4 = E/c^4$ serves as auxiliary content supporting the central contribution. It does not establish a universal closed-form mapping between H and I across all regimes. Instead it articulates a regime-anchored floor mapping, separating the substrate-physics-determined projection floor from process-dependent overhead.</p>
+<p>The floor mapping takes the form</p>
+<p>$$I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits},$$</p>
+<p>where $N_{floor}^{regime}(T) = E_P / (2\pi k_B T)$ is the regime-level minimum substrate aggregation count per 5DD macro bit, inherited from P3's causal spectrum span via the Bekenstein 1-bit thermal-floor identity. The floor admits a closed-form expression in regime parameters. The process overhead is left to specialized papers in adjacent fields (biology, chemistry, neuroscience, quantum information) to articulate within their own contexts.</p>
+<p>The floor mapping rests on two substantive commitments. First, $I_{SAE}^{(4DD)}$ functions as a state-layer ontological quantity, which by the standard thermodynamic distinction between state quantities (internal energy, free energy, entropy) and path quantities (heat, work) requires path-independence at the state level. Second, the 5DD macro bit is well-defined as an ontological category through its projection equivalence class: substrate histories yielding the same stable macroscopic readout share a regime-determined minimum support, independent of the specific process producing the readout.</p>
+<p>This paper also establishes the dimensional position of $X_4 = E/c^4$ as the 5D channel quantity inherited from the Mass Series $c^k$ ladder, with order-of-magnitude verification at biological scales (RNA, cellular). The dimensional anchoring supports the substantive content of the central contribution.</p>
+<p>Falsifiable claim: across different physical processes operating in the same regime, the extrapolated minimum substrate projection, obtained through reversible-limit extrapolation of measured information cost, converges to the same order of magnitude $E_P/(2\pi k_BT)$. Partial empirical support exists from the Landauer-floor literature. Multi-bit aggregation cases and cross-process tests remain an open empirical program.</p>
+<p><strong>Keywords</strong>: H–I bridge, floor mapping, 5DD macro bit, state quantity layering, projection equivalence class, causal aggregation depth, Bekenstein thermal floor, Landauer principle, SAE information theory.</p>
+<hr>
+<h2>§1 Introduction</h2>
+<h3>§1.1 Continuation from the SAE Information Theory Series</h3>
+<p>The SAE Information Theory series articulates information as a 4DD ontological substrate, building on the Class A structural derivation $E = Ic^3$ from the Mass Series convergence paper (Qin 2026, Mass Series Convergence V2). The first eight papers established the foundational ontology and the bridging mechanism for the transition from 4DD to 5DD.</p>
+<p>P1 (Qin 2026a) established the 4DD ontology of information through a single foundational axiom (energy-information conservation across 42 1DDs and all DD channels) combined with 4DD closure asymmetry. Four structural consequences (the arrow of time, causality, propagation, reception) unfold from the axiom combined with the closure structure. P1 also located Shannon information theory as the complete theory of the 1DD operational projection layer, while leaving the general mathematical relation between Shannon's $H$ and SAE's $I$ as an open task for subsequent papers in the series (P1 §2.4).</p>
+<p>P2 (Qin 2026b) provided the SAE-framework structural derivation of Landauer's principle, with the calibrated parameter $N_{eff}$ carrying the substrate aggregation count between 4DD substrate events and 5DD macro bits. P2 §2.3 honestly identified $N_{eff}$ as a calibrated parameter at that stage, pending substrate-level ontological articulation in subsequent papers.</p>
+<p>P3 (Qin 2026c) established the causal spectrum of information through the Bekenstein 1-bit thermal-floor minimum identity, articulating the causal aggregation span of approximately $10^{29}$ between Planck-scale substrate and thermal-floor macroscopic bit at $T = 300\text{K}$. P3 also articulated the four-equality commitment (information = causality = 4DD = macro) at the foundational level (P3 §1.4).</p>
+<p>P4 (Qin 2026d) extended the 4DD ontology to black hole information through the causal spectrum framework, providing the SAE-internal reading of horizon physics within the 42-channel scope structure.</p>
+<p>P7 (Qin 2026e) opened the life part of the series by articulating the origin of life as the first 4DD-to-5DD breakthrough event, with the cross-locked dual-channel chisel-construct cycle as the candidate mechanism. P8 (Qin 2026f) supplied the bridge measure $M_{bridge}$ as the minimum number of effective accumulated coherent transitions required for the bridge event to occur, distinguishing it from both Shannon bit and from 5D-internal information quantities.</p>
+<p>This paper sits at the position where the bridge mechanism (P7) and the bridge measure (P8) have been established, and the 5D-internal information quantities can now be articulated. The central task is the H–I relation that P1 §2.4 left open: the mathematical relation between Shannon's 1DD-operational $H$ and SAE's 4DD-ontological $I$, particularly under conditions where macroscopic information processing in the 5D regime is involved.</p>
+<h3>§1.2 The H–I Bridge Task</h3>
+<p>The H–I bridge task carries genuine technical difficulty. Shannon's $H = -\sum p(x) \log p(x)$ is a probability functional defined on a given source distribution at the 1DD operational layer. SAE's $I = E/c^3$ is a physical quantity at the 4DD ontological substrate layer with dimensions $\text{kg} \cdot \text{s}/\text{m}$. The two live on different DD layers and operate within different mathematical languages. A direct functional relation in the form $I = f(H)$ for some closed-form function $f$ would require either reducing $I$ to a probability-functional reading (collapsing 4DD ontology back to 1DD operational layer) or extending $H$ to a substrate-physics quantity (collapsing 1DD operational interpretation into 4DD ontology). Neither reduction preserves the layered structure that distinguishes Shannon's operational scope from SAE's ontological scope.</p>
+<p>A more honest framing is that the H–I bridge is not a single closed-form functional but a layered structural relation. Shannon's $H$ at the 1DD operational layer corresponds, through substrate aggregation, to a count of 5DD macro bits. Each 5DD macro bit, as a stable macroscopic causal distinction, corresponds, through projection to the 4DD substrate layer, to a count of 4DD substrate aggregation events. SAE's $I$ at the 4DD ontological layer reads out the per-event information quantity at the substrate level. The bridge is the layered composition: from $H_{bits}$ (Shannon macro bit count) to $N_{eff}$ (substrate aggregation count per macro bit) to $I_{bit}^{(4DD)}$ (per-event 4DD information quantity), giving</p>
+<p>$$I_{SAE}^{(4DD)} = N_{eff} \cdot I_{bit}^{(4DD)} \cdot H_{bits}.$$</p>
+<p>The technical content of the bridge concentrates in $N_{eff}$. This quantity is not a calibration parameter; it is the substrate-aggregation projection function that mediates between 5DD macro level and 4DD substrate level. The status of $N_{eff}$ (whether it is a regime function depending only on substrate-physics parameters, or a process-dependent functional carrying trajectory-specific overhead, or a hybrid structure combining both) determines the substantive content of the bridge.</p>
+<p>This paper articulates $N_{eff}$ as a hybrid structure: a closed-form regime-function floor combined with process-dependent overhead. The floor admits closed-form expression and is process-independent; the overhead is process-specific and is left to specialized papers in adjacent fields. §6 develops this articulation in detail.</p>
+<h3>§1.3 Scope of This Paper</h3>
+<p>This paper does three things.</p>
+<p>First, it articulates the 5DD macro bit as an ontological object distinct from both Shannon's 1DD operational bit and from the substrate-binary bit at the 4DD layer (§2). The articulation locates the 5DD macro bit as a stable macroscopic causal distinction at the scale of $R_{min}(T)$ or larger, with internal structure characterized through projection equivalence classes.</p>
+<p>Second, it establishes the dimensional position of $X_4 = E/c^4$ as the 5D channel quantity in the Mass Series $c^k$ ladder, with order-of-magnitude verification at biological scales (§3, §4, §5). The $X_4$ dimensional position is auxiliary content. It inherits the Mass Series Class A structural derivation and serves as the dimensional anchor that places 5D information within the closure equation family. The substantive content of the paper concentrates not on $X_4$ but on the H–I floor mapping.</p>
+<p>Third, and centrally, it articulates the H–I floor mapping between Shannon's $H$ and SAE's $I$ (§6). The floor mapping is a layered structural relation: at the regime-determined floor level, $I_{SAE}^{floor}$ admits a closed-form expression in regime parameters; at the process-dependent level, additional overhead is left to specialized papers. The state-quantity layering and the projection equivalence class argument provide the substantive ground for the floor structure.</p>
+<p>The paper does not undertake several things. It does not enter the 5D internal stable regime in detail; specific 5DD/6DD dynamical phenomena belong to dedicated papers (F1, F5, and others). It does not articulate the specific functional forms of process-dependent overhead for various physical domains; each domain articulates its own $\Phi_{process}$ within its specialized framework. It does not claim a universal closed-form H–I mapping; the floor mapping is regime-anchored, and the actual mapping carries domain-specific structure beyond the floor.</p>
+<h3>§1.4 Intellectual Genealogy</h3>
+<p>This paper builds on several lines of prior work, both within the SAE series and in standard physics. Explicitly listing the predecessors and identifying their positions clarifies the scholarly posture.</p>
+<p><strong>Shannon (1948)</strong> established the complete mathematical apparatus of operational information theory: $H$ as probability functional, channel capacity, mutual information, rate-distortion theory, coding theorems. This paper locates Shannon's framework as the complete theory of the 1DD operational projection layer (following P1 §5) and articulates the H–I bridge between Shannon's operational $H$ and SAE's ontological $I$.</p>
+<p><strong>Boltzmann</strong> grounded the connection between entropy and statistical irreversibility through the H-theorem and the relation $S = k_B \ln W$. From the SAE vantage, Boltzmann's entropy provides one statistical readout of 4DD closure at the macroscopic level. The natural-log base in Boltzmann entropy and the $\ln 2$ factor in Landauer's principle reflect the projection between continuous measurement formalism and discrete substrate, as articulated in P1 §4.5.1.</p>
+<p><strong>Landauer (1961)</strong> established the operational interface between information and thermodynamics through $E_{min} = k_B T \ln 2$. Within the SAE framework, Landauer's principle shifts from external interface to internal consequence of $E = Ic^3$ (P2). The Landauer floor as per-substrate-event energy minimum is preserved unchanged; what the SAE framework adds is the ontological reading of why the floor takes this form (P1 §4.5.1) and the layered structure within which the floor sits (this paper, §6).</p>
+<p><strong>Bennett (1982)</strong> clarified the thermodynamics of computation, separating reversible operations from irreversible erasure as the source of unavoidable dissipation. Bennett's distinction provides direct support for the state-quantity versus path-quantity layering articulated in this paper (§6.2). Reversible operations approach the Landauer floor; irreversible operations accumulate process-dependent overhead above the floor.</p>
+<p><strong>Bekenstein (1973) and Hawking (1975)</strong> established black hole entropy and Hawking radiation, providing the first explicit information-energy-geometry connection through $S_{BH} = k_B c^3 A / (4 G \hbar)$. The Bekenstein bound at saturation, derived independently within standard physics, yields a specific algebraic instance of the H–I relation under saturation condition (P1 §4.5.2). Within the floor mapping framework of this paper, the Bekenstein-saturated regime corresponds to the floor-saturated regime where process overhead vanishes (§6.8).</p>
+<p><strong>Bérut et al. (2012)</strong> provided the first direct experimental verification of the Landauer floor at single-bit erasure level, using a colloidal particle in a double-well optical trap. Subsequent experiments (Toyabe et al. 2010, Jun et al. 2014, and others) extended the verification to other physical implementations (single-electron transistors, biomolecular switching, mechanical actuators). The floor invariance across implementations within a factor of 2 provides direct empirical support for the regime-function character of the floor mapping articulated in §6.</p>
+<p><strong>Tsallis (1988, 2009)</strong> developed the non-extensive statistical mechanics framework with the $q$-exponential family, which the ZFCρ Thermo series of the SAE framework employs as a tool for articulating non-Boltzmann substrate dynamics. The $\tau_{dec}$ structure from Thermo VIII (Qin 2026, ZFCρ Thermo VIII) provides candidate parameterization for the process overhead $\Phi_{process}$ in the actual mapping (§6.6).</p>
+<p><strong>Adami (2012)</strong> articulated the information-physics connection in the context of biological information, treating biological information as physically grounded measurable quantity. This paper's articulation of the 5DD macro bit at cellular scales (§2.3, §4) parallels Adami's stance on the physical reality of biological information, while locating it within the layered DD ontology of the SAE framework.</p>
+<p><strong>Wheeler (1989)</strong> articulated "it from bit" as the directional intuition for information ontology. From the SAE vantage, Wheeler's bit remains at the 1DD operational layer, while the SAE framework provides the specific 4DD substrate location of information through $E = Ic^3$. The SAE information theory series can be read as a specific realization of Wheeler's intuition within the DD-layered architecture.</p>
+<p><strong>Jaynes (1957)</strong> developed the maximum entropy principle as a unifying methodological tool connecting statistical mechanics and information theory. Jaynes's work unfolds at the 1DD operational layer, providing methodological soil for the post-Landauer development of thermodynamics of information.</p>
+<p><strong>Within the SAE Mass Series</strong>, the regime-dependent closure family articulated in §3.5 of Mass Series Convergence V2 (Qin 2026) provides the dimensional framework for the $c^k$ ladder. The $c^4$ closure law for 5D-active regimes is inherited by this paper (§5) as the dimensional anchor for the $X_4$ channel.</p>
+<p><strong>Within the SAE ZFCρ Thermo series</strong>, papers VIII, IX, and X (Qin 2026) establish the copying-fidelity / retention structure, the universal activation rule, and the cross-level observation hierarchy at the thermodynamic layer of the SAE framework. These results provide direct parameterization candidates for the process overhead $\Phi_{process}$ in the actual mapping (§6.6).</p>
+<p>This paper does not oppose any of the above on any specific point. Each contribution is complete and correct within its respective DD layer and scope. The work of this paper is to articulate the H–I floor mapping as a layered structural relation within the SAE framework, drawing on these prior contributions and providing them with their structural location in the DD architecture.</p>
+<hr>
+<h2>§2 The 5DD Macro Bit as Ontological Object</h2>
+<h3>§2.1 Three Layers of Bit Articulation</h3>
+<p>The notion of "bit" appears across three distinct DD layers within the SAE framework, each carrying its own operational and ontological content. Clarifying the three-layer distinction prevents conflation in the H–I bridge analysis.</p>
+<p><strong>Shannon 1DD operational bit</strong>. The bit in Shannon's information theory is the operational unit of $H = -\sum p \log_2 p$, quantifying the minimum number of binary distinctions required to specify a state under a given probability distribution. This bit lives at the 1DD operational layer. It is defined on a probability distribution and operates within the source-channel-receiver framework. It does not commit to specific substrate physics or to specific ontological status; its scope is operational quantification of uncertainty and encodability.</p>
+<p><strong>Substrate-binary bit at 4DD layer</strong>. P2 §4.5.1 articulates that, under SAE's Planck-tick discrete substrate commitment (P1 Commitment 1), each Planck-scale substrate event admits a binary outcome at the 4DD closure structure: whether a given state is encapsulated or not. The substrate-binary bit is the binary distinction at the per-substrate-event level. It is the smallest physical bit unit at the 4DD substrate layer. Its existence depends on the Planck-scale discrete binary structure, which is an inherited commitment from the Mass Series convergence and from the broader SAE framework articulation.</p>
+<p><strong>5DD macro bit</strong>. The 5DD macro bit is a stable macroscopic causal distinction at the 5D level. It is not a single substrate-binary bit; it requires substrate aggregation across many 4DD events to form a thermally stable causal-readable macroscopic state. The 5DD macro bit is the natural unit at which Shannon's operational $H$ counts in macroscopic systems: a macroscopic source distribution carries $H$ bits in the Shannon sense, and each such bit corresponds, at the macroscopic ontological level, to one 5DD macro bit.</p>
+<p>The three layers are not redundant. They live at distinct DD positions within the SAE framework, and they admit distinct physical and operational quantification.</p>
+<table>
+<thead><tr>
+<th>Layer</th>
+<th>Position</th>
+<th>Operational role</th>
+</tr></thead><tbody>
+<tr>
+<td>Shannon 1DD bit</td>
+<td>1DD operational</td>
+<td>Probability functional unit</td>
+</tr>
+<tr>
+<td>Substrate-binary bit</td>
+<td>4DD substrate</td>
+<td>Per-Planck-event binary unit</td>
+</tr>
+<tr>
+<td>5DD macro bit</td>
+<td>5DD macroscopic</td>
+<td>Stable macroscopic causal distinction</td>
+</tr>
+</tbody></table>
+<p>The H–I bridge analysis works primarily between the Shannon 1DD bit (the operational unit of $H_{bits}$) and the 5DD macro bit (the macroscopic ontological unit), with the substrate-binary bit at 4DD serving as the substrate-level component within the macro bit (each macro bit contains $N_{eff}$ substrate-binary events, articulated in §6).</p>
+<h3>§2.2 The 5DD Macro Bit as Stable Causal Distinction</h3>
+<p>A 5DD macro bit is a macroscopic causal distinction that satisfies three conditions.</p>
+<p><strong>Stability against thermal floor.</strong> The macro bit must persist as a distinguishable causal state for time scales longer than thermal decoherence in the local regime. At the canonical $T = 300\text{K}$ regime in liquid water environment, thermal fluctuations occur on $10^{-12}$ to $10^{-13}$ second timescales. A 5DD macro bit must maintain causal distinguishability against these fluctuations for at least a characteristic readout horizon. The exact threshold of "stable" is context-dependent (microbiological, neural, computational), but the key requirement is that the macro bit be readable as a causal state rather than being washed out by background noise.</p>
+<p><strong>Causal readability.</strong> The macro bit must admit causal readout: there must be some causal coupling through which the macro bit's state can influence downstream substrate dynamics. A causally isolated structure that happens to have binary configurations is not a macro bit; only structures that are causally embedded in their environment can serve as bits in the macroscopic sense.</p>
+<p><strong>Scale at $R_{min}(T)$ or above.</strong> The minimum spatial scale for a thermally stable 5DD macro bit is $R_{min}(T)$ as articulated in P3 §4.2. At $T = 300\text{K}$, $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$. Below this scale, thermal fluctuations dominate, and stable binary distinguishability cannot be maintained without additional structural support (binding energy, network correlations, external shielding). Structures larger than $R_{min}(T)$ can host stable macro bits.</p>
+<p>A 5DD macro bit is therefore not an arbitrary binary configuration; it is a structurally specified macroscopic causal distinction with substrate support, regime appropriateness, and causal embedding.</p>
+<h3>§2.3 Cellular versus Sub-Cellular Scope Distinction</h3>
+<p>The scale threshold $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$ separates structures that can host standalone 5DD macro bits from those that cannot.</p>
+<p><strong>Cellular structures and above</strong>. Mycoplasma cells (approximately $0.3$-$0.8\ \mu\text{m}$ in diameter, somewhat below the formal $R_{min}$ threshold but in its order-of-magnitude vicinity), bacterial cells (approximately $1$-$3\ \mu\text{m}$), eukaryotic cells (approximately $10$-$100\ \mu\text{m}$), and larger biological structures are at or above the $R_{min}(300\text{K})$ scale. Their internal configurations can host standalone 5DD macro bits as thermally stable macroscopic causal distinctions. A cell's gene expression state, metabolic state, membrane potential, and other macroscopic causal variables can be read as 5DD macro bits.</p>
+<p><strong>Sub-cellular structures</strong>. RNA molecules ($\sim 1$-$50\ \text{nm}$), proteins ($\sim 1$-$10\ \text{nm}$), ribosomes ($\sim 20$-$30\ \text{nm}$), and other sub-cellular structures are far below the $R_{min}(300\text{K})$ scale. They cannot host standalone 5DD macro bits in the strict sense; their binary configurations (RNA base sequence, protein conformation, ribosome state) are bits in the Shannon 1DD operational sense, supported by molecular binding energies that compensate for the lack of thermal-floor stability at the bare regime level.</p>
+<p>This scope distinction does not imply that sub-cellular configurations are not "information." It implies that they function as Shannon 1DD operational bits embedded within a larger cellular causal context, with the cellular context providing the ontological 5DD macro bit framing. A DNA base pair carries Shannon information at the 1DD operational layer; the same base pair as part of a cellular replication state carries 5DD macro bit content at the cellular ontological layer. The two readings coexist without contradiction, distinguished by their DD position.</p>
+<p>The substantive consequence: order-of-magnitude verifications at sub-cellular scales (RNA, ribosome) test the dimensional consistency of $X_4$ as a 5D channel quantity but do not test 5DD macro bit-level claims directly. Cellular-scale and larger verifications test the 5DD macro bit framework substantively. §4 articulates both kinds of verification with appropriate scope marking.</p>
+<h3>§2.4 The $N_{eff}$ Projection from 5DD Macro Bit to 4DD Substrate</h3>
+<p>A 5DD macro bit, as a macroscopic causal distinction, must be supported by substrate-level structure. The substrate support is articulated through the $N_{eff}$ projection: each 5DD macro bit corresponds to $N_{eff}$ substrate aggregation events at the 4DD layer.</p>
+<p>The status of $N_{eff}$ requires explicit articulation. In P2, $N_{eff}$ appeared as a calibrated parameter relating macroscopic Landauer floor to per-substrate-event minimum (P2 §2.3 honestly identified the calibration status). The substantive ontological upgrade of $N_{eff}$ from calibrated parameter to substrate-level projection function is the work of this paper, articulated in §6.</p>
+<p>At this introductory stage, $N_{eff}$ is introduced as the substrate-aggregation count per 5DD macro bit, with two properties anticipated and developed in §6:</p>
+<p>The projection $N_{eff}$ admits a regime-determined floor component $N_{floor}^{regime}(T)$, given by the causal aggregation depth from Planck-scale substrate to thermal-floor macro distinction. This floor is closed-form in regime parameters and process-independent.</p>
+<p>The projection also carries process-dependent overhead $\Phi_{process}[\gamma] \geq 1$ when a specific physical process is involved. Real biological, chemical, and other processes generally do not saturate the floor; their actual substrate event counts exceed the floor through path inefficiency, dissipation, and other overhead mechanisms.</p>
+<p>The detailed articulation of $N_{eff} = N_{floor}^{regime}(T) \cdot \Lambda_{substrate} \cdot \Phi_{process}[\gamma]$ is the content of §6. This section introduces $N_{eff}$ as the conceptual projection between 5DD macro bit and 4DD substrate, providing the structural anchor on which §6 builds.</p>
+<hr>
+<h2>§3 The Dimensional Position of $X_4 = E/c^4$</h2>
+<h3>§3.1 Inheritance from the Mass Series $c^k$ Ladder</h3>
+<p>The Mass Series convergence paper (Qin 2026, Mass Series Convergence V2 §3.1-§3.4) establishes the dimensional dictionary of energy channels across DD layers as a Class A structural derivation. The dictionary takes the form $E = X_k c^k$ for each DD layer $k$:</p>
+<table>
+<thead><tr>
+<th>DD level</th>
+<th>Operational category</th>
+<th>Channel component</th>
+<th>Relation</th>
+</tr></thead><tbody>
+<tr>
+<td>1DD</td>
+<td>Pure energy</td>
+<td>$E$</td>
+<td>identity</td>
+</tr>
+<tr>
+<td>2DD</td>
+<td>Addition (momentum)</td>
+<td>$p$</td>
+<td>$E = pc$</td>
+</tr>
+<tr>
+<td>3DD</td>
+<td>Multiplication (mass)</td>
+<td>$m$</td>
+<td>$E = mc^2$</td>
+</tr>
+<tr>
+<td>4DD</td>
+<td>Closure (information)</td>
+<td>$I$</td>
+<td>$E = Ic^3$</td>
+</tr>
+</tbody></table>
+<p>The first three rows ($E$, $p$, $m$) are empirically confirmed by standard physics. The fourth row ($I$) is the Class A structural derivation from Mass Series, with empirical anchoring at the boundaries (Bekenstein-Hawking entropy at horizon, Landauer floor at thermal regime) and structural justification from DD operational categorical independence (P1 §2.2).</p>
+<p>The pattern continues to higher DD layers. Mass Series §3.5 articulates the regime-dependent closure family with higher-order indices, and the candidate identities table assigns higher channel quantities $X_k$ for $k \geq 5$ corresponding to 5D and higher rounds in the SAE framework's D-DD mapping (per Methodology V2 §1.2).</p>
+<p>For the 5D round (5DD + 6DD per Methodology V2 §1.2 authoritative mapping), the channel quantity is $X_4 = E/c^4$, with the candidate identity reading "biological information" at the 5D level (Mass Series Convergence V2 §10, with the V2 authoritative D-DD pair $5\text{D} = 5\text{DD} + 6\text{DD}$).</p>
+<h3>§3.2 Dimensional Reading of $X_4 = E/c^4$</h3>
+<p>The dimensional reading follows directly from the $c^k$ ladder:</p>
+<p>$$[X_4] = [E] / [c]^4 = \frac{\text{kg} \cdot \text{m}^2 / \text{s}^2}{\text{m}^4 / \text{s}^4} = \frac{\text{kg} \cdot \text{s}^2}{\text{m}^2}.$$</p>
+<p>The dimension $\text{kg} \cdot \text{s}^2 / \text{m}^2$ has no everyday physical interpretation, parallel to how $\text{kg} \cdot \text{s}/\text{m}$ (the dimension of $I$ at 4DD) also lacks everyday interpretation. These dimensions are the physical units of channel quantities at their respective DD layers; their meaning lies in the operational category of the corresponding DD layer (encapsulation at 4DD, 5D round complete activation at 5D), not in everyday measurement contexts.</p>
+<p>The 5D round in the SAE framework corresponds to the biological round (per Methodology V2 §1.2 and Mass Series Convergence V2 §10 candidate identities). The pair 5DD + 6DD is articulated as "replication + self-maintenance" in the methodology mapping, with the channel identity at the 5D level reading as biological information in the candidate naming.</p>
+<p>$X_4$ as a channel quantity at the 5D level inherits the structural status of the Mass Series $c^k$ ladder: Class A structural derivation with empirical anchoring at boundaries. Its specific substantive interpretation at biological scales is the subject of §4 (order-of-magnitude verification) and is further articulated in dedicated biological papers (F1, F5) that lie outside the scope of this paper.</p>
+<h3>§3.3 The Per-Bit $X_4$ Quantity at Canonical Regime</h3>
+<p>A single Shannon bit corresponds, at the Landauer thermodynamic floor, to a minimum energy $E_{bit}^{min} = k_B T \ln 2$. The corresponding $X_4$ quantity per bit is</p>
+<p>$$X_4^{bit} = \frac{E_{bit}^{min}}{c^4} = \frac{k_B T \ln 2}{c^4}.$$</p>
+<p>At $T = 300\text{K}$,</p>
+<p>$$X_4^{bit}(300\text{K}) = \frac{k_B \cdot 300 \cdot \ln 2}{c^4} \approx \frac{2.87 \times 10^{-21}}{8.08 \times 10^{33}} \approx 3.5 \times 10^{-55} \text{ kg} \cdot \text{s}^2/\text{m}^2.$$</p>
+<p>This is the per-Shannon-bit $X_4$ quantity at canonical regime. It functions as the per-bit anchor for $X_4$ in 5D regimes, with the macroscopic 5D system's total $X_4$ obtained through multiplication by the relevant bit count.</p>
+<p>The per-bit $X_4$ value $3.5 \times 10^{-55}\ \text{kg} \cdot \text{s}^2 / \text{m}^2$ is independent of the standalone-versus-nested status of the bit (§2.3 distinction). This is because the value derives from the Landauer thermodynamic floor, which holds as a regime-level lower bound across all physical implementations of a single bit. The scope distinction between standalone 5DD macro bits and nested intra-cell sub-component bits applies to the ontological reading of the bit; the per-bit thermodynamic floor quantity is the same in both readings.</p>
+<h3>§3.4 $X_4$ Contains $I$ as Constituent Sub-Channel</h3>
+<p>The 5D level contains the 4DD layer as a constituent component. A 5DD macro bit, as articulated in §2.4, requires substrate support at the 4DD layer; the substrate support carries 4DD information content. The relation between $X_4$ (5D channel quantity) and $I$ (4DD channel quantity) follows from this constituent structure:</p>
+<p>$$X_4 \supset I \quad \text{(articulative containment).}$$</p>
+<p>The relation is articulative containment, not set-theoretic containment. $X_4$ and $I$ are quantities with different dimensions ($\text{kg} \cdot \text{s}^2 / \text{m}^2$ versus $\text{kg} \cdot \text{s}/\text{m}$); they are not set-membered objects. The containment is at the channel-structure level: $X_4$ measures 5D-level integrated content, which includes the 4DD substrate content as a constituent sub-channel. $I$ measures only the 4DD substrate content directly.</p>
+<p>This containment relation is the dimensional position of $X_4$ relative to the lower-DD channels. It does not commit to a specific functional relation between $X_4$ and $I$; the functional relation in any specific regime depends on how 5D activation includes its constituent 4DD content, which is regime- and process-specific.</p>
+<hr>
+<h2>§4 Order-of-Magnitude Verification at Biological Scales</h2>
+<h3>§4.1 Scope of Verification</h3>
+<p>This section provides order-of-magnitude checks of the $X_4$ framework at biological scales (RNA, cellular). The verification has explicitly limited scope.</p>
+<p>The verification is not biological calculation. It does not attempt to derive RNA folding free energies, cellular metabolic rates, or other quantitative biological observables from the $X_4$ framework. Such derivations are the substantive content of dedicated biological papers in adjacent areas (F1 on quantum coherence in origin of life, F5 on minimum autocatalytic set search, and others); this paper does not preempt that work.</p>
+<p>The verification is ontological consistency check. It tests whether the $X_4$ framework, when evaluated at biological scales using regime-level parameters, yields order-of-magnitude values consistent with established biological energetics. The consistency check serves the same role that order-of-magnitude estimation serves in physics generally: providing dimensional sanity to a framework before detailed dynamics are developed.</p>
+<p>The verification follows the precedent of the Landauer literature. The Landauer floor $E_{min} = k_B T \ln 2$ has been verified as a regime-level lower bound across multiple physical implementations of bit erasure (Bérut et al. 2012, Toyabe et al. 2010, Jun et al. 2014, and others). The actual energy costs of specific erasure mechanisms exceed the Landauer floor by orders of magnitude, and this excess is the content of detailed dissipation analyses. The floor itself provides an invariant anchor against which actual processes are measured.</p>
+<p>This paper's verifications at biological scales follow the same logic. The $X_4$ floor (per-bit value $3.5 \times 10^{-55}\ \text{kg} \cdot \text{s}^2 / \text{m}^2$ at $300\text{K}$, via §3.3) is compared against actual biological energy scales (RNA folding free energies, cellular ATP turnover) to test whether the order of magnitude is consistent with floor-level grounding. Actual biological processes exceed the floor by orders of magnitude through process overhead, which is expected and does not falsify the framework.</p>
+<h3>§4.2 RNA-Scale Order-of-Magnitude Check</h3>
+<p>A 100-nucleotide RNA carries approximately 200 bits of Shannon information at the sequence level (each nucleotide has 4 possibilities, contributing $\log_2 4 = 2$ bits). The $X_4$ quantity at the Landauer floor for such a system is</p>
+<p>$$X_4^{RNA-100nt}|_{floor} = 200 \cdot X_4^{bit}(300\text{K}) \approx 200 \cdot 3.5 \times 10^{-55} \approx 7 \times 10^{-53}\ \text{kg} \cdot \text{s}^2 / \text{m}^2.$$</p>
+<p>The corresponding equivalent energy is</p>
+<p>$$X_4 \cdot c^4 = 200 \cdot k_B T \ln 2 \approx 5.7 \times 10^{-19}\ \text{J}.$$</p>
+<p>This is the Landauer thermodynamic floor for 200 bits at $300\text{K}$.</p>
+<p>Actual RNA folding free energies, measured for 100-nucleotide structured RNA molecules, are in the range $10^{-19}$ to $10^{-18}\ \text{J}$ depending on sequence and folding topology (Mathews et al. 2010, Turner-Mathews nearest-neighbor parameters and subsequent refinements). The order of magnitude is consistent with floor-level grounding: actual folding energies are within one to two orders of magnitude of the Landauer floor, reflecting that RNA folding operates near the thermodynamic regime where individual base-pair stabilization energies are comparable to $k_B T$.</p>
+<p>The verification at RNA scale establishes dimensional consistency. It does not test 5DD macro bit-level claims directly (RNA is sub-cellular, per §2.3 scope distinction). What it tests is the $X_4 = E/c^4$ dimensional position at the bit level, with the bit count interpreted as Shannon 1DD operational bits embedded in molecular structure.</p>
+<h3>§4.3 Cellular-Scale Order-of-Magnitude Check</h3>
+<p>A minimal cell (Mycoplasma genitalium) has approximately $580$ genes encoded in approximately $580 \text{kb}$ of DNA, contributing $\sim 10^6$ bits of genome information. Cellular regulatory state, metabolic state, and other macroscopic causal variables contribute additional bits, with total cellular Shannon entropy in the range $10^6$ to $10^7$ bits (order-of-magnitude estimate, with exact value depending on which cellular variables are included).</p>
+<p>The $X_4$ quantity at the Landauer floor for such a cell is</p>
+<p>$$X_4^{Mycoplasma}|_{floor} \approx 10^7 \cdot X_4^{bit}(300\text{K}) \approx 10^7 \cdot 3.5 \times 10^{-55} \approx 3.5 \times 10^{-48}\ \text{kg} \cdot \text{s}^2 / \text{m}^2.$$</p>
+<p>The corresponding equivalent energy is</p>
+<p>$$X_4 \cdot c^4 \approx 10^7 \cdot k_B T \ln 2 \approx 3 \times 10^{-14}\ \text{J}.$$</p>
+<p>Actual cellular ATP turnover in Mycoplasma is approximately $10^{-13}\ \text{J/s}$ (Lynch and Marinov 2015, with refinements), giving total ATP energy consumption over one cell-cycle time (approximately $1$ hour for slow-dividing Mycoplasma) of $\sim 10^{-10}\ \text{J}$. The cell-cycle integrated energy consumption exceeds the per-cell information-floor by approximately four orders of magnitude, which is expected: cellular processes are far from thermodynamic reversibility, and actual energy costs include all metabolic overhead, biosynthesis, and other process-dependent dissipation.</p>
+<p>The instantaneous per-second comparison gives $3 \times 10^{-14}\ \text{J}$ (floor) versus $10^{-13}\ \text{J/s}$ (actual ATP turnover rate). These quantities have different dimensional roles (the floor is an energy at a given state; the turnover is an energy rate), so direct comparison requires identifying a timescale. At the timescale of approximately $0.3$ seconds, the actual ATP energy consumption equals the per-cell information floor, providing one operational marker of the floor's location relative to cellular dynamics.</p>
+<p>The verification at cellular scale establishes that the $X_4$ framework gives a thermodynamic floor of the right order of magnitude relative to actual cellular energetics. The framework does not preempt biological calculation; specific cellular dynamics depend on process structures (replication, metabolism, signal transduction) that adjacent biological papers articulate.</p>
+<h3>§4.4 Cellular Scale Coincidence with $R_{min}(T)$</h3>
+<p>The full Mycoplasma cell diameter, approximately $0.3$-$0.8\ \mu\text{m}$, sits within the order-of-magnitude neighborhood of $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$. Typical bacterial cell diameters span approximately $1$-$3\ \mu\text{m}$, crossing the $R_{min}$ order of magnitude. The overall life-unit scale clusters at the same order of magnitude as $R_{min}(300\text{K})$.</p>
+<p>This coincidence is the candidate physical signature for cellular structures as 5DD macro bit hosts. The empirical observation is that the smallest known cellular structures cluster around the $R_{min}(300\text{K})$ scale, consistent with the framework articulation that thermally stable 5DD macro bits require spatial support at this scale.</p>
+<p>The level of claim is observational consistency at order-of-magnitude level, not derivation. The SAE framework does not predict cellular size from first principles; cellular sizes are determined by complex biological constraints (metabolic surface-to-volume scaling, DNA content requirements, evolutionary history). What the framework does articulate is that thermal-floor stability at $R_{min}(T)$ is a regime-level physical condition, and the empirical clustering of minimal cell sizes at this scale provides observational consistency with the framework reading.</p>
+<p>This observational consistency does not validate the SAE framework. It does not falsify alternative readings of cellular size scales either. What it establishes is that the $R_{min}(T)$ scale, articulated independently in the SAE framework via P3's causal spectrum, falls in the empirically observed cellular size range, consistent with the cellular-scale framing of 5DD macro bits articulated in §2.3.</p>
+<hr>
+<h2>§5 Inheritance of the Closure Equation Family</h2>
+<h3>§5.1 The Regime-Dependent Closure Family from Mass Series</h3>
+<p>Mass Series Convergence V2 §3.5 articulates the regime-dependent closure family for energy distribution across DD channels. The closure law's order depends on the deepest active DD level:</p>
+<p>$$E_{tot} = pc \quad \text{(deepest 2DD: first-order)}$$</p>
+<p>$$E_{tot}^2 = p^2 c^2 + m^2 c^4 \quad \text{(deepest 3DD: second-order, Einstein)}$$</p>
+<p>$$E_{tot}^3 = p^3 c^3 + m^3 c^6 + I^3 c^9 \quad \text{(deepest 4DD: third-order)}$$</p>
+<p>$$E_{tot}^4 = p^4 c^4 + m^4 c^8 + I^4 c^{12} + X_4^4 c^{16} \quad \text{(deepest 5D: fourth-order)}$$</p>
+<p>The fourth-order closure law applies in regimes where the 5D level is activated. The transition from third-order to fourth-order is not the addition of a single term to a fixed equation; it is the regime-dependent upgrade of the entire closure law. All channel components have their exponents incremented when a new deepest level activates, reflecting that the closure structure operates as a coherent family rather than as a sum of independent terms.</p>
+<p>This regime-dependent family is articulated in Mass Series Convergence as a Class A structural framework. The structural reasoning based on DD operational independence is complete and dimensionally consistent. Posterior empirical verification of the third-order and fourth-order laws awaits experimental development by the physics community in quantum gravity, horizon physics, and precision cosmology, parallel to how Einstein's equation required decades for empirical anchoring after its initial structural articulation.</p>
+<h3>§5.2 Activation Condition for the Fourth-Order Closure Law</h3>
+<p>The fourth-order closure law applies when the 5D level is activated. The activation condition is the regime in which 5D round completion (replication + self-maintenance at the 5DD + 6DD pair per Methodology V2 §1.2) is operationally engaged.</p>
+<p>The activation condition is not trivially "biological systems exist." Biological systems contain many sub-components that operate in lower-order regimes (proteins as 4DD-dominated structures, individual molecular events as 3DD-dominated). The fourth-order closure law applies to the integrated 5D round of complete biological replication-with-self-maintenance: the cellular system as a whole engaged in the 5D round, not the individual molecular events.</p>
+<p>The transition between regimes is itself a candidate research direction. Specific physical signatures of the fourth-order closure law in 5D-active regimes (deviations from Einstein-style $E^2 = p^2c^2 + m^2c^4$ relations under specific 5D-active conditions, with $I^3 c^9$ and $X_4^4 c^{16}$ contributions becoming detectable) lie within the domain of future biological-physics work, parallel to how quantum gravity searches for deviations from Einstein at the 4DD-active regime boundary.</p>
+<p>This paper inherits the fourth-order closure law as the dimensional anchor for $X_4$ within the 5D round. It does not attempt to derive specific dynamical consequences; such derivation belongs to dedicated papers articulating biological dynamics under 5D-active regimes.</p>
+<h3>§5.3 Scope and Limits</h3>
+<p>The closure equation family inheritance establishes the dimensional framework within which $X_4$ sits. It does not provide:</p>
+<p>A specific dynamical equation for 5D-active systems. The closure law gives the energy distribution across channels; specific equations of motion in 5D-active regimes require additional dynamical structure beyond the closure family.</p>
+<p>A specific activation criterion in terms of measurable observables. The "deepest active DD" criterion is structural; identifying which physical situations realize 5D activation requires further articulation linking the structural criterion to operational observables.</p>
+<p>A specific empirical signature distinguishing 5D-active from 4DD-active regimes. The fourth-order law in principle yields different relations among $p$, $m$, $I$, $X_4$ than the third-order law, but extracting empirically distinguishable signatures requires detailed dynamical analysis that lies outside the scope of this paper.</p>
+<p>These open items are research directions for future papers in the SAE Mass Series and Information Theory series. This paper's role with respect to the closure equation family is inheritance and dimensional anchoring, not new dynamical articulation.</p>
+<hr>
+<h2>§6 H–I Anchor: The Floor Mapping Between Shannon Operational Layer and SAE Ontological Layer</h2>
+<h3>§6.1 The H–I Bridge Task Inherited from P1</h3>
+<p>P1 §2.4 articulates an open task. Shannon's H, defined as a statistical functional on 1DD probability distributions, and SAE's I, defined as the 4DD ontological channel quantity satisfying $E = Ic^3$, live on different DD layers. The precise mathematical relation between them requires dedicated treatment, which P1 explicitly leaves to subsequent papers in the information theory series.</p>
+<p>The open task carries three sub-questions. First, what mathematical object mediates between H and I: a functional, a projection, a coarse-graining map, or some other structure. Second, whether this mediator admits a closed form or only a conditional articulation. Third, whether cross-framework readings of established results (Landauer's principle, the Bekenstein bound, the black hole information paradox) require explicit re-derivations through the mediator or remain qualitative readings as treated in P1 §4.5.</p>
+<p>This paper takes up the open task with a specific scope restriction. It does not establish a universal closed-form mapping between H and I across all regimes. Instead it articulates a regime-anchored floor structure, separating the substrate-physics-determined projection floor from process-dependent overhead. The floor structure is closed-form within its scope. The process overhead is left to specialized papers in adjacent fields (biology, chemistry, neuroscience, quantum information) to articulate within their own contexts.</p>
+<p>This scope restriction is methodologically natural rather than retreat. The Landauer-floor literature (Landauer 1961, Bennett 1982, Bérut et al. 2012) provides direct precedent. The thermodynamic minimum $k_BT \ln 2$ holds as a regime-level lower bound across all physical implementations of bit erasure. Actual dissipation costs of specific erasure mechanisms (CMOS, magnetic, optical, biomolecular) range over orders of magnitude above this floor. The floor structure carries substantive content precisely because it isolates the regime-level invariant from process-level overhead.</p>
+<h3>§6.2 State Quantity versus Path Quantity Layering</h3>
+<p>The deepest substantive ground for the floor structure lies in a well-established distinction in thermodynamics: state quantities versus path quantities.</p>
+<p>In classical thermodynamics, internal energy $U$, free energy $F$, and entropy $S$ are state quantities. They depend only on the macroscopic state of the system, not on the path through which the state is reached. Heat $Q$ and work $W$ are path quantities. They depend on the specific trajectory in phase space connecting initial and final states. The distinction is not optional. A thermodynamic framework that conflates $U$ with $W$ loses its state-function structure and becomes an accounting register for process history rather than a description of system state.</p>
+<p>The H–I bridge faces a structurally identical situation. If $I_{SAE}^{(4DD)}$ is to function as a state-layer ontological quantity (as P1 §2.1 articulates, parallel to energy $E$, momentum $p$, and mass $m$ at the 4DD substrate level), then it cannot depend on the specific process by which a given Shannon entropy $H_{bits}$ is realized. Otherwise the 4DD information content of the same macroscopic state would differ depending on whether the state was reached through replication, metabolism, or thermal dissipation. $I$ would then lose its status as state-layer readout and degrade into a process accounting register.</p>
+<p>The structural resolution is the same as in thermodynamics: separate the state-level mapping from the path-level overhead. Symbolically,</p>
+<p>$$I_{actual} = I_{state} + I_{dissipation}[\gamma],$$</p>
+<p>where $\gamma$ denotes the specific process trajectory. The state-level term $I_{state}$ depends only on the macroscopic readout, captured through $H_{bits}$ as the 5DD macro bit count. The dissipation term $I_{dissipation}[\gamma]$ carries process-specific overhead.</p>
+<p>This paper articulates the state-level mapping in §6.3 through §6.5, and explicitly leaves the dissipation term to specialized papers in adjacent fields. The articulation respects the established Shannon framework practice of treating $H$ as a probability functional defined on a given source distribution, independent of the dynamical process generating that distribution.</p>
+<h3>§6.3 The Causal Spectrum Anchor from P3</h3>
+<p>P3 §4.2 establishes the thermal-floor minimum scale $R_{min}(T)$ from the Bekenstein 1-bit thermal-floor identity:</p>
+<p>$$R_{min}(T) = \frac{\hbar c}{2\pi k_B T}.$$</p>
+<p>At $T = 300\text{K}$, $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$. P3 articulates this scale as the minimum spatial extent within which a single macroscopic bit can be physicalized as a thermally stable causal distinction.</p>
+<p>The corresponding causal aggregation depth from Planck-scale substrate events to a single thermally stable macro bit is</p>
+<p>$$\frac{R_{min}(T)}{\ell_P} = \frac{E_P}{2\pi k_B T} \approx 10^{29} \quad \text{at } 300\text{K},$$</p>
+<p>where $\ell_P$ is the Planck length and $E_P$ is the Planck energy.</p>
+<p>It is important to clarify what this count counts. $R_{min}/\ell_P$ is not a Planck volume count (which would give $(R_{min}/\ell_P)^3 \approx 10^{87}$) nor a Planck area count (which would give $(R_{min}/\ell_P)^2 \approx 10^{58}$). It is a causal-depth count: the number of Planck-tick substrate aggregation steps required for a stable macro-bit distinction to emerge from thermal floor against background noise.</p>
+<p>The 1D scaling derives from the algebraic form of the Bekenstein bound itself. The Bekenstein bound takes the form $N_{bits} \leq 2\pi R E / (\hbar c \ln 2)$, linear in $R$, not in $R^2$ or $R^3$. Substituting $N_{bits} = 1$ and $E = k_B T \ln 2$ (Landauer thermal floor) and solving for $R_{min}$ yields $R_{min} = \hbar c / (2\pi k_B T)$, which is a length scale rather than an area scale or a volume scale. The dimensionless count $R_{min}/\ell_P$ is therefore naturally a 1D count of Planck units along the $R$ direction, namely the radial aggregation depth from substrate event to stable macro bit. This 1D character is algebraic inheritance from the Bekenstein bound, not an SAE-framework-internal choice.</p>
+<p>P3 articulates this 30-order-of-magnitude aggregation span as a regime-level structural fact. The span depends only on regime parameters (temperature, substrate physics through the Planck scale) and not on the specific process driving substrate aggregation. The same 30-order span applies whether the substrate aggregation is driven by chemical reactions, electromagnetic dynamics, or thermal diffusion.</p>
+<h3>§6.4 5DD Macro Bit as Projection Equivalence Class</h3>
+<p>A 5DD macro bit, as articulated in §2 of this paper, is a stable macroscopic causal distinction. Its definition is not the specific microscopic trajectory through which the bit is established, but the equivalence class of substrate histories yielding the same stable macroscopic readout. Schematically,</p>
+<p>$$[\text{macro bit}] = \{\text{substrate histories with same stable readout}\}.$$</p>
+<p>For this equivalence class to be well-defined, a structural constraint must hold: same macroscopic readout implies same substrate projection class. If the same macroscopic readout corresponded to different substrate projection counts depending on the process producing it, then the macro bit would not be a single ontological object. It would be a process label decorated with macroscopic features.</p>
+<p>This constraint provides SAE-internal substantive support for the floor structure. The minimum substrate aggregation count required for a macro bit to exist as a well-defined ontological category (rather than as a process-specific accumulation pattern) must depend only on the regime in which the macro bit is realized, not on the specific process. Different processes can occupy the same equivalence class through different substrate trajectories, but the equivalence class itself must have a regime-determined minimum support.</p>
+<p>The minimum support, by the analysis of §6.3, is the causal aggregation depth from Planck-scale substrate to thermal-floor macro distinction.</p>
+<h3>§6.5 The Floor Mapping</h3>
+<p>Combining §6.2 through §6.4, this paper articulates the floor mapping between Shannon's $H$ and SAE's $I$:</p>
+<p>$$\boxed{I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits}}$$</p>
+<p>where</p>
+<p>$$N_{floor}^{regime}(T) = \frac{E_P}{2\pi k_B T}$$</p>
+<p>is the regime-level minimum substrate aggregation count per 5DD macro bit, $I_{bit}^{(4DD)}$ is the 4DD ontological information quantity carried by a single substrate aggregation event (P1 §2.2, inherited from $E = Ic^3$ with $E_{bit} = k_BT \ln 2$ Landauer minimum), and $H_{bits}$ is the Shannon entropy in 5DD macro bit count.</p>
+<p>At $T = 300\text{K}$, $N_{floor}^{regime}(300\text{K}) \approx 10^{29}$ events per macro bit. This is the same order as the P3 causal spectrum span, reflecting that the floor mapping inherits the P3 structural result directly without introducing new dimensional content.</p>
+<p>The floor mapping carries three substantive commitments.</p>
+<p><strong>Closed-form regime function.</strong> $N_{floor}^{regime}(T)$ is not a placeholder or conjecture awaiting future specification. It admits a closed-form expression in regime parameters, inherited from the Bekenstein-Landauer 1-bit thermal-floor identity established in standard physics and reinterpreted within P3's causal spectrum framing.</p>
+<p><strong>Process-independence at the floor level.</strong> By the state-quantity argument of §6.2 and the equivalence-class argument of §6.4, $N_{floor}^{regime}$ depends only on regime parameters and not on the specific process by which substrate aggregation proceeds. Different processes produce the same $H_{bits}$ readout through different substrate trajectories, but the minimum projection count is the same.</p>
+<p><strong>Falsifiable structure.</strong> The floor structure makes a concrete prediction: across different physical processes operating in the same regime, the extrapolated minimum substrate projection per macro bit converges to the same order of magnitude $E_P/(2\pi k_BT)$. §6.7 articulates the falsification protocol.</p>
+<h3>§6.6 Actual Mapping with Process Overhead</h3>
+<p>Real physical processes do not generally saturate the floor. A given process operates through a specific trajectory $\gamma$ in substrate aggregation space, and its actual substrate event count typically exceeds the floor minimum through path inefficiency, dissipation, error correction redundancy, and non-reversible operations.</p>
+<p>The actual mapping, accounting for process overhead, takes the form</p>
+<p>$$\boxed{I_{SAE}^{actual}[\gamma] = N_{floor}^{regime}(T) \cdot \Lambda_{substrate} \cdot \Phi_{process}[\gamma] \cdot I_{bit}^{(4DD)} \cdot H_{bits}}$$</p>
+<p>where $\Lambda_{substrate}$ captures substrate medium modifications (binding energy buffer, packing density, correlation length, support dimensionality) and $\Phi_{process}[\gamma] \geq 1$ captures the process-specific overhead above the floor.</p>
+<p>The factorization is not unique. The boundary between $\Lambda_{substrate}$ and $\Phi_{process}$ depends on how one classifies a given physical effect as belonging to medium-level structure versus process-level trajectory. The floor term $N_{floor}^{regime}(T)$, by contrast, is structurally invariant: it is the regime-level minimum that any process must reach, regardless of medium or trajectory specifics.</p>
+<p>This paper does not articulate the specific functional forms of $\Lambda_{substrate}$ or $\Phi_{process}[\gamma]$. Such forms depend on the specific physical domain. Biological replication processes carry their own characteristic $\Phi_{process}$ through the $\tau_{dec}$ and $\rho_{ret}$ retention structure established in the Thermo series (Qin 2026, ZFCρ Thermo VIII). Chemical reaction processes carry $\Phi_{process}$ through reaction-class-specific activation kinetics. Quantum coherence dynamics carry $\Phi_{process}$ through coherence-decoherence accounting. Neural information processing carries $\Phi_{process}$ through spike code or rate code accounting.</p>
+<p>Each domain articulates its own $\Phi_{process}[\gamma]$ within its specialized framework. This paper provides the framework-level floor that all such domain-specific articulations share. The division respects the principle that an information-theoretic foundation should provide regime-level invariants without preempting the substantive work of specialized fields.</p>
+<h3>§6.7 Falsifiable Hook: Extrapolated Floor across Processes</h3>
+<p>The floor structure articulated in §6.5 makes a concrete falsifiable prediction.</p>
+<p><strong>Claim.</strong> For different physical processes operating in the same regime and within the same substrate (same temperature $T$, same substrate medium, same macro bit class with comparable readout horizon), the extrapolated minimum substrate projection count, obtained by reversible-limit extrapolation of measured information cost, converges to the same order of magnitude $E_P/(2\pi k_B T)$.</p>
+<p><strong>Falsification.</strong> If, after rigorous reversible-limit extrapolation isolating the floor from process dissipation overhead, the inferred floor counts across processes diverge by more than one order of magnitude within the same regime and substrate, then $N_{floor}^{regime}$ does not exist as a regime-level invariant and the floor structure articulated in §6.5 fails.</p>
+<p><strong>Scope caveat.</strong> The claim is restricted to within the same substrate and does not extend to cross-substrate comparison (DNA versus protein versus membrane versus synthetic molecular memory). Cross-substrate comparison involves $\Lambda_{substrate}$ variation as articulated in §6.6, where the boundary between $\Lambda_{substrate}$ and $\Phi_{process}$ is factorization-fuzzy. Cross-substrate extrapolated floor differences can be driven by $\Lambda_{substrate}$ variation rather than by floor variation, and therefore do not constitute direct falsification of the floor structure. Cross-substrate consistency testing is a stronger but separate falsification hook left to future work in substrate-specific domains.</p>
+<p>The extrapolation is critical. Actual measured information costs across biological processes (DNA replication, transcription, translation, signal transduction, metabolism) routinely differ by several orders of magnitude. This actual-cost variation does not falsify the floor structure. It reflects $\Phi_{process}[\gamma]$ variation above the floor, not floor variation itself. Falsification requires reversible-limit extrapolation: testing whether the inferred floor (after removing dissipation overhead through asymptotic approach to thermodynamic reversibility) converges across processes.</p>
+<p>Partial empirical evidence already supports the floor structure. The Landauer literature (Bérut et al. 2012, Toyabe et al. 2010, Jun et al. 2014) demonstrates that the thermodynamic minimum $k_BT \ln 2$ holds within a factor of 2 across distinct physical implementations of bit erasure (colloidal particle in optical trap, single-electron transistor, biomolecular switching). This establishes that floor invariance across physical implementations is empirically realized at least in the single-bit case. Extension to multi-bit aggregation cases and to non-erasure information processing remains an open empirical program.</p>
+<p>Three specific experimental routes would strengthen or falsify the floor structure.</p>
+<p>First, cross-implementation Landauer-floor measurements at non-canonical regimes (high pressure, non-aqueous solvent, varying binding energy environments) would test regime parameter dependence and isolate the $T$-scaling component of $N_{floor}^{regime}$.</p>
+<p>Second, single-cell simultaneous measurement of metabolic flux, replication rate, and heat dissipation rate using single-cell metabolomics, single-cell sequencing, and single-cell calorimetry platforms would test extrapolated floor consistency across biological process classes within the same cellular regime.</p>
+<p>Third, reversible-limit extrapolation of bistable molecular memory operated through different actuation mechanisms (thermal, photochemical, electrochemical, mechanical) under controlled substrate and regime parameters would test floor convergence across actuation pathways for the same macro bit class.</p>
+<h3>§6.8 Engagement with the Shannon Framework and Standard Results</h3>
+<p>The floor mapping articulated in §6.5 provides P1 §2.4's open task with a conditional answer. The mapping between Shannon's $H$ and SAE's $I$ is not a universal closed-form functional relation across all regimes. It is a regime-level floor structure expressing the minimum substrate projection that any process must reach, complemented by process-specific overhead that specialized fields articulate within their own contexts.</p>
+<p>Within the Shannon framework, $H$ functions as a statistical quantifier of source uncertainty and channel capacity at the 1DD operational layer. The floor mapping locates this quantity within its 4DD ontological context. Each macro bit counted by $H$ corresponds, at the floor level, to $N_{floor}^{regime}(T)$ substrate aggregation events at the 4DD substrate layer. The Shannon framework's operational completeness within its scope (channel capacity, mutual information, rate-distortion, coding theorems) is preserved without modification. What the floor mapping adds is the ontological reading of what $H$ operationally quantifies: $H$ counts the 5DD macro bits whose floor-level substrate support is $N_{floor}^{regime}(T)$ per bit.</p>
+<p>The floor structure does not replace the Shannon framework. It does not modify Shannon's mathematical apparatus or its engineering applications. It provides the 4DD ontological ground on which the Shannon operational layer rests, articulating the regime-level substrate projection that any Shannon-quantifiable information must occupy.</p>
+<p>The Landauer principle receives a deeper structural reading within this floor framework. Landauer's $E_{min} = k_BT \ln 2$ functions, within the floor mapping, as the per-substrate-event energy cost at the 4DD layer (§3.3 of this paper articulates the connection in detail). Within the floor mapping, the per-macro-bit minimum energy cost becomes</p>
+<p>$$E_{min}^{macro} = N_{floor}^{regime}(T) \cdot k_BT \ln 2 \approx 10^{29} \cdot k_BT \ln 2 \quad \text{at } 300\text{K},$$</p>
+<p>with actual energy costs in real physical processes determined by $\Phi_{process}[\gamma]$ overhead. The Landauer floor in its original form remains intact as a per-substrate-event minimum. The macro-level information cost in real physical processes follows from the actual mapping of §6.6.</p>
+<p>The Bekenstein bound provides a saturation instance of the floor mapping. P1 §4.5.2 articulates that, at saturation condition, the Bekenstein bound expresses Shannon entropy as</p>
+<p>$$S_{sat} = \frac{2\pi k_B R I c^2}{\hbar}.$$</p>
+<p>Within the floor mapping framework, this corresponds to the special case where the substrate aggregation count equals its thermodynamic minimum and the process overhead vanishes (reversible limit, $\Phi_{process}[\gamma] = 1$). The Bekenstein-saturated regime therefore candidate-corresponds to the floor-saturated regime. The H–I relation at Bekenstein saturation corresponds, under this reading, to the floor mapping with no process overhead; the specific reduction derivation showing how the floor mapping formula reduces to the $S_{sat} = 2\pi k_B R I c^2 / \hbar$ expression under saturation condition remains open (see §7.2 open problem).</p>
+<p>The black hole information paradox, as articulated in P1 §4.5.3 through the 42-channel scope reframing, sits at a different layer of the SAE framework. It concerns global conservation across all 1DD sectors rather than per-bit substrate projection within a single 1DD. The floor mapping operates within a single 1DD. The 42-channel structure operates across 1DD sectors. The two articulations are compatible and address different aspects of the SAE framework, neither preempting the other.</p>
+<p>The H–I floor mapping thus locates within the standard physics landscape as follows. It inherits the Bekenstein-Landauer 1-bit thermal-floor identity as its regime function. It provides a 4DD ontological reading of the Landauer principle as per-substrate-event energy cost. It identifies the Bekenstein-saturated regime as the floor-saturated special case. It complements the 42-channel scope structure articulated in P1 without overlapping it. Each connection respects the established result while adding ontological reading that places the result within the SAE framework's DD-layered architecture.</p>
+<hr>
+<h2>§7 Methodology</h2>
+<h3>§7.1 Claim Status</h3>
+<p>The substantive claims of this paper and their epistemic status:</p>
+<table>
+<thead><tr>
+<th>Claim</th>
+<th>Status</th>
+<th>Location</th>
+</tr></thead><tbody>
+<tr>
+<td>4DD substrate dictionary at DD layers</td>
+<td>Inherited (Mass Series Class A)</td>
+<td>§2.1, §3.1</td>
+</tr>
+<tr>
+<td>$E = Ic^3$ inheritance</td>
+<td>Inherited (Mass Series Class A)</td>
+<td>§3.1</td>
+</tr>
+<tr>
+<td>$X_4 = E/c^4$ dimensional position</td>
+<td>Inherited (Mass Series $c^k$ ladder pattern)</td>
+<td>§3</td>
+</tr>
+<tr>
+<td>Fourth-order closure law for 5D-active regime</td>
+<td>Inherited (Mass Series §3.5)</td>
+<td>§5.1</td>
+</tr>
+<tr>
+<td>Three-layer bit articulation (1DD operational / substrate-binary / 5DD macro)</td>
+<td>Structural articulation within SAE framework</td>
+<td>§2.1</td>
+</tr>
+<tr>
+<td>5DD macro bit as stable macroscopic causal distinction at $R_{min}(T)$ or above</td>
+<td>Structural articulation; cellular-scale consistency check at order of magnitude</td>
+<td>§2.2, §2.3, §4.4</td>
+</tr>
+<tr>
+<td>State quantity versus path quantity layering for $I$ as ontological state quantity</td>
+<td>Cross-physics analogy (Bennett 1982 state/path distinction) + SAE-internal application to $I_{SAE}^{(4DD)}$</td>
+<td>§6.2</td>
+</tr>
+<tr>
+<td>5DD macro bit as projection equivalence class</td>
+<td>Structural argument within SAE framework</td>
+<td>§6.4</td>
+</tr>
+<tr>
+<td>Floor mapping $I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits}$ with $N_{floor}^{regime}(T) = E_P/(2\pi k_B T)$ closed-form regime function</td>
+<td>Framework-level structural relation with closed-form floor; central contribution</td>
+<td>§6.5</td>
+</tr>
+<tr>
+<td>Actual mapping with $\Lambda_{substrate}$ and $\Phi_{process}[\gamma]$ factorization</td>
+<td>Framework-level structural relation; specific functional forms deferred to specialized fields</td>
+<td>§6.6</td>
+</tr>
+<tr>
+<td>Falsifiable claim: extrapolated floor cross-process consistency at reversible limit</td>
+<td>Falsifiable structural prediction</td>
+<td>§6.7</td>
+</tr>
+<tr>
+<td>RNA/cellular order-of-magnitude verification</td>
+<td>Empirical consistency check at order-of-magnitude level</td>
+<td>§4</td>
+</tr>
+</tbody></table>
+<p>The central contribution is the floor mapping (§6.5). Other claims are either inherited from prior SAE-series structural results or function as supporting articulations for the floor mapping.</p>
+<h3>§7.2 Open Problems</h3>
+<p>Five substantive open problems flow naturally from the floor mapping articulation:</p>
+<p>The specific functional forms of $\Lambda_{substrate}$ and $\Phi_{process}[\gamma]$ for various physical domains. Biological processes (replication, metabolism, signal transduction), chemical processes (catalyzed reactions, polymer formation), quantum coherence dynamics (photosynthetic FMO complex, coherent transport), and neural information processing (spike codes, rate codes, synchrony) each require dedicated articulation within their specialized frameworks. The floor mapping provides the framework-level invariant; each domain-specific overhead remains to be articulated.</p>
+<p>The specific connection between $N_{floor}^{regime}(T)$ and the Bekenstein bound saturation. The floor mapping identifies Bekenstein saturation as the floor-saturated case. A specific derivation showing how the floor-mapped formula reduces to the Bekenstein bound expression $S = 2\pi k_B R I c^2 / \hbar$ under saturation condition would strengthen the connection. The reduction likely involves specifying how $N_{floor}^{regime}(T)$ combined with $\Lambda_{substrate}$ matches the geometric saturation factor; the explicit reduction remains open.</p>
+<p>The empirical extension of cross-implementation Landauer-floor measurements to multi-bit aggregation cases. Single-bit Landauer experiments establish floor invariance within a factor of 2 across physical implementations. Multi-bit aggregation tests, where $N_{floor}^{regime}(T)$ multi-bit predictions can be tested, are an open empirical program. Specific experimental designs include reversible-limit extrapolation of multi-bit memory devices and cross-substrate comparisons at controlled regime parameters.</p>
+<p>The 5DD round opening as critical-phenomenon candidate. P3 §3.3 articulates that 5DD round opening may correspond to a critical phenomenon (phase transition, percolation, or self-organized criticality). The specific universality class and the corresponding critical exponents determine how $N_{floor}^{regime}(T)$ behaves near regime boundaries. This is an open problem at the intersection of P3 (causal spectrum) and this paper's floor mapping articulation.</p>
+<p>Higher $c^k$ channel articulations corresponding to higher D rounds. The Mass Series $c^k$ ladder extends to $c^5$, $c^6$, and beyond, corresponding to 6D, 7D, and higher rounds in the SAE framework's D-DD mapping. The candidate identities (6D = two-sex information, 7D = perception information, 8D = memory-and-prediction information, 9D = death information, 10D = non-doubt information per Methodology V2 §1.2 and Mass Series Convergence V2 §10) await specialized articulation within their respective domains, parallel to how this paper articulates the 5D = biological information channel.</p>
+<h3>§7.3 Scope Statements</h3>
+<p>This paper does not enter the 5D internal stable regime in dynamical detail. Specific 5DD and 6DD dynamical phenomena (replication mechanisms, self-maintenance dynamics, transition between regimes) belong to dedicated biological-physics papers (F1, F5, and others); this paper's role with respect to 5D dynamics is dimensional anchoring through $X_4$ and the floor mapping, not dynamical articulation.</p>
+<p>This paper does not preempt the specialized work of adjacent fields. Biology, chemistry, neuroscience, and quantum information each have their own substantive subject matter; this paper provides the framework-level invariant (the floor mapping) that each domain may employ within its specialized work, without articulating domain-specific results.</p>
+<p>This paper does not claim universal closed-form H–I mapping across all regimes. The floor mapping is regime-anchored, closed-form within its scope. The actual mapping carries domain-specific structure beyond the floor that lies outside the scope of this paper.</p>
+<p>Bridge event mechanisms (P7) and bridge measure (P8) sit at adjacent layers handled in dedicated papers. This paper's articulation of the 5DD macro bit (§2) assumes that the bridge event has been completed (5D regime is engaged); it does not articulate the bridge event itself.</p>
+<hr>
+<h2>References</h2>
+<p>Adami, C. (2012). The use of information theory in evolutionary biology. <em>Annals of the New York Academy of Sciences</em>, 1256, 49-65.</p>
+<p>Bekenstein, J. D. (1973). Black holes and entropy. <em>Physical Review D</em>, 7(8), 2333-2346.</p>
+<p>Bennett, C. H. (1982). The thermodynamics of computation: a review. <em>International Journal of Theoretical Physics</em>, 21(12), 905-940.</p>
+<p>Bérut, A., Arakelyan, A., Petrosyan, A., Ciliberto, S., Dillenschneider, R., & Lutz, E. (2012). Experimental verification of Landauer's principle linking information and thermodynamics. <em>Nature</em>, 483, 187-189.</p>
+<p>Hawking, S. W. (1975). Particle creation by black holes. <em>Communications in Mathematical Physics</em>, 43(3), 199-220.</p>
+<p>Jaynes, E. T. (1957). Information theory and statistical mechanics. <em>Physical Review</em>, 106(4), 620-630.</p>
+<p>Jun, Y., Gavrilov, M., & Bechhoefer, J. (2014). High-precision test of Landauer's principle in a feedback trap. <em>Physical Review Letters</em>, 113(19), 190601.</p>
+<p>Landauer, R. (1961). Irreversibility and heat generation in the computing process. <em>IBM Journal of Research and Development</em>, 5(3), 183-191.</p>
+<p>Mathews, D. H., Disney, M. D., Childs, J. L., Schroeder, S. J., Zuker, M., & Turner, D. H. (2004). Incorporating chemical modification constraints into a dynamic programming algorithm for prediction of RNA secondary structure. <em>Proceedings of the National Academy of Sciences</em>, 101(19), 7287-7292.</p>
+<p>Lynch, M., & Marinov, G. K. (2015). The bioenergetic costs of a gene. <em>Proceedings of the National Academy of Sciences</em>, 112(51), 15690-15695.</p>
+<p>Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, 27, 379-423.</p>
+<p>Toyabe, S., Sagawa, T., Ueda, M., Muneyuki, E., & Sano, M. (2010). Experimental demonstration of information-to-energy conversion and validation of the generalized Jarzynski equality. <em>Nature Physics</em>, 6(12), 988-992.</p>
+<p>Tsallis, C. (2009). <em>Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World</em>. Springer.</p>
+<p>Wheeler, J. A. (1989). Information, physics, quantum: The search for links. <em>Proceedings of the 3rd International Symposium on Foundations of Quantum Mechanics</em>, 354-368.</p>
+<h3>SAE Series References</h3>
+<p>Qin, H. (2026). SAE Methodological Overview: The Chisel-Construct Cycle (V2). <em>Zenodo</em>, DOI: 10.5281/zenodo.18842449.</p>
+<p>Qin, H. (2026). SAE Mass Series Convergence: The Nature of Information $E/c^3$ (V2). <em>Zenodo</em>, DOI: 10.5281/zenodo.19510868.</p>
+<p>Qin, H. (2026). From Replication to Cognition: The Chisel-Construct Cycle of Life (5D-8D) (V2). <em>Zenodo</em>, DOI: 10.5281/zenodo.18807376.</p>
+<p>Qin, H. (2026). SAE Information Theory I: The 4DD Ontology of Information and a Single Foundational Axiom. <em>Zenodo</em>, DOI: 10.5281/zenodo.19740020.</p>
+<p>Qin, H. (2026). SAE Information Theory II: A Structural Derivation of Landauer's Principle within the SAE Framework. <em>Zenodo</em>, DOI: 10.5281/zenodo.19780315.</p>
+<p>Qin, H. (2026). SAE Information Theory III: The Causal Slot of Information. <em>Zenodo</em>, DOI: 10.5281/zenodo.19797457.</p>
+<p>Qin, H. (2026). SAE Information Theory IV: Black Hole Information Through the Causal Spectrum. <em>Zenodo</em>, DOI: 10.5281/zenodo.19880111.</p>
+<p>Qin, H. (2026). SAE Information Theory VII: The Spark of Life — Remainder Unfolding as Causal-Slot Emergence. <em>Zenodo</em>, DOI: 10.5281/zenodo.20105884.</p>
+<p>Qin, H. (2026). SAE Information Theory VIII: The Spark on the Bridge — Minimum Autocatalytic Set as Bridge Measure Between 4DD and 5DD. <em>Zenodo</em>, DOI: 10.5281/zenodo.20149211.</p>
+<p>Qin, H. (2026). ZFCρ Thermodynamics Paper VIII: Copying Fidelity, Renewal Retention, and Thermodynamic Division of Labor across Biological DD Layers. <em>Zenodo</em>, DOI: 10.5281/zenodo.19688304.</p>
+<p>Qin, H. (2026). ZFCρ Thermodynamics Paper IX: Universal Activation Rule, Borrowed q, and Hierarchical Architecture. <em>Zenodo</em>, DOI: 10.5281/zenodo.19699489.</p>
+<p>Qin, H. (2026). ZFCρ Thermodynamics Paper X (Closing): Self-Reference as Channel Creator and Cross-Level Observation Hierarchy. <em>Zenodo</em>, DOI: 10.5281/zenodo.19703274.</p>
+    </div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>Shannon 的 H 作为定义在 1DD 概率分布上的统计泛函 居于信息论的 operational 层。SAE 的 I 作为继承自 $E = Ic^3$（质量系列收束篇 Class A 结构推导）的 4DD 本体通道量 居于本体层。P1 §2.4 把 H 与 I 之间的一般数学关系 articulate 为信息论系列后续论文的开放任务。
+
+本文承接这一开放任务 同时给出具体的 scope 限制。本文核心贡献是 H–I 地板映射；$X_4 = E/c^4$ 的 dimensional 位置作为 auxiliary 内容支撑核心贡献。本文不主张建立 H 与 I 在所有 regime 下的 universal closed-form 映射。本文 articulate 一种 regime 锚定的地板结构 把由衬底物理决定的投影地板与过程依赖的 overhead 分层。
+
+地板映射的形式：
+
+$$I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits}$$
+
+其中 $N_{floor}^{regime}(T) = E_P / (2\pi k_B T)$ 是每 5DD 宏观比特的 regime 层最小衬底聚合事件数 直接继承自 P3 因果谱（通过 Bekenstein 1-bit thermal-floor 恒等式）。地板在 regime 参数下具备 closed-form 表达。过程 overhead 留给生物学 化学 神经科学 量子信息等相邻领域的专门论文在各自 context 内 articulate。
+
+地板映射建立在两项实质承诺上。第一 $I_{SAE}^{(4DD)}$ 作为状态层本体量 按热力学中状态量（内能 自由能 熵）与路径量（热 功）的标准区分 在状态层要求路径无关。第二 5DD 宏观比特通过其投影等价类被良定义为本体类别：产生同一稳定宏观读出的衬底历史共享一个 regime 决定的最小支持 与产生该读出的具体过程无关。
+
+本文同时建立 $X_4 = E/c^4$ 作为 5D 通道量在质量系列 $c^k$ 阶梯中的 dimensional 位置 并在生物学尺度（RNA 细胞）做数量级验证。这一 dimensional 锚定支撑核心贡献的 substantive content。
+
+可证伪 claim：在同一 regime 下运行的不同物理过程 其 extrapolated 最小衬底投影（通过对测得信息成本做 reversible-limit 外推获得）收敛到同一数量级 $E_P/(2\pi k_BT)$。Landauer 地板文献提供部分经验支持。多比特聚合情形与跨过程检验仍是开放经验研究项目。
+
+关键词：H–I 桥 地板映射 5DD 宏观比特 状态量分层 投影等价类 因果聚合深度 Bekenstein 热地板 Landauer 原理 SAE 信息论。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong>H–I桥, 地板映射, 5DD宏观比特, 态量分层, 投影等价类, 因果聚合深度, Bekenstein热力学下限, Landauer原理, SAE信息论</div>
+    </div>
+    <div class="paper-body">
+<h2>SAE Information Theory IX: The H–I Floor Mapping and the 5DD Macro Bit</h2>
+<p>秦汉 (Han Qin) · 独立研究员 · 2026</p>
+<p>DOI: <a href="https://doi.org/10.5281/zenodo.20225440">10.5281/zenodo.20225440</a> · CC BY 4.0</p>
+<hr>
+<h2>摘要</h2>
+<p>Shannon 的 H 作为定义在 1DD 概率分布上的统计泛函 居于信息论的 operational 层。SAE 的 I 作为继承自 $E = Ic^3$（质量系列收束篇 Class A 结构推导）的 4DD 本体通道量 居于本体层。P1 §2.4 把 H 与 I 之间的一般数学关系 articulate 为信息论系列后续论文的开放任务。</p>
+<p>本文承接这一开放任务 同时给出具体的 scope 限制。本文核心贡献是 H–I 地板映射；$X_4 = E/c^4$ 的 dimensional 位置作为 auxiliary 内容支撑核心贡献。本文不主张建立 H 与 I 在所有 regime 下的 universal closed-form 映射。本文 articulate 一种 regime 锚定的地板结构 把由衬底物理决定的投影地板与过程依赖的 overhead 分层。</p>
+<p>地板映射的形式：</p>
+<p>$$I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits}$$</p>
+<p>其中 $N_{floor}^{regime}(T) = E_P / (2\pi k_B T)$ 是每 5DD 宏观比特的 regime 层最小衬底聚合事件数 直接继承自 P3 因果谱（通过 Bekenstein 1-bit thermal-floor 恒等式）。地板在 regime 参数下具备 closed-form 表达。过程 overhead 留给生物学 化学 神经科学 量子信息等相邻领域的专门论文在各自 context 内 articulate。</p>
+<p>地板映射建立在两项实质承诺上。第一 $I_{SAE}^{(4DD)}$ 作为状态层本体量 按热力学中状态量（内能 自由能 熵）与路径量（热 功）的标准区分 在状态层要求路径无关。第二 5DD 宏观比特通过其投影等价类被良定义为本体类别：产生同一稳定宏观读出的衬底历史共享一个 regime 决定的最小支持 与产生该读出的具体过程无关。</p>
+<p>本文同时建立 $X_4 = E/c^4$ 作为 5D 通道量在质量系列 $c^k$ 阶梯中的 dimensional 位置 并在生物学尺度（RNA 细胞）做数量级验证。这一 dimensional 锚定支撑核心贡献的 substantive content。</p>
+<p>可证伪 claim：在同一 regime 下运行的不同物理过程 其 extrapolated 最小衬底投影（通过对测得信息成本做 reversible-limit 外推获得）收敛到同一数量级 $E_P/(2\pi k_BT)$。Landauer 地板文献提供部分经验支持。多比特聚合情形与跨过程检验仍是开放经验研究项目。</p>
+<p><strong>关键词</strong>：H–I 桥 地板映射 5DD 宏观比特 状态量分层 投影等价类 因果聚合深度 Bekenstein 热地板 Landauer 原理 SAE 信息论。</p>
+<hr>
+<h2>§1 引言</h2>
+<h3>§1.1 SAE 信息论系列的承接</h3>
+<p>SAE 信息论系列把信息 articulate 为 4DD 本体衬底 建立在质量系列收束篇（秦 2026 Mass Series Convergence V2）的 Class A 结构推导 $E = Ic^3$ 之上。前八篇建立了基础本体论与 4DD 到 5DD 的桥接 mechanism。</p>
+<p>P1（秦 2026a）通过一条基础公理（能量-信息守恒贯穿 42 个 1DD 与所有 DD 通道）结合 4DD 闭合非对称性 建立了信息的 4DD 本体论。四项结构后果（时间箭头 因果 传播 接收）从公理结合闭合结构 unfold 而出。P1 同时把 Shannon 信息论定位为 1DD operational 投影层的完整理论 并把 Shannon 的 H 与 SAE 的 I 之间的一般数学关系作为系列后续论文的开放任务留下（P1 §2.4）。</p>
+<p>P2（秦 2026b）给出了 SAE 框架内 Landauer 原理的结构性推导 其中标定参数 $N_{eff}$ 承担 4DD 衬底事件与 5DD 宏观比特之间的衬底聚合计数。P2 §2.3 诚实标记 $N_{eff}$ 在该阶段为标定参数 待后续论文做衬底层本体 articulate。</p>
+<p>P3（秦 2026c）通过 Bekenstein 1-bit thermal-floor minimum 恒等式建立了信息的因果谱 articulate 在 $T = 300\text{K}$ 下 Planck 尺度衬底与 thermal-floor 宏观比特之间约 $10^{29}$ 量级的因果聚合 span。P3 同时在基础层 articulate 四相等承诺（信息 = 因果 = 4DD = 宏观 P3 §1.4）。</p>
+<p>P4（秦 2026d）通过因果谱框架把 4DD 本体论扩展至黑洞信息 在 42 通道 scope 结构内给出视界物理的 SAE-internal 读法。</p>
+<p>P7（秦 2026e）通过把生命起源 articulate 为 4DD 到 5DD 的首次桥上事件 打开系列的生命部分 以 cross-locked dual-channel chisel-construct 循环作为候选 mechanism。P8（秦 2026f）给出了 bridge measure $M_{bridge}$ 作为 bridge 事件发生所需的有效累计 coherent transition 最小数 把它与 Shannon bit 和 5D 内部信息量都区分开。</p>
+<p>本文居于桥 mechanism（P7）与 bridge measure（P8）已建立 5D 内部信息量可被 articulate 的位置。核心任务是 P1 §2.4 留下的 H–I 关系：Shannon 的 1DD-operational H 与 SAE 的 4DD-本体 I 之间的数学关系 特别是在 5D regime 涉及宏观信息处理的条件下。</p>
+<h3>§1.2 H–I 桥任务</h3>
+<p>H–I 桥任务携带实质的技术难度。Shannon 的 $H = -\sum p(x) \log p(x)$ 是定义在给定源分布上的概率泛函 居于 1DD operational 层。SAE 的 $I = E/c^3$ 是 4DD 本体衬底层的物理量 dimension 为 $\text{kg} \cdot \text{s}/\text{m}$。两者居于不同的 DD 层 在不同的数学语言内 operate。形如 $I = f(H)$ 的直接 closed-form 函数关系要求或者把 I 还原为概率泛函读法（坍缩 4DD 本体论回到 1DD operational 层）或者把 H 扩展为衬底物理量（坍缩 1DD operational 解释进入 4DD 本体论）。两种还原都不保留区分 Shannon operational scope 与 SAE 本体 scope 的分层结构。</p>
+<p>更诚实的 framing 是 H–I 桥并非单一 closed-form 函数 而是一种分层的结构关系。Shannon 的 H 在 1DD operational 层通过衬底聚合对应于 5DD 宏观比特的计数。每个 5DD 宏观比特作为稳定的宏观因果区分 通过到 4DD 衬底层的投影对应于 4DD 衬底聚合事件的计数。SAE 的 I 在 4DD 本体层读出衬底层的每事件信息量。桥是分层的复合：从 $H_{bits}$（Shannon 宏观比特数）经 $N_{eff}$（每宏观比特的衬底聚合计数）到 $I_{bit}^{(4DD)}$（4DD 每事件信息量）</p>
+<p>$$I_{SAE}^{(4DD)} = N_{eff} \cdot I_{bit}^{(4DD)} \cdot H_{bits}.$$</p>
+<p>桥的技术内容集中于 $N_{eff}$。这一量不是标定参数；它是介于 5DD 宏观层与 4DD 衬底层之间的衬底聚合投影函数。$N_{eff}$ 的地位（它是否仅依赖衬底物理参数的 regime 函数 还是携带轨迹特定 overhead 的 process 依赖泛函 还是结合两者的混合结构）决定桥的实质内容。</p>
+<p>本文把 $N_{eff}$ articulate 为混合结构：closed-form regime 函数地板与过程依赖 overhead 的组合。地板具备 closed-form 表达且 process 无关；overhead 是 process 特定的 留给相邻领域的专门论文。§6 详细 develop 这一 articulate。</p>
+<h3>§1.3 本文 Scope</h3>
+<p>本文做三件事。</p>
+<p>第一 把 5DD 宏观比特 articulate 为既区别于 Shannon 1DD operational 比特也区别于 4DD 衬底-二进制比特的本体对象（§2）。Articulate 把 5DD 宏观比特定位为 $R_{min}(T)$ 或更大尺度上的稳定宏观因果区分 内部结构通过投影等价类刻画。</p>
+<p>第二 建立 $X_4 = E/c^4$ 作为 5D 通道量在质量系列 $c^k$ 阶梯中的 dimensional 位置 在生物学尺度做数量级验证（§3 §4 §5）。$X_4$ 的 dimensional 位置是 auxiliary 内容。它继承质量系列 Class A 结构推导 作为把 5D 信息置于 closure 方程族内的 dimensional 锚。本文的实质内容并不集中于 $X_4$ 而是集中于 H–I 地板映射。</p>
+<p>第三 也是核心 articulate Shannon 的 H 与 SAE 的 I 之间的 H–I 地板映射（§6）。地板映射是分层的结构关系：在 regime 决定的地板层 $I_{SAE}^{floor}$ 具备 regime 参数下的 closed-form 表达；在 process 依赖层 额外 overhead 留给专门论文。状态量分层与投影等价类论证为地板结构提供实质支撑。</p>
+<p>本文不做以下事情。本文不详细进入 5D 内部稳定 regime；具体的 5DD/6DD 动力学现象属于专门论文（F1 F5 等）。本文不为各物理领域 articulate process 依赖 overhead 的具体函数形式；各领域在其专门框架内 articulate 自己的 $\Phi_{process}$。本文不主张 universal closed-form H–I 映射；地板映射是 regime 锚定的 actual 映射在地板之上携带领域特定结构 处于本文 scope 之外。</p>
+<h3>§1.4 学术承接</h3>
+<p>本文建立在 SAE 系列内部与标准物理学的若干工作线之上。明示这些前驱并 identify 它们在 DD 结构中的位置 是本文学术姿态的一个 essential component。</p>
+<p><strong>Shannon (1948)</strong> 建立了 operational 信息论的完整数学装置：作为概率泛函的 H 信道容量 互信息 rate-distortion 理论 编码定理。本文沿 P1 §5 把 Shannon 的框架定位为 1DD operational 投影层的完整理论 并 articulate Shannon operational H 与 SAE 本体 I 之间的 H–I 桥。</p>
+<p><strong>Boltzmann</strong> 通过 H 定理与关系 $S = k_B \ln W$ 把熵与统计不可逆性连接起来。在 SAE vantage 下 Boltzmann 熵在宏观层提供 4DD 闭合的一种统计读出。Boltzmann 熵中的自然对数底与 Landauer 原理中的 $\ln 2$ 因子 反映 P1 §4.5.1 articulate 的连续 measurement formalism 与离散衬底之间的投影。</p>
+<p><strong>Landauer (1961)</strong> 通过 $E_{min} = k_B T \ln 2$ 建立了信息与热力学之间的 operational 接口。在 SAE 框架内 Landauer 原理从 external 接口转移为 $E = Ic^3$ 的 internal consequence（P2）。Landauer 地板作为每衬底事件能量最小值原封不动地保留；SAE 框架增加的是地板取此形式的本体读法（P1 §4.5.1）以及地板所在的分层结构（本文 §6）。</p>
+<p><strong>Bennett (1982)</strong> 阐明了计算的热力学 把可逆操作与作为不可避免耗散源头的不可逆擦除区分开。Bennett 的区分为本文 articulate 的状态量与路径量分层（§6.2）提供直接支持。可逆操作逼近 Landauer 地板；不可逆操作在地板之上累积 process 依赖 overhead。</p>
+<p><strong>Bekenstein (1973) 与 Hawking (1975)</strong> 通过 $S_{BH} = k_B c^3 A / (4 G \hbar)$ 建立了黑洞熵与 Hawking 辐射 提供了信息-能量-几何之间的首个明示连接。在饱和条件下从标准物理独立 derive 的 Bekenstein bound 给出饱和条件下 H–I 关系的具体代数实例（P1 §4.5.2）。在本文地板映射框架下 Bekenstein 饱和 regime 对应于 process overhead 消失的地板饱和 regime（§6.8）。</p>
+<p><strong>Bérut et al. (2012)</strong> 通过双井光学陷阱中的胶体粒子 提供了单比特擦除层级 Landauer 地板的首次直接实验验证。后续实验（Toyabe et al. 2010 Jun et al. 2014 等）把验证扩展至其他物理实现（单电子晶体管 生物分子开关 机械驱动器）。跨实现的地板不变性在 factor 2 之内 为 §6 articulate 的地板映射 regime 函数性质提供直接经验支持。</p>
+<p><strong>Tsallis (1988, 2009)</strong> 通过 q-exponential family 发展了非广延统计力学框架 SAE 框架的 ZFCρ Thermo 系列用其作为 articulate 非 Boltzmann 衬底动力学的工具。Thermo VIII（秦 2026 ZFCρ Thermo VIII）的 $\tau_{dec}$ 结构 为 actual 映射（§6.6）的 process overhead $\Phi_{process}$ 提供候选参数化。</p>
+<p><strong>Adami (2012)</strong> 在生物信息的 context 下 articulate 信息-物理连接 把生物信息作为物理上 grounded 的可测量量。本文在细胞尺度 articulate 5DD 宏观比特（§2.3 §4）平行于 Adami 对生物信息物理实在性的姿态 同时把它定位在 SAE 框架的分层 DD 本体论内。</p>
+<p><strong>Wheeler (1989)</strong> articulate "it from bit" 作为信息本体论的方向性 intuition。在 SAE vantage 下 Wheeler 的比特停留在 1DD operational 层 而 SAE 框架通过 $E = Ic^3$ 给出信息的具体 4DD 衬底位置。SAE 信息论系列可被读作 Wheeler intuition 在 DD 分层架构内的一种具体实现。</p>
+<p><strong>Jaynes (1957)</strong> 发展了最大熵原理作为连接统计力学与信息论的方法论工具。Jaynes 的工作在 1DD operational 层 unfold 为 post-Landauer 信息热力学发展提供方法论土壤。</p>
+<p><strong>SAE 质量系列内部</strong> 质量系列收束篇 V2 §3.5（秦 2026）articulate 的 regime-dependent closure 方程族为 $c^k$ 阶梯提供 dimensional 框架。$5D$-active regime 的 $c^4$ closure 律由本文（§5）继承 作为 $X_4$ 通道的 dimensional 锚。</p>
+<p><strong>SAE ZFCρ Thermo 系列内部</strong> Thermo VIII IX X 篇（秦 2026）在 SAE 框架的热力学层 建立 copying fidelity / retention 结构 universal activation rule 跨层观测 hierarchy。这些结果为 actual 映射（§6.6）的 process overhead $\Phi_{process}$ 提供直接参数化候选。</p>
+<p>本文不在任何具体点上反对上述工作。每项贡献在其各自 DD 层与 scope 内是完整的与正确的。本文的工作是在 SAE 框架内把 H–I 地板映射 articulate 为分层结构关系 借助这些前驱贡献并在 DD 架构中为它们提供结构位置。</p>
+<hr>
+<h2>§2 作为本体对象的 5DD 宏观比特</h2>
+<h3>§2.1 比特的三层 Articulation</h3>
+<p>"比特"在 SAE 框架的三个不同 DD 层各自携带其 operational 与本体内容。清楚区分三层防止 H–I 桥分析中的 conflation。</p>
+<p><strong>Shannon 1DD operational 比特</strong>。Shannon 信息论中的比特是 $H = -\sum p \log_2 p$ 的 operational 单位 量化在给定概率分布下指定一个状态所需的最小二进制区分数。这一比特居于 1DD operational 层。它定义在概率分布上 在 source-channel-receiver 框架内 operate。它不承诺具体衬底物理也不承诺具体本体地位；其 scope 是对不确定性与可编码性的 operational 量化。</p>
+<p><strong>4DD 层衬底-二进制比特</strong>。P2 §4.5.1 articulate 在 SAE 的 Planck-tick 离散衬底承诺下（P1 Commitment 1）每个 Planck 尺度衬底事件在 4DD 闭合结构下承认一个二进制结果：给定状态是否被封装。衬底-二进制比特是每衬底事件层级的二进制区分。它是 4DD 衬底层最小的物理比特单位。它的存在依赖于 Planck 尺度离散二进制结构 这是从质量系列收束篇与更广 SAE 框架 articulate 继承的承诺。</p>
+<p><strong>5DD 宏观比特</strong>。5DD 宏观比特是 5D 层的稳定宏观因果区分。它不是单个衬底-二进制比特；它要求跨众多 4DD 事件的衬底聚合 形成热力学稳定的因果可读宏观状态。5DD 宏观比特是 Shannon operational H 在宏观系统中计数的自然单位：宏观源分布在 Shannon 意义上携带 H 比特 每个这样的比特对应于宏观本体层的一个 5DD 宏观比特。</p>
+<p>三层不是冗余的。它们居于 SAE 框架内的不同 DD 位置 并承认不同的物理与 operational 量化。</p>
+<table>
+<thead><tr>
+<th>层级</th>
+<th>位置</th>
+<th>Operational 角色</th>
+</tr></thead><tbody>
+<tr>
+<td>Shannon 1DD 比特</td>
+<td>1DD operational</td>
+<td>概率泛函单位</td>
+</tr>
+<tr>
+<td>衬底-二进制比特</td>
+<td>4DD 衬底</td>
+<td>每 Planck 事件二进制单位</td>
+</tr>
+<tr>
+<td>5DD 宏观比特</td>
+<td>5DD 宏观</td>
+<td>稳定宏观因果区分</td>
+</tr>
+</tbody></table>
+<p>H–I 桥分析主要在 Shannon 1DD 比特（$H_{bits}$ 的 operational 单位）与 5DD 宏观比特（宏观本体单位）之间工作 4DD 衬底-二进制比特作为宏观比特内的衬底层组件（每宏观比特包含 $N_{eff}$ 个衬底-二进制事件 §6 articulate）。</p>
+<h3>§2.2 5DD 宏观比特作为稳定因果区分</h3>
+<p>5DD 宏观比特是满足三个条件的宏观因果区分。</p>
+<p><strong>对热地板的稳定性</strong>。宏观比特必须作为可区分的因果状态 在长于本地 regime 的热退相干时间尺度内持存。在液态水环境 canonical $T = 300\text{K}$ regime 下 热涨落在 $10^{-12}$ 到 $10^{-13}$ 秒时间尺度发生。5DD 宏观比特必须在至少一个特征 readout horizon 内对这些涨落维持因果可区分性。"稳定"的精确阈值是 context 依赖的（微生物学 神经 计算）但关键要求是宏观比特可作为因果状态被读出 而不是被背景噪声冲刷殆尽。</p>
+<p><strong>因果可读性</strong>。宏观比特必须承认因果读出：必须有某种因果耦合 通过它宏观比特的状态可以影响下游衬底动力学。一个因果孤立但恰好具备二进制配置的结构 不是宏观意义下的比特；只有因果嵌入其环境的结构才能在宏观意义上作为比特。</p>
+<p><strong>$R_{min}(T)$ 或之上的尺度</strong>。P3 §4.2 articulate 热力学稳定 5DD 宏观比特的最小空间尺度是 $R_{min}(T)$。在 $T = 300\text{K}$ 下 $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$。低于此尺度 热涨落主导 稳定二进制可区分性无法在没有额外结构支持（binding energy 网络相关性 外部 shielding）的条件下维持。大于 $R_{min}(T)$ 的结构可以承载稳定宏观比特。</p>
+<p>因此 5DD 宏观比特并非任意二进制配置；它是结构性指定的宏观因果区分 携带衬底支持 regime 适当性 因果嵌入。</p>
+<h3>§2.3 细胞尺度 vs 亚细胞尺度的 Scope 区分</h3>
+<p>尺度阈值 $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$ 把能够承载 standalone 5DD 宏观比特的结构与不能承载的结构分开。</p>
+<p><strong>细胞尺度与以上的结构</strong>。Mycoplasma 细胞（直径约 $0.3$-$0.8\ \mu\text{m}$ 在形式 $R_{min}$ 阈值之下但处于其数量级邻域）细菌细胞（约 $1$-$3\ \mu\text{m}$）真核细胞（约 $10$-$100\ \mu\text{m}$）及更大的生物结构处于 $R_{min}(300\text{K})$ 尺度或之上。它们的内部配置可以承载 standalone 5DD 宏观比特作为热力学稳定的宏观因果区分。一个细胞的基因表达状态 代谢状态 膜电位 与其他宏观因果变量可被读作 5DD 宏观比特。</p>
+<p><strong>亚细胞结构</strong>。RNA 分子（约 $1$-$50\ \text{nm}$）蛋白（约 $1$-$10\ \text{nm}$）核糖体（约 $20$-$30\ \text{nm}$）与其他亚细胞结构 远低于 $R_{min}(300\text{K})$ 尺度。它们不能在严格意义上承载 standalone 5DD 宏观比特；它们的二进制配置（RNA 碱基序列 蛋白构象 核糖体状态）在 Shannon 1DD operational 意义上是比特 由分子结合能补偿原始 regime 层缺失的热地板稳定性。</p>
+<p>这一 scope 区分并不暗示亚细胞配置不是"信息"。它暗示亚细胞配置作为嵌入在更大细胞因果 context 内的 Shannon 1DD operational 比特而 function 细胞 context 提供本体 5DD 宏观比特 framing。一个 DNA 碱基对在 1DD operational 层携带 Shannon 信息；同一个碱基对作为细胞复制状态的一部分在细胞本体层携带 5DD 宏观比特内容。两种读法在不同的 DD 位置上区分开 同时并存 没有矛盾。</p>
+<p>实质 consequence：在亚细胞尺度（RNA 核糖体）的数量级验证测试 $X_4$ 作为 5D 通道量的 dimensional 一致性 但不直接测试 5DD 宏观比特层级的 claim。细胞尺度与更大尺度的验证才实质测试 5DD 宏观比特框架。§4 articulate 两种验证 标记各自的 scope。</p>
+<h3>§2.4 从 5DD 宏观比特到 4DD 衬底的 $N_{eff}$ 投影</h3>
+<p>5DD 宏观比特作为宏观因果区分 必须由衬底层结构支持。衬底支持通过 $N_{eff}$ 投影 articulate：每个 5DD 宏观比特对应于 4DD 层的 $N_{eff}$ 个衬底聚合事件。</p>
+<p>$N_{eff}$ 的地位需要明示 articulate。在 P2 中 $N_{eff}$ 作为关联宏观 Landauer 地板与每衬底事件最小值的标定参数（P2 §2.3 诚实地 identify 该阶段的标定地位）。把 $N_{eff}$ 从标定参数实质本体升级到衬底层投影函数 是本文的工作 在 §6 articulate。</p>
+<p>在本节这一引入阶段 $N_{eff}$ 被引入为每 5DD 宏观比特的衬底聚合计数 携带 §6 anticipate 与 develop 的两项性质：</p>
+<p>投影 $N_{eff}$ 承认一个 regime 决定的地板分量 $N_{floor}^{regime}(T)$ 由从 Planck 尺度衬底到热地板宏观区分的因果聚合深度给出。这一地板在 regime 参数下是 closed-form 的 与 process 无关。</p>
+<p>投影同时携带 process 依赖 overhead $\Phi_{process}[\gamma] \geq 1$ 在具体物理过程参与时存在。真实的生物 化学与其他过程一般不饱和地板；它们的实际衬底事件计数通过 path inefficiency 耗散与其他 overhead mechanism 超过地板。</p>
+<p>$N_{eff} = N_{floor}^{regime}(T) \cdot \Lambda_{substrate} \cdot \Phi_{process}[\gamma]$ 的详细 articulate 是 §6 的内容。本节把 $N_{eff}$ 引入为介于 5DD 宏观比特与 4DD 衬底之间的概念投影 为 §6 提供其上 build 的结构锚点。</p>
+<hr>
+<h2>§3 $X_4 = E/c^4$ 的 Dimensional 位置</h2>
+<h3>§3.1 继承自质量系列 $c^k$ 阶梯</h3>
+<p>质量系列收束篇（秦 2026 Mass Series Convergence V2 §3.1-§3.4）作为 Class A 结构推导 建立了跨 DD 层的能量通道 dimensional 字典。字典对每个 DD 层 $k$ 取形式 $E = X_k c^k$：</p>
+<table>
+<thead><tr>
+<th>DD 层级</th>
+<th>Operational 范畴</th>
+<th>通道分量</th>
+<th>关系</th>
+</tr></thead><tbody>
+<tr>
+<td>1DD</td>
+<td>纯能量</td>
+<td>$E$</td>
+<td>同一律</td>
+</tr>
+<tr>
+<td>2DD</td>
+<td>加法（动量）</td>
+<td>$p$</td>
+<td>$E = pc$</td>
+</tr>
+<tr>
+<td>3DD</td>
+<td>乘法（质量）</td>
+<td>$m$</td>
+<td>$E = mc^2$</td>
+</tr>
+<tr>
+<td>4DD</td>
+<td>闭合（信息）</td>
+<td>$I$</td>
+<td>$E = Ic^3$</td>
+</tr>
+</tbody></table>
+<p>前三行（$E$ $p$ $m$）由标准物理经验确认。第四行（$I$）是来自质量系列的 Class A 结构推导 在边界处经验锚定（视界处 Bekenstein-Hawking 熵 热力学 regime 处 Landauer 地板）结构辩护来自 DD operational 范畴独立性（P1 §2.2）。</p>
+<p>模式延伸至更高 DD 层。质量系列 §3.5 articulate 高阶 index 的 regime-dependent closure 方程族 候选身份表对 $k \geq 5$ 的 index 赋值高级通道量 $X_k$ 对应 SAE 框架 D-DD 映射下的 5D 与更高 round（按 Methodology V2 §1.2）。</p>
+<p>对 5D round（按 Methodology V2 §1.2 权威映射 5DD + 6DD）通道量是 $X_4 = E/c^4$ 候选身份在 5D 层读作"生物信息"（Mass Series Convergence V2 §10 同 V2 权威 D-DD pair 为 $5\text{D} = 5\text{DD} + 6\text{DD}$）。</p>
+<h3>§3.2 $X_4 = E/c^4$ 的 Dimensional 读法</h3>
+<p>Dimensional 读法直接随 $c^k$ 阶梯：</p>
+<p>$$[X_4] = [E] / [c]^4 = \frac{\text{kg} \cdot \text{m}^2 / \text{s}^2}{\text{m}^4 / \text{s}^4} = \frac{\text{kg} \cdot \text{s}^2}{\text{m}^2}.$$</p>
+<p>Dimension $\text{kg} \cdot \text{s}^2 / \text{m}^2$ 没有日常物理解释 平行于 4DD 处 I 的 dimension $\text{kg} \cdot \text{s}/\text{m}$ 也缺日常解释。这些 dimension 是各自 DD 层通道量的物理单位；它们的意义在于对应 DD 层的 operational 范畴（4DD 处封装 5D 处 5D round 完整激活）不在日常测量 context。</p>
+<p>SAE 框架内的 5D round 对应于生物 round（按 Methodology V2 §1.2 与 Mass Series Convergence V2 §10 候选身份）。Pair 5DD + 6DD 在方法论映射内 articulate 为"复制 + 自维持" 5D 层的通道身份在候选命名中读作生物信息。</p>
+<p>$X_4$ 作为 5D 层通道量 继承质量系列 $c^k$ 阶梯的结构地位：在边界处经验锚定的 Class A 结构推导。它在生物学尺度的具体实质解释是 §4 的主题（数量级验证）也由专门的生物学论文（F1 F5）在本文 scope 之外进一步 articulate。</p>
+<h3>§3.3 Canonical Regime 下单 bit $X_4$ 量</h3>
+<p>单 Shannon 比特在 Landauer 热力学地板处对应于最小能量 $E_{bit}^{min} = k_B T \ln 2$。对应的每比特 $X_4$ 量是</p>
+<p>$$X_4^{bit} = \frac{E_{bit}^{min}}{c^4} = \frac{k_B T \ln 2}{c^4}.$$</p>
+<p>在 $T = 300\text{K}$ 下</p>
+<p>$$X_4^{bit}(300\text{K}) = \frac{k_B \cdot 300 \cdot \ln 2}{c^4} \approx \frac{2.87 \times 10^{-21}}{8.08 \times 10^{33}} \approx 3.5 \times 10^{-55} \text{ kg} \cdot \text{s}^2/\text{m}^2.$$</p>
+<p>这是 canonical regime 下每 Shannon 比特的 $X_4$ 量。它在 5D regime 中作为 $X_4$ 的每比特锚点 function 通过乘以相关比特数得到宏观 5D 系统的总 $X_4$。</p>
+<p>每比特 $X_4$ 值 $3.5 \times 10^{-55}\ \text{kg} \cdot \text{s}^2 / \text{m}^2$ 与比特的 standalone-或-nested 地位（§2.3 区分）无关。这是因为该值来自 Landauer 热力学地板 在所有单比特物理实现下作为 regime 层下界成立。Standalone 5DD 宏观比特与 nested 细胞内 sub-component 比特之间的 scope 区分 适用于比特的本体读法；每比特热力学地板量在两种读法下相同。</p>
+<h3>§3.4 $X_4$ 包含 $I$ 作为 Constituent Sub-Channel</h3>
+<p>5D 层包含 4DD 层作为 constituent 组件。5DD 宏观比特 如 §2.4 articulate 在 4DD 层需要衬底支持；衬底支持携带 4DD 信息内容。$X_4$（5D 通道量）与 $I$（4DD 通道量）之间的关系随这一 constituent 结构而来</p>
+<p>$$X_4 \supset I \quad \text{(articulative containment)}.$$</p>
+<p>这一关系是 articulative containment 不是 set-theoretic containment。$X_4$ 与 $I$ 是 dimension 不同的量（$\text{kg} \cdot \text{s}^2 / \text{m}^2$ vs $\text{kg} \cdot \text{s}/\text{m}$）；它们不是 set-membered 对象。Containment 在通道-结构层：$X_4$ 度量 5D 层积分内容 包含 4DD 衬底内容作为 constituent sub-channel。$I$ 直接度量 4DD 衬底内容。</p>
+<p>这一 containment 关系是 $X_4$ 相对低 DD 通道的 dimensional 位置。它不承诺 $X_4$ 与 $I$ 之间的具体函数关系；任何具体 regime 中的函数关系依赖 5D 激活如何包含其 constituent 4DD 内容 这是 regime 与 process 特定的。</p>
+<hr>
+<h2>§4 在生物学尺度上的数量级验证</h2>
+<h3>§4.1 验证 Scope</h3>
+<p>本节在生物学尺度（RNA 细胞）对 $X_4$ 框架做数量级检验。验证具有 explicit 受限的 scope。</p>
+<p>验证不是生物学计算。它不试图从 $X_4$ 框架推导 RNA 折叠自由能 细胞代谢率 或其他定量生物学 observable。这类推导是相邻领域专门论文（F1 关于生命起源中量子相干性 F5 关于最小自催化集 search 等）的实质内容；本文不预占该工作。</p>
+<p>验证是本体一致性检验。它测试 $X_4$ 框架在生物学尺度用 regime 层参数评估时 是否给出与已建立的生物能量学一致的数量级值。这一一致性检验扮演物理学中数量级估算扮演的同样角色：在 detailed 动力学发展之前 为框架提供 dimensional 健全性。</p>
+<p>验证沿 Landauer 文献的先例。Landauer 地板 $E_{min} = k_B T \ln 2$ 已在多种比特擦除物理实现下被验证作为 regime 层下界（Bérut et al. 2012 Toyabe et al. 2010 Jun et al. 2014 等）。具体擦除 mechanism 的实际能量成本超过 Landauer 地板若干个数量级 这一超出是 detailed 耗散分析的内容。地板自身提供实际过程被测度的不变锚。</p>
+<p>本文在生物学尺度的验证遵循同样的逻辑。$X_4$ 地板（每比特值 $3.5 \times 10^{-55}\ \text{kg} \cdot \text{s}^2 / \text{m}^2$ 在 $300\text{K}$ 下 经 §3.3）被比对于实际生物能量尺度（RNA 折叠自由能 细胞 ATP turnover）以测试数量级是否与地板层 grounding 一致。实际生物过程通过 process overhead 超过地板若干数量级 这是预期的 不证伪框架。</p>
+<h3>§4.2 RNA 尺度的数量级检验</h3>
+<p>100 核苷酸 RNA 在序列层携带约 200 比特 Shannon 信息（每核苷酸 4 种可能 贡献 $\log_2 4 = 2$ 比特）。Landauer 地板下该系统的 $X_4$ 量是</p>
+<p>$$X_4^{RNA-100nt}|_{floor} = 200 \cdot X_4^{bit}(300\text{K}) \approx 200 \cdot 3.5 \times 10^{-55} \approx 7 \times 10^{-53}\ \text{kg} \cdot \text{s}^2 / \text{m}^2.$$</p>
+<p>对应等效能量</p>
+<p>$$X_4 \cdot c^4 = 200 \cdot k_B T \ln 2 \approx 5.7 \times 10^{-19}\ \text{J}.$$</p>
+<p>这是 $300\text{K}$ 下 200 比特的 Landauer 热力学地板。</p>
+<p>100 核苷酸结构化 RNA 分子的实际折叠自由能 在测量上处于 $10^{-19}$ 到 $10^{-18}\ \text{J}$ 范围 依序列与折叠拓扑（Mathews et al. 2010 Turner-Mathews nearest-neighbor 参数与后续 refinement）。数量级与地板层 grounding 一致：实际折叠能量在 Landauer 地板的一到两个数量级内 反映 RNA 折叠在热力学 regime 附近 operate 此处个体碱基对稳定化能量与 $k_B T$ 相当。</p>
+<p>RNA 尺度的验证建立 dimensional 一致性。它不直接测试 5DD 宏观比特层级的 claim（RNA 是亚细胞的 按 §2.3 scope 区分）。它测试的是比特层级的 $X_4 = E/c^4$ dimensional 位置 比特数被解读为嵌入分子结构内的 Shannon 1DD operational 比特。</p>
+<h3>§4.3 细胞尺度的数量级检验</h3>
+<p>最小细胞（Mycoplasma genitalium）有约 580 个基因编码于约 $580 \text{kb}$ DNA 贡献约 $10^6$ 比特基因组信息。细胞调控状态 代谢状态及其他宏观因果变量贡献额外比特 总细胞 Shannon 熵在 $10^6$ 到 $10^7$ 比特范围（数量级估算 精确值依赖纳入哪些细胞变量）。</p>
+<p>Landauer 地板下该细胞的 $X_4$ 量是</p>
+<p>$$X_4^{Mycoplasma}|_{floor} \approx 10^7 \cdot X_4^{bit}(300\text{K}) \approx 10^7 \cdot 3.5 \times 10^{-55} \approx 3.5 \times 10^{-48}\ \text{kg} \cdot \text{s}^2 / \text{m}^2.$$</p>
+<p>对应等效能量</p>
+<p>$$X_4 \cdot c^4 \approx 10^7 \cdot k_B T \ln 2 \approx 3 \times 10^{-14}\ \text{J}.$$</p>
+<p>Mycoplasma 中实际细胞 ATP turnover 约 $10^{-13}\ \text{J/s}$（Lynch and Marinov 2015 与后续 refinement）给出一个细胞周期时间（缓慢分裂的 Mycoplasma 约 1 小时）总 ATP 能量消耗 $\sim 10^{-10}\ \text{J}$。细胞周期积分能量消耗超过每细胞信息地板约四个数量级 这是预期的：细胞过程远离热力学可逆性 实际能量成本包括所有代谢 overhead 生物合成与其他 process 依赖耗散。</p>
+<p>瞬时每秒比较给出 $3 \times 10^{-14}\ \text{J}$（地板）vs $10^{-13}\ \text{J/s}$（实际 ATP turnover 速率）。这些量有不同的 dimensional 角色（地板是给定状态下的能量；turnover 是能量速率）所以直接比较要求指定时间尺度。在约 0.3 秒时间尺度上 实际 ATP 能量消耗等于每细胞信息地板 提供地板相对于细胞动力学位置的一个 operational 标记。</p>
+<p>细胞尺度的验证建立 $X_4$ 框架相对于实际细胞能量学给出正确数量级的热力学地板。框架不预占生物学计算；具体细胞动力学依赖相邻生物学论文 articulate 的 process 结构（复制 代谢 信号传导）。</p>
+<h3>§4.4 细胞尺度与 $R_{min}(T)$ 的吻合</h3>
+<p>完整 Mycoplasma 细胞直径约 $0.3$-$0.8\ \mu\text{m}$ 处于 $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$ 量级邻域 typical 细菌细胞直径 span 约 $1$-$3\ \mu\text{m}$ 跨越 $R_{min}$ 量级。整体生命单元尺度与 $R_{min}(300\text{K})$ 同数量级。</p>
+<p>这一吻合是细胞结构作为 5DD 宏观比特承载者的候选物理签名。经验观察是已知最小细胞结构 cluster 于 $R_{min}(300\text{K})$ 尺度附近 与框架 articulate 一致：热力学稳定 5DD 宏观比特要求此尺度的空间支持。</p>
+<p>Claim 层级是数量级层观察一致性 不是推导。SAE 框架不从第一性原理预测细胞尺寸；细胞尺寸由复杂生物学约束决定（代谢面积体积比 DNA 内容要求 进化历史）。框架 articulate 的是 $R_{min}(T)$ 处的热地板稳定性是 regime 层物理条件 最小细胞尺寸的经验聚集在此尺度提供与 §2.3 articulate 的 5DD 宏观比特细胞尺度 framing 的观察一致性。</p>
+<p>这一观察一致性不验证 SAE 框架。它也不证伪细胞尺寸尺度的替代读法。它建立的是：在 SAE 框架内通过 P3 因果谱独立 articulate 的 $R_{min}(T)$ 尺度 落在经验观察到的细胞尺寸范围内 与 §2.3 articulate 的 5DD 宏观比特细胞尺度 framing 一致。</p>
+<hr>
+<h2>§5 Closure 方程族的继承</h2>
+<h3>§5.1 来自质量系列的 Regime-Dependent Closure 方程族</h3>
+<p>质量系列收束篇 V2 §3.5 articulate 能量在 DD 通道间分布的 regime-dependent closure 方程族。Closure 律的阶数依赖于最深活跃 DD 层：</p>
+<p>$$E_{tot} = pc \quad \text{(最深 2DD: 1 阶)}$$</p>
+<p>$$E_{tot}^2 = p^2 c^2 + m^2 c^4 \quad \text{(最深 3DD: 2 阶 Einstein)}$$</p>
+<p>$$E_{tot}^3 = p^3 c^3 + m^3 c^6 + I^3 c^9 \quad \text{(最深 4DD: 3 阶)}$$</p>
+<p>$$E_{tot}^4 = p^4 c^4 + m^4 c^8 + I^4 c^{12} + X_4^4 c^{16} \quad \text{(最深 5D: 4 阶)}$$</p>
+<p>4 阶 closure 律在 5D 层被激活的 regime 中适用。从 3 阶到 4 阶的过渡不是给固定方程添加单一项；它是整个 closure 律的 regime-dependent 升级。当新的最深层激活时 所有通道分量的指数全部递增 反映 closure 结构作为内聚 family 而非独立项之和 operate。</p>
+<p>这一 regime-dependent family 在质量系列收束篇中 articulate 为 Class A 结构框架。基于 DD operational 独立性的结构推理是完整的且 dimension 一致的。3 阶与 4 阶律的后验经验验证 等待物理学界在量子引力 视界物理 精密宇宙学中实验发展 平行于 Einstein 方程在初始结构 articulate 后需数十年经验锚定的过程。</p>
+<h3>§5.2 4 阶 Closure 律的激活条件</h3>
+<p>4 阶 closure 律在 5D 层被激活时适用。激活条件是 5D round 完成（按 Methodology V2 §1.2 5DD + 6DD pair 上的复制 + 自维持）被 operationally 介入的 regime。</p>
+<p>激活条件不是 trivial 的"生物系统存在"。生物系统包含许多在低阶 regime 下 operate 的 sub-component（蛋白作为 4DD-主导结构 个体分子事件作为 3DD-主导）。4 阶 closure 律适用于完整生物复制-加-自维持的 5D round 集成：作为整体介入 5D round 的细胞系统 不是个体分子事件。</p>
+<p>Regime 之间的过渡本身是候选研究方向。5D 激活 regime 中 4 阶 closure 律的具体物理签名（在特定 5D 活跃条件下偏离 Einstein 式 $E^2 = p^2c^2 + m^2c^4$ 关系 $I^3 c^9$ 与 $X_4^4 c^{16}$ 贡献变为可探测）属于未来生物物理工作 平行于量子引力 search 在 4DD 活跃 regime 边界 search 偏离 Einstein 的方式。</p>
+<p>本文继承 4 阶 closure 律作为 $X_4$ 在 5D round 内的 dimensional 锚。本文不试图推导具体动力学后果；这类推导属于专门 articulate 5D 活跃 regime 生物动力学的论文。</p>
+<h3>§5.3 Scope 与 Limits</h3>
+<p>Closure 方程族继承建立 $X_4$ 所在的 dimensional 框架。它不提供：</p>
+<p>5D 活跃系统的具体动力学方程。Closure 律给出跨通道的能量分布；5D 活跃 regime 中的具体运动方程要求 closure family 之外的额外动力学结构。</p>
+<p>以可测 observable 表达的具体激活判据。"最深活跃 DD" 判据是结构性的；identify 哪些物理情境实现 5D 激活 要求进一步 articulate 链接结构判据与 operational observable。</p>
+<p>区分 5D 活跃与 4DD 活跃 regime 的具体经验签名。4 阶律原则上给出 $p$ $m$ $I$ $X_4$ 之间不同于 3 阶律的关系 但提取经验可区分签名要求 detailed 动力学分析 处于本文 scope 之外。</p>
+<p>这些开放项是 SAE 质量系列与信息论系列未来论文的研究方向。本文相对于 closure 方程族的角色是继承与 dimensional 锚定 不是新动力学 articulate。</p>
+<hr>
+<h2>§6 H–I 锚：Shannon Operational 层与 SAE 本体层之间的地板映射</h2>
+<h3>§6.1 继承自 P1 的 H–I 桥任务</h3>
+<p>P1 §2.4 articulate 一个开放任务。Shannon 的 H 作为定义在 1DD 概率分布上的统计泛函 与 SAE 的 I 作为满足 $E = Ic^3$ 的 4DD 本体通道量 居于不同 DD 层。两者之间的精确数学关系 要求专门 treatment P1 显式留给信息论系列的后续论文。</p>
+<p>开放任务携带三个 sub-question。第一 什么数学对象介于 H 与 I 之间：泛函 投影 coarse-graining 映射 还是某种其他结构。第二 这一介质是承认 closed form 还是只承认条件性 articulate。第三 已建立结果（Landauer 原理 Bekenstein bound 黑洞信息悖论）的跨框架读法是要求经介质 explicit 重新推导 还是保持为 P1 §4.5 处理的 qualitative 读法。</p>
+<p>本文承接这一开放任务 同时给出 specific 的 scope 限制。本文不主张在所有 regime 下建立 H 与 I 之间的 universal closed-form 映射。本文 articulate 一种 regime 锚定的地板结构 把由衬底物理决定的投影地板与 process 依赖 overhead 分层。地板结构在其 scope 内是 closed-form 的。Process overhead 留给生物 化学 神经科学 量子信息等相邻领域的专门论文在各自 context 内 articulate。</p>
+<p>Scope 限制是方法论上自然的 不是退却。Landauer 地板文献（Landauer 1961 Bennett 1982 Bérut et al. 2012）提供直接先例。热力学最小值 $k_BT \ln 2$ 在所有比特擦除物理实现下作为 regime 层下界成立。具体擦除 mechanism（CMOS 磁性 光学 生物分子）的实际耗散成本超过此地板若干数量级。地板结构正是因为隔离了 regime 层 invariant 与 process 层 overhead 而携带实质内容。</p>
+<h3>§6.2 状态量 vs 路径量分层</h3>
+<p>地板结构最深的实质 ground 在于热力学中一个充分建立的区分：状态量与路径量。</p>
+<p>在经典热力学中 内能 $U$ 自由能 $F$ 熵 $S$ 是状态量。它们只依赖系统的宏观状态 不依赖到达该状态的路径。热 $Q$ 与功 $W$ 是路径量。它们依赖连接初始与终结状态的相空间具体轨迹。区分不是可选的。混淆 $U$ 与 $W$ 的热力学框架失去其状态函数结构 退化为 process 历史的会计登记 不再是系统状态的描述。</p>
+<p>H–I 桥面对结构上同型的情况。如果 $I_{SAE}^{(4DD)}$ 要 function 为状态层本体量（按 P1 §2.1 articulate 平行于 4DD 衬底层的能量 $E$ 动量 $p$ 质量 $m$）那么它不能依赖于给定 Shannon 熵 $H_{bits}$ 实现所通过的具体 process。否则 同一宏观状态的 4DD 信息内容 会因状态是经复制 代谢还是热耗散到达而不同。$I$ 将失去其状态层读出地位 退化为 process 会计登记。</p>
+<p>结构 resolution 与热力学中相同：把状态层映射与路径层 overhead 分离。Symbolic 形式</p>
+<p>$$I_{actual} = I_{state} + I_{dissipation}[\gamma],$$</p>
+<p>其中 $\gamma$ 表示具体 process 轨迹。状态层项 $I_{state}$ 只依赖宏观读出 通过 $H_{bits}$ 作为 5DD 宏观比特数捕获。耗散项 $I_{dissipation}[\gamma]$ 携带 process 特定 overhead。</p>
+<p>本文在 §6.3 到 §6.5 articulate 状态层映射 显式把耗散项留给相邻领域的专门论文。Articulate 尊重 Shannon 框架的 established 实践 即把 H 作为定义在给定源分布上的概率泛函 独立于生成该分布的动力学 process。</p>
+<h3>§6.3 P3 因果谱锚</h3>
+<p>P3 §4.2 从 Bekenstein 1-bit thermal-floor 恒等式建立热地板最小尺度 $R_{min}(T)$</p>
+<p>$$R_{min}(T) = \frac{\hbar c}{2\pi k_B T}.$$</p>
+<p>在 $T = 300\text{K}$ 下 $R_{min}(300\text{K}) \approx 1.22\ \mu\text{m}$。P3 把这一尺度 articulate 为单宏观比特可被作为热力学稳定因果区分被物理化的最小空间范围。</p>
+<p>对应的从 Planck 尺度衬底事件到单个热力学稳定宏观比特的因果聚合深度是</p>
+<p>$$\frac{R_{min}(T)}{\ell_P} = \frac{E_P}{2\pi k_B T} \approx 10^{29} \quad \text{at } 300\text{K},$$</p>
+<p>其中 $\ell_P$ 是 Planck 长度 $E_P$ 是 Planck 能量。</p>
+<p>清楚这一 count 计的是什么很重要。$R_{min}/\ell_P$ 不是 Planck 体积 count（那将给 $(R_{min}/\ell_P)^3 \approx 10^{87}$）也不是 Planck 面积 count（那将给 $(R_{min}/\ell_P)^2 \approx 10^{58}$）。它是因果深度 count：稳定宏观比特区分从衬底层热地板对抗背景噪声涌现所需的 Planck-tick 衬底聚合步数。</p>
+<p>1D scaling 来自 Bekenstein bound 本身的代数形式。Bekenstein bound 取形式 $N_{bits} \leq 2\pi R E / (\hbar c \ln 2)$ linear in $R$ 不是 $R^2$ 不是 $R^3$。当 $N_{bits} = 1$ 与 $E = k_B T \ln 2$（Landauer 热地板）代入 求解 $R_{min}$ 给出 $R_{min} = \hbar c / (2\pi k_B T)$ 这是一个 length scale 不是 area scale 不是 volume scale。$R_{min}/\ell_P$ 因此自然是 $R$ 方向上 Planck unit 的 1D count 即从衬底事件到稳定宏观比特的 radial 聚合 depth。这一 1D character 是 Bekenstein bound 的代数 inheritance 不是 SAE-framework-internal 选择。</p>
+<p>P3 把这一 30 数量级聚合 span articulate 为 regime 层结构事实。Span 仅依赖 regime 参数（温度 经 Planck 尺度的衬底物理）不依赖驱动衬底聚合的具体 process。同样的 30 数量级 span 不论衬底聚合由化学反应 电磁动力学还是热扩散驱动均适用。</p>
+<h3>§6.4 5DD 宏观比特作为投影等价类</h3>
+<p>5DD 宏观比特 按本文 §2 articulate 是稳定宏观因果区分。它的定义不是建立比特所通过的具体微观轨迹 而是产生同一稳定宏观读出的衬底历史的等价类。Schematic 形式</p>
+<p>$$[\text{宏观比特}] = \{\text{产生同一稳定读出的衬底历史}\}.$$</p>
+<p>为使这一等价类良定义 一个结构约束必须成立：同一宏观读出意味着同一衬底投影类。如果同一宏观读出对应不同的衬底投影计数（依赖产生它的 process）那么宏观比特就不是单一本体对象。它将是过程标签装饰以宏观特征。</p>
+<p>这一约束为地板结构提供 SAE-internal 实质支撑。宏观比特作为良定义的本体类别（而非 process 特定累积模式）存在所要求的最小衬底聚合计数 必须仅依赖宏观比特实现所在的 regime 而非具体 process。不同 process 可以通过不同衬底轨迹占据同一等价类 但等价类本身必须有 regime 决定的最小支持。</p>
+<p>最小支持 按 §6.3 分析 是从 Planck 尺度衬底到热地板宏观区分的因果聚合深度。</p>
+<h3>§6.5 地板映射</h3>
+<p>结合 §6.2 到 §6.4 本文 articulate Shannon 的 H 与 SAE 的 I 之间的地板映射：</p>
+<p>$$\boxed{I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits}}$$</p>
+<p>其中</p>
+<p>$$N_{floor}^{regime}(T) = \frac{E_P}{2\pi k_B T}$$</p>
+<p>是每 5DD 宏观比特的 regime 层最小衬底聚合计数 $I_{bit}^{(4DD)}$ 是单个衬底聚合事件携带的 4DD 本体信息量（P1 §2.2 继承自 $E = Ic^3$ 其中 $E_{bit} = k_BT \ln 2$ 为 Landauer 最小值）$H_{bits}$ 是以 5DD 宏观比特数计的 Shannon 熵。</p>
+<p>在 $T = 300\text{K}$ 下 $N_{floor}^{regime}(300\text{K}) \approx 10^{29}$ 事件每宏观比特。这与 P3 因果谱 span 同一数量级 反映地板映射直接继承 P3 结构结果 不引入新的 dimensional 内容。</p>
+<p>地板映射携带三项实质承诺。</p>
+<p><strong>Closed-form regime 函数</strong>。$N_{floor}^{regime}(T)$ 不是 placeholder 也不是 conjecture 等待 future 具体化。它在 regime 参数下承认 closed-form 表达 直接继承自标准物理 established 的 Bekenstein-Landauer 1-bit thermal-floor 恒等式 在 P3 因果谱 framing 内重新解读。</p>
+<p><strong>地板层的 Process 独立性</strong>。按 §6.2 状态量论证与 §6.4 等价类论证 $N_{floor}^{regime}$ 仅依赖 regime 参数 不依赖衬底聚合所通过的具体 process。不同 process 通过不同衬底轨迹产生同一 $H_{bits}$ 读出 但最小投影计数相同。</p>
+<p><strong>可证伪结构</strong>。地板结构作出具体预测：在同一 regime 下运行的不同物理过程 每宏观比特的 extrapolated 最小衬底投影收敛到同一数量级 $E_P/(2\pi k_BT)$。§6.7 articulate 证伪规程。</p>
+<h3>§6.6 含 Process Overhead 的 Actual Mapping</h3>
+<p>真实物理过程一般不饱和地板。给定 process 通过衬底聚合空间中的具体轨迹 $\gamma$ operate 其实际衬底事件计数通常经 path inefficiency 耗散 error correction redundancy 与不可逆操作超过地板最小值。</p>
+<p>考虑 process overhead 的 actual mapping 取形式</p>
+<p>$$\boxed{I_{SAE}^{actual}[\gamma] = N_{floor}^{regime}(T) \cdot \Lambda_{substrate} \cdot \Phi_{process}[\gamma] \cdot I_{bit}^{(4DD)} \cdot H_{bits}}$$</p>
+<p>其中 $\Lambda_{substrate}$ 捕获衬底介质 modification（binding energy buffer packing density 关联长度 支持 dimensionality）$\Phi_{process}[\gamma] \geq 1$ 捕获地板之上的 process 特定 overhead。</p>
+<p>Factorization 不是唯一的。$\Lambda_{substrate}$ 与 $\Phi_{process}$ 之间的边界依赖如何把给定物理效应分类为介质层结构还是 process 层轨迹。地板项 $N_{floor}^{regime}(T)$ 相比之下是结构 invariant：它是任何 process 必须达到的 regime 层最小值 与介质或轨迹细节无关。</p>
+<p>本文不为 $\Lambda_{substrate}$ 或 $\Phi_{process}[\gamma]$ 的具体函数形式 articulate。这些形式依赖具体物理领域。生物复制过程通过 Thermo 系列建立的 $\tau_{dec}$ 与 $\rho_{ret}$ retention 结构携带自己的特征 $\Phi_{process}$（秦 2026 ZFCρ Thermo VIII）。化学反应过程通过反应类特定的活化动力学携带 $\Phi_{process}$。量子相干动力学通过相干-退相干会计携带 $\Phi_{process}$。神经信息处理通过 spike 编码或 rate 编码会计携带 $\Phi_{process}$。</p>
+<p>每个领域在其专门框架内 articulate 自己的 $\Phi_{process}[\gamma]$。本文提供所有这类领域特定 articulate 共享的框架层地板。这一分工尊重一项原则：信息论基础应提供 regime 层 invariant 而不预占专门领域的实质工作。</p>
+<h3>§6.7 可证伪 Hook：跨过程 Extrapolated 地板</h3>
+<p>§6.5 articulate 的地板结构作出具体可证伪预测。</p>
+<p><strong>Claim</strong>。在同一 regime + 同一 substrate（同温度 $T$ 同 substrate medium 同宏观比特类 带 comparable readout horizon）下运行的不同物理过程 通过对测得信息成本做 reversible-limit 外推获得的 extrapolated 最小衬底投影计数 收敛到同一数量级 $E_P/(2\pi k_B T)$。</p>
+<p><strong>证伪</strong>。如果经严格 reversible-limit 外推（将地板从 process 耗散 overhead 中隔离出来）跨过程推断的地板计数 在同一 regime + 同一 substrate 内偏差超过一个数量级 那么 $N_{floor}^{regime}$ 不作为 regime 层 invariant 存在 §6.5 articulate 的地板结构失效。</p>
+<p><strong>Scope caveat</strong>。Claim 限制在 same substrate 内　不延伸到 cross-substrate（DNA vs protein vs membrane vs synthetic 分子记忆）比较。跨 substrate 比较涉及 $\Lambda_{substrate}$ 差异 见 §6.6 articulate $\Lambda_{substrate}$ vs $\Phi_{process}$ factorization boundary fuzziness。跨 substrate 测量的 extrapolated 地板差异可由 $\Lambda_{substrate}$ 而非 floor 变异驱动 因此不构成对 floor 结构的直接证伪。Cross-substrate consistency 测试是 stronger 但 separate falsification hook 留给 future work in 各 substrate-specific 领域。</p>
+<p>外推是关键。跨生物过程（DNA 复制 转录 翻译 信号传导 代谢）的实际测得信息成本 routinely 相差若干数量级。这一实际成本变异不证伪地板结构。它反映地板之上的 $\Phi_{process}[\gamma]$ 变异 不是地板变异本身。证伪要求 reversible-limit 外推：测试推断地板（通过对热力学可逆性的 asymptotic 趋近移除耗散 overhead 后）是否跨过程收敛。</p>
+<p>部分经验证据已经支持地板结构。Landauer 文献（Bérut et al. 2012 Toyabe et al. 2010 Jun et al. 2014）显示热力学最小值 $k_BT \ln 2$ 在不同比特擦除物理实现（光学陷阱中的胶体粒子 单电子晶体管 生物分子开关）下在 factor 2 之内成立。这建立了跨物理实现的地板不变性 至少在单比特情形下已经经验实现。扩展至多比特聚合情形与非擦除信息处理 仍是开放经验研究项目。</p>
+<p>三种具体实验路线将加强或证伪地板结构。</p>
+<p>第一 在 non-canonical regime（高压 非水溶剂 不同 binding energy 环境）下的跨实现 Landauer 地板测量 将测试 regime 参数依赖性 并隔离 $N_{floor}^{regime}$ 的 $T$-scaling 分量。</p>
+<p>第二 使用单细胞 metabolomics 单细胞测序 单细胞 calorimetry 平台同步测量代谢 flux 复制速率 热耗散速率 将测试同一细胞 regime 内跨生物 process 类的 extrapolated 地板一致性。</p>
+<p>第三 在受控衬底与 regime 参数下 通过不同 actuation mechanism（热 光化学 电化学 机械）operate 的 bistable 分子记忆的 reversible-limit 外推 将测试同一宏观比特类跨 actuation 路径的地板收敛。</p>
+<h3>§6.8 与 Shannon 框架及标准结果的对接</h3>
+<p>§6.5 articulate 的地板映射 为 P1 §2.4 的开放任务提供条件性回答。Shannon 的 H 与 SAE 的 I 之间的映射不是跨所有 regime 的 universal closed-form 函数关系。它是 regime 层地板结构 表达任何 process 必须达到的最小衬底投影 加上专门领域在其各自 context 内 articulate 的 process 特定 overhead。</p>
+<p>在 Shannon 框架内 H function 为 1DD operational 层的源不确定性与信道容量的统计 quantifier。地板映射把这一量定位在其 4DD 本体 context 内。H 计数的每个宏观比特 在地板层对应于 4DD 衬底层的 $N_{floor}^{regime}(T)$ 个衬底聚合事件。Shannon 框架在其 scope 内的 operational 完备性（信道容量 互信息 rate-distortion 编码定理）原封不动地保留。地板映射增加的是 H operationally 量化什么的本体读法：H 计数地板层衬底支持为 $N_{floor}^{regime}(T)$ 每比特的 5DD 宏观比特。</p>
+<p>地板结构不替代 Shannon 框架。它不 modify Shannon 数学装置或其工程应用。它提供 Shannon operational 层栖息其上的 4DD 本体地基 articulate 任何 Shannon 可量化信息必须占据的 regime 层衬底投影。</p>
+<p>Landauer 原理在这一地板框架内获得更深的结构读法。Landauer 的 $E_{min} = k_BT \ln 2$ 在地板映射内 function 为 4DD 层的每衬底事件能量成本（本文 §3.3 详细 articulate 这一连接）。在地板映射内 每宏观比特最小能量成本变为</p>
+<p>$$E_{min}^{macro} = N_{floor}^{regime}(T) \cdot k_BT \ln 2 \approx 10^{29} \cdot k_BT \ln 2 \quad \text{at } 300\text{K},$$</p>
+<p>实际物理过程中的实际能量成本由 $\Phi_{process}[\gamma]$ overhead 决定。Landauer 地板在其原始形式下作为每衬底事件最小值原封不动地保留。真实物理过程中的宏观层信息成本随 §6.6 actual 映射而来。</p>
+<p>Bekenstein bound 提供地板映射的饱和实例。P1 §4.5.2 articulate 在饱和条件下 Bekenstein bound 把 Shannon 熵表达为</p>
+<p>$$S_{sat} = \frac{2\pi k_B R I c^2}{\hbar}.$$</p>
+<p>在地板映射框架内 这对应于衬底聚合计数等于其热力学最小值 process overhead 消失（reversible limit $\Phi_{process}[\gamma] = 1$）的特殊情形。Bekenstein 饱和 regime 因此候选地对应于地板饱和 regime。Bekenstein 饱和处的 H–I 关系在这一读法下对应于无 process overhead 的地板映射；具体还原推导（地板映射公式如何在饱和条件下还原到 $S_{sat} = 2\pi k_B R I c^2 / \hbar$ 表达）仍开放 见 §7.2 open problem。</p>
+<p>黑洞信息悖论 按 P1 §4.5.3 通过 42 通道 scope 重新 framing articulate 居于 SAE 框架的不同层。它关注的是跨所有 1DD sector 的全局守恒 而不是单一 1DD 内每比特衬底投影。地板映射在单一 1DD 内 operate 42 通道结构跨 1DD sector operate。两种 articulate 兼容 处理 SAE 框架的不同方面 互不预占。</p>
+<p>H–I 地板映射在标准物理景观中的定位如下。它继承 Bekenstein-Landauer 1-bit thermal-floor 恒等式作为其 regime 函数。它为 Landauer 原理提供 4DD 本体读法作为每衬底事件能量成本。它 identify Bekenstein 饱和 regime 为地板饱和的特殊情形。它补充 P1 articulate 的 42 通道 scope 结构 而不重叠之。每个连接尊重 established 结果 同时增加把该结果置于 SAE 框架 DD 分层架构内的本体读法。</p>
+<hr>
+<h2>§7 方法论</h2>
+<h3>§7.1 Claim 状态</h3>
+<p>本文的实质 claim 及其认识论状态：</p>
+<table>
+<thead><tr>
+<th>Claim</th>
+<th>状态</th>
+<th>位置</th>
+</tr></thead><tbody>
+<tr>
+<td>DD 层的 4DD 衬底字典</td>
+<td>继承（质量系列 Class A）</td>
+<td>§2.1 §3.1</td>
+</tr>
+<tr>
+<td>$E = Ic^3$ 继承</td>
+<td>继承（质量系列 Class A）</td>
+<td>§3.1</td>
+</tr>
+<tr>
+<td>$X_4 = E/c^4$ dimensional 位置</td>
+<td>继承（质量系列 $c^k$ 阶梯模式）</td>
+<td>§3</td>
+</tr>
+<tr>
+<td>5D 活跃 regime 的 4 阶 closure 律</td>
+<td>继承（质量系列 §3.5）</td>
+<td>§5.1</td>
+</tr>
+<tr>
+<td>比特的三层 articulate（1DD operational / 衬底-二进制 / 5DD 宏观）</td>
+<td>SAE 框架内结构 articulate</td>
+<td>§2.1</td>
+</tr>
+<tr>
+<td>5DD 宏观比特作为 $R_{min}(T)$ 或之上的稳定宏观因果区分</td>
+<td>结构 articulate；细胞尺度在数量级层一致性检验</td>
+<td>§2.2 §2.3 §4.4</td>
+</tr>
+<tr>
+<td>I 作为本体状态量的状态量 vs 路径量分层</td>
+<td>Cross-physics 类比（Bennett 1982 状态/路径区分）+ SAE-internal 应用到 $I_{SAE}^{(4DD)}$</td>
+<td>§6.2</td>
+</tr>
+<tr>
+<td>5DD 宏观比特作为投影等价类</td>
+<td>SAE 框架内结构论证</td>
+<td>§6.4</td>
+</tr>
+<tr>
+<td>地板映射 $I_{SAE}^{floor} = N_{floor}^{regime}(T) \cdot I_{bit}^{(4DD)} \cdot H_{bits}$ 其中 $N_{floor}^{regime}(T) = E_P/(2\pi k_B T)$ 为 closed-form regime 函数</td>
+<td>框架层结构关系 带 closed-form 地板；核心贡献</td>
+<td>§6.5</td>
+</tr>
+<tr>
+<td>含 $\Lambda_{substrate}$ 与 $\Phi_{process}[\gamma]$ factorization 的 actual 映射</td>
+<td>框架层结构关系；具体函数形式留给专门领域</td>
+<td>§6.6</td>
+</tr>
+<tr>
+<td>可证伪 claim：跨过程 reversible-limit 下 extrapolated 地板一致性</td>
+<td>可证伪结构预测</td>
+<td>§6.7</td>
+</tr>
+<tr>
+<td>RNA/细胞数量级验证</td>
+<td>数量级层经验一致性检验</td>
+<td>§4</td>
+</tr>
+</tbody></table>
+<p>核心贡献是地板映射（§6.5）。其他 claim 或者继承自前序 SAE 系列结构结果 或者作为地板映射的支撑 articulate function。</p>
+<h3>§7.2 开放问题</h3>
+<p>随地板映射 articulate 自然 flow 出五个实质开放问题：</p>
+<p>各物理领域 $\Lambda_{substrate}$ 与 $\Phi_{process}[\gamma]$ 的具体函数形式。生物过程（复制 代谢 信号传导）化学过程（催化反应 polymer 形成）量子相干动力学（光合 FMO complex 相干输运）神经信息处理（spike 码 rate 码 同步）各自要求在专门框架内的专门 articulate。地板映射提供框架层 invariant；每个领域特定 overhead 仍待 articulate。</p>
+<p>$N_{floor}^{regime}(T)$ 与 Bekenstein bound 饱和之间的具体连接。地板映射 identify Bekenstein 饱和为地板饱和情形。展示地板映射公式如何在饱和条件下还原到 Bekenstein bound 表达 $S = 2\pi k_B R I c^2 / \hbar$ 的具体推导 将加强这一连接。还原 likely 涉及 specify $N_{floor}^{regime}(T)$ 结合 $\Lambda_{substrate}$ 如何匹配几何饱和因子；显式还原仍开放。</p>
+<p>跨实现 Landauer 地板测量向多比特聚合情形的经验扩展。单比特 Landauer 实验在物理实现间建立 factor 2 之内的地板不变性。多比特聚合检验（$N_{floor}^{regime}(T)$ 多比特预测可被测试之处）是开放经验研究项目。具体实验设计包括多比特记忆器件的 reversible-limit 外推 与受控 regime 参数下的跨衬底比较。</p>
+<p>5DD round opening 作为 critical-phenomenon 候选。P3 §3.3 articulate 5DD round opening 可能对应于 critical 现象（相变 percolation 或 self-organized criticality）。具体 universality class 与对应的 critical 指数 决定 $N_{floor}^{regime}(T)$ 在 regime 边界附近如何行为。这是 P3（因果谱）与本文地板映射 articulate 交叉处的开放问题。</p>
+<p>对应更高 D round 的更高 $c^k$ 通道 articulate。质量系列 $c^k$ 阶梯延伸至 $c^5$ $c^6$ 与之后 对应 SAE 框架 D-DD 映射下的 6D 7D 与更高 round。候选身份（6D = 两性信息 7D = 感知信息 8D = 记忆与预测信息 9D = 受死信息 10D = 不疑信息 按 Methodology V2 §1.2 与 Mass Series Convergence V2 §10）等待各自领域专门 articulate 平行于本文如何 articulate 5D = 生物信息通道。</p>
+<h3>§7.3 Scope Statements</h3>
+<p>本文不详细进入 5D 内部稳定 regime 动力学。具体的 5DD 与 6DD 动力学现象（复制 mechanism 自维持动力学 regime 间过渡）属于专门生物物理论文（F1 F5 等）；本文相对于 5D 动力学的角色是通过 $X_4$ 与地板映射的 dimensional 锚定 不是动力学 articulate。</p>
+<p>本文不预占相邻领域的专门工作。生物 化学 神经科学 量子信息各有自己的实质主题；本文提供框架层 invariant（地板映射）每个领域可在其专门工作内 employ 而不 articulate 领域特定结果。</p>
+<p>本文不主张所有 regime 下的 universal closed-form H–I 映射。地板映射是 regime 锚定的 在其 scope 内 closed-form。Actual 映射在地板之上携带领域特定结构 处于本文 scope 之外。</p>
+<p>桥事件 mechanism（P7）与 bridge measure（P8）居于专门论文处理的相邻层。本文对 5DD 宏观比特（§2）的 articulate 假定桥事件已完成（5D regime 被介入）；它不 articulate 桥事件本身。</p>
+<hr>
+<h2>参考文献</h2>
+<p>Adami, C. (2012). The use of information theory in evolutionary biology. <em>Annals of the New York Academy of Sciences</em>, 1256, 49-65.</p>
+<p>Bekenstein, J. D. (1973). Black holes and entropy. <em>Physical Review D</em>, 7(8), 2333-2346.</p>
+<p>Bennett, C. H. (1982). The thermodynamics of computation: a review. <em>International Journal of Theoretical Physics</em>, 21(12), 905-940.</p>
+<p>Bérut, A., Arakelyan, A., Petrosyan, A., Ciliberto, S., Dillenschneider, R., & Lutz, E. (2012). Experimental verification of Landauer's principle linking information and thermodynamics. <em>Nature</em>, 483, 187-189.</p>
+<p>Hawking, S. W. (1975). Particle creation by black holes. <em>Communications in Mathematical Physics</em>, 43(3), 199-220.</p>
+<p>Jaynes, E. T. (1957). Information theory and statistical mechanics. <em>Physical Review</em>, 106(4), 620-630.</p>
+<p>Jun, Y., Gavrilov, M., & Bechhoefer, J. (2014). High-precision test of Landauer's principle in a feedback trap. <em>Physical Review Letters</em>, 113(19), 190601.</p>
+<p>Landauer, R. (1961). Irreversibility and heat generation in the computing process. <em>IBM Journal of Research and Development</em>, 5(3), 183-191.</p>
+<p>Mathews, D. H., Disney, M. D., Childs, J. L., Schroeder, S. J., Zuker, M., & Turner, D. H. (2004). Incorporating chemical modification constraints into a dynamic programming algorithm for prediction of RNA secondary structure. <em>Proceedings of the National Academy of Sciences</em>, 101(19), 7287-7292.</p>
+<p>Lynch, M., & Marinov, G. K. (2015). The bioenergetic costs of a gene. <em>Proceedings of the National Academy of Sciences</em>, 112(51), 15690-15695.</p>
+<p>Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, 27, 379-423.</p>
+<p>Toyabe, S., Sagawa, T., Ueda, M., Muneyuki, E., & Sano, M. (2010). Experimental demonstration of information-to-energy conversion and validation of the generalized Jarzynski equality. <em>Nature Physics</em>, 6(12), 988-992.</p>
+<p>Tsallis, C. (2009). <em>Introduction to Nonextensive Statistical Mechanics: Approaching a Complex World</em>. Springer.</p>
+<p>Wheeler, J. A. (1989). Information, physics, quantum: The search for links. <em>Proceedings of the 3rd International Symposium on Foundations of Quantum Mechanics</em>, 354-368.</p>
+<h3>SAE 系列参考</h3>
+<p>秦汉 (2026)。SAE 方法论一：凿构循环（V2）。<em>Zenodo</em> DOI: 10.5281/zenodo.18842449.</p>
+<p>秦汉 (2026)。SAE 质量系列收束篇：$E/c^3$ 信息的本质（V2）。<em>Zenodo</em> DOI: 10.5281/zenodo.19510868.</p>
+<p>秦汉 (2026)。从复制到认知：生命的凿构循环（5D-8D）（V2）。<em>Zenodo</em> DOI: 10.5281/zenodo.18807376.</p>
+<p>秦汉 (2026)。SAE 信息论 I：信息的 4DD 本体论与一条基础公理。<em>Zenodo</em> DOI: 10.5281/zenodo.19740020.</p>
+<p>秦汉 (2026)。SAE 信息论 II：SAE 框架内 Landauer 原理的结构推导。<em>Zenodo</em> DOI: 10.5281/zenodo.19780315.</p>
+<p>秦汉 (2026)。SAE 信息论 III：信息的因果槽。<em>Zenodo</em> DOI: 10.5281/zenodo.19797457.</p>
+<p>秦汉 (2026)。SAE 信息论 IV：通过因果谱的黑洞信息。<em>Zenodo</em> DOI: 10.5281/zenodo.19880111.</p>
+<p>秦汉 (2026)。SAE 信息论 VII：生命的火花 — 余项展开作为因果槽涌现。<em>Zenodo</em> DOI: 10.5281/zenodo.20105884.</p>
+<p>秦汉 (2026)。SAE 信息论 VIII：桥上的火种 — 最小自催化集作为 4DD 到 5DD 之间的桥上度量。<em>Zenodo</em> DOI: 10.5281/zenodo.20149211.</p>
+<p>秦汉 (2026)。ZFCρ 热力学论文 VIII：复制保真度 renewal 保留 与生物 DD 层的热力学分工。<em>Zenodo</em> DOI: 10.5281/zenodo.19688304.</p>
+<p>秦汉 (2026)。ZFCρ 热力学论文 IX：universal activation rule borrowed q 与分层架构。<em>Zenodo</em> DOI: 10.5281/zenodo.19699489.</p>
+<p>秦汉 (2026)。ZFCρ 热力学论文 X（收束篇）：self-reference 作为 channel creator 与跨层观察 hierarchy。<em>Zenodo</em> DOI: 10.5281/zenodo.19703274.</p>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
