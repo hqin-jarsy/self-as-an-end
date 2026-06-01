@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE QM Paper 6: The Born Rule as the Algebraic Projection of Closure — Han Qin (秦汉)</title>
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/sae-qm-p6.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/sae-qm-p6.html">
+  <meta name="citation_title" content="SAE QM Paper 6: The Born Rule as the Algebraic Projection of Closure">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Zenodo">
+  <meta name="citation_doi" content="10.5281/zenodo.20479658">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="../index.html">Papers</a>
+      <a href="../about.html">About</a>
+      <a href="../endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">SAE Quantum Mechanics Series · Paper VI</div>
+    <h1>SAE QM Paper 6: The Born Rule as the Algebraic Projection of Closure<br><span style="font-size:1.1rem;opacity:0.75">SAE 量子力学 Paper 6：玻恩规则——闭合的代数投影</span></h1>
+    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20479658">10.5281/zenodo.20479658</a> &nbsp;·&nbsp; Full PDF on Zenodo &nbsp;·&nbsp; CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>The Born rule — that the probability of a measurement outcome is given by the modulus squared of the quantum state — is introduced as a postulate in standard quantum mechanics and confirmed by experiment to very high precision, yet the origin of its modulus-squared form has long been a central question in the foundations of quantum mechanics. The major approaches locate this origin variously in the mathematical uniqueness of Hilbert space (Gleason), the decision-theoretic norms of a rational agent (Deutsch–Wallace), the symmetry of system–environment entanglement (Zurek's envariance), subjective belief (QBism), or hidden variables (Bohmian mechanics).
+
+This paper gives an ontological origin for the modulus-squared readout within the SAE framework. The central claim: the modulus squared is the one-sided reading of a pre-closure state that lies below the causal slot, takes the uncertainty-wave form, and is simultaneously subject to time arrows on both sides — and is therefore without causality. In this region the time arrow and causality are two distinct things. The time arrow exists at every scale: a quantum evolves forward normally along its own time arrow in our frame (the dynamical layer, governed by P3's $i\hbar\,\partial_t = H$). Causality, by contrast, has as its ontological content <em>the influence of a single-direction time arrow</em> — above the causal slot the state is subject only to our-frame single-direction influence, so causality holds and the outcome is definite; below the causal slot the state is subject simultaneously to the our-frame and opposite-frame bidirectional time arrows (the two being two faces of a single dual-4DD structure, established in Cosmo V), so no single direction can fix causation and there is no causality. Precisely because the quantum is subject to both sides at once, with no single direction available to orient it, a one-sided reading from our side cannot read off any pre-written definite local content, and the state presents as a probability distribution (for a generic state; if the state is already an eigenstate of the given measurement, this degenerates to a definite $P=1$ readout). What is subject to both-sided influence is the <em>mode of presentation</em> of the readout (the readout layer), not the evolution of the quantum (which proceeds forward in our frame as usual). Reading such a state one-sidedly manifests, at the amplitude layer, as the conjugate pairing of dual orientations (the $e^{i\theta}$ of our frame and the $e^{-i\theta}$ of the opposite frame), $\psi^\sharp\psi = A^2$ — the modulus squared. The reading event itself occurs at $L_4$ re-activation (i.e. 4DD closure); the object read lies before closure, and the reading event is closure itself.
+
+The paper works at three levels of commitment. At the standard mathematical level (T1), the uniqueness of the Born measure is supplied by Gleason-type theorems under their usual conditions; the paper does not re-derive these but only interfaces with them. At the SAE structural level (T2), the paper gives a strong structural derivation of the quadratic readout — this is the paper's core contribution, but it is <strong>not</strong> a full theorem equivalent to Gleason's. At the mechanism level (T3), the paper offers an ontological picture of one-sided projection of a bidirectional orientation, as a candidate.
+
+The paper answers one key ontological question: why the both-sided reading below the causal slot takes a <em>multiplicative</em> pairing, rather than the <em>additive</em> form that remainder conservation takes at the cosmological layer. The answer: reciprocity (remainder conservation) by itself prescribes neither addition nor multiplication; what it prescribes is that one side must close with its dual counterpart in the native algebra of the object being read — a scalar energy density closes additively to a vanishing sum in the additive group ($\Lambda_1 + \Lambda_2 = 0$), while a complex phase carrier closes to a multiplicative pairing in the $U(1)$ multiplicative group ($\psi^\sharp\psi = A^2$). These are two realizations of one and the same reciprocity principle in different native algebras, not two separate rules. At a deeper level still, the two substrates are both additive vanishing under reciprocity ($\theta + \theta^\sharp = 0$); the microscopic layer, after exponential dualization, manifests at the carrier layer as multiplicative.
+
+On this basis the paper gives: the ontological placement of the modulus squared and of Born-probability randomness (randomness is not arbitrariness, but the absence of pre-written content below the causal slot, with statistical weights supplied by dual-orientation pairing); the relation to Gleason, Many-Worlds, QBism, and Bohmian mechanics (the demarcation from Many-Worlds resting on a causality firewall: branches are multiple worlds each carrying causality, whereas the two sides are a single bidirectional orientation without causality); and the interfaces with P4's cross-ladder readout, P5's Tsirelson bound, and no-signaling marginals. Whether the Born rule is modified in the strong-field regime is marked as an open problem: absent posterior support, the relation between the Born rule and field strength cannot be given a priori.
+
+---</p>
+      <div class="keywords"><strong>Keywords:</strong> </div>
+    </div>
+    <div class="paper-body"><h2>Abstract</h2>
+<p>The Born rule — that the probability of a measurement outcome is given by the modulus squared of the quantum state — is introduced as a postulate in standard quantum mechanics and confirmed by experiment to very high precision, yet the origin of its modulus-squared form has long been a central question in the foundations of quantum mechanics. The major approaches locate this origin variously in the mathematical uniqueness of Hilbert space (Gleason), the decision-theoretic norms of a rational agent (Deutsch–Wallace), the symmetry of system–environment entanglement (Zurek's envariance), subjective belief (QBism), or hidden variables (Bohmian mechanics).</p>
+<p>This paper gives an ontological origin for the modulus-squared readout within the SAE framework. The central claim: the modulus squared is the one-sided reading of a pre-closure state that lies below the causal slot, takes the uncertainty-wave form, and is simultaneously subject to time arrows on both sides — and is therefore without causality. In this region the time arrow and causality are two distinct things. The time arrow exists at every scale: a quantum evolves forward normally along its own time arrow in our frame (the dynamical layer, governed by P3's $i\hbar\,\partial_t = H$). Causality, by contrast, has as its ontological content <em>the influence of a single-direction time arrow</em> — above the causal slot the state is subject only to our-frame single-direction influence, so causality holds and the outcome is definite; below the causal slot the state is subject simultaneously to the our-frame and opposite-frame bidirectional time arrows (the two being two faces of a single dual-4DD structure, established in Cosmo V), so no single direction can fix causation and there is no causality. Precisely because the quantum is subject to both sides at once, with no single direction available to orient it, a one-sided reading from our side cannot read off any pre-written definite local content, and the state presents as a probability distribution (for a generic state; if the state is already an eigenstate of the given measurement, this degenerates to a definite $P=1$ readout). What is subject to both-sided influence is the <em>mode of presentation</em> of the readout (the readout layer), not the evolution of the quantum (which proceeds forward in our frame as usual). Reading such a state one-sidedly manifests, at the amplitude layer, as the conjugate pairing of dual orientations (the $e^{i\theta}$ of our frame and the $e^{-i\theta}$ of the opposite frame), $\psi^\sharp\psi = A^2$ — the modulus squared. The reading event itself occurs at $L_4$ re-activation (i.e. 4DD closure); the object read lies before closure, and the reading event is closure itself.</p>
+<p>The paper works at three levels of commitment. At the standard mathematical level (T1), the uniqueness of the Born measure is supplied by Gleason-type theorems under their usual conditions; the paper does not re-derive these but only interfaces with them. At the SAE structural level (T2), the paper gives a strong structural derivation of the quadratic readout — this is the paper's core contribution, but it is <strong>not</strong> a full theorem equivalent to Gleason's. At the mechanism level (T3), the paper offers an ontological picture of one-sided projection of a bidirectional orientation, as a candidate.</p>
+<p>The paper answers one key ontological question: why the both-sided reading below the causal slot takes a <em>multiplicative</em> pairing, rather than the <em>additive</em> form that remainder conservation takes at the cosmological layer. The answer: reciprocity (remainder conservation) by itself prescribes neither addition nor multiplication; what it prescribes is that one side must close with its dual counterpart in the native algebra of the object being read — a scalar energy density closes additively to a vanishing sum in the additive group ($\Lambda_1 + \Lambda_2 = 0$), while a complex phase carrier closes to a multiplicative pairing in the $U(1)$ multiplicative group ($\psi^\sharp\psi = A^2$). These are two realizations of one and the same reciprocity principle in different native algebras, not two separate rules. At a deeper level still, the two substrates are both additive vanishing under reciprocity ($\theta + \theta^\sharp = 0$); the microscopic layer, after exponential dualization, manifests at the carrier layer as multiplicative.</p>
+<p>On this basis the paper gives: the ontological placement of the modulus squared and of Born-probability randomness (randomness is not arbitrariness, but the absence of pre-written content below the causal slot, with statistical weights supplied by dual-orientation pairing); the relation to Gleason, Many-Worlds, QBism, and Bohmian mechanics (the demarcation from Many-Worlds resting on a causality firewall: branches are multiple worlds each carrying causality, whereas the two sides are a single bidirectional orientation without causality); and the interfaces with P4's cross-ladder readout, P5's Tsirelson bound, and no-signaling marginals. Whether the Born rule is modified in the strong-field regime is marked as an open problem: absent posterior support, the relation between the Born rule and field strength cannot be given a priori.</p>
+<hr>
+<h2>Part I: The Mainstream Landscape of the Born Rule's Origin</h2>
+<p>Since its proposal in 1926, the standing and origin of the Born rule have been a central question in the foundations of quantum mechanics. This part reviews the major approaches as background for the SAE account that follows. Each approach has substantive content and its own disputes; this part states them objectively without adjudication.</p>
+<p><strong>The Born rule as a postulate.</strong> In the usual formulation of standard quantum mechanics, the Born rule is introduced as an independent postulate: the probability of a measurement outcome is given by the modulus squared of the projection of the state vector onto the corresponding eigenstate. This formulation does not inquire into the origin of the modulus squared but takes it as the bridge connecting the formalism to experiment, confirmed by experiment to very high precision. Whether the modulus squared can be derived from the remaining postulates, or must be assumed independently, has been debated at length.</p>
+<p><strong>The Gleason approach.</strong> In 1957 Gleason proved that, on a Hilbert space of dimension no less than 3, a probability measure satisfying non-contextuality is given uniquely by the trace formula with a density operator, so that the modulus-squared form is uniquely fixed. This approach grounds the mathematical uniqueness of the Born rule in Hilbert-space structure together with non-contextuality. Its limitations lie in the dimensional condition (the two-dimensional qubit requires an additional assumption, or a POVM version / Busch-type generalization) and in its reliance on the non-contextuality premise.</p>
+<p><strong>The decision-theoretic approach (Deutsch–Wallace).</strong> Within the Everett interpretation, Deutsch and Wallace attempt to derive the Born weights from the decision axioms of a rational agent: an agent betting within a branching structure is forced by rationality constraints to assign credence by the modulus squared. This approach locates the origin of probability in the normativity of rational decision. Whether it presupposes the conclusion it sets out to derive, and how branch-counting relates to probability, remain under continuing debate.</p>
+<p><strong>Environment-induced selection and envariance (Zurek).</strong> Zurek proposes that system–environment entanglement carries an exchange symmetry (environment-assisted invariance, envariance), from which it can be argued that observable readouts depend only on the modulus squared of the amplitude. This approach locates the origin of the Born rule in the symmetry of system–environment entanglement. Whether the envariance argument is independent of the Born rule itself has likewise been discussed.</p>
+<p><strong>QBism.</strong> QBism (quantum Bayesianism) interprets the quantum state as the belief state of an agent and the Born rule as a normative constraint by which a rational agent updates belief. On this approach, probability is the agent's epistemic attitude, not an objective property of the external world.</p>
+<p><strong>Bohmian mechanics.</strong> Bohmian mechanics introduces definite particle trajectories as hidden variables and interprets $|\psi|^2$ as the probability distribution of initial positions; measurement randomness arises from epistemic ignorance of definite but unknown initial positions. On this approach, probability is epistemic and the underlying dynamics is deterministic.</p>
+<p>These approaches give different answers to whether the Born rule is a postulate or a theorem, and whether its origin lies in mathematical structure, rational decision, environmental symmetry, subjective belief, or hidden variables. The SAE account that follows belongs to none of them; it gives an ontological origin for the modulus-squared readout. Its specific relations to several of these approaches are developed in Thesis C.</p>
+<hr>
+<h2>Thesis A: The Modulus Squared as the One-Sided Reading of a Below-Causal-Slot Uncertainty-Wave State (a State Simultaneously Subject to Both-Sided Time Arrows)</h2>
+<h3>A.1 What this section does and does not answer</h3>
+<p>The Born rule relates a quantum state $\psi$ to the probability of a measurement outcome: on a normalized state, the probability of outcome $i$ is $|\psi_i|^2$. In standard quantum mechanics this rule is introduced as a postulate — not derived from more basic structure but assumed, and then confirmed by nearly eight decades of experiment to very high precision.</p>
+<p>SAE neither restates this postulate nor attempts to replace any of its computational consequences. What this section addresses is a question standard quantum mechanics does not: <strong>what is the ontological origin of the modulus-squared readout form — why a quadratic in the amplitude, rather than a first, third, or other power?</strong></p>
+<p>The SAE argument falls at three levels of commitment, each with a different boundary:</p>
+<ul>
+<li><strong>T1 (standard mathematical level, not re-derived by SAE)</strong>: the uniqueness of the Born measure on any Hilbert space, supplied by Gleason-type theorems under their usual conditions on dimension and measurement structure. SAE does not re-prove these theorems.</li>
+<li><strong>T2 (SAE structural level, assertible)</strong>: why a one-sided reading within the SAE framework <strong>must</strong> be a quadratic readout — this is the section's core contribution.</li>
+<li><strong>T3 (mechanism level, a candidate)</strong>: the ontological picture of how a bidirectional temporal orientation and a one-sided projection concretely generate $\psi^\sharp\psi$.</li>
+</ul>
+<p>What this section gives is a strong structural derivation of the quadratic readout, <strong>not</strong> a full theorem equivalent to Gleason's. In other words, SAE asserts, fairly strongly, that "the modulus squared is not ad hoc — its structural origin lies in $L_1\leftrightarrow L_2$ closure"; SAE does not assert "that SAE derives the uniqueness of the Born measure on an arbitrary Hilbert space." The latter, as a T1 mathematical result, is taken over externally from the standard theorems, with which this section interfaces (is consistent), rather than being treated as a corollary of SAE.</p>
+<h3>A.2 Locating the object read: the pre-closure state below the causal slot, in uncertainty-wave form, simultaneously subject to both-sided time arrows</h3>
+<p>To ask "what does the modulus squared read," one must first locate the object read.</p>
+<p>The SAE remainder unfolds on the two sides of the causal slot in two distinct forms. This distinction is not introduced here but is an established structure running through several SAE series; this section cites it without restating.</p>
+<p><strong>Below the causal slot</strong>: the remainder unfolds in <strong>uncertainty-wave form</strong>. Its ontological carrier is the dualized complex amplitude established in P2, $\psi = A\,e^{i\theta}$, where $A$ is the 1DD marking-layer density, $e^{i\theta}$ is the already-formed ontological presence of the $L_1\to L_2$ dualization, and $\theta$ is the static position of a single cell on its compact $U(1)$ fiber. Two ontological features of this region are decisive for this section.</p>
+<p>First, <strong>the time arrow exists, but causality does not</strong>. Time arrow and causality are two distinct things in SAE.</p>
+<p>The time arrow exists <strong>at every scale</strong>. Time at the Planck substrate runs forward as usual — a quantum evolves forward normally along its time arrow in our frame. This evolution belongs to the dynamical layer, described by P3's established $i\hbar\,\partial_t = H$. The quantum is not "suspended motionless in some bidirectional state" — it has a definite our-frame time direction and evolves normally.</p>
+<p>Causality is another matter. <strong>The ontological content of causality is the influence of a single-direction time arrow.</strong> To adjudicate before-and-after, to distinguish cause from effect, to orient a process into a single causal order, the remainder must be subject to a <strong>single-direction</strong> time arrow. Accordingly, the two sides of the causal slot differ in <strong>how many directions</strong> of time arrow they are subject to:</p>
+<ul>
+<li><strong>Above the causal slot</strong>: the remainder is subject only to the our-frame single-direction time arrow — single-direction, hence <strong>causality holds</strong>, the process is oriented, and it presents as definite classical causation.</li>
+<li><strong>Below the causal slot</strong>: the remainder is subject <strong>simultaneously to the our-frame and opposite-frame time arrows in both directions</strong> (the two being two faces of this one dual-4DD structure, established in Cosmo V) — bidirectional, with no single direction available to adjudicate the causal order, hence <strong>no causality</strong>.</li>
+</ul>
+<p>Terminological convention: the below-causal-slot situation in which both sides coexist is termed, technically, a <strong>dual temporal orientation</strong>; the phrase "time arrow" is retained in this paper as the intuitive expression. Causality is by its nature oriented, so in defining causality we use "single-direction temporal direction."</p>
+<p>This is consistent with the established result of Information Theory P1 — that causality is a structural consequence of the asymmetry of 4DD closure — and gives that result a more direct ontological content: 4DD closure produces causality precisely because closure makes the bidirectional influence single-directional (selecting our side as the unique causal direction); before closure (below the causal slot), bidirectional influence coexists, single-directionalization has not yet occurred, and so there is no causality.</p>
+<p>Second, from "simultaneously subject to bidirectional time arrows, no causality" follows the <strong>probability-cloud presentation of the one-sided reading</strong>. Causality would orient the process and yield a definite outcome order; below the causal slot it has not yet occurred, so when our side reads the quantum one-sidedly, because the quantum is subject to both-sided our-frame and opposite-frame influence with no single direction available to orient it, the one-sided reading cannot read off a pre-written definite local content, and presents as a probability distribution. Two points must be stated precisely. First, "cannot read a definite content" means: below the causal slot there is no pre-written outcome available to be read — it does <strong>not</strong> mean any reading is numerically impossible to be definite. If, relative to a given measurement partition, the state has already degenerated to a single closable branch (i.e. it is an eigenstate of that measurement), its weight degenerates to a definite $P=1$ readout, consistent with this section. The probability cloud is the distribution by which a generic (non-eigenstate) state presents under reading according to its weights. Second, what is subject to both-sided influence is the <strong>mode of presentation</strong> when the quantum is read one-sidedly (the probability distribution), not the evolution of the quantum itself — evolution proceeds forward in the our-frame time arrow as usual (the dynamical layer), while both-sided influence concerns the readout presentation (the readout layer). The dynamical layer and the readout layer must be kept separate. Section A.3 below gives the precise readout form of this "both-sided influence" at the amplitude layer.</p>
+<p><strong>Above the causal slot</strong>: the remainder changes form, unfolding in <strong>gravitational-wave form</strong> (established in Relativity P1/P2: gravitational waves are the Planck-substrate broadcast of the 4DD topological-refresh command). Here causality is active, the time arrow is single-direction, and the 4DD causal load $I$ enters. This is not the object this section reads — once the remainder crosses to above the causal slot, it is no longer the $\psi$ uncertainty wave, and the Born rule no longer reads it.</p>
+<p>This locates the object of the Born reading:</p>
+<p>> <strong>The object of the Born reading is the pre-closure state below the causal slot, in uncertainty-wave form, simultaneously subject to the our-frame and opposite-frame bidirectional time arrows, and therefore without causality.</strong></p>
+<p>Here "both-sided influence" refers to the state's being acted on simultaneously by two directions of the time arrow, not to the state's itself performing some bidirectional evolution — the quantum evolves forward normally along its our-frame time arrow (the dynamical layer); "both-sided influence" characterizes the mechanism of its presentation when read one-sidedly (the readout layer).</p>
+<p>What 4DD closure does is exactly to make this "both-sided influence" <strong>single-directional</strong> — to select our side as the unique causal direction, whereupon causality is produced and the process oriented, while the remainder form switches from uncertainty wave to gravitational wave.</p>
+<p>The Born rule bears one relation to P5's established result that "measurement is $L_4$ re-activation," a relation that must be made clear lest it be read as a contradiction — the <strong>object read</strong> and the <strong>reading event</strong> are two things: the object read is the below-causal-slot state, not yet single-directionalized, which lies <strong>before</strong> closure; the reading event is, ontologically, $L_4$ re-activation, i.e. the 4DD closure event itself. The two do not conflict — it is not that "a measurement was made before closure," but rather that <strong>closure, as an act, intercepts and reads that pre-closure state</strong>. One sentence may be fixed:</p>
+<p>> <strong>The object read by the Born rule lies below the causal slot; the Born reading event occurs at $L_4$ re-activation.</strong> This paper gives the weight form when that event reads the pre-closure state; the complete ontological mechanism of a single closure event and the measurement apparatus is left to P7.</p>
+<p>This temporal layering can be written as three stages, making the boundaries of P5 / P6 / P7 clear: before closure, below the causal slot there is a ρ-OR carrier and capacity structure, with no content and no local outcome (the object read); $L_4$ re-activation selects a closure partition (the measurement apparatus supplies the outcome partition / projection operators — this is P5's established measurement ontology); this paper assigns each branch of that partition a weight $w_i = \psi_i^\sharp\psi_i$ (P6's domain), while how a single outcome is actually recorded belongs to P7.</p>
+<p>The remainder of this section shows that reading one-sidedly a state simultaneously subject to both-sided influence necessarily yields a quadratic.</p>
+<h3>A.3 Main derivation: the one-sided reading is the multiplicative pairing of dual orientations</h3>
+<p>The core of the main derivation: <strong>what a one-sided reading reads is the multiplicative pairing, at the our-side interface, of $\psi$ with its dual-orientation counterpart, whose minimal real form is the quadratic.</strong></p>
+<p>Let the below-causal-slot uncertainty-wave carrier be</p>
+<p>$$\psi = A\,e^{i\theta}.$$</p>
+<p>Its dual-orientation counterpart is written</p>
+<p>$$\psi^\sharp = A\,e^{-i\theta}.$$</p>
+<p>The ontological identity of $\psi^\sharp$ refers to three distinct things on three layers, which must not be conflated:</p>
+<ol>
+<li><strong>Formal layer</strong>: $\psi^\sharp$ is the formal counterpart of the same $\psi$ under dual orientation.</li>
+<li><strong>SAE ontological layer</strong>: $\psi^\sharp$ is the opposite-frame representation of the same dual-4DD structure (established in Cosmo V: the universe has a dual-4DD structure, our frame and opposite frame). It is <strong>not a second ontology</strong>, not a second world, not a second timeline. $\psi$ and $\psi^\sharp$ are two frames of the same dual-4DD structure, the degrees of freedom remaining 1 — consistent with P2's established "degrees of freedom always 1."</li>
+<li><strong>Standard quantum-mechanical layer</strong>: in the Hilbert representation, $\psi^\sharp$ corresponds to the bra / conjugate-dual structure, not to another ket state.</li>
+</ol>
+<p>$\psi^\sharp$ is <strong>not a second wavefunction arriving from the opposite side</strong>. There is no information transfer below the causal slot (the hard constraint of Information Theory P4); the pairing in this section is not a cross-side communication, but a single-sided closure event's reading of that state which is simultaneously subject to both-sided time arrows and not yet single-directionalized by causality. $\psi^\sharp$ is the dual slot required by this reading, not reified into a second degree of freedom.</p>
+<p>The one-sided reading reads the overlap of the two at the our-side interface:</p>
+<p>$$R(\psi) = \psi^\sharp\,\psi = A\,e^{-i\theta}\cdot A\,e^{i\theta} = A^2.$$</p>
+<p>This readout is automatically real, non-negative, and phase-gauge invariant. Its structural content:</p>
+<ul>
+<li><strong>The phase direction is cancelled</strong>: $e^{-i\theta}\,e^{i\theta} = 1$. The phases of the dual orientations are made real against each other in the pairing; the readout no longer carries a phase direction.</li>
+<li><strong>The capacity is preserved</strong>: $A\cdot A = A^2$. The 1DD marking-layer density $A$ survives the pairing as $A^2$, a capacity measure that can be normalized into a probability weight.</li>
+</ul>
+<p>This is exactly the modulus squared. It follows from the structural fact "reading one-sidedly a state simultaneously subject to both-sided time arrows": the both-sided influence manifests at the amplitude layer as a conjugate pair of dual orientations (the $e^{i\theta}$ of our frame and the $e^{-i\theta}$ of the opposite frame), and reading this conjugate pair one-sidedly necessarily yields a quadratic.</p>
+<h3>A.4 Why a multiplicative pairing, and not additive — unification with the cosmological $\Lambda$ layer</h3>
+<p>The first step of the main derivation immediately raises a sharp question:</p>
+<p>> Why is the both-sided reading below the causal slot a <strong>multiplicative</strong> pairing $\psi^\sharp\psi$, rather than an <strong>additive</strong> form $\Lambda_1 + \Lambda_2 = 0$ as in the cosmological-layer remainder conservation?</p>
+<p>The question is sharp because SAE established long ago, at the cosmological layer, that the field-theoretic statement of remainder conservation on the dual-4DD structure is $\Lambda_1 + \Lambda_2 = 0$ — the two cosmological constants cancel exactly, and the nonzero $\Lambda$ observed on each side is the residual of having observed only half of a symmetric structure (established in Cosmo I/V). This is <strong>additive</strong>. Were this section to change the same conservation principle to multiplicative at the microscopic layer out of nowhere, that would be an ad hoc patchwork.</p>
+<p>The answer separates three things, each carried by a different established structure: <strong>reciprocity</strong> answers "why there is a dual side $\psi^\sharp$"; <strong>$L_1\leftrightarrow L_2$ symplectic conjugation</strong> answers "why the two dual sides close as a multiplicative pairing"; <strong>the inversion-factor identity of $i$ together with the $U(1)$ carrier</strong> answers "why the pairing is between $e^{i\theta}$ and $e^{-i\theta}$." Each does its own work, together yielding $\psi^\sharp\psi$, and each is anchored in established work rather than being this section's ad hoc choice.</p>
+<h4>A.4.1 The origin of the dual side: the reciprocity relation (established in Cosmo I)</h4>
+<p>"Why is the below-causal-slot state co-determined by both sides, and why is there a $\psi^\sharp$ side on reading," is answered by the <strong>reciprocity relation</strong> established in Cosmo I, cited here:</p>
+<p>> The remainder of the reverse-causal side just is the causality of the causal side. Causality suppresses the remainder; but seen from the opposite side, our causality is precisely the opposite side's unsuppressed remainder, and vice versa. Remainder and causality are not two different existences, but one existence seen from opposite sides.</p>
+<p>Hence "both sides" is not two separate things each exerting influence, but: below the causal slot, this reciprocal whole <strong>has not yet been split apart by causality</strong>. The 3DD symmetry produces a dual 4DD with opposite time arrows; the reciprocity relation makes the two sides two faces of one existence; below the causal slot causality is not active, the adjudication that would suppress the two sides into one has not yet occurred, and so the state is intrinsically both-sided. A one-sided reading reads exactly this not-yet-split reciprocal whole, and therefore necessarily reads both sides.</p>
+<p>It must be made clear: the reciprocity relation has so far answered only the <strong>origin of the dual side</strong> — why both $\psi$ and $\psi^\sharp$ are present on reading. It does <strong>not</strong> answer "whether the two sides close additively or multiplicatively"; that is decided by the next layer, the symplectic-conjugation structure.</p>
+<h4>A.4.2 The form of the pairing: $L_1\leftrightarrow L_2$ symplectic conjugation (established in P3)</h4>
+<p>Given $\psi$ and its dual counterpart $\psi^\sharp$, a one-sided content reading must obtain a scalar capacity from the two sides. What algebraic form this scalar takes is determined by the layered structure in which the object read sits.</p>
+<p>The object read sits in the $L_1\leftrightarrow L_2$ symplectic-conjugation closure layer (established in P3: $[\hat{x},\hat{p}] = i\hbar$ is the invariant form of this layer, and $S_{act} = \hbar\theta$ is its bare readout). <strong>A symplectic structure is an antisymmetric bilinear form</strong>; its intrinsic pairing operation is not to add two quantities, but to take the carrier together with its dual carrier in an evaluation pairing — which in the standard Hilbert representation is the inner product $\langle\psi|\psi\rangle$, and in the one-dimensional complex-phase representation is $\psi^\sharp\psi = A^2$.</p>
+<p>This is the <strong>direct ontological origin</strong> of the multiplicative pairing: it is not supported by the single statement "because the amplitude is in $U(1)$ it takes a product," but rather by the fact that the $L_1\leftrightarrow L_2$ symplectic-conjugation layer, on a one-sided content reading, <strong>must</strong> yield a positive-definite Hermitian pairing through its antisymmetric bilinear structure. Additive cancellation $\psi + \psi^\sharp$ is not the intrinsic pairing operation of the symplectic layer; it cannot yield the bilinear scalar the symplectic structure requires.</p>
+<p>> <strong>Minimal characterization of the $\sharp$ map</strong>: writing the dual orientation as a map $\sharp:\mathcal{H}\to\mathcal{H}^<em>$, in the generic weak-field case it is the standard anti-linear dual (Hermitian conjugation): $(\alpha\psi + \beta\phi)^\sharp = \alpha^</em>\psi^\sharp + \beta^*\phi^\sharp$, with $\psi^\sharp(\psi) \geq 0$. $\psi^\sharp\psi$ is thus not a metaphor but a dual-evaluation / Hermitian pairing structure recognizable to the reader in mathematical physics.</p>
+<h4>A.4.3 The origin of the complex phase carrier: the established-dependency declaration and the inversion-factor identity of $i$</h4>
+<p>The previous layer used the premise "the object read is an $L_1\leftrightarrow L_2$ complex phase carrier"; this premise is itself not re-derived in this paper, but inherited from established work. Here the dependency is made explicit, lest "the $U(1)$ complex phase carrier" be read as a natural fact of this section or as an ad hoc choice: this paper does not re-derive within P6 why the pre-closure state is a complex phase carrier — that proposition is carried by P2 together with Foundation v2 and P3. P2 established $\psi = A\,e^{i\theta}$, where $\theta$ is the static position on a compact $U(1)$ fiber, and $i$ and $\pi$ interlock through the exponential map (the degrees of freedom always 1); Foundation v2 established $i$ as the algebraic inversion factor of the topological closure of the causal slot; P3 established the $L_1\leftrightarrow L_2$ symplectic-conjugation closure and $S_{act} = \hbar\theta$. The new proposition of this paper is not "why there is a complex amplitude," but "given this complex phase carrier, why the capacity scalar of a one-sided content reading is $\psi^\sharp\psi$, and not a first power, a third power, or an additive cancellation."</p>
+<p>"Why a complex phase carrier, and not a real vector field or a quaternion" — the domain of this question lies in P2 and Foundation v2, not in P6. But there is a substantive connection between the inversion-factor identity of $i$ and $U(1)$, which can be made explicit here, because it is precisely the ontological origin of the $i$ in $e^{i\theta}$:</p>
+<p>The $i$ in $e^{i\theta}$ is not an arbitrary complex unit, but the exponential manifestation, on the compact phase fiber, of the inversion factor established in Foundation v2. The ontological content of the inversion factor ($i^2 = -1$: two inversions return to the origin) locks the group structure of the single phase carrier — it falls in $U(1)$, the <strong>abelian</strong> group (two inversions return to the origin), rather than promoting the underlying number field of the single scalar phase carrier to the three-dimensional non-commutative quaternions. Here the scope of the locking must be stated precisely: what this paper locks is the <strong>single ρ-OR scalar phase carrier</strong> as $U(1)$, and it does <strong>not</strong> claim that quaternionic / $SU(2)$ structure is everywhere absent in physics (the non-commutative structures in spin, gauge, and spatial rotation are not at issue here); what is locked is only the underlying number field of that scalar carrier which bears the single-cell phase. The inversion factor and its inverse ($i$ and $-i$) are strictly conjugate at the algebraic layer and multiply to unity ($e^{i\theta}\cdot e^{-i\theta} = 1$). So $U(1)$ is not a multiplicative group chosen ad hoc in this section, but the group action of $i$, as the $L_1\leftrightarrow L_2$ closure inversion factor, in the phase reading; $U(1)$ indicates how the phase direction is cancelled by conjugation, while symplectic conjugation indicates how the whole carrier generates a capacity scalar.</p>
+<p>This locking has a deeper geometric ground, cited here without elaboration: in the DD-splitting structure established in the Four Forces Prequel, the dual 4DD of a single spatial axis (our side + opposite side) spans a two-dimensional plane, whose complex structure is exactly $U(1)$ (the single-plane rotation group $SO(2)\cong U(1)$); the 4DDs of different spatial axes are causally independent and mutually direct-sum, so a single phase carrier is geometrically constrained within a single plane — which is precisely the geometric origin of its falling in the abelian $U(1)$ rather than a cross-axis non-commutative structure. This paper cites this established geometry only as the background for $i$'s locking to $U(1)$; the complete geometric ontology of $i$ itself lies outside P6's domain and is listed as an open problem (see below).</p>
+<p>From this it is clear why $\psi^\sharp$ is a <strong>conjugate</strong> and not a sign reversal. The dual operation on the amplitude must <strong>preserve the capacity and cancel the phase direction</strong>, rather than annihilate the capacity. Were one to take the sign reversal $\psi^\sharp = -\psi$, the pairing candidate would be $\psi + \psi^\sharp = 0$ — additive annihilation (the same vanishing picture as $e^{i\pi}+1=0$ on the mathematical ladder), which annihilates the amplitude to zero and cannot yield a probability cloud. Conjugation, by contrast, cancels only the phase direction and preserves the capacity: $A\,e^{i\theta}\mapsto A\,e^{-i\theta}$, so $e^{-i\theta}e^{i\theta}=1$ cancels the phase direction while $A\cdot A = A^2$ preserves the capacity.</p>
+<h4>A.4.4 Juxtaposition check: the closure operation is determined by the type of object</h4>
+<p>Putting the three layers together: reciprocity gives the two dual sides, symplectic conjugation gives the form of the pairing, and $i$ with $U(1)$ gives the complex phase carrier. From this it is clear that the microscopic multiplicativity and the cosmological additivity are not two rules, but <strong>two realizations of one and the same reciprocity principle, on different types of object, closing in the algebra native to each layer</strong>. The following table juxtaposes the two layers (and the two kinds of composition internal to quantum mechanics):</p>
+<table><thead><tr><th>Department of the object read</th><th>Object read</th><th>Dual counterpart</th><th>Native closure</th><th>Output</th></tr></thead><tbody><tr><td>Vacuum / $\Lambda$</td><td>Signed scalar density</td><td>Additive inverse $-\Lambda$</td><td>Additive balance</td><td>$\Lambda_1 + \Lambda_2 = 0$</td></tr><tr><td>Amplitude / $\psi$</td><td>$L_1\leftrightarrow L_2$ complex phase carrier</td><td>Conjugate dual $\psi^\sharp$</td><td>Hermitian pairing</td><td>$\psi^\sharp\psi = A^2$</td></tr><tr><td>Orthogonal outcomes</td><td>Branch weights</td><td>Mutually distinct closure slots</td><td>Additive measure</td><td>$P(E\cup F) = P(E) + P(F)$</td></tr><tr><td>Coherent state</td><td>Pre-closure amplitudes</td><td>The same carrier</td><td>Vector-add first, then pair</td><td>$P = \left</td><td>\sum_i \psi_i\right</td><td>^2$</td></tr></tbody></table>
+<p>This table does not assign "addition / multiplication" arbitrarily to different domains, but exhibits that the closure operation of each department is determined by its type of object. The main derivation of this paper centers on $L_1\leftrightarrow L_2$ symplectic-conjugation pairing (A.4.2), with reciprocity supplying only the origin of the dual side (A.4.1); additivity is not discarded (the vacuum and the orthogonal outcomes are still additive), and multiplicativity is not misused (it appears only in the pairing of a complex phase carrier with its conjugate dual).</p>
+<p>> Were one to take the additive $\psi + \psi^\sharp$ at the amplitude layer as well, one would get $2A\cos\theta$ — phase-dependent, possibly positive or negative, not a phase-invariant closure capacity; and were one to take the vacuum department multiplicatively, one would misread a signed scalar balance as a positive-definite capacity measure. Both are category mismatches.</p>
+<h4>A.4.5 Deepening: additive substrate, multiplicative manifestation</h4>
+<p>The distinction can be pushed one layer deeper, and this layer best shows that the microscopic multiplicativity is no departure from the cosmological additivity — because it shows that <strong>the two layers are in fact isomorphic at the substrate, both being additive vanishing under reciprocity</strong>.</p>
+<p>Below the causal slot, the phase itself satisfies the additive vanishing of reciprocity:</p>
+<p>$$\theta + \theta^\sharp = 0.$$</p>
+<p>This is the same kind of additive vanishing as the cosmological-layer $\Lambda_1 + \Lambda_2 = 0$. The difference is only that the ontology at the microscopic layer is not the bare phase, but the complex phase carrier $e^{i\theta}$ dualized through the exponential map (established in P2). What a one-sided closure reads is this carrier, not the bare phase. And the algebraic law of the carrier layer turns the additive vanishing of the substrate phase <strong>automatically</strong> into the multiplicative pairing of the carrier:</p>
+<p>$$e^{i\theta}\cdot e^{i\theta^\sharp} = e^{i(\theta + (-\theta))} = e^0 = 1.$$</p>
+<p>Thus: the two layers are isomorphic at the substrate (both additive vanishing under reciprocity, $\theta + \theta^\sharp = 0$ and $\Lambda_1 + \Lambda_2 = 0$), and the microscopic layer merely wears one extra coat of exponential dualization, so that the additive vanishing manifests at the carrier layer as multiplicative pairing. Multiplicativity is no departure from additivity, but the manifestation of an additive substrate after exponential dualization. The difference between the dual operations of the two layers can be put in one sentence:</p>
+<p>> The dual at the vacuum layer is additive sign reversal (preserving total remainder conservation); the dual at the amplitude layer is conjugate orientation (cancelling the phase direction, preserving the closure capacity).</p>
+<h3>A.5 The order grounding: why the Born rule falls in the second-order structure family</h3>
+<p>The main derivation answered "how a one-sided reading concretely becomes $A^2$." There remains a related but distinct question: <strong>why the Born readout falls in the second-order (quadratic) structure family, rather than third-order.</strong> This is answered by the order grounding established in the SAE Mass Series; its role is to frame which structure family the Born readout falls in, not to be a second derivation on a par with the main one.</p>
+<p>The closure family on which the established passage of the Mass Series convergence paper depends: the order of the closure law equals the number of DD breakthroughs from 1DD to the deepest active layer — 2DD active gives first order $E = pc$, 3DD active gives second order $E^2 = p^2c^2 + m^2c^4$, 4DD active gives third order $E^3 = p^3c^3 + m^3c^6 + I^3c^9$.</p>
+<p>The object of the Born readout is the below-causal-slot uncertainty-wave state, where $I$ (the 4DD causal load) is not yet active. This region falls in the second-order passage — which frames the Born readout as belonging to the quadratic structure family, rather than to the third-order (gravitational-wave-form) structure family above the causal slot where $I$ is active. This clarifies a surface tension: although measurement is a 4DD closure event, what the Born rule reads is the state <strong>before</strong> closure, below the causal slot ($I$ not yet active), so the readout is a second-order quadratic, not the third-order energy–momentum relation of the active-$I$ region above the causal slot. The two lie at different layers and do not conflict.</p>
+<p>The order grounding and the main derivation do distinct work and are not redundant:</p>
+<p>> The order grounding frames the structure family — establishing that the Born readout falls in second order; the main derivation gives the concrete form of the readout — establishing how the second-order structure concretely manifests, in a one-sided reading, as $\psi^\sharp\psi$; Gleason-type results serve as the T1 external mathematical anchor — supplying the mathematical uniqueness of the Born measure among probability measures on a standard Hilbert space.</p>
+<p>The order grounding need only establish that "the Born rule falls in the second-order family"; it does <strong>not</strong> need to identify the "second order" $E^2$ of the energy–momentum closure law directly with the "quadratic" $A^2$ of the probability amplitude. The two "twos" share a common origin in the same below-causal-slot structure — which gives second order at the closure-law layer and a quadratic at the amplitude-readout layer, a synchronous manifestation of one structure at two layers; the order grounding bears only the framing of the structure family, while the concrete form of the readout is completed independently by the main derivation. This division of labor keeps the two "twos" from being two independent coincidences landing on the same number, making them instead a one-way support between the framing of a structure family and the derivation of a readout: the former frames the family, the latter derives within it.</p>
+<p>A dimensional misreading must be avoided here. $E^2 = p^2c^2 + m^2c^4$ carries a physical dimension (energy squared), whereas the normalized probability weight $A^2$ is a dimensionless capacity measure; the two cannot be identified directly at the dimensional level. What the order grounding frames is the <strong>algebraic structure family</strong> (both being second-order / quadratic manifolds), not a direct mapping of physical dimension: the "second order" required by 3DD activity manifests, at the kinematic layer, as a dimensioned energy–momentum squared relation, and at the capacity-readout layer, as a dimensionless capacity weight that closes only through a binary pairing (quadratic). The structure family is the same (both quadratic); the physical content of the readout at each layer is independent.</p>
+<h3>A.6 The precise placement of randomness</h3>
+<p>From the modulus-squared readout follows the ontological placement of probabilistic randomness.</p>
+<p>Randomness is <strong>not arbitrariness</strong>. Below the causal slot there is no 4DD content — no pre-written outcome available for causality to adjudicate. But the statistical <strong>weight</strong> of a specific outcome is given by the dual-orientation pairing:</p>
+<p>$$w_i = \psi_i^\sharp\,\psi_i.$$</p>
+<p>So the precise statement of randomness is: below the causal slot there is no pre-written content (this follows from the absence of causality — causality would adjudicate the order of a pre-written sequence, and it has not yet arisen), while the statistical weight of each outcome is given by $\psi^\sharp\psi$. What this section explains is why this weight is a quadratic; how a <strong>single</strong> outcome concretely closes to the $i$-th result belongs to the ontological mechanism of the measurement event, left to P7.</p>
+<p>This placement is consistent with SAE's established capacity–content distinction: the modulus squared is a capacity readout — a probability density as a measure of capacity, not a content channel. The specific result of a single measurement is one random realization, by weight, from this capacity; the randomness comes from there being no causality, below the causal slot, to adjudicate which side is realized — not from hidden variables, and not from a pre-determination of the outcome.</p>
+<p>This section does not presuppose "Born probability." All it assumes is: a 4DD content readout requires a non-negative capacity weight. Non-negativity is automatically satisfied by the multiplicative pairing ($\psi^\sharp\psi = A^2 \geq 0$), whereas the additive dual ($2A\cos\theta$) cannot satisfy it (it can be positive or negative, phase-dependent). From capacity weight to normalized probability is the next step:</p>
+<p>$$P_i = \frac{w_i}{\sum_j w_j} = \frac{\psi_i^\sharp\psi_i}{\sum_j \psi_j^\sharp\psi_j}.$$</p>
+<p>When the state is normalized this is $P_i = |\psi_i|^2$. The complete probability-layer forms (measure, projection, continuous spectrum) are developed in the following subsections.</p>
+<h3>A.7 Interference: synthesize the amplitudes first, then pair</h3>
+<p>A direct and crucial corollary of the modulus-squared readout concerns the ontological place of interference. One ordering here is decisive; read it backwards and the whole picture inverts with it.</p>
+<p>The correct form of the Born rule in the interference case is to <strong>add the amplitudes first, then take the modulus squared</strong>:</p>
+<p>$$P = \left|\sum_i \psi_i\right|^2 \neq \sum_i |\psi_i|^2.$$</p>
+<p>Read the order backwards — take the modulus squared of each possibility first, then add — and the interference terms cancel, the fringes vanish. So this ordering is not a computational convention but an ontological order.</p>
+<p>Within the SAE framework this ordering has a definite ontological content. Below the causal slot is the ρ-OR region of remainder-preserving multiplicity, where multiple branches genuinely coexist (this is exactly the ontology of superposition). 4DD closure does not first assign each branch its own independent probability and then add these probabilities; rather, it first <strong>synthesizes</strong>, in the ρ-OR region, the amplitudes of the branches into a single integrated uncertainty-wave carrier, and then performs a single dual-orientation pairing (i.e. one modulus-squared readout) on that synthesized carrier.</p>
+<p>A misplaced classical image must be avoided here: synthesis is not "several spatial paths meeting and superposing on a screen." Below the causal slot there is no 3DD spatial stage for waves to meet — space is a product of closure, not a backdrop before it. Synthesis occurs in the pre-closure ρ-OR ontological pool, as the algebraic accumulation of the $L_2$ coherent generators in that pool; only when a 4DD closure event (such as absorption at the screen) occurs is this accumulated whole read as a dual-orientation pairing. In other words, interference comes from the ρ-OR amplitude synthesis at the pre-closure branch layer, and the modulus-squared readout acts on the synthesized whole.</p>
+<p>The order relation between summation and pairing (the distributive law) must be kept clear, lest it be read as "each branch is paired on its own first, then added." $\psi$ and $\psi^\sharp$ are the our frame and opposite frame of the same state, always coexistent: in the ρ-OR region, the algebraic accumulation of the $L_2$ coherent generators proceeds across both sides simultaneously — the our frame accumulates as $\sum_i\psi_i$, the opposite frame accumulates synchronously as $\sum_i\psi_i^\sharp$. Only when $L_4$ re-activation (e.g. absorption at the screen) occurs are these two already-synthesized bidirectional carriers paired as wholes at the closure interface:</p>
+<p>$$P = \left(\sum_i\psi_i^\sharp\right)\left(\sum_i\psi_i\right) = \left|\sum_i\psi_i\right|^2.$$</p>
+<p>The pairing acts on the whole <strong>after</strong> summation, not on each branch paired-then-added (the latter would cancel the cross terms and erase interference).</p>
+<p>This ordering also directly serves the wave–particle discussion below: what is called "wave nature" is exactly the fact that the pre-closure uncertainty-wave carrier can be synthesized at the branch layer (and can therefore interfere); what is called "particle nature" is the manifestation of the one-sided result after closure. The two are unified by this "synthesize first, then pair" ordering, as detailed in the wave–particle section.</p>
+<hr>
+<h3>A.8 The complete probability-layer form: measure, normalization, projection</h3>
+<p>The Born rule is not exhausted by the pointwise $A^2$; the complete probability-layer form has three levels. $\psi^\sharp\psi = A^2$ gives the <strong>minimal scalar capacity density</strong>; complete probability further requires an outcome partition, a measure, and normalization.</p>
+<p><strong>Discrete orthogonal outcomes.</strong> Let the outcome set $\{i\}$ correspond to a family of orthogonal branches, each of weight</p>
+<p>$$w_i = \psi_i^\sharp\,\psi_i = |\psi_i|^2,$$</p>
+<p>normalized to</p>
+<p>$$P_i = \frac{w_i}{\sum_j w_j}.$$</p>
+<p>When the state is normalized, $P_i = |\psi_i|^2$. Here the composition between orthogonal branches is <strong>additive</strong> (mutually distinct closure slots, an additive measure), which does not conflict with the multiplicative pairing internal to a single carrier — the two correspond respectively to the "orthogonal outcomes" and "amplitude" rows of the table in the previous section.</p>
+<p><strong>Continuous position representation.</strong> In the continuous representation, probability is given in density form:</p>
+<p>$$dP(x) = |\psi(x)|^2\, d\mu(x),$$</p>
+<p>where $d\mu(x)$ is the measure in that representation. In the flat, unconstrained regular case, $d\mu(x)$ is $d^3x$; in a curved or constrained coordinate space, the measure takes a more complex form. The continuous measure $d\mu(x)$ is itself, in SAE, an object of the representation layer; its deeper structure (involving the below-causal-slot discreteness) lies outside this paper's domain and is left to later papers as needed; this section uses $d\mu(x)$ only within the standard representation of the probability layer.</p>
+<p><strong>Abstract Hilbert representation.</strong> In the language of projection operators, the probability of outcome $a$ is</p>
+<p>$$P(a) = \langle\psi|\Pi_a|\psi\rangle,$$</p>
+<p>where $\Pi_a$ is the projection operator for that outcome. The complete projection-valued measure and POVM forms are taken over from the standard mathematical layer (T1); this paper does not restate them.</p>
+<p>The three levels together show: $\psi^\sharp\psi$ gives the minimal scalar capacity density, the ontological core of the modulus-squared readout; specific probabilities require an outcome partition, a measure, and normalization layered on top of it. What SAE supplies is the ontological origin of this minimal core; the remaining structure of the probability layer is fully backward-compatible with standard quantum mechanics.</p>
+<h3>A.9 Deepening the Tsirelson bound: the common-origin interface with P5</h3>
+<p>The operator form of the modulus-squared readout shares a common origin with the ontological reading of the Tsirelson bound established in P5. This section makes that common origin explicit, both deepening P5 and providing an anchor for the interface between P6 and the bound on quantum correlations.</p>
+<p>P5 established the ontological reading of the Tsirelson bound $2\sqrt 2$: on the CHSH operator $B$, the standard algebraic derivation gives $\|B^2\| \leq 4 + 2\cdot 2 = 8$, hence $\|B\| \leq 2\sqrt 2$. Here the factor 4 comes from the binary readout grammar of $L_4$ (the four CHSH terms), and the factor $2\times 2$ comes from the symplectic commutator bound of each party's own $L_1\leftrightarrow L_2$. The twelve 4DD topologies do not bear this number, so as to avoid numerology.</p>
+<p>The numerical origin must be made clear, lest "two" be read as explaining "2." The specific numbers $\|B^2\| \leq 8$ and $\|B\| \leq 2\sqrt 2$ come from standard operator algebra — the CHSH operator is built from binary unitary involution operators, and the operator-norm bound of their commutator gives these numbers. This paper does not replace that numerical origin.</p>
+<p>What P6 supplies on top of this is an <strong>ontological isomorphism interpretation</strong>, not a numerical derivation. The $\|B^2\|$ in the Tsirelson derivation is itself the operator version of a modulus-squared readout — it takes the norm of the self-pairing of the operator $B$, structurally isomorphic to a one-sided reading's taking $\psi^\sharp\psi$ of $\psi$: both are "the bilinear pairing of a carrier with its dual, taking a positive-definite scalar." Under this isomorphism, the norm bound of each party's local incompatible readout can be ontologized as the maximal readable strength of that party's $L_1\leftrightarrow L_2$ symplectic structure within the binary readout grammar of $L_4$; and "each party's own local structure" corresponds to the factorization established in P5. This is the explanation of why "local incompatible readout" and "dual-orientation pairing" issue from the same ontology — it is <strong>not</strong> the numerical assertion that "the number is 2 because there are two sides." The twelve 4DD topologies likewise do not bear these numbers.</p>
+<p>This deepening does two things. First, the Born form of P6 is compatible with the Tsirelson bound $2\sqrt 2$ — the modulus-squared readout shares an origin with the Tsirelson algebra, so that the bound on quantum correlations and the quadratic structure of the one-sided readout issue from the same ontology. Second, it makes the cross-paper anchor with P5: P5's surface-layer Tsirelson reading and P6's deep-layer bidirectional structure dock here, so that the two papers share an origin at this one point, the bound on quantum correlations.</p>
+<p>The placement of the PR box (Popescu–Rohrlich box) can be given alongside. The correlation the PR box demands exceeds the bound that a one-sided projection of a both-sided-influenced state (the modulus squared) can give. Under the SAE reading, this corresponds to an illegitimate overdraft of capacity — it demands a correlation strength beyond what the capacity structure can carry, rather than violating the capacity–content distinction. The complete PR-box discussion is taken over from P5; this section does not develop it.</p>
+<hr>
+<h3>A.10 The complete probability layer and no-signaling: the marginal-distribution part</h3>
+<p>The complete no-signaling theorem has its ontological ground established in P5 (the capacity–content distinction), with the complete theorem $\sum_b P(a,b|x,y) = P(a|x)$ left to P6 and P7 jointly. This section gives the part obtainable directly from the modulus-squared readout — the marginal-distribution part; the part of the complete theorem involving the formalization of the measurement apparatus is left to P7.</p>
+<p><strong>Standard mathematical layer (T1).</strong> The no-signaling property of the marginal distribution is first of all a result of standard quantum mechanics, with which this paper interfaces rather than re-proving. For projective measurements, the joint probability is</p>
+<p>$$P(a,b|x,y) = \langle\psi|(\Pi_a^x \otimes \Pi_b^y)|\psi\rangle.$$</p>
+<p>If Bob's measurement is complete, $\sum_b \Pi_b^y = I_B$, then summing over $b$ gives</p>
+<p>$$\sum_b P(a,b|x,y) = \langle\psi|(\Pi_a^x \otimes I_B)|\psi\rangle = P(a|x),$$</p>
+<p>i.e. the local marginal is independent of the remote setting $y$. The same holds for POVMs, with $\sum_b E_b^y = I_B$. This step is a direct corollary of standard completeness and does not depend on SAE.</p>
+<p><strong>SAE ontological-reading layer.</strong> Within the SAE framework, this result has an ontological meaning: completeness corresponds to the total-capacity conservation of the remote closure slot; after summing over $b$, the remote content label is eliminated, and locally only the capacity readout of one's own closure partition is retained. Because the ledger is an $L_1 + L_2$ capacity structure with no content (established in P5), the choice of remote setting $y$ does not change the local capacity readout — capacity cannot be transmitted by this route. So no-signaling is given at the probability layer by completeness, and explained at the ontological layer by the capacity / content distinction; the two are consistent, and it is not that a probability theorem is "spoken" directly from ontological language.</p>
+<p>This result is consistent with the cross-paper hard constraint. The modulus-squared readout occurs above the causal slot (a 4DD closure event), not as information transfer internal to the ρ-OR region (the hard constraint of Information Theory P4); $\psi^\sharp$, as the dual-orientation counterpart, is not a second wavefunction arriving from the opposite side, and the pairing is a one-sided closure event's reading of that both-sided-influenced, not-yet-single-directionalized state, not a cross-side communication. Hence the no-signaling property of the marginal distribution is consistent with SAE's established structure of no information transfer below the causal slot.</p>
+<p>The complete no-signaling theorem — including how the measurement apparatus participates, and the ontology of a single closure event — requires the measurement-apparatus ontology of P7. This section delivers only the marginal-distribution part, as the result of interfacing the modulus-squared readout with standard completeness.</p>
+<hr>
+<h3>A.11 Wave–particle duality: this section's interface</h3>
+<p>Wave–particle duality touches the ontological character of the entire ρ-OR region — it relates to P2's uncertainty-wave carrier, P4's tunneling density, and P5's ledger phase, and is wider than the Born rule's domain. So this paper does not develop the complete discussion of wave–particle duality, but only points out its interface with the Born rule; the complete discussion accumulates across papers in the SAE Quantum Mechanics Series.</p>
+<p>Wording is especially important here. Phrases like "it is really a particle" lead the reader toward the classical corpuscular image; the precise statement has three layers:</p>
+<ul>
+<li><strong>Readout layer</strong> (after causality has single-directionalized): presents as a single, particle-like result.</li>
+<li><strong>Pre-closure layer</strong> (below the causal slot): is a carrier in uncertainty-wave form.</li>
+<li><strong>Ontological layer</strong>: neither a classical wave nor a classical particle.</li>
+</ul>
+<p>Under these three layers, the interface between wave–particle duality and the Born rule is clear: what is called "wave nature" has as its ontological origin the below-causal-slot uncertainty-wave form — which lets the pre-closure carrier be synthesized at the branch layer and therefore interfere (continuing A.7's "synthesize first, then pair"); what is called "particle nature" is the manifestation of the one-sided result after causality has single-directionalized. The Born rule sits exactly at the interface of the two: it converts the dual-orientation capacity pairing of the pre-closure uncertainty-wave carrier into the statistical weight of a one-sided result.</p>
+<p>Wave nature comes from the below-causal-slot uncertainty-wave form, not from "the particle really being a kind of wave." The uncertainty-wave form and the above-causal-slot gravitational-wave form are two distinct wave forms of the remainder on the two sides of the causal slot. A single object unfolds in the ρ-OR region in uncertainty-wave form (wave behavior), a one-sided projection gives a probability density (Thesis A of this paper), and a single closure gives a particle-like single result. Particle-like and wave-like are not two dual ontological roles, but different manifestations of the same carrier on the two sides of the causal slot, under two layers of readout. The complete discussion (including specific cases such as the double-slit fringe distribution) accumulates across papers on top of P2 and this paper; this section only establishes the interface.</p>
+<hr>
+<h2>Thesis B: The Mechanism-Candidate Layer</h2>
+<p>Thesis A gave the ontological identity of the modulus-squared readout and its main derivation. Thesis B turns to the mechanism layer — here what SAE gives is a <strong>candidate</strong>, not a settled conclusion, at strength T3, belonging to a different level than the T2 structural derivation of Thesis A. This thesis gives two mechanism candidates and states a position of interpretational neutrality.</p>
+<h3>B.1 Mechanism candidate one: cross-ladder readout must pass through the modulus squared</h3>
+<p>The first mechanism candidate comes from P4's cross-ladder readout interface. A one-way firewall is set up first, because reading the direction backwards would constitute circularity.</p>
+<p>P4 established: the factor 2 in tunneling's $e^{-2\kappa L}$ comes from the Born modulus squared (a two-step readout), while the factor 2 in Schwarzschild's $r_s = 2GM/c^2$ comes from a one-step readout. Note: P4's tunneling factor 2 <strong>depends on</strong> the Born modulus squared, whereas P6 is <strong>explaining</strong> the Born modulus squared. So the direction must be one-way — <strong>P4 inspires P6, P6 supports P4; P4 cannot prove P6</strong>.</p>
+<p>Specifically: P4 §6.4.2 proposed "tunneling is a two-step passage through the Born modulus squared" as an interface to be completed by P6 (P4 at the time left this interface to P6); P6, in Thesis A, <strong>independently</strong> completes the ontological identity of the modulus squared (the main derivation plus the multiplicative grounding, throughout without citing P4); once P6 is complete, P4's cross-ladder readout candidate gains upstream support. This section travels only the "P6 → supports P4" direction, and never uses P4's factor 2 in reverse to support P6.</p>
+<p>Under this one-way premise, the ontological identity of the modulus squared gives P4's two factors of 2 a precise channel distinction: Schwarzschild lies on the above-causal-slot gravitational-wave-form side, a one-step readout, the factor 2 falling at a linear position; tunneling lies on the below-causal-slot uncertainty-wave-form side, passes through the modulus-squared readout, a two-step readout, the factor 2 falling at an exponential position. The ontological origins of the two factors of 2 differ — one on the gravitational-wave side, one on the uncertainty-wave side — which is exactly the "cross-ladder readout channel structure difference" P4 requires. Hence, as a mechanism candidate: cross-ladder readout must pass through the modulus squared because the readout on the uncertainty-wave side necessarily passes through a below-causal-slot state simultaneously subject to both-sided time arrows, and reading such a state one-sidedly is the modulus squared.</p>
+<h3>B.2 Mechanism candidate two: the modulus-squared readout occurs at the moment of $L_4$ re-activation</h3>
+<p>The second mechanism candidate locates the timing of the modulus-squared readout within the measurement process. P5 established: measurement is $L_4$ re-activation — strong re-activation (projective measurement) projects the ledger onto local content, while weak measurement / decoherence is partial re-activation.</p>
+<p>On this basis, the modulus-squared readout occurs at the moment of $L_4$ re-activation: the re-activation event projects the below-causal-slot, both-sided-influenced uncertainty-wave state onto the one-sided real-valued readout interface, and this projection is the dual-orientation pairing, giving $\psi^\sharp\psi$.</p>
+<p>There is an interface between P6 and P7. What P6 gives is the <strong>layer</strong> form of probability — why each weight is a quadratic, given an outcome partition; what P7 gives is the ontological mechanism of the measurement event — how the measurement apparatus, the environment, record generation, and irreversibility participate, and why a particular instance closes to the $i$-th result. As a mechanism candidate, this section only points out the temporal correspondence between the modulus-squared readout and $L_4$ re-activation, without overstepping into P7's measurement-apparatus ontology.</p>
+<h3>B.3 Interpretational neutrality</h3>
+<p>Both mechanism candidates of Thesis B remain interpretationally neutral. The modulus squared, as a deeper-layer mechanism candidate, sits beneath the various interpretations of quantum mechanics — it does not pre-select any one of collapse, many-worlds, or environmental selection, but supplies an ontological layer on which these interpretations become phenomenological descriptions. This neutral position is inherited from P5 and will be developed concretely in Thesis C: the relation of SAE to several mainstream interpretations is not "choosing yet another interpretation," but giving a deeper ontological origin to the mathematical structure they share.</p>
+<hr>
+<h2>Thesis C: A Reclassification of the Born Rule's Origin</h2>
+<p>Thesis C treats the relation of SAE to the mainstream approaches to the Born rule's origin. The approaches fall into two kinds: those in substantive dialogue with SAE (Gleason, Many-Worlds derivations), and those given a minimal placement (QBism, Bohmian). The complete interpretational map is left to P0 and not developed here.</p>
+<h3>C-i Gleason's theorem and SAE's geometric origin</h3>
+<p>Gleason's theorem is the standard result for the mathematical uniqueness of the Born rule: under the premise of non-contextuality, a probability measure on a Hilbert space is given uniquely by a density operator via the trace formula, yielding the modulus-squared form.</p>
+<p>The relation of SAE to Gleason is stated precisely by two qualifications.</p>
+<p><strong>First, the dimension and measurement-structure condition.</strong> Gleason's original theorem holds for Hilbert spaces of dimension no less than 3; the two-dimensional qubit case requires an additional assumption, or recourse to a POVM version or Busch-type generalization, for coverage. So Gleason-type theorems give the standard mathematical uniqueness of the Born-type measure under their usual conditions on dimension and measurement structure, not coverage of all Hilbert spaces; the two-dimensional qubit and POVM cases require the corresponding extended versions. SAE does not re-derive these theorems, but only gives the ontological origin of the quadratic readout.</p>
+<p><strong>Second, the non-corollary placement.</strong> SAE does <strong>not</strong> treat Gleason as "a corollary derived by SAE." The more secure relation is: SAE is <strong>compatible</strong> with Gleason-type uniqueness results; at the standard-form layer, SAE's quadratic readout <strong>interfaces</strong> with these mathematical results.</p>
+<p>Hence the division of labor between SAE and Gleason is clear: Gleason answers, at the mathematical layer, "given Hilbert-space structure and non-contextuality, why the probability measure is uniquely the modulus squared"; SAE answers, at the ontological layer, "what the origin of the modulus-squared readout form is — the one-sided reading of a below-causal-slot, both-sided-influenced state." The former is T1 mathematical uniqueness, the latter T2 ontological origin. The two do not compete; each takes up a different facet of the probability rule. This is the positive expression of P6's commitment grading: SAE gives the ontological origin, not a re-proof of mathematical uniqueness.</p>
+<h3>C-ii Many-Worlds derivations and SAE: the causality firewall</h3>
+<p>The relation to Many-Worlds approaches (the Everett interpretation, the Deutsch–Wallace decision-theoretic derivation, Zurek's envariance) requires a precise firewall, because the formal structure the two share is most easily misread as ontological identity.</p>
+<p>Separate first the shared from the rejected. SAE <strong>shares the branch formalism</strong> with Everett / Deutsch–Wallace — multiple branches coexist in the mathematical representation before closure. But SAE <strong>rejects the branch-world ontology</strong> — it refuses to promote each branch into an independent, ontologically real 4DD content world. The two are not "mathematically fully identical": the Born weights of Many-Worlds depend on a whole apparatus of internal argument (Deutsch–Wallace's rational-agent decisions, branch measures, observer self-location, and so on), whereas SAE's weights come from dual-orientation pairing. Precisely: SAE accepts the branch formalism as a formal representation of ρ-OR multiplicity, but refuses to ontologize the branches into multiple 4DD content worlds.</p>
+<p>The core of this firewall is that the point of distinction falls precisely on <strong>whether the state is subject to a single-direction or a bidirectional time arrow</strong>, and thereby on the presence or absence of causality — not merely on the position of a layer:</p>
+<p>> The branches of Many-Worlds are multiple worlds above the causal slot, each subject only to a single-direction time arrow — each branch carries a complete, single-directionally oriented causal history. The two sides of SAE are one and the same quantum below the causal slot, <strong>simultaneously subject to the our-frame and opposite-frame bidirectional time arrows</strong> — not two worlds each single-directional, but one state not yet single-directionalized and therefore without causality and without a causal history.</p>
+<p>From this one can respond directly to the most natural objection from the Many-Worlds side: "Aren't your two sides just two branches?" The answer is: no. Branches are 4DD worlds each subject to a single-direction time arrow and each carrying a complete causal history (multiple worlds, each single-directional); SAE's two sides are <strong>one and the same quantum simultaneously subject to two directions of the time arrow</strong> (one state, subject to both directions), with no single direction available to fix causation, hence no causal history. Multiple worlds each single-directional, and one state simultaneously subject to both-sided influence, are two things of different categories. As for ontological economy and remainder discipline, SAE does not bear a branch-world ontology — it acknowledges only the branch formalism as a formal representation of ρ-OR multiplicity, and does not ontologize each branch into an independent 4DD world carrying a complete causal history. Before closure SAE has only one not-yet-single-directionalized bidirectional state, and after closure a one-sided result, with no proliferation of worlds; whether a thermodynamic accounting of the branch-world ontology can be given lies outside this paper, which only points out that SAE need not introduce multiple 4DD content worlds.</p>
+<p>An analogy can separate "the bidirectional orientation of a single existence" from "two separate entities," with the following restriction on its scope. The Möbius band is a one-sided two-dimensional manifold: in its embedding space it appears to have an "upper" and a "lower" face, but as a manifold itself it has only one face — the apparent upper and lower are two orientations of the same face, not two separate faces. SAE's dual temporal orientation is <strong>isomorphic to this at the ontological layer</strong>: the Planck substrate is a single ontological existence, and the bidirectional orientation is two orientations of this single existence, not two ontologically separate entities. This analogy is an isomorphism at the structural level of "a single existence containing a bidirectional orientation," <strong>not</strong> a direct mapping of spatial topology — the Möbius band is a two-dimensional manifold, the Planck substrate is not a spatial manifold, and the two differ in spatial structure. What the analogy takes is only the contrast of "single existence / bidirectional orientation" against "two separate realities." Hence the point of distinction is clear: SAE is the bidirectional orientation of a single ontological existence, Many-Worlds is multiple ontologically separate realities.</p>
+<p>SAE's treatment of Many-Worlds differs ontologically, in one respect, from its treatment of Einstein (see P5). For Einstein, SAE takes over his deeper mathematical intuition and corrects its specific expression — a vindication of his intuition. For Many-Worlds, SAE likewise takes over its mathematical insight (unitary evolution, no independent collapse postulate, branch structure as random sampling), but replaces its ontology (the one-sided projection of a bidirectional temporal orientation in place of world-splitting) — here SAE takes over only the mathematics, and not a vindication of the branch-world ontology. SAE gives the branch weights a deeper origin, from dual-orientation pairing.</p>
+<h3>C-iii Minimal placement: QBism and Bohmian</h3>
+<p>The following two approaches are not developed in dialogue within P6's domain; each is given a paragraph of demarcation, with the complete dialogue left to P0 or a dedicated paper.</p>
+<p><strong>QBism.</strong> QBism interprets probability as the subjective belief of an agent (the agent's credence) — the Born rule a normative constraint on a rational agent's betting. SAE's probability is not subjective belief, but a projection from capacity to content, an objective structural readout. The two diverge fundamentally on "what probability is": one is the agent's epistemic attitude, the other the objective one-sided reading of a below-causal-slot, both-sided-influenced state. This paper does not develop a substantive dialogue with QBism's agent ontology.</p>
+<p><strong>Bohmian.</strong> Bohmian mechanics interprets probability as epistemic ignorance of hidden variables (the true positions of particles) — $|\psi|^2$ being the distribution of initial positions (more finely, the Bohmian approach usually argues the stability of this distribution through quantum equilibrium / typicality and equivariance), with randomness arising from ignorance of definite but unknown trajectories. SAE's randomness is not ignorance: below the causal slot there is no pre-written outcome available for adjudication, and randomness arises from there being no causality to adjudicate which side is realized, not from ignorance of an established fact. This distinction echoes the related demarcation in P5's treatment of Einstein. This paper does not develop a substantive dialogue with Bohmian's hidden-variable ontology.</p>
+<hr>
+<h2>Compatibility Anchors, Structural Stress Tests, and Conditional Open Interfaces</h2>
+<p>This paper registers three classes of anchor, A/B/C. Class A consists of baseline commitments and compatibility anchors, not currently usable quantitative forward predictions; whether the Born rule is modified in the strong-field regime is listed as a Class C open problem.</p>
+<p><strong>Class A (baseline commitments / compatibility anchors)</strong></p>
+<ul>
+<li><strong>A1 (weak-field baseline)</strong>: in the regular / weak-field regime (the $d_{\mathrm{eff}}\to 2$ established in Relativity P1), the two sides are nearly symmetric, the dual-orientation pairing coincides with standard Hermitian conjugation, and the Born rule is exact: $P_i = |\psi_i|^2$. This is the baseline statement of the paper, consistent with the high-precision experimental confirmation of the Born rule. The main body of the paper takes this as the standard within the regular regime.</li>
+</ul>
+<p><strong>Class B (structural incompatibility)</strong></p>
+<ul>
+<li><strong>B1 (grading condition)</strong>: if the Gleason-type conditions can be derived from deeper SAE axioms, then P6 can be upgraded to a full Gleason-equivalent theorem; otherwise it retains the strong structural derivation of the quadratic readout.</li>
+<li><strong>B2 (P4 cascade)</strong>: if the ontological necessity of "cross-ladder readout must pass through the modulus squared" does not hold, then the tunneling factor-2 candidate of P4 §6.4.2 fails accordingly.</li>
+<li><strong>B3 (P5 cascade)</strong>: if P6's modulus squared is inconsistent with P5's Tsirelson factor 4 + $2\times 2$, then the corresponding subsection of P5 is under pressure.</li>
+<li><strong>B4 (cross-ladder discipline)</strong>: if the dual-orientation filling is inconsistent with the $i$ identity of Foundation v2, then P6's main line is under pressure.</li>
+<li><strong>B5 (convergence cascade)</strong>: if the order grounding (structure-family order = number of DD breakthroughs) is inconsistent with the established convergence paper, then the interface between convergence and P6 is under pressure.</li>
+<li><strong>B6 (multiplicative-grounding cascade)</strong>: if the principle "reciprocity closes in the native algebra" (microscopic multiplicativity sharing an origin with vacuum additivity) is inconsistent with the established reciprocity of Cosmo I — for example, if reciprocity cannot be multiplicative at the microscopic amplitude layer — then the main statement of this paper's multiplicative grounding is under pressure, retreating to the weak statement "borrowing the reciprocity principle, without deriving the concrete form of microscopic multiplicativity."</li>
+</ul>
+<p><strong>Class C (framework consistency / failure modes / conditional programs)</strong></p>
+<ul>
+<li><strong>C1</strong>: consistent with the $L$ ladder of Foundation v2 (the three channels of $L_2$ and representational invariance).</li>
+<li><strong>C2</strong>: backward-compatible with the mathematical layer of standard quantum mechanics (the computational results of the modulus squared are unchanged).</li>
+<li><strong>C3</strong>: consistent with the P5 interface "measurement is $L_4$ re-activation" (P6 gives the probability layer, P5 gives the ontological mechanism).</li>
+<li><strong>C4</strong>: consistent with the cross-paper anchoring network (P3's $\hbar$, P4's cross-ladder, P5's ledger and Tsirelson, Foundation v2's cross-ladder, convergence's order, Cosmo I's reciprocity).</li>
+<li><strong>C5 (continuing P2)</strong>: the complex amplitude cannot be replaced by a purely real-number ontology, unless that restatement contains no dual-algebra element of type $J^2 = -1$.</li>
+<li><strong>C6 (strong field: open problem)</strong>: the Born rule is exact within its domain — the regular and weak-field regime — consistent with the high-precision experimental confirmation of the Born rule. Whether the Born rule remains exact, or is modified, in the strong field (extreme compression of the causal slot) is an <strong>open problem</strong>: SAE currently cannot give an a priori judgment. This paper claims neither a Born deviation in the strong field nor its necessary exactness — the relation between the Born rule and field strength cannot be given a priori absent posterior support, and is therefore explicitly marked as undecided, left to later theoretical development and experiment.</li>
+<li><strong>C7 ($i$'s complete geometric ontology: open problem)</strong>: this paper anchors $i$ as the inversion factor established in Foundation v2, and cites "the complex structure within a single dual-4DD plane" from the DD-splitting structure of the Prequel as the geometric background for its falling in $U(1)$ (A.4.3). But the <strong>complete geometric definition</strong> of $i$ as an ontological operation in the physical world — its precise characterization within the dual-4DD plane, its relation to the our-side and opposite-side temporal orientations, and the precise connection between it and the Born pairing $\psi^\sharp\psi$ ($i$ supplies the geometric premise of the complex phase carrier, while the modulus-squared readout is completed by the conjugate pairing of dual orientations, and the two cannot be simply identified) — is not given in this paper, and is listed as an open problem, left to later deepening at the Foundation layer. This paper takes an honest position on it: the ontological placement of $i$ in the physical world has not yet been thought through, so it cites only the established anchors sufficient for use, without hastily developing the matter within P6.</li>
+</ul>
+<hr>
+<h2>Acknowledgements</h2>
+<p>The argument of this paper was refined over several rounds of divergent-thinking review during drafting. I thank four large language models for the divergent thinking and structural challenges they offered in different rounds — in particular, repeated interrogation of the multiplicative-pairing grounding, the group-structure locking of $i$, the dual temporal orientation, and the causality firewall, which helped the author clarify the boundaries of several ontological formulations. I am especially grateful to Zesi Chen (陈则思) for sustained critical feedback. All intellectual decisions and the final formulations are the author's responsibility.</p>
+<hr>
+<h2>References</h2>
+<p>The established SAE works on which this paper depends are listed below, grouped by series. Listed are concept DOIs or the corresponding version DOIs.</p>
+<p><strong>Quantum Mechanics Series (QM)</strong></p>
+<ul>
+<li>Han Qin. SAE Quantum Mechanics P2. Zenodo. https://doi.org/10.5281/zenodo.20277037</li>
+<li>Han Qin. SAE Quantum Mechanics P3: ℏ as the $L_1\leftrightarrow L_2$ Symplectic-Conjugation Closure Signature. Zenodo. https://doi.org/10.5281/zenodo.20340595</li>
+<li>Han Qin. SAE Quantum Mechanics P4: Quantum Tunneling. Zenodo. https://doi.org/10.5281/zenodo.20369138</li>
+<li>Han Qin. SAE Quantum Mechanics P5. Zenodo. https://doi.org/10.5281/zenodo.20455398</li>
+</ul>
+<p><strong>Physics Foundation and Four Forces Prequel</strong></p>
+<ul>
+<li>Han Qin. Cross-Layer Closure Equations: From Euler's Formula to the Event Horizon (SAE Physics Foundation). Zenodo. https://doi.org/10.5281/zenodo.19361950</li>
+<li>Han Qin. Light Speed, Dimensional Breakthrough, and the Coupling Constant Hierarchy (Four Forces Prequel). Zenodo. https://doi.org/10.5281/zenodo.19341043</li>
+<li>Han Qin. The Grammar of Force: Four Forces Series Finale. Zenodo. https://doi.org/10.5281/zenodo.19464447</li>
+</ul>
+<p><strong>Cosmological Series</strong></p>
+<ul>
+<li>Han Qin. From Remainder Conservation to the Cosmological Constant (Cosmo I). Zenodo. https://doi.org/10.5281/zenodo.19245267</li>
+<li>Han Qin. Causal Strengthening, Remainder Conservation, and the Dual-Frame Resolution of the Ġ/G Tension (Cosmo V). Zenodo. https://doi.org/10.5281/zenodo.19329771</li>
+</ul>
+<p><strong>Relativity Series</strong></p>
+<ul>
+<li>Han Qin. Gravitational Time Dilation in the SAE Framework: Causal Cell Throughput Derivation (Relativity P1). Zenodo. https://doi.org/10.5281/zenodo.19836185</li>
+<li>Han Qin. Ontological Unification of Motion and Gravitational Effects: Effective Inertia under Causal-Slot Geometry (Relativity P2). Zenodo. https://doi.org/10.5281/zenodo.19910546</li>
+</ul>
+<p><strong>Information Theory Series</strong></p>
+<ul>
+<li>Han Qin. The 4DD Ontology of Information and a Single Foundational Axiom (Information Theory P1). Zenodo. https://doi.org/10.5281/zenodo.19740020</li>
+<li>Han Qin. Black Hole Information through the Causal Spectrum: The SAE-BH Correspondence (Information Theory P4). Zenodo. https://doi.org/10.5281/zenodo.19880112</li>
+</ul>
+<p><strong>Mass Series</strong></p>
+<ul>
+<li>Han Qin. The Nature of Information: E/c³ (Mass Series Convergence Paper). Zenodo. https://doi.org/10.5281/zenodo.19510868</li>
+</ul>
+<p><strong>External Standard References</strong></p>
+<ul>
+<li>Born, M. (1926). Zur Quantenmechanik der Stoßvorgänge. <em>Zeitschrift für Physik</em>, 37, 863–867.</li>
+<li>Gleason, A. M. (1957). Measures on the closed subspaces of a Hilbert space. <em>Journal of Mathematics and Mechanics</em>, 6, 885–893.</li>
+<li>Busch, P. (2003). Quantum states and generalized observables: a simple proof of Gleason's theorem. <em>Physical Review Letters</em>, 91, 120403.</li>
+<li>Deutsch, D. (1999). Quantum theory of probability and decisions. <em>Proceedings of the Royal Society A</em>, 455, 3129–3137.</li>
+<li>Wallace, D. (2012). <em>The Emergent Multiverse: Quantum Theory according to the Everett Interpretation</em>. Oxford University Press.</li>
+<li>Zurek, W. H. (2005). Probabilities from entanglement, Born's rule from envariance. <em>Physical Review A</em>, 71, 052105.</li>
+<li>Fuchs, C. A., Mermin, N. D., & Schack, R. (2014). An introduction to QBism. <em>American Journal of Physics</em>, 82, 749–754.</li>
+<li>Bohm, D. (1952). A suggested interpretation of the quantum theory in terms of "hidden" variables. <em>Physical Review</em>, 85, 166–193.</li>
+<li>Dürr, D., Goldstein, S., & Zanghì, N. (1992). Quantum equilibrium and the origin of absolute uncertainty. <em>Journal of Statistical Physics</em>, 67, 843–907.</li>
+<li>Cirel'son (Tsirelson), B. S. (1980). Quantum generalizations of Bell's inequality. <em>Letters in Mathematical Physics</em>, 4, 93–100.</li>
+<li>Popescu, S., & Rohrlich, D. (1994). Quantum nonlocality as an axiom. <em>Foundations of Physics</em>, 24, 379–385.</li>
+</ul></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>玻恩规则——测量结果的概率由量子态的模平方给出——在标准量子力学中作为公设引入，由实验以极高精度确认，但其模平方形式的来源长期是量子力学基础的核心议题。主流进路分别把这一来源放在 Hilbert 空间的数学唯一性（Gleason）、理性主体的决策规范（Deutsch–Wallace）、系统-环境纠缠的对称性（Zurek 的 envariance）、主观信念（QBism）或隐变量（Bohmian）之上。
+
+本文在 SAE 框架内，为模平方这一读出形式给出一个本体来源。核心论点是：模平方是因果槽以下、测不准波形态、同时受双侧时间箭头影响、因而无因果律的闭合前态的单侧读数。在此区域，时间箭头与因果律是两件不同的事：时间箭头在任何尺度都存在，量子在本侧（our frame）沿其时间箭头正常向前演化（动力学层，P3）；而因果律的本体内容是单向时间箭头的影响——因果槽以上只受本侧单向影响，故有因果律、呈现确定；因果槽以下同时受 our frame 与 opposite frame 双向时间箭头影响（二者同为这一 dual-4DD 结构的两面，Cosmo V 既立），无单一方向可定因果，故无因果律。正因量子同时受双侧影响、无因果律可定向，本侧的单侧读出读不到预先写就的确定局部内容，而呈现为概率分布（一般态；若已是某测量的本征态，则退化为 $P=1$ 的确定读出）。受双侧影响的是读出的呈现方式（读出层），不是量子的演化（演化在本侧照常向前）。单侧读取这样一个态，在振幅层表现为对偶取向的共轭配对（our frame 的 $e^{i\theta}$ 与 opposite frame 的 $e^{-i\theta}$）$\psi^\sharp\psi = A^2$，即模平方。读出事件本身发生在 $L_4$ 重激活（即 4DD 闭合）时；被读对象在闭合前，读出事件是闭合本身。
+
+本文区分三层强度。在标准数学层（T1），Born 测度的唯一性由 Gleason 类定理在其通常条件下给出，本文不重推、只与之接合。在 SAE 结构层（T2），本文给出二次型读出的强结构推导——这是本文的核心交付，但<strong>不是</strong> Gleason 等价的完整定理。在机制层（T3），本文给出双向取向单侧投影的本体图像，作为候选。
+
+本文回答了一个关键的本体问题：因果槽以下的双侧读出为何取乘性配对，而非如宇宙学层余项守恒那样取加性形式。回答是：互易（余项守恒）本身不规定加或乘，它规定一个侧面须与其对偶对应物在被读对象的原生代数中闭合——标量能量密度在加法群中闭合为加性归零（$\Lambda_1 + \Lambda_2 = 0$），复相位载体在 $U(1)$ 乘法群中闭合为乘性配对（$\psi^\sharp\psi = A^2$）。二者是同一互易原理在不同原生代数中的两种实现，而非两条规则。更深一层，两层底座同为互易的加性归零（$\theta + \theta^\sharp = 0$），微观层经指数对偶化后在载体层表现为乘性。
+
+本文据此给出：模平方与玻恩概率随机性的本体定位（随机非任意，而是因果槽以下无预写内容、统计权重由对偶取向配对给出）；与 Gleason、Many-Worlds、QBism、Bohmian 的关系（其中与 Many-Worlds 的区分以因果律的有无为防火墙：分支是带因果律的多重世界，双侧是无因果律的双向取向）；以及与 P4 跨阶梯读出、P5 Tsirelson 上界、无信号边缘分布的接合。强场下玻恩规则是否有修正，本文标记为开放问题：在缺乏后验支持时，玻恩规则与场强的关系无法先验给出。
+
+---</p>
+      <div class="keywords"><strong>关键词：</strong></div>
+    </div>
+    <div class="paper-body"><h2>摘要</h2>
+<p>玻恩规则——测量结果的概率由量子态的模平方给出——在标准量子力学中作为公设引入，由实验以极高精度确认，但其模平方形式的来源长期是量子力学基础的核心议题。主流进路分别把这一来源放在 Hilbert 空间的数学唯一性（Gleason）、理性主体的决策规范（Deutsch–Wallace）、系统-环境纠缠的对称性（Zurek 的 envariance）、主观信念（QBism）或隐变量（Bohmian）之上。</p>
+<p>本文在 SAE 框架内，为模平方这一读出形式给出一个本体来源。核心论点是：模平方是因果槽以下、测不准波形态、同时受双侧时间箭头影响、因而无因果律的闭合前态的单侧读数。在此区域，时间箭头与因果律是两件不同的事：时间箭头在任何尺度都存在，量子在本侧（our frame）沿其时间箭头正常向前演化（动力学层，P3）；而因果律的本体内容是单向时间箭头的影响——因果槽以上只受本侧单向影响，故有因果律、呈现确定；因果槽以下同时受 our frame 与 opposite frame 双向时间箭头影响（二者同为这一 dual-4DD 结构的两面，Cosmo V 既立），无单一方向可定因果，故无因果律。正因量子同时受双侧影响、无因果律可定向，本侧的单侧读出读不到预先写就的确定局部内容，而呈现为概率分布（一般态；若已是某测量的本征态，则退化为 $P=1$ 的确定读出）。受双侧影响的是读出的呈现方式（读出层），不是量子的演化（演化在本侧照常向前）。单侧读取这样一个态，在振幅层表现为对偶取向的共轭配对（our frame 的 $e^{i\theta}$ 与 opposite frame 的 $e^{-i\theta}$）$\psi^\sharp\psi = A^2$，即模平方。读出事件本身发生在 $L_4$ 重激活（即 4DD 闭合）时；被读对象在闭合前，读出事件是闭合本身。</p>
+<p>本文区分三层强度。在标准数学层（T1），Born 测度的唯一性由 Gleason 类定理在其通常条件下给出，本文不重推、只与之接合。在 SAE 结构层（T2），本文给出二次型读出的强结构推导——这是本文的核心交付，但<strong>不是</strong> Gleason 等价的完整定理。在机制层（T3），本文给出双向取向单侧投影的本体图像，作为候选。</p>
+<p>本文回答了一个关键的本体问题：因果槽以下的双侧读出为何取乘性配对，而非如宇宙学层余项守恒那样取加性形式。回答是：互易（余项守恒）本身不规定加或乘，它规定一个侧面须与其对偶对应物在被读对象的原生代数中闭合——标量能量密度在加法群中闭合为加性归零（$\Lambda_1 + \Lambda_2 = 0$），复相位载体在 $U(1)$ 乘法群中闭合为乘性配对（$\psi^\sharp\psi = A^2$）。二者是同一互易原理在不同原生代数中的两种实现，而非两条规则。更深一层，两层底座同为互易的加性归零（$\theta + \theta^\sharp = 0$），微观层经指数对偶化后在载体层表现为乘性。</p>
+<p>本文据此给出：模平方与玻恩概率随机性的本体定位（随机非任意，而是因果槽以下无预写内容、统计权重由对偶取向配对给出）；与 Gleason、Many-Worlds、QBism、Bohmian 的关系（其中与 Many-Worlds 的区分以因果律的有无为防火墙：分支是带因果律的多重世界，双侧是无因果律的双向取向）；以及与 P4 跨阶梯读出、P5 Tsirelson 上界、无信号边缘分布的接合。强场下玻恩规则是否有修正，本文标记为开放问题：在缺乏后验支持时，玻恩规则与场强的关系无法先验给出。</p>
+<hr>
+<h2>第一部分：玻恩规则起源的主流图景</h2>
+<p>玻恩规则自 1926 年提出以来，其地位与来源一直是量子力学基础中的核心议题。本部分综述主流的几条进路，作为后文 SAE 论述的背景。这些进路各有实质内容，也各有争议；本部分客观陈述，不作裁断。</p>
+<p><strong>作为公设的玻恩规则</strong>。在标准量子力学的通常表述中，玻恩规则作为一条独立公设引入：测量结果的概率由态矢量在相应本征态上投影的模平方给出。这一表述不追问模平方的来源，而把它作为连接形式体系与实验的桥梁，由实验以极高精度确认。围绕"模平方能否从其余公设导出、抑或必须独立假定"，长期存在讨论。</p>
+<p><strong>Gleason 进路</strong>。Gleason 于 1957 年证明：在维度不小于 3 的 Hilbert 空间上，满足非上下文性的概率测度唯一地由密度算子经迹公式给出，从而模平方形式被唯一确定。这一进路把玻恩规则的数学唯一性建立在 Hilbert 空间结构与非上下文性之上。其限制在于维度条件（二维 qubit 需额外假设或 POVM 版本、Busch 型推广）与对非上下文性前提的依赖。</p>
+<p><strong>决策论进路（Deutsch–Wallace）</strong>。在 Everett 诠释框架内，Deutsch 与 Wallace 尝试从理性主体的决策公理导出玻恩权重：一个理性主体在分支结构中下注，其理性约束迫使其按模平方分配信念。这一进路把概率的来源放在理性决策的规范性上。围绕其是否预设了所要导出的结论、以及分支计数与概率的关系，存在持续争论。</p>
+<p><strong>环境选择与 envariance（Zurek）</strong>。Zurek 提出，系统与环境的纠缠具有一种交换对称性（环境辅助不变性，envariance）；由这一对称性可论证，可观测的读出只依赖于振幅的模平方。这一进路把玻恩规则的来源放在系统-环境纠缠的对称性上。围绕 envariance 论证是否独立于玻恩规则本身，亦有讨论。</p>
+<p><strong>QBism</strong>。QBism（量子贝叶斯主义）把量子态解释为主体的信念状态，把玻恩规则解释为理性主体更新信念的规范性约束。在这一进路下，概率是主体的认知态度，而非外部世界的客观属性。</p>
+<p><strong>Bohmian 力学</strong>。Bohmian 力学引入确定的粒子轨道作为隐变量，把 $|\psi|^2$ 解释为初始位置的概率分布；测量随机性源于对确定但未知的初始位置的认知无知。在这一进路下，概率是认知性的，底层动力学是决定论的。</p>
+<p>这些进路在"玻恩规则是公设还是定理、其来源在数学结构、理性决策、环境对称性、主观信念还是隐变量"上，给出了不同的回答。后文的 SAE 论述不属于上述任何一条，而是为模平方这一读出形式给出一个本体来源；其与上述若干进路的具体关系，在论题丙中展开。</p>
+<hr>
+<h2>论题甲：模平方作因果槽以下测不准波态的单侧读数（该态同时受双侧时间箭头影响）</h2>
+<h3>甲·一　本节要回答与不回答什么</h3>
+<p>玻恩规则把量子态 $\psi$ 与测量结果的概率联系起来：在归一化的态上，结果 $i$ 的概率是 $|\psi_i|^2$。这条规则在标准量子力学中作为公设引入——它不从更基本的结构推出，而是被假定，再由近八十年的实验以极高精度确认。</p>
+<p>SAE 不复述这条公设，也不试图替换它在计算层面的任何结果。本节要回答的是一个标准量子力学不回答的问题：<strong>模平方这一读出形式的本体来源是什么——为什么是振幅的二次型，而不是一次型、三次型或其他幂次？</strong></p>
+<p>SAE 的论证落在三层强度，每一层的承诺边界不同：</p>
+<ul>
+<li><strong>T1（标准数学层，SAE 不重推）</strong>：任意 Hilbert 空间上 Born 测度的唯一性，由 Gleason 类定理在其通常的维度与测量结构条件下给出。SAE 不重新证明这些定理。</li>
+<li><strong>T2（SAE 结构层，可主张）</strong>：为什么 SAE 框架下的单侧读出<strong>必须</strong>是二次型读出——这是本节的核心交付。</li>
+<li><strong>T3（机制层，给候选）</strong>：双向时间取向与单侧投影如何具体生成 $\psi^\sharp\psi$ 的本体图像。</li>
+</ul>
+<p>本节给出的是二次型读出的强结构推导，<strong>不是</strong> Gleason 等价的完整定理。换言之，SAE 较强地主张"模平方不是特设，其结构来源在 $L_1\leftrightarrow L_2$ 闭合"；SAE 不主张"由 SAE 推出任意 Hilbert 空间上的 Born 测度唯一性"。后者作为 T1 的数学结果，由标准定理外部承接，本节与之接合（相容），而非将其作为 SAE 的推论。</p>
+<h3>甲·二　读出对象的精确定位：因果槽以下、测不准波形态、同时受双侧时间箭头影响的闭合前态</h3>
+<p>要问"模平方读什么"，先要定位被读的对象。</p>
+<p>SAE 的余项在因果槽两侧以两种不同形态展开。这一区分不是本文新立，而是贯穿 SAE 多个系列的既立结构，本节引用而不重述。</p>
+<p><strong>因果槽以下</strong>：余项以<strong>测不准波形态</strong>展开。其本体载体是 P2 既立的对偶化复振幅 $\psi = A\,e^{i\theta}$，其中 $A$ 是 1DD 标识层密度，$e^{i\theta}$ 是已形成的 $L_1\to L_2$ 对偶化的本体在场，$\theta$ 是单个元胞在其紧致 $U(1)$ 纤维上的静态位置参数。此区域的两个本体特征对本节是决定性的：</p>
+<p>其一，<strong>时间箭头存在，但因果律不存在</strong>。时间箭头与因果律在 SAE 中是两件不同的事。</p>
+<p>时间箭头在<strong>任何尺度都存在</strong>。普朗克基底层的时间照常向前——量子在本侧（our frame）沿其时间箭头正常向前演化。这一演化属于动力学层，由 P3 既立的 $i\hbar\,\partial_t = H$ 描述。量子并非"悬在某种双向状态里不动"——它有确定的本侧时间方向，正常演化。</p>
+<p>因果律则是另一件事。<strong>因果律的本体内容，是单向时间箭头的影响</strong>。要裁定先后、区分因与果、把过程定向成单一的因果序，需要余项只受<strong>单一方向</strong>的时间箭头影响。据此，因果槽两侧的差别在于受<strong>几个方向</strong>的时间箭头影响：</p>
+<ul>
+<li><strong>因果槽以上</strong>：余项只受本侧（our frame）单向时间箭头影响——单向，故<strong>有因果律</strong>，过程定向，呈现为确定的经典因果。</li>
+<li><strong>因果槽以下</strong>：余项<strong>同时受 our frame 与 opposite frame 两个方向的时间箭头影响</strong>（二者同为这一 dual-4DD 结构的两面，Cosmo V 既立）——双向，没有单一方向可裁定因果序，故<strong>无因果律</strong>。</li>
+</ul>
+<p>术语约定：因果槽以下双侧并存的情形，技术上称为<strong>双向时间取向</strong>（dual temporal orientation）；"时间箭头"一词在本文保留作直观表述。因果律本就是定向的，故定义因果律时用"单向时间方向"。</p>
+<p>这与信息论 P1 既立的"因果律是 4DD 闭合不对称性的结构后果"一致，并给出其更直接的本体内容：4DD 闭合之所以产生因果律，正是因为闭合把双向影响单向化（选定本侧为唯一的因果方向）；闭合之前（因果槽以下），双向影响并存，单向化尚未发生，故无因果律。</p>
+<p>其二，由"同时受双向时间箭头影响、无因果律"得到<strong>单侧读出的概率云呈现</strong>。因果律本会把过程定向、给出确定的结果序；它在因果槽以下尚未发生，于是当本侧对量子做单侧读出时，因为量子同时受 our frame 与 opposite frame 双向影响、无单一方向可定向，单侧读出读不到一份预先写就的确定局部内容，而呈现为概率分布。须把这一点说准两处。其一，"读不到确定内容"指的是：因果槽以下没有可被读出的预写结果内容，<strong>不是</strong>说任何读出在数值上都不可能确定——若态相对于给定测量划分已退化为单一可闭合分支（即处于该测量的本征态），则其权重退化为 $P=1$ 的确定读出，这与本节一致。所谓概率云，是一般态（非本征态）下读出按权重呈现的分布。其二，受双侧影响的，是量子被单侧读出时的<strong>呈现方式</strong>（概率分布），不是量子的演化本身——演化在本侧时间箭头里照常向前（动力学层），双侧影响的是读出呈现（读出层）。动力学层与读出层须分开。下文论题甲·三将给出这一"双侧影响"在振幅层的精确读出形式。</p>
+<p><strong>因果槽以上</strong>：余项改换形态，以<strong>引力波形态</strong>展开（相对论 P1/P2 既立：引力波是 4DD 拓扑刷新命令的普朗克基底层广播）。此区域因果律活跃、时间箭头单向、4DD 因果载荷 $I$ 进场。它不是本节读出的对象——一旦余项跨到因果槽以上，它就不再是 $\psi$ 测不准波，玻恩规则也不再读它。</p>
+<p>由此定位玻恩读出的对象：</p>
+<p>> <strong>玻恩读出的对象，是因果槽以下、测不准波形态、同时受 our frame 与 opposite frame 双向时间箭头影响、因而无因果律的闭合前态。</strong></p>
+<p>这里的"双向影响"指的是该态同时受两个方向时间箭头的作用，而非该态本身在做某种双向演化——量子沿本侧时间箭头正常向前演化（动力学层），"双向影响"刻画的是它被单侧读出时的呈现机制（读出层）。</p>
+<p>4DD 闭合所做的事，正是把这"双向影响"<strong>单向化</strong>——选定本侧为唯一的因果方向，于是因果律产生、过程定向，同时余项形态从测不准波切换为引力波。</p>
+<p>玻恩规则与 P5 既立的"测量即 $L_4$ 重激活"在时序上有一处关系，须分清以免读作矛盾——<strong>被读对象</strong>与<strong>读出事件</strong>是两件事：被读对象，是因果槽以下、尚未被单向化的态，它在闭合<strong>之前</strong>；读出事件，本体上正是 $L_4$ 重激活、即 4DD 闭合事件本身。二者不冲突——不是"在闭合前做了一次测量"，而是<strong>闭合这一动作截取并读取了那个闭合前的态</strong>。可一句固定：</p>
+<p>> <strong>玻恩规则的被读对象在因果槽以下；玻恩读出的事件发生在 $L_4$ 重激活时。</strong> 本文给出该事件读取闭合前态时的权重形式；单次闭合事件与测量装置的完整本体机制留 P7。</p>
+<p>这一时序分层可写成三阶段，使 P5 / P6 / P7 的边界清楚：闭合前，因果槽以下有 $\rho$-OR 载体与容量结构，无内容、无局部结果（被读对象）；$L_4$ 重激活选定一个闭合划分（测量装置提供结果划分 / 投影算子，此为 P5 既立的测量本体）；本文给该划分各分支赋权重 $w_i = \psi_i^\sharp\psi_i$（P6 辖区），单次结果如何实际记录则属 P7。</p>
+<p>下文将说明，单侧读取一个同时受双向影响的态，其读数必然是二次型。</p>
+<h3>甲·三　主推导：单侧读出是对偶取向的乘性配对</h3>
+<p>主推导的核心是：<strong>单侧读出读取的，是 $\psi$ 与其对偶取向对应物在本侧接口上的乘性配对，其最小实数形式即二次型。</strong></p>
+<p>设因果槽以下的测不准波载体为</p>
+<p>$$\psi = A\,e^{i\theta}.$$</p>
+<p>其对偶取向对应物记为</p>
+<p>$$\psi^\sharp = A\,e^{-i\theta}.$$</p>
+<p>$\psi^\sharp$ 的本体身份在三个层面上各有所指，三层不可混淆：</p>
+<ol>
+<li><strong>形式层</strong>：$\psi^\sharp$ 是同一 $\psi$ 在对偶取向下的形式对应物。</li>
+<li><strong>SAE 本体层</strong>：$\psi^\sharp$ 是同一 dual-4DD 结构的 opposite-frame 表示（Cosmo V 既立：宇宙具 dual-4DD 结构，our frame 与 opposite frame）。它<strong>不是第二个本体</strong>，不是第二个世界，不是第二条时间线。$\psi$ 与 $\psi^\sharp$ 是同一 dual-4DD 结构的两个 frame，自由度仍为 1——这与 P2 既立的"自由度恒为 1"一致。</li>
+<li><strong>标准量子力学层</strong>：在 Hilbert 表示中，$\psi^\sharp$ 对应 bra / 共轭对偶结构，而不是另一个 ket 态。</li>
+</ol>
+<p>$\psi^\sharp$ <strong>不是从对面侧传来的第二个波函数</strong>。因果槽以下不存在信息传递（信息论 P4 硬约束）；本节的配对不是跨侧通讯，而是单侧闭合事件对那个同时受双侧时间箭头影响、尚未被因果律单向化的态的一次读取。$\psi^\sharp$ 是这次读取所需的对偶槽，不被本体化为第二个自由度。</p>
+<p>单侧读出读取二者在本侧接口的交叠：</p>
+<p>$$R(\psi) = \psi^\sharp\,\psi = A\,e^{-i\theta}\cdot A\,e^{i\theta} = A^2.$$</p>
+<p>这一读数自动是实数、非负、相位规范不变。其结构含义是：</p>
+<ul>
+<li><strong>相位方向被消去</strong>：$e^{-i\theta}\,e^{i\theta} = 1$。对偶取向的相位在配对中相互归实，读数不再携带相位方向。</li>
+<li><strong>容量被保留</strong>：$A\cdot A = A^2$。1DD 标识层密度 $A$ 在配对后以 $A^2$ 留存，成为可归一化为概率权重的容量度量。</li>
+</ul>
+<p>这正是模平方。它来自"单侧读取一个同时受双侧时间箭头影响的态"这一结构事实：双侧影响在振幅层表现为对偶取向的共轭对（our frame 的 $e^{i\theta}$ 与 opposite frame 的 $e^{-i\theta}$），单侧读取该共轭对，必然得到二次型。</p>
+<h3>甲·四　为什么是乘性配对，而非加性——与宇宙学 $\Lambda$ 层的统一</h3>
+<p>主推导的第一步会立刻引出一个尖锐的问题：</p>
+<p>> 因果槽以下的双侧读出，为什么是<strong>乘性</strong>配对 $\psi^\sharp\psi$，而不是像宇宙学层的余项守恒那样取<strong>加性</strong>形式 $\Lambda_1 + \Lambda_2 = 0$？</p>
+<p>这个问题尖锐，是因为 SAE 在宇宙学层早已立下：余项守恒在双 4DD 结构上的场论表述是 $\Lambda_1 + \Lambda_2 = 0$，两侧宇宙学常数严格相消，每侧观测到的非零 $\Lambda$ 是只观测到对称结构一半的残差（Cosmo I/V 既立）。这是<strong>加性</strong>的。若本节凭空把同一守恒原理在微观层改成乘性，便是特设拼贴。</p>
+<p>回答须把三件事分开，各由不同的既立结构承担：<strong>互易</strong>回答"为什么有对偶侧 $\psi^\sharp$"，<strong>$L_1\leftrightarrow L_2$ 辛共轭</strong>回答"为什么对偶两侧以乘性配对闭合"，<strong>$i$ 的反转因子身份与 $U(1)$ 载体</strong>回答"为什么配对中是 $e^{i\theta}$ 与 $e^{-i\theta}$"。三者各司其职，合起来给出 $\psi^\sharp\psi$，且每一件都锚定既立工作，而非本节的临时选择。</p>
+<h4>甲·四·1　对偶侧的来源：互易关系（Cosmo I 既立）</h4>
+<p>"因果槽以下的态为什么受双侧共同决定、为什么读取时有 $\psi^\sharp$ 这一侧"，由 Cosmo I 既立的<strong>互易关系</strong>（reciprocity）回答，本节引用：</p>
+<p>> 果因侧的余项，就是因果侧的因果律。因果律压制余项；但从对侧看，我方的因果律恰是对侧未被压制的余项，反之亦然。余项与因果律不是两种不同的存在，而是同一个存在从相对两侧看到的。</p>
+<p>由此，"双侧"不是两个分离的东西各自施加影响，而是：因果槽以下，这个互易整体<strong>尚未被因果律劈开</strong>。3DD 对称产生时间相反的双 4DD；互易关系使两侧成为同一存在的相对两面；因果槽以下因果律未活跃，那个本应把双侧压制成单侧的裁定尚未发生，于是态内禀地是双侧的。单侧读取，读的就是这个尚未劈开的互易整体，因而必然读到双侧。</p>
+<p>须明确：互易关系到此只回答了<strong>对偶侧的来源</strong>——为什么读取时 $\psi$ 与 $\psi^\sharp$ 两侧都在场。它<strong>不</strong>回答"两侧以加性还是乘性闭合"；后者由下一层的辛共轭结构决定。</p>
+<h4>甲·四·2　配对的形式：$L_1\leftrightarrow L_2$ 辛共轭（P3 既立）</h4>
+<p>给定 $\psi$ 与其对偶对应物 $\psi^\sharp$，单侧内容读出需要从这两侧得到一个标量容量。这个标量取什么代数形式，由被读对象所处的层级结构决定。</p>
+<p>被读对象处于 $L_1\leftrightarrow L_2$ 辛共轭闭合层（P3 既立：$[\hat{x},\hat{p}] = i\hbar$ 是该层的不变形式，$S_{act} = \hbar\theta$ 是其裸读出）。<strong>辛结构是反对称双线性形式</strong>，其本征的配对运算不是把两个量相加，而是把载体与其对偶载体作求值配对——在标准 Hilbert 表示中即内积 $\langle\psi|\psi\rangle$，在一维复相位表示中即 $\psi^\sharp\psi = A^2$。</p>
+<p>这是乘性配对的<strong>直接本体来源</strong>：不是"因为振幅在 $U(1)$ 所以取乘法"这一句单独支撑，而是 $L_1\leftrightarrow L_2$ 辛共轭层在单侧内容读出时，其反对称双线性结构<strong>必须</strong>给出正定的 Hermitian 配对。加性相消 $\psi + \psi^\sharp$ 不是辛层的本征配对运算，它给不出辛结构所要求的双线性标量。</p>
+<p>> <strong>$\sharp$ 映射的最小刻画</strong>：把对偶取向写作映射 $\sharp:\mathcal{H}\to\mathcal{H}^<em>$，在常规弱场情形它表现为标准的反线性对偶（anti-linear dual / Hermitian conjugation）：$(\alpha\psi + \beta\phi)^\sharp = \alpha^</em>\psi^\sharp + \beta^*\phi^\sharp$，且 $\psi^\sharp(\psi) \geq 0$。$\psi^\sharp\psi$ 由此不是比喻，而是数学物理读者可识别的对偶求值 / Hermitian 配对结构。</p>
+<h4>甲·四·3　复相位载体的来源：既立依赖声明与 $i$ 的反转因子身份</h4>
+<p>上一层用到"被读对象是 $L_1\leftrightarrow L_2$ 复相位载体"，这一前提本身不在本文重新推导，而是承自既立工作。这里把依赖关系写明，以免"$U(1)$ 复相位载体"被误读为本节的自然事实或临时选择：本文不在 P6 内重新推导前闭合态为何是复相位载体——该命题由 P2 与 Foundation v2、P3 承担。P2 已立 $\psi = A\,e^{i\theta}$，其中 $\theta$ 是紧致 $U(1)$ 纤维上的静态位置，$i$ 与 $\pi$ 经指数映射互锁（自由度恒为 1）；Foundation v2 已立 $i$ 为因果槽拓扑闭合的代数反转因子；P3 已立 $L_1\leftrightarrow L_2$ 辛共轭闭合与 $S_{act} = \hbar\theta$。本文的新增命题不是"为什么有复振幅"，而是"给定这个复相位载体，为什么单侧内容读出的容量标量是 $\psi^\sharp\psi$，而非一次、三次或加性相消"。</p>
+<p>"为什么是复相位载体、而非实数向量场或四元数"这一问题的辖区在 P2 与 Foundation v2，不在 P6。但 $i$ 的反转因子身份与 $U(1)$ 之间有实质衔接，可在此写明，因为它正是 $e^{i\theta}$ 中那个 $i$ 的本体来源：</p>
+<p>$e^{i\theta}$ 中的 $i$ 不是任意的复数单位，而是 Foundation v2 既立的反转因子在紧致相位纤维上的指数化显现。反转因子的本体内容（$i^2 = -1$：两次反转复位）锁定了单个相位载体的群结构——它落在 $U(1)$ 这个<strong>交换</strong>群（两次反转回到原点），而非把单个标量相位载体的底层数域提升为三维非交换的四元数。这里须把锁定的范围说准：本文锁定的是<strong>单个 $\rho$-OR 标量相位载体</strong>为 $U(1)$，并不宣称四元数 / $SU(2)$ 结构在物理中处处不可出现（自旋、规范、空间旋转中的非交换结构不在此列）；所锁定的，仅是承载单元胞相位的那个标量载体的底层数域。反转因子与其反 ($i$ 与 $-i$) 在代数层严格共轭，相乘归一 ($e^{i\theta}\cdot e^{-i\theta} = 1$)。所以 $U(1)$ 不是本节临时挑的乘法群，而是 $i$ 作为 $L_1\leftrightarrow L_2$ 闭合反转因子在相位读出中的群作用；$U(1)$ 指出相位方向如何被共轭消去，辛共轭则指出整个载体如何生成容量标量。</p>
+<p>这一锁定有一个更深的几何根据，本文引用而不展开：四力前置篇（Prequel）既立的 DD 分裂结构中，单一空间轴的双 4DD（本侧 + 对侧）张成一个二维平面，其上的复结构即 $U(1)$（单平面旋转群 $SO(2)\cong U(1)$）；不同空间轴的 4DD 因果独立、互为直和，故单个相位载体被几何地约束在单一平面内，这正是它落在交换的 $U(1)$ 而非跨轴非交换结构的几何来源。本文只引用这一既立几何作为 $i$ 锁定 $U(1)$ 的背景，$i$ 本身的完整几何本体定义不在 P6 辖区，列为开放问题（见后）。</p>
+<p>由此可见 $\psi^\sharp$ 为何是<strong>共轭</strong>而非反号。振幅的对偶操作要<strong>保留容量、消去相位方向</strong>，而非消灭容量。若取反号 $\psi^\sharp = -\psi$，则配对候选会是 $\psi + \psi^\sharp = 0$——这是加性湮灭（类同数学阶梯上 $e^{i\pi}+1=0$ 的归零图像），它把振幅消灭为零，给不出概率云。共轭则只消去相位方向、保留容量：$A\,e^{i\theta}\mapsto A\,e^{-i\theta}$，于是 $e^{-i\theta}e^{i\theta}=1$ 消去相位方向，而 $A\cdot A = A^2$ 保留容量。</p>
+<h4>甲·四·4　并置验证：闭合操作由对象类型决定</h4>
+<p>把三层合起来：互易给对偶两侧，辛共轭给配对形式，$i$ 与 $U(1)$ 给复相位载体。由此可见微观的乘性与宇宙学的加性并非两条规则，而是<strong>同一互易原理在不同对象类型上、按各自层级代数闭合的两种实现</strong>。下表把两层（以及量子力学内部的两种合成）并置：</p>
+<table><thead><tr><th>被读对象所在部门</th><th>被读对象</th><th>对偶对应物</th><th>原生闭合</th><th>输出</th></tr></thead><tbody><tr><td>真空 / $\Lambda$</td><td>有符号标量密度</td><td>加性逆元 $-\Lambda$</td><td>加性平衡</td><td>$\Lambda_1 + \Lambda_2 = 0$</td></tr><tr><td>振幅 / $\psi$</td><td>$L_1\leftrightarrow L_2$ 复相位载体</td><td>共轭对偶 $\psi^\sharp$</td><td>Hermitian 配对</td><td>$\psi^\sharp\psi = A^2$</td></tr><tr><td>正交结果</td><td>分支权重</td><td>互异闭合槽</td><td>加性测度</td><td>$P(E\cup F) = P(E) + P(F)$</td></tr><tr><td>相干态</td><td>闭合前振幅</td><td>同一载体</td><td>先矢量相加再配对</td><td>$P = \left</td><td>\sum_i \psi_i\right</td><td>^2$</td></tr></tbody></table>
+<p>此表不是把"加 / 乘"任意分配给不同领域，而是显示每个部门的闭合操作由其对象类型决定。本文的主推导以 $L_1\leftrightarrow L_2$ 辛共轭配对为核心（甲·四·2），互易只提供对偶侧来源（甲·四·1）；加性并未被抛弃（真空与正交结果仍是加性），乘性也不是乱用（只在复相位载体与其共轭对偶的配对中出现）。</p>
+<p>> 若在振幅层也取加性 $\psi + \psi^\sharp$，得到的是 $2A\cos\theta$——它相位依赖、可正可负，不是相位不变的闭合容量；若把真空部门取乘性，则把有符号的标量平衡错读成正定的容量度量。两者都属范畴误配。</p>
+<h4>甲·四·5　深化：底座加性、表象乘性</h4>
+<p>上述区分还可以推到更深一层，这一层最能说明微观的乘性并非对宇宙学加性的背离——因为它显示<strong>两层在底座上其实同构，都是互易的加性归零</strong>。</p>
+<p>在因果槽以下，相位本身满足互易的加性归零：</p>
+<p>$$\theta + \theta^\sharp = 0.$$</p>
+<p>这与宇宙学层的 $\Lambda_1 + \Lambda_2 = 0$ 是同一种加性归零。差别只在于：微观层的本体不是裸相位，而是经指数映射对偶化成的复相位载体 $e^{i\theta}$（P2 既立）。单侧闭合读取的是这个载体，而不是裸相位。而载体层的代数法则，把底座相位的加性归零，<strong>自动地</strong>显现为载体的乘性配对：</p>
+<p>$$e^{i\theta}\cdot e^{i\theta^\sharp} = e^{i(\theta + (-\theta))} = e^0 = 1.$$</p>
+<p>于是：两层在底座上同构（都是互易加性归零 $\theta + \theta^\sharp = 0$ 与 $\Lambda_1 + \Lambda_2 = 0$），微观层只是多披了一层指数对偶化，使得加性归零在载体层表现为乘性配对。乘性不是对加性的背离，而是加性底座经指数对偶化后的表象。可以一句话概括两层的对偶操作之别：</p>
+<p>> 真空层的对偶是加性反号（保全总余项守恒）；振幅层的对偶是共轭取向（消去相位方向，保留闭合容量）。</p>
+<h3>甲·五　阶数根据：玻恩为何落在二阶结构族</h3>
+<p>前节的主推导回答了"单侧读出如何具体成为 $A^2$"。还有一个相关但不同的问题：<strong>为什么玻恩读出落在二阶（二次型）这个结构族，而不是三阶？</strong> 这一问由 SAE 质量系列的阶数根据回答；它的定位是框定玻恩落在哪个结构族，而非与主推导平级的第二条推导。</p>
+<p>SAE 质量系列 convergence 篇既立区段依赖的闭合族：闭合律的阶数等于从 1DD 到最深活跃层的 DD 突破数——2DD 活跃给一阶 $E = pc$，3DD 活跃给二阶 $E^2 = p^2c^2 + m^2c^4$，4DD 活跃给三阶 $E^3 = p^3c^3 + m^3c^6 + I^3c^9$。</p>
+<p>玻恩读出的对象是因果槽以下、$I$（4DD 因果载荷）尚未活跃的测不准波态。该区域落在二阶区段——这框定了玻恩读出属于二次型结构族，而非因果槽以上 $I$ 活跃的三阶（引力波形态）结构族。这一点澄清了一个表面张力：测量虽是 4DD 闭合事件，但玻恩读取的是闭合<strong>之前</strong>因果槽以下的态（$I$ 未活跃），故读数是二阶的二次型，而不是因果槽以上 $I$ 活跃的三阶能量-动量关系。二者在不同层，不冲突。</p>
+<p>阶数根据与主推导各司其职，并非重复：</p>
+<p>> 阶数根据框定结构族 —— 说明玻恩读出落在二阶；主推导给出读出的具体形式 —— 说明二阶结构在单侧读出中如何具体表现为 $\psi^\sharp\psi$；Gleason 类结果作 T1 外部数学锚 —— 给出标准 Hilbert 空间概率测度中 Born 测度的数学唯一性。</p>
+<p>阶数根据只需说明"玻恩落在二阶族"，<strong>不需</strong>把能量-动量闭合律的"二阶"$E^2$ 直接等同于概率振幅的"二次"$A^2$。两个"二"同源于因果槽以下的同一结构——它在闭合律层给二阶、在振幅读出层给二次型，是同一结构在两层的同步显现；阶数根据承担的只是结构族的框定，读出的具体形式由主推导独立完成。这一分工使两个"二"不再是两个独立巧合凑同一个数，而是结构族框定与读出推导的单向支撑：前者框定结构族，后者在族内推导。</p>
+<p>这里须避开一个量纲层面的误读。$E^2 = p^2c^2 + m^2c^4$ 带物理量纲（能量平方），而归一化后的概率权重 $A^2$ 是无量纲的容量度量；二者不可在量纲上直接等同。阶数根据框定的是<strong>代数结构族</strong>（均为二阶 / 二次型流形），而非物理量纲的直接映射：3DD 活跃所要求的"二阶"，在运动学层表现为带量纲的能量-动量平方关系，在容量读出层表现为需经二元配对（二次型）才能闭合的无量纲容量权重。结构族同一（都是二次型），各层读出的物理内涵各自独立。</p>
+<h3>甲·六　随机性的精确定位</h3>
+<p>由模平方读出，可得概率随机性的本体定位。</p>
+<p>随机<strong>不是任意性</strong>。因果槽以下不存在 4DD 内容——没有一个预先写就的结果可供因果律去裁定。但具体结果的统计<strong>权重</strong>由对偶取向配对给出：</p>
+<p>$$w_i = \psi_i^\sharp\,\psi_i.$$</p>
+<p>所以随机性的精确表述是：因果槽以下无预写内容（这来自无因果律——因果律本会裁定预写的先后，而它尚未产生），而各结果的统计权重由 $\psi^\sharp\psi$ 给出。本节解释的是这个权重为什么是二次型；<strong>单次</strong> 结果具体如何闭合为第 $i$ 个结果，属于测量事件的本体机制，留 P7。</p>
+<p>这一定位与 SAE 既立的容量-内容区分一致：模平方是容量读出，即概率密度作为容量的度量，而非内容通道。单次测量给出的具体结果，是从这一容量按权重的一次随机实现；随机来自因果槽以下无因果律可裁定哪一侧实现，而非隐变量、亦非结果的预先决定。</p>
+<p>本节并未预先假定"玻恩概率"。本节假定的只是：4DD 内容读出需要一个非负的容量权重。非负性由乘性配对自动满足（$\psi^\sharp\psi = A^2 \geq 0$），而加性对偶（$2A\cos\theta$）做不到（可正可负、相位依赖）。从容量权重到归一化概率是下一步：</p>
+<p>$$P_i = \frac{w_i}{\sum_j w_j} = \frac{\psi_i^\sharp\psi_i}{\sum_j \psi_j^\sharp\psi_j}.$$</p>
+<p>态归一化时即 $P_i = |\psi_i|^2$。完整的概率层形式（测度、投影、连续谱）在后续小节展开。</p>
+<h3>甲·七　干涉：先合成振幅，再配对</h3>
+<p>模平方读出的一个直接而关键的推论，关乎干涉的本体位置。其中一条次序是关键，次序一旦读反，整条图像便随之颠倒。</p>
+<p>玻恩规则在干涉情形的正确形式是<strong>先把振幅相加，再取模平方</strong>：</p>
+<p>$$P = \left|\sum_i \psi_i\right|^2 \neq \sum_i |\psi_i|^2.$$</p>
+<p>若把次序读反——先对每条可能态取模平方再相加——干涉项就被消去，干涉条纹随之消失。所以这条次序不是计算约定，而是本体次序。</p>
+<p>在 SAE 框架下，这条次序有明确的本体含义。因果槽以下是 ρ-OR 多容（remainder-preserving multiplicity，余项保留的多重性）区域，多个分支真实并存（这正是叠加的本体）。4DD 闭合不是先给每个分支各自一份独立概率、再把这些概率相加；而是先在 ρ-OR 域中把各分支的振幅<strong>合成</strong>为一个整体的测不准波载体，再对这个合成后的载体做一次对偶取向配对（即一次模平方读出）。</p>
+<p>此处有一个经典图像的误植须避开：合成不是"几条空间路径在屏幕上相遇叠加"。因果槽以下没有 3DD 空间舞台供波相遇——空间是闭合的产物，而非闭合前的背景。合成发生在闭合前的 ρ-OR 本体池中，是 $L_2$ 相干生成元在该池中的代数累积；只有当 4DD 闭合事件（如屏幕吸收）发生时，这个累积的整体才被读取为对偶取向配对。换言之，干涉来自闭合前分支层的 ρ-OR 振幅合成，而模平方读出作用在合成之后的整体上。</p>
+<p>求和与配对的次序关系（分配律）须分清，否则易读作"每个分支先各自配对再相加"。$\psi$ 与 $\psi^\sharp$ 是同一态的 our frame 与 opposite frame，二者始终并存：在 ρ-OR 域中，$L_2$ 相干生成元的代数累积是跨双侧同时进行的——our frame 累积为 $\sum_i\psi_i$，opposite frame 同步累积为 $\sum_i\psi_i^\sharp$。只有当 $L_4$ 重激活（如屏幕吸收）发生时，这两组已各自完成代数合成的双向载体，才在闭合接口处被整体配对：</p>
+<p>$$P = \left(\sum_i\psi_i^\sharp\right)\left(\sum_i\psi_i\right) = \left|\sum_i\psi_i\right|^2.$$</p>
+<p>配对作用在求和<strong>之后</strong>的整体上，而非对每个分支先配对再相加（后者会消去交叉项、抹掉干涉）。</p>
+<p>这条次序也直接服务于后文的波粒论述：所谓"波动性"，正是闭合前测不准波载体可在分支层合成（因而可干涉）的体现；所谓"粒子性"，是闭合后单侧结果的体现。二者由这条"先合成、再配对"的次序统一，详见波粒一节。</p>
+<hr>
+<h3>甲·八　概率层的完整形式：测度、归一、投影</h3>
+<p>玻恩规则不止于单点的 $A^2$；概率层的完整形式分三个层级。$\psi^\sharp\psi = A^2$ 给出的是<strong>最小标量容量密度</strong>；完整的概率还需要结果划分、测度与归一化。</p>
+<p><strong>离散正交结果</strong>。设结果集 $\{i\}$ 对应一组正交分支，各分支权重</p>
+<p>$$w_i = \psi_i^\sharp\,\psi_i = |\psi_i|^2,$$</p>
+<p>归一化后</p>
+<p>$$P_i = \frac{w_i}{\sum_j w_j}.$$</p>
+<p>当态已归一化时，$P_i = |\psi_i|^2$。这里正交分支之间是<strong>加性</strong>合成（互异的闭合槽，加性测度），与单一载体内部的乘性配对不冲突——二者分别对应前节表中的"正交结果"与"振幅"两行。</p>
+<p><strong>连续位置表示</strong>。在连续表示下，概率以密度形式给出：</p>
+<p>$$dP(x) = |\psi(x)|^2\, d\mu(x),$$</p>
+<p>其中 $d\mu(x)$ 是该表示下的测度。在平直、无约束的常规情形，$d\mu(x)$ 即 $d^3x$；在有曲率、有约束的坐标空间中，测度形式更复杂。连续测度 $d\mu(x)$ 在 SAE 中本身是表象层的对象，其更底层的结构（涉及因果槽以下的离散性）超出本文辖区，留后续论文按需展开；本节只在概率层的标准表象内使用 $d\mu(x)$。</p>
+<p><strong>抽象 Hilbert 表示</strong>。在投影算子语言中，结果 $a$ 的概率为</p>
+<p>$$P(a) = \langle\psi|\Pi_a|\psi\rangle,$$</p>
+<p>其中 $\Pi_a$ 是对应结果的投影算子。完整的投影值测度与 POVM 形式，由标准数学层（T1）承接，本文不重述。</p>
+<p>三个层级共同表明：$\psi^\sharp\psi$ 给出最小标量容量密度，是模平方读出的本体核心；而具体概率需在其上叠加结果划分、测度与归一化。SAE 给出的是这个最小核心的本体来源，概率层的其余结构与标准量子力学完全向后兼容。</p>
+<h3>甲·九　Tsirelson 上界的深化：与 P5 的同源接合</h3>
+<p>模平方读出的算子形式，与 P5 既立的 Tsirelson 上界本体读法同源。本节把这一同源关系写清，既深化 P5，也为 P6 与量子关联上界的接合提供锚点。</p>
+<p>P5 既立 Tsirelson 上界 $2\sqrt 2$ 的本体读法：在 CHSH 算子 $B$ 上，标准代数推导给出 $\|B^2\| \le 4 + 2\cdot 2 = 8$，故 $\|B\| \le 2\sqrt 2$。其中因子 4 来自 $L_4$ 的二元读出语法（CHSH 四项），因子 $2\times 2$ 来自两端各自 $L_1\leftrightarrow L_2$ 的辛对易子界。十二个 4DD 拓扑不承担这一数值，以避免数字命理。</p>
+<p>数值层面的来源须交代清楚，否则易读作用"二"解释"2"。$\|B^2\| \le 8$ 与 $\|B\| \le 2\sqrt 2$ 的具体数值，来自标准 operator algebra——CHSH 算子由二元单位对合算子构成，其对易子的算子范数界给出这些数。本文不替代这一数值来源。</p>
+<p>P6 在此之上提供的是<strong>本体同型解释</strong>，不是数值推导。Tsirelson 推导中的 $\|B^2\|$ 本身，是模平方读出的算子版本——它是对算子 $B$ 的自配对取范数，与单侧读出对 $\psi$ 取 $\psi^\sharp\psi$ 在结构上同型：二者都是"载体与其对偶的双线性配对取正定标量"。在此同型下，每端局部不相容读出的范数界，可被本体化为该端 $L_1\leftrightarrow L_2$ 辛结构在 $L_4$ 二元读出语法中的最大可读强度；而"两端各自的局部结构"对应 P5 既立的因子分解。这是为什么"局部不相容读出"与"对偶取向配对"出自同一本体的解释，<strong>不是</strong>"因为双侧所以数字是 2"的数值断言。十二个 4DD 拓扑同样不承担这些数值。</p>
+<p>这一深化有两重作用。其一，P6 的玻恩形式与 Tsirelson 上界 $2\sqrt 2$ 兼容——模平方读出与 Tsirelson 代数同源，量子关联的上界与单侧读出的二次型结构出自同一本体。其二，它接合 P5 的跨论文锚点：P5 表面层的 Tsirelson 读法与 P6 深层的双向结构，在此对接，使两篇在量子关联上界这一点上同源。</p>
+<p>PR 盒子（Popescu–Rohrlich box）的定位可由此一并给出。PR 盒子要求的关联，超出同时受双侧影响之态的单侧投影（即模平方）所能给出的上界。在 SAE 读法下，这对应于对容量的非法透支——它要求的关联强度超过容量结构所能承载者，而非违反容量与内容的区分。完整的 PR 盒子论述承自 P5，本节不展开。</p>
+<hr>
+<h3>甲·十　完整概率层与无信号：边缘分布部分</h3>
+<p>无信号的完整定理，P5 已立其本体根据（容量与内容的区分），并把完整定理 $\sum_b P(a,b|x,y) = P(a|x)$ 留给 P6 与 P7 共同承担。本节给出其中可由模平方读出直接得到的部分——边缘分布部分；完整定理中涉及测量装置形式化的部分留 P7。</p>
+<p><strong>标准数学层（T1）</strong>。边缘分布的无信号性首先是标准量子力学的结果，本文与之接合而不重证。对投影测量，联合概率为</p>
+<p>$$P(a,b|x,y) = \langle\psi|(\Pi_a^x \otimes \Pi_b^y)|\psi\rangle.$$</p>
+<p>若 Bob 一端的测量完备，$\sum_b \Pi_b^y = I_B$，则对 $b$ 求和给出</p>
+<p>$$\sum_b P(a,b|x,y) = \langle\psi|(\Pi_a^x \otimes I_B)|\psi\rangle = P(a|x),$$</p>
+<p>即本地边缘与远端设置 $y$ 无关。对 POVM 亦然，用 $\sum_b E_b^y = I_B$。这一步是标准完备性的直接推论，不依赖 SAE。</p>
+<p><strong>SAE 本体读法层</strong>。在 SAE 框架下，这一结果有一个本体含义：完备性对应远端闭合槽的总容量守恒；对 $b$ 求和后，远端的内容标签被消去，本地只保留自身闭合划分的容量读出。因账本是 $L_1 + L_2$ 的容量结构、无内容（P5 既立），远端设置 $y$ 的选择不改变本地容量读出——容量不可经此传递。于是无信号在概率层由完备性给出，在本体层由容量 / 内容区分解释；二者一致，不是从本体语言直接"说出"一条概率定理。</p>
+<p>这一结果与跨论文的硬约束一致。模平方读出发生在因果槽以上（4DD 闭合事件），而非 ρ-OR 区域内部的信息传递（信息论 P4 硬约束）；$\psi^\sharp$ 作为对偶取向对应物，不是从对面侧传来的第二个波函数，配对是单侧闭合事件对那个同时受双侧影响、尚未被单向化之态的读取，不是跨侧通讯。由此，边缘分布的无信号性与 SAE 因果槽以下无信息传递的既立结构一致。</p>
+<p>完整的无信号定理——包括测量装置如何参与、单次闭合事件的本体——需要 P7 的测量装置本体。本节只交付边缘分布部分，作为模平方读出与标准完备性的接合结果。</p>
+<hr>
+<h3>甲·十一　波粒二象性：本节的接口</h3>
+<p>波粒二象性触及整个 ρ-OR 区域的本体特征——它关联 P2 的测不准波载体、P4 的隧穿密度、P5 的账本相位，比玻恩规则的辖区更宽。故本文不展开波粒二象性的完整论述，只点出其与玻恩规则的接口；完整论述在 SAE 量子力学系列中跨篇累积。</p>
+<p>措辞在此尤为要紧。"其实是粒子"一类说法会把读者引向经典的微粒图像；准确的表述分三层：</p>
+<ul>
+<li><strong>读出层</strong>（因果律单向化之后）：呈现为类粒子的单一结果。</li>
+<li><strong>前闭合层</strong>（因果槽以下）：是测不准波形态的载体。</li>
+<li><strong>本体层</strong>：既非经典波，亦非经典粒子。</li>
+</ul>
+<p>在这三层下，波粒二象性与玻恩规则的接口是清楚的：所谓"波动性"，本体来源是因果槽以下的测不准波形态——它使闭合前的载体可在分支层合成、因而可干涉（承甲·七"先合成、再配对"）；所谓"粒子性"，是因果律单向化后单侧结果的体现。玻恩规则正处在二者的接口上：它把闭合前测不准波载体的对偶取向容量配对，转换为单侧结果的统计权重。</p>
+<p>波动性来自因果槽以下的测不准波形态，而非"粒子真的是一种波"。测不准波形态与因果槽以上的引力波形态，是余项在因果槽两侧的两种不同波形态。单一对象在 ρ-OR 区域以测不准波形态展开（波行为），单侧投影给出概率密度（本文论题甲），单次闭合给出类粒子的单一结果。类粒子与 类波不是两种对偶的本体角色，而是同一载体在因果槽两侧、两层读出下的不同显现。完整论述（包括双缝条纹分布等具体情形）在 P2 与本文之上跨篇累积，本节只立接口。</p>
+<hr>
+<h2>论题乙：机制候选层</h2>
+<p>论题甲给出了模平方读出的本体身份与主推导。论题乙转向机制层——这里 SAE 给的是<strong>候选</strong>而非定论，强度为 T3，与论题甲 T2 的结构推导分属不同层次。本论题给出两条机制候选，并申明诠释中立的立场。</p>
+<h3>乙·一　机制候选一：跨阶梯读出必经模平方</h3>
+<p>第一条机制候选来自 P4 的跨阶梯读出接口。这里先立一道单向性防火墙，因为方向一旦读反便构成循环。</p>
+<p>P4 既立：隧穿的 $e^{-2\kappa L}$ 中的因子 2 来自 Born 模平方（双阶跃读出），而 Schwarzschild 的 $r_s = 2GM/c^2$ 中的因子 2 来自单阶跃读出。注意：P4 的隧穿因子 2 <strong>依赖</strong> Born 模平方，而 P6 正在<strong>解释</strong> Born 模平方。因此方向必须单向——<strong>P4 启发 P6，P6 支撑 P4；P4 不能证明 P6</strong>。</p>
+<p>具体而言：P4 §6.4.2 提出"隧穿是经过 Born 模平方的双阶跃"作为一个有待 P6 补足的接口（P4 当时把这一接口留给 P6）；P6 在论题甲中<strong>独立地</strong>完成了模平方的本体身份（主推导加乘性根据，全程不引用 P4）；P6 完成之后，P4 的跨阶梯读出候选获得上游支撑。本节只走"P6 → 支撑 P4"这一方向，绝不反向用 P4 的因子 2 来支撑 P6。</p>
+<p>在这一单向前提下，模平方的本体身份给 P4 的两个因子 2 一个精确的通道区分：Schwarzschild 处在因果槽以上的引力波形态侧，是单阶跃，因子 2 落在线性位置；隧穿处在因果槽以下的测不准波形态侧，经过模平方读出，是双阶跃，因子 2 落在指数位置。两个因子 2 的本体来源不同——一个在引力波侧、一个在测不准波侧——这正是 P4 所需的"跨阶梯读出通道结构差异"。由此可作为机制候选：跨阶梯读出之所以必经模平方，是因为测不准波侧的读出必然经过因果槽以下同时受双侧时间箭头影响的态，而单侧读取这样的态即模平方。</p>
+<h3>乙·二　机制候选二：模平方读出发生在 $L_4$ 重激活时刻</h3>
+<p>第二条机制候选定位模平方读出在测量过程中的时机。P5 既立：测量即 $L_4$ 重激活——强重激活（投影测量）把账本投影到本地内容，弱测量/退相干是部分重激活。</p>
+<p>据此，模平方读出发生在 $L_4$ 重激活的时刻：重激活事件把因果槽以下同时受双侧影响的测不准波态投影到单侧的实数读出接口，这一投影即对偶取向配对，给出 $\psi^\sharp\psi$。</p>
+<p>P6 与 P7 之间有一道接口。P6 给出的是概率<strong>层</strong>的形式——结果划分给定时各权重为何是二次型；P7 给出的是测量事件的本体机制——测量装置、环境、记录生成、不可逆性如何参与，以及为什么某一次具体闭合为第 $i$ 个结果。本节作为机制候选，只指出模平方读出与 $L_4$ 重激活在时机上的对应，不越界进入 P7 的测量装置本体。</p>
+<h3>乙·三　诠释中立</h3>
+<p>论题乙的两条机制候选都保持诠释中立。模平方作为更深层的机制候选，位于各种量子力学诠释之下——它不预先选定坍缩、多世界或环境选择中的任何一个，而是给出一个本体层，使这些诠释在其上成为现象学描述。这一中立立场承自 P5，并将在论题丙中得到具体展开：SAE 与若干主流诠释的关系，不是"再选一个诠释"，而是为它们共享的数学结构给出一个更深的本体来源。</p>
+<hr>
+<hr>
+<h2>论题丙：玻恩规则起源的重新分类</h2>
+<p>论题丙处理 SAE 与主流玻恩规则起源进路的关系。进路分为两类：与 SAE 有实质对话的（Gleason、Many-Worlds 派生），以及作最小定位的（QBism、Bohmian）。完整的诠释图谱留 P0，不在此展开。</p>
+<h3>丙·一　Gleason 定理与 SAE 的几何起源</h3>
+<p>Gleason 定理是玻恩规则数学唯一性的标准结果：在满足非上下文性的前提下，Hilbert 空间上的概率测度唯一地由密度算子经迹公式给出，从而导出模平方形式。</p>
+<p>SAE 与 Gleason 的关系由两条限定精确表述。</p>
+<p><strong>第一，维度与测量结构条件</strong>。Gleason 原始定理对 Hilbert 空间维度不小于 3 的情形成立；二维 qubit 情形需要额外假设，或诉诸 POVM 版本、Busch 型推广才能覆盖。故 Gleason 类定理给出的是其通常维度与测量结构条件下 Born 型测度的标准数学唯一性，而非覆盖所有 Hilbert 空间；二维 qubit 与 POVM 等情形需要相应的扩展版本。SAE 不重推这些定理，只给二次型读出的本体来源。</p>
+<p><strong>第二，非推论定位</strong>。SAE <strong>不把</strong> Gleason 当作"由 SAE 推出的推论"。更稳妥的关系是：SAE 与 Gleason 类唯一性结果<strong>兼容</strong>（相容）；在标准形式层，SAE 的二次型读出与这些数学结果<strong>接合</strong>。</p>
+<p>由此，SAE 与 Gleason 的分工是清楚的：Gleason 在数学层回答"给定 Hilbert 空间结构与非上下文性，概率测度为何唯一是模平方"；SAE 在本体层回答"模平方这一读出形式的来源为何——因果槽以下同时受双侧影响之态的单侧读出"。前者是 T1 的数学唯一性，后者是 T2 的本体起源。两者不竞争，各自承接概率规则的不同侧面。这正是 P6 强度分级的正面体现：SAE 给本体起源，而非重证数学唯一性。</p>
+<h3>丙·二　Many-Worlds 派生与 SAE：因果律防火墙</h3>
+<p>与 Many-Worlds 进路（Everett 诠释、Deutsch–Wallace 决策论派生、Zurek 的 envariance）的关系，需要一道精确的防火墙，因为二者共享的形式结构最易被误读为本体上的等同。</p>
+<p>先把共享的与拒绝的分开。SAE 与 Everett / Deutsch–Wallace <strong>共享 branch 形式系统</strong>——闭合前多个分支在数学表示中并存。但 SAE <strong>拒绝 branch-world 本体</strong>——拒绝把每个分支升格为一个独立的、本体上实在的 4DD 内容世界。二者并非"数学完全一致"：Many-Worlds 的玻恩权重依赖一整套内部论证（Deutsch–Wallace 的理性主体决策、分支测度、观察者自定位等），而 SAE 的权重来自对偶取向配对。准确地说，SAE 接受 branch 形式系统作为 ρ-OR 多容性的形式表征，但拒绝把分支本体化为多个 4DD 内容世界。</p>
+<p>这道防火墙的核心，是区分点精确地落在<strong>受单向还是双向时间箭头影响</strong>，由此落在因果律的有无，而不只是层的位置：</p>
+<p>> Many-Worlds 的分支，是因果槽以上、各自只受单向时间箭头影响的多重世界——每个分支各自携带一段完整的、单向定向的因果历史。SAE 的双侧，是同一个量子在因果槽以下<strong>同时受 our frame 与 opposite frame 双向时间箭头影响</strong>——不是两个各自单向的世界，而是一个尚未被单向化、因而无因果律、无因果历史的态。</p>
+<p>由此可以正面回应 Many-Worlds 一方最自然的反驳："你的双侧，不就是两个分支吗？"回答是：不是。分支是各自受单向时间箭头影响、各自携带完整因果历史的 4DD 世界（复数个世界，各自单向）；而 SAE 的双侧是<strong>同一个量子同时受两个方向时间箭头影响</strong>（一个态，受双向），无单一方向可定因果，故无因果历史。复数个各自单向的世界，与一个同时受双向影响的态，是范畴不同的两件事。就本体经济性与余项纪律而言，SAE 不承担 branch-world 本体——它只承认 branch formalism 作为 ρ-OR 多容性的形式表征，而不把每个分支本体化为一个携带完整因果历史的独立 4DD 世界。SAE 在闭合前只有一个尚未单向化的双向态，闭合后是单侧结果，不发生世界增殖；至于能否对 branch-world 本体给出热力学层面的核算，超出本文，本文只指出 SAE 无需引入多个 4DD 内容世界。</p>
+<p>一个类比可把"单一存在的双向取向"与"两个分离的实体"区分开，其层次限定如下。Möbius 带是一个单侧二维流形：它在嵌入空间中看似有"上面"和"下面"，但作为流形本身只有一个面——所谓上下，是同一个面的两个取向，不是两个分离的面。SAE 的双向时间取向与此<strong>在本体层同构</strong>：普朗克基底层是单一的本体存在，双向取向是这单一存在的两个取向，不是两个本体上分离的实体。这一类比是在"单一存在含双向取向"这一结构层面同构，<strong>不是</strong>空间拓扑的直接映射——Möbius 带是二维流形，普朗克基底层不是空间流形，二者的空间结构不同。类比所取的，仅是"单一存在 / 双向取向"对"两个分离实在"的对照。由此，区分点是清楚的：SAE 是单一本体存在的双向取向，Many-Worlds 是多个本体上分离的实在。</p>
+<p>SAE 对 Many-Worlds 的处理，与它对 Einstein 的处理（见 P5）有一处本体上的不同。对 Einstein，SAE 承接其更深的数学直觉、修正其具体表达，是为其直觉正名。对 Many-Worlds，SAE 同样承接其数学洞察（幺正演化、无独立坍缩公设、分支结构作随机取样），但替换其本体（以双向时间取向的单侧投影，替换世界分裂）——这里 SAE 承接的只是数学，而非为 branch-world 本体正名。SAE 给分支权重一个更底层的、来自对偶取向配对的来源。</p>
+<h3>丙·三　最小定位：QBism 与 Bohmian</h3>
+<p>以下两个进路与 SAE 的对话不在 P6 辖区内展开，各作一段划界；完整对话留 P0 或专门论文。</p>
+<p><strong>QBism</strong>。QBism 把概率解释为主体的主观信念（主体置信度）——玻恩规则是理性主体下注的规范性约束。SAE 的概率不是主观信念，而是由容量到内容的投影，是客观的结构读出。两者在"概率是什么"上根本分流：一方是主体的认知态度，一方是因果槽以下同时受双侧影响之态的客观单侧读数。本文不就 QBism 的主体本体展开实质对话。</p>
+<p><strong>Bohmian</strong>。Bohmian 力学把概率解释为对隐变量（粒子真实位置）的认知无知——$|\psi|^2$ 是初始位置分布（更精细地说，Bohmian 路线通常以 quantum equilibrium / typicality 与 equivariance 论证该分布的稳定性），随机性源于对确定但未知的轨道的无知。SAE 的随机性不是无知：因果槽以下不存在预写的结果可供裁定，随机源于无因果律可裁定哪一侧实现，而非对既定事实的无知。这一区分呼应 P5 处理 Einstein 时的相关界定。本文不就 Bohmian 的隐变量本体展开实质对话。</p>
+<hr>
+<h2>兼容性锚点、结构压力测试与条件性开放接口</h2>
+<p>本文登记 A/B/C 三类锚点。A 类是基线承诺与兼容性锚点，不是当前可用的定量前向预测；强场下玻恩规则是否有修正，列为 C 类的开放问题。</p>
+<p><strong>A 类（基线承诺 / 兼容性锚点）</strong></p>
+<ul>
+<li><strong>A1（弱场基线）</strong>：在常规/弱场区段（相对论 P1 既立的 $d_{\mathrm{eff}}\to 2$），双侧近对称，对偶取向配对等同于标准 Hermitian 共轭，玻恩规则精确：$P_i = |\psi_i|^2$。这是本文的基线表述，与玻恩规则的实验高精度确认一致。本文主体在常规区段内以此为准。</li>
+</ul>
+<p><strong>B 类（结构不兼容）</strong></p>
+<ul>
+<li><strong>B1（分级条件）</strong>：若 Gleason 类条件可从更深的 SAE 公理导出，则 P6 可升级为完整 Gleason 等价定理；否则保持二次型读出的强结构推导。</li>
+<li><strong>B2（P4 级联）</strong>：若"跨阶梯读出必经模平方"的本体必然性不成立，则 P4 §6.4.2 的隧穿因子 2 候选随之失效。</li>
+<li><strong>B3（P5 级联）</strong>：若 P6 的模平方与 P5 的 Tsirelson 因子 4 + $2\times 2$ 不一致，则 P5 相应小节受压。</li>
+<li><strong>B4（跨阶梯纪律）</strong>：若对偶取向填充与 Foundation v2 的 $i$ 身份不一致，则 P6 主线受压。</li>
+<li><strong>B5（convergence 级联）</strong>：若阶数根据（结构族阶数 = DD 突破数）与 convergence 既立不一致，则 convergence 与 P6 的接口受压。</li>
+<li><strong>B6（乘性根据级联）</strong>：若"互易在原生代数中闭合"这一原则（微观乘性与真空加性同源）与 Cosmo I 互易既立不一致——例如互易在微观振幅层不能取乘性——则本文乘性根据的主表述受压，退回"借用互易原理、不导出微观乘性具体形式"的弱表述。</li>
+</ul>
+<p><strong>C 类（框架一致性 / 失效模式 / 条件性程序）</strong></p>
+<ul>
+<li><strong>C1</strong>：与 Foundation v2 的 $L$ 阶梯一致（$L_2$ 三通道与表象不变性）。</li>
+<li><strong>C2</strong>：与标准量子力学数学层向后兼容（模平方的计算结果不变）。</li>
+<li><strong>C3</strong>：与 P5"测量即 $L_4$ 重激活"接口一致（P6 给概率层，P5 给本体机制）。</li>
+<li><strong>C4</strong>：与跨论文锚定网络一致（P3 的 $\hbar$、P4 的跨阶梯、P5 的账本与 Tsirelson、Foundation v2 的跨阶梯、convergence 的阶数、Cosmo I 的互易）。</li>
+<li><strong>C5（承 P2）</strong>：复振幅不可被纯实数本体替代，除非该重述不含 $J^2 = -1$ 型对偶代数元。</li>
+<li><strong>C6（强场:开放问题）</strong>：玻恩规则在其辖区——常规与弱场区段——内精确，与玻恩规则的实验高精度确认一致。强场（因果槽极度压缩）下玻恩规则是否仍精确、抑或有修正，是一个<strong>开放问题</strong>：SAE 目前无法从先验给出判断。本文既不主张强场下玻恩偏离，也不主张其必然精确——玻恩规则与场强的关系，在缺乏后验支持时无法先验给出，故明确标记为未决，留待后续理论发展与实验。</li>
+<li><strong>C7（$i$ 的完整几何本体:开放问题）</strong>：本文把 $i$ 锚定为 Foundation v2 既立的反转因子，并引用前置篇 DD 分裂结构中"单一双 4DD 平面内复结构"作为其落在 $U(1)$ 的几何背景（甲·四·3）。但 $i$ 作为物理世界中一个本体操作的<strong>完整几何定义</strong>——它在双 4DD 平面内的精确刻画、与本/对侧时间取向的关系、以及它与玻恩配对 $\psi^\sharp\psi$ 之间的精确联系（$i$ 提供复相位载体的几何前提，而模平方读出由对偶取向的共轭配对完成，二者不可简单等同）——本文未给出，列为开放问题，留待 Foundation 层后续深化。本文对此采取诚实立场：$i$ 在物理世界中的本体定位尚未想清，故只引用够用的既立锚点，不在 P6 内仓促展开。</li>
+</ul>
+<hr>
+<h2>致谢</h2>
+<p>本文的论证在成稿过程中经过多轮发散式审阅与批评。感谢四个大语言模型在不同回合提供的发散思考与结构性质疑——其中对乘性配对根据、$i$ 的群结构锁定、双向时间取向与因果律防火墙等处的反复诘问，帮助作者厘清了若干本体表述的边界。特别感谢 Zesi Chen（陈则思）持续的批判性反馈。本文一切智识决策与最终表述由作者负责。</p>
+<hr>
+<h2>参考文献</h2>
+<p>本文所依赖的 SAE 既立工作如下（按系列归类）。所列为概念 DOI 或对应版本 DOI。</p>
+<p><strong>量子力学系列（QM）</strong></p>
+<ul>
+<li>秦汉. SAE 量子力学 P2. Zenodo. https://doi.org/10.5281/zenodo.20277037</li>
+<li>秦汉. SAE 量子力学 P3：ℏ 作 $L_1\leftrightarrow L_2$ 辛共轭闭合签名. Zenodo. https://doi.org/10.5281/zenodo.20340595</li>
+<li>秦汉. SAE 量子力学 P4：量子隧穿. Zenodo. https://doi.org/10.5281/zenodo.20369138</li>
+<li>秦汉. SAE 量子力学 P5. Zenodo. https://doi.org/10.5281/zenodo.20455398</li>
+</ul>
+<p><strong>物理基础与四力前置</strong></p>
+<ul>
+<li>秦汉. 跨层闭合方程：从欧拉公式到事件视界（SAE 物理基础）. Zenodo. https://doi.org/10.5281/zenodo.19361950</li>
+<li>秦汉. 光速、维度突破与耦合常数层级（四力前置篇）. Zenodo. https://doi.org/10.5281/zenodo.19341043</li>
+<li>秦汉. 力的语法：四力系列收束篇（Finale）. Zenodo. https://doi.org/10.5281/zenodo.19464447</li>
+</ul>
+<p><strong>宇宙学系列</strong></p>
+<ul>
+<li>秦汉. 从余项守恒到宇宙学常数（Cosmo I）. Zenodo. https://doi.org/10.5281/zenodo.19245267</li>
+<li>秦汉. 因果律加强、余项守恒与 Ġ/G 张力的双 frame 消解（Cosmo V）. Zenodo. https://doi.org/10.5281/zenodo.19329771</li>
+</ul>
+<p><strong>相对论系列</strong></p>
+<ul>
+<li>秦汉. SAE 框架下的时间膨胀：因果细胞吞吐量推导（相对论 P1）. Zenodo. https://doi.org/10.5281/zenodo.19836185</li>
+<li>秦汉. 运动效应与引力效应的本体论统一：因果槽几何下的有效惯性（相对论 P2）. Zenodo. https://doi.org/10.5281/zenodo.19910546</li>
+</ul>
+<p><strong>信息论系列</strong></p>
+<ul>
+<li>秦汉. 信息的 4DD 本体论与一条基础公理（信息论 P1）. Zenodo. https://doi.org/10.5281/zenodo.19740020</li>
+<li>秦汉. 黑洞信息通过因果谱：SAE-黑洞对应（信息论 P4）. Zenodo. https://doi.org/10.5281/zenodo.19880112</li>
+</ul>
+<p><strong>质量系列</strong></p>
+<ul>
+<li>秦汉. 信息的本质：E/c³（质量系列收束篇）. Zenodo. https://doi.org/10.5281/zenodo.19510868</li>
+</ul>
+<p><strong>外部标准文献</strong></p>
+<ul>
+<li>Born, M. (1926). Zur Quantenmechanik der Stoßvorgänge. <em>Zeitschrift für Physik</em>, 37, 863–867.</li>
+<li>Gleason, A. M. (1957). Measures on the closed subspaces of a Hilbert space. <em>Journal of Mathematics and Mechanics</em>, 6, 885–893.</li>
+<li>Busch, P. (2003). Quantum states and generalized observables: a simple proof of Gleason's theorem. <em>Physical Review Letters</em>, 91, 120403.</li>
+<li>Deutsch, D. (1999). Quantum theory of probability and decisions. <em>Proceedings of the Royal Society A</em>, 455, 3129–3137.</li>
+<li>Wallace, D. (2012). <em>The Emergent Multiverse: Quantum Theory according to the Everett Interpretation</em>. Oxford University Press.</li>
+<li>Zurek, W. H. (2005). Probabilities from entanglement, Born's rule from envariance. <em>Physical Review A</em>, 71, 052105.</li>
+<li>Fuchs, C. A., Mermin, N. D., & Schack, R. (2014). An introduction to QBism. <em>American Journal of Physics</em>, 82, 749–754.</li>
+<li>Bohm, D. (1952). A suggested interpretation of the quantum theory in terms of "hidden" variables. <em>Physical Review</em>, 85, 166–193.</li>
+<li>Dürr, D., Goldstein, S., & Zanghì, N. (1992). Quantum equilibrium and the origin of absolute uncertainty. <em>Journal of Statistical Physics</em>, 67, 843–907.</li>
+<li>Cirel'son (Tsirelson), B. S. (1980). Quantum generalizations of Bell's inequality. <em>Letters in Mathematical Physics</em>, 4, 93–100.</li>
+<li>Popescu, S., & Rohrlich, D. (1994). Quantum nonlocality as an axiom. <em>Foundations of Physics</em>, 24, 379–385.</li>
+</ul></div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
