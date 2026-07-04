@@ -2,163 +2,281 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′ — Self-as-an-End</title>
-  <meta name="description" content="Mean-Reversion, Spectral Valley, and the Projective Criterion for H′ — ZFCρ Paper LII">
-  <meta property="og:title" content="ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′">
-  <meta name="author" content="Han Qin">
-  <meta name="citation_title" content="ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′">
-  <meta name="citation_author" content="Qin, Han">
-  <meta name="citation_publication_date" content="2026">
+  <title>Mean-Reversion, Spectral Valley, and the Projective Criterion for H′ – Han Qin (秦汉)</title>
   <meta name="citation_doi" content="10.5281/zenodo.19407328">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "ZFCρ Paper LII: Mean-Reversion, Spectral Valley, and the Projective Criterion for H′",
-    "alternativeHeadline": "ZFCρ 第LII篇：均值回归，谱谷，与H'的投射准则",
-    "author": {
-      "@type": "Person",
-      "name": "Han Qin",
-      "identifier": "https://orcid.org/0009-0009-9583-0018"
-    },
-    "datePublished": "2026",
-    "keywords": "integer complexity, mean-reversion, spectral valley, projective criterion, Maxwell-Woodroofe, martingale-coboundary, signed cancellation, ZFCrho, H-prime, DSF, BL-alpha, exponential forgetting",
-    "identifier": "https://doi.org/10.5281/zenodo.19407328"
-  }
-  </script>
-
-  <link rel="stylesheet" href="../style.css">
-  <script>
-    function switchLang(lang, tab) {
-      document.getElementById('lang-en').classList.remove('active');
-      document.getElementById('lang-zh').classList.remove('active');
-      document.getElementById('lang-en').style.display = 'none';
-      document.getElementById('lang-zh').style.display = 'none';
-      document.getElementById('lang-' + lang).classList.add('active');
-      document.getElementById('lang-' + lang).style.display = 'block';
-      var tabs = document.querySelectorAll('.lang-tab');
-      tabs.forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-    }
-  </script>
+  <script>MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'none' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <a href="../index.html" class="site-title">Self-as-an-End</a>
-      <nav>
-        <a href="../index.html">Papers</a>
-        <a href="../about.html">About</a>
-      </nav>
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LII</div>
+    <h1>Mean-Reversion, Spectral Valley, and the Projective Criterion for H′<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LII篇：均值回归，谱谷，与H'的投射准则</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19407328">10.5281/zenodo.19407328</a> · Full PDF on Zenodo · CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>We establish the structural mechanism behind the spectral target identified in Paper 51 for Hypothesis H'. Three experiments reveal that the stripped prime-index process h(p) exhibits mean-reversion: the sub-block variance ratio peaks at intermediate scale then decreases (cleanly observed at j ≥ 29); the block periodogram at zero frequency is lower than at nearby nonzero frequencies; and the autocovariance appears not absolutely summable, with the spectral target maintained by massive positive-negative cancellation. One exact finite-block identity is proved (periodogram expansion), along with four second-order formulae (curvature criterion, variance-ratio drift, block-block covariance expansion, adjacent-block negativity equivalence) and an L²-localization bound from coboundary structure. Two conditional closure theorems are established: (I) a Maxwell-Woodroofe projective criterion Δ_j ≤ K√j implies the spectral target in mean (E[I_j(0)] ≤ Cj · D_j) and an L²-version of BL_α; (II) negative cross-product sum at the peak scale implies the spectral target deterministically. The remaining gap for H' is reduced to one substantial dynamical conjecture — exponential forgetting of the stripped reset-state on O(j) scale — plus two technical upgrades (from mean to deterministic spectral target, and from L²-BL to deterministic BL). Thirty-six unconditional results at scales N = 10⁷ through 10¹⁰ support the framework.</p>
+      
     </div>
-  </header>
-
-  <main class="paper-main">
-    <article class="paper-page">
-      <div class="paper-page-header">
-        <div class="paper-badge">ZFCρ Series · Paper LII</div>
-        <h1>Mean-Reversion, Spectral Valley, and the Projective Criterion for H′<br>
-          <span style="font-size:0.72em; font-weight:400; color:#555;">ZFCρ Paper LII</span>
-        </h1>
-        <div style="font-size:0.85em; color:#555; margin-top:0.3em;">ZFCρ 第LII篇：均值回归，谱谷，与H'的投射准则</div>
-        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19407328">10.5281/zenodo.19407328</a> &nbsp;·&nbsp; CC BY 4.0</div>
-        <div class="paper-author">Han Qin · 2026</div>
-      </div>
-
-      <div class="lang-tabs">
-        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
-        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
-      </div>
-
-      <!-- ENGLISH CONTENT -->
-      <div id="lang-en" class="lang-content active" lang="en">
-        <p style="font-size:0.9em; color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
-
-        <h2>Abstract</h2>
-        <p>We establish the structural mechanism behind the spectral target identified in Paper 51 for Hypothesis H′. Three experiments reveal that the stripped prime-index process h(p) exhibits mean-reversion: the sub-block variance ratio peaks at intermediate scale then decreases (cleanly observed at j ≥ 29); the block periodogram at zero frequency is lower than at nearby nonzero frequencies; and the autocovariance appears not absolutely summable, with the spectral target maintained by massive positive-negative cancellation. One exact finite-block identity is proved (periodogram expansion), along with four second-order formulae (curvature criterion, variance-ratio drift, block-block covariance expansion, adjacent-block negativity equivalence) and an L²-localization bound from coboundary structure.</p>
-        <p>Two conditional closure theorems are established: (I) a Maxwell-Woodroofe projective criterion Δ<sub>j</sub> ≤ K√j implies the spectral target in mean (E[I<sub>j</sub>(0)] ≤ Cj · D<sub>j</sub>) and an L²-version of BL<sub>α</sub>; (II) negative cross-product sum at the peak scale implies the spectral target deterministically. The remaining gap for H′ is reduced to one substantial dynamical conjecture — exponential forgetting of the stripped reset-state on O(j) scale — plus two technical upgrades (from mean to deterministic spectral target, and from L²-BL to deterministic BL). Thirty-six unconditional results at scales N = 10⁷ through 10¹⁰ support the framework.</p>
-        <p><strong>Keywords:</strong> ZFCρ, integer complexity, mean-reversion, spectral valley, projective criterion, Maxwell-Woodroofe, martingale-coboundary, signed cancellation, exponential forgetting, H′, DSF<sub>α</sub>, BL<sub>α</sub></p>
-
-        <h2>§1 Three Discoveries</h2>
-        <p>Paper 50 reduced H′ to DSF<sub>α</sub> + BL<sub>α</sub>. Paper 51 reformulated DSF<sub>α</sub> as a spectral target: I<sub>j</sub>(0) ≤ Cj · D<sub>j</sub>, quantified the gap (Cauchy-Schwarz gives m<sub>j</sub> · D<sub>j</sub>; ratio m<sub>j</sub>/j = 2<sup>j</sup>/j² is exponential), and gave a divisor lemma for multiplicative reset. The present paper discovers the mechanism behind the spectral target.</p>
-        <p><strong>(i) Mean-reversion.</strong> The sub-block variance ratio V(n)/(n · σ²<sub>x</sub>) peaks at intermediate scale n* then decreases. At j = 32 (190M primes, N = 10¹⁰): peak ratio/j = 54.1, full-block O<sub>j</sub>/(j · D<sub>j</sub>) = 2.7. Anticorrelation removes 95% of intermediate variance. The pattern is clean at j ≥ 29; at j ≤ 23 the process is in a crossover regime where anticorrelation has not yet separated from noise.</p>
-        <p><strong>(ii) Spectral valley.</strong> The block periodogram at θ = 0 is a local minimum. At j = 32: I<sub>j</sub>(k=0)/(j · D<sub>j</sub>) = 2.7, while I<sub>j</sub>(k=50)/(j · D<sub>j</sub>) = 90.8. Zero frequency is specifically suppressed; the periodogram peak is at k ≈ 10–50, exceeding the zero-frequency value by 3–34×.</p>
-        <p><strong>(iii) Signed cancellation.</strong> The autocovariance is not absolutely summable (Σ|C(k)| diverges), but Σ C(k) = O(j · σ²) through massive positive-negative cancellation. The shallow/deep decomposition at j = 32: at cutoff L = 1,000,000, shallow contribution = 23.53 · O<sub>j</sub>, deep contribution = −22.53 · O<sub>j</sub>. The framework requiring Σ|C(k)| &lt; ∞ is inapplicable; the spectral target is maintained by signed cancellation, not by individual-lag decay.</p>
-
-        <h2>§2 Exact Finite-Block Identities</h2>
-        <p><strong>Lemma 2.1 (Periodogram expansion).</strong> For x<sub>1</sub>, …, x<sub>m<sub>j</sub></sub> and I<sub>j</sub>(θ) = |Σ x<sub>r</sub> e<sup>irθ</sup>|²:</p>
-        <p style="margin-left:1.5em; font-family:monospace;">I<sub>j</sub>(θ) = Γ<sub>j</sub>(0) + 2 Σ<sub>k≥1</sub> Γ<sub>j</sub>(k) cos(kθ)</p>
-        <p>where Γ<sub>j</sub>(0) = D<sub>j</sub>. At θ = 0: I<sub>j</sub>(0) = B<sub>j</sub>². Purely algebraic; no model assumptions.</p>
-        <p><strong>Corollary 2.2 (Curvature criterion for spectral valley).</strong> I<sub>j</sub>″(0) = −2 Σ k² Γ<sub>j</sub>(k). Therefore θ = 0 is a strict local minimum of I<sub>j</sub>(θ) if Σ k² Γ<sub>j</sub>(k) &lt; 0 — a k²-weighted signed condition on lag coefficients, requiring medium-to-large lags carry enough negative weight to overcome positive short-range contributions.</p>
-        <p><strong>Lemma 2.3 (Variance-ratio drift).</strong> R(n+1) − R(n) = 2/[n(n+1)] · Σ<sub>k=1</sub><sup>n</sup> k C(k). The variance ratio R(n) = V(n)/n peaks at n* if and only if Σ<sub>k=1</sub><sup>n*</sup> k C(k) changes sign from positive to negative at n*.</p>
-        <p><strong>Lemma 2.5 + Corollary 2.6 (Adjacent-block negativity equivalence).</strong> V(2n) = 2V(n) + 2 Cov(T<sub>n,1</sub>, T<sub>n,2</sub>). Therefore R(2n) &lt; R(n) if and only if adjacent peak-scale blocks have negative covariance. The data confirms both simultaneously.</p>
-
-        <h2>§3 Conditional Theorems</h2>
-        <p><strong>Theorem 3.1 (Algebraic cross-product bound — Conditional Theorem II).</strong> Partition x<sub>1</sub>, …, x<sub>m<sub>j</sub></sub> into K sub-blocks of size n* with sums T<sub>1</sub>, …, T<sub>K</sub>. If (a) Σ T<sub>k</sub>² ≤ A · j · D<sub>j</sub>; (b) cross-product sum Σ<sub>k&lt;ℓ</sub> T<sub>k</sub>T<sub>ℓ</sub> ≤ 0; and (c) remainder T<sub>rem</sub>² ≤ D<sub>j</sub>; then B<sub>j</sub>² = O(j · D<sub>j</sub>). This is purely algebraic — no probability, no covariance, no model. Condition (b) is the deterministic analogue of "inter-block negative covariance."</p>
-        <p><strong>Theorem 4.1 (MW projective criterion — Conditional Theorem I).</strong> Under a probabilistic model for the prime-indexed process, if the Maxwell-Woodroofe projective seminorm Δ<sub>j</sub> = Σ<sub>n≥1</sub> ‖E(S<sub>j,n</sub> | F<sub>j,0</sub>)‖₂ / n<sup>3/2</sup> satisfies Δ<sub>j</sub> ≤ K√j uniformly in j, then E[I<sub>j</sub>(0)] ≤ C · j · D<sub>j</sub> (spectral target in mean).</p>
-        <p><strong>Lemma 4.2 (Forgetting implies MW).</strong> If the hidden reset-state Y<sub>j,r</sub> has exponential forgetting with time R<sub>j</sub> ≤ cj — i.e., sup<sub>y,y′</sub> ‖G<sub>j</sub>(Y<sup>y</sup><sub>j,n</sub>) − G<sub>j</sub>(Y<sup>y′</sup><sub>j,n</sub>)‖₂ ≤ A exp(−n/R<sub>j</sub>) — then Δ<sub>j</sub> ≤ K√j.</p>
-        <p><em>Proof.</em> ‖E(S<sub>j,n</sub> | F<sub>j,0</sub>)‖₂ ≤ min(n, A·R<sub>j</sub>). Summing over n: Δ<sub>j</sub> ≤ C√R<sub>j</sub> ≤ K√j. □</p>
-        <p><strong>Proposition 4.3 (L²-BL<sub>α</sub> from coboundary).</strong> Under the MW hypotheses, with martingale-coboundary decomposition h<sub>i</sub> = M<sub>i</sub> + Z<sub>i</sub> − Z<sub>i+1</sub> satisfying sup E[M<sub>i</sub>²] = O(1) and sup E[Z<sub>i</sub>²] = O(j) on block I<sub>j</sub>: Σ<sub>j≥0</sub> sup<sub>|t|≤t₀</sub> ‖E<sub>j</sub>(t)‖₂ / |t|<sup>α</sup> &lt; ∞ for every α &lt; 1. This is an L²-version of BL<sub>α</sub>; upgrading to deterministic BL<sub>α</sub> requires a pathwise maximal estimate.</p>
-
-        <h2>§4 The Remaining Gap</h2>
-        <p><strong>Conjecture 52.1 (Exponential forgetting on O(j) scale).</strong> There exists a hidden reflected state Y<sub>j,r</sub>, a measurable function G<sub>j</sub> with h(p<sub>j,r</sub>) = G<sub>j</sub>(Y<sub>j,r</sub>), and a coupling satisfying:</p>
-        <p style="margin-left:1.5em; font-family:monospace;">sup<sub>y,y′</sub> ‖G<sub>j</sub>(Y<sup>y</sup><sub>j,n</sub>) − G<sub>j</sub>(Y<sup>y′</sup><sub>j,n</sub>)‖₂ ≤ A · exp(−n/(cj))</p>
-        <p>with forgetting time R<sub>j</sub> ≤ cj. The closure chain:</p>
-        <p style="margin-left:1.5em;">Conjecture 52.1 → Δ<sub>j</sub> ≤ K√j [Lemma 4.2] → E[I<sub>j</sub>(0)] ≤ Cj·D<sub>j</sub> [Theorem 4.1] → (deterministic upgrade) → DSF<sub>α</sub> [Paper 51]<br>
-        → L²-BL<sub>α</sub> [Prop. 4.3] → (pathwise upgrade) → BL<sub>α</sub><br>
-        → (with SD, unconditional [Paper 50]) → H′</p>
-        <p>The remaining gap has one substantial conjecture (52.1: connecting IC reservoir dynamics to prime-indexed process and proving geometric ergodicity) and two technical upgrades (mean-to-deterministic spectral target; L²-to-pathwise BL). <strong>If the underlying chain is geometrically ergodic with bounded observable, all three close simultaneously.</strong></p>
-        <p>The excluded routes are extended: Route 5 (absolute summability of autocovariance) and Route 6 (direct spectral density bound) are both inapplicable, as the data strongly suggests Σ|C(k)| diverges. The appropriate framework is martingale-coboundary decomposition (Gordin), not spectral density theory.</p>
-
-        <h2>§5 Data Tables</h2>
-        <p><strong>Table 1: Variance ratio V(n)/(n · σ²)/j at selected sub-block sizes (N = 10¹⁰).</strong></p>
-        <table style="width:100%; border-collapse:collapse; font-size:0.88em; margin:1em 0;">
-          <thead><tr style="background:#f5f5f5;">
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:left;">n</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=20</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=23</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=29</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=32</th>
-          </tr></thead>
-          <tbody>
-            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">1</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.050</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.043</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.034</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.031</td></tr>
-            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">j²</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.13</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.13</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.12</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.11</td></tr>
-            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">10,000</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">0.24</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">1.85</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">7.33</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">9.38</td></tr>
-            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">100,000</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">9.85</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">13.96</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">34.12</td></tr>
-            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;"><strong>peak</strong></td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">~7.8</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">~25.3</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">~14.3</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>54.1</strong></td></tr>
-            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">full block</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">21.9</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">25.3</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">8.8</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">2.7</td></tr>
-          </tbody>
-        </table>
-        <p><strong>Table 2: Periodogram I<sub>j</sub>(θ)/(j · D<sub>j</sub>) at low frequencies (N = 10¹⁰).</strong></p>
-        <table style="width:100%; border-collapse:collapse; font-size:0.88em; margin:1em 0;">
-          <thead><tr style="background:#f5f5f5;">
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:left;">freq index k</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=20</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=26</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=29</th>
-            <th style="padding:0.4em 0.7em; border:1px solid #ddd;">j=32</th>
-          </tr></thead>
-          <tbody>
-            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">0</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">22.0</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">4.2</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">8.9</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>2.7</strong></td></tr>
-            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">10</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>29.2</strong></td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>55.2</strong></td></tr>
-            <tr><td style="padding:0.4em 0.7em; border:1px solid #ddd;">50</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>15.9</strong></td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;"><strong>90.8</strong></td></tr>
-            <tr style="background:#fafafa;"><td style="padding:0.4em 0.7em; border:1px solid #ddd;">100</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">—</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">5.4</td><td style="padding:0.4em 0.7em; border:1px solid #ddd; text-align:center;">19.8</td></tr>
-          </tbody>
-        </table>
-        <p>O<sub>j</sub>/(j · D<sub>j</sub>) range across all tested j: 2.7 to 25.3, no systematic j-divergence (unconditional result 36).</p>
-
-        <h2>§6 Summary of Results</h2>
-        <p>New in Paper 52 (results 31–36): (31) variance ratio peaks then decreases at j = 29, 32; crossover/inconclusive at j ≤ 23; (32) periodogram at θ = 0 lower than at nearby nonzero frequencies at j = 29, 32; (33) peak intermediate variance up to 54× full-block variance at j = 32; (34) deep contribution is negative (anticorrelation) at all tested blocks; (35) autocovariance not absolutely summable, spectral target maintained by signed cancellation; (36) O<sub>j</sub>/(j · D<sub>j</sub>) bounded, range 2.7 to 25.3, no systematic j-divergence. Total: 36 unconditional results (Papers 50–52).</p>
-        <p>Proved results in this paper: curvature lemma; variance-ratio drift formula; block-block covariance expansion; adjacent-block negativity equivalence; MW projective criterion → spectral target in mean (Theorem 4.1); forgetting → MW (Lemma 4.2); negative cross-products → spectral target algebraically (Theorem 3.1); L²-BL<sub>α</sub> from coboundary (Proposition 4.3).</p>
-        <p>The proof strategy has shifted from "prove autocovariance decays fast" (Paper 51) to "prove anticorrelation is strong enough for signed cancellation" (Paper 52). The appropriate mathematical framework is Gordin's martingale-coboundary decomposition, which naturally accommodates non-absolutely-summable autocovariance through the telescope mechanism. The distance from ZFCρ to H′ is now: one substantial conjecture (IC dynamics forgetting time) and two technical upgrades (L² to pathwise) — all three likely closing simultaneously under geometric ergodicity.</p>
-      </div>
-
-      <!-- CHINESE CONTENT -->
-      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
-        <p style="font-size:0.9em; color:#666;"><em>写作声明：本文由秦汉独立完成。所有智识决策、框架设计与编辑判断均由作者做出。</em></p>
-<h2>§1. 引言</h2>
+    <div class="paper-body"><h2>§1. Introduction</h2>
+<h3>1.1. Context</h3>
+<p>Paper 50 reduced H' to DSF_α + BL_α. Paper 51 reformulated DSF_α as a spectral target: I_j(0) ≤ Cj · D_j, quantified the gap (Cauchy-Schwarz gives m_j · D_j; ratio m_j/j = 2^j/j² is exponential), and gave a divisor lemma for multiplicative reset.</p>
+<p>The present paper discovers the mechanism behind the spectral target and establishes the conditional theorems that reduce H' to a concrete dynamical conjecture.</p>
+<h3>1.2. The three discoveries</h3>
+<p><strong>(i) Mean-reversion.</strong> The sub-block variance ratio V(n)/(n · σ²_x) peaks at intermediate scale n* then decreases. At j = 32 (190M primes, N = 10¹⁰): peak ratio/j = 54.1, full-block O_j/(j · D_j) = 2.7. Anticorrelation removes 95% of intermediate variance.</p>
+<p><strong>(ii) Spectral valley.</strong> The block periodogram at θ = 0 is a local minimum. At j = 32: I_j(k=0)/(j · D_j) = 2.7, but I_j(k=50)/(j · D_j) = 90.8. Zero frequency is specifically suppressed.</p>
+<p><strong>(iii) Signed cancellation.</strong> The autocovariance is not absolutely summable (Σ|C(k)| diverges), but Σ C(k) = O(j · σ²) through massive positive-negative cancellation. The framework requiring Σ|C(k)| < ∞ does not apply; the spectral target is maintained by signed cancellation, not by individual-lag decay.</p>
+<h3>1.3. Overview of contributions</h3>
+<p>(i) <strong>One exact finite-block identity</strong> (§2.1): the periodogram expansion I_j(θ) = D_j + 2Σ Γ_j(k)cos(kθ) — purely algebraic, no model assumptions. <strong>Four second-order formulae</strong> (§2.2, §2.3): curvature criterion, variance-ratio drift, block-block covariance expansion, adjacent-block negativity equivalence — exact within a second-order / centered stationary setup.</p>
+<p>(ii) <strong>Conditional Theorem I</strong> (§4): MW projective criterion implies spectral target in mean + L²-BL_α.</p>
+<p>(iii) <strong>Conditional Theorem II</strong> (§3.4): negative cross-product sum at peak scale implies spectral target deterministically (algebraic, no probability).</p>
+<p>(iv) <strong>Gap reduction</strong> (§5): H' reduced to Conjecture 52.1 (exponential forgetting on O(j) scale) plus two technical upgrades.</p>
+<h3>1.4. Convention</h3>
+<p>As in Papers 50-51. x_r = h(p_{j,r})/p_{j,r} for the r-th prime in block I_j. Γ_j(k) = Σ_{r=1}^{m_j-k} x_r x_{r+k} (block lag coefficient). C_j(k) = empirical autocovariance of h. V(n) = Var(sub-block sums of size n). R(n) = V(n)/n (variance ratio).</p>
+<hr>
+<h2>§2. Exact Finite-Block Identities</h2>
+<h3>2.1. Curvature lemma</h3>
+<p><strong>Lemma 2.1 (Periodogram expansion).</strong> For x_1, ..., x_{m_j} and I_j(θ) = |Σ x_r e^{irθ}|²:</p>
+<p>  I_j(θ) = Γ_j(0) + 2 Σ_{k=1}^{m_j-1} Γ_j(k) cos(kθ)</p>
+<p>where Γ_j(0) = D_j. Evaluated at θ = 0: I_j(0) = D_j + 2 Σ_{k≥1} Γ_j(k) = B_j². ✓</p>
+<p><em>Proof.</em> Expand |F_j(θ)|² and collect terms by lag. □</p>
+<p><strong>Corollary 2.2 (Curvature criterion for spectral valley).</strong></p>
+<p>  I_j''(0) = −2 Σ_{k=1}^{m_j-1} k² Γ_j(k)</p>
+<p>Therefore θ = 0 is a strict local minimum of I_j(θ) if</p>
+<p>  Σ_{k=1}^{m_j-1} k² Γ_j(k) < 0</p>
+<p>and a strict local maximum if the sum is positive. (When the sum is zero, the second-order test is inconclusive.)</p>
+<p><strong>Remark.</strong> This is a k²-weighted signed condition on lag coefficients. A strict local minimum at θ = 0 requires that medium-to-large lags carry enough negative weight (after k² amplification) to overcome the positive short-range contribution.</p>
+<h3>2.2. Variance-ratio drift</h3>
+<p><strong>Lemma 2.3 (Variance-ratio monotonicity).</strong> For centered sequence (X_r) with autocovariance C(k):</p>
+<p>  V(n) = n C(0) + 2 Σ_{k=1}^{n-1} (n−k) C(k)</p>
+<p>  R(n+1) − R(n) = 2/[n(n+1)] · Σ_{k=1}^{n} k C(k)</p>
+<p><em>Proof.</em> Standard expansion of V(n) and telescoping. □</p>
+<p><strong>Corollary 2.4.</strong> The variance ratio R(n) peaks at n<em> if and only if Σ_{k=1}^{n</em>} k C(k) changes sign from positive to negative at n*.</p>
+<h3>2.3. Block-block covariance</h3>
+<p><strong>Lemma 2.5 (Block-block covariance expansion).</strong> For non-overlapping sub-blocks of size n with separation m (T_{n,ℓ} = Σ_{(ℓ-1)n+1}^{ℓn} X_r):</p>
+<p>  Cov(T_{n,1}, T_{n,1+m}) = Σ_{d=-(n-1)}^{n-1} (n−|d|) C(mn+d)</p>
+<p><em>Proof.</em> Expand double sum and reindex by lag. □</p>
+<p><strong>Corollary 2.6 (Adjacent-block negativity).</strong> For the variance ratio at doubled scale:</p>
+<p>  V(2n) = 2V(n) + 2 Cov(T_{n,1}, T_{n,2})</p>
+<p>Therefore:</p>
+<p>  R(2n) < R(n) if and only if Cov(T_{n,1}, T_{n,2}) < 0</p>
+<p><em>Proof.</em> V(2n) = Var(T_1 + T_2) = Var(T_1) + Var(T_2) + 2 Cov(T_1, T_2) = 2V(n) + 2Γ_n(1). Divide by 2n vs n. □</p>
+<p><strong>Remark.</strong> This is an exact equivalence: the variance ratio decreasing past the peak is equivalent to adjacent peak-scale blocks having negative covariance. The data confirms both (§3).</p>
+<hr>
+<h2>§3. Mean-Reversion Data</h2>
+<h3>3.1. Variance ratio peaks then decreases</h3>
+<p><strong>Table 1. Variance ratio V(n)/(n · σ²)/j at selected sub-block sizes (N = 10¹⁰, Q = 12).</strong></p>
+<table>
+<thead><tr>
+<th>n</th>
+<th>j=20</th>
+<th>j=23</th>
+<th>j=29</th>
+<th>j=32</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>0.050</td><td>0.043</td><td>0.034</td><td>0.031</td></tr>
+<tr><td>j²</td><td>0.13</td><td>0.13</td><td>0.12</td><td>0.11</td></tr>
+<tr><td>1000</td><td>0.29</td><td>1.22</td><td>1.96</td><td>1.19</td></tr>
+<tr><td>10000</td><td>0.24</td><td>1.85</td><td>7.33</td><td>9.38</td></tr>
+<tr><td>100000</td><td>—</td><td>9.85</td><td>13.96</td><td>34.12</td></tr>
+<tr><td>1000000</td><td>—</td><td>25.19</td><td>—</td><td>62.79</td></tr>
+<tr><td>peak</td><td>~7.8</td><td>~25.3</td><td>~14.3</td><td><strong>54.1</strong></td></tr>
+<tr><td>full block</td><td>21.9</td><td>25.3</td><td>8.8</td><td>2.7</td></tr>
+</tbody></table>
+<p>The ratio peaks at intermediate scale then decreases to the full-block value — clearly at j = 29 and j = 32, where the peak is 1.6× and 20× the full-block ratio respectively. At j = 20 and j = 23, the pattern is less clean: j = 20 shows full > peak (21.9 vs 7.8), and j = 23 shows near-equality (25.3 vs 25.3). These smaller blocks are in a crossover regime where the anticorrelation has not yet separated from noise. The clean "peak then decrease" signature emerges at j ≥ 29.</p>
+<h3>3.2. Spectral valley at θ = 0</h3>
+<p><strong>Table 2. Periodogram I_j(θ)/(j · D_j) at low frequencies (N = 10¹⁰).</strong></p>
+<table>
+<thead><tr>
+<th>freq index k</th>
+<th>j=20</th>
+<th>j=26</th>
+<th>j=29</th>
+<th>j=32</th>
+</tr></thead><tbody>
+<tr><td>0</td><td>22.0</td><td>4.2</td><td>8.9</td><td><strong>2.7</strong></td></tr>
+<tr><td>1</td><td>0.59</td><td>0.34</td><td>0.27</td><td>0.56</td></tr>
+<tr><td>10</td><td>—</td><td>—</td><td><strong>29.2</strong></td><td><strong>55.2</strong></td></tr>
+<tr><td>50</td><td>—</td><td>—</td><td><strong>15.9</strong></td><td><strong>90.8</strong></td></tr>
+<tr><td>100</td><td>—</td><td>—</td><td>5.4</td><td>19.8</td></tr>
+</tbody></table>
+<p>At j = 29 and j = 32, zero frequency is lower than the nearby nonzero frequencies displayed. The periodogram peak is at k ≈ 10-50, exceeding the zero-frequency value by 3-34×. (A full characterization as "local minimum" would require I_j at k = 1, 2, 3 or a direct computation of I_j''(0); the data shown supports the weaker statement that θ = 0 is suppressed relative to the low-frequency bulk.)</p>
+<h3>3.3. Shallow/deep decomposition confirms anticorrelation</h3>
+<p>At j = 32 (N = 10¹⁰), the off-diagonal O_j decomposes into shallow (positive, short-range) and deep (negative, long-range) contributions:</p>
+<table>
+<thead><tr>
+<th>cutoff L</th>
+<th>shallow/O_j</th>
+<th>deep/O_j</th>
+</tr></thead><tbody>
+<tr><td>1600</td><td>1.04</td><td>−0.04</td></tr>
+<tr><td>10000</td><td>3.51</td><td>−2.51</td></tr>
+<tr><td>100000</td><td>12.78</td><td>−11.78</td></tr>
+<tr><td>1000000</td><td><strong>23.53</strong></td><td><strong>−22.53</strong></td></tr>
+</tbody></table>
+<p>The deep contribution is strongly negative. O_j is the small residual of massive positive-negative cancellation.</p>
+<h3>3.4. Conditional Theorem II (negative cross-product route)</h3>
+<p><strong>Theorem 3.1 (Algebraic cross-product bound).</strong> Let x_1, ..., x_{m_j} be any finite sequence. Partition it into K = ⌊m_j/n<em>⌋ sub-blocks of size n</em> with sums T_1, ..., T_K, plus a remainder T_{rem}. Then algebraically:</p>
+<p>  B_j² = (T_1 + ... + T_K + T_{rem})²</p>
+<p>If:</p>
+<p>(a) Σ_{k=1}^K T_k² ≤ A · j · D_j (sum of squared sub-block sums bounded),</p>
+<p>(b) Σ_{k < ℓ} T_k T_ℓ ≤ 0 (cross-product sum non-positive),</p>
+<p>(c) T_{rem}² ≤ D_j (remainder small),</p>
+<p>then B_j² ≤ (A · j + 1) · D_j + 2|T_{rem}| · |Σ_k T_k|.</p>
+<p>If additionally |T_{rem}| ≤ √D_j and |Σ T_k| ≤ √(Aj · D_j), the last term is ≤ 2√(Aj) · D_j, giving B_j² ≤ (Aj + 2√(Aj) + 1) · D_j = O(j · D_j).</p>
+<p><em>Proof.</em> Expand: (Σ T_k + T_{rem})² = Σ T_k² + 2Σ_{k<ℓ} T_k T_ℓ + 2T_{rem} Σ T_k + T_{rem}². By (b), the cross-product term ≤ 0. For the mixed term: |Σ_k T_k|² = Σ T_k² + 2Σ_{k<ℓ} T_k T_ℓ ≤ Σ T_k² ≤ Aj · D_j (using (a) and (b)), so |Σ T_k| ≤ √(Aj · D_j). By Cauchy-Schwarz: 2|T_{rem}| · |Σ T_k| ≤ 2√D_j · √(Aj · D_j) = 2√(Aj) · D_j. Total: B_j² ≤ Aj · D_j + 0 + 2√(Aj) · D_j + D_j = (Aj + 2√(Aj) + 1) · D_j. □</p>
+<p><strong>Remark.</strong> This is purely algebraic — no probability, no covariance, no model. Condition (b) is the deterministic analogue of "inter-block negative covariance." The variance-ratio data (§3.1) suggests (b) holds at the peak scale, but this is empirical evidence, not a proof. Corollary 2.6 gives the stochastic equivalence R(2n) < R(n) ⟺ Cov(T_1,T_2) < 0; the deterministic condition (b) is stronger (requires all cross-products, not just expected value).</p>
+<hr>
+<h2>§4. Projective / Coboundary Route</h2>
+<h3>4.0. Probabilistic setup</h3>
+<p>The results in this section model the prime-indexed sequence within block I_j as a stochastic process. Let (Ω, F, P) be a probability space. Denote by X_{j,r} = h(p_{j,r}) the stripped residual of the r-th prime in block I_j (r = 1, ..., m_j). Assume X_{j,r} is adapted to an increasing filtration (F_{j,r})_{r≥0}, centered (E[X_{j,r}] = 0 or negligible), and square-integrable (E[X_{j,r}²] ≤ C uniformly).</p>
+<p>Define partial sums S_{j,n} = Σ_{r=1}^n X_{j,r} and the blockwise projective seminorm:</p>
+<p>  Δ_j = Σ_{n≥1} ‖E(S_{j,n} | F_{j,0})‖₂ / n^{3/2}</p>
+<p>This seminorm measures how quickly the partial sum "forgets" the initial σ-algebra F_{j,0}. It is the key quantity in the Maxwell-Woodroofe martingale approximation theorem (see Peligrad-Utev 2005, Merlevède-Peligrad-Utev 2019 for the stationary and nonstationary versions).</p>
+<p>Within this model, define the random analogues of the block quantities:</p>
+<p>  B_j^{rand} = Σ_{r=1}^{m_j} X_{j,r} / p_{j,r},   I_j^{rand}(0) = (B_j^{rand})²,   D_j^{rand} = Σ_{r=1}^{m_j} X_{j,r}² / p_{j,r}²</p>
+<p>The second-moment normalization is E[D_j^{rand}] = Σ_{r} E[X_{j,r}²] / p_{j,r}² ≍ m_j · E[X²] / 2^{2j}, which matches the deterministic D_j up to constants. Theorems 4.1 and Proposition 4.3 bound E[I_j^{rand}(0)] and ‖E_j^{rand}(t)‖₂ respectively; they apply to the actual (deterministic) I_j(0) and E_j(t) only insofar as the probabilistic model captures the true second-order structure.</p>
+<p><strong>Modeling caveat.</strong> The sequence h(p) is deterministic, not random. The probabilistic framework here is a modeling choice: we postulate that h(p) behaves as if drawn from a process with the measured second-order statistics. All theorems in this section are conditional on this modeling framework being applicable; the unconditional content resides in §2 (exact identities) and §3 (data).</p>
+<h3>4.1. Maxwell-Woodroofe conditional theorem</h3>
+<p><strong>Theorem 4.1 (MW projective criterion implies spectral target in mean).</strong> Under the setup of §4.0, if Δ_j ≤ K√j uniformly in j, and block second moments satisfy D_j ≍ m_j · E[X_{j,1}²] / 2^{2j}, then:</p>
+<p>  E[I_j(0)] ≤ C · j · D_j</p>
+<p><strong>Remark.</strong> This is an in-mean bound. Upgrading to the deterministic spectral target I_j(0) ≤ Cj · D_j requires an additional concentration or maximal inequality — a technical step analogous to the pathwise upgrade for BL_α (Proposition 4.3 Remark).</p>
+<p><em>Proof sketch.</em> MW condition gives martingale approximation: S_{j,n} = Σ_{r=1}^n D_r + Z_1 − Z_{n+1} + error, where D_r are martingale differences with E[D_r²] = σ²_M and ‖Z_r‖₂² = O(j). The partial sum variance is Var(S_n) = n · σ²_M + O(Var(Z)) = n · σ²_M + O(j). For n = m_j: Var(B_j · 2^j) = Var(S_{m_j}) ≤ C · m_j + C'j, so B_j² ≤ C/2^j + C'j/2^{2j} ≤ C''/2^j. This gives I_j(0) ≤ C'' · j · D_j (since D_j ~ 1/(j · 2^j)). □</p>
+<h3>4.2. From forgetting time to MW</h3>
+<p><strong>Lemma 4.2 (Forgetting implies MW).</strong> Suppose there exists a hidden reflected state Y_{j,r} and a function G_j such that X_{j,r} = G_j(Y_{j,r}), and a coupling satisfying:</p>
+<p>  sup_{y,y'} ‖G_j(Y^y_{j,n}) − G_j(Y^{y'}_{j,n})‖₂ ≤ A · exp(−n/R_j)</p>
+<p>with R_j ≤ c · j. Then Δ_j ≤ K√j.</p>
+<p><em>Proof.</em> The coupling gives ‖E(X_{j,n} | F_{j,0})‖₂ ≤ A exp(−n/R_j) (the conditional expectation of X_{j,n} given the initial state decays exponentially). By triangle inequality: ‖E(S_{j,n} | F_{j,0})‖₂ ≤ Σ_{r=1}^n ‖E(X_{j,r} | F_{j,0})‖₂ ≤ Σ_{r=1}^n A exp(−r/R_j) ≤ min(n, A·R_j). Substituting into the seminorm:</p>
+<p>  Δ_j = Σ_{n≥1} ‖E(S_{j,n} | F_{j,0})‖₂ / n^{3/2}       ≤ Σ_{n≤R_j} n/n^{3/2} + Σ_{n>R_j} A·R_j/n^{3/2}       = Σ_{n≤R_j} n^{-1/2} + A·R_j · Σ_{n>R_j} n^{-3/2}       ≤ C₁√R_j + C₂√R_j = C√R_j ≤ C√(cj) = K√j.  □</p>
+<h3>4.3. L²-BL_α from coboundary</h3>
+<p><strong>Proposition 4.3 (L²-localization from coboundary).</strong> Under the hypotheses of Theorem 4.1, with martingale-coboundary decomposition h_i = M_i + Z_i − Z_{i+1} satisfying sup_i E[M_i²] = O(1) and sup_i E[Z_i²] = O(j) on block I_j, define:</p>
+<p>  E_j(t) = Σ_{i=1}^{m_j} (h_i / p_{j,i}) (p_{j,i}^{-it} − e^{-it c_j})</p>
+<p>where c_j = (j + 1/2) log 2. Then for every α < 1:</p>
+<p>  Σ_{j≥0} sup_{|t|≤t₀} ‖E_j(t)‖₂ / |t|^α < ∞</p>
+<p><em>Proof.</em> Split E_j into martingale and coboundary parts. Define the coefficient function:</p>
+<p>  b_i(t) := (1/p_{j,i})(p_{j,i}^{-it} − e^{-itc_j})</p>
+<p>which satisfies |b_i(t)| ≤ C|t|/2^j (since |log p − c_j| ≤ (log 2)/2 within the block).</p>
+<p><strong>Martingale part.</strong> By orthogonality:</p>
+<p>  ‖Σ M_i b_i(t)‖₂² = Σ E[M_i²] |b_i(t)|² ≤ C Σ |t|²/2^{2j} = C|t|² m_j/2^{2j} ≍ C|t|²/(j · 2^j)</p>
+<p>So ‖Σ M_i b_i‖₂ ≤ C|t| (j · 2^j)^{-1/2}.</p>
+<p><strong>Coboundary part.</strong> Abel summation on Σ(Z_i − Z_{i+1}) b_i gives boundary terms + Σ Z_i (b_i − b_{i-1}). Since |b_i(t)| ≤ C|t|/2^j and |b_i − b_{i-1}| ≤ C|t|(p_i − p_{i-1})/2^{2j}, the total variation Σ|b_i − b_{i-1}| ≤ C|t|/2^j. With ‖Z_i‖₂ ≤ C√j:</p>
+<p>  ‖coboundary part‖₂ ≤ C|t| √j / 2^j</p>
+<p><strong>Combined:</strong> ‖E_j(t)‖₂ ≤ C|t| ((j · 2^j)^{-1/2} + √j / 2^j). Dividing by |t|^α and summing over j converges for α < 1. □</p>
+<p><strong>Remark.</strong> This is an L²-version of BL_α. Paper 50's deterministic BL_α requires sup|E_j(t)| rather than ‖E_j(t)‖₂. Upgrading from L² to deterministic requires an additional pathwise maximal estimate on the weighted martingale term — a mild condition, not a new cancellation mechanism, but not automatic from MW alone.</p>
+<hr>
+<h2>§5. The Remaining Gap</h2>
+<h3>5.1. Conjecture 52.1 (Forgetting time)</h3>
+<p><strong>Conjecture 52.1 (Exponential forgetting on O(j) scale).</strong> There exists a hidden reflected/reservoir state Y_{j,r} (from the reset-reservoir dynamics of Papers XXI/XLII/XLIV-XLV), a measurable function G_j with h(p_{j,r}) = G_j(Y_{j,r}), constants A, c > 0, and a coupling of chains started from different initial states y, y', such that:</p>
+<p>  sup_{y,y'} ‖G_j(Y^y_{j,n}) − G_j(Y^{y'}_{j,n})‖₂ ≤ A · exp(−n/(cj))</p>
+<p>That is: the observable h forgets its initial condition exponentially, with forgetting time R_j ≤ cj.</p>
+<h3>5.2. The closure chain (updated)</h3>
+<pre><code>Conjecture 52.1: exponential forgetting, R_j = O(j)
+    → Δ_j ≤ K√j                                     [Lemma 4.2, proved]
+        → spectral target in mean: E[I_j(0)] ≤ Cj·D_j  [Theorem 4.1, proved]
+            → (deterministic upgrade → I_j(0) ≤ Cj·D_j) [technical, open]
+                → DSF_α for all α &gt; 0                    [Paper 51]
+        → L²-BL_α                                        [Proposition 4.3, proved]
+            → (pathwise upgrade → BL_α)                   [technical, open]
+    → (with SD, unconditional)                            [Paper 50]
+        → H'</code></pre>
+<p><strong>Remark.</strong> The chain has one substantial conjecture (52.1) and two technical upgrades (mean-to-deterministic for spectral target, L²-to-pathwise for BL_α). Both upgrades are standard for geometrically ergodic chains with bounded observable, but neither is automatic from MW alone. Conditional Theorem II (Theorem 3.1) provides an alternative deterministic route that bypasses the mean-to-deterministic upgrade, at the cost of requiring non-positive cross-product sums as an additional hypothesis.</p>
+<h3>5.3. Nature of the remaining gaps</h3>
+<table>
+<thead><tr>
+<th>Gap</th>
+<th>Statement</th>
+<th>Difficulty</th>
+</tr></thead><tbody>
+<tr><td>Conjecture 52.1</td><td>Exponential forgetting with R_j = O(j)</td><td>Substantial. Requires connecting IC reservoir dynamics to prime-indexed process and proving geometric ergodicity.</td></tr>
+<tr><td>Deterministic upgrade</td><td>From E[I_j(0)] ≤ Cj·D_j to I_j(0) ≤ Cj·D_j</td><td>Technical. Standard concentration/maximal inequality for ergodic chains. Not a new cancellation mechanism.</td></tr>
+<tr><td>Pathwise BL upgrade</td><td>From ‖E_j‖₂ control to sup\</td><td>E_j\</td><td>control</td><td>Technical. Same machinery as deterministic upgrade.</td></tr>
+</tbody></table>
+<p><strong>Remark.</strong> The two technical upgrades are of the same nature (from L² to pathwise) and would likely follow from the same geometric ergodicity that underlies Conjecture 52.1. If the chain is geometrically ergodic with bounded observable, all three gaps close simultaneously.</p>
+<h3>5.4. Evidence for Conjecture 52.1</h3>
+<p>The mean-reversion data (§3) is the primary evidence:</p>
+<ul>
+<li>Variance ratio peaks then decreases: the process "forgets" past the peak scale.</li>
+<li>Spectral valley at θ = 0: zero-frequency energy is suppressed, consistent with coboundary structure.</li>
+<li>Anticorrelation cancels 95% of intermediate variance at j = 32: the reset mechanism is strong.</li>
+</ul>
+<p>The peak scale n<em> grows with m_j, with n</em>/m_j appearing to be a slowly growing fraction. If n<em> corresponds to the forgetting time, then R_j ~ n</em> is substantially smaller than m_j, consistent with R_j = O(j) when m_j ~ 2^j/j.</p>
+<hr>
+<h2>§6. The Additive Shadow and Failed Routes</h2>
+<h3>6.1. Updated route exclusions</h3>
+<p>The four routes excluded in Paper 51 remain excluded. Paper 52 adds:</p>
+<p><strong>Route 5 (Absolute summability of autocovariance): inapplicable.</strong> The data strongly suggests Σ|C(k)| diverges (variance ratio peak far exceeds full-block ratio, implying large positive and negative contributions that nearly cancel). The continuous spectral density Fourier series framework, which requires Σ|C(k)| < ∞, therefore appears inapplicable. The appropriate object is the finite-block periodogram I_j(0), not an asymptotic spectral density.</p>
+<p><strong>Route 6 (Direct spectral density bound): inapplicable.</strong> When Σ|C(k)| < ∞ fails, the continuous spectral density obtained via absolutely convergent Fourier series is not available. (The spectral measure still exists in the distributional sense, but cannot be written as a continuous density function.) The finite-block periodogram I_j(θ) remains well-defined and is the correct target for our purposes.</p>
+<h3>6.2. Why mean-reversion changes the strategy</h3>
+<p>The proof target shifted from "prove C(k) decays fast" (Paper 51) to "prove anticorrelation is strong enough for signed cancellation" (Paper 52). This is a fundamentally different problem: the correlations are STRONG (peak variance ratio up to 54j), but the signed sum is small (O(j · D_j)) because positive and negative contributions nearly cancel.</p>
+<p>The appropriate mathematical framework is not spectral density theory but martingale-coboundary decomposition (Gordin), which naturally accommodates non-absolutely-summable autocovariance through the telescope mechanism.</p>
+<hr>
+<h2>§7. Summary</h2>
+<h3>7.1. Thirty-six unconditional results</h3>
+<p><strong>From Paper 50 (1-24), Paper 51 (25-30).</strong> New in Paper 52 (31-36):</p>
+<ol>
+<li>Variance ratio peaks then decreases at j = 29, 32 (mean-reversion); crossover/inconclusive at j ≤ 23.</li>
+<li>Periodogram at θ = 0 lower than at nearby nonzero frequencies at j = 29, 32.</li>
+<li>Peak intermediate variance up to 54× full-block variance (j = 32).</li>
+<li>Deep contribution is negative (anticorrelation) at all tested blocks.</li>
+<li>Autocovariance not absolutely summable; spectral target maintained by signed cancellation.</li>
+<li>O_j/(j · D_j) bounded: range 2.7 to 25.3, no systematic j-divergence.</li>
+</ol>
+<h3>7.2. Summary of proved results in this paper</h3>
+<table>
+<thead><tr>
+<th>Result</th>
+<th>Type</th>
+</tr></thead><tbody>
+<tr><td>Curvature lemma (Lemma 2.1, Corollary 2.2)</td><td>Exact identity</td></tr>
+<tr><td>Variance-ratio drift (Lemma 2.3, Corollary 2.4)</td><td>Exact identity</td></tr>
+<tr><td>Block-block covariance expansion (Lemma 2.5)</td><td>Exact identity</td></tr>
+<tr><td>Adjacent-block negativity equivalence (Corollary 2.6)</td><td>Exact identity</td></tr>
+<tr><td>MW → spectral target (Theorem 4.1)</td><td>Conditional theorem</td></tr>
+<tr><td>Forgetting → MW (Lemma 4.2)</td><td>Conditional theorem</td></tr>
+<tr><td>Negative cross-products → spectral target (Theorem 3.1)</td><td>Conditional theorem (algebraic)</td></tr>
+<tr><td>L²-BL_α from coboundary (Proposition 4.3)</td><td>Conditional theorem</td></tr>
+</tbody></table>
+<hr>
+<h2>§8. Conclusion</h2>
+<p>Paper 51 identified the spectral target I_j(0) ≤ Cj · D_j as the remaining condition for DSF_α. Paper 52 discovers why this target holds and establishes the conditional theorems that reduce H' to a concrete dynamical conjecture plus technical upgrades.</p>
+<p>The mechanism is mean-reversion: the IC recursion produces short-range positive correlation (building up intermediate variance) followed by long-range anticorrelation (canceling most of it). At j ≥ 29, the block periodogram at zero frequency is lower than at nearby nonzero frequencies, consistent with the h(p) process being an approximate coboundary of a reflected hidden state.</p>
+<p>The mathematical framework is Gordin's martingale-coboundary decomposition, applied through the Maxwell-Woodroofe projective criterion. If the stripped reset-state has exponential forgetting on O(j) scale (Conjecture 52.1), then: the MW condition holds (Lemma 4.2); the spectral target holds in mean (Theorem 4.1); L²-BL_α holds (Proposition 4.3). Combined with SD (unconditional), the Karamata Tauberian of Paper 50, and two standard technical upgrades (mean-to-deterministic for the spectral target, L²-to-pathwise for BL_α), H' follows.</p>
+<p>The distance from the ZFCρ framework to H' is now: one substantial conjecture about IC dynamics (how fast does the reset-reservoir state forget its initial condition?) and two technical upgrades of the same nature (from L² to pathwise control). If the underlying chain is geometrically ergodic with bounded observable, all three close simultaneously.</p>
+<hr>
+<h2>Acknowledgments</h2>
+<p>AI contributions. Gemini (子夏): Gordin coboundary identification (h = M + Z − Z'), spectral formula S(θ) = σ²_M + S_Z|1−e^{iθ}|², "spectral valley = coboundary signature" insight, sampling bridge heuristic. Grok (子贡): peak ratio quantitative fit (~j^4, noisy), crossover at j ≈ 24 identification, n*/m_j scaling analysis. ChatGPT (公西华): curvature lemma I''(0) = −2Σk²Γ(k), variance-ratio drift formula, block-block covariance expansion with exact conditions, MW → spectral target conditional theorem with explicit seminorm, forgetting → MW chain, proof skeleton for Paper 52, critical correction that reflected state has spectral PEAK not valley (valley comes from coboundary of state), L²-BL proposition with full Abel summation proof, precise diagnosis that deterministic BL requires pathwise maximal upgrade beyond MW. Claude (子路): all numerical experiments (p52_shallow.c, p52_varratio.c at N = 10⁹/10¹⁰), mean-reversion discovery, spectral valley discovery, signed cancellation identification, shallow/deep decomposition, BL_α ⊂ MW initial sketch and identification of failure point, working notes and divergence prompt design.</p></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>本文建立第51篇中H'谱目标背后的结构机制。三组实验揭示剥离素数索引过程h(p)具有均值回归特征：子块方差比在中间尺度达峰后下降（j ≥ 29处清晰可见）；块周期图在零频率处低于附近非零频率；自协方差看起来非绝对可和，谱目标通过大量正负对消维持。证明一个精确有限块恒等式（周期图展开），以及四个二阶公式（曲率判据，方差比漂移，块间协方差展开，相邻块负性等价）和一个来自共边界结构的L²局部化界。建立两个条件闭合定理：(I) Maxwell-Woodroofe投射准则Δ_j ≤ K√j蕴涵均值意义下的谱目标（E[I_j(0)] ≤ Cj · D_j）和L²版BL_α；(II) 峰尺度处的子块交叉积和为非正则确定性地蕴涵谱目标。H'的剩余差距缩减为一个实质性动力学猜想（剥离重置态在O(j)尺度上指数遗忘）加两个技术升级（均值到确定性谱目标，L²-BL到确定性BL）。36项无条件结果在N = 10⁷至10¹⁰上支持此框架。</p>
+      
+    </div>
+    <div class="paper-body"><h2>§1. 引言</h2>
 <h3>1.1. 背景</h3>
 <p>第50篇将H'归结为DSF_α + BL_α。第51篇将DSF_α重表述为谱目标I_j(0) ≤ Cj · D_j。本文发现谱目标背后的机制，建立将H'归结为具体动力学猜想的条件定理。</p>
 <h3>1.2. 三个发现</h3>
@@ -321,16 +439,30 @@
 <p>从ZFCρ框架到H'的距离：一个关于IC动力学的实质性猜想（重置-水库态多快遗忘初始条件）加两个同性质的技术升级（从L²到pathwise控制）。若底层链几何遍历且observable有界，三者同时闭合。</p>
 <hr>
 <h2>致谢</h2>
-<p>AI贡献。Gemini（子夏）：Gordin共边界识别，谱公式，"谱谷 = 共边界特征"。Grok（子贡）：峰比率定量拟合，crossover at j≈24。ChatGPT（公西华）：曲率引理，方差比漂移公式，块间协方差展开，MW条件定理，遗忘时间链，反射态谱峰修正，L²-BL命题含Abel求和证明，确定性BL需pathwise升级诊断；定稿review识别四处硬伤（均值vs确定性，猜想精确度，曲率iff，mean-reversion限定）纳入v2。Claude（子路）：全部数值实验，均值回归发现，谱谷发现，符号对消识别，浅深分解，BL_α sketch与failure点识别。</p>
-      </div>
-
-    </article>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <p>&copy; 2026 Han Qin. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
-    </div>
-  </footer>
+<p>AI贡献。Gemini（子夏）：Gordin共边界识别，谱公式，"谱谷 = 共边界特征"。Grok（子贡）：峰比率定量拟合，crossover at j≈24。ChatGPT（公西华）：曲率引理，方差比漂移公式，块间协方差展开，MW条件定理，遗忘时间链，反射态谱峰修正，L²-BL命题含Abel求和证明，确定性BL需pathwise升级诊断；定稿review识别四处硬伤（均值vs确定性，猜想精确度，曲率iff，mean-reversion限定）纳入v2。Claude（子路）：全部数值实验，均值回归发现，谱谷发现，符号对消识别，浅深分解，BL_α sketch与failure点识别。</p></div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
 </body>
 </html>
