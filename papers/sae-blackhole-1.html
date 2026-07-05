@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area-Level Plateau and Self-Sufficient Window in a Frozen-Ledger Model – Han Qin (秦汉)</title>
+  <meta name="citation_doi" content="10.5281/zenodo.20913514">
+  <script>MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'none' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">SAE Black Hole Series · Paper 1</div>
+    <h1>Area-Level Plateau and Self-Sufficient Window in a Frozen-Ledger Model<br><span style="font-size:1.1rem;opacity:0.75">冻结账本模型中的面积级平台与自足窗</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20913514">10.5281/zenodo.20913514</a> · Full PDF on Zenodo · CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>This is the first preregistered, reproducible computational test in the SAE black-hole series. We construct a $W\times W$ cylindrical stabilizer toy model and contrast two arms under a single measurement protocol: a <em>frozen-ledger</em> arm, in which bond openings follow a local rule and the radial depth of internal records is preserved; and a <em>fully open scrambler</em> arm, in which a global unitary scramble erases the <em>distinguishability</em> of the radial depth labels. What we obtain is a type-B computable structural divergence: the plateau entropy and the registered self-sufficient window of the frozen arm scale as $S_{\rm plat},\widehat\omega=O(W)$ (area level), while the scrambler arm scales as $S_{\rm half},\widehat\omega=O(W^2)$ (volume baseline); this is accompanied by a radial depth ladder in the frozen arm and depth-label erasure in the scrambler arm.</p>
+<p>The principal results are organized along a spine and an edge. The spine is the area-level plateau, whose normalized collapse has a coefficient of variation of $0.0151$, measured across the three sizes from the medians of $S_{\rm plat}/W$. The edge is the frozen-versus-scrambler contrast of the self-sufficient window: we first establish the volume baseline of the scrambler, whose half-system entropy has a strict dimensional upper bound $M_0/2-1$, its near-saturation being consistent with Page-type typicality and the decoupling scale of random scrambling (this is the numerical baseline of the present control, not a per-sample consequence of Page's theorem for this local circuit); we then exhibit the registered self-sufficient window of the frozen arm, whose median ratio $\widehat\omega/S_{\rm plat}$ across the three sizes is $1.229$, $1.146$, $1.311$, lying within the prior structural band $[0.9,1.5]$. The theoretical support is a frozen-ceiling lemma, whose first inequality is a strict theorem within the stabilizer framework, while its area-level scaling is a conditional structural conclusion established by the data across the three sizes $W\in\{24,32,40\}$, not a proof of a $W\to\infty$ asymptotic law.</p>
+<p>This paper observes three boundary stakes: it does not resolve the information paradox; it does not claim to replace any existing approach, nor does it adjudicate the rights and wrongs of the black-hole information problem; and it offers no direct empirical prediction. With respect to the three topological-closure mechanism candidates listed in Info-4, it provides a computable adjacent example, compatible rather than advancing, and does not select among the three. Six preregistered primary criteria pass; one supporting diagnostic fails and is retained as a negative result per the preregistration. This paper departs from a different ontological source and offers a line of thought for the consideration of colleagues.</p>
+      <p class="paper-keywords"><strong>Keywords:</strong> SAE; black-hole information-flow topology; stabilizer toy model; area-level scaling; self-sufficient window; frozen ceiling; preregistration; type-B structural divergence.</p>
+    </div>
+    <div class="paper-body"><h2>§1 Problem, Background, and Jurisdiction</h2>
+<h3>§1.1 Background of the black-hole information problem</h3>
+<p>The black-hole information problem originates in a tension. Hawking showed in 1975 [1] that a black hole is not entirely black: its horizon radiates through quantum effects, with a nearly thermal spectrum. If the radiation were purely thermal, then once the black hole has fully evaporated, the information carried in by the infalling matter would seem to vanish with it; yet the unitarity of quantum mechanics requires information to be conserved. The two are in conflict, and this is the black-hole information paradox.</p>
+<p>Page gave a criterion in 1993 from the side of unitarity [2,3]. If a black hole and its radiation form a pure state, then the entanglement entropy of the radiation subsystem should follow a particular trajectory: early in the evaporation, the radiation entropy rises with each emission; past a midpoint (now called the Page time), if unitarity holds, the entanglement entropy instead turns over and descends, eventually returning to zero. This rise-then-fall curve is now called the Page curve. A thermal spectrum predicts monotone growth without turnover; the descending branch of the Page curve is thus the imprint left by unitarity in black-hole evaporation.</p>
+<p>In recent years there has been notable progress on the semiclassical-gravity side. The island formula and the replica-wormhole computation [4,5,6,7], within the framework of the quantum extremal surface, have reproduced the descending branch of the Page curve in the semiclassical gravity of curved spacetime. This approach is geometry-led: it admits additional saddle-point contributions in the gravitational path integral, so that the radiation entropy descends after the Page time as the quantum extremal surface is updated. It is a fruitful approach and has established its standing on the black-hole information problem (for a review, see [8]).</p>
+<p>The approach taken here is not this geometry-led one, but a different ontological source. The SAE quantum-mechanics and information-theory series have advanced an ontological reading of the internal structure of black holes, whose essentials are set out below in the series note and in §2. The question of this paper is whether, departing from this different ontological source, one can construct a computable toy model in which a frozen ledger that retains internal records and a fully open scrambler exhibit a legible structural divergence. This paper does not adjudicate the rights and wrongs of the geometric approach, nor does it contend with it; it offers a different line of thought for the consideration of colleagues.</p>
+<h3>§1.2 Provenance of the problem and the question posed</h3>
+<p>The specific problem of this paper continues the opening left at §7 of SAE quantum-mechanics series P9, <em>Pre-Closure Field Distribution</em> [12]. P9 establishes the area law of entanglement entropy up to general regions of the vacuum, with the ontological reading that the area law arises from the locality of cross-boundary gluing together with the low-excitation topology of the vacuum baseline, and that local gluing alone yields only an upper bound, while a highly excited or thermal state may obey a volume law. P9 explicitly leaves the special boundary of the black hole ($S=A/4$, the Page curve, the island) to a future contact of the quantum-information series with a black-hole-information paper; this paper is the first step of that contact. Info-4, <em>Black-Hole Information through the Causal Spectrum</em> [13], lists the topological-closure mechanism of the Page curve as open, with the three candidates of phase transition, percolation, and SOC coexisting rather than derived.</p>
+<p>The question thus arises: can one construct a computable toy in which a frozen ledger that retains memory and a scrambler with erased labels exhibit a legible area-level-versus-volume-level structural divergence, as the first computable continuation of the opening left at P9 §7? This question neither solves the black-hole information paradox nor adjudicates among the three candidates of Info-4; it asks whether the ontological reading of the area law established in P9 can be made manifest, in a computable stabilizer instance, as a structural distinction between frozen and scrambler.</p>
+<h3>§1.3 Contributions of this paper</h3>
+<p>This paper makes three contributions. First, it constructs a preregistered computable toy whose primary criteria and failure conditions are committed before the run, and whose conclusions can be reproduced by a third party holding the same code and the same manifest. Second, within this toy it obtains a type-B structural divergence: $O(W)$ for the frozen arm against $O(W^2)$ for the scrambler arm, together with the retention and erasure of the radial depth ladder; and it establishes a frozen-ceiling lemma as the theoretical support, whose strict part is a theorem within the framework and whose area-level scaling is a conditional structural conclusion. Third, it provides a computable adjacent example for the topological-closure problem posed in Info-4, compatible rather than advancing. What this paper actually obtains is the passing of six preregistered primary criteria together with the honest negative result of one supporting diagnostic; it is not an empirical proof of the black-hole ontology.</p>
+<h3>§1.4 Jurisdiction and boundary stakes</h3>
+<p>The jurisdiction of this paper must be stated up front in the introduction, demarcating what it does not do. This paper observes three boundary stakes. First, it does not resolve the information paradox; the structural divergence obtained is a computable fact internal to the toy, not a solution to the paradox. Second, it does not claim to replace any existing approach, nor does it adjudicate the rights and wrongs of the black-hole information problem; this paper and the geometry-led island approach are different ontological readings of the same phenomenon, the rights and wrongs of which await tests far beyond the present toy, and this paper offers only a line of thought without contending with existing approaches. Third, it offers no direct empirical prediction for LISA, CE, or ET; the present toy is a structural diagnostic in the stabilizer setting and does not connect to real curvature, energy, or the Hawking spectrum. These three boundary stakes are reiterated in this section, in §2, and in §6, and form the hard boundary of the paper. Whatever this paper does not compute lies outside its claims.</p>
+<hr>
+<h2>Series Note</h2>
+<p>This is a series-level note on the position of this paper within the SAE black-hole series and the upstream it inherits.</p>
+<h3>Method of the black-hole series</h3>
+<p>The SAE black-hole series takes the computable toy model as its method, placing the operationalizable parts of the black-hole ontological structures already advanced in the SAE quantum-mechanics and information-theory series into preregistered, reproducible computational tests. This is the first such paper in the series. The measure of the word "computational test" must be stated plainly: what this paper tests is a structural divergence internal to a stabilizer toy model, not an empirical proof of the black-hole ontology; what it obtains is a legible type-B structural divergence within the toy, together with the passing of its preregistered primary criteria and the honest negative result of one supporting diagnostic.</p>
+<p>The method of the series observes four disciplines. First, the preregistered primary criteria and failure conditions are committed before the run and not revised afterward. Second, the engine, simulator, judge, driver, and preregistered ontology are each locked by hash, so that every reported conclusion can be reproduced by a third party holding the same code and the same manifest. Third, replay concordance across two implementations, together with an independent re-judgment by an independent implementation with its own logic, gives cross-corroboration beyond a single judge. Fourth, for any quantity internal to the toy, statements stop at the execution-semantics layer and are not extrapolated to black-hole physics.</p>
+<p>The black-hole theme can be extended widely—the structure of the information paradox, the mechanism of the Page curve, the firewall, the decoding of Hawking radiation, the internal imprint on gravitational waves—and the series will unfold these in subsequent papers. Paper 1 establishes this programme and takes one clean structural result as the series' point of departure.</p>
+<h3>Inherited upstream</h3>
+<p>The inheritance of this paper rests chiefly on three sources, with the rest peripheral.</p>
+<p>The direct upstream is QM P9, <em>Pre-Closure Field Distribution</em> [12], brought over directly from the quantum-mechanics series. Three things are inherited. First, the area law as a reinterpretation, which is the ontological source of the plateau and self-sufficient window of this paper. P9 establishes that the area law of entanglement entropy arises from the locality of cross-boundary gluing together with the low-excitation topology of the vacuum baseline, and states that local gluing alone yields only an upper bound, while a highly excited or thermal state may obey a volume law. The toy of this paper is precisely a computable instance of that reading. Second, the explicit interface at P9 §7. P9 establishes the area law up to general regions of the vacuum and explicitly leaves the special boundary of the black hole to a future contact of the quantum-information series with a black-hole-information paper; this paper is the first step of that contact. Third, the ontological vocabulary of the toy—ρ-OR capacity, cells and gluing, closure-addressable, the inannihilable remainder—derives from the $\{\mathfrak A_i,\rho_i,G_{ij}\}$ triple of P9; the remainder cell $\varepsilon\equiv1$ corresponds to P9's "remainder cannot be annihilated."</p>
+<p>The black-hole-ontology side is Info-4, <em>Black-Hole Information through the Causal Spectrum</em> [13], the black-hole-information paper referenced at P9 §7. From it this paper inherits the reading of the black-hole interior as 3DD active plus 4DD inactive, Hawking radiation as a categorical lift, the three topological-closure mechanism candidates of the Page curve, and the firewall as a categorical boundary. Among these, the three mechanism candidates are the objects of the bounded interface in §4.6; this paper provides a computable adjacent example for them and does not select among the three.</p>
+<p>The foundation is SAE Foundation [14], from which this paper inherits the physical-quantity ladder $L_0$ through $L_5$, ρ-OR and ρ-AND, the $L_3\to L_4$ closure equation, and the discrete prior.</p>
+<p>The remaining upstream is peripheral. The methodological and terminological peripherals are Info-3 [16] (causal slot and the substrate-aggregation spectrum), Info-5 [16], and Info-6 [16] (gravitational-wave dynamics); the gravitational-ontology corroborations are Relativity P5 [17] (the phase transition of the horizon cell tensor) and Relativity P6 [17] (Kerr spiral closure, a future generalization direction of the present Schwarzschild toy). E=Ic³ derives from the mass-series convergence paper, <em>The Nature of Information: E/c³</em> [15]. The black-hole ontology of this series further includes a set of images concerning the mass threshold and evaporation fate; as these do not enter the algorithm of the present toy, they are listed as questions for later in the series and not included in the body of this paper (see §7.2).</p>
+<h3>Epistemic discipline</h3>
+<p>This paper inherits the commitment grading and the firewall epistemic stance of the whole series. Every statement is graded by the strength of its commitment. The firewall epistemic stance holds that SAE does not derive any external conclusion, nor does that external conclusion prove SAE; the two frameworks correspond only on a shared structure. This paper is a structural diagnostic of a computable toy and does not claim empirical superiority over existing physics, nor does it give quantitative empirical predictions in the place of physicists. For all that is claimed, established, or erred, the responsibility lies with the author; the contribution of reviewers is recorded only in the acknowledgments.</p>
+<hr>
+<h2>§2 Operational Model and SAE Mapping</h2>
+<p>This section first defines the model clearly as a self-contained computable object, so that an external reader need accept no SAE ontology to reproduce it; it then gives the SAE ontological mapping; and finally it erects a firewall between the two. The section closes with a table listing what is placed into the model in advance and what is earned by production, to clarify the boundary between input and output.</p>
+<h3>§2.A Operational-model layer</h3>
+<p>The operational definition of the model is as follows, containing no ontological vocabulary. The substrate is a $W\times W$ cylindrical lattice carrying stabilizer qubits, evolving by phase-independent Clifford operations (the model structure is shown in Figure 1). Each dynamical step first applies Clifford gates on the open bonds, then selects the current outermost emittable cell, enters its index into the radiation sequence $R$, and moves the unemitted boundary of that column inward by one. The execution semantics of this emission must be stated plainly: the emission applies no additional quantum gate and builds no separate radiation register; it reclassifies the qubit of the selected cell from the unemitted subsystem into the radiation subsystem, the emitted qubit thereafter no longer participates in dynamical gates, and the entropy computation treats the qubits in the radiation sequence as the radiation subsystem.</p>
+<p>The opening and closing of bonds follow a local or an open rule. The emergent-local arm determines the opening of each bond by the local opening rule of §3.1, with parameters fixed at $a_0=2,\,w=0.4$, and the radial depth of internal records is preserved. The control arm opens all non-remainder bonds and is a fully open random-Clifford scrambler; its evolution is globally unitary and does not erase information—what it erases is the distinguishability of the radial depth labels. Three diary–Ref Bell pairs are embedded in the system, at deep, mid, and shallow layers, to track when internal records are read out into the radiation. There is further a remainder cell $\varepsilon\equiv1$ that is never emitted and never touched by any gate. The formal definitions of all observables ($S_{\rm plat}$, $S_{\rm half}$, $t_{\rm exit}$, $\widehat\omega$, $\Delta$, etc.) are given in §3.</p>
+<p>The identity of the control must be stated plainly: the control is a fully open random-Clifford scrambler control and not a synonym for the standard black-hole model. Its standing in this paper is that of a known Page-type volume baseline, detailed in §3.6 and §4.2.</p>
+<h3>§2.B SAE-mapping layer</h3>
+<p>Once the operational model is fixed, the SAE ontological mapping is given, listed in Table 1. The essentials: inactive bonds correspond to readout suspension, i.e. 4DD inactive; the active skin corresponds to the closure-addressable layer; the remainder cell corresponds to a toy encoding of Via Rho, i.e. the inannihilable remainder [12], tied to the memory prior of the $L_4$ closure layer; the single sequence of radiation readout corresponds to an abstract boundary readout channel. The black-hole interior of 3DD active plus 4DD inactive [13] maps to the frozen interior together with the active skin.</p>
+<p><strong>Table 1　Operational objects and the SAE ontological dictionary</strong></p>
+<table>
+<thead><tr>
+<th>Operational object</th>
+<th>Execution semantics (within the toy)</th>
+<th>SAE mapping</th>
+<th>Commitment level</th>
+</tr></thead><tbody>
+<tr><td>inactive bond</td><td>no Clifford gate applied; burial drives $p_{\rm open}\to0$</td><td>readout suspension (4DD inactive)</td><td>structural correspondence</td></tr>
+<tr><td>active skin</td><td>one-dimensional skin of outermost emittable cells</td><td>closure-addressable layer</td><td>structural correspondence</td></tr>
+<tr><td>frozen interior</td><td>qubits never having entered a post-prep gate ($F_t$)</td><td>black-hole interior 3DD active + 4DD inactive [13]</td><td>structural correspondence</td></tr>
+<tr><td>remainder cell $\varepsilon\equiv1$</td><td>a single cell never emitted, never gated</td><td>Via Rho (inannihilable remainder [12]), tied to the $L_4$ memory prior</td><td>structural correspondence</td></tr>
+<tr><td>radiation readout sequence $R$</td><td>the index sequence of emitted cells; subsystem reclassification</td><td>abstract boundary readout channel</td><td>structural correspondence</td></tr>
+<tr><td>diary–Ref Bell pair</td><td>entanglement of three-layer internal records with reference qubits</td><td>radial depth marking of internal records</td><td>structural correspondence</td></tr>
+</tbody></table>
+<p>The commitment level is uniformly marked as structural correspondence, to clarify the demarcation: these are all structural relations within the stabilizer model and their correspondence with the SAE ontology, not empirical claims about the black-hole ontology.</p>
+<p>One discipline bears reiterating: all the above mappings are correspondences of structure, not claims about the black-hole ontology. What the toy presents is a structural relation within the stabilizer model; its commonality with the black-hole ontology stops at the mapping and does not pass beyond it to become a proof of the ontology.</p>
+<h3>§2.C Firewall</h3>
+<p>This is the crux of the section, and a clear firewall must be erected. The radiation-readout reclassification in the toy is not a gravitational-wave model, nor a dynamical model of microscopic Hawking modes. That a single channel maps to a boundary readout reclassification is at most an information-flow-topology homomorphism and cannot be written as a realization of a physical channel. The black-hole images of this series concerning the mass threshold and evaporation fate do not enter the algorithm of the toy; the body of this paper does not develop these three, listing them at most as later questions in §7.2.</p>
+<h3>§2.D Boundary stakes</h3>
+<p>This paper observes three boundary stakes, not to be crossed, reiterated here up front. First, it does not resolve the information paradox. Second, it does not claim to replace any existing approach, nor adjudicate the rights and wrongs of the black-hole information problem. Third, it offers no direct empirical prediction for LISA, CE, or ET. The three boundary stakes are reiterated in §1, in this section, and in §6, and form the hard boundary of the paper.</p>
+<h3>§2.E The boundary between input and earned</h3>
+<p>To forestall a standard objection—that the freezing is placed in by rule, and that the area-level plateau and delayed release may be merely "assumptions taken as numbers"—we set out here, in plain view, the input of the model and the output of production.</p>
+<table>
+<thead><tr>
+<th>Placed into the model in advance</th>
+<th>Earned by production</th>
+</tr></thead><tbody>
+<tr><td>the local sigmoid freezing rule</td><td>the cross-size collapse of $S_{\rm plat}/W$ (three-median CV $=0.0151$)</td></tr>
+<tr><td>the shallow prep</td><td>the area-level-versus-volume-level divergence between frozen and control</td></tr>
+<tr><td>the radial positions of the three diaries</td><td>the $15/15$ depth ladder per size, and the depth-label erasure of the control</td></tr>
+<tr><td>the one-cell-per-step emission sequence</td><td>the existence of a continuous self-sufficient window, and the cross-$W$ stability of $\widehat\omega/S_{\rm plat}$</td></tr>
+<tr><td>the remainder cell, forbidden to emit or be gated</td><td>the $110/110$ semantic conservation of K0</td></tr>
+</tbody></table>
+<p>This table does not weaken the result; it separates rule-input from structural-output most clearly. What is placed in are rules and arrangements; what is earned is cross-scale scaling behavior and a legible divergence, the latter not read off directly from the former but manifest only through the computation of production.</p>
+<hr>
+<h2>§3 Mathematical Quantities, Analytic Constraints, and Preregistration</h2>
+<p>This section distills the four quantities used by the model into mathematical definitions from the frozen implementation, gives two frozen-ceiling lemmas, establishes the volume baseline of the control, and states the rules of preregistration and data inclusion. The section observes two disciplines. First, everything reported by the frozen engine is a registered quantity under the protocol; an ideal global quantity may be defined separately, but the two must be written distinctly. Second, what the frozen ceiling constrains is the area-level scale of the radiation entropy; it does not by itself imply the continuous locality of the self-sufficient window in the emission order, which has a separate argument and is tested by data.</p>
+<h3>§3.1 Local opening rule</h3>
+<p>Let the highest radial coordinate not yet emitted in column $\theta$ after step $t$ be $H_t(\theta)\equiv\mathtt{col\_top}[\theta]$. For a bond $b$, let its code's radial anchor be $r_a(b)=\lfloor\bar r_b\rfloor+1$. A radial bond spans one column, an angular bond spans two adjacent columns. For any column $\theta$ it spans, define the local overburden above the bond</p>
+<p>$$d_t(b,\theta)=\bigl[H_t(\theta)-r_a(b)+1\bigr]_+,\qquad [x]_+\equiv\max(0,x),$$</p>
+<p>so the local burial reading in the engine is</p>
+<p>$$o_{\rm loc}(b,t)=\frac{1}{|C_b|}\sum_{\theta\in C_b}d_t(b,\theta),$$</p>
+<p>where $C_b$ has one column for a radial bond and two for an angular bond. Set further</p>
+<p>$$\chi_b(t)=\mathbf 1[b\notin E_{\rm rem}]\prod_{v\in\partial b}\mathbf 1\!\left[r(v)\le H_t(\theta(v))\right],$$</p>
+<p>i.e. the bond does not meet the remainder cell, and both its endpoints are not yet emitted. One semantic point must be clarified: what the final factor of $\chi_b$ tests is whether the endpoints are still present (not yet emitted, still belonging to the current lattice), not whether the endpoints are unfrozen; opening and freezing are decided independently by the Bernoulli threshold below. For a fixed quenched random number $u_b\sim\mathrm{Uniform}[0,1)$, the actual opening variable is</p>
+<p>$$X_b(t)=\chi_b(t)\,\mathbf 1\!\left[u_b<\sigma\!\left(\frac{a_0-o_{\rm loc}(b,t)}{w}\right)\right],$$</p>
+<p>and taking the conditional probability over the quenched disorder,</p>
+<p>$$p_{\rm open}(b,t)=\chi_b(t)\,\sigma\!\left(\frac{a_0-o_{\rm loc}(b,t)}{w}\right),\qquad\sigma(x)=\frac{1}{1+e^{-x}}.$$</p>
+<p>This corresponds exactly to the engine's <code>oA/oB/o</code>, the fixed $u_b$, and the threefold terminal mask. While the endpoints are still present,</p>
+<p>$$\frac{\partial p_{\rm open}}{\partial o_{\rm loc}}=-\frac{\chi_b(t)}{w}\,\sigma(1-\sigma)\le 0.$$</p>
+<p>Thus the greater the burial, the lower the opening probability; as emission lowers $H_t(\theta)$, $o_{\rm loc}$ is non-increasing, and the opening probability of a fixed bond is non-decreasing. In other words, while its endpoints remain, a quenched bond only loosens from frozen toward open, and does not re-close by the same overburden mechanism; once an endpoint is emitted, $\chi_b=0$ and the bond exits the dynamical graph. This monotonicity is strict within the framework. The production main arm fixes $a_0=2,\,w=0.4$.</p>
+<h3>§3.2 Stabilizer subregion entropy</h3>
+<p>A globally pure stabilizer state is represented by $n$ independent stabilizer generators, with binary tableau $G\in\mathbb F_2^{n\times 2n}$ [9,10] and column order $(X_0,\ldots,X_{n-1}\mid Z_0,\ldots,Z_{n-1})$. For a qubit subset $A$, let $G|_A$ be the matrix keeping all $X$ and $Z$ columns corresponding to $A$. The subregion entropy used by the model is</p>
+<p>$$\boxed{\,S(A)=\operatorname{rank}_{\mathbb F_2}(G|_A)-|A|\,}$$</p>
+<p>in bits, the engine computing this rank by bit-packed $\mathbb F_2$ Gaussian elimination. For a pure stabilizer state this is the von Neumann entanglement entropy, so $0\le S(A)\le\min\{|A|,n-|A|\}\le|A|$, together with subadditivity for disjoint subregions, $S(A\cup B)\le S(A)+S(B)$. All mutual information in this paper is defined accordingly: $I(A:B)=S(A)+S(B)-S(A\cup B)$. This formula and its properties are strict within the framework, proved in Appendix A.1.</p>
+<h3>§3.3 Exit time</h3>
+<p>Let the actual emission order be $(e_0,e_1,\ldots,e_{n_E-1})$, $n_E=M_0-1$, and define the continuous radiation prefix $R_{[0,b)}=\{e_0,\ldots,e_{b-1}\}$. Let the reference qubit of the $k$-th diary be $\mathrm{Ref}_k$. The reference qubit never participates in subsequent gates, and always $S(\mathrm{Ref}_k)=1$; its prefix mutual information is</p>
+<p>$$I_k^{\rm pre}(b)=I(\mathrm{Ref}_k:R_{[0,b)})=S(R_{[0,b)})+1-S(R_{[0,b)}\cup\{\mathrm{Ref}_k\}).$$</p>
+<p>The exit time is defined as</p>
+<p>$$\boxed{\,t_{\mathrm{exit},k}=\min\{b\in\{1,\ldots,n_E\}:I_k^{\rm pre}(b)=2\}.\,}$$</p>
+<p>The code searches by bisection on the condition $I\ge2$; the mutual information of a single-qubit reference has upper bound exactly $2$ bits, and stabilizer entropy is integer, so $I\ge2$ and $I=2$ are entirely equivalent.</p>
+<p>This threshold has a strict meaning. Let $C$ be the global complement of $R_{[0,b)}$; then the globally pure state satisfies $I(\mathrm{Ref}_k:R_{[0,b)})+I(\mathrm{Ref}_k:C)=2S(\mathrm{Ref}_k)=2$, so $I(\mathrm{Ref}_k:R_{[0,b)})=2$ iff $I(\mathrm{Ref}_k:C)=0$, i.e. the reference qubit is completely decoupled from the rest of the system and all its purification is carried by that radiation prefix. In the stabilizer language, this is equivalent to: after a Clifford transformation internal to the radiation subsystem, a logical qubit can be extracted within the prefix that forms a Bell pair with $\mathrm{Ref}_k$. Hence $I=2$ is the necessary-and-sufficient threshold for the Bell purification of the diary to have entered the radiation completely, not an arbitrary empirical threshold. This criterion is strict, proved in Appendix A.2.</p>
+<h3>§3.4 Self-sufficient window and the registered estimator</h3>
+<p>For any continuous radiation window $R_{[a,b)}=\{e_a,\ldots,e_{b-1}\}$, define $I_k(a,b)=I(\mathrm{Ref}_k:R_{[a,b)})$. The ideal global self-sufficient window length may be defined as</p>
+<p>$$\omega_k^\star=\min_{0\le a<b\le n_E}\left\{b-a:I_k(a,b)=2\right\},$$</p>
+<p>meaning the shortest window length needed for the $k$-th diary to be fully purified if only a continuous segment of the radiation record is handed to the decoder.</p>
+<p>What the production engine actually reports, however, is not the unconstrained $\omega_k^\star$ but a registered estimator under the frozen protocol. The current implementation computes $\widehat\omega_0$ only for the deep diary ($k=0$). Centering on $t_e=t_{\mathrm{exit},0}$, it fixes the search band $a\in\mathcal D=[\max(0,t_e-10W),\,\min(n_E-2,t_e+2W)]\cap\mathbb Z$. For each start $a$, define $b_{\min}(a)=\min\{b\ge\max(a+2,t_e):I_0(a,b)=2\}$. The engine first finds $b_{\min}(a)-a$ on a coarse grid of step $4$, then refines pointwise in the $\pm4$ neighborhood of the optimal coarse start, and selects the smaller $a$ among windows of equal length.</p>
+<p>The body must write two quantities distinctly: $\omega_0^\star$, the ideal global quantity, and $\widehat\omega_0$, the actual quantity measured under the frozen protocol. For fixed $a$, $I_0(a,b)$ is non-decreasing in $b$, so the bisected $b_{\min}(a)$ is exact. And since $R_{[a_2,b)}\subset R_{[a_1,b)}$ for $a_1<a_2$, the data-processing inequality gives $b_{\min}(a_1)\le b_{\min}(a_2)$. Let $\omega_{\mathcal D}^\star$ be the true integer minimum within the same search band under the constraint $b-a\ge2$; then a step of $4$ guarantees</p>
+<p>$$\boxed{\,\omega_{\mathcal D}^\star\le\widehat\omega_0\le\omega_{\mathcal D}^\star+3\,}$$</p>
+<p>provided the run is not marked protocol-invalid. Proved in Appendix A.3. Thus the current protocol gives an additive error of at most $3$ emission steps within the registered search band, and does not automatically prove the global strict equality $\widehat\omega_0=\omega_0^\star$. All self-sufficient-window numbers in the body are written as the registered self-sufficient window $\widehat\omega$, not as the unqualified global minimum window. This additive bound is strict; the global equality $\widehat\omega=\omega^\star$ lies beyond the boundary.</p>
+<h3>§3.5 Frozen ceiling</h3>
+<p>After step $t$, partition the lattice and reference qubits into four disjoint subsystems: $R_t$, the emitted qubits; $A_t$, qubits not yet emitted and having entered a post-prep gate; $F_t$, qubits not yet emitted and never having entered a post-prep gate; and $Q=\{\mathrm{Ref}_1,\ldots,\mathrm{Ref}_{N_{\rm ref}}\}$. Emission only reclassifies a qubit into $R_t$, an emitted qubit no longer participates in gates, and the global tableau remains pure throughout.</p>
+<p><strong>Lemma 1 (strict frozen ceiling).</strong> For every dynamical time $t$,</p>
+<p>$$\boxed{\,S(R_t)\le|A_t|+S(F_t)+N_{\rm ref}.\,}$$</p>
+<p>Moreover, let $\rho^{(0)}$ denote the state at the completion of the shallow prep, when the evaporation dynamics properly begin; then</p>
+<p>$$\boxed{\,\rho_{F_t}(t)=\rho^{(0)}_{F_t},\qquad S_t(F_t)=S_0(F_t).\,}$$</p>
+<p>The second equality shows that the frozen ledger does not continue to evolve; as the horizon moves inward, what changes is which qubits still belong to $F_t$, not the records retained within $F_t$ being rewritten by post-prep gates. Both equalities of Lemma 1 depend on neither randomness nor a Page assumption, and are strict conditional mathematics within the framework, proved in Appendices A.4 and A.5. The conclusion is stronger than invariance of entropy: not only is the entropy invariant, the entire reduced density operator is invariant.</p>
+<p><strong>Lemma 2 (finite-depth cut bound).</strong> Suppose that before preparation there are only some fixed Bell pairs, the rest of the qubits being product states; let $B(F)$ be the number of these seed Bell pairs with exactly one end in $F$, and $\partial_E F$ the set of bonds in the lattice graph used by the preparation circuit that cross $F$ and its complement. Then</p>
+<p>$$\boxed{\,S_0(F)\le B(F)+2d_{\rm prep}\,|\partial_E F|.\,}$$</p>
+<p>In the present model $B(F)\le N_{\rm ref}+1$, the extra $1$ coming from the remainder cell and its Bell partner. Proved in Appendix A.6.</p>
+<p>If, within the plateau interval considered, there exist constants $\alpha,\beta$ independent of $W$ such that $|A_t|\le\alpha W$ and $|\partial_E F_t|\le\beta W$, then $S(F_t)\le 2d_{\rm prep}\beta W+N_{\rm ref}+1$, and</p>
+<p>$$\boxed{\,S(R_t)\le\bigl[\alpha+2d_{\rm prep}\beta\bigr]W+2N_{\rm ref}+1.\,}$$</p>
+<p>This is the area-level frozen ceiling. Here $\beta$ is the cut-density of the frozen boundary. If the model parameters $a_0,w$ and the local gluing graph are fixed, they may be absorbed into the constant, abbreviated $\kappa(d_{\rm prep})$; but if different $a_0,w$ are compared, $\kappa$ cannot in general be said to depend on $d_{\rm prep}$ alone. This also explains why the coefficient for different $a_0$ may drift: what the ceiling constrains is the order of magnitude, not a precise parameter-free coefficient.</p>
+<p>The limit must be stated plainly. That $|A_t|,|\partial_E F_t|=O(W)$ holds in the plateau interval of the emergent-local arm is a structural condition within the model, consistent with the output of K1, not an unconditional theorem derived directly from the local rule; hence the $S_{\rm plat}=O(W)$ that follows is a conditional structural conclusion. Across the three sizes tested $W\in\{24,32,40\}$, production gives a coefficient of variation of $0.0151$ for the medians of $S_{\rm plat}/W$, consistent with the area-level condition above; this is not a proof of a $W\to\infty$ asymptotic law.</p>
+<p>Finally, one logical demarcation must be stated. What the frozen ceiling constrains directly is the radiation entropy and the available capacity; it does not by itself prove that the information must be concentrated in $O(W)$ continuous positions in the emission order. The continuous locality of the self-sufficient window $\widehat\omega=O(W)$ is another matter, established chiefly by the G1 data within the band in §4.3; the mechanism of the skin capacity filling up is a structural motivation for it, not an independent strict proof. The ceiling gives the area-level scale of the window law, and G1 gives the continuous locality of the window together with data. The spine gives the scale, the edge gives the locality, and here the two divide their labor.</p>
+<h3>§3.6 The volume baseline of the fully open control</h3>
+<p>The control arm opens all non-remainder bonds, and a local post-prep Clifford circuit acts continuously on all not-yet-emitted qubits, so there is no constraint maintaining a low-depth frozen ledger. Here $A_t$ is volume-level in the middle stage, and the frozen ceiling gives only the loose bound $S(R_t)=O(M_0)=O(W^2)$.</p>
+<p>Since the remainder cell is never emitted, the total emission count is $n_E=M_0-1$. For even $M_0=W^2$, the qubit count of the half radiation prefix is exactly $h=\lfloor n_E/2\rfloor=M_0/2-1$. So $S(R_{[0,h)})\le h$ is an exact dimensional upper bound. This $-1$ comes strictly from the count of one qubit never emitted, consistent with the static bookkeeping of the remainder cell; the Bell partner of the remainder cell serves to maintain the entanglement-ledger semantics of $\varepsilon=1$ and does not by itself imply this $-1$.</p>
+<p>The measure of the relation between control and Page must be observed. Page's original result treats the average subsystem entropy of a Haar-random pure state; the control evolution of this paper is a local Clifford circuit varying with time and the open network, and cannot without argument be equated with uniform Clifford sampling. Hence the statement of this paper: the half-system entropy of the control has a strict dimensional upper bound $M_0/2-1$ (this is a count); its near-saturation and $\operatorname{median}\,\widehat\omega_{\rm ctrl}/(M_0/2)=1.000$ are consistent with Page-type typicality and the decoupling scale of random scrambling (this is the numerical baseline of the present control, not a per-sample consequence of Page's theorem for this local circuit). The half-system entropy medians of the control across the three sizes are $287$, $511$, $799$, corresponding exactly to $M_0/2-1$. Hence the standing of the control in this paper is that of a known Page-type volume baseline; the new content of this toy lies not in the control itself but in the area-level plateau and area-level self-sufficient window that the frozen arm presents under the same measurement protocol.</p>
+<h3>§3.7 Preregistration, data inclusion, and the protocol-invalid rule</h3>
+<p>The criteria and failure conditions of this paper are committed before production, frozen in the preregistered ontology and locked by hash, not revised after the run. The primary criteria are six: K0 semantic conservation, K1 area-level plateau collapse, K2 depth ladder, K4 control volume baseline, G1 self-sufficient-window band, and G2 skin-capacity monotonicity. The supporting diagnostics are two: K3 front sharpening and K5 two-sided band; neither blocks the primary criteria. The identity, preregistered threshold, and final result of each criterion are collected in Table 2.</p>
+<p>The main grid of production is $W\in\{24,32,40\}$ times $\{$emergent($a_0{=}2$), control$\}$ times $15$ seeds, totaling $90$ rows; the capacity arm is $W24$ times emergent times $a_0\in\{1,3\}$ times $10$ seeds, totaling $20$ rows; $110$ in all. The data-inclusion rule is as follows. Runs of the two boundary-invalid types $\mathtt{left\_boundary}$ and $\mathtt{right\_search\_boundary}$ are excluded from the window statistics and counted proportionally into the invalid fraction; if that fraction reaches its threshold (8 for a cell of size 15, 6 for size 10), the failure condition is triggered. $\mathtt{no\_window}$ and $\mathtt{other\_protocol\_error}$ are different: they are not ordinary invalids but substantive failures, do not enter the invalid-fraction statistics, and directly trigger Death-5. A right endpoint reaching $n_E$ with the start within the band is a physical late window and not marked invalid. The final round has only two $\mathtt{left\_boundary}$ runs (one seed at $W24$, one at $W40$), each below its cell threshold, not triggering the failure condition and excluded from the window statistics; there is no $\mathtt{no\_window}$.</p>
+<p>The architecture of reproducibility is as follows. The engine, simulator, judge, driver, and preregistered ontology are each locked by SHA-256, together with the hashes of the spec, the bond enumeration, and the frozen environment. The judge is of zero-trust design: anyone holding the same judge code and the same manifest reproduces the same judgment. The final round passed replay concordance across two implementations, together with an independent re-judgment from the original manifest by an independent implementation with its own logic. The full record of the hardening rounds is placed in the supplementary material, not in the body.</p>
+<hr>
+<h2>§4 Results</h2>
+<p>The results of this section are presented along a spine and an edge. The spine is the area-level plateau, the hardest normalized collapse of the paper; beneath it the volume baseline of the control is established first, so the target of contrast is fixed; then the frozen-versus-control contrast of the self-sufficient window is exhibited, which is the edge; then the retention and erasure of the depth ladder, together with the monotonicity of skin capacity. The spine and the edge share one quantity displayed twice: the same mid-stage entropy $S_{\rm mid}$, measured for its height at the spine and for its width at the edge.</p>
+<h3>§4.1 Spine: the area-level plateau K1</h3>
+<p>The evolution of the frozen arm shows in its middle stage an extremely steady plateau, whose height is $S_{\rm plat}$. Across the three sizes tested $W\in\{24,32,40\}$, $S_{\rm plat}/W$ collapses steadily. Measured by the coefficient of variation of the three medians of $S_{\rm plat}/W$ ($4.34$, $4.48$, $4.34$), it is $0.0151$, far below the preregistered threshold of $0.2$, consistent with area-level $O(W)$ scaling (the stepwise entropy curve is shown in Figure 2, the plateau collapse in Figure 3). The measure must be observed: this is collapse and consistency within three sizes, not a proof of a $W\to\infty$ asymptotic law; its theoretical support is the frozen ceiling of §3.5, which constrains the area-level scale of the radiation entropy. This area-level scaling is a conditional structural conclusion, the condition being $|A_t|,|\partial_E F_t|=O(W)$ in the plateau interval of the emergent-local arm.</p>
+<p>In contrast is the half-system entropy of the control arm. The cell medians of the control across the three sizes are $287$, $511$, $799$, falling exactly on $M_0/2-1$. This $-1$ offset is consistent with the static bookkeeping of the single forbidden-to-emit remainder cell $\varepsilon\equiv1$; the measure must be observed—it is consistency, not a determinate consequence of the remainder cell. Its strict provenance is in §3.6: the total emission count is $n_E=M_0-1$, and the qubit count of the half prefix is exactly $\lfloor n_E/2\rfloor=M_0/2-1$, an exact dimensional count. The area level of the frozen and the volume level of the control are distinguished on this $1+1$-dimensional discrete stabilizer network, without any assumption of a higher-dimensional holographic duality.</p>
+<h3>§4.2 The volume baseline of the control K4</h3>
+<p>Before exhibiting the contrast of the self-sufficient window, the volume baseline of the control must be established, so the edge has a target. The self-sufficient window of the control satisfies $\operatorname{median}\,\widehat\omega_{\rm ctrl}/(M_0/2)=1.000$ across all three sizes. The identity of this window must be stated plainly. The half-system entropy of the control has a strict dimensional upper bound $M_0/2-1$, which is a count; its near-saturation and the approach of $\widehat\omega_{\rm ctrl}/(M_0/2)$ to unity are consistent with Page-type typicality and the decoupling scale of random scrambling, the numerical baseline of the present control, not a per-sample consequence of Page's theorem for this finite-depth local circuit. The new content of this toy lies not in the control itself but in what the frozen arm presents under the same measurement protocol. With this volume baseline established, the frozen contrast of §4.3 has its target.</p>
+<h3>§4.3 Edge: the unified self-sufficient-window contrast G1</h3>
+<p>This is the edge of the model, the most discriminating frozen-versus-control contrast of the paper. One beam of the spine-edge bridge must first be carried: the plateau of §4.1 is not merely the height of the area ledger; it is the very ruler of the self-sufficient window of this section. The same $S_{\rm mid}$, measured for its height at the spine and for its width at the edge; the self-sufficient window of the frozen arm scales by this area-level plateau, while the window of the control scales by $M_0/2$.</p>
+<p>The registered self-sufficient window $\widehat\omega$ needed to collect for the purification of the deep diary achieves a clear scaling collapse in the frozen arm. The median ratios $\widehat\omega/S_{\rm plat}$ across the three sizes are $1.229$, $1.146$, $1.311$, all within the leading structural band $[0.9,1.5]$, with a cross-$W$ range of only $0.165$, below the preregistered $0.2$ (see Figure 4). The frozen self-sufficient window scales by area, about $1.2\cdot S_{\rm plat}$; this coefficient is a framework-level fluctuating quantity, not a precise constant, its fluctuation statistics given in §5.2. And the window of the control scales by $M_0/2$, the Page-type volume baseline of §4.2. Hence area window against volume window, distinguished under the same protocol.</p>
+<p>Here one demarcation must be stated, the most crucial restraint of the section. The area-level scaling $\widehat\omega=O(W)$ is not derived directly from the frozen ceiling of §3.5. What the ceiling constrains is the area-level scale of the radiation entropy and the available capacity; it does not by itself prove that the information must be concentrated in $O(W)$ continuous positions in the emission order. The continuous locality of the self-sufficient window is established chiefly by the data of the present grid within the band; the mechanism argument of the skin capacity filling up is a structural motivation for it, not an independent strict proof. The ceiling gives the area-level scale of the window law, G1 gives the continuous locality of the window together with data; the spine gives the scale, the edge gives the locality, and here the two divide their labor. Hence the area-level conclusion of G1 in this section is a conditional structural conclusion, established by data testing, not derived unconditionally from the lemma.</p>
+<p>One more point must be made, lest a reviewer ask at first sight. The band of G1 in this section is assessed specifically on the $a_0=2$ grid of production. The two grids $a_0\in\{1,3\}$ serve only the monotonicity of G2 below and are not subject to the band of G1. The reason is that the coefficient $c=\widehat\omega/S_{\rm plat}$ drifts with $a_0$. In the capacity arm, the median ratio at $a_0=1$ is about $1.257$, and individual seeds may rise to about $1.607$; this shows the coefficient depends on $a_0$, so the band of $a_0=2$ must not be extrapolated as a rule common to the three arms. This accords with the conclusion of §3.5: the ceiling constrains the order of magnitude, not a precise parameter-free coefficient; with different $a_0$ the boundary constant differs, and the coefficient drifts accordingly.</p>
+<h3>§4.4 K2 depth ladder and the control's depth-label erasure</h3>
+<p>The frozen arm preserves the radial depth label. The exit-time order of the deep, mid, and shallow diaries forms a strict ladder in the frozen arm, with the deep emitted latest and the shallow earliest in all $15$ seeds of each size, $15/15$ throughout (see Figure 5, left). The range of the same order in the control arm is only $0.000$ to $0.001$, the distinguishability of deep from shallow being erased. The measure must be observed: the control is a globally unitary evolution and does not erase information—what it erases is the distinguishability of the depth labels. The retention of the frozen and the erasure of the control are distinguished here: the frozen ledger retains the radial depth of internal records, while the scrambler flattens its labels. The execution semantics of this result are strict, the statement stopping at the exit-time order within the toy, not extrapolated to black-hole physics.</p>
+<h3>§4.5 G2 skin-capacity monotonicity</h3>
+<p>As the skin capacity $a_0$ increases, the median of the self-sufficient window increases strictly. The median $\widehat\omega$ for the three grids $a_0\in\{1,2,3\}$ is $98.5$, $130$, $151$, strictly monotone. This section stops at this one statement, that the median increases strictly with $a_0$; it is not extended to per-seed monotonicity, nor to separation of distributions, nor to near-non-overlap. This monotonicity is a conditional structural conclusion, established by the three grid medians.</p>
+<h3>§4.6 The bounded interface with Info-4</h3>
+<p>The area-level $O(W)$ of the frozen against the volume-level $O(W^2)$ of the control obtained by this toy is compatible at the structural level with the three topological-closure mechanism candidates listed in Info-4, providing a computable adjacent example for them. The measure of this interface must be observed to the utmost restraint. By adjacent example is meant that this toy shows a local frozen network and a fully open scrambler can produce a clear area-level-versus-volume-level divergence of information flow; it does not select among the three candidate mechanisms of phase transition, percolation, and SOC, nor does it constitute evidence for any one of them. The word compatible may be kept; the word corroboration is not taken.</p>
+<p>What is not done in this section is stated plainly. This production did not test the critical exponents of phase transition, did not test the $4/7$ of gradient percolation, did not test SOC, did not test the replica or island saddle, and did not generate the dynamics of a real Page curve. This toy, with respect to Info-4, is compatible rather than advancing; it does not replace the replica-wormhole computation, nor resolve the information paradox. This paper departs from a different ontological source and offers a computable line of thought for the consideration of colleagues; the two frameworks are compatible only on the area-level-versus-volume-level scaling structure, and do not pass beyond it to prove each other.</p>
+<hr>
+<h2>§5 Negative Results, Finite Size, and Model Dependence</h2>
+<p>This section sets out, in concentration, the negative results and the genuine scientific limitations of this paper, not shadowing the negative with the light of the positive. The preregistered failure conditions being committed in advance, the negative results obtained are reported honestly and not revised after the fact.</p>
+<h3>§5.1 The partial support of K3 front sharpening</h3>
+<p>What K3 tests is whether the seed-to-seed spread of the deep-diary exit time, together with the rise-width of its release window, sharpens with size. The object of K3 must first be clarified, lest it be confused with K2: K3 tests the finite-size trend of the exit-spread and rise-width of the single deep-diary layer, not the ordinal sharpening of the three deep, mid, and shallow diaries; the latter is what K2 tests, and K2 passes $15/15$ in each of the three sizes.</p>
+<p>The result of K3 is partial support. The seed-to-seed spread of the deep-diary exit time sharpens with size, its standard deviations being $0.0525$, $0.0289$, $0.0219$, monotonically decreasing. But the rise-width of its release window does not form a strictly monotone finite-size sequence, its values being $0.0730$, $0.0381$, $0.0563$, with a reversal rebound at $W40$ (see Figure 5, right). So the front sharpening obtains only partial support: the trend of narrowing spread holds, while the monotonicity of the rise-width does not. K3 is a supporting diagnostic, not a necessary condition of the primary criteria; its failure is reported honestly and does not overturn the conclusion of the primary criteria. This negative result awaits inspection at larger sizes or with finer front characterization.</p>
+<h3>§5.2 The random fluctuation of the coefficient c</h3>
+<p>The ratio of the self-sufficient window to the plateau, $c=\widehat\omega/S_{\rm plat}$, is a fluctuating structural quantity, not a precise constant. This fluctuation must be stated transparently. The criterion of G1 looks at the median of the cell, not at any single seed. The distribution of $c$ across the three sizes is as follows: at $W24$ the range is $[0.992,1.524]$, the interquartile range $[1.153,1.400]$; at $W32$ the range is $[0.965,1.457]$, the interquartile range $[1.072,1.284]$; at $W40$ the range is $[1.055,1.605]$, the interquartile range $[1.248,1.427]$. The single-seed spread is evidently significant, while the three medians $1.229$, $1.146$, $1.311$ all fall steadily within the band. By way of a single-seed example, the $c$ of seed s330 is $1.605$ at $W40$ and $0.992$ at $W24$, swinging to both ends across sizes; this is not a counterexample to the criterion but precisely the manifest proof that $c$ is a fluctuating quantity. So $c$ is marked as a framework-level fluctuating quantity, not a precise constant. This accords with the conclusion of §3.5: the frozen ceiling constrains the order of magnitude, not a precise parameter-free coefficient.</p>
+<h3>§5.3 Concentrated scientific limitations</h3>
+<p>The scientific limitations of this paper are concentrated as follows, five in all. First, the sizes tested are only three, $W\in\{24,32,40\}$, insufficient to fix an asymptotic exponent; what this paper claims stops at collapse and consistency within three sizes, not a $W\to\infty$ asymptotic law. Second, the rise-width of K3 is non-monotone, the front sharpening obtaining only partial support. Third, the coefficient $c$ has evident random fluctuation, not a precise constant. Fourth, model dependence: the conclusions of this toy hinge on the specific choices of the cylindrical topology, Clifford evolution, shallow prep, one-cell-per-step emission, and the like; change one, and the conclusion need not hold as before. Fifth, this toy does not connect to real curvature, energy, or the Hawking spectrum, its commonality with black-hole physics stopping at the mapping of information-flow topology, not reaching a realization of dynamics. The report of protocol-invalid runs has been placed in the data-inclusion rule of §3.7, being a report of the judgment protocol and not a scientific limitation, hence not listed in this section.</p>
+<hr>
+<h2>§6 Discussion and Scientific Status</h2>
+<h3>§6.1 The type-B computable structural divergence</h3>
+<p>What this paper obtains is a type-B computable structural divergence. Its content: under the same measurement protocol, the frozen-ledger arm presents area-level $S_{\rm plat},\widehat\omega=O(W)$, and the control scrambler arm presents volume-level $S_{\rm half},\widehat\omega=O(W^2)$; accompanied by the depth ladder of the frozen and the depth-label erasure of the control. By type-B is meant that this is a compatibility of structure, which may fail at the physical level; what this paper establishes is a structural divergence within the stabilizer framework, not an empirical proof of the black-hole ontology. Its strict part (the dimensional count, the first inequality of the frozen ceiling, the Bell criterion of $I=2$, and the like) is a theorem within the framework; its area-level-scaling conclusion is a conditional structural conclusion; its extrapolation to real black holes lies beyond the boundary.</p>
+<h3>§6.2 Reiteration of the three boundary stakes and the exclusions</h3>
+<p>The three boundary stakes are reiterated here a third time, forming the hard boundary of the paper. First, this paper does not resolve the information paradox. Second, it does not claim to replace any existing approach, nor adjudicate the rights and wrongs of the black-hole information problem. Third, it offers no direct empirical prediction for LISA, CE, or ET. Beyond these three, several things must be excluded plainly: this paper gives no operational decoding of real Hawking radiation, and generates no dynamics of a real Page curve. Whatever this paper does not compute lies outside its claims.</p>
+<h3>§6.3 The firewall epistemic stance and the posture of this paper</h3>
+<p>This paper observes the firewall epistemic stance. The toy of SAE does not derive the Page curve, nor does the Page curve prove SAE; the two are compatible only on the area-level-versus-volume-level scaling structure. This compatibility is a computable adjacent example, not an adjudication among the three candidate mechanisms, nor an advancing of the paradox. This paper, with respect to existing black-hole theory, continues the opening left at QM P9 §7 and gives the first preregistered, reproducible frozen-versus-scrambler computational instance. This paper acknowledges the standing of the island and replica-wormhole approaches on the black-hole information problem, and departs from a different ontological source to offer a different line of thought. P9 gives the ontological reading of boundary gluing; this paper gives the first preregistered, reproducible frozen-versus-scrambler computational instance; the two each keep to their part. This paper does not contend with existing approaches, but invites colleagues to consider this different avenue.</p>
+<hr>
+<h2>§7 Remainder and Outlook</h2>
+<h3>§7.1 Remainder</h3>
+<p>This paper leaves two remainders for later inspection. First, the front sharpening of K3, whose rise-width is non-monotone in finite size, awaiting inspection at larger sizes or with finer characterization. Second, the fluctuation statistics of $\widehat\omega/S_{\rm plat}$ of G1, the structure of whose seed-to-seed spread awaits more systematic statistical characterization.</p>
+<h3>§7.2 Subsequent directions of the black-hole series</h3>
+<p>This paper being the opening of the black-hole series, the subsequent directions are left here in brief. First, generalization to Kerr, inheriting the spiral closure of Relativity P6, extending the present Schwarzschild toy to rotating black holes. Second, a computable toy of the ringdown internal imprint, inheriting the gravitational-wave dynamics of Info-6. Third, scaling extrapolation to larger $W$, to inspect whether the consistency within three sizes extends to larger sizes. This series further holds a set of ontological images concerning the black-hole mass threshold and evaporation fate; as these do not enter the algorithm of the present toy, they are listed as questions for later in the series and not included in the claims of the body of this paper.</p>
+<h3>§7.3 The operationalization of the remainder within the toy</h3>
+<p>The remainder cell $\varepsilon\equiv1$ of this paper is an operationalization within the toy of the concept of construct-and-remainder. It is never emitted and never touched by a gate in the stabilizer evolution, maintaining the entanglement-ledger semantics of $\varepsilon=1$. One causal point must be clarified: the $-1$ offset of the control half-system entropy comes from the dimensional count of one qubit never emitted ($n_E=M_0-1$, hence $\lfloor n_E/2\rfloor=M_0/2-1$), not derived by itself from the Bell pairing of the remainder cell; the Bell pairing maintains the entanglement semantics of the remainder, the dimensional count gives the $-1$, and the two must not be conflated. This operationalization brings the ontology of the inannihilable remainder [12] down to a concrete computable object. The methodological significance of this operationalization awaits sufficient testing in later work of the series before its general formulation is discussed; this paper stops at stating the fact of this operationalization.</p>
+<hr>
+<h2>§8 Conclusion</h2>
+<p>This paper constructs a $W\times W$ cylindrical stabilizer toy model and obtains, under the same measurement protocol, a type-B structural divergence between the $O(W)$ area-level plateau and self-sufficient window of the frozen-ledger arm and the $O(W^2)$ volume-level baseline of the control scrambler arm, accompanied by the depth ladder of the frozen and the depth-label erasure of the control. Six preregistered primary criteria pass; one supporting diagnostic (K3 front sharpening) fails and is retained as a negative result per the preregistration. This paper establishes a frozen-ceiling lemma as the theoretical support for the area-level scale, whose first inequality is strict and whose area-level scaling is a conditional structural conclusion established by the data across three sizes. This paper continues the opening left at QM P9 §7, departing from an ontological source different from the geometry-led approach, and provides a computable adjacent example for the topological-closure mechanism candidates listed in Info-4, compatible rather than advancing. This paper does not resolve the information paradox, does not claim to replace any existing approach, and offers no direct empirical prediction; it offers only a computable line of thought for the consideration of colleagues. Subsequent work will generalize toward Kerr, the ringdown, and larger sizes.</p>
+<hr>
+<h2>Appendix A　Proofs of the Frozen Ceiling and Related Quantities</h2>
+<h3>A.1 The stabilizer entropy formula</h3>
+<p>Let the stabilizer space of a pure stabilizer state be $\mathcal S\subset\mathbb F_2^{2n}$, $\dim\mathcal S=n$. Let $\pi_A:\mathcal S\to\mathbb F_2^{2|A|}$ be the projection onto the $X/Z$ columns of $A$; then $\operatorname{rank}\pi_A=\operatorname{rank}_{\mathbb F_2}(G|_A)$. The kernel $\ker\pi_A$ is precisely the stabilizer subgroup supported entirely on $A^c$, so $\dim\mathcal S_{A^c}=n-\operatorname{rank}(G|_A)$. The entropy of the stabilizer state on the subregion $A^c$ is $S(A^c)=|A^c|-\dim\mathcal S_{A^c}$; substituting, $S(A^c)=(n-|A|)-[n-\operatorname{rank}(G|_A)]=\operatorname{rank}(G|_A)-|A|$. The global state being pure, $S(A)=S(A^c)$, which is the formula used. Its non-negativity, upper bound, and subadditivity follow from the general properties of the von Neumann entropy. $\blacksquare$</p>
+<h3>A.2 The Bell-transfer criterion of $I=2$</h3>
+<p>Let $A=\mathrm{Ref}_k$, $B=R_{[0,b)}$, $C=(AB)^c$. The global state being pure, $I(A:B)+I(A:C)=2S(A)$. In this model $S(A)=1$, so $I(A:B)=2\iff I(A:C)=0$. And the quantum mutual information is zero iff $\rho_{AC}=\rho_A\otimes\rho_C$, so $A$ is completely decoupled from the complement and all purification lies in $B$. And since $A$ is a maximally mixed qubit, there is a two-dimensional logical subsystem $B_1$ within $B$ such that $|\Psi\rangle_{ABC}\simeq|\Phi^+\rangle_{AB_1}\otimes|\chi\rangle_{B_2C}$. For a stabilizer state, this decomposition is realizable by a Clifford transformation internal to $B$. Hence $I=2$ is precisely the threshold of complete recovery rather than partial correlation. $\blacksquare$</p>
+<h3>A.3 The mathematical properties of the self-sufficient-window search</h3>
+<p>For fixed $a$, define $b_{\min}(a)=\min\{b\ge\max(a+2,t_e):I_0(a,b)=2\}$. Since $R_{[a,b)}\subset R_{[a,b+1)}$, the data-processing inequality gives $I_0(a,b)$ non-decreasing in $b$, so the bisection search is exact. If $a_1<a_2$, then $R_{[a_2,b)}\subset R_{[a_1,b)}$, so any right endpoint $b$ that succeeds for $a_2$ also succeeds for $a_1$, hence $b_{\min}(a_1)\le b_{\min}(a_2)$. This proves that taking the previous point's $b_{\min}$ as the upper bound for the next in the reverse coarse sweep misses no solution. Let $f(a)=b_{\min}(a)-a$, and let $a^\star$ be the integer global minimizer within the search band $\mathcal D$. Take the nearest coarse grid point $c$ not exceeding $a^\star$; then $0\le a^\star-c\le3$. By $b_{\min}(c)\le b_{\min}(a^\star)$, $f(c)=b_{\min}(c)-c\le b_{\min}(a^\star)-c=f(a^\star)+(a^\star-c)\le f(a^\star)+3$. The best coarse point selected by the algorithm is no worse than $c$, and refinement only lowers $f$ further, so $\omega_{\mathcal D}^\star\le\widehat\omega_0\le\omega_{\mathcal D}^\star+3$. What this proves is the additive approximation within the registered search band, not the global equality of the unconstrained $\omega^\star$. $\blacksquare$</p>
+<h3>A.4 The strict frozen ceiling</h3>
+<p>The global system at step $t$ decomposes as $R_t\sqcup A_t\sqcup F_t\sqcup Q$. All evolution gates being Clifford unitaries, and emission only changing the ledger assignment of a qubit, the global state remains pure, so $S(R_t)=S(A_tF_tQ)$. Applying subadditivity twice: $S(A_tF_tQ)\le S(A_t)+S(F_tQ)\le S(A_t)+S(F_t)+S(Q)$. Since $A_t$ contains $|A_t|$ qubits, $S(A_t)\le|A_t|$; and since $Q$ contains $N_{\rm ref}$ qubits, $S(Q)\le N_{\rm ref}$. So $S(R_t)\le|A_t|+S(F_t)+N_{\rm ref}$. This inequality depends on neither randomness nor a Page assumption, and is strict conditional mathematics within the framework. $\blacksquare$</p>
+<h3>A.5 Frozen invariance</h3>
+<p>For fixed $t$, by definition any qubit in $F_t$ has, since completion of the shallow prep, participated in no gate and not been emitted. So all post-prep unitaries may be written $U_t=I_{F_t}\otimes V_{F_t^c}$. If the post-prep state is $\rho^{(0)}$, then $\rho(t)=U_t\rho^{(0)}U_t^\dagger$. Taking the partial trace over $F_t^c$: $\rho_{F_t}(t)=\operatorname{Tr}_{F_t^c}[(I_{F_t}\otimes V)\rho^{(0)}(I_{F_t}\otimes V^\dagger)]=\rho_{F_t}^{(0)}$. So not only is the entropy invariant, the entire reduced density operator is invariant. $\blacksquare$</p>
+<h3>A.6 The cut bound of finite preparation depth</h3>
+<p>Before the shallow prep, the system is a tensor product of product qubits and finitely many Bell pairs. So the initial entropy of any lattice subregion $F$ equals the number of seed Bell pairs crossing that cut: $S_{\rm seed}(F)=B(F)$. Consider a two-qubit gate crossing $F\mid F^c$. Let it act on qubit $x$ on the $F$ side, and write $F=F'\cup\{x\}$. The gate does not change $\rho_{F'}$. Before and after the gate, the Araki–Lieb inequality [11] gives $|S(F)-S(F')|\le1$. So a single crossing two-qubit gate changes $S(F)$ by at most $2$ bits. A gate lying entirely within $F$ or $F^c$ does not change the cut entropy. Each preparation round applies at most one gate per non-remainder bond, so the total number of crossing gates does not exceed $d_{\rm prep}\,|\partial_E F|$. Hence $S_0(F)\le B(F)+2d_{\rm prep}|\partial_E F|$. For the present seed state, $B(F)\le N_{\rm ref}+1$. $\blacksquare$</p>
+<h3>A.7 Why partial-trace entropy increase at thaw does not break the area order</h3>
+<p>As the dynamics proceed, the not-yet-touched frozen set shrinks monotonically: $F_{t+1}\subseteq F_t$. Let the part thawed or emitted out be $D_t=F_t\setminus F_{t+1}$; then $\rho^{(0)}_{F_{t+1}}=\operatorname{Tr}_{D_t}\rho^{(0)}_{F_t}$. The partial trace may indeed increase the entropy, so one cannot in general assert $S(F_{t+1})\le S(F_t)$. Nor is that monotonicity needed here. The finite-depth cut bound holds independently for the new region $F_{t+1}$: $S(F_{t+1})\le B(F_{t+1})+2d_{\rm prep}|\partial_E F_{t+1}|$. If the new boundary at all plateau times satisfies $|\partial_E F_t|\le\beta W$, then whether or not some partial trace increases the entropy, $S(F_t)\le N_{\rm ref}+1+2d_{\rm prep}\beta W=O(W)$. So the reason the thaw does not break the area order is not that the partial trace cannot increase the entropy, but that each new frozen region after a thaw is again constrained by the same finite-depth min-cut bound. This is precisely a computable stabilizer instance of local gluing yielding only a min-cut upper bound. Its strict part is the cut bound; that the boundary complexity of the emergent-local arm stays $\beta=O(1)$ within the regime considered is a structural condition of the model, supported jointly by the local rule and the numerical collapse, not an unconditional Hilbert-space theorem. $\blacksquare$</p>
+<h3>A.8 The volume baseline of the control side</h3>
+<p>In the control all non-remainder bonds are open, and the post-prep circuit depth grows with evaporation time, so the finite $d_{\rm prep}$ no longer constrains the global entanglement of the frozen interior. The Hilbert-space dimension of the half prefix gives the strict upper bound $S_{\rm half}\le h=M_0/2-1$. Page-type typicality says a typical scrambler should saturate this bound within $O(1)$ corrections. It must be reiterated: the control of this paper is a local Clifford circuit varying with time, not uniform Clifford sampling; so the near-saturation is a compatible phenomenon of Page-type typicality and the numerical baseline of the present control, not a per-sample consequence of Page's theorem for this circuit. The cell medians of the present control data are exactly $287$, $511$, $799=M_0/2-1$, verifying that the baseline operates correctly, not a new finding of this paper. $\blacksquare$</p>
+<hr>
+<h2>Table 2　Preregistered Criteria and Final Judgment</h2>
+<table>
+<thead><tr>
+<th>Criterion</th>
+<th>Identity</th>
+<th>Preregistered threshold</th>
+<th>Final result</th>
+<th>Verdict</th>
+</tr></thead><tbody>
+<tr><td>K0</td><td>primary</td><td>remainder semantic conservation (all runs)</td><td>$110/110$ clean</td><td>PASS</td></tr>
+<tr><td>K1</td><td>primary</td><td>CV of three medians of $S_{\rm plat}/W$ $<0.2$ and control half $\ge0.9\,M_0/2$</td><td>CV $=0.0151$</td><td>PASS</td></tr>
+<tr><td>K2</td><td>primary</td><td>depth ladder monotone $\ge95\%$ per size</td><td>$15/15$ per size</td><td>PASS</td></tr>
+<tr><td>K3</td><td>supporting</td><td>exit-spread and rise-width both non-increasing in $W$</td><td>rise-width non-monotone</td><td>FAIL</td></tr>
+<tr><td>K4</td><td>primary</td><td>$\widehat\omega_{\rm ctrl}/(M_0/2)$ median $\in[0.95,1.15]$</td><td>$1.000$ (three sizes)</td><td>PASS</td></tr>
+<tr><td>K5</td><td>supporting</td><td>two-sided band</td><td>all sizes in band</td><td>PASS</td></tr>
+<tr><td>G1</td><td>primary</td><td>$\widehat\omega/S_{\rm plat}$ median $\in[0.9,1.5]$ and cross-$W$ range $\le0.2$</td><td>range $0.165$</td><td>PASS</td></tr>
+<tr><td>G2</td><td>primary</td><td>three medians strictly increasing in $a_0$</td><td>$98.5<130<151$</td><td>PASS</td></tr>
+</tbody></table>
+<p>Note: the band $[0.9,1.5]$ and RANGE_MAX $0.2$ of G1 are the preregistered hardcoded fallback, applicable only to the $a_0=2$ arm. Protocol-invalid runs are excluded from the judgment; the rule is in §3.7.</p>
+<hr>
+<h2>Commitment Grading</h2>
+<p>The statements of this paper are graded in four tiers by the strength of commitment.</p>
+<p><strong>T1-math (strict mathematics within the stabilizer framework)</strong>: the definition and monotonicity of $p_{\rm open}$; $S(A)=\operatorname{rank}_{\mathbb F_2}(G|_A)-|A|$ and its properties; the complete-Bell-purification criterion of $I=2$; the correctness of the bisection for $t_{\rm exit}$ and $b_{\min}$; the additive $+3$ bound for $\widehat\omega$ within the registered search band; the first inequality of the frozen ceiling $S(R)\le|A|+S(F)+N_{\rm ref}$; frozen invariance $\rho_{F_t}(t)=\rho^{(0)}_{F_t}$; the finite-depth cut bound $S_0(F)\le B(F)+2d_{\rm prep}|\partial_E F|$; the dimensional count $M_0/2-1$ of the control half prefix.</p>
+<p><strong>T1-data (facts of the final-round execution)</strong>: the $110/110$ semantic conservation of K0; the three-median CV $=0.0151$ of K1; the $15/15$ depth ladder per size of K2; the median $1.000$ of K4; the three medians $1.229/1.146/1.311$ and range $0.165$ of G1; the $98.5<130<151$ of G2; the monotone sd and non-monotone rise-width of K3. These are facts of the final-round data, not mathematical theorems.</p>
+<p><strong>T2-structure (model-structural readings or conditional structural conclusions)</strong>: $|A_t|,|\partial_E F_t|=O(W)$ in the plateau interval of the emergent-local arm; hence the area-level scaling $S_{\rm plat}=O(W)$; the self-sufficient window controlled by the same area-level skin capacity; the divergence between frozen area level and control volume level; $c=\widehat\omega/S_{\rm plat}$ a fluctuating structural quantity, not a precise constant.</p>
+<p><strong>T3-extrapolation (still beyond the boundary)</strong>: a universal asymptotic area law as $W\to\infty$ and its precise exponent; a universal $\kappa$ independent of $a_0,w$; the global strict equality $\widehat\omega=\omega^\star$; a precise $c_{\rm th}$; the dynamical dictionary from this stabilizer toy to real black holes, the Hawking spectrum, the island, or the GW waveform.</p>
+<hr>
+<h2>Data and Code Availability</h2>
+<p>The SHA-256 of the production manifest ($110$ rows) and the judgment verdict, together with the SHA-256 of the engine, simulator, judge, driver, preregistered ontology, spec, and bond enumeration, and the identifier of the frozen environment, are archived with the paper. The judge is of zero-trust design: anyone holding the same judge code and the same manifest reproduces the same judgment. The final round passed replay concordance across two implementations and an independent re-judgment from the original manifest by an independent implementation with its own logic. The full record of the hardening rounds is in the supplementary material.</p>
+<p>The SHA-256 of the five-chain and related hashes are as follows.</p>
+<p>manifest: <code>7bcf0b41f13b6966b1f38d0fec2f98822ef53ec4c738eb75ab98158e033b62e7</code> verdict: <code>2588b8226ac82714c54b86849934719a884566dffdd202b972aa0ce4ec0bd57e</code> engine: <code>0936d1d8819a3beae109a812c9de61a63a0d4ac28296843f04f8caa18382ba1a</code> sim: <code>3ffa70c973021299996891e0720c84a92a83767777a40410004a1898a02eaf9e</code> judge: <code>c31634dbaf9f15a8e962e0df92dd0362f39499121c11c2c3631d8841ebae5557</code> driver: <code>7b2de1b73e6f268c4aa49bd5b6989061537bcc2127d6d596e4bf18441dd8c02f</code> prereg: <code>1fd7e12c4f79e66256cd0708aaa4aa74ee400744cd111cce5c8661adc4235b97</code> spec: <code>d71c3a33c3a126b15680162acc5dc0f65b483017ce5fd48683532228312dc0d4</code></p>
+<p>The frozen environment is Python 3.12.3 / NumPy 2.4.4 / x86_64 (scipy-openblas 0.3.31.188.0).</p>
+<hr>
+<h2>Figure Captions (Figures 1–5 are separate files, uploaded with the paper)</h2>
+<p><strong>Figure 1 (fig1_schematic)</strong>　Model schematic: $W\times W$ cylinder, frozen interior $F_t$ (untouched after prep, radial depth labels kept), active skin $A_t$ (closure-addressable layer), the emitted radiation sequence $R$ (subsystem reclassification), the deep/mid/shallow diaries, and the remainder cell $\varepsilon\equiv1$; the arrow on the right indicates the emission direction, and the left and right edges are the periodic boundary of the cylinder. The angular positions of the diaries, the thickness of the active skin, and the position of the remainder cell on the periodic circumference are schematic only, not drawn to production coordinates.</p>
+<p><strong>Figure 2 (fig2_entropy_curves)</strong>　Stepwise radiation entropy $S(R_{[0,t)})$ against emission fraction $t/n_E$, real data (seed 320), two sizes $W=24$ and $W=32$. The control arm (red) shows a symmetric Page curve, its half-stage peak reaching the volume line $M_0/2-1$ (dotted) before turning over; the frozen arm (blue) rises to the middle stage and turns to an area-level plateau ($W24\approx101$, $W32\approx142$), the plateau height rising with $W$, indicating $O(W)$ scaling. Both arms at the end ($t/n_E\to1$) turn over to a $4$-bit endpoint fixed by the remainder cell and the three Ref qubits; this model finally emits $M_0-1$ lattice qubits, with the remainder cell and the three Ref qubits left in the complement, whose reduced state is unchanged by the lattice-side evolution after the initial Bell pairing, so $S(R_{[0,n_E)})=4$ bits and not strictly zero. Relative to the area-level or volume-level main scale, this $4$-bit endpoint lies approximately on the zero line in the figure. This is a boundary effect as the finite-system radiation prefix approaches all emittable lattice qubits; the key of the frozen lies in the mid-stage plateau, not in the end turnover.</p>
+<p><strong>Figure 3 (fig3_collapse)</strong>　Left: the $S_{\rm plat}/W$ of the frozen across three sizes (diamonds are medians, scatter is per-seed), the coefficient of variation of the three medians being $0.0151$, indicating area-level collapse. Right: the $S_{\rm half}/(M_0/2)$ of the control across three sizes lies near $1$ (i.e. the $M_0/2-1$ volume line).</p>
+<p><strong>Figure 4 (fig4_selfwindow)</strong>　The registered self-sufficient-window ratio $\widehat\omega/S_{\rm plat}$ of the frozen across three sizes (blue diamonds are medians: $1.229$, $1.146$, $1.311$, scatter is per-seed), all within the preregistered band $[0.9,1.5]$ (light blue); individual single seeds cross the upper edge, indicating $c$ is a fluctuating quantity and the criterion looks at the cell median, not the single seed. The $\widehat\omega_{\rm ctrl}/(M_0/2)$ of the control (red squares) is $1.000$ across three sizes.</p>
+<p><strong>Figure 5 (fig5_ladder_k3)</strong>　Left: the normalized exit times $\tau_{\rm exit}$ of the deep/mid/shallow diaries of the frozen across three sizes, the deep latest and the shallow earliest, a $15/15$ ladder per size. Right: K3 (supporting) on twin axes, the sd of the deep-diary exit-spread (blue, $0.0525/0.0289/0.0219$ monotonically decreasing) and the normalized rise-width (red, $0.0730/0.0381/0.0563$, with a reversal rebound at $W40$); the front sharpening obtains only partial support.</p>
+<p>Table 1 (operational objects and the SAE ontological dictionary) is in §2.B, and Table 2 (all preregistered criteria, thresholds, final values, and judgments) is in the body; both tables are included in this paper.</p>
+<hr>
+<h2>References</h2>
+<p>[1] S. W. Hawking, Particle creation by black holes, Commun. Math. Phys. <strong>43</strong>, 199 (1975).</p>
+<p>[2] D. N. Page, Average entropy of a subsystem, Phys. Rev. Lett. <strong>71</strong>, 1291 (1993), arXiv:gr-qc/9305007.</p>
+<p>[3] D. N. Page, Information in black hole radiation, Phys. Rev. Lett. <strong>71</strong>, 3743 (1993), arXiv:hep-th/9306083.</p>
+<p>[4] G. Penington, Entanglement wedge reconstruction and the information paradox, J. High Energy Phys. <strong>09</strong> (2020) 002, arXiv:1905.08255.</p>
+<p>[5] A. Almheiri, N. Engelhardt, D. Marolf, and H. Maxfield, The entropy of bulk quantum fields and the entanglement wedge of an evaporating black hole, J. High Energy Phys. <strong>12</strong> (2019) 063, arXiv:1905.08762.</p>
+<p>[6] A. Almheiri, R. Mahajan, J. Maldacena, and Y. Zhao, The Page curve of Hawking radiation from semiclassical geometry, J. High Energy Phys. <strong>03</strong> (2020) 149, arXiv:1908.10996.</p>
+<p>[7] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, Replica wormholes and the entropy of Hawking radiation, J. High Energy Phys. <strong>05</strong> (2020) 013, arXiv:1911.12333.</p>
+<p>[8] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, The entropy of Hawking radiation, Rev. Mod. Phys. <strong>93</strong>, 035002 (2021), arXiv:2006.06872.</p>
+<p>[9] D. Gottesman, The Heisenberg representation of quantum computers, arXiv:quant-ph/9807006 (1998).</p>
+<p>[10] S. Aaronson and D. Gottesman, Improved simulation of stabilizer circuits, Phys. Rev. A <strong>70</strong>, 052328 (2004), arXiv:quant-ph/0406196.</p>
+<p>[11] H. Araki and E. H. Lieb, Entropy inequalities, Commun. Math. Phys. <strong>18</strong>, 160 (1970).</p>
+<p>[12] Han Qin, Pre-Closure Field Distribution, SAE Quantum-Mechanics Series P9, Zenodo, DOI: 10.5281/zenodo.20621492.</p>
+<p>[13] Han Qin, Black-Hole Information through the Causal Spectrum, SAE Information-Theory Series Info-4, Zenodo, DOI: 10.5281/zenodo.19880112.</p>
+<p>[14] Han Qin, SAE Foundation, Zenodo, DOI: 10.5281/zenodo.19361950.</p>
+<p>[15] Han Qin, The Nature of Information: E/c³, SAE Mass-Series Convergence Paper, Zenodo, DOI: 10.5281/zenodo.19510868.</p>
+<p>[16] Han Qin, SAE Information-Theory Series Info-3, Zenodo, DOI: 10.5281/zenodo.19797457; Info-5, DOI: 10.5281/zenodo.19968504; Info-6, DOI: 10.5281/zenodo.20066645.</p>
+<p>[17] Han Qin, SAE Relativity Series P5, Zenodo, DOI: 10.5281/zenodo.20105113; P6, DOI: 10.5281/zenodo.20131993.</p>
+<hr>
+<h2>Acknowledgments</h2>
+<p>The research of this paper adopted a multi-AI collaborative review method at the various stages of drafting, through multiple rounds of divergent review, adversarial cross-checking, and independent re-judgment; the models used include ChatGPT, Claude, Gemini, and Grok. For all claims, arguments, and possible errors in the content, the responsibility lies entirely with the author.</p></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>本篇为 SAE 黑洞系列首篇预注册、可复现之计算检验论文。本篇构造一 $W\times W$ 柱面 stabilizer toy model，于同一测量协议下对照两臂：一为 frozen ledger 臂，其 bond 之开闭循一局域规则，内部记录之径向深度得以保留；一为 fully open scrambler 臂，全局幺正搅拌而径向深度标签之可辨识性被擦除。本篇所得，是一 type-B 之可计算结构分歧：frozen 臂之平台熵与注册自足窗呈 $S_{\rm plat},\widehat\omega=O(W)$ 之面积级，scrambler 臂呈 $S_{\rm half},\widehat\omega=O(W^2)$ 之体积级基准；辅以 frozen 臂之径向深度阶梯与 scrambler 臂之深度标签擦除。</p>
+<p>主结果循脊锋而陈。脊为面积级平台，其归一化坍缩之相对偏差，以三档尺寸 $S_{\rm plat}/W$ 中位数之变异系数计，为 $0.0151$。锋为自足窗之 frozen 对 scrambler 对照：先立 scrambler 之体积基准，其半程熵具严格维数上界 $M_0/2-1$，近饱和与 Page-type typicality 及随机搅拌之 decoupling 尺度相容（此为本 control 之数值基准，非 Page 定理对本局域电路之逐样本推论）；继亮 frozen 臂之注册自足窗，其三档尺寸之中位数比值 $\widehat\omega/S_{\rm plat}$ 为 $1.229$、$1.146$、$1.311$，落于先导结构带 $[0.9,1.5]$ 之中。本篇之理论支柱为一冻结天花板引理，其第一式为 stabilizer 框架内之严格定理，其面积级标度则为带条件之结构结论，由三档尺寸 $W\in\{24,32,40\}$ 之数据检验立成，非 $W\to\infty$ 之渐近律证明。</p>
+<p>本篇守三句界桩：不解信息佯谬，不主张取代既有路径、不裁决黑洞信息问题之是非，不给直接经验预言。本篇之于 Info-4 所列三拓扑闭合机制候选，是提供一个可计算邻接例，相容而非推进，不在三者之间作选择。六项预注册主判据全部通过，一项 supporting diagnostic 未通过，并按预注册保留为负结果。本篇从一组不同之本体来源出发，呈一条思路供同行思考。</p>
+      <p class="paper-keywords"><strong>关键词:</strong> SAE；黑洞信息流拓扑；stabilizer toy model；面积级标度；自足窗；冻结天花板；预注册；type-B 结构分歧。</p>
+    </div>
+    <div class="paper-body"><h2>§1 问题、背景与辖区</h2>
+<h3>§1.1 黑洞信息问题之背景</h3>
+<p>黑洞信息问题源于一处张力。Hawking 于 1975 年指出 [1]，黑洞并非全黑，其视界因量子效应而辐射，谱近乎热。若辐射纯然为热，则当黑洞蒸发殆尽，初始落入之物质所携之信息似随之湮灭；而量子力学之幺正性要求信息守恒，二者相抵，是为黑洞信息佯谬。</p>
+<p>Page 于 1993 年从幺正性一侧给出一个判据 [2,3]。设黑洞与其辐射构成一纯态，则辐射子系统之纠缠熵应循一特定轨迹：蒸发之初，辐射熵随发射而升；过一中点（今称 Page time），若幺正性成立，则纠缠熵转而下降，终归于零。此先升后降之曲线，今称 Page 曲线。热谱所预言者为单调上升而不回落；故 Page 曲线之回落段，是幺正性在黑洞蒸发中留下之印记。</p>
+<p>近年，半经典引力一侧有显著进展。island 公式与 replica wormhole 之计算 [4,5,6,7]，于量子极值面之框架内，在弯曲时空之半经典引力中复现了 Page 曲线之回落段。此一路径以几何为主导，于引力路径积分中纳入额外之鞍点贡献，使辐射熵在 Page time 之后随量子极值面之更替而下降。这是一条富有成果之路径，在黑洞信息问题上确立了其地位（综述见 [8]）。</p>
+<p>本篇所循者，非此几何主导之路径，而是另一组本体来源。SAE 量子力学系列与信息论系列已就黑洞之内部结构提出一套本体读法，其要点容后于系列说明与 §2 申说。本篇之问，是能否从这套不同之本体来源出发，构造一可计算之 toy model，于其中令一保留内部记录之冻结账本与一全开之搅拌器呈现一可判读之结构分歧。本篇不裁决几何路径之是非，亦不与之争胜；本篇呈一条不同之思路，供同行思考。</p>
+<h3>§1.2 问题之来处与本篇之问</h3>
+<p>本篇之具体问题，接续 SAE 量子力学系列 P9《前闭合场分布》[12] §7 所留之口。P9 把纠缠熵之面积律立到真空一般区域为止，其本体读法为：面积律源于跨边界 gluing 之局域性，连同真空基线之低激发拓扑，而仅凭局域 gluing 只给上界，高激发或热态可呈体积律。P9 于此明言，黑洞那特殊之边界（$S=A/4$、Page 曲线、island），留给未来量子信息系列接触黑洞信息论文；本篇即此接续之第一步。Info-4《黑洞信息通过因果谱》[13] 则把 Page 曲线之拓扑闭合机制列为 open，phase transition、percolation、SOC 三候选并存而非推导。</p>
+<p>本篇所问者由此而生：能否构造一可计算之 toy，令一保留记忆之冻结账本与一标签尽擦之 scrambler，呈现一可判读之面积级对体积级结构分歧，作为 P9 §7 留口之第一个可计算接续？此问题非求解黑洞信息佯谬，亦非裁决 Info-4 之三候选，而是问：P9 所立之面积律本体读法，是否能在一可计算之 stabilizer 实例中，显化为 frozen 对 scrambler 之结构分判。</p>
+<h3>§1.3 本篇之贡献</h3>
+<p>本篇之贡献有三。其一，构造一预注册之可计算 toy，其主判据与失败条件先落盘后跑，其结论可由第三方持同一代码与同一 manifest 复现。其二，于此 toy 中得一 type-B 之结构分歧：frozen 之 $O(W)$ 对 scrambler 之 $O(W^2)$，连同径向深度阶梯之保留与擦除；并立一冻结天花板引理为其理论支柱，其严格部分为框架内之定理，其面积级标度为带条件之结构结论。其三，为 Info-4 所提之拓扑闭合问题提供一可计算邻接例，相容而非推进。本篇所实得者，是六项预注册主判据之通过，连同一项 supporting diagnostic 之诚实负结果；非黑洞本体之经验证明。</p>
+<h3>§1.4 辖区与界桩</h3>
+<p>须于引言即前置本篇之辖区，划定其不做之事。本篇守三句界桩。其一，本篇不解信息佯谬；所得之结构分歧，是 toy 内之可计算事实，非佯谬之解。其二，本篇不主张取代既有路径，亦不裁决黑洞信息问题之是非；本篇与几何主导之 island 路径，是同一现象之不同本体读法，孰是孰非有待远超本 toy 之检验，本篇只呈一思路而不与既有路径争胜。其三，本篇不给 LISA、CE、ET 之直接经验预言；本 toy 是 stabilizer 之结构诊断，不接真实之曲率、能量与 Hawking spectrum。此三句界桩于本节、§2、§6 三处重申，为全篇之硬边界。凡本篇所未计算者，皆不在本篇之主张内。</p>
+<hr>
+<h2>系列说明</h2>
+<p>本节为系列级之说明，陈本篇在 SAE 黑洞系列中之位置与其继承之上游。</p>
+<h3>黑洞系列之方法</h3>
+<p>SAE 黑洞系列以可计算 toy model 为方法，把 SAE 量子力学系列与信息论系列已提出之黑洞本体结构中可操作化之部分，置入预注册、可复现之计算检验。本篇是黑洞系列首篇此类论文。须把方法之分寸说明白：本篇所检验者，是一个 stabilizer toy model 内部之结构分歧，而非黑洞本体之经验证明；本篇实得者，是该 toy 内一项可判读之 type-B 结构分歧，连同其预注册主判据之通过与一项 supporting diagnostic 之诚实负结果。</p>
+<p>本系列之方法纪律有四。其一，预注册之主判据与失败条件先落盘后跑，不事后改判。其二，引擎、模拟器、判读器、驱动与预注册本体各以哈希锁定，凡报告之结论皆可由第三方持同一代码与同一 manifest 复现。其三，双实现之 replay concordance 连同独立实现之自有逻辑重判，给出多于单一判读器之交叉证。其四，凡 toy 内之量，陈述止于执行语义层，不外推黑洞物理。</p>
+<h3>继承之上游</h3>
+<p>本篇之继承，以三处为主，其余为旁。</p>
+<p>直接上游为 QM P9《前闭合场分布》（DOI 10.5281/zenodo.20621492）。所继承者三事。其一，面积律作为重诠，是本篇平台与自足窗之本体源头。P9 已立：纠缠熵之面积律源于跨边界 gluing 之局域性，连同真空基线之低激发拓扑，且明言仅凭局域 gluing 只给上界，高激发或热态可呈体积律。本篇 toy 正是此读法之一个可计算实例。其二，P9 §7 之明示接口。P9 把面积律立到真空一般区域为止，将黑洞那特殊边界明确留给未来量子信息系列接触黑洞信息论文；本篇即此接续之第一步。其三，本篇 toy 之本体语汇，ρ-OR capacity、cells 与 gluing、closure-addressable、余项不可湮灭，皆出自 P9 之 $\{\mathfrak A_i,\rho_i,G_{ij}\}$ 三元组；余项胞 $\varepsilon\equiv1$ 对应 P9 之 remainder cannot be annihilated。</p>
+<p>黑洞本体侧为 Info-4《黑洞信息通过因果谱》（DOI 10.5281/zenodo.19880112），即 P9 §7 所引之黑洞信息论文。本篇于此继承黑洞内部之 3DD active 加 4DD inactive 之读法、Hawking 辐射作为 categorical lift、Page 曲线之三拓扑闭合机制候选，连同 firewall 作为 categorical boundary。其中三机制候选，是本篇 §4.6 限域接口之对接对象。</p>
+<p>地基为 SAE Foundation（DOI 10.5281/zenodo.19361950），本篇于此继承物理量阶梯 $L_0$ 至 $L_5$、ρ-OR 与 ρ-AND、$L_3\to L_4$ 闭合方程，连同离散先验。</p>
+<p>其余上游为旁。方法与语言之旁支有 Info-3（DOI 10.5281/zenodo.19797457，causal slot 与 substrate-aggregation spectrum）、Info-5（DOI 10.5281/zenodo.19968504）、Info-6（DOI 10.5281/zenodo.20066645，引力波动力学）；引力本体之旁证有 Relativity P5（DOI 10.5281/zenodo.20105113，视界 cell tensor 之相变）与 Relativity P6（DOI 10.5281/zenodo.20131993，Kerr 螺旋闭合，本篇 Schwarzschild toy 之未来推广方向）。E=Ic³ 出自质量系列收束篇《信息的本质：E/c³》（DOI 10.5281/zenodo.19510868）。本系列之黑洞本体尚有一组关乎质量阈与蒸发命运之图景，因其未进入本 toy 之算法，列为系列后续之问题，不入本篇主文（见 §7.2）。</p>
+<h3>认识论纪律</h3>
+<p>本篇继承全系列之承诺分级与 firewall 之认识论。凡陈述，按其承诺之强弱分档标注。firewall 之认识论谓：SAE 不推导某外部结论，该外部结论亦不证明 SAE，两框架只在共享之结构上达成对应。本篇是一篇可计算 toy 之结构诊断，不主张对既有物理之经验优越性，不替物理学家给出量化经验预言。凡所主张、所立、所误者，责任在作者；评审之贡献止于致谢所记。</p>
+<hr>
+<h2>§2 操作模型与 SAE 映射</h2>
+<p>本节先把模型作为一个自足之可计算对象定义清楚，使外部读者不必接受任何 SAE 本体即可复现；再给 SAE 之本体映射；最后于二者之间立一道 firewall。本节末附一表，分列预先放入模型者与由 production 挣得者，以清输入与输出之界。</p>
+<h3>§2.A 操作模型层</h3>
+<p>模型之操作定义如下，其中不含任何本体词典。底盘为一 $W\times W$ 柱面格点，其上布 stabilizer qubits，演化为相位无关之 Clifford（模型结构见图 1）。每一动力学步先在开放 bond 上施 Clifford gates，继而选取当前最外层之可发射 cell，将其索引纳入辐射序列 $R$，并令该列之未发射边界内移一格。须把此发射之执行语义说明白：该发射操作不施加额外量子门，亦不建立独立之辐射寄存器；它把所选 cell 之 qubit 由未发射子系统重分类入辐射子系统，已发射 qubit 此后不再参与动力学门，熵计算则把辐射序列中之 qubits 视作辐射子系统。</p>
+<p>bond 之开闭循 local 或 open 两种规则。emergent local 臂以 §3.1 之局域开边律决定每条 bond 之开闭，参数固定 $a_0=2,\,w=0.4$，内部记录之径向深度得以保留。control 臂则令全部非余项 bond 开放，是一 fully open random-Clifford scrambler；其演化为全局幺正，并不擦除信息，所擦除者为径向深度标签之可辨识性。系统内植三个 diary 与 Ref 之 Bell pairs，分深、中、浅三层，用以追踪内部记录何时经辐射读出。另有一余项胞 $\varepsilon\equiv1$，永不发射，亦不被任何门触碰。全部观测量（$S_{\rm plat}$、$S_{\rm half}$、$t_{\rm exit}$、$\widehat\omega$、$\Delta$ 等）之形式定义见 §3。</p>
+<p>须把 control 之身份说明白：control 是一 fully open random-Clifford scrambler control，并非标准黑洞模型之同义词。其在本文中之地位，是一已知之 Page-type 体积基准，详见 §3.6 与 §4.2。</p>
+<h3>§2.B SAE 映射层</h3>
+<p>操作模型立定之后，方给 SAE 本体映射，列于表 1。其要者：inactive bonds 对应 readout suspension，即 4DD inactive；active skin 对应 closure-addressable layer；余项胞对应 Via Rho 之 toy encoding，即余项不可湮灭（P9），并系于 $L_4$ 闭合层之记忆先验；辐射读出之单一序对应一抽象之 boundary readout channel。黑洞内部之 3DD active 加 4DD inactive（Info-4），落为 frozen 内部连同 active skin。</p>
+<p><strong>表 1　操作对象与 SAE 本体字典</strong></p>
+<table>
+<thead><tr>
+<th>操作对象</th>
+<th>执行语义（toy 内）</th>
+<th>SAE 映射</th>
+<th>承诺等级</th>
+</tr></thead><tbody>
+<tr><td>inactive bond</td><td>该 bond 不施 Clifford 门，埋深致 $p_{\rm open}\to0$</td><td>readout suspension（4DD inactive）</td><td>结构对应</td></tr>
+<tr><td>active skin</td><td>最外层可发射 cell 之一维皮层</td><td>closure-addressable layer</td><td>结构对应</td></tr>
+<tr><td>frozen 内部</td><td>从未参加 post-prep gate 之 qubits（$F_t$）</td><td>黑洞内部 3DD active 加 4DD inactive（Info-4）</td><td>结构对应</td></tr>
+<tr><td>余项胞 $\varepsilon\equiv1$</td><td>永不发射、不被门触碰之单胞</td><td>Via Rho（余项不可湮灭，P9），系于 $L_4$ 记忆先验</td><td>结构对应</td></tr>
+<tr><td>辐射读出序 $R$</td><td>发射 cell 之索引序，子系统归属重分类</td><td>抽象 boundary readout channel</td><td>结构对应</td></tr>
+<tr><td>diary–Ref Bell 对</td><td>三层内部记录与参考 qubit 之纠缠</td><td>内部记录之径向深度标记</td><td>结构对应</td></tr>
+</tbody></table>
+<p>表中承诺等级一律标为结构对应，以明其分际：此皆 stabilizer 模型内之结构关系与 SAE 本体之对应，非对黑洞本体之经验 claim。</p>
+<p>须重申一句纪律：以上映射皆为 structure 之对应，非对黑洞本体之 claim。toy 之所呈，是 stabilizer 模型内之结构关系；其与黑洞本体之相通，止于映射，不逾此而为本体之证明。</p>
+<h3>§2.C firewall</h3>
+<p>此为本节之要害，须立一道明确之 firewall。toy 中之辐射读出重分类，不是引力波模型，亦不是微观 Hawking 模式之动力学模型。所谓单一信道落为 boundary readout reclassification，最多是一信息流拓扑同态，不能写成物理信道之实现。本系列关乎质量阈与蒸发命运之黑洞图景，皆未进入 toy 之算法；本篇主文不展开，至多于 §7.2 列为后续问题。</p>
+<h3>§2.D 界桩</h3>
+<p>本篇守三句界桩，不可越，并于此前置重申。其一，本篇不解信息佯谬。其二，本篇不主张取代既有路径，亦不裁决黑洞信息问题之是非。其三，本篇不给 LISA、CE、ET 之直接经验预言。三句界桩于 §1、本节、§6 三处重申，为全篇之硬边界。</p>
+<h3>§2.E 输入与挣得之界</h3>
+<p>为杜一处标准之质疑，即冻结由规则放入、面积平台与延迟释放是否只是假设当数字，此处正面分列模型之输入与 production 之输出。</p>
+<table>
+<thead><tr>
+<th>预先放入模型</th>
+<th>由 production 挣得</th>
+</tr></thead><tbody>
+<tr><td>local sigmoid 冻结规则</td><td>$S_{\rm plat}/W$ 之跨尺寸坍缩（三档 median CV $=0.0151$）</td></tr>
+<tr><td>浅层 prep</td><td>frozen 与 control 之面积级对体积级量级分化</td></tr>
+<tr><td>三 diary 之径向位置</td><td>每档 $15/15$ 之深度阶梯，及 control 之深度标签擦除</td></tr>
+<tr><td>一胞一步之发射序</td><td>连续自足窗之存在，及 $\widehat\omega/S_{\rm plat}$ 跨 $W$ 稳定</td></tr>
+<tr><td>余项胞禁发禁门</td><td>$K0$ 之 $110/110$ 语义守恒</td></tr>
+</tbody></table>
+<p>此表不削弱结果，而把规则输入与结构输出分得最清楚。放入者为规则与布置，挣得者为跨尺度之标度行为与可判读之分化，后者非由前者直接读出，须经 production 之计算方显。</p>
+<hr>
+<hr>
+<h2>§3 数学量、解析约束与预注册</h2>
+<p>本节将模型所用之四个量从冻结实现提炼为数学定义，给出两条冻结天花板引理，立定 control 之体积基准，并陈预注册与数据纳入之规则。本节之纪律有二。其一，凡冻结引擎所报告者皆为协议下之注册量，理想之全域量可另行定义，但二者必须分书。其二，冻结天花板所约束者，是辐射熵之面积级尺度，它本身并不推出自足窗在发射次序上之连续局域性；后者另有论证，并由数据检验。</p>
+<h3>§3.1 局域开边律</h3>
+<p>设柱面第 $\theta$ 列在第 $t$ 步后尚未发射之最高径向坐标为 $H_t(\theta)\equiv\mathtt{col\_top}[\theta]$。对一条 bond $b$，记其代码所用之径向锚点为 $r_a(b)=\lfloor\bar r_b\rfloor+1$。径向 bond 只跨一列，角向 bond 跨相邻两列。对其所跨任一列 $\theta$，定义该 bond 之上之局域 overburden</p>
+<p>$$d_t(b,\theta)=\bigl[H_t(\theta)-r_a(b)+1\bigr]_+,\qquad [x]_+\equiv\max(0,x),$$</p>
+<p>于是引擎中之局域埋深读数为</p>
+<p>$$o_{\rm loc}(b,t)=\frac{1}{|C_b|}\sum_{\theta\in C_b}d_t(b,\theta),$$</p>
+<p>其中径向 bond 之 $C_b$ 只有一列，角向 bond 之 $C_b$ 有两列。再设</p>
+<p>$$\chi_b(t)=\mathbf 1[b\notin E_{\rm rem}]\prod_{v\in\partial b}\mathbf 1\!\left[r(v)\le H_t(\theta(v))\right],$$</p>
+<p>即 bond 不与余项胞相接，且其两个端点均尚未发射。须辨明一处语义：$\chi_b$ 末项所验者，是端点是否仍在场（尚未发射、仍属当前格点），而非端点是否已解冻；开与冻由下文之 Bernoulli 阈值独立决定。对固定之 quenched 随机数 $u_b\sim\mathrm{Uniform}[0,1)$，实际开边变量为</p>
+<p>$$X_b(t)=\chi_b(t)\,\mathbf 1\!\left[u_b<\sigma\!\left(\frac{a_0-o_{\rm loc}(b,t)}{w}\right)\right],$$</p>
+<p>而对 quenched disorder 取条件概率，则有</p>
+<p>$$p_{\rm open}(b,t)=\chi_b(t)\,\sigma\!\left(\frac{a_0-o_{\rm loc}(b,t)}{w}\right),\qquad\sigma(x)=\frac{1}{1+e^{-x}}.$$</p>
+<p>此式正对应冻结引擎之 <code>oA/oB/o</code>、固定 $u_b$ 与末端三重 mask。在端点仍在场时，</p>
+<p>$$\frac{\partial p_{\rm open}}{\partial o_{\rm loc}}=-\frac{\chi_b(t)}{w}\,\sigma(1-\sigma)\le 0.$$</p>
+<p>故埋深越大，开边概率越低；随着发射使 $H_t(\theta)$ 下降，$o_{\rm loc}$ 非增，固定 bond 之开边概率非减。换言之，quenched bond 在端点尚存期间只会由冻向开松动，不会因同一 overburden 机制重新关死；端点一旦发射则 $\chi_b=0$，该 bond 自动力学图中退出。此单调性为框架内严格者。production 主臂固定 $a_0=2,\,w=0.4$。</p>
+<h3>§3.2 稳定子子区熵</h3>
+<p>全局纯 stabilizer 态由 $n$ 个独立稳定子生成元表示 [9,10]，其二进制 tableau 为 $G\in\mathbb F_2^{n\times 2n}$，列序为 $(X_0,\ldots,X_{n-1}\mid Z_0,\ldots,Z_{n-1})$。对 qubit 子集 $A$，记 $G|_A$ 为只保留 $A$ 所对应之全部 $X$ 列与 $Z$ 列所得之矩阵。模型所用之子区熵为</p>
+<p>$$\boxed{\,S(A)=\operatorname{rank}_{\mathbb F_2}(G|_A)-|A|\,}$$</p>
+<p>以 bit 为单位，引擎以 bit-packed $\mathbb F_2$ 高斯消元计算该秩。对纯 stabilizer 态，此即 von Neumann 纠缠熵，故满足 $0\le S(A)\le\min\{|A|,n-|A|\}\le|A|$，以及对不交子区之次可加性 $S(A\cup B)\le S(A)+S(B)$。本文一切 mutual information 皆据此定义：$I(A:B)=S(A)+S(B)-S(A\cup B)$。此公式与其性质为框架内严格者，证见附录 A.1。</p>
+<h3>§3.3 退出时刻</h3>
+<p>记实际发射次序为 $(e_0,e_1,\ldots,e_{n_E-1})$，$n_E=M_0-1$，并定义连续辐射前缀 $R_{[0,b)}=\{e_0,\ldots,e_{b-1}\}$。第 $k$ 个 diary 之参考 qubit 记为 $\mathrm{Ref}_k$。参考 qubit 从不参加后续门，且始终有 $S(\mathrm{Ref}_k)=1$，其前缀互信息为</p>
+<p>$$I_k^{\rm pre}(b)=I(\mathrm{Ref}_k:R_{[0,b)})=S(R_{[0,b)})+1-S(R_{[0,b)}\cup\{\mathrm{Ref}_k\}).$$</p>
+<p>退出时刻定义为</p>
+<p>$$\boxed{\,t_{\mathrm{exit},k}=\min\{b\in\{1,\ldots,n_E\}:I_k^{\rm pre}(b)=2\}.\,}$$</p>
+<p>代码以条件 $I\ge2$ 二分搜索；单 qubit reference 之 mutual information 上限恰为 $2$ bit，而 stabilizer 熵为整数，故 $I\ge2$ 与 $I=2$ 完全等价。</p>
+<p>此阈值具严格意义。令 $C$ 为 $R_{[0,b)}$ 之全局补系统，则全局纯态满足 $I(\mathrm{Ref}_k:R_{[0,b)})+I(\mathrm{Ref}_k:C)=2S(\mathrm{Ref}_k)=2$，故 $I(\mathrm{Ref}_k:R_{[0,b)})=2$ 当且仅当 $I(\mathrm{Ref}_k:C)=0$，即参考 qubit 已与其余系统完全解耦，其全部纯化均由该辐射前缀承载。在 stabilizer 语言中，这等价于经辐射子系统内部之 Clifford 变换后，可于前缀内析出一个逻辑 qubit，与 $\mathrm{Ref}_k$ 构成 Bell 对。因此 $I=2$ 是 diary 之 Bell 纯化已完整进入辐射之充要阈，而非任意经验门槛。此判据严格，证见附录 A.2。</p>
+<h3>§3.4 自足窗与注册估计量</h3>
+<p>对任意连续辐射窗口 $R_{[a,b)}=\{e_a,\ldots,e_{b-1}\}$，定义 $I_k(a,b)=I(\mathrm{Ref}_k:R_{[a,b)})$。理想之全域自足窗长度可定义为</p>
+<p>$$\omega_k^\star=\min_{0\le a<b\le n_E}\left\{b-a:I_k(a,b)=2\right\},$$</p>
+<p>其义为：若只交给解码者一段连续辐射记录，使第 $k$ 个 diary 得以完全纯化，所需之最短窗口长度。</p>
+<p>然而 production 引擎实际报告者，并非无约束之 $\omega_k^\star$，而是一个冻结协议下之注册估计量。当前实现只对深 diary（$k=0$）计算 $\widehat\omega_0$。先以 $t_e=t_{\mathrm{exit},0}$ 为中心，固定搜索带 $a\in\mathcal D=[\max(0,t_e-10W),\,\min(n_E-2,t_e+2W)]\cap\mathbb Z$。对每个起点 $a$，定义 $b_{\min}(a)=\min\{b\ge\max(a+2,t_e):I_0(a,b)=2\}$。引擎先在步长为 $4$ 之 coarse grid 上求 $b_{\min}(a)-a$，再于最优 coarse 起点之 $\pm4$ 邻域逐点精修，并在同长窗口中选择较小之 $a$。</p>
+<p>正文须分书两量：$\omega_0^\star$ 为理想全域量，$\widehat\omega_0$ 为冻结协议实测量。对固定 $a$，$I_0(a,b)$ 随 $b$ 非减，故二分所得 $b_{\min}(a)$ 精确。又因 $a_1<a_2$ 时 $R_{[a_2,b)}\subset R_{[a_1,b)}$，数据处理不等式给出 $b_{\min}(a_1)\le b_{\min}(a_2)$。设 $\omega_{\mathcal D}^\star$ 为同一搜索带内、采 $b-a\ge2$ 约束之真正整数最小值，则步长 $4$ 保证</p>
+<p>$$\boxed{\,\omega_{\mathcal D}^\star\le\widehat\omega_0\le\omega_{\mathcal D}^\star+3\,}$$</p>
+<p>只要该 run 未被标作 protocol-invalid。证见附录 A.3。是故当前协议对注册搜索带给出至多 $3$ 个 emission step 之加性误差，而不自动证明 $\widehat\omega_0=\omega_0^\star$ 之全域严格等价。正文中所有自足窗数字皆书作注册自足窗 $\widehat\omega$，而非未经限定之全域最小窗。此加性界严格；$\widehat\omega=\omega^\star$ 之全域等价悬于门外。</p>
+<h3>§3.5 冻结天花板</h3>
+<p>第 $t$ 步后，把 lattice 与 reference qubits 分作四个不交子系统：$R_t$ 为已发射 qubits，$A_t$ 为尚未发射且已参加过 post-prep gate 之 qubits，$F_t$ 为尚未发射且从未参加 post-prep gate 之 qubits，$Q=\{\mathrm{Ref}_1,\ldots,\mathrm{Ref}_{N_{\rm ref}}\}$。发射只是把 qubit 改隶为 $R_t$，已发射 qubit 不再参加门，全局 tableau 始终保持纯态。</p>
+<p><strong>引理一（严格冻结天花板）。</strong> 对每个动力学时刻 $t$，</p>
+<p>$$\boxed{\,S(R_t)\le|A_t|+S(F_t)+N_{\rm ref}.\,}$$</p>
+<p>此外，令 $\rho^{(0)}$ 表示浅制备完成、正式蒸发动力学开始时之态，则</p>
+<p>$$\boxed{\,\rho_{F_t}(t)=\rho^{(0)}_{F_t},\qquad S_t(F_t)=S_0(F_t).\,}$$</p>
+<p>第二式表明，冻结账并未继续演化；随着视界内移，改变者是哪些 qubit 仍属于 $F_t$，而非保留在 $F_t$ 内部之账目被 post-prep gates 改写。引理一两式皆不依赖随机性，亦不依赖 Page 假设，为框架内之严格条件数学，证见附录 A.4 与 A.5。其结论强于熵不变：不止熵不变，整个 reduced density operator 皆不变。</p>
+<p><strong>引理二（有限深度切割界）。</strong> 设制备态之前只有若干固定 Bell pairs，其余 qubits 为 product state；令 $B(F)$ 为这些 seed Bell pairs 中恰有一端落在 $F$ 内之数量，$\partial_E F$ 为 preparation circuit 所用 lattice graph 中跨越 $F$ 与其补集之 bond 集。则</p>
+<p>$$\boxed{\,S_0(F)\le B(F)+2d_{\rm prep}\,|\partial_E F|.\,}$$</p>
+<p>在当前模型中 $B(F)\le N_{\rm ref}+1$，其中额外之 $1$ 来自余项胞及其 Bell 伙伴。证见附录 A.6。</p>
+<p>若在所考察之平台区间内，存在与 $W$ 无关之常数 $\alpha,\beta$，使 $|A_t|\le\alpha W$ 且 $|\partial_E F_t|\le\beta W$，则 $S(F_t)\le 2d_{\rm prep}\beta W+N_{\rm ref}+1$，以及</p>
+<p>$$\boxed{\,S(R_t)\le\bigl[\alpha+2d_{\rm prep}\beta\bigr]W+2N_{\rm ref}+1.\,}$$</p>
+<p>此即面积级冻结天花板。其中 $\beta$ 为冻结边界之 cut-density。若模型参数 $a_0,w$ 与 local gluing graph 已固定，可将其吸收入常数，简写为 $\kappa(d_{\rm prep})$；然若比较不同 $a_0,w$，则 $\kappa$ 一般不能说成只依赖 $d_{\rm prep}$。这亦解释了为何不同 $a_0$ 之系数会漂移：天花板所约束者是数量级，不予精确之无参数系数。</p>
+<p>须把界限说明白。$|A_t|,|\partial_E F_t|=O(W)$ 在 emergent local 臂平台区间之成立，是模型内之结构性条件，与 K1 之输出相容，而非从 local rule 直接证成之无条件定理；故由此而得之 $S_{\rm plat}=O(W)$ 为带条件之结构结论。在所检验之 $W\in\{24,32,40\}$ 三档尺寸中，production 得三档 $S_{\rm plat}/W$ 中位数之变异系数为 $0.0151$，与上述面积级条件相容；此非对任意 $W\to\infty$ 渐近律之证明。</p>
+<p>最后须把一条逻辑分际写明。冻结天花板直接约束者，是辐射熵与可用容量；它本身并不证明该信息在 emission order 中必定集中于 $O(W)$ 个连续位置。自足窗 $\widehat\omega=O(W)$ 之连续局域性，是另一回事，主由 §4.3 之 G1 数据于带内立成；皮肤容量铺满之机制，是其结构性动机而非独立之严格证明。天花板给出窗口律之面积级尺度，G1 给出窗口之连续局域性连同数据。脊给尺度，锋给局域性，二者分工于此。</p>
+<h3>§3.6 全开 control 之体积基准</h3>
+<p>control 臂令全部非余项 bond 开放，post-prep 之局域 Clifford 电路持续作用于全部尚未发射 qubits，故无保持低深度冻结账之约束。此时 $A_t$ 在中段为体积级，而冻结天花板只给 $S(R_t)=O(M_0)=O(W^2)$ 之宽界。</p>
+<p>由于余项胞始终不发射，总发射数为 $n_E=M_0-1$。对偶数 $M_0=W^2$，半程 radiation prefix 之 qubit 数严格为 $h=\lfloor n_E/2\rfloor=M_0/2-1$。故 $S(R_{[0,h)})\le h$ 是精确之维数上界。此 $-1$ 严格来自一只 qubit 永不发射之计数，与余项胞之静态记账相容；余项胞之 Bell 伙伴用以维持 $\varepsilon=1$ 之纠缠账本语义，不单独推出此 $-1$。</p>
+<p>须把 control 与 Page 之关系之分寸守住。Page 之原始结果处理 Haar-random pure state 之平均子系统熵；本文之 control 演化，是一随时间与开放网络变化之局域 Clifford 电路，不能未经论证即等同于均匀 Clifford 抽样。故本文之陈述为：control 之半程熵具严格维数上界 $M_0/2-1$（此为计数）；其近饱和及 $\operatorname{median}\,\widehat\omega_{\rm ctrl}/(M_0/2)=1.000$，与 Page-type typicality 及随机搅拌之 decoupling 尺度相容（此为本 control 之数值基准，非 Page 定理对本局域电路之逐样本推论）。终轮 control 三档之半程熵中位数为 $287$、$511$、$799$，恰对应 $M_0/2-1$。是故 control 在本文中之身份，乃一已知之 Page-type 体积基准；本 toy 之新增内容不在 control 本身，而在同一测量协议下 frozen 臂呈现面积级平台与面积级自足窗。</p>
+<h3>§3.7 预注册、数据纳入与 protocol-invalid 规则</h3>
+<p>本篇之判据与失败条件先于 production 落盘，冻结于预注册本体，以哈希锁定，跑后不改判。主判据为六：K0 之语义守恒、K1 之面积级平台坍缩、K2 之深度阶梯、K4 之 control 体积基准、G1 之自足窗带、G2 之皮肤容量单调。supporting diagnostics 为二：K3 之前沿锐化、K5 之双边带；二者不阻断主判据。各判据之身份、预注册阈值与终轮结果，汇于表 2。</p>
+<p>production 之主格为 $W\in\{24,32,40\}$ 乘 $\{$emergent($a_0{=}2$), control$\}$ 乘 $15$ seeds，凡 $90$ 行；容量臂为 $W24$ 乘 emergent 乘 $a_0\in\{1,3\}$ 乘 $10$ seeds，凡 $20$ 行；合 $110$ 行。数据纳入之规则如下。$\mathtt{left\_boundary}$ 与 $\mathtt{right\_search\_boundary}$ 两类 boundary-invalid 之 run，排除于窗口统计之外，并按比例计入 invalid 比例；其比例若达阈值（cell size $15$ 者为 $8$，$10$ 者为 $6$）则触发失败条件。$\mathtt{no\_window}$ 与 $\mathtt{other\_protocol\_error}$ 则不同：二者非普通 invalid，而为 substantive failure，不进入 invalid 比例统计，直接触发 Death-5。右端点抵 $n_E$ 但起点在带内者，晚窗为物理之窗，不判 invalid。终轮仅有两条 $\mathtt{left\_boundary}$（$W24$ 之一 seed、$W40$ 之一 seed），各低于其 cell 之阈值，不触失败条件，于窗口统计中排除；无 $\mathtt{no\_window}$。</p>
+<p>可复验性之架构如下。引擎、模拟器、判读器、驱动与预注册本体各以 SHA-256 锁定，连同 spec、bond 枚举与冻结环境之哈希。判读器为零信任之设计：任何人持同一 judge 代码与同一 manifest，即可复现同一判读结果。终轮经双实现之 replay concordance，连同独立实现以自有逻辑从原始 manifest 重判，复现同一结果。完整之逐轮加固史置于补充材料，不入主文。</p>
+<hr>
+<h2>§4 结果</h2>
+<p>本节之结果循脊锋而陈。脊为面积级平台，是全篇最硬之归一化坍缩；其下先立 control 之体积基准，使对照之靶先定；继而亮自足窗之 frozen 对 control 对照，是为锋；再补深度阶梯之保留与擦除，连同皮肤容量之单调。脊与锋共一量而两度显影：同一中段熵 $S_{\rm mid}$，脊处量其高，锋处量其宽。</p>
+<h3>§4.1 脊：面积级平台 K1</h3>
+<p>frozen 臂之演化于中段浮现一极平稳之平台，其高即 $S_{\rm plat}$（逐步熵曲线见图 2，平台坍缩见图 3）。在所检验之 $W\in\{24,32,40\}$ 三档尺寸中，$S_{\rm plat}/W$ 呈稳定坍缩。以三档 $S_{\rm plat}/W$ 中位数（$4.34$、$4.48$、$4.34$）之变异系数计，为 $0.0151$，远低于预注册之 $0.2$ 阈值，与面积级 $O(W)$ 标度相容。须把口气守住：此为三档尺寸内之坍缩与相容，非对任意 $W\to\infty$ 之渐近律证明；其理论支柱为 §3.5 之冻结天花板，所约束者为辐射熵之面积级尺度。此面积级标度为带条件之结构结论，所带之条件即 emergent local 臂平台区间之 $|A_t|,|\partial_E F_t|=O(W)$。</p>
+<p>与之对照者，为 control 臂之半程熵。control 三档之 cell median 为 $287$、$511$、$799$，恰落于 $M_0/2-1$。此 $-1$ 之偏移，与单一禁发余项胞 $\varepsilon\equiv1$ 之静态记账相容；须守分寸，是相容，而非由余项胞确定导致。其严格之来处见 §3.6：总发射数 $n_E=M_0-1$，半程前缀之 qubit 数严格为 $\lfloor n_E/2\rfloor=M_0/2-1$，此为精确之维数计数。frozen 之面积级与 control 之体积级，不借任何高维全息对偶之假设，径于此 $1+1$ 维离散 stabilizer 网络上分判。</p>
+<h3>§4.2 control 的体积基准 K4</h3>
+<p>亮自足窗之对照前，须先立 control 之体积基准，使锋有靶。control 之自足窗满足 $\operatorname{median}\,\widehat\omega_{\rm ctrl}/(M_0/2)=1.000$，三档皆然。须把此窗之身份说明白。control 之半程熵具严格维数上界 $M_0/2-1$，此为计数；其近饱和与 $\widehat\omega_{\rm ctrl}/(M_0/2)$ 之趋一，与 Page-type typicality 及随机搅拌之 decoupling 尺度相容，是本 control 之数值基准，而非 Page 定理对本有限深度局域电路之逐样本推论。本 toy 之新增内容不在 control 本身，而在同一测量协议下 frozen 臂之所呈。先立此体积基准，§4.3 之 frozen 对照方有所对。</p>
+<h3>§4.3 锋：统一自足窗对照 G1</h3>
+<p>此为模型之锋刃，亦本篇辨识力最强之 frozen 对 control 对照。须先承一句脊锋之梁：§4.1 那条平台，不只是面积账本之高度，它就是本节自足窗之标尺。同一个 $S_{\rm mid}$，脊处量其高，锋处量其宽；frozen 臂之自足窗按此面积级平台缩放，而 control 臂之窗按 $M_0/2$ 缩放。</p>
+<p>为使深 diary 纯化所需收集之注册自足窗 $\widehat\omega$，在 frozen 臂下实现清晰之标度坍缩（见图 4）。三档尺寸下之中位数比值 $\widehat\omega/S_{\rm plat}$ 为 $1.229$、$1.146$、$1.311$，皆落于先导之结构带 $[0.9,1.5]$ 之中，跨 $W$ 极差仅 $0.165$，低于预注册之 $0.2$。frozen 自足窗按面积缩放，约为 $1.2\cdot S_{\rm plat}$；此系数为框架级之涨落量，而非精确常数，其涨落统计见 §5.2。而 control 之窗按 $M_0/2$ 缩放，即 §4.2 之 Page-type 体积基准。是故面积窗对体积窗，于同一协议下分判。</p>
+<p>此处须把一条分际写明，亦本节最要害之克制。$\widehat\omega=O(W)$ 之面积级标度，非由 §3.5 之冻结天花板径直推得。天花板所约束者，是辐射熵之面积级尺度与可用容量；它本身并不证明该信息在 emission order 中必定集中于 $O(W)$ 个连续位置。自足窗之连续局域性，主由本格数据于带内立成；皮肤容量铺满之机制论证，为其结构性动机而非独立之严格证明。天花板给窗口律之面积级尺度，G1 给窗口之连续局域性连同数据；脊给尺度，锋给局域性，二者分工于此。故本节 G1 之面积级结论，为带条件之结构结论，由数据检验立成，非由引理无条件推出。</p>
+<p>尚有一事须于此点明。本节 G1 之带，专评于 production 之 $a_0=2$ 格。$a_0\in\{1,3\}$ 之两格，仅供下文 G2 之单调性，不受 G1 带之约束。其故在系数 $c=\widehat\omega/S_{\rm plat}$ 随 $a_0$ 而漂。在容量臂中，$a_0=1$ 之 ratio 中位数约为 $1.257$，个别 seed 可升至约 $1.607$；这显示系数对 $a_0$ 有依赖，故不得将 $a_0=2$ 之带外推为三臂共同之规律。此正合 §3.5 之结论：天花板约束数量级，不予精确之无参数系数；$a_0$ 不同则界面常数不同，系数随之漂移。</p>
+<h3>§4.4 K2 深度阶梯与 control 深度标签擦除</h3>
+<p>frozen 臂保留径向深度之标签。深、中、浅三 diary 之退出时刻序，在 frozen 臂下呈严格阶梯，三档各 $15$ 种子皆深者后出、浅者先出，凡 $15/15$（见图 5 左）。而 control 臂之同一序之 range 仅 $0.000$ 至 $0.001$，深浅之别其可辨识性被擦除。须守分寸：control 为全局幺正演化，并不擦除信息，所擦除者为深度标签之可辨识性。frozen 之保留与 control 之擦除，于此分判：冻结账本留住了内部记录之径向深度，而 scrambler 把其标签抹平。此结果之执行语义严格，所陈止于 toy 内之退出时刻序，不外推黑洞物理。</p>
+<h3>§4.5 G2 皮肤容量单调</h3>
+<p>皮肤容量 $a_0$ 增，则自足窗之中位数随之严格递增。三格 $a_0\in\{1,2,3\}$ 之 median $\widehat\omega$ 为 $98.5$、$130$、$151$，严格单调。本节止于此一陈述，即中位数随 $a_0$ 严格递增；不扩写为逐 seed 之单调，不扩写为分布之分离，不扩写为近乎不重叠。此单调为带条件之结构结论，由三格 median 立成。</p>
+<h3>§4.6 与 Info-4 的限域接口</h3>
+<p>本 toy 所得 frozen 之 $O(W)$ 对 control 之 $O(W^2)$ 标度分歧，与 Info-4 所列三拓扑闭合机制候选在结构层面相容，为其提供一个可计算邻接例。须把此对接之分寸守到最克制。所谓邻接例，谓本 toy 显示局域冻结网络与全开 scrambler 可以产生清楚之面积级对体积级信息流分化；它不在 phase transition、percolation、SOC 三种候选机制之间作选择，亦不构成其中任何一项之证据。相容一词可保留，旁证一词不取。</p>
+<p>本节明示未做者如下。本次 production 未检验 phase transition 之临界指数，未检验 gradient percolation 之 $4/7$，未检验 SOC，未检验 replica 或 island saddle，未生成真实 Page curve 之动力学。本 toy 之于 Info-4，是相容而非推进，不取代 replica wormhole 之计算，不解信息佯谬。本篇从一组不同之本体来源出发，呈一条可计算之思路供同行思考；两框架只在面积级对体积级之标度结构上相容，不逾此而互为证明。</p>
+<hr>
+<h2>§5 负结果、有限尺寸与模型依赖</h2>
+<p>本节集中陈述本篇之负结果与真正之科学局限，不以正结果之光遮其负者。预注册之失败条件既先落盘，所得之负结果即如实报，不事后改判。</p>
+<h3>§5.1 K3 前沿锐化之部分支持</h3>
+<p>K3 所测者，是深 diary 退出时刻之 seed 间离散，连同其释放窗之 rise-width，二者是否随尺寸而锐化。须先辨明 K3 所测之对象，以免与 K2 相混：K3 测者为深 diary 单层之 exit-spread 与 rise-width 之有限尺寸趋势，非深中浅三 diary 之序数锐化；后者为 K2 所测，且 K2 三档各 $15/15$ 皆过。</p>
+<p>K3 之结果为部分支持。深 diary 退出时刻之 seed 间离散，随尺寸而锐化，其标准差为 $0.0525$、$0.0289$、$0.0219$，单调递减。然其释放窗之 rise-width，未呈严格单调之有限尺寸序列，其值为 $0.0730$、$0.0381$、$0.0563$，于 $W40$ 出现逆序回升。故前沿锐化只获部分支持：离散变窄之趋势成立，而 rise-width 之单调不成立（见图 5 右）。K3 为 supporting diagnostic，非主判据之必要条件；其未通过如实报，不翻主判据之结论。此一负结果留待后续以更大尺寸或更细之前沿刻画检视。</p>
+<h3>§5.2 系数 c 之随机涨落</h3>
+<p>自足窗对平台之比值 $c=\widehat\omega/S_{\rm plat}$，是一涨落之结构量，非精确常数。须把此涨落透明陈述。G1 之判据看 cell 之中位数，非看单一 seed。三档之 $c$ 分布如下：$W24$ 之范围为 $[0.992,1.524]$，四分位距为 $[1.153,1.400]$；$W32$ 之范围为 $[0.965,1.457]$，四分位距为 $[1.072,1.284]$；$W40$ 之范围为 $[1.055,1.605]$，四分位距为 $[1.248,1.427]$。可见单 seed 之离散显著，而三档之中位数 $1.229$、$1.146$、$1.311$ 皆稳落带内。以单一 seed 为例，s330 之 $c$ 在 $W40$ 为 $1.605$，在 $W24$ 为 $0.992$，同一 seed 跨尺寸而两头摆；此非判据之反例，而正是 $c$ 为涨落量之显证。故 $c$ 标为框架级之涨落量，而非精确常数。此与 §3.5 之结论一致：冻结天花板约束数量级，不予精确之无参数系数。</p>
+<h3>§5.3 集中之科学局限</h3>
+<p>本篇之科学局限集中如下，凡五。其一，所检验之尺寸只三档 $W\in\{24,32,40\}$，不足以定渐近指数；本篇所主张者止于三档内之坍缩与相容，非 $W\to\infty$ 之渐近律。其二，K3 之 rise-width 非单调，前沿锐化只获部分支持。其三，系数 $c$ 有明显之随机涨落，非精确常数。其四，模型依赖：本 toy 之结论系于柱面之拓扑、Clifford 之演化、浅 prep 之制备、每步一胞之发射等具体选择；易其一，结论未必照旧。其五，本 toy 未接入真实之曲率、能量与 Hawking spectrum，其与黑洞物理之相通止于信息流拓扑之映射，不及动力学之实现。protocol-invalid 之报告已置 §3.7 之数据纳入规则，为判读协议之报告，非科学之局限，故不列于本节。</p>
+<hr>
+<h2>§6 讨论与科学地位</h2>
+<h3>§6.1 type-B 可计算结构分歧</h3>
+<p>本篇所得，是一 type-B 之可计算结构分歧。其内容如下：在同一测量协议下，frozen ledger 臂呈 $S_{\rm plat},\widehat\omega=O(W)$ 之面积级，control scrambler 臂呈 $S_{\rm half},\widehat\omega=O(W^2)$ 之体积级基准；辅以 frozen 之深度阶梯与 control 之深度标签擦除。所谓 type-B，谓此乃结构之相容性，可于物理处失效；本 toy 之所立，是 stabilizer 框架内之结构分歧，非黑洞本体之经验证明。其严格之部分（维数计数、冻结天花板第一式、$I=2$ 之 Bell 判据等）为框架内之定理，其面积级标度之结论为带条件之结构结论，其向真实黑洞之外推悬于门外。</p>
+<h3>§6.2 三句界桩之重申与排除项</h3>
+<p>三句界桩于此第三度重申，为本篇之硬边界。其一，本篇不解信息佯谬。其二，本篇不主张取代既有路径，亦不裁决黑洞信息问题之是非。其三，本篇不给 LISA、CE、ET 之直接经验预言。除此三句，尚有数事须明示排除：本篇不给真实霍金辐射之可操作解码，不生成真实之 Page curve 动力学。凡本篇所未计算者，皆不在本篇之主张内。</p>
+<h3>§6.3 firewall 之认识论与本篇姿态</h3>
+<p>本篇守 firewall 之认识论。SAE 之 toy 不推导 Page 曲线，Page 曲线亦不证明 SAE；两者只在面积级对体积级之标度结构上相容。此相容是一可计算之邻接例，非三机制候选间之裁决，亦非佯谬之推进。本篇之于既有黑洞理论，是接续 QM P9 §7 所留之口，给出第一个预注册、可复验之 frozen 对 scrambler 计算实例。本篇承认 island 与 replica wormhole 路径在黑洞信息问题上之地位，而从一组不同之本体来源出发，呈一条不同之思路。P9 给边界 gluing 之本体读法，本篇给第一个预注册、可复验之 frozen 对 scrambler 计算实例；本篇不与既有路径争胜，惟邀同行思考此一不同之进路。</p>
+<hr>
+<h2>§7 余项与展望</h2>
+<h3>§7.1 余项</h3>
+<p>本篇留两项余项，待后续检视。其一，K3 之前沿锐化，其 rise-width 之有限尺寸非单调，留待更大尺寸或更细刻画检视。其二，G1 之 $\widehat\omega/S_{\rm plat}$ 涨落统计，其 seed 间分散之结构尚待更系统之统计刻画。</p>
+<h3>§7.2 黑洞系列之后续方向</h3>
+<p>本篇为黑洞系列之开篇，后续方向于此略留其口。其一，向 Kerr 之推广，继承 Relativity P6 之螺旋闭合，把本篇之 Schwarzschild toy 推及转动黑洞。其二，ringdown 内部印记之可计算 toy，继承 Info-6 之引力波动力学。其三，更大 $W$ 之标度外推，以检视三档内之相容是否延及更大尺寸。本系列尚有一组关乎黑洞质量阈与蒸发命运之本体图景，因其未进入本篇 toy 之算法，列为系列后续之问题，不入本篇主文之主张。</p>
+<h3>§7.3 remainder 在 toy 中之操作化</h3>
+<p>本篇之余项胞 $\varepsilon\equiv1$，是 construct-and-remainder 之概念在 toy 中之一个操作化。其在 stabilizer 演化中始终不发射、不被门触碰，以维持 $\varepsilon=1$ 之纠缠账本语义。须辨明一处因果：control 半程熵之 $-1$ 偏移，来自一只 qubit 永不发射之维数计数（$n_E=M_0-1$ 故 $\lfloor n_E/2\rfloor=M_0/2-1$），而非由余项胞之 Bell 配对单独推出；Bell 配对维持余项之纠缠语义，维数计数给出 $-1$，二者不可混。此操作化把余项不可湮灭之本体（P9）落为一可计算之具体对象。此操作化之方法论意义，俟其在本系列之后续工作中充分检验，方议其一般表述；本篇止于陈此操作化之事实。</p>
+<hr>
+<h2>§8 结论</h2>
+<p>本篇构造一 $W\times W$ 柱面 stabilizer toy model，于同一测量协议下，得 frozen ledger 臂之 $O(W)$ 面积级平台与自足窗，对 control scrambler 臂之 $O(W^2)$ 体积级基准之 type-B 结构分歧，辅以 frozen 之深度阶梯与 control 之深度标签擦除。六项预注册主判据全部通过，一项 supporting diagnostic（K3 前沿锐化）未通过，并按预注册保留为负结果。本篇立一冻结天花板引理为面积级尺度之理论支柱，其第一式严格，其面积级标度为带条件之结构结论，由三档尺寸之数据检验立成。本篇接续 QM P9 §7 之留口，从一组不同于几何主导路径之本体来源出发，为 Info-4 所列拓扑闭合机制候选提供一可计算邻接例，相容而非推进。本篇不解信息佯谬，不主张取代既有路径，不给直接经验预言；惟呈一条可计算之思路，供同行思考。后续将向 Kerr、ringdown 与更大尺度推广。</p>
+<hr>
+<h2>附录 A 冻结天花板及相关量之证明</h2>
+<h3>A.1 稳定子熵公式</h3>
+<p>设纯 stabilizer 态之稳定子空间为 $\mathcal S\subset\mathbb F_2^{2n}$，$\dim\mathcal S=n$。令 $\pi_A:\mathcal S\to\mathbb F_2^{2|A|}$ 为向 $A$ 之 $X/Z$ 列投影，则 $\operatorname{rank}\pi_A=\operatorname{rank}_{\mathbb F_2}(G|_A)$。$\ker\pi_A$ 正是完全支撑于 $A^c$ 之稳定子子群，故 $\dim\mathcal S_{A^c}=n-\operatorname{rank}(G|_A)$。稳定子态对子区 $A^c$ 之熵为 $S(A^c)=|A^c|-\dim\mathcal S_{A^c}$，代入得 $S(A^c)=(n-|A|)-[n-\operatorname{rank}(G|_A)]=\operatorname{rank}(G|_A)-|A|$。全局态纯，故 $S(A)=S(A^c)$，即得所用公式。其非负性、上界与次可加性随 von Neumann 熵之一般性质而来。$\blacksquare$</p>
+<h3>A.2 $I=2$ 的 Bell 转移判据</h3>
+<p>令 $A=\mathrm{Ref}_k$，$B=R_{[0,b)}$，$C=(AB)^c$。全局态纯时 $I(A:B)+I(A:C)=2S(A)$。本模型中 $S(A)=1$，故 $I(A:B)=2\iff I(A:C)=0$。而 quantum mutual information 为零当且仅当 $\rho_{AC}=\rho_A\otimes\rho_C$，所以 $A$ 与补系统完全解耦，所有纯化均位于 $B$。又因 $A$ 为 maximally mixed qubit，存在 $B$ 内一个二维逻辑子系统 $B_1$，使 $|\Psi\rangle_{ABC}\simeq|\Phi^+\rangle_{AB_1}\otimes|\chi\rangle_{B_2C}$。对 stabilizer 态，该分解可由 $B$ 内部之 Clifford 变换实现。因此 $I=2$ 正是完全回收而非部分相关之阈值。$\blacksquare$</p>
+<h3>A.3 自足窗搜索的数学性质</h3>
+<p>对固定 $a$，定义 $b_{\min}(a)=\min\{b\ge\max(a+2,t_e):I_0(a,b)=2\}$。由 $R_{[a,b)}\subset R_{[a,b+1)}$，数据处理不等式给出 $I_0(a,b)$ 对 $b$ 非减，故二分搜索精确。若 $a_1<a_2$，则 $R_{[a_2,b)}\subset R_{[a_1,b)}$，所以任何使 $a_2$ 成功之右端点 $b$，亦使 $a_1$ 成功，因而 $b_{\min}(a_1)\le b_{\min}(a_2)$。这证明反向 coarse sweep 中把上一点之 $b_{\min}$ 当作下一点之上界不会遗漏解。令 $f(a)=b_{\min}(a)-a$，并设 $a^\star$ 为搜索带 $\mathcal D$ 内之整数全局最小点。取不大于 $a^\star$ 之最近 coarse grid 点 $c$，则 $0\le a^\star-c\le3$。由 $b_{\min}(c)\le b_{\min}(a^\star)$，$f(c)=b_{\min}(c)-c\le b_{\min}(a^\star)-c=f(a^\star)+(a^\star-c)\le f(a^\star)+3$。算法所选最佳 coarse 点不劣于 $c$，精修又只会进一步降低 $f$，故 $\omega_{\mathcal D}^\star\le\widehat\omega_0\le\omega_{\mathcal D}^\star+3$。此证明者为注册搜索带内之加性近似，非无约束 $\omega^\star$ 之全域等价。$\blacksquare$</p>
+<h3>A.4 严格冻结天花板</h3>
+<p>全局系统在第 $t$ 步分解为 $R_t\sqcup A_t\sqcup F_t\sqcup Q$。所有演化门均为 Clifford unitary，发射仅改变 qubit 之账本归属，故全局态保持纯，于是 $S(R_t)=S(A_tF_tQ)$。两次应用次可加性：$S(A_tF_tQ)\le S(A_t)+S(F_tQ)\le S(A_t)+S(F_t)+S(Q)$。因 $A_t$ 含 $|A_t|$ 个 qubit，$S(A_t)\le|A_t|$；又因 $Q$ 含 $N_{\rm ref}$ 个 qubit，$S(Q)\le N_{\rm ref}$。故 $S(R_t)\le|A_t|+S(F_t)+N_{\rm ref}$。这条不等式不依赖随机性，亦不依赖 Page 假设，是框架内之严格条件数学。$\blacksquare$</p>
+<h3>A.5 冻结不变性</h3>
+<p>固定时刻 $t$，按定义，$F_t$ 中任何 qubit 自浅制备完成之后均未参与任何 gate，亦未发射。因此全部 post-prep unitary 可写为 $U_t=I_{F_t}\otimes V_{F_t^c}$。若浅制备后之态为 $\rho^{(0)}$，则 $\rho(t)=U_t\rho^{(0)}U_t^\dagger$。对 $F_t^c$ 求偏迹：$\rho_{F_t}(t)=\operatorname{Tr}_{F_t^c}[(I_{F_t}\otimes V)\rho^{(0)}(I_{F_t}\otimes V^\dagger)]=\rho_{F_t}^{(0)}$。所以不仅熵不变，整个 reduced density operator 都不变。$\blacksquare$</p>
+<h3>A.6 有限制备深度的 cut bound</h3>
+<p>浅制备之前，系统是 product qubits 与有限个 Bell pairs 之张量积。故任意 lattice 子区 $F$ 之初始熵等于跨越该切割之 seed Bell pair 数量：$S_{\rm seed}(F)=B(F)$。考虑一只跨越 $F\mid F^c$ 之二 qubit gate。令其在 $F$ 一侧作用于 qubit $x$，并记 $F=F'\cup\{x\}$。该 gate 不改变 $\rho_{F'}$。在 gate 前后，Araki–Lieb 不等式 [11] 均给出 $|S(F)-S(F')|\le1$。故单只跨界二 qubit gate 对 $S(F)$ 之改变量至多为 $2$ bit。完全位于 $F$ 内或 $F^c$ 内之 gate 不改变 cut entropy。每个 preparation round 对每条非余项 bond 至多施一次 gate，所以跨界 gate 总数不超过 $d_{\rm prep}\,|\partial_E F|$。于是 $S_0(F)\le B(F)+2d_{\rm prep}|\partial_E F|$。对当前 seed state，$B(F)\le N_{\rm ref}+1$。$\blacksquare$</p>
+<h3>A.7 thaw 时偏迹增熵为何不破面积阶</h3>
+<p>随动力学进行，尚未触及之冻结集单调收缩：$F_{t+1}\subseteq F_t$。记被 thaw 或发射出去之部分为 $D_t=F_t\setminus F_{t+1}$，则 $\rho^{(0)}_{F_{t+1}}=\operatorname{Tr}_{D_t}\rho^{(0)}_{F_t}$。偏迹确可能使熵增加，故一般不能声称 $S(F_{t+1})\le S(F_t)$。此处亦不需要该单调性。有限深度 cut bound 对新区域 $F_{t+1}$ 独立成立：$S(F_{t+1})\le B(F_{t+1})+2d_{\rm prep}|\partial_E F_{t+1}|$。若所有平台时刻之新边界均满足 $|\partial_E F_t|\le\beta W$，则无论某次 partial trace 是否增熵，$S(F_t)\le N_{\rm ref}+1+2d_{\rm prep}\beta W=O(W)$。所以 thaw 不破面积阶之理由，不是偏迹不会增熵，而是每一个 thaw 后之新 frozen region 都重新受同一有限深度 min-cut bound 约束。这正是局域 gluing 只给 min-cut 上界之 stabilizer 可计算实例。其严格部分是 cut bound；emergent local 臂之界面复杂度在所考察 regime 内保持 $\beta=O(1)$，则是模型之结构条件，由 local rule 与数值坍缩共同支持，而非无条件之 Hilbert-space 定理。$\blacksquare$</p>
+<h3>A.8 control 侧的体积基准</h3>
+<p>control 中全部非余项 bond 开放，post-prep 电路深度随蒸发时间增长，故有限 $d_{\rm prep}$ 对冻结内部之约束不再控制全局纠缠。半程 prefix 之 Hilbert-space 维数给出严格上限 $S_{\rm half}\le h=M_0/2-1$。Page-type typicality 说明 typical scrambler 应在 $O(1)$ 修正内饱和该上限。须重申：本文之 control 为随时间变化之局域 Clifford 电路，非均匀 Clifford 抽样；故近饱和为 Page-type typicality 之相容现象与本 control 之数值基准，非 Page 定理对本电路之逐样本推论。本次 control 数据之 cell median 正好为 $287$、$511$、$799=M_0/2-1$，是验证基准运作正常，不是本文新发现。$\blacksquare$</p>
+<hr>
+<h2>表 2 预注册判据与终轮判读</h2>
+<table>
+<thead><tr>
+<th>判据</th>
+<th>身份</th>
+<th>预注册阈值</th>
+<th>终轮结果</th>
+<th>判</th>
+</tr></thead><tbody>
+<tr><td>K0</td><td>主判据</td><td>余项语义守恒（全部 runs）</td><td>$110/110$ clean</td><td>PASS</td></tr>
+<tr><td>K1</td><td>主判据</td><td>三档 $S_{\rm plat}/W$ median 之 CV $<0.2$ 且 control half $\ge0.9\,M_0/2$</td><td>CV $=0.0151$</td><td>PASS</td></tr>
+<tr><td>K2</td><td>主判据</td><td>各档深度阶梯单调 $\ge95\%$</td><td>各档 $15/15$</td><td>PASS</td></tr>
+<tr><td>K3</td><td>supporting</td><td>exit-spread 与 rise-width 皆随 $W$ 不增</td><td>rise-width 非单调</td><td>FAIL</td></tr>
+<tr><td>K4</td><td>主判据</td><td>$\widehat\omega_{\rm ctrl}/(M_0/2)$ median $\in[0.95,1.15]$</td><td>$1.000$（三档）</td><td>PASS</td></tr>
+<tr><td>K5</td><td>supporting</td><td>双边带</td><td>全档入带</td><td>PASS</td></tr>
+<tr><td>G1</td><td>主判据</td><td>$\widehat\omega/S_{\rm plat}$ median $\in[0.9,1.5]$ 且跨 $W$ 极差 $\le0.2$</td><td>极差 $0.165$</td><td>PASS</td></tr>
+<tr><td>G2</td><td>主判据</td><td>三 median 随 $a_0$ 严增</td><td>$98.5<130<151$</td><td>PASS</td></tr>
+</tbody></table>
+<p>注：G1 之 band $[0.9,1.5]$ 与 RANGE_MAX $0.2$ 为预注册之 hardcoded fallback，仅适用于 $a_0=2$ 臂。protocol-invalid 之 run 排除于判读之外，规则见 §3.7。</p>
+<hr>
+<h2>承诺分级</h2>
+<p>本篇之陈述按承诺之强弱分四档标注。</p>
+<p><strong>T1-math（stabilizer 框架内严格之数学）</strong>：$p_{\rm open}$ 之定义与单调性；$S(A)=\operatorname{rank}_{\mathbb F_2}(G|_A)-|A|$ 及其性质；$I=2$ 之完全 Bell 纯化判据；$t_{\rm exit}$ 与 $b_{\min}$ 二分之正确性；注册搜索带内 $\widehat\omega$ 之加性 $+3$ 界；冻结天花板第一式 $S(R)\le|A|+S(F)+N_{\rm ref}$；冻结不变性 $\rho_{F_t}(t)=\rho^{(0)}_{F_t}$；有限深度 cut bound $S_0(F)\le B(F)+2d_{\rm prep}|\partial_E F|$；control 半前缀之维数计数 $M_0/2-1$。</p>
+<p><strong>T1-data（终轮执行之事实）</strong>：K0 之 $110/110$ 语义守恒；K1 之三档 median CV $=0.0151$；K2 之三档各 $15/15$ 深度阶梯；K4 之三档 median $1.000$；G1 之三档 median $1.229/1.146/1.311$、极差 $0.165$；G2 之 $98.5<130<151$；K3 之 sd 单调而 rise-width 非单调。此为终轮数据之事实，非数学定理。</p>
+<p><strong>T2-structure（模型结构重读或带条件之结构结论）</strong>：emergent local 臂平台区间之 $|A_t|,|\partial_E F_t|=O(W)$；因而 $S_{\rm plat}=O(W)$ 之面积级标度；自足窗由同一面积级皮肤容量控制；frozen 面积级与 control 体积级之分化；$c=\widehat\omega/S_{\rm plat}$ 为涨落之结构量而非精确常数。</p>
+<p><strong>T3-extrapolation（仍悬门外）</strong>：$W\to\infty$ 之普适渐近面积律及其精确指数；不依赖 $a_0,w$ 之 universal $\kappa$；$\widehat\omega=\omega^\star$ 之全域严格等价；精确之 $c_{\rm th}$；从本 stabilizer toy 推及真实黑洞、Hawking spectrum、island 或 GW waveform 之动力学字典。</p>
+<hr>
+<h2>数据与代码可用性</h2>
+<p>production 之 manifest（$110$ 行）与判读 verdict 之 SHA-256，连同引擎、模拟器、判读器、驱动、预注册本体、spec 与 bond 枚举之 SHA-256，及冻结环境之标识，随论文存档。判读器为零信任设计：任何人持同一 judge 代码与同一 manifest，即可复现同一判读结果。终轮经双实现 replay concordance 与独立实现自有逻辑之重判复现。完整之逐轮加固史置于补充材料。</p>
+<p>五链与相关哈希之 SHA-256 如下。</p>
+<p>manifest：<code>7bcf0b41f13b6966b1f38d0fec2f98822ef53ec4c738eb75ab98158e033b62e7</code> verdict：<code>2588b8226ac82714c54b86849934719a884566dffdd202b972aa0ce4ec0bd57e</code> engine：<code>0936d1d8819a3beae109a812c9de61a63a0d4ac28296843f04f8caa18382ba1a</code> sim：<code>3ffa70c973021299996891e0720c84a92a83767777a40410004a1898a02eaf9e</code> judge：<code>c31634dbaf9f15a8e962e0df92dd0362f39499121c11c2c3631d8841ebae5557</code> driver：<code>7b2de1b73e6f268c4aa49bd5b6989061537bcc2127d6d596e4bf18441dd8c02f</code> prereg：<code>1fd7e12c4f79e66256cd0708aaa4aa74ee400744cd111cce5c8661adc4235b97</code> spec：<code>d71c3a33c3a126b15680162acc5dc0f65b483017ce5fd48683532228312dc0d4</code></p>
+<p>冻结环境为 Python 3.12.3 / NumPy 2.4.4 / x86_64（scipy-openblas 0.3.31.188.0）。</p>
+<hr>
+<h2>图注（图 1–5 为单独文件，随论文上传）</h2>
+<p><strong>图 1（fig1_schematic）</strong>　模型结构示意：$W\times W$ 柱面，frozen 内部 $F_t$（从未参加 post-prep gate，保留径向深度标签）、active skin $A_t$（closure-addressable layer）、已发射辐射序 $R$（子系统归属重分类）、深中浅三 diary 与余项胞 $\varepsilon\equiv1$；右侧箭头示发射方向，左右边缘为柱面周期边界。各 diary 之角向位置、active skin 之厚度及余项胞在周期圆周上之位置，仅为示意，不按 production 坐标绘制。</p>
+<p><strong>图 2（fig2_entropy_curves）</strong>　逐步辐射熵 $S(R_{[0,t)})$ 对发射分数 $t/n_E$，真数据（seed 320），$W=24$ 与 $W=32$ 两档。control 臂（红）呈对称 Page 曲线，半程峰抵体积线 $M_0/2-1$（虚线）后回落；frozen 臂（蓝）升至中段后转面积级平台（$W24\approx101$、$W32\approx142$），平台高度随 $W$ 增而升，示 $O(W)$ 标度。两臂末段（$t/n_E\to1$）皆回落至由余项胞与三个 Ref qubits 所固定之 $4$-bit 终点；本模型最终发射 $M_0-1$ 个 lattice qubits，余项胞与三 Ref qubits 留于补系统，其 reduced state 自初始 Bell 配对后不受 lattice 侧演化改变，故 $S(R_{[0,n_E)})=4$ bit 而非严格零。相对于面积级或体积级主尺度，此 $4$-bit 终点在图中近似贴于零线。此为有限系统辐射前缀趋近全部可发射 lattice qubits 时之边界效应；frozen 之关键在中段平台，而非末段回落。</p>
+<p><strong>图 3（fig3_collapse）</strong>　左：frozen 之 $S_{\rm plat}/W$ 三档（菱形为 median，散点为 per-seed），三档 median 之变异系数 $0.0151$，示面积级坍缩。右：control 之 $S_{\rm half}/(M_0/2)$ 三档贴近 $1$（即 $M_0/2-1$ 体积线）。</p>
+<p><strong>图 4（fig4_selfwindow）</strong>　frozen 注册自足窗比值 $\widehat\omega/S_{\rm plat}$ 三档（蓝菱形为 median：$1.229$、$1.146$、$1.311$，散点为 per-seed），皆落于预注册带 $[0.9,1.5]$（浅蓝）；个别 single seed 穿上缘，示 $c$ 为涨落量、判据看 cell median 非单 seed。control 之 $\widehat\omega_{\rm ctrl}/(M_0/2)$（红方块）三档为 $1.000$。</p>
+<p><strong>图 5（fig5_ladder_k3）</strong>　左：frozen 之深中浅三 diary 归一化退出时刻 $\tau_{\rm exit}$ 三档，深者最晚、浅者最早，各档 $15/15$ 阶梯。右：K3（supporting）双轴，深 diary exit-spread 之 sd（蓝，$0.0525/0.0289/0.0219$ 单调递减）与归一化 rise-width（红，$0.0730/0.0381/0.0563$，$W40$ 逆序回升）；前沿锐化只获部分支持。</p>
+<p>表 1（操作对象与 SAE 本体字典）见 §2.B，表 2（全部预注册判据、阈值、终轮值与判读）见正文，二表已含于本文。</p>
+<hr>
+<h2>参考文献</h2>
+<p>[1] S. W. Hawking, Particle creation by black holes, Commun. Math. Phys. <strong>43</strong>, 199 (1975).</p>
+<p>[2] D. N. Page, Average entropy of a subsystem, Phys. Rev. Lett. <strong>71</strong>, 1291 (1993), arXiv:gr-qc/9305007.</p>
+<p>[3] D. N. Page, Information in black hole radiation, Phys. Rev. Lett. <strong>71</strong>, 3743 (1993), arXiv:hep-th/9306083.</p>
+<p>[4] G. Penington, Entanglement wedge reconstruction and the information paradox, J. High Energy Phys. <strong>09</strong> (2020) 002, arXiv:1905.08255.</p>
+<p>[5] A. Almheiri, N. Engelhardt, D. Marolf, and H. Maxfield, The entropy of bulk quantum fields and the entanglement wedge of an evaporating black hole, J. High Energy Phys. <strong>12</strong> (2019) 063, arXiv:1905.08762.</p>
+<p>[6] A. Almheiri, R. Mahajan, J. Maldacena, and Y. Zhao, The Page curve of Hawking radiation from semiclassical geometry, J. High Energy Phys. <strong>03</strong> (2020) 149, arXiv:1908.10996.</p>
+<p>[7] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, Replica wormholes and the entropy of Hawking radiation, J. High Energy Phys. <strong>05</strong> (2020) 013, arXiv:1911.12333.</p>
+<p>[8] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, The entropy of Hawking radiation, Rev. Mod. Phys. <strong>93</strong>, 035002 (2021), arXiv:2006.06872.</p>
+<p>[9] D. Gottesman, The Heisenberg representation of quantum computers, arXiv:quant-ph/9807006 (1998).</p>
+<p>[10] S. Aaronson and D. Gottesman, Improved simulation of stabilizer circuits, Phys. Rev. A <strong>70</strong>, 052328 (2004), arXiv:quant-ph/0406196.</p>
+<p>[11] H. Araki and E. H. Lieb, Entropy inequalities, Commun. Math. Phys. <strong>18</strong>, 160 (1970).</p>
+<p>[12] Han Qin, 前闭合场分布 (Pre-Closure Field Distribution), SAE 量子力学系列 P9, Zenodo, DOI: 10.5281/zenodo.20621492.</p>
+<p>[13] Han Qin, 黑洞信息通过因果谱 (Black-Hole Information through the Causal Spectrum), SAE 信息论系列 Info-4, Zenodo, DOI: 10.5281/zenodo.19880112.</p>
+<p>[14] Han Qin, SAE Foundation, Zenodo, DOI: 10.5281/zenodo.19361950.</p>
+<p>[15] Han Qin, 信息的本质：E/c³ (The Nature of Information: E/c³), SAE 质量系列收束篇, Zenodo, DOI: 10.5281/zenodo.19510868.</p>
+<p>[16] Han Qin, SAE 信息论系列 Info-3, Zenodo, DOI: 10.5281/zenodo.19797457; Info-5, DOI: 10.5281/zenodo.19968504; Info-6, DOI: 10.5281/zenodo.20066645.</p>
+<p>[17] Han Qin, SAE 相对论系列 P5, Zenodo, DOI: 10.5281/zenodo.20105113; P6, DOI: 10.5281/zenodo.20131993.</p>
+<hr>
+<h2>致谢</h2>
+<p>本篇之研究于成文各阶段采多 AI 协作之评审方法，经多轮发散评审、对抗复核与独立重判；所用模型包括 ChatGPT、Claude、Gemini 与 Grok。所有内容之主张、立论与可能之错误，责任皆在作者。</p></div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
