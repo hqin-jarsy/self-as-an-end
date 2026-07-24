@@ -5,37 +5,21 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking — Han Qin (秦汉)</title>
-  <meta name="author" content="Han Qin (秦汉)">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://self-as-an-end.net/papers/zfcrho72.html">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="canonical" href="https://self-as-an-end.net/papers/zfcrho72.html">
-  <meta name="citation_title" content="ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking">
-  <meta name="citation_author" content="Qin, Han">
-  <meta name="citation_publication_date" content="2026">
-  <meta name="citation_journal_title" content="Zenodo">
+  <title>ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking – Han Qin (秦汉)</title>
   <meta name="citation_doi" content="10.5281/zenodo.20029942">
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        tags: 'none'
-      },
-      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
-    };
-  </script>
+  <script>MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'none' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
     <nav>
-      <a href="../index.html">Papers</a>
-      <a href="../about.html">About</a>
-      <a href="../endacc.html">end/acc</a>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
       <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
       <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
     </nav>
@@ -44,9 +28,9 @@
 <article class="paper-page">
   <div class="paper-page-header">
     <div class="series-label">Self-as-an-End Theory Series · ZFCρ Series · Paper LXXII</div>
-    <h1>ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXXII篇： Spectral Bridge Front II ——正向凸起标度与前沿残差锁定</span></h1>
-    <div class="paper-author">Han Qin (秦汉) &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; 2026</div>
-    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20029942" target="_blank" rel="noopener">10.5281/zenodo.20029942</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.20029942" target="_blank" rel="noopener">Full PDF on Zenodo</a> &nbsp;·&nbsp; CC BY 4.0</div>
+    <h1>ZFCρ Paper LXXII: Spectral Bridge Front II — Positive-Lobe Scaling and Front Residual Locking<br><span style="font-size:1.1rem;opacity:0.75">ZFCρ 第LXXII篇：Spectral Bridge Front II ——正向凸起标度与前沿残差锁定</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.20029942">10.5281/zenodo.20029942</a> · Full PDF on Zenodo · CC BY 4.0</div>
   </div>
   <div class="lang-tabs">
     <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
@@ -55,40 +39,7 @@
   <div id="lang-en" style="display:block">
     <div class="abstract-box">
       <div class="abstract-label">Abstract</div>
-      <p>Paper 71 identified the linear signed Abel budget as the residual spectral target and, within Criterion 71.E, articulated a conditional closure pathway. Cross-$N = 10^9$ data audit (across 12 configurations × 16 blocks) exposed a mathematical fact: Paper 71's Criterion 71.E linear signed Abel budget hypothesis (H4a), at full-window sample-centered Bartlett readout ($W = m_j$), is a finite-sample identity, $A_j^{\rm signed}(m_j) \equiv 0$, vacuous. The identity trigger is an interaction between two factors: standard sample-mean-centered ACF computation, and the $W = m_j$ boundary. The genuine non-vacuous theorem-target readout scale is the block-relative pre-full window, e.g., $\theta = 1/2$.
-
-This paper does five things.
-
-(i) Corrects Paper 71's (H4a) observable choice. Paper 71 §5's numerical anchor was actually at $W_f = m_j / 2$ (non-vacuous, carrying signed cancellation information), but Paper 71 §7.1's literal theorem statement (H4a) was at $W_{\rm full} = m_j$ (vacuous). The two scales were inconsistent. The present paper articulates $W_f = m_j / 2$ as the canonical non-vacuous interior readout scale (not as a substitute for the full-block theorem scale; full-block transfer is still carried by Paper 71 (H4b) deterministic Abel transfer at $W_f$). Paper 71 v3 hotfix (published before this paper) synchronously corrected the (H4a) statement.
-
-(ii) Identifies Spectral Bridge Front geometry. Across $N = 10^8, 10^9$, across 3 centerings, across 4 $\theta$ values (96 measurements at $j \ge 22$),
-
-$$c_0 := k_c / m_j \approx 1/166, \qquad c_t := k_t / m_j \approx 1/16.8$$
-
-are universally stable, with std < 5%, ratio $\langle c_t \rangle / \langle c_0 \rangle \approx 9.87 : 1$ (close to 10:1).
-
-(iii) Identifies Regime-1 scaling resurfacing. The positive-lobe budget
-
-$$P_j(\theta = 1/2) \sim m_j^{\beta_P}, \qquad \beta_P \approx 0.70 - 0.71$$
-
-is an asymptotic estimate stable across $N$. This is the manifestation of Paper 66/67's Regime-1 chiseling exponent at the Regime-1 / front-onset boundary scale. It does not contradict Paper 71's K-abs envelope $\beta_{\rm abs} \approx 0.50$, because the ACF has different effective decay rates in different lag regimes (short-lag $C_{\rm short} \approx 0.29$ vs broad-lag $C_{\rm broad} \approx 0.50$).
-
-(iv) Requantifies the closure residual. Paper 71 (H4a) is rewritten as the Front Residual Locking Observable:
-
-$$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad s_j(\theta) := 1 - c_1(j, \theta) + \tau(j, \theta)}$$
-
-This is the present paper's main observable. Across $j = 22$ to $29$ at $N = 10^9$, $\Lambda_j(1/2) \in [0.067, 0.468]$ is empirically bounded $O(1)$ (mean 0.243, std 0.121). This is product locking ($P_j \sim m_j^{0.71}$ exponential and $s_j$ phase-fluctuating, the two inverse-locked), not boundedness of $P_j$ or $s_j$ individually.
-
-(v) Criterion 72.S-front (Front Residual Locking Criterion). From (F1) geometry + (F2) scaling + (F3) front residual locking, the conclusion $A_j^{\rm signed}(\theta m_j) = O(j)$ follows. (F3) itself is the genuine frontier awaiting proof; the criterion form mathematically isolates the frontier without substituting for proof.
-
-This paper does not prove 59.1, nor does it prove Front Residual Locking. The paper articulates that the genuine frontier on the closure pathway is the boundedness on $j$ scale of the product of the surviving residual and Regime-1 mass — this specific question — and identifies critical path components: (F3) proof + Paper 65 (c0)(c2)(c3) made unconditional + Paper 71 (H4b) deterministic Abel transfer at $W_f$ scale.
-
----</p>
-      <div class="keywords"><strong>Keywords:</strong> ZFCρ, spectral bridge, positive-lobe scaling, front residual locking, Abel budget, Conjecture 59.1</div>
-    </div>
-    <div class="paper-body">
-<h2>Abstract</h2>
-<p>Paper 71 identified the linear signed Abel budget as the residual spectral target and, within Criterion 71.E, articulated a conditional closure pathway. Cross-$N = 10^9$ data audit (across 12 configurations × 16 blocks) exposed a mathematical fact: Paper 71's Criterion 71.E linear signed Abel budget hypothesis (H4a), at full-window sample-centered Bartlett readout ($W = m_j$), is a finite-sample identity, $A_j^{\rm signed}(m_j) \equiv 0$, vacuous. The identity trigger is an interaction between two factors: standard sample-mean-centered ACF computation, and the $W = m_j$ boundary. The genuine non-vacuous theorem-target readout scale is the block-relative pre-full window, e.g., $\theta = 1/2$.</p>
+      <p>Paper 71 identified the linear signed Abel budget as the residual spectral target and, within Criterion 71.E, articulated a conditional closure pathway. Cross-$N = 10^9$ data audit (across 12 configurations × 16 blocks) exposed a mathematical fact: Paper 71's Criterion 71.E linear signed Abel budget hypothesis (H4a), at full-window sample-centered Bartlett readout ($W = m_j$), is a finite-sample identity, $A_j^{\rm signed}(m_j) \equiv 0$, vacuous. The identity trigger is an interaction between two factors: standard sample-mean-centered ACF computation, and the $W = m_j$ boundary. The genuine non-vacuous theorem-target readout scale is the block-relative pre-full window, e.g., $\theta = 1/2$.</p>
 <p>This paper does five things.</p>
 <p>(i) <strong>Corrects Paper 71's (H4a) observable choice.</strong> Paper 71 §5's numerical anchor was actually at $W_f = m_j / 2$ (non-vacuous, carrying signed cancellation information), but Paper 71 §7.1's literal theorem statement (H4a) was at $W_{\rm full} = m_j$ (vacuous). The two scales were inconsistent. The present paper articulates $W_f = m_j / 2$ as the <strong>canonical non-vacuous interior readout scale</strong> (not as a substitute for the full-block theorem scale; full-block transfer is still carried by Paper 71 (H4b) deterministic Abel transfer at $W_f$). Paper 71 v3 hotfix (published before this paper) synchronously corrected the (H4a) statement.</p>
 <p>(ii) <strong>Identifies Spectral Bridge Front geometry.</strong> Across $N = 10^8, 10^9$, across 3 centerings, across 4 $\theta$ values (96 measurements at $j \ge 22$),</p>
@@ -102,10 +53,11 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>This is the present paper's main observable. Across $j = 22$ to $29$ at $N = 10^9$, $\Lambda_j(1/2) \in [0.067, 0.468]$ is empirically bounded $O(1)$ (mean 0.243, std 0.121). This is <strong>product locking</strong> ($P_j \sim m_j^{0.71}$ exponential and $s_j$ phase-fluctuating, the two inverse-locked), not boundedness of $P_j$ or $s_j$ individually.</p>
 <p>(v) <strong>Criterion 72.S-front (Front Residual Locking Criterion).</strong> From (F1) geometry + (F2) scaling + (F3) front residual locking, the conclusion $A_j^{\rm signed}(\theta m_j) = O(j)$ follows. (F3) itself is the genuine frontier awaiting proof; the criterion form mathematically isolates the frontier without substituting for proof.</p>
 <p>This paper does not prove 59.1, nor does it prove Front Residual Locking. The paper articulates that <strong>the genuine frontier on the closure pathway is the boundedness on $j$ scale of the product of the surviving residual and Regime-1 mass</strong> — this specific question — and identifies critical path components: (F3) proof + Paper 65 (c0)(c2)(c3) made unconditional + Paper 71 (H4b) deterministic Abel transfer at $W_f$ scale.</p>
-<hr>
-<h2>§1. Introduction: from Paper 70/71 to the non-vacuous front problem</h2>
+      
+    </div>
+    <div class="paper-body"><h2>§1. Introduction: from Paper 70/71 to the non-vacuous front problem</h2>
 <h3>1.1 The deterministic object given by Paper 70 + cross-N substrate validation</h3>
-<p>Paper 70 Theorem 70.A reduces 59.1 to an equivalent statement on the saturated skeleton $S_{D^<em>(j)}$, with $D^</em>(j) = \lceil \sqrt{2^{j+1}} \rceil$. The reduction is deterministic, unconditional.</p>
+<p>Paper 70 Theorem 70.A reduces 59.1 to an equivalent statement on the saturated skeleton $S_{D^*(j)}$, with $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$. The reduction is deterministic, unconditional.</p>
 <p>Cross-$N = 10^8$ vs $N = 10^9$ audit (this paper §3) verifies implementation consistency at the data level:</p>
 <ul>
 <li><strong>$\rho$-substrate</strong>: on shared saturated blocks $j = 14$ to $25$, the $\rho$-array is byte-identical across $N$ (Paper 70 Theorem 70.A is a deterministic mathematical statement; cross-$N$ data equality validates that the computational substrate reads the same finite saturated object, <strong>not a substitute for mathematical proof</strong>).</li>
@@ -157,9 +109,7 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>$$F_j(K; W) := \sum_{k=1}^{K} \left(1 - \frac{k}{W}\right) \hat\gamma_j(k), \qquad 1 \le K \le W - 1$$</p>
 <p>Here $W$ is the fixed Bartlett observation window (Paper 72 canonical $W = \theta m_j$ with $\theta = 0.5$), and $K$ is the cumulative lag cutoff. At $K = W - 1$, $F_j(W-1; W) = (A_j^{\rm signed}(W) - 1)/2$ is the complete Bartlett triangular cumulative.</p>
 <p>In data, $F_j(K; W)$ as a function of $K$ across $K \in [1, W-1]$ exhibits three-segment transition geometry:</p>
-<p>(i) <strong>Short-lag positive lobe</strong>: $K \in [0, k_c]$, with $F_j(K; W) > 0$ accumulating monotonically;</p>
-<p>(ii) <strong>Mid-range negative compensation band</strong>: $K \in [k_c, k_t]$, with $F_j(K; W)$ descending from first peak to first post-peak minimum;</p>
-<p>(iii) <strong>Far-lag tail rebate</strong>: $K \in [k_t, W-1]$, with $F_j(K; W)$ partially rebounding from minimum.</p>
+<p>(i) <strong>Short-lag positive lobe</strong>: $K \in [0, k_c]$, with $F_j(K; W) > 0$ accumulating monotonically; (ii) <strong>Mid-range negative compensation band</strong>: $K \in [k_c, k_t]$, with $F_j(K; W)$ descending from first peak to first post-peak minimum; (iii) <strong>Far-lag tail rebate</strong>: $K \in [k_t, W-1]$, with $F_j(K; W)$ partially rebounding from minimum.</p>
 <p><strong>Operational definitions</strong> (fixed):</p>
 <p>$$k_c(j; W) := \arg\max_{1 \le K < W} F_j(K; W) \quad \text{(first global maximum)}$$</p>
 <p>$$k_t(j; W) := \arg\min_{k_c < K < W} F_j(K; W) \quad \text{(first post-peak minimum after } k_c\text{)}$$</p>
@@ -176,7 +126,8 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <h3>2.3 Cross-N substrate validation</h3>
 <p>$c_0, c_t$ at saturated blocks shared between $N = 10^8$ and $N = 10^9$ ($j = 22$ to $24$ fully covered, $j = 25$ partially covered) achieve numerical agreement to < 1% deviation. This verifies that $c_0, c_t$ are not finite-$N$ artifacts but invariants within the ZFCρ DP saturated block structure.</p>
 <p><strong>Table 1</strong>. $c_0, c_t$ cross-$N$ audit data (adjacent centering, $\theta = 0.5$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$m_j$ ($N=10^9$)</th>
 <th>$c_0$ ($N=10^9$)</th>
@@ -184,46 +135,11 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <th>$c_t$ ($N=10^9$)</th>
 <th>$c_t$ ($N=10^8$)</th>
 </tr></thead><tbody>
-<tr>
-<td>22</td>
-<td>268216</td>
-<td>0.006118</td>
-<td>0.006118</td>
-<td>0.057771</td>
-<td>0.057771</td>
-</tr>
-<tr>
-<td>23</td>
-<td>513708</td>
-<td>0.006155</td>
-<td>0.006155</td>
-<td>0.058237</td>
-<td>0.058237</td>
-</tr>
-<tr>
-<td>24</td>
-<td>985818</td>
-<td>0.006070</td>
-<td>0.006070</td>
-<td>0.057938</td>
-<td>0.057938</td>
-</tr>
-<tr>
-<td>25</td>
-<td>1894120</td>
-<td>0.005966</td>
-<td>0.005966</td>
-<td>0.057940</td>
-<td>0.057941</td>
-</tr>
-<tr>
-<td>26</td>
-<td>3645744</td>
-<td>0.006020</td>
-<td>(truncated)</td>
-<td>0.064633</td>
-<td>(truncated)</td>
-</tr>
+<tr><td>22</td><td>268216</td><td>0.006118</td><td>0.006118</td><td>0.057771</td><td>0.057771</td></tr>
+<tr><td>23</td><td>513708</td><td>0.006155</td><td>0.006155</td><td>0.058237</td><td>0.058237</td></tr>
+<tr><td>24</td><td>985818</td><td>0.006070</td><td>0.006070</td><td>0.057938</td><td>0.057938</td></tr>
+<tr><td>25</td><td>1894120</td><td>0.005966</td><td>0.005966</td><td>0.057940</td><td>0.057941</td></tr>
+<tr><td>26</td><td>3645744</td><td>0.006020</td><td>(truncated)</td><td>0.064633</td><td>(truncated)</td></tr>
 </tbody></table>
 <p>Mid-block boundaries ($j = 25, 26$) are truncated at $N = 10^8$, so $c_0, c_t$ values are not directly comparable at $j = 26$.</p>
 <hr>
@@ -233,69 +149,22 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>$$P_j(\theta) := \sum_{k=1}^{k_c(j)} \left(1 - \frac{k}{\theta m_j}\right) \hat\gamma_j(k)$$</p>
 <p>i.e., the Bartlett triangular weighted accumulation of the short-lag positive lobe.</p>
 <p><strong>Table 2</strong>. $P_j(\theta = 0.5)$ across $j$ across $N$ audit (adjacent centering):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$m_j$</th>
 <th>$P_j$ ($N=10^9$)</th>
 <th>$P_j$ ($N=10^8$)</th>
 <th>agreement</th>
 </tr></thead><tbody>
-<tr>
-<td>18</td>
-<td>20390</td>
-<td>1.9756</td>
-<td>1.9756</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>20</td>
-<td>73586</td>
-<td>3.5959</td>
-<td>3.5959</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>21</td>
-<td>140336</td>
-<td>5.4174</td>
-<td>5.4174</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>22</td>
-<td>268216</td>
-<td>9.3798</td>
-<td>9.3798</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>23</td>
-<td>513708</td>
-<td>13.6343</td>
-<td>13.6343</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>24</td>
-<td>985818</td>
-<td>21.1083</td>
-<td>21.1083</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>25</td>
-<td>1894120</td>
-<td>32.4587</td>
-<td>32.4398</td>
-<td>< 0.06%</td>
-</tr>
-<tr>
-<td>26</td>
-<td>3645744</td>
-<td>53.1292</td>
-<td>(truncated)</td>
-<td>n/a</td>
-</tr>
+<tr><td>18</td><td>20390</td><td>1.9756</td><td>1.9756</td><td>byte-identical</td></tr>
+<tr><td>20</td><td>73586</td><td>3.5959</td><td>3.5959</td><td>byte-identical</td></tr>
+<tr><td>21</td><td>140336</td><td>5.4174</td><td>5.4174</td><td>byte-identical</td></tr>
+<tr><td>22</td><td>268216</td><td>9.3798</td><td>9.3798</td><td>byte-identical</td></tr>
+<tr><td>23</td><td>513708</td><td>13.6343</td><td>13.6343</td><td>byte-identical</td></tr>
+<tr><td>24</td><td>985818</td><td>21.1083</td><td>21.1083</td><td>byte-identical</td></tr>
+<tr><td>25</td><td>1894120</td><td>32.4587</td><td>32.4398</td><td>< 0.06%</td></tr>
+<tr><td>26</td><td>3645744</td><td>53.1292</td><td>(truncated)</td><td>n/a</td></tr>
 </tbody></table>
 <p>Substrate validation ($j=18$ to $24$): $P_j$ is byte-identical across $N$ (cross-$N$ substrate consistency). Mild deviation at $j = 25$ is explained by $N = 10^8$ block partial truncation. Consistent with Paper 70 Theorem 70.A deterministic substrate consistency.</p>
 <h3>3.2 $P_j$ scaling fit</h3>
@@ -342,79 +211,33 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>Response coefficients:</p>
 <p>$$c_1(j, \theta) := -\frac{N_j(\theta)}{P_j(\theta)} > 0, \qquad \tau(j, \theta) := \frac{T_j(\theta)}{P_j(\theta)}$$</p>
 <p><strong>Table 3</strong>. $c_1(\theta)$ averaged across $j \ge 22$ (mean ± std across 8 blocks $j = 22$-$29$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$\theta$</th>
 <th>$\langle c_1 \rangle$ adjacent</th>
 <th>$\langle c_1 \rangle$ $\mu_{12}$</th>
 <th>$\langle c_1 \rangle$ block</th>
 <th>std (cross-config × cross-j)</th>
 </tr></thead><tbody>
-<tr>
-<td>0.25</td>
-<td>1.241</td>
-<td>1.236</td>
-<td>1.235</td>
-<td>0.058</td>
-</tr>
-<tr>
-<td>0.50</td>
-<td>1.320</td>
-<td>1.315</td>
-<td>1.315</td>
-<td>0.066</td>
-</tr>
-<tr>
-<td>0.75</td>
-<td>1.346</td>
-<td>1.341</td>
-<td>1.340</td>
-<td>0.069</td>
-</tr>
-<tr>
-<td>1.00</td>
-<td>1.361</td>
-<td>1.356</td>
-<td>1.355</td>
-<td>0.071</td>
-</tr>
+<tr><td>0.25</td><td>1.241</td><td>1.236</td><td>1.235</td><td>0.058</td></tr>
+<tr><td>0.50</td><td>1.320</td><td>1.315</td><td>1.315</td><td>0.066</td></tr>
+<tr><td>0.75</td><td>1.346</td><td>1.341</td><td>1.340</td><td>0.069</td></tr>
+<tr><td>1.00</td><td>1.361</td><td>1.356</td><td>1.355</td><td>0.071</td></tr>
 </tbody></table>
 <p>Across 3 centerings almost identical (difference < 0.01). <strong>$c_1$ is a window-response coefficient, not a universal lag-domain constant</strong>. Across $\theta$ monotonically slowly increasing from $\approx 1.24$ (small $\theta$) to $\approx 1.36$ ($\theta \to 1$).</p>
 <p><strong>Table 4</strong>. $\tau(\theta)$ averaged across $j \ge 22$ (mean ± std across 8 blocks $j = 22$-$29$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$\theta$</th>
 <th>$\langle \tau \rangle$ adjacent</th>
 <th>$\langle \tau \rangle$ $\mu_{12}$</th>
 <th>$\langle \tau \rangle$ block</th>
 <th>std (cross-config × cross-j)</th>
 </tr></thead><tbody>
-<tr>
-<td>0.25</td>
-<td>0.392</td>
-<td>0.396</td>
-<td>0.398</td>
-<td>0.028</td>
-</tr>
-<tr>
-<td>0.50</td>
-<td>0.477</td>
-<td>0.485</td>
-<td>0.490</td>
-<td>0.061</td>
-</tr>
-<tr>
-<td>0.75</td>
-<td>0.485</td>
-<td>0.492</td>
-<td>0.496</td>
-<td>0.036</td>
-</tr>
-<tr>
-<td>1.00</td>
-<td>0.343</td>
-<td>0.337</td>
-<td>0.331</td>
-<td>0.084</td>
-</tr>
+<tr><td>0.25</td><td>0.392</td><td>0.396</td><td>0.398</td><td>0.028</td></tr>
+<tr><td>0.50</td><td>0.477</td><td>0.485</td><td>0.490</td><td>0.061</td></tr>
+<tr><td>0.75</td><td>0.485</td><td>0.492</td><td>0.496</td><td>0.036</td></tr>
+<tr><td>1.00</td><td>0.343</td><td>0.337</td><td>0.331</td><td>0.084</td></tr>
 </tbody></table>
 <p>$\tau$ across centerings agrees similarly (difference < 0.01). $\tau$ across $\theta$ is not monotone — at $\theta = 0.5$-$0.75$ it plateaus at $\approx 0.49$, at $\theta \to 1$ it drops to $\approx 0.34$.</p>
 <p><strong>Key observation</strong>: $c_1, \tau$ are <strong>window-response coefficients</strong> (depending on $\theta$ + $j$), not geometry constants ($c_0, c_t$ are constants). Their ontological distinction:</p>
@@ -427,72 +250,23 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>$$s_j(\theta) := 1 - c_1(j, \theta) + \tau(j, \theta)$$</p>
 <p>The present paper articulates $s_j$ as a <strong>front-response residual</strong> — the unaccounted part relative to positive-lobe coherence (cf. §5.4 (iv) for articulation).</p>
 <p><strong>Table 5</strong>. $s_j(\theta = 0.5)$ adjacent centering across $j = 20$ to $29$ ($N = 10^9$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$c_1$</th>
 <th>$\tau$</th>
 <th>$s_j = 1 - c_1 + \tau$</th>
 </tr></thead><tbody>
-<tr>
-<td>20</td>
-<td>1.317</td>
-<td>0.358</td>
-<td>+0.041</td>
-</tr>
-<tr>
-<td>21</td>
-<td>1.315</td>
-<td>0.621</td>
-<td>+0.306</td>
-</tr>
-<tr>
-<td>22</td>
-<td>1.299</td>
-<td>0.456</td>
-<td>+0.157</td>
-</tr>
-<tr>
-<td>23</td>
-<td>1.210</td>
-<td>0.618</td>
-<td>+0.408</td>
-</tr>
-<tr>
-<td>24</td>
-<td>1.283</td>
-<td>0.494</td>
-<td>+0.211</td>
-</tr>
-<tr>
-<td>25</td>
-<td>1.353</td>
-<td>0.465</td>
-<td>+0.112</td>
-</tr>
-<tr>
-<td>26</td>
-<td>1.320</td>
-<td>0.440</td>
-<td>+0.120</td>
-</tr>
-<tr>
-<td>27</td>
-<td>1.309</td>
-<td>0.455</td>
-<td>+0.146</td>
-</tr>
-<tr>
-<td>28</td>
-<td>1.348</td>
-<td>0.416</td>
-<td>+0.067</td>
-</tr>
-<tr>
-<td>29</td>
-<td>1.441</td>
-<td>0.473</td>
-<td>+0.033</td>
-</tr>
+<tr><td>20</td><td>1.317</td><td>0.358</td><td>+0.041</td></tr>
+<tr><td>21</td><td>1.315</td><td>0.621</td><td>+0.306</td></tr>
+<tr><td>22</td><td>1.299</td><td>0.456</td><td>+0.157</td></tr>
+<tr><td>23</td><td>1.210</td><td>0.618</td><td>+0.408</td></tr>
+<tr><td>24</td><td>1.283</td><td>0.494</td><td>+0.211</td></tr>
+<tr><td>25</td><td>1.353</td><td>0.465</td><td>+0.112</td></tr>
+<tr><td>26</td><td>1.320</td><td>0.440</td><td>+0.120</td></tr>
+<tr><td>27</td><td>1.309</td><td>0.455</td><td>+0.146</td></tr>
+<tr><td>28</td><td>1.348</td><td>0.416</td><td>+0.067</td></tr>
+<tr><td>29</td><td>1.441</td><td>0.473</td><td>+0.033</td></tr>
 </tbody></table>
 <p>$s_j(\theta = 0.5)$ across $j = 20$ to $29$: $[0.033, 0.408]$, mean 0.160, std 0.117.</p>
 <p>$s_j$ is <strong>phase-sensitive, $j$-fluctuating, with no clean periodicity and no monotone trend visible in the current $j$ range</strong>.</p>
@@ -514,69 +288,22 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>Definition (taking absolute value, since $s_j$ at large $j$ may become negative; boundedness should consider $|\cdot|$):</p>
 <p>$$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}}$$</p>
 <p><strong>Table 6</strong>. Across $j = 22$ to $29$ at $\theta = 0.5$ adjacent centering ($N = 10^9$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$s_j$</th>
 <th>$P_j$</th>
 <th>$s_j \cdot P_j$</th>
 <th>$\Lambda_j$</th>
 </tr></thead><tbody>
-<tr>
-<td>22</td>
-<td>+0.157</td>
-<td>9.380</td>
-<td>+1.475</td>
-<td>0.067</td>
-</tr>
-<tr>
-<td>23</td>
-<td>+0.408</td>
-<td>13.634</td>
-<td>+5.564</td>
-<td>0.242</td>
-</tr>
-<tr>
-<td>24</td>
-<td>+0.211</td>
-<td>21.108</td>
-<td>+4.446</td>
-<td>0.185</td>
-</tr>
-<tr>
-<td>25</td>
-<td>+0.112</td>
-<td>32.459</td>
-<td>+3.637</td>
-<td>0.146</td>
-</tr>
-<tr>
-<td>26</td>
-<td>+0.120</td>
-<td>53.129</td>
-<td>+6.399</td>
-<td>0.246</td>
-</tr>
-<tr>
-<td>27</td>
-<td>+0.146</td>
-<td>86.782</td>
-<td>+12.626</td>
-<td>0.468</td>
-</tr>
-<tr>
-<td>28</td>
-<td>+0.067</td>
-<td>139.600</td>
-<td>+9.393</td>
-<td>0.336</td>
-</tr>
-<tr>
-<td>29</td>
-<td>+0.033</td>
-<td>223.216</td>
-<td>+7.267</td>
-<td>0.251</td>
-</tr>
+<tr><td>22</td><td>+0.157</td><td>9.380</td><td>+1.475</td><td>0.067</td></tr>
+<tr><td>23</td><td>+0.408</td><td>13.634</td><td>+5.564</td><td>0.242</td></tr>
+<tr><td>24</td><td>+0.211</td><td>21.108</td><td>+4.446</td><td>0.185</td></tr>
+<tr><td>25</td><td>+0.112</td><td>32.459</td><td>+3.637</td><td>0.146</td></tr>
+<tr><td>26</td><td>+0.120</td><td>53.129</td><td>+6.399</td><td>0.246</td></tr>
+<tr><td>27</td><td>+0.146</td><td>86.782</td><td>+12.626</td><td>0.468</td></tr>
+<tr><td>28</td><td>+0.067</td><td>139.600</td><td>+9.393</td><td>0.336</td></tr>
+<tr><td>29</td><td>+0.033</td><td>223.216</td><td>+7.267</td><td>0.251</td></tr>
 </tbody></table>
 <p>(where $\Lambda_j := |s_j \cdot P_j| / j$ as defined in §5.2.)</p>
 <p>$\Lambda_j(\theta = 0.5) \in [0.067, 0.468]$ across $j = 22$ to $29$, mean 0.243, std 0.121. <strong>Empirically bounded $O(1)$</strong>.</p>
@@ -593,30 +320,16 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 </ul>
 <p>That is, $\Lambda_j(\theta)$ in non-vacuous interior $\theta \in (\epsilon, 1 - \epsilon)$ genuinely carries mechanism information; at boundary $\theta \in \{0, 1\}$ it trivially vanishes.</p>
 <p><strong>Table 7</strong>. $\Lambda_j(\theta)$ across $\theta \in \{0.25, 0.5, 0.75\}$ across $j \in \{22, 25, 28\}$ adjacent centering ($N = 10^9$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$\Lambda_j(0.25)$</th>
 <th>$\Lambda_j(0.50)$</th>
 <th>$\Lambda_j(0.75)$</th>
 </tr></thead><tbody>
-<tr>
-<td>22</td>
-<td>0.071</td>
-<td>0.067</td>
-<td>0.071</td>
-</tr>
-<tr>
-<td>25</td>
-<td>0.151</td>
-<td>0.146</td>
-<td>0.129</td>
-</tr>
-<tr>
-<td>28</td>
-<td>0.424</td>
-<td>0.336</td>
-<td>0.299</td>
-</tr>
+<tr><td>22</td><td>0.071</td><td>0.067</td><td>0.071</td></tr>
+<tr><td>25</td><td>0.151</td><td>0.146</td><td>0.129</td></tr>
+<tr><td>28</td><td>0.424</td><td>0.336</td><td>0.299</td></tr>
 </tbody></table>
 <p><strong>Cross-θ summary</strong> (across $j = 22$-$29$ × 3 centerings):</p>
 <ul>
@@ -706,13 +419,7 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>(a) <strong>Topological Clock</strong>: $c_0, c_t$ are not numerical accident, but ontological manifestation of fixed phase-space trajectory of ZFCρ algorithm in the "Add (順) vs Mult (chisel-strike)" game. $c_0, c_t$ stable across 12 configurations reflects the <strong>rigidity</strong> of ZFCρ algorithm phase-space geometry, not random fluctuation.</p>
 <p>(b) <strong>Co-source locking articulation</strong>: $\Lambda_j$ bounded reflects $P_j$ exponential and $s_j$ phase-fluctuating as <strong>co-sourced</strong> ($\min$ algorithm forces inverse locking — the larger the surge, the stronger the cut/reset must be). Dynamical manifestation of SAE Methodology articulating "constraint as the mother of structure generation".</p>
 <p>(c) <strong>$c_0, c_t$ number-theoretic / group-theoretic origin conjecture (open)</strong>: actual audit data give $\langle c_0 \rangle = 0.00602$ ($\approx 1/166$), $\langle c_t \rangle = 0.0595$ ($\approx 1/16.8$). Whether these universal constants have a genuine structural connection to specific number-theoretic / group-theoretic anchors remains entirely open. As $1/c_t \approx 16.8$ has numerical proximity to some small group orders ($|GL_3(\mathbb{F}_2)| = |PSL(2, 7)| = 168$), but <strong>whether this is numerical coincidence or genuine structural connection cannot be decided within Paper 72 data</strong>. Paper 72 only records numerical values; any number-theoretic / group-theoretic articulation is paper 73+ territory.</p>
-<p>(d) <strong>Lyapunov exponent / metric entropy articulation</strong> (子夏 round 18): paper 72 (F3) can be articulated as a manifestation of the ZFCρ arithmetic dynamical system having bounded metric entropy:</p>
-<ul>
-<li>$P_j$ viewed as the <strong>phase-space volume expansion rate</strong> along the locally optimal path on the $\min$ operator selection tree (Lyapunov-exponent-like)</li>
-<li>$s_j$ viewed as the <strong>topological separation rate</strong> as adjacent primes are forced into different multiplicative branches by shared odd factors</li>
-<li>$|s_j P_j| = O(j)$ ⟺ system metric entropy bounded by $O(j)$, i.e., information loss rate cancels out local coherence information expansion</li>
-<li>paper 73 attack candidate path: build DP-path generating function, prove that within ergodic evolution the information loss rate and information expansion rate are inverse-locked, rather than directly hand-computing the integral</li>
-</ul>
+<p>(d) <strong>Lyapunov exponent / metric entropy articulation</strong> (子夏 round 18): paper 72 (F3) can be articulated as a manifestation of the ZFCρ arithmetic dynamical system having bounded metric entropy:    - $P_j$ viewed as the <strong>phase-space volume expansion rate</strong> along the locally optimal path on the $\min$ operator selection tree (Lyapunov-exponent-like)    - $s_j$ viewed as the <strong>topological separation rate</strong> as adjacent primes are forced into different multiplicative branches by shared odd factors    - $|s_j P_j| = O(j)$ ⟺ system metric entropy bounded by $O(j)$, i.e., information loss rate cancels out local coherence information expansion    - paper 73 attack candidate path: build DP-path generating function, prove that within ergodic evolution the information loss rate and information expansion rate are inverse-locked, rather than directly hand-computing the integral</p>
 <p>Paper 72 only lists these articulation candidates for paper 73+ attack, does not commit to any specific mechanism structure into Paper 72 mathematical claim.</p>
 <h3>7.6 Articulation summary</h3>
 <p>The $s_j$ origin articulation gap remains open. Paper 72 does not close this gap, articulates it as a frontier awaiting paper 73+ attack. Paper 72 main contribution: isolating (F3) as a specific mathematical statement attackable, not a mechanism commitment.</p>
@@ -791,52 +498,18 @@ This paper does not prove 59.1, nor does it prove Front Residual Locking. The pa
 <p>[66] Qin, H. (2026). <em>ZFCρ Paper LXVI: Regime-1 chiseling exponent</em>. Zenodo. (DOI: TBD)</p>
 <p>[67] Qin, H. (2026). <em>ZFCρ Paper LXVII: $\Psi$ scaling structure</em>. Zenodo. (DOI: TBD)</p>
 <p>[70] Qin, H. (2026). <em>ZFCρ Paper LXX: Theorem 70.A block-wise reduction</em>. Zenodo. (DOI: TBD)</p>
-<p>[71] Qin, H. (2026). <em>ZFCρ Paper LXXI v3: K=1 resolvent + signed Abel + Criterion 71.E (with v3 hotfix at $W_f = m_j / 2$)</em>. Zenodo. DOI: 10.5281/zenodo.20011553.</p>
-    </div>
+<p>[71] Qin, H. (2026). <em>ZFCρ Paper LXXI v3: K=1 resolvent + signed Abel + Criterion 71.E (with v3 hotfix at $W_f = m_j / 2$)</em>. Zenodo. DOI: 10.5281/zenodo.20011553.</p></div>
   </div>
   <div id="lang-zh" style="display:none">
     <div class="abstract-box">
       <div class="abstract-label">摘要</div>
-      <p>第 71 篇识别了线性 signed Abel 预算作为剩余谱目标, 并在判据 71.E 内给出条件式 closure pathway. 跨 $N = 10^9$ 数据 audit (跨 12 configurations × 16 blocks) 暴露一件 mathematical fact: 第 71 篇判据 71.E 中线性 signed Abel 预算 (H4a) 在 full-window sample-centered Bartlett 读数 ($W = m_j$) 下 是 finite-sample identity, $A_j^{\rm signed}(m_j) \equiv 0$, vacuous. 该 identity 触发条件: ACF computation 内 sample mean 减除 + $W = m_j$ boundary 二者 combined. 真正 non-vacuous theorem-target readout scale 是 block-relative pre-full window, 例如 $\theta = 1/2$.
-
-本文做五件事.
-
-(i) 修正第 71 篇 (H4a) 观测对象选择. 第 71 篇 §5 数值 anchor 实际 在 $W_f = m_j / 2$ 上 (non-vacuous, carry signed cancellation 信息), 但 第 71 篇 §7.1 (H4a) literal theorem statement 写在 $W_{\rm full} = m_j$ (vacuous). 二者 scale 不一致. 本文 articulate $W_f = m_j / 2$ 为 canonical non-vacuous interior readout scale (不是 替代 full-block theorem scale; full-block transfer 仍 由 第 71 篇 (H4b) deterministic Abel transfer at $W_f$ 承担). 第 71 篇 v3 hotfix (本文 published 之前) 同步修正.
-
-(ii) 识别 Spectral Bridge Front 几何. 跨 $N = 10^8, 10^9$, 跨 3 种 centering, 跨 4 种 $\theta$ (96 measurements at $j \ge 22$), 
-
-$$c_0 := k_c / m_j \approx 1/166, \qquad c_t := k_t / m_j \approx 1/16.8$$
-
-universal stable, std < 5%, 比例 $\langle c_t \rangle / \langle c_0 \rangle \approx 9.87 : 1$ (接近 10:1).
-
-(iii) 识别 Regime-1 标度 resurfacing. 正向凸起预算 
-
-$$P_j(\theta = 1/2) \sim m_j^{\beta_P}, \qquad \beta_P \approx 0.70 - 0.71$$
-
-asymptotic estimate 跨 $N$ stable. 这是第 66/67 篇 Regime-1 chiseling exponent 在 Regime-1/front-onset boundary scale 上的 manifestation. 与 第 71 篇 K-abs envelope $\beta_{\rm abs} \approx 0.50$ 不矛盾, 因为 ACF 在 不同 lag regime 上 effective decay rate 不同 (短 lag $C_{\rm short} \approx 0.29$ vs 宽 lag $C_{\rm broad} \approx 0.50$).
-
-(iv) 重新定量化 closure 余项. 第 71 篇 (H4a) 改写为 Front Residual Locking Observable:
-
-$$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad s_j(\theta) := 1 - c_1(j, \theta) + \tau(j, \theta)}$$
-
-这是本文 main observable. 跨 $j = 22$ 至 $29$ 在 $N = 10^9$ 上 $\Lambda_j(1/2) \in [0.067, 0.468]$ bounded $O(1)$ 经验上 (mean 0.243, std 0.127). 这是 product 锁定 ($P_j \sim m_j^{0.71}$ exponential 与 $s_j$ phase-fluctuating 二者 inverse locking), 不是 单 $P_j$ 或 单 $s_j$ 自身 bounded.
-
-(v) Criterion 72.S-front (Front Residual Locking Criterion). 由 (F1) 几何 + (F2) 标度 + (F3) front residual locking, 推出 $A_j^{\rm signed}(\theta m_j) = O(j)$. (F3) 自身 是 真 frontier 待 proof, criterion 形态 让 frontier 数学 isolate, 不替代 proof.
-
-本文不证明 59.1, 也不证明 Front Residual Locking. 本文 articulate closure pathway 的 真 frontier 是 surviving 残差 与 Regime-1 mass 的 product 在 j scale 上 bounded 这一 specific question, 并 identify critical path components: (F3) proof + 第 65 篇 (c0)(c2)(c3) unconditional 化 + 第 71 篇 (H4b) deterministic Abel transfer at $W_f$ scale.
-
----</p>
-      <div class="keywords"><strong>关键词：</strong>ZFCρ, 谱桥, 正向凸起标度, 前沿残差锁定, Abel预算, Conjecture 59.1</div>
-    </div>
-    <div class="paper-body">
-<h2>摘要</h2>
-<p>第 71 篇识别了线性 signed Abel 预算作为剩余谱目标, 并在判据 71.E 内给出条件式 closure pathway. 跨 $N = 10^9$ 数据 audit (跨 12 configurations × 16 blocks) 暴露一件 mathematical fact: 第 71 篇判据 71.E 中线性 signed Abel 预算 (H4a) 在 full-window sample-centered Bartlett 读数 ($W = m_j$) 下 是 finite-sample identity, $A_j^{\rm signed}(m_j) \equiv 0$, vacuous. 该 identity 触发条件: ACF computation 内 sample mean 减除 + $W = m_j$ boundary 二者 combined. 真正 non-vacuous theorem-target readout scale 是 block-relative pre-full window, 例如 $\theta = 1/2$.</p>
+      <p>第 71 篇识别了线性 signed Abel 预算作为剩余谱目标, 并在判据 71.E 内给出条件式 closure pathway. 跨 $N = 10^9$ 数据 audit (跨 12 configurations × 16 blocks) 暴露一件 mathematical fact: 第 71 篇判据 71.E 中线性 signed Abel 预算 (H4a) 在 full-window sample-centered Bartlett 读数 ($W = m_j$) 下 是 finite-sample identity, $A_j^{\rm signed}(m_j) \equiv 0$, vacuous. 该 identity 触发条件: ACF computation 内 sample mean 减除 + $W = m_j$ boundary 二者 combined. 真正 non-vacuous theorem-target readout scale 是 block-relative pre-full window, 例如 $\theta = 1/2$.</p>
 <p>本文做五件事.</p>
 <p>(i) <strong>修正第 71 篇 (H4a) 观测对象选择</strong>. 第 71 篇 §5 数值 anchor 实际 在 $W_f = m_j / 2$ 上 (non-vacuous, carry signed cancellation 信息), 但 第 71 篇 §7.1 (H4a) literal theorem statement 写在 $W_{\rm full} = m_j$ (vacuous). 二者 scale 不一致. 本文 articulate $W_f = m_j / 2$ 为 <strong>canonical non-vacuous interior readout scale</strong> (不是 替代 full-block theorem scale; full-block transfer 仍 由 第 71 篇 (H4b) deterministic Abel transfer at $W_f$ 承担). 第 71 篇 v3 hotfix (本文 published 之前) 同步修正.</p>
-<p>(ii) <strong>识别 Spectral Bridge Front 几何</strong>. 跨 $N = 10^8, 10^9$, 跨 3 种 centering, 跨 4 种 $\theta$ (96 measurements at $j \ge 22$),</p>
+<p>(ii) <strong>识别 Spectral Bridge Front 几何</strong>. 跨 $N = 10^8, 10^9$, 跨 3 种 centering, 跨 4 种 $\theta$ (96 measurements at $j \ge 22$), </p>
 <p>$$c_0 := k_c / m_j \approx 1/166, \qquad c_t := k_t / m_j \approx 1/16.8$$</p>
 <p>universal stable, std < 5%, 比例 $\langle c_t \rangle / \langle c_0 \rangle \approx 9.87 : 1$ (接近 10:1).</p>
-<p>(iii) <strong>识别 Regime-1 标度 resurfacing</strong>. 正向凸起预算</p>
+<p>(iii) <strong>识别 Regime-1 标度 resurfacing</strong>. 正向凸起预算 </p>
 <p>$$P_j(\theta = 1/2) \sim m_j^{\beta_P}, \qquad \beta_P \approx 0.70 - 0.71$$</p>
 <p>asymptotic estimate 跨 $N$ stable. 这是第 66/67 篇 Regime-1 chiseling exponent 在 Regime-1/front-onset boundary scale 上的 manifestation. 与 第 71 篇 K-abs envelope $\beta_{\rm abs} \approx 0.50$ 不矛盾, 因为 ACF 在 不同 lag regime 上 effective decay rate 不同 (短 lag $C_{\rm short} \approx 0.29$ vs 宽 lag $C_{\rm broad} \approx 0.50$).</p>
 <p>(iv) <strong>重新定量化 closure 余项</strong>. 第 71 篇 (H4a) 改写为 <strong>Front Residual Locking Observable</strong>:</p>
@@ -844,10 +517,11 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>这是本文 main observable. 跨 $j = 22$ 至 $29$ 在 $N = 10^9$ 上 $\Lambda_j(1/2) \in [0.067, 0.468]$ bounded $O(1)$ 经验上 (mean 0.243, std 0.127). 这是 <strong>product 锁定</strong> ($P_j \sim m_j^{0.71}$ exponential 与 $s_j$ phase-fluctuating 二者 inverse locking), 不是 单 $P_j$ 或 单 $s_j$ 自身 bounded.</p>
 <p>(v) <strong>Criterion 72.S-front (Front Residual Locking Criterion)</strong>. 由 (F1) 几何 + (F2) 标度 + (F3) front residual locking, 推出 $A_j^{\rm signed}(\theta m_j) = O(j)$. (F3) 自身 是 真 frontier 待 proof, criterion 形态 让 frontier 数学 isolate, 不替代 proof.</p>
 <p>本文不证明 59.1, 也不证明 Front Residual Locking. 本文 articulate <strong>closure pathway 的 真 frontier 是 surviving 残差 与 Regime-1 mass 的 product 在 j scale 上 bounded</strong> 这一 specific question, 并 identify critical path components: (F3) proof + 第 65 篇 (c0)(c2)(c3) unconditional 化 + 第 71 篇 (H4b) deterministic Abel transfer at $W_f$ scale.</p>
-<hr>
-<h2>§1. 引言: 从第 70/71 篇到 non-vacuous front problem</h2>
+      
+    </div>
+    <div class="paper-body"><h2>§1. 引言: 从第 70/71 篇到 non-vacuous front problem</h2>
 <h3>1.1 第 70 篇给的 deterministic 对象 + cross-N substrate validation</h3>
-<p>第 70 篇 Theorem 70.A 把 59.1 化归为饱和骨架 $S_{D^<em>(j)}$ 上的等价陈述, $D^</em>(j) = \lceil \sqrt{2^{j+1}} \rceil$. 化归是 deterministic, 无条件.</p>
+<p>第 70 篇 Theorem 70.A 把 59.1 化归为饱和骨架 $S_{D^*(j)}$ 上的等价陈述, $D^*(j) = \lceil \sqrt{2^{j+1}} \rceil$. 化归是 deterministic, 无条件.</p>
 <p>跨 $N = 10^8$ 与 $N = 10^9$ audit (本文 §3) 数据层面 verify 实现一致性:</p>
 <ul>
 <li><strong>$\rho$-substrate</strong>: 在 $j = 14$ 至 $25$ 共同饱和块上 $\rho$-array byte-identical 跨 $N$ (第 70 篇 Theorem 70.A 是 deterministic mathematical statement; cross-$N$ 数据 equality validates computational substrate 实现读取 same 饱和有限对象, <strong>不 substitute mathematical proof</strong>).</li>
@@ -869,7 +543,7 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>$$\sum_{i=1}^m \tilde y_i = 0$$</p>
 <p>故 full-window Bartlett identity 给出:</p>
 <p>$$A_{\tilde y}^{\rm signed}(W = m) = \frac{\left(\sum_{i=1}^m \tilde y_i\right)^2}{m \cdot \widehat{\rm Var}(\tilde y)} = \frac{0}{m \cdot \widehat{\rm Var}(\tilde y)} = 0$$</p>
-<p>$A^{\rm signed}(m) \equiv 0$ identically 跨所有 input sequences when standard sample-centered ACF used.</p>
+<p>$A^{\rm signed}(m) \equiv 0$ identically 跨所有 input sequences when standard sample-centered ACF used. </p>
 <p><strong>关键 articulation</strong>: identity 触发 来自 <strong>ACF computation method</strong> (sample-mean-centered $\hat\gamma$ 强制 $\sum \tilde y_i = 0$) + <strong>$W = m_j$ boundary</strong> 二者 combined. 若 用 raw ACF (不 减 sample mean):</p>
 <p>$$A_y^{\rm signed}(W = m) = \frac{\left(\sum_{i=1}^m y_i\right)^2}{m \cdot \widehat{\rm Var}(y)}$$</p>
 <p>不 必然 0, carry full-block zero-mode 信息. paper 71 与 paper 72 audit 都 用 standard sample-centered ACF, 故 identity 触发 跨所有 12 configurations.</p>
@@ -899,9 +573,7 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>$$F_j(K; W) := \sum_{k=1}^{K} \left(1 - \frac{k}{W}\right) \hat\gamma_j(k), \qquad 1 \le K \le W - 1$$</p>
 <p>其中 $W$ 是 fixed Bartlett observation window (paper 72 canonical $W = \theta m_j$ with $\theta = 0.5$), $K$ 是 cumulative lag cutoff. $K = W - 1$ 时 $F_j(W-1; W) = (A_j^{\rm signed}(W) - 1)/2$ 即 完整 Bartlett 三角 累积.</p>
 <p>数据 上 $F_j(K; W)$ 作 $K$ 函数 跨 $K \in [1, W-1]$ 显 三段 transition geometry:</p>
-<p>(i) <strong>短 lag positive lobe</strong>: $K \in [0, k_c]$, $F_j(K; W) > 0$ 累积 monotonic 增长</p>
-<p>(ii) <strong>中程 lag negative compensation band</strong>: $K \in [k_c, k_t]$, $F_j(K; W)$ 从 first peak 降 到 first post-peak minimum</p>
-<p>(iii) <strong>远 lag tail rebate</strong>: $K \in [k_t, W-1]$, $F_j(K; W)$ 余项 从 minimum 部分 rebound</p>
+<p>(i) <strong>短 lag positive lobe</strong>: $K \in [0, k_c]$, $F_j(K; W) > 0$ 累积 monotonic 增长 (ii) <strong>中程 lag negative compensation band</strong>: $K \in [k_c, k_t]$, $F_j(K; W)$ 从 first peak 降 到 first post-peak minimum (iii) <strong>远 lag tail rebate</strong>: $K \in [k_t, W-1]$, $F_j(K; W)$ 余项 从 minimum 部分 rebound</p>
 <p><strong>Operational definitions</strong> (固定):</p>
 <p>$$k_c(j; W) := \arg\max_{1 \le K < W} F_j(K; W) \quad \text{(first global maximum)}$$</p>
 <p>$$k_t(j; W) := \arg\min_{k_c < K < W} F_j(K; W) \quad \text{(first post-peak minimum after } k_c\text{)}$$</p>
@@ -918,7 +590,8 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <h3>2.3 cross-N substrate validation</h3>
 <p>$c_0, c_t$ 在 $N = 10^8$ 与 $N = 10^9$ 共同 cover 的 saturated blocks ($j = 22$ 至 $24$ 完整 cover, $j = 25$ partial cover) 上 numerical agreement 至 < 1% deviation. 这 verify $c_0, c_t$ 不是 finite-$N$ artifact, 是 ZFCρ DP saturated 块结构 内 invariant.</p>
 <p><strong>表 1</strong>. $c_0, c_t$ 跨 N audit 数据 (adjacent centering, $\theta = 0.5$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$m_j$ ($N=10^9$)</th>
 <th>$c_0$ ($N=10^9$)</th>
@@ -926,46 +599,11 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <th>$c_t$ ($N=10^9$)</th>
 <th>$c_t$ ($N=10^8$)</th>
 </tr></thead><tbody>
-<tr>
-<td>22</td>
-<td>268216</td>
-<td>0.006118</td>
-<td>0.006118</td>
-<td>0.057771</td>
-<td>0.057771</td>
-</tr>
-<tr>
-<td>23</td>
-<td>513708</td>
-<td>0.006155</td>
-<td>0.006155</td>
-<td>0.058237</td>
-<td>0.058237</td>
-</tr>
-<tr>
-<td>24</td>
-<td>985818</td>
-<td>0.006070</td>
-<td>0.006070</td>
-<td>0.057938</td>
-<td>0.057938</td>
-</tr>
-<tr>
-<td>25</td>
-<td>1894120</td>
-<td>0.005966</td>
-<td>0.005966</td>
-<td>0.057940</td>
-<td>0.057941</td>
-</tr>
-<tr>
-<td>26</td>
-<td>3645744</td>
-<td>0.006020</td>
-<td>(truncated)</td>
-<td>0.064633</td>
-<td>(truncated)</td>
-</tr>
+<tr><td>22</td><td>268216</td><td>0.006118</td><td>0.006118</td><td>0.057771</td><td>0.057771</td></tr>
+<tr><td>23</td><td>513708</td><td>0.006155</td><td>0.006155</td><td>0.058237</td><td>0.058237</td></tr>
+<tr><td>24</td><td>985818</td><td>0.006070</td><td>0.006070</td><td>0.057938</td><td>0.057938</td></tr>
+<tr><td>25</td><td>1894120</td><td>0.005966</td><td>0.005966</td><td>0.057940</td><td>0.057941</td></tr>
+<tr><td>26</td><td>3645744</td><td>0.006020</td><td>(truncated)</td><td>0.064633</td><td>(truncated)</td></tr>
 </tbody></table>
 <p>mid-block boundaries ($j = 25, 26$) 在 $N = 10^8$ 上 truncated, $c_0, c_t$ 数值 不 直接 可比 在 $j = 26$.</p>
 <hr>
@@ -975,69 +613,22 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>$$P_j(\theta) := \sum_{k=1}^{k_c(j)} \left(1 - \frac{k}{\theta m_j}\right) \hat\gamma(k)$$</p>
 <p>即 短 lag positive lobe 的 Bartlett 三角 加权 累积.</p>
 <p><strong>表 2</strong>. $P_j(\theta = 0.5)$ 跨 $j$ 跨 $N$ audit (adjacent centering):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$m_j$</th>
 <th>$P_j$ ($N=10^9$)</th>
 <th>$P_j$ ($N=10^8$)</th>
 <th>agreement</th>
 </tr></thead><tbody>
-<tr>
-<td>18</td>
-<td>20390</td>
-<td>1.9756</td>
-<td>1.9756</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>20</td>
-<td>73586</td>
-<td>3.5959</td>
-<td>3.5959</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>21</td>
-<td>140336</td>
-<td>5.4174</td>
-<td>5.4174</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>22</td>
-<td>268216</td>
-<td>9.3798</td>
-<td>9.3798</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>23</td>
-<td>513708</td>
-<td>13.6343</td>
-<td>13.6343</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>24</td>
-<td>985818</td>
-<td>21.1083</td>
-<td>21.1083</td>
-<td>byte-identical</td>
-</tr>
-<tr>
-<td>25</td>
-<td>1894120</td>
-<td>32.4587</td>
-<td>32.4398</td>
-<td>< 0.06%</td>
-</tr>
-<tr>
-<td>26</td>
-<td>3645744</td>
-<td>53.1292</td>
-<td>(truncated)</td>
-<td>n/a</td>
-</tr>
+<tr><td>18</td><td>20390</td><td>1.9756</td><td>1.9756</td><td>byte-identical</td></tr>
+<tr><td>20</td><td>73586</td><td>3.5959</td><td>3.5959</td><td>byte-identical</td></tr>
+<tr><td>21</td><td>140336</td><td>5.4174</td><td>5.4174</td><td>byte-identical</td></tr>
+<tr><td>22</td><td>268216</td><td>9.3798</td><td>9.3798</td><td>byte-identical</td></tr>
+<tr><td>23</td><td>513708</td><td>13.6343</td><td>13.6343</td><td>byte-identical</td></tr>
+<tr><td>24</td><td>985818</td><td>21.1083</td><td>21.1083</td><td>byte-identical</td></tr>
+<tr><td>25</td><td>1894120</td><td>32.4587</td><td>32.4398</td><td>< 0.06%</td></tr>
+<tr><td>26</td><td>3645744</td><td>53.1292</td><td>(truncated)</td><td>n/a</td></tr>
 </tbody></table>
 <p>substrate 验证 ($j=18$ 至 $24$): $P_j$ 数值 跨 $N$ byte-identical (cross-N substrate consistency). $j = 25$ 处 mild deviation 由 $N = 10^8$ block partial truncation 解释. 与 paper 70 Theorem 70.A deterministic substrate consistency 一致.</p>
 <h3>3.2 $P_j$ scaling fit</h3>
@@ -1084,79 +675,33 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>response coefficients:</p>
 <p>$$c_1(j, \theta) := -\frac{N_j(\theta)}{P_j(\theta)} > 0, \qquad \tau(j, \theta) := \frac{T_j(\theta)}{P_j(\theta)}$$</p>
 <p><strong>表 3</strong>. $c_1(\theta)$ 跨 j ≥ 22 averaged (mean ± std across 8 blocks j=22-29):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$\theta$</th>
 <th>$\langle c_1 \rangle$ adjacent</th>
 <th>$\langle c_1 \rangle$ $\mu_{12}$</th>
 <th>$\langle c_1 \rangle$ block</th>
 <th>std (cross-config × cross-j)</th>
 </tr></thead><tbody>
-<tr>
-<td>0.25</td>
-<td>1.241</td>
-<td>1.236</td>
-<td>1.235</td>
-<td>0.058</td>
-</tr>
-<tr>
-<td>0.50</td>
-<td>1.320</td>
-<td>1.315</td>
-<td>1.315</td>
-<td>0.066</td>
-</tr>
-<tr>
-<td>0.75</td>
-<td>1.346</td>
-<td>1.341</td>
-<td>1.340</td>
-<td>0.069</td>
-</tr>
-<tr>
-<td>1.00</td>
-<td>1.361</td>
-<td>1.356</td>
-<td>1.355</td>
-<td>0.071</td>
-</tr>
+<tr><td>0.25</td><td>1.241</td><td>1.236</td><td>1.235</td><td>0.058</td></tr>
+<tr><td>0.50</td><td>1.320</td><td>1.315</td><td>1.315</td><td>0.066</td></tr>
+<tr><td>0.75</td><td>1.346</td><td>1.341</td><td>1.340</td><td>0.069</td></tr>
+<tr><td>1.00</td><td>1.361</td><td>1.356</td><td>1.355</td><td>0.071</td></tr>
 </tbody></table>
 <p>跨 3 centerings 几乎 identical (差 < 0.01). <strong>$c_1$ 是 window-response coefficient, 不 universal lag-domain constant</strong>. 跨 $\theta$ 单调 缓 增长 from $\approx 1.24$ (small $\theta$) 至 $\approx 1.36$ ($\theta \to 1$).</p>
 <p><strong>表 4</strong>. $\tau(\theta)$ 跨 j ≥ 22 averaged (mean ± std across 8 blocks j=22-29):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$\theta$</th>
 <th>$\langle \tau \rangle$ adjacent</th>
 <th>$\langle \tau \rangle$ $\mu_{12}$</th>
 <th>$\langle \tau \rangle$ block</th>
 <th>std (cross-config × cross-j)</th>
 </tr></thead><tbody>
-<tr>
-<td>0.25</td>
-<td>0.392</td>
-<td>0.396</td>
-<td>0.398</td>
-<td>0.028</td>
-</tr>
-<tr>
-<td>0.50</td>
-<td>0.477</td>
-<td>0.485</td>
-<td>0.490</td>
-<td>0.061</td>
-</tr>
-<tr>
-<td>0.75</td>
-<td>0.485</td>
-<td>0.492</td>
-<td>0.496</td>
-<td>0.036</td>
-</tr>
-<tr>
-<td>1.00</td>
-<td>0.343</td>
-<td>0.337</td>
-<td>0.331</td>
-<td>0.084</td>
-</tr>
+<tr><td>0.25</td><td>0.392</td><td>0.396</td><td>0.398</td><td>0.028</td></tr>
+<tr><td>0.50</td><td>0.477</td><td>0.485</td><td>0.490</td><td>0.061</td></tr>
+<tr><td>0.75</td><td>0.485</td><td>0.492</td><td>0.496</td><td>0.036</td></tr>
+<tr><td>1.00</td><td>0.343</td><td>0.337</td><td>0.331</td><td>0.084</td></tr>
 </tbody></table>
 <p>$\tau$ 跨 centerings agreement 同 (差 < 0.01). $\tau$ 跨 $\theta$ 不 单调 — 在 $\theta = 0.5$-$0.75$ 上 plateau 至 $\approx 0.49$, 在 $\theta \to 1$ 上 drop 至 $\approx 0.34$.</p>
 <p><strong>关键 observation</strong>: $c_1, \tau$ 是 <strong>window-response coefficients</strong> (depend on $\theta$ + $j$), 不是 几何 constants ($c_0, c_t$ 才 是 constants). 二者 ontological 区别:</p>
@@ -1169,72 +714,23 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>$$s_j(\theta) := 1 - c_1(j, \theta) + \tau(j, \theta)$$</p>
 <p>paper 72 articulate $s_j$ 为 <strong>front-response residual</strong> — 相对 positive lobe coherence 的 unaccounted part (cf. §5.4 (iv) for articulation).</p>
 <p><strong>表 5</strong>. $s_j(\theta = 0.5)$ adjacent centering 跨 $j = 20$ 至 29 ($N = 10^9$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$c_1$</th>
 <th>$\tau$</th>
 <th>$s_j = 1 - c_1 + \tau$</th>
 </tr></thead><tbody>
-<tr>
-<td>20</td>
-<td>1.317</td>
-<td>0.358</td>
-<td>+0.041</td>
-</tr>
-<tr>
-<td>21</td>
-<td>1.315</td>
-<td>0.621</td>
-<td>+0.306</td>
-</tr>
-<tr>
-<td>22</td>
-<td>1.299</td>
-<td>0.456</td>
-<td>+0.157</td>
-</tr>
-<tr>
-<td>23</td>
-<td>1.210</td>
-<td>0.618</td>
-<td>+0.408</td>
-</tr>
-<tr>
-<td>24</td>
-<td>1.283</td>
-<td>0.494</td>
-<td>+0.211</td>
-</tr>
-<tr>
-<td>25</td>
-<td>1.353</td>
-<td>0.465</td>
-<td>+0.112</td>
-</tr>
-<tr>
-<td>26</td>
-<td>1.320</td>
-<td>0.440</td>
-<td>+0.120</td>
-</tr>
-<tr>
-<td>27</td>
-<td>1.309</td>
-<td>0.455</td>
-<td>+0.146</td>
-</tr>
-<tr>
-<td>28</td>
-<td>1.348</td>
-<td>0.416</td>
-<td>+0.067</td>
-</tr>
-<tr>
-<td>29</td>
-<td>1.441</td>
-<td>0.473</td>
-<td>+0.033</td>
-</tr>
+<tr><td>20</td><td>1.317</td><td>0.358</td><td>+0.041</td></tr>
+<tr><td>21</td><td>1.315</td><td>0.621</td><td>+0.306</td></tr>
+<tr><td>22</td><td>1.299</td><td>0.456</td><td>+0.157</td></tr>
+<tr><td>23</td><td>1.210</td><td>0.618</td><td>+0.408</td></tr>
+<tr><td>24</td><td>1.283</td><td>0.494</td><td>+0.211</td></tr>
+<tr><td>25</td><td>1.353</td><td>0.465</td><td>+0.112</td></tr>
+<tr><td>26</td><td>1.320</td><td>0.440</td><td>+0.120</td></tr>
+<tr><td>27</td><td>1.309</td><td>0.455</td><td>+0.146</td></tr>
+<tr><td>28</td><td>1.348</td><td>0.416</td><td>+0.067</td></tr>
+<tr><td>29</td><td>1.441</td><td>0.473</td><td>+0.033</td></tr>
 </tbody></table>
 <p>$s_j(\theta = 0.5)$ 跨 $j = 20$ 至 29: $[0.033, 0.408]$, mean 0.160, std 0.117.</p>
 <p>$s_j$ <strong>phase-sensitive, $j$-fluctuating, 没 clean periodicity 与 没 monotone trend visible 在 现 $j$ range 上</strong>.</p>
@@ -1256,69 +752,22 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>定义 (取 absolute value, 因 $s_j$ 未来 大 $j$ 可能 negative, boundedness 应 考虑 $|\cdot|$):</p>
 <p>$$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}}$$</p>
 <p><strong>表 6</strong>. 跨 $j = 22$ 至 $29$ at $\theta = 0.5$ adjacent centering ($N = 10^9$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$s_j$</th>
 <th>$P_j$</th>
 <th>$s_j \cdot P_j$</th>
 <th>$\Lambda_j$</th>
 </tr></thead><tbody>
-<tr>
-<td>22</td>
-<td>+0.157</td>
-<td>9.380</td>
-<td>+1.475</td>
-<td>0.067</td>
-</tr>
-<tr>
-<td>23</td>
-<td>+0.408</td>
-<td>13.634</td>
-<td>+5.564</td>
-<td>0.242</td>
-</tr>
-<tr>
-<td>24</td>
-<td>+0.211</td>
-<td>21.108</td>
-<td>+4.446</td>
-<td>0.185</td>
-</tr>
-<tr>
-<td>25</td>
-<td>+0.112</td>
-<td>32.459</td>
-<td>+3.637</td>
-<td>0.146</td>
-</tr>
-<tr>
-<td>26</td>
-<td>+0.120</td>
-<td>53.129</td>
-<td>+6.399</td>
-<td>0.246</td>
-</tr>
-<tr>
-<td>27</td>
-<td>+0.146</td>
-<td>86.782</td>
-<td>+12.626</td>
-<td>0.468</td>
-</tr>
-<tr>
-<td>28</td>
-<td>+0.067</td>
-<td>139.600</td>
-<td>+9.393</td>
-<td>0.336</td>
-</tr>
-<tr>
-<td>29</td>
-<td>+0.033</td>
-<td>223.216</td>
-<td>+7.267</td>
-<td>0.251</td>
-</tr>
+<tr><td>22</td><td>+0.157</td><td>9.380</td><td>+1.475</td><td>0.067</td></tr>
+<tr><td>23</td><td>+0.408</td><td>13.634</td><td>+5.564</td><td>0.242</td></tr>
+<tr><td>24</td><td>+0.211</td><td>21.108</td><td>+4.446</td><td>0.185</td></tr>
+<tr><td>25</td><td>+0.112</td><td>32.459</td><td>+3.637</td><td>0.146</td></tr>
+<tr><td>26</td><td>+0.120</td><td>53.129</td><td>+6.399</td><td>0.246</td></tr>
+<tr><td>27</td><td>+0.146</td><td>86.782</td><td>+12.626</td><td>0.468</td></tr>
+<tr><td>28</td><td>+0.067</td><td>139.600</td><td>+9.393</td><td>0.336</td></tr>
+<tr><td>29</td><td>+0.033</td><td>223.216</td><td>+7.267</td><td>0.251</td></tr>
 </tbody></table>
 <p>(其中 $\Lambda_j := |s_j \cdot P_j| / j$ 按 §5.2 定义.)</p>
 <p>$\Lambda_j(\theta = 0.5) \in [0.067, 0.468]$ 跨 $j = 22$ 至 $29$, mean 0.243, std 0.121. <strong>bounded $O(1)$ 经验上</strong>.</p>
@@ -1335,30 +784,16 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 </ul>
 <p>即 $\Lambda_j(\theta)$ 在 non-vacuous interior $\theta \in (\epsilon, 1 - \epsilon)$ 上 真 carry mechanism information, 在 boundary $\theta \in \{0, 1\}$ 上 trivially vanishing.</p>
 <p><strong>表 7</strong>. $\Lambda_j(\theta)$ 跨 $\theta \in \{0.25, 0.5, 0.75\}$ 跨 $j \in \{22, 25, 28\}$ adjacent centering ($N = 10^9$):</p>
-<table><thead><tr>
+<table>
+<thead><tr>
 <th>$j$</th>
 <th>$\Lambda_j(0.25)$</th>
 <th>$\Lambda_j(0.50)$</th>
 <th>$\Lambda_j(0.75)$</th>
 </tr></thead><tbody>
-<tr>
-<td>22</td>
-<td>0.071</td>
-<td>0.067</td>
-<td>0.071</td>
-</tr>
-<tr>
-<td>25</td>
-<td>0.151</td>
-<td>0.146</td>
-<td>0.129</td>
-</tr>
-<tr>
-<td>28</td>
-<td>0.424</td>
-<td>0.336</td>
-<td>0.299</td>
-</tr>
+<tr><td>22</td><td>0.071</td><td>0.067</td><td>0.071</td></tr>
+<tr><td>25</td><td>0.151</td><td>0.146</td><td>0.129</td></tr>
+<tr><td>28</td><td>0.424</td><td>0.336</td><td>0.299</td></tr>
 </tbody></table>
 <p><strong>Cross-θ summary</strong> (跨 j=22-29 × 3 centerings):</p>
 <ul>
@@ -1381,10 +816,10 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p><strong>Articulation note</strong>: 本节 articulate 一 <strong>localization criterion</strong>, 不 真 theorem. (F1)(F2) 是 已 sealed empirical observations, (F3) 是 真 frontier 待 prove. (F1)+(F2)+(F3) ⟹ 结论 是 trivial implication 因为 $A^{\rm signed} = 1 + 2 s_j P_j$. 本 criterion 的 实质内容 全 在 (F3); criterion 形态 让 paper 72 frontier mathematically isolate 出 specific statement, 不 替代 proof.</p>
 <p><strong>Criterion 72.S-front (Front Residual Locking Criterion)</strong>:</p>
 <p>设 ZFCρ DP 在饱和骨架 $S_{D^*(j)}$ 上, 在 $j$-smooth adjacent reference centering 之下, 对 fixed non-vacuous window fraction $\theta \in (0, 1)$ 取 $W = \theta m_j$, 满足:</p>
-<p>(F1) <strong>Geometry</strong> (本文 §2 sealed empirical, 跨 12 configurations × 16 blocks std < 5%): 存在 $c_0, c_t \in (0, 1)$ with $c_0 < c_t$, 使</p>
+<p>(F1) <strong>Geometry</strong> (本文 §2 sealed empirical, 跨 12 configurations × 16 blocks std < 5%): 存在 $c_0, c_t \in (0, 1)$ with $c_0 < c_t$, 使 </p>
 <p>$$k_c(j) = c_0 m_j + o(m_j), \qquad k_t(j) = c_t m_j + o(m_j)$$</p>
 <p>经验值: $c_0 \approx 1/166$, $c_t \approx 1/16.8$.</p>
-<p>(F2) <strong>Positive lobe scaling</strong> (本文 §3 sealed cross-N empirical): 存在 $\beta_P \in (0, 1)$ with</p>
+<p>(F2) <strong>Positive lobe scaling</strong> (本文 §3 sealed cross-N empirical): 存在 $\beta_P \in (0, 1)$ with </p>
 <p>$$P_j(\theta) \sim m_j^{\beta_P}$$</p>
 <p>经验值: $\beta_P \approx 0.70 - 0.71$ at $\theta = 1/2$, asymptotic regime. Regime-1 connection 给 mathematical 来源.</p>
 <p>(F3) <strong>Front residual locking</strong> (本文 §5 真 frontier, mathematical proof open):</p>
@@ -1424,9 +859,7 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>(v) Component (A) — 第 65 篇 (c0)(c2)(c3) unconditional 化: framework-internal cleanup, 把 conditional evidence 推进 unconditional theorem.</p>
 <p>(vi) Component (B) — 第 71 篇 (H4b) deterministic Abel transfer at non-vacuous scale ($W_f = m_j / 2$): boundary terms cancellation 涉及 第 71 篇 v3 hotfix 之后 framework. 第 71 篇 v3 articulate 该 component 在 §8.4 Component (B), 仍 open.</p>
 <p><strong>Helpful but not critical path</strong> (mechanism articulation, paper 72 articulate 后续 paper 73+ attack):</p>
-<p>(ii) $s_j$ phase decomposition mathematical structure (第 71 篇 4-AI synthesis articulate, 是 hypothesis 不 sealed)</p>
-<p>(iii) Fourier dual articulation (第 56 篇 zero-frequency periodogram connection)</p>
-<p>(iv) Gap profile connection (第 64 篇 free-boundary)</p>
+<p>(ii) $s_j$ phase decomposition mathematical structure (第 71 篇 4-AI synthesis articulate, 是 hypothesis 不 sealed) (iii) Fourier dual articulation (第 56 篇 zero-frequency periodogram connection) (iv) Gap profile connection (第 64 篇 free-boundary)</p>
 <p>mechanism articulation 帮助 understanding 但 不 必需 for closure pathway. paper 72 articulate critical path 与 mechanism articulation 分离, 让 后续 attack effort 优先 critical path.</p>
 <p>若 critical path (i)(v)(vi) 全 established, 则 第 70 篇 Theorem 70.A + 第 65 篇 Theorem 65.A + 第 71 篇 v3 判据 71.E + 本文 Criterion 72.S-front 链条无条件闭合, 第 59 篇猜想 59.1 成立.</p>
 <hr>
@@ -1451,13 +884,7 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>(a) <strong>拓扑时钟 (Topological Clock)</strong>: $c_0, c_t$ 不是 numerical accident, 是 ZFCρ 算法 在 "Add (顺) vs Mult (凿击)" 博弈 上 固定 phase-space 轨迹 的 ontological manifestation. $c_0, c_t$ 跨 12 configurations stable 反映 ZFCρ 算法 phase-space 几何 <strong>刚性 (rigidity)</strong>, 不 random fluctuation.</p>
 <p>(b) <strong>同源 锁定 articulation</strong>: $\Lambda_j$ bounded 反映 $P_j$ exponential 与 $s_j$ phase-fluctuating 二者 <strong>同源</strong> ($\min$ algorithm 强制 inverse locking — 涨 越 大 必 切断 越 强 重置). SAE Methodology articulate "限制 即 结构 生成 之母" 的 dynamical manifestation.</p>
 <p>(c) <strong>$c_0, c_t$ 数论 / 群论 来源 conjecture (open)</strong>: 真 audit 数据 给 $\langle c_0 \rangle = 0.00602$ ($\approx 1/166$), $\langle c_t \rangle = 0.0595$ ($\approx 1/16.8$). 是否 这 universal constants 与 specific 数论 / 群论 anchor 有 真 structural connection 仍 完全 open. 如 $1/c_t \approx 16.8$ 与 一些 small group orders ($|GL_3(\mathbb{F}_2)| = |PSL(2, 7)| = 168$) 有 numerical proximity, 但 <strong>是 数值 巧合 还是 真 structural connection 在 paper 72 数据 内 不 决定</strong>. paper 72 仅 record numerical values; 任何 数论 / 群论 articulation 是 paper 73+ territory.</p>
-<p>(d) <strong>Lyapunov exponent / metric entropy articulation</strong> (子夏 round 18): paper 72 (F3) 可 articulate 为 ZFCρ 算术动力系统 度量 熵 受限 的 manifestation:</p>
-<ul>
-<li>$P_j$ 视作 $\min$ 算子 选择 树 上 局部 最优 路径 的 <strong>相空间 体积 膨胀率</strong> (类 Lyapunov exponent)</li>
-<li>$s_j$ 视作 相邻 素数 由 奇因子 共享 被迫 卷入 不同 乘法 分支 时 的 <strong>拓扑 分离率</strong></li>
-<li>$|s_j P_j| = O(j)$ ⟺ 系统 metric entropy bounded by $O(j)$, 即 信息 丢失率 中和 局部 连贯性 信息 膨胀</li>
-<li>paper 73 attack candidate path: 建立 DP 路径 generating function, 证明 遍历性 演化 内 信息 丢失率 与 信息 膨胀率 互锁 不 直接 硬算 integral</li>
-</ul>
+<p>(d) <strong>Lyapunov exponent / metric entropy articulation</strong> (子夏 round 18): paper 72 (F3) 可 articulate 为 ZFCρ 算术动力系统 度量 熵 受限 的 manifestation:    - $P_j$ 视作 $\min$ 算子 选择 树 上 局部 最优 路径 的 <strong>相空间 体积 膨胀率</strong> (类 Lyapunov exponent)    - $s_j$ 视作 相邻 素数 由 奇因子 共享 被迫 卷入 不同 乘法 分支 时 的 <strong>拓扑 分离率</strong>    - $|s_j P_j| = O(j)$ ⟺ 系统 metric entropy bounded by $O(j)$, 即 信息 丢失率 中和 局部 连贯性 信息 膨胀    - paper 73 attack candidate path: 建立 DP 路径 generating function, 证明 遍历性 演化 内 信息 丢失率 与 信息 膨胀率 互锁 不 直接 硬算 integral</p>
 <p>paper 72 仅 列 这些 articulation candidates 给 paper 73+ attack, 不 commit 任何 specific mechanism structure 进 paper 72 mathematical claim.</p>
 <h3>7.6 articulation summary</h3>
 <p>$s_j$ 来源 articulation gap 仍 open. paper 72 不 close 这个 gap, articulate 为 frontier 待 paper 73+ attack. paper 72 main contribution: isolate (F3) 为 specific mathematical statement 可 attack, 不 mechanism commitment.</p>
@@ -1537,33 +964,30 @@ $$\boxed{\Lambda_j(\theta) := \frac{|s_j(\theta) \cdot P_j(\theta)|}{j}, \qquad 
 <p>[67] 秦汉. ZFCρ Paper 67: $C_{\rm eff}$ trajectory. ZFCρ 系列, 第 LXVII 篇. DOI: (待 fill).</p>
 <p>[70] 秦汉. ZFCρ Paper 70: 分块有效骨架, 对 59.1 的化归. ZFCρ 系列, 第 LXX 篇. DOI: (待 fill).</p>
 <p>[71] 秦汉. ZFCρ Paper 71 v3: 线性 Signed Abel 预算与饱和零模目标 (v3 hotfix at $W_f$ non-vacuous scale, 2026-05-04). ZFCρ 系列, 第 LXXI 篇. Concept DOI: 10.5281/zenodo.20011553.</p>
-<p>注: paper 72 publication 之前 fill 全 placeholder DOIs.</p>
-    </div>
+<p>注: paper 72 publication 之前 fill 全 placeholder DOIs.</p></div>
   </div>
 </article>
 <footer>
   <div class="footer-inner">
-    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
-    <div class="footer-links">
-      <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>
-      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
-      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
-    </div>
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
   </div>
 </footer>
 <script>
 function switchLang(lang, tab) {
-  ['lang-en','lang-zh'].forEach(id => {
+  ['lang-en','lang-zh'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
   });
-  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
   var target = document.getElementById('lang-' + lang);
   if (target) target.style.display = 'block';
   tab.classList.add('active');
   if (window.MathJax) { MathJax.typesetPromise(); }
 }
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}' ></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
 </body>
 </html>
