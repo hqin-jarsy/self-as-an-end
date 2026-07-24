@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Incompatibility in Discrete Black-Hole Interiors: Three-Domain Separation, Orbit Dichotomy, and the Bridge Gap in Radial-Potential Lifting – Han Qin (秦汉)</title>
+  <meta name="citation_doi" content="10.5281/zenodo.21499053">
+  <script>MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'none' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">SAE Black Hole Series · Paper 2</div>
+    <h1>Update Incompatibility in Discrete Black-Hole Interiors: Three-Domain Separation, Orbit Dichotomy, and the Bridge Gap in Radial-Potential Lifting<br><span style="font-size:1.1rem;opacity:0.75">离散黑洞内区的更新不相容：三域分离、轨道二岔，与径向势提升之桥缺口</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.21499053">10.5281/zenodo.21499053</a> · Full PDF on Zenodo · CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Discretising the black-hole interior is widely expected to dissolve classical geodesic incompleteness. The expectation is rarely examined in point of form. What the trapped region delivers is a statement about worldlines and events: every future-directed causal direction strictly decreases the areal radius. What a discrete occupancy model delivers is a statement about configurations: which occupancy patterns may follow which. Between the two there must be a bridge.</p>
+<p>This paper separates three objects that are routinely conflated, takes as primitive a labelled transition system whose configuration graph is a quotient, and shows that the bridge is not an automatic consequence of those premises. The witness is the ring shift: in a saturated region, a closed chain in which every cell simultaneously sends one unit and receives one is number-conserving, involves only nearest neighbours, requires no vacancy, and leaves the occupancy function unchanged. The projection from transitions to configurations can therefore fail to be faithful.</p>
+<p>The main theorem has four parts. Every maximal orbit of a finite deterministic configuration dynamics either terminates in finitely many steps or is eventually periodic. If a bounded-below potential descends by a uniform amount along every transition, the periodic branch is excluded and orbits terminate within a computable bound; this part requires neither finiteness nor determinism. Forward totality and uniform strict descent cannot coexist. And under radial non-increase, every transition on a cycle has zero potential change. Taken together: in a finite deterministic configuration dynamics, an infinite orbit that never repeats a configuration is unavailable, though events may still never repeat.</p>
+<p>Three bridges are distinguished and ordered, with both converses failing. The main theorem requires the weakest of them that still does work, and the radial potential is a sufficient special case rather than a necessity. Nine numbered refutations are recorded in three groups, the first two forming a squeeze. Two applications follow: exact recurrence is incompatible with persistent positive net outflow on the same cycle, and a local exclusion lemma together with an influence-cone envelope whose volume fraction has leading term 3⟨h⟩t/R under local finite-speed updating.</p>
+<p>Both answers to the bridge question carry a cost. If the bridge is not delivered, a model's pure occupancy dynamics cannot by itself claim to carry the inwardness of the trapped region. If it is delivered, forward totality is lost on the spot.</p>
+<p>This paper claims no material core, no interior layer state, no resolution of the singularity, and no observational projection. What it offers is an auditing framework: anyone proposing to carry the trapped region's inwardness by way of a finite, forward-complete discrete occupancy dynamics must state explicitly how the bridge is crossed.</p>
+      <p class="paper-keywords"><strong>Keywords:</strong> discrete black-hole interior; trapped region; forward completeness; radial potential; type separation; no-go theorem</p>
+    </div>
+    <div class="paper-body"><h2>Conventions and notation</h2>
+<p>The refutation convention follows the SAE ZFCρ series [33], §10. Within this paper refutations are written Kill <em>n</em>; when cited across series the domain is supplied by the citing work, as ZFCρ Kill 17 or BH Kill 3. Paper 1 of the present series [31], §3.7, writes K0 through K5 and G1, G2 for its preregistered criteria and supporting diagnostics; these are similar in appearance and different in kind, and on first mention are written in full as "the preregistered criterion K3 of Paper 1."</p>
+<p>Where this paper revises or corrects earlier work, the citation is given to the section and proposition, not to the DOI alone.</p>
+<p>Commitment levels, bridge statuses and refutation sources are collected in the status map of §8. Individual sections do not carry their own level markings.</p>
+<hr>
+<h2>1 Introduction</h2>
+<h3>1.1 The problem</h3>
+<p>Classical gravity predicts geodesic incompleteness in the black-hole interior. Many approaches to quantum gravity replace continuum spacetime with a discrete substrate [1,2], and the expectation that commonly accompanies them is this: given a minimum scale, collapse cannot proceed to a singularity, so incompleteness resolves itself.</p>
+<p>The form of that expectation is rarely examined. Models that support a regular core with an effective stress tensor [3–7], and models in which a minimum scale produces a bounce [8], share it. Once a discrete model has been written down, one observes that it has a minimum length and concludes that the singularity is avoided. But the conclusion requires two steps: that the model can carry the dynamics of the trapped region at all, and that this dynamics does not, at the discrete level, lead to termination. Neither is self-evident, and <strong>the first is the one that is usually skipped</strong>.</p>
+<p>The defining property of the trapped region, in the standard theory, is a statement about <strong>worldlines and events</strong>: every future-directed causal direction strictly decreases the areal radius. What a discrete occupancy model describes is a transition between <strong>configurations</strong>: which occupancy distribution may follow which. These do not live on the same level. Passing from the first to the second requires a bridge.</p>
+<p><strong>That bridge is the subject of this paper.</strong></p>
+<h3>1.2 The gap</h3>
+<p>The content the bridge must supply can be made precise. Let the occupancy configuration be <em>n</em>, and let the radial potential be Φ(<em>n</em>) = Σ <em>n_x r</em>(<em>x</em>). If the inwardness of the trapped region lifts to the configuration level, then every update strictly decreases Φ.</p>
+<p>That lifting requires every occurrence to change the configuration, and the requirement generally fails. The counterexample is the <strong>ring shift</strong>: a closed chain in a saturated region in which every cell simultaneously sends one unit and receives one, conserving number and leaving the occupancy function everywhere unchanged (Lemma 3.9).</p>
+<p>> Motion of worldlines and events does not entail change of occupancy configuration.</p>
+<p>The construction itself is not new: a conserving closed-chain permutation is a familiar object in lattice gases and exclusion processes [24,25]. What is new here is its use as a witness for the failure of that entailment, that is, as a witness for type separation.</p>
+<h3>1.3 What this paper does</h3>
+<p><strong>Three-domain separation.</strong> The spatial cell graph, the configuration transition graph, and the occurrence unfolding are distinguished, and a type-checking rule is imposed: a cycle, or the absence of one, in any one domain may not stand in for a conclusion about another without an explicit bridge. The occurrence unfolding serves as a semantic convention rather than a third primitive dynamics; its cost is that configuration periodicity can no longer be used to argue for the absence of time, and that cost is what shows the convention is not free.</p>
+<p><strong>A main theorem.</strong> Orbit dichotomy and radial-potential obstruction, in four parts (§4). The parts do not share a premise level: the first requires finiteness and determinism and yields recurrence; the second requires neither and yields termination. Stated as separate theorems this asymmetry is invisible; combined, it shows.</p>
+<p><strong>Exposure of the bridge.</strong> From the ring shift and the two timing conventions, the bridge is shown to fail on either side, and to succeed only under a third convention at the cost of forward totality. This is the paper's central opening and its only physical remainder.</p>
+<p><strong>Nine refutations.</strong> Numbered and grouped by function following the convention of [33], §10. The first group is over-inheritance from the continuum, the second over-inference from discreteness; together they squeeze a narrow corridor. The third is mutual incompatibility.</p>
+<p><strong>Two applications.</strong> Exact recurrence against persistent positive net outflow; a local exclusion lemma and an influence-cone bound.</p>
+<h3>1.4 The nature of this paper, and its limits</h3>
+<p>The mathematics here is elementary: a quantity bounded below cannot descend uniformly without end, and a finite deterministic system must return. None of what is specific to black holes lies in that piece of combinatorics. It lies in the bridge. <strong>The contribution is therefore not depth of mathematics but minimisation of dependence and audit of type.</strong> What is delivered is a framework for auditing discrete-interior models, not a verdict on what the interior of a black hole is.</p>
+<p>Its jurisdiction accordingly extends to any model that would carry the trapped region by way of a finite discrete occupancy dynamics, and is not confined to the present framework.</p>
+<p>This paper claims no material core, no interior layer state, and no numerical value for an occupancy or density bound. It does not claim to resolve the singularity: abandoning forward totality yields orbit termination, and <strong>naming is not dissolving</strong> — no proof is offered that such a terminal state is equivalent to a classical singularity. It offers no observational projection. It does not claim a derivation of Hawking radiation. It does not treat Kerr.</p>
+<h3>1.5 Organisation</h3>
+<p>Section 2 refutes a common inference, that the degeneration of the lapse at the horizon entails the absence of a global time direction in the interior, and gives a trichotomy of criteria. Section 3 establishes the three-domain separation and the ring shift. Section 4 states the main theorem. Section 5 combines the two into the bridge gap and gives an exit matrix. Section 6 gives two applications. Section 7 discusses the bridges not yet built, this paper's refutations, and the minimal entry point for what follows. Section 8 is the status map. Appendix A carries the continuum spherical-symmetry no-go and the reason it does not suffice to establish discrete same-shell acyclicity. Appendix B carries the numerics, the closed form of the lattice coefficient, and the hashes of the code.</p>
+<h3>1.6 Dependency matrix</h3>
+<p>Only conditions actually used by the theorems of this paper are listed. Anything that enters no proof is omitted.</p>
+<table>
+<thead><tr>
+<th>Condition</th>
+<th>Role</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr><td><em>K</em> is a complete and autonomous microstate space</td><td>prevents hidden variables from changing the future</td><td>unbuilt bridge</td></tr>
+<tr><td><em>U</em> is forward-total</td><td>the core of forward completeness</td><td>to be established</td></tr>
+<tr><td>Φ is bounded below</td><td>condition for potential obstruction</td><td>conditional assumption</td></tr>
+<tr><td>all allowed transitions descend uniformly</td><td>the bridge from continuum inwardness to configurations</td><td>unbuilt bridge</td></tr>
+<tr><td>projection from events to configurations is non-identity</td><td>written H_occ</td><td><strong>generally false</strong></td></tr>
+<tr><td>the complete state has no outward output</td><td>condition for recurrence</td><td>conflicts with the inherited broadcast statement</td></tr>
+<tr><td>local finite propagation speed</td><td>condition for the influence cone</td><td>model assumption</td></tr>
+<tr><td>the three clauses of Model 4.10</td><td>exhaustiveness of the cycle support</td><td>model assumption</td></tr>
+</tbody></table>
+<p>The framework's posits concerning a core — the origin of an occupancy bound, the map between an internal ledger and the boundary mass, matching conditions, and stability — enter no theorem here and are therefore not listed. Since this paper claims no core, enumerating the full burden of a future core paper would serve only completeness and would add nothing to its conclusions.</p>
+<p>Commitment levels, bridge statuses and refutation sources are collected in §8 and are not tabulated here, so that the two cannot fall out of step.</p>
+<hr>
+<h2>2 Lapse does not yield a category</h2>
+<h3>2.1 The inference to be refuted, and its provenance</h3>
+<p>> (F)  dτ/dt → 0 at <em>r</em> = <em>r_s</em>  ⟹  the interior has no global time direction.</p>
+<p>What this section corrects is a route previously taken within the present framework. The existing articulation of the interior is Info-4 [9], §4.4, which rests on the asymptotic divergence of the tick interval at the horizon. That section already declares three things: the result is <strong>a finite-time consequence</strong> rather than an absolute claim that time does not exist; it is <strong>an outside-observer reading conditional on a finite lifetime bound</strong>, marked Layer 2, a conditional structural reading, in that paper's §11; and the internal-observer perspective is placed under Layer 5 strict silence.</p>
+<p>So (F) is not merely unsupported by its upstream. It is excluded by that upstream's own declaration: a statement constructed to say what an outside observer can conclude within finite time does not produce an internal categorical fact.</p>
+<p>This is an instance of retrospective correction under recursive subdivision. Subdivision of the physical-quantity ladder [32] separates what previously shared a rung, and the earlier coarse-grained articulation must be revised accordingly.</p>
+<h3>2.2 A type error</h3>
+<p>dτ/dt is a lapse. It gives proper time per unit coordinate time; it is a <strong>rate</strong>. Whether a global time direction exists is a <strong>categorical or topological</strong> property of the causal structure. That the rate of evolution vanishes in one direction does not entail that the direction is undefinable or unorientable.</p>
+<h3>2.3 A counterexample</h3>
+<p><strong>Proposition 2.1.</strong> The trapped region of Schwarzschild is time-orientable.</p>
+<p><em>Proof.</em> Take ingoing Eddington–Finkelstein coordinates [10,11],</p>
+<p>d<em>s</em>² = −<em>f</em> d<em>v</em>² + 2 d<em>v</em> d<em>r</em> + <em>r</em>² dΩ²,  <em>f</em> = 1 − <em>r_s</em>/<em>r</em>,</p>
+<p>which are regular across the horizon. Let</p>
+<p><em>X</em> = ∂_v − (1 + <em>f</em>²) ∂_r.</p>
+<p>From <em>g_vv</em> = −<em>f</em>, <em>g_vr</em> = 1 and <em>g_rr</em> = 0,</p>
+<p><em>g</em>(<em>X</em>,<em>X</em>) = −<em>f</em> − 2(1 + <em>f</em>²) = −(2<em>f</em>² + <em>f</em> + 2) = −[2(<em>f</em> + ¼)² + 15/8] ≤ −15/8 < 0</p>
+<p>for every real <em>f</em>. Moreover <em>X^v</em> ≡ 1 is nowhere zero. Hence <em>X</em> is a continuous, nowhere-vanishing timelike vector field on the ingoing region <em>r</em> > 0, and that region is time-orientable. ∎</p>
+<p><strong>Remark 2.2.</strong> The future orientation of <em>X</em> agrees with the ingoing EF family, so its orientation is not an arbitrary choice.</p>
+<p><strong>Remark 2.3 (the status of the antecedent).</strong> It is sometimes said that the antecedent of (F) is simply a coordinate artefact. That is too strong, and four layers should be distinguished. First, the Schwarzschild <em>t</em> coordinate does fail at the horizon, and this is a matter of coordinates. Second, the expression dτ/dt = √<em>f</em> applies only to <strong>static worldlines at fixed <em>r</em> in the exterior</strong>; inside the horizon there are no static timelike observers at fixed <em>r</em>, so that ratio does not carry its original operational meaning there. Third, the static Killing field becomes null at the Killing horizon, and the vanishing of its norm is a geometric fact, not a coordinate product. Fourth, redshift relative to a static clock at infinity has operational meaning as well.</p>
+<p>What may therefore be asserted is this: the numerical value of the Schwarzschild lapse depends on the static slicing and on the normalisation of Killing time, and its vanishing cannot by itself carry the coordinate-independent conclusion that time-orientability is lost. <strong>This denies neither the physical content of exterior static redshift nor the geometric significance of that vanishing.</strong></p>
+<h3>2.4 Criteria: two failed routes and one surviving candidate</h3>
+<p>To mark a categorical transition at the horizon by some quantity, the quantity must reach its mark at <em>r_s</em> for every mass, and must not be a rate-like structure.</p>
+<p><strong>First, local strength scalars: failed.</strong> The Kretschmann scalar of the Schwarzschild solution [12] is <em>K</em> = 12<em>r_s</em>²/<em>r</em>⁶ [13–15], so</p>
+<p><em>K</em>(<em>r_s</em>) = 12/<em>r_s</em>⁴ = 3<em>c</em>⁸/4<em>G</em>⁴<em>M</em>⁴,</p>
+<p>which becomes arbitrarily small as the mass grows. Hence among the local strength scalars considered, none attains a fixed threshold at <em>r_s</em> for arbitrary mass; criteria defined by curvature, density or tidal force do not coincide with <em>r_s</em>.</p>
+<p><strong>Second, the lapse: failed.</strong> The square of the Schwarzschild static lapse — equivalently the norm of the static Killing vector — degenerates at <em>r_s</em> for every mass, but it is a rate and a static-observer structure and yields no categorical conclusion. <strong>It should be named as such</strong>, and not written as a general coordinate-independent scalar.</p>
+<p><strong>Third, marginal trappedness: surviving.</strong> In this clause geometric units <em>G</em> = <em>c</em> = 1 are used, so <em>r_s</em> = 2<em>M</em>. Under spherical symmetry the Misner–Sharp quasi-local mass [16] <em>m</em>(<em>r</em>) is defined by 1 − 2<em>m</em>(<em>r</em>)/<em>r</em> = <em>g^ab</em> ∂_a <em>r</em> ∂_b <em>r</em>, and</p>
+<p>2<em>m</em>(<em>r</em>)/<em>r</em> = 1 ⟺ ∇<em>r</em> is null ⟺ the surface is marginally trapped.</p>
+<p>For Schwarzschild <em>m</em>(<em>r</em>) ≡ <em>M</em>, so the condition holds exactly at <em>r</em> = 2<em>M</em> = <em>r_s</em>. This criterion is coordinate-independent and quasi-local, and under spherical symmetry it is the same object as a marginally trapped surface [17]; no fourth category is required.</p>
+<p><strong>The limit of the survivor.</strong> Marginal trappedness may mark a phase region, but without an additional update theorem it cannot by itself deliver forward completeness. And it should be noted that in static Schwarzschild <em>r_s</em> is a <strong>marginal</strong> trapped surface, whereas the classical singularity theorems [18] use <strong>closed</strong> trapped surfaces among their hypotheses [19]; the two are related and must not be written as identical.</p>
+<h3>2.5 The causal direction in the interior</h3>
+<p><strong>Proposition 2.4.</strong> In the trapped region, every future-directed causal direction strictly decreases <em>r</em>.</p>
+<p><em>Proof.</em> In ingoing EF coordinates a causal vector <em>V</em> satisfies</p>
+<p><em>g</em>(<em>V</em>,<em>V</em>) = −<em>f</em>(<em>V^v</em>)² + 2<em>V^v V^r</em> + <em>r</em>²|<em>V</em>_Ω|² ≤ 0.</p>
+<p>The angular term <em>r</em>²|<em>V</em>_Ω|² is non-negative, so −<em>f</em>(<em>V^v</em>)² + 2<em>V^v V^r</em> ≤ 0. For <em>r</em> < <em>r_s</em> we have <em>f</em> < 0. Two branches.</p>
+<p><em>First, V^v > 0.</em> Then 2<em>V^v V^r</em> ≤ <em>f</em>(<em>V^v</em>)² ≤ 0, so <em>V^v V^r</em> ≤ 0 and <em>V^r</em> ≤ 0. If <em>V^r</em> = 0 then <em>g</em>(<em>V</em>,<em>V</em>) = −<em>f</em>(<em>V^v</em>)² + <em>r</em>²|<em>V</em>_Ω|² ≥ −<em>f</em>(<em>V^v</em>)² > 0, contradicting causality; hence <em>V^r</em> < 0 strictly.</p>
+<p><em>Second, V^v = 0.</em> This branch exists in ingoing EF coordinates: it is the radial null direction. Here <em>g</em>(<em>V</em>,<em>V</em>) = <em>r</em>²|<em>V</em>_Ω|², and causality requires this to be non-positive, so <em>V</em>_Ω = 0 and <em>V</em> ∝ ∂_r with <em>g</em>(<em>V</em>,<em>V</em>) = 0. Orientation is fixed by the field <em>X</em> of Proposition 2.1: <em>g</em>(∂_r, <em>X</em>) = <em>g_rv</em> = 1 > 0, so ∂_r is past-directed and the future-directed choice has <em>V^r</em> < 0.</p>
+<p>Both branches give <em>V^r</em> < 0. ∎</p>
+<p>This proposition is the left end of the bridge of §5.2. What it constrains is the direction of worldlines and events, not the descent of configurations; the difference between the two is the entire content of §3 and §5.</p>
+<hr>
+<h2>3 Three-domain separation</h2>
+<h3>3.1 Three domains and their primitive objects</h3>
+<p>An argument about a discrete interior must distinguish three objects. Conflating them is the primary misinference this paper is designed to prevent.</p>
+<p><strong>Definition 3.1 (spatial cell graph).</strong> Let <em>V</em>_cell be a finite set of cells and <em>E</em>_adj a symmetric, irreflexive adjacency relation. Write <em>G</em>_sp = (<em>V</em>_cell, <em>E</em>_adj).</p>
+<p><strong>Definition 3.2 (configuration space).</strong> With occupancy bound <em>n</em>_max,</p>
+<p>𝒳 = { <em>n</em> : <em>V</em>_cell → {0, 1, …, <em>n</em>_max} }.</p>
+<p><strong>Definition 3.3 (labelled transition system).</strong> The primitive dynamical object of this paper is the five-tuple</p>
+<p>𝒯 = (𝒳, Θ, <em>s</em>, <em>t</em>, <em>M</em>),</p>
+<p>where Θ is a set of transitions, <em>s</em>, <em>t</em> : Θ → 𝒳 give source and target, and</p>
+<p><em>M</em>(θ) = { <em>x_i</em> ⇝ <em>y_i</em> }_{i ∈ I(θ)}</p>
+<p>is the <strong>multiset of atomic transports</strong> carried by that transition, with <em>x_i</em> and <em>y_i</em> adjacent. The target is determined by the source together with the transports:</p>
+<p><em>t</em>(θ)(<em>z</em>) = <em>s</em>(θ)(<em>z</em>) − #{<em>i</em> : <em>x_i</em> = <em>z</em>} + #{<em>i</em> : <em>y_i</em> = <em>z</em>}.</p>
+<p>Legality requires 0 ≤ <em>t</em>(θ)(<em>z</em>) ≤ <em>n</em>_max everywhere. Write θ_idle for a transition with <em>M</em>(θ_idle) = ∅.</p>
+<p><strong>Definition 3.4 (the configuration graph as a quotient).</strong></p>
+<p><em>G</em>_cfg = (𝒳, <em>E_U</em>),  <em>E_U</em> = { (<em>s</em>(θ), <em>t</em>(θ)) : θ ∈ Θ }.</p>
+<p>The configuration graph is not primitive; it is a quotient of 𝒯. Distinct transitions may give the same edge of <em>E_U</em>.</p>
+<p><strong>Definition 3.5 (occurrence unfolding).</strong> Fix an initial configuration <em>n</em>₀. Let ℰ be the set of finite composable transition strings θ₁θ₂⋯θ_k issuing from <em>n</em>₀, ordered by proper prefix and written ≺, and let</p>
+<p>π : ℰ → 𝒳</p>
+<p>send a string to the configuration it reaches. Write <em>G</em>_evt = (ℰ, ≺).</p>
+<p>What is used here is the standard labelled-transition history unfolding. It shares with the event-structure and occurrence-net tradition [20,21] a single discipline, namely the distinction between the <strong>type</strong> of a transition and its <strong>occurrence</strong>; but the full concurrency partial order is not needed here. To be precise: the elements of ℰ are <strong>histories</strong>, not single events, and Θ is a set of transition labels rather than occurrences themselves.</p>
+<p><strong>Three domains, not four.</strong> Space, configuration and occurrence remain three. 𝒯 is not a fourth domain; it is the primitive structure that gives the latter two their objects, the configuration graph by quotient and the occurrence unfolding by strings.</p>
+<h3>3.2 The type-checking rule</h3>
+<p><strong>Principle 3.6.</strong> A cycle, or the absence of one, in any one domain may not stand in for a conclusion about another without an explicit bridge.</p>
+<p>The rule is most often violated in the passage from motion to change. So a bridge is named:</p>
+<p><strong>Definition 3.7.</strong></p>
+<p>H_occ :  ∀θ ∈ Θ, <em>s</em>(θ) ≠ <em>t</em>(θ).</p>
+<p>That is: every transition projects to a non-identity change of configuration. The next subsection shows it generally fails.</p>
+<p><strong>Remark 3.8.</strong> This is sharper than a formulation in terms of consecutive occurrences, which would require the string structure to define adjacency. Since transitions are themselves objects, the condition can be stated directly.</p>
+<h3>3.3 Non-faithfulness of the projection</h3>
+<p><strong>Lemma 3.9 (ring shift).</strong> Let <em>B</em> ⊆ <em>V</em>_cell be saturated and let <em>x</em>₁, …, <em>x_k</em> (<em>k</em> ≥ 3) be a closed chain in <em>B</em>. Let θ_↻ ∈ Θ have</p>
+<p><em>M</em>(θ_↻) = { <em>x</em>₁ ⇝ <em>x</em>₂, <em>x</em>₂ ⇝ <em>x</em>₃, …, <em>x_k</em> ⇝ <em>x</em>₁ }.</p>
+<p>Then the transition conserves number, involves only nearest neighbours, <strong>requires no vacancy</strong>, and</p>
+<p><em>M</em>(θ_↻) ≠ ∅,  <em>s</em>(θ_↻) = <em>t</em>(θ_↻).</p>
+<p><em>Proof.</em> Each cell of the chain sends one and receives one, so <em>t</em>(θ)(<em>z</em>) = <em>s</em>(θ)(<em>z</em>) − 1 + 1 = <em>s</em>(θ)(<em>z</em>) on the chain, and cells off the chain are untouched. Legality follows from 0 ≤ <em>n</em>_max ≤ <em>n</em>_max. ∎</p>
+<p><strong>Corollary 3.10.</strong> H_occ generally fails.</p>
+<p>> There exists θ ∈ Θ with <em>M</em>(θ) ≠ ∅ and <em>s</em>(θ) = <em>t</em>(θ).</p>
+<p><strong>Remark 3.11 (an ontological limit, to be stated).</strong> If the particles are wholly indistinguishable and the complete physical state is nothing but the occupancy function, then "the particles really went around" <strong>is not a fact recognisable within that model</strong>. So what the lemma asserts is not that a pure occupancy state secretly contains observable worldlines. It asserts:</p>
+<p>> Projection from a finer transition dynamics onto occupancy configurations may fail to be faithful.</p>
+<p>This is weaker than the loose formulation and more accurate, and it is exactly what the argument needs: the main theorem acts on a potential over configurations, and descent of that potential must be delivered by transitions; a non-trivial transition does not guarantee a change of configuration, let alone a descent.</p>
+<p><strong>Remark 3.12 (a discipline of wording).</strong> Wherever "identity edge" appears it refers to identity of the <strong>configuration projection</strong> and does <strong>not</strong> assert <em>M</em>(θ) = ∅. That distinction is the whole content of Lemma 3.9.</p>
+<h3>3.4 Timing conventions</h3>
+<p><strong>Convention 3.13.</strong> Any discussion of occupancy updates must first declare its timing, since what Θ contains depends on it.</p>
+<p><em>Sequential single hop.</em> |<em>M</em>(θ)| ≤ 1, and when |<em>M</em>(θ)| = 1 the source must be occupied and the target must have room. Under this convention the ring shift does not belong to Θ.</p>
+<p><em>Synchronous exchange.</em> <em>M</em>(θ) may carry several transports applied simultaneously, and legality requires only that the resulting configuration lie within bounds everywhere. Under this convention the ring shift belongs to Θ; and by the open chain of §5.3, a saturated interior may also be traversed.</p>
+<p><strong>Remark 3.14.</strong> These are not the whole space of timings but two minimal representative realisations. Random parallel updating, block synchrony and finite-depth local circuits are further realisations; this paper does not treat them and does not claim to have exhausted the space.</p>
+<h3>3.5 Four classes of state</h3>
+<p>If updating is restricted to a deterministic partial function, states fall into four classes: update-terminal, fixed configuration, transient active, and non-trivially periodic. These four names are used directly; no separate indicator functions are introduced.</p>
+<hr>
+<h2>4 Orbit dichotomy and radial-potential obstruction</h2>
+<p>The theorem of this section absorbs six results previously stated separately: the change of the occupancy potential, the dichotomy between termination and periodicity, the step bound, the incompatibility with forward totality, the vanishing of potential change around a cycle, and the obstruction of directed cycles by strict radial monotonicity. Once combined, the layering of their premises becomes visible: the first part needs finiteness and determinism, the second needs neither. Stated separately, that asymmetry cannot be seen.</p>
+<h3>4.1 The occupancy potential</h3>
+<p><strong>Definition 4.1.</strong> Let <em>r</em> : <em>V</em>_cell → ℝ give the radial coordinate of a cell. Define</p>
+<p>Φ(<em>n</em>) = Σ_x <em>n_x r</em>(<em>x</em>).</p>
+<p><strong>Lemma 4.2.</strong> For a single atomic transport moving one unit from <em>x</em> to <em>y</em>,</p>
+<p>ΔΦ = <em>r</em>(<em>y</em>) − <em>r</em>(<em>x</em>).</p>
+<p><em>Proof.</em> Direct substitution. ∎</p>
+<p>A strictly inward transport decreases Φ; a same-shell transport leaves it unchanged. On a finite lattice the strictly inward edges have a minimum drop</p>
+<p>δ_min = min{ <em>r</em>(<em>x</em>) − <em>r</em>(<em>y</em>) : <em>x</em> ∼ <em>y</em>, <em>r</em>(<em>y</em>) < <em>r</em>(<em>x</em>) }.</p>
+<p>When the set of allowed strictly inward edges is non-empty, finiteness of the lattice gives δ_min > 0; if that set is empty there are no strictly inward transports and what follows does not apply.</p>
+<h3>4.2 The main theorem</h3>
+<p><strong>Theorem 4.3.</strong> The theorem is stated in two settings, so that formal objects are not mixed.</p>
+<p><strong>General transition setting.</strong> Let 𝒯 = (<em>K</em>, Θ, <em>s</em>, <em>t</em>) be a labelled transition system. Parts B through D hold in this setting.</p>
+<p><strong>Finite deterministic special case.</strong> If configuration successors are unique, so that the configuration quotient of 𝒯 induces a deterministic partial function <em>U</em> : <em>K</em> ⇀ <em>K</em>, and |<em>K</em>| < ∞, then Part A holds as well. Write <em>U</em>(<em>x</em>)↓ to say that <em>U</em> is defined at <em>x</em>.</p>
+<p><strong>Part A (orbit dichotomy).</strong> Every maximal orbit has exactly one of two ends: it terminates in finitely many steps, or it is eventually periodic. If <em>U</em> is forward-total the terminating branch is excluded, so every orbit is eventually periodic.</p>
+<p><strong>Part B (uniform descent obstruction).</strong> Suppose there is Φ : <em>K</em> → ℝ with inf_K Φ > −∞ and a uniform constant δ > 0 such that <strong>every transition</strong> θ ∈ Θ satisfies Φ(<em>t</em>(θ)) ≤ Φ(<em>s</em>(θ)) − δ. Then every forward path issuing from <em>x</em>₀ has length at most</p>
+<p><em>N</em>_max = ⌊ (Φ(<em>x</em>₀) − inf_K Φ) / δ ⌋,</p>
+<p>so the periodic branch is excluded and no infinite forward path exists.</p>
+<p><strong>Part C (incompatibility).</strong> Seriality and bounded-below uniform strict descent cannot coexist:</p>
+<p>[∀<em>x</em> ∃θ : <em>s</em>(θ) = <em>x</em>] ∧ [inf_K Φ > −∞ ∧ ∀θ : Φ(<em>t</em>(θ)) ≤ Φ(<em>s</em>(θ)) − δ] ⟹ ⊥.</p>
+<p><strong>Part D (cycle support under non-increase).</strong> If it is required only that every defined transition satisfy ΔΦ ≤ 0, then on any cycle every edge has ΔΦ = 0.</p>
+<p><em>Proof.</em></p>
+<p><em>Part A.</em> Suppose the orbit <em>x</em>₀, <em>x</em>₁ = <em>U</em>(<em>x</em>₀), … does not terminate; then it is infinite. Since |<em>K</em>| < ∞, the |<em>K</em>| + 1 terms <em>x</em>₀, …, <em>x</em>_{|K|} lie in |<em>K</em>| states, so <em>x_i</em> = <em>x_j</em> for some 0 ≤ <em>i</em> < <em>j</em> ≤ |<em>K</em>|. Determinism gives <em>x</em>_{i+m} = <em>x</em>_{j+m} for all <em>m</em> ≥ 0, so the orbit is periodic from its <em>i</em>-th term with period <em>p</em> = <em>j</em> − <em>i</em>. If <em>U</em> is forward-total, termination is impossible and this branch is forced.</p>
+<p><em>Part B.</em> Applying the hypothesis step by step along a forward path <em>x</em>₀ → ⋯ → <em>x_N</em> gives Φ(<em>x_N</em>) ≤ Φ(<em>x</em>₀) − <em>N</em>δ. Since Φ(<em>x_N</em>) ≥ inf_K Φ, we obtain <em>N</em>δ ≤ Φ(<em>x</em>₀) − inf_K Φ, and taking the floor gives the bound. If there were a cycle, repeating it indefinitely would yield an infinite forward path, contradicting that bound; so no cycle exists.</p>
+<p><em>Part C.</em> Seriality allows indefinite extension from any <em>x</em>₀; Part B bounds path length. The two conflict.</p>
+<p><em>Part D.</em> Let the cycle be <em>X</em>₀ → <em>X</em>₁ → ⋯ → <em>X_p</em> = <em>X</em>₀. Telescoping,</p>
+<p>Σ_{k=0}^{p−1} ΔΦ_k = Φ(<em>X_p</em>) − Φ(<em>X</em>₀) = 0,</p>
+<p>and a finite sum of non-positive reals vanishes only if every term vanishes. ∎</p>
+<h3>4.3 The layering of the parts</h3>
+<p><strong>Remark 4.4 (identity transitions are excluded automatically).</strong> Since the hypothesis of Part B is stated over transitions, a transition with identity projection is ruled out at once: <em>s</em>(θ) = <em>t</em>(θ) would give 0 ≤ −δ. So Corollary 4.8 needs no separate clause forbidding identity edges; it is a direct consequence of the hypothesis. This is a dividend of the labelled formulation of §3. Had the hypothesis been attached to configuration pairs instead, "no transition" and "a transition leaving the configuration unchanged" would not be distinguished, and the clause would have to be added by hand.</p>
+<p><strong>Remark 4.5 (Part B needs neither finiteness nor determinism).</strong> The proof of Part B uses three things only: Φ is bounded below, all transitions descend uniformly, and paths can be extended. Neither finiteness of <em>K</em> nor determinism of <em>U</em> enters. So Part B holds over non-deterministic relational systems as well, reading "every defined update" as "every allowed transition"; and the incompatibility of Part C is correspondingly free of finiteness and determinism, with its third clause read as seriality.</p>
+<p>Finiteness and determinism are needed for Part A alone, and Part A yields <strong>recurrence</strong>, whereas Part B yields <strong>termination</strong>. They answer different questions and cannot substitute for one another.</p>
+<p><strong>Remark 4.6 (the cost of dropping determinism).</strong> If <em>U</em> is non-deterministic, Part A's conclusion must be weakened. An infinite path in a finite directed graph must visit some state infinitely often, so it comes to rest within a strongly connected component containing a directed cycle; that component may be a single vertex with a self-loop. It need not, however, become periodic, since the choice of branch may be irregular. What determinism buys is the step from "some state is visited infinitely often" to "the orbit is eventually periodic."</p>
+<p><strong>Remark 4.7 (this is not Poincaré recurrence).</strong> The conclusion of Part A must not be called Poincaré recurrence. The latter is an almost-everywhere return in measure-preserving dynamics [30], requiring preservation of measure and finiteness of volume; Part A requires only finiteness of the state set and determinism of the map, and yields eventual periodicity of each orbit rather than almost-everywhere return. Premises and conclusions differ, and the two must not be interchanged.</p>
+<p><strong>Corollary 4.8 (no-go for a strictly inward interior).</strong> On a fixed finite lattice, if <strong>every transition</strong> carries at least one strictly inward atomic transport and none outward, then Lemma 4.2 gives ΔΦ(θ) ≤ −δ_min < 0, so the hypothesis of Part B holds; seriality therefore yields a contradiction, and the orbit from <em>n</em>₀ terminates within</p>
+<p>⌊ (Φ(<em>n</em>₀) − Φ_min) / δ_min ⌋</p>
+<p>steps.</p>
+<h3>4.4 Exhaustiveness of Part D</h3>
+<p><strong>Lemma 4.9 (potential change of a multi-transport transition).</strong> For any transition θ,</p>
+<p>ΔΦ(θ) = Φ(<em>t</em>(θ)) − Φ(<em>s</em>(θ)) = Σ_{i ∈ I(θ)} [ <em>r</em>(<em>y_i</em>) − <em>r</em>(<em>x_i</em>) ].</p>
+<p><em>Proof.</em> Sum Lemma 4.2 termwise. ∎</p>
+<p><strong>Model 4.10 (radially non-increasing transition model).</strong> First, the configuration carries occupancy numbers only, with no internal labels, phases or momenta. Second, every transition θ is either idle or carries finitely many atomic transports, each satisfying <em>r</em>(<em>y_i</em>) ≤ <em>r</em>(<em>x_i</em>). Third, there is no creation or annihilation of particles.</p>
+<p><strong>Proposition 4.11.</strong> Under Model 4.10,</p>
+<p>ΔΦ(θ) = 0 ⟺ <em>r</em>(<em>y_i</em>) = <em>r</em>(<em>x_i</em>) for every <em>i</em> ∈ I(θ).</p>
+<p><em>Proof.</em> By Lemma 4.9, ΔΦ(θ) is a sum of terms each of which is non-positive; the sum vanishes exactly when each term does. ∎</p>
+<p><strong>Remark.</strong> The right-hand side is vacuously true when I(θ) = ∅, so the idle transition is covered without a separate branch. And under radial non-increase, a transition with non-empty transport set whose projection is the identity must have all its transports on a single shell; that is the ring shift of Lemma 3.9.</p>
+<p><strong>Corollary 4.12.</strong> Under Model 4.10, every transition on a cycle is either idle or has all its transports on a single shell. This is Proposition 4.11 combined with Part D and needs no separate proof.</p>
+<p>By Lemma 3.9 the identity edges are not empty: the ring shift is an identity edge on which something does occur. So what Corollary 4.12 locates is the address of a cycle at the <strong>configuration level</strong>, not at the <strong>occurrence level</strong>. That distinction is the type discipline of §3.</p>
+<h3>4.5 The combined statement</h3>
+<p><strong>Corollary 4.13.</strong> In a finite deterministic configuration dynamics,</p>
+<p>> every maximal orbit either terminates or is eventually periodic,</p>
+<p>and</p>
+<p>> an infinite orbit that never repeats a configuration is unavailable.</p>
+<p>Events, however, may still never repeat. By the unfolding of Definition 3.5, ℰ is a tree and π : ℰ → 𝒳 is generally non-injective, so distinct histories reaching the same configuration are the norm. Return of configuration does not entail return of occurrence.</p>
+<p><strong>Remark 4.14.</strong> Forward completeness already excludes the terminating branch, so one must not write "either terminates or recurs." A finite deterministic system that is forward-complete has every orbit eventually periodic, with no room left for termination; the significance of the dichotomy is that avoiding recurrence requires abandoning forward completeness, and abandoning it delivers termination.</p>
+<p><strong>Remark 4.15 (Kill 5).</strong> What Part A refutes is only a real-valued rank defined on <strong>configurations</strong> and strictly increasing along every update. What it does not refute is an evolution parameter, an order of occurrence, or a direction of time. Take the two-state clock <em>K</em> = {0, 1} with <em>U</em>(0) = 1 and <em>U</em>(1) = 0: it is finite, deterministic and forward-total, so by Part A it is periodic, and indeed no τ : <em>K</em> → ℝ can satisfy both τ(1) > τ(0) and τ(0) > τ(1). Yet its direction, its distinguishable states and its per-step advance are all present. Moreover, by Definition 3.5 its occurrence unfolding is an infinite chain rather than a loop, so although the configuration has period two, the events never repeat.</p>
+<p>> Periodicity of configuration does not entail the absence of time at the level of occurrence.</p>
+<h3>4.6 Relation to the numerical demonstration</h3>
+<p>The 25-cell toy of Appendix B gives an instance of Corollary 4.8 in which the step bound and the longest directed orbit found by enumeration coincide. That coincidence is a result of enumeration and does not follow from the bound; it therefore serves as one instance of tightness and not as evidence for the theorem. The theorem is given by Lemma 4.2 and Theorem 4.3 and does not rest on numerics.</p>
+<hr>
+<h2>5 The black-hole bridge and the exit matrix</h2>
+<h3>5.1 Three bridges</h3>
+<p>Part B of the main theorem requires a bounded-below potential descending uniformly along every transition. Passing to this from the inwardness of the continuum theory requires a bridge, and there are three, ordered by strength.</p>
+<p><strong>Definition 5.1 (non-identity projection).</strong> H_occ : ∀θ ∈ Θ, <em>s</em>(θ) ≠ <em>t</em>(θ).</p>
+<p><strong>Definition 5.2 (radial potential descent).</strong> With Φ_r(<em>n</em>) = Σ_x <em>n_x r</em>(<em>x</em>),</p>
+<p>H_r : ∃δ > 0, ∀θ ∈ Θ, Φ_r(<em>t</em>(θ)) ≤ Φ_r(<em>s</em>(θ)) − δ.</p>
+<p><strong>Definition 5.3 (Lyapunov potential).</strong></p>
+<p>H_Lyap : ∃Ψ : 𝒳 → ℝ bounded below, ∃δ > 0, ∀θ ∈ Θ, Ψ(<em>t</em>(θ)) ≤ Ψ(<em>s</em>(θ)) − δ.</p>
+<p><strong>Proposition 5.4 (ordering of the bridges).</strong></p>
+<p>H_r ⟹ H_Lyap ⟹ H_occ,</p>
+<p>and neither converse holds.</p>
+<p><em>Proof.</em> For the first arrow take Ψ = Φ_r. For the second: if <em>s</em>(θ) = <em>t</em>(θ) then 0 ≤ −δ, a contradiction, so H_Lyap forces every transition to project non-identically.</p>
+<p>The second converse fails because H_occ says only that configurations change and does not forbid their return; the configuration graph may contain a cycle while admitting no bounded-below uniformly descending potential at all.</p>
+<p>The first converse fails because, if the same-shell directed subgraph is acyclic, the discrete gradient extension of Appendix A gives H_Lyap with Ψ = Σ_x <em>n_x</em>[<em>r</em>(<em>x</em>) + ε<em>f</em>(<em>x</em>)]; but that Ψ is not Φ_r, and a same-shell edge gives ΔΦ_r = 0, so H_r fails. ∎</p>
+<p>> <strong>The main theorem requires H_Lyap, not necessarily H_r.</strong></p>
+<p><strong>Remark 5.5 (what the title refers to).</strong> The radial potential is the most basic candidate and the discrete gradient extension is its general completion; "radial-potential lifting" in the title names that candidate and does not assert that the main theorem admits only that one route.</p>
+<h3>5.2 The gap</h3>
+<p><strong>The left end, inherited.</strong> In the trapped region every future-directed causal direction strictly decreases <em>r</em> (Proposition 2.4). <strong>What this constrains is worldlines and events.</strong></p>
+<p><strong>The right end, required.</strong> H_Lyap. <strong>What this constrains is transitions and a potential over them.</strong></p>
+<p><strong>The gap.</strong> There is no automatic passage between the two, and the obstruction has two independent halves.</p>
+<p><strong>First, the projection may be unfaithful.</strong> By Lemma 3.9 there is a θ with <em>M</em>(θ) ≠ ∅ and <em>s</em>(θ) = <em>t</em>(θ). So a non-trivial transition does not entail a change of configuration, and H_occ generally fails — and H_occ is itself weaker than H_Lyap. This half requires the synchronous convention.</p>
+<p><strong>Second, change of configuration does not entail descent of the potential.</strong> A single same-shell transport <em>M</em>(θ) = {<em>x</em> ⇝ <em>y</em>} with <em>r</em>(<em>y</em>) = <em>r</em>(<em>x</em>) gives <em>s</em>(θ) ≠ <em>t</em>(θ), so H_occ holds on that transition, while ΔΦ_r(θ) = 0, so H_r fails. <strong>This half does not require the synchronous convention and holds equally under sequential single hops.</strong> Excluding it would require proving the same-shell directed subgraph acyclic, which is H_tang of Appendix A, and that bridge is currently open.</p>
+<p>> Strict inwardness of worldlines and events does not entail a bounded-below uniformly strictly descending potential over configurations.</p>
+<p><strong>The two halves are independent and must be delivered separately.</strong> Delivering the first gives H_occ and is still not enough; delivering the second allows a potential to be assembled. Deliver one and omit the other, and the main theorem still does not apply.</p>
+<h3>5.3 Three representative realisations</h3>
+<p>Three minimal representative realisations are considered below. <strong>This does not exhaust the space of timings</strong>; random parallel updating, block synchrony and finite-depth local circuits are further realisations not treated here.</p>
+<p><strong>First, sequential single hop.</strong> The ring shift does not belong to Θ, but the interior cells of a saturated region have no legal hop and are static, whereas the continuum theory requires the worldlines there to advance at every step. So this realisation does not carry inwardness inside a saturated region. The duration of that stasis is bounded below; see §6.3.</p>
+<p><strong>Second, synchronous exchange without a radial constraint.</strong> The ring shift belongs to Θ, and by Lemma 3.9 H_occ fails.</p>
+<p><strong>Third, synchronous exchange in which every allowed transition satisfies <em>M</em>(θ) ≠ ∅ and <em>r</em>(<em>y_i</em>) < <em>r</em>(<em>x_i</em>) for every <em>i</em> ∈ I(θ).</strong> The condition <em>M</em>(θ) ≠ ∅ must be written explicitly to exclude the idle transition: an empty transport set makes strict inwardness vacuously true while ΔΦ_r = 0, so H_r would fail. With idle excluded, ΔΦ_r(θ) ≤ −δ_min holds by definition, H_r is established, H_Lyap follows by Proposition 5.4, and Parts B and C of the main theorem fire.</p>
+<p><strong>Two supports for the third realisation.</strong></p>
+<p><em>Under strict inwardness the ring shift does not exist.</em> Suppose <em>M</em>(θ) contains a closed chain <em>x</em>₁ ⇝ <em>x</em>₂, …, <em>x_k</em> ⇝ <em>x</em>₁ with every transport strictly inward. Then <em>r</em>(<em>x</em>₂) < <em>r</em>(<em>x</em>₁), and so on to <em>r</em>(<em>x</em>₁) < <em>r</em>(<em>x_k</em>), and chaining gives <em>r</em>(<em>x</em>₁) < <em>r</em>(<em>x</em>₁), a contradiction. So the first clause automatically kills the counterexample to the second. This is stronger than the radially non-increasing version of Corollary 6.11, which yields only that a ring shift must lie on a single shell; here it does not exist at all.</p>
+<p><em>A saturated interior can still move, by an open chain rather than a closed one.</em> Take <em>M</em>(θ) = {<em>x</em>₁ ⇝ <em>x</em>₂, …, <em>x</em>_{k−1} ⇝ <em>x_k</em>} with <em>x</em>₁ outer and <em>x_k</em> inner. Then <em>n</em>_{x₁} decreases by one, the middle cells are unchanged, and <em>n</em>_{x_k} increases by one; legality requires only <em>n</em>_{x₁} > 0 and <em>n</em>_{x_k} < <em>n</em>_max, so <strong>the entire middle may be saturated without obstruction</strong>.</p>
+<p><em>And so the main theorem fires.</em> Each transition gives ΔΦ_r(θ) = <em>r</em>(<em>x_k</em>) − <em>r</em>(<em>x</em>₁) ≤ −δ_min, and Φ_r is bounded below, so Part B bounds the orbit length and Part C makes forward totality impossible. As to where the room at the innermost end comes from: either it was never saturated, in which case the potential descends until saturation is complete, or it is a sink, which is the internal-termination row of the exit matrix. <strong>Both routes are conclusions of Part C.</strong></p>
+<table>
+<thead><tr>
+<th>Realisation</th>
+<th>Consequence</th>
+</tr></thead><tbody>
+<tr><td>sequential single hop</td><td>interior cells static; inwardness not carried</td></tr>
+<tr><td>synchronous exchange, no radial constraint</td><td>ring shift in Θ; H_occ fails</td></tr>
+<tr><td>synchronous, idle excluded, every hop strictly inward</td><td>H_r holds; the main theorem fires and forward totality is lost</td></tr>
+</tbody></table>
+<p>> If the bridge is broken, the model's pure occupancy configuration dynamics cannot by itself claim to carry inwardness. If the bridge holds, forward totality is lost on the spot. Both sides pay.</p>
+<p><strong>Remark 5.6 (a narrowing that must be written).</strong> What a broken bridge refutes is only the claim that a <strong>pure occupancy configuration dynamics carries inwardness by itself</strong>. The model may still carry inwardness in a labelled complete state, in current variables, in event relations, in a causal set, or in momentum space; what is refuted is only the claim that this content has already been projected onto a uniform descent of Φ_r. This narrowing is consistent with the paper's own three-domain discipline and is not a retreat.</p>
+<h3>5.4 Where the axis lies</h3>
+<p>It might be thought that enriching the configuration space rescues H_occ. It does: adding a <strong>finite</strong> set of labels, such as a bounded local flow direction or finitely many particle tags, keeps |𝒳| finite while the ring shift cyclically permutes labels, so <em>s</em>(θ) ≠ <em>t</em>(θ) and H_occ holds. <strong>Finiteness and H_occ can therefore be had together; they are not alternatives.</strong></p>
+<p>But this does not rescue the bridge. Φ_r is blind to labels, so however the ring shift permutes them, ΔΦ_r remains zero. Recovering H_occ contributes nothing to H_Lyap.</p>
+<p>> H_occ is not the right axis; H_Lyap is.</p>
+<p><strong>The tension should therefore be stated differently.</strong> Not as "labels cost finiteness," but as: <strong>the closer a state space comes to physical completeness, the harder its finiteness is to establish.</strong> Finite labels buy both finiteness and non-identity projection, and cannot by themselves establish a strictly descending potential; it is continuous phase, momentum, or unbounded history variables that return finiteness to the status of an open question.</p>
+<h3>5.5 The exit matrix</h3>
+<p>The main theorem has two conclusion lines, potential obstruction and orbit recurrence. They answer different questions, and a single physical exit damages different things on each line, so a cross matrix is given in place of two sets of prose.</p>
+<table>
+<thead><tr>
+<th>Physical exit</th>
+<th>What it breaks on the potential line</th>
+<th>What it breaks on the recurrence line</th>
+</tr></thead><tbody>
+<tr><td>outward escape or output</td><td>outward transports may occur, or the orbit leaves the domain</td><td>breaks closure</td></tr>
+<tr><td>internal termination</td><td>breaks forward totality</td><td>is the terminating branch</td></tr>
+<tr><td>infinite or growing state space</td><td>Ψ unbounded below, or the uniform gap vanishes, or Ψ no longer captures all change</td><td>breaks finiteness</td></tr>
+<tr><td>identity-projecting transition</td><td>ΔΨ = 0, breaking uniform descent</td><td>does not prevent recurrence; typically yields fixed points</td></tr>
+<tr><td>same-shell transport</td><td>breaks H_r; whether it breaks H_Lyap is decided by acyclicity of the same-shell subgraph</td><td>can support a cycle</td></tr>
+<tr><td>outward radial transport</td><td>breaks radial non-increase</td><td>need not leave the system, so is not the same as escape</td></tr>
+<tr><td>non-autonomous evaporation</td><td>Ψ and Θ vary with the remaining mass</td><td>breaks the autonomous fixed state space</td></tr>
+<tr><td>hidden internal degrees of freedom</td><td>Ψ fails to capture their change</td><td>the premise of a complete finite state fails</td></tr>
+</tbody></table>
+<p><strong>Remark 5.7.</strong> The same-shell row and the identity-projection row must be told apart: the former has <em>s</em>(θ) ≠ <em>t</em>(θ) with ΔΦ_r = 0, the latter has <em>s</em>(θ) = <em>t</em>(θ). Both break H_r, by different routes; these are the two halves of the gap in §5.2.</p>
+<p><strong>Remark 5.8.</strong> The identity-projection and same-shell rows are given explicit constructions by Lemma 3.9 and by a single same-shell transport. The internal-termination and infinite-state-space rows also have minimal counter-models: 0 → 1 with Succ(1) = ∅, and 0 → 1 → 2 → ⋯. Neither has any route of escape, and they fail forward totality and finiteness respectively, so trappedness alone entails neither. The remaining rows are registrations of possibility, not realised constructions.</p>
+<hr>
+<h2>6 Two applications</h2>
+<p>The two items of this section rest on different things. The first is an application of the main theorem, taking energy as the potential; the second consists of a direct argument within a model and an induction on rounds.</p>
+<h3>6.1 Exact recurrence against positive net outflow</h3>
+<p><strong>Theorem 6.1.</strong> Let 𝒯 = (𝒦, Θ, <em>s</em>, <em>t</em>, <em>M</em>) be an autonomous transition system on a fixed complete state space, let <em>E</em> : 𝒦 → ℝ be its energy, and let every transition emit <em>q</em>(θ) ≥ 0 outward, so that</p>
+<p><em>E</em>(<em>t</em>(θ)) = <em>E</em>(<em>s</em>(θ)) − <em>q</em>(θ).</p>
+<p>Then on any exact cycle, that is on a transition string θ₁⋯θ_p composable end to end with <em>s</em>(θ₁) = <em>t</em>(θ_p), every segment has <em>q</em>(θ_k) = 0.</p>
+<p><em>Proof.</em> Take Ψ := <em>E</em>. Since <em>q</em> ≥ 0, every transition satisfies Δ<em>E</em>(θ) = −<em>q</em>(θ) ≤ 0, which is the hypothesis of Part D. By Part D every edge on the cycle has Δ<em>E</em> = 0, so <em>q</em>(θ_k) = 0. ∎</p>
+<p><strong>Remark 6.2.</strong> This is not a new argument but an application of Part D with energy in place of the occupancy potential. What it exhibits is that the main theorem is not confined to occupancy: any quantity monotone along transitions may be substituted.</p>
+<p><strong>Remark 6.3 (output must attach to transitions, not configurations).</strong> <em>q</em> must be written <em>q</em>(θ). The same source-target pair may be realised by different transitions whose outward emission differs; writing <em>q</em>(<em>x</em>) loses that distinction and leaves the telescoping sum with nothing to attach to. This is a direct consequence of the labelled formulation of §3.</p>
+<p><strong>Remark 6.4.</strong> This does not deny instantaneous radiation. What it denies is the coexistence of <strong>persistent</strong> net emission with an exact cycle.</p>
+<p><strong>A common evasion and why it fails.</strong> It might be said that the outward output carries energy but not configuration, so the configuration may still return exactly. This cannot be saved, because energy belongs to the complete state: delete it from the definition of the state and the update is no longer autonomous; include it and it descends monotonically, so the state cannot return during evaporation; let the state space shrink with the mass and there is no longer a single autonomous system on a fixed set. The three routes abandon autonomy, return and finiteness respectively; all three appear in the exit matrix of §5.5.</p>
+<p><strong>Remark 6.5.</strong> The analysis of these three routes is a remark on this theorem and is not counted as a separate refutation. It is not a new partition of the space of possibilities but an attempt to evade Theorem 6.1.</p>
+<p><strong>The incompatibility.</strong></p>
+<p>> H_auto ∧ H_rec ∧ H_flux ⟹ ⊥</p>
+<p>Here H_auto says the system is throughout described by autonomous transitions on one fixed complete state space; H_rec says that <em>x</em>_{k+p} = <em>x_k</em> on some eventual cycle; and H_flux says that <strong>on that same cycle</strong> at least one segment has <em>q</em>(θ_j) > 0, equivalently that the cycle sum Σ_{j=k}^{k+p−1} <em>q</em>(θ_j) > 0.</p>
+<p><strong>The three conditions must be attached to the same orbit or the same cycle class, and this must not be passed over.</strong> Otherwise it is logically possible for the system to possess a radiationless exact cycle in one place and a transient orbit with positive outflow elsewhere, and the two would not conflict.</p>
+<p><strong>Remark 6.6 (why the renaming).</strong> The condition was formerly written as full closure. If that already means "the complete state has no output at all," it is definitionally at odds with positive outflow, the recurrence clause becomes redundant, and the theorem degenerates into a tautology. Written as H_auto, the theorem says: <strong>on a fixed autonomous complete state space, exact state recurrence and persistent net energy loss cannot coexist.</strong> Each of the three conditions then carries content and none is redundant.</p>
+<p><strong>This must be marked as a revision of an existing statement.</strong> Info-4 [9], §4.4, seventh point, holds that gravitational waves cross the horizon outward through the Planck substrate, and that paper's §10, item twelve, lists this as a falsifiable prediction. Its conflict with the present paper must be stated precisely: <strong>if the complete state space is at once fixed, autonomous, finite and forward-total, so that by Part A it enters an exact recurrence branch, then persistent positive net outflow is incompatible with it.</strong> Theorem 6.1 by itself does not exclude a forward evaporation history in a non-recurrent, non-autonomous or infinite state space. The two commitments must be reconciled, or the channel must be distinguished; this paper does not make that choice.</p>
+<p><strong>The channel question.</strong> If outward broadcast is retained, trappedness must be restricted to some projection channel π_conf, and it must separately be shown that the critical surface for non-escape in that channel is still exactly <em>r_s</em>. Moreover, against a dynamical evaporating background, the event horizon and the apparent horizon are in general distinct surfaces [22,23] — the former a teleological null surface depending on the global future, the latter a quasi-local marginally trapped surface — so a single static <em>r_s</em> cannot represent every definition of trappedness at once. This paper raises the question and does not resolve it.</p>
+<h3>6.2 Local exclusion</h3>
+<p><strong>The sequential case.</strong></p>
+<p><strong>Lemma 6.7 (local exclusion under sequential single hops).</strong> Under the sequential single-hop convention, where |<em>M</em>(θ)| ≤ 1 and a transport is legal exactly when the source is occupied and the target has room — the legality criterion of an exclusion process [24,25] — suppose</p>
+<p><em>n_x</em> = <em>n</em>_max and <em>n_y</em> = <em>n</em>_max for every <em>y</em> ∼ <em>x</em>.</p>
+<p>Then in this step there is no legal transition with <em>x</em> as source or target, so <em>n_x</em> is unchanged.</p>
+<p><em>Proof.</em> A transition with <em>x</em> as source needs some neighbour with room, and all neighbours are full. A transition with <em>x</em> as target needs <em>n_x</em> < <em>n</em>_max, and <em>x</em> is itself full. ∎</p>
+<p><strong>Remark 6.8 (the clause on <em>x</em> itself cannot be dropped).</strong> If only the neighbours are assumed saturated and <em>x</em> is not, then when <em>n_x</em> < <em>n</em>_max a neighbour can send a unit into <em>x</em> and <em>n_x</em> changes. A statement omitting that clause is false.</p>
+<p><strong>The synchronous case.</strong></p>
+<p>Under synchronous exchange there is no comparable local invariance: by the open chain of §5.3, even when every immediate neighbour of <em>x</em> is full, <em>x</em> may still serve as the start of an open chain leading to distant room and thereby change.</p>
+<p><strong>Proposition 6.9 (invariance condition under synchronous exchange).</strong> Under synchronous exchange, suppose <em>n_x</em> = <em>n</em>_max. Then <strong>every legal transition from the current configuration leaves <em>n_x</em> unchanged</strong> if and only if there is no allowed path from <em>x</em> to any vacancy.</p>
+<p><em>Proof.</em> Legality requires 0 ≤ <em>t</em>(θ)(<em>z</em>) ≤ <em>n</em>_max everywhere, so any cell <em>z</em> with a net gain satisfies <em>s</em>(θ)(<em>z</em>) < <em>n</em>_max and was therefore initially vacant.</p>
+<p>If an allowed path runs from <em>x</em> to some vacancy, an open-chain transport along it gives a legal transition decreasing <em>n_x</em>, so not every transition leaves <em>n_x</em> unchanged.</p>
+<p>Conversely, suppose no such path exists. Since <em>n_x</em> = <em>n</em>_max, <em>x</em> cannot gain. If <em>x</em> were to lose, then regarding <em>M</em>(θ) as an integer flow on the graph and applying the decomposition of a finite flow, there is a path from <em>x</em> to some net-gaining cell; that cell was initially vacant, giving an allowed path from <em>x</em> to a vacancy, contrary to assumption. So <em>x</em> neither gains nor loses and <em>n_x</em> is unchanged. ∎</p>
+<p><strong>Remark 6.10.</strong> This is a <strong>global</strong> condition, not a local one. The name "local exclusion" therefore fits the sequential convention only; under synchronous exchange what remains is a statement about connectivity.</p>
+<p><strong>What the lemma does not deliver.</strong></p>
+<p>First, <strong>it is not permanent</strong>. A neighbour may first discharge into an unfilled cell further out, creating room, after which the transport becomes available. What is shown holds for the current step only.</p>
+<p>Second, <strong>it is not the absence of a transition</strong>. The synchronous closed chain is the ring shift of Lemma 3.9, with <em>M</em>(θ) ≠ ∅ and <em>s</em>(θ) = <em>t</em>(θ). Wherever "occupancy unchanged" is written it must not be read as "nothing happened."</p>
+<p>Third, <strong>it fixes occupancy only, not the complete state</strong>. Momentum exchange, phase evolution, permutation of internal labels, stress transmission, collective modes and lattice reconnection may all occur with occupancy unchanged.</p>
+<p><strong>The address of the ring shift.</strong></p>
+<p><strong>Corollary 6.11.</strong> Under a radially non-increasing model, any ring shift lies within a single shell.</p>
+<p><em>Proof.</em> A ring shift leaves the configuration unchanged, so the sum of ΔΦ_r over its constituent transports is zero; each term is non-positive, so each vanishes, so each transport is same-shell; and a chain all of whose transports are same-shell lies on one shell. ∎</p>
+<p><strong>Remark 6.12.</strong> This is Proposition 4.11 applied to the ring shift. Drop radial non-increase and the ring shift may mix radially; add strict inwardness and, by §5.3, it does not exist at all. <strong>The address of the ring shift is therefore decided by the radial condition, not by geometry.</strong></p>
+<h3>6.3 The influence cone and its volume</h3>
+<p><strong>Initial vacancies and a propagation bound.</strong></p>
+<p><strong>Definition 6.13.</strong> Let the set of initially vacant cells be</p>
+<p><em>S</em>₀ = { <em>x</em> ∈ <em>V</em>_cell : <em>n</em>₀(<em>x</em>) < <em>n</em>_max }.</p>
+<p><strong>Proposition 6.14.</strong> Suppose the update satisfies <strong>local dependence</strong>: the state of a cell at round <em>t</em> + 1 depends only on its graph-distance-one neighbourhood at round <em>t</em>, and a fully saturated neighbourhood remains saturated in the absence of outside influence from a vacancy. Then for an initially saturated cell <em>x</em>,</p>
+<p><em>t</em>_thaw(<em>x</em>) ≥ <em>d_G</em>(<em>x</em>, <em>S</em>₀).</p>
+<p><em>Proof.</em> By induction on rounds. The claim is that after <em>t</em> rounds only cells with <em>d_G</em>(<em>x</em>, <em>S</em>₀) ≤ <em>t</em> can have changed. At <em>t</em> = 0 nothing has changed. Suppose the claim holds through round <em>t</em>, and take a cell <em>x</em> with <em>d_G</em>(<em>x</em>, <em>S</em>₀) > <em>t</em> + 1. Every neighbour <em>y</em> satisfies <em>d_G</em>(<em>y</em>, <em>S</em>₀) ≥ <em>d_G</em>(<em>x</em>, <em>S</em>₀) − 1 > <em>t</em>, so by the inductive hypothesis the whole distance-one neighbourhood of <em>x</em> is unchanged at round <em>t</em> and remains fully saturated; by the second clause of local dependence, <em>x</em> is unchanged at round <em>t</em> + 1. Hence every cell changed after round <em>t</em> + 1 satisfies <em>d_G</em>(<em>x</em>, <em>S</em>₀) ≤ <em>t</em> + 1. ∎</p>
+<p><strong>Remark.</strong> This proof does not use the step "the target must have had room beforehand," and so holds under synchronous exchange as well; sequential single hopping is a special case of local dependence.</p>
+<p><strong>Remark 6.15 (S₀ in place of an inner boundary).</strong> Measuring from the inner boundary of a saturated region introduces an off-by-one: a boundary cell is at distance zero from that boundary while its first change still generally requires a step. Measuring from <em>S</em>₀ removes the offset.</p>
+<p><strong>The influence cone.</strong></p>
+<p><strong>Definition 6.16.</strong> Let</p>
+<p>𝒞_t = { <em>x</em> ∈ <em>V</em>_cell : <em>d_G</em>(<em>x</em>, <em>S</em>₀) ≤ <em>t</em> }.</p>
+<p>By Proposition 6.14,</p>
+<p>> the set actually affected after <em>t</em> rounds is contained in 𝒞_t.</p>
+<p><strong>Remark 6.17 (what is computed is the envelope, not the actual set).</strong> The geometric calculation below gives |𝒞_t ∩ <em>B</em>| / |<em>B</em>|, the fraction of the saturated region occupied by the influence cone, and this is <strong>an upper bound on the actually affected volume rather than its value</strong>. If a single global time step permits only one atomic hop anywhere in the lattice, then after <em>t</em> steps at most <em>O</em>(<em>t</em>) cells have changed, far fewer than a layer of thickness <em>t</em>; the formula below corresponds instead to rounds of parallel local updating in which causal influence propagates at most one edge per round. Without this distinction a reader will mistake the envelope volume for the volume actually changed in some particular history.</p>
+<p><strong>The scaling.</strong></p>
+<p>On the cubic six-neighbour lattice the graph distance is the <em>L</em>¹ distance. The <em>L</em>¹ ball of radius <em>t</em> is an octahedron whose extent along a unit normal <em>n̂</em> is <em>t h</em>(<em>n̂</em>) with <em>h</em>(<em>n̂</em>) = max_i |<em>n_i</em>|. So when <em>S</em>₀ lies outside a saturated region of radius <em>R</em>,</p>
+<p>where</p>
+<p>⟨<em>h</em>⟩ = (6/π√2) arctan(1/√2) = 0.8311896,  3⟨<em>h</em>⟩ = 2.4935689.</p>
+<p><strong>Remark 6.18 (two levels of correction).</strong> The leading coefficient is the <em>t</em>/<em>R</em> → 0 limit. Finite thickness contributes an <em>O</em>(<em>t</em>²/<em>R</em>²) correction with an empirical coefficient of about −1.65; lattice discreteness contributes an <em>O</em>(1/<em>R</em>) correction. The two must not be run together in one sentence.</p>
+<p><strong>Remark 6.19 (lattice dependence).</strong> The value 2.4936 is a joint product of the interior-cell criterion and six-neighbour adjacency. A continuum shell one cell thick gives 3/<em>R</em>; eighteen-neighbour and twenty-six-neighbour adjacency and Voronoi cells all give different coefficients. <strong>Only <em>R</em>⁻¹ is universal.</strong> The static skin fraction is this same formula read at <em>t</em> = 1, so the static geometric ledger and the dynamical envelope are one scaling read at two thicknesses.</p>
+<p><strong>Conclusion.</strong></p>
+<p>> Saturation does not entail permanent stasis; and if thawing propagates from initial vacancies by local finite-speed updating, then the actually affected set is enveloped by 𝒞_t and cannot arrive earlier than the graph distance allows.</p>
+<p><strong>This is a statement of an upper bound, not an assertion about what happens.</strong> A model may perform no update at all, or its actual influence may be far slower than the envelope.</p>
+<p>The <strong>initial bifurcation</strong> among the possible outcomes lies where the vacancies are; once vacancy, stress or a change of topology is generated, its influence may propagate inward at a rate constrained by Proposition 6.14. <strong>That the initial bifurcation lies at the surface may be asserted; that it remains forever confined to one layer may not.</strong></p>
+<p><strong>Remark 6.20 (feedback to §5.3).</strong> Under sequential single hops the interior cells of a saturated region have no legal transition by Lemma 6.7, and by Proposition 6.14 that stasis persists for at least <em>d_G</em>(<em>x</em>, <em>S</em>₀) rounds; yet the continuum theory requires the worldlines there to advance at every step. So that realisation does not carry inwardness, which is the quantitative support for the first row of §5.3.</p>
+<hr>
+<h2>7 Discussion and conclusion</h2>
+<h3>7.1 Bridges not yet built</h3>
+<p>Three things are exposed here and not delivered.</p>
+<p><strong>H_Lyap.</strong> The inwardness given by Proposition 2.4 must be lifted to a bounded-below potential descending uniformly along every transition before Part B of Theorem 4.3 applies. By §5.2 that lifting faces two obstructions: the projection may be unfaithful (Lemma 3.9), and change of configuration does not entail descent of the potential (same-shell transport). <strong>This is the paper's central opening.</strong></p>
+<p><strong>H_tang.</strong> The continuum argument of Appendix A, in its present form, does not constitute a proof of H_tang: what it establishes is a statement about the continuum limit, while H_tang is a statement about a finite graph, and no bridge between them has been given. <strong>This must be read precisely: it is a statement about that argument, not about the implication.</strong> To show that continuum vanishing vorticity does not entail discrete same-shell acyclicity would require an actual counter-model, a sequence of increasingly fine lattices each containing same-shell directed cycles whose coarse-grained tangential flow converges weakly to the zero field. Planck-scale micro-circulation may in principle cancel under coarse-graining, but no refining sequence meeting all the requirements has been supplied here, so the item is listed as open rather than refuted.</p>
+<p><strong>Completeness and autonomy of <em>K</em>.</strong> If phase, momentum, labels, graph topology or history affect the future, then the genuine complete state space is not the occupancy configuration space, and Part A of Theorem 4.3 loses its object.</p>
+<p><strong>Only what this paper actually touches is listed.</strong> The full set of posits belonging to a future core paper is not, for the reason given in §1.6.</p>
+<h3>7.2 Forward completeness splits in two</h3>
+<p>What has been called forward completeness here contains two clauses, only one of which enters any proof, so they must be written separately.</p>
+<p><strong>Combinatorial forward completeness.</strong> ∀<em>x</em>₀, ∀<em>h</em> ∈ Hist_max(<em>x</em>₀), |<em>h</em>| = ∞. This clause enters Theorem 4.3.</p>
+<p><strong>Physical regularity.</strong> sup_n |<em>O_a</em>(<em>x_n</em>)| < ∞ along every history, and the conservation ledger is defined at every step. <strong>This clause enters no proof.</strong></p>
+<p>So the accurate claim of this paper is that it gives necessary conditions for combinatorial forward completeness and does not establish physical regularity. Without this separation, boundedness would appear load-bearing while in fact going unused.</p>
+<h3>7.3 The refutations of this paper</h3>
+<h4>7.3.1 What counts as a refutation</h4>
+<p>A negative result counts as a refutation exactly when it <strong>narrows the space of possibilities</strong>, so that anyone subsequently constructing a discrete interior must go around it. A record of a view once held and later abandoned does not count. The test is not how hard the negative was to obtain, but whether the negatives <strong>partition</strong> the space or merely <strong>repeat</strong>.</p>
+<p>On that test this paper has nine. The number is not a measure of value; a paper does not gain weight from the multiplicity of its refutations.</p>
+<h4>7.3.2 The table</h4>
+<p><strong>Group A: over-inheritance.</strong> Taking too much from the continuum theory.</p>
+<table>
+<thead><tr>
+<th>#</th>
+<th>Hypothesis</th>
+<th>How refuted</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>Kill 1</td><td>degeneration of the lapse at the horizon entails no global time direction in the interior</td><td>type error; a nowhere-vanishing timelike field on ingoing EF coordinates with <em>g</em>(<em>X</em>,<em>X</em>) ≤ −15/8</td><td>§2.2, §2.3</td></tr>
+<tr><td>Kill 2</td><td>the Kretschmann scalar, or any fixed dimensionful curvature magnitude <em>I</em> = <em>I</em>⋆ > 0, serves as a mass-independent threshold locating <em>r_s</em> universally</td><td><em>K</em>(<em>r_s</em>) = 3<em>c</em>⁸/4<em>G</em>⁴<em>M</em>⁴ becomes arbitrarily small with mass, so no fixed threshold meets <em>r_s</em> for all <em>M</em></td><td>§2.4</td></tr>
+<tr><td>Kill 3</td><td>every transition projects to a non-identity change of configuration (H_occ)</td><td>the ring shift: <em>M</em>(θ) ≠ ∅ with <em>s</em>(θ) = <em>t</em>(θ)</td><td>Lemma 3.9</td></tr>
+</tbody></table>
+<p><strong>Group B: over-inference.</strong> Taking too much from the discrete structure.</p>
+<table>
+<thead><tr>
+<th>#</th>
+<th>Hypothesis</th>
+<th>How refuted</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>Kill 4</td><td>simple connectedness forbids directed cycles in the update relation</td><td>an orientation bundle is a topological object and a directed cycle a combinatorial one; explicit construction supplied</td><td>Appendix B</td></tr>
+<tr><td>Kill 5</td><td>periodicity of configuration entails the absence of time at the level of occurrence</td><td>the two-state clock 0 → 1 → 0; the unfolding is a tree</td><td>Remark 4.15</td></tr>
+<tr><td>Kill 6</td><td>local saturation entails permanent bulk blockage or a stable core</td><td>under sequential hops a neighbour may discharge first; under synchronous exchange an open chain traverses a saturated middle directly. <strong>The refutation holds under both conventions; only the rate belongs to the former</strong></td><td>Lemma 6.7, Proposition 6.14, §5.3</td></tr>
+<tr><td>Kill 7</td><td>trappedness alone entails recurrence or forward completeness</td><td>two counter-models, neither escaping and neither recurring: 0 → 1 with Succ(1) = ∅, terminating; and 0 → 1 → 2 → ⋯, with infinite state space. So H_trap entails neither H_total nor H_finite</td><td>§5.5, Remark 5.8</td></tr>
+</tbody></table>
+<p><strong>Group C: mutual incompatibility.</strong></p>
+<table>
+<thead><tr>
+<th>#</th>
+<th>Hypothesis</th>
+<th>How refuted</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>Kill 8</td><td>a strictly spherically symmetric tangential circulation exists</td><td>Stokes, together with <em>H</em>¹_dR(<em>S</em>²) = 0 and the isotropy subgroup</td><td>Appendix A</td></tr>
+<tr><td>Kill 9</td><td>exact recurrence can coexist with persistent positive net outflow</td><td>taking energy as the potential, the terms on a cycle are non-negative and sum to zero, so <em>q</em>(θ) = 0 on every segment</td><td>Theorem 6.1</td></tr>
+</tbody></table>
+<p><strong>Remark (on the scope of Kill 2).</strong> What is refuted is only the fixed dimensionful magnitude threshold as stated, not every local invariant, and not a universal claim about all curvature magnitudes; the latter would require a separate dimensional classification theorem, whereas this paper computes only <em>K</em>. The Karlhede invariant 𝔎 = <em>R</em>^{λμνκ;η}<em>R</em>_{λμνκ;η} is, for Schwarzschild, 720 <em>m</em>² <em>r</em>³ (<em>r</em> − 2<em>m</em>) / <em>r</em>¹², which vanishes and changes sign exactly at <em>r</em> = 2<em>m</em> for every mass [34]. <strong>So a local invariant can indeed mark the horizon, but it does so by a change of sign rather than by attaining a magnitude.</strong> This has the same shape as the theme of the paper: rate and magnitude fail, structural transition succeeds.</p>
+<p><strong>Remark (on the evasion "energy but not configuration").</strong> This is not counted as a separate refutation. It is not a new partition of the space of possibilities but an attempt to evade Kill 9, and the failure of its three routes is recorded as a remark on Theorem 6.1 (Remark 6.5).</p>
+<h4>7.3.3 The shape of the squeeze</h4>
+<p>Groups A and B form a squeeze whose shape is that established in [33], §10. Over-inheritance would carry the criteria and symmetries of the continuum theory directly into the discrete layer; over-inference would read permanence, globality or recurrence directly off the discrete structure. Both are refuted, and what remains is a narrow corridor: a statement about a discrete interior must declare its bridges one by one. Section 2.4 shows the shape most plainly, where the local strength threshold and the lapse are both refuted while marginal trappedness survives.</p>
+<h4>7.3.4 What does not count as a refutation</h4>
+<p>Conjectures never published, and their corrections, enter neither the text nor the appendices. This framework does retain negative results — Paper 1 [31], §5.1, keeps in its main text the partial failure of its own computation, namely the non-monotone rise-width of the K3 front sharpening, judged FAIL in its Table 2 — but that failure was an output of its algorithm and therefore a result. A publishable negative must be a proposition or an enumeration, not a record of process.</p>
+<h3>7.4 What has been moved out of this paper</h3>
+<p>The rate law for universal evaporation and its empirical pressure tests bear no logical dependence on the theorems here, and belong to the rate paper of the framework's information-theory series or to a separate short note on negative results. The discipline of preregistration travels with them: the next version of a rate law must fix its ordinary-matter limit before the data are computed, and must not add a suppression function after seeing the constraint, on pain of degenerating into unfalsifiability.</p>
+<p>The crossing of core radius and horizon radius at sub-Planckian scale, whose algebra is sound but whose physical extrapolation exceeds the domain of credibility, is likewise moved out.</p>
+<h3>7.5 The minimal entry point for what follows</h3>
+<p>If the work is continued, the sole entry point is H_Lyap, in the form of a question:</p>
+<p>> On what configuration space does there exist a bounded-below potential descending uniformly along every transition?</p>
+<p>This is strictly stronger than asking where H_occ holds. By §5.4, a finite set of labels suffices to make H_occ hold without losing finiteness, yet the occupancy potential is blind to labels and so nothing is contributed to uniform descent. <strong>What the next paper must deliver is a potential, not fidelity of projection.</strong></p>
+<p>The genuine tension should be stated in the same way: not that labels cost finiteness, but that <strong>the closer a state space comes to physical completeness, the harder its finiteness is to establish.</strong> Finite labels buy both finiteness and non-identity projection and cannot by themselves establish a strictly descending potential; it is continuous phase, momentum, or unbounded history variables that return finiteness to the status of an open question.</p>
+<h3>7.6 Conclusion</h3>
+<p>What this paper delivers is a framework for auditing the assumptions of discrete-interior models, not a verdict on what the interior of a black hole is. Its mathematics is elementary: a quantity bounded below cannot descend uniformly without end, and a finite deterministic system must return. None of what is specific to black holes lies in that piece of combinatorics. It lies in a single question:</p>
+<p>> Can the inwardness of events and worldlines in the standard theory be lifted to a uniformly strictly descending potential on the complete discrete configuration space?</p>
+<p>And by §5.3, both answers carry a cost. So this paper is not a report of a gap. What it establishes is that anyone proposing to carry the inwardness of the trapped region by way of a finite, forward-complete discrete occupancy dynamics has either not truly carried it or has already lost forward completeness. Both sides pay, and what is paid on one side cannot be set against the other.</p>
+<p><strong>What this no-go constrains is the licence to make a claim, not the construction of nature.</strong> Nothing here asserts what the interior of a black hole is, and nothing here places any particular model on one side or the other; what is established is the ledger for both sides, and deciding where a model belongs requires checking, one at a time, its timing convention, the existence of its potential, and the finiteness of its state space.</p>
+<p>This restraint is not modesty. It is forced by the paper's own type discipline. The rule laid down in §3 is that a conclusion in one domain may not stand in for an assertion about another without an explicit bridge. What this paper charges throughout is that someone has passed from a statement about worldlines to a statement about configurations without building a bridge; if the paper itself passed from a conclusion about a class of models to an assertion about the interior of a black hole, that would be the same error one level up. The restraint and the argument have a single source, and abandoning the former wounds the latter.</p>
+<p>The shape of the nine refutations bears this out. Seven of them block <strong>inferences</strong>, in the form that some premise does not license some conclusion; only two are theorems at the level of the objects, namely that no strictly spherically symmetric tangential circulation exists, and that exact recurrence and persistent positive net outflow are incompatible. The bulk lies in the blocking of inferences and the minority in results about objects, and that is the proportion appropriate to a paper treating an ontological question by formal means.</p>
+<hr>
+<h2>8 Status map</h2>
+<table>
+<thead><tr>
+<th>Item</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr><td><strong>Main theorem</strong></td><td></td></tr>
+<tr><td>Theorem 4.3 Part A, orbit dichotomy</td><td>proved; requires finiteness and determinism</td></tr>
+<tr><td>Theorem 4.3 Part B, uniform descent obstruction</td><td>proved; requires neither; hypothesis stated over transitions</td></tr>
+<tr><td>Theorem 4.3 Part C, forward totality against uniform strict descent</td><td>proved</td></tr>
+<tr><td>Theorem 4.3 Part D, vanishing potential change on a cycle</td><td>proved</td></tr>
+<tr><td>Lemma 4.9, potential change of a multi-transport transition</td><td>proved</td></tr>
+<tr><td>Proposition 4.11, characterisation of ΔΦ(θ) = 0</td><td>proved, conditional on Model 4.10</td></tr>
+<tr><td>Corollary 4.8, no-go for a strictly inward interior</td><td>proved, conditional on a fixed finite lattice</td></tr>
+<tr><td><strong>Domains and transitions</strong></td><td></td></tr>
+<tr><td>three-domain separation and the type-checking rule</td><td>formal discipline</td></tr>
+<tr><td>labelled transition system, Definition 3.3</td><td>formal object; the configuration graph is its quotient, the unfolding its strings</td></tr>
+<tr><td>occurrence unfolding as semantic convention, Definition 3.5</td><td>convention, with a cost; not an ontological claim</td></tr>
+<tr><td>Lemma 3.9, ring shift</td><td>proved, conditional on synchronous exchange</td></tr>
+<tr><td>Corollary 3.10, H_occ generally fails</td><td>proved</td></tr>
+<tr><td><strong>Inherited</strong></td><td></td></tr>
+<tr><td>strictly inward causal direction in the trapped region, Proposition 2.4</td><td>standard result</td></tr>
+<tr><td>Misner–Sharp criticality and marginal trapping coincide under spherical symmetry</td><td>standard result</td></tr>
+<tr><td><strong>The three bridges</strong></td><td></td></tr>
+<tr><td>H_occ, non-identity projection</td><td>generally false (Kill 3)</td></tr>
+<tr><td>H_r, radial potential uniform descent</td><td>not established</td></tr>
+<tr><td>H_Lyap, bounded-below uniformly descending potential</td><td><strong>not established; the paper's central opening</strong></td></tr>
+<tr><td>H_tang, same-shell subgraph acyclic</td><td>open: neither proved nor refuted; the continuum argument supplies no discrete bridge and no counter-model has been given</td></tr>
+<tr><td>Proposition 5.4, ordering of the bridges</td><td>proved</td></tr>
+<tr><td><strong>Refutations</strong></td><td></td></tr>
+<tr><td>Kill 1 through Kill 9</td><td>proved; sources in §7.3.2</td></tr>
+<tr><td><strong>Applications</strong></td><td></td></tr>
+<tr><td>Theorem 6.1, exact recurrence against positive net outflow</td><td>proved, conditional on H_auto</td></tr>
+<tr><td>Lemma 6.7, local exclusion under sequential hops</td><td>proved; requires <em>x</em> itself saturated</td></tr>
+<tr><td>Proposition 6.9, invariance condition under synchronous exchange</td><td>proved by flow decomposition; the condition is global, not local, and is quantified over all legal transitions</td></tr>
+<tr><td>Proposition 6.14, propagation bound</td><td>proved, conditional on local dependence</td></tr>
+<tr><td>influence-cone envelope fraction 3⟨<em>h</em>⟩<em>t</em>/<em>R</em></td><td>leading coefficient computed; <strong>what is computed is an envelope upper bound, not the actually affected value</strong>; the coefficient is lattice-dependent and only <em>R</em>⁻¹ is universal</td></tr>
+<tr><td><strong>Not treated here</strong></td><td></td></tr>
+<tr><td>existence of a material core; an interior layer state; numerical occupancy or density bounds</td><td>not claimed</td></tr>
+<tr><td>resolution of the singularity; the information paradox; the Page curve; Kerr</td><td>not treated</td></tr>
+<tr><td>observational projections</td><td>not given</td></tr>
+<tr><td>the rate law for universal evaporation and its empirical tests</td><td>moved out, to the information-theory series</td></tr>
+</tbody></table>
+<hr>
+<h2>Appendix A The continuum spherical-symmetry no-go, and the same-shell bridge</h2>
+<h3>The theorem and its proof</h3>
+<p><strong>Theorem A.1 (Kill 8).</strong> Let <em>v</em> be a smooth tangential field on the sphere <em>S</em>², let α = <em>v</em>♭ be its dual one-form, and let dα = ω d<em>A</em> define its vorticity. If ω is an SO(3)-invariant scalar, then ω ≡ 0, <em>v</em> is a gradient field, and there is no non-trivial closed orbit.</p>
+<p><em>Proof.</em> In three steps.</p>
+<p><em>First, the integral vanishes.</em> <em>S</em>² has no boundary, so by Stokes' theorem [26]</p>
+<p>∫_{S²} ω d<em>A</em> = ∫_{S²} dα = ∫_{∂S²} α = 0.</p>
+<p><em>Second, constant and zero.</em> Being an SO(3)-invariant scalar function on the sphere, ω is constant. A constant with vanishing integral is identically zero.</p>
+<p><em>Third, gradient and no closed orbit.</em> ω ≡ 0 means dα = 0, so α is closed. Since <em>H</em>¹_dR(<em>S</em>²) = 0, a closed form is exact: there is <em>f</em> : <em>S</em>² → ℝ with α = d<em>f</em>, and raising the index gives <em>v</em> = ∇<em>f</em>. Along its flow d<em>f</em>/d<em>t</em> = |∇<em>f</em>|² ≥ 0, strictly increasing away from critical points, so <em>f</em> is monotone along the flow and no non-trivial closed orbit exists. ∎</p>
+<p><strong>Remark (degeneracy of the strong hypothesis).</strong> If instead <em>v</em> itself is assumed strictly SO(3)-invariant, the conclusion is stronger and the proof shorter: at any <em>p</em> ∈ <em>S</em>² the isotropy subgroup is the SO(2) of rotations about the axis through <em>p</em>, acting on <em>T_p S</em>² ≅ ℝ² by rotation, and the only vector invariant under a non-trivial rotation is zero, so <em>v</em>(<em>p</em>) = 0 everywhere. Under the strong hypothesis the theorem is therefore trivial; the value of Theorem A.1 lies in its weaker hypothesis, requiring only that the vorticity be invariant.</p>
+<h3>Disambiguation: symmetry of the field against symmetry of the system</h3>
+<p>What Theorem A.1 establishes is strict spherical symmetry of the <strong>field</strong>, not of the <strong>system</strong>. Spherically symmetric dynamics fully admits non-symmetric solutions; spontaneous symmetry breaking is precisely the case of a symmetric law with a non-symmetric state, and a black-hole interior microstate has no reason to be SO(3)-invariant.</p>
+<p>> What is established: no spherically symmetric circulation exists. What is not established: no circulation exists in a spherically symmetric system.</p>
+<p>Without this sentence Theorem A.1 will be read as far stronger than it is. It should also be read together with the open bridge below, so that no contradiction arises:</p>
+<p>> A non-zero smooth continuum tangential circulation must break strict spherical symmetry; yet discrete micro-circulation may disappear in the continuum limit, so its existence need not cost the macroscopic continuum field its spherical symmetry.</p>
+<p>The first clause is the content of Theorem A.1; the second is why that theorem does not suffice to establish H_tang. The two stand together without conflict.</p>
+<h3>The hairy ball theorem provides no exit</h3>
+<p>The hairy ball theorem [27] guarantees that any continuous tangential field on <em>S</em>² has a zero, but zeros are entirely compatible with a gradient field and do not generate circulation of themselves: the critical points of a gradient field are its zeros, and their presence does not produce closed orbits.</p>
+<p><strong>A correction concerning punctures.</strong> Removing a single point does not produce non-trivial cohomology: <em>S</em>² \ {<em>p</em>} ≅ ℝ² and <em>H</em>¹_dR(ℝ²) = 0. At least two punctures are needed, giving <em>S</em>² \ {<em>p</em>, <em>q</em>} ≅ <em>S</em>¹ × ℝ with <em>H</em>¹_dR ≠ 0.</p>
+<p>The correct statement is therefore: if at least two singular defects, a non-trivial puncture structure, or distributed vorticity are admitted, then the smooth global hypothesis of Theorem A.1 fails and what is under discussion is a different model.</p>
+<h3>The discrete limitation</h3>
+<p>A finite complex has only a finite symmetry group. The spherical subdivision used in the numerics of this paper has only icosahedral symmetry, of rotation order 60, which is not the continuous SO(3). Theorem A.1 therefore cannot be pressed directly onto a finite toy. This limitation is not technical caution; it is the root of the open bridge below.</p>
+<h3>The same-shell bridge, and why it is not established</h3>
+<p><strong>Definition A.4.</strong> Partition the update edges into <em>E</em>₋ = {<em>x</em> → <em>y</em> : <em>r</em>(<em>y</em>) < <em>r</em>(<em>x</em>)} and <em>E</em>₀ = {<em>x</em> → <em>y</em> : <em>r</em>(<em>y</em>) = <em>r</em>(<em>x</em>)}. Write</p>
+<p>H_tang : ∃<em>f</em> : <em>V</em>_cell → ℝ, ∃η > 0, ∀(<em>x</em> → <em>y</em>) ∈ <em>E</em>₀, <em>f</em>(<em>y</em>) − <em>f</em>(<em>x</em>) ≤ −η.</p>
+<p><strong>Proposition A.2.</strong> On a finite directed graph, H_tang holds if and only if the same-shell directed subgraph is acyclic.</p>
+<p><em>Proof.</em> If acyclic, a topological sort [28,29] gives a linear order; take <em>f</em> to be the negative of the position in that order, suitably scaled, to obtain strict descent with η > 0. Conversely, if there is a cycle <em>x</em>₁ → ⋯ → <em>x_k</em> → <em>x</em>₁, summing around it gives 0 = Σ[<em>f</em>(<em>x</em>_{i+1}) − <em>f</em>(<em>x_i</em>)] ≤ −<em>k</em>η < 0, a contradiction. ∎</p>
+<p><strong>Corollary A.3.</strong> H_tang is equivalent to the conclusion it is meant to establish. <strong>What follows from this, and what does not, must be distinguished.</strong> It follows that the bridge is not a condition weaker than its conclusion. It does not follow that some other independent hypothesis cannot entail it: a hypothesis may perfectly well entail a condition equivalent to a conclusion. So what may be asserted is only this: <strong>this paper has not supplied a bridge from F5_continuum to H_tang</strong>, not that the implication has been refuted.</p>
+<p>Theorem A.1 gives vanishing vorticity in the continuum limit, and vanishing vorticity gives a gradient field, and a gradient field has no closed orbit in the continuum sense. But this does not yield acyclicity of the same-shell subgraph on a finite lattice: coarse-graining can erase Planck-scale discrete circulation, with micro-vortices of opposite sign cancelling so that the continuum limit has ω ≡ 0 and is strictly spherically symmetric, while the finite same-shell subgraph still contains directed cycles.</p>
+<p>> Strict continuum spherical symmetry can motivate same-shell absence of circulation; it does not suffice to prove acyclicity of the discrete same-shell subgraph.</p>
+<p>To establish that the implication fails would require a genuine counter-model: a sequence of increasingly fine lattices, each containing same-shell directed cycles, whose coarse-grained tangential flow converges weakly to the zero field. Micro-circulation may in principle cancel under coarse-graining, but no refining sequence meeting all the requirements is supplied here, so the item is listed as open rather than refuted.</p>
+<p>> F5_continuum ⟹ H_tang :  <strong>open — neither proved nor refuted</strong></p>
+<h3>The discrete gradient extension, a conditional remark</h3>
+<p>Suppose H_tang holds, with <em>f</em> and η. Let δ_r = min_{E₋}[<em>r</em>(<em>x</em>) − <em>r</em>(<em>y</em>)] > 0 and <em>M_f</em> = max_{E₋}|<em>f</em>(<em>y</em>) − <em>f</em>(<em>x</em>)| < ∞. Take 0 < ε < δ_r/<em>M_f</em>, or any ε > 0 if <em>M_f</em> = 0, and set</p>
+<p>ψ_ε(<em>x</em>) = <em>r</em>(<em>x</em>) + ε<em>f</em>(<em>x</em>),  Φ_ε(<em>n</em>) = Σ_x <em>n_x</em> ψ_ε(<em>x</em>).</p>
+<p>Then a same-shell edge gives ΔΦ_ε = εΔ<em>f</em> ≤ −εη < 0, and an inward edge gives ΔΦ_ε ≤ −δ_r + ε<em>M_f</em> < 0. With δ_ε = min{εη, δ_r − ε<em>M_f</em>} > 0, every non-identity edge descends uniformly and Part B of Theorem 4.3 applies.</p>
+<p><strong>Remark (signs).</strong> If <em>v</em> = ∇<em>f</em> then <em>f</em> <strong>increases</strong> along the flow, so it must be paired with Φ′ = <em>r</em> − ε<em>f</em>; alternatively take <em>v</em> = −∇<em>f</em> with Φ′ = <em>r</em> + ε<em>f</em>. One or the other, not a mixture.</p>
+<p><strong>Status.</strong> This subsection is a conditional extension, not a result. Its condition H_tang is, by Proposition A.2, equivalent to the desired conclusion, so what is delivered is only that a combined potential can be assembled if the same-shell subgraph is acyclic, and not that it is.</p>
+<h3>Kerr</h3>
+<p>The hypothesis of Theorem A.1 is strict spherical symmetry. The axisymmetric case is not excluded by that theorem, since under axisymmetry ω need not be constant and positive and negative vorticity may cancel over the sphere to give a vanishing integral.</p>
+<p><strong>This paper does not claim that the required circulation exists in the interior of Kerr.</strong> All that may be written is that the case is not excluded by Theorem A.1.</p>
+<hr>
+<h2>Appendix B Numerics and the lattice</h2>
+<h3>The 25-cell toy</h3>
+<p><strong>The complex.</strong> The cells are {(<em>r</em>, <em>t</em>) : <em>r</em> ∈ {1,2,3,4}, <em>t</em> ∈ {0,…,5}} together with a centre cell, 25 in all. The radial coordinate of (<em>r</em>, <em>t</em>) is <em>r</em>, and that of the centre is 0.</p>
+<p><strong>Adjacency.</strong> Same-shell (<em>r</em>, <em>t</em>) ∼ (<em>r</em>, <em>t</em> ± 1 mod 6); radial (<em>r</em>, <em>t</em>) ∼ (<em>r</em> − 1, <em>t</em>) for <em>r</em> ≥ 2, and (1, <em>t</em>) ∼ centre.</p>
+<p><strong>Occupancy.</strong> <em>n</em>_max = 1 with two units, so the full configuration space has</p>
+<p><strong>Initial state.</strong> The two units are placed on the outermost shell at (4, 0) and (4, 1).</p>
+<p><strong>Three update rules.</strong> First, strictly inward only with no rest: (<em>r</em>, <em>t</em>) → (<em>r</em> − 1, <em>t</em>) for <em>r</em> ≥ 2, and (1, <em>t</em>) → centre. Second, as the first but with the identity edge admitted. Third, as the first but with a one-way same-shell transport (<em>r</em>, <em>t</em>) → (<em>r</em>, (<em>t</em> + 1) mod 6) admitted.</p>
+<p><strong>Timing and tie-breaking.</strong> Updates are enumerated as sequential single hops, a transport being legal when the source is occupied and the target has room. Every legal successor is entered as an edge and no single choice is made, so what is constructed is a relation graph rather than a deterministic sequence of orbits.</p>
+<h3>Results</h3>
+<table>
+<thead><tr>
+<th>Rule</th>
+<th>\</th>
+<th>𝒳_full\</th>
+<th></th>
+<th>\</th>
+<th>Reach(<em>n</em>₀)\</th>
+<th></th>
+<th>acyclic</th>
+<th>forward-total</th>
+<th>ΔΦ on a cycle</th>
+</tr></thead><tbody>
+<tr><td>strictly inward only</td><td>300</td><td>24</td><td>yes</td><td>no (2 dead ends)</td><td>—</td></tr>
+<tr><td>identity admitted</td><td>300</td><td>24</td><td>no</td><td>yes</td><td>[0], length 1</td></tr>
+<tr><td>same-shell admitted</td><td>300</td><td><strong>300</strong></td><td>no</td><td>yes</td><td>[0,0,0,0,0,0], length 6</td></tr>
+</tbody></table>
+<p>For the first rule Φ(<em>n</em>₀) = 8, Φ_min = 1 and δ_min = 1, so <em>N</em>_max = ⌊(8 − 1)/1⌋ = 7; the longest directed orbit found by enumeration is likewise 7.</p>
+<p><strong>Remark one.</strong> That these two numbers agree is a result of enumeration and does not follow from the three quantities. Corollary 4.8 gives only an upper bound, and whether the bound is attained must be checked case by case. This serves as one instance of tightness, not as evidence for the theorem.</p>
+<p><strong>Remark two.</strong> Under the third rule the reachable set equals the full configuration space: circulation makes the whole space reachable. This is a by-product of that rule and not a conclusion needed here.</p>
+<p><strong>Remark three.</strong> No row is at once acyclic and forward-total, in accordance with Part C of Theorem 4.3.</p>
+<h3>Simple connectedness does not forbid combinatorial directed cycles (Kill 4)</h3>
+<p>Take the simplicial complex of a filled triangle: three vertices, three edges, one two-dimensional cell. It is contractible, so π₁ is trivial. Orient the three edges of its one-skeleton as <em>a</em> → <em>b</em> → <em>c</em> → <em>a</em> to obtain a directed three-cycle.</p>
+<p>What simple connectedness obstructs is an orientation bundle, a topological object; a directed cycle is a combinatorial object given by the orientation of edges and is unaffected by the filling of the two-cell. The two do not imply one another. The tetrahedron is the same: its one-skeleton contains several directed three-cycles while the complex is contractible.</p>
+<h3>The coefficient of the cubic six-neighbour lattice</h3>
+<p><strong>Closed form.</strong> For a unit normal <em>n̂</em>, let <em>h</em>(<em>n̂</em>) = max_i |<em>n_i</em>| be the exposure thickness of the six-neighbour lattice along that normal. Its spherical average is</p>
+<p>⟨<em>h</em>⟩ = (6/π√2) arctan(1/√2) = 0.8311896360,</p>
+<p>so the leading coefficient of the skin fraction and of the envelope fraction is</p>
+<p>3⟨<em>h</em>⟩ = 2.4935689079.</p>
+<p><strong>Exact lattice counts.</strong> A cell is a bulk cell when all six of its face neighbours are also inside.</p>
+<table>
+<thead><tr>
+<th><em>R</em></th>
+<th><em>N</em></th>
+<th>skin</th>
+<th>bulk</th>
+<th>bulk fraction</th>
+</tr></thead><tbody>
+<tr><td>2.21</td><td>33</td><td>26</td><td>7</td><td>21.2121%</td></tr>
+<tr><td>5</td><td>515</td><td>222</td><td>293</td><td>56.8932%</td></tr>
+<tr><td>100</td><td>4,187,857</td><td>103,734</td><td>4,084,123</td><td>97.5230%</td></tr>
+</tbody></table>
+<p><strong>Remark four.</strong> The <em>R</em> = 2.21 row must be distinguished from a large-<em>R</em> fit. Extrapolating a log-log fit over 5 ≤ <em>R</em> ≤ 120 down to <em>R</em> = <em>O</em>(1) gives a vanishing bulk fraction, while the exact count gives 21.21 per cent. A fitted expression must not be extrapolated outside its interval.</p>
+<h3>The influence-cone envelope</h3>
+<table>
+<thead><tr>
+<th><em>R</em></th>
+<th><em>t</em></th>
+<th><em>t</em>/<em>R</em></th>
+<th>\</th>
+<th>𝒞_t ∩ <em>B</em>\</th>
+<th>/\</th>
+<th><em>B</em>\</th>
+<th></th>
+<th>fraction · <em>R</em>/<em>t</em></th>
+<th>implied <em>b</em></th>
+</tr></thead><tbody>
+<tr><td>160</td><td>1</td><td>0.00625</td><td>0.015520</td><td>2.48319</td><td>−1.660</td></tr>
+<tr><td>40</td><td>1</td><td>0.02500</td><td>0.061316</td><td>2.45263</td><td>−1.637</td></tr>
+<tr><td>80</td><td>2</td><td>0.02500</td><td>0.061324</td><td>2.45295</td><td>−1.625</td></tr>
+<tr><td>160</td><td>4</td><td>0.02500</td><td>0.061307</td><td>2.45227</td><td>−1.652</td></tr>
+<tr><td>80</td><td>4</td><td>0.05000</td><td>0.120576</td><td>2.41152</td><td>−1.641</td></tr>
+<tr><td>120</td><td>6</td><td>0.05000</td><td>0.120507</td><td>2.41013</td><td>−1.669</td></tr>
+</tbody></table>
+<p>Writing</p>
+<p>the six rows give implied values of <em>b</em> between −1.63 and −1.67, consistent across an eightfold range of <em>t</em>/<em>R</em>. The data are compatible with a quadratic correction of about −1.65; the extracted value still carries the <em>O</em>(1/<em>R</em>) discreteness error, so it is reported as an empirical coefficient and not as a determined constant.</p>
+<p>The three rows sharing <em>t</em>/<em>R</em> = 0.025 differ by a relative spread of about 2.8 × 10⁻⁴, which is the <em>O</em>(1/<em>R</em>) lattice-discreteness effect and is not of the same origin as the finite-thickness quadratic term. <strong>The two must not be run together in one sentence.</strong></p>
+<h3>Lattice dependence of the coefficient</h3>
+<p>The value 2.4936 is a joint product of the interior-cell criterion and six-neighbour adjacency, since <em>h</em>(<em>n̂</em>) = max_i |<em>n_i</em>| is precisely the exposure thickness of six-neighbour adjacency along the normal. The coefficient therefore varies with the definition of adjacency: a continuum shell one cell thick gives 3/<em>R</em>; eighteen-neighbour and twenty-six-neighbour adjacency and Voronoi cells all differ; and altering the interior criterion, for instance by requiring all neighbours rather than face neighbours only, changes it again.</p>
+<p>> Only <em>R</em>⁻¹ is universal; the coefficient is not a constant of this framework.</p>
+<p>Writing out its geometric origin allows a reader to change the lattice and recompute rather than take the number on trust.</p>
+<h3>Code and hashes</h3>
+<p>The scripts are published with the paper, with SHA-256 as follows. There are no dependencies beyond NumPy and NetworkX.</p>
+<table>
+<thead><tr>
+<th>Script</th>
+<th>Corresponds to</th>
+<th>SHA-256</th>
+</tr></thead><tbody>
+<tr><td><code>exclusion.py</code></td><td>Appendix B, the 25-cell toy</td><td><code>aa9d3d9b9115b916c95e4391c9bc97f6ddad6c5e2614e3ad4ffce953c35b45de</code></td></tr>
+<tr><td><code>lattice.py</code></td><td>Appendix B, exact lattice counts and the closed-form coefficient</td><td><code>1ea43fd3b20e13628377d017e31b8d42112a1f013b2ab5ca0acb5611fcb99726</code></td></tr>
+<tr><td><code>cone.py</code></td><td>Appendix B, the influence-cone envelope fraction</td><td><code>477678b33681648288102e4064e6b5cc3cb6627712696d78245046fd8bfc28f7</code></td></tr>
+<tr><td><code>README.md</code></td><td>run instructions and statement of scope, Chinese</td><td><code>38cfff31c90469b96e1e6b47f12365be5581fbe54b0e5859af83532bfcc4cfb4</code></td></tr>
+<tr><td><code>README-en.md</code></td><td>the same, English</td><td><code>4ad453681a05d8d04ee04d52bdf9e09e4bc0b881e151752fca96000a9558af04</code></td></tr>
+</tbody></table>
+<p><strong>Remark.</strong> The reproducibility commitment of this paper covers the three scripts above, being those on which the numerical values in the text actually depend. Computations along other routes taken during the writing do not enter the text and are therefore not published with it, so that no reader mistakes them for load-bearing.</p>
+<hr>
+<h2>Acknowledgements</h2>
+<p>The propositions of this paper passed through several rounds of independent review before completion, and several key corrections came from those reviews. Among them: the necessity of type separation; the layering of premises between the finite-total-function argument and uniform descent; and the distinction between the asymptotic and finite-size readings of the lattice coefficient. Errors that remain are the author's.</p>
+<hr>
+<h2>Metadata</h2>
+<p><strong>Author</strong> Qin Han (秦汉). ORCID 0009-0009-9583-0018.</p>
+<p><strong>Series</strong> SAE Black Hole Series, Paper 2.</p>
+<p><strong>Date</strong> <em>to be supplied</em>.</p>
+<p><strong>Concept DOI</strong> 10.5281/zenodo.21499053 (resolves to the latest version). <strong>Version DOI</strong> assigned on publication.</p>
+<p><strong>Licence</strong> CC BY 4.0 (Creative Commons Attribution 4.0 International).</p>
+<p><strong>Reproducible material</strong> The three scripts of Appendix B together with both READMEs are published with the paper, each with SHA-256. Tested with Python 3.12.3, NumPy 2.4.4, NetworkX 3.6.1.</p>
+<p><strong>Note on this text</strong> This is an independent English rewrite rather than a translation of the Chinese text. Where the two differ in phrasing, the mathematical content, the numerals and the numbering of propositions are identical.</p>
+<hr>
+<h2>References</h2>
+<p>[1] L. Bombelli, J. Lee, D. Meyer, R. D. Sorkin, <em>Space-time as a causal set</em>, Phys. Rev. Lett. <strong>59</strong>(5), 521–524 (1987).</p>
+<p>[2] C. Rovelli, F. Vidotto, <em>Covariant Loop Quantum Gravity</em>, Cambridge University Press (2014).</p>
+<p>[3] J. M. Bardeen, <em>Non-singular general-relativistic gravitational collapse</em>, Proc. Int. Conf. GR5, Tbilisi, p. 174, Tbilisi University Press (1968).</p>
+<p>[4] I. Dymnikova, <em>Vacuum nonsingular black hole</em>, Gen. Rel. Grav. <strong>24</strong>, 235–242 (1992).</p>
+<p>[5] S. A. Hayward, <em>Formation and evaporation of non-singular black holes</em>, Phys. Rev. Lett. <strong>96</strong>, 031103 (2006). arXiv:gr-qc/0506126.</p>
+<p>[6] C. Rovelli, F. Vidotto, <em>Planck stars</em>, Int. J. Mod. Phys. D <strong>23</strong>(12), 1442026 (2014). arXiv:1401.6562.</p>
+<p>[7] P. O. Mazur, E. Mottola, <em>Gravitational condensate stars: an alternative to black holes</em>, Proc. Natl. Acad. Sci. USA <strong>101</strong>, 9545–9550 (2004).</p>
+<p>[8] A. Ashtekar, T. Pawlowski, P. Singh, <em>Quantum nature of the big bang</em>, Phys. Rev. Lett. <strong>96</strong>, 141301 (2006).</p>
+<p>[9] SAE Information Theory Series, Paper 4. DOI 10.5281/zenodo.19880112</p>
+<p>[10] A. S. Eddington, <em>A comparison of Whitehead's and Einstein's formulae</em>, Nature <strong>113</strong>, 192 (1924).</p>
+<p>[11] D. Finkelstein, <em>Past-future asymmetry of the gravitational field of a point particle</em>, Phys. Rev. <strong>110</strong>, 965–967 (1958).</p>
+<p>[12] K. Schwarzschild, Sitzungsber. Preuss. Akad. Wiss. Berlin (Math. Phys.) <strong>1916</strong>, 189–196.</p>
+<p>[13] C. W. Misner, K. S. Thorne, J. A. Wheeler, <em>Gravitation</em>, W. H. Freeman (1973).</p>
+<p>[14] S. W. Hawking, G. F. R. Ellis, <em>The Large Scale Structure of Space-Time</em>, Cambridge University Press (1973).</p>
+<p>[15] R. M. Wald, <em>General Relativity</em>, University of Chicago Press (1984).</p>
+<p>[16] C. W. Misner, D. H. Sharp, <em>Relativistic equations for adiabatic, spherically symmetric gravitational collapse</em>, Phys. Rev. <strong>136</strong>, B571–B576 (1964).</p>
+<p>[17] S. A. Hayward, <em>Gravitational energy in spherical symmetry</em>, Phys. Rev. D <strong>53</strong>, 1938–1949 (1996). arXiv:gr-qc/9408002.</p>
+<p>[18] R. Penrose, <em>Gravitational collapse and space-time singularities</em>, Phys. Rev. Lett. <strong>14</strong>(3), 57–59 (1965).</p>
+<p>[19] J. M. M. Senovilla, D. Garfinkle, <em>The 1965 Penrose singularity theorem</em>, Class. Quantum Grav. <strong>32</strong>, 124008 (2015).</p>
+<p>[20] M. Nielsen, G. Plotkin, G. Winskel, <em>Petri nets, event structures and domains, part I</em>, Theor. Comput. Sci. <strong>13</strong>(1), 85–108 (1981).</p>
+<p>[21] G. Winskel, <em>Event structures</em>, in Advances in Petri Nets 1986, Lecture Notes in Computer Science 255, Springer (1987), pp. 325–392.</p>
+<p>[22] S. A. Hayward, <em>General laws of black-hole dynamics</em>, Phys. Rev. D <strong>49</strong>, 6467–6474 (1994).</p>
+<p>[23] A. Ashtekar, B. Krishnan, <em>Isolated and dynamical horizons and their applications</em>, Living Rev. Relativity <strong>7</strong>, 10 (2004).</p>
+<p>[24] T. M. Liggett, <em>Interacting Particle Systems</em>, Springer (1985).</p>
+<p>[25] F. Ritort, P. Sollich, <em>Glassy dynamics of kinetically constrained models</em>, Adv. Phys. <strong>52</strong>, 219–342 (2003).</p>
+<p>[26] R. Bott, L. W. Tu, <em>Differential Forms in Algebraic Topology</em>, Graduate Texts in Mathematics 82, Springer (1982).</p>
+<p>[27] J. W. Milnor, <em>Analytic proofs of the "hairy ball theorem" and the Brouwer fixed point theorem</em>, Amer. Math. Monthly <strong>85</strong>(7), 521–524 (1978).</p>
+<p>[28] D. E. Knuth, <em>The Art of Computer Programming, Vol. 1: Fundamental Algorithms</em>, 3rd ed., Addison-Wesley (1997), §2.2.3.</p>
+<p>[29] J. Bang-Jensen, G. Gutin, <em>Digraphs: Theory, Algorithms and Applications</em>, 2nd ed., Springer (2009).</p>
+<p>[30] H. Poincaré, <em>Sur le problème des trois corps et les équations de la dynamique</em>, Acta Math. <strong>13</strong>, 1–270 (1890).</p>
+<p>[31] SAE Black Hole Series, Paper 1. DOI 10.5281/zenodo.20913514</p>
+<p>[32] SAE Physical-Quantity Ladder. DOI 10.5281/zenodo.21227329</p>
+<p>[33] SAE ZFCρ Series, Paper 68. DOI 10.5281/zenodo.19739811</p>
+<p>[34] A. Karlhede, U. Lindström, J. E. Åman, <em>A note on a local effect at the Schwarzschild sphere</em>, Gen. Relativ. Gravit. <strong>14</strong>, 569–572 (1982).</p></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>黑洞内区之离散化,常被期望以最小尺度消解经典之测地不完备。然此期望隐含一步未经声明之推论:标准理论关于被困区之陈述,所约束者为世界线与事件之未来方向,而离散动力学所刻画者为位形之转移;由前者推出后者,须有一桥。</p>
+<p>本文分辨三个不可混之对象,即空间胞图、位形转移图与发生展开,并证明该桥<strong>不是上述前提之自动推论</strong>。其反例为环移:于饱和区内取一闭链,各胞同时送出一单位而收进一单位,数目守恒、只涉最近邻、不需任何空位,而占据位形完全不变。故诸世界线之运动不蕴含位形之改变。</p>
+<p>本文之主定理为有限轨道二岔与径向势阻断。其第一部谓有限而确定之位形动力学,每条极大轨道非于有限步终止即终归周期;第二部谓若存在有下界之势而每条允许边使其统一严格下降,则周期支排除而轨道于可算之步数内终止,且此部不需有限亦不需确定;第三部谓前向全定义与统一严格下降不可共存;第四部谓于非增之情形,周期上每条边之势差皆为零。合之得:<strong>于有限而确定之位形动力学中</strong>,无限而从不重复位形之轨道不可得;然事件仍可永不重复。</p>
+<p>本文另立数条否决,按继承过强、推论过强与不可兼得三组分列,前二组合成一次夹逼;并给两个应用,一为精确递归与持续正净外流之不相容,一为局域排斥引理及其解冻前沿之下界,后者于局域有限速更新之下给出体内被触及速度之上界,其<strong>影响锥包络</strong>之占比首项为 $3\langle h\rangle\,t/R$。</p>
+<p>该桥之两个答案皆有代价:未交付则模型之纯占据动力学不能单独声称承载内向性,交付则由主定理前向全定义当场丧失。</p>
+<p>本文不主张物质核之存在,不主张内区之层状态,不解奇点,不给观测投影。其所交付者为一套审计工具:凡欲以有限且前向完备之离散占据动力学承载被困区之内向性者,须显式声明其更新之时序、其势之存在与其态空间之有限,而不得默认之。</p>
+      <p class="paper-keywords"><strong>关键词:</strong> 离散黑洞内区;被困区;前向完备性;径向势;类型分离;否决表</p>
+    </div>
+    <div class="paper-body"><hr>
+<h2>体例与记号</h2>
+<p>本篇之否决体例承 ZFCρ 系列[33]§10。篇内书 Kill $n$;跨系列引用时由引用者补域,书作 ZFCρ Kill 17 或 BH Kill 3。前作[31]§3.7 以 K0 至 K5 与 G1、G2 记预注册之判据与 supporting diagnostics,与本篇之 Kill $n$ 形近而实异;首次出现时书全为"前作之预注册判据 K3"。</p>
+<p>凡本篇修订或校正在先之工作者,引至其节次与命题,不止于 DOI。</p>
+<p>诸结果之层级、诸桥之状态与诸否决之出处,尽归 §8 之总状态表;各节不另标层级。</p>
+<hr>
+<h2>1 引言</h2>
+<h3>1.1 问题</h3>
+<p>经典引力于黑洞内区给出测地不完备。诸多量子引力之进路以离散衬底代连续时空[1,2],而其常见之期望是:既有最小尺度,则塌缩无从进行至奇点,故不完备自解。</p>
+<p>此期望之形式常未被检视。以有效应力张量撑起正则核之诸模型[3–7]与最小尺度导致反弹之诸模型[8],皆共有此期望。一个离散模型写下之后,人们指出其有最小长度,遂断言奇点得免。然此断言须两步:其一,该模型确能承载被困区之动力学;其二,该动力学于离散层上确不导致轨道之终止。<strong>二者皆非自明,而第一步尤常被略过。</strong></p>
+<p>被困区之界定性质,于标准理论中是一条关于<strong>世界线与事件</strong>之陈述:一切未来指向之因果方向皆严格趋向更小之径向坐标。而一个离散占据模型所刻画者,是<strong>位形</strong>之转移,即何种占据分布可继何种占据分布。二者不在同一层。由前者推出后者,须有一条桥。</p>
+<p><strong>本文所问者即此桥。</strong></p>
+<h3>1.2 缺口</h3>
+<p>该桥所需之内容可精确化如下。设占据位形为 $n$,而径向势为 $\Phi(n)=\sum_xn_x\,r(x)$。被困区之内向性若能提升至位形层,则每一次更新皆使 $\Phi$ 严格下降。</p>
+<p>然此提升要求每一次发生皆改变位形,而该要求一般不成立。其反例为<strong>环移</strong>:饱和区内一闭链,各胞同时送出一单位而收进一单位,数目守恒而占据函数处处不变(引理 3.9)。</p>
+<p>$$\text{世界线与事件之运动}\ \not\Longrightarrow\ \text{占据位形之改变}$$</p>
+<p>本文称此构造为环移。守恒之闭链置换于格气与排斥过程中并非新物[24,25];本文之新处不在该构造,而在以之为投影非忠实之见证。</p>
+<h3>1.3 本文所做</h3>
+<p><strong>其一,三域分离。</strong> 分辨空间胞图、位形转移图与发生展开三者,并立一条类型检查律:任一域上之圈或无圈,未经显式桥接,不得替另一域作结论。发生展开只作语义之约定,不作第三套原始动力学;其代价是位形之周期性不复能用以论证时间之缺席,而该代价正是它非虚设之证。</p>
+<p><strong>其二,主定理。</strong> 有限轨道二岔与径向势阻断,四部见 §4。诸部之前提层次不齐:第一部需有限与确定而给递归,第二部二者皆不需而给终止。此不对称若分列诸定理则不可见,合之乃显。</p>
+<p><strong>其三,桥之暴露。</strong> 由环移与时序之两约定,证该桥于两侧各以一途失效。此为本文之核心开口,亦是其唯一之物理余项。</p>
+<p><strong>其四,诸条否决。</strong> 依 ZFCρ 系列[33]§10 所立之体例,逐条编号并按功能分组。甲组为继承过强,乙组为推论过强,二者夹出一狭窄之通道;丙组为不可兼得。</p>
+<p><strong>其五,两个应用。</strong> 精确递归与持续正净外流之不相容;局域排斥引理与解冻前沿之下界。</p>
+<h3>1.4 本文之性质与其限度</h3>
+<p>本文之数学至为初等:有下界之量不能无限地统一下降,而有限确定之系统必回归。凡黑洞特有之内容,皆不在此段组合数学之中,而在那条桥上。<strong>故本文之贡献不在数学之深度,乃在依赖之最小化与类型之审计。</strong> 它所交付者,是一套用于审计离散内区模型之假设不相容框架,而非一条关于黑洞内部为何物之论断。</p>
+<p>其辖区因此及于任何以有限离散占据动力学承载被困区之模型,不限于本框架。</p>
+<p>本文不主张物质核之存在,不主张内区之层状态,不给占据上限或密度上限之数值。不主张奇点已解:弃前向全定义即得轨道之终止,而<strong>命名不等于消解</strong>,本文不证该终止态与经典奇点等价。不给任何观测投影。不认领霍金辐射之导出,该项属继承。不涉 Kerr。</p>
+<h3>1.5 篇章</h3>
+<p>§2 否一条常见之推论,即视界处 lapse 之退化蕴含内区无全局时间方向,并给判据之三分。§3 立三域分离与环移。§4 立主定理。§5 由前二者合出桥缺口,并列出口矩阵。§6 给两个应用。§7 论未立之桥、本文之否决与下一步之最小入口。§8 为总状态表。附录 A 载连续球对称之环流 no-go 及其为何不足以证明离散之同壳无圈,附录 B 载数值、格点系数之闭式与代码之哈希。</p>
+<h3>1.6 依赖矩阵</h3>
+<p>只列本文诸定理实际用到者。凡不进入任一证明者,不列。</p>
+<table>
+<thead><tr>
+<th>条件</th>
+<th>角色</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr><td>$K$ 为完整而自治之微观态空间</td><td>防隐变量改变未来</td><td>未立之桥</td></tr>
+<tr><td>$U$ 前向全定义</td><td>前向完备之核心</td><td>待立</td></tr>
+<tr><td>$\Phi$ 有下界</td><td>势阻断之条件</td><td>条件假设</td></tr>
+<tr><td>一切允许边统一下降</td><td>由连续内向性至位形之桥</td><td>未立之桥</td></tr>
+<tr><td>事件至位形之投影非恒等</td><td>记 $H_{\rm occ}$</td><td><strong>一般不成立</strong></td></tr>
+<tr><td>完整态无向外之输出</td><td>递归之条件</td><td>与既有之广播表述冲突</td></tr>
+<tr><td>局域有限之传播速度</td><td>解冻前沿之条件</td><td>模型假设</td></tr>
+<tr><td>模型 4.10 之三条</td><td>周期支撑集之穷尽性</td><td>模型假设</td></tr>
+</tbody></table>
+<p>本框架关于核之诸公设,即占据上限之来源、内部账本与边界质量之映射、匹配条件与稳定性,皆不进入本文任一定理,故不列。本文既不主张核,列尽将来核论文之全部负担只是求完整,不增本文之结论。</p>
+<p>诸结果之层级、诸桥之状态与诸否决之出处,尽归 §8 之总状态表,不于此另立一表,以免二处不同步。</p>
+<hr>
+<h2>2 lapse 不产范畴</h2>
+<h3>2.1 待否之蕴含及其归属</h3>
+<p>$$\text{(F)}\qquad \frac{d\tau}{dt}\to0\ \text{于}\ r=r_s\ \ \Longrightarrow\ \ \text{内区无全局之时间方向}$$</p>
+<p>本节所校正者,为本系列自身先前所循之路。既有之内区表述[9]以视界处 tick 间隔之渐近发散为据,而该篇已自明其为外部观者加有限寿命界之条件读法,并将内部观者之视角列为严格缄默。故 (F) 不仅未受上游之支持,反为上游自身之声明所排除:一条按其构造只陈述外部观者于有限时间内能得出什么之表述,不产内部之范畴事实。</p>
+<p>此为递归细分之回溯校正之一例。物理量阶梯[32]之细分使原先同处一格者被分开,在先之粗粒度表述因而需回修;本节即其一例。</p>
+<h3>2.2 类型错置</h3>
+<p>$d\tau/dt$ 为 lapse,给出每单位坐标时之固有时,是一速率。全局时间方向之有无,是因果结构上之范畴或拓扑性质。一方向上之演化率为零,不蕴含该方向无从定义或无从定向。</p>
+<h3>2.3 反例</h3>
+<p><strong>命题 2.1。</strong> 史瓦西之被困区时间可定向。</p>
+<p><strong>证。</strong> 取内落 Eddington–Finkelstein 坐标[10,11]</p>
+<p>$$ds^2=-f\,dv^2+2\,dv\,dr+r^2d\Omega^2,\qquad f=1-\frac{r_s}{r}$$</p>
+<p>该坐标跨视界而不奇异。令</p>
+<p>$$X=\partial_v-\bigl(1+f^2\bigr)\partial_r$$</p>
+<p>则由 $g_{vv}=-f$ 与 $g_{vr}=1$ 与 $g_{rr}=0$ 得</p>
+<p>$$g(X,X)=-f-2\bigl(1+f^2\bigr)=-\bigl(2f^2+f+2\bigr)=-\Bigl[2\bigl(f+\tfrac14\bigr)^2+\tfrac{15}{8}\Bigr]\le-\tfrac{15}{8}<0$$</p>
+<p>对一切实 $f$ 成立。又 $X^v\equiv1$ 处处非零。故 $X$ 为 $r>0$ 之内落区域上连续而处处非零之类时向量场,该区时间可定向。$\blacksquare$</p>
+<p><strong>注 2.2。</strong> $X$ 之未来指向与 EF 之进向族一致,故其定向非任意之择。</p>
+<p><strong>注 2.3(前件之地位,须分辨)。</strong> 或谓 (F) 之前件本身即一坐标之假象。此说过强,当分四层。</p>
+<p>其一,史瓦西之 $t$ 坐标于视界处失效,此确为坐标之事。其二,$d\tau/dt=\sqrt f$ 一式只适于<strong>外区固定 $r$ 之静态世界线</strong>;视界之内不存在固定 $r$ 之静态类时观者,故该比值于内区并无其原有之操作意义。其三,静态 Killing 场于 Killing 视界处变为类光,其零范数之集有几何意义,非坐标之产物。其四,相对于无穷远静态钟之红移亦有操作之意义。</p>
+<p><strong>故当书者为:</strong> 史瓦西 lapse 之数值依赖静态切片与 Killing 时间之归一化,其零点不能单独承担"时间可定向性消失"这一坐标无关之结论。<strong>此不否认静态外区红移之物理内容,亦不谓该零点无几何意义。</strong></p>
+<h3>2.4 判据:两条失败之路与一个存活之候选</h3>
+<p>欲以某量标记视界处之范畴转变,须其对一切质量皆恰合 $r_s$,且非速率之结构。</p>
+<p><strong>其一,局域强度标量,失败。</strong> 史瓦西[12]之 Kretschmann 标量[13–15]为 $K=12r_s^2/r^6$,故</p>
+<p>$$K(r_s)=\frac{12}{r_s^4}=\frac{3c^8}{4G^4M^4}$$</p>
+<p>随质量增大而任意小。故于所考察之局域强度标量中,无一对任意质量皆于 $r_s$ 达同一固定门槛;以曲率、密度或潮汐力所定义之判据皆不与 $r_s$ 重合。</p>
+<p><strong>其二,lapse,失败。</strong> 史瓦西静态 lapse 之平方(等价地,静态 Killing 向量之范数)对任意质量皆于 $r_s$ 退化,然它是速率与静态观者之结构,不产范畴之结论。<strong>须以此名书之</strong>,不得写成一般之坐标无关标量。</p>
+<p><strong>其三,边缘被困性,存活。</strong> 以下本款用几何单位制 $G=c=1$,故 $r_s=2M$。球对称下 Misner–Sharp 之拟局域质量[16] $m(r)$ 由 $1-2m(r)/r=g^{ab}\partial_ar\,\partial_br$ 定义,而</p>
+<p>$$\frac{2m(r)}{r}=1\iff\nabla r\ \text{为类光}\iff\text{边缘被困面}$$</p>
+<p>对史瓦西 $m(r)\equiv M$,故恰合 $r=2M=r_s$。此判据坐标无关且拟局域,于球对称下与边缘被困面为同一对象[17],不另立第四类。</p>
+<p><strong>存活者之限度。</strong> 被困性可作相区之标记,然于无额外之更新定理时,不能单独交付前向完备。且须注明:静态史瓦西中 $r_s$ 为<strong>边缘</strong>被困面,而经典之奇点定理[18]所用者为<strong>闭合</strong>被困面等假设[19];二者相关而不得径写成同一。</p>
+<h3>2.5 内区之因果方向</h3>
+<p><strong>命题 2.4。</strong> 于被困区内,一切未来指向之因果方向皆严格趋向更小之 $r$。</p>
+<p><strong>证。</strong> 于内落 EF 坐标中,因果向量 $V$ 满足</p>
+<p>$$g(V,V)=-f(V^v)^2+2V^vV^r+r^2|V_\Omega|^2\le0$$</p>
+<p>角向项 $r^2|V_\Omega|^2\ge0$,故 $-f(V^v)^2+2V^vV^r\le0$。于 $r<r_s$ 处 $f<0$。分二支。</p>
+<p><em>其一,$V^v>0$。</em> 则 $2V^vV^r\le f(V^v)^2\le0$,即 $V^vV^r\le0$,故 $V^r\le0$;而 $V^r=0$ 将给 $g(V,V)=-f(V^v)^2+r^2|V_\Omega|^2\ge-f(V^v)^2>0$,与因果性相抵,故 $V^r<0$ 严格。</p>
+<p><em>其二,$V^v=0$。</em> 内落 EF 坐标中确有此支,即径向之类光方向。此时 $g(V,V)=r^2|V_\Omega|^2$,而因果性要求其非正,故 $V_\Omega=0$,于是 $V\propto\partial_r$ 而 $g(V,V)=0$。取向由命题 2.1 之 $X$ 定:$g(\partial_r,X)=g_{rv}=1>0$,故 $\partial_r$ 为过去指向,未来指向者为 $V^r<0$。</p>
+<p>二支皆得 $V^r<0$。$\blacksquare$</p>
+<p>此命题为 §5.1 桥之左端。它所约束者为世界线与事件之方向,而非位形之下降;二者之别,是 §3 与 §5 之全部内容。</p>
+<hr>
+<hr>
+<h2>3 三域分离</h2>
+<h3>3.1 三域与其原始对象</h3>
+<p><strong>定义 3.1(空间胞图)。</strong> 设 $V_{\rm cell}$ 为有限胞集,$E_{\rm adj}$ 为对称无自环之邻接关系,记 $G_{\rm sp}=(V_{\rm cell},E_{\rm adj})$。</p>
+<p><strong>定义 3.2(位形空间)。</strong> 设占据上限为 $n_{\max}$,</p>
+<p>$$\mathcal X=\bigl\{n:V_{\rm cell}\to\{0,1,\dots,n_{\max}\}\bigr\}$$</p>
+<p><strong>定义 3.3(带标签转移系统)。</strong> 本篇之原始动力学对象为五元组</p>
+<p>$$\mathcal T=(\mathcal X,\Theta,s,t,M)$$</p>
+<p>其中 $\Theta$ 为转移之集,$s,t:\Theta\to\mathcal X$ 给其源与目标,而</p>
+<p>$$M(\theta)=\{x_i\rightsquigarrow y_i\}_{i\in I(\theta)}$$</p>
+<p>为该转移所携之<strong>原子搬运多重集</strong>,$x_i$ 与 $y_i$ 相邻。目标由源与搬运决定:</p>
+<p>$$t(\theta)(z)=s(\theta)(z)-\#\{i:x_i=z\}+\#\{i:y_i=z\}$$</p>
+<p>合法性要求 $0\le t(\theta)(z)\le n_{\max}$ 处处成立。记 $\theta_{\rm idle}$ 为 $M(\theta_{\rm idle})=\varnothing$ 之转移。</p>
+<p><strong>定义 3.4(位形图为商)。</strong></p>
+<p>$$G_{\rm cfg}=(\mathcal X,E_U),\qquad E_U=\bigl\{(s(\theta),t(\theta)):\theta\in\Theta\bigr\}$$</p>
+<p>位形图非原始,乃 $\mathcal T$ 之商。不同之 $\theta$ 可给同一条 $E_U$ 边。</p>
+<p><strong>定义 3.5(发生展开)。</strong> 固定初位形 $n_0$。令 $\mathcal E$ 为自 $n_0$ 出发之可衔接之转移串 $\theta_1\theta_2\cdots\theta_k$ 之集,以真前缀为序记 $\prec$;令</p>
+<p>$$\pi:\mathcal E\to\mathcal X$$</p>
+<p>将串映至其所达之位形。记 $G_{\rm evt}=(\mathcal E,\prec)$。</p>
+<p>发生展开为串之展开,非仅位形路径之展开。其为树,故按构造无圈。本文所采者为标准之带标签转移历史展开。它与 event structure 及 occurrence net 之进路[20,21]共享一条基本纪律,即分辨<strong>转移之类型</strong>与<strong>转移之发生</strong>;然本文不需完整之并发偏序结构。须辨明:$\mathcal E$ 之元素为<strong>发生史</strong>而非单个事件,$\Theta$ 为转移之标签而非 occurrence 本身。</p>
+<p><strong>三域,非四域。</strong> 空间、位形、发生仍是三域;$\mathcal T$ 不是第四域,乃使后二域各有其对象之原始结构。位形图由它取商而得,发生展开由它取串而得。</p>
+<h3>3.2 类型检查律</h3>
+<p><strong>原则 3.6。</strong> 任一域上之圈或无圈,未经显式桥接,不得替另一域作结论。</p>
+<p><strong>定义 3.7。</strong> 记</p>
+<p>$$H_{\rm occ}:\qquad \forall\theta\in\Theta,\ s(\theta)\neq t(\theta)$$</p>
+<p>即每一转移皆投影为非恒等之位形变化。下节证其一般不成立。</p>
+<p><strong>注 3.8。</strong> 此较原文之 $H_{\rm occ}$ 为准。原文以"相邻两发生之投影相异"陈之,而相邻之关系须由串给出;今转移本身即对象,故可径就 $\theta$ 陈之,不必绕道。</p>
+<h3>3.3 投影非忠实</h3>
+<p><strong>引理 3.9(环移)。</strong> 设 $B\subseteq V_{\rm cell}$ 为饱和区,$x_1,\dots,x_k$($k\ge3$)为 $B$ 中之闭链。令 $\theta_\circlearrowright\in\Theta$ 满足</p>
+<p>$$M(\theta_\circlearrowright)=\{x_1\rightsquigarrow x_2,\ x_2\rightsquigarrow x_3,\ \dots,\ x_k\rightsquigarrow x_1\}$$</p>
+<p>则该转移数目守恒,只涉最近邻,<strong>不需任何空位</strong>,且</p>
+<p>$$M(\theta_\circlearrowright)\neq\varnothing,\qquad s(\theta_\circlearrowright)=t(\theta_\circlearrowright)$$</p>
+<p><strong>证。</strong> 链上各胞出一而入一,故 $t(\theta)(z)=s(\theta)(z)-1+1=s(\theta)(z)$ 于链上诸胞成立,链外不动。合法性由 $0\le n_{\max}\le n_{\max}$ 得。$\blacksquare$</p>
+<p><strong>推论 3.10。</strong> $H_{\rm occ}$ 一般不成立。</p>
+<p>$$\boxed{\ \exists\theta\in\Theta:\ M(\theta)\neq\varnothing\ \text{而}\ s(\theta)=t(\theta)\ }$$</p>
+<p><strong>注 3.11(本体之分寸,须写明)。</strong> 若诸粒子完全不可区分,而完整物理态又只是占据函数,则"诸粒子确实绕行"<strong>不是该模型内部可辨认之事实</strong>。故本引理所言者不是纯占据态内部藏有可观测之世界线,而是:</p>
+<p>$$\boxed{\ \text{自较细之转移动力学投影至占据位形时,该投影可以非忠实。}\ }$$</p>
+<p>此陈述较原文为弱而较原文为准,且它正是本篇所需者:主定理作用于位形之势,而势之下降须由转移交付;转移之非平凡不保证位形之改变,遑论势之下降。</p>
+<p><strong>注 3.12(措辞纪律)。</strong> 凡书"恒等边"者,只指位形投影之恒等,<strong>不表示 $M(\theta)=\varnothing$</strong>。二者之别即引理 3.9 之全部内容。</p>
+<h3>3.4 时序之约定</h3>
+<p><strong>约定 3.13。</strong> 论及占据之更新须先声明其时序,因 $\Theta$ 所含者随之而异。</p>
+<p><em>逐次单跳</em>:$|M(\theta)|\le1$,且 $|M(\theta)|=1$ 时要求源胞有占据、目标胞有余位。此约定下环移不属 $\Theta$。</p>
+<p><em>同步交换</em>:$M(\theta)$ 可含多项而同时施行,合法性只要求所得位形处处在界内。此约定下环移属 $\Theta$;且由 §5 之开链,饱和之中段亦可被穿过。</p>
+<p><strong>注 3.14。</strong> 二者非时序空间之全部,乃两个最小之代表性实现。随机并行、分块同步与有限深度局域电路皆为他种实现,本篇不涉,亦不主张已穷尽。</p>
+<h3>3.5 状态之四类</h3>
+<p>更新若限为确定偏函数,则状态分四类:更新终止、固定位形、瞬态活动、非平凡周期。本篇直用此四名,不另设指示量。</p>
+<hr>
+<hr>
+<h2>4 有限轨道二岔与径向势阻断</h2>
+<p>本节所立之定理吸收六条先前分列之结果,即占据势之变化、终止与周期之二岔、步数之界、前向全定义之不相容、周期上之零降幅,以及严格径向单调对有向圈之阻断。合并之后,诸前提之层次方得显露:第一部须有限与确定,第二部二者皆不需。此不对称若分列则不可见。</p>
+<h3>4.1 占据势</h3>
+<p><strong>定义 4.1。</strong> 设 $r:V_{\rm cell}\to\mathbb R$ 为胞之径向坐标。定义占据势</p>
+<p>$$\Phi(n)=\sum_{x\in V_{\rm cell}}n_x\,r(x)$$</p>
+<p><strong>引理 4.2。</strong> 设一次原子传输将一单位自 $x$ 迁至 $y$,即 $n'_x=n_x-1$ 而 $n'_y=n_y+1$ 而余胞不动。则</p>
+<p>$$\Delta\Phi=\Phi(n')-\Phi(n)=r(y)-r(x)$$</p>
+<p><strong>证。</strong> 直接代入。$\Phi(n')-\Phi(n)=(n_x-1)r(x)+(n_y+1)r(y)-n_xr(x)-n_yr(y)=r(y)-r(x)$。$\blacksquare$</p>
+<p>严格内向之传输($r(y)<r(x)$)使 $\Phi$ 下降,同壳之传输($r(y)=r(x)$)使 $\Phi$ 不变。于有限格上,严格内向之诸边有最小降幅</p>
+<p>$$\delta_{\min}=\min\bigl\{r(x)-r(y):x\sim y,\ r(y)<r(x)\bigr\}$$</p>
+<p>当所允许之严格内向邻边之集非空时,因格图有限,该最小值存在且 $\delta_{\min}>0$;若该集为空,则无严格内向之搬运,下文诸条不适用。</p>
+<h3>4.2 主定理</h3>
+<p><strong>定理 4.3。</strong> 本定理分两设置陈之,以免形式对象混用。</p>
+<p><strong>一般转移设置。</strong> 设 $\mathcal T=(K,\Theta,s,t)$ 为带标签转移系统。Part B 至 Part D 于此设置下成立。</p>
+<p><strong>确定有限特例。</strong> 若位形之后继唯一,故 $\mathcal T$ 之位形商诱导确定偏函数 $U:K\rightharpoonup K$,且 $|K|<\infty$,则 Part A 亦成立。记 $U(x)\!\downarrow$ 谓 $U$ 于 $x$ 有定义。</p>
+<p><strong>Part A(轨道二岔)。</strong> 每条极大轨道恰有二终局之一:于有限步终止,或终归周期。若 $U$ 前向全定义,则终止支排除,故每条轨道终归周期。</p>
+<p><strong>Part B(一致下降阻断)。</strong> 设存在 $\Phi:K\to\mathbb R$ 使 $\inf_K\Phi>-\infty$,并存在统一常数 $\delta>0$,使<strong>每一转移</strong> $\theta\in\Theta$ 皆满足 $\Phi(t(\theta))\le\Phi(s(\theta))-\delta$。则自 $x_0$ 出发之任一前向路径之长度至多</p>
+<p>$$N_{\max}=\left\lfloor\frac{\Phi(x_0)-\inf_K\Phi}{\delta}\right\rfloor$$</p>
+<p>故周期支排除,且无无限前向路径。</p>
+<p><strong>Part C(不相容)。</strong> seriality 与有下界之一致严格下降不可共存:</p>
+<p>$$\bigl[\forall x\ \exists\theta:s(\theta)=x\bigr]\ \wedge\ \Bigl[\inf_K\Phi>-\infty\ \wedge\ \forall\theta:\Phi(t(\theta))\le\Phi(s(\theta))-\delta\Bigr]\ \Longrightarrow\ \bot$$</p>
+<p><strong>Part D(非增情形之周期支撑集)。</strong> 若只要求每一已定义更新满足 $\Delta\Phi\le0$,则任一周期上之每条边皆须 $\Delta\Phi=0$。</p>
+<p><strong>证。</strong></p>
+<p><em>Part A.</em> 设轨道 $x_0,x_1=U(x_0),\dots$ 不于有限步终止,则其为无限序列。因 $|K|<\infty$,序列 $x_0,\dots,x_{|K|}$ 之 $|K|+1$ 项落于 $|K|$ 个状态中,故存在 $0\le i<j\le|K|$ 使 $x_i=x_j$。由 $U$ 之确定性,$x_{i+m}=x_{j+m}$ 对一切 $m\ge0$ 成立,故轨道自第 $i$ 项起以 $p=j-i$ 为周期。若 $U$ 前向全定义,则无终止之可能,故此支必然。</p>
+<p><em>Part B.</em> 设 $x_0\to x_1\to\cdots\to x_N$ 为一前向路径,则逐步施用假设得 $\Phi(x_N)\le\Phi(x_0)-N\delta$。又 $\Phi(x_N)\ge\inf_K\Phi$,故 $N\delta\le\Phi(x_0)-\inf_K\Phi$,即 $N\le[\Phi(x_0)-\inf_K\Phi]/\delta$,取下整得界。若有周期,则可将其无限重复而得一条无限前向路径,与上述之长度上界相抵,故周期不可得。</p>
+<p><em>Part C.</em> 由前向全定义,自任一 $x_0$ 可无限延伸;由 Part B,路径长度有界。二者相抵。</p>
+<p><em>Part D.</em> 设周期为 $X_0\to X_1\to\cdots\to X_p=X_0$。望远镜求和得</p>
+<p>$$\sum_{k=0}^{p-1}\Delta\Phi_k=\Phi(X_p)-\Phi(X_0)=0$$</p>
+<p>诸项皆非正而其和为零,故每项为零。$\blacksquare$</p>
+<h3>4.3 诸部之层次</h3>
+<p><strong>注 4.4(恒等转移自动排除)。</strong> Part B 之假设既就转移陈之,则恒等投影之转移自动被排除:若 $s(\theta)=t(\theta)$ 则得 $0\le-\delta$,矛盾。故推论 4.8 不须另加"无恒等边"一款,它是假设之直接后果。此为 §3 带标签之改动于本节之收益;若假设只挂于位形对,则"无转移"与"有转移而位形不变"二者不分,该款遂须另立。</p>
+<p><strong>注 4.5(Part B 不需有限亦不需确定)。</strong> Part B 之证只用三事:$\Phi$ 有下界;一切<strong>转移</strong>统一下降;路径可延伸。$K$ 之有限与 $U$ 之确定皆未入证。故 Part B 于非确定之关系系统上亦成立,只须将"每一已定义更新"读作"每一允许边"。Part C 之不相容随之亦不需有限与确定,其第三项须读作 seriality,即每态至少有一后继。</p>
+<p>有限与确定只为 Part A 所需,而 Part A 所给者为<strong>递归</strong>;Part B 所给者为<strong>终止</strong>。二者所答之问不同,故不可互代。</p>
+<p><strong>注 4.6(舍确定性之代价)。</strong> 若 $U$ 非确定,Part A 之结论须弱化。有限有向图上之无限路径必无穷次访问某状态,故其终落于一含有向圈之强连通分量之内;该分量可为一带自环之单顶点。然它未必终归周期,因分支之选择可不规则。故确定性所买者,是由"某状态被无穷次访问"升至"轨道终归周期"。</p>
+<p><strong>注 4.7(与庞加莱回归之别)。</strong> Part A 之结论不可名为庞加莱回归。后者为保测动力学中几乎处处之返回[30],其所需者为测度之保持与体积之有限;而 Part A 所需者只是状态集之有限与映射之确定,其结论为逐轨道之最终周期而非几乎处处之返回。二者所据与所得皆异,不得互代。</p>
+<p><strong>推论 4.8(严格内向内区之 no-go)。</strong> 于固定有限格上,若<strong>每一转移</strong>皆含至少一次严格内向之原子搬运而无向外者,则由引理 4.2 得 $\Delta\Phi(\theta)\le-\delta_{\min}<0$,即 Part B 之假设成立;故 seriality 导致矛盾,且自 $n_0$ 出发之轨道于至多</p>
+<p>$$\left\lfloor\frac{\Phi(n_0)-\Phi_{\min}}{\delta_{\min}}\right\rfloor$$</p>
+<p>步内终止。</p>
+<h3>4.4 Part D 之穷尽性</h3>
+<p>Part D 只言周期上每边 $\Delta\Phi=0$,而未言此类边为何物。欲得穷尽之刻画,须明列模型。</p>
+<p><strong>引理 4.9(多搬运之势变化)。</strong> 对任一转移 $\theta$,</p>
+<p>$$\Delta\Phi(\theta)=\Phi(t(\theta))-\Phi(s(\theta))=\sum_{i\in I(\theta)}\bigl[r(y_i)-r(x_i)\bigr]$$</p>
+<p><strong>证。</strong> 由引理 4.2 逐项相加。$\blacksquare$</p>
+<p><strong>模型 4.10(径向非增转移模型)。</strong> 其一,位形只含占据数,无内部标签、相位或动量。其二,每一转移 $\theta$ 或为 idle,或携带有限个原子搬运,而每个原子搬运皆满足 $r(y_i)\le r(x_i)$。其三,无粒子之生灭。</p>
+<p><strong>命题 4.11。</strong> 于模型 4.10 下,</p>
+<p>$$\Delta\Phi(\theta)=0\iff r(y_i)=r(x_i)\ \ \forall i\in I(\theta)$$</p>
+<p><strong>证。</strong> 由引理 4.9,$\Delta\Phi(\theta)$ 为诸项之和而每项非正;和为零当且仅当每项为零。$\blacksquare$</p>
+<p><strong>注。</strong> 右式于 $I(\theta)=\varnothing$ 时空真,故 idle 自动含于其中,不须另立分支。且于径向非增之模型下,一个搬运集非空而投影为恒等之转移,其诸搬运必皆同壳,此即引理 3.9 之环移。</p>
+<p><strong>推论 4.12。</strong> 于模型 4.10 下,周期上之每一转移或为 idle,或其诸搬运皆同壳。此即命题 4.11 与 Part D 之合,不另证。</p>
+<p>由 §3.3 之引理 3.9,恒等边并非空无:环移即一条恒等边而其上确有发生。故推论 4.12 所锁定者,是周期之<strong>位形层</strong>住址,非其<strong>发生层</strong>住址。二者之别正是 §3 所立之类型纪律。</p>
+<p><strong>推论 4.13。</strong> 于有限而确定之位形动力学中,</p>
+<p>$$\boxed{\ \text{每条极大轨道非终止即终归周期。}\ }$$</p>
+<p>$$\boxed{\ \text{不可得者为无限而从不重复位形之轨道。}\ }$$</p>
+<p>然事件仍可永不重复。由 §3 之发生展开,$\mathcal E$ 为树而 $\pi:\mathcal E\to\mathcal X$ 一般非单射,故 $e_i\neq e_j$ 而 $\pi(e_i)=\pi(e_j)$ 乃常态。位形之回归不蕴含发生之回归。</p>
+<p><strong>注 4.14。</strong> 前向完备已排除终止支,故不得书作"或终止或递归"。前向完备之有限确定系统,其每条轨道终归周期,更无终止之余地;二岔之意义在于:若欲避免递归,则须弃前向完备,而弃之即得终止。</p>
+<p><strong>注 4.15(Kill 5)。</strong> Part A 所否者,仅为定义在<strong>位形</strong>上沿一切更新严格递增之实值 rank;所不否者为演化参数、事件之顺序与时间之方向。取两态之钟 $K=\{0,1\}$ 而 $U(0)=1$、$U(1)=0$,则其为有限、确定且前向全定义,故由 Part A 必成周期,而确无 $\tau:K\to\mathbb R$ 使 $\tau(1)>\tau(0)$ 且 $\tau(0)>\tau(1)$。然该系统之方向、可区分之态与每步之推进俱在。更由定义 3.5,其发生展开为一无限之链而非环,故位形虽以二为周期而事件永不重复。</p>
+<p>$$\boxed{\ \text{位形之周期不蕴含事件层时间之缺席。}\ }$$</p>
+<h3>4.6 与数值演示之关系</h3>
+<p>附录 B 之 25 胞 toy 给出推论 4.8 之一例,其步数界与枚举所得之最长轨道相等。此相等系枚举之结果而非由界自动推出,故只作紧性之一例,不作定理之证据。定理由 4.2 与 4.3 给出,不倚数值。</p>
+<hr>
+<h2>5 黑洞桥与出口矩阵</h2>
+<h3>5.1 三条桥</h3>
+<p>主定理 Part B 所需者,为一有下界之势沿一切转移统一严格下降。自连续理论之内向性至此,须经桥,而桥有三条,强弱有序。</p>
+<p><strong>定义 5.1(投影非恒等)。</strong></p>
+<p>$$H_{\rm occ}:\qquad \forall\theta\in\Theta,\ s(\theta)\neq t(\theta)$$</p>
+<p><strong>定义 5.2(径向势下降)。</strong> 设 $\Phi_r(n)=\sum_xn_x\,r(x)$。</p>
+<p>$$H_r:\qquad \exists\delta>0,\ \forall\theta\in\Theta,\ \Phi_r(t(\theta))\le\Phi_r(s(\theta))-\delta$$</p>
+<p><strong>定义 5.3(李雅普诺夫势)。</strong></p>
+<p>$$H_{\rm Lyap}:\qquad \exists\Psi:\mathcal X\to\mathbb R\ \text{有下界},\ \exists\delta>0,\ \forall\theta\in\Theta,\ \Psi(t(\theta))\le\Psi(s(\theta))-\delta$$</p>
+<p><strong>命题 5.4(三桥之序)。</strong></p>
+<p>$$H_r\Longrightarrow H_{\rm Lyap}\Longrightarrow H_{\rm occ}$$</p>
+<p>而两反向皆不成立。</p>
+<p><strong>证。</strong> 第一箭取 $\Psi=\Phi_r$。第二箭:若 $s(\theta)=t(\theta)$ 则得 $0\le-\delta$,矛盾,故 $H_{\rm Lyap}$ 蕴含一切转移之投影非恒等。</p>
+<p>第二箭之反向不成立:$H_{\rm occ}$ 只言位形改变而不禁其回归,故位形图可入圈而无任何有下界之统一下降势。</p>
+<p>第一箭之反向不成立:设同壳有向子图无圈,由附录 A 之离散梯度扩展,取 $\Psi=\sum_xn_x[r(x)+\epsilon f(x)]$ 可得 $H_{\rm Lyap}$;然该 $\Psi$ 非 $\Phi_r$,而同壳边使 $\Delta\Phi_r=0$,故 $H_r$ 不成立。$\blacksquare$</p>
+<p>$$\boxed{\ \text{主定理所需者为 }H_{\rm Lyap}\text{,非必为 }H_r\text{。}\ }$$</p>
+<p><strong>注 5.5(题名之所指)。</strong> 径向势为最基本之候选,而离散梯度扩展为其广义之完成;题名所谓"径向势提升"指此候选,非谓主定理只认此一条。</p>
+<h3>5.2 缺口</h3>
+<p><strong>桥之左端(继承所得)。</strong> 于被困区内,一切未来指向之因果方向皆严格趋向更小之 $r$(命题 2.4)。<strong>此所约束者为世界线与事件。</strong></p>
+<p><strong>桥之右端(主定理所需)。</strong> $H_{\rm Lyap}$。<strong>此所约束者为转移与其上之势。</strong></p>
+<p><strong>缺口。</strong> 二端之间无自动之通路,而其阻隔有二,各自独立。</p>
+<p><strong>其一,投影可非忠实。</strong> 由引理 3.9,存在 $\theta$ 使 $M(\theta)\neq\varnothing$ 而 $s(\theta)=t(\theta)$。故转移之非平凡不蕴含位形之改变,$H_{\rm occ}$ 一般不成立;而 $H_{\rm occ}$ 尚且弱于 $H_{\rm Lyap}$。此半需同步交换之约定。</p>
+<p><strong>其二,位形改变不蕴含势之下降。</strong> 一次同壳单跳传输 $M(\theta)=\{x\rightsquigarrow y\}$ 而 $r(y)=r(x)$,使 $s(\theta)\neq t(\theta)$,故 $H_{\rm occ}$ 于该转移成立,而 $\Delta\Phi_r(\theta)=0$,故 $H_r$ 不成立。<strong>此半不需同步交换,逐次单跳下同样成立。</strong> 欲排除之须证同壳有向子图无圈,即附录 A 之 $H_{\rm tang}$,而该桥现为开放。</p>
+<p>$$\boxed{\ \text{世界线与事件之严格内向}\ \not\Longrightarrow\ \text{位形上有下界之统一严格下降势}\ }$$</p>
+<p><strong>两半独立,须各自交付。</strong> 其一之交付使 $H_{\rm occ}$ 成立,尚不足;其二之交付使势得以拼成。交付其一而遗其二,主定理仍不适用。</p>
+<h3>5.3 三个代表性实现</h3>
+<p>以下考察三个最小之代表性实现。<strong>此非时序空间之穷尽</strong>;随机并行、分块同步与有限深度局域电路皆为他种实现,本篇不涉。</p>
+<p><strong>其一,逐次单跳。</strong> 环移不属 $\Theta$,然饱和区之内胞无合法跃迁而静止;而连续理论要求其上世界线于每一步皆推进。故该实现于饱和区内不承载内向性。其静止之久暂有下界,见 §6.2。</p>
+<p><strong>其二,同步交换而不加径向约束。</strong> 环移属 $\Theta$,由引理 3.9,$H_{\rm occ}$ 不成立。</p>
+<p><strong>其三,同步交换,而每一允许转移满足 $M(\theta)\neq\varnothing$ 且 $r(y_i)<r(x_i)$ 对一切 $i\in I(\theta)$ 成立。</strong> 须显书 $M(\theta)\neq\varnothing$ 以禁 idle:空搬运集使严格内向一款空真而 $\Delta\Phi_r=0$,$H_r$ 遂不成立。既禁之,则 $\Delta\Phi_r(\theta)\le-\delta_{\min}$ 由定义直接成立,$H_r$ 立,而由命题 5.4 $H_{\rm Lyap}$ 随之,于是主定理 Part B 与 Part C 开火。</p>
+<p><strong>其三之两个支撑。</strong></p>
+<p><em>环移于严格内向下不存在。</em> 设 $M(\theta)$ 含闭链 $x_1\rightsquigarrow x_2,\dots,x_k\rightsquigarrow x_1$ 而每项严格内向,则 $r(x_2)<r(x_1)$ 以至 $r(x_1)<r(x_k)$,链之得 $r(x_1)<r(x_1)$,矛盾。此较推论 6.11 之径向非增版本为强:彼只得环移必居单壳,此则得环移不存在。</p>
+<p><em>饱和内区仍可运动,用开链而非闭链。</em> 取 $M(\theta)=\{x_1\rightsquigarrow x_2,\dots,x_{k-1}\rightsquigarrow x_k\}$,$x_1$ 在外而 $x_k$ 在内。则 $n_{x_1}$ 减一,中段不变,$n_{x_k}$ 加一;合法性只要求 $n_{x_1}>0$ 与 $n_{x_k}<n_{\max}$,<strong>中段全饱和无妨</strong>。</p>
+<p><em>于是主定理开火。</em> 每一转移使 $\Delta\Phi_r(\theta)=r(x_k)-r(x_1)\le-\delta_{\min}$,而 $\Phi_r$ 有下界,故由 Part B 轨道长度有界,由 Part C 与前向全定义不相容。至若最内端之余位何来,或本非饱和,则势一路降至饱和为止;或为一汇,即出口矩阵之内部终止。<strong>两条出路皆为 Part C 之结论。</strong></p>
+<table>
+<thead><tr>
+<th>实现</th>
+<th>后果</th>
+</tr></thead><tbody>
+<tr><td>逐次单跳</td><td>饱和内胞静止,该实现不承载内向性</td></tr>
+<tr><td>同步交换,不加径向约束</td><td>环移属 $\Theta$,$H_{\rm occ}$ 不成立</td></tr>
+<tr><td>同步交换,禁 idle 而每跳严格内向</td><td>$H_r$ 成立,主定理开火,前向全定义随之丧失</td></tr>
+</tbody></table>
+<p>$$\boxed{\begin{aligned}&\text{桥断则该模型之纯占据位形动力学不能单独声称承载内向性;}\\&\text{桥通则前向全定义当场丧失。两侧皆须付账。}\end{aligned}}$$</p>
+<p><strong>注 5.6(结论之收窄,须写明)。</strong> 桥断所否者只是<strong>纯占据位形动力学之单独承载</strong>。该模型仍可于带标签之完整态、电流变量、事件关系、因果集或动量空间中承载内向性;所否者只是"该内容已被投影为 $\Phi_r$ 之统一下降"。此收窄与本篇之三域纪律一致,非退让。</p>
+<h3>5.4 轴之所在</h3>
+<p>或谓扩充位形空间可救 $H_{\rm occ}$。诚然:加一组<strong>有限</strong>标签,如有界之局部流向或有限多之粒子标号,则 $|\mathcal X|$ 仍有限,而环移循环置换标签,遂使 $s(\theta)\neq t(\theta)$,$H_{\rm occ}$ 得立。<strong>故有限性与 $H_{\rm occ}$ 可以兼得,二者非二择一。</strong></p>
+<p>然此不救桥。$\Phi_r$ 对标签是盲的,环移无论标签如何置换,$\Delta\Phi_r$ 仍为零。恢复 $H_{\rm occ}$ 于 $H_{\rm Lyap}$ 一无所补。</p>
+<p>$$\boxed{\ H_{\rm occ}\ \text{不是正确之轴;}\ H_{\rm Lyap}\ \text{才是。}\ }$$</p>
+<p><strong>真正之张力当如是陈。</strong> 非"有标签则必失有限性",而是:<strong>态空间越接近物理之完备,其有限性越难证明。</strong> 有限标签可兼得有限性与投影非恒等,而不能自动建立严格下降之势;连续之相位、动量或无界之历史变量,方使有限性重成开放之问。</p>
+<h3>5.5 出口矩阵</h3>
+<p>主定理有两条结论线,其一为势之阻断,其二为轨道之递归。二者所问不同,而同一物理出口于两线上所破坏者各异,故列交叉矩阵。</p>
+<table>
+<thead><tr>
+<th>物理出口</th>
+<th>破坏势阻断之何项</th>
+<th>破坏轨道递归之何项</th>
+</tr></thead><tbody>
+<tr><td>向外逸出或输出</td><td>可出现向外之搬运,或轨道离开定义域</td><td>破坏闭合</td></tr>
+<tr><td>内部终止</td><td>破坏前向全定义</td><td>即终止支</td></tr>
+<tr><td>无限或增长之态空间</td><td>或使 $\Psi$ 无下界,或使统一隙消失,或使 $\Psi$ 不再捕捉全部变化</td><td>破坏有限性</td></tr>
+<tr><td>恒等投影之转移</td><td>使 $\Delta\Psi=0$,破坏统一下降</td><td>不阻递归,常生固定点</td></tr>
+<tr><td>同壳搬运</td><td>破坏 $H_r$;是否破坏 $H_{\rm Lyap}$ 由同壳子图之有无圈决定</td><td>可承载周期</td></tr>
+<tr><td>向外径向搬运</td><td>破坏径向非增</td><td>未必离开系统,故不等同于外逸</td></tr>
+<tr><td>非自治蒸发</td><td>$\Psi$ 与 $\Theta$ 随剩余质量而变</td><td>破坏自治之固定态空间</td></tr>
+<tr><td>隐藏内部自由度</td><td>$\Psi$ 未捕捉其变化</td><td>使完整有限态之前提失败</td></tr>
+</tbody></table>
+<p><strong>注 5.7。</strong> 同壳搬运一行与恒等投影一行须分辨:前者使 $s(\theta)\neq t(\theta)$ 而 $\Delta\Phi_r=0$,后者使 $s(\theta)=t(\theta)$。二者皆破坏 $H_r$ 而途径不同,此即 §5.2 缺口之两半。</p>
+<p><strong>注 5.8。</strong> 恒等投影之转移与同壳搬运两行,由引理 3.9 与同壳单跳给出显式构造。内部终止与无限态空间两行亦有极简之反模型:$0\to1$ 而 $\operatorname{Succ}(1)=\varnothing$,及 $0\to1\to2\to\cdots$;二者皆无外逸之路,而分别失前向全定义与失有限性,故被困性单独不蕴含二者中任一。余行为可能性之登记,非已实现之构造。</p>
+<hr>
+<hr>
+<h2>6 两个应用</h2>
+<p>本节二事所倚不同。其一为主定理以能量代势之一次施用,其二为模型内之直接论证与对轮数之归纳。</p>
+<h3>6.1 精确递归与正净外流不相容</h3>
+<p><strong>命题</strong></p>
+<p><strong>定理 6.1。</strong> 设 $\mathcal T=(\mathcal K,\Theta,s,t,M)$ 为固定完整态空间上之自治转移系统,$E:\mathcal K\to\mathbb R$ 为其能量,而每一转移向外输出 $q(\theta)\ge0$,即</p>
+<p>$$E(t(\theta))=E(s(\theta))-q(\theta)$$</p>
+<p>则于任一精确周期,即转移串 $\theta_1\cdots\theta_p$ 满足 $s(\theta_1)=t(\theta_p)$ 而逐段衔接者,每一段皆有 $q(\theta_k)=0$。</p>
+<p><strong>证。</strong> 取 $\Psi:=E$。由 $q\ge0$ 得每一转移满足 $\Delta E(\theta)=-q(\theta)\le0$,即主定理 Part D 之假设。由 Part D,周期上每段 $\Delta E=0$,故 $q(\theta_k)=0$。$\blacksquare$</p>
+<p><strong>注 6.2。</strong> 此非新论证,乃 Part D 以能量代占据势之一次施用。所展示者为主定理之承重不限于占据:凡沿转移单调之量皆可入之。</p>
+<p><strong>注 6.3(输出须系于转移而非位形)。</strong> $q$ 须书作 $q(\theta)$。同一对源与目标可由不同之转移实现,而其向外之输出不必相同;若书 $q(x)$ 则该分辨丧失,望远镜求和亦无所系。此为 §3 带标签之改动于本节之直接后果。</p>
+<p><strong>注 6.4。</strong> 此不否认瞬时之辐射。所否者为<strong>持续</strong>之净放能与精确周期之共存。</p>
+<p><strong>一条常见之回避及其失效</strong></p>
+<p>或谓向外之输出携能量而不携位形,故位形仍可精确回归。此不可救,因能量本属完整态:自态之定义中删之则更新不再自治,纳入态则其单调下降而不能回原点,令态空间随质量缩小则不再有固定集上之单一自治系统。三途分别弃自治、弃回归、弃有限,皆见 §5.5。</p>
+<p><strong>注 6.5。</strong> 此三途之分析为本定理之注,不另计为一条否决。原将其列为独立之否决,实则它只是对本定理之一次回避尝试,不构成对可能性空间之新分割。</p>
+<p><strong>不相容之陈述</strong></p>
+<p>$$\boxed{\ H_{\rm auto}\ \wedge\ H_{\rm rec}\ \wedge\ H_{\rm flux}\ \Longrightarrow\ \bot\ }$$</p>
+<p>其中 $H_{\rm auto}$ 谓系统始终由同一固定完整态空间上之自治转移描述;$H_{\rm rec}$ 谓于某一最终周期上 $x_{k+p}=x_k$;$H_{\rm flux}$ 谓<strong>该同一周期上</strong>至少有一段 $q(\theta_j)>0$,或等价地其周期和 $\sum_{j=k}^{k+p-1}q(\theta_j)>0$。</p>
+<p><strong>三条件须系于同一轨道或同一周期类,此点不可略。</strong> 否则逻辑上可有:系统某处存在一个无辐射之精确周期,而另一条暂态轨道存在正外流;二者并不相抵。</p>
+<p><strong>注 6.6(改名之由)。</strong> 原书 $H_{\rm full\ closure}$,其义若已指"完整态无任何输出",则与正外流定义性相斥,递归一条遂成多余,定理沦为同义反复。改书 $H_{\rm auto}$ 则定理之内容为:<strong>于固定自治之完整态空间上,精确之状态递归与持续之净能量下降不能共存。</strong> 三条各有其内容而无一冗余。</p>
+<p><strong>须明标为对既有表述之修订。</strong> Info-4[9]§4.4 第七款主张引力波经普朗克衬底向外穿越视界,并于该篇 §10 第十二条列为可证伪之预言。其与本篇之冲突须准确陈之:<strong>若完整态空间同时固定、自治、有限且前向全定义,从而由 Part A 终入精确递归支,则持续之正净外流与之不相容。</strong> 定理 6.1 本身不排除非递归、非自治或无限态空间中之前向蒸发史。故二者须择一,或须另立通道之分辨。本篇不代作此择。</p>
+<p><strong>通道之问</strong></p>
+<p>若保留向外之广播,则被困性须限定为某投影通道 $\pi_{\rm conf}$,并须另证其无外逸临界点仍恰为 $r_s$。且于蒸发之动态背景下,事件视界与表观视界一般非同一曲面[22,23],前者为依赖全局未来之目的论类光曲面,后者为拟局域之边缘被困面,不得以一静态之 $r_s$ 同时代表一切被困性之定义。本篇提出此问而不解之。</p>
+<hr>
+<h3>6.2 局域排斥</h3>
+<p><strong>逐次单跳之情形</strong></p>
+<p><strong>引理 6.7(逐次单跳局域排斥)。</strong> 于逐次单跳之约定下($|M(\theta)|\le1$,合法当且仅当源胞有占据而目标胞有余位),若</p>
+<p>$$n_x=n_{\max}\quad\text{且}\quad n_y=n_{\max}\ \ \forall y\sim x$$</p>
+<p>则本步不存在以 $x$ 为源或为目标之合法转移,故 $n_x$ 不变。</p>
+<p><strong>证。</strong> 以 $x$ 为源者需某邻胞有余位,而诸邻皆满;以 $x$ 为目标者需 $n_x<n_{\max}$,而 $x$ 自身已满。$\blacksquare$</p>
+<p><strong>注 6.8($x$ 自身饱和一款不可省)。</strong> 若只设诸邻饱和而不设 $x$ 饱和,则 $n_x<n_{\max}$ 时邻胞可径向 $x$ 送入一单位,$n_x$ 遂变。原表述缺此款,故为假。</p>
+<p><strong>同步交换之情形</strong></p>
+<p><strong>同步交换下无相同之局域不变性。</strong> 由 §5.3 之开链,即令 $x$ 之一切直接邻胞皆满,$x$ 仍可作为通往远处余位之开链之起点而改变。</p>
+<p><strong>命题 6.9(同步交换下之不变条件)。</strong> 于同步交换之约定下,设 $n_x=n_{\max}$。则<strong>自当前位形出发之一切合法转移皆使 $n_x$ 不变</strong>,当且仅当自 $x$ 不存在通往任何余位之允许路径。</p>
+<p><strong>证。</strong> 合法性要求 $0\le t(\theta)(z)\le n_{\max}$ 处处成立,故凡净增之胞 $z$ 必满足 $s(\theta)(z)<n_{\max}$,即其初始即为余位。</p>
+<p>若存在自 $x$ 至某余位之允许路径,则沿之作开链搬运,得一合法转移使 $n_x$ 减一,故并非一切转移皆使 $n_x$ 不变。</p>
+<p>反之,设无此路径。$n_x=n_{\max}$ 故 $x$ 不能净增。若 $x$ 净减,则视 $M(\theta)$ 为图上之整值流,由有限流之分解,存在一条自 $x$ 至某净增之胞之路径;而净增之胞初始为余位,遂得一自 $x$ 至余位之允许路径,与设矛盾。故 $x$ 既不净增亦不净减,$n_x$ 不变。$\blacksquare$</p>
+<p><strong>注 6.10。</strong> 此为<strong>全局</strong>之条件,非局域之条件。故"局域排斥"一名只适于逐次单跳;同步交换下所余者为一条关于连通性之陈述。</p>
+<p><strong>引理所不交付者</strong></p>
+<p>其一,<strong>非永久</strong>。邻胞可先向更外层之未满胞泄出而生余位,下一步即成立。所证者只是当前一步。</p>
+<p>其二,<strong>非无转移</strong>。同步情形之闭链即引理 3.9 之环移,乃 $M(\theta)\neq\varnothing$ 而 $s(\theta)=t(\theta)$。凡书"占据不变"处,不得读作"无转移发生"。</p>
+<p>其三,<strong>只固定占据,不固定完整态</strong>。动量之交换、相位之演化、内部标签之置换、应力之传递、集体模式与格图之重联皆可发生而占据不变。</p>
+<p><strong>环移之住址</strong></p>
+<p><strong>推论 6.11。</strong> 于径向非增之模型下,任一环移必居单壳之内。</p>
+<p><strong>证。</strong> 环移使位形不变,故其诸子搬运之 $\Delta\Phi_r$ 之和为零;每项非正故每项为零,即每项同壳;链上诸项皆同壳则整链居一壳。$\blacksquare$</p>
+<p><strong>注 6.12。</strong> 此即命题 4.11 施于环移之一例。若弃径向非增,则环移可径向混合;若加严格内向,则由 §5.3 环移根本不存在。<strong>故环移之住址由径向条件决定,不由几何决定。</strong></p>
+<hr>
+<h3>6.3 影响锥与其体积</h3>
+<p><strong>初始余位与传播下界</strong></p>
+<p><strong>定义 6.13。</strong> 记初始余位之集为</p>
+<p>$$S_0=\{x\in V_{\rm cell}:n_0(x)<n_{\max}\}$$</p>
+<p><strong>命题 6.14。</strong> 设更新满足<strong>局域依赖</strong>:每一胞于第 $t+1$ 轮之状态,只依赖其图距离一邻域于第 $t$ 轮之状态;且全饱和之邻域于无外来余位影响时保持饱和。则对初始饱和之胞 $x$,</p>
+<p>$$t_{\rm thaw}(x)\ \ge\ d_G(x,S_0)$$</p>
+<p><strong>证。</strong> 于轮数施归纳。所欲证者为:经 $t$ 轮之后,唯 $d_G(x,S_0)\le t$ 之胞可能已变。$t=0$ 时无物已变,成立。设至第 $t$ 轮成立。取 $d_G(x,S_0)>t+1$ 之胞 $x$,则其每一邻居 $y$ 满足 $d_G(y,S_0)\ge d_G(x,S_0)-1>t$,故由归纳假设 $x$ 之整个一邻域于第 $t$ 轮皆未变而仍全饱和;由局域依赖之第二款,$x$ 于第 $t+1$ 轮仍不变。故第 $t+1$ 轮后已变之胞皆满足 $d_G(x,S_0)\le t+1$。$\blacksquare$</p>
+<p><strong>注。</strong> 此证不用"目标须先有余位"一步,故于同步交换下亦成立;逐次单跳为局域依赖之一特例。</p>
+<p><strong>注 6.15(以 $S_0$ 代内边界)。</strong> 原以饱和区之内边界 $\partial B$ 为起点,遂有一格之偏移:边界胞距 $\partial B$ 为零而其首次改变通常仍需一步。改以初始余位之集 $S_0$ 为起点,该偏移消失。</p>
+<p><strong>影响锥</strong></p>
+<p><strong>定义 6.16。</strong> 记</p>
+<p>$$\mathcal C_t=\{x\in V_{\rm cell}:d_G(x,S_0)\le t\}$$</p>
+<p>由命题 6.14,</p>
+<p>$$\boxed{\ \text{经 }t\text{ 轮实际受影响之集}\ \subseteq\ \mathcal C_t\ }$$</p>
+<p><strong>注 6.17(所算者为包络,非实际)。</strong> 下文之几何计算给出 $|\mathcal C_t\cap B|/|B|$,即影响锥于饱和区内所占之比,<strong>乃实际受影响体积之上界而非其值</strong>。若一个全局时间步只允许全图中一次单跳,则经 $t$ 步实际改变之胞至多 $O(t)$ 个,远小于厚度为 $t$ 之一层;下式所对应者为每轮允许并行之局域更新而因果影响每轮至多传播一条边之情形。此分辨若失,读者将把包络之体积误作某一具体历史中实际改变之体积。</p>
+<p><strong>标度</strong></p>
+<p>于立方六邻格上图距离即 $L^1$ 距离。$L^1$ 球为八面体,其沿单位法向 $\hat n$ 之延展为 $t\,h(\hat n)$,$h(\hat n)=\max_i|n_i|$。故当 $S_0$ 位于半径 $R$ 之饱和区之外时,</p>
+<p>$$\frac{|\mathcal C_t\cap B|}{|B|}=3\langle h\rangle\frac{t}{R}+O\!\left(\frac{t^2}{R^2}\right)+O\!\left(\frac1R\right)$$</p>
+<p>其中</p>
+<p>$$\langle h\rangle=\frac{6}{\pi\sqrt2}\arctan\frac1{\sqrt2}=0.8311896,\qquad 3\langle h\rangle=2.4935689$$</p>
+<p><strong>注 6.18(两级修正)。</strong> 首项系数为 $t/R\to0$ 之极限值。有限厚度给 $O(t^2/R^2)$ 之修正,其经验系数约为 $-1.65$;格点之离散给 $O(1/R)$ 之修正。二者不可混为一句。</p>
+<p><strong>注 6.19(格点依赖)。</strong> $2.4936$ 为内胞判据与立方六邻之联合产物。连续之一胞厚球壳给 $3/R$;十八邻、廿六邻与 Voronoi 胞皆异其系数。<strong>普适者唯 $R^{-1}$。</strong> 静态之表皮占比为本式于 $t=1$ 之读数,故静态之几何账与动态之影响锥为同一标度读于两个厚度之上。</p>
+<p><strong>结论</strong></p>
+<p>$$\boxed{\begin{aligned}&\text{饱和不推出永久之静态;}\\&\text{而若解冻由初始余位经局域有限速之更新传播,则实际影响之集受 }\mathcal C_t\text{ 包络,}\\&\text{不能早于图距离所给之下界。}\end{aligned}}$$</p>
+<p><strong>此为上界之陈述,非实际之断言。</strong> 模型完全可以全无更新,或其实际影响远慢于包络。</p>
+<p><strong>注 6.20(结论与速率之分)。</strong> 此结论于两种时序约定下皆成立:逐次单跳下由引理 6.7 之非永久性,同步交换下由开链之直接穿越,而后者更快,故"无永久静态核"于该约定下为 a fortiori。<strong>受限于约定者只是速率之形,非结论之有无。</strong></p>
+<p>诸结局之<strong>初始分岔</strong>位于余位所在之处;一旦余位、应力或拓扑之变化生成,其影响可向内传播,而传播之速受命题 6.14 约束。<strong>"初始位于表面"可断,"永远只在一层皮上"不可断。</strong></p>
+<p><strong>注 6.21(回授于 §5.3)。</strong> 逐次单跳下饱和内胞由引理 6.7 无合法转移,而由命题 6.14 该静止至少持续 $d_G(x,S_0)$ 轮;然连续理论要求该区之世界线于每一步皆内向推进。故该实现不承载内向性,此为 §5.3 第一行之定量支撑。</p>
+<hr>
+<h2>7 讨论与结论</h2>
+<h3>7.1 尚未建立之桥</h3>
+<p>本篇所暴露而未交付者三。</p>
+<p>$H_{\rm Lyap}$。命题 2.4 所给之内向性,须提升为一有下界而沿一切转移统一严格下降之势,方可入定理 4.3 之 Part B。由 §5.2,该提升之阻隔有二:投影可非忠实(引理 3.9),而位形之改变亦不蕴含势之下降(同壳搬运)。<strong>此为本篇之核心开口。</strong></p>
+<p>$H_{\rm tang}$。附录 A 之连续论证,就其现有形式而言,不构成 $H_{\rm tang}$ 之证明:其所立者为连续极限之命题,而 $H_{\rm tang}$ 为有限图之命题,二者之间未给桥。<strong>须辨明者:此为关于该论证之陈述,非关于该蕴含之陈述。</strong> 欲证连续之零环量不蕴含离散之同壳无圈,须给一真反模型,即一列逐渐加密之格,每层皆含同壳有向圈而其粗粒化之切向流弱收敛至零场。微环流于粗粒化中原则上可能相消,然本篇尚未给出满足全部要求之细化序列,故此条列为开放而非否决。</p>
+<p>$K$ 之完整自治性。若相位、动量、标签、图之拓扑或历史影响未来,则真正之完整态空间不是占据位形空间,而定理 4.3 之 Part A 失其对象。</p>
+<h3>7.2 前向完备性须拆为二</h3>
+<p>本篇所用之"前向完备性"实含两项,而只有其一进入证明,故须分书。</p>
+<p><strong>组合前向完备性。</strong> $\forall x_0,\ \forall h\in\operatorname{Hist}_{\max}(x_0),\ |h|=\infty$。此条进入定理 4.3。</p>
+<p><strong>物理正则性。</strong> 沿每条历史 $\sup_n|O_a(x_n)|<\infty$,且守恒之账本每步有定义。<strong>此条不进入任何证明。</strong></p>
+<p>故本篇准确之声称为:给出组合前向完备性之必要条件,而不证明物理正则性。此分书若失,有界性将看似承重而实则未用。</p>
+<h3>7.3 本篇之否决</h3>
+<h4>7.3.1 何者计为否决</h4>
+<p>一条负结果计为否决,当且仅当它<strong>收窄可能性之空间</strong>,即其后凡欲构造离散内区者皆须绕之。凡只记作者曾持而后弃之见者,不计。判其属否,不问其得之艰否,而问诸否定是分割空间抑或只是重复。</p>
+<p>依此判,本篇得九条否决。数目非价值之度,论文之分量不随否决之多寡而增。</p>
+<h4>7.3.2 否决表</h4>
+<p><strong>甲组:继承过强。</strong> 自连续理论取得过多者。</p>
+<table>
+<thead><tr>
+<th>#</th>
+<th>假说</th>
+<th>如何被否</th>
+<th>出处</th>
+</tr></thead><tbody>
+<tr><td>Kill 1</td><td>视界处 lapse 之退化蕴含内区无全局时间方向</td><td>类型错置;内落 EF 坐标上之处处非零类时场 $X$,$g(X,X)\le-\tfrac{15}8$</td><td>§2.2, §2.3</td></tr>
+<tr><td>Kill 2</td><td>以 Kretschmann 标量或任一固定有量纲之曲率幅值 $I=I_\star>0$ 作质量无关之门槛,可对一切史瓦西质量普适定位 $r_s$</td><td>$K(r_s)=3c^8/4G^4M^4$ 随质量任意小,故无一固定门槛可对一切 $M$ 恰合 $r_s$</td><td>§2.4</td></tr>
+<tr><td>Kill 3</td><td>每一转移皆投影为非恒等之位形变化($H_{\rm occ}$)</td><td>环移:$M(\theta)\neq\varnothing$ 而 $s(\theta)=t(\theta)$</td><td>引理 3.9</td></tr>
+</tbody></table>
+<p><strong>乙组:推论过强。</strong> 自离散结构取得过多者。</p>
+<table>
+<thead><tr>
+<th>#</th>
+<th>假说</th>
+<th>如何被否</th>
+<th>出处</th>
+</tr></thead><tbody>
+<tr><td>Kill 4</td><td>单连通禁止更新关系中之有向圈</td><td>定向丛为拓扑对象而有向圈为组合对象;附显式构造</td><td>附录 B</td></tr>
+<tr><td>Kill 5</td><td>位形之周期蕴含事件层时间之缺席</td><td>两态钟 $0\to1\to0$;发生展开为树</td><td>注 4.15</td></tr>
+<tr><td>Kill 6</td><td>局域饱和蕴含永久之体内阻塞或稳定之核</td><td>逐次单跳下邻胞可先泄出;同步交换下开链直接穿越饱和中段。<strong>否决于两约定皆成立,只速率属前者</strong></td><td>引理 6.7, 命题 6.14, §5.3</td></tr>
+<tr><td>Kill 7</td><td>被困性单独蕴含递归或前向完备</td><td>二反模型皆无外逸而非递归:其一 $0\to1$ 而 $\operatorname{Succ}(1)=\varnothing$,轨道终止;其二 $0\to1\to2\to\cdots$,态空间无限。故 $H_{\rm trap}$ 既不蕴含 $H_{\rm total}$ 亦不蕴含 $H_{\rm finite}$</td><td>§5.5, 注 5.8</td></tr>
+</tbody></table>
+<p><strong>丙组:不可兼得。</strong></p>
+<table>
+<thead><tr>
+<th>#</th>
+<th>假说</th>
+<th>如何被否</th>
+<th>出处</th>
+</tr></thead><tbody>
+<tr><td>Kill 8</td><td>存在严格球对称之切向环流</td><td>Stokes 加 $H^1_{\rm dR}(S^2)=0$ 加迷向子群</td><td>附录 A</td></tr>
+<tr><td>Kill 9</td><td>精确递归可与持续之正净外流共存</td><td>取能量为势,周期上诸项非负而和为零,故每段 $q(\theta)=0$</td><td>定理 6.1</td></tr>
+</tbody></table>
+<p><strong>注(关于 Kill 2 之口径)。</strong> 所否者只是所举之固定有量纲幅值门槛,非一切局域不变量,亦非关于一切曲率幅值之全称命题;后者须另给量纲分类之定理,而本篇只算 $K$。由曲率导数构成之 Karlhede 不变量 $\mathfrak K=R^{\lambda\mu\nu\kappa;\eta}R_{\lambda\mu\nu\kappa;\eta}$ 于史瓦西为 $720\,m^2r^3(r-2m)/r^{12}$,恰于 $r=2m$ 处为零且变号,对一切质量皆然[34]。<strong>故局域不变量确可标记视界,然其所凭者为变号而非幅值达标。</strong> 此与本篇之主题同形:速率与幅值失败,而结构之转变成功。</p>
+<p><strong>注(关于"输出携能量而不携位形"之回避)。</strong> 该回避不另计为一条否决。它非对可能性空间之新分割,乃对 Kill 9 之一次逃逸尝试,其三途之失效已作定理 6.1 之注(注 6.5)。</p>
+<h4>7.3.3 夹逼之形</h4>
+<p>甲乙两组构成一次夹逼,其形与 ZFCρ 系列[33]§10 所立者同。过强之继承欲将连续理论之判据与对称性径直搬入离散层;过强之推论欲自离散结构径直读出永久性、全局性或递归。二者皆被否,所余者为一狭窄之通道:离散内区之陈述须逐条声明其桥。§2.4 尤显此形,局域强度门槛与 lapse 二者皆被否而边缘被困性存活。</p>
+<h4>7.3.4 不计为否决者</h4>
+<p>未曾发表之推想与其修正,不入正文亦不入附录。本框架惯于留住负结果,前作[31]§5.1 即于正文保留其自算所得之部分失败,即 K3 前沿锐化之 rise-width 非单调,并于其表 2 明判 FAIL;然该失败是其算法之输出,故为结果。可发表之否定须为命题或为枚举,而非记事。</p>
+<h3>7.4 移出本篇者</h3>
+<p>关于普遍蒸发之速率律及其经验压力测试,与本篇之诸定理无逻辑之依赖,归本框架信息论系列之速率论文或单独之负结果短注。其预注册之纪律须随之带走:下一版之速率律须于计算数据之前先写定普通物质之极限,不得于见约束之后补入抑制函数,否则该主张退化为不可证伪。</p>
+<p>关于核半径与视界半径于亚普朗克尺度之交叉,其代数虽真而其物理外推已越出可信之域,同样移出。</p>
+<h3>7.5 下一篇之最小入口</h3>
+<p>若欲续,唯一之入口为 $H_{\rm Lyap}$,而其形式为一问:</p>
+<p>$$\boxed{\ \text{在何种位形空间上,存在有下界而沿一切转移统一严格下降之势?}\ }$$</p>
+<p>此问较"$H_{\rm occ}$ 于何处成立"严格为强。由 §5.4,加一组有限标签即可使 $H_{\rm occ}$ 成立而不失有限性,然占据势对标签是盲的,故于统一下降一无所补;是以 $H_{\rm occ}$ 非正确之轴。<strong>下一篇所须交付者为势,非投影之忠实。</strong></p>
+<p>真正之张力亦当如是陈:非"有标签则必失有限性",而是<strong>态空间越接近物理之完备,其有限性越难证明</strong>。有限标签可兼得有限性与投影非恒等,而不能自动建立严格下降之势;连续之相位、动量或无界之历史变量,方使有限性重成开放之问。</p>
+<h3>7.6 结语</h3>
+<p>本篇所交付者,是一套用于审计离散内区模型之假设不相容框架,而非一条关于黑洞内部为何物之论断。其数学至为初等:有下界之量不能无限地统一下降,而有限确定之系统必回归。凡黑洞特有之内容,皆不在此段初等之组合数学中,而在一个问题里:</p>
+<p>$$\boxed{\ \text{标准理论之事件与世界线之内向性,究竟能否提升为完整离散位形空间上之统一严格下降?}\ }$$</p>
+<p>而由 §5.3,此问之两个答案皆有代价。故本篇非一份缺口之报告。它所立者为:凡欲以有限且前向完备之离散占据动力学承载被困区之内向性者,或未曾真正承载之,或已丧失前向完备。两侧皆须付账,而所付者不可互抵。</p>
+<p><strong>此 no-go 所约束者为主张之许可,非自然之构造。</strong> 本篇未曾断言黑洞内部为何物,亦未断言任何具体模型落于两侧之何侧;所立者是两侧之账目,而判某模型之归属,须逐一核其更新之时序、其势之存在与其态空间之有限。</p>
+<p>此一分寸非谦辞,乃本篇自身之类型纪律所强制。§3 所立之律谓:任一域上之结论,未经显式桥接,不得替另一域作断言。本篇通篇所指者,正是有人自世界线之陈述径跨至位形之陈述而不搭桥;若本篇复自模型类之结论径跨至内区实情之断言,则是同一错误升了一层。故此处之克制与全篇之立论同源,舍之则自伤。</p>
+<p>本篇九条否决之形状可为此作证。其中七条所堵者为<strong>推论</strong>,即某前提不许可某结论;唯二条为对象层之定理,即严格球对称下无切向环流,与精确递归和正净外流之不相容。主体在推论之封堵而少数在对象之结果,此正是一篇以形式手段处理本体问题者应有之配比。</p>
+<hr>
+<h2>8 总状态表</h2>
+<table>
+<thead><tr>
+<th>内容</th>
+<th>层级</th>
+</tr></thead><tbody>
+<tr><td><strong>主定理</strong></td><td></td></tr>
+<tr><td>定理 4.3 Part A 轨道二岔</td><td>已证,需有限与确定</td></tr>
+<tr><td>定理 4.3 Part B 一致下降阻断</td><td>已证,不需有限与确定;假设就转移陈之</td></tr>
+<tr><td>定理 4.3 Part C 前向全定义与统一严格下降不相容</td><td>已证</td></tr>
+<tr><td>定理 4.3 Part D 周期上零降幅</td><td>已证</td></tr>
+<tr><td>引理 4.9 多搬运之势变化</td><td>已证</td></tr>
+<tr><td>命题 4.11 $\Delta\Phi(\theta)=0$ 之刻画</td><td>已证,条件于模型 4.10</td></tr>
+<tr><td>推论 4.8 严格内向内区之 no-go</td><td>已证,条件于固定有限格</td></tr>
+<tr><td><strong>三域与转移</strong></td><td></td></tr>
+<tr><td>三域分离与类型检查律</td><td>形式纪律</td></tr>
+<tr><td>带标签转移系统(定义 3.3)</td><td>形式对象;位形图为其商,发生展开为其串之展开</td></tr>
+<tr><td>发生展开作语义约定(定义 3.5)</td><td>约定,有代价,非本体主张</td></tr>
+<tr><td>引理 3.9 环移</td><td>已证,条件于同步交换之约定</td></tr>
+<tr><td>推论 3.10 $H_{\rm occ}$ 一般不成立</td><td>已证</td></tr>
+<tr><td><strong>继承</strong></td><td></td></tr>
+<tr><td>被困区内因果方向严格内向(命题 2.4)</td><td>标准结果</td></tr>
+<tr><td>球对称下 Misner–Sharp 临界与边缘被困面同物</td><td>标准结果</td></tr>
+<tr><td><strong>三桥</strong></td><td></td></tr>
+<tr><td>$H_{\rm occ}$ 投影非恒等</td><td>一般不成立(Kill 3)</td></tr>
+<tr><td>$H_r$ 径向势统一下降</td><td>未立</td></tr>
+<tr><td>$H_{\rm Lyap}$ 有下界之统一下降势</td><td><strong>未立,本篇之核心开口</strong></td></tr>
+<tr><td>$H_{\rm tang}$ 同壳子图无圈</td><td>开放:未证亦未反证;连续论证未提供该离散桥,而反模型亦未交付</td></tr>
+<tr><td>命题 5.4 三桥之序</td><td>已证</td></tr>
+<tr><td><strong>否决</strong></td><td></td></tr>
+<tr><td>Kill 1 至 Kill 9</td><td>已证,各条出处见 §7.3.2</td></tr>
+<tr><td><strong>应用</strong></td><td></td></tr>
+<tr><td>定理 6.1 精确递归与正净外流不相容</td><td>已证,条件于 $H_{\rm auto}$</td></tr>
+<tr><td>引理 6.7 逐次单跳局域排斥</td><td>已证,须 $x$ 自身亦饱和</td></tr>
+<tr><td>命题 6.9 同步交换下之不变条件</td><td>已证(流分解);其条件为全局而非局域,且量化于一切合法转移</td></tr>
+<tr><td>命题 6.14 传播下界</td><td>已证,条件于局域依赖之更新</td></tr>
+<tr><td>影响锥包络占比 $3\langle h\rangle t/R$</td><td>首项系数已算得;<strong>所算者为包络之上界,非实际受影响之值</strong>;系数依格点,普适者唯 $R^{-1}$</td></tr>
+<tr><td><strong>本篇不涉</strong></td><td></td></tr>
+<tr><td>物质核之存在;内区之层状态;占据与密度上限之数值</td><td>不主张</td></tr>
+<tr><td>奇点之解;信息佯谬;Page 曲线;Kerr</td><td>不涉</td></tr>
+<tr><td>观测投影</td><td>不给</td></tr>
+<tr><td>普遍蒸发之速率律及其经验压力测试</td><td>移出,归信息论系列</td></tr>
+</tbody></table>
+<hr>
+<h2>附录 A 连续球对称之环流 no-go 与同壳桥</h2>
+<h3>定理与其证</h3>
+<p><strong>定理 A.1(Kill 8)。</strong> 设 $v$ 为球面 $S^2$ 上之光滑切向场,$\alpha=v^\flat$ 为其对偶一形式,$d\alpha=\omega\,dA$ 定义其涡度 $\omega$。若 $\omega$ 为 SO(3) 不变之标量,则 $\omega\equiv0$,而 $v$ 为梯度场,故无非平凡之闭轨。</p>
+<p><strong>证。</strong> 分三步。</p>
+<p><em>其一,积分为零。</em> $S^2$ 无边界,故由 Stokes 定理[26]</p>
+<p>$$\int_{S^2}\omega\,dA=\int_{S^2}d\alpha=\int_{\partial S^2}\alpha=0$$</p>
+<p><em>其二,常数而零。</em> $\omega$ 既为 SO(3) 不变之标量函数,则其于球面上为常数。常数而积分为零,故 $\omega\equiv0$。</p>
+<p><em>其三,梯度而无闭轨。</em> $\omega\equiv0$ 即 $d\alpha=0$,故 $\alpha$ 为闭形式。$H^1_{\rm dR}(S^2)=0$,故闭形式必恰当,即存在 $f:S^2\to\mathbb R$ 使 $\alpha=df$,升指标得 $v=\nabla f$。沿其流有 $df/dt=|\nabla f|^2\ge0$,于非临界点处严格增,故 $f$ 沿流单调,无非平凡之闭轨。$\blacksquare$</p>
+<p><strong>注一(强假设之退化)。</strong> 若所设者为 $v$ 自身严格 SO(3) 不变,则结论更强而证更短:于任一点 $p\in S^2$,其迷向子群为绕过 $p$ 之轴之 SO(2),该群于 $T_pS^2\cong\mathbb R^2$ 上作旋转,而旋转之唯一不变向量为零,故 $v(p)=0$ 处处成立,即 $v\equiv0$。是以强假设下定理平凡成立;定理 A.1 之价值在其假设较弱,只需涡度为不变量。</p>
+<h3>消歧:场之对称与系统之对称</h3>
+<p>定理 A.1 所证者为<strong>场</strong>之严格球对称,非<strong>系统</strong>之球对称。球对称之动力学完全容许非对称之解,所谓自发对称破缺正是律有对称而态无对称;黑洞内区之微观态没有理由恰为 SO(3) 不变。</p>
+<p>$$\boxed{\ \text{所证者:不存在球对称之环流。所未证者:球对称系统中不存在环流。}\ }$$</p>
+<p>此句若不写,定理 A.1 将被读成远强于其实际者。且须与下节之开放桥并读,免生自相矛盾:</p>
+<p>$$\boxed{\begin{aligned}&\text{非零之光滑连续切向环流必破严格球对称;}\\&\text{然离散之微环流可于连续极限中消失,故其存在不必使宏观连续场失其球对称。}\end{aligned}}$$</p>
+<p>前句为定理 A.1 之内容,后句为该定理不足以证 $H_{\rm tang}$ 之根由。二者并立而不相抵。</p>
+<h3>毛球定理不提供出口</h3>
+<p>毛球定理[27]保证 $S^2$ 上任何连续切向场必有零点,然零点与梯度场完全相容,不自动生成环量。梯度场之临界点即其零点,而临界点之存在不使梯度场产生闭轨。</p>
+<p><strong>穿孔之更正。</strong> 删去一点不产生非平凡上同调:$S^2\setminus\{p\}\cong\mathbb R^2$ 而 $H^1_{\rm dR}(\mathbb R^2)=0$。须至少两个穿孔方得 $S^2\setminus\{p,q\}\cong S^1\times\mathbb R$ 而 $H^1_{\rm dR}\neq0$。</p>
+<p>故正确之陈述为:若允许至少两个奇异缺陷、非平凡之穿孔结构或分布式涡度,则定理 A.1 之光滑全局假设失效,而所论者已是另一模型。</p>
+<h3>离散之限定</h3>
+<p>有限之复形只具有限之对称群。本篇数值所用之球面剖分只具二十面体对称(旋转群阶 60),不等于连续之 SO(3)。故定理 A.1 不得径压于有限之 toy。</p>
+<p>此限定非技术性之谨慎,乃 Kill 4 之根由,见下节。</p>
+<h3>同壳桥及其为何未立</h3>
+<p><strong>定义 A.4。</strong> 设更新边分为 $E_-=\{x\to y:r(y)<r(x)\}$ 与 $E_0=\{x\to y:r(y)=r(x)\}$。记</p>
+<p>$$H_{\rm tang}:\quad \exists f:V_{\rm cell}\to\mathbb R,\ \exists\eta>0,\ \forall(x\to y)\in E_0,\ f(y)-f(x)\le-\eta$$</p>
+<p><strong>命题 A.2。</strong> 于有限有向图上,$H_{\rm tang}$ 成立当且仅当同壳有向子图无圈。</p>
+<p><strong>证。</strong> 若无圈,则拓扑排序[28,29]给出一线序,取 $f$ 为该序之负位次并适当缩放,即得 $\eta>0$ 之严格下降。反之若有圈 $x_1\to\cdots\to x_k\to x_1$,沿圈求和得 $0=\sum[f(x_{i+1})-f(x_i)]\le-k\eta<0$,矛盾。$\blacksquare$</p>
+<p><strong>推论 A.3。</strong> $H_{\rm tang}$ 与其所欲确立之结论等价。<strong>须辨明其所推与所不推。</strong> 由此可知该桥并非较结论为弱之条件;然一条件与结论等价,不推出另一独立假设不能蕴含它。故所可断者只是:<strong>本文尚未给出 $F5_{\rm continuum}\Rightarrow H_{\rm tang}$ 之桥</strong>,而非该蕴含已被否证。</p>
+<p>定理 A.1 于连续极限上给出零环量,而零环量给出梯度场,而梯度场于连续意义下无闭轨。然此不推出有限格上同壳子图之无圈:粗粒化可抹去普朗克尺度之离散环流,正负微涡于连续极限中相消而使 $\omega\equiv0$,同时有限图上之同壳子图仍可含有向圈。</p>
+<p>$$\boxed{\ \text{严格连续球对称可动机化同壳之无环流,不足以证明离散同壳子图之无圈。}\ }$$</p>
+<p>故 $F5_{\rm continuum}\Rightarrow H_{\rm tang}$ 为未立之桥,列 总状态表 之开放项。</p>
+<h3>离散梯度扩展(条件之注记)</h3>
+<p>设 $H_{\rm tang}$ 成立,给出 $f$ 与 $\eta>0$。设 $\delta_r=\min_{E_-}[r(x)-r(y)]>0$ 而 $M_f=\max_{E_-}|f(y)-f(x)|<\infty$。取 $0<\epsilon<\delta_r/M_f$(若 $M_f=0$ 则任取 $\epsilon>0$),令</p>
+<p>$$\psi_\epsilon(x)=r(x)+\epsilon f(x),\qquad \Phi_\epsilon(n)=\sum_xn_x\psi_\epsilon(x)$$</p>
+<p>则同壳边给 $\Delta\Phi_\epsilon=\epsilon\Delta f\le-\epsilon\eta<0$,内向边给 $\Delta\Phi_\epsilon\le-\delta_r+\epsilon M_f<0$。取 $\delta_\epsilon=\min\{\epsilon\eta,\ \delta_r-\epsilon M_f\}>0$,则一切非恒等边统一严格下降,定理 4.3 Part B 适用。</p>
+<p><strong>注(符号)。</strong> 若取 $v=\nabla f$,则沿流 $f$ <strong>增</strong>而非减,故须配 $\Phi'=r-\epsilon f$;或取 $v=-\nabla f$ 而配 $\Phi'=r+\epsilon f$。二者择一,不可混用。</p>
+<p><strong>地位。</strong> 本节为条件之扩展,不为结果。其条件 $H_{\rm tang}$ 由命题 A.2 已知等价于所欲之结论,故本节所交付者只是"若同壳无圈则总势可拼成",而非"同壳无圈"。</p>
+<h3>Kerr</h3>
+<p>定理 A.1 之假设为严格球对称。轴对称之情形不受本定理排除,因 $\omega$ 于轴对称下不必为常数,正负旋度可于球面上相消而使积分为零。</p>
+<p><strong>本篇不主张 Kerr 内部存在所需之环流。</strong> 所可书者只有一句:该情形不受定理 A.1 排除。</p>
+<hr>
+<h2>附录 B 数值与格点</h2>
+<h3>二十五胞 toy</h3>
+<p><strong>复形。</strong> 胞集为 $\{(r,t):r\in\{1,2,3,4\},\ t\in\{0,\dots,5\}\}\cup\{\text{core}\}$,共 25 胞。$(r,t)$ 之径向坐标为 $r$,core 为 $0$。</p>
+<p><strong>邻接。</strong> 同壳者 $(r,t)\sim(r,t\pm1\bmod6)$。径向者 $(r,t)\sim(r-1,t)$ 于 $r\ge2$,而 $(1,t)\sim\text{core}$。</p>
+<p><strong>占据。</strong> $n_{\max}=1$,总单位数二。故完整位形空间</p>
+<p>$$|\mathcal X_{\rm full}|=\binom{25}{2}=300$$</p>
+<p><strong>初态。</strong> 二单位置于最外壳之 $(4,0)$ 与 $(4,1)$。</p>
+<p><strong>更新之三规则。</strong> 其一,只许严格内向,不许静止:$(r,t)\to(r-1,t)$ 于 $r\ge2$,$(1,t)\to\text{core}$。其二,同上而容静止,即容恒等边。其三,同上而容切向,$(r,t)\to(r,(t+1)\bmod6)$,为单向之环流。</p>
+<p><strong>时序与决胜。</strong> 更新按逐次单跳枚举,合法者要求源胞有占据而目标胞未满;全部合法后继皆入图,不作单一选择,故所建者为关系图而非确定轨道之序列。</p>
+<h3>结果</h3>
+<table>
+<thead><tr>
+<th>规则</th>
+<th>$</th>
+<th>\mathcal X_{\rm full}</th>
+<th>$</th>
+<th>$</th>
+<th>\operatorname{Reach}(n_0)</th>
+<th>$</th>
+<th>无圈</th>
+<th>全定义</th>
+<th>周期上 $\Delta\Phi$</th>
+</tr></thead><tbody>
+<tr><td>只许严格内向</td><td>300</td><td>24</td><td>是</td><td>否(死端 2)</td><td>无圈</td></tr>
+<tr><td>容静止</td><td>300</td><td>24</td><td>否</td><td>是</td><td>$[0]$,长度 1</td></tr>
+<tr><td>容切向环流</td><td>300</td><td><strong>300</strong></td><td>否</td><td>是</td><td>$[0,0,0,0,0,0]$,长度 6</td></tr>
+</tbody></table>
+<p>第一行 $\Phi(n_0)=8$,$\Phi_{\min}=1$,$\delta_{\min}=1$,故 $N_{\max}=\lfloor(8-1)/1\rfloor=7$;而枚举所得之最长轨道亦为 7。</p>
+<p><strong>注一。</strong> 此二数相等系枚举之结果,非由三数自动推出。推论 4.8 只给上界,界之是否达到须逐例验之。故此处只作界之紧性之一例,不作定理之证据。</p>
+<p><strong>注二。</strong> 第三行之可达集恰等于完整位形空间,即环流使全空间可达。此为该规则之副产物,非本篇所需之结论。</p>
+<p><strong>注三。</strong> 三行中无一同时无圈且全定义,与定理 4.3 Part C 相符。此为演示,非一般命题之证明。</p>
+<h3>单连通不禁组合有向圈(Kill 4)</h3>
+<p>取实心三角形之单纯复形,即三顶点、三边、一个二维胞。该复形可缩,故 $\pi_1$ 平凡。将其一骨架之三边定向为 $a\to b\to c\to a$,即得一有向三环。</p>
+<p>单连通所阻断者为定向丛,乃拓扑之对象;有向圈为组合之对象,由边之定向给出,与二维胞之填充无涉。二者不可互推。</p>
+<p>四面体之情形同理,其一骨架含多个有向三环而复形可缩。</p>
+<h3>立方六邻格之系数</h3>
+<p><strong>闭式。</strong> 设 $\hat n$ 为单位法向,$h(\hat n)=\max_i|n_i|$ 为六邻格于该法向上之暴露层厚。其球面平均为</p>
+<p>$$\langle h\rangle=\frac{6}{\pi\sqrt2}\arctan\frac1{\sqrt2}=0.8311896360$$</p>
+<p>故表皮占比与解冻占比之首项系数为</p>
+<p>$$3\langle h\rangle=2.4935689079$$</p>
+<p><strong>精确格点数。</strong> 内胞判据取六个面邻居皆饱和。</p>
+<table>
+<thead><tr>
+<th>$R$</th>
+<th>$N$</th>
+<th>表皮</th>
+<th>本体</th>
+<th>冻结占比</th>
+</tr></thead><tbody>
+<tr><td>2.21</td><td>33</td><td>26</td><td>7</td><td>21.2121%</td></tr>
+<tr><td>5</td><td>515</td><td>222</td><td>293</td><td>56.8932%</td></tr>
+<tr><td>100</td><td>4,187,857</td><td>103,734</td><td>4,084,123</td><td>97.5230%</td></tr>
+</tbody></table>
+<p><strong>注四。</strong> $R=2.21$ 一行须与大 $R$ 之拟合分辨。以 $5\le R\le120$ 区间之 log-log 拟合外推至 $R=O(1)$ 将给冻结占比为零,而精确格点给 21.21%。拟合式不得外推至其区间之外。</p>
+<h3>解冻前沿之数据</h3>
+<table>
+<thead><tr>
+<th>$R$</th>
+<th>$t$</th>
+<th>$t/R$</th>
+<th>占比</th>
+<th>占比$\cdot R/t$</th>
+<th>隐含 $b$</th>
+</tr></thead><tbody>
+<tr><td>160</td><td>1</td><td>0.00625</td><td>0.015520</td><td>2.48319</td><td>$-1.660$</td></tr>
+<tr><td>40</td><td>1</td><td>0.02500</td><td>0.061316</td><td>2.45263</td><td>$-1.637$</td></tr>
+<tr><td>80</td><td>2</td><td>0.02500</td><td>0.061324</td><td>2.45295</td><td>$-1.625$</td></tr>
+<tr><td>160</td><td>4</td><td>0.02500</td><td>0.061307</td><td>2.45227</td><td>$-1.652$</td></tr>
+<tr><td>80</td><td>4</td><td>0.05000</td><td>0.120576</td><td>2.41152</td><td>$-1.641$</td></tr>
+<tr><td>120</td><td>6</td><td>0.05000</td><td>0.120507</td><td>2.41013</td><td>$-1.669$</td></tr>
+</tbody></table>
+<p><strong>两级修正。</strong> 设</p>
+<p>$$\frac{N_{\rm cone}(t)}{N}=3\langle h\rangle\frac{t}{R}+b\frac{t^2}{R^2}+O\!\left(\frac1R\right)$$</p>
+<p>则六行给出之隐含 $b$ 全部落于 $-1.63$ 至 $-1.67$,跨 $t/R$ 之八倍范围而一致,数据与一个约为 $-1.65$ 之二次修正项一致。所抽出之 $b$ 仍混有 $O(1/R)$ 之离散误差,故只作经验系数,不作定值。</p>
+<p>同一 $t/R$ 之三行(第二至第四行)相对跨度约 $2.8\times10^{-4}$,此为格点离散之 $O(1/R)$ 效应,与有限厚度之二次项非同源。<strong>二者不可混为一句。</strong> 早期曾书"占比严格只依 $t/R$",过强,已改。</p>
+<h3>系数之格点依赖</h3>
+<p>$2.4936$ 为内胞判据与立方六邻之联合产物。$h(\hat n)=\max_i|n_i|$ 正是六邻于法向上之暴露层厚,故该系数随邻接之定义而变:连续之一胞厚球壳给 $3/R$;十八邻、廿六邻与 Voronoi 胞皆异其值;改内胞判据(如要求全部邻居而非仅面邻居)亦异。</p>
+<p>$$\boxed{\ \text{普适者唯 }R^{-1}\text{,系数非本框架之常数。}\ }$$</p>
+<p>写出其几何来源,读者自可换格点重算而不必信此数。</p>
+<h3>代码与哈希</h3>
+<p>诸计算之脚本随文发布,SHA-256 如下。除 NumPy 与 NetworkX 外无外部依赖。</p>
+<table>
+<thead><tr>
+<th>脚本</th>
+<th>对应</th>
+<th>SHA-256</th>
+</tr></thead><tbody>
+<tr><td><code>exclusion.py</code></td><td>附录 B.1–B.2 之二十五胞 toy</td><td><code>aa9d3d9b9115b916c95e4391c9bc97f6ddad6c5e2614e3ad4ffce953c35b45de</code></td></tr>
+<tr><td><code>lattice.py</code></td><td>附录 B.4 之精确格点数与闭式系数</td><td><code>1ea43fd3b20e13628377d017e31b8d42112a1f013b2ab5ca0acb5611fcb99726</code></td></tr>
+<tr><td><code>cone.py</code></td><td>附录 B.5 之影响锥包络占比</td><td><code>477678b33681648288102e4064e6b5cc3cb6627712696d78245046fd8bfc28f7</code></td></tr>
+<tr><td><code>README.md</code></td><td>运行说明与分寸声明,中文</td><td><code>38cfff31c90469b96e1e6b47f12365be5581fbe54b0e5859af83532bfcc4cfb4</code></td></tr>
+<tr><td><code>README-en.md</code></td><td>同上,英文</td><td><code>4ad453681a05d8d04ee04d52bdf9e09e4bc0b881e151752fca96000a9558af04</code></td></tr>
+</tbody></table>
+<p><strong>注。</strong> 本篇之可复算承诺只覆盖上表三个脚本,即正文诸数值所实际依赖者。写作过程中他路之计算,其结果不入正文,故不随文发布,以免读者误以为其承重。</p>
+<hr>
+<h2>致谢</h2>
+<p>本篇之诸命题于成稿前经多轮独立复核,数处关键更正出于复核者之指认,谨此致谢。其中类型分离之必要、有限总函数与统一下降之前提层次、以及格点系数之渐近与有限尺度之别,皆由复核而得厘清。文中所余之误,归作者。</p>
+<hr>
+<h2>元数据</h2>
+<p><strong>作者</strong> 秦汉(Han Qin)。ORCID 0009-0009-9583-0018。</p>
+<p><strong>系列</strong> SAE 黑洞系列 第二篇。</p>
+<p><strong>日期</strong> 待补。</p>
+<p><strong>Concept DOI</strong> 10.5281/zenodo.21499053(指向最新版本)。<strong>版本 DOI</strong> 于发布时生成。</p>
+<p><strong>许可</strong> CC BY 4.0(Creative Commons Attribution 4.0 International)。</p>
+<p><strong>可复算材料</strong> 附录 B 所列三个脚本连同中英两份 README 随文发布,各附 SHA-256。测试环境 Python 3.12.3、NumPy 2.4.4、NetworkX 3.6.1。</p>
+<hr>
+<hr>
+<h2>参考文献</h2>
+<p>[1] L. Bombelli, J. Lee, D. Meyer, R. D. Sorkin, <em>Space-time as a causal set</em>, Phys. Rev. Lett. <strong>59</strong>(5), 521–524 (1987).</p>
+<p>[2] C. Rovelli, F. Vidotto, <em>Covariant Loop Quantum Gravity</em>, Cambridge University Press (2014).</p>
+<p>[3] J. M. Bardeen, <em>Non-singular general-relativistic gravitational collapse</em>, Proc. Int. Conf. GR5, Tbilisi, p. 174, Tbilisi University Press (1968).</p>
+<p>[4] I. Dymnikova, <em>Vacuum nonsingular black hole</em>, Gen. Rel. Grav. <strong>24</strong>, 235–242 (1992).</p>
+<p>[5] S. A. Hayward, <em>Formation and evaporation of non-singular black holes</em>, Phys. Rev. Lett. <strong>96</strong>, 031103 (2006). arXiv:gr-qc/0506126.</p>
+<p>[6] C. Rovelli, F. Vidotto, <em>Planck stars</em>, Int. J. Mod. Phys. D <strong>23</strong>(12), 1442026 (2014). arXiv:1401.6562.</p>
+<p>[7] P. O. Mazur, E. Mottola, <em>Gravitational condensate stars: an alternative to black holes</em>, Proc. Natl. Acad. Sci. USA <strong>101</strong>, 9545–9550 (2004).</p>
+<p>[8] A. Ashtekar, T. Pawlowski, P. Singh, <em>Quantum nature of the big bang</em>, Phys. Rev. Lett. <strong>96</strong>, 141301 (2006).</p>
+<p>[9] SAE 信息论系列第四篇。DOI 10.5281/zenodo.19880112</p>
+<p>[10] A. S. Eddington, <em>A comparison of Whitehead's and Einstein's formulae</em>, Nature <strong>113</strong>, 192 (1924).</p>
+<p>[11] D. Finkelstein, <em>Past-future asymmetry of the gravitational field of a point particle</em>, Phys. Rev. <strong>110</strong>, 965–967 (1958).</p>
+<p>[12] K. Schwarzschild, Sitzungsber. Preuss. Akad. Wiss. Berlin (Math. Phys.) <strong>1916</strong>, 189–196.</p>
+<p>[13] C. W. Misner, K. S. Thorne, J. A. Wheeler, <em>Gravitation</em>, W. H. Freeman (1973).</p>
+<p>[14] S. W. Hawking, G. F. R. Ellis, <em>The Large Scale Structure of Space-Time</em>, Cambridge University Press (1973).</p>
+<p>[15] R. M. Wald, <em>General Relativity</em>, University of Chicago Press (1984).</p>
+<p>[16] C. W. Misner, D. H. Sharp, <em>Relativistic equations for adiabatic, spherically symmetric gravitational collapse</em>, Phys. Rev. <strong>136</strong>, B571–B576 (1964).</p>
+<p>[17] S. A. Hayward, <em>Gravitational energy in spherical symmetry</em>, Phys. Rev. D <strong>53</strong>, 1938–1949 (1996). arXiv:gr-qc/9408002.</p>
+<p>[18] R. Penrose, <em>Gravitational collapse and space-time singularities</em>, Phys. Rev. Lett. <strong>14</strong>(3), 57–59 (1965).</p>
+<p>[19] J. M. M. Senovilla, D. Garfinkle, <em>The 1965 Penrose singularity theorem</em>, Class. Quantum Grav. <strong>32</strong>, 124008 (2015).</p>
+<p>[20] M. Nielsen, G. Plotkin, G. Winskel, <em>Petri nets, event structures and domains, part I</em>, Theor. Comput. Sci. <strong>13</strong>(1), 85–108 (1981).</p>
+<p>[21] G. Winskel, <em>Event structures</em>, in Advances in Petri Nets 1986, Lecture Notes in Computer Science 255, Springer (1987), pp. 325–392.</p>
+<p>[22] S. A. Hayward, <em>General laws of black-hole dynamics</em>, Phys. Rev. D <strong>49</strong>, 6467–6474 (1994).</p>
+<p>[23] A. Ashtekar, B. Krishnan, <em>Isolated and dynamical horizons and their applications</em>, Living Rev. Relativity <strong>7</strong>, 10 (2004).</p>
+<p>[24] T. M. Liggett, <em>Interacting Particle Systems</em>, Springer (1985).</p>
+<p>[25] F. Ritort, P. Sollich, <em>Glassy dynamics of kinetically constrained models</em>, Adv. Phys. <strong>52</strong>, 219–342 (2003).</p>
+<p>[26] R. Bott, L. W. Tu, <em>Differential Forms in Algebraic Topology</em>, Graduate Texts in Mathematics 82, Springer (1982).</p>
+<p>[27] J. W. Milnor, <em>Analytic proofs of the "hairy ball theorem" and the Brouwer fixed point theorem</em>, Amer. Math. Monthly <strong>85</strong>(7), 521–524 (1978).</p>
+<p>[28] D. E. Knuth, <em>The Art of Computer Programming, Vol. 1: Fundamental Algorithms</em>, 3rd ed., Addison-Wesley (1997), §2.2.3.</p>
+<p>[29] J. Bang-Jensen, G. Gutin, <em>Digraphs: Theory, Algorithms and Applications</em>, 2nd ed., Springer (2009).</p>
+<p>[30] H. Poincaré, <em>Sur le problème des trois corps et les équations de la dynamique</em>, Acta Math. <strong>13</strong>, 1–270 (1890).</p>
+<p>[31] SAE 黑洞系列第一篇。DOI 10.5281/zenodo.20913514</p>
+<p>[32] SAE 物理量阶梯之四重嵌套。DOI 10.5281/zenodo.21227329</p>
+<p>[33] SAE ZFCρ 系列第六十八篇。DOI 10.5281/zenodo.19739811</p>
+<p>[34] A. Karlhede, U. Lindström, J. E. Åman, <em>A note on a local effect at the Schwarzschild sphere</em>, Gen. Relativ. Gravit. <strong>14</strong>, 569–572 (1982).</p></div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
