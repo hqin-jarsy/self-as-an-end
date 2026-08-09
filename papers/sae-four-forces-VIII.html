@@ -4,523 +4,854 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP — Self-as-an-End</title>
-  <meta name="description" content="Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP — SAE Physics Series · Four Forces Paper VIII">
-  <meta property="og:title" content="Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP">
-  <meta name="author" content="Han Qin">
-  <meta name="citation_title" content="Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP">
-  <meta name="citation_author" content="Qin, Han">
-  <meta name="citation_publication_date" content="2026">
+  <title>Strong CP and DD Levels: A Mirror No-Go, and the Boundary-Condition Status of θ̄ – Han Qin (秦汉)</title>
   <meta name="citation_doi" content="10.5281/zenodo.19450289">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP",
-    "alternativeHeadline": "四力篇VIII：强CP问题的层级消解",
-    "author": {"@type": "Person", "name": "Han Qin", "identifier": "https://orcid.org/0009-0009-9583-0018"},
-    "datePublished": "2026",
-    "keywords": "strong CP problem, hierarchical dissolution, topology, Self-as-an-End, four forces",
-    "identifier": "https://doi.org/10.5281/zenodo.19450289"
-  }
-  </script>
-  <link rel="stylesheet" href="../style.css">
-  <script>
-    function switchLang(lang, tab) {
-      ['lang-en','lang-zh'].forEach(function(id) {
-        document.getElementById(id).classList.remove('active');
-        document.getElementById(id).style.display = 'none';
-      });
-      document.getElementById('lang-' + lang).classList.add('active');
-      document.getElementById('lang-' + lang).style.display = 'block';
-      document.querySelectorAll('.lang-tab').forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-    }
-  </script>
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        tags: 'none'
-      },
-      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
-    };
-  </script>
+  <script>MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'none' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <a href="../index.html" class="site-title">Self-as-an-End</a>
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
     <nav>
-      <a href="../index.html">Papers</a>
-      <a href="../about.html">About</a>
-      <a href="../endacc.html">end/acc</a>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
       <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
       <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
     </nav>
   </div>
 </header>
-  <main class="paper-main">
-    <article class="paper-page">
-      <div class="paper-page-header">
-        <div class="paper-badge">SAE Physics Series · Four Forces Paper VIII</div>
-        <h1>Four Forces Paper VIII: The Hierarchical Dissolution of Strong CP</h1>
-        <div style="font-size:0.85em;color:#555;margin-top:0.3em;">四力篇VIII：强CP问题的层级消解</div>
-        <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19450289">10.5281/zenodo.19450289</a> &nbsp;·&nbsp; CC BY 4.0</div>
-        <div class="paper-author">Han Qin · 2026</div>
-      </div>
-      <div class="lang-tabs">
-        <div class="lang-tab active" onclick="switchLang('en', this)">EN</div>
-        <div class="lang-tab" onclick="switchLang('zh', this)">中文</div>
-      </div>
-      <div id="lang-en" class="lang-content active" lang="en">
-        <p style="font-size:0.9em;color:#666;"><em>Writing Declaration: This paper was independently authored by Han Qin. All intellectual decisions, framework design, and editorial judgments were made by the author.</em></p>
-        <p><strong>Self-as-an-End Four Forces Series: Paper VIII</strong></p>
-<p>Han Qin</p>
-<p>ORCID: 0009-0009-9583-0018</p>
-<hr>
-<h3>§1 The Correct Target of Strong CP</h3>
-<h4>§1.1 Standard Formulation</h4>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">SAE Physics Series · Four Forces · Paper VIII</div>
+    <h1>Strong CP and DD Levels: A Mirror No-Go, and the Boundary-Condition Status of θ̄<br><span style="font-size:1.1rem;opacity:0.75">强CP与DD层级：一条镜像no-go，与θ̄的边界条件地位</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19450289">10.5281/zenodo.19450289</a> · Full PDF on Zenodo · CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>The genuine target of the strong CP problem is the rephasing-invariant combination $\bar\theta = \theta + \arg\det(M_u M_d)$, experimentally bounded by $\bar\theta < 10^{-10}$. The established responses — axion/Peccei-Quinn, Nelson-Barr, and parity-symmetric constructions — all operate inside the Standard Model framework.</p>
+<p>A tempting alternative runs as follows: if a theory possesses an exact parity symmetry, then $\theta = -\theta$ and therefore $\theta = 0$. In frameworks that possess a two-sided structure, this is often expressed as "the two sides are exact mirror images of one another, hence parity is exact."</p>
+<p><strong>The principal result of this paper is a no-go: that route does not work.</strong> If two sectors are causally disconnected and parity exchanges them, then parity has an empty fixed-point set. It constrains the <em>combined</em> system, not either sector individually. What follows is at most a cross-side pairing $\theta_L = -\theta_R$; it is not $\theta_L = 0$. Moreover, even the retreat to the pairing relation is not delivered: the two ledger entries composing $\bar\theta$ each migrate under chiral basis changes, so their cross-side transformation law must be established separately and has not been. The no-go is not specific to Self-as-an-End (SAE); it applies to any construction that realises parity as a map <em>between</em> two non-communicating sectors.</p>
+<p><strong>The positive result of this paper is a decoupling.</strong> SAE's constitutive ordering assigns mass construction to the 3DD level and weak mixing to the 2DD level. The Yukawa coupling is accordingly not a fundamental object but a low-energy projective superposition of these two levels, so the CKM complex phase does not flow into $\det(M)$: $\bar\theta$ and CKM CP violation are <strong>mutually unentangled</strong>. This removes half of the tension that makes the Standard Model version of the problem sharp — the half that asks why one and the same Yukawa object yields an $\mathcal{O}(1)$ CKM phase alongside a $\bar\theta$ below $10^{-10}$. <strong>It does not remove the other half</strong>, namely why $\bar\theta$ is itself anomalously small.</p>
+<p><strong>This paper therefore registers $\bar\theta$ as a boundary parameter</strong>: a dimensionless, anomalously small input that SAE does not currently explain. SAE does not resolve strong CP naturalness, neither predicts nor excludes the axion, and offers no independent numerical prediction for the neutron electric dipole moment. Experiment merely constrains this boundary parameter.</p>
+      <p class="paper-keywords"><strong>Keywords:</strong> strong CP problem, θ̄, DD levels, mirror no-go, Yukawa emergence, boundary conditions</p>
+    </div>
+    <div class="paper-body"><h2>§1 The Correct Target of the Strong CP Problem</h2>
+<h3>§1.1 θ̄, not bare θ</h3>
 <p>The QCD Lagrangian admits a topological term:</p>
-<p>$$\mathcal{L}_\theta = \frac{\theta}{32\pi^2} g^2 F^a<sub>\mu\nu</sub> \tilde{F}<sup>a,\mu\nu</sup>$$</p>
-<p>This term violates P and CP. A nonzero θ would induce a neutron electric dipole moment d_n ∝ θ. Experiment constrains d_n < 1.8 × 10⁻²⁶ e·cm (90% CL), implying θ̄ < 10⁻¹⁰.</p>
-<p>The true target of the strong CP problem is not bare θ but the rephasing-invariant physical quantity:</p>
+<p>$$\mathcal{L}_\theta = \frac{\theta}{32\pi^2} g^2 F^a_{\mu\nu} \tilde{F}^{a,\mu\nu}$$</p>
+<p>This term violates P and CP. A nonzero θ endows the neutron with an electric dipole moment $d_n \propto \theta$. The experimental bound $d_n < 1.8 \times 10^{-26}$ e·cm (90% CL) translates into $\bar\theta < 10^{-10}$.</p>
+<p>The target of the problem is not the bare θ but the rephasing-invariant combination</p>
 <p>$$\bar{\theta} = \theta + \arg\det(M_u M_d)$$</p>
-<p>where M_u, M_d are the quark mass matrices. Chiral rotations can transfer phase between θ and arg det(M), but θ̄ is invariant. Experiment constrains θ̄, not θ alone.</p>
-<h4>§1.2 Responses Within the Standard Model</h4>
-<p><strong>Axion / Peccei-Quinn mechanism.</strong> A global U(1)_PQ symmetry is introduced along with its associated Goldstone boson (the axion), which dynamically drives θ to the CP-conserving point. This introduces a new particle (axion) and new symmetry (U(1)_PQ). No axion has been found experimentally, though searches continue (ADMX, IAXO, etc.).</p>
-<p><strong>Massless up quark.</strong> If m_u = 0, θ can be rotated away by a chiral rotation. Lattice QCD calculations have excluded m_u = 0.</p>
-<p><strong>Nelson-Barr mechanism.</strong> CP is an exact high-energy symmetry that is spontaneously broken through specific Yukawa/mediator structures, yielding tree-level θ̄ = 0 while preserving CKM phases. This faces the technical difficulty of radiative regeneration: loop corrections tend to reignite θ̄, requiring strong constraints on model parameters.</p>
-<p><strong>Parity symmetry solutions.</strong> Bare θ is set to zero by parity invariance, while arg det(M) is controlled through Hermitian Yukawa structures or similar mechanisms. These also face radiative stability difficulties.</p>
-<h4>§1.3 Position of This Paper</h4>
-<p>All the above solutions operate within the Standard Model framework: they accept the Yukawa coupling as a fundamental object, accept M = Yv, and then arrange parameters or introduce new particles within this framework to make θ̄ small or zero.</p>
-<p>This paper offers a different type of response. SAE does not solve the strong CP problem within the Standard Model framework; rather, it asserts that SAE's ontology does not generate this problem. The Standard Model's Yukawa coupling simultaneously carries mass generation and weak mixing, so complex phases inevitably enter the mass matrix. This is the root of the strong CP problem. SAE assigns mass construction and weak mixing to different DD levels, severing the pathway for complex phases to enter the mass matrix.</p>
+<p>where $M_u, M_d$ are the quark mass matrices. Chiral rotations shuttle phase between θ and $\arg\det(M)$, leaving $\bar\theta$ fixed.</p>
+<p>This distinction carries weight throughout the present paper and is therefore stated first as a working discipline:</p>
+<p>$$\boxed{\text{The individual values of }\theta_{\rm QCD}\text{ and }\arg\det M_q\ \textbf{depend on the choice of chiral basis};\ \text{the sole physical observable is }\bar\theta.}$$</p>
+<p>Wherever this paper writes "$\theta = 0$" or "$\arg\det M = 0$", the statement is to be read as concerning a <strong>ledger entry in a specified basis</strong>, not as an independent physical claim. An argument that addresses only one of the two entries, without supplying the behaviour of the other, has not yet addressed the strong CP problem.</p>
+<h3>§1.2 Responses within the Standard Model</h3>
+<p><strong>Axion / Peccei-Quinn.</strong> A global $U(1)_{\rm PQ}$ symmetry and its accompanying Goldstone boson (the axion) drive θ dynamically to the CP-conserving point. The mechanism introduces a new particle and a new symmetry. No axion has been found; searches continue (ADMX, IAXO, and others).</p>
+<p><strong>Massless up quark.</strong> If $m_u = 0$, θ can be rotated away by a chiral rotation. Precision lattice QCD has excluded $m_u = 0$.</p>
+<p><strong>Nelson-Barr.</strong> CP is an exact symmetry at high energies, spontaneously broken through a specific Yukawa/mediator structure so that $\bar\theta = 0$ at tree level while the CKM phase remains nonzero. The mechanism faces the technical difficulty of radiative regeneration: loop corrections tend to reignite $\bar\theta$.</p>
+<p><strong>Parity-symmetric constructions.</strong> Parity invariance sets the bare θ to zero, while $\arg\det(M)$ is controlled by Hermitian Yukawa structures or equivalent devices. These face the same radiative-stability difficulty.</p>
+<p><strong>What the four share.</strong> All operate within the Standard Model framework: they accept that the Yukawa coupling is a fundamental object and that $M = Yv$, then arrange parameters or introduce new particles inside that framework.</p>
+<h3>§1.3 What this paper delivers</h3>
+<p>This paper does not propose a new technical solution. It delivers three things.</p>
+<p><strong>A no-go</strong> (§3). If parity is realised as a mirror <em>between</em> two non-communicating sectors, it cannot yield $\bar\theta = 0$ for either sector individually. The exclusion holds for an entire class of approaches and does not depend on model details.</p>
+<p><strong>A decoupling</strong> (§4). SAE's level structure prevents the CKM complex phase from flowing into $\det(M)$. This dismantles half of the tension that makes the Standard Model version of the problem sharp.</p>
+<p><strong>A registration</strong> (§5). $\bar\theta$ is listed as a boundary parameter. SAE currently has <strong>no account</strong> of why it is anomalously small, and this paper says so explicitly rather than implying otherwise by omission.</p>
 <hr>
-<h3>§2 CP Stratification in the DD Hierarchy</h3>
-<h4>§2.1 Symmetry Map of the Chisel-Construct Sequence</h4>
-<p>The DD hierarchy has the following structure:</p>
+<h2>§2 DD Levels and Parity</h2>
+<h3>§2.1 The symmetry map of the chisel-construct sequence</h3>
+<p>The DD level structure:</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Level</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Physical object</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Characteristic quantity</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Key operation</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Charge, labeling</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">E</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Label without constructing (OR)</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Chirality, weak force</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">p = E/c</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Additive path (OR)</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Color, strong force</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">m = E/c²</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Multiplicative path (OR)</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Gravity, block structure</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">m/c = E/c³</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">AND closure</td></tr>
+<thead><tr>
+<th>Level</th>
+<th>Physical object</th>
+<th>Characteristic quantity</th>
+<th>Key operation</th>
+</tr></thead><tbody>
+<tr><td>1DD</td><td>Charge, marking</td><td>$E$</td><td>Mark without construct (OR)</td></tr>
+<tr><td>2DD</td><td>Chirality, weak force</td><td>$p = E/c$</td><td>Additive path (OR)</td></tr>
+<tr><td>3DD</td><td>Colour, strong force</td><td>$m = E/c^2$</td><td>Multiplicative path (OR)</td></tr>
+<tr><td>4DD</td><td>Gravity, block structure</td><td>$m/c = E/c^3$</td><td>AND closure</td></tr>
 </tbody></table>
-<p>The 2DD chiral splitting is the first explicit symmetry breaking in the chisel-construct sequence: it distinguishes L from R. The weak force couples only to left-handed fields; this is a defining property of the 2DD level.</p>
-<p>3DD forms above 2DD. The L-side and R-side each independently produce their 3DD color structures.</p>
-<h4>§2.2 CP Transformation and DD Levels</h4>
-<p>The CP transformation consists of spatial inversion P (exchanging L and R) plus charge conjugation C. For the strong CP problem, the key effect is that of P:</p>
-<p>The θ-term changes sign under P: θ → −θ.</p>
-<p>Therefore, if a theory possesses exact P symmetry (L-R mirror) at the 3DD level, then θ = −θ, hence θ = 0.</p>
-<p>This is a standard QCD result, not specific to SAE. SAE's contribution is to provide a structural reason for L-R 3DD mirror symmetry.</p>
-<h4>§2.3 L-R 3DD Mirror Symmetry in SAE</h4>
-<p><strong>Proposition S1 (L-R 3DD mirror).</strong> The DD chisel-construct sequence produces 3DD structures on the two sides that are exact mirror images.</p>
+<p>The 2DD chiral splitting is the first explicit symmetry breaking in the chisel-construct sequence: it distinguishes L from R. That the weak force couples only to left-handed fields is the defining property of the 2DD level.</p>
+<p>3DD is constructed atop 2DD. The L side and the R side each independently generate a 3DD colour structure.</p>
+<h3>§2.2 The exact condition under which parity gives θ = 0</h3>
+<p>Under P the θ-term flips sign: $\theta \to -\theta$. The standard conclusion drawn from this must have its condition stated precisely:</p>
+<p>$$\boxed{\textbf{If P is an exact symmetry \textit{of a given theory}}\ \text{— i.e. P maps that theory's Lagrangian back to \textbf{itself} — then }\theta = -\theta,\text{ hence }\theta = 0.}$$</p>
+<p><strong>"P maps theory A to a different theory B" does not yield this conclusion</strong>, however exactly A and B mirror one another. The first is a <em>symmetry</em> (an automorphism); the second is a <em>relation</em> (a map between two objects). They resemble each other in form but differ in inferential power: invariance under an automorphism constrains the couplings of the theory itself, whereas invariance under a relation constrains only the <strong>combined</strong> system.</p>
+<p>This distinction is the entire content of §3.</p>
+<h3>§2.3 The L-R 3DD mirror relation in SAE</h3>
+<p><strong>Proposition S1 (L-R 3DD mirror relation).</strong> The 3DD structures produced on the two sides by the DD chisel-construct sequence are exact mirror images <strong>of one another</strong>.</p>
 <p><strong>Argument.</strong></p>
-<p>(a) There is only one kind of chisel (negation), and it does not distinguish direction. Each step of the chisel-construct sequence applies the same operation to the L-side and R-side.</p>
-<p>(b) The 2DD chiral splitting is a 1-bit scalar operation (L or R), granting no structural privilege to either side. It transmits exactly 1 bit of information: which side is which. It does not transmit orientation, phase, or other internal structure.</p>
-<p>(c) The two sides of 3DD each independently execute the three-axis spatial splitting. By (a) and (b), the 3DD structures on the two sides are exact mirror images as wholes.</p>
-<p>(d) The remainder conservation principle of ZFCρ provides independent mathematical support.</p>
-<p><strong>Key distinction.</strong> This proposition does not require 4DD-level axis pairing. We do not claim that axis 1 on the L-side equals axis 1 on the R-side (the Generation Paper's G1 has argued that no such canonical identification exists). We claim only that L-3DD as a whole and R-3DD as a whole are mirror-symmetric. θ is a global topological quantity of 3DD (the weight of the instanton number); it does not depend on axis labeling.</p>
-<p><strong>Level.</strong> Near-theorem level (ZFCρ + DD axiom chain, dual-line support).</p>
-<h4>§2.4 Parallel with G5: Bidirectional Information Isolation Between DD Levels</h4>
-<p>The Generation Paper's G5 (Isospin Universality) established a perfectly parallel argument:</p>
-<p>G5 states: color (3DD) collapses to a color singlet under cross-block projection, but isospin (2DD) remains intact. The reason: isospin comes from the deeper 2DD shared layer; 3DD processes cannot destroy it.</p>
-<p>The present paper's argument is the converse of G5: 3DD structure does not inherit 2DD's symmetry breaking. The 2DD chiral splitting introduced L-R asymmetry (the source of CP violation), but this asymmetry is encapsulated within 2DD and does not propagate to 3DD.</p>
-<p>The two directions together constitute a general principle: information isolation between DD levels is bidirectional. Lower-level structure is not destroyed by higher-level processes (G5); higher-level structure does not inherit lower-level symmetry breaking (this paper).</p>
+<p>(a) There is only one kind of chisel (negation), and it does not distinguish direction. Every step of the chisel-construct sequence applies the same operation to the L side and the R side.</p>
+<p>(b) <strong>Binary-label lemma.</strong> The 2DD chiral splitting is a 1-bit scalar operation (L or R). It transmits exactly one bit of information: which side is which. It transmits no orientation, no phase, and no other internal structure.</p>
+<p>(c) The two sides each independently execute the spatial three-axis splitting. By (a) and (b), the resulting 3DD structures are exact mirror images of one another at the level of the whole.</p>
+<p>(d) The remainder-conservation principle of ZFCρ provides independent mathematical support.</p>
+<p><strong>Scope of the binary-label lemma.</strong> What the lemma establishes is that <strong>the label space is binary</strong>: $\chi$ itself carries exactly one binary label bit. It does <strong>not</strong> follow that the actions, backgrounds, and couplings of the two sectors are exact mirrors of one another. Even with a single bit of labelling, one may still have $g_L \neq g_R$, $V_L \neq V_R$, $\mu_L \neq \mu_R$. The lemma therefore cannot by itself answer whether the two sides are exact mirrors. Its canonical home is the Physical-Quantity Ladder paper (.21227329), where it functions as a definition of label capacity and object type; the present paper cites it only.</p>
+<p><strong>The precise type of S1.</strong> S1 is a proposition about a <strong>relation between the two sides</strong>. It is not a proposition about a symmetry of either side:</p>
+<table>
+<thead><tr>
+<th>Statement</th>
+<th>Type</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr><td>L-3DD and R-3DD are mirror images of one another</td><td>a <strong>relation</strong> between two sides</td><td>Near-theorem</td></tr>
+<tr><td>The 3DD effective description on our side is invariant under P</td><td>a <strong>symmetry</strong> of one side</td><td><strong>Does not follow from S1</strong></td></tr>
+</tbody></table>
+<p><strong>A necessary clarification.</strong> S1 requires no axis pairing at the 4DD level. We do not claim that axis 1 on the L side equals axis 1 on the R side (the Generation Paper, G1, argues that no such canonical identification exists). The claim is only that L-3DD <em>as a whole</em> and R-3DD <em>as a whole</em> mirror one another — <strong>and it is precisely this "as a whole, of one another" that prevents S1 from delivering any constraint on a single side.</strong></p>
+<p><strong>Level.</strong> Near-theorem (supported along two independent lines: ZFCρ and the DD axiom chain).</p>
+<h3>§2.4 Bidirectional information isolation between DD levels</h3>
+<p>The Generation Paper's G5 (Isospin Globality) establishes a parallel argument: colour (3DD) collapses to a colour singlet under cross-block projection, while isospin (2DD) survives intact. The reason is that isospin originates in the deeper, shared 2DD layer, and 3DD processes cannot destroy it.</p>
+<p>The argument of §4 below runs in the opposite direction: 3DD structure does not inherit 2DD breaking. The 2DD chiral splitting introduces an L-R asymmetry — the origin of CP violation — but that asymmetry is encapsulated within 2DD and is not transmitted to 3DD.</p>
+<p>Taken together, the two directions constitute a general principle:</p>
+<p>$$\boxed{\textbf{Information isolation between DD levels is bidirectional.}}$$</p>
+<p>Lower-level structure is not destroyed by higher-level processes (G5); higher-level structure does not inherit lower-level breaking (§4).</p>
+<p><strong>This principle is independent of the mirror relation of §2.3</strong> and is upstream of §4.</p>
 <hr>
-<h3>§3 Core Argument</h3>
-<h4>§3.1 Conditional Theorem (bare θ = 0)</h4>
-<p><strong>Statement.</strong> Under L-R 3DD mirror symmetry (Proposition S1), the bare QCD vacuum angle θ = 0.</p>
-<p><strong>Proof.</strong></p>
+<h2>§3 The Mirror No-Go</h2>
+<h3>§3.1 Proposition N1</h3>
+<p>Three relevant facts about SAE's dual-4DD structure are already in print:</p>
+<table>
+<thead><tr>
+<th>Fact</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>The dual 4DDs are causally disconnected (opposite time arrows); <strong>constraints cannot be imposed locally across a causal boundary — only global bookkeeping is available</strong></td><td>Paper I, §5.4</td></tr>
+<tr><td>Our observable universe is <strong>one side of one dual-4DD pair within the left-handed 3DD branch</strong></td><td>Prequel, §4.4</td></tr>
+<tr><td>4DD light cones belonging to different branches or axes do not overlap; causal structures are independent. Right-handed gauge topology is <strong>isolated in the opposite chiral branch</strong></td><td>Prequel, §5.1 and §7, Prediction 4</td></tr>
+</tbody></table>
+<p>It follows that parity P maps our side's 3DD to the <strong>opposite side's</strong> 3DD, and the opposite side is causally inaccessible.</p>
+<p><strong>Proposition N1 (mirror no-go).</strong> Let $S_L$ and $S_R$ be two causally disconnected 3DD sectors, let P exchange them, and let P flip the sign of θ. Then what follows is at most the cross-side pairing relation</p>
+<p>$$\theta_L = -\theta_R$$</p>
+<p><strong>and not</strong> $\theta_L = 0$.</p>
+<p><strong>Proof.</strong> The fixed-point set of P is empty: P exchanges two disjoint sectors. A transformation carrying $\mathcal{L}_L$ into $\mathcal{L}_R$ constrains, by its invariance, the <strong>combined</strong> system $\mathcal{L}_L \oplus \mathcal{L}_R$, not $\mathcal{L}_L$. Obtaining $\theta_L = 0$ requires a parity operation mapping $S_L$ <strong>into itself</strong> — that is, $S_L$ must be P-symmetric on its own. This is strictly stronger than "$S_L$ and $S_R$ mirror one another," and S1 does not supply it. □</p>
+<p><strong>Level.</strong> Theorem (conditional on causal disconnection, a structural fact of SAE).</p>
+<h3>§3.2 A second layer: even the global paired zero is not delivered</h3>
+<p>Suppose one grants $\theta_{{\rm QCD},L} = -\theta_{{\rm QCD},R}$. It still does not follow that</p>
+<p>$$\bar\theta_L = -\bar\theta_R$$</p>
+<p>because $\bar\theta = \theta_{\rm QCD} + \arg\det M_q$, and <strong>the transformation law of the quark mass matrices and of their determinant phase under the cross-side map has not been given</strong>. By the discipline of §1.1, $\theta_{\rm QCD}$ and $\arg\det M_q$ each migrate under chiral basis changes; their cross-side correspondence must be established separately and cannot be inherited from the transformation law of the bare θ alone.</p>
+<p>$$\boxed{\text{Current status: the single-side zero is refuted; the global paired zero is undelivered.}}$$</p>
+<h3>§3.3 The scope of N1, and what it does not exclude</h3>
+<p><strong>N1 is not specific to SAE.</strong> It applies to any construction that realises parity as a map between two non-communicating sectors. Any such construction seeking to resolve the local strong CP problem must separately specify how parity acts <strong>within</strong> the sector in question. The proof invokes a single purely structural fact — that the fixed-point set of P is empty — and depends on no model detail.</p>
+<p><strong>N1 does not close off every single-sided strong-CP mechanism.</strong> It proves none of the following:</p>
+<ul>
+<li>that the QCD sector cannot possess some other exact CP symmetry;</li>
+<li>that a UV completion cannot enforce $\bar\theta = 0$;</li>
+<li>that a Nelson-Barr-type mass-matrix mechanism is impossible;</li>
+<li>that the axion does not exist.</li>
+</ul>
+<p><strong>It refutes exactly one route: the causally disconnected mirror.</strong></p>
+<p><strong>Falsification condition for N1</strong> (internal to the framework; no experiment required). If it can be shown that SAE's structure admits a parity realisation mapping our side <strong>into itself</strong> — either because the two sides are not causally disconnected after all, or because some other parity operation carries L-3DD back to L-3DD — then N1 fails. This condition is tied directly to Paper I §5.4 and to Prequel §4.4 and §5.1: should the reading of "causal disconnection" at those three places be revised, the principal result of this paper must be re-examined.</p>
+<hr>
+<h2>§4 Yukawa Emergence: Decoupling CKM CP from θ̄</h2>
+<p>> This section depends neither on the mirror relation of §2.3 nor on anything in §3. It rests on the constitutive ordering of the Generation Paper (G7).</p>
+<h3>§4.1 Constitutive ordering</h3>
+<p>In the Standard Model the Yukawa matrix $Y$ discharges two functions at once: mass generation ($M = Yv$) and weak mixing (CKM arises from the mismatch in diagonalising $Y_u$ and $Y_d$). $Y$ is complex, so its complex phase enters $M$ and CKM simultaneously and the two cannot be separated. <strong>This is the root of the strong CP problem</strong>: one cannot retain CKM CP violation while setting $\arg\det(M) = 0$ without introducing additional machinery.</p>
+<p><strong>Yukawa emergence principle.</strong> Under SAE's constitutive ordering, the Yukawa coupling is not a fundamental object but a projective superposition, in the low-energy effective theory, of a 3DD mass structure and a 2DD mixing structure.</p>
+<p>SAE's constitutive ordering (Generation Paper, G7) separates the two functions:</p>
 <ol>
-<li>L-R 3DD mirror symmetry holds (Proposition S1).</li>
-<li>The θ-term changes sign under P: θ → −θ (standard QCD result).</li>
-<li>Since 3DD possesses exact L-R mirror symmetry, any term appearing in the 3DD effective description must be invariant under P.</li>
-<li>By 2 and 3: θ = −θ, therefore θ = 0. □</li>
-</ol>
-<p><strong>Level.</strong> Conditional theorem (conditional on Proposition S1).</p>
-<h4>§3.2 Positive-Real Determinant Proposition (det(M_u M_d) > 0)</h4>
-<p><strong>Statement.</strong> Under SAE's mass construction mechanism, the quark mass operators M_u, M_d take values in GL⁺(3,ℝ) (real matrices with positive determinant), so that arg det(M_u M_d) = 0.</p>
-<p><strong>Argument.</strong> In SAE, the quark mass matrix is constructed in two steps (Generation Paper G3, G6):</p>
-<p>Step one: topological barriers yield the natural mass. Different generations receive different masses from the topological distance between the observer block and source blocks. The natural mass matrix D_nat is a real positive diagonal matrix. det(D_nat) > 0.</p>
-<p>Step two: the 3DD color-field redistribution operator R acts on D_nat. In SAE's 3DD dictionary, the pure color response operator is taken to be real. This is treated as a working interpretation under 3DD mirror symmetry: a complex phase would require a preferred orientation to define its sign, and 3DD mirror symmetry forbids any preferred orientation. The present paper treats "R is real" as a direct consequence of 3DD mirror; its full formalization is deferred to future work.</p>
-<p>Furthermore, R evolves continuously from the identity operator I. The chisel-construct sequence is gradual: color-field redistribution is not a discontinuous jump, but a continuous evolution from "no redistribution" (R = I) to the actual redistribution strength. det(I) = 1 > 0. During continuous evolution, det(R) changes continuously. det(R) = 0 would mean some mass eigenvalue is driven to zero (matrix degeneracy). From the DD-level perspective, det(R) = 0 means the oriented volume of 3DD color space collapses to zero, reducing 3DD to 2DD. This directly violates the premise that 3DD has already completed its chisel-construct formation. det(R) < 0 would mean 3DD undergoes an inversion (reversal of spatial orientation), but 3DD is constructed within a subspace whose chiral direction has already been anchored by 2DD; it has no degree of freedom to execute a global odd-parity reversal. Therefore det(R) > 0. This conclusion also has a posteriori support: no zero-mass quarks exist experimentally (lattice QCD excludes m_u = 0), ruling out the degenerate case det(R) = 0.</p>
-<p>In total: M = R · D_nat, where R is real with det > 0 and D_nat is real positive diagonal with det > 0. Therefore M is a real matrix with det(M) > 0. This holds for both M_u and M_d.</p>
-<p>$$\det(M_u M_d) = \det(M_u) \cdot \det(M_d) > 0$$</p>
-<p>$$\arg\det(M_u M_d) = 0$$</p>
-<p><strong>Level.</strong> Conditional proposition (conditional on Proposition S1 + Generation Paper G3/G6 mass construction + no zero-mass quarks).</p>
-<h4>§3.3 Yukawa Emergence Principle</h4>
-<p><strong>Statement.</strong> Under SAE's constitutive ordering, the Yukawa coupling is not a fundamental object but an emergent low-energy projection superposition of 3DD mass structure and 2DD weak mixing structure. The CKM complex phases originate from the 2DD weak vertex's readout structure, not from the mass matrix's complex entries. Therefore observed CP violation does not conflict with arg det(M_u M_d) = 0.</p>
-<p><strong>Argument.</strong></p>
-<p>In the Standard Model, the Yukawa matrix Y simultaneously serves two functions: mass generation (M = Yv) and weak mixing (the CKM matrix arises from the diagonalization mismatch of Y_u and Y_d). Y is a complex matrix, so complex phases inevitably enter both M and CKM simultaneously. This is precisely the root of the strong CP problem: one cannot maintain CKM CP violation while ensuring arg det(M) = 0, unless additional mechanisms (axion, parity, Nelson-Barr) are introduced.</p>
-<p>SAE's constitutive ordering (Generation Paper G7) separates these two functions:</p>
-<ol>
-<li>Mass is constructed independently at the 3DD level. Topological barrier heights determine the natural mass; color-field redistribution determines the actual mass. The definition of mass does not depend on the existence of 2DD weak force. Even if the weak force were turned off, quarks would still have mass.</li>
+<li><strong>Mass is constructed independently at the 3DD level.</strong> Topological barrier heights determine natural mass; colour-field redistribution determines actual mass. The definition of mass does not depend on the existence of the 2DD weak force — switch off the weak force, and quarks still have mass.</li>
 </ol>
 <ol>
-<li>Weak mixing is independently provided at the 2DD level. The 2DD weak force reads out the physical mass states already constructed by 3DD, producing inter-generational transition amplitudes. The CKM matrix is the output of this readout process, not a byproduct of mass-matrix diagonalization.</li>
+<li><strong>Weak mixing is supplied independently at the 2DD level.</strong> The 2DD weak force reads out physical mass eigenstates already constructed by 3DD, generating inter-generational transition amplitudes. The CKM matrix is the output of that readout, not a by-product of diagonalising the mass matrix.</li>
 </ol>
 <ol>
-<li>The 2DD chiral splitting distinguishes L from R, permitting complex structure (CP violation) to reside in the weak vertex. This is the source of the experimentally observed CKM CP violation.</li>
+<li><strong>The 2DD chiral splitting distinguishes L from R</strong>, permitting complex structure — CP violation — to reside in the weak vertex. This is the origin of the CKM CP violation observed in experiment.</li>
 </ol>
 <ol>
-<li>The low-energy experimentalist simultaneously observes mass and weak force (the W boson simultaneously changes flavor and transfers momentum) and uses a unified Yukawa matrix Y to describe both. This Y is a complex matrix because it superimposes the real mass information from 3DD with the complex mixing information from 2DD. But Y is not a fundamental object; it is a projection superposition of two different DD levels.</li>
+<li>A low-energy experimenter observes mass and weak force together (a W boson simultaneously changes flavour and transfers momentum) and describes both with a single Yukawa matrix $Y$. $Y$ is complex because it superposes 3DD mass information with 2DD complex mixing information in one object. <strong>But $Y$ is not fundamental</strong>; it is a projective superposition of two distinct DD levels.</li>
 </ol>
-<p>Therefore in SAE: M comes from 3DD (real matrix, det > 0), V comes from 2DD (unitary matrix, may carry complex phases). V does not participate in the construction of M and does not appear in the expression for det(M_u M_d). arg det(M_u M_d) = 0 and CKM CP violation coexist without contradiction.</p>
+<p>Hence, in SAE: $M$ comes from 3DD; $V$ comes from 2DD (a unitary matrix that may carry a complex phase). <strong>$V$ does not participate in the construction of $M$, and $V$ does not appear in the expression for $\det(M_u M_d)$.</strong></p>
 <p><strong>Level.</strong> Structural argument, dependent on the G7 constitutive ordering.</p>
-<h4>§3.4 Main Conclusion: The 3DD Contribution to θ̄ Vanishes</h4>
-<p><strong>Statement.</strong> Under Proposition S1 (L-R 3DD mirror) and the Yukawa emergence principle, all 3DD-level contributions to θ̄ vanish:</p>
-<p>$$\bar{\theta}<sub>\text{3DD</sub>} = \theta + \arg\det(M_u M_d) = 0 + 0 = 0$$</p>
-<p><strong>Argument chain.</strong></p>
-<table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Step</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Conclusion</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Dependency</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Level</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.1</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Proposition S1</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional theorem</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.2</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">M ∈ GL⁺(3,ℝ), det(M) > 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">S1 + G3/G6 + continuous deformation + 3DD collapse prohibition</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional proposition</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">V does not enter det(M); CKM CP is not contradictory</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">G7 constitutive ordering + Yukawa emergence</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Structural argument</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.4</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄_3DD = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Synthesis of above</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional conclusion</td></tr>
-</tbody></table>
-<h4>§3.5 Cross-Level Leakage</h4>
-<p>The conclusion of §3.4 is that within the 3DD level, θ̄ = 0. However, SAE's level isolation is not an absolute prohibition. The remainder develops as it must is a general principle of the SAE framework. Cross-level leakage exists between DD levels, but is strongly suppressed by the "distance" between levels.</p>
-<p>In the specific case of this paper: the CKM complex phase carried by the 2DD weak vertex can in principle leave a faint imprint on 3DD observables through cross-level effects. The neutron electric dipole moment d_n is the observable carrier of this imprint. Standard Model calculations (the higher-order CKM contribution to d_n) yield ~10⁻³² e·cm, six orders of magnitude below current experimental sensitivity and four orders below next-generation targets (~10⁻²⁸ e·cm).</p>
-<p>In SAE, this extremely small CKM contribution is interpreted as 2DD → 3DD cross-level leakage. The leakage is profoundly weak: CP violation within 2DD is an O(1)-scale effect (CKM phase ~1 radian, producing significant CP asymmetries in K and B meson systems), yet when it crosses the level boundary and projects onto a 3DD entity (the neutron EDM), it is suppressed to ~10⁻³² e·cm. This suppression by tens of orders of magnitude is the quantitative manifestation of the extremely high strength of DD level isolation.</p>
-<p>SAE's complete statement on θ̄ is therefore:</p>
-<p>$$\bar{\theta} = 0 + \epsilon<sub>\text{leak</sub>}, \qquad |\epsilon<sub>\text{leak</sub>}| \ll 10<sup>-10</sup>$$</p>
-<p>where ε_leak is the 2DD → 3DD cross-level leakage term, far below any foreseeable experimental sensitivity. The experimental consequences are the same as for "θ̄ = 0 exactly," but the ontological statement differs: SAE does not claim absolute prohibition, only that level isolation renders the leakage negligibly small. This is fully consistent with SAE's general principle that the remainder develops as it must: levels can break through to each other, but doing so is extremely difficult.</p>
+<h3>§4.2 What the decoupling delivers, and what it does not</h3>
+<p>$$\boxed{\textbf{Delivered:}\ \text{CKM CP and }\bar\theta\text{ are decoupled.}}$$</p>
+<p>One sharp form of the Standard Model's strong CP problem asks: the CKM phase is $\mathcal{O}(1)$ ($\delta_{\rm CP} \approx 1.14$ rad, $\sin\delta_{\rm CP} \approx 0.91$), so why is the co-originating $\bar\theta$ below $10^{-10}$? In SAE the co-origination does not hold — the two arise at different DD levels and are <strong>mutually unentangled</strong>. The question "why so disparate in magnitude given a common origin" therefore does not arise.</p>
+<p>$$\boxed{\textbf{Not delivered:}\ \textbf{why }\bar\theta\textbf{ is small.}}$$</p>
+<p>The decoupling shows only that the CKM phase does not flow into $\bar\theta$. It says <strong>nothing</strong> about why $\bar\theta$ itself takes an anomalously small value. $\arg\det M$ has an independent origin (§4.3), and SAE currently leaves it undetermined.</p>
+<p><strong>Two statements not to be conflated:</strong></p>
+<ul>
+<li>"$\bar\theta$ is unrelated to CKM CP" — <strong>claimed by this paper</strong></li>
+<li>"$\bar\theta$ is therefore zero or tiny" — <strong>not claimed by this paper</strong></li>
+</ul>
+<h3>§4.3 The origin of arg det M</h3>
+<p>In SAE the quark mass matrix is constructed in two steps (Generation Paper, G3 and G6):</p>
+<p><strong>Step one: topological barriers give natural mass.</strong> Mass differences across generations arise from the topological distance between the observer block and the source block. The natural-mass matrix $D_{\rm nat}$ is <strong>real, positive, and diagonal</strong>, with $\det(D_{\rm nat}) > 0$.</p>
+<p><strong>Step two: the 3DD colour-field redistribution operator $R$ acts on $D_{\rm nat}$</strong>, giving $M = R \cdot D_{\rm nat}$.</p>
+<p>Concerning $R$, SAE's structure supplies one constraint:</p>
+<p><strong>$\det R > 0$.</strong> $R$ deforms continuously from the identity: the chisel-construct sequence proceeds stepwise, and colour-field redistribution is not a single jump but a continuous evolution from "no redistribution" ($R = I$) to the actual redistribution strength. Since $\det(I) = 1 > 0$ and $\det R$ varies continuously along the deformation, $\det R$ cannot change sign without passing through zero. But $\det R = 0$ would drive some mass eigenvalue to zero — the oriented volume of the 3DD colour space collapsing, 3DD degenerating to 2DD — which contradicts the premise that 3DD has completed its construction, and is in any case excluded a posteriori (lattice QCD excludes $m_u = 0$). And $\det R < 0$ would require an inversion of 3DD, a reversal of spatial orientation; but 3DD is built inside a subspace whose chiral direction has already been anchored by 2DD, and possesses no degree of freedom with which to execute a global odd-parity reversal. Hence $\det R > 0$.</p>
+<p><strong>But $\det R > 0$ does not give $\arg\det M = 0$.</strong> The former says $R$ does not reverse orientation; the latter requires $R$ to be <strong>real</strong>.</p>
+<p>$$\boxed{\text{The entire origin of }\arg\det M\text{ resides in the \textbf{phase structure} of the colour-field redistribution operator }R,\text{ which SAE currently leaves undetermined.}}$$</p>
+<p>This is a <strong>concrete, computable object</strong> — considerably more concrete than "prove that some symmetry holds." It is the item on this paper's open list most likely to be settled first (§7.2).</p>
+<h3>§4.4 On radiative stability</h3>
+<p>Parity and Nelson-Barr constructions face a radiative-stability difficulty: a tree-level $\bar\theta = 0$ may be reignited by loop corrections. The reason is that they operate inside the Standard Model EFT framework — mass and weak mixing derive from a single Yukawa object, so loops can shuttle phase between them.</p>
+<p>SAE's situation differs. The separation of $M$ from $V$ is not a tree-level approximation but a defining property of the DD level structure. DD levels are not a perturbative expansion of an effective theory: 3DD is not "tree-level 3DD plus loop corrections," any more than 1DD is "tree-level charge plus corrections toward 2DD." Levels are ontological structure, and the notion of "a quantum correction breaking a level assignment" has no referent.</p>
+<p><strong>What this argument protects is the decoupling of §4.2, not any zero.</strong> It shows that loops cannot transport the CKM phase into $\det(M)$, because the two belong to distinct DD levels rather than being two faces of one Yukawa object. This paper claims no tree-level $\bar\theta = 0$, and there is accordingly nothing for loops to reignite.</p>
+<p>What SAE still owes is a systematic projection rule carrying stratified DD objects down to low-energy observables. §4.1 supplies a fragment of that projection, not the theory of it. This is an open problem for SAE's physics series as a whole, not for this paper alone (§7.2).</p>
 <hr>
-<h3>§4 Comparison with Mainstream Solutions and Falsifiable Predictions</h3>
-<h4>§4.1 Three-Way Comparison</h4>
+<h2>§5 The Status of θ̄</h2>
+<h3>§5.1 A boundary parameter</h3>
+<p>Combining §3 and §4, SAE's honest statement about $\bar\theta$ is:</p>
+<p>$$\boxed{\bar\theta\text{ is a dimensionless, anomalously small \textbf{boundary parameter} that SAE does not currently explain.}}$$</p>
+<p><strong>Four consequences, stated individually:</strong></p>
+<ol>
+<li><strong>SAE does not resolve strong CP naturalness.</strong> Why $\bar\theta < 10^{-10}$ when its natural value would be $\mathcal{O}(1)$ — SAE has no mechanism.</li>
+<li><strong>SAE neither predicts nor excludes the axion.</strong> The Peccei-Quinn motivation is in SAE neither removed nor established.</li>
+<li><strong>SAE offers no independent numerical prediction for the neutron electric dipole moment.</strong> Experiment merely <strong>constrains this boundary parameter</strong>.</li>
+<li><strong>Neutron EDM experiments do not adjudicate SAE's strong-CP content.</strong> Whether or not a signal is found, SAE has placed no bet here.</li>
+</ol>
+<h3>§5.2 Its place in the boundary-condition table</h3>
+<p>The boundary-condition table of the Four Forces series requires an additional column. $\bar\theta$ differs <strong>in type</strong> from the existing entries:</p>
 <table>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Framework</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">SM + new symmetry/particle</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">SM + parity/special structure</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD-level ontology</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">bare θ suppression</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Dynamical (axion field)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Parity symmetry</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD L-R mirror (structural)</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">arg det(M) suppression</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Axion handles simultaneously</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hermitian Yukawa etc.</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Mass from 3DD construction (real); Yukawa emergence</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">CKM CP source</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Complex Yukawa</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Complex Yukawa (soft parity breaking)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2DD weak vertex independent readout</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄ value</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Dynamically → 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Tree-level 0; loops may regenerate</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD contribution = 0; cross-level leakage far below experimental sensitivity</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">New particles required</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Yes (axion)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Possibly (vector-like quarks etc.)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">No</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Radiative stability</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Automatic (axion dynamics)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Difficult (loop regeneration)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Not applicable (DD levels are not EFT perturbative expansion)</td></tr>
+<thead><tr>
+<th>Column</th>
+<th>Entry</th>
+<th>Type</th>
+</tr></thead><tbody>
+<tr><td>Unit / scale inputs</td><td>$\hbar$, $G_*$, $m_e$</td><td>Scales; $\mathcal{O}(1)$ in natural units</td></tr>
+<tr><td>Dimensionless coupling</td><td>$\alpha_{\rm em}$</td><td>Dimensionless, $\sim 10^{-2}$</td></tr>
+<tr><td><strong>Constrained CP angle</strong></td><td>$\bar\theta$</td><td><strong>A dimensionless angle; natural value $\mathcal{O}(1)$, measured $< 10^{-10}$; and not a known exact value but a free parameter with an upper bound</strong></td></tr>
 </tbody></table>
-<h4>§4.2 On Radiative Stability</h4>
-<p>Parity and Nelson-Barr solutions face the difficulty of radiative stability: tree-level θ̄ = 0 can be reignited by loop corrections. This is because they operate within the Standard Model EFT framework, where mass and weak mixing originate from the same Yukawa object, and loops can transport phase between them.</p>
-<p>SAE's situation is different. The separation of M and V is not a tree-level approximation but a defining property of DD-level structure. DD levels are not a perturbative expansion of an effective theory. 3DD is not "tree-level 3DD plus loop corrections," just as 1DD is not "tree-level charge plus corrections to 2DD." Levels are ontological structure; there is no concept of "quantum corrections breaking level assignment."</p>
-<p>Accordingly, SAE does not owe a radiative stability proof of the kind required within the Standard Model framework. SAE does, however, still owe a systematic projection rule from DD object stratification to low-energy observables. Section 3 of this paper provides the first step of this projection, from DD-level structure to the vanishing of θ̄'s 3DD contribution, rather than a complete DD-to-observable projection theory. Establishing the full projection rule is an open problem for the entire SAE physics series (§5.2), not specific to this paper.</p>
-<h4>§4.3 Falsifiable Predictions</h4>
-<p><strong>Prediction 1: The 3DD contribution to θ̄ is zero.</strong> Within the 3DD level, the strong CP source term is exactly zero. Cross-level leakage (the projection of the 2DD CKM phase onto 3DD) is in principle nonzero but lies far below any foreseeable experimental sensitivity (the literature estimates the CKM contribution to d_n at ~10⁻³² e·cm). The experimental consequences are therefore the same as "θ̄ = 0."</p>
-<p>This is a distinguishable prediction between SAE and parity/NB schemes. Parity/NB deviations in θ̄ arise from loop regeneration within the same framework and may range from 10⁻¹⁵ to 10⁻¹⁰ (depending on model details), far above SAE's cross-level leakage. If future neutron EDM experiments detect a nonzero signal at 10⁻²⁸ e·cm precision, both SAE and parity/NB would require explanation; but if the signal level is above 10⁻¹⁵, it would point toward parity/NB-type mechanisms rather than SAE's cross-level leakage.</p>
-<p><strong>Prediction 2: No strong-CP-motivated QCD axion is required.</strong> The basic motivation of the Peccei-Quinn mechanism, that θ needs a dynamical zeroing mechanism, does not exist in SAE. If axion search experiments detect a signal within the QCD axion's theoretically favored parameter space, this paper is falsified.</p>
-<p>Narrowed statement: this paper predicts the nonexistence of a QCD axion required as a strong CP solution. Axion-like particles may have motivations independent of strong CP (e.g., dark matter); this paper makes no prediction about those.</p>
-<p><strong>Prediction 3: All experimentally observed CP violation is attributable to the weak sector.</strong> This is consistent with existing experimental data: all confirmed CP violations (K, B, D meson systems) have been observed in processes mediated by the weak force.</p>
-<h4>§4.4 Anti-Prediction Summary Table</h4>
-<p>Together with the three hard anti-predictions from Paper VI, the SAE Four Forces series has now issued five hard anti-predictions:</p>
+<p>$$\boxed{\bar\theta\text{ is the only "unnaturally small" entry in that table.}}$$</p>
+<p>To place a quantity in the boundary-condition table means "this framework does not derive it." It does <strong>not</strong> mean "this framework has explained why it takes that value." For $\hbar$, $G_*$, and $m_e$, failing to derive a scale is unremarkable — General Relativity likewise does not predict the numerical value of $G$. For $\bar\theta$, what goes underived is an <strong>anomalously small dimensionless number</strong>, and that is a heavier debt, to be recorded as such.</p>
+<h3>§5.3 Comparison with the cosmological constant</h3>
+<p>SAE has something to say about the cosmological constant's $10^{-122}$ and nothing to say about $\bar\theta$'s $10^{-10}$. The two stand differently, but <strong>neither is closed</strong>:</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Anti-prediction</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Source</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Adjudicating experiment</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Timeline</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Level</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">No GUT proton decay</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Paper VI</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hyper-K</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">~2030s</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hard</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">No magnetic monopoles</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Paper VI</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Monopole searches</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Ongoing</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hard</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">No extra gauge bosons</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Paper VI</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">LHC/FCC</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">~2030s-2040s</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hard</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>3DD contribution to θ̄ = 0</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>Paper VIII</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>Neutron EDM</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>~2025-2035</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>Hard</strong></td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>No strong-CP-motivated QCD axion</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>Paper VIII</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>ADMX, IAXO etc.</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>~2025-2035</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>Hard</strong></td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Cross-level leakage far below foreseeable sensitivity</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Paper VIII</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Neutron EDM precision improvements</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Long-term</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Structural expectation</td></tr>
+<thead><tr>
+<th></th>
+<th>$\Lambda$</th>
+<th>$\bar\theta$</th>
+</tr></thead><tbody>
+<tr><td>Structural candidate</td><td><strong>Yes</strong> (frequency difference of the dual topological clocks)</td><td><strong>None</strong></td></tr>
+<tr><td>No-go audit</td><td><strong>Yes</strong> (Cosmology Paper VII)</td><td>N1 of this paper</td></tr>
+<tr><td>Realisation-level target relation</td><td><strong>Yes</strong> ($\mathcal{N}^2\lambda k = 8$)</td><td>None</td></tr>
+<tr><td>Parameter-free action-level realisation</td><td><strong>Not closed</strong></td><td>Not closed</td></tr>
 </tbody></table>
-<p>Five hard anti-predictions plus one structural expectation, all experimentally adjudicable.</p>
+<p>$\Lambda$ has a structural candidate and a no-go audit, though its realisation level remains unclosed; $\bar\theta$ <strong>does not even have a corresponding structural candidate</strong>. The two should not be described as standing at the same level.</p>
 <hr>
-<h3>§5 Discussion</h3>
-<h4>§5.1 Dependency Chain Summary</h4>
-<p>This paper's argument depends on the following published or near-theorem-level results:</p>
+<h2>§6 Comparison and Falsifiability</h2>
+<h3>§6.1 Three classes of approach</h3>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Dependency</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Source</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Level</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">L-R 3DD mirror symmetry</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD chisel-construct sequence + ZFCρ</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Near-theorem</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Mass from 3DD topological barriers</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Generation Paper G3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Structural argument</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD color-field redistribution conserves doublet total mass</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Generation Paper G6</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional theorem</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Constitutive ordering: mass precedes weak mixing</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Generation Paper G7</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Structural argument</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Isospin universality (G5 parallel)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Generation Paper G5</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Theorem</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">nDD → SU(n) (not U(n))</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Paper I</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Theorem</td></tr>
+<thead><tr>
+<th></th>
+<th>Axion/PQ</th>
+<th>Parity/NB</th>
+<th>SAE</th>
+</tr></thead><tbody>
+<tr><td>Framework</td><td>SM + new symmetry/particle</td><td>SM + parity/special structure</td><td>DD level ontology</td></tr>
+<tr><td>Suppressing bare θ</td><td>Dynamical (axion field)</td><td>Parity symmetry</td><td><strong>No mechanism</strong></td></tr>
+<tr><td>Suppressing $\arg\det M$</td><td>Handled by the same axion field</td><td>Hermitian Yukawa, etc.</td><td><strong>No mechanism</strong></td></tr>
+<tr><td>Origin of CKM CP</td><td>Complex Yukawa</td><td>Complex Yukawa (soft parity breaking)</td><td><strong>Independent 2DD weak-vertex readout</strong></td></tr>
+<tr><td>CKM CP vs $\bar\theta$</td><td>Co-originating</td><td>Co-originating</td><td><strong>Decoupled</strong> (§4)</td></tr>
+<tr><td>Value of $\bar\theta$</td><td>Dynamically → 0</td><td>0 at tree level; loops may reignite</td><td><strong>Boundary parameter, unexplained</strong></td></tr>
+<tr><td>Requires new particles</td><td>Yes (axion)</td><td>Possibly</td><td><strong>No position taken</strong></td></tr>
+<tr><td>Radiative stability</td><td>Automatic</td><td>Difficult (loop regeneration)</td><td>Not applicable (DD levels are not an EFT expansion; see §4.4)</td></tr>
 </tbody></table>
-<p>Does not depend on: L-R 4DD axis pairing (G1), OR/AND non-mixing assumption, Mass-Channel Proportionality, or any continuous parameters or boundary conditions.</p>
-<h4>§5.2 Weaknesses and Open Problems</h4>
-<p><strong>1. Theorem-level proof of L-R 3DD mirror symmetry.</strong> Currently near-theorem level rather than theorem. If this symmetry has a tiny breaking, θ̄ may not be exactly zero but extremely small. Promoting L-R 3DD mirror from near-theorem to theorem is future work.</p>
-<p><strong>2. Formalization of the Yukawa emergence principle.</strong> Section 3.3 argued that the Yukawa coupling is an emergent effective description rather than a fundamental object in SAE. This principle is aligned with G7's constitutive ordering but has not yet been written as an independent theorem. More precise formalization, for instance proving that under the G7 constitutive ordering there exists no mechanism for CKM phases to flow back into det(M), is deferred to future work.</p>
-<p><strong>3. Electroweak baryogenesis.</strong> Can the CKM phase provide sufficient CP violation to drive baryon asymmetry? This is an independent question that does not affect this paper's argument about θ̄. However, if CKM is the only CP source, the sufficiency of baryogenesis requires separate argument.</p>
-<p><strong>4. Quantitative theory of cross-level leakage.</strong> Section 3.5 noted that 2DD → 3DD cross-level leakage is in principle nonzero but extremely small. The CKM contribution to d_n (~10⁻³² e·cm) provides a posteriori calibration of the leakage magnitude. However, SAE currently lacks an a priori theory for the leakage magnitude. Whether the leakage rate can be calculated from the "distance" between DD levels, analogous to how topological distance determines mass hierarchy in the Generation Paper, is a meaningful open problem.</p>
-<p><strong>5. Complete projection rule from DD object stratification to low-energy observables.</strong> This paper provides the DD-level to θ̄ and CKM correspondence. Establishing a more systematic DD-to-observable projection rule has significance for the entire SAE physics series, not just this paper.</p>
-<h4>§5.3 Broader Significance</h4>
-<p>The core message of this paper is not a new technical solution but an ontological reclassification:</p>
-<p>The strong CP "problem" is a product of the Standard Model's Yukawa ontology. The Standard Model treats the Yukawa coupling as fundamental, so complex phases inevitably enter the mass matrix, arg det(M) can in principle be nonzero, and one must explain why it happens to be zero.</p>
-<p>In SAE, mass comes from 3DD topological barriers (real matrices), and weak mixing comes from 2DD readout (which may carry complex phases). The two belong to different DD levels; complex phases do not enter the mass matrix. arg det(M) = 0 is not the result of fine-tuning, not the result of symmetry protection, not the result of dynamical relaxation. It is an automatic consequence of mass and weak mixing belonging to ontologically distinct levels.</p>
-<p>If this picture is correct: the QCD axion's basic motivation as a strong CP solution collapses (axion-like particles may have independent motivations). The strong CP "problem" is reclassified: it is not a problem, but an artifact of the Standard Model's Yukawa ontology.</p>
-<hr>
-<h3>Proposition Status Table</h3>
+<p><strong>One point to read off the table.</strong> SAE's entries in the first two rows are <strong>blanks</strong>, not "an alternative mechanism." This paper does not compete with axion/PQ or Nelson-Barr as a solution. It differs from them only in the fifth row.</p>
+<h3>§6.2 Falsifiability status</h3>
+<p><strong>This paper places no independent bet on experiment.</strong> $\bar\theta$ is a boundary parameter (§5.1); neither neutron EDM measurements nor axion searches adjudicate it.</p>
+<p><strong>This paper does carry one internal falsification point</strong>: the falsification condition for N1 (§3.3) — should SAE's structure admit a parity realisation mapping our side into itself, N1 fails.</p>
+<p><strong>A consistency observation (not an anti-prediction).</strong> All confirmed CP violation (in the K, B, and D meson systems) has been observed in weak-mediated processes, consistent with the picture of §4. <strong>But the Standard Model gives the same description, and the two are indistinguishable here</strong>; the observation therefore does not constitute an anti-prediction.</p>
+<h3>§6.3 Hard anti-predictions of the Four Forces series</h3>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Proposition</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Status</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Dependency</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">Testable</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">L-R 3DD mirror (S1)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Near-theorem</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD chisel-construct + ZFCρ</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Indirect</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">bare θ = 0 (§3.1)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional theorem</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">S1</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Neutron EDM</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">M ∈ GL⁺(3,ℝ) (§3.2)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional proposition</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">S1 + G3/G6 + continuous deformation</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Indirect</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Yukawa emergence (§3.3)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Structural argument</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">G7 constitutive ordering</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Indirect</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄_3DD = 0 (§3.4)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Conditional conclusion</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Synthesis of above</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Neutron EDM</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Cross-level leakage ≪ experimental precision (§3.5)</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Structural argument</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD level isolation general principle</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Neutron EDM precision improvements</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">No strong-CP-motivated axion</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hard anti-prediction</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄_3DD = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">ADMX, IAXO</td></tr>
+<thead><tr>
+<th>Anti-prediction</th>
+<th>Source</th>
+<th>Decisive experiment</th>
+<th>Window</th>
+<th>Level</th>
+</tr></thead><tbody>
+<tr><td>No GUT proton decay</td><td>Paper VI</td><td>Hyper-K</td><td>~2030s</td><td>Hard</td></tr>
+<tr><td>No magnetic monopoles</td><td>Paper VI</td><td>Monopole searches</td><td>Ongoing</td><td>Hard</td></tr>
+<tr><td>No additional gauge bosons</td><td>Paper VI</td><td>LHC/FCC</td><td>~2030s–2040s</td><td>Hard</td></tr>
+</tbody></table>
+<p>$$\boxed{\text{Three hard anti-predictions, all from Paper VI, all experimentally decidable.}}$$</p>
+<p><strong>This paper contributes no hard anti-prediction.</strong> The three from Paper VI rest on the structural judgment that Spin(10) is a <strong>classification group rather than a gauge group</strong>, and bear no dependency on the mirror argument of the present paper.</p>
+<hr>
+<h2>§7 Discussion</h2>
+<h3>§7.1 Dependency chain</h3>
+<table>
+<thead><tr>
+<th>Dependency</th>
+<th>Source</th>
+<th>Level</th>
+<th>Use here</th>
+</tr></thead><tbody>
+<tr><td>Dual 4DDs causally disconnected; only global bookkeeping across the boundary</td><td>Paper I, §5.4</td><td>Structural rule</td><td>Antecedent of N1</td></tr>
+<tr><td>Our universe is one side of a dual-4DD pair in the left-handed branch</td><td>Prequel, §4.4</td><td>Structural location</td><td>Antecedent of N1</td></tr>
+<tr><td>4DD light cones of different branches/axes do not overlap</td><td>Prequel, §5.1</td><td>Structural fact</td><td>Antecedent of N1</td></tr>
+<tr><td>Constitutive ordering: mass precedes weak mixing</td><td>Generation Paper, G7</td><td>Structural argument</td><td>Sole support of §4</td></tr>
+<tr><td>Mass from 3DD topological barriers</td><td>Generation Paper, G3</td><td>Structural argument</td><td>§4.3</td></tr>
+<tr><td>3DD colour-field redistribution preserves doublet total mass</td><td>Generation Paper, G6</td><td>Conditional theorem</td><td>§4.3</td></tr>
+<tr><td>Isospin globality (parallel to G5)</td><td>Generation Paper, G5</td><td>Theorem</td><td>§2.4</td></tr>
+<tr><td>L-R 3DD mirror <strong>relation</strong> (S1)</td><td>Chisel-construct sequence + ZFCρ</td><td>Near-theorem</td><td>§2.3; <strong>not used for single-side constraint</strong></td></tr>
+</tbody></table>
+<p><strong>This paper does not depend on</strong>: L-R 4DD axis pairing (G1); the no-mixing assumption for OR/AND; Mass-Channel Proportionality; any continuous parameter or boundary condition; any single-side parity symmetry.</p>
+<h3>§7.2 Open problems</h3>
+<p><strong>1. The anomalous smallness of $\bar\theta$ is unexplained by SAE.</strong> This is the largest blank left by the present paper. Listing $\bar\theta$ as a boundary parameter (§5) <strong>does not explain its smallness; it states plainly that it is not derived.</strong></p>
+<p><strong>2. The phase structure of the colour-field redistribution operator $R$.</strong> §4.3 shows that the entire origin of $\arg\det M$ resides here, and that SAE leaves it undetermined. <strong>This is a concrete, computable object</strong> and the item on this list most likely to be settled first.</p>
+<p><strong>3. Formalising the Yukawa emergence principle.</strong> §4.1 is this paper's only positive result. Its formalisation — proving that under the G7 constitutive ordering no mechanism returns the CKM phase to $\det(M)$ — is a <strong>load-bearing outstanding task</strong>, not optional future work.</p>
+<p><strong>4. Other routes to a single-sided strong-CP mechanism.</strong> N1 refutes only the causally disconnected mirror. The following remain open: whether the QCD sector possesses some other exact CP symmetry; whether a UV completion enforces $\bar\theta = 0$; whether a Nelson-Barr-type mass-matrix mechanism can be realised in SAE. <strong>The acceptance object is $\arg\det M_q$</strong>, the same as in item 2.</p>
+<p><strong>5. A quantitative theory of cross-level leakage.</strong> Information isolation between DD levels is very strong but not absolute; cross-level leakage exists in principle. Standard Model calculations give the CKM contribution to $d_n$ as roughly $10^{-32}$ e·cm, which may serve as an a posteriori calibration of the leakage scale — but that is <strong>a Standard Model result, not an SAE prediction</strong>. SAE currently has no theory giving the leakage magnitude from first principles. Whether the leakage rate can be computed from a "distance" between DD levels — by analogy with the topological distances that set mass hierarchies in the Generation Paper — is a meaningful open question.</p>
+<p><strong>6. A complete projection rule from DD to low-energy observables.</strong> §4.1 supplies a fragment. Establishing the systematic rule matters for SAE's entire physics series and is a prerequisite for item 3.</p>
+<p><strong>7. Electroweak baryogenesis.</strong> If CKM is the sole source of CP violation, the sufficiency of baryogenesis requires independent argument. This does not affect the present paper's treatment of $\bar\theta$.</p>
+<h3>§7.3 The value of a negative result</h3>
+<p>The principal result of this paper, N1, is negative. Two reasons make it worth publishing on its own.</p>
+<p><strong>First, its scope exceeds SAE.</strong> N1 states that any construction realising parity as a mirror between two non-communicating sectors cannot thereby resolve the local strong CP problem on either side. This excludes an entire class of approaches, and the reason for the exclusion is purely structural — the fixed-point set of parity is empty — with no dependence on model detail. Frameworks employing two-sided, mirror, parallel-universe, or CPT-paired structures, and wishing to suppress θ by parity, must first answer N1.</p>
+<p><strong>Second, within SAE it applies an existing rule in a new place.</strong> The rule of Paper I §5.4 — that constraints cannot be imposed locally across a causal boundary — had governed the two-sided bookkeeping of $\Lambda$, $B$, and $E$. This paper shows that it governs $\bar\theta$ as well, a quantity previously treated as suppressible by mirror symmetry alone.</p>
+<p>$$\boxed{\text{A correct negative result is sounder than an overstated positive one.}}$$</p>
+<p>As for the strong CP problem itself: within SAE it <strong>remains a problem</strong>. SAE's level separation dismantles half of the tension in the Standard Model version — the two quantities do not co-originate, so no explanation is owed for "why so disparate given a common origin." <strong>The other half stands, and SAE has no mechanism for it.</strong></p>
+<hr>
+<h2>Proposition Status Table</h2>
+<table>
+<thead><tr>
+<th>Proposition</th>
+<th>Status</th>
+<th>Depends on</th>
+<th>Testable</th>
+</tr></thead><tbody>
+<tr><td>L-R 3DD mirror <strong>relation</strong> (S1, §2.3)</td><td>Near-theorem</td><td>Chisel-construct sequence + ZFCρ</td><td>Indirectly</td></tr>
+<tr><td>Binary-label lemma (§2.3)</td><td>Lemma (canonical home: Physical-Quantity Ladder paper)</td><td>2DD splitting</td><td>Indirectly</td></tr>
+<tr><td><strong>Mirror no-go (N1, §3.1)</strong></td><td><strong>Theorem</strong> (conditional on causal disconnection)</td><td>Paper I §5.4 + Prequel §4.4/§5.1</td><td>Internal (§3.3)</td></tr>
+<tr><td>Global paired zero undelivered (§3.2)</td><td>Status statement</td><td>Absence of a cross-side transformation law for mass matrices</td><td>—</td></tr>
+<tr><td><strong>Yukawa emergence / CKM–θ̄ decoupling (§4.1–4.2)</strong></td><td><strong>Structural argument (principal positive result)</strong></td><td>Generation Paper G7</td><td>Indirectly</td></tr>
+<tr><td>$\det R > 0$ (§4.3)</td><td>Conditional proposition</td><td>Continuous deformation + 3DD closure + no massless quarks</td><td>Indirectly</td></tr>
+<tr><td>$\arg\det M$ undetermined (§4.3)</td><td>Open</td><td>—</td><td>—</td></tr>
+<tr><td>Bidirectional DD information isolation (§2.4)</td><td>General principle</td><td>G5 + §4</td><td>Indirectly</td></tr>
+<tr><td><strong>$\bar\theta$ as a boundary parameter (§5.1)</strong></td><td><strong>Registered</strong></td><td>—</td><td>Experiment constrains but does not adjudicate</td></tr>
 </tbody></table>
 <hr>
-<h3>References</h3>
-<h4>Strong CP Problem and θ̄</h4>
+<h2>Acknowledgments</h2>
+<p>This revision arose from a three-series consistency audit of SAE (July 2026), carried out collaboratively by four artificial intelligence systems in a division of labour.</p>
+<p><strong>Zilu (Claude)</strong> performed the horizontal cross-series audit of object identity, identified the conflict between §3.1, step 3 of v1 and the rule stated in Paper I §5.4, located the point of failure, and recognised that v1 §3.2 shared the same defect while v1 §3.3 was independent of both and could be retained.</p>
+<p><strong>Gongxihua (ChatGPT)</strong> performed derivational review and vertical reconciliation, confirmed the above diagnosis, added the second layer (that even the global paired zero is undelivered), and insisted that the audit object be $\bar\theta$ rather than the bare θ throughout.</p>
+<p><strong>Zixia (Gemini)</strong> contributed geometric and narrative review; <strong>Zigong (Grok)</strong> contributed adversarial stress-testing and independent reconstruction.</p>
+<p>Their contributions were confined to auxiliary checking, verification, and criticism. All intellectual decisions, status assignments, and final adjudications were made by the author, and do not constitute authorship of the scientific claims in this paper.</p>
+<p>The object discipline and evidential discipline followed here are set out in <em>Construction Constitution for the Three-Series Upgrade, v1.5</em>.</p>
+<hr>
+<h2>Author Responsibility Statement</h2>
+<p>The principal conclusion of v1 of this paper is withdrawn by the present v2. The grounds for the withdrawal, its scope, and the results that survive it are set out item by item in the v2 upgrade note below. The author no longer holds any claim withdrawn from v1; responsibility for every claim retained or newly introduced in this v2 rests with the author.</p>
+<p>This paper follows the principle "correct the error at once, and mark the correction": v1 is preserved in full in the Zenodo version history, neither deleted nor obscured.</p>
+<hr>
+<h2>v2 Upgrade Note</h2>
+<p>> This section is the complete record of changes from v1 to v2, provided for readers of v1 and for subsequent work citing this paper. <strong>The body does not compare versions passage by passage</strong>; readers of v2 alone may skip this section.</p>
+<p><strong>v1 was titled "The Hierarchical Dissolution of Strong CP."</strong> It claimed that SAE's L-R 3DD mirror symmetry pins the bare θ to zero, that the quark mass matrices constructed at 3DD take real positive determinants, and that consequently the 3DD contribution to $\bar\theta$ vanishes. <strong>v2 withdraws that claim, retitles the paper, and instead delivers a no-go, a weaker but independent structural result, and the registration of $\bar\theta$ as a boundary parameter.</strong></p>
+<h3>What changed</h3>
+<table>
+<thead><tr>
+<th>v1 section</th>
+<th>v1 content</th>
+<th>v2 disposition</th>
+</tr></thead><tbody>
+<tr><td>Title</td><td>The Hierarchical Dissolution of Strong CP</td><td><strong>Retitled</strong> (no dissolution is claimed)</td></tr>
+<tr><td>§3.1</td><td>Conditional theorem: bare θ = 0</td><td><strong>Withdrawn</strong>; <strong>step 3 of the proof does not hold</strong>. Rewritten as the no-go of v2 §3</td></tr>
+<tr><td>§3.2</td><td>Conditional proposition: $\arg\det M = 0$</td><td><strong>Withdrawn</strong>; its "3DD mirror forbids a preferred orientation" shares the defect of §3.1 step 3. The continuous-deformation argument for $\det R > 0$ <strong>does not depend on the mirror and is retained</strong> (v2 §4.3)</td></tr>
+<tr><td>§3.3</td><td>Yukawa emergence (supporting argument)</td><td><strong>Retained and promoted to the paper's principal positive result</strong> (v2 §4). It rests on Generation Paper G7, not on S1</td></tr>
+<tr><td>§3.4</td><td>Main conclusion $\bar\theta_{\rm 3DD} = 0$</td><td><strong>Withdrawn</strong> (both summands withdrawn)</td></tr>
+<tr><td>§3.5</td><td>Cross-level leakage</td><td><strong>Withdrawn</strong> (its antecedent was §3.4). The general principle of leakage moves to v2 §7.2 as an open problem</td></tr>
+<tr><td>§2.2</td><td>"If a theory possesses exact P symmetry"</td><td><strong>Qualified</strong>: P must map the theory <strong>into itself</strong> (v2 §2.2)</td></tr>
+<tr><td>§2.3(b)</td><td>The 1-bit argument</td><td>Renamed the <strong>binary-label lemma</strong>, with its scope narrowed; <strong>canonical home relocated to the Physical-Quantity Ladder paper</strong>, cited here only</td></tr>
+<tr><td>§4.3, Predictions 1 and 2</td><td>3DD contribution to θ̄ vanishes; no strong-CP axion</td><td><strong>Both withdrawn</strong></td></tr>
+<tr><td>§4.3, Prediction 3</td><td>CP violation confined to the weak sector</td><td><strong>Retained, downgraded to a consistency observation</strong> (indistinguishable from the Standard Model; not an anti-prediction)</td></tr>
+<tr><td>§4.4</td><td>Five hard anti-predictions plus one structural expectation</td><td><strong>Reduced to three</strong> (all from Paper VI, unaffected); <strong>this paper's contribution goes to zero</strong></td></tr>
+<tr><td>§5.3</td><td>"Strong CP is not a problem but an SM artifact"</td><td><strong>Reclassification withdrawn</strong>; the weaker claim is retained: the level structure <strong>decouples</strong> CKM CP from $\bar\theta$</td></tr>
+<tr><td>—</td><td>—</td><td><strong>New</strong>: Proposition N1 (mirror no-go); registration of $\bar\theta$ as a boundary parameter</td></tr>
+</tbody></table>
+<h3>Why it changed</h3>
+<p><strong>Trigger.</strong> A three-series consistency audit of SAE (July 2026). The audit performed a cross-series check of object identity across the Four Forces, Mass, and Cosmology series, and found that the proof in §3.1 of this paper's v1 conflicts with a rule stated in Paper I §5.4. The object discipline and evidential discipline established by that audit are set out in <em>Construction Constitution for the Three-Series Upgrade, v1.5</em>, §1.1.</p>
+<p><strong>The diagnosis, in two layers.</strong></p>
+<p><strong>First layer: the single-side zero does not hold.</strong> Proposition S1 states that L-3DD and R-3DD are mirror images <strong>of one another</strong>. Parity P, however, maps our side to the <strong>opposite</strong> side, not to itself. Paper I §5.4 states explicitly that constraints cannot be imposed locally across a causal boundary; only global bookkeeping is available. S1 therefore yields at most a cross-side pairing, never a single-side zero. The same diagnosis applies to v1 §3.2's "the 3DD mirror forbids a preferred orientation" — our side <strong>is</strong> the left-handed branch, and is therefore itself an orientation.</p>
+<p><strong>Second layer: even the global paired zero is not delivered.</strong> Granting a cross-side sign flip for the bare θ does not yield one for $\bar\theta$: the transformation law of the quark mass matrices and their determinant phase under the cross-side map has not been given. That v1 did not hold its audit object fixed at $\bar\theta$ throughout is why this layer went unnoticed; v2 states it as a discipline in §1.1.</p>
+<h3>Status changes</h3>
+<table>
+<thead><tr>
+<th>Proposition</th>
+<th>v1</th>
+<th>v2</th>
+</tr></thead><tbody>
+<tr><td>bare θ = 0</td><td>Conditional theorem</td><td><strong>Withdrawn</strong></td></tr>
+<tr><td>$\arg\det(M_u M_d) = 0$</td><td>Conditional proposition</td><td><strong>Withdrawn</strong></td></tr>
+<tr><td>$\bar\theta_{\rm 3DD} = 0$</td><td>Conditional conclusion</td><td><strong>Withdrawn</strong></td></tr>
+<tr><td>Cross-level leakage ≪ experimental precision</td><td>Structural expectation</td><td><strong>Withdrawn</strong></td></tr>
+<tr><td>No strong-CP-motivated axion</td><td>Hard anti-prediction</td><td><strong>Withdrawn</strong></td></tr>
+<tr><td>L-R 3DD mirror (S1)</td><td>Near-theorem</td><td><strong>Retained, re-typed</strong>: a <strong>relation</strong> between the two sides, not a <strong>symmetry</strong> of either</td></tr>
+<tr><td>Yukawa emergence</td><td>Structural argument (supporting)</td><td><strong>Structural argument (principal positive result)</strong></td></tr>
+<tr><td>Mirror no-go (N1)</td><td>—</td><td><strong>New; theorem</strong> (conditional on causal disconnection)</td></tr>
+<tr><td>$\bar\theta$ as boundary parameter</td><td>—</td><td><strong>Newly registered</strong></td></tr>
+</tbody></table>
+<h3>Downstream effects</h3>
+<table>
+<thead><tr>
+<th>Affected</th>
+<th>Content</th>
+</tr></thead><tbody>
+<tr><td><strong>Paper VI</strong> (.19426067)</td><td><strong>Unaffected.</strong> Its three hard anti-predictions rest on Spin(10) being a classification group rather than a gauge group, with no dependency on the mirror argument</td></tr>
+<tr><td><strong>Generation Paper</strong> (.19394500)</td><td>G3/G6/G7 unaffected. This paper's reliance on G7 in fact increases, G7 becoming the sole support of the only positive result</td></tr>
+<tr><td><strong>Paper I</strong> (.19342106)</td><td>§7.1 here cites its §5.4 as an antecedent of N1. Separately: v1 cited "nDD → SU(n)" as a theorem of Paper I; that theorem's argument carries an independent erratum (Paper II §2.2: removing the overall phase yields $PU(n)$), and v2 has removed the citation</td></tr>
+<tr><td><strong>Physical-Quantity Ladder paper</strong> (.21227329)</td><td>The <strong>binary-label lemma</strong> relocates there as its canonical home; this paper cites it only</td></tr>
+<tr><td><strong>Public statement of the series</strong></td><td>The Four Forces series' hard anti-predictions go from five to <strong>three</strong>, all from Paper VI</td></tr>
+</tbody></table>
+<hr>
+<h2>References</h2>
+<h3>Strong CP and θ̄</h3>
 <p>[1] S. Weinberg, <em>The Quantum Theory of Fields, Vol. 2: Modern Applications</em>, Cambridge University Press (1996), Ch. 23.6.</p>
-<p>[2] R.D. Peccei, "The Strong CP Problem and Axions," <em>Lect. Notes Phys.</em> 741, 3-17 (2008), arXiv:hep-ph/0607268.</p>
+<p>[2] R.D. Peccei, "The Strong CP Problem and Axions," <em>Lect. Notes Phys.</em> 741, 3–17 (2008), arXiv:hep-ph/0607268.</p>
 <p>[3] M. Dine, "The Strong CP Problem," SCIPP preprint, https://scipp.ucsc.edu/~dine/solutions_of_strong_cp.pdf</p>
-<h4>Axion / Peccei-Quinn</h4>
+<h3>Axion / Peccei-Quinn</h3>
 <p>[4] R.D. Peccei, H.R. Quinn, "CP Conservation in the Presence of Instantons," <em>Phys. Rev. Lett.</em> 38, 1440 (1977).</p>
 <p>[5] S. Weinberg, "A New Light Boson?", <em>Phys. Rev. Lett.</em> 40, 223 (1978).</p>
 <p>[6] F. Wilczek, "Problem of Strong P and T Invariance in the Presence of Instantons," <em>Phys. Rev. Lett.</em> 40, 279 (1978).</p>
-<h4>Nelson-Barr / Parity Solutions</h4>
+<h3>Nelson-Barr / parity constructions</h3>
 <p>[7] A.E. Nelson, "Naturally Weak CP Violation," <em>Phys. Lett. B</em> 136, 387 (1984).</p>
 <p>[8] S.M. Barr, "Solving the Strong CP Problem without the Peccei-Quinn Symmetry," <em>Phys. Rev. Lett.</em> 53, 329 (1984).</p>
 <p>[9] J. de Vries, P. Draper, H.H. Patel, "Do Minimal Parity Solutions to the Strong CP Problem Work?", arXiv:2109.01630.</p>
 <p>[10] A. Valenti, L. Vecchi, "The CKM Phase and θ̄ in Nelson-Barr Models," <em>JHEP</em> 07, 203 (2022), arXiv:2112.09122.</p>
-<h4>Neutron Electric Dipole Moment Experiments</h4>
-<p>[11] C. Abel et al. (nEDM Collaboration), "Measurement of the Permanent Electric Dipole Moment of the Neutron," <em>Phys. Rev. Lett.</em> 124, 081803 (2020). [Current best bound: |d_n| < 1.8 × 10⁻²⁶ e·cm]</p>
-<p>[12] n2EDM Collaboration at PSI, https://www.psi.ch/en/nedm [Next-generation experiment; baseline sensitivity ~10⁻²⁷ e·cm, upgrade target ~10⁻²⁸ e·cm]</p>
-<h4>Standard Model CKM Contribution to d_n</h4>
-<p>[13] I.B. Khriplovich, A.R. Zhitnitsky, "What Is the Value of the Neutron Electric Dipole Moment in the Kobayashi-Maskawa Model?", <em>Phys. Lett. B</em> 109, 490 (1982). [d_n^CKM ~ 10⁻³² e·cm]</p>
-<p>[14] N. Yamanaka et al., "Standard model contribution to the electric dipole moment of the neutron, deuteron, and helion," arXiv:1512.03013. [Modern recalculation confirming d_n^CKM ~ 10⁻³¹ to 10⁻³² e·cm]</p>
-<h4>SAE Series Published Papers</h4>
-<p>[15] H. Qin, "Self-as-an-End: The Chisel-Construct-Remainder Cycle" (SAE P1-P3), DOI: 10.5281/zenodo.18528813, .18666645, .18727327.</p>
-<p>[16] H. Qin, "Four Forces Prequel: DD Splitting and α_G = α_em<sup>65/4</sup>", DOI: 10.5281/zenodo.19341042.</p>
-<p>[17] H. Qin, "Four Forces Paper I: nDD → SU(n) Correspondence", DOI: 10.5281/zenodo.19342106.</p>
-<p>[18] H. Qin, "Four Forces Paper III: sin²θ_W = 3/13", DOI: 10.5281/zenodo.19379412.</p>
-<p>[19] H. Qin, "Generation Paper: Topological Origin and Mass Structure of Three Fermion Generations", DOI: 10.5281/zenodo.19394500.</p>
-<p>[20] H. Qin, "Four Forces Paper VI: Spin(10) Classification and Three Hard Anti-Predictions", DOI: 10.5281/zenodo.19426067.</p>
-<p>[21] H. Qin, "Four Forces Paper VII: Three-Layer Correction Structure", DOI: 10.5281/zenodo.19433220.</p>
-      </div>
-      <div id="lang-zh" class="lang-content" lang="zh" style="display:none;">
-        <p style="font-size:0.9em;color:#666;"><em>写作声明：本文由秦汉独立写作。所有智识决策、框架设计与编辑判断均由作者本人作出。</em></p>
-        <p><strong>Self-as-an-End 四力系列：篇VIII</strong></p>
-<p>Han Qin（秦汉）</p>
-<p>ORCID: 0009-0009-9583-0018</p>
-<hr>
-<h3>摘要</h3>
-<p>强CP问题是粒子物理最持久的谜题之一：QCD拉格朗日允许拓扑θ项，实验却约束θ̄ < 10⁻¹⁰。主流解法（axion/Peccei-Quinn，Nelson-Barr，parity对称）均在标准模型框架内操作，面对辐射稳定性等技术困难。</p>
-<p>本文在Self-as-an-End（SAE）框架内，给出一个不同类型的回应。论证分三步。第一，在L-R 3DD镜像对称条件下，bare QCD θ项被结构性地钉在零（条件性定理）。第二，3DD色场构造的质量算子M_u, M_d取值于GL⁺(3,ℝ)（实矩阵，正行列式），因此arg det(M_u M_d) = 0（正实行列式命题）。第三，SAE的构成顺位将质量构造（3DD）和弱混合（2DD）分属不同DD层级，Yukawa耦合是两者在低能有效理论中的投影叠加而非基本对象，因此CKM复相位不进入质量矩阵的行列式（Yukawa涌现原则）。在以上三个条件下，θ̄的3DD贡献为零。跨层级泄漏（2DD → 3DD）原则上非零，但远低于可预见实验灵敏度。</p>
-<p>本文的核心主张不是"SAE解决了强CP问题"，而是"SAE的本体论中不产生强CP问题"。Strong CP "problem"是标准模型Yukawa本体论的产物；在SAE的层级本体论中，产生该问题的条件不存在。</p>
-<p>可证伪后果：θ̄的3DD贡献为零，跨层级泄漏（2DD → 3DD）远低于可预见实验灵敏度。不需要strong-CP-motivated的QCD axion。与parity/Nelson-Barr方案（θ̄极小但可能非零，量级可达10⁻¹⁵到10⁻¹⁰）可由未来中子电偶极矩实验区分。</p>
-<p>上游依赖：DD凿构序列（SAE P1-P3），DD Splitting（四力前置篇），nDD → SU(n)对应（四力篇I），L-R 3DD镜像对称（接近定理级），世代篇G5-G7。</p>
-<p>不依赖：L-R 4DD轴配对（G1问题），OR/AND不混合假设，Mass-Channel Proportionality，任何连续参数或边界条件。</p>
-<p><strong>关键词：</strong> 强CP问题，θ真空，DD层级，质量起源，axion反预测，SAE框架</p>
-<hr>
-<h3>§1 强CP问题的正确目标</h3>
-<h4>§1.1 问题的标准表述</h4>
-<p>QCD拉格朗日允许一个拓扑项：</p>
-<p>$$\mathcal{L}_\theta = \frac{\theta}{32\pi^2} g^2 F^a<sub>\mu\nu</sub> \tilde{F}<sup>a,\mu\nu</sup>$$</p>
-<p>该项破缺P和CP。如果θ非零，中子将具有电偶极矩d_n ∝ θ。实验约束d_n < 1.8 × 10⁻²⁶ e·cm（90% CL），推出θ̄ < 10⁻¹⁰。</p>
-<p>但强CP问题的真正目标不是bare θ，而是rephasing-invariant的物理量：</p>
+<h3>Neutron electric dipole moment</h3>
+<p>[11] C. Abel et al. (nEDM Collaboration), "Measurement of the Permanent Electric Dipole Moment of the Neutron," <em>Phys. Rev. Lett.</em> 124, 081803 (2020). [Current best bound: $|d_n| < 1.8 \times 10^{-26}$ e·cm]</p>
+<p>[12] n2EDM Collaboration at PSI, https://www.psi.ch/en/nedm [Next generation; baseline sensitivity $\sim10^{-27}$ e·cm, upgrade target $\sim10^{-28}$ e·cm]</p>
+<h3>Standard Model CKM contribution to $d_n$</h3>
+<p>[13] I.B. Khriplovich, A.R. Zhitnitsky, "What Is the Value of the Neutron Electric Dipole Moment in the Kobayashi-Maskawa Model?", <em>Phys. Lett. B</em> 109, 490 (1982).</p>
+<p>[14] N. Yamanaka et al., "Standard model contribution to the electric dipole moment of the neutron, deuteron, and helion," arXiv:1512.03013.</p>
+<h3>SAE series (all by the present author, published on Zenodo)</h3>
+<p>> Concept DOIs throughout (these always resolve to the latest version). Load-bearing citations additionally specify the section.</p>
+<p>[15] H. Qin, "Self-as-an-End: the Chisel–Construct–Remainder Cycle" (SAE P1–P3), DOI: 10.5281/zenodo.18528813, .18666645, .18727327.</p>
+<p>[16] H. Qin, "Four Forces Prequel: DD Splitting and $\alpha_G = \alpha_{\rm em}^{65/4}$," DOI: 10.5281/zenodo.19341042. [Cited here: §4.4, §5.1, §7 Prediction 4]</p>
+<p>[17] H. Qin, "Four Forces Paper I: the nDD → SU(n) Correspondence," DOI: 10.5281/zenodo.19342106. [Cited here: §5.4]</p>
+<p>[18] H. Qin, "Four Forces Paper III: $\sin^2\theta_W = 3/13$," DOI: 10.5281/zenodo.19379412.</p>
+<p>[19] H. Qin, "Generation Paper: Topological Origin and Mass Structure of the Three Fermion Generations," DOI: 10.5281/zenodo.19394500. [Cited here: G3, G5, G6, G7]</p>
+<p>[20] H. Qin, "Four Forces Paper VI: Spin(10) Classification and Three Hard Anti-Predictions," DOI: 10.5281/zenodo.19426067. [Cited here: §6.3]</p>
+<p>[21] H. Qin, "Four Forces Paper VII: the Three-Layer Correction Structure," DOI: 10.5281/zenodo.19433220.</p>
+<p>[22] H. Qin, "Fourfold Nesting of the Physical-Quantity Ladder," DOI: 10.5281/zenodo.21227329. [Canonical home of the binary-label lemma]</p></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>强CP问题的真正目标是 rephasing-invariant 的组合 $\bar\theta = \theta + \arg\det(M_u M_d)$，实验约束 $\bar\theta < 10^{-10}$。主流解法（axion/Peccei-Quinn，Nelson-Barr，parity 对称）均在标准模型框架内操作。</p>
+<p>一类自然的想法是：若理论具有精确的宇称对称性，则 $\theta = -\theta$，故 $\theta = 0$。在具有双侧结构的框架中，这一想法常被表述为"两侧互为镜像，故宇称精确"。</p>
+<p><strong>本文的主结论是一条 no-go：这条路走不通。</strong> 若两个扇区因果断开而宇称交换二者，则宇称的不动点集为空——它约束的是组合系统，不是任一单侧。由此至多得到跨侧配对 $\theta_L = -\theta_R$，得不到 $\theta_L = 0$。而且即便退到配对关系也仍未交付：$\bar\theta$ 的两个分账项各自随手征基底迁移，其跨侧变换律须单独建立。这条 no-go 不限于 SAE，适用于任何把宇称实现为"两个不互通扇区之间的映射"的构造。</p>
+<p><strong>本文的正面结果是一项解耦。</strong> SAE 的构成顺位把质量构造（3DD）与弱混合（2DD）分属不同 DD 层级，Yukawa 耦合是二者在低能有效理论中的投影叠加而非基本对象。因此 CKM 复相位不流入 $\det(M)$：$\bar\theta$ 与 CKM CP 破缺<strong>互不牵连</strong>。这拆掉了标准模型强CP问题中"同一个 Yukawa 同时给出 $O(1)$ 的 CKM 相位与 $<10^{-10}$ 的 $\bar\theta$"这一张力的一半——但<strong>不解释另一半</strong>，即 $\bar\theta$ 自身为何反常小。</p>
+<p><strong>因此本文把 $\bar\theta$ 登记为边界参数</strong>：一个无量纲、反常小、SAE 尚未解释的输入。SAE 当前不解决 strong CP naturalness，不预测也不排除 axion，对中子电偶极矩无独立数值预言；实验只是在约束这个边界参数。</p>
+      <p class="paper-keywords"><strong>关键词:</strong> 强CP问题，θ̄，DD层级，镜像no-go，Yukawa涌现，边界条件</p>
+    </div>
+    <div class="paper-body"><h2>§1 强CP问题的正确目标</h2>
+<h3>§1.1 θ̄ 而非裸 θ</h3>
+<p>QCD 拉格朗日允许一个拓扑项：</p>
+<p>$$\mathcal{L}_\theta = \frac{\theta}{32\pi^2} g^2 F^a_{\mu\nu} \tilde{F}^{a,\mu\nu}$$</p>
+<p>该项破缺 P 和 CP。若 θ 非零，中子将具有电偶极矩 $d_n \propto \theta$。实验约束 $d_n < 1.8 \times 10^{-26}$ e·cm（90% CL），推出 $\bar\theta < 10^{-10}$。</p>
+<p>强CP问题的真正目标不是裸 θ，而是 rephasing-invariant 的组合：</p>
 <p>$$\bar{\theta} = \theta + \arg\det(M_u M_d)$$</p>
-<p>其中M_u, M_d是夸克质量矩阵。这是因为手征旋转可以在θ和arg det(M)之间搬运相位，但θ̄是不变的。实验约束的是θ̄，不是θ单独。</p>
-<h4>§1.2 标准模型内的回应</h4>
-<p><strong>Axion / Peccei-Quinn机制。</strong> 引入全局U(1)_PQ对称性和伴随的Goldstone玻色子（axion），θ被动力学地驱动到CP守恒点。该机制引入新粒子（axion）和新对称性（U(1)_PQ）。实验上未找到axion，但搜索仍在进行（ADMX, IAXO等）。</p>
-<p><strong>Massless up quark。</strong> 若m_u = 0，θ可以通过手征旋转被旋走。Lattice QCD的精确计算已排除m_u = 0。</p>
-<p><strong>Nelson-Barr机制。</strong> CP是高能精确对称性，通过特定的Yukawa/mediator结构自发破缺，使得tree-level θ̄ = 0但CKM相位非零。面对radiative regeneration的技术困难——loop修正倾向于重新点亮θ̄，需要对模型参数施加强约束。</p>
-<p><strong>Parity对称方案。</strong> 令bare θ = 0通过parity不变性，同时通过Hermitian Yukawa结构等方式控制arg det(M)。同样面对辐射稳定性的困难。</p>
-<h4>§1.3 本文的定位</h4>
-<p>上述所有方案都在标准模型框架内操作：接受Yukawa耦合是基本对象，接受M = Yv，然后在这个框架内arrange参数或引入新粒子使θ̄很小或为零。</p>
-<p>本文提出一个不同类型的回应。SAE不是在标准模型框架内解决强CP问题，而是主张：<strong>SAE的本体论中不产生这个问题。</strong> 标准模型的Yukawa同时承载质量生成和弱力混合，因此复相位不可避免地进入质量矩阵，这是强CP问题的根源。SAE将质量构造和弱混合分属不同DD层级，切断了复相位进入质量矩阵的通路。</p>
+<p>其中 $M_u, M_d$ 是夸克质量矩阵。手征旋转可以在 θ 和 $\arg\det(M)$ 之间搬运相位，但 $\bar\theta$ 不变。</p>
+<p><strong>这一区分在本文中承重，须先立为纪律：</strong></p>
+<p>$$\boxed{\theta_{\rm QCD}\ \text{与}\ \arg\det M_q\ \text{各自的数值\textbf{依赖手征基底的选择}；唯一的物理可观测组合是}\ \bar\theta}$$</p>
+<p>凡下文提及"$\theta = 0$"或"$\arg\det M = 0$"处，均须理解为在某个指定基底下的<strong>分账项</strong>陈述，而非独立的物理主张。一个论证若只处理其中一项而不给出另一项的行为，就尚未处理强CP问题。</p>
+<h3>§1.2 标准模型内的回应</h3>
+<p><strong>Axion / Peccei-Quinn 机制。</strong> 引入全局 $U(1)_{\rm PQ}$ 对称性和伴随的 Goldstone 玻色子（axion），θ 被动力学地驱动到 CP 守恒点。引入新粒子与新对称性。实验上未找到 axion，搜索仍在进行（ADMX、IAXO 等）。</p>
+<p><strong>Massless up quark。</strong> 若 $m_u = 0$，θ 可由手征旋转旋走。Lattice QCD 的精确计算已排除 $m_u = 0$。</p>
+<p><strong>Nelson-Barr 机制。</strong> CP 是高能精确对称性，通过特定的 Yukawa/mediator 结构自发破缺，使 tree-level $\bar\theta = 0$ 而 CKM 相位非零。面对 radiative regeneration 的技术困难：loop 修正倾向于重新点亮 $\bar\theta$。</p>
+<p><strong>Parity 对称方案。</strong> 令裸 θ 由宇称不变性为零，同时通过 Hermitian Yukawa 结构等控制 $\arg\det(M)$。同样面对辐射稳定性困难。</p>
+<p><strong>共同点</strong>：四者都在标准模型框架内操作，接受 Yukawa 耦合是基本对象、接受 $M = Yv$，然后在这个框架内安排参数或引入新粒子。</p>
+<h3>§1.3 本文的定位</h3>
+<p>本文不提出新的技术性解法。它交付三样东西：</p>
+<p><strong>一条 no-go</strong>（§3）。宇称若被实现为"两个不互通扇区之间的镜像"，则不能由此得到任一单侧的 $\bar\theta = 0$。这条排除对整类进路成立，不依赖模型细节。</p>
+<p><strong>一项解耦</strong>（§4）。SAE 的层级分工使 CKM 复相位不流入 $\det(M)$。这拆掉了标准模型强CP问题中"两个量同源却量级悬殊"这一张力的一半。</p>
+<p><strong>一次登记</strong>（§5）。$\bar\theta$ 列为边界参数。SAE 目前对它为何反常小<strong>没有答案</strong>，本文明说不导出，而非以任何方式暗示已导出。</p>
 <hr>
-<h3>§2 DD层级中的CP分层</h3>
-<h4>§2.1 凿构序列中的对称性地图</h4>
-<p>回顾DD层级的结构：</p>
+<h2>§2 DD 层级与宇称</h2>
+<h3>§2.1 凿构序列中的对称性地图</h3>
+<p>DD 层级的结构：</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">层级</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">物理对象</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">特征量</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">关键操作</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">1DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">电荷，标记</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">E</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">标而不构（OR）</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">手征性，弱力</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">p = E/c</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">加法路径（OR）</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">色，强力</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">m = E/c²</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">乘法路径（OR）</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">4DD</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">引力，block结构</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">m/c = E/c³</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">AND闭合</td></tr>
+<thead><tr>
+<th>层级</th>
+<th>物理对象</th>
+<th>特征量</th>
+<th>关键操作</th>
+</tr></thead><tbody>
+<tr><td>1DD</td><td>电荷，标记</td><td>$E$</td><td>标而不构（OR）</td></tr>
+<tr><td>2DD</td><td>手征性，弱力</td><td>$p = E/c$</td><td>加法路径（OR）</td></tr>
+<tr><td>3DD</td><td>色，强力</td><td>$m = E/c^2$</td><td>乘法路径（OR）</td></tr>
+<tr><td>4DD</td><td>引力，block 结构</td><td>$m/c = E/c^3$</td><td>AND 闭合</td></tr>
 </tbody></table>
-<p>2DD手征分裂是凿构序列中第一个明确的对称性破缺：它区分了L和R。弱力只耦合左手场，这是2DD层级的定义性质。</p>
-<p>3DD在2DD之上形成。L侧和R侧各自独立地产生3DD色结构。</p>
-<h4>§2.2 CP变换与DD层级</h4>
-<p>CP变换包含空间反演P（交换L和R）加电荷共轭C。对于强CP问题，关键是P变换的效果：</p>
-<p>θ项在P下变号：θ → −θ。</p>
-<p>因此，若一个理论在3DD层面具有精确的P对称性（L-R镜像），θ = −θ，即θ = 0。</p>
-<p>这是标准QCD结果，非SAE特有。SAE的贡献在于给出L-R 3DD镜像对称的结构理由。</p>
-<h4>§2.3 SAE中的L-R 3DD镜像对称</h4>
-<p><strong>命题S1（L-R 3DD镜像）。</strong> DD凿构序列在3DD层级产生的两侧3DD结构是精确的镜像对称。</p>
+<p>2DD 手征分裂是凿构序列中第一个明确的对称性破缺：它区分 L 与 R。弱力只耦合左手场，这是 2DD 层级的定义性质。</p>
+<p>3DD 在 2DD 之上形成。L 侧与 R 侧各自独立地产生 3DD 色结构。</p>
+<h3>§2.2 宇称给出 θ = 0 的确切条件</h3>
+<p>θ 项在 P 下变号：$\theta \to -\theta$。由此得到的标准结论，其条件必须精确陈述：</p>
+<p>$$\boxed{\textbf{若 P 是某个理论\textit{自身}的精确对称性}\ \text{（P 把该理论的拉格朗日量映回\textbf{它自己}），则}\ \theta = -\theta,\ \text{故}\ \theta = 0}$$</p>
+<p><strong>"P 把理论 A 映到另一个理论 B"不给出这个结论</strong>，无论 A 与 B 多么互为镜像。前者是<strong>对称性</strong>（自映射），后者是<strong>关系</strong>（两个对象之间的映射）。二者在形式上相似，在推论力上不同：自映射的不变性约束该理论自身的耦合；关系的不变性只约束<strong>组合系统</strong>。</p>
+<p>这一区分是 §3 的全部内容。</p>
+<h3>§2.3 SAE 中的 L-R 3DD 镜像关系</h3>
+<p><strong>命题 S1（L-R 3DD 镜像关系）。</strong> DD 凿构序列在 3DD 层级产生的两侧 3DD 结构<strong>互为</strong>精确镜像。</p>
 <p><strong>论证。</strong></p>
-<p>（a）凿只有一种（否定），它不区分方向。凿构序列的每一步对L侧和R侧施加相同的操作。</p>
-<p>（b）2DD手征分裂是1 bit的标量操作（L或R），不赋予任何一侧结构性特权。它传递的信息量恰好是1 bit：哪边是哪边。不传递定向、相位或其他内部结构。</p>
-<p>（c）两侧3DD各自独立执行空间三轴分裂。由（a）和（b），两侧的3DD结构在整体上是精确的镜像对称。</p>
-<p>（d）ZFCρ的余项守恒原则对此提供独立的数学支持。</p>
-<p><strong>关键区分。</strong> 本命题不需要4DD层面的轴配对。我们不声称L侧的轴1 = R侧的轴1（世代篇G1已论证该canonical identification不存在）。我们只声称L-3DD作为整体和R-3DD作为整体是镜像对称的。θ是3DD的整体拓扑量（瞬子数的权重），不依赖轴标号。</p>
-<p><strong>级别。</strong> 接近定理级（ZFCρ + DD公理链双线支持）。</p>
-<h4>§2.4 与G5的平行：DD层级间的信息隔离</h4>
-<p>世代篇G5（Isospin全局性）建立了一个完全平行的论证：</p>
-<p>G5说：色（3DD）在跨block投影时坍缩为色单态，但isospin（2DD）保持完整。原因：isospin来自更深的2DD共享层，3DD的过程不能破坏它。</p>
-<p>本文的论证是G5的逆向：3DD的结构不继承2DD的破缺。2DD手征分裂引入了L-R不对称（CP破缺的源头），但这个不对称被封装在2DD内部，不传递到3DD。</p>
-<p>两个方向合在一起构成一个一般原则：<strong>DD层级之间的信息隔离是双向的。</strong> 低层的结构不被高层过程破坏（G5），高层的结构不继承低层的破缺（本文）。</p>
-<hr>
-<h3>§3 核心论证</h3>
-<h4>§3.1 条件性定理（bare θ = 0）</h4>
-<p><strong>陈述。</strong> 在L-R 3DD镜像对称（命题S1）的条件下，bare QCD真空角θ = 0。</p>
-<p><strong>证明。</strong></p>
-<ol>
-<li>L-R 3DD镜像对称成立（命题S1）。</li>
-<li>θ项在P变换下变号：θ → −θ（标准QCD结果）。</li>
-<li>3DD层级具有精确的L-R镜像对称，因此任何出现在3DD有效描述中的项都必须在P下不变。</li>
-<li>由2和3：θ = −θ，因此θ = 0。 □</li>
-</ol>
-<p><strong>级别。</strong> 条件性定理（conditional on 命题S1）。</p>
-<h4>§3.2 正实行列式命题（det(M_u M_d) > 0）</h4>
-<p><strong>陈述。</strong> 在SAE的质量构造机制下，夸克质量算子M_u, M_d取值于GL⁺(3,ℝ)（实矩阵，正行列式），因此arg det(M_u M_d) = 0。</p>
-<p><strong>论证。</strong> SAE中夸克质量矩阵的构造分两步（世代篇G3, G6）：</p>
-<p>第一步：拓扑屏障给出natural mass。不同世代的质量差来自观测者block到source block的拓扑距离。natural mass矩阵D_nat是实正对角矩阵。det(D_nat) > 0。</p>
-<p>第二步：3DD色场重分配算子R作用于D_nat。在SAE的3DD读字典中，纯色响应算子取实——这是3DD镜像对称下的工作解释：复相位需要preferred orientation来定义正负，3DD镜像禁止preferred orientation。本文将"R实"作为3DD mirror的直接推论，其完全形式化留作后续工作。</p>
-<p>此外，R是从单位算子I连续形变而来的。凿构序列是逐步的——色场重分配不是一次跳跃，而是从"无重分配"（R = I）连续演化到实际重分配强度。det(I) = 1 > 0。连续形变过程中，det(R)连续变化。det(R) = 0意味着某个质量本征值被压到零（矩阵退化）。从DD层级的角度，det(R) = 0意味着3DD色空间的定向体积坍缩为零——3DD降维为2DD，这直接违背了3DD层级已完成凿构的前提。det(R) < 0意味着3DD发生了内翻（空间定向反转），但3DD是在已经被2DD锚定手征方向的子空间内部构建的，它没有自由度去执行全局的奇宇称反转。因此det(R) > 0。这一结论同时有后验支持：实验上不存在零质量夸克（lattice QCD排除m_u = 0），det(R) = 0的退化情形被排除。</p>
-<p>总计：M = R · D_nat，其中R实且det > 0，D_nat实正对角且det > 0。因此M是实矩阵且det(M) > 0。对M_u和M_d各自成立。</p>
-<p>$$\det(M_u M_d) = \det(M_u) \cdot \det(M_d) > 0$$</p>
-<p>$$\arg\det(M_u M_d) = 0$$</p>
-<p><strong>级别。</strong> 条件性命题（conditional on 命题S1 + 世代篇G3/G6的质量构造机制 + 无零质量夸克）。</p>
-<h4>§3.3 Yukawa涌现原则</h4>
-<p><strong>陈述。</strong> 在SAE的构成顺位下，Yukawa耦合不是基本对象，而是3DD质量结构和2DD弱混合结构在低能有效理论中的投影叠加。CKM的复相位来自2DD弱力vertex的读出结构，不来自质量矩阵的复数性。因此实验观测到的CP破缺不与arg det(M_u M_d) ≠ 0矛盾。</p>
-<p><strong>论证。</strong></p>
-<p>在标准模型中，Yukawa矩阵Y同时承载两个功能：质量生成（M = Yv）和弱力混合（CKM从Y的对角化不匹配得到）。Y是复矩阵，因此复相位同时进入M和CKM，两者不可分。这正是强CP问题的根源——你无法在保持CKM CP破缺的同时让arg det(M) = 0，除非引入额外机制（axion, parity, Nelson-Barr）。</p>
-<p>SAE的构成顺位（世代篇G7）拆开了这两个功能：</p>
-<ol>
-<li>质量由3DD层级独立构造。拓扑屏障高度决定natural mass，色场重分配决定actual mass。质量的定义不依赖2DD弱力的存在——即使关掉弱力，夸克仍然有质量。</li>
-</ol>
-<ol>
-<li>弱混合由2DD层级独立给出。2DD弱力读取已经由3DD构造好的物理质量态，产生代间跃迁振幅。CKM矩阵是这个读出过程的输出，不是质量矩阵对角化的副产物。</li>
-</ol>
-<ol>
-<li>2DD手征分裂区分了L和R，允许复结构（CP破缺）存在于弱vertex中。这就是实验观测到的CKM CP破缺的来源。</li>
-</ol>
-<ol>
-<li>低能实验者同时观测到质量和弱力（W玻色子同时改变flavor和传递动量），用一个统一的Yukawa矩阵Y来描述两者。这个Y是复矩阵，因为它把3DD的实质量信息和2DD的复混合信息叠合在一个对象里。但Y不是基本对象，它是两个不同DD层级的投影叠加。</li>
-</ol>
-<p>因此在SAE中：M来自3DD（实矩阵，det > 0），V来自2DD（酉矩阵，可有复相位）。V不参与M的构造，V不出现在det(M_u M_d)的表达式中。arg det(M_u M_d) = 0和CKM CP破缺同时成立，不矛盾。</p>
-<p><strong>级别。</strong> 结构性论证（structural argument），依赖G7构成顺位。</p>
-<h4>§3.4 主结论：θ̄的3DD贡献为零</h4>
-<p><strong>陈述。</strong> 在命题S1（L-R 3DD镜像）和Yukawa涌现原则的条件下，θ̄在3DD层级内的所有贡献为零：</p>
-<p>$$\bar{\theta}<sub>\text{3DD</sub>} = \theta + \arg\det(M_u M_d) = 0 + 0 = 0$$</p>
-<p><strong>论证链。</strong></p>
+<p>（a）凿只有一种（否定），它不区分方向。凿构序列的每一步对 L 侧和 R 侧施加相同的操作。</p>
+<p>（b）<strong>二元标签引理。</strong> 2DD 手征分裂是 1 bit 的标量操作（L 或 R）。它传递的信息量恰好是 1 bit：哪边是哪边。不传递定向、相位或其他内部结构。</p>
+<p>（c）两侧 3DD 各自独立执行空间三轴分裂。由（a）和（b），两侧的 3DD 结构在整体上互为精确镜像。</p>
+<p>（d）ZFCρ 的余项守恒原则对此提供独立的数学支持。</p>
+<p><strong>二元标签引理的适用范围。</strong> 该引理证明的是：<strong>标签空间是二元的</strong>——$\chi$ 本身只含一个二元标签位。它<strong>不推出</strong> L、R 两扇区的作用量、背景与耦合完全镜像：即便标签只有 1 bit，仍可有 $g_L \neq g_R$、$V_L \neq V_R$、$\mu_L \neq \mu_R$。故该引理不能单独用来回答"两侧是否精确镜像"。其正典所在地在物理量阶梯篇（.21227329），作为"标签容量／对象类型"的定义；本文仅引用。</p>
+<p><strong>S1 的确切类型。</strong> S1 是一条<strong>关于两侧之间关系的命题</strong>，不是关于任一单侧的对称性命题：</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">步骤</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">结论</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">依赖</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">级别</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.1</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">命题S1</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">条件性定理</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.2</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">M ∈ GL⁺(3,ℝ)，det(M) > 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">S1 + G3/G6 + 连续形变 + 无零质量夸克</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">条件性命题</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">V不进入det(M)，CKM CP不矛盾</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">G7构成顺位 + Yukawa涌现</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">结构性论证</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">§3.4</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄_3DD = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">以上合成</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">条件性结论</td></tr>
+<thead><tr>
+<th>陈述</th>
+<th>类型</th>
+<th>状态</th>
+</tr></thead><tbody>
+<tr><td>L-3DD 与 R-3DD 互为镜像</td><td>两侧之间的<strong>关系</strong></td><td>接近定理级</td></tr>
+<tr><td>我们这一侧的 3DD 有效描述在 P 下不变</td><td>单侧的<strong>对称性</strong></td><td><strong>S1 推不出</strong></td></tr>
 </tbody></table>
-<h4>§3.5 跨层级泄漏</h4>
-<p>§3.4的结论是：在3DD层级内部，θ̄ = 0。但SAE的层级隔离不是绝对禁止——余项恰好发展是SAE框架的一般原则。DD层级之间存在跨层级泄漏，只是泄漏被层级间的"距离"强烈压制。</p>
-<p>具体到本文的情况：2DD弱力vertex携带的CKM复相位原则上可以通过跨层级效应在3DD可观测量上留下微弱的投影。中子电偶极矩d_n就是这种投影的可观测载体。标准模型的计算（CKM对d_n的高阶贡献）给出~10⁻³² e·cm，比当前实验灵敏度低六个数量级，比下一代实验目标（~10⁻²⁸ e·cm）低四个数量级。</p>
-<p>在SAE中，这个极微小的CKM贡献被解读为2DD → 3DD的跨层级泄漏。泄漏极度微弱：2DD内部的CP破缺是O(1)量级的大效应（CKM相位~1 radian，在K和B介子系统中产生显著的CP不对称），但它在跨越层级并投影到3DD实体（中子EDM）时，被压制到了~10⁻³² e·cm。这种数十个数量级的压制，正是DD层级隔离强度极高的量化体现。</p>
-<p>因此，SAE对θ̄的完整表述是：</p>
-<p>$$\bar{\theta} = 0 + \epsilon<sub>\text{leak</sub>}, \qquad |\epsilon<sub>\text{leak</sub>}| \ll 10<sup>-10</sup>$$</p>
-<p>其中ε_leak是2DD → 3DD跨层级泄漏项，远低于任何可预见实验的灵敏度。这和"精确为零"的实验后果相同，但本体论表述不同：SAE不声称绝对禁止，只声称层级隔离使泄漏极微小。这与SAE的一般原则（余项恰好发展，层级之间可以breakthrough但极难）完全一致。</p>
+<p><strong>关键区分。</strong> S1 不需要 4DD 层面的轴配对。我们不声称 L 侧的轴1 = R 侧的轴1（世代篇 G1 已论证该 canonical identification 不存在）。我们只声称 L-3DD 作为整体与 R-3DD 作为整体互为镜像——<strong>而正是这个"作为整体互为"，使 S1 无法给出单侧约束。</strong></p>
+<p><strong>级别。</strong> 接近定理级（ZFCρ + DD 公理链双线支持）。</p>
+<h3>§2.4 DD 层级间的双向信息隔离</h3>
+<p>世代篇 G5（Isospin 全局性）建立了一个平行的论证：色（3DD）在跨 block 投影时坍缩为色单态，但 isospin（2DD）保持完整。原因：isospin 来自更深的 2DD 共享层，3DD 的过程不能破坏它。</p>
+<p>本文 §4 的论证是 G5 的逆向：3DD 的结构不继承 2DD 的破缺。2DD 手征分裂引入了 L-R 不对称（CP 破缺的源头），但这个不对称被封装在 2DD 内部，不传递到 3DD。</p>
+<p>两个方向合在一起构成一个一般原则：</p>
+<p>$$\boxed{\textbf{DD 层级之间的信息隔离是双向的。}}$$</p>
+<p>低层的结构不被高层过程破坏（G5）；高层的结构不继承低层的破缺（本文 §4）。</p>
+<p><strong>这条原则独立于 §2.3 的镜像关系</strong>，是 §4 的上游。</p>
 <hr>
-<h3>§4 与主流方案的对比和可证伪预测</h3>
-<h4>§4.1 三类方案的对比</h4>
+<h2>§3 镜像 no-go</h2>
+<h3>§3.1 命题 N1</h3>
+<p>SAE 的双 4DD 结构在此处的相关事实有三条，均已发表：</p>
 <table>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">框架</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">标准模型 + 新对称性/粒子</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">标准模型 + parity/特殊结构</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD层级本体论</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">bare θ压零</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">动力学（axion场）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">parity对称性</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD L-R镜像（结构性）</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">arg det(M)压零</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">axion场同时处理</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hermitian Yukawa等</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">质量3DD构造（实），Yukawa涌现</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">CKM CP来源</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">复Yukawa</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">复Yukawa（parity soft breaking）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">2DD弱vertex独立读出</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄值</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">动力学→0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">tree-level 0，loop可能非零</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD贡献=0，跨层级泄漏远低于实验灵敏度</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">需要新粒子</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">是（axion）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">可能（vector-like quarks等）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">否</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">辐射稳定性</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">自动（axion动力学）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">困难（loop regeneration）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">不适用（DD层级非EFT展开）</td></tr>
+<thead><tr>
+<th>事实</th>
+<th>出处</th>
+</tr></thead><tbody>
+<tr><td>双 4DD 因果断开（时间箭头相反）；<strong>跨因果边界不能施加局域约束，只能做全局记账</strong></td><td>四力篇I §5.4</td></tr>
+<tr><td>我们的可观测宇宙是<strong>左手 3DD 中一对双 4DD 的一侧</strong></td><td>四力前置篇 §4.4</td></tr>
+<tr><td>不同支／轴的 4DD 光锥不重叠、因果结构独立；右手规范拓扑<strong>隔离在对侧手征分支</strong></td><td>四力前置篇 §5.1、§7 预言4</td></tr>
 </tbody></table>
-<h4>§4.2 关于辐射稳定性的说明</h4>
-<p>Parity方案和Nelson-Barr方案面对辐射稳定性困难：tree-level θ̄ = 0可以被loop修正重新点亮。这是因为它们在标准模型EFT框架内操作——质量和弱混合来自同一个Yukawa对象，loop可以在两者之间搬运相位。</p>
-<p>SAE的情况不同。M和V的分离不是tree-level近似，而是DD层级结构的定义性质。DD层级不是有效理论的微扰展开——3DD不是"tree-level的3DD加上loop修正"，就像1DD不是"tree-level的电荷加上修正到2DD"。层级是本体论结构，不存在"量子修正打破层级归属"的概念。</p>
-<p>因此，SAE不欠parity/Nelson-Barr那种标准模型框架内的辐射稳定性证明。但SAE仍欠一个从DD对象分层到低能可观测量的系统投影规则。本文§3给出的是这一投影的第一步——从DD层级结构推出θ̄的3DD贡献为零——而非完整的DD→可观测量投影理论。完整投影规则的建立是SAE整个物理系列的开放问题（§5.2），不限于本文。</p>
-<h4>§4.3 可证伪预测</h4>
-<p><strong>预测1：θ̄的3DD贡献为零。</strong> 在3DD层级内部，strong CP源项精确为零。跨层级泄漏（2DD CKM相位在3DD上的投影）原则上非零，但远低于任何可预见实验灵敏度（文献估计CKM对d_n的贡献~10⁻³² e·cm）。因此实验后果与"θ̄ = 0"相同。</p>
-<p>这是SAE和parity/NB方案的可区分预测。Parity/NB方案的θ̄偏离来自同一框架内的loop regeneration，量级可能在10⁻¹⁵到10⁻¹⁰范围（取决于模型细节），远大于SAE的跨层级泄漏。如果未来中子EDM实验在10⁻²⁸ e·cm精度观测到非零信号，SAE和parity/NB都需要解释；但如果信号量级在10⁻¹⁵以上，则指向parity/NB类机制而非SAE的跨层级泄漏。</p>
-<p><strong>预测2：不需要strong-CP-motivated的QCD axion。</strong> Peccei-Quinn机制的基本动机——θ需要动力学归零——在SAE中不存在。如果axion搜索实验在QCD axion的理论偏好参数空间内找到信号，本文被证伪。</p>
-<p>收窄表述：本文预测的是不存在作为strong CP解决方案所必需的QCD axion。axion-like particles可能有独立于strong CP的动机（例如暗物质），本文不对此做预测。</p>
-<p><strong>预测3：实验上观测到的CP破缺全部归因于弱力sector。</strong> 这与现有实验数据一致——所有确认的CP破缺（K, B, D介子系统）均在弱力介导的过程中观测到。</p>
-<h4>§4.4 反预测总表</h4>
-<p>连同篇VI的三条硬反预测，SAE四力系列目前已发出五条硬反预测：</p>
-<table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">反预测</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">来源</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">判决实验</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">时间窗口</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">级别</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">无GUT质子衰变</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">篇VI</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Hyper-K</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">~2030s</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">硬反预测</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">无磁单极</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">篇VI</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">各monopole搜索</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">持续</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">硬反预测</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">无额外规范玻色子</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">篇VI</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">LHC/FCC</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">~2030s-2040s</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">硬反预测</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>θ̄的3DD贡献=0</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>篇VIII</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>中子EDM</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>~2025-2035</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>硬反预测</strong></td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>无strong-CP-motivated QCD axion</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>篇VIII</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>ADMX, IAXO等</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>~2025-2035</strong></td><td style="padding:0.4em 0.6em;border:1px solid #ddd;"><strong>硬反预测</strong></td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">跨层级泄漏远低于可预见实验灵敏度</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">篇VIII</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">中子EDM精度提升</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">长期</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">结构性预期</td></tr>
-</tbody></table>
-<p>五条硬反预测加一条结构性预期，全部可实验判决。</p>
+<p>于是宇称 P 把我们这一侧的 3DD 映到<strong>对侧</strong>的 3DD，而对侧因果不可及。</p>
+<p><strong>命题 N1（镜像 no-go）。</strong> 设两个 3DD 扇区 $S_L$、$S_R$ 因果断开，P 交换二者且使 θ 变号。则由此至多得到跨侧配对关系</p>
+<p>$$\theta_L = -\theta_R$$</p>
+<p><strong>而得不到</strong> $\theta_L = 0$。</p>
+<p><strong>证明。</strong> P 的不动点集为空——它交换两个不相交的扇区。一个把 $\mathcal{L}_L$ 映为 $\mathcal{L}_R$ 的变换，其不变性约束的是<strong>组合系统</strong> $\mathcal{L}_L \oplus \mathcal{L}_R$，不是 $\mathcal{L}_L$。要得 $\theta_L = 0$，须有一个把 $S_L$ 映到<strong>自身</strong>的宇称操作，即 $S_L$ 单独 P-对称。这比"$S_L$ 与 $S_R$ 互为镜像"强，且不由 S1 给出。□</p>
+<p><strong>级别。</strong> 定理（条件于因果断开这一 SAE 结构事实）。</p>
+<h3>§3.2 第二层：全局配对零亦未交付</h3>
+<p>即便接受 $\theta_{{\rm QCD},L} = -\theta_{{\rm QCD},R}$，也推不出</p>
+<p>$$\bar\theta_L = -\bar\theta_R$$</p>
+<p>因为 $\bar\theta = \theta_{\rm QCD} + \arg\det M_q$，而<strong>质量矩阵及其行列式相位在跨侧映射下的变换律尚未给出</strong>。按 §1.1 的纪律，$\theta_{\rm QCD}$ 与 $\arg\det M_q$ 各自随手征基底迁移；二者的跨侧对应须单独建立，不能由裸 θ 的变换律顺推。</p>
+<p>$$\boxed{\textbf{当前状态：单侧零判否；全局配对零未交付。}}$$</p>
+<h3>§3.3 N1 的适用范围与不适用范围</h3>
+<p><strong>N1 不限于 SAE。</strong> 它适用于任何把宇称实现为"两个不互通扇区之间的映射"的构造。凡此类构造若要解决局域强CP问题，都须另行说明宇称如何作用于<strong>本侧</strong>。证明只用到一条纯结构的事实（P 的不动点集为空），不依赖任何模型细节。</p>
+<p><strong>N1 不判死一切单侧 strong-CP 机制。</strong> 它不证明以下任何一条：</p>
+<ul>
+<li>QCD 扇区不可能另有精确 CP</li>
+<li>UV 完成不可能强制 $\bar\theta = 0$</li>
+<li>Nelson-Barr 型质量矩阵机制不可能</li>
+<li>axion 不可能存在</li>
+</ul>
+<p><strong>它只判否"因果断开的镜像"这一条路。</strong></p>
+<p><strong>N1 的证伪条件</strong>（框架内部，不依赖实验）：若能证明在 SAE 结构中存在把我们这一侧映到<strong>自身</strong>的宇称实现——即两侧并非因果断开，或存在另一种把 L-3DD 映回 L-3DD 的宇称操作——则 N1 失效。这条与四力篇I §5.4 及前置篇 §4.4／§5.1 直接挂钩：若那三处的"因果断开"读法被修订，本文主结论须重审。</p>
 <hr>
-<h3>§5 讨论</h3>
-<h4>§5.1 依赖链总结</h4>
-<p>本文的论证依赖以下已发表或接近定理级的结果：</p>
-<table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">依赖</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">来源</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">级别</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">L-R 3DD镜像对称</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD凿构序列 + ZFCρ</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">接近定理级</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">质量来自3DD拓扑屏障</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">世代篇G3</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">structural argument</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">3DD色场重分配保持doublet总质量</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">世代篇G6</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">conditional theorem</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">构成顺位：质量先于弱混合</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">世代篇G7</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">structural argument</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Isospin全局性（G5平行）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">世代篇G5</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">theorem</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">nDD → SU(n)（非U(n)）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">四力篇I</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">theorem</td></tr>
-</tbody></table>
-<p>不依赖：L-R 4DD轴配对（G1），OR/AND不混合假设，Mass-Channel Proportionality，任何连续参数或边界条件。</p>
-<h4>§5.2 弱点与开放问题</h4>
-<p><strong>1. L-R 3DD镜像对称的定理级证明。</strong> 目前是"接近定理级"而非"定理"。如果此对称性有微小破缺，θ̄可以不精确为零但极小。将L-R 3DD镜像从"接近定理级"推到"定理"是后续工作。</p>
-<p><strong>2. Yukawa涌现原则的形式化。</strong> §3.3论证了Yukawa耦合在SAE中是涌现的有效描述而非基本对象。这个原则与G7构成顺位方向一致，但尚未被写成独立的定理。更精确的形式化——例如证明在G7构成顺位下不存在使CKM相位回流到det(M)的机制——留作后续工作。</p>
-<p><strong>3. Electroweak baryogenesis。</strong> CKM相位能否提供足够的CP破缺驱动重子不对称？这是独立问题，不影响本文对θ̄的论证。但如果CKM是唯一的CP源，baryogenesis的充分性需要独立论证。</p>
-<p><strong>4. 跨层级泄漏的定量理论。</strong> §3.5指出2DD → 3DD的跨层级泄漏原则上非零但极小。CKM对d_n的贡献（~10⁻³² e·cm）提供了泄漏量级的后验标定。但SAE目前没有从先验给出跨层级泄漏量级的理论。泄漏率是否可以从DD层级间的"距离"计算出来——类似于世代篇中拓扑距离决定质量层级——是一个有意义的开放问题。</p>
-<p><strong>5. SAE对象分层到低能可观测量的完整投影规则。</strong> 本文给出了DD层级到θ̄和CKM的直接对应。更系统的DD→可观测量投影规则的建立，对SAE整个物理系列都有意义，不限于本文。</p>
-<h4>§5.3 更广的意义</h4>
-<p>本文的核心信息不是一个新的技术性解法，而是一个本体论层面的重新归类：</p>
-<p>强CP "problem"是标准模型Yukawa本体论的产物。标准模型把Yukawa当基本对象，复相位不可避免地进入质量矩阵，arg det(M)原则上可以非零，于是需要解释为什么它恰好为零。</p>
-<p>在SAE中，质量来自3DD拓扑屏障（实矩阵），弱混合来自2DD读出（可有复相位）。两者分属不同DD层级，复相位不进入质量矩阵。arg det(M) = 0不是fine-tuning的结果，不是对称性保护的结果，不是动力学松弛的结果——它是"质量和弱混合在本体论上分属不同层级"的自动推论。</p>
-<p>如果这个图像正确：QCD axion作为strong CP解决方案的基本动机消失（axion-like particles可能有独立动机）。strong CP "problem"重新归类：不是problem，是标准模型Yukawa本体论的artifact。</p>
+<h2>§4 Yukawa 涌现：CKM CP 与 θ̄ 的解耦</h2>
+<p>> 本节不依赖 §2.3 的镜像关系，也不依赖 §3 的任何内容。它依赖世代篇 G7 的构成顺位。</p>
+<h3>§4.1 构成顺位</h3>
+<p>在标准模型中，Yukawa 矩阵 $Y$ 同时承载两个功能：质量生成（$M = Yv$）与弱力混合（CKM 从 $Y_u$、$Y_d$ 的对角化不匹配得到）。$Y$ 是复矩阵，因此复相位同时进入 $M$ 与 CKM，两者不可分。<strong>这正是强CP问题的根源</strong>——无法在保持 CKM CP 破缺的同时让 $\arg\det(M) = 0$，除非引入额外机制。</p>
+<p><strong>Yukawa 涌现原则。</strong> 在 SAE 的构成顺位下，Yukawa 耦合不是基本对象，而是 3DD 质量结构与 2DD 弱混合结构在低能有效理论中的投影叠加。</p>
+<p>SAE 的构成顺位（世代篇 G7）拆开这两个功能：</p>
+<ol>
+<li><strong>质量由 3DD 层级独立构造。</strong> 拓扑屏障高度决定 natural mass，色场重分配决定 actual mass。质量的定义不依赖 2DD 弱力的存在——即使关掉弱力，夸克仍然有质量。</li>
+</ol>
+<ol>
+<li><strong>弱混合由 2DD 层级独立给出。</strong> 2DD 弱力读取已由 3DD 构造好的物理质量态，产生代间跃迁振幅。CKM 矩阵是这个读出过程的输出，不是质量矩阵对角化的副产物。</li>
+</ol>
+<ol>
+<li><strong>2DD 手征分裂区分 L 与 R</strong>，允许复结构（CP 破缺）存在于弱 vertex 中。这是实验观测到的 CKM CP 破缺的来源。</li>
+</ol>
+<ol>
+<li>低能实验者同时观测到质量和弱力（W 玻色子同时改变 flavor 与传递动量），用一个统一的 Yukawa 矩阵 $Y$ 描述两者。$Y$ 是复矩阵，因为它把 3DD 的质量信息与 2DD 的复混合信息叠合在一个对象里。<strong>但 $Y$ 不是基本对象</strong>，它是两个不同 DD 层级的投影叠加。</li>
+</ol>
+<p>因此在 SAE 中：$M$ 来自 3DD，$V$ 来自 2DD（酉矩阵，可有复相位）。<strong>$V$ 不参与 $M$ 的构造，$V$ 不出现在 $\det(M_u M_d)$ 的表达式中。</strong></p>
+<p><strong>级别。</strong> 结构性论证，依赖 G7 构成顺位。</p>
+<h3>§4.2 解耦交付了什么，没交付什么</h3>
+<p>$$\boxed{\textbf{交付：}\ \text{CKM CP 与}\ \bar\theta\ \text{解耦}}$$</p>
+<p>标准模型强CP问题的一个尖锐形式是：CKM 相位是 $O(1)$ 的（$\delta_{\rm CP} \approx 1.14$ rad，$\sin\delta_{\rm CP} \approx 0.91$），为何同源的 $\bar\theta$ 却 $< 10^{-10}$？在 SAE 中这个"同源"不成立——二者来自不同 DD 层级，<strong>互不牵连</strong>。因此"为何同源却量级悬殊"这一问在 SAE 中不出现。</p>
+<p>$$\boxed{\textbf{未交付：}\ \bar\theta\ \textbf{为何小}}$$</p>
+<p>解耦只说明 CKM 相位不流入 $\bar\theta$；它<strong>不说明</strong> $\bar\theta$ 自身为何取一个反常小的值。$\arg\det M$ 有其独立的来源（§4.3），SAE 目前对其未定。</p>
+<p><strong>两句话不可混淆：</strong></p>
+<ul>
+<li>"$\bar\theta$ 与 CKM CP 无关" —— <strong>本文主张</strong></li>
+<li>"$\bar\theta$ 因此为零或极小" —— <strong>本文不主张</strong></li>
+</ul>
+<h3>§4.3 arg det M 的来源</h3>
+<p>SAE 中夸克质量矩阵的构造分两步（世代篇 G3、G6）：</p>
+<p><strong>第一步：拓扑屏障给出 natural mass。</strong> 不同世代的质量差来自观测者 block 到 source block 的拓扑距离。natural mass 矩阵 $D_{\rm nat}$ 是<strong>实正对角矩阵</strong>，$\det(D_{\rm nat}) > 0$。</p>
+<p><strong>第二步：3DD 色场重分配算子 $R$ 作用于 $D_{\rm nat}$。</strong> $M = R \cdot D_{\rm nat}$。</p>
+<p>关于 $R$，SAE 结构给出一条约束：</p>
+<p><strong>$\det R > 0$。</strong> $R$ 从单位算子 $I$ 连续形变而来——凿构序列是逐步的，色场重分配不是一次跳跃，而是从"无重分配"（$R = I$）连续演化到实际重分配强度。$\det(I) = 1 > 0$，且 $\det R$ 在连续形变中连续变化。$\det R = 0$ 意味某个质量本征值被压到零，即 3DD 色空间的定向体积坍缩为零、3DD 降维为 2DD，这违背 3DD 已完成凿构的前提；后验上也被排除（lattice QCD 排除 $m_u = 0$）。$\det R < 0$ 意味 3DD 发生内翻（空间定向反转），但 3DD 是在已被 2DD 锚定手征方向的子空间内部构建的，没有自由度执行全局的奇宇称反转。故 $\det R > 0$。</p>
+<p><strong>但 $\det R > 0$ 不给出 $\arg\det M = 0$。</strong> 前者说 $R$ 不翻转定向，后者要求 $R$ <strong>为实</strong>。</p>
+<p>$$\boxed{\arg\det M\ \text{的全部来源集中在色场重分配算子}\ R\ \text{的\textbf{相位结构}上；SAE 目前对其未定。}}$$</p>
+<p>这是一个<strong>具体的、可算的对象</strong>，比"证明某个对称性"具体得多。它是本文列出的开放问题中最有希望先落地的一条（§7.2）。</p>
+<h3>§4.4 关于辐射稳定性</h3>
+<p>Parity 与 Nelson-Barr 方案面对辐射稳定性困难：tree-level $\bar\theta = 0$ 可被 loop 修正重新点亮。原因是它们在标准模型 EFT 框架内操作——质量与弱混合来自同一个 Yukawa 对象，loop 可以在两者之间搬运相位。</p>
+<p>SAE 的情况不同。$M$ 与 $V$ 的分离不是 tree-level 近似，而是 DD 层级结构的定义性质。DD 层级不是有效理论的微扰展开——3DD 不是"tree-level 的 3DD 加上 loop 修正"，正如 1DD 不是"tree-level 的电荷加上修正到 2DD"。层级是本体论结构，不存在"量子修正打破层级归属"的概念。</p>
+<p><strong>这条论证保护的是 §4.2 的解耦，不是任何"零"</strong>：它说明 loop 不能把 CKM 相位搬运到 $\det(M)$ 中，因为二者分属不同 DD 层级而非同一 Yukawa 对象的两面。本文既不主张 tree-level $\bar\theta = 0$，也就无所谓"loop 重新点亮"。</p>
+<p>SAE 仍欠的，是一个从 DD 对象分层到低能可观测量的<strong>系统投影规则</strong>。§4.1 给出的是这一投影的一个片段，而非完整理论。这是 SAE 整个物理系列的开放问题（§7.2），不限于本文。</p>
 <hr>
-<h3>命题状态总表</h3>
+<h2>§5 θ̄ 的地位</h2>
+<h3>§5.1 边界参数</h3>
+<p>综合 §3 与 §4，SAE 对 $\bar\theta$ 的诚实表述是：</p>
+<p>$$\boxed{\bar\theta\ \text{是一个无量纲、反常小、SAE 尚未解释的\textbf{边界参数}}}$$</p>
+<p><strong>四条后果，逐条明书：</strong></p>
+<ol>
+<li><strong>SAE 不解决 strong CP naturalness。</strong> $\bar\theta$ 为何 $< 10^{-10}$ 而自然值应为 $O(1)$，SAE 目前没有机制。</li>
+<li><strong>SAE 不预测也不排除 axion。</strong> Peccei-Quinn 的动机在 SAE 中既未消除也未确立。</li>
+<li><strong>SAE 对中子电偶极矩没有独立数值预言。</strong> 实验只是在<strong>约束这个边界参数</strong>。</li>
+<li><strong>中子 EDM 实验不构成对 SAE 强CP部分的判决。</strong> 无论测到与否，SAE 在此没有下注。</li>
+</ol>
+<h3>§5.2 在边界条件表中的位置</h3>
+<p>四力系列的边界条件表须相应扩栏。$\bar\theta$ 与既有条目<strong>类型不同</strong>：</p>
 <table>
-<tr><th style="padding:0.4em 0.6em;border:1px solid #ddd;">命题</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">状态</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">依赖</th><th style="padding:0.4em 0.6em;border:1px solid #ddd;">可检验</th></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">L-R 3DD镜像（S1）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">接近定理级</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD凿构序列 + ZFCρ</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">间接</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">bare θ = 0（§3.1）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">条件性定理</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">S1</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">中子EDM</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">M ∈ GL⁺(3,ℝ)（§3.2）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">条件性命题</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">S1 + G3/G6 + 连续形变</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">间接</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">Yukawa涌现（§3.3）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">结构性论证</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">G7构成顺位</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">间接</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄_3DD = 0（§3.4）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">条件性结论</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">以上合成</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">中子EDM</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">跨层级泄漏≪实验精度（§3.5）</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">结构性论证</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">DD层级隔离一般原则</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">中子EDM精度提升</td></tr>
-<tr><td style="padding:0.4em 0.6em;border:1px solid #ddd;">无strong-CP-motivated axion</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">硬反预测</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">θ̄_3DD = 0</td><td style="padding:0.4em 0.6em;border:1px solid #ddd;">ADMX, IAXO</td></tr>
+<thead><tr>
+<th>栏</th>
+<th>条目</th>
+<th>类型</th>
+</tr></thead><tbody>
+<tr><td>单位／标度输入</td><td>$\hbar$、$G_*$、$m_e$</td><td>标度；自然单位下 $O(1)$</td></tr>
+<tr><td>无量纲耦合</td><td>$\alpha_{\rm em}$</td><td>无量纲，$\sim 10^{-2}$</td></tr>
+<tr><td><strong>受限 CP 角</strong></td><td>$\bar\theta$</td><td><strong>无量纲角；自然值 $O(1)$，实测 $< 10^{-10}$；且不是已知精确值，是有上界的自由参数</strong></td></tr>
+</tbody></table>
+<p>$$\boxed{\bar\theta\ \text{是该表中唯一一个"不自然地小"的条目}}$$</p>
+<p>把一个量列入边界条件表，意思是"本框架不导出它"，<strong>不是</strong>"本框架解释了它为何取这个值"。对 $\hbar$、$G_*$、$m_e$ 而言，不导出一个标度是正常的（广义相对论也不预言 $G$ 的数值）；对 $\bar\theta$ 而言，不导出的是一个<strong>反常小的无量纲数</strong>，这是一笔更重的欠账，须如实标出。</p>
+<h3>§5.3 与宇宙学常数的对照</h3>
+<p>SAE 对宇宙学常数的 $10^{-122}$ 有说法，对 $\bar\theta$ 的 $10^{-10}$ 却没有。两者的地位不同，但<strong>都未闭合</strong>：</p>
+<table>
+<thead><tr>
+<th></th>
+<th>$\Lambda$</th>
+<th>$\bar\theta$</th>
+</tr></thead><tbody>
+<tr><td>结构候选</td><td><strong>有</strong>（双拓扑时钟频率差）</td><td><strong>无</strong></td></tr>
+<tr><td>no-go 清算</td><td><strong>有</strong>（宇宙学篇VII）</td><td>本文 N1</td></tr>
+<tr><td>实现级目标关系</td><td><strong>有</strong>（$\mathcal{N}^2\lambda k = 8$）</td><td>无</td></tr>
+<tr><td>无参数作用量实现</td><td><strong>未闭合</strong></td><td>未闭合</td></tr>
+</tbody></table>
+<p>$\Lambda$ 已有结构候选与 no-go 清算，但实现级仍未闭合；$\bar\theta$ <strong>连对应的结构候选也没有</strong>。不应把两者说成同一档。</p>
+<hr>
+<h2>§6 对比与可证伪状态</h2>
+<h3>§6.1 三类方案的对比</h3>
+<table>
+<thead><tr>
+<th></th>
+<th>Axion/PQ</th>
+<th>Parity/NB</th>
+<th>SAE</th>
+</tr></thead><tbody>
+<tr><td>框架</td><td>标准模型 + 新对称性/粒子</td><td>标准模型 + parity/特殊结构</td><td>DD 层级本体论</td></tr>
+<tr><td>裸 θ 压零</td><td>动力学（axion 场）</td><td>parity 对称性</td><td><strong>无机制</strong></td></tr>
+<tr><td>$\arg\det M$ 压零</td><td>axion 场同时处理</td><td>Hermitian Yukawa 等</td><td><strong>无机制</strong></td></tr>
+<tr><td>CKM CP 来源</td><td>复 Yukawa</td><td>复 Yukawa（parity soft breaking）</td><td><strong>2DD 弱 vertex 独立读出</strong></td></tr>
+<tr><td>CKM CP 与 $\bar\theta$</td><td>同源</td><td>同源</td><td><strong>解耦</strong>（§4）</td></tr>
+<tr><td>$\bar\theta$ 值</td><td>动力学 → 0</td><td>tree-level 0，loop 可能非零</td><td><strong>边界参数，未解释</strong></td></tr>
+<tr><td>需要新粒子</td><td>是（axion）</td><td>可能</td><td><strong>不表态</strong></td></tr>
+<tr><td>辐射稳定性</td><td>自动</td><td>困难（loop regeneration）</td><td>不适用（DD 层级非 EFT 展开；见 §4.4）</td></tr>
+</tbody></table>
+<p><strong>须读出的一点</strong>：SAE 在前两行是<strong>空白</strong>，不是"另有机制"。本文不与 axion/PQ 或 Nelson-Barr 竞争解法，只在第五行（解耦）与它们不同。</p>
+<h3>§6.2 可证伪状态</h3>
+<p><strong>本文对实验没有独立赌注。</strong> $\bar\theta$ 是边界参数（§5.1），中子 EDM 与 axion 搜索的结果都不判决本文。</p>
+<p><strong>本文有一条框架内部的可证伪点</strong>：N1 的证伪条件（§3.3）——若 SAE 结构中存在把我们这一侧映到自身的宇称实现，N1 失效。</p>
+<p><strong>一致性观察（非反预测）</strong>：所有确认的 CP 破缺（K、B、D 介子系统）均在弱力介导的过程中观测到，这与 §4 的图景一致。<strong>但标准模型对此有同样的描述，二者在此不可区分</strong>，故它不构成反预测。</p>
+<h3>§6.3 四力系列硬反预测总表</h3>
+<table>
+<thead><tr>
+<th>反预测</th>
+<th>来源</th>
+<th>判决实验</th>
+<th>时间窗口</th>
+<th>级别</th>
+</tr></thead><tbody>
+<tr><td>无 GUT 质子衰变</td><td>篇VI</td><td>Hyper-K</td><td>~2030s</td><td>硬反预测</td></tr>
+<tr><td>无磁单极</td><td>篇VI</td><td>各 monopole 搜索</td><td>持续</td><td>硬反预测</td></tr>
+<tr><td>无额外规范玻色子</td><td>篇VI</td><td>LHC/FCC</td><td>~2030s-2040s</td><td>硬反预测</td></tr>
+</tbody></table>
+<p>$$\boxed{\text{三条硬反预测，全部来自篇VI，全部可实验判决。}}$$</p>
+<p><strong>本篇不贡献硬反预测。</strong> 篇VI 的三条依赖 Spin(10) 是<strong>分类群而非规范群</strong>这一结构判断，与本文的镜像论证<strong>无依赖关系</strong>。</p>
+<hr>
+<h2>§7 讨论</h2>
+<h3>§7.1 依赖链</h3>
+<table>
+<thead><tr>
+<th>依赖</th>
+<th>来源</th>
+<th>级别</th>
+<th>用处</th>
+</tr></thead><tbody>
+<tr><td>双 4DD 因果断开；跨因果边界只能全局记账</td><td>四力篇I §5.4</td><td>结构规则</td><td>N1 的前件</td></tr>
+<tr><td>我们的宇宙在左手支的一对双 4DD 的一侧</td><td>前置篇 §4.4</td><td>结构定位</td><td>N1 的前件</td></tr>
+<tr><td>不同支／轴的 4DD 光锥不重叠</td><td>前置篇 §5.1</td><td>结构事实</td><td>N1 的前件</td></tr>
+<tr><td>构成顺位：质量先于弱混合</td><td>世代篇 G7</td><td>structural argument</td><td>§4 的唯一支柱</td></tr>
+<tr><td>质量来自 3DD 拓扑屏障</td><td>世代篇 G3</td><td>structural argument</td><td>§4.3</td></tr>
+<tr><td>3DD 色场重分配保持 doublet 总质量</td><td>世代篇 G6</td><td>conditional theorem</td><td>§4.3</td></tr>
+<tr><td>Isospin 全局性（G5 平行）</td><td>世代篇 G5</td><td>theorem</td><td>§2.4</td></tr>
+<tr><td>L-R 3DD 镜像<strong>关系</strong>（S1）</td><td>DD 凿构序列 + ZFCρ</td><td>接近定理级</td><td>§2.3；<strong>不用于单侧约束</strong></td></tr>
+</tbody></table>
+<p><strong>本文不依赖</strong>：L-R 4DD 轴配对（G1）；OR/AND 不混合假设；Mass-Channel Proportionality；任何连续参数或边界条件；任何单侧宇称对称性。</p>
+<h3>§7.2 开放问题</h3>
+<p><strong>1. $\bar\theta$ 的反常小，SAE 无解释。</strong> 这是本文最大的空白。$\bar\theta$ 列为边界参数（§5），<strong>这不解释它的小，只是明说不导出</strong>。</p>
+<p><strong>2. 色场重分配算子 $R$ 的相位结构。</strong> §4.3 表明 $\arg\det M$ 的全部来源集中于此，而 SAE 对其未定。<strong>这是一个具体的、可算的对象</strong>，是本表中最有希望先落地的一条。</p>
+<p><strong>3. Yukawa 涌现原则的形式化。</strong> §4.1 是本文唯一的正面结果，其形式化——证明在 G7 构成顺位下不存在使 CKM 相位回流到 $\det(M)$ 的机制——<strong>是本文的承重待办</strong>，不是可选的后续工作。</p>
+<p><strong>4. 单侧 strong-CP 机制的其他路线。</strong> N1 只判否因果断开的镜像。以下仍开放：QCD 扇区是否另有精确 CP；UV 完成是否强制 $\bar\theta = 0$；Nelson-Barr 型质量矩阵机制在 SAE 中是否可实现。<strong>验收对象是 $\arg\det M_q$</strong>，与第 2 条同一。</p>
+<p><strong>5. 跨层级泄漏的定量理论。</strong> DD 层级之间的信息隔离极强但非绝对，跨层级泄漏原则上存在。标准模型计算给出 CKM 对 $d_n$ 的贡献约 $10^{-32}$ e·cm，可作泄漏量级的后验标定——但那是<strong>标准模型的计算结果，不是 SAE 的预言</strong>。SAE 目前没有从先验给出泄漏量级的理论。泄漏率是否可从 DD 层级间的"距离"计算出来（类比世代篇中拓扑距离决定质量层级），是一个有意义的开放问题。</p>
+<p><strong>6. DD 到低能可观测量的完整投影规则。</strong> §4.1 给出的是片段。系统投影规则的建立对 SAE 整个物理系列都有意义，且是第 3 条形式化的前置。</p>
+<p><strong>7. Electroweak baryogenesis。</strong> 若 CKM 是唯一的 CP 源，baryogenesis 的充分性需要独立论证。这不影响本文对 $\bar\theta$ 的论证。</p>
+<h3>§7.3 一条负结果的价值</h3>
+<p>本文的主结论 N1 是一条负结果。它值得单独发表，理由有二。</p>
+<p><strong>其一，它的适用范围超出 SAE。</strong> N1 指出：任何把宇称实现为"两个不互通扇区之间的镜像"的构造，都不能由此解决任一单侧的局域强CP问题。这是对整类进路的排除，而排除的理由是纯结构的（宇称的不动点集为空），不依赖模型细节。凡采用双侧、镜像、平行宇宙、CPT 配对等结构的框架，若欲以宇称压零，都须先答 N1。</p>
+<p><strong>其二，它在 SAE 内部把一条已有规则用到了新地方。</strong> 四力篇I §5.4 的"跨因果边界不能施加局域约束"原本管的是 $\Lambda$、$B$、$E$ 的双侧记账。本文表明它同样管 $\bar\theta$——一个此前被当作可由镜像单独压零的量。</p>
+<p>$$\boxed{\text{一条正确的负结果，比一条过强的正解扎实。}}$$</p>
+<p>至于强CP问题本身：它在 SAE 中<strong>仍然是问题</strong>。SAE 的层级分工拆掉了标准模型版本中"两个量同源却量级悬殊"这一张力的一半——二者不同源，故不必解释"为何同源却悬殊"。<strong>但"为何 $\bar\theta$ 小"这一半仍在，且 SAE 目前没有机制。</strong></p>
+<hr>
+<h2>命题状态总表</h2>
+<table>
+<thead><tr>
+<th>命题</th>
+<th>状态</th>
+<th>依赖</th>
+<th>可检验</th>
+</tr></thead><tbody>
+<tr><td>L-R 3DD 镜像<strong>关系</strong>（S1，§2.3）</td><td>接近定理级</td><td>DD 凿构序列 + ZFCρ</td><td>间接</td></tr>
+<tr><td>二元标签引理（§2.3）</td><td>引理（正典在物理量阶梯篇）</td><td>2DD 分裂</td><td>间接</td></tr>
+<tr><td><strong>镜像 no-go（N1，§3.1）</strong></td><td><strong>定理</strong>（条件于因果断开）</td><td>篇I §5.4 + 前置篇 §4.4/§5.1</td><td>框架内部（§3.3）</td></tr>
+<tr><td>全局配对零未交付（§3.2）</td><td>状态陈述</td><td>质量矩阵跨侧变换律缺失</td><td>—</td></tr>
+<tr><td><strong>Yukawa 涌现 / CKM-θ̄ 解耦（§4.1–4.2）</strong></td><td><strong>结构性论证（主要正面结果）</strong></td><td>世代篇 G7</td><td>间接</td></tr>
+<tr><td>$\det R > 0$（§4.3）</td><td>条件性命题</td><td>连续形变 + 3DD 已闭合 + 无零质量夸克</td><td>间接</td></tr>
+<tr><td>$\arg\det M$ 未定（§4.3）</td><td>开放</td><td>—</td><td>—</td></tr>
+<tr><td>DD 层级双向信息隔离（§2.4）</td><td>一般原则</td><td>G5 + 本文 §4</td><td>间接</td></tr>
+<tr><td><strong>$\bar\theta$ 为边界参数（§5.1）</strong></td><td><strong>登记</strong></td><td>—</td><td>实验只约束，不判决</td></tr>
 </tbody></table>
 <hr>
-<h3>参考文献</h3>
-<h4>强CP问题与θ̄</h4>
+<h2>致谢</h2>
+<p>本次修订源于 SAE 三系列一致性审计（2026-07），由四个人工智能系统分工协作完成。</p>
+<p><strong>子路（Claude）</strong>担任跨系列对象身份的横向核对，指出本篇 v1 §3.1 步骤3 与四力篇I §5.4 的冲突，定位断裂点，并识别出 v1 §3.2 与之同源同病、而 v1 §3.3 独立于二者可以保留。</p>
+<p><strong>公西华（ChatGPT）</strong>担任推导复核与纵向清算，确认上述诊断，追加"全局配对零亦未交付"这第二层，并要求全文自始至终以 $\bar\theta$ 而非裸 θ 为审计对象。</p>
+<p><strong>子夏（Gemini）</strong>参与几何与叙事复核，<strong>子贡（Grok）</strong>参与对抗性压力测试与独立重构。</p>
+<p>四者的贡献限于辅助性的核对、检验与批评。全部智识决策、地位裁定与最终取舍由作者本人作出，不构成对本文科学主张的作者身份。</p>
+<p>所遵循的对象纪律与证据纪律，见《三系列升级施工宪法 v1.5》。</p>
+<hr>
+<h2>作者责任声明</h2>
+<p>本篇 v1 的主结论已由本 v2 撤回。撤回的理由、范围与残留结果，均在文末的 v2 升级说明中逐条列出。凡 v1 中被撤回的主张，作者不再持有；凡本 v2 中保留或新增的主张，责任在作者。</p>
+<p>本文遵循"错了就改，改了就标"的原则：v1 全文保留在 Zenodo 的版本历史中，不删除、不隐去。</p>
+<hr>
+<h2>v2 升级说明</h2>
+<p>> 本节是本篇由 v1 至 v2 的完整变更记录，供已读 v1 的读者与引用本篇的后续工作查考。<strong>正文不逐处对比版本</strong>，只读 v2 者可略过本节。</p>
+<p><strong>v1 题《强CP的层级消解》</strong>，主张 SAE 的 L-R 3DD 镜像对称把 bare θ 钉在零、3DD 构造的质量矩阵取实正行列式，因而 θ̄ 的 3DD 贡献为零。<strong>v2 撤回这一主张，改题，转为交付一条 no-go、一项较弱但独立的结构结果、以及 θ̄ 的边界参数登记。</strong></p>
+<h3>改了什么</h3>
+<table>
+<thead><tr>
+<th>v1 节</th>
+<th>v1 内容</th>
+<th>v2 处置</th>
+</tr></thead><tbody>
+<tr><td>标题</td><td>强CP的层级消解</td><td><strong>改题</strong>（不再主张消解）</td></tr>
+<tr><td>§3.1</td><td>条件性定理：bare θ = 0</td><td><strong>撤回</strong>；证明的<strong>步骤3不成立</strong>。改写为 v2 §3 的 no-go</td></tr>
+<tr><td>§3.2</td><td>条件性命题：arg det M = 0</td><td><strong>撤回</strong>；其"3DD 镜像禁止 preferred orientation"与 §3.1 步骤3 同源同病。其中 det R > 0 的连续形变论证<strong>不依赖镜像，保留</strong>（v2 §4.3）</td></tr>
+<tr><td>§3.3</td><td>Yukawa 涌现（支撑性论证）</td><td><strong>保留并升格为本文主要正面结果</strong>（v2 §4）。它依赖世代篇 G7，不依赖 S1</td></tr>
+<tr><td>§3.4</td><td>主结论 θ̄_3DD = 0</td><td><strong>撤回</strong>（两个加项均已撤回）</td></tr>
+<tr><td>§3.5</td><td>跨层级泄漏</td><td><strong>撤回</strong>（前件为 §3.4）。泄漏的一般原则移入 v2 §7.2 开放项</td></tr>
+<tr><td>§2.2</td><td>"若一个理论具有精确 P 对称性"</td><td><strong>加限定</strong>：须 P 映该理论<strong>到自身</strong>（v2 §2.2）</td></tr>
+<tr><td>§2.3（b）</td><td>1 bit 论证</td><td>更名<strong>二元标签引理</strong>，收窄适用范围；<strong>正典所在地迁至物理量阶梯篇</strong>，本文改为引用</td></tr>
+<tr><td>§4.3 预测1、2</td><td>θ̄ 的 3DD 贡献为零；无 strong-CP axion</td><td><strong>均撤回</strong></td></tr>
+<tr><td>§4.3 预测3</td><td>CP 破缺归于弱 sector</td><td><strong>保留，降为一致性观察</strong>（与标准模型不可区分，非反预测）</td></tr>
+<tr><td>§4.4</td><td>五条硬反预测 + 一条结构性预期</td><td><strong>改为三条</strong>（全部来自篇VI，不受影响）；<strong>本篇归零</strong></td></tr>
+<tr><td>§5.3</td><td>"强CP 不是 problem，是 SM artifact"</td><td><strong>撤回重新归类</strong>；保留较弱主张：分层<strong>解耦</strong> CKM CP 与 θ̄</td></tr>
+<tr><td>—</td><td>—</td><td><strong>新增</strong>：命题 N1（镜像 no-go）；θ̄ 的边界参数登记</td></tr>
+</tbody></table>
+<h3>为什么改</h3>
+<p><strong>触发</strong>：SAE 三系列一致性审计（2026-07）。该次审计对四力、质量、宇宙学三个系列作了跨系列的对象身份核对，发现本篇 v1 §3.1 的证明与四力篇I §5.4 自立的一条规则冲突。审计所立的对象纪律与证据纪律，见《三系列升级施工宪法 v1.5》§1.1。</p>
+<p><strong>核心诊断，两层。</strong></p>
+<p><strong>第一层：单侧零不成立。</strong> 命题 S1 说的是 L-3DD 与 R-3DD <strong>互为</strong>镜像。而宇称 P 把我们这一侧映到<strong>对侧</strong>，不是映到自身。四力篇I §5.4 明立：跨因果边界不能施加局域约束，只能做全局记账。故 S1 至多给出跨侧配对，不给单侧零。同一诊断适用于 v1 §3.2 的"镜像禁止 preferred orientation"——我们这一侧<strong>就是</strong>左手支，它本身即一个定向。</p>
+<p><strong>第二层：连全局配对零也未交付。</strong> 即便接受裸 θ 的跨侧反号，也推不出 $\bar\theta$ 的跨侧反号：质量矩阵及其行列式相位在跨侧映射下的变换律尚未给出。本篇 v1 未把审计对象自始至终锁定在 $\bar\theta$ 上，是这一层被漏掉的原因；v2 已在 §1.1 立为纪律。</p>
+<h3>地位变化</h3>
+<table>
+<thead><tr>
+<th>命题</th>
+<th>v1</th>
+<th>v2</th>
+</tr></thead><tbody>
+<tr><td>bare θ = 0</td><td>条件性定理</td><td><strong>撤回</strong></td></tr>
+<tr><td>arg det(M_u M_d) = 0</td><td>条件性命题</td><td><strong>撤回</strong></td></tr>
+<tr><td>θ̄_3DD = 0</td><td>条件性结论</td><td><strong>撤回</strong></td></tr>
+<tr><td>跨层级泄漏 ≪ 实验精度</td><td>结构性预期</td><td><strong>撤回</strong></td></tr>
+<tr><td>无 strong-CP-motivated axion</td><td>硬反预测</td><td><strong>撤回</strong></td></tr>
+<tr><td>L-R 3DD 镜像（S1）</td><td>接近定理级</td><td><strong>保留，重新定性</strong>：两侧之间的<strong>关系</strong>，非任一单侧的<strong>对称性</strong></td></tr>
+<tr><td>Yukawa 涌现</td><td>结构性论证（支撑）</td><td><strong>结构性论证（本文主要正面结果）</strong></td></tr>
+<tr><td>镜像 no-go（N1）</td><td>—</td><td><strong>新增，定理</strong>（条件于因果断开）</td></tr>
+<tr><td>θ̄ 的边界参数地位</td><td>—</td><td><strong>新增登记</strong></td></tr>
+</tbody></table>
+<h3>下游影响</h3>
+<table>
+<thead><tr>
+<th>受影响者</th>
+<th>内容</th>
+</tr></thead><tbody>
+<tr><td><strong>四力篇VI</strong>（.19426067）</td><td><strong>不受影响</strong>。其三条硬反预测依赖 Spin(10) 是分类群而非规范群，与 L-R 镜像论证无依赖关系</td></tr>
+<tr><td><strong>世代篇</strong>（.19394500）</td><td>G3/G6/G7 不受影响。本文对 G7 的依赖反而加重（它成为唯一正面结果的支柱）</td></tr>
+<tr><td><strong>四力篇I</strong>（.19342106）</td><td>本文 §7.1 引其 §5.4 为 N1 的前件。另：v1 曾引"nDD → SU(n)"为篇I 定理，该定理的论证有独立勘误（篇II §2.2：去整体相位给出 PU(n)），v2 已移除该引用</td></tr>
+<tr><td><strong>物理量阶梯篇</strong>（.21227329）</td><td><strong>二元标签引理</strong>迁往该篇为正典所在地；本文改为引用</td></tr>
+<tr><td><strong>对外表述</strong></td><td>四力系列硬反预测由五条变为<strong>三条</strong>，全部来自篇VI</td></tr>
+</tbody></table>
+<hr>
+<h2>参考文献</h2>
+<h3>强CP问题与 θ̄</h3>
 <p>[1] S. Weinberg, <em>The Quantum Theory of Fields, Vol. 2: Modern Applications</em>, Cambridge University Press (1996), Ch. 23.6.</p>
 <p>[2] R.D. Peccei, "The Strong CP Problem and Axions," <em>Lect. Notes Phys.</em> 741, 3-17 (2008), arXiv:hep-ph/0607268.</p>
 <p>[3] M. Dine, "The Strong CP Problem," SCIPP preprint, https://scipp.ucsc.edu/~dine/solutions_of_strong_cp.pdf</p>
-<h4>Axion / Peccei-Quinn</h4>
+<h3>Axion / Peccei-Quinn</h3>
 <p>[4] R.D. Peccei, H.R. Quinn, "CP Conservation in the Presence of Instantons," <em>Phys. Rev. Lett.</em> 38, 1440 (1977).</p>
 <p>[5] S. Weinberg, "A New Light Boson?", <em>Phys. Rev. Lett.</em> 40, 223 (1978).</p>
 <p>[6] F. Wilczek, "Problem of Strong P and T Invariance in the Presence of Instantons," <em>Phys. Rev. Lett.</em> 40, 279 (1978).</p>
-<h4>Nelson-Barr / Parity方案</h4>
+<h3>Nelson-Barr / Parity 方案</h3>
 <p>[7] A.E. Nelson, "Naturally Weak CP Violation," <em>Phys. Lett. B</em> 136, 387 (1984).</p>
 <p>[8] S.M. Barr, "Solving the Strong CP Problem without the Peccei-Quinn Symmetry," <em>Phys. Rev. Lett.</em> 53, 329 (1984).</p>
 <p>[9] J. de Vries, P. Draper, H.H. Patel, "Do Minimal Parity Solutions to the Strong CP Problem Work?", arXiv:2109.01630.</p>
 <p>[10] A. Valenti, L. Vecchi, "The CKM Phase and θ̄ in Nelson-Barr Models," <em>JHEP</em> 07, 203 (2022), arXiv:2112.09122.</p>
-<h4>中子电偶极矩实验</h4>
-<p>[11] C. Abel et al. (nEDM Collaboration), "Measurement of the Permanent Electric Dipole Moment of the Neutron," <em>Phys. Rev. Lett.</em> 124, 081803 (2020). [当前最佳约束：|d_n| < 1.8 × 10⁻²⁶ e·cm]</p>
-<p>[12] n2EDM Collaboration at PSI, https://www.psi.ch/en/nedm [下一代实验，基线灵敏度~10⁻²⁷ e·cm，升级目标~10⁻²⁸ e·cm]</p>
-<h4>标准模型CKM对d_n的贡献</h4>
-<p>[13] I.B. Khriplovich, A.R. Zhitnitsky, "What Is the Value of the Neutron Electric Dipole Moment in the Kobayashi-Maskawa Model?", <em>Phys. Lett. B</em> 109, 490 (1982). [d_n^CKM ~ 10⁻³² e·cm]</p>
-<p>[14] N. Yamanaka et al., "Standard model contribution to the electric dipole moment of the neutron, deuteron, and helion," arXiv:1512.03013. [现代重算确认d_n^CKM ~ 10⁻³¹ - 10⁻³² e·cm]</p>
-<h4>SAE系列已发表论文</h4>
-<p>[15] H. Qin, "Self-as-an-End: 凿-构-余项循环" (SAE P1-P3), DOI: 10.5281/zenodo.18528813, .18666645, .18727327.</p>
-<p>[16] H. Qin, "四力前置篇：DD Splitting与α_G = α_em<sup>65/4</sup>", DOI: 10.5281/zenodo.19341042.</p>
-<p>[17] H. Qin, "四力篇I：nDD → SU(n)对应", DOI: 10.5281/zenodo.19342106.</p>
-<p>[18] H. Qin, "四力篇III：sin²θ_W = 3/13", DOI: 10.5281/zenodo.19379412.</p>
-<p>[19] H. Qin, "世代篇：三代费米子的拓扑起源与质量结构", DOI: 10.5281/zenodo.19394500.</p>
-<p>[20] H. Qin, "四力篇VI：Spin(10)分类与三条硬反预测", DOI: 10.5281/zenodo.19426067.</p>
-<p>[21] H. Qin, "四力篇VII：三层修正结构", DOI: 10.5281/zenodo.19433220.</p>
-      </div>
-    </article>
-  </main>
+<h3>中子电偶极矩实验</h3>
+<p>[11] C. Abel et al. (nEDM Collaboration), "Measurement of the Permanent Electric Dipole Moment of the Neutron," <em>Phys. Rev. Lett.</em> 124, 081803 (2020). [当前最佳约束：$|d_n| < 1.8 \times 10^{-26}$ e·cm]</p>
+<p>[12] n2EDM Collaboration at PSI, https://www.psi.ch/en/nedm [下一代实验，基线灵敏度 $\sim10^{-27}$ e·cm，升级目标 $\sim10^{-28}$ e·cm]</p>
+<h3>标准模型 CKM 对 $d_n$ 的贡献</h3>
+<p>[13] I.B. Khriplovich, A.R. Zhitnitsky, "What Is the Value of the Neutron Electric Dipole Moment in the Kobayashi-Maskawa Model?", <em>Phys. Lett. B</em> 109, 490 (1982).</p>
+<p>[14] N. Yamanaka et al., "Standard model contribution to the electric dipole moment of the neutron, deuteron, and helion," arXiv:1512.03013.</p>
+<h3>SAE 系列已发表论文</h3>
+<p>> 全部使用 concept DOI（永远指向最新版本）。承重引用另注节次。</p>
+<p>[15] H. Qin, "Self-as-an-End: 凿-构-余项循环"（SAE P1-P3），DOI: 10.5281/zenodo.18528813, .18666645, .18727327.</p>
+<p>[16] H. Qin, "四力前置篇：DD Splitting 与 $\alpha_G = \alpha_{\rm em}^{65/4}$"，DOI: 10.5281/zenodo.19341042. [本文引 §4.4、§5.1、§7 预言4]</p>
+<p>[17] H. Qin, "四力篇I：nDD → SU(n) 对应"，DOI: 10.5281/zenodo.19342106. [本文引 §5.4]</p>
+<p>[18] H. Qin, "四力篇III：$\sin^2\theta_W = 3/13$"，DOI: 10.5281/zenodo.19379412.</p>
+<p>[19] H. Qin, "世代篇：三代费米子的拓扑起源与质量结构"，DOI: 10.5281/zenodo.19394500. [本文引 G3、G5、G6、G7]</p>
+<p>[20] H. Qin, "四力篇VI：Spin(10) 分类与三条硬反预测"，DOI: 10.5281/zenodo.19426067. [本文 §6.3]</p>
+<p>[21] H. Qin, "四力篇VII：三层修正结构"，DOI: 10.5281/zenodo.19433220.</p>
+<p>[22] H. Qin, "物理量阶梯的四重嵌套"，DOI: 10.5281/zenodo.21227329. [二元标签引理的正典所在地]</p></div>
+  </div>
+</article>
 <footer>
   <div class="footer-inner">
-    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
   </div>
 </footer>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
 </body>
 </html>
