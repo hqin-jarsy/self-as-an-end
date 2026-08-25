@@ -270,17 +270,17 @@
   <div class="library-tools-intro">
     <p class="library-kicker">Paper library</p>
     <h2 id="paper-library-title">Find a paper</h2>
-    <p>Search across English and Chinese titles, summaries, series codes, and DOI numbers.</p>
+    <p>Search English and Chinese titles, summaries, paper numbers, and DOI records. Multiple terms can appear anywhere in the same paper.</p>
   </div>
   <div class="library-controls">
     <label class="library-field library-search">
       <span>Search</span>
-      <input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="e.g. subjecthood, 余项, ZFCρ" data-paper-search>
+      <input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="e.g. human AI, 余项, M-V" data-paper-search>
     </label>
     <label class="library-field">
-      <span>Field</span>
+      <span>Field / series</span>
       <select data-paper-field>
-        <option value="">All fields</option>
+        <option value="">All fields and series</option>
       </select>
     </label>
     <button class="library-reset" type="button" data-paper-reset hidden>Reset</button>
@@ -290,6 +290,14 @@
     <span class="library-shortcut" aria-hidden="true">Press <kbd>/</kbd> to search</span>
   </p>
   <p class="library-empty" data-paper-empty hidden>No papers match this search. Try a shorter term or another field.</p>
+</section>
+
+<section class="library-results" data-paper-results aria-labelledby="paper-results-title" hidden>
+  <div class="library-results-heading">
+    <h2 id="paper-results-title">Search results</h2>
+    <p>Title and paper-number matches appear first.</p>
+  </div>
+  <div class="paper-list" data-paper-results-list></div>
 </section>
 
 <div class="tier-header" id="all-papers">

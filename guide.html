@@ -2,296 +2,561 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reading Guide — Self-as-an-End</title>
-  <meta name="description" content="A reading guide to the Self-as-an-End theory series: where to start, how the series connect, and suggested paths by background.">
+  <meta name="description" content="A current, human-readable guide to the Self-as-an-End theory series: where to begin, which papers depend on one another, and reading paths across philosophy, mathematics, physics, biology, AI, and the human disciplines.">
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://self-as-an-end.net/guide.html">
   <style>
-    .guide-page { max-width: 780px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
-    .guide-page h1 { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .guide-intro { color: #555; font-size: 0.97rem; line-height: 1.7; margin-bottom: 2.5rem; border-bottom: 1px solid #e8e8e8; padding-bottom: 1.5rem; }
-    .guide-section { margin-bottom: 2.8rem; }
-    .guide-section h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e0e0e0; }
-    .start-box { background: #f8f8ff; border-left: 4px solid #2c2c8c; border-radius: 0 6px 6px 0; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; }
-    .start-box p { margin: 0 0 0.5rem; font-size: 0.97rem; line-height: 1.65; }
-    .start-box p:last-child { margin: 0; }
-    .start-box a { color: #2c2c8c; font-weight: 600; }
-    .path-card { border: 1px solid #e0e0e0; border-radius: 6px; padding: 1.1rem 1.3rem; margin-bottom: 1rem; background: #fafafa; }
-    .path-card h3 { font-size: 0.98rem; font-weight: 700; margin: 0 0 0.6rem; color: #222; }
-    .path-card .path-line { font-size: 0.92rem; color: #444; line-height: 1.6; margin: 0 0 0.4rem; }
-    .path-card .path-line a { color: #333; }
-    .path-card .path-note { font-size: 0.85rem; color: #777; margin: 0.4rem 0 0; font-style: italic; }
-    .path-arrow { color: #aaa; margin: 0 0.3rem; }
-    .series-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    .series-table th { text-align: left; padding: 0.5rem 0.8rem; background: #f5f5f5; border-bottom: 2px solid #ddd; font-weight: 600; color: #333; }
-    .series-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #ebebeb; vertical-align: top; line-height: 1.5; }
-    .series-table tr:last-child td { border-bottom: none; }
-    .series-table td:first-child { font-weight: 600; color: #2c2c8c; white-space: nowrap; }
-    .series-table td:nth-child(2) { color: #555; }
-    .series-table a { color: #333; text-decoration: none; }
-    .series-table a:hover { text-decoration: underline; }
-    .tag { display: inline-block; font-size: 0.73rem; padding: 0.1rem 0.45rem; border-radius: 3px; margin-left: 0.35rem; vertical-align: middle; font-weight: 500; }
-    .tag-prereq { background: #fff0e0; color: #8c4c00; }
-    .tag-standalone { background: #e8f5e8; color: #2c6c2c; }
-    .lang-note { font-size: 0.82rem; color: #888; margin-top: 0.3rem; }
+    .guide-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+    .guide-header {
+      max-width: 760px;
+      margin-bottom: 2rem;
+    }
+
+    .guide-kicker,
+    .section-kicker {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--link);
+    }
+
+    .guide-header h1 {
+      margin: 0.25rem 0 0.8rem;
+      font-size: 2.25rem;
+      font-weight: normal;
+      line-height: 1.2;
+    }
+
+    .guide-intro {
+      color: var(--mid);
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .guide-updated {
+      margin-top: 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.76rem;
+      color: var(--light);
+    }
+
+    .guide-toc {
+      display: flex;
+      gap: 0.65rem 1.4rem;
+      flex-wrap: wrap;
+      margin: 0 0 3.5rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+    }
+
+    .guide-toc a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .guide-toc a:hover { text-decoration: underline; }
+
+    .guide-section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 6.5rem;
+    }
+
+    .guide-section > h2 {
+      margin: 0.2rem 0 0.8rem;
+      font-size: 1.55rem;
+      font-weight: normal;
+      line-height: 1.3;
+    }
+
+    .section-intro {
+      max-width: 740px;
+      margin-bottom: 1.5rem;
+      color: var(--mid);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--rule);
+      background: var(--rule);
+    }
+
+    .entry-card {
+      display: flex;
+      min-height: 13rem;
+      padding: 1.25rem;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    .entry-card .card-label {
+      margin-bottom: 0.65rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    .entry-card h3 {
+      margin: 0 0 0.65rem;
+      font-size: 1.06rem;
+      line-height: 1.35;
+    }
+
+    .entry-card p {
+      margin: 0 0 1rem;
+      font-size: 0.86rem;
+      line-height: 1.65;
+      color: var(--mid);
+    }
+
+    .entry-card a {
+      margin-top: auto;
+      color: var(--link);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .entry-card a:hover { text-decoration: underline; }
+
+    .guide-note {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-left: 3px solid var(--link);
+      background: #f5f5fa;
+      color: var(--mid);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .path-card {
+      padding: 1.2rem 1.25rem;
+      border: 1px solid var(--rule);
+      background: #fff;
+    }
+
+    .path-card h3 {
+      margin: 0 0 0.7rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .path-line {
+      margin-bottom: 0.75rem;
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+
+    .path-line a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid #c9c9dc;
+    }
+
+    .path-line a:hover { border-color: var(--link); }
+
+    .path-arrow {
+      padding: 0 0.22rem;
+      color: var(--light);
+    }
+
+    .path-note {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--mid);
+    }
+
+    .map-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+    }
+
+    .domain-map {
+      width: 100%;
+      min-width: 690px;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+
+    .domain-map th {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 2px solid var(--black);
+      background: #f5f5f2;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-align: left;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .domain-map td {
+      padding: 0.75rem 0.8rem;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .domain-map tr:last-child td { border-bottom: 0; }
+    .domain-map td:first-child { width: 24%; font-weight: 600; }
+    .domain-map td:nth-child(2) { color: var(--mid); }
+    .domain-map td:last-child { width: 23%; }
+
+    .domain-map a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .domain-map a:hover { text-decoration: underline; }
+
+    .reading-modes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .reading-mode {
+      padding-top: 1rem;
+      border-top: 3px solid var(--black);
+    }
+
+    .reading-mode h3 {
+      margin-bottom: 0.55rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+    }
+
+    .reading-mode p {
+      font-size: 0.86rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    .library-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid #d5d5e2;
+      background: #f5f5fa;
+    }
+
+    .library-cta p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--mid);
+    }
+
+    .library-cta a {
+      flex: 0 0 auto;
+      padding: 0.45rem 0.7rem;
+      border: 1px solid var(--link);
+      color: var(--link);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      text-decoration: none;
+    }
+
+    .library-cta a:hover {
+      background: var(--link);
+      color: #fff;
+    }
+
+    .language-copy {
+      max-width: 740px;
+      color: var(--mid);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 760px) {
+      .guide-page { padding: 2.5rem 1.25rem 4rem; }
+      .guide-header h1 { font-size: 1.8rem; }
+      .entry-grid,
+      .paths-grid,
+      .reading-modes { grid-template-columns: 1fr; }
+      .entry-card { min-height: 0; }
+      .entry-card a { margin-top: 0; }
+      .library-cta { align-items: flex-start; flex-direction: column; }
+    }
   </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header>
   <div class="header-inner">
     <a href="index.html" class="site-title">Self-as-an-End</a>
-    <nav>
-      <a href="index.html">Papers</a>
-      <a href="guide.html">Guide</a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html#start-here">Start here</a>
+      <a href="guide.html" aria-current="page">Reading paths</a>
+      <a href="index.html#paper-library">Find a paper</a>
+      <a href="index.html#all-papers">All papers</a>
       <a href="about.html">About</a>
-      <a href="endacc.html">end/acc</a>
-      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
-      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+      <a href="llms.txt" class="nav-ai">For AI</a>
     </nav>
   </div>
 </header>
 
-<div class="guide-page">
-
-  <h1>Reading Guide</h1>
-  <p class="guide-intro">The Self-as-an-End (SAE) series now spans over a dozen sub-series across mathematics, physics, philosophy, biology, economics, and more. This guide tells you where to start, how the series connect, and which path fits your background. In Chinese: 导读。</p>
-
-  <!-- START HERE -->
-  <div class="guide-section">
-    <h2>Start Here — For Every Reader</h2>
-    <div class="start-box">
-      <p>Regardless of your background, your first paper is the same:</p>
-      <p><a href="papers/methodology.html">Methodological Overview: Hundun — Negation as First Principle</a> &nbsp;(Methodology M, DOI: 10.5281/zenodo.18842450)</p>
-      <p>This paper introduces the 16-level DD dimensional sequence (0D through 16DD), the chisel-construct cycle, and the concept of remainder (余项). Without these, the vocabulary of every other paper on this site will be opaque. It is short enough to read in one sitting and dense enough to repay multiple readings.</p>
-    </div>
-    <p style="font-size:0.93rem;color:#555;">After reading the Overview, you can branch directly into any series below. You do <em>not</em> need to read Methodology II–VII before branching — those papers deepen specific methodological questions and can be read alongside whichever applied series interests you.</p>
+<main class="guide-page" id="main-content">
+  <div class="guide-header">
+    <p class="guide-kicker">Human reading guide · 人类读者导读</p>
+    <h1>Find your way through Self-as-an-End</h1>
+    <p class="guide-intro">The SAE corpus now contains more than 350 papers across eight broad domains and over forty named series and clusters. This page is not another catalogue. It is a map: where to begin, what must be read in order, and where you can safely follow your own question.</p>
+    <p class="guide-updated">Current to the paper index on August 25, 2026.</p>
   </div>
 
-  <!-- READING PATHS -->
-  <div class="guide-section">
-    <h2>Reading Paths by Interest</h2>
+  <nav class="guide-toc" aria-label="On this page">
+    <a href="#entry">Three entry points</a>
+    <a href="#paths">Paths by interest</a>
+    <a href="#map">Domain map</a>
+    <a href="#order">What to read in order</a>
+    <a href="#language">Language</a>
+  </nav>
 
-    <div class="path-card">
-      <h3>⚛️ Physics</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/cosmological.html">Cosmological Series</a> (start from Cosmo I)
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-four-forces-I.html">Four Forces Series</a> (I through IX)
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-mass-series-I.html">Mass Series</a> (I through V)
-      </div>
-      <p class="path-note">These three series build on each other. Cosmology establishes the SAE cosmological framework; Four Forces derives the fundamental interactions from DD geometry; Mass Series reads physical constants and the periodic table from the same structure. Reading them out of order is possible but will require more back-referencing.</p>
+  <section class="guide-section" id="entry">
+    <p class="section-kicker">Begin</p>
+    <h2>Three good entry points</h2>
+    <p class="section-intro">Methodology M remains the universal foundation and the recommended default. The other two doorways can make the framework easier to enter, but readers should return to Methodology M before following a specialist branch.</p>
+
+    <div class="entry-grid">
+      <article class="entry-card">
+        <span class="card-label">Default route</span>
+        <h3>Learn the vocabulary first</h3>
+        <p>Start with the chisel-construct cycle, the DD sequence, and remainder. This is the shared language used across the corpus.</p>
+        <a href="papers/methodology.html">Read Methodology M →</a>
+      </article>
+
+      <article class="entry-card">
+        <span class="card-label">Argument first</span>
+        <h3>Start from the human question</h3>
+        <p>Begin with the normative problem: when can a person exist as an end rather than as a means for a system? Then return to Methodology M for the shared vocabulary.</p>
+        <a href="papers/paper1.html">Read Foundation Paper 01 →</a>
+      </article>
+
+      <article class="entry-card">
+        <span class="card-label">Map first</span>
+        <h3>See the whole structure</h3>
+        <p>Use the dense framework reference alongside Methodology M when you prefer definitions, cross-links, and the full DD sequence before reading arguments.</p>
+        <a href="framework.html">Open the framework reference →</a>
+      </article>
     </div>
 
-    <div class="path-card">
-      <h3>∑ Mathematics (ZFCρ)</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/zfcrho.html">ZFCρ Paper I</a>
-        <span class="path-arrow">→</span>
-        sequential through the series (now at Paper LX)
-      </div>
-      <p class="path-note">ZFCρ is the most internally self-contained series. Each paper builds directly on the last. Paper I establishes the core theorem (ρ ≠ ∅) and the formalization-remainder cycle; the series then progressively deepens the algebraic structure. Readers comfortable with formal mathematics can move quickly; others may prefer to read in parallel with the Methodology series for conceptual grounding.</p>
+    <p class="guide-note"><strong>You do not need to read all 350+ papers.</strong> Methodology M is enough orientation for most branches. After that, follow a question. Return to the foundation and methodology papers when a later paper uses a concept you want to inspect more closely.</p>
+  </section>
+
+  <section class="guide-section" id="paths">
+    <p class="section-kicker">Explore</p>
+    <h2>Reading paths by interest</h2>
+    <p class="section-intro">These are recommended routes, not claims that the corpus has only one correct order. Arrows indicate a useful dependency; commas indicate papers or branches that can be chosen independently.</p>
+
+    <div class="paths-grid">
+      <article class="path-card">
+        <h3>Core SAE and subjecthood</h3>
+        <p class="path-line"><a href="papers/methodology.html">Methodology M</a><span class="path-arrow">→</span><a href="papers/paper1.html">Systems &amp; Personhood</a><span class="path-arrow">→</span><a href="papers/paper2.html">Internal Colonization</a><span class="path-arrow">→</span><a href="papers/paper3.html">Complete Framework</a><span class="path-arrow">→</span><a href="papers/sae-inter-ontological.html">Inter-Ontological</a><span class="path-arrow">→</span><a href="papers/sae-institution.html">Institution</a></p>
+        <p class="path-note">The shortest route to the framework's central normative argument and its move from the subject to relations and institutions.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Philosophy, ethics, and law</h3>
+        <p class="path-line"><a href="papers/methodology.html">Methodology M</a><span class="path-arrow">→</span><a href="papers/sae-first-critique.html">The First Critique</a><span class="path-arrow">→</span><a href="papers/sae-critique-ethics.html">Critique of Ethics</a><span class="path-arrow">→</span><a href="papers/sae-moral-law-0.html">Moral Law 0</a><span class="path-arrow">→</span><a href="papers/sae-rights-prequel.html">Rights Prequel</a>, <a href="papers/sae-law-1.html">Law I</a></p>
+        <p class="path-note">Use this route for SAE's relation to Kant, one's own law, multi-subject morality, rights, and jurisprudence.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Mathematics and ZFCρ</h3>
+        <p class="path-line"><a href="papers/methodology.html">Methodology M</a><span class="path-arrow">→</span><a href="papers/zfcrho.html">ZFCρ I</a><span class="path-arrow">→</span>II<span class="path-arrow">→</span>III<span class="path-arrow">→</span>continue sequentially through LXXIV</p>
+        <p class="path-note">ZFCρ is the largest and most internally sequential series. The SAE Mathematics papers and applied prime pre-sieve are adjacent branches, not substitutes for the main sequence.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Cosmology and fundamental physics</h3>
+        <p class="path-line"><a href="papers/methodology.html">Methodology M</a><span class="path-arrow">→</span><a href="papers/sae-cosmo-0.html">Cosmo 0</a><span class="path-arrow">→</span><a href="papers/sae-four-forces-0.html">Four Forces 0</a><span class="path-arrow">→</span><a href="papers/sae-four-forces-I.html">Four Forces I</a><span class="path-arrow">→</span><a href="papers/sae-mass-series-I.html">Mass I</a></p>
+        <p class="path-note">For quantum, information, and black-hole questions, branch into <a href="papers/sae-qm-p1.html">QM I</a>, <a href="papers/sae-info-theory-1.html">Information Theory I</a>, or <a href="papers/sae-blackhole-1.html">Black Hole I</a>.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Biology and medicine</h3>
+        <p class="path-line"><a href="papers/methodology.html">Methodology M</a><span class="path-arrow">→</span><a href="papers/sae-biology-note-1.html">Metabolic oncology</a>, <a href="papers/sae-biology-note-2.html">speech loss</a>, <a href="papers/sae-biology-note-3.html">eating disorders</a>, or any Biology Note matched to your question</p>
+        <p class="path-note">The ten Biology Notes are applications rather than a single cumulative argument. Read by topic. The Life Cycle Table is the more systematic biological sequence.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>AI, LLMs, and human–AI symbiosis</h3>
+        <p class="path-line"><a href="papers/methodology3.html">Finding Remainders with AI</a><span class="path-arrow">→</span><a href="papers/sae-methodology-8.html">Human–AI Symbiosis</a><span class="path-arrow">→</span><a href="papers/sae-epistemology-1.html">Epistemology I</a><span class="path-arrow">→</span><a href="papers/llm1.html">AI I</a><span class="path-arrow">→</span><a href="papers/ai-arch-1.html">AI Architecture I</a></p>
+        <p class="path-note">This path separates using AI as a chisel from claims about AI subjectivity, emergence, memory, and alignment.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Cognition, learning, and psychology</h3>
+        <p class="path-line"><a href="papers/sae-epistemology-1.html">Epistemology I–IV</a><span class="path-arrow">→</span><a href="papers/learning1.html">Learning I–IV</a>; then <a href="papers/introspection.html">Introspection</a>, <a href="papers/dream.html">Dreams &amp; Anesthesia</a>, or <a href="papers/sae-psycho-1-id.html">Psychoanalysis I</a></p>
+        <p class="path-note">The epistemology and learning series are sequential. The psychology and self-with-self papers are thematic branches.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Institutions, power, rights, value, and economics</h3>
+        <p class="path-line"><a href="papers/sae-inter-ontological.html">Inter-Ontological</a><span class="path-arrow">→</span><a href="papers/sae-institution.html">Institution</a><span class="path-arrow">→</span><a href="papers/sae-power-prequel.html">Power Prequel</a>, <a href="papers/sae-rights-prequel.html">Rights Prequel</a>, <a href="papers/sae-value-prequel.html">Value Prequel</a>, <a href="papers/sae-economics-2.html">Economics</a></p>
+        <p class="path-note">These series share a question: how constructs coordinate subjects without replacing the subjects as ends.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>Chinese philosophy and Buddhist interfaces</h3>
+        <p class="path-line"><a href="papers/methodology.html">Methodology M</a><span class="path-arrow">→</span><a href="papers/sae-daodejing-1.html">Daodejing I–IX</a>, <a href="papers/untangling-zhuangzi.html">Zhuangzi I–IV</a>, <a href="papers/sae-buddhist-1.html">Buddhist Interface I–VI</a></p>
+        <p class="path-note">Each cluster has its own internal order. They can be read independently of one another after the methodological overview.</p>
+      </article>
+
+      <article class="path-card">
+        <h3>History, anthropology, arts, and myth</h3>
+        <p class="path-line"><a href="papers/sae-anthropology-prequel.html">Anthropology Prequel</a><span class="path-arrow">→</span><a href="papers/civ-history-ancient.html">Civilization History I</a><span class="path-arrow">→</span>II<span class="path-arrow">→</span>III<span class="path-arrow">→</span>IV; or branch to <a href="papers/chisel-music.html">Temporal Arts</a> and <a href="papers/myth.html">Mythology</a></p>
+        <p class="path-note">Civilization History is sequential. The arts and mythology papers are independent applications of chisel, construct, and remainder.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="guide-section" id="map">
+    <p class="section-kicker">Orient</p>
+    <h2>The corpus at a glance</h2>
+    <p class="section-intro">The homepage preserves the complete corpus on one page. These eight domains describe its current top-level structure; the entry link is a useful doorway, not necessarily the first work chronologically.</p>
+
+    <div class="map-wrap">
+      <table class="domain-map">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Main contents</th>
+            <th>Suggested entry</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Foundation &amp; Methodology</td>
+            <td>Six foundational papers, Methodology M-00 through M-X, and Epistemology I–IV.</td>
+            <td><a href="papers/methodology.html">Methodology M</a></td>
+          </tr>
+          <tr>
+            <td>Philosophy</td>
+            <td>Applied philosophy, Moral Law, Daodejing, Zhuangzi, Buddhist interfaces, aesthetics, metaphysics, and philosophy of science.</td>
+            <td><a href="papers/sae-first-critique.html">The First Critique</a></td>
+          </tr>
+          <tr>
+            <td>Mathematics</td>
+            <td>ZFCρ through Paper LXXIV, an applied prime pre-sieve, and the five-paper SAE Mathematics series.</td>
+            <td><a href="papers/zfcrho.html">ZFCρ I</a></td>
+          </tr>
+          <tr>
+            <td>Physics</td>
+            <td>Cosmology, Four Forces, Mass, quantum mechanics, black holes, information theory, and the Power, Rights, and Value theory clusters.</td>
+            <td><a href="papers/sae-cosmo-0.html">Cosmo 0</a></td>
+          </tr>
+          <tr>
+            <td>Thermodynamics &amp; Chemistry</td>
+            <td>Ten ZFCρ thermodynamics papers, from fluctuation absorption to the closing paper on self-reference and observation hierarchy.</td>
+            <td><a href="papers/zfcrho-thermo.html">Thermodynamics I</a></td>
+          </tr>
+          <tr>
+            <td>Biology</td>
+            <td>Ten medical and biological notes, evolutionary applications, and the three-part Periodic Table of Life.</td>
+            <td><a href="papers/sae-biology-note-1.html">Biology Note 1</a></td>
+          </tr>
+          <tr>
+            <td>Human Disciplines</td>
+            <td>Anthropology, law, war, psychology, language, AI, learning, development, arts, mythology, and civilization history.</td>
+            <td><a href="papers/sae-anthropology-prequel.html">Anthropology Prequel</a></td>
+          </tr>
+          <tr>
+            <td>Dialogues</td>
+            <td>Da Zhi Asks Zi Lu: dialogic demonstrations of the chisel-construct cycle in live inquiry.</td>
+            <td><a href="papers/sae-dialogues-01.html">Dialogue I</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="path-card">
-      <h3>🧠 Epistemology &amp; Cognition</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-epistemology-1.html">Epistemology I: Must-Cognize</a>
-        <span class="path-arrow">→</span>
-        II → III → IV (sequential)
-      </div>
-      <p class="path-note">The four-paper epistemology series reads naturally in order. Paper I establishes the four a priori conditions of cognition and the AGI subjectivity problem; Papers II–IV develop each condition in depth. Paper IV (Must-Be-Questioned) closes the loop back to ZFCρ's remainder theorem.</p>
+    <div class="library-cta">
+      <p>Need a title, concept, DOI, or Chinese keyword rather than a route?</p>
+      <a href="index.html#paper-library">Search the full paper library</a>
     </div>
+  </section>
 
-    <div class="path-card">
-      <h3>📚 Learning &amp; Education</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/learning1.html">Learning Series I</a> (11DD–12DD)
-        <span class="path-arrow">→</span>
-        II → III → IV (sequential)
-      </div>
-      <p class="path-note">The Learning series is among the most accessible entry points after the Overview. It applies the DD-layer framework to how humans learn — from memory and prediction (11–12DD) through self-scrutiny (13DD), purpose (14DD), and recognizing the other's purpose (14DD→15DD). Recommended for educators, parents, and anyone thinking about pedagogy.</p>
+  <section class="guide-section" id="order">
+    <p class="section-kicker">Read well</p>
+    <h2>What should be read in order?</h2>
+    <p class="section-intro">The numbering system does not always imply the same kind of dependency. Use these three reading modes.</p>
+
+    <div class="reading-modes">
+      <article class="reading-mode">
+        <h3>Read sequentially</h3>
+        <p>ZFCρ, Epistemology, Moral Law, Daodejing, Zhuangzi, Quantum Mechanics, Information Theory, Thermodynamics, Learning, and Civilization History develop cumulative arguments. Begin at the first paper unless a later paper explicitly says it is standalone.</p>
+      </article>
+
+      <article class="reading-mode">
+        <h3>Begin with the prequel, then branch</h3>
+        <p>Power, Rights, Value, Anthropology, and Four Forces provide a prequel or zero paper before opening into narrower questions. Read that framing paper first, then follow the branch that matches your question.</p>
+      </article>
+
+      <article class="reading-mode">
+        <h3>Choose by question</h3>
+        <p>Biology Notes, applied philosophy, psychology, individual philosopher studies, temporal arts, mythology, and many thought experiments are designed to be entered through the topic itself.</p>
+      </article>
     </div>
+  </section>
 
-    <div class="path-card">
-      <h3>🧬 Biology &amp; Medicine</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-biology-note-1.html">Biology Note I</a> (metabolic oncology),
-        <a href="papers/sae-biology-note-2.html">II</a> (speech loss),
-        <a href="papers/sae-biology-note-3.html">III</a> (eating disorders)
-      </div>
-      <p class="path-note">The Biology Notes are largely independent of each other and can be read in any order. Each applies the SAE framework to a specific clinical or biological question. Note III (eating disorders) is particularly accessible as an introduction to how DD-layer analysis differs from conventional medical framing.</p>
-    </div>
-
-    <div class="path-card">
-      <h3>💰 Economics &amp; Institutions</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-economics-2.html">Economics Series</a> (start from Paper 2)
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-institution.html">Institutions Paper</a>
-      </div>
-      <p class="path-note">The economics series applies SAE's Kingdom of Ends / Kingdom of Means distinction to markets, money, and institutional design. The phase-transition window (Ω ∈ [2.75, 4.01]) that appears in the physics papers recurs here as the market's DD phase structure.</p>
-    </div>
-
-    <div class="path-card">
-      <h3>🏛️ Philosophy &amp; History of Ideas</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-epistemology-1.html">Epistemology Series</a> or <a href="papers/sae-critique-ethics.html">Critique of Ethics</a>
-        <span class="path-arrow">→</span>
-        individual philosopher papers (Kant, Laozi, Socrates, Nietzsche…)
-      </div>
-      <p class="path-note">Readers from philosophy can go directly from the Overview into the applied philosophy papers. The individual philosopher papers (Kant, Laozi, Confucius, Zhuangzi, Nietzsche, Jesus, etc.) are self-contained and require only the Overview as background.</p>
-    </div>
-
-    <div class="path-card">
-      <h3>🌍 Civilization &amp; History</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-anthropology-prequel.html">Anthropology Prequel</a>
-        <span class="path-arrow">→</span>
-        Civilization History series (Ancient → Medieval → Modern)
-      </div>
-      <p class="path-note">The Anthropology Prequel establishes the cosmic preconditions for human existence — a good frame before diving into the civilization history papers. The history papers can also be read independently as stand-alone case studies.</p>
-    </div>
-
-    <div class="path-card">
-      <h3>🤖 AI &amp; Technology</h3>
-      <div class="path-line">
-        <a href="papers/methodology.html">Methodology M</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/methodology3.html">Methodology III: How to Find Remainders with AI</a>
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-epistemology-1.html">Epistemology I</a> (AGI subjectivity)
-        <span class="path-arrow">→</span>
-        <a href="papers/sae-multi-ai.html">Multi-AI Architectures</a>
-      </div>
-      <p class="path-note">Methodology III is the most practical paper on the site — a direct manual for using AI to find remainders, grounded in the sentence-form / response isomorphism theorem. Recommended for anyone working with LLMs.</p>
-    </div>
-
-  </div>
-
-  <!-- SERIES OVERVIEW TABLE -->
-  <div class="guide-section">
-    <h2>All Series at a Glance</h2>
-    <table class="series-table">
-      <thead>
-        <tr>
-          <th>Series</th>
-          <th>What it is</th>
-          <th>Papers</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="papers/methodology.html">Methodology</a></td>
-          <td>The SAE framework itself — DD layers, chisel-construct cycle, remainder, Via Negativa. <strong>Start here.</strong></td>
-          <td>M + I–VII</td>
-        </tr>
-        <tr>
-          <td><a href="papers/sae-epistemology-1.html">Epistemology</a></td>
-          <td>Four a priori conditions of cognition; AGI subjectivity problem; remainder as structural necessity.</td>
-          <td>I–IV</td>
-        </tr>
-        <tr>
-          <td><a href="papers/zfcrho.html">ZFCρ</a></td>
-          <td>Formal mathematics of the remainder: ZFC set theory extended with a remainder operator ρ. Proves ρ ≠ ∅ and ρ → ρ' is necessary.</td>
-          <td>I–LX</td>
-        </tr>
-        <tr>
-          <td>Cosmological</td>
-          <td>SAE cosmological framework: true randomness × structured time; DD-layer reading of the universe's origin and constants.</td>
-          <td>~10</td>
-        </tr>
-        <tr>
-          <td><a href="papers/sae-four-forces-I.html">Four Forces</a></td>
-          <td>The four fundamental interactions derived from DD geometry. Prerequisite: Cosmological series.</td>
-          <td>I–IX + Prequel/Finale</td>
-        </tr>
-        <tr>
-          <td><a href="papers/sae-mass-series-I.html">Mass Series</a></td>
-          <td>Physical constants and the periodic table read from the DD resolvent structure. Prerequisite: Four Forces series.</td>
-          <td>I–V</td>
-        </tr>
-        <tr>
-          <td><a href="papers/learning1.html">Learning</a></td>
-          <td>How humans learn at each DD layer — from memory/prediction through purpose and recognizing the other's ends.</td>
-          <td>I–IV</td>
-        </tr>
-        <tr>
-          <td><a href="papers/sae-biology-note-1.html">Biology Notes</a></td>
-          <td>Clinical and biological applications of the SAE framework: oncology, speech loss, eating disorders.</td>
-          <td>I–III</td>
-        </tr>
-        <tr>
-          <td><a href="papers/sae-anthropology-prequel.html">Anthropology</a></td>
-          <td>Cosmic preconditions for human existence; why humanity is structurally unique in the solar system.</td>
-          <td>Prequel + ongoing</td>
-        </tr>
-        <tr>
-          <td>Economics</td>
-          <td>Kingdom of Means vs. Kingdom of Ends applied to markets, money, institutions, and the phase-transition window.</td>
-          <td>~8</td>
-        </tr>
-        <tr>
-          <td>Philosophy (Applied)</td>
-          <td>Individual philosopher papers: Kant, Laozi, Confucius, Zhuangzi, Nietzsche, Socrates, Jesus, and others.</td>
-          <td>~15</td>
-        </tr>
-        <tr>
-          <td>Civilization History</td>
-          <td>Ancient, Medieval, and Modern civilization through the SAE lens of base/emergence layer transitions.</td>
-          <td>~6</td>
-        </tr>
-        <tr>
-          <td>Lifecycle &amp; Development</td>
-          <td>Terrible Twos, Terrible Teens, aging, nurturing — DD-layer transitions across the human lifespan.</td>
-          <td>~8</td>
-        </tr>
-        <tr>
-          <td>AI Architecture</td>
-          <td>LLM structure, multi-AI coordination, and the SAE framework as an evaluative lens for AI systems.</td>
-          <td>~6</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- LANGUAGE NOTE -->
-  <div class="guide-section">
-    <h2>Language</h2>
-    <p style="font-size:0.93rem;color:#555;line-height:1.7;">Most papers on this site are bilingual (English / Chinese). Use the <strong>English / 中文</strong> tabs at the top of each paper page to switch. The Chinese versions are the original drafts for most papers; the English versions are full translations. A small number of older papers are English-only.</p>
-  </div>
-
-  <p style="font-size:0.85rem;color:#aaa;margin-top:3rem;">Guide last updated April 2026. As the series grows, this guide will be updated to reflect new papers and paths. Questions or suggestions: <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener" style="color:#888;">@hqinjarsy</a></p>
-
-</div>
+  <section class="guide-section" id="language">
+    <p class="section-kicker">Read bilingually</p>
+    <h2>Language and reference access</h2>
+    <p class="language-copy">Most papers provide English and Chinese versions through tabs at the top of the paper page; a smaller number are English-only. If a translated phrase seems structurally important, compare both versions. For machine reading, use <a href="llms.txt">llms.txt</a> for orientation and <a href="papers.json">papers.json</a> for the flat metadata index. The complete human- and machine-readable corpus remains on the <a href="index.html#all-papers">homepage</a>.</p>
+  </section>
+</main>
 
 <footer>
   <div class="footer-inner">
-    <span>© 2026 Han Qin · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
-    <div>
+    <span class="footer-copy">© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <div class="footer-links">
+      <a href="index.html#all-papers">All Papers</a>
+      <a href="framework.html">Framework</a>
+      <a href="llms.txt">AI Index</a>
       <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
       <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
       <a href="about.html">About</a>
     </div>
   </div>
 </footer>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
