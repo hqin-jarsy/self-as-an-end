@@ -36,6 +36,7 @@
   </script>
 
   <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
   <link rel="canonical" href="https://self-as-an-end.net/">
 
   <style>
@@ -161,11 +162,13 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header>
   <div class="header-inner">
     <a href="index.html" class="site-title">Self-as-an-End</a>
-    <nav>
-      <a href="index.html">Papers</a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html" aria-current="page">Papers</a>
       <a href="guide.html">Guide</a>
       <a href="about.html">About</a>
       <a href="endacc.html">end/acc</a>
@@ -174,6 +177,8 @@
     </nav>
   </div>
 </header>
+
+<main id="main-content">
 
 <section class="hero">
   <div class="hero-inner">
@@ -232,10 +237,36 @@
     <div class="path"><strong><a href="#sec-philosophy">Philosophy</a></strong> / <strong><a href="#sec-language">Language</a></strong> → Phil I → Lang I</div>
   </div>
   <div class="reading-nav-footer">
-    All series begin from <a href="papers/methodology1.html">Methodology M</a> — the universal foundation.
+    All series begin from <a href="papers/methodology.html">Methodology M</a> — the universal foundation.
     For detailed reading paths and series overview, see the <a href="guide.html">Reading Guide</a>.
   </div>
 </div>
+
+<section class="library-tools" data-paper-library aria-labelledby="paper-library-title" hidden>
+  <div class="library-tools-intro">
+    <p class="library-kicker">Paper library</p>
+    <h2 id="paper-library-title">Find a paper</h2>
+    <p>Search across English and Chinese titles, summaries, series codes, and DOI numbers.</p>
+  </div>
+  <div class="library-controls">
+    <label class="library-field library-search">
+      <span>Search</span>
+      <input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="e.g. subjecthood, 余项, ZFCρ" data-paper-search>
+    </label>
+    <label class="library-field">
+      <span>Field</span>
+      <select data-paper-field>
+        <option value="">All fields</option>
+      </select>
+    </label>
+    <button class="library-reset" type="button" data-paper-reset hidden>Reset</button>
+  </div>
+  <p class="library-status" role="status" aria-live="polite">
+    <span data-paper-count></span>
+    <span class="library-shortcut" aria-hidden="true">Press <kbd>/</kbd> to search</span>
+  </p>
+  <p class="library-empty" data-paper-empty hidden>No papers match this search. Try a shorter term or another field.</p>
+</section>
 
 <div class="tier-header">
   <h2>1. SAE Foundation &amp; Methodology <span style="font-size:0.75em; font-weight:400; color:#888;">基础·方法论</span></h2>
@@ -5008,6 +5039,8 @@
 
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="footer-inner">
