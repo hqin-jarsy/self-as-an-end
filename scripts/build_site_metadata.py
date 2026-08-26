@@ -27,7 +27,7 @@ AUTHOR_NAME = "Han Qin"
 AUTHOR_ALTERNATE_NAME = "秦汉"
 AUTHOR_ORCID = "https://orcid.org/0009-0009-9583-0018"
 LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/"
-METADATA_VERSION = "1"
+METADATA_VERSION = "2"
 START_MARKER = "<!-- SAE:machine-metadata:start -->"
 END_MARKER = "<!-- SAE:machine-metadata:end -->"
 NAV_START_MARKER = "<!-- SAE:paper-navigation:start -->"
@@ -318,14 +318,27 @@ def previous_metadata(source: str) -> dict[str, Any]:
     }
 
 
+def content_fingerprint(source: str) -> str:
+    """Hash substantive body markup while ignoring formatting-only whitespace.
+
+    Generated navigation is inserted immediately before the footer. Removing
+    that block can legitimately leave one fewer blank line than the original
+    hand-authored page, which must not count as a paper revision.
+    """
+    body_match = re.search(r"<body\b.*", source, re.I | re.S)
+    hash_source = body_match.group(0) if body_match else source
+    hash_source = hash_source.replace("\r\n", "\n").replace("\r", "\n")
+    hash_source = re.sub(r"[ \t]+\n", "\n", hash_source)
+    hash_source = re.sub(r"\n[ \t]*\n+", "\n", hash_source)
+    return hashlib.sha256(hash_source.encode("utf-8")).hexdigest()
+
+
 def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[str, Any], str]:
     previous = previous_metadata(source)
     stripped = remove_managed_metadata(source)
     # Hash only the document body. Head formatting and regenerated machine
-    # metadata must not make a second run look like a content revision.
-    body_match = re.search(r"<body\b.*", stripped, re.I | re.S)
-    hash_source = body_match.group(0) if body_match else stripped
-    content_hash = hashlib.sha256(hash_source.encode("utf-8")).hexdigest()
+    # metadata or formatting-only blank lines must not look like revisions.
+    content_hash = content_fingerprint(stripped)
 
     title = str(previous["title"] or item.get("title") or path.stem).strip()
     subtitle = str(item.get("subtitle") or "").strip()
@@ -349,7 +362,9 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
 
     published = normalize_date(previous["datePublished"]) or git_date(path, oldest=True) or str(date.today().year)
     modified = normalize_date(previous["dateModified"]) or git_date(path) or date.today().isoformat()
-    if previous["contentHash"] != content_hash or previous["metadataVersion"] != METADATA_VERSION:
+    # A metadata schema migration rewrites the fingerprint but does not mean
+    # that the scholarly content itself changed.
+    if previous["metadataVersion"] == METADATA_VERSION and previous["contentHash"] != content_hash:
         modified = date.today().isoformat()
 
     keyword_value = previous["keywords"]
