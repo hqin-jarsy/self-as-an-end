@@ -612,6 +612,7 @@ def navigation_block(
             f"    <p>{escape_attr(citation)}</p>",
             f'    <p class="paper-citation-links">{doi_line}<a href="{canonical}">Canonical URL</a></p>',
             "  </details>",
+            '  <p class="paper-essay-link">Prefer essays? / 更想读散文？ Visit <a href="https://nondubito.net/" target="_blank" rel="noopener">Non Dubito</a> for multilingual essays and literary writing.</p>',
             "</aside>",
             NAV_END_MARKER,
         ]
