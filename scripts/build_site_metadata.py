@@ -26,6 +26,7 @@ BASE_URL = "https://self-as-an-end.net"
 AUTHOR_NAME = "Han Qin"
 AUTHOR_ALTERNATE_NAME = "秦汉"
 AUTHOR_ORCID = "https://orcid.org/0009-0009-9583-0018"
+LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/"
 METADATA_VERSION = "1"
 START_MARKER = "<!-- SAE:machine-metadata:start -->"
 END_MARKER = "<!-- SAE:machine-metadata:end -->"
@@ -290,9 +291,9 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
         keywords = ["Self-as-an-End", "SAE", "Han Qin", "秦汉"]
 
     canonical = f"{BASE_URL}/{item['href']}"
-    license_url = previous["license"]
-    if not license_url and re.search(r"CC BY 4\.0|creativecommons\.org/licenses/by/4\.0", source, re.I):
-        license_url = "https://creativecommons.org/licenses/by/4.0/"
+    # The corpus-wide policy explicitly permits reuse and training under CC BY
+    # 4.0; individual pages may still carry the same value explicitly.
+    license_url = previous["license"] or LICENSE_URL
 
     data: dict[str, Any] = {
         "title": title,
@@ -443,6 +444,8 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
             errors.append(f"{item['href']}: expected exactly one valid ScholarlyArticle JSON-LD object")
         elif scholarly[0].get("url") != canonical:
             errors.append(f"{item['href']}: JSON-LD URL does not match canonical URL")
+        elif scholarly[0].get("license") != LICENSE_URL:
+            errors.append(f"{item['href']}: JSON-LD license does not match the corpus policy")
 
     try:
         tree = ET.parse(ROOT / "sitemap.xml")
@@ -457,6 +460,23 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
             errors.append(f"sitemap.xml contains {len(unexpected_papers)} uncatalogued paper URL(s)")
     except (ET.ParseError, OSError) as exc:
         errors.append(f"invalid sitemap.xml: {exc}")
+
+    robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
+    for user_agent in ("OAI-SearchBot", "GPTBot", "Claude-SearchBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "CCBot"):
+        if not re.search(rf"^User-agent:\s*{re.escape(user_agent)}\s*$", robots, re.I | re.M):
+            errors.append(f"robots.txt is missing the explicit {user_agent} policy")
+
+    try:
+        tdm_rules = json.loads((ROOT / ".well-known" / "tdmrep.json").read_text(encoding="utf-8"))
+        if not isinstance(tdm_rules, list) or not any(
+            isinstance(rule, dict)
+            and rule.get("location") == "/"
+            and rule.get("tdm-reservation") == 0
+            for rule in tdm_rules
+        ):
+            errors.append("tdmrep.json does not permit site-wide text and data mining")
+    except (json.JSONDecodeError, OSError) as exc:
+        errors.append(f"invalid .well-known/tdmrep.json: {exc}")
     return errors
 
 
