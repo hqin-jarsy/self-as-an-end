@@ -30,6 +30,8 @@ LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/"
 METADATA_VERSION = "1"
 START_MARKER = "<!-- SAE:machine-metadata:start -->"
 END_MARKER = "<!-- SAE:machine-metadata:end -->"
+NAV_START_MARKER = "<!-- SAE:paper-navigation:start -->"
+NAV_END_MARKER = "<!-- SAE:paper-navigation:end -->"
 STATIC_URLS = ["/", "/guide.html", "/framework.html", "/about.html", "/endacc.html"]
 EXTRA_PAPERS = [
     {
@@ -124,6 +126,71 @@ def plain_text(fragment: str) -> str:
     fragment = html.unescape(fragment)
     fragment = fragment.replace("**", "").replace("__", "")
     return re.sub(r"\s+", " ", fragment).strip()
+
+
+def version_tokens(value: str) -> set[str]:
+    """Return normalized explicit version labels such as V2 or V2.4."""
+    return {token.upper() for token in re.findall(r"\bV\d+(?:\.\d+)?\b", value, re.I)}
+
+
+def index_structure() -> tuple[dict[str, dict[str, Any]], dict[tuple[str, str, str], list[str]]]:
+    """Read the human catalogue hierarchy and series order from index.html."""
+    source = (ROOT / "index.html").read_text(encoding="utf-8")
+    block_pattern = re.compile(
+        r"<div\b[^>]*class\s*=\s*([\"'])[^\"']*\btier-header\b[^\"']*\1[^>]*>.*?</div>"
+        r"|<section\b[^>]*class\s*=\s*([\"'])[^\"']*\bpapers-section\b[^\"']*\2[^>]*>.*?</section>",
+        re.I | re.S,
+    )
+    title_pattern = re.compile(
+        r"<div\b[^>]*class\s*=\s*([\"'])[^\"']*\bpaper-title\b[^\"']*\1[^>]*>\s*"
+        r"<a\b[^>]*href\s*=\s*([\"'])(papers/[^\"'#?]+\.html)\2[^>]*>(.*?)</a>",
+        re.I | re.S,
+    )
+
+    current_domain = "Self-as-an-End Corpus"
+    current_anchor = "all-papers"
+    locations: dict[str, dict[str, Any]] = {}
+    groups: dict[tuple[str, str, str], list[str]] = {}
+
+    for match in block_pattern.finditer(source):
+        block = match.group(0)
+        opening = re.match(r"<[^>]+>", block, re.S)
+        opening_tag = opening.group(0) if opening else ""
+        classes = (attribute(opening_tag, "class") or "").split()
+
+        if "tier-header" in classes:
+            heading = re.search(r"<h2\b[^>]*>(.*?)</h2>", block, re.I | re.S)
+            if heading:
+                current_domain = plain_text(heading.group(1))
+            current_anchor = attribute(opening_tag, "id") or current_anchor
+            continue
+
+        section_heading = re.search(
+            r"<div\b[^>]*class\s*=\s*([\"'])[^\"']*\bsection-header\b[^\"']*\1[^>]*>"
+            r".*?<h2\b[^>]*>(.*?)</h2>",
+            block,
+            re.I | re.S,
+        )
+        series = plain_text(section_heading.group(2)) if section_heading else "Other papers"
+        group_key = (current_domain, current_anchor, series)
+        members = groups.setdefault(group_key, [])
+
+        for title_match in title_pattern.finditer(block):
+            href = html.unescape(title_match.group(3)).strip()
+            if href not in members:
+                members.append(href)
+            locations.setdefault(
+                href,
+                {
+                    "domain": current_domain,
+                    "anchor": current_anchor,
+                    "series": series,
+                    "group": group_key,
+                    "indexTitle": plain_text(title_match.group(4)),
+                },
+            )
+
+    return locations, groups
 
 
 def extract_abstract(source: str) -> str | None:
@@ -273,6 +340,9 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
         or subtitle
         or title
     )
+    status_note = str(item.get("statusNote") or "").strip()
+    if status_note:
+        abstract = f"Framework status note: {status_note} Original abstract: {abstract}"
     description_source = abstract
     description = truncate_words(description_source)
     doi = str(previous["doi"] or item.get("doi") or "").strip()
@@ -308,11 +378,25 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
         "languages": language_codes(item.get("lang")),
         "contentHash": content_hash,
         "license": license_url,
+        "status": str(item.get("status") or "").strip(),
+        "statusNote": status_note,
     }
     return data, stripped
 
 
-def json_ld(data: dict[str, Any]) -> dict[str, Any]:
+def json_ld(data: dict[str, Any], location: dict[str, Any] | None = None) -> dict[str, Any]:
+    series: dict[str, Any] = {
+        "@type": "CreativeWorkSeries",
+        "name": location["series"] if location else "Self-as-an-End Corpus",
+        "url": f"{BASE_URL}/#{location['anchor']}" if location else BASE_URL,
+    }
+    if location:
+        series["isPartOf"] = {
+            "@type": "CreativeWorkSeries",
+            "name": "Self-as-an-End Corpus",
+            "url": BASE_URL,
+        }
+
     result: dict[str, Any] = {
         "@context": "https://schema.org",
         "@type": "ScholarlyArticle",
@@ -329,7 +413,7 @@ def json_ld(data: dict[str, Any]) -> dict[str, Any]:
         "dateModified": data["modified"],
         "url": data["canonical"],
         "mainEntityOfPage": data["canonical"],
-        "isPartOf": {"@type": "CreativeWorkSeries", "name": "Self-as-an-End Corpus", "url": BASE_URL},
+        "isPartOf": series,
         "keywords": data["keywords"],
         "inLanguage": data["languages"],
     }
@@ -345,14 +429,55 @@ def json_ld(data: dict[str, Any]) -> dict[str, Any]:
         result["publisher"] = {"@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org"}
     if data["license"]:
         result["license"] = data["license"]
+    if data["status"]:
+        result["creativeWorkStatus"] = data["status"]
+    if data["statusNote"]:
+        result["comment"] = {
+            "@type": "Comment",
+            "text": data["statusNote"],
+            "url": f"{BASE_URL}/framework.html",
+        }
     return result
+
+
+def breadcrumb_json(data: dict[str, Any], location: dict[str, Any] | None) -> dict[str, Any]:
+    elements: list[dict[str, Any]] = [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Self-as-an-End Paper Library",
+            "item": f"{BASE_URL}/",
+        }
+    ]
+    if location:
+        elements.append(
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": location["domain"],
+                "item": f"{BASE_URL}/#{location['anchor']}",
+            }
+        )
+    elements.append(
+        {
+            "@type": "ListItem",
+            "position": len(elements) + 1,
+            "name": data["title"],
+            "item": data["canonical"],
+        }
+    )
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": elements,
+    }
 
 
 def escape_attr(value: Any) -> str:
     return html.escape(str(value), quote=True)
 
 
-def metadata_block(data: dict[str, Any]) -> str:
+def metadata_block(data: dict[str, Any], location: dict[str, Any] | None = None) -> str:
     lines = [
         f"  {START_MARKER}",
         f'  <meta name="sae:metadata_version" content="{METADATA_VERSION}">',
@@ -375,7 +500,10 @@ def metadata_block(data: dict[str, Any]) -> str:
             f'  <meta name="citation_abstract_html_url" content="{data["canonical"]}">',
             f'  <meta name="citation_keywords" content="{escape_attr("; ".join(data["keywords"]))}">',
             '  <script type="application/ld+json">',
-            "  " + json.dumps(json_ld(data), ensure_ascii=False, indent=2).replace("\n", "\n  "),
+            "  " + json.dumps(json_ld(data, location), ensure_ascii=False, indent=2).replace("\n", "\n  "),
+            "  </script>",
+            '  <script type="application/ld+json">',
+            "  " + json.dumps(breadcrumb_json(data, location), ensure_ascii=False, indent=2).replace("\n", "\n  "),
             "  </script>",
             f"  {END_MARKER}",
         ]
@@ -383,12 +511,128 @@ def metadata_block(data: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def render_paper(item: dict[str, Any], source: str, path: Path) -> tuple[str, dict[str, Any]]:
+def remove_managed_navigation(source: str) -> str:
+    source = re.sub(
+        rf"\s*{re.escape(NAV_START_MARKER)}.*?{re.escape(NAV_END_MARKER)}\s*",
+        "\n",
+        source,
+        flags=re.S,
+    )
+    # Replace older, manually maintained previous/next blocks with the single
+    # catalogue-derived navigation block generated below.
+    source = re.sub(
+        r"\s*<div\b[^>]*class\s*=\s*([\"'])[^\"']*\bseries-nav\b[^\"']*\1[^>]*>.*?</div>\s*",
+        "\n",
+        source,
+        flags=re.I | re.S,
+    )
+    return source
+
+
+def navigation_block(
+    item: dict[str, Any],
+    data: dict[str, Any],
+    location: dict[str, Any] | None,
+    groups: dict[tuple[str, str, str], list[str]],
+    titles: dict[str, str],
+) -> str:
+    domain = location["domain"] if location else "Self-as-an-End Corpus"
+    series = location["series"] if location else "Supplemental works"
+    anchor = location["anchor"] if location else "all-papers"
+    previous_href = ""
+    next_href = ""
+
+    if location:
+        members = groups.get(location["group"], [])
+        if item["href"] in members:
+            position = members.index(item["href"])
+            if position > 0:
+                previous_href = members[position - 1]
+            if position + 1 < len(members):
+                next_href = members[position + 1]
+
+    def neighbor(href: str, relation: str, arrow: str) -> str:
+        if not href:
+            return ""
+        title = html.unescape(titles.get(href, Path(href).stem))
+        label = "Previous in series / 上一篇" if relation == "previous" else "Next in series / 下一篇"
+        rel_value = "prev" if relation == "previous" else "next"
+        return (
+            f'    <a class="paper-neighbor paper-neighbor-{relation}" href="{escape_attr(Path(href).name)}" rel="{rel_value}">\n'
+            f'      <span>{arrow} {label}</span>\n'
+            f'      <strong>{escape_attr(title)}</strong>\n'
+            "    </a>"
+        )
+
+    neighbors = "\n".join(
+        value
+        for value in (
+            neighbor(previous_href, "previous", "←"),
+            neighbor(next_href, "next", "→"),
+        )
+        if value
+    )
+    neighbor_block = f'  <div class="paper-neighbors">\n{neighbors}\n  </div>\n' if neighbors else ""
+    published_year = str(data["published"])[:4]
+    citation = f"Qin, Han ({published_year}). {data['title']}. Self-as-an-End Theory Series."
+    doi = str(data["doi"] or "").strip()
+    doi_line = ""
+    if doi:
+        citation += f" https://doi.org/{doi}"
+        doi_line = f'<a href="https://doi.org/{escape_attr(doi)}" target="_blank" rel="noopener">DOI record</a><span aria-hidden="true"> · </span>'
+    canonical = data["canonical"]
+
+    return "\n".join(
+        [
+            NAV_START_MARKER,
+            '<aside class="paper-navigation" aria-label="Paper navigation and citation">',
+            '  <nav class="paper-breadcrumbs" aria-label="Breadcrumb">',
+            '    <a href="../index.html">Paper library / 论文库</a><span aria-hidden="true">›</span>',
+            f'    <a href="../index.html#{escape_attr(anchor)}">{escape_attr(domain)}</a><span aria-hidden="true">›</span>',
+            f'    <span>{escape_attr(series)}</span>',
+            "  </nav>",
+            neighbor_block.rstrip(),
+            '  <details class="paper-citation">',
+            "    <summary>Cite this paper / 引用本文</summary>",
+            f"    <p>{escape_attr(citation)}</p>",
+            f'    <p class="paper-citation-links">{doi_line}<a href="{canonical}">Canonical URL</a></p>',
+            "  </details>",
+            "</aside>",
+            NAV_END_MARKER,
+        ]
+    ).replace("\n\n", "\n")
+
+
+def insert_navigation(source: str, block: str) -> str:
+    footer = re.search(r"<footer\b", source, re.I)
+    if footer:
+        position = footer.start()
+    else:
+        closings = list(re.finditer(r"</(?:main|article)\s*>", source, re.I))
+        position = closings[-1].end() if closings else source.lower().rfind("</body>")
+        if position < 0:
+            raise ValueError("paper page has no navigation insertion point")
+    return source[:position].rstrip() + "\n" + block + "\n" + source[position:].lstrip()
+
+
+def render_paper(
+    item: dict[str, Any],
+    source: str,
+    path: Path,
+    location: dict[str, Any] | None = None,
+    groups: dict[tuple[str, str, str], list[str]] | None = None,
+    titles: dict[str, str] | None = None,
+) -> tuple[str, dict[str, Any]]:
+    source = remove_managed_navigation(source)
     data, stripped = metadata_for(item, source, path)
     if not re.search(r"</head\s*>", stripped, re.I):
         raise ValueError(f"{path.relative_to(ROOT)} has no closing </head>")
-    replacement = "\n" + metadata_block(data) + "\n</head>"
+    replacement = "\n" + metadata_block(data, location) + "\n</head>"
     rendered = re.sub(r"\s*</head\s*>", lambda _match: replacement, stripped, count=1, flags=re.I)
+    rendered = insert_navigation(
+        rendered,
+        navigation_block(item, data, location, groups or {}, titles or {}),
+    )
     return rendered, data
 
 
@@ -417,6 +661,18 @@ def render_sitemap(catalogue: list[dict[str, Any]], paper_data: dict[str, dict[s
 def validate(catalogue: list[dict[str, Any]]) -> list[str]:
     errors: list[str] = []
     expected_urls = {f"{BASE_URL}/{item['href']}" for item in catalogue}
+    expected_files = {item["href"] for item in catalogue}
+    actual_files = {path.relative_to(ROOT).as_posix() for path in (ROOT / "papers").glob("*.html")}
+    locations, groups = index_structure()
+    titles = {item["href"]: str(item.get("title") or "") for item in catalogue}
+    extra_hrefs = {item["href"] for item in EXTRA_PAPERS}
+
+    unlisted_files = sorted(actual_files - expected_files)
+    if unlisted_files:
+        errors.append(
+            f"papers/ contains {len(unlisted_files)} HTML file(s) absent from papers.json and the explicit supplemental whitelist: "
+            + ", ".join(unlisted_files)
+        )
 
     for item in catalogue:
         path = ROOT / item["href"]
@@ -425,8 +681,13 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
             continue
         source = path.read_text(encoding="utf-8")
         canonical = f"{BASE_URL}/{item['href']}"
+        location = locations.get(item["href"])
+        if not location and item["href"] not in extra_hrefs:
+            errors.append(f"{item['href']}: missing from the human paper catalogue in index.html")
+        if location and version_tokens(location["indexTitle"]) != version_tokens(str(item.get("title") or "")):
+            errors.append(f"{item['href']}: version label differs between index.html and papers.json")
         try:
-            rendered, _data = render_paper(item, source, path)
+            rendered, _data = render_paper(item, source, path, location, groups, titles)
             if rendered != source:
                 errors.append(f"{item['href']}: generated metadata is out of date; run with --write")
         except ValueError as exc:
@@ -434,18 +695,35 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
         for required in ("citation_title", "citation_author", "citation_publication_date"):
             if not existing_meta(source, required):
                 errors.append(f"{item['href']}: missing {required}")
+        if version_tokens(existing_meta(source, "citation_title") or "") != version_tokens(str(item.get("title") or "")):
+            errors.append(f"{item['href']}: citation title version differs from papers.json")
         if existing_meta(source, "citation_abstract_html_url") != canonical:
             errors.append(f"{item['href']}: citation URL does not match canonical URL")
         if not re.search(rf"<link\b[^>]*rel=[\"']canonical[\"'][^>]*href=[\"']{re.escape(canonical)}[\"']", source, re.I):
             errors.append(f"{item['href']}: missing or incorrect canonical link")
         objects = existing_json_ld(source)
         scholarly = [value for value in objects if value.get("@type") == "ScholarlyArticle"]
+        breadcrumbs = [value for value in objects if value.get("@type") == "BreadcrumbList"]
         if len(scholarly) != 1:
             errors.append(f"{item['href']}: expected exactly one valid ScholarlyArticle JSON-LD object")
         elif scholarly[0].get("url") != canonical:
             errors.append(f"{item['href']}: JSON-LD URL does not match canonical URL")
         elif scholarly[0].get("license") != LICENSE_URL:
             errors.append(f"{item['href']}: JSON-LD license does not match the corpus policy")
+        if len(breadcrumbs) != 1:
+            errors.append(f"{item['href']}: expected exactly one valid BreadcrumbList JSON-LD object")
+
+    framework = (ROOT / "framework.html").read_text(encoding="utf-8")
+    for match in re.finditer(
+        r"<a\b[^>]*href\s*=\s*([\"'])(papers/[^\"'#?]+\.html)\1[^>]*>(.*?)</a>",
+        framework,
+        re.I | re.S,
+    ):
+        href = html.unescape(match.group(2))
+        anchor_versions = version_tokens(plain_text(match.group(3)))
+        catalogue_versions = version_tokens(titles.get(href, ""))
+        if anchor_versions and anchor_versions != catalogue_versions:
+            errors.append(f"{href}: version label in framework.html differs from papers.json")
 
     try:
         tree = ET.parse(ROOT / "sitemap.xml")
@@ -483,6 +761,8 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
 def main() -> int:
     args = parse_args()
     catalogue = load_catalogue()
+    locations, groups = index_structure()
+    titles = {item["href"]: str(item.get("title") or "") for item in catalogue}
 
     if args.write:
         paper_data: dict[str, dict[str, Any]] = {}
@@ -492,7 +772,14 @@ def main() -> int:
             if not path.is_file():
                 raise FileNotFoundError(item["href"])
             source = path.read_text(encoding="utf-8")
-            rendered, data = render_paper(item, source, path)
+            rendered, data = render_paper(
+                item,
+                source,
+                path,
+                locations.get(item["href"]),
+                groups,
+                titles,
+            )
             paper_data[item["href"]] = data
             if rendered != source:
                 path.write_text(rendered, encoding="utf-8")
