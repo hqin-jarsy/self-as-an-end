@@ -15,8 +15,8 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- SAE:machine-metadata:start -->
-  <meta name="sae:metadata_version" content="2">
-  <meta name="sae:content_hash" content="e386a9594ed3b0f038da6214f66d5ad35185a5eb063ff2b278bfba5c2be79648">
+  <meta name="sae:metadata_version" content="3">
+  <meta name="sae:content_hash" content="9aed676a2cd049d328560f6aedbb0504dcd2d0fe311b4bf982a5849300ee7206">
   <meta name="description" content="This note treats the entire memory system (11DD) as a single Method VI phase transition at the coarsest granularity. The four stages are identified as: emergence (workbench activation), spectral flip (encoding event)…">
   <meta name="author" content="Han Qin (秦汉)">
   <meta property="og:type" content="article">
@@ -27,7 +27,7 @@
   <meta name="citation_title" content="SAE Biology Note 9: The Memory System as a Method VI Phase Transition">
   <meta name="citation_author" content="Qin, Han">
   <meta name="citation_publication_date" content="2026-04-19">
-  <meta name="citation_doi" content="10.5281/zenodo.19635022">
+  <meta name="citation_doi" content="10.5281/zenodo.19635021">
   <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/sae-biology-note-9.html">
   <meta name="citation_keywords" content="Self-as-an-End; SAE; Han Qin; 秦汉">
   <script type="application/ld+json">
@@ -70,9 +70,9 @@
     "identifier": {
       "@type": "PropertyValue",
       "propertyID": "DOI",
-      "value": "10.5281/zenodo.19635022"
+      "value": "10.5281/zenodo.19635021"
     },
-    "sameAs": "https://doi.org/10.5281/zenodo.19635022",
+    "sameAs": "https://doi.org/10.5281/zenodo.19635021",
     "publisher": {
       "@type": "Organization",
       "name": "Zenodo",
@@ -115,7 +115,7 @@
   <h1 id="paper-title">SAE Biology Note 9: The Memory System as a Method VI Phase Transition</h1>
   <div class="paper-subtitle-line" style="font-size:1rem;color:#666;margin-top:.3rem;font-style:italic;">Coarse-Grained Analysis · SAE Biology Note IX</div>
   <div class="paper-author">Han Qin (&#31192;&#27721;) &nbsp;&middot;&nbsp; Independent Researcher &nbsp;&middot;&nbsp; April 2026</div>
-  <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19635022" target="_blank" rel="noopener">10.5281/zenodo.19635022</a> &nbsp;&middot;&nbsp; CC BY 4.0 &nbsp;&middot;&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
+  <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.19635021" target="_blank" rel="noopener">10.5281/zenodo.19635021</a> &nbsp;&middot;&nbsp; CC BY 4.0 &nbsp;&middot;&nbsp; ORCID: <a href="https://orcid.org/0009-0009-9583-0018" target="_blank" rel="noopener">0009-0009-9583-0018</a></div>
   <div style="margin-top:.5rem"><a class="zenodo-link" href="https://zenodo.org/records/19635022" target="_blank" rel="noopener">&#x1F4C4; View on Zenodo (PDF)</a></div>
 </div>
 <div class="lang-tabs"><div class="lang-tab active" onclick="switchLang('en')">English</div><div class="lang-tab" onclick="switchLang('zh')">&#20013;&#25991;</div></div>
@@ -147,10 +147,10 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
 <p>Traditional memory research typically describes memory as a continuous "storage + consolidation + retrieval" process, or decomposes it into short-term, intermediate, and long-term stores along a gradual timeline. These descriptions accommodate a great deal of empirical data, but both are <strong>construct-layer descriptions</strong>: they trace the surface sequence of events without touching the structural discontinuities underneath.</p>
 <p>Yet the memory system exhibits several phenomena that continuous models cannot absorb. First, working-memory content dissipates at task completion in a way that is not gradual decay but approximately instantaneous: the intermediate result of mental arithmetic loses availability within seconds, leaving an unbridgeable gap between "I was just using it" and "it is gone." Second, sleep-dependent consolidation cannot be replaced by "more waking processing": no amount of repeated rehearsal during wakefulness substitutes for what a single night of sleep accomplishes. Third, the clinical signature of Alzheimer's disease — recent memories lost first, remote memories relatively preserved until late stages — is difficult to generate from a continuous decay model, which would predict that older content decays first.</p>
 <p>Together these phenomena suggest something specific: memory is not a continuous process. It is a chain of distinct phase transitions, each with its own threshold, its own Le Chatelier buffer, its own crossing condition, and each displaying r >> 1 asymmetry.</p>
-<p>This note uses the Self-as-an-End (SAE) framework (Qin 2024, DOI 10.5281/zenodo.18528813), specifically Method VI — phase-transition windows and experimental design (Qin 2026, DOI 10.5281/zenodo.19464507) — as the analytic tool. The aim is not to replace existing neuroscience models of memory but to provide a common structural coordinate system within which those models can locate themselves.</p>
+<p>This note uses the Self-as-an-End (SAE) framework (Qin 2024, DOI 10.5281/zenodo.18528812), specifically Method VI — phase-transition windows and experimental design (Qin 2026, DOI 10.5281/zenodo.19464506) — as the analytic tool. The aim is not to replace existing neuroscience models of memory but to provide a common structural coordinate system within which those models can locate themselves.</p>
 <h3>1.2 Methodological positioning of this note</h3>
 <p>Method VI's core claim is that any system with threshold response, Le Chatelier buffering, and construct-emergence relations admits a four-stage description: emergence, spectral flip, flip, and establishment. The asymmetry ratio r — defined as the emergence distance divided by the flip-to-establishment distance — satisfies r >> 1. The ZFCρ mathematical structure gives a prior prediction of r ≈ 5, but Method VI's core argument depends only on the weaker condition r >> 1.</p>
-<p>The critical methodological claim of this note is that <strong>Method VI has a fractal character</strong>. It is not a method fixed to a single scale, but applicable recursively at varying grain. Anth-1 (Qin 2026, DOI 10.5281/zenodo.19531334) applied it to species-scale DD emergence; Anth-2 and Anth-3 and Anth-4 applied it to civilization-scale 14DD and 15DD emergence; this note applies it at a narrower scale still — the internal operation of the 11DD memory system as a single phase transition. Different grains reveal different transitions, each itself admitting four-stage structure with its own r; these scales do not compete, they layer.</p>
+<p>The critical methodological claim of this note is that <strong>Method VI has a fractal character</strong>. It is not a method fixed to a single scale, but applicable recursively at varying grain. Anth-1 (Qin 2026, DOI 10.5281/zenodo.19531333) applied it to species-scale DD emergence; Anth-2 and Anth-3 and Anth-4 applied it to civilization-scale 14DD and 15DD emergence; this note applies it at a narrower scale still — the internal operation of the 11DD memory system as a single phase transition. Different grains reveal different transitions, each itself admitting four-stage structure with its own r; these scales do not compete, they layer.</p>
 <p>This note restricts itself to <strong>the coarsest grain</strong>: treating the full trajectory from information entry to long-term storage as a single phase transition. This choice has two rationales. First, at the coarsest grain the empirical anchors are most secure — working-memory dissipation, sleep compression, long-term distributed storage are three landmarks that every memory researcher accepts. Putting them into the four-stage framework is firmer ground than immediately attempting the finer sub-transitions. Second, the SAE series has a consistent pattern of first establishing the coarse skeleton and then recursing inward (Anth-1 first establishes 13DD emergence, later papers refine); this preserves a clear division of labor across notes, rather than attempting all grains in one document.</p>
 <p>Finer sub-transitions (workbench-to-11DD-buffer, early stabilization-to-long-term conversion, and each of these internally) are left to subsequent notes.</p>
 <h3>1.2.1 Critical clarification for cross-domain application of Method VI</h3>
@@ -163,7 +163,7 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
 <p>Anth-1 §3 defined 11DD and 12DD as construct layers and declared them a "continuous accumulation process with no internal phase transitions." This note identifies internal phase-transition structure within 11DD's own operation, which may appear to contradict Anth-1's declaration. But the two are not in conflict, and the resolution lies in recognizing that they observe the same object at different resolutions.</p>
 <p>Anth-1 is concerned with 13DD emergence: self-completeness as a cross-layer event arising from the 11DD+12DD construct base. At that resolution, the construct layer as a whole is correctly seen as "the continuous accumulation base," and its internal fine structure is legitimately abstracted away — Anth-1's argument does not need to resolve the interior of the construct. Just as a mountain range, viewed from a great distance, can correctly be described as "continuous uplift," while its internal faults and folds remain invisible at that resolution.</p>
 <p>This note observes 11DD's own operation at a higher resolution; the internal phase-transition structure then becomes visible. This is not a correction of Anth-1. It is a further observation enabled by resolution-increase (zoom in). Both observations are correct at their own resolution, and together they constitute a layered description of the same object. This resolution-increase itself instantiates Method VI's fractal claim: different resolutions see different levels of phase-transition structure. Put otherwise: this note's identification of internal phase-transition structure in 11DD is fully consistent with Anth-1 §3's declaration of "continuous accumulation" at 13DD emergence scale. Anth-1 looks downward from 13DD and sees the construct layer providing "continuous accumulation base"; this note looks at 11DD at its own scale and finds that the same "continuous base" reveals discrete phase transitions internally. Each declaration is correct at its own observation scale.</p>
-<p>Relations to other SAE literature: Method VI supplies the analytic framework itself; Method VII (Via Negativa, Qin 2026, DOI 10.5281/zenodo.19481305) supplies the foundation for this note's "recovering normal structure from pathological failure" strategy, and is invoked again in §5.3 where 13DD's veto of 11DD traces is identified as a concrete instance of Via Negativa's downward pathway within the SAE hierarchy. SAE Consciousness Series Paper 5 (Qin 2026, DOI 10.5281/zenodo.19385464), which proposed the 13DD "mine/not-mine" filter, provides the direct framework for §6.9's infantile-amnesia mechanism. Bio Note 8 (ADHD and AI transplant memory, Qin 2026) left a gap in its §11 concerning 12DD-related pathology; this note supplies the structural base for that gap. Methodology IX (SAE Methodology of Consciousness, in preparation) will require a complete treatment of 11DD as a construct-layer hub; this note provides the coarse-grained version of that treatment.</p>
+<p>Relations to other SAE literature: Method VI supplies the analytic framework itself; Method VII (Via Negativa, Qin 2026, DOI 10.5281/zenodo.19481304) supplies the foundation for this note's "recovering normal structure from pathological failure" strategy, and is invoked again in §5.3 where 13DD's veto of 11DD traces is identified as a concrete instance of Via Negativa's downward pathway within the SAE hierarchy. SAE Consciousness Series Paper 5 (Qin 2026, DOI 10.5281/zenodo.19385464), which proposed the 13DD "mine/not-mine" filter, provides the direct framework for §6.9's infantile-amnesia mechanism. Bio Note 8 (ADHD and AI transplant memory, Qin 2026) left a gap in its §11 concerning 12DD-related pathology; this note supplies the structural base for that gap. Methodology IX (SAE Methodology of Consciousness, in preparation) will require a complete treatment of 11DD as a construct-layer hub; this note provides the coarse-grained version of that treatment.</p>
 <hr>
 <h2>2. Method VI Background and Fractal Application</h2>
 <h3>2.1 Core elements of Method VI</h3>
@@ -680,11 +680,11 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
 <h2>References</h2>
 <h3>SAE internal citations</h3>
 <ul>
-<li>Qin, H. (2024). Self-as-an-End: An Ethical and Ontological Framework. DOI: 10.5281/zenodo.18528813</li>
-<li>Qin, H. (2026). Methodology VI: Phase-Transition Windows and Experimental Design. DOI: 10.5281/zenodo.19464507</li>
-<li>Qin, H. (2026). Methodology VII: Via Negativa as Epistemic Method. DOI: 10.5281/zenodo.19481305</li>
+<li>Qin, H. (2024). Self-as-an-End: An Ethical and Ontological Framework. DOI: 10.5281/zenodo.18528812</li>
+<li>Qin, H. (2026). Methodology VI: Phase-Transition Windows and Experimental Design. DOI: 10.5281/zenodo.19464506</li>
+<li>Qin, H. (2026). Methodology VII: Via Negativa as Epistemic Method. DOI: 10.5281/zenodo.19481304</li>
 <li>Qin, H. (2026). SAE Consciousness Series Paper 5: A Structural Redefinition of "Reincarnation": 11DD Broadcasting and 13DD Filtering. DOI: 10.5281/zenodo.19385464</li>
-<li>Qin, H. (2026). SAE Anthropology Paper 1: The 13DD Emergence. DOI: 10.5281/zenodo.19531334</li>
+<li>Qin, H. (2026). SAE Anthropology Paper 1: The 13DD Emergence. DOI: 10.5281/zenodo.19531333</li>
 <li>Qin, H. (2026). SAE Anthropology Paper 2: The 14DD Emergence. DOI: TBD</li>
 <li>Qin, H. (2026). SAE Anthropology Paper 3: The 15DD Emergence. DOI: TBD</li>
 <li>Qin, H. (2026). SAE Anthropology Paper 4: Earth Civilization Self Emergence. DOI: 10.5281/zenodo.19563244</li>
@@ -775,10 +775,10 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
 <p>传统记忆研究通常把记忆描述为"存储加巩固和检索"的连续过程,或者拆成短期与中期和长期三层存储的渐进模型。这两种描述在大量经验数据上确实可用,但它们都是<strong>构层描述</strong>,即只刻画过程的表面接续,不触及结构上的离散跃迁。</p>
 <p>然而记忆系统内部有几个无法被连续模型吸收的现象。其一,工作记忆在任务结束后内容消散,这种消散不是逐渐衰减,而是近似瞬时的;一个人心算结束后,中间结果几乎立刻失去可用性,与他刚才的"记得"之间有一个难以弥补的断裂。其二,睡眠带来的记忆巩固不能被"继续加工"来解释;同样一段时间的清醒无论如何重复回忆,都无法代替一夜睡眠对记忆的转化效果。其三,Alzheimer's 病的临床典型模式是近期记忆先丢失而远期记忆相对保留,这个时间梯度在连续衰减模型下难以自然出现;连续衰减应当让较旧的内容先消失,而非相反。</p>
 <p>这些现象共同提示一件事:记忆不是连续过程,是一系列相变的串联。每一个相变有自己的阈值,有自己的 Le Chatelier 缓冲,有自己的越翻条件,各自展现出 r >> 1 的不对称结构。</p>
-<p>本笔记使用 SAE 框架(Self-as-an-End,秦汉 2024,DOI 10.5281/zenodo.18528813)中的 Method VI(相变窗口与实验设计,秦汉 2026,DOI 10.5281/zenodo.19464507)作为分析工具,把整个记忆系统作为一个粗颗粒度的相变进行分析。目标不是替代既有的神经科学模型,而是为那些精细模型提供一个共同的结构坐标。</p>
+<p>本笔记使用 SAE 框架(Self-as-an-End,秦汉 2024,DOI 10.5281/zenodo.18528812)中的 Method VI(相变窗口与实验设计,秦汉 2026,DOI 10.5281/zenodo.19464506)作为分析工具,把整个记忆系统作为一个粗颗粒度的相变进行分析。目标不是替代既有的神经科学模型,而是为那些精细模型提供一个共同的结构坐标。</p>
 <h3>1.2 本笔记的方法论定位</h3>
 <p>Method VI 的核心命题是:任何具有阈值响应加 Le Chatelier 缓冲加构-涌现关系的系统,其相变结构都可以用四个阶段建模,这四个阶段分别是萌芽与谱翻转和翻转与确立。其中不对称比 r 满足 r >> 1,即从干预开始到翻转点的萌芽距离远大于从翻转点到确立点的距离。ZFCρ 的数学结构给出 r 约为 5 的先验预测,但 Method VI 的核心论证只依赖更弱的条件 r >> 1。</p>
-<p>本笔记的关键声明是:<strong>Method VI 具有分形性质</strong>。它不是一个只适用于某个固定尺度的方法论,而是可以在不同精细度上递归应用。Anth-1(秦汉 2026,DOI 10.5281/zenodo.19531334)用它分析物种 DD 层级的跨层涌现,Anth-2 和 Anth-3 与 Anth-4 用它分析文明尺度的 14DD 到 15DD 涌现,本笔记用它分析一个更窄的尺度,即 11DD 系统自身的运作相变。不同精细度看到不同的相变,各自都可以是四阶段结构,各自的 r 可能不同,但彼此不矛盾。</p>
+<p>本笔记的关键声明是:<strong>Method VI 具有分形性质</strong>。它不是一个只适用于某个固定尺度的方法论,而是可以在不同精细度上递归应用。Anth-1(秦汉 2026,DOI 10.5281/zenodo.19531333)用它分析物种 DD 层级的跨层涌现,Anth-2 和 Anth-3 与 Anth-4 用它分析文明尺度的 14DD 到 15DD 涌现,本笔记用它分析一个更窄的尺度,即 11DD 系统自身的运作相变。不同精细度看到不同的相变,各自都可以是四阶段结构,各自的 r 可能不同,但彼此不矛盾。</p>
 <p>本笔记聚焦<strong>最粗颗粒度</strong>:把整个记忆系统从信息进入到长期存储的全过程,作为一个相变处理。这个选择有两个理由。其一,最粗颗粒度的相变在经验上最容易识别,工作记忆消散以及睡眠压缩和远期存储这三个点是任何记忆研究者都承认的经验事实,先把它们放到 Method VI 的四阶段框架里,比直接去刻画细颗粒度的子相变更稳。其二,先把粗颗粒度立住,再往细颗粒度递归,符合 SAE 框架在其他领域的应用习惯(Anth-1 先讲 13DD 涌现的大相变,后续论文再拆细);这样写出来的笔记彼此之间有清晰的分工,不会在同一篇里试图处理所有尺度。</p>
 <p>更细颗粒度的子相变,比如从 12DD 工作台到 11DD 缓冲,从早期稳定化到远期转化,以及每一个子相变内部的四阶段,这些都留给后续笔记展开。</p>
 <h3>1.2.1 Method VI 跨领域应用的关键澄清</h3>
@@ -791,7 +791,7 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
 <p>Anth-1 第三节把 11DD 加 12DD 定义为构层,并明确声明这是一个"连续积累过程,不存在内部相变"。本笔记识别出 11DD 自身有内部相变结构,这似乎与 Anth-1 的声明相冲突。但实际上两者不矛盾,关键在于它们在不同的分辨率下观察同一个对象。</p>
 <p>Anth-1 关心的是 13DD 涌现这个事件:自我完备性作为一个跨层涌现,从 11DD 加 12DD 的构层基础上生长出来。在那个分辨率下观察构层,构层作为一个整体被看作"连续积累的基础",内部的细微结构被暂时忽略,这是正确的,因为 Anth-1 的论证目标不需要分辨构层内部。就像从地表看山脉时,山脉作为一个整体被看作"连续的隆起",山脉内部的断层与褶皱在那个分辨率下看不见。</p>
 <p>本笔记在更高的分辨率下观察 11DD 自身的运作,内部的相变结构随之浮现。这不是对 Anth-1 的修正,是分辨率提升后的进一步观察。两种观察在各自的分辨率下都正确,合起来构成对同一个对象的分层刻画。这种"分辨率提升"(zoom in)本身对应 Method VI 的分形性声明,即不同分辨率看到不同层次的相变结构。换个角度说,本笔记对 11DD 内部相变结构的识别,与 Anth-1 第三节"构层连续积累"的声明在 13DD 涌现尺度上是完全一致的:Anth-1 从 13DD 向下看,构层作为整体提供"连续积累的基础";本笔记在 11DD 自身尺度上看,同样的"连续基础"内部才露出离散相变。两个声明在各自的观察尺度上各自正确,合起来构成对构层的完整立体描述。</p>
-<p>本笔记与其他 SAE 文献的关系如下。Method VI 为本笔记提供分析框架本身;Method VII(Via Negativa,秦汉 2026,DOI 10.5281/zenodo.19481305)为本笔记的"从病理反推正常结构"提供否定方法论的基础,并在 13DD 过滤器对 11DD 痕迹的否决一节中再次被调用作为机制实例。SAE 意识系列第五篇(秦汉 2026,DOI 10.5281/zenodo.19385464)提出的"13DD 我的/不是我的过滤器"为本笔记第六节婴儿期失忆的机制说明提供直接框架。Bio Note 8(ADHD/AI transplant 笔记)在其第十一节留下了 12DD 相关病理地基的未完成部分,本笔记为那个部分提供结构基础。未来的 Methodology IX(意识方法论,撰写中)需要 11DD 作为构层枢纽的完整描述,本笔记提供其粗颗粒度版本。</p>
+<p>本笔记与其他 SAE 文献的关系如下。Method VI 为本笔记提供分析框架本身;Method VII(Via Negativa,秦汉 2026,DOI 10.5281/zenodo.19481304)为本笔记的"从病理反推正常结构"提供否定方法论的基础,并在 13DD 过滤器对 11DD 痕迹的否决一节中再次被调用作为机制实例。SAE 意识系列第五篇(秦汉 2026,DOI 10.5281/zenodo.19385464)提出的"13DD 我的/不是我的过滤器"为本笔记第六节婴儿期失忆的机制说明提供直接框架。Bio Note 8(ADHD/AI transplant 笔记)在其第十一节留下了 12DD 相关病理地基的未完成部分,本笔记为那个部分提供结构基础。未来的 Methodology IX(意识方法论,撰写中)需要 11DD 作为构层枢纽的完整描述,本笔记提供其粗颗粒度版本。</p>
 <hr>
 <h2>第二节 Method VI 背景与分形应用原则</h2>
 <h3>2.1 Method VI 核心要素</h3>
@@ -1305,11 +1305,11 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
 <h2>参考文献</h2>
 <h3>SAE 内部引用</h3>
 <ul>
-<li>Qin, H. (2024). Self-as-an-End: An Ethical and Ontological Framework. DOI: 10.5281/zenodo.18528813</li>
-<li>Qin, H. (2026). Methodology VI: Phase-Transition Windows and Experimental Design. DOI: 10.5281/zenodo.19464507</li>
-<li>Qin, H. (2026). Methodology VII: Via Negativa as Epistemic Method. DOI: 10.5281/zenodo.19481305</li>
+<li>Qin, H. (2024). Self-as-an-End: An Ethical and Ontological Framework. DOI: 10.5281/zenodo.18528812</li>
+<li>Qin, H. (2026). Methodology VI: Phase-Transition Windows and Experimental Design. DOI: 10.5281/zenodo.19464506</li>
+<li>Qin, H. (2026). Methodology VII: Via Negativa as Epistemic Method. DOI: 10.5281/zenodo.19481304</li>
 <li>Qin, H. (2026). SAE Consciousness Series Paper 5: A Structural Redefinition of "Reincarnation": 11DD Broadcasting and 13DD Filtering. DOI: 10.5281/zenodo.19385464</li>
-<li>Qin, H. (2026). SAE Anthropology Paper 1: The 13DD Emergence. DOI: 10.5281/zenodo.19531334</li>
+<li>Qin, H. (2026). SAE Anthropology Paper 1: The 13DD Emergence. DOI: 10.5281/zenodo.19531333</li>
 <li>Qin, H. (2026). SAE Anthropology Paper 2: The 14DD Emergence. DOI: 待补充</li>
 <li>Qin, H. (2026). SAE Anthropology Paper 3: The 15DD Emergence. DOI: 待补充</li>
 <li>Qin, H. (2026). SAE Anthropology Paper 4: Earth Civilization Self Emergence. DOI: 10.5281/zenodo.19563244</li>
@@ -1389,8 +1389,8 @@ Finer-grained sub-transitions within each of the four stages are left to subsequ
   </div>
   <details class="paper-citation">
     <summary>Cite this paper / 引用本文</summary>
-    <p>Qin, Han (2026). SAE Biology Note 9: The Memory System as a Method VI Phase Transition. Self-as-an-End Theory Series. https://doi.org/10.5281/zenodo.19635022</p>
-    <p class="paper-citation-links"><a href="https://doi.org/10.5281/zenodo.19635022" target="_blank" rel="noopener">DOI record</a><span aria-hidden="true"> · </span><a href="https://self-as-an-end.net/papers/sae-biology-note-9.html">Canonical URL</a></p>
+    <p>Qin, Han (2026). SAE Biology Note 9: The Memory System as a Method VI Phase Transition. Self-as-an-End Theory Series. https://doi.org/10.5281/zenodo.19635021</p>
+    <p class="paper-citation-links"><a href="https://doi.org/10.5281/zenodo.19635021" target="_blank" rel="noopener">DOI record</a><span aria-hidden="true"> · </span><a href="https://self-as-an-end.net/papers/sae-biology-note-9.html">Canonical URL</a></p>
   </details>
   <p class="paper-essay-link">Prefer essays? / 更想读散文？ Visit <a href="https://nondubito.net/" target="_blank" rel="noopener">Non Dubito</a> for multilingual essays and literary writing.</p>
 </aside>

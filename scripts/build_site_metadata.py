@@ -27,7 +27,7 @@ AUTHOR_NAME = "Han Qin"
 AUTHOR_ALTERNATE_NAME = "秦汉"
 AUTHOR_ORCID = "https://orcid.org/0009-0009-9583-0018"
 LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/"
-METADATA_VERSION = "2"
+METADATA_VERSION = "3"
 START_MARKER = "<!-- SAE:machine-metadata:start -->"
 END_MARKER = "<!-- SAE:machine-metadata:end -->"
 NAV_START_MARKER = "<!-- SAE:paper-navigation:start -->"
@@ -330,6 +330,9 @@ def content_fingerprint(source: str) -> str:
     hash_source = hash_source.replace("\r\n", "\n").replace("\r", "\n")
     hash_source = re.sub(r"[ \t]+\n", "\n", hash_source)
     hash_source = re.sub(r"\n[ \t]*\n+", "\n", hash_source)
+    # A switch between a version DOI and its concept DOI is a bibliographic
+    # maintenance change, not a revision of the paper's scholarly content.
+    hash_source = re.sub(r"10\.5281/zenodo\.\d+", "10.5281/zenodo.<record>", hash_source, flags=re.I)
     return hashlib.sha256(hash_source.encode("utf-8")).hexdigest()
 
 
@@ -358,7 +361,9 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
         abstract = f"Framework status note: {status_note} Original abstract: {abstract}"
     description_source = abstract
     description = truncate_words(description_source)
-    doi = str(previous["doi"] or item.get("doi") or "").strip()
+    # papers.json is the bibliographic source of truth. Prefer it so a concept
+    # DOI migration propagates into page metadata on the next generated build.
+    doi = str(item.get("doi") or previous["doi"] or "").strip()
 
     published = normalize_date(previous["datePublished"]) or git_date(path, oldest=True) or str(date.today().year)
     modified = normalize_date(previous["dateModified"]) or git_date(path) or date.today().isoformat()
