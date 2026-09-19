@@ -1,78 +1,78 @@
 # Zenodo attention snapshot
 
-Captured at `2026-09-15T04:34:15Z`. Counts are concept-wide Zenodo totals.
+Captured at `2026-09-18T06:08:10Z`. Counts are concept-wide Zenodo totals.
 
 ## Most viewed
 
 | Rank | Paper | Views | Downloads |
 | ---: | --- | ---: | ---: |
-| 1 | [The Subjectivity Crisis in the Age of AI](../papers/applied1.html) | 744 | 355 |
-| 2 | [Systems, Emergence, and the Conditions of Personhood](../papers/paper1.html) | 480 | 212 |
-| 3 | [The Complete Self-as-an-End Framework](../papers/paper3.html) | 407 | 162 |
-| 4 | [SAE Methodological Overview: The Chisel-Construct Cycle (V3)](../papers/methodology.html) | 347 | 187 |
-| 5 | [On the Remainder of Choice: A Meta-Theoretic Thesis on ZFC](../papers/zfcrho.html) | 347 | 143 |
-| 6 | [Internal Colonization and the Reconstruction of Subjecthood](../papers/paper2.html) | 344 | 138 |
-| 7 | [The Ontological Positioning of Large Language Models](../papers/llm1.html) | 278 | 142 |
-| 8 | [The Impossibility Theorem of AI Consciousness](../papers/consciousness.html) | 272 | 92 |
-| 9 | [Education as Subject-Condition: A Philosophy of Education](../papers/education.html) | 265 | 129 |
-| 10 | [The Three Ceilings of Large Language Models](../papers/llm2.html) | 251 | 88 |
-| 11 | [The Methodology of Human–AI Symbiosis](../papers/sae-methodology-8.html) | 240 | 96 |
+| 1 | [The Subjectivity Crisis in the Age of AI](../papers/applied1.html) | 751 | 355 |
+| 2 | [Systems, Emergence, and the Conditions of Personhood](../papers/paper1.html) | 482 | 213 |
+| 3 | [The Complete Self-as-an-End Framework](../papers/paper3.html) | 410 | 170 |
+| 4 | [On the Remainder of Choice: A Meta-Theoretic Thesis on ZFC](../papers/zfcrho.html) | 352 | 145 |
+| 5 | [SAE Methodological Overview: The Chisel-Construct Cycle (V3)](../papers/methodology.html) | 347 | 187 |
+| 6 | [Internal Colonization and the Reconstruction of Subjecthood](../papers/paper2.html) | 347 | 138 |
+| 7 | [The Ontological Positioning of Large Language Models](../papers/llm1.html) | 279 | 143 |
+| 8 | [The Impossibility Theorem of AI Consciousness](../papers/consciousness.html) | 272 | 95 |
+| 9 | [Education as Subject-Condition: A Philosophy of Education](../papers/education.html) | 266 | 134 |
+| 10 | [The Three Ceilings of Large Language Models](../papers/llm2.html) | 252 | 88 |
+| 11 | [The Methodology of Human–AI Symbiosis](../papers/sae-methodology-8.html) | 242 | 96 |
 | 12 | [From Self-Awareness to Non Dubito: Completing Kant (9D–10D) (V2.4)](../papers/living-toward-death.html) | 239 | 98 |
-| 13 | [Posterior Quasi-Consciousness](../papers/consciousness2.html) | 232 | 74 |
-| 14 | [How to Find Remainders with AI](../papers/methodology3.html) | 230 | 84 |
-| 15 | [Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'](../papers/zfcrho15.html) | 230 | 91 |
-| 16 | [The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula](../papers/zfcrho2.html) | 226 | 74 |
-| 17 | [From Replication to Prediction: The Chisel-Construct Cycle of Life (5D–8D) (V2.1)](../papers/life-5d-8d.html) | 224 | 150 |
-| 18 | [Injection and Chiseling: Two Modes of Language Model Operation](../papers/llm3.html) | 223 | 102 |
-| 19 | [Philosophy as Subject-Activity: A Philosophical Application of the Self-as-an-End Framework](../papers/philosophy-application.html) | 223 | 74 |
-| 20 | [SAE Foundation v2: Systematic Restatement of the Physical-Quantity Ladder and Signature Discipline](../papers/sae-physics-foundation.html) | 222 | 74 |
+| 13 | [Posterior Quasi-Consciousness](../papers/consciousness2.html) | 233 | 74 |
+| 14 | [How to Find Remainders with AI](../papers/methodology3.html) | 232 | 86 |
+| 15 | [Sieve Structure, Compositeness Discount, and the Architecture of Conjecture H'](../papers/zfcrho15.html) | 232 | 91 |
+| 16 | [The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula](../papers/zfcrho2.html) | 229 | 75 |
+| 17 | [Injection and Chiseling: Two Modes of Language Model Operation](../papers/llm3.html) | 226 | 102 |
+| 18 | [Philosophy as Subject-Activity: A Philosophical Application of the Self-as-an-End Framework](../papers/philosophy-application.html) | 225 | 74 |
+| 19 | [From Replication to Prediction: The Chisel-Construct Cycle of Life (5D–8D) (V2.1)](../papers/life-5d-8d.html) | 224 | 152 |
+| 20 | [SAE Foundation v2: Systematic Restatement of the Physical-Quantity Ladder and Signature Discipline](../papers/sae-physics-foundation.html) | 224 | 75 |
 
 ## Most downloaded
 
 | Rank | Paper | Views | Downloads |
 | ---: | --- | ---: | ---: |
-| 1 | [The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects](../papers/zfcrho36.html) | 209 | 1511 |
-| 2 | [The Subjectivity Crisis in the Age of AI](../papers/applied1.html) | 744 | 355 |
-| 3 | [Systems, Emergence, and the Conditions of Personhood](../papers/paper1.html) | 480 | 212 |
+| 1 | [The 1/φ(m) Local Model, Explanation Rate Plateau, and Global DP Path Effects](../papers/zfcrho36.html) | 212 | 1511 |
+| 2 | [The Subjectivity Crisis in the Age of AI](../papers/applied1.html) | 751 | 355 |
+| 3 | [Systems, Emergence, and the Conditions of Personhood](../papers/paper1.html) | 482 | 213 |
 | 4 | [SAE Methodological Overview: The Chisel-Construct Cycle (V3)](../papers/methodology.html) | 347 | 187 |
-| 5 | [Damped Oscillation, the 70/30 Law, and the Positive-Tail Theorem](../papers/zfcrho55.html) | 170 | 175 |
-| 6 | [The Complete Self-as-an-End Framework](../papers/paper3.html) | 407 | 162 |
-| 7 | [From Replication to Prediction: The Chisel-Construct Cycle of Life (5D–8D) (V2.1)](../papers/life-5d-8d.html) | 224 | 150 |
-| 8 | [On the Remainder of Choice: A Meta-Theoretic Thesis on ZFC](../papers/zfcrho.html) | 347 | 143 |
-| 9 | [The Ontological Positioning of Large Language Models](../papers/llm1.html) | 278 | 142 |
-| 10 | [Internal Colonization and the Reconstruction of Subjecthood](../papers/paper2.html) | 344 | 138 |
-| 11 | [Education as Subject-Condition: A Philosophy of Education](../papers/education.html) | 265 | 129 |
-| 12 | [Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap](../papers/zfcrho26.html) | 209 | 122 |
-| 13 | [Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis](../papers/methodology6.html) | 215 | 113 |
-| 14 | [SAE Moral Law Series · Paper 3: The Reputation Economy · Dao](../papers/sae-moral-law-3.html) | 157 | 113 |
-| 15 | [15DD: The Emergence of "Humanity as an End"](../papers/sae-anthropology-3.html) | 192 | 112 |
-| 16 | [Constraint and Emergence: Structural Trends in AI Development as Seen from Local Inference](../papers/sae-ai-trends.html) | 115 | 111 |
-| 17 | [Congruence Relaxation and the Erosion of Predecessor Advantage](../papers/zfcrho35.html) | 189 | 111 |
-| 18 | [SAE Biology Note 9: The Memory System as a Method VI Phase Transition](../papers/sae-biology-note-9.html) | 174 | 108 |
-| 19 | [From Remainder Conservation to Step-3 Encoding Waves](../papers/sae-life-death-6.html) | 192 | 108 |
-| 20 | [Injection and Chiseling: Two Modes of Language Model Operation](../papers/llm3.html) | 223 | 102 |
+| 5 | [Damped Oscillation, the 70/30 Law, and the Positive-Tail Theorem](../papers/zfcrho55.html) | 172 | 175 |
+| 6 | [The Complete Self-as-an-End Framework](../papers/paper3.html) | 410 | 170 |
+| 7 | [From Replication to Prediction: The Chisel-Construct Cycle of Life (5D–8D) (V2.1)](../papers/life-5d-8d.html) | 224 | 152 |
+| 8 | [On the Remainder of Choice: A Meta-Theoretic Thesis on ZFC](../papers/zfcrho.html) | 352 | 145 |
+| 9 | [The Ontological Positioning of Large Language Models](../papers/llm1.html) | 279 | 143 |
+| 10 | [Internal Colonization and the Reconstruction of Subjecthood](../papers/paper2.html) | 347 | 138 |
+| 11 | [Education as Subject-Condition: A Philosophy of Education](../papers/education.html) | 266 | 134 |
+| 12 | [Prime Source Term, Additive Decomposition, and the Positivity of the Predecessor Gap](../papers/zfcrho26.html) | 212 | 123 |
+| 13 | [ZFCρ H&#x2019; Series Paper LXIX: Finite Skeleton Phase Transitions and the Two-Leg Mechanism for Conjecture 59.1](../papers/zfcrho69.html) | 167 | 119 |
+| 14 | [SAE Moral Law Series · Paper 3: The Reputation Economy · Dao](../papers/sae-moral-law-3.html) | 161 | 115 |
+| 15 | [Phase-Transition Windows and Experimental Design: The Systematic Mismatch Between Exposure Heterogeneity and Binary Analysis](../papers/methodology6.html) | 218 | 113 |
+| 16 | [15DD: The Emergence of "Humanity as an End"](../papers/sae-anthropology-3.html) | 194 | 113 |
+| 17 | [Constraint and Emergence: Structural Trends in AI Development as Seen from Local Inference](../papers/sae-ai-trends.html) | 117 | 112 |
+| 18 | [Congruence Relaxation and the Erosion of Predecessor Advantage](../papers/zfcrho35.html) | 191 | 112 |
+| 19 | [From Remainder Conservation to Step-3 Encoding Waves](../papers/sae-life-death-6.html) | 194 | 109 |
+| 20 | [SAE Biology Note 9: The Memory System as a Method VI Phase Transition](../papers/sae-biology-note-9.html) | 177 | 108 |
 
 ## Growth since the previous snapshot
 
 | Paper | Δ Views | Δ Downloads |
 | --- | ---: | ---: |
-| [Learning Through Memory and Prediction: The Construction, Window, and Cost of 11DD and 12DD](../papers/learning1.html) | +0 | +4 |
-| [SAE Moral Law Series · Paper 3: The Reputation Economy · Dao](../papers/sae-moral-law-3.html) | +1 | +2 |
-| [Internal Colonization and the Reconstruction of Subjecthood](../papers/paper2.html) | +2 | +0 |
-| [ZFCρ Paper LXX: The Block-Wise Effective Skeleton — A Reduction of Conjecture 59.1](../papers/zfcrho70.html) | +2 | +0 |
-| [Untangling Zhuangzi · Outer Chapters, Volume I (Exposition)](../papers/untangling-zhuangzi-outer-1.html) | +1 | +1 |
-| [Dimensional Sequence Economics in Mixed Markets: Remote Observation, Clustering, and Emergence](../papers/sae-economics-3.html) | +0 | +2 |
-| [SAE Quantum Mechanics P1: The Pre-Closure Ontology](../papers/sae-qm-p1.html) | +0 | +2 |
-| [The Anti-Correlation Engine: Variance Structure of ρ_E and the Local Smoothness of Integer Complexity](../papers/zfcrho18.html) | +0 | +2 |
-| [Structural Coordinates of the History of Civilization (Vol. IV: Structural Patterns)](../papers/civ-history-patterns.html) | +1 | +0 |
-| [Fixation and Selection (I) — Causal Law Forecloses Distinction](../papers/fixed-selected-1.html) | +1 | +0 |
-| [How to Find Remainders with AI](../papers/methodology3.html) | +1 | +0 |
-| [Topological Origin of Three Fermion Generations and Their Mass Structure](../papers/sae-four-forces-generation.html) | +1 | +0 |
-| [Complexification as an Articulation of L₂: Covering Structure, the Regular Period Core, and the Irregular Boundary](../papers/sae-math-p4.html) | +1 | +0 |
-| [The Carrier's Boundary](../papers/sae-meaning-4.html) | +1 | +0 |
-| [On How Rights Presuppose No Duty](../papers/sae-rights-0.html) | +1 | +0 |
-| [On the Colonization of Value](../papers/sae-value-3.html) | +1 | +0 |
-| [The Last Mile of Writing: Style Growth in the Age of AI](../papers/writing-last-mile.html) | +1 | +0 |
-| [The Quantitative Identity of the Remainder: From ρ≠∅ to Euler's Formula](../papers/zfcrho2.html) | +1 | +0 |
-| [Unified Prime-Layer Cancellation: Raw First Layer, Odd-Predecessor Reduction, and Harmless Tails](../papers/zfcrho48.html) | +1 | +0 |
-| [Chisel and Construct: The Universal Structure of Temporal Arts — Essay III: Ballet and Dance](../papers/chisel-dance.html) | +0 | +1 |
+| [ZFCρ H&#x2019; Series Paper LXIX: Finite Skeleton Phase Transitions and the Two-Leg Mechanism for Conjecture 59.1](../papers/zfcrho69.html) | +2 | +39 |
+| [Annotations on the Daodejing: The Junzi Is Not a Vessel — Paper 6 (Chapters 46–54)](../papers/sae-daodejing-6.html) | +10 | +2 |
+| [The Complete Self-as-an-End Framework](../papers/paper3.html) | +3 | +8 |
+| [Transplant Rejection and Consciousness-Mediated Regulation](../papers/sae-biology-note-4.html) | +6 | +4 |
+| [Learning to Scrutinize and Correct: The Emergence, Operation, and Cost of 13DD](../papers/learning2.html) | +8 | +0 |
+| [Sequential Dependence in Consciousness: DD-Layer Reconstruction in Sleep, Dreams, and Anesthesia](../papers/dream.html) | +4 | +4 |
+| [The Subjectivity Crisis in the Age of AI](../papers/applied1.html) | +7 | +0 |
+| [Commentary on the Daodejing: The Junzi Is Not a Vessel — III (Chapters 19–27)](../papers/sae-daodejing-3.html) | +6 | +1 |
+| [SAE Power Series · Paper 2: On the Morphology of Power · Shi](../papers/sae-power-2.html) | +6 | +1 |
+| [On the Remainder of Choice: A Meta-Theoretic Thesis on ZFC](../papers/zfcrho.html) | +5 | +2 |
+| [Commentary on the Daodejing: The Junzi Is Not a Vessel — I (Chapters 1–9)](../papers/sae-daodejing-1.html) | +4 | +3 |
+| [Must-Cognize: Four A Priori Conditions of Cognition and the Subjectivity Problem in AGI](../papers/sae-epistemology-1.html) | +2 | +5 |
+| [SAE Information Theory XI: 7D Information Processing and Phenomenal Admission](../papers/sae-info-theory-11.html) | +2 | +5 |
+| [The Finite Bearer's Carrying-Forward](../papers/sae-meaning-2.html) | +6 | +0 |
+| [非 · Negativa: On Negation Prior to Being](../papers/sae-negativa.html) | +6 | +0 |
+| [SAE Power Theory Series · Paper 7: On the Dissolution of Power · Shi](../papers/sae-power-7.html) | +6 | +0 |
+| [Annotations on the Daodejing: The Junzi Is Not a Vessel — Paper 4 (Chapters 28–36)](../papers/sae-daodejing-4.html) | +5 | +1 |
+| [Annotations on the Daodejing: The Junzi Is Not a Vessel — Paper 5 (Chapters 37–45)](../papers/sae-daodejing-5.html) | +5 | +1 |
+| [Commentary on the Daodejing: Junzi-Bu-Qi — Volume 8 (Chapters 64–72)](../papers/sae-daodejing-8.html) | +5 | +1 |
+| [Commentary on the Daodejing: Junzi-Bu-Qi — Volume 9, Final Volume (Chapters 73–81)](../papers/sae-daodejing-9.html) | +5 | +1 |
