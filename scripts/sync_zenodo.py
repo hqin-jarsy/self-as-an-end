@@ -20,6 +20,7 @@ import argparse
 import csv
 import difflib
 import html
+import http.client
 import json
 import os
 import re
@@ -151,7 +152,13 @@ def request_json(
             detail = exc.read().decode("utf-8", errors="replace")[:1200]
             if exc.code not in {409, 429, 500, 502, 503, 504} or attempt + 1 == attempts:
                 raise RuntimeError(f"Zenodo {method} {url} failed ({exc.code}): {detail}") from exc
-        except (TimeoutError, urllib.error.URLError) as exc:
+        except (
+            TimeoutError,
+            urllib.error.URLError,
+            http.client.IncompleteRead,
+            http.client.RemoteDisconnected,
+            ConnectionResetError,
+        ) as exc:
             if attempt + 1 == attempts:
                 raise RuntimeError(f"Zenodo {method} {url} failed: {exc}") from exc
         time.sleep(1.5 * (attempt + 1))
