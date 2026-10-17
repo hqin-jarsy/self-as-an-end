@@ -52,10 +52,6 @@
     }
     window.addEventListener('DOMContentLoaded', () => switchLang('en'));
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"
-    id="MathJax-script"
-    integrity="sha512-T8BFRA7AOMBO9Xjvbx4/vPDCbCfUPAkEEdtXGKiT3Z5xG6nBwrfJAjmJDQByGWVH0pgJfhRFOVrFYIYDHEVA=="
-    crossorigin="anonymous"></script>
   <script>
     MathJax = {
       tex: {
@@ -65,9 +61,12 @@
       }
     };
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"
+    id="MathJax-script"
+    crossorigin="anonymous"></script>
   <!-- SAE:machine-metadata:start -->
   <meta name="sae:metadata_version" content="3">
-  <meta name="sae:content_hash" content="3bc9484a58443fef40dceea9bfb0a834ce16f2fbc98b69259820ffc8d4c51234">
+  <meta name="sae:content_hash" content="aca5fd4b532f60483aed4210ebbe79aa2dcbe48b1bf2452e78ac1438716220a6">
   <meta name="description" content="We perform the first direct computation of the pointwise positive-jump density $D(N) = |\{n \le N : \rho_E(n) &gt; \rho_E(n-1)\}| / N$ in the ZFCρ series. Result: $D(N) \approx 0.406$ ($N = 10^8$), correcting a previous…">
   <meta name="author" content="Han Qin (秦汉)">
   <meta property="og:type" content="article">
@@ -95,7 +94,7 @@
       "sameAs": "https://orcid.org/0009-0009-9583-0018"
     },
     "datePublished": "2026",
-    "dateModified": "2026-08-26",
+    "dateModified": "2026-10-17",
     "url": "https://self-as-an-end.net/papers/zfcrho30.html",
     "mainEntityOfPage": "https://self-as-an-end.net/papers/zfcrho30.html",
     "isPartOf": {
@@ -301,7 +300,7 @@
         <p><strong>If H' holds, jumps in each dyadic block must become increasingly sparse but individually deeper.</strong></p>
       </div>
       <p><strong>Weighted Cesàro bridge to cumulative quantities.</strong> Define $\mu_k = E[j \mid \text{comp in } (2^k, 2^{k+1}]]$, $w_k = \#\{\text{comp in } (2^k, 2^{k+1}]\}$. For dyadic cutoff $N = 2^K$:
-      $$E[j \mid \text{comp},\; n \le 2^K] = \frac{\sum_{k<K} w_k \mu_k}{\sum_{k<K} w_k}$$
+      $$E[j \mid \text{comp},\; n \le 2^K] = \frac{\sum_{k&lt;K} w_k \mu_k}{\sum_{k&lt;K} w_k}$$
       By §4.1, $\mu_k \to 1$ with $w_k > 0$. Standard weighted Cesàro averaging yields $E[j \mid \text{comp}, n \le 2^K] \to 1$. Therefore cumulative $E[j|\text{comp}] \to 1$, and $q_N \to 0$ implies $r_N = E[j|\text{comp}]/q_N \to \infty$. Data: cumulative $r_N \approx 1.68$, stable across five orders of magnitude — the system has not yet entered the intermittency regime required by H'.</p>
 
       <h3>4.3 Alternative Reading</h3>
@@ -547,7 +546,7 @@
       <div class="thesis-box">
         <p><strong>若 H' 为真，每个 dyadic block 中的跳跃必须越来越稀薄，但单次跳跃的平均深度必须越来越大。</strong></p>
       </div>
-      <p>Cumulative 量 $q_N, r_N$ 与 block 量的关系通过加权 Cesàro 平均建立。定义 $\mu_k = E[j \mid \text{comp in } (2^k, 2^{k+1}]]$，$w_k = \#\{\text{comp in } (2^k, 2^{k+1}]\}$。则 $E[j|\text{comp}, n \le 2^K] = \sum_{k<K} w_k \mu_k / \sum_{k<K} w_k$。由 $\mu_k \to 1$ 且 $w_k > 0$，加权 Cesàro 平均给出 cumulative $E[j|\text{comp}] \to 1$，从而 $q_N \to 0$ 蕴含 $r_N \to \infty$。数据中 $r_N \approx 1.68$ 极稳定——系统还没进入 H' 要求的间歇性 regime。</p>
+      <p>Cumulative 量 $q_N, r_N$ 与 block 量的关系通过加权 Cesàro 平均建立。定义 $\mu_k = E[j \mid \text{comp in } (2^k, 2^{k+1}]]$，$w_k = \#\{\text{comp in } (2^k, 2^{k+1}]\}$。则 $E[j|\text{comp}, n \le 2^K] = \sum_{k&lt;K} w_k \mu_k / \sum_{k&lt;K} w_k$。由 $\mu_k \to 1$ 且 $w_k > 0$，加权 Cesàro 平均给出 cumulative $E[j|\text{comp}] \to 1$，从而 $q_N \to 0$ 蕴含 $r_N \to \infty$。数据中 $r_N \approx 1.68$ 极稳定——系统还没进入 H' 要求的间歇性 regime。</p>
 
       <h3>4.3 另一种读法</h3>
       <p>如果 $r \to r^* \approx 1.68$（不上升），则 $q \to 1/r^* \approx 0.60$，$p \to 0.40$，$D(N) \to 0.40$。<strong>H' 不成立。</strong>当前数据与两种图景同样兼容。</p>
