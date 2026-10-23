@@ -509,13 +509,19 @@ nav a.nav-ai:hover {
 
 .paper-body li { margin-bottom: 0.4rem; }
 
-.paper-body blockquote {
+.paper-body blockquote,
+.paper-page blockquote,
+.paper-container blockquote,
+article blockquote {
   border-left: 3px solid var(--rule);
   padding-left: 1.25rem;
   margin: 1.5rem 0;
   color: var(--mid);
   font-style: italic;
 }
+
+/* Chinese has no true italic; keep quotations in the Chinese tab upright */
+#lang-zh blockquote { font-style: normal; }
 
 /* ── Global paper table styles (covers all containers) ── */
 .paper-body table,
@@ -633,6 +639,10 @@ article tbody tr:nth-child(even) {
   line-height: 1.75;
   margin: 0;
 }
+
+.abstract-box p + p,
+.abstract-box p + ul,
+.abstract-box ul + p { margin-top: 0.75rem; }
 
 /* Related papers */
 
@@ -1289,5 +1299,11 @@ mjx-container { overflow-wrap: normal; }
     overflow-x: auto;
     overflow-y: hidden;
     padding-block: 2px;
+  }
+  /* A scrolling box clips anything drawn outside it, so keep list numbers and bullets inside. */
+  .paper-page li:has(> mjx-container, > :is(em, strong, b, i, span) > mjx-container),
+  .paper-container li:has(> mjx-container, > :is(em, strong, b, i, span) > mjx-container),
+  article li:has(> mjx-container, > :is(em, strong, b, i, span) > mjx-container) {
+    list-style-position: inside;
   }
 }

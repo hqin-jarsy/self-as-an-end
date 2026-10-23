@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/style.css">
   <!-- SAE:machine-metadata:start -->
   <meta name="sae:metadata_version" content="3">
-  <meta name="sae:content_hash" content="a72fc0e9734972f4fc8b5315a5c4e168542151f00f1f46d5a74c540037e1942b">
+  <meta name="sae:content_hash" content="be087c9094969771e52f86109f0695f49a66deb87d890855164a8ff1d9712a52">
   <meta name="description" content="This paper closes the stage of ZFCρ Papers L–LXXIII and delivers two groups of results.">
   <meta name="author" content="Han Qin (秦汉)">
   <meta property="og:type" content="article">
@@ -39,7 +39,7 @@
       "sameAs": "https://orcid.org/0009-0009-9583-0018"
     },
     "datePublished": "2026-08-07",
-    "dateModified": "2026-10-17",
+    "dateModified": "2026-10-22",
     "url": "https://self-as-an-end.net/papers/zfcrho74.html",
     "mainEntityOfPage": "https://self-as-an-end.net/papers/zfcrho74.html",
     "isPartOf": {
@@ -155,12 +155,18 @@
 <p><em>Proof</em> (substituting into the whole minimum, not candidate by candidate). Suppose $d(m)=\rho_{\mathcal D}(m)+1$ for all $m&lt;n$. Then</p>
 <p>$$d(n)=\min\Bigl\{\rho_{\mathcal D}(n-1)+2,\ \min_{ab=n}\bigl[\rho_{\mathcal D}(a)+\rho_{\mathcal D}(b)+3\bigr]\Bigr\}=\rho_{\mathcal D}(n)+1 .\qquad\square$$</p>
 <p>The example given there — the shortest representation of $12$ being <code>*SS1SSS1</code>, eight symbols — corresponds to $\rho_{\mathcal D}(12)=7$, in agreement with the computation here. That paper further reports (Theorem 2.1, stronger statement) $d(n)\ge\frac{5}{\log4}\log n-1$, its equality characterization (Corollary, itself attributed to Matos), and the maximal representable value for each length (Theorem 2.3).</p>
-<p>> <strong>From the point at which the series adopted the $\mathcal D$ model onward — this paper included — the complexity function studied differs from Dogra's $d$ by the additive constant $1$, and the principal statements of §2.1 already appear there. That antecedent was not cited in the papers concerned.</strong></p>
+<blockquote>
+<p><strong>From the point at which the series adopted the $\mathcal D$ model onward — this paper included — the complexity function studied differs from Dogra's $d$ by the additive constant $1$, and the principal statements of §2.1 already appear there. That antecedent was not cited in the papers concerned.</strong></p>
+</blockquote>
 <p>〔<strong>Scope, to be observed strictly.</strong> The correspondence holds <strong>only for the $\mathcal D$ model</strong>. The history-term model $\rho_{\mathcal H}$ of the early papers (origin $0$; constructors $S,+,\times$ at costs $1,1,2$) is <strong>not</strong> covered. For a positive compact history $h$ with constructor counts $(s,a,m)$ and $L=a+m+1$ zero-leaves, compactness forces the parent of every zero-leaf to be $S$; replacing each bottom $S(0)$ by the constant $1$ deletes $L$ successors and adds $L$ constants, so the resulting expression over $\{1,S,+,\times\}$ has length $(s-L)+L+a+m=s+a+m$, whereas $\rho_{\mathcal H}(h)=s+a+2m$. The discrepancy is therefore $m(h)$, <strong>history by history</strong>:</p>
 <p>$$\rho_{\mathcal H}(h)-\ell_{\rm Dogra}(\Phi h)=m(h).$$</p>
 <p>Since the number of multiplications in an optimal history is not a fixed constant, $\rho_{\mathcal H}$ and that symbolic complexity are <strong>not related by any uniform additive shift</strong>. The failure to cite must accordingly not be charged to the early papers. <em>Check</em>: at $n=1$, $\rho_{\mathcal H}=1$, Dogra length $=1$, $m=0$, discrepancy $0$; at $n=12$, $\rho_{\mathcal H}=9$, $c_O=8$, optimal $m=1$, discrepancy $1$.〕</p>
 <p><strong>Distinction from integer complexity.</strong> (0.1) is <strong>not</strong> equivalent to Mahler–Popken integer complexity $\|n\|$, which permits arbitrary $n=a+b$ at unit cost and charges nothing for multiplication. Several statements below have the same shape but a different status in the two conventions. The most important:</p>
-<p>> Under the P32 convention the factor candidate set at a prime is <strong>empty</strong> ($p$ has only the divisors $1$ and $p$, whereas (0.1) requires $a,b\ge2$), so > $$\rho_{\mathcal D}(p)=\rho_{\mathcal D}(p-1)+1\qquad\text{for every prime }p \tag{0.2}$$ > <strong>follows directly from the definition</strong> and requires no proof.</p>
+<blockquote>
+<p>Under the P32 convention the factor candidate set at a prime is <strong>empty</strong> ($p$ has only the divisors $1$ and $p$, whereas (0.1) requires $a,b\ge2$), so
+$$\rho_{\mathcal D}(p)=\rho_{\mathcal D}(p-1)+1\qquad\text{for every prime }p \tag{0.2}$$
+<strong>follows directly from the definition</strong> and requires no proof.</p>
+</blockquote>
 <p>〔<strong>To be kept apart from standard IC.</strong> Paper L §7.4 records a statement of the shape (0.2) as "verified to $10^7$ but unproved". That record concerns <strong>standard IC</strong>, where arbitrary $a+b$ is available and $\|p\|=\|p-1\|+1$ is genuinely open. The two conventions make these different assertions. Here (0.2) is a consequence of the definition, graded <strong>T1</strong>; the record in Paper L is equally correct in its own convention. <strong>If this is not made explicit, the present paper is easily misread as claiming a proof of a known open problem.</strong>〕 Paper XXXII §3 likewise records (0.2) as a fact ("primes are pure additive injection points in the DP").</p>
 <h3>0.2 Observables and notation</h3>
 <p>Following Papers L–LI and Paper LIX §1.3. Fix a real constant $\lambda$ and four reals $\mu_{12}(r)$ for $r\in\{1,5,7,11\}$, and set</p>
@@ -169,10 +175,14 @@
 <p>$$B_j=\sum_{p\in I_j}\frac{h(p)}{p},\qquad D_j=\sum_{p\in I_j}\frac{h(p)^2}{p^2},\qquad R_{\rm wt}(j)=\frac{B_j^2}{j\,D_j},\qquad m_j=\bigl|I_j\cap\mathbb P\bigr| .$$</p>
 <p><strong>Conjecture 59.1</strong> (Paper LIX §4.1, as stated): there is a constant $C>0$ with $R_{\rm wt}(j)\le C$ <strong>for every $j\ge1$</strong>.</p>
 <p><strong>Small-prime convention.</strong> $I_1=[2,4)=\{2,3\}$, and neither $2\bmod12=2$ nor $3\bmod12=3$ lies in $\{1,5,7,11\}$, so $\mu_{12}$ is undefined at these primes and $B_1,D_1$ are not literally well defined. The four invertible residue classes are first all populated from $I_2=[4,8)=\{5,7\}$.</p>
-<p>> <strong>Throughout this paper $j\ge2$.</strong></p>
+<blockquote>
+<p><strong>Throughout this paper $j\ge2$.</strong></p>
+</blockquote>
 <p>A finite prefix does not affect the asymptotic substance of boundedness, but it does affect whether "for every $j\ge1$" is literally well formed, so the convention must be stated. Two equivalent alternatives (restricting to $p>3$; carrying $2,3$ as a finite exception) are not adopted here, only recorded.</p>
 <p><strong>Cleared denominators, and the side condition this carries.</strong> Theorem statements below always use $B_j^2\le C\,j\,D_j$ rather than $R_{\rm wt}(j)\le C$ (for the reason see Appendix B.2). <strong>Note</strong> that the cleared form is <strong>everywhere defined</strong>: it holds where $B_j=D_j=0$, whereas $R_{\rm wt}=B_j^2/(jD_j)$ is undefined there.</p>
-<p>> <strong>The two are equivalent conditionally on $D_j>0$ for all $j\ge2$.</strong></p>
+<blockquote>
+<p><strong>The two are equivalent conditionally on $D_j>0$ for all $j\ge2$.</strong></p>
+</blockquote>
 <p>The absence of a $j_0$ in the original statement only removes the need to absorb finitely many blocks; <strong>it does not remove this side condition</strong>, and nonvanishing is not claimed here to have been established.</p>
 <p>The standing of $\lambda$ and $\mu_{12}$ — what they are, whether they exist, whether data can determine them — is the subject of §2.2 and §2.5–§2.7. <strong>Until then they are treated as formal parameters.</strong></p>
 <h3>0.3 Instrument verification</h3>
@@ -210,14 +220,18 @@
 <h3>1.1 The one unconditional load: Theorem 70.A</h3>
 <p><strong>What it does.</strong> Theorem 70.A (Paper LXX) proves by elementary strong induction that for each $j$, if the skeleton cutoff satisfies $D\ge\sqrt{2^{j+1}}$ then $\rho_{S_D}(n)=\rho_{\mathcal D}(n)$ for all $n<2^{j+1}$. Taking $D^*(j)=\lceil\sqrt{2^{j+1}}\rceil$, the 59.1 predicate at each fixed $j$ reduces to a finite skeleton problem of size $O(\sqrt{2^j})$. The result is deterministic and unconditional.</p>
 <p><strong>What it does not do.</strong> It <strong>does not remove the outer asymptotic universal quantifier</strong> of 59.1. Replacing $\rho_{\mathcal D}$ by $\rho_{S_{D^*(j)}}$ leaves the structure $\exists C\,\forall j$ untouched.</p>
-<p>> Consequently: <strong>no stable picture within $j\le33$ can verify 59.1.</strong> Closure requires a structural theorem.</p>
+<blockquote>
+<p>Consequently: <strong>no stable picture within $j\le33$ can verify 59.1.</strong> Closure requires a structural theorem.</p>
+</blockquote>
 <p>〔A reading has appeared within the series to the effect that reduction to a finite skeleton lowers the arithmetical complexity of the proposition. <strong>That is incorrect</strong>, for the reason just given, and the misreading should be denied explicitly in the text.〕</p>
 <p><strong>It fails in neither direction.</strong> Should 59.1 turn out to be false, Theorem 70.A converts from a <em>reduction of the proof</em> into a <strong>reduction of the counterexample</strong>: unboundedness would already occur within this explicit, blockwise finite family of skeletons. Its standing does not depend on the truth value of 59.1.</p>
 <h3>1.2 The frontier loop</h3>
 <p>Papers LXXI through LXXIII each relocated the residual obstruction of H′ precisely once:</p>
 <p>$$\text{P71 (H4a)}\ \longrightarrow\ \text{P72 (F3)}\ \longrightarrow\ \text{P73, subproblem 1a of B4}$$</p>
 <p>and Paper LXXIII §11.2, item 8, records of its own accord that subproblem 1a is, at the level of the scalar uniform-readout kernel, <strong>the same problem</strong> as H4b of Paper LXXI.</p>
-<p>> After three papers the obstruction was back where it started, in new coordinates.</p>
+<blockquote>
+<p>After three papers the obstruction was back where it started, in new coordinates.</p>
+</blockquote>
 <p>〔No claim is made here that the technical content of those three papers is in error. What is registered is the fact that <strong>the frontier did not move</strong>, and what that implies for judgments about further investment (§3, §4).〕</p>
 <h3>1.3 Dead lines and causes of death</h3>
 <p><strong>Table 1.1 · Lines rejected during P50–P73</strong></p>
@@ -248,7 +262,9 @@
 <tr><td>4</td><td>The $\mu_{12}$ gauge contribution, stably about $20\%$ of $F_W$</td><td>Stable across $j$; <strong>structural origin unidentified</strong> (P73 §11.1, item 5)</td></tr>
 </tbody></table>
 <p><strong>Disposition of item 4 here.</strong> §4 finds a finite-scale candidate origin for the <strong>class-mean structure</strong> of $\mu_{12}$ (a coarse indicator of $v_2(p-1)$). That candidate <strong>does not explain</strong> the phenomenon of item 4: class means are a first-moment quantity, the $20\%$ of $F_W$ is a spectral one, and the two do not convert into each other directly.</p>
-<p>> <strong>P73 §11.1 item 5 is not closed.</strong> It is only rewritten: the class-mean ordering of $\mu_{12}$ has a candidate origin in $\{2,3\}$-accessibility; its stable $20\%$ contribution to $F_W$ remains unexplained.</p>
+<blockquote>
+<p><strong>P73 §11.1 item 5 is not closed.</strong> It is only rewritten: the class-mean ordering of $\mu_{12}$ has a candidate origin in $\{2,3\}$-accessibility; its stable $20\%$ contribution to $F_W$ remains unexplained.</p>
+</blockquote>
 <p>Items 1–3 are not treated here and are handed off unchanged.</p>
 <h3>1.5 Methodological register: four occurrences of one failure mode</h3>
 <p>Causes of death 1 and 2 in Table 1.1 share a structure: <strong>a statement or an observable that holds trivially at the boundary, or fails to match the object it names, and is not detected.</strong> The series introduced an Observable Non-Vacuity Audit in response.</p>
@@ -273,7 +289,9 @@
 <p><strong>What this register is for.</strong> It is not self-criticism. It enters the third, fourth, fifth and sixth instances of a recurring failure mode of this series into the record. The first two (causes of death 1 and 2) each consumed a full paper's work; the first three of Table 1.3 were caught within the preparation of this one, and the fourth by external search. <strong>The difference in detection mechanism is more worth recording than the errors themselves.</strong></p>
 <hr>
 <h2>§2 Unconditional Results and Specification Audit</h2>
-<p>> This part carries the whole load of the paper. The first group (§2.1) concerns the recursion itself and depends on no centering constant; the second (§2.2–§2.7) audits the current specification of Conjecture 59.1.</p>
+<blockquote>
+<p>This part carries the whole load of the paper. The first group (§2.1) concerns the recursion itself and depends on no centering constant; the second (§2.2–§2.7) audits the current specification of Conjecture 59.1.</p>
+</blockquote>
 <h3>§2.0 Premises frozen for this part</h3>
 <p>Following the methodology requirement that the premises of every T1 delivery be frozen explicitly, they are stated once here and not repeated.</p>
 <p><strong>(F1) Recursion and convention.</strong> The P32 convention (0.1) throughout: one successor step, a factor split at two steps plus both sides, the factor channel skeleton containing every integer in the range required. We write $\rho_{\mathcal D}$ in full and never abbreviate; $\log$ always denotes the natural logarithm. The recursion is <strong>not</strong> equivalent to Mahler–Popken integer complexity; several statements below coincide in shape but differ in status across the two conventions, and each is flagged where it occurs.</p>
@@ -437,9 +455,13 @@
 <p>Second, the constant in row 3 is not fixed. In an independent, weighted-mean-zero, homoscedastic model $E[B_j^2]\approx\sigma^2H_{2,j}$ while $D_j\approx\sigma^2H_{2,j}$, so the typical scale is $R_{\rm wt}=O_{\mathbb P}(1/j)$ with a first-order expected constant near $1$. <strong>A constant belonging to one particular random model must not be written as a determinate conclusion.</strong></p>
 <h4>2.3.3 Centering rigidity</h4>
 <p>From rows 1 and 2:</p>
-<p>> <strong>Exact centering is a necessary condition for 59.1, and an extremely rigid one.</strong></p>
+<blockquote>
+<p><strong>Exact centering is a necessary condition for 59.1, and an extremely rigid one.</strong></p>
+</blockquote>
 <p>Its limit must be stated at the same time:</p>
-<p>> <strong>Even with centering exactly correct</strong> (that is, with the numerator of the statistical factor pressed down to the pseudorandom scale), <strong>59.1 still additionally requires the block sums to exhibit sufficient cancellation.</strong> Correct centering does not entail 59.1.</p>
+<blockquote>
+<p><strong>Even with centering exactly correct</strong> (that is, with the numerator of the statistical factor pressed down to the pseudorandom scale), <strong>59.1 still additionally requires the block sums to exhibit sufficient cancellation.</strong> Correct centering does not entail 59.1.</p>
+</blockquote>
 <h4>2.3.4 The precision requirement, inverted from published data</h4>
 <p>Let $\varepsilon$ be the difference between the registered value of $\lambda$ and the true one. Then $h$ acquires an increment $-\varepsilon\log p$, so</p>
 <p>$$\bar f^{(1)}_j\ \longmapsto\ \bar f^{(1)}_j-\varepsilon\cdot\frac{1}{H_{1,j}}\sum_{p\in I_j}\frac{\log p}{p}\ \approx\ \bar f^{(1)}_j-\varepsilon\,(j+\tfrac12)\log2 . \tag{2.11}$$</p>
@@ -453,7 +475,9 @@
 <h4>2.3.5 A second reason for the failure of the Bartlett family</h4>
 <p>Paper LXXIII §7.5 records a bandwidth envelope $m_j^{0.33}\lesssim F_W\lesssim m_j^{0.63}$ against a requirement of $O(\log m_j)$, and reads that failure as a polynomial-against-logarithmic gap.</p>
 <p>From §2.3.2–§2.3.4 a reason <strong>independent of that argument</strong> is available:</p>
-<p>> The Bartlett family contests a <strong>polynomial</strong> gap, $m_j^{0.33}$ against $\log m_j$, whereas by (2.10) the sensitivity of the target quantity to the centering constant is <strong>exponential</strong>, of order $2^j$. The bandwidth was not chosen badly; the order class is wrong.</p>
+<blockquote>
+<p>The Bartlett family contests a <strong>polynomial</strong> gap, $m_j^{0.33}$ against $\log m_j$, whereas by (2.10) the sensitivity of the target quantity to the centering constant is <strong>exponential</strong>, of order $2^j$. The bandwidth was not chosen badly; the order class is wrong.</p>
+</blockquote>
 <p>〔This paper does <strong>not</strong> claim that the argument of P73 §7.5 is in error — it holds within its own framework. What is claimed is that the conclusion has a second, coarser source, prior to any choice of window. <strong>The coexistence of two mutually independent routes to one conclusion is itself evidence</strong>, of greater robustness than either alone.〕</p>
 <h3>§2.4 Uniqueness of the calibration</h3>
 <h4>2.4.1 An elementary upper bound</h4>
@@ -529,7 +553,9 @@
 <tr><td>$j=19\ldots27$ ($N\sim2.7\times10^8$)</td><td>3.8708</td><td>3.8450</td><td>3.8191</td><td><strong>0.052</strong></td></tr>
 </tbody></table>
 <p>The last two models differ by only $17\%$ in residual sum of squares and <strong>cannot be separated on this data</strong>: over $j=19\ldots27$, $\log j$ varies by only $11.9\%$ while $1/j$ varies by $42\%$, so the two terms are nearly collinear.</p>
-<p>> <strong>Conclusion</strong>: the attainable extrapolated precision on $\lambda$ is about $\pm0.05$ (absolute), while the requirement of §2.3 converted through (2.12b) is about $|\varepsilon|\lesssim2.3\times10^{-5}$ — <strong>a gap of roughly $3.3$ orders of magnitude</strong>. Moreover a $32$-fold increase in data only halves the spread.</p>
+<blockquote>
+<p><strong>Conclusion</strong>: the attainable extrapolated precision on $\lambda$ is about $\pm0.05$ (absolute), while the requirement of §2.3 converted through (2.12b) is about $|\varepsilon|\lesssim2.3\times10^{-5}$ — <strong>a gap of roughly $3.3$ orders of magnitude</strong>. Moreover a $32$-fold increase in data only halves the spread.</p>
+</blockquote>
 <p>〔The factor depends on the conditional conversion (2.12b); see the limits stated there.〕</p>
 <p>〔<strong>Limit.</strong> Table 2.1 was computed from the self-built table with externally supplied $\mu_{12}$ ratios, not in the calibration of Paper L. What may be cited is <strong>the conclusion about model discriminability</strong> and the $2^{-j/2}$ half-width law; <strong>none of the individual values of $\lambda_\infty$ in the table may be cited</strong>.〕</p>
 <p><strong>The nature of the gap.</strong> $\lambda$ and the drift model are entangled in the data. <strong>Simply enlarging computations of the same kind has so far shown no capacity to close a three-order gap</strong> ($32$-fold data halving the spread); absent theoretical control of the second-order term in $\rho_{\mathcal D}(p)$, finite-range extrapolation lacks adequate warrant.</p>
@@ -553,9 +579,13 @@
 </tbody></table>
 <p>Conditions: the same $\rho_{\mathcal D}$ table (§0.3, 33/33); the same block primes ($m_j$ exact for $j=14\ldots27$, 14/14); $\mu_{12}$ taken as the plug-in value of the definition of Paper L §2.2 at $X=3\times10^8$.</p>
 <p><strong>Two differences, not one.</strong> The principal controlled change is the calibration cutoff; but by Appendix A.1.1 the second pass of Paper LIX uses the <strong>unrounded</strong> $\lambda_{10^{10}}^{\rm OLS}$, and that value is not published, so only the displayed value $3.856763$ is available here. <strong>There is therefore a second, irremovable substitution by rounding.</strong></p>
-<p>> Table 2.2 is accordingly a <strong>demonstration of truncation sensitivity</strong>, not a controlled experiment in which a single variable is changed. 〔This does not weaken the conclusion; it strengthens the point that the published text does not suffice for exact reproduction.〕</p>
+<blockquote>
+<p>Table 2.2 is accordingly a <strong>demonstration of truncation sensitivity</strong>, not a controlled experiment in which a single variable is changed. 〔This does not weaken the conclusion; it strengthens the point that the published text does not suffice for exact reproduction.〕</p>
+</blockquote>
 <p><strong>Accurate statement.</strong></p>
-<p>> Under the most natural finite-$X$ plug-in estimate the resulting $R_{\rm wt}$ profile is highly sensitive to the truncation point; since the published text supplies neither the four limit values, nor error bounds, nor a designated estimation procedure, <strong>Table 1 cannot be reproduced operationally from the published text alone</strong>.</p>
+<blockquote>
+<p>Under the most natural finite-$X$ plug-in estimate the resulting $R_{\rm wt}$ profile is highly sensitive to the truncation point; since the published text supplies neither the four limit values, nor error bounds, nor a designated estimation procedure, <strong>Table 1 cannot be reproduced operationally from the published text alone</strong>.</p>
+</blockquote>
 <p><strong>Four limits that must be stated.</strong></p>
 <ol>
 <li><strong>No claim is made that the values of Paper LIX are in error.</strong> Table 2.2 concerns reproducibility, not correctness.</li>
@@ -568,7 +598,9 @@
 <p>By Appendix A.1.2, $\mu_{12}(r)$ is the arithmetic mean of $\eta$ over class $r$ for $p\le N$. Hence, <strong>exactly and class by class</strong>,</p>
 <p>$$\sum_{\substack{p\le N\\ p\equiv r\,(12)}}h(p)=0\qquad(r=1,5,7,11). \tag{2.19}$$</p>
 <p>This is not an approximation but an identity of the construction: four exact linear constraints spanning all blocks. Moreover $2^{33}=8.59\times10^9<10^{10}$, so <strong>every block with $j\le32$ lies inside the calibration range</strong>.</p>
-<p>> <strong>Consequently $R_{\rm wt}(j)$ is controlled at least in part by the calibration protocol; it is not a function of $\rho_{\mathcal D}$ and the block index alone.</strong></p>
+<blockquote>
+<p><strong>Consequently $R_{\rm wt}(j)$ is controlled at least in part by the calibration protocol; it is not a function of $\rho_{\mathcal D}$ and the block index alone.</strong></p>
+</blockquote>
 <p>〔This corresponds to the version split of §2.7: the proposition actually tested is $59.1_{\rm calib}(N)$, and this section shows that its observable profile depends on $N$.〕</p>
 <p><strong>A discriminating test.</strong> Take <strong>ten fixed blocks</strong> $j=14,\ldots,23$ and vary only the calibration cutoff $N$ — that is, refit $\lambda$ and $\mu_{12}$ by the two-pass procedure of A.1.1–A.1.2 at different $N$.</p>
 <p><strong>Table 2.5 · The same blocks under four calibration cutoffs (grade C)</strong></p>
@@ -592,7 +624,9 @@
 <tr><td>$2^{27}$</td><td>2.06</td><td>3.39</td><td>0.97</td><td>1.42</td><td>0.84</td><td>0.28</td><td>0.02</td><td><strong>0.00</strong></td><td>0.37</td><td>0.47</td><td>$j{=}21$</td></tr>
 <tr><td>$2^{28}$</td><td>2.88</td><td>4.63</td><td>1.84</td><td>2.63</td><td>1.98</td><td>1.13</td><td>0.52</td><td>0.31</td><td><strong>0.02</strong></td><td>0.16</td><td>$j{=}22$</td></tr>
 </tbody></table>
-<p>> <strong>The same $\rho_{\mathcal D}$, the same primes, the same blocks — only the fitting range differs, and the trough migrates monotonically. In this experiment the trough position is therefore not determined by $\rho_{\mathcal D}$ and the block index alone; it is controlled at least in part by the calibration protocol.</strong></p>
+<blockquote>
+<p><strong>The same $\rho_{\mathcal D}$, the same primes, the same blocks — only the fitting range differs, and the trough migrates monotonically. In this experiment the trough position is therefore not determined by $\rho_{\mathcal D}$ and the block index alone; it is controlled at least in part by the calibration protocol.</strong></p>
+</blockquote>
 <p><strong>Comparison with the published profile.</strong></p>
 <table>
 <thead><tr>
@@ -627,11 +661,15 @@
 <p><strong>Proposition 74.D.</strong> For $\lambda_1\ne\lambda_2$, <strong>exactly</strong></p>
 <p>$$M_r(X;\lambda_1)-M_r(X;\lambda_2)=-(\lambda_1-\lambda_2)\,L_r(X), \tag{2.17}$$</p>
 <p>and by the prime number theorem for arithmetic progressions $L_r(X)\sim\log X\to\infty$. Therefore:</p>
-<p>> <strong>For each $r$, at most one $\lambda$ can make $M_r(X;\lambda)$ converge to a finite real. In particular at most one common $\lambda$ can make all four $\mu_{12}(r)$ of (2.16) simultaneously well posed.</strong></p>
+<blockquote>
+<p><strong>For each $r$, at most one $\lambda$ can make $M_r(X;\lambda)$ converge to a finite real. In particular at most one common $\lambda$ can make all four $\mu_{12}(r)$ of (2.16) simultaneously well posed.</strong></p>
+</blockquote>
 <p><strong>Proof.</strong> (2.17) is immediate on subtracting the definitions (the $\rho_{\mathcal D}(p)$ terms cancel). For $L_r$: by the prime number theorem in arithmetic progressions, $\sum_{p\le X,\,p\equiv r}\log p\sim X/\varphi(12)$ while $\pi_r(X)\sim X/(\varphi(12)\log X)$, so $L_r(X)\sim\log X$. Now suppose $\lambda_1\ne\lambda_2$ and both $M_r(X;\lambda_1)$ and $M_r(X;\lambda_2)$ converge to finite reals. Then so does their difference; but by (2.17) that difference equals $-(\lambda_1-\lambda_2)L_r(X)$, whose absolute value tends to $+\infty$. Contradiction. $\square$</p>
 <p>〔Grade <strong>T1</strong>, <strong>unconditional</strong>. External result invoked: the prime number theorem for arithmetic progressions (per (F2)).〕</p>
 <p><strong>Summary sentence.</strong></p>
-<p>> Well-posedness of $\mu_{12}$ <strong>forces</strong> the centering slope to be unique; but uniqueness of the centering slope <strong>does not by itself deliver</strong> $\mu_{12}$.</p>
+<blockquote>
+<p>Well-posedness of $\mu_{12}$ <strong>forces</strong> the centering slope to be unique; but uniqueness of the centering slope <strong>does not by itself deliver</strong> $\mu_{12}$.</p>
+</blockquote>
 <h4>2.6.3 The direction not claimed here</h4>
 <p>Suppose a prime-side slope $\lambda_*$ exists in some sense, say</p>
 <p>$$\frac{1}{L_r(X)}\cdot\frac{1}{\pi_r(X)}\sum_{\substack{p\le X\\ p\equiv r}}\rho_{\mathcal D}(p)\ \longrightarrow\ \lambda_* . \tag{2.18}$$</p>
@@ -642,7 +680,9 @@
 <p>$$\frac{1}{\pi_r(X)}\sum_{p\le X,\ p\equiv r}\rho_{\mathcal D}(p)\ =\ \lambda_*L_r(X)+\sqrt{L_r(X)} .$$</p>
 <p>Then (2.18) holds, while $M_r(X;\lambda_*)=\sqrt{L_r(X)}\to+\infty$: the centered class mean diverges.</p>
 <p>〔This is not a claim that $\rho_{\mathcal D}$ has that shape. It exhibits that, in the present logic, <strong>existence of a slope does not entail existence of the intercept limit</strong>. Hence:</p>
-<p>> <strong>"$\lambda$ is exactly the prime-side slope" is a necessary condition for the existence of $\mu_{12}$, not a proved sufficient one.</strong>〕</p>
+<blockquote>
+<p><strong>"$\lambda$ is exactly the prime-side slope" is a necessary condition for the existence of $\mu_{12}$, not a proved sufficient one.</strong>〕</p>
+</blockquote>
 <h4>2.6.4 Class-by-class drift (grade C)</h4>
 <p>The empirical counterpart of Proposition 74.D: at $\lambda=3.856763$, do the four $M_r(X;\lambda)$ exhibit nonzero drift?</p>
 <p><strong>Table 2.3 · Regression slope of $M_r(X;\lambda)$ against $\log X$</strong> ($\lambda=3.856763$; $X$ doubling from $10^6$ to $1.28\times10^8$; equally weighted OLS on the last six points)</p>
@@ -758,7 +798,9 @@
 <p>$$\mathbb E_N J=\frac{N-1-\rho_{\mathcal D}(N)}{N-1-\pi(N)}\longrightarrow1. \tag{3.2}$$</p>
 <p>Put $q_N:=\mathbb P_N(J>0)$. By Hölder's inequality (applied to $J=J\cdot\mathbf1_{J>0}$ with exponents $p$ and $p/(p-1)$),</p>
 <p>$$\mathbb E_N[J]\ \le\ \bigl(\mathbb E_N[J^p]\bigr)^{1/p}q_N^{1-1/p}\quad\Longrightarrow\quad \mathbb E_N[J^p]\ \ge\ \frac{\mathbb E_N[J]^p}{q_N^{p-1}}\ \sim\ q_N^{1-p}. \tag{3.3}$$</p>
-<p>> <strong>Contrapositive: if some $L^{1+\varepsilon}$ moment of $J_N$ can be shown uniformly bounded (in particular if jump depth admits a uniform upper bound), then H′ is false.</strong></p>
+<blockquote>
+<p><strong>Contrapositive: if some $L^{1+\varepsilon}$ moment of $J_N$ can be shown uniformly bounded (in particular if jump depth admits a uniform upper bound), then H′ is false.</strong></p>
+</blockquote>
 <p><strong>Attribution (to be observed strictly)</strong></p>
 <table>
 <thead><tr>
@@ -809,7 +851,9 @@
 <p><strong>A proof requiring attention.</strong> The early papers reduce $\rho_{\mathcal H}$ to $\rho_{\mathcal H^\times}$ by an "addition domination lemma". The existing proof contains a step of the form</p>
 <p>$$X\le A+B,\quad B\ge C\ \Longrightarrow\ X\le A+C,$$</p>
 <p>which is invalid (a larger upper bound cannot be replaced by a smaller one).</p>
-<p>> <strong>Registered here: addition elimination should stand as the open conjecture $\rho_{\mathcal H}=\rho_{\mathcal H^\times}$, not as a proved lemma.</strong></p>
+<blockquote>
+<p><strong>Registered here: addition elimination should stand as the open conjecture $\rho_{\mathcal H}=\rho_{\mathcal H^\times}$, not as a proved lemma.</strong></p>
+</blockquote>
 <p>Grade C check: no counterexample for $n\le3000$. <strong>Stronger empirical evidence already exists in the antecedent literature</strong>: Observation 3.3 of Dogra (2018) reports $c_{\{1,S,+,\times\}}(n)=c_{\{1,S,\times\}}(n)$ for all $n\le4.5\times10^6$ (the charging convention differs from the P32 convention for $\rho_{\mathcal H}$, so this is not the same proposition, but the direction agrees). <strong>That paper likewise offers only a computational observation, with no proof.</strong></p>
 <p><strong>Effect on this paper: none.</strong> All results here concern $\rho_{\mathcal D}$, which is defined directly by (0.1) and whose well-definedness depends on no reduction. <strong>But the notation of this paper must follow Table 3.1</strong>: what earlier literature called $\rho_{\rm Full}$ is $\rho_{\mathcal D}$ here, <em>Full</em> having referred to a <strong>complete factor skeleton</strong> — a different axis from <em>complete history grammar</em>, a distinction not previously drawn.</p>
 <p><strong>Handoff.</strong> Further formalization of the three models may, if wanted, be issued as a technical specification or errata document. <strong>This paper promises no numbering, form, or timetable for it</strong> (see the delimitation in §5.6).</p>
@@ -954,10 +998,14 @@
 <p><strong>Fourth, the shape of §4 was revised three times, each time after inspecting the same body of exploratory data</strong> (§4.5). That fact lowers its confirmatory standing, and it is registered accordingly as a post hoc candidate regularity. <strong>The number of revisions is not a calibrated reliability measure</strong>; what it discharges is disclosure of the research path.</p>
 <p><strong>Fifth, a reusable conclusion.</strong> The technique behind every T1 delivery of this paper was available throughout the preceding seventy-three papers. The induction of Theorem 74.A needs only $\alpha\log\frac54<1$ and additivity of the factor candidates; its base case needs only $\rho_{\mathcal D}(4)=3$, a three-line computation. The three cases of Corollary 74.A.3 are two lines each. Proposition 74.D is a subtraction plus the prime number theorem for arithmetic progressions. <strong>None required a tool this series did not already have.</strong></p>
 <p>They went unfound not because they were difficult, but because the attention of twenty-four papers was on the statistical structure of the residual and never returned to the recursion's own definition.</p>
-<p>> <strong>The reusable form.</strong> When a line of research repeatedly relocates the same obstruction (§1.2, the frontier loop), the return is more likely to lie in <strong>re-examining the definition of the object</strong> than in searching for a better tool. Both groups of results here, and the specification problem discovered in §3.3, arose that way.</p>
+<blockquote>
+<p><strong>The reusable form.</strong> When a line of research repeatedly relocates the same obstruction (§1.2, the frontier loop), the return is more likely to lie in <strong>re-examining the definition of the object</strong> than in searching for a better tool. Both groups of results here, and the specification problem discovered in §3.3, arose that way.</p>
+</blockquote>
 <p>〔Grade <strong>T3</strong> (a methodological register; not admissible as a premise of any mathematical argument).〕</p>
 <h3>5.6 Delimiting the stage closure</h3>
-<p>> <strong>ZFCρ closes a stage at Paper LXXIV.</strong></p>
+<blockquote>
+<p><strong>ZFCρ closes a stage at Paper LXXIV.</strong></p>
+</blockquote>
 <p>Three components of that phrase must be written out, so that it is read neither as a promise nor as a termination.</p>
 <p><strong>First, no sequel is promised.</strong> This paper does not announce Paper LXXV, sets no timetable for any open question, and incurs no obligation toward whoever takes them up by virtue of having handed them off. The handoff list of §3.2 is not to be read as an outline for a sequel.</p>
 <p><strong>Second, no termination is declared.</strong> Should a result appear that makes one of the questions of §3.2 attackable again — for instance the existence of $\lambda_*$ together with a computable modulus of convergence, which would revive class A in full — the series may be continued upon it. A closure settles the accounts of the <strong>current stage</strong>; it is not a verdict on the object.</p>
@@ -1060,13 +1108,19 @@
 <p>$$d(n)=\min\Bigl\{\rho_{\mathcal D}(n-1)+2,\ \min_{ab=n}\bigl[\rho_{\mathcal D}(a)+\rho_{\mathcal D}(b)+3\bigr]\Bigr\}=\rho_{\mathcal D}(n)+1 .$$</p>
 <p>〔逐候选的写法<strong>仅在该候选恰为最优时成立</strong>；上式对整个 $\min$ 作替换，无此缺陷。〕该文所举之例「$12$ 的最短表示为 <code>*SSS1SS1</code>，$8$ 个符号」对应 $\rho_{\mathcal D}(12)=7$，与本文计算一致。</p>
 <p>该文另给出（Theorem 2.1 Stronger statement）$d(n)\ge\frac5{\log4}\log n-1$、其取等刻画（Corollary，转引 Matos [4]）、以及每个长度的最大可表示值（Theorem 2.3）。</p>
-<p>> <strong>自 Paper XXX 采用 $\mathcal D$ 模型以来的后期主线（含本文），所研究的复杂度函数与 Dogra 2018 的 $d(n)$ 只差整体常数 $1$，且本文 §2.1 的主要陈述皆已见于该文。该先行文献在此后诸篇中未被引用。</strong></p>
+<blockquote>
+<p><strong>自 Paper XXX 采用 $\mathcal D$ 模型以来的后期主线（含本文），所研究的复杂度函数与 Dogra 2018 的 $d(n)$ 只差整体常数 $1$，且本文 §2.1 的主要陈述皆已见于该文。该先行文献在此后诸篇中未被引用。</strong></p>
+</blockquote>
 <p>〔<strong>范围限定（须严守）</strong>：该对应<strong>只对 $\mathcal D$ 模型成立</strong>。Paper VI–X 的 $\rho_{\mathcal H}$（起点 $0$，构造器 $S,+,\times$，代价 $1,1,2$）<strong>不在其内</strong>：对任一正值<strong>紧凑</strong>历史 $h$，设其构造器数为 $(s,a,m)$、零叶数 $L=a+m+1$。紧凑性使每个零叶的父节点必为 $S$；把每个底部 $S(0)$ 替换为 Dogra 语言中的常数 $1$，即<strong>删去 $L$ 个 $S$、增加 $L$ 个常数</strong>，故所得 $\{1,S,+,\times\}$ 表达式长度为 $(s-L)+L+a+m=s+a+m$，而 $\rho_{\mathcal H}(h)=s+a+2m$。<strong>逐历史相差 $m(h)$</strong>：</p>
 <p>$$\rho_{\mathcal H}(h)-\ell_{\rm Dogra}(\Phi h)=m(h).$$</p>
 <p>由于最优历史中的乘法数并非固定常数，$\rho_{\mathcal H}$ 与该符号复杂度<strong>不存在统一的常数平移</strong>。故不得把该漏检判入 Paper VI–X。〔<strong>核对</strong>：$n=1$ 时 $\rho_{\mathcal H}=1$、Dogra 长度 $=1$、$m=0$，差 $0$；$n=12$ 时 $\rho_{\mathcal H}=9$、$c_O=8$、最优历史 $m=1$，差 $1$。〕〕 逐条归属见 §2.1.0 表 2.0，方法论后果见 §1.5。</p>
 <p><strong>记号：本文的对象是 $\rho_{\mathcal D}$.</strong> 本系列在不同阶段实际使用了三个不同的复杂度模型（详见 §3.3），本文所用的是其中的 $\mathcal D$ 模型：常数起点 $\rho(1)=0$，构造器为后继与乘法。此前文献中常记作「$\rho_{\rm Full}$」，其中「Full」指<strong>因子骨架完整</strong>（即骨架含所求范围内的一切整数），与「历史文法完整」是两个不同的轴。本文一律写 $\rho_{\mathcal D}$，并在需要指明骨架时另加下标。</p>
 <p><strong>与整数复杂度的区别.</strong> (0.1) 与 Mahler–Popken 整数复杂度 $\|n\|$ <strong>不等价</strong>：后者允许任意 $n=a+b$ 以单位成本，且乘法免费。本文若干陈述在两个约定下形态相同而地位迥异，逐处标注。最重要的一处是：</p>
-<p>> 在 P32 约定下，素数处因子候选的取值集合为<strong>空</strong>（$p$ 的因子只有 $1$ 与 $p$，而 (0.1) 要求 $a,b\ge2$），故 > $$\rho_{\mathcal D}(p)=\rho_{\mathcal D}(p-1)+1\qquad\text{对一切素数 }p \tag{0.2}$$ > <strong>由定义直接得出</strong>，无须证明。</p>
+<blockquote>
+<p>在 P32 约定下，素数处因子候选的取值集合为<strong>空</strong>（$p$ 的因子只有 $1$ 与 $p$，而 (0.1) 要求 $a,b\ge2$），故
+$$\rho_{\mathcal D}(p)=\rho_{\mathcal D}(p-1)+1\qquad\text{对一切素数 }p \tag{0.2}$$
+<strong>由定义直接得出</strong>，无须证明。</p>
+</blockquote>
 <p>〔<strong>须与标准 IC 区分</strong>：Paper 50 §7.4 把形如 (0.2) 的陈述记为「已验证至 $10^7$ 但未证明」。那是<strong>关于标准 IC</strong> 的登记——在标准 IC 中 $n=a+b$ 任意可用，故 $\|p\|=\|p-1\|+1$ 确为开放问题。两个约定下是两回事。本文的 (0.2) 是 P32 约定下的定义后果，档次为 <strong>T1</strong>；Paper 50 §7.4 的登记在其自身约定下同样正确。<strong>该混淆点若不明写，极易被读作本文声称证明了一条已知的开放问题。</strong>〕</p>
 <p>Paper 32 §3 亦以事实形态记录 (0.2)（「素数是 DP 中的纯 additive 注入点」）。</p>
 <h3>0.2 观测量与记号</h3>
@@ -1077,10 +1131,14 @@
 <p><strong>猜想 59.1</strong>（Paper 59 §4.1，原文）：存在常数 $C>0$ 使 $R_{\rm wt}(j)\le C$ <strong>对一切 $j\ge1$</strong>。</p>
 <p>〔原文<strong>无</strong>「充分大的 $j$」这一限定。这一点在本文有一处后果：$59.1$ 与 $\exists C\in\mathbb Q_{>0}$、$59.1^\flat(C)$ 的等价是<strong>精确的</strong>，无须处理有限块的吸收（见附录 B）。〕</p>
 <p><strong>小素数约定.</strong> $I_1=[2,4)=\{2,3\}$，而 $2\bmod12=2$、$3\bmod12=3$ 皆不在 $\{1,5,7,11\}$ 中，故 $\mu_{12}$ 对这两个素数无定义，$B_1$ 与 $D_1$ 字面不良定义。$I_2=[4,8)=\{5,7\}$ 起四个可逆剩余类才齐备。</p>
-<p>> <strong>本文一律取 $j\ge2$。</strong></p>
+<blockquote>
+<p><strong>本文一律取 $j\ge2$。</strong></p>
+</blockquote>
 <p>有限前缀不影响有界性的渐近实质，但影响「对一切 $j\ge1$」是否字面良定义，故须显式约定。另两种等价处置（限 $p>3$；为 $2,3$ 单列有限例外）本文不采用，只登记其存在。</p>
 <p><strong>清分母写法与其侧条件.</strong> 本文的定理陈述一律用 $B_j^2\le C\,j\,D_j$ 而非 $R_{\rm wt}(j)\le C$（理由见附录 B.2）。<strong>须留意</strong>：清分母版本是<strong>处处良定义化</strong>的——它在 $B_j=D_j=0$ 处为真，而 $R_{\rm wt}=B_j^2/(jD_j)$ 在该处无定义。</p>
-<p>> <strong>二者的等价条件于 $\forall j\ge2,\ D_j>0$。</strong></p>
+<blockquote>
+<p><strong>二者的等价条件于 $\forall j\ge2,\ D_j>0$。</strong></p>
+</blockquote>
 <p>原文无 $j_0$ 只意味着有限块无须另行吸收，<strong>不消除该侧条件</strong>。本文不主张该非零性已对各版本证明。</p>
 <p>$\lambda$ 与 $\mu_{12}$ 的地位——它们是什么、是否存在、能否被数据确定——是第二部分 §2.2、§2.5–§2.7 的主题。<strong>在那之前，本文把它们当作形式参数处理。</strong></p>
 <h3>0.3 仪器核验</h3>
@@ -1118,14 +1176,18 @@
 <h3>1.1 唯一的无条件承重：定理 70.A</h3>
 <p><strong>做了什么.</strong> 定理 70.A（Paper 70）以初等强归纳证明：对每个 $j$，若骨架截止 $D\ge\sqrt{2^{j+1}}$，则 $\rho_D(n)=\rho_{\mathcal D}(n)$ 对一切 $n<2^{j+1}$ 成立。取 $D^*(j)=\lceil\sqrt{2^{j+1}}\rceil$，59.1 的每个固定 $j$ 的谓词遂化归为规模 $O(\sqrt{2^j})$ 的有限骨架问题。该结论是确定性的、无条件的。</p>
 <p><strong>没做什么.</strong> 它<strong>没有消去 59.1 外层的渐近全称量词</strong>。$\rho_{S_{D^*(j)}}$ 对 $\rho_{\mathcal D}$ 的替换不改变 $\exists C\,\forall j$ 的结构。</p>
-<p>> 因此：$j\le33$ 范围内的任何稳定图形都不能验证 59.1。要闭合，须有结构定理。</p>
+<blockquote>
+<p>因此：$j\le33$ 范围内的任何稳定图形都不能验证 59.1。要闭合，须有结构定理。</p>
+</blockquote>
 <p>〔本系列内部曾出现「有限骨架化归即降低命题的算术复杂度」的读法。<strong>那是错的</strong>，理由如上。该混读须在正文明确否定。〕</p>
 <p><strong>两头都不失效.</strong> 若 59.1 最终为假，定理 70.A 由「证明化归」转为<strong>反例化归</strong>：无界性已经发生在这一列明确的、每块有限的骨架之中。其地位不随 59.1 的真假改变。</p>
 <h3>1.2 前沿的环</h3>
 <p>Paper 71 至 Paper 73 的三篇，各自把 H′ 的剩余障碍精确重新定位一次：</p>
 <p>$$\text{P71 (H4a)}\ \longrightarrow\ \text{P72 (F3)}\ \longrightarrow\ \text{P73 B4 子问题 1a}$$</p>
 <p>而 Paper 73 §11.2 第 8 项自行登记：子问题 1a 在标量一致读数核的层面与 Paper 71 的 H4b 是<strong>同一问题</strong>。</p>
-<p>> 三篇之后回到同一障碍，只换了坐标系。</p>
+<blockquote>
+<p>三篇之后回到同一障碍，只换了坐标系。</p>
+</blockquote>
 <p>〔本文不主张这三篇的技术内容有误。所登记的是<strong>前沿位置未移动</strong>这一事实，及其对后续投入判断的含义（第三、四部分）。〕</p>
 <h3>1.3 已死的路线与死因</h3>
 <p><strong>表 1.1  P50–P73 期间被否决的路线</strong></p>
@@ -1156,7 +1218,9 @@
 <tr><td>4</td><td>$\mu_{12}$ 规范贡献稳定占 $F_W$ 约 $20\%$</td><td>跨 $j$ 稳定，<strong>结构来源未识别</strong>（P73 §11.1 第 5 项）</td></tr>
 </tbody></table>
 <p><strong>第 4 项在本文中的处置.</strong> 第四部分为 $\mu_{12}$ 的<strong>类均值结构</strong>找到一个有限尺度来源候选（$v_2(p-1)$ 的粗指示器）。但该候选<strong>不解释</strong>第 4 项所述的现象：类均值是一阶矩量，$F_W$ 的 $20\%$ 是谱量，二者不能直接换算。</p>
-<p>> <strong>P73 §11.1 第 5 项不关闭。</strong> 本文只把它改写为：$\mu_{12}$ 的类均值序有一个 $\{2,3\}$-可达性的来源候选；其对 $F_W$ 的稳定 $20\%$ 贡献仍未解释。</p>
+<blockquote>
+<p><strong>P73 §11.1 第 5 项不关闭。</strong> 本文只把它改写为：$\mu_{12}$ 的类均值序有一个 $\{2,3\}$-可达性的来源候选；其对 $F_W$ 的稳定 $20\%$ 贡献仍未解释。</p>
+</blockquote>
 <p>第 1–3 项本文不处理，移交后续。</p>
 <h3>1.5 方法论登记：同型错误的四次出现</h3>
 <p>死因 1 与死因 2（表 1.1）的共同结构是：<strong>陈述或观测量在边界上平凡成立、或与所指对象不匹配，而无人发现</strong>。本系列为此立了 Observable Non-Vacuity Audit。</p>
@@ -1183,7 +1247,9 @@
 <hr>
 <hr>
 <h2>§2 无条件结果与规范审计</h2>
-<p>> 本部分是本文的唯一主承重。第一组结果（§2.1）关于递归自身，不依赖任何中心化常数；第二组（§2.2–§2.7）是对猜想 59.1 现行规范的审计。</p>
+<blockquote>
+<p>本部分是本文的唯一主承重。第一组结果（§2.1）关于递归自身，不依赖任何中心化常数；第二组（§2.2–§2.7）是对猜想 59.1 现行规范的审计。</p>
+</blockquote>
 <h3>§2.0 本部分的前提冻结</h3>
 <p>依 Paper 5 §12.1 的要求，本部分全部 T1 交付的前提在此显式冻结，正文各处不再重复。</p>
 <p><strong>(F1) 递归与约定.</strong> 全文使用 P32 约定：</p>
@@ -1357,9 +1423,13 @@
 <p>其二，第 3 行的常数不写死。在独立、加权均值为零、同方差的模型中 $E[B_j^2]\approx\sigma^2H_{2,j}$ 而 $D_j\approx\sigma^2H_{2,j}$，故典型尺度为 $R_{\rm wt}=O_{\mathbb P}(1/j)$，一阶期望常数接近 $1$。<strong>不得把某一随机模型的常数写成确定结论。</strong></p>
 <h4>2.3.3 中心化刚性</h4>
 <p>由上表第 1、2 行：</p>
-<p>> <strong>精确中心化是 59.1 的必要条件，且要求极端刚性。</strong></p>
+<blockquote>
+<p><strong>精确中心化是 59.1 的必要条件，且要求极端刚性。</strong></p>
+</blockquote>
 <p>同时须写出其界限：</p>
-<p>> <strong>即使中心化完全正确（即统计因子的分子被压到伪随机尺度），59.1 仍另外要求块和具有足够取消。</strong> 中心化正确不蕴含 59.1。</p>
+<blockquote>
+<p><strong>即使中心化完全正确（即统计因子的分子被压到伪随机尺度），59.1 仍另外要求块和具有足够取消。</strong> 中心化正确不蕴含 59.1。</p>
+</blockquote>
 <h4>2.3.4 由已发表数据反推的精度要求</h4>
 <p>设 $\lambda$ 的登记值与真值差 $\varepsilon$。则 $h$ 获得增量 $-\varepsilon\log p$，故</p>
 <p>$$\bar f^{(1)}_j\ \longmapsto\ \bar f^{(1)}_j-\varepsilon\cdot\frac{1}{H_{1,j}}\sum_{p\in I_j}\frac{\log p}{p}\ \approx\ \bar f^{(1)}_j-\varepsilon\,(j+\tfrac12)\log2 . \tag{2.11}$$</p>
@@ -1373,7 +1443,9 @@
 <h4>2.3.5 附带：Bartlett 族失败的第二条理由</h4>
 <p>P73 §7.5 记录：正则模型内带宽包络为 $m_j^{0.33}\lesssim F_W\lesssim m_j^{0.63}$，而闭合需 $O(\log m_j)$，并把该失败读作多项式对对数的差距。</p>
 <p>由 §2.3.2–§2.3.4 可给出<strong>独立于该论证</strong>的第二条理由：</p>
-<p>> Bartlett 族在争 $m_j^{0.33}$ 对 $\log m_j$ 的<strong>多项式</strong>差距，而标的量对中心化常数的敏感度由 (2.10) 是 $2^j$ <strong>指数</strong>的。不是带宽选错，是量纲错了一个数量级类。</p>
+<blockquote>
+<p>Bartlett 族在争 $m_j^{0.33}$ 对 $\log m_j$ 的<strong>多项式</strong>差距，而标的量对中心化常数的敏感度由 (2.10) 是 $2^j$ <strong>指数</strong>的。不是带宽选错，是量纲错了一个数量级类。</p>
+</blockquote>
 <p>〔本文<strong>不主张</strong> P73 §7.5 的原论证有误——它在自己的框架内成立。本文主张该结论有第二条更粗的来源，且先于任何窗口选择。<strong>两条互不相干的路径给出同一结论，其稳健性高于任一单条。</strong>〕</p>
 <hr>
 <h3>§2.4 标定唯一性</h3>
@@ -1456,7 +1528,9 @@
 <tr><td>$j=19\ldots27$（$N\sim2.7\times10^8$）</td><td>3.8708</td><td>3.8450</td><td>3.8191</td><td><strong>0.052</strong></td></tr>
 </tbody></table>
 <p>后两个模型的残差平方和仅差 $17\%$，<strong>在该数据上判不开</strong>：$j=19\ldots27$ 区间内 $\log j$ 只变化 $11.9\%$，而 $1/j$ 变化 $42\%$，两项近乎共线。</p>
-<p>> <strong>结论</strong>：$\lambda$ 的可外推精度约 $\pm0.05$（绝对量），而 §2.3 的要求经 (2.12b) 换算约为 $|\varepsilon|\lesssim2.3\times10^{-5}$——<strong>相差约 $3.3$ 个数量级</strong>。且数据量增加 $32$ 倍只把散布减半。</p>
+<blockquote>
+<p><strong>结论</strong>：$\lambda$ 的可外推精度约 $\pm0.05$（绝对量），而 §2.3 的要求经 (2.12b) 换算约为 $|\varepsilon|\lesssim2.3\times10^{-5}$——<strong>相差约 $3.3$ 个数量级</strong>。且数据量增加 $32$ 倍只把散布减半。</p>
+</blockquote>
 <p>〔该倍数依赖 (2.12b) 的条件式换算；见该处限定。〕</p>
 <p>〔<strong>限定</strong>：表 2.1 由自建表配以外部提供的 $\mu_{12}$ 比值算出，非 Paper 50 口径。可引用的是<strong>模型判别力这一结论</strong>与 $2^{-j/2}$ 半宽律；<strong>表中 $\lambda_\infty$ 的具体数值一个都不可引用</strong>。〕</p>
 <p><strong>该缺口的性质.</strong> $\lambda$ 与漂移模型在数据上纠缠。<strong>单纯扩大同型有限计算，目前没有显示出能够弥合三个数量级的精度缺口</strong>（$32$ 倍数据只使散布减半）；若无 $\rho_{\mathcal D}(p)$ 二阶项的理论控制，有限区间外推缺乏充分依据。</p>
@@ -1480,9 +1554,13 @@
 </tbody></table>
 <p>计算条件：同一 $\rho_{\mathcal D}$ 表（§0.3，33/33 相符）；同一批素数（$m_j$ 于 $j=14\ldots27$ 精确相符，14/14）；$\mu_{12}$ 取 Paper 50 §2.2 定义在 $X=3\times10^8$ 处的 plug-in 值。</p>
 <p><strong>两处差别，非一处.</strong> 主要受控变化是标定截断点；但由附录 A.1.1，Paper 59 的第二遍使用的是<strong>未舍入</strong>的 $\lambda_{10^{10}}^{\rm OLS}$，而该值未发表，本文只能用显示值 $3.856763$，<strong>故另有一次无法消除的舍入替代</strong>。</p>
-<p>> 因此表 2.2 是<strong>截断敏感性演示</strong>，不是只改变单一变量的严格对照实验。〔这一点不削弱结论，反而强化「已发表文本不足以精确复现」这一论点。〕</p>
+<blockquote>
+<p>因此表 2.2 是<strong>截断敏感性演示</strong>，不是只改变单一变量的严格对照实验。〔这一点不削弱结论，反而强化「已发表文本不足以精确复现」这一论点。〕</p>
+</blockquote>
 <p><strong>准确表述.</strong></p>
-<p>> 使用最自然的有限 $X$ plug-in 估计时，所得 $R_{\rm wt}$ 剖面对截断点高度敏感；由于已发表文本未给出四个极限值、误差界或指定估计程序，<strong>表 1 不能由已发表文本单独作操作性复现</strong>。</p>
+<blockquote>
+<p>使用最自然的有限 $X$ plug-in 估计时，所得 $R_{\rm wt}$ 剖面对截断点高度敏感；由于已发表文本未给出四个极限值、误差界或指定估计程序，<strong>表 1 不能由已发表文本单独作操作性复现</strong>。</p>
+</blockquote>
 <p><strong>四条必须写出的限定.</strong></p>
 <ol>
 <li><strong>本文不主张 Paper 59 的数值有误。</strong> 表 2.2 演示的是可复现性，不是正确性。</li>
@@ -1491,13 +1569,17 @@
 <li><strong>失配模式与 §2.3 的机制一致但不构成其证明</strong>：比值随 $j$ 单调偏离并在 $B_j$ 过零附近反转，与 (2.10) 的 $2^j$ 放大相符，但这是一致性观察，非独立验证。</li>
 </ol>
 <p><strong>一处曾未定位、现已结案的差异.</strong> 本文按 (2.16) 在 $X=3\times10^8$ 处得 $\sum_r\mu_{12}(r)=-1.03$，而 Paper 50 报该和约为 $+4.94$。由附录 A.1.3 的上游澄清，<strong>$4.94$ 属 $c=\rho_{\mathcal D}+2$ 口径</strong>：四个类均值各加 $2$，其和加 $4\times2=8$；上游在 $p\le2000$ 处的 $\rho$ 版本之和为 $-2.991$，加 $8$ 得 $5.01$。<strong>口径差已定位，本文与上游无实质分歧。</strong></p>
-<p>> 即便如此，<strong>表 2.2 仍不宜称为「同一规范下的严格复现实验」</strong>——本文与 Paper 59 的截断点不同，而截断点正是本表所要演示的变量。其地位是<strong>截断敏感性演示</strong>。</p>
+<blockquote>
+<p>即便如此，<strong>表 2.2 仍不宜称为「同一规范下的严格复现实验」</strong>——本文与 Paper 59 的截断点不同，而截断点正是本表所要演示的变量。其地位是<strong>截断敏感性演示</strong>。</p>
+</blockquote>
 <hr>
 <h4>2.5.4 (c) 标定截断进入观测量：$R_{\rm wt}$ 剖面中深谷的位置</h4>
 <p>由附录 A.1.2，$\mu_{12}(r)$ 是 $\eta$ 在类 $r$ 上于 $p\le N$ 的算术平均。故<strong>逐类精确成立</strong></p>
 <p>$$\sum_{\substack{p\le N\\ p\equiv r\,(12)}}h(p)=0\qquad(r=1,5,7,11). \tag{2.19}$$</p>
 <p>这不是近似而是构造的恒等式：四条跨全部块的精确线性约束。又 $2^{33}=8.59\times10^9<10^{10}$，故 $j\le32$ 的全部块<strong>都在标定范围之内</strong>。</p>
-<p>> <strong>由此，$R_{\rm wt}(j)$ 至少部分受标定协议控制，不是 $\rho_{\mathcal D}$ 与块索引单独决定的函数。</strong></p>
+<blockquote>
+<p><strong>由此，$R_{\rm wt}(j)$ 至少部分受标定协议控制，不是 $\rho_{\mathcal D}$ 与块索引单独决定的函数。</strong></p>
+</blockquote>
 <p>〔这与 §2.7 的版本划分对应：被实际检验的命题是 $59.1_{\rm calib}(N)$，而本条表明其观测量剖面依赖 $N$。〕</p>
 <p><strong>判别性检验.</strong> 取<strong>固定的十个块</strong> $j=14,\ldots,23$，只改变标定截断 $N$（即按 A.1.1–A.1.2 的两遍法在不同 $N$ 上重新拟合 $\lambda$ 与 $\mu_{12}$）。</p>
 <p><strong>表 2.5  同一批块、四个标定截断（C 档）</strong></p>
@@ -1521,7 +1603,9 @@
 <tr><td>$2^{27}$</td><td>2.06</td><td>3.39</td><td>0.97</td><td>1.42</td><td>0.84</td><td>0.28</td><td>0.02</td><td><strong>0.00</strong></td><td>0.37</td><td>0.47</td><td>$j{=}21$</td></tr>
 <tr><td>$2^{28}$</td><td>2.88</td><td>4.63</td><td>1.84</td><td>2.63</td><td>1.98</td><td>1.13</td><td>0.52</td><td>0.31</td><td><strong>0.02</strong></td><td>0.16</td><td>$j{=}22$</td></tr>
 </tbody></table>
-<p>> <strong>同一个 $\rho_{\mathcal D}$、同一批素数、同一批块——只换拟合区间，深谷单调迁移。故在本实验中，深谷位置不由 $\rho_{\mathcal D}$ 与块索引单独决定，至少部分受标定协议控制。</strong></p>
+<blockquote>
+<p><strong>同一个 $\rho_{\mathcal D}$、同一批素数、同一批块——只换拟合区间，深谷单调迁移。故在本实验中，深谷位置不由 $\rho_{\mathcal D}$ 与块索引单独决定，至少部分受标定协议控制。</strong></p>
+</blockquote>
 <p><strong>与已发表剖面的对照.</strong></p>
 <table>
 <thead><tr>
@@ -1557,12 +1641,16 @@
 <p><strong>命题 74.D.</strong> 对任意 $\lambda_1\ne\lambda_2$，<strong>精确地</strong></p>
 <p>$$M_r(X;\lambda_1)-M_r(X;\lambda_2)=-(\lambda_1-\lambda_2)\,L_r(X). \tag{2.17}$$</p>
 <p>且由算术级数素数定理 $L_r(X)\sim\log X\to\infty$。因此：</p>
-<p>> <strong>对每个 $r$，至多存在一个 $\lambda$ 使 $M_r(X;\lambda)$ 收敛为有限实数。特别地，至多存在一个公共 $\lambda$ 使 (2.16) 的四个极限同时良构。</strong></p>
+<blockquote>
+<p><strong>对每个 $r$，至多存在一个 $\lambda$ 使 $M_r(X;\lambda)$ 收敛为有限实数。特别地，至多存在一个公共 $\lambda$ 使 (2.16) 的四个极限同时良构。</strong></p>
+</blockquote>
 <p><strong>证.</strong> (2.17) 直接由定义相减得出（$\rho_{\mathcal D}(p)$ 项相消）。对 $L_r$：由算术级数素数定理，$\sum_{p\le X,\,p\equiv r}\log p\sim X/\varphi(12)$ 而 $\pi_r(X)\sim X/(\varphi(12)\log X)$，故 $L_r(X)\sim\log X$。</p>
 <p>设 $\lambda_1\ne\lambda_2$ 且 $M_r(X;\lambda_1)$、$M_r(X;\lambda_2)$ 皆收敛为有限实数。则其差收敛为有限实数。但由 (2.17) 该差等于 $-(\lambda_1-\lambda_2)L_r(X)$，其绝对值趋于 $+\infty$。矛盾。$\square$</p>
 <p>〔档：<strong>T1</strong>，<strong>无条件</strong>。外部引用：算术级数素数定理（依 (F2)）。〕</p>
 <p><strong>收束句.</strong></p>
-<p>> $\mu_{12}$ 的良构性<strong>强制</strong>中心斜率唯一；但中心斜率唯一<strong>不自动交付</strong> $\mu_{12}$。</p>
+<blockquote>
+<p>$\mu_{12}$ 的良构性<strong>强制</strong>中心斜率唯一；但中心斜率唯一<strong>不自动交付</strong> $\mu_{12}$。</p>
+</blockquote>
 <h4>2.6.3 本文明确不主张的方向</h4>
 <p>设素数侧存在某种意义的斜率 $\lambda_*$，例如</p>
 <p>$$\frac{1}{L_r(X)}\cdot\frac{1}{\pi_r(X)}\sum_{\substack{p\le X\\ p\equiv r}}\rho_{\mathcal D}(p)\ \longrightarrow\ \lambda_* . \tag{2.18}$$</p>
@@ -1573,7 +1661,9 @@
 <p>$$\frac{1}{\pi_r(X)}\sum_{p\le X,\ p\equiv r}\rho_{\mathcal D}(p)\ =\ \lambda_*L_r(X)+\sqrt{L_r(X)} .$$</p>
 <p>则 (2.18) 成立，而 $M_r(X;\lambda_*)=\sqrt{L_r(X)}\to+\infty$：中心化后的类均值发散。</p>
 <p>〔这不是主张 $\rho_{\mathcal D}$ 具有该形态。它说明的是当前逻辑中「<strong>斜率存在 $\nRightarrow$ 截距极限存在</strong>」。故：</p>
-<p>> <strong>「$\lambda$ 恰为素数侧斜率」是 $\mu_{12}$ 存在的必要条件，不是已证的充分条件。</strong></p>
+<blockquote>
+<p><strong>「$\lambda$ 恰为素数侧斜率」是 $\mu_{12}$ 存在的必要条件，不是已证的充分条件。</strong></p>
+</blockquote>
 <p>〕</p>
 <h4>2.6.4 逐类漂移（C 档）</h4>
 <p>命题 74.D 的经验对应：在 $\lambda=3.856763$ 处，四个 $M_r(X;\lambda)$ 是否显示非零漂移。</p>
@@ -1603,7 +1693,9 @@
 <li><strong>四条斜率不相等</strong>（$0.0207$ 对 $0.0101$，差约一倍），各自反推的 $\lambda$ 散布为 $0.0107$。<strong>本文不由此推断四个类的渐近斜率不同</strong>：该散布远小于 §2.5.2 所述的辨识窗口（$\pm0.05$），故「四类共用一个 $\lambda_*$」既未被确立、也未被否证。这正是 §2.6.3 所述情形的经验形态——<strong>即便存在公共斜率，四条 $M_r$ 是否同时收敛仍是独立的问题。</strong></li>
 </ol>
 <p><strong>与 §2.3 的比较.</strong> 由表 2.3，四类漂移之和为 $+0.0614$ 每单位 $\log X$。若存在公共 $\lambda_*$，则 $\lambda_*-\lambda\approx0.0614/4=0.0153$，即 $\lambda_*\approx3.872$。而 §2.3.4 由 $R_{\rm wt}$ 上界推出的要求是 $|\varepsilon/\sqrt{Q^{(2)}_{32}}|\lesssim3.0\times10^{-5}$。</p>
-<p>> <strong>在上述模型条件下</strong>，实测偏差经 (2.12b) 换算后比该要求大约 $2.8$ 个数量级（$0.0153$ 对 $2.3\times10^{-5}$）。</p>
+<blockquote>
+<p><strong>在上述模型条件下</strong>，实测偏差经 (2.12b) 换算后比该要求大约 $2.8$ 个数量级（$0.0153$ 对 $2.3\times10^{-5}$）。</p>
+</blockquote>
 <p>〔<strong>双重条件</strong>：其一，$\lambda_*-\lambda\approx0.0153$ 条件于「有限漂移主要来自中心斜率错配」；其二，绝对换算条件于 (2.12b) 的 $\sqrt{Q^{(2)}_{32}}$ 外推。〕</p>
 <p>〔<strong>不宜由 Paper 50 所报的 $\bar\mu\approx4.94$ 另推精度要求</strong>：该值属 $c=\rho_{\mathcal D}+2$ 口径（附录 A.1.3），且「稳定到所报精度」的解读过宽。〕</p>
 <hr>
@@ -1693,7 +1785,9 @@
 <p>$$\mathbb E_N J=\frac{N-1-\rho_{\mathcal D}(N)}{N-1-\pi(N)}\longrightarrow1. \tag{3.2}$$</p>
 <p>设 $q_N:=\mathbb P_N(J>0)$。<strong>Paper XXX 已建立</strong> $H'\iff q_N\to0$，并已给出 (3.2) 与 $q_N\to0$ 的一阶矩张力、active-jump 条件均值必须发散这一后果、以及该均值当前约 $1.68$ 且尚未显示上升的观测。由 Hölder 不等式（对 $J=J\cdot\mathbf1_{J>0}$，指数 $p$ 与 $p/(p-1)$），</p>
 <p>$$\mathbb E[J]\ \le\ \bigl(\mathbb E[J^p]\bigr)^{1/p}q_N^{1-1/p}\quad\Longrightarrow\quad \mathbb E[J^p]\ \ge\ \frac{\mathbb E[J]^p}{q_N^{p-1}}\ \sim\ q_N^{1-p}. \tag{3.3}$$</p>
-<p>> <strong>取逆否：若能证明 $J_N$ 的某个 $L^{1+\varepsilon}$ 矩一致有界（特别地，若跳跃深度有统一上界），则 H′ 为假。</strong></p>
+<blockquote>
+<p><strong>取逆否：若能证明 $J_N$ 的某个 $L^{1+\varepsilon}$ 矩一致有界（特别地，若跳跃深度有统一上界），则 H′ 为假。</strong></p>
+</blockquote>
 <p><strong>来源拆分（须严守）</strong></p>
 <table>
 <thead><tr>
@@ -1745,7 +1839,9 @@
 <p><strong>一处待核的证明.</strong> Paper VI 由「加法支配引理」把 $\rho_{\mathcal H}$ 化归为 $\rho_{\mathcal H^\times}$。该引理现有证明中出现一步</p>
 <p>$$X\le A+B,\quad B\ge C\ \Longrightarrow\ X\le A+C,$$</p>
 <p>而该推理不成立（较大的上界不能换成较小的）。</p>
-<p>> <strong>本文登记为：加法消去应作为公开猜想 $\rho_{\mathcal H}=\rho_{\mathcal H^\times}$，而非已证引理。</strong></p>
+<blockquote>
+<p><strong>本文登记为：加法消去应作为公开猜想 $\rho_{\mathcal H}=\rho_{\mathcal H^\times}$，而非已证引理。</strong></p>
+</blockquote>
 <p>C 档核验：$n\le3000$ 无反例。<strong>更强的经验证据已见于先行文献</strong>：Dogra 2018 的 Observation 3.3 报告 $c_{\{1,S,+,\times\}}(n)=c_{\{1,S,\times\}}(n)$ 对一切 $n\le4.5\times10^6$ 成立（其计价方式与 $\rho_{\mathcal H}$ 的 P32 约定不同，故非同一命题，但方向一致）。<strong>该文亦只作计算观察，未给证明。</strong></p>
 <p><strong>对本文的影响：无。</strong> 本文全部结果关于 $\rho_{\mathcal D}$，而 $\rho_{\mathcal D}$ 由 (0.1) 直接定义，其良定义性不依赖任何化归。<strong>但本文的记号应随此表更正</strong>：§0.1 所称的 $\rho_{\mathcal D}$ 在此表中是 $\rho_{\mathcal D}$；「Full」在本系列中指<strong>因子骨架完整</strong>，与「历史文法完整」是两个不同的轴，此前未加区分。</p>
 <p><strong>移交.</strong> 三模型的进一步形式化如有需要，可另以技术规格或勘误文件发表。<strong>本文不为此承诺编号、形式或时间</strong>（见 §5.6 的界定）。</p>
@@ -1883,10 +1979,17 @@
 <p><strong>其三，本文新增 C 档</strong>（认证计算／有限经验结果）。按 Paper 5 §12.1 所立的三档，有限样本计算既非数学事实（T1）、亦非对既有结果的重新框定（T2）、更非 SAE 内部的识别提案（T3）——三档无其格位。若强置于 T2，则「数学内容不新、组织方式新」的判据被架空；若置于 T1，则「有证明」被架空。故单立一档。</p>
 <p><strong>其四，第四部分的核心形态修正了三次，全部在查看同一批探索数据之后</strong>（§4.5 表 4.6）。该事实降低其确认性证据资格，故登记为事后生成的候选规律。<strong>修正次数不是经过校准的可靠性指标</strong>；它所承担的是研究路径的 provenance 披露。</p>
 <p><strong>其五，一条可复用的方法论结论.</strong></p>
-<p>> <strong>本文的全部 T1 交付所用的技术，在前七十三篇中一直可用。</strong> > > 定理 74.A 的归纳只需 $\alpha\log\frac54<1$ 与因子候选的加法性；其基例只需 $\rho_{\mathcal D}(4)=3$，三行计算。推论 74.A.3 的三例分证各两行。命题 74.D 是一次减法加算术级数素数定理。<strong>没有一项需要本系列此前不具备的工具。</strong> > > 它们未被发现，不是因为困难，而是因为二十四篇的注意力全部放在残差的统计结构上，未曾退回递归定义本身。 > > <strong>登记的可复用形式</strong>：当一条研究线在同一障碍上反复重定位（§1.2 的前沿环），收益更可能在<strong>重新检查对象的定义</strong>，而非在寻找更好的工具。本文的两组结果、以及 §3.3 所发现的规格问题，皆由此产生。</p>
+<blockquote>
+<p><strong>本文的全部 T1 交付所用的技术，在前七十三篇中一直可用。</strong></p>
+<p>定理 74.A 的归纳只需 $\alpha\log\frac54<1$ 与因子候选的加法性；其基例只需 $\rho_{\mathcal D}(4)=3$，三行计算。推论 74.A.3 的三例分证各两行。命题 74.D 是一次减法加算术级数素数定理。<strong>没有一项需要本系列此前不具备的工具。</strong></p>
+<p>它们未被发现，不是因为困难，而是因为二十四篇的注意力全部放在残差的统计结构上，未曾退回递归定义本身。</p>
+<p><strong>登记的可复用形式</strong>：当一条研究线在同一障碍上反复重定位（§1.2 的前沿环），收益更可能在<strong>重新检查对象的定义</strong>，而非在寻找更好的工具。本文的两组结果、以及 §3.3 所发现的规格问题，皆由此产生。</p>
+</blockquote>
 <p>〔档：<strong>T3</strong>（方法论登记，不得作数学论证的前提）。〕</p>
 <h3>5.6 阶段性收束的界定</h3>
-<p>> <strong>ZFCρ 系列在 Paper LXXIV 处作阶段性收束。</strong></p>
+<blockquote>
+<p><strong>ZFCρ 系列在 Paper LXXIV 处作阶段性收束。</strong></p>
+</blockquote>
 <p>该措辞的三项含义须逐条写明，以免被读为承诺或读为终止。</p>
 <p><strong>其一，本文不承诺续篇。</strong> 本文不预告 Paper LXXV，不为任何开放问题设定时间表，亦不因移交而对接手者承担任何义务。读者不应把 §3.2 的移交清单读作续篇提纲。</p>
 <p><strong>其二，本文不宣告终止。</strong> 若将来出现使 §3.2 中某条开放问题重新可攻的新结果——例如 $\lambda_*$ 的存在性与一个可计算的收敛模（这将使 A 类整体复活）——本系列可在其上续编。收束是对<strong>当前阶段</strong>的结算，不是对对象的判决。</p>
@@ -1966,27 +2069,41 @@
 <p>本文起草期间向上游提出五项澄清请求。<strong>四项已获答复并解决</strong>，登记如下；两项遗留。</p>
 <h3>A.1 已解决</h3>
 <p><strong>A.1.1 $\lambda=3.856763$ 的定义（本文最重要的一项澄清）</strong></p>
-<p>> $\lambda$ 由 $\rho_{\mathcal D}(p)$ 对 $\log p$ 在<strong>全部素数 $2\le p\le10^{10}$ 上的带截距最小二乘回归</strong>得出，取其斜率。<strong>是全局 OLS 斜率，非局部拟合，非任何极限。</strong></p>
+<blockquote>
+<p>$\lambda$ 由 $\rho_{\mathcal D}(p)$ 对 $\log p$ 在<strong>全部素数 $2\le p\le10^{10}$ 上的带截距最小二乘回归</strong>得出，取其斜率。<strong>是全局 OLS 斜率，非局部拟合，非任何极限。</strong></p>
+</blockquote>
 <p><strong>这一项决定了 §2.2 的主词问题</strong>：$\lambda$ 既不是 $\lim_n\rho_{\mathcal D}(n)/\log n$（由推论 74.B，若该极限存在则等于 $5/\log4$），也不是任何已证存在的素数侧极限，而是一个<strong>有限区间的回归统计量</strong>。</p>
 <p><strong>C 档独立核验</strong>：本文按同一程序在四个截断上拟合，得 $\lambda(2^{24})=3.8787$、$\lambda(2^{26})=3.8725$、$\lambda(2^{27})=3.8699$、$\lambda(2^{28})=3.8672$，对 $\log X$ 的斜率为 $-0.0041$。外推至 $\log X=23.03$（$N=10^{10}$）得 $\approx3.852$，与所报的 $3.856763$ 相差 $0.004$。<strong>与上游答复相符。</strong></p>
 <p><strong>A.1.2 $\mu_{12}$ 的计算程序</strong></p>
-<p>> 两遍法，<strong>非联合拟合</strong>：第一遍由全局 OLS 定 $\lambda$；第二遍计算 $\eta(p)=\rho_{\mathcal D}(p)-\lambda\log p$，在每个类 $p\bmod12$ 内取算术平均。$\lambda$ 在第二遍之前冻结。</p>
+<blockquote>
+<p>两遍法，<strong>非联合拟合</strong>：第一遍由全局 OLS 定 $\lambda$；第二遍计算 $\eta(p)=\rho_{\mathcal D}(p)-\lambda\log p$，在每个类 $p\bmod12$ 内取算术平均。$\lambda$ 在第二遍之前冻结。</p>
+</blockquote>
 <p><strong>一处须写入正文的后果</strong>：$\lambda$ 是<strong>带截距</strong> OLS 的斜率，而第二遍不再减去截距。故四个 $\mu_{12}(r)$ <strong>同时吸收了全局截距与 mod-12 结构</strong>。</p>
-<p>> <strong>只有四值之间的差是 mod-12 结构；其共同水平是 OLS 截距。</strong></p>
+<blockquote>
+<p><strong>只有四值之间的差是 mod-12 结构；其共同水平是 OLS 截距。</strong></p>
+</blockquote>
 <p>因此正文不得写「$\mu_{12}$ 刻画 mod-12 结构」，应写「$\mu_{12}$ 含全局截距，其<strong>类间差</strong>才是 mod-12 结构」。这解释了四值何以全部为负且均值约 $-0.75$（截距为负）。</p>
 <p><strong>A.1.3 $\eta$ 用 $\rho$ 而非 $c=\rho+2$；以及 $\bar\mu\approx4.94$ 的口径</strong></p>
-<p>> 全部实现中 $\eta(p)=\rho_{\mathcal D}(p)-\lambda\log p$，<strong>用 $\rho$</strong>。</p>
+<blockquote>
+<p>全部实现中 $\eta(p)=\rho_{\mathcal D}(p)-\lambda\log p$，<strong>用 $\rho$</strong>。</p>
+</blockquote>
 <p>而 Paper 50 所报的 $\bar\mu=\sum_r\mu_{12}(r)\approx4.94$ <strong>是 $c=\rho+2$ 版本</strong>：上游在 $p\le2000$ 上算得四类之和为 $-2.991$，加 $4\times2=8$ 得 $5.01$。</p>
-<p>> <strong>§2.5.3 所记的「约 6 个单位的未定位差异」由此结案：口径差，$4\times2=8$。</strong></p>
+<blockquote>
+<p><strong>§2.5.3 所记的「约 6 个单位的未定位差异」由此结案：口径差，$4\times2=8$。</strong></p>
+</blockquote>
 <p>本文按 $\rho$ 版本在 $X=3\times10^8$ 处得四类之和 $-1.03$，与上游 $p\le2000$ 处的 $-2.991$ 之差由 $\log X$ 漂移解释（漂移率 $+0.0614$/单位 $\log X$，见 §2.6.4）。</p>
 <p><strong>A.1.4 块和起始指标</strong></p>
-<p>> 上游实现自 $j=2$ 起（$I_1=\{2,3\}$ 的两个素数各属一个非可逆剩余类，$\mu_{12}$ 无定义）。</p>
+<blockquote>
+<p>上游实现自 $j=2$ 起（$I_1=\{2,3\}$ 的两个素数各属一个非可逆剩余类，$\mu_{12}$ 无定义）。</p>
+</blockquote>
 <p><strong>与本文 §0.2 的约定一致。</strong></p>
 <p><strong>A.1.5 $h_0$ 与 $\lambda$ 的关系（由 A.1.1 导出，本文补证）</strong></p>
 <p>Paper 32 的 $h_0$ 是<strong>单点比值</strong> $\rho_{\mathcal D}(N)/\log N$；$\lambda$ 是<strong>回归斜率</strong>。二者由截距项相差：</p>
 <p>$$\frac{\rho_{\mathcal D}(N)}{\log N}=\lambda+\frac{\mu}{\log N},\qquad \mu=\rho_{\mathcal D}(N)-\lambda\log N .$$</p>
 <p><strong>C 档核验</strong>（$N=10^8$）：$\rho_{\mathcal D}(10^8)=66$，$\mu=66-3.856763\times18.4207=-5.0405$，$\mu/\log N=-0.27363$；而 $\lambda-h_0=3.856763-3.58290=0.27386$。<strong>吻合到 $2\times10^{-4}$。</strong></p>
-<p>> 故 §2.2.3 的「机制背景」措辞可升级：$h_0$ 与 $\lambda$ 之差<strong>由上式精确给出</strong>，不需要经由 prime penalty 作定性说明。</p>
+<blockquote>
+<p>故 §2.2.3 的「机制背景」措辞可升级：$h_0$ 与 $\lambda$ 之差<strong>由上式精确给出</strong>，不需要经由 prime penalty 作定性说明。</p>
+</blockquote>
 <h3>A.2 遗留项</h3>
 <table>
 <thead><tr>
@@ -2022,7 +2139,9 @@
 <p>本附录一律用</p>
 <p>$$B_j^2\le C\,j\,D_j$$</p>
 <p>而非 $R_{\rm wt}(j)\le C$。理由：$R_{\rm wt}$ 含除法，而「$D_j\ne0$」对可计算实数是 $\Sigma^0_1$ 而非可判定，保留除法会使谓词的复杂度挂在一个未处理的侧条件上。清分母后两侧处处良定义，且在 $D_j>0$ 时与原式等价。</p>
-<p>> <strong>建议本系列后续一律采用清分母写法</strong>；$R_{\rm wt}$ 保留为诊断量名称，不用于定理陈述。</p>
+<blockquote>
+<p><strong>建议本系列后续一律采用清分母写法</strong>；$R_{\rm wt}$ 保留为诊断量名称，不用于定理陈述。</p>
+</blockquote>
 <h3>B.3 复杂度定位</h3>
 <p><strong>命题 74.1.</strong> 设常数如 B.1（$59.1_{\rm calib}(N)$ 或 $59.1_{\rm freeze}(\vec q)$ 皆可）。则：</p>
 <p><strong>(a)</strong> 对有理 $C$ 与每个 $j$，谓词 $B_j^2\le C\,jD_j$ 为 $\Pi^0_1$，其否定为 $\Sigma^0_1$。 <strong>(b)</strong> $59.1^\flat(C):\ \forall j\ge2\ \bigl(B_j^2\le C\,jD_j\bigr)$ 为 $\Pi^0_1$。 <strong>(c)</strong> $\exists C\in\mathbb Q_{>0}\ 59.1^\flat(C)$ <strong>属于</strong> $\Sigma^0_2$（即具有 $\Sigma^0_2$ 形式；本文<strong>未证</strong>其不在更低层，亦未证任何 $\Sigma^0_2$-完备性）（由 §0.2，原文无 $j_0$，故无须处理有限块吸收；但<strong>与原谱比版本的等价仍条件于 $\forall j\ge2,\ D_j>0$</strong>，见 §0.2 与下方注）。</p>
@@ -2036,7 +2155,9 @@
 <p><strong>内容须准确读.</strong> 它不说可证、不说不独立、不给证明方向。它说的是：$\Pi^0_1$ 形态下，「独立」与「真而不可证」这两种失败方式<strong>合并</strong>了。对 $\Sigma^0_2$ 形态无对应陈述——$\Sigma_2$ 命题可以独立而假。</p>
 <h3>B.5 一处否定性说明</h3>
 <p>有效、$\Gamma$-可靠且 $\Gamma$-完备的理论存在，蕴含 $\mathrm{True}_\Gamma$ 是 c.e.。而 $\mathrm{True}_{\Sigma_2}$ 与 $\mathrm{True}_{\Pi_1}$ <strong>皆非</strong> c.e.。故</p>
-<p>> <strong>把 59.1 由 $\Sigma_2$ 改写为 $\Pi_1$，并不使它落到该阈值的好侧。</strong></p>
+<blockquote>
+<p><strong>把 59.1 由 $\Sigma_2$ 改写为 $\Pi_1$，并不使它落到该阈值的好侧。</strong></p>
+</blockquote>
 <p>B.4 的收益不来自该阈值，而来自 $\Sigma^0_1$ 的可证性（$Q$ 证一切真 $\Sigma_1$ 句）。</p>
 <h3>B.6 $59.1^\sharp$</h3>
 <p>$$59.1^\sharp:\quad \exists\lambda\in\mathbb R\ \exists\vec\mu\in\mathbb R^4\ \exists C\in\mathbb Q_{>0}\ \forall j\ge2:\ B_j(\lambda,\vec\mu)^2\le C\,j\,D_j(\lambda,\vec\mu).$$</p>
@@ -2066,7 +2187,9 @@
 <p>外部审查在指出本文一稿中的传递公式含 $\lambda\log2$、与「不依赖中心化常数」的主张相矛盾（<strong>勘误</strong>）的同时，给出了<strong>同时修好两侧</strong>的观测量——二阶差</p>
 <p>$$\mathcal A_{j,a,b,r}=M_{j,a,b,r}-2M_{j,a+1,b,r}+M_{j,a+2,b,r},$$</p>
 <p>其定义不含 $\lambda$，且关于 $a$ 的仿射项在二阶差中消失。</p>
-<p>> <strong>这不是勘误，是替代品。</strong> 四轮审查中仅此一次：拆掉一个构造的同时给出一个更好的。登记于此。</p>
+<blockquote>
+<p><strong>这不是勘误，是替代品。</strong> 四轮审查中仅此一次：拆掉一个构造的同时给出一个更好的。登记于此。</p>
+</blockquote>
 <h3>C.3 逐轮审查</h3>
 <p>外部审查共四轮（提纲 v3、v4、v4.1，加一次总判）。所捕获的问题包括：本文两处 T1 错误（§1.5 表 1.3）、$\mu_{12}$ 良构性的充要方向错误（§2.6.3）、$\log^2j$ 的多余因子与 $2\log^22$ 的常数写死（§2.3.2）、$\mathcal A$ 的「精确抵消」过强（§4.3）、预登记判据的逻辑方向与空档（附录 D.4）、以及停线规则的过度捆绑（§3.2）。</p>
 <h3>C.4 上游模型规格的指认</h3>

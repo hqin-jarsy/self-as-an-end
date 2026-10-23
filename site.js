@@ -18,6 +18,7 @@
   const subsectionHeaders = [...main.querySelectorAll('.subsection-header')];
   const tierNames = new Map();
   const sectionNames = new Map();
+  const sectionSearchText = new Map();
   const tierSections = new Map();
 
   let currentTier = '';
@@ -49,6 +50,7 @@
       element.dataset.paperSubsection = currentSubsection;
       element.dataset.paperSection = section;
       sectionNames.set(section, element.querySelector('.section-header h2')?.textContent.trim() || `Series ${sectionIndex}`);
+      sectionSearchText.set(section, element.querySelector('.section-header')?.textContent.trim() || '');
       tierSections.get(currentTier)?.push(section);
 
       element.querySelectorAll('.paper-item').forEach((item) => {
@@ -79,7 +81,8 @@
       title: textOf(item, '.paper-title'),
       code: textOf(item, '.paper-num'),
       summary: textOf(item, '.paper-subtitle'),
-      doi: textOf(item, '.doi')
+      doi: textOf(item, '.doi'),
+      series: sectionSearchText.get(item.dataset.paperSection) || ''
     };
     const fields = Object.fromEntries(Object.entries(raw).map(([key, value]) => [key, normalize(value)]));
 
@@ -123,7 +126,7 @@
   function scorePaper(paper, query, tokens) {
     if (!tokens.every((token) => paper.all.includes(token))) return null;
 
-    const { title, code, summary, doi } = paper.fields;
+    const { title, code, summary, doi, series } = paper.fields;
     let score = 0;
 
     if (title === query) score += 1000;
@@ -135,21 +138,27 @@
 
     if (doi.includes(query)) score += 350;
     if (summary.includes(query)) score += 120;
+    if (series.includes(query)) score += 200;
 
     tokens.forEach((token) => {
       if (title.includes(token)) score += 60;
       if (code.includes(token)) score += 50;
       if (doi.includes(token)) score += 40;
       if (summary.includes(token)) score += 10;
+      if (series.includes(token)) score += 20;
     });
 
-    score += Math.max(0, 40 - title.length / 4);
+    // Papers found only through their series name keep the homepage order.
+    const onlySeries = !tokens.some((token) => title.includes(token) || code.includes(token)
+      || summary.includes(token) || doi.includes(token));
+    if (!onlySeries) score += Math.max(0, 40 - title.length / 4);
 
     const matchedFields = [];
     if (tokens.some((token) => title.includes(token))) matchedFields.push('title');
     if (tokens.some((token) => code.includes(token))) matchedFields.push('paper number');
     if (tokens.some((token) => summary.includes(token))) matchedFields.push('summary');
     if (tokens.some((token) => doi.includes(token))) matchedFields.push('DOI');
+    if (tokens.some((token) => series.includes(token))) matchedFields.push('series');
 
     return { paper, score, matchedFields };
   }
