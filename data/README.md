@@ -8,6 +8,9 @@
 - `zenodo-audit.json` — mapping and Description-banner exceptions from the latest run.
 - `zenodo-stats.csv` — one row per paper per UTC date. Re-running on the same date replaces that date's rows instead of duplicating them.
 - `zenodo-stats-summary.md` — current top-viewed/top-downloaded rankings and, after a second capture date, growth since the previous snapshot.
+- `zenodo-publication-dates.csv` — exact first/latest Zenodo publication dates and version counts by concept DOI.
+- `zenodo-series-analysis.csv` — full series comparison with publication-age-adjusted lifetime and recent rates.
+- `zenodo-series-analysis.md` — readable rankings from the series analysis.
 - `zenodo-description-log.csv` — created only when authenticated Description updates are applied.
 
 The statistics contain both concept-wide totals (`views`, `downloads`, and unique variants) and the latest-version counters (`version_*`).
@@ -25,6 +28,16 @@ Capture or refresh today's statistics:
 ```bash
 python3 -B scripts/sync_zenodo.py --snapshot
 ```
+
+Rebuild the age-adjusted series analysis after refreshing the daily snapshot:
+
+```bash
+python3 -B scripts/analyze_zenodo_series.py --write
+```
+
+When new papers lack a cached first-publication date, first save an all-versions
+Zenodo API response and pass it with `--records-file`. This updates the local
+date cache; subsequent analysis runs are offline.
 
 Migrate site citations to concept DOIs and rebuild generated metadata:
 
