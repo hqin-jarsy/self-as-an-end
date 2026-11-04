@@ -4,7 +4,7 @@
 
 ## Files
 
-- `zenodo-current.json` — latest public Zenodo metadata and statistics for every SAE paper.
+- `zenodo-current.json` — latest public Zenodo metadata and statistics for every SAE paper, including author-supplied keywords, exact first/latest publication dates, version identity, and an unambiguous main PDF URL when available. `build_site_metadata.py` consumes this cache so ordinary site builds stay offline and reproducible.
 - `zenodo-audit.json` — mapping and Description-banner exceptions from the latest run.
 - `zenodo-stats.csv` — one row per paper per UTC date. Re-running on the same date replaces that date's rows instead of duplicating them.
 - `zenodo-stats-summary.md` — current top-viewed/top-downloaded rankings and, after a second capture date, growth since the previous snapshot.
@@ -28,6 +28,17 @@ Capture or refresh today's statistics:
 ```bash
 python3 -B scripts/sync_zenodo.py --snapshot
 ```
+
+After refreshing the snapshot, propagate the cached scholarly metadata into
+the paper pages and validate it:
+
+```bash
+python3 -B scripts/build_site_metadata.py --write
+```
+
+Zenodo keywords are treated as the author-curated source of truth. The site
+adds only the corpus identifiers `Self-as-an-End` and `SAE`, then exposes the
+result through Highwire citation tags and Schema.org `ScholarlyArticle` data.
 
 Rebuild the age-adjusted series analysis after refreshing the daily snapshot:
 

@@ -26,8 +26,14 @@ BASE_URL = "https://self-as-an-end.net"
 AUTHOR_NAME = "Han Qin"
 AUTHOR_ALTERNATE_NAME = "秦汉"
 AUTHOR_ORCID = "https://orcid.org/0009-0009-9583-0018"
+AUTHOR_URL = f"{BASE_URL}/about.html"
+AUTHOR_SAME_AS = [
+    AUTHOR_ORCID,
+    "https://philpeople.org/profiles/han-qin",
+    "https://www.linkedin.com/in/han-qin-jarsy/",
+]
 LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/"
-METADATA_VERSION = "3"
+METADATA_VERSION = "4"
 START_MARKER = "<!-- SAE:machine-metadata:start -->"
 END_MARKER = "<!-- SAE:machine-metadata:end -->"
 NAV_START_MARKER = "<!-- SAE:paper-navigation:start -->"
@@ -54,9 +60,11 @@ META_NAMES = {
     "citation_publication_date",
     "citation_doi",
     "citation_abstract_html_url",
+    "citation_pdf_url",
     "citation_keywords",
 }
 OG_PROPERTIES = {"og:type", "og:title", "og:description", "og:url"}
+GENERIC_KEYWORDS = {"self-as-an-end", "sae", "han qin", "秦汉"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -82,6 +90,26 @@ def load_catalogue() -> list[dict[str, Any]]:
     for item in EXTRA_PAPERS:
         unique.setdefault(item["href"], item)
     return list(unique.values())
+
+
+def load_zenodo_metadata() -> dict[str, dict[str, Any]]:
+    """Load the latest cached public metadata without making builds network-dependent."""
+    path = ROOT / "data" / "zenodo-current.json"
+    if not path.is_file():
+        return {}
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    records = value.get("records", []) if isinstance(value, dict) else []
+    return {
+        str(record.get("href") or ""): record
+        for record in records
+        if isinstance(record, dict) and str(record.get("href") or "")
+    }
+
+
+ZENODO_METADATA = load_zenodo_metadata()
 
 
 def attribute(tag: str, name: str) -> str | None:
@@ -223,6 +251,28 @@ def extract_abstract(source: str) -> str | None:
     return None
 
 
+def extract_body_keywords(source: str) -> list[str]:
+    """Read an explicit English Keywords line from the scholarly body."""
+    body_match = re.search(r"<body\b.*?</body>", source, re.I | re.S)
+    body = body_match.group(0) if body_match else source
+    patterns = [
+        r"<p\b[^>]*>(.*?)</p>",
+        r"<div\b[^>]*class\s*=\s*([\"'])[^\"']*\bkeywords?\b[^\"']*\1[^>]*>(.*?)</div>",
+    ]
+    for pattern in patterns:
+        for match in re.finditer(pattern, body, re.I | re.S):
+            text = plain_text(match.group(match.lastindex or 1))
+            label = re.match(r"^keywords?\s*[:：]?\s*(.+)$", text, re.I)
+            if not label:
+                continue
+            value = label.group(1).strip()
+            pieces = re.split(r"[;；]", value) if re.search(r"[;；]", value) else re.split(r"[,，]", value)
+            keywords = keyword_list(pieces)
+            if keywords:
+                return keywords
+    return []
+
+
 def truncate_words(value: str, limit: int = 220) -> str:
     value = re.sub(r"\s+", " ", value).strip()
     if len(value) <= limit:
@@ -289,6 +339,50 @@ def normalize_date(value: Any) -> str | None:
     if not day:
         return f"{year}-{int(month):02d}"
     return f"{year}-{int(month):02d}-{int(day):02d}"
+
+
+def normalize_doi(value: Any) -> str:
+    text = str(value or "").strip().lower()
+    text = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", text)
+    return text.rstrip("/.,; ")
+
+
+def keyword_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        raw = value
+    elif value:
+        raw = re.split(r"[,;]", str(value))
+    else:
+        raw = []
+    result: list[str] = []
+    seen: set[str] = set()
+    for item in raw:
+        keyword = re.sub(r"\s+", " ", str(item or "")).strip()
+        key = keyword.casefold()
+        if keyword and key not in seen:
+            result.append(keyword)
+            seen.add(key)
+    return result
+
+
+def merged_keywords(zenodo_value: Any, previous_value: Any) -> list[str]:
+    """Prefer author-curated Zenodo terms and retain two corpus identifiers."""
+    keywords = keyword_list(zenodo_value) or keyword_list(previous_value)
+    seen = {value.casefold() for value in keywords}
+    for value in ("Self-as-an-End", "SAE"):
+        if value.casefold() not in seen:
+            keywords.append(value)
+            seen.add(value.casefold())
+    return keywords or ["Self-as-an-End", "SAE"]
+
+
+def topic_keywords(keywords: list[str]) -> list[str]:
+    """Return descriptive English/transliterated terms for Schema.org about."""
+    return [
+        value
+        for value in keywords
+        if value.casefold() not in GENERIC_KEYWORDS and re.search(r"[A-Za-z]", value)
+    ][:16]
 
 
 def language_codes(value: Any) -> list[str]:
@@ -364,21 +458,33 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
     # papers.json is the bibliographic source of truth. Prefer it so a concept
     # DOI migration propagates into page metadata on the next generated build.
     doi = str(item.get("doi") or previous["doi"] or "").strip()
+    zenodo = ZENODO_METADATA.get(str(item.get("href") or ""), {})
+    if zenodo and normalize_doi(zenodo.get("concept_doi")) != normalize_doi(doi):
+        # Never attach metadata from a stale or mismatched concept record.
+        zenodo = {}
 
-    published = normalize_date(previous["datePublished"]) or git_date(path, oldest=True) or str(date.today().year)
-    modified = normalize_date(previous["dateModified"]) or git_date(path) or date.today().isoformat()
+    published = (
+        normalize_date(zenodo.get("first_publication_date"))
+        or normalize_date(previous["datePublished"])
+        or git_date(path, oldest=True)
+        or str(date.today().year)
+    )
+    modified_candidates = [
+        value
+        for value in (
+            normalize_date(zenodo.get("latest_publication_date")),
+            normalize_date(previous["dateModified"]),
+            git_date(path),
+        )
+        if value
+    ]
+    modified = max(modified_candidates, default=date.today().isoformat())
     # A metadata schema migration rewrites the fingerprint but does not mean
     # that the scholarly content itself changed.
     if previous["metadataVersion"] == METADATA_VERSION and previous["contentHash"] != content_hash:
         modified = date.today().isoformat()
 
-    keyword_value = previous["keywords"]
-    if isinstance(keyword_value, list):
-        keywords = [str(value).strip() for value in keyword_value if str(value).strip()]
-    elif keyword_value:
-        keywords = [value.strip() for value in re.split(r"[,;]", str(keyword_value)) if value.strip()]
-    else:
-        keywords = ["Self-as-an-End", "SAE", "Han Qin", "秦汉"]
+    keywords = merged_keywords(zenodo.get("keywords") or extract_body_keywords(source), previous["keywords"])
 
     canonical = f"{BASE_URL}/{item['href']}"
     # The corpus-wide policy explicitly permits reuse and training under CC BY
@@ -394,12 +500,16 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
         "published": published,
         "modified": modified,
         "keywords": keywords,
+        "topics": topic_keywords(keywords),
         "canonical": canonical,
         "languages": language_codes(item.get("lang")),
         "contentHash": content_hash,
         "license": license_url,
         "status": str(item.get("status") or "").strip(),
         "statusNote": status_note,
+        "latestVersionDoi": str(zenodo.get("latest_version_doi") or "").strip(),
+        "version": str(zenodo.get("version") or zenodo.get("version_count") or "").strip(),
+        "citationPdfUrl": str(zenodo.get("citation_pdf_url") or "").strip(),
     }
     return data, stripped
 
@@ -427,7 +537,8 @@ def json_ld(data: dict[str, Any], location: dict[str, Any] | None = None) -> dic
             "@type": "Person",
             "name": AUTHOR_NAME,
             "alternateName": AUTHOR_ALTERNATE_NAME,
-            "sameAs": AUTHOR_ORCID,
+            "url": AUTHOR_URL,
+            "sameAs": AUTHOR_SAME_AS,
         },
         "datePublished": data["published"],
         "dateModified": data["modified"],
@@ -437,16 +548,39 @@ def json_ld(data: dict[str, Any], location: dict[str, Any] | None = None) -> dic
         "keywords": data["keywords"],
         "inLanguage": data["languages"],
     }
+    if location:
+        result["articleSection"] = location["series"]
+    if data["topics"]:
+        result["about"] = [{"@type": "Thing", "name": value} for value in data["topics"]]
     if data["alternativeTitle"]:
         result["alternativeHeadline"] = data["alternativeTitle"]
     if data["doi"]:
-        result["identifier"] = {
-            "@type": "PropertyValue",
-            "propertyID": "DOI",
-            "value": data["doi"],
-        }
+        identifiers: list[dict[str, str]] = [
+            {
+                "@type": "PropertyValue",
+                "propertyID": "DOI",
+                "value": data["doi"],
+            }
+        ]
+        if data["latestVersionDoi"] and normalize_doi(data["latestVersionDoi"]) != normalize_doi(data["doi"]):
+            identifiers.append(
+                {
+                    "@type": "PropertyValue",
+                    "propertyID": "Zenodo version DOI",
+                    "value": data["latestVersionDoi"],
+                }
+            )
+        result["identifier"] = identifiers
         result["sameAs"] = f"https://doi.org/{data['doi']}"
         result["publisher"] = {"@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org"}
+    if data["version"]:
+        result["version"] = data["version"]
+    if data["citationPdfUrl"]:
+        result["encoding"] = {
+            "@type": "MediaObject",
+            "contentUrl": data["citationPdfUrl"],
+            "encodingFormat": "application/pdf",
+        }
     if data["license"]:
         result["license"] = data["license"]
     if data["status"]:
@@ -515,6 +649,8 @@ def metadata_block(data: dict[str, Any], location: dict[str, Any] | None = None)
     ]
     if data["doi"]:
         lines.append(f'  <meta name="citation_doi" content="{escape_attr(data["doi"])}">')
+    if data["citationPdfUrl"]:
+        lines.append(f'  <meta name="citation_pdf_url" content="{escape_attr(data["citationPdfUrl"])}">')
     lines.extend(
         [
             f'  <meta name="citation_abstract_html_url" content="{data["canonical"]}">',
@@ -708,11 +844,12 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
         if location and version_tokens(location["indexTitle"]) != version_tokens(str(item.get("title") or "")):
             errors.append(f"{item['href']}: version label differs between index.html and papers.json")
         try:
-            rendered, _data = render_paper(item, source, path, location, groups, titles)
+            rendered, generated_data = render_paper(item, source, path, location, groups, titles)
             if rendered != source:
                 errors.append(f"{item['href']}: generated metadata is out of date; run with --write")
         except ValueError as exc:
             errors.append(str(exc))
+            generated_data = {}
         for required in ("citation_title", "citation_author", "citation_publication_date"):
             if not existing_meta(source, required):
                 errors.append(f"{item['href']}: missing {required}")
@@ -720,6 +857,16 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
             errors.append(f"{item['href']}: citation title version differs from papers.json")
         if existing_meta(source, "citation_abstract_html_url") != canonical:
             errors.append(f"{item['href']}: citation URL does not match canonical URL")
+        zenodo = ZENODO_METADATA.get(item["href"], {})
+        zenodo_keywords = keyword_list(zenodo.get("keywords"))
+        page_keywords = keyword_list(existing_meta(source, "citation_keywords"))
+        if zenodo_keywords and {value.casefold() for value in page_keywords}.issubset(GENERIC_KEYWORDS):
+            errors.append(f"{item['href']}: Zenodo has paper-specific keywords but the page has only generic keywords")
+        exact_published = normalize_date(zenodo.get("first_publication_date"))
+        if exact_published and existing_meta(source, "citation_publication_date") != exact_published:
+            errors.append(f"{item['href']}: citation publication date does not match the first Zenodo publication")
+        if zenodo.get("citation_pdf_url") and existing_meta(source, "citation_pdf_url") != zenodo["citation_pdf_url"]:
+            errors.append(f"{item['href']}: citation PDF URL does not match the current Zenodo version")
         if not re.search(rf"<link\b[^>]*rel=[\"']canonical[\"'][^>]*href=[\"']{re.escape(canonical)}[\"']", source, re.I):
             errors.append(f"{item['href']}: missing or incorrect canonical link")
         objects = existing_json_ld(source)
@@ -731,6 +878,19 @@ def validate(catalogue: list[dict[str, Any]]) -> list[str]:
             errors.append(f"{item['href']}: JSON-LD URL does not match canonical URL")
         elif scholarly[0].get("license") != LICENSE_URL:
             errors.append(f"{item['href']}: JSON-LD license does not match the corpus policy")
+        else:
+            author = scholarly[0].get("author") or {}
+            author_same_as = author.get("sameAs") if isinstance(author, dict) else []
+            if isinstance(author_same_as, str):
+                author_same_as = [author_same_as]
+            if not isinstance(author, dict) or author.get("url") != AUTHOR_URL:
+                errors.append(f"{item['href']}: JSON-LD author URL does not identify the canonical author page")
+            elif not set(AUTHOR_SAME_AS).issubset(set(author_same_as or [])):
+                errors.append(f"{item['href']}: JSON-LD author identity links are incomplete")
+            if location and scholarly[0].get("articleSection") != location["series"]:
+                errors.append(f"{item['href']}: JSON-LD articleSection does not match the site catalogue")
+            if generated_data.get("topics") and not scholarly[0].get("about"):
+                errors.append(f"{item['href']}: JSON-LD is missing paper-specific about topics")
         if len(breadcrumbs) != 1:
             errors.append(f"{item['href']}: expected exactly one valid BreadcrumbList JSON-LD object")
 

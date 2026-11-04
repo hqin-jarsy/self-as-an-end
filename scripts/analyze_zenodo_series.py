@@ -320,7 +320,7 @@ def build_analysis(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict
 def write_csv(rows: list[dict[str, Any]]) -> None:
     fields = list(rows[0])
     with REPORT_CSV.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -444,7 +444,7 @@ def write_markdown(rows: list[dict[str, Any]], meta: dict[str, Any]) -> None:
 
 def write_date_cache(rows: dict[str, dict[str, str]]) -> None:
     with DATE_CACHE.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=DATE_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=DATE_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows[key] for key in sorted(rows))
 

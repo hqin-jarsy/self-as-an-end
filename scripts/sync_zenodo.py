@@ -219,6 +219,69 @@ def has_description_banner(description: str) -> bool:
     return first_description_text(description).startswith(DESCRIPTION_PREFIX)
 
 
+def publication_day(record: dict[str, Any]) -> str:
+    """Return the record's public scholarly date as an ISO calendar day."""
+    metadata = record.get("metadata", {})
+    value = str(metadata.get("publication_date") or record.get("created") or "").strip()
+    match = re.match(r"^(\d{4}-\d{2}-\d{2})", value)
+    return match.group(1) if match else ""
+
+
+def metadata_keywords(record: dict[str, Any]) -> list[str]:
+    """Preserve Zenodo's author-supplied keyword order while removing duplicates."""
+    raw = record.get("metadata", {}).get("keywords") or []
+    if isinstance(raw, str):
+        raw = re.split(r"[;,]", raw)
+    if not isinstance(raw, list):
+        return []
+    values: list[str] = []
+    seen: set[str] = set()
+    for item in raw:
+        value = re.sub(r"\s+", " ", str(item or "")).strip()
+        key = value.casefold()
+        if value and key not in seen:
+            values.append(value)
+            seen.add(key)
+    return values
+
+
+def citation_pdf_url(record: dict[str, Any]) -> str:
+    """Choose a single main PDF only when the choice is unambiguous."""
+    files = [
+        item
+        for item in (record.get("files") or [])
+        if str(item.get("key") or "").casefold().endswith(".pdf")
+    ]
+    if not files:
+        return ""
+
+    def is_ascii_name(item: dict[str, Any]) -> bool:
+        key = str(item.get("key") or "")
+        return bool(key) and key.isascii()
+
+    def is_english_name(item: dict[str, Any]) -> bool:
+        stem = Path(str(item.get("key") or "")).stem.casefold()
+        return bool(re.search(r"(?:^|[-_ .])(en|eng|english)(?:$|[-_ .])", stem))
+
+    def is_supplement(item: dict[str, Any]) -> bool:
+        stem = Path(str(item.get("key") or "")).stem.casefold()
+        return bool(re.search(r"appendix|supplement|supporting|slides|poster", stem))
+
+    candidates = [item for item in files if is_english_name(item) and not is_supplement(item)]
+    if len(candidates) != 1:
+        candidates = [item for item in files if is_ascii_name(item) and not is_supplement(item)]
+    if len(candidates) != 1:
+        candidates = files if len(files) == 1 else []
+    if len(candidates) != 1:
+        return ""
+
+    record_id = int(record.get("id") or record.get("recid") or 0)
+    key = str(candidates[0].get("key") or "")
+    if not record_id or not key:
+        return ""
+    return f"https://zenodo.org/records/{record_id}/files/{urllib.parse.quote(key)}?download=1"
+
+
 def catalogue_entries() -> list[dict[str, Any]]:
     data = json.loads((ROOT / "papers.json").read_text(encoding="utf-8"))
     return [item for item in data if str(item.get("href", "")).startswith("papers/")]
@@ -247,7 +310,7 @@ def index_records(
 def match_pages(
     entries: list[dict[str, Any]], records: list[dict[str, Any]]
 ) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
-    versions_by_doi, latest_by_concept, _groups = index_records(records)
+    versions_by_doi, latest_by_concept, groups = index_records(records)
     entries_by_href: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for entry in entries:
         entries_by_href[str(entry["href"])].append(entry)
@@ -305,6 +368,8 @@ def match_pages(
 
         concept = concepts.pop()
         latest = latest_by_concept[concept]
+        versions = groups.get(concept, [latest])
+        publication_days = sorted(day for day in (publication_day(record) for record in versions) if day)
         mapping[href] = {
             "href": href,
             "title": title,
@@ -313,6 +378,9 @@ def match_pages(
             "concept_doi": concept,
             "latest_version_doi": normalize_doi(latest.get("doi")),
             "latest_record_id": int(latest.get("id") or latest.get("recid")),
+            "first_publication_date": publication_days[0] if publication_days else "",
+            "latest_publication_date": publication_day(latest) or (publication_days[-1] if publication_days else ""),
+            "version_count": len(versions),
             "matched_by": matched_by,
             "record": latest,
         }
@@ -369,6 +437,13 @@ def public_record(item: dict[str, Any]) -> dict[str, Any]:
         "concept_doi": item["concept_doi"],
         "latest_version_doi": item["latest_version_doi"],
         "latest_record_id": item["latest_record_id"],
+        "first_publication_date": item["first_publication_date"],
+        "latest_publication_date": item["latest_publication_date"],
+        "version_count": item["version_count"],
+        "version": str(metadata.get("version") or "").strip(),
+        "keywords": metadata_keywords(record),
+        "language": str(metadata.get("language") or "").strip(),
+        "citation_pdf_url": citation_pdf_url(record),
         "matched_by": item["matched_by"],
         "description_has_banner": has_description_banner(str(metadata.get("description") or "")),
         "stats": {key: int(value or 0) for key, value in stats.items()},
@@ -511,7 +586,7 @@ def write_snapshot(report: dict[str, Any]) -> None:
     all_rows.sort(key=lambda row: (row["snapshot_date"], row["concept_doi"]))
     history_path.parent.mkdir(parents=True, exist_ok=True)
     with history_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=HISTORY_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=HISTORY_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(all_rows)
     write_stats_summary(data_dir / "zenodo-stats-summary.md", captured_at, rows, previous_by_concept)
@@ -648,7 +723,7 @@ def apply_descriptions(report: dict[str, Any], delay: float) -> None:
         )
         log_path.parent.mkdir(parents=True, exist_ok=True)
         with log_path.open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=log_fields)
+            writer = csv.DictWriter(handle, fieldnames=log_fields, lineterminator="\n")
             writer.writeheader()
             writer.writerows(existing)
         print(f"Description {position}/{len(targets)}: {item['latest_record_id']} {status}", flush=True)
