@@ -1,6 +1,6 @@
 # Zenodo attention snapshot
 
-Captured at `2026-11-04T04:35:20Z`. Counts are concept-wide Zenodo totals.
+Captured at `2026-11-04T08:32:41Z`. Counts are concept-wide Zenodo totals.
 
 ## Most viewed
 
@@ -67,12 +67,12 @@ Captured at `2026-11-04T04:35:20Z`. Counts are concept-wide Zenodo totals.
 | [Part IV · What Was Built in His Name](../papers/sae-analects-4.html) | +1 | +4 |
 | [Annotations on the Daodejing: The Junzi Is Not a Vessel — Paper 6 (Chapters 46–54)](../papers/sae-daodejing-6.html) | +1 | +4 |
 | [Commentary on the Daodejing: The Junzi Is Not an Instrument — Volume 7 (Chapters 55–63)](../papers/sae-daodejing-7.html) | +1 | +4 |
+| [Taxonomy as Chiseling: A Self-as-an-End Theory of Classification](../papers/sae-taxonomy-chiseling.html) | +1 | +4 |
 | [Chisel and Emptiness: An Interface Analysis between Self-as-an-End and Madhyamaka / the Sanlun School](../papers/sae-buddhist-3.html) | +0 | +5 |
 | [What Terrible Twos Actually Is: The Structural Genesis of Self-Awareness](../papers/terrible-twos.html) | +0 | +5 |
 | [SAE Application: Sentence Level, Subject Condition, and the Limits of Prompt Engineering](../papers/applied2.html) | +3 | +1 |
 | [What Kind of Relation Meaning Is](../papers/sae-meaning-1.html) | +2 | +2 |
+| [SAE Power Theory Series · Paper 0: The Power Machine and Its Shi](../papers/sae-power-0.html) | +1 | +3 |
 | [Dynamics as Fourth-Order Chisel: A Philosophy of Causality](../papers/dynamics-chisel.html) | +0 | +4 |
 | [SAE Methodological Overview: The Chisel-Construct Cycle (V3.1)](../papers/methodology.html) | +0 | +4 |
 | [Philosophy as Subject-Activity: A Philosophical Application of the Self-as-an-End Framework](../papers/philosophy-application.html) | +0 | +4 |
-| [An Audit of Forward References in the Zhiyan Zhai Commentary on the First Eighty Chapters](../papers/sae-hongloumeng-1.html) | +0 | +4 |
-| [SAE QM Paper 5: Self-as-an-End Ontological Articulation of Quantum Entanglement](../papers/sae-qm-p5.html) | +0 | +4 |

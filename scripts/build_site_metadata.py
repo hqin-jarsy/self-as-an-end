@@ -480,7 +480,12 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
     # Once generated metadata exists, preserve its scholarly modification date.
     # A later commit containing only regenerated <head> data must not make every
     # paper look substantively revised. Git is only a fallback for legacy pages.
-    modified = max(modified_candidates, default=git_date(path) or date.today().isoformat())
+    # max(..., default=...) would evaluate git_date() for every page even when the
+    # default is not needed; `git log --follow` per page makes a full build very slow.
+    if modified_candidates:
+        modified = max(modified_candidates)
+    else:
+        modified = git_date(path) or date.today().isoformat()
     # A metadata schema migration rewrites the fingerprint but does not mean
     # that the scholarly content itself changed.
     if previous["metadataVersion"] == METADATA_VERSION and previous["contentHash"] != content_hash:
