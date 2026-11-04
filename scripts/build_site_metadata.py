@@ -474,17 +474,22 @@ def metadata_for(item: dict[str, Any], source: str, path: Path) -> tuple[dict[st
         for value in (
             normalize_date(zenodo.get("latest_publication_date")),
             normalize_date(previous["dateModified"]),
-            git_date(path),
         )
         if value
     ]
-    modified = max(modified_candidates, default=date.today().isoformat())
+    # Once generated metadata exists, preserve its scholarly modification date.
+    # A later commit containing only regenerated <head> data must not make every
+    # paper look substantively revised. Git is only a fallback for legacy pages.
+    modified = max(modified_candidates, default=git_date(path) or date.today().isoformat())
     # A metadata schema migration rewrites the fingerprint but does not mean
     # that the scholarly content itself changed.
     if previous["metadataVersion"] == METADATA_VERSION and previous["contentHash"] != content_hash:
         modified = date.today().isoformat()
 
-    keywords = merged_keywords(zenodo.get("keywords") or extract_body_keywords(source), previous["keywords"])
+    keywords = merged_keywords(
+        item.get("keywords") or zenodo.get("keywords") or extract_body_keywords(source),
+        previous["keywords"],
+    )
 
     canonical = f"{BASE_URL}/{item['href']}"
     # The corpus-wide policy explicitly permits reuse and training under CC BY
