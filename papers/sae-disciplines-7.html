@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing Standards into Programs – Han Qin (秦汉)</title>
+  <meta name="citation_doi" content="10.5281/zenodo.24177788">
+  <script>MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'none' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">SAE Theory of Disciplines · Paper 7</div>
+    <h1>Writing Standards into Programs<br><span style="font-size:1.1rem;opacity:0.75">写进程序</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.24177788">10.5281/zenodo.24177788</a> · Full PDF on Zenodo · CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>Once a threshold is written into a program, every time the program runs it carries out that line of ought once. This paper examines how writing standards into programs changes the cost of questioning them, the visibility of the normative trade-offs they embody, and the way those trade-offs are repeatedly carried out. The choices of target variable, proxy variable, threshold and fairness metric each record a line on the normative ledger; once written into a program, they appear in the shape of parameters (S35). In arrangements that execute automatically, without a corresponding stage of fresh judgment, every run of the program carries out that line once (S36). The presumption of conformity has legal authorization and legal effect, and misrouting is not found on that basis; to prove misrouting one must check which challenge was not handled by the relevant standard and the specific review, and whether the presumption was used to register that challenge as answered (S37). Mathematics can show that several fairness conditions generally cannot be satisfied at once; it shows that a choice must be made, not which one (S38). That someone bears the judgment of deployment does not prove that the premises in the parameters have been sufficiently questioned (S39). The paper ends in conversation with Passi and Barocas. Five propositions in all (S35 to S39), stated at the end of each section and listed together at the end.</p>
+<p>Writing Declaration: This paper was co-drafted with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</p>
+      
+    </div>
+    <div class="paper-body"><h2>Introduction</h2>
+<p>Paper 6 described how credit scores are adopted as a gate for lending: one party writes the score model, another adopts it as a gate, and changing it goes through a procedure of validation and approval. This paper looks at the same thing from another angle. A loan underwriting process is used below as an illustration; it does not refer to any particular lender, and the numbers are illustrative too.</p>
+<p>Once a score model is adopted, it is written, together with a cut-off score, into a lender's underwriting program. An application comes in, the program takes the score, compares it with the cut-off, and gives a result. Where the cut-off is set is a trade-off: how many applications wrongly judged good to let in, how many wrongly judged bad to keep out. This trade-off is made once, on the day the cut-off is set; after that, every time the program runs, it is carried out once. Suppose ten thousand applications a day; it is carried out ten thousand times; while the rules and parameters stay unchanged, every time is the same; without an associated record of reasons, those repeated executions no longer reveal the trade-off they carry out.</p>
+<p>Writing rules into a program is not new in itself. What is new is that the ways of questioning them may have changed: to question one, one must first find where it is; it looks like a number; the same trade-off can be carried out over and over in a short time. This paper speaks of these three changes, and of the conditions under which they occur.</p>
+<p>The reading follows the Prequel. This paper concerns the second domain, standards that act on persons (Prequel §5). §1 speaks of the ought in parameters; §2, of automatic execution; §3, of the presumption of conformity; §4, of what mathematics can and cannot show; §5 says that bearing is not the same as having questioned; §6 is in conversation with Passi and Barocas.</p>
+<hr>
+<h2>§1 The Ought in Parameters</h2>
+<p>To write a judgment into a program, several choices must first be made, and each records a line on the normative ledger.</p>
+<p><strong>Target variable.</strong> What is the program to predict? "Will this person repay on time," "is this application worth approving," "does this patient need extra care" are different targets. Translating a vague purpose into a variable that can be measured and predicted is itself a trade-off.</p>
+<p><strong>Proxy variable.</strong> What is to be predicted often cannot be measured, so something measurable stands in for it: past spending for need, past default for risk. Between the proxy and what it stands for there is a gap, and where that gap is left is another trade-off.</p>
+<p><strong>Threshold.</strong> The prediction gives a score; where the cut-off is set decides how two kinds of error are distributed.</p>
+<p><strong>Fairness metric.</strong> If the program is required to be fair to different groups, by which definition of "fair": equal pass rates across groups, equal error rates across groups, or the same score meaning the same risk in every group? These definitions, as §4 will say, generally cannot be satisfied at once.</p>
+<p>Passi and Barocas studied the actual work of data science and pointed out that problem formulation, that is, translating a business goal into a problem that can be predicted, is itself full of normative choices, and that questions of fairness already appear at this step, not only in the model (Passi & Barocas 2019). Selbst and colleagues placed such problems under several "abstraction traps": what is lost when a social problem is abstracted into a technical one (Selbst et al. 2019).</p>
+<p>Once written into a program, these lines all appear in the shape of parameters: a variable name, a number, a switch. They are still on the normative ledger; if there is no associated record of reasons beside the parameters, they are not easily seen as trade-offs. This has the same form as the quantification of Paper 5; writing into a program is quantification taken one step further.</p>
+<blockquote><p><strong>S35 The ought in parameters.</strong> The choices of target variable, proxy variable, threshold and fairness metric each record a line on the normative ledger; once written into a program, they appear in the shape of parameters.</p></blockquote>
+<hr>
+<h2>§2 Automatic Execution</h2>
+<p>A parameter written into a program is not necessarily executed automatically. It depends on whether, between the program's output and the final decision, there is a stage of fresh judgment.</p>
+<p>If there is not: the program gives a result, and the result is the decision, or is almost always adopted as the decision. Then every run of the program carries out that line of ought once. The cut-off is one trade-off; with automatic execution, that one trade-off is copied onto every application.</p>
+<p>If there is: the result goes through a person's review; the one decided about can appeal; on appeal someone looks again. Such arrangements are checked separately: whether the reviewer can change the result, whether an appeal can reach the parameters, whether the one who looks again looks at the individual case or also at the cut-off itself.</p>
+<p>Mitchell and colleagues surveyed choices and assumptions often overlooked in discussions of algorithmic fairness, one of which is treating a prediction as a decision: a prediction says "what will happen," a decision says "what should be done" (Mitchell et al. 2021). Where there is no stage of fresh judgment, the two are pressed into one.</p>
+<p>What programming may change are three things about questioning; whether it changes them depends on the configuration.</p>
+<p><strong>Cost.</strong> To question a parameter, one must first know where it is and what it is. It is in code, in a configuration file, in a technical document. When the parameters and their reasons are not public, the questioner must first obtain them, and the cost of questioning may rise.</p>
+<p><strong>Visibility.</strong> When a person makes a judgment, the trade-off shows in his reasons, and one can ask him why. A parameter shows only a number; without an associated record of reasons, why it is this number is not beside it, and the normative trade-off is not easily seen.</p>
+<p><strong>Manner of repetition.</strong> A person making a judgment each time may differ slightly each time, and may stop and think on some occasion. While the rules and parameters stay unchanged, a program is the same every time, and the same trade-off is carried out repeatedly. If a trade-off has a remainder, that remainder is copied in the same way, on a large scale.</p>
+<blockquote><p><strong>S36 Automatic execution.</strong> In arrangements that execute automatically, without a corresponding stage of fresh judgment, every run of the program carries out that line of ought once; arrangements that embed review, appeal and human judgment are checked separately.</p></blockquote>
+<hr>
+<h2>§3 The Presumption of Conformity</h2>
+<p>Article 40 of the EU Artificial Intelligence Act provides that high-risk AI systems which conform to harmonised standards whose references have been published in the Official Journal of the European Union are presumed to conform to the requirements set out in Section 2 of Chapter III of the Act, to the extent that those standards cover them (Regulation (EU) 2024/1689, Article 40(1)). The object of the presumption, as the text is written, is the requirements set out in that Section, not every requirement.</p>
+<p>In October 2026 the reference to the first harmonised standard was published: EN 18286:2026, on quality management systems for artificial intelligence (Commission Implementing Decision (EU) 2026/2274). The decision maps it to item 9 of Annex I of the European Commission's standardisation request, the provider's quality management system, including post-market monitoring; which articles of the Act it covers, the decision does not state article by article. The European Commission separately stated that providers implementing this standard obtain "a presumption of conformity with the Article 17 requirements covered by the standard"; the page also says: "It is mapped to Article 17 of the AI Act" (European Commission, 19 October 2026). The object of the presumption in Article 40(1) is the requirements set out in Section 2 of Chapter III; Article 17 is in Section 3 of Chapter III. A sentence added to paragraph 2 of the same Article in 2026 has the Commission request standardisation organisations to draw up standards facilitating joint compliance with, and presumption of conformity for, the requirements or obligations of Sections 2 and 3 of Chapter III (Regulation (EU) 2026/1744). Which provisions this standard covers exactly, and with what limits, depends on the standard's own correspondence annex, which this paper has not read.</p>
+<p>The presumption itself has legal authorization and its own legal effect: a system that conforms to this standard is presumed to conform on the requirements the standard covers. On this alone, misrouting is not found. The presumption is an arrangement the legislator made deliberately: it gives a limited review a definite consequence.</p>
+<p>To prove misrouting, two things must be checked. First, whether the item questioned falls within the scope of the standard used and of what this review actually handled. As for EN 18286 specifically, this paper has not fully checked the full text of the standard and its correspondence annex, and cannot first list what it handled and what it did not. Second, whether the presumption has been used to register this item as answered: for instance, a document saying "this system conforms to the harmonised standard, and the relevant requirements are met," without stating which provision is met. The first depends on the actual scope of the standard and the review, which this paper has not fully checked; the second depends on how the presumption is used, and within the documents and search scope listed in this paper no corresponding record was found; the existing material cannot determine why none was found.</p>
+<p>The presumption also has a channel for challenge. A member state or the European Parliament that considers a harmonised standard does not entirely satisfy the requirements it aims to cover can raise a formal objection; the Commission can maintain, restrict or withdraw its reference (Regulation (EU) No 1025/2012, Article 11). The decision on the storage tank standard in Paper 1's Introduction is one time this channel was used (Commission Implementing Decision (EU) 2017/1996).</p>
+<blockquote><p><strong>S37 The presumption of conformity and misrouting.</strong> The presumption of conformity for harmonised standards rests on the corresponding provisions of Article 40 of the Artificial Intelligence Act, and is limited to the requirements or obligations the standard actually covers. The presumption itself has legal authorization and its own legal effect, and misrouting is not found on that basis; to prove misrouting one must check which challenge was not handled by the relevant standard and the specific review, and whether the presumption was used to register that challenge as answered.</p></blockquote>
+<hr>
+<h2>§4 What Mathematics Can Show</h2>
+<p>On algorithmic fairness there is a set of mathematical results, often cited to show that "fairness cannot be achieved." This section takes only the theorems, and says what they show.</p>
+<p>Kleinberg, Mullainathan and Raghavan formalized three fairness conditions: scores are calibrated within each group; those truly in the positive class receive the same average score across groups; those truly in the negative class do too. They proved that "except in highly constrained special cases, there is no method that can satisfy these three conditions simultaneously" (Kleinberg et al. 2016); the special cases are perfect prediction, or equal base rates in the two groups. Chouldechova proved a result in the same direction: when the base rates of two groups differ and the instrument is not a perfect classifier, an instrument satisfying predictive parity cannot at the same time equalize the false positive rates and the false negative rates of the two groups (Chouldechova 2017).</p>
+<p>What these results show is this: a choice must be made. Several kinds of fairness that one would like to have cannot, in general, be had together; choosing one gives up part of another. They do not show which one to choose. Which to choose depends on which error weighs more on whom, and which inequality is less acceptable; this is a matter for the normative ledger, and the theorems do not choose in anyone's place.</p>
+<p>This joins Paper 3. If a technical review proves that "this model satisfies calibration," and this conclusion is taken to answer "is this model fair," the scope of the review and the matter asked do not match: calibration is one of several kinds of fairness, and choosing it rather than another is a trade-off the review did not handle.</p>
+<blockquote><p><strong>S38 Mathematics shows they cannot all be had, and does not choose for anyone.</strong> Several fairness conditions cannot, in general, be satisfied at once; this result shows that a choice must be made, not which one.</p></blockquote>
+<hr>
+<h2>§5 Bearing Is Not Having Questioned</h2>
+<p>Once a program is deployed, someone always bears it. Paper 7 of The Second Enlightenment established this: when rules are written into a program, the one who decides on deployment sets down in advance a set of conditional dispositions, and "this judgment of deployment is his to bear in full, and he cannot say 'the program decided it' or 'the standard told us to write it'" (The Second Enlightenment, Paper 7, W44). Theory of Government said the same thing on the side of the construct: "When judgment is handed to a machine, the bearing is not handed over with it." (Theory of Government G8)</p>
+<p>These two sentences speak of bearing. That bearing has found its place does not mean that the premises in the parameters have been questioned. One who decides on deployment may make the judgment of deployment without having sufficiently questioned the premises of the cut-off; this shortfall in verification is not made good by "someone already bears it." He still answers for the judgment of adopting this set of parameters and letting it act on persons accordingly: the deployer need not be the original author of the parameters, nor give a full guarantee of their scientific correctness, but for adopting them, and for how he uses them, he must answer. Bearing and having questioned are two things, recorded separately.</p>
+<p>So, though the deploying side bears it, the questioning position can still be empty. The question beforehand, that is, whether before deployment the premises of the parameters have anywhere to be questioned, is in Paper 9 (S46).</p>
+<blockquote><p><strong>S39 Bearing is not having questioned.</strong> That someone bears the judgment of deployment does not prove that the premises in the parameters have been sufficiently questioned.</p></blockquote>
+<hr>
+<h2>§6 With Passi and Barocas</h2>
+<p>Passi and Barocas's 2019 paper starts from the actual work of data scientists and traces how a project is formulated, step by step, from a business goal into a problem that can be predicted. Two of their findings are closest to this paper. First, problem formulation is not done once; it is negotiated and revised again and again, and each revision changes what is to be predicted. Second, questions of fairness already appear at this step: which target variable is chosen, which proxy is used, already decides who will be treated how, without waiting for the model to be trained (Passi & Barocas 2019).</p>
+<p>This paper is close to theirs, but asks about the other side. What they ask is: how is a formulation made, who makes it, under what constraints. What this paper asks is: once the formulation has been made and written into a program, if someone wants to question it, where do they go; once they ask, who can require an answer; can a review be initiated. They write of the process of formulation; this paper writes of the addresses after formulation.</p>
+<p>The two can be joined. Their research shows that those lines on the normative ledger are written in through a process that can be observed; this paper says that once written in, those lines appear in the shape of parameters, and the cost of questioning them, the visibility of the trade-offs they embody, and the way those trade-offs are repeatedly carried out all change. So if the process of formulation leaves records, of what each revision changed and why, these records are the addresses for later questioning. This paper does not say how records ought to be kept; that is a matter for the rule layer, and Paper 9 offers it only as suggestion.</p>
+<hr>
+<h2>Where This Paper Stops</h2>
+<p>This paper does not say that any particular algorithm is unfair; it does not say that any particular law is wrong.</p>
+<p>What it hands to Paper 8: if there is a seat to do the questioning, how long can it stay seated.</p>
+<p>The remainder it leaves: how the presumption of conformity is used, no record was found within the listed scope; which provisions of Article 17 EN 18286 covers exactly, and how it connects with "the requirements set out in Section 2" of Article 40(1), the decision itself does not say, and this paper has not read the standard's correspondence annex; whether underwriting programs have a stage of fresh judgment, this paper has described only the general structure and has not checked lender by lender.</p>
+<hr>
+<h2>The Five Propositions of This Paper</h2>
+<ul>
+<li><strong>S35 The ought in parameters.</strong> Target variable, proxy variable, threshold and fairness metric each record a line; once written into a program they appear in the shape of parameters. (Descriptive)</li>
+<li><strong>S36 Automatic execution.</strong> In arrangements with no stage of fresh judgment, every run carries out that line once; those with review, appeal and human judgment are checked separately. (Descriptive)</li>
+<li><strong>S37 The presumption of conformity and misrouting.</strong> The presumption rests on the corresponding provisions and is limited to the requirements or obligations the standard actually covers; the presumption has authorization and effect, and misrouting is not found on that basis; to prove misrouting, check which challenge was not handled by the standard and the review, and whether the presumption was used to register it as answered. (Descriptive)</li>
+<li><strong>S38 Mathematics shows they cannot all be had, and does not choose for anyone.</strong> Several fairness conditions generally cannot be satisfied at once; this shows that a choice must be made, not which one. (Descriptive; Kleinberg et al. 2016, Chouldechova 2017, theorems only)</li>
+<li><strong>S39 Bearing is not having questioned.</strong> That someone bears the judgment of deployment does not prove that the premises in the parameters have been sufficiently questioned. (Conceptual distinction, own undertaking; The Second Enlightenment, Paper 7, W44, and Theory of Government G8 are taken over only for "the bearing is not handed over with it"; the question beforehand is in Paper 9, S46)</li>
+</ul>
+<hr>
+<h2>References</h2>
+<p>All SAE works below are cited by concept DOI, which always resolves to the latest version.</p>
+<p><strong>I · This system</strong></p>
+<ul>
+<li>Qin, H. (2026). At the Door (SAE The Second Enlightenment, Paper 7) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24030415</li>
+<li>Qin, H. (2026). Judgment (SAE Theory of Government, Paper 1) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.23412130</li>
+<li>Qin, H. (2026). Misrouting (SAE Theory of Disciplines, Paper 3) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24177759</li>
+<li>Qin, H. (2026). Shelving: Treating Premises as Absent (SAE Theory of Disciplines, Paper 5) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24177775</li>
+<li>Qin, H. (2026). Withdrawal (SAE Theory of Disciplines, Paper 6) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24177783</li>
+</ul>
+<p><strong>II · Rule texts</strong></p>
+<ul>
+<li>Commission Implementing Decision (EU) 2017/1996. <em>Official Journal of the European Union</em>.</li>
+<li>Commission Implementing Decision (EU) 2026/2274 (publication of the reference to EN 18286:2026). <em>Official Journal of the European Union</em>.</li>
+<li>Regulation (EU) No 1025/2012 on European standardisation, Article 11.</li>
+<li>European Commission. (2026, October 19). First harmonised standard supporting the AI Act published in the Official Journal. digital-strategy.ec.europa.eu.</li>
+<li>Regulation (EU) 2024/1689 (Artificial Intelligence Act), Articles 17, 40 (consolidated text of 27 July 2026).</li>
+<li>Regulation (EU) 2026/1744 of 8 July 2026, amending Regulation (EU) 2024/1689 (the sentence added to Article 40(2)).</li>
+</ul>
+<p><strong>III · External literature</strong></p>
+<ul>
+<li>Chouldechova, A. (2017). Fair prediction with disparate impact: A study of bias in recidivism prediction instruments. <em>Big Data</em>, 5(2), 153–163.</li>
+<li>Kleinberg, J., Mullainathan, S., & Raghavan, M. (2016). Inherent trade-offs in the fair determination of risk scores. arXiv:1609.05807 (published in ITCS 2017).</li>
+<li>Mitchell, S., Potash, E., Barocas, S., D'Amour, A., & Lum, K. (2021). Algorithmic fairness: Choices, assumptions, and definitions. <em>Annual Review of Statistics and Its Application</em>, 8, 141–163.</li>
+<li>Passi, S., & Barocas, S. (2019). Problem formulation and fairness. In <em>Proceedings of the Conference on Fairness, Accountability, and Transparency</em> (pp. 39–48). ACM.</li>
+<li>Selbst, A. D., Boyd, D., Friedler, S. A., Venkatasubramanian, S., & Vertesi, J. (2019). Fairness and abstraction in sociotechnical systems. In <em>Proceedings of the Conference on Fairness, Accountability, and Transparency</em> (pp. 59–68). ACM.</li>
+</ul>
+<hr>
+<h2>Interfaces</h2>
+<p><strong>Main upstream:</strong> The Second Enlightenment, Paper 7, W44; Theory of Government G8; Paper 3, S16, S17; Paper 5, S29; Paper 6, S34.</p>
+<p><strong>Also used:</strong> Articles 17 and 40 of the EU Artificial Intelligence Act and the publication of EN 18286; Article 11 of Regulation 1025/2012; Kleinberg et al. 2016; Chouldechova 2017; Passi & Barocas 2019; Selbst et al. 2019; Mitchell et al. 2021.</p>
+<p><strong>This series:</strong> S35 to S39.</p>
+<p><strong>Handed to Paper 8:</strong> if there is a seat to do the questioning, how long can it stay seated.</p></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>一个阈值写进程序，此后每运行一次，就执行一次那一行应当。这一篇看标准写进程序以后，追问的成本，可见性与重复的方式怎样变了。目标变量，代理变量，阈值，公平指标的选择，各在规范账上记一行；写进程序以后，它们以参数的样子出现（S35）。在自动执行，又没有相应重新判断环节的安排里，程序每运行一次，就执行一次那一行（S36）。合规推定有法律授权与法律效果，不据此认定错送；要证错送，须核哪一项质疑没有被相应标准与具体审查处理，以及推定是否被用来把这一项登记为已经回答（S37）。数学能说明几种公平条件一般不能同时满足，说明要选，不说明选哪一个（S38）。有人承担部署的判断，不证明参数里的前提已经被充分追问（S39）。篇末与 Passi 和 Barocas 对话。全篇五条（S35 至 S39），各节末写出，篇末合列。</p>
+<p>写作声明：本文与 Claude（Anthropic）共同起草，所有思想决策、框架设计和最终编辑判断由作者做出。</p>
+      
+    </div>
+    <div class="paper-body"><h2>引言</h2>
+<p>第六篇说过信用评分怎样被采作授信的门：评分模型由一方写，采它作门的是另一方，更换要走一套验证与批准的程序。这一篇换一个角度看同一件事。下面用一个核贷流程作示意，不指哪一家，数字也是示意的数。</p>
+<p>评分模型被采用以后，它与一个分数线一起，写进贷款机构的核贷程序里。一份申请进来，程序取出分数，与分数线比，给出一个结果。分数线定在哪里，是一次取舍：放进来多少错判为好的申请，挡住多少错判为坏的。这一取舍在定分数线的那一天作出一次；此后程序每运行一次，就把它执行一次。设一天一万份申请，它就被执行一万次；在规则与参数不变的期间，每一次都一样；若没有关联的理由记录，每一次都不再显出它是一次取舍。</p>
+<p>规则写进程序，这件事本身不新。新的是追问它的方式可能变了：要问它，得先找到它在哪里；它看起来是一个数；同一取舍可在短时间内被反复执行。这一篇说这三样变化，以及它们在什么条件下发生。</p>
+<p>读法照前置篇。这一篇管第二层，作用到人的标准（前置篇第五节）。第一节说参数里的应当；第二节说自动执行；第三节说合规推定；第四节说数学能说明什么，不能说明什么；第五节说承担不等于问过；第六节与 Passi 和 Barocas 对话。</p>
+<hr>
+<h2>第一节　参数里的应当</h2>
+<p>把一项判断写进程序，要先作几个选择，每一个都在规范账上记一行。</p>
+<p><strong>目标变量。</strong> 程序要预测什么？"这个人会不会按时还款"，"这份申请值不值得批"，"这个病人需不需要额外的照护"，是不同的目标。把一个模糊的目的，翻译成一个可以测量，可以预测的变量，这一翻译本身是一次取舍。</p>
+<p><strong>代理变量。</strong> 要预测的东西常常测不到，就用一个测得到的代替：用过去的花费代替需要，用过去的违约代替风险。代理与被代理的东西之间有一道缝，这道缝留在哪里，是又一次取舍。</p>
+<p><strong>阈值。</strong> 预测给出一个分数，分数线定在哪里，决定了两种错误怎样分配。</p>
+<p><strong>公平指标。</strong> 若要求程序对不同的群体公平，"公平"按哪一种定义：各组的通过率相等，各组的错误率相等，还是同一个分数在各组意味着同一个风险？这几种定义，第四节会说，一般不能同时满足。</p>
+<p>Passi 与 Barocas 研究过数据科学的实际工作，指出问题的表述，即把一个商业目标翻译成一个可以预测的问题，本身充满规范的选择，公平的问题在这一步就已经出现，不只在模型里（Passi & Barocas 2019）。Selbst 等人把这类问题归到几种"抽象的陷阱"之下：把一个社会的问题抽象成一个技术的问题时，丢掉了的东西（Selbst 等 2019）。</p>
+<p>写进程序以后，这几行都以参数的样子出现：一个变量名，一个数，一个开关。它们还在规范账上；参数旁边若没有关联的理由记录，它们就不易以取舍的样子被看见。这与第五篇说的量化同形；写进程序，是量化往前走的一步。</p>
+<blockquote><p><strong>S35　参数里的应当。</strong> 目标变量，代理变量，阈值与公平指标的选择，各在规范账上记一行；写进程序之后，它们以参数的样子出现。</p></blockquote>
+<hr>
+<h2>第二节　自动执行</h2>
+<p>参数写进程序，未必就自动执行。要看程序的输出与最后的决定之间，有没有一个重新判断的环节。</p>
+<p>若没有：程序给出结果，结果就是决定，或者几乎总被照搬为决定。这时，程序每运行一次，就执行一次那一行应当。分数线是一次取舍；有了自动执行，这一次取舍被复制到每一份申请上。</p>
+<p>若有：结果要经过一个人的复核；被决定的人可以申诉；申诉时有人重新看。这样的安排，另核：复核的人能不能改结果，申诉能不能碰到参数，重新看的人看的是个案，还是也看分数线本身。</p>
+<p>Mitchell 等人梳理过算法公平的讨论里那些常被忽略的选择与假定，其中之一，是把一个预测当作一个决定：预测说的是"会怎样"，决定说的是"该怎样"（Mitchell 等 2021）。没有重新判断的环节时，这两件被压成一件。</p>
+<p>程序化可能改变的，是追问的三样东西；改不改，看配置。</p>
+<p><strong>成本。</strong> 要问一个参数，先要知道它在哪里，是多少。它在代码里，在配置文件里，在一份技术文件里。参数及其理由不公开时，问的人先要取得这些，追问的成本可能增加。</p>
+<p><strong>可见性。</strong> 一个人作判断，取舍显在他的理由里，可以问他为什么。一个参数，显出来的只是一个数；没有关联的理由记录时，它为什么是这个数，不在它旁边，规范的取舍不易被看见。</p>
+<p><strong>重复的方式。</strong> 一个人每次作判断，都可能稍有不同，也可能在某一次停下来想一想。在规则与参数不变的期间，程序每次都一样，同一取舍被重复施行。一个取舍若有余项，这一余项被同样地，大规模地复制。</p>
+<blockquote><p><strong>S36　自动执行。</strong> 在自动执行，又没有相应重新判断环节的安排里，程序每运行一次就执行一次那一行应当；嵌入复核，申诉与人工判断的安排，另核。</p></blockquote>
+<hr>
+<h2>第三节　合规推定</h2>
+<p>欧盟《人工智能法》第 40 条规定：高风险人工智能系统，符合引用已刊登在欧盟官方公报上的协调标准的，推定为符合该法第三章第二节所列的要求，以标准覆盖的范围为限（Regulation (EU) 2024/1689，第 40 条第 1 款）。推定的对象，照条文写，是那一节所列的要求，不是一切要求。</p>
+<p>2026 年 10 月，第一项协调标准的引用刊登了：EN 18286:2026，关于人工智能的质量管理体系（委员会实施决定 (EU) 2026/2274）。决定把它对应到欧盟委员会标准化请求附件一的第 9 项，即提供者的质量管理体系，含上市后监测；它覆盖该法的哪几条，决定没有逐条写。欧盟委员会另行说明，实施这项标准的提供者，取得「a presumption of conformity with the Article 17 requirements covered by the standard」；页面又说：「It is mapped to Article 17 of the AI Act」（欧盟委员会，2026 年 10 月 19 日）。第 40 条第 1 款推定的对象，是第三章第二节所列的要求；第 17 条在第三章第三节。同条第 2 款 2026 年新增一句，要欧盟委员会请标准化组织制定标准，便利对第三章第二，三节的要求或义务的共同遵从与符合推定（Regulation (EU) 2026/1744）。这项标准具体覆盖哪些款项，有什么限制，要看标准自己的对应附录，这一篇没有读到。</p>
+<p>推定本身有法律的授权，有它的法律效果：一个系统符合这项标准，就在标准覆盖的那几项要求上被推定为符合。单凭这一点，不认定错送。推定是一种立法者有意作出的安排：它让一项有限的审查有一个确定的后果。</p>
+<p>要证错送，要查两件。一，被问的那一项，是否落在所用标准与这一次审查实际处理的范围之内。具体到 EN 18286，这一篇没有核齐标准全文与对应附录，不能先列出它处理了什么，没有处理什么。二，推定有没有被用来把这一项登记为已经回答：比如一份文件写"本系统符合协调标准，相关要求已经满足"，却没有说明满足的是哪一条。第一件看标准与审查的实际范围，这一篇没有核齐；第二件看推定被怎样使用，在这一篇所列的文件与检索范围内，没有找到相应的记录；现有材料不能确定没有找到的原因。</p>
+<p>推定也有一条质疑的通道。成员国或欧洲议会认为一项协调标准没有完全满足它要覆盖的要求，可以提出正式异议；委员会可以维持，限制或撤回它的引用（Regulation (EU) No 1025/2012，第 11 条）。第一篇引言那份关于储罐标准的决定，就是这一通道走过的一次（委员会实施决定 (EU) 2017/1996）。</p>
+<blockquote><p><strong>S37　合规推定与错送。</strong> 协调标准的符合推定，依《人工智能法》第 40 条的相应条款，并限于标准实际覆盖的要求或义务。推定本身有法律授权，有它的法律效果，不据此认定错送；要证错送，须核哪一项质疑没有被相应标准与具体审查处理，以及推定是否被用来把这一项登记为已经回答。</p></blockquote>
+<hr>
+<h2>第四节　数学能说明什么</h2>
+<p>关于算法公平，有一组数学的结果，常被引来说明"公平做不到"。这一节只取它的定理，说它说明了什么。</p>
+<p>Kleinberg，Mullainathan 与 Raghavan 把三种公平条件形式化：分数在各组内都校准；真正属于正类的人，在各组得到的平均分数相同；真正属于负类的人，也相同。他们证明，「except in highly constrained special cases, there is no method that can satisfy these three conditions simultaneously」（Kleinberg 等 2016）；特殊情形指预测完美，或两组的基础比率相同。Chouldechova 证明了一个同向的结果：两组的基础比率不同，工具又不是完美分类时，一个满足预测一致的工具，不能同时使两组的假阳性率相等，假阴性率也相等（Chouldechova 2017）。</p>
+<p>这些结果说明的是：要选。几种都想要的公平，在一般情形下不能同时得到；选了一种，就放弃了另一种的一部分。它们不说明选哪一种。选哪一种，取决于哪一种错误对谁更重，哪一种不平等更不可接受，这是规范账上的事，定理不替人选。</p>
+<p>这一点与第三篇相接。若一项技术审查证明了"这一模型满足校准"，这一结论被拿来回答"这一模型公平吗"，审查的范围与被问的事项就对不上了：校准是几种公平中的一种，选它而不选别的，是一次没有被审查处理的取舍。</p>
+<blockquote><p><strong>S38　数学说明不能兼得，不替人选。</strong> 几种公平条件在一般情形下不能同时满足；这一结果说明要选，不说明选哪一个。</p></blockquote>
+<hr>
+<h2>第五节　承担不等于问过</h2>
+<p>程序部署了，总有人担着。二次启蒙论第七篇把这一点立住了：规则写进程序，决定部署的人预先定下一套有条件的处置办法，「这一部署判断由他全部担，说不得"是程序定的""是标准让写的"」（二次启蒙论第七篇 W44）。政府论在构一侧说了同一件事：「判断交给机器，承担不随之交出。」（政府论 G8）</p>
+<p>这两句说的是承担。承担有了着落，不等于参数里的前提已经被问过。一个决定部署的人，可能尚未充分追问分数线的前提，就作出了部署判断；这一核验的不足，不会由"已经有人承担"补足。他仍就采用这组参数，让它据此作用到人的那一判断作答：部署者不必是参数的原作者，也不为参数的科学正确性作全面担保，可采用它，怎样用它，他要答。担着，与问过，是两件事，分开记。</p>
+<p>所以，部署的一方承担了，追问的位置仍可以空着。事前那一问，即部署以前，参数的前提有没有地方被问，在第九篇（S46）。</p>
+<blockquote><p><strong>S39　承担不等于问过。</strong> 有人承担部署判断，不证明参数前提已被充分追问。</p></blockquote>
+<hr>
+<h2>第六节　与 Passi 和 Barocas</h2>
+<p>Passi 与 Barocas 2019 年的论文，从数据科学家的实际工作出发，追踪一个项目怎样从一个商业目标，一步一步被表述成一个可以预测的问题。他们的发现有两点与这一篇最近。一，问题的表述不是一次完成的，是反复协商，修改的；每一次修改，都在改变要预测的东西。二，公平的问题在这一步就出现了：选哪一个目标变量，用哪一个代理，已经决定了谁会被怎样对待，不必等到模型训练出来（Passi & Barocas 2019）。</p>
+<p>这一篇与他们相近，问的却是另一面。他们问的是：表述是怎样作出的，谁在作，在什么约束下作。这一篇问的是：表述作出以后，写进了程序，若有人要问它，到哪里去问；问了，谁能要求回答；能不能启动复审。他们写的是表述的过程，这一篇写的是表述以后的地址。</p>
+<p>两边可以接上。他们的研究说明，规范账上的那几行，是在一个可以观察的过程里写进去的；这一篇说，写进去以后，那几行以参数的样子出现，问它的成本，可见性与重复方式都变了。所以表述的过程若留下记录，每一次修改改了什么，为什么改，这些记录就是日后追问的地址。这一篇不说记录应当怎样留，那是规则层的事，第九篇只作建议。</p>
+<hr>
+<h2>这一篇停在哪里</h2>
+<p>这一篇不说某一种算法不公平；不说某一部法律错了。</p>
+<p>交给第八篇的：若有一个席位来问，它能坐多久。</p>
+<p>留下的余项：合规推定被怎样使用，在所列范围内没有找到记录；EN 18286 具体覆盖第 17 条的哪些款项，它与第 40 条第 1 款"第二节所列的要求"怎样衔接，决定原文没有写，标准的对应附录这一篇没有读到；核贷程序里有没有重新判断的环节，这一篇只写了一般结构，没有逐家查。</p>
+<hr>
+<h2>本篇命题（合列）</h2>
+<ul>
+<li><strong>S35　参数里的应当。</strong> 目标变量，代理变量，阈值与公平指标，各记一行；写进程序后以参数的样子出现。（描述）</li>
+<li><strong>S36　自动执行。</strong> 没有重新判断环节的安排里，每运行一次就执行一次那一行；有复核，申诉与人工判断的另核。（描述）</li>
+<li><strong>S37　合规推定与错送。</strong> 推定依相应条款，限于标准实际覆盖的要求或义务；推定有授权与效果，不据此认定错送；要证错送，核哪一项质疑没有被标准与审查处理，与推定是否被用来把它登记为已答。（描述）</li>
+<li><strong>S38　数学说明不能兼得，不替人选。</strong> 几种公平条件一般不能同时满足；说明要选，不说明选哪个。（描述；Kleinberg 等 2016，Chouldechova 2017，只取定理）</li>
+<li><strong>S39　承担不等于问过。</strong> 有人承担部署判断，不证明参数前提已被充分追问。（概念区分，自担；二次启蒙论第七篇 W44，政府论 G8 只承"承担不随之交出"；事前之问在第九篇 S46）</li>
+</ul>
+<hr>
+<h2>参考文献</h2>
+<p>以下 SAE 文献一律为概念 DOI，始终指向最新版本。</p>
+<p><strong>一 · 本系统</strong></p>
+<ul>
+<li>秦汉. (2026). 门口（SAE 二次启蒙论 第七篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24030415</li>
+<li>秦汉. (2026). 判断（SAE 政府论 第一篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.23412130</li>
+<li>秦汉. (2026). 错送（SAE 学科论 第三篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24177759</li>
+<li>秦汉. (2026). 搁置（SAE 学科论 第五篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24177775</li>
+<li>秦汉. (2026). 撤回（SAE 学科论 第六篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24177783</li>
+</ul>
+<p><strong>二 · 规则文本</strong></p>
+<ul>
+<li>Commission Implementing Decision (EU) 2017/1996. <em>Official Journal of the European Union</em>.</li>
+<li>Commission Implementing Decision (EU) 2026/2274（EN 18286:2026 引用的刊登）. <em>Official Journal of the European Union</em>.</li>
+<li>Regulation (EU) No 1025/2012 on European standardisation, Article 11.</li>
+<li>European Commission. (2026, October 19). First harmonised standard supporting the AI Act published in the Official Journal. digital-strategy.ec.europa.eu。</li>
+<li>Regulation (EU) 2024/1689 (Artificial Intelligence Act), Articles 17, 40（2026 年 7 月 27 日合并文本）.</li>
+<li>Regulation (EU) 2026/1744 of 8 July 2026, amending Regulation (EU) 2024/1689（第 40 条第 2 款新增一句）.</li>
+</ul>
+<p><strong>三 · 外部文献</strong></p>
+<ul>
+<li>Chouldechova, A. (2017). Fair prediction with disparate impact: A study of bias in recidivism prediction instruments. <em>Big Data</em>, 5(2), 153–163.</li>
+<li>Kleinberg, J., Mullainathan, S., & Raghavan, M. (2016). Inherent trade-offs in the fair determination of risk scores. arXiv:1609.05807（ITCS 2017 刊）.</li>
+<li>Mitchell, S., Potash, E., Barocas, S., D'Amour, A., & Lum, K. (2021). Algorithmic fairness: Choices, assumptions, and definitions. <em>Annual Review of Statistics and Its Application</em>, 8, 141–163.</li>
+<li>Passi, S., & Barocas, S. (2019). Problem formulation and fairness. In <em>Proceedings of the Conference on Fairness, Accountability, and Transparency</em> (pp. 39–48). ACM.</li>
+<li>Selbst, A. D., Boyd, D., Friedler, S. A., Venkatasubramanian, S., & Vertesi, J. (2019). Fairness and abstraction in sociotechnical systems. In <em>Proceedings of the Conference on Fairness, Accountability, and Transparency</em> (pp. 59–68). ACM.</li>
+</ul>
+<hr>
+<h2>接口</h2>
+<p><strong>主承：</strong> 二次启蒙论第七篇 W44；政府论 G8；第三篇 S16，S17；第五篇 S29；第六篇 S34。</p>
+<p><strong>另用：</strong> 欧盟《人工智能法》第 17，40 条与 EN 18286 的刊登；Regulation 1025/2012 第 11 条；Kleinberg 等 2016；Chouldechova 2017；Passi & Barocas 2019；Selbst 等 2019；Mitchell 等 2021。</p>
+<p><strong>本系列：</strong> S35 至 S39。</p>
+<p><strong>交给第八篇：</strong> 若有一个席位来问，它能坐多久。</p></div>
+  </div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+  if (window.MathJax) { MathJax.typesetPromise(); }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
