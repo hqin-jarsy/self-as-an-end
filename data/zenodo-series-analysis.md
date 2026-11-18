@@ -1,6 +1,6 @@
 # Zenodo series age-adjusted analysis
 
-Latest snapshot: `2026-11-06T08:23:40+00:00`. Recent comparison: `2026-10-29T06:54:07+00:00` to `2026-11-06T08:23:40+00:00` (8.06 days).
+Latest snapshot: `2026-11-18T08:12:21+00:00`. Recent comparison: `2026-11-11T08:27:20+00:00` to `2026-11-18T08:12:21+00:00` (6.99 days).
 
 Rates are concept-wide counts per 100 paper-days. A paper published today contributes one paper-day. Momentum is the recent rate divided by the lifetime rate; values above 1 indicate acceleration. Long-run rankings require at least three papers and a median age of 30 days. Early-signal and cohort tables are kept separate. The CSV contains every catalogue series, including per-paper medians.
 
@@ -8,76 +8,81 @@ Rates are concept-wide counts per 100 paper-days. A paper published today contri
 
 | Series | Papers | First–latest release | Views / 100 paper-days | Views | Downloads | D/V |
 | --- | ---: | --- | ---: | ---: | ---: | ---: |
-| Foundational Papers | 6 | 2026-02-08–2026-03-30 | 140.13 | 2095 | 1275 | 60.86% |
-| 道德经注·君子不器 Commentary Series 道德经注 | 9 | 2026-05-11–2026-05-12 | 111.02 | 1793 | 904 | 50.42% |
-| Applied — AI & Social Theory AI·社会理论 | 11 | 2026-02-23–2026-05-29 | 109.88 | 2637 | 1497 | 56.77% |
-| SAE Methodology Series 方法论系列 | 14 | 2026-03-03–2026-09-19 | 102.45 | 2966 | 1694 | 57.11% |
-| AI Series (Tetralogy) | 8 | 2026-03-01–2026-04-15 | 100.84 | 1916 | 1254 | 65.45% |
-| SAE Anthropology Series 人类学系列 | 5 | 2026-04-10–2026-04-14 | 97.32 | 1017 | 608 | 59.78% |
-| SAE Epistemology Series 认知论系列 | 4 | 2026-04-11–2026-04-11 | 96.43 | 810 | 467 | 57.65% |
-| Language Series | 3 | 2026-03-01–2026-03-29 | 95.57 | 669 | 380 | 56.80% |
-| SAE Mass Series 质量系列 | 6 | 2026-04-08–2026-04-11 | 94.95 | 1204 | 826 | 68.60% |
-| SAE Biology Notes 生物学笔记 | 10 | 2026-04-10–2026-04-19 | 93.52 | 1933 | 1199 | 62.03% |
-| SAE Aesthetics & Essay 美学论文 | 3 | 2026-03-19–2026-05-11 | 92.78 | 591 | 282 | 47.72% |
-| AI Architecture Series | 5 | 2026-03-10–2026-04-20 | 91.19 | 1046 | 603 | 57.65% |
-| SAE Psychoanalysis Series | 4 | 2026-03-29–2026-03-29 | 88.45 | 789 | 423 | 53.61% |
-| SAE Learning Series 学习系列 | 4 | 2026-04-05–2026-04-10 | 88.04 | 751 | 446 | 59.39% |
-| The Human: A Relationship of Self with Self | 5 | 2026-03-07–2026-04-12 | 88.03 | 1008 | 591 | 58.63% |
+| Foundational Papers | 6 | 2026-02-08–2026-03-30 | 136.18 | 2134 | 1405 | 65.84% |
+| 道德经注·君子不器 Commentary Series 道德经注 | 9 | 2026-05-11–2026-05-12 | 108.18 | 1864 | 1122 | 60.19% |
+| Applied — AI & Social Theory AI·社会理论 | 11 | 2026-02-23–2026-05-29 | 106.64 | 2700 | 1579 | 58.48% |
+| SAE Methodology Series 方法论系列 | 14 | 2026-03-03–2026-09-19 | 99.09 | 3035 | 1912 | 63.00% |
+| AI Series (Tetralogy) | 8 | 2026-03-01–2026-04-15 | 98.35 | 1963 | 1383 | 70.45% |
+| SAE Epistemology Series 认知论系列 | 4 | 2026-04-11–2026-04-11 | 95.61 | 849 | 525 | 61.84% |
+| SAE Anthropology Series 人类学系列 | 5 | 2026-04-10–2026-04-14 | 94.48 | 1044 | 656 | 62.84% |
+| Language Series | 3 | 2026-03-01–2026-03-29 | 93.48 | 688 | 415 | 60.32% |
+| SAE Mass Series 质量系列 | 6 | 2026-04-08–2026-04-11 | 91.94 | 1232 | 909 | 73.78% |
+| SAE Biology Notes 生物学笔记 | 10 | 2026-04-10–2026-04-19 | 90.31 | 1975 | 1275 | 64.56% |
+| SAE Aesthetics & Essay 美学论文 | 3 | 2026-03-19–2026-05-11 | 90.19 | 607 | 308 | 50.74% |
+| Applied — Psychology & Consciousness 心理学·意识 | 6 | 2026-03-23–2026-04-02 | 89.28 | 1266 | 733 | 57.90% |
+| AI Architecture Series | 5 | 2026-03-10–2026-04-20 | 88.57 | 1069 | 641 | 59.96% |
+| Applied — Physics 物理 | 22 | 2026-02-26–2026-07-06 | 88.09 | 4177 | 2369 | 56.72% |
+| The Human: A Relationship of Self with Self | 5 | 2026-03-07–2026-04-12 | 85.39 | 1029 | 634 | 61.61% |
 
 ## Highest mature-series lifetime download rate
 
 | Series | Papers | First–latest release | Downloads / 100 paper-days | Views | Downloads | D/V |
 | --- | ---: | --- | ---: | ---: | ---: | ---: |
-| Dream of the Red Chamber Reconstruction 红楼梦复原计划 | 4 | 2026-09-27–2026-10-01 | 85.35 | 75 | 134 | 178.67% |
-| Foundational Papers | 6 | 2026-02-08–2026-03-30 | 85.28 | 2095 | 1275 | 60.86% |
-| Mathematical Foundations | 75 | 2026-03-08–2026-07-31 | 78.40 | 14523 | 13110 | 90.27% |
-| SAE Black Hole Series 黑洞系列 | 5 | 2026-06-26–2026-08-05 | 77.33 | 173 | 423 | 244.51% |
-| AI Series (Tetralogy) | 8 | 2026-03-01–2026-04-15 | 66.00 | 1916 | 1254 | 65.45% |
-| SAE Mass Series 质量系列 | 6 | 2026-04-08–2026-04-11 | 65.14 | 1204 | 826 | 68.60% |
-| Applied — AI & Social Theory AI·社会理论 | 11 | 2026-02-23–2026-05-29 | 62.38 | 2637 | 1497 | 56.77% |
-| SAE Methodology Series 方法论系列 | 14 | 2026-03-03–2026-09-19 | 58.51 | 2966 | 1694 | 57.11% |
-| SAE Anthropology Series 人类学系列 | 5 | 2026-04-10–2026-04-14 | 58.18 | 1017 | 608 | 59.78% |
-| SAE Biology Notes 生物学笔记 | 10 | 2026-04-10–2026-04-19 | 58.01 | 1933 | 1199 | 62.03% |
-| 解论语 · Reading the Analects Through Self-as-an-End 论语注 | 5 | 2026-09-08–2026-09-08 | 57.67 | 116 | 173 | 149.14% |
-| Thermodynamics & Chemistry 热力学·化学 | 10 | 2026-03-29–2026-04-23 | 56.98 | 1766 | 1164 | 65.91% |
-| 道德经注·君子不器 Commentary Series 道德经注 | 9 | 2026-05-11–2026-05-12 | 55.98 | 1793 | 904 | 50.42% |
-| SAE Epistemology Series 认知论系列 | 4 | 2026-04-11–2026-04-11 | 55.60 | 810 | 467 | 57.65% |
-| Language Series | 3 | 2026-03-01–2026-03-29 | 54.29 | 669 | 380 | 56.80% |
+| Dream of the Red Chamber Reconstruction 红楼梦复原计划 | 4 | 2026-09-27–2026-10-01 | 112.20 | 110 | 230 | 209.09% |
+| Foundational Papers | 6 | 2026-02-08–2026-03-30 | 89.66 | 2134 | 1405 | 65.84% |
+| SAE Black Hole Series 黑洞系列 | 5 | 2026-06-26–2026-08-05 | 87.81 | 234 | 533 | 227.78% |
+| Mathematical Foundations | 75 | 2026-03-08–2026-07-31 | 80.15 | 14907 | 14124 | 94.75% |
+| AI Series (Tetralogy) | 8 | 2026-03-01–2026-04-15 | 69.29 | 1963 | 1383 | 70.45% |
+| SAE Mass Series 质量系列 | 6 | 2026-04-08–2026-04-11 | 67.84 | 1232 | 909 | 73.78% |
+| 道德经注·君子不器 Commentary Series 道德经注 | 9 | 2026-05-11–2026-05-12 | 65.12 | 1864 | 1122 | 60.19% |
+| SAE Methodology Series 方法论系列 | 14 | 2026-03-03–2026-09-19 | 62.42 | 3035 | 1912 | 63.00% |
+| Applied — AI & Social Theory AI·社会理论 | 11 | 2026-02-23–2026-05-29 | 62.36 | 2700 | 1579 | 58.48% |
+| 解论语 · Reading the Analects Through Self-as-an-End 论语注 | 5 | 2026-09-08–2026-09-08 | 59.72 | 177 | 215 | 121.47% |
+| Applied Series — Cosmological Physics | 9 | 2026-03-27–2026-08-12 | 59.71 | 1333 | 996 | 74.72% |
+| SAE Anthropology Series 人类学系列 | 5 | 2026-04-10–2026-04-14 | 59.37 | 1044 | 656 | 62.84% |
+| SAE Epistemology Series 认知论系列 | 4 | 2026-04-11–2026-04-11 | 59.12 | 849 | 525 | 61.84% |
+| SAE Biology Notes 生物学笔记 | 10 | 2026-04-10–2026-04-19 | 58.30 | 1975 | 1275 | 64.56% |
+| Thermodynamics & Chemistry 热力学·化学 | 10 | 2026-03-29–2026-04-23 | 57.24 | 1814 | 1238 | 68.25% |
 
 ## Highest recent download rate
 
 | Series | Papers | First–latest release | Recent downloads / 100 paper-days | Views | Downloads | D/V |
 | --- | ---: | --- | ---: | ---: | ---: | ---: |
-| SAE Political Economy Series 政治经济学系列 | 8 | 2026-11-02–2026-11-02 | 245.00 | 27 | 98 | 362.96% |
-| Dream of the Red Chamber Reconstruction 红楼梦复原计划 | 4 | 2026-09-27–2026-10-01 | 145.74 | 75 | 134 | 178.67% |
-| SAE Marriage Theory Series 婚姻论系列 | 8 | 2026-10-30–2026-10-30 | 129.69 | 33 | 83 | 251.52% |
-| SAE Theory of Inter-State Cooperation Series 国家间协作论系列 | 9 | 2026-10-30–2026-10-30 | 112.50 | 36 | 81 | 225.00% |
-| 道德经注·君子不器 Commentary Series 道德经注 | 9 | 2026-05-11–2026-05-12 | 96.47 | 1793 | 904 | 50.42% |
-| Temporal Arts Series — Chisel and Construct | 4 | 2026-03-12–2026-03-12 | 86.83 | 767 | 449 | 58.54% |
-| Foundational Papers | 6 | 2026-02-08–2026-03-30 | 80.62 | 2095 | 1275 | 60.86% |
-| SAE Laughter Series 笑论系列 | 6 | 2026-10-10–2026-10-18 | 76.49 | 105 | 76 | 72.38% |
-| Language Series | 3 | 2026-03-01–2026-03-29 | 74.42 | 669 | 380 | 56.80% |
-| AI Series (Tetralogy) | 8 | 2026-03-01–2026-04-15 | 71.32 | 1916 | 1254 | 65.45% |
-| Terrible T Series — Child Development & Subject Maturation | 3 | 2026-03-16–2026-03-27 | 66.15 | 417 | 293 | 70.26% |
-| AI Architecture Series | 5 | 2026-03-10–2026-04-20 | 64.50 | 1046 | 603 | 57.65% |
-| SAE Aesthetic Rays Series 美学射线系列 | 13 | 2026-09-27–2026-09-27 | 63.93 | 261 | 151 | 57.85% |
-| Civilization History Series | 5 | 2026-03-07–2026-03-09 | 59.54 | 1074 | 569 | 52.98% |
-| SAE Methodology Series 方法论系列 | 14 | 2026-03-03–2026-09-19 | 58.47 | 2966 | 1694 | 57.11% |
+| SAE Teacher-Student Theory Series 师生论系列 | 8 | 2026-11-16–2026-11-16 | 458.33 | 46 | 110 | 239.13% |
+| SAE Theory of the University Series 大学论系列 | 8 | 2026-11-16–2026-11-16 | 425.00 | 40 | 102 | 255.00% |
+| SAE Rereading Classical Concepts Series 古典概念重读系列 | 6 | 2026-11-16–2026-11-16 | 416.67 | 46 | 75 | 163.04% |
+| 道德经注·君子不器 Commentary Series 道德经注 | 9 | 2026-05-11–2026-05-12 | 187.58 | 1864 | 1122 | 60.19% |
+| SAE Theory of the Market Series 市场论系列 | 9 | 2026-11-13–2026-11-13 | 187.04 | 53 | 101 | 190.57% |
+| SAE Black Hole Series 黑洞系列 | 5 | 2026-06-26–2026-08-05 | 174.55 | 234 | 533 | 227.78% |
+| Dream of the Red Chamber Reconstruction 红楼梦复原计划 | 4 | 2026-09-27–2026-10-01 | 171.68 | 110 | 230 | 209.09% |
+| Foundational Papers | 6 | 2026-02-08–2026-03-30 | 159.76 | 2134 | 1405 | 65.84% |
+| SAE Theory of Disciplines Series 学科论系列 | 10 | 2026-11-12–2026-11-12 | 140.00 | 51 | 98 | 192.16% |
+| SAE Cultivation Theory Series 涵育论系列 | 9 | 2026-11-12–2026-11-12 | 139.68 | 50 | 88 | 176.00% |
+| SAE Parent-Child Theory Series 亲子论系列 | 8 | 2026-11-11–2026-11-11 | 135.92 | 42 | 76 | 180.95% |
+| SAE Epistemology Series 认知论系列 | 4 | 2026-04-11–2026-04-11 | 135.92 | 849 | 525 | 61.84% |
+| AI Series (Tetralogy) | 8 | 2026-03-01–2026-04-15 | 114.46 | 1963 | 1383 | 70.45% |
+| SAE Mass Series 质量系列 | 6 | 2026-04-08–2026-04-11 | 109.69 | 1232 | 909 | 73.78% |
+| SAE Methodology Series 方法论系列 | 14 | 2026-03-03–2026-09-19 | 101.17 | 3035 | 1912 | 63.00% |
 
 ## New and developing series: early download signal
 
 | Series | Papers | First–latest release | Downloads / 100 paper-days | Views | Downloads | D/V |
 | --- | ---: | --- | ---: | ---: | ---: | ---: |
-| SAE Political Economy Series 政治经济学系列 | 8 | 2026-11-02–2026-11-02 | 245.00 | 27 | 98 | 362.96% |
-| SAE Marriage Theory Series 婚姻论系列 | 8 | 2026-10-30–2026-10-30 | 129.69 | 33 | 83 | 251.52% |
-| SAE Theory of Inter-State Cooperation Series 国家间协作论系列 | 9 | 2026-10-30–2026-10-30 | 112.50 | 36 | 81 | 225.00% |
-| SAE Love Theory Series 爱情论系列 | 8 | 2026-10-24–2026-10-24 | 75.00 | 57 | 84 | 147.37% |
-| SAE Relation Theory Series 关系论系列 | 8 | 2026-10-21–2026-10-21 | 73.53 | 110 | 100 | 90.91% |
-| SAE Theory of the State Series 国家论系列 | 9 | 2026-10-23–2026-10-29 | 69.77 | 85 | 90 | 105.88% |
-| SAE Exercises and Games of Judgment Series 判断力练习与游戏系列 | 4 | 2026-10-24–2026-10-24 | 66.07 | 22 | 37 | 168.18% |
-| SAE Laughter Series 笑论系列 | 6 | 2026-10-10–2026-10-18 | 47.50 | 105 | 76 | 72.38% |
-| SAE Theory of Government Series 政府论系列 | 7 | 2026-10-16–2026-10-16 | 37.66 | 47 | 58 | 123.40% |
-| SAE Institution Theory Series 制度论系列 | 8 | 2026-10-09–2026-10-10 | 36.96 | 138 | 85 | 61.59% |
+| SAE Teacher-Student Theory Series 师生论系列 | 8 | 2026-11-16–2026-11-16 | 458.33 | 46 | 110 | 239.13% |
+| SAE Theory of the University Series 大学论系列 | 8 | 2026-11-16–2026-11-16 | 425.00 | 40 | 102 | 255.00% |
+| SAE Rereading Classical Concepts Series 古典概念重读系列 | 6 | 2026-11-16–2026-11-16 | 416.67 | 46 | 75 | 163.04% |
+| SAE Theory of the Market Series 市场论系列 | 9 | 2026-11-13–2026-11-13 | 187.04 | 53 | 101 | 190.57% |
+| SAE Theory of Disciplines Series 学科论系列 | 10 | 2026-11-12–2026-11-12 | 140.00 | 51 | 98 | 192.16% |
+| SAE Cultivation Theory Series 涵育论系列 | 9 | 2026-11-12–2026-11-12 | 139.68 | 50 | 88 | 176.00% |
+| SAE Political Economy Series 政治经济学系列 | 9 | 2026-11-02–2026-11-06 | 132.89 | 51 | 198 | 388.24% |
+| SAE Parent-Child Theory Series 亲子论系列 | 8 | 2026-11-11–2026-11-11 | 118.75 | 42 | 76 | 180.95% |
+| SAE The Second Enlightenment Series 二次启蒙论系列 | 8 | 2026-11-07–2026-11-07 | 96.88 | 32 | 93 | 290.62% |
+| SAE Cooperation Theory Series 合作论系列 | 9 | 2026-11-07–2026-11-08 | 89.72 | 32 | 96 | 300.00% |
+| SAE Marriage Theory Series 婚姻论系列 | 8 | 2026-10-30–2026-10-30 | 85.62 | 55 | 137 | 249.09% |
+| SAE Relation Theory Series 关系论系列 | 9 | 2026-10-21–2026-11-16 | 85.11 | 180 | 200 | 111.11% |
+| SAE Theory of the Company Series 公司论系列 | 10 | 2026-11-08–2026-11-10 | 80.19 | 57 | 85 | 149.12% |
+| SAE Theory of Inter-State Cooperation Series 国家间协作论系列 | 9 | 2026-10-30–2026-10-30 | 73.33 | 50 | 132 | 264.00% |
+| SAE Love Theory Series 爱情论系列 | 8 | 2026-10-24–2026-10-24 | 71.15 | 111 | 148 | 133.33% |
 
 ## Approximately 7, 14, and 30 days after publication
 
@@ -85,37 +90,40 @@ Only papers released on or after the first stored snapshot are eligible. Counts 
 
 | Series | ~7d | ~14d | ~30d |
 | --- | ---: | ---: | ---: |
-| SAE Marriage Theory Series 婚姻论系列 | 8; 4.12 / 10.38 | — | — |
-| SAE Theory of Inter-State Cooperation Series 国家间协作论系列 | 9; 4.00 / 9.00 | — | — |
+| SAE Political Economy Series 政治经济学系列 | 9; 3.89 / 18.89 | 8; 5.25 / 22.62 | — |
+| SAE The Second Enlightenment Series 二次启蒙论系列 | 8; 4.00 / 11.62 | — | — |
+| SAE Cooperation Theory Series 合作论系列 | 9; 3.11 / 10.67 | — | — |
+| SAE Marriage Theory Series 婚姻论系列 | 8; 4.12 / 10.38 | 8; 6.12 / 16.50 | — |
+| SAE Parent-Child Theory Series 亲子论系列 | 8; 5.25 / 9.50 | — | — |
+| SAE Theory of Inter-State Cooperation Series 国家间协作论系列 | 9; 4.00 / 9.00 | 9; 5.00 / 14.44 | — |
+| SAE Theory of the Company Series 公司论系列 | 10; 4.90 / 8.50 | — | — |
 | SAE Relation Theory Series 关系论系列 | 8; 9.88 / 8.38 | 8; 13.38 / 10.25 | — |
-| SAE Theory of the State Series 国家论系列 | 9; 6.33 / 7.00 | 8; 10.25 / 10.38 | — |
-| SAE Love Theory Series 爱情论系列 | 8; 5.50 / 6.75 | — | — |
-| SAE Exercises and Games of Judgment Series 判断力练习与游戏系列 | 4; 4.75 / 6.00 | — | — |
-| SAE Theory of Government Series 政府论系列 | 7; 2.71 / 4.29 | 7; 5.86 / 5.57 | — |
+| SAE Theory of the State Series 国家论系列 | 9; 6.33 / 7.00 | 9; 9.56 / 10.67 | — |
+| SAE Love Theory Series 爱情论系列 | 8; 5.50 / 6.75 | 8; 8.12 / 12.88 | — |
+| SAE Exercises and Games of Judgment Series 判断力练习与游戏系列 | 4; 4.75 / 6.00 | 4; 5.50 / 9.25 | — |
+| SAE Theory of Government Series 政府论系列 | 7; 2.71 / 4.29 | 7; 5.86 / 5.57 | 7; 9.00 / 11.29 |
 | Dream of the Red Chamber Reconstruction 红楼梦复原计划 | 4; 3.00 / 1.75 | 4; 4.75 / 7.00 | 4; 13.75 / 21.25 |
-| SAE Institution Theory Series 制度论系列 | 8; 6.50 / 1.75 | 8; 10.00 / 6.00 | — |
-| SAE Laughter Series 笑论系列 | 6; 7.50 / 1.33 | 6; 10.83 / 5.50 | — |
-| SAE Action Theory Series 行动论系列 | 12; 2.42 / 1.25 | 11; 2.27 / 1.36 | 11; 9.55 / 6.00 |
-| SAE Aesthetic Rays Series 美学射线系列 | 13; 3.77 / 1.08 | 13; 4.62 / 1.46 | 13; 14.31 / 6.31 |
+| SAE Institution Theory Series 制度论系列 | 8; 6.50 / 1.75 | 8; 10.00 / 6.00 | 8; 18.00 / 12.38 |
+| SAE Laughter Series 笑论系列 | 6; 7.50 / 1.33 | 6; 10.83 / 5.50 | 6; 20.00 / 17.50 |
 
 ## Fastest download momentum
 
 | Series | Papers | Recent Δ downloads | Lifetime rate | Recent rate | Momentum |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| SAE Aesthetic Rays Series 美学射线系列 | 13 | +67 | 28.33 | 63.93 | 2.26× |
-| Temporal Arts Series — Chisel and Construct | 4 | +28 | 46.77 | 86.83 | 1.86× |
-| 道德经注·君子不器 Commentary Series 道德经注 | 9 | +70 | 55.98 | 96.47 | 1.72× |
-| Dream of the Red Chamber Reconstruction 红楼梦复原计划 | 4 | +47 | 85.35 | 145.74 | 1.71× |
-| SAE Laughter Series 笑论系列 | 6 | +37 | 47.50 | 76.49 | 1.61× |
-| Terrible T Series — Child Development & Subject Maturation | 3 | +16 | 42.53 | 66.15 | 1.56× |
-| SAE Action Theory Series 行动论系列 | 12 | +36 | 24.05 | 37.21 | 1.55× |
-| Chisel Papers — Philosophy of Science 科学哲学·凿 | 3 | +14 | 40.60 | 57.88 | 1.43× |
-| SAE War Philosophy Interface Series 兵法接口系列 | 9 | +27 | 27.01 | 37.21 | 1.38× |
-| Language Series | 3 | +18 | 54.29 | 74.42 | 1.37× |
-| Civilization History Series | 5 | +24 | 46.52 | 59.54 | 1.28× |
-| AI Architecture Series | 5 | +26 | 52.57 | 64.50 | 1.23× |
-| Applied — Biology & Evolution 生物学·演化 | 7 | +32 | 47.80 | 56.70 | 1.19× |
-| SAE Meaning Theory Series 意义论系列 | 5 | +11 | 23.02 | 27.29 | 1.19× |
-| AI Series (Tetralogy) | 8 | +46 | 66.00 | 71.32 | 1.08× |
+| 道德经注·君子不器 Commentary Series 道德经注 | 9 | +118 | 65.12 | 187.58 | 2.88× |
+| Chisel Papers — Philosophy of Science 科学哲学·凿 | 3 | +21 | 43.29 | 100.15 | 2.31× |
+| SAE Epistemology Series 认知论系列 | 4 | +38 | 59.12 | 135.92 | 2.30× |
+| 解庄子 Series Untangling Zhuangzi | 4 | +27 | 44.26 | 96.57 | 2.18× |
+| SAE Mathematics Series SAE数学系列 | 5 | +33 | 45.01 | 94.43 | 2.10× |
+| SAE Black Hole Series 黑洞系列 | 5 | +61 | 87.81 | 174.55 | 1.99× |
+| Terrible T Series — Child Development & Subject Maturation | 3 | +17 | 44.83 | 81.07 | 1.81× |
+| Foundational Papers | 6 | +67 | 89.66 | 159.76 | 1.78× |
+| Language Series | 3 | +20 | 56.39 | 95.38 | 1.69× |
+| AI Series (Tetralogy) | 8 | +64 | 69.29 | 114.46 | 1.65× |
+| Applied Series — Cosmological Physics | 9 | +62 | 59.71 | 98.56 | 1.65× |
+| SAE Methodology Series 方法论系列 | 14 | +99 | 62.42 | 101.17 | 1.62× |
+| SAE Value Theory Series 价值论系列 | 8 | +31 | 34.26 | 55.44 | 1.62× |
+| SAE Mass Series 质量系列 | 6 | +46 | 67.84 | 109.69 | 1.62× |
+| SAE Rights Theory Series 权利论系列 | 10 | +42 | 37.61 | 60.09 | 1.60× |
 
 Full machine-readable table: [zenodo-series-analysis.csv](zenodo-series-analysis.csv)
