@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fairness and Algorithms – Han Qin (秦汉)</title>
+  <link rel="stylesheet" href="/style.css">
+  <!-- SAE:machine-metadata:start -->
+  <meta name="sae:metadata_version" content="4">
+  <meta name="sae:content_hash" content="28cdfa86e09abb39143a746ef48da940e2c8bccd3afb810c52340c07cae87461">
+  <meta name="description" content="A bank uses a scoring system to review loans. An applicant is turned down; the clerk cannot say why, only that &quot;the system didn&#x27;t pass it.&quot; Later someone examines the system and finds that it wrongly rejects more…">
+  <meta name="author" content="Han Qin (秦汉)">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fairness and Algorithms">
+  <meta property="og:description" content="A bank uses a scoring system to review loans. An applicant is turned down; the clerk cannot say why, only that &quot;the system didn&#x27;t pass it.&quot; Later someone examines the system and finds that it wrongly rejects more…">
+  <meta property="og:url" content="https://self-as-an-end.net/papers/sae-fairness-theory-9.html">
+  <link rel="canonical" href="https://self-as-an-end.net/papers/sae-fairness-theory-9.html">
+  <meta name="citation_title" content="Fairness and Algorithms">
+  <meta name="citation_author" content="Qin, Han">
+  <meta name="citation_publication_date" content="2026-11-24">
+  <meta name="citation_doi" content="10.5281/zenodo.24486205">
+  <meta name="citation_abstract_html_url" content="https://self-as-an-end.net/papers/sae-fairness-theory-9.html">
+  <meta name="citation_keywords" content="Self-as-an-End; SAE">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Fairness and Algorithms",
+    "description": "A bank uses a scoring system to review loans. An applicant is turned down; the clerk cannot say why, only that \"the system didn't pass it.\" Later someone examines the system and finds that it wrongly rejects more…",
+    "abstract": "A bank uses a scoring system to review loans. An applicant is turned down; the clerk cannot say why, only that \"the system didn't pass it.\" Later someone examines the system and finds that it wrongly rejects more applicants from the north; the company that sells it replies that the same score corresponds to the same repayment rate in every group, so it is accurate. Both statements are true. Research has proved that certain precisely defined standards cannot all hold together unless prediction is perfect or the share of people who will repay is the same in every group. This paper puts the earlier papers' readings into scoring and automated decisions, and tries this deadlock. It sets up two propositions, both readings. A score used as a door is read by the criteria for doors; what already falls under normative criteria is not lowered into a matter of the rule layer because statistics were used. Statistical standards are clues, not measures. The two middle sections explain: group statistics computed by birth are not assessing this person himself; when a door is written into a program and judgment is handed to a machine, bearing is not handed over with it, and the side that adopts it answers for its adoption. This paper does not say which statistical standard holds, nor whether algorithms ought to be used.",
+    "author": {
+      "@type": "Person",
+      "name": "Han Qin",
+      "alternateName": "秦汉",
+      "url": "https://self-as-an-end.net/about.html",
+      "sameAs": [
+        "https://orcid.org/0009-0009-9583-0018",
+        "https://philpeople.org/profiles/han-qin",
+        "https://www.linkedin.com/in/han-qin-jarsy/"
+      ]
+    },
+    "datePublished": "2026-11-24",
+    "dateModified": "2026-11-23",
+    "url": "https://self-as-an-end.net/papers/sae-fairness-theory-9.html",
+    "mainEntityOfPage": "https://self-as-an-end.net/papers/sae-fairness-theory-9.html",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "SAE Theory of Fairness Series 公平论系列",
+      "url": "https://self-as-an-end.net/#all-papers",
+      "isPartOf": {
+        "@type": "CreativeWorkSeries",
+        "name": "Self-as-an-End Corpus",
+        "url": "https://self-as-an-end.net"
+      }
+    },
+    "keywords": [
+      "Self-as-an-End",
+      "SAE"
+    ],
+    "inLanguage": [
+      "en",
+      "zh-Hans"
+    ],
+    "articleSection": "SAE Theory of Fairness Series 公平论系列",
+    "alternativeHeadline": "公平与算法",
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "DOI",
+        "value": "10.5281/zenodo.24486205"
+      }
+    ],
+    "sameAs": "https://doi.org/10.5281/zenodo.24486205",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo",
+      "url": "https://zenodo.org"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Self-as-an-End Paper Library",
+        "item": "https://self-as-an-end.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "5. The Institutional Side 制度侧",
+        "item": "https://self-as-an-end.net/#all-papers"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fairness and Algorithms",
+        "item": "https://self-as-an-end.net/papers/sae-fairness-theory-9.html"
+      }
+    ]
+  }
+  </script>
+  <!-- SAE:machine-metadata:end -->
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="site-title">Self-as-an-End</a>
+    <nav>
+      <a href="/index.html">Papers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/endacc.html">end/acc</a>
+      <a href="https://hqin.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/hqinjarsy" target="_blank" rel="noopener">X</a>
+    </nav>
+  </div>
+</header>
+<article class="paper-page">
+  <div class="paper-page-header">
+    <div class="series-label">SAE Theory of Fairness · Paper 9</div>
+    <h1>Fairness and Algorithms<br><span style="font-size:1.1rem;opacity:0.75">公平与算法</span></h1>
+    <div class="paper-author">Han Qin (秦汉) · Independent Researcher · 2026</div>
+    <div class="paper-doi">DOI: <a href="https://doi.org/10.5281/zenodo.24486205">10.5281/zenodo.24486205</a> · Full PDF on Zenodo · CC BY 4.0</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="switchLang('zh', this)">中文</button>
+  </div>
+  <div id="lang-en" style="display:block">
+    <div class="abstract-box">
+      <div class="abstract-label">Abstract</div>
+      <p>A bank uses a scoring system to review loans. An applicant is turned down; the clerk cannot say why, only that &quot;the system didn't pass it.&quot; Later someone examines the system and finds that it wrongly rejects more applicants from the north; the company that sells it replies that the same score corresponds to the same repayment rate in every group, so it is accurate. Both statements are true. Research has proved that certain precisely defined standards cannot all hold together unless prediction is perfect or the share of people who will repay is the same in every group. This paper puts the earlier papers' readings into scoring and automated decisions, and tries this deadlock. It sets up two propositions, both readings. A score used as a door is read by the criteria for doors; what already falls under normative criteria is not lowered into a matter of the rule layer because statistics were used. Statistical standards are clues, not measures. The two middle sections explain: group statistics computed by birth are not assessing this person himself; when a door is written into a program and judgment is handed to a machine, bearing is not handed over with it, and the side that adopts it answers for its adoption. This paper does not say which statistical standard holds, nor whether algorithms ought to be used.</p>
+    </div>
+    <div class="paper-body"><p class="paper-statement"><em>Writing Declaration: This paper was co-drafted with Claude (Anthropic). All intellectual decisions, framework design, and final editorial judgments were made by the author.</em></p>
+<h2>Introduction</h2>
+<p>From Year 34, Apple City Savings Bank has used a purchased scoring system to review personal loans. The applicant fills in a form, the system gives a score from zero to a thousand, and loans go to those with scores of six hundred or higher. The system uses more than forty items, among them repayment history, income, education, and the postal code of one's residence. This is an example set up by this series.</p>
+<p>A woman from Lower Hollow applied for a loan to buy a truck. She had driven freight in Apple City for eight years and had never failed to pay a debt. The system gave her five hundred and seventy. She asked the clerk why. The clerk looked at the screen and said: the system didn't pass it. Asked again, the clerk said: we can't see how it calculates either.</p>
+<p>The next year, a consumer organization in the state obtained records of the loans this bank had made in the years before it used the system, including who had repaid and who had not. They ran these people through the system again and found: among those who later proved to repay on time, applicants from the six northern counties would have been rejected by the system at more than twice the rate of Apple City applicants; among those who did not repay, more Apple City applicants would have been let through. They said the system discriminates against northerners.</p>
+<p>The company that sells the system issued a reply. They said: among northern applicants and Apple City applicants, those who got the same score later repaid at the same rate. Six hundred means six hundred wherever you are. The system is equally accurate for everyone, and has no bias.</p>
+<p>Both sides produced figures, and the figures both stand up to checking.</p>
+<p>This is not a coincidence only made-up examples have. Some years ago, American journalists examined a tool that gives criminal defendants a risk score for reoffending, and said it wrongly labeled Black defendants high-risk more often; the tool's developers answered with a different statistic. Researchers then proved a theorem: they wrote three fairness conditions central to the dispute in precise form, and proved that, except in highly restricted special cases, no method can satisfy all three at once.<sup class="fn-ref" id="en-fnref-1"><a href="#en-fn-1">1</a></sup></p>
+<p>So this field has its deadlock: several standards that all sound as if they ought to hold cannot all be had together. Which to choose?</p>
+<h2>§1 Scores as Doors</h2>
+<p>A scoring system lends to those above the line and rejects those below. What it does is the same thing as the orchestra's auditions in Paper 2 and the degree line in Paper 8: opening or shutting a door on those who come.</p>
+<p>So a score used as a door is read by the criteria for doors.</p>
+<p>This plain sentence blocks a very popular idea: that the problems of algorithms are technical problems. On that idea, whether a system is fair is a matter for data scientists; one has to understand statistics to have a say; philosophy has nothing to add here, still less norms; at most regulators set a few technical indicators.</p>
+<p>Half of this idea holds. How the system calculates inside, how each indicator is measured, really is technical, and really ought to be settled by those who understand it. But some things are settled before one gets to the technical part. If a door takes birth into account in deciding whom to admit, Paper 2 said, it does not count as fair. This sentence does not lose force because the door is a computer program, nor does it change its nature because &quot;taking birth into account&quot; takes the form of a regression coefficient rather than a line in a charter. What already falls under normative criteria is not lowered into a matter of the rule layer because statistics were used.</p>
+<p>Those who speak for algorithms have another solid reason: machines are better than people. Clerks have prejudices, get tired, size people up; the system treats forty items evenly, and the same input always gets the same score. This is true, and it is a merit. But &quot;consistency&quot; says that it does the same thing every time, not what that thing is. A door that opens by birth, carried out however consistently, is still that door.</p>
+<p>How concretely to read it as a door divides in two. Where birth is put straight into the calculation, it is read under Paper 2's proposition on turning people away by birth. Where acquired indicators are used, education, occupation, it is read under Paper 8's proxy doors: what it stands in for, why one cannot test directly, whether those wrongly shut out have another road. The woman from Lower Hollow had not failed to pay a debt in eight years; in this system, is there a road by which that fact can outweigh the other items?</p>
+<p><strong>GP50 A score used as a door is read by the criteria for doors; what already falls under normative criteria is not lowered into a matter of the rule layer because statistics were used.</strong> Where birth is put into the calculation to make a door, it is read under the general sentence (GP7) and Paper 2, §3; where acquired indicators are used, under GP49.</p>
+<h2>§2 Group Statistics</h2>
+<p>A postal code is not birth. But in a place like Springhollow, people mostly live all their lives in the village where they were born; which postal code one lives in nearly says where one was born. The system has no line saying &quot;deduct points for northerners&quot;; it learned from past records that applicants with this postal code default somewhat more often, and so took a few points off everyone with this postal code.</p>
+<p>This is the problem of insurance pricing from Paper 2, in a guise harder to recognize. The reading is the same: group statistics computed by birth are not assessing this person himself.</p>
+<p>Against this sentence, those who know the field have a deep rebuttal, worth writing out as they would put it. They say: all prediction is group statistics. A clerk who sees a person &quot;looks reliable&quot; is comparing him with people he has seen. That your woman &quot;has not failed to pay in eight years&quot; weighs heavily with the system for the same reason: people who have not defaulted for eight years default less later. There is no such thing as &quot;assessing this person himself&quot;; there is only coarser classification and finer classification. What you oppose is not statistics but the few variables you dislike.</p>
+<p>The rebuttal hits the mark on one point: there is no judgment that does not draw on past experience. This paper does not claim there is a pure &quot;looking at this person&quot; free of generalization.</p>
+<p>The difference lies elsewhere: what is being generalized from. &quot;She has not failed to pay in eight years&quot; generalizes from things she herself did. &quot;She lives in this postal code&quot; generalizes from things other people did; her link with those people is only that they live in the same place; in a place like Springhollow, that mostly means they were born in the same place. The first infers her future conduct from her past conduct, and the one assessed is still her. The second checks other people's accounts by her birth. The line is not clear everywhere; education lies on it, so does occupation; that is why Paper 8 requires only that those who use acquired indicators be able to say why, and gives no verdict. But its two ends are clear: at one end, her own record; at the other, her birthplace.</p>
+<p>One sentence of the rebuttal remains: it is accurate. The Prequel, §4, has answered it: accuracy shows only that the substitution is convenient.</p>
+<h2>§3 Written into Programs</h2>
+<p>The clerk said: the system didn't pass it. We can't see how it calculates either.</p>
+<p>There are two things in this sentence, both of which come only once a door is written into a program.</p>
+<p>The first is that no one judges again. Formerly a loan officer looked at the file, felt something was off, could ask one more question, could refer it upward. Now the score comes out, above the line or below, and the matter is over. The Theory of Disciplines upstream has described this kind of arrangement: &quot;In arrangements that execute automatically, without a corresponding stage of fresh judgment, every run of the program carries out that line once.&quot; A faulty rule handed to people to carry out will always, on some occasion, have someone stop; written into a program, it is carried out ten thousand times a day and never once stops. Arrangements with review, appeal and human judgment built in are checked separately; this bank has none.</p>
+<p>The second is that no one can answer. The bank says the system decided; the system was bought; the company that sells it says the model was learned from data. Asked all the way round, &quot;why five hundred and seventy&quot; lands on no one.</p>
+<p>Upstream there are two sentences here, which this paper takes over as they stand. One is: &quot;When judgment is handed to a machine, the bearing is not handed over with it.&quot; (Theory of Disciplines, Paper 7, §5) The machine may do the judging; it is this bank that turned down this loan. The other: when a standard is adopted as a door, &quot;the construct that adopts it answers for its adoption&quot; (Theory of Disciplines, Paper 6, §4). The bank need not understand the mathematics inside the model, but it still has to understand why it adopted this model and whom it uses it to keep out. &quot;We can't see it either&quot; is not an answer; it is a question that needs answering: if you cannot see it, how do you dare use it to shut the door?</p>
+<p>This section does not oppose using machines. What it says is that once they are used, when the woman asks &quot;why,&quot; there has to be a person, not a computer program, standing there to answer.</p>
+<h2>§4 The Dispute over Statistical Standards</h2>
+<p>Back to the two sets of figures in the introduction.</p>
+<p>The consumer organization measured how the errors fall: among those who would have repaid, whether each group is wrongly rejected at the same rate; and conversely, among those who would not have repaid, whether each group is wrongly let through at the same rate. What it asks is: does the cost of error fall evenly across groups?</p>
+<p>The company selling the system measured: whether the same score corresponds to the same repayment rate in every group. What it asks is: does this score mean the same thing for everyone?</p>
+<p>These are different questions, and both sound as if they ought to be answered &quot;yes.&quot; But they are not the same set of conditions as the theorem researchers proved. The theorem relevant to this dispute puts all its requirements on the scores: in every score band, the share who actually repay matches the score in every group; among those who will repay, each group gets the same average score; among those who will not repay, each group also gets the same average score. If the share of people who will repay differs between groups, and prediction is not perfect, these three conditions cannot all hold together. What the consumer organization measured are the wrongful rejections and wrongful approvals once a line is drawn; another study proved a related result: when the share of people who will repay differs between groups, if, among those let through above the line, the share who repay is the same for every group and lies strictly between zero and one, then the rates of wrongful rejection and wrongful approval cannot both be equal. The two results have the same shape: under the respective conditions stated, several requirements, each of which sounds as if it ought to be answered &quot;yes,&quot; cannot all be &quot;yes&quot; at once.</p>
+<p>Many draw a discouraged conclusion from this: even mathematics has proved that fairness contradicts itself. Others draw a convenient one: since they cannot all be had, pick whichever is handy and the duty is done.</p>
+<p>This paper reads it differently, from a proposition set up in Paper 2: proportions are clues, not measures. That proposition was originally about the proportion of men and women in the orchestra; applying it here is a step this series takes on its own.</p>
+<p>Each of those statistical standards is a proportion computed by group. Each, when uneven, prompts checking something. Uneven rates of wrongful rejection prompt checking: are this system's errors tied to birth? Uneven meanings of scores prompt checking: is this score accurate for some people and not for others? What each tests, those who use them need to be able to say separately.</p>
+<p>But no proportion, when even, equals fair, or, when uneven, equals unfair. Set any one of them up as the measure, and that is taking a proportion as the measure, as Paper 2 said. What the two theorems show is only that these statistical requirements constrain one another: under the respective conditions stated, they cannot all hold together. The &quot;measures&quot; fighting one another does not show that fairness contradicts itself. This series goes on to say one more thing, which is its own judgment, not something the theorems yield: they were never measures in the first place, but clues.</p>
+<p>Then what is the measure? Still the one in §1: whether this door tries this person himself. Statistics cannot find out all of that; what it can do is point to where to look. In Apple City, where the clue points is no mystery: that postal code. Further upstream, why different groups defaulted at different rates in the past; that mostly goes back to incomes and work in the north, and to schools further back. Things in those places are not something a scoring system can fix, nor ought it to carry them.</p>
+<p>As for how to choose among the standards, and which kind of error is to be guarded against more in which setting, those are for those who make rules to weigh and answer for. Lending and sentencing clearly weigh wrongful rejection and wrongful approval differently. The normative layer does not choose for them here.</p>
+<p><strong>GP51 Statistical standards are clues, not measures.</strong> Certain statistical standards cannot all hold together under certain conditions; what each tests is to be stated separately. Proportions serve as clues; no single proportion gives the verdict.</p>
+<h2>Where This Paper Stops</h2>
+<p>What it did not do: it did not say which statistical standard holds; it did not say whether algorithms ought to be used; it did not judge the bank, nor the real risk-scoring tool.</p>
+<p>The deadlock came out like this: it had been put in a layer where it does not belong. &quot;Several fairness standards cannot all hold together&quot; is an insoluble contradiction when these standards are taken as fairness itself; when they are taken as clues, it is several checks, each with its own use, none replacing another. That they cannot all hold together is still true, and choosing still needs someone to do it; but it has become a choice in the rule layer that needs explaining and answering for, no longer a paradox in the normative layer.</p>
+<p>Two unresolved matters are registered. First, the line between &quot;things she herself did&quot; and &quot;things other people did&quot; is clear at both ends and unclear in the middle; more and more systems use exactly what lies in the middle. Second, §3 requires a person to stand up and answer; if even the people who built a model cannot say where a particular score came from, what &quot;answering&quot; means, this paper did not write.</p>
+<h2>The Two Propositions of This Paper</h2>
+<p><strong>GP50</strong> A score used as a door is read by the criteria for doors; what already falls under normative criteria is not lowered into a matter of the rule layer because statistics were used. (§1)</p>
+<p><strong>GP51</strong> Statistical standards are clues, not measures. (§4)</p>
+<h2>Notes</h2>
+<ol class="footnotes">
+<li id="en-fn-1">Kleinberg, J., Mullainathan, S., &amp; Raghavan, M. (2017). Inherent Trade-Offs in the Fair Determination of Risk Scores. <em>ITCS 2017</em>. The three conditions (§1.1): calibration within groups, that is, in each group, among those assigned a given score, the fraction belonging to the positive class equals that score; balance for the negative class, that is, the average score received by members of the negative class is the same in both groups; balance for the positive class, that is, the average score received by members of the positive class is the same in both groups. The paper's introduction says the latter two can be seen as generalizations of equal false negative and false positive rates across the two groups, and that the journalists' analysis concerned the latter two while the defense addressed the first. All three hold together only in two cases: perfect prediction; equal base rates in the two groups (arXiv version 1609.05807, §1.2, Theorem 1.1; in the ITCS published version this result is numbered Theorem 1). The text paraphrases these three conditions on scores; what the company in the bank story measured, &quot;the same score corresponds to the same repayment rate,&quot; is calibration, which is not the same condition as equal predictive value at a threshold; the consumer organization's wrongful rejections and approvals at a threshold correspond to the other paper, below. For the version after a threshold is drawn, see Chouldechova (2017): when base rates differ between groups and the common predictive value lies strictly between 0 and 1, an instrument with equal predictive value at the same threshold cannot have both equal false positive rates and equal false negative rates. For both papers the statements of the conditions and theorems have been checked; the proofs have not. <a class="fn-back" href="#en-fnref-1" aria-label="Back to text">↩︎</a></li>
+</ol>
+<h2>References</h2>
+<p>All SAE works below are cited by concept DOI, which always resolves to the latest version.</p>
+<p>I · This system</p>
+<ul>
+<li>Qin, H. (2026). What Fairness Is Not (SAE Theory of Fairness, Prequel) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24486169</li>
+<li>Qin, H. (2026). The Door (SAE Theory of Fairness, Paper 2) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24486175</li>
+<li>Qin, H. (2026). Fairness and Selection (SAE Theory of Fairness, Paper 8) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24486203</li>
+<li>Qin, H. (2026). Withdrawal (SAE Theory of Disciplines, Paper 6) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24177783</li>
+<li>Qin, H. (2026). Writing Standards into Programs (SAE Theory of Disciplines, Paper 7) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24177788</li>
+<li>Qin, H. (2026). Judgment (SAE Theory of Government, Paper 1) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.23412130</li>
+</ul>
+<p>II · Literature</p>
+<ul>
+<li>Kleinberg, J., Mullainathan, S., &amp; Raghavan, M. (2017). Inherent Trade-Offs in the Fair Determination of Risk Scores. <em>8th Innovations in Theoretical Computer Science Conference</em>. doi:10.4230/LIPIcs.ITCS.2017.43</li>
+<li>Chouldechova, A. (2017). Fair Prediction with Disparate Impact: A Study of Bias in Recidivism Prediction Instruments. <em>Big Data</em>, 5(2), 153–163. doi:10.1089/big.2016.0047</li>
+</ul>
+<h2>Interfaces</h2>
+<p>From Paper 2: turning people away by birth; pricing by birth; a clue, not a measure. From Paper 8: those who set a proxy door have to be able to say why.</p>
+<p>Handed to Paper 10: the rule layer's choices, the judgment layer's answering for them.</p></div>
+  </div>
+  <div id="lang-zh" style="display:none">
+    <div class="abstract-box">
+      <div class="abstract-label">摘要</div>
+      <p>一家银行用一套评分系统审贷款。一位申请人被拒了，柜员说不出原因，只说“系统没有通过”。事后有人查这套系统，发现它对北部来的申请人错拒得更多；卖系统的公司回答，同样的分数在各类人里对应着同样的还款率，它是准的。两句话都是真的。相关研究证明，某些精确定义的标准，除非预测得完全准，或者各类人里本来会还款的比例就一样，不能兼得。这一篇把前几篇的读法放进评分与自动的决定里，试这个僵局。它立两条命题，都是读法。评分作门，照门的判据读；已经落进规范判据的事，不因为用了统计就降成规则层的事。统计上的标准是线索，不是尺。中间两节说明：按出身算出来的群体统计，不是照这个人自己来试；门写进了程序，判断交给了机器，承担没有跟着交出去，采用它的一方要就它的采用作答。这一篇不说哪一个统计标准对，不说算法该不该用。</p>
+    </div>
+    <div class="paper-body"><p class="paper-statement"><em>写作声明：本文与 Claude（Anthropic）共同起草，所有思想决策、框架设计和最终编辑判断由作者做出。</em></p>
+<h2>引言</h2>
+<p>苹果城储蓄银行从第 34 年起，用一套买来的评分系统审个人贷款。申请人填一张表，系统给一个零到一千的分数，六百以上放贷。系统用到的项目有四十多个，其中有还款记录，收入，学历，还有居住地的邮政编码。这是这个系列设的例子。</p>
+<p>下坳的一位女士申请一笔买货车的贷款。她在苹果城跑了八年运输，没有欠过一笔钱。系统给了五百七十分。她问柜员为什么。柜员看了看屏幕，说：系统没有通过。再问，柜员说：我们也看不到里面是怎样算的。</p>
+<p>第二年，州里的一个消费者组织拿到了这家银行用这套系统以前放出去的几年贷款，谁还了、谁没还，记录都在。他们把这些人放进系统里重打一遍分，算出来：后来证明会按时还款的人里，北部六县的申请人按这套系统会被拒的比例，是苹果城申请人的两倍多；不会还款的人里，苹果城的申请人会被放过去的更多。他们说，这套系统歧视北部人。</p>
+<p>卖系统的公司发了一份答复。他们说：在北部申请人与苹果城申请人里，拿到同样分数的人，后来的还款率是一样的。六百分在哪里都是六百分的意思。这套系统对谁都一样准，没有偏向。</p>
+<p>两边都拿出了数字，数字都经得起核。</p>
+<p>这不是设例才有的巧合。几年前，美国的记者查过一种给刑事被告打再犯风险分的工具，说它对黑人被告错标成高风险的更多；工具的开发者用另一种统计作答。随后有研究者证明了一条定理：他们把争论里要紧的三种公平条件写成了精确的形式，证明除了极受限制的特殊情形，没有任何办法能同时满足这三条。<sup class="fn-ref" id="zh-fnref-1"><a href="#zh-fn-1">1</a></sup></p>
+<p>于是有了这个领域的僵局：几种听上去都该有的标准，不能兼得。选哪一个？</p>
+<h2>第一节　评分作门</h2>
+<p>一套评分系统，分数过线的放贷，不过线的拒绝。它做的事，与第二篇里乐团的招考、第八篇里的学历线是同一件：对来的人开门或者关门。</p>
+<p>所以评分作门，照门的判据读。</p>
+<p>这句话平平无奇，它挡的是一种很流行的想法：算法的问题是技术问题。照那种想法，一套系统公不公平，是数据科学家的事，要懂统计才有资格说话；哲学在这里插不上嘴，规范更谈不上，顶多由监管的人订几条技术指标。</p>
+<p>这种想法有一半站得住。系统里面怎样算，哪一种指标怎样测，确实是技术，也确实该由懂的人去定。可是有些事在进到技术以前就已经定了。一扇门如果把出身算进去决定收不收人，第二篇说过，不算公平。这句话不因为那扇门是一段程序就失效，也不因为“把出身算进去”的方式是一个回归系数而不是一行章程就换了性质。已经落进规范判据的事，不因为用了统计，就降成规则层的事。</p>
+<p>替算法说话的人还有一条实在的理由：机器比人强。柜员有偏见，会累，看人下菜；系统对四十个项目一视同仁，同样的输入永远给同样的分。这是真的，是它的好处。可是“一致”说的是它每一次做的事相同，没有说它做的那件事是什么。一扇照出身开的门，执行得再一致，还是那扇门。</p>
+<p>具体怎样照门读，分两种。把出身直接算进去的，照第二篇“按出身不收人”一条读。用后天指标的，学历，职业，照第八篇“代理的门”读：代的是什么，为什么不能直接试，被误关在外的人有没有另一条路。下坳那位女士八年没有欠过一笔钱；这个系统里，有没有一条路让这件事盖过别的项目？</p>
+<p><strong>GP50　评分作门，照门的判据读；已经落进规范判据的，不因用了统计而降成规则层的事。</strong> 把出身算进去作门的，照总句（GP7）与第二篇第三节；用后天指标的，照 GP49。</p>
+<h2>第二节　群体统计</h2>
+<p>邮政编码不是出身。可是在泉坳这样的地方，人多半一辈子住在生下来的村子里；住在哪个邮编，几乎就是在说她生在哪里。系统没有一行写着“北部人减分”；它从过去的记录里学到，这个邮编的申请人违约的多一些，于是给这个邮编的每一个人减了一点。</p>
+<p>这是第二篇里保险定价的那个问题，换了一副更难认的样子。读法一样：按出身算出来的群体统计，不是照这个人自己来试。</p>
+<p>对这句话，懂行的人有一个很深的反驳，值得原样写出来。他们说：所有的预测都是群体统计。柜员看一个人“像是靠得住”，也是拿他见过的人在比。你那位女士“八年没有欠过钱”，系统看重这一条，同样是因为过去八年不欠钱的人后来违约的少。根本没有什么“照这个人自己来试”；有的只是粗一点的归类与细一点的归类。你反对的不是统计，是你不喜欢的那几个变量。</p>
+<p>这个反驳说中了一件事：没有哪一种判断不借助过去的经验。这一篇不主张有一种不含概括的、纯粹的“看这个人”。</p>
+<p>分别在另一处：概括的是什么。“她八年没有欠过钱”，概括的材料是她自己做过的事。“她住在这个邮编”，概括的材料是别人做过的事；那些人与她的联系，只是住在同一个地方；在泉坳这样的地方，那多半也就是生在同一个地方。前一种，是拿她过去的行为推她将来的行为，被试的仍然是她。后一种，是拿她的出身去查别人的账。这条线不是处处都清楚，学历在它上面，职业也在；所以第八篇对后天的指标只要求“说得出”，没有下判词。可是它的两端是清楚的：一端是她自己的记录，一端是她的出生地。</p>
+<p>反驳里还剩一句：它准。前置篇第四节答过：准，说明这样代替省事。</p>
+<h2>第三节　写进程序</h2>
+<p>柜员说：系统没有通过。我们也看不到里面是怎样算的。</p>
+<p>这句话里有两件事，都是门写进程序以后才有的。</p>
+<p>第一件，是没有人再判一次。从前信贷员看了材料，觉得不对劲，可以多问一句，可以向上请示。现在分数出来，过线不过线，事情就完了。上游的学科论说过这种安排：「在自动执行，又没有相应重新判断环节的安排里，程序每运行一次就执行一次那一行应当」。一条有毛病的规则，交给人去执行，中间总有人在某一次停下来；写进程序，它一天执行一万次，一次也不停。嵌着复核、申诉与人工判断的安排，要另外核；这家银行没有。</p>
+<p>第二件，是没有人答得上来。银行说是系统定的；系统是买来的；卖系统的公司说模型是从数据里学的。问了一圈，“为什么是五百七十分”落不到任何一个人身上。</p>
+<p>这里上游有两句话，这一篇原样承过来。一句是：「判断交给机器，承担不随之交出。」（学科论第七篇第五节）判断可以让机器做；这笔贷款是这家银行拒的。另一句是：一条标准被采作门的时候，「采用它的构就它的采用作答」（学科论第六篇第四节）。银行可以不懂模型里面的数学，它不能不懂自己为什么采用这套模型、拿它来挡谁。“我们也看不到”不是一个回答；它是一个需要被回答的问题：看不到，为什么敢用它来关门。</p>
+<p>这一节没有反对用机器。它说的是用了以后，那位女士问“为什么”的时候，得有一个人，不是一段程序，站在那里答。</p>
+<h2>第四节　统计标准之争</h2>
+<p>回到引言里那两组数字。</p>
+<p>消费者组织量的是错的落法：本来会还款的人里，各类人被错拒的比例是不是一样；反过来，本来不会还款的人里，各类人被错放的比例是不是一样。它问的是：错的代价，是不是均匀地落在各类人身上。</p>
+<p>卖系统的公司量的是：同一个分数，在各类人里是不是对应同样的还款率。它问的是：这个分数的意思，是不是对谁都一样。</p>
+<p>这是不同的问题，听上去都该答“是”。可它们和研究的人证过的那条定理，不是同一组条件。与这场争论相关的那条定理，把要求都放在分数上：每一档分数，在各类人里都符合实际会还款的比例；本来会还款的人，各类人得到的平均分相同；本来不会还款的人，各类人得到的平均分也相同。各类人里本来会还款的比例不一样，分数又不能准到一个不错，这三条就不能同时满足。消费者组织量的，是划了线以后的错拒与错放；另一项研究证过相近的一条：各类人里本来会还款的比例不一样时，如果线上被放过去的人里，会还款的比例对各类人一样，而且这个比例既不是零也不是百分之百，错拒与错放的比例就不能都一样。两条的形状相同：在各自所列的条件下，几样各自听上去都该答“是”的要求，不能同时为“是”。</p>
+<p>许多人从这里得出一个灰心的结论：连数学都证明了，公平是自相矛盾的。也有人得出一个省事的结论：反正不能兼得，挑一个顺手的就算尽了责。</p>
+<p>这一篇的读法不同，它来自第二篇立过的一条：比例是线索，不是尺。那一条原来说的是乐团里的男女比例；用到这里，是本系列自己往前走的一步。</p>
+<p>那几种统计标准，每一种都是一个按类算出来的比例。每一种不齐，都提示人去核一样东西。错拒的比例不齐，提示去核：这个系统的错，是不是系在出身上。分数的意思不齐，提示去核：这个分数是不是对有的人准、对有的人不准。它们各自检验的是什么，用的人要分别说得出。</p>
+<p>可是没有哪一个比例，齐了就等于公平，不齐就等于不公平。把其中一个立成尺，就是第二篇说的把比例当尺。这两条定理说明的，只是这几样统计要求之间有约束：在各自所列的条件下，这些要求不能全部同时满足。几把“尺”互相打架，不说明公平自相矛盾。这个系列接着往下说一句，这一句是它自己的判断，不是定理推出来的：它们本来就不是尺，是线索。</p>
+<p>那么尺是什么？还是第一节那一把：这扇门，是不是照这个人自己来试。统计查不出这一点的全部，它能做的是指出该去哪里看。在苹果城，线索指向的地方并不神秘：那个邮编。再往上游，是各类人过去的违约率为什么不一样；那多半要回到北部的收入与工作，回到更早的学校。那些地方的事，不是一套评分系统改得了的，也不该由它背。</p>
+<p>至于几种标准之间怎样取舍，哪一种场合更要防哪一种错，是定规则的人要掂量、要负责的事。放贷与量刑，错拒与错放的分量显然不同。规范层在这里不替他们选。</p>
+<p><strong>GP51　统计上的标准是线索，不是尺。</strong> 某些统计标准在特定条件下不能兼得；各自检验的是什么，分别说明。比例作线索，不由哪一个比例下判。</p>
+<h2>这一篇停在哪里</h2>
+<p>它没有做的：没有说哪一个统计标准是对的；没有说算法该不该用；没有判那家银行，也没有判那个真实的风险评分工具。</p>
+<p>僵局试下来的结果是：它被放错了层。“几种公平标准不能兼得”，当这几种标准被当作公平本身的时候，是一个无解的矛盾；当它们被当作线索的时候，是几样各有用处、彼此不能替代的检查。不能兼得这件事仍然是真的，取舍仍然要有人作；但它成了规则层里一个要说明、要负责的选择，不再是规范层里一个悖论。</p>
+<p>登记两件没有解决的事。其一，“她自己做过的事”与“别人做过的事”之间那条线，两端清楚，中间不清楚；越来越多的系统用的正是中间的东西。其二，第三节要求有一个人站出来答；一套模型如果连造它的人也说不出某一个分数的来由，“答”是什么意思，这一篇没有写。</p>
+<h2>两条合列</h2>
+<p><strong>GP50</strong>　评分作门，照门的判据读；已经落进规范判据的，不因用了统计而降成规则层的事。（第一节）</p>
+<p><strong>GP51</strong>　统计上的标准是线索，不是尺。（第四节）</p>
+<h2>注</h2>
+<ol class="footnotes">
+<li id="zh-fn-1">Kleinberg, J., Mullainathan, S., &amp; Raghavan, M. (2017). Inherent Trade-Offs in the Fair Determination of Risk Scores. <em>ITCS 2017</em>. 三个条件（第 1.1 节）：组内校准，即每一组里分到某一档分数的人中，属于正类的比例等于那一档的分数；负类平衡，即两组负类成员得到的平均分相等；正类平衡，即两组正类成员得到的平均分相等。论文导言说，后两条可以看作“两组的假阴性率与假阳性率相等”的推广，并说记者那篇分析针对的是后两条，答辩一方说明的是第一条。三条同时成立只有两种情形：完全准确的预测；两组的基础比率相等（arXiv 版 1609.05807 第 1.2 节，定理 1.1；ITCS 正式发表版这一结果编号为定理 1）。正文转述的是分数上的这三条；银行故事里公司量的“同一个分数对应同样的还款率”是校准，与门槛上的“预测值相等”不是同一项条件，消费者组织量的门槛上的错拒、错放，对应的是下面一篇。划定门槛以后的版本，见 Chouldechova（2017）：各组的基础比率不同、共同的预测值严格介于 0 与 1 之间时，在同一门槛上预测值相等的工具，假阳性率与假阴性率不能都相等。两篇都核到条件与定理的陈述；证明未核。 <a class="fn-back" href="#zh-fnref-1" aria-label="返回正文">↩︎</a></li>
+</ol>
+<h2>参考文献</h2>
+<p>以下 SAE 文献一律为概念 DOI，始终指向最新版本。</p>
+<p>一 · 本系统</p>
+<ul>
+<li>秦汉. (2026). 公平不是什么（SAE 公平论 前置篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24486169</li>
+<li>秦汉. (2026). 门（SAE 公平论 第二篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24486175</li>
+<li>秦汉. (2026). 公平与选拔（SAE 公平论 第八篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24486203</li>
+<li>秦汉. (2026). 撤回（SAE 学科论 第六篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24177783</li>
+<li>秦汉. (2026). 写进程序（SAE 学科论 第七篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.24177788</li>
+<li>秦汉. (2026). 判断（SAE 政府论 第一篇） [预印本]. Zenodo. https://doi.org/10.5281/zenodo.23412130</li>
+</ul>
+<p>二 · 文献</p>
+<ul>
+<li>Kleinberg, J., Mullainathan, S., &amp; Raghavan, M. (2017). Inherent Trade-Offs in the Fair Determination of Risk Scores. <em>8th Innovations in Theoretical Computer Science Conference</em>. doi:10.4230/LIPIcs.ITCS.2017.43</li>
+<li>Chouldechova, A. (2017). Fair Prediction with Disparate Impact: A Study of Bias in Recidivism Prediction Instruments. <em>Big Data</em>, 5(2), 153–163. doi:10.1089/big.2016.0047</li>
+</ul>
+<h2>接口</h2>
+<p>承第二篇：按出身不收人；按出身定价；线索不作尺。承第八篇：代理的门要说得出。</p>
+<p>交给第十篇：规则层的取舍，判断层的负责。</p></div>
+  </div>
+</article>
+<!-- SAE:paper-navigation:start -->
+<aside class="paper-navigation" aria-label="Paper navigation and citation">
+  <nav class="paper-breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Paper library / 论文库</a><span aria-hidden="true">›</span>
+    <a href="../index.html#all-papers">5. The Institutional Side 制度侧</a><span aria-hidden="true">›</span>
+    <span>SAE Theory of Fairness Series 公平论系列</span>
+  </nav>
+  <div class="paper-neighbors">
+    <a class="paper-neighbor paper-neighbor-previous" href="sae-fairness-theory-8.html" rel="prev">
+      <span>← Previous in series / 上一篇</span>
+      <strong>Fairness and Selection</strong>
+    </a>
+    <a class="paper-neighbor paper-neighbor-next" href="sae-fairness-theory-10.html" rel="next">
+      <span>→ Next in series / 下一篇</span>
+      <strong>The Balance of Fairness</strong>
+    </a>
+  </div>
+  <details class="paper-citation">
+    <summary>Cite this paper / 引用本文</summary>
+    <p>Qin, Han (2026). Fairness and Algorithms. Self-as-an-End Theory Series. https://doi.org/10.5281/zenodo.24486205</p>
+    <p class="paper-citation-links"><a href="https://doi.org/10.5281/zenodo.24486205" target="_blank" rel="noopener">DOI record</a><span aria-hidden="true"> · </span><a href="https://self-as-an-end.net/papers/sae-fairness-theory-9.html">Canonical URL</a></p>
+  </details>
+  <p class="paper-essay-link">Prefer essays? / 更想读散文？ Visit <a href="https://nondubito.net/" target="_blank" rel="noopener">Non Dubito</a> for multilingual essays and literary writing.</p>
+</aside>
+<!-- SAE:paper-navigation:end -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Han Qin (秦汉) · CC BY 4.0</span>
+    <span><a href="mailto:hqin@self-as-an-end.net">hqin@self-as-an-end.net</a></span>
+  </div>
+</footer>
+<script>
+function switchLang(lang, tab) {
+  ['lang-en','lang-zh'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var target = document.getElementById('lang-' + lang);
+  if (target) target.style.display = 'block';
+  tab.classList.add('active');
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2406946f2663488dbd27f5fde7cd25ac"}'></script>
+</body>
+</html>
